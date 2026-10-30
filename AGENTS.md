@@ -79,7 +79,7 @@ In T3 Code, the equivalent is one `delegate_task` call per model with `target.pr
 
 ### 4. Record the cohort
 
-Add an entry per run to a manifest in `data/administration/` (see `fresh-cohort-v2.json` for the shape): label, model, provider, run ID, evidence path, and the git commit of the code that administered it. Never store the wrapper path or secrets.
+Add an entry per run to a manifest in `data/administration/` (see `fresh-cohort-v3.json` for the shape): label, model, provider, run ID, evidence path, and the git commit of the code that administered it. Never store the wrapper path or secrets.
 
 ### 5. Validate and publish
 
