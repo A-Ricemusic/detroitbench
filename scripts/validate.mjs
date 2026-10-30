@@ -1,4 +1,6 @@
-import {loadPlaythroughs} from './playthrough-report.mjs';
+import {loadCurrentRuns} from './run-report.mjs';
+import {mkdir} from 'node:fs/promises';
+await mkdir('data/published',{recursive:true});
 import {readFile,readdir} from 'node:fs/promises';
 import {datasetSchema,validateRun,makeJobs} from '../benchmark/core.mjs';
 const d=datasetSchema.parse(JSON.parse(await readFile('benchmark/dataset.json','utf8')));
@@ -8,4 +10,4 @@ for(const q of d.questions){if(!atlas.decisions.some(a=>a.id===q.atlasId))throw 
 for(const file of (await readdir('data/published')).filter(f=>f.endsWith('.json')))await validateRun(JSON.parse(await readFile('data/published/'+file,'utf8')));
 console.log(`Valid: ${d.questions.length} questions, ${d.coverage.length} atlas coverage entries, published run integrity.`);
 
-const actual=await loadPlaythroughs();console.log('Valid branching playthroughs: '+actual.runs.map(r=>r.label+' '+r.records.length+' decisions').join(', '));
+const actual=await loadCurrentRuns();console.log('Valid fresh branching playthroughs: '+actual.map(r=>r.label+' '+r.records.length+' decisions').join(', '));
