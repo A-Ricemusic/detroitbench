@@ -23,7 +23,7 @@ export function behaviorEvidence(run){const patterns=[['protective intervention'
 const slugify=s=>String(s??'').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'model';
 export const friendlyDate=iso=>iso&&!Number.isNaN(Date.parse(iso))?new Date(iso).toLocaleDateString('en-US',{timeZone:'UTC',year:'numeric',month:'long',day:'numeric'}):'Undated';
 export const providerName=p=>({codex:'Codex',claudeAgent:'Claude Agent',fixture:'Test fixture'})[p]??(p||'Unknown provider');
-export function modelDisplayName(run){const label=String(run.label??'').trim()||String(run.model??'Model');return /^claude-/i.test(run.model??'')&&!/^claude\b/i.test(label)?'Claude '+label:label}
+export function modelDisplayName(run){const label=String(run.label??'').trim()||String(run.model??'Model'),m=String(run.model??'');if(/^claude-/i.test(m)&&!/^claude\b/i.test(label))return 'Claude '+label;const g=m.match(/^gpt-([\d.]+)-/i);if(g&&!/^gpt/i.test(label))return `GPT-${g[1]} ${label}`;return label}
 // Numbers runs per model in creation order (id breaks ties), so names are deterministic and never collide.
 export function assignReportNames(runs){
  const unique=[...new Map(runs.filter(r=>r?.id).map(r=>[r.id,r])).values()].sort((a,b)=>String(a.createdAt??'').localeCompare(String(b.createdAt??''))||String(a.id).localeCompare(String(b.id)));
