@@ -1,5 +1,5 @@
 import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
-import {publishRunLibrary} from './run-report.mjs';
+import {publishRunLibrary,loadReportNames,providerName} from './run-report.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 const dataset=datasetSchema.parse(JSON.parse(await readFile(new URL('../benchmark/dataset.json',import.meta.url),'utf8')));
 const published=new URL('../data/published/',import.meta.url),target=new URL('../public/data/',import.meta.url);
@@ -10,5 +10,6 @@ const runs=[];for(const file of (await readdir(published)).filter(f=>f.endsWith(
 await writeFile(new URL('dataset.json',target),JSON.stringify(dataset));await writeFile(new URL('index.json',target),JSON.stringify({datasetHash:await hash(dataset),datasetUrl:'/data/dataset.json',runs}));
 await copyFile(new URL('../docs/detroit-decision-flowchart.html',import.meta.url),new URL('../public/atlas.html',import.meta.url));
 const actual=await publishRunLibrary();
-await writeFile(new URL('experiences.json',target),JSON.stringify(actual.map(r=>({id:r.id,label:r.label,model:r.model,protocol:r.protocol,provider:r.provenance.provider,createdAt:r.createdAt,decisions:r.records.length,unreached:r.skipped.length,reportUrl:'/runs/'+r.id+'.html'}))));
+const names=await loadReportNames(actual);
+await writeFile(new URL('experiences.json',target),JSON.stringify(actual.map(r=>{const n=names.get(r.id);return {id:r.id,title:n.title,displayName:n.displayName,runNumber:n.runNumber,date:n.date,label:r.label,model:r.model,protocol:r.protocol,provider:r.provenance.provider,providerName:providerName(r.provenance.provider),createdAt:r.createdAt,decisions:r.records.length,unreached:r.skipped.length,fileName:n.file,reportUrl:'/runs/'+n.file}}).sort((a,b)=>a.title.localeCompare(b.title))));
 console.log(`Prepared ${dataset.questions.length} questions and ${runs.length} explicitly published runs.`);
