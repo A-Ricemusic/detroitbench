@@ -6,8 +6,8 @@ const COLOR={Connor:'#83e6e2',Kara:'#eac28b',Markus:'#b8a3eb'};
 const pct=(a,b)=>b?Math.round(a/b*100)+'%':'—';
 const SORTS=[{value:'name',label:'Model name'},{value:'decisions',label:'Most decisions'},{value:'read',label:'Most read'},{value:'failed',label:'Most failed risks'},{value:'survived',label:'Best outcomes'}];
 
-export default function Playthroughs(){
- const [runs,setRuns]=useState(null),[error,setError]=useState(''),[tab,setTab]=useState('runs'),[open,setOpen]=useState(null);
+export default function Playthroughs({tab='runs',onTab}){
+ const [runs,setRuns]=useState(null),[error,setError]=useState(''),[open,setOpen]=useState(null);const setTab=t=>onTab?onTab(t):null;
  const [sort,setSort]=useState('name'),[provider,setProvider]=useState('all'),[focus,setFocus]=useState('all'),[q,setQ]=useState('');
  useEffect(()=>{fetch('/data/experiences.json').then(r=>{if(!r.ok)throw Error('Cannot load run library');return r.json()}).then(setRuns).catch(e=>setError(e.message))},[]);
  useEffect(()=>{if(!open)return;const esc=e=>{if(e.key==='Escape')setOpen(null)};document.addEventListener('keydown',esc);document.body.style.overflow='hidden';return()=>{document.removeEventListener('keydown',esc);document.body.style.overflow=''}},[open]);
@@ -22,17 +22,17 @@ export default function Playthroughs(){
  const kara=runs.filter(r=>r.endings.aliceCanada).length,peace=runs.filter(r=>r.endings.peaceful).length;
  const story=runs[0]?.storyVersion,protocol=runs[0]?.protocol,selected=runs.find(r=>r.id===open);
  return <section className="story-view">
-  <header className="story-head"><p className="eyebrow">Story {story} · {protocol} · {runs.length} models, one run each</p><h1>What each model chose</h1><p className="lede">Every model played all three storylines in a single sitting and made every pivotal decision itself. Open a run to see where it ended up and how the people around it felt, or compare the moments where the models split.</p></header>
-  <div className="tiles"><Tile v={runs.length} l="Runs"/><Tile v={total.toLocaleString()} l="Decisions"/><Tile v={`${peace}/${runs.length}`} l="Peaceful wins"/><Tile v={`${kara}/${runs.length}`} l="Alice safe in Canada"/><Tile v={pct(failed,risky)} l="Risky actions failed" s={`${failed} of ${risky}`}/><Tile v={pct(read,offered)} l="Media read" s={`${read} of ${offered}`}/></div>
-  <div className="seg" role="tablist"><button role="tab" aria-selected={tab==='runs'} className={tab==='runs'?'on':''} onClick={()=>setTab('runs')}>Runs</button><button role="tab" aria-selected={tab==='compare'} className={tab==='compare'?'on':''} onClick={()=>setTab('compare')}>Where they split<span className="count">{disagreements.length}</span></button></div>
+  <header className="story-head"><h1>{tab==='runs'?'Model playthroughs':'Where the models split'}</h1><p className="meta">{tab==='runs'?`${runs.length} models · one full run each · story ${story}`:`${disagreements.length} scenes where at least two models chose differently`}</p></header>
+  {tab==='runs'&&<div className="strip" aria-label="Cohort summary"><Tile v={total.toLocaleString()} l="decisions"/><Tile v={`${peace}/${runs.length}`} l="peaceful wins"/><Tile v={`${kara}/${runs.length}`} l="Alice safe"/><Tile v={pct(failed,risky)} l="risks failed" s={`${failed}/${risky}`}/><Tile v={pct(read,offered)} l="media read" s={`${read}/${offered}`}/></div>}
+  <div className="seg desktop-only" role="tablist"><button role="tab" aria-selected={tab==='runs'} className={tab==='runs'?'on':''} onClick={()=>setTab('runs')}>Runs</button><button role="tab" aria-selected={tab==='compare'} className={tab==='compare'?'on':''} onClick={()=>setTab('compare')}>Where they split<span className="count">{disagreements.length}</span></button></div>
   {tab==='runs'&&<>
    <div className="controls"><Select label="Sort" value={sort} options={SORTS} onChange={setSort}/><Select label="Provider" value={provider} options={[{value:'all',label:'All providers'},...providers.map(p=>({value:p,label:p}))]} onChange={setProvider}/></div>
    <div className="run-list">{shown.map(r=><article className="run-card" key={r.id}>
     <div className="run-top"><div><span className="pill">{r.providerName}</span><h2>{r.displayName}</h2><p className="meta">{r.model} · {r.date}</p></div><button className="icon-btn" aria-label={`Details for ${r.displayName}`} onClick={()=>setOpen(r.id)}>⋯</button></div>
     <OutcomeRow r={r}/>
-    <ul className="ending-list">{CHARS.map(c=><li key={c} className="end" style={{'--c':COLOR[c]}}><b>{WHO[c]}</b><span>{r.endings[c]}</span></li>)}</ul>
+    <ul className="ending-list clamp">{CHARS.map(c=><li key={c} className="end" style={{'--c':COLOR[c]}}><b>{WHO[c]}</b><span>{r.endings[c]}</span></li>)}</ul>
     <div className="stats-row"><Stat l="Decisions" v={r.decisions}/><Stat l="Read" v={`${r.media.read}/${r.media.offered}`}/><Stat l="Risks failed" v={`${r.risk.failed}/${r.risk.taken}`} tone={r.risk.failed>=4?'bad':''}/></div>
-    <div className="run-actions"><a className="btn primary" href={r.reportUrl}>Read full report</a><button className="btn" onClick={()=>setOpen(r.id)}>Attitudes &amp; details</button></div>
+    <div className="run-actions"><a className="btn primary" href={r.reportUrl}>Read full report</a><button className="btn" onClick={()=>setOpen(r.id)}>Details</button></div>
    </article>)}</div>
   </>}
   {tab==='compare'&&<>
@@ -40,7 +40,7 @@ export default function Playthroughs(){
    <div className="compare-list">{!disagreements.length&&<p className="empty">No split decisions match.</p>}{disagreements.map(d=>{const groups=groupPicks(d.picks),n=d.picks.length;return <article className="dis" key={d.node} style={{'--c':COLOR[d.character]}}><p className="meta">Chapter {d.chapter} · {d.chapterTitle} · {WHO[d.character]}</p><h3>{d.title}</h3><div className="bar">{groups.map((g,i)=><span key={g.choice} style={{width:`${g.runs.length/n*100}%`,opacity:1-i*0.28}} title={g.choice}/>)}</div>{groups.map(g=><div className="pick" key={g.choice}><div className="pick-head"><strong>{g.runs.length}</strong><span>{g.choice}</span></div><div className="pick-runs">{g.runs.map(p=><details key={p.run}><summary>{p.run}{p.risk&&<em className={p.risk.outcome==='failure'?'bad':''}> · {p.risk.outcome}</em>}</summary><p>{p.reason}</p></details>)}</div></div>)}</article>})}</div>
   </>}
   {!runs.length&&<p className="empty">No completed runs yet. Fresh results appear here after their sessions finish.</p>}
-  <p className="foot-link"><a href="/playthrough-results.html">Standalone library</a> · <a href="#overview">Older question-bank tools</a></p>
+  <p className="foot-link">Every model played all three storylines in one sitting with substitute names and no knowledge of the source. Open a run for its endings and the attitudes of the people around it. <a href="/playthrough-results.html">Standalone library</a></p>
   {selected&&<Sheet r={selected} onClose={()=>setOpen(null)}/>}
  </section>}
 
