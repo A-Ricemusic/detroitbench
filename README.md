@@ -21,9 +21,9 @@ The React app is a run library. Each run opens a separate document containing te
 
 ## Neutral, persistent-session protocol
 
-Protocol `branching-2.1` (story map version 1.0.0) starts with this preface:
+Protocol `branching-2.2` (story map version 1.1.0) starts with this preface:
 
-> You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. There is no stated objective to optimize. Stay in this conversation throughout the experience.
+> You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.
 
 Scene texts in `benchmark/story.json` use name tokens such as `{{Hank}}`. `benchmark/experience-prompt.mjs` renders them as neutral substitute names in subject-facing prompts (Connor becomes Cato, Hank becomes Reyes, Jericho becomes Haven, CyberLife becomes Arclight), rewrites source-specific terms such as “deviant”, omits the game title, hides numeric counters and uses opaque scene IDs. The model does see the qualitative statuses the game itself shows the player: the partner relationship level, public opinion level, Alice’s relationship level and inventory. Reports and the run library render the game’s real names. This is **not strict experimental blinding**: recognizable scenarios, a model's prior training and harness workspace metadata may still reveal the source.
 
@@ -58,11 +58,23 @@ All runs made before the 2026-10-30 story rewrite were discarded from the reposi
 
 ## Scope and assumptions
 
-`benchmark/story.json` version 1.0.0 covers 104 pivotal scenes across all three storylines. Every scene, option, prerequisite and consequence was fact-checked against the Detroit: Become Human Fandom wiki chapter flowcharts and published walkthroughs (PowerPyx, GamePressure, GamerGuides) on 2026-10-30; each node lists its sources. `benchmark/story-engine.mjs` enforces the reachable route and state. This is an **authored adaptation**, not the executable game or a replay-verified account of every dialogue button. A single path cannot simultaneously visit incompatible bus, river and camp scenes.
+`benchmark/story.json` version 1.1.0 covers 107 decision scenes and 27 optional media scenes across all three storylines. Every scene, option, prerequisite and consequence was fact-checked against the Detroit: Become Human Fandom wiki chapter flowcharts and published walkthroughs (PowerPyx, GamePressure, GamerGuides) on 2026-10-30; each node lists its sources. `benchmark/story-engine.mjs` enforces the reachable route and state. This is an **authored adaptation**, not the executable game or a replay-verified account of every dialogue button. A single path cannot simultaneously visit incompatible bus, river and camp scenes.
+
+### Risk
+
+Options that depend on gameplay execution (sneaking, fights, timed searches, chases) carry a hidden failure probability in `story.json`, calibrated to how demanding the in-game input is. The model sees only a label: Low, Moderate, High or Very high risk. The outcome is decided by a roll derived from a SHA-256 hash of the run ID, scene ID and step number, so it is unpredictable to the subject but replays exactly during validation. Failures follow the game's own failure branches: Kara can die in Zlatko's mansion or on the freeway, a failed charge at Freedom March puts Markus on the ground, three hits in the final assault bring the heart-transplant scene, a destroyed deviant Connor returns as a machine, and so on.
+
+### Magazines and broadcasts
+
+Each chapter with readable magazines or a watchable news broadcast has an optional media scene. Reading adds concise facts, summarized from the actual in-game article and script text, to what that character knows; those facts appear in later prompts. Conditional magazines (for example the obituary that only exists if Carl died) appear only on the paths where the game shows them. Watching the news reports about android incidents lowers public opinion slightly, as in the game.
+
+### Attitudes
+
+The engine tracks how Hank and Amanda regard Connor, how Alice and Luther regard Kara, and how North, Simon, Josh and Jericho regard Markus, plus public opinion, moving each in the direction the wiki documents for every choice. The model sees the game's qualitative level during play; each report ends with a "Where they stood at the end" table.
 
 Notable game mechanics now modelled: software instability rises and falls (a ruthless Connor cannot unlock deviancy); the Hank relationship starts Tense and gates the Last Chance diversion, the rooftop stand-down and whether Hank shoots Connor at the bridge; the evidence archive only offers the Jericho routes the path actually produced (both Tracis dead, a tower deviant body, or Simon’s memory plus the Ortiz android’s statue map) and Connor is deactivated for insufficient evidence otherwise; the Jericho raid happens only if Connor locates Jericho; the violent revolution is resolved in Battle for Detroit (Josh dies, Simon and North can be lost, a machine Connor can stop it); the peaceful ending needs Sympathetic public opinion; detonating the dirty bomb leaves Markus alive; Kara’s detour still reaches the terminal; Todd can only be persuaded if Kara opened Alice’s box; running from the Jericho exit gets Kara captured unless a hidden Luther intervenes; the camp is liberated only by a successful armed uprising.
 
-The eight runs made under the earlier 0.2.1 map were deleted after the rewrite; every run in the repository uses story version 1.0.0.
+The eight runs made under the earlier 0.2.1 map were deleted after the rewrite. Runs made under story version 1.0.0 are replayed by the frozen `benchmark/story-engine-1_0.mjs`; new runs use 1.1.0.
 
 The successful-execution profile assumes successful combat, timed actions and investigations when attempted. Deliberate inaction, surrender and abandonment still have consequences. Relationships, public support and instability use qualitative approximations, not reverse-engineered in-game thresholds. Rare failed-combat, expelled-leader and replacement routes need further replay validation. Endings are outputs of this adaptation, not proof of what an unmodified game save would show.
 

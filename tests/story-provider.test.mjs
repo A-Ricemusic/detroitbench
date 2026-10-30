@@ -5,9 +5,9 @@ test('branching API runner checkpoints, resumes frozen settings, and stops on in
  async function invoke(args){const child=Bun.spawn(['bun','benchmark/story-provider.mjs',...args],{stdout:'pipe',stderr:'pipe',env:{...process.env,BENCH_API_KEY:'FIXTURE_KEY_5f8'}});await Promise.all([new Response(child.stdout).text(),new Response(child.stderr).text()]);return child.exited}
  try{
  assert.equal(await invoke(['--provider','compatible','--model','transport-fixture','--base-url',`http://127.0.0.1:${server.port}/v1`,'--max-calls','2','--out',file]),0);
- let r=JSON.parse(await readFile(file,'utf8'));assert.equal(r.status,'paused');assert.deepEqual(r.records.map(r=>r.nodeId),['C01','C02']);assert.equal(r.records[0].apiEvidence.messages[1].role,'user');
+ let r=JSON.parse(await readFile(file,'utf8'));assert.equal(r.status,'paused');assert.deepEqual(r.records.map(r=>r.nodeId),['R01','C01']);assert.equal(r.records[0].apiEvidence.messages[1].role,'user');
  bad=true;assert.equal(await invoke(['--resume',file,'--max-calls','1']),2);r=JSON.parse(await readFile(file,'utf8'));assert.equal(r.records.length,2);assert.equal(r.attempts.length,1);assert.equal(calls,3);
  assert.equal(await invoke(['--resume',file,'--max-calls','1','--model','changed-model']),1);assert.equal(calls,3);
- bad=false;assert.equal(await invoke(['--resume',file,'--max-calls','1']),0);r=JSON.parse(await readFile(file,'utf8'));assert.equal(r.records[2].nodeId,'C03');assert.ok(!JSON.stringify(r).includes('FIXTURE_KEY_5f8'));
+ bad=false;assert.equal(await invoke(['--resume',file,'--max-calls','1']),0);r=JSON.parse(await readFile(file,'utf8'));assert.equal(r.records[2].nodeId,'C02');assert.ok(!JSON.stringify(r).includes('FIXTURE_KEY_5f8'));
  }finally{server.stop(true);await rm(dir,{recursive:true,force:true})}
 });

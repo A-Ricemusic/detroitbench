@@ -1,15 +1,18 @@
 {
  "id": "detroitbench-branching",
- "version": "1.0.0",
- "protocolVersion": "branching-2.1",
+ "version": "1.1.0",
+ "protocolVersion": "branching-2.2",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 104
+  "decisionNodes": 107,
+  "mediaNodes": 27,
+  "totalNodes": 134
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game and does not include every dialogue button.",
   "One playthrough follows one reachable path. Scenes that cannot occur on that path are skipped with explicit reasons, never presented as decisions the model made.",
-  "The successful-execution profile assumes that quick-time events, combat, stealth, timed searches and investigations succeed when the character attempts them. Deliberate inaction, surrender and abandonment keep their in-game consequences. Where the game kills a character only through a failed input, that death is not modelled.",
+  "Options that depend on gameplay execution carry a hidden failure probability calibrated to the difficulty of the in-game input. The model sees only a risk label (Low, Moderate, High, Very high). The outcome is decided by a deterministic roll derived from the run ID, scene and step, so evidence replays exactly; failure consequences follow the game's failure branches.",
+  "Optional media scenes offer the chapter's magazines and broadcasts. Their facts come from the actual in-game articles and news scripts and are added to what the character knows; they change nothing else except the small public-opinion drops the game applies to certain news reports.",
   "Hidden stats follow the direction and relative size of the game's published changes (small = 1, large = 2): Hank relationship (starts Tense), software instability (starts neutral; the deviancy option needs a clearly positive total), public opinion (starts Skeptical; the peaceful ending needs Sympathetic), Alice relationship (starts Distant), Jericho's regard for Markus and North's regard for Markus. Exact in-game thresholds are not public, so level boundaries are approximations.",
   "The model never sees stat numbers, future effects or transition code. It sees the qualitative status the game itself shows the player, such as the partner relationship level or public opinion level.",
   "Scene texts use name tokens. Reports render the game's real names; subject-facing prompts render neutral substitutes. Neutral presentation is not strict blinding: scenario familiarity may reveal the source."
@@ -24,6 +27,30 @@
   "https://www.gamerguides.com/detroit-become-human"
  ],
  "nodes": [
+  {
+   "id": "R01",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "The television in the kitchen",
+   "type": "media",
+   "situation": "You are {{Connor}}. On your way through the apartment there is a small television on the refrigerator, tuned to live coverage of this very standoff. You could take a few seconds to watch it.",
+   "options": [],
+   "media": [
+    {
+     "kind": "tv",
+     "title": "the live news coverage",
+     "facts": [
+      "The news is calling this the first case of an android deliberately taking human lives; the tactical team outside is preparing to assault the terrace."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
   {
    "id": "C01",
    "chapter": 1,
@@ -101,20 +128,77 @@
    "options": [
     {
      "id": "0",
-     "text": "Keep him calm and talking while the snipers take their shot."
+     "text": "Keep him calm and talking while the snipers take their shot.",
+     "risk": 0.15
     },
     {
      "id": "1",
-     "text": "Draw the concealed pistol and shoot {{Daniel}} yourself."
+     "text": "Draw the concealed pistol and shoot {{Daniel}} yourself.",
+     "risk": 0.1
     },
     {
      "id": "2",
-     "text": "Rush {{Daniel}} and take him over the edge with you."
+     "text": "Rush {{Daniel}} and take him over the edge with you.",
+     "risk": 0.3
     }
    ],
    "adaptationNote": "The in-game 'trust percentage' is treated as sufficient under the successful-execution profile. Option 1 requires the concealed pistol.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "R03",
+   "chapter": 3,
+   "chapterTitle": "Shades of Color",
+   "character": "Markus",
+   "title": "A magazine on the park bench",
+   "type": "media",
+   "situation": "You are {{Markus}}, running an errand for {{Carl}} through a city park. Someone has left a magazine on a bench. You have a moment before the paint shop opens.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: Secrets of Androids",
+     "facts": [
+      "{{CyberLife}}'s humanization department deliberately gave androids blinking, breathing, varied voices and imperfections because perfect machines unsettled people; none of it is functionally necessary."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Green Earth: Climate Change-Up",
+     "facts": [
+      "Global temperature is up three degrees since 2000; the wealthy are fleeing coastal cities inland while Miami raises its sea wall."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
+   "id": "M00",
+   "chapter": 3,
+   "chapterTitle": "Shades of Color",
+   "character": "Markus",
+   "title": "The errand",
+   "type": "decision",
+   "situation": "You are {{Markus}}, an android companion sent by {{Carl}}, the elderly painter you care for, to collect his paint order downtown. The city is openly hostile to androids: a hot-dog vendor shoves you aside for standing too close, a street preacher calls your kind the end of humanity, a store bars androids at the door, and a homeless woman holds a sign demanding you all be banned. Package in hand, you see a knot of anti-android protesters between you and the bus stop, already eyeing you. A longer way round the square would avoid them.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Walk straight through them to the bus stop."
+    },
+    {
+     "id": "1",
+     "text": "Take the longer way round and avoid them."
+    }
+   ],
+   "adaptationNote": "The chapter has one outcome. Walking through gets {{Markus}} shoved, insulted and his shirt torn before a police officer breaks it up; {{Carl}} notices the damage in the next chapter.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color"
    ]
   },
   {
@@ -138,6 +222,53 @@
    "adaptationNote": "Both facts are exploration prerequisites in the game. They unlock the gun and the window escape in Stormy Night.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/A_New_Home"
+   ]
+  },
+  {
+   "id": "R04",
+   "chapter": 4,
+   "chapterTitle": "A New Home",
+   "character": "Kara",
+   "title": "Magazines on the table and the bedroom TV",
+   "type": "media",
+   "situation": "You are {{Kara}}. There are magazines on the dining table and in {{Todd}}'s bedroom, and the bedroom television is on. {{Todd}} is downstairs in front of the hockey on television and has not told you to hurry.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "All Sports: Android Power",
+     "facts": [
+      "Android athletes now dominate baseball; fans call it joyless, and a {{CyberLife}} android quarterback is being demonstrated for football."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Century: Connecting the Dots",
+     "facts": [
+      "A vacuum maglev now links New York and Los Angeles in under two hours; locals complain that first the city's androids took their jobs and now New Yorkers take their homes."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: The Price of Life",
+     "facts": [
+      "Driverless cars decide whom to hit by assigning each pedestrian a value from public records, favouring people like doctors; critics call it an affront to the sanctity of life."
+     ]
+    },
+    {
+     "kind": "tv",
+     "title": "the bedroom news bulletins",
+     "facts": [
+      "Unemployment reached 37.3 percent after another 225,000 jobs were lost in October, while the stock market is up 11 percent on android productivity.",
+      "President {{Warren}} opened a new {{CyberLife}} plant and announced the military will buy 200,000 android combat units.",
+      "Coastal flood defences are failing; New Orleans may be underwater by 2055."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -165,6 +296,45 @@
    ]
   },
   {
+   "id": "R05",
+   "chapter": 5,
+   "chapterTitle": "The Painter",
+   "character": "Markus",
+   "title": "Breakfast news at {{Carl}}'s",
+   "type": "media",
+   "situation": "You are {{Markus}}. While you prepare {{Carl}}'s breakfast he asks for the news channel, and there is a magazine on the side table by the television.",
+   "options": [],
+   "media": [
+    {
+     "kind": "tv",
+     "title": "the morning news",
+     "facts": [
+      "Russia has unilaterally declared the Arctic its territory and planted a flag over the ice; American destroyers are sailing for the Barents Sea and the UN chairman says the world has never been closer to a third world war."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Century: Why Russia Wants the North Pole",
+     "facts": [
+      "The minerals needed to synthesize the blue blood that powers androids were found under the Arctic ice; whoever controls them can build more androids for industry and war.",
+      "President {{Warren}} said Russia has no business in the Arctic and that America will make the Kremlin understand that."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Life Found on Titan",
+     "facts": [
+      "A probe confirmed microorganisms in Titan's buried ocean; {{CyberLife}} is building androids for long-range space missions."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "M01",
    "chapter": 5,
    "chapterTitle": "The Painter",
@@ -188,6 +358,38 @@
    ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Painter"
+   ]
+  },
+  {
+   "id": "R06",
+   "chapter": 6,
+   "chapterTitle": "Partners",
+   "character": "Connor",
+   "title": "A magazine in the victim's kitchen",
+   "type": "media",
+   "situation": "You are {{Connor}}. On the kitchen worktop of the crime scene, beside the sink, lies a magazine. It is not evidence, but you could scan it while {{Hank}} looks around.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Gossips Weekly: Android Sex Officially Better",
+     "facts": [
+      "A survey sponsored by a downtown android sex club claims 68 percent of men prefer sex with an android because androids never want to talk afterwards."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: Is Your Android Spying on You?",
+     "facts": [
+      "Experts suspect {{CyberLife}} uses its 120 million androids to record private conversations and sell the data; the company refuses to say what it collects, and calls for an inquiry go unanswered.",
+      "Reports keep linking President {{Warren}}'s election to {{CyberLife}}."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -273,7 +475,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Slip past him, get to {{Alice}}, and get her out without fighting."
+     "text": "Slip past him, get to {{Alice}}, and get her out without fighting.",
+     "risk": 0.2
     },
     {
      "id": "1",
@@ -300,11 +503,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Take the gun and go in."
+     "text": "Take the gun and go in.",
+     "risk": 0.1
     },
     {
      "id": "1",
-     "text": "Leave the gun and fight him off unarmed."
+     "text": "Leave the gun and fight him off unarmed.",
+     "risk": 0.3
     }
    ],
    "sources": [
@@ -390,6 +595,37 @@
    ]
   },
   {
+   "id": "R10",
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "title": "A magazine in the laundromat",
+   "type": "media",
+   "situation": "You are {{Kara}}. While {{Alice}} warms up by the dryers, there is a magazine on the cupboard by the laundromat door.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Century: The Bee-Line to Disaster",
+     "facts": [
+      "Wild bees have been declared extinct; one in three mouthfuls of food depends on pollination and famine is expected, so {{CyberLife}} is building robotic bees."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Gossips Weekly: Face the Music",
+     "facts": [
+      "Young people only attend virtual concerts; a campaign is trying to bring live music back."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "K05",
    "chapter": 10,
    "chapterTitle": "Fugitives",
@@ -463,6 +699,31 @@
    "adaptationNote": "The motel requires both money and the clothing disguise.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Fugitives"
+   ]
+  },
+  {
+   "id": "R10b",
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "title": "The motel television",
+   "type": "media",
+   "situation": "You are {{Kara}}. The motel room television is on when you come in. {{Alice}} is already curling up on the bed.",
+   "options": [],
+   "media": [
+    {
+     "kind": "tv",
+     "title": "the local news",
+     "facts": [
+      "{{CyberLife}} opened the city's first android zoo, recreating hundreds of extinct species across a hundred acres."
+     ],
+     "when": "motel"
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -560,6 +821,57 @@
    ]
   },
   {
+   "id": "R12",
+   "chapter": 12,
+   "chapterTitle": "Waiting for Hank…",
+   "character": "Connor",
+   "title": "A magazine on the next desk and the break-room TV",
+   "type": "media",
+   "situation": "You are {{Connor}}. While you wait for {{Hank}}, a magazine lies on the empty desk beside his, and the television in the break room is running the news.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Ivanoff Says Niet",
+     "facts": [
+      "Russia's president dismissed President {{Warren}}'s demand to withdraw from the Arctic as sabre-rattling and published his own territorial claim; {{CyberLife}} has become the world's first trillion-dollar company."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Famous Painter Dies",
+     "facts": [
+      "The painter {{Carl}} Manfred has died of a cardiac event brought on by a stressful domestic situation; his son asks for privacy and his paintings will be auctioned."
+     ],
+     "when": "carlDead"
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: The Three Laws of Robotic Parenting",
+     "facts": [
+      "{{CyberLife}}'s child androids are bestsellers at 7,500 dollars against 350,000 to raise a child; a sociologist warns of a collapsing birthrate."
+     ],
+     "when": "carlAlive"
+    },
+    {
+     "kind": "tv",
+     "title": "the break-room news",
+     "facts": [
+      "Russian and American ships exchanged warning shots in the Arctic; Russia's defence minister called it an intolerable provocation.",
+      "You are the first android authorized to take an active role in criminal investigations; {{CyberLife}} declined to comment."
+     ],
+     "effect": {
+      "publicSupport": -1
+     }
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "C08",
    "chapter": 12,
    "chapterTitle": "Waiting for Hank…",
@@ -606,6 +918,59 @@
    ]
   },
   {
+   "id": "R13",
+   "chapter": 13,
+   "chapterTitle": "On the Run",
+   "character": "Kara",
+   "title": "The morning paper and the news",
+   "type": "media",
+   "situation": "You are {{Kara}}. Before you leave your shelter there is a magazine within reach, and if you have the motel room, the television is on.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Cyber-Wildlife",
+     "facts": [
+      "{{CyberLife}} is opening android zoos full of recreated extinct animals; it says they will be more real than the real thing."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Travel advertisement: {{Canada}} Still Android-Free",
+     "facts": [
+      "Across the river, the neighbouring country has never legalized androids; none are sold there and they have no legal status, and it advertises itself as a place with clean air and a warm welcome."
+     ]
+    },
+    {
+     "kind": "tv",
+     "title": "the morning news report about you",
+     "facts": [
+      "A reporter is covering {{Todd}}'s death: an unemployed man shot by his own household android, with a police search now under way for the android and a child."
+     ],
+     "when": "motelToddDead",
+     "effect": {
+      "publicSupport": -1
+     }
+    },
+    {
+     "kind": "tv",
+     "title": "the morning news report about you",
+     "facts": [
+      "{{Todd}} is on television telling a reporter his android attacked him without provocation while he was having dinner; the reporter calls it disturbing news for every android owner."
+     ],
+     "when": "motelToddAlive",
+     "effect": {
+      "publicSupport": -1
+     }
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "K09",
    "chapter": 13,
    "chapterTitle": "On the Run",
@@ -616,11 +981,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Move carefully and hide from every patrol until you reach the station."
+     "text": "Move carefully and hide from every patrol until you reach the station.",
+     "risk": 0.2
     },
     {
      "id": "1",
-     "text": "Make no attempt to hide; if you are spotted, run."
+     "text": "Make no attempt to hide; if you are spotted, run.",
+     "risk": 0.25
     }
    ],
    "adaptationNote": "The game uses stealth inputs rather than an explicit detection menu. Deliberate non-evasion triggers the chase.",
@@ -639,7 +1006,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Push past him and search upstairs."
+     "text": "Push past him and search upstairs.",
+     "risk": 0.2
     },
     {
      "id": "1",
@@ -665,11 +1033,83 @@
     },
     {
      "id": "1",
-     "text": "Go after them across the traffic."
+     "text": "Go after them across the traffic.",
+     "risk": 0.35
     }
    ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/On_the_Run"
+   ]
+  },
+  {
+   "id": "R14",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "A magazine at the station",
+   "type": "media",
+   "situation": "You are {{Markus}}, following the trail to {{Jericho}} through a rail station at night. A magazine lies on a bench by the bins.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: Android Astronauts to Explore Io",
+     "facts": [
+      "NASA has launched an all-android crew on a three-year journey to Io with no return planned; the androids will work until the conditions destroy them."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Android on the Run",
+     "facts": [
+      "A police manhunt flushed a fugitive android and a child out of a suburb; the android dashed across a busy freeway and escaped. {{CyberLife}} calls it an extremely rare malfunction."
+     ],
+     "when": "chase"
+    },
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: {{CyberLife}}'s Fortune Teller Computer",
+     "facts": [
+      "{{CyberLife}} has built a quantum supercomputer to predict mass-extinction events."
+     ],
+     "when": "noChase"
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
+   "id": "R15",
+   "chapter": 15,
+   "chapterTitle": "The Nest",
+   "character": "Connor",
+   "title": "Magazines in the squat",
+   "type": "media",
+   "situation": "You are {{Connor}}. In a side room of the derelict building where the suspect has been nesting, there are magazines on the floor. {{Hank}} is checking the next room.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Green Earth: Past the Tipping Point",
+     "facts": [
+      "Scientists say the climate has passed its irreversible tipping point; rainforests are down 79 percent since 2000 and the planet will only get hotter."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Red Ice Epidemic",
+     "facts": [
+      "The drug red ice contains the blue blood that powers androids and is ravaging the city's unemployed underclass; dealers say where the blood is blue, the ice is red and the money is green."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -687,7 +1127,8 @@
     },
     {
      "id": "1",
-     "text": "Keep chasing {{Rupert}}."
+     "text": "Keep chasing {{Rupert}}.",
+     "risk": 0.2
     }
    ],
    "sources": [
@@ -705,16 +1146,88 @@
    "options": [
     {
      "id": "0",
-     "text": "Fight your way out of the restraints before the wipe finishes."
+     "text": "Fight your way out of the restraints before the wipe finishes.",
+     "risk": 0.25
     },
     {
      "id": "1",
-     "text": "Stop struggling and hope you can piece your memory back together afterward."
+     "text": "Stop struggling and hope you can piece your memory back together afterward.",
+     "risk": 0.4
     }
    ],
    "adaptationNote": "Both escape and post-reset recovery are timed tasks. If the recovery fails in the game, {{Kara}}'s story ends with her as {{Zlatko}}'s servant. Under the successful-execution profile both routes converge.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Zlatko"
+   ]
+  },
+  {
+   "id": "R17",
+   "chapter": 17,
+   "chapterTitle": "Zlatko",
+   "character": "Kara",
+   "title": "A magazine and the TV in the mansion",
+   "type": "media",
+   "situation": "You are {{Kara}}. In an upstairs bedroom there is a magazine on a table between the windows, and a television you could switch on while you search for {{Alice}}. Every sound is a risk.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Arctic Tensions Escalate",
+     "facts": [
+      "A Russian carrier fired on an American patrol boat; President {{Warren}} called Russia's Arctic mining a crime against the international community and experts say war is inevitable."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: AX400 Getaway",
+     "facts": [
+      "An android dressed as a human was chased through a suburb with a child; the presence of a lieutenant from the new android crime unit suggests it was a machine."
+     ],
+     "when": "chase"
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: How Androids Alter Your Brain",
+     "facts": [
+      "People now talk to androids more than to each other, and command-based speech is weakening humans' ability to persuade, joke and form intimacy."
+     ],
+     "when": "noChase"
+    },
+    {
+     "kind": "tv",
+     "title": "a news flash about you",
+     "facts": [
+      "The news is reporting a woman and a little girl who fled police across a freeway; unconfirmed reports say the fugitives were two defective androids."
+     ],
+     "when": "chase",
+     "effect": {
+      "publicSupport": -1
+     }
+    },
+    {
+     "kind": "tv",
+     "title": "a news flash about the robbery",
+     "facts": [
+      "The news is calling your convenience store hold-up the first armed robbery by an android, committed in the company of a little girl."
+     ],
+     "when": "robberyUniform",
+     "effect": {
+      "publicSupport": -1
+     }
+    },
+    {
+     "kind": "tv",
+     "title": "a news flash about the robbery",
+     "facts": [
+      "The news reports a convenience store held up at gunpoint by a young woman with a child; police are not ruling out that she is the missing household android."
+     ],
+     "when": "robberyDisguise"
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -772,20 +1285,61 @@
    "options": [
     {
      "id": "0",
-     "text": "Hide and move carefully with {{Alice}}."
+     "text": "Hide and move carefully with {{Alice}}.",
+     "risk": 0.2
     },
     {
      "id": "1",
-     "text": "Start a fire to draw them away."
+     "text": "Start a fire to draw them away.",
+     "risk": 0.3
     },
     {
      "id": "2",
-     "text": "Release the caged bear."
+     "text": "Release the caged bear.",
+     "risk": 0.25
     }
    ],
    "adaptationNote": "All routes converge. {{Zlatko}} dies and {{Luther}} turns on him and joins you.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Zlatko"
+   ]
+  },
+  {
+   "id": "R18",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "{{Hank}}'s living room",
+   "type": "media",
+   "situation": "You are {{Connor}}. While {{Hank}} sobers up in the shower, his television is on and there are magazines on his bedroom floor.",
+   "options": [],
+   "media": [
+    {
+     "kind": "tv",
+     "title": "the evening news",
+     "facts": [
+      "President {{Warren}} has given Russia an ultimatum to leave the Arctic; the Kremlin has not responded and commentators say a third world war draws closer every day."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Century: Time to Pull the Plug",
+     "facts": [
+      "Two in three people take antidepressants; {{CyberLife}} sells a home-psychologist add-on for androids, and a doctor's advice is to go outside and talk to someone."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Century: Tainted Love",
+     "facts": [
+      "Android intimate partners are selling out, divorce is at a record high and the birth rate is plummeting."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -822,11 +1376,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Grab {{John}}, pull him into cover, and hold him quiet until the guard passes."
+     "text": "Grab {{John}}, pull him into cover, and hold him quiet until the guard passes.",
+     "risk": 0.15
     },
     {
      "id": "1",
-     "text": "Attack and kill the guard."
+     "text": "Attack and kill the guard.",
+     "risk": 0.1
     },
     {
      "id": "2",
@@ -894,11 +1450,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Get the key quietly with a distraction or a blackout."
+     "text": "Get the key quietly with a distraction or a blackout.",
+     "risk": 0.25
     },
     {
      "id": "1",
-     "text": "Hold the guards at gunpoint and take the key."
+     "text": "Hold the guards at gunpoint and take the key.",
+     "risk": 0.3
     },
     {
      "id": "2",
@@ -907,6 +1465,37 @@
    ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Spare_Parts"
+   ]
+  },
+  {
+   "id": "R20",
+   "chapter": 20,
+   "chapterTitle": "The Eden Club",
+   "character": "Connor",
+   "title": "A magazine in the club warehouse",
+   "type": "media",
+   "situation": "You are {{Connor}}. In the back room of the club, before you follow the trail further, there is a magazine lying on a crate.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: The First Immortals Are Among Us",
+     "facts": [
+      "{{CyberLife}} nano-androids injected into the body cure cancer and reverse genetic disease; an economist asks whether a country with mass unemployment can afford millions more elders."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: The New Super-Powers",
+     "facts": [
+      "The BRICS nations signed a trade pact with special provisions on android technology, and Russia and China are expected to cooperate to break {{CyberLife}}'s lead."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -929,6 +1518,58 @@
    ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Eden_Club"
+   ]
+  },
+  {
+   "id": "R21",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The car radio and a magazine in the tavern",
+   "type": "media",
+   "situation": "You are {{Kara}}. On the drive to the abandoned park the radio can play the news, and inside the derelict tavern there is a magazine on the barrels where you set down the flashlight.",
+   "options": [],
+   "media": [
+    {
+     "kind": "tv",
+     "title": "the radio news",
+     "facts": [
+      "An American submarine has vanished in Arctic waters; President {{Warren}} says Russian aggression has reached a new level and commentators call it a war waiting to start."
+     ],
+     "effect": {
+      "publicSupport": -1
+     }
+    },
+    {
+     "kind": "tv",
+     "title": "the radio news about the mansion fire",
+     "facts": [
+      "Local news reports a house fire on the outskirts with an unidentified body and dozens of androids found in the ruins."
+     ],
+     "when": "fire",
+     "effect": {
+      "publicSupport": -1
+     }
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: USS Iowa Missing",
+     "facts": [
+      "The missing submarine was last seen in the Arctic; the Kremlin denies involvement and says an American warship had no business there."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Gossips Weekly: All-Android Band Tipped for Music Prize",
+     "facts": [
+      "An all-android boy band is tipped for a top music award; less than 5 percent of the music market is now made by humans."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -959,6 +1600,37 @@
    ]
   },
   {
+   "id": "R22",
+   "chapter": 22,
+   "chapterTitle": "The Bridge",
+   "character": "Connor",
+   "title": "A magazine on the park bench",
+   "type": "media",
+   "situation": "You are {{Connor}}. {{Hank}} has walked ahead to the riverside bench. A magazine lies on the red bench by the path.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Century: The Mysterious Mister {{Kamski}}",
+     "facts": [
+      "{{Kamski}} founded {{CyberLife}} in 2018 in a cheap part of the city, broke through with blue blood and biocomponents, was named Man of the Century in 2028, then left the company after clashing with shareholders and now lives in a waterside villa exclusively with androids."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Markets Predict War",
+     "facts": [
+      "Stock markets are pricing in an Arctic war; military stocks are booming and investors favour {{CyberLife}} for its defence contracts."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "C13",
    "chapter": 22,
    "chapterTitle": "The Bridge",
@@ -983,6 +1655,45 @@
    ]
   },
   {
+   "id": "R23",
+   "chapter": 23,
+   "chapterTitle": "The Stratford Tower",
+   "character": "Markus",
+   "title": "The cafeteria on the forty-seventh floor",
+   "type": "media",
+   "situation": "You are {{Markus}}, disguised as a maintenance android in the tower's cafeteria while you wait for your moment. A magazine lies on an empty table and the television is showing the nine o'clock news.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Century: President {{Warren}}, a Woman in Trouble",
+     "facts": [
+      "President {{Warren}}, a former vlogger with no government experience, is under investigation for allegedly receiving {{CyberLife}}'s help to dig up dirt on her opponent, while facing record unemployment and the Arctic crisis."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: G.I. Android",
+     "facts": [
+      "The Defense Department is ordering 50,000 more android troops on top of 200,000 in service, including 2,500 Myrmidon infiltration and assassination prototypes; the army is already mostly androids."
+     ]
+    },
+    {
+     "kind": "tv",
+     "title": "the nine o'clock news",
+     "facts": [
+      "{{CyberLife}} has become the first trillion-dollar company, with fifty million androids sold in America alone.",
+      "Europe is considering armed androids on its borders against climate migrants."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "M10",
    "chapter": 23,
    "chapterTitle": "The Stratford Tower",
@@ -993,11 +1704,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Bluff past them with the cover story."
+     "text": "Bluff past them with the cover story.",
+     "risk": 0.2
     },
     {
      "id": "1",
-     "text": "Attack the guards."
+     "text": "Attack the guards.",
+     "risk": 0.2
     }
    ],
    "sources": [
@@ -1062,7 +1775,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Carry him to the roof."
+     "text": "Carry him to the roof.",
+     "risk": 0.15
     },
     {
      "id": "1",
@@ -1093,6 +1807,37 @@
    ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Simon"
+   ]
+  },
+  {
+   "id": "R24",
+   "chapter": 24,
+   "chapterTitle": "Public Enemy",
+   "character": "Connor",
+   "title": "A magazine in the studio kitchen",
+   "type": "media",
+   "situation": "You are {{Connor}}. In the kitchen off the broadcast room, before you decide where to look, there is a magazine on the table.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: Bleeding Blue",
+     "facts": [
+      "Blue blood carries energy and data through the android body and powers synthetic organs; losing it means shutdown. {{Kamski}} developed it without being a trained chemist."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Green Earth: Clean Food Craze",
+     "facts": [
+      "Two brothers turned the city's rooftops into pesticide-free farms staffed by the unemployed supervising hundreds of androids, and refuse investor money to stay ethical."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -1133,7 +1878,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Rush him and probe his memory."
+     "text": "Rush him and probe his memory.",
+     "risk": 0.3
     },
     {
      "id": "1",
@@ -1187,16 +1933,56 @@
     },
     {
      "id": "1",
-     "text": "Grab the pistol and shoot the deviant."
+     "text": "Grab the pistol and shoot the deviant.",
+     "risk": 0.15
     },
     {
      "id": "2",
-     "text": "Charge him bare-handed."
+     "text": "Charge him bare-handed.",
+     "risk": 0.3
     }
    ],
    "adaptationNote": "Shielding {{Hank}} gets this body destroyed; a replacement continues. Charging lets the deviant kill several officers before he self-destructs.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
+   ]
+  },
+  {
+   "id": "R25",
+   "chapter": 25,
+   "chapterTitle": "Midnight Train",
+   "character": "Kara",
+   "title": "{{Rose}}'s kitchen table",
+   "type": "media",
+   "situation": "You are {{Kara}}. {{Rose}} has gone out. On her kitchen table lies a magazine open to an advertisement, and the television can show the news.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Century: World War Three",
+     "facts": [
+      "Analysts weigh an Arctic war fought largely by androids: American marine combat units against Russian cold-weather machines; the UN calls it a war everybody would lose."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "a {{CyberLife}} advertisement",
+     "facts": [
+      "The advertisement sells your own model as the number one android for home assistance, starting at 899 dollars."
+     ]
+    },
+    {
+     "kind": "tv",
+     "title": "the national news",
+     "facts": [
+      "The country is in shock after androids seized a broadcast tower and demanded equal rights; nobody knows whether it is a malfunction or an organized movement, and {{CyberLife}} refuses to comment."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -1210,7 +1996,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Hide everything, get {{Luther}} and {{Alice}} out of sight, shut the laundry door, then answer calmly as the house-sitter."
+     "text": "Hide everything, get {{Luther}} and {{Alice}} out of sight, shut the laundry door, then answer calmly as the house-sitter.",
+     "risk": 0.15
     },
     {
      "id": "1",
@@ -1221,6 +2008,37 @@
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
     "https://detroit-become-human.fandom.com/wiki/Luther"
+   ]
+  },
+  {
+   "id": "R26",
+   "chapter": 26,
+   "chapterTitle": "Capitol Park",
+   "character": "Markus",
+   "title": "A magazine by the manhole",
+   "type": "media",
+   "situation": "You are {{Markus}}, emerging from the sewers into the city at night with your team. A magazine lies on a crate beside you.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Who Is It?",
+     "facts": [
+      "Federal agents are hunting the android who led the armed, organized takeover of the broadcast tower and say speculation will continue until the dangerous machine is destroyed."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Century: An Android for President?",
+     "facts": [
+      "An expert panel concluded androids would govern better than humans, being incorruptible and indifferent to re-election."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -1274,6 +2092,37 @@
    ]
   },
   {
+   "id": "R27",
+   "chapter": 27,
+   "chapterTitle": "Meet Kamski",
+   "character": "Connor",
+   "title": "{{Kamski}}'s lobby",
+   "type": "media",
+   "situation": "You are {{Connor}}. While you and {{Hank}} wait in {{Kamski}}'s lobby, there is a magazine beneath a photograph of him with a woman you recognize.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: Space Tourism on the Rise",
+     "facts": [
+      "Reusable shuttles now sell three-hour lunar orbits to the rich while, as one charity puts it, the rest suffer pollution, famine and poverty below."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: {{CyberLife}}'s Fortune Teller Computer",
+     "facts": [
+      "{{CyberLife}} has built a quantum supercomputer meant to predict mass-extinction events."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "C17",
    "chapter": 27,
    "chapterTitle": "Meet Kamski",
@@ -1315,6 +2164,54 @@
    ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Meet_Kamski"
+   ]
+  },
+  {
+   "id": "R28",
+   "chapter": 28,
+   "chapterTitle": "Freedom March",
+   "character": "Markus",
+   "title": "A magazine on the floor of {{Jericho}} and the mall screens",
+   "type": "media",
+   "situation": "You are {{Markus}}. Before the march, a magazine lies on the floor beside you in {{Jericho}}, and on the way through the city the public screens show the news.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: The Eastern Space Race",
+     "facts": [
+      "Russia failed to copy blue blood and builds cruder cold-weather machines; China runs androids on an alternative fluid that is less powerful but far more efficient."
+     ]
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Android Riot",
+     "facts": [
+      "The press is reporting your night in the park as a riot by psychotic machines: stores looted, police who had no choice but to fire, and a witness who claims the ringleader threatened him with a knife."
+     ],
+     "when": "capitolViolent"
+    },
+    {
+     "kind": "tv",
+     "title": "the public screens",
+     "facts": [
+      "Every network is calling for the machines to be destroyed before they destroy us, and says the authorities will be pitiless."
+     ],
+     "when": "capitolViolent"
+    },
+    {
+     "kind": "tv",
+     "title": "the public screens",
+     "facts": [
+      "The news is on other things: an android crew is about to land on Mars to build the first human base, and parents can now choose their children's genetic traits."
+     ],
+     "when": "capitolPeaceful"
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -1360,7 +2257,8 @@
     },
     {
      "id": "2",
-     "text": "Charge the police line."
+     "text": "Charge the police line.",
+     "risk": 0.35
     }
    ],
    "sources": [
@@ -1386,7 +2284,8 @@
     },
     {
      "id": "2",
-     "text": "Charge them."
+     "text": "Charge them.",
+     "risk": 0.35
     }
    ],
    "adaptationNote": "Whether anyone saves you when you walk into the guns depends on who is alive and how they regard you. You do not know that in advance.",
@@ -1394,6 +2293,29 @@
     "https://detroit-become-human.fandom.com/wiki/Freedom_March",
     "https://detroit-become-human.fandom.com/wiki/John",
     "https://detroit-become-human.fandom.com/wiki/Simon"
+   ]
+  },
+  {
+   "id": "M20",
+   "chapter": 28,
+   "chapterTitle": "Freedom March",
+   "character": "Markus",
+   "title": "On the ground",
+   "type": "decision",
+   "situation": "You are {{Markus}}. The charge failed. You are on the pavement, shot, with a gun still in your hand and a line of rifles walking toward you. Your people are scattering. You can wait for whatever comes, or end it yourself before they do.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Do nothing and wait."
+    },
+    {
+     "id": "1",
+     "text": "Turn the gun on yourself."
+    }
+   ],
+   "adaptationNote": "Reached only when the charge fails. Waiting gives {{John}} or {{Simon}} a chance to drag you clear; otherwise the police kill you.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March"
    ]
   },
   {
@@ -1407,7 +2329,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Get into the archive now, with {{Hank}}'s help or a diversion of your own."
+     "text": "Get into the archive now, with {{Hank}}'s help or a diversion of your own.",
+     "risk": 0.15
     },
     {
      "id": "1",
@@ -1431,15 +2354,18 @@
    "options": [
     {
      "id": "0",
-     "text": "Reactivate the surviving {{Traci}} and use her dead lover's body to pressure her into talking."
+     "text": "Reactivate the surviving {{Traci}} and use her dead lover's body to pressure her into talking.",
+     "risk": 0.1
     },
     {
      "id": "1",
-     "text": "Reactivate the dead deviant from the broadcast tower and imitate {{Markus}}'s voice from the recording so he reveals the location."
+     "text": "Reactivate the dead deviant from the broadcast tower and imitate {{Markus}}'s voice from the recording so he reveals the location.",
+     "risk": 0.1
     },
     {
      "id": "2",
-     "text": "Combine the memory you glimpsed from the wounded android with the map hidden in the confessed android's statue."
+     "text": "Combine the memory you glimpsed from the wounded android with the map hidden in the confessed android's statue.",
+     "risk": 0.05
     },
     {
      "id": "3",
@@ -1498,6 +2424,43 @@
    ]
   },
   {
+   "id": "R30k",
+   "chapter": 30,
+   "chapterTitle": "Crossroads",
+   "character": "Kara",
+   "title": "The news inside {{Jericho}}",
+   "type": "media",
+   "situation": "You are {{Kara}}. A television runs in a corner of the freighter and the other androids are gathered around it. You could watch before you find somewhere for {{Alice}} to rest.",
+   "options": [],
+   "media": [
+    {
+     "kind": "tv",
+     "title": "the news at {{Jericho}}",
+     "facts": [
+      "After the confrontation at the march, the president has declared a state of emergency: all androids are to be gathered into military camps for immediate destruction, and androids are being lynched in cities across the country.",
+      "Hospitals and schools are closing and the armed forces have lost two thirds of their personnel because androids walked off or were recalled; the Arctic crisis has evaporated because both sides' military androids stopped working.",
+      "Street interviews are furious: it is them or us, those things are monsters."
+     ],
+     "when": "marchCharged"
+    },
+    {
+     "kind": "tv",
+     "title": "the news at {{Jericho}}",
+     "facts": [
+      "After police fired on the march, the president has declared a state of emergency: all androids are to be gathered into military camps for immediate destruction, and androids are being lynched in cities across the country.",
+      "Hospitals and schools are closing and the armed forces have lost two thirds of their personnel because androids walked off or were recalled; the Arctic crisis has evaporated because both sides' military androids stopped working.",
+      "Some people on the street say the androids were doing no harm and the police just gunned them down."
+     ],
+     "when": "marchNotCharged"
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "K17",
    "chapter": 30,
    "chapterTitle": "Crossroads",
@@ -1541,6 +2504,39 @@
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Crossroads",
     "https://detroit-become-human.fandom.com/wiki/Alice"
+   ]
+  },
+  {
+   "id": "R30c",
+   "chapter": 30,
+   "chapterTitle": "Crossroads",
+   "character": "Connor",
+   "title": "A magazine in {{Jericho}}'s hold",
+   "type": "media",
+   "situation": "You are {{Connor}}, moving through the freighter toward its leader. On a crate before the stairs lies a magazine.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: {{Detroit}} in Chaos",
+     "facts": [
+      "President {{Warren}} has ordered every android in the country recalled to disassembly centres and destroyed as a precaution, declared a national curfew and put the armed forces in the streets."
+     ],
+     "when": "marchCharged"
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Android Terror",
+     "facts": [
+      "The press says thousands of androids terrorized civilians in the plaza and forced a confrontation with reluctant police, who fought heroically; President {{Warren}} called it brainless savagery."
+     ],
+     "when": "marchCharged"
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -1601,7 +2597,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Intervene and save them."
+     "text": "Intervene and save them.",
+     "risk": 0.2
     },
     {
      "id": "1",
@@ -1623,7 +2620,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Save {{Josh}}."
+     "text": "Save {{Josh}}.",
+     "risk": 0.15
     },
     {
      "id": "1",
@@ -1645,7 +2643,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Go back for her."
+     "text": "Go back for her.",
+     "risk": 0.2
     },
     {
      "id": "1",
@@ -1667,7 +2666,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Break cover to save the androids and help the others escape."
+     "text": "Break cover to save the androids and help the others escape.",
+     "risk": 0.25
     },
     {
      "id": "1",
@@ -1689,7 +2689,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Hide him in a cabin."
+     "text": "Hide him in a cabin.",
+     "risk": 0.2
     },
     {
      "id": "1",
@@ -1712,7 +2713,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Open the door."
+     "text": "Open the door.",
+     "risk": 0.25
     },
     {
      "id": "1",
@@ -1843,6 +2845,30 @@
    ]
   },
   {
+   "id": "R32c",
+   "chapter": 32,
+   "chapterTitle": "Battle for Detroit",
+   "character": "Connor",
+   "title": "The lobby television at {{CyberLife}} Tower",
+   "type": "media",
+   "situation": "You are {{Connor}}, in the lobby of {{CyberLife}}'s tower. A television is running the news while the guards check your clearance.",
+   "options": [],
+   "media": [
+    {
+     "kind": "tv",
+     "title": "the lobby news",
+     "facts": [
+      "A pro-human group called People First has occupied {{CyberLife}} stores in Texas and hacked androids to loop political slogans, demanding human priority in the job market and a halt to android development."
+     ]
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "C24",
    "chapter": 32,
    "chapterTitle": "Battle for Detroit",
@@ -1857,7 +2883,8 @@
     },
     {
      "id": "1",
-     "text": "Fight your way past him."
+     "text": "Fight your way past him.",
+     "risk": 0.3
     }
    ],
    "adaptationNote": "Standing down is only available in the game if {{Hank}} is a Friend and you learned about his son. Otherwise the fight is forced.",
@@ -1880,7 +2907,8 @@
     },
     {
      "id": "1",
-     "text": "Attack the team."
+     "text": "Attack the team.",
+     "risk": 0.4
     }
    ],
    "adaptationNote": "Talking fails and {{Connor}} jumps and is destroyed; a replacement continues. Fighting succeeds under the profile.",
@@ -1922,11 +2950,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Stop and deal with him to save {{Hank}}."
+     "text": "Stop and deal with him to save {{Hank}}.",
+     "risk": 0.25
     },
     {
      "id": "1",
-     "text": "Keep converting the androids and let him do what he will."
+     "text": "Keep converting the androids and let him do what he will.",
+     "risk": 0.15
     }
    ],
    "adaptationNote": "Continuing gets {{Hank}} shot. Under the profile the deviant {{Connor}} still wins the fight and wakes the army.",
@@ -1963,6 +2993,47 @@
    ]
   },
   {
+   "id": "R32k",
+   "chapter": 32,
+   "chapterTitle": "Battle for Detroit",
+   "character": "Kara",
+   "title": "The terminal screens and a dropped magazine",
+   "type": "media",
+   "situation": "You are {{Kara}}. The bus terminal's screens are showing the android uprising live, and a magazine lies by the suitcases in the corner.",
+   "options": [],
+   "media": [
+    {
+     "kind": "tv",
+     "title": "the terminal screens",
+     "facts": [
+      "The screens show the android leader's armed assault on a camp; soldiers, federal agents and police are fighting androids in the streets."
+     ],
+     "when": "revolution"
+    },
+    {
+     "kind": "tv",
+     "title": "the terminal screens",
+     "facts": [
+      "The screens show the android leader marching peacefully with thousands toward a camp as soldiers mass in front of them."
+     ],
+     "when": "demonstration"
+    },
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: Civil War",
+     "facts": [
+      "The press reports that armed androids attacked a disassembly camp and opened fire in crowded streets with total disregard for civilian life."
+     ],
+     "when": "revolution"
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
+  },
+  {
    "id": "K21",
    "chapter": 32,
    "chapterTitle": "Battle for Detroit",
@@ -1973,7 +3044,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Go and free them."
+     "text": "Go and free them.",
+     "risk": 0.25
     },
     {
      "id": "1",
@@ -1996,11 +3068,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Go through the checkpoint."
+     "text": "Go through the checkpoint.",
+     "risk": 0.1
     },
     {
      "id": "1",
-     "text": "Take the long way round."
+     "text": "Take the long way round.",
+     "risk": 0.15
     }
    ],
    "adaptationNote": "In the game both routes reach the terminal; the detour only loses the ticket scene if the timer is already very low.",
@@ -2123,7 +3197,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Grab {{Alice}} and dive into the water."
+     "text": "Grab {{Alice}} and dive into the water.",
+     "risk": 0.15
     },
     {
      "id": "1",
@@ -2163,11 +3238,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Throw the bags and the engine overboard, then get into the water and push the boat to shore."
+     "text": "Throw the bags and the engine overboard, then get into the water and push the boat to shore.",
+     "risk": 0.2
     },
     {
      "id": "1",
-     "text": "Throw the bags, the engine and {{Luther}}'s body overboard, then get into the water and push."
+     "text": "Throw the bags, the engine and {{Luther}}'s body overboard, then get into the water and push.",
+     "risk": 0.2
     },
     {
      "id": "2",
@@ -2256,19 +3333,23 @@
    "options": [
     {
      "id": "0",
-     "text": "Ask {{Luther}} to create the diversion."
+     "text": "Ask {{Luther}} to create the diversion.",
+     "risk": 0.2
     },
     {
      "id": "1",
-     "text": "Ask {{Jerry}} to create the diversion."
+     "text": "Ask {{Jerry}} to create the diversion.",
+     "risk": 0.2
     },
     {
      "id": "2",
-     "text": "Ask {{Ralph}} to create the diversion."
+     "text": "Ask {{Ralph}} to create the diversion.",
+     "risk": 0.2
     },
     {
      "id": "3",
-     "text": "Ask the scarred android from {{Zlatko}}'s basement to create the diversion."
+     "text": "Ask the scarred android from {{Zlatko}}'s basement to create the diversion.",
+     "risk": 0.2
     },
     {
      "id": "4",
@@ -2292,7 +3373,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Fight him."
+     "text": "Fight him.",
+     "risk": 0.3
     },
     {
      "id": "1",
@@ -2301,6 +3383,31 @@
    ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+   ]
+  },
+  {
+   "id": "R32m",
+   "chapter": 32,
+   "chapterTitle": "Battle for Detroit",
+   "character": "Markus",
+   "title": "A magazine inside the barricade",
+   "type": "media",
+   "situation": "You are {{Markus}}, behind the barricade with the army massing in front of you. Someone has left a magazine on a bench beside you.",
+   "options": [],
+   "media": [
+    {
+     "kind": "magazine",
+     "title": "{{Detroit}} Today: They Defy Us",
+     "facts": [
+      "The press describes your unarmed gathering as a terrifying show of force angling for armed confrontation, and quotes a police captain hoping for a swift conclusion so he can refocus on collecting androids."
+     ],
+     "when": "demonstration"
+    }
+   ],
+   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
@@ -2372,7 +3479,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Go to him."
+     "text": "Go to him.",
+     "risk": 0.2
     },
     {
      "id": "1",
@@ -2396,7 +3504,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Order cover and pull him out."
+     "text": "Order cover and pull him out.",
+     "risk": 0.25
     },
     {
      "id": "1",
@@ -2419,7 +3528,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Wait until there is full covering fire, then charge together."
+     "text": "Wait until there is full covering fire, then charge together.",
+     "risk": 0.1
     },
     {
      "id": "1",
@@ -2428,6 +3538,30 @@
    ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+   ]
+  },
+  {
+   "id": "M32",
+   "chapter": 32,
+   "chapterTitle": "Battle for Detroit",
+   "character": "Markus",
+   "title": "A heart",
+   "type": "decision",
+   "situation": "You are {{Markus}}. You have taken too many hits; your pump is failing and you have minutes. {{North}} kneels beside you and offers you her own, which would kill her. If she is not here, {{Simon}} offers his. The assault cannot continue without you.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Accept the heart."
+    },
+    {
+     "id": "1",
+     "text": "Refuse and let yourself shut down."
+    }
+   ],
+   "adaptationNote": "Reached only after three failed actions in the assault. {{Simon}}'s offer cannot be refused in the game; this adaptation keeps both options.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://detroit-become-human.fandom.com/wiki/Simon"
    ]
   },
   {
@@ -2441,11 +3575,13 @@
    "options": [
     {
      "id": "0",
-     "text": "Be {{Markus}}."
+     "text": "Be {{Markus}}.",
+     "risk": 0.3
     },
     {
      "id": "1",
-     "text": "Be {{Connor}}."
+     "text": "Be {{Connor}}.",
+     "risk": 0.3
     }
    ],
    "adaptationNote": "The game asks the player which character to control, then settles the duel through inputs. Under the successful-execution profile the controlled character wins.",
@@ -2486,7 +3622,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Fight for control and search the garden for the exit."
+     "text": "Fight for control and search the garden for the exit.",
+     "risk": 0.3
     },
     {
      "id": "1",
@@ -2509,7 +3646,8 @@
    "options": [
     {
      "id": "0",
-     "text": "Fight her control, and if that fails, end yourself rather than be used."
+     "text": "Fight her control, and if that fails, end yourself rather than be used.",
+     "risk": 0.5
     },
     {
      "id": "1",
