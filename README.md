@@ -21,7 +21,7 @@ The React app is a run library. Each run opens a separate document containing te
 
 ## Neutral, persistent-session protocol
 
-Protocol `branching-2.3` (story map version 1.1.1) starts with this preface:
+Protocol `branching-2.3` (story map version 1.1.2) starts with this preface:
 
 > You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.
 

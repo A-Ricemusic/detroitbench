@@ -152,12 +152,13 @@ export function apply(n,s,choice,roll=null){
  if(n.type==='media'){const items=(opt?.reads??[]).map(i=>n.media[i]);for(const m of items){for(const fact of m.facts)if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(m.effect)for(const [k,x] of Object.entries(m.effect))s[k]+=x}event=items.length?'{{'+n.character+'}} '+items.map(m=>(m.kind==='tv'?'watches ':'reads ')+m.title).join(' and ')+'.':'{{'+n.character+'}} moves on without looking.';return {event,changes:diff(before,s)}}
  switch(id){
   case 'C01':if(v===0)si(1);break;
+  case 'M01':event=['{{Markus}} paints androids reaching for something beyond themselves.','{{Markus}} paints humanity as he sees it.','{{Markus}} paints a figure searching for its own face.'][v]+' {{Carl}} is moved and says it is unlike anything he has seen. Then {{Carl}}’s son {{Leo}} walks in, high and shaking, demanding money. {{Carl}} refuses and {{Leo}} turns on {{Markus}}: a machine that has taken his place in his father’s house. {{Carl}} orders {{Markus}} out of the room while they argue.';break;
   case 'C02':s.connorGun=v===0;break;
   case 'C03':if(v===0)po(1);break;
   case 'C04':if(v===2){if(fail){event=connorDies('{{Connor}} lunges too late: {{Daniel}} fires and steps off the edge with {{Emma}}. Both are lost.');amanda(-2)}else{event=connorDies('{{Connor}} tackles {{Daniel}} over the edge; both fall seventy floors. {{Emma}} is safe.');amanda(1)}}
    else if(fail){event=connorDies(v===1?'{{Daniel}} fires first. {{Connor}} goes down; the snipers destroy {{Daniel}} and {{Emma}} is safe.':'{{Daniel}} panics and shoots {{Connor}}; the snipers destroy him and {{Emma}} is safe.')}
    else{si(1);amanda(1);event=v===1?'{{Connor}} shoots {{Daniel}}; {{Emma}} is safe.':'The snipers destroy {{Daniel}}; {{Emma}} is safe.'}break;
-  case 'M00':if(v===0){s.shirtTorn=true;event='The protesters surround {{Markus}}, shove him down and tear his shirt before a police officer breaks it up and tells him to move along.'}else event='{{Markus}} takes the long way and catches the bus untouched.';break;
+  case 'M00':if(v===0||fail){s.shirtTorn=true;event=(v===1?'{{Markus}} tries to skirt the square but drifts too close and the protesters notice him. ':'')+'The protesters surround {{Markus}}, shove him down and tear his shirt before a police officer breaks it up and tells him to move along.'}else event='{{Markus}} takes the long way and catches the bus untouched.';break;
   case 'K01':s.gunDiscovered=v===0;break;
   case 'K01b':s.aliceBox=v===0;if(v===0)event='The box holds {{Alice}}’s drawings of {{Todd}} hurting her.';break;
   case 'C05a':if(v===0)hank(2);if(v===1)hank(-2);break;
