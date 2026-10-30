@@ -15,6 +15,8 @@ bun run dev
 
 Open http://127.0.0.1:5173. The interface includes scenarios, personal choices, result distributions, raw prompts/replies, run import/export, comparison, methodology, and a link to the original flowchart. Personal choices are stored in this browser. Imported runs stay in memory until reload; export them to keep a copy.
 
+The phone-friendly [Luna and Terra test report](docs/luna-terra-results.html) is a standalone HTML file, also served at `/review-results.html`. It documents their software reviews and subsequent fixes; neither reviewer has submitted game-scenario benchmark answers.
+
 ```sh
 bun run test       # runner, protocol and integrity tests
 bun run check  # dataset / coverage / published artifact validation

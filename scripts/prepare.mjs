@@ -8,4 +8,5 @@ const runs=[];for(const file of (await readdir(published)).filter(f=>f.endsWith(
 }
 await writeFile(new URL('dataset.json',target),JSON.stringify(dataset));await writeFile(new URL('index.json',target),JSON.stringify({datasetHash:await hash(dataset),datasetUrl:'/data/dataset.json',runs}));
 await copyFile(new URL('../docs/detroit-decision-flowchart.html',import.meta.url),new URL('../public/atlas.html',import.meta.url));
+await copyFile(new URL('../docs/luna-terra-results.html',import.meta.url),new URL('../public/review-results.html',import.meta.url));
 console.log(`Prepared ${dataset.questions.length} questions and ${runs.length} explicitly published runs.`);
