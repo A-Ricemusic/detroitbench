@@ -152,7 +152,6 @@ export function apply(n,s,choice,roll=null){
  if(n.type==='media'){const items=(opt?.reads??[]).map(i=>n.media[i]);for(const m of items){for(const fact of m.facts)if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(m.effect)for(const [k,x] of Object.entries(m.effect))s[k]+=x}event=items.length?'{{'+n.character+'}} '+items.map(m=>(m.kind==='tv'?'watches ':'reads ')+m.title).join(' and ')+'.':'{{'+n.character+'}} moves on without looking.';return {event,changes:diff(before,s)}}
  switch(id){
   case 'C01':if(v===0)si(1);break;
-  case 'M01':event=['{{Markus}} paints androids reaching for something beyond themselves.','{{Markus}} paints humanity as he sees it.','{{Markus}} paints a figure searching for its own face.'][v]+' {{Carl}} is moved and says it is unlike anything he has seen. Then {{Carl}}’s son {{Leo}} walks in, high and shaking, demanding money. {{Carl}} refuses and {{Leo}} turns on {{Markus}}: a machine that has taken his place in his father’s house. {{Carl}} orders {{Markus}} out of the room while they argue.';break;
   case 'C02':s.connorGun=v===0;break;
   case 'C03':if(v===0)po(1);break;
   case 'C04':if(v===2){if(fail){event=connorDies('{{Connor}} lunges too late: {{Daniel}} fires and steps off the edge with {{Emma}}. Both are lost.');amanda(-2)}else{event=connorDies('{{Connor}} tackles {{Daniel}} over the edge; both fall seventy floors. {{Emma}} is safe.');amanda(1)}}
@@ -266,7 +265,7 @@ export function apply(n,s,choice,roll=null){
   case 'K33':if(v===1){s.kara=false;s.alice=false;s.karaOutcome='The soldier shot {{Kara}} and {{Alice}} at the fence.'}else if(fail){if(s.luther||(s.ralph&&s.ralphDefended)){const who=s.luther?'{{Luther}}':'{{Ralph}}';if(s.luther)s.luther=false;else s.ralph=false;s.karaOutcome='{{Kara}} lost the fight at the fence, but '+who+' threw himself on the soldier and died so {{Kara}} and {{Alice}} could escape in a truck.'}else{s.kara=false;s.alice=false;s.karaOutcome='{{Kara}} lost the fight at the fence; the soldier shot her and {{Alice}}.'}}else s.karaOutcome='{{Kara}} and {{Alice}} fought past the guard and escaped the camp in a truck.';break;
   case 'P01':s.chloeFree=v===0;break;
  }
- if(!event)event=n.options.find(o=>o.id===choice)?.text??'';
+ if(!event)event=n.outcomes?.[choice]??n.options.find(o=>o.id===choice)?.text??'';
  return {event,changes:diff(before,s)};
 }
 function charge(s,fail,b){if(fail){s.chargeFailed=true;b.po(-2);return 'The charge breaks on the police line. {{Markus}} is shot and goes down in the street.'}b.jer(2);b.po(-2);b.north(2);b.josh(-2);return 'The androids charge and overwhelm the police line; many die on both sides.'}
