@@ -11,7 +11,10 @@
     "bench": "bun benchmark/cli.mjs",
     "bench:demo": "bun benchmark/cli.mjs --provider mock --model simulated-baseline --repeats 3 --out runs/demo.json",
     "bench:publish": "bun scripts/publish.mjs",
-    "check": "bun scripts/validate.mjs"
+    "check": "bun scripts/validate.mjs",
+    "play": "bun benchmark/play.mjs",
+    "play:report": "bun scripts/playthrough-report.mjs",
+    "play:model": "bun benchmark/story-provider.mjs"
   },
   "engines": {
     "bun": ">=1.3.14"
