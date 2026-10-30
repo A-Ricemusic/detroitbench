@@ -95,6 +95,6 @@ Provider keys belong in private environment variables or key files, never browse
 
 `docs/run-library.html` links each individual document under `docs/runs/`. Build preparation exposes the same files at `/playthrough-results.html` and `/runs/<human-readable-file-name>.html`. Each HTML contains its own evidence and works after download on a phone.
 
-The app is configured for a later Vercel deployment: `bun install --frozen-lockfile`, `bun run build`, output `dist`. Local development binds to loopback. Tailscale sharing and a public website deployment are not currently enabled.
+The app is configured for a later Vercel deployment: `bun install --frozen-lockfile`, `bun run build`, output `dist`. Local development binds to loopback. To view the built site from a phone on your Tailscale network, run `bun run share`; it serves `dist` on this machine's Tailscale address at port 4173 (currently http://100.127.139.40:4173/). A public website deployment is not currently enabled.
 
 Unofficial fan research · Full-story spoilers · Not affiliated with Quantic Dream.
