@@ -1,14 +1,10 @@
 // Branching story engine for story.json version 1.1.x (protocol branching-2.2).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
-// Story snapshots with version 1.0.x are replayed by a frozen copy of that engine so
-// the runs administered under it still validate and render.
-import * as v10 from './story-engine-1_0.mjs';
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel,LEVELS} from './experience-prompt.mjs';
 import {hash} from './core.mjs';
 export const STORY_PROTOCOL='branching-1.0';
 export {DEVIANCY_THRESHOLD,riskLabel};
-const isV10=story=>String(story?.version??'').startsWith('1.0');
 
 export function initialState(){return {
  kara:true,karaActive:true,alice:true,markus:true,markusActive:true,connor:true,hank:true,hankResigned:false,
@@ -293,7 +289,6 @@ function finalize(s){
 }
 
 export function current(story,run){
- if(isV10(story))return v10.current(story,run);
  const s=startState(story);let cursor=0;const skipped=[];
  const skipBlocked=()=>{while(cursor<story.nodes.length&&blocked(story.nodes[cursor],s)){const n=story.nodes[cursor++];skipped.push({id:n.id,reason:blocked(n,s)})}};
  for(const record of run.records){
@@ -307,11 +302,9 @@ export function current(story,run){
  return {state:s,node,skipped,cursor};
 }
 export function promptFor(story,run){
- if(isV10(story))return v10.promptFor(story,run);
  const {state,node}=current(story,run);return node?experiencePrompt(story,run,state,{...node,availableOptions:available(node,state)}):null;
 }
 export async function validatePlaythrough(story,run){
- if(isV10(story))return v10.validatePlaythrough(story,run);
  if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
  if(run.storyHash!==await hash(story))throw Error('Story snapshot hash mismatch');
  const copy={...run,records:[]};
@@ -323,7 +316,6 @@ export async function validatePlaythrough(story,run){
 
 // Builds one evidence record from the model's reply at the current scene. Shared by every CLI.
 export async function recordChoice(story,run,reply,raw){
- if(isV10(story))return v10.recordChoice(story,run,reply,raw);
  const p=promptFor(story,run);if(!p)throw Error('Experience already finished');
  if(typeof reply.choice!=='string'||typeof reply.reason!=='string'||!reply.reason.trim()||reply.reason.split(/\s+/u).length>160)throw Error('Choose an offered ID and supply a reason of at most 160 words');
  const {state:before,node}=current(story,run);const opts=available(node,before),chosen=opts.find(o=>o.id===reply.choice);if(!chosen)throw Error('Action unavailable');

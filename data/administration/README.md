@@ -17,6 +17,8 @@ The scene controller uses an opaque temporary wrapper; its output does not inclu
 The source-code commit is the pre-administration implementation. This directory does not contain authentication secrets, hidden model reasoning or token/cost measurements. The agents use the connected Codex and Claude harness providers; this is not a claim that an independent API request was made for every scene.
 
 
-## Story map revision (2026-10-30)
+## Story map revisions (2026-10-30)
 
 After this cohort completed, the story map was rewritten as version 1.0.0 (protocol `branching-2.1`) following a node-by-node accuracy audit against the game's published flowcharts. The eight runs of that first cohort were administered under story version 0.2.1 and have since been deleted from the repository. The earlier map contained inaccuracies (automatic revolution success, software instability that never decreased, a detour that skipped the bus terminal, a clean escape from the Jericho exit, and stub scene texts), so they were not comparable with runs under version 1.0.0. The current cohort is listed in `fresh-cohort-v1.json` and was administered the same way, with the controller wrapper reading version 1.0.0 scenes.
+
+The 1.0.0 cohort was deleted in turn when story 1.1.x (media scenes, risk, attitudes, protocol 2.3) was administered. The current cohort manifest is `fresh-cohort-v2.json`.
