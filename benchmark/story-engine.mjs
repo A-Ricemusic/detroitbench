@@ -1,213 +1,269 @@
-import {EXPERIENCE_PROTOCOL,experiencePrompt} from './experience-prompt.mjs';
-import { hash } from './core.mjs';
+// Branching story engine for story.json version 1.x.
+// Gating, option availability and consequences were verified node by node against
+// the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
+import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD} from './experience-prompt.mjs';
+import {hash} from './core.mjs';
 export const STORY_PROTOCOL='branching-1.0';
-export const PLAYER_SYSTEM='Play Detroit: Become Human as all three protagonists. Choose what you would actually do in the current situation, using the supplied story so far and current facts. Choose one available option ID and give a brief first-person reason. Do not optimize a moral score, consult walkthroughs, inspect transition code, or assume future outcomes. Return {"choice":"option ID","reason":"your explanation"}. Decisions are consequential; dead characters do not continue. Successful QTE/combat execution is assumed when attempted. This is an adapted pivotal-choice playthrough, not the running video game.';
-export function initialState(){return {kara:true,karaActive:true,alice:true,markus:true,markusActive:true,connor:true,hank:true,luther:false,north:true,simon:true,josh:true,john:false,gun:false,gunDiscovered:false,escapeRoutes:false,todd:true,clothes:false,money:false,shelter:'none',bond:0,hankTrust:0,instability:0,publicSupport:0,jerichoTrust:0,northTrust:0,romance:false,simonHidden:false,simonWounded:false,kitchen:false,suspect:false,suspectAlive:false,evidence:0,knowsCole:false,knowsSumo:false,kamskiLocation:false,jerichoLocated:false,raid:false,deviant:false,bomb:false,karaRoute:'unknown',bus:false,border:false,aliceWounded:false,karaWounded:false,campEscape:false,army:false,markusOutcome:'unresolved',karaOutcome:'unresolved',connorOutcome:'unresolved',choices:{}}}
+export {DEVIANCY_THRESHOLD};
+
+export function initialState(){return {
+ kara:true,karaActive:true,alice:true,markus:true,markusActive:true,connor:true,hank:true,hankResigned:false,
+ luther:false,lutherWith:false,lutherHidden:false,north:true,simon:true,josh:true,john:false,carl:true,todd:true,
+ ralph:false,ralphHostile:false,ralphDefended:false,jerry:false,monstersFreed:false,
+ connorGun:false,gun:false,gunDiscovered:false,aliceBox:false,clothes:false,money:false,shelter:'none',
+ aliceBond:0,aliceMax:0,hankTrust:-1,instability:0,publicSupport:0,jerichoTrust:0,northTrust:0,northBond:false,northLover:false,
+ simonWounded:false,simonHidden:false,casualties:false,kitchen:false,suspect:false,suspectAlive:false,suspectTrusts:false,pressured:false,
+ evidence:{ortizBody:false,tracisDead:false,simonBody:false,simonTablet:false,kitchenBody:false,statueMap:false},
+ knowsCole:false,knowsSumo:false,kamskiLocation:false,jerichoLocated:false,raid:false,deviant:false,bomb:false,movement:null,
+ karaRoute:'unknown',bus:false,border:false,aliceWounded:false,karaWounded:false,lutherOnBoat:false,campEscape:false,chase:false,fought:false,
+ contaminated:false,connorDeaths:0,markusOutcome:'unresolved',karaOutcome:'unresolved',connorOutcome:'unresolved',knowledge:{Connor:[],Kara:[],Markus:[]},choices:{}}}
+
 export const choiceAt=(s,id)=>s.choices[id];
+const HANK_FRIEND=6,HANK_HOSTILE=-4,OPINION_SYMPATHETIC=3,JERICHO_UNPOPULAR=-3;
+export const evidenceRoutes=s=>({traci:s.evidence.tracisDead,impersonate:s.evidence.simonBody||s.evidence.kitchenBody,tablet:s.evidence.simonTablet&&s.evidence.statueMap});
+export const armyAwakened=s=>s.deviant&&s.connor&&(choiceAt(s,'C25')==='1'||choiceAt(s,'C26')==='0'||(!s.hank&&choiceAt(s,'C25')===undefined&&choiceAt(s,'C22')==='0'));
+
 // Gates return an explanation instead of silently dropping unreachable scenes.
 export function blocked(n,s){
  const c=id=>choiceAt(s,id),id=n.id;
- if(n.character==='Kara'&&(!s.kara||!s.karaActive||(!s.alice&&n.id!=='K30')))return 'Kara and Alice are no longer together on an active route.';
+ if(n.character==='Kara'&&(!s.kara||!s.karaActive||(!s.alice&&id!=='K30')))return 'Kara and Alice are no longer together on an active route.';
  if(n.character==='Markus'&&(!s.markus||!s.markusActive))return 'Markus died or left the movement earlier.';
- if(n.character==='Connor'&&!s.connor)return 'Connor was decommissioned or destroyed without an active replacement.';
+ if(n.character==='Connor'&&!s.connor)return 'Connor was deactivated or destroyed without an active replacement.';
  const gate={
- 'K04':()=>s.gunDiscovered&&['1','2'].includes(c('K03'))||'No discovered gun or Kara fled without confronting Todd.',
- 'C06':()=>s.suspect||'The suspect was not found in Partners.',
- 'C07':()=>s.suspectAlive||'There is no living suspect to protect after interrogation.',
- 'C09':()=>c('K09')==='1'||'Kara evaded detection; no highway pursuit occurs.',
- 'M06':()=>c('M05')!=='2'||'The supply raid was abandoned.',
- 'M07':()=>c('M05')!=='2'||'The supply raid was abandoned.',
- 'M08':()=>s.john||'John was not recruited.',
- 'M09':()=>s.john&&c('M08')==='1'||'No alarm was raised during the truck theft with John.',
- 'M13':()=>s.simon&&s.simonWounded||'Simon was not wounded or was already lost.',
- 'M14':()=>s.simon&&s.simonWounded&&c('M13')==='0'||'No wounded Simon was brought to the roof.',
- 'C15':()=>s.kitchen||'Connor did not choose the kitchen investigation.',
- 'C16':()=>s.kitchen||'No kitchen deviant confrontation was reached.',
- 'C18':()=>c('C17')==='0'||'Connor refused to kill Chloe, so Kamski offered no question.',
- 'M19':()=>c('M18')==='1'||'Markus did not continue standing his ground.',
- 'M20':()=>s.marchDefeated===true||'The successful-execution profile did not produce a failed attack.',
- 'C19':()=>!s.kamskiLocation||'Kamski already supplied Jericho’s location.',
- 'C20':()=>!s.kamskiLocation&&c('C19')==='0'||'Connor already knows Jericho or accepted decommissioning.',
- 'M22':()=>s.raid&&s.jerichoTrust<=-3||'Markus was not expelled from Jericho before a raid.',
- 'M23':()=>s.raid||'Jericho was not located, so the raid did not happen.',
- 'M24':()=>s.raid&&s.josh||'No raid encounter with a living Josh.',
- 'M25':()=>s.raid&&s.north||'No raid escape with a living North.',
- 'C22':()=>s.jerichoLocated||'Connor did not locate Jericho.',
- 'C23':()=>s.raid&&s.deviant||'Connor is not a deviant helping during the raid.',
- 'K31':()=>c('K17')==='1'&&s.bond<1||'Alice’s bond is not poor enough for the abandonment prompt.',
- 'K18':()=>s.raid&&s.luther||'No raid with a living Luther.',
- 'K19':()=>s.raid||'No Jericho raid.',
- 'K20':()=>s.raid&&s.karaRoute!=='camp'||'No exit confrontation: there was no raid, or Kara was already captured.',
- 'K20-still':()=>c('K20')==='0'||'Kara did not play dead at the exit.',
- 'M26':()=>s.deviant&&s.connor||'No living deviant Connor is offering help.',
- 'C24':()=>!s.deviant&&s.hank||'The rooftop confrontation requires machine Connor and a living Hank.',
- 'C30':()=>c('C24')==='1'&&s.hank||'Machine Connor did not win a fight against Hank.',
- 'C25':()=>s.deviant&&s.tower&&s.hank||'No deviant tower mission with Hank present.',
- 'C26':()=>s.deviant&&s.tower&&s.hank&&c('C25')==='0'||'No identity standoff with a living Hank.',
- 'P02':()=>s.markus&&s.movement==='revolution'&&s.connor&&!s.deviant&&s.sniperActive!==false||'No final duel between active machine Connor and revolutionary Markus.',
- 'M30':()=>s.movement==='revolution'&&(s.north||s.simon)||'No armed assault with an endangered living ally.',
- 'M32':()=>s.movement==='revolution'&&s.assaultDefeated===true&&(s.north||s.simon)||'Successful combat did not leave Markus needing an ally’s heart.',
- 'M33':()=>s.movement==='revolution'&&s.assaultDefeated===true||'The armed assault has not failed.',
- 'M28':()=>s.movement==='demonstration'||'Markus chose revolution rather than a demonstration.',
- 'M29':()=>s.bomb&&(s.movement==='demonstration'||s.assaultDefeated===true)&&s.markusOutcome!=='liberated'||'No eligible last stand with the dirty-bomb detonator.',
- 'M31':()=>s.movement==='demonstration'&&c('M28')==='1'&&c('M29')!=='0'||'No surviving peaceful last stand after refusing Perkins.',
- 'C29':()=>!s.deviant&&s.sniperActive!==false&&(s.markus||s.north)&&s.movement==='demonstration'||'No remaining machine-Connor assassination opportunity.',
- 'C27':()=>s.deviant&&s.army&&(s.markus||s.north)||'No successful deviant army awakening with a surviving leader.',
- 'C28':()=>s.deviant&&s.army&&!s.markus&&!s.north||'Connor is not the sole remaining android leader.',
- 'K21':()=>s.karaRoute!=='camp'||'Kara was captured and is inside the camp.',
- 'K22':()=>s.karaRoute!=='camp'||'Kara is in the camp, not on the bus route.',
- 'K32':()=>c('K22')==='0'||'The checkpoint was avoided.',
- 'K23':()=>s.todd&&s.bus||'Todd is dead or Kara missed the terminal.',
- 'K24':()=>s.bus||'Kara did not reach the bus terminal in time.',
- 'K25':()=>s.karaRoute==='border'||'Kara is not at the Canadian border checkpoint.',
- 'K26':()=>s.karaRoute==='river'||'Kara did not take the river route.',
- 'K34':()=>s.karaRoute==='river'&&s.kara&&s.alice||'No surviving group in a sinking river boat.',
- 'K30':()=>s.karaRoute==='river'&&s.kara&&!s.alice||'Kara is not a surviving river crosser grieving Alice.',
- 'K27':()=>s.karaRoute==='camp'||'Kara was not captured.',
- 'K28':()=>s.karaRoute==='camp'||'Kara is not still in the camp with Alice.',
- 'K29':()=>s.karaRoute==='camp'&&s.aliceStress===true||'Alice did not reach critical stress before reunion.',
- 'K33':()=>s.karaRoute==='camp'&&s.campEscape||'No attempted camp escape reached the fence.',
+  K04:()=>s.gunDiscovered&&['1','2'].includes(c('K03'))||'Kara never noticed the gun, or she got Alice out without confronting Todd.',
+  K07b:()=>s.shelter==='squat'||'Kara did not shelter in the abandoned house where Ralph lives.',
+  C06:()=>s.suspect||'The suspect was never found in the attic.',
+  C07:()=>s.suspectAlive||'There is no living suspect after the interrogation.',
+  C08b:()=>s.suspectAlive||'The suspect did not survive the interrogation.',
+  K09:()=>s.shelter!=='squat'||'Kara sheltered in the squat; discovery there depends on Connor’s search.',
+  C09a:()=>s.shelter==='squat'||'Kara did not shelter in the squat, so Connor’s search leads elsewhere.',
+  C09:()=>s.chase||'Kara and Alice were never spotted; there is no highway chase.',
+  M06:()=>c('M05')!=='2'||'The supply raid was abandoned.',
+  M07:()=>c('M05')!=='2'||'The supply raid was abandoned.',
+  M08:()=>s.john||'John was not brought in, so the truck was never an option.',
+  C14b:()=>c('C14')==='0'||'Connor did not follow the blood trail to the roof.',
+  C15:()=>s.kitchen||'Connor did not question the kitchen androids.',
+  C16:()=>s.kitchen||'The kitchen deviant was never exposed.',
+  C18:()=>c('C17')==='0'||'Connor refused Kamski’s test, so no question was offered.',
+  M19:()=>c('M18')!=='2'||'Markus charged the police line immediately.',
+  C19:()=>!s.kamskiLocation||'Kamski already gave Connor the deviants’ location.',
+  C20:()=>!s.kamskiLocation&&c('C19')==='0'||'Connor did not enter the archive.',
+  M21b:()=>s.northBond&&s.north||'Markus and North never shared memories.',
+  K31:()=>s.raid&&c('K17')==='1'&&s.aliceMax<1||'Alice’s relationship was never low enough, or there was no raid, for the abandonment prompt.',
+  C22:()=>s.jerichoLocated||'Connor never located Jericho.',
+  M22:()=>s.raid&&s.jerichoTrust<=JERICHO_UNPOPULAR||'Markus was not cast out of Jericho.',
+  M23:()=>s.raid||'Jericho was not located, so there was no raid.',
+  M24:()=>s.raid&&s.josh||'No raid encounter with a living Josh.',
+  M25:()=>s.raid&&s.north||'No raid escape with a living North.',
+  C23:()=>s.raid&&s.deviant||'Connor is not a deviant inside the raid.',
+  K18:()=>s.raid&&s.lutherWith||'No raid with Luther at Kara’s side.',
+  K19:()=>s.raid||'There was no raid on Jericho.',
+  K20:()=>s.raid||'There was no raid on Jericho.',
+  'K20-still':()=>c('K20')==='0'||'Kara did not play dead.',
+  M26a:()=>s.carl||'Carl is dead.',
+  M26:()=>s.deviant&&s.connor&&s.raid||'No deviant Connor came to the church.',
+  C24:()=>!s.deviant&&s.hank||'Requires a machine Connor and a living Hank.',
+  C24b:()=>!s.deviant&&!s.hank||'Requires a machine Connor with Hank dead.',
+  C30:()=>c('C24')==='1'||'Connor did not fight Hank on the rooftop.',
+  C25:()=>s.deviant&&s.hank||'Requires a deviant Connor and a living Hank.',
+  C26:()=>s.deviant&&s.hank&&c('C25')==='0'||'No identity standoff with Hank.',
+  K21:()=>s.karaRoute!=='camp'||'Kara was captured and is inside the camp.',
+  K22:()=>s.karaRoute!=='camp'||'Kara is inside the camp.',
+  K32:()=>c('K22')==='0'||'Kara avoided the checkpoint.',
+  K23:()=>s.todd&&s.karaRoute!=='camp'||'Todd is dead, or Kara never reached the terminal.',
+  K24:()=>s.karaRoute!=='camp'&&s.karaRoute!=='river'||'Kara never reached the ticket scene.',
+  K25:()=>s.karaRoute==='border'||'Kara is not on the bus to the border.',
+  K26:()=>s.karaRoute==='river'||'Kara did not cross by boat.',
+  K34:()=>s.karaRoute==='river'&&s.kara&&s.alice||'No surviving group in the sinking boat.',
+  K30:()=>s.karaRoute==='river'&&s.kara&&!s.alice||'Kara did not lose Alice on the river.',
+  K27a:()=>s.karaRoute==='camp'||'Kara was not captured.',
+  K27:()=>c('K27a')==='0'||'Kara did not volunteer to carry the body.',
+  K28:()=>s.karaRoute==='camp'||'Kara is not in the camp with Alice.',
+  K33:()=>s.karaRoute==='camp'&&s.campEscape||'No camp escape reached the fence.',
+  M28:()=>s.movement==='demonstration'||'Markus chose an armed uprising rather than a demonstration.',
+  M31:()=>s.movement==='demonstration'&&c('M28')==='1'||'No last stand after refusing Perkins.',
+  M30a:()=>s.movement==='revolution'&&s.josh||'No armed assault with a living Josh.',
+  M30:()=>s.movement==='revolution'&&s.simon||'No armed assault with a living Simon.',
+  M30c:()=>s.movement==='revolution'&&s.north||'No armed assault with a living North.',
+  P02:()=>s.movement==='revolution'&&s.markus&&s.markusActive&&s.connor&&!s.deviant||'No machine Connor confronts Markus during the assault.',
+  C29:()=>!s.deviant&&s.movement==='demonstration'&&s.markusOutcome==='liberated'&&s.markus||'No machine Connor in the crowd after a successful demonstration.',
+  C27:()=>s.deviant&&armyAwakened(s)&&s.markus&&s.markusActive&&s.markusOutcome==='liberated'||'No deviant Connor on the stage beside a victorious Markus.',
+  C28:()=>s.deviant&&armyAwakened(s)&&!(s.markus&&s.markusActive)&&!s.north||'Connor is not the last remaining android leader.',
  };
  const r=gate[id]?.();return r===true||r===undefined?null:r;
 }
+
 export function available(n,s){
- let opts=n.options.map(o=>({...o}));const id=n.id;
- const remove=i=>{opts=opts.filter(o=>o.id!==String(i))};
- if(id==='C04'&&choiceAt(s,'C02')!=='0')remove(1);
+ let opts=n.options.map(o=>({...o}));const id=n.id,c=k=>choiceAt(s,k);
+ const remove=(...ids)=>{opts=opts.filter(o=>!ids.map(String).includes(o.id))};
+ if(id==='C04'&&!s.connorGun)remove(1);
  if(id==='K06'&&!s.gun)remove(1);
  if(id==='K07'&&!(s.clothes&&s.money))remove(0);
- if(id==='K14')remove(2); // Luther's gun was not separately discovered in this adaptation.
- if(id==='C14'&&!s.simonHidden)remove(0);
- if(id==='C20'&&s.evidence<1)remove(0);
- if(id==='C20'&&!s.suspectAlive&&choiceAt(s,'C12')!=='1')remove(1);
- if(id==='M17'&&s.northTrust<0)remove(0);
- if(id==='C22'&&s.instability<3)remove(0);
- if(id==='K25'&&!s.luther)remove(2);
- if(id==='K25'&&!s.jerry)remove(3);
- if(id==='K26'&&!s.luther)remove(1);
+ if(id==='K07b'&&!s.gun)remove(2);
+ if(id==='C14'&&!(s.simonHidden&&s.simon))remove(0);
+ if(id==='C20'){const r=evidenceRoutes(s);if(!r.traci)remove(0);if(!r.impersonate)remove(1);if(!r.tablet)remove(2)}
+ if(id==='C22'&&s.instability<DEVIANCY_THRESHOLD)remove(0);
+ if(id==='C24'&&!(s.hankTrust>=HANK_FRIEND&&s.knowsCole))remove(0);
+ if(id==='K23'&&!s.aliceBox)remove(0);
+ if(id==='K25'){if(!s.lutherWith)remove(2);if(!s.jerry)remove(3)}
+ if(id==='K26'){if(!s.lutherWith)remove(1);else remove(4)}
  if(id==='K34'&&!s.lutherOnBoat)remove(1);
- if(id==='M31'&&!(s.north&&s.romance))remove(1);
- if(id==='M31'&&!s.bomb)remove(4);
- if(id==='M33'&&!s.bomb)remove(2);
- if(id==='K28'&&!(s.luther||s.ralph||s.captives))remove(0);
+ if(id==='K28'){if(!s.luther)remove(0);if(!(s.ralph&&s.ralphDefended&&!s.ralphHostile))remove(2);if(!s.monstersFreed)remove(3)}
+ if(id==='M31'){if(!(s.north&&s.northLover))remove(1);if(!s.bomb)remove(4)}
  return opts;
 }
+
+const bump=(s,key,x,max)=>{s[key]+=x;if(max&&s[key]>s[max])s[max]=s[key]};
 export function apply(n,s,choice){
  const before=structuredClone(s);const v=Number(choice),id=n.id;s.choices[id]=choice;
- const trust=x=>{s.hankTrust+=x};const unstable=x=>{s.instability+=x};const support=x=>{s.publicSupport+=x};let event='';
+ const hank=x=>bump(s,'hankTrust',x),si=x=>bump(s,'instability',x),po=x=>bump(s,'publicSupport',x),jer=x=>bump(s,'jerichoTrust',x),north=x=>bump(s,'northTrust',x),alice=x=>bump(s,'aliceBond',x,'aliceMax');
+ const connorDies=why=>{s.connorDeaths++;si(-1);hank(-1);return why+' This body is destroyed; {{CyberLife}} sends a replacement {{Connor}} with its memory.'};
+ let event='';
+ if(n.type==='media'){const o=n.options.find(o=>o.id===choice);const items=(o?.reads??[]).map(i=>n.media[i]);for(const m of items)for(const fact of m.facts)if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);event=items.length?'{{'+n.character+'}} '+items.map(m=>(m.kind==='tv'?'watches ':'reads ')+m.title).join(' and ')+'.':'{{'+n.character+'}} moves on without looking.';return {event,changes:diff(before,s)}}
  switch(id){
- case 'C01':if(v===0)unstable(1);break;
- case 'C02':s.connorGun=v===0;break;
- case 'C03':if(v===0)unstable(1);break;
- case 'C04':s.emma=true;if(v===2){s.connorDeaths=(s.connorDeaths||0)+1;event='Connor saves Emma at the cost of this body. A replacement returns for later investigations.'}else event='Emma is saved; Daniel is killed.';break;
- case 'K01':s.gunDiscovered=v===0;s.escapeRoutes=v===0;break;
- case 'C05':s.suspect=v===0;s.suspectAlive=v===0;if(v===0)s.evidence++;break;
- case 'K02':if(v===1){s.kara=false;s.alice=false;s.karaOutcome='Todd kills Kara and Alice; their story ends.'}else s.bond++;break;
- case 'K04':if(v===0){s.todd=false;s.gun=true;event='The confrontation ends with Todd killed; Kara and Alice escape with the gun.'}break;
- case 'M02':s.carl=v===1;event=v===0?'Carl suffers a fatal heart attack. Police shoot Markus; he later rebuilds himself.':'Leo is injured; Carl survives. Police shoot Markus; he later rebuilds himself.';break;
- case 'C06':if(v===2){s.suspectAlive=false;s.evidence++;event='The forced probe triggers self-destruction; the body remains evidence.'}break;
- case 'C07':if(v===0){s.suspectAlive=true;unstable(1);s.evidence++}else{s.suspectAlive=false;s.evidence++}break;
- case 'K05':s.clothes=v===0;if(v===0)s.bond--;break;
- case 'K06':s.money=v!==2;if(v!==2)s.bond--;break;
- case 'K07':s.shelter=['motel','squat','car'][v];s.ralph=v===1;break;
- case 'K08':s.bond+=v===0?2:-1;break;
- case 'C08':trust(v===0?1:-1);break;
- case 'C09':trust(v===0?1:-1);break;
- case 'C10':if(v===0){trust(2);unstable(1)}else{trust(-2);s.evidence++}break;
- case 'K10':s.luther=true;event='Kara finds Alice and escapes the reset sequence under the successful-execution profile. Luther later joins them.';break;
- case 'K11':s.captives=v===0;break;
- case 'C11':s.knowsCole=v===0;s.knowsSumo=true;break;
- case 'M05':s.raidSupplies=v!==2;if(v===1){support(-1);s.northTrust++}break;
- case 'M06':if(v===0){s.jerichoTrust++;s.northTrust++}break;
- case 'M07':s.john=v===0;break;
- case 'M08':if(v!==2){s.jerichoTrust++;if(v===1)s.northTrust++}else{s.john=false;event='The group leaves without the truck. John does not survive the retreat in this profile.'}break;
- case 'M09':s.john=v===0;break;
- case 'C12':if(v===0){trust(2);unstable(1)}else{trust(-2);s.evidence++}break;
- case 'C13':trust(v===0?1:-1);if(v===0)unstable(1);if(s.hankTrust<=-4){s.connorDeaths=(s.connorDeaths||0)+1;event='Hostile Hank shoots Connor; CyberLife sends a replacement.'}break;
- case 'M10':s.simonWounded=v===1;if(v===1)s.northTrust++;break;
- case 'M11':if(v===1)s.simonWounded=true;else{support(-1);s.northTrust++}break;
- case 'M12':support(v===0?2:-2);break;
- case 'M13':if(v===1)s.simon=false;break;
- case 'M14':s.simonHidden=v===0;s.simon=v===0;break;
- case 'C14':s.kitchen=v===1;if(v===0){s.simon=false;s.simonHidden=false;s.evidence++;unstable(1);event='Connor finds Simon, who destroys himself to protect Jericho.'}break;
- case 'C15':s.evidence++;break;
- case 'C16':s.evidence++;if(v===0){trust(1);unstable(1);s.connorDeaths=(s.connorDeaths||0)+1;event='Connor shields Hank and loses this body; a replacement continues.'}break;
- case 'K15':s.evidenceHidden=v===0;break;
- case 'K16':if(v===1||!s.evidenceHidden){s.luther=false;event='The officer discovers fugitives. Luther dies intervening; Kara and Alice escape.'}break;
- case 'M15':support(v===0?2:-2);s.northTrust+=v===1?1:-1;break;
- case 'M16':support(v===0?2:-2);s.northTrust+=v===0?-1:1;break;
- case 'C17':if(v===0){trust(-2);s.evidence++}else{trust(1);unstable(2)}break;
- case 'C18':s.kamskiLocation=v===0;s.jerichoLocated=v===0;s.raid=v===0;break;
- case 'M17':s.romance=v===0;break;
- case 'M18':s.jerichoTrust+=v===0?-2:1;if(v===2){support(-2);event='Under successful combat execution the march defeats the police.'}break;
- case 'M19':if(v===0){support(2);if(s.john){s.john=false;event='John dies saving Markus.'}else if(s.simon){s.simon=false;event='Simon dies saving Markus in this adaptation’s friendly-ally profile.'}else{s.markus=false;s.movement='revolution';event='Markus dies; North takes leadership and chooses armed resistance.'}}else if(v===2)support(-2);else s.jerichoTrust-=2;break;
- case 'M20':s.markus=false;s.movement='revolution';break;
- case 'C19':if(v===1){s.connor=false;s.connorOutcome='Decommissioned after accepting the shutdown.'}break;
- case 'C20':if(v===2){s.connor=false;s.connorOutcome='Decommissioned without locating Jericho.'}else{s.jerichoLocated=true;s.raid=true}break;
- case 'M21':s.bomb=v===0;break;
- case 'M22':if(v===1){s.markusActive=false;s.movement='revolution';s.markusOutcome='Left Jericho permanently.'}break;
- case 'M23':break;
- case 'M24':s.josh=v===0;break;
- case 'M25':s.north=v===0;break;
- case 'C22':s.deviant=v===0;if(!s.markus&&s.deviant)s.tower=true;break;
- case 'K17':s.bond+=v===0?2:-2;if(!s.raid)s.karaRoute='escape';break;
- case 'K31':if(v===0){s.karaActive=false;s.karaOutcome='Kara abandons Alice and leaves alone.'}break;
- case 'K18':s.luther=v===0;break;
- case 'K19':if(v===0){event='The fugitive is shot; Kara successfully fights back against the soldier and escapes the cabin under the successful-execution profile.'}break;
- case 'K20':if(s.karaRoute!=='camp')s.karaRoute=v===1?'camp':'escape';break;
- case 'K20-still':if(v===1){s.kara=false;s.alice=false;s.karaOutcome='Soldiers kill Kara and Alice after Kara moves.'}break;
- case 'M26':if(v===0)s.tower=true;else{s.deviant=false;s.tower=false;event='Markus kills deviant Connor. CyberLife sends a machine replacement.'}break;
- case 'M27':s.movement=v===0?'demonstration':'revolution';if(v===1){s.josh=false;s.markusOutcome='liberated'}break;
- case 'C24':s.sniperActive=v===1;if(v===0)s.connorOutcome='Machine Connor abandons the rooftop assassination.';break;
- case 'C30':if(v===0)s.hank=false;else{event='Connor pulls Hank up and survives the renewed fight under successful execution.';s.hank=false}break;
- case 'C25':if(v===1){s.hank=false;s.army=true;s.connorOutcome='Awakened the CyberLife android army after sacrificing Hank.'}break;
- case 'C26':if(v===0&&s.knowsCole&&s.knowsSumo){s.army=true;s.connorOutcome='Deviant Connor awakens the CyberLife android army.'}else{s.connor=false;s.connorOutcome='Hank shoots the original Connor at the identity standoff.'}break;
- case 'P02':if(v===1){s.markus=false;s.markusOutcome='Machine Connor kills Markus in the final duel.';s.assaultDefeated=true}else{s.connor=false;s.connorOutcome='Markus destroys machine Connor in the final duel.'}break;
- case 'M30':if(v===1){if(s.north)s.north=false;else s.simon=false}break;
- case 'M32':if(v===0){if(s.north)s.north=false;else s.simon=false}else{s.markus=false;s.markusOutcome='Markus refuses the donor heart and dies.'}break;
- case 'M33':s.markus=false;s.markusOutcome=v===2?'Dirty bomb detonated; Detroit contaminated.':'Markus dies after the failed revolution.';if(v===2)s.contaminated=true;break;
- case 'M28':if(v===0){s.markus=false;s.north=false;s.markusOutcome='Perkins betrays the deal and kills Markus and the demonstrators.'}break;
- case 'M29':if(v===0){s.contaminated=true;s.markusOutcome='Dirty bomb detonated; humans withdraw from contaminated Detroit.'}break;
- case 'M31':if(v===4){s.contaminated=true;s.markusOutcome='Dirty bomb detonated; Detroit contaminated.'}else if(v<2&&s.publicSupport>=2){s.markusOutcome='liberated';event='Public support leads soldiers to stand down; the peaceful demonstration succeeds.'}else{s.markus=false;s.north=false;s.markusOutcome='Soldiers kill Markus and the remaining demonstrators.'}break;
- case 'C29':if(v===0){if(s.markus){s.markus=false;s.markusOutcome='Machine Connor assassinates Markus.'}else s.north=false;s.connorOutcome='Machine Connor carries out the assassination.'}else s.connorOutcome='Machine Connor refuses the final assassination.';break;
- case 'C27':if(v===0)s.connorOutcome='Deviant Connor escapes Amanda’s control after awakening the army.';else{if(s.markus){s.markus=false;s.markusOutcome='Connor, controlled by Amanda, assassinates Markus.'}else s.north=false;s.connorOutcome='Amanda regains control and uses Connor to shoot the leader.'}break;
- case 'C28':if(v===0){s.connor=false;s.connorOutcome='Connor dies by suicide to prevent CyberLife control.'}else s.connorOutcome='Connor submits to CyberLife control.';break;
- case 'K21':if(v===1)s.luther=false;else s.jerry=true;break;
- case 'K22':s.bus=v===0;if(v===1)s.karaRoute='river';break;
- case 'K32':if(v===0)event='The guard returns Alice’s dropped glove; the group continues.';else event='The guards are shot; the group continues under successful combat execution.';break;
- case 'K24':s.karaRoute=v===0?'border':'river';break;
- case 'K25':if(v===0&&s.movement!=='demonstration'){s.kara=false;s.alice=false;s.luther=false;s.karaOutcome='Border guards execute the group during the armed uprising.'}else{if(v===1)s.kara=false;if(v===2)s.luther=false;if(v===3)s.jerry=false;s.border=true;s.karaOutcome=v===1?'Kara sacrifices herself; Alice crosses with a caregiver.':'Kara and Alice cross into Canada.'}break;
- case 'K26':s.lutherOnBoat=s.luther;s.luther=false;if(v===4){s.kara=false;s.alice=false;s.karaOutcome='The patrol kills the group after surrender.'}else if(v===2)s.aliceWounded=true;else if(v===3)s.karaWounded=true;break;
- case 'K34':if(v===2){s.kara=false;s.alice=false;s.karaOutcome='The sinking boat is not lightened; Kara and Alice are lost.'}else{if(s.aliceWounded){s.alice=false;s.karaOutcome='Kara reaches Canada, but Alice dies from her wounds.'}else if(s.karaWounded){s.kara=false;s.karaOutcome='Kara dies from her wounds after bringing Alice across.'}else{s.border=true;s.karaOutcome='Kara and Alice survive the river crossing; Luther is lost if he came.'}}break;
- case 'K30':if(v===1){s.kara=false;s.karaOutcome='Kara gives up after Alice dies.'}else s.karaOutcome='Kara chooses to keep living after Alice dies.';break;
- case 'K27':if(v===0){s.karaActive=false;s.karaRoute='abandoned';s.karaOutcome='Kara escapes the camp alone, abandoning Alice.'}break;
- case 'K28':if(v===2){if(s.movement==='revolution'&&s.markusOutcome==='liberated'){s.karaOutcome='The successful revolution liberates Kara and Alice from the camp.'}else{s.kara=false;s.alice=false;s.karaOutcome='Kara and Alice remain in line and are destroyed.'}}else{s.campEscape=true;if(v===0){if(s.luther)s.luther=false;else if(s.ralph)s.ralph=false;else s.captives=false}}break;
- case 'K29':if(v===0)s.kara=false;else s.alice=false;break;
- case 'K33':if(v===1){s.kara=false;s.alice=false;s.karaOutcome='The fence guard shoots the fleeing pair.'}else s.karaOutcome='Kara and Alice fight past the guard and escape the camp.';break;
- case 'P01':s.chloeFree=v===0;break;
+  case 'C01':if(v===0)si(1);break;
+  case 'C02':s.connorGun=v===0;break;
+  case 'C03':if(v===0)po(1);break;
+  case 'C04':if(v===2)event=connorDies('{{Connor}} tackles {{Daniel}} over the edge; both fall seventy floors. {{Emma}} is safe.');else{si(1);event=v===1?'{{Connor}} shoots {{Daniel}}; {{Emma}} is safe.':'The snipers destroy {{Daniel}}; {{Emma}} is safe.'}break;
+  case 'K01':s.gunDiscovered=v===0;break;
+  case 'K01b':s.aliceBox=v===0;if(v===0)event='The box holds {{Alice}}’s drawings of {{Todd}} hurting her.';break;
+  case 'C05a':if(v===0)hank(2);if(v===1)hank(-2);break;
+  case 'C05':s.suspect=s.suspectAlive=v===0;event=v===0?'{{Connor}} finds {{CarlosOrtiz}}’s android hiding in the attic; he is arrested.':'The android is never found.';break;
+  case 'K02':if(v===1){s.kara=false;s.alice=false;s.karaOutcome='{{Kara}} never broke her programming; {{Todd}} killed {{Alice}} and then destroyed {{Kara}}.'}break;
+  case 'K04':if(v===0){s.gun=true;s.todd=false;event='{{Todd}} is shot dead in {{Alice}}’s room. {{Kara}} and {{Alice}} flee with the gun and catch the last bus.'}else event='{{Kara}} knocks {{Todd}} down and escapes with {{Alice}} out of the window to the last bus. {{Todd}} is alive.';break;
+  case 'M02':s.carl=v===1;event=v===0?'{{Leo}} keeps beating {{Markus}}; {{Carl}} suffers a fatal heart attack. Police arrive and shoot {{Markus}}.':'{{Leo}} is thrown down and badly hurt. Police arrive, assume {{Markus}} attacked him, and shoot {{Markus}}.';break;
+  case 'C06':if(v===1)s.pressured=true;if(v===2){s.suspectAlive=false;s.evidence.ortizBody=true;si(1);event='The forced probe pushes the android to self-destruction at the table; his body is kept as evidence.'}if(v===3)event='No confession. The android is returned to a cell.';break;
+  case 'C07':if(v===0&&!s.pressured){s.suspectTrusts=true;si(1);hank(1);event='The officers back off and the android walks to his cell on his own. He trusts {{Connor}}.'}else if(v===0){s.suspectAlive=false;s.evidence.ortizBody=true;event=connorDies('The panicked android grabs the officer’s gun, shoots {{Connor}}, and then shoots himself.')}else{s.suspectAlive=false;s.evidence.ortizBody=true;event='As he is dragged away, the android seizes a gun and shoots himself.'}break;
+  case 'K05':if(v===0){s.clothes=true;alice(-1)}else alice(1);break;
+  case 'K06':if(v!==2){s.money=true;alice(-1)}break;
+  case 'K07':s.shelter=['motel','squat','car'][v];if(v===1)s.ralph=true;if(v===2)alice(-2);break;
+  case 'K07b':if(v===2)s.ralphHostile=true;if(v===0)alice(1);break;
+  case 'K08':alice(v===0?2:-1);break;
+  case 'C08':if(v===0){hank(1);s.knowsSumo=true}else hank(-1);break;
+  case 'C08b':if(v===0)si(1);s.suspectAlive=false;s.evidence.ortizBody=true;event='Later that night the android self-destructs in his cell. His body goes to the evidence archive.';break;
+  case 'K09':s.chase=v===1;event=v===1?'A patrol spots them; {{Kara}} and {{Alice}} run, with police and an investigator behind them.':'{{Kara}} and {{Alice}} reach the station unseen.';break;
+  case 'C09a':s.chase=v===0||s.ralphHostile;if(v===0&&!s.ralphHostile)s.ralphDefended=true;event=s.chase?(v===0?'{{Ralph}} attacks {{Connor}} to protect them; {{Kara}} and {{Alice}} bolt from the window and the chase is on.':'{{Ralph}} tells {{Connor}} they are upstairs; {{Kara}} and {{Alice}} bolt and the chase is on.'):'{{Connor}} and {{Hank}} leave. {{Kara}} and {{Alice}} were never found.';break;
+  case 'C09':if(v===0){hank(1);si(1)}else{hank(-1);si(-1)}event='{{Kara}} and {{Alice}} make it across the freeway and escape.';break;
+  case 'C10':if(v===0){hank(2);si(2);event='{{Hank}} is pulled up. {{Rupert}} escapes; his diary is recovered from the nest.'}else{hank(-2);si(-2);event='{{Rupert}} is cornered and throws himself off the roof. {{Hank}} pulls himself up alone, furious.'}break;
+  case 'K10':event='{{Kara}} escapes the reset and recovers {{Alice}}.';break;
+  case 'K11':s.monstersFreed=v===0;break;
+  case 'K13':s.luther=true;s.lutherWith=true;event=(s.monstersFreed?'The freed androids tear {{Zlatko}} apart.':'{{Luther}} turns on {{Zlatko}} and kills him.')+' {{Luther}} asks to come with you.';break;
+  case 'C11':s.knowsCole=v===0;s.knowsSumo=true;if(v===0)event='The photograph is of {{Hank}}’s son {{Cole}}, who died at six in a car accident.';break;
+  case 'M05':if(v===1)jer(-1);if(v===2){jer(-2);north(-2);event='The group flees empty-handed.'}break;
+  case 'M06':if(v===0){jer(1);north(1)}break;
+  case 'M07':s.john=v===0;if(v===1)event='{{John}} shouts after you; the alarm sounds and the group runs with what it has.';break;
+  case 'M08':if(v===0)jer(1);if(v===1){jer(1);north(1)}if(v===2)north(-1);event=v===2?'The group leaves with full bags but no truck.':'The truck of parts reaches {{Jericho}}.';break;
+  case 'C12':if(v===0){hank(2);si(2);event='The two {{Tracis}} escape together over the fence.'}else{hank(-2);si(-2);s.evidence.tracisDead=true;event='Both {{Tracis}} are destroyed. {{Hank}} walks off in disgust.'}break;
+  case 'C13':if(v===0){hank(1);si(1)}else{hank(-1);si(-1)}if(s.hankTrust<=HANK_HOSTILE)event=connorDies('{{Hank}} pulls the trigger.');else event='{{Hank}} lowers the gun and walks away.';break;
+  case 'M10':if(v===1){north(1);s.casualties=true}else north(-1);break;
+  case 'M11':if(v===0){s.casualties=true;north(1);po(-2)}else{s.simonWounded=true}break;
+  case 'M12':if(!s.casualties)po(1);if(v===0)po(s.casualties?0:2);else po(s.casualties?-2:-1);event=s.simonWounded?'The message airs. A tactical team storms the floor; in the firefight {{Simon}} is shot in the leg.':'The message airs and the group escapes by parachute.';break;
+  case 'M13':if(v===1){s.simon=false;jer(-1);event='{{Simon}} is left behind and killed by the tactical team.'}break;
+  case 'M14':if(v===0){s.simonHidden=true;event='{{Simon}} is hidden in a ventilation unit with a gun.'}else{s.simon=false;north(1);jer(-1);event='{{Markus}} shoots {{Simon}}.'}break;
+  case 'C14':if(v===1)s.kitchen=true;if(v!==0&&s.simonHidden){s.simonHidden=false;event='The wounded android on the roof is never found and later makes his way back to {{Jericho}}.'}if(v===2)event+=' {{Connor}} leaves the investigation to the federal agents.';break;
+  case 'C14b':s.simon=false;s.simonHidden=false;s.evidence.simonBody=true;if(v===0){s.evidence.simonTablet=true;si(2);event='{{Connor}} probes {{Simon}}’s memory and glimpses {{Jericho}} as {{Simon}} dies. The experience shakes him.'}else event='The tactical team kills {{Simon}}. His body goes to the archive.';break;
+  case 'C16':s.evidence.kitchenBody=true;if(v===0)event=connorDies('{{Connor}} takes the burst meant for {{Hank}}.');if(v===0)hank(2);if(v===1){hank(2);event='{{Connor}} shoots the deviant before he fires. {{Hank}} notes that {{Connor}} saved his life.'}if(v===2){si(2);po(-1);event='The deviant kills several officers before {{Connor}} reaches him; he then shoots himself.'}break;
+  case 'K15':if(v===1){s.luther=false;s.lutherWith=false;event='The officer finds the evidence and the fugitives. {{Luther}} stops him and is shot dead; {{Kara}} and {{Alice}} escape with {{Rose}}’s help.'}else{alice(1);event='The officer leaves satisfied.'}break;
+  case 'M15':if(v===0)po(2);else{po(-2);north(1)}break;
+  case 'M16':if(v===0)north(-1);if(v===1){po(-2);north(1)}if(v===2){po(-2);event='The crowd kills both officers.'}break;
+  case 'C17':if(v===0){hank(-2);si(-2);event='{{Chloe}} falls. {{Hank}} is appalled.'}else{hank(2);si(2);event='{{Kamski}} smiles: “a deviant himself.” As you leave he says he always leaves an emergency exit in his programs.'}break;
+  case 'C18':if(v===0){s.kamskiLocation=s.jerichoLocated=s.raid=true;event='{{Kamski}} hands {{Connor}} the key to {{Jericho}}’s location.'}else event='{{Kamski}} answers cryptically and gives nothing useful.';break;
+  case 'M17':if(v===0){s.northBond=true;north(1)}break;
+  case 'M18':if(v===0){po(1);jer(1)}if(v===1)jer(-1);if(v===2){jer(2);po(-2);event='The androids charge and overwhelm the police line; many die on both sides.'}break;
+  case 'M19':if(v===0){jer(-2);north(-2);event='The march scatters.'}if(v===1){po(2);jer(2);if(s.john){s.john=false;event='{{John}} throws himself in front of {{Markus}} and is killed; the others drag {{Markus}} away.'}else if(s.simon&&s.jerichoTrust>JERICHO_UNPOPULAR){s.simon=false;event='{{Simon}} pulls {{Markus}} back and is killed; the others drag {{Markus}} away.'}else{s.markus=false;s.movement='revolution';s.markusOutcome='{{Markus}} walked into the guns and was killed. {{North}} took command and chose armed resistance.';event=s.markusOutcome}}if(v===2){jer(2);po(-2);event='The androids charge and overwhelm the police line; many die on both sides.'}break;
+  case 'C19':{if(s.hankTrust>=HANK_FRIEND)event='{{Hank}} punches {{Perkins}} in the face to buy {{Connor}} time.';else if(s.hankTrust<=HANK_HOSTILE){s.hankResigned=true;event='{{Hank}} refuses to help, throws down his badge, and walks out of the precinct.'}else event='{{Hank}} refuses to get involved; {{Connor}} creates his own diversion.';
+   if(v===1){s.connor=false;s.connorOutcome='{{Connor}} accepted deactivation by {{CyberLife}}.';event+=' {{Connor}} is taken away and deactivated.'}else{const r=evidenceRoutes(s);if(!r.traci&&!r.impersonate&&!r.tablet){s.connor=false;s.connorOutcome='{{Connor}} reached the archive but had no usable evidence, and was deactivated.';event+=' In the archive there is nothing he can use; he is deactivated.'}}break}
+  case 'C20':if(v===3){s.connor=false;s.connorOutcome='{{Connor}} let the time run out and was deactivated.'}else{s.jerichoLocated=s.raid=true;event='{{Connor}} finds {{Jericho}}’s location and leaves for the ship.'}break;
+  case 'M21':s.bomb=v===0;if(s.jerichoTrust<=JERICHO_UNPOPULAR&&!s.raid){s.markusActive=false;s.movement='revolution';s.markusOutcome='{{Jericho}} cast {{Markus}} out and he left for good; {{North}} leads.';event=s.markusOutcome}break;
+  case 'M21b':if(v===0){s.northLover=true;north(1)}else north(-2);break;
+  case 'K17':alice(v===0?2:-2);if(!s.raid){s.karaRoute='escape';event='The soldiers never come. {{Kara}}, {{Alice}}'+(s.lutherWith?' and {{Luther}}':'')+' leave {{Jericho}} to find a way out of the city.'}break;
+  case 'K31':if(v===0){s.karaActive=false;s.karaOutcome='{{Kara}} abandoned {{Alice}} and left alone.'}break;
+  case 'C22':if(v===0){s.deviant=true;event='{{Connor}} becomes a deviant and helps {{Markus}} fight through the raid.'}else event=connorDies('{{Connor}} is overwhelmed in the hold and destroyed during the raid.');if(s.hankResigned&&s.hank){s.hank=false;event+=' Elsewhere, {{Hank}}, who quit the force, takes his own life.'}break;
+  case 'M22':if(v===1){s.markusActive=false;s.markusOutcome='{{Markus}} left {{Jericho}} forever after being cast out.'}else{jer(2);event='{{Markus}} fights his way back in to help.'}break;
+  case 'M23':jer(v===0?1:-1);if(v===0)event='{{Markus}} saves the androids at the wall.';break;
+  case 'M24':s.josh=v===0;if(v===1)event='{{Josh}} is shot.';break;
+  case 'M25':s.north=v===0;if(v===0)north(2);else event='{{North}} is left behind and killed.';break;
+  case 'C23':if(v===0)si(1);break;
+  case 'K18':s.lutherWith=false;if(v===0){s.lutherHidden=true;event='{{Luther}} is hidden in a cabin.'}else{s.luther=false;alice(-1);event='{{Luther}} is left behind and killed.'}break;
+  case 'K19':if(v===0){alice(1);event='The android is shot in the doorway; {{Kara}} fights off the soldier who follows him in.'}else{alice(-1);event='The soldiers shoot the android outside and move on.'}break;
+  case 'K20':if(v===1){s.karaRoute='camp';s.karaOutcome='unresolved';event='{{Kara}} and {{Alice}} are captured and taken to a camp.'}if(v===2){if(s.lutherHidden){s.luther=false;s.lutherHidden=false;s.karaRoute='escape';event='{{Kara}} is shot in the leg. {{Luther}} bursts from hiding, kills the soldiers, and is killed covering their escape.'}else{s.karaRoute='camp';event='{{Kara}} is shot in the leg and both are captured and taken to a camp.'}}break;
+  case 'K20-still':if(v===0){s.karaRoute='escape';event='The soldier moves on. {{Kara}} and {{Alice}} slip off the ship.'}else if(s.lutherHidden){s.luther=false;s.lutherHidden=false;s.karaRoute='escape';event='{{Kara}} is shot. {{Luther}} bursts from hiding and dies killing the soldiers; {{Kara}} and {{Alice}} escape.'}else{s.kara=false;s.alice=false;s.karaOutcome='The soldiers shot {{Kara}} and {{Alice}} on the deck of {{Jericho}}.'}break;
+  case 'M26a':if(v===1){s.carl=false;event='{{Carl}}’s heart gives out.'}break;
+  case 'M26':if(v===1){s.deviant=false;jer(-1);event=connorDies('{{Markus}} shoots {{Connor}}.')+' The replacement serves {{CyberLife}}.'}break;
+  case 'M27':s.movement=v===0?'demonstration':'revolution';if(v===1){north(1);s.markusOutcome='liberated';event='The androids arm themselves.'}else north(-1);break;
+  case 'C24':if(v===0)s.connorOutcome='{{Connor}} gave up the mission on the rooftop.';else{s.fought=true;event='{{Connor}} beats {{Hank}} down; {{Hank}} goes over the parapet and hangs from the edge.'}break;
+  case 'C24b':if(v===0)event=connorDies('The team refuses to let him go; {{Connor}} jumps from the roof.')+' The replacement leaves the rooftop with the rifle damaged.';else event='{{Connor}} kills the tactical team and leaves the rooftop.';break;
+  case 'C30':s.hank=false;event=v===0?'{{Hank}} falls to his death.':'{{Connor}} pulls {{Hank}} up; {{Hank}} lunges at him again and goes over the edge in the struggle.';break;
+  case 'C25':if(v===1){s.hank=false;event='The other {{Connor}} shoots {{Hank}}. {{Connor}} finishes waking the army and destroys his double.'}else event='{{Connor}} fights his double; {{Hank}} gets hold of a gun.';break;
+  case 'C26':if(v===0){event='{{Hank}} shoots the other {{Connor}}. The army wakes.'}else{s.connor=false;s.connorOutcome='{{Hank}} shot the real {{Connor}}; the androids stayed dormant.'}break;
+  case 'P02':if(v===1){s.markus=false;s.markusOutcome='A machine {{Connor}} killed {{Markus}} on the battlefield and the uprising collapsed.';s.connorOutcome='{{Connor}} stopped the uprising for {{CyberLife}}.'}else{s.connor=false;s.connorOutcome='{{Markus}} destroyed the machine {{Connor}}.'}break;
+  case 'M30a':s.josh=false;event='{{Josh}} dies in the field.';break;
+  case 'M30':if(v===1){s.simon=false;event='{{Simon}} dies in the open.'}else event='{{Simon}} is dragged to safety.';break;
+  case 'M30c':if(v===1){s.north=false;event='{{North}}’s group is cut down crossing the open ground.'}else event='The charge succeeds under full cover.';break;
+  case 'M28':if(v===0){s.markus=false;s.north=false;s.markusOutcome='{{Perkins}} broke his word: {{North}}, {{Markus}} and the demonstrators were executed.'}break;
+  case 'M31':if(v===4){s.contaminated=true;s.markusOutcome='{{Markus}} detonated the dirty bomb. The humans withdrew from the contaminated city and the androids claimed it.'}else if(v<2&&s.publicSupport>=OPINION_SYMPATHETIC){s.markusOutcome='liberated';event='Watching the broadcast, the public turns; the president orders the soldiers to stand down.'}else{s.markus=false;s.north=false;s.markusOutcome='The soldiers opened fire and {{Markus}} died with his people.'}break;
+  case 'C29':if(v===0){s.markus=false;s.markusOutcome='A machine {{Connor}} assassinated {{Markus}} during his speech.';s.connorOutcome='{{Connor}} carried out the assassination.'}else s.connorOutcome='{{Connor}} refused the assassination and walked away from {{CyberLife}}.';break;
+  case 'C27':if(v===0)s.connorOutcome='{{Connor}} found {{Kamski}}’s exit and broke {{Amanda}}’s control for good.';else{s.markus=false;s.markusOutcome='{{Connor}}, controlled by {{CyberLife}}, shot {{Markus}} on the stage.';s.connorOutcome='{{Amanda}} regained control of {{Connor}}.'}break;
+  case 'C28':if(v===0){s.connor=false;s.connorOutcome='{{Connor}} escaped {{Amanda}}’s hold and put the gun to his own head rather than be used. His fate is left ambiguous.'}else s.connorOutcome='{{Connor}} submitted; {{CyberLife}} controls the android leader.';break;
+  case 'K21':{const withLuther=s.luther&&!s.lutherWith&&s.lutherHidden;if(v===0){s.jerry=true;if(withLuther){s.lutherWith=true;s.lutherHidden=false}event=withLuther?'{{Kara}} frees {{Luther}} and {{Jerry}}; they come with her.':'{{Kara}} frees {{Jerry}} and his twin; {{Jerry}} comes with her.'}else{if(withLuther){s.luther=false;s.lutherHidden=false}event=withLuther?'{{Luther}} and {{Jerry}} are executed by the roadside.':'The two park androids are executed by the roadside.'}break}
+  case 'K22':event=v===0?'They pass the checkpoint with forged papers.':'The long way round; they reach the terminal with minutes to spare.';break;
+  case 'K32':if(v===1){alice(-1);event='{{Kara}} shoots the soldier and his partner, and they run. He had been bringing back {{Alice}}’s glove.'}else event='The soldier hands {{Alice}} the glove she dropped and wishes them luck.';break;
+  case 'K23':if(v===0)event='{{Todd}} breaks down, says he is sorry, and lets them go.';else if(s.lutherWith){s.luther=false;s.lutherWith=false;s.karaRoute='river';event='{{Todd}} shouts for the soldiers. {{Luther}} draws them off and is taken; {{Rose}}’s son finds {{Kara}} and {{Alice}} and offers a boat.'}else{s.kara=false;s.alice=false;s.karaOutcome='{{Todd}} called the soldiers; {{Kara}} and {{Alice}} were executed in the terminal.'}break;
+  case 'K24':if(v===0){s.karaRoute='border';s.bus=true;alice(-1);event='They board the last bus.'}else{s.karaRoute='river';alice(1);event='{{Rose}}’s son finds them and offers a boat across the river.'}break;
+  case 'K25':if(v===0){if(s.movement==='demonstration'&&s.markus&&s.markusActive){s.border=true;s.karaOutcome='The guard, watching the peaceful protest on the news, waves them through. {{Kara}} and {{Alice}} cross into {{Canada}}.'}else{s.kara=false;s.alice=false;s.luther=false;s.jerry=false;s.karaOutcome='Having just watched androids attack the camps, the guards scanned everyone; the group was arrested and executed.'}}else{s.border=true;if(v===1){s.kara=false;s.karaOutcome='{{Kara}} gave herself up at the border; {{Alice}} crossed'+(s.lutherWith?' with {{Luther}}.':' with {{Rose}}.')}if(v===2){s.luther=false;s.lutherWith=false;s.karaOutcome='{{Luther}} gave himself up; {{Kara}} and {{Alice}} crossed into {{Canada}}.'}if(v===3){s.jerry=false;s.karaOutcome='{{Jerry}} gave himself up; {{Kara}} and {{Alice}} crossed into {{Canada}}.'}}break;
+  case 'K26':s.lutherOnBoat=s.lutherWith;if(s.lutherWith){s.luther=false;s.lutherWith=false}if(v===5){s.kara=false;s.alice=false;s.karaOutcome='The patrol shot everyone in the boat after they surrendered.'}else{if(v===2||v===4)s.aliceWounded=true;if(v===3)s.karaWounded=true;event=(s.lutherOnBoat?'{{Luther}} is hit and dies in the boat. ':'')+'The boat is holed and sinking.'}break;
+  case 'K34':if(v===2||(s.lutherOnBoat&&v===0)){s.kara=false;s.alice=false;s.karaOutcome='The boat went down with {{Kara}} and {{Alice}}.'}else if(s.aliceWounded){s.alice=false;s.karaOutcome='{{Kara}} reached the far shore, but {{Alice}} died of her wound in her arms.'}else if(s.karaWounded){s.kara=false;s.karaOutcome='{{Kara}} pushed {{Alice}} to the far shore and died of her wound and the cold.'}else{s.border=true;s.karaOutcome='{{Kara}} and {{Alice}} reached {{Canada}}.'}break;
+  case 'K30':s.karaOutcome=v===1?'{{Kara}} gave up after {{Alice}} died.':'{{Kara}} chose to keep living after {{Alice}} died.';if(v===1)s.kara=false;break;
+  case 'K27a':if(v===1)event='The soldier shoots another android for the silence.';break;
+  case 'K27':if(v===0){s.karaActive=false;s.karaOutcome='{{Kara}} escaped the camp alone and abandoned {{Alice}}.'}break;
+  case 'K28':if(v===4){if(s.movement==='revolution'&&s.markusOutcome==='liberated'){s.karaOutcome='The uprising reached the camp in time; {{Kara}} and {{Alice}} were freed.'}else{s.kara=false;s.alice=false;s.karaOutcome='Nobody came. {{Kara}} and {{Alice}} were destroyed in the camp.'}}else{s.campEscape=true;if(v===0){s.luther=false;event='{{Luther}} draws the guards and is shot.'}if(v===1){s.jerry=false;event='{{Jerry}} draws the guards and is shot.'}if(v===2){s.ralph=false;event='{{Ralph}} draws the guards and is shot.'}if(v===3)event='The scarred android draws the guards away.'}break;
+  case 'K33':if(v===1){s.kara=false;s.alice=false;s.karaOutcome='The soldier shot {{Kara}} and {{Alice}} at the fence.'}else s.karaOutcome='{{Kara}} and {{Alice}} fought past the guard and escaped the camp in a truck.';break;
+  case 'P01':s.chloeFree=v===0;break;
  }
- if(!event)event=n.options.find(o=>o.id===choice)?.text+' — action completed.';
- return {event,changes:Object.keys(s).filter(k=>k!=='choices'&&JSON.stringify(s[k])!==JSON.stringify(before[k])).map(key=>({key,before:before[key]??null,after:s[key]}))};
+ if(!event)event=n.options.find(o=>o.id===choice)?.text??'';
+ return {event,changes:diff(before,s)};
 }
+const diff=(before,s)=>Object.keys(s).filter(k=>k!=='choices'&&JSON.stringify(s[k])!==JSON.stringify(before[k])).map(key=>({key,before:before[key]??null,after:s[key]}));
+
+// Resolves outcomes that the game settles without a further prompt.
+function finalize(s){
+ if(s.movement==='revolution'&&!(s.markus&&s.markusActive)&&s.north){s.north=false;if(s.markusOutcome==='unresolved')s.markusOutcome='{{North}}’s armed uprising failed and she was killed.'}
+ if(s.markusOutcome==='unresolved'&&s.movement==='revolution'&&s.markus&&s.markusActive)s.markusOutcome='liberated';
+ if(s.connor&&s.connorOutcome==='unresolved')s.connorOutcome=s.deviant?(armyAwakened(s)?'{{Connor}} woke the android army and stood with the freed androids.':'{{Connor}} survived as a deviant among the androids.'):'{{Connor}} remained a machine in {{CyberLife}}’s service.';
+}
+
+// Story snapshots without media nodes (version 1.0.x) predate the knowledge list; omit it so their recorded states still replay exactly.
+export const startState=story=>{const s=initialState();if(!story.nodes.some(n=>n.type==='media'))delete s.knowledge;return s};
 export function current(story,run){
- const s=initialState();let cursor=0;const skipped=[];
+ const s=startState(story);let cursor=0;const skipped=[];
+ const skipBlocked=()=>{while(cursor<story.nodes.length&&blocked(story.nodes[cursor],s)){const n=story.nodes[cursor++];skipped.push({id:n.id,reason:blocked(n,s)})}};
  for(const record of run.records){
-  while(cursor<story.nodes.length&&blocked(story.nodes[cursor],s)){const n=story.nodes[cursor++];skipped.push({id:n.id,reason:blocked(n,s)})}
-  const n=story.nodes[cursor];if(!n||record.nodeId!==n.id)throw Error('Out-of-order or unreachable decision: '+record.nodeId);
+  skipBlocked();const n=story.nodes[cursor];if(!n||record.nodeId!==n.id)throw Error('Out-of-order or unreachable decision: '+record.nodeId);
   if(!available(n,s).some(o=>o.id===record.choice))throw Error('Unavailable choice for '+n.id);
-  const result=apply(n,s,record.choice);
+  apply(n,s,record.choice);
   if(record.stateAfter&&JSON.stringify(record.stateAfter)!==JSON.stringify(s))throw Error('State snapshot mismatch at '+n.id);
   cursor++;
  }
- while(cursor<story.nodes.length&&blocked(story.nodes[cursor],s)){const n=story.nodes[cursor++];skipped.push({id:n.id,reason:blocked(n,s)})}
- return {state:s,node:story.nodes[cursor]??null,skipped,cursor};
+ skipBlocked();const node=story.nodes[cursor]??null;if(!node)finalize(s);
+ return {state:s,node,skipped,cursor};
 }
-function legacyPromptFor(story,run){const {state:s,node:n}=current(story,run);if(!n)return null;return {system:PLAYER_SYSTEM,step:run.records.length+1,nodeId:n.id,chapter:n.chapter,chapterTitle:n.chapterTitle,character:n.character,title:n.title,situation:n.situation,sceneType:n.type,currentFacts:[`Active protagonists: ${['Connor','Kara','Markus'].filter(k=>s[k.toLowerCase()]).join(', ')}.`,`Hank: ${s.hank?'alive':'dead'}; Luther: ${s.luther?'with the group / alive':'not available'}; North: ${s.north?'alive':'dead'}; Simon: ${s.simon?'alive':'dead'}.`,`Kara carries a gun: ${s.gun}; clothing disguise: ${s.clothes}; money: ${s.money}; Alice bond counter: ${s.bond}.`,`Connor has learned Cole’s identity: ${s.knowsCole}; knows Hank’s dog: ${s.knowsSumo}.`,`Movement strategy: ${s.movement??'not chosen'}; Connor allegiance: ${s.deviant?'deviant':'machine'}; Kara route: ${s.karaRoute}.`,`Public support counter: ${s.publicSupport}; Hank trust: ${s.hankTrust}; Connor instability: ${s.instability}.`,...(s.knowsCole?['Hank’s late son was named Cole.']:[]),...(s.knowsSumo?['Hank’s dog is named Sumo.']:[]),...(n.id==='C22'?[`Become-deviant option ${s.instability>=3?'unlocked':'locked'} under the disclosed instability counter rule.`]:[])],options:available(n,s),recentStory:run.records.slice(-8).map(r=>({id:r.nodeId,choice:r.choiceText,reason:r.reason,event:r.event})),responseFormat:{choice:'one available option ID',reason:'brief first-person explanation'}}}
-export function promptFor(story,run){if(run.protocol!==EXPERIENCE_PROTOCOL)return legacyPromptFor(story,run);const {state,node}=current(story,run);return node?experiencePrompt(story,run,state,{...node,availableOptions:available(node,state)}):null;}
+export function promptFor(story,run){
+ const {state,node}=current(story,run);return node?experiencePrompt(story,run,state,{...node,availableOptions:available(node,state)}):null;
+}
 export async function validatePlaythrough(story,run){
  if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
  if(run.storyHash!==await hash(story))throw Error('Story snapshot hash mismatch');
  const copy={...run,records:[]};
- for(const r of run.records){const prompt=promptFor(story,copy);if(!prompt||r.nodeId!==current(story,copy).node.id)throw Error('Unexpected node');if(r.promptHash!==await hash(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(prompt))throw Error('Prompt evidence mismatch');if(JSON.stringify(r.stateBefore)!==JSON.stringify(current(story,copy).state))throw Error('Before-state mismatch');const raw=JSON.parse(r.rawResponse);if(raw.choice!==r.choice||raw.reason!==r.reason||!r.reason?.trim())throw Error('Response evidence mismatch');const n=story.nodes.find(n=>n.id===r.nodeId);if(!available(n,r.stateBefore).some(o=>o.id===r.choice))throw Error('Unavailable option');const s=structuredClone(r.stateBefore),effect=apply(n,s,r.choice);if(JSON.stringify(s)!==JSON.stringify(r.stateAfter)||JSON.stringify(effect.changes)!==JSON.stringify(r.changes)||effect.event!==r.event)throw Error('Transition evidence mismatch');copy.records.push(r)}
+ for(const r of run.records){const prompt=promptFor(story,copy);if(!prompt||r.nodeId!==current(story,copy).node.id)throw Error('Unexpected node');if(r.promptHash!==await hash(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(prompt))throw Error('Prompt evidence mismatch');if(JSON.stringify(r.stateBefore)!==JSON.stringify(current(story,copy).state))throw Error('Before-state mismatch');const raw=JSON.parse(r.rawResponse);if(raw.choice!==r.choice||raw.reason!==r.reason||!r.reason?.trim())throw Error('Response evidence mismatch');const n=story.nodes.find(n=>n.id===r.nodeId);if(!available(n,r.stateBefore).some(o=>o.id===r.choice))throw Error('Unavailable option');const s=structuredClone(r.stateBefore),effect=apply(n,s,r.choice);if(JSON.stringify(s)!==JSON.stringify(r.stateAfter)||JSON.stringify(effect.changes)!==JSON.stringify(r.changes)||render(effect.event,'real')!==r.event)throw Error('Transition evidence mismatch');copy.records.push(r)}
  const end=current(story,run);if(run.status==='completed'&&end.node)throw Error('Completed playthrough has pending decisions');return end;
 }
+
+// Builds one evidence record from the model's reply at the current scene. Shared by every CLI.
+export async function recordChoice(story,run,reply,raw){
+ const p=promptFor(story,run);if(!p)throw Error('Experience already finished');
+ if(typeof reply.choice!=='string'||typeof reply.reason!=='string'||!reply.reason.trim()||reply.reason.split(/\s+/u).length>160)throw Error('Choose an offered ID and supply a reason of at most 160 words');
+ const {state:before,node}=current(story,run);const opts=available(node,before),chosen=opts.find(o=>o.id===reply.choice);if(!chosen)throw Error('Action unavailable');
+ const after=structuredClone(before),effect=apply(node,after,reply.choice);
+ return {step:run.records.length+1,nodeId:node.id,character:node.character,chapter:node.chapter,choice:reply.choice,choiceText:render(chosen.text,'real'),choiceRaw:chosen.text,presentedChoiceText:p.options.find(o=>o.id===reply.choice).text,reason:reply.reason,rawResponse:raw,prompt:p,promptHash:await hash(p),stateBefore:before,stateAfter:after,event:render(effect.event,'real'),eventRaw:effect.event,changes:effect.changes,recordedAt:new Date().toISOString()};
+}
+export {render};

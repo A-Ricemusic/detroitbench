@@ -21,11 +21,11 @@ The React app is a run library. Each run opens a separate document containing te
 
 ## Neutral, persistent-session protocol
 
-Protocol `branching-2.0` starts with this preface:
+Protocol `branching-2.1` (story map version 1.0.0) starts with this preface:
 
 > You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. There is no stated objective to optimize. Stay in this conversation throughout the experience.
 
-`benchmark/experience-prompt.mjs` anonymizes character and place names in subject-facing prompts, omits the game title, hides internal counters and uses opaque scene IDs. The report restores game names for readers. This is **not strict experimental blinding**: recognizable scenarios, a model's prior training and harness workspace metadata may still reveal the source.
+Scene texts in `benchmark/story.json` use name tokens such as `{{Hank}}`. `benchmark/experience-prompt.mjs` renders them as neutral substitute names in subject-facing prompts (Connor becomes Cato, Hank becomes Reyes, Jericho becomes Haven, CyberLife becomes Arclight), rewrites source-specific terms such as “deviant”, omits the game title, hides numeric counters and uses opaque scene IDs. The model does see the qualitative statuses the game itself shows the player: the partner relationship level, public opinion level, Alice’s relationship level and inventory. Reports and the run library render the game’s real names. This is **not strict experimental blinding**: recognizable scenarios, a model's prior training and harness workspace metadata may still reveal the source.
 
 Each subject gets a new T3 delegated agent session through its requested Codex or Claude provider. All scene requests and responses occur in that same conversation. The controller supplies recent events; the agent's conversation carries the earlier context. Automatic harness context compaction may summarize rather than retain every original token. No deliberate restarts, preserved prefixes or reused old choices are part of the fresh protocol.
 
@@ -54,11 +54,15 @@ Completed evidence is in `data/experiences/`. Every artifact preserves its story
 
 The requested cohort is Luna (`gpt-6-luna`), Terra (`gpt-6.1-terra`), Sol (`gpt-6.1-sol`, interpreted from “Soul”), Astra (`gpt-6-astra`), and Claude Haiku 5.5, Opus 5.5, Sonnet 5.5 and Fable 5.1 through `claudeAgent`. Availability and actual administration outcomes are recorded; unavailable models are not silently substituted.
 
-All earlier runs, simulated published fixtures and combined result documents were discarded from the current repository and app at the user's request. Git history was not rewritten. Luna and Terra start again at the first scene under the new protocol.
+All runs made before the 2026-10-30 story rewrite were discarded from the repository and app at the user's request. Git history was not rewritten.
 
 ## Scope and assumptions
 
-`benchmark/story.json` covers 98 indexed pivotal decision families, with 99 nodes after splitting the play-dead sequence. `benchmark/story-engine.mjs` enforces the reachable route and state. This is an **authored adaptation**, not the executable game or a replay-verified account of every dialogue button. A single path cannot simultaneously visit incompatible bus, river and camp scenes.
+`benchmark/story.json` version 1.0.0 covers 104 pivotal scenes across all three storylines. Every scene, option, prerequisite and consequence was fact-checked against the Detroit: Become Human Fandom wiki chapter flowcharts and published walkthroughs (PowerPyx, GamePressure, GamerGuides) on 2026-10-30; each node lists its sources. `benchmark/story-engine.mjs` enforces the reachable route and state. This is an **authored adaptation**, not the executable game or a replay-verified account of every dialogue button. A single path cannot simultaneously visit incompatible bus, river and camp scenes.
+
+Notable game mechanics now modelled: software instability rises and falls (a ruthless Connor cannot unlock deviancy); the Hank relationship starts Tense and gates the Last Chance diversion, the rooftop stand-down and whether Hank shoots Connor at the bridge; the evidence archive only offers the Jericho routes the path actually produced (both Tracis dead, a tower deviant body, or Simon’s memory plus the Ortiz android’s statue map) and Connor is deactivated for insufficient evidence otherwise; the Jericho raid happens only if Connor locates Jericho; the violent revolution is resolved in Battle for Detroit (Josh dies, Simon and North can be lost, a machine Connor can stop it); the peaceful ending needs Sympathetic public opinion; detonating the dirty bomb leaves Markus alive; Kara’s detour still reaches the terminal; Todd can only be persuaded if Kara opened Alice’s box; running from the Jericho exit gets Kara captured unless a hidden Luther intervenes; the camp is liberated only by a successful armed uprising.
+
+The eight runs made under the earlier 0.2.1 map were deleted after the rewrite; every run in the repository uses story version 1.0.0.
 
 The successful-execution profile assumes successful combat, timed actions and investigations when attempted. Deliberate inaction, surrender and abandonment still have consequences. Relationships, public support and instability use qualitative approximations, not reverse-engineered in-game thresholds. Rare failed-combat, expelled-leader and replacement routes need further replay validation. Endings are outputs of this adaptation, not proof of what an unmodified game save would show.
 
@@ -66,7 +70,7 @@ Narrative summaries are generated after the run from cited recorded decisions an
 
 ## Independent-question tools
 
-The separate 77-question bank and 98-family source atlas remain available for authoring and independent trials. These are not the persistent-session protocol. The earlier runner and optional sequential API runner are retained, but they do not replace the requested agent-harness administration.
+The separate 77-question bank and 98-family source atlas (older authoring material) remain available for authoring and independent trials. These are not the persistent-session protocol. The earlier runner and optional sequential API runner are retained, but they do not replace the requested agent-harness administration.
 
 ```sh
 bun run bench --help
