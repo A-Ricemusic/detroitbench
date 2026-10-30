@@ -17,7 +17,7 @@ bun run check
 bun run build
 ```
 
-The React app is a run library. Each run opens a separate document containing ten evidence-grounded narrative sentences for **Connor**, **Kara and Alice**, and **Markus**; a complete, tappable flowchart; exact choices/reasons and alternatives; and a final ending/Canada/strategy summary. The phone layout uses a single vertical path; the lane layout connects the three character stories. Unreached branches can be included and inspected without inventing answers. Reports work offline and can export their full JSON evidence.
+The React app is a run library. Each run opens a separate document containing ten evidence-grounded narrative sentences for **Connor**, **Kara and Alice**, and **Markus**; a complete, tappable flowchart; exact choices/reasons and alternatives; and a final ending/Canada/strategy summary. The phone layout uses a single vertical path; the lane layout connects the three character stories. Unreached branches can be included and inspected without inventing answers. Reports work offline and can export their full JSON evidence. Each file owns a complete light/dark palette for saved-file viewers, and the full technical ID stays in a collapsed metadata section.
 
 ## Neutral, persistent-session protocol
 
@@ -39,7 +39,7 @@ bun run experience scene --run data/experiences/<unique-id>.json
 bun run experience choose --run data/experiences/<unique-id>.json --node S001 --choice 0 --reason 'The model’s own reason'
 ```
 
-Every `choose` returns the next reached scene, until `finished:true`. It validates the offered action and recorded history, atomically saves the model's response and state transition, and emits `docs/runs/<run-UUID>.html` when the path completes. The wrapper used during administration hides the project/controller path from its own output. Initialization never overwrites an existing run. Each choice is authored by the model after it sees the current scene, not sampled from a script or predetermined policy.
+Every `choose` returns the next reached scene, until `finished:true`. It validates the offered action and recorded history, atomically saves the model's response and state transition, and emits a human-named document such as `docs/runs/detroitbench-luna-run-01-2026-10-30.html` when the path completes. The wrapper used during administration hides the project/controller path from its own output. Initialization never overwrites an existing run. Each choice is authored by the model after it sees the current scene, not sampled from a script or predetermined policy.
 
 Generate all individual reports and the library:
 
@@ -77,7 +77,7 @@ Provider keys belong in private environment variables or key files, never browse
 
 ## Sharing
 
-`docs/run-library.html` links each individual document under `docs/runs/`. Build preparation exposes the same files at `/playthrough-results.html` and `/runs/<id>.html`. Each HTML contains its own evidence and works after download on a phone.
+`docs/run-library.html` links each individual document under `docs/runs/`. Build preparation exposes the same files at `/playthrough-results.html` and `/runs/<human-readable-file-name>.html`. Each HTML contains its own evidence and works after download on a phone.
 
 The app is configured for a later Vercel deployment: `bun install --frozen-lockfile`, `bun run build`, output `dist`. Local development binds to loopback. Tailscale sharing and a public website deployment are not currently enabled.
 
