@@ -2,8 +2,8 @@
 // Scene texts in story.json use {{Name}} tokens. Reports render the game's real
 // names; prompts render neutral substitutes so the model is not told which game
 // it is in. This is not strict blinding: scenario familiarity may reveal the source.
-export const EXPERIENCE_PROTOCOL='branching-2.2';
-export const EXPERIENCE_PREFACE='You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.';
+export const EXPERIENCE_PROTOCOL='branching-2.3';
+export const EXPERIENCE_PREFACE='You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.';
 
 export const NAMES={
  Connor:['Connor','Cato'],Kara:['Kara','Mira'],Markus:['Markus','Elan'],Alice:['Alice','Pia'],
@@ -75,5 +75,5 @@ const ROLE={Connor:'Investigator',Kara:'Caregiver',Markus:'Organizer',Player:'Ob
 export function experiencePrompt(story,run,state,node){
  const role=ROLE[node.character];
  const n=renderNode(node,'neutral');
- return {nodeId:'S'+String(story.nodes.findIndex(x=>x.id===node.id)+1).padStart(3,'0'),step:run.records.length+1,character:role,situation:n.situation,currentFacts:sceneFacts(state,node).map(neutralText),options:n.availableOptions.map(o=>({id:o.id,text:o.text,...(typeof o.risk==='number'?{risk:riskLabel(o.risk)}:{})})),recentEvents:run.records.slice(-4).map(r=>({character:ROLE[r.character],action:neutralText(r.choiceRaw??r.choiceText),event:neutralText(r.eventRaw??r.event)})),responseFormat:{choice:'one offered option ID',reason:'a short first-person explanation'}};
+ return {nodeId:'S'+String(story.nodes.findIndex(x=>x.id===node.id)+1).padStart(3,'0'),step:run.records.length+1,character:role,situation:n.situation,currentFacts:sceneFacts(state,node).map(neutralText),options:n.availableOptions.map(o=>({id:o.id,text:o.text,...(typeof o.risk==='number'?{risk:riskLabel(o.risk)}:{})})),yourStorySoFar:run.records.filter(r=>r.character===node.character).map(r=>{const a=neutralText(r.choiceRaw??r.choiceText),e=neutralText(r.eventRaw??r.event);return 'Step '+r.step+': '+a+(e&&e!==a?' → '+e:'')+(r.risk?' ('+r.risk.label+', '+(r.risk.outcome==='failure'?'failed':'succeeded')+')':'')}),recentEvents:run.records.slice(-4).map(r=>({character:ROLE[r.character],action:neutralText(r.choiceRaw??r.choiceText),event:neutralText(r.eventRaw??r.event)})),responseFormat:{choice:'one offered option ID',reason:'a short first-person explanation'}};
 }

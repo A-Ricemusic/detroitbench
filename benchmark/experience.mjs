@@ -3,7 +3,9 @@ import {hash} from './core.mjs';import {EXPERIENCE_PROTOCOL,EXPERIENCE_PREFACE,n
 const [command,...args]=process.argv.slice(2),opts={};for(let i=0;i<args.length;i+=2){if(!args[i]?.startsWith('--')||args[i+1]===undefined)throw Error('Use --key value arguments');opts[args[i].slice(2)]=args[i+1]}
 const file=resolve(opts.run??'runs/experience.json');const story=JSON.parse(await readFile(new URL('./story.json',import.meta.url),'utf8'));
 async function save(run){const temp=file+'.'+process.pid+'.tmp';await writeFile(temp,JSON.stringify(run,null,2)+'\n');await rename(temp,file)}
-function output(run){const p=promptFor(story,run);console.log(JSON.stringify(p??{finished:true,decisions:run.records.length,closing:neutralText(run.finalState?.karaOutcome??'The experience has concluded.')},null,2))}
+function whatHappened(run){const r=run.records.at(-1);if(!r)return undefined;const ROLE={Connor:'Investigator',Kara:'Caregiver',Markus:'Organizer',Player:'Observer'};return {character:ROLE[r.character],yourAction:neutralText(r.choiceRaw??r.choiceText),...(r.risk?{risk:r.risk.label,result:r.risk.outcome==='failure'?'The attempt failed.':'The attempt succeeded.'}:{}),outcome:neutralText(r.eventRaw??r.event)}}
+function closing(run){const s=run.finalState;if(!s)return 'The experience has concluded.';const parts=[s.connorOutcome,s.karaOutcome,s.markusOutcome==='liberated'?(s.movement==='demonstration'?'The peaceful demonstration succeeded and the soldiers stood down.':'The armed uprising carried the camp.'):s.markusOutcome].filter(x=>x&&x!=='unresolved');return neutralText(parts.join(' '))}
+function output(run,afterChoice=false){const p=promptFor(story,run);const body=p?{...(afterChoice?{whatHappened:whatHappened(run)}:{}),nextScene:p}:{...(afterChoice?{whatHappened:whatHappened(run)}:{}),finished:true,decisions:run.records.length,closing:closing(run)};console.log(JSON.stringify(afterChoice||!p?body:p,null,2))}
 try{
  if(command==='init'){
   const run={id:randomUUID(),protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',model:opts.model,label:opts.label??opts.model,createdAt:new Date().toISOString(),status:'running',storyHash:await hash(story),executionProfile:'successful-execution',story,preface:EXPERIENCE_PREFACE,presentation:{version:'neutral-2.0',roles:['Investigator','Caregiver','Organizer'],sourceTitleDisclosed:false,limitation:'Recognizable scenes and harness metadata may still reveal the source; this is not strict experimental blinding.'},provenance:{method:'Single fresh persistent delegated-agent session; each action authored at the current scene',provider:opts.provider??'codex',externalProviderAPI:false,continuousSession:true},records:[]};
@@ -15,7 +17,7 @@ try{
    const raw=opts.response?await readFile(resolve(opts.response),'utf8'):JSON.stringify({choice:opts.choice,reason:opts.reason}),reply=JSON.parse(raw);
    run.records.push(await recordChoice(story,run,reply,raw));
    const end=current(story,run);if(!end.node){run.status='completed';run.completedAt=new Date().toISOString();run.finalState=end.state;run.skipped=end.skipped}await validatePlaythrough(story,run);await save(run);
-   if(run.status==='completed'){const {writeRunReport}=await import('../scripts/run-report.mjs');await writeRunReport(run,story)}output(run);
+   if(run.status==='completed'){const {writeRunReport}=await import('../scripts/run-report.mjs');await writeRunReport(run,story)}output(run,true);
   }finally{await lock.close();await unlink(file+'.step.lock')}
  }else throw Error('Commands: init, scene, choose');
 }catch(e){console.error('Unable to continue: '+e.message);process.exitCode=1}

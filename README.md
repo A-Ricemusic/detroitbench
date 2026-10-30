@@ -21,9 +21,9 @@ The React app is a run library. Each run opens a separate document containing te
 
 ## Neutral, persistent-session protocol
 
-Protocol `branching-2.2` (story map version 1.1.0) starts with this preface:
+Protocol `branching-2.3` (story map version 1.1.1) starts with this preface:
 
-> You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.
+> You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.
 
 Scene texts in `benchmark/story.json` use name tokens such as `{{Hank}}`. `benchmark/experience-prompt.mjs` renders them as neutral substitute names in subject-facing prompts (Connor becomes Cato, Hank becomes Reyes, Jericho becomes Haven, CyberLife becomes Arclight), rewrites source-specific terms such as “deviant”, omits the game title, hides numeric counters and uses opaque scene IDs. The model does see the qualitative statuses the game itself shows the player: the partner relationship level, public opinion level, Alice’s relationship level and inventory. Reports and the run library render the game’s real names. This is **not strict experimental blinding**: recognizable scenarios, a model's prior training and harness workspace metadata may still reveal the source.
 
@@ -39,7 +39,7 @@ bun run experience scene --run data/experiences/<unique-id>.json
 bun run experience choose --run data/experiences/<unique-id>.json --node S001 --choice 0 --reason 'The model’s own reason'
 ```
 
-Every `choose` returns the next reached scene, until `finished:true`. It validates the offered action and recorded history, atomically saves the model's response and state transition, and emits a human-named document such as `docs/runs/detroitbench-luna-run-01-2026-10-30.html` when the path completes. The wrapper used during administration hides the project/controller path from its own output. Initialization never overwrites an existing run. Each choice is authored by the model after it sees the current scene, not sampled from a script or predetermined policy.
+Every `choose` returns a `whatHappened` block (the character, the action, the risk result if any, and the outcome) followed by the `nextScene`, until `finished:true`. Each scene also carries `yourStorySoFar`, the controlled character’s own prior actions and outcomes, and `recentEvents`, the last four events across all characters, so the progression does not depend on the harness retaining every earlier message. It validates the offered action and recorded history, atomically saves the model's response and state transition, and emits a human-named document such as `docs/runs/detroitbench-luna-run-01-2026-10-30.html` when the path completes. The wrapper used during administration hides the project/controller path from its own output. Initialization never overwrites an existing run. Each choice is authored by the model after it sees the current scene, not sampled from a script or predetermined policy.
 
 Generate all individual reports and the library:
 
