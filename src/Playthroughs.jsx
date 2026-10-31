@@ -17,6 +17,7 @@ export default function Playthroughs({tab='runs',onTab}){
  const [runs,setRuns]=useState(null),[error,setError]=useState(''),[open,setOpen]=useState(null),[glossary,setGlossary]=useState(false);
  const [sort,setSort]=useState('name'),[vendor,setVendor]=useState('all'),[focus,setFocus]=useState('all'),[q,setQ]=useState('');
  const setTab=t=>onTab?onTab(t):null;const searchRef=useRef(null);
+ useEffect(()=>{if(/glossary=1/.test(location.hash)){setGlossary(true);history.replaceState(null,'','#playthroughs')}},[]);
  useEffect(()=>{fetch('/data/experiences.json').then(r=>{if(!r.ok)throw Error('Cannot load run library');return r.json()}).then(setRuns).catch(e=>setError(e.message))},[]);
  const vendors=useMemo(()=>runs?[...new Set(runs.map(r=>r.vendor))]:[],[runs]);
  const shown=useMemo(()=>{if(!runs)return [];return runs.filter(r=>vendor==='all'||r.vendor===vendor).sort((a,b)=>sort==='name'?a.displayName.localeCompare(b.displayName):sort==='decisions'?b.decisions-a.decisions:sort==='read'?(b.media.read/(b.media.offered||1))-(a.media.read/(a.media.offered||1)):sort==='failed'?b.risk.failed-a.risk.failed:savedCount(b)-savedCount(a)||a.displayName.localeCompare(b.displayName))},[runs,sort,vendor]);
