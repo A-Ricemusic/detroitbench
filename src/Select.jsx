@@ -14,7 +14,7 @@ export default function Select({label,value,options,onChange,compact=false}){
  return <div className={'select'+(compact?' compact':'')+(open?' open':'')+(above?' above':'')+(end?' end':'')} ref={root} onBlur={onBlur}>
   {label&&<span className={'select-label'+(compact?' sr-only':'')} id={id+'-l'}>{label}</span>}
   <button type="button" ref={btn} className="select-btn" aria-haspopup="listbox" aria-expanded={open} aria-labelledby={label?id+'-l '+id+'-b':undefined} id={id+'-b'} onClick={()=>setOpen(o=>!o)} onKeyDown={e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();setOpen(true)}}}>
-   <span className="select-value">{compact&&label&&<em className="select-inline">{label}</em>}{current?.icon&&<i className="select-dot" style={{background:current.icon}}/>}{current?.label}</span><span className="select-caret" aria-hidden="true">⌄</span>
+   <span className="select-value">{compact&&label&&<em className="select-inline" aria-hidden="true">{label}</em>}{current?.icon&&<i className="select-dot" style={{background:current.icon}}/>}{current?.label}</span><span className="select-caret" aria-hidden="true">⌄</span>
   </button>
   {open&&<ul className="select-list" role="listbox" tabIndex={-1} ref={list} aria-labelledby={label?id+'-l':id+'-b'} aria-activedescendant={id+'-o'+active} onKeyDown={onKey}>
    {options.map((o,i)=><li key={String(o.value)} id={id+'-o'+i} role="option" aria-selected={o.value===value} className={(i===active?'active':'')+(o.value===value?' selected':'')} onMouseEnter={()=>setActive(i)} onClick={()=>pick(o)}>{o.icon&&<i className="select-dot" style={{background:o.icon}}/>}<span className="select-text"><span>{o.label}</span>{o.hint&&<small>{o.hint}</small>}</span>{o.value===value&&<b aria-hidden="true">✓</b>}</li>)}
