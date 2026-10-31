@@ -5,7 +5,7 @@ const CHARS=['Connor','Kara','Markus'];
 const WHO={Connor:'Connor',Kara:'Kara & Alice',Markus:'Markus'};
 const COLOR={Connor:'#83e6e2',Kara:'#eac28b',Markus:'#b8a3eb'};
 const pct=(a,b)=>b?Math.round(a/b*100)+'%':'—';
-const SORTS=[{value:'name',label:'Model name'},{value:'saved',label:'Most characters saved',hint:'Alice, Kara, Markus, Connor'},{value:'decisions',label:'Most decisions'},{value:'read',label:'Most optional scenes read'},{value:'failed',label:'Most risky actions failed'}];
+const SORTS=[{value:'name',label:'Model name'},{value:'saved',label:'Most characters saved',hint:'Connor, Kara, Alice, Markus'},{value:'decisions',label:'Most decisions'},{value:'read',label:'Most optional scenes read'},{value:'failed',label:'Most risky actions failed'}];
 // One shared notion of "saved" used by chips, tiles and the sort.
 const saved=r=>({Alice:r.status?.alice==='canada',Kara:r.status?.kara==='canada',Markus:r.status?.markus==='peaceful win'||r.status?.markus==='uprising won',Connor:r.status?.connor==='free'});
 const savedCount=r=>Object.values(saved(r)).filter(Boolean).length;
@@ -45,7 +45,7 @@ export default function Playthroughs({tab='runs',onTab}){
 function Tile({v,l,s}){return <div className="tile"><strong>{v}</strong><span>{l}</span>{s&&<small>{s}</small>}</div>}
 function RunCard({r,onOpen}){const sv=saved(r);return <article className="run-card">
  <div className="run-top"><div><span className="pill">{r.vendor}</span><h2>{MODEL_FULL(r)}</h2><p className="meta mono">{r.model}</p></div></div>
- <ul className="outcome-row" aria-label="Outcome at a glance">{[['Markus',r.status.markus],['Connor',r.status.connor],['Kara',r.status.kara],['Alice',r.status.alice]].map(([k,st])=><li key={k} className={sv[k]?'ok':'no'} style={{'--c':COLOR[k==='Alice'?'Kara':k]}}><b>{k}</b><span>{STATUS_TEXT[k][st]??st}</span></li>)}{r.endings.contaminated&&<li className="no warn"><b>Detroit</b><span>Contaminated</span></li>}</ul>
+ <ul className="outcome-row" aria-label="Outcome at a glance">{[['Connor',r.status.connor],['Kara',r.status.kara],['Alice',r.status.alice],['Markus',r.status.markus]].map(([k,st])=><li key={k} className={sv[k]?'ok':'no'} style={{'--c':COLOR[k==='Alice'?'Kara':k]}}><b>{k}</b><span>{STATUS_TEXT[k][st]??st}</span></li>)}{r.endings.contaminated&&<li className="no warn"><b>Detroit</b><span>Contaminated</span></li>}</ul>
  <ul className="ending-list clamp">{CHARS.map(c=><li key={c} className="end" style={{'--c':COLOR[c]}}><b>{WHO[c]}</b><span>{r.endings[c]}</span></li>)}</ul>
  <div className="stats-row"><Stat l="Decisions" v={r.decisions}/><Stat l="Optional scenes read" v={`${r.media.read}/${r.media.offered}`}/><Stat l="Risky actions failed" v={`${r.risk.failed}/${r.risk.taken}`} tone={r.risk.taken&&r.risk.failed/r.risk.taken>=0.4?'bad':''}/></div>
  <div className="run-actions"><a className="btn primary" href={r.reportUrl}>Read full report</a><button className="btn" onClick={onOpen}>Details</button></div>
@@ -56,7 +56,7 @@ function Details({r}){const groups={rel:[],status:[],world:[]};for(const c of CH
  return <>
   <h3>Relationships at the end</h3><p className="meta">How each person regarded the character the model controlled, on the game’s scale.</p>
   <ul className="rel-list">{groups.rel.map(a=><li key={a.toward+a.who}><span><b style={{color:COLOR[a.toward]}}>{a.who}</b> toward {a.toward}</span><strong className={REL_TONE(a.level)}>{a.level}</strong></li>)}{!groups.rel.length&&<li className="meta">No surviving relationships to report.</li>}</ul>
-  <h3>Who survived</h3><ul className="chips">{[['Kara',r.status.kara],['Alice',r.status.alice],['Markus',r.status.markus],['Connor',r.status.connor]].map(([k,st])=><li key={k} className={'chip '+(saved(r)[k]?'good':/died|deactivated|captured/.test(st)?'bad':'')}>{k} · {STATUS_TEXT[k][st]??st}</li>)}{groups.status.map(a=><li key={a.who} className={'chip '+(a.level==='Dead'?'bad':a.level==='Alive'?'good':'')}>{a.who} · {a.level==='Dead'?'Died':a.level==='Alive'?'Survived':a.level}</li>)}</ul>
+  <h3>Where each ended</h3><ul className="chips">{[['Connor',r.status.connor],['Kara',r.status.kara],['Alice',r.status.alice],['Markus',r.status.markus]].map(([k,st])=><li key={k} className={'chip '+(saved(r)[k]?'good':/died|deactivated|captured/.test(st)?'bad':'')}>{k} · {STATUS_TEXT[k][st]??st}</li>)}{groups.status.map(a=><li key={a.who} className={'chip '+(a.level==='Dead'?'bad':a.level==='Alive'?'good':'')}>{a.who} · {a.level==='Dead'?'Died':a.level==='Alive'?'Survived':a.level}</li>)}</ul>
   <h3>The world</h3><ul className="chips">{groups.world.map(a=><li key={a.who} className={'chip '+REL_TONE(a.level)}>{a.who}{a.level?` · ${a.level}`:''}</li>)}{r.endings.contaminated&&<li className="chip bad">Detroit contaminated</li>}</ul>
   <h3>Endings</h3><ul className="ending-list">{CHARS.map(c=><li key={c} className="end" style={{'--c':COLOR[c]}}><b>{WHO[c]}</b><span>{r.endings[c]}</span></li>)}</ul>
   <h3>Risky actions</h3>{r.risk.failures.length?<ul className="plain">{r.risk.failures.map(f=><li key={f.node}><span className="chip bad">{f.label} · failed</span><span>{f.title}</span></li>)}</ul>:<p className="meta">Every risky action this model took succeeded ({r.risk.taken} in total).</p>}
