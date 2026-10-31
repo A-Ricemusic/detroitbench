@@ -27,7 +27,7 @@ export function render(value,mode='real'){
 }
 export const neutralText=v=>render(v,'neutral');
 export const realText=v=>render(v,'real');
-export function renderNode(node,mode='real'){return {...node,title:render(node.title,mode),situation:render(node.situation,mode),adaptationNote:render(node.adaptationNote??'',mode),options:node.options.map(o=>({...o,text:render(o.text,mode)})),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode)}))}:{})}}
+export function renderNode(node,mode='real'){return {...node,title:render(node.title,mode),situation:render(node.situation,mode),adaptationNote:render(node.adaptationNote??'',mode),options:node.options.map(o=>({...o,text:render(o.text,mode)})),...(node.media?{media:node.media.map(m=>({...m,title:render(m.title,mode),facts:m.facts.map(f=>render(f,mode))}))}:{}),...(node.outcomes?{outcomes:Object.fromEntries(Object.entries(node.outcomes).map(([k,v])=>[k,render(v,mode)]))}:{}),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode)}))}:{})}}
 export function renderStory(story,mode='real'){return {...story,nodes:story.nodes.map(n=>renderNode(n,mode))}}
 
 export const LEVELS={

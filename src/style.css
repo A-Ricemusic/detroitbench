@@ -261,3 +261,5 @@ h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}
 @media(max-width:849px){main{padding-top:12px}.run-card{padding:12px}}
 
 .link{min-height:44px;display:inline-flex;align-items:center}.key .link,.list-count .link{min-height:44px;padding:0;margin:-10px 0}
+
+.pick-runs summary::after{content:'›';margin-left:8px;color:var(--text-3);transition:transform .15s;display:inline-block}.pick-runs details[open] summary::after{transform:rotate(90deg)}
