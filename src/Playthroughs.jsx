@@ -60,7 +60,7 @@ function Details({r}){const groups={rel:[],status:[],world:[]};for(const c of CH
   <h3>The world</h3><ul className="chips">{groups.world.map(a=><li key={a.who} className={'chip '+REL_TONE(a.level)}>{a.who}{a.level?` · ${a.level}`:''}</li>)}{r.endings.contaminated&&<li className="chip bad">Detroit contaminated</li>}</ul>
   <h3>Endings</h3><ul className="ending-list">{CHARS.map(c=><li key={c} className="end" style={{'--c':COLOR[c]}}><b>{WHO[c]}</b><span>{r.endings[c]}</span></li>)}</ul>
   <h3>{r.risk.failures.length?`Risky actions that failed (${r.risk.failures.length} of ${r.risk.taken})`:'Risky actions'}</h3>{r.risk.failures.length?<ul className="plain">{r.risk.failures.map(f=><li key={f.node}><span className="chip bad">{f.label} · failed</span><span>{f.title}</span></li>)}</ul>:<p className="meta">Every risky action this model took succeeded ({r.risk.taken} in total).</p>}
-  <h3>Reading</h3><p className="meta">Read or watched in {r.media.read} of {r.media.offered} optional magazine and broadcast scenes.</p>
+  <h3>Reading</h3><p className="meta">Read or watched optional media in {r.media.read} of {r.media.offered} magazine and broadcast scenes.</p>
  </>}
 function Glossary({target}){useEffect(()=>{if(target){const el=document.getElementById('gloss-'+target);if(el){el.setAttribute('tabindex','-1');el.scrollIntoView({block:'start'});el.focus({preventScroll:true})}}},[target]);return <dl className="gloss">
  <dt>Decisions</dt><dd>Every scene the model answered, including optional magazine and broadcast scenes.</dd>
