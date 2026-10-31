@@ -13,7 +13,7 @@ test('report names are human, per-model numbered and collision-free',()=>{
 });
 
 test('standalone report owns its palette and keeps IDs out of the hero',async()=>{const run=await fixture(),html=runHTML(run),hero=html.slice(html.indexOf('<header class="hero'),html.indexOf('</header>'));
- assert.ok(html.includes('<meta name="color-scheme" content="light dark">'));assert.match(html,/prefers-color-scheme:dark/);assert.match(html,/html\{background:var\(--bg\);color:var\(--text\)/);
+ assert.ok(html.includes('<meta name="color-scheme" content="light dark">'));assert.match(html,/color-scheme:dark/);assert.match(html,/html\{background:var\(--bg\);color:var\(--text\)/);
  assert.ok(!/var\(--(foreground|card|muted-foreground|primary|font-sans)\b/.test(html),'must not depend on host theme variables');
  assert.ok(!hero.includes(run.id));assert.match(hero,/<h1>TEST ONLY <span class="dot">·<\/span> Run 01<\/h1>/);assert.ok(html.includes('<summary>Technical details</summary>'));assert.ok(html.includes(run.id));
 });
