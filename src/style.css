@@ -247,3 +247,15 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--mono);font-siz
 /* ---------- Review round 4 (A) ---------- */
 .select.end .select-list{left:auto;right:0}
 .strip{scroll-padding-inline:var(--s4)}
+
+/* ---------- Mobile compaction ---------- */
+h1[tabindex="-1"]:focus,h2[tabindex="-1"]:focus{outline:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.tiles.compact{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 10px}.tiles.compact .tile{flex-direction:row;align-items:baseline;gap:8px;padding:10px 12px;min-height:0}.tiles.compact .tile strong{font-size:var(--fs-lg);min-width:3ch}.tiles.compact .tile span{font-size:var(--fs-sm);color:var(--text-2)}
+@media(min-width:850px){.tiles.compact{grid-template-columns:repeat(4,1fr)}.tiles.compact .tile{flex-direction:column;align-items:flex-start;gap:2px;padding:14px}.tiles.compact .tile strong{font-size:var(--fs-xl)}}
+.key{margin:0 0 12px;font-size:var(--fs-sm);color:var(--text-3)}.key .link{font-size:var(--fs-sm);padding:6px 0;min-height:0}
+.story-head{margin-bottom:12px}.story-head .meta{margin-top:2px}
+.select.compact .select-btn{min-height:44px;font-size:var(--fs-base)}.select-inline{font-style:normal;color:var(--text-3);margin-right:6px;font-size:var(--fs-sm)}
+.select.compact{gap:0}
+.toolbar{margin-bottom:12px}
+@media(max-width:849px){main{padding-top:12px}.run-card{padding:12px}}
