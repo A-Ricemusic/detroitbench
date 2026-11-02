@@ -1,1 +1,17 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#0b1119"/><meta name="description" content="Explore how AI models choose in Detroit: Become Human. Reproducible scenarios, transparent decisions, no single moral score."/><title>DetroitBench · The choices we make</title></head><body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#0b1017" media="(prefers-color-scheme: dark)"/>
+<meta name="description" content="How AI models choose in Detroit: Become Human. One continuous playthrough per model, every decision recorded, no single moral score."/>
+<link rel="icon" href="/icon.svg" type="image/svg+xml"/>
+<title>DetroitBench · Model playthroughs</title>
+<script>
+(function(){try{var p=localStorage.getItem('detroitbench.theme');if(p!=='light'&&p!=='dark')p='system';var t=p==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):p;document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){}})();
+</script>
+</head>
+<body><div id="root"></div><script type="module" src="/src/main.jsx"></script></body>
+</html>

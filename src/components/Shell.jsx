@@ -1,0 +1,57 @@
+import React from 'react';
+import {Sun,Moon,Monitor,Rows3,ChartLine,GitFork,FlaskConical} from 'lucide-react';
+import {cx,DropdownMenu,IconButton} from './ui.jsx';
+import {href} from '../lib/router.jsx';
+import {useTheme} from '../lib/theme.jsx';
+
+const NAV=[
+ {key:'runs',label:'Runs',short:'Runs',icon:Rows3,path:'runs'},
+ {key:'relationships',label:'Relationships',short:'Relationships',icon:ChartLine,path:'relationships'},
+ {key:'splits',label:'Where they split',short:'Splits',icon:GitFork,path:'splits'},
+ {key:'research',label:'Question bank',short:'Questions',icon:FlaskConical,path:'research'}
+];
+const THEMES=[['light','Light',Sun],['dark','Dark',Moon],['system','System',Monitor]];
+
+export function ThemeToggle(){
+ const [pref,setPref]=useTheme();
+ const Icon=THEMES.find(t=>t[0]===pref)?.[2]??Monitor;
+ return <DropdownMenu.Root>
+  <DropdownMenu.Trigger asChild><IconButton variant="secondary" label={`Appearance: ${THEMES.find(t=>t[0]===pref)?.[1]??'System'}`} icon={Icon} className="rounded-full"/></DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+   <DropdownMenu.Content align="end" sideOffset={6} className="z-50 min-w-44 rounded-xl border border-line bg-raised p-1.5 shadow-lg anim-fade-up">
+    <DropdownMenu.Label className="px-2.5 pt-1 pb-1.5 text-[11px] font-semibold uppercase tracking-wide text-ink-3">Appearance</DropdownMenu.Label>
+    <DropdownMenu.RadioGroup value={pref} onValueChange={setPref}>
+     {THEMES.map(([v,l,I])=><DropdownMenu.RadioItem key={v} value={v} className="flex items-center gap-2.5 rounded-md px-2.5 min-h-10 text-sm text-ink outline-none cursor-pointer data-[highlighted]:bg-accent-soft data-[highlighted]:ring-2 data-[highlighted]:ring-inset data-[highlighted]:ring-accent data-[state=checked]:text-accent"><I aria-hidden="true" className="size-4"/><span className="grow">{l}</span><DropdownMenu.ItemIndicator><span aria-hidden="true" className="inline-block size-2 rounded-full bg-accent"/></DropdownMenu.ItemIndicator></DropdownMenu.RadioItem>)}
+    </DropdownMenu.RadioGroup>
+   </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+ </DropdownMenu.Root>}
+
+export function Brand(){return <a href={href('runs')} className="inline-flex items-center gap-2.5 font-semibold tracking-tight text-ink hover:text-ink" aria-label="DetroitBench home"><span aria-hidden="true" className="relative inline-block size-3 rotate-45 rounded-[2px] bg-ink"/><span className="text-[15px] whitespace-nowrap">Detroit<span className="text-ink-3 font-medium">Bench</span></span></a>}
+
+export function Header({section}){
+ return <header className="sticky top-0 z-30 border-b border-line bg-bg/85 backdrop-blur-md supports-[backdrop-filter]:bg-bg/70 pt-[env(safe-area-inset-top)]">
+  <div className="container-x mx-auto flex h-14 max-w-7xl items-center justify-between gap-4">
+   <Brand/>
+   <nav aria-label="Main" className="hidden md:flex items-center gap-1">
+    {NAV.map(n=><a key={n.key} href={href(n.path)} aria-current={section===n.key?'page':undefined} className={cx('inline-flex items-center gap-2 rounded-lg px-3 min-h-9 text-sm font-medium whitespace-nowrap transition-colors',section===n.key?'bg-surface-2 text-ink':'text-ink-2 hover:text-ink hover:bg-surface-2/70')}><n.icon aria-hidden="true" className="size-4 hidden lg:block"/>{n.label}</a>)}
+   </nav>
+   <ThemeToggle/>
+  </div>
+ </header>}
+
+export function TabBar({section}){
+ return <nav aria-label="Main" className="md:hidden fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/92 backdrop-blur-md pb-[env(safe-area-inset-bottom)]">
+  <ul className="grid grid-cols-4">{NAV.map(n=><li key={n.key}><a href={href(n.path)} aria-current={section===n.key?'page':undefined} className={cx('flex flex-col items-center justify-center gap-1 h-14 text-[10.5px] tracking-tight font-medium',section===n.key?'text-ink':'text-ink-3')}><n.icon aria-hidden="true" className="size-5"/>{n.short}</a></li>)}</ul>
+ </nav>}
+
+export function Footer(){
+ return <footer className="container-x mx-auto max-w-7xl mt-16 mb-8 border-t border-line pt-6 text-xs text-ink-3 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+  <span className="font-semibold tracking-wide text-ink-2">DetroitBench</span>
+  <span className="flex flex-wrap gap-x-3 gap-y-1"><a className="link" href="/playthrough-results.html">Standalone run library</a><span>Independent fan research · Full-story spoilers · Not affiliated with Quantic Dream</span></span>
+ </footer>}
+
+export function SubNav({items,current,label,className}){
+ return <nav aria-label={label} className={cx('-mx-4 md:mx-0 overflow-x-auto no-scrollbar fade-x md:[mask-image:none] border-b border-line',className)}>
+  <ul className="flex gap-1 px-4 pr-16 md:px-0 min-w-max">{items.map(i=><li key={i.key}><a href={href(i.path)} aria-current={current===i.key?'page':undefined} className={cx('focus-inset inline-flex items-center gap-2 px-3 min-h-11 text-sm font-medium border-b-2 -mb-px transition-colors',current===i.key?'border-ink text-ink':'border-transparent text-ink-2 hover:text-ink')}>{i.label}{i.count!==undefined&&<span className="rounded-full bg-surface-2 px-1.5 py-0.5 text-[11px] text-ink-3 tnum">{i.count}</span>}</a></li>)}</ul>
+ </nav>}
