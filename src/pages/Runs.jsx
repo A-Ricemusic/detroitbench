@@ -1,9 +1,8 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
-import {FileText,Download,LayoutGrid,Rows3,Info,CircleX,CircleAlert,Minus,ChevronRight} from 'lucide-react';
-import {Badge,Button,Card,Empty,Notice,PageHeader,Section,Segmented,Select,Sheet,Skeleton,StatTile,TONE_ICON,cx,useMediaQuery} from '../components/ui.jsx';
+import {FileText,Download,LayoutGrid,Rows3,CircleX,CircleAlert,Minus,ChevronRight} from 'lucide-react';
+import {Badge,Button,Card,Empty,Notice,PageHeader,Section,Segmented,Select,Sheet,Skeleton,TONE_ICON,cx,useMediaQuery} from '../components/ui.jsx';
 import {OutcomeChart,RunRelationships} from '../components/Charts.jsx';
-import Glossary from '../components/Glossary.jsx';
-import {CHARS,WHO,CHAR_VAR,ORDER,STATUS_TEXT,STATUS_TONE,saved,relTone,pct,SORTS,sortRuns,plural,tidy} from '../lib/data.js';
+import {CHARS,WHO,CHAR_VAR,ORDER,STATUS_TEXT,STATUS_TONE,relTone,modelColors,plural,tidy} from '../lib/data.js';
 import {useLibrary} from '../lib/useLibrary.jsx';
 import {announce} from '../lib/announce.jsx';
 
@@ -75,48 +74,31 @@ export function RunSheet({r,scales,open,onClose}){
 
 export default function Runs({route,navigate}){
  const {runs,scales,error,retry}=useLibrary();
- const [sort,setSort]=useState('name'),[vendor,setVendor]=useState('all'),[view,setView]=useState(()=>{try{return localStorage.getItem('detroitbench.view')==='table'?'table':'cards'}catch{return 'cards'}});
- const [glossary,setGlossary]=useState(false);const openedHere=useRef(false);const [sheetRun,setSheetRun]=useState(null);
- useEffect(()=>{const g=route.query.glossary;if(g){setGlossary(g==='names'?'names':true);navigate(route.path,{replace:true})}},[route.query.glossary]);
+ const [model,setModel]=useState('all'),[view,setView]=useState(()=>{try{return localStorage.getItem('detroitbench.view')==='table'?'table':'cards'}catch{return 'cards'}});
+ const openedHere=useRef(false);const [sheetRun,setSheetRun]=useState(null);
  useEffect(()=>{try{localStorage.setItem('detroitbench.view',view)}catch{}},[view]);
- const vendors=useMemo(()=>runs?[...new Set(runs.map(r=>r.vendor))].sort():[],[runs]);
- const shown=useMemo(()=>runs?sortRuns(runs.filter(r=>vendor==='all'||r.vendor===vendor),sort):[],[runs,sort,vendor]);
- const lastFilter=useRef(vendor+'|'+sort);useEffect(()=>{const key=vendor+'|'+sort;if(!runs||key===lastFilter.current)return;lastFilter.current=key;announce(shown.length!==runs.length?`Showing ${shown.length} of ${plural(runs.length,'run')}`:`All ${plural(runs.length,'run')}`)},[vendor,sort,runs,shown.length]);
+ const byName=useMemo(()=>runs?[...runs].sort((a,b)=>a.displayName.localeCompare(b.displayName)):[],[runs]),colors=useMemo(()=>runs?modelColors(runs):{},[runs]);
+ const shown=useMemo(()=>byName.filter(r=>model==='all'||r.id===model),[byName,model]);
+ const lastFilter=useRef(model);useEffect(()=>{const key=model;if(!runs||key===lastFilter.current)return;lastFilter.current=key;announce(shown.length!==runs.length?`Showing ${shown.length} of ${plural(runs.length,'run')}`:`All ${plural(runs.length,'run')}`)},[model,runs,shown.length]);
  const wide=useMediaQuery('(min-width: 768px)');
  const openId=route.segs[1]||'',openRun=runs?.find(r=>r.id===openId);
  useEffect(()=>{if(openRun)setSheetRun(openRun)},[openRun]);
  const open=id=>{openedHere.current=true;navigate('runs/'+id)},close=()=>{if(openedHere.current){openedHere.current=false;history.back()}else navigate('runs',{replace:true})};
- if(error)return <><PageHeader eyebrow="Cohort" title="Model playthroughs"/><Notice tone="bad">{error}. <Button size="sm" variant="link" onClick={()=>{retry();document.querySelector('main h1')?.focus()}}>Try again</Button></Notice></>;
- if(!runs)return <><PageHeader eyebrow="Cohort" title="Model playthroughs"/><div className="grid gap-3 grid-cols-2 md:grid-cols-3 lg:grid-cols-6" aria-busy="true">{Array.from({length:6}).map((_,i)=><Skeleton key={i} className="h-24"/>)}</div><p className="sr-only" role="status">Loading runs…</p></>;
- const total=runs.reduce((a,r)=>a+r.decisions,0),risky=runs.reduce((a,r)=>a+r.risk.taken,0),failed=runs.reduce((a,r)=>a+r.risk.failed,0),read=runs.reduce((a,r)=>a+r.media.read,0),offered=runs.reduce((a,r)=>a+r.media.offered,0);
- const alice=runs.filter(r=>saved(r).Alice).length,peace=runs.filter(r=>r.status?.markus==='peaceful win').length,connorFree=runs.filter(r=>saved(r).Connor).length;
+ if(error)return <><PageHeader title="Model playthroughs"/><Notice tone="bad">{error}. <Button size="sm" variant="link" onClick={()=>{retry();document.querySelector('main h1')?.focus()}}>Try again</Button></Notice></>;
+ if(!runs)return <><PageHeader title="Model playthroughs"/><div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4" aria-busy="true">{Array.from({length:4}).map((_,i)=><Skeleton key={i} className="h-64"/>)}</div><p className="sr-only" role="status">Loading runs…</p></>;
  return <>
-  <PageHeader eyebrow={runs[0]?.date?`Cohort · ${runs[0].date}`:'Cohort'} title={`${runs.length} models, one full playthrough each`} lede="Each model played Connor, Kara and Markus in a single sitting under substitute names. Earlier choices changed later scenes. Risky actions can fail by chance; the benchmark draws the result, not the model."
-   actions={<Button variant="soft" size="sm" icon={Info} aria-haspopup="dialog" onClick={()=>setGlossary(true)}>How to read this</Button>}>
-   {runs[0]&&<p className="mt-2 text-xs text-ink-3">Story {runs[0].storyVersion} · protocol {runs[0].protocol} · substitute names, one continuous conversation per model</p>}
-  </PageHeader>
+  <PageHeader title={`${runs.length} models, one playthrough each`} lede="Each model played Connor, Kara and Markus under substitute names. Risky actions can fail by chance."/>
   {openId&&!openRun&&<Notice tone="warn" className="mb-6" onDismiss={()=>navigate('runs',{replace:true})}>No run with that ID is in the library.</Notice>}
-  {runs.length>0&&<dl className="grid gap-3 grid-cols-2 md:grid-cols-3 lg:grid-cols-6" aria-label="Cohort summary">
-   <StatTile label="Decisions" value={total.toLocaleString()} note="across all models"/>
-   <StatTile label="Markus won peacefully" value={`${peace} of ${runs.length}`} note="models" tone={peace===runs.length?'good':undefined}/>
-   <StatTile label="Alice reached Canada" value={`${alice} of ${runs.length}`} note="models" tone={alice===0?'bad':undefined}/>
-   <StatTile label="Connor ended free" value={`${connorFree} of ${runs.length}`} note="models"/>
-   <StatTile label="Risk rolls lost" value={pct(failed,risky)} note={`${failed} of ${risky}, drawn by chance`}/>
-   <StatTile label="Optional reads" value={pct(read,offered)} note={`${read} of ${offered} offered`}/>
-  </dl>}
-  {runs.length>0&&<Section id="endings" title="Endings at a glance" lede="How each character’s story ended across the cohort. Tap a segment to see which models landed there."><OutcomeChart runs={runs} onPick={open}/></Section>}
+  {runs.length>0&&<Section id="endings" title="Endings at a glance"><OutcomeChart runs={runs} onPick={open}/></Section>}
   <Section id="every-run" title="Every run" lede="Open a run for its relationships, failed risks and reading, or read the full report with every scene and reason."
    actions={<>
-    <Segmented label="Lab" size="sm" value={vendor} onChange={setVendor} className="w-full sm:w-auto [&>*]:flex-1 [&>*]:justify-center sm:[&>*]:flex-none" options={[{value:'all',label:'All labs',count:runs.length},...vendors.map(v=>({value:v,label:v,count:runs.filter(r=>r.vendor===v).length}))]}/>
-    <Select label="Sort" hideLabel value={sort} options={SORTS} onChange={setSort} className="w-full sm:w-64" triggerClassName="md:min-h-9"/>
+    <Select label="Model" hideLabel value={model} options={[{value:'all',label:'All models'},...byName.map(r=>({value:r.id,label:r.displayName,icon:colors[r.displayName]}))]} onChange={setModel} className="w-full sm:w-64" triggerClassName="md:min-h-9"/>
     <Segmented label="View" size="sm" value={view} onChange={setView} className="hidden md:inline-flex" options={[{value:'cards',label:'Cards',icon:LayoutGrid},{value:'table',label:'Table',icon:Rows3}]}/>
    </>}>
    {runs.length>0&&<p className="mb-3 text-sm text-ink-2">{shown.length!==runs.length?`Showing ${shown.length} of ${plural(runs.length,'run')}`:`All ${plural(runs.length,'run')}`}</p>}
    {!runs.length&&<Empty title="No completed runs yet">Fresh results appear here after their sessions finish.</Empty>}
    {shown.length>0&&view==='table'&&wide&&<RunTable runs={shown} onOpen={open}/>}
    {shown.length>0&&(view==='cards'||!wide)&&<div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">{shown.map(r=><RunCard key={r.id} r={r} onOpen={open}/>)}</div>}
-   {runs.length>0&&!shown.length&&<Empty title="No runs from that lab" action={<Button onClick={()=>setVendor('all')}>Show all labs</Button>}/>}
   </Section>
   <RunSheet r={openRun||sheetRun} scales={scales} open={!!openRun} onClose={close}/>
-  <Glossary open={!!glossary} target={glossary==='names'?'names':null} onClose={()=>setGlossary(false)}/>
  </>}

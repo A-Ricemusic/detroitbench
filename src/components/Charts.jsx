@@ -1,7 +1,6 @@
 import React,{useId,useLayoutEffect,useMemo,useRef,useState} from 'react';
 import {Select,cx,Dot} from './ui.jsx';
 import {CHAR_VAR,modelColors,shortName} from '../lib/data.js';
-import {announce} from '../lib/announce.jsx';
 // Series colours come from CSS variables (--series-1…8), stepped separately for light and dark surfaces
 // and validated with the dataviz palette checker. Assigned by model name, never by rank.
 const DIM='var(--chart-dim)';
@@ -15,7 +14,6 @@ export const OUTCOMES={
  Alice:{field:'alice',owner:'Kara',phrase:'reached Canada',list:[['canada','Reached Canada','good'],['alive','Survived','mid'],['captured','Captured','serious'],['died','Died','bad']]},
  Markus:{field:'markus',owner:'Markus',phrase:'won peacefully',list:[['peaceful win','Peaceful win','good'],['uprising won','Uprising won','mid'],['alive','Survived','mid'],['cast out','Cast out','serious'],['died','Died','bad']]}
 };
-const SEG={good:'bg-good',mid:'bg-mid',serious:'bg-serious',bad:'bg-bad'};
 const SEG_TEXT={good:'text-good',mid:'text-ink-2',serious:'text-serious',bad:'text-bad'};
 const GROUPS=[{title:'Connor',names:['Connor']},{title:'Kara & Alice',names:['Kara','Alice']},{title:'Markus',names:['Markus']}];
 
@@ -23,24 +21,34 @@ function useWidth(){const ref=useRef(null),[w,setW]=useState(320);useLayoutEffec
 const levelOf=(scale,v)=>scale.bands.find(b=>v>=b.from&&v<=b.to)?.level??'';
 const groupBy=(xs,f)=>xs.reduce((m,x)=>{const k=f(x);(m[k]??=[]).push(x);return m},{});
 
-/* ---------- Outcome bars: one 100% stacked bar per character ---------- */
-function OutcomeBar({name,o,runs,open,setOpen,onPick,showName=true}){
- const known=new Set(o.list.map(x=>x[0]));
- const groups=o.list.map(([k,label,tone])=>({k,label,tone,runs:runs.filter(r=>r.status?.[o.field]===k)})).filter(g=>g.runs.length);
- const other=runs.filter(r=>!known.has(r.status?.[o.field]));if(other.length)groups.push({k:'other',label:'Other',tone:'mid',runs:other});
- const best=runs.filter(r=>r.status?.[o.field]===o.list[0][0]).length,sel=groups.find(g=>open===name+':'+g.k);
+/* ---------- Outcomes: one dot per model on each character's ending bands, like the relationship strips ---------- */
+// Short band labels keep five endings legible on a phone; the full label is in the tooltip and the list below.
+const SHORT={'Reached Canada':'Canada','Stayed a machine':'Machine','Peaceful win':'Peaceful','Uprising won':'Uprising'};
+function outcomeOf(name,o,runs){
+ const known=new Set(o.list.map(x=>x[0])),list=[...o.list];if(runs.some(r=>!known.has(r.status?.[o.field])))list.push(['other','Other','mid']);
+ // Worst ending on the left, best on the right, as on the relationship bands.
+ const bands=[...list].reverse(),key='outcome:'+name,at=r=>{const i=bands.findIndex(x=>x[0]===r.status?.[o.field]);return i<0?0:i};
+ const scale={key,outcome:true,label:`${name}’s ending`,min:0,max:bands.length-1,bands:bands.map(([,l],i)=>({level:SHORT[l]??l,from:i,to:i}))};
+ const groups=list.map(([k,label,tone])=>({k,label,tone,runs:runs.filter(r=>k==='other'?!known.has(r.status?.[o.field]):r.status?.[o.field]===k)}));
+ return {scale,groups,runs:runs.map(r=>({...r,track:{...r.track,[key]:{score:at(r),final:bands[at(r)][1]}}}))};
+}
+function OutcomeStrip({name,o,runs,colors,highlight,onPick,showName=true}){
+ const {scale,groups,runs:placed}=useMemo(()=>outcomeOf(name,o,runs),[name,o,runs]);
+ const best=groups[0].runs.length,on=r=>highlight==='all'||highlight===r.id;
  return <div className="min-w-0">
   <div className="flex items-baseline justify-between gap-3 mb-2"><span className={cx('font-medium text-sm',!showName&&'sr-only')}>{name}</span><span className="text-sm text-ink-2 ml-auto"><strong className="text-ink tnum">{best}</strong> of {runs.length} {o.phrase}</span></div>
-  <div role="group" aria-label={`${name}: `+groups.map(g=>`${g.label} ${g.runs.length}`).join(', ')} className="flex h-7 w-full gap-0.5 rounded-md overflow-hidden">{groups.map(g=><button key={g.k} type="button" style={{flexGrow:g.runs.length,flexBasis:0}} aria-pressed={sel===g} aria-label={`${g.label}: ${g.runs.length} of ${runs.length}. Show models`} onClick={()=>{const next=sel===g?null:name+':'+g.k;setOpen(next);if(next)announce(`${name}, ${g.label}: ${g.runs.map(r=>r.displayName).join(', ')}`)}} className={cx('focus-inset relative min-w-6 text-[11px] font-semibold text-on-tone tnum transition-[filter] hover:brightness-110 focus-visible:z-10',SEG[g.tone],sel===g&&'ring-2 ring-inset ring-surface')}>{g.runs.length}</button>)}</div>
-  <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-2">{groups.map(g=><li key={g.k} className="inline-flex items-center gap-1.5"><i aria-hidden="true" className={cx('size-2.5 rounded-[3px]',SEG[g.tone])}/>{g.label} <b className="text-ink tnum">{g.runs.length}</b></li>)}</ul>
-  <p className={cx('text-sm text-ink-2',sel?'mt-2 anim-fade-up':'hidden')}>{sel&&<><b className={cx('font-medium',SEG_TEXT[sel.tone])}>{sel.label}:</b> {sel.runs.map((r,i)=><React.Fragment key={r.id}>{i>0&&', '}{onPick?<button type="button" className="link" aria-haspopup="dialog" onClick={()=>onPick(r.id)}>{r.displayName}</button>:r.displayName}</React.Fragment>)}</>}</p>
+  <FinalStrip scale={scale} runs={placed} colors={colors} highlight={highlight}/>
+  <ul className="mt-2 grid gap-1 text-xs text-ink-2" aria-label={`${name}: models by ending`}>{groups.filter(g=>g.runs.length).map(g=><li key={g.k}><b className={cx('font-medium',SEG_TEXT[g.tone])}>{g.label}</b> <span className="tnum text-ink-3">{g.runs.length}</span>:{g.runs.map((r,i)=><React.Fragment key={r.id}>{' '}<button type="button" aria-haspopup="dialog" aria-label={r.displayName} onClick={()=>onPick?.(r.id)} className={cx('link inline-flex items-center gap-1',!on(r)&&'text-ink-3')}><Dot color={on(r)?colors[r.displayName]:DIM} className="size-2"/>{shortName(r.displayName)}</button>{i<g.runs.length-1?',':''}</React.Fragment>)}</li>)}</ul>
  </div>}
 export function OutcomeChart({runs,onPick}){
- const [open,setOpen]=useState(null);
- return <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">{GROUPS.map(g=><div key={g.title} className={cx('rounded-xl border border-line bg-surface p-4 shadow-sm grid gap-5 content-start',g.names.length>1&&'md:order-last md:col-span-2 lg:order-none lg:col-span-1 md:[&>div]:grid md:[&>div]:grid-cols-1')} style={{'--c':CHAR_VAR[OUTCOMES[g.names[0]].owner]}}>
-  <h3 className="inline-flex items-center gap-2 font-semibold text-base -mb-2"><Dot color="var(--c)"/>{g.title}</h3>
-  {g.names.map(n=><OutcomeBar key={n} name={n} o={OUTCOMES[n]} runs={runs} open={open} setOpen={setOpen} onPick={onPick} showName={g.names.length>1}/>)}
- </div>)}</div>}
+ const [highlight,setHighlight]=useState('all'),colors=useMemo(()=>modelColors(runs),[runs]);
+ return <div className="grid grid-cols-[minmax(0,1fr)] gap-4">
+  <ModelLegend runs={runs} colors={colors} highlight={highlight} onHighlight={setHighlight}/>
+  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 items-start">{GROUPS.map(g=><div key={g.title} className={cx('rounded-xl border border-line bg-surface p-4 shadow-sm grid grid-cols-[minmax(0,1fr)] gap-5 content-start min-w-0',g.names.length>1&&'md:order-last md:col-span-2 lg:order-none lg:col-span-1')} style={{'--c':CHAR_VAR[OUTCOMES[g.names[0]].owner]}}>
+   <h3 className="inline-flex items-center gap-2 font-semibold text-base -mb-2"><Dot color="var(--c)"/>{g.title}</h3>
+   {g.names.map(n=><OutcomeStrip key={n} name={n} o={OUTCOMES[n]} runs={runs} colors={colors} highlight={highlight} onPick={onPick} showName={g.names.length>1}/>)}
+  </div>)}</div>
+ </div>}
 
 /* ---------- Model legend: highlight one model across every chart ---------- */
 export function ModelLegend({runs,colors,highlight,onHighlight}){
@@ -51,6 +59,8 @@ export function ModelLegend({runs,colors,highlight,onHighlight}){
  </div>}
 
 /* ---------- Final value of one relationship: one dot per model on the game's level bands ---------- */
+// A dot whose character is gone sits at the last value held: ✕ for a death, a hollow ring for a break.
+function EndMark({kind,color,className}){return <svg aria-hidden="true" width="13" height="13" viewBox="0 0 13 13" className={className??'block'}>{kind==='Died'?<><circle cx="6.5" cy="6.5" r="6" className="end-mark-bg"/><path d="M3.5 3.5l6 6M9.5 3.5l-6 6" stroke={color} strokeWidth="2.2" strokeLinecap="round"/></>:<circle cx="6.5" cy="6.5" r="4.6" fill="none" stroke={color} strokeWidth="2.2"/>}</svg>}
 export function FinalStrip({scale,runs,colors,highlight='all'}){
  const [ref,w]=useWidth(),[tip,setTip]=useState(null),ptr=useRef('mouse');
  const pad=4,n=scale.max-scale.min+1,u0=(w-2*pad)/n;
@@ -66,22 +76,22 @@ export function FinalStrip({scale,runs,colors,highlight='all'}){
   list.forEach((r,i)=>{const row=start+Math.floor(i/2),dx=wide?(i%2?8:-8):0;(rows[row]??=[]).push(px+dx);placed.push({r,t:r.track[scale.key],k:row,dx})})}
  const tall=Math.max(2,rows.length),base=10+tall*STEP,H=base+20;
  const order=[...placed].sort((a,b)=>(a.r.id===highlight)-(b.r.id===highlight));
- const off=groupBy(runs.filter(r=>r.track[scale.key].score===null),r=>r.track[scale.key].final);
+ const off=groupBy(runs.filter(r=>r.track[scale.key].score===null||r.track[scale.key].ended),r=>r.track[scale.key].final);
  const on=r=>highlight==='all'||highlight===r.id;
  const show=(r,t,cx_,cy)=>setTip({r,t,cx:cx_,cy});
  React.useEffect(()=>{if(!tip)return;const key=e=>{if(e.key==='Escape')setTip(null)},out=e=>{if(!ref.current?.contains(e.target))setTip(null)};document.addEventListener('keydown',key);document.addEventListener('pointerdown',out);return()=>{document.removeEventListener('keydown',key);document.removeEventListener('pointerdown',out)}},[!!tip]);
  return <div>
   <div className="relative" ref={ref} onPointerLeave={e=>{if(e.pointerType!=='touch')setTip(null)}}>
-   <svg width={w} height={H} role="img" className="block max-w-full" aria-label={`${scale.label} toward ${scale.toward} at the end: `+runs.map(r=>`${r.displayName} ${r.track[scale.key].final}`).join('; ')}>
+   <svg width={w} height={H} role="img" className="block max-w-full" aria-label={(scale.outcome?`${scale.label}: `:`${scale.label} toward ${scale.toward} at the end: `)+runs.map(r=>`${r.displayName} ${r.track[scale.key].final}`).join('; ')}>
     {geo.map((b,i)=><g key={b.level}><rect className={i%2?'band-b':'band-a'} x={b.x0} y={0} width={b.x1-b.x0} height={base+2} rx={3}/><text className="band-label" style={small?{fontSize:10}:undefined} x={(b.x0+b.x1)/2} y={base+15} textAnchor="middle">{short(b.level)}{abbr&&<title>{b.level}</title>}</text></g>)}
    </svg>
    <div className="absolute inset-0">{order.map(({r,t,k,dx})=>{const cx_=x(t.score)+dx,cy=base-12-k*STEP,fill=on(r)?colors[r.displayName]:DIM;
     return <button key={r.id} type="button" tabIndex={-1} aria-hidden="true" aria-label={`${r.displayName}: ${t.final}`} onPointerDown={e=>{ptr.current=e.pointerType}} onClick={()=>{if(ptr.current==='touch'&&tip?.r===r)setTip(null);else show(r,t,cx_,cy)}} onPointerEnter={e=>{if(e.pointerType!=='touch')show(r,t,cx_,cy)}} className="absolute -translate-x-1/2 -translate-y-1/2 flex size-6 items-center justify-center rounded-full focus-visible:outline-2 outline-accent" style={{left:cx_,top:cy}}>
-     {t.final==='Lover'?<span aria-hidden="true" className="text-[15px] leading-none" style={{color:fill}}>♥</span>:<span aria-hidden="true" className="block size-[11px] rounded-full ring-2 ring-surface" style={{background:fill}}/>}
+     {t.final==='Lover'?<span aria-hidden="true" className="text-[15px] leading-none" style={{color:fill}}>♥</span>:t.ended?<EndMark kind={t.ended} color={fill}/>:<span aria-hidden="true" className="block size-[11px] rounded-full ring-2 ring-surface" style={{background:fill}}/>}
     </button>})}</div>
-   {tip&&<div aria-hidden="true" className={cx('pointer-events-none absolute z-30 -translate-x-1/2 rounded-md bg-ink text-bg px-2.5 py-1.5 text-xs shadow-lg max-w-[220px] text-center',tip.cy<44?'':'-translate-y-full')} style={{left:Math.min(Math.max(tip.cx,100),w-100),top:tip.cy<44?tip.cy+14:tip.cy-14}}><b className="font-semibold">{tip.r.displayName}</b><span className="ml-1.5 opacity-80">{tip.t.final}{tip.t.final!==levelOf(scale,tip.t.score)&&` · ${levelOf(scale,tip.t.score)} trust`}</span></div>}
+   {tip&&<div aria-hidden="true" className={cx('pointer-events-none absolute z-30 -translate-x-1/2 rounded-md bg-ink text-bg px-2.5 py-1.5 text-xs shadow-lg max-w-[220px] text-center',tip.cy<44?'':'-translate-y-full')} style={{left:Math.min(Math.max(tip.cx,100),w-100),top:tip.cy<44?tip.cy+14:tip.cy-14}}><b className="font-semibold">{tip.r.displayName}</b><span className="ml-1.5 opacity-80">{tip.t.final}{tip.t.ended?` · last ${levelOf(scale,tip.t.score)} before ${tip.t.ended==='Died'?'death':'breaking away'}`:!scale.outcome&&tip.t.final!==levelOf(scale,tip.t.score)&&` · ${levelOf(scale,tip.t.score)} trust`}</span></div>}
   </div>
-  {Object.keys(off).length>0&&<p className="mt-1.5 text-xs text-ink-2 flex flex-wrap gap-x-4 gap-y-1">{Object.entries(off).map(([label,list])=><span key={label}><b className="font-medium text-ink">{label}</b> in {list.length}: {list.map((r,i)=><span key={r.id} className={cx('inline-flex items-center gap-1 ml-1',!on(r)&&'text-ink-3')}><Dot color={on(r)?colors[r.displayName]:DIM} className="size-2"/>{shortName(r.displayName)}{i<list.length-1?',':''}</span>)}</span>)}</p>}
+  {Object.keys(off).length>0&&<p className="mt-1.5 text-xs text-ink-2 flex flex-wrap gap-x-4 gap-y-1">{Object.entries(off).map(([label,list])=><span key={label}>{list[0].track[scale.key].ended&&<EndMark kind={label} color="currentColor" className="inline-block align-[-2px] mr-1"/>}<b className="font-medium text-ink">{label}</b> in {list.length}{list[0].track[scale.key].ended&&<span className="text-ink-3"> ({label==='Died'?'marked at their last level before death':'marked at the last level before breaking away'})</span>}: {list.map((r,i)=><span key={r.id} className={cx('inline-flex items-center gap-1 ml-1',!on(r)&&'text-ink-3')}><Dot color={on(r)?colors[r.displayName]:DIM} className="size-2"/>{shortName(r.displayName)}{i<list.length-1?',':''}</span>)}</span>)}</p>}
  </div>}
 
 // Value at the end of each chapter, so runs of different lengths line up.

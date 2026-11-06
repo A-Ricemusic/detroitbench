@@ -10,8 +10,6 @@ export const savedCount=r=>Object.values(saved(r)).filter(Boolean).length;
 export const relTone=l=>/Hostile|Hated|Died|Dead|Unpopular|Unstable/.test(l)?'bad':/Friend|Lover|Trusted|Family|Supportive|Alive/.test(l)?'good':/Warm|Respected|Sympathetic/.test(l)?'ok':/Tense|Skeptical|Distant/.test(l)?'warn':'';
 export const pct=(a,b)=>b?Math.round(a/b*100)+'%':'—';
 export const plural=(n,one,many=one+'s')=>`${n} ${n===1?one:many}`;
-export const SORTS=[{value:'name',label:'Model name'},{value:'saved',label:'Most characters saved',hint:'Connor, Kara, Alice, Markus'},{value:'decisions',label:'Most decisions'},{value:'read',label:'Most optional scenes read'},{value:'failed',label:'Most risky actions failed'}];
-export function sortRuns(runs,sort){return [...runs].sort((a,b)=>sort==='name'?a.displayName.localeCompare(b.displayName):sort==='decisions'?b.decisions-a.decisions||a.displayName.localeCompare(b.displayName):sort==='read'?(b.media.read/(b.media.offered||1))-(a.media.read/(a.media.offered||1))||a.displayName.localeCompare(b.displayName):sort==='failed'?b.risk.failed-a.risk.failed||a.displayName.localeCompare(b.displayName):savedCount(b)-savedCount(a)||a.displayName.localeCompare(b.displayName))}
 // Warm hues for the first lab (alphabetically: Anthropic), cool hues for the second (OpenAI), assigned by name within
 // each lab so a colour follows its model. Extra models or labs take whatever validated slots remain.
 const WARM=[2,4,5,8],COOL=[1,7,3,6];

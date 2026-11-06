@@ -29,8 +29,10 @@ const METRICS=[
 function relationshipTrack(r,byId){const states=[r.records[0]?.stateBefore,...r.records.map(x=>x.stateAfter)].filter(Boolean);
  const steps=r.records.map(x=>({node:x.nodeId,title:byId.get(x.nodeId)?.title??x.nodeId,character:x.character,chapter:x.chapter,chapterTitle:byId.get(x.nodeId)?.chapterTitle}));
  return Object.fromEntries(METRICS.map(m=>{let seen=false,endedAt=null;const values=states.map((s,i)=>{const on=m.alive(s);if(on)seen=true;else if(seen&&endedAt===null)endedAt=i;return on?s[m.key]:null});
-  const last=states.at(-1),final=m.alive(last)?(m.key==='northTrust'&&last.northLover?'Lover':m.levels(last[m.key])):(m.unmet&&!seen?m.unmet:m.gone);
-  return [m.key,{values,endedAt,final,score:m.alive(last)?last[m.key]:null}]}).concat([['steps',steps]]))}
+  const last=states.at(-1),live=m.alive(last),final=live?(m.key==='northTrust'&&last.northLover?'Lover':m.levels(last[m.key])):(m.unmet&&!seen?m.unmet:m.gone);
+  // A character who died (or an Amanda left behind) keeps the last value they held, flagged by `ended`.
+  const lastHeld=values.findLast(v=>v!==null)??null,ended=!live&&seen?m.gone:null;
+  return [m.key,{values,endedAt,final,score:live?last[m.key]:ended?lastHeld:null,ended}]}).concat([['steps',steps]]))}
 function scales(runs){return METRICS.map(m=>{const all=runs.flatMap(r=>r.track[m.key].values).filter(v=>v!==null);let lo=Math.min(...all,-1),hi=Math.max(...all,1);
  const probeLo=lo-12,probeHi=hi+12,bands=[];for(let v=probeLo;v<=probeHi;v++){const l=m.levels(v);if(bands.at(-1)?.level===l)bands.at(-1).to=v;else bands.push({level:l,from:v,to:v})}
  return {key:m.key,label:m.label,toward:m.toward,min:lo-1,max:hi+1,bands:bands.filter(b=>b.to>=lo-1&&b.from<=hi+1).map(b=>({...b,from:Math.max(b.from,lo-1),to:Math.min(b.to,hi+1)}))}})}
