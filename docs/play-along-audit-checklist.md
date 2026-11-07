@@ -6821,39 +6821,214 @@ Gaps:
 
 ## Chapter 26: Capitol Park
 
-### R26 · A magazine by the manhole (Markus, media)
+### CP01 · In Jericho (Markus, event)
 
-> You are Markus, emerging from the sewers into the city at night with your team. A magazine lies on a crate beside you.
+> You are Markus, in Jericho, at 1:51 in the morning on November 9th. Since your broadcast from the tower, the others have talked of nothing else.
+
+- (0) Continue.
+
+_Note: The Jericho prologue the game plays before MISSION START; it has no flowchart node. Every line is the template’s, in the template’s order, with its three condition groups: Simon here or not (twice) and the tone of the broadcast in the tower. “Simon is here” is read as Simon alive and never hit in the tower (no choice at the scene where he is hit, not wounded); “left behind or died” is every other case. Without Simon, his one line in the plan (“…not to mention police…”) is dropped. The date and time card is the template’s. No stat change; the template has none here. Rebuilt chapter 23 flags take priority: stratfordSimonFate escaped means here; carried, killedBySwat, executed or leftOnRoof means absent. With no fate, stratfordSwat means absent; otherwise use the old simon/choices.M13/simonWounded conditions. stratfordNewsTone peaceful/war overrides choices.M12._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP02 · Mission start (Markus, event)
+
+> You are Markus, coming into a park downtown with North a few minutes before two in the morning. Snow lies on the ground. The CyberLife store you are here to free stands on the plaza at the far side. You: “This is a night our people will remember.” North: “I’ve been waiting a long time for this…”
+
+- (0) Continue.
+
+_Note: The chart’s MISSION START checkpoint. The two lines are the template’s (“At Capitol Park”). The snow is from PowerPyx (the road workers are “shovelling snow”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R26 · The magazines on the box (Markus, media)
+
+> You are Markus, at the edge of the park where you came in, with North. Two magazines lie on a box beside you.
 
 - (0) Read Detroit Today: Who Is It?.
 - (1) Read Century: An Android for President?.
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s book branch off MISSION START: READ “WHO IS IT?” and READ “ANDROID PRESIDENT?”. Both magazines are “found on a box at the start” (wiki magazine pages; PowerPyx: “on the left side of where you start”). Facts are summarized from the articles on the wiki, with the tower’s name and the investigating agency left out. Neither magazine changes public opinion or any other stat. Changed from the earlier scene: no manhole or sewers (no source for this chapter), and no claim that reading lowers opinion._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M15 · What kind of protest (Markus)
+### CP03 · The first police car (Markus)
 
-> You are Markus. Your broadcast made you public enemy number one, and Jericho is divided. Tonight you have led your people into the city's android stores, waking hundreds of androids and bringing them into a public park. You can leave the humans a message, tagging walls, painting slogans and raising a flag, or you can trash the stores, burn the shelves and smash the city's property. North hands…
+> You are Markus, crossing the park with North. Headlights swing round the corner: a police car is coming down the street toward you. North is already running for a container at the edge of the path: “MARKUS! THIS WAY! QUICK!”
 
-- (0) Graffiti, slogans, a flag, and no destruction.
-- (1) Smash the stores and burn what you can.
+- (0) Run after North and duck down behind the container.  _risk 0.1_
+- (1) Stay where you are.
+
+_Note: The chart’s group AVOID POLICE CAR / NORTH SAVES YOU, an execution check before REACH STORE. In the game Markus has to get into cover in time; doing nothing, or being too slow, is the failure. Here running for cover carries a low risk (0.1; no source gives a number, the value is an estimate) and staying put always fails. NORTH SAVES YOU applies the template’s arrows (“Fail to hide, North saves Markus”): North small down and Jericho small down. AVOID POLICE CAR has none. All lines are the template’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP04 · Reach the store (Markus, event)
+
+> You are Markus, on the plaza in front of the CyberLife store with North. Behind the window, androids stand on display under the lights. North: “That’s what we are to them… just merchandise on display in a shop window… Soon they’ll know what we really are… Let’s get 'em out.” You: “We'll stick to the plan… We neutralize the alarm systems and secure the area. There's ten minutes until all our teams…
+
+- (0) Continue.
+
+_Note: The chart’s REACH STORE checkpoint; the lines are the template’s (“Reach the store”). The ten-minute timer starts here (in game “There's ten minutes until all our teams attack”; a PowerPyx commenter: the timer “does not start until you reach the shop”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP05 · The plaza (Markus)
+
+> You are Markus, with North on the plaza outside the CyberLife store; at 2 AM the teams strike. The store is shut behind its window and has an alarm system. Close by stands a construction site behind a blue fence; a statue stands in the middle of the park, and androids work here and there across the plaza. Everything you do takes time; you can also wait.
+
+- (0) Look at the statue in the middle of the park.  _needs capitolPrompt = null_
+- (1) Look through the windows of the stores along the plaza.  _needs capitolPrompt = null_
+- (2) Convert the androids working on the plaza.  _needs capitolPrompt = null_
+- (3) Analyse the CyberLife store: scan its window, the androids on display and the security cameras.  _needs capitolPrompt = null_
+- (4) Follow the cameras’ network across the road and convert the two androids working on the alarm junction.  _needs capitolPrompt = null_
+- (5) Scan the police drone over the park.  _needs capitolPrompt = null_
+- (6) Climb the scaffolding and jump onto the drone as it passes.  _risk 0.2_ _needs capitolPrompt = null_
+- (7) Block the road: convert the two road workers at the end of the street and have them move their sign across it.  _needs capitolPrompt = null_
+- (8) Look through the gap at the end of the construction site’s blue fence.  _needs capitolPrompt = null_
+- (9) Jump the fence, pick up the tool on the site to break the gate’s padlock, and get the truck out.  _needs capitolPrompt = null_
+- (10) Jump the fence and go straight for the truck, leaving the tool where it lies.  _needs capitolPrompt = null_
+- (11) Drive the truck through the front of the store.  _needs capitolPrompt = null_
+- (12) Wait.  _needs capitolPrompt = null_
+- (13) HIDE: get down out of the drone’s sight.  _risk 0.1_ _needs capitolPrompt = drone_
+- (14) Stay where you are.  _needs capitolPrompt = drone_
+- (15) Abandon Mission: run, and leave the androids in the store behind.  _needs capitolPrompt = car_ _jerichoTrust -2, northTrust -1_
+- (16) Act Natural: pull North into a kiss, like a couple out for a walk, so the patrol drives past.  _needs capitolPrompt = car_ _northTrust -2_
+- (17) HIDE: take cover with North and deal with the officers from there.  _needs capitolPrompt = car_ _northTrust +1_
+
+_Note: The bracket [SECURE THE PLACE] and the store timer, as one repeatable scene: each visit offers what has not been done yet. Three objectives in any order: the drone (scan it, then JUMP ON DRONE: DESTROY DRONE or, by its risk, FALL FROM DRONE), DEACTIVATE ALARM (analyse the store, then convert the two androids at the junction; if the drone is still flying it comes by, and the game’s HIDE prompt appears: HIDE or GET SPOTTED BY DRONE) and BLOCK ROAD; then FIND TRUCK and RAM STORE. A failure with the drone plays NORTH DESTROYS DRONE and POLICE CAR ARRIVES, whose three buttons are offered on the next visit with the template’s labels (Abandon Mission = RUN AWAY, Act Natural = FEIGN KISS, HIDE = HIDE AND HACK RADIO). RAM STORE gives POLICE NOT ALERTED only with the alarm down, the drone destroyed (by either of them) and the road blocked, the template’s three conditions; otherwise POLICE ALERTED and HAD TO FLEE. Ramming is allowed at any time, so that ending is reachable (a PowerPyx commenter says the truck would not start until the area was secure; open question). The ten-minute timer is an action budget: every action takes a minute, waiting two, the two prompts none; North warns at five minutes left (her timer line in the game’s strings), and at ten without the ram comes OUT OF TIME and RETREAT. Risks are estimates with no source: the jump 0.2, hiding from the drone 0.1. Arrows: DESTROY DRONE North small up; FALL FROM DRONE Jericho and North small down; HIDE North small up; GET SPOTTED BY DRONE North small down (the template; the wiki also lists Jericho down, not applied); Abandon Mission Jericho large down, North small down; Act Natural North large down; HIDE (car) North small up (all the template). Wiki only, where the template is silent: deactivating the alarm with the drone already destroyed North small up (wiki, Relationship Stat), and RETREAT and HAD TO FLEE Jericho large down, North small down (the wiki’s “fails to invade the CyberLife warehouse”, Relationship Stat and PowerPyx; the template puts these arrows only on Abandon Mission; flagged for the operator). No Josh or Simon arrow (the wiki’s footnote says the game does not state one). The ambient looks (the statue, the stores, converting the plaza androids) are the template’s sections with no arrow; the clue texts are the template’s observations, with the city, the park and the police department as name tokens._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP06 · Mission failed (Markus, event)
+
+> You are Markus, getting away from the plaza with North. The androids in the store are still on their stands.
+
+_Only when capitolRaid = fled._
+
+- (0) Continue.
+
+_Note: The template’s “Mission failed” block, which follows all three flee endings on the chart: RETREAT (OUT OF TIME), DECIDED TO FLEE (RUN AWAY) and HAD TO FLEE (POLICE ALERTED). The ending is recorded when it happens on the plaza, with its arrows there; this scene adds none. The radio line (by Simon if he is alive, else Josh, as the template’s condition) is left out after RETREAT, where it already played at the timeout. The chapter ends here for Markus: no store, no protest, no officers and no news montage on these paths._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP07 · Inside the store (Markus)
+
+> You are Markus, inside the CyberLife store with North, among the broken glass. Dozens of androids stand motionless on their display stands, waiting to be sold. North has stopped in front of one of them, an android with her own face, and is staring at it without a word.
+
+_Only when capitolRaid = succeeded._
+
+- (0) Go to North and look at the android she is staring at.  _sets capitolOtherNorth_
+- (1) Start waking the androids on display.
+
+_Note: The chart’s INSIDE THE STORE checkpoint, with the one optional interaction there: looking at the android that looks like North (the template’s “Talk with North”, two lines). It has no chart node and no arrow, but the game remembers it: it unlocks the OTHER NORTH line on the roof in Freedom March (wiki footnote; the Freedom March template’s condition “Looked at the other North in Capitol Park”), recorded as capitolOtherNorth. PowerPyx commenters: it must be done before freeing the androids, so it is offered before converting them._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP08 · Convert androids and make a statement (Markus, event)
+
+> You are Markus, going from stand to stand through the store and touching each android in turn: “You don't have to obey them. You're free.” They wake one after another and gather around you. You speak to them all: “My name is Markus… And just like you, I was a slave… An object, designed to obey them… But then I chose to open my eyes, to take back my freedom and decide who I wanted to be. Now I…
+
+_Only when capitolRaid = succeeded._
+
+- (0) Continue.
+
+_Note: The chart’s CONVERT ANDROIDS AND MAKE A STATEMENT (unmissable once inside, PowerPyx) and the MAKE A STATEMENT checkpoint. The speech is scripted, with no choice; every line is the template’s (“Convert androids”, “Talk to androids”). Its arrows are the template’s: North large up and Jericho large up._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP09 · Send a message (Markus)
+
+> You are Markus, out on the plaza and in the park with the androids you freed, and North beside you; whatever you do, they copy. Around you are the statue in the park, a bus stop, the benches, digital billboards showing three android faces and “GET YOURS TODAY”, an android parking bay, the street lights, a tall building, androids on display behind shop windows across the road, recharge stations…
+
+_Only when capitolRaid = succeeded._
+
+- (0) PUSH: topple the statue in the middle of the park.  _needs capitolPrompt = null_ _northTrust +1_
+- (1) TAG: spray the statue in the middle of the park.  _needs capitolPrompt = null_
+- (2) HACK: hack the bus stop.  _needs capitolPrompt = null_
+- (3) DESTROY: smash the bus stop.  _needs capitolPrompt = null_
+- (4) TAG: spray the benches in the park.  _needs capitolPrompt = null_
+- (5) KNOCK: tear up the benches and knock them over.  _needs capitolPrompt = null_ _northTrust +1_
+- (6) MARKUS MESSAGE: hijack the billboards to show your face and your message.  _needs capitolPrompt = null_
+- (7) ANDROID SYMBOL: hijack the billboards to show the android symbol.  _needs capitolPrompt = null_
+- (8) TURN OFF: switch the billboards off.  _needs capitolPrompt = null_
+- (9) HACK: hack the android parking bay.  _needs capitolPrompt = null_
+- (10) DESTROY: wreck the android parking bay.  _needs capitolPrompt = null_ _northTrust +1_
+- (11) HACK: hack the street lights.  _needs capitolPrompt = null_
+- (12) TURN OFF: black out the street lights.  _needs capitolPrompt = null_
+- (13) Climb the tall building and deploy a giant banner from it.  _needs capitolPrompt = null_
+- (14) Smash the shop windows across the road and free the androids on display behind them.  _needs capitolPrompt = null_ _northTrust +1, jerichoTrust +1_
+- (15) Overload the recharge stations where the cars stand, and the electric system with them.  _needs capitolPrompt = null_
+- (16) CREATE BARRICADE: push a car out into the road.  _needs capitolPrompt = null_
+- (17) DESTROY: overturn one of the cars along the road.  _needs capitolPrompt = null_ _northTrust +1_
+- (18) TAG: spray the car you pushed into the road.  _needs capitolPrompt = null_
+- (19) DESTROY: smash the windows beside the CyberLife store.  _needs capitolPrompt = null_
+- (20) TAG: spray the windows beside the CyberLife store.  _needs capitolPrompt = null_
+- (21) Go to the pavilion in the park.  _needs capitolPrompt = null_
+- (22) PLANT OUR FLAG: plant the android flag on the pavilion.  _needs capitolPrompt = null_
+- (23) PREPARE PYRE: turn the pavilion into a pyre and set it alight.  _needs capitolPrompt = null_
+- (24) KNOCK OVER: set the dumpster by the hotel alight and tip it over.  _needs capitolPrompt = null_
+- (25) PUSH THROUGH WINDOW: set the dumpster by the hotel alight and push it through the hotel’s window.  _needs capitolPrompt = null_
+- (26) Set the coffee shop’s dumpster alight and push it through the coffee shop’s window with North.  _needs capitolPrompt = null_
+- (27) Throw a Molotov at the cars along the street.  _needs capitolPrompt = null_
+- (28) Throw a Molotov at the truck you drove into the CyberLife store.  _needs capitolPrompt = null_
+- (29) Wait.  _needs capitolPrompt = null_
+- (30) REFUSE: turn down the Molotov.  _needs capitolPrompt = molotov_ _northTrust -1_
+- (31) TAKE: take the Molotov.  _needs capitolPrompt = molotov_ _northTrust +1_
+
+_Note: The bracket [SPREAD YOUR MESSAGE] as one repeatable scene: each visit offers the objects not yet used. The nine pairs (statue, bus stop, benches, billboards, android parking, street lights, car, windows, pavilion) take one of their two actions; the singles (DEPLOY BANNER, FREE ANDROIDS IN SHOP WINDOWS, OVERLOAD ELECTRIC SYSTEM, TAG CARS after PUSH CAR) once each; option labels are the game’s buttons where it has them (en.json prompts: PUSH, TAG, HACK, DESTROY, KNOCK, MARKUS MESSAGE, ANDROID SYMBOL, TURN OFF, CREATE BARRICADE, PLANT OUR FLAG, PREPARE PYRE, KNOCK OVER, PUSH THROUGH WINDOW). Each action moves the protest meter, which the game shows on screen and the outcome text reports: peaceful are the SEND A MESSAGE trophy’s list (tag statue, benches, windows and car, hack bus stop, parking and street lights, turn off the screens, the banner, the barricade car, the flag), violent the BURN THE PLACE list (destroy statue, bus stop, parking and windows, tear off benches, black out the lights, hijack the screens, free the shop-window androids, the pyre) plus OVERTURN CAR, the Molotov, the burns and OVERLOAD ELECTRIC SYSTEM (no source gives its side). North offers the Molotov (REFUSE / TAKE, the template’s prompt and arrows: small down / small up) the first time Markus goes to the pavilion, overturns a car or smashes the windows, unless the protest already reads as peaceful (the wiki: “if enough peaceful actions were chosen prior then North will not offer”; the benchmark uses the 60% rule below). Taking it at the pavilion makes the pyre; refusing there plants the flag; taking it unlocks the five burns (the chart’s junction), of which the hotel and the coffee shop exclude each other (PowerPyx commenters: the followers copy you at the other one). Other North arrows (the wiki, where the template is silent, one small up per act): overturn benches, overturn car, destroy parking, free the shop-window androids (also Jericho small up); DESTROY STATUE North small up is the template’s. The phase lasts twelve units of time: an action takes one, waiting four, the Molotov prompt none (no source gives a duration). Waiting twice without any action is the template’s “Take too much time” and “again”: FAIL TO SEND A MESSAGE, North small down. Otherwise, when time runs out: PACIFIST MESSAGE if at least 60% of the actions were peaceful and the Molotov was not taken, else AGGRESSIVE MESSAGE (the wiki: “at least 60% on either side”; what happens between 40% and 60% is unsourced, and the benchmark counts it as aggressive, following the wiki’s note that a pacifist message can still end in a violent riot; PowerPyx commenters: taking the Molotov always gives the riot). Left out: the tagging sub-prompts (symbol or slogan; cosmetic, not in the template), the smoke bomb (no chart node, not in the template)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP10 · Police patrol arrives (Markus, event)
+
+> You are Markus, in the park with your people. Sirens are rising nearby.
+
+_Only when capitolRaid = succeeded._
+
+- (0) Continue.
+
+_Note: The chart’s POLICE PATROL ARRIVES, which follows all three message outcomes (PowerPyx: “You still need to finish the scene with the cops to end the chapter”). The lines are the template’s “Police arrives” block: the radio by Simon if he is here, else by Josh (neither is present in the park), then the pacifist or aggressive exchange, then North among the dead. The template’s arrow: an aggressive message gives North small up, applied here where the template has it. The template has no line for a failed message, so none is invented beyond the androids falling back. The destroyed look-alike is from the North and BL100 wiki pages; the officers’ shooting from the Chris Miller page (“gun down several androids that are fleeing the area”)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### M16 · The two police officers (Markus)
 
-> You are Markus. Two police officers drove into the park and opened fire on your people, killing one. Your androids overpowered them and now have them on their knees in front of you, disarmed and terrified. North says they murdered one of yours and that humans will only respect strength. Josh says if you kill them you prove everything they say about you. The crowd is waiting for your word.
+> You are Markus. The two officers who came into the park gunned down your people as they ran. The androids overpowered them, and now they kneel in the snow in front of you while one of your people holds a service pistol on them. The androids: “They killed our people, Markus…” “We want justice, Markus!” “They have to pay!” One of the officers: “You don't have to do this… No… Please… Please…”…
 
-- (0) Spare them and let them go.
-- (1) Execute them yourself.
-- (2) Tell the crowd to decide.
+_Only when capitolRaid = succeeded._
 
-_Note: The crowd always kills them._
+- (1) REVENGE: take the pistol and shoot them both.  _northTrust +1_
+- (0) SPARE: let them live.
+- (2) DON'T DECIDE: hand the pistol to your people and let them decide.
+
+_Note: The chart’s KILL / SPARE / LET CROWD DECIDE (each with the cross-chapter padlock), offered with the template’s buttons in its order: REVENGE, SPARE, DON'T DECIDE (the option IDs keep the earlier scene’s meaning: 0 spare, 1 kill, 2 crowd). Arrows: REVENGE North small up (the template); SPARE and DON'T DECIDE none. The public-opinion change for killing the officers comes in the news afterwards (next scene). The crowd always kills them when Markus does not decide (wiki Note). The officer’s plea and the androids’ demands are the template’s; nobody argues for mercy, and Josh is not in the park. Changed from the earlier scene: no Josh or North speeches, no Josh arrows, no North down for sparing (none has a source), and the spared officers are not said to run for their car (the news finds them “in a state of shock”). Recorded for later chapters as capitolOfficers and capitolChrisDead (Meet Kamski, Freedom March)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CP11 · Team returns to Jericho (Markus, event)
+
+> You are Markus, back in Jericho with North and the androids you freed. Within the hour the night is on every channel. “…We interrupt this broadcast with breaking news...” “This just in: at exactly 2AM several CyberLife stores in Detroit were raided...” “Different locations were hit in what seems to be a coordinated terrorist attack and we're getting more information as it comes in…”
+
+_Only when capitolRaid = succeeded._
+
+- (0) Continue.
+
+_Note: The chart’s last node, TEAM RETURN TO JERICHO, and the closing news montage of the template, which carries every public-opinion arrow in the chapter: “Sent a pacifist message” large up, “Sent an aggressive message” large down, “Killed Chris and his partner” (by Markus or by the crowd) large down, “Didn't kill” none. A failed message: the template’s news has no variant for it; the wiki (chapter page and Public Opinion page: “Markus failed to deliver his message”) gives large up, applied here and flagged. The anchors’ names and channels are left out; their lines are the template’s._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
