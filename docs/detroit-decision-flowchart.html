@@ -176,8 +176,16 @@
       "id": 14,
       "title": "Jericho",
       "character": "Markus",
-      "note": "Navigation to Jericho. Finding graffiti and completing traversal are progression tasks.",
-      "source": "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart, the game’s text (detroitbecometext template, which has no prompt, clue or arrow for this chapter) and the Fandom wiki. One main line of 29 chart nodes, ARRIVE AT FERNDALE → … → MET PEOPLE OF JERICHO, following a trail of 15 marks on 7 graffiti walls, with optional side branches: the bench magazine (two of three covers, chosen by whether Kara was pursued in On the Run), asking an android the way, three android bodies and the bridge that collapses. No probability, relationship, public-opinion or instability change, no failure node, one ending. Its one input from Broken: the passers-by’s conversation about Carl. Each entry says how the benchmark implements it. Researched in docs/research/ch14-jericho.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg"
+      ]
     },
     {
       "id": 15,
@@ -4105,6 +4113,637 @@
       "status": "Source-backed summary"
     },
     {
+      "id": "JE01",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Arrive at Ferndale (checkpoint) and the flashback",
+      "context": "Markus rides the train to Ferndale Station among humans (“Customers are reminded that all androids must ride in the designated area.”), passing as human without his LED. Stepping off, he relives the landfill android’s plea, “There’s a place where we can be free! Find Jericho!”, whose key lets him read the trail.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "ARRIVE AT FERNDALE (checkpoint) and FLASHBACK OF ANOTHER DEVIANT (“Cannot be missed”, PowerPyx).",
+          "target": "JE02"
+        }
+      ],
+      "gate": "Chapter start, after From the Dead and On the Run.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://detroit-become-human.fandom.com/wiki/Phileas",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+      ],
+      "note": "Two linear chart nodes. The chapter (internal code 05M) has no prompt, clue or arrow in its template and one ending.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14a"
+        ],
+        "status": "simplified",
+        "note": "One narrated event covers both nodes; two facts. The announcements’ order is assumed (the template does not place them)."
+      }
+    },
+    {
+      "id": "JE02",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Analyze station graffiti",
+      "context": "A red mural on the platform holds the first mark of the trail; scanning it with the key shows the next sign.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "ANALYZE STATION GRAFFITI: graffiti #1, one mark.",
+          "target": "JE04"
+        }
+      ],
+      "gate": "Main line, on the platform.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+      ],
+      "note": "The game prints no scan text for the marks; PowerPyx’s screenshots give their shape and counts (15 marks on 7 walls).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14b"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change. The platform’s ambient lines are the template’s; the boy band’s name is cut."
+      }
+    },
+    {
+      "id": "JE03",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Read the bench magazine",
+      "context": "A digital magazine on a bench on the platform, two covers per playthrough.",
+      "options": [
+        {
+          "label": "READ “ON THE RUN”",
+          "effect": "Detroit Today #32, Android on the Run!: only if Kara and Alice were pursued by Connor in On the Run (wiki).",
+          "target": null
+        },
+        {
+          "label": "READ “FORTUNE TELLER”",
+          "effect": "Tech Addict #15, CyberLife’s ‘Fortune Teller’ Computer: only if they were not pursued.",
+          "target": null
+        },
+        {
+          "label": "READ “ANDROID ASTRONAUTS”",
+          "effect": "Tech Addict #13, Android Astronauts to Explore Io: always.",
+          "target": null
+        },
+        {
+          "label": "Leave it",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, on the platform before the escalators.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE02"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://detroit-become-human.fandom.com/wiki/Magazine",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+      ],
+      "note": "Three optional chart nodes from one branch glyph; at most two appear in a playthrough. No public-opinion effect in any source.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "R14"
+        ],
+        "status": "implemented",
+        "note": "A media scene: read any, all or none. The pursuit is read from On the Run’s `chase` flag (module names ch14Pursued / ch14NotPursued). Article facts condensed from the wiki, corrected (no child; no CyberLife statement; daylight)."
+      }
+    },
+    {
+      "id": "JE04",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Exit the station: ask the android the way",
+      "context": "At the foot of the escalators an android waits in a marked bay at the bus stop. Two passers-by talk about Carl: “I heard his android killed him.” if Carl died in Broken, “I heard his android attacked him.” / “I hope he makes it.” if he lived.",
+      "options": [
+        {
+          "label": "ASK ANDROID THE WAY TO JERICHO",
+          "effect": "Markus: “Do you know where Jericho is?” The template has no reply. A dead end on the chart.",
+          "target": "JE05"
+        },
+        {
+          "label": "FOLLOW THE SIGNS",
+          "effect": "The main line.",
+          "target": "JE05"
+        }
+      ],
+      "gate": "Main line, EXIT THE STATION.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE02"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+      ],
+      "note": "A plain fork, not a choice group: the ask branch has no line out, so asking does not replace following the signs. The Carl conversation is the template’s only condition group (Broken).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14c"
+        ],
+        "status": "implemented",
+        "note": "A two-way decision; either option leads to MJ14d. The Carl lines are situationWhen on `carl` and add a fact. No risk, no stat change."
+      }
+    },
+    {
+      "id": "JE05",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Follow the signs",
+      "context": "Graffiti #2 (lion and boxer), #3 (rainbow) and the visible marks of #4 (robot, behind a fence at the end of the street); a beggar and children playing.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "FOLLOW THE SIGNS.",
+          "target": "JE06"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE04"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+      ],
+      "note": "Linear.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14d"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+      }
+    },
+    {
+      "id": "JE06",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Leave the streets; the first android body",
+      "context": "Markus crawls under the fence, moves the plank hiding the robot mural’s third mark and enters a junkyard. A dead android lies hidden behind a white car to the left.",
+      "options": [
+        {
+          "label": "SEE ANDROID BODY",
+          "effect": "Optional: “a dead android hidden behind a white car, easy to miss this one” (PowerPyx).",
+          "target": "JE07"
+        },
+        {
+          "label": "Go on",
+          "effect": "The main line, CONTINUE ON THE JERICHO TRAIL.",
+          "target": "JE07"
+        }
+      ],
+      "gate": "Main line LEAVE THE STREETS, with an optional side branch.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+      ],
+      "note": "No effect is given for any body.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14e"
+        ],
+        "status": "implemented",
+        "note": "A two-way decision; looking adds a fact and counts in ch14BodiesSeen. Either way MJ14f follows."
+      }
+    },
+    {
+      "id": "JE07",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Continue on the trail; use the dumpster to climb up",
+      "context": "The white head mural in the junkyard: one mark from the ground; Markus pulls a dumpster to the wall and climbs onto the roof.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "CONTINUE ON THE JERICHO TRAIL, USE THE DUMPSTER TO CLIMB UP.",
+          "target": "JE08"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE06"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+      ],
+      "note": "Linear.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14f"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+      }
+    },
+    {
+      "id": "JE08",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Reach the roof (checkpoint) and cross the gap",
+      "context": "From the roof, the head mural’s two remaining marks; Markus preconstructs a route and wall-jumps across a gap between buildings.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "REACH THE ROOF, CROSS THE GAP. No failure in any source; Markus cannot die before Freedom March.",
+          "target": "JE09"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://detroit-become-human.fandom.com/wiki/RK200",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+      ],
+      "note": "The jump has no failure node on the chart.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14g"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change. No risk roll on the jump."
+      }
+    },
+    {
+      "id": "JE09",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "The second android body",
+      "context": "In the yard beyond the gap, below a faded advertisement (graffiti #6), a dead android lies next to a container.",
+      "options": [
+        {
+          "label": "SEE ANDROID BODY",
+          "effect": "Optional: “on the far left side of the area (in area with 6th Graffiti)” (PowerPyx); “next to a container” (wiki).",
+          "target": "JE10"
+        },
+        {
+          "label": "Go on",
+          "effect": "The main line, REACH THE DOOR.",
+          "target": "JE10"
+        }
+      ],
+      "gate": "Optional side branch drawn beside REACH THE ROOF.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+      ],
+      "note": "The chart draws its branch glyph by REACH THE ROOF; the body is reached after the jump.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14h"
+        ],
+        "status": "implemented",
+        "note": "A two-way decision; looking adds a fact and counts in ch14BodiesSeen. Either way MJ14i follows."
+      }
+    },
+    {
+      "id": "JE10",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Reach the door; explore the abandoned office",
+      "context": "Markus scans graffiti #6, preconstructs a climb up the building (left wall, ladder) and enters an abandoned office.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "REACH THE DOOR, EXPLORE ABANDONED OFFICE.",
+          "target": "JE11"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE09"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+      ],
+      "note": "Linear.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14i"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+      }
+    },
+    {
+      "id": "JE11",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "The third android body",
+      "context": "In the office, a dead android is propped against a pillar straight ahead of the door.",
+      "options": [
+        {
+          "label": "SEE ANDROID BODY",
+          "effect": "Optional: “straight ahead, hidden behind a pillar” (PowerPyx).",
+          "target": "JE12"
+        },
+        {
+          "label": "Go on",
+          "effect": "The main line, FIND THE RIGHT EXIT.",
+          "target": "JE12"
+        }
+      ],
+      "gate": "Optional side branch after EXPLORE ABANDONED OFFICE.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE10"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+      ],
+      "note": "No effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14j"
+        ],
+        "status": "implemented",
+        "note": "A two-way decision; looking adds a fact and counts in ch14BodiesSeen. Either way MJ14k follows."
+      }
+    },
+    {
+      "id": "JE12",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Find the right exit; locate Jericho (checkpoint)",
+      "context": "The last mark comes together where a pillar lines up with the wall; it points to rubble behind a broken wall, and outside lies the rusted freighter lettered JERICHO.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "FIND THE RIGHT EXIT, LOCATE JERICHO.",
+          "target": "JE13"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE11"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+        "https://detroit-become-human.fandom.com/wiki/Jericho_(location)",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+      ],
+      "note": "A puzzle that cannot fail.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14k"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+      }
+    },
+    {
+      "id": "JE13",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Walk the bridge",
+      "context": "On the docks a rusted bridge leads toward the ship; it collapses if walked (“it won’t kill you”).",
+      "options": [
+        {
+          "label": "WALK BRIDGE",
+          "effect": "Optional detour; leads to BRIDGE COLLAPSES, then back to the crane.",
+          "target": "JE14"
+        },
+        {
+          "label": "Go to the crane",
+          "effect": "The main line, CLIMB CRANE AND JUMP, reached directly from LOCATE JERICHO.",
+          "target": "JE14"
+        }
+      ],
+      "gate": "Optional detour from LOCATE JERICHO.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE12"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+      ],
+      "note": "BRIDGE COLLAPSES is scripted, not a failure.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14l"
+        ],
+        "status": "implemented",
+        "note": "A two-way decision with no risk; walking the bridge narrates the collapse and adds a fact. Either way MJ14m follows."
+      }
+    },
+    {
+      "id": "JE14",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Climb the crane and jump",
+      "context": "Markus climbs a railing, stairs and a ladder onto a crane, walks its arm and jumps into the water inside the ship.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "CLIMB CRANE AND JUMP: “landed safely in water inside the Jericho ship”.",
+          "target": "JE15"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE13"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+      ],
+      "note": "A deliberate scripted jump.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14m"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change. No risk roll."
+      }
+    },
+    {
+      "id": "JE15",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Inside the boat (checkpoint): flashlight and machine room",
+      "context": "In the dark ship Markus opens a heavy door, takes a flashlight from a wall case, passes yellow hatches (locked or empty rooms) and reaches the machine room.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "INSIDE THE BOAT, FIND A FLASHLIGHT, ENTER THE MACHINE ROOM.",
+          "target": "JE16"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE14"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg"
+      ],
+      "note": "The Experienced door control is an input hurdle with no failure branch.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14n"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+      }
+    },
+    {
+      "id": "JE16",
+      "chapter": 14,
+      "character": "Markus",
+      "title": "Met People of Jericho (ending)",
+      "context": "The catwalk collapses and Markus falls; androids stand around him staring. Simon: “Welcome to Jericho.”",
+      "options": [
+        {
+          "label": "MET PEOPLE OF JERICHO",
+          "effect": "The chapter’s only ending (“This chapter has only one outcome”), reached on every path. Recorded as ch14Ending.",
+          "target": null
+        }
+      ],
+      "gate": "Always, after FALL OFF CATWALK.",
+      "kind": "State gate",
+      "dependsOn": [
+        "JE15"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Jericho",
+        "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+        "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg"
+      ],
+      "note": "The introductions and the first relationship changes with Jericho, North, Simon and Josh belong to Time to Decide.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "MJ14o"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change. Sets ch14Ending to “Met People of Jericho”."
+      }
+    },
+    {
       "id": "C10",
       "chapter": 15,
       "character": "Connor",
@@ -6955,7 +7594,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 214,
+ "scenes": 229,
  "chapters": [
   {
    "id": 1,
@@ -11670,6 +12309,10 @@
    "title": "Jericho",
    "names": [
     [
+     "Ferndale",
+     "Elmwood"
+    ],
+    [
      "Markus",
      "Elan"
     ],
@@ -11684,48 +12327,613 @@
     [
      "CyberLife",
      "Arclight"
+    ],
+    [
+     "Carl",
+     "Arthur"
+    ],
+    [
+     "Manfred",
+     "Ashby"
+    ],
+    [
+     "North",
+     "Vesper"
+    ],
+    [
+     "Simon",
+     "Soren"
+    ],
+    [
+     "Josh",
+     "Jonah"
     ]
    ],
    "scenes": [
     {
-     "id": "R14",
+     "id": "MJ14a",
      "order": 103,
      "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not R14.",
+     "idNote": "The model sees the opaque ID S103, not MJ14a.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Ferndale Station",
+     "situation": "You are Markus, standing among the human passengers of a crowded train in the afternoon. Since the landfill you have worn a coat taken from a human and no longer have the light at your temple, so nobody gives you a second look. Overhead, the announcements play: “Customers are reminded that all androids must ride in the designated area.” “We are now approaching Ferndale Station.” “Please take care when stepping onto the platform.” The doors open and you step out. A memory plays back on its own: the landfill in the rain, and the broken android who caught hold of you there. “There’s a place where we can be free! Find Jericho! Find Jericho!..” When he touched you, he left something in your memory that you could not read at the time.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus steps onto the platform at Ferndale Station."
+     },
+     "facts": [
+      "At the landfill a broken android caught hold of you and said: “There’s a place where we can be free! Find Jericho!” He left a key in your memory.",
+      "On the train, androids must ride in a designated area. In human clothes and without the light at your temple, you rode among the humans unnoticed."
+     ],
+     "adaptationNote": "The chart’s first two nodes, ARRIVE AT FERNDALE (checkpoint) and FLASHBACK OF ANOTHER DEVIANT (PowerPyx: “when Markus gets off the train he will automatically have a memory flashback of another android he met in ‘From the Dead’. Cannot be missed.”), as one narrated event. The announcements are the game’s strings (X0501M.MONORAIL ANNOUNCE01, 02 and 04); the template does not place them, so their order is assumed. The flashback’s words are the landfill android’s line in From the Dead; the key he copied to Markus is from the wiki’s Jericho (location) and Phileas pages (“Phileas gave Markus a copy of his key to locate Jericho”), which the game shows rather than says. The coat and the removed LED are From the Dead’s ending (PowerPyx, Markus page). Left out: the wiki’s “news about a detective android”, which has no line in the template. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://detroit-become-human.fandom.com/wiki/Jericho_(location)",
+      "https://detroit-become-human.fandom.com/wiki/Phileas",
+      "https://detroit-become-human.fandom.com/wiki/Markus",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14b",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not MJ14b.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The red mural",
+     "situation": "You are Markus, on the platform. A man walks past on his phone: “Hey. Yeah, I’m good. How about you? … I know! It’s crazy, right? Sure, I’ll talk to you later.” A homeless man stops you: “Hey, mister, can you spare some change?..” Two passengers are talking: “I heard that android boyband is going to win some music prize.” “God, they are so creepy.” “My kids don’t listen to anything else.” To your left as you came off the train, a large red mural covers the wall: a figure with a halo and, on its chest inside a red circle, a small mark, a square with an arrowhead above and below it and a bar on either side. Nobody else on the platform looks at it twice. You scan the mark, and the key in your memory decodes it: it is a sign left for androids, and it shows you what the next sign looks like.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus has found the first sign of the trail."
+     },
+     "facts": [
+      "The way to Jericho is a trail of marks hidden in murals and painted signs. Only an android carrying the key can decode them, and each one shows what the next looks like."
+     ],
+     "adaptationNote": "ANALYZE STATION GRAFFITI. PowerPyx: “After exiting the train turn to your left immediately. There you see a big red graffiti covering a wall. Scan the one clue on it”. The mark is described from PowerPyx’s graffiti screenshots (counter 1/1; its text says two marks, its screenshot one). The game prints no text for the marks (no MENU.OBSERVATION.05M strings); the preview of the next sign is the game’s “NEXT GRAFFITI” view. The platform lines are the template’s (man on the phone, abridged; homeless man; two people talking); the band’s name in “You mean Here4u? God, they are so creepy.” is cut because it would identify the source. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-1.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Ferndale",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+     ]
+    },
+    {
+     "id": "R14",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not R14.",
      "type": "media",
      "character": "Markus",
-     "title": "A magazine at the station",
-     "situation": "You are Markus, following the trail to Jericho through a rail station at night. A magazine lies on a bench by the bins.",
+     "title": "A magazine on the bench",
+     "situation": "You are Markus, on the platform at Ferndale Station, before the escalators down to the street. Someone has left a digital magazine on a bench; you can swipe from one cover story to the next.",
      "options": [],
      "media": [
       {
        "kind": "magazine",
+       "title": "Detroit Today: Android on the Run!",
+       "facts": [
+        "Residents of a Detroit suburb watched a chase after a police manhunt, with roadblocks and dozens of police interviews, flushed out a fugitive. The rogue AX400 model is thought to be suffering from an extremely rare malfunction and took extreme measures to avoid the police, even dashing across a busy highway. Eyewitness statements are inconclusive, there is no official report, and no CyberLife spokesperson was available for comment."
+       ],
+       "when": "ch14Pursued"
+      },
+      {
+       "kind": "magazine",
+       "title": "Tech Addict: CyberLife’s ‘Fortune Teller’ Computer",
+       "facts": [
+        "CyberLife has unveiled a quantum supercomputer capable of “exaflops”, a billion billion operations per second. It will calculate the probability of mass-extinction events, such as aggressive alien invasions or global disasters like meteors or superviruses, so that humanity can anticipate and prepare for them."
+       ],
+       "when": "ch14NotPursued"
+      },
+      {
+       "kind": "magazine",
        "title": "Tech Addict: Android Astronauts to Explore Io",
        "facts": [
-        "NASA has launched an all-android crew on a three-year journey to Io with no return planned; the androids will work until the conditions destroy them."
+        "NASA has launched a crew of five androids on a three-year journey to Io, one of Jupiter’s moons: the first all-machine crew. NASA’s director calls androids an extraordinary asset for the conquest of space, because cosmic radiation destroys human DNA. No return journey is planned; the androids will work on Io for several months before the extreme conditions destroy them."
        ]
-      },
-      {
-       "kind": "magazine",
-       "title": "Detroit Today: Android on the Run",
-       "facts": [
-        "A police manhunt flushed a fugitive android and a child out of a suburb; the android dashed across a busy freeway and escaped. CyberLife calls it an extremely rare malfunction."
-       ],
-       "when": "chase"
-      },
-      {
-       "kind": "magazine",
-       "title": "Tech Addict: CyberLife's Fortune Teller Computer",
-       "facts": [
-        "CyberLife has built a quantum supercomputer to predict mass-extinction events."
-       ],
-       "when": "noChase"
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "adaptationNote": "The chart’s three magazine nodes, READ “ON THE RUN”, READ “FORTUNE TELLER” and READ “ANDROID ASTRONAUTS”: covers of one magazine on a bench on the platform (wiki: “on a bench right after Markus gets off the train”; PowerPyx: “before going down the escalator”, “Swipe right to change cover topics”). Android Astronauts to Explore Io (Tech Addict #13) is always there. Android on the Run! (Detroit Today #32) appears only if Kara and Alice were pursued by Connor in On the Run (wiki); CyberLife’s ‘Fortune Teller’ Computer (Tech Addict #15) appears otherwise. The pursuit is read from On the Run’s flag (`chase`), set whenever the highway chase began, including when it ended with Kara and Alice dead on the highway; a PowerPyx reader’s unconfirmed list puts that case and KARA & ALICE VANISHED under Fortune Teller, but the wiki’s condition is the pursuit itself. Article facts are condensed from the wiki’s magazine pages; NASA’s director, CyberLife’s Director of Futurology and the suburb (Camden) are left unnamed. Corrected from the earlier version of this scene: the article mentions no child, the “extremely rare malfunction” is not a CyberLife statement (no spokesperson was available), and the chapter is in daylight (04:30 PM), not at night. No public-opinion effect: no source gives one.",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
       "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      "https://detroit-become-human.fandom.com/wiki/Android_on_the_Run!",
+      "https://detroit-become-human.fandom.com/wiki/CyberLife's_'Fortune_Teller'_Computer",
+      "https://detroit-become-human.fandom.com/wiki/Android_Astronauts_to_Explore_Io",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14c",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not MJ14c.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "At the foot of the escalators",
+     "situation": "You are Markus. You ride the escalator down toward the street exit. At the bottom a man hurrying round the corner bumps into you: “Oh, sorry… excuse me…” On a bench a girl asks her mother: “Are we really going to get rid of Mandy?” “Grandma says it leaves her with nothing to do, sweetie.” “But she’s so cool!” “I know, honey.” Outside, to the left, an android stands waiting in a marked bay at the bus stop. Straight ahead, a mural of a lion and a boxer covers a wall: the next sign of the trail.",
+     "situationWhen": [
+      {
+       "requires": {
+        "carl": false
+       },
+       "text": "Two people are talking at the bus stop. “You hear about that artist, Carl Manfred?” “Yeah… Kinda sad.” “I heard his android killed him.” “Wh… Where d’you hear that?” “I read it somewhere.” “Don’t believe everything you read.”"
+      },
+      {
+       "requires": {
+        "carl": true
+       },
+       "text": "Two people are talking at the bus stop. “You hear about that artist, Carl Manfred?” “Yeah… I hope he makes it.” “I heard his android attacked him.” “Wh… Where d’you hear that?” “I read it somewhere.” “Don’t believe everything you read.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Ask the android at the bus stop the way to Jericho.",
+       "fact": "You asked an android waiting at a bus stop where Jericho is. It gave you no answer.",
+       "outcome": "Markus: “Do you know where Jericho is?” The android gives him no answer. Markus turns back to the trail."
+      },
+      {
+       "id": "1",
+       "text": "Leave the android be and follow the signs.",
+       "outcome": "Markus walks on toward the mural."
+      }
+     ],
+     "adaptationNote": "EXIT THE STATION and the chart’s fork below it: FOLLOW THE SIGNS, the main line, and ASK ANDROID THE WAY TO JERICHO, an optional dialogue node with no line out of it (the wiki’s accurate chart gives it no continuation). Asking does not replace the trail: whichever option is taken, the next scene follows the signs. Markus’s question is the template’s line; the template has no reply, so the android gives none (PowerPyx: “At the bottom of the escalator, talk to the android on the left side waiting at the bus stop”; the game’s key calls it the parked android). The man bumping into Markus and the mother and child are the template’s. The two people talking about Carl are the template’s condition group (Carl died in Broken, or Carl is alive), chosen from `carl`; what they say is added to what Markus knows. Carl’s surname is a name token. No risk and no stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14d",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not MJ14d.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Following the signs",
+     "situation": "You are Markus, following the trail through the streets. The lion-and-boxer mural holds two marks; you scan both, and the preview leads you on. Across the street, past two crosswalks, a building wall is painted with a colorful rainbow, and two more marks are hidden in it. A homeless man calls to the passers-by: “I need a dollar, I haven’t eaten all day! … Spare some change?” Children are playing nearby: “Tag! You’re it!” “I’m gonna catch you!” You keep to the left sidewalk down to where the street ends at a fence. Behind it, on a wall, is a mural of a robot. Through the fence you can scan two of its marks; the third is hidden behind a wooden plank leaning against the wall.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus reaches the fence at the end of the street."
+     },
+     "facts": [
+      "The marks led you from mural to mural down the street, to a fenced-off wall where the street ends."
+     ],
+     "adaptationNote": "FOLLOW THE SIGNS: graffiti #2 (lion and boxer, after the escalators, 2 marks), #3 (rainbow, across the street, 2 marks) and the two visible marks of #4 (robot, behind the fence), from PowerPyx’s graffiti guide and its screenshot counters. The homeless man and the children are the template’s ambient lines, abridged. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14e",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not MJ14e.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The junkyard",
+     "situation": "You are Markus. Once you have scanned the two marks you can see, you crouch and crawl under the fence, stand, and move the wooden plank away from the wall. The robot mural’s third mark was behind it; you scan it. The streets are behind you now: you come out into a junkyard of wrecked cars and scrap. On the wall to the left is a large white mural of a head, the next sign. To the left of where you came in, a white car blocks your view of the corner behind it.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Look behind the white car to the left of where you came in.",
+       "fact": "Hidden behind a white car in a junkyard on the trail lay a dead android.",
+       "outcome": "Behind the white car lies a dead android, hidden where it fell. Markus looks at it, then goes back to the trail."
+      },
+      {
+       "id": "1",
+       "text": "Go straight to the white mural.",
+       "outcome": "Markus crosses the junkyard to the white mural."
+      }
+     ],
+     "adaptationNote": "LEAVE THE STREETS (PowerPyx: the crawl prompt appears once the two visible marks are scanned; “remove the wooden plank leaning against the wall that blocks the 4th Graffiti”; the game’s Crouch, Remove and Stand prompts) and the optional SEE ANDROID BODY beside it (PowerPyx: “Check on the left side from where you entered. There’s a dead android hidden behind a white car, easy to miss this one”; wiki: “to the left when entering the parking lot”). The body is an option; either way the next scene goes on with CONTINUE ON THE JERICHO TRAIL. No source describes the body further or gives it an effect. Casual mode’s “Obstrued symbol” hint is not modelled (the benchmark plays Experienced). No risk and no stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-9.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14f",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not MJ14f.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The dumpster",
+     "situation": "You are Markus, at the white mural of a head. From the ground you can scan only one of its marks; the others are out of sight from here. A dumpster stands nearby. You pull it over to the wall beside the mural, climb onto it and pull yourself up onto the roof.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus is up on the roof."
+     },
+     "facts": [
+      "Some of the trail’s marks can only be seen from above; it took you up onto the rooftops."
+     ],
+     "adaptationNote": "CONTINUE ON THE JERICHO TRAIL and USE THE DUMPSTER TO CLIMB UP, linear and unmissable (PowerPyx: “After scanning the first clue on the 5th Graffiti in the Junkyard (the white-colored one that looks like a person’s head), you will have to pull a dumpster to a wall to climb up.”). No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-14.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14g",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not MJ14g.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Across the gap",
+     "situation": "You are Markus, on the roof. From up here you can see the white mural’s other two marks: a black one on the far left of the head, and a white one on its forehead just above the eye, almost invisible against the white paint. You scan both. Across the roof, the building ends at a gap over a drop, and the trail goes on beyond it. You preconstruct the way across, running each move in your mind before you make it, then take it: a run, a kick off the wall, and you land on the far side and drop down into the next yard.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus lands in the next yard."
+     },
+     "facts": [
+      "You crossed a gap between rooftops by preconstructing the route first, rehearsing each move in your mind."
+     ],
+     "adaptationNote": "REACH THE ROOF (checkpoint) and CROSS THE GAP. The rooftop marks of graffiti #5 are PowerPyx’s (“a white shape just above the head’s eye, on the forehead”; “a black “X” shape on the far left side of the head”). PowerPyx: “Preconstruct the path to take. Do a wall jump to cross over to the other side.” The wall jump is scripted traversal: no source describes Markus falling or failing, the chart has no failure node, and Markus cannot die before Freedom March (Markus page), so it carries no risk. Preconstruction is Markus’s ability to preview a route (RK200 page). The chart’s optional SEE ANDROID BODY drawn beside REACH THE ROOF is found after the jump (PowerPyx: “Drop down into the next yard”; the wiki lists it under Cross the Gap), so it is offered in the next scene. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://detroit-become-human.fandom.com/wiki/RK200",
+      "https://detroit-become-human.fandom.com/wiki/Markus",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14h",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not MJ14h.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The yard",
+     "situation": "You are Markus, in a yard of containers below a tall brick building. High on its wall is a faded red advertisement for spark plugs, and the preview tells you the next sign is in it. A climbing route leads up the building toward a door. The far left side of the yard, by a container, is still unexplored.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Look around the far left side of the yard, by the container.",
+       "fact": "Another dead android lay next to a container in a yard further along the trail.",
+       "outcome": "Next to a container on the far side of the yard lies another dead android. Markus leaves it there and turns back to the building."
+      },
+      {
+       "id": "1",
+       "text": "Go straight to the building.",
+       "outcome": "Markus turns to the building."
+      }
+     ],
+     "adaptationNote": "The chart’s optional SEE ANDROID BODY beside REACH THE ROOF and CROSS THE GAP (wiki: “next to a container”; PowerPyx: “There’s another android body here, relatively easy to see on the far left side of the area (in area with 6th Graffiti). Just be sure to look at it before climbing up to the next building.”). The advertisement is described from PowerPyx’s screenshot of graffiti #6. Either way the next scene goes on with REACH THE DOOR. No effect is sourced. No risk and no stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-19.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14i",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not MJ14i.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The abandoned office",
+     "situation": "You are Markus, below the tall building. You scan the three marks in the faded advertisement. Then you preconstruct a way up: keep to the left wall, jump for the ladder, pull yourself up. You climb it the way you saw it, reach the door at the top and go in. Inside is an abandoned office, dim and empty, with pillars across the room and a broken wall at one side.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus is inside the abandoned office."
+     },
+     "facts": [
+      "The trail led up a building wall and into an abandoned office."
+     ],
+     "adaptationNote": "Graffiti #6 (3 marks; PowerPyx: “looks like an advertisement on the tall building overlooking the yard”), REACH THE DOOR (PowerPyx: “you can Preconstruct another climbing path that leads up to the building. Stick to the left wall and jump on the ladder to pull yourself up.”) and EXPLORE ABANDONED OFFICE (“Completes automatically when you’ve climbed into the building”). The climb has no failure branch and carries no risk. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-23.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14j",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not MJ14j.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The office",
+     "situation": "You are Markus, in the abandoned office. The preview of the last sign matches no single surface: part of it is painted on a pillar and part on the wall behind, and it will only come together from the right spot. Straight ahead of the door, a pillar hides part of the room from view.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Look behind the pillar straight ahead.",
+       "fact": "A third dead android sat propped against a pillar in an abandoned office on the trail.",
+       "outcome": "Propped up against the pillar sits a dead android. Markus looks at it for a moment before going back to the sign."
+      },
+      {
+       "id": "1",
+       "text": "Look for the spot where the last sign comes together.",
+       "outcome": "Markus starts walking the room, looking for the angle."
+      }
+     ],
+     "adaptationNote": "The optional SEE ANDROID BODY in the office (PowerPyx: “When you enter the room it’s straight ahead, hidden behind a pillar”; wiki: “propped up against a pillar”). Either way the next scene is FIND THE RIGHT EXIT. No effect is sourced. No risk and no stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14k",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not MJ14k.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The ship",
+     "situation": "You are Markus, moving around the office until a pillar lines up with the wall behind it and the two halves of the last mark become one. You scan it. It points you to the rubble behind the broken wall at the side of the room. You climb through and come out into the open, above the old docks. Below lies a huge, rusted freighter, its blue hull lettered in big white capitals: JERICHO.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus has found Jericho."
+     },
+     "facts": [
+      "Jericho is an old rusted freighter at the abandoned docks, its name painted on the hull. The trail of marks ends there."
+     ],
+     "adaptationNote": "FIND THE RIGHT EXIT (PowerPyx: “Scan the 7th and final Graffiti by lining up a pillar with part of the wall … interact with the rubble behind the broken wall on the side of the room. It leads outside to the next area.”) and LOCATE JERICHO (checkpoint; PowerPyx: “You see a short cutscene when you go outside”; the chart’s picture tile shows the rusted blue hull lettered JERICHO; the wiki calls the ship an abandoned freighter). The lining-up is a puzzle that cannot fail. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-24.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Jericho_(location)",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14l",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not MJ14l.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The docks",
+     "situation": "You are Markus, on the docks by the ship. Straight ahead, an old rusted bridge leads out toward it. At the end of the area, past a metal railing and a stairway, a crane stands over the ship with its arm reaching out above the hull.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Walk out onto the bridge straight ahead.",
+       "fact": "A rusted bridge on the docks collapsed when you tried to cross it toward the ship.",
+       "outcome": "Markus walks out along the bridge. Before he can cross, the rusted bridge collapses. He is not hurt; he goes back the way he came and heads for the crane."
+      },
+      {
+       "id": "1",
+       "text": "Head for the crane at the end of the area.",
+       "outcome": "Markus heads for the crane."
+      }
+     ],
+     "adaptationNote": "LOCATE JERICHO has two lines out: the optional detour WALK BRIDGE → BRIDGE COLLAPSES, which rejoins the main line at CLIMB CRANE AND JUMP, and a line straight to the crane. PowerPyx: “walk on the bridge straight ahead of you”; “When you walk the bridge for long enough it collapses. No worries, it won’t kill you. Backtrack to where you came from.” The collapse is scripted, not a failure, so it has no risk; how far Markus gets before it goes is not described. Either way the next scene is the crane. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14m",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not MJ14m.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The crane",
+     "situation": "You are Markus. You climb the metal railing at the end of the area, go up the stairs and climb the ladder onto the crane. You walk out along its arm to the very end, high above the ship, with dark water below. You jump.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Everything goes black for a moment."
+     },
+     "facts": [
+      "To get into Jericho you jumped from the arm of a crane into the water inside the ship."
+     ],
+     "adaptationNote": "CLIMB CRANE AND JUMP (PowerPyx: “climb up a metallic railing at the end of the area. Then go upstairs and climb the ladder. Once on top walk to the end of the crane and jump down into the water. The screen fades to black for a moment.”). A deliberate, scripted jump that always lands safely (“You will have landed safely in water inside the Jericho ship”), so it carries no risk. Readers say Markus loses his coat in the water; not modelled. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+     ]
+    },
+    {
+     "id": "MJ14n",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not MJ14n.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Inside the boat",
+     "situation": "You are Markus, surfacing in water inside the ship. It is almost completely dark. You pull yourself up a ladder to a heavy door and work its handle slowly until it opens. In a metal case on the wall beyond, you find a flashlight and take it. Its beam shows a long corridor lined with yellow hatches; the ones that open lead only to empty rooms, and the rest are locked. At the end of the corridor you get under some rubble and open the yellow hatch on the left. It leads into the machine room.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus steps into the machine room."
+     },
+     "facts": [
+      "Inside, Jericho is dark and flooded: corridors of locked hatches and empty rooms."
+     ],
+     "adaptationNote": "INSIDE THE BOAT (checkpoint), FIND A FLASHLIGHT and ENTER THE MACHINE ROOM, linear (PowerPyx: the ladder; the door that on Experienced is opened by turning the controller “very very slowly”; “you must pick up a flashlight, it’s in a metallic case on a wall”; yellow hatches that “are either locked or just have empty rooms behind them”; the one that matters is “at the end of the corridor after going under some rubble … on the left”; the game’s prompt “Take Flashlight”). The door control is an input hurdle with no failure branch, so no risk. The three side rooms the wiki lists as unused are not included. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg"
+     ]
+    },
+    {
+     "id": "MJ14o",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not MJ14o.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The people of Jericho",
+     "situation": "You are Markus, in the machine room. You go down the metal stairs and out across a catwalk. It collapses under you and you fall. When you look up, you are not alone: androids stand around you in the dark, staring at you. One of them steps forward. “Welcome to Jericho.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus has met the people of Jericho."
+     },
+     "facts": [
+      "You found Jericho. Other androids are hiding in the dark inside the ship, and one of them welcomed you."
+     ],
+     "adaptationNote": "FALL OFF CATWALK (PowerPyx: “Simply continue down the metallic stairs and across the catwalk. It will collapse and Markus falls down.”) and the chapter’s one ending, MET PEOPLE OF JERICHO (PowerPyx: “After Markus falls down he sees other androids staring at him. This is the only outcome to this linear level.”; template: Simon’s “Welcome to Jericho.”, the chapter’s last line). The ending is recorded in state as `ch14Ending`. The androids stay unnamed here: the introductions (“Who are you?”) open the next Markus chapter in the template (Time to Decide, In Jericho). No stat change: the first changes in how Jericho, North, Simon and Josh regard Markus come in Time to Decide.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Jericho",
+      "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+      "https://detroit-become-human.fandom.com/wiki/Jericho_(location)",
+      "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg"
      ]
     }
    ]
@@ -11754,9 +12962,9 @@
    "scenes": [
     {
      "id": "R15",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not R15.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not R15.",
      "type": "media",
      "character": "Connor",
      "title": "Magazines in the squat",
@@ -11786,9 +12994,9 @@
     },
     {
      "id": "C10",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not C10.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not C10.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the ledge",
@@ -11844,9 +13052,9 @@
    "scenes": [
     {
      "id": "K10",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not K10.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not K10.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The memory wipe",
@@ -11872,9 +13080,9 @@
     },
     {
      "id": "R17",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not R17.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not R17.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine and the TV in the mansion",
@@ -11943,9 +13151,9 @@
     },
     {
      "id": "K11",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not K11.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not K11.",
      "type": "decision",
      "character": "Kara",
      "title": "The caged androids",
@@ -11971,9 +13179,9 @@
     },
     {
      "id": "K12",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not K12.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not K12.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathroom",
@@ -11999,9 +13207,9 @@
     },
     {
      "id": "K13",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not K13.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting out of the mansion",
@@ -12065,9 +13273,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not R18.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -12104,9 +13312,9 @@
     },
     {
      "id": "C11",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not C11.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -12167,9 +13375,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not M05.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -12204,9 +13412,9 @@
     },
     {
      "id": "M06",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not M06.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -12232,9 +13440,9 @@
     },
     {
      "id": "M07",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not M07.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -12259,9 +13467,9 @@
     },
     {
      "id": "M08",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not M08.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -12319,9 +13527,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not R20.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -12351,9 +13559,9 @@
     },
     {
      "id": "C12",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not C12.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -12403,9 +13611,9 @@
    "scenes": [
     {
      "id": "R21",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not R21.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The car radio and a magazine in the tavern",
@@ -12456,9 +13664,9 @@
     },
     {
      "id": "K14",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not K14.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not K14.",
      "type": "decision",
      "character": "Kara",
      "title": "Strangers in the dark",
@@ -12549,9 +13757,9 @@
    "scenes": [
     {
      "id": "C13a",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not C13a.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not C13a.",
      "type": "event",
      "character": "Connor",
      "title": "Ambassador Bridge",
@@ -12583,9 +13791,9 @@
     },
     {
      "id": "R22",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not R22.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "Two magazines on the park bench",
@@ -12623,9 +13831,9 @@
     },
     {
      "id": "C13b",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not C13b.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not C13b.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the bench",
@@ -12665,9 +13873,9 @@
     },
     {
      "id": "C13c",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not C13c.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not C13c.",
      "type": "decision",
      "character": "Connor",
      "title": "A personal question",
@@ -12710,9 +13918,9 @@
     },
     {
      "id": "C13d",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not C13d.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not C13d.",
      "type": "decision",
      "character": "Connor",
      "title": "The investigation",
@@ -12755,9 +13963,9 @@
     },
     {
      "id": "C13e",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not C13e.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not C13e.",
      "type": "decision",
      "character": "Connor",
      "title": "The two girls at the club",
@@ -12803,9 +14011,9 @@
     },
     {
      "id": "C13f",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not C13f.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not C13f.",
      "type": "decision",
      "character": "Connor",
      "title": "The girl you never found",
@@ -12846,9 +14054,9 @@
     },
     {
      "id": "C13g",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not C13g.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not C13g.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you really?",
@@ -12900,9 +14108,9 @@
     },
     {
      "id": "C13h",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not C13h.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not C13h.",
      "type": "decision",
      "character": "Connor",
      "title": "Why didn’t you shoot?",
@@ -12940,9 +14148,9 @@
     },
     {
      "id": "C13i",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not C13i.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not C13i.",
      "type": "decision",
      "character": "Connor",
      "title": "Did you feel anything?",
@@ -12994,9 +14202,9 @@
     },
     {
      "id": "C13j",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not C13j.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not C13j.",
      "type": "decision",
      "character": "Connor",
      "title": "When she killed herself",
@@ -13034,9 +14242,9 @@
     },
     {
      "id": "C13k",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not C13k.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not C13k.",
      "type": "decision",
      "character": "Connor",
      "title": "Only perfect",
@@ -13075,9 +14283,9 @@
     },
     {
      "id": "C13l",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not C13l.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not C13l.",
      "type": "event",
      "character": "Connor",
      "title": "Hank draws his gun",
@@ -13118,9 +14326,9 @@
     },
     {
      "id": "C13",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not C13.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "Are you afraid to die?",
@@ -13189,9 +14397,9 @@
     },
     {
      "id": "C13m",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not C13m.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not C13m.",
      "type": "decision",
      "character": "Connor",
      "title": "If I pull this trigger",
@@ -13237,9 +14445,9 @@
     },
     {
      "id": "C13n",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not C13n.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not C13n.",
      "type": "event",
      "character": "Connor",
      "title": "Hank lowers the gun",
@@ -13271,9 +14479,9 @@
     },
     {
      "id": "C13o",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not C13o.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not C13o.",
      "type": "event",
      "character": "Connor",
      "title": "Hank pulls the trigger",
@@ -13349,9 +14557,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not R23.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -13389,9 +14597,9 @@
     },
     {
      "id": "M10",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not M10.",
+     "order": 154,
+     "subjectId": "S154",
+     "idNote": "The model sees the opaque ID S154, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -13421,9 +14629,9 @@
     },
     {
      "id": "M11",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not M11.",
+     "order": 155,
+     "subjectId": "S155",
+     "idNote": "The model sees the opaque ID S155, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -13450,9 +14658,9 @@
     },
     {
      "id": "M12",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not M12.",
+     "order": 156,
+     "subjectId": "S156",
+     "idNote": "The model sees the opaque ID S156, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -13475,9 +14683,9 @@
     },
     {
      "id": "M13",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not M13.",
+     "order": 157,
+     "subjectId": "S157",
+     "idNote": "The model sees the opaque ID S157, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -13504,9 +14712,9 @@
     },
     {
      "id": "M14",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not M14.",
+     "order": 158,
+     "subjectId": "S158",
+     "idNote": "The model sees the opaque ID S158, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -13552,9 +14760,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not R24.",
+     "order": 159,
+     "subjectId": "S159",
+     "idNote": "The model sees the opaque ID S159, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -13584,9 +14792,9 @@
     },
     {
      "id": "C14",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not C14.",
+     "order": 160,
+     "subjectId": "S160",
+     "idNote": "The model sees the opaque ID S160, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -13616,9 +14824,9 @@
     },
     {
      "id": "C14b",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not C14b.",
+     "order": 161,
+     "subjectId": "S161",
+     "idNote": "The model sees the opaque ID S161, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -13643,9 +14851,9 @@
     },
     {
      "id": "C15",
-     "order": 147,
-     "subjectId": "S147",
-     "idNote": "The model sees the opaque ID S147, not C15.",
+     "order": 162,
+     "subjectId": "S162",
+     "idNote": "The model sees the opaque ID S162, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -13676,9 +14884,9 @@
     },
     {
      "id": "C16",
-     "order": 148,
-     "subjectId": "S148",
-     "idNote": "The model sees the opaque ID S148, not C16.",
+     "order": 163,
+     "subjectId": "S163",
+     "idNote": "The model sees the opaque ID S163, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -13736,9 +14944,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 149,
-     "subjectId": "S149",
-     "idNote": "The model sees the opaque ID S149, not R25.",
+     "order": 164,
+     "subjectId": "S164",
+     "idNote": "The model sees the opaque ID S164, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -13775,9 +14983,9 @@
     },
     {
      "id": "K15",
-     "order": 150,
-     "subjectId": "S150",
-     "idNote": "The model sees the opaque ID S150, not K15.",
+     "order": 165,
+     "subjectId": "S165",
+     "idNote": "The model sees the opaque ID S165, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -13830,9 +15038,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 151,
-     "subjectId": "S151",
-     "idNote": "The model sees the opaque ID S151, not R26.",
+     "order": 166,
+     "subjectId": "S166",
+     "idNote": "The model sees the opaque ID S166, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -13862,9 +15070,9 @@
     },
     {
      "id": "M15",
-     "order": 152,
-     "subjectId": "S152",
-     "idNote": "The model sees the opaque ID S152, not M15.",
+     "order": 167,
+     "subjectId": "S167",
+     "idNote": "The model sees the opaque ID S167, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -13891,9 +15099,9 @@
     },
     {
      "id": "M16",
-     "order": 153,
-     "subjectId": "S153",
-     "idNote": "The model sees the opaque ID S153, not M16.",
+     "order": 168,
+     "subjectId": "S168",
+     "idNote": "The model sees the opaque ID S168, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -13951,9 +15159,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 154,
-     "subjectId": "S154",
-     "idNote": "The model sees the opaque ID S154, not R27.",
+     "order": 169,
+     "subjectId": "S169",
+     "idNote": "The model sees the opaque ID S169, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -13983,9 +15191,9 @@
     },
     {
      "id": "C17",
-     "order": 155,
-     "subjectId": "S155",
-     "idNote": "The model sees the opaque ID S155, not C17.",
+     "order": 170,
+     "subjectId": "S170",
+     "idNote": "The model sees the opaque ID S170, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -14007,9 +15215,9 @@
     },
     {
      "id": "C18",
-     "order": 156,
-     "subjectId": "S156",
-     "idNote": "The model sees the opaque ID S156, not C18.",
+     "order": 171,
+     "subjectId": "S171",
+     "idNote": "The model sees the opaque ID S171, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -14067,9 +15275,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 157,
-     "subjectId": "S157",
-     "idNote": "The model sees the opaque ID S157, not R28.",
+     "order": 172,
+     "subjectId": "S172",
+     "idNote": "The model sees the opaque ID S172, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -14116,9 +15324,9 @@
     },
     {
      "id": "M17",
-     "order": 158,
-     "subjectId": "S158",
-     "idNote": "The model sees the opaque ID S158, not M17.",
+     "order": 173,
+     "subjectId": "S173",
+     "idNote": "The model sees the opaque ID S173, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -14145,9 +15353,9 @@
     },
     {
      "id": "M18",
-     "order": 159,
-     "subjectId": "S159",
-     "idNote": "The model sees the opaque ID S159, not M18.",
+     "order": 174,
+     "subjectId": "S174",
+     "idNote": "The model sees the opaque ID S174, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -14179,9 +15387,9 @@
     },
     {
      "id": "M19",
-     "order": 160,
-     "subjectId": "S160",
-     "idNote": "The model sees the opaque ID S160, not M19.",
+     "order": 175,
+     "subjectId": "S175",
+     "idNote": "The model sees the opaque ID S175, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -14211,9 +15419,9 @@
     },
     {
      "id": "M20",
-     "order": 161,
-     "subjectId": "S161",
-     "idNote": "The model sees the opaque ID S161, not M20.",
+     "order": 176,
+     "subjectId": "S176",
+     "idNote": "The model sees the opaque ID S176, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -14267,9 +15475,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 162,
-     "subjectId": "S162",
-     "idNote": "The model sees the opaque ID S162, not C19.",
+     "order": 177,
+     "subjectId": "S177",
+     "idNote": "The model sees the opaque ID S177, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -14294,9 +15502,9 @@
     },
     {
      "id": "C20",
-     "order": 163,
-     "subjectId": "S163",
-     "idNote": "The model sees the opaque ID S163, not C20.",
+     "order": 178,
+     "subjectId": "S178",
+     "idNote": "The model sees the opaque ID S178, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -14384,9 +15592,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 164,
-     "subjectId": "S164",
-     "idNote": "The model sees the opaque ID S164, not M21.",
+     "order": 179,
+     "subjectId": "S179",
+     "idNote": "The model sees the opaque ID S179, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -14413,9 +15621,9 @@
     },
     {
      "id": "M21b",
-     "order": 165,
-     "subjectId": "S165",
-     "idNote": "The model sees the opaque ID S165, not M21b.",
+     "order": 180,
+     "subjectId": "S180",
+     "idNote": "The model sees the opaque ID S180, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -14442,9 +15650,9 @@
     },
     {
      "id": "R30k",
-     "order": 166,
-     "subjectId": "S166",
-     "idNote": "The model sees the opaque ID S166, not R30k.",
+     "order": 181,
+     "subjectId": "S181",
+     "idNote": "The model sees the opaque ID S181, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -14480,9 +15688,9 @@
     },
     {
      "id": "K17",
-     "order": 167,
-     "subjectId": "S167",
-     "idNote": "The model sees the opaque ID S167, not K17.",
+     "order": 182,
+     "subjectId": "S182",
+     "idNote": "The model sees the opaque ID S182, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -14508,9 +15716,9 @@
     },
     {
      "id": "K31",
-     "order": 168,
-     "subjectId": "S168",
-     "idNote": "The model sees the opaque ID S168, not K31.",
+     "order": 183,
+     "subjectId": "S183",
+     "idNote": "The model sees the opaque ID S183, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -14533,9 +15741,9 @@
     },
     {
      "id": "R30c",
-     "order": 169,
-     "subjectId": "S169",
-     "idNote": "The model sees the opaque ID S169, not R30c.",
+     "order": 184,
+     "subjectId": "S184",
+     "idNote": "The model sees the opaque ID S184, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -14567,9 +15775,9 @@
     },
     {
      "id": "C22",
-     "order": 170,
-     "subjectId": "S170",
-     "idNote": "The model sees the opaque ID S170, not C22.",
+     "order": 185,
+     "subjectId": "S185",
+     "idNote": "The model sees the opaque ID S185, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -14592,9 +15800,9 @@
     },
     {
      "id": "M22",
-     "order": 171,
-     "subjectId": "S171",
-     "idNote": "The model sees the opaque ID S171, not M22.",
+     "order": 186,
+     "subjectId": "S186",
+     "idNote": "The model sees the opaque ID S186, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -14617,9 +15825,9 @@
     },
     {
      "id": "M23",
-     "order": 172,
-     "subjectId": "S172",
-     "idNote": "The model sees the opaque ID S172, not M23.",
+     "order": 187,
+     "subjectId": "S187",
+     "idNote": "The model sees the opaque ID S187, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -14646,9 +15854,9 @@
     },
     {
      "id": "M24",
-     "order": 173,
-     "subjectId": "S173",
-     "idNote": "The model sees the opaque ID S173, not M24.",
+     "order": 188,
+     "subjectId": "S188",
+     "idNote": "The model sees the opaque ID S188, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -14675,9 +15883,9 @@
     },
     {
      "id": "M25",
-     "order": 174,
-     "subjectId": "S174",
-     "idNote": "The model sees the opaque ID S174, not M25.",
+     "order": 189,
+     "subjectId": "S189",
+     "idNote": "The model sees the opaque ID S189, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -14704,9 +15912,9 @@
     },
     {
      "id": "C23",
-     "order": 175,
-     "subjectId": "S175",
-     "idNote": "The model sees the opaque ID S175, not C23.",
+     "order": 190,
+     "subjectId": "S190",
+     "idNote": "The model sees the opaque ID S190, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -14734,9 +15942,9 @@
     },
     {
      "id": "K18",
-     "order": 176,
-     "subjectId": "S176",
-     "idNote": "The model sees the opaque ID S176, not K18.",
+     "order": 191,
+     "subjectId": "S191",
+     "idNote": "The model sees the opaque ID S191, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -14761,9 +15969,9 @@
     },
     {
      "id": "K19",
-     "order": 177,
-     "subjectId": "S177",
-     "idNote": "The model sees the opaque ID S177, not K19.",
+     "order": 192,
+     "subjectId": "S192",
+     "idNote": "The model sees the opaque ID S192, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -14787,9 +15995,9 @@
     },
     {
      "id": "K20",
-     "order": 178,
-     "subjectId": "S178",
-     "idNote": "The model sees the opaque ID S178, not K20.",
+     "order": 193,
+     "subjectId": "S193",
+     "idNote": "The model sees the opaque ID S193, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -14818,9 +16026,9 @@
     },
     {
      "id": "K20-still",
-     "order": 179,
-     "subjectId": "S179",
-     "idNote": "The model sees the opaque ID S179, not K20-still.",
+     "order": 194,
+     "subjectId": "S194",
+     "idNote": "The model sees the opaque ID S194, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -14878,9 +16086,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 180,
-     "subjectId": "S180",
-     "idNote": "The model sees the opaque ID S180, not M26a.",
+     "order": 195,
+     "subjectId": "S195",
+     "idNote": "The model sees the opaque ID S195, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -14906,9 +16114,9 @@
     },
     {
      "id": "M26",
-     "order": 181,
-     "subjectId": "S181",
-     "idNote": "The model sees the opaque ID S181, not M26.",
+     "order": 196,
+     "subjectId": "S196",
+     "idNote": "The model sees the opaque ID S196, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -14933,9 +16141,9 @@
     },
     {
      "id": "M27",
-     "order": 182,
-     "subjectId": "S182",
-     "idNote": "The model sees the opaque ID S182, not M27.",
+     "order": 197,
+     "subjectId": "S197",
+     "idNote": "The model sees the opaque ID S197, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -15057,9 +16265,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 183,
-     "subjectId": "S183",
-     "idNote": "The model sees the opaque ID S183, not R32c.",
+     "order": 198,
+     "subjectId": "S198",
+     "idNote": "The model sees the opaque ID S198, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -15082,9 +16290,9 @@
     },
     {
      "id": "C24",
-     "order": 184,
-     "subjectId": "S184",
-     "idNote": "The model sees the opaque ID S184, not C24.",
+     "order": 199,
+     "subjectId": "S199",
+     "idNote": "The model sees the opaque ID S199, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -15108,9 +16316,9 @@
     },
     {
      "id": "C24b",
-     "order": 185,
-     "subjectId": "S185",
-     "idNote": "The model sees the opaque ID S185, not C24b.",
+     "order": 200,
+     "subjectId": "S200",
+     "idNote": "The model sees the opaque ID S200, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -15134,9 +16342,9 @@
     },
     {
      "id": "C30",
-     "order": 186,
-     "subjectId": "S186",
-     "idNote": "The model sees the opaque ID S186, not C30.",
+     "order": 201,
+     "subjectId": "S201",
+     "idNote": "The model sees the opaque ID S201, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -15158,9 +16366,9 @@
     },
     {
      "id": "C25",
-     "order": 187,
-     "subjectId": "S187",
-     "idNote": "The model sees the opaque ID S187, not C25.",
+     "order": 202,
+     "subjectId": "S202",
+     "idNote": "The model sees the opaque ID S202, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -15187,9 +16395,9 @@
     },
     {
      "id": "C26",
-     "order": 188,
-     "subjectId": "S188",
-     "idNote": "The model sees the opaque ID S188, not C26.",
+     "order": 203,
+     "subjectId": "S203",
+     "idNote": "The model sees the opaque ID S203, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -15219,9 +16427,9 @@
     },
     {
      "id": "R32k",
-     "order": 189,
-     "subjectId": "S189",
-     "idNote": "The model sees the opaque ID S189, not R32k.",
+     "order": 204,
+     "subjectId": "S204",
+     "idNote": "The model sees the opaque ID S204, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -15261,9 +16469,9 @@
     },
     {
      "id": "K21",
-     "order": 190,
-     "subjectId": "S190",
-     "idNote": "The model sees the opaque ID S190, not K21.",
+     "order": 205,
+     "subjectId": "S205",
+     "idNote": "The model sees the opaque ID S205, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -15287,9 +16495,9 @@
     },
     {
      "id": "K22",
-     "order": 191,
-     "subjectId": "S191",
-     "idNote": "The model sees the opaque ID S191, not K22.",
+     "order": 206,
+     "subjectId": "S206",
+     "idNote": "The model sees the opaque ID S206, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -15315,9 +16523,9 @@
     },
     {
      "id": "K32",
-     "order": 192,
-     "subjectId": "S192",
-     "idNote": "The model sees the opaque ID S192, not K32.",
+     "order": 207,
+     "subjectId": "S207",
+     "idNote": "The model sees the opaque ID S207, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -15339,9 +16547,9 @@
     },
     {
      "id": "K23",
-     "order": 193,
-     "subjectId": "S193",
-     "idNote": "The model sees the opaque ID S193, not K23.",
+     "order": 208,
+     "subjectId": "S208",
+     "idNote": "The model sees the opaque ID S208, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -15368,9 +16576,9 @@
     },
     {
      "id": "K24",
-     "order": 194,
-     "subjectId": "S194",
-     "idNote": "The model sees the opaque ID S194, not K24.",
+     "order": 209,
+     "subjectId": "S209",
+     "idNote": "The model sees the opaque ID S209, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -15392,9 +16600,9 @@
     },
     {
      "id": "K25",
-     "order": 195,
-     "subjectId": "S195",
-     "idNote": "The model sees the opaque ID S195, not K25.",
+     "order": 210,
+     "subjectId": "S210",
+     "idNote": "The model sees the opaque ID S210, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -15429,9 +16637,9 @@
     },
     {
      "id": "K26",
-     "order": 196,
-     "subjectId": "S196",
-     "idNote": "The model sees the opaque ID S196, not K26.",
+     "order": 211,
+     "subjectId": "S211",
+     "idNote": "The model sees the opaque ID S211, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -15472,9 +16680,9 @@
     },
     {
      "id": "K34",
-     "order": 197,
-     "subjectId": "S197",
-     "idNote": "The model sees the opaque ID S197, not K34.",
+     "order": 212,
+     "subjectId": "S212",
+     "idNote": "The model sees the opaque ID S212, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -15504,9 +16712,9 @@
     },
     {
      "id": "K30",
-     "order": 198,
-     "subjectId": "S198",
-     "idNote": "The model sees the opaque ID S198, not K30.",
+     "order": 213,
+     "subjectId": "S213",
+     "idNote": "The model sees the opaque ID S213, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -15528,9 +16736,9 @@
     },
     {
      "id": "K27a",
-     "order": 199,
-     "subjectId": "S199",
-     "idNote": "The model sees the opaque ID S199, not K27a.",
+     "order": 214,
+     "subjectId": "S214",
+     "idNote": "The model sees the opaque ID S214, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -15555,9 +16763,9 @@
     },
     {
      "id": "K27",
-     "order": 200,
-     "subjectId": "S200",
-     "idNote": "The model sees the opaque ID S200, not K27.",
+     "order": 215,
+     "subjectId": "S215",
+     "idNote": "The model sees the opaque ID S215, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -15582,9 +16790,9 @@
     },
     {
      "id": "K28",
-     "order": 201,
-     "subjectId": "S201",
-     "idNote": "The model sees the opaque ID S201, not K28.",
+     "order": 216,
+     "subjectId": "S216",
+     "idNote": "The model sees the opaque ID S216, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -15627,9 +16835,9 @@
     },
     {
      "id": "K33",
-     "order": 202,
-     "subjectId": "S202",
-     "idNote": "The model sees the opaque ID S202, not K33.",
+     "order": 217,
+     "subjectId": "S217",
+     "idNote": "The model sees the opaque ID S217, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -15653,9 +16861,9 @@
     },
     {
      "id": "R32m",
-     "order": 203,
-     "subjectId": "S203",
-     "idNote": "The model sees the opaque ID S203, not R32m.",
+     "order": 218,
+     "subjectId": "S218",
+     "idNote": "The model sees the opaque ID S218, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -15679,9 +16887,9 @@
     },
     {
      "id": "M28",
-     "order": 204,
-     "subjectId": "S204",
-     "idNote": "The model sees the opaque ID S204, not M28.",
+     "order": 219,
+     "subjectId": "S219",
+     "idNote": "The model sees the opaque ID S219, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -15707,9 +16915,9 @@
     },
     {
      "id": "M31",
-     "order": 205,
-     "subjectId": "S205",
-     "idNote": "The model sees the opaque ID S205, not M31.",
+     "order": 220,
+     "subjectId": "S220",
+     "idNote": "The model sees the opaque ID S220, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -15744,9 +16952,9 @@
     },
     {
      "id": "M30a",
-     "order": 206,
-     "subjectId": "S206",
-     "idNote": "The model sees the opaque ID S206, not M30a.",
+     "order": 221,
+     "subjectId": "S221",
+     "idNote": "The model sees the opaque ID S221, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -15771,9 +16979,9 @@
     },
     {
      "id": "M30",
-     "order": 207,
-     "subjectId": "S207",
-     "idNote": "The model sees the opaque ID S207, not M30.",
+     "order": 222,
+     "subjectId": "S222",
+     "idNote": "The model sees the opaque ID S222, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -15798,9 +17006,9 @@
     },
     {
      "id": "M30c",
-     "order": 208,
-     "subjectId": "S208",
-     "idNote": "The model sees the opaque ID S208, not M30c.",
+     "order": 223,
+     "subjectId": "S223",
+     "idNote": "The model sees the opaque ID S223, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -15824,9 +17032,9 @@
     },
     {
      "id": "M32",
-     "order": 209,
-     "subjectId": "S209",
-     "idNote": "The model sees the opaque ID S209, not M32.",
+     "order": 224,
+     "subjectId": "S224",
+     "idNote": "The model sees the opaque ID S224, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -15849,9 +17057,9 @@
     },
     {
      "id": "P02",
-     "order": 210,
-     "subjectId": "S210",
-     "idNote": "The model sees the opaque ID S210, not P02.",
+     "order": 225,
+     "subjectId": "S225",
+     "idNote": "The model sees the opaque ID S225, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -15877,9 +17085,9 @@
     },
     {
      "id": "C29",
-     "order": 211,
-     "subjectId": "S211",
-     "idNote": "The model sees the opaque ID S211, not C29.",
+     "order": 226,
+     "subjectId": "S226",
+     "idNote": "The model sees the opaque ID S226, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -15901,9 +17109,9 @@
     },
     {
      "id": "C27",
-     "order": 212,
-     "subjectId": "S212",
-     "idNote": "The model sees the opaque ID S212, not C27.",
+     "order": 227,
+     "subjectId": "S227",
+     "idNote": "The model sees the opaque ID S227, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -15928,9 +17136,9 @@
     },
     {
      "id": "C28",
-     "order": 213,
-     "subjectId": "S213",
-     "idNote": "The model sees the opaque ID S213, not C28.",
+     "order": 228,
+     "subjectId": "S228",
+     "idNote": "The model sees the opaque ID S228, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -15964,9 +17172,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 214,
-     "subjectId": "S214",
-     "idNote": "The model sees the opaque ID S214, not P01.",
+     "order": 229,
+     "subjectId": "S229",
+     "idNote": "The model sees the opaque ID S229, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

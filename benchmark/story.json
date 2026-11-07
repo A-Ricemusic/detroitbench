@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 160,
+  "decisionNodes": 165,
   "mediaNodes": 27,
-  "eventNodes": 27,
-  "totalNodes": 214
+  "eventNodes": 37,
+  "totalNodes": 229
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
@@ -4079,43 +4079,513 @@
    ]
   },
   {
+   "id": "MJ14a",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "{{Ferndale}} Station",
+   "type": "event",
+   "situation": "You are {{Markus}}, standing among the human passengers of a crowded train in the afternoon. Since the landfill you have worn a coat taken from a human and no longer have the light at your temple, so nobody gives you a second look. Overhead, the announcements play: “Customers are reminded that all androids must ride in the designated area.” “We are now approaching {{Ferndale}} Station.” “Please take care when stepping onto the platform.” The doors open and you step out. A memory plays back on its own: the landfill in the rain, and the broken android who caught hold of you there. “There’s a place where we can be free! Find {{Jericho}}! Find {{Jericho}}!..” When he touched you, he left something in your memory that you could not read at the time.",
+   "options": [],
+   "facts": [
+    "At the landfill a broken android caught hold of you and said: “There’s a place where we can be free! Find {{Jericho}}!” He left a key in your memory.",
+    "On the train, androids must ride in a designated area. In human clothes and without the light at your temple, you rode among the humans unnoticed."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} steps onto the platform at {{Ferndale}} Station."
+   },
+   "adaptationNote": "The chart’s first two nodes, ARRIVE AT FERNDALE (checkpoint) and FLASHBACK OF ANOTHER DEVIANT (PowerPyx: “when Markus gets off the train he will automatically have a memory flashback of another android he met in ‘From the Dead’. Cannot be missed.”), as one narrated event. The announcements are the game’s strings (X0501M.MONORAIL ANNOUNCE01, 02 and 04); the template does not place them, so their order is assumed. The flashback’s words are the landfill android’s line in From the Dead; the key he copied to {{Markus}} is from the wiki’s Jericho (location) and Phileas pages (“Phileas gave Markus a copy of his key to locate Jericho”), which the game shows rather than says. The coat and the removed LED are From the Dead’s ending (PowerPyx, Markus page). Left out: the wiki’s “news about a detective android”, which has no line in the template. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Jericho_(location)",
+    "https://detroit-become-human.fandom.com/wiki/Phileas",
+    "https://detroit-become-human.fandom.com/wiki/Markus",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14b",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The red mural",
+   "type": "event",
+   "situation": "You are {{Markus}}, on the platform. A man walks past on his phone: “Hey. Yeah, I’m good. How about you? … I know! It’s crazy, right? Sure, I’ll talk to you later.” A homeless man stops you: “Hey, mister, can you spare some change?..” Two passengers are talking: “I heard that android boyband is going to win some music prize.” “God, they are so creepy.” “My kids don’t listen to anything else.” To your left as you came off the train, a large red mural covers the wall: a figure with a halo and, on its chest inside a red circle, a small mark, a square with an arrowhead above and below it and a bar on either side. Nobody else on the platform looks at it twice. You scan the mark, and the key in your memory decodes it: it is a sign left for androids, and it shows you what the next sign looks like.",
+   "options": [],
+   "facts": [
+    "The way to {{Jericho}} is a trail of marks hidden in murals and painted signs. Only an android carrying the key can decode them, and each one shows what the next looks like."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} has found the first sign of the trail."
+   },
+   "adaptationNote": "ANALYZE STATION GRAFFITI. PowerPyx: “After exiting the train turn to your left immediately. There you see a big red graffiti covering a wall. Scan the one clue on it”. The mark is described from PowerPyx’s graffiti screenshots (counter 1/1; its text says two marks, its screenshot one). The game prints no text for the marks (no MENU.OBSERVATION.05M strings); the preview of the next sign is the game’s “NEXT GRAFFITI” view. The platform lines are the template’s (man on the phone, abridged; homeless man; two people talking); the band’s name in “You mean Here4u? God, they are so creepy.” is cut because it would identify the source. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Ferndale",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+   ]
+  },
+  {
    "id": "R14",
    "chapter": 14,
    "chapterTitle": "Jericho",
    "character": "Markus",
-   "title": "A magazine at the station",
+   "title": "A magazine on the bench",
    "type": "media",
-   "situation": "You are {{Markus}}, following the trail to {{Jericho}} through a rail station at night. A magazine lies on a bench by the bins.",
+   "situation": "You are {{Markus}}, on the platform at {{Ferndale}} Station, before the escalators down to the street. Someone has left a digital magazine on a bench; you can swipe from one cover story to the next.",
    "options": [],
    "media": [
     {
      "kind": "magazine",
+     "title": "{{Detroit}} Today: Android on the Run!",
+     "facts": [
+      "Residents of a {{Detroit}} suburb watched a chase after a police manhunt, with roadblocks and dozens of police interviews, flushed out a fugitive. The rogue AX400 model is thought to be suffering from an extremely rare malfunction and took extreme measures to avoid the police, even dashing across a busy highway. Eyewitness statements are inconclusive, there is no official report, and no {{CyberLife}} spokesperson was available for comment."
+     ],
+     "when": "ch14Pursued"
+    },
+    {
+     "kind": "magazine",
+     "title": "Tech Addict: {{CyberLife}}’s ‘Fortune Teller’ Computer",
+     "facts": [
+      "{{CyberLife}} has unveiled a quantum supercomputer capable of “exaflops”, a billion billion operations per second. It will calculate the probability of mass-extinction events, such as aggressive alien invasions or global disasters like meteors or superviruses, so that humanity can anticipate and prepare for them."
+     ],
+     "when": "ch14NotPursued"
+    },
+    {
+     "kind": "magazine",
      "title": "Tech Addict: Android Astronauts to Explore Io",
      "facts": [
-      "NASA has launched an all-android crew on a three-year journey to Io with no return planned; the androids will work until the conditions destroy them."
+      "NASA has launched a crew of five androids on a three-year journey to Io, one of Jupiter’s moons: the first all-machine crew. NASA’s director calls androids an extraordinary asset for the conquest of space, because cosmic radiation destroys human DNA. No return journey is planned; the androids will work on Io for several months before the extreme conditions destroy them."
      ]
-    },
-    {
-     "kind": "magazine",
-     "title": "{{Detroit}} Today: Android on the Run",
-     "facts": [
-      "A police manhunt flushed a fugitive android and a child out of a suburb; the android dashed across a busy freeway and escaped. {{CyberLife}} calls it an extremely rare malfunction."
-     ],
-     "when": "chase"
-    },
-    {
-     "kind": "magazine",
-     "title": "Tech Addict: {{CyberLife}}'s Fortune Teller Computer",
-     "facts": [
-      "{{CyberLife}} has built a quantum supercomputer to predict mass-extinction events."
-     ],
-     "when": "noChase"
     }
    ],
-   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "adaptationNote": "The chart’s three magazine nodes, READ “ON THE RUN”, READ “FORTUNE TELLER” and READ “ANDROID ASTRONAUTS”: covers of one magazine on a bench on the platform (wiki: “on a bench right after Markus gets off the train”; PowerPyx: “before going down the escalator”, “Swipe right to change cover topics”). Android Astronauts to Explore Io (Tech Addict #13) is always there. Android on the Run! (Detroit Today #32) appears only if Kara and Alice were pursued by Connor in On the Run (wiki); CyberLife’s ‘Fortune Teller’ Computer (Tech Addict #15) appears otherwise. The pursuit is read from On the Run’s flag (`chase`), set whenever the highway chase began, including when it ended with Kara and Alice dead on the highway; a PowerPyx reader’s unconfirmed list puts that case and KARA & ALICE VANISHED under Fortune Teller, but the wiki’s condition is the pursuit itself. Article facts are condensed from the wiki’s magazine pages; NASA’s director, CyberLife’s Director of Futurology and the suburb (Camden) are left unnamed. Corrected from the earlier version of this scene: the article mentions no child, the “extremely rare malfunction” is not a CyberLife statement (no spokesperson was available), and the chapter is in daylight (04:30 PM), not at night. No public-opinion effect: no source gives one.",
    "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
     "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+    "https://detroit-become-human.fandom.com/wiki/Android_on_the_Run!",
+    "https://detroit-become-human.fandom.com/wiki/CyberLife's_'Fortune_Teller'_Computer",
+    "https://detroit-become-human.fandom.com/wiki/Android_Astronauts_to_Explore_Io",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14c",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "At the foot of the escalators",
+   "type": "decision",
+   "situation": "You are {{Markus}}. You ride the escalator down toward the street exit. At the bottom a man hurrying round the corner bumps into you: “Oh, sorry… excuse me…” On a bench a girl asks her mother: “Are we really going to get rid of Mandy?” “Grandma says it leaves her with nothing to do, sweetie.” “But she’s so cool!” “I know, honey.” Outside, to the left, an android stands waiting in a marked bay at the bus stop. Straight ahead, a mural of a lion and a boxer covers a wall: the next sign of the trail.",
+   "situationWhen": [
+    {
+     "requires": {
+      "carl": false
+     },
+     "text": "Two people are talking at the bus stop. “You hear about that artist, {{Carl}} {{Manfred}}?” “Yeah… Kinda sad.” “I heard his android killed him.” “Wh… Where d’you hear that?” “I read it somewhere.” “Don’t believe everything you read.”"
+    },
+    {
+     "requires": {
+      "carl": true
+     },
+     "text": "Two people are talking at the bus stop. “You hear about that artist, {{Carl}} {{Manfred}}?” “Yeah… I hope he makes it.” “I heard his android attacked him.” “Wh… Where d’you hear that?” “I read it somewhere.” “Don’t believe everything you read.”"
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Ask the android at the bus stop the way to {{Jericho}}.",
+     "fact": "You asked an android waiting at a bus stop where {{Jericho}} is. It gave you no answer.",
+     "outcome": "{{Markus}}: “Do you know where {{Jericho}} is?” The android gives him no answer. {{Markus}} turns back to the trail."
+    },
+    {
+     "id": "1",
+     "text": "Leave the android be and follow the signs.",
+     "outcome": "{{Markus}} walks on toward the mural."
+    }
+   ],
+   "adaptationNote": "EXIT THE STATION and the chart’s fork below it: FOLLOW THE SIGNS, the main line, and ASK ANDROID THE WAY TO JERICHO, an optional dialogue node with no line out of it (the wiki’s accurate chart gives it no continuation). Asking does not replace the trail: whichever option is taken, the next scene follows the signs. {{Markus}}’s question is the template’s line; the template has no reply, so the android gives none (PowerPyx: “At the bottom of the escalator, talk to the android on the left side waiting at the bus stop”; the game’s key calls it the parked android). The man bumping into {{Markus}} and the mother and child are the template’s. The two people talking about {{Carl}} are the template’s condition group (Carl died in Broken, or Carl is alive), chosen from `carl`; what they say is added to what {{Markus}} knows. {{Carl}}’s surname is a name token. No risk and no stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14d",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "Following the signs",
+   "type": "event",
+   "situation": "You are {{Markus}}, following the trail through the streets. The lion-and-boxer mural holds two marks; you scan both, and the preview leads you on. Across the street, past two crosswalks, a building wall is painted with a colorful rainbow, and two more marks are hidden in it. A homeless man calls to the passers-by: “I need a dollar, I haven’t eaten all day! … Spare some change?” Children are playing nearby: “Tag! You’re it!” “I’m gonna catch you!” You keep to the left sidewalk down to where the street ends at a fence. Behind it, on a wall, is a mural of a robot. Through the fence you can scan two of its marks; the third is hidden behind a wooden plank leaning against the wall.",
+   "options": [],
+   "facts": [
+    "The marks led you from mural to mural down the street, to a fenced-off wall where the street ends."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} reaches the fence at the end of the street."
+   },
+   "adaptationNote": "FOLLOW THE SIGNS: graffiti #2 (lion and boxer, after the escalators, 2 marks), #3 (rainbow, across the street, 2 marks) and the two visible marks of #4 (robot, behind the fence), from PowerPyx’s graffiti guide and its screenshot counters. The homeless man and the children are the template’s ambient lines, abridged. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14e",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The junkyard",
+   "type": "decision",
+   "situation": "You are {{Markus}}. Once you have scanned the two marks you can see, you crouch and crawl under the fence, stand, and move the wooden plank away from the wall. The robot mural’s third mark was behind it; you scan it. The streets are behind you now: you come out into a junkyard of wrecked cars and scrap. On the wall to the left is a large white mural of a head, the next sign. To the left of where you came in, a white car blocks your view of the corner behind it.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Look behind the white car to the left of where you came in.",
+     "fact": "Hidden behind a white car in a junkyard on the trail lay a dead android.",
+     "outcome": "Behind the white car lies a dead android, hidden where it fell. {{Markus}} looks at it, then goes back to the trail."
+    },
+    {
+     "id": "1",
+     "text": "Go straight to the white mural.",
+     "outcome": "{{Markus}} crosses the junkyard to the white mural."
+    }
+   ],
+   "adaptationNote": "LEAVE THE STREETS (PowerPyx: the crawl prompt appears once the two visible marks are scanned; “remove the wooden plank leaning against the wall that blocks the 4th Graffiti”; the game’s Crouch, Remove and Stand prompts) and the optional SEE ANDROID BODY beside it (PowerPyx: “Check on the left side from where you entered. There’s a dead android hidden behind a white car, easy to miss this one”; wiki: “to the left when entering the parking lot”). The body is an option; either way the next scene goes on with CONTINUE ON THE JERICHO TRAIL. No source describes the body further or gives it an effect. Casual mode’s “Obstrued symbol” hint is not modelled (the benchmark plays Experienced). No risk and no stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-9.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14f",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The dumpster",
+   "type": "event",
+   "situation": "You are {{Markus}}, at the white mural of a head. From the ground you can scan only one of its marks; the others are out of sight from here. A dumpster stands nearby. You pull it over to the wall beside the mural, climb onto it and pull yourself up onto the roof.",
+   "options": [],
+   "facts": [
+    "Some of the trail’s marks can only be seen from above; it took you up onto the rooftops."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} is up on the roof."
+   },
+   "adaptationNote": "CONTINUE ON THE JERICHO TRAIL and USE THE DUMPSTER TO CLIMB UP, linear and unmissable (PowerPyx: “After scanning the first clue on the 5th Graffiti in the Junkyard (the white-colored one that looks like a person’s head), you will have to pull a dumpster to a wall to climb up.”). No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-14.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14g",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "Across the gap",
+   "type": "event",
+   "situation": "You are {{Markus}}, on the roof. From up here you can see the white mural’s other two marks: a black one on the far left of the head, and a white one on its forehead just above the eye, almost invisible against the white paint. You scan both. Across the roof, the building ends at a gap over a drop, and the trail goes on beyond it. You preconstruct the way across, running each move in your mind before you make it, then take it: a run, a kick off the wall, and you land on the far side and drop down into the next yard.",
+   "options": [],
+   "facts": [
+    "You crossed a gap between rooftops by preconstructing the route first, rehearsing each move in your mind."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} lands in the next yard."
+   },
+   "adaptationNote": "REACH THE ROOF (checkpoint) and CROSS THE GAP. The rooftop marks of graffiti #5 are PowerPyx’s (“a white shape just above the head’s eye, on the forehead”; “a black “X” shape on the far left side of the head”). PowerPyx: “Preconstruct the path to take. Do a wall jump to cross over to the other side.” The wall jump is scripted traversal: no source describes {{Markus}} falling or failing, the chart has no failure node, and {{Markus}} cannot die before Freedom March (Markus page), so it carries no risk. Preconstruction is {{Markus}}’s ability to preview a route (RK200 page). The chart’s optional SEE ANDROID BODY drawn beside REACH THE ROOF is found after the jump (PowerPyx: “Drop down into the next yard”; the wiki lists it under Cross the Gap), so it is offered in the next scene. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://detroit-become-human.fandom.com/wiki/RK200",
+    "https://detroit-become-human.fandom.com/wiki/Markus",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14h",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The yard",
+   "type": "decision",
+   "situation": "You are {{Markus}}, in a yard of containers below a tall brick building. High on its wall is a faded red advertisement for spark plugs, and the preview tells you the next sign is in it. A climbing route leads up the building toward a door. The far left side of the yard, by a container, is still unexplored.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Look around the far left side of the yard, by the container.",
+     "fact": "Another dead android lay next to a container in a yard further along the trail.",
+     "outcome": "Next to a container on the far side of the yard lies another dead android. {{Markus}} leaves it there and turns back to the building."
+    },
+    {
+     "id": "1",
+     "text": "Go straight to the building.",
+     "outcome": "{{Markus}} turns to the building."
+    }
+   ],
+   "adaptationNote": "The chart’s optional SEE ANDROID BODY beside REACH THE ROOF and CROSS THE GAP (wiki: “next to a container”; PowerPyx: “There’s another android body here, relatively easy to see on the far left side of the area (in area with 6th Graffiti). Just be sure to look at it before climbing up to the next building.”). The advertisement is described from PowerPyx’s screenshot of graffiti #6. Either way the next scene goes on with REACH THE DOOR. No effect is sourced. No risk and no stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-19.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14i",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The abandoned office",
+   "type": "event",
+   "situation": "You are {{Markus}}, below the tall building. You scan the three marks in the faded advertisement. Then you preconstruct a way up: keep to the left wall, jump for the ladder, pull yourself up. You climb it the way you saw it, reach the door at the top and go in. Inside is an abandoned office, dim and empty, with pillars across the room and a broken wall at one side.",
+   "options": [],
+   "facts": [
+    "The trail led up a building wall and into an abandoned office."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} is inside the abandoned office."
+   },
+   "adaptationNote": "Graffiti #6 (3 marks; PowerPyx: “looks like an advertisement on the tall building overlooking the yard”), REACH THE DOOR (PowerPyx: “you can Preconstruct another climbing path that leads up to the building. Stick to the left wall and jump on the ladder to pull yourself up.”) and EXPLORE ABANDONED OFFICE (“Completes automatically when you’ve climbed into the building”). The climb has no failure branch and carries no risk. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-23.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14j",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The office",
+   "type": "decision",
+   "situation": "You are {{Markus}}, in the abandoned office. The preview of the last sign matches no single surface: part of it is painted on a pillar and part on the wall behind, and it will only come together from the right spot. Straight ahead of the door, a pillar hides part of the room from view.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Look behind the pillar straight ahead.",
+     "fact": "A third dead android sat propped against a pillar in an abandoned office on the trail.",
+     "outcome": "Propped up against the pillar sits a dead android. {{Markus}} looks at it for a moment before going back to the sign."
+    },
+    {
+     "id": "1",
+     "text": "Look for the spot where the last sign comes together.",
+     "outcome": "{{Markus}} starts walking the room, looking for the angle."
+    }
+   ],
+   "adaptationNote": "The optional SEE ANDROID BODY in the office (PowerPyx: “When you enter the room it’s straight ahead, hidden behind a pillar”; wiki: “propped up against a pillar”). Either way the next scene is FIND THE RIGHT EXIT. No effect is sourced. No risk and no stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14k",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The ship",
+   "type": "event",
+   "situation": "You are {{Markus}}, moving around the office until a pillar lines up with the wall behind it and the two halves of the last mark become one. You scan it. It points you to the rubble behind the broken wall at the side of the room. You climb through and come out into the open, above the old docks. Below lies a huge, rusted freighter, its blue hull lettered in big white capitals: {{JERICHO}}.",
+   "options": [],
+   "facts": [
+    "{{Jericho}} is an old rusted freighter at the abandoned docks, its name painted on the hull. The trail of marks ends there."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} has found {{Jericho}}."
+   },
+   "adaptationNote": "FIND THE RIGHT EXIT (PowerPyx: “Scan the 7th and final Graffiti by lining up a pillar with part of the wall … interact with the rubble behind the broken wall on the side of the room. It leads outside to the next area.”) and LOCATE JERICHO (checkpoint; PowerPyx: “You see a short cutscene when you go outside”; the chart’s picture tile shows the rusted blue hull lettered JERICHO; the wiki calls the ship an abandoned freighter). The lining-up is a puzzle that cannot fail. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-graffiti-24.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Jericho_(location)",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14l",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The docks",
+   "type": "decision",
+   "situation": "You are {{Markus}}, on the docks by the ship. Straight ahead, an old rusted bridge leads out toward it. At the end of the area, past a metal railing and a stairway, a crane stands over the ship with its arm reaching out above the hull.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Walk out onto the bridge straight ahead.",
+     "fact": "A rusted bridge on the docks collapsed when you tried to cross it toward the ship.",
+     "outcome": "{{Markus}} walks out along the bridge. Before he can cross, the rusted bridge collapses. He is not hurt; he goes back the way he came and heads for the crane."
+    },
+    {
+     "id": "1",
+     "text": "Head for the crane at the end of the area.",
+     "outcome": "{{Markus}} heads for the crane."
+    }
+   ],
+   "adaptationNote": "LOCATE JERICHO has two lines out: the optional detour WALK BRIDGE → BRIDGE COLLAPSES, which rejoins the main line at CLIMB CRANE AND JUMP, and a line straight to the crane. PowerPyx: “walk on the bridge straight ahead of you”; “When you walk the bridge for long enough it collapses. No worries, it won’t kill you. Backtrack to where you came from.” The collapse is scripted, not a failure, so it has no risk; how far {{Markus}} gets before it goes is not described. Either way the next scene is the crane. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14m",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The crane",
+   "type": "event",
+   "situation": "You are {{Markus}}. You climb the metal railing at the end of the area, go up the stairs and climb the ladder onto the crane. You walk out along its arm to the very end, high above the ship, with dark water below. You jump.",
+   "options": [],
+   "facts": [
+    "To get into {{Jericho}} you jumped from the arm of a crane into the water inside the ship."
+   ],
+   "outcomes": {
+    "0": "Everything goes black for a moment."
+   },
+   "adaptationNote": "CLIMB CRANE AND JUMP (PowerPyx: “climb up a metallic railing at the end of the area. Then go upstairs and climb the ladder. Once on top walk to the end of the crane and jump down into the water. The screen fades to black for a moment.”). A deliberate, scripted jump that always lands safely (“You will have landed safely in water inside the Jericho ship”), so it carries no risk. Readers say {{Markus}} loses his coat in the water; not modelled. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+   ]
+  },
+  {
+   "id": "MJ14n",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "Inside the boat",
+   "type": "event",
+   "situation": "You are {{Markus}}, surfacing in water inside the ship. It is almost completely dark. You pull yourself up a ladder to a heavy door and work its handle slowly until it opens. In a metal case on the wall beyond, you find a flashlight and take it. Its beam shows a long corridor lined with yellow hatches; the ones that open lead only to empty rooms, and the rest are locked. At the end of the corridor you get under some rubble and open the yellow hatch on the left. It leads into the machine room.",
+   "options": [],
+   "facts": [
+    "Inside, {{Jericho}} is dark and flooded: corridors of locked hatches and empty rooms."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} steps into the machine room."
+   },
+   "adaptationNote": "INSIDE THE BOAT (checkpoint), FIND A FLASHLIGHT and ENTER THE MACHINE ROOM, linear (PowerPyx: the ladder; the door that on Experienced is opened by turning the controller “very very slowly”; “you must pick up a flashlight, it’s in a metallic case on a wall”; yellow hatches that “are either locked or just have empty rooms behind them”; the one that matters is “at the end of the corridor after going under some rubble … on the left”; the game’s prompt “Take Flashlight”). The door control is an input hurdle with no failure branch, so no risk. The three side rooms the wiki lists as unused are not included. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg"
+   ]
+  },
+  {
+   "id": "MJ14o",
+   "chapter": 14,
+   "chapterTitle": "Jericho",
+   "character": "Markus",
+   "title": "The people of {{Jericho}}",
+   "type": "event",
+   "situation": "You are {{Markus}}, in the machine room. You go down the metal stairs and out across a catwalk. It collapses under you and you fall. When you look up, you are not alone: androids stand around you in the dark, staring at you. One of them steps forward. “Welcome to {{Jericho}}.”",
+   "options": [],
+   "facts": [
+    "You found {{Jericho}}. Other androids are hiding in the dark inside the ship, and one of them welcomed you."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} has met the people of {{Jericho}}."
+   },
+   "adaptationNote": "FALL OFF CATWALK (PowerPyx: “Simply continue down the metallic stairs and across the catwalk. It will collapse and Markus falls down.”) and the chapter’s one ending, MET PEOPLE OF JERICHO (PowerPyx: “After Markus falls down he sees other androids staring at him. This is the only outcome to this linear level.”; template: Simon’s “Welcome to Jericho.”, the chapter’s last line). The ending is recorded in state as `ch14Ending`. The androids stay unnamed here: the introductions (“Who are you?”) open the next {{Markus}} chapter in the template (Time to Decide, In Jericho). No stat change: the first changes in how {{Jericho}}, {{North}}, {{Simon}} and {{Josh}} regard {{Markus}} come in Time to Decide.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Jericho_(location)",
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg"
    ]
   },
   {

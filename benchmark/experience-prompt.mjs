@@ -21,7 +21,9 @@ export const NAMES={
  // Broken: Carl's surname and the house's address, from the call to the police.
  Manfred:['Manfred','Ashby'],CarlAddress:['8941 Lafayette Avenue','2210 Linden Avenue'],
  // The Bridge (chapter 22): the club the Tracis fled and the deviants' word.
- EdenClub:['Eden Club','Velvet Room'],rA9:['rA9','qL7']
+ EdenClub:['Eden Club','Velvet Room'],rA9:['rA9','qL7'],
+ // Jericho (chapter 14): the district of the station where the trail starts, and Carl's surname as passers-by say it.
+ Ferndale:['Ferndale','Elmwood'],Manfred:['Manfred','Ashby']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));

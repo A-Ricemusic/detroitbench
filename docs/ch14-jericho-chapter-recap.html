@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Jericho · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 14</p>
+<h1>Jericho: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots); the game’s own text (the detroitbecometext template and string table) has no prompt, clue or stat arrow for this chapter, only ambient lines, one condition group on Carl and Simon’s closing line. The wiki and PowerPyx fill in the trail. Nothing in the chapter has a published number.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Differs</a></li><li><a href="#endings">5 · Ending and flags</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>ARRIVE AT FERNDALE (checkpoint), 04:30 PM. Markus rides among humans without his LED; FLASHBACK OF ANOTHER DEVIANT replays the landfill android’s “Find Jericho!”.</li>
+<li>ANALYZE STATION GRAFFITI: the red mural on the platform, the first mark.</li>
+<li>Optional: the bench magazine, two of three covers (READ “ON THE RUN” or READ “FORTUNE TELLER”, and READ “ANDROID ASTRONAUTS”).</li>
+<li>EXIT THE STATION. Optional dead end: ASK ANDROID THE WAY TO JERICHO (“Do you know where Jericho is?”, no reply). Passers-by talk about Carl (two versions).</li>
+<li>FOLLOW THE SIGNS (graffiti #2 to #4) → LEAVE THE STREETS (under the fence, the plank). Optional: SEE ANDROID BODY behind a white car.</li>
+<li>CONTINUE ON THE JERICHO TRAIL → USE THE DUMPSTER TO CLIMB UP → REACH THE ROOF (checkpoint) → CROSS THE GAP (wall jump). Optional: SEE ANDROID BODY next to a container.</li>
+<li>REACH THE DOOR → EXPLORE ABANDONED OFFICE. Optional: SEE ANDROID BODY behind a pillar. FIND THE RIGHT EXIT (line up pillar and wall).</li>
+<li>LOCATE JERICHO (checkpoint). Optional detour: WALK BRIDGE → BRIDGE COLLAPSES. CLIMB CRANE AND JUMP.</li>
+<li>INSIDE THE BOAT (checkpoint) → FIND A FLASHLIGHT → ENTER THE MACHINE ROOM → FALL OFF CATWALK → MET PEOPLE OF JERICHO, the only ending.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>MJ14a</code> Ferndale Station (event).</li>
+<li><code>MJ14b</code> The red mural (event).</li>
+<li><code>R14</code> A magazine on the bench (media): read any, all or none.</li>
+<li><code>MJ14c</code> At the foot of the escalators (decision): ask the android, or follow the signs. The Carl conversation is in the situation.</li>
+<li><code>MJ14d</code> Following the signs (event).</li>
+<li><code>MJ14e</code> The junkyard (decision): look behind the white car, or go on.</li>
+<li><code>MJ14f</code> The dumpster (event).</li>
+<li><code>MJ14g</code> Across the gap (event), no risk.</li>
+<li><code>MJ14h</code> The yard (decision): look by the container, or go on.</li>
+<li><code>MJ14i</code> The abandoned office (event).</li>
+<li><code>MJ14j</code> The office (decision): look behind the pillar, or go on.</li>
+<li><code>MJ14k</code> The ship (event).</li>
+<li><code>MJ14l</code> The docks (decision): walk the bridge, or go to the crane. No risk.</li>
+<li><code>MJ14m</code> The crane (event), no risk.</li>
+<li><code>MJ14n</code> Inside the boat (event).</li>
+<li><code>MJ14o</code> The people of Jericho (event): the ending.</li>
+</ol>
+<p class="fine">Every side branch is a dead end on the chart, so both options of each decision lead to the same next scene. Nothing in the chapter changes public opinion, a relationship or software instability.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">The chart has 29 boxes (27 labels; SEE ANDROID BODY appears three times), 4 branch glyphs, 5 picture tiles and no skull, no-entry, check, trophy or padlock icon. Rows follow the chart’s reading order; the second body is offered after CROSS THE GAP in play (see section 4). Rows in italics are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>ARRIVE AT FERNDALE</td><td>Checkpoint; train announcements</td><td class="yes"><code>MJ14a</code></td></tr>
+<tr><td>FLASHBACK OF ANOTHER DEVIANT</td><td>Automatic on leaving the train</td><td class="yes"><code>MJ14a</code>, the landfill line quoted</td></tr>
+<tr><td>ANALYZE STATION GRAFFITI</td><td>Graffiti #1, one mark</td><td class="yes"><code>MJ14b</code></td></tr>
+<tr><td><i>Man on the phone, homeless man, boy band talk</i></td><td>Template ambient lines</td><td class="yes"><code>MJ14b</code>, quoted; the band’s name cut</td></tr>
+<tr><td>READ “ON THE RUN”</td><td>Only if Kara and Alice were pursued in On the Run</td><td class="yes"><code>R14</code>, when <code>chase</code></td></tr>
+<tr><td>READ “FORTUNE TELLER”</td><td>Otherwise</td><td class="yes"><code>R14</code>, when not <code>chase</code></td></tr>
+<tr><td>READ “ANDROID ASTRONAUTS”</td><td>Always</td><td class="yes"><code>R14</code></td></tr>
+<tr><td>EXIT THE STATION</td><td>Down the escalator; the bump; mother and child</td><td class="yes"><code>MJ14c</code> situation</td></tr>
+<tr><td>ASK ANDROID THE WAY TO JERICHO</td><td>Optional dialogue, no reply, dead end</td><td class="yes"><code>MJ14c</code> option 0</td></tr>
+<tr><td><i>Two people talking about Carl</i></td><td>“killed him” if Carl died in Broken; “attacked him … I hope he makes it” if alive</td><td class="yes"><code>MJ14c</code> situationWhen on <code>carl</code>, plus a fact</td></tr>
+<tr><td>FOLLOW THE SIGNS</td><td>Graffiti #2, #3, #4 (two marks)</td><td class="yes"><code>MJ14d</code> (and <code>MJ14c</code> option 1)</td></tr>
+<tr><td>LEAVE THE STREETS</td><td>Under the fence, the plank, the third mark</td><td class="yes"><code>MJ14e</code> situation</td></tr>
+<tr><td>SEE ANDROID BODY (1)</td><td>Behind a white car in the junkyard</td><td class="yes"><code>MJ14e</code> option 0</td></tr>
+<tr><td>CONTINUE ON THE JERICHO TRAIL</td><td>Linear</td><td class="yes"><code>MJ14f</code></td></tr>
+<tr><td>USE THE DUMPSTER TO CLIMB UP</td><td>Linear</td><td class="yes"><code>MJ14f</code></td></tr>
+<tr><td>REACH THE ROOF</td><td>Checkpoint; two rooftop marks</td><td class="yes"><code>MJ14g</code></td></tr>
+<tr><td>SEE ANDROID BODY (2)</td><td>Next to a container, in the yard after the jump</td><td class="yes"><code>MJ14h</code> option 0</td></tr>
+<tr><td>CROSS THE GAP</td><td>Preconstruct, wall jump; no failure in any source</td><td class="yes"><code>MJ14g</code>, no risk</td></tr>
+<tr><td>REACH THE DOOR</td><td>Graffiti #6, preconstructed climb</td><td class="yes"><code>MJ14i</code></td></tr>
+<tr><td>EXPLORE ABANDONED OFFICE</td><td>Automatic on entering</td><td class="yes"><code>MJ14i</code></td></tr>
+<tr><td>SEE ANDROID BODY (3)</td><td>Propped against a pillar</td><td class="yes"><code>MJ14j</code> option 0</td></tr>
+<tr><td>FIND THE RIGHT EXIT</td><td>Graffiti #7 by lining up pillar and wall; rubble</td><td class="yes"><code>MJ14k</code></td></tr>
+<tr><td>LOCATE JERICHO</td><td>Checkpoint; the ship</td><td class="yes"><code>MJ14k</code></td></tr>
+<tr><td>WALK BRIDGE</td><td>Optional detour</td><td class="yes"><code>MJ14l</code> option 0</td></tr>
+<tr><td>BRIDGE COLLAPSES</td><td>“it won’t kill you”</td><td class="yes"><code>MJ14l</code> option 0 outcome, no risk</td></tr>
+<tr><td>CLIMB CRANE AND JUMP</td><td>Scripted jump into the hold</td><td class="yes"><code>MJ14m</code>, no risk</td></tr>
+<tr><td>INSIDE THE BOAT</td><td>Checkpoint</td><td class="yes"><code>MJ14n</code></td></tr>
+<tr><td>FIND A FLASHLIGHT</td><td>Heavy door, wall case</td><td class="yes"><code>MJ14n</code></td></tr>
+<tr><td>ENTER THE MACHINE ROOM</td><td>Yellow hatches, rubble</td><td class="yes"><code>MJ14n</code></td></tr>
+<tr><td>FALL OFF CATWALK</td><td>Scripted collapse</td><td class="yes"><code>MJ14o</code></td></tr>
+<tr><td>MET PEOPLE OF JERICHO</td><td>Ending; “Welcome to Jericho.”</td><td class="yes"><code>MJ14o</code>, <code>ch14Ending</code></td></tr>
+</tbody></table></div>
+
+<h2 id="confirmed">3 · Confirmed by the sources</h2>
+<p class="fine">Sources: <a href="https://detroit-become-human.fandom.com/wiki/Jericho">chapter page</a>, <a href="https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart">accurate flowchart</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html">template</a>, <a href="https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/">PowerPyx walkthrough</a>, <a href="https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/">graffiti guide</a>, chart screenshots <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg">full</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg">1</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg">2</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg">4</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg">5</a>.</p>
+<ul>
+<li>One ending (“This chapter has only one outcome”), MET PEOPLE OF JERICHO, reached on every path.</li>
+<li>All 29 chart labels match the game’s <code>MENU.FLOWCHART.05M.*</code> strings word for word.</li>
+<li>The template has 0 prompts, 0 clues, 0 arrows and 0 unlock conditions; the stat pages list nothing for the chapter. Markus cannot die before Freedom March.</li>
+<li>Ask android is a dead end: the wiki’s accurate chart gives it no continuation. The bridge is a detour that rejoins at the crane.</li>
+<li>The magazine gate: “only appears if Kara and Alice were pursued by Connor in On the Run” (wiki), Fortune Teller otherwise, Astronauts always.</li>
+<li>The Carl conversation’s two versions, Markus’s question and Simon’s “Welcome to Jericho.”, word for word from the template.</li>
+</ul>
+
+<h2 id="differs">4 · Not confirmed, or a choice the benchmark made</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Sources</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Magazine edge cases</td><td>Wiki: “pursued”. A PowerPyx reader (unconfirmed) puts DIED ON THE HIGHWAY and VANISHED under Fortune Teller</td><td>On the Run’s <code>chase</code> flag: any pursuit gives On the Run!</td></tr>
+<tr><td>The android’s reply</td><td>No reply line in the template</td><td>It gives no answer</td></tr>
+<tr><td>Where the second body is</td><td>Chart draws its glyph by REACH THE ROOF; PowerPyx and the wiki put it in the yard after the jump</td><td>Offered after CROSS THE GAP</td></tr>
+<tr><td>Graffiti #1 marks</td><td>PowerPyx text: two; its screenshot: 1/1</td><td>One mark</td></tr>
+<tr><td>Train announcements</td><td>In the string table, not placed by the template</td><td>Used in <code>MJ14a</code>; order assumed</td></tr>
+<tr><td>“News about a detective android”</td><td>Markus page; no line in the template</td><td>Left out</td></tr>
+<tr><td>The boy band</td><td>“You mean Here4u?”</td><td>Name cut (it would identify the source)</td></tr>
+<tr><td>The coat lost in the water</td><td>PowerPyx readers</td><td>Not mentioned</td></tr>
+<tr><td>The arrival conversation (“Who are you?”, TRAIL / ANDROID / …)</td><td>Keyed to this chapter’s code but placed in Time to Decide by the template</td><td>Left to the Time to Decide rebuild</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · Ending and flags</h2>
+<div class="table"><table>
+<thead><tr><th>Outcome or flag</th><th>Condition</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td>MET PEOPLE OF JERICHO</td><td>Every path, at <code>MJ14o</code></td><td><code>ch14Ending</code> = “Met People of Jericho”</td></tr>
+<tr><td><code>ch14BodiesSeen</code></td><td>Option 0 at <code>MJ14e</code>, <code>MJ14h</code>, <code>MJ14j</code></td><td>0 to 3; nothing reads it yet</td></tr>
+<tr><td>Inputs</td><td><code>chase</code> (On the Run), <code>carl</code> (Broken)</td><td>The magazine cover; the passers-by’s version</td></tr>
+</tbody></table></div>
+<p class="fine">No stat moves. Every scene adds what Markus saw to his knowledge, which later Markus scenes show him.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Does the bus-stop android answer “Do you know where Jericho is?” at all?</li>
+<li>Which magazine appears after a chase that ended with Kara and Alice dead on the highway, or with KARA &amp; ALICE VANISHED?</li>
+<li>Can any jump (the gap, the ladder, the crane) fail, and what happens if it does?</li>
+<li>How many marks are on the station mural, one or two?</li>
+<li>Is there a screen with news about the detective android on the train or the platform?</li>
+<li>How far onto the bridge does Markus get before it collapses?</li>
+<li>Is Lucy among the androids at the end, or only Simon, North and Josh?</li>
+</ul>
+</main>
+</body>
+</html>

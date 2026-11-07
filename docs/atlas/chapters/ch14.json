@@ -3,8 +3,648 @@
   "id": 14,
   "title": "Jericho",
   "character": "Markus",
-  "note": "Navigation to Jericho. Finding graffiti and completing traversal are progression tasks.",
-  "source": "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/"
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart, the game’s text (detroitbecometext template, which has no prompt, clue or arrow for this chapter) and the Fandom wiki. One main line of 29 chart nodes, ARRIVE AT FERNDALE → … → MET PEOPLE OF JERICHO, following a trail of 15 marks on 7 graffiti walls, with optional side branches: the bench magazine (two of three covers, chosen by whether Kara was pursued in On the Run), asking an android the way, three android bodies and the bridge that collapses. No probability, relationship, public-opinion or instability change, no failure node, one ending. Its one input from Broken: the passers-by’s conversation about Carl. Each entry says how the benchmark implements it. Researched in docs/research/ch14-jericho.md.",
+  "source": "https://detroit-become-human.fandom.com/wiki/Jericho",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Jericho",
+   "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+   "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg"
+  ]
  },
- "decisions": []
+ "decisions": [
+  {
+   "id": "JE01",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Arrive at Ferndale (checkpoint) and the flashback",
+   "context": "Markus rides the train to Ferndale Station among humans (“Customers are reminded that all androids must ride in the designated area.”), passing as human without his LED. Stepping off, he relives the landfill android’s plea, “There’s a place where we can be free! Find Jericho!”, whose key lets him read the trail.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "ARRIVE AT FERNDALE (checkpoint) and FLASHBACK OF ANOTHER DEVIANT (“Cannot be missed”, PowerPyx).",
+     "target": "JE02"
+    }
+   ],
+   "gate": "Chapter start, after From the Dead and On the Run.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Phileas",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+   ],
+   "note": "Two linear chart nodes. The chapter (internal code 05M) has no prompt, clue or arrow in its template and one ending.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14a"
+    ],
+    "status": "simplified",
+    "note": "One narrated event covers both nodes; two facts. The announcements’ order is assumed (the template does not place them)."
+   }
+  },
+  {
+   "id": "JE02",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Analyze station graffiti",
+   "context": "A red mural on the platform holds the first mark of the trail; scanning it with the key shows the next sign.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "ANALYZE STATION GRAFFITI: graffiti #1, one mark.",
+     "target": "JE04"
+    }
+   ],
+   "gate": "Main line, on the platform.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+   ],
+   "note": "The game prints no scan text for the marks; PowerPyx’s screenshots give their shape and counts (15 marks on 7 walls).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14b"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change. The platform’s ambient lines are the template’s; the boy band’s name is cut."
+   }
+  },
+  {
+   "id": "JE03",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Read the bench magazine",
+   "context": "A digital magazine on a bench on the platform, two covers per playthrough.",
+   "options": [
+    {
+     "label": "READ “ON THE RUN”",
+     "effect": "Detroit Today #32, Android on the Run!: only if Kara and Alice were pursued by Connor in On the Run (wiki).",
+     "target": null
+    },
+    {
+     "label": "READ “FORTUNE TELLER”",
+     "effect": "Tech Addict #15, CyberLife’s ‘Fortune Teller’ Computer: only if they were not pursued.",
+     "target": null
+    },
+    {
+     "label": "READ “ANDROID ASTRONAUTS”",
+     "effect": "Tech Addict #13, Android Astronauts to Explore Io: always.",
+     "target": null
+    },
+    {
+     "label": "Leave it",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, on the platform before the escalators.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+   ],
+   "note": "Three optional chart nodes from one branch glyph; at most two appear in a playthrough. No public-opinion effect in any source.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R14"
+    ],
+    "status": "implemented",
+    "note": "A media scene: read any, all or none. The pursuit is read from On the Run’s `chase` flag (module names ch14Pursued / ch14NotPursued). Article facts condensed from the wiki, corrected (no child; no CyberLife statement; daylight)."
+   }
+  },
+  {
+   "id": "JE04",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Exit the station: ask the android the way",
+   "context": "At the foot of the escalators an android waits in a marked bay at the bus stop. Two passers-by talk about Carl: “I heard his android killed him.” if Carl died in Broken, “I heard his android attacked him.” / “I hope he makes it.” if he lived.",
+   "options": [
+    {
+     "label": "ASK ANDROID THE WAY TO JERICHO",
+     "effect": "Markus: “Do you know where Jericho is?” The template has no reply. A dead end on the chart.",
+     "target": "JE05"
+    },
+    {
+     "label": "FOLLOW THE SIGNS",
+     "effect": "The main line.",
+     "target": "JE05"
+    }
+   ],
+   "gate": "Main line, EXIT THE STATION.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg"
+   ],
+   "note": "A plain fork, not a choice group: the ask branch has no line out, so asking does not replace following the signs. The Carl conversation is the template’s only condition group (Broken).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14c"
+    ],
+    "status": "implemented",
+    "note": "A two-way decision; either option leads to MJ14d. The Carl lines are situationWhen on `carl` and add a fact. No risk, no stat change."
+   }
+  },
+  {
+   "id": "JE05",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Follow the signs",
+   "context": "Graffiti #2 (lion and boxer), #3 (rainbow) and the visible marks of #4 (robot, behind a fence at the end of the street); a beggar and children playing.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "FOLLOW THE SIGNS.",
+     "target": "JE06"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-1-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ],
+   "note": "Linear.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14d"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+   }
+  },
+  {
+   "id": "JE06",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Leave the streets; the first android body",
+   "context": "Markus crawls under the fence, moves the plank hiding the robot mural’s third mark and enters a junkyard. A dead android lies hidden behind a white car to the left.",
+   "options": [
+    {
+     "label": "SEE ANDROID BODY",
+     "effect": "Optional: “a dead android hidden behind a white car, easy to miss this one” (PowerPyx).",
+     "target": "JE07"
+    },
+    {
+     "label": "Go on",
+     "effect": "The main line, CONTINUE ON THE JERICHO TRAIL.",
+     "target": "JE07"
+    }
+   ],
+   "gate": "Main line LEAVE THE STREETS, with an optional side branch.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ],
+   "note": "No effect is given for any body.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14e"
+    ],
+    "status": "implemented",
+    "note": "A two-way decision; looking adds a fact and counts in ch14BodiesSeen. Either way MJ14f follows."
+   }
+  },
+  {
+   "id": "JE07",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Continue on the trail; use the dumpster to climb up",
+   "context": "The white head mural in the junkyard: one mark from the ground; Markus pulls a dumpster to the wall and climbs onto the roof.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "CONTINUE ON THE JERICHO TRAIL, USE THE DUMPSTER TO CLIMB UP.",
+     "target": "JE08"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ],
+   "note": "Linear.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14f"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+   }
+  },
+  {
+   "id": "JE08",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Reach the roof (checkpoint) and cross the gap",
+   "context": "From the roof, the head mural’s two remaining marks; Markus preconstructs a route and wall-jumps across a gap between buildings.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "REACH THE ROOF, CROSS THE GAP. No failure in any source; Markus cannot die before Freedom March.",
+     "target": "JE09"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://detroit-become-human.fandom.com/wiki/RK200",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ],
+   "note": "The jump has no failure node on the chart.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14g"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change. No risk roll on the jump."
+   }
+  },
+  {
+   "id": "JE09",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "The second android body",
+   "context": "In the yard beyond the gap, below a faded advertisement (graffiti #6), a dead android lies next to a container.",
+   "options": [
+    {
+     "label": "SEE ANDROID BODY",
+     "effect": "Optional: “on the far left side of the area (in area with 6th Graffiti)” (PowerPyx); “next to a container” (wiki).",
+     "target": "JE10"
+    },
+    {
+     "label": "Go on",
+     "effect": "The main line, REACH THE DOOR.",
+     "target": "JE10"
+    }
+   ],
+   "gate": "Optional side branch drawn beside REACH THE ROOF.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ],
+   "note": "The chart draws its branch glyph by REACH THE ROOF; the body is reached after the jump.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14h"
+    ],
+    "status": "implemented",
+    "note": "A two-way decision; looking adds a fact and counts in ch14BodiesSeen. Either way MJ14i follows."
+   }
+  },
+  {
+   "id": "JE10",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Reach the door; explore the abandoned office",
+   "context": "Markus scans graffiti #6, preconstructs a climb up the building (left wall, ladder) and enters an abandoned office.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "REACH THE DOOR, EXPLORE ABANDONED OFFICE.",
+     "target": "JE11"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ],
+   "note": "Linear.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14i"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+   }
+  },
+  {
+   "id": "JE11",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "The third android body",
+   "context": "In the office, a dead android is propped against a pillar straight ahead of the door.",
+   "options": [
+    {
+     "label": "SEE ANDROID BODY",
+     "effect": "Optional: “straight ahead, hidden behind a pillar” (PowerPyx).",
+     "target": "JE12"
+    },
+    {
+     "label": "Go on",
+     "effect": "The main line, FIND THE RIGHT EXIT.",
+     "target": "JE12"
+    }
+   ],
+   "gate": "Optional side branch after EXPLORE ABANDONED OFFICE.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE10"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-2-1.jpg"
+   ],
+   "note": "No effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14j"
+    ],
+    "status": "implemented",
+    "note": "A two-way decision; looking adds a fact and counts in ch14BodiesSeen. Either way MJ14k follows."
+   }
+  },
+  {
+   "id": "JE12",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Find the right exit; locate Jericho (checkpoint)",
+   "context": "The last mark comes together where a pillar lines up with the wall; it points to rubble behind a broken wall, and outside lies the rusted freighter lettered JERICHO.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "FIND THE RIGHT EXIT, LOCATE JERICHO.",
+     "target": "JE13"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-jericho-graffiti-locations/",
+    "https://detroit-become-human.fandom.com/wiki/Jericho_(location)",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+   ],
+   "note": "A puzzle that cannot fail.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14k"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+   }
+  },
+  {
+   "id": "JE13",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Walk the bridge",
+   "context": "On the docks a rusted bridge leads toward the ship; it collapses if walked (“it won’t kill you”).",
+   "options": [
+    {
+     "label": "WALK BRIDGE",
+     "effect": "Optional detour; leads to BRIDGE COLLAPSES, then back to the crane.",
+     "target": "JE14"
+    },
+    {
+     "label": "Go to the crane",
+     "effect": "The main line, CLIMB CRANE AND JUMP, reached directly from LOCATE JERICHO.",
+     "target": "JE14"
+    }
+   ],
+   "gate": "Optional detour from LOCATE JERICHO.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+   ],
+   "note": "BRIDGE COLLAPSES is scripted, not a failure.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14l"
+    ],
+    "status": "implemented",
+    "note": "A two-way decision with no risk; walking the bridge narrates the collapse and adds a fact. Either way MJ14m follows."
+   }
+  },
+  {
+   "id": "JE14",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Climb the crane and jump",
+   "context": "Markus climbs a railing, stairs and a ladder onto a crane, walks its arm and jumps into the water inside the ship.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "CLIMB CRANE AND JUMP: “landed safely in water inside the Jericho ship”.",
+     "target": "JE15"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-4-1.jpg"
+   ],
+   "note": "A deliberate scripted jump.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14m"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change. No risk roll."
+   }
+  },
+  {
+   "id": "JE15",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Inside the boat (checkpoint): flashlight and machine room",
+   "context": "In the dark ship Markus opens a heavy door, takes a flashlight from a wall case, passes yellow hatches (locked or empty rooms) and reaches the machine room.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "INSIDE THE BOAT, FIND A FLASHLIGHT, ENTER THE MACHINE ROOM.",
+     "target": "JE16"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg"
+   ],
+   "note": "The Experienced door control is an input hurdle with no failure branch.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14n"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change."
+   }
+  },
+  {
+   "id": "JE16",
+   "chapter": 14,
+   "character": "Markus",
+   "title": "Met People of Jericho (ending)",
+   "context": "The catwalk collapses and Markus falls; androids stand around him staring. Simon: “Welcome to Jericho.”",
+   "options": [
+    {
+     "label": "MET PEOPLE OF JERICHO",
+     "effect": "The chapter’s only ending (“This chapter has only one outcome”), reached on every path. Recorded as ch14Ending.",
+     "target": null
+    }
+   ],
+   "gate": "Always, after FALL OFF CATWALK.",
+   "kind": "State gate",
+   "dependsOn": [
+    "JE15"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Jericho",
+    "https://detroit-become-human.fandom.com/wiki/Jericho/Flowchart",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-jericho-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-100-flowchart-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-jericho-5.jpg"
+   ],
+   "note": "The introductions and the first relationship changes with Jericho, North, Simon and Josh belong to Time to Decide.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MJ14o"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue; adds what Markus saw to his knowledge; no risk, no stat change. Sets ch14Ending to “Met People of Jericho”."
+   }
+  }
+ ]
 }
