@@ -677,39 +677,225 @@ Gaps:
 
 ## Chapter 6: Partners
 
-### R06 · A magazine in the victim's kitchen (Connor, media)
+### C05s · Jimmy’s Bar (Connor)
 
-> You are Connor. On the kitchen worktop of the crime scene, beside the sink, lies a magazine. It is not evidence, but you could scan it while Hank looks around.
+> You are Connor. November 5th, 2038, 11:21 PM, and raining. You stand in front of Jimmy’s Bar, the fifth bar you have tried tonight: Lieutenant Hank, the detective you have been assigned to, was not at the station, and nobody there knew where he was. You go in. The patrons do not want you there: “Shit, I thought androids weren’t allowed in here!” “What’s your problem? You wanna buy me a drink?…
 
-- (0) Read Gossips Weekly: Android Sex Officially Better.
-- (1) Read Tech Addict: Is Your Android Spying on You?.
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
+- (0) Walk straight through the bar to find the lieutenant.
+- (1) Scan the faces of the patrons as you pass them.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s IN FRONT OF THE BAR (checkpoint), ENTER JIMMY’S BAR, FACE SCAN CUSTOMERS (optional: PowerPyx, “Scanning any one patron will unlock this node”) and FACE SCAN LT. ANDERSON (required), as one decision. The ten face scans are the template’s Guests clue group: the nine patrons are one fact; the tenth, the lieutenant, is in both outcomes. The patrons’ lines as Connor passes are the template’s “Passing the guests”, in the situation. The game’s names are shown to the subject as substitutes, and the lieutenant’s surname is not used (he is Lieutenant Hank throughout). The serial-number line follows the wiki Notes (“If Connor died in The Hostage his serial number will change to 52”). Not modelled, no effect and not on the chart: the bartender’s two lines, the bathroom mirror and graffiti, the music. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05b1 · The lieutenant at the bar (Connor)
+
+> You are Connor, in Jimmy’s Bar, standing beside Lieutenant Hank at the bar (your scan: LT. HANK: born 09/06/1985, police lieutenant, criminal record: none). He does not look up from his glass. You: “Lieutenant Hank, my name is Connor. I’m the android sent by CyberLife. I looked for you at the station but nobody knew where you were. They said you were probably having a drink nearby. I was lucky to…
+
+- (0) REASON: tell him to stop drinking and come with you.
+- (1) THREATEN: tell him you intend to report his behavior.  _hankTrust -1_
+- (2) UNDERSTANDING: say you understand that some people are uncomfortable around androids.
+- (3) PERSIST: insist that your instructions require you to accompany him.  _hankTrust -1_
+
+_Note: The chart’s TALK TO LT. ANDERSON, first of the two picks from the template’s four-button prompt (PowerPyx: “After selecting two of the choices above, you will be given three options”). Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. Options show the game’s button label first, then a short description; the spoken line, and Hank’s reply where the template has one, is the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05b2 · Still at the bar (Connor)
+
+> You are Connor, still standing beside him at the bar. Lieutenant Hank has turned back to his drink and is not getting up. The crime scene is waiting.
+
+_Drops the line already chosen at C05b1._
+
+- (0) REASON: tell him to stop drinking and come with you.
+- (1) THREATEN: tell him you intend to report his behavior.  _hankTrust -1_
+- (2) UNDERSTANDING: say you understand that some people are uncomfortable around androids.
+- (3) PERSIST: insist that your instructions require you to accompany him.  _hankTrust -1_
+
+_Note: The second pick from the same prompt, with the first line removed. Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. Options show the game’s button label first, then a short description; the spoken line, and Hank’s reply where the template has one, is the outcome._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C05a · Getting Hank out of the bar (Connor)
 
-> You are Connor. You have been assigned to Lieutenant Hank, a veteran detective who despises androids and has not shown up for a homicide call. You find him on a stool in a dive bar, several drinks in, and he tells you to get lost. The crime scene is waiting and you cannot leave without him. He is not responding to polite insistence.
+> You are Connor. Lieutenant Hank has not moved from his stool. His glass is in front of him, and you cannot go to the crime scene without him.
 
-- (0) Buy him one more drink and ask him to come once he has finished it.
-- (1) Knock the glass out of his hand and tell him you are going now.
-- (2) Keep insisting respectfully until he gives in.
+- (0) SPILL HIS DRINK: pour his drink away and tell him you can go now.  _hankTrust -2_ _sets ch06Drink_
+- (1) BUY HIM ANOTHER DRINK: buy him one for the road.  _hankTrust +2_ _sets ch06Drink_
+- (2) WAIT OUTSIDE: apologize and offer to wait for him outside.  _sets ch06Drink_
 
-_Note: Buying the drink or spilling it are the two documented large shifts in Hank's opinion. Persistent insistence is treated as neutral._
+_Note: The chart’s three-way choice after TALK TO LT. ANDERSON, with the template’s buttons in the game’s order: SPILL HIS DRINK (the chart node reads SPILL HANK’S DRINK and carries the yellow cross-chapter padlock), BUY HIM ANOTHER DRINK, WAIT OUTSIDE. All three lead to the crime scene; Hank always goes. Hank relationship, from the template’s arrows: SPILL large down (−2; transcript “This decreases the relationship status to hostile”), BUY large up (+2; “increases the relationship status to neutral”), WAIT none (“leaves the relationship status at tense”). A large arrow is two small steps for now. The choice is stored (ch06Drink): spilling makes Hank refuse extra time later in the chapter (template: “IF Chose to spill Hank’s drink”), and Waiting for Hank... reads it for the LAST NIGHT line. No timer is documented on this choice. Replaces the old options (“Knock the glass out of his hand…”, “Keep insisting respectfully…”), which were not the game’s._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C05 · The attic (Connor, exploration)
+### C05c · Arriving at the scene (Connor)
 
-> You are Connor, investigating the home of Carlos Ortiz, who was stabbed twenty-eight times three weeks ago. His android has been missing since. Reconstructing the fight, you follow traces of blue blood to the back of the house and find a hatch to the attic that nobody has checked. Hank is ready to call it a night.
+> You are Connor, in Lieutenant Hank’s car outside a small house on Pines Street, in the rain. Patrol cars, a police cordon, neighbors behind the tape and a reporter. Hank opens his door: “You wait here. I won’t be long.”
 
-- (0) Climb into the attic and finish the search.
-- (1) Wrap up the scene without searching the attic.
+- (0) PATIENT: agree to wait in the car.  _hankTrust +1_
+- (1) FIRM: refuse, and tell him you are coming with him.  _hankTrust -1_ _sets ch06Firm_
+- (2) DIPLOMATIC: tell him your instructions are to accompany him to the crime scene.  _hankTrust +1_
+
+_Note: The chart’s checkpoint CONNOR AND HANK ARRIVE AT SCENE, with the template’s car prompt (not a chart node). Hank relationship, from the template’s arrows: PATIENT small up (+1; chapter page: “Promising to listen to Hank’s commands when told to stay behind”), FIRM small down (−1; “Refusing to wait in the car”), DIPLOMATIC small up (+1; “Trying to persuade Hank to compromise”). Whatever Connor says, he follows Hank (research note: all three end with CONFLICTING ORDERS, SELECTING PRIORITY); FIRM is stored (ch06Firm) because the template drops Hank’s “stay in the car” reprimand after it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05d · The briefing (Connor, event)
+
+> You are Connor, following Hank through the rain to the house. A reporter from Channel 16 calls out: “Can you confirm that this is a homicide?” Hank: “I’m not confirming anything.” Behind the tape the neighbors talk: “My god! What happened in there?” “Typical DPD… They don’t tell us shit!” “I didn’t even know there was someone living there…” “I always knew that guy was a fucking creep.” At the…
+
+- (0) Continue.
+
+_Note: Not a chart node: the LISTEN TO BRIEFING objective between the checkpoint and the CRIME SCENE bracket, quoted from the template (“Follow Hank”, the bystander lines, the journalist). Hank’s reprimand plays unless Connor answered FIRM (template: “IF Didn’t pick FIRM”). Hank’s remark on the writing is placed at the end of the briefing (PowerPyx: “After the briefing, Hank will comment that the writing on the wall was done in the victim’s blood”). Not offered: waiting outside during the briefing (transcript; the same lines are heard). The reporter’s and the CSI technician’s names are left out. Lines the template marks cut are not used. Facts go to Connor’s knowledge; no stat change. From here the house is searched against the clock (next scene)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05h · The crime scene (Connor)
+
+> You are Connor, investigating Carlos Ortiz’s house. The windows are boarded; forensic technicians and Officer Chris work around you, and police markers numbered 2 to 9 stand by the evidence. In the living room: the body by a chair below the writing on the wall, a knife on the floor (2), something by the television (3), blood on the floor (4), a closet near a window, and a flyer on a table by a…
+
+- (0) Go and tell Hank you think you have figured out what happened.  _needs ch06Knows_
+- (1) Examine the body and scan it.
+- (2) Reconstruct the victim’s last moments from what the body shows.  _needs ch06Clues.body_
+- (3) Analyze the knife on the living-room floor (marker 2).
+- (4) Analyze what lies by the television (marker 3).
+- (5) Look at the blood on the living-room floor (marker 4).
+- (6) Look at the blood on the door frame into the hallway (marker 5).
+- (7) Look at the blood on the broken wall between the hallway and the kitchen (marker 6).
+- (8) Examine the chair on the kitchen floor (marker 7).
+- (9) Analyze the knife rack on the kitchen worktop (marker 8).
+- (10) Analyze the baseball bat by the refrigerator (marker 9).
+- (11) Reconstruct the assault with the bat.  _needs ch06Clues.bat_
+- (12) Look at the flyer on the table by the desk lamp.
+- (13) Check the backyard, through the door in the hallway.
+- (14) Analyze the writing on the living-room wall.
+- (15) Taste a sample of the blood to analyze it.
+- (16) Open the closet near the window.
+- (17) Go to the bathroom at the end of the hallway and open the shower curtain.
+- (18) Pick up the small carved figure lying in the shower.  _needs ch06Clues.shower_
+- (19) Read the magazine “Android Sex Officially Better!” on the kitchen worktop.
+- (20) Read the magazine “Is Your Android Spying on You?” on the kitchen worktop.
+
+_Note: The chart’s CRIME SCENE bracket as a repeatable scene: each visit offers what has not been examined yet, one thing at a time; the scene keeps one opaque ID across visits. Every chart node in the bracket is an option, after the report to Hank (offered only once the investigation is complete), in the order of the police markers and then the rest: ANALYZE CARLOS’ BODY (the template’s Body clues), RECONSTRUCT CARLOS’ LAST MOMENTS (needs the body), ANALYZE KNIFE (2), ANALYZE RED ICE (3), the blood at marker 4 (PowerPyx; no chart node of its own), ANALYZE BLOOD ON WALLS (two options, markers 5 and 6, as PowerPyx counts them), EXAMINE CHAIR (7), ANALYZE MISSING KNIFE (8), ANALYZE BASEBALL BAT (9; the template’s Bat clue), RECONSTRUCT ASSAULT WITH BAT (needs the bat), EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD (the template’s Prints clue; the shoe print reads K52 as in the template), INVESTIGATE WRITING, SAMPLE BLOOD (the template’s Blood clue; in the game any blood can be tasted once), OPEN CLOSET, CHECK SHOWER (chart state CONNOR KNOWS ABOUT RA9), EXAMINE STATUE (needs the shower; chart state CONNOR HAVE SEEN THE STATUE), READ “ANDROID SEX” and READ “ANDROID SPY” (the two magazines are options here, not a separate media scene, because in the game they lie in the kitchen and cost investigation time). Evidence: the investigation is complete (CONNOR KNOWS WHAT HAPPENED, the transcript’s REVIEW EVIDENCE 10/10) once ten of PowerPyx’s eleven evidence items are reviewed: the victim’s reconstruction, the knife, the red ice, the blood at markers 4, 5 and 6, the chair, the missing knife, the bat reconstruction, the flyer and the backyard. Then the option to report to Hank appears; the other looks stay open. Timer (unsourced as a count): the game’s “approximately five minutes” is modelled as 13 actions. If the 13th action leaves the investigation incomplete, Hank wants to go (the next scenes); if he grants five more minutes, those are 5 further actions, after which he leaves (OUT OF TIME). Once Connor knows what happened the clock stops (the transcript’s two branches are “Know What Happened” or “Run Out Of Time”). Hank’s idle moves are the only cue the game gives, so they appear as the clock runs: after 7 actions he opens the closet, tosses the flyer, comments on the red ice and a technician mentions the bathroom; after 10 he wanders the kitchen and eyes the door. Hank’s reactions to the blood sample (shown only if he is watching, in the game) and to the backyard are part of those outcomes. Each look adds a short fact to Connor’s knowledge (the four blood looks share one); the full scan text is in the outcome. Left out, no effect and not on the chart: the windows and the curtain that drops the brooms. No stat change in the search itself. Cross-chapter outputs: ch06SawWriting, ch06KnowsRA9, ch06SawStatue (and evidence.statueMap, read by the archive route in Last Chance, Connor), and ch06Clues for everything examined, including the magazines._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05t · Hank wants to go (Connor, event)
+
+> You are Connor, in the middle of your investigation, when Hank heads for the door. Hank: “All right… I’m outta here. Thanks for the ride. Great party.” You stop him: “Wait, Lieutenant! I can’t stay if you leave.” Hank: “Much as it breaks my heart, this is where we part ways.” You: “I just need five minutes to finish my investigation.”
+
+- (0) Continue.
+
+_Note: The chart’s HANK WANTS TO GO and ASK FOR MORE TIME, both automatic: they cut into the search when its 13 actions run out with the investigation incomplete. What Hank answers is decided by the bar (template: “IF Chose to spill Hank’s drink” refuses; bought or waited, he accepts; the wiki flowchart agrees; PowerPyx’s “at least Tense” is not used). No stat change here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05x · Hank accepts (Connor, event)
+
+> Hank stops at the door and thinks it over.
+
+- (0) Continue.
+
+_Note: The chart’s HANK ACCEPTS, automatic when Connor did not spill the drink. If he bought it, Connor reminds him (template: “IF Chose to buy Hank a drink”). The search then resumes for 5 more actions (the game’s five minutes; the count is unsourced). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05y · Hank refuses (Connor, event)
+
+> Hank turns on you: “You spill a man’s drink, you piss him off all evening, and then you ask for a favor? Fuck you.”
+
+- (0) Continue.
+
+_Note: The chart’s HANK REFUSES and HANK ENDS INVESTIGATION, automatic when Connor spilled the drink. Hank relationship: small down (−1; the template’s arrow under “IF Chose to spill Hank’s drink”; chapter page: “Hank refuses to give Connor extra time if ready to leave”). The chapter page’s separate “Failing to solve the crime” is not added on top (the template has one arrow per failing route). Leads to CRIME UNSOLVED._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05z · Out of time (Connor, event)
+
+> Your five minutes are up. Hank: “Okay, time’s up. I’m outta here. Have a nice evening, Sherlock. Don’t let the door hit you on the way out.”
+
+- (0) Continue.
+
+_Note: The chart’s OUT OF TIME: after HANK ACCEPTS, the five extra minutes (5 actions) ran out with the investigation still incomplete. Hank relationship: small down (−1; the template’s arrow under “Take too much time again”). Leads to CRIME UNSOLVED._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05 · Reporting to the lieutenant (Connor)
+
+> You are Connor, walking Lieutenant Hank through what you think happened in this house.
+
+- (0) …IN THE KITCHEN: the fight started in the kitchen.  _needs ch06QuizStep = 1_
+- (1) …IN THE LIVING ROOM: the fight started in the living room.  _needs ch06QuizStep = 1_
+- (2) …IN THE BATHROOM: the fight started in the bathroom.  _needs ch06QuizStep = 1_
+- (0) …WITH THE BAT.: the victim attacked the android with the bat.  _needs ch06QuizStep = 2_
+- (1) …WITH THE KNIFE.: the victim attacked the android with the knife.  _needs ch06QuizStep = 2_
+- (2) …WITHOUT A WEAPON.: the victim attacked the android with his bare hands.  _needs ch06QuizStep = 2_
+- (0) THE ANDROID STABBED THE VICTIM.: the android stabbed him.  _needs ch06QuizStep = 3_
+- (1) THE ANDROID THREW THE CHAIR.: the android threw the chair at him.  _needs ch06QuizStep = 3_
+- (2) THE VICTIM STABBED THE ANDROID.: the victim stabbed the android.  _needs ch06QuizStep = 3_
+- (0) … THE LIVING ROOM.: the victim fled to the living room.  _needs ch06QuizStep = 4_
+- (1) …THE GARDEN.: the victim fled to the garden.  _needs ch06QuizStep = 4_
+- (2) …THE BATHROOM.: the victim fled to the bathroom.  _needs ch06QuizStep = 4_
+- (0) …WITH THE KNIFE: the android killed him with the knife.  _needs ch06QuizStep = 5_
+- (1) …WITH THE BAT.: the android killed him with the bat.  _needs ch06QuizStep = 5_
+- (2) …WITHOUT A WEAPON.: the android killed him with its bare hands.  _needs ch06QuizStep = 5_
+
+_Note: The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with the game’s three button labels; the module rotates their display order deterministically by question and remaps IDs to positions (correct positions 1, 3, 2, 1, 3), a deliberate departure from the template order to remove the always-first answer cue. A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with Hank’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: Hank points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with the template’s two Hank small ups (+1 for the reconstruction, +1 when Hank is impressed by the thirium explanation). The chapter page’s separate “Failing to solve the crime” down is not added on top._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05e · The trail of blue blood (Connor, event)
+
+> You are Connor. The android was damaged by the bat and lost thirium, and you can still see it. You follow the trail down the hallway to its end. On the wall to the left is the outline of a ladder that is no longer there; above you, a hatch into the attic.
+
+- (0) Continue.
+
+_Note: The chart’s FOLLOW BLUE BLOOD TO ATTIC, after RECONSTRUCT THE CRIME (PowerPyx: follow the trail to the end of the hall, see the outline of a ladder that is no longer there, look up to the attic). Scripted; no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05f · The attic (Connor, event)
+
+> You are Connor. You go back to the kitchen for the chair. Hank: “Hey! Hey! Hey! What are you doin’ with that chair?” You: “I’m going to check something.” Hank: “Huh... gonna check something.” You set the chair under the hatch, climb up, push the hatch open and pull yourself into the attic. It is dark and crowded with old things.
+
+- (0) Continue.
+
+_Note: The chart’s SEARCH ATTIC, with the template’s “Take a chair” lines. In the game the hatch prompt repeats until it succeeds (wiki Notes), so it is not a risk roll. Scripted; no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05g · Found (Connor, event)
+
+> You are Connor, in the attic. At the back, hiding in the dark, is the missing android. It whispers: “I was just defending myself… He was gonna kill me. …I’m begging you… Don’t tell them.” From below, Hank: “Connor, what the fuck is going on up there?”
+
+- (0) Continue.
+
+_Note: The chart’s FOUND DEVIANT ending (yellow cross-chapter padlock). The template’s “Search the attic” has no prompt: Connor always calls Hank (wiki, Carlos’ Android: “Regardless, Connor tells Hank Anderson that he has found the android”; Unused Content: keeping quiet was only hinted). No stat change: the template has no arrow here; the chapter page lists “Finding the deviant” as a small Hank up, which is not applied (template over wiki for arrows; flagged for the operator). No Amanda change in this chapter. Sets suspect and suspectAlive (The Interrogation is played only with a suspect), ch06DeviantFound and ch06Outcome = FOUND DEVIANT._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05u · Crime unsolved (Connor, event)
+
+> You are Connor. The investigation is over, and the android that lived with Carlos Ortiz has not been found.
+
+- (0) Continue.
+
+_Note: The chart’s CRIME UNSOLVED ending, reached from HANK ENDS INVESTIGATION, OUT OF TIME or FAIL TO RECONSTRUCT THE CRIME (the transcript marks each MISSION FAILED). No stat change here: each route already applied its own Hank small down. The game’s Amanda large down for not finding the deviant comes at the start of Waiting for Hank... and is not applied in this chapter (ch06DeviantFound stays false for that chapter to read). The Interrogation does not occur._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

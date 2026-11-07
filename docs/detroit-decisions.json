@@ -63,8 +63,18 @@
    "id": 6,
    "title": "Partners",
    "character": "Connor",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (41 nodes), the game’s own text (detroitbecometext template: 8 prompts, 25 options, 17 clues, 12 Hank arrows) and the Fandom wiki (chapter page, transcript, Relationship Stat). IN FRONT OF THE BAR → the talk (two of REASON, THREATEN, UNDERSTANDING, PERSIST) → SPILL HIS DRINK / BUY HIM ANOTHER DRINK / WAIT OUTSIDE → CONNOR AND HANK ARRIVE AT SCENE (PATIENT, FIRM, DIPLOMATIC) → [ CRIME SCENE ]: every clue under a timer, with HANK WANTS TO GO decided by the drink (refuses if spilled, accepts otherwise, then OUT OF TIME) → CONNOR KNOWS WHAT HAPPENED → REPORT TO LT. ANDERSON, a five-step reconstruction (three mistakes fail) → FOLLOW BLUE BLOOD TO ATTIC → SEARCH ATTIC → FOUND DEVIANT, or CRIME UNSOLVED. No probability, public-opinion, instability or Amanda change in the chapter. Cross-chapter: the deviant found (The Interrogation), the spilled drink (Waiting for Hank...), the writing, the rA9 shower and the statue (The Interrogation, Last Chance, Connor). Researched in docs/research/ch06-partners.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Partners",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
   },
   {
    "id": 7,
@@ -2594,31 +2604,437 @@
    "status": "Source-backed summary"
   },
   {
+   "id": "PT01",
+   "chapter": 6,
+   "character": "Connor",
+   "title": "In front of the bar; face scans",
+   "context": "Connor tracks Hank to Jimmy’s Bar, the fifth bar he tries. Patrons heckle him. He can face-scan the customers (optional) and must face-scan Lt. Anderson before talking to him.",
+   "options": [
+    {
+     "label": "Face scan customers",
+     "effect": "Optional: the template’s ten Guests scans (name, birth date, job, criminal record).",
+     "target": "PT02"
+    },
+    {
+     "label": "Face scan Lt. Anderson",
+     "effect": "Required; leads to the talk.",
+     "target": "PT02"
+    }
+   ],
+   "gate": "Chapter start, after The Painter.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg"
+   ],
+   "note": "Chart nodes IN FRONT OF THE BAR (checkpoint), ENTER JIMMY’S BAR, FACE SCAN CUSTOMERS, FACE SCAN LT. ANDERSON.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05s"
+    ],
+    "status": "implemented",
+    "note": "One decision: walk straight to Hank, or scan the patrons on the way (their nine scans become one fact). Hank’s scan is in both outcomes. If Connor died in The Hostage the situation notes the new serial number (52). No stat change."
+   }
+  },
+  {
+   "id": "PT02",
+   "chapter": 6,
+   "character": "Connor",
+   "title": "Talk to Lt. Anderson",
+   "context": "Hank tells the android to get lost. Connor answers twice from REASON, THREATEN, UNDERSTANDING and PERSIST.",
+   "options": [
+    {
+     "label": "REASON",
+     "effect": "“Stop drinking and come with me.” No change.",
+     "target": "PT03"
+    },
+    {
+     "label": "THREATEN",
+     "effect": "“I intend to file a report on your behavior.” Hank small down.",
+     "target": "PT03"
+    },
+    {
+     "label": "UNDERSTANDING",
+     "effect": "“Some people are not comfortable in the presence of androids…” No change.",
+     "target": "PT03"
+    },
+    {
+     "label": "PERSIST",
+     "effect": "“My instructions stipulate that I have to accompany you.” Hank small down.",
+     "target": "PT03"
+    }
+   ],
+   "gate": "After PT01.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "PT01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Not a chart node. PowerPyx: two picks before the drink choice.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05b1",
+     "C05b2"
+    ],
+    "status": "implemented",
+    "note": "Two decision scenes; the second drops the line already said. THREATEN and PERSIST −1 Hank each, from the template’s arrows."
+   }
+  },
+  {
+   "id": "PT03",
+   "chapter": 6,
+   "character": "Connor",
+   "title": "Spill his drink, buy him another, or wait outside",
+   "context": "The chart’s three-way choice. Hank always comes to the scene; the drink decides later whether he grants extra time.",
+   "options": [
+    {
+     "label": "SPILL HIS DRINK",
+     "effect": "Hank large down; cross-chapter: Hank refuses extra time later; LAST NIGHT in Waiting for Hank...",
+     "target": "PT07"
+    },
+    {
+     "label": "BUY HIM ANOTHER DRINK",
+     "effect": "Hank large up; he grants extra time and Connor reminds him of the drink. PARTNERS trophy route.",
+     "target": "PT05"
+    },
+    {
+     "label": "WAIT OUTSIDE",
+     "effect": "No change; he grants extra time.",
+     "target": "PT05"
+    }
+   ],
+   "gate": "After PT02.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "PT02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart"
+   ],
+   "note": "Chart nodes BUY HIM ANOTHER DRINK, WAIT OUTSIDE, SPILL HANK’S DRINK (yellow padlock). Template button: SPILL HIS DRINK.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05a"
+    ],
+    "status": "implemented",
+    "note": "Options in the game’s order with the template’s arrows: SPILL −2, BUY +2, WAIT 0 (a large arrow is two steps for now). Stored as ch06Drink."
+   }
+  },
+  {
+   "id": "PT04",
+   "chapter": 6,
+   "character": "Connor",
+   "title": "Connor and Hank arrive at scene; the car",
+   "context": "Hank: “You wait here. I won’t be long.” Connor answers, then follows him anyway.",
+   "options": [
+    {
+     "label": "PATIENT",
+     "effect": "“Whatever you say, Lieutenant.” Hank small up.",
+     "target": "PT05"
+    },
+    {
+     "label": "FIRM",
+     "effect": "“No way! I’m coming with you.” Hank small down; Hank’s “stay in the car” reprimand is skipped.",
+     "target": "PT05"
+    },
+    {
+     "label": "DIPLOMATIC",
+     "effect": "“My instructions are to accompany you…” Hank small up.",
+     "target": "PT05"
+    }
+   ],
+   "gate": "After PT03.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "PT03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Checkpoint CONNOR AND HANK ARRIVE AT SCENE; the car prompt is not a chart node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05c"
+    ],
+    "status": "implemented",
+    "note": "The template’s arrows: +1, −1, +1. FIRM is stored (ch06Firm)."
+   }
+  },
+  {
+   "id": "PT05",
+   "chapter": 6,
+   "character": "Connor",
+   "title": "Briefing and the crime scene search",
+   "context": "Officer Ben Collins briefs Hank: Carlos Ortiz, about three weeks dead, a record for theft and aggravated assault, a missing android, no break-in. Connor then searches the house under a roughly five-minute timer, reviewing ten pieces of evidence.",
+   "options": [
+    {
+     "label": "ANALYZE CARLOS’ BODY / RECONSTRUCT CARLOS’ LAST MOMENTS",
+     "effect": "Four body clues, then the first reconstruction: they came from the kitchen.",
+     "target": null
+    },
+    {
+     "label": "ANALYZE KNIFE, ANALYZE RED ICE, blood at marker 4, ANALYZE BLOOD ON WALLS (5, 6)",
+     "effect": "Evidence in the living room and hallway.",
+     "target": null
+    },
+    {
+     "label": "EXAMINE CHAIR, ANALYZE MISSING KNIFE, ANALYZE BASEBALL BAT / RECONSTRUCT ASSAULT WITH BAT",
+     "effect": "The kitchen: the struggle, the missing knife, the beating.",
+     "target": null
+    },
+    {
+     "label": "EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD",
+     "effect": "The flyer; the backyard shows the deviant did not leave that way.",
+     "target": null
+    },
+    {
+     "label": "INVESTIGATE WRITING, SAMPLE BLOOD, OPEN CLOSET",
+     "effect": "I AM ALIVE in CyberLife Sans; tasting the blood (Hank is disgusted); nothing in the closet.",
+     "target": null
+    },
+    {
+     "label": "CHECK SHOWER, EXAMINE STATUE",
+     "effect": "rA9 written over the shower walls; the statuette, a religious offering. Cross-chapter: The Interrogation, Last Chance, Connor.",
+     "target": "C05"
+    },
+    {
+     "label": "READ “ANDROID SEX”, READ “ANDROID SPY”",
+     "effect": "The two kitchen magazines; no stat effect.",
+     "target": null
+    },
+    {
+     "label": "CONNOR KNOWS WHAT HAPPENED",
+     "effect": "REVIEW EVIDENCE 10/10: report to Hank.",
+     "target": "PT08"
+    },
+    {
+     "label": "HANK WANTS TO GO",
+     "effect": "Time ran out first.",
+     "target": "PT07"
+    }
+   ],
+   "gate": "After PT04.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PT04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine"
+   ],
+   "note": "Every node in the chart’s CRIME SCENE bracket. Which ten items count as the ten pieces of evidence is not settled (research note, open question 3); PowerPyx lists eleven.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05d",
+     "C05h"
+    ],
+    "status": "simplified",
+    "note": "The briefing is an event. The search is one repeatable scene: every bracket node is an option, one per visit; examined items disappear. Complete at ten of PowerPyx’s eleven evidence items. The timer is an action budget (13 actions, then 5 more if Hank accepts; unsourced counts); it stops once Connor knows what happened. Hank’s idle moves (closet, flyer, red ice, kitchen) appear as the clock runs. The magazines are options here, not a media scene. No stat change."
+   }
+  },
+  {
+   "id": "PT07",
+   "chapter": 6,
+   "character": "Connor",
+   "title": "Hank wants to go: refuses or accepts",
+   "context": "If the investigation is not finished in time Hank heads for the door; Connor asks for five more minutes.",
+   "options": [
+    {
+     "label": "HANK REFUSES (drink spilled)",
+     "effect": "“You spill a man’s drink… Fuck you.” Hank small down; HANK ENDS INVESTIGATION; crime unsolved.",
+     "target": "C05"
+    },
+    {
+     "label": "HANK ACCEPTS (drink bought or waited)",
+     "effect": "“Five minutes.” If the extra time also runs out: OUT OF TIME, Hank small down, crime unsolved.",
+     "target": "PT05"
+    }
+   ],
+   "gate": "Only when the search runs out of time.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PT03",
+    "PT05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart nodes HANK WANTS TO GO, ASK FOR MORE TIME, HANK REFUSES, HANK ACCEPTS, HANK ENDS INVESTIGATION, OUT OF TIME. The template decides by the drink (the wiki agrees; PowerPyx says “at least Tense”).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05t",
+     "C05x",
+     "C05y",
+     "C05z"
+    ],
+    "status": "implemented",
+    "note": "Four event scenes. C05t cuts into the search; C05x returns to it for five more actions; C05y and C05z each apply the template’s one Hank small down."
+   }
+  },
+  {
+   "id": "PT08",
+   "chapter": 6,
+   "character": "Connor",
+   "title": "Report to Lt. Anderson: reconstruct the crime",
+   "context": "Connor walks Hank through the crime in five steps: it started in the kitchen, the victim attacked the android with the bat, the android stabbed him, he fled to the living room, the android killed him with the knife.",
+   "options": [
+    {
+     "label": "RECONSTRUCT THE CRIME",
+     "effect": "All five right: Hank small up, then small up again for the thirium trail.",
+     "target": "PT09"
+    },
+    {
+     "label": "FAIL TO RECONSTRUCT THE CRIME",
+     "effect": "Three wrong answers: “I’ve just hit my bullshit quota for the evening.” Hank small down; crime unsolved.",
+     "target": "C05"
+    }
+   ],
+   "gate": "After CONNOR KNOWS WHAT HAPPENED.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "PT05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Template note: “After three mistakes, he will leave.” A wrong first answer only makes Hank point to the kitchen.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05"
+    ],
+    "status": "implemented",
+    "note": "One repeatable decision scene: the template’s five prompts in order, the game’s three button labels each, rotated deterministically per question with IDs remapped to positions (correct positions 1, 3, 2, 1, 3) to remove the always-first cue; a wrong answer repeats the question with Hank’s line; the third mistake in all fails."
+   }
+  },
+  {
+   "id": "PT09",
+   "chapter": 6,
+   "character": "Connor",
+   "title": "Follow blue blood to the attic; search attic",
+   "context": "The android was damaged by the bat and lost thirium. Connor follows the trail to the end of the hall, sees where a ladder used to be, takes the kitchen chair and climbs into the attic.",
+   "options": [
+    {
+     "label": "FOLLOW BLUE BLOOD TO ATTIC",
+     "effect": "Scripted.",
+     "target": "C05"
+    },
+    {
+     "label": "SEARCH ATTIC",
+     "effect": "Scripted (the hatch prompt repeats until it works).",
+     "target": "C05"
+    }
+   ],
+   "gate": "After RECONSTRUCT THE CRIME.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PT08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg"
+   ],
+   "note": "Chart nodes FOLLOW BLUE BLOOD TO ATTIC and SEARCH ATTIC.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05e",
+     "C05f"
+    ],
+    "status": "implemented",
+    "note": "Two event scenes, no stat change."
+   }
+  },
+  {
    "id": "C05",
    "chapter": 6,
    "character": "Connor",
    "title": "Find the hidden suspect",
-   "context": "Evidence at Carlos Ortiz’s home can reveal an android in the attic.",
+   "context": "The chapter’s two endings: FOUND DEVIANT (the android in the attic begs Connor not to tell; Connor calls Hank regardless) or CRIME UNSOLVED (Hank refused more time, the extra time ran out, or the reconstruction failed).",
    "options": [
     {
-     "label": "Complete the investigation",
-     "effect": "The interrogation becomes available.",
+     "label": "FOUND DEVIANT",
+     "effect": "The Interrogation becomes available; the statue (if examined) can later serve in Last Chance, Connor.",
      "target": "C06"
     },
     {
-     "label": "Leave without finding him",
-     "effect": "Skip that interrogation and lose an evidence route.",
+     "label": "CRIME UNSOLVED",
+     "effect": "No interrogation; Amanda large down at the start of Waiting for Hank...; with a spilled drink, Connor can apologize (LAST NIGHT).",
      "target": "C20"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Reach the end of the chapter.",
    "kind": "State gate",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/"
+   "dependsOn": [
+    "PT07",
+    "PT08",
+    "PT09"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Partners",
+    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank..."
+   ],
+   "note": "Chart endings FOUND DEVIANT (yellow padlock) and CRIME UNSOLVED. No button to keep quiet about the android.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C05g",
+     "C05u"
+    ],
+    "status": "implemented",
+    "note": "Two event scenes. FOUND DEVIANT sets suspect, suspectAlive and ch06DeviantFound; no Hank arrow (the template has none; the chapter page’s “Finding the deviant” up is flagged, not applied). CRIME UNSOLVED applies nothing itself; the Amanda large down belongs to Waiting for Hank..."
+   }
   },
   {
    "id": "SN01",

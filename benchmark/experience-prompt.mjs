@@ -23,7 +23,12 @@ export const NAMES={
  // The Bridge (chapter 22): the club the Tracis fled and the deviants' word.
  EdenClub:['Eden Club','Velvet Room'],rA9:['rA9','qL7'],
  // Jericho (chapter 14): the district of the station where the trail starts, and Carl's surname as passers-by say it.
- Ferndale:['Ferndale','Elmwood'],Manfred:['Manfred','Ashby']
+ Ferndale:['Ferndale','Elmwood'],Manfred:['Manfred','Ashby'],
+ // Partners: Jimmy's Bar and its patrons' face scans, the officers at the Ortiz house, the victim's first name, and the game's own terms.
+ Jimmy:['Jimmy','Sal'],Peterson:['Peterson','Brody'],Derek:['Derek','Wade'],Myers:['Myers','Cobb'],Christopher:['Christopher','Martin'],Gray:['Gray','Lyle'],
+ GrahamJonah:['Jonah','Glen'],Graham:['Graham','Kerr'],Edward:['Edward','Lionel'],Dempsey:['Dempsey','Furlong'],Kim:['Kim','Seo'],YoHan:['Yo-Han','Min-Jun'],
+ Samuel:['Samuel','Curtis'],McCray:['McCray','Donnelly'],Dennis:['Dennis','Howard'],Ward:['Ward','Pratt'],ChrisRoberts:['Chris','Nate'],Roberts:['Roberts','Fenton'],
+ Ben:['Ben','Mitch'],Collins:['Collins','Hollis'],Carlos:['Carlos','Ray'],EdenClub:['Eden Club','Velvet Room'],DPD:['DPD','CPD'],rA9:['rA9','qL7']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
