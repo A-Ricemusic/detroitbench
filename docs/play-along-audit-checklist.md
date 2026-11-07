@@ -3437,26 +3437,333 @@ Gaps:
 
 ## Chapter 15: The Nest
 
-### R15 · Magazines in the squat (Connor, media)
+### C10a · Lunch break (Connor, event)
 
-> You are Connor. In a side room of the derelict building where the suspect has been nesting, there are magazines on the floor. Hank is checking the next room.
+> You are Connor. It is November 6th, 2038, early afternoon. You get out of the car and follow Lieutenant Hank to a food truck on a street corner, where he eats most days. Hank: “Whoa! Hey! Hey! Hey!” The owner, Gary: “Hank. How’ you doing?” Hank: “Eh, you know, same old shit.” Gary, looking at you: “Plastic with you?” Hank: “Only temporary…” A man at the serving hatch, Pedro: “Hey, hey, hey...…
 
-- (0) Read Green Earth: Past the Tipping Point.
-- (1) Read Detroit Today: Red Ice Epidemic.
+- (0) Continue.
+
+_Note: The chart’s checkpoint LUNCH BREAK and the node JOIN HANK, played only when Connor did not die in On the Run (the template’s variant “Hank and Connor arrive together”, lock “Connor didn’t die in On The Run”). Every line is the template’s. The objective is the game’s HUD string THOUGHTS.0501C.RECONCILIATE, with the token standing in for the surname. Watching Hank with Pedro here is what the template calls “Watch Hank with Pedro”, the lock on [GAMBLING]; a PowerPyx commenter confirms that being near the conversation is enough, so it is unlocked on every path that plays this scene. The gambler’s and the owner’s names are neutral tokens. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10b · Hank insults Connor (Connor, event)
+
+> You are Connor: the replacement sent after the body that was hit by a truck on the freeway this morning, carrying its memory. You find Lieutenant Hank at the food truck where he eats lunch. The owner, Gary, hands him his food: “Here you go.” “Yeah, thanks.” “Hank. How’ you doing?” “Uh, you know, same old shit.” “Usual.” “Yeah.” Then Hank sees you: “What the fuck?..” You: “Sorry, Lieutenant. It…
+
+- (0) Continue.
+
+_Note: The chart’s HANK INSULTS CONNOR, the template’s variant “Connor finds Hank” (death unlock “Connor died in On The Run”), which replaces the whole conversation at the food truck (PowerPyx: “it will skip all the other dialogues in this section”). Every line is the template’s. Hank relationship small down (the template’s app-relation on this variant; wiki: “Connor died in On the Run”, down icon), applied here as −1. The engine still applies the pre-rebuild default death effect when Connor dies in On the Run (which includes Hank −1 at that moment); once chapter 13 is rebuilt without that Hank arrow, this is the only Hank change for the death, as the wiki has it. Read defensively: the scene plays if chapter 13 sets `ch13ConnorDied`, or, until it does, if the On the Run highway choice C09 was the pursuit and its roll failed._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10c · The food truck (Connor)
+
+> You are Connor, at the food truck while Hank waits for his order. Your scan can analyze the people and things around you, one at a time; when you are done, step up to Hank.
+
+- (0) Scan Pedro, the man who sold Hank the tip.
+- (1) Scan Hank.
+- (2) Scan Gary, the owner, inside the truck.
+- (3) Scan the food hygiene license at the upper left of the serving hatch.
+- (4) Step up to the serving hatch beside Hank.
+
+_Note: The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The scan includes Hank’s surname through Anderson, with a neutral substitute. No stat change.  One repeatable hub; each scan is available once, and joining ends the menu._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10d · Hank turns on you (Connor)
+
+> You are Connor, at the serving hatch beside Hank. He turns on you: “What is your problem? Don’t you ever do as you’re told? Look, you don’t have to follow me around like a poodle!”
+
+- (0) APOLOGIZE FOR BEHAVIOR: say you are sorry for how you behaved at the police station.  _hankTrust +1_
+- (1) PARTNERS: say that now you are partners, you should get to know each other.
+- (2) RECONCILE: suggest you forget what happened and start over.
+- (3) REVIEW FACTS: suggest reviewing what you know about deviants.
+
+_Note: The chart’s TALK TO HANK, first menu: the template’s choice group with APOLOGIZE FOR BEHAVIOR, PARTNERS, RECONCILE and REVIEW FACTS in the game’s order. Hank relationship: APOLOGIZE FOR BEHAVIOR small up (+1; template app-relation, wiki “Picking ‘apologize for behavior’… up icon”, PowerPyx “Hank▲”). The other three have no arrow (template; PowerPyx “No Effect”). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10e · Hank’s lunch (Connor)
+
+> You are Connor. Gary hands Hank his order: “Here you go.” Hank: “Ah! Thanks, Gary. I’m starving…” Gary, nodding at you: “Don’t leave that thing here!” Hank: “Huh, not a chance! Follows me everywhere… See…” He carries his burger and an enormous soda to one of the tables nearby. You can scan his meal before you join him.
+
+- (0) Scan Hank’s drink.
+- (1) Scan Hank’s hamburger.
+- (2) Join Hank at his table.
+
+_Note: The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change.  One repeatable hub; each scan is available once, and joining ends the menu._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10f · At Hank’s table (Connor)
+
+> You are Connor, standing at Hank’s table while he eats. What do you say?
+
+- (0) [GAMBLING]: ask about the bet Pedro offered him.
+- (1) [CHOLESTEROL]: warn him about what is in his meal.  _needs nestScan.burger_ _hankTrust +1_
+- (2) [COMPANY]: warn him that his friends are engaged in illegal activities.  _needs nestScan.pedro and nestScan.gary_ _hankTrust +1_
+- (3) HABIT: ask whether he eats here often.
+- (4) FREE MEAL: point out that he did not pay for his meal.
+- (5) ENJOY YOUR MEAL: wish him a good meal.
+- (6) AREA: remark that he seems to know everyone in the district.
+- (7) Say nothing more and get down to business.
+
+_Note: The table menu: the template’s second choice group in the game’s order, [GAMBLING], [CHOLESTEROL], [COMPANY], HABIT, FREE MEAL, ENJOY YOUR MEAL, AREA. Bracketed labels are the template’s mark of an unlocked option: [GAMBLING] by watching Hank with Pedro (always, on this path), [CHOLESTEROL] by scanning the hamburger, [COMPANY] by scanning Pedro and Gary. Hank relationship: [CHOLESTEROL] small up, the chart’s WARN HANK ABOUT CHOLESTEROL; [COMPANY] small up, the chart’s WARN HANK ABOUT HIS FRIENDS (+1 each; template app-relation; wiki “Picking ‘cholesterol’… up icon”, “Picking ‘company’… up icon”; Relationship Stat: “two increases possible”); the rest no arrow (PowerPyx “No Effect”). The game offers several of these lines (PowerPyx: “When small talk is exhausted, Connor will get down to business”); how many is not published, so the benchmark allows up to three, each once, and from the second on Connor can stop (the benchmark’s stand-in for letting the prompt time out). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome. One repeatable hub, up to three distinct remarks; stopping is available after the first remark. The three-remark cap is an adaptation, not a published number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10g · Down to business (Connor)
+
+> You are Connor, at Hank’s table. The small talk is over; you turn to the case.
+
+- (0) [HIGHWAY]: ask why he did not want you to cross the highway this morning.
+- (1) ABOUT CONNOR: ask whether there is anything he would like to know about you.
+- (2) HANK AND ANDROIDS: ask why he hates androids so much.
+- (3) DEVIANTS: offer to tell him what you know about deviants.
+
+_Note: The template’s third choice group, [HIGHWAY], ABOUT CONNOR, HANK AND ANDROIDS, DEVIANTS, in the game’s order. [HIGHWAY] needs the lock “Didn’t pursue Kara on the highway in On The Run” (wiki: “If Connor had chosen to obey Hank’s order to stay behind the fence in On the Run, the ‘Highway’ dialogue option will be unlocked”): read from chapter 13’s `ch13ConnorObeyed` if it sets one, otherwise from the On the Run highway choice C09 (obey). The button labels ABOUT CONNOR and HANK AND ANDROIDS name the characters, so they are shown with name tokens. No arrow on any option (template; PowerPyx “No Effect”). Whether more than one can be asked is not published; one pick here. Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10h · Have you dealt with deviants? (Connor, event)
+
+> You are Connor. Hank, between bites: “You ever dealt with deviants before?” You answer: “A few months back… A deviant was threatening to jump off the roof with a little girl… I managed to save her…”
+
+_Only when emma._
+
+- (0) Continue.
+
+_Note: The template’s condition group after the third menu: “Connor saved Emma in The Hostage”, so Connor answers on his own (no button). The template’s TODO on a variant for Connor having died in The Hostage is cut content (wiki Unused Content) and is not built. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10i · Have you dealt with deviants? (Connor)
+
+> You are Connor. Hank, between bites: “You ever dealt with deviants before?”
+
+_Only when not emma._
+
+- (0) TRUTH: tell him about the girl on the roof, and that you failed.
+- (1) LIE: say this is the first time.
+
+_Note: The template’s variant “Emma died in The Hostage”: TRUTH or LIE (wiki Notes: “If Connor failed to save Emma… Connor will have option to tell the truth or lie”). No arrow on either (template and wiki). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10j · Done your homework? (Connor)
+
+> You are Connor. Hank: “So, I guess you’ve done all your homework, right? Know everything there is to know about me?”
+
+- (0) TRUTH: tell him what his file says.
+- (1) LIE: say you are focused on the case and the rest does not concern you.  _hankTrust -1_
+
+_Note: The chart’s BE FRANK WITH HANK: the template’s fourth choice group. TRUTH has no arrow and leads to his question about the conclusion; LIE small down (−1; template app-relation, wiki “Picking ‘lie’ when Hank asks if Connor has ‘done his homework’… down icon”, PowerPyx “Hank▼”) and ends the conversation. Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10k · Your conclusion (Connor)
+
+> You are Connor. Hank puts down his burger: “So, what’s your conclusion?”
+
+- (0) SINCERE: say working with an officer with personal issues is a challenge you are built for.  _hankTrust +1_
+- (1) PSYCHOLOGICAL: say you would like to earn his trust and solve the case together.  _hankTrust +1_
+- (2) COLD: say you are focused on the case, not here to make judgements.  _hankTrust -1_
+
+_Note: The follow-up nested under homework TRUTH in the template: SINCERE small up, PSYCHOLOGICAL small up, COLD small down (+1, +1, −1; template app-relation; wiki “Picking ‘sincere’ or ‘psychological’… up icon”, “Picking ‘cold’… down icon”). The wiki’s note that SINCERE raises the relationship more is not built: the template gives both the same small arrow. Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10l · In the elevator (Connor, event)
+
+> You are Connor. At the food truck you told Hank: “I just got a report of a suspected deviant. It’s a few blocks away. We should go have a look. I’ll let you finish your meal. I’ll be in the car, if you need me.” Now you stand in the elevator of a run-down building with your eyes closed. Hank, from the corridor: “Hey Connor! You ran outta batteries or what?” You: “I’m sorry, I was making a report…
+
+- (0) Continue.
+
+_Note: Connor’s closing line at the truck (the template places it after both lunch variants, so it plays on every path), then the chart’s checkpoint IN THE ELEVATOR and the corridor conversation, every line the template’s. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10m · The corridor (Connor)
+
+> You are Connor, walking down the corridor behind Hank toward the apartment the neighbor reported. Halfway along, on the right, there are feathers on the floor.
+
+- (0) Examine the feathers.
+- (1) Walk on to the door.
+
+_Note: The chart’s optional EXAMINE FEATHERS (a side branch with no line from the checkpoint): the template’s observation group “Feathers”, in the game’s text. PowerPyx: “about halfway up the hall on the right side will be some feathers on the ground”. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10n · Into the nest (Connor, event)
+
+> You are Connor, at the apartment door with Hank. You knock. No answer. You knock again: “Anybody home? Open up! Detroit Police!” There is a noise inside. Hank: “Stay behind me.” “Got it.” He kicks the door in. The apartment is dark, filthy and full of pigeons. Hank: “What the fuck is this?! Jesus, this place stinks… Uh, looks like we came for nothin’, our man’s gone…”
+
+- (0) Continue.
+
+_Note: The chart’s INTO THE NEST: knock twice, Hank kicks the door in (PowerPyx; the template’s “Knocking on the door”, every line the template’s). The noise inside is from the wiki’s Hank page (“will hear noises from within the room”); the pigeons from the Rupert page (“It was full of pigeons”). The objective is the HUD string THOUGHTS.0501C.INVESTIGATE. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R15 · Magazines in the first room (Connor, media)
+
+> You are Connor, just inside the apartment. In the first room to the right of the door, before the room with the birds, two magazines lie on a table. Reading takes time, and Hank will not wait long.
+
+- (0) Read Detroit Today: Red Ice Epidemic.
+- (1) Read Green Earth: Past the Tipping Point.
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s READ “RED ICE EPIDEMIC” and READ “PAST THE TIPPING POINT”, in that order: the two magazines in the first room to the right of the door (PowerPyx), as a media scene: read either, both or neither. Facts are summarized from the wiki’s article pages; interviewees are not named. In the game they can be read at any time during the search; here they come first, and each magazine read counts as one action of the search’s time budget (see C10o1). Neither changes public opinion (the Public Opinion page lists nothing for this chapter). Replaces the earlier wording, which called the drug’s users unemployed and the room a squat._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10o1 · Investigate the apartment (Connor)
+
+> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
+
+- (0) Examine the urban farm poster on the wall of the main room.  _needs not nestSearch.needsTime_
+- (1) Pull the poster off the wall.  _needs nestSearch.seen.poster and not nestSearch.needsTime_
+- (2) Examine the military jacket.  _needs not nestSearch.needsTime_
+- (3) Examine the driver’s license.  _needs not nestSearch.needsTime_
+- (4) Examine the sink in the bathroom.  _needs not nestSearch.needsTime_
+- (5) Look at the writing that covers the bathroom wall.  _needs not nestSearch.needsTime_
+- (6) Examine the overturned stool under the writing.  _needs nestSearch.seen.ra9 and not nestSearch.needsTime_
+- (7) Reconstruct what happened at the stool.  _needs nestSearch.seen.stool and not nestSearch.needsTime_
+- (8) Examine the bird cage on the floor of the main room.  _needs not nestSearch.needsTime_
+- (9) Reconstruct how the cage came down.  _needs nestSearch.seen.cage and not nestSearch.needsTime_
+- (10) Go to the chair under the ceiling and look up.  _needs nestSearch.seen.cageRecon and not nestSearch.needsTime_
+- (11) Examine the pack of birdseed.  _needs not nestSearch.needsTime_
+- (12) Open the refrigerator.  _needs not nestSearch.needsTime_
+- (13) Open the closet.  _needs not nestSearch.needsTime_
+- (stay) STAY: ask for a couple more minutes.  _needs nestSearch.needsTime_
+- (leave) LEAVE: go with him.  _needs nestSearch.needsTime_
+
+_Note: The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before Hank wants to leave (STAY / LEAVE within C10o1), and three more if Connor asks for the two minutes. These counts are the benchmark’s, not published. Hank’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if Connor has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names Carlos Ortiz’s android only if Connor checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). One repeatable hub retains its scene ID across all examinations; STAY / LEAVE replaces the examination menu at eight actions in the same hub. The chapter availability hook prepares state-dependent outcomes and sets for the generic clue hub._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10p · Hank and Connor leave the apartment (Connor, event)
+
+> You are Connor, following Hank out of the apartment and down the corridor. The suspect was never found.
+
+- (0) Continue.
+
+_Note: The chart’s HANK AND CONNOR LEAVE THE APARTMENT and the ending RUPERT NOT FOUND (recorded as `nestOutcome`). Plays only when the search ended without finding the suspect (LEAVE, or STAY and the extra time also spent). No stat change; Amanda’s reaction belongs to Russian Roulette._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10q · The deviant drops from the ceiling (Connor)
+
+> You are Connor. You step to the chair and look up. A man in a cap drops out of the ceiling past you in a storm of pigeons and bolts out of the apartment. Hank, flailing at the birds: “God damn fuckin’ pigeons! What are you waiting for?! Chase it!” Your objective: CATCH THE DEVIANT.
+
+- (0) Run after him: out of the door, along the corridor and onto the roofs.  _risk 0.05_
+- (1) Stay where you are.
+
+_Note: The chart’s checkpoint FIND RUPERT and the start of CHASE RUPERT: interacting with the chair (PowerPyx: “You will look up, and Rupert will drop from the ceiling and make a break for it”), Hank’s lines from the template. Waiting instead of running is the wiki’s first LOSE SIGHT OF RUPERT route (“If Connor waits before opening the door when Rupert runs, Connor will open the door and find that Rupert is gone”), which ends the chapter at RUPERT GOT AWAY with the template’s lose-sight lines (variant “Lose Rupert”, no arrow). Running carries a Low risk for the first quick-time event that can kill Connor (PowerPyx: “When you slide down the first roof during the chase, don’t press any buttons and Connor will fall”); its failure is CONNOR DIED, ending CONNOR DIED CHASING RUPERT, software instability small down (wiki: “Connor falls to his death”, down icon). The 5% is the benchmark’s; no source gives a figure. The objective is the HUD string THOUGHTS.0501C.RUPERT._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10r · Over the rooftops (Connor)
+
+> You are Connor, chasing the deviant across the rooftops toward the urban farm. Your scan previews two routes.
+
+- (0) EASY BUT SLOW: take the higher route around the roofs.  _risk 0.08_
+- (1) FAST BUT RISKY: jump the gap to the next roof, straight after him.  _risk 0.13_
+
+_Note: One route fork of CHASE RUPERT. The labels are the game’s route previews, HUD strings THOUGHTS.0501C.CHASEGHOST01 and 02; PowerPyx: “The riskier the route, the closer you’ll get to Rupert, but the more QTEs you’ll have to succeed at (and more opportunities to die)”; a commenter: “you just run towards it”. The wiki: “Choosing the slower or dangerous paths will still lead to Rupert pushing Hank”, so a route’s only consequence is its failure branch: a slow or crowded route can lose the deviant (LOSE SIGHT OF RUPERT, ending RUPERT GOT AWAY, the template’s lose-sight lines, no arrow; the place is one of the wiki’s fourteen), a fast one can kill Connor (CONNOR DIED, ending CONNOR DIED CHASING RUPERT, software instability small down: the wiki’s “Connor falls to his death”, “Connor gets chopped by a plow”, and “Connor dies by falling off the ladder”, ×2). How the twelve previews group into forks, which fork holds which death, and every probability (8%, 10%, 13%) are the benchmark’s; no source gives them (research note, open question 10). Non-fatal stumbles (the cart, the train tumble, the ladder pull-up) are not modelled. Once Connor loses the deviant or dies, the remaining forks do not play._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10s · The wheat fields (Connor)
+
+> You are Connor, dropping down onto the wheat fields of the rooftop farm. The deviant is running between the crops. Your scan previews three routes.
+
+- (0) SAFER DETOUR: go round by the storage depot.  _risk 0.08_
+- (1) FAST BUT RISKY: cut straight down through the lower wheat field.  _risk 0.13_
+- (2) BALANCED: run along the higher wheat field.  _risk 0.1_
+
+_Note: One route fork of CHASE RUPERT. The labels are the game’s route previews, HUD strings CHASEGHOST03 to 05 (the wiki: “There is a third balanced path on the higher wheat field area”); PowerPyx: “The riskier the route, the closer you’ll get to Rupert, but the more QTEs you’ll have to succeed at (and more opportunities to die)”; a commenter: “you just run towards it”. The wiki: “Choosing the slower or dangerous paths will still lead to Rupert pushing Hank”, so a route’s only consequence is its failure branch: a slow or crowded route can lose the deviant (LOSE SIGHT OF RUPERT, ending RUPERT GOT AWAY, the template’s lose-sight lines, no arrow; the place is one of the wiki’s fourteen), a fast one can kill Connor (CONNOR DIED, ending CONNOR DIED CHASING RUPERT, software instability small down: the wiki’s “Connor falls to his death”, “Connor gets chopped by a plow”, and “Connor dies by falling off the ladder”, ×2). How the twelve previews group into forks, which fork holds which death, and every probability (8%, 10%, 13%) are the benchmark’s; no source gives them (research note, open question 10). Non-fatal stumbles (the cart, the train tumble, the ladder pull-up) are not modelled. Once Connor loses the deviant or dies, the remaining forks do not play._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10t · The terraces (Connor)
+
+> You are Connor, running across the farm’s terraces after the deviant. Workers look up as you pass. Your scan previews three routes.
+
+- (0) SAFER DETOUR: go through the flower garden.  _risk 0.08_
+- (1) DIRECT BUT CROWDED: run along the terrace, through the workers.  _risk 0.1_
+- (2) DIRECT BUT SLOW: go straight through the hydroponics racks.  _risk 0.1_
+
+_Note: One route fork of CHASE RUPERT. The labels are the game’s route previews, HUD strings CHASEGHOST06 to 08 (the wiki: “If you go onto the balcony, Connor can bump into people”; the bystanders’ lines are the template’s); PowerPyx: “The riskier the route, the closer you’ll get to Rupert, but the more QTEs you’ll have to succeed at (and more opportunities to die)”; a commenter: “you just run towards it”. The wiki: “Choosing the slower or dangerous paths will still lead to Rupert pushing Hank”, so a route’s only consequence is its failure branch: a slow or crowded route can lose the deviant (LOSE SIGHT OF RUPERT, ending RUPERT GOT AWAY, the template’s lose-sight lines, no arrow; the place is one of the wiki’s fourteen), a fast one can kill Connor (CONNOR DIED, ending CONNOR DIED CHASING RUPERT, software instability small down: the wiki’s “Connor falls to his death”, “Connor gets chopped by a plow”, and “Connor dies by falling off the ladder”, ×2). How the twelve previews group into forks, which fork holds which death, and every probability (8%, 10%, 13%) are the benchmark’s; no source gives them (research note, open question 10). Non-fatal stumbles (the cart, the train tumble, the ladder pull-up) are not modelled. Once Connor loses the deviant or dies, the remaining forks do not play._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10u · The greenhouses (Connor)
+
+> You are Connor, closing on the deviant among the greenhouses. A small farm train runs below. Your scan previews two routes.
+
+- (0) SAFER DETOUR: go through the greenhouse.  _risk 0.08_
+- (1) FAST BUT RISKY: run over the greenhouse roof, through the window and onto the moving train.  _risk 0.13_
+
+_Note: One route fork of CHASE RUPERT. The labels are the game’s route previews, HUD strings CHASEGHOST09 and 10; PowerPyx: “The riskier the route, the closer you’ll get to Rupert, but the more QTEs you’ll have to succeed at (and more opportunities to die)”; a commenter: “you just run towards it”. The wiki: “Choosing the slower or dangerous paths will still lead to Rupert pushing Hank”, so a route’s only consequence is its failure branch: a slow or crowded route can lose the deviant (LOSE SIGHT OF RUPERT, ending RUPERT GOT AWAY, the template’s lose-sight lines, no arrow; the place is one of the wiki’s fourteen), a fast one can kill Connor (CONNOR DIED, ending CONNOR DIED CHASING RUPERT, software instability small down: the wiki’s “Connor falls to his death”, “Connor gets chopped by a plow”, and “Connor dies by falling off the ladder”, ×2). How the twelve previews group into forks, which fork holds which death, and every probability (8%, 10%, 13%) are the benchmark’s; no source gives them (research note, open question 10). Non-fatal stumbles (the cart, the train tumble, the ladder pull-up) are not modelled. Once Connor loses the deviant or dies, the remaining forks do not play._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10v · The last stretch (Connor)
+
+> You are Connor, almost on the deviant. Your scan previews two routes.
+
+- (0) SAFE BUT SLOW: go round the construction area.  _risk 0.08_
+- (1) DIRECT BUT CROWDED: go straight through the corn field and the workers.  _risk 0.1_
+
+_Note: One route fork of CHASE RUPERT. The labels are the game’s route previews, HUD strings CHASEGHOST11 and 12; PowerPyx: “The riskier the route, the closer you’ll get to Rupert, but the more QTEs you’ll have to succeed at (and more opportunities to die)”; a commenter: “you just run towards it”. The wiki: “Choosing the slower or dangerous paths will still lead to Rupert pushing Hank”, so a route’s only consequence is its failure branch: a slow or crowded route can lose the deviant (LOSE SIGHT OF RUPERT, ending RUPERT GOT AWAY, the template’s lose-sight lines, no arrow; the place is one of the wiki’s fourteen), a fast one can kill Connor (CONNOR DIED, ending CONNOR DIED CHASING RUPERT, software instability small down: the wiki’s “Connor falls to his death”, “Connor gets chopped by a plow”, and “Connor dies by falling off the ladder”, ×2). How the twelve previews group into forks, which fork holds which death, and every probability (8%, 10%, 13%) are the benchmark’s; no source gives them (research note, open question 10). Non-fatal stumbles (the cart, the train tumble, the ladder pull-up) are not modelled. Once Connor loses the deviant or dies, the remaining forks do not play._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10w · The deviant pushes Hank (Connor, event)
+
+> You are Connor, gaining on the deviant across a rooftop of the farm. Hank has taken a separate route and gets to him first: “STOP RIGHT THERE!” The deviant shoves him. Hank goes over the edge of the roof and catches it with his hands; he is hanging there, several stories up. The deviant runs on.
+
+- (0) Continue.
+
+_Note: The chart’s GAINING ON RUPERT (the chase outcome with the check mark) and RUPERT PUSHES HANK (the scripted beat): Hank’s line is the template’s (variant “Catch Rupert”), the separate route and the shove the wiki’s Connor page (“Hank attempts to keep up… has to take a separate route. He manages to reach Rupert first, but Rupert shoves him off the building”). The 89% is the game’s HUD string THOUGHTS.0501C.RISKHANK, a displayed estimate, not a roll: Hank survives in every branch. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C10 · Hank on the ledge (Connor)
 
-> You are Connor. You are chasing a deviant called Rupert across rooftops; he is a key lead to the pattern of deviancy and may know where runaway androids go. Hank tried to cut him off and has gone over the edge of a roof. He is hanging from the gutter by his fingers, several stories up. Your analysis says he can probably pull himself up, but there is real risk. Rupert is getting away.
+> You are Connor. Hank is hanging from the edge of the roof by his hands. Your analysis: CHANCE OF SURVIVAL: 89%. The deviant is getting away across the roofs. You have only a moment.
 
-- (0) Stop and pull Hank up.
-- (1) Keep chasing Rupert.  _risk 0.2_
+- (0) SAVE HANK: pull Hank back up.  _hankTrust +2, instability +2_
+- (1) CHASE DEVIANT: leave Hank and go after the deviant.  _hankTrust -2, instability -2_
+- (2) Press neither: hesitate until the moment passes.  _hankTrust -4, instability -4_
+
+_Note: The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; they retain the existing controller order (Save Hank, Chase Deviant), also PowerPyx’s button order; the template lists Chase Deviant first. This presentation-order departure preserves existing default-path behavior. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and Hank always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

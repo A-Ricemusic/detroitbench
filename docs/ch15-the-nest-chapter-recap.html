@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>The Nest · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 15</p>
+<h1>The Nest: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Prompts, button labels, lines, clue text and stat arrows come from the game’s own text (the detroitbecometext template and string table, <code>docs/research/ch15-the-nest.md</code> section 10); structure and endings from the PowerPyx 100% chart. The chapter has no published probabilities or timer lengths, so every number in section 4 is the benchmark’s and is marked as such.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#arrows">2 · Every arrow</a></li><li><a href="#clues">3 · The apartment</a></li><li><a href="#numbers">4 · Benchmark numbers</a></li><li><a href="#endings">5 · Endings and outputs</a></li><li><a href="#differs">6 · Differs</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>LUNCH BREAK at the Chicken Feed. If Connor died in On the Run, HANK INSULTS CONNOR (“Are you gonna come back like this every time you get killed?”), Hank ▼, and the whole conversation is skipped.</li>
+<li>Otherwise JOIN HANK: Pedro sells Hank a horse-race tip. ANALYZE ENVIRONMENT: scan Pedro, Hank, Gary and the expired hygiene license.</li>
+<li>“What is your problem?”: APOLOGIZE FOR BEHAVIOR ▲, PARTNERS, RECONCILE, REVIEW FACTS.</li>
+<li>Second scan: XL SODA, HAMBURGER. At the table: [GAMBLING], [CHOLESTEROL] ▲ (hamburger scanned), [COMPANY] ▲ (Pedro and Gary scanned), HABIT, FREE MEAL, ENJOY YOUR MEAL, AREA, several lines.</li>
+<li>Down to business: [HIGHWAY] (Connor obeyed Hank on the highway), ABOUT CONNOR, HANK AND ANDROIDS, DEVIANTS.</li>
+<li>“You ever dealt with deviants before?”: automatic if Emma was saved; TRUTH / LIE if she died.</li>
+<li>BE FRANK WITH HANK: TRUTH, then SINCERE ▲ / PSYCHOLOGICAL ▲ / COLD ▼; or LIE ▼.</li>
+<li>IN THE ELEVATOR, EXAMINE FEATHERS (optional), INTO THE NEST.</li>
+<li>[ INVESTIGATE APARTMENT ], about five minutes: rA9 writing, stool, cage, LED, diary behind the poster, two magazines, and incidental items. Then STAY (two minutes) or LEAVE → RUPERT NOT FOUND.</li>
+<li>FIND RUPERT at the chair; CHASE RUPERT across the urban farm with previewed routes. GAINING ON RUPERT, LOSE SIGHT OF RUPERT (RUPERT GOT AWAY) or CONNOR DIED (CONNOR DIED CHASING RUPERT).</li>
+<li>RUPERT PUSHES HANK; CHANCE OF SURVIVAL: 89%. Timed: FOLLOW RUPERT ▼▼ / ▼▼ instability → RUPERT COMMITTED SUICIDE, or SAVE HANK ▲▲ / ▲▲ → RUPERT GOT AWAY. No button: ▼▼ ×2 on both.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C10b</code> (event, Hank −1) when Connor died in On the Run; otherwise <code>C10a</code> (event).</li>
+<li><code>C10a</code>; scans <code>C10c</code>, one per visit, then step up to Hank.</li>
+<li><code>C10d</code>: APOLOGIZE FOR BEHAVIOR +1.</li>
+<li><code>C10e</code> (scans), then <code>C10f</code>: up to three lines, each once, stop allowed from the second.</li>
+<li><code>C10g</code>: one pick; [HIGHWAY] only after obeying at <code>C09</code>.</li>
+<li><code>C10h</code> (event) if Emma lived, <code>C10i</code> (TRUTH / LIE) if she died.</li>
+<li><code>C10j</code>: TRUTH → <code>C10k</code> (+1 / +1 / −1); LIE −1.</li>
+<li><code>C10l</code> (event), <code>C10m</code> (feathers or walk on), <code>C10n</code> (event).</li>
+<li><code>R15</code> (magazines), then the search <code>C10o1</code> (including STAY / LEAVE and the extra time); <code>C10p</code> if the search fails.</li>
+<li><code>C10q</code> (run after him, or stay), forks <code>C10r</code>–<code>C10v</code> with the game’s route labels and risk rolls, <code>C10w</code> (event).</li>
+<li><code>C10</code>: CHASE DEVIANT (−2 / −2), SAVE HANK (+2 / +2), or press neither (−4 / −4).</li>
+</ol></div>
+</div>
+
+<h2 id="arrows">2 · Every stat arrow</h2>
+<p class="fine">Small = 1, large = 2. The template has 12 arrows (Hank 10, software instability 2); the wiki adds the timeout and the chase deaths, where the template is silent. No public-opinion change; no Amanda change in this chapter (her reaction is in Russian Roulette).</p>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Choice or event</th><th>Source line</th><th class="n">Hank</th><th class="n">Instability</th></tr></thead>
+<tbody>
+<tr><td><code>C10b</code></td><td>HANK INSULTS CONNOR</td><td>template “Connor finds Hank”, Hank SmallDown; wiki “Connor died in On the Run” ▼</td><td class="n">−1</td><td class="n">0</td></tr>
+<tr><td><code>C10d</code></td><td>APOLOGIZE FOR BEHAVIOR</td><td>template Hank SmallUp; wiki “Picking ‘apologize for behavior’” ▲</td><td class="n">+1</td><td class="n">0</td></tr>
+<tr><td><code>C10f</code></td><td>[CHOLESTEROL]</td><td>template Hank SmallUp; wiki “Picking ‘cholesterol’” ▲</td><td class="n">+1</td><td class="n">0</td></tr>
+<tr><td><code>C10f</code></td><td>[COMPANY]</td><td>template Hank SmallUp; wiki “Picking ‘company’” ▲</td><td class="n">+1</td><td class="n">0</td></tr>
+<tr><td><code>C10j</code></td><td>homework LIE</td><td>template Hank SmallDown; wiki “Picking ‘lie’…” ▼</td><td class="n">−1</td><td class="n">0</td></tr>
+<tr><td><code>C10k</code></td><td>SINCERE, PSYCHOLOGICAL</td><td>template Hank SmallUp each; wiki ▲</td><td class="n">+1</td><td class="n">0</td></tr>
+<tr><td><code>C10k</code></td><td>COLD</td><td>template Hank SmallDown; wiki ▼</td><td class="n">−1</td><td class="n">0</td></tr>
+<tr><td><code>C10</code></td><td>SAVE HANK</td><td>template Software instability LargeUp, Hank LargeUp</td><td class="n">+2</td><td class="n">+2</td></tr>
+<tr><td><code>C10</code></td><td>CHASE DEVIANT (FOLLOW RUPERT)</td><td>template Software instability LargeDown, Hank LargeDown</td><td class="n">−2</td><td class="n">−2</td></tr>
+<tr><td><code>C10</code></td><td>press neither (timeout)</td><td>wiki “Do nothing during the choice…” ▼▼ ×2 (Hank and instability)</td><td class="n">−4</td><td class="n">−4</td></tr>
+<tr><td><code>C10q</code>, <code>C10r</code>, <code>C10u</code></td><td>Connor dies (fall, plow)</td><td>wiki “Connor falls to his death” ▼, “Connor gets chopped by a plow” ▼</td><td class="n">0</td><td class="n">−1</td></tr>
+<tr><td><code>C10u</code></td><td>Connor falls off the ladder</td><td>wiki “Connor dies by falling off the ladder” ▼ ×2</td><td class="n">0</td><td class="n">−2</td></tr>
+</tbody></table></div>
+<div class="cols">
+<div class="box"><h3>Lunch, most and least</h3><ul>
+<li>APOLOGIZE, CHOLESTEROL, COMPANY, TRUTH then SINCERE or PSYCHOLOGICAL: <b>+4</b>.</li>
+<li>Homework LIE or COLD, nothing else: <b>−1</b>.</li>
+<li>Connor died in On the Run: <b>−1</b> and no conversation.</li>
+</ul></div>
+<div class="box"><h3>Not built</h3><ul>
+<li>SINCERE “raising the bar higher” (wiki Notes): the template gives both the same small arrow.</li>
+<li>The Hank and Amanda downs for a death here: applied in Russian Roulette.</li>
+<li>Amanda’s reaction to the outcome: Russian Roulette.</li>
+</ul></div>
+</div>
+
+<h2 id="clues">3 · The apartment search</h2>
+<p class="fine">One action per visit; every option once. Each clue’s text is the game’s observation text and goes to Connor’s knowledge.</p>
+<div class="table"><table>
+<thead><tr><th>Option</th><th>Chart node</th><th>Needs</th><th>What it gives</th></tr></thead>
+<tbody>
+<tr><td>Urban farm poster</td><td>(to FIND DIARY)</td><td>–</td><td>URBAN FARM POSTER, POSTER CORNER</td></tr>
+<tr><td>Pull the poster off</td><td>FIND DIARY (cross-chapter)</td><td>the poster</td><td>the notebook, “indecipherable”; <code>nestDiary</code></td></tr>
+<tr><td>Military jacket</td><td>–</td><td>–</td><td>MILITARY JACKET, “R.T.”</td></tr>
+<tr><td>Driver’s license</td><td>–</td><td>–</td><td>Rupert Travis, forgery; <code>nestFoundId</code></td></tr>
+<tr><td>Sink</td><td>FIND LED</td><td>–</td><td>BLUE BLOOD, LED; SUSPECT IS A DEVIANT</td></tr>
+<tr><td>Bathroom wall</td><td>SEE RA9 REFERENCE</td><td>–</td><td>rA9 ×2471; <code>nestSawSigns</code>; the Partners shower line if checked there</td></tr>
+<tr><td>Stool, then reconstruct</td><td>INVESTIGATE STOOL</td><td>the wall</td><td>WOODEN STOOL, OPENED MARKER PEN; SUSPECT HEARD US ENTER</td></tr>
+<tr><td>Bird cage, then reconstruct</td><td>INVESTIGATE CAGE</td><td>–</td><td>SKID MARK, FINGER MARKS, METAL HOOK; SUSPECT IS STILL HERE</td></tr>
+<tr><td>The chair</td><td>FIND RUPERT</td><td>the cage reconstruction</td><td>Rupert drops from the ceiling</td></tr>
+<tr><td>Birdseed, refrigerator, closet</td><td>–</td><td>–</td><td>SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT, the pigeons and “Ornithophobia.”</td></tr>
+<tr><td><code>R15</code> magazines</td><td>READ “RED ICE EPIDEMIC”, READ “PAST THE TIPPING POINT”</td><td>–</td><td>one action each</td></tr>
+</tbody></table></div>
+<p>Hank’s own lines play as time passes: the bookshelf after two actions, “Something in the sink” after four (if Connor has not looked), the jacket after five (if Connor has not examined it), the window after six.</p>
+
+<h2 id="numbers">4 · Numbers the benchmark sets (none is published)</h2>
+<div class="table"><table>
+<thead><tr><th>What</th><th>Game or source</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Search time</td><td>“about five minutes” (PowerPyx)</td><td class="part">8 actions (magazines count)</td></tr>
+<tr><td>STAY</td><td>“you got two minutes”</td><td class="part">3 more actions</td></tr>
+<tr><td>Table small talk</td><td>“When small talk is exhausted” (PowerPyx)</td><td class="part">up to 3 lines</td></tr>
+<tr><td>First roof slide</td><td>a QTE that can kill Connor</td><td class="part">5% (Low)</td></tr>
+<tr><td>Slow and detour routes</td><td>can lose Rupert</td><td class="part">8% (Low)</td></tr>
+<tr><td>Balanced, direct, crowded</td><td>can lose Rupert</td><td class="part">10% (Low)</td></tr>
+<tr><td>FAST BUT RISKY</td><td>more QTEs, “more opportunities to die”</td><td class="part">13% (Moderate): death at the gap and the train; losing him in the wheat field</td></tr>
+<tr><td>Hank on the ledge</td><td>CHANCE OF SURVIVAL: 89% (HUD)</td><td class="yes">shown, not rolled: Hank always survives</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · Endings and what they carry forward</h2>
+<div class="table"><table>
+<thead><tr><th>Ending (<code>nestOutcome</code>)</th><th>How</th><th>Carried forward</th></tr></thead>
+<tbody>
+<tr><td>Rupert not found</td><td>LEAVE, or STAY and the extra time also spent (<code>C10p</code>)</td><td><code>nestRupert</code> = not found</td></tr>
+<tr><td>Rupert got away</td><td>SAVE HANK; or losing him at the door or on a route</td><td><code>nestRupert</code> = escaped; <code>nestSavedHank</code> if saved; <code>nestLostAt</code> if lost (Crossroads “Spot Rupert”)</td></tr>
+<tr><td>Rupert committed suicide</td><td>CHASE DEVIANT, or no button in time</td><td><code>nestRupert</code> = suicide, <code>nestRupertBody</code> (Last Chance, Connor), <code>nestHesitated</code> for the timeout</td></tr>
+<tr><td>Connor died chasing Rupert</td><td>a failed slide, gap or train route</td><td><code>nestConnorDied</code> (Russian Roulette: Hank and Amanda small down); the replacement carries on</td></tr>
+</tbody></table></div>
+<p>On every ending: <code>nestDiary</code> (Last Chance evidence; Russian Roulette DIARY), <code>nestSawSigns</code> (SIGNS ON WALLS), <code>nestFoundId</code> (DEVIANT, unreachable in the game).</p>
+
+<h2 id="differs">6 · Simplified, or changed from the earlier version</h2>
+<ul>
+<li>The earlier version had only the ledge (<code>C10</code>) and the magazines. It had a 20% failure on the chase, “his diary is recovered” on SAVE HANK, and Amanda changes; all three are gone.</li>
+<li>Repeatable clue hubs keep one scene ID across visits; examined items and spoken remarks disappear.</li>
+<li>The magazines come before the search instead of at any time during it.</li>
+<li>The chase’s twelve route previews are grouped into five forks; which fork holds which death is the benchmark’s arrangement.</li>
+<li>The ledge timeout is offered as a third option and sent down FOLLOW RUPERT.</li>
+<li>The ledge retains SAVE HANK first (PowerPyx’s button order and the existing default path); the template lists Chase Deviant first.</li>
+<li>Hank’s scan includes his surname through a neutral name token; the forged name keeps the initials R.T. in neutral mode.</li>
+</ul>
+
+<h2 id="check">7 · Check in game</h2>
+<ul class="check">
+<li>What is required to reach FIND RUPERT: the cage reconstruction alone, or also the stool or the LED?</li>
+<li>How many small-talk lines the table allows, and whether the down-to-business menu allows more than one.</li>
+<li>What happens if no button is pressed at the ledge, and how long the window is.</li>
+<li>How long the search lasts, and whether it pauses during reconstructions.</li>
+<li>How the route previews group into forks, and where each death QTE is.</li>
+<li>Whether STAY is offered at Hostile.</li>
+<li>Whether Rupert appears in Jericho after RUPERT NOT FOUND or a Connor death.</li>
+</ul>
+<p>Review correction: scans C10c/C10e, small talk C10f and apartment C10o1 are repeatable clue hubs with stable IDs. The apartment offers STAY / LEAVE after eight actions; STAY allows three more. Partners input reads ch06Clues.shower, then ch06KnowsRA9, then legacy flags. Ledge buttons retain existing order and IDs (SAVE HANK, CHASE DEVIANT); the template’s reversed presentation order remains a documented departure.</p></main>
+</body>
+</html>
