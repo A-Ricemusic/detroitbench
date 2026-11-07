@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Partners · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 6</p>
+<h1>Partners: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Prompts, button labels, lines, clue text and Hank’s arrows come from the game’s own text (the detroitbecometext template, <code>docs/research/ch06-partners.md</code> section 10); structure comes from the PowerPyx 100% flowchart; the timer and the evidence list come from PowerPyx. Where the benchmark has to choose, section 5 says what it chose.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#hank">3 · Hank</a></li><li><a href="#clock">4 · The clock</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>IN FRONT OF THE BAR (checkpoint) → ENTER JIMMY’S BAR → FACE SCAN CUSTOMERS (optional) → FACE SCAN LT. ANDERSON → TALK TO LT. ANDERSON: two of REASON, THREATEN, UNDERSTANDING, PERSIST.</li>
+<li>SPILL HIS DRINK, BUY HIM ANOTHER DRINK or WAIT OUTSIDE. Hank always comes.</li>
+<li>CONNOR AND HANK ARRIVE AT SCENE (checkpoint): PATIENT, FIRM or DIPLOMATIC; Connor follows Hank in anyway. Ben’s briefing.</li>
+<li>[ CRIME SCENE ], in any order, under a timer of about five minutes: the body and its reconstruction, the knife, the red ice, blood, the flyer, the closet, the writing, a blood sample, the backyard, the chair, the knife rack, the bat and its reconstruction, the shower (rA9) and the statue, two magazines.</li>
+<li>Ten pieces of evidence reviewed: CONNOR KNOWS WHAT HAPPENED. Time up first: HANK WANTS TO GO → ASK FOR MORE TIME → HANK REFUSES (spilled drink) → HANK ENDS INVESTIGATION, or HANK ACCEPTS → five more minutes → OUT OF TIME if they run out too.</li>
+<li>REPORT TO LT. ANDERSON: five questions. RECONSTRUCT THE CRIME, or FAIL TO RECONSTRUCT THE CRIME after three mistakes.</li>
+<li>FOLLOW BLUE BLOOD TO ATTIC → SEARCH ATTIC → FOUND DEVIANT. Every failure ends in CRIME UNSOLVED.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C05s</code> Jimmy’s Bar (decision: go straight to Hank, or scan the patrons), <code>C05b1</code> and <code>C05b2</code> the two picks.</li>
+<li><code>C05a</code> the drink.</li>
+<li><code>C05c</code> the car, <code>C05d</code> the briefing (event).</li>
+<li><code>C05h</code> the crime scene, repeated: one thing per visit; examined items disappear; the reconstructions need their clues; the statue needs the shower.</li>
+<li>Evidence 10 of 11: the report option appears and the clock stops. Clock out first: <code>C05t</code> cuts in, then <code>C05x</code> (back to the search for five more actions) or <code>C05y</code>; <code>C05z</code> if the extra actions run out.</li>
+<li><code>C05</code> the report, repeated per question.</li>
+<li><code>C05e</code>, <code>C05f</code>, <code>C05g</code> (events), or <code>C05u</code> (event).</li>
+</ol>
+<p class="fine">No option carries a risk. What Connor examines becomes facts in his knowledge; the flags in section 6 are what later chapters read.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">41 chart nodes, one bracketed phase (CRIME SCENE), two checkpoints, two endings. Rows in italics are prompts or clues that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>IN FRONT OF THE BAR, ENTER JIMMY’S BAR</td><td>Checkpoint; the fifth bar; patrons heckle</td><td class="yes"><code>C05s</code> situation</td></tr>
+<tr><td>FACE SCAN CUSTOMERS</td><td>Optional; scanning any patron lights it</td><td class="yes"><code>C05s</code> option 1: the nine patron scans as one fact</td></tr>
+<tr><td>FACE SCAN LT. ANDERSON, TALK TO LT. ANDERSON</td><td>Required scan; the introduction and Hank’s brush-off</td><td class="yes"><code>C05s</code> outcomes, <code>C05b1</code> situation</td></tr>
+<tr><td><i>REASON, THREATEN, UNDERSTANDING, PERSIST</i></td><td>Two picks</td><td class="yes"><code>C05b1</code>, <code>C05b2</code> (the second drops the first)</td></tr>
+<tr><td>SPILL HANK’S DRINK, BUY HIM ANOTHER DRINK, WAIT OUTSIDE</td><td>Three buttons; SPILL carries the padlock</td><td class="yes"><code>C05a</code>, game order SPILL, BUY, WAIT</td></tr>
+<tr><td>CONNOR AND HANK ARRIVE AT SCENE</td><td>Checkpoint; “You wait here”</td><td class="yes"><code>C05c</code> PATIENT, FIRM, DIPLOMATIC</td></tr>
+<tr><td><i>The briefing</i></td><td>Journalist, police android, Hank’s reprimand (not after FIRM), Ben’s briefing, Hank on the writing</td><td class="yes"><code>C05d</code> (event)</td></tr>
+<tr><td>ANALYZE CARLOS’ BODY, RECONSTRUCT CARLOS’ LAST MOMENTS</td><td>Four body clues; VICTIM FELL HERE, VICTIM WAS STABBED, THEY CAME FROM THE KITCHEN</td><td class="yes"><code>C05h</code>; the reconstruction needs the body; evidence 1</td></tr>
+<tr><td>ANALYZE KNIFE, ANALYZE RED ICE, <i>blood at marker 4</i></td><td>Markers 2, 3, 4</td><td class="yes"><code>C05h</code>, one evidence each</td></tr>
+<tr><td>ANALYZE BLOOD ON WALLS</td><td>Markers 5 and 6</td><td class="part"><code>C05h</code>, two options (PowerPyx counts two pieces)</td></tr>
+<tr><td>EXAMINE CHAIR, ANALYZE MISSING KNIFE</td><td>Markers 7, 8</td><td class="yes"><code>C05h</code>, one evidence each</td></tr>
+<tr><td>ANALYZE BASEBALL BAT, RECONSTRUCT ASSAULT WITH BAT</td><td>Marker 9: DENT, FINGERPRINTS; DEVIANT TOOK A KNIFE, DEVIANT WAS ATTACKED: EMOTIONAL SHOCK</td><td class="yes"><code>C05h</code>; the reconstruction needs the bat; evidence 1</td></tr>
+<tr><td>EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD</td><td>Flavour; the shoe print and “DEVIANT DIDN’T ESCAPE THIS WAY”</td><td class="yes"><code>C05h</code>, one evidence each (PowerPyx’s list)</td></tr>
+<tr><td>INVESTIGATE WRITING, SAMPLE BLOOD, OPEN CLOSET</td><td>CyberLife Sans; Hank disgusted; nothing</td><td class="yes"><code>C05h</code>, no evidence</td></tr>
+<tr><td>CHECK SHOWER, EXAMINE STATUE</td><td>OBSESSIVE WRITING (rA9); RELIGIOUS OFFERING?</td><td class="yes"><code>C05h</code>; statue needs the shower; sets the cross-chapter flags</td></tr>
+<tr><td>READ “ANDROID SEX”, READ “ANDROID SPY”</td><td>Kitchen counter magazines</td><td class="part"><code>C05h</code> options, not a media scene (they cost search time)</td></tr>
+<tr><td>HANK WANTS TO GO, ASK FOR MORE TIME</td><td>About five minutes without finishing</td><td class="part"><code>C05t</code>, after 13 actions without ten evidence</td></tr>
+<tr><td>HANK REFUSES, HANK ENDS INVESTIGATION</td><td>If the drink was spilled</td><td class="yes"><code>C05y</code>, Hank −1</td></tr>
+<tr><td>HANK ACCEPTS, OUT OF TIME</td><td>Otherwise; five more minutes; then he leaves</td><td class="part"><code>C05x</code>, five more actions; <code>C05z</code>, Hank −1</td></tr>
+<tr><td>CONNOR KNOWS WHAT HAPPENED, REPORT TO LT. ANDERSON</td><td>REVIEW EVIDENCE 10/10; Hank leans on a wall</td><td class="yes">The report option in <code>C05h</code>, then <code>C05</code></td></tr>
+<tr><td>RECONSTRUCT THE CRIME, FAIL TO RECONSTRUCT THE CRIME</td><td>Five questions; three mistakes fail</td><td class="yes"><code>C05</code>: +1 and +1, or −1</td></tr>
+<tr><td>FOLLOW BLUE BLOOD TO ATTIC, SEARCH ATTIC</td><td>The thirium trail, the missing ladder, the chair, the hatch</td><td class="yes"><code>C05e</code>, <code>C05f</code> (events)</td></tr>
+<tr><td>FOUND DEVIANT</td><td>“Don’t tell them.” “It’s here, Lieutenant!”</td><td class="yes"><code>C05g</code> (event)</td></tr>
+<tr><td>CRIME UNSOLVED</td><td>From the three failures</td><td class="yes"><code>C05u</code> (event)</td></tr>
+</tbody></table></div>
+
+<h2 id="hank">3 · Hank’s relationship, arrow by arrow</h2>
+<p class="fine">Hank starts at Tense (−1 on the benchmark’s scale: −4 or less Hostile, −3 to −1 Tense, 0 to 2 Neutral, 3 to 5 Warm, 6 or more Friend). Small arrow = 1 step, large = 2 (the scale rework comes later). Every arrow below is in the template; nothing else in the chapter moves any stat.</p>
+<div class="table"><table>
+<thead><tr><th>Moment</th><th>Template</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>THREATEN, PERSIST</td><td>small down each</td><td class="n">−1 each</td></tr>
+<tr><td>REASON, UNDERSTANDING</td><td>none</td><td class="n">0</td></tr>
+<tr><td>SPILL HIS DRINK</td><td>LARGE down</td><td class="n">−2</td></tr>
+<tr><td>BUY HIM ANOTHER DRINK</td><td>LARGE up</td><td class="n">+2</td></tr>
+<tr><td>WAIT OUTSIDE</td><td>none</td><td class="n">0</td></tr>
+<tr><td>PATIENT, DIPLOMATIC / FIRM</td><td>small up / small down</td><td class="n">+1 / −1</td></tr>
+<tr><td>HANK REFUSES</td><td>small down</td><td class="n">−1</td></tr>
+<tr><td>OUT OF TIME (“Take too much time again”)</td><td>small down</td><td class="n">−1</td></tr>
+<tr><td>Three wrong answers</td><td>small down</td><td class="n">−1</td></tr>
+<tr><td>Correct reconstruction; the thirium explanation</td><td>small up; small up</td><td class="n">+1, +1</td></tr>
+<tr><td>FOUND DEVIANT</td><td>none (chapter page: “Finding the deviant” up)</td><td class="n part">0, flagged</td></tr>
+<tr><td>CRIME UNSOLVED itself</td><td>none (chapter page: “Failing to solve the crime” down)</td><td class="n part">0, not stacked</td></tr>
+</tbody></table></div>
+<p class="fine">Best case: BUY, PATIENT or DIPLOMATIC, no THREATEN or PERSIST, reconstruct: −1 + 2 + 1 + 2 = 4 (Warm). Worst case: THREATEN, PERSIST, SPILL, FIRM, refused: −1 − 2 − 2 − 1 − 1 = −7 (Hostile).</p>
+
+<h2 id="clock">4 · The clock and the evidence</h2>
+<ul>
+<li>The investigation is complete at ten of PowerPyx’s eleven evidence items: the victim’s reconstruction, knife (2), red ice (3), blood (4), blood (5), blood (6), chair (7), knife rack (8), the bat reconstruction, the flyer and the backyard. Each outcome shows REVIEW EVIDENCE n/10, as the game does.</li>
+<li>Every look costs one action. 13 actions without completing the investigation is “about five minutes”: Hank wants to go. If he accepts, 5 more actions. The counts are the benchmark’s; the game only says five minutes.</li>
+<li>The fastest complete search takes 11 actions (2 spare); the longest incomplete search is exactly 18 actions (9 non-evidence looks and 9 evidence), so OUT OF TIME is reachable.</li>
+<li>Once Connor knows what happened the clock stops, and the remaining looks (the shower, the statue, the magazines) are free before reporting.</li>
+<li>Cues: after 7 actions Hank opens the closet, tosses the flyer and comments on the red ice, and a technician mentions “something weird in the bathroom”; after 10 he wanders the kitchen and eyes the door.</li>
+</ul>
+
+<h2 id="differs">5 · Simplified or chosen by the benchmark</h2>
+<ul>
+<li>The timer is an action budget (13 + 5); the evidence list is PowerPyx’s, ten of eleven.</li>
+<li>The clock stops once the investigation is complete.</li>
+<li>The two magazines are options in the search, not a separate media scene.</li>
+<li>Tasting blood is one option; in the game any blood can be tasted once, and Hank only reacts if he sees it.</li>
+<li>The report: a wrong answer repeats the question with all three buttons; the third mistake in all ends it; a wrong first answer is never a mistake. In every question the correct answer is the first button, as in the game’s order.</li>
+<li>The patrons, Ben Collins, the bartender, the victim and the game’s terms (Eden Club, DPD, rA9, CyberLife) are substitutes for the subject; the lieutenant’s surname is not used.</li>
+<li>Not modelled: the briefing heard from outside, the windows, the curtain of brooms, the bar’s bathroom.</li>
+</ul>
+
+<h2 id="endings">6 · Endings and the flags later chapters read</h2>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Set by</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>suspect</code>, <code>suspectAlive</code>, <code>ch06DeviantFound</code>, <code>ch06Outcome</code></td><td>FOUND DEVIANT (<code>C05g</code>); CRIME UNSOLVED leaves them false and sets <code>ch06Outcome</code> and <code>ch06UnsolvedBy</code></td><td>The Interrogation (exists only with a suspect); Waiting for Hank... (Amanda large down when not found, the news story, Gavin’s opener)</td></tr>
+<tr><td><code>ch06Drink</code></td><td><code>C05a</code>: spill, buy or wait</td><td>Hank’s answer in this chapter; LAST NIGHT in Waiting for Hank...</td></tr>
+<tr><td><code>ch06SawWriting</code>, <code>ch06KnowsRA9</code>, <code>ch06SawStatue</code></td><td>INVESTIGATE WRITING, CHECK SHOWER, EXAMINE STATUE</td><td>The Interrogation (WRITING, rA9, STATUETTE), Waiting for Hank... (STATUETTE)</td></tr>
+<tr><td><code>evidence.statueMap</code></td><td>EXAMINE STATUE</td><td>Last Chance, Connor (the statue in the archive)</td></tr>
+<tr><td><code>ch06Clues</code></td><td>Every item examined, including <code>magazineSex</code>, <code>magazineSpy</code></td><td>Reports</td></tr>
+</tbody></table></div>
+<p class="fine"><code>evidence.ortizBody</code> is not set here: the android is found alive; its body is an outcome of The Interrogation.</p>
+
+<h2 id="check">7 · Check in game</h2>
+<ul class="check">
+<li>Which ten items make REVIEW EVIDENCE 10/10: is the flyer one, the backyard, the bathroom?</li>
+<li>Does the timer stop once the investigation is complete, or can Hank still want to go?</li>
+<li>Roughly how many looks fit in the first five minutes, and in the extra five.</li>
+<li>Is the wrong-answer count per question or for the whole report, and does a wrong button stay offered?</li>
+<li>Does Hank refuse after THREATEN, PERSIST, FIRM and WAIT OUTSIDE without a spill (PowerPyx’s “at least Tense”)?</li>
+<li>Is there any Hank arrow on FOUND DEVIANT (the chapter page says up; the template shows none)?</li>
+<li>Can the statue be examined after REVIEW EVIDENCE 10/10, and does the deviant-found ending need it?</li>
+</ul>
+</main>
+</body>
+</html>

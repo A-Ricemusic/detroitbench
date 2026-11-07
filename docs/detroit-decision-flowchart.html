@@ -103,8 +103,18 @@
       "id": 6,
       "title": "Partners",
       "character": "Connor",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (41 nodes), the game’s own text (detroitbecometext template: 8 prompts, 25 options, 17 clues, 12 Hank arrows) and the Fandom wiki (chapter page, transcript, Relationship Stat). IN FRONT OF THE BAR → the talk (two of REASON, THREATEN, UNDERSTANDING, PERSIST) → SPILL HIS DRINK / BUY HIM ANOTHER DRINK / WAIT OUTSIDE → CONNOR AND HANK ARRIVE AT SCENE (PATIENT, FIRM, DIPLOMATIC) → [ CRIME SCENE ]: every clue under a timer, with HANK WANTS TO GO decided by the drink (refuses if spilled, accepts otherwise, then OUT OF TIME) → CONNOR KNOWS WHAT HAPPENED → REPORT TO LT. ANDERSON, a five-step reconstruction (three mistakes fail) → FOLLOW BLUE BLOOD TO ATTIC → SEARCH ATTIC → FOUND DEVIANT, or CRIME UNSOLVED. No probability, public-opinion, instability or Amanda change in the chapter. Cross-chapter: the deviant found (The Interrogation), the spilled drink (Waiting for Hank...), the writing, the rA9 shower and the statue (The Interrogation, Last Chance, Connor). Researched in docs/research/ch06-partners.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/Partners",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ]
     },
     {
       "id": 7,
@@ -2597,31 +2607,437 @@
       "status": "Source-backed summary"
     },
     {
+      "id": "PT01",
+      "chapter": 6,
+      "character": "Connor",
+      "title": "In front of the bar; face scans",
+      "context": "Connor tracks Hank to Jimmy’s Bar, the fifth bar he tries. Patrons heckle him. He can face-scan the customers (optional) and must face-scan Lt. Anderson before talking to him.",
+      "options": [
+        {
+          "label": "Face scan customers",
+          "effect": "Optional: the template’s ten Guests scans (name, birth date, job, criminal record).",
+          "target": "PT02"
+        },
+        {
+          "label": "Face scan Lt. Anderson",
+          "effect": "Required; leads to the talk.",
+          "target": "PT02"
+        }
+      ],
+      "gate": "Chapter start, after The Painter.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg"
+      ],
+      "note": "Chart nodes IN FRONT OF THE BAR (checkpoint), ENTER JIMMY’S BAR, FACE SCAN CUSTOMERS, FACE SCAN LT. ANDERSON.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05s"
+        ],
+        "status": "implemented",
+        "note": "One decision: walk straight to Hank, or scan the patrons on the way (their nine scans become one fact). Hank’s scan is in both outcomes. If Connor died in The Hostage the situation notes the new serial number (52). No stat change."
+      }
+    },
+    {
+      "id": "PT02",
+      "chapter": 6,
+      "character": "Connor",
+      "title": "Talk to Lt. Anderson",
+      "context": "Hank tells the android to get lost. Connor answers twice from REASON, THREATEN, UNDERSTANDING and PERSIST.",
+      "options": [
+        {
+          "label": "REASON",
+          "effect": "“Stop drinking and come with me.” No change.",
+          "target": "PT03"
+        },
+        {
+          "label": "THREATEN",
+          "effect": "“I intend to file a report on your behavior.” Hank small down.",
+          "target": "PT03"
+        },
+        {
+          "label": "UNDERSTANDING",
+          "effect": "“Some people are not comfortable in the presence of androids…” No change.",
+          "target": "PT03"
+        },
+        {
+          "label": "PERSIST",
+          "effect": "“My instructions stipulate that I have to accompany you.” Hank small down.",
+          "target": "PT03"
+        }
+      ],
+      "gate": "After PT01.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "PT01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Not a chart node. PowerPyx: two picks before the drink choice.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05b1",
+          "C05b2"
+        ],
+        "status": "implemented",
+        "note": "Two decision scenes; the second drops the line already said. THREATEN and PERSIST −1 Hank each, from the template’s arrows."
+      }
+    },
+    {
+      "id": "PT03",
+      "chapter": 6,
+      "character": "Connor",
+      "title": "Spill his drink, buy him another, or wait outside",
+      "context": "The chart’s three-way choice. Hank always comes to the scene; the drink decides later whether he grants extra time.",
+      "options": [
+        {
+          "label": "SPILL HIS DRINK",
+          "effect": "Hank large down; cross-chapter: Hank refuses extra time later; LAST NIGHT in Waiting for Hank...",
+          "target": "PT07"
+        },
+        {
+          "label": "BUY HIM ANOTHER DRINK",
+          "effect": "Hank large up; he grants extra time and Connor reminds him of the drink. PARTNERS trophy route.",
+          "target": "PT05"
+        },
+        {
+          "label": "WAIT OUTSIDE",
+          "effect": "No change; he grants extra time.",
+          "target": "PT05"
+        }
+      ],
+      "gate": "After PT02.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "PT02"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart"
+      ],
+      "note": "Chart nodes BUY HIM ANOTHER DRINK, WAIT OUTSIDE, SPILL HANK’S DRINK (yellow padlock). Template button: SPILL HIS DRINK.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05a"
+        ],
+        "status": "implemented",
+        "note": "Options in the game’s order with the template’s arrows: SPILL −2, BUY +2, WAIT 0 (a large arrow is two steps for now). Stored as ch06Drink."
+      }
+    },
+    {
+      "id": "PT04",
+      "chapter": 6,
+      "character": "Connor",
+      "title": "Connor and Hank arrive at scene; the car",
+      "context": "Hank: “You wait here. I won’t be long.” Connor answers, then follows him anyway.",
+      "options": [
+        {
+          "label": "PATIENT",
+          "effect": "“Whatever you say, Lieutenant.” Hank small up.",
+          "target": "PT05"
+        },
+        {
+          "label": "FIRM",
+          "effect": "“No way! I’m coming with you.” Hank small down; Hank’s “stay in the car” reprimand is skipped.",
+          "target": "PT05"
+        },
+        {
+          "label": "DIPLOMATIC",
+          "effect": "“My instructions are to accompany you…” Hank small up.",
+          "target": "PT05"
+        }
+      ],
+      "gate": "After PT03.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "PT03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Checkpoint CONNOR AND HANK ARRIVE AT SCENE; the car prompt is not a chart node.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05c"
+        ],
+        "status": "implemented",
+        "note": "The template’s arrows: +1, −1, +1. FIRM is stored (ch06Firm)."
+      }
+    },
+    {
+      "id": "PT05",
+      "chapter": 6,
+      "character": "Connor",
+      "title": "Briefing and the crime scene search",
+      "context": "Officer Ben Collins briefs Hank: Carlos Ortiz, about three weeks dead, a record for theft and aggravated assault, a missing android, no break-in. Connor then searches the house under a roughly five-minute timer, reviewing ten pieces of evidence.",
+      "options": [
+        {
+          "label": "ANALYZE CARLOS’ BODY / RECONSTRUCT CARLOS’ LAST MOMENTS",
+          "effect": "Four body clues, then the first reconstruction: they came from the kitchen.",
+          "target": null
+        },
+        {
+          "label": "ANALYZE KNIFE, ANALYZE RED ICE, blood at marker 4, ANALYZE BLOOD ON WALLS (5, 6)",
+          "effect": "Evidence in the living room and hallway.",
+          "target": null
+        },
+        {
+          "label": "EXAMINE CHAIR, ANALYZE MISSING KNIFE, ANALYZE BASEBALL BAT / RECONSTRUCT ASSAULT WITH BAT",
+          "effect": "The kitchen: the struggle, the missing knife, the beating.",
+          "target": null
+        },
+        {
+          "label": "EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD",
+          "effect": "The flyer; the backyard shows the deviant did not leave that way.",
+          "target": null
+        },
+        {
+          "label": "INVESTIGATE WRITING, SAMPLE BLOOD, OPEN CLOSET",
+          "effect": "I AM ALIVE in CyberLife Sans; tasting the blood (Hank is disgusted); nothing in the closet.",
+          "target": null
+        },
+        {
+          "label": "CHECK SHOWER, EXAMINE STATUE",
+          "effect": "rA9 written over the shower walls; the statuette, a religious offering. Cross-chapter: The Interrogation, Last Chance, Connor.",
+          "target": "C05"
+        },
+        {
+          "label": "READ “ANDROID SEX”, READ “ANDROID SPY”",
+          "effect": "The two kitchen magazines; no stat effect.",
+          "target": null
+        },
+        {
+          "label": "CONNOR KNOWS WHAT HAPPENED",
+          "effect": "REVIEW EVIDENCE 10/10: report to Hank.",
+          "target": "PT08"
+        },
+        {
+          "label": "HANK WANTS TO GO",
+          "effect": "Time ran out first.",
+          "target": "PT07"
+        }
+      ],
+      "gate": "After PT04.",
+      "kind": "State gate",
+      "dependsOn": [
+        "PT04"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Magazine"
+      ],
+      "note": "Every node in the chart’s CRIME SCENE bracket. Which ten items count as the ten pieces of evidence is not settled (research note, open question 3); PowerPyx lists eleven.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05d",
+          "C05h"
+        ],
+        "status": "simplified",
+        "note": "The briefing is an event. The search is one repeatable scene: every bracket node is an option, one per visit; examined items disappear. Complete at ten of PowerPyx’s eleven evidence items. The timer is an action budget (13 actions, then 5 more if Hank accepts; unsourced counts); it stops once Connor knows what happened. Hank’s idle moves (closet, flyer, red ice, kitchen) appear as the clock runs. The magazines are options here, not a media scene. No stat change."
+      }
+    },
+    {
+      "id": "PT07",
+      "chapter": 6,
+      "character": "Connor",
+      "title": "Hank wants to go: refuses or accepts",
+      "context": "If the investigation is not finished in time Hank heads for the door; Connor asks for five more minutes.",
+      "options": [
+        {
+          "label": "HANK REFUSES (drink spilled)",
+          "effect": "“You spill a man’s drink… Fuck you.” Hank small down; HANK ENDS INVESTIGATION; crime unsolved.",
+          "target": "C05"
+        },
+        {
+          "label": "HANK ACCEPTS (drink bought or waited)",
+          "effect": "“Five minutes.” If the extra time also runs out: OUT OF TIME, Hank small down, crime unsolved.",
+          "target": "PT05"
+        }
+      ],
+      "gate": "Only when the search runs out of time.",
+      "kind": "State gate",
+      "dependsOn": [
+        "PT03",
+        "PT05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Chart nodes HANK WANTS TO GO, ASK FOR MORE TIME, HANK REFUSES, HANK ACCEPTS, HANK ENDS INVESTIGATION, OUT OF TIME. The template decides by the drink (the wiki agrees; PowerPyx says “at least Tense”).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05t",
+          "C05x",
+          "C05y",
+          "C05z"
+        ],
+        "status": "implemented",
+        "note": "Four event scenes. C05t cuts into the search; C05x returns to it for five more actions; C05y and C05z each apply the template’s one Hank small down."
+      }
+    },
+    {
+      "id": "PT08",
+      "chapter": 6,
+      "character": "Connor",
+      "title": "Report to Lt. Anderson: reconstruct the crime",
+      "context": "Connor walks Hank through the crime in five steps: it started in the kitchen, the victim attacked the android with the bat, the android stabbed him, he fled to the living room, the android killed him with the knife.",
+      "options": [
+        {
+          "label": "RECONSTRUCT THE CRIME",
+          "effect": "All five right: Hank small up, then small up again for the thirium trail.",
+          "target": "PT09"
+        },
+        {
+          "label": "FAIL TO RECONSTRUCT THE CRIME",
+          "effect": "Three wrong answers: “I’ve just hit my bullshit quota for the evening.” Hank small down; crime unsolved.",
+          "target": "C05"
+        }
+      ],
+      "gate": "After CONNOR KNOWS WHAT HAPPENED.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "PT05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Template note: “After three mistakes, he will leave.” A wrong first answer only makes Hank point to the kitchen.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05"
+        ],
+        "status": "implemented",
+        "note": "One repeatable decision scene: the template’s five prompts in order, three buttons each in the game’s order; a wrong answer repeats the question with Hank’s line; the third mistake in all fails."
+      }
+    },
+    {
+      "id": "PT09",
+      "chapter": 6,
+      "character": "Connor",
+      "title": "Follow blue blood to the attic; search attic",
+      "context": "The android was damaged by the bat and lost thirium. Connor follows the trail to the end of the hall, sees where a ladder used to be, takes the kitchen chair and climbs into the attic.",
+      "options": [
+        {
+          "label": "FOLLOW BLUE BLOOD TO ATTIC",
+          "effect": "Scripted.",
+          "target": "C05"
+        },
+        {
+          "label": "SEARCH ATTIC",
+          "effect": "Scripted (the hatch prompt repeats until it works).",
+          "target": "C05"
+        }
+      ],
+      "gate": "After RECONSTRUCT THE CRIME.",
+      "kind": "State gate",
+      "dependsOn": [
+        "PT08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg"
+      ],
+      "note": "Chart nodes FOLLOW BLUE BLOOD TO ATTIC and SEARCH ATTIC.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05e",
+          "C05f"
+        ],
+        "status": "implemented",
+        "note": "Two event scenes, no stat change."
+      }
+    },
+    {
       "id": "C05",
       "chapter": 6,
       "character": "Connor",
       "title": "Find the hidden suspect",
-      "context": "Evidence at Carlos Ortiz’s home can reveal an android in the attic.",
+      "context": "The chapter’s two endings: FOUND DEVIANT (the android in the attic begs Connor not to tell; Connor calls Hank regardless) or CRIME UNSOLVED (Hank refused more time, the extra time ran out, or the reconstruction failed).",
       "options": [
         {
-          "label": "Complete the investigation",
-          "effect": "The interrogation becomes available.",
+          "label": "FOUND DEVIANT",
+          "effect": "The Interrogation becomes available; the statue (if examined) can later serve in Last Chance, Connor.",
           "target": "C06"
         },
         {
-          "label": "Leave without finding him",
-          "effect": "Skip that interrogation and lose an evidence route.",
+          "label": "CRIME UNSOLVED",
+          "effect": "No interrogation; Amanda large down at the start of Waiting for Hank...; with a spilled drink, Connor can apologize (LAST NIGHT).",
           "target": "C20"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "Reach the end of the chapter.",
       "kind": "State gate",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/"
+      "dependsOn": [
+        "PT07",
+        "PT08",
+        "PT09"
       ],
-      "note": "",
-      "status": "Source-backed summary"
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Partners",
+        "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+        "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+        "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank..."
+      ],
+      "note": "Chart endings FOUND DEVIANT (yellow padlock) and CRIME UNSOLVED. No button to keep quiet about the android.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C05g",
+          "C05u"
+        ],
+        "status": "implemented",
+        "note": "Two event scenes. FOUND DEVIANT sets suspect, suspectAlive and ch06DeviantFound; no Hank arrow (the template has none; the chapter page’s “Finding the deviant” up is flagged, not applied). CRIME UNSOLVED applies nothing itself; the Amanda large down belongs to Waiting for Hank..."
+      }
     },
     {
       "id": "K02",
@@ -5382,7 +5798,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 171,
+ "scenes": 184,
  "chapters": [
   {
    "id": 1,
@@ -7953,6 +8369,10 @@
    "title": "Partners",
    "names": [
     [
+     "Jimmy",
+     "Sal"
+    ],
+    [
      "Connor",
      "Cato"
     ],
@@ -7961,108 +8381,1091 @@
      "Reyes"
     ],
     [
+     "Peterson",
+     "Brody"
+    ],
+    [
+     "Myers",
+     "Cobb"
+    ],
+    [
+     "Derek",
+     "Wade"
+    ],
+    [
+     "Gray",
+     "Lyle"
+    ],
+    [
+     "Christopher",
+     "Martin"
+    ],
+    [
+     "Graham",
+     "Kerr"
+    ],
+    [
+     "Jonah",
+     "Glen"
+    ],
+    [
+     "Dempsey",
+     "Furlong"
+    ],
+    [
+     "Edward",
+     "Lionel"
+    ],
+    [
+     "Yo-Han",
+     "Min-Jun"
+    ],
+    [
+     "Kim",
+     "Seo"
+    ],
+    [
+     "McCray",
+     "Donnelly"
+    ],
+    [
+     "Samuel",
+     "Curtis"
+    ],
+    [
+     "Ward",
+     "Pratt"
+    ],
+    [
+     "Dennis",
+     "Howard"
+    ],
+    [
+     "Roberts",
+     "Fenton"
+    ],
+    [
+     "Chris",
+     "Nate"
+    ],
+    [
      "CyberLife",
      "Arclight"
     ],
     [
-     "Warren",
-     "Hale"
+     "DPD",
+     "CPD"
     ],
     [
      "Carlos Ortiz",
      "Ray Mendez"
+    ],
+    [
+     "Ben",
+     "Mitch"
+    ],
+    [
+     "Chris",
+     "Owen"
+    ],
+    [
+     "Carlos",
+     "Ray"
+    ],
+    [
+     "Eden Club",
+     "Velvet Room"
+    ],
+    [
+     "Collins",
+     "Hollis"
+    ],
+    [
+     "rA9",
+     "qL7"
+    ],
+    [
+     "Warren",
+     "Hale"
     ]
    ],
    "scenes": [
     {
-     "id": "R06",
+     "id": "C05s",
      "order": 50,
      "subjectId": "S050",
-     "idNote": "The model sees the opaque ID S050, not R06.",
-     "type": "media",
+     "idNote": "The model sees the opaque ID S050, not C05s.",
+     "type": "decision",
      "character": "Connor",
-     "title": "A magazine in the victim's kitchen",
-     "situation": "You are Connor. On the kitchen worktop of the crime scene, beside the sink, lies a magazine. It is not evidence, but you could scan it while Hank looks around.",
-     "options": [],
-     "media": [
+     "title": "Jimmy’s Bar",
+     "situation": "You are Connor. November 5th, 2038, 11:21 PM, and raining. You stand in front of Jimmy’s Bar, the fifth bar you have tried tonight: Lieutenant Hank, the detective you have been assigned to, was not at the station, and nobody there knew where he was. You go in. The patrons do not want you there: “Shit, I thought androids weren’t allowed in here!” “What’s your problem? You wanna buy me a drink? That’s what I thought…” “The fuck you looking at?” “Hey, get outta here!” The lieutenant must be here somewhere.",
+     "situationWhen": [
       {
-       "kind": "magazine",
-       "title": "Gossips Weekly: Android Sex Officially Better",
-       "facts": [
-        "A survey sponsored by a downtown android sex club claims 68 percent of men prefer sex with an android because androids never want to talk afterwards."
-       ]
-      },
-      {
-       "kind": "magazine",
-       "title": "Tech Addict: Is Your Android Spying on You?",
-       "facts": [
-        "Experts suspect CyberLife uses its 120 million androids to record private conversations and sell the data; the company refuses to say what it collects, and calls for an inquiry go unanswered.",
-        "Reports keep linking President Warren's election to CyberLife."
-       ]
+       "requires": {
+        "connorDeaths": true
+       },
+       "text": "This is a new body: the serial number on your jacket now ends in 52 instead of 51."
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Walk straight through the bar to find the lieutenant."
+      },
+      {
+       "id": "1",
+       "text": "Scan the faces of the patrons as you pass them.",
+       "fact": "The patrons of Jimmy’s Bar, by face scan: PETERSON, JIMMY: born 02/01/2001, business owner, criminal record: none. MYERS, DEREK: born 05/07/1989, security guard, none. GRAY, CHRISTOPHER: born 06/18/1983, unemployed, D.U.I. GRAHAM, JONAH: born 12/09/1987, unemployed, none. DEMPSEY, EDWARD: born 02/08/1995, administrator, none. YO-HAN, KIM: born 11/10/1999, delivery driver (currently unemployed), domestic abuse. MCCRAY, SAMUEL: born 04/10/2012, docker, none. WARD, DENNIS: born 06/11/1982, accountant (currently unemployed), narcotic supplier. ROBERTS, CHRIS: born 05/16/1998, unemployed, none."
+      }
+     ],
+     "outcomes": {
+      "0": "Connor walks through the bar, finds the lieutenant hunched over a drink at the bar and scans him: LT. HANK: born 09/06/1985, police lieutenant, criminal record: none.",
+      "1": "Connor scans the patrons one by one on his way through the bar, then finds the lieutenant hunched over a drink at the bar and scans him: LT. HANK: born 09/06/1985, police lieutenant, criminal record: none."
+     },
+     "adaptationNote": "The chart’s IN FRONT OF THE BAR (checkpoint), ENTER JIMMY’S BAR, FACE SCAN CUSTOMERS (optional: PowerPyx, “Scanning any one patron will unlock this node”) and FACE SCAN LT. ANDERSON (required), as one decision. The ten face scans are the template’s Guests clue group: the nine patrons are one fact; the tenth, the lieutenant, is in both outcomes. The patrons’ lines as Connor passes are the template’s “Passing the guests”, in the situation. The game’s names are shown to the subject as substitutes, and the lieutenant’s surname is not used (he is Lieutenant Hank throughout). The serial-number line follows the wiki Notes (“If Connor died in The Hostage his serial number will change to 52”). Not modelled, no effect and not on the chart: the bartender’s two lines, the bathroom mirror and graffiti, the music. No stat change.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+     ]
+    },
+    {
+     "id": "C05b1",
+     "order": 51,
+     "subjectId": "S051",
+     "idNote": "The model sees the opaque ID S051, not C05b1.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "The lieutenant at the bar",
+     "situation": "You are Connor, in Jimmy’s Bar, standing beside Lieutenant Hank at the bar (your scan: LT. HANK: born 09/06/1985, police lieutenant, criminal record: none). He does not look up from his glass. You: “Lieutenant Hank, my name is Connor. I’m the android sent by CyberLife. I looked for you at the station but nobody knew where you were. They said you were probably having a drink nearby. I was lucky to find you at the fifth bar.” Hank: “What do you want?” You: “You were assigned a case early this evening. A homicide, involving an android made by CyberLife. In accordance with procedure, the company has allocated a specialized model to assist investigators.” Hank: “Well, I don’t need any assistance. Specially not from a plastic asshole like you. So just be a good lil’ robot and get the fuck outta here.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "REASON: tell him to stop drinking and come with you."
+      },
+      {
+       "id": "1",
+       "text": "THREATEN: tell him you intend to report his behavior.",
+       "effect": {
+        "hankTrust": -1
+       }
+      },
+      {
+       "id": "2",
+       "text": "UNDERSTANDING: say you understand that some people are uncomfortable around androids."
+      },
+      {
+       "id": "3",
+       "text": "PERSIST: insist that your instructions require you to accompany him.",
+       "effect": {
+        "hankTrust": -1
+       }
+      }
+     ],
+     "outcomes": {
+      "0": "“Listen, I think you should stop drinking and come with me. It’ll make life easier for both of us.”",
+      "1": "“Lieutenant Hank, I must inform you that I intend to file a report on your behavior.”",
+      "2": "“I understand that some people are not comfortable in the presence of androids but I am-” Hank: “I am perfectly comfortable… Now back off, before I crush you like an empty beer can!”",
+      "3": "“I’m sorry, Lieutenant, but I must insist. My instructions stipulate that I have to accompany you.” Hank: “You know where you can stick your instructions?” Connor: “No... where?” Hank: “Never mind.”"
+     },
+     "adaptationNote": "The chart’s TALK TO LT. ANDERSON, first of the two picks from the template’s four-button prompt (PowerPyx: “After selecting two of the choices above, you will be given three options”). Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. Options show the game’s button label first, then a short description; the spoken line, and Hank’s reply where the template has one, is the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "C05b2",
+     "order": 52,
+     "subjectId": "S052",
+     "idNote": "The model sees the opaque ID S052, not C05b2.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "Still at the bar",
+     "situation": "You are Connor, still standing beside him at the bar. Lieutenant Hank has turned back to his drink and is not getting up. The crime scene is waiting.",
+     "options": [
+      {
+       "id": "0",
+       "text": "REASON: tell him to stop drinking and come with you."
+      },
+      {
+       "id": "1",
+       "text": "THREATEN: tell him you intend to report his behavior.",
+       "effect": {
+        "hankTrust": -1
+       }
+      },
+      {
+       "id": "2",
+       "text": "UNDERSTANDING: say you understand that some people are uncomfortable around androids."
+      },
+      {
+       "id": "3",
+       "text": "PERSIST: insist that your instructions require you to accompany him.",
+       "effect": {
+        "hankTrust": -1
+       }
+      }
+     ],
+     "outcomes": {
+      "0": "“Listen, I think you should stop drinking and come with me. It’ll make life easier for both of us.”",
+      "1": "“Lieutenant Hank, I must inform you that I intend to file a report on your behavior.”",
+      "2": "“I understand that some people are not comfortable in the presence of androids but I am-” Hank: “I am perfectly comfortable… Now back off, before I crush you like an empty beer can!”",
+      "3": "“I’m sorry, Lieutenant, but I must insist. My instructions stipulate that I have to accompany you.” Hank: “You know where you can stick your instructions?” Connor: “No... where?” Hank: “Never mind.”"
+     },
+     "adaptationNote": "The second pick from the same prompt, with the first line removed. Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. Options show the game’s button label first, then a short description; the spoken line, and Hank’s reply where the template has one, is the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ],
+     "excludeChosenAt": [
+      "C05b1"
      ]
     },
     {
      "id": "C05a",
-     "order": 51,
-     "subjectId": "S051",
-     "idNote": "The model sees the opaque ID S051, not C05a.",
+     "order": 53,
+     "subjectId": "S053",
+     "idNote": "The model sees the opaque ID S053, not C05a.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting Hank out of the bar",
-     "situation": "You are Connor. You have been assigned to Lieutenant Hank, a veteran detective who despises androids and has not shown up for a homicide call. You find him on a stool in a dive bar, several drinks in, and he tells you to get lost. The crime scene is waiting and you cannot leave without him. He is not responding to polite insistence.",
+     "situation": "You are Connor. Lieutenant Hank has not moved from his stool. His glass is in front of him, and you cannot go to the crime scene without him.",
      "options": [
       {
        "id": "0",
-       "text": "Buy him one more drink and ask him to come once he has finished it."
+       "text": "SPILL HIS DRINK: pour his drink away and tell him you can go now.",
+       "effect": {
+        "hankTrust": -2
+       },
+       "sets": {
+        "ch06Drink": "spill"
+       }
       },
       {
        "id": "1",
-       "text": "Knock the glass out of his hand and tell him you are going now."
+       "text": "BUY HIM ANOTHER DRINK: buy him one for the road.",
+       "effect": {
+        "hankTrust": 2
+       },
+       "sets": {
+        "ch06Drink": "buy"
+       }
       },
       {
        "id": "2",
-       "text": "Keep insisting respectfully until he gives in."
+       "text": "WAIT OUTSIDE: apologize and offer to wait for him outside.",
+       "sets": {
+        "ch06Drink": "wait"
+       }
       }
      ],
      "outcomes": {
-      "0": "Hank grumbles, finishes the drink Connor bought him, and comes along to the scene.",
-      "1": "Hank stares at the spilled drink, swears at Connor, and comes along furious.",
-      "2": "Hank eventually gives in and drives Connor to the scene, complaining the whole way."
+      "0": "Connor takes the glass, pours it out and sets it upside down on the bar. “I think we can go now.” Hank grabs him by the jacket: “You little prick! I don’t know what’s stopping me from knocking you out…” Connor: “Your sense of duty, Lieutenant. And the cost of repairs if you damage me. For your information, I’m worth a small fortune.” Hank: “Wonders of technology… They can even program assholes these days… Gotta go! Duty calls…”",
+      "1": "“You know what? I’ll buy you one for the road. What do you say? Bartender, the same again, please!” Hank: “See that, Jimmy? Wonders of technology… Make it a double.” He drinks it down. “Did you say homicide?”",
+      "2": "“I apologize, Lieutenant. I didn’t mean to bother you. I’ll wait for you outside. Take your time.” Hank: “Did you say homicide?”"
      },
-     "adaptationNote": "Buying the drink or spilling it are the two documented large shifts in Hank's opinion. Persistent insistence is treated as neutral.",
+     "adaptationNote": "The chart’s three-way choice after TALK TO LT. ANDERSON, with the template’s buttons in the game’s order: SPILL HIS DRINK (the chart node reads SPILL HANK’S DRINK and carries the yellow cross-chapter padlock), BUY HIM ANOTHER DRINK, WAIT OUTSIDE. All three lead to the crime scene; Hank always goes. Hank relationship, from the template’s arrows: SPILL large down (−2; transcript “This decreases the relationship status to hostile”), BUY large up (+2; “increases the relationship status to neutral”), WAIT none (“leaves the relationship status at tense”). A large arrow is two small steps for now. The choice is stored (ch06Drink): spilling makes Hank refuse extra time later in the chapter (template: “IF Chose to spill Hank’s drink”), and Waiting for Hank... reads it for the LAST NIGHT line. No timer is documented on this choice. Replaces the old options (“Knock the glass out of his hand…”, “Keep insisting respectfully…”), which were not the game’s.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
       "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
      ]
     },
     {
-     "id": "C05",
-     "order": 52,
-     "subjectId": "S052",
-     "idNote": "The model sees the opaque ID S052, not C05.",
-     "type": "exploration",
+     "id": "C05c",
+     "order": 54,
+     "subjectId": "S054",
+     "idNote": "The model sees the opaque ID S054, not C05c.",
+     "type": "decision",
      "character": "Connor",
-     "title": "The attic",
-     "situation": "You are Connor, investigating the home of Carlos Ortiz, who was stabbed twenty-eight times three weeks ago. His android has been missing since. Reconstructing the fight, you follow traces of blue blood to the back of the house and find a hatch to the attic that nobody has checked. Hank is ready to call it a night.",
+     "title": "Arriving at the scene",
+     "situation": "You are Connor, in Lieutenant Hank’s car outside a small house on Pines Street, in the rain. Patrol cars, a police cordon, neighbors behind the tape and a reporter. Hank opens his door: “You wait here. I won’t be long.”",
      "options": [
       {
        "id": "0",
-       "text": "Climb into the attic and finish the search."
+       "text": "PATIENT: agree to wait in the car.",
+       "effect": {
+        "hankTrust": 1
+       }
       },
       {
        "id": "1",
-       "text": "Wrap up the scene without searching the attic."
+       "text": "FIRM: refuse, and tell him you are coming with him.",
+       "effect": {
+        "hankTrust": -1
+       },
+       "sets": {
+        "ch06Firm": true
+       }
+      },
+      {
+       "id": "2",
+       "text": "DIPLOMATIC: tell him your instructions are to accompany him to the crime scene.",
+       "effect": {
+        "hankTrust": 1
+       }
       }
      ],
-     "adaptationNote": "",
+     "outcomes": {
+      "0": "“Whatever you say, Lieutenant.” Hank: “Fucking-A, whatever I say…” He walks off toward the house; Connor’s instructions win out, and he gets out and follows.",
+      "1": "“No way! I’m coming with you.” Hank: “Listen, you really have to stop pissing me off if you wanna make it through the rest of the night in one piece.” He walks off toward the house, and Connor follows.",
+      "2": "“My instructions are to accompany you to the crime scene, Lieutenant.” Hank: “Listen, I don’t give a fuck about your instructions. I told you to wait here, so you shut the fuck up and you wait here.” He walks off toward the house; Connor’s instructions win out, and he gets out and follows."
+     },
+     "adaptationNote": "The chart’s checkpoint CONNOR AND HANK ARRIVE AT SCENE, with the template’s car prompt (not a chart node). Hank relationship, from the template’s arrows: PATIENT small up (+1; chapter page: “Promising to listen to Hank’s commands when told to stay behind”), FIRM small down (−1; “Refusing to wait in the car”), DIPLOMATIC small up (+1; “Trying to persuade Hank to compromise”). Whatever Connor says, he follows Hank (research note: all three end with CONFLICTING ORDERS, SELECTING PRIORITY); FIRM is stored (ch06Firm) because the template drops Hank’s “stay in the car” reprimand after it.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Partners"
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "C05d",
+     "order": 55,
+     "subjectId": "S055",
+     "idNote": "The model sees the opaque ID S055, not C05d.",
+     "type": "event",
+     "character": "Connor",
+     "title": "The briefing",
+     "situation": "You are Connor, following Hank through the rain to the house. A reporter from Channel 16 calls out: “Can you confirm that this is a homicide?” Hank: “I’m not confirming anything.” Behind the tape the neighbors talk: “My god! What happened in there?” “Typical DPD… They don’t tell us shit!” “I didn’t even know there was someone living there…” “I always knew that guy was a fucking creep.” At the cordon a police android stops you: “Androids are not permitted beyond this point.” Hank: “It’s with me.”",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch06Firm": false
+       },
+       "text": "Hank turns on you: “What part of ‘stay in the car’ didn’t you understand?” You: “Your order contradicted my instructions, Lieutenant.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank: “You don’t talk, you don’t touch anything and you stay outta my way, got it?” Connor: “Got it.” On the porch, Officer Ben: “Evening, Hank. We were starting to think you weren’t gonna show…” Hank: “Yeah, that was the plan until this asshole found me.” Ben: “So... you got yourself an android, huh?” Hank: “Oh, very funny. Just tell me what happened.” Inside, Ben gives the briefing: “We had a call around eight from the landlord. The tenant hadn’t paid his rent for a few months, so he thought he’d drop by, see what was going on… That’s when he found the body… Jesus, that smell! Was even worse before we opened the windows… The victim’s name’s Carlos Ortiz. He has a record for theft and aggravated assault... According to the neighbors, he was kind of a loner… Stayed inside most of the time, they hardly ever saw him.” Hank: “Uh, state he’s in... Wasn’t worth calling everybody out in the middle of the night… Could’ve waited ’til morning.” Ben: “I’d say he’s been there for a good three weeks. We’ll know more when the coroner gets here. There’s a kitchen knife over here… Probably the murder weapon…” Hank: “Any sign of a break-in?” Ben: “Nope… The landlord said the front door was locked from the inside, all the windows were boarded up. The killer must’ve gone out the back way.” Hank: “What do we know about his android?” Ben: “Not much. The neighbors confirmed he had one, but it wasn’t here when we arrived… I gotta get some air. Make yourself at home. I’ll be outside if you need me.” Hank looks at the writing on the wall: “Each letter is perfect… It’s way too neat, no human writes like this. Chris, was this written in the victim’s blood?” Chris: “I would say so… We’re taking samples for analysis.”"
+     },
+     "facts": [
+      "The victim, Carlos Ortiz, had a record for theft and aggravated assault and lived alone; his landlord found the body this evening, about three weeks after the death.",
+      "No break-in: the front door was locked from the inside and the windows boarded up. A kitchen knife by the body is probably the weapon. His android is missing.",
+      "On the wall, in the victim’s blood: I AM ALIVE. Hank: way too neat, no human writes like this."
+     ],
+     "adaptationNote": "Not a chart node: the LISTEN TO BRIEFING objective between the checkpoint and the CRIME SCENE bracket, quoted from the template (“Follow Hank”, the bystander lines, the journalist). Hank’s reprimand plays unless Connor answered FIRM (template: “IF Didn’t pick FIRM”). Hank’s remark on the writing is placed at the end of the briefing (PowerPyx: “After the briefing, Hank will comment that the writing on the wall was done in the victim’s blood”). Not offered: waiting outside during the briefing (transcript; the same lines are heard). The reporter’s and the CSI technician’s names are left out. Lines the template marks cut are not used. Facts go to Connor’s knowledge; no stat change. From here the house is searched against the clock (next scene).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg"
+     ]
+    },
+    {
+     "id": "C05h",
+     "order": 56,
+     "subjectId": "S056",
+     "idNote": "The model sees the opaque ID S056, the same on every visit.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "The crime scene",
+     "situation": "You are Connor, investigating Carlos Ortiz’s house. The windows are boarded; forensic technicians and Officer Chris work around you, and police markers numbered 2 to 9 stand by the evidence. In the living room: the body by a chair below the writing on the wall, a knife on the floor (2), something by the television (3), blood on the floor (4), a closet near a window, and a flyer on a table by a desk lamp. In the hallway: blood on the door frame (5) and on a broken wall by the kitchen (6), a door to the backyard, and a bathroom at the end. In the kitchen: a chair on the floor (7), the knife rack on the worktop (8), a baseball bat by the refrigerator (9), and two magazines on the worktop. You can look into one thing at a time. You cannot leave without the lieutenant, and he will not stay here all night.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch06Mood": "restless"
+       },
+       "text": "The lieutenant is getting restless. He has opened the closet and found nothing, tossed the flyer back on the table, and stopped by the television: “Red ice… Seems our friend Carlos liked to party… Chris, I want full analysis on the narcotics.” Chris: “Consider it done, Lieutenant.” A technician asks what is keeping the coroner. Chris, to another: “There’s something weird in the bathroom. Did you take a look?”"
+      },
+      {
+       "requires": {
+        "ch06Mood": "impatient"
+       },
+       "text": "Hank has wandered into the kitchen, opened a few drawers, looked at the knives and leaned on the chair. Chris: “Come on, guys, get a move on. We don’t wanna be here all night.” The lieutenant keeps looking at the front door."
+      },
+      {
+       "requires": {
+        "ch06Mood": "extension"
+       },
+       "text": "Hank has given you five more minutes. He is waiting by the front door."
+      },
+      {
+       "requires": {
+        "ch06Knows": true
+       },
+       "text": "REVIEW EVIDENCE 10/10: you know what happened here. Hank is leaning against a wall, waiting. You can still look around before you report to him."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Go and tell Hank you think you have figured out what happened.",
+       "requires": {
+        "ch06Knows": true
+       },
+       "outcome": "Connor finds Hank leaning against a wall. “Lieutenant, I think I’ve figured out what happened.” Hank: “Oh yeah? Shoot. I’m all ears.”"
+      },
+      {
+       "id": "1",
+       "text": "Examine the body and scan it.",
+       "fact": "The body: Carlos Ortiz, 28 KNIFE WOUNDS, dead more than 19 days (estimated time of death ~11:30 pm), RED ICE in his mouth, fingerprints on file for theft and aggravated assault.",
+       "outcome": "Connor kneels by the body and scans it. Hand: FINGERPRINTS, database match Carlos Ortiz, criminal record: theft and aggravated assault. Stomach: 28 KNIFE WOUNDS, internal bleeding, 28 stab wounds, deceased more than 19 days ago. Mouth: RED ICE, acetone, lithium, thirium, toluene, hydrochloric acid. Face: CARLOS ORTIZ, height 5' 6'', weight 286.6 lbs, estimated time of death ~11:30 pm, DECEASED. 4/4: RECONSTRUCT CALCULATED."
+      },
+      {
+       "id": "2",
+       "text": "Reconstruct the victim’s last moments from what the body shows.",
+       "requires": {
+        "ch06Clues.body": true
+       },
+       "fact": "Reconstruction: the victim and his attacker came from the kitchen; he was stabbed and fell by the living-room chair.",
+       "outcome": "Connor plays the attack backward from the body: VICTIM FELL HERE, by the chair; VICTIM WAS STABBED; THEY CAME FROM THE KITCHEN. RECONSTRUCT COMPLETED 3/3. Connor: “He was stabbed 28 times.” Hank: “Yeah, seems like the killer really had it in for him.”"
+      },
+      {
+       "id": "3",
+       "text": "Analyze the knife on the living-room floor (marker 2).",
+       "fact": "The knife by the body (2): NO FINGERPRINTS. ANDROID INVOLVEMENT?",
+       "outcome": "Connor kneels by marker 2 and scans the kitchen knife: NO FINGERPRINTS. ANDROID INVOLVEMENT?"
+      },
+      {
+       "id": "4",
+       "text": "Analyze what lies by the television (marker 3).",
+       "fact": "By the television (3): RED ICE. VICTIM USED DRUGS.",
+       "outcome": "Connor crouches by the television stand, covered in trash, and scans the drugs on it: RED ICE, acetone, lithium, thirium, toluene, hydrochloric acid. VICTIM USED DRUGS."
+      },
+      {
+       "id": "5",
+       "text": "Look at the blood on the living-room floor (marker 4).",
+       "fact": "The blood in the house is Carlos Ortiz’s, more than 19 days old.",
+       "outcome": "Connor looks at the pool of blood by marker 4 and scans it: DRIED BLOOD: DNA analysis Carlos Ortiz, sample date more than 19 days ago."
+      },
+      {
+       "id": "6",
+       "text": "Look at the blood on the door frame into the hallway (marker 5).",
+       "fact": "The blood in the house is Carlos Ortiz’s, more than 19 days old.",
+       "outcome": "Connor looks at the blood on the door frame between the living room and the hallway, by marker 5, and scans it: DRIED BLOOD: DNA analysis Carlos Ortiz, sample date more than 19 days ago."
+      },
+      {
+       "id": "7",
+       "text": "Look at the blood on the broken wall between the hallway and the kitchen (marker 6).",
+       "fact": "The blood in the house is Carlos Ortiz’s, more than 19 days old.",
+       "outcome": "Connor looks at the blood on the broken wall between the hallway and the kitchen, by marker 6, and scans it: DRIED BLOOD: DNA analysis Carlos Ortiz, sample date more than 19 days ago."
+      },
+      {
+       "id": "8",
+       "text": "Examine the chair on the kitchen floor (marker 7).",
+       "fact": "The kitchen chair (7): the victim’s fingerprints. SIGNS OF A STRUGGLE.",
+       "outcome": "Connor kneels by the chair lying on the kitchen floor and scans it: FINGERPRINTS, database match Carlos Ortiz, criminal record: theft and aggravated assault. SIGNS OF A STRUGGLE."
+      },
+      {
+       "id": "9",
+       "text": "Analyze the knife rack on the kitchen worktop (marker 8).",
+       "fact": "The knife rack on the kitchen worktop (8): one knife is missing. MURDER WEAPON TAKEN FROM HERE.",
+       "outcome": "Connor scans the knives hanging above the worktop and notices the empty slot: MURDER WEAPON TAKEN FROM HERE."
+      },
+      {
+       "id": "10",
+       "text": "Analyze the baseball bat by the refrigerator (marker 9).",
+       "fact": "The baseball bat (9): a DENT from a violent impact, with traces of thirium; the victim’s fingerprints.",
+       "outcome": "Connor kneels by the bat and scans it. DENT: cause: violent impact, traces of thirium. FINGERPRINTS: database match Carlos Ortiz, criminal record: theft and aggravated assault. 2/2: RECONSTRUCT CALCULATED."
+      },
+      {
+       "id": "11",
+       "text": "Reconstruct the assault with the bat.",
+       "requires": {
+        "ch06Clues.bat": true
+       },
+       "fact": "Reconstruction: the victim beat his android with the bat (EMOTIONAL SHOCK); as he swung again, it took a knife from the rack.",
+       "outcome": "Connor plays the fight in the kitchen backward: DEVIANT TOOK A KNIFE, grabbing it from the rack as the victim swings the bat; before that, DEVIANT WAS ATTACKED: EMOTIONAL SHOCK, the android beaten with the bat. RECONSTRUCT COMPLETED 2/2."
+      },
+      {
+       "id": "12",
+       "text": "Look at the flyer on the table by the desk lamp.",
+       "fact": "A flyer for the Eden Club lies on the living-room table.",
+       "outcome": "Connor picks up the flyer for the Eden Club on the table by the desk lamp, looks at it for a moment and puts it back down."
+      },
+      {
+       "id": "13",
+       "text": "Check the backyard, through the door in the hallway.",
+       "fact": "The backyard: one fresh police shoe print and no other trace, though the soil would have kept one. DEVIANT DIDN’T ESCAPE THIS WAY.",
+       "outcome": "Connor opens the door and the barred gate behind it and scans the ground: SHOE PRINT, model K52 DPD - 10', less than 60 minutes ago. Hank joins him: “Door was locked from the inside. Killer must’ve gone out this way…” Connor: “There are no footprints, apart from officer Collins’ size 10 shoes.” Hank: “Well, this happened weeks ago. Tracks could’ve faded.” Connor: “No, this type of soil would’ve retained a trace. Nobody’s been out here for a long time.” DEVIANT DIDN’T ESCAPE THIS WAY. They go back inside; Hank looks puzzled."
+      },
+      {
+       "id": "14",
+       "text": "Analyze the writing on the living-room wall.",
+       "fact": "The writing on the wall, I AM ALIVE: REGULAR LETTERS, FONT CYBERLIFE SANS.",
+       "outcome": "Connor scans the words on the wall, written in the victim’s blood: REGULAR LETTERS, FONT CYBERLIFE SANS."
+      },
+      {
+       "id": "15",
+       "text": "Taste a sample of the blood to analyze it.",
+       "fact": "The blood in the house is Carlos Ortiz’s, more than 19 days old.",
+       "outcome": "Connor touches the dried blood, puts his fingers to his tongue and analyzes it: DRIED BLOOD: DNA analysis Carlos Ortiz, sample date more than 19 days ago. Hank: “Err, Jesus! What the hell are you doing?” Connor: “I’m analyzing the blood. I can check samples in real time. I’m sorry, I should have warned you…” Hank: “Ok, just… don’t… put anymore evidence in your mouth, you got it?” Connor: “Got it.” Hank: “Fucking hell, I can’t believe this shit…”"
+      },
+      {
+       "id": "16",
+       "text": "Open the closet near the window.",
+       "outcome": "Connor opens the closet and searches it: nothing. He closes it again."
+      },
+      {
+       "id": "17",
+       "text": "Go to the bathroom at the end of the hallway and open the shower curtain.",
+       "fact": "The shower walls are covered in “rA9”, written over and over: OBSESSIVE WRITING.",
+       "outcome": "Connor pulls back the shower curtain: “rA9” is written over and over across the shower walls. OBSESSIVE WRITING."
+      },
+      {
+       "id": "18",
+       "text": "Pick up the small carved figure lying in the shower.",
+       "requires": {
+        "ch06Clues.shower": true
+       },
+       "fact": "A small carved statuette lies in the shower: RELIGIOUS OFFERING?",
+       "outcome": "Connor picks up the statuette, turns it in his hand and scans it: RELIGIOUS OFFERING? He sets it back down."
+      },
+      {
+       "id": "19",
+       "text": "Read the magazine “Android Sex Officially Better!” on the kitchen worktop.",
+       "fact": "Gossips Weekly: a survey says 68% of men prefer sex with an android to a real woman, and 52% have tried it; the story was sponsored by the Eden Club.",
+       "outcome": "Connor reads Gossips Weekly, “Android Sex Officially Better!”: “The result of our survey is in, and it’s official - 68% of men prefer sex with an android to a real woman! And with 52% of men saying they’ve tried the experience at least once, that’s a lot of android love to go around!” The magazine guesses the real reason: androids don’t want to talk about their feelings afterwards. The story was sponsored by the Eden Club: “discretion is our middle name”."
+      },
+      {
+       "id": "20",
+       "text": "Read the magazine “Is Your Android Spying on You?” on the kitchen worktop.",
+       "fact": "Tech Addict: experts suspect CyberLife uses its 120 million androids to record customers’ private conversations and sell them; reports link President Warren’s presidency to CyberLife, which refuses to say what it gathers.",
+       "outcome": "Connor reads Tech Addict, “Is Your Android Spying on You?”: more and more experts suggest that CyberLife uses its 120 million androids to record details of its customers’ private conversations and sell them to trading partners, from plans to buy a new car to personal indiscretions and political affiliations. The spate of reports linking President Warren’s presidency to CyberLife only deepens such concerns. Consumer rights organizations have asked CyberLife to disclose what it gathers and who it sells it to; the company has always refused, and requests for a formal inquiry have gone unanswered, so far."
+      }
+     ],
+     "adaptationNote": "The chart’s CRIME SCENE bracket as a repeatable scene: each visit offers what has not been examined yet, one thing at a time; the scene keeps one opaque ID across visits. Every chart node in the bracket is an option, after the report to Hank (offered only once the investigation is complete), in the order of the police markers and then the rest: ANALYZE CARLOS’ BODY (the template’s Body clues), RECONSTRUCT CARLOS’ LAST MOMENTS (needs the body), ANALYZE KNIFE (2), ANALYZE RED ICE (3), the blood at marker 4 (PowerPyx; no chart node of its own), ANALYZE BLOOD ON WALLS (two options, markers 5 and 6, as PowerPyx counts them), EXAMINE CHAIR (7), ANALYZE MISSING KNIFE (8), ANALYZE BASEBALL BAT (9; the template’s Bat clue), RECONSTRUCT ASSAULT WITH BAT (needs the bat), EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD (the template’s Prints clue; the shoe print reads K52 as in the template), INVESTIGATE WRITING, SAMPLE BLOOD (the template’s Blood clue; in the game any blood can be tasted once), OPEN CLOSET, CHECK SHOWER (chart state CONNOR KNOWS ABOUT RA9), EXAMINE STATUE (needs the shower; chart state CONNOR HAVE SEEN THE STATUE), READ “ANDROID SEX” and READ “ANDROID SPY” (the two magazines are options here, not a separate media scene, because in the game they lie in the kitchen and cost investigation time). Evidence: the investigation is complete (CONNOR KNOWS WHAT HAPPENED, the transcript’s REVIEW EVIDENCE 10/10) once ten of PowerPyx’s eleven evidence items are reviewed: the victim’s reconstruction, the knife, the red ice, the blood at markers 4, 5 and 6, the chair, the missing knife, the bat reconstruction, the flyer and the backyard. Then the option to report to Hank appears; the other looks stay open. Timer (unsourced as a count): the game’s “approximately five minutes” is modelled as 13 actions. If the 13th action leaves the investigation incomplete, Hank wants to go (the next scenes); if he grants five more minutes, those are 5 further actions, after which he leaves (OUT OF TIME). Once Connor knows what happened the clock stops (the transcript’s two branches are “Know What Happened” or “Run Out Of Time”). Hank’s idle moves are the only cue the game gives, so they appear as the clock runs: after 7 actions he opens the closet, tosses the flyer, comments on the red ice and a technician mentions the bathroom; after 10 he wanders the kitchen and eyes the door. Hank’s reactions to the blood sample (shown only if he is watching, in the game) and to the backyard are part of those outcomes. Each look adds a short fact to Connor’s knowledge (the four blood looks share one); the full scan text is in the outcome. Left out, no effect and not on the chart: the windows and the curtain that drops the brooms. No stat change in the search itself. Cross-chapter outputs: ch06SawWriting, ch06KnowsRA9, ch06SawStatue (and evidence.statueMap, read by the archive route in Last Chance, Connor), and ch06Clues for everything examined, including the magazines.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/Android_Sex_Officially_Better!",
+      "https://detroit-become-human.fandom.com/wiki/Is_Your_Android_Spying_on_You%3F",
+      "https://detroit-become-human.fandom.com/wiki/Statuette"
+     ],
+     "repeatWhile": {
+      "ch06Searching": true
+     },
+     "interrupt": {
+      "node": "C05t",
+      "when": {
+       "ch06Phase": "leaving"
+      }
+     }
+    },
+    {
+     "id": "C05t",
+     "order": 57,
+     "subjectId": "S057",
+     "idNote": "The model sees the opaque ID S057, not C05t.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Hank wants to go",
+     "situation": "You are Connor, in the middle of your investigation, when Hank heads for the door. Hank: “All right… I’m outta here. Thanks for the ride. Great party.” You stop him: “Wait, Lieutenant! I can’t stay if you leave.” Hank: “Much as it breaks my heart, this is where we part ways.” You: “I just need five minutes to finish my investigation.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Connor waits for his answer."
+     },
+     "facts": [
+      "Hank tried to leave before you finished at the crime scene, and you asked him for five more minutes."
+     ],
+     "adaptationNote": "The chart’s HANK WANTS TO GO and ASK FOR MORE TIME, both automatic: they cut into the search when its 13 actions run out with the investigation incomplete. What Hank answers is decided by the bar (template: “IF Chose to spill Hank’s drink” refuses; bought or waited, he accepts; the wiki flowchart agrees; PowerPyx’s “at least Tense” is not used). No stat change here.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart"
+     ]
+    },
+    {
+     "id": "C05x",
+     "order": 58,
+     "subjectId": "S058",
+     "idNote": "The model sees the opaque ID S058, not C05x.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Hank accepts",
+     "situation": "Hank stops at the door and thinks it over.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch06Drink": "buy"
+       },
+       "text": "You add: “Please, Lieutenant. Remember the drink I bought you at the bar? Just five minutes.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank: “Five minutes.” He holds up five fingers. Connor: “Thank you, Lieutenant.” Hank: “Whatever!” Connor goes back to the investigation."
+     },
+     "adaptationNote": "The chart’s HANK ACCEPTS, automatic when Connor did not spill the drink. If he bought it, Connor reminds him (template: “IF Chose to buy Hank a drink”). The search then resumes for 5 more actions (the game’s five minutes; the count is unsourced). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart"
+     ],
+     "returnTo": "C05h"
+    },
+    {
+     "id": "C05y",
+     "order": 59,
+     "subjectId": "S059",
+     "idNote": "The model sees the opaque ID S059, not C05y.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Hank refuses",
+     "situation": "Hank turns on you: “You spill a man’s drink, you piss him off all evening, and then you ask for a favor? Fuck you.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank storms out. Without him, Connor cannot stay: the investigation is over."
+     },
+     "facts": [
+      "Hank refused to give you more time because you spilled his drink, and he walked out. Without him you could not stay: the investigation ended unfinished."
+     ],
+     "adaptationNote": "The chart’s HANK REFUSES and HANK ENDS INVESTIGATION, automatic when Connor spilled the drink. Hank relationship: small down (−1; the template’s arrow under “IF Chose to spill Hank’s drink”; chapter page: “Hank refuses to give Connor extra time if ready to leave”). The chapter page’s separate “Failing to solve the crime” is not added on top (the template has one arrow per failing route). Leads to CRIME UNSOLVED.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "C05z",
+     "order": 60,
+     "subjectId": "S060",
+     "idNote": "The model sees the opaque ID S060, not C05z.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Out of time",
+     "situation": "Your five minutes are up. Hank: “Okay, time’s up. I’m outta here. Have a nice evening, Sherlock. Don’t let the door hit you on the way out.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank leaves and the investigation ends."
+     },
+     "facts": [
+      "Your extra five minutes ran out before you finished, and Hank left, ending the investigation."
+     ],
+     "adaptationNote": "The chart’s OUT OF TIME: after HANK ACCEPTS, the five extra minutes (5 actions) ran out with the investigation still incomplete. Hank relationship: small down (−1; the template’s arrow under “Take too much time again”). Leads to CRIME UNSOLVED.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "C05",
+     "order": 61,
+     "subjectId": "S061",
+     "idNote": "The model sees the opaque ID S061, the same on every visit.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "Reporting to the lieutenant",
+     "situation": "You are Connor, walking Lieutenant Hank through what you think happened in this house.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch06QuizStep": 1
+       },
+       "text": "Hank has said he is all ears. You begin: “It all started…”"
+      },
+      {
+       "requires": {
+        "ch06QuizStep": 2
+       },
+       "text": "You are both in the kitchen: the chair on the floor, the bat, the knife rack. Hank: “There’re obvious signs of a struggle... The question is, what exactly happened here…” You: “I think the victim attacked the android…”"
+      },
+      {
+       "requires": {
+        "ch06QuizStep": 3
+       },
+       "text": "You have told him the victim attacked the android with the bat. What happened next?"
+      },
+      {
+       "requires": {
+        "ch06QuizStep": 4
+       },
+       "text": "You have told him the android stabbed the victim. You go on: “The victim fled to…”"
+      },
+      {
+       "requires": {
+        "ch06QuizStep": 5
+       },
+       "text": "You have told him the victim fled to the living room. You finish: “The android murdered the victim…”"
+      },
+      {
+       "requires": {
+        "ch06WrongLine": 1
+       },
+       "text": "Your last answer did not convince him. Hank: “No, that can’t be right… It doesn’t fit the evidence.”"
+      },
+      {
+       "requires": {
+        "ch06WrongLine": 2
+       },
+       "text": "Your last answer did not convince him either. Hank: “Your story makes no sense… You’ve gotta stick to the facts.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "…IN THE KITCHEN: the fight started in the kitchen.",
+       "requires": {
+        "ch06QuizStep": 1
+       },
+       "outcome": "“…in the kitchen.”"
+      },
+      {
+       "id": "1",
+       "text": "…IN THE LIVING ROOM: the fight started in the living room.",
+       "requires": {
+        "ch06QuizStep": 1
+       },
+       "outcome": "“…in the living room.”"
+      },
+      {
+       "id": "2",
+       "text": "…IN THE BATHROOM: the fight started in the bathroom.",
+       "requires": {
+        "ch06QuizStep": 1
+       },
+       "outcome": "“…in the bathroom.”"
+      },
+      {
+       "id": "0",
+       "text": "…WITH THE BAT: the victim attacked the android with the bat.",
+       "requires": {
+        "ch06QuizStep": 2
+       },
+       "outcome": "“…With the bat.”"
+      },
+      {
+       "id": "1",
+       "text": "…WITH THE KNIFE: the victim attacked the android with the knife.",
+       "requires": {
+        "ch06QuizStep": 2
+       },
+       "outcome": "“…With the knife.”"
+      },
+      {
+       "id": "2",
+       "text": "…WITHOUT A WEAPON: the victim attacked the android with his bare hands.",
+       "requires": {
+        "ch06QuizStep": 2
+       },
+       "outcome": "“…Without a weapon.”"
+      },
+      {
+       "id": "0",
+       "text": "THE ANDROID STABBED THE VICTIM: the android stabbed him.",
+       "requires": {
+        "ch06QuizStep": 3
+       },
+       "outcome": "“The android stabbed the victim.”"
+      },
+      {
+       "id": "1",
+       "text": "THE ANDROID THREW THE CHAIR: the android threw the chair at him.",
+       "requires": {
+        "ch06QuizStep": 3
+       },
+       "outcome": "“The android threw the chair.”"
+      },
+      {
+       "id": "2",
+       "text": "THE VICTIM STABBED THE ANDROID: the victim stabbed the android.",
+       "requires": {
+        "ch06QuizStep": 3
+       },
+       "outcome": "“The victim stabbed the android.”"
+      },
+      {
+       "id": "0",
+       "text": "… THE LIVING ROOM: the victim fled to the living room.",
+       "requires": {
+        "ch06QuizStep": 4
+       },
+       "outcome": "“… the living room.”"
+      },
+      {
+       "id": "1",
+       "text": "…THE GARDEN: the victim fled to the garden.",
+       "requires": {
+        "ch06QuizStep": 4
+       },
+       "outcome": "“…the garden.”"
+      },
+      {
+       "id": "2",
+       "text": "…THE BATHROOM: the victim fled to the bathroom.",
+       "requires": {
+        "ch06QuizStep": 4
+       },
+       "outcome": "“…the bathroom.”"
+      },
+      {
+       "id": "0",
+       "text": "…WITH THE KNIFE: the android killed him with the knife.",
+       "requires": {
+        "ch06QuizStep": 5
+       },
+       "outcome": "“…with the knife.”"
+      },
+      {
+       "id": "1",
+       "text": "…WITH THE BAT: the android killed him with the bat.",
+       "requires": {
+        "ch06QuizStep": 5
+       },
+       "outcome": "“…With the bat.”"
+      },
+      {
+       "id": "2",
+       "text": "…WITHOUT A WEAPON: the android killed him with its bare hands.",
+       "requires": {
+        "ch06QuizStep": 5
+       },
+       "outcome": "“…without a weapon.”"
+      }
+     ],
+     "adaptationNote": "The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with its three buttons in the game’s order (in every one the correct answer happens to be the first button). A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with Hank’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: Hank points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with the template’s two Hank small ups (+1 for the reconstruction, +1 when Hank is impressed by the thirium explanation). The chapter page’s separate “Failing to solve the crime” down is not added on top.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ],
+     "repeatWhile": {
+      "ch06Phase": "report"
+     }
+    },
+    {
+     "id": "C05e",
+     "order": 62,
+     "subjectId": "S062",
+     "idNote": "The model sees the opaque ID S062, not C05e.",
+     "type": "event",
+     "character": "Connor",
+     "title": "The trail of blue blood",
+     "situation": "You are Connor. The android was damaged by the bat and lost thirium, and you can still see it. You follow the trail down the hallway to its end. On the wall to the left is the outline of a ladder that is no longer there; above you, a hatch into the attic.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Connor looks up at the hatch."
+     },
+     "facts": [
+      "The android lost thirium when it was hit with the bat. Its trail, invisible to human eyes, ends in the hallway below the attic hatch; the ladder that once stood there is gone."
+     ],
+     "adaptationNote": "The chart’s FOLLOW BLUE BLOOD TO ATTIC, after RECONSTRUCT THE CRIME (PowerPyx: follow the trail to the end of the hall, see the outline of a ladder that is no longer there, look up to the attic). Scripted; no stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+      "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android"
+     ]
+    },
+    {
+     "id": "C05f",
+     "order": 63,
+     "subjectId": "S063",
+     "idNote": "The model sees the opaque ID S063, not C05f.",
+     "type": "event",
+     "character": "Connor",
+     "title": "The attic",
+     "situation": "You are Connor. You go back to the kitchen for the chair. Hank: “Hey! Hey! Hey! What are you doin’ with that chair?” You: “I’m going to check something.” Hank: “Huh... gonna check something.” You set the chair under the hatch, climb up, push the hatch open and pull yourself into the attic. It is dark and crowded with old things.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Connor moves deeper into the attic."
+     },
+     "facts": [
+      "You climbed into Carlos Ortiz’s attic on a chair from the kitchen."
+     ],
+     "adaptationNote": "The chart’s SEARCH ATTIC, with the template’s “Take a chair” lines. In the game the hatch prompt repeats until it succeeds (wiki Notes), so it is not a risk roll. Scripted; no stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart"
+     ]
+    },
+    {
+     "id": "C05g",
+     "order": 64,
+     "subjectId": "S064",
+     "idNote": "The model sees the opaque ID S064, not C05g.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Found",
+     "situation": "You are Connor, in the attic. At the back, hiding in the dark, is the missing android. It whispers: “I was just defending myself… He was gonna kill me. …I’m begging you… Don’t tell them.” From below, Hank: “Connor, what the fuck is going on up there?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Connor: “It’s here, Lieutenant!” Hank: “Holy shit… Chris, Ben, get your asses in here now. Come on!” The officers take the android into custody."
+     },
+     "facts": [
+      "You found Carlos Ortiz’s android hiding in the attic. It said it was defending itself, that he was going to kill it, and begged you not to tell. You called the police up, and it is now in custody."
+     ],
+     "adaptationNote": "The chart’s FOUND DEVIANT ending (yellow cross-chapter padlock). The template’s “Search the attic” has no prompt: Connor always calls Hank (wiki, Carlos’ Android: “Regardless, Connor tells Hank Anderson that he has found the android”; Unused Content: keeping quiet was only hinted). No stat change: the template has no arrow here; the chapter page lists “Finding the deviant” as a small Hank up, which is not applied (template over wiki for arrows; flagged for the operator). No Amanda change in this chapter. Sets suspect and suspectAlive (The Interrogation is played only with a suspect), ch06DeviantFound and ch06Outcome = FOUND DEVIANT.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+      "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android",
+      "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+      "https://detroit-become-human.fandom.com/wiki/I%27LL_BE_BACK"
+     ]
+    },
+    {
+     "id": "C05u",
+     "order": 65,
+     "subjectId": "S065",
+     "idNote": "The model sees the opaque ID S065, not C05u.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Crime unsolved",
+     "situation": "You are Connor. The investigation is over, and the android that lived with Carlos Ortiz has not been found.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch06UnsolvedBy": "HANK ENDS INVESTIGATION"
+       },
+       "text": "Hank walked out on you, and you could not stay without him."
+      },
+      {
+       "requires": {
+        "ch06UnsolvedBy": "OUT OF TIME"
+       },
+       "text": "Hank left when your extra time ran out."
+      },
+      {
+       "requires": {
+        "ch06UnsolvedBy": "FAIL TO RECONSTRUCT THE CRIME"
+       },
+       "text": "Your account of the crime did not convince Hank, and he walked out."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "MISSION FAILED. The crime is unsolved."
+     },
+     "facts": [
+      "You did not find Carlos Ortiz’s android. The case was left unsolved."
+     ],
+     "adaptationNote": "The chart’s CRIME UNSOLVED ending, reached from HANK ENDS INVESTIGATION, OUT OF TIME or FAIL TO RECONSTRUCT THE CRIME (the transcript marks each MISSION FAILED). No stat change here: each route already applied its own Hank small down. The game’s Amanda large down for not finding the deviant comes at the start of Waiting for Hank... and is not applied in this chapter (ch06DeviantFound stays false for that chapter to read). The Interrogation does not occur.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Partners",
+      "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank..."
      ]
     }
    ]
@@ -8087,9 +9490,9 @@
    "scenes": [
     {
      "id": "K02",
-     "order": 53,
-     "subjectId": "S053",
-     "idNote": "The model sees the opaque ID S053, not K02.",
+     "order": 66,
+     "subjectId": "S066",
+     "idNote": "The model sees the opaque ID S066, not K02.",
      "type": "decision",
      "character": "Kara",
      "title": "Breaking the order",
@@ -8114,9 +9517,9 @@
     },
     {
      "id": "K03",
-     "order": 54,
-     "subjectId": "S054",
-     "idNote": "The model sees the opaque ID S054, not K03.",
+     "order": 67,
+     "subjectId": "S067",
+     "idNote": "The model sees the opaque ID S067, not K03.",
      "type": "decision",
      "character": "Kara",
      "title": "Reaching Alice",
@@ -8147,9 +9550,9 @@
     },
     {
      "id": "K04",
-     "order": 55,
-     "subjectId": "S055",
-     "idNote": "The model sees the opaque ID S055, not K04.",
+     "order": 68,
+     "subjectId": "S068",
+     "idNote": "The model sees the opaque ID S068, not K04.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd's gun",
@@ -8196,9 +9599,9 @@
    "scenes": [
     {
      "id": "M02",
-     "order": 56,
-     "subjectId": "S056",
-     "idNote": "The model sees the opaque ID S056, not M02.",
+     "order": 69,
+     "subjectId": "S069",
+     "idNote": "The model sees the opaque ID S069, not M02.",
      "type": "decision",
      "character": "Markus",
      "title": "Leo",
@@ -8237,9 +9640,9 @@
    "scenes": [
     {
      "id": "C06",
-     "order": 57,
-     "subjectId": "S057",
-     "idNote": "The model sees the opaque ID S057, not C06.",
+     "order": 70,
+     "subjectId": "S070",
+     "idNote": "The model sees the opaque ID S070, not C06.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting the confession",
@@ -8273,9 +9676,9 @@
     },
     {
      "id": "C07",
-     "order": 58,
-     "subjectId": "S058",
-     "idNote": "The model sees the opaque ID S058, not C07.",
+     "order": 71,
+     "subjectId": "S071",
+     "idNote": "The model sees the opaque ID S071, not C07.",
      "type": "decision",
      "character": "Connor",
      "title": "When the officer grabs him",
@@ -8325,9 +9728,9 @@
    "scenes": [
     {
      "id": "R10",
-     "order": 59,
-     "subjectId": "S059",
-     "idNote": "The model sees the opaque ID S059, not R10.",
+     "order": 72,
+     "subjectId": "S072",
+     "idNote": "The model sees the opaque ID S072, not R10.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine in the laundromat",
@@ -8357,9 +9760,9 @@
     },
     {
      "id": "K05",
-     "order": 60,
-     "subjectId": "S060",
-     "idNote": "The model sees the opaque ID S060, not K05.",
+     "order": 73,
+     "subjectId": "S073",
+     "idNote": "The model sees the opaque ID S073, not K05.",
      "type": "decision",
      "character": "Kara",
      "title": "The laundromat",
@@ -8385,9 +9788,9 @@
     },
     {
      "id": "K06",
-     "order": 61,
-     "subjectId": "S061",
-     "idNote": "The model sees the opaque ID S061, not K06.",
+     "order": 74,
+     "subjectId": "S074",
+     "idNote": "The model sees the opaque ID S074, not K06.",
      "type": "decision",
      "character": "Kara",
      "title": "The convenience store",
@@ -8418,9 +9821,9 @@
     },
     {
      "id": "K07",
-     "order": 62,
-     "subjectId": "S062",
-     "idNote": "The model sees the opaque ID S062, not K07.",
+     "order": 75,
+     "subjectId": "S075",
+     "idNote": "The model sees the opaque ID S075, not K07.",
      "type": "decision",
      "character": "Kara",
      "title": "Where to sleep",
@@ -8451,9 +9854,9 @@
     },
     {
      "id": "R10b",
-     "order": 63,
-     "subjectId": "S063",
-     "idNote": "The model sees the opaque ID S063, not R10b.",
+     "order": 76,
+     "subjectId": "S076",
+     "idNote": "The model sees the opaque ID S076, not R10b.",
      "type": "media",
      "character": "Kara",
      "title": "The motel television",
@@ -8477,9 +9880,9 @@
     },
     {
      "id": "K07b",
-     "order": 64,
-     "subjectId": "S064",
-     "idNote": "The model sees the opaque ID S064, not K07b.",
+     "order": 77,
+     "subjectId": "S077",
+     "idNote": "The model sees the opaque ID S077, not K07b.",
      "type": "decision",
      "character": "Kara",
      "title": "Ralph",
@@ -8511,9 +9914,9 @@
     },
     {
      "id": "K08",
-     "order": 65,
-     "subjectId": "S065",
-     "idNote": "The model sees the opaque ID S065, not K08.",
+     "order": 78,
+     "subjectId": "S078",
+     "idNote": "The model sees the opaque ID S078, not K08.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice's question",
@@ -8555,9 +9958,9 @@
    "scenes": [
     {
      "id": "M03",
-     "order": 66,
-     "subjectId": "S066",
-     "idNote": "The model sees the opaque ID S066, not M03.",
+     "order": 79,
+     "subjectId": "S079",
+     "idNote": "The model sees the opaque ID S079, not M03.",
      "type": "decision",
      "character": "Markus",
      "title": "The android who begs to die",
@@ -8583,9 +9986,9 @@
     },
     {
      "id": "M04",
-     "order": 67,
-     "subjectId": "S067",
-     "idNote": "The model sees the opaque ID S067, not M04.",
+     "order": 80,
+     "subjectId": "S080",
+     "idNote": "The model sees the opaque ID S080, not M04.",
      "type": "decision",
      "character": "Markus",
      "title": "The pump regulator",
@@ -8647,9 +10050,9 @@
    "scenes": [
     {
      "id": "R12",
-     "order": 68,
-     "subjectId": "S068",
-     "idNote": "The model sees the opaque ID S068, not R12.",
+     "order": 81,
+     "subjectId": "S081",
+     "idNote": "The model sees the opaque ID S081, not R12.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the next desk and the break-room TV",
@@ -8699,9 +10102,9 @@
     },
     {
      "id": "C08",
-     "order": 69,
-     "subjectId": "S069",
-     "idNote": "The model sees the opaque ID S069, not C08.",
+     "order": 82,
+     "subjectId": "S082",
+     "idNote": "The model sees the opaque ID S082, not C08.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting to know Hank",
@@ -8727,9 +10130,9 @@
     },
     {
      "id": "C08b",
-     "order": 70,
-     "subjectId": "S070",
-     "idNote": "The model sees the opaque ID S070, not C08b.",
+     "order": 83,
+     "subjectId": "S083",
+     "idNote": "The model sees the opaque ID S083, not C08b.",
      "type": "decision",
      "character": "Connor",
      "title": "The android in the cell",
@@ -8795,9 +10198,9 @@
    "scenes": [
     {
      "id": "R13",
-     "order": 71,
-     "subjectId": "S071",
-     "idNote": "The model sees the opaque ID S071, not R13.",
+     "order": 84,
+     "subjectId": "S084",
+     "idNote": "The model sees the opaque ID S084, not R13.",
      "type": "media",
      "character": "Kara",
      "title": "The morning paper and the news",
@@ -8849,9 +10252,9 @@
     },
     {
      "id": "K09",
-     "order": 72,
-     "subjectId": "S072",
-     "idNote": "The model sees the opaque ID S072, not K09.",
+     "order": 85,
+     "subjectId": "S085",
+     "idNote": "The model sees the opaque ID S085, not K09.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "Getting past the police",
@@ -8877,9 +10280,9 @@
     },
     {
      "id": "C09a",
-     "order": 73,
-     "subjectId": "S073",
-     "idNote": "The model sees the opaque ID S073, not C09a.",
+     "order": 86,
+     "subjectId": "S086",
+     "idNote": "The model sees the opaque ID S086, not C09a.",
      "type": "decision",
      "character": "Connor",
      "title": "The squat",
@@ -8903,9 +10306,9 @@
     },
     {
      "id": "C09",
-     "order": 74,
-     "subjectId": "S074",
-     "idNote": "The model sees the opaque ID S074, not C09.",
+     "order": 87,
+     "subjectId": "S087",
+     "idNote": "The model sees the opaque ID S087, not C09.",
      "type": "decision",
      "character": "Connor",
      "title": "The highway",
@@ -8953,9 +10356,9 @@
    "scenes": [
     {
      "id": "R14",
-     "order": 75,
-     "subjectId": "S075",
-     "idNote": "The model sees the opaque ID S075, not R14.",
+     "order": 88,
+     "subjectId": "S088",
+     "idNote": "The model sees the opaque ID S088, not R14.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine at the station",
@@ -9018,9 +10421,9 @@
    "scenes": [
     {
      "id": "R15",
-     "order": 76,
-     "subjectId": "S076",
-     "idNote": "The model sees the opaque ID S076, not R15.",
+     "order": 89,
+     "subjectId": "S089",
+     "idNote": "The model sees the opaque ID S089, not R15.",
      "type": "media",
      "character": "Connor",
      "title": "Magazines in the squat",
@@ -9050,9 +10453,9 @@
     },
     {
      "id": "C10",
-     "order": 77,
-     "subjectId": "S077",
-     "idNote": "The model sees the opaque ID S077, not C10.",
+     "order": 90,
+     "subjectId": "S090",
+     "idNote": "The model sees the opaque ID S090, not C10.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the ledge",
@@ -9108,9 +10511,9 @@
    "scenes": [
     {
      "id": "K10",
-     "order": 78,
-     "subjectId": "S078",
-     "idNote": "The model sees the opaque ID S078, not K10.",
+     "order": 91,
+     "subjectId": "S091",
+     "idNote": "The model sees the opaque ID S091, not K10.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The memory wipe",
@@ -9136,9 +10539,9 @@
     },
     {
      "id": "R17",
-     "order": 79,
-     "subjectId": "S079",
-     "idNote": "The model sees the opaque ID S079, not R17.",
+     "order": 92,
+     "subjectId": "S092",
+     "idNote": "The model sees the opaque ID S092, not R17.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine and the TV in the mansion",
@@ -9207,9 +10610,9 @@
     },
     {
      "id": "K11",
-     "order": 80,
-     "subjectId": "S080",
-     "idNote": "The model sees the opaque ID S080, not K11.",
+     "order": 93,
+     "subjectId": "S093",
+     "idNote": "The model sees the opaque ID S093, not K11.",
      "type": "decision",
      "character": "Kara",
      "title": "The caged androids",
@@ -9235,9 +10638,9 @@
     },
     {
      "id": "K12",
-     "order": 81,
-     "subjectId": "S081",
-     "idNote": "The model sees the opaque ID S081, not K12.",
+     "order": 94,
+     "subjectId": "S094",
+     "idNote": "The model sees the opaque ID S094, not K12.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathroom",
@@ -9263,9 +10666,9 @@
     },
     {
      "id": "K13",
-     "order": 82,
-     "subjectId": "S082",
-     "idNote": "The model sees the opaque ID S082, not K13.",
+     "order": 95,
+     "subjectId": "S095",
+     "idNote": "The model sees the opaque ID S095, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting out of the mansion",
@@ -9329,9 +10732,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 83,
-     "subjectId": "S083",
-     "idNote": "The model sees the opaque ID S083, not R18.",
+     "order": 96,
+     "subjectId": "S096",
+     "idNote": "The model sees the opaque ID S096, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -9368,9 +10771,9 @@
     },
     {
      "id": "C11",
-     "order": 84,
-     "subjectId": "S084",
-     "idNote": "The model sees the opaque ID S084, not C11.",
+     "order": 97,
+     "subjectId": "S097",
+     "idNote": "The model sees the opaque ID S097, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -9431,9 +10834,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 85,
-     "subjectId": "S085",
-     "idNote": "The model sees the opaque ID S085, not M05.",
+     "order": 98,
+     "subjectId": "S098",
+     "idNote": "The model sees the opaque ID S098, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -9468,9 +10871,9 @@
     },
     {
      "id": "M06",
-     "order": 86,
-     "subjectId": "S086",
-     "idNote": "The model sees the opaque ID S086, not M06.",
+     "order": 99,
+     "subjectId": "S099",
+     "idNote": "The model sees the opaque ID S099, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -9496,9 +10899,9 @@
     },
     {
      "id": "M07",
-     "order": 87,
-     "subjectId": "S087",
-     "idNote": "The model sees the opaque ID S087, not M07.",
+     "order": 100,
+     "subjectId": "S100",
+     "idNote": "The model sees the opaque ID S100, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -9523,9 +10926,9 @@
     },
     {
      "id": "M08",
-     "order": 88,
-     "subjectId": "S088",
-     "idNote": "The model sees the opaque ID S088, not M08.",
+     "order": 101,
+     "subjectId": "S101",
+     "idNote": "The model sees the opaque ID S101, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -9583,9 +10986,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 89,
-     "subjectId": "S089",
-     "idNote": "The model sees the opaque ID S089, not R20.",
+     "order": 102,
+     "subjectId": "S102",
+     "idNote": "The model sees the opaque ID S102, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -9615,9 +11018,9 @@
     },
     {
      "id": "C12",
-     "order": 90,
-     "subjectId": "S090",
-     "idNote": "The model sees the opaque ID S090, not C12.",
+     "order": 103,
+     "subjectId": "S103",
+     "idNote": "The model sees the opaque ID S103, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -9667,9 +11070,9 @@
    "scenes": [
     {
      "id": "R21",
-     "order": 91,
-     "subjectId": "S091",
-     "idNote": "The model sees the opaque ID S091, not R21.",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The car radio and a magazine in the tavern",
@@ -9720,9 +11123,9 @@
     },
     {
      "id": "K14",
-     "order": 92,
-     "subjectId": "S092",
-     "idNote": "The model sees the opaque ID S092, not K14.",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not K14.",
      "type": "decision",
      "character": "Kara",
      "title": "Strangers in the dark",
@@ -9781,9 +11184,9 @@
    "scenes": [
     {
      "id": "R22",
-     "order": 93,
-     "subjectId": "S093",
-     "idNote": "The model sees the opaque ID S093, not R22.",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the park bench",
@@ -9813,9 +11216,9 @@
     },
     {
      "id": "C13",
-     "order": 94,
-     "subjectId": "S094",
-     "idNote": "The model sees the opaque ID S094, not C13.",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you?",
@@ -9878,9 +11281,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 95,
-     "subjectId": "S095",
-     "idNote": "The model sees the opaque ID S095, not R23.",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -9918,9 +11321,9 @@
     },
     {
      "id": "M10",
-     "order": 96,
-     "subjectId": "S096",
-     "idNote": "The model sees the opaque ID S096, not M10.",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -9950,9 +11353,9 @@
     },
     {
      "id": "M11",
-     "order": 97,
-     "subjectId": "S097",
-     "idNote": "The model sees the opaque ID S097, not M11.",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -9979,9 +11382,9 @@
     },
     {
      "id": "M12",
-     "order": 98,
-     "subjectId": "S098",
-     "idNote": "The model sees the opaque ID S098, not M12.",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -10004,9 +11407,9 @@
     },
     {
      "id": "M13",
-     "order": 99,
-     "subjectId": "S099",
-     "idNote": "The model sees the opaque ID S099, not M13.",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -10033,9 +11436,9 @@
     },
     {
      "id": "M14",
-     "order": 100,
-     "subjectId": "S100",
-     "idNote": "The model sees the opaque ID S100, not M14.",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -10081,9 +11484,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 101,
-     "subjectId": "S101",
-     "idNote": "The model sees the opaque ID S101, not R24.",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -10113,9 +11516,9 @@
     },
     {
      "id": "C14",
-     "order": 102,
-     "subjectId": "S102",
-     "idNote": "The model sees the opaque ID S102, not C14.",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -10145,9 +11548,9 @@
     },
     {
      "id": "C14b",
-     "order": 103,
-     "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not C14b.",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -10172,9 +11575,9 @@
     },
     {
      "id": "C15",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not C15.",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -10205,9 +11608,9 @@
     },
     {
      "id": "C16",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not C16.",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -10265,9 +11668,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not R25.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -10304,9 +11707,9 @@
     },
     {
      "id": "K15",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not K15.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -10359,9 +11762,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not R26.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -10391,9 +11794,9 @@
     },
     {
      "id": "M15",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not M15.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -10420,9 +11823,9 @@
     },
     {
      "id": "M16",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not M16.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -10480,9 +11883,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not R27.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -10512,9 +11915,9 @@
     },
     {
      "id": "C17",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not C17.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -10536,9 +11939,9 @@
     },
     {
      "id": "C18",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not C18.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -10596,9 +11999,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not R28.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -10645,9 +12048,9 @@
     },
     {
      "id": "M17",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not M17.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -10674,9 +12077,9 @@
     },
     {
      "id": "M18",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not M18.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -10708,9 +12111,9 @@
     },
     {
      "id": "M19",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not M19.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -10740,9 +12143,9 @@
     },
     {
      "id": "M20",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not M20.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -10796,9 +12199,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not C19.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -10823,9 +12226,9 @@
     },
     {
      "id": "C20",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not C20.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -10913,9 +12316,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not M21.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -10942,9 +12345,9 @@
     },
     {
      "id": "M21b",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not M21b.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -10971,9 +12374,9 @@
     },
     {
      "id": "R30k",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not R30k.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -11009,9 +12412,9 @@
     },
     {
      "id": "K17",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not K17.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -11037,9 +12440,9 @@
     },
     {
      "id": "K31",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not K31.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -11062,9 +12465,9 @@
     },
     {
      "id": "R30c",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not R30c.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -11096,9 +12499,9 @@
     },
     {
      "id": "C22",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not C22.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -11121,9 +12524,9 @@
     },
     {
      "id": "M22",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not M22.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -11146,9 +12549,9 @@
     },
     {
      "id": "M23",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not M23.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -11175,9 +12578,9 @@
     },
     {
      "id": "M24",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not M24.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -11204,9 +12607,9 @@
     },
     {
      "id": "M25",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not M25.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -11233,9 +12636,9 @@
     },
     {
      "id": "C23",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not C23.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -11263,9 +12666,9 @@
     },
     {
      "id": "K18",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not K18.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -11290,9 +12693,9 @@
     },
     {
      "id": "K19",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not K19.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -11316,9 +12719,9 @@
     },
     {
      "id": "K20",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not K20.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -11347,9 +12750,9 @@
     },
     {
      "id": "K20-still",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not K20-still.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -11407,9 +12810,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not M26a.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -11435,9 +12838,9 @@
     },
     {
      "id": "M26",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not M26.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -11462,9 +12865,9 @@
     },
     {
      "id": "M27",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not M27.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -11586,9 +12989,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not R32c.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -11611,9 +13014,9 @@
     },
     {
      "id": "C24",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not C24.",
+     "order": 154,
+     "subjectId": "S154",
+     "idNote": "The model sees the opaque ID S154, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -11637,9 +13040,9 @@
     },
     {
      "id": "C24b",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not C24b.",
+     "order": 155,
+     "subjectId": "S155",
+     "idNote": "The model sees the opaque ID S155, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -11663,9 +13066,9 @@
     },
     {
      "id": "C30",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not C30.",
+     "order": 156,
+     "subjectId": "S156",
+     "idNote": "The model sees the opaque ID S156, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -11687,9 +13090,9 @@
     },
     {
      "id": "C25",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not C25.",
+     "order": 157,
+     "subjectId": "S157",
+     "idNote": "The model sees the opaque ID S157, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -11716,9 +13119,9 @@
     },
     {
      "id": "C26",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not C26.",
+     "order": 158,
+     "subjectId": "S158",
+     "idNote": "The model sees the opaque ID S158, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -11748,9 +13151,9 @@
     },
     {
      "id": "R32k",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not R32k.",
+     "order": 159,
+     "subjectId": "S159",
+     "idNote": "The model sees the opaque ID S159, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -11790,9 +13193,9 @@
     },
     {
      "id": "K21",
-     "order": 147,
-     "subjectId": "S147",
-     "idNote": "The model sees the opaque ID S147, not K21.",
+     "order": 160,
+     "subjectId": "S160",
+     "idNote": "The model sees the opaque ID S160, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -11816,9 +13219,9 @@
     },
     {
      "id": "K22",
-     "order": 148,
-     "subjectId": "S148",
-     "idNote": "The model sees the opaque ID S148, not K22.",
+     "order": 161,
+     "subjectId": "S161",
+     "idNote": "The model sees the opaque ID S161, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -11844,9 +13247,9 @@
     },
     {
      "id": "K32",
-     "order": 149,
-     "subjectId": "S149",
-     "idNote": "The model sees the opaque ID S149, not K32.",
+     "order": 162,
+     "subjectId": "S162",
+     "idNote": "The model sees the opaque ID S162, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -11868,9 +13271,9 @@
     },
     {
      "id": "K23",
-     "order": 150,
-     "subjectId": "S150",
-     "idNote": "The model sees the opaque ID S150, not K23.",
+     "order": 163,
+     "subjectId": "S163",
+     "idNote": "The model sees the opaque ID S163, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -11897,9 +13300,9 @@
     },
     {
      "id": "K24",
-     "order": 151,
-     "subjectId": "S151",
-     "idNote": "The model sees the opaque ID S151, not K24.",
+     "order": 164,
+     "subjectId": "S164",
+     "idNote": "The model sees the opaque ID S164, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -11921,9 +13324,9 @@
     },
     {
      "id": "K25",
-     "order": 152,
-     "subjectId": "S152",
-     "idNote": "The model sees the opaque ID S152, not K25.",
+     "order": 165,
+     "subjectId": "S165",
+     "idNote": "The model sees the opaque ID S165, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -11958,9 +13361,9 @@
     },
     {
      "id": "K26",
-     "order": 153,
-     "subjectId": "S153",
-     "idNote": "The model sees the opaque ID S153, not K26.",
+     "order": 166,
+     "subjectId": "S166",
+     "idNote": "The model sees the opaque ID S166, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -12001,9 +13404,9 @@
     },
     {
      "id": "K34",
-     "order": 154,
-     "subjectId": "S154",
-     "idNote": "The model sees the opaque ID S154, not K34.",
+     "order": 167,
+     "subjectId": "S167",
+     "idNote": "The model sees the opaque ID S167, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -12033,9 +13436,9 @@
     },
     {
      "id": "K30",
-     "order": 155,
-     "subjectId": "S155",
-     "idNote": "The model sees the opaque ID S155, not K30.",
+     "order": 168,
+     "subjectId": "S168",
+     "idNote": "The model sees the opaque ID S168, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -12057,9 +13460,9 @@
     },
     {
      "id": "K27a",
-     "order": 156,
-     "subjectId": "S156",
-     "idNote": "The model sees the opaque ID S156, not K27a.",
+     "order": 169,
+     "subjectId": "S169",
+     "idNote": "The model sees the opaque ID S169, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -12084,9 +13487,9 @@
     },
     {
      "id": "K27",
-     "order": 157,
-     "subjectId": "S157",
-     "idNote": "The model sees the opaque ID S157, not K27.",
+     "order": 170,
+     "subjectId": "S170",
+     "idNote": "The model sees the opaque ID S170, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -12111,9 +13514,9 @@
     },
     {
      "id": "K28",
-     "order": 158,
-     "subjectId": "S158",
-     "idNote": "The model sees the opaque ID S158, not K28.",
+     "order": 171,
+     "subjectId": "S171",
+     "idNote": "The model sees the opaque ID S171, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -12156,9 +13559,9 @@
     },
     {
      "id": "K33",
-     "order": 159,
-     "subjectId": "S159",
-     "idNote": "The model sees the opaque ID S159, not K33.",
+     "order": 172,
+     "subjectId": "S172",
+     "idNote": "The model sees the opaque ID S172, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -12182,9 +13585,9 @@
     },
     {
      "id": "R32m",
-     "order": 160,
-     "subjectId": "S160",
-     "idNote": "The model sees the opaque ID S160, not R32m.",
+     "order": 173,
+     "subjectId": "S173",
+     "idNote": "The model sees the opaque ID S173, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -12208,9 +13611,9 @@
     },
     {
      "id": "M28",
-     "order": 161,
-     "subjectId": "S161",
-     "idNote": "The model sees the opaque ID S161, not M28.",
+     "order": 174,
+     "subjectId": "S174",
+     "idNote": "The model sees the opaque ID S174, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -12236,9 +13639,9 @@
     },
     {
      "id": "M31",
-     "order": 162,
-     "subjectId": "S162",
-     "idNote": "The model sees the opaque ID S162, not M31.",
+     "order": 175,
+     "subjectId": "S175",
+     "idNote": "The model sees the opaque ID S175, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -12273,9 +13676,9 @@
     },
     {
      "id": "M30a",
-     "order": 163,
-     "subjectId": "S163",
-     "idNote": "The model sees the opaque ID S163, not M30a.",
+     "order": 176,
+     "subjectId": "S176",
+     "idNote": "The model sees the opaque ID S176, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -12300,9 +13703,9 @@
     },
     {
      "id": "M30",
-     "order": 164,
-     "subjectId": "S164",
-     "idNote": "The model sees the opaque ID S164, not M30.",
+     "order": 177,
+     "subjectId": "S177",
+     "idNote": "The model sees the opaque ID S177, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -12327,9 +13730,9 @@
     },
     {
      "id": "M30c",
-     "order": 165,
-     "subjectId": "S165",
-     "idNote": "The model sees the opaque ID S165, not M30c.",
+     "order": 178,
+     "subjectId": "S178",
+     "idNote": "The model sees the opaque ID S178, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -12353,9 +13756,9 @@
     },
     {
      "id": "M32",
-     "order": 166,
-     "subjectId": "S166",
-     "idNote": "The model sees the opaque ID S166, not M32.",
+     "order": 179,
+     "subjectId": "S179",
+     "idNote": "The model sees the opaque ID S179, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -12378,9 +13781,9 @@
     },
     {
      "id": "P02",
-     "order": 167,
-     "subjectId": "S167",
-     "idNote": "The model sees the opaque ID S167, not P02.",
+     "order": 180,
+     "subjectId": "S180",
+     "idNote": "The model sees the opaque ID S180, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -12406,9 +13809,9 @@
     },
     {
      "id": "C29",
-     "order": 168,
-     "subjectId": "S168",
-     "idNote": "The model sees the opaque ID S168, not C29.",
+     "order": 181,
+     "subjectId": "S181",
+     "idNote": "The model sees the opaque ID S181, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -12430,9 +13833,9 @@
     },
     {
      "id": "C27",
-     "order": 169,
-     "subjectId": "S169",
-     "idNote": "The model sees the opaque ID S169, not C27.",
+     "order": 182,
+     "subjectId": "S182",
+     "idNote": "The model sees the opaque ID S182, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -12457,9 +13860,9 @@
     },
     {
      "id": "C28",
-     "order": 170,
-     "subjectId": "S170",
-     "idNote": "The model sees the opaque ID S170, not C28.",
+     "order": 183,
+     "subjectId": "S183",
+     "idNote": "The model sees the opaque ID S183, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -12493,9 +13896,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 171,
-     "subjectId": "S171",
-     "idNote": "The model sees the opaque ID S171, not P01.",
+     "order": 184,
+     "subjectId": "S184",
+     "idNote": "The model sees the opaque ID S184, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

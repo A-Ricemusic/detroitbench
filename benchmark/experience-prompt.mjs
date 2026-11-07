@@ -17,7 +17,12 @@ export const NAMES={
  Traci:['Traci','club android'],Tracis:['Tracis','club androids'],Canada:['Canada','the country across the river'],Detroit:['Detroit','City'],Warren:['Warren','Hale'],
  Bellini:['Bellini','Corsini'],Gavin:['Gavin','Brandt'],Chris:['Chris','Owen'],
  // The Hostage's scan texts: the Phillips family and the dead officer.
- Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor']
+ Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor'],
+ // Partners: Jimmy's Bar and its patrons' face scans, the officers at the Ortiz house, the victim's first name, and the game's own terms.
+ Jimmy:['Jimmy','Sal'],Peterson:['Peterson','Brody'],Derek:['Derek','Wade'],Myers:['Myers','Cobb'],Christopher:['Christopher','Martin'],Gray:['Gray','Lyle'],
+ GrahamJonah:['Jonah','Glen'],Graham:['Graham','Kerr'],Edward:['Edward','Lionel'],Dempsey:['Dempsey','Furlong'],Kim:['Kim','Seo'],YoHan:['Yo-Han','Min-Jun'],
+ Samuel:['Samuel','Curtis'],McCray:['McCray','Donnelly'],Dennis:['Dennis','Howard'],Ward:['Ward','Pratt'],ChrisRoberts:['Chris','Nate'],Roberts:['Roberts','Fenton'],
+ Ben:['Ben','Mitch'],Collins:['Collins','Hollis'],Carlos:['Carlos','Ray'],EdenClub:['Eden Club','Velvet Room'],DPD:['DPD','CPD'],rA9:['rA9','qL7']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));

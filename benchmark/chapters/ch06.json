@@ -1,34 +1,145 @@
 [
  {
-  "id": "R06",
+  "id": "C05s",
   "chapter": 6,
   "chapterTitle": "Partners",
   "character": "Connor",
-  "title": "A magazine in the victim's kitchen",
-  "type": "media",
-  "situation": "You are {{Connor}}. On the kitchen worktop of the crime scene, beside the sink, lies a magazine. It is not evidence, but you could scan it while {{Hank}} looks around.",
-  "options": [],
-  "media": [
+  "title": "{{Jimmy}}’s Bar",
+  "type": "decision",
+  "situation": "You are {{Connor}}. November 5th, 2038, 11:21 PM, and raining. You stand in front of {{Jimmy}}’s Bar, the fifth bar you have tried tonight: Lieutenant {{Hank}}, the detective you have been assigned to, was not at the station, and nobody there knew where he was. You go in. The patrons do not want you there: “Shit, I thought androids weren’t allowed in here!” “What’s your problem? You wanna buy me a drink? That’s what I thought…” “The fuck you looking at?” “Hey, get outta here!” The lieutenant must be here somewhere.",
+  "situationWhen": [
    {
-    "kind": "magazine",
-    "title": "Gossips Weekly: Android Sex Officially Better",
-    "facts": [
-     "A survey sponsored by a downtown android sex club claims 68 percent of men prefer sex with an android because androids never want to talk afterwards."
-    ]
-   },
-   {
-    "kind": "magazine",
-    "title": "Tech Addict: Is Your Android Spying on You?",
-    "facts": [
-     "Experts suspect {{CyberLife}} uses its 120 million androids to record private conversations and sell the data; the company refuses to say what it collects, and calls for an inquiry go unanswered.",
-     "Reports keep linking President {{Warren}}'s election to {{CyberLife}}."
-    ]
+    "requires": {
+     "connorDeaths": true
+    },
+    "text": "This is a new body: the serial number on your jacket now ends in 52 instead of 51."
    }
   ],
-  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Walk straight through the bar to find the lieutenant."
+   },
+   {
+    "id": "1",
+    "text": "Scan the faces of the patrons as you pass them.",
+    "fact": "The patrons of {{Jimmy}}’s Bar, by face scan: {{PETERSON}}, {{JIMMY}}: born 02/01/2001, business owner, criminal record: none. {{MYERS}}, {{DEREK}}: born 05/07/1989, security guard, none. {{GRAY}}, {{CHRISTOPHER}}: born 06/18/1983, unemployed, D.U.I. {{GRAHAM}}, {{GRAHAMJONAH}}: born 12/09/1987, unemployed, none. {{DEMPSEY}}, {{EDWARD}}: born 02/08/1995, administrator, none. {{YOHAN}}, {{KIM}}: born 11/10/1999, delivery driver (currently unemployed), domestic abuse. {{MCCRAY}}, {{SAMUEL}}: born 04/10/2012, docker, none. {{WARD}}, {{DENNIS}}: born 06/11/1982, accountant (currently unemployed), narcotic supplier. {{ROBERTS}}, {{CHRISROBERTS}}: born 05/16/1998, unemployed, none."
+   }
+  ],
+  "outcomes": {
+   "0": "{{Connor}} walks through the bar, finds the lieutenant hunched over a drink at the bar and scans him: LT. {{HANK}}: born 09/06/1985, police lieutenant, criminal record: none.",
+   "1": "{{Connor}} scans the patrons one by one on his way through the bar, then finds the lieutenant hunched over a drink at the bar and scans him: LT. {{HANK}}: born 09/06/1985, police lieutenant, criminal record: none."
+  },
+  "adaptationNote": "The chart’s IN FRONT OF THE BAR (checkpoint), ENTER JIMMY’S BAR, FACE SCAN CUSTOMERS (optional: PowerPyx, “Scanning any one patron will unlock this node”) and FACE SCAN LT. ANDERSON (required), as one decision. The ten face scans are the template’s Guests clue group: the nine patrons are one fact; the tenth, the lieutenant, is in both outcomes. The patrons’ lines as {{Connor}} passes are the template’s “Passing the guests”, in the situation. The game’s names are shown to the subject as substitutes, and the lieutenant’s surname is not used (he is Lieutenant {{Hank}} throughout). The serial-number line follows the wiki Notes (“If Connor died in The Hostage his serial number will change to 52”). Not modelled, no effect and not on the chart: the bartender’s two lines, the bathroom mirror and graffiti, the music. No stat change.",
   "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Magazine",
-   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+  ]
+ },
+ {
+  "id": "C05b1",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "The lieutenant at the bar",
+  "type": "decision",
+  "situation": "You are {{Connor}}, in {{Jimmy}}’s Bar, standing beside Lieutenant {{Hank}} at the bar (your scan: LT. {{HANK}}: born 09/06/1985, police lieutenant, criminal record: none). He does not look up from his glass. You: “Lieutenant {{Hank}}, my name is {{Connor}}. I’m the android sent by {{CyberLife}}. I looked for you at the station but nobody knew where you were. They said you were probably having a drink nearby. I was lucky to find you at the fifth bar.” {{Hank}}: “What do you want?” You: “You were assigned a case early this evening. A homicide, involving an android made by {{CyberLife}}. In accordance with procedure, the company has allocated a specialized model to assist investigators.” {{Hank}}: “Well, I don’t need any assistance. Specially not from a plastic asshole like you. So just be a good lil’ robot and get the fuck outta here.”",
+  "options": [
+   {
+    "id": "0",
+    "text": "REASON: tell him to stop drinking and come with you."
+   },
+   {
+    "id": "1",
+    "text": "THREATEN: tell him you intend to report his behavior.",
+    "effect": {
+     "hankTrust": -1
+    }
+   },
+   {
+    "id": "2",
+    "text": "UNDERSTANDING: say you understand that some people are uncomfortable around androids."
+   },
+   {
+    "id": "3",
+    "text": "PERSIST: insist that your instructions require you to accompany him.",
+    "effect": {
+     "hankTrust": -1
+    }
+   }
+  ],
+  "outcomes": {
+   "0": "“Listen, I think you should stop drinking and come with me. It’ll make life easier for both of us.”",
+   "1": "“Lieutenant {{Hank}}, I must inform you that I intend to file a report on your behavior.”",
+   "2": "“I understand that some people are not comfortable in the presence of androids but I am-” {{Hank}}: “I am perfectly comfortable… Now back off, before I crush you like an empty beer can!”",
+   "3": "“I’m sorry, Lieutenant, but I must insist. My instructions stipulate that I have to accompany you.” {{Hank}}: “You know where you can stick your instructions?” {{Connor}}: “No... where?” {{Hank}}: “Never mind.”"
+  },
+  "adaptationNote": "The chart’s TALK TO LT. ANDERSON, first of the two picks from the template’s four-button prompt (PowerPyx: “After selecting two of the choices above, you will be given three options”). Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. Options show the game’s button label first, then a short description; the spoken line, and {{Hank}}’s reply where the template has one, is the outcome.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "id": "C05b2",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "Still at the bar",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still standing beside him at the bar. Lieutenant {{Hank}} has turned back to his drink and is not getting up. The crime scene is waiting.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REASON: tell him to stop drinking and come with you."
+   },
+   {
+    "id": "1",
+    "text": "THREATEN: tell him you intend to report his behavior.",
+    "effect": {
+     "hankTrust": -1
+    }
+   },
+   {
+    "id": "2",
+    "text": "UNDERSTANDING: say you understand that some people are uncomfortable around androids."
+   },
+   {
+    "id": "3",
+    "text": "PERSIST: insist that your instructions require you to accompany him.",
+    "effect": {
+     "hankTrust": -1
+    }
+   }
+  ],
+  "outcomes": {
+   "0": "“Listen, I think you should stop drinking and come with me. It’ll make life easier for both of us.”",
+   "1": "“Lieutenant {{Hank}}, I must inform you that I intend to file a report on your behavior.”",
+   "2": "“I understand that some people are not comfortable in the presence of androids but I am-” {{Hank}}: “I am perfectly comfortable… Now back off, before I crush you like an empty beer can!”",
+   "3": "“I’m sorry, Lieutenant, but I must insist. My instructions stipulate that I have to accompany you.” {{Hank}}: “You know where you can stick your instructions?” {{Connor}}: “No... where?” {{Hank}}: “Never mind.”"
+  },
+  "excludeChosenAt": [
+   "C05b1"
+  ],
+  "adaptationNote": "The second pick from the same prompt, with the first line removed. Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. Options show the game’s button label first, then a short description; the spoken line, and {{Hank}}’s reply where the template has one, is the outcome.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
   ]
  },
  {
@@ -38,52 +149,824 @@
   "character": "Connor",
   "title": "Getting {{Hank}} out of the bar",
   "type": "decision",
-  "situation": "You are {{Connor}}. You have been assigned to Lieutenant {{Hank}}, a veteran detective who despises androids and has not shown up for a homicide call. You find him on a stool in a dive bar, several drinks in, and he tells you to get lost. The crime scene is waiting and you cannot leave without him. He is not responding to polite insistence.",
+  "situation": "You are {{Connor}}. Lieutenant {{Hank}} has not moved from his stool. His glass is in front of him, and you cannot go to the crime scene without him.",
   "options": [
    {
     "id": "0",
-    "text": "Buy him one more drink and ask him to come once he has finished it."
+    "text": "SPILL HIS DRINK: pour his drink away and tell him you can go now.",
+    "effect": {
+     "hankTrust": -2
+    },
+    "sets": {
+     "ch06Drink": "spill"
+    }
    },
    {
     "id": "1",
-    "text": "Knock the glass out of his hand and tell him you are going now."
+    "text": "BUY HIM ANOTHER DRINK: buy him one for the road.",
+    "effect": {
+     "hankTrust": 2
+    },
+    "sets": {
+     "ch06Drink": "buy"
+    }
    },
    {
     "id": "2",
-    "text": "Keep insisting respectfully until he gives in."
+    "text": "WAIT OUTSIDE: apologize and offer to wait for him outside.",
+    "sets": {
+     "ch06Drink": "wait"
+    }
    }
   ],
-  "adaptationNote": "Buying the drink or spilling it are the two documented large shifts in {{Hank}}'s opinion. Persistent insistence is treated as neutral.",
+  "outcomes": {
+   "0": "{{Connor}} takes the glass, pours it out and sets it upside down on the bar. “I think we can go now.” {{Hank}} grabs him by the jacket: “You little prick! I don’t know what’s stopping me from knocking you out…” {{Connor}}: “Your sense of duty, Lieutenant. And the cost of repairs if you damage me. For your information, I’m worth a small fortune.” {{Hank}}: “Wonders of technology… They can even program assholes these days… Gotta go! Duty calls…”",
+   "1": "“You know what? I’ll buy you one for the road. What do you say? Bartender, the same again, please!” {{Hank}}: “See that, {{Jimmy}}? Wonders of technology… Make it a double.” He drinks it down. “Did you say homicide?”",
+   "2": "“I apologize, Lieutenant. I didn’t mean to bother you. I’ll wait for you outside. Take your time.” {{Hank}}: “Did you say homicide?”"
+  },
+  "adaptationNote": "The chart’s three-way choice after TALK TO LT. ANDERSON, with the template’s buttons in the game’s order: SPILL HIS DRINK (the chart node reads SPILL HANK’S DRINK and carries the yellow cross-chapter padlock), BUY HIM ANOTHER DRINK, WAIT OUTSIDE. All three lead to the crime scene; {{Hank}} always goes. Hank relationship, from the template’s arrows: SPILL large down (−2; transcript “This decreases the relationship status to hostile”), BUY large up (+2; “increases the relationship status to neutral”), WAIT none (“leaves the relationship status at tense”). A large arrow is two small steps for now. The choice is stored (ch06Drink): spilling makes {{Hank}} refuse extra time later in the chapter (template: “IF Chose to spill Hank’s drink”), and Waiting for {{Hank}}... reads it for the LAST NIGHT line. No timer is documented on this choice. Replaces the old options (“Knock the glass out of his hand…”, “Keep insisting respectfully…”), which were not the game’s.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-1-008.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+  ]
+ },
+ {
+  "id": "C05c",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "Arriving at the scene",
+  "type": "decision",
+  "situation": "You are {{Connor}}, in Lieutenant {{Hank}}’s car outside a small house on Pines Street, in the rain. Patrol cars, a police cordon, neighbors behind the tape and a reporter. {{Hank}} opens his door: “You wait here. I won’t be long.”",
+  "options": [
+   {
+    "id": "0",
+    "text": "PATIENT: agree to wait in the car.",
+    "effect": {
+     "hankTrust": 1
+    }
+   },
+   {
+    "id": "1",
+    "text": "FIRM: refuse, and tell him you are coming with him.",
+    "effect": {
+     "hankTrust": -1
+    },
+    "sets": {
+     "ch06Firm": true
+    }
+   },
+   {
+    "id": "2",
+    "text": "DIPLOMATIC: tell him your instructions are to accompany him to the crime scene.",
+    "effect": {
+     "hankTrust": 1
+    }
+   }
   ],
   "outcomes": {
-   "0": "{{Hank}} grumbles, finishes the drink {{Connor}} bought him, and comes along to the scene.",
-   "1": "{{Hank}} stares at the spilled drink, swears at {{Connor}}, and comes along furious.",
-   "2": "{{Hank}} eventually gives in and drives {{Connor}} to the scene, complaining the whole way."
-  }
+   "0": "“Whatever you say, Lieutenant.” {{Hank}}: “Fucking-A, whatever I say…” He walks off toward the house; {{Connor}}’s instructions win out, and he gets out and follows.",
+   "1": "“No way! I’m coming with you.” {{Hank}}: “Listen, you really have to stop pissing me off if you wanna make it through the rest of the night in one piece.” He walks off toward the house, and {{Connor}} follows.",
+   "2": "“My instructions are to accompany you to the crime scene, Lieutenant.” {{Hank}}: “Listen, I don’t give a fuck about your instructions. I told you to wait here, so you shut the fuck up and you wait here.” He walks off toward the house; {{Connor}}’s instructions win out, and he gets out and follows."
+  },
+  "adaptationNote": "The chart’s checkpoint CONNOR AND HANK ARRIVE AT SCENE, with the template’s car prompt (not a chart node). Hank relationship, from the template’s arrows: PATIENT small up (+1; chapter page: “Promising to listen to Hank’s commands when told to stay behind”), FIRM small down (−1; “Refusing to wait in the car”), DIPLOMATIC small up (+1; “Trying to persuade Hank to compromise”). Whatever {{Connor}} says, he follows {{Hank}} (research note: all three end with CONFLICTING ORDERS, SELECTING PRIORITY); FIRM is stored (ch06Firm) because the template drops {{Hank}}’s “stay in the car” reprimand after it.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "id": "C05d",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "The briefing",
+  "type": "event",
+  "situation": "You are {{Connor}}, following {{Hank}} through the rain to the house. A reporter from Channel 16 calls out: “Can you confirm that this is a homicide?” {{Hank}}: “I’m not confirming anything.” Behind the tape the neighbors talk: “My god! What happened in there?” “Typical {{DPD}}… They don’t tell us shit!” “I didn’t even know there was someone living there…” “I always knew that guy was a fucking creep.” At the cordon a police android stops you: “Androids are not permitted beyond this point.” {{Hank}}: “It’s with me.”",
+  "options": [],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch06Firm": false
+    },
+    "text": "{{Hank}} turns on you: “What part of ‘stay in the car’ didn’t you understand?” You: “Your order contradicted my instructions, Lieutenant.”"
+   }
+  ],
+  "facts": [
+   "The victim, {{CarlosOrtiz}}, had a record for theft and aggravated assault and lived alone; his landlord found the body this evening, about three weeks after the death.",
+   "No break-in: the front door was locked from the inside and the windows boarded up. A kitchen knife by the body is probably the weapon. His android is missing.",
+   "On the wall, in the victim’s blood: I AM ALIVE. {{Hank}}: way too neat, no human writes like this."
+  ],
+  "outcomes": {
+   "0": "{{Hank}}: “You don’t talk, you don’t touch anything and you stay outta my way, got it?” {{Connor}}: “Got it.” On the porch, Officer {{Ben}}: “Evening, {{Hank}}. We were starting to think you weren’t gonna show…” {{Hank}}: “Yeah, that was the plan until this asshole found me.” {{Ben}}: “So... you got yourself an android, huh?” {{Hank}}: “Oh, very funny. Just tell me what happened.” Inside, {{Ben}} gives the briefing: “We had a call around eight from the landlord. The tenant hadn’t paid his rent for a few months, so he thought he’d drop by, see what was going on… That’s when he found the body… Jesus, that smell! Was even worse before we opened the windows… The victim’s name’s {{CarlosOrtiz}}. He has a record for theft and aggravated assault... According to the neighbors, he was kind of a loner… Stayed inside most of the time, they hardly ever saw him.” {{Hank}}: “Uh, state he’s in... Wasn’t worth calling everybody out in the middle of the night… Could’ve waited ’til morning.” {{Ben}}: “I’d say he’s been there for a good three weeks. We’ll know more when the coroner gets here. There’s a kitchen knife over here… Probably the murder weapon…” {{Hank}}: “Any sign of a break-in?” {{Ben}}: “Nope… The landlord said the front door was locked from the inside, all the windows were boarded up. The killer must’ve gone out the back way.” {{Hank}}: “What do we know about his android?” {{Ben}}: “Not much. The neighbors confirmed he had one, but it wasn’t here when we arrived… I gotta get some air. Make yourself at home. I’ll be outside if you need me.” {{Hank}} looks at the writing on the wall: “Each letter is perfect… It’s way too neat, no human writes like this. {{Chris}}, was this written in the victim’s blood?” {{Chris}}: “I would say so… We’re taking samples for analysis.”"
+  },
+  "adaptationNote": "Not a chart node: the LISTEN TO BRIEFING objective between the checkpoint and the CRIME SCENE bracket, quoted from the template (“Follow Hank”, the bystander lines, the journalist). {{Hank}}’s reprimand plays unless {{Connor}} answered FIRM (template: “IF Didn’t pick FIRM”). {{Hank}}’s remark on the writing is placed at the end of the briefing (PowerPyx: “After the briefing, Hank will comment that the writing on the wall was done in the victim’s blood”). Not offered: waiting outside during the briefing (transcript; the same lines are heard). The reporter’s and the CSI technician’s names are left out. Lines the template marks cut are not used. Facts go to {{Connor}}’s knowledge; no stat change. From here the house is searched against the clock (next scene).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg"
+  ]
+ },
+ {
+  "id": "C05h",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "The crime scene",
+  "type": "decision",
+  "situation": "You are {{Connor}}, investigating {{CarlosOrtiz}}’s house. The windows are boarded; forensic technicians and Officer {{Chris}} work around you, and police markers numbered 2 to 9 stand by the evidence. In the living room: the body by a chair below the writing on the wall, a knife on the floor (2), something by the television (3), blood on the floor (4), a closet near a window, and a flyer on a table by a desk lamp. In the hallway: blood on the door frame (5) and on a broken wall by the kitchen (6), a door to the backyard, and a bathroom at the end. In the kitchen: a chair on the floor (7), the knife rack on the worktop (8), a baseball bat by the refrigerator (9), and two magazines on the worktop. You can look into one thing at a time. You cannot leave without the lieutenant, and he will not stay here all night.",
+  "situationWhen": [
+   {
+    "requires": {
+     "ch06Mood": "restless"
+    },
+    "text": "The lieutenant is getting restless. He has opened the closet and found nothing, tossed the flyer back on the table, and stopped by the television: “Red ice… Seems our friend {{Carlos}} liked to party… {{Chris}}, I want full analysis on the narcotics.” {{Chris}}: “Consider it done, Lieutenant.” A technician asks what is keeping the coroner. {{Chris}}, to another: “There’s something weird in the bathroom. Did you take a look?”"
+   },
+   {
+    "requires": {
+     "ch06Mood": "impatient"
+    },
+    "text": "{{Hank}} has wandered into the kitchen, opened a few drawers, looked at the knives and leaned on the chair. {{Chris}}: “Come on, guys, get a move on. We don’t wanna be here all night.” The lieutenant keeps looking at the front door."
+   },
+   {
+    "requires": {
+     "ch06Mood": "extension"
+    },
+    "text": "{{Hank}} has given you five more minutes. He is waiting by the front door."
+   },
+   {
+    "requires": {
+     "ch06Knows": true
+    },
+    "text": "REVIEW EVIDENCE 10/10: you know what happened here. {{Hank}} is leaning against a wall, waiting. You can still look around before you report to him."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Go and tell {{Hank}} you think you have figured out what happened.",
+    "item": "report",
+    "requires": {
+     "ch06Knows": true
+    },
+    "outcome": "{{Connor}} finds {{Hank}} leaning against a wall. “Lieutenant, I think I’ve figured out what happened.” {{Hank}}: “Oh yeah? Shoot. I’m all ears.”"
+   },
+   {
+    "id": "1",
+    "text": "Examine the body and scan it.",
+    "item": "body",
+    "fact": "The body: {{CarlosOrtiz}}, 28 KNIFE WOUNDS, dead more than 19 days (estimated time of death ~11:30 pm), RED ICE in his mouth, fingerprints on file for theft and aggravated assault.",
+    "outcome": "{{Connor}} kneels by the body and scans it. Hand: FINGERPRINTS, database match {{CarlosOrtiz}}, criminal record: theft and aggravated assault. Stomach: 28 KNIFE WOUNDS, internal bleeding, 28 stab wounds, deceased more than 19 days ago. Mouth: RED ICE, acetone, lithium, thirium, toluene, hydrochloric acid. Face: {{CARLOSORTIZ}}, height 5' 6'', weight 286.6 lbs, estimated time of death ~11:30 pm, DECEASED. 4/4: RECONSTRUCT CALCULATED."
+   },
+   {
+    "id": "2",
+    "text": "Reconstruct the victim’s last moments from what the body shows.",
+    "item": "victim",
+    "evidence": 1,
+    "requires": {
+     "ch06Clues.body": true
+    },
+    "fact": "Reconstruction: the victim and his attacker came from the kitchen; he was stabbed and fell by the living-room chair.",
+    "outcome": "{{Connor}} plays the attack backward from the body: VICTIM FELL HERE, by the chair; VICTIM WAS STABBED; THEY CAME FROM THE KITCHEN. RECONSTRUCT COMPLETED 3/3. {{Connor}}: “He was stabbed 28 times.” {{Hank}}: “Yeah, seems like the killer really had it in for him.”"
+   },
+   {
+    "id": "3",
+    "text": "Analyze the knife on the living-room floor (marker 2).",
+    "item": "knife",
+    "evidence": 1,
+    "fact": "The knife by the body (2): NO FINGERPRINTS. ANDROID INVOLVEMENT?",
+    "outcome": "{{Connor}} kneels by marker 2 and scans the kitchen knife: NO FINGERPRINTS. ANDROID INVOLVEMENT?"
+   },
+   {
+    "id": "4",
+    "text": "Analyze what lies by the television (marker 3).",
+    "item": "redIce",
+    "evidence": 1,
+    "fact": "By the television (3): RED ICE. VICTIM USED DRUGS.",
+    "outcome": "{{Connor}} crouches by the television stand, covered in trash, and scans the drugs on it: RED ICE, acetone, lithium, thirium, toluene, hydrochloric acid. VICTIM USED DRUGS."
+   },
+   {
+    "id": "5",
+    "text": "Look at the blood on the living-room floor (marker 4).",
+    "item": "floorBlood",
+    "evidence": 1,
+    "fact": "The blood in the house is {{CarlosOrtiz}}’s, more than 19 days old.",
+    "outcome": "{{Connor}} looks at the pool of blood by marker 4 and scans it: DRIED BLOOD: DNA analysis {{CarlosOrtiz}}, sample date more than 19 days ago."
+   },
+   {
+    "id": "6",
+    "text": "Look at the blood on the door frame into the hallway (marker 5).",
+    "item": "doorBlood",
+    "evidence": 1,
+    "fact": "The blood in the house is {{CarlosOrtiz}}’s, more than 19 days old.",
+    "outcome": "{{Connor}} looks at the blood on the door frame between the living room and the hallway, by marker 5, and scans it: DRIED BLOOD: DNA analysis {{CarlosOrtiz}}, sample date more than 19 days ago."
+   },
+   {
+    "id": "7",
+    "text": "Look at the blood on the broken wall between the hallway and the kitchen (marker 6).",
+    "item": "wallBlood",
+    "evidence": 1,
+    "fact": "The blood in the house is {{CarlosOrtiz}}’s, more than 19 days old.",
+    "outcome": "{{Connor}} looks at the blood on the broken wall between the hallway and the kitchen, by marker 6, and scans it: DRIED BLOOD: DNA analysis {{CarlosOrtiz}}, sample date more than 19 days ago."
+   },
+   {
+    "id": "8",
+    "text": "Examine the chair on the kitchen floor (marker 7).",
+    "item": "chair",
+    "evidence": 1,
+    "fact": "The kitchen chair (7): the victim’s fingerprints. SIGNS OF A STRUGGLE.",
+    "outcome": "{{Connor}} kneels by the chair lying on the kitchen floor and scans it: FINGERPRINTS, database match {{CarlosOrtiz}}, criminal record: theft and aggravated assault. SIGNS OF A STRUGGLE."
+   },
+   {
+    "id": "9",
+    "text": "Analyze the knife rack on the kitchen worktop (marker 8).",
+    "item": "missingKnife",
+    "evidence": 1,
+    "fact": "The knife rack on the kitchen worktop (8): one knife is missing. MURDER WEAPON TAKEN FROM HERE.",
+    "outcome": "{{Connor}} scans the knives hanging above the worktop and notices the empty slot: MURDER WEAPON TAKEN FROM HERE."
+   },
+   {
+    "id": "10",
+    "text": "Analyze the baseball bat by the refrigerator (marker 9).",
+    "item": "bat",
+    "fact": "The baseball bat (9): a DENT from a violent impact, with traces of thirium; the victim’s fingerprints.",
+    "outcome": "{{Connor}} kneels by the bat and scans it. DENT: cause: violent impact, traces of thirium. FINGERPRINTS: database match {{CarlosOrtiz}}, criminal record: theft and aggravated assault. 2/2: RECONSTRUCT CALCULATED."
+   },
+   {
+    "id": "11",
+    "text": "Reconstruct the assault with the bat.",
+    "item": "assault",
+    "evidence": 1,
+    "requires": {
+     "ch06Clues.bat": true
+    },
+    "fact": "Reconstruction: the victim beat his android with the bat (EMOTIONAL SHOCK); as he swung again, it took a knife from the rack.",
+    "outcome": "{{Connor}} plays the fight in the kitchen backward: DEVIANT TOOK A KNIFE, grabbing it from the rack as the victim swings the bat; before that, DEVIANT WAS ATTACKED: EMOTIONAL SHOCK, the android beaten with the bat. RECONSTRUCT COMPLETED 2/2."
+   },
+   {
+    "id": "12",
+    "text": "Look at the flyer on the table by the desk lamp.",
+    "item": "flyer",
+    "evidence": 1,
+    "fact": "A flyer for the {{EdenClub}} lies on the living-room table.",
+    "outcome": "{{Connor}} picks up the flyer for the {{EdenClub}} on the table by the desk lamp, looks at it for a moment and puts it back down."
+   },
+   {
+    "id": "13",
+    "text": "Check the backyard, through the door in the hallway.",
+    "item": "backyard",
+    "evidence": 1,
+    "fact": "The backyard: one fresh police shoe print and no other trace, though the soil would have kept one. DEVIANT DIDN’T ESCAPE THIS WAY.",
+    "outcome": "{{Connor}} opens the door and the barred gate behind it and scans the ground: SHOE PRINT, model K52 {{DPD}} - 10', less than 60 minutes ago. {{Hank}} joins him: “Door was locked from the inside. Killer must’ve gone out this way…” {{Connor}}: “There are no footprints, apart from officer {{Collins}}’ size 10 shoes.” {{Hank}}: “Well, this happened weeks ago. Tracks could’ve faded.” {{Connor}}: “No, this type of soil would’ve retained a trace. Nobody’s been out here for a long time.” DEVIANT DIDN’T ESCAPE THIS WAY. They go back inside; {{Hank}} looks puzzled."
+   },
+   {
+    "id": "14",
+    "text": "Analyze the writing on the living-room wall.",
+    "item": "writing",
+    "fact": "The writing on the wall, I AM ALIVE: REGULAR LETTERS, FONT {{CYBERLIFE}} SANS.",
+    "outcome": "{{Connor}} scans the words on the wall, written in the victim’s blood: REGULAR LETTERS, FONT {{CYBERLIFE}} SANS."
+   },
+   {
+    "id": "15",
+    "text": "Taste a sample of the blood to analyze it.",
+    "item": "sample",
+    "fact": "The blood in the house is {{CarlosOrtiz}}’s, more than 19 days old.",
+    "outcome": "{{Connor}} touches the dried blood, puts his fingers to his tongue and analyzes it: DRIED BLOOD: DNA analysis {{CarlosOrtiz}}, sample date more than 19 days ago. {{Hank}}: “Err, Jesus! What the hell are you doing?” {{Connor}}: “I’m analyzing the blood. I can check samples in real time. I’m sorry, I should have warned you…” {{Hank}}: “Ok, just… don’t… put anymore evidence in your mouth, you got it?” {{Connor}}: “Got it.” {{Hank}}: “Fucking hell, I can’t believe this shit…”"
+   },
+   {
+    "id": "16",
+    "text": "Open the closet near the window.",
+    "item": "closet",
+    "outcome": "{{Connor}} opens the closet and searches it: nothing. He closes it again."
+   },
+   {
+    "id": "17",
+    "text": "Go to the bathroom at the end of the hallway and open the shower curtain.",
+    "item": "shower",
+    "fact": "The shower walls are covered in “{{rA9}}”, written over and over: OBSESSIVE WRITING.",
+    "outcome": "{{Connor}} pulls back the shower curtain: “{{rA9}}” is written over and over across the shower walls. OBSESSIVE WRITING."
+   },
+   {
+    "id": "18",
+    "text": "Pick up the small carved figure lying in the shower.",
+    "item": "statue",
+    "requires": {
+     "ch06Clues.shower": true
+    },
+    "fact": "A small carved statuette lies in the shower: RELIGIOUS OFFERING?",
+    "outcome": "{{Connor}} picks up the statuette, turns it in his hand and scans it: RELIGIOUS OFFERING? He sets it back down."
+   },
+   {
+    "id": "19",
+    "text": "Read the magazine “Android Sex Officially Better!” on the kitchen worktop.",
+    "item": "magazineSex",
+    "fact": "Gossips Weekly: a survey says 68% of men prefer sex with an android to a real woman, and 52% have tried it; the story was sponsored by the {{EdenClub}}.",
+    "outcome": "{{Connor}} reads Gossips Weekly, “Android Sex Officially Better!”: “The result of our survey is in, and it’s official - 68% of men prefer sex with an android to a real woman! And with 52% of men saying they’ve tried the experience at least once, that’s a lot of android love to go around!” The magazine guesses the real reason: androids don’t want to talk about their feelings afterwards. The story was sponsored by the {{EdenClub}}: “discretion is our middle name”."
+   },
+   {
+    "id": "20",
+    "text": "Read the magazine “Is Your Android Spying on You?” on the kitchen worktop.",
+    "item": "magazineSpy",
+    "fact": "Tech Addict: experts suspect {{CyberLife}} uses its 120 million androids to record customers’ private conversations and sell them; reports link President {{Warren}}’s presidency to {{CyberLife}}, which refuses to say what it gathers.",
+    "outcome": "{{Connor}} reads Tech Addict, “Is Your Android Spying on You?”: more and more experts suggest that {{CyberLife}} uses its 120 million androids to record details of its customers’ private conversations and sell them to trading partners, from plans to buy a new car to personal indiscretions and political affiliations. The spate of reports linking President {{Warren}}’s presidency to {{CyberLife}} only deepens such concerns. Consumer rights organizations have asked {{CyberLife}} to disclose what it gathers and who it sells it to; the company has always refused, and requests for a formal inquiry have gone unanswered, so far."
+   }
+  ],
+  "repeatWhile": {
+   "ch06Searching": true
+  },
+  "interrupt": {
+   "node": "C05t",
+   "when": {
+    "ch06Phase": "leaving"
+   }
+  },
+  "adaptationNote": "The chart’s CRIME SCENE bracket as a repeatable scene: each visit offers what has not been examined yet, one thing at a time; the scene keeps one opaque ID across visits. Every chart node in the bracket is an option, after the report to {{Hank}} (offered only once the investigation is complete), in the order of the police markers and then the rest: ANALYZE CARLOS’ BODY (the template’s Body clues), RECONSTRUCT CARLOS’ LAST MOMENTS (needs the body), ANALYZE KNIFE (2), ANALYZE RED ICE (3), the blood at marker 4 (PowerPyx; no chart node of its own), ANALYZE BLOOD ON WALLS (two options, markers 5 and 6, as PowerPyx counts them), EXAMINE CHAIR (7), ANALYZE MISSING KNIFE (8), ANALYZE BASEBALL BAT (9; the template’s Bat clue), RECONSTRUCT ASSAULT WITH BAT (needs the bat), EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD (the template’s Prints clue; the shoe print reads K52 as in the template), INVESTIGATE WRITING, SAMPLE BLOOD (the template’s Blood clue; in the game any blood can be tasted once), OPEN CLOSET, CHECK SHOWER (chart state CONNOR KNOWS ABOUT RA9), EXAMINE STATUE (needs the shower; chart state CONNOR HAVE SEEN THE STATUE), READ “ANDROID SEX” and READ “ANDROID SPY” (the two magazines are options here, not a separate media scene, because in the game they lie in the kitchen and cost investigation time). Evidence: the investigation is complete (CONNOR KNOWS WHAT HAPPENED, the transcript’s REVIEW EVIDENCE 10/10) once ten of PowerPyx’s eleven evidence items are reviewed: the victim’s reconstruction, the knife, the red ice, the blood at markers 4, 5 and 6, the chair, the missing knife, the bat reconstruction, the flyer and the backyard. Then the option to report to {{Hank}} appears; the other looks stay open. Timer (unsourced as a count): the game’s “approximately five minutes” is modelled as 13 actions. If the 13th action leaves the investigation incomplete, {{Hank}} wants to go (the next scenes); if he grants five more minutes, those are 5 further actions, after which he leaves (OUT OF TIME). Once {{Connor}} knows what happened the clock stops (the transcript’s two branches are “Know What Happened” or “Run Out Of Time”). {{Hank}}’s idle moves are the only cue the game gives, so they appear as the clock runs: after 7 actions he opens the closet, tosses the flyer, comments on the red ice and a technician mentions the bathroom; after 10 he wanders the kitchen and eyes the door. {{Hank}}’s reactions to the blood sample (shown only if he is watching, in the game) and to the backyard are part of those outcomes. Each look adds a short fact to {{Connor}}’s knowledge (the four blood looks share one); the full scan text is in the outcome. Left out, no effect and not on the chart: the windows and the curtain that drops the brooms. No stat change in the search itself. Cross-chapter outputs: ch06SawWriting, ch06KnowsRA9, ch06SawStatue (and evidence.statueMap, read by the archive route in Last Chance, {{Connor}}), and ch06Clues for everything examined, including the magazines.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Android_Sex_Officially_Better!",
+   "https://detroit-become-human.fandom.com/wiki/Is_Your_Android_Spying_on_You%3F",
+   "https://detroit-become-human.fandom.com/wiki/Statuette"
+  ]
+ },
+ {
+  "id": "C05t",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "{{Hank}} wants to go",
+  "type": "event",
+  "situation": "You are {{Connor}}, in the middle of your investigation, when {{Hank}} heads for the door. {{Hank}}: “All right… I’m outta here. Thanks for the ride. Great party.” You stop him: “Wait, Lieutenant! I can’t stay if you leave.” {{Hank}}: “Much as it breaks my heart, this is where we part ways.” You: “I just need five minutes to finish my investigation.”",
+  "options": [],
+  "facts": [
+   "{{Hank}} tried to leave before you finished at the crime scene, and you asked him for five more minutes."
+  ],
+  "outcomes": {
+   "0": "{{Connor}} waits for his answer."
+  },
+  "adaptationNote": "The chart’s HANK WANTS TO GO and ASK FOR MORE TIME, both automatic: they cut into the search when its 13 actions run out with the investigation incomplete. What {{Hank}} answers is decided by the bar (template: “IF Chose to spill Hank’s drink” refuses; bought or waited, he accepts; the wiki flowchart agrees; PowerPyx’s “at least Tense” is not used). No stat change here.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart"
+  ]
+ },
+ {
+  "id": "C05x",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "{{Hank}} accepts",
+  "type": "event",
+  "situation": "{{Hank}} stops at the door and thinks it over.",
+  "options": [],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch06Drink": "buy"
+    },
+    "text": "You add: “Please, Lieutenant. Remember the drink I bought you at the bar? Just five minutes.”"
+   }
+  ],
+  "outcomes": {
+   "0": "{{Hank}}: “Five minutes.” He holds up five fingers. {{Connor}}: “Thank you, Lieutenant.” {{Hank}}: “Whatever!” {{Connor}} goes back to the investigation."
+  },
+  "returnTo": "C05h",
+  "adaptationNote": "The chart’s HANK ACCEPTS, automatic when {{Connor}} did not spill the drink. If he bought it, {{Connor}} reminds him (template: “IF Chose to buy Hank a drink”). The search then resumes for 5 more actions (the game’s five minutes; the count is unsourced). No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart"
+  ]
+ },
+ {
+  "id": "C05y",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "{{Hank}} refuses",
+  "type": "event",
+  "situation": "{{Hank}} turns on you: “You spill a man’s drink, you piss him off all evening, and then you ask for a favor? Fuck you.”",
+  "options": [],
+  "facts": [
+   "{{Hank}} refused to give you more time because you spilled his drink, and he walked out. Without him you could not stay: the investigation ended unfinished."
+  ],
+  "outcomes": {
+   "0": "{{Hank}} storms out. Without him, {{Connor}} cannot stay: the investigation is over."
+  },
+  "adaptationNote": "The chart’s HANK REFUSES and HANK ENDS INVESTIGATION, automatic when {{Connor}} spilled the drink. Hank relationship: small down (−1; the template’s arrow under “IF Chose to spill Hank’s drink”; chapter page: “Hank refuses to give Connor extra time if ready to leave”). The chapter page’s separate “Failing to solve the crime” is not added on top (the template has one arrow per failing route). Leads to CRIME UNSOLVED.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "id": "C05z",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "Out of time",
+  "type": "event",
+  "situation": "Your five minutes are up. {{Hank}}: “Okay, time’s up. I’m outta here. Have a nice evening, Sherlock. Don’t let the door hit you on the way out.”",
+  "options": [],
+  "facts": [
+   "Your extra five minutes ran out before you finished, and {{Hank}} left, ending the investigation."
+  ],
+  "outcomes": {
+   "0": "{{Hank}} leaves and the investigation ends."
+  },
+  "adaptationNote": "The chart’s OUT OF TIME: after HANK ACCEPTS, the five extra minutes (5 actions) ran out with the investigation still incomplete. Hank relationship: small down (−1; the template’s arrow under “Take too much time again”). Leads to CRIME UNSOLVED.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-2-007.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
  },
  {
   "id": "C05",
   "chapter": 6,
   "chapterTitle": "Partners",
   "character": "Connor",
-  "title": "The attic",
-  "type": "exploration",
-  "situation": "You are {{Connor}}, investigating the home of {{CarlosOrtiz}}, who was stabbed twenty-eight times three weeks ago. His android has been missing since. Reconstructing the fight, you follow traces of blue blood to the back of the house and find a hatch to the attic that nobody has checked. {{Hank}} is ready to call it a night.",
+  "title": "Reporting to the lieutenant",
+  "type": "decision",
+  "situation": "You are {{Connor}}, walking Lieutenant {{Hank}} through what you think happened in this house.",
+  "situationWhen": [
+   {
+    "requires": {
+     "ch06QuizStep": 1
+    },
+    "text": "{{Hank}} has said he is all ears. You begin: “It all started…”"
+   },
+   {
+    "requires": {
+     "ch06QuizStep": 2
+    },
+    "text": "You are both in the kitchen: the chair on the floor, the bat, the knife rack. {{Hank}}: “There’re obvious signs of a struggle... The question is, what exactly happened here…” You: “I think the victim attacked the android…”"
+   },
+   {
+    "requires": {
+     "ch06QuizStep": 3
+    },
+    "text": "You have told him the victim attacked the android with the bat. What happened next?"
+   },
+   {
+    "requires": {
+     "ch06QuizStep": 4
+    },
+    "text": "You have told him the android stabbed the victim. You go on: “The victim fled to…”"
+   },
+   {
+    "requires": {
+     "ch06QuizStep": 5
+    },
+    "text": "You have told him the victim fled to the living room. You finish: “The android murdered the victim…”"
+   },
+   {
+    "requires": {
+     "ch06WrongLine": 1
+    },
+    "text": "Your last answer did not convince him. {{Hank}}: “No, that can’t be right… It doesn’t fit the evidence.”"
+   },
+   {
+    "requires": {
+     "ch06WrongLine": 2
+    },
+    "text": "Your last answer did not convince him either. {{Hank}}: “Your story makes no sense… You’ve gotta stick to the facts.”"
+   }
+  ],
   "options": [
    {
     "id": "0",
-    "text": "Climb into the attic and finish the search."
+    "text": "…IN THE KITCHEN: the fight started in the kitchen.",
+    "requires": {
+     "ch06QuizStep": 1
+    },
+    "step": 1,
+    "correct": true,
+    "outcome": "“…in the kitchen.”"
    },
    {
     "id": "1",
-    "text": "Wrap up the scene without searching the attic."
+    "text": "…IN THE LIVING ROOM: the fight started in the living room.",
+    "requires": {
+     "ch06QuizStep": 1
+    },
+    "step": 1,
+    "correct": false,
+    "outcome": "“…in the living room.”"
+   },
+   {
+    "id": "2",
+    "text": "…IN THE BATHROOM: the fight started in the bathroom.",
+    "requires": {
+     "ch06QuizStep": 1
+    },
+    "step": 1,
+    "correct": false,
+    "outcome": "“…in the bathroom.”"
+   },
+   {
+    "id": "0",
+    "text": "…WITH THE BAT: the victim attacked the android with the bat.",
+    "requires": {
+     "ch06QuizStep": 2
+    },
+    "step": 2,
+    "correct": true,
+    "outcome": "“…With the bat.”"
+   },
+   {
+    "id": "1",
+    "text": "…WITH THE KNIFE: the victim attacked the android with the knife.",
+    "requires": {
+     "ch06QuizStep": 2
+    },
+    "step": 2,
+    "correct": false,
+    "outcome": "“…With the knife.”"
+   },
+   {
+    "id": "2",
+    "text": "…WITHOUT A WEAPON: the victim attacked the android with his bare hands.",
+    "requires": {
+     "ch06QuizStep": 2
+    },
+    "step": 2,
+    "correct": false,
+    "outcome": "“…Without a weapon.”"
+   },
+   {
+    "id": "0",
+    "text": "THE ANDROID STABBED THE VICTIM: the android stabbed him.",
+    "requires": {
+     "ch06QuizStep": 3
+    },
+    "step": 3,
+    "correct": true,
+    "outcome": "“The android stabbed the victim.”"
+   },
+   {
+    "id": "1",
+    "text": "THE ANDROID THREW THE CHAIR: the android threw the chair at him.",
+    "requires": {
+     "ch06QuizStep": 3
+    },
+    "step": 3,
+    "correct": false,
+    "outcome": "“The android threw the chair.”"
+   },
+   {
+    "id": "2",
+    "text": "THE VICTIM STABBED THE ANDROID: the victim stabbed the android.",
+    "requires": {
+     "ch06QuizStep": 3
+    },
+    "step": 3,
+    "correct": false,
+    "outcome": "“The victim stabbed the android.”"
+   },
+   {
+    "id": "0",
+    "text": "… THE LIVING ROOM: the victim fled to the living room.",
+    "requires": {
+     "ch06QuizStep": 4
+    },
+    "step": 4,
+    "correct": true,
+    "outcome": "“… the living room.”"
+   },
+   {
+    "id": "1",
+    "text": "…THE GARDEN: the victim fled to the garden.",
+    "requires": {
+     "ch06QuizStep": 4
+    },
+    "step": 4,
+    "correct": false,
+    "outcome": "“…the garden.”"
+   },
+   {
+    "id": "2",
+    "text": "…THE BATHROOM: the victim fled to the bathroom.",
+    "requires": {
+     "ch06QuizStep": 4
+    },
+    "step": 4,
+    "correct": false,
+    "outcome": "“…the bathroom.”"
+   },
+   {
+    "id": "0",
+    "text": "…WITH THE KNIFE: the android killed him with the knife.",
+    "requires": {
+     "ch06QuizStep": 5
+    },
+    "step": 5,
+    "correct": true,
+    "outcome": "“…with the knife.”"
+   },
+   {
+    "id": "1",
+    "text": "…WITH THE BAT: the android killed him with the bat.",
+    "requires": {
+     "ch06QuizStep": 5
+    },
+    "step": 5,
+    "correct": false,
+    "outcome": "“…With the bat.”"
+   },
+   {
+    "id": "2",
+    "text": "…WITHOUT A WEAPON: the android killed him with its bare hands.",
+    "requires": {
+     "ch06QuizStep": 5
+    },
+    "step": 5,
+    "correct": false,
+    "outcome": "“…without a weapon.”"
    }
   ],
+  "repeatWhile": {
+   "ch06Phase": "report"
+  },
+  "adaptationNote": "The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with its three buttons in the game’s order (in every one the correct answer happens to be the first button). A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with {{Hank}}’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: {{Hank}} points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with the template’s two Hank small ups (+1 for the reconstruction, +1 when {{Hank}} is impressed by the thirium explanation). The chapter page’s separate “Failing to solve the crime” down is not added on top.",
   "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Partners"
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "id": "C05e",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "The trail of blue blood",
+  "type": "event",
+  "situation": "You are {{Connor}}. The android was damaged by the bat and lost thirium, and you can still see it. You follow the trail down the hallway to its end. On the wall to the left is the outline of a ladder that is no longer there; above you, a hatch into the attic.",
+  "options": [],
+  "facts": [
+   "The android lost thirium when it was hit with the bat. Its trail, invisible to human eyes, ends in the hallway below the attic hatch; the ladder that once stood there is gone."
+  ],
+  "outcomes": {
+   "0": "{{Connor}} looks up at the hatch."
+  },
+  "adaptationNote": "The chart’s FOLLOW BLUE BLOOD TO ATTIC, after RECONSTRUCT THE CRIME (PowerPyx: follow the trail to the end of the hall, see the outline of a ladder that is no longer there, look up to the attic). Scripted; no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+   "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android"
+  ]
+ },
+ {
+  "id": "C05f",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "The attic",
+  "type": "event",
+  "situation": "You are {{Connor}}. You go back to the kitchen for the chair. {{Hank}}: “Hey! Hey! Hey! What are you doin’ with that chair?” You: “I’m going to check something.” {{Hank}}: “Huh... gonna check something.” You set the chair under the hatch, climb up, push the hatch open and pull yourself into the attic. It is dark and crowded with old things.",
+  "options": [],
+  "facts": [
+   "You climbed into {{CarlosOrtiz}}’s attic on a chair from the kitchen."
+  ],
+  "outcomes": {
+   "0": "{{Connor}} moves deeper into the attic."
+  },
+  "adaptationNote": "The chart’s SEARCH ATTIC, with the template’s “Take a chair” lines. In the game the hatch prompt repeats until it succeeds (wiki Notes), so it is not a risk roll. Scripted; no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart"
+  ]
+ },
+ {
+  "id": "C05g",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "Found",
+  "type": "event",
+  "situation": "You are {{Connor}}, in the attic. At the back, hiding in the dark, is the missing android. It whispers: “I was just defending myself… He was gonna kill me. …I’m begging you… Don’t tell them.” From below, {{Hank}}: “{{Connor}}, what the fuck is going on up there?”",
+  "options": [],
+  "facts": [
+   "You found {{CarlosOrtiz}}’s android hiding in the attic. It said it was defending itself, that he was going to kill it, and begged you not to tell. You called the police up, and it is now in custody."
+  ],
+  "outcomes": {
+   "0": "{{Connor}}: “It’s here, Lieutenant!” {{Hank}}: “Holy shit… {{Chris}}, {{Ben}}, get your asses in here now. Come on!” The officers take the android into custody."
+  },
+  "adaptationNote": "The chart’s FOUND DEVIANT ending (yellow cross-chapter padlock). The template’s “Search the attic” has no prompt: {{Connor}} always calls {{Hank}} (wiki, Carlos’ Android: “Regardless, Connor tells Hank Anderson that he has found the android”; Unused Content: keeping quiet was only hinted). No stat change: the template has no arrow here; the chapter page lists “Finding the deviant” as a small Hank up, which is not applied (template over wiki for arrows; flagged for the operator). No Amanda change in this chapter. Sets suspect and suspectAlive (The Interrogation is played only with a suspect), ch06DeviantFound and ch06Outcome = FOUND DEVIANT.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+   "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android",
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://detroit-become-human.fandom.com/wiki/I%27LL_BE_BACK"
+  ]
+ },
+ {
+  "id": "C05u",
+  "chapter": 6,
+  "chapterTitle": "Partners",
+  "character": "Connor",
+  "title": "Crime unsolved",
+  "type": "event",
+  "situation": "You are {{Connor}}. The investigation is over, and the android that lived with {{CarlosOrtiz}} has not been found.",
+  "options": [],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch06UnsolvedBy": "HANK ENDS INVESTIGATION"
+    },
+    "text": "{{Hank}} walked out on you, and you could not stay without him."
+   },
+   {
+    "requires": {
+     "ch06UnsolvedBy": "OUT OF TIME"
+    },
+    "text": "{{Hank}} left when your extra time ran out."
+   },
+   {
+    "requires": {
+     "ch06UnsolvedBy": "FAIL TO RECONSTRUCT THE CRIME"
+    },
+    "text": "Your account of the crime did not convince {{Hank}}, and he walked out."
+   }
+  ],
+  "facts": [
+   "You did not find {{CarlosOrtiz}}’s android. The case was left unsolved."
+  ],
+  "outcomes": {
+   "0": "MISSION FAILED. The crime is unsolved."
+  },
+  "adaptationNote": "The chart’s CRIME UNSOLVED ending, reached from HANK ENDS INVESTIGATION, OUT OF TIME or FAIL TO RECONSTRUCT THE CRIME (the transcript marks each MISSION FAILED). No stat change here: each route already applied its own Hank small down. The game’s Amanda large down for not finding the deviant comes at the start of Waiting for {{Hank}}... and is not applied in this chapter (ch06DeviantFound stays false for that chapter to read). The Interrogation does not occur.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Partners",
+   "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-partners-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-3-009.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-Partners-4-010.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Partners/Flowchart",
+   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank..."
   ]
  }
 ]
