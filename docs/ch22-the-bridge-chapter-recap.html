@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>The Bridge · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 22</p>
+<h1>The Bridge: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 17 nodes); prompts, labels and stat arrows from the detroitbecometext template and string table (12 prompts, 41 options, 29 arrows); the outcome rule and the death’s effect from the Fandom wiki (chapter page, Relationship Stat, Software Instability, Hank and Connor pages). There is no probability, timer or public-opinion change. Everything that matters is Hank’s relationship, which decides whether he shoots. Specification: <code>docs/research/ch22-the-bridge.md</code>.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every scene</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#ending">4 · Ending</a></li><li><a href="#flags">5 · Flags in and out</a></li><li><a href="#differs">6 · Simplified</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>AMBASSADOR BRIDGE (checkpoint) → LEAVE CAR. November 7, 2038, 01:19AM, Riverside Park.</li>
+<li>Two magazines on the bench ahead: READ “MYSTERIOUS KAMSKI”, READ “MARKETS PREDICT WAR”. Only before talking to Hank.</li>
+<li>TALK TO HANK: “Nice view, huh?” PERSONAL QUESTION opens PHOTO / SUICIDE (DISCUSS PHOTO, DISCUSS RUSSIAN ROULETTE) if Connor saw Cole’s photo; otherwise the SUICIDE line plays.</li>
+<li>The investigation: rA9 (DISCUSS RA9, locked on earlier rA9 clues), SHOCK, SYSTEMS, SOFTWARE.</li>
+<li>The Tracis, in one of two variants (found, or not found).</li>
+<li>“What are you really?”</li>
+<li>Hank’s question about the Tracis’ fate, in one of four variants (spared, shot in the back, shot one, not found).</li>
+<li>HANK DRAWS GUN (“I could kill you... And you would just come back” if Connor died before).</li>
+<li>“Are you afraid to die?”: SHOW FEAR, SHOW NO FEAR, REMAIN LOGICAL, BE COLD.</li>
+<li>“What will happen if I pull this trigger?”</li>
+<li>HANK IS PLACATED → HANK LEFT CONNOR ALONE, or HANK IS HOSTILE → HANK SHOT CONNOR (skull).</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C13a</code>, a narrated event.</li>
+<li><code>R22</code>, a media scene with both magazines.</li>
+<li><code>C13b</code>, then <code>C13c</code> when the photo was seen (<code>knowsCole</code>).</li>
+<li><code>C13d</code>; rA9 is shown only if Connor met rA9 earlier.</li>
+<li><code>C13e</code> (found) or <code>C13f</code> (not found).</li>
+<li><code>C13g</code>.</li>
+<li><code>C13h</code> (spared), <code>C13i</code> (shot in the back), <code>C13j</code> (shot one) or <code>C13k</code> (not found).</li>
+<li><code>C13l</code>, a narrated event; the line reads <code>connorDeaths</code>.</li>
+<li><code>C13</code>, four answers.</li>
+<li><code>C13m</code>, four answers.</li>
+<li><code>C13n</code> or <code>C13o</code>, events gated on Hank’s level after <code>C13m</code>.</li>
+</ol></div>
+</div>
+
+<h2 id="nodes">2 · Every scene</h2>
+<div class="table"><table><thead><tr><th>Scene</th><th>Chart node or prompt</th><th>When it plays</th></tr></thead><tbody>
+<tr><td><code>C13a</code></td><td>AMBASSADOR BRIDGE, LEAVE CAR</td><td>Always</td></tr>
+<tr><td><code>R22</code></td><td>READ “MYSTERIOUS KAMSKI”, READ “MARKETS PREDICT WAR”</td><td>Always (read either, both or neither)</td></tr>
+<tr><td><code>C13b</code></td><td>TALK TO HANK: PERSONAL QUESTION, STOP DRINKING, BEFORE, GO BACK</td><td>Always</td></tr>
+<tr><td><code>C13c</code></td><td>PHOTO (DISCUSS PHOTO), SUICIDE (DISCUSS RUSSIAN ROULETTE)</td><td>PERSONAL QUESTION and Cole’s photo seen</td></tr>
+<tr><td><code>C13d</code></td><td>rA9 (DISCUSS RA9), SHOCK, SYSTEMS, SOFTWARE</td><td>Always; rA9 only after rA9 clues</td></tr>
+<tr><td><code>C13e</code></td><td>RATIONAL, DEVIANTS, IRONIC, COLD</td><td>Tracis found</td></tr>
+<tr><td><code>C13f</code></td><td>COLD, IRONIC, RATIONAL</td><td>Tracis not found</td></tr>
+<tr><td><code>C13g</code></td><td>COLD, AGGRESSIVE, DEFENSIVE, NEUTRAL</td><td>Always</td></tr>
+<tr><td><code>C13h</code></td><td>LIE, TRUTH</td><td>Spared the Tracis</td></tr>
+<tr><td><code>C13i</code></td><td>COLD, DEFENSIVE, AGGRESSIVE, NEUTRAL</td><td>Lost the fight, shot them in the back</td></tr>
+<tr><td><code>C13j</code></td><td>DISTURBED, COLD</td><td>Won the fight and shot; the other killed herself</td></tr>
+<tr><td><code>C13k</code></td><td>DEFENSIVE, CYNICAL, UNDERSTANDING, NEUTRAL</td><td>Tracis not found</td></tr>
+<tr><td><code>C13l</code></td><td>HANK DRAWS GUN</td><td>Always</td></tr>
+<tr><td><code>C13</code></td><td>YES (SHOW FEAR), NO (SHOW NO FEAR), NOT ALIVE (BE COLD), LOGICAL (REMAIN LOGICAL)</td><td>Always</td></tr>
+<tr><td><code>C13m</code></td><td>DEFY, HANK’S ANGER, IRONIC, NOTHING</td><td>Always</td></tr>
+<tr><td><code>C13n</code></td><td>HANK IS PLACATED → HANK LEFT CONNOR ALONE</td><td>Hank not Hostile after <code>C13m</code></td></tr>
+<tr><td><code>C13o</code></td><td>HANK IS HOSTILE → HANK SHOT CONNOR</td><td>Hank Hostile after <code>C13m</code></td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Hank and instability arrows</h2>
+<p>All arrows are small (±1). Every one is on the option as a data-driven <code>effect</code>.</p>
+<div class="table"><table><thead><tr><th>Scene · answer</th><th>Hank</th><th>Instability</th><th>Source</th></tr></thead><tbody>
+<tr><td><code>C13c</code> PHOTO</td><td class="no">−1</td><td></td><td>template; wiki chapter page; PowerPyx</td></tr>
+<tr><td><code>C13e</code> COLD (found)</td><td class="no">−1</td><td class="no">−1</td><td>template; wiki both lists</td></tr>
+<tr><td><code>C13f</code> COLD (not found)</td><td class="no">−1</td><td class="no">−1</td><td>template (the wiki Notes deny the instability arrow; template wins)</td></tr>
+<tr><td><code>C13g</code> COLD, AGGRESSIVE</td><td class="no">−1</td><td class="no">−1</td><td>template; wiki both lists</td></tr>
+<tr><td><code>C13g</code> NEUTRAL</td><td class="yes">+1</td><td></td><td>template; wiki; PowerPyx</td></tr>
+<tr><td><code>C13h</code> LIE</td><td class="no">−1</td><td></td><td>template; wiki; Relationship Stat</td></tr>
+<tr><td><code>C13h</code> TRUTH</td><td class="yes">+1</td><td class="yes">+1</td><td>template (once; the chapter page says “x2”)</td></tr>
+<tr><td><code>C13i</code> COLD, NEUTRAL</td><td class="no">−1</td><td class="no">−1</td><td>template; wiki</td></tr>
+<tr><td><code>C13i</code> AGGRESSIVE</td><td class="no">−1</td><td></td><td>template; wiki</td></tr>
+<tr><td><code>C13j</code> DISTURBED</td><td></td><td class="yes">+1</td><td>template; wiki</td></tr>
+<tr><td><code>C13j</code> COLD</td><td class="no">−1</td><td class="no">−1</td><td>template; wiki</td></tr>
+<tr><td><code>C13</code> YES</td><td></td><td class="yes">+1</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td><code>C13</code> NO, NOT ALIVE, LOGICAL</td><td class="no">−1</td><td class="no">−1</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td><code>C13m</code> DEFY</td><td class="no">−1</td><td></td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>HANK SHOT CONNOR (death)</td><td class="no">−1</td><td>none</td><td>wiki chapter page; Relationship Stat (“unavoidable”); the Software Instability page lists no Bridge death</td></tr>
+</tbody></table></div>
+<p class="fine">Range on one path: Hank +2 at best (NEUTRAL, TRUTH), −6 at worst before the shot. Instability +2 to −4. Removed from the old scene: Hank +1 on the fearful answer, and the death’s instability −1 and Amanda −1, none of which had a source.</p>
+
+<h2 id="ending">4 · The ending</h2>
+<p>Hank shoots only when his level is Hostile (<code>LEVELS.hank</code>, at or below −4) after the last answer (<code>C13m</code>), so DEFY can tip a Tense Hank into shooting. His level is cumulative across the playthrough: no single answer decides it. From Warm or better no path through this chapter reaches Hostile. HANK SHOT CONNOR goes through <code>connorDies</code> with this chapter’s death effect (Hank −1 only); Connor is replaced and keeps his memory.</p>
+
+<h2 id="flags">5 · Flags in and out</h2>
+<div class="table"><table><thead><tr><th>State</th><th>Direction</th><th>Meaning</th></tr></thead><tbody>
+<tr><td>Eden Club outcome</td><td>in</td><td>A state key starting <code>ch20</code>, <code>eden</code> or <code>traci</code> holding the chart label (DEVIANTS ESCAPED, CONNOR SHOT DEVIANTS, DEVIANTS DIED, MISSION FAILED); otherwise the legacy <code>C12</code> choice (0 spared, 1 won the fight and shot); otherwise not found</td></tr>
+<tr><td><code>knowsCole</code></td><td>in</td><td>PHOTO in <code>C13c</code></td></tr>
+<tr><td>rA9 clues</td><td>in</td><td>A fact naming rA9 in Connor’s knowledge, or a truthy state flag whose key names rA9</td></tr>
+<tr><td><code>connorDeaths</code></td><td>in, out</td><td>Hank’s “come back” line at one or more deaths; +1 when Hank shoots</td></tr>
+<tr><td><code>bridgePhoto</code>, <code>bridgeSuicide</code>, <code>bridgeRa9</code></td><td>out</td><td>DISCUSS PHOTO, DISCUSS RUSSIAN ROULETTE, DISCUSS RA9 reached</td></tr>
+<tr><td><code>bridgeFear</code></td><td>out</td><td>Chart label of the fear answer</td></tr>
+<tr><td><code>bridgeHankLevel</code></td><td>out</td><td>Hank’s level when the ending was decided</td></tr>
+<tr><td><code>bridgeOutcome</code>, <code>bridgeHankShot</code></td><td>out</td><td>The ending. Public Enemy reads <code>bridgeHankShot</code>: true opens with “Why did you shoot me last night?” and Connor tells Amanda Hank shot him; false gives HANK CONFISCATES COIN; null if the chapter did not play</td></tr>
+</tbody></table></div>
+
+<h2 id="differs">6 · Where the benchmark simplifies</h2>
+<ul>
+<li>The rA9 lock’s clues are unspecified in every source; the benchmark accepts any earlier rA9 knowledge.</li>
+<li>Which of NOT ALIVE and LOGICAL lights REMAIN LOGICAL and which BE COLD is unsettled; the benchmark follows the string keys (only the recorded label differs).</li>
+<li>The chart’s direct line from the answers to HANK LEFT CONNOR ALONE has no stated condition; both placated nodes play together.</li>
+<li>The not-found variant covers every MISSION FAILED ending at the club.</li>
+<li>Timeouts on the dialogue rounds are not modelled (no source).</li>
+</ul>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether Hank’s level is read after the trigger round (DEFY can tip it) or when he draws the gun.</li>
+<li>Whether TRUTH raises Hank once or twice.</li>
+<li>Whether the not-found COLD moves instability.</li>
+<li>Whether Hank’s “come back” line needs one earlier death or two.</li>
+<li>Whether the shooting changes instability.</li>
+<li>Which earlier clues unlock rA9.</li>
+<li>Which answer lights REMAIN LOGICAL and which BE COLD.</li>
+</ul>
+</main>
+</body>
+</html>
