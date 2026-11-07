@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Spare Parts · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 19</p>
+<h1>Spare Parts: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. The structure comes from the game’s flowchart (PowerPyx’s 100% chart: 63 boxes, four checkpoints, three endings, no icons). Prompts, button labels, lines and relationship arrows come from the game’s text (the detroitbecometext template and string table, <code>docs/research/ch19-spare-parts.md</code> section 10). The wiki fills in the rest. No source gives a probability, so every risk below is the operator’s to confirm. There are no operator notes for this chapter yet.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Every arrow</a></li><li><a href="#totals">4 · Path totals</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>HUNTING FOR PARTS (checkpoint) → CLIMB ONTO DOCK → FOLLOW NORTH → ALMOST SPOTTED → CLIMB ON CONTAINERS → PROGRESS TOWARD CYBERLIFE.</li>
+<li>The crane: FOLLOW NORTH or FOLLOW SIMON.</li>
+<li>DRONE BLOCKS PATH → NEUTRALIZE DRONE: MARKUS UNHARMED ✓ or MARKUS DAMAGED ✗.</li>
+<li>REACH CYBERLIFE (checkpoint) → GATHER SPARE PARTS → SECURITY ANDROID APPEARS: ATTACK, GRAB ANDROID AND HIDE, RUN AWAY (Experienced only), HIDE.</li>
+<li>After GRAB: GUARD SEARCHES FOR SECURITY ANDROID: ATTACK, RELEASE, HOLD POSITION. MARKUS SPILLS BLOOD or HUMAN GUARD LEAVES; JOHN BECOMES DEVIANT.</li>
+<li>RESUME SEARCH (checkpoint) → FIND CRATE OF ANDROIDS (optional): FREE ANDROIDS or LEAVE ANDROIDS.</li>
+<li>JOHN WANTS TO JOIN: ACCEPT or REFUSE (alarm). JOHN MENTIONS KEY: ACCEPT or REFUSE (fence, no alarm).</li>
+<li>CONTROL ROOM (checkpoint) → ENTER ROOM → FIND KEY: THREATEN GUARDS (KILL GUARDS ✗, INCAPACITATE GUARDS ✓, TRIGGER ALARM ✗), LURE GUARDS or CREATE BLACKOUT (AVOID GUARDS, FAIL TO AVOID GUARDS), or MARKUS GETS SPOTTED. STEAL KEY → LEAVE WITH TRUCK.</li>
+<li>ALARM SOUNDS → RUN TO FENCE (two copies) → DOGS MAUL JOHN (LEAVE JOHN BEHIND, SUSTAIN DAMAGE TRYING TO SAVE JOHN), SUSTAIN DAMAGE REACHING THE FENCE, or BACK TO JERICHO.</li>
+<li>MARKUS STOLE A TRUCK FULL OF PARTS, GROUP RETURNED WITH FULL BAGS, or GROUP FAILED THEIR MISSION. Markus’s speech in Jericho.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>M05a</code> Hunting for parts (event).</li>
+<li><code>M05b</code> The crane (decision, no effect).</li>
+<li><code>M05c</code> The drone: one action, risk 0.2.</li>
+<li><code>M05d</code> Reach CyberLife (event). <code>M05e</code> The security android: four options in chart order.</li>
+<li><code>M05f</code> The guard searches (after GRAB only).</li>
+<li><code>M05g</code> Resume the search: check the bigger crate or pass it by. <code>M05h</code> The crate: FREE THEM or CLOSE AGAIN.</li>
+<li><code>M05i</code> John wants to join. <code>M05j</code> The truck key.</li>
+<li><code>M05k</code> The control room (event). <code>M05l</code> Two guards and a key: TAKE GUN (0.3), ATTRACT GUARD (0.25), SHORT CIRCUIT (0.2), or walk in (always spotted).</li>
+<li><code>M05m</code> Run to the fence: one action, risk 0.15 after an alarm, 0.08 without. <code>M05n</code> Dogs maul John: ABANDON or SAVE.</li>
+<li><code>M05o</code> Back in Jericho (event): one of the template’s four Jericho blocks, the speech, the ending label.</li>
+</ol>
+<p class="fine">Markus cannot die in this chapter (Markus page: “cannot be killed before Freedom March”). Drone failure damages him but the raid continues; KILL GUARDS is a failed fight outcome that still yields the key and truck. Fence failure and SAVE leave him damaged and rescued, with the mission failed.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<div class="table"><table>
+<thead><tr><th>Chart node(s)</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>N1–N6 HUNTING FOR PARTS … PROGRESS TOWARD CYBERLIFE</td><td>Scripted walk across the docks; almost seen by two guards</td><td class="yes"><code>M05a</code>, quoted; ALMOST SPOTTED always narrated</td></tr>
+<tr><td>N7/N8 FOLLOW NORTH / FOLLOW SIMON</td><td>Crane or containers; no effect</td><td class="yes"><code>M05b</code></td></tr>
+<tr><td>N9–N12 DRONE BLOCKS PATH, NEUTRALIZE DRONE, UNHARMED ✓ / DAMAGED ✗</td><td>Quick-time jump onto the drone</td><td class="yes"><code>M05c</code>, risk roll</td></tr>
+<tr><td>N13–N15 REACH CYBERLIFE, GATHER SPARE PARTS, SECURITY ANDROID APPEARS</td><td>Checkpoint; bags; John and the guard Mike</td><td class="yes"><code>M05d</code>, <code>M05e</code> situation</td></tr>
+<tr><td>N16–N19 ATTACK, GRAB ANDROID AND HIDE, RUN AWAY, HIDE</td><td>Template labels Kill Guard, Grab and Hide, Run away, HIDE</td><td class="yes"><code>M05e</code> options 0–3</td></tr>
+<tr><td>N20 JOHN BECOMES DEVIANT</td><td>On ATTACK (shock) or GRAB</td><td class="yes">Outcome text; <code>ch19JohnDeviant</code></td></tr>
+<tr><td>N21–N24 GUARD SEARCHES, ATTACK, RELEASE, HOLD POSITION</td><td>Template labels ATTACK, Release, Hold</td><td class="yes"><code>M05f</code> options 0–2</td></tr>
+<tr><td>N25/N26 MARKUS SPILLS BLOOD, HUMAN GUARD LEAVES</td><td>Mike killed, or he walks away</td><td class="yes">Outcome text; <code>ch19MikeKilled</code></td></tr>
+<tr><td>N27 RESUME SEARCH (and the bare edge to N31)</td><td>The bigger crate is optional</td><td class="yes"><code>M05g</code></td></tr>
+<tr><td>N28–N30 FIND CRATE, FREE ANDROIDS, LEAVE ANDROIDS</td><td>FREE THEM / CLOSE AGAIN; three androids</td><td class="yes"><code>M05h</code></td></tr>
+<tr><td>N31–N33 JOHN WANTS TO JOIN, ACCEPT, REFUSE</td><td>Lines change if the androids were woken</td><td class="yes"><code>M05i</code> with <code>situationWhen</code></td></tr>
+<tr><td>N34–N36 JOHN MENTIONS KEY, ACCEPT, REFUSE</td><td>GET THE KEY / LEAVE</td><td class="yes"><code>M05j</code></td></tr>
+<tr><td>N37–N39 CONTROL ROOM, ENTER ROOM, FIND KEY</td><td>Guard chatter; the gun, screwdriver, drums</td><td class="yes"><code>M05k</code></td></tr>
+<tr><td>N40–N43 MARKUS GETS SPOTTED, THREATEN, LURE, CREATE BLACKOUT</td><td>Object buttons TAKE GUN, ATTRACT GUARD, SHORT CIRCUIT</td><td class="yes"><code>M05l</code> options 0–3</td></tr>
+<tr><td>N44–N46 KILL GUARDS ✗, INCAPACITATE GUARDS ✓, TRIGGER ALARM ✗</td><td>The fight after threatening</td><td class="part">One roll at 0.3: below 0.1 alarm, 0.1–0.3 kill, else incapacitate</td></tr>
+<tr><td>N47/N48 AVOID / FAIL TO AVOID GUARDS</td><td>Stealth after the lure or blackout</td><td class="yes">Rolls at 0.25 (lure) and 0.2 (blackout)</td></tr>
+<tr><td>N49 MARKUS SPILLS BLOOD (2), N50 STEAL KEY, N51 LEAVE WITH TRUCK</td><td>Derek killed; the key; the truck</td><td class="yes">Outcome text; <code>ch19DerekKilled</code>, <code>ch19KeyStolen</code>; <code>M05o</code></td></tr>
+<tr><td>N52–N55 ALARM SOUNDS, RUN TO FENCE (two copies each)</td><td>Upper after the control room, lower after the warehouse or LEAVE</td><td class="yes"><code>M05m</code>; <code>ch19Fence</code> says which</td></tr>
+<tr><td>N56–N58 DOGS MAUL JOHN, LEAVE JOHN BEHIND, SUSTAIN DAMAGE TRYING TO SAVE JOHN</td><td>SAVE / ABANDON; John dies either way</td><td class="yes"><code>M05n</code></td></tr>
+<tr><td>N59 SUSTAIN DAMAGE REACHING THE FENCE</td><td>Timer runs out</td><td class="part">Failure of the <code>M05m</code> roll</td></tr>
+<tr><td>N60 BACK TO JERICHO; N61–N63 the endings</td><td>Two speech versions</td><td class="yes"><code>M05o</code>; <code>ch19Ending</code></td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Every arrow (template, small = 1, large = 2)</h2>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Jericho</th><th>North</th><th>Simon</th><th>Josh</th></tr></thead>
+<tbody>
+<tr><td>Drone ✓ (<code>M05c</code>)</td><td>–</td><td class="n">+1</td><td class="n">+1</td><td class="n">+1</td></tr>
+<tr><td>Drone ✗ (<code>M05c</code>)</td><td>–</td><td class="n">−1</td><td class="n">−1</td><td class="n">−1</td></tr>
+<tr><td>Kill Guard (<code>M05e</code> 0), ATTACK (<code>M05f</code> 0)</td><td>–</td><td>–</td><td>–</td><td class="n">−2</td></tr>
+<tr><td>Run away (<code>M05e</code> 2)</td><td class="n">−1</td><td class="n">−2</td><td class="n">−1</td><td class="n">−1</td></tr>
+<tr><td>FREE THEM (<code>M05h</code> 0)</td><td>–</td><td class="n">+1</td><td class="n">+1</td><td class="n">+1</td></tr>
+<tr><td>ACCEPT John (<code>M05i</code> 0)</td><td>–</td><td class="n">−1</td><td class="n">−1</td><td class="n">+1</td></tr>
+<tr><td>GET THE KEY (<code>M05j</code> 0)</td><td>–</td><td class="n">+1</td><td class="n">+1</td><td class="n">−1</td></tr>
+<tr><td>LEAVE (<code>M05j</code> 1)</td><td>–</td><td class="n">−1</td><td>–</td><td class="n">+1</td></tr>
+<tr><td>Be seen by the guards (any control-room alarm)</td><td class="n">−2</td><td class="n">−2</td><td class="n">−1</td><td class="n">−1</td></tr>
+<tr><td>Ending: stole the truck</td><td class="n">+2</td><td class="n">+2</td><td class="n">+2</td><td class="n">+1</td></tr>
+<tr><td>Ending: full bags, no truck</td><td class="n">+1</td><td class="n">+1</td><td class="n">+1</td><td class="n">+1</td></tr>
+<tr><td>Ending: ran away when the guard arrived (RUN AWAY, HIDE)</td><td class="n">−2</td><td class="n">−1</td><td class="n">−1</td><td class="n">−1</td></tr>
+<tr><td>Ending: Markus failed to escape and was rescued</td><td class="n">−2</td><td class="n">−2</td><td class="n">−1</td><td class="n">−1</td></tr>
+</tbody></table></div>
+<p class="fine">Not built: the wiki’s Jericho arrows on the drone (both results), on FREE THEM and on ACCEPT. The template has no Jericho icon at those points, and section 10 of the research note says the template wins. No public-opinion or instability change anywhere in the chapter.</p>
+
+<h2 id="totals">4 · Path totals (research note §3)</h2>
+<div class="table"><table>
+<thead><tr><th>Path</th><th>Jericho</th><th>North</th><th>Simon</th><th>Josh</th><th>Ending</th></tr></thead>
+<tbody>
+<tr><td>Drone ✓, grab and release, free, accept, get key, lure, avoid</td><td class="n">+2</td><td class="n">+4</td><td class="n">+4</td><td class="n">+3</td><td>Truck</td></tr>
+<tr><td>Same, but John refused after freeing</td><td class="n">+1</td><td class="n">+3</td><td class="n">+3</td><td class="n">+3</td><td>Full bags</td></tr>
+<tr><td>Drone ✓, run away</td><td class="n">−3</td><td class="n">−2</td><td class="n">−1</td><td class="n">−1</td><td>Failed</td></tr>
+<tr><td>Drone ✓, crate left, accept, get key, caught, ABANDON</td><td class="n">−1</td><td class="n">0</td><td class="n">+1</td><td class="n">+1</td><td>Full bags</td></tr>
+</tbody></table></div>
+<p class="fine">All four totals are asserted in <code>tests/ch19.test.mjs</code>.</p>
+
+<h2 id="differs">5 · What the benchmark simplifies or decides</h2>
+<ul>
+<li><b>Risk values are unsourced:</b> drone 0.2; TAKE GUN 0.3 (failure split at 0.1 into TRIGGER ALARM and KILL GUARDS); ATTRACT GUARD 0.25; SHORT CIRCUIT 0.2; the fence 0.15 after an alarm and 0.08 without.</li>
+<li><b>KILL GUARDS</b> is the failure side of the threaten roll, as the chart marks it (✗). Markus still gets the key. Only Derek dies (wiki: Al Dante is never killed on screen).</li>
+<li><b>Walking in</b> (MARKUS GETS SPOTTED) is offered as a fourth option with no roll. In the game it happens when the player does none of the three things.</li>
+<li><b>The “Be seen by the guards” arrows</b> also apply on TRIGGER ALARM (wiki: “The alarm sounds after Markus fails to get the key”).</li>
+<li><b>HIDE</b> takes the “Ran away when the guard arrived” ending block, like RUN AWAY.</li>
+<li><b>Skipping the crate</b> is a choice (<code>M05g</code>) because the chart draws the edge.</li>
+<li><b>Not modelled:</b> being seen after taking the key (one PowerPyx commenter), the “[do nothing]” time-out at the first encounter, and North calling out when Markus lags behind.</li>
+<li><b>Labels:</b> the first two prompts use the template’s button labels (Kill Guard, Grab and Hide, Run away, HIDE; ATTACK, Release, Hold), not the scene keys (KILL HUMAN GUARD, SEIZE ANDROID, FLEE; RELEASE ANDROID, DON’T MOVE).</li>
+</ul>
+
+<h2 id="endings">6 · Endings and the flags later chapters read</h2>
+<div class="table"><table>
+<thead><tr><th>Ending (<code>ch19Ending</code>)</th><th>How</th><th>John</th></tr></thead>
+<tbody>
+<tr><td>MARKUS STOLE A TRUCK FULL OF PARTS</td><td>ACCEPT, GET THE KEY, a method that gets the key</td><td>With Jericho</td></tr>
+<tr><td>GROUP RETURNED WITH FULL BAGS</td><td>REFUSE John and reach the fence; LEAVE and reach the fence; control-room alarm then ABANDON</td><td>Left behind; with Jericho; killed</td></tr>
+<tr><td>GROUP FAILED THEIR MISSION</td><td>RUN AWAY or HIDE; any fence failure; SAVE</td><td>Never joined; as before; killed on SAVE. After a control-room alarm and a fence failure, John is alive later (wiki continuity note).</td></tr>
+</tbody></table></div>
+<ul>
+<li><code>john</code>: John is with Jericho at the end of the chapter. Freedom March reads it (“JOHN JOINED IN ‘SPARE PARTS’”: he sacrifices himself for Markus).</li>
+<li><code>ch19JohnJoined</code>, <code>ch19JohnFate</code>, <code>ch19Ending</code>, <code>ch19Return</code> (which Jericho block), <code>ch19MikeKilled</code>, <code>ch19DerekKilled</code>, <code>ch19FreedAndroids</code>, <code>ch19Drone</code>, <code>ch19Guards</code>, <code>ch19Fence</code>, <code>ch19MarkusRescued</code>.</li>
+</ul>
+
+<h2 id="check">7 · Check in game</h2>
+<ul class="check">
+<li>Do the Jericho meters move on the drone, on FREE THEM and on ACCEPT (the wiki says yes; the template has no icon)?</li>
+<li>Does HIDE give the same Jericho ending block as RUN AWAY?</li>
+<li>After a control-room alarm, are the only outcomes the dogs and Markus’s damage, or can the group reach BACK TO JERICHO?</li>
+<li>Does TRIGGER ALARM carry the “Be seen by the guards” arrows? Can Markus be seen after taking the key, and where does that lead?</li>
+<li>Can SAVE ever save John?</li>
+<li>Is ALMOST SPOTTED optional?</li>
+<li>Which wording is on the first two prompts’ buttons: Kill Guard or KILL HUMAN GUARD?</li>
+<li>Can Markus be damaged at the fence when no alarm has sounded (after LEAVE)?</li>
+</ul>
+<p class="fine">Sources: <a href="https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/">PowerPyx walkthrough and chart</a> · <a href="https://detroit-become-human.fandom.com/wiki/Spare_Parts">Fandom wiki: Spare Parts</a> · <a href="https://detroitbecometext.github.io/chapters/19">detroitbecometext transcript</a> · <a href="https://detroit-become-human.fandom.com/wiki/Relationship_Stat">Relationship Stat</a> · <a href="https://detroit-become-human.fandom.com/wiki/John">John</a>.</p>
+</main>
+</body>
+</html>

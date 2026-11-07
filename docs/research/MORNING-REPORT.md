@@ -2600,3 +2600,5 @@ Counts cover only the chapter checkboxes above; seven cross-chapter calibration 
 | 16 | 35 | 32 | 117 |
 
 **Total chapter checklist items: 1452.**
+
+Inventory verified 2026-11-06 23:31:43 PST: all 32 chapter sections, 1,452 chapter checklist lines, seven calibration procedures and all 121 captured option-risk fields accounted for. The status and source snapshots above remain as timestamped.

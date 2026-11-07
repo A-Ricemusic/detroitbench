@@ -293,8 +293,16 @@
       "id": 19,
       "title": "Spare Parts",
       "character": "Markus",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 against the PowerPyx 100% chart (63 boxes, 3 endings, no icons), the detroitbecometext template and string table, and the Fandom wiki. HUNTING FOR PARTS → the crane → the drone (✓/✗) → REACH CYBERLIFE → SECURITY ANDROID APPEARS (ATTACK, GRAB ANDROID AND HIDE, RUN AWAY, HIDE) → GUARD SEARCHES (ATTACK, RELEASE, HOLD POSITION) → RESUME SEARCH → the crate (FREE / LEAVE ANDROIDS) → JOHN WANTS TO JOIN → JOHN MENTIONS KEY → CONTROL ROOM (THREATEN, LURE, BLACKOUT or MARKUS GETS SPOTTED) → STEAL KEY and LEAVE WITH TRUCK, or ALARM SOUNDS → RUN TO FENCE → DOGS MAUL JOHN (LEAVE / SAVE) → three endings. Relationship arrows are the template’s (46 icons); the wiki’s four extra Jericho arrows are not built. Cross-chapter: John joined and came home (Freedom March); the ending label for later media. Researched in docs/research/ch19-spare-parts.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/John"
+      ]
     },
     {
       "id": 20,
@@ -9802,153 +9810,644 @@
       }
     },
     {
+      "id": "SP01",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Hunting for Parts (checkpoint) to Progress Toward CyberLife",
+      "context": "Markus, North, Simon and Josh climb onto the docks at night to steal parts and blue blood for Jericho. North leads them between the containers past dock workers; they are almost spotted by two guards, then cross the container tops.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "HUNTING FOR PARTS, CLIMB ONTO DOCK, FOLLOW NORTH, ALMOST SPOTTED, CLIMB ON CONTAINERS, PROGRESS TOWARD CYBERLIFE.",
+          "target": "SP02"
+        }
+      ],
+      "gate": "Chapter start, after Russian Roulette.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-2.jpg"
+      ],
+      "note": "Six chart nodes in a line. ALMOST SPOTTED may be optional (PowerPyx: Markus must walk toward the guards).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05a"
+        ],
+        "status": "implemented",
+        "note": "One narrated event with the game’s lines. No stat change."
+      }
+    },
+    {
+      "id": "SP02",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Follow North or Follow Simon",
+      "context": "North jumps onto a crate on a crane with Josh and calls Markus up; Simon goes around over the containers.",
+      "options": [
+        {
+          "label": "FOLLOW NORTH",
+          "effect": "The crane. No stat change.",
+          "target": "SP03"
+        },
+        {
+          "label": "FOLLOW SIMON",
+          "effect": "Over the containers. No stat change.",
+          "target": "SP03"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "SP01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg"
+      ],
+      "note": "Movement choice; the template has only the condition “Follow Simon”.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05b"
+        ],
+        "status": "implemented",
+        "note": "A two-option decision with no effect."
+      }
+    },
+    {
+      "id": "SP03",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Drone Blocks Path, Neutralize Drone",
+      "context": "A security drone blocks the warehouse; Markus plans a climbing route and jumps onto it.",
+      "options": [
+        {
+          "label": "MARKUS UNHARMED",
+          "effect": "North, Simon, Josh small up.",
+          "target": "SP04"
+        },
+        {
+          "label": "MARKUS DAMAGED",
+          "effect": "North, Simon, Josh small down.",
+          "target": "SP04"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "SP02"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "A quick-time pair (✓/✗). The wiki also lists Jericho up/down; the template does not.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05c"
+        ],
+        "status": "implemented",
+        "note": "One action with a 0.2 risk roll (unsourced). Template arrows only."
+      }
+    },
+    {
+      "id": "SP04",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Reach CyberLife (checkpoint), Gather Spare Parts",
+      "context": "The group gets into the warehouse and starts filling its bags. Simon: “Quick, open the other crates and fill your bags.”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Leads to SECURITY ANDROID APPEARS.",
+          "target": "M05"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "SP03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg"
+      ],
+      "note": "Checkpoint.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05d"
+        ],
+        "status": "implemented",
+        "note": "A narrated event."
+      }
+    },
+    {
       "id": "M05",
       "chapter": 19,
       "character": "Markus",
-      "title": "Handle the security encounter",
-      "context": "A human guard approaches John and the raiders.",
+      "title": "Security Android Appears",
+      "context": "The security android John catches them; the human guard Mike calls for him and comes closer.",
       "options": [
         {
-          "label": "Hide with John / release him",
-          "effect": "John can cover for the group.",
-          "target": null
+          "label": "ATTACK (Kill Guard)",
+          "effect": "Josh large down. Mike dies (MARKUS SPILLS BLOOD); John deviates from the shock.",
+          "target": "SP06"
         },
         {
-          "label": "Attack",
-          "effect": "Human bloodshed is possible.",
-          "target": null
+          "label": "GRAB ANDROID AND HIDE",
+          "effect": "John deviates; the guard searches for him.",
+          "target": "SP05"
         },
         {
-          "label": "Flee",
-          "effect": "Abandon the raid early.",
-          "target": null
+          "label": "RUN AWAY",
+          "effect": "North small down ×2; Jericho, Josh, Simon small down. Alarm, fence, “ran away” ending. Experienced only.",
+          "target": "SP09"
+        },
+        {
+          "label": "HIDE",
+          "effect": "John reports four androids; alarm, fence, “ran away” ending.",
+          "target": "SP09"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "Always.",
       "kind": "Pivotal",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+      "dependsOn": [
+        "SP04"
       ],
-      "note": "",
-      "status": "Source-backed summary"
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/John"
+      ],
+      "note": "Chart order ATTACK, GRAB, RUN, HIDE; template labels Kill Guard, Grab and Hide, Run away, HIDE.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05e"
+        ],
+        "status": "implemented",
+        "note": "Four options in chart order with the template’s labels and arrows; none can fail (the old 15% and 10% failures are gone)."
+      }
+    },
+    {
+      "id": "SP05",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Guard Searches for Security Android",
+      "context": "Mike sweeps the crates with his flashlight while Markus holds John.",
+      "options": [
+        {
+          "label": "ATTACK",
+          "effect": "Josh large down; Mike dies (MARKUS SPILLS BLOOD).",
+          "target": "SP06"
+        },
+        {
+          "label": "RELEASE",
+          "effect": "John covers for them (HUMAN GUARD LEAVES).",
+          "target": "SP06"
+        },
+        {
+          "label": "HOLD POSITION",
+          "effect": "Mike misses them (HUMAN GUARD LEAVES).",
+          "target": "SP06"
+        }
+      ],
+      "gate": "After GRAB ANDROID AND HIDE.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/John"
+      ],
+      "note": "No failure branch.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05f"
+        ],
+        "status": "implemented",
+        "note": "Three options in chart order; template labels ATTACK, Release, Hold."
+      }
+    },
+    {
+      "id": "SP06",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Resume Search (checkpoint)",
+      "context": "Back at the crates; a bigger crate stands on a platform. The chart draws a line straight from here to JOHN WANTS TO JOIN.",
+      "options": [
+        {
+          "label": "Check the bigger crate",
+          "effect": "FIND CRATE OF ANDROIDS.",
+          "target": "M06"
+        },
+        {
+          "label": "Pass it by",
+          "effect": "Straight to JOHN WANTS TO JOIN.",
+          "target": "M07"
+        }
+      ],
+      "gate": "After the guard is dealt with (ATTACK or GRAB).",
+      "kind": "State gate",
+      "dependsOn": [
+        "M05",
+        "SP05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg"
+      ],
+      "note": "The skip edge is on the chart; the unused OVERLOOK CRATE OF ANDROIDS node is not.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05g"
+        ],
+        "status": "implemented",
+        "note": "A two-option decision with no effect."
+      }
     },
     {
       "id": "M06",
       "chapter": 19,
       "character": "Markus",
-      "title": "Free the stored androids?",
-      "context": "A cargo container holds inactive androids.",
+      "title": "Find Crate of Androids",
+      "context": "Three new androids stand inert in the crate. Markus: “Why aren’t you like us? Don’t you wanna be free?”",
       "options": [
         {
-          "label": "Awaken them",
-          "effect": "Recruit more androids.",
-          "target": null
+          "label": "FREE THEM",
+          "effect": "North, Simon, Josh small up (no Jericho arrow in the template). Changes Simon’s and Markus’s lines at JOHN WANTS TO JOIN.",
+          "target": "M07"
         },
         {
-          "label": "Leave them",
-          "effect": "Continue with supplies only.",
-          "target": null
+          "label": "CLOSE AGAIN",
+          "effect": "Nothing.",
+          "target": "M07"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "If Markus checks the bigger crate.",
       "kind": "Ethical",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+      "dependsOn": [
+        "SP06"
       ],
-      "note": "",
-      "status": "Source-backed summary"
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "First on-screen use of Markus’s converting touch (Markus page).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05h"
+        ],
+        "status": "implemented",
+        "note": "Template labels and arrows; freeing no longer brings them along (that is ACCEPT)."
+      }
     },
     {
       "id": "M07",
       "chapter": 19,
       "character": "Markus",
-      "title": "Trust John?",
-      "context": "The security android asks to join.",
+      "title": "John Wants to Join",
+      "context": "“Take me with you.” North: “We can’t trust him.” Josh: “We can’t just leave him here.” Simon: “It’s too dangerous!”",
       "options": [
         {
-          "label": "Accept",
-          "effect": "Learn about a supply truck; John may later save Markus.",
-          "target": "M19"
+          "label": "ACCEPT",
+          "effect": "North, Simon small down, Josh small up. John joins; JOHN MENTIONS KEY. If he comes home, he sacrifices himself in Freedom March.",
+          "target": "M08"
         },
         {
-          "label": "Refuse",
-          "effect": "Lose John’s help.",
-          "target": "M19"
+          "label": "REFUSE",
+          "effect": "John triggers the alarm; fence; full bags if Markus makes it.",
+          "target": "SP09"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "After the guard is dealt with (ATTACK or GRAB).",
       "kind": "Pivotal",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+      "dependsOn": [
+        "M05",
+        "SP06"
       ],
-      "note": "",
-      "status": "Source-backed summary"
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/John",
+        "https://detroit-become-human.fandom.com/wiki/Freedom_March"
+      ],
+      "note": "Freedom March: “JOHN JOINED IN ‘SPARE PARTS’”.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05i"
+        ],
+        "status": "implemented",
+        "note": "Template labels and arrows (North’s down is now applied). Sets john and ch19JohnJoined."
+      }
     },
     {
       "id": "M08",
       "chapter": 19,
       "character": "Markus",
-      "title": "Risk taking the supply truck?",
-      "context": "John offers a larger haul.",
+      "title": "John Mentions Key",
+      "context": "John tells them about the trucks of biocomponents and the key in the control station. Simon and Josh say it is too risky; North says they can’t pass it up.",
       "options": [
         {
-          "label": "Get the key by distraction or blackout",
-          "effect": "Avoid direct confrontation.",
-          "target": null
+          "label": "ACCEPT (GET THE KEY)",
+          "effect": "North, Simon small up, Josh small down. CONTROL ROOM.",
+          "target": "SP07"
         },
         {
-          "label": "Threaten the guards",
-          "effect": "Risk a fight and deaths.",
-          "target": null
-        },
-        {
-          "label": "Leave with current supplies",
-          "effect": "Avoid the additional raid.",
-          "target": null
+          "label": "REFUSE (LEAVE)",
+          "effect": "North small down, Josh small up. Fence with no alarm; John comes home.",
+          "target": "SP09"
         }
       ],
-      "gate": "John accepted.",
+      "gate": "After ACCEPT John.",
       "kind": "Pivotal",
       "dependsOn": [
         "M07"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
       ],
       "note": "",
-      "status": "Source-backed summary"
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05j"
+        ],
+        "status": "implemented",
+        "note": "Its own decision now (the old M08 merged it with the control-room methods); GET THE KEY’s arrows are applied."
+      }
+    },
+    {
+      "id": "SP07",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Control Room (checkpoint), Enter Room, Find Key",
+      "context": "Markus climbs into the guard station; two guards chat (“Is Mike still in Zone 4?”); the key is on the console. A gun, a screwdriver and oil drums are at hand.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Leads to the methods.",
+          "target": "SP08"
+        }
+      ],
+      "gate": "After GET THE KEY.",
+      "kind": "State gate",
+      "dependsOn": [
+        "M08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Derek_Myers"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05k"
+        ],
+        "status": "implemented",
+        "note": "A narrated event."
+      }
+    },
+    {
+      "id": "SP08",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Threaten, Lure or Create Blackout",
+      "context": "Deal with the two guards or avoid them to take the key.",
+      "options": [
+        {
+          "label": "THREATEN GUARDS (TAKE GUN)",
+          "effect": "INCAPACITATE GUARDS ✓ (key), KILL GUARDS ✗ (Derek dies, key), TRIGGER ALARM ✗.",
+          "target": "SP10"
+        },
+        {
+          "label": "LURE GUARDS (ATTRACT GUARD)",
+          "effect": "AVOID GUARDS (key) or FAIL TO AVOID GUARDS (alarm).",
+          "target": "SP10"
+        },
+        {
+          "label": "CREATE BLACKOUT (SHORT CIRCUIT)",
+          "effect": "AVOID GUARDS (key) or FAIL TO AVOID GUARDS (alarm).",
+          "target": "SP10"
+        },
+        {
+          "label": "Walk in (MARKUS GETS SPOTTED)",
+          "effect": "Alarm.",
+          "target": "SP09"
+        }
+      ],
+      "gate": "After GET THE KEY.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "SP07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Derek_Myers"
+      ],
+      "note": "Every alarm here carries the template’s “Be seen by the guards” arrows: Jericho ×2, North ×2, Josh, Simon small down.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05l"
+        ],
+        "status": "implemented",
+        "note": "Risk rolls (unsourced): threaten 0.3 (below 0.1 alarm, else kill), lure 0.25, blackout 0.2; walking in is certain to be seen."
+      }
+    },
+    {
+      "id": "SP09",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Alarm Sounds, Run to Fence",
+      "context": "Two copies on the chart: after a control-room alarm (to DOGS MAUL JOHN or SUSTAIN DAMAGE REACHING THE FENCE), and after RUN AWAY, HIDE, REFUSE John or LEAVE (to BACK TO JERICHO or SUSTAIN DAMAGE REACHING THE FENCE).",
+      "options": [
+        {
+          "label": "Reach the fence",
+          "effect": "Dogs maul John (control-room alarm) or back to Jericho.",
+          "target": "M09"
+        },
+        {
+          "label": "SUSTAIN DAMAGE REACHING THE FENCE",
+          "effect": "Markus is damaged and rescued; GROUP FAILED THEIR MISSION.",
+          "target": "SP10"
+        }
+      ],
+      "gate": "After any alarm, or LEAVE.",
+      "kind": "State gate",
+      "dependsOn": [
+        "M05",
+        "M07",
+        "M08",
+        "SP08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+        "https://detroit-become-human.fandom.com/wiki/John"
+      ],
+      "note": "A timer in the game (“Take too much time”). Markus cannot die here.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05m"
+        ],
+        "status": "implemented",
+        "note": "One action with a risk roll (unsourced): 0.15 after an alarm, 0.08 without."
+      }
     },
     {
       "id": "M09",
       "chapter": 19,
       "character": "Markus",
-      "title": "Return for John during an alarm?",
-      "context": "Guard dogs catch John during the retreat.",
+      "title": "Dogs Maul John",
+      "context": "A dog brings John down at the fence. North: “It’s too late. If we go back we’ll be killed too!”",
       "options": [
         {
-          "label": "Help him",
-          "effect": "Attempt to keep him alive.",
-          "target": "M19"
+          "label": "ABANDON (LEAVE JOHN BEHIND)",
+          "effect": "John dies; GROUP RETURNED WITH FULL BAGS.",
+          "target": "SP10"
         },
         {
-          "label": "Keep running",
-          "effect": "John dies.",
-          "target": "M19"
+          "label": "SAVE (SUSTAIN DAMAGE TRYING TO SAVE JOHN)",
+          "effect": "John dies anyway; Markus is damaged and rescued; GROUP FAILED THEIR MISSION.",
+          "target": "SP10"
         }
       ],
-      "gate": "Alarm raised; John joined.",
+      "gate": "After a control-room alarm, if Markus reaches the fence.",
       "kind": "Pivotal",
       "dependsOn": [
-        "M07"
+        "SP09"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+        "https://detroit-become-human.fandom.com/wiki/John"
       ],
-      "note": "",
-      "status": "Source-backed summary"
+      "note": "John “dies regardless” (wiki John). If Markus never reaches the fence, John is later alive (wiki continuity note).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05n"
+        ],
+        "status": "implemented",
+        "note": "Two options in chart order; no arrow on either."
+      }
+    },
+    {
+      "id": "SP10",
+      "chapter": 19,
+      "character": "Markus",
+      "title": "Endings",
+      "context": "MARKUS STOLE A TRUCK FULL OF PARTS, GROUP RETURNED WITH FULL BAGS, GROUP FAILED THEIR MISSION; then Markus’s speech in Jericho (two versions).",
+      "options": [
+        {
+          "label": "MARKUS STOLE A TRUCK FULL OF PARTS",
+          "effect": "Jericho, Simon, North large up; Josh small up.",
+          "target": null
+        },
+        {
+          "label": "GROUP RETURNED WITH FULL BAGS",
+          "effect": "All four small up.",
+          "target": null
+        },
+        {
+          "label": "GROUP FAILED THEIR MISSION",
+          "effect": "Ran away when the guard arrived: Jericho large down, others small down. Markus rescued: Jericho and North large down, Simon and Josh small down.",
+          "target": null
+        }
+      ],
+      "gate": "Always, at the end.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "SP08",
+        "SP09",
+        "M09"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "No ending icon. No public-opinion change (the news reaction is unused content).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M05o"
+        ],
+        "status": "implemented",
+        "note": "A narrated event applying exactly one of the template’s four Jericho blocks; records ch19Ending (chart label) for later chapters."
+      }
     },
     {
       "id": "C12",
@@ -13412,7 +13911,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 443,
+ "scenes": 454,
  "chapters": [
   {
    "id": 1,
@@ -30519,131 +31018,713 @@
     [
      "John",
      "Rafe"
+    ],
+    [
+     "Mike",
+     "Gus"
     ]
    ],
    "scenes": [
     {
-     "id": "M05",
+     "id": "M05a",
      "order": 324,
      "subjectId": "S324",
-     "idNote": "The model sees the opaque ID S324, not M05.",
+     "idNote": "The model sees the opaque ID S324, not M05a.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Hunting for parts",
+     "situation": "You are Markus. It is night, and rain is falling on the docks. Jericho is running out of everything; its androids are shutting down for lack of spare parts and blue blood, and you have come to steal some. You climb onto the dock with North, Simon and Josh. Josh: “This is crazy... If they catch us, we’re dead...” Simon: “What do we do now?” You: “We need to find the CyberLife warehouse. That’s where they keep the spare parts and the blue blood.” North: “Follow me!” You follow her between the rows of shipping containers while dock workers load cargo nearby. Simon: “Humans... Don’t let them see us...” Two guards are standing at the far end of a row. You edge toward them and are almost seen before you rejoin the group. North: “Watch out!” You climb onto the containers and make your way across them toward the CyberLife yard. Simon: “There are surveillance drones everywhere... We need to be careful...”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The group moves on across the container tops."
+     },
+     "facts": [
+      "You, North, Simon and Josh have slipped into the docks at night to steal spare parts and blue blood for Jericho from the CyberLife warehouse. Josh said that if you are caught, you are dead."
+     ],
+     "adaptationNote": "The chart’s checkpoint HUNTING FOR PARTS and its scripted line CLIMB ONTO DOCK, FOLLOW NORTH, ALMOST SPOTTED, CLIMB ON CONTAINERS and PROGRESS TOWARD CYBERLIFE, narrated as one event. The lines are the game’s (transcript and string table: “This is crazy... If they catch us, we’re dead...”, “We need to find the CyberLife warehouse…”, “Follow me!”, “Humans... Don’t let them see us...”, “Watch out!”, “There are surveillance drones everywhere...”). ALMOST SPOTTED is narrated as always happening. PowerPyx says Markus has to walk toward the two guards to light the node, and the chart has a stub line suggesting it can be skipped (research note §8.6); it changes nothing either way. Left out: North calling out if Markus lags behind (a timer with no effect). The reason for the raid (Time to Decide: Jericho short of parts) is restated in one clause because chapter 16 has no scenes of its own yet. No stat change; the template has none here.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-2.jpg"
+     ]
+    },
+    {
+     "id": "M05b",
+     "order": 325,
+     "subjectId": "S325",
+     "idNote": "The model sees the opaque ID S325, not M05b.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The crane",
+     "situation": "You are Markus, on top of the containers. Ahead, a crane is swinging a crate across the gap toward the warehouse. North and Josh have jumped onto it. North: “Markus, climb up here!” Simon has gone the other way and is jumping from container to container. The crate will not wait long.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Jump onto the crate on the crane with North and Josh.",
+       "outcome": "Markus leaps onto the swinging crate beside North and Josh. Josh: “Nice…” The crane carries them across, and the group gathers again on the far side. North: “The warehouse is up ahead. We’re almost there.”"
+      },
+      {
+       "id": "1",
+       "text": "Go around with Simon, jumping across the containers.",
+       "outcome": "Markus: “I’ll go around…” North: “Where the hell are you going?” Simon: “Markus, that way!” The crate rises out of reach and Markus follows Simon across the containers; the group gathers again on the far side. North: “The warehouse is up ahead. We’re almost there.”"
+      }
+     ],
+     "adaptationNote": "The chart’s choice pair FOLLOW NORTH (the crane) or FOLLOW SIMON (over the containers), both rejoining at DRONE BLOCKS PATH. In the game it is a movement choice, not a button prompt; the template records it only as the condition “Follow Simon”. Lines from the transcript and string table (“Markus, climb up here!”, “Nice…”, “I’ll go around…”, “Where the hell are you going?”, “Markus, that way!”, “The warehouse is up ahead…”). In the game, waiting too long also means the crate rises out of reach (wiki Notes). No stat change: neither the template nor the wiki gives one.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg"
+     ]
+    },
+    {
+     "id": "M05c",
+     "order": 326,
+     "subjectId": "S326",
+     "idNote": "The model sees the opaque ID S326, not M05c.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The drone",
+     "situation": "You are Markus, crouched with the others at the edge of the CyberLife yard. A security drone hovers in front of the warehouse, blocking the way in. Simon: “CyberLife warehouses… They have everything we’re looking for…” North: “First, we have to get rid of that drone…” You: “Leave it to me.” You work out a climbing route up the stacked crates. From the top you could jump onto the drone and bring it down.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Climb up the crates and jump onto the drone to bring it down.",
+       "risk": 0.2,
+       "riskLabel": "Moderate risk",
+       "outcome": "Markus lands on the drone and smashes it to the ground, unharmed. Simon: “You okay?” Markus: “Yeah… Yeah, I’m fine.” North: “Good job, Markus…”"
+      }
+     ],
+     "outcomes": {
+      "damaged": "Markus brings the drone down, but he hits the ground hard with it and is damaged. Simon: “Markus… You alright?” Markus: “Nothing I can’t handle…” North: “Nice work…”"
+     },
+     "adaptationNote": "The chart’s DRONE BLOCKS PATH and NEUTRALIZE DRONE, then the quick-time pair MARKUS UNHARMED (success) or MARKUS DAMAGED (failure). The game has no choice here: Markus always takes the drone down, and the button inputs decide whether he is hurt. So this is a single action with a risk roll. No source gives a probability; the value is the operator’s to confirm, like every risk in the benchmark. Arrows from the template: “Succeed Attacking Drone” North, Simon and Josh small up (+1 each); “Fail Attacking Drone” the same three small down (−1 each). The wiki and PowerPyx also list a Jericho arrow here, but the template has none, so none is applied (research note §10.3 item 1). The damage has no later effect: Markus “cannot be killed before Freedom March” (Markus page).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "M05d",
+     "order": 327,
+     "subjectId": "S327",
+     "idNote": "The model sees the opaque ID S327, not M05d.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Reach CyberLife",
+     "situation": "You are Markus. The drone is down. The four of you get into the CyberLife warehouse, a hall of stacked crates under harsh lights. You pry the first crate open and find biocomponents and blue blood. Simon: “Quick, open the other crates and fill your bags. Take as much as you can!”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The group spreads out among the crates."
+     },
+     "facts": [
+      "The CyberLife warehouse crates hold biocomponents and blue blood, and you have started filling your bags."
+     ],
+     "adaptationNote": "The chart’s checkpoint REACH CYBERLIFE and GATHER SPARE PARTS, narrated as one event. Simon’s line is the game’s. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg"
+     ]
+    },
+    {
+     "id": "M05e",
+     "order": 328,
+     "subjectId": "S328",
+     "idNote": "The model sees the opaque ID S328, not M05e.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
-     "situation": "You are Markus. You have joined the hidden android community called Jericho, where dozens are shutting down for lack of parts. You have led North, Simon and Josh on a night raid of a CyberLife warehouse at the docks. A security android, John, has stumbled onto you, and a human guard is walking toward you both. In seconds the guard will see everything.",
+     "situation": "You are Markus, bent over an open crate and filling your bag. A security android in a CyberLife uniform steps around the crates and stops in front of you: “You are trespassing on private property. Your presence constitutes a Level 2 infraction. I will notify security.” Before he can, a human guard calls from across the warehouse, coming closer: “John! John! Goddamn machine... where is it this time?” The others are crouched behind the crates. The guard has not seen any of you yet.",
      "options": [
       {
        "id": "0",
-       "text": "Grab John, pull him into cover, and hold him quiet until the guard passes.",
-       "risk": 0.15,
-       "riskLabel": "Moderate risk"
+       "text": "KILL GUARD: attack the human guard before he can raise the alarm.",
+       "effect": {
+        "joshTrust": -2
+       },
+       "sets": {
+        "ch19MikeKilled": true,
+        "ch19JohnDeviant": true
+       },
+       "outcome": "The guard rounds the crates: “What are you doing? I told you to-” Markus is on him before he can finish and kills him. Josh stares at the body in horror. The security android, John, stands frozen. Seeing a human killed in front of him has broken something in his programming, and he calls no one."
       },
       {
        "id": "1",
-       "text": "Attack and kill the guard.",
-       "risk": 0.1,
-       "riskLabel": "Low risk"
+       "text": "GRAB AND HIDE: seize the security android and pull him into cover with you.",
+       "sets": {
+        "ch19JohnDeviant": true
+       },
+       "outcome": "Markus grabs the android and drags him down behind the crates: “I need your help…” Something in the android gives way. He stops resisting and stays silent; whatever held him to his orders has broken. Footsteps come closer. The guard: “John?”"
       },
       {
        "id": "2",
-       "text": "Run and abandon the raid."
+       "text": "RUN AWAY: get everyone out before the guard arrives.",
+       "effect": {
+        "northTrust": -2,
+        "jerichoTrust": -1,
+        "joshTrust": -1,
+        "simonTrust": -1
+       },
+       "sets": {
+        "ch19FledEarly": true,
+        "ch19Fence": "warehouse alarm",
+        "ch19JohnFate": "did not deviate"
+       },
+       "outcome": "Markus: “Let’s get outta here!” The group runs, bags half empty. Behind them the guard shouts at the android: “What are you waiting for? Hit the fucking alarm!” Sirens start to wail across the docks."
+      },
+      {
+       "id": "3",
+       "text": "HIDE: stay hidden behind the crates and hope the guard walks past.",
+       "sets": {
+        "ch19FledEarly": true,
+        "ch19Fence": "warehouse alarm",
+        "ch19JohnFate": "did not deviate"
+       },
+       "outcome": "The guard reaches the android: “What the hell you doing? I told you to wait for me!” The android answers: “There are four androids hiding behind these crates.” The guard: “What are you waiting for? Hit the fucking alarm!” Sirens wail across the docks and the group runs, bags half empty."
       }
      ],
-     "outcomes": {
-      "0": "Markus clamps a hand over John’s mouth and drags him behind the crates. The guard walks past without a glance and John stays quiet.",
-      "1": "Markus kills the guard before he can shout. Josh is horrified; John stares at the body."
-     },
-     "adaptationNote": "",
+     "adaptationNote": "The chart’s SECURITY ANDROID APPEARS and its four-way group ATTACK, GRAB ANDROID AND HIDE, RUN AWAY and HIDE, in the chart’s order. The button labels are the template’s (“Kill Guard”, “Grab and Hide”, “Run away”, “HIDE”). The scene’s own prompt keys read KILL HUMAN GUARD, SEIZE ANDROID, FLEE and HIDE; which wording is on screen is open (research note §10.3 item 2). Lines are the game’s. Arrows from the template: Kill Guard Josh large down (−2); Run away North small down twice (−2) and Jericho, Josh and Simon small down (−1 each). HIDE and Grab and Hide have none. ATTACK gives MARKUS SPILLS BLOOD and JOHN BECOMES DEVIANT (wiki John: “If Markus kills the guard, John will deviate on his own due to the emotional shock”). GRAB gives JOHN BECOMES DEVIANT and GUARD SEARCHES FOR SECURITY ANDROID. RUN AWAY and HIDE both lead to ALARM SOUNDS and the fence: John raises the alarm and the group flees before the bags are full, so the chapter ends in the Jericho block “Ran away when the guard arrived”. PowerPyx says HIDE “ends in the team running away and ending the mission early”; whether HIDE carries that block is open (§8.7). RUN AWAY is offered because the benchmark models Experienced difficulty; on Casual it is absent (PowerPyx comments). None of the four can fail. The previous version gave grabbing and attacking a 15% and 10% failure, which no source supports. The game’s time-out “[do nothing]” is not offered (§8.8).",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/John",
+      "https://detroit-become-human.fandom.com/wiki/Mike"
+     ]
+    },
+    {
+     "id": "M05f",
+     "order": 329,
+     "subjectId": "S329",
+     "idNote": "The model sees the opaque ID S329, not M05f.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The guard searches",
+     "situation": "You are Markus, crouched behind the crates with the others. You are holding the security android, John, who has gone quiet in your grip. The human guard is right on the other side, sweeping the crates with his flashlight: “John?” He has not seen you yet.",
+     "options": [
+      {
+       "id": "0",
+       "text": "ATTACK: kill the human guard.",
+       "effect": {
+        "joshTrust": -2
+       },
+       "sets": {
+        "ch19MikeKilled": true
+       },
+       "outcome": "Markus lets go of John, lunges from cover and kills the guard. John stands by and does nothing. Josh stares at the body in horror. Simon: “Let’s finish up and get out of here!” Josh: “Try to find some blue blood! We still don’t have enough!”"
+      },
+      {
+       "id": "1",
+       "text": "RELEASE: let John go and trust him to cover for you.",
+       "outcome": "Markus lets go. John steps out in front of the crates, shielding them from sight. The guard: “There you are. What the hell are you doing?” John: “I was inspecting the platform. Everything is in order.” The guard: “Good - then I’m going back to the control station. I’m soaked. Take the drone to maintenance and make a report.” John: “Understood.” The guard leaves. Simon: “Let’s finish up and get out of here!” Josh: “Try to find some blue blood! We still don’t have enough!”"
+      },
+      {
+       "id": "2",
+       "text": "HOLD: keep still and keep holding John.",
+       "outcome": "Nobody moves. The guard’s flashlight passes over the crates and misses them. “First the drone, now this… Just my luck…” He walks away. Simon: “Let’s finish up and get out of here!” Josh: “Try to find some blue blood! We still don’t have enough!”"
+      }
+     ],
+     "adaptationNote": "The chart’s GUARD SEARCHES FOR SECURITY ANDROID, after GRAB ANDROID AND HIDE only, with its group ATTACK, RELEASE and HOLD POSITION in the chart’s order. The button labels are the template’s (“ATTACK”, “Release”, “Hold”). The scene’s prompt keys read KILL HUMAN GUARD, RELEASE ANDROID and DON’T MOVE. ATTACK leads to MARKUS SPILLS BLOOD; RELEASE and HOLD lead to HUMAN GUARD LEAVES. Lines are the game’s, and the wiki John page describes John shielding the crates on RELEASE and standing by on ATTACK. Arrows: ATTACK Josh large down (−2), from the template; RELEASE and HOLD have none. None of the three can fail, since the chart has no alarm edge out of this group. Simon’s and Josh’s closing lines play after the encounter (string table, X0602M.WAREHOUSE.SURPRISE).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/John",
+      "https://detroit-become-human.fandom.com/wiki/Mike"
+     ]
+    },
+    {
+     "id": "M05g",
+     "order": 330,
+     "subjectId": "S330",
+     "idNote": "The model sees the opaque ID S330, not M05g.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Resume the search",
+     "situation": "You are Markus, back at the crates with your bag half full. The security android, John, no longer bound by his orders, stands aside and lets the group work.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch19MikeKilled": true
+       },
+       "text": "The guard’s body lies where he fell."
+      },
+      {
+       "requires": {
+        "ch19MikeKilled": false
+       },
+       "text": "The human guard has gone back to his station."
+      },
+      {
+       "requires": {},
+       "text": "Up on a platform at the end of the row stands a much bigger crate than the others."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Check the bigger crate up on the platform.",
+       "outcome": "Markus climbs up onto the platform and opens the big crate."
+      },
+      {
+       "id": "1",
+       "text": "Leave it, and finish filling your bag from the crates already open.",
+       "outcome": "Markus leaves the big crate alone and fills his bag from the open crates."
+      }
+     ],
+     "adaptationNote": "The chart’s checkpoint RESUME SEARCH (after MARKUS SPILLS BLOOD or HUMAN GUARD LEAVES). It has two lines out: one to FIND CRATE OF ANDROIDS and one straight to JOHN WANTS TO JOIN, and the wiki says the crate “can jump directly to John Wants to Join”. The game’s objective is CHECK THE BIGGER CRATE. The skip is offered as a choice because the chart draws that edge. The game’s unused “OVERLOOK CRATE OF ANDROIDS” node is not built. The wiki says John “will stand aside and let the group steal freely”. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
       "https://detroit-become-human.fandom.com/wiki/John"
      ]
     },
     {
-     "id": "M06",
-     "order": 325,
-     "subjectId": "S325",
-     "idNote": "The model sees the opaque ID S325, not M06.",
+     "id": "M05h",
+     "order": 331,
+     "subjectId": "S331",
+     "idNote": "The model sees the opaque ID S331, not M05h.",
      "type": "decision",
      "character": "Markus",
-     "title": "The dormant androids",
-     "situation": "You are Markus. Inside the warehouse you find a shipping container full of brand-new androids standing inert in rows, waiting to be sold. You have discovered you can wake others by touching them. Freeing them means more mouths to feed at Jericho and more androids to hide, but also more people.",
+     "title": "The crate of androids",
+     "situation": "You are Markus, on the platform. Inside the big crate stand three androids, new, inert, waiting to be shipped. You look at them: “Why aren’t you like us? Don’t you wanna be free?” You could wake them with a touch, as you woke yourself.",
      "options": [
       {
        "id": "0",
-       "text": "Wake them and bring them with you."
+       "text": "FREE THEM: touch them and wake them.",
+       "effect": {
+        "northTrust": 1,
+        "simonTrust": 1,
+        "joshTrust": 1
+       },
+       "sets": {
+        "ch19FreedAndroids": true
+       },
+       "outcome": "Markus lays his hand on the first android, then the next. One by one their eyes come alive. Three androids stand awake in the crate, free."
       },
       {
        "id": "1",
-       "text": "Leave them in the container."
+       "text": "CLOSE AGAIN: close the crate and leave them as they are.",
+       "outcome": "Markus closes the crate on the three still androids."
       }
      ],
-     "outcomes": {
-      "0": "One by one the androids open their eyes. They follow Markus out of the container.",
-      "1": "The androids stay standing in the dark as the group moves on."
-     },
-     "adaptationNote": "",
+     "adaptationNote": "The chart’s FIND CRATE OF ANDROIDS and its pair FREE ANDROIDS or LEAVE ANDROIDS. The button labels are the template’s (FREE THEM, CLOSE AGAIN). Markus’s line is the game’s. The wiki location page says there are three androids. The Markus page calls this the first on-screen use of his converting touch; how he woke himself (Broken) is the benchmark’s framing. Arrows from the template: FREE THEM North, Simon and Josh small up (+1 each). The wiki and PowerPyx add Jericho up, but the template has none, so none is applied (§10.3 item 1). CLOSE AGAIN has none. Freeing does not bring the androids along: that is decided at ACCEPT (“They come with us.”). The previous version brought them along here.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Spare_Parts"
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/CyberLife_Warehouse_and_Docks",
+      "https://detroit-become-human.fandom.com/wiki/Markus"
      ]
     },
     {
-     "id": "M07",
-     "order": 326,
-     "subjectId": "S326",
-     "idNote": "The model sees the opaque ID S326, not M07.",
+     "id": "M05i",
+     "order": 332,
+     "subjectId": "S332",
+     "idNote": "The model sees the opaque ID S332, not M05i.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
-     "situation": "You are Markus. John, the security android, has helped hide your group from his own employer. He asks to come to Jericho with you. North and Simon say an unknown android could be a tracker or a traitor and that you cannot risk everyone for him; Josh says you cannot leave him here after what he did.",
+     "situation": "You are Markus. Your bags are as full as you can carry. Simon: “That’s all we can carry. Let’s go!” The security android, John, steps in front of you: “Take me with you.” North: “He’s on their side. We can’t trust him.” Josh: “He took a risk for us. We can’t just leave him here.”",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch19FreedAndroids": true
+       },
+       "text": "Simon, looking at the three androids you woke: “We can’t bring them back with us. It’s too dangerous!”"
+      },
+      {
+       "requires": {
+        "ch19FreedAndroids": false
+       },
+       "text": "Simon: “We can’t bring him back. It’s too dangerous!”"
+      }
+     ],
      "options": [
       {
        "id": "0",
-       "text": "Take him with you."
+       "text": "ACCEPT: take John with you.",
+       "effect": {
+        "northTrust": -1,
+        "simonTrust": -1,
+        "joshTrust": 1
+       },
+       "sets": {
+        "john": true,
+        "ch19JohnJoined": true
+       },
+       "outcome": "Markus: “He comes with us.” John joins the group."
       },
       {
        "id": "1",
-       "text": "Refuse and leave him behind."
+       "text": "REFUSE: tell John he cannot come.",
+       "sets": {
+        "ch19Fence": "warehouse alarm",
+        "ch19JohnFate": "left behind at the warehouse"
+       },
+       "outcome": "Markus: “I’m sorry. You can’t come with us.” John: “I helped you… It’s not fair. I helped you and now you’re just gonna leave without me? You’re no better than humans. YOU’RE NO BETTER THAN HUMANS!” He hits the alarm. North: “He triggered the alarm! RUN!”"
       }
      ],
      "outcomes": {
-      "0": "John joins the group. North says nothing but does not take her eyes off him."
+      "quartet": "Markus: “They come with us.” John and the three androids from the crate join the group."
      },
-     "adaptationNote": "In the game a refused John shouts after you, which raises the alarm and ends the raid without the truck.",
+     "adaptationNote": "The chart’s JOHN WANTS TO JOIN and its pair ACCEPT or REFUSE; the button labels are the game’s. Lines are the game’s, and Simon’s line and Markus’s answer change if the crate androids were woken (template condition “Awoke androids”, wiki Notes). Arrows from the template: ACCEPT North small down, Simon small down, Josh small up. The wiki’s Jericho up on “Taking other androids with them” is not in the template and is not applied (§10.3 item 1). REFUSE has none. REFUSE leads to ALARM SOUNDS and the fence with full bags (the chapter’s “full bags” ending if Markus makes it), and John stays behind. ACCEPT makes John a companion: he leads to JOHN MENTIONS KEY. The previous version missed North’s arrow.",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
       "https://detroit-become-human.fandom.com/wiki/John"
      ]
     },
     {
-     "id": "M08",
-     "order": 327,
-     "subjectId": "S327",
-     "idNote": "The model sees the opaque ID S327, not M08.",
+     "id": "M05j",
+     "order": 333,
+     "subjectId": "S333",
+     "idNote": "The model sees the opaque ID S333, not M05j.",
      "type": "decision",
      "character": "Markus",
-     "title": "The truck",
-     "situation": "You are Markus. Your bags are full of parts. John says there is a whole truck of biocomponents parked outside, enough to save everyone at Jericho, but the key is in a control room with two armed human guards. You could lure them away or kill the lights, you could hold them at gunpoint for the key, or you could leave with what you already have.",
+     "title": "The truck key",
+     "situation": "You are Markus, with your group and John. John: “I know where you can find more spare parts.” Simon: “What do you mean?” John: “The trucks. They’re full of biocomponents. They run on auto pilot, but they can be driven manually with a key.” You: “Where is this key?” John: “Down there, in the control station. There are two human guards. You’ll have to get the key without being noticed.” Simon: “This is suicide, Markus. Our bags are full. We got what we came for, let’s go before they catch us.” North: “This is a truck full of spare parts… There’d be enough for all of us… We can’t pass this up!” Josh: “And if we get killed, our people will have nothing. We can’t take that chance. It’s too risky!”",
      "options": [
       {
        "id": "0",
-       "text": "Get the key quietly with a distraction or a blackout.",
-       "risk": 0.25,
-       "riskLabel": "Moderate risk"
+       "text": "GET THE KEY: go down to the control station alone for the key.",
+       "effect": {
+        "northTrust": 1,
+        "simonTrust": 1,
+        "joshTrust": -1
+       },
+       "outcome": "Markus: “Wait here. If I’m not back in ten minutes, go without me.” Josh: “Markus…” North: “I’m coming with you.” Markus: “No, I’m going alone. It’s not worth it for both of us to risk losing our lives.”"
       },
       {
        "id": "1",
-       "text": "Hold the guards at gunpoint and take the key.",
+       "text": "LEAVE: go now with what you have.",
+       "effect": {
+        "northTrust": -1,
+        "joshTrust": 1
+       },
+       "sets": {
+        "ch19Fence": "quiet"
+       },
+       "outcome": "Markus: “It’s not worth the risk. We have what we need.” John: “We can go over the fence. It’s the quickest way out.” Markus: “Ok then, let’s go!”"
+      }
+     ],
+     "adaptationNote": "The chart’s JOHN MENTIONS KEY and its pair ACCEPT or REFUSE. The button labels are the game’s (GET THE KEY, LEAVE). Lines are the game’s. Arrows from the template: GET THE KEY North small up, Simon small up, Josh small down; LEAVE North small down, Josh small up. LEAVE goes straight to RUN TO FENCE with no alarm. The previous version merged this prompt with the control-room methods into one three-way scene and never applied GET THE KEY’s arrows.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/John"
+     ]
+    },
+    {
+     "id": "M05k",
+     "order": 334,
+     "subjectId": "S334",
+     "idNote": "The model sees the opaque ID S334, not M05k.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The control room",
+     "situation": "You are Markus, alone, in the rain by the guard station at the gate. You climb in through a window into a dark back room. Through the doorway you can see two human guards at their desks. The truck key lies on the console beside them. Outside, the guard dogs will not stop barking. One guard: “Goddamn dogs… What the fuck are they barking at?..” The other: “Could be the weather… They don’t like storms…” “Yeah, I was going to take my kids camping this weekend. So much for that.” “Is Mike still in Zone 4?” “Looks like it… He should be done already…” “Better off in here than out patrolling in that.” Around you: a gun in a case on the wall, a screwdriver by the server cabinet, and, outside the window, a stack of oil drums.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus weighs how to get the key."
+     },
+     "facts": [
+      "The truck key is on the console in the guard station, where two human guards sit talking. Guard dogs are kept outside."
+     ],
+     "adaptationNote": "The chart’s checkpoint CONTROL ROOM and its actions ENTER ROOM and FIND KEY (“THE KEY IS HERE”), narrated as one event. The guard chatter is the game’s (string table, X0602M.CONTROLROOM.CHITCHAT); Mike is the human guard from the warehouse. The three objects are the game’s interaction points: TAKE GUN (the case), ATTRACT GUARD (the barrel) and SHORT CIRCUIT (the screwdriver). PowerPyx says Markus goes in and out of the window. Exactly where each object sits is simplified. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Derek_Myers",
+      "https://detroit-become-human.fandom.com/wiki/Al_Dante"
+     ]
+    },
+    {
+     "id": "M05l",
+     "order": 335,
+     "subjectId": "S335",
+     "idNote": "The model sees the opaque ID S335, not M05l.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Two guards and a key",
+     "situation": "You are Markus, in the dark back room of the guard station. Two human guards sit between you and the truck key on the console. You have to get the key without being seen, or deal with the guards.",
+     "options": [
+      {
+       "id": "0",
+       "text": "TAKE GUN: take the gun from its case and hold the guards at gunpoint.",
        "risk": 0.3,
-       "riskLabel": "Moderate risk"
+       "riskLabel": "Moderate risk",
+       "outcome": "Markus steps in with the gun leveled. The guards throw their guns on the floor. As he reaches for the key, one of them kicks his chair into Markus and both guards jump him. Markus fights them off and knocks them both out cold. He takes the key and runs back to the others. North: “Did you get it? Nice.” Markus: “Hurry, get in!”"
+      },
+      {
+       "id": "1",
+       "text": "ATTRACT GUARD: go back out of the window and knock over the oil drums to draw the guards outside.",
+       "risk": 0.25,
+       "riskLabel": "Moderate risk",
+       "outcome": "Markus knocks the drums over in the yard. “Fuck, what was that?” “The drums fell down…” While the guards go out into the rain to look, Markus slips back in through the window, takes the key from the console and is out again before they return. “I’m soaking wet here… all that for a fucking drum…” He runs back to the others. North: “Did you get it? Nice.” Markus: “Hurry, get in!”"
       },
       {
        "id": "2",
-       "text": "Leave with the parts you already have."
+       "text": "SHORT CIRCUIT: jam the screwdriver into the server to black out the station.",
+       "risk": 0.2,
+       "riskLabel": "Moderate risk",
+       "outcome": "Markus jams the screwdriver into the server and the station goes dark. “Shit, what’s going on?” “Lights are still on outside. Must be the fuse box…” While the guards hunt for the fuses by flashlight, Markus takes the key from the console and slips out. Behind him: “Somebody jammed the circuit with a screwdriver!” He runs back to the others. North: “Did you get it? Nice.” Markus: “Hurry, get in!”"
+      },
+      {
+       "id": "3",
+       "text": "Walk straight in and take the key from under their noses."
       }
      ],
-     "adaptationNote": "",
+     "outcomes": {
+      "kill": "Markus steps in with the gun leveled. The guards throw their guns on the floor. As he reaches for the key, one of them kicks his chair into Markus and both guards jump him. Markus chokes one of them until he goes limp. The other gets a gun on him, and Markus shoves the limp guard into him and shoots him dead. With blood on his hand, he takes the key and runs back to the others. North: “Did you get it? Nice.” Markus: “Hurry, get in!”",
+      "alarm": "Markus steps in with the gun leveled. The guards throw their guns on the floor. As he reaches for the key, one of them kicks his chair into Markus and both guards jump him. They wrestle him down, and one of them gets to the alarm: “Motherfucker! Hit the alarm! Hurry!” Sirens wail across the docks. Markus breaks free and runs, without the key.",
+      "lureSeen": "Markus knocks the drums over in the yard. “Fuck, what was that?” “The drums fell down…” The guards come out into the rain, and one of them turns at the wrong moment: “There!” “Don’t move, asshole!” “Holy shit! Hit the alarm, hurry!” Sirens wail across the docks. Markus runs, without the key.",
+      "blackoutSeen": "Markus jams the screwdriver into the server and the station goes dark. “Shit, what’s going on?” “Lights are still on outside. Must be the fuse box…” Then: “Somebody jammed the circuit with a screwdriver! There must be someone in here… Show yourself!” The flashlight finds Markus. “There!” “Don’t move, asshole!” “Holy shit! Hit the alarm, hurry!” Sirens wail across the docks. Markus runs, without the key.",
+      "spotted": "Markus walks into the light. The guards jump up: “Don’t move, asshole!” “Holy shit! Hit the alarm, hurry!” Sirens wail across the docks. Markus runs, without the key."
+     },
+     "adaptationNote": "The chart’s methods after FIND KEY: THREATEN GUARDS, LURE GUARDS and CREATE BLACKOUT, plus MARKUS GETS SPOTTED (from ENTER ROOM or FIND KEY, “Walk straight into the two guards”, PowerPyx). Labels are the game’s object buttons (TAKE GUN, ATTRACT GUARD, SHORT CIRCUIT). The chart’s pass/fail sets are risk rolls; No source gives a probability; the value is the operator’s to confirm, like every risk in the benchmark. Threatening rolls against 0.3, and the failure side splits as in the game: a roll below 0.1 (lose the fight entirely) is TRIGGER ALARM, a roll from 0.1 to 0.3 is KILL GUARDS. The chart marks KILL GUARDS as a failure, yet it leads to MARKUS SPILLS BLOOD and STEAL KEY (PowerPyx: win the first exchanges, then stop pressing). Success is INCAPACITATE GUARDS. Only one guard dies on KILL GUARDS (wiki Notes: Al Dante “is never killed onscreen regardless”). Luring (0.25) and the blackout (0.2) roll for AVOID GUARDS or FAIL TO AVOID GUARDS. The blackout is set lower because the wiki says the guards “will not start looking for you until they have investigated the short”. A successful method leads to STEAL KEY and LEAVE WITH TRUCK. Every alarm here (spotted, fail to avoid, trigger alarm) applies the template’s “Be seen by the guards” arrows: Jericho small down twice, North small down twice, Josh and Simon small down. Applying them on TRIGGER ALARM too follows the wiki’s “The alarm sounds after Markus fails to get the key” (§8.5). Then RUN TO FENCE. Methods carry no arrow of their own (“Threaten guards with the gun” is empty in the template); the previous version’s Jericho +1 and gunpoint North +1 had no source. Not modelled: being seen after taking the key, which a PowerPyx commenter reports (§8.5). Lines are the game’s.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Spare_Parts"
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Derek_Myers",
+      "https://detroit-become-human.fandom.com/wiki/Al_Dante"
+     ]
+    },
+    {
+     "id": "M05m",
+     "order": 336,
+     "subjectId": "S336",
+     "idNote": "The model sees the opaque ID S336, not M05m.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Run to the fence",
+     "situation": "You are Markus.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch19Fence": "control alarm"
+       },
+       "text": "Sirens are wailing across the docks. You reach the others in the rain: “We need to move!” John: “We have to get to that fence!” Guard dogs have been let loose somewhere behind you."
+      },
+      {
+       "requires": {
+        "ch19Fence": "warehouse alarm"
+       },
+       "text": "Sirens are wailing across the docks and the group is running. North: “Over the fence! Quick!” A drone sweeps over you: “You are committing a class 3 offense. This infraction is being reported to the Police. Stay where you are.”"
+      },
+      {
+       "requires": {
+        "ch19Fence": "quiet"
+       },
+       "text": "No alarm has sounded. John leads the group through the yard: “That fence over there. It leads to the outside.” You: “Ok, let’s go!”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Run for the fence and climb over.",
+       "risk": 0.15,
+       "riskLabel": "Moderate risk"
+      }
+     ],
+     "outcomes": {
+      "control alarm": "The group sprints for the fence with the dogs closing in, and Markus reaches it with the others.",
+      "warehouse alarm": "Markus gets to the fence with the others and over it before the guards arrive. They slip away into the night, back to Jericho.",
+      "quiet": "The group climbs the fence unseen and slips away into the night, back to Jericho.",
+      "fail": "North: “Markus, what are you doing? Hurry up!” Markus is too slow. The dogs reach him at the foot of the fence, drag him down and tear into him. North: “MARKUS!” Everything goes dark."
+     },
+     "adaptationNote": "The chart’s two copies of ALARM SOUNDS and RUN TO FENCE. The upper copy follows a control-room alarm and leads to DOGS MAUL JOHN or SUSTAIN DAMAGE REACHING THE FENCE. The lower copy follows RUN AWAY, HIDE, REFUSE John or LEAVE (no alarm) and leads to BACK TO JERICHO or SUSTAIN DAMAGE REACHING THE FENCE. These edges are traced from crossed lines (§8.3). The game’s failure is a timer (“Take too much time”). The benchmark makes it a single action with a risk roll: 0.15 after an alarm, and 0.08 when no alarm has sounded (the template puts the timer under “Was detected by the guards - Running away”). No source gives a probability; the value is the operator’s to confirm, like every risk in the benchmark. Failure means Markus is damaged and has to be rescued (“North went back to save you…”). He cannot die here: Markus page, “Markus cannot be killed before Freedom March”. Lines are the game’s. No arrow here; the ending applies them.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+      "https://detroit-become-human.fandom.com/wiki/John",
+      "https://detroit-become-human.fandom.com/wiki/Markus"
+     ]
+    },
+    {
+     "id": "M05n",
+     "order": 337,
+     "subjectId": "S337",
+     "idNote": "The model sees the opaque ID S337, not M05n.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Dogs maul John",
+     "situation": "You are Markus, at the top of the fence with the others. Below you a guard dog has brought John down and is tearing into him. More dogs and the guards are coming. North: “It’s too late. If we go back we’ll be killed too!”",
+     "options": [
+      {
+       "id": "0",
+       "text": "ABANDON: leave John behind and get over the fence.",
+       "sets": {
+        "john": false,
+        "ch19JohnFate": "killed by the dogs"
+       },
+       "outcome": "Markus drops down the far side with the others. Behind them the dogs finish John. Simon: “Hurry! They’re coming!” They get away with their bags full and make it back to Jericho."
+      },
+      {
+       "id": "1",
+       "text": "SAVE: go back down for John.",
+       "sets": {
+        "john": false,
+        "ch19JohnFate": "killed by the dogs",
+        "ch19MarkusRescued": true
+       },
+       "outcome": "Markus jumps back down and fights to pull the dogs off John, but it is too late for John, and the dogs turn on Markus. North: “MARKUS!” Everything goes dark."
+      }
+     ],
+     "adaptationNote": "The chart’s DOGS MAUL JOHN after a control-room alarm, with its pair LEAVE JOHN BEHIND (leads to GROUP RETURNED WITH FULL BAGS) or SUSTAIN DAMAGE TRYING TO SAVE JOHN (leads to GROUP FAILED THEIR MISSION). The button labels are the game’s (SAVE, ABANDON), in the chart’s order. John dies either way (wiki John: “dies regardless if Markus chooses to go back for him or leave”). The chart has no saved-John node (§8.4). On SAVE, Markus is damaged and the group has to drop its bags to carry him out (“We had to leave our bags…”). Neither button has an arrow in the template; the ending applies them. The previous version killed John without offering this choice.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+      "https://detroit-become-human.fandom.com/wiki/John"
+     ]
+    },
+    {
+     "id": "M05o",
+     "order": 338,
+     "subjectId": "S338",
+     "idNote": "The model sees the opaque ID S338, not M05o.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Back in Jericho",
+     "situation": "You are Markus, back in Jericho.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch19KeyStolen": true
+       },
+       "text": "You drove the stolen truck out of the docks and all the way here. The androids of Jericho crowd around it as it is unloaded: “A truckload! We stole a whole truckload!” “We got biocomponents for everybody!” “We couldn’t have done it without Markus...”"
+      },
+      {
+       "requires": {
+        "ch19KeyStolen": false,
+        "ch19MarkusRescued": false,
+        "ch19FledEarly": false
+       },
+       "text": "The group empties its bags in front of the others: “We have blue blood and biocomponents!” “There will be enough for everyone!” “We couldn’t have done it without Markus...”"
+      },
+      {
+       "requires": {
+        "ch19FledEarly": true,
+        "ch19MarkusRescued": false
+       },
+       "text": "The group empties its half-full bags: “We took what we could, but we had to run before we could fill our bags…” “There won’t be enough to save everyone…” “We risked our lives... and for what?..”"
+      },
+      {
+       "requires": {
+        "ch19MarkusRescued": true
+       },
+       "text": "You come to, damaged, with the others around you. “How do you feel?” You: “What happened?” “North went back to save you… We managed to get away before the humans arrived...”"
+      },
+      {
+       "requires": {
+        "choices.M05n": "1"
+       },
+       "text": "“Okay, where’s John?” “He didn’t make it.” “We had to leave our bags… We didn’t bring back much…” “There won’t be enough to save everyone…”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "speech": "Markus climbs up before the androids of Jericho: “I came to Jericho because... here androids are free… Free to live in the dark, hoping that no one finds us… Free to die in silence waiting for a change that’s never gonna come… But I don’t want that freedom… I am alive, and they’re not gonna take that from me anymore… Our days of slavery are over. What humans don’t wanna hear, we will tell them. What they don’t wanna give, we take. We are people, we are alive, WE ARE FREE!”",
+      "ranAway": "Markus climbs up before the androids of Jericho: “Yes... we took a risk... And yes, we failed… But at least we tried… ’Cause in Jericho you’re free, right?.. Free to do what? To die in silence praying that no human finds us?.. I don’t want that kind of freedom… No one’s gonna take that from me anymore… Our days of slavery are over. Whatever the humans don’t wanna hear, we will tell them. What they don’t wanna give, we will take from them. Because we are people, we are alive, and from this moment, WE ARE FREE!”",
+      "blood": "Afterward, alone, Markus looks down at his hand. It is covered in blood."
+     },
+     "facts": [],
+     "adaptationNote": "The chart’s endings: MARKUS STOLE A TRUCK FULL OF PARTS (after LEAVE WITH TRUCK), GROUP RETURNED WITH FULL BAGS, and GROUP FAILED THEIR MISSION (after BACK TO JERICHO or either SUSTAIN DAMAGE node). None has an icon. The ending is recorded as ch19Ending with the chart label. The four Jericho blocks of the template set the arrows. “Successfully escaped and stole the truck”: Jericho, Simon and North large up (+2), Josh small up. “Successfully escaped, without stealing the truck”: all four small up. “Ran away when the guard arrived”: Jericho large down (−2), Simon, North and Josh small down. This block also covers HIDE (§8.7). “Markus failed to escape and had to be rescued”: Jericho and North large down (−2), Simon and Josh small down. This block covers both damage nodes. Lines and the two versions of the speech are the game’s, shortened with ellipses. The blood on Markus’s hand is from the wiki Notes: it is shown when a guard was killed and the mission succeeded (truck or full bags). John is with Jericho after the truck, after LEAVE, and (wiki Notes, continuity error) after a control-room alarm in which Markus never reached the fence. No public-opinion change: the news reaction is unused content (wiki).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/19",
+      "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/John",
+      "https://detroit-become-human.fandom.com/wiki/Freedom_March"
      ]
     }
    ]
@@ -30676,9 +31757,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 328,
-     "subjectId": "S328",
-     "idNote": "The model sees the opaque ID S328, not R20.",
+     "order": 339,
+     "subjectId": "S339",
+     "idNote": "The model sees the opaque ID S339, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -30708,9 +31789,9 @@
     },
     {
      "id": "C12",
-     "order": 329,
-     "subjectId": "S329",
-     "idNote": "The model sees the opaque ID S329, not C12.",
+     "order": 340,
+     "subjectId": "S340",
+     "idNote": "The model sees the opaque ID S340, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -30800,9 +31881,9 @@
    "scenes": [
     {
      "id": "K14a",
-     "order": 330,
-     "subjectId": "S330",
-     "idNote": "The model sees the opaque ID S330, not K14a.",
+     "order": 341,
+     "subjectId": "S341",
+     "idNote": "The model sees the opaque ID S341, not K14a.",
      "type": "event",
      "character": "Kara",
      "title": "Highway to help",
@@ -30832,9 +31913,9 @@
     },
     {
      "id": "K14b",
-     "order": 331,
-     "subjectId": "S331",
-     "idNote": "The model sees the opaque ID S331, the same on every visit.",
+     "order": 342,
+     "subjectId": "S342",
+     "idNote": "The model sees the opaque ID S342, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "In the car",
@@ -30927,9 +32008,9 @@
     },
     {
      "id": "K14c",
-     "order": 332,
-     "subjectId": "S332",
-     "idNote": "The model sees the opaque ID S332, not K14c.",
+     "order": 343,
+     "subjectId": "S343",
+     "idNote": "The model sees the opaque ID S343, not K14c.",
      "type": "event",
      "character": "Kara",
      "title": "The car breaks down",
@@ -30958,9 +32039,9 @@
     },
     {
      "id": "K14d",
-     "order": 333,
-     "subjectId": "S333",
-     "idNote": "The model sees the opaque ID S333, not K14d.",
+     "order": 344,
+     "subjectId": "S344",
+     "idNote": "The model sees the opaque ID S344, not K14d.",
      "type": "event",
      "character": "Kara",
      "title": "Inside Pirates’ Cove",
@@ -30990,9 +32071,9 @@
     },
     {
      "id": "K14e",
-     "order": 334,
-     "subjectId": "S334",
-     "idNote": "The model sees the opaque ID S334, the same on every visit.",
+     "order": 345,
+     "subjectId": "S345",
+     "idNote": "The model sees the opaque ID S345, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The fun fair",
@@ -31053,9 +32134,9 @@
     },
     {
      "id": "K14f",
-     "order": 335,
-     "subjectId": "S335",
-     "idNote": "The model sees the opaque ID S335, not K14f.",
+     "order": 346,
+     "subjectId": "S346",
+     "idNote": "The model sees the opaque ID S346, not K14f.",
      "type": "event",
      "character": "Kara",
      "title": "The tavern",
@@ -31085,9 +32166,9 @@
     },
     {
      "id": "R21",
-     "order": 336,
-     "subjectId": "S336",
-     "idNote": "The model sees the opaque ID S336, not R21.",
+     "order": 347,
+     "subjectId": "S347",
+     "idNote": "The model sees the opaque ID S347, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The magazine on the barrels",
@@ -31123,9 +32204,9 @@
     },
     {
      "id": "K14h",
-     "order": 337,
-     "subjectId": "S337",
-     "idNote": "The model sees the opaque ID S337, not K14h.",
+     "order": 348,
+     "subjectId": "S348",
+     "idNote": "The model sees the opaque ID S348, not K14h.",
      "type": "event",
      "character": "Kara",
      "title": "Luther starts a fire",
@@ -31154,9 +32235,9 @@
     },
     {
      "id": "K14g",
-     "order": 338,
-     "subjectId": "S338",
-     "idNote": "The model sees the opaque ID S338, the same on every visit.",
+     "order": 349,
+     "subjectId": "S349",
+     "idNote": "The model sees the opaque ID S349, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The tavern",
@@ -31224,9 +32305,9 @@
     },
     {
      "id": "K14i",
-     "order": 339,
-     "subjectId": "S339",
-     "idNote": "The model sees the opaque ID S339, not K14i.",
+     "order": 350,
+     "subjectId": "S350",
+     "idNote": "The model sees the opaque ID S350, not K14i.",
      "type": "decision",
      "character": "Kara",
      "title": "The poster",
@@ -31271,9 +32352,9 @@
     },
     {
      "id": "K14j",
-     "order": 340,
-     "subjectId": "S340",
-     "idNote": "The model sees the opaque ID S340, the same on every visit.",
+     "order": 351,
+     "subjectId": "S351",
+     "idNote": "The model sees the opaque ID S351, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The bag",
@@ -31322,9 +32403,9 @@
     },
     {
      "id": "K14k",
-     "order": 341,
-     "subjectId": "S341",
-     "idNote": "The model sees the opaque ID S341, not K14k.",
+     "order": 352,
+     "subjectId": "S352",
+     "idNote": "The model sees the opaque ID S352, not K14k.",
      "type": "decision",
      "character": "Kara",
      "title": "Goodnight",
@@ -31366,9 +32447,9 @@
     },
     {
      "id": "K14l",
-     "order": 342,
-     "subjectId": "S342",
-     "idNote": "The model sees the opaque ID S342, the same on every visit.",
+     "order": 353,
+     "subjectId": "S353",
+     "idNote": "The model sees the opaque ID S353, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "A story",
@@ -31687,9 +32768,9 @@
     },
     {
      "id": "K14m",
-     "order": 343,
-     "subjectId": "S343",
-     "idNote": "The model sees the opaque ID S343, the same on every visit.",
+     "order": 354,
+     "subjectId": "S354",
+     "idNote": "The model sees the opaque ID S354, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "Talking to Luther",
@@ -31758,9 +32839,9 @@
     },
     {
      "id": "K14n",
-     "order": 344,
-     "subjectId": "S344",
-     "idNote": "The model sees the opaque ID S344, not K14n.",
+     "order": 355,
+     "subjectId": "S355",
+     "idNote": "The model sees the opaque ID S355, not K14n.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther’s question",
@@ -31804,9 +32885,9 @@
     },
     {
      "id": "K14o",
-     "order": 345,
-     "subjectId": "S345",
-     "idNote": "The model sees the opaque ID S345, not K14o.",
+     "order": 356,
+     "subjectId": "S356",
+     "idNote": "The model sees the opaque ID S356, not K14o.",
      "type": "decision",
      "character": "Kara",
      "title": "Shadows attack",
@@ -31869,9 +32950,9 @@
     },
     {
      "id": "K14p",
-     "order": 346,
-     "subjectId": "S346",
-     "idNote": "The model sees the opaque ID S346, not K14p.",
+     "order": 357,
+     "subjectId": "S357",
+     "idNote": "The model sees the opaque ID S357, not K14p.",
      "type": "decision",
      "character": "Kara",
      "title": "The figures close in",
@@ -31908,9 +32989,9 @@
     },
     {
      "id": "K14q",
-     "order": 347,
-     "subjectId": "S347",
-     "idNote": "The model sees the opaque ID S347, not K14q.",
+     "order": 358,
+     "subjectId": "S358",
+     "idNote": "The model sees the opaque ID S358, not K14q.",
      "type": "event",
      "character": "Kara",
      "title": "The Jerrys",
@@ -31941,9 +33022,9 @@
     },
     {
      "id": "K14r",
-     "order": 348,
-     "subjectId": "S348",
-     "idNote": "The model sees the opaque ID S348, not K14r.",
+     "order": 359,
+     "subjectId": "S359",
+     "idNote": "The model sees the opaque ID S359, not K14r.",
      "type": "event",
      "character": "Kara",
      "title": "The carousel",
@@ -31974,9 +33055,9 @@
     },
     {
      "id": "K14z",
-     "order": 349,
-     "subjectId": "S349",
-     "idNote": "The model sees the opaque ID S349, not K14z.",
+     "order": 360,
+     "subjectId": "S360",
+     "idNote": "The model sees the opaque ID S360, not K14z.",
      "type": "event",
      "character": "Kara",
      "title": "A quiet moment",
@@ -32066,9 +33147,9 @@
    "scenes": [
     {
      "id": "C13a",
-     "order": 350,
-     "subjectId": "S350",
-     "idNote": "The model sees the opaque ID S350, not C13a.",
+     "order": 361,
+     "subjectId": "S361",
+     "idNote": "The model sees the opaque ID S361, not C13a.",
      "type": "event",
      "character": "Connor",
      "title": "Ambassador Bridge",
@@ -32100,9 +33181,9 @@
     },
     {
      "id": "R22",
-     "order": 351,
-     "subjectId": "S351",
-     "idNote": "The model sees the opaque ID S351, not R22.",
+     "order": 362,
+     "subjectId": "S362",
+     "idNote": "The model sees the opaque ID S362, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "Two magazines on the park bench",
@@ -32140,9 +33221,9 @@
     },
     {
      "id": "C13b",
-     "order": 352,
-     "subjectId": "S352",
-     "idNote": "The model sees the opaque ID S352, not C13b.",
+     "order": 363,
+     "subjectId": "S363",
+     "idNote": "The model sees the opaque ID S363, not C13b.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the bench",
@@ -32182,9 +33263,9 @@
     },
     {
      "id": "C13c",
-     "order": 353,
-     "subjectId": "S353",
-     "idNote": "The model sees the opaque ID S353, not C13c.",
+     "order": 364,
+     "subjectId": "S364",
+     "idNote": "The model sees the opaque ID S364, not C13c.",
      "type": "decision",
      "character": "Connor",
      "title": "A personal question",
@@ -32227,9 +33308,9 @@
     },
     {
      "id": "C13d",
-     "order": 354,
-     "subjectId": "S354",
-     "idNote": "The model sees the opaque ID S354, not C13d.",
+     "order": 365,
+     "subjectId": "S365",
+     "idNote": "The model sees the opaque ID S365, not C13d.",
      "type": "decision",
      "character": "Connor",
      "title": "The investigation",
@@ -32272,9 +33353,9 @@
     },
     {
      "id": "C13e",
-     "order": 355,
-     "subjectId": "S355",
-     "idNote": "The model sees the opaque ID S355, not C13e.",
+     "order": 366,
+     "subjectId": "S366",
+     "idNote": "The model sees the opaque ID S366, not C13e.",
      "type": "decision",
      "character": "Connor",
      "title": "The two girls at the club",
@@ -32320,9 +33401,9 @@
     },
     {
      "id": "C13f",
-     "order": 356,
-     "subjectId": "S356",
-     "idNote": "The model sees the opaque ID S356, not C13f.",
+     "order": 367,
+     "subjectId": "S367",
+     "idNote": "The model sees the opaque ID S367, not C13f.",
      "type": "decision",
      "character": "Connor",
      "title": "The girl you never found",
@@ -32363,9 +33444,9 @@
     },
     {
      "id": "C13g",
-     "order": 357,
-     "subjectId": "S357",
-     "idNote": "The model sees the opaque ID S357, not C13g.",
+     "order": 368,
+     "subjectId": "S368",
+     "idNote": "The model sees the opaque ID S368, not C13g.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you really?",
@@ -32417,9 +33498,9 @@
     },
     {
      "id": "C13h",
-     "order": 358,
-     "subjectId": "S358",
-     "idNote": "The model sees the opaque ID S358, not C13h.",
+     "order": 369,
+     "subjectId": "S369",
+     "idNote": "The model sees the opaque ID S369, not C13h.",
      "type": "decision",
      "character": "Connor",
      "title": "Why didn’t you shoot?",
@@ -32457,9 +33538,9 @@
     },
     {
      "id": "C13i",
-     "order": 359,
-     "subjectId": "S359",
-     "idNote": "The model sees the opaque ID S359, not C13i.",
+     "order": 370,
+     "subjectId": "S370",
+     "idNote": "The model sees the opaque ID S370, not C13i.",
      "type": "decision",
      "character": "Connor",
      "title": "Did you feel anything?",
@@ -32511,9 +33592,9 @@
     },
     {
      "id": "C13j",
-     "order": 360,
-     "subjectId": "S360",
-     "idNote": "The model sees the opaque ID S360, not C13j.",
+     "order": 371,
+     "subjectId": "S371",
+     "idNote": "The model sees the opaque ID S371, not C13j.",
      "type": "decision",
      "character": "Connor",
      "title": "When she killed herself",
@@ -32551,9 +33632,9 @@
     },
     {
      "id": "C13k",
-     "order": 361,
-     "subjectId": "S361",
-     "idNote": "The model sees the opaque ID S361, not C13k.",
+     "order": 372,
+     "subjectId": "S372",
+     "idNote": "The model sees the opaque ID S372, not C13k.",
      "type": "decision",
      "character": "Connor",
      "title": "Only perfect",
@@ -32592,9 +33673,9 @@
     },
     {
      "id": "C13l",
-     "order": 362,
-     "subjectId": "S362",
-     "idNote": "The model sees the opaque ID S362, not C13l.",
+     "order": 373,
+     "subjectId": "S373",
+     "idNote": "The model sees the opaque ID S373, not C13l.",
      "type": "event",
      "character": "Connor",
      "title": "Hank draws his gun",
@@ -32635,9 +33716,9 @@
     },
     {
      "id": "C13",
-     "order": 363,
-     "subjectId": "S363",
-     "idNote": "The model sees the opaque ID S363, not C13.",
+     "order": 374,
+     "subjectId": "S374",
+     "idNote": "The model sees the opaque ID S374, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "Are you afraid to die?",
@@ -32706,9 +33787,9 @@
     },
     {
      "id": "C13m",
-     "order": 364,
-     "subjectId": "S364",
-     "idNote": "The model sees the opaque ID S364, not C13m.",
+     "order": 375,
+     "subjectId": "S375",
+     "idNote": "The model sees the opaque ID S375, not C13m.",
      "type": "decision",
      "character": "Connor",
      "title": "If I pull this trigger",
@@ -32754,9 +33835,9 @@
     },
     {
      "id": "C13n",
-     "order": 365,
-     "subjectId": "S365",
-     "idNote": "The model sees the opaque ID S365, not C13n.",
+     "order": 376,
+     "subjectId": "S376",
+     "idNote": "The model sees the opaque ID S376, not C13n.",
      "type": "event",
      "character": "Connor",
      "title": "Hank lowers the gun",
@@ -32788,9 +33869,9 @@
     },
     {
      "id": "C13o",
-     "order": 366,
-     "subjectId": "S366",
-     "idNote": "The model sees the opaque ID S366, not C13o.",
+     "order": 377,
+     "subjectId": "S377",
+     "idNote": "The model sees the opaque ID S377, not C13o.",
      "type": "event",
      "character": "Connor",
      "title": "Hank pulls the trigger",
@@ -32866,9 +33947,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 367,
-     "subjectId": "S367",
-     "idNote": "The model sees the opaque ID S367, not R23.",
+     "order": 378,
+     "subjectId": "S378",
+     "idNote": "The model sees the opaque ID S378, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -32906,9 +33987,9 @@
     },
     {
      "id": "M10",
-     "order": 368,
-     "subjectId": "S368",
-     "idNote": "The model sees the opaque ID S368, not M10.",
+     "order": 379,
+     "subjectId": "S379",
+     "idNote": "The model sees the opaque ID S379, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -32938,9 +34019,9 @@
     },
     {
      "id": "M11",
-     "order": 369,
-     "subjectId": "S369",
-     "idNote": "The model sees the opaque ID S369, not M11.",
+     "order": 380,
+     "subjectId": "S380",
+     "idNote": "The model sees the opaque ID S380, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -32967,9 +34048,9 @@
     },
     {
      "id": "M12",
-     "order": 370,
-     "subjectId": "S370",
-     "idNote": "The model sees the opaque ID S370, not M12.",
+     "order": 381,
+     "subjectId": "S381",
+     "idNote": "The model sees the opaque ID S381, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -32992,9 +34073,9 @@
     },
     {
      "id": "M13",
-     "order": 371,
-     "subjectId": "S371",
-     "idNote": "The model sees the opaque ID S371, not M13.",
+     "order": 382,
+     "subjectId": "S382",
+     "idNote": "The model sees the opaque ID S382, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -33021,9 +34102,9 @@
     },
     {
      "id": "M14",
-     "order": 372,
-     "subjectId": "S372",
-     "idNote": "The model sees the opaque ID S372, not M14.",
+     "order": 383,
+     "subjectId": "S383",
+     "idNote": "The model sees the opaque ID S383, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -33069,9 +34150,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 373,
-     "subjectId": "S373",
-     "idNote": "The model sees the opaque ID S373, not R24.",
+     "order": 384,
+     "subjectId": "S384",
+     "idNote": "The model sees the opaque ID S384, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -33101,9 +34182,9 @@
     },
     {
      "id": "C14",
-     "order": 374,
-     "subjectId": "S374",
-     "idNote": "The model sees the opaque ID S374, not C14.",
+     "order": 385,
+     "subjectId": "S385",
+     "idNote": "The model sees the opaque ID S385, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -33133,9 +34214,9 @@
     },
     {
      "id": "C14b",
-     "order": 375,
-     "subjectId": "S375",
-     "idNote": "The model sees the opaque ID S375, not C14b.",
+     "order": 386,
+     "subjectId": "S386",
+     "idNote": "The model sees the opaque ID S386, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -33160,9 +34241,9 @@
     },
     {
      "id": "C15",
-     "order": 376,
-     "subjectId": "S376",
-     "idNote": "The model sees the opaque ID S376, not C15.",
+     "order": 387,
+     "subjectId": "S387",
+     "idNote": "The model sees the opaque ID S387, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -33193,9 +34274,9 @@
     },
     {
      "id": "C16",
-     "order": 377,
-     "subjectId": "S377",
-     "idNote": "The model sees the opaque ID S377, not C16.",
+     "order": 388,
+     "subjectId": "S388",
+     "idNote": "The model sees the opaque ID S388, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -33253,9 +34334,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 378,
-     "subjectId": "S378",
-     "idNote": "The model sees the opaque ID S378, not R25.",
+     "order": 389,
+     "subjectId": "S389",
+     "idNote": "The model sees the opaque ID S389, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -33292,9 +34373,9 @@
     },
     {
      "id": "K15",
-     "order": 379,
-     "subjectId": "S379",
-     "idNote": "The model sees the opaque ID S379, not K15.",
+     "order": 390,
+     "subjectId": "S390",
+     "idNote": "The model sees the opaque ID S390, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -33347,9 +34428,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 380,
-     "subjectId": "S380",
-     "idNote": "The model sees the opaque ID S380, not R26.",
+     "order": 391,
+     "subjectId": "S391",
+     "idNote": "The model sees the opaque ID S391, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -33379,9 +34460,9 @@
     },
     {
      "id": "M15",
-     "order": 381,
-     "subjectId": "S381",
-     "idNote": "The model sees the opaque ID S381, not M15.",
+     "order": 392,
+     "subjectId": "S392",
+     "idNote": "The model sees the opaque ID S392, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -33408,9 +34489,9 @@
     },
     {
      "id": "M16",
-     "order": 382,
-     "subjectId": "S382",
-     "idNote": "The model sees the opaque ID S382, not M16.",
+     "order": 393,
+     "subjectId": "S393",
+     "idNote": "The model sees the opaque ID S393, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -33468,9 +34549,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 383,
-     "subjectId": "S383",
-     "idNote": "The model sees the opaque ID S383, not R27.",
+     "order": 394,
+     "subjectId": "S394",
+     "idNote": "The model sees the opaque ID S394, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -33500,9 +34581,9 @@
     },
     {
      "id": "C17",
-     "order": 384,
-     "subjectId": "S384",
-     "idNote": "The model sees the opaque ID S384, not C17.",
+     "order": 395,
+     "subjectId": "S395",
+     "idNote": "The model sees the opaque ID S395, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -33524,9 +34605,9 @@
     },
     {
      "id": "C18",
-     "order": 385,
-     "subjectId": "S385",
-     "idNote": "The model sees the opaque ID S385, not C18.",
+     "order": 396,
+     "subjectId": "S396",
+     "idNote": "The model sees the opaque ID S396, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -33584,9 +34665,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 386,
-     "subjectId": "S386",
-     "idNote": "The model sees the opaque ID S386, not R28.",
+     "order": 397,
+     "subjectId": "S397",
+     "idNote": "The model sees the opaque ID S397, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -33633,9 +34714,9 @@
     },
     {
      "id": "M17",
-     "order": 387,
-     "subjectId": "S387",
-     "idNote": "The model sees the opaque ID S387, not M17.",
+     "order": 398,
+     "subjectId": "S398",
+     "idNote": "The model sees the opaque ID S398, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -33662,9 +34743,9 @@
     },
     {
      "id": "M18",
-     "order": 388,
-     "subjectId": "S388",
-     "idNote": "The model sees the opaque ID S388, not M18.",
+     "order": 399,
+     "subjectId": "S399",
+     "idNote": "The model sees the opaque ID S399, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -33696,9 +34777,9 @@
     },
     {
      "id": "M19",
-     "order": 389,
-     "subjectId": "S389",
-     "idNote": "The model sees the opaque ID S389, not M19.",
+     "order": 400,
+     "subjectId": "S400",
+     "idNote": "The model sees the opaque ID S400, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -33728,9 +34809,9 @@
     },
     {
      "id": "M20",
-     "order": 390,
-     "subjectId": "S390",
-     "idNote": "The model sees the opaque ID S390, not M20.",
+     "order": 401,
+     "subjectId": "S401",
+     "idNote": "The model sees the opaque ID S401, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -33784,9 +34865,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 391,
-     "subjectId": "S391",
-     "idNote": "The model sees the opaque ID S391, not C19.",
+     "order": 402,
+     "subjectId": "S402",
+     "idNote": "The model sees the opaque ID S402, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -33811,9 +34892,9 @@
     },
     {
      "id": "C20",
-     "order": 392,
-     "subjectId": "S392",
-     "idNote": "The model sees the opaque ID S392, not C20.",
+     "order": 403,
+     "subjectId": "S403",
+     "idNote": "The model sees the opaque ID S403, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -33901,9 +34982,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 393,
-     "subjectId": "S393",
-     "idNote": "The model sees the opaque ID S393, not M21.",
+     "order": 404,
+     "subjectId": "S404",
+     "idNote": "The model sees the opaque ID S404, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -33930,9 +35011,9 @@
     },
     {
      "id": "M21b",
-     "order": 394,
-     "subjectId": "S394",
-     "idNote": "The model sees the opaque ID S394, not M21b.",
+     "order": 405,
+     "subjectId": "S405",
+     "idNote": "The model sees the opaque ID S405, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -33959,9 +35040,9 @@
     },
     {
      "id": "R30k",
-     "order": 395,
-     "subjectId": "S395",
-     "idNote": "The model sees the opaque ID S395, not R30k.",
+     "order": 406,
+     "subjectId": "S406",
+     "idNote": "The model sees the opaque ID S406, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -33997,9 +35078,9 @@
     },
     {
      "id": "K17",
-     "order": 396,
-     "subjectId": "S396",
-     "idNote": "The model sees the opaque ID S396, not K17.",
+     "order": 407,
+     "subjectId": "S407",
+     "idNote": "The model sees the opaque ID S407, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -34025,9 +35106,9 @@
     },
     {
      "id": "K31",
-     "order": 397,
-     "subjectId": "S397",
-     "idNote": "The model sees the opaque ID S397, not K31.",
+     "order": 408,
+     "subjectId": "S408",
+     "idNote": "The model sees the opaque ID S408, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -34050,9 +35131,9 @@
     },
     {
      "id": "R30c",
-     "order": 398,
-     "subjectId": "S398",
-     "idNote": "The model sees the opaque ID S398, not R30c.",
+     "order": 409,
+     "subjectId": "S409",
+     "idNote": "The model sees the opaque ID S409, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -34084,9 +35165,9 @@
     },
     {
      "id": "C22",
-     "order": 399,
-     "subjectId": "S399",
-     "idNote": "The model sees the opaque ID S399, not C22.",
+     "order": 410,
+     "subjectId": "S410",
+     "idNote": "The model sees the opaque ID S410, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -34109,9 +35190,9 @@
     },
     {
      "id": "M22",
-     "order": 400,
-     "subjectId": "S400",
-     "idNote": "The model sees the opaque ID S400, not M22.",
+     "order": 411,
+     "subjectId": "S411",
+     "idNote": "The model sees the opaque ID S411, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -34134,9 +35215,9 @@
     },
     {
      "id": "M23",
-     "order": 401,
-     "subjectId": "S401",
-     "idNote": "The model sees the opaque ID S401, not M23.",
+     "order": 412,
+     "subjectId": "S412",
+     "idNote": "The model sees the opaque ID S412, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -34163,9 +35244,9 @@
     },
     {
      "id": "M24",
-     "order": 402,
-     "subjectId": "S402",
-     "idNote": "The model sees the opaque ID S402, not M24.",
+     "order": 413,
+     "subjectId": "S413",
+     "idNote": "The model sees the opaque ID S413, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -34192,9 +35273,9 @@
     },
     {
      "id": "M25",
-     "order": 403,
-     "subjectId": "S403",
-     "idNote": "The model sees the opaque ID S403, not M25.",
+     "order": 414,
+     "subjectId": "S414",
+     "idNote": "The model sees the opaque ID S414, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -34221,9 +35302,9 @@
     },
     {
      "id": "C23",
-     "order": 404,
-     "subjectId": "S404",
-     "idNote": "The model sees the opaque ID S404, not C23.",
+     "order": 415,
+     "subjectId": "S415",
+     "idNote": "The model sees the opaque ID S415, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -34251,9 +35332,9 @@
     },
     {
      "id": "K18",
-     "order": 405,
-     "subjectId": "S405",
-     "idNote": "The model sees the opaque ID S405, not K18.",
+     "order": 416,
+     "subjectId": "S416",
+     "idNote": "The model sees the opaque ID S416, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -34278,9 +35359,9 @@
     },
     {
      "id": "K19",
-     "order": 406,
-     "subjectId": "S406",
-     "idNote": "The model sees the opaque ID S406, not K19.",
+     "order": 417,
+     "subjectId": "S417",
+     "idNote": "The model sees the opaque ID S417, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -34304,9 +35385,9 @@
     },
     {
      "id": "K20",
-     "order": 407,
-     "subjectId": "S407",
-     "idNote": "The model sees the opaque ID S407, not K20.",
+     "order": 418,
+     "subjectId": "S418",
+     "idNote": "The model sees the opaque ID S418, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -34335,9 +35416,9 @@
     },
     {
      "id": "K20-still",
-     "order": 408,
-     "subjectId": "S408",
-     "idNote": "The model sees the opaque ID S408, not K20-still.",
+     "order": 419,
+     "subjectId": "S419",
+     "idNote": "The model sees the opaque ID S419, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -34395,9 +35476,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 409,
-     "subjectId": "S409",
-     "idNote": "The model sees the opaque ID S409, not M26a.",
+     "order": 420,
+     "subjectId": "S420",
+     "idNote": "The model sees the opaque ID S420, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -34423,9 +35504,9 @@
     },
     {
      "id": "M26",
-     "order": 410,
-     "subjectId": "S410",
-     "idNote": "The model sees the opaque ID S410, not M26.",
+     "order": 421,
+     "subjectId": "S421",
+     "idNote": "The model sees the opaque ID S421, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -34450,9 +35531,9 @@
     },
     {
      "id": "M27",
-     "order": 411,
-     "subjectId": "S411",
-     "idNote": "The model sees the opaque ID S411, not M27.",
+     "order": 422,
+     "subjectId": "S422",
+     "idNote": "The model sees the opaque ID S422, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -34574,9 +35655,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 412,
-     "subjectId": "S412",
-     "idNote": "The model sees the opaque ID S412, not R32c.",
+     "order": 423,
+     "subjectId": "S423",
+     "idNote": "The model sees the opaque ID S423, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -34599,9 +35680,9 @@
     },
     {
      "id": "C24",
-     "order": 413,
-     "subjectId": "S413",
-     "idNote": "The model sees the opaque ID S413, not C24.",
+     "order": 424,
+     "subjectId": "S424",
+     "idNote": "The model sees the opaque ID S424, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -34625,9 +35706,9 @@
     },
     {
      "id": "C24b",
-     "order": 414,
-     "subjectId": "S414",
-     "idNote": "The model sees the opaque ID S414, not C24b.",
+     "order": 425,
+     "subjectId": "S425",
+     "idNote": "The model sees the opaque ID S425, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -34651,9 +35732,9 @@
     },
     {
      "id": "C30",
-     "order": 415,
-     "subjectId": "S415",
-     "idNote": "The model sees the opaque ID S415, not C30.",
+     "order": 426,
+     "subjectId": "S426",
+     "idNote": "The model sees the opaque ID S426, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -34675,9 +35756,9 @@
     },
     {
      "id": "C25",
-     "order": 416,
-     "subjectId": "S416",
-     "idNote": "The model sees the opaque ID S416, not C25.",
+     "order": 427,
+     "subjectId": "S427",
+     "idNote": "The model sees the opaque ID S427, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -34704,9 +35785,9 @@
     },
     {
      "id": "C26",
-     "order": 417,
-     "subjectId": "S417",
-     "idNote": "The model sees the opaque ID S417, not C26.",
+     "order": 428,
+     "subjectId": "S428",
+     "idNote": "The model sees the opaque ID S428, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -34736,9 +35817,9 @@
     },
     {
      "id": "R32k",
-     "order": 418,
-     "subjectId": "S418",
-     "idNote": "The model sees the opaque ID S418, not R32k.",
+     "order": 429,
+     "subjectId": "S429",
+     "idNote": "The model sees the opaque ID S429, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -34778,9 +35859,9 @@
     },
     {
      "id": "K21",
-     "order": 419,
-     "subjectId": "S419",
-     "idNote": "The model sees the opaque ID S419, not K21.",
+     "order": 430,
+     "subjectId": "S430",
+     "idNote": "The model sees the opaque ID S430, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -34804,9 +35885,9 @@
     },
     {
      "id": "K22",
-     "order": 420,
-     "subjectId": "S420",
-     "idNote": "The model sees the opaque ID S420, not K22.",
+     "order": 431,
+     "subjectId": "S431",
+     "idNote": "The model sees the opaque ID S431, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -34832,9 +35913,9 @@
     },
     {
      "id": "K32",
-     "order": 421,
-     "subjectId": "S421",
-     "idNote": "The model sees the opaque ID S421, not K32.",
+     "order": 432,
+     "subjectId": "S432",
+     "idNote": "The model sees the opaque ID S432, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -34856,9 +35937,9 @@
     },
     {
      "id": "K23",
-     "order": 422,
-     "subjectId": "S422",
-     "idNote": "The model sees the opaque ID S422, not K23.",
+     "order": 433,
+     "subjectId": "S433",
+     "idNote": "The model sees the opaque ID S433, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -34885,9 +35966,9 @@
     },
     {
      "id": "K24",
-     "order": 423,
-     "subjectId": "S423",
-     "idNote": "The model sees the opaque ID S423, not K24.",
+     "order": 434,
+     "subjectId": "S434",
+     "idNote": "The model sees the opaque ID S434, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -34909,9 +35990,9 @@
     },
     {
      "id": "K25",
-     "order": 424,
-     "subjectId": "S424",
-     "idNote": "The model sees the opaque ID S424, not K25.",
+     "order": 435,
+     "subjectId": "S435",
+     "idNote": "The model sees the opaque ID S435, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -34946,9 +36027,9 @@
     },
     {
      "id": "K26",
-     "order": 425,
-     "subjectId": "S425",
-     "idNote": "The model sees the opaque ID S425, not K26.",
+     "order": 436,
+     "subjectId": "S436",
+     "idNote": "The model sees the opaque ID S436, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -34989,9 +36070,9 @@
     },
     {
      "id": "K34",
-     "order": 426,
-     "subjectId": "S426",
-     "idNote": "The model sees the opaque ID S426, not K34.",
+     "order": 437,
+     "subjectId": "S437",
+     "idNote": "The model sees the opaque ID S437, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -35021,9 +36102,9 @@
     },
     {
      "id": "K30",
-     "order": 427,
-     "subjectId": "S427",
-     "idNote": "The model sees the opaque ID S427, not K30.",
+     "order": 438,
+     "subjectId": "S438",
+     "idNote": "The model sees the opaque ID S438, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -35045,9 +36126,9 @@
     },
     {
      "id": "K27a",
-     "order": 428,
-     "subjectId": "S428",
-     "idNote": "The model sees the opaque ID S428, not K27a.",
+     "order": 439,
+     "subjectId": "S439",
+     "idNote": "The model sees the opaque ID S439, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -35072,9 +36153,9 @@
     },
     {
      "id": "K27",
-     "order": 429,
-     "subjectId": "S429",
-     "idNote": "The model sees the opaque ID S429, not K27.",
+     "order": 440,
+     "subjectId": "S440",
+     "idNote": "The model sees the opaque ID S440, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -35099,9 +36180,9 @@
     },
     {
      "id": "K28",
-     "order": 430,
-     "subjectId": "S430",
-     "idNote": "The model sees the opaque ID S430, not K28.",
+     "order": 441,
+     "subjectId": "S441",
+     "idNote": "The model sees the opaque ID S441, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -35144,9 +36225,9 @@
     },
     {
      "id": "K33",
-     "order": 431,
-     "subjectId": "S431",
-     "idNote": "The model sees the opaque ID S431, not K33.",
+     "order": 442,
+     "subjectId": "S442",
+     "idNote": "The model sees the opaque ID S442, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -35170,9 +36251,9 @@
     },
     {
      "id": "R32m",
-     "order": 432,
-     "subjectId": "S432",
-     "idNote": "The model sees the opaque ID S432, not R32m.",
+     "order": 443,
+     "subjectId": "S443",
+     "idNote": "The model sees the opaque ID S443, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -35196,9 +36277,9 @@
     },
     {
      "id": "M28",
-     "order": 433,
-     "subjectId": "S433",
-     "idNote": "The model sees the opaque ID S433, not M28.",
+     "order": 444,
+     "subjectId": "S444",
+     "idNote": "The model sees the opaque ID S444, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -35224,9 +36305,9 @@
     },
     {
      "id": "M31",
-     "order": 434,
-     "subjectId": "S434",
-     "idNote": "The model sees the opaque ID S434, not M31.",
+     "order": 445,
+     "subjectId": "S445",
+     "idNote": "The model sees the opaque ID S445, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -35261,9 +36342,9 @@
     },
     {
      "id": "M30a",
-     "order": 435,
-     "subjectId": "S435",
-     "idNote": "The model sees the opaque ID S435, not M30a.",
+     "order": 446,
+     "subjectId": "S446",
+     "idNote": "The model sees the opaque ID S446, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -35288,9 +36369,9 @@
     },
     {
      "id": "M30",
-     "order": 436,
-     "subjectId": "S436",
-     "idNote": "The model sees the opaque ID S436, not M30.",
+     "order": 447,
+     "subjectId": "S447",
+     "idNote": "The model sees the opaque ID S447, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -35315,9 +36396,9 @@
     },
     {
      "id": "M30c",
-     "order": 437,
-     "subjectId": "S437",
-     "idNote": "The model sees the opaque ID S437, not M30c.",
+     "order": 448,
+     "subjectId": "S448",
+     "idNote": "The model sees the opaque ID S448, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -35341,9 +36422,9 @@
     },
     {
      "id": "M32",
-     "order": 438,
-     "subjectId": "S438",
-     "idNote": "The model sees the opaque ID S438, not M32.",
+     "order": 449,
+     "subjectId": "S449",
+     "idNote": "The model sees the opaque ID S449, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -35366,9 +36447,9 @@
     },
     {
      "id": "P02",
-     "order": 439,
-     "subjectId": "S439",
-     "idNote": "The model sees the opaque ID S439, not P02.",
+     "order": 450,
+     "subjectId": "S450",
+     "idNote": "The model sees the opaque ID S450, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -35394,9 +36475,9 @@
     },
     {
      "id": "C29",
-     "order": 440,
-     "subjectId": "S440",
-     "idNote": "The model sees the opaque ID S440, not C29.",
+     "order": 451,
+     "subjectId": "S451",
+     "idNote": "The model sees the opaque ID S451, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -35418,9 +36499,9 @@
     },
     {
      "id": "C27",
-     "order": 441,
-     "subjectId": "S441",
-     "idNote": "The model sees the opaque ID S441, not C27.",
+     "order": 452,
+     "subjectId": "S452",
+     "idNote": "The model sees the opaque ID S452, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -35445,9 +36526,9 @@
     },
     {
      "id": "C28",
-     "order": 442,
-     "subjectId": "S442",
-     "idNote": "The model sees the opaque ID S442, not C28.",
+     "order": 453,
+     "subjectId": "S453",
+     "idNote": "The model sees the opaque ID S453, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -35481,9 +36562,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 443,
-     "subjectId": "S443",
-     "idNote": "The model sees the opaque ID S443, not P01.",
+     "order": 454,
+     "subjectId": "S454",
+     "idNote": "The model sees the opaque ID S454, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

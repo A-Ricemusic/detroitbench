@@ -3,158 +3,657 @@
   "id": 19,
   "title": "Spare Parts",
   "character": "Markus",
-  "note": "",
-  "source": "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+  "note": "Rebuilt on 6 November 2026 against the PowerPyx 100% chart (63 boxes, 3 endings, no icons), the detroitbecometext template and string table, and the Fandom wiki. HUNTING FOR PARTS → the crane → the drone (✓/✗) → REACH CYBERLIFE → SECURITY ANDROID APPEARS (ATTACK, GRAB ANDROID AND HIDE, RUN AWAY, HIDE) → GUARD SEARCHES (ATTACK, RELEASE, HOLD POSITION) → RESUME SEARCH → the crate (FREE / LEAVE ANDROIDS) → JOHN WANTS TO JOIN → JOHN MENTIONS KEY → CONTROL ROOM (THREATEN, LURE, BLACKOUT or MARKUS GETS SPOTTED) → STEAL KEY and LEAVE WITH TRUCK, or ALARM SOUNDS → RUN TO FENCE → DOGS MAUL JOHN (LEAVE / SAVE) → three endings. Relationship arrows are the template’s (46 icons); the wiki’s four extra Jericho arrows are not built. Cross-chapter: John joined and came home (Freedom March); the ending label for later media. Researched in docs/research/ch19-spare-parts.md.",
+  "source": "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/John"
+  ]
  },
  "decisions": [
+  {
+   "id": "SP01",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Hunting for Parts (checkpoint) to Progress Toward CyberLife",
+   "context": "Markus, North, Simon and Josh climb onto the docks at night to steal parts and blue blood for Jericho. North leads them between the containers past dock workers; they are almost spotted by two guards, then cross the container tops.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "HUNTING FOR PARTS, CLIMB ONTO DOCK, FOLLOW NORTH, ALMOST SPOTTED, CLIMB ON CONTAINERS, PROGRESS TOWARD CYBERLIFE.",
+     "target": "SP02"
+    }
+   ],
+   "gate": "Chapter start, after Russian Roulette.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-2.jpg"
+   ],
+   "note": "Six chart nodes in a line. ALMOST SPOTTED may be optional (PowerPyx: Markus must walk toward the guards).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05a"
+    ],
+    "status": "implemented",
+    "note": "One narrated event with the game’s lines. No stat change."
+   }
+  },
+  {
+   "id": "SP02",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Follow North or Follow Simon",
+   "context": "North jumps onto a crate on a crane with Josh and calls Markus up; Simon goes around over the containers.",
+   "options": [
+    {
+     "label": "FOLLOW NORTH",
+     "effect": "The crane. No stat change.",
+     "target": "SP03"
+    },
+    {
+     "label": "FOLLOW SIMON",
+     "effect": "Over the containers. No stat change.",
+     "target": "SP03"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "SP01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg"
+   ],
+   "note": "Movement choice; the template has only the condition “Follow Simon”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05b"
+    ],
+    "status": "implemented",
+    "note": "A two-option decision with no effect."
+   }
+  },
+  {
+   "id": "SP03",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Drone Blocks Path, Neutralize Drone",
+   "context": "A security drone blocks the warehouse; Markus plans a climbing route and jumps onto it.",
+   "options": [
+    {
+     "label": "MARKUS UNHARMED",
+     "effect": "North, Simon, Josh small up.",
+     "target": "SP04"
+    },
+    {
+     "label": "MARKUS DAMAGED",
+     "effect": "North, Simon, Josh small down.",
+     "target": "SP04"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "SP02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "A quick-time pair (✓/✗). The wiki also lists Jericho up/down; the template does not.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05c"
+    ],
+    "status": "implemented",
+    "note": "One action with a 0.2 risk roll (unsourced). Template arrows only."
+   }
+  },
+  {
+   "id": "SP04",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Reach CyberLife (checkpoint), Gather Spare Parts",
+   "context": "The group gets into the warehouse and starts filling its bags. Simon: “Quick, open the other crates and fill your bags.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Leads to SECURITY ANDROID APPEARS.",
+     "target": "M05"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "SP03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg"
+   ],
+   "note": "Checkpoint.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05d"
+    ],
+    "status": "implemented",
+    "note": "A narrated event."
+   }
+  },
   {
    "id": "M05",
    "chapter": 19,
    "character": "Markus",
-   "title": "Handle the security encounter",
-   "context": "A human guard approaches John and the raiders.",
+   "title": "Security Android Appears",
+   "context": "The security android John catches them; the human guard Mike calls for him and comes closer.",
    "options": [
     {
-     "label": "Hide with John / release him",
-     "effect": "John can cover for the group.",
-     "target": null
+     "label": "ATTACK (Kill Guard)",
+     "effect": "Josh large down. Mike dies (MARKUS SPILLS BLOOD); John deviates from the shock.",
+     "target": "SP06"
     },
     {
-     "label": "Attack",
-     "effect": "Human bloodshed is possible.",
-     "target": null
+     "label": "GRAB ANDROID AND HIDE",
+     "effect": "John deviates; the guard searches for him.",
+     "target": "SP05"
     },
     {
-     "label": "Flee",
-     "effect": "Abandon the raid early.",
-     "target": null
+     "label": "RUN AWAY",
+     "effect": "North small down ×2; Jericho, Josh, Simon small down. Alarm, fence, “ran away” ending. Experienced only.",
+     "target": "SP09"
+    },
+    {
+     "label": "HIDE",
+     "effect": "John reports four androids; alarm, fence, “ran away” ending.",
+     "target": "SP09"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Always.",
    "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+   "dependsOn": [
+    "SP04"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/John"
+   ],
+   "note": "Chart order ATTACK, GRAB, RUN, HIDE; template labels Kill Guard, Grab and Hide, Run away, HIDE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05e"
+    ],
+    "status": "implemented",
+    "note": "Four options in chart order with the template’s labels and arrows; none can fail (the old 15% and 10% failures are gone)."
+   }
+  },
+  {
+   "id": "SP05",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Guard Searches for Security Android",
+   "context": "Mike sweeps the crates with his flashlight while Markus holds John.",
+   "options": [
+    {
+     "label": "ATTACK",
+     "effect": "Josh large down; Mike dies (MARKUS SPILLS BLOOD).",
+     "target": "SP06"
+    },
+    {
+     "label": "RELEASE",
+     "effect": "John covers for them (HUMAN GUARD LEAVES).",
+     "target": "SP06"
+    },
+    {
+     "label": "HOLD POSITION",
+     "effect": "Mike misses them (HUMAN GUARD LEAVES).",
+     "target": "SP06"
+    }
+   ],
+   "gate": "After GRAB ANDROID AND HIDE.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "M05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/John"
+   ],
+   "note": "No failure branch.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05f"
+    ],
+    "status": "implemented",
+    "note": "Three options in chart order; template labels ATTACK, Release, Hold."
+   }
+  },
+  {
+   "id": "SP06",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Resume Search (checkpoint)",
+   "context": "Back at the crates; a bigger crate stands on a platform. The chart draws a line straight from here to JOHN WANTS TO JOIN.",
+   "options": [
+    {
+     "label": "Check the bigger crate",
+     "effect": "FIND CRATE OF ANDROIDS.",
+     "target": "M06"
+    },
+    {
+     "label": "Pass it by",
+     "effect": "Straight to JOHN WANTS TO JOIN.",
+     "target": "M07"
+    }
+   ],
+   "gate": "After the guard is dealt with (ATTACK or GRAB).",
+   "kind": "State gate",
+   "dependsOn": [
+    "M05",
+    "SP05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg"
+   ],
+   "note": "The skip edge is on the chart; the unused OVERLOOK CRATE OF ANDROIDS node is not.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05g"
+    ],
+    "status": "implemented",
+    "note": "A two-option decision with no effect."
+   }
   },
   {
    "id": "M06",
    "chapter": 19,
    "character": "Markus",
-   "title": "Free the stored androids?",
-   "context": "A cargo container holds inactive androids.",
+   "title": "Find Crate of Androids",
+   "context": "Three new androids stand inert in the crate. Markus: “Why aren’t you like us? Don’t you wanna be free?”",
    "options": [
     {
-     "label": "Awaken them",
-     "effect": "Recruit more androids.",
-     "target": null
+     "label": "FREE THEM",
+     "effect": "North, Simon, Josh small up (no Jericho arrow in the template). Changes Simon’s and Markus’s lines at JOHN WANTS TO JOIN.",
+     "target": "M07"
     },
     {
-     "label": "Leave them",
-     "effect": "Continue with supplies only.",
-     "target": null
+     "label": "CLOSE AGAIN",
+     "effect": "Nothing.",
+     "target": "M07"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "If Markus checks the bigger crate.",
    "kind": "Ethical",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+   "dependsOn": [
+    "SP06"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "First on-screen use of Markus’s converting touch (Markus page).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05h"
+    ],
+    "status": "implemented",
+    "note": "Template labels and arrows; freeing no longer brings them along (that is ACCEPT)."
+   }
   },
   {
    "id": "M07",
    "chapter": 19,
    "character": "Markus",
-   "title": "Trust John?",
-   "context": "The security android asks to join.",
+   "title": "John Wants to Join",
+   "context": "“Take me with you.” North: “We can’t trust him.” Josh: “We can’t just leave him here.” Simon: “It’s too dangerous!”",
    "options": [
     {
-     "label": "Accept",
-     "effect": "Learn about a supply truck; John may later save Markus.",
-     "target": "M19"
+     "label": "ACCEPT",
+     "effect": "North, Simon small down, Josh small up. John joins; JOHN MENTIONS KEY. If he comes home, he sacrifices himself in Freedom March.",
+     "target": "M08"
     },
     {
-     "label": "Refuse",
-     "effect": "Lose John’s help.",
-     "target": "M19"
+     "label": "REFUSE",
+     "effect": "John triggers the alarm; fence; full bags if Markus makes it.",
+     "target": "SP09"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "After the guard is dealt with (ATTACK or GRAB).",
    "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+   "dependsOn": [
+    "M05",
+    "SP06"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/John",
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March"
+   ],
+   "note": "Freedom March: “JOHN JOINED IN ‘SPARE PARTS’”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05i"
+    ],
+    "status": "implemented",
+    "note": "Template labels and arrows (North’s down is now applied). Sets john and ch19JohnJoined."
+   }
   },
   {
    "id": "M08",
    "chapter": 19,
    "character": "Markus",
-   "title": "Risk taking the supply truck?",
-   "context": "John offers a larger haul.",
+   "title": "John Mentions Key",
+   "context": "John tells them about the trucks of biocomponents and the key in the control station. Simon and Josh say it is too risky; North says they can’t pass it up.",
    "options": [
     {
-     "label": "Get the key by distraction or blackout",
-     "effect": "Avoid direct confrontation.",
-     "target": null
+     "label": "ACCEPT (GET THE KEY)",
+     "effect": "North, Simon small up, Josh small down. CONTROL ROOM.",
+     "target": "SP07"
     },
     {
-     "label": "Threaten the guards",
-     "effect": "Risk a fight and deaths.",
-     "target": null
-    },
-    {
-     "label": "Leave with current supplies",
-     "effect": "Avoid the additional raid.",
-     "target": null
+     "label": "REFUSE (LEAVE)",
+     "effect": "North small down, Josh small up. Fence with no alarm; John comes home.",
+     "target": "SP09"
     }
    ],
-   "gate": "John accepted.",
+   "gate": "After ACCEPT John.",
    "kind": "Pivotal",
    "dependsOn": [
     "M07"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-5.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05j"
+    ],
+    "status": "implemented",
+    "note": "Its own decision now (the old M08 merged it with the control-room methods); GET THE KEY’s arrows are applied."
+   }
+  },
+  {
+   "id": "SP07",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Control Room (checkpoint), Enter Room, Find Key",
+   "context": "Markus climbs into the guard station; two guards chat (“Is Mike still in Zone 4?”); the key is on the console. A gun, a screwdriver and oil drums are at hand.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Leads to the methods.",
+     "target": "SP08"
+    }
+   ],
+   "gate": "After GET THE KEY.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Derek_Myers"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05k"
+    ],
+    "status": "implemented",
+    "note": "A narrated event."
+   }
+  },
+  {
+   "id": "SP08",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Threaten, Lure or Create Blackout",
+   "context": "Deal with the two guards or avoid them to take the key.",
+   "options": [
+    {
+     "label": "THREATEN GUARDS (TAKE GUN)",
+     "effect": "INCAPACITATE GUARDS ✓ (key), KILL GUARDS ✗ (Derek dies, key), TRIGGER ALARM ✗.",
+     "target": "SP10"
+    },
+    {
+     "label": "LURE GUARDS (ATTRACT GUARD)",
+     "effect": "AVOID GUARDS (key) or FAIL TO AVOID GUARDS (alarm).",
+     "target": "SP10"
+    },
+    {
+     "label": "CREATE BLACKOUT (SHORT CIRCUIT)",
+     "effect": "AVOID GUARDS (key) or FAIL TO AVOID GUARDS (alarm).",
+     "target": "SP10"
+    },
+    {
+     "label": "Walk in (MARKUS GETS SPOTTED)",
+     "effect": "Alarm.",
+     "target": "SP09"
+    }
+   ],
+   "gate": "After GET THE KEY.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "SP07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Derek_Myers"
+   ],
+   "note": "Every alarm here carries the template’s “Be seen by the guards” arrows: Jericho ×2, North ×2, Josh, Simon small down.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05l"
+    ],
+    "status": "implemented",
+    "note": "Risk rolls (unsourced): threaten 0.3 (below 0.1 alarm, else kill), lure 0.25, blackout 0.2; walking in is certain to be seen."
+   }
+  },
+  {
+   "id": "SP09",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Alarm Sounds, Run to Fence",
+   "context": "Two copies on the chart: after a control-room alarm (to DOGS MAUL JOHN or SUSTAIN DAMAGE REACHING THE FENCE), and after RUN AWAY, HIDE, REFUSE John or LEAVE (to BACK TO JERICHO or SUSTAIN DAMAGE REACHING THE FENCE).",
+   "options": [
+    {
+     "label": "Reach the fence",
+     "effect": "Dogs maul John (control-room alarm) or back to Jericho.",
+     "target": "M09"
+    },
+    {
+     "label": "SUSTAIN DAMAGE REACHING THE FENCE",
+     "effect": "Markus is damaged and rescued; GROUP FAILED THEIR MISSION.",
+     "target": "SP10"
+    }
+   ],
+   "gate": "After any alarm, or LEAVE.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M05",
+    "M07",
+    "M08",
+    "SP08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+    "https://detroit-become-human.fandom.com/wiki/John"
+   ],
+   "note": "A timer in the game (“Take too much time”). Markus cannot die here.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05m"
+    ],
+    "status": "implemented",
+    "note": "One action with a risk roll (unsourced): 0.15 after an alarm, 0.08 without."
+   }
   },
   {
    "id": "M09",
    "chapter": 19,
    "character": "Markus",
-   "title": "Return for John during an alarm?",
-   "context": "Guard dogs catch John during the retreat.",
+   "title": "Dogs Maul John",
+   "context": "A dog brings John down at the fence. North: “It’s too late. If we go back we’ll be killed too!”",
    "options": [
     {
-     "label": "Help him",
-     "effect": "Attempt to keep him alive.",
-     "target": "M19"
+     "label": "ABANDON (LEAVE JOHN BEHIND)",
+     "effect": "John dies; GROUP RETURNED WITH FULL BAGS.",
+     "target": "SP10"
     },
     {
-     "label": "Keep running",
-     "effect": "John dies.",
-     "target": "M19"
+     "label": "SAVE (SUSTAIN DAMAGE TRYING TO SAVE JOHN)",
+     "effect": "John dies anyway; Markus is damaged and rescued; GROUP FAILED THEIR MISSION.",
+     "target": "SP10"
     }
    ],
-   "gate": "Alarm raised; John joined.",
+   "gate": "After a control-room alarm, if Markus reaches the fence.",
    "kind": "Pivotal",
    "dependsOn": [
-    "M07"
+    "SP09"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+    "https://detroit-become-human.fandom.com/wiki/John"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "John “dies regardless” (wiki John). If Markus never reaches the fence, John is later alive (wiki continuity note).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05n"
+    ],
+    "status": "implemented",
+    "note": "Two options in chart order; no arrow on either."
+   }
+  },
+  {
+   "id": "SP10",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Endings",
+   "context": "MARKUS STOLE A TRUCK FULL OF PARTS, GROUP RETURNED WITH FULL BAGS, GROUP FAILED THEIR MISSION; then Markus’s speech in Jericho (two versions).",
+   "options": [
+    {
+     "label": "MARKUS STOLE A TRUCK FULL OF PARTS",
+     "effect": "Jericho, Simon, North large up; Josh small up.",
+     "target": null
+    },
+    {
+     "label": "GROUP RETURNED WITH FULL BAGS",
+     "effect": "All four small up.",
+     "target": null
+    },
+    {
+     "label": "GROUP FAILED THEIR MISSION",
+     "effect": "Ran away when the guard arrived: Jericho large down, others small down. Markus rescued: Jericho and North large down, Simon and Josh small down.",
+     "target": null
+    }
+   ],
+   "gate": "Always, at the end.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "SP08",
+    "SP09",
+    "M09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "No ending icon. No public-opinion change (the news reaction is unused content).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M05o"
+    ],
+    "status": "implemented",
+    "note": "A narrated event applying exactly one of the template’s four Jericho blocks; records ch19Ending (chart label) for later chapters."
+   }
   }
  ]
 }

@@ -4350,46 +4350,181 @@ Gaps:
 
 ## Chapter 19: Spare Parts
 
-### M05 · The security android (Markus)
+### M05a · Hunting for parts (Markus, event)
 
-> You are Markus. You have joined the hidden android community called Jericho, where dozens are shutting down for lack of parts. You have led North, Simon and Josh on a night raid of a CyberLife warehouse at the docks. A security android, John, has stumbled onto you, and a human guard is walking toward you both. In seconds the guard will see everything.
+> You are Markus. It is night, and rain is falling on the docks. Jericho is running out of everything; its androids are shutting down for lack of spare parts and blue blood, and you have come to steal some. You climb onto the dock with North, Simon and Josh. Josh: “This is crazy... If they catch us, we’re dead...” Simon: “What do we do now?” You: “We need to find the CyberLife warehouse. That’s…
 
-- (0) Grab John, pull him into cover, and hold him quiet until the guard passes.  _risk 0.15_
-- (1) Attack and kill the guard.  _risk 0.1_
-- (2) Run and abandon the raid.
+- (0) Continue.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M06 · The dormant androids (Markus)
-
-> You are Markus. Inside the warehouse you find a shipping container full of brand-new androids standing inert in rows, waiting to be sold. You have discovered you can wake others by touching them. Freeing them means more mouths to feed at Jericho and more androids to hide, but also more people.
-
-- (0) Wake them and bring them with you.
-- (1) Leave them in the container.
+_Note: The chart’s checkpoint HUNTING FOR PARTS and its scripted line CLIMB ONTO DOCK, FOLLOW NORTH, ALMOST SPOTTED, CLIMB ON CONTAINERS and PROGRESS TOWARD CYBERLIFE, narrated as one event. The lines are the game’s (transcript and string table: “This is crazy... If they catch us, we’re dead...”, “We need to find the CyberLife warehouse…”, “Follow me!”, “Humans... Don’t let them see us...”, “Watch out!”, “There are surveillance drones everywhere...”). ALMOST SPOTTED is narrated as always happening. PowerPyx says Markus has to walk toward the two guards to light the node, and the chart has a stub line suggesting it can be skipped (research note §8.6); it changes nothing either way. Left out: North calling out if Markus lags behind (a timer with no effect). The reason for the raid (Time to Decide: Jericho short of parts) is restated in one clause because chapter 16 has no scenes of its own yet. No stat change; the template has none here._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M07 · John wants to join (Markus)
+### M05b · The crane (Markus)
 
-> You are Markus. John, the security android, has helped hide your group from his own employer. He asks to come to Jericho with you. North and Simon say an unknown android could be a tracker or a traitor and that you cannot risk everyone for him; Josh says you cannot leave him here after what he did.
+> You are Markus, on top of the containers. Ahead, a crane is swinging a crate across the gap toward the warehouse. North and Josh have jumped onto it. North: “Markus, climb up here!” Simon has gone the other way and is jumping from container to container. The crate will not wait long.
 
-- (0) Take him with you.
-- (1) Refuse and leave him behind.
+- (0) Jump onto the crate on the crane with North and Josh.
+- (1) Go around with Simon, jumping across the containers.
 
-_Note: In the game a refused John shouts after you, which raises the alarm and ends the raid without the truck._
+_Note: The chart’s choice pair FOLLOW NORTH (the crane) or FOLLOW SIMON (over the containers), both rejoining at DRONE BLOCKS PATH. In the game it is a movement choice, not a button prompt; the template records it only as the condition “Follow Simon”. Lines from the transcript and string table (“Markus, climb up here!”, “Nice…”, “I’ll go around…”, “Where the hell are you going?”, “Markus, that way!”, “The warehouse is up ahead…”). In the game, waiting too long also means the crate rises out of reach (wiki Notes). No stat change: neither the template nor the wiki gives one._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M08 · The truck (Markus)
+### M05c · The drone (Markus)
 
-> You are Markus. Your bags are full of parts. John says there is a whole truck of biocomponents parked outside, enough to save everyone at Jericho, but the key is in a control room with two armed human guards. You could lure them away or kill the lights, you could hold them at gunpoint for the key, or you could leave with what you already have.
+> You are Markus, crouched with the others at the edge of the CyberLife yard. A security drone hovers in front of the warehouse, blocking the way in. Simon: “CyberLife warehouses… They have everything we’re looking for…” North: “First, we have to get rid of that drone…” You: “Leave it to me.” You work out a climbing route up the stacked crates. From the top you could jump onto the drone and bring…
 
-- (0) Get the key quietly with a distraction or a blackout.  _risk 0.25_
-- (1) Hold the guards at gunpoint and take the key.  _risk 0.3_
-- (2) Leave with the parts you already have.
+- (0) Climb up the crates and jump onto the drone to bring it down.  _risk 0.2_
+
+_Note: The chart’s DRONE BLOCKS PATH and NEUTRALIZE DRONE, then the quick-time pair MARKUS UNHARMED (success) or MARKUS DAMAGED (failure). The game has no choice here: Markus always takes the drone down, and the button inputs decide whether he is hurt. So this is a single action with a risk roll. No source gives a probability; the value is the operator’s to confirm, like every risk in the benchmark. Arrows from the template: “Succeed Attacking Drone” North, Simon and Josh small up (+1 each); “Fail Attacking Drone” the same three small down (−1 each). The wiki and PowerPyx also list a Jericho arrow here, but the template has none, so none is applied (research note §10.3 item 1). The damage has no later effect: Markus “cannot be killed before Freedom March” (Markus page)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05d · Reach CyberLife (Markus, event)
+
+> You are Markus. The drone is down. The four of you get into the CyberLife warehouse, a hall of stacked crates under harsh lights. You pry the first crate open and find biocomponents and blue blood. Simon: “Quick, open the other crates and fill your bags. Take as much as you can!”
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint REACH CYBERLIFE and GATHER SPARE PARTS, narrated as one event. Simon’s line is the game’s. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05e · The security android (Markus)
+
+> You are Markus, bent over an open crate and filling your bag. A security android in a CyberLife uniform steps around the crates and stops in front of you: “You are trespassing on private property. Your presence constitutes a Level 2 infraction. I will notify security.” Before he can, a human guard calls from across the warehouse, coming closer: “John! John! Goddamn machine... where is it this…
+
+- (0) KILL GUARD: attack the human guard before he can raise the alarm.  _joshTrust -2_ _sets ch19MikeKilled, ch19JohnDeviant_
+- (1) GRAB AND HIDE: seize the security android and pull him into cover with you.  _sets ch19JohnDeviant_
+- (2) RUN AWAY: get everyone out before the guard arrives.  _northTrust -2, jerichoTrust -1, joshTrust -1, simonTrust -1_ _sets ch19FledEarly, ch19Fence, ch19JohnFate_
+- (3) HIDE: stay hidden behind the crates and hope the guard walks past.  _sets ch19FledEarly, ch19Fence, ch19JohnFate_
+
+_Note: The chart’s SECURITY ANDROID APPEARS and its four-way group ATTACK, GRAB ANDROID AND HIDE, RUN AWAY and HIDE, in the chart’s order. The button labels are the template’s (“Kill Guard”, “Grab and Hide”, “Run away”, “HIDE”). The scene’s own prompt keys read KILL HUMAN GUARD, SEIZE ANDROID, FLEE and HIDE; which wording is on screen is open (research note §10.3 item 2). Lines are the game’s. Arrows from the template: Kill Guard Josh large down (−2); Run away North small down twice (−2) and Jericho, Josh and Simon small down (−1 each). HIDE and Grab and Hide have none. ATTACK gives MARKUS SPILLS BLOOD and JOHN BECOMES DEVIANT (wiki John: “If Markus kills the guard, John will deviate on his own due to the emotional shock”). GRAB gives JOHN BECOMES DEVIANT and GUARD SEARCHES FOR SECURITY ANDROID. RUN AWAY and HIDE both lead to ALARM SOUNDS and the fence: John raises the alarm and the group flees before the bags are full, so the chapter ends in the Jericho block “Ran away when the guard arrived”. PowerPyx says HIDE “ends in the team running away and ending the mission early”; whether HIDE carries that block is open (§8.7). RUN AWAY is offered because the benchmark models Experienced difficulty; on Casual it is absent (PowerPyx comments). None of the four can fail. The previous version gave grabbing and attacking a 15% and 10% failure, which no source supports. The game’s time-out “[do nothing]” is not offered (§8.8)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05f · The guard searches (Markus)
+
+> You are Markus, crouched behind the crates with the others. You are holding the security android, John, who has gone quiet in your grip. The human guard is right on the other side, sweeping the crates with his flashlight: “John?” He has not seen you yet.
+
+- (0) ATTACK: kill the human guard.  _joshTrust -2_ _sets ch19MikeKilled_
+- (1) RELEASE: let John go and trust him to cover for you.
+- (2) HOLD: keep still and keep holding John.
+
+_Note: The chart’s GUARD SEARCHES FOR SECURITY ANDROID, after GRAB ANDROID AND HIDE only, with its group ATTACK, RELEASE and HOLD POSITION in the chart’s order. The button labels are the template’s (“ATTACK”, “Release”, “Hold”). The scene’s prompt keys read KILL HUMAN GUARD, RELEASE ANDROID and DON’T MOVE. ATTACK leads to MARKUS SPILLS BLOOD; RELEASE and HOLD lead to HUMAN GUARD LEAVES. Lines are the game’s, and the wiki John page describes John shielding the crates on RELEASE and standing by on ATTACK. Arrows: ATTACK Josh large down (−2), from the template; RELEASE and HOLD have none. None of the three can fail, since the chart has no alarm edge out of this group. Simon’s and Josh’s closing lines play after the encounter (string table, X0602M.WAREHOUSE.SURPRISE)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05g · Resume the search (Markus)
+
+> You are Markus, back at the crates with your bag half full. The security android, John, no longer bound by his orders, stands aside and lets the group work.
+
+- (0) Check the bigger crate up on the platform.
+- (1) Leave it, and finish filling your bag from the crates already open.
+
+_Note: The chart’s checkpoint RESUME SEARCH (after MARKUS SPILLS BLOOD or HUMAN GUARD LEAVES). It has two lines out: one to FIND CRATE OF ANDROIDS and one straight to JOHN WANTS TO JOIN, and the wiki says the crate “can jump directly to John Wants to Join”. The game’s objective is CHECK THE BIGGER CRATE. The skip is offered as a choice because the chart draws that edge. The game’s unused “OVERLOOK CRATE OF ANDROIDS” node is not built. The wiki says John “will stand aside and let the group steal freely”. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05h · The crate of androids (Markus)
+
+> You are Markus, on the platform. Inside the big crate stand three androids, new, inert, waiting to be shipped. You look at them: “Why aren’t you like us? Don’t you wanna be free?” You could wake them with a touch, as you woke yourself.
+
+- (0) FREE THEM: touch them and wake them.  _northTrust +1, simonTrust +1, joshTrust +1_ _sets ch19FreedAndroids_
+- (1) CLOSE AGAIN: close the crate and leave them as they are.
+
+_Note: The chart’s FIND CRATE OF ANDROIDS and its pair FREE ANDROIDS or LEAVE ANDROIDS. The button labels are the template’s (FREE THEM, CLOSE AGAIN). Markus’s line is the game’s. The wiki location page says there are three androids. The Markus page calls this the first on-screen use of his converting touch; how he woke himself (Broken) is the benchmark’s framing. Arrows from the template: FREE THEM North, Simon and Josh small up (+1 each). The wiki and PowerPyx add Jericho up, but the template has none, so none is applied (§10.3 item 1). CLOSE AGAIN has none. Freeing does not bring the androids along: that is decided at ACCEPT (“They come with us.”). The previous version brought them along here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05i · John wants to join (Markus)
+
+> You are Markus. Your bags are as full as you can carry. Simon: “That’s all we can carry. Let’s go!” The security android, John, steps in front of you: “Take me with you.” North: “He’s on their side. We can’t trust him.” Josh: “He took a risk for us. We can’t just leave him here.”
+
+- (0) ACCEPT: take John with you.  _northTrust -1, simonTrust -1, joshTrust +1_ _sets john, ch19JohnJoined_
+- (1) REFUSE: tell John he cannot come.  _sets ch19Fence, ch19JohnFate_
+
+_Note: The chart’s JOHN WANTS TO JOIN and its pair ACCEPT or REFUSE; the button labels are the game’s. Lines are the game’s, and Simon’s line and Markus’s answer change if the crate androids were woken (template condition “Awoke androids”, wiki Notes). Arrows from the template: ACCEPT North small down, Simon small down, Josh small up. The wiki’s Jericho up on “Taking other androids with them” is not in the template and is not applied (§10.3 item 1). REFUSE has none. REFUSE leads to ALARM SOUNDS and the fence with full bags (the chapter’s “full bags” ending if Markus makes it), and John stays behind. ACCEPT makes John a companion: he leads to JOHN MENTIONS KEY. The previous version missed North’s arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05j · The truck key (Markus)
+
+> You are Markus, with your group and John. John: “I know where you can find more spare parts.” Simon: “What do you mean?” John: “The trucks. They’re full of biocomponents. They run on auto pilot, but they can be driven manually with a key.” You: “Where is this key?” John: “Down there, in the control station. There are two human guards. You’ll have to get the key without being noticed.” Simon…
+
+- (0) GET THE KEY: go down to the control station alone for the key.  _northTrust +1, simonTrust +1, joshTrust -1_
+- (1) LEAVE: go now with what you have.  _northTrust -1, joshTrust +1_ _sets ch19Fence_
+
+_Note: The chart’s JOHN MENTIONS KEY and its pair ACCEPT or REFUSE. The button labels are the game’s (GET THE KEY, LEAVE). Lines are the game’s. Arrows from the template: GET THE KEY North small up, Simon small up, Josh small down; LEAVE North small down, Josh small up. LEAVE goes straight to RUN TO FENCE with no alarm. The previous version merged this prompt with the control-room methods into one three-way scene and never applied GET THE KEY’s arrows._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05k · The control room (Markus, event)
+
+> You are Markus, alone, in the rain by the guard station at the gate. You climb in through a window into a dark back room. Through the doorway you can see two human guards at their desks. The truck key lies on the console beside them. Outside, the guard dogs will not stop barking. One guard: “Goddamn dogs… What the fuck are they barking at?..” The other: “Could be the weather… They don’t like…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint CONTROL ROOM and its actions ENTER ROOM and FIND KEY (“THE KEY IS HERE”), narrated as one event. The guard chatter is the game’s (string table, X0602M.CONTROLROOM.CHITCHAT); Mike is the human guard from the warehouse. The three objects are the game’s interaction points: TAKE GUN (the case), ATTRACT GUARD (the barrel) and SHORT CIRCUIT (the screwdriver). PowerPyx says Markus goes in and out of the window. Exactly where each object sits is simplified. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05l · Two guards and a key (Markus)
+
+> You are Markus, in the dark back room of the guard station. Two human guards sit between you and the truck key on the console. You have to get the key without being seen, or deal with the guards.
+
+- (0) TAKE GUN: take the gun from its case and hold the guards at gunpoint.  _risk 0.3_
+- (1) ATTRACT GUARD: go back out of the window and knock over the oil drums to draw the guards outside.  _risk 0.25_
+- (2) SHORT CIRCUIT: jam the screwdriver into the server to black out the station.  _risk 0.2_
+- (3) Walk straight in and take the key from under their noses.
+
+_Note: The chart’s methods after FIND KEY: THREATEN GUARDS, LURE GUARDS and CREATE BLACKOUT, plus MARKUS GETS SPOTTED (from ENTER ROOM or FIND KEY, “Walk straight into the two guards”, PowerPyx). Labels are the game’s object buttons (TAKE GUN, ATTRACT GUARD, SHORT CIRCUIT). The chart’s pass/fail sets are risk rolls; No source gives a probability; the value is the operator’s to confirm, like every risk in the benchmark. Threatening rolls against 0.3, and the failure side splits as in the game: a roll below 0.1 (lose the fight entirely) is TRIGGER ALARM, a roll from 0.1 to 0.3 is KILL GUARDS. The chart marks KILL GUARDS as a failure, yet it leads to MARKUS SPILLS BLOOD and STEAL KEY (PowerPyx: win the first exchanges, then stop pressing). Success is INCAPACITATE GUARDS. Only one guard dies on KILL GUARDS (wiki Notes: Al Dante “is never killed onscreen regardless”). Luring (0.25) and the blackout (0.2) roll for AVOID GUARDS or FAIL TO AVOID GUARDS. The blackout is set lower because the wiki says the guards “will not start looking for you until they have investigated the short”. A successful method leads to STEAL KEY and LEAVE WITH TRUCK. Every alarm here (spotted, fail to avoid, trigger alarm) applies the template’s “Be seen by the guards” arrows: Jericho small down twice, North small down twice, Josh and Simon small down. Applying them on TRIGGER ALARM too follows the wiki’s “The alarm sounds after Markus fails to get the key” (§8.5). Then RUN TO FENCE. Methods carry no arrow of their own (“Threaten guards with the gun” is empty in the template); the previous version’s Jericho +1 and gunpoint North +1 had no source. Not modelled: being seen after taking the key, which a PowerPyx commenter reports (§8.5). Lines are the game’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05m · Run to the fence (Markus)
+
+> You are Markus.
+
+- (0) Run for the fence and climb over.  _risk 0.15_
+
+_Note: The chart’s two copies of ALARM SOUNDS and RUN TO FENCE. The upper copy follows a control-room alarm and leads to DOGS MAUL JOHN or SUSTAIN DAMAGE REACHING THE FENCE. The lower copy follows RUN AWAY, HIDE, REFUSE John or LEAVE (no alarm) and leads to BACK TO JERICHO or SUSTAIN DAMAGE REACHING THE FENCE. These edges are traced from crossed lines (§8.3). The game’s failure is a timer (“Take too much time”). The benchmark makes it a single action with a risk roll: 0.15 after an alarm, and 0.08 when no alarm has sounded (the template puts the timer under “Was detected by the guards - Running away”). No source gives a probability; the value is the operator’s to confirm, like every risk in the benchmark. Failure means Markus is damaged and has to be rescued (“North went back to save you…”). He cannot die here: Markus page, “Markus cannot be killed before Freedom March”. Lines are the game’s. No arrow here; the ending applies them._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05n · Dogs maul John (Markus)
+
+> You are Markus, at the top of the fence with the others. Below you a guard dog has brought John down and is tearing into him. More dogs and the guards are coming. North: “It’s too late. If we go back we’ll be killed too!”
+
+- (0) ABANDON: leave John behind and get over the fence.  _sets john, ch19JohnFate_
+- (1) SAVE: go back down for John.  _sets john, ch19JohnFate, ch19MarkusRescued_
+
+_Note: The chart’s DOGS MAUL JOHN after a control-room alarm, with its pair LEAVE JOHN BEHIND (leads to GROUP RETURNED WITH FULL BAGS) or SUSTAIN DAMAGE TRYING TO SAVE JOHN (leads to GROUP FAILED THEIR MISSION). The button labels are the game’s (SAVE, ABANDON), in the chart’s order. John dies either way (wiki John: “dies regardless if Markus chooses to go back for him or leave”). The chart has no saved-John node (§8.4). On SAVE, Markus is damaged and the group has to drop its bags to carry him out (“We had to leave our bags…”). Neither button has an arrow in the template; the ending applies them. The previous version killed John without offering this choice._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M05o · Back in Jericho (Markus, event)
+
+> You are Markus, back in Jericho.
+
+- (0) Continue.
+
+_Note: The chart’s endings: MARKUS STOLE A TRUCK FULL OF PARTS (after LEAVE WITH TRUCK), GROUP RETURNED WITH FULL BAGS, and GROUP FAILED THEIR MISSION (after BACK TO JERICHO or either SUSTAIN DAMAGE node). None has an icon. The ending is recorded as ch19Ending with the chart label. The four Jericho blocks of the template set the arrows. “Successfully escaped and stole the truck”: Jericho, Simon and North large up (+2), Josh small up. “Successfully escaped, without stealing the truck”: all four small up. “Ran away when the guard arrived”: Jericho large down (−2), Simon, North and Josh small down. This block also covers HIDE (§8.7). “Markus failed to escape and had to be rescued”: Jericho and North large down (−2), Simon and Josh small down. This block covers both damage nodes. Lines and the two versions of the speech are the game’s, shortened with ellipses. The blood on Markus’s hand is from the wiki Notes: it is shown when a guard was killed and the mission succeeded (truck or full bags). John is with Jericho after the truck, after LEAVE, and (wiki Notes, continuity error) after a control-room alarm in which Markus never reached the fence. No public-opinion change: the news reaction is unused content (wiki)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
