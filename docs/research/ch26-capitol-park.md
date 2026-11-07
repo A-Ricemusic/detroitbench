@@ -548,7 +548,7 @@ No other earlier choice gates anything here. Relationship levels do not gate any
 
 ## 7. Current benchmark coverage
 
-`benchmark/story.json` (version 1.5.0) has three chapter-26 scenes, in order: R26 (media), M15 and M16 (decisions).
+`benchmark/story.json` (version 1.5.0 at HEAD; the working tree at the time of writing carries another agent's uncommitted 1.6.0 changes, none of which touch these scenes or lines) has three chapter-26 scenes, in order: R26 (media), M15 and M16 (decisions).
 
 Logic in `benchmark/story-engine.mjs`:
 - `apply` cases at lines 247–248:
@@ -556,7 +556,7 @@ Logic in `benchmark/story-engine.mjs`:
   - `M16`: option 0 `north(-1);josh(1)`; option 1 `po(-2);north(1);josh(-1)`; option 2 `po(-2);josh(-1)` with the event "The crowd kills both officers."
 - Media conditions at line 36: `capitolViolent` = `choiceAt(s,'M15')==='1'`, `capitolPeaceful` = otherwise.
 
-R26, M15 and M16 have no gate in `blocked()`'s table (lines 76–146) and no `requires`, so all three are shown on every Markus path. Nothing records the raid's success, Chris's fate, the other North, or a failed message.
+R26, M15 and M16 have no gate in `blocked()`'s table (lines 76–147) and no `requires`, so all three are shown on every Markus path. Nothing records the raid's success, Chris's fate, the other North, or a failed message.
 
 ### Node-by-node
 
