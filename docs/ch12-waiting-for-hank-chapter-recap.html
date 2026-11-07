@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Waiting for Hank… · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 12</p>
+<h1>Waiting for Hank…: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots: 26 nodes, the bracketed phase [ WAIT FOR HANK ], two checkpoints, two endings); prompts, button labels, clues and stat arrows come from the game’s own chapter template and string table (detroitbecometext); the Fandom wiki and PowerPyx fill in the rest. No probability, timer or risk exists in this chapter. There are no operator notes for it yet; section 5 lists where the benchmark simplifies, and section 7 what to check in game. Research: <code>docs/research/ch12-waiting-for-hank.md</code>.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Stat arrows</a></li><li><a href="#confirmed">4 · Confirmed</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>IN THE ZEN GARDEN (checkpoint, Nov 6th 2038, 09:56). FIND AMANDA on the island; optional FIND MAGIC STONE (archway, left) and CHECK THE GRAVES (right, only after a Connor death).</li>
+<li>TALK WITH AMANDA: her reaction to Partners and The Interrogation, then three questions (the first only if the deviant was found).</li>
+<li>ARRIVE AT POLICE STATION (checkpoint) → FIND LT. ANDERSON. Reception TV (Arctic news).</li>
+<li>[ WAIT FOR HANK ], free order: explore, Hank’s desk (12 clues), the call, Officer Chris, the cells, Carlos’ android (if saved; he self-destructs after the talk), Gavin in the break room and the TV, three magazines, Fowler’s office.</li>
+<li>Beside the block: HANK ARRIVES → HANK STORMS OUT.</li>
+<li>TALK TO HANK (two prompts) → desk topics from the spare desk → START WORKING → EXAMINE FILES → TALK ABOUT THE CASE → HANK IS MAD (collar grab).</li>
+<li>HANK GOT A LEAD (Kara alive) or HANK LEFT TO GET LUNCH (Kara died in Stormy Night).</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C08a</code> event (records the cross-chapter inputs) → <code>C08c</code> repeatable garden scene.</li>
+<li><code>C08d</code> event (reaction and its arrow) → <code>C08e</code> (only if found), <code>C08f</code>, <code>C08g</code>.</li>
+<li><code>C08h</code> event → <code>R12a</code> media (reception TV).</li>
+<li><code>C08i</code> repeatable waiting scene; its Carlos option cuts to <code>C08b</code> → <code>C08j</code> and back; it ends by the break room (<code>C08k</code>, <code>C08l</code>, <code>C08m</code>) or by sitting down; then <code>R12</code> media (magazines; the break-room TV only after the break room).</li>
+<li><code>C08n</code> event → <code>C08o</code> (follow?) → <code>C08p</code> event → <code>C08q</code> (Fowler, if followed).</li>
+<li><code>C08r</code>, <code>C08s</code> → <code>C08t</code> repeatable topics → <code>C08u</code> repeatable case files → <code>C08v</code> → <code>C08w</code>.</li>
+<li><code>C08x</code> or <code>C08y</code> event, recorded in <code>ch12Ending</code>.</li>
+</ol></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">26 chart nodes, one bracketed phase, two checkpoints, two endings, no choice pair on the chart. Rows in italics are interactions that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>IN THE ZEN GARDEN</td><td>Checkpoint</td><td class="yes"><code>C08a</code></td></tr>
+<tr><td>FIND AMANDA, FIND MAGIC STONE, CHECK THE GRAVES</td><td>Island; archway; graveyard (after a death)</td><td class="yes"><code>C08c</code> options 0, 1, 2/3 (one gravestone per death)</td></tr>
+<tr><td>TALK WITH AMANDA</td><td>Reaction, then three questions</td><td class="yes"><code>C08d</code>, <code>C08e</code>, <code>C08f</code>, <code>C08g</code></td></tr>
+<tr><td>ARRIVE AT POLICE STATION</td><td>Checkpoint; reception</td><td class="yes"><code>C08h</code>; <i>reception TV</i> <code>R12a</code></td></tr>
+<tr><td>FIND LT. ANDERSON, EXPLORE THE STATION</td><td>Through the gates; sit in his chair</td><td class="yes"><code>C08i</code> situation and option 2</td></tr>
+<tr><td>EXAMINE HANK’S DESK, LEARN ABOUT HANK</td><td>8 desk scans, the headset, the terminal research</td><td class="yes"><code>C08i</code> options 12–21 (research once a desk item is scanned)</td></tr>
+<tr><td><i>Wilson, Chris, the call, the cells</i></td><td>Flavour; LEAVE A MESSAGE / HANG UP</td><td class="yes"><code>C08i</code> options 3–10</td></tr>
+<tr><td>ANDROID SAVED IN ‘THE INTERROGATION’, TALK WITH CARLOS’ ANDROID, CARLOS’ ANDROID SELF-DESTRUCTS</td><td>Two prompts; he smashes his head against the cell window</td><td class="yes"><code>C08i</code> option 11 → <code>C08b</code>, <code>C08j</code>; <code>ch12CarlosFate</code></td></tr>
+<tr><td>TALK WITH GAVIN</td><td>Three prompts</td><td class="yes"><code>C08k</code>, <code>C08l</code>, <code>C08m</code> (via <code>C08i</code> option 0)</td></tr>
+<tr><td>READ “IVANOFF SAYS “NIET”!”, READ “FAMOUS PAINTER DIES”, READ “ROBOTIC PARENTING”</td><td>Detroit Today near Hank’s desk</td><td class="part"><code>R12</code>, after the station rather than at any time</td></tr>
+<tr><td><i>Break-room TV</i></td><td>After Gavin; public opinion down</td><td class="yes"><code>R12</code>, only after the break room</td></tr>
+<tr><td>HANK ARRIVES</td><td>Two greetings</td><td class="yes"><code>C08n</code></td></tr>
+<tr><td>FOLLOW HANK IN FOWLER’S OFFICE, HANK STORMS OUT</td><td>The argument; Fowler’s four buttons</td><td class="yes"><code>C08o</code>, <code>C08p</code>, <code>C08q</code></td></tr>
+<tr><td>TALK TO HANK</td><td>Two prompts</td><td class="yes"><code>C08r</code>, <code>C08s</code></td></tr>
+<tr><td><i>Desk topics</i></td><td>DOG, BASKETBALL, MUSIC, ANTI-ANDROIDS, FOWLER, HOURS, START WORKING</td><td class="yes"><code>C08t</code>, repeatable</td></tr>
+<tr><td>EXAMINE FILES</td><td>Six case files and Connor’s conclusion</td><td class="yes"><code>C08u</code>, repeatable; <code>ch12Files</code></td></tr>
+<tr><td>TALK ABOUT THE CASE, HANK IS MAD</td><td>Two prompts; the collar grab</td><td class="yes"><code>C08v</code>, <code>C08w</code></td></tr>
+<tr><td>HANK GOT A LEAD, HANK LEFT TO GET LUNCH</td><td>By Kara’s fate</td><td class="yes"><code>C08x</code>, <code>C08y</code></td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Stat arrows, line by line</h2>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Change</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>Amanda’s reaction: deviant not found</td><td class="n">Amanda −2</td><td>Template LargeDown; wiki</td></tr>
+<tr><td>Amanda’s reaction: confession, survived</td><td class="n">Amanda +2</td><td>Template LargeUp (“without dying”); wiki</td></tr>
+<tr><td>Amanda’s reaction: died in The Interrogation</td><td class="n">Amanda −1</td><td>Template SmallDown; wiki</td></tr>
+<tr><td>Amanda’s reaction: found, no confession</td><td class="n">Amanda −1</td><td>Template SmallDown; wiki</td></tr>
+<tr><td>FRIENDLY / ADAPT / INDIFFERENT</td><td class="n">Amanda −1 / −1 / +1</td><td>Template; wiki; PowerPyx</td></tr>
+<tr><td>COMPASSIONATE (Carlos’ android)</td><td class="n">Instability +1</td><td>Template; Software Instability page</td></tr>
+<tr><td>Break-room TV (either variant)</td><td class="n">Public opinion −1</td><td>Template; Public Opinion page</td></tr>
+<tr><td>HANK ARRIVES after a death in The Interrogation</td><td class="n">Hank −1</td><td>Template; Relationship Stat</td></tr>
+<tr><td>DOG / MUSIC</td><td class="n">Hank +1 each</td><td>Template; wiki</td></tr>
+<tr><td>BASKETBALL / ANTI-ANDROIDS</td><td class="n">Hank −1 each</td><td>Template; wiki</td></tr>
+<tr><td>HANK IS MAD (every answer)</td><td class="n">Hank −1</td><td class="part">Wiki, Relationship Stat, PowerPyx; no icon in the template</td></tr>
+</tbody></table></div>
+
+<h2 id="confirmed">4 · Confirmed by the template and the wiki</h2>
+<ul>
+<li>Every button label and its order, every spoken line quoted in the outcomes, the twelve clues and the six case files are the template’s, resolved against the string table.</li>
+<li>Amanda’s first question is asked only if the deviant was found (the template nests it); INTERVENTION needs the deviant saved by intervening, REGRETS and NEW CONNOR a death in The Interrogation, STATUETTE the statuette seen in Partners, LAST NIGHT the spilled drink (the template’s only condition).</li>
+<li>The ending speaker is Chris (template and wiki); the Kara-dead conclusion is the generic “We could follow up on one of these cases”.</li>
+<li>Not built, because the template marks them cut: THANKS, HANK’S SON, the photo of Cole, the end of SIMULATION’s line, Gavin’s anecdote, “Think I’ll have myself another…”, “And bring that plastic thing with ya!”, Amanda’s transfer-request line. Not built because the template does not place them: the nameplate, tissue and police-cases strings.</li>
+</ul>
+
+<h2 id="differs">5 · Simplified, or changed from the earlier version</h2>
+<ul>
+<li>The waiting phase is one repeatable scene before Hank arrives. In the game the station can also be explored while Hank is in Fowler’s office; here the cell, the desk and the call come first, and the break room is the last stop before Hank arrives. The magazines come after the station.</li>
+<li>The self-destruction of Carlos’ android is narrated in the outcome of the second cell prompt, not as its own scene. Skipping the visit leaves him “not visited”; the earlier version destroyed him either way.</li>
+<li>Following Hank to Fowler’s office is a plain choice (not a game button). That the argument cannot be heard from the desk is the benchmark’s reading.</li>
+<li>The case files can be read in any order and Connor can conclude at any time; whether the game requires every file is not documented.</li>
+<li>The stone in the archway is not described by any source; the outcome says only that Connor examines it.</li>
+<li>The earlier version’s two options (“Ask about him” +1 and “Keep it strictly about the case” −1) are gone: the game has no such buttons, and asking nothing costs Hank nothing here. The −1 that the earlier version gave a cold Connor is replaced by the game’s unavoidable −1 at HANK IS MAD.</li>
+<li>Until Partners and The Interrogation are rebuilt, the engine still gives Amanda +1 when the deviant is found and +1 for a confession, and −1 Hank, −1 Amanda and −1 instability for any Connor death; those chapters should drop the Amanda and Hank changes, which the game applies here.</li>
+</ul>
+
+<h2 id="endings">6 · Endings and the flags later chapters read</h2>
+<div class="table"><table>
+<thead><tr><th>Ending</th><th>Condition</th><th>State</th></tr></thead>
+<tbody>
+<tr><td>HANK GOT A LEAD</td><td>Kara alive after Stormy Night; Chris: the AX400 that “attacked” (Todd alive) or “killed” (Todd dead) the man was seen in Ravendale</td><td><code>ch12Ending</code></td></tr>
+<tr><td>HANK LEFT TO GET LUNCH</td><td>Kara died in Stormy Night: “Lunch. Bullshit makes me hungry.”</td><td><code>ch12Ending</code></td></tr>
+</tbody></table></div>
+<ul>
+<li><code>knowsSumo</code>: true only after the DOG topic (Russian Roulette: Calm Hank’s Dog, otherwise Rile Hank’s Dog). The engine’s built-in Russian Roulette case still sets it unconditionally; that chapter’s rebuild should stop doing so.</li>
+<li><code>ch12Files</code>: which case files were read. <code>ch12CarlosFate</code>: null, <code>not visited</code> or <code>self-destructed</code> (body in the evidence room in Last Chance, Connor). <code>ch12BreakRoom</code>: whether Connor met Gavin and could see the TV.</li>
+<li>Inputs read once at <code>C08a</code>, preferring the rebuilt chapters’ exported fields, otherwise the legacy aliases and engine choices: <code>ch06DeviantFound</code>, <code>ch06Drink</code> (<code>spill</code>; legacy <code>ch06SpilledDrink</code>), <code>ch06SawStatue</code>, <code>ch09Confession</code>, <code>ch09ConnorDied</code>, <code>suspectAlive</code>, <code>suspectTrusts</code> (legacy <code>ch09AndroidInCell</code>, <code>ch09Intervened</code>), <code>ch09GavinDrew</code>; plus <code>kara</code>, <code>todd</code>, <code>carl</code> and <code>connorDeaths</code>.</li>
+</ul>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>Is Hank’s −1 at HANK IS MAD applied on the answer, at the collar grab, or not at all (the template shows no icon)?</li>
+<li>Can Carlos’ android, Gavin and the magazines be visited before Hank arrives, or only while he is in Fowler’s office? What triggers HANK ARRIVES?</li>
+<li>If the cell visit is skipped, is there a body in the evidence room in Last Chance, Connor?</li>
+<li>Does LAST NIGHT appear after a spilled drink when the deviant was found?</li>
+<li>Does leaving the break room before the news avoid the opinion drop, and does it show up later instead?</li>
+<li>Must every case file be opened before Connor’s conclusion plays?</li>
+<li>What does the magic stone look like, and what happens when Connor touches it?</li>
+<li>With a confession and a later death in The Interrogation, does Amanda give the death reaction (as built) or the confession one?</li>
+</ul>
+</main>
+</body>
+</html>

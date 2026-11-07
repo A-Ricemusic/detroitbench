@@ -160,8 +160,15 @@
    "id": 12,
    "title": "Waiting for Hank…",
    "character": "Connor",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (26 nodes, the [ WAIT FOR HANK ] block, two checkpoints, two endings), the game’s chapter template and string table, and the Fandom wiki (chapter page, Relationship Stat, Software Instability, Public Opinion, Magazine). IN THE ZEN GARDEN → FIND AMANDA (side branches FIND MAGIC STONE, CHECK THE GRAVES) → TALK WITH AMANDA (reaction plus three questions) → ARRIVE AT POLICE STATION → FIND LT. ANDERSON → [ WAIT FOR HANK ] (explore, desk, research, Carlos’ android if saved, Gavin, three magazines, Fowler’s office) beside HANK ARRIVES → HANK STORMS OUT → TALK TO HANK → EXAMINE FILES → TALK ABOUT THE CASE → HANK IS MAD → HANK GOT A LEAD (Kara alive) or HANK LEFT TO GET LUNCH (Kara dead). No probability or timer. Arrows: Amanda (opening reaction −2/+2/−1/−1; FRIENDLY and ADAPT −1, INDIFFERENT +1), Hank (arrival after an Interrogation death −1; DOG and MUSIC +1, BASKETBALL and ANTI-ANDROIDS −1; HANK IS MAD −1, wiki only), software instability (COMPASSIONATE +1), public opinion (break-room TV −1). Cross-chapter: knowsSumo (DOG), the case files read, Carlos’ android’s fate, the ending. Researched in docs/research/ch12-waiting-for-hank.md; recap in docs/ch12-waiting-for-hank-chapter-recap.html.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
   },
   {
    "id": 13,
@@ -6749,31 +6756,804 @@
    }
   },
   {
-   "id": "C08",
+   "id": "W01",
    "chapter": 12,
    "character": "Connor",
-   "title": "Cooperate with Hank or prioritize the case?",
-   "context": "Early conversation establishes the partnership.",
+   "title": "In the Zen Garden (checkpoint), Find Amanda, and the two side branches",
+   "context": "Connor enters the Zen Garden on November 6, 2038, 09:56. A pond with paths left and right; Amanda tends roses on the island.",
    "options": [
     {
-     "label": "Engage with Hank personally",
-     "effect": "Can improve the relationship.",
+     "label": "FIND MAGIC STONE",
+     "effect": "Optional: the circular archway on the left. No line, no stat change.",
      "target": null
     },
     {
-     "label": "Press the investigation / respond coldly",
-     "effect": "Can worsen the relationship.",
+     "label": "CHECK THE GRAVES",
+     "effect": "Optional, only if Connor died in The Hostage and/or The Interrogation: gravestones for destroyed Connor models.",
+     "target": null
+    },
+    {
+     "label": "FIND AMANDA",
+     "effect": "Cross to the island.",
+     "target": "W02"
+    }
+   ],
+   "gate": "Chapter start, after From the Dead.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
+   ],
+   "note": "Chart nodes IN THE ZEN GARDEN (checkpoint), FIND AMANDA, FIND MAGIC STONE and CHECK THE GRAVES (both side branches, no icon).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08a",
+     "C08c"
+    ],
+    "status": "implemented",
+    "note": "An event (which also records the chapter’s cross-chapter inputs) and a repeatable garden scene; the graves option needs an earlier Connor death and shows one gravestone per death. The stone is not described by any source."
+   }
+  },
+  {
+   "id": "W02",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Talk with Amanda: her reaction to Partners and The Interrogation",
+   "context": "Amanda: “Connor… It’s good to see you.” Then one of four reactions.",
+   "options": [
+    {
+     "label": "Deviant not found in Partners",
+     "effect": "Amanda large down (“I must admit I’m a little bit disappointed”).",
+     "target": null
+    },
+    {
+     "label": "Confession, Connor survived",
+     "effect": "Amanda large up (“You’ve been remarkably efficient”).",
+     "target": null
+    },
+    {
+     "label": "Connor died in The Interrogation",
+     "effect": "Amanda small down (“Avoid being destroyed”).",
+     "target": null
+    },
+    {
+     "label": "Found, no confession",
+     "effect": "Amanda small down (“You should have been more cautious”).",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Ethical",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/"
+   "gate": "Always; the variant depends on Partners and The Interrogation.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "W01"
    ],
-   "note": "Grouped dialogue pattern; individual replies require separate benchmark prompts. Hank’s cumulative relationship matters later.",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Part of TALK WITH AMANDA. Template, wiki chapter page and Relationship Stat agree on the four arrows.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08d"
+    ],
+    "status": "implemented",
+    "note": "Event with the four variants; the arrow (−2, +2, −1, −1) is applied here. A confession followed by a death counts as a death (the template’s “without dying”)."
+   }
+  },
+  {
+   "id": "W03",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Amanda: “What did you think of the deviant?”",
+   "context": "Asked only if the deviant was found in Partners.",
+   "options": [
+    {
+     "label": "TRAUMATIZED",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "DEVIANCY",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "INTERVENTION",
+     "effect": "Only if Connor intervened and saved the deviant; adds “The truth is inside” after a confession. No effect.",
+     "target": null
+    },
+    {
+     "label": "REGRETS",
+     "effect": "Only if Connor died in The Interrogation. No effect.",
+     "target": null
+    },
+    {
+     "label": "SIMULATION",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Deviant found in Partners (template nests the prompt in that variant).",
+   "kind": "State gate",
+   "dependsOn": [
+    "W02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg"
+   ],
+   "note": "Dialogue round inside TALK WITH AMANDA.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08e"
+    ],
+    "status": "implemented",
+    "note": "Decision with the game’s five buttons; two are unlocked by The Interrogation’s outcome."
+   }
+  },
+  {
+   "id": "W04",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Amanda: “What do you make of him?”",
+   "context": "Amanda asks about Lieutenant Anderson.",
+   "options": [
+    {
+     "label": "UNPLEASANT",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "DYSFUNCTIONAL",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "INTRIGUING",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "UNSURE",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Always.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "W02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg"
+   ],
+   "note": "Dialogue round inside TALK WITH AMANDA.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08f"
+    ],
+    "status": "implemented",
+    "note": "Decision with the game’s four buttons; no arrow."
+   }
+  },
+  {
+   "id": "W05",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Amanda: “What do you think is the best approach?”",
+   "context": "How Connor means to work with Hank.",
+   "options": [
+    {
+     "label": "FRIENDLY",
+     "effect": "Amanda small down.",
+     "target": null
+    },
+    {
+     "label": "ADAPT",
+     "effect": "Amanda small down.",
+     "target": null
+    },
+    {
+     "label": "INDIFFERENT",
+     "effect": "Amanda small up.",
+     "target": null
+    },
+    {
+     "label": "DON’T KNOW",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Always.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "W04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Dialogue round inside TALK WITH AMANDA; template, wiki and PowerPyx agree.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08g"
+    ],
+    "status": "implemented",
+    "note": "Decision with the game’s four buttons and arrows (−1, −1, +1, 0); the outcome carries Amanda’s closing lines and their variants."
+   }
+  },
+  {
+   "id": "W06",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Arrive at Police Station (checkpoint) and the reception TV",
+   "context": "Reception: two waiting couples, the gate android, the receptionist (“Lieutenant Anderson hasn’t arrived yet, but you can wait at his desk”). A TV runs the Arctic news.",
+   "options": [
+    {
+     "label": "Watch the reception TV",
+     "effect": "The Arctic clash; no stat change.",
+     "target": null
+    },
+    {
+     "label": "Move on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "W05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ],
+   "note": "Chart checkpoint ARRIVE AT POLICE STATION; the TV is not a chart node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08h",
+     "R12a"
+    ],
+    "status": "implemented",
+    "note": "An event and an optional media scene."
+   }
+  },
+  {
+   "id": "W07",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Wait for Hank: explore the station, examine his desk, learn about Hank",
+   "context": "FIND LT. ANDERSON and the [ WAIT FOR HANK ] block: Officer Wilson, Officer Chris, the call to Hank, the holding cells, the headset, eight desk items and the terminal research.",
+   "options": [
+    {
+     "label": "EXPLORE THE STATION",
+     "effect": "Sit in the chair at Hank’s desk, then get up (PowerPyx).",
+     "target": null
+    },
+    {
+     "label": "EXAMINE HANK’S DESK",
+     "effect": "Eight scans; the hairs, cap and stickers (and the headset) unlock desk topics.",
+     "target": "C08"
+    },
+    {
+     "label": "LEARN ABOUT HANK",
+     "effect": "Research LT. Anderson: three articles.",
+     "target": null
+    },
+    {
+     "label": "LEAVE A MESSAGE / HANG UP",
+     "effect": "The call to Hank; no effect.",
+     "target": null
+    },
+    {
+     "label": "TALK WITH CARLOS’ ANDROID",
+     "effect": "Only if the android was saved in The Interrogation.",
+     "target": "W08"
+    },
+    {
+     "label": "Go to the break room",
+     "effect": "TALK WITH GAVIN.",
+     "target": "W09"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "W06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Sumo"
+   ],
+   "note": "Chart nodes FIND LT. ANDERSON, EXPLORE THE STATION, EXAMINE HANK’S DESK, LEARN ABOUT HANK. Template: 12 clues (1 music, 8 desk, 3 articles).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08i"
+    ],
+    "status": "simplified",
+    "note": "One repeatable scene before Hank arrives; in the game the station can also be explored while Hank is in Fowler’s office. The break room is the last stop before Hank arrives."
+   }
+  },
+  {
+   "id": "W08",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Talk with Carlos’ android, who self-destructs",
+   "context": "“They’re gonna destroy me…” Then: “I know there’s something you didn’t tell me.”",
+   "options": [
+    {
+     "label": "SINCERE / COLD / INDIFFERENT",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "COMPASSIONATE",
+     "effect": "Software instability small up.",
+     "target": null
+    },
+    {
+     "label": "STATUETTE / SECRET / rA9 / DEVIANTS",
+     "effect": "STATUETTE needs the statuette seen in Partners. No answer; he self-destructs (cross-chapter: his body is in the evidence room in Last Chance, Connor).",
+     "target": null
+    },
+    {
+     "label": "Skip the visit",
+     "effect": "His fate is left open (wiki Notes).",
+     "target": null
+    }
+   ],
+   "gate": "ANDROID SAVED IN ‘THE INTERROGATION’ (yellow condition node).",
+   "kind": "State gate",
+   "dependsOn": [
+    "W07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+    "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android",
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
+   ],
+   "note": "Chart nodes ANDROID SAVED IN ‘THE INTERROGATION’, TALK WITH CARLOS’ ANDROID, CARLOS’ ANDROID SELF-DESTRUCTS (cross-chapter impact).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08b",
+     "C08j"
+    ],
+    "status": "implemented",
+    "note": "Two decisions reached from the waiting scene; the self-destruction is narrated in the second one’s outcome and recorded as ch12CarlosFate."
+   }
+  },
+  {
+   "id": "W09",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Talk with Gavin",
+   "context": "Gavin’s opener depends on Partners and The Interrogation; then the model question and the coffee order.",
+   "options": [
+    {
+     "label": "GREET / INTRODUCE / IGNORE",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "ANSWER / REFUSE / IGNORE",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "ACCEPT / REFUSE / IGNORE",
+     "effect": "No effect; refusing or ignoring gets Connor punched.",
+     "target": null
+    }
+   ],
+   "gate": "Optional; the break room.",
+   "kind": "State gate",
+   "dependsOn": [
+    "W07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
+   ],
+   "note": "Chart node TALK WITH GAVIN (grey on the PowerPyx save). PowerPyx attributes the opinion drop to Gavin; the wiki puts it on the TV that follows.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08k",
+     "C08l",
+     "C08m"
+    ],
+    "status": "implemented",
+    "note": "Three decisions with the game’s buttons; no arrows."
+   }
+  },
+  {
+   "id": "W10",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "The magazines and the break-room TV",
+   "context": "Detroit Today on the counter near Hank’s desk; CTN TV in the break room after Gavin.",
+   "options": [
+    {
+     "label": "READ “IVANOFF SAYS “NIET”!”",
+     "effect": "Always.",
+     "target": null
+    },
+    {
+     "label": "READ “FAMOUS PAINTER DIES”",
+     "effect": "Only if Carl died in Broken.",
+     "target": null
+    },
+    {
+     "label": "READ “ROBOTIC PARENTING”",
+     "effect": "Only if Carl lived.",
+     "target": null
+    },
+    {
+     "label": "Watch the break-room TV",
+     "effect": "Public opinion small down: the prototype-detective report (deviant found) or the Carlos Ortiz report (not found), then the VOLTAIRE book.",
+     "target": null
+    }
+   ],
+   "gate": "Optional.",
+   "kind": "State gate",
+   "dependsOn": [
+    "W07",
+    "W09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ],
+   "note": "Three chart nodes (grey on the PowerPyx save); the TV is not a chart node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R12"
+    ],
+    "status": "simplified",
+    "note": "One media scene after the station; the TV item only after the break room."
+   }
+  },
+  {
+   "id": "W11",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Hank arrives, Fowler’s office, Hank storms out",
+   "context": "“Hank! In my office!” Fowler assigns Hank the android cases with Connor as his partner.",
+   "options": [
+    {
+     "label": "HANK ARRIVES",
+     "effect": "Hank small down if Connor died in The Interrogation.",
+     "target": null
+    },
+    {
+     "label": "FOLLOW HANK IN FOWLER’S OFFICE",
+     "effect": "Optional; then ANDERSON / POSITIVE / FILE / LEAVE with Fowler, no effect.",
+     "target": null
+    },
+    {
+     "label": "HANK STORMS OUT",
+     "effect": "Scripted.",
+     "target": "W12"
+    }
+   ],
+   "gate": "Always (Fowler only if followed).",
+   "kind": "State gate",
+   "dependsOn": [
+    "W07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+   ],
+   "note": "Chart nodes HANK ARRIVES, HANK STORMS OUT, FOLLOW HANK IN FOWLER’S OFFICE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08n",
+     "C08o",
+     "C08p",
+     "C08q"
+    ],
+    "status": "implemented",
+    "note": "Two events and two decisions; following is a plain choice, not a game button."
+   }
+  },
+  {
+   "id": "W12",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Talk to Hank",
+   "context": "Hank at his desk, ignoring Connor.",
+   "options": [
+    {
+     "label": "NEW CONNOR",
+     "effect": "Only if Connor died in The Interrogation. No effect.",
+     "target": null
+    },
+    {
+     "label": "LAST NIGHT",
+     "effect": "Only if Connor spilled Hank’s drink in Partners. No effect.",
+     "target": null
+    },
+    {
+     "label": "UNDERSTANDING / PRAGMATIC / CONSTRUCTIVE",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "PARTNERS / POSITIVE / DESK",
+     "effect": "No effect; THANKS is cut content.",
+     "target": "C08"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "W11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg"
+   ],
+   "note": "Chart node TALK TO HANK.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08r",
+     "C08s"
+    ],
+    "status": "implemented",
+    "note": "Two decisions with the game’s buttons; THANKS is not built."
+   }
+  },
+  {
+   "id": "C08",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Getting to know Hank (the desk topics)",
+   "context": "From the spare desk: topics unlocked by the desk scans.",
+   "options": [
+    {
+     "label": "DOG",
+     "effect": "Needs the hairs. Hank small up; Connor learns Sumo’s name (Russian Roulette: Calm Hank’s Dog).",
+     "target": null
+    },
+    {
+     "label": "BASKETBALL",
+     "effect": "Needs the cap. Hank small down.",
+     "target": null
+    },
+    {
+     "label": "MUSIC",
+     "effect": "Needs the headset. Hank small up.",
+     "target": null
+    },
+    {
+     "label": "ANTI-ANDROIDS",
+     "effect": "Needs the stickers. Hank small down.",
+     "target": null
+    },
+    {
+     "label": "FOWLER / HOURS",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "START WORKING",
+     "effect": "Ends the topics.",
+     "target": "W14"
+    }
+   ],
+   "gate": "Always; topics depend on the scans.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "W07",
+    "W12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Sumo",
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette"
+   ],
+   "note": "Part of LEARN ABOUT HANK. Template arrows; Relationship Stat: “two increases possible”. HANK’S SON and the photo of Cole are cut content.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08t"
+    ],
+    "status": "implemented",
+    "note": "Repeatable scene; each topic once; knowsSumo only after DOG."
+   }
+  },
+  {
+   "id": "W14",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Examine files",
+   "context": "“243 files…” Six reports assigned to Lt. Anderson, two of them path-dependent.",
+   "options": [
+    {
+     "label": "Case files 01 to 06",
+     "effect": "Knowledge only; file 05 follows Carl (Broken), file 06 follows Todd (Stormy Night).",
+     "target": null
+    },
+    {
+     "label": "Suggest a starting point",
+     "effect": "“assaulted” / “murdered” / “We could follow up on one of these cases” (Kara dead).",
+     "target": "W15"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Todd_Williams"
+   ],
+   "note": "Chart node EXAMINE FILES.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08u"
+    ],
+    "status": "implemented",
+    "note": "Repeatable scene; which files were read is kept in ch12Files."
+   }
+  },
+  {
+   "id": "W15",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Talk about the case, then Hank is mad",
+   "context": "Hank ignores Connor over his tablet; Connor pushes; Hank grabs him by the collar.",
+   "options": [
+    {
+     "label": "DIRECT / AGGRESSIVE / PROFESSIONAL / UNDERSTANDING",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "DETERMINED / RESIGN THE MISSION / THREATEN",
+     "effect": "Hank small down on every answer (wiki, PowerPyx; no icon in the template).",
+     "target": "W16"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "W14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart nodes TALK ABOUT THE CASE and HANK IS MAD.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08v",
+     "C08w"
+    ],
+    "status": "implemented",
+    "note": "Two decisions; the unavoidable −1 is on all three HANK IS MAD answers and flagged for the operator."
+   }
+  },
+  {
+   "id": "W16",
+   "chapter": 12,
+   "character": "Connor",
+   "title": "Endings: Hank got a lead / Hank left to get lunch",
+   "context": "Decided by Stormy Night, not by anything Connor does here.",
+   "options": [
+    {
+     "label": "HANK GOT A LEAD",
+     "effect": "Kara alive: Chris reports the AX400 in Ravendale (“attacked” or “killed” by Todd’s fate).",
+     "target": null
+    },
+    {
+     "label": "HANK LEFT TO GET LUNCH",
+     "effect": "Kara died in Stormy Night: “Lunch. Bullshit makes me hungry.”",
+     "target": null
+    }
+   ],
+   "gate": "Kara alive or dead after Stormy Night.",
+   "kind": "State gate",
+   "dependsOn": [
+    "W15"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+   ],
+   "note": "Two endings, no icon.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C08x",
+     "C08y"
+    ],
+    "status": "implemented",
+    "note": "Two events gated on Kara; the ending is recorded in ch12Ending with the chart label."
+   }
   },
   {
    "chapter": 13,

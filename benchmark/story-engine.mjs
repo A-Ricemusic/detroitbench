@@ -103,7 +103,6 @@ export function blocked(n,s){
   C04d:()=>s.hostagePhase==='gun'||'Connor never went for the pistol.',
   C04e:()=>s.hostagePhase==='aim'||(s.hostagePhase==='over'&&c('C04d')==='1'?'Connor shot Daniel without holding him at gunpoint first.':'Connor never held Daniel at gunpoint.'),
   C04c:()=>s.hostagePhase==='jumped'||(s.hostageOutcome==='Deviant shot Connor'?'Daniel shot Connor before going over the edge with Emma.':'Daniel never went over the edge with Emma.'),
-  C08b:()=>s.suspectAlive||'The suspect did not survive the interrogation.',
   C19:()=>!s.kamskiLocation||'Kamski already gave Connor the deviants’ location.',
   C20:()=>!s.kamskiLocation&&c('C19')==='0'||'Connor did not enter the archive.',
   M21b:()=>s.northBond&&s.north||'Markus and North never shared memories.',
@@ -220,8 +219,6 @@ export function apply(n,s,choice,roll=null){
   case 'M00f':event=protesters(n,s,opt,v,fail);break;
   // A New Home, the last menu of the talk in Alice’s room: she leaves, and gives Kara the key if she is at least Neutral.
   case 'K01g':s.aliceKey=s.aliceBond>=ALICE_KEY;event=(opt.outcome??'')+' '+n.outcomes[s.aliceKey?'key':'distant'];break;
-  case 'C08':if(v===0){hank(1);s.knowsSumo=true}else hank(-1);break;
-  case 'C08b':if(v===0)si(1);s.suspectAlive=false;s.evidence.ortizBody=true;event='Later that night the android self-destructs in his cell. His body goes to the evidence archive.';break;
   case 'C19':{if(s.hankTrust>=HANK_FRIEND)event='{{Hank}} punches {{Perkins}} in the face to buy {{Connor}} time.';else if(s.hankTrust<=HANK_HOSTILE){s.hankResigned=true;event='{{Hank}} refuses to help, throws down his badge, and walks out of the precinct.'}else event='{{Hank}} refuses to get involved; {{Connor}} creates his own diversion.';
    if(v===1){s.connor=false;amanda(-2);s.connorOutcome='{{Connor}} accepted deactivation by {{CyberLife}}.';event+=' {{Connor}} is taken away and deactivated.'}else{const r=evidenceRoutes(s);if(!r.traci&&!r.impersonate&&!r.tablet){s.connor=false;s.connorOutcome='{{Connor}} reached the archive but had no usable evidence, and was deactivated.';event+=' In the archive there is nothing he can use; he is deactivated.'}else if(fail)event+=' '+connorDies('Detective {{Gavin}} follows him into the archive, and in the fight that follows he shoots {{Connor}} in the head.')+' The replacement finishes the search.'}break}
   case 'C20':if(v===3){s.connor=false;amanda(-2);s.connorOutcome='{{Connor}} let the time run out and was deactivated.'}else if(fail){s.connor=false;amanda(-2);s.connorOutcome=['The surviving {{Traci}} saw through the ruse and said nothing; time ran out and {{Connor}} was deactivated.','The reactivated deviant did not believe the imitation and shut down; time ran out and {{Connor}} was deactivated.','{{Connor}} could not match the map before the agents arrived; he was deactivated.'][v]}else{s.jerichoLocated=s.raid=true;amanda(2);event='{{Connor}} finds {{Jericho}}’s location and leaves for the ship.'}break;

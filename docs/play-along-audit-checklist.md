@@ -2660,42 +2660,401 @@ Gaps:
 
 ## Chapter 12: Waiting for Hank…
 
-### R12 · A magazine on the next desk and the break-room TV (Connor, media)
+### C08a · In the zen garden (Connor, event)
 
-> You are Connor. While you wait for Hank, a magazine lies on the empty desk beside his, and the television in the break room is running the news.
+> You are Connor. It is November 6th, 2038, 9:56 in the morning. You close your eyes and enter the zen garden, the virtual space where you report to Amanda, your handler at CyberLife. A pond lies in front of you, with paths running left and right along its edges and bridges leading out to an island in the middle.
 
-- (0) Read Detroit Today: Ivanoff Says Niet.
-- (1) Read Detroit Today: Famous Painter Dies.  _only when carlDead_
-- (2) Read Detroit Today: The Three Laws of Robotic Parenting.  _only when carlAlive_
-- (3) Watch the break-room news.
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
+- (0) Continue.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s checkpoint IN THE ZEN GARDEN (date and time from the template’s notes: NOV 6TH, 2038, AM 09:56). A narrated event with a single Continue. The engine also records here, once, what this chapter reads from earlier chapters (deviant found in Partners, the spilled drink and the statuette there; confession, death and intervention in The Interrogation; Kara and Todd after Stormy Night; Carl after Broken), so every later scene reads the same snapshot. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C08 · Getting to know Hank (Connor)
+### C08c · The zen garden (Connor)
 
-> You are Connor. You are at the precinct waiting for Hank, who arrives late and hungover. His desk tells a story: a basketball cap, anti-android stickers, heavy-metal albums, dog hair on his chair, and a file on his past as a decorated officer. When he sits down you have a chance to talk. He is bristling and expects you to be a machine that talks about the case and nothing else.
+> You are Connor, in the zen garden. A path runs left along the edge of the pond toward a circular archway; another runs right along the water. On the island in the middle of the pond, Amanda is tending her roses.
 
-- (0) Ask about him: his dog, his music, his life.
-- (1) Keep it strictly about the case and brief him coldly.
+- (0) Cross the bridge to the island where Amanda is tending her roses.
+- (1) Go left along the pond to the circular archway and examine the stone there.
+- (2) Go right along the pond and take the path to the small graveyard.  _needs ch12In.graves = 1_
+- (3) Go right along the pond and take the path to the small graveyard.  _needs ch12In.graves = 2_
 
-_Note: Several dialogue prompts are grouped. Asking about the dog is where you learn the dog's name._
+_Note: The chart’s FIND AMANDA with its two optional side branches, as a repeatable scene: FIND MAGIC STONE (PowerPyx: “go left along the edge of the pond until you find a circular archway… Interact with it”) and CHECK THE GRAVES (wiki: “only if Connor previously died in The Hostage and/or The Interrogation”; the Zen Garden page: “gravestones for killed Connor models”). Neither has a line, a clue text or a stat change in the template; no source describes the stone, so the outcome says only that Connor examines it. The graveyard shows one gravestone per earlier Connor death (the benchmark’s reading of “Another gravestone is present” on The Interrogation page). Crossing to the island ends the scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08d · Talk with Amanda (Connor, event)
+
+> You are Connor, on the island in the zen garden. “Hello, Amanda.” Amanda: “Connor… It’s good to see you.”
+
+- (0) Continue.
+
+_Note: The chart’s TALK WITH AMANDA, opening: one of four reactions, decided by Partners and The Interrogation, each with the template’s Amanda arrow, applied by the engine here: deviant not found in Partners, large down (−2); “Got a confession, without dying”, large up (+2); “Connor died during The Interrogation”, small down (−1); found but no confession, small down (−1). The wiki’s chapter page and Relationship Stat page list the same four. A confession followed by a death counts as a death (the template’s confession variant reads “without dying”). “The DPD” is rendered as “the police department”. The cut line about the transfer request (“We hope they’ll accept our request…”) is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08e · What Connor thought of the deviant (Connor)
+
+> You are Connor, with Amanda among the roses. Amanda: “The interrogation seemed… challenging… What did you think of the deviant?”
+
+_Only when ch12In.found._
+
+- (0) TRAUMATIZED: say it showed signs of trauma after being abused by its owner.
+- (1) DEVIANCY: say it showed every sign of deviancy and the model was clearly defective.
+- (2) INTERVENTION: say you kept it from being damaged, so it can still be analyzed.  _needs ch12In.intervened_
+- (3) REGRETS: say the previous Connor should have anticipated the danger.  _needs ch12In.died_
+- (4) SIMULATION: say it simulated human emotion, fear above all, very convincingly.
+
+_Note: The first of Amanda’s three questions, asked only if the deviant was found in Partners (the template nests it in that variant). Buttons in the game’s order: TRAUMATIZED, DEVIANCY, INTERVENTION (unlocked by “Intervened and saved the deviant in The Interrogation”; if he also confessed, Connor adds “It said something to me: ‘The truth is inside’…”), REGRETS (unlocked by Connor’s death in The Interrogation) and SIMULATION (its cut ending, “as a human would under extreme stress”, is not built). No arrow on any answer (template; PowerPyx “No effect”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08f · What Connor makes of Hank (Connor)
+
+> You are Connor, with Amanda in the zen garden. Amanda: “This… Lieutenant Anderson has been officially assigned to the deviancy case… What do you make of him?”
+
+- (0) UNPLEASANT: call him unpleasant and unprofessional.
+- (1) DYSFUNCTIONAL: call him dysfunctional, with a personal situation affecting his work.
+- (2) INTRIGUING: say he is irritable but used to be a good detective.
+- (3) UNSURE: say you do not have enough information yet to judge him.
+
+_Note: Amanda’s second question, asked on every path. Buttons in the game’s order; no arrow on any answer (template; PowerPyx “No effect”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08g · How to work with Hank (Connor)
+
+> You are Connor, with Amanda in the zen garden. Amanda: “Unfortunately, we have no choice but to work with him… What do you think is the best approach?”
+
+- (0) FRIENDLY: say you will try to build a friendly relationship and earn his trust.  _amandaTrust -1_
+- (1) ADAPT: say you will adapt to his personality and avoid conflict.  _amandaTrust -1_
+- (2) INDIFFERENT: say you will focus on the investigation and try to ignore him.  _amandaTrust +1_
+- (3) DON’T KNOW: say you need more data before you decide.
+
+_Note: Amanda’s third question, with the template’s arrows: FRIENDLY Amanda small down (−1), ADAPT small down (−1), INDIFFERENT small up (+1), DON’T KNOW none (wiki: “Picking ‘indifferent’… up”, “Picking ‘friendly’ or ‘adapt’… down”; PowerPyx the same). The outcome adds Amanda’s closing lines, with the template’s variants for a Connor who died in The Interrogation and for a deviant never found._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08h · Arrive at the police station (Connor, event)
+
+> You are Connor, back in your body, in the reception hall of the Detroit police station. People wait on the seats. A woman: “I’m getting nervous, Mark.” The man with her: “It’s okay… Just tell ’em what happened to you.” “But it was all over so quickly... I didn’t even see his face!” Near a television, another woman hands a shaken man a cup of water. Gates bar the way into the station, and an…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint ARRIVE AT POLICE STATION, with the template’s reception scenes (the two couples, the gate android, the receptionist). Narrated, no choice, no stat change. The wiki’s note that a surviving Todd can be filing a report at the station is not built: the template’s reception couple does not name him._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R12a · The reception TV (Connor, media)
+
+> You are Connor, at the reception, before the gates. The television by the waiting seats is running the news.
+
+- (0) Watch the news at reception.
+- (skip) Move on without looking.
+
+_Note: The template’s “Watch TV” at reception: the Arctic report, optional, with no stat change (the Public Opinion page lists only the break-room report for this chapter). The newsreader and the minister are not named; the countries the report names are summarized as “the countries in the region”._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08i · Waiting for Hank (Connor)
+
+> You are Connor, inside the station. An android officer points out Lieutenant Anderson’s desk: “It’s that desk right there.” It is empty. On it are a headset, a coffee cup, a little tree, a box of donuts, a basketball cap, stickers, a book of matches, a plaque and his terminal; there are hairs on his chair. Officers work at the desks around it, and the holding cells are at the back. You can look…
+
+- (0) Go to the break room, then come back to wait at his desk.  _sets ch12BreakRoom_
+- (1) Sit down at his desk and wait for him.
+- (2) Sit for a moment in the chair in front of Hank’s desk, then get up and look around the station.
+- (3) Ask the officer at the next desk when Lieutenant Anderson usually arrives.
+- (4) Talk to Officer Chris at his desk.  _needs ch12In.died_
+- (5) Talk to Officer Chris at his desk.  _needs not ch12In.died and ch12In.intervened_
+- (6) Talk to Officer Chris at his desk.  _needs not ch12In.died and not ch12In.intervened_
+- (7) LEAVE A MESSAGE: call Lieutenant Anderson and leave a message on his voicemail.
+- (8) HANG UP: call Lieutenant Anderson and hang up at his voicemail.
+- (9) Look into the holding cells.  _needs ch12In.inCell_
+- (10) Look into the holding cells.  _needs not ch12In.inCell_
+- (11) Go to the cell of the android you interrogated, and talk to him.  _needs ch12In.inCell_
+- (12) Put on the headset on Hank’s desk and listen to the music.
+- (13) Scan the coffee cup on the desk.
+- (14) Scan the little tree on the desk.
+- (15) Scan the donuts on the desk.
+- (16) Scan the basketball cap on the desk.
+- (17) Scan the stickers on the desk.
+- (18) Scan the matches on the desk.
+- (19) Scan the hairs on his chair.
+- (20) Scan the plaque on the desk.
+- (21) Research Lt. ANDERSON on the terminal.
+
+_Note: The chart’s FIND LT. ANDERSON, then the [ WAIT FOR HANK ] block before he arrives, as one repeatable scene: EXPLORE THE STATION (PowerPyx: “At Hank’s desk, sit in the chair in front of it briefly, then get up again”), EXAMINE HANK’S DESK and LEARN ABOUT HANK. The template’s clues, each its own option with the game’s scan title and sublines as the fact: KNIGHTS OF THE BLACK DEATH (“Listen to music”), the eight “Look at the desk” items (COFFEE CUP, JAPANESE MAPLE, DONUTS, DETROIT BASKETBALL CAP, ANTI-ANDROID SLOGANS, MATCHES, HAIRS, RED ICE TASK FORCE 2027; PowerPyx: “Scan the desk to find 8 clues”) and “Research LT. Anderson” (the three articles, offered once a desk item has been scanned, since LEARN ABOUT HANK follows EXAMINE HANK’S DESK on the chart). The nameplate, tissue and police-cases strings in the string table are not placed by the template and are not built. The headset, cap, stickers and hairs unlock Connor’s MUSIC, BASKETBALL, ANTI-ANDROIDS and DOG topics later. Also here, with no stat change: Officer Wilson (“Finding Hank’s desk”), Officer Chris (the template’s three variants), the call to Hank with the game’s LEAVE A MESSAGE / HANG UP buttons (calling at all is optional, as in the game), the man in the holding cell, and, only if the android was sent back to his cell in The Interrogation, TALK WITH CARLOS’ ANDROID, which plays the two cell scenes that follow. The scene ends either by going to the break room (TALK WITH GAVIN and the break-room TV) or by sitting down to wait; either way Hank arrives next. These two exits are listed first, as in the other repeatable scenes of this chapter the main line comes first. Simplifications: in the game the station can be explored in any order and also while Hank is in Fowler’s office; here the cell, the desk and the call come before Hank arrives, and the break room is the last stop before he does. The background chatter is quoted once; Wilson’s private phone call is not built; the magazines are a media scene after this one._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C08b · The android in the cell (Connor)
 
-> You are Connor. The android you interrogated is in a holding cell by the bullpen, staring at the floor. He asks what will happen to him. Nobody else is paying attention to him. You could speak to him honestly, with some compassion, or walk past; he is evidence, not a colleague.
+> You are Connor, at the cell of the android you interrogated last night. He looks up at you. “They’re gonna destroy me…”
 
-- (0) Talk to him with compassion.
-- (1) Ignore him.
+_Only when ch12Wait.carlos._
 
-_Note: He self-destructs in the cell either way; his body remains evidence._
+- (0) SINCERE: tell him it is probable; they need to analyze him.
+- (1) COLD: tell him your objective was to capture him alive, and the rest is not your problem.
+- (2) COMPASSIONATE: tell him you are sorry, but there is nothing you can do.  _instability +1_
+- (3) INDIFFERENT: tell him he is only a machine and it does not matter.
+
+_Note: The chart’s TALK WITH CARLOS’ ANDROID, behind the yellow condition node ANDROID SAVED IN ‘THE INTERROGATION’ (template: “Deviant didn’t die in The Interrogation”). First of two prompts; buttons in the game’s order. COMPASSIONATE raises software instability (small up, +1; template, wiki and the Software Instability page); the other answers have no effect. Reached from the waiting scene, which it returns to after the second prompt. In the game the visit must happen before Connor sits down at the desk; skipping it leaves the android’s fate open (wiki Notes)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08j · What the android did not say (Connor)
+
+> You are Connor, at the android’s cell. “I know there’s something you didn’t tell me. I need to know, before they take you away…”
+
+_Only when ch12Wait.carlos._
+
+- (0) STATUETTE: ask him about the sculpture he made.  _needs ch12In.statue_
+- (1) SECRET: ask what he meant by “the truth is inside”.
+- (2) rA9: ask what the word he wrote on the wall means.
+- (3) DEVIANTS: ask whether he knows other deviants, and how many there are.
+
+_Note: The second cell prompt, then the chart’s CARLOS’ ANDROID SELF-DESTRUCTS (a cross-chapter node: his body is in the evidence room in Last Chance, Connor). STATUETTE is unlocked by “Looked at the statuette in Partners” (template). The android never answers (wiki: “the HK400 will not answer”); whatever Connor asks, he says “I’m going to die…” and, as Connor walks away, smashes his head against the cell window until he is dead (wiki, PowerPyx), and Officer Ben calls for the cell to be opened. No stat change. The self-destruction is narrated in the outcome rather than as a separate scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08k · Detective Gavin (Connor)
+
+> You are Connor, in the break room. Detective Gavin looks up from his coffee.
+
+_Only when ch12BreakRoom._
+
+- (0) GREET: greet him by name.
+- (1) INTRODUCE: introduce yourself.
+- (2) IGNORE: say nothing.
+
+_Note: The chart’s TALK WITH GAVIN, first of three prompts. Gavin’s opener follows the template’s variants (deviant found and Connor died; found and survived, with an extra jab if there was no confession; not found). Buttons in the game’s order; IGNORE has no line. No stat change on any Gavin option (template, wiki); PowerPyx’s “Public Opinion▼” belongs to the break-room TV that follows (wiki, Public Opinion page). The cut anecdote at the break-room entrance is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08l · What model are you? (Connor)
+
+> You are Connor, in the break room. Gavin: “Never seen an android like you before… What model are you?”
+
+_Only when ch12BreakRoom._
+
+- (0) ANSWER: tell him your model.
+- (1) REFUSE: say you are not authorized to answer.
+- (2) IGNORE: say nothing.
+
+_Note: Gavin’s second prompt; buttons and lines from the template. No stat change. The cut line “Think I’ll have myself another…” is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08m · Bring me a coffee (Connor)
+
+> You are Connor, in the break room. Gavin: “Hey, bring me a coffee, dipshit! GET A MOVE ON!”
+
+_Only when ch12BreakRoom._
+
+- (0) ACCEPT: bring him a coffee.
+- (1) REFUSE: tell him you only take orders from Lieutenant Anderson.
+- (2) IGNORE: say nothing.
+
+_Note: Gavin’s third prompt. After REFUSE (and after IGNORE, which the template says continues as REFUSE) Gavin punches Connor (wiki, Gavin’s page) and adds one of two lines: if Connor intervened in The Interrogation, “If Hank hadn’t got in the way yesterday…”; otherwise “When a human gives you an order, you obey…”. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R12 · The magazines by Hank’s desk and the break-room TV (Connor, media)
+
+> You are Connor, waiting for Hank. On a desk in the middle of the station, near his, lies a magazine.
+
+- (0) Read Detroit Today: Ivanoff Says “Niet”!.
+- (1) Read Detroit Today: Famous Painter Dies.  _only when carlDead_
+- (2) Read Detroit Today: The Three Laws of Robotic Parenting.  _only when carlAlive_
+- (3) Watch the break-room news.  _only when ch12TvFound_
+- (4) Watch the break-room news.  _only when ch12TvNotFound_
+- (all) Take the time to go through all of it.
+- (skip) Move on without looking.
+
+_Note: The chart’s READ “IVANOFF SAYS “NIET”!” (always), READ “FAMOUS PAINTER DIES” (only if Carl died in Broken) and READ “ROBOTIC PARENTING” (only if he lived), on the counter near Hank’s desk (PowerPyx), with the break-room TV, which is offered only after Gavin. That broadcast is the chapter’s public-opinion drop (small down, −1; template on both variants; wiki: “Listening to the CTN TV news report on the television in the break room after talking to Gavin”): the prototype-detective report if the deviant was found in Partners, the Carlos Ortiz report if not, each followed by the VOLTAIRE book report. Not watching it avoids the drop (a PowerPyx reader reports the same; the claim that the loss then moves to a later chapter is not on the wiki and is not built). Interviewees, newsreaders and channels are not named. In the game the magazines can be read at any time while waiting; here they come after the rest of the station._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08n · Hank arrives (Connor, event)
+
+> You are Connor. Lieutenant Anderson finally walks in and comes to his desk.
+
+- (0) Continue.
+
+_Note: The chart’s HANK ARRIVES, with the template’s two greetings. If Connor died in The Interrogation, Hank is unnerved to see him: Hank small down (−1; template “Hank SmallDown” on that variant; wiki; Relationship Stat: “When first meeting Hank in Waiting for Hank... if Connor previously died in The Interrogation”; PowerPyx), applied here. The cut line “And bring that plastic thing with ya!” is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08o · Hank in Fowler’s office (Connor)
+
+> You are Connor, at Hank’s desk. Hank has gone into Captain Fowler’s glass-walled office and shut the door. You can follow him and listen at the glass, or wait here.
+
+- (0) Follow him to Fowler’s office and listen at the glass.
+- (1) Stay at the desk and wait.
+
+_Note: The chart’s optional FOLLOW HANK IN FOWLER’S OFFICE, inside the [ WAIT FOR HANK ] block. Following is not a dialogue button in the game; it is offered here as a plain choice. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08p · Hank storms out (Connor, event)
+
+> You are Connor.
+
+- (0) Continue.
+
+_Note: The chart’s HANK STORMS OUT, on the track that runs beside the [ WAIT FOR HANK ] block. If Connor followed, the template’s “Entering and listening” argument is quoted: Fowler assigns Hank the android cases with Connor as his partner. That it cannot be heard from the desk is the benchmark’s reading. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08q · Alone with Captain Fowler (Connor)
+
+> You are Connor, in Captain Fowler’s office. Hank has just stormed out, and Fowler has turned back to his work.
+
+_Only when choices.C08o = 0._
+
+- (0) ANDERSON: wonder aloud whether Lieutenant Anderson is the best person for this investigation.
+- (1) POSITIVE: say you are very pleased to have joined the team.
+- (2) FILE: say you would like to start reviewing the case files.
+- (3) LEAVE: say you will not keep him any longer.
+
+_Note: Connor alone with Fowler after Hank storms out, only if Connor followed. Buttons and lines from the template. No stat change (PowerPyx: “All responses to the Captain have no effect”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08r · Talk to Hank (Connor)
+
+> You are Connor, at Hank’s desk. He has dropped into his chair and is pointedly ignoring you.
+
+- (0) NEW CONNOR: say you understand the destruction of your predecessor may have been unpleasant for him.  _needs ch12In.died_
+- (1) LAST NIGHT: apologize for bothering him at the bar last night.  _needs ch12In.spilled_
+- (2) UNDERSTANDING: say you are sorry your presence inconveniences him.
+- (3) PRAGMATIC: say you know he does not like you, but you will both have to make an effort.
+- (4) CONSTRUCTIVE: say it is an honor to work with him.
+
+_Note: The chart’s TALK TO HANK, first prompt (the template’s “Checking on Hank”). NEW CONNOR is unlocked by Connor’s death in The Interrogation; LAST NIGHT by “Spilled Hank’s drink in Partners” (the template’s only condition; the wiki adds that the deviant was not found, which the benchmark does not require). The template gives Hank no reply and no arrow on any of these._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08s · Somewhere to sit (Connor)
+
+> You are Connor, at Hank’s desk. He still has not looked up.
+
+- (0) PARTNERS: say that now you are partners, it would be good to get to know each other.
+- (1) POSITIVE: say you are very happy to be working with him.
+- (2) DESK: ask whether there is a desk you could use.
+
+_Note: The second prompt of TALK TO HANK. Buttons and lines from the template; no arrow. The template’s fourth button, THANKS, is cut content (marked unused; the wiki calls it permanently locked by a bug) and is not built. Connor sits at the spare desk after every answer (the Hank page: “Hank will gesture to sit at the empty desk across from him”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08t · Getting to know Hank (Connor)
+
+> You are Connor, at the empty desk facing Hank’s. He is at his terminal and plainly not in the mood to talk. You can make conversation, or ask to start on the case.
+
+- (0) DOG: ask whether he has a dog.  _needs ch12Wait.hairs_ _hankTrust +1_ _sets knowsSumo_
+- (1) BASKETBALL: ask whether he saw last night’s Gears game.  _needs ch12Wait.cap_ _hankTrust -1_
+- (2) MUSIC: ask whether he listens to Knights of the Black Death.  _needs ch12Wait.music_ _hankTrust +1_
+- (3) ANTI-ANDROIDS: ask whether there is a particular reason he despises you.  _needs ch12Wait.slogans_ _hankTrust -1_
+- (4) FOWLER: ask whether he has known Captain Fowler long.
+- (5) HOURS: ask whether he always arrives at this time.
+- (6) START WORKING: ask to see his files on deviants.
+
+_Note: The chart’s LEARN ABOUT HANK topics, asked from the spare desk, as a repeatable scene until START WORKING (PowerPyx: “Additional questions will present themselves as you get answers”; Relationship Stat: “two increases possible”). Each topic can be asked once. DOG needs the hairs scanned, BASKETBALL the cap, MUSIC the headset, ANTI-ANDROIDS the stickers (template locks). Arrows from the template: DOG Hank small up (+1; Connor learns Sumo’s name, which Russian Roulette reads), BASKETBALL small down (−1), MUSIC small up (+1), ANTI-ANDROIDS small down (−1); FOWLER, HOURS and START WORKING none. The cut HANK’S SON topic and the cut photo of Cole are not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08u · The case files (Connor)
+
+> You are Connor, at the terminal on your desk, going through the files on deviants: “243 files… The first dates back nine months… It all started in Detroit… And quickly spread across the country…” Six reports are assigned to Lieutenant Anderson. Across from you, Hank is reading something on his tablet.
+
+- (0) Tell Hank where you think the investigation should start.  _needs not ch12In.karaDead and not ch12In.toddDead_
+- (1) Tell Hank where you think the investigation should start.  _needs not ch12In.karaDead and ch12In.toddDead_
+- (2) Tell Hank where you think the investigation should start.  _needs ch12In.karaDead_
+- (3) Open case file 01: a disappearance, still open.
+- (4) Open case file 02: an attack, still open.
+- (5) Open case file 03: an attack, still open.
+- (6) Open case file 04: a disappearance, still open.
+- (7) Open case file 05: an attempted murder, solved.  _needs not ch12In.carlDead_
+- (8) Open case file 05: an attempted murder, solved.  _needs ch12In.carlDead_
+- (9) Open case file 06: an aggression, still open.  _needs not ch12In.toddDead_
+- (10) Open case file 06: a homicide, still open.  _needs ch12In.toddDead_
+
+_Note: The chart’s EXAMINE FILES, as a repeatable scene: the template’s six case files (“Case 1” to “Case 6”), each read once, in any order, with the in-game report text; reference, victim, status and dates from the string table. File 05 (Markus’s, with no picture) follows Carl’s fate in Broken, and file 06 (Kara’s) follows Todd’s in Stormy Night (template variants). Todd’s surname is left out. Connor’s conclusion ends the scene, in the template’s three variants: an AX400 “assaulted” a man (Kara alive, Todd alive), “murdered” a man (Todd killed), or the generic “We could follow up on one of these cases” (Kara died in Stormy Night). Whether every file must be opened before the conclusion is not documented; here Connor can conclude at any time (the conclusion is listed first, the files after it). Which files were read is kept for later chapters. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08v · Talk about the case (Connor)
+
+> You are Connor, at the spare desk. Hank keeps reading his tablet and makes no move to start on anything. You try again to get him to work the case.
+
+- (0) DIRECT: tell him not to let his personal situation hamper the investigation.
+- (1) AGGRESSIVE: tell him to ask to be relieved if the situation does not suit him.
+- (2) PROFESSIONAL: say you know he did not ask for this, but you are sure he is a professional.
+- (3) UNDERSTANDING: say you understand his personal issues, but he needs to move past them.
+
+_Note: The chart’s TALK ABOUT THE CASE. Buttons and replies from the template; no arrow (PowerPyx: “All responses have no effect”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08w · Hank is mad (Connor)
+
+> You are Connor. Hank has turned on you, furious. You can say one more thing.
+
+- (0) DETERMINED: say you were assigned this mission and did not come to wait until he feels like working.  _hankTrust -1_
+- (1) RESIGN THE MISSION: suggest he sort out his personal issues and let you work with someone more competent.  _hankTrust -1_
+- (2) THREATEN: say you will report to your superiors that he refuses to work on the investigation.  _hankTrust -1_
+
+_Note: The chart’s HANK IS MAD. Every answer costs a Hank small down (−1): the wiki (“When Hank gets angry with Connor (unavoidable)”), Relationship Stat (“When Hank gets mad at the end of Waiting for Hank”) and PowerPyx (“Connor can’t win with this one. All responses cause Hank▼”). This is the one arrow in the chapter the template does not show (it has no icon on these buttons or on the collar grab that follows); it is kept on the wiki’s authority and flagged for the operator. Then the collar grab, quoted from the template._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08x · Hank got a lead (Connor, event)
+
+> You are Connor, pinned against the partition by Hank.
+
+_Only when not ch12In.karaDead._
+
+- (0) Continue.
+
+_Note: The chapter ending HANK GOT A LEAD (no icon), played when Kara survived Stormy Night (wiki: “only if Kara didn’t die in Stormy Night”). Officer Chris brings the lead, worded “attacked” or “killed” by Todd’s fate (template; the template names the speaker Chris, as does the wiki). The ending is recorded in state as HANK GOT A LEAD; Connor and Hank go to Ravendale next. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08y · Hank left to get lunch (Connor, event)
+
+> You are Connor, pinned against the partition by Hank. He lets go of you and walks off. “Where are you going?” Hank: “Lunch. Bullshit makes me hungry.”
+
+_Only when ch12In.karaDead._
+
+- (0) Continue.
+
+_Note: The chapter ending HANK LEFT TO GET LUNCH (no icon), played when Kara died in Stormy Night (wiki: “only if Kara died in Stormy Night”; template “Kara died in Stormy Night”). The ending is recorded in state as HANK LEFT TO GET LUNCH; on this path Connor’s next scene is Hank’s lunch (the Hank page). No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
