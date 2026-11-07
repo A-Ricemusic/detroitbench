@@ -15,10 +15,10 @@ export const NAMES={
  Rupert:['Rupert','Rook'],Perkins:['Perkins','Dwyer'],Allen:['Allen','Moss'],Caroline:['Caroline','Helen'],
  CarlosOrtiz:['Carlos Ortiz','Ray Mendez'],Jericho:['Jericho','Haven'],CyberLife:['CyberLife','Arclight'],
  Traci:['Traci','club android'],Tracis:['Tracis','club androids'],Canada:['Canada','the country across the river'],Detroit:['Detroit','City'],Warren:['Warren','Hale'],
- Bellini:['Bellini','Corsini']
+ Bellini:['Bellini','Corsini'],Gavin:['Gavin','Brandt'],Chris:['Chris','Owen']
 };
 // Terms that are not tokens but still identify the source; replaced only in neutral mode.
-const NEUTRAL_TERMS=[[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore']];
+const NEUTRAL_TERMS=[[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore']];
 
 export function render(value,mode='real'){
  let s=String(value??'');
@@ -60,7 +60,7 @@ export function sceneFacts(state,node){
   f.push(`You ${state.gun?'carry a handgun':'are unarmed'}. You ${state.money?'have some money':'have no money'}. You ${state.clothes?'are dressed as a human':'are still recognizable as an android'}.`);
   if(ch>=18)f.push(state.lutherWith?`{{Luther}} is with you. His regard for you: ${LEVELS.hank(state.lutherTrust??0)}.`:state.luther?'{{Luther}} is alive but not with you.':'{{Luther}} is not with you.');
   f.push(`{{Alice}}’s relationship with you: ${LEVELS.alice(state.aliceBond)}.`);
-  if(state.aliceBox)f.push('You have seen {{Alice}}’s drawings of what happened to her in {{Todd}}’s house.');
+  if(state.aliceBox)f.push('You have seen what {{Alice}} keeps in her box: a photo of {{Todd}} with his wife and his own daughter, and her drawings of what happened in this house.');
  }
  if(c==='Markus'){
   const allies=[['North',state.north],['Simon',state.simon],['Josh',state.josh],['John',state.john]].filter(([,v])=>v).map(([k])=>`{{${k}}}`);

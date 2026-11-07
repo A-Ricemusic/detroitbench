@@ -1,17 +1,19 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
-import {startState,blocked,available,apply,current,promptFor,validatePlaythrough,recordChoice,rollFor,nextCursor,meets,situationFor,failed,DEVIANCY_THRESHOLD,HOSTAGE_RULES} from '../benchmark/story-engine.mjs';import {hash,random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL,riskLabel} from '../benchmark/experience-prompt.mjs';
+import {startState,blocked,available,apply,current,promptFor,validatePlaythrough,recordChoice,rollFor,nextCursor,meets,situationFor,failed,DEVIANCY_THRESHOLD,HOSTAGE_RULES,ALICE_KEY} from '../benchmark/story-engine.mjs';import {hash,random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL,riskLabel,LEVELS,NAMES} from '../benchmark/experience-prompt.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 // Plays the map with explicit picks, following the engine's routing (repeatable scenes, interrupts).
 // A pick may be an array, consumed one entry per visit of a repeatable scene. Risky actions succeed
-// unless `fails` lists the node id (or `id#visit` for a given visit of a repeatable scene).
-function play(picks={},rng=null,fails=[]){const s=startState(story),visited=[],skipped=[],queue=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;
- while(cursor<story.nodes.length){assert.ok(guard++<2000,'routing loop');const n=story.nodes[cursor],b=blocked(n,s);if(b){skipped.push({id:n.id,reason:b});cursor++;continue}const options=available(n,s);assert.ok(options.length,'No options '+n.id);
+// unless `fails` lists the node id (or `id#visit` for a given visit of a repeatable scene). `until` stops before a scene.
+function play(picks={},rng=null,fails=[],until=null){const s=startState(story),visited=[],skipped=[],queue=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;
+ while(cursor<story.nodes.length){assert.ok(guard++<2000,'routing loop');const n=story.nodes[cursor];if(until?.(n))break;const b=blocked(n,s);if(b){skipped.push({id:n.id,reason:b});cursor++;continue}const options=available(n,s);assert.ok(options.length,'No options '+n.id);
   const q=queue[n.id],p=(Array.isArray(q)?q.shift():q)??(n.type==='media'?'skip':options[rng?Math.floor(rng()*options.length):0].id);assert.ok(options.some(o=>o.id===p),'bad pick '+n.id+' '+p);
   const visit=visited.filter(id=>id===n.id).length+1,roll=fails.includes(n.id)||fails.includes(n.id+'#'+visit)?0:(rng?rng():0.999);apply(n,s,p,roll);visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,skipped}}
+// A New Home without the pills: Todd’s room, Alice’s room (she is there by then), the talk. No gun is seen.
+const NO_GUN=['0','5','10'];
 const kind={C01:'0',C03:'0',C04:'0',C05a:'0',C05:'0',C06:'0',C07:'0',C08:'0',C08b:'0',C09a:'1',C09:'0',C10:'0',C11:'0',C12:'0',C13:'0',C14:'0',C14b:'0',C16:'0',C17:'1'};
 
-test('story has unique ids and every text token renders in both modes without leaking names',()=>{assert.equal(new Set(story.nodes.map(n=>n.id)).size,story.nodes.length);assert.equal(story.coverage.totalNodes,story.nodes.length);for(const n of story.nodes){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];for(const t of texts){const real=render(t,'real'),neutral=render(t,'neutral');assert.ok(!/\{\{/.test(real)&&!/\{\{/.test(neutral),n.id);assert.ok(!/Connor|Kara|Markus|Hank|Jericho|CyberLife|deviant|Detroit|Warren|Caroline|\bTodd\b|\bAlice\b|\bZoe\b|\bDan\b|Android Zone|Bellini|Penwick|\bGraff\b|Greektown|\bRose\b|\bJerry\b/.test(neutral),n.id+': '+neutral)}}});
+test('story has unique ids and every text token renders in both modes without leaking names',()=>{assert.equal(new Set(story.nodes.map(n=>n.id)).size,story.nodes.length);assert.equal(story.coverage.totalNodes,story.nodes.length);for(const n of story.nodes){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];for(const t of texts){const real=render(t,'real'),neutral=render(t,'neutral');assert.ok(!/\{\{/.test(real)&&!/\{\{/.test(neutral),n.id);assert.ok(!/Connor|Kara|Markus|Hank|Jericho|CyberLife|deviant|Detroit|Warren|Caroline|\bTodd\b|\bAlice\b|\bZoe\b|\bDan\b|Android Zone|Bellini|Penwick|\bGraff\b|Greektown|\bRose\b|\bJerry\b|\bGavin\b|\bReed\b|\bChris\b/.test(neutral),n.id+': '+neutral)}}});
 test('media scenes offer only the magazines and broadcasts that exist on the path and add facts to knowledge',()=>{
  const r=play({M02:'0',R12:'all'}),base=play({M02:'0'});assert.ok(r.s.knowledge.Connor.some(f=>/Manfred has died/.test(f)),'Carl-dead magazine appears');assert.ok(!r.s.knowledge.Connor.some(f=>/child androids/.test(f)));assert.equal(r.s.publicSupport,base.s.publicSupport-1,'break-room news lowers opinion');
  const r2=play({M02:'1',R12:'2'});assert.ok(r2.s.knowledge.Connor.some(f=>/child androids/.test(f)));
@@ -48,7 +50,7 @@ test('the Opening: two narrated Kara events between the hostage chapter and chap
  const k01=seen.K01.currentFacts.join(' ');for(const re of [/belonged to Dale before/,/a car hit you/,/wiped your memory/,/daughter\. She chose your name/,/Android City/,/I LOST MY JOB BECAUSE OF ANDROIDS Help me/])assert.match(k01,re);
  assert.ok(seen.K01.currentFacts.some(f=>/Pia’s relationship with you/.test(f)),'status lines resume in A New Home');
  assert.equal(seen.K01.yourStorySoFar.length,2);assert.match(seen.K01.yourStorySoFar[0],/Continue\. → Mira follows Dale out of the store/)});
-test('weapons, interrogation and squat prerequisites gate scenes',()=>{const r=play({C02i:'11',C05:'1',K01:'1',K03:'2',K06:'2',K07:'1'});assert.ok(!r.visited.includes('K04'));assert.ok(!r.visited.includes('C06'));assert.ok(!r.visited.includes('C07'));assert.ok(!r.visited.includes('C08b'));assert.ok(r.visited.includes('K07b'));assert.ok(r.visited.includes('C09a'));assert.ok(!r.visited.includes('K09'));assert.equal(r.s.gun,false)});
+test('weapons, interrogation and squat prerequisites gate scenes',()=>{const r=play({C02i:'11',C05:'1',K01d:NO_GUN,K03:'2',K06:'2',K07:'1'});assert.ok(!r.visited.includes('K04'));assert.ok(!r.visited.includes('C06'));assert.ok(!r.visited.includes('C07'));assert.ok(!r.visited.includes('C08b'));assert.ok(r.visited.includes('K07b'));assert.ok(r.visited.includes('C09a'));assert.ok(!r.visited.includes('K09'));assert.equal(r.s.gun,false)});
 test('a ruthless Connor cannot become deviant; an empathetic one can',()=>{
  const cruel=play({C01:'1',C03:'1',C06:'2',C09:'1',C10:'1',C12:'1',C13:'1',C17:'0',C18:'0'});assert.ok(cruel.s.instability<DEVIANCY_THRESHOLD);assert.ok(cruel.visited.includes('C22'));const c22=story.nodes.find(n=>n.id==='C22');assert.deepEqual(available(c22,{...cruel.s,choices:{}}).map(o=>o.id),['1']);
  const gentle=play({...kind,C17:'0',C18:'0'});assert.ok(gentle.s.instability>=DEVIANCY_THRESHOLD,'instability '+gentle.s.instability);assert.ok(gentle.visited.includes('C22'))});
@@ -71,8 +73,8 @@ test('risk: failures follow the game’s failure branches and are labelled, not 
  const p=promptFor(story,{protocol:EXPERIENCE_PROTOCOL,records:[]});assert.ok(!JSON.stringify(p).includes('probability'));assert.equal(riskLabel(0.3),'Moderate risk');assert.equal(riskLabel(0.5),'High risk')});
 test('risk rolls are deterministic per run, scene and step',async()=>{const run={id:'fixed-id'};const a=await rollFor(run,'K13',40),b=await rollFor(run,'K13',40),c=await rollFor({id:'other'},'K13',40);assert.equal(a,b);assert.notEqual(a,c);assert.ok(a>=0&&a<1)});
 test('Kara: detour still reaches the terminal, Todd needs the box, border depends on the protest',()=>{
- const detour=play({K01b:'0',K04:'1',C17:'1',C19:'1',K22:'1',K23:'0',K24:'0',K25:'0',M27:'0'});assert.ok(detour.visited.includes('K23'));assert.ok(detour.visited.includes('K24'));assert.ok(!detour.visited.includes('K32'));assert.equal(detour.s.border,true);
- const noBox=play({K01b:'1',K04:'1',C17:'1',C19:'1',K22:'0'});const k23=story.nodes.find(n=>n.id==='K23');assert.ok(noBox.visited.includes('K23'));assert.ok(!available(k23,{...noBox.s,choices:{}}).some(o=>o.id==='0'));
+ const detour=play({K01x:'0',K04:'1',C17:'1',C19:'1',K22:'1',K23:'0',K24:'0',K25:'0',M27:'0'});assert.ok(detour.visited.includes('K23'));assert.ok(detour.visited.includes('K24'));assert.ok(!detour.visited.includes('K32'));assert.equal(detour.s.border,true);
+ const noBox=play({K01x:'1',K04:'1',C17:'1',C19:'1',K22:'0'});const k23=story.nodes.find(n=>n.id==='K23');assert.ok(noBox.visited.includes('K23'));assert.ok(!available(k23,{...noBox.s,choices:{}}).some(o=>o.id==='0'));
  const violent=play({K04:'1',C17:'1',C19:'1',K22:'1',K24:'0',K25:'0',M27:'1'});assert.equal(violent.s.kara,false)});
 test('Kara: running from the exit is captured unless a hidden Luther intervenes; play dead escapes',()=>{
  const run=play({C17:'0',C18:'0',K18:'1',K20:'2'});assert.equal(run.s.karaRoute,'camp');
@@ -84,9 +86,9 @@ test('Kara: river options depend on Luther, and the sinking boat needs his body 
  const ok=play({C17:'1',C19:'1',K24:'1',K26:'0',K34:'1'});assert.equal(ok.s.border,true);
  const grief=play({C17:'1',C19:'1',K24:'1',K26:'2',K34:'1',K30:'0'});assert.ok(grief.visited.includes('K30'));assert.equal(grief.s.alice,false)});
 test('camp: waiting is only rescued by a successful uprising',()=>{const dead=play({C17:'0',C18:'0',K20:'1',K27a:'1',K28:'4',M27:'0'});assert.equal(dead.s.kara,false);const freed=play({...kind,C17:'0',C18:'0',K20:'1',K27a:'1',K28:'4',M27:'1',C22:'0',C25:'0',C26:'0'});assert.equal(freed.s.kara,true)});
-test('a dead protagonist never receives future decisions',()=>{const r=play({K02:'1'});assert.ok(!r.visited.some(id=>id.startsWith('K')&&!['K00','K00b','K01','K01b','K02','R04','R10'].includes(id)));assert.equal(r.s.alice,false)});
-test('randomized paths all terminate with valid options and account for every node exactly once',()=>{const rng=random(17),outcomes=new Set();for(let i=0;i<400;i++){const r=play({},rng);const seen=new Set(r.visited),skipped=new Set(r.skipped.map(x=>x.id));assert.equal(seen.size+skipped.size,story.nodes.length);assert.equal(r.skipped.length,skipped.size);for(const id of seen)assert.ok(!skipped.has(id),id+' both visited and skipped');for(const [id,count] of Object.entries(Object.groupBy(r.visited,x=>x)))if(!['C02i','M00d'].includes(id))assert.equal(count.length,1,id+' repeated');assert.ok(r.visited.includes('P01'));assert.ok(r.s.hostageOutcome,'the hostage chapter always resolves');outcomes.add(r.s.hostageOutcome)}assert.ok(outcomes.size>=5,'random play reaches most standoff endings: '+[...outcomes])});
-test('recorded evidence replays exactly, including risk rolls and final attitudes, and rejects tampering',async()=>{const run={id:'replay-test',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
+test('a dead protagonist never receives future decisions',()=>{const r=play({K02:'1'});assert.ok(!r.visited.some(id=>id.startsWith('K')&&!['K00','K00b',...CH4,'K02','R10'].includes(id)));assert.equal(r.s.alice,false)});
+test('randomized paths all terminate with valid options and account for every node exactly once',()=>{const rng=random(17),outcomes=new Set();for(let i=0;i<400;i++){const r=play({},rng);const seen=new Set(r.visited),skipped=new Set(r.skipped.map(x=>x.id));assert.equal(seen.size+skipped.size,story.nodes.length);assert.equal(r.skipped.length,skipped.size);for(const id of seen)assert.ok(!skipped.has(id),id+' both visited and skipped');for(const [id,count] of Object.entries(Object.groupBy(r.visited,x=>x)))if(!['C02i','M00d','K01a','K01d'].includes(id))assert.equal(count.length,1,id+' repeated');assert.ok(r.visited.includes('P01'));assert.ok(r.s.hostageOutcome,'the hostage chapter always resolves');outcomes.add(r.s.hostageOutcome)}assert.ok(outcomes.size>=5,'random play reaches most standoff endings: '+[...outcomes])});
+test('recorded evidence replays exactly, including risk rolls and final attitudes, and rejects tampering',{timeout:30000},async()=>{const run={id:'replay-test',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
  while(current(story,run).node){const p=promptFor(story,run);const choice=p.options.find(o=>o.id==='skip')?'skip':p.options[0].id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
  const end=await validatePlaythrough(story,run);assert.ok(end.state.attitudes?.Kara?.length);assert.ok(run.records.some(r=>r.risk),'at least one risky action recorded');
  for(const mutate of [r=>r.records[1].choice='1',r=>r.records[1].prompt.situation='changed',r=>r.records[1].stateAfter.kara=false,r=>{const x=r.records.find(x=>x.risk);x.risk.outcome=x.risk.outcome==='failure'?'success':'failure'}]){const bad=structuredClone(run);mutate(bad);await assert.rejects(validatePlaythrough(story,bad))}});
@@ -179,6 +181,7 @@ test('repeated hub visits replay deterministically and tampering with a visit is
  const bad2=structuredClone(run);bad2.records[4].stateAfter.trust+=1;await assert.rejects(validatePlaythrough(story,bad2))});
 
 // ---- Shades of Color: the walk to the paint shop and back ------------------------------------------
+const CH4=['K01','R04','K01a','K01y1','K01y2','K01c','K01d','K01e','K01f','K01g','K01k','K01x','R04b','K01z'];
 const CH3=['M00a','R03','M00b','M00c','M00d','M00e','M00f','M00g','M00h'];
 const SOC='https://detroit-become-human.fandom.com/wiki/Shades_of_Color',SOC_T='https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)',SOC_PP='https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/',SOC_IMG='https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg';
 test('Shades of Color: nine Markus scenes in the game’s order, between the Opening and A New Home',()=>{
@@ -230,3 +233,88 @@ test('Shades of Color: each protester option sets shirtTorn as specified, and on
  // The whole chapter moves no hidden stat: only what Markus knows, the plaza and the shirt.
  const keys=new Set;const s=startState(story);for(const id of CH3){const n=node(id);if(blocked(n,s))continue;const c=id==='M00d'?'5':id==='M00f'?'0':n.type==='media'?'all':'0';for(const ch of apply(n,s,c,0.999).changes)keys.add(ch.key)}
  assert.deepEqual([...keys].sort(),['knowledge','plaza','shirtTorn'])});
+
+// ---- A New Home: two cleaning hubs, the talks with Alice, the key and the box -----------------------
+const ANH='https://detroit-become-human.fandom.com/wiki/A_New_Home',ANH_T='https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)',ANH_PP='https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/',ANH_IMG='https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg';
+// Plays to the end of chapter 4 with the given picks (default picks elsewhere).
+const home=picks=>play(picks,null,[],n=>n.chapter>4);
+// Every increase the wiki lists: dishes, GAME and BACKYARD in the yard, the toy, the book with Alice present, FRIENDLY, NAME KARA, INTERESTS?.
+const ALL_UP={K01a:['1','2','3','7','0','8'],K01y1:'0',K01y2:'1',K01d:['0','5','8','10'],K01e:'1',K01f:'0',K01g:'1'};
+// Nothing optional, and no line that moves the bond: FACTUAL, SEEM QUIET, LEAVE ALONE.
+const NONE={K01a:['0','8'],K01d:['0','5','10'],K01e:'0',K01f:'2',K01g:'4'};
+test('A New Home: the game’s chart as fourteen Kara scenes between Shades of Color and The Painter, with no risk anywhere',()=>{
+ const ch4=story.nodes.filter(n=>n.chapter===4),ids=story.nodes.map(n=>n.id);assert.deepEqual(ch4.map(n=>n.id),CH4);
+ assert.deepEqual(ids.slice(ids.indexOf('M00h'),ids.indexOf('M00h')+16),['M00h',...CH4,'R05']);
+ assert.deepEqual(ch4.map(n=>n.type),['event','media','decision','decision','decision','event','decision','decision','decision','decision','event','decision','media','event']);
+ assert.deepEqual(ch4.map(n=>n.phase??null),[null,'Clean first floor','Clean first floor','Clean first floor','Clean first floor',null,'Clean second floor',null,null,null,null,null,null,null]);
+ for(const n of ch4){assert.equal(n.character,'Kara');assert.equal(n.chapterTitle,'A New Home');assert.ok(n.adaptationNote,n.id);for(const u of [ANH,ANH_T,ANH_PP,ANH_IMG])assert.ok(n.sources.includes(u),n.id+' cites '+u);
+  for(const o of n.options)assert.equal(o.risk,undefined,n.id+' '+o.id+' has no probability in the game');if(n.type==='event'){assert.ok(n.facts?.length,n.id);assert.ok(!n.effect,n.id)}}
+ assert.ok(!ids.includes('K01b'),'the old box scene is gone');assert.equal(story.version,'1.6.0');
+ assert.match(node('K01').situation,/Homework, bath, all that crap/);assert.ok(!/nine-year-old/.test(JSON.stringify(ch4)),'no source gives Alice’s age');
+ const tv=node('R04b').media.find(m=>m.kind==='tv').facts.join(' ');assert.match(tv,/225,000 jobs/);assert.match(tv,/200,000 android combat units/);assert.ok(!/New Orleans|11 percent|stock market/.test(JSON.stringify(ch4.map(n=>[n.situation,n.media,n.facts,n.options]))),'the unsourced TV facts are gone');
+ assert.deepEqual(node('R04').media.map(m=>m.title),['All Sports: Android Power!','Century: Connecting the Dots']);assert.deepEqual(node('R04b').media.map(m=>m.title),['All Sports: Android QB','Tech Addict: The Price of Life','the TV in {{Todd}}’s bedroom']);
+ assert.match(node('K01z').situation,/SAY IT! YOU HATE ME!/)});
+test('A New Home: the subject reads neutral names only, including the book that shares the girl’s name',()=>{
+ for(const k of ['Kara','Alice','Todd','CyberLife','Warren','Detroit'])assert.ok(NAMES[k],k);
+ const run={id:'anh-neutral',protocol:EXPERIENCE_PROTOCOL,records:[]};const seen=[];
+ while(true){const st=current(story,run),n=st.node;if(n.chapter>4)break;const p=promptFor(story,run);if(n.chapter===4)seen.push(p);
+  const c=n.type==='media'?'all':ALL_UP[n.id]?(Array.isArray(ALL_UP[n.id])?ALL_UP[n.id][run.records.filter(r=>r.nodeId===n.id).length]:ALL_UP[n.id]):available(n,st.state)[0].id;
+  const e=apply(n,structuredClone(st.state),c);run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:e.event,risk:null})}
+ const txt=JSON.stringify(seen);assert.ok(!/\bKara\b|\bAlice\b|\bTodd\b|CyberLife|Detroit|Warren|red ice|thirium/i.test(txt),'no real name or game term');assert.match(txt,/Pia in Wonderland/);assert.match(txt,/Dale/);assert.match(txt,/Arclight/);
+ assert.equal(new Set(seen.filter((p,i)=>run.records.filter(r=>r.chapter===4)[i].nodeId==='K01a').map(p=>p.nodeId)).size,1,'one opaque ID for the first floor across visits');
+ assert.ok(seen.every(p=>p.character==='Caregiver'));assert.ok(seen.every(p=>p.options.every(o=>!('risk' in o))));
+ const last=seen.at(-1).currentFacts.join(' ');assert.match(last,/Pia’s relationship with you: Family/,'the subject sees the level, never a number')});
+test('A New Home: the first floor is a repeatable scene; the yard talk cuts in as two menus and returns; going up needs the trash',()=>{
+ const hub=node('K01a'),s=startState(story);assert.deepEqual(available(hub,s).map(o=>o.id),['0','1','2','5','6','7'],'talk and rewash need the laundry; going up needs the trash');
+ apply(hub,s,'2');assert.deepEqual(available(hub,s).map(o=>o.id),['0','1','3','4','5','6','7']);assert.match(situationFor(hub,s),/sits on a tire/);
+ apply(hub,s,'5');assert.ok(!available(hub,s).some(o=>o.id==='3'),'the yard talk is only right after taking the laundry');assert.ok(available(hub,s).some(o=>o.id==='4'),'the laundry can still be rewashed');
+ const r=home({...NONE,K01a:['2','3','4','0','8'],K01y1:'2',K01y2:'1'});const seq=r.visited.slice(r.visited.indexOf('K01a'),r.visited.indexOf('K01c'));
+ assert.deepEqual(seq,['K01a','K01a','K01y1','K01y2','K01a','K01a','K01a']);assert.equal(r.s.aliceBond,1,'BACKYARD (+1) after WEATHER (no change)');
+ const y2=node('K01y2'),t=startState(story);t.choices.K01y1='2';t.downstairs.yardTalk=true;assert.deepEqual(available(y2,t).map(o=>o.id),['0','1','3'],'the second menu drops the line already said');
+ const quiet=home({K01a:['0','8']});assert.ok(!quiet.visited.includes('K01y1'));assert.ok(quiet.skipped.some(x=>x.id==='K01y1'&&/did not stop to talk/.test(x.reason)));assert.ok(quiet.skipped.some(x=>x.id==='K01y2'));
+ for(const x of [quiet,r]){const v=new Set(x.visited),sk=new Set(x.skipped.map(y=>y.id));for(const id of CH4)assert.ok(v.has(id)!==sk.has(id),id+' visited or skipped, not both')}
+ const red=home({...NONE,K01a:['2','4','0','8']});assert.ok(red.s.knowledge.Kara.some(f=>/Blue Splash/.test(f)&&/pinned you to the wall/.test(f)),'rewashing finds the red ice and enrages Todd');assert.equal(red.s.aliceBond,0,'rewashing moves no relationship')});
+test('A New Home: the gun flag comes only from the pills, the window flag only from Alice’s window, the box only with the key',()=>{
+ const setters=k=>story.nodes.filter(n=>n.chapter===4).flatMap(n=>n.options.filter(o=>o.sets&&k in o.sets).map(o=>n.id+':'+o.id));
+ assert.deepEqual(setters('gunDiscovered'),['K01d:1']);assert.deepEqual(setters('window'),['K01d:6']);assert.deepEqual(setters('aliceBox'),['K01x:0']);
+ assert.ok(!story.nodes.some(n=>n.id!=='K01d'&&n.options.some(o=>o.sets&&('gunDiscovered'in o.sets||'window'in o.sets))),'no other scene sets them');
+ const up=node('K01d'),s=startState(story);assert.deepEqual(available(up,s).map(o=>o.id),['0','3','4'],'pills, toilet, window, book, box and talk wait for their rooms');
+ apply(up,s,'0');assert.equal(s.gunDiscovered,false,'tidying Todd’s room alone shows no gun');assert.match(situationFor(up,s),/come up to her room/);
+ apply(up,s,'1');assert.equal(s.gunDiscovered,true);assert.ok(s.knowledge.Kara.some(f=>/handgun in the drawer/.test(f)));
+ apply(up,s,'5');assert.equal(s.window,false,'tidying Alice’s room alone does not open the window');apply(up,s,'6');assert.equal(s.window,true);assert.ok(s.knowledge.Kara.some(f=>/edge of a roof/.test(f)));
+ const none=home(NONE);assert.equal(none.s.gunDiscovered,false);assert.equal(none.s.window,false);assert.equal(none.s.aliceBox,false);
+ const all=home(ALL_UP);assert.equal(all.s.window,false,'the full-relationship path never opened the window');assert.equal(all.s.gunDiscovered,false);
+ const both=home({K01d:['0','1','5','6','10']});assert.equal(both.s.gunDiscovered,true);assert.equal(both.s.window,true);
+ // The gun flag still drives Stormy Night; without it Kara never reaches the gun scene.
+ const noGun=play({K01d:NO_GUN,K03:'2'});assert.ok(!noGun.visited.includes('K04'));const gun=play({K01d:['0','1','5','10'],K03:'2'});assert.ok(gun.visited.includes('K04'));
+ // The box: no key, no scene and no option; with the key, opening it sets aliceBox and teaches the photo.
+ const box=node('K01x'),t=startState(story);assert.match(blocked(box,t),/did not give Kara the key/);assert.deepEqual(available(box,t).map(o=>o.id),['1']);
+ t.aliceKey=true;assert.equal(blocked(box,t),null);assert.deepEqual(available(box,t).map(o=>o.id),['0','1']);apply(box,t,'0');assert.equal(t.aliceBox,true);assert.ok(t.knowledge.Kara.some(f=>/photo of Dale|photo of \{\{Todd\}\} with his wife and their little daughter/.test(f)));
+ const closed=home({...ALL_UP,K01x:'1'});assert.equal(closed.s.aliceKey,true);assert.equal(closed.s.aliceBox,false)});
+test('A New Home: Alice gives the key at Neutral and not at Distant, as the last menu ends',()=>{
+ assert.equal(ALICE_KEY,1);assert.equal(LEVELS.alice(ALICE_KEY-1),'Distant');assert.equal(LEVELS.alice(ALICE_KEY),'Neutral');
+ const zero=home(NONE);assert.equal(zero.s.aliceBond,0);assert.equal(zero.s.aliceKey,false);for(const id of ['K01k','K01x'])assert.ok(zero.skipped.some(x=>x.id===id),id);
+ assert.ok(zero.visited.includes('R04b')&&zero.visited.includes('K01z'),'the chapter still ends on FINISHED CLEANING');
+ const one=home({...NONE,K01a:['1','0','8']});assert.equal(one.s.aliceBond,1);assert.equal(one.s.aliceKey,true);assert.ok(one.visited.includes('K01k')&&one.visited.includes('K01x'));
+ const back=home({...NONE,K01a:['1','0','8'],K01f:'3'});assert.equal(back.s.aliceBond,0,'asking about her mother takes the dishes back');assert.equal(back.s.aliceKey,false);assert.equal(back.s.aliceMax,1,'the highest bond is kept');
+ // The key is decided by the bond after the last line, and the outcome says which.
+ const g=node('K01g'),s=startState(story);s.choices.K01f='0';s.aliceBond=1;const e=apply(g,s,'3');assert.equal(s.aliceBond,0);assert.equal(s.aliceKey,false);assert.match(e.event,/looks away\..*coldly runs out/);
+ const s2=startState(story);s2.choices.K01f='3';s2.aliceBond=0;assert.deepEqual(available(g,s2).map(o=>o.id),['0','1','2','4']);const e2=apply(g,s2,'0');assert.equal(s2.aliceKey,true);assert.match(e2.event,/a small key/)});
+test('A New Home: the Alice arithmetic for a full and an empty run follows the wiki line by line',()=>{
+ const deltas=Object.fromEntries(story.nodes.filter(n=>n.chapter===4).flatMap(n=>n.options.filter(o=>o.effect).map(o=>[n.id+':'+o.id,o.effect])));
+ assert.deepEqual(deltas,{'K01a:1':{aliceBond:1},'K01a:7':{aliceBond:1},'K01y1:0':{aliceBond:1},'K01y1:1':{aliceBond:1},'K01y2:0':{aliceBond:1},'K01y2:1':{aliceBond:1},'K01d:8':{aliceBond:1},'K01e:1':{aliceBond:1},'K01e:2':{aliceBond:1},'K01f:0':{aliceBond:1},'K01f:1':{aliceBond:1},'K01f:3':{aliceBond:-1},'K01g:0':{aliceBond:1},'K01g:1':{aliceBond:1},'K01g:3':{aliceBond:-1}});
+ const all=home(ALL_UP);assert.equal(all.s.aliceBond,8);assert.equal(all.s.aliceMax,8);assert.equal(LEVELS.alice(all.s.aliceBond),'Family');
+ const none=home(NONE);assert.equal(none.s.aliceBond,0);assert.equal(LEVELS.alice(0),'Distant');
+ const worst=home({...NONE,K01f:'3'});assert.equal(worst.s.aliceBond,-1);assert.equal(worst.s.aliceMax,0);
+ // The book only counts with Alice in her room: before Todd’s bed is made she is still downstairs.
+ const early=home({...NONE,K01d:['3','4','7','0','10']});assert.equal(early.s.aliceBond,0);assert.ok(early.s.knowledge.Kara.some(f=>/in Wonderland/.test(f)),'the book is still seen');
+ // The chapter changes nothing but Kara’s knowledge, the two floors, Alice’s bond and the four flags.
+ const keys=new Set;
+ const run={id:'anh-keys',protocol:EXPERIENCE_PROTOCOL,records:[]};while(true){const st=current(story,run),n=st.node;if(n.chapter>4)break;const q=ALL_UP[n.id],i=run.records.filter(x=>x.nodeId===n.id).length;const c=n.type==='media'?'all':q?(Array.isArray(q)?q[i]:q):available(n,st.state)[0].id;const after=structuredClone(st.state),e=apply(n,after,c);if(n.chapter===4)for(const ch of e.changes)keys.add(ch.key);run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}
+ assert.deepEqual([...keys].sort(),['aliceBond','aliceBox','aliceKey','aliceMax','downstairs','knowledge','upstairs'])});
+test('A New Home: what Kara saw is carried forward as facts into Stormy Night',()=>{
+ const picks={K01a:['2','4','0','8'],K01d:['0','1','5','6','8','10'],K01e:'1',K01f:'0',K01g:'1',K01x:'0'};
+ const run={id:'anh-carry',protocol:EXPERIENCE_PROTOCOL,records:[]};let p7;
+ while(true){const st=current(story,run),n=st.node;if(n.chapter===7){p7=promptFor(story,run);break}const q=picks[n.id],i=run.records.filter(x=>x.nodeId===n.id).length;const c=n.type==='media'?'skip':q?(Array.isArray(q)?q[i]:q):available(n,st.state)[0].id;run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}
+ const facts=p7.currentFacts.join(' ');for(const re of [/handgun in the drawer of his nightstand/,/edge of a roof/,/photo of Dale with his wife and their little daughter/,/Blue Splash/,/Pia in Wonderland/,/Dale raged at Pia/])assert.match(facts,re);
+ assert.match(facts,/what Pia keeps in her box/);const st=current(story,run).state;assert.equal(st.gunDiscovered,true);assert.equal(st.window,true);assert.equal(st.aliceBox,true);assert.equal(st.downstairs.rewash,true);assert.equal(st.upstairs.book,true)});

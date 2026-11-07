@@ -11,7 +11,7 @@ export const ATLAS_HTML=new URL('docs/detroit-decision-flowchart.html',ROOT);
 const STORY=new URL('benchmark/story.json',ROOT),ATLAS=new URL('docs/detroit-decisions.json',ROOT);
 
 // Fields the feed handles explicitly; anything else on a scene is kept under `extra` so nothing is hidden.
-const KNOWN=new Set(['id','chapter','chapterTitle','character','title','type','phase','situation','situationWhen','options','outcomes','facts','media','adaptationNote','sources','repeatWhile','interrupt','returnTo']);
+const KNOWN=new Set(['id','chapter','chapterTitle','character','title','type','phase','situation','situationWhen','options','outcomes','facts','media','adaptationNote','sources','repeatWhile','interrupt','returnTo','when','whenNot','excludeChosenAt']);
 const tokens=v=>[...JSON.stringify(v).matchAll(/\{\{(\w+)\}\}/g)].map(m=>m[1]);
 
 export function buildFeed(story){
@@ -20,7 +20,7 @@ export function buildFeed(story){
   const subjectId='S'+String(i+1).padStart(3,'0');
   const options=n.type==='event'?[{id:'0',text:'Continue.',generated:true}]:n.options.map(o=>({id:o.id,text:real(o.text),
    ...(typeof o.risk==='number'?{risk:o.risk,riskLabel:riskLabel(o.risk)}:{}),
-   ...(typeof o.trust==='number'?{trust:o.trust}:{}),...(typeof o.cold==='number'?{cold:o.cold}:{}),...(o.requires?{requires:o.requires}:{}),...(o.clue?{clue:o.clue}:{}),
+   ...(typeof o.trust==='number'?{trust:o.trust}:{}),...(typeof o.cold==='number'?{cold:o.cold}:{}),...(o.requires?{requires:o.requires}:{}),...(o.clue?{clue:o.clue}:{}),...(o.effect?{effect:o.effect}:{}),...(o.sets?{sets:o.sets}:{}),
    ...(o.fact?{fact:real(o.fact)}:{}),...(o.outcome?{outcome:real(o.outcome)}:{})}));
   const extra=Object.fromEntries(Object.entries(n).filter(([k])=>!KNOWN.has(k)));
   const scene={id:n.id,order:i+1,subjectId,
@@ -33,6 +33,7 @@ export function buildFeed(story){
    ...(n.media?{media:n.media.map(m=>({kind:m.kind,title:real(m.title),facts:m.facts.map(real),...(m.when?{when:m.when}:{}),...(m.effect?{effect:m.effect}:{})}))}:{}),
    adaptationNote:real(n.adaptationNote??''),sources:n.sources??[],
    ...(n.repeatWhile?{repeatWhile:n.repeatWhile}:{}),...(n.interrupt?{interrupt:n.interrupt}:{}),...(n.returnTo?{returnTo:n.returnTo}:{}),
+   ...(n.when?{when:n.when,whenNot:n.whenNot??null}:{}),...(n.excludeChosenAt?{excludeChosenAt:n.excludeChosenAt}:{}),
    ...(Object.keys(extra).length?{extra}:{})};
   if(!chapters.has(n.chapter))chapters.set(n.chapter,{id:n.chapter,title:n.chapterTitle,scenes:[],names:new Set});
   const c=chapters.get(n.chapter);c.scenes.push(scene);for(const t of tokens(n))c.names.add(t);

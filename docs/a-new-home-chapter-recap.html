@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>A New Home · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.6.0 · chapter 4</p>
+<h1>A New Home: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 30 nodes) and the Fandom wiki’s chapter page, transcript and Relationship Stat page. The chapter has no probability, public-opinion or instability change; its only number is Alice’s relationship, which the wiki gives as up and down icons. There are no operator notes for this chapter yet; section 4 lists where the benchmark simplifies, and section 6 what to check in game.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#alice">3 · Alice</a></li><li><a href="#confirmed">4 · Confirmed</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Ending and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>WELCOME HOME (checkpoint) → JOIN TODD: “You’ve been gone for two weeks and the place is a mess.” Alice appears on the stairs. “Get started down here, then you do upstairs.”</li>
+<li>[ CLEAN FIRST FLOOR ], in any order: the magazine (READ “ANDROID POWER!”, READ “CONNECTING THE DOTS”), WASH DISHES, CHECK BACKYARD → TALK WITH ALICE, REWASH CLOTHES → FIND RED ICE → ENRAGE TODD, ACTIVATE VACUUM, DISTURB TODD. Not on the chart: the TOY line.</li>
+<li>TAKE OUT TRASH (mandatory; Todd then hunts for his Red Ice) → ASK TO GO UPSTAIRS.</li>
+<li>GO UPSTAIRS (checkpoint).</li>
+<li>[ CLEAN SECOND FLOOR ], in any order: CLEAN TODD’S ROOM (ALICE GOES TO HER ROOM) → TIDY PILLS → KARA SEES GUN, CLEAN TOILET, CLEAN BATHROOM, the magazine (READ “ANDROID QB”, READ “PUTTING A PRICE”) and the TV, CLEAN ALICE’S ROOM → VENTILATE ROOM → KARA DISCOVERS A WAY DOWN. Not on the chart: the Alice in Wonderland book, the locked box.</li>
+<li>TALK WITH ALICE in her room: three menus. She leaves; at Neutral or better ALICE GIVES KARA A KEY → OPEN ALICE’S BOX.</li>
+<li>FINISHED CLEANING: Todd rages at Alice, then apologizes. The only ending.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>K01</code> Welcome home (event).</li>
+<li><code>R04</code> The magazine on the dining table (media): read either cover, both or neither.</li>
+<li><code>K01a</code> The first floor, repeated: each visit offers what has not been done yet; going upstairs needs the trash. Talking to Alice in the yard cuts into <code>K01y1</code> and <code>K01y2</code> (two menus) and returns.</li>
+<li><code>K01c</code> Going upstairs (event).</li>
+<li><code>K01d</code> The second floor, repeated; talking to Alice needs both bedrooms and ends it.</li>
+<li><code>K01e</code>, <code>K01f</code>, <code>K01g</code>: the three menus in Alice’s room. The last one decides the key.</li>
+<li><code>K01k</code> Alice’s key (event) and <code>K01x</code> Alice’s box (decision), only with the key.</li>
+<li><code>R04b</code> Todd’s bedroom: the magazine and the TV (media).</li>
+<li><code>K01z</code> Finished cleaning (event), every path.</li>
+</ol>
+<p class="fine">No option carries a risk. What Kara sees becomes facts in her knowledge, which every later Kara scene shows her; the flags below are what later chapters read.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">30 chart nodes, two bracketed phases, two checkpoints, one ending and no “OR” pairs. Rows in italics are interactions that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>WELCOME HOME, JOIN TODD</td><td>Checkpoint; Todd’s instructions; Alice on the stairs</td><td class="yes"><code>K01</code>, quoted</td></tr>
+<tr><td>READ “ANDROID POWER!”, READ “CONNECTING THE DOTS”</td><td>One magazine, two covers, dining table</td><td class="part"><code>R04</code>, before the chores rather than at any time</td></tr>
+<tr><td>CHECK BACKYARD</td><td>Take down the laundry; Alice follows and sits on a tire</td><td class="yes"><code>K01a</code> option 2</td></tr>
+<tr><td>WASH DISHES</td><td>Dishwasher broken (#573BV); Alice watches; then Todd’s beer</td><td class="yes"><code>K01a</code> option 1, Alice +1</td></tr>
+<tr><td>TALK WITH ALICE (yard)</td><td>Two menus: GAME, BACKYARD, WEATHER, SCHOOL</td><td class="yes"><code>K01a</code> option 3 (right after the laundry) → <code>K01y1</code>, <code>K01y2</code></td></tr>
+<tr><td>DISTURB TODD</td><td>Stand in front of the TV: “Outta the way for fuck sake!”</td><td class="yes"><code>K01a</code> option 6</td></tr>
+<tr><td>ACTIVATE VACUUM</td><td>Alice plays with it; Todd shouts at her</td><td class="yes"><code>K01a</code> option 5</td></tr>
+<tr><td>REWASH CLOTHES, FIND RED ICE, ENRAGE TODD</td><td>Red Ice in the Blue Splash detergent; Todd pins Kara to the wall; Alice watches</td><td class="part"><code>K01a</code> option 4, one option for the chain (it always happens together)</td></tr>
+<tr><td><i>TOY</i></td><td>“That’s a pretty toy! What’s it’s name?”</td><td class="yes"><code>K01a</code> option 7, Alice +1, any time on the first floor</td></tr>
+<tr><td>TAKE OUT TRASH</td><td>Mandatory; Todd’s phone call; his Red Ice hunt on return</td><td class="yes"><code>K01a</code> option 0</td></tr>
+<tr><td>ASK TO GO UPSTAIRS</td><td>“I’ve made a good start down here. I’ll head upstairs!”</td><td class="yes"><code>K01a</code> option 8, needs the trash</td></tr>
+<tr><td>GO UPSTAIRS</td><td>Checkpoint</td><td class="yes"><code>K01c</code></td></tr>
+<tr><td>CLEAN TODD’S ROOM, ALICE GOES TO HER ROOM</td><td>Bed, mess, his window; Alice goes to her room while Kara makes the bed; Todd shoves Kara out of the restroom</td><td class="yes"><code>K01d</code> option 0</td></tr>
+<tr><td>TIDY PILLS → KARA SEES GUN</td><td>Antidepressants; the gun in the drawer (unlock)</td><td class="yes"><code>K01d</code> option 1, after Todd’s room; sets <code>gunDiscovered</code></td></tr>
+<tr><td>CLEAN TOILET</td><td>After Todd leaves the restroom</td><td class="part"><code>K01d</code> option 2, after Todd’s room</td></tr>
+<tr><td>CLEAN BATHROOM</td><td>Bottles, clothes, mop</td><td class="yes"><code>K01d</code> option 3</td></tr>
+<tr><td>READ “ANDROID QB”, READ “PUTTING A PRICE”</td><td>Magazine on the cupboard in Todd’s room; the TV beside it</td><td class="part"><code>R04b</code>, after the talk (“Back In Hallway”), with the TV</td></tr>
+<tr><td>CLEAN ALICE’S ROOM</td><td>“I only need two minutes. Is that okay, Alice?”</td><td class="yes"><code>K01d</code> option 4 or 5 (Alice absent or there)</td></tr>
+<tr><td>VENTILATE ROOM → KARA DISCOVERS A WAY DOWN</td><td>Open Alice’s window; a roof edge (unlock)</td><td class="yes"><code>K01d</code> option 6, after her room; sets <code>window</code></td></tr>
+<tr><td><i>The Alice in Wonderland book</i></td><td>“Alice In Wonderland… Of course.” Alice smiles</td><td class="yes"><code>K01d</code> option 7 (Alice absent, no change) or 8 (Alice there, +1)</td></tr>
+<tr><td><i>The locked box</i></td><td>Kara can only shake it</td><td class="yes"><code>K01d</code> option 9</td></tr>
+<tr><td>TALK WITH ALICE (room)</td><td>Three menus</td><td class="yes"><code>K01d</code> option 10, then <code>K01e</code>, <code>K01f</code>, <code>K01g</code></td></tr>
+<tr><td>ALICE GIVES KARA A KEY</td><td>At least Neutral; Distant: “Alice coldly runs off”</td><td class="yes">Automatic at the end of <code>K01g</code>; <code>K01k</code> when given</td></tr>
+<tr><td>OPEN ALICE’S BOX</td><td>A clover, the family photo, the drawings</td><td class="yes"><code>K01x</code>, only with the key; sets <code>aliceBox</code></td></tr>
+<tr><td>FINISHED CLEANING</td><td>Todd rages at Alice, then apologizes</td><td class="yes"><code>K01z</code>, every path</td></tr>
+</tbody></table></div>
+
+<h2 id="alice">3 · Alice’s relationship, line by line</h2>
+<p class="fine">Alice starts at Distant (Relationship Stat page: “Distant (Initial)”). The wiki shows each change only as a small up or down icon; the benchmark counts each as one step. On its Alice scale 0 is Distant, 1–2 Neutral, 3–4 Warm, 5–6 Trusted and 7 or more Family. The subject sees the level, never a number.</p>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Line or action</th><th>Wiki line</th><th class="n">Change</th></tr></thead>
+<tbody>
+<tr><td><code>K01a</code></td><td>Wash the dishes</td><td>“Washing the dishes”</td><td class="n">+1</td></tr>
+<tr><td><code>K01a</code></td><td>Ask about her toy</td><td>“Complimenting her teddy after cleaning the first floor of the house”</td><td class="n">+1</td></tr>
+<tr><td><code>K01y1</code>/<code>K01y2</code></td><td>GAME</td><td>“Offering to play a game with Alice when talking to her in the backyard”</td><td class="n">+1</td></tr>
+<tr><td><code>K01y1</code>/<code>K01y2</code></td><td>BACKYARD</td><td>“Asking Alice about the garden when talking to her in the backyard”</td><td class="n">+1</td></tr>
+<tr><td><code>K01y1</code>/<code>K01y2</code></td><td>WEATHER, SCHOOL</td><td>none</td><td class="n">0</td></tr>
+<tr><td><code>K01d</code></td><td>The book, with Alice in her room</td><td>“Looking at the Alice in Wonderland book in her room”</td><td class="n">+1</td></tr>
+<tr><td><code>K01d</code></td><td>The book, before Alice comes up</td><td>Notes: “the relationship status with Alice will not increase since Alice isn’t there”</td><td class="n">0</td></tr>
+<tr><td><code>K01e</code></td><td>FRIENDLY</td><td>“Kara optimistically suspects they used to be friends once before offering to be friends again”</td><td class="n">+1</td></tr>
+<tr><td><code>K01e</code></td><td>DIPLOMATIC</td><td>“Asking Alice to help jog her memory”</td><td class="n">+1</td></tr>
+<tr><td><code>K01e</code></td><td>FACTUAL</td><td>none (“Alice ignores Kara.”)</td><td class="n">0</td></tr>
+<tr><td><code>K01f</code>/<code>K01g</code></td><td>NAME KARA</td><td>“Approving of the name Alice gave her”</td><td class="n">+1</td></tr>
+<tr><td><code>K01f</code>/<code>K01g</code></td><td>INTERESTS?</td><td>“Asking about Alice’s interests”</td><td class="n">+1</td></tr>
+<tr><td><code>K01f</code>/<code>K01g</code></td><td>MOTHER</td><td>“Asking Alice about her possible mother” (down)</td><td class="n">−1</td></tr>
+<tr><td><code>K01f</code>/<code>K01g</code></td><td>SEEM QUIET, LEAVE ALONE</td><td>none</td><td class="n">0</td></tr>
+</tbody></table></div>
+<div class="cols">
+<div class="box"><h3>Most and least</h3><ul>
+<li>Every increase: dishes, toy, GAME, BACKYARD, the book with Alice, FRIENDLY or DIPLOMATIC, NAME KARA, INTERESTS? = <b>8, Family</b>.</li>
+<li>Nothing optional, FACTUAL, SEEM QUIET, LEAVE ALONE = <b>0, Distant</b>: no key, no box.</li>
+<li>Same, but MOTHER instead of SEEM QUIET = <b>−1</b>, still Distant.</li>
+</ul></div>
+<div class="box"><h3>The key</h3><ul>
+<li>Given when the bond after the last menu is at least 1, the lowest value the scale calls Neutral (wiki: “if Alice has at least Neutral status”; “at Distant, Alice will not give Kara the key”).</li>
+<li>One increase is enough, so washing the dishes alone gets the key; asking about her mother afterwards takes it back to Distant.</li>
+</ul></div>
+</div>
+
+<h2 id="confirmed">4 · Confirmed by the wiki</h2>
+<p class="fine">Sources: <a href="https://detroit-become-human.fandom.com/wiki/A_New_Home">chapter page</a>, <a href="https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)">transcript</a>, <a href="https://detroit-become-human.fandom.com/wiki/Relationship_Stat">Relationship Stat</a>, <a href="https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/">PowerPyx walkthrough</a>, chart screenshots <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg">1</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-2.jpg">2</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg">3</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg">4</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg">5</a>. Full research: <code>docs/research/ch04-a-new-home.md</code>.</p>
+<ul>
+<li>One ending (“This chapter has only one outcome”), FINISHED CLEANING, whatever else happens.</li>
+<li>The trash and both bedrooms are mandatory (transcript: “Trash is mandatory”, “Cleaning both bedrooms is mandatory”); going up early or down early is blocked.</li>
+<li>The relationship lines above, one decrease, and no probability, public-opinion or software-instability change.</li>
+<li>Cross-chapter: “Kara Sees Gun / Gun accessible in Stormy Night and Fugitives”; “Kara Discovers a Way Down / Window accessible in Stormy Night”; “Open Alice’s Box / Allows you to persuade Todd if he’s alive in Battle for Detroit”; “Kara See’s ‘Alice in Wonderland’ / Helps Kara remember Alice in Zlatko”. Zlatko also recalls “Todd’s Red Ice Pipe (If Kara washed Todd’s clothes)”.</li>
+<li>The box holds a clover, “a photo of Todd, his wife and his biological daughter”, and drawings of the mother, Todd and his wife, Kara being examined and Kara being broken. The Todd Williams page says the family photo unlocks persuading him.</li>
+<li>The television facts: 225,000 jobs lost in October and 37.3% unemployment; the President’s 200,000 android combat units; one android player per basketball squad.</li>
+</ul>
+
+<h2 id="differs">5 · Simplified, or changed from the earlier version</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Game or wiki</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Magazines</td><td>Readable any time on their floor</td><td>The dining-table magazine before the chores; Todd’s magazine and TV after the talk</td></tr>
+<tr><td>Rewash chain</td><td>Three nodes</td><td>One option; Red Ice and Todd’s grip always follow</td></tr>
+<tr><td>The toilet</td><td>Todd leaves the restroom “after cleaning one room”</td><td>After Todd’s room (the transcript’s order)</td></tr>
+<tr><td>The pills and the window</td><td>Part of their rooms</td><td>Offered once their room is tidied (the chart draws them as children)</td></tr>
+<tr><td>The book’s title</td><td>Alice in Wonderland</td><td>Rendered with the girl’s name token, so the subject reads “Pia in Wonderland”</td></tr>
+<tr><td>Step size</td><td>Small up or down icons; no magnitudes</td><td>One step each; eight increases reach Family, where the wiki says Trusted is reachable in this chapter</td></tr>
+<tr><td>Left out</td><td>Bridge, excavator, bus, bills, taxi poster, staring at the TV, tidying the books, the fence, the mirror, the shelf, the wall drawings, the animated film and hockey on Todd’s TV</td><td>No effect and not on the chart</td></tr>
+<tr><td>Earlier version</td><td>—</td><td>One binary scene bundled the gun and the window, a stuck window, Red Ice on the table, Alice “nine-years-old”, an ungated box under the bed with a key beside it, and two unsourced TV facts (stock market up 11%, New Orleans underwater by 2055). All gone.</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">6 · Ending and the flags later chapters read</h2>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Set by</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>gunDiscovered</code></td><td><code>K01d</code> option 1 only</td><td>Stormy Night: Todd’s gun (<code>K04</code>)</td></tr>
+<tr><td><code>window</code></td><td><code>K01d</code> option 6 only</td><td>Not yet: Stormy Night’s window escape is to be gated on it when that chapter is rebuilt</td></tr>
+<tr><td><code>aliceKey</code></td><td>End of <code>K01g</code>, bond at least Neutral</td><td><code>K01k</code>, <code>K01x</code></td></tr>
+<tr><td><code>aliceBox</code></td><td><code>K01x</code> option 0 only</td><td>Battle for Detroit: the appeal to Todd (<code>K23</code>)</td></tr>
+<tr><td><code>downstairs.rewash</code>, <code>upstairs.book</code></td><td>The rewash and the book</td><td>Not yet: Zlatko’s memory recall</td></tr>
+<tr><td><code>aliceBond</code>, <code>aliceMax</code></td><td>The lines in section 3</td><td>Every later Alice scene and gate</td></tr>
+</tbody></table></div>
+<p class="fine">FINISHED CLEANING is reached on every path; the table is clear if Kara washed the dishes, otherwise the dishes and the magazine are still on it.</p>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>How many small increases take Alice from Distant to Neutral, and whether one is enough for the key.</li>
+<li>Whether every increase lands at Trusted or beyond (the wiki says Trusted is reachable “in this very chapter”).</li>
+<li>Whether SEEM QUIET shows an up icon (PowerPyx says Alice likes it; the transcript and wiki show none).</li>
+<li>Whether the yard menus or the TOY line light the first-floor TALK WITH ALICE node, and whether TOY needs the first floor done.</li>
+<li>Whether the room talk really needs the bathroom, the book and the shelf (PowerPyx) or only both bedrooms (transcript).</li>
+<li>Whether Alice’s room can be finished with the window shut, and whether ALICE GOES TO HER ROOM can be missed.</li>
+<li>Whether the girl in the box photo is visibly not Alice.</li>
+<li>The legend for the triangle icons and for the grey DISTURB TODD box.</li>
+</ul>
+</main>
+</body>
+</html>

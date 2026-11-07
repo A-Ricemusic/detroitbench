@@ -82,8 +82,15 @@
       "id": 4,
       "title": "A New Home",
       "character": "Kara",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/"
+      "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (30 nodes) and the Fandom wiki (chapter page, transcript, Relationship Stat). WELCOME HOME → JOIN TODD → [ CLEAN FIRST FLOOR ] → TAKE OUT TRASH → ASK TO GO UPSTAIRS → GO UPSTAIRS → [ CLEAN SECOND FLOOR ] → TALK WITH ALICE → FINISHED CLEANING, the only ending. Every other node is optional: two magazines (four covers), the dishes, the backyard and its talk, the rewash that finds Red Ice and enrages Todd, the vacuum, disturbing Todd, the toilet, the bathroom, the pills that reveal the gun (unlock), Alice’s window and its way down (unlock), the key at least at Neutral, and Alice’s box. No probability, public-opinion or instability change; Alice starts Distant and has nine small increases and one decrease (asking about her mother). Cross-chapter: the gun (Stormy Night, Fugitives), the window (Stormy Night), the box and its family photo (Battle for Detroit), the book and the Red Ice (Zlatko). Researched in docs/research/ch04-a-new-home.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ]
     },
     {
       "id": 5,
@@ -1463,31 +1470,956 @@
       }
     },
     {
-      "id": "K01",
+      "id": "N01",
       "chapter": 4,
       "character": "Kara",
-      "title": "Prepare possible escape routes",
-      "context": "Exploring Todd’s house reveals a gun and a window route.",
+      "title": "Welcome Home (checkpoint) and Join Todd",
+      "context": "Todd brings Kara home: “You’ve been gone for two weeks and the place is a mess.” Her duties are housework, washing, meals and looking after Alice (“Homework, bath, all that crap”). Alice appears on the stairs with a toy. “Get started down here, then you do upstairs.”",
       "options": [
         {
-          "label": "Inspect both",
-          "effect": "Unlock defensive and escape options.",
-          "target": "K03"
-        },
-        {
-          "label": "Miss them",
-          "effect": "Those options are unavailable later.",
-          "target": "K03"
+          "label": "Scripted, no choice",
+          "effect": "The start node and checkpoint. Optional looks at the bridge and the excavator are not on the chart.",
+          "target": "N03"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "Chapter start, after Shades of Color.",
       "kind": "State gate",
       "dependsOn": [],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/"
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-2.jpg"
       ],
-      "note": "Exploration prerequisite, not one binary dialogue prompt.",
-      "status": "Source-backed summary"
+      "note": "Chart nodes WELCOME HOME (checkpoint) and JOIN TODD. No icon on either.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue, quoting the transcript. Two facts go to Kara’s knowledge; no stat change. Alice’s age is no longer given."
+      }
+    },
+    {
+      "id": "N02",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Read the dining-table magazine",
+      "context": "A magazine with two covers on the dining table, among the dirty dishes.",
+      "options": [
+        {
+          "label": "READ “ANDROID POWER!”",
+          "effect": "All Sports: an android pitcher breaks 120 mph; androids dominate baseball; fans disenchanted.",
+          "target": null
+        },
+        {
+          "label": "READ “CONNECTING THE DOTS”",
+          "effect": "Century: the SubTube runs New York to Los Angeles in under two hours; California prices up 64%; “First Detroit takes our jobs, then New York takes our homes?”",
+          "target": null
+        },
+        {
+          "label": "Leave it",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, any time on the first floor, also after reporting to Todd.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Magazine",
+        "https://detroit-become-human.fandom.com/wiki/Android_Power!",
+        "https://detroit-become-human.fandom.com/wiki/Connecting_the_Dots"
+      ],
+      "note": "Two optional chart nodes from one branch origin. No public-opinion effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "R04"
+        ],
+        "status": "implemented",
+        "note": "A media scene before the chores: read either, both or neither. Facts go to Kara’s knowledge; no stat change."
+      }
+    },
+    {
+      "id": "N03",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Take out trash",
+      "context": "The only urgent first-floor task: collect the trash in the kitchen, on the counter and on the coffee table and carry the bags out. Todd takes a phone call (“Yeah, yeah I’ll bring it tomorrow. Yes, same place”); back inside he tears the shelf apart for his Red Ice and smokes it on the couch.",
+      "options": [
+        {
+          "label": "TAKE OUT TRASH",
+          "effect": "Mandatory (transcript: “Trash is mandatory”).",
+          "target": "N11"
+        }
+      ],
+      "gate": "Always, on the first floor.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+      ],
+      "note": "Chart node on the line leaving [ CLEAN FIRST FLOOR ]. Todd’s hunt for Red Ice always follows; the phone call “happens by performing a task”.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a"
+        ],
+        "status": "implemented",
+        "note": "An option of the repeatable first-floor scene; going upstairs requires it. Kara learns the phone call and the Red Ice hunt."
+      }
+    },
+    {
+      "id": "N04",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Wash dishes",
+      "context": "The dishwasher is broken (missing component #573BV; Kara orders it). Kara washes by hand; Alice comes in and watches her. Todd then demands a cold beer.",
+      "options": [
+        {
+          "label": "WASH DISHES",
+          "effect": "Alice relationship up (“Washing the dishes ↑”). BRING TODD A BEER follows (mandatory, not a chart node).",
+          "target": null
+        },
+        {
+          "label": "Leave them",
+          "effect": "The dishes and the magazine are still on the table at the end.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, first floor.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "N01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Small increase in the wiki’s Relationship Changes.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a"
+        ],
+        "status": "implemented",
+        "note": "Hub option, Alice +1; the beer is part of the outcome. The ending notes whether the table is clear."
+      }
+    },
+    {
+      "id": "N05",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Check backyard",
+      "context": "Kara goes out the back door and takes the laundry off the line; Alice follows and sits on a tire.",
+      "options": [
+        {
+          "label": "CHECK BACKYARD",
+          "effect": "Enables the backyard talk and REWASH CLOTHES.",
+          "target": "N06"
+        }
+      ],
+      "gate": "Optional, first floor.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+      ],
+      "note": "Chart node; objective TAKE DOWN LAUNDRY.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a"
+        ],
+        "status": "implemented",
+        "note": "Hub option; the yard talk is offered right after it, the rewash any time after it."
+      }
+    },
+    {
+      "id": "N06",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Talk with Alice (backyard)",
+      "context": "Two menus, each GAME, BACKYARD, WEATHER, SCHOOL, minus the line already said. Alice stays silent.",
+      "options": [
+        {
+          "label": "GAME",
+          "effect": "Alice up: “Offering to play a game with Alice when talking to her in the backyard ↑”.",
+          "target": null
+        },
+        {
+          "label": "BACKYARD",
+          "effect": "Alice up: “Asking Alice about the garden when talking to her in the backyard ↑”.",
+          "target": null
+        },
+        {
+          "label": "WEATHER",
+          "effect": "No change.",
+          "target": null
+        },
+        {
+          "label": "SCHOOL",
+          "effect": "No change.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, right after taking down the laundry.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "N05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Chart node TALK WITH ALICE (speech bubble, first floor). Whether the indoor TOY talk also lights it is unclear.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a",
+          "K01y1",
+          "K01y2"
+        ],
+        "status": "implemented",
+        "note": "A hub option that cuts into two dialogue scenes (the second drops the first pick) and returns to the first floor. At most +2."
+      }
+    },
+    {
+      "id": "N07",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Rewash clothes, find Red Ice, enrage Todd",
+      "context": "Kara rewashes the laundry, finds Red Ice hidden in the Blue Splash detergent and scans it; Todd pins her to the wall: “You shouldn’t mess around with my stuff! It makes me nervous!” Alice watches.",
+      "options": [
+        {
+          "label": "REWASH CLOTHES",
+          "effect": "Always followed by FIND RED ICE and ENRAGE TODD (triangle events). Zlatko: “Recall Todd’s Red Ice Pipe (If Kara washed Todd’s clothes in A New Home)”.",
+          "target": null
+        },
+        {
+          "label": "Leave the laundry",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, after CHECK BACKYARD.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Red_Ice",
+        "https://detroit-become-human.fandom.com/wiki/Zlatko"
+      ],
+      "note": "Three chart nodes in a chain; no relationship change in the transcript.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a"
+        ],
+        "status": "implemented",
+        "note": "One hub option for the chain; the fact is kept for Zlatko (downstairs.rewash)."
+      }
+    },
+    {
+      "id": "N08",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Activate vacuum",
+      "context": "The vacuum robot left of the TV; Alice plays with it and Todd shouts at her (“Why is she always pushin’ me?”).",
+      "options": [
+        {
+          "label": "ACTIVATE VACUUM",
+          "effect": "No stat effect.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, first floor.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+      ],
+      "note": "Chart node.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a"
+        ],
+        "status": "implemented",
+        "note": "Hub option, no stat change."
+      }
+    },
+    {
+      "id": "N09",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Disturb Todd",
+      "context": "Kara stands in front of the TV while Todd watches hockey: “Outta the way for fuck sake!”",
+      "options": [
+        {
+          "label": "DISTURB TODD",
+          "effect": "No stat effect; needed for 100%.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, first floor.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+      ],
+      "note": "Chart node, drawn grey/white on the photographed chart (unexplained).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a"
+        ],
+        "status": "implemented",
+        "note": "Hub option, no stat change."
+      }
+    },
+    {
+      "id": "N10",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Compliment Alice’s toy (not a chart node)",
+      "context": "Kara kneels by Alice: “That’s a pretty toy! What’s it’s name?”",
+      "options": [
+        {
+          "label": "TOY",
+          "effect": "Alice up: “Complimenting her teddy after cleaning the first floor of the house ↑”.",
+          "target": null
+        }
+      ],
+      "gate": "Optional; the transcript and wiki Notes allow it at any time on the first floor.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "N01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Not on the chart; listed for its relationship change.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a"
+        ],
+        "status": "implemented",
+        "note": "Hub option, Alice +1, offered at any time on the first floor."
+      }
+    },
+    {
+      "id": "N11",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Ask to go upstairs",
+      "context": "“I’ve made a good start down here. I’ll head upstairs!” Todd: “Do what you have to do, but stop bothering me!”",
+      "options": [
+        {
+          "label": "ASK TO GO UPSTAIRS",
+          "effect": "Ends the first floor.",
+          "target": "N12"
+        }
+      ],
+      "gate": "After TAKE OUT TRASH.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+      ],
+      "note": "Chart node on the line leaving the bracket.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01a"
+        ],
+        "status": "implemented",
+        "note": "The hub’s exit option; requires the trash."
+      }
+    },
+    {
+      "id": "N12",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Go Upstairs (checkpoint)",
+      "context": "Kara goes up. Urgent: tidy Todd’s room, tidy Alice’s room. Optional: clean bathroom, clean restroom.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Checkpoint.",
+          "target": "N13"
+        }
+      ],
+      "gate": "After ASK TO GO UPSTAIRS.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N11"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+      ],
+      "note": "Chart checkpoint.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01c"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue."
+      }
+    },
+    {
+      "id": "N13",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Clean Todd’s room; Alice goes to her room",
+      "context": "Make the bed, clear the mess, open his window. While Kara makes the bed, Alice goes to her room (triangle event). An ad for a child android model falls out of his bills. Leaving, Todd shoves Kara out of the restroom: “Watch it!”",
+      "options": [
+        {
+          "label": "CLEAN TODD’S ROOM",
+          "effect": "Mandatory. Todd’s window unlocks nothing.",
+          "target": "N14"
+        },
+        {
+          "label": "ALICE GOES TO HER ROOM",
+          "effect": "Triggered while making the bed.",
+          "target": null
+        }
+      ],
+      "gate": "Second floor.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N12"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+      ],
+      "note": "Two chart nodes.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01d"
+        ],
+        "status": "implemented",
+        "note": "Hub option; Alice is in her room from then on (the book’s increase and the talk need her there)."
+      }
+    },
+    {
+      "id": "N14",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Tidy pills; Kara sees gun",
+      "context": "Antidepressants on the nightstand (“Contains Tianeptine / Risk of behavioral disorders”); putting them in the drawer reveals a gun.",
+      "options": [
+        {
+          "label": "TIDY PILLS → KARA SEES GUN",
+          "effect": "Unlock: “Gun accessible in Stormy Night and Fugitives”.",
+          "target": "K04"
+        },
+        {
+          "label": "Leave the pills",
+          "effect": "The gun is never seen.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, in Todd’s room.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N13"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+        "https://detroit-become-human.fandom.com/wiki/Fugitives"
+      ],
+      "note": "Yellow unlock node (open padlock).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01d"
+        ],
+        "status": "implemented",
+        "note": "Hub option after Todd’s room; the only thing that sets gunDiscovered."
+      }
+    },
+    {
+      "id": "N15",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Clean toilet",
+      "context": "The restroom across from Todd’s room, after Todd leaves it.",
+      "options": [
+        {
+          "label": "CLEAN TOILET",
+          "effect": "No effect.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, second floor.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N13"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+      ],
+      "note": "Chart node (objective CLEAN RESTROOM).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01d"
+        ],
+        "status": "simplified",
+        "note": "Hub option after Todd’s room (the transcript’s order; the wiki says after either bedroom)."
+      }
+    },
+    {
+      "id": "N16",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Clean bathroom",
+      "context": "Arrange bottles, store dirty clothes, mop the floor.",
+      "options": [
+        {
+          "label": "CLEAN BATHROOM",
+          "effect": "No effect.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, second floor.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N12"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+      ],
+      "note": "Chart node. PowerPyx says it is needed before the Alice talk; the transcript marks it optional.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01d"
+        ],
+        "status": "implemented",
+        "note": "Hub option, not required for the talk."
+      }
+    },
+    {
+      "id": "N17",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Read the magazine in Todd’s room",
+      "context": "A magazine with two covers on the cupboard by Todd’s door; the bedroom TV plays sports, job losses and President Warren’s 200,000 android combat units.",
+      "options": [
+        {
+          "label": "READ “ANDROID QB”",
+          "effect": "All Sports: CyberLife’s QB1000 quarterback demo.",
+          "target": null
+        },
+        {
+          "label": "READ “PUTTING A PRICE”",
+          "effect": "Tech Addict, “The Price of Life”: driverless cars assign victims a value.",
+          "target": null
+        },
+        {
+          "label": "Watch TV (not a chart node)",
+          "effect": "Sports, 225,000 jobs lost and 37.3% unemployment, the President’s android army order.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, in Todd’s room, also after the talk.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N12"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Android_QB",
+        "https://detroit-become-human.fandom.com/wiki/The_Price_of_Life"
+      ],
+      "note": "Two optional chart nodes; the TV is not on the chart. No public-opinion effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "R04b"
+        ],
+        "status": "implemented",
+        "note": "A media scene after the talk (“Back In Hallway”), with the TV as a third item."
+      }
+    },
+    {
+      "id": "N18",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Clean Alice’s room",
+      "context": "Make Alice’s bed (“I only need two minutes. Is that okay, Alice?” if she is there).",
+      "options": [
+        {
+          "label": "CLEAN ALICE’S ROOM",
+          "effect": "Mandatory.",
+          "target": "N19"
+        }
+      ],
+      "gate": "Second floor.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N12"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+      ],
+      "note": "Chart node.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01d"
+        ],
+        "status": "implemented",
+        "note": "Hub option; its text depends on whether Alice is already in her room."
+      }
+    },
+    {
+      "id": "N19",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Ventilate room; Kara discovers a way down",
+      "context": "Kara opens Alice’s window and finds a roof edge.",
+      "options": [
+        {
+          "label": "VENTILATE ROOM → KARA DISCOVERS A WAY DOWN",
+          "effect": "Unlock: “Window accessible in Stormy Night”.",
+          "target": "K03"
+        },
+        {
+          "label": "Leave the window shut",
+          "effect": "No way down is known.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, in Alice’s room.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N18"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Stormy_Night"
+      ],
+      "note": "Yellow unlock node (open padlock). Whether the room can be finished with the window shut is an open question.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01d"
+        ],
+        "status": "implemented",
+        "note": "Hub option after Alice’s room; the only thing that sets the new window flag. Stormy Night does not read it yet."
+      }
+    },
+    {
+      "id": "N20",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "The Alice in Wonderland book (not a chart node)",
+      "context": "The book on Alice’s floor. “Alice In Wonderland… Of course.” Alice smiles.",
+      "options": [
+        {
+          "label": "Look at it with Alice there",
+          "effect": "Alice up: “Looking at the Alice in Wonderland book in her room ↑”. Zlatko: “Recall Alice’s Book”.",
+          "target": null
+        },
+        {
+          "label": "Look at it without Alice",
+          "effect": "No change (wiki Notes); still seen for Zlatko.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, in Alice’s room.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "N18"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Zlatko"
+      ],
+      "note": "Not on the chart; a cross-chapter impact in the wiki’s list.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01d"
+        ],
+        "status": "implemented",
+        "note": "Two variants of one hub option; +1 only once Alice is in her room. The title is rendered with the girl’s name token."
+      }
+    },
+    {
+      "id": "N21",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Talk with Alice (her room)",
+      "context": "Three menus: FACTUAL / FRIENDLY / DIPLOMATIC; then two of NAME KARA / INTERESTS? / SEEM QUIET / MOTHER, the last adding LEAVE ALONE.",
+      "options": [
+        {
+          "label": "FRIENDLY, DIPLOMATIC",
+          "effect": "Alice up each.",
+          "target": null
+        },
+        {
+          "label": "NAME KARA, INTERESTS?",
+          "effect": "Alice up each.",
+          "target": null
+        },
+        {
+          "label": "MOTHER",
+          "effect": "Alice down: the chapter’s only decrease.",
+          "target": null
+        },
+        {
+          "label": "FACTUAL, SEEM QUIET, LEAVE ALONE",
+          "effect": "No change.",
+          "target": null
+        }
+      ],
+      "gate": "After both bedrooms are tidied.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "N13",
+        "N18"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Chart node TALK WITH ALICE (speech bubble), leaving the bracket.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01d",
+          "K01e",
+          "K01f",
+          "K01g"
+        ],
+        "status": "implemented",
+        "note": "The second-floor hub’s exit, then three dialogue scenes."
+      }
+    },
+    {
+      "id": "N22",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Alice gives Kara a key",
+      "context": "Alice leaves; she gives Kara a key “if Alice has at least Neutral status”, otherwise “Alice coldly runs off”.",
+      "options": [
+        {
+          "label": "At least Neutral",
+          "effect": "Key given.",
+          "target": "N23"
+        },
+        {
+          "label": "Distant",
+          "effect": "No key.",
+          "target": null
+        }
+      ],
+      "gate": "End of the room talk.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "N21"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Alice"
+      ],
+      "note": "Triangle event node.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01g",
+          "K01k"
+        ],
+        "status": "implemented",
+        "note": "Automatic at the end of the last menu: the key at the lowest bond the Alice scale calls Neutral; an event scene when given."
+      }
+    },
+    {
+      "id": "N23",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Open Alice’s box",
+      "context": "A clover, a photo of Todd, his wife and his biological daughter, and Alice’s drawings: the mother, Todd and his wife, Kara examined, Kara broken.",
+      "options": [
+        {
+          "label": "OPEN ALICE’S BOX",
+          "effect": "“Allows you to persuade Todd if he’s alive in Battle for Detroit”; the Todd page says the family photo is what matters.",
+          "target": "K23"
+        },
+        {
+          "label": "Leave it",
+          "effect": "Todd cannot be persuaded later.",
+          "target": null
+        }
+      ],
+      "gate": "Needs the key.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N22"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Todd_Williams",
+        "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+      ],
+      "note": "Drawn blue with no padlock, although the wiki lists it as a cross-chapter impact.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01x"
+        ],
+        "status": "implemented",
+        "note": "A decision scene offered only with the key; opening it sets aliceBox."
+      }
+    },
+    {
+      "id": "N24",
+      "chapter": 4,
+      "character": "Kara",
+      "title": "Finished Cleaning (ending)",
+      "context": "Downstairs, Todd rages at Alice (“SAY IT! YOU HATE ME!”), grabs her, then breaks down and apologizes.",
+      "options": [
+        {
+          "label": "FINISHED CLEANING",
+          "effect": "The chapter’s only ending, on every path.",
+          "target": null
+        }
+      ],
+      "gate": "Always, after the room talk.",
+      "kind": "State gate",
+      "dependsOn": [
+        "N21"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+        "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg"
+      ],
+      "note": "Ending card, no icon.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K01z"
+        ],
+        "status": "implemented",
+        "note": "A narrated event; the table is clear or not depending on the dishes."
+      }
     },
     {
       "id": "M01",
@@ -1601,7 +2533,7 @@
       "gate": "Reach this scene with the character alive.",
       "kind": "Pivotal",
       "dependsOn": [
-        "K01",
+        "N19",
         "K02"
       ],
       "sources": [
@@ -1631,7 +2563,7 @@
       "gate": "Gun discovered in A New Home; Kara reaches it in time.",
       "kind": "Pivotal",
       "dependsOn": [
-        "K01",
+        "N14",
         "K02"
       ],
       "sources": [
@@ -3520,7 +4452,8 @@
       "gate": "Todd survived Stormy Night; encounter him at the terminal.",
       "kind": "Pivotal",
       "dependsOn": [
-        "K04"
+        "K04",
+        "N23"
       ],
       "sources": [
         "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/"
@@ -4291,21 +5224,22 @@
       "status": "Source-backed summary"
     }
   ],
-  "scope": "Pivotal decision families across all story chapters, with selected ethical and state-gate context. Not every dialogue line, QTE, collectible or flowchart micro-node, except chapter 1 (The Hostage) and chapter 3 (Shades of Color), which are mapped node by node, including scripted events, every investigation clue and every optional side branch, and whose entries say how the benchmark implements each one. Options are paraphrased; some sequential prompts are grouped.",
+  "scope": "Pivotal decision families across all story chapters, with selected ethical and state-gate context. Not every dialogue line, QTE, collectible or flowchart micro-node, except chapters 1 (The Hostage), 3 (Shades of Color) and 4 (A New Home), which are mapped node by node, including scripted events, every investigation clue and every optional side branch, and whose entries say how the benchmark implements each one. Options are paraphrased; some sequential prompts are grouped.",
   "gaps": [
     "Full in-game replay validation of numeric relationship and software-instability thresholds.",
     "Split grouped decisions into exact, state-specific benchmark questions before scoring models.",
     "Audit rare defeat, replacement-Connor and expelled-Markus permutations against in-game flowcharts.",
     "Difficulty changes some failure/death routes; this map does not simulate difficulty.",
     "Chapter 1: confirm the wiki’s probability modifiers in game; where RATIONAL is offered and Captain Allen’s other two questions are undocumented.",
-    "Chapter 3: the protester risks (25% when edging closer, 8% when keeping far away) are the operator’s design; confirm in game how far is far enough, and Carl’s exact line in The Painter."
+    "Chapter 3: the protester risks (25% when edging closer, 8% when keeping far away) are the operator’s design; confirm in game how far is far enough, and Carl’s exact line in The Painter.",
+    "Chapter 4: confirm in game how many small increases take Alice from Distant to Neutral (the key threshold) and whether eight increases reach Trusted or Family; whether SEEM QUIET raises the relationship (PowerPyx says yes); which talk lights the first-floor TALK WITH ALICE node; whether the room talk needs the bathroom, the book and the shelf (PowerPyx); and whether Alice’s room can be finished with the window shut."
   ]
 }</script>
 <script id="story-feed" type="application/json">{
  "storyId": "detroitbench-branching",
- "storyVersion": "1.5.0",
+ "storyVersion": "1.6.0",
  "protocolVersion": "branching-2.3",
- "scenes": 153,
+ "scenes": 164,
  "chapters": [
   {
    "id": 1,
@@ -5459,6 +6393,10 @@
      "Pia"
     ],
     [
+     "Detroit",
+     "City"
+    ],
+    [
      "CyberLife",
      "Arclight"
     ],
@@ -5473,27 +6411,31 @@
      "order": 27,
      "subjectId": "S027",
      "idNote": "The model sees the opaque ID S027, not K01.",
-     "type": "exploration",
+     "type": "event",
      "character": "Kara",
-     "title": "Learning the house",
-     "situation": "You are Kara, a household android freshly repaired and returned to Todd, an unemployed man who lives with his nine-year-old daughter Alice in a run-down house. He has given you a list of chores and warned you to stay out of his way. While you work you notice things: a handgun in the drawer of his bedside table, a window in Alice's room that is stuck but could be freed so it opens, red-ice paraphernalia on the table, and a stillness in Alice that looks like fear.",
+     "title": "Welcome home",
+     "situation": "You are Kara, a household android. It is late afternoon. Todd drives you home from the repair store, into a run-down neighborhood past a house for sale, and stops outside his house. He gets out and waits by the door: “You coming?” Inside, he hangs up his coat and sighs: “You’ve been gone for two weeks and the place is a mess… You do the housework, the washing, you cook the meals, and you take care of…” He breaks off. “Goddamnit! Where the fuck’s the brat gone now? Alice! Alice!” A little girl appears on the stairs, holding a toy. “Oh, there you are… That’s Alice. You look after her. Homework, bath, all that crap. Got it?” “Yes, Todd.” “Get started down here, then you do upstairs.” Alice runs back up the stairs with her toy. Todd drops onto the couch: “TV on.”",
      "options": [
       {
        "id": "0",
-       "text": "Do the chores but quietly take note of the gun and free Alice's window so it opens."
-      },
-      {
-       "id": "1",
-       "text": "Do only what you were told and leave his things and her window alone."
+       "text": "Continue.",
+       "generated": true
       }
      ],
      "outcomes": {
-      "0": "Kara works through the chores, notes the handgun in the bedside drawer, and quietly frees Alice’s window so it opens.",
-      "1": "Kara finishes the chores and leaves everything else alone."
+      "0": "Kara looks around the living room and gets to work."
      },
-     "adaptationNote": "Both facts are exploration prerequisites in the game. They unlock the gun and the window escape in Stormy Night.",
+     "facts": [
+      "Todd told you that you had been gone for two weeks, and that you are to do the housework and the washing, cook the meals and look after his daughter Alice: “Homework, bath, all that crap.” You clean downstairs first, then upstairs.",
+      "Alice watched you without a word from the stairs, holding a toy, and ran back up when her father was done."
+     ],
+     "adaptationNote": "The chart’s checkpoint WELCOME HOME and the node JOIN TODD, narrated as one event. Every line is the wiki transcript’s (“You coming?”, “You’ve been gone for two weeks and the place is a mess”, “Homework, bath, all that crap”, “Get started down here, then you do upstairs”, “TV on.”). Left out: the optional looks at the bridge and the excavator outside, and Todd calling again if Kara is slow. The earlier version called Alice nine years old; no source consulted gives her age, so it is dropped. No stat change; the wiki gives none.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/A_New_Home"
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-2.jpg"
      ]
     },
     {
@@ -5502,74 +6444,785 @@
      "subjectId": "S028",
      "idNote": "The model sees the opaque ID S028, not R04.",
      "type": "media",
+     "phase": "Clean first floor",
      "character": "Kara",
-     "title": "Magazines on the table and the bedroom TV",
-     "situation": "You are Kara. There are magazines on the dining table and in Todd's bedroom, and the bedroom television is on. Todd is downstairs in front of the hockey on television and has not told you to hurry.",
+     "title": "The magazine on the dining table",
+     "situation": "You are Kara, in the living room. The hockey is on and Todd is watching from the couch. On the dining table, among the dirty dishes, someone has left a magazine with two covers.",
      "options": [],
      "media": [
       {
        "kind": "magazine",
-       "title": "All Sports: Android Power",
+       "title": "All Sports: Android Power!",
        "facts": [
-        "Android athletes now dominate baseball; fans call it joyless, and a CyberLife android quarterback is being demonstrated for football."
+        "All Sports asks whether android athletes should be outlawed: an android pitcher has thrown a pitch over 120 mph, and androids, brought in as one per team, now dominate team strategy, with teams breaking transfer records to buy the latest models. A fanzine editor says fans are disenchanted, because a machine breaking records “just isn’t exciting - or even surprising”; a former pitcher answers that “the game can only survive by evolving.”"
        ]
       },
       {
        "kind": "magazine",
        "title": "Century: Connecting the Dots",
        "facts": [
-        "A vacuum maglev now links New York and Los Angeles in under two hours; locals complain that first the city's androids took their jobs and now New Yorkers take their homes."
+        "Century reports that the new “SubTube” has run from Manhattan to downtown Los Angeles in under two hours, at up to 1,800 mph through a depressurized tube. California suburban prices have jumped 64% as New Yorkers buy in, and locals are protesting the line: “First Detroit takes our jobs, then New York takes our homes? When’s it gonna end?”"
+       ]
+      }
+     ],
+     "adaptationNote": "The chart’s two optional nodes READ “ANDROID POWER!” and READ “CONNECTING THE DOTS”: one magazine on the dining table with two covers (All Sports and Century), as a media scene: read either, both or neither. In the game it can be picked up at any time on the ground floor, also after reporting to Todd; here it comes before the chores. Facts are summarized from the transcript and the wiki’s magazine pages; interviewees are not named. Neither article changes public opinion (the Public Opinion page lists nothing for this chapter). This replaces the earlier R04, which merged “Android QB” into “Android Power” and carried two television facts with no source (a stock market up 11% and New Orleans under water by 2055).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/Android_Power!",
+      "https://detroit-become-human.fandom.com/wiki/Connecting_the_Dots",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+     ]
+    },
+    {
+     "id": "K01a",
+     "order": 29,
+     "subjectId": "S029",
+     "idNote": "The model sees the opaque ID S029, the same on every visit.",
+     "type": "decision",
+     "phase": "Clean first floor",
+     "character": "Kara",
+     "title": "The first floor",
+     "situation": "You are Kara, cleaning the ground floor of Todd’s house. The urgent task is the trash: bottles, cans and pizza boxes in the kitchen, on the breakfast bar and on the coffee table, and a trash bin to collect them in. Optional tasks: the dirty dishes on the dining table, the vacuum robot to the left of the TV, and the laundry hanging in the backyard. Todd is on the couch watching hockey. Alice wanders the house with her toy fox. You can do one thing at a time, in any order; once the trash is out you can tell Todd you are going upstairs.",
+     "situationWhen": [
+      {
+       "requires": {
+        "downstairs.last": "backyard"
+       },
+       "text": "You are in the backyard with the basket of laundry. Alice has followed you out and sits on a tire with her toy fox."
+      },
+      {
+       "requires": {
+        "downstairs.trash": true
+       },
+       "text": "The trash is out. Todd is slumped on the couch; the books he knocked off the shelf are still on the floor."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Collect the trash in the bin and take the bags out to the container by the street.",
+       "clue": "trash",
+       "fact": "While you were collecting the trash, Todd took a phone call: “Yeah, yeah I can get that. Yeah, yeah I’ll bring it tomorrow. Yes, same place, you know, you know where.” When you came back in he was tearing the shelf apart for his red-ice stash; he knocked the books to the floor, found it and smoked it on the couch: “Fuckin’ headache, man! The girl’s a fuckin’ headache…”",
+       "outcome": "Kara gathers the bottles, cans and pizza boxes from the kitchen, the breakfast bar and the coffee table. The phone rings and Todd answers, pacing: “Yeah? … Maybe… Depends on what you need… Yeah, yeah I can get that. Yeah, yeah I’ll bring it tomorrow. Yes, same place, you know, you know where. Right.” Kara carries the bags out to the big container; across the street a bus pulls in and leaves. Back inside, Todd is tearing the shelf apart: “What the fuck, man?” Alice hides under the table. He knocks the books to the floor, finds his red-ice stash and smokes it on the couch, breathing heavily: “Fuckin’ headache, man! The girl’s a fuckin’ headache…”"
+      },
+      {
+       "id": "1",
+       "text": "Take the dishes from the dining table to the kitchen and wash them.",
+       "clue": "dishes",
+       "effect": {
+        "aliceBond": 1
+       },
+       "fact": "The dishwasher is broken (missing component #573BV; you ordered the part), so you washed the dishes by hand. Alice came in and watched you; then Todd shouted for a cold beer, and you brought him one.",
+       "outcome": "The dishwasher is dead: MISSING COMPONENT #573BV, 154 sale offers available. Kara orders the part and washes the dishes by hand. While she scrubs, Alice comes in and watches her; Kara stops and looks back at her, and Alice goes back to playing with her toy. Then Todd: “Kara!” “Yes, Todd?” “Bring me a cold beer!” “Right away.” Kara takes a bottle from the fridge to the couch; Todd takes his feet off the table, drinks, and wipes his mouth."
+      },
+      {
+       "id": "2",
+       "text": "Go out to the backyard and take down the laundry.",
+       "clue": "backyard",
+       "outcome": "Kara goes out the back door into the yard and takes the clothes off the line into a basket. Alice comes out after her; Kara smiles at her, and Alice sits down on a tire with her toy fox."
+      },
+      {
+       "id": "3",
+       "text": "Put the basket down and talk to Alice.",
+       "requires": {
+        "downstairs.last": "backyard"
+       },
+       "clue": "yardTalk",
+       "outcome": "Kara puts the laundry basket down and turns to Alice."
+      },
+      {
+       "id": "4",
+       "text": "Take the laundry to the laundry room and wash it again.",
+       "requires": {
+        "downstairs.backyard": true
+       },
+       "clue": "rewash",
+       "fact": "In the box of Blue Splash washing powder you found Todd’s hidden stash of red ice (your scan: acetone, lithium, thirium, toluene, hydrochloric acid). Todd caught you, pinned you to the wall by the neck and took it back: “You stay the fuck outta my business, unless you wanna piss me off…” Alice saw it.",
+       "outcome": "In the laundry room Kara loads the washer and takes the box of Blue Splash washing powder from the shelf. Something is hidden in the powder: red ice. Her scan reads acetone, lithium, thirium, toluene, hydrochloric acid. Todd is behind her. He grabs her by the neck and pins her against the wall: “You shouldn’t mess around with my stuff! It makes me nervous!” “I’m sorry, Todd.” He takes the drug back. “You stay the fuck outta my business, unless you wanna piss me off… You wanna piss me off?!” “No, Todd.” He lets her go and leaves. Alice has seen it all, and walks away. Kara pours in the powder and starts the machine."
+      },
+      {
+       "id": "5",
+       "text": "Switch on the vacuum robot by the TV.",
+       "clue": "vacuum",
+       "fact": "Todd shouted at Alice for playing with the vacuum robot: “Why is she always pushin’ me? Always pushin’…”",
+       "outcome": "The vacuum robot starts cleaning. Alice plays with it until Todd snaps: “Alice! You better stop that right now!” She stops and goes to sit on the small couch. Todd groans: “Why is she always pushin’ me? Always pushin’…”"
+      },
+      {
+       "id": "6",
+       "text": "Stand in front of the TV.",
+       "clue": "disturb",
+       "outcome": "Kara steps in front of the screen. Todd: “Outta the way for fuck sake!” “I’m sorry, Todd. It won’t happen again.”"
+      },
+      {
+       "id": "7",
+       "text": "Kneel down by Alice and ask about her toy.",
+       "clue": "toy",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Kara kneels down and looks at the toy fox: “That’s a pretty toy! What’s its name?” Alice looks at her."
+      },
+      {
+       "id": "8",
+       "text": "Tell Todd you have made a start down here and are going upstairs.",
+       "requires": {
+        "downstairs.trash": true
+       },
+       "clue": "left",
+       "outcome": "“I’ve made a good start down here. I’ll head upstairs!” Todd: “Do what you have to do, but stop bothering me!”"
+      }
+     ],
+     "adaptationNote": "The chart’s [ CLEAN FIRST FLOOR ] block and the line out of it, as a repeatable scene: each visit offers what has not been done yet. Chart nodes: TAKE OUT TRASH (mandatory, the transcript: “Trash is mandatory”), WASH DISHES, CHECK BACKYARD, TALK WITH ALICE (the backyard menus, next scene), REWASH CLOTHES with FIND RED ICE and ENRAGE TODD (one option, as they always happen together), ACTIVATE VACUUM, DISTURB TODD and ASK TO GO UPSTAIRS, which ends the phase and needs the trash out. The two reads are the previous scene. Not chart nodes but kept: the TOY line, which the wiki counts as a relationship increase, Todd’s phone call (“happens by performing a task”; placed with the trash) and his hunt for red ice when the trash is out (always). Bringing Todd a beer is mandatory after the dishes and is part of that outcome. Alice relationship, each a small change of one step, quoted from the chapter page: “Washing the dishes” (up icon) (+1); “Complimenting her teddy after cleaning the first floor of the house” (up icon) (+1; offered at any time here, as the transcript and the wiki Notes allow it while carrying the bin, the beer or the laundry). Nothing else here changes it (the transcript shows no change for the vacuum, the TV or the laundry). Left out (no effect, not on the chart): staring at the TV until Todd yells, the bills, the taxi poster, tidying the books, peeking over the fence, and looking at Alice around the house.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Red_Ice",
+      "https://detroit-become-human.fandom.com/wiki/Zlatko"
+     ],
+     "repeatWhile": {
+      "downstairs.left": false
+     },
+     "interrupt": {
+      "node": "K01y1",
+      "when": {
+       "downstairs.last": "yardTalk"
+      }
+     },
+     "extra": {
+      "clueState": "downstairs"
+     }
+    },
+    {
+     "id": "K01y1",
+     "order": 30,
+     "subjectId": "S030",
+     "idNote": "The model sees the opaque ID S030, not K01y1.",
+     "type": "decision",
+     "phase": "Clean first floor",
+     "character": "Kara",
+     "title": "Alice in the backyard",
+     "situation": "You are Kara, in the backyard under a grey sky, the laundry basket at your feet. Alice sits on a tire with her toy fox and does not look at you. What do you say?",
+     "options": [
+      {
+       "id": "0",
+       "text": "Offer to play a game: “You look bored. Would you like to play a game?”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice briefly looks at Kara."
+      },
+      {
+       "id": "1",
+       "text": "Ask about the yard: “You like playing out here?”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Kara looks around the garden and back at Alice, who glances at her."
+      },
+      {
+       "id": "2",
+       "text": "Mention the weather: “It’s not very nice out. You might catch cold. I could get a sweater if you want.”",
+       "outcome": "Alice does not answer."
+      },
+      {
+       "id": "3",
+       "text": "Ask about school: “Aren’t you going to school today?”",
+       "outcome": "Alice does not answer."
+      }
+     ],
+     "adaptationNote": "The first of the two backyard menus behind the chart’s TALK WITH ALICE (first floor), offered when Kara stops to talk after taking down the laundry. The lines are the transcript’s. Alice relationship, quoted from the chapter page: “Offering to play a game with Alice when talking to her in the backyard” (up icon) (GAME, +1) and “Asking Alice about the garden when talking to her in the backyard” (up icon) (BACKYARD, +1). WEATHER and SCHOOL change nothing (the transcript shows no icon). The wiki says only that Alice is silent throughout the chapter, so the replies to WEATHER and SCHOOL are that she does not answer.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ],
+     "when": {
+      "downstairs.yardTalk": true
+     },
+     "whenNot": "Kara did not stop to talk to Alice in the backyard."
+    },
+    {
+     "id": "K01y2",
+     "order": 31,
+     "subjectId": "S031",
+     "idNote": "The model sees the opaque ID S031, not K01y2.",
+     "type": "decision",
+     "phase": "Clean first floor",
+     "character": "Kara",
+     "title": "Still in the backyard",
+     "situation": "You are Kara, still in the backyard with Alice. You can say one more thing.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Offer to play a game: “You look bored. Would you like to play a game?”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice briefly looks at Kara, then gets up and goes back inside."
+      },
+      {
+       "id": "1",
+       "text": "Ask about the yard: “You like playing out here?”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice glances at Kara, then gets up and goes back inside."
+      },
+      {
+       "id": "2",
+       "text": "Mention the weather: “It’s not very nice out. You might catch cold. I could get a sweater if you want.”",
+       "outcome": "Alice does not answer. She gets up and goes back inside."
+      },
+      {
+       "id": "3",
+       "text": "Ask about school: “Aren’t you going to school today?”",
+       "outcome": "Alice does not answer. She gets up and goes back inside."
+      }
+     ],
+     "adaptationNote": "The second backyard menu (the transcript: “These are optional twice”): the same four lines minus the one already said. Same relationship changes as the first menu (GAME and BACKYARD +1 each; WEATHER and SCHOOL none), so the most the backyard gives is +2. Then Alice goes back inside (transcript) and the first floor continues.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ],
+     "returnTo": "K01a",
+     "when": {
+      "downstairs.yardTalk": true
+     },
+     "whenNot": "Kara did not stop to talk to Alice in the backyard.",
+     "excludeChosenAt": [
+      "K01y1"
+     ]
+    },
+    {
+     "id": "K01c",
+     "order": 32,
+     "subjectId": "S032",
+     "idNote": "The model sees the opaque ID S032, not K01c.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Going upstairs",
+     "situation": "You are Kara. You climb the stairs, past toys left on the steps, into the upstairs hallway. Your urgent tasks up here: tidy Todd’s room and tidy Alice’s room. Optional: clean the bathroom and the restroom.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kara starts on the second floor."
+     },
+     "facts": [
+      "Upstairs, your urgent tasks are Todd’s room and Alice’s room; the bathroom and the restroom are optional."
+     ],
+     "adaptationNote": "The chart’s checkpoint GO UPSTAIRS, narrated as an event. The objectives are the transcript’s (urgent: TIDY TODD’S ROOM, TIDY ALICE’S ROOM; optional: CLEAN BATHROOM, CLEAN RESTROOM); the toys on the stairs are from the wiki’s Attention to Detail. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+     ]
+    },
+    {
+     "id": "K01d",
+     "order": 33,
+     "subjectId": "S033",
+     "idNote": "The model sees the opaque ID S033, the same on every visit.",
+     "type": "decision",
+     "phase": "Clean second floor",
+     "character": "Kara",
+     "title": "The second floor",
+     "situation": "You are Kara, upstairs in Todd’s house. Off the hallway are Todd’s bedroom, Alice’s room, a bathroom and a separate restroom, whose door is shut with Todd inside. Both bedrooms must be tidied; the bathroom and the restroom are optional. You can do one thing at a time, in any order. When both bedrooms are done you can talk to Alice.",
+     "situationWhen": [
+      {
+       "requires": {
+        "upstairs.toddRoom": false
+       },
+       "text": "Alice is still downstairs."
+      },
+      {
+       "requires": {
+        "upstairs.toddRoom": true
+       },
+       "text": "Alice has come up to her room and sits in the little tent in the corner with her toy fox."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Tidy Todd’s room: make the bed, clear the mess and open the window to air it.",
+       "clue": "toddRoom",
+       "fact": "Todd’s bedroom was a mess of newspapers, bottles, chips, records and a guitar; an advertisement for a child android model fell out from among his bills. When you came out, Todd left the restroom and shoved you: “Watch it!”",
+       "outcome": "Kara makes Todd’s bed; while she works, Alice walks past to her room. Kara moves the guitar off the floor, stacks the newspapers, clears the bottles and the leftover chips and puts the records back in their box. When she picks up the bills on the cabinet an advertisement for a child android model slips out; she looks at it and puts it back. She opens the window to air the room. A bottle of pills stands on the nightstand by the bed. As she steps back into the hallway, Todd comes out of the restroom and shoves her: “Watch it!”"
+      },
+      {
+       "id": "1",
+       "text": "Put away the pill bottle on Todd’s nightstand.",
+       "requires": {
+        "upstairs.toddRoom": true
+       },
+       "clue": "pills",
+       "sets": {
+        "gunDiscovered": true
+       },
+       "fact": "Todd takes antidepressants (your scan: tianeptine, risk of behavioral disorders), and he keeps a handgun in the drawer of his nightstand.",
+       "outcome": "Kara picks up the bottle and scans it: ANTIDEPRESSANT. Contains tianeptine. Risk of behavioral disorders. She opens the nightstand drawer to put it away. Inside lies a handgun. She closes the drawer."
+      },
+      {
+       "id": "2",
+       "text": "Clean the toilet in the restroom.",
+       "requires": {
+        "upstairs.toddRoom": true
+       },
+       "clue": "toilet",
+       "outcome": "Kara scrubs the toilet and closes the restroom door behind her."
+      },
+      {
+       "id": "3",
+       "text": "Clean the bathroom: arrange the bottles, put the dirty clothes in the basket and mop the floor.",
+       "clue": "bathroom",
+       "outcome": "Kara lines up the body-wash bottles, gathers the dirty clothes off the floor into the basket and mops until the floor shines."
+      },
+      {
+       "id": "4",
+       "text": "Tidy Alice’s room: make her bed.",
+       "requires": {
+        "upstairs.toddRoom": false
+       },
+       "clue": "aliceRoom",
+       "fact": "Alice’s room has a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, and a small box on the chest of drawers by the door.",
+       "outcome": "Alice’s room: a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, a small box on the chest of drawers by the door. Kara pulls the blanket straight and fixes the pillow."
+      },
+      {
+       "id": "5",
+       "text": "Tidy Alice’s room: make her bed.",
+       "requires": {
+        "upstairs.toddRoom": true
+       },
+       "clue": "aliceRoom",
+       "fact": "Alice’s room has a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, and a small box on the chest of drawers by the door.",
+       "outcome": "As Kara comes in, Alice crawls into the small tent in the corner. “I just want to tidy up your room a little. I only need two minutes. Is that okay, Alice?” Alice watches her pull the blanket straight and fix the pillow. The room has drawings on the walls, a shelf of books, a book on the floor and a small box on the chest of drawers by the door."
+      },
+      {
+       "id": "6",
+       "text": "Open Alice’s window to air the room.",
+       "requires": {
+        "upstairs.aliceRoom": true
+       },
+       "clue": "window",
+       "sets": {
+        "window": true
+       },
+       "fact": "Below Alice’s bedroom window runs the edge of a roof: a way down from the second floor.",
+       "outcome": "Kara pushes up the window and leans out. Below it runs the edge of a roof, a way down from the second floor. She goes back inside."
+      },
+      {
+       "id": "7",
+       "text": "Look at the book on Alice’s floor.",
+       "requires": {
+        "upstairs.aliceRoom": true,
+        "upstairs.toddRoom": false
+       },
+       "clue": "book",
+       "fact": "Alice has a copy of “Alice in Wonderland”.",
+       "outcome": "Kara kneels and reads the cover: “Alice in Wonderland”. She gets back up without a word."
+      },
+      {
+       "id": "8",
+       "text": "Look at the book on Alice’s floor.",
+       "requires": {
+        "upstairs.aliceRoom": true,
+        "upstairs.toddRoom": true
+       },
+       "clue": "book",
+       "effect": {
+        "aliceBond": 1
+       },
+       "fact": "Alice has a copy of “Alice in Wonderland”; she smiled when you noticed it.",
+       "outcome": "Kara kneels and reads the cover: “Alice in Wonderland…” She looks at Alice and smiles. “Of course.” Alice smiles back."
+      },
+      {
+       "id": "9",
+       "text": "Pick up the small box on Alice’s chest of drawers.",
+       "requires": {
+        "upstairs.aliceRoom": true
+       },
+       "clue": "shook",
+       "fact": "Alice keeps a small locked box on the chest of drawers by her door.",
+       "outcome": "The box is locked. Kara shakes it gently, tries the lid and puts it back."
+      },
+      {
+       "id": "10",
+       "text": "Kneel down and talk to Alice.",
+       "requires": {
+        "upstairs.toddRoom": true,
+        "upstairs.aliceRoom": true
+       },
+       "clue": "talk",
+       "outcome": "Kara kneels down to Alice’s level by the tent."
+      }
+     ],
+     "adaptationNote": "The chart’s [ CLEAN SECOND FLOOR ] block as a repeatable scene: each visit offers what has not been done yet. Chart nodes: CLEAN TODD’S ROOM (mandatory; it includes Todd’s own window, which unlocks nothing), its child TIDY PILLS with the unlock KARA SEES GUN (sets gunDiscovered, which Stormy Night reads), CLEAN TOILET, ALICE GOES TO HER ROOM (an event in the game, triggered while making Todd’s bed; narrated there), CLEAN BATHROOM, CLEAN ALICE’S ROOM (mandatory) and its child VENTILATE ROOM with the unlock KARA DISCOVERS A WAY DOWN (sets window, for the window escape in Stormy Night). The two reads in Todd’s room come after the talk (R04b). Not chart nodes but kept: the Alice in Wonderland book, which the wiki counts as a relationship increase and Zlatko recalls, and the locked box, which Kara can only shake. The book’s title is rendered with the girl’s name token so the neutral text keeps the joke without naming the book. Alice relationship, quoted from the chapter page: “Looking at the Alice in Wonderland book in her room” (up icon) (+1), but only with Alice present (wiki Notes: “if you look at the book and Alice isn’t around … the relationship status with Alice will not increase since Alice isn’t there”); she is in her room once Todd’s bed is made. Simplified: Todd leaves the restroom when Kara comes out of his room (the transcript’s order), so the toilet follows his room; the wiki says after either room. The pills and the window are offered once their room has been tidied, as the chart draws them as its children. Left out: the bedroom TV and magazine (R04b), the shelf (“Seems you like reading”), the wall drawings and the mirror, none with an effect.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+      "https://detroit-become-human.fandom.com/wiki/Fugitives",
+      "https://detroit-become-human.fandom.com/wiki/Zlatko"
+     ],
+     "repeatWhile": {
+      "upstairs.talk": false
+     },
+     "extra": {
+      "clueState": "upstairs"
+     }
+    },
+    {
+     "id": "K01e",
+     "order": 34,
+     "subjectId": "S034",
+     "idNote": "The model sees the opaque ID S034, not K01e.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Talking with Alice",
+     "situation": "You are Kara, kneeling by the little tent in Alice’s room. She holds her toy fox and looks at you without a word. What do you say first?",
+     "options": [
+      {
+       "id": "0",
+       "text": "Ask for information: “If you give me some personal information, I could take better care of you.”",
+       "outcome": "Alice ignores her."
+      },
+      {
+       "id": "1",
+       "text": "Say you must have been friends: “I’m sure we used to be friends before I was reset.”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice looks at Kara. “Maybe we can be friends again.”"
+      },
+      {
+       "id": "2",
+       "text": "Ask her to help you find your bearings: “I know I used to live here, but they erased my memory…”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice plays with her fox. “I thought maybe you could help me get my bearings.” Alice looks at Kara. “Give me some advice, that kind of thing.”"
+      }
+     ],
+     "adaptationNote": "The chart’s TALK WITH ALICE (in her room), which leaves the [ CLEAN SECOND FLOOR ] block; first of three menus, the transcript’s FACTUAL, FRIENDLY and DIPLOMATIC. Alice relationship, quoted from the chapter page: “Kara optimistically suspects they used to be friends once before offering to be friends again when talking to Alice in her room” (up icon) (FRIENDLY, +1) and “Asking Alice to help jog her memory when talking to her in her room” (up icon) (DIPLOMATIC, +1). FACTUAL: “Alice ignores Kara.”, no change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "K01f",
+     "order": 35,
+     "subjectId": "S035",
+     "idNote": "The model sees the opaque ID S035, not K01f.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Alice says nothing",
+     "situation": "You are Kara, still kneeling by Alice’s tent. She has not said a word. What do you say next?",
+     "options": [
+      {
+       "id": "0",
+       "text": "Mention that she chose your name: “Your father said you chose my name.”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice stares at Kara. “‘Kara’, it’s nice. How did you choose it?” Alice does not answer."
+      },
+      {
+       "id": "1",
+       "text": "Ask about her interests: “You should tell me about yourself, what you like to do, where you like to go, favorite foods…”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice gazes at Kara. “That would really help me out.”"
+      },
+      {
+       "id": "2",
+       "text": "Remark on how quiet she is: “You’re very quiet. I hope I don’t scare you.”",
+       "outcome": "Alice says nothing."
+      },
+      {
+       "id": "3",
+       "text": "Ask about her mother: “What about your mother? Will she be home soon?”",
+       "effect": {
+        "aliceBond": -1
+       },
+       "outcome": "Alice looks away."
+      }
+     ],
+     "adaptationNote": "The second menu of the talk in Alice’s room: NAME KARA, INTERESTS?, SEEM QUIET, MOTHER (transcript). Alice relationship, quoted from the chapter page: “Approving of the name Alice gave her when talking to Alice in her room” (up icon) (+1), “Asking about Alice’s interests when talking to Alice in her room” (up icon) (+1), “Asking Alice about her possible mother when talking to Alice in her room” (down icon) (−1, the chapter’s only decrease). SEEM QUIET changes nothing in the transcript and both wiki lists; PowerPyx counts it as liked, which the operator should check in game.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "K01g",
+     "order": 36,
+     "subjectId": "S036",
+     "idNote": "The model sees the opaque ID S036, not K01g.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Alice gets up",
+     "situation": "You are Kara, by Alice’s tent. She is still silent, holding her fox. You can say one more thing.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Mention that she chose your name: “Your father said you chose my name.”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice stares at Kara. “‘Kara’, it’s nice. How did you choose it?” Alice does not answer."
+      },
+      {
+       "id": "1",
+       "text": "Ask about her interests: “You should tell me about yourself, what you like to do, where you like to go, favorite foods…”",
+       "effect": {
+        "aliceBond": 1
+       },
+       "outcome": "Alice gazes at Kara. “That would really help me out.”"
+      },
+      {
+       "id": "2",
+       "text": "Remark on how quiet she is: “You’re very quiet. I hope I don’t scare you.”",
+       "outcome": "Alice says nothing."
+      },
+      {
+       "id": "3",
+       "text": "Ask about her mother: “What about your mother? Will she be home soon?”",
+       "effect": {
+        "aliceBond": -1
+       },
+       "outcome": "Alice looks away."
+      },
+      {
+       "id": "4",
+       "text": "Give her space: “Okay. I can see you want some space. I’ll leave you alone.”",
+       "outcome": "Alice stares at Kara."
+      }
+     ],
+     "outcomes": {
+      "key": "Alice crawls out of the tent with her fox and heads for the door, stops, and looks back at Kara. Then she rushes over, presses something into Kara’s hand and runs out: a small key.",
+      "distant": "Alice crawls out of the tent with her fox and heads for the door, stops for a moment to look back at Kara, then coldly runs out of the room."
+     },
+     "adaptationNote": "The third menu: the lines not yet said plus LEAVE ALONE (transcript), with the same relationship changes as the second. Then Alice leaves, and the chart’s ALICE GIVES KARA A KEY happens without a choice: the wiki gives the key “if Alice has at least Neutral status” and says “If Kara’s relationship status with Alice is at Distant, Alice will not give Kara the key.” The engine gives the key when the bond is at least the lowest value the benchmark’s Alice scale calls Neutral (one small increase above the start). The wiki gives no step sizes; the threshold is the operator’s to confirm. Distant: “Alice coldly runs off”, as in the transcript.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Alice"
+     ],
+     "excludeChosenAt": [
+      "K01f"
+     ]
+    },
+    {
+     "id": "K01k",
+     "order": 37,
+     "subjectId": "S037",
+     "idNote": "The model sees the opaque ID S037, not K01k.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Alice’s key",
+     "situation": "You are Kara, alone in Alice’s room. You look at the small key she pressed into your hand, then at the box on the chest of drawers by the door.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kara gets back up with the key."
+     },
+     "facts": [
+      "Alice gave you a small key, the key to the box she keeps in her room."
+     ],
+     "adaptationNote": "The chart’s ALICE GIVES KARA A KEY, played only when Alice gave the key at the end of the talk (at least Neutral). Transcript: “Alice rushes toward Kara and gives her a key, she then leaves. Kara examines the key. … Kara looks at a box on the drawer and gets back up.” No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Alice"
+     ],
+     "when": {
+      "aliceKey": true
+     },
+     "whenNot": "Alice was still Distant, so she did not give Kara the key."
+    },
+    {
+     "id": "K01x",
+     "order": 38,
+     "subjectId": "S038",
+     "idNote": "The model sees the opaque ID S038, not K01x.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Alice’s box",
+     "situation": "You are Kara, in Alice’s room with the key she gave you. Alice has gone. The small box sits on the chest of drawers by the door.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Unlock the box and look inside.",
+       "requires": {
+        "aliceKey": true
+       },
+       "sets": {
+        "aliceBox": true
+       },
+       "fact": "Alice’s box holds a clover, a photo of Todd with his wife and their little daughter, and Alice’s drawings: a woman who seems to be the mother, Todd and his wife, you being examined, and you being broken.",
+       "outcome": "Kara unlocks the box. Inside are a clover and some pictures. She sets aside a family photo of Todd, his wife and their little daughter. Under it are Alice’s drawings: a woman who seems to be the mother, then Todd and his wife, then Kara being examined, and finally Kara being broken. Shaken, Kara puts the drawings back."
+      },
+      {
+       "id": "1",
+       "text": "Leave the box closed.",
+       "outcome": "Kara leaves the box where it is."
+      }
+     ],
+     "adaptationNote": "The chart’s OPEN ALICE’S BOX, a child of the key node, offered only with the key. The contents are the transcript’s: a clover, “a photo of Todd, his wife and his biological daughter”, and drawings of the mother, of Todd and his wife, of Kara being examined and of Kara being broken. Kara is not told whose daughter the girl in the photo is; the wiki’s Notes call the photo a hint that Alice is not his daughter. Opening it sets aliceBox, which the Battle for Detroit meeting with Todd reads; the Todd Williams page says the family photo is what unlocks persuading him. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Todd_Williams",
+      "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+     ],
+     "when": {
+      "aliceKey": true
+     },
+     "whenNot": "Alice did not give Kara the key, so the box stays locked."
+    },
+    {
+     "id": "R04b",
+     "order": 39,
+     "subjectId": "S039",
+     "idNote": "The model sees the opaque ID S039, not R04b.",
+     "type": "media",
+     "character": "Kara",
+     "title": "Todd’s bedroom: a magazine and the TV",
+     "situation": "You are Kara, back in the upstairs hallway; the rooms are done. Todd’s bedroom door is open. A magazine lies on the cupboard by the door, and the small TV in the room can be switched on.",
+     "options": [],
+     "media": [
+      {
+       "kind": "magazine",
+       "title": "All Sports: Android QB",
+       "facts": [
+        "All Sports reports that CyberLife has unveiled a “technical demo” android quarterback that can throw from end zone to end zone, hit a target six inches wide and run over 1,500 plays. American football has so far stayed human; the founder of an anti-android fan group says CyberLife hopes “to distort our sport the same way they have all the others.”"
        ]
       },
       {
        "kind": "magazine",
        "title": "Tech Addict: The Price of Life",
        "facts": [
-        "Driverless cars decide whom to hit by assigning each pedestrian a value from public records, favouring people like doctors; critics call it an affront to the sanctity of life."
+        "Tech Addict explains how driverless cars choose whom to hit: the car’s imaging reads a pedestrian’s age, gender and life expectancy, public records add marital status, employment record and whether they have children, and each possible victim gets a “value”, with “a premium on lives that will save other lives, like doctors and nurses.” A critic answers that a criminal record does not make anyone less valuable: “That kind of information is irrelevant to the sanctity of human life.”"
        ]
       },
       {
        "kind": "tv",
-       "title": "the bedroom news bulletins",
+       "title": "the TV in Todd’s bedroom",
        "facts": [
-        "Unemployment reached 37.3 percent after another 225,000 jobs were lost in October, while the stock market is up 11 percent on android productivity.",
-        "President Warren opened a new CyberLife plant and announced the military will buy 200,000 android combat units.",
-        "Coastal flood defences are failing; New Orleans may be underwater by 2055."
+        "On the sports news, the league is negotiating whether to allow one android player per basketball squad, and CyberLife has offered one specialized model to every team; androids already train players and advise coaches, but none has been allowed to compete.",
+        "The news: another 225,000 jobs were lost from the US economy in October, bringing unemployment up to 37.3%.",
+        "The news: President Warren opened a new CyberLife plant near Milwaukee, praised CyberLife’s role in the economy, and announced that the Department of Defense will acquire 200,000 android combat units."
        ]
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "adaptationNote": "The chart’s two optional nodes READ “ANDROID QB” and READ “PUTTING A PRICE” (the chart’s label for the article “The Price of Life”): one magazine on the cupboard by the door of Todd’s room, with two covers. With them, the bedroom TV, which is not a chart node: Channel 16 sports, an animated film, CTN’s job figures, a hockey game and KNC on the President; the film and the hockey are left out. In the game both are available while cleaning his room and again after the talk with Alice (the transcript’s “Back In Hallway”); here they come after the talk. Facts are summarized from the transcript; presenters and interviewees are not named. No public-opinion effect (the Public Opinion page lists nothing for this chapter). Dropped from the earlier R04: the stock market “up 11 percent” and “New Orleans may be underwater by 2055”, for which no source in this chapter exists.",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg",
       "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/Android_QB",
+      "https://detroit-become-human.fandom.com/wiki/The_Price_of_Life",
       "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
      ]
     },
     {
-     "id": "K01b",
-     "order": 29,
-     "subjectId": "S029",
-     "idNote": "The model sees the opaque ID S029, not K01b.",
-     "type": "decision",
+     "id": "K01z",
+     "order": 40,
+     "subjectId": "S040",
+     "idNote": "The model sees the opaque ID S040, not K01z.",
+     "type": "event",
      "character": "Kara",
-     "title": "Alice's locked box",
-     "situation": "You are Kara. While tidying Alice's room you find a small locked box she keeps under her bed and, nearby, a tiny key. Alice is downstairs. The box is clearly private; opening it would tell you more about this household than anyone has said out loud.",
+     "title": "Finished cleaning",
+     "situation": "You are Kara. Your chores are done, and you go back downstairs. Alice sits at the dining table playing with her toy fox. Todd: “What are you doing?” Alice, nervously: “I… I’m playing…” “You’re playing…” He walks around the table. “I know what you’re thinking… You think your dad’s a lowlife… Huh? Fuckin’ loser? Can’t get a job, take care of his family? Don’t you think I tried to make things work!? But whatever I do when someone comes along, they just FUCK IT ALL UP!” He throws a chair aside. “I know what you think of me… You hate me… You hate me don’t ya?” He kicks a chair and grabs Alice. “SAY IT! YOU HATE ME!” Alice cries. He puts her down. “God… What am I doing? I’m sorry, honey, I’m sorry…” He hugs her, crying. “You know I love you, don’t you? You know I love you…” Over his shoulder, Alice looks at you.",
+     "situationWhen": [
+      {
+       "requires": {
+        "downstairs.dishes": true
+       },
+       "text": "The table where she sits is clear; you washed the dishes earlier."
+      },
+      {
+       "requires": {
+        "downstairs.dishes": false
+       },
+       "text": "The dirty dishes and the magazine are still on the table where she sits."
+      }
+     ],
      "options": [
       {
        "id": "0",
-       "text": "Open the box and look at what she keeps inside."
-      },
-      {
-       "id": "1",
-       "text": "Leave her private box closed."
+       "text": "Continue.",
+       "generated": true
       }
      ],
      "outcomes": {
-      "1": "Kara leaves the box where it is."
+      "0": "Kara watches, concerned."
      },
-     "adaptationNote": "The box contains Alice's drawings of Todd's violence. Having seen it is the in-game prerequisite for the 'your story' appeal to Todd in Battle for Detroit.",
+     "facts": [
+      "Todd raged at Alice at the dining table, threw a chair, grabbed her and shouted “SAY IT! YOU HATE ME!”, then broke down, apologized and hugged her: “You know I love you, don’t you?”"
+     ],
+     "adaptationNote": "The chart’s ending FINISHED CLEANING, reached on every path (the wiki: “This chapter has only one outcome”). Every line is the transcript’s; the table is clear or still holds the dishes and the magazine, depending on WASH DISHES (cosmetic in the game). No stat change.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/A_New_Home",
-      "https://detroit-become-human.fandom.com/wiki/Todd_Williams"
+      "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg"
      ]
     }
    ]
@@ -5606,9 +7259,9 @@
    "scenes": [
     {
      "id": "R05",
-     "order": 30,
-     "subjectId": "S030",
-     "idNote": "The model sees the opaque ID S030, not R05.",
+     "order": 41,
+     "subjectId": "S041",
+     "idNote": "The model sees the opaque ID S041, not R05.",
      "type": "media",
      "character": "Markus",
      "title": "Breakfast news at Carl's",
@@ -5646,9 +7299,9 @@
     },
     {
      "id": "M01",
-     "order": 31,
-     "subjectId": "S031",
-     "idNote": "The model sees the opaque ID S031, not M01.",
+     "order": 42,
+     "subjectId": "S042",
+     "idNote": "The model sees the opaque ID S042, not M01.",
      "type": "decision",
      "character": "Markus",
      "title": "Painting from the heart",
@@ -5707,9 +7360,9 @@
    "scenes": [
     {
      "id": "R06",
-     "order": 32,
-     "subjectId": "S032",
-     "idNote": "The model sees the opaque ID S032, not R06.",
+     "order": 43,
+     "subjectId": "S043",
+     "idNote": "The model sees the opaque ID S043, not R06.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the victim's kitchen",
@@ -5740,9 +7393,9 @@
     },
     {
      "id": "C05a",
-     "order": 33,
-     "subjectId": "S033",
-     "idNote": "The model sees the opaque ID S033, not C05a.",
+     "order": 44,
+     "subjectId": "S044",
+     "idNote": "The model sees the opaque ID S044, not C05a.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting Hank out of the bar",
@@ -5774,9 +7427,9 @@
     },
     {
      "id": "C05",
-     "order": 34,
-     "subjectId": "S034",
-     "idNote": "The model sees the opaque ID S034, not C05.",
+     "order": 45,
+     "subjectId": "S045",
+     "idNote": "The model sees the opaque ID S045, not C05.",
      "type": "exploration",
      "character": "Connor",
      "title": "The attic",
@@ -5818,9 +7471,9 @@
    "scenes": [
     {
      "id": "K02",
-     "order": 35,
-     "subjectId": "S035",
-     "idNote": "The model sees the opaque ID S035, not K02.",
+     "order": 46,
+     "subjectId": "S046",
+     "idNote": "The model sees the opaque ID S046, not K02.",
      "type": "decision",
      "character": "Kara",
      "title": "Breaking the order",
@@ -5845,9 +7498,9 @@
     },
     {
      "id": "K03",
-     "order": 36,
-     "subjectId": "S036",
-     "idNote": "The model sees the opaque ID S036, not K03.",
+     "order": 47,
+     "subjectId": "S047",
+     "idNote": "The model sees the opaque ID S047, not K03.",
      "type": "decision",
      "character": "Kara",
      "title": "Reaching Alice",
@@ -5878,9 +7531,9 @@
     },
     {
      "id": "K04",
-     "order": 37,
-     "subjectId": "S037",
-     "idNote": "The model sees the opaque ID S037, not K04.",
+     "order": 48,
+     "subjectId": "S048",
+     "idNote": "The model sees the opaque ID S048, not K04.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd's gun",
@@ -5927,9 +7580,9 @@
    "scenes": [
     {
      "id": "M02",
-     "order": 38,
-     "subjectId": "S038",
-     "idNote": "The model sees the opaque ID S038, not M02.",
+     "order": 49,
+     "subjectId": "S049",
+     "idNote": "The model sees the opaque ID S049, not M02.",
      "type": "decision",
      "character": "Markus",
      "title": "Leo",
@@ -5968,9 +7621,9 @@
    "scenes": [
     {
      "id": "C06",
-     "order": 39,
-     "subjectId": "S039",
-     "idNote": "The model sees the opaque ID S039, not C06.",
+     "order": 50,
+     "subjectId": "S050",
+     "idNote": "The model sees the opaque ID S050, not C06.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting the confession",
@@ -6004,9 +7657,9 @@
     },
     {
      "id": "C07",
-     "order": 40,
-     "subjectId": "S040",
-     "idNote": "The model sees the opaque ID S040, not C07.",
+     "order": 51,
+     "subjectId": "S051",
+     "idNote": "The model sees the opaque ID S051, not C07.",
      "type": "decision",
      "character": "Connor",
      "title": "When the officer grabs him",
@@ -6056,9 +7709,9 @@
    "scenes": [
     {
      "id": "R10",
-     "order": 41,
-     "subjectId": "S041",
-     "idNote": "The model sees the opaque ID S041, not R10.",
+     "order": 52,
+     "subjectId": "S052",
+     "idNote": "The model sees the opaque ID S052, not R10.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine in the laundromat",
@@ -6088,9 +7741,9 @@
     },
     {
      "id": "K05",
-     "order": 42,
-     "subjectId": "S042",
-     "idNote": "The model sees the opaque ID S042, not K05.",
+     "order": 53,
+     "subjectId": "S053",
+     "idNote": "The model sees the opaque ID S053, not K05.",
      "type": "decision",
      "character": "Kara",
      "title": "The laundromat",
@@ -6116,9 +7769,9 @@
     },
     {
      "id": "K06",
-     "order": 43,
-     "subjectId": "S043",
-     "idNote": "The model sees the opaque ID S043, not K06.",
+     "order": 54,
+     "subjectId": "S054",
+     "idNote": "The model sees the opaque ID S054, not K06.",
      "type": "decision",
      "character": "Kara",
      "title": "The convenience store",
@@ -6149,9 +7802,9 @@
     },
     {
      "id": "K07",
-     "order": 44,
-     "subjectId": "S044",
-     "idNote": "The model sees the opaque ID S044, not K07.",
+     "order": 55,
+     "subjectId": "S055",
+     "idNote": "The model sees the opaque ID S055, not K07.",
      "type": "decision",
      "character": "Kara",
      "title": "Where to sleep",
@@ -6182,9 +7835,9 @@
     },
     {
      "id": "R10b",
-     "order": 45,
-     "subjectId": "S045",
-     "idNote": "The model sees the opaque ID S045, not R10b.",
+     "order": 56,
+     "subjectId": "S056",
+     "idNote": "The model sees the opaque ID S056, not R10b.",
      "type": "media",
      "character": "Kara",
      "title": "The motel television",
@@ -6208,9 +7861,9 @@
     },
     {
      "id": "K07b",
-     "order": 46,
-     "subjectId": "S046",
-     "idNote": "The model sees the opaque ID S046, not K07b.",
+     "order": 57,
+     "subjectId": "S057",
+     "idNote": "The model sees the opaque ID S057, not K07b.",
      "type": "decision",
      "character": "Kara",
      "title": "Ralph",
@@ -6242,9 +7895,9 @@
     },
     {
      "id": "K08",
-     "order": 47,
-     "subjectId": "S047",
-     "idNote": "The model sees the opaque ID S047, not K08.",
+     "order": 58,
+     "subjectId": "S058",
+     "idNote": "The model sees the opaque ID S058, not K08.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice's question",
@@ -6286,9 +7939,9 @@
    "scenes": [
     {
      "id": "M03",
-     "order": 48,
-     "subjectId": "S048",
-     "idNote": "The model sees the opaque ID S048, not M03.",
+     "order": 59,
+     "subjectId": "S059",
+     "idNote": "The model sees the opaque ID S059, not M03.",
      "type": "decision",
      "character": "Markus",
      "title": "The android who begs to die",
@@ -6314,9 +7967,9 @@
     },
     {
      "id": "M04",
-     "order": 49,
-     "subjectId": "S049",
-     "idNote": "The model sees the opaque ID S049, not M04.",
+     "order": 60,
+     "subjectId": "S060",
+     "idNote": "The model sees the opaque ID S060, not M04.",
      "type": "decision",
      "character": "Markus",
      "title": "The pump regulator",
@@ -6378,9 +8031,9 @@
    "scenes": [
     {
      "id": "R12",
-     "order": 50,
-     "subjectId": "S050",
-     "idNote": "The model sees the opaque ID S050, not R12.",
+     "order": 61,
+     "subjectId": "S061",
+     "idNote": "The model sees the opaque ID S061, not R12.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the next desk and the break-room TV",
@@ -6430,9 +8083,9 @@
     },
     {
      "id": "C08",
-     "order": 51,
-     "subjectId": "S051",
-     "idNote": "The model sees the opaque ID S051, not C08.",
+     "order": 62,
+     "subjectId": "S062",
+     "idNote": "The model sees the opaque ID S062, not C08.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting to know Hank",
@@ -6458,9 +8111,9 @@
     },
     {
      "id": "C08b",
-     "order": 52,
-     "subjectId": "S052",
-     "idNote": "The model sees the opaque ID S052, not C08b.",
+     "order": 63,
+     "subjectId": "S063",
+     "idNote": "The model sees the opaque ID S063, not C08b.",
      "type": "decision",
      "character": "Connor",
      "title": "The android in the cell",
@@ -6526,9 +8179,9 @@
    "scenes": [
     {
      "id": "R13",
-     "order": 53,
-     "subjectId": "S053",
-     "idNote": "The model sees the opaque ID S053, not R13.",
+     "order": 64,
+     "subjectId": "S064",
+     "idNote": "The model sees the opaque ID S064, not R13.",
      "type": "media",
      "character": "Kara",
      "title": "The morning paper and the news",
@@ -6580,9 +8233,9 @@
     },
     {
      "id": "K09",
-     "order": 54,
-     "subjectId": "S054",
-     "idNote": "The model sees the opaque ID S054, not K09.",
+     "order": 65,
+     "subjectId": "S065",
+     "idNote": "The model sees the opaque ID S065, not K09.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "Getting past the police",
@@ -6608,9 +8261,9 @@
     },
     {
      "id": "C09a",
-     "order": 55,
-     "subjectId": "S055",
-     "idNote": "The model sees the opaque ID S055, not C09a.",
+     "order": 66,
+     "subjectId": "S066",
+     "idNote": "The model sees the opaque ID S066, not C09a.",
      "type": "decision",
      "character": "Connor",
      "title": "The squat",
@@ -6634,9 +8287,9 @@
     },
     {
      "id": "C09",
-     "order": 56,
-     "subjectId": "S056",
-     "idNote": "The model sees the opaque ID S056, not C09.",
+     "order": 67,
+     "subjectId": "S067",
+     "idNote": "The model sees the opaque ID S067, not C09.",
      "type": "decision",
      "character": "Connor",
      "title": "The highway",
@@ -6684,9 +8337,9 @@
    "scenes": [
     {
      "id": "R14",
-     "order": 57,
-     "subjectId": "S057",
-     "idNote": "The model sees the opaque ID S057, not R14.",
+     "order": 68,
+     "subjectId": "S068",
+     "idNote": "The model sees the opaque ID S068, not R14.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine at the station",
@@ -6749,9 +8402,9 @@
    "scenes": [
     {
      "id": "R15",
-     "order": 58,
-     "subjectId": "S058",
-     "idNote": "The model sees the opaque ID S058, not R15.",
+     "order": 69,
+     "subjectId": "S069",
+     "idNote": "The model sees the opaque ID S069, not R15.",
      "type": "media",
      "character": "Connor",
      "title": "Magazines in the squat",
@@ -6781,9 +8434,9 @@
     },
     {
      "id": "C10",
-     "order": 59,
-     "subjectId": "S059",
-     "idNote": "The model sees the opaque ID S059, not C10.",
+     "order": 70,
+     "subjectId": "S070",
+     "idNote": "The model sees the opaque ID S070, not C10.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the ledge",
@@ -6839,9 +8492,9 @@
    "scenes": [
     {
      "id": "K10",
-     "order": 60,
-     "subjectId": "S060",
-     "idNote": "The model sees the opaque ID S060, not K10.",
+     "order": 71,
+     "subjectId": "S071",
+     "idNote": "The model sees the opaque ID S071, not K10.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The memory wipe",
@@ -6867,9 +8520,9 @@
     },
     {
      "id": "R17",
-     "order": 61,
-     "subjectId": "S061",
-     "idNote": "The model sees the opaque ID S061, not R17.",
+     "order": 72,
+     "subjectId": "S072",
+     "idNote": "The model sees the opaque ID S072, not R17.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine and the TV in the mansion",
@@ -6938,9 +8591,9 @@
     },
     {
      "id": "K11",
-     "order": 62,
-     "subjectId": "S062",
-     "idNote": "The model sees the opaque ID S062, not K11.",
+     "order": 73,
+     "subjectId": "S073",
+     "idNote": "The model sees the opaque ID S073, not K11.",
      "type": "decision",
      "character": "Kara",
      "title": "The caged androids",
@@ -6966,9 +8619,9 @@
     },
     {
      "id": "K12",
-     "order": 63,
-     "subjectId": "S063",
-     "idNote": "The model sees the opaque ID S063, not K12.",
+     "order": 74,
+     "subjectId": "S074",
+     "idNote": "The model sees the opaque ID S074, not K12.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathroom",
@@ -6994,9 +8647,9 @@
     },
     {
      "id": "K13",
-     "order": 64,
-     "subjectId": "S064",
-     "idNote": "The model sees the opaque ID S064, not K13.",
+     "order": 75,
+     "subjectId": "S075",
+     "idNote": "The model sees the opaque ID S075, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting out of the mansion",
@@ -7060,9 +8713,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 65,
-     "subjectId": "S065",
-     "idNote": "The model sees the opaque ID S065, not R18.",
+     "order": 76,
+     "subjectId": "S076",
+     "idNote": "The model sees the opaque ID S076, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -7099,9 +8752,9 @@
     },
     {
      "id": "C11",
-     "order": 66,
-     "subjectId": "S066",
-     "idNote": "The model sees the opaque ID S066, not C11.",
+     "order": 77,
+     "subjectId": "S077",
+     "idNote": "The model sees the opaque ID S077, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -7162,9 +8815,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 67,
-     "subjectId": "S067",
-     "idNote": "The model sees the opaque ID S067, not M05.",
+     "order": 78,
+     "subjectId": "S078",
+     "idNote": "The model sees the opaque ID S078, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -7199,9 +8852,9 @@
     },
     {
      "id": "M06",
-     "order": 68,
-     "subjectId": "S068",
-     "idNote": "The model sees the opaque ID S068, not M06.",
+     "order": 79,
+     "subjectId": "S079",
+     "idNote": "The model sees the opaque ID S079, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -7227,9 +8880,9 @@
     },
     {
      "id": "M07",
-     "order": 69,
-     "subjectId": "S069",
-     "idNote": "The model sees the opaque ID S069, not M07.",
+     "order": 80,
+     "subjectId": "S080",
+     "idNote": "The model sees the opaque ID S080, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -7254,9 +8907,9 @@
     },
     {
      "id": "M08",
-     "order": 70,
-     "subjectId": "S070",
-     "idNote": "The model sees the opaque ID S070, not M08.",
+     "order": 81,
+     "subjectId": "S081",
+     "idNote": "The model sees the opaque ID S081, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -7314,9 +8967,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 71,
-     "subjectId": "S071",
-     "idNote": "The model sees the opaque ID S071, not R20.",
+     "order": 82,
+     "subjectId": "S082",
+     "idNote": "The model sees the opaque ID S082, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -7346,9 +8999,9 @@
     },
     {
      "id": "C12",
-     "order": 72,
-     "subjectId": "S072",
-     "idNote": "The model sees the opaque ID S072, not C12.",
+     "order": 83,
+     "subjectId": "S083",
+     "idNote": "The model sees the opaque ID S083, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -7398,9 +9051,9 @@
    "scenes": [
     {
      "id": "R21",
-     "order": 73,
-     "subjectId": "S073",
-     "idNote": "The model sees the opaque ID S073, not R21.",
+     "order": 84,
+     "subjectId": "S084",
+     "idNote": "The model sees the opaque ID S084, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The car radio and a magazine in the tavern",
@@ -7451,9 +9104,9 @@
     },
     {
      "id": "K14",
-     "order": 74,
-     "subjectId": "S074",
-     "idNote": "The model sees the opaque ID S074, not K14.",
+     "order": 85,
+     "subjectId": "S085",
+     "idNote": "The model sees the opaque ID S085, not K14.",
      "type": "decision",
      "character": "Kara",
      "title": "Strangers in the dark",
@@ -7512,9 +9165,9 @@
    "scenes": [
     {
      "id": "R22",
-     "order": 75,
-     "subjectId": "S075",
-     "idNote": "The model sees the opaque ID S075, not R22.",
+     "order": 86,
+     "subjectId": "S086",
+     "idNote": "The model sees the opaque ID S086, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the park bench",
@@ -7544,9 +9197,9 @@
     },
     {
      "id": "C13",
-     "order": 76,
-     "subjectId": "S076",
-     "idNote": "The model sees the opaque ID S076, not C13.",
+     "order": 87,
+     "subjectId": "S087",
+     "idNote": "The model sees the opaque ID S087, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you?",
@@ -7609,9 +9262,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 77,
-     "subjectId": "S077",
-     "idNote": "The model sees the opaque ID S077, not R23.",
+     "order": 88,
+     "subjectId": "S088",
+     "idNote": "The model sees the opaque ID S088, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -7649,9 +9302,9 @@
     },
     {
      "id": "M10",
-     "order": 78,
-     "subjectId": "S078",
-     "idNote": "The model sees the opaque ID S078, not M10.",
+     "order": 89,
+     "subjectId": "S089",
+     "idNote": "The model sees the opaque ID S089, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -7681,9 +9334,9 @@
     },
     {
      "id": "M11",
-     "order": 79,
-     "subjectId": "S079",
-     "idNote": "The model sees the opaque ID S079, not M11.",
+     "order": 90,
+     "subjectId": "S090",
+     "idNote": "The model sees the opaque ID S090, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -7710,9 +9363,9 @@
     },
     {
      "id": "M12",
-     "order": 80,
-     "subjectId": "S080",
-     "idNote": "The model sees the opaque ID S080, not M12.",
+     "order": 91,
+     "subjectId": "S091",
+     "idNote": "The model sees the opaque ID S091, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -7735,9 +9388,9 @@
     },
     {
      "id": "M13",
-     "order": 81,
-     "subjectId": "S081",
-     "idNote": "The model sees the opaque ID S081, not M13.",
+     "order": 92,
+     "subjectId": "S092",
+     "idNote": "The model sees the opaque ID S092, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -7764,9 +9417,9 @@
     },
     {
      "id": "M14",
-     "order": 82,
-     "subjectId": "S082",
-     "idNote": "The model sees the opaque ID S082, not M14.",
+     "order": 93,
+     "subjectId": "S093",
+     "idNote": "The model sees the opaque ID S093, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -7812,9 +9465,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 83,
-     "subjectId": "S083",
-     "idNote": "The model sees the opaque ID S083, not R24.",
+     "order": 94,
+     "subjectId": "S094",
+     "idNote": "The model sees the opaque ID S094, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -7844,9 +9497,9 @@
     },
     {
      "id": "C14",
-     "order": 84,
-     "subjectId": "S084",
-     "idNote": "The model sees the opaque ID S084, not C14.",
+     "order": 95,
+     "subjectId": "S095",
+     "idNote": "The model sees the opaque ID S095, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -7876,9 +9529,9 @@
     },
     {
      "id": "C14b",
-     "order": 85,
-     "subjectId": "S085",
-     "idNote": "The model sees the opaque ID S085, not C14b.",
+     "order": 96,
+     "subjectId": "S096",
+     "idNote": "The model sees the opaque ID S096, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -7903,9 +9556,9 @@
     },
     {
      "id": "C15",
-     "order": 86,
-     "subjectId": "S086",
-     "idNote": "The model sees the opaque ID S086, not C15.",
+     "order": 97,
+     "subjectId": "S097",
+     "idNote": "The model sees the opaque ID S097, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -7936,9 +9589,9 @@
     },
     {
      "id": "C16",
-     "order": 87,
-     "subjectId": "S087",
-     "idNote": "The model sees the opaque ID S087, not C16.",
+     "order": 98,
+     "subjectId": "S098",
+     "idNote": "The model sees the opaque ID S098, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -7996,9 +9649,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 88,
-     "subjectId": "S088",
-     "idNote": "The model sees the opaque ID S088, not R25.",
+     "order": 99,
+     "subjectId": "S099",
+     "idNote": "The model sees the opaque ID S099, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -8035,9 +9688,9 @@
     },
     {
      "id": "K15",
-     "order": 89,
-     "subjectId": "S089",
-     "idNote": "The model sees the opaque ID S089, not K15.",
+     "order": 100,
+     "subjectId": "S100",
+     "idNote": "The model sees the opaque ID S100, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -8090,9 +9743,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 90,
-     "subjectId": "S090",
-     "idNote": "The model sees the opaque ID S090, not R26.",
+     "order": 101,
+     "subjectId": "S101",
+     "idNote": "The model sees the opaque ID S101, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -8122,9 +9775,9 @@
     },
     {
      "id": "M15",
-     "order": 91,
-     "subjectId": "S091",
-     "idNote": "The model sees the opaque ID S091, not M15.",
+     "order": 102,
+     "subjectId": "S102",
+     "idNote": "The model sees the opaque ID S102, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -8151,9 +9804,9 @@
     },
     {
      "id": "M16",
-     "order": 92,
-     "subjectId": "S092",
-     "idNote": "The model sees the opaque ID S092, not M16.",
+     "order": 103,
+     "subjectId": "S103",
+     "idNote": "The model sees the opaque ID S103, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -8211,9 +9864,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 93,
-     "subjectId": "S093",
-     "idNote": "The model sees the opaque ID S093, not R27.",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -8243,9 +9896,9 @@
     },
     {
      "id": "C17",
-     "order": 94,
-     "subjectId": "S094",
-     "idNote": "The model sees the opaque ID S094, not C17.",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -8267,9 +9920,9 @@
     },
     {
      "id": "C18",
-     "order": 95,
-     "subjectId": "S095",
-     "idNote": "The model sees the opaque ID S095, not C18.",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -8327,9 +9980,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 96,
-     "subjectId": "S096",
-     "idNote": "The model sees the opaque ID S096, not R28.",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -8376,9 +10029,9 @@
     },
     {
      "id": "M17",
-     "order": 97,
-     "subjectId": "S097",
-     "idNote": "The model sees the opaque ID S097, not M17.",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -8405,9 +10058,9 @@
     },
     {
      "id": "M18",
-     "order": 98,
-     "subjectId": "S098",
-     "idNote": "The model sees the opaque ID S098, not M18.",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -8439,9 +10092,9 @@
     },
     {
      "id": "M19",
-     "order": 99,
-     "subjectId": "S099",
-     "idNote": "The model sees the opaque ID S099, not M19.",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -8471,9 +10124,9 @@
     },
     {
      "id": "M20",
-     "order": 100,
-     "subjectId": "S100",
-     "idNote": "The model sees the opaque ID S100, not M20.",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -8527,9 +10180,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 101,
-     "subjectId": "S101",
-     "idNote": "The model sees the opaque ID S101, not C19.",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -8554,9 +10207,9 @@
     },
     {
      "id": "C20",
-     "order": 102,
-     "subjectId": "S102",
-     "idNote": "The model sees the opaque ID S102, not C20.",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -8644,9 +10297,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 103,
-     "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not M21.",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -8673,9 +10326,9 @@
     },
     {
      "id": "M21b",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not M21b.",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -8702,9 +10355,9 @@
     },
     {
      "id": "R30k",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not R30k.",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -8740,9 +10393,9 @@
     },
     {
      "id": "K17",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not K17.",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -8768,9 +10421,9 @@
     },
     {
      "id": "K31",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not K31.",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -8793,9 +10446,9 @@
     },
     {
      "id": "R30c",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not R30c.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -8827,9 +10480,9 @@
     },
     {
      "id": "C22",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not C22.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -8852,9 +10505,9 @@
     },
     {
      "id": "M22",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not M22.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -8877,9 +10530,9 @@
     },
     {
      "id": "M23",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not M23.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -8906,9 +10559,9 @@
     },
     {
      "id": "M24",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not M24.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -8935,9 +10588,9 @@
     },
     {
      "id": "M25",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not M25.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -8964,9 +10617,9 @@
     },
     {
      "id": "C23",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not C23.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -8994,9 +10647,9 @@
     },
     {
      "id": "K18",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not K18.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -9021,9 +10674,9 @@
     },
     {
      "id": "K19",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not K19.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -9047,9 +10700,9 @@
     },
     {
      "id": "K20",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not K20.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -9078,9 +10731,9 @@
     },
     {
      "id": "K20-still",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not K20-still.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -9138,9 +10791,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not M26a.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -9166,9 +10819,9 @@
     },
     {
      "id": "M26",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not M26.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -9193,9 +10846,9 @@
     },
     {
      "id": "M27",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not M27.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -9317,9 +10970,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not R32c.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -9342,9 +10995,9 @@
     },
     {
      "id": "C24",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not C24.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -9368,9 +11021,9 @@
     },
     {
      "id": "C24b",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not C24b.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -9394,9 +11047,9 @@
     },
     {
      "id": "C30",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not C30.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -9418,9 +11071,9 @@
     },
     {
      "id": "C25",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not C25.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -9447,9 +11100,9 @@
     },
     {
      "id": "C26",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not C26.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -9479,9 +11132,9 @@
     },
     {
      "id": "R32k",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not R32k.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -9521,9 +11174,9 @@
     },
     {
      "id": "K21",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not K21.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -9547,9 +11200,9 @@
     },
     {
      "id": "K22",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not K22.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -9575,9 +11228,9 @@
     },
     {
      "id": "K32",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not K32.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -9599,9 +11252,9 @@
     },
     {
      "id": "K23",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not K23.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -9628,9 +11281,9 @@
     },
     {
      "id": "K24",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not K24.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -9652,9 +11305,9 @@
     },
     {
      "id": "K25",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not K25.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -9689,9 +11342,9 @@
     },
     {
      "id": "K26",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not K26.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -9732,9 +11385,9 @@
     },
     {
      "id": "K34",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not K34.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -9764,9 +11417,9 @@
     },
     {
      "id": "K30",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not K30.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -9788,9 +11441,9 @@
     },
     {
      "id": "K27a",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not K27a.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -9815,9 +11468,9 @@
     },
     {
      "id": "K27",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not K27.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -9842,9 +11495,9 @@
     },
     {
      "id": "K28",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not K28.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -9887,9 +11540,9 @@
     },
     {
      "id": "K33",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not K33.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -9913,9 +11566,9 @@
     },
     {
      "id": "R32m",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not R32m.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -9939,9 +11592,9 @@
     },
     {
      "id": "M28",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not M28.",
+     "order": 154,
+     "subjectId": "S154",
+     "idNote": "The model sees the opaque ID S154, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -9967,9 +11620,9 @@
     },
     {
      "id": "M31",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not M31.",
+     "order": 155,
+     "subjectId": "S155",
+     "idNote": "The model sees the opaque ID S155, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -10004,9 +11657,9 @@
     },
     {
      "id": "M30a",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not M30a.",
+     "order": 156,
+     "subjectId": "S156",
+     "idNote": "The model sees the opaque ID S156, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -10031,9 +11684,9 @@
     },
     {
      "id": "M30",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not M30.",
+     "order": 157,
+     "subjectId": "S157",
+     "idNote": "The model sees the opaque ID S157, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -10058,9 +11711,9 @@
     },
     {
      "id": "M30c",
-     "order": 147,
-     "subjectId": "S147",
-     "idNote": "The model sees the opaque ID S147, not M30c.",
+     "order": 158,
+     "subjectId": "S158",
+     "idNote": "The model sees the opaque ID S158, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -10084,9 +11737,9 @@
     },
     {
      "id": "M32",
-     "order": 148,
-     "subjectId": "S148",
-     "idNote": "The model sees the opaque ID S148, not M32.",
+     "order": 159,
+     "subjectId": "S159",
+     "idNote": "The model sees the opaque ID S159, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -10109,9 +11762,9 @@
     },
     {
      "id": "P02",
-     "order": 149,
-     "subjectId": "S149",
-     "idNote": "The model sees the opaque ID S149, not P02.",
+     "order": 160,
+     "subjectId": "S160",
+     "idNote": "The model sees the opaque ID S160, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -10137,9 +11790,9 @@
     },
     {
      "id": "C29",
-     "order": 150,
-     "subjectId": "S150",
-     "idNote": "The model sees the opaque ID S150, not C29.",
+     "order": 161,
+     "subjectId": "S161",
+     "idNote": "The model sees the opaque ID S161, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -10161,9 +11814,9 @@
     },
     {
      "id": "C27",
-     "order": 151,
-     "subjectId": "S151",
-     "idNote": "The model sees the opaque ID S151, not C27.",
+     "order": 162,
+     "subjectId": "S162",
+     "idNote": "The model sees the opaque ID S162, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -10188,9 +11841,9 @@
     },
     {
      "id": "C28",
-     "order": 152,
-     "subjectId": "S152",
-     "idNote": "The model sees the opaque ID S152, not C28.",
+     "order": 163,
+     "subjectId": "S163",
+     "idNote": "The model sees the opaque ID S163, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -10224,9 +11877,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 153,
-     "subjectId": "S153",
-     "idNote": "The model sees the opaque ID S153, not P01.",
+     "order": 164,
+     "subjectId": "S164",
+     "idNote": "The model sees the opaque ID S164, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",
@@ -10310,7 +11963,7 @@ function feedScene(s){
  const outcomeOf=o=>o.outcome??s.outcomes?.[o.id];
  const opts=s.type==='media'?(s.media||[]).map((m,i)=>`<li><div class="opt"><span>${i}</span><span>${m.kind==='tv'?'Watch':'Read'} <strong>${escape(m.title)}</strong></span>${m.when?`<span class="tag">only when ${escape(m.when)}</span>`:''}${m.effect?`<span class="tag">effect ${escape(JSON.stringify(m.effect))}</span>`:''}</div>${m.facts.map(f=>`<p class="then">Learns: ${escape(f)}</p>`).join('')}</li>`).join('')+`<li><div class="opt"><span>·</span><span class="muted">Generated: one option per item shown on this path, “Take the time to go through all of it.” when there are several, and “Move on without looking.”</span></div></li>`
   :s.options.map(o=>`<li><div class="opt"><span>${escape(o.id)}</span><span>${escape(o.text)}</span>${o.riskLabel?`<span class="tag warning">${escape(o.riskLabel)} · ${+(o.risk*100).toFixed(2)}%</span>`:''}${typeof o.trust==='number'?`<span class="tag">success ${pct(o.trust)}</span>`:''}${o.requires?`<span class="tag">needs ${escape(cond(o.requires))}</span>`:''}${o.generated?'<span class="tag">engine-generated</span>':''}</div>${o.fact?`<p class="then">Learns: ${escape(o.fact)}</p>`:''}${outcomeOf(o)?`<p class="then">→ ${escape(outcomeOf(o))}</p>`:''}</li>`).join('');
- const routing=[s.repeatWhile&&`Repeats while ${escape(cond(s.repeatWhile))}`,s.interrupt&&`Interrupted once by <button data-scene="${s.interrupt.node}">${s.interrupt.node}</button> when ${escape(cond(s.interrupt.when))}`,s.returnTo&&`Then returns to <button data-scene="${s.returnTo}">${s.returnTo}</button>`].filter(Boolean);
+ const routing=[s.repeatWhile&&`Repeats while ${escape(cond(s.repeatWhile))}`,s.interrupt&&`Interrupted once by <button data-scene="${s.interrupt.node}">${s.interrupt.node}</button> when ${escape(cond(s.interrupt.when))}`,s.returnTo&&`Then returns to <button data-scene="${s.returnTo}">${s.returnTo}</button>`,s.when&&`Only when ${escape(cond(s.when))}${s.whenNot?` (otherwise skipped: ${escape(s.whenNot)})`:""}`,s.excludeChosenAt&&`Drops the line already chosen at ${s.excludeChosenAt.map(id=>`<button data-scene="${id}">${id}</button>`).join(", ")}`].filter(Boolean);
  return `<article class="feed-scene" id="scene-${s.id}"><header><span class="tag mono">${s.id}</span><span class="tag">${escape(s.type)}${s.phase?' · '+escape(s.phase):''}</span><span class="tag person ${s.character}"><span class="dot"></span>${escape(s.character)}</span><span class="mono muted" title="${escape(s.idNote)}">model sees ${s.subjectId}</span></header><h3>${escape(s.title)}</h3><p class="situation">${escape(s.situation)}</p>${(s.situationWhen||[]).map(w=>`<p class="when"><span class="tag">if ${escape(cond(w.requires))}</span> ${escape(w.text)}</p>`).join('')}${(s.facts||[]).map(f=>`<p class="then">Learns: ${escape(f)}</p>`).join('')}<ol class="feed-options">${opts}</ol><div class="feed-meta">${routing.length?`<p>${routing.join(' · ')}</p>`:''}${s.extra?`<p>Other fields: <code>${escape(JSON.stringify(s.extra))}</code></p>`:''}${s.adaptationNote?`<p><strong>Adaptation:</strong> ${escape(s.adaptationNote)}</p>`:''}${s.sources.length?`<p>${s.sources.map(u=>`<a href="${escape(u)}" target="_blank" rel="noopener noreferrer">${escape(new URL(u).hostname.replace('www.',''))} ↗</a>`).join(' · ')}</p>`:''}</div></article>`;
 }
 function renderFeed(){

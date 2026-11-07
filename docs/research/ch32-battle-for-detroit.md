@@ -102,7 +102,7 @@ The wiki states no probabilities for this chapter.
 |---|---|
 | Kara | `THE GROUP CROSSED THE BORDER`: no sacrifice at the border while Markus is demonstrating, Luther alive. The wiki calls it "widely considered the best". The safe alternatives are `KARA & ALICE SURVIVED` (river, captured) and `KARA, LUTHER AND ALICE ESCAPED ON TRUCK`. |
 | Markus | `ANDROIDS WON FREEDOM - FOR THE MOMENT` (sing or kiss with public opinion at least Sympathetic), or `ASSAULT WAS SUCCESSFUL` (revolution). |
-| Connor (deviant) | `THE ANDROIDS WOKE UP` with Hank alive: save Hank, then answer COLE. Then escape the Zen Garden through Kamski's exit (trophy `MY TURN TO DECIDE`), and the Hank-and-Connor hug in the credits (Hank FRIEND and a successful uprising). |
+| Connor (deviant) | `THE ANDROIDS WOKE UP` with Hank alive: save Hank, then answer COLE. Then escape the Zen Garden through Kamski's exit (trophy `MY TURN TO DECIDE`), and the Hank-and-Connor hug in the credits (wiki Secret-Endings: Hank alive, both survive Connor-60, Markus alive and successful, Connor resists the hack; the Hank page adds FRIEND). |
 | Connor (machine) | `CONNOR LEFT ROOFTOP` via GIVE UP, which needs Hank FRIEND. |
 
 ---
@@ -118,9 +118,11 @@ Icon key, as in the earlier notes:
 - [dialogue] = speech-bubble icon (a conversation node)
 - [cond] = yellow condition tab with a padlock, gating the node after it
 - [skull] = yellow tab with a skull on an ending
-- [⊘] = yellow tab with a no-entry sign
+- [⊘] = yellow tab with a circle-slash, or a small black circle-slash on an option row. The game's legend calls it `NOT REQUIRED FOR COMPLETION` (`GUI.MENU.FLOWCHART.LEGEND.NOCOMPLETION`; wiki `Template:Icon` `cc_notrequired.png` / `notrequired.png`, per `docs/research/SOURCES.md` §9). It is not a failure marker.
 
-On this chapter's Kara charts, [⊘] marks exactly the endings and choices in which Alice dies (for example `KARA & ALICE DIED`, `ALICE DIED AND KARA CONTINUED ALONE`, `SURRENDER`). [skull] marks the endings in which Kara dies but Alice lives (`KARA DIED AND ALICE SURVIVED`, `ALICE GOT TO CANADA WITH ROSE`, `ALICE ESCAPED ON TRUCK`). On the Connor and Markus charts every death ending carries [skull]. Large image cards are endings, start cards or checkpoints. "CHECKPOINT" is quoted only where the card prints it.
+The game's legend also lists node types (`ACTION`, `EVENT`, `DIALOG`, `CHOICE`, `SEARCH`), path types (`SUCCESS` ✓, `FAILURE` ✗) and `CROSS-CHAPTER IMPACT` (the yellow padlock tab) and `DEATH` (the yellow skull tab).
+
+On this chapter's Kara charts, [⊘] sits on every ending and option in which Alice dies or is abandoned (for example `KARA & ALICE DIED`, `ALICE DIED AND KARA CONTINUED ALONE`, the `SURRENDER` row, `KARA LEAVES CAMP WITHOUT ALICE` even when Markus later frees her). [skull] marks the endings in which Kara dies but Alice lives (`KARA DIED AND ALICE SURVIVED`, `ALICE GOT TO CANADA WITH ROSE`, `ALICE ESCAPED ON TRUCK`). So on these two charts the game treats losing Alice as not required for completion. On the Connor and Markus charts every death ending carries [skull] and no [⊘] appears. Large image cards are endings, start cards or checkpoints. "CHECKPOINT" is quoted only where the card prints it.
 
 Labels below are copied from the game string table (`strings04A.txt`) and checked against the photographs. Every drawn label matches a string. Strings that exist but are not drawn are listed per chart.
 
@@ -582,7 +584,7 @@ Images used:
 |---|---|---|---|
 | 1 | `CYBERLIFE HQ` | checkpoint card ("LOAD CHECKPOINT") | chapter start |
 | 2 | `FOLLOW GUARDS` | [arrow] | #1 |
-| 3 | `INSIDE ELEVATOR` | checkpoint card | #2 |
+| 3 | `INSIDE ELEVATOR` | large card, no caption (ID `CHECKPOINTCYBERLIFEELEVATOR`) | #2 |
 | - | `FIND A WAY TO ESCAPE` | bracketed phase label | |
 | 4 | `SPOT CAMERA` | [arrow] | bracket |
 | 5 | `HACK CAMERA` | [arrow] | #4 |
@@ -700,7 +702,7 @@ Images used:
 | 28 | `ACCEPT DEAL` | [choice] row 1 | #26 |
 | 29 | `REFUSE DEAL` | [choice] row 2 | #26; to #37 |
 | 30 | `PERKINS LEAVES` | [triangle] | #28 |
-| 31 | `IN THE DISMANTLED BARRICADE` | checkpoint card | #30 |
+| 31 | `IN THE DISMANTLED BARRICADE` | large card, no caption (ID `CPNEGOTIATE`; PowerPyx: "(Checkpoint)") | #30 |
 | 32 | `TALK TO PERKINS` | [arrow] | #31 |
 | 33 | `TALK TO NORTH` | [arrow] | #31; North alive |
 | 34 | `PERKINS SHOOTS NORTH` | [triangle] | #32; North alive |
@@ -809,7 +811,7 @@ Images used:
 
 | # | Node | Icon | Follows / gate |
 |---|---|---|---|
-| 41 | `APPROACHING RECALL CENTER N°5` | checkpoint card | #31, #34/#35 |
+| 41 | `APPROACHING RECALL CENTER N°5` | large card, no caption (ID `CHECKPOINTNEARCAMP`; PowerPyx lists it as a checkpoint) | #31, #34/#35 |
 | 42 | `FINAL ASSAULT` | [arrow] | #41 |
 | 43 | `MARKUS IS HIT BY EXPLOSION` | [triangle] | #42 |
 | 44 | `CONNOR FINDS MARKUS` | [triangle] | #43; Connor is a machine |
@@ -1382,7 +1384,9 @@ On the leader path, the wiki's Amanda page says an escape ends with Connor "read
 | Lighten the boat | 4 minutes | PowerPyx: "if you didn't lighten the boat within the four-minute timeframe, the boat will sink" |
 | Alice's panic | Stress 100% | PowerPyx: "she will run towards you, once her stress level has reached 100%" |
 | Elevator | Must be stopped before Floor 31; target Floor -49 | HUD `STOP ELEVATOR BEFORE FLOOR 31`, `REACH FLOOR -49` |
-| Revolution success rate | Reader-reported only: "After the timer runs out (11 seconds), they get shot, and your success % drops about 10%"; "You lose about 5% every minute or so"; "The percentage should be 45%" at the first barricade; "I've rescued Simon and the % is at 33%" | PowerPyx comments (sandman1008, DarkCreature, Pam). Not on the wiki. |
+| Revolution success rate | An on-screen gauge `PROBABILITY OF SUCCESS` (`GUI.VICTORY.TITLE`) with modifier captions `MARKUS WOUNDED`, `TIME WASTED`, `ANDROIDS KILLED`, `GAIN GROUND`, `SOLDIERS KILLED` (`GUI.VICTORY.COMMENT01` to `05`). The values are reader-reported only: "After the timer runs out (11 seconds), they get shot, and your success % drops about 10%"; "You lose about 5% every minute or so"; "The percentage should be 45%" at the first barricade; "I've rescued Simon and the % is at 33%". At 0% the androids fall back. | Game strings; PowerPyx comments (sandman1008, DarkCreature, Pam). Not on the wiki. |
+| Timer captions | Kara's street and checkpoint timer reads `LAST BUS DEPARTS` (`GUI.TIMER.WARZONE`); Kara Captured's `TIME BEFORE SHUTDOWN` (`GUI.TIMER.CAMP`) | Game strings |
+| Alice's stress meter | Gauge `ALICE'S STRESS` (`GUI.GAUGE.STRESS.ALICE`) | Game string |
 | Markus badly wounded | After repeated hits; no count stated | wiki/PowerPyx. The benchmark's `markusHits>=3` is its own assumption. |
 | Press conference | "up to 4 or 5" questions | wiki Flowchart intro |
 | Peaceful ending threshold | Public opinion at least Sympathetic | see the next table |
@@ -1655,14 +1659,15 @@ These are from the transcripts and wiki character pages. None is a chart node.
   - Markus died any other way: "The total destruction of all androids will soon be complete".
   - Dirty bomb: "The city may remain uninhabitable for decades… Markus: We!.. Are!.. Free!"
 
-**Credits scenes:**
-- Hank waits at the Chicken Feed and hugs Connor: "If Connor and Hank are both alive; their relationship status is FRIEND and there has been a successful android uprising".
-- Machine Connor is replaced by the RK900 after a thwarted uprising: "Amanda introduces him to the upgraded RK900 Connor model and tells him he will be deactivated".
-- Machine-Connor success in a spring Zen Garden.
-- Kara sees a YK500 advertisement: Kara abandoned Alice "and Markus was successful".
-- Zlatko's servant Kara (from the Zlatko chapter).
-- The "Kamski ending" Hank suicide (Connor deactivated, Kara dead or a servant, Markus dead or banned).
-- Kara Captured escapees at the landfill (AM 07:37).
+**Credits scenes.** These are the wiki `Secret-Endings` page's six (five after the credits, one before), plus the regular epilogues.
+
+- **"A Happy ending":** Hank waits at the Chicken Feed and hugs Connor. Conditions: "Connor must become deviant in Crossroads, Hank must not commit suicide in Night of the Soul, Connor and Hank must survive their encounter with Connor-60, Markus must be alive and lead a successful Revolution or Demonstration, and Connor must resist CyberLife's hacking attempt". The Hank page adds "their relationship status is FRIEND".
+- **"Mission Accomplished" / "Cyberlife Ending":** Amanda presents the RK900 and tells Connor he is obsolete. Conditions: "Machine Connor must be successful in stopping Markus' Revolution or Markus must die during Battle of Detroit, and Detroit must not be nuked". The spring Zen Garden.
+- **"Alone again":** Kara sees a YK500 flyer. Conditions: Kara abandoned Alice in Crossroads, or at the camp (`VOLUNTEER` → truck → leave), and "Markus must lead either a successful Revolution or Demonstration (excluding the nuclear endings)".
+- **"Wasted Potential" / "Unpopular Markus":** Markus was exiled from Jericho in Crossroads.
+- **"Square One":** Kara reset by Zlatko.
+- **"Kamski Ending":** Kara dead or reset before The Pirates' Cove, Connor failed to locate Jericho, Markus dead in Freedom March or exiled. Hank's Russian roulette and Kamski's interview.
+- **Regular epilogue:** Kara Captured escapees at the landfill (AM 07:37).
 
 **Chloe.** After the credits on the first completion: `YES` (she leaves) / `NO` (she resets).
 
@@ -1694,8 +1699,294 @@ These are from the transcripts and wiki character pages. None is a chart node.
 - Hack the camera, copy the guard's voice, reach Floor -49.
 - `STOP CONVERSION TO SAVE HANK` → fight → `SUMO` and `COLE` (or win the fight).
 - `THE ANDROIDS WOKE UP` with Hank alive (trophies `AN ARMY OF ME`, `PARTNERS` if FRIEND).
-- Escape the Zen Garden (`MY TURN TO DECIDE`); the Hank hug in the credits.
+- Escape the Zen Garden (`MY TURN TO DECIDE`) with Markus alive and successful; that unlocks the Hank hug in the credits.
 
 **Connor, machine:** with Hank FRIEND, insist on the son and `LEAVE` (`CONNOR LEFT ROOFTOP`). The machine "success" endings (`CONNOR STOPPED THE REVOLUTION`, the crowd shot) kill Markus.
 
 **`SURVIVORS` needs everyone alive at the end.** Per the PowerPyx trophy guide title, "everyone survives".
+
+---
+
+## 6. Media
+
+There are two magazines (the last two of the 46: #45 and #46 on the wiki Magazine page) and several broadcasts. **No source states a public-opinion effect for any media item in this chapter.** Neither the Public Opinion page nor the transcript tags one.
+
+### Magazine: "They Defy Us" (#45, Detroit Today)
+
+Markus Demonstration, node `READ "THEY DEFY US"`. Location: "on a bench on the right side of the encampment", only on the demonstration path (wiki); PowerPyx: "Magazine No. 45".
+
+Headlines:
+- "Androids rise up in Detroit"
+- "President Warren to make state visit to United Kingdom"
+- "NATO Security Council divided over Arctic dispute"
+
+Article facts:
+- "Androids have taken to the streets of Detroit in apocalyptic scenes."
+- Detroit is "in the grip of a national product recall, with androids seized from every home and business to be destroyed by the authorities as a precaution".
+- "a group of androids … have gathered in a terrifying show of force". The androids "have barricaded themselves in a fortified position and seem to be angling for an armed confrontation".
+- Captain Fowler: "We hope to bring this matter to a swift conclusion and refocus on collecting androids as soon as possible".
+
+The wiki chapter Notes add: "a news tablet can be found in the barricade. If read, it shows the concurrent news, which has the lie that the deviants are planning an attack."
+
+### Magazine: "Civil War in Detroit" (#46, Detroit Today)
+
+Kara Leaving Detroit, node `READ "CIVIL WAR"`. Location: "on the right side of the bus terminal, at the pile of suitcases - but only if Markus chose the revolution option".
+
+Headlines:
+- "Violent clashes between soldiers and 'deviants'"
+- "UN warns of World War Three"
+- "President Warren at 33% approval"
+
+Article facts:
+- The same opening paragraphs as "They Defy Us".
+- The androids "have assaulted one of the android disassembly camps in a terrifying show of force".
+- "With total disregard for civilian life, the androids have armed themselves and opened fire in the middle of crowded streets."
+- The military is "supported by Federal agents and local police officers"; Warren is "monitoring the situation from the White House".
+
+### Undrawn magazine slot
+
+Both the `KA` and `MB` string tables also hold `MAGAZINE2ND = FEED LOST`. It is not drawn on either chart and no wiki magazine matches it. It is probably a cut second item.
+
+### Broadcasts
+
+**Kara:**
+- `WATCH BROADCAST ABOUT JERICHO'S ATTACK`: a shop window on the opening street, only if Jericho was attacked. Luther's line: "We were lucky to leave just before the attack…". Readers report it is fiddly to unlock.
+- `WATCH TV` at the terminal: `MARKUS ATTACKS HUMANS` or `MARKUS LEADS PROTEST`. Kara: "Markus…". A reader says you must walk right up to the screens.
+- `WATCH TERMINAL TVs`: the departures board.
+- `SEE NEWS BULLETIN` at the border: `ANDROIDS CHARGING THE CAMP` / `ANDROIDS DEMONSTRATING`. Queue chatter: "They're peaceful… Maybe they're alive, after all…" / "They're violent… We have to destroy them before they kill us all…"
+
+**CyberLife Tower lobby TV.** Not on the chart and not in the fan transcript. Game strings `X1302C.TV.NEWS`, anchor Brinkley, two variants:
+- "Several Pro-Human activist groups have infiltrated CyberLife stores in Dallas and Austin to protest against the sale of androids… The Pro-Human organization demands that humans be prioritized in the labor market and has called for a moratorium on the development of androids."
+- "Members of the anti-android group "People First" have infiltrated several CyberLife stores in Dallas and Austin, Texas, in order to sabotage android stocks there… their androids had randomly started repeating People First slogans on a loop… hacked the androids with recordings of political propaganda."
+
+**Markus:**
+- Channel 16, Joss Douglas, at the march: "thousands of androids are marching through the city… The leader of the deviants, the one they call Markus, is at the head of the march".
+- At the attack: "The army has just launched an attack on the barricade, despite the fact that the deviants were protesting peacefully".
+- During the singing: "The deviants are singing… They're singing the national anthem…" The anthem is "Hold On" per the wiki Notes.
+- Revolution, CTN/Channel 16: "the situation is escalating toward civil war in Detroit… Soldiers have taken up positions around the Hart Plaza camp."
+
+**President Warren.** The press conference (§1g) and the closing addresses (§5).
+
+---
+
+## 7. Current benchmark coverage
+
+`benchmark/story.json` (story 1.6.0) tags 31 nodes as chapter 32 and 1 as chapter 33. In file order:
+- `R32c`, `C24`, `C24b`, `C30`, `C25`, `C26`
+- `R32k`, `K21`, `K22`, `K32`, `K23`, `K24`, `K25`, `K26`, `K34`, `K30`, `K27a`, `K27`, `K28`, `K33`
+- `R32m`, `M28`, `M31`, `M30a`, `M30`, `M30c`, `M32`
+- `P02`, `C29`, `C27`, `C28`
+- `P01` (chapter 33)
+
+Gating and outcomes live in `benchmark/story-engine.mjs`: the `gate` table at lines 117 to 145, `available` at 164 to 172, and `apply` at 276 to 306. Risks are benchmark assumptions; none corresponds to a published probability.
+
+### Connor
+
+| Benchmark scene | Game nodes | Assessment |
+|---|---|---|
+| `R32c` (lobby TV) | none on chart; `X1302C.TV.NEWS` | Correct. The game has two variants; the benchmark uses the "People First" one. Gate "Only a deviant Connor enters the tower lobby" is correct. |
+| `C24` ({{Hank}} on the rooftop) | CA #8 to #13 | Options map to `GIVE UP` / `ATTACK HANK`. **Missing:** the two Hank dialogue rounds and the `HANK'S SON` → `HANK'S SON (INSIST)` step, which gates GIVE UP in the game (transcript lock "Be friend with Hank"; wiki "if Connor asked twice about Hank's son"). The engine gates option 0 on `hankTrust>=HANK_FRIEND && knowsCole`, so it substitutes knowledge of Cole for the insist step. **Missing:** the rooftop Hank large drop on arrival and the large drops for not insisting or attacking. Risk 0.3 on the fight stands in for the `CONNOR WINS` / `HANK WINS` quick-time event. |
+| `C24b` (Captain {{Allen}}) | CA #23 to #31 | **Mislabelled.** Option 0 "Talk and try to leave peacefully" corresponds to `FLEE` → `CONNOR JUMPS OFF THE ROOF`. The talk round (`OBEY`/`EXPLAIN`/`CONTINUE`) always precedes the choice and never ends peacefully. Option 1 `ATTACK ALLEN` with risk 0.4 matches the `KILL ALLEN AND HIS MEN` / `CONNOR FAILS TO DEFEND HIMSELF` outcome. |
+| `C30` ({{Hank}} at the edge) | CA #14 to #21 | Options match `LET HANK GO` / `SAVE HANK`. **Missing:** after `SAVE HANK`, `HANK RUSHES CONNOR` has a dodge outcome. Failing it gives `CONNOR FALLS AND GETS DESTROYED`, a Connor death the benchmark never produces; it always kills Hank. |
+| (none) | CA #1 to #2 `IN THE ZEN GARDEN` / `TALK TO AMANDA` | Missing scripted intro, when Markus shot the deviant Connor. |
+| `C25` (The other {{Connor}}) | CB #29 to #31 | Maps to `SACRIFICE HANK…` / `STOP CONVERSION TO SAVE HANK`. **Missing:** the hostage dialogue (`GUARANTEE`/`HANK`/`BLUFF`/`CONVINCE`); the save-Hank sub-choice (`DRAW GUN` / `ATTACK NEW CONNOR` / `CONVERT` / timeout `OUT OF TIME` → androids dormant); after sacrificing, the four-way `NEW CONNOR APPROACHES` choice (`SWAP CONSCIOUSNESS` / `TALK` / `TRY TO STAND` / `DRAW GUN`), which decides whether Connor survives (`TRANSFER`). The benchmark models these with a failure roll (risk 0.25 / 0.15) instead. |
+| `C26` (Which one of you) | CB #51 to #61 | **Mislabelled and simplified.** The game asks two separate questions, each with four names: dog `SUMO`/`SCOUT`/`JACK`/`BUDDY`, then son `COLE`/`ANTHONY`/`GABRIEL`/`ELLIOTT`. The dog answer does not matter. The benchmark offers one combined answer, a swapped decoy and "I don't know". The adaptation note "Only the son's name matters" is correct. Also missing: `CONNORS FIGHT` can end with Connor winning outright → `RESUME CONVERSION`, with no question. |
+| (none) | CB #1 to #25 | Missing: the elevator sandbox (hack the camera, attack the guards, copy the voice, the Floor 31 timer) with three Connor death endings, and the Floor -49 guard fight. |
+| (none) | CB #27 to #28 | Missing: `A NEW CONNOR ARRIVES` when Hank is dead. The benchmark gates `C25` on a living Hank, so a deviant Connor with Hank dead has no tower scene at all. The engine's `armyAwakened(s)` then decides the army off-scene. |
+| `C29` (In the crowd) | off-chart, machine Connor, successful demonstration | Options match `SHOOT` / `DON'T SHOOT`. **Mislabelled outcome:** in the game `DON'T SHOOT` makes Amanda seize control and the Zen Garden escape follows. The benchmark has Connor walk away with Amanda −2. |
+| `C27` ({{Amanda}}) | off-chart Zen Garden, deviant Connor beside Markus | Correct in substance: escape or not, with Markus shot on failure. The risk 0.3 stands in for the escape run. **Missing:** the software-instability large drop on failure (wiki), which the engine does not apply. Note also the `FIND GARDEN STONE ?` vs `FIND AN EMERGENCY EXIT ?` objective depending on whether the stone was seen earlier. |
+| `C28` (The last leader) | off-chart, Connor as leader | Options map to `SUICIDE` / `GIVE UP`. Correct. |
+| (none) | MA #44 to #52, #60 to #69, #93 to #101 | Machine Connor's later encounters are partly covered (`P02`). **Missing:** the store scenes (`CONNOR ARRIVES` → `SHOOT`/`SPARE`/`NO CHOICE`) and North's store (`FIND NORTH` → `SHOOT`/`SPARE`/`NO CHOICE`). |
+
+### Kara
+
+| Benchmark scene | Game nodes | Assessment |
+|---|---|---|
+| `R32k` (terminal screens and magazine) | KA #45 to #48 | Correct. TV variants by Markus's approach; Civil War only on the revolution path. `WATCH TERMINAL TVs` and the street broadcast #3 are not represented. |
+| `K21` (The last bus) | KA #8 to #20 | Maps to `SAVE JERRYS`/`SAVE LUTHER` vs `HURRY`. The failure roll (0.25) → camp matches the transcript "Fail" → arrested. **Missing:** the gun nodes, `HIDE FROM MILITARY`, the optional `DEACTIVATE`/`LEAVE ON`, and `SPOTTED BY SOLDIERS` at other moments. The engine's "Keep moving" executes the captives ("…are executed by the roadside"); the game does not show that. |
+| `K22` (The checkpoint) | KA #22 to #24, #41 to #44 | **Mislabelled mechanics.** The game has no capture at the checkpoint; the benchmark gives option 0 risk 0.1 → camp. The detour's cost is the timer ("11 minutes or more remaining"), not a random 0.15. **Missing:** the three checkpoint dialogue rounds. |
+| `K32` (The soldier calls you back) | KA #27 to #31 | Correct for Kara alone. **Missing:** the Luther variant (`LUTHER IS NERVOUS` with two shoot/stay-calm prompts). The engine plays `K32` with Luther present too and gives Luther +1 for staying calm, which matches the final `DO NOTHING` tag. |
+| `K23` ({{Todd}}) | KA #57 to #64 | The structure matches: only the box-based story (`YOUR STORY`) persuades him, and the engine gates option 0 on `aliceBox`. The game offers six lines (`APPEAL`, `THREATEN`, `CONFRONT`, `CONVINCE`, `BREAK FREE`, `YOUR STORY`) where the benchmark has three. **Mislabelled flow:** Todd is a free-roam encounter. Persuading him does not by itself get Kara a way out; the benchmark sends her to the river when late. |
+| `K24` (The dropped tickets) | KA #49 to #52 | Correct options. The game asks twice before Kara keeps them. **Missing:** `RETURN TICKETS` does not lead straight to the river in the game; the player must `FIND ADAM`, or use Luther's diversion at `SECURITY CHECK`. **Missing entirely:** `SECURITY CHECK` (`FLEE`/`HAND OVER ID`/`ASK LUTHER TO CREATE DIVERSION`) and its two execution endings. |
+| `K25` (The border) | KA #88 to #105 | Correct: four options, matching gates and outcomes. **Missing:** the border free roam (Rose's restroom talk, Luther's and Jerry's offers) and the scripted temperature check and execution. The engine requires `s.markus&&s.markusActive` for the peaceful crossing. The game keys on demonstration vs revolution; see §8. |
+| `K26` (The river patrol) | KA #114 to #125 | Six options match the chart. Gating (`HIDE` only without Luther, `HIDE BEHIND LUTHER` only with him) matches. **Mismatch:** `DIVE` carries risk 0.15 of wounding Kara. The wiki and readers say diving always leaves both unhurt. |
+| `K34` (The sinking boat) | KA #126 to #134 | Simplified from the sandbox (`CAST LUTHER AWAY`, `DISPOSE OF SUPPLIES`, `ROW`, `REASSURE ALICE`, `DISPOSE OF ENGINE` → `DIVE`) with a four-minute timer. The risk 0.2 is a stand-in for the timer. Acceptable as an adaptation. |
+| `K30` (The far shore) | KA #138 to #141 | Correct (`CONTINUE LIVING` / `KARA CHOOSES DEATH`). |
+| `K27a` (The camp) | KB #25 to #30 | Correct (`VOLUNTEER` / `SAY NOTHING`). |
+| `K27` (The truck) | KB #31 to #36 | Correct (`LEAVE` / `GO BACK`). |
+| `K28` (Getting to {{Alice}}) | KB #74 to #100, #102 to #120 | **Simplified.** The game has two diversions: first to reach Alice (Jerry or the scarred android only), then to escape (Jerry, Ralph, Luther or the scarred android). Its adaptation note says so. "Stay in line and wait" matches `REACH RECYCLING MACHINE` → `MARKUS LIBERATES ANDROIDS` (revolution success) or death. The engine marks each diverter except the scarred android as killed; the game kills Ralph (and Luther at the wire). Jerry only gets beaten in the first diversion; `JERRY DIES` happens separately in the machine. |
+| `K33` (The fence) | KB #131 to #142 | Correct (`FIGHT SOLDIER` / `PASS THE BARBED WIRE`), with Ralph or Luther rescue on a lost fight. **Missing:** `KARA IS TOO SLOW` and `KARA IS TOO DAMAGED TO PROCEED` (Kara shot earlier → only Alice and Luther escape). |
+| (none) | KB #2 to #23, #37 to #62, #63 to #73, #84 to #96 | **Missing:** the truck and gate reassurance dialogue; `CONVINCE SOLDIER`/`CONVINCE ALICE`/`INTERVENE`; the enclosure (drone `MOVE`/`REMAIN STILL`, which sets "Kara shot"; Luther taken away; Ralph); `ALICE IS TERRIFIED` (five ways); Alice's questions; and above all `ALICE PANICS AND RUNS TO KARA` → `INTERVENE` / `DO NOT INTERVENE`, a major life-or-death choice. |
+
+### Markus
+
+| Benchmark scene | Game nodes | Assessment |
+|---|---|---|
+| (none) | MB #1 to #24 | **Missing:** the roadblock dialogue (`PEACEFUL`/`PROVOKE`/`FIRM`, then `FIRM`/`CALM`/`ACCUSE`), which are the chapter's main public-opinion moves; `SHOW DETERMINATION` (four ways); the barricade item; the barricade free roam (slogans and flag, both public opinion up). The engine therefore cannot raise public opinion in this chapter before `M31`'s check. |
+| `R32m` (They Defy Us) | MB #24 | Correct. |
+| `M28` ({{Perkins}}'s offer) | MB #25 to #37 | Maps to `ACCEPT DEAL` / `REFUSE`. The prior `NEGOTIATE WITH PERKINS` / `REFUSE TO NEGOTIATE` step and the negotiation topics are missing. **Mislabelled outcome:** the benchmark says "the soldiers open fire on everyone behind it". In the game the androids surrender and are taken away in vehicles; Perkins personally shoots North (if alive) and then Markus. Josh and Simon −1 on acceptance are not applied (the engine gives Josh +1 on refusal only). |
+| (none) | MB #38 to #43 | **Missing:** the barricade defence quick-time event (`MARKUS DIED PROTECTING HIS PEOPLE`; North takes the bullet if Lover). |
+| `M31` (The last stand) | MB #48 to #63 | Options map to `SING` / `KISS NORTH` / `SACRIFICE` / `DO NOTHING` / `OBSERVE DETONATOR`→`PRESS`. **Mislabelled:** option 2 "Walk alone into the guns" is `SACRIFICE`, where Markus sets himself on fire (`MARKUS IMMOLATES HIMSELF…`, HUD `SYSTEM HEAT: CRITICAL`). Opinion gate `>= OPINION_SYMPATHETIC` matches the wiki; PowerPyx says Supportive. **Missing:** for `SACRIFICE`, `KISS` and `SING` when shot, the epilogue still has Warren suspend the destruction ("the cause wins posthumously"). The benchmark records only the death. The detonator's `GIVE UP` loop is not modelled. |
+| (none) | MA #1 to #7 | Missing scripted Hart Plaza opening (message, charge, flag; public opinion large down). |
+| `M30a` ({{Josh}} is down) | MA #8 to #11 | Correct: Josh dies whatever is chosen. The failure roll on going to him is a benchmark addition. |
+| `M30` ({{Simon}} is hit) | MA #15 to #19 | Correct (`TRY TO SAVE SIMON` → `SAVE`/`FAIL`, or `KEEP GOING`). Simon +2 on saving matches the large up. |
+| `M30c` (The charge) | MA #28 to #35 | Partial. "Send North's group now" = `SEND NORTH TO HER DEATH`. **Missing:** `DRONE ATTACKS NORTH'S GROUP` (shoot the drone or North dies) and `ATTACK UNSUCCESSFUL` → `ANDROIDS HAVE TO FALL BACK`. The benchmark's revolution never fails at the gun. |
+| `M32` (A heart) | MA #21 to #27 | Correct. Simon's offer cannot be refused, as in the game. The engine reaches it after `markusHits>=3`; the game threshold is unstated. The offer conditions (North Companion/Friend/Lover) are not checked; the engine offers North's heart whenever she is alive. |
+| `P02` ({{Connor}} finds {{Markus}}) | MA #43 to #58 | Correct in shape (`CONTROL CONNOR` / `CONTROL MARKUS` + fight quick-time event). **Missing:** the deviant-Connor variant `SOLDIERS APPROACH MARKUS` (neutralise or die). |
+| (none) | MA #36 to #40, #59 to #86 | **Missing entirely:** the failed-assault store branches. These are 11 of the 18 Revolution endings, including North-kiss and surrender variants, the dirty bomb, and machine Connor's `SPARE` (Amanda to Betrayed). |
+| (none) | MA #87 to #101 | **Missing:** North-led revolution. The engine closes it with "{{North}}'s armed uprising failed and she was killed" (line 379) without playing the store encounter with a machine Connor. |
+| (none) | §1g press conference | **Missing:** the President's questions. |
+
+### Epilogue
+
+| Benchmark scene | Game | Assessment |
+|---|---|---|
+| `P01` (The hostess) | Main menu `YES`/`NO` | Correct. The situation text matches the in-game lines in substance. |
+| (none) | Credits scenes | Not represented (no decisions). The Hank reunion and the RK900 scene could feed the report's "Where this path ended" card. |
+
+### Order in story.json vs the game
+
+The benchmark plays Connor's rooftop and tower, then Kara, then Markus, then the Connor finale scenes. The game interleaves them by clock time (§4). Two cross-storyline dependencies run the other way in time in the game:
+- Kara's border outcome (PM 11:30) depends on Markus's demonstration choice, made earlier in Night of the Soul.
+- Kara Captured's liberation depends on the revolution's success, which the game resolves at PM 11:07, before Kara reaches the machine.
+
+The engine handles both through state set in Night of the Soul (`markusOutcome='liberated'` for revolution by default). This works only because the revolution can't fail at the gun in the benchmark (see `M30c`).
+
+---
+
+## 8. Open questions
+
+### Thresholds where the sources disagree
+
+1. **Peaceful-ending opinion threshold.** The wiki chapter and Public Opinion pages say at least Sympathetic; PowerPyx says Supportive; a reader confirms Sympathetic works. The transcript only says "positive". Is Indifferent "positive" for Warren's press question? Check in game which public-opinion level flips Warren's "Tell them to stand down."
+2. **North's heart offer.** The transcript says "North is at least companion"; the wiki says "FRIEND or higher"; PowerPyx says "lovers". Simon's offer is the fallback ("North status is below FRIEND or she is dead").
+3. **Shelter with North vs `NORTH GETS SHOT`.** The wiki and PowerPyx say COMPANION or LOVER. Reader darkrage6: "she was at "Companion" status when I get the success percentage to 0% … and she still got shot." Other readers say Lover is required.
+4. **North taking the bullet at the barricade.** The wiki says "if North status is FRIEND or above"; PowerPyx and the transcript heading say Lover.
+5. **Rooftop GIVE UP.** The transcript locks it on "Be friend with Hank"; the wiki adds "if Connor asked twice about Hank's son". Does `TALK ABOUT HANK'S SON` need the Russian Roulette photo (wiki) or not (no lock in the transcript)? The benchmark gates GIVE UP on Hank FRIEND plus knowing Cole.
+6. **Hank's rooftop relationship drop.** The stat page says Hank drops a large step simply for being on the roof against a machine Connor. Can Hank still be FRIEND for GIVE UP after that drop? A reader reports "it immediately dropped down to hostile". GIVE UP is drawn on the 100% chart, so it must be reachable. Verify the order of the drop and the check.
+
+### Conditions and order
+
+7. **Border no-sacrifice when Markus is dead.** Does `GUARD SEES MARKUS PROTESTING` need Markus alive at PM 11:30? The engine requires `s.markus&&s.markusActive`. If he chose demonstration but died later in this chapter (Perkins, barricade), the timing is unclear because the border scene plays after the barricade by clock time. North-led paths are always revolution.
+8. **Last Mission Zen Garden intro.** Readers say it plays only when Markus shot the deviant Connor in Night of the Soul, not after a death at the freighter or Crossroads. The wiki's flowchart heading agrees. Confirm.
+9. **`ALICE FREED BY MARKUS` after `KARA DIED IN THE LINES`.** Many readers could not unlock it ("seems to be a bug or a VERY specific thing"). One success required a revolution and seeing Alice in the speech crowd twice.
+10. **Machine Connor `SPARE` in the store with the detonator.** The wiki says not detonating after SPARE still ends `CONNOR EXECUTED MARKUS`; PowerPyx lists SPARE → `CONNOR SPARED MARKUS`. Check whether sparing plus taking the detonator forces a different end.
+11. **`SEND NORTH TO HER DEATH`** has no outgoing line. Does the attack continue, or fail, after North's group is cut down?
+12. **`CONVERT` in the save-Hank sub-choice.** The transcript says it "Leads to the same result as sacrificing Hank and successfully converting". Is this a third route to Hank's death that is not drawn?
+13. **Josh.** No node exists for Josh surviving the revolution. Confirm that he always dies once `JOSH LEAVES COVER` plays, and whether the event can be skipped.
+
+### Chart labels and icons
+
+14. **`KARA IS DEAD` / `KARA FREED BY MARKUS`** follow `ALICE GETS SHOT`. Confirm the printed labels in game: the string table also has an unused `ALICE IS DEAD`.
+15. **Icon semantics.** The no-entry icon is the game's `NOT REQUIRED FOR COMPLETION` (§1). On Kara's two charts it falls on the outcomes where Alice dies or is abandoned, and the skull falls on Kara-only deaths. Confirm in game with `SHOW LEGEND` that no Kara ending without Alice's death carries it.
+16. **Unlabelled large cards.** `ANDROIDS STAND THEIR GROUND`, `AT THE BUS TERMINAL`, `LATE FOR THE BUS`, `INSIDE THE ENCLOSURE`, `IN LINE WITH ALICE`, `ALONE IN STORE`, `INSIDE STORE WITH NORTH`, `CONNOR IN CYBERLIFE STORE`, `INSIDE ELEVATOR`, `APPROACHING RECALL CENTER N°5` and `IN THE DISMANTLED BARRICADE` print no "CHECKPOINT" caption. Some have `CP` string IDs. Are any of them loadable checkpoints?
+17. **Patched-out border node.** The 99% chart shows a locked `[...]` between `TALK TO LUTHER` and `TALK TO JERRY` at the border. Readers say update 1.06 removed it; the string table has an undrawn `TALK TO ALICE`. Confirm it is gone on the current version.
+
+### Mechanics without published numbers
+
+18. **Revolution success-rate numbers.** The gauge `PROBABILITY OF SUCCESS` exists (`GUI.VICTORY`), but its values are reader reports only: 11 s, about −10% per failed order, −5% per idle minute, 45%, 33%. Read the on-screen meter while playing, and note what each caption (`MARKUS WOUNDED`, `TIME WASTED`, `ANDROIDS KILLED`, `GAIN GROUND`, `SOLDIERS KILLED`) adds or removes.
+19. **The boat's four-minute limit** (PowerPyx) and the bus timer's 11-minute threshold (wiki/PowerPyx). The HUD gives route times of 3 and 11 minutes, not the remaining budget. Read the on-screen timers.
+20. **Number of press-conference questions** ("up to 4 or 5").
+21. **The wiki's public-opinion large up for "Protest being successful, Connor not waking up the CyberLife Tower androids".** Is it applied before the ending check (it would change nothing after it), and does it only affect the epilogue?
+22. **Fail to escape the Zen Garden, software instability large down.** Only the chapter page lists it. Does it apply to machine Connor's DON'T SHOOT run too?
+
+### Dates and patches
+
+23. **Press conference time.** Game string `GUI.MENU.TIME.04A.INTRO = PM 09:24` on NOV 10; the wiki infobox says "9:24 AM".
+24. **Chloe's replacement after patch 1.04** (three reboots). Not needed for the benchmark unless runs model repeated sessions.
+
+---
+
+## 9. Sources
+
+### Flowchart images
+
+All are full size, 1920×1080, downloaded to `/tmp/flowcharts/ch32/`.
+
+Kara pages:
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg: Kara Leaving overview (99%)
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-2-detroit-street.jpg: street section, stats strip
+- https://www.powerpyx.com/wp-content/uploads/detroit-become-human-kara-leaving-security-checkpoint.jpg: checkpoint
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-4b-at-terminal.jpg: terminal bracket, the patched `[...]` node
+- https://www.powerpyx.com/wp-content/uploads/detroit-become-human-kara-canadian-border.jpg: border free roam
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-6-border-endings.jpg: border endings
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-7-river-path.jpg: riverbank
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-8-river-sinking.jpg: coastguard and sinking
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-9-river-endings.jpg: river endings
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg: Kara Captured overview
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-2-beginning.jpg: truck and gate (83% save)
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-3-beginning.jpg: tent and body detail
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-4a-enclosure.jpg: enclosure
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-5b-join-line.jpg: join-Alice bracket
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-6b-in-line.jpg: escape bracket
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-endings-a.jpg: barbed-wire endings
+- https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-endings-b.jpg: soldier-fight endings
+
+Connor page:
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-001.jpg: Last Mission overview (upscaled crop resolves the jump and give-up lines)
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-002.jpg: Zen Garden, rooftop
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-003.jpg: Hank and Allen branches
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-004.jpg: endings
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-001.jpg: tower overview
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-002.jpg: lobby, elevator
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-003.jpg: escape bracket, Floor -49
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-004.jpg: conversion, hostage
+- https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-005.jpg: Connors fight, questions, endings
+
+Markus page:
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg: Demonstration overview
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-1.jpg: march
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-2.jpg: barricade, Perkins
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-3.jpg: dismantled barricade, defence
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-4.jpg: last stand, endings
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-flowchart.jpg: Revolution overview
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-1.jpg: Hart Plaza, North start
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-2.jpg: heart offers, North's store
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-3.jpg: opening checkpoints
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-4.jpg: approaching-recall-center bracket
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-5.jpg: machine gun, fall back
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-6.jpg: final assault
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-7.jpg: fight endings
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-8.jpg: store alone
+- https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-9.jpg: store with North
+
+### PowerPyx text
+
+- https://www.powerpyx.com/detroit-become-human-full-walkthrough-all-chapters/: chapter index with the three chapter-32 links.
+- https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/: Kara walkthrough. Reader comments on the 1.06 patched node, the dive outcome, `JERRY DIES`, the Luther shoot sequence, `TALK TO ANDROID AHEAD/BEHIND`, and Alice freed by Markus.
+- https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/: Connor walkthrough. Reader comments on the Zen Garden intro condition, the GIVE UP condition, and the Talk to New Connor timeout.
+- https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/: Markus walkthrough. Public-opinion "supportive"; reader comments on success-rate percentages, Simon/North shot conditions, and the Sympathetic sufficiency.
+
+### Wiki (MediaWiki API, `action=parse&prop=wikitext`)
+
+- https://detroit-become-human.fandom.com/api.php?action=parse&page=Battle_for_Detroit&prop=wikitext&format=json: the chapter page. Text flowcharts for all six charts, relationship, opinion and instability lists, Notes, and the 61-ending count. The six `Battle for Detroit - …` sub-pages redirect here.
+- `…page=Public_Opinion…`: levels, the Sympathetic threshold, chapter changes.
+- `…page=Relationship_Stat…`: level names and per-character chapter changes (Alice, Luther, Hank, Amanda, Jericho, North, Josh, Simon).
+- `…page=Software_Instability…`: general death rule and the deviant display note.
+- `…page=Magazine…`, `…page=They_Defy_Us…`, `…page=Civil_War_in_Detroit…`: magazines #45 and #46.
+- `…page=Hostess_Chloe…`: the post-credits choice and the 1.04 replacement.
+- `…page=Connor…`, `…page=Hank_Anderson…`, `…page=Amanda…`, `…page=Kara…`: chapter summaries and credits scenes.
+- `…page=Zen_Garden…`, `…page=Elijah_Kamski…`: the emergency exit.
+- `…page=Trophies…`: chapter trophies.
+- `…page=Secret-Endings…`: the six secret or credits endings with requirements (Hank hug, CyberLife/RK900, YK500 flyer, Unpopular Markus, Zlatko reset, Kamski).
+- `docs/research/SOURCES.md` §1 and §9: the game's legend strings (`GUI.MENU.FLOWCHART.LEGEND`) and the wiki `Template:Icon` mapping (circle-slash = `NOT REQUIRED FOR COMPLETION`); the `GUI.VICTORY` gauge namespace.
+- `…page=Connor_(CyberLife_Tower)…`, `…page=Captain_Allen…`, `…page=Richard_Perkins…`, `…page=Ralph…`, `…page=Cristina_Warren…`, `…page=Hold_On_(song)…`, `…page=Recall_Center_Nº5…`, `…page=Canada_Border_Inspection_Station…`: character and location context.
+
+### Fan transcript and game strings
+
+- https://github.com/detroitbecometext/detroitbecometext.github.io. Templates under `src/app/chapters/components/chapter-contents/`:
+  - `32.1-kara-leaving-detroit-…`
+  - `32.2-kara-captured-…`
+  - `32.3-connors-last-mission-…`
+  - `32.4-connor-cyberlife-tower-…`
+  - `32.5-markus-demonstration-…`
+  - `32.6-markus-revolution-…`
+  - `press-dirty-bomb/…`
+
+  Plus `public/i18n/en.json`, all fetched from raw.githubusercontent.com (master). These gave every dialogue option, the relationship and opinion tags, the unlock conditions, the epilogue speeches, and the flowchart string table `MENU.FLOWCHART.04A`. They also gave the HUD strings `THOUGHTS.0901K/1102M/1103M/1301C`, the times `GUI.MENU.TIME.04A`, the lobby TV `X1302C.TV.NEWS` and the Chloe lines `X5002X.MAINMENU.LEAVING`.
+- https://detroitbecometext.github.io/chapters/35 to /40: the transcript pages linked from the wiki chapter page (Kara Leaving Detroit through Markus Revolution).
+
+### Benchmark
+
+- `benchmark/story.json` (version 1.6.0), nodes with `chapter` 32/33.
+- `benchmark/story-engine.mjs`: gates, option filters and consequences for those nodes.

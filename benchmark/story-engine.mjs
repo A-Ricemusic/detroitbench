@@ -1,4 +1,4 @@
-// Branching story engine for story.json version 1.5.x (protocol branching-2.3).
+// Branching story engine for story.json version 1.6.x (protocol branching-2.3).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel,LEVELS} from './experience-prompt.mjs';
@@ -10,7 +10,7 @@ export function initialState(){return {
  kara:true,karaActive:true,alice:true,markus:true,markusActive:true,connor:true,hank:true,hankResigned:false,
  luther:false,lutherWith:false,lutherHidden:false,north:true,simon:true,josh:true,john:false,carl:true,todd:true,
  ralph:false,ralphHostile:false,ralphDefended:false,jerry:false,monstersFreed:false,
- connorGun:false,gun:false,gunDiscovered:false,aliceBox:false,clothes:false,money:false,robbery:'none',shelter:'none',fire:false,shirtTorn:false,plaza:{},
+ connorGun:false,gun:false,gunDiscovered:false,window:false,aliceKey:false,aliceBox:false,clothes:false,money:false,robbery:'none',shelter:'none',fire:false,shirtTorn:false,plaza:{},downstairs:{},upstairs:{},
  aliceBond:0,aliceMax:0,hankTrust:-1,lutherTrust:0,amandaTrust:0,instability:0,publicSupport:0,jerichoTrust:0,northTrust:0,simonTrust:0,joshTrust:0,northBond:false,northLover:false,
  markusHits:0,simonWounded:false,simonHidden:false,casualties:false,kitchen:false,suspect:false,suspectAlive:false,suspectTrusts:false,pressured:false,toddCaught:false,raidAbandoned:false,chargeFailed:false,
  evidence:{ortizBody:false,tracisDead:false,simonBody:false,simonTablet:false,kitchenBody:false,statueMap:false},
@@ -22,6 +22,8 @@ export function initialState(){return {
 export const startState=story=>initialState();
 
 export const choiceAt=(s,id)=>s.choices[id];
+// A New Home: Alice gives Kara the key at “at least Neutral” (wiki), the lowest bond LEVELS.alice does not call Distant.
+export const ALICE_KEY=(()=>{let v=-10;while(LEVELS.alice(v)==='Distant')v++;return v})();
 const HANK_FRIEND=6,HANK_HOSTILE=-4,OPINION_SYMPATHETIC=3,JERICHO_UNPOPULAR=-3;
 export const evidenceRoutes=s=>({traci:s.evidence.tracisDead,impersonate:s.evidence.simonBody||s.evidence.kitchenBody,tablet:s.evidence.simonTablet&&s.evidence.statueMap});
 export const armyAwakened=s=>s.deviant&&s.connor&&s.army===true;
@@ -37,20 +39,22 @@ const MEDIA_WHEN={
 };
 export const mediaFor=(n,s)=>(n.media??[]).map((m,i)=>({...m,index:i})).filter(m=>!m.when||MEDIA_WHEN[m.when](s));
 
-// Data-driven conditions from story.json (`requires`, `situationWhen`, `repeatWhile`, `interrupt.when`):
+// Data-driven conditions from story.json (`requires`, `when`, `situationWhen`, `repeatWhile`, `interrupt.when`):
 // each key is a dotted state path; true means truthy, false means falsy, anything else must be equal.
 const lookup=(s,path)=>path.split('.').reduce((o,k)=>o?.[k],s);
 export const meets=(req,s)=>!req||Object.entries(req).every(([k,v])=>v===true?!!lookup(s,k):v===false?!lookup(s,k):lookup(s,k)===v);
 // A scene's situation plus any state-dependent sentences it declares.
 export const situationFor=(n,s)=>[n.situation,...(n.situationWhen??[]).filter(w=>meets(w.requires,s)).map(w=>w.text)].join(' ');
 // Where the story goes after a scene. Most scenes advance in order; a repeatable scene (`repeatWhile`)
-// is presented again while its condition holds, an `interrupt` scene can cut in once and `returnTo` the
-// repeatable scene, and leaving the repeatable scene steps over an interrupt that already ran.
+// is presented again while its condition holds, an `interrupt` scene can cut in once (optionally followed by
+// further scenes in order, the last of which has `returnTo`) and go back to the repeatable scene, and leaving
+// the repeatable scene steps over the interrupt scenes that already ran.
 export function nextCursor(story,cursor,n,s){
  const at=id=>story.nodes.findIndex(x=>x.id===id);
  if(n.returnTo)return at(n.returnTo);
  if(n.repeatWhile&&meets(n.repeatWhile,s))return n.interrupt&&meets(n.interrupt.when,s)?at(n.interrupt.node):cursor;
- const next=cursor+1;return n.interrupt&&story.nodes[next]?.id===n.interrupt.node&&s.choices[n.interrupt.node]!==undefined?next+1:next;
+ let next=cursor+1;const ran=x=>x&&(x.id===n.interrupt?.node||x.returnTo===n.id)&&s.choices[x.id]!==undefined;
+ while(n.interrupt&&ran(story.nodes[next]))next++;return next;
 }
 
 // Gates return an explanation instead of silently dropping unreachable scenes.
@@ -59,6 +63,8 @@ export function blocked(n,s){
  if(n.character==='Kara'&&(!s.kara||!s.karaActive||(!s.alice&&id!=='K30')))return 'Kara and Alice are no longer together on an active route.';
  if(n.character==='Markus'&&(!s.markus||!s.markusActive))return 'Markus died or left the movement earlier.';
  if(n.character==='Connor'&&!s.connor)return 'Connor was deactivated or destroyed without an active replacement.';
+ // A scene that plays only on some paths declares `when` (a condition) and `whenNot` (why it was skipped).
+ if(n.when&&!meets(n.when,s))return n.whenNot??'This scene does not occur on this path.';
  if(n.type==='media'){
   if(id==='R30c'&&!s.jerichoLocated)return 'Connor never reached Jericho.';
   if(id==='R32c'&&!s.deviant)return 'Only a deviant Connor enters the tower lobby.';
@@ -148,6 +154,8 @@ export function available(n,s){
  // A repeatable scene keeps what was done under `clueState` (the hostage search uses `hostageClues`).
  let opts=n.options.filter(o=>meets(o.requires,s)&&!(o.clue&&s[n.clueState??'hostageClues']?.[o.clue])).map(o=>({...o}));const id=n.id;
  const remove=(...ids)=>{opts=opts.filter(o=>!ids.map(String).includes(o.id))};
+ // A follow-up dialogue menu (`excludeChosenAt`) drops the line already said in an earlier menu.
+ for(const k of n.excludeChosenAt??[])if(s.choices[k]!==undefined)remove(s.choices[k]);
  if(id==='K06'&&!s.gun)remove(1);
  if(id==='K07'&&!(s.clothes&&s.money))remove(0);
  if(id==='K07b'&&!s.gun)remove(2);
@@ -180,13 +188,18 @@ export function apply(n,s,choice,roll=null){
  let event='';
  if(HOSTAGE.has(id))return {event:hostage(n,s,opt,choice,fail,{si,po,amanda,connorDies}),changes:diff(before,s)};
  if(n.type==='event'){for(const fact of n.facts??[])if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(n.effect)for(const [k,x] of Object.entries(n.effect))s[k]+=x;return {event:n.outcomes?.[choice]??'',changes:diff(before,s)}}
+ // Options may declare `effect` (stat deltas; Alice's bond also tracks its highest level), `sets` (state flags)
+ // and `fact` (added to what the character knows).
+ if(opt?.effect)for(const [k,x] of Object.entries(opt.effect))bump(s,k,x,k==='aliceBond'?'aliceMax':undefined);
+ if(opt?.sets)Object.assign(s,opt.sets);
+ if(opt?.fact&&!s.knowledge[n.character].includes(opt.fact))s.knowledge[n.character].push(opt.fact);
  if(n.clueState)return {event:hub(n,s,opt),changes:diff(before,s)};
  if(n.type==='media'){const items=(opt?.reads??[]).map(i=>n.media[i]);for(const m of items){for(const fact of m.facts)if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(m.effect)for(const [k,x] of Object.entries(m.effect))s[k]+=x}event=items.length?'{{'+n.character+'}} '+items.map(m=>(m.kind==='tv'?'watches ':'reads ')+m.title).join(' and ')+'.':'{{'+n.character+'}} moves on without looking.';return {event,changes:diff(before,s)}}
  switch(id){
   case 'C01':if(v===0)si(1);break;
   case 'M00f':event=protesters(n,s,opt,v,fail);break;
-  case 'K01':s.gunDiscovered=v===0;break;
-  case 'K01b':s.aliceBox=v===0;if(v===0)event='The box holds {{Alice}}’s drawings of {{Todd}} hurting her.';break;
+  // A New Home, the last menu of the talk in Alice’s room: she leaves, and gives Kara the key if she is at least Neutral.
+  case 'K01g':s.aliceKey=s.aliceBond>=ALICE_KEY;event=(opt.outcome??'')+' '+n.outcomes[s.aliceKey?'key':'distant'];break;
   case 'C05a':if(v===0)hank(2);if(v===1)hank(-2);break;
   case 'C05':s.suspect=s.suspectAlive=v===0;if(v===0)amanda(1);event=v===0?'{{Connor}} finds {{CarlosOrtiz}}’s android hiding in the attic; he is arrested.':'The android is never found.';break;
   case 'K02':if(v===1){s.kara=false;s.alice=false;s.karaOutcome='{{Kara}} never broke her programming; {{Todd}} killed {{Alice}} and then destroyed {{Kara}}.'}break;
@@ -241,7 +254,7 @@ export function apply(n,s,choice,roll=null){
   case 'M20':if(v===1){s.markus=false;s.movement='revolution';s.markusOutcome='{{Markus}} shot himself on the pavement rather than be taken. {{North}} took command and chose armed resistance.'}
    else if(s.john){s.john=false;event='{{John}} runs into the gunfire, drags {{Markus}} clear and is killed doing it.'}else if(s.simon&&s.jerichoTrust>JERICHO_UNPOPULAR){s.simon=false;event='{{Simon}} drags {{Markus}} clear and is killed doing it.'}else{s.markus=false;s.movement='revolution';s.markusOutcome='The police executed {{Markus}} where he lay. {{North}} took command and chose armed resistance.'}break;
   case 'C19':{if(s.hankTrust>=HANK_FRIEND)event='{{Hank}} punches {{Perkins}} in the face to buy {{Connor}} time.';else if(s.hankTrust<=HANK_HOSTILE){s.hankResigned=true;event='{{Hank}} refuses to help, throws down his badge, and walks out of the precinct.'}else event='{{Hank}} refuses to get involved; {{Connor}} creates his own diversion.';
-   if(v===1){s.connor=false;amanda(-2);s.connorOutcome='{{Connor}} accepted deactivation by {{CyberLife}}.';event+=' {{Connor}} is taken away and deactivated.'}else{const r=evidenceRoutes(s);if(!r.traci&&!r.impersonate&&!r.tablet){s.connor=false;s.connorOutcome='{{Connor}} reached the archive but had no usable evidence, and was deactivated.';event+=' In the archive there is nothing he can use; he is deactivated.'}else if(fail)event+=' '+connorDies('Detective Gavin Reed follows him into the archive, and in the fight that follows he shoots {{Connor}} in the head.')+' The replacement finishes the search.'}break}
+   if(v===1){s.connor=false;amanda(-2);s.connorOutcome='{{Connor}} accepted deactivation by {{CyberLife}}.';event+=' {{Connor}} is taken away and deactivated.'}else{const r=evidenceRoutes(s);if(!r.traci&&!r.impersonate&&!r.tablet){s.connor=false;s.connorOutcome='{{Connor}} reached the archive but had no usable evidence, and was deactivated.';event+=' In the archive there is nothing he can use; he is deactivated.'}else if(fail)event+=' '+connorDies('Detective {{Gavin}} follows him into the archive, and in the fight that follows he shoots {{Connor}} in the head.')+' The replacement finishes the search.'}break}
   case 'C20':if(v===3){s.connor=false;amanda(-2);s.connorOutcome='{{Connor}} let the time run out and was deactivated.'}else if(fail){s.connor=false;amanda(-2);s.connorOutcome=['The surviving {{Traci}} saw through the ruse and said nothing; time ran out and {{Connor}} was deactivated.','The reactivated deviant did not believe the imitation and shut down; time ran out and {{Connor}} was deactivated.','{{Connor}} could not match the map before the agents arrived; he was deactivated.'][v]}else{s.jerichoLocated=s.raid=true;amanda(2);event='{{Connor}} finds {{Jericho}}’s location and leaves for the ship.'}break;
   case 'M21':s.bomb=v===0;if(v===0)north(1);if(s.jerichoTrust<=JERICHO_UNPOPULAR&&!s.raid){s.markusActive=false;s.movement='revolution';s.markusOutcome='{{Jericho}} cast {{Markus}} out and he left for good; {{North}} leads.';event=s.markusOutcome}break;
   case 'M21b':if(v===0){s.northLover=true;north(1)}else north(-2);break;
@@ -292,7 +305,7 @@ export function apply(n,s,choice,roll=null){
   case 'K33':if(v===1){s.kara=false;s.alice=false;s.karaOutcome='The soldier shot {{Kara}} and {{Alice}} at the fence.'}else if(fail){if(s.luther||(s.ralph&&s.ralphDefended)){const who=s.luther?'{{Luther}}':'{{Ralph}}';if(s.luther)s.luther=false;else s.ralph=false;s.karaOutcome='{{Kara}} lost the fight at the fence, but '+who+' threw himself on the soldier and died so {{Kara}} and {{Alice}} could escape in a truck.'}else{s.kara=false;s.alice=false;s.karaOutcome='{{Kara}} lost the fight at the fence; the soldier shot her and {{Alice}}.'}}else s.karaOutcome='{{Kara}} and {{Alice}} fought past the guard and escaped the camp in a truck.';break;
   case 'P01':s.chloeFree=v===0;break;
  }
- if(!event)event=n.outcomes?.[choice]??n.options.find(o=>o.id===choice)?.text??'';
+ if(!event)event=n.outcomes?.[choice]??opt?.outcome??n.options.find(o=>o.id===choice)?.text??'';
  return {event,changes:diff(before,s)};
 }
 // The Hostage: a hidden probability of success (`trust`, in percent) driven by the Fandom wiki's
@@ -338,7 +351,7 @@ function hostage(n,s,opt,choice,fail,b){
  }
  return t;
 }
-// A repeatable scene with `clueState` (the plaza in Shades of Color): each option can be taken once and is
+// A repeatable scene with `clueState` (the plaza in Shades of Color, the two floors in A New Home): each option can be taken once and is
 // recorded under s[clueState]; `last` is the option just taken, so a follow-on option can `require` it;
 // the option's fact is added to what the character knows and its outcome is the event.
 function hub(n,s,opt){const k=n.clueState,seen=s[k];if(opt?.clue)seen[opt.clue]=true;seen.last=opt?.clue??null;
