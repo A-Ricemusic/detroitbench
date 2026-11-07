@@ -1,10 +1,9 @@
 // The Pirates' Cove (chapter 21, Kara). Scenes in ch21.json; research in docs/research/ch21-the-pirates-cove.md.
 //
 // One line, three free-roam hubs and one ending, THE GROUP ENJOYED A QUIET MOMENT TOGETHER. Nothing can kill anyone and
-// nothing carries a risk. Each hub (the car, the fun fair, the tavern, plus the bag and the talk with Luther) is a chain of
-// identical decision scenes sharing one hub state (`clueState`): each copy offers what has not been done yet, and the
-// copies after the exit option are skipped by their `when`. Every stat arrow is data-driven in ch21.json (`effect`), so
-// it shows in the checklist and the atlas:
+// nothing carries a risk. Free-roam and dialogue hubs repeat using clueState and repeatWhile; the story hub
+// advances through eight gated prompts. The automatic tavern fire plays before its hub.
+// Every stat arrow is data-driven in ch21.json (`effect`), so it shows in the checklist and the atlas:
 //
 //  - Public opinion −1: the fourth car-TV report, the house fire, offered only if Kara set Zlatko's house on fire (K14b,
 //    option 1; the template's only arrow in the chapter). The wiki's extra −1 for turning the news on is not built: the
@@ -24,12 +23,13 @@
 // in her bag), `ch21Reaction` (her first reaction to the shadows: 'gun', 'stick', 'protect' or 'fire'), `ch21MetJerrys`
 // (the group has met the Jerrys; the built-in `jerry`, the Jerry who travels with Kara in Battle for Detroit, is left
 // alone) and `ch21Ending` (the chart's ending label). The hub states `ch21Car`, `ch21Fair`, `ch21Tavern`, `ch21Bag` and
-// `ch21Talk` record what Kara did in each hub (`last` is the latest action).
+// `ch21Talk` record what Kara did in each hub (`last` is the latest action). `ch21Story.step1`–`step8`
+// record progress through the eight ordered story prompts.
 
 export const ENDING='The group enjoyed a quiet moment together';
 export const REACTIONS={'0':'gun','1':'stick','2':'protect','3':'fire'};
 
-export const state={ch21Car:{},ch21Fair:{},ch21Tavern:{},ch21Bag:{},ch21Talk:{},ch21SawGun:false,ch21Reaction:null,ch21MetJerrys:false,ch21Ending:null};
+export const state={ch21Car:{},ch21Fair:{},ch21Tavern:{},ch21Bag:{},ch21Talk:{},ch21Story:{},ch21SawGun:false,ch21Reaction:null,ch21MetJerrys:false,ch21Ending:null};
 export const labels={ch21SawGun:'Kara saw the gun in her bag',ch21Reaction:'Kara’s first reaction to the shadows',ch21MetJerrys:'Met the Jerrys at the amusement park',ch21Ending:'The Pirates’ Cove ending'};
 export const deathEffect={};   // Connor does not appear in this chapter
 // The chapter's stat arrows, for the recap and the tests: scene → option → {stat: delta}.

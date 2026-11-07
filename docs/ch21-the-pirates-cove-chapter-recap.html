@@ -52,19 +52,19 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </ol></div>
 <div class="box"><h3>In the benchmark</h3><ol>
 <li><code>K14a</code> Highway to help (event).</li>
-<li><code>K14b1</code>–<code>K14b8</code> In the car (hub): the news, the fire report (only with <code>fire</code>; opinion −1), the four topics, the look at Alice, “let the drive go on”.</li>
+<li><code>K14b</code> In the car (hub): the news, the fire report (only with <code>fire</code>; opinion −1), the four topics, the look at Alice, “let the drive go on”.</li>
 <li><code>K14c</code> The car breaks down (event: three chart nodes).</li>
-<li><code>K14d</code> Inside the park (event). <code>K14e1</code>–<code>K14e5</code> The fun fair (hub; exit to the tavern).</li>
+<li><code>K14d</code> Inside the park (event). <code>K14e</code> The fun fair (hub; exit to the tavern).</li>
 <li><code>K14f</code> The tavern (event: two nodes and the checkpoint). <code>R21</code> the magazine (media).</li>
-<li><code>K14g1</code>, <code>K14h</code> Luther starts a fire (event), <code>K14g2</code>–<code>K14g5</code>: the tavern (hub; exit MAKE BED, Alice +1).</li>
+<li><code>K14h</code> Luther starts a fire (event), then <code>K14g</code>: the tavern (hub; exit MAKE BED, Alice +1).</li>
 <li><code>K14i</code> The poster (decision; Alice +1 on any answer).</li>
-<li><code>K14j1</code>–<code>K14j3</code> The bag (hub): OFFER COOKIE, the gun (<code>ch21SawGun</code>), go to Alice.</li>
-<li><code>K14k</code> Goodnight (KISS: Alice +1). <code>K14l1</code>–<code>K14l8</code> the eight story picks.</li>
-<li><code>K14m1</code>–<code>K14m6</code> Talking to Luther (hub of topics). <code>K14n</code> his question (Luther +1 on any answer).</li>
+<li><code>K14j</code> The bag (hub): OFFER COOKIE, the gun (<code>ch21SawGun</code>), go to Alice.</li>
+<li><code>K14k</code> Goodnight (KISS: Alice +1). <code>K14l</code> the eight story picks.</li>
+<li><code>K14m</code> Talking to Luther (hub of topics). <code>K14n</code> his question (Luther +1 on any answer).</li>
 <li><code>K14o</code> Shadows attack (decision; records <code>ch21Reaction</code>). <code>K14p</code> SHOOT IN THE AIR / QUESTION / PUSH BACK.</li>
 <li><code>K14q</code> The Jerrys (event; <code>ch21MetJerrys</code>). <code>K14r</code> The carousel (event). <code>K14z</code> A quiet moment (event; <code>ch21Ending</code>).</li>
 </ol>
-<p class="fine">No risk anywhere. Each hub is a chain of identical scenes sharing one hub state: each copy offers what has not been done yet, and the copies after the exit are skipped. Events add what Kara saw to her knowledge.</p></div>
+<p class="fine">No risk anywhere. Each hub is one repeatable scene: each visit offers what has not been done yet, and its exit ends the phase. The story hub advances through eight ordered prompts. Events add what Kara saw to her knowledge.</p></div>
 </div>
 
 <h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
@@ -73,26 +73,26 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
 <tbody>
 <tr><td>HIGHWAY TO HELP</td><td>Checkpoint; NOV 7TH, 2038, AM 01:02</td><td class="yes"><code>K14a</code></td></tr>
-<tr><td>WATCH NEWS</td><td>Board computer TV: Channel 16, CTN, KNC; a fourth report only if the house burned</td><td class="yes"><code>K14b*</code> options 0 and 1, every line quoted</td></tr>
-<tr><td>TALK TO LUTHER (car)</td><td>PROMPT 1: CAR / DESTINATION / DISTANCE / WEATHER</td><td class="yes"><code>K14b*</code> options 2–5, each once</td></tr>
-<tr><td>LOOK AT ALICE</td><td>No line in any source</td><td class="part"><code>K14b*</code> option 6, narrated as a look</td></tr>
+<tr><td>WATCH NEWS</td><td>Board computer TV: Channel 16, CTN, KNC; a fourth report only if the house burned</td><td class="yes"><code>K14b</code> options 0 and 1, every line quoted</td></tr>
+<tr><td>TALK TO LUTHER (car)</td><td>PROMPT 1: CAR / DESTINATION / DISTANCE / WEATHER</td><td class="yes"><code>K14b</code> options 2–5, each once</td></tr>
+<tr><td>LOOK AT ALICE</td><td>No line in any source</td><td class="part"><code>K14b</code> option 6, narrated as a look</td></tr>
 <tr><td>CAR BREAKS DOWN, INVESTIGATE BREAKDOWN, SCAN ENVIRONMENT</td><td>Automatic, then two required actions</td><td class="yes"><code>K14c</code>, quoted</td></tr>
 <tr><td>INSIDE PIRATES’ COVE</td><td>Checkpoint</td><td class="yes"><code>K14d</code></td></tr>
-<tr><td>CHECK BUILDINGS</td><td>“No place we could spend the night”; YK400 boxes (wiki)</td><td class="yes"><code>K14e*</code> option 0</td></tr>
-<tr><td>EXAMINE FROZEN ANDROID</td><td>“Welcome to Pirate Island, me hearties!”</td><td class="yes"><code>K14e*</code> option 1</td></tr>
-<tr><td>SWITCH ON IVAN</td><td>“Beware! Danger always comes when least expected.”</td><td class="yes"><code>K14e*</code> option 2</td></tr>
-<tr><td>LOOK AT MAP</td><td>No text in any source</td><td class="part"><code>K14e*</code> option 3</td></tr>
+<tr><td>CHECK BUILDINGS</td><td>“No place we could spend the night”; YK400 boxes (wiki)</td><td class="yes"><code>K14e</code> option 0</td></tr>
+<tr><td>EXAMINE FROZEN ANDROID</td><td>“Welcome to Pirate Island, me hearties!”</td><td class="yes"><code>K14e</code> option 1</td></tr>
+<tr><td>SWITCH ON IVAN</td><td>“Beware! Danger always comes when least expected.”</td><td class="yes"><code>K14e</code> option 2</td></tr>
+<tr><td>LOOK AT MAP</td><td>No text in any source</td><td class="part"><code>K14e</code> option 3</td></tr>
 <tr><td><i>Take too much time</i></td><td>Luther finds the tavern; no length stated</td><td class="no">Not modelled</td></tr>
-<tr><td>CHECK ABANDONED TAVERN, ENTER TAVERN, INSIDE TAVERN</td><td>Required; Luther breaks the door in; checkpoint</td><td class="yes"><code>K14e*</code> option 4, then <code>K14f</code></td></tr>
+<tr><td>CHECK ABANDONED TAVERN, ENTER TAVERN, INSIDE TAVERN</td><td>Required; Luther breaks the door in; checkpoint</td><td class="yes"><code>K14e</code> option 4, then <code>K14f</code></td></tr>
 <tr><td>READ “USS IOWA”, READ “ALL-ANDROID BAND”</td><td>One magazine on the barrels</td><td class="yes"><code>R21</code></td></tr>
-<tr><td>LOOK AT RA9 WRITING</td><td>Unlocks [rA9] with Luther</td><td class="yes"><code>K14g*</code> option 0</td></tr>
-<tr><td>LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”</td><td>No text in any source</td><td class="part"><code>K14g*</code> options 1–3, narrated as looks</td></tr>
-<tr><td>LUTHER STARTS A FIRE</td><td>Automatic after a short time</td><td class="yes"><code>K14h</code>, after the first tavern action</td></tr>
-<tr><td>MAKE BED FOR ALICE</td><td>Required; Alice small up</td><td class="yes"><code>K14g*</code> option 4</td></tr>
+<tr><td>LOOK AT RA9 WRITING</td><td>Unlocks [rA9] with Luther</td><td class="yes"><code>K14g</code> option 0</td></tr>
+<tr><td>LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”</td><td>No text in any source</td><td class="part"><code>K14g</code> options 1–3, narrated as looks</td></tr>
+<tr><td>LUTHER STARTS A FIRE</td><td>Automatic after a short time</td><td class="yes"><code>K14h</code>, before the tavern hub</td></tr>
+<tr><td>MAKE BED FOR ALICE</td><td>Required; Alice small up</td><td class="yes"><code>K14g</code> option 4</td></tr>
 <tr><td>ALICE LOOKS AT POSTER, TALK TO ALICE, ALICE GOES TO BED</td><td>PROMPT 3; Alice small up after any answer</td><td class="yes"><code>K14i</code></td></tr>
-<tr><td>OPEN BAG, OFFER COOKIE, ALICE IS NOT HUNGRY, SEE GUN, KARA NOTICES GUN</td><td>Optional; SEE GUN gates GRAB GUN</td><td class="yes"><code>K14j*</code></td></tr>
-<tr><td>TELL ALICE A STORY</td><td>PROMPT 4 (goodnight; KISS Alice small up) and PROMPTS 5–12</td><td class="yes"><code>K14k</code>, <code>K14l1</code>–<code>K14l8</code></td></tr>
-<tr><td>TALK TO LUTHER (tavern)</td><td>PROMPT 13 (topics) and PROMPT 14 (YES / WHAT? / NO; Luther small up)</td><td class="yes"><code>K14m*</code>, <code>K14n</code></td></tr>
+<tr><td>OPEN BAG, OFFER COOKIE, ALICE IS NOT HUNGRY, SEE GUN, KARA NOTICES GUN</td><td>Optional; SEE GUN gates GRAB GUN</td><td class="yes"><code>K14j</code></td></tr>
+<tr><td>TELL ALICE A STORY</td><td>PROMPT 4 (goodnight; KISS Alice small up) and PROMPTS 5–12</td><td class="yes"><code>K14k</code>, <code>K14l</code></td></tr>
+<tr><td>TALK TO LUTHER (tavern)</td><td>PROMPT 13 (topics) and PROMPT 14 (YES / WHAT? / NO; Luther small up)</td><td class="yes"><code>K14m</code>, <code>K14n</code></td></tr>
 <tr><td>SHADOWS ATTACK</td><td>Alice screams; figures break in</td><td class="yes"><code>K14o</code> situation</td></tr>
 <tr><td>GRAB GUN, GRAB STICK FROM FIRE, PROTECT ALICE, PUT OUT FIRE</td><td>Buttons GRAB GUN / GRAB BURNING STICK / PROTECT ALICE / PUT OUT FIRE</td><td class="yes"><code>K14o</code>; GRAB GUN needs <code>ch21SawGun</code></td></tr>
 <tr><td>FIRE WARNING SHOT, THREATEN, QUESTION, PUSH AWAY</td><td>PROMPT 15: SHOOT IN THE AIR / QUESTION / PUSH BACK; THREATEN not selectable</td><td class="yes"><code>K14p</code>; SHOOT IN THE AIR needs GRAB GUN</td></tr>
@@ -106,8 +106,8 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <div class="table"><table>
 <thead><tr><th>Where</th><th>Arrow</th><th>Source line</th></tr></thead>
 <tbody>
-<tr><td>House-fire report on the car TV (<code>K14b*</code> option 1, needs <code>fire</code>)</td><td>Public opinion −1</td><td>Template: condition “Kara set the house on fire in Zlatko”, PublicOpinion SmallDown; wiki: “Continuing watching news, if the house has been burned”</td></tr>
-<tr><td>MAKE BED FOR ALICE (<code>K14g*</code> option 4)</td><td>Alice +1</td><td>Template: Alice SmallUp at the start of “Talking to Alice”; wiki: “After Kara sets up a bed”</td></tr>
+<tr><td>House-fire report on the car TV (<code>K14b</code> option 1, needs <code>fire</code>)</td><td>Public opinion −1</td><td>Template: condition “Kara set the house on fire in Zlatko”, PublicOpinion SmallDown; wiki: “Continuing watching news, if the house has been burned”</td></tr>
+<tr><td>MAKE BED FOR ALICE (<code>K14g</code> option 4)</td><td>Alice +1</td><td>Template: Alice SmallUp at the start of “Talking to Alice”; wiki: “After Kara sets up a bed”</td></tr>
 <tr><td>Any poster answer (<code>K14i</code>)</td><td>Alice +1</td><td>Template: Alice SmallUp after “Come on, let’s get you to bed.”; wiki: “After looking at the poster with Alice”</td></tr>
 <tr><td>KISS (<code>K14k</code> option 2)</td><td>Alice +1</td><td>Template: inside KISS; wiki: “Choosing KISS after tucking her into bed”</td></tr>
 <tr><td>YES, WHAT? or NO (<code>K14n</code>)</td><td>Luther +1</td><td>Template: on each option; wiki: “When Kara answers Luther about Alice’s true nature”</td></tr>
@@ -120,12 +120,12 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <div class="table"><table>
 <thead><tr><th>Topic</th><th>Sources</th><th>Benchmark</th></tr></thead>
 <tbody>
-<tr><td>Hubs</td><td>Free roam with optional interactions</td><td>Chains of identical scenes sharing a hub state, one action per visit, each with an exit; the shared regression test lets only four existing scenes repeat, so no single scene repeats</td></tr>
+<tr><td>Hubs</td><td>Free roam with optional interactions</td><td>True repeatable scenes with clue flags, one action per visit and an exit; the story uses eight gated stages in one hub</td></tr>
 <tr><td>Leaving the car</td><td>The breakdown comes after a short drive whatever Kara does</td><td>An exit option, “let the drive go on”</td></tr>
 <tr><td>Car topics</td><td>One choice group; whether several topics can be raised is not stated</td><td>Each topic can be raised once</td></tr>
 <tr><td>The news</td><td>Three channels, a fourth with the fire</td><td>The three channels as one option, a further channel change for the fire report</td></tr>
 <tr><td>Park timer</td><td>Luther finds the tavern if Kara dawdles; no length</td><td>Not modelled</td></tr>
-<tr><td>Luther starts a fire</td><td>After a short time in the tavern</td><td>After Kara’s first tavern action</td></tr>
+<tr><td>Luther starts a fire</td><td>After a short time in the tavern</td><td>Just before Kara’s first tavern hub action</td></tr>
 <tr><td>The bag</td><td>PowerPyx saw the gun before the poster talk; the cookie needs the poster talk; the template lock: before the story</td><td>Offered once, after the poster talk and before the goodnight</td></tr>
 <tr><td>Talk with Luther</td><td>No source says how many topics come before his question</td><td>Each topic once, with an exit “say nothing more”</td></tr>
 <tr><td>Time-outs</td><td>NO ANSWER and [no answer] strings exist; the template renders no option</td><td>Not offered</td></tr>
@@ -141,7 +141,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tbody>
 <tr><td>THE GROUP ENJOYED A QUIET MOMENT TOGETHER</td><td>Always</td><td><code>ch21Ending</code> set; Kara, Alice and Luther alive; the next Kara chapter is Midnight Train</td></tr>
 </tbody></table></div>
-<p class="fine">Reads <code>fire</code> (Zlatko). Writes <code>publicSupport</code>, <code>aliceBond</code>/<code>aliceMax</code>, <code>lutherTrust</code>, <code>ch21SawGun</code>, <code>ch21Reaction</code> (gun, stick, protect or fire), <code>ch21MetJerrys</code>, <code>ch21Ending</code>, and the hub states <code>ch21Car</code>, <code>ch21Fair</code>, <code>ch21Tavern</code>, <code>ch21Bag</code>, <code>ch21Talk</code>.</p>
+<p class="fine">Reads <code>fire</code> (Zlatko). Writes <code>publicSupport</code>, <code>aliceBond</code>/<code>aliceMax</code>, <code>lutherTrust</code>, <code>ch21SawGun</code>, <code>ch21Reaction</code> (gun, stick, protect or fire), <code>ch21MetJerrys</code>, <code>ch21Ending</code>, and the hub states <code>ch21Story</code>, <code>ch21Car</code>, <code>ch21Fair</code>, <code>ch21Tavern</code>, <code>ch21Bag</code>, <code>ch21Talk</code>.</p>
 
 <h2 id="check">6 · What to check when you replay</h2>
 <ul class="check">

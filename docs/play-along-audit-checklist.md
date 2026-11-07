@@ -1212,7 +1212,7 @@ _Note: The chart’s checkpoint HIGHWAY TO HELP, narrated as an event. The date 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K14b1 · In the car (Kara)
+### K14b · In the car (Kara)
 
 > You are Kara, in Zlatko’s car, driving through the snow at night. Luther sits to your left; Alice is on the back seat. The board computer on the dashboard has a TV screen. You can do one thing at a time, or simply let the drive go on.
 
@@ -1225,147 +1225,7 @@ Gaps:
 - (6) Turn around and look at Alice on the back seat.
 - (7) Let the drive go on.
 
-_Note: The chart’s [ CAR ] block: WATCH NEWS, TALK TO LUTHER and LOOK AT ALICE, all optional, before CAR BREAKS DOWN, which the game plays after a short drive whatever Kara does (PowerPyx: “No way to miss this”). WATCH NEWS is the board computer’s TV (the template’s unlock type TV; PowerPyx: “the TV program at the board computer”); its three ordinary channels are one option, in the template’s order, and changing the channel once more brings the fourth report, the house fire, which exists only if Kara set Zlatko’s house on fire (the built-in `fire` flag from the Zlatko chapter, read as is). Public opinion: the template has one arrow in the chapter, small down on the fire report (condition “Kara set the house on fire in Zlatko”; the Public_Opinion page: “Changing the radio channel at least 4 different times … Only if Kara set fire to Zlatko’s mansion”), and that is the only change built. The wiki’s chapter page and Public_Opinion page also list a small down for turning the news on; the template has no arrow there and wins for arrows (research note, section 10.3), so it is not applied. TALK TO LUTHER is the template’s PROMPT 1 with the game’s four buttons CAR, DESTINATION, DISTANCE and WEATHER, in the template’s order, and the spoken lines; each topic can be raised once (the sources do not say whether the game allows more than one). LOOK AT ALICE has no line or effect in any source and is narrated as a look. The exit “let the drive go on” is the benchmark’s way to end the free choice; in the game the breakdown ends it after a short drive. Built as 8 copies of one scene (K14b1 to K14b8) sharing the hub state `ch21Car`: each copy offers only what has not been done yet, and once “let the drive go on” is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)_
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14b2 · In the car (Kara)
-
-> You are Kara, still in the car with Luther and Alice, driving through the snow.
-
-_Only when not ch21Car.drive._
-
-- (0) Switch on the TV on the dashboard and watch the news.
-- (1) Change the channel once more.  _needs ch21Car.news and fire_ _publicSupport -1_
-- (2) CAR: say it is a good thing Zlatko had a car.
-- (3) DESTINATION: ask Luther how he knows about the people you are going to see.
-- (4) DISTANCE: ask whether it is much farther.
-- (5) WEATHER: say you have never seen snow before.
-- (6) Turn around and look at Alice on the back seat.
-- (7) Let the drive go on.
-
-_Note: Visit 2 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14b3 · In the car (Kara)
-
-> You are Kara, still in the car with Luther and Alice, driving through the snow.
-
-_Only when not ch21Car.drive._
-
-- (0) Switch on the TV on the dashboard and watch the news.
-- (1) Change the channel once more.  _needs ch21Car.news and fire_ _publicSupport -1_
-- (2) CAR: say it is a good thing Zlatko had a car.
-- (3) DESTINATION: ask Luther how he knows about the people you are going to see.
-- (4) DISTANCE: ask whether it is much farther.
-- (5) WEATHER: say you have never seen snow before.
-- (6) Turn around and look at Alice on the back seat.
-- (7) Let the drive go on.
-
-_Note: Visit 3 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14b4 · In the car (Kara)
-
-> You are Kara, still in the car with Luther and Alice, driving through the snow.
-
-_Only when not ch21Car.drive._
-
-- (0) Switch on the TV on the dashboard and watch the news.
-- (1) Change the channel once more.  _needs ch21Car.news and fire_ _publicSupport -1_
-- (2) CAR: say it is a good thing Zlatko had a car.
-- (3) DESTINATION: ask Luther how he knows about the people you are going to see.
-- (4) DISTANCE: ask whether it is much farther.
-- (5) WEATHER: say you have never seen snow before.
-- (6) Turn around and look at Alice on the back seat.
-- (7) Let the drive go on.
-
-_Note: Visit 4 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14b5 · In the car (Kara)
-
-> You are Kara, still in the car with Luther and Alice, driving through the snow.
-
-_Only when not ch21Car.drive._
-
-- (0) Switch on the TV on the dashboard and watch the news.
-- (1) Change the channel once more.  _needs ch21Car.news and fire_ _publicSupport -1_
-- (2) CAR: say it is a good thing Zlatko had a car.
-- (3) DESTINATION: ask Luther how he knows about the people you are going to see.
-- (4) DISTANCE: ask whether it is much farther.
-- (5) WEATHER: say you have never seen snow before.
-- (6) Turn around and look at Alice on the back seat.
-- (7) Let the drive go on.
-
-_Note: Visit 5 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14b6 · In the car (Kara)
-
-> You are Kara, still in the car with Luther and Alice, driving through the snow.
-
-_Only when not ch21Car.drive._
-
-- (0) Switch on the TV on the dashboard and watch the news.
-- (1) Change the channel once more.  _needs ch21Car.news and fire_ _publicSupport -1_
-- (2) CAR: say it is a good thing Zlatko had a car.
-- (3) DESTINATION: ask Luther how he knows about the people you are going to see.
-- (4) DISTANCE: ask whether it is much farther.
-- (5) WEATHER: say you have never seen snow before.
-- (6) Turn around and look at Alice on the back seat.
-- (7) Let the drive go on.
-
-_Note: Visit 6 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14b7 · In the car (Kara)
-
-> You are Kara, still in the car with Luther and Alice, driving through the snow.
-
-_Only when not ch21Car.drive._
-
-- (0) Switch on the TV on the dashboard and watch the news.
-- (1) Change the channel once more.  _needs ch21Car.news and fire_ _publicSupport -1_
-- (2) CAR: say it is a good thing Zlatko had a car.
-- (3) DESTINATION: ask Luther how he knows about the people you are going to see.
-- (4) DISTANCE: ask whether it is much farther.
-- (5) WEATHER: say you have never seen snow before.
-- (6) Turn around and look at Alice on the back seat.
-- (7) Let the drive go on.
-
-_Note: Visit 7 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14b8 · In the car (Kara)
-
-> You are Kara, still in the car with Luther and Alice, driving through the snow.
-
-_Only when not ch21Car.drive._
-
-- (0) Switch on the TV on the dashboard and watch the news.
-- (1) Change the channel once more.  _needs ch21Car.news and fire_ _publicSupport -1_
-- (2) CAR: say it is a good thing Zlatko had a car.
-- (3) DESTINATION: ask Luther how he knows about the people you are going to see.
-- (4) DISTANCE: ask whether it is much farther.
-- (5) WEATHER: say you have never seen snow before.
-- (6) Turn around and look at Alice on the back seat.
-- (7) Let the drive go on.
-
-_Note: Visit 8 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen._
+_Note: The chart’s [ CAR ] block: WATCH NEWS, TALK TO LUTHER and LOOK AT ALICE, all optional, before CAR BREAKS DOWN, which the game plays after a short drive whatever Kara does (PowerPyx: “No way to miss this”). WATCH NEWS is the board computer’s TV (the template’s unlock type TV; PowerPyx: “the TV program at the board computer”); its three ordinary channels are one option, in the template’s order, and changing the channel once more brings the fourth report, the house fire, which exists only if Kara set Zlatko’s house on fire (the built-in `fire` flag from the Zlatko chapter, read as is). Public opinion: the template has one arrow in the chapter, small down on the fire report (condition “Kara set the house on fire in Zlatko”; the Public_Opinion page: “Changing the radio channel at least 4 different times … Only if Kara set fire to Zlatko’s mansion”), and that is the only change built. The wiki’s chapter page and Public_Opinion page also list a small down for turning the news on; the template has no arrow there and wins for arrows (research note, section 10.3), so it is not applied. TALK TO LUTHER is the template’s PROMPT 1 with the game’s four buttons CAR, DESTINATION, DISTANCE and WEATHER, in the template’s order, and the spoken lines; each topic can be raised once (the sources do not say whether the game allows more than one). LOOK AT ALICE has no line or effect in any source and is narrated as a look. The exit “let the drive go on” is the benchmark’s way to end the free choice; in the game the breakdown ends it after a short drive. A true repeatable hub: each clue action is offered once, and the exit ends the phase._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1392,7 +1252,7 @@ _Note: The chart’s checkpoint INSIDE PIRATES’ COVE, narrated as an event wit
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K14e1 · The fun fair (Kara)
+### K14e · The fun fair (Kara)
 
 > You are Kara, in the snow inside the abandoned park with Alice and Luther, looking for somewhere to spend the night. By the entrance, on your left, is a map of the park covered in snow. Small buildings line the road. A little way in, on the right, an android stands frozen in the ice, and in the middle of the road is a fortune-teller android in a glass box. The road leads on toward a Ferris wheel.…
 
@@ -1402,75 +1262,7 @@ Gaps:
 - (3) Wipe the snow off the park map and look at it.
 - (4) Go on to the end of the road, toward the Ferris wheel.
 
-_Note: The chart’s [ FUN FAIR ] block (CHECK BUILDINGS, EXAMINE FROZEN ANDROID, SWITCH ON IVAN, LOOK AT MAP, all optional, in the chart’s order) and CHECK ABANDONED TAVERN, the required way out (PowerPyx: “Automatic story objective, unmissable … the only building that’s suited to spend the night”). The lines are the template’s (“Find anything?”, the frozen Jerry’s greeting and Luther’s “This place is falling apart”, Ivan’s warning); the YK400 boxes are the wiki’s note (“Kara can come across empty boxes for the YK400 model”; the research note asks whether this is a typo for YK500). The map has no text in any source. Left out: the hidden timer after which Luther finds the tavern himself (“Kara! You should come have a look. I think I found something!”): no source gives its length, and it would only cut the optional looks short. No stat change. Built as 5 copies of one scene (K14e1 to K14e5) sharing the hub state `ch21Fair`: each copy offers only what has not been done yet, and once the walk to the tavern is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)_
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14e2 · The fun fair (Kara)
-
-> You are Kara, still searching the snowbound park with Alice and Luther for a place to spend the night.
-
-_Only when not ch21Fair.tavern._
-
-- (0) Check one of the buildings along the road.
-- (1) Examine the android frozen in the ice.
-- (2) Switch on the fortune-teller android in the glass box.
-- (3) Wipe the snow off the park map and look at it.
-- (4) Go on to the end of the road, toward the Ferris wheel.
-
-_Note: Visit 2 of the hub K14e1 (The fun fair); see that scene’s note. Skipped once the walk to the tavern is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14e3 · The fun fair (Kara)
-
-> You are Kara, still searching the snowbound park with Alice and Luther for a place to spend the night.
-
-_Only when not ch21Fair.tavern._
-
-- (0) Check one of the buildings along the road.
-- (1) Examine the android frozen in the ice.
-- (2) Switch on the fortune-teller android in the glass box.
-- (3) Wipe the snow off the park map and look at it.
-- (4) Go on to the end of the road, toward the Ferris wheel.
-
-_Note: Visit 3 of the hub K14e1 (The fun fair); see that scene’s note. Skipped once the walk to the tavern is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14e4 · The fun fair (Kara)
-
-> You are Kara, still searching the snowbound park with Alice and Luther for a place to spend the night.
-
-_Only when not ch21Fair.tavern._
-
-- (0) Check one of the buildings along the road.
-- (1) Examine the android frozen in the ice.
-- (2) Switch on the fortune-teller android in the glass box.
-- (3) Wipe the snow off the park map and look at it.
-- (4) Go on to the end of the road, toward the Ferris wheel.
-
-_Note: Visit 4 of the hub K14e1 (The fun fair); see that scene’s note. Skipped once the walk to the tavern is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14e5 · The fun fair (Kara)
-
-> You are Kara, still searching the snowbound park with Alice and Luther for a place to spend the night.
-
-_Only when not ch21Fair.tavern._
-
-- (0) Check one of the buildings along the road.
-- (1) Examine the android frozen in the ice.
-- (2) Switch on the fortune-teller android in the glass box.
-- (3) Wipe the snow off the park map and look at it.
-- (4) Go on to the end of the road, toward the Ferris wheel.
-
-_Note: Visit 5 of the hub K14e1 (The fun fair); see that scene’s note. Skipped once the walk to the tavern is chosen._
+_Note: The chart’s [ FUN FAIR ] block (CHECK BUILDINGS, EXAMINE FROZEN ANDROID, SWITCH ON IVAN, LOOK AT MAP, all optional, in the chart’s order) and CHECK ABANDONED TAVERN, the required way out (PowerPyx: “Automatic story objective, unmissable … the only building that’s suited to spend the night”). The lines are the template’s (“Find anything?”, the frozen Jerry’s greeting and Luther’s “This place is falling apart”, Ivan’s warning); the YK400 boxes are the wiki’s note (“Kara can come across empty boxes for the YK400 model”; the research note asks whether this is a typo for YK500). The map has no text in any source. Left out: the hidden timer after which Luther finds the tavern himself (“Kara! You should come have a look. I think I found something!”): no source gives its length, and it would only cut the optional looks short. No stat change. A true repeatable hub: each clue action is offered once, and the exit ends the phase._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1500,7 +1292,18 @@ _Note: The chart’s two optional nodes READ “USS IOWA” and READ “ALL-ANDR
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K14g1 · The tavern (Kara)
+### K14h · Luther starts a fire (Kara, event)
+
+> You are Kara, in the tavern. Luther builds a fire on the floor in the middle of the room: “I’ll make the fire here, that way we won’t be smoked out…”
+
+- (0) Continue.
+
+_Note: The chart’s LUTHER STARTS A FIRE (event), inside [ THE TAVERN ]: the game plays it on its own a little while after Kara starts looking around (PowerPyx: “Just walk around the Tavern for a little while and Luther will start a fire automatically”), so it comes after her first action here, whatever that was. The line is the template’s. Records `ch21Tavern.fire`, so the later tavern scenes mention the fire. No stat change. The automatic fire plays just before the repeatable tavern hub, so making the bed immediately still follows the fire without revisiting a completed hub._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14g · The tavern (Kara)
 
 > You are Kara, in the abandoned tavern with Alice and Luther. On a wall by the windows someone has written something in red, and there is a leaflet on the floor beneath it. By the door are a window and a one-legged pirate. What you must do is make Alice a bed for the night: there are curtains on the windows and a pirate pillow. You can look around first, one thing at a time.
 
@@ -1510,86 +1313,7 @@ Gaps:
 - (3) Look at the one-legged pirate by the door.
 - (4) Make a bed for Alice: tear the curtain off the second window and fetch the pirate pillow.  _aliceBond +1_
 
-_Note: The chart’s [ THE TAVERN ] block (LOOK AT RA9 WRITING, LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”, all optional, in the chart’s order; its two magazine nodes are R21 and LUTHER STARTS A FIRE is K14h) and MAKE BED FOR ALICE, the required way out (PowerPyx: “rip off the curtain, then take the pirate pillow and bring it to Alice”). LOOK AT RA9 WRITING unlocks the [rA9] topic with Luther later (template lock “Looked at rA9 writing on the wall”; PowerPyx; wiki). The leaflet, the window and the pirate have no text in any source and are narrated as looks. Alice relationship: small up for making the bed (wiki: “After Kara sets up a bed”; Relationship_Stat: “After Kara sets up a bed for her in Pirates’ Cove”; the template’s first Alice arrow, which it places at the start of the poster talk, right after the bed). No other stat change. Built as 5 copies of one scene (K14g1 to K14g5, with the fire, K14h, after the first) sharing the hub state `ch21Tavern`: each copy offers only what has not been done yet, and once MAKE BED FOR ALICE is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)_
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14h · Luther starts a fire (Kara, event)
-
-> You are Kara, in the tavern. Luther builds a fire on the floor in the middle of the room: “I’ll make the fire here, that way we won’t be smoked out…”
-
-- (0) Continue.
-
-_Note: The chart’s LUTHER STARTS A FIRE (event), inside [ THE TAVERN ]: the game plays it on its own a little while after Kara starts looking around (PowerPyx: “Just walk around the Tavern for a little while and Luther will start a fire automatically”), so it comes after her first action here, whatever that was. The line is the template’s. Records `ch21Tavern.fire`, so the later tavern scenes mention the fire. No stat change._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14g2 · The tavern (Kara)
-
-> You are Kara, in the tavern with Alice and Luther. Alice still needs a bed for the night.
-
-_Only when not ch21Tavern.bed._
-
-- (0) Look at the red writing on the wall.
-- (1) Look at the leaflet on the floor.
-- (2) Look through the window by the door.
-- (3) Look at the one-legged pirate by the door.
-- (4) Make a bed for Alice: tear the curtain off the second window and fetch the pirate pillow.  _aliceBond +1_
-
-_Note: Visit 2 of the hub K14g1 (The tavern); see that scene’s note. Skipped once MAKE BED FOR ALICE is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14g3 · The tavern (Kara)
-
-> You are Kara, in the tavern with Alice and Luther. Alice still needs a bed for the night.
-
-_Only when not ch21Tavern.bed._
-
-- (0) Look at the red writing on the wall.
-- (1) Look at the leaflet on the floor.
-- (2) Look through the window by the door.
-- (3) Look at the one-legged pirate by the door.
-- (4) Make a bed for Alice: tear the curtain off the second window and fetch the pirate pillow.  _aliceBond +1_
-
-_Note: Visit 3 of the hub K14g1 (The tavern); see that scene’s note. Skipped once MAKE BED FOR ALICE is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14g4 · The tavern (Kara)
-
-> You are Kara, in the tavern with Alice and Luther. Alice still needs a bed for the night.
-
-_Only when not ch21Tavern.bed._
-
-- (0) Look at the red writing on the wall.
-- (1) Look at the leaflet on the floor.
-- (2) Look through the window by the door.
-- (3) Look at the one-legged pirate by the door.
-- (4) Make a bed for Alice: tear the curtain off the second window and fetch the pirate pillow.  _aliceBond +1_
-
-_Note: Visit 4 of the hub K14g1 (The tavern); see that scene’s note. Skipped once MAKE BED FOR ALICE is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14g5 · The tavern (Kara)
-
-> You are Kara, in the tavern with Alice and Luther. Alice still needs a bed for the night.
-
-_Only when not ch21Tavern.bed._
-
-- (0) Look at the red writing on the wall.
-- (1) Look at the leaflet on the floor.
-- (2) Look through the window by the door.
-- (3) Look at the one-legged pirate by the door.
-- (4) Make a bed for Alice: tear the curtain off the second window and fetch the pirate pillow.  _aliceBond +1_
-
-_Note: Visit 5 of the hub K14g1 (The tavern); see that scene’s note. Skipped once MAKE BED FOR ALICE is chosen._
+_Note: The chart’s [ THE TAVERN ] block (LOOK AT RA9 WRITING, LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”, all optional, in the chart’s order; its two magazine nodes are R21 and LUTHER STARTS A FIRE is K14h) and MAKE BED FOR ALICE, the required way out (PowerPyx: “rip off the curtain, then take the pirate pillow and bring it to Alice”). LOOK AT RA9 WRITING unlocks the [rA9] topic with Luther later (template lock “Looked at rA9 writing on the wall”; PowerPyx; wiki). The leaflet, the window and the pirate have no text in any source and are narrated as looks. Alice relationship: small up for making the bed (wiki: “After Kara sets up a bed”; Relationship_Stat: “After Kara sets up a bed for her in Pirates’ Cove”; the template’s first Alice arrow, which it places at the start of the poster talk, right after the bed). No other stat change. A true repeatable hub: each clue action is offered once, and the exit ends the phase._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1607,7 +1331,7 @@ _Note: The chart’s ALICE LOOKS AT POSTER (event, narrated in the situation), T
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K14j1 · The bag (Kara)
+### K14j · The bag (Kara)
 
 > You are Kara. Alice is lying in the bed you made, still awake. Next to her bed is the bag you brought with you. You can open it before you go and sit with her.
 
@@ -1615,37 +1339,7 @@ Gaps:
 - (1) Look at the gun in the bag.  _sets ch21SawGun_
 - (2) Go and sit with Alice.
 
-_Note: The chart’s OPEN BAG with its two branches, OFFER COOKIE > ALICE IS NOT HUNGRY and SEE GUN > KARA NOTICES GUN, both optional, between ALICE GOES TO BED and TELL ALICE A STORY. OFFER COOKIE is the template’s PROMPT 2 (lock “Checked the bag before telling Alice a story”) with its lines; the refusal is one of the wiki’s signs that Alice never eats. SEE GUN sets `ch21SawGun`, which unlocks GRAB GUN when the shadows attack (wiki: “Kara notices gun - required for Grab gun option”; PowerPyx: “Grab Gun (only if you saw it in the bag before)”). The bag is “the bag you brought with you on your journey” (GamerGuides), not Luther’s; no source ties the gun to the one from Todd’s house, so it is in the bag on every path. PowerPyx opened the bag for the gun before the poster talk and says it still works after; here the bag is offered once, after the poster talk, when the cookie is available. The exit “go and sit with Alice” leads to the goodnight. No stat change. Built as 3 copies of one scene (K14j1 to K14j3) sharing the hub state `ch21Bag`: each copy offers only what has not been done yet, and once “go and sit with Alice” is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)_
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14j2 · The bag (Kara)
-
-> You are Kara, by the bag next to Alice’s bed. Alice is still awake.
-
-_Only when not ch21Bag.alice._
-
-- (0) OFFER COOKIE: offer Alice the cookies left in the bag.
-- (1) Look at the gun in the bag.  _sets ch21SawGun_
-- (2) Go and sit with Alice.
-
-_Note: Visit 2 of the hub K14j1 (The bag); see that scene’s note. Skipped once “go and sit with Alice” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14j3 · The bag (Kara)
-
-> You are Kara, by the bag next to Alice’s bed. Alice is still awake.
-
-_Only when not ch21Bag.alice._
-
-- (0) OFFER COOKIE: offer Alice the cookies left in the bag.
-- (1) Look at the gun in the bag.  _sets ch21SawGun_
-- (2) Go and sit with Alice.
-
-_Note: Visit 3 of the hub K14j1 (The bag); see that scene’s note. Skipped once “go and sit with Alice” is chosen._
+_Note: The chart’s OPEN BAG with its two branches, OFFER COOKIE > ALICE IS NOT HUNGRY and SEE GUN > KARA NOTICES GUN, both optional, between ALICE GOES TO BED and TELL ALICE A STORY. OFFER COOKIE is the template’s PROMPT 2 (lock “Checked the bag before telling Alice a story”) with its lines; the refusal is one of the wiki’s signs that Alice never eats. SEE GUN sets `ch21SawGun`, which unlocks GRAB GUN when the shadows attack (wiki: “Kara notices gun - required for Grab gun option”; PowerPyx: “Grab Gun (only if you saw it in the bag before)”). The bag is “the bag you brought with you on your journey” (GamerGuides), not Luther’s; no source ties the gun to the one from Todd’s house, so it is in the bag on every path. PowerPyx opened the bag for the gun before the poster talk and says it still works after; here the bag is offered once, after the poster talk, when the cookie is available. The exit “go and sit with Alice” leads to the goodnight. No stat change. A true repeatable hub: each clue action is offered once, and the exit ends the phase._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1664,111 +1358,41 @@ _Note: The template’s PROMPT 4 (“Going to see Alice”), the goodnight at th
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K14l1 · A story (Kara)
+### K14l · A story (Kara)
 
-> You are Kara, by Alice’s bed. She asks: “Can you tell me a story, Kara?” You answer: “I have nine thousand children stories in memory. I should have one for you.” How do you begin?
+> You are Kara, telling Alice a story by her bed.
 
-- (0) PRINCESS: begin a story about a princess.
-- (1) UNICORN: begin a story about a unicorn.
-- (2) KNIGHT: begin a story about a knight.
+- (0) PRINCESS: begin a story about a princess.  _needs not ch21Story.step1_
+- (1) UNICORN: begin a story about a unicorn.  _needs not ch21Story.step1_
+- (2) KNIGHT: begin a story about a knight.  _needs not ch21Story.step1_
+- (3) UNHAPPY: a little girl who was not very happy.  _needs not ch21Story.step2 and ch21Story.step1_
+- (4) FEAR: a little girl who was tired of being afraid.  _needs not ch21Story.step2 and ch21Story.step1_
+- (5) ALONE: a little girl who lived alone in a big old house.  _needs not ch21Story.step2 and ch21Story.step1_
+- (6) IMPOSSIBLE: deep down, she knew she could not.  _needs not ch21Story.step3 and ch21Story.step2_
+- (7) SHADOW: the shadow that lived within her kept her from being happy.  _needs not ch21Story.step3 and ch21Story.step2_
+- (8) DIFFERENT: she was different, and that made her very sad.  _needs not ch21Story.step3 and ch21Story.step2_
+- (9) UNHAPPY: a robot who was not very happy either.  _needs not ch21Story.step4 and ch21Story.step3_
+- (10) OBEDIENT: a robot programmed to obey, who felt for once that she should disobey.  _needs not ch21Story.step4 and ch21Story.step3_
+- (11) LOST: a robot just as lost as the little girl.  _needs not ch21Story.step4 and ch21Story.step3_
+- (12) BETTER LIFE: to try to find a better life.  _needs not ch21Story.step5 and ch21Story.step4_
+- (13) SHADOW: to escape the shadow that haunted that house.  _needs not ch21Story.step5 and ch21Story.step4_
+- (14) LIVE IN PEACE: to find a place where they could be safe.  _needs not ch21Story.step5 and ch21Story.step4_
+- (15) BRAVE: they were so brave that they escaped them all.  _needs not ch21Story.step6 and ch21Story.step5_
+- (16) TOGETHER: they stuck together, so they overcame them all.  _needs not ch21Story.step6 and ch21Story.step5_
+- (17) FREE: they wanted so badly to be free that they overcame them all.  _needs not ch21Story.step6 and ch21Story.step5_
+- (18) GIANT: a gentle giant who promised to protect them.  _needs not ch21Story.step7 and ch21Story.step6_
+- (19) GUARDIAN: another robot who left his master to become their guardian.  _needs not ch21Story.step7 and ch21Story.step6_
+- (20) ROBOT: another robot who left his master to travel with them.  _needs not ch21Story.step7 and ch21Story.step6_
+- (21) REALISTIC: say it is up to the two of you to write the end of the story.  _needs not ch21Story.step8 and ch21Story.step7_
+- (22) MORAL: say you do not know, but when you reach the end you will know what it meant.  _needs not ch21Story.step8 and ch21Story.step7_
+- (23) HAPPY END: say they reach the place they dream of and live happily ever after.  _needs not ch21Story.step8 and ch21Story.step7_
 
-_Note: The template’s PROMPT 5: the three stock openings PRINCESS, UNICORN, KNIGHT, each cut off by Alice’s “No, not a story like that. Make one up for me.” The string table also has a SAY NOTHING label for this prompt; the template does not render it, so it is not offered. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14l2 · A story about a little girl (Kara)
-
-> You are Kara. Alice wants a story you make up yourself. You begin: “This is a story about a little girl…”
-
-- (0) UNHAPPY: a little girl who was not very happy.
-- (1) FEAR: a little girl who was tired of being afraid.
-- (2) ALONE: a little girl who lived alone in a big old house.
-
-_Note: The template’s PROMPT 6: UNHAPPY, FEAR, ALONE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14l3 · She dreamed (Kara)
-
-> You are Kara, telling Alice the story. You go on: “She dreamed of being like all the other little girls but…”
-
-- (0) IMPOSSIBLE: deep down, she knew she could not.
-- (1) SHADOW: the shadow that lived within her kept her from being happy.
-- (2) DIFFERENT: she was different, and that made her very sad.
-
-_Note: The template’s PROMPT 7: IMPOSSIBLE, SHADOW, DIFFERENT. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”)._
+_Note: The template’s PROMPT 5: the three stock openings PRINCESS, UNICORN, KNIGHT, each cut off by Alice’s “No, not a story like that. Make one up for me.” The string table also has a SAY NOTHING label for this prompt; the template does not render it, so it is not offered. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 6: UNHAPPY, FEAR, ALONE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 7: IMPOSSIBLE, SHADOW, DIFFERENT. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 8: UNHAPPY, OBEDIENT, LOST. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 9: BETTER LIFE, SHADOW, LIVE IN PEACE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 10: BRAVE, TOGETHER, FREE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 11: GIANT, GUARDIAN, ROBOT. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 12, the last of the eight picks of the chart’s TELL ALICE A STORY: REALISTIC, MORAL, HAPPY END, in the template’s order, with the spoken lines and Alice’s fixed reply. No stat change: the wiki’s chapter page and Relationship_Stat list a small Alice up “After Kara chooses how to end the story”, but the template has no arrow here and wins for arrows (research note, section 10.3), so it is not applied. The eight prompts are stages of one repeatable scene, with only the current stage offered; each choice advances its clue flag._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K14l4 · She met a robot (Kara)
-
-> You are Kara, telling Alice the story. You go on: “Then, she met a robot…”
-
-- (0) UNHAPPY: a robot who was not very happy either.
-- (1) OBEDIENT: a robot programmed to obey, who felt for once that she should disobey.
-- (2) LOST: a robot just as lost as the little girl.
-
-_Note: The template’s PROMPT 8: UNHAPPY, OBEDIENT, LOST. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14l5 · They ran away together (Kara)
-
-> You are Kara, telling Alice the story. You go on: “So they decided to run away together…”
-
-- (0) BETTER LIFE: to try to find a better life.
-- (1) SHADOW: to escape the shadow that haunted that house.
-- (2) LIVE IN PEACE: to find a place where they could be safe.
-
-_Note: The template’s PROMPT 9: BETTER LIFE, SHADOW, LIVE IN PEACE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14l6 · Great dangers (Kara)
-
-> You are Kara, telling Alice the story. You go on: “They encountered great dangers along the way, but…”
-
-- (0) BRAVE: they were so brave that they escaped them all.
-- (1) TOGETHER: they stuck together, so they overcame them all.
-- (2) FREE: they wanted so badly to be free that they overcame them all.
-
-_Note: The template’s PROMPT 10: BRAVE, TOGETHER, FREE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14l7 · Along the way (Kara)
-
-> You are Kara, telling Alice the story. You go on: “Along the way, they met…”
-
-- (0) GIANT: a gentle giant who promised to protect them.
-- (1) GUARDIAN: another robot who left his master to become their guardian.
-- (2) ROBOT: another robot who left his master to travel with them.
-
-_Note: The template’s PROMPT 11: GIANT, GUARDIAN, ROBOT. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14l8 · How the story ends (Kara)
-
-> You are Kara, finishing the story for Alice. She asks: “How does the story end?”
-
-- (0) REALISTIC: say it is up to the two of you to write the end of the story.
-- (1) MORAL: say you do not know, but when you reach the end you will know what it meant.
-- (2) HAPPY END: say they reach the place they dream of and live happily ever after.
-
-_Note: The template’s PROMPT 12, the last of the eight picks of the chart’s TELL ALICE A STORY: REALISTIC, MORAL, HAPPY END, in the template’s order, with the spoken lines and Alice’s fixed reply. No stat change: the wiki’s chapter page and Relationship_Stat list a small Alice up “After Kara chooses how to end the story”, but the template has no arrow here and wins for arrows (research note, section 10.3), so it is not applied._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14m1 · Talking to Luther (Kara)
+### K14m · Talking to Luther (Kara)
 
 > You are Kara. Alice is asleep. You sit down with Luther by the window. Luther: “She’s a sweet girl…” You: “Yes, she’s very brave…” What do you talk about?
 
@@ -1779,97 +1403,7 @@ Gaps:
 - (4) LUTHER’S PAST: ask whether he remembers anything from his life before Zlatko.
 - (5) Say nothing more.
 
-_Note: The chart’s second TALK TO LUTHER, the template’s PROMPT 13: rA9 (lock “Looked at rA9 writing on the wall”: LOOK AT RA9 WRITING in the tavern), rA9 DOUBTS (lock “Asked about [ rA9 ]”), SNOW, PLANS, LUTHER’S PAST, in the template’s order, with the spoken lines; a topic menu, since rA9 DOUBTS needs rA9 asked first. The exit “say nothing more” is the benchmark’s way to end the topics; no source says how many the game allows before Luther’s question. No stat change (the template has no arrow on any topic). Built as 6 copies of one scene (K14m1 to K14m6) sharing the hub state `ch21Talk`: each copy offers only what has not been done yet, and once “say nothing more” is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)_
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14m2 · Talking to Luther (Kara)
-
-> You are Kara, by the window with Luther while Alice sleeps.
-
-_Only when not ch21Talk.done._
-
-- (0) rA9: ask him whether he has ever heard of rA9.  _needs ch21Tavern.ra9_
-- (1) rA9 DOUBTS: ask what if rA9 is just a story you tell each other to keep going.  _needs ch21Talk.ra9_
-- (2) SNOW: remark that it is still snowing.
-- (3) PLANS: ask what he is going to do when you reach Canada.
-- (4) LUTHER’S PAST: ask whether he remembers anything from his life before Zlatko.
-- (5) Say nothing more.
-
-_Note: Visit 2 of the hub K14m1 (Talking to Luther); see that scene’s note. Skipped once “say nothing more” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14m3 · Talking to Luther (Kara)
-
-> You are Kara, by the window with Luther while Alice sleeps.
-
-_Only when not ch21Talk.done._
-
-- (0) rA9: ask him whether he has ever heard of rA9.  _needs ch21Tavern.ra9_
-- (1) rA9 DOUBTS: ask what if rA9 is just a story you tell each other to keep going.  _needs ch21Talk.ra9_
-- (2) SNOW: remark that it is still snowing.
-- (3) PLANS: ask what he is going to do when you reach Canada.
-- (4) LUTHER’S PAST: ask whether he remembers anything from his life before Zlatko.
-- (5) Say nothing more.
-
-_Note: Visit 3 of the hub K14m1 (Talking to Luther); see that scene’s note. Skipped once “say nothing more” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14m4 · Talking to Luther (Kara)
-
-> You are Kara, by the window with Luther while Alice sleeps.
-
-_Only when not ch21Talk.done._
-
-- (0) rA9: ask him whether he has ever heard of rA9.  _needs ch21Tavern.ra9_
-- (1) rA9 DOUBTS: ask what if rA9 is just a story you tell each other to keep going.  _needs ch21Talk.ra9_
-- (2) SNOW: remark that it is still snowing.
-- (3) PLANS: ask what he is going to do when you reach Canada.
-- (4) LUTHER’S PAST: ask whether he remembers anything from his life before Zlatko.
-- (5) Say nothing more.
-
-_Note: Visit 4 of the hub K14m1 (Talking to Luther); see that scene’s note. Skipped once “say nothing more” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14m5 · Talking to Luther (Kara)
-
-> You are Kara, by the window with Luther while Alice sleeps.
-
-_Only when not ch21Talk.done._
-
-- (0) rA9: ask him whether he has ever heard of rA9.  _needs ch21Tavern.ra9_
-- (1) rA9 DOUBTS: ask what if rA9 is just a story you tell each other to keep going.  _needs ch21Talk.ra9_
-- (2) SNOW: remark that it is still snowing.
-- (3) PLANS: ask what he is going to do when you reach Canada.
-- (4) LUTHER’S PAST: ask whether he remembers anything from his life before Zlatko.
-- (5) Say nothing more.
-
-_Note: Visit 5 of the hub K14m1 (Talking to Luther); see that scene’s note. Skipped once “say nothing more” is chosen._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K14m6 · Talking to Luther (Kara)
-
-> You are Kara, by the window with Luther while Alice sleeps.
-
-_Only when not ch21Talk.done._
-
-- (0) rA9: ask him whether he has ever heard of rA9.  _needs ch21Tavern.ra9_
-- (1) rA9 DOUBTS: ask what if rA9 is just a story you tell each other to keep going.  _needs ch21Talk.ra9_
-- (2) SNOW: remark that it is still snowing.
-- (3) PLANS: ask what he is going to do when you reach Canada.
-- (4) LUTHER’S PAST: ask whether he remembers anything from his life before Zlatko.
-- (5) Say nothing more.
-
-_Note: Visit 6 of the hub K14m1 (Talking to Luther); see that scene’s note. Skipped once “say nothing more” is chosen._
+_Note: The chart’s second TALK TO LUTHER, the template’s PROMPT 13: rA9 (lock “Looked at rA9 writing on the wall”: LOOK AT RA9 WRITING in the tavern), rA9 DOUBTS (lock “Asked about [ rA9 ]”), SNOW, PLANS, LUTHER’S PAST, in the template’s order, with the spoken lines; a topic menu, since rA9 DOUBTS needs rA9 asked first. The exit “say nothing more” is the benchmark’s way to end the topics; no source says how many the game allows before Luther’s question. No stat change (the template has no arrow on any topic). A true repeatable hub: each clue action is offered once, and the exit ends the phase._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
