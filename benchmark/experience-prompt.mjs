@@ -99,7 +99,9 @@ export const NAMES={
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
 export const nameKey=k=>NAMES[k]?k:Object.keys(NAMES).find(x=>x.toUpperCase()===k)??null;
 // Terms that are not tokens but still identify the source; replaced only in neutral mode.
-const NEUTRAL_TERMS=[[/\bencountered\b/g,'met'],[/\bcounter\b/g,'worktop'],[/\bDEVIANTS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT\b/g,'ROGUE ANDROID'],[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore']];
+const NEUTRAL_TERMS=[[/\bencountered\b/g,'met'],[/\bcounter\b/g,'worktop'],[/\b[Dd]eviant androids\b/g,'rogue androids'],[/\b[Dd]eviant android\b/g,'rogue android'],[/\bDEVIANT ANDROIDS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT ANDROID\b/g,'ROGUE ANDROID'],[/\bDEVIANTS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT\b/g,'ROGUE ANDROID'],[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore'],
+ // Names that also have tokens, for the game lines that spell them out: the stat, the deviants' word, the news network and the car-park caller.
+ [/\binstability\b/g,'irregularity'],[/\brA9\b/g,'qL7'],[/\bRA9\b/g,'QL7'],[/\bCTN\b/g,'NBX'],[/\bKNC\b/g,'WRT'],[/\bChannel 16\b/g,'Channel 9'],[/\bMike\b/g,'Gus']];
 
 // render() is pure in (text, mode) and every prompt re-renders the whole story so far, so results are memoised per process.
 // The cache is cleared whenever it reaches RENDERED_MAX entries, so memory stays bounded.
