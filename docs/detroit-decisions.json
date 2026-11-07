@@ -29,8 +29,14 @@
    "id": 3,
    "title": "Shades of Color",
    "character": "Markus",
-   "note": "Linear introduction. Street interactions establish the setting; no major route split is included.",
-   "source": "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart and the Fandom wiki (chapter page, Accurate flowchart and transcript). One main line, WALKING IN THE PARK → VISIT PAINTS STORE → COLLECT PACKAGE → MARKUS TOOK THE BUS, with five optional side branches: the bench magazines (two covers), the hot dog vendor (stare, then pushes Markus), the busker, the preacher (watch, then yells at Markus) and the protesters (harass Markus). No probability, relationship, public-opinion or instability change anywhere in the chapter, and one ending. Its one cross-chapter effect: if the protesters harass Markus, Carl notices his clothes in The Painter. Each entry says how the benchmark implements it. Researched in docs/research/ch03-shades-of-color.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg"
+   ]
   },
   {
    "id": 4,
@@ -1052,6 +1058,368 @@
     ],
     "status": "implemented",
     "note": "Two narrated events with a single Continue: the store (K00) and the drive home (K00b). They add five facts to Kara’s knowledge, shown from then on, and change nothing else. The CyberLife billboard has no wording (no source gives it), and the employee, the little girl and the two sales conversations are left unnamed or out."
+   }
+  },
+  {
+   "id": "S01",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "Walking in the Park (checkpoint)",
+   "context": "Markus crosses a park on Carl’s errand: retrieve order #847 at Bellini Paints, then take the bus home. A girl runs through pigeons to hug her android friend; children play; WR600s work the grounds; an android babysitter calms a baby; a fitness android coaches a jogger; an old man’s AP700, Rose, helps him up and takes him home.",
+   "options": [
+    {
+     "label": "Scripted walk, no choice",
+     "effect": "The start node and checkpoint. The old man, the babysitter and the jogger are optional observations with no flowchart node and no effect.",
+     "target": "S02"
+    }
+   ],
+   "gate": "Chapter start, after the Opening.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Henry_Ford_Commemorative_Park"
+   ],
+   "note": "Flowchart node “WALKING IN THE PARK” (checkpoint; wiki Accurate chart type cp). The park scenes around it are optional and not on the chart.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M00a",
+     "M00b"
+    ],
+    "status": "implemented",
+    "note": "Two narrated events with a single Continue: the old man and his android with the errand (M00a), then the park (M00b). They add three facts to Markus’s knowledge and change nothing else. Raking leaves and trimming hedges are the operator’s observation; the wiki says only that WR600s work there."
+   }
+  },
+  {
+   "id": "S02",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "Read the bench magazines",
+   "context": "A magazine on a bench at the start, with two covers that count as two collectibles.",
+   "options": [
+    {
+     "label": "READ “SECRET OF ANDROIDS”",
+     "effect": "Tech Addict, BOOKWORM No. 10: CyberLife humanized its androids (genders, ethnicities, voices, unneeded blinking and breathing) because perfect machines unsettled people.",
+     "target": null
+    },
+    {
+     "label": "READ “CLIMATE CHANGE-UP”",
+     "effect": "Green Earth, BOOKWORM No. 19: world temperature up 3 degrees since 2000; the rich desert coastal cities; Miami raises its sea wall.",
+     "target": null
+    },
+    {
+     "label": "Leave it",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, on the bench to the right at the chapter start.",
+   "kind": "State gate",
+   "dependsOn": [
+    "S01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Secrets_of_Androids",
+    "https://detroit-become-human.fandom.com/wiki/Climate_Change-Up"
+   ],
+   "note": "Two optional chart nodes from one branch origin. The chart prints “SECRET” (singular); the magazine is “Secrets of Androids”. No public-opinion effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R03"
+    ],
+    "status": "implemented",
+    "note": "A media scene: read either, both or neither. Facts go to Markus’s knowledge; no stat change."
+   }
+  },
+  {
+   "id": "S03",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "Leaving the park (event)",
+   "context": "At the crossing Markus waits for the green light. A man working on the road with a few androids shouts at them (“Hurry up, you plastic idiots! I want this done by 04:00!”); a homeless woman sits beside a sign, “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Optional observations; standing in the road makes a driver honk. No flowchart node, no effect.",
+     "target": null
+    }
+   ],
+   "gate": "After the park, before the plaza.",
+   "kind": "State gate",
+   "dependsOn": [
+    "S01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg"
+   ],
+   "note": "Not on the chart. The operator remembers a human manager scrolling on a tablet while androids fix a sewer pipe; the transcript and the chapter page describe a foreman shouting at his android workers.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M00c"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue, quoted from the transcript; two facts; no stat change."
+   }
+  },
+  {
+   "id": "S04",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "The hot dog vendor",
+   "context": "Right after the crosswalk, a human hot dog vendor (Douglas Mitchell, a site manager who lost his job to androids).",
+   "options": [
+    {
+     "label": "STARE AT HOT DOG VENDOR",
+     "effect": "Stand in front of the cart: “Hey! Move it! You’re scaring away my customers!”",
+     "target": null
+    },
+    {
+     "label": "HOT DOG VENDOR PUSHES MARKUS",
+     "effect": "Keep standing there: “Are you deaf, you plastic fuck? I said move it!” He shoves Markus. Follows STARE AT HOT DOG VENDOR on the chart (triangle icon).",
+     "target": null
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the plaza; can also be done on the way back.",
+   "kind": "State gate",
+   "dependsOn": [
+    "S03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Douglas_Mitchell"
+   ],
+   "note": "Optional chart branch with a follow-on node. No effect anywhere.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M00d"
+    ],
+    "status": "implemented",
+    "note": "Options in the repeatable plaza scene: “Stand in front of the hot-dog cart and watch the vendor.”, then, on the very next visit only, “Stay where you are in front of the cart.” (the push). Only on the way in. No roll, no stat change."
+   }
+  },
+  {
+   "id": "S05",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "Listen to busker",
+   "context": "A human busker plays guitar by the fountain beside a sign: “Human Music $1 to hear music with soul ♫”.",
+   "options": [
+    {
+     "label": "LISTEN TO BUSKER",
+     "effect": "He sings a whole song (a variation of “Melbourne Rain”); a man pays him.",
+     "target": null
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the middle of the plaza.",
+   "kind": "State gate",
+   "dependsOn": [
+    "S03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Busker"
+   ],
+   "note": "Optional chart node. No effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M00d"
+    ],
+    "status": "implemented",
+    "note": "An option in the repeatable plaza scene; the sign is quoted exactly, the song is not. No stat change."
+   }
+  },
+  {
+   "id": "S06",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "The preacher",
+   "context": "By the arcade entrance a preacher (Gordon Penwick) preaches that technology is evil and that androids must be burned.",
+   "options": [
+    {
+     "label": "WATCH PREACHER",
+     "effect": "The sermon: “We built these androids to be our slaves, but the slaves are becoming the master! … Let us burn them all!”",
+     "target": null
+    },
+    {
+     "label": "PREACHER YELLS AT MARKUS",
+     "effect": "Keep watching: “Why do you look at me so, demon? … You are the one who will destroy Detroit!” Then he goes on preaching. Follows WATCH PREACHER on the chart (triangle icon).",
+     "target": null
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, on the way to the paint shop.",
+   "kind": "State gate",
+   "dependsOn": [
+    "S03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Gordon_Penwick"
+   ],
+   "note": "Optional chart branch with a follow-on node. The wiki notes the yell foreshadows Battle for Detroit. No effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M00d"
+    ],
+    "status": "implemented",
+    "note": "Options in the repeatable plaza scene: “Stop and watch the preacher by the arcade entrance.” (abridged sermon, verbatim), then, on the very next visit only, “Keep watching the preacher.” (the yell). The operator’s “man in a suit with a digital ban-androids sign” is the wiki’s preacher. No stat change."
+   }
+  },
+  {
+   "id": "S07",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "Visit paints store and collect package",
+   "context": "Inside the arcade, the Bellini Paints android clerk verifies Markus’s ID by palm scan: “Here’s your order #847. That’ll be $63.99. Please confirm payment.” Markus pays by linking with him and takes the box.",
+   "options": [
+    {
+     "label": "VISIT PAINTS STORE",
+     "effect": "Main objective, unmissable.",
+     "target": "S08"
+    },
+    {
+     "label": "COLLECT PACKAGE",
+     "effect": "Main objective; objective changes to “Take bus home”.",
+     "target": "S08"
+    }
+   ],
+   "gate": "Main line, after the plaza.",
+   "kind": "State gate",
+   "dependsOn": [
+    "S03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Bellini_Paints"
+   ],
+   "note": "Two consecutive main-line chart nodes; no choice.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M00e"
+    ],
+    "status": "simplified",
+    "note": "One narrated event covers both nodes, quoted from the transcript; one fact; no stat change."
+   }
+  },
+  {
+   "id": "S08",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "The protesters",
+   "context": "On the way to the bus stop, anti-android protesters outside the CyberLife store (“35% unemployment, millions out of work”).",
+   "options": [
+    {
+     "label": "PROTESTERS HARASS MARKUS",
+     "effect": "Walk near them: the leader blocks Markus, a protester shoves him down, he is kicked and grabbed by the shirt until a police officer intervenes (“You damage it, I’m gonna have to fine you”). Carl notices Markus’ clothes in The Painter.",
+     "target": null
+    },
+    {
+     "label": "Go around them",
+     "effect": "Walk on the right or the opposite side: nothing happens. PowerPyx: “they might not attack Markus if he’s too far away”.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, after COLLECT PACKAGE.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "S07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Android_Protest_Leader",
+    "https://detroit-become-human.fandom.com/wiki/Police_Officer_5125",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter"
+   ],
+   "note": "The chapter’s only cross-chapter effect (wiki “Cross-chapter impacts”: “Carl notices the damage to Markus’ shirt in The Painter”). The cutscene has no QTE and no choice; a cut line had Markus ask to get through. No probability is published.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M00f",
+     "M00g"
+    ],
+    "status": "simplified",
+    "note": "A decision (M00f) with the operator’s three options: walk straight up (always noticed), move closer to listen (25% risk of being noticed) or keep far away (8%). The risks are the operator’s design, unsourced. Being noticed sets shirtTorn and plays the harassment as a narrated event (M00g), quoted from the transcript; The Painter can read the flag (not yet used there). No stat change."
+   }
+  },
+  {
+   "id": "S09",
+   "chapter": 3,
+   "character": "Markus",
+   "title": "Markus took the bus (ending)",
+   "context": "Markus waits at the bus stop and boards into the android section at the back, due to segregation.",
+   "options": [
+    {
+     "label": "MARKUS TOOK THE BUS",
+     "effect": "The chapter’s only ending, reached on every path.",
+     "target": null
+    }
+   ],
+   "gate": "Always, after COLLECT PACKAGE.",
+   "kind": "State gate",
+   "dependsOn": [
+    "S07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg"
+   ],
+   "note": "End node (checkpoint). The wiki’s accurate chart misspells it “Marcus took the bus”. One outcome.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M00h"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue on every path, mentioning the roughed-up clothes if harassed. The cramped standing compartment with humans seated in front is the operator’s description; the transcript says only “the android section due to segregation”."
    }
   },
   {
@@ -3883,12 +4251,13 @@
    "status": "Source-backed summary"
   }
  ],
- "scope": "Pivotal decision families across all story chapters, with selected ethical and state-gate context. Not every dialogue line, QTE, collectible or flowchart micro-node, except chapter 1 (The Hostage), which is mapped node by node, including scripted events and every investigation clue, and whose entries say how the benchmark implements each one. Options are paraphrased; some sequential prompts are grouped.",
+ "scope": "Pivotal decision families across all story chapters, with selected ethical and state-gate context. Not every dialogue line, QTE, collectible or flowchart micro-node, except chapter 1 (The Hostage) and chapter 3 (Shades of Color), which are mapped node by node, including scripted events, every investigation clue and every optional side branch, and whose entries say how the benchmark implements each one. Options are paraphrased; some sequential prompts are grouped.",
  "gaps": [
   "Full in-game replay validation of numeric relationship and software-instability thresholds.",
   "Split grouped decisions into exact, state-specific benchmark questions before scoring models.",
   "Audit rare defeat, replacement-Connor and expelled-Markus permutations against in-game flowcharts.",
   "Difficulty changes some failure/death routes; this map does not simulate difficulty.",
-  "Chapter 1: confirm the wiki’s probability modifiers in game; where RATIONAL is offered and Captain Allen’s other two questions are undocumented."
+  "Chapter 1: confirm the wiki’s probability modifiers in game; where RATIONAL is offered and Captain Allen’s other two questions are undocumented.",
+  "Chapter 3: the protester risks (25% when edging closer, 8% when keeping far away) are the operator’s design; confirm in game how far is far enough, and Carl’s exact line in The Painter."
  ]
 }

@@ -1,4 +1,4 @@
-// Branching story engine for story.json version 1.4.x (protocol branching-2.3).
+// Branching story engine for story.json version 1.5.x (protocol branching-2.3).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel,LEVELS} from './experience-prompt.mjs';
@@ -10,7 +10,7 @@ export function initialState(){return {
  kara:true,karaActive:true,alice:true,markus:true,markusActive:true,connor:true,hank:true,hankResigned:false,
  luther:false,lutherWith:false,lutherHidden:false,north:true,simon:true,josh:true,john:false,carl:true,todd:true,
  ralph:false,ralphHostile:false,ralphDefended:false,jerry:false,monstersFreed:false,
- connorGun:false,gun:false,gunDiscovered:false,aliceBox:false,clothes:false,money:false,robbery:'none',shelter:'none',fire:false,shirtTorn:false,
+ connorGun:false,gun:false,gunDiscovered:false,aliceBox:false,clothes:false,money:false,robbery:'none',shelter:'none',fire:false,shirtTorn:false,plaza:{},
  aliceBond:0,aliceMax:0,hankTrust:-1,lutherTrust:0,amandaTrust:0,instability:0,publicSupport:0,jerichoTrust:0,northTrust:0,simonTrust:0,joshTrust:0,northBond:false,northLover:false,
  markusHits:0,simonWounded:false,simonHidden:false,casualties:false,kitchen:false,suspect:false,suspectAlive:false,suspectTrusts:false,pressured:false,toddCaught:false,raidAbandoned:false,chargeFailed:false,
  evidence:{ortizBody:false,tracisDead:false,simonBody:false,simonTablet:false,kitchenBody:false,statueMap:false},
@@ -136,6 +136,7 @@ export function blocked(n,s){
   C29:()=>!s.deviant&&s.movement==='demonstration'&&s.markusOutcome==='liberated'&&s.markus||'No machine Connor in the crowd after a successful demonstration.',
   C27:()=>s.deviant&&armyAwakened(s)&&s.markus&&s.markusActive&&s.markusOutcome==='liberated'||'No deviant Connor on the stage beside a victorious Markus.',
   C28:()=>s.deviant&&armyAwakened(s)&&!(s.markus&&s.markusActive)&&!s.north||'Connor is not the last remaining android leader.',
+  M00g:()=>s.shirtTorn||'The protesters never noticed Markus.',
  };
  const r=gate[id]?.();return r===true||r===undefined?null:r;
 }
@@ -144,7 +145,8 @@ export function available(n,s){
  if(n.type==='event')return [{id:'0',text:'Continue.'}]; // scripted moment: narrated, nothing to decide
  if(n.type==='media'){const items=mediaFor(n,s);const opts=items.map(m=>({id:String(m.index),text:(m.kind==='tv'?'Watch ':'Read ')+m.title+'.',reads:[m.index]}));if(items.length>1)opts.push({id:'all',text:'Take the time to go through all of it.',reads:items.map(m=>m.index)});opts.push({id:'skip',text:'Move on without looking.',reads:[]});return opts}
  // Options declare `requires`; investigation clues (`clue`) disappear once examined.
- let opts=n.options.filter(o=>meets(o.requires,s)&&!(o.clue&&s.hostageClues?.[o.clue])).map(o=>({...o}));const id=n.id;
+ // A repeatable scene keeps what was done under `clueState` (the hostage search uses `hostageClues`).
+ let opts=n.options.filter(o=>meets(o.requires,s)&&!(o.clue&&s[n.clueState??'hostageClues']?.[o.clue])).map(o=>({...o}));const id=n.id;
  const remove=(...ids)=>{opts=opts.filter(o=>!ids.map(String).includes(o.id))};
  if(id==='K06'&&!s.gun)remove(1);
  if(id==='K07'&&!(s.clothes&&s.money))remove(0);
@@ -178,10 +180,11 @@ export function apply(n,s,choice,roll=null){
  let event='';
  if(HOSTAGE.has(id))return {event:hostage(n,s,opt,choice,fail,{si,po,amanda,connorDies}),changes:diff(before,s)};
  if(n.type==='event'){for(const fact of n.facts??[])if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(n.effect)for(const [k,x] of Object.entries(n.effect))s[k]+=x;return {event:n.outcomes?.[choice]??'',changes:diff(before,s)}}
+ if(n.clueState)return {event:hub(n,s,opt),changes:diff(before,s)};
  if(n.type==='media'){const items=(opt?.reads??[]).map(i=>n.media[i]);for(const m of items){for(const fact of m.facts)if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(m.effect)for(const [k,x] of Object.entries(m.effect))s[k]+=x}event=items.length?'{{'+n.character+'}} '+items.map(m=>(m.kind==='tv'?'watches ':'reads ')+m.title).join(' and ')+'.':'{{'+n.character+'}} moves on without looking.';return {event,changes:diff(before,s)}}
  switch(id){
   case 'C01':if(v===0)si(1);break;
-  case 'M00':if(v===0||fail){s.shirtTorn=true;event=(v===1?'{{Markus}} tries to skirt the square but drifts too close and the protesters notice him. ':'')+'The protesters surround {{Markus}}, shove him down and tear his shirt before a police officer breaks it up and tells him to move along.'}else event='{{Markus}} takes the long way and catches the bus untouched.';break;
+  case 'M00f':event=protesters(n,s,opt,v,fail);break;
   case 'K01':s.gunDiscovered=v===0;break;
   case 'K01b':s.aliceBox=v===0;if(v===0)event='The box holds {{Alice}}’s drawings of {{Todd}} hurting her.';break;
   case 'C05a':if(v===0)hank(2);if(v===1)hank(-2);break;
@@ -335,6 +338,17 @@ function hostage(n,s,opt,choice,fail,b){
  }
  return t;
 }
+// A repeatable scene with `clueState` (the plaza in Shades of Color): each option can be taken once and is
+// recorded under s[clueState]; `last` is the option just taken, so a follow-on option can `require` it;
+// the option's fact is added to what the character knows and its outcome is the event.
+function hub(n,s,opt){const k=n.clueState,seen=s[k];if(opt?.clue)seen[opt.clue]=true;seen.last=opt?.clue??null;
+ if(opt?.fact&&!s.knowledge[n.character].includes(opt.fact))s.knowledge[n.character].push(opt.fact);return opt?.outcome??opt?.text??''}
+// Shades of Color, the protesters by the bus stop: walking straight up to them always gets Markus noticed;
+// edging closer or keeping away fail by their (operator-set) risk. Being noticed sets `shirtTorn`, which
+// plays PROTESTERS HARASS MARKUS (M00g) and which The Painter reads.
+function protesters(n,s,opt,v,fail){const noticed=v===0||fail;if(noticed)s.shirtTorn=true;
+ if(opt.fact&&!s.knowledge.Markus.includes(opt.fact))s.knowledge.Markus.push(opt.fact);
+ return n.outcomes[v+(v>0?(noticed?'-noticed':'-unnoticed'):'')]}
 function charge(s,fail,b){if(fail){s.chargeFailed=true;b.po(-2);return 'The charge breaks on the police line. {{Markus}} is shot and goes down in the street.'}b.jer(2);b.po(-2);b.north(2);b.josh(-2);return 'The androids charge and overwhelm the police line; many die on both sides.'}
 function raidDeath(s){s.markus=false;s.movement='revolution';s.markusOutcome='{{Markus}} was hit a third time and died buying time for the others. {{North}} took command and chose armed resistance.';return s.markusOutcome}
 

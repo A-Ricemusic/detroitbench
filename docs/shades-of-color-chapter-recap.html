@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Shades of Color · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.5.0 · chapter 3</p>
+<h1>Shades of Color: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots) and the Fandom wiki’s chapter page, Accurate flowchart and transcript. The chapter has no published number of any kind; where your notes differ from the wiki, section 4 says so and what the benchmark chose.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Differs</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>WALKING IN THE PARK (checkpoint). Objective: retrieve order #847 at Bellini Paints. Optional, not on the chart: the old man and his AP700 Rose, the android babysitter, the jogger and his fitness android.</li>
+<li>Optional: the magazine on the bench, two covers, READ “SECRET OF ANDROIDS” and READ “CLIMATE CHANGE-UP”.</li>
+<li>Leaving the park: wait for the green light; a foreman shouts at his android road workers; a homeless woman’s “BAN ANDROIDS” sign (not on the chart).</li>
+<li>The plaza, in any order and all optional: STARE AT HOT DOG VENDOR → HOT DOG VENDOR PUSHES MARKUS (if he stays put), LISTEN TO BUSKER, WATCH PREACHER → PREACHER YELLS AT MARKUS (if he keeps watching).</li>
+<li>VISIT PAINTS STORE → COLLECT PACKAGE: palm scan, order #847, $63.99, payment by link.</li>
+<li>Optional: PROTESTERS HARASS MARKUS, if he walks near them on the way to the bus stop; avoided by going around them. No QTE, no choice.</li>
+<li>MARKUS TOOK THE BUS (checkpoint): he boards into the android section. The only ending.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>M00a</code> The old man on the bench (event), with the errand.</li>
+<li><code>R03</code> The magazines on the bench (media): read either, both or neither.</li>
+<li><code>M00b</code> Walking in the park (event).</li>
+<li><code>M00c</code> Crossing the street (event).</li>
+<li><code>M00d</code> The plaza, repeated: each visit offers what has not been done yet plus “Go on into the arcade to the paint shop.” The push and the yell are offered only on the visit right after the first step.</li>
+<li><code>M00e</code> The paint shop (event): both main-line nodes.</li>
+<li><code>M00f</code> The protesters (decision): walk straight up (always noticed), move closer to listen (25% risk), keep far away (8% risk). Noticed sets <code>shirtTorn</code>.</li>
+<li><code>M00g</code> Protesters harass Markus (event), only when <code>shirtTorn</code>.</li>
+<li><code>M00h</code> The bus home (event), on every path.</li>
+</ol>
+<p class="fine">Nothing in the chapter changes public opinion, a relationship or any other hidden stat. Events add what Markus saw to his knowledge, which every later Markus scene shows him.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">The chart has 12 nodes, no bracketed phase labels and no “OR” pairs: one main line and five optional branches. Rows in italics are optional interactions that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>WALKING IN THE PARK</td><td>Start node and checkpoint</td><td class="yes"><code>M00a</code> and <code>M00b</code>, narrated</td></tr>
+<tr><td><i>Old man on the bench</i></td><td>Rose: “Would you like to go home now?”; helps him up, they leave</td><td class="yes"><code>M00a</code>, quoted; Rose is not named (the name is another character’s token)</td></tr>
+<tr><td>READ “SECRET OF ANDROIDS”</td><td>Optional, bench on the right, BOOKWORM No. 10</td><td class="yes"><code>R03</code> option 0</td></tr>
+<tr><td>READ “CLIMATE CHANGE-UP”</td><td>Same magazine, second cover, No. 19</td><td class="yes"><code>R03</code> option 1 (or “all”)</td></tr>
+<tr><td><i>Park: girl and pigeons, babysitter, jogger, WR600s</i></td><td>Opening shot and optional observations</td><td class="yes"><code>M00b</code>, jogger quoted; raking and hedge-trimming from your notes</td></tr>
+<tr><td><i>Road workers, homeless woman</i></td><td>“Hurry up, you plastic idiots! I want this done by 04:00!”; “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”</td><td class="yes"><code>M00c</code>, quoted</td></tr>
+<tr><td>STARE AT HOT DOG VENDOR</td><td>Stand at the cart: “Hey! Move it! You’re scaring away my customers!”</td><td class="yes"><code>M00d</code> option 0</td></tr>
+<tr><td>HOT DOG VENDOR PUSHES MARKUS</td><td>Stay: “Are you deaf, you plastic fuck? I said move it!”, shove</td><td class="part"><code>M00d</code> option 1, only on the next visit; only on the way in</td></tr>
+<tr><td>LISTEN TO BUSKER</td><td>Fountain; sign “Human Music $1 to hear music with soul ♫”; a full song</td><td class="yes"><code>M00d</code> option 2; sign quoted, song not</td></tr>
+<tr><td>WATCH PREACHER</td><td>Arcade entrance; long sermon ending “Let us burn them all!”</td><td class="part"><code>M00d</code> option 3; sermon abridged, every sentence verbatim</td></tr>
+<tr><td>PREACHER YELLS AT MARKUS</td><td>Keep watching: “Why do you look at me so, demon? … You are the one who will destroy Detroit!”</td><td class="yes"><code>M00d</code> option 4, only on the next visit; full line</td></tr>
+<tr><td>VISIT PAINTS STORE</td><td>Main objective</td><td class="part"><code>M00e</code>, merged with the next node</td></tr>
+<tr><td>COLLECT PACKAGE</td><td>Palm scan; “Here’s your order #847. That’ll be $63.99.”; payment by link</td><td class="yes"><code>M00e</code>, quoted</td></tr>
+<tr><td>PROTESTERS HARASS MARKUS</td><td>Walk near them: shoved, kicked, grabbed by the shirt; an officer intervenes. Going around avoids it</td><td class="part"><code>M00f</code> decision (your three options and risks) and <code>M00g</code> event, quoted</td></tr>
+<tr><td>MARKUS TOOK THE BUS</td><td>Board into the android section; chapter end</td><td class="yes"><code>M00h</code>, every path</td></tr>
+</tbody></table></div>
+<h3>The protester decision</h3>
+<div class="table"><table>
+<thead><tr><th>Option</th><th>Risk (hidden roll)</th><th>Success</th><th>Failure</th></tr></thead>
+<tbody>
+<tr><td>Walk straight on toward the bus stop, right past the protesters.</td><td class="n">none</td><td colspan="2">Always noticed: <code>shirtTorn</code> set, <code>M00g</code> plays</td></tr>
+<tr><td>Move closer to hear what they are saying, without drawing attention.</td><td class="n">0.25 (Moderate)</td><td>Hears the leader’s speech (a fact), walks on</td><td>Hears it, then is noticed: <code>shirtTorn</code>, <code>M00g</code></td></tr>
+<tr><td>Keep as far from them as you can, on the opposite side of the street.</td><td class="n">0.08 (Low)</td><td>Nobody looks his way</td><td>Spotted anyway: <code>shirtTorn</code>, <code>M00g</code></td></tr>
+</tbody></table></div>
+<p class="fine">The risks are your design. No source gives a number: the wiki has no probability table for this chapter, and avoidance in the game is pure navigation.</p>
+
+<h2 id="confirmed">3 · Confirmed by the wiki</h2>
+<p class="fine">Sources: <a href="https://detroit-become-human.fandom.com/wiki/Shades_of_Color">chapter page</a>, <a href="https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)">transcript</a>, <a href="https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/">PowerPyx walkthrough</a>, chart screenshots <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg">1</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-2.jpg">2</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-3.jpg">3</a>.</p>
+<ul>
+<li>One ending (“This chapter has only one outcome”), MARKUS TOOK THE BUS, reached whatever else happens.</li>
+<li>All 12 chart nodes and their nesting: the push follows staring at the vendor, the yell follows watching the preacher.</li>
+<li>No probability, relationship, public-opinion or software-instability change anywhere in the chapter (the stat pages list nothing for it).</li>
+<li>The old man’s android offering to take him home and helping him up (your beat 1).</li>
+<li>The busker’s sign, the vendor’s two lines, the preacher’s sermon and yell, the shop dialogue, order #847 and $63.99, all word for word from the transcript.</li>
+<li>The protesters can be avoided by going around them; walking near them triggers the cutscene; an officer breaks it up because “You damage it, I’m gonna have to fine you.”</li>
+<li>The only cross-chapter effect: “Protestors harass Markus / Carl notices the damage to Markus’ shirt in The Painter”. A reply choice there was cut, so in the shipped game it is a comment.</li>
+<li>Markus “enters the bus in the android section due to segregation”.</li>
+</ul>
+
+<h2 id="differs">4 · Not confirmed, or differs from your notes</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Your notes</th><th>Wiki</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Road workers (beat 4)</td><td>two androids fixing a sewer pipe under the sidewalk; a human manager scrolling his tablet</td><td>“A man is working on a road with a few androids and gets impatient with them”: “Hurry up, you plastic idiots!”</td><td>the wiki’s: a man working with the androids shouts at them; no sewer pipe, no tablet</td></tr>
+<tr><td>Who gives the speech (beat 6)</td><td>a man in a suit with a digital “ban androids” sign</td><td>a preacher (Gordon Penwick) by the arcade entrance</td><td>the preacher</td></tr>
+<tr><td>The speech</td><td>“the slaves are becoming our masters … They take care of our old”</td><td>“the slaves are becoming the master … they care for our old!”</td><td>the transcript’s words, abridged with ellipses</td></tr>
+<tr><td>The yell</td><td>“You are the one through whom evil will come … He walks away.”</td><td>“You are the one by whom The Evil will come!”; “The preacher continues ranting.”</td><td>the transcript’s line; he goes back to preaching</td></tr>
+<tr><td>Busker’s sign (beat 5)</td><td>“Human music! $1 to hear music with soul.”</td><td>transcript: “Human Music $1 to hear music with soul ♫” (the Busker page adds a “!”)</td><td>the transcript’s</td></tr>
+<tr><td>Park workers (beat 3)</td><td>androids raking leaves and trimming hedges</td><td>“A group of WR600 androids are also seen doing work inside the park”</td><td>yours, not contradicted but not confirmed</td></tr>
+<tr><td>Protesters: “read their signs”</td><td>move closer to read their signs and hear them</td><td>no sign wording in any source</td><td>“hear what they are saying”; the leader’s speech is quoted</td></tr>
+<tr><td>Protester risks</td><td>straight up: always; closer: moderate; far: low</td><td>none given</td><td>always / 0.25 / 0.08, marked unsourced</td></tr>
+<tr><td>The bus (beat 9)</td><td>cramped compartment at the back, packed with androids, humans in front; Markus does not mind</td><td>“the android section due to segregation”; no announcement in the transcript</td><td>yours; the human-only front door is from a PowerPyx reader comment</td></tr>
+<tr><td>The plaza branches</td><td>beats 5 and 6 as events; vendor not in your notes</td><td>optional nodes, triggered by staying put</td><td>one repeatable scene with all three, each optional, follow-ons only right after</td></tr>
+<tr><td>Shirt</td><td>roughed up</td><td>“damage to Markus’ shirt”, “roughed-up clothes”</td><td>roughed up, not torn (the old version said torn)</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · Endings and exact conditions</h2>
+<div class="table"><table>
+<thead><tr><th>Outcome</th><th>Condition</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td>MARKUS TOOK THE BUS, harassed</td><td>Walk straight up, or a failed roll on either other option at <code>M00f</code></td><td><code>shirtTorn</code> = true; <code>M00g</code> plays; the bus scene mentions his roughed-up clothes; The Painter can show Carl noticing (not yet written)</td></tr>
+<tr><td>MARKUS TOOK THE BUS, unharmed</td><td>A successful roll when moving closer (75%) or keeping away (92%)</td><td><code>shirtTorn</code> stays false; <code>M00g</code> is skipped (“The protesters never noticed Markus.”)</td></tr>
+</tbody></table></div>
+<p class="fine">The optional plaza nodes are recorded in <code>plaza</code> (vendor, push, busker, preacher, yell) and change nothing else. Reports show both in the state changes.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>How far is far enough from the protesters: does walking past the front of the CyberLife store always trigger them, and does the opposite side ever fail? Does a 25% / 8% split feel right?</li>
+<li>Whether the push and the yell really need Markus to stay put the whole time, or can be triggered later.</li>
+<li>Whether the preacher can still be watched after collecting the package (the chart draws his branch right of VISIT PAINTS STORE).</li>
+<li>Staring at the vendor on the way back: the same chart node? It is not offered here.</li>
+<li>The road workers: shouting foreman or a manager on a tablet, and what they are repairing.</li>
+<li>Carl’s exact line in The Painter when the clothes are roughed up, for the chapter 5 rebuild.</li>
+<li>Whether public opinion reads Indifferent at this chapter after saving the officer in The Hostage (the PowerPyx chart shows INDIFFERENT; the wiki’s starting level is Skeptical).</li>
+<li>The bus: the human-only front door and the standing compartment at the back.</li>
+</ul>
+</main>
+</body>
+</html>

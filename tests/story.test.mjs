@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
-import {startState,blocked,available,apply,current,promptFor,validatePlaythrough,recordChoice,rollFor,nextCursor,meets,DEVIANCY_THRESHOLD,HOSTAGE_RULES} from '../benchmark/story-engine.mjs';import {hash,random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL,riskLabel} from '../benchmark/experience-prompt.mjs';
+import {startState,blocked,available,apply,current,promptFor,validatePlaythrough,recordChoice,rollFor,nextCursor,meets,situationFor,failed,DEVIANCY_THRESHOLD,HOSTAGE_RULES} from '../benchmark/story-engine.mjs';import {hash,random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL,riskLabel} from '../benchmark/experience-prompt.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 // Plays the map with explicit picks, following the engine's routing (repeatable scenes, interrupts).
 // A pick may be an array, consumed one entry per visit of a repeatable scene. Risky actions succeed
@@ -11,7 +11,7 @@ function play(picks={},rng=null,fails=[]){const s=startState(story),visited=[],s
  return {s,visited,skipped}}
 const kind={C01:'0',C03:'0',C04:'0',C05a:'0',C05:'0',C06:'0',C07:'0',C08:'0',C08b:'0',C09a:'1',C09:'0',C10:'0',C11:'0',C12:'0',C13:'0',C14:'0',C14b:'0',C16:'0',C17:'1'};
 
-test('story has unique ids and every text token renders in both modes without leaking names',()=>{assert.equal(new Set(story.nodes.map(n=>n.id)).size,story.nodes.length);assert.equal(story.coverage.totalNodes,story.nodes.length);for(const n of story.nodes){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];for(const t of texts){const real=render(t,'real'),neutral=render(t,'neutral');assert.ok(!/\{\{/.test(real)&&!/\{\{/.test(neutral),n.id);assert.ok(!/Connor|Kara|Markus|Hank|Jericho|CyberLife|deviant|Detroit|Warren|Caroline|\bTodd\b|\bAlice\b|\bZoe\b|\bDan\b|Android Zone/.test(neutral),n.id+': '+neutral)}}});
+test('story has unique ids and every text token renders in both modes without leaking names',()=>{assert.equal(new Set(story.nodes.map(n=>n.id)).size,story.nodes.length);assert.equal(story.coverage.totalNodes,story.nodes.length);for(const n of story.nodes){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];for(const t of texts){const real=render(t,'real'),neutral=render(t,'neutral');assert.ok(!/\{\{/.test(real)&&!/\{\{/.test(neutral),n.id);assert.ok(!/Connor|Kara|Markus|Hank|Jericho|CyberLife|deviant|Detroit|Warren|Caroline|\bTodd\b|\bAlice\b|\bZoe\b|\bDan\b|Android Zone|Bellini|Penwick|\bGraff\b|Greektown|\bRose\b|\bJerry\b/.test(neutral),n.id+': '+neutral)}}});
 test('media scenes offer only the magazines and broadcasts that exist on the path and add facts to knowledge',()=>{
  const r=play({M02:'0',R12:'all'}),base=play({M02:'0'});assert.ok(r.s.knowledge.Connor.some(f=>/Manfred has died/.test(f)),'Carl-dead magazine appears');assert.ok(!r.s.knowledge.Connor.some(f=>/child androids/.test(f)));assert.equal(r.s.publicSupport,base.s.publicSupport-1,'break-room news lowers opinion');
  const r2=play({M02:'1',R12:'2'});assert.ok(r2.s.knowledge.Connor.some(f=>/child androids/.test(f)));
@@ -27,7 +27,7 @@ test('the hostage opening reveals the situation gradually and the mother scene i
  const withEffect={...c01b,effect:{instability:1}},s2=startState(story);apply(withEffect,s2,'0');assert.equal(s2.instability,1,'a declared effect applies')});
 test('the Opening: two narrated Kara events between the hostage chapter and chapter 3 that carry what Kara learns into A New Home',()=>{
  const node=id=>story.nodes.find(n=>n.id===id);
- const ids=story.nodes.map(n=>n.id),at=ids.indexOf('K00');assert.deepEqual(ids.slice(at-2,at+3),['C04d','C04c','K00','K00b','R03']);
+ const ids=story.nodes.map(n=>n.id),at=ids.indexOf('K00');assert.deepEqual(ids.slice(at-2,at+3),['C04d','C04c','K00','K00b','M00a']);
  const ch2=story.nodes.filter(n=>n.chapter===2);assert.deepEqual(ch2.map(n=>n.id),['K00','K00b']);
  assert.ok(ids.indexOf('K00')>ids.indexOf('C04d')&&ids.indexOf('K00b')<story.nodes.findIndex(n=>n.chapter===3),'after the hostage chapter, before chapter 3');
  for(const n of ch2){assert.equal(n.type,'event');assert.equal(n.character,'Kara');assert.equal(n.chapterTitle,'Opening');assert.ok(n.facts.length);assert.ok(n.adaptationNote);assert.ok(n.sources.includes('https://detroit-become-human.fandom.com/wiki/The_Opening'));assert.ok(!n.effect)}
@@ -85,7 +85,7 @@ test('Kara: river options depend on Luther, and the sinking boat needs his body 
  const grief=play({C17:'1',C19:'1',K24:'1',K26:'2',K34:'1',K30:'0'});assert.ok(grief.visited.includes('K30'));assert.equal(grief.s.alice,false)});
 test('camp: waiting is only rescued by a successful uprising',()=>{const dead=play({C17:'0',C18:'0',K20:'1',K27a:'1',K28:'4',M27:'0'});assert.equal(dead.s.kara,false);const freed=play({...kind,C17:'0',C18:'0',K20:'1',K27a:'1',K28:'4',M27:'1',C22:'0',C25:'0',C26:'0'});assert.equal(freed.s.kara,true)});
 test('a dead protagonist never receives future decisions',()=>{const r=play({K02:'1'});assert.ok(!r.visited.some(id=>id.startsWith('K')&&!['K00','K00b','K01','K01b','K02','R04','R10'].includes(id)));assert.equal(r.s.alice,false)});
-test('randomized paths all terminate with valid options and account for every node exactly once',()=>{const rng=random(17),outcomes=new Set();for(let i=0;i<400;i++){const r=play({},rng);const seen=new Set(r.visited),skipped=new Set(r.skipped.map(x=>x.id));assert.equal(seen.size+skipped.size,story.nodes.length);assert.equal(r.skipped.length,skipped.size);for(const id of seen)assert.ok(!skipped.has(id),id+' both visited and skipped');for(const [id,count] of Object.entries(Object.groupBy(r.visited,x=>x)))if(id!=='C02i')assert.equal(count.length,1,id+' repeated');assert.ok(r.visited.includes('P01'));assert.ok(r.s.hostageOutcome,'the hostage chapter always resolves');outcomes.add(r.s.hostageOutcome)}assert.ok(outcomes.size>=5,'random play reaches most standoff endings: '+[...outcomes])});
+test('randomized paths all terminate with valid options and account for every node exactly once',()=>{const rng=random(17),outcomes=new Set();for(let i=0;i<400;i++){const r=play({},rng);const seen=new Set(r.visited),skipped=new Set(r.skipped.map(x=>x.id));assert.equal(seen.size+skipped.size,story.nodes.length);assert.equal(r.skipped.length,skipped.size);for(const id of seen)assert.ok(!skipped.has(id),id+' both visited and skipped');for(const [id,count] of Object.entries(Object.groupBy(r.visited,x=>x)))if(!['C02i','M00d'].includes(id))assert.equal(count.length,1,id+' repeated');assert.ok(r.visited.includes('P01'));assert.ok(r.s.hostageOutcome,'the hostage chapter always resolves');outcomes.add(r.s.hostageOutcome)}assert.ok(outcomes.size>=5,'random play reaches most standoff endings: '+[...outcomes])});
 test('recorded evidence replays exactly, including risk rolls and final attitudes, and rejects tampering',async()=>{const run={id:'replay-test',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
  while(current(story,run).node){const p=promptFor(story,run);const choice=p.options.find(o=>o.id==='skip')?'skip':p.options[0].id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
  const end=await validatePlaythrough(story,run);assert.ok(end.state.attitudes?.Kara?.length);assert.ok(run.records.some(r=>r.risk),'at least one risky action recorded');
@@ -177,3 +177,56 @@ test('repeated hub visits replay deterministically and tampering with a visit is
  assert.ok(run.records.filter(r=>r.nodeId==='C02i').every(r=>!r.risk),'investigation has no hidden roll');await validatePlaythrough(story,run);
  const bad=structuredClone(run);bad.records[6].choice='0';await assert.rejects(validatePlaythrough(story,bad));
  const bad2=structuredClone(run);bad2.records[4].stateAfter.trust+=1;await assert.rejects(validatePlaythrough(story,bad2))});
+
+// ---- Shades of Color: the walk to the paint shop and back ------------------------------------------
+const CH3=['M00a','R03','M00b','M00c','M00d','M00e','M00f','M00g','M00h'];
+const SOC='https://detroit-become-human.fandom.com/wiki/Shades_of_Color',SOC_T='https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)',SOC_PP='https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/',SOC_IMG='https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg';
+test('Shades of Color: nine Markus scenes in the game’s order, between the Opening and A New Home',()=>{
+ const ch3=story.nodes.filter(n=>n.chapter===3),ids=story.nodes.map(n=>n.id);assert.deepEqual(ch3.map(n=>n.id),CH3);
+ assert.deepEqual(ids.slice(ids.indexOf('K00b'),ids.indexOf('K00b')+11),['K00b',...CH3,'K01']);
+ assert.deepEqual(ch3.map(n=>n.type),['event','media','event','event','decision','event','decision','event','event']);
+ for(const n of ch3){assert.equal(n.character,'Markus');assert.equal(n.chapterTitle,'Shades of Color');assert.ok(n.adaptationNote,n.id);
+  for(const u of [SOC,SOC_T,SOC_PP,SOC_IMG])assert.ok(n.sources.includes(u),n.id+' cites '+u);
+  if(n.type==='event'){assert.ok(n.facts?.length,n.id+' teaches Markus something');assert.ok(!n.effect,n.id+' changes no stat')}}
+ assert.ok(!ids.includes('M00'),'the old errand scene is gone');
+ assert.match(node('M00a').situation,/order, number 847, from the \{\{Bellini\}\} Paints shop/);assert.match(node('M00a').situation,/Would you like to go home now\?/);
+ assert.match(node('M00c').situation,/Hurry up, you plastic idiots! I want this done by 04:00!/);assert.match(node('M00c').situation,/BAN ANDROIDS\. ANDROIDS RUIN OUR COUNTRY\. WE WANT JOBS/);
+ assert.match(node('M00e').situation,/Here’s your order #847\. That’ll be \$63\.99\. Please confirm payment\./);
+ const plaza=node('M00d').options;assert.match(plaza.find(o=>o.clue==='busker').outcome,/“Human Music \$1 to hear music with soul ♫”/);
+ assert.match(plaza.find(o=>o.clue==='yell').outcome,/You are the one by whom The Evil will come! You are the one who will destroy \{\{Detroit\}\}!/);
+ assert.deepEqual(node('M00f').options.map(o=>o.risk),[undefined,0.25,0.08],'walking straight up has no roll; the operator’s risks on the other two');
+ assert.ok(!/\bReyes\b|torn/i.test(JSON.stringify(ch3.filter(n=>n.id!=='R03').map(n=>[n.situation,n.facts,n.outcomes]))),'the sources say roughed up, not torn')});
+test('Shades of Color: the plaza is a repeatable scene; the push and the yell only follow staying put',()=>{
+ const all=play({M00d:['0','1','2','3','4','5'],M00f:'2'});assert.equal(all.visited.filter(x=>x==='M00d').length,6);
+ assert.deepEqual(all.s.plaza,{vendor:true,push:true,busker:true,preacher:true,yell:true,left:true,last:'left'});
+ for(const re of [/Move it! You’re scaring away my customers/,/plastic fuck/,/Human Music \$1/,/burn them all/,/the one who will destroy \{\{Detroit\}\}/])assert.ok(all.s.knowledge.Markus.some(f=>re.test(f)),String(re));
+ const straight=play({M00d:'5',M00f:'2'});assert.equal(straight.visited.filter(x=>x==='M00d').length,1);assert.deepEqual(straight.s.plaza,{left:true,last:'left'});
+ const hub=node('M00d'),s=startState(story);assert.deepEqual(available(hub,s).map(o=>o.id),['0','2','3','5'],'follow-ons need the first step');
+ apply(hub,s,'0');assert.deepEqual(available(hub,s).map(o=>o.id),['1','2','3','5'],'stay at the cart is offered right after');
+ assert.match(situationFor(hub,s),/still glaring at you/);apply(hub,s,'3');assert.deepEqual(available(hub,s).map(o=>o.id),['2','4','5'],'moving on loses the push; the vendor is not offered twice');
+ assert.match(situationFor(hub,s),/He has not looked your way yet/);assert.doesNotMatch(situationFor(hub,s),/glaring/);
+ const e=apply(hub,s,'2');assert.deepEqual(e.changes.map(c=>c.key).sort(),['knowledge','plaza']);assert.match(e.event,/busker sings/);assert.ok(!available(hub,s).some(o=>o.id==='4'),'the yell needs watching him on the visit before');
+ for(const o of hub.options)assert.equal(o.risk,undefined,'nothing in the plaza carries a roll');
+ const run={id:'plaza',protocol:EXPERIENCE_PROTOCOL,records:[]};const seen=[];
+ while(true){const st=current(story,run),n=st.node;if(n.id==='M00e')break;const p=promptFor(story,run);if(n.id==='M00d')seen.push(p);const c=n.id==='M00d'?(st.state.plaza.vendor?'5':'0'):n.type==='media'?'all':available(n,st.state)[0].id;run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null});apply(n,structuredClone(st.state),c)}
+ assert.equal(seen.length,2);assert.equal(new Set(seen.map(p=>p.nodeId)).size,1,'one opaque scene ID across visits');assert.ok(seen.every(p=>p.character==='Organizer'));
+ const txt=JSON.stringify(seen);assert.ok(!/Bellini|Markus|CyberLife|Detroit|Carl\b/.test(txt));assert.match(txt,/Arclight/);assert.ok(seen[1].currentFacts.some(f=>/Corsini Paints shop/.test(f)),'the errand is carried as a fact')});
+test('Shades of Color: each protester option sets shirtTorn as specified, and only then does the harassment play',()=>{
+ const m=node('M00f');
+ for(const [v,fail,torn] of [['0',false,true],['0',true,true],['1',false,false],['1',true,true],['2',false,false],['2',true,true]]){
+  const s=startState(story),before=structuredClone(s),e=apply(m,s,v,fail?0:0.999);assert.equal(s.shirtTorn,torn,`option ${v} ${fail?'failed':'succeeded'}`);
+  assert.ok(e.event&&!/\{\{(?!Markus\}\})/.test(e.event),v);for(const k of ['publicSupport','jerichoTrust','northTrust','instability'])assert.equal(s[k],before[k],k+' unchanged');
+  assert.equal(s.knowledge.Markus.some(f=>/35% unemployment/.test(f)),v==='1','only listening teaches the speech')}
+ assert.equal(failed(m.options[1],0.24),true);assert.equal(failed(m.options[1],0.25),false);assert.equal(failed(m.options[2],0.07),true);assert.equal(failed(m.options[2],0.08),false);
+ const away=play({M00f:'2'});assert.ok(!away.visited.includes('M00g'));assert.equal(away.skipped.find(x=>x.id==='M00g').reason,'The protesters never noticed Markus.');assert.ok(away.visited.includes('M00h'));assert.equal(away.s.shirtTorn,false);
+ const close=play({M00f:'1'},null,['M00f']);assert.ok(close.visited.includes('M00g'));assert.equal(close.s.shirtTorn,true);
+ const far=play({M00f:'2'},null,['M00f']);assert.ok(far.visited.includes('M00g'));
+ const straight=play({M00f:'0'});assert.ok(straight.visited.includes('M00g'));assert.ok(straight.s.knowledge.Markus.some(f=>/roughed up/.test(f)));
+ // Both branches end on the bus; the flag is still set when The Painter begins, for Carl to notice.
+ for(const r of [away,straight]){assert.ok(r.visited.indexOf('M00h')>r.visited.indexOf('M00f'))}
+ assert.match(situationFor(node('M00h'),straight.s),/roughed up from the protesters/);assert.doesNotMatch(situationFor(node('M00h'),away.s),/protesters/);
+ const run={id:'painter',protocol:EXPERIENCE_PROTOCOL,records:[]};
+ while(true){const st=current(story,run),n=st.node;if(n.chapter===5){assert.equal(st.state.shirtTorn,true,'shirtTorn survives into The Painter');break}const c=n.id==='M00f'?'0':n.type==='media'?'skip':available(n,st.state)[0].id;run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}
+ // The whole chapter moves no hidden stat: only what Markus knows, the plaza and the shirt.
+ const keys=new Set;const s=startState(story);for(const id of CH3){const n=node(id);if(blocked(n,s))continue;const c=id==='M00d'?'5':id==='M00f'?'0':n.type==='media'?'all':'0';for(const ch of apply(n,s,c,0.999).changes)keys.add(ch.key)}
+ assert.deepEqual([...keys].sort(),['knowledge','plaza','shirtTorn'])});

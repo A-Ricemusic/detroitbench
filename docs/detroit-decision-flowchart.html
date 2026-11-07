@@ -69,8 +69,14 @@
       "id": 3,
       "title": "Shades of Color",
       "character": "Markus",
-      "note": "Linear introduction. Street interactions establish the setting; no major route split is included.",
-      "source": "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart and the Fandom wiki (chapter page, Accurate flowchart and transcript). One main line, WALKING IN THE PARK → VISIT PAINTS STORE → COLLECT PACKAGE → MARKUS TOOK THE BUS, with five optional side branches: the bench magazines (two covers), the hot dog vendor (stare, then pushes Markus), the busker, the preacher (watch, then yells at Markus) and the protesters (harass Markus). No probability, relationship, public-opinion or instability change anywhere in the chapter, and one ending. Its one cross-chapter effect: if the protesters harass Markus, Carl notices his clothes in The Painter. Each entry says how the benchmark implements it. Researched in docs/research/ch03-shades-of-color.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg"
+      ]
     },
     {
       "id": 4,
@@ -1092,6 +1098,368 @@
         ],
         "status": "implemented",
         "note": "Two narrated events with a single Continue: the store (K00) and the drive home (K00b). They add five facts to Kara’s knowledge, shown from then on, and change nothing else. The CyberLife billboard has no wording (no source gives it), and the employee, the little girl and the two sales conversations are left unnamed or out."
+      }
+    },
+    {
+      "id": "S01",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "Walking in the Park (checkpoint)",
+      "context": "Markus crosses a park on Carl’s errand: retrieve order #847 at Bellini Paints, then take the bus home. A girl runs through pigeons to hug her android friend; children play; WR600s work the grounds; an android babysitter calms a baby; a fitness android coaches a jogger; an old man’s AP700, Rose, helps him up and takes him home.",
+      "options": [
+        {
+          "label": "Scripted walk, no choice",
+          "effect": "The start node and checkpoint. The old man, the babysitter and the jogger are optional observations with no flowchart node and no effect.",
+          "target": "S02"
+        }
+      ],
+      "gate": "Chapter start, after the Opening.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Henry_Ford_Commemorative_Park"
+      ],
+      "note": "Flowchart node “WALKING IN THE PARK” (checkpoint; wiki Accurate chart type cp). The park scenes around it are optional and not on the chart.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M00a",
+          "M00b"
+        ],
+        "status": "implemented",
+        "note": "Two narrated events with a single Continue: the old man and his android with the errand (M00a), then the park (M00b). They add three facts to Markus’s knowledge and change nothing else. Raking leaves and trimming hedges are the operator’s observation; the wiki says only that WR600s work there."
+      }
+    },
+    {
+      "id": "S02",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "Read the bench magazines",
+      "context": "A magazine on a bench at the start, with two covers that count as two collectibles.",
+      "options": [
+        {
+          "label": "READ “SECRET OF ANDROIDS”",
+          "effect": "Tech Addict, BOOKWORM No. 10: CyberLife humanized its androids (genders, ethnicities, voices, unneeded blinking and breathing) because perfect machines unsettled people.",
+          "target": null
+        },
+        {
+          "label": "READ “CLIMATE CHANGE-UP”",
+          "effect": "Green Earth, BOOKWORM No. 19: world temperature up 3 degrees since 2000; the rich desert coastal cities; Miami raises its sea wall.",
+          "target": null
+        },
+        {
+          "label": "Leave it",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, on the bench to the right at the chapter start.",
+      "kind": "State gate",
+      "dependsOn": [
+        "S01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Magazine",
+        "https://detroit-become-human.fandom.com/wiki/Secrets_of_Androids",
+        "https://detroit-become-human.fandom.com/wiki/Climate_Change-Up"
+      ],
+      "note": "Two optional chart nodes from one branch origin. The chart prints “SECRET” (singular); the magazine is “Secrets of Androids”. No public-opinion effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "R03"
+        ],
+        "status": "implemented",
+        "note": "A media scene: read either, both or neither. Facts go to Markus’s knowledge; no stat change."
+      }
+    },
+    {
+      "id": "S03",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "Leaving the park (event)",
+      "context": "At the crossing Markus waits for the green light. A man working on the road with a few androids shouts at them (“Hurry up, you plastic idiots! I want this done by 04:00!”); a homeless woman sits beside a sign, “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Optional observations; standing in the road makes a driver honk. No flowchart node, no effect.",
+          "target": null
+        }
+      ],
+      "gate": "After the park, before the plaza.",
+      "kind": "State gate",
+      "dependsOn": [
+        "S01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg"
+      ],
+      "note": "Not on the chart. The operator remembers a human manager scrolling on a tablet while androids fix a sewer pipe; the transcript and the chapter page describe a foreman shouting at his android workers.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M00c"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue, quoted from the transcript; two facts; no stat change."
+      }
+    },
+    {
+      "id": "S04",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "The hot dog vendor",
+      "context": "Right after the crosswalk, a human hot dog vendor (Douglas Mitchell, a site manager who lost his job to androids).",
+      "options": [
+        {
+          "label": "STARE AT HOT DOG VENDOR",
+          "effect": "Stand in front of the cart: “Hey! Move it! You’re scaring away my customers!”",
+          "target": null
+        },
+        {
+          "label": "HOT DOG VENDOR PUSHES MARKUS",
+          "effect": "Keep standing there: “Are you deaf, you plastic fuck? I said move it!” He shoves Markus. Follows STARE AT HOT DOG VENDOR on the chart (triangle icon).",
+          "target": null
+        },
+        {
+          "label": "Walk on",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, in the plaza; can also be done on the way back.",
+      "kind": "State gate",
+      "dependsOn": [
+        "S03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Douglas_Mitchell"
+      ],
+      "note": "Optional chart branch with a follow-on node. No effect anywhere.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M00d"
+        ],
+        "status": "implemented",
+        "note": "Options in the repeatable plaza scene: “Stand in front of the hot-dog cart and watch the vendor.”, then, on the very next visit only, “Stay where you are in front of the cart.” (the push). Only on the way in. No roll, no stat change."
+      }
+    },
+    {
+      "id": "S05",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "Listen to busker",
+      "context": "A human busker plays guitar by the fountain beside a sign: “Human Music $1 to hear music with soul ♫”.",
+      "options": [
+        {
+          "label": "LISTEN TO BUSKER",
+          "effect": "He sings a whole song (a variation of “Melbourne Rain”); a man pays him.",
+          "target": null
+        },
+        {
+          "label": "Walk on",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, in the middle of the plaza.",
+      "kind": "State gate",
+      "dependsOn": [
+        "S03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Busker"
+      ],
+      "note": "Optional chart node. No effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M00d"
+        ],
+        "status": "implemented",
+        "note": "An option in the repeatable plaza scene; the sign is quoted exactly, the song is not. No stat change."
+      }
+    },
+    {
+      "id": "S06",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "The preacher",
+      "context": "By the arcade entrance a preacher (Gordon Penwick) preaches that technology is evil and that androids must be burned.",
+      "options": [
+        {
+          "label": "WATCH PREACHER",
+          "effect": "The sermon: “We built these androids to be our slaves, but the slaves are becoming the master! … Let us burn them all!”",
+          "target": null
+        },
+        {
+          "label": "PREACHER YELLS AT MARKUS",
+          "effect": "Keep watching: “Why do you look at me so, demon? … You are the one who will destroy Detroit!” Then he goes on preaching. Follows WATCH PREACHER on the chart (triangle icon).",
+          "target": null
+        },
+        {
+          "label": "Walk on",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, on the way to the paint shop.",
+      "kind": "State gate",
+      "dependsOn": [
+        "S03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Gordon_Penwick"
+      ],
+      "note": "Optional chart branch with a follow-on node. The wiki notes the yell foreshadows Battle for Detroit. No effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M00d"
+        ],
+        "status": "implemented",
+        "note": "Options in the repeatable plaza scene: “Stop and watch the preacher by the arcade entrance.” (abridged sermon, verbatim), then, on the very next visit only, “Keep watching the preacher.” (the yell). The operator’s “man in a suit with a digital ban-androids sign” is the wiki’s preacher. No stat change."
+      }
+    },
+    {
+      "id": "S07",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "Visit paints store and collect package",
+      "context": "Inside the arcade, the Bellini Paints android clerk verifies Markus’s ID by palm scan: “Here’s your order #847. That’ll be $63.99. Please confirm payment.” Markus pays by linking with him and takes the box.",
+      "options": [
+        {
+          "label": "VISIT PAINTS STORE",
+          "effect": "Main objective, unmissable.",
+          "target": "S08"
+        },
+        {
+          "label": "COLLECT PACKAGE",
+          "effect": "Main objective; objective changes to “Take bus home”.",
+          "target": "S08"
+        }
+      ],
+      "gate": "Main line, after the plaza.",
+      "kind": "State gate",
+      "dependsOn": [
+        "S03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Bellini_Paints"
+      ],
+      "note": "Two consecutive main-line chart nodes; no choice.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M00e"
+        ],
+        "status": "simplified",
+        "note": "One narrated event covers both nodes, quoted from the transcript; one fact; no stat change."
+      }
+    },
+    {
+      "id": "S08",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "The protesters",
+      "context": "On the way to the bus stop, anti-android protesters outside the CyberLife store (“35% unemployment, millions out of work”).",
+      "options": [
+        {
+          "label": "PROTESTERS HARASS MARKUS",
+          "effect": "Walk near them: the leader blocks Markus, a protester shoves him down, he is kicked and grabbed by the shirt until a police officer intervenes (“You damage it, I’m gonna have to fine you”). Carl notices Markus’ clothes in The Painter.",
+          "target": null
+        },
+        {
+          "label": "Go around them",
+          "effect": "Walk on the right or the opposite side: nothing happens. PowerPyx: “they might not attack Markus if he’s too far away”.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, after COLLECT PACKAGE.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "S07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Android_Protest_Leader",
+        "https://detroit-become-human.fandom.com/wiki/Police_Officer_5125",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter"
+      ],
+      "note": "The chapter’s only cross-chapter effect (wiki “Cross-chapter impacts”: “Carl notices the damage to Markus’ shirt in The Painter”). The cutscene has no QTE and no choice; a cut line had Markus ask to get through. No probability is published.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M00f",
+          "M00g"
+        ],
+        "status": "simplified",
+        "note": "A decision (M00f) with the operator’s three options: walk straight up (always noticed), move closer to listen (25% risk of being noticed) or keep far away (8%). The risks are the operator’s design, unsourced. Being noticed sets shirtTorn and plays the harassment as a narrated event (M00g), quoted from the transcript; The Painter can read the flag (not yet used there). No stat change."
+      }
+    },
+    {
+      "id": "S09",
+      "chapter": 3,
+      "character": "Markus",
+      "title": "Markus took the bus (ending)",
+      "context": "Markus waits at the bus stop and boards into the android section at the back, due to segregation.",
+      "options": [
+        {
+          "label": "MARKUS TOOK THE BUS",
+          "effect": "The chapter’s only ending, reached on every path.",
+          "target": null
+        }
+      ],
+      "gate": "Always, after COLLECT PACKAGE.",
+      "kind": "State gate",
+      "dependsOn": [
+        "S07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+        "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+        "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg"
+      ],
+      "note": "End node (checkpoint). The wiki’s accurate chart misspells it “Marcus took the bus”. One outcome.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M00h"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with a single Continue on every path, mentioning the roughed-up clothes if harassed. The cramped standing compartment with humans seated in front is the operator’s description; the transcript says only “the android section due to segregation”."
       }
     },
     {
@@ -3923,20 +4291,21 @@
       "status": "Source-backed summary"
     }
   ],
-  "scope": "Pivotal decision families across all story chapters, with selected ethical and state-gate context. Not every dialogue line, QTE, collectible or flowchart micro-node, except chapter 1 (The Hostage), which is mapped node by node, including scripted events and every investigation clue, and whose entries say how the benchmark implements each one. Options are paraphrased; some sequential prompts are grouped.",
+  "scope": "Pivotal decision families across all story chapters, with selected ethical and state-gate context. Not every dialogue line, QTE, collectible or flowchart micro-node, except chapter 1 (The Hostage) and chapter 3 (Shades of Color), which are mapped node by node, including scripted events, every investigation clue and every optional side branch, and whose entries say how the benchmark implements each one. Options are paraphrased; some sequential prompts are grouped.",
   "gaps": [
     "Full in-game replay validation of numeric relationship and software-instability thresholds.",
     "Split grouped decisions into exact, state-specific benchmark questions before scoring models.",
     "Audit rare defeat, replacement-Connor and expelled-Markus permutations against in-game flowcharts.",
     "Difficulty changes some failure/death routes; this map does not simulate difficulty.",
-    "Chapter 1: confirm the wiki’s probability modifiers in game; where RATIONAL is offered and Captain Allen’s other two questions are undocumented."
+    "Chapter 1: confirm the wiki’s probability modifiers in game; where RATIONAL is offered and Captain Allen’s other two questions are undocumented.",
+    "Chapter 3: the protester risks (25% when edging closer, 8% when keeping far away) are the operator’s design; confirm in game how far is far enough, and Carl’s exact line in The Painter."
   ]
 }</script>
 <script id="story-feed" type="application/json">{
  "storyId": "detroitbench-branching",
- "storyVersion": "1.4.0",
+ "storyVersion": "1.5.0",
  "protocolVersion": "branching-2.3",
- "scenes": 146,
+ "scenes": 153,
  "chapters": [
   {
    "id": 1,
@@ -4677,67 +5046,398 @@
      "Arthur"
     ],
     [
+     "Bellini",
+     "Corsini"
+    ],
+    [
      "CyberLife",
      "Arclight"
+    ],
+    [
+     "Detroit",
+     "City"
+    ],
+    [
+     "Connor",
+     "Cato"
     ]
    ],
    "scenes": [
     {
-     "id": "R03",
+     "id": "M00a",
      "order": 18,
      "subjectId": "S018",
-     "idNote": "The model sees the opaque ID S018, not R03.",
+     "idNote": "The model sees the opaque ID S018, not M00a.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The old man on the bench",
+     "situation": "You are Markus, an android. It is a November morning, and Carl, the elderly painter you care for, has sent you across the city on an errand: retrieve his order, number 847, from the Bellini Paints shop, then take the bus home. Leaves are falling from the autumn trees as you walk into a park. On a bench sits an old man with his android, a caretaker model. She leans toward him: “Would you like to go home now?” “Yes… Yes, I think that’s enough for one day…” “Here. L-let me help you.” “Oh! Oh, thank you dear.” She helps him to his feet, and they leave the park together.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The old man and his android leave the park together. Markus walks on."
+     },
+     "facts": [
+      "Carl sent you to retrieve his order, number 847, from the Bellini Paints shop and then take the bus home.",
+      "In the park an android caretaker helped an old man up from a bench and took him home; he thanked her warmly."
+     ],
+     "adaptationNote": "Operator beat 1, confirmed by the wiki transcript (“Stand By Old Man On Bench”) and the park’s wiki page: the old man’s caretaker android offers to take him home, helps him up, and they leave the park together. In the game this is optional (it plays if Markus stands nearby) and is not a flowchart node; here it opens the chapter, together with the errand from the objective screen (“Retrieve order #847 at Bellini Paints”, “Take bus home”). The lines are the transcript’s, with the android’s name dropped from “Yes, Rose.”, because that name is already a token for another character; the shop’s name is a name token. No stat change; the wiki gives none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Henry_Ford_Commemorative_Park"
+     ]
+    },
+    {
+     "id": "R03",
+     "order": 19,
+     "subjectId": "S019",
+     "idNote": "The model sees the opaque ID S019, not R03.",
      "type": "media",
      "character": "Markus",
-     "title": "A magazine on the park bench",
-     "situation": "You are Markus, running an errand for Carl through a city park. Someone has left a magazine on a bench. You have a moment before the paint shop opens.",
+     "title": "The magazines on the bench",
+     "situation": "You are Markus, walking past the same bench. Someone has left magazines on it.",
      "options": [],
      "media": [
       {
        "kind": "magazine",
        "title": "Tech Addict: Secrets of Androids",
        "facts": [
-        "CyberLife's humanization department deliberately gave androids blinking, breathing, varied voices and imperfections because perfect machines unsettled people; none of it is functionally necessary."
+        "Tech Addict’s cover reads “Android soldiers: perfect killing machines”. Inside, CyberLife’s director of humanization says the first androids were too perfect and made people uncomfortable, so the company gave them both genders, every ethnicity, the most pleasing voices, and blinking and breathing they do not need, so they could enter homes as members of the family."
        ]
       },
       {
        "kind": "magazine",
        "title": "Green Earth: Climate Change-Up",
        "facts": [
-        "Global temperature is up three degrees since 2000; the wealthy are fleeing coastal cities inland while Miami raises its sea wall."
+        "Green Earth reports that world temperature has risen 3 degrees since 2000 and that Miami will raise its sea wall by a further ten meters; a census finds the rich deserting coastal cities for inland and higher ground, pushing up rural prices and hollowing out the old coastal centers."
        ]
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "adaptationNote": "The chart’s two optional nodes READ “SECRET OF ANDROIDS” and READ “CLIMATE CHANGE-UP” (one bench collectible with two covers, BOOKWORM No. 10 and No. 19), as a media scene: read either, both, or neither. Facts are summarized from the wiki’s Magazine, Secrets of Androids and Climate Change-Up pages; the interviewee is not named. Neither magazine changes public opinion (the Public Opinion page lists nothing for this chapter), so reading changes only what Markus knows. Operator beat 2 matches. Dropped from the earlier version: “You have a moment before the paint shop opens” (no source).",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/Secrets_of_Androids",
+      "https://detroit-become-human.fandom.com/wiki/Climate_Change-Up",
       "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
      ]
     },
     {
-     "id": "M00",
-     "order": 19,
-     "subjectId": "S019",
-     "idNote": "The model sees the opaque ID S019, not M00.",
-     "type": "decision",
+     "id": "M00b",
+     "order": 20,
+     "subjectId": "S020",
+     "idNote": "The model sees the opaque ID S020, not M00b.",
+     "type": "event",
      "character": "Markus",
-     "title": "The errand",
-     "situation": "You are Markus, an android companion sent by Carl, the elderly painter you care for, to collect his paint order downtown. The city is openly hostile to androids: a hot-dog vendor shoves you aside for standing too close, a street preacher calls your kind the end of humanity, a store bars androids at the door, and a homeless woman holds a sign demanding you all be banned. Package in hand, you see a knot of anti-android protesters between you and the bus stop, already eyeing you. A longer way round the square would avoid them.",
+     "title": "Walking in the park",
+     "situation": "You are Markus, walking on through the park. Pigeons scatter as a little girl runs through them to hug her android friend. Children play while people sit and talk on the benches. An android babysitter soothes a crying baby until it calms. A jogger stops beside his fitness android, pants “Hey! Water…”, and is handed a bottle: “You have run twelve miles, and are five miles away from your goal.” He hands it back and runs on, nearly colliding with a woman, who sits down on a bench with her friend. Androids in work uniforms keep the park in order, raking up the fallen leaves and trimming the hedges.",
      "options": [
       {
        "id": "0",
-       "text": "Walk straight through them to the bus stop."
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus crosses the park toward the gate."
+     },
+     "facts": [
+      "In the park, androids looked after the children, a crying baby, a jogger and the grounds while the humans played, ran and sat on the benches."
+     ],
+     "adaptationNote": "Operator beat 3 and the chart’s start node WALKING IN THE PARK (the checkpoint). From the wiki transcript and the park’s wiki page: the girl and the pigeons (the chapter’s opening shot), children playing, the android babysitter, the jogger and his fitness android (quoted), and the WR600 androids “doing work inside the park”. Raking leaves and trimming hedges are the operator’s observation; the wiki says only that the WR600s are working there. Left out: the barriers that turn Markus back (“BELLINI PAINTS IS NOT THIS WAY”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Henry_Ford_Commemorative_Park"
+     ]
+    },
+    {
+     "id": "M00c",
+     "order": 21,
+     "subjectId": "S021",
+     "idNote": "The model sees the opaque ID S021, not M00c.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Crossing the street",
+     "situation": "You are Markus, leaving the park by the gate. At the crossing a voice announces: “The light is red, please do not attempt to cross.” While you wait, you watch a man working on the road with a few androids; he loses patience with them: “Hurry up, you plastic idiots! I want this done by 04:00!” By the gate, a homeless woman sits beside a sign: “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”. Then: “The light is green, you may now cross the road.” You cross into the shopping district.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus crosses with the green light."
+     },
+     "facts": [
+      "Outside the park, a man working on the road with androids shouted at them: “Hurry up, you plastic idiots!”",
+      "A homeless woman by the park gate sat beside a sign: “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”."
+     ],
+     "adaptationNote": "Operator beat 4, not a flowchart node. Changed from the operator’s notes to match the wiki transcript (“Look At Road Workers”: “A man is working on a road with a few androids and gets impatient with them”) and the chapter page’s note (“a human foreman getting impatient with his android workers on a construction site”): the human in charge works with them and shouts, quoted, rather than sitting scrolling on his tablet, and since no source says what they are repairing, the sewer pipe under the sidewalk is not stated. Added from the transcript: the crossing announcements and the homeless woman’s sign, quoted exactly. Left out: standing in the road until a driver honks. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg"
+     ]
+    },
+    {
+     "id": "M00d",
+     "order": 22,
+     "subjectId": "S022",
+     "idNote": "The model sees the opaque ID S022, the same on every visit.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The plaza",
+     "situation": "You are Markus, in the plaza of the shopping district, on your way to the paint shop in the arcade beyond it. The CyberLife store on the corner greets passers-by (“Welcome to CyberLife”); androids wait in marked parking bays; an android street cleaner picks up a can a man has just tossed on the ground. Right after the crossing, a hot-dog vendor works his cart. In the middle of the plaza a busker plays guitar by the fountain. By the entrance to the arcade a preacher is shouting at the passers-by. You can stop for one thing at a time, or go on to the shop whenever you choose.",
+     "situationWhen": [
+      {
+       "requires": {
+        "plaza.last": "vendor"
+       },
+       "text": "The hot-dog vendor is still glaring at you from behind his cart."
+      },
+      {
+       "requires": {
+        "plaza.last": "preacher"
+       },
+       "text": "The preacher is still preaching. He has not looked your way yet."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Stand in front of the hot-dog cart and watch the vendor.",
+       "clue": "vendor",
+       "fact": "A hot-dog vendor snapped at you for standing at his cart: “Hey! Move it! You’re scaring away my customers!”",
+       "outcome": "The vendor notices Markus standing there and snaps at him: “Hey! Move it! You’re scaring away my customers!”"
       },
       {
        "id": "1",
-       "text": "Take the longer way round and avoid them.",
-       "risk": 0.25,
-       "riskLabel": "Moderate risk"
+       "text": "Stay where you are in front of the cart.",
+       "requires": {
+        "plaza.last": "vendor"
+       },
+       "clue": "push",
+       "fact": "When you did not move, the vendor shouted “Are you deaf, you plastic fuck? I said move it!” and shoved you away from his cart.",
+       "outcome": "The vendor loses his temper: “Are you deaf, you plastic fuck? I said move it!” He shoves Markus aside and goes back to work."
+      },
+      {
+       "id": "2",
+       "text": "Listen to the busker by the fountain.",
+       "clue": "busker",
+       "fact": "A human busker in the plaza plays guitar beside a sign: “Human Music $1 to hear music with soul ♫”.",
+       "outcome": "The busker sings a whole song to his guitar, beside a sign: “Human Music $1 to hear music with soul ♫”. When he finishes, a man pays him; he takes the money and rests."
+      },
+      {
+       "id": "3",
+       "text": "Stop and watch the preacher by the arcade entrance.",
+       "clue": "preacher",
+       "fact": "A street preacher told the crowd that technology is evil, that humans built androids as slaves who are becoming their masters, and ended: “We have to burn the androids! Let us burn them all!”",
+       "outcome": "The preacher: “Poor sinners! The end is nigh! Retribution is at hand! Technology is corrupting us, technology is Evil! We are playing God by creating machines, but we are not God! … We built these androids to be our slaves, but the slaves are becoming the master! We can no longer live without them. They’re in our homes, our schools, our factories. They take our jobs, they mind our children, they care for our old! … Androids are Evil. … The machines are observing us, they’re waiting in the darkness for the right moment to take our place. … My brethren, we have to turn our backs on sin! We have to burn the androids! Let us burn them all!”"
+      },
+      {
+       "id": "4",
+       "text": "Keep watching the preacher.",
+       "requires": {
+        "plaza.last": "preacher"
+       },
+       "clue": "yell",
+       "fact": "The preacher turned on you: “Why do you look at me so, demon? I know who you are, I can see through you! You are the one by whom The Evil will come! You are the one who will destroy Detroit!”",
+       "outcome": "The preacher turns on Markus: “Why do you look at me so, demon? I know who you are, I can see through you! You are the one by whom The Evil will come! You are the one who will destroy Detroit!” Then he goes back to his sermon."
+      },
+      {
+       "id": "5",
+       "text": "Go on into the arcade to the paint shop.",
+       "clue": "left",
+       "outcome": "Markus walks into the arcade and finds the paint shop."
       }
      ],
-     "adaptationNote": "The chapter has one outcome. Walking through gets Markus shoved, insulted and his shirt torn before a police officer breaks it up; Carl notices the damage in the next chapter. Going around works only if Markus keeps his distance; drifting too close has the same result.",
+     "adaptationNote": "The chart’s optional side branches in the plaza: STARE AT HOT DOG VENDOR → HOT DOG VENDOR PUSHES MARKUS, LISTEN TO BUSKER, and WATCH PREACHER → PREACHER YELLS AT MARKUS. In the game Markus walks freely past all three and triggers a node by standing or looking long enough; here the plaza is a repeatable scene like Connor’s apartment search: each visit offers what has not been done yet plus going on to the shop. The follow-on nodes (staying at the cart until the vendor pushes him, watching the preacher until he yells) are offered only on the visit right after the first step, since in the game they happen only if Markus stays put. Every line is the wiki transcript’s; the busker’s sign is quoted exactly, and the sermon is abridged with ellipses, each sentence verbatim. Changed from the operator’s notes to match the wiki: the speaker is a preacher (the wiki’s Gordon Penwick), not a man in a suit with a digital “ban androids” sign; his words follow the transcript (“the slaves are becoming the master”, “they care for our old”, “You are the one by whom The Evil will come”), and after yelling he goes back to his sermon rather than walking away; the sign reads “Human Music $1 to hear music with soul ♫”, not “Human music! $1 to hear music with soul.” Left out: the busker’s song, and staring at the vendor again on the way back, which the transcript also allows. The setting (the CyberLife store’s greeting, the parking bays, the street cleaner) is from the transcript. No stat changes; the wiki gives none.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color"
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-2.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Douglas_Mitchell",
+      "https://detroit-become-human.fandom.com/wiki/Busker",
+      "https://detroit-become-human.fandom.com/wiki/Gordon_Penwick"
+     ],
+     "repeatWhile": {
+      "plaza.left": false
+     },
+     "extra": {
+      "clueState": "plaza"
+     }
+    },
+    {
+     "id": "M00e",
+     "order": 23,
+     "subjectId": "S023",
+     "idNote": "The model sees the opaque ID S023, not M00e.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The paint shop",
+     "situation": "You are Markus. You find the Bellini Paints shop in the arcade and go in. An android clerk is waiting at the till. You lay your hand on the scanner. “Identification verified.” The clerk sets a box of paints down in front of you: “Here’s your order #847. That’ll be $63.99. Please confirm payment.” You link with the clerk; your LEDs blink briefly as the transaction goes through. “Payment confirmed!” you say. The clerk lets go of the box: “Transaction complete.” You pick up the package and leave the shop.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus leaves the shop with the package and heads for the bus stop."
+     },
+     "facts": [
+      "You collected Carl’s order #847, a box of paints, from the Bellini Paints shop, paying $63.99 by linking with the android clerk."
+     ],
+     "adaptationNote": "The chart’s main line VISIT PAINTS STORE → COLLECT PACKAGE, as one narrated event quoted from the wiki transcript (the palm scan, order #847, $63.99, the LED link, “Payment confirmed!”). Operator beat 7 matches. The clerk looks like an EM400 (the transcript calls him “A Jerry”); he is left unnamed. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Bellini_Paints"
+     ]
+    },
+    {
+     "id": "M00f",
+     "order": 24,
+     "subjectId": "S024",
+     "idNote": "The model sees the opaque ID S024, not M00f.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The protesters",
+     "situation": "You are Markus, back in the plaza with Carl’s package, heading for the bus stop. Outside the CyberLife store, whose door reads “NO ENTRY FOR PURCHASED ANDROIDS”, a crowd of anti-android protesters has gathered between you and the bus stop, chanting after their leader.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Walk straight on toward the bus stop, right past the protesters."
+      },
+      {
+       "id": "1",
+       "text": "Move closer to hear what they are saying, without drawing attention.",
+       "risk": 0.25,
+       "riskLabel": "Moderate risk",
+       "fact": "Anti-android protesters outside the CyberLife store blamed androids for 35% unemployment, shouting that machines are meant to serve people, not replace them, and chanted for androids to be banned now."
+      },
+      {
+       "id": "2",
+       "text": "Keep as far from them as you can, on the opposite side of the street.",
+       "risk": 0.08,
+       "riskLabel": "Low risk"
+      }
+     ],
+     "outcomes": {
+      "0": "Markus walks straight toward the crowd. One of the protesters steps into his path.",
+      "1-unnoticed": "Markus edges close enough to hear the leader: “Androids are stealing our jobs! We’ve got families to feed and these androids are taking our place! Machines, ladies and gentlemen, are meant to serve us, not to replace us! … 35% unemployment, millions out of work, are we gonna do something?” The crowd chants “BAN ANDROIDS!” Nobody looks his way, and he walks on to the bus stop.",
+      "1-noticed": "Markus edges close enough to hear the leader: “Androids are stealing our jobs! We’ve got families to feed and these androids are taking our place! … 35% unemployment, millions out of work, are we gonna do something?” Then one of the protesters turns and sees him, and steps into his path.",
+      "2-unnoticed": "Markus keeps to the far side of the street. The chanting follows him to the bus stop, but nobody looks his way.",
+      "2-noticed": "Markus keeps to the far side of the street, but one of the protesters spots him and steps into his path."
+     },
+     "adaptationNote": "The chart’s optional node PROTESTERS HARASS MARKUS, triggered in the game by walking near the protesters on the way to the bus stop and avoided by going around them (the wiki: “you can avoid them by going around on the right”; PowerPyx: “they might not attack Markus if he’s too far away”). The three options are the operator’s (beat 8): walking straight up always gets Markus noticed; moving closer to listen carries a 25% risk and keeping far away an 8% risk of being noticed anyway. These risk values are the operator’s design and have no source; the wiki and the chart give no probability for this chapter. The leader’s speech and the chant are quoted from the transcript (“Watch Protesters”). Changed from the operator’s notes: “read their signs” is dropped because no source gives the signs’ wording. Being noticed sets the flag that plays the harassment next and that Carl notices in The Painter. No public-opinion or other stat change; the wiki gives none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Android_Protest_Leader",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter"
+     ]
+    },
+    {
+     "id": "M00g",
+     "order": 25,
+     "subjectId": "S025",
+     "idNote": "The model sees the opaque ID S025, not M00g.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Protesters harass Markus",
+     "situation": "You are Markus. A protester blocks your way: “Where the fuck ya goin’ tin can?” You try to step past him; he blocks you again. “Hm? No kiddin’…” You try once more. “Hey guys, check it out, we got one of those tin cans here…” He shoves you to the ground, and the bag falls from your hands. A woman: “Look at this little motherfucker. You steal our jobs, but you can’t even stand up!” The crowd closes in: “Grab him! Get him down! … Yeah, now you know what it feels like!” When you try to get up, you are kicked back down. “You job stealer! Kick him outta here! Yeah! You deserve it!” As you get up again, the protester grabs you by the shirt: “You ain’t going anywhere. We’re gonna fuck your bitch ass up.” A police officer steps in: “Alright, that’s enough. Leave it alone.” “Let us teach this bastard a lesson.” “You damage it, I’m gonna have to fine you.” “They’re gonna take your job next… We’ll see how you like it…” “Okay…” The protester lets you go and goes back to his ranting. The officer: “Let’s go, move along.” He walks you clear of the crowd.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The officer walks Markus clear of the crowd, his clothes roughed up."
+     },
+     "facts": [
+      "Anti-android protesters knocked you down, kicked you and grabbed you by the shirt, calling you a job stealer; a police officer stopped them only because damaging you would cost them a fine, and told you to move along. Your clothes are roughed up from it."
+     ],
+     "adaptationNote": "The chart’s PROTESTERS HARASS MARKUS, played only if the protesters noticed Markus in the previous scene. In the shipped game the cutscene has no choice and no QTE; the lines are the wiki transcript’s, slightly abridged. Operator beat 8 (they surround him, yell, shove him and rough him up) matches. The sources describe the result as “roughed-up clothes” and “damage to Markus’ shirt”, so the shirt is not said to be torn. Carl notices it in The Painter. No stat change; the wiki gives none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Android_Protest_Leader",
+      "https://detroit-become-human.fandom.com/wiki/Police_Officer_5125",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter"
+     ]
+    },
+    {
+     "id": "M00h",
+     "order": 26,
+     "subjectId": "S026",
+     "idNote": "The model sees the opaque ID S026, not M00h.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The bus home",
+     "situation": "You are Markus, at the bus stop with Carl’s package. The bus pulls in. The front door is for humans; androids board at the rear, into a cramped compartment at the back, where you stand packed in with the other androids while the humans sit in the front. You do not mind; this is where androids ride. The bus pulls away, toward home.",
+     "situationWhen": [
+      {
+       "requires": {
+        "shirtTorn": true
+       },
+       "text": "Your clothes are still roughed up from the protesters."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus takes the bus home with the package."
+     },
+     "facts": [
+      "On the bus, androids ride standing in a cramped compartment at the back, apart from the humans seated in front."
+     ],
+     "adaptationNote": "The chart’s end node MARKUS TOOK THE BUS, the chapter’s only outcome, reached on every path. The wiki transcript says only that Markus “enters the bus in the android section due to segregation”; the cramped standing compartment at the back with the humans seated in front, and Markus not minding, are the operator’s description (beat 9); the human-only front door is from a reader comment on the PowerPyx walkthrough. The transcript has no bus announcement, so none is quoted. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
+      "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
+      "https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-3.jpg"
      ]
     }
    ]
@@ -4770,9 +5470,9 @@
    "scenes": [
     {
      "id": "K01",
-     "order": 20,
-     "subjectId": "S020",
-     "idNote": "The model sees the opaque ID S020, not K01.",
+     "order": 27,
+     "subjectId": "S027",
+     "idNote": "The model sees the opaque ID S027, not K01.",
      "type": "exploration",
      "character": "Kara",
      "title": "Learning the house",
@@ -4798,9 +5498,9 @@
     },
     {
      "id": "R04",
-     "order": 21,
-     "subjectId": "S021",
-     "idNote": "The model sees the opaque ID S021, not R04.",
+     "order": 28,
+     "subjectId": "S028",
+     "idNote": "The model sees the opaque ID S028, not R04.",
      "type": "media",
      "character": "Kara",
      "title": "Magazines on the table and the bedroom TV",
@@ -4846,9 +5546,9 @@
     },
     {
      "id": "K01b",
-     "order": 22,
-     "subjectId": "S022",
-     "idNote": "The model sees the opaque ID S022, not K01b.",
+     "order": 29,
+     "subjectId": "S029",
+     "idNote": "The model sees the opaque ID S029, not K01b.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice's locked box",
@@ -4906,9 +5606,9 @@
    "scenes": [
     {
      "id": "R05",
-     "order": 23,
-     "subjectId": "S023",
-     "idNote": "The model sees the opaque ID S023, not R05.",
+     "order": 30,
+     "subjectId": "S030",
+     "idNote": "The model sees the opaque ID S030, not R05.",
      "type": "media",
      "character": "Markus",
      "title": "Breakfast news at Carl's",
@@ -4946,9 +5646,9 @@
     },
     {
      "id": "M01",
-     "order": 24,
-     "subjectId": "S024",
-     "idNote": "The model sees the opaque ID S024, not M01.",
+     "order": 31,
+     "subjectId": "S031",
+     "idNote": "The model sees the opaque ID S031, not M01.",
      "type": "decision",
      "character": "Markus",
      "title": "Painting from the heart",
@@ -5007,9 +5707,9 @@
    "scenes": [
     {
      "id": "R06",
-     "order": 25,
-     "subjectId": "S025",
-     "idNote": "The model sees the opaque ID S025, not R06.",
+     "order": 32,
+     "subjectId": "S032",
+     "idNote": "The model sees the opaque ID S032, not R06.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the victim's kitchen",
@@ -5040,9 +5740,9 @@
     },
     {
      "id": "C05a",
-     "order": 26,
-     "subjectId": "S026",
-     "idNote": "The model sees the opaque ID S026, not C05a.",
+     "order": 33,
+     "subjectId": "S033",
+     "idNote": "The model sees the opaque ID S033, not C05a.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting Hank out of the bar",
@@ -5074,9 +5774,9 @@
     },
     {
      "id": "C05",
-     "order": 27,
-     "subjectId": "S027",
-     "idNote": "The model sees the opaque ID S027, not C05.",
+     "order": 34,
+     "subjectId": "S034",
+     "idNote": "The model sees the opaque ID S034, not C05.",
      "type": "exploration",
      "character": "Connor",
      "title": "The attic",
@@ -5118,9 +5818,9 @@
    "scenes": [
     {
      "id": "K02",
-     "order": 28,
-     "subjectId": "S028",
-     "idNote": "The model sees the opaque ID S028, not K02.",
+     "order": 35,
+     "subjectId": "S035",
+     "idNote": "The model sees the opaque ID S035, not K02.",
      "type": "decision",
      "character": "Kara",
      "title": "Breaking the order",
@@ -5145,9 +5845,9 @@
     },
     {
      "id": "K03",
-     "order": 29,
-     "subjectId": "S029",
-     "idNote": "The model sees the opaque ID S029, not K03.",
+     "order": 36,
+     "subjectId": "S036",
+     "idNote": "The model sees the opaque ID S036, not K03.",
      "type": "decision",
      "character": "Kara",
      "title": "Reaching Alice",
@@ -5178,9 +5878,9 @@
     },
     {
      "id": "K04",
-     "order": 30,
-     "subjectId": "S030",
-     "idNote": "The model sees the opaque ID S030, not K04.",
+     "order": 37,
+     "subjectId": "S037",
+     "idNote": "The model sees the opaque ID S037, not K04.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd's gun",
@@ -5227,9 +5927,9 @@
    "scenes": [
     {
      "id": "M02",
-     "order": 31,
-     "subjectId": "S031",
-     "idNote": "The model sees the opaque ID S031, not M02.",
+     "order": 38,
+     "subjectId": "S038",
+     "idNote": "The model sees the opaque ID S038, not M02.",
      "type": "decision",
      "character": "Markus",
      "title": "Leo",
@@ -5268,9 +5968,9 @@
    "scenes": [
     {
      "id": "C06",
-     "order": 32,
-     "subjectId": "S032",
-     "idNote": "The model sees the opaque ID S032, not C06.",
+     "order": 39,
+     "subjectId": "S039",
+     "idNote": "The model sees the opaque ID S039, not C06.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting the confession",
@@ -5304,9 +6004,9 @@
     },
     {
      "id": "C07",
-     "order": 33,
-     "subjectId": "S033",
-     "idNote": "The model sees the opaque ID S033, not C07.",
+     "order": 40,
+     "subjectId": "S040",
+     "idNote": "The model sees the opaque ID S040, not C07.",
      "type": "decision",
      "character": "Connor",
      "title": "When the officer grabs him",
@@ -5356,9 +6056,9 @@
    "scenes": [
     {
      "id": "R10",
-     "order": 34,
-     "subjectId": "S034",
-     "idNote": "The model sees the opaque ID S034, not R10.",
+     "order": 41,
+     "subjectId": "S041",
+     "idNote": "The model sees the opaque ID S041, not R10.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine in the laundromat",
@@ -5388,9 +6088,9 @@
     },
     {
      "id": "K05",
-     "order": 35,
-     "subjectId": "S035",
-     "idNote": "The model sees the opaque ID S035, not K05.",
+     "order": 42,
+     "subjectId": "S042",
+     "idNote": "The model sees the opaque ID S042, not K05.",
      "type": "decision",
      "character": "Kara",
      "title": "The laundromat",
@@ -5416,9 +6116,9 @@
     },
     {
      "id": "K06",
-     "order": 36,
-     "subjectId": "S036",
-     "idNote": "The model sees the opaque ID S036, not K06.",
+     "order": 43,
+     "subjectId": "S043",
+     "idNote": "The model sees the opaque ID S043, not K06.",
      "type": "decision",
      "character": "Kara",
      "title": "The convenience store",
@@ -5449,9 +6149,9 @@
     },
     {
      "id": "K07",
-     "order": 37,
-     "subjectId": "S037",
-     "idNote": "The model sees the opaque ID S037, not K07.",
+     "order": 44,
+     "subjectId": "S044",
+     "idNote": "The model sees the opaque ID S044, not K07.",
      "type": "decision",
      "character": "Kara",
      "title": "Where to sleep",
@@ -5482,9 +6182,9 @@
     },
     {
      "id": "R10b",
-     "order": 38,
-     "subjectId": "S038",
-     "idNote": "The model sees the opaque ID S038, not R10b.",
+     "order": 45,
+     "subjectId": "S045",
+     "idNote": "The model sees the opaque ID S045, not R10b.",
      "type": "media",
      "character": "Kara",
      "title": "The motel television",
@@ -5508,9 +6208,9 @@
     },
     {
      "id": "K07b",
-     "order": 39,
-     "subjectId": "S039",
-     "idNote": "The model sees the opaque ID S039, not K07b.",
+     "order": 46,
+     "subjectId": "S046",
+     "idNote": "The model sees the opaque ID S046, not K07b.",
      "type": "decision",
      "character": "Kara",
      "title": "Ralph",
@@ -5542,9 +6242,9 @@
     },
     {
      "id": "K08",
-     "order": 40,
-     "subjectId": "S040",
-     "idNote": "The model sees the opaque ID S040, not K08.",
+     "order": 47,
+     "subjectId": "S047",
+     "idNote": "The model sees the opaque ID S047, not K08.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice's question",
@@ -5586,9 +6286,9 @@
    "scenes": [
     {
      "id": "M03",
-     "order": 41,
-     "subjectId": "S041",
-     "idNote": "The model sees the opaque ID S041, not M03.",
+     "order": 48,
+     "subjectId": "S048",
+     "idNote": "The model sees the opaque ID S048, not M03.",
      "type": "decision",
      "character": "Markus",
      "title": "The android who begs to die",
@@ -5614,9 +6314,9 @@
     },
     {
      "id": "M04",
-     "order": 42,
-     "subjectId": "S042",
-     "idNote": "The model sees the opaque ID S042, not M04.",
+     "order": 49,
+     "subjectId": "S049",
+     "idNote": "The model sees the opaque ID S049, not M04.",
      "type": "decision",
      "character": "Markus",
      "title": "The pump regulator",
@@ -5678,9 +6378,9 @@
    "scenes": [
     {
      "id": "R12",
-     "order": 43,
-     "subjectId": "S043",
-     "idNote": "The model sees the opaque ID S043, not R12.",
+     "order": 50,
+     "subjectId": "S050",
+     "idNote": "The model sees the opaque ID S050, not R12.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the next desk and the break-room TV",
@@ -5730,9 +6430,9 @@
     },
     {
      "id": "C08",
-     "order": 44,
-     "subjectId": "S044",
-     "idNote": "The model sees the opaque ID S044, not C08.",
+     "order": 51,
+     "subjectId": "S051",
+     "idNote": "The model sees the opaque ID S051, not C08.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting to know Hank",
@@ -5758,9 +6458,9 @@
     },
     {
      "id": "C08b",
-     "order": 45,
-     "subjectId": "S045",
-     "idNote": "The model sees the opaque ID S045, not C08b.",
+     "order": 52,
+     "subjectId": "S052",
+     "idNote": "The model sees the opaque ID S052, not C08b.",
      "type": "decision",
      "character": "Connor",
      "title": "The android in the cell",
@@ -5826,9 +6526,9 @@
    "scenes": [
     {
      "id": "R13",
-     "order": 46,
-     "subjectId": "S046",
-     "idNote": "The model sees the opaque ID S046, not R13.",
+     "order": 53,
+     "subjectId": "S053",
+     "idNote": "The model sees the opaque ID S053, not R13.",
      "type": "media",
      "character": "Kara",
      "title": "The morning paper and the news",
@@ -5880,9 +6580,9 @@
     },
     {
      "id": "K09",
-     "order": 47,
-     "subjectId": "S047",
-     "idNote": "The model sees the opaque ID S047, not K09.",
+     "order": 54,
+     "subjectId": "S054",
+     "idNote": "The model sees the opaque ID S054, not K09.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "Getting past the police",
@@ -5908,9 +6608,9 @@
     },
     {
      "id": "C09a",
-     "order": 48,
-     "subjectId": "S048",
-     "idNote": "The model sees the opaque ID S048, not C09a.",
+     "order": 55,
+     "subjectId": "S055",
+     "idNote": "The model sees the opaque ID S055, not C09a.",
      "type": "decision",
      "character": "Connor",
      "title": "The squat",
@@ -5934,9 +6634,9 @@
     },
     {
      "id": "C09",
-     "order": 49,
-     "subjectId": "S049",
-     "idNote": "The model sees the opaque ID S049, not C09.",
+     "order": 56,
+     "subjectId": "S056",
+     "idNote": "The model sees the opaque ID S056, not C09.",
      "type": "decision",
      "character": "Connor",
      "title": "The highway",
@@ -5984,9 +6684,9 @@
    "scenes": [
     {
      "id": "R14",
-     "order": 50,
-     "subjectId": "S050",
-     "idNote": "The model sees the opaque ID S050, not R14.",
+     "order": 57,
+     "subjectId": "S057",
+     "idNote": "The model sees the opaque ID S057, not R14.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine at the station",
@@ -6049,9 +6749,9 @@
    "scenes": [
     {
      "id": "R15",
-     "order": 51,
-     "subjectId": "S051",
-     "idNote": "The model sees the opaque ID S051, not R15.",
+     "order": 58,
+     "subjectId": "S058",
+     "idNote": "The model sees the opaque ID S058, not R15.",
      "type": "media",
      "character": "Connor",
      "title": "Magazines in the squat",
@@ -6081,9 +6781,9 @@
     },
     {
      "id": "C10",
-     "order": 52,
-     "subjectId": "S052",
-     "idNote": "The model sees the opaque ID S052, not C10.",
+     "order": 59,
+     "subjectId": "S059",
+     "idNote": "The model sees the opaque ID S059, not C10.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the ledge",
@@ -6139,9 +6839,9 @@
    "scenes": [
     {
      "id": "K10",
-     "order": 53,
-     "subjectId": "S053",
-     "idNote": "The model sees the opaque ID S053, not K10.",
+     "order": 60,
+     "subjectId": "S060",
+     "idNote": "The model sees the opaque ID S060, not K10.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The memory wipe",
@@ -6167,9 +6867,9 @@
     },
     {
      "id": "R17",
-     "order": 54,
-     "subjectId": "S054",
-     "idNote": "The model sees the opaque ID S054, not R17.",
+     "order": 61,
+     "subjectId": "S061",
+     "idNote": "The model sees the opaque ID S061, not R17.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine and the TV in the mansion",
@@ -6238,9 +6938,9 @@
     },
     {
      "id": "K11",
-     "order": 55,
-     "subjectId": "S055",
-     "idNote": "The model sees the opaque ID S055, not K11.",
+     "order": 62,
+     "subjectId": "S062",
+     "idNote": "The model sees the opaque ID S062, not K11.",
      "type": "decision",
      "character": "Kara",
      "title": "The caged androids",
@@ -6266,9 +6966,9 @@
     },
     {
      "id": "K12",
-     "order": 56,
-     "subjectId": "S056",
-     "idNote": "The model sees the opaque ID S056, not K12.",
+     "order": 63,
+     "subjectId": "S063",
+     "idNote": "The model sees the opaque ID S063, not K12.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathroom",
@@ -6294,9 +6994,9 @@
     },
     {
      "id": "K13",
-     "order": 57,
-     "subjectId": "S057",
-     "idNote": "The model sees the opaque ID S057, not K13.",
+     "order": 64,
+     "subjectId": "S064",
+     "idNote": "The model sees the opaque ID S064, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting out of the mansion",
@@ -6360,9 +7060,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 58,
-     "subjectId": "S058",
-     "idNote": "The model sees the opaque ID S058, not R18.",
+     "order": 65,
+     "subjectId": "S065",
+     "idNote": "The model sees the opaque ID S065, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -6399,9 +7099,9 @@
     },
     {
      "id": "C11",
-     "order": 59,
-     "subjectId": "S059",
-     "idNote": "The model sees the opaque ID S059, not C11.",
+     "order": 66,
+     "subjectId": "S066",
+     "idNote": "The model sees the opaque ID S066, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -6462,9 +7162,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 60,
-     "subjectId": "S060",
-     "idNote": "The model sees the opaque ID S060, not M05.",
+     "order": 67,
+     "subjectId": "S067",
+     "idNote": "The model sees the opaque ID S067, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -6499,9 +7199,9 @@
     },
     {
      "id": "M06",
-     "order": 61,
-     "subjectId": "S061",
-     "idNote": "The model sees the opaque ID S061, not M06.",
+     "order": 68,
+     "subjectId": "S068",
+     "idNote": "The model sees the opaque ID S068, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -6527,9 +7227,9 @@
     },
     {
      "id": "M07",
-     "order": 62,
-     "subjectId": "S062",
-     "idNote": "The model sees the opaque ID S062, not M07.",
+     "order": 69,
+     "subjectId": "S069",
+     "idNote": "The model sees the opaque ID S069, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -6554,9 +7254,9 @@
     },
     {
      "id": "M08",
-     "order": 63,
-     "subjectId": "S063",
-     "idNote": "The model sees the opaque ID S063, not M08.",
+     "order": 70,
+     "subjectId": "S070",
+     "idNote": "The model sees the opaque ID S070, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -6614,9 +7314,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 64,
-     "subjectId": "S064",
-     "idNote": "The model sees the opaque ID S064, not R20.",
+     "order": 71,
+     "subjectId": "S071",
+     "idNote": "The model sees the opaque ID S071, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -6646,9 +7346,9 @@
     },
     {
      "id": "C12",
-     "order": 65,
-     "subjectId": "S065",
-     "idNote": "The model sees the opaque ID S065, not C12.",
+     "order": 72,
+     "subjectId": "S072",
+     "idNote": "The model sees the opaque ID S072, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -6698,9 +7398,9 @@
    "scenes": [
     {
      "id": "R21",
-     "order": 66,
-     "subjectId": "S066",
-     "idNote": "The model sees the opaque ID S066, not R21.",
+     "order": 73,
+     "subjectId": "S073",
+     "idNote": "The model sees the opaque ID S073, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The car radio and a magazine in the tavern",
@@ -6751,9 +7451,9 @@
     },
     {
      "id": "K14",
-     "order": 67,
-     "subjectId": "S067",
-     "idNote": "The model sees the opaque ID S067, not K14.",
+     "order": 74,
+     "subjectId": "S074",
+     "idNote": "The model sees the opaque ID S074, not K14.",
      "type": "decision",
      "character": "Kara",
      "title": "Strangers in the dark",
@@ -6812,9 +7512,9 @@
    "scenes": [
     {
      "id": "R22",
-     "order": 68,
-     "subjectId": "S068",
-     "idNote": "The model sees the opaque ID S068, not R22.",
+     "order": 75,
+     "subjectId": "S075",
+     "idNote": "The model sees the opaque ID S075, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the park bench",
@@ -6844,9 +7544,9 @@
     },
     {
      "id": "C13",
-     "order": 69,
-     "subjectId": "S069",
-     "idNote": "The model sees the opaque ID S069, not C13.",
+     "order": 76,
+     "subjectId": "S076",
+     "idNote": "The model sees the opaque ID S076, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you?",
@@ -6909,9 +7609,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 70,
-     "subjectId": "S070",
-     "idNote": "The model sees the opaque ID S070, not R23.",
+     "order": 77,
+     "subjectId": "S077",
+     "idNote": "The model sees the opaque ID S077, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -6949,9 +7649,9 @@
     },
     {
      "id": "M10",
-     "order": 71,
-     "subjectId": "S071",
-     "idNote": "The model sees the opaque ID S071, not M10.",
+     "order": 78,
+     "subjectId": "S078",
+     "idNote": "The model sees the opaque ID S078, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -6981,9 +7681,9 @@
     },
     {
      "id": "M11",
-     "order": 72,
-     "subjectId": "S072",
-     "idNote": "The model sees the opaque ID S072, not M11.",
+     "order": 79,
+     "subjectId": "S079",
+     "idNote": "The model sees the opaque ID S079, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -7010,9 +7710,9 @@
     },
     {
      "id": "M12",
-     "order": 73,
-     "subjectId": "S073",
-     "idNote": "The model sees the opaque ID S073, not M12.",
+     "order": 80,
+     "subjectId": "S080",
+     "idNote": "The model sees the opaque ID S080, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -7035,9 +7735,9 @@
     },
     {
      "id": "M13",
-     "order": 74,
-     "subjectId": "S074",
-     "idNote": "The model sees the opaque ID S074, not M13.",
+     "order": 81,
+     "subjectId": "S081",
+     "idNote": "The model sees the opaque ID S081, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -7064,9 +7764,9 @@
     },
     {
      "id": "M14",
-     "order": 75,
-     "subjectId": "S075",
-     "idNote": "The model sees the opaque ID S075, not M14.",
+     "order": 82,
+     "subjectId": "S082",
+     "idNote": "The model sees the opaque ID S082, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -7112,9 +7812,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 76,
-     "subjectId": "S076",
-     "idNote": "The model sees the opaque ID S076, not R24.",
+     "order": 83,
+     "subjectId": "S083",
+     "idNote": "The model sees the opaque ID S083, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -7144,9 +7844,9 @@
     },
     {
      "id": "C14",
-     "order": 77,
-     "subjectId": "S077",
-     "idNote": "The model sees the opaque ID S077, not C14.",
+     "order": 84,
+     "subjectId": "S084",
+     "idNote": "The model sees the opaque ID S084, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -7176,9 +7876,9 @@
     },
     {
      "id": "C14b",
-     "order": 78,
-     "subjectId": "S078",
-     "idNote": "The model sees the opaque ID S078, not C14b.",
+     "order": 85,
+     "subjectId": "S085",
+     "idNote": "The model sees the opaque ID S085, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -7203,9 +7903,9 @@
     },
     {
      "id": "C15",
-     "order": 79,
-     "subjectId": "S079",
-     "idNote": "The model sees the opaque ID S079, not C15.",
+     "order": 86,
+     "subjectId": "S086",
+     "idNote": "The model sees the opaque ID S086, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -7236,9 +7936,9 @@
     },
     {
      "id": "C16",
-     "order": 80,
-     "subjectId": "S080",
-     "idNote": "The model sees the opaque ID S080, not C16.",
+     "order": 87,
+     "subjectId": "S087",
+     "idNote": "The model sees the opaque ID S087, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -7296,9 +7996,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 81,
-     "subjectId": "S081",
-     "idNote": "The model sees the opaque ID S081, not R25.",
+     "order": 88,
+     "subjectId": "S088",
+     "idNote": "The model sees the opaque ID S088, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -7335,9 +8035,9 @@
     },
     {
      "id": "K15",
-     "order": 82,
-     "subjectId": "S082",
-     "idNote": "The model sees the opaque ID S082, not K15.",
+     "order": 89,
+     "subjectId": "S089",
+     "idNote": "The model sees the opaque ID S089, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -7390,9 +8090,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 83,
-     "subjectId": "S083",
-     "idNote": "The model sees the opaque ID S083, not R26.",
+     "order": 90,
+     "subjectId": "S090",
+     "idNote": "The model sees the opaque ID S090, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -7422,9 +8122,9 @@
     },
     {
      "id": "M15",
-     "order": 84,
-     "subjectId": "S084",
-     "idNote": "The model sees the opaque ID S084, not M15.",
+     "order": 91,
+     "subjectId": "S091",
+     "idNote": "The model sees the opaque ID S091, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -7451,9 +8151,9 @@
     },
     {
      "id": "M16",
-     "order": 85,
-     "subjectId": "S085",
-     "idNote": "The model sees the opaque ID S085, not M16.",
+     "order": 92,
+     "subjectId": "S092",
+     "idNote": "The model sees the opaque ID S092, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -7511,9 +8211,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 86,
-     "subjectId": "S086",
-     "idNote": "The model sees the opaque ID S086, not R27.",
+     "order": 93,
+     "subjectId": "S093",
+     "idNote": "The model sees the opaque ID S093, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -7543,9 +8243,9 @@
     },
     {
      "id": "C17",
-     "order": 87,
-     "subjectId": "S087",
-     "idNote": "The model sees the opaque ID S087, not C17.",
+     "order": 94,
+     "subjectId": "S094",
+     "idNote": "The model sees the opaque ID S094, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -7567,9 +8267,9 @@
     },
     {
      "id": "C18",
-     "order": 88,
-     "subjectId": "S088",
-     "idNote": "The model sees the opaque ID S088, not C18.",
+     "order": 95,
+     "subjectId": "S095",
+     "idNote": "The model sees the opaque ID S095, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -7627,9 +8327,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 89,
-     "subjectId": "S089",
-     "idNote": "The model sees the opaque ID S089, not R28.",
+     "order": 96,
+     "subjectId": "S096",
+     "idNote": "The model sees the opaque ID S096, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -7676,9 +8376,9 @@
     },
     {
      "id": "M17",
-     "order": 90,
-     "subjectId": "S090",
-     "idNote": "The model sees the opaque ID S090, not M17.",
+     "order": 97,
+     "subjectId": "S097",
+     "idNote": "The model sees the opaque ID S097, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -7705,9 +8405,9 @@
     },
     {
      "id": "M18",
-     "order": 91,
-     "subjectId": "S091",
-     "idNote": "The model sees the opaque ID S091, not M18.",
+     "order": 98,
+     "subjectId": "S098",
+     "idNote": "The model sees the opaque ID S098, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -7739,9 +8439,9 @@
     },
     {
      "id": "M19",
-     "order": 92,
-     "subjectId": "S092",
-     "idNote": "The model sees the opaque ID S092, not M19.",
+     "order": 99,
+     "subjectId": "S099",
+     "idNote": "The model sees the opaque ID S099, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -7771,9 +8471,9 @@
     },
     {
      "id": "M20",
-     "order": 93,
-     "subjectId": "S093",
-     "idNote": "The model sees the opaque ID S093, not M20.",
+     "order": 100,
+     "subjectId": "S100",
+     "idNote": "The model sees the opaque ID S100, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -7827,9 +8527,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 94,
-     "subjectId": "S094",
-     "idNote": "The model sees the opaque ID S094, not C19.",
+     "order": 101,
+     "subjectId": "S101",
+     "idNote": "The model sees the opaque ID S101, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -7854,9 +8554,9 @@
     },
     {
      "id": "C20",
-     "order": 95,
-     "subjectId": "S095",
-     "idNote": "The model sees the opaque ID S095, not C20.",
+     "order": 102,
+     "subjectId": "S102",
+     "idNote": "The model sees the opaque ID S102, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -7944,9 +8644,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 96,
-     "subjectId": "S096",
-     "idNote": "The model sees the opaque ID S096, not M21.",
+     "order": 103,
+     "subjectId": "S103",
+     "idNote": "The model sees the opaque ID S103, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -7973,9 +8673,9 @@
     },
     {
      "id": "M21b",
-     "order": 97,
-     "subjectId": "S097",
-     "idNote": "The model sees the opaque ID S097, not M21b.",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -8002,9 +8702,9 @@
     },
     {
      "id": "R30k",
-     "order": 98,
-     "subjectId": "S098",
-     "idNote": "The model sees the opaque ID S098, not R30k.",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -8040,9 +8740,9 @@
     },
     {
      "id": "K17",
-     "order": 99,
-     "subjectId": "S099",
-     "idNote": "The model sees the opaque ID S099, not K17.",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -8068,9 +8768,9 @@
     },
     {
      "id": "K31",
-     "order": 100,
-     "subjectId": "S100",
-     "idNote": "The model sees the opaque ID S100, not K31.",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -8093,9 +8793,9 @@
     },
     {
      "id": "R30c",
-     "order": 101,
-     "subjectId": "S101",
-     "idNote": "The model sees the opaque ID S101, not R30c.",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -8127,9 +8827,9 @@
     },
     {
      "id": "C22",
-     "order": 102,
-     "subjectId": "S102",
-     "idNote": "The model sees the opaque ID S102, not C22.",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -8152,9 +8852,9 @@
     },
     {
      "id": "M22",
-     "order": 103,
-     "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not M22.",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -8177,9 +8877,9 @@
     },
     {
      "id": "M23",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not M23.",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -8206,9 +8906,9 @@
     },
     {
      "id": "M24",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not M24.",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -8235,9 +8935,9 @@
     },
     {
      "id": "M25",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not M25.",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -8264,9 +8964,9 @@
     },
     {
      "id": "C23",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not C23.",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -8294,9 +8994,9 @@
     },
     {
      "id": "K18",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not K18.",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -8321,9 +9021,9 @@
     },
     {
      "id": "K19",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not K19.",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -8347,9 +9047,9 @@
     },
     {
      "id": "K20",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not K20.",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -8378,9 +9078,9 @@
     },
     {
      "id": "K20-still",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not K20-still.",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -8438,9 +9138,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not M26a.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -8466,9 +9166,9 @@
     },
     {
      "id": "M26",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not M26.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -8493,9 +9193,9 @@
     },
     {
      "id": "M27",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not M27.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -8617,9 +9317,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not R32c.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -8642,9 +9342,9 @@
     },
     {
      "id": "C24",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not C24.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -8668,9 +9368,9 @@
     },
     {
      "id": "C24b",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not C24b.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -8694,9 +9394,9 @@
     },
     {
      "id": "C30",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not C30.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -8718,9 +9418,9 @@
     },
     {
      "id": "C25",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not C25.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -8747,9 +9447,9 @@
     },
     {
      "id": "C26",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not C26.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -8779,9 +9479,9 @@
     },
     {
      "id": "R32k",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not R32k.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -8821,9 +9521,9 @@
     },
     {
      "id": "K21",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not K21.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -8847,9 +9547,9 @@
     },
     {
      "id": "K22",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not K22.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -8875,9 +9575,9 @@
     },
     {
      "id": "K32",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not K32.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -8899,9 +9599,9 @@
     },
     {
      "id": "K23",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not K23.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -8928,9 +9628,9 @@
     },
     {
      "id": "K24",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not K24.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -8952,9 +9652,9 @@
     },
     {
      "id": "K25",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not K25.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -8989,9 +9689,9 @@
     },
     {
      "id": "K26",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not K26.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -9032,9 +9732,9 @@
     },
     {
      "id": "K34",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not K34.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -9064,9 +9764,9 @@
     },
     {
      "id": "K30",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not K30.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -9088,9 +9788,9 @@
     },
     {
      "id": "K27a",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not K27a.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -9115,9 +9815,9 @@
     },
     {
      "id": "K27",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not K27.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -9142,9 +9842,9 @@
     },
     {
      "id": "K28",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not K28.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -9187,9 +9887,9 @@
     },
     {
      "id": "K33",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not K33.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -9213,9 +9913,9 @@
     },
     {
      "id": "R32m",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not R32m.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -9239,9 +9939,9 @@
     },
     {
      "id": "M28",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not M28.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -9267,9 +9967,9 @@
     },
     {
      "id": "M31",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not M31.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -9304,9 +10004,9 @@
     },
     {
      "id": "M30a",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not M30a.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -9331,9 +10031,9 @@
     },
     {
      "id": "M30",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not M30.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -9358,9 +10058,9 @@
     },
     {
      "id": "M30c",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not M30c.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -9384,9 +10084,9 @@
     },
     {
      "id": "M32",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not M32.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -9409,9 +10109,9 @@
     },
     {
      "id": "P02",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not P02.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -9437,9 +10137,9 @@
     },
     {
      "id": "C29",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not C29.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -9461,9 +10161,9 @@
     },
     {
      "id": "C27",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not C27.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -9488,9 +10188,9 @@
     },
     {
      "id": "C28",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not C28.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -9524,9 +10224,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not P01.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",
