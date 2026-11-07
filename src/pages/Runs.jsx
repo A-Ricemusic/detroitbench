@@ -55,7 +55,7 @@ function RunTable({runs,onOpen}){
 
 function RelList({items}){const order={Connor:0,Kara:1,Markus:2};const sorted=[...items].sort((a,b)=>order[a.toward]-order[b.toward]||a.who.localeCompare(b.who));return <dl className="grid gap-y-2">{sorted.map(a=><div key={a.toward+a.who} className="flex items-center gap-3 border-b border-line pb-2"><dt className="text-sm min-w-0"><b className="font-medium" style={{color:CHAR_VAR[a.toward]}}>{a.who}</b> <span className="text-ink-3">toward {a.toward}</span></dt><dd><Badge tone={relTone(a.level)||'mid'}>{a.level}</Badge></dd></div>)}</dl>}
 
-export function RunSheet({r,scales,open,onClose,initialView}){
+export function RunSheet({r,scales,open,onClose,initialView,initialChapter}){
  const [view,setView]=useState(initialView==='flow'?'flow':'summary');
  if(!r)return null;
  const groups={rel:[],status:[],world:[]};
@@ -64,7 +64,7 @@ export function RunSheet({r,scales,open,onClose,initialView}){
  return <Sheet wide={view==='flow'?'xl':true} open={open} onOpenChange={o=>{if(!o)onClose()}} title={r.displayName} description={<><span className="whitespace-nowrap">{r.vendor}<span className="sr-only">,</span><span aria-hidden="true"> · </span><span className="font-mono text-[13px]">{r.model}</span><span className="sr-only">,</span></span><span className="block sm:inline"><span aria-hidden="true" className="hidden sm:inline"> · </span>{r.date}</span></>}
   footer={<><Button as="a" href={r.reportUrl} variant="primary" icon={FileText}>Read full report</Button><Button as="a" href={r.reportUrl} download={r.fileName} variant="ghost" icon={Download}>Download HTML</Button></>}>
   <Segmented label="Run details view" size="sm" value={view} onChange={setView} className="mb-5" options={[{value:'summary',label:'Summary'},{value:'flow',label:'Flowchart'}]}/>
-  {view==='flow'?<RunFlowchart key={r.id} r={r}/>:<div className="grid grid-cols-[minmax(0,1fr)] gap-7">
+  {view==='flow'?<RunFlowchart key={r.id} r={r} initialChapter={initialChapter}/>:<div className="grid grid-cols-[minmax(0,1fr)] gap-7">
    <OutcomeChips r={r}/>
    <section><h3 className="text-sm font-semibold mb-2">How each story ended</h3><Endings r={r}/></section>
    {r.hostage&&<section><h3 className="text-sm font-semibold mb-1">The Hostage</h3><p className="text-sm text-ink-2">{r.hostage.outcome}{r.hostage.approach?` · ${r.hostage.approach}`:''} · final probability of success {r.hostage.finalTrust}% · {r.hostage.clues} {r.hostage.clues===1?'clue':'clues'} examined in {r.hostage.actions} {r.hostage.actions===1?'action':'actions'}{r.hostage.forcedOut?', then ordered outside':''}</p></section>}
@@ -104,5 +104,5 @@ export default function Runs({route,navigate}){
    {shown.length>0&&view==='table'&&wide&&<RunTable runs={shown} onOpen={open}/>}
    {shown.length>0&&(view==='cards'||!wide)&&<div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">{shown.map(r=><RunCard key={r.id} r={r} onOpen={open}/>)}</div>}
   </Section>
-  <RunSheet r={openRun||sheetRun} scales={scales} open={!!openRun} onClose={close} initialView={route.query.view}/>
+  <RunSheet r={openRun||sheetRun} scales={scales} open={!!openRun} onClose={close} initialView={route.query.view} initialChapter={route.query.chapter}/>
  </>}

@@ -113,7 +113,7 @@ const CONNOR=(()=>{
  return {
   ids:['CL01','CL02','CL03','CL04','CL05','CL06','C24','C30','CL07','C24b','R32c','CT01','CT02','CT03','CT04','CT05','CT06','C25','CT07','CT08','C26','CT09'],
   state:{"ch32cl":{"friend":false,"insisted":false,"won":false,"card":null},"ch32ct":{"open":false,"floor":0,"done":{},"spotted":false,"cameraHacked":false,"guardsDown":false,"redirected":false,"ambushed":false,"hankShot":false,"converted":false,"draw":false,"card":null}},
-  rules:{CT_FLOOR_STEP,CT_LEVEL,CL_HOSTAGE_DEATHS},
+  rules:{CT_FLOOR_STEP,CT_LEVEL,CL_HOSTAGE_DEATHS,endings:{Connor:[SEND,LEFT,...Object.values(LABEL)]}},
   gate:{
    CL01:s=>X.machineConnor(s)&&ntsShot(s)||'{{Markus}} did not shoot the deviant {{Connor}} in Night of the Soul.',
    CL02:s=>X.machineConnor(s)||'{{Connor}} is a deviant, or no {{Connor}} is active.',

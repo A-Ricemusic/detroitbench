@@ -25,7 +25,7 @@ function Detail({d,alt}){
  if(!d)return <p className="text-sm text-ink-3">Tap or focus a node and press Enter to see the choice, the model’s reason and the outcome.</p>;
  const {lane,col,o,ending}=d;
  return <div className="grid gap-2 text-sm">
-  <p className="text-xs uppercase tracking-[.08em] text-ink-3">{lane.label} · {col.title}{o?.order?` · action ${o.order}`:''}</p>
+  <p className="text-xs uppercase tracking-[.08em] text-ink-3">{lane.label} · {col.title}{o?.orders?.length?` · ${o.orders.length>1?'actions':'action'} ${o.orders.join(', ')}`:''}</p>
   {alt&&col.visited&&<p className="text-ink-2"><span className="text-ink-3">{alt.locked?'Not available on this path: ':'Not chosen: '}</span>{tidy(alt.text)}</p>}
   {!col.visited?<p className="text-ink-2">Not reached on this path{col.skip?`: ${tidy(col.skip)}`:'.'}</p>:<>
    {o?<p><span className="text-ink-3">Chose </span><span className="font-medium">{tidy(o.text)}</span>{o.risk&&<span className={cx('ml-2 whitespace-nowrap text-xs font-semibold',o.risk.outcome==='failure'?'text-bad':'text-ink-2')}>{o.risk.label} · {o.risk.outcome==='failure'?'failed':'succeeded'}</span>}</p>:<p className="text-ink-2">A scripted event: no choice was offered.</p>}
@@ -35,9 +35,9 @@ function Detail({d,alt}){
   </>}
  </div>}
 
-export function RunFlowchart({r}){
+export function RunFlowchart({r,initialChapter}){
  const {flows,error}=useFlows(r.flowUrl);
- const [chapter,setChapter]=useState(null),[mode,setMode]=useState('dim'),[selected,setSelected]=useState(null);
+ const [chapter,setChapter]=useState(()=>Number(initialChapter)||null),[mode,setMode]=useState('dim'),[selected,setSelected]=useState(null);
  const box=useRef(null);
  const flow=useMemo(()=>flows?.find(f=>f.chapter===chapter)??flows?.find(f=>f.touched)??null,[flows,chapter]);
  const svg=useMemo(()=>flow?chapterSVG(flow,{showUntaken:mode==='dim',idPrefix:'site'}):'',[flow,mode]);
@@ -64,5 +64,5 @@ export function RunFlowchart({r}){
    className="flowchart -mx-5 md:-mx-7 overflow-x-auto overscroll-x-contain border-y border-line focus-visible:outline-2 focus-visible:-outline-offset-2 outline-accent" dangerouslySetInnerHTML={{__html:svg}}/>
   {flow&&!flow.touched&&<p className="text-sm text-ink-2">This run never reached chapter {flow.chapter}; every scene is drawn as not reached.</p>}
   <section aria-live="polite" aria-label="Selected node">{<Detail d={selected?index.get(selected.key):null} alt={selected?.alt}/>}</section>
-  <p className="text-xs text-ink-3">Filled nodes with a check mark are the choices made (a cross marks a risky action that failed, numbers the order of repeated actions); outlined nodes were offered but not chosen; dashed nodes were never reached; dotted ones were not available on this path.</p>
+  <p className="text-xs text-ink-3">Read left to right along the highlighted path. Filled nodes with a check mark are the choices made (a cross marks a risky action that failed); outlined nodes were offered but not chosen; dashed nodes were never reached; dotted ones were not available on this path. In a bracketed place explored in any order, numbers give the order of the actions, and a scene that cut in hangs below and rejoins it. Every ending the chapter can produce is listed on the right, the reached one filled.</p>
  </div>}
