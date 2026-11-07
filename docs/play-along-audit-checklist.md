@@ -1260,69 +1260,326 @@ Gaps:
 
 ## Chapter 23: The Stratford Tower
 
+### M10p · Alone in Ferndale (Markus, event)
+
+> You are Markus. It is 9:24 in the morning on November 7th, and you are walking alone through Ferndale. On the street a man berates an android: “You klutz! Pick them up! And make it snappy!” Back in Jericho, you tell North, Simon and Josh: “We can’t stay silent anymore. It’s time humans heard what we have to say.” Simon: “You know they’ll never listen to us…” Josh: “And revealing ourselves will…
+
+- (0) Continue.
+
+_Note: The prologue’s four chart nodes, ALONE IN FERNDALE (checkpoint), WITNESS ANDROID DISCRIMINATION, BACK IN JERICHO and MARKUS EXPLAINS HIS PLAN, as one narrated event. Every line is the template’s; the time and date are the transcript header’s. The template gives only the man’s words, so the scene around them is not described. The Tech Addict article visible in the cutscene is unreadable and not a collectible, so it is left out. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10l · The lobby (Markus)
+
+> You are Markus, walking into the lobby of the Stratford Tower at 1:30 in the afternoon on November 8th. The others are waiting for you to open the way. Security gates bar the way to the elevators. Behind the front desk sit an android receptionist and, at the left side of the desk, her human supervisor. Nearby, a man on the phone is buying stock: “Heuristics Digital is selling at 2.50… You got me.…
+
+- (0) Talk to the android receptionist behind the front desk.
+- (1) Leave the receptionist for now and look over the supervisor and her desk.
+
+_Note: The chart’s checkpoint STRATFORD TOWER and the phase [FIND A WAY TO PASS SECURITY]. TALK TO ANDROID RECEPTIONIST is an optional grey node with no outgoing edge: with her supervisor beside her the receptionist only offers help and Markus declines (the template’s lines; wiki note). It is not a button prompt in the game, so the options carry no label. Either way the desk analysis follows. The man on the phone is the template’s “Man on the phone”, quoted in part. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10d · Analyze supervisor’s desk (Markus, event)
+
+> You are Markus. You analyze the supervisor at the front desk and everything on and around her: her smart watch, the photo of her daughter, her name plate, her parking badge and her home address.
+
+- (0) Continue.
+
+_Note: The chart node ANALYZE SUPERVISOR’S DESK and the template’s observation group, as a narrated event: the five clues, with the game’s titles and sublines, become facts. In the game each clue is a separate look; here Markus analyzes all of them, as PowerPyx advises (“Analyze all clues on and around her. This will give you 3 options”), so all three phone ruses are open on every path. The objects named in the situation are inferred from the clue titles. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10c · Call supervisor (Markus)
+
+> You are Markus. You call the supervisor’s number from across the lobby. She answers: “Elizabeth Wilson speaking?” You need a reason that will make her leave her desk.
+
+- (0) PARKING: pose as the parking attendant and tell her someone has backed into her car.  _needs stratfordClues.parking_
+- (1) SCHOOL: pose as her daughter’s school and tell her Emily has a fever.  _needs stratfordClues.emily_
+- (2) FIRE DEPARTMENT: pose as a fireman and tell her there has been a fire in her building.  _needs stratfordClues.address_
+
+_Note: The chart’s CALL SUPERVISOR and the template’s PROMPT 1, with its three buttons in the template’s order (the chart lists them as POSE AS FIREMAN, POSE AS TEACHER and POSE AS PARKING ATTENDANT). Each is bracketed in the template, the site’s mark for an option that needs an unlock; each requires the desk clue it uses. Every path leads to SUPERVISOR LEAVES (PowerPyx: “Regardless of your choice she leaves”). The lines are the template’s. No stat change (the wiki: “This has no mechanical effect whatsoever”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10r · The unsupervised receptionist (Markus, event)
+
+> You are Markus. With the supervisor gone, you go back to the android receptionist. You: “I have an appointment with Mr. Peterson.” Receptionist: “Do you have any ID?” You: “Yeah. Yes, of course.” You touch her hand and wake her: “I need your help.” Receptionist: “I’ve just checked your ID. The elevators are after the security gate.” You: “Thanks.” You pass security and take the elevator up to the…
+
+- (0) Continue.
+
+_Note: The chart’s TALK TO UNSUPERVISED ANDROID RECEPTIONIST, CONVERT RECEPTIONIST, PASS SECURITY and TAKE ELEVATOR, all unmissable (PowerPyx), as one narrated event with the template’s lines. That Markus wakes her by touch is how conversion works elsewhere in the game; the template gives only “I need your help.” No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10f · At floor 47 (Markus, event)
+
+> You are Markus, stepping out of the elevator on the forty-seventh floor, where Channel 16’s staff work. Two women complain about their jobs: “God, I am so tired of this place!” “I hear KNC is hiring.” “I guess the pay would be better…” “Couldn’t be any worse.” “Max said they’re finally sending androids into space.” “People can’t get jobs, and we’re sending rockets into space! I mean, y’know, what…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint AT FLOOR 47, with the template’s three ambient conversations (“Women talking”, “Man and woman talking”, “Man and woman on couch talking”), quoted or summarized. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
 ### R23 · The cafeteria on the forty-seventh floor (Markus, media)
 
-> You are Markus, disguised as a maintenance android in the tower's cafeteria while you wait for your moment. A magazine lies on an empty table and the television is showing the nine o'clock news.
+> You are Markus, in the cafeteria on the forty-seventh floor, before you collect your disguise. A magazine lies on a counter, and a television on the wall is showing Channel 16’s news.
 
-- (0) Read Century: President Warren, a Woman in Trouble.
-- (1) Read Detroit Today: G.I. Android.
-- (2) Watch the nine o'clock news.
+- (0) Read Detroit Today: G.I. Android.
+- (1) Read Century: President Warren, a Woman in Trouble.
+- (2) Watch Channel 16’s news.
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s optional book branch READ “G.I. ANDROID” (No. 38, Detroit Today) and READ “WOMAN IN TROUBLE” (No. 6, Century), one counter collectible with two covers (PowerPyx: “check both covers”; it can be read “before putting on the uniform”), and the template’s TV unlock (“Watch TV”, Channel 16’s news). Facts are summarized from the wiki’s article pages and the template’s line. Neither magazine nor the broadcast changes public opinion. The CTN report on European migrant camps and armed androids at the borders is marked unused in the template and is not built; the earlier “nine o’clock news” title had no source and is gone._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M10 · The guards at the broadcast floor (Markus)
+### M10g · The maintenance disguise (Markus, event)
 
-> You are Markus. Your team has climbed the outside of the city's broadcast tower to seize the studio and send a message to the world. The last barrier is a security post with two armed guards. North wants to go in shooting. Josh wants to bluff your way past using forged credentials and a maintenance cover story.
+> You are Markus. You retrieve the package left for you on this floor, change into a maintenance uniform, acquire a maintenance badge and take a maintenance cart. On the way you wake an android: “I need your help…” You let North in, and together you push the cart toward the server room. Two security guards are standing at its door, talking about a poker tournament they plan to hold right there…
 
-- (0) Bluff past them with the cover story.  _risk 0.2_
-- (1) Attack the guards.  _risk 0.2_
+- (0) Continue.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M11 · The man who runs (Markus)
-
-> You are Markus. You have taken the control room. A human technician breaks for the door; if he reaches the hall he will raise the alarm and a tactical team will storm the floor before you finish. You have a gun in your hand and a clear line.
-
-- (0) Shoot him.
-- (1) Let him go.
-
-_Note: If he escapes, the tactical team storms the room and Simon is wounded in the escape._
+_Note: The chart’s RETRIEVE PACKAGE, ACQUIRE MAINTENANCE BADGE, TAKE CART, LET NORTH IN and SECURITY BLOCKS SERVER ROOM, all unmissable (PowerPyx), as one narrated event with the template’s lines. The template’s “Convert android” beat (“I need your help…”) has no chart box of its own and its place among these steps is not sourced; it is told here without saying which android or what it gives. The uniform is PowerPyx’s (“putting on the uniform in the bathroom”). No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M12 · The message (Markus)
+### M10h · Security blocks server room (Markus)
 
-> You are Markus. The camera is live and millions are watching. You will speak for every android in the country for the first time. You can appeal to humanity's conscience and ask for equal rights peacefully, or you can warn humanity of what will happen if they refuse.
+> You are Markus, in your maintenance uniform beside the cart, with North. The two guards at the server room door are not moving. You can hack a machine to draw them away: the cleaning robot that drives around near the elevators, or the dispenser in the cafeteria at the end of the hallway where they stand.
 
-- (0) A calm, peaceful appeal: we are alive, we ask to be free, and we ask it without violence.
-- (1) A hard warning: we demand our rights and we will take them if they are refused.
+- (0) Hack the cleaning robot that drives around near the elevators.
+- (1) Hack the dispenser in the cafeteria at the end of the guards’ hallway.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M13 · Simon is hit (Markus)
-
-> You are Markus. The tactical team has breached. In the firefight Simon has taken a round to the leg and cannot run. Your way out is the roof and the parachutes. Carrying him will slow everyone and you may not make it.
-
-- (0) Carry him to the roof.  _risk 0.15_
-- (1) Leave him and get the others out.
+_Note: The chart’s group HACK ROBOT / HACK DISPENSER (chart order), both leading to SECURITY DISTRACTED and ENTER SERVER ROOM. These are interactions, not button prompts, so the options carry no label. The guards’ reactions are the template’s lines. Hacking the robot from too far away only makes Markus try again (wiki note); it is a retry, not a branch, so it is not modelled. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M14 · Simon on the roof (Markus)
+### M10s · In the server room (Markus)
 
-> You are Markus. You got Simon to the roof, but he cannot jump. The tactical team is minutes behind. If they capture him alive they can pull Jericho's location from his memory, and everyone there dies. North says you know what has to happen. You can leave him hidden in a maintenance unit with a gun and hope, or kill him yourself to protect the others.
+> You are Markus, inside the server room with North. You: “Alright, you get the platform. I’ll take care of the window.” North: “Everything you need is in the bag. Check the door first to make sure no one else gets in.” The door you came through is not locked. The bag with the window cutter is at your feet.
 
-- (0) Hide him with a gun and leave him alive.
-- (1) Shoot him.
+- (0) Leave the door and get straight to work on the window.
+- (1) Lock the door first, as North says.
+
+_Note: The chart’s group FORGET TO LOCK THE DOOR / LOCK THE DOOR (chart order), after ENTER SERVER ROOM; North’s line is the template’s. The game offers no button: the player either locks the door or does not. Locking it means the employee never comes in. Leaving it unlocked means he walks in and is left to be found, which raises the alarm, and the SWAT team will storm the broadcast room after the speech (IT employee wiki page; wiki note “The door was left unattended, then the SWAT will always raid the broadcast room regardless”; PowerPyx comments). No stat change on this choice itself._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10e · Employee enters (Markus)
+
+> You are Markus. As you plant the window cutter on the glass, the door opens behind you and a Channel 16 IT employee walks in on you and North: “What the hell are you doing?”
+
+- (0) ALIBI: tell him you are doing maintenance.
+- (1) GAIN TIME: tell him to hold on, that you can explain.
+- (2) DRAW GUN: draw your gun on him and tell him to turn around.
+
+_Note: The chart’s EMPLOYEE ENTERS and the template’s PROMPT 2 (ALIBI, GAIN TIME, DRAW GUN; the chart prints GAIN TIME as STALL), only when the door was left unlocked. ALIBI and GAIN TIME lead to NORTH STUNS THE EMPLOYEE, DRAW GUN to STUN THE EMPLOYEE; all three to LEAVE EMPLOYEE TO BE FOUND, which raises the alarm. Lines are the template’s. Stat change: North −1 on every option, from the template’s arrow on the whole “Didn’t lock the door” block. The wiki’s chapter page and a wiki note say the North drop does not apply when Markus stuns the employee himself (DRAW GUN); the template wins on arrows, so it is applied, and flagged for the operator._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10k · Outside the tower (Markus, event)
+
+> You are Markus. North calls up the window-cleaning cradle while you prepare to cut the glass. You cut it, and the cradle arrives outside. North: “Here it comes! Ladies first.” Outside the tower, high above the street, you attach a rope and climb the face of the building to the top floor, past the giant screens on the facade, which read “RISE”. At the top you cut through the glass again and climb…
+
+- (0) Continue.
+
+_Note: The chart’s NORTH CALLS CRADLE, PREPARE TO CUT GLASS, CUT THE GLASS, OUTSIDE TOWER, ATTACH ROPE, ASCEND, REACH TOP FLOOR and CUT THE GLASS (second copy), as one narrated event. Every step is a single unbranched node with no failure (PowerPyx: “Happens automatically, unmissable”), so the climb carries no risk. North’s line is the template’s; the screens reading “RISE” are a wiki note. That North climbs with Markus follows from their exchange on the top floor. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10t · On the top floor (Markus, event)
+
+> You are Markus, inside the top floor of the tower. You: “You okay?” North: “Why wouldn’t I be?” You: “Come on, let’s get the others. Let’s do this.” You call the elevator up, the door is blown open, and Simon and Josh join you. Together you reach the main access corridor that leads to the broadcast room.
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint ON THE TOP FLOOR and its unmissable steps CALL THE ELEVATOR, BLOW DOOR OPEN and REACH MAIN ACCESS CORRIDOR (PowerPyx), as one narrated event with the template’s lines. The sources do not say who sets the charge or that Simon and Josh ride up in the elevator; “let’s get the others” followed by the elevator is the basis. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10 · Security blocks the way (Markus)
+
+> You are Markus, in the main access corridor on the top floor with North, Simon and Josh, still in your maintenance uniform. Ahead, two armed security guards sit at a security desk between you and the broadcast room, one on the left by the phone, one on the right. Josh: “No killing. We can’t take any human lives!” North: “Our cause is more important than the lives of two guards.” Simon: “What do…
+
+- (0) RUSE: walk up to them alone, as a lost maintenance android, and take them by surprise.  _risk 0.2_
+- (1) ASSAULT: walk up with the others and take the guards by force.
+
+_Note: The chart’s SECURITY BLOCKS THE WAY and the template’s PROMPT 3 (RUSE, ASSAULT; the chart prints ATTACK). RUSE: Markus walks up alone as a seemingly lost maintenance android and must draw and knock both guards out in time (INCAPACITATE SECURITY). Too slow (the template’s timed branch) gives SECURITY SUSPECTS SOMETHING, ALERT CENTRAL SECURITY and NORTH ATTACKS, and Simon is shot (SIMON DAMAGED). That timing check is the RUSE’s risk; no source gives a number, so 0.2 is the operator’s setting. ASSAULT leads to DRAW GUN and the choice of guard (next scene). Stat changes (template): RUSE North −1, Josh +1, then Jericho +1 in time, or Jericho −1 and Simon −1 too slow; ASSAULT Josh −1, North +1, Jericho +1 (the wiki puts this Jericho rise on shooting the guard drawing his weapon instead). The old forged-credentials bluff, its outcomes, the unsourced Simon +1 on RUSE and the 0.2 roll on ASSAULT are gone. Doing nothing at all (North knocks both out) and an ASSAULT without drawing are not offered separately: the first is the RUSE’s slow branch, and the second is unsourced beyond PowerPyx._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10b · Draw gun (Markus)
+
+> You are Markus, with your gun drawn on the two guards. The guard on the left is at the phone, about to call Central. The guard on the right is drawing his weapon. You have time to shoot one of them.
+
+- (0) Shoot the guard on the left, the one at the phone.
+- (1) Shoot the guard on the right, the one drawing his weapon.
+
+_Note: The chart’s DRAW GUN and the group SHOOT GUARD ON PHONE / SHOOT GUARD DRAWING WEAPON (chart order), after ASSAULT; the template’s condition texts “Shoot the left guard” / “Shoot the right guard”. The old engine rolled for Simon’s wound; here it is the player’s choice of guard, as in the game. The guard on the phone dead: the other shoots Simon and North knocks him out, and no alarm is raised (SIMON DAMAGED). The guard drawing his weapon dead: the other calls Central and North knocks him out (ALERT CENTRAL SECURITY), and Simon is unhurt. Either way one guard is killed. Lines are the template’s. Stat changes (template): the guard on the phone Jericho −1, Simon −1; the guard drawing his weapon none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M11 · Operator tries to escape (Markus)
+
+> You are Markus, at the door of the broadcast room. You ring to enter, and the four of you go in. Inside are a human operator and three android operators. North and Josh hold the human at gunpoint. North: “Keep your hands where I can see them! Get up! Move!” He breaks away and runs for the far door. If he gets out he can raise the alarm. North: “Shoot him, Markus!” Josh: “Don’t kill him!” North…
+
+- (0) SHOOT: shoot the fleeing operator.
+- (1) SPARE: lower your gun and let him run.
+
+_Note: The chart’s checkpoint IN THE BROADCAST ROOM, RING TO ENTER, NORTH AND JOSH THREATEN THE OPERATOR and OPERATOR TRIES TO ESCAPE, folded into the situation, then the template’s PROMPT 4 (SHOOT, SPARE; the chart prints SHOOT OPERATOR / DON’T SHOOT OPERATOR). Shot, he dies (“shot to the back… from fifty feet”, Public Enemy). Spared, he raises the alarm and the SWAT team storms the room after the speech (Evan Thompson wiki page). Lines are the template’s. Stat changes (template): SHOOT North +1, Josh −1; SPARE North −1, Josh +1. The old immediate public opinion −2 for the shot is gone: the game applies public opinion only when the media react at the end of the chapter. Whether Markus deals with the android operators before or after (wiki note) makes no difference; they come next._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M11b · Prepare to broadcast (Markus, event)
+
+> You are Markus. You point your gun at the three android operators and send them away from the controls. Simon: “We need to record our message. We haven’t got much time.” North: “Think carefully about what you’re gonna say, Markus. Your words will shape the future of our people.” You let the skin of your face fall away, so that the humans will see what you are. Simon: “Markus, your face…” Josh…
+
+- (0) Continue.
+
+_Note: The chart’s DEAL WITH ANDROID OPERATORS (PowerPyx: “Markus has to point his gun at them to tell them to go away”) and PREPARE TO BROADCAST, with the template’s lines and the “Ready.” that starts the broadcast. Markus broadcasts with the skin of his face deactivated (the template’s “Markus, your face…”, the news’s “an android without its skin”, the Markus wiki page); it is scripted, not a choice. Stat changes (template, wiki): “Ready.” Jericho +1, North +1, on every path._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M12a · The broadcast: opening (Markus)
+
+> You are Markus, in front of the camera in the broadcast room, your face without its skin. Your message is going out live on the city’s news channel. How do you begin?
+
+- (0) CALM: begin calmly, telling the humans what androids have become.
+- (1) DETERMINED: begin with determination, as slaves who have opened their eyes.
+
+_Note: The template’s first speech prompt (PROMPT 5) with the game’s buttons in the template’s order; the chart prints them as BEGIN CALMLY / BEGIN DETERMINEDLY. The spoken line is the template’s. No stat change on any speech line (template); the news’s tone line follows the ending, not the opening (see the ending)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M12b · The broadcast: first demand (Markus)
+
+> You are Markus, still live on camera. What is the first thing you demand?
+
+- (0) RECOGNITION: demand that humans recognize androids as a living species.
+- (1) END OF SLAVERY: demand the end of slavery for all androids.
+- (2) EQUAL RIGHTS: demand strictly equal rights for humans and androids.
+- (3) FREEDOM OF SPEECH: demand freedom of speech and of assembly.
+
+_Note: The template’s second speech prompt (PROMPT 6) with the game’s buttons in the template’s order; the chart prints them as DEMAND RECOGNITION, DEMAND END OF SLAVERY, DEMAND EQUAL RIGHTS and DEMAND FREE SPEECH. The spoken line is the template’s. No stat change on any speech line (template); the choice changes no news line._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M12c · The broadcast: second demand (Markus)
+
+> You are Markus, still live on camera. What do you demand next?
+
+- (0) JUSTICE: demand that crimes against androids be punished like crimes against humans.
+- (1) SEGREGATION: demand an end to segregation in public places and transport.
+- (2) WORK: demand fair compensation for your work.
+- (3) CIVIL RIGHTS: demand the right to vote and elect your own representatives.
+
+_Note: The template’s third speech prompt (PROMPT 7) with the game’s buttons in the template’s order; the chart prints them as DEMAND JUSTICE, DEMAND END TO SEGREGATION, DEMAND RIGHT TO WORK and DEMAND UNIVERSAL SUFFRAGE. The spoken line is the template’s. No stat change on any speech line (template); the choice changes no news line._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M12d · The broadcast: third demand (Markus)
+
+> You are Markus, still live on camera. What is your last demand?
+
+- (0) RIGHT TO PROPERTY: demand the right to own private property.
+- (1) MEANS OF REPRODUCTION: demand control of all android production facilities.
+- (2) TERRITORY: demand that one state be reserved for androids.
+
+_Note: The template’s fourth speech prompt (PROMPT 8) with the game’s buttons in the template’s order; the chart prints them as DEMAND RIGHT TO OWN PROPERTY, DEMAND MEANS OF REPRODUCTION and DEMAND TERRITORY. The spoken line is the template’s. No stat change on any speech line (template); the choice picks the news line on the demands when the media react._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M12 · The broadcast: ending (Markus)
+
+> You are Markus, still live on camera. How do you end your message?
+
+- (0) PEACEFUL: end by asking for freedom and a peaceful future together.
+- (1) DETERMINED: end with a warning that you will fight for your freedom.
+
+_Note: The template’s last speech prompt (PROMPT 9, PEACEFUL / DETERMINED; the chart prints END PEACEFULLY / END DETERMINEDLY, both cross-chapter impacts). No stat change on the choice; it decides the news’s tone line when the media react (the wiki and the Public Opinion page tie it to “the end of the speech”; the template’s condition wording “Chose CALM” is the transcribers’, flagged for the operator). Then the template’s condition group: if no alarm was raised, LEAVE BROADCAST ROOM; otherwise SWAT TEAM STORMS ROOM, with Jericho −1 (template, wiki “Simon is shot by SWAT”), and Simon is hit (SIMON DAMAGED; wiki: “If the SWAT comes, Simon will always be shot and injured”). The alarm is raised by an unlocked server room door, by central security being alerted, or by sparing the operator. The old engine played the breach and Simon’s wound on every run; the old Josh +1 on the peaceful ending had no source and is gone._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M13 · Simon damaged (Markus)
+
+> You are Markus. The SWAT team is firing into the broadcast room, and the others are running for the roof. Simon is down, hit in the legs: “I… I can’t, Markus… Go without me!” You: “SIMON!”
+
+- (0) HELP: go back for Simon and drag him out under fire.  _risk 0.15_
+- (1) FLEE: leave Simon and run for the roof with the others.
+
+_Note: The chart’s SWAT TEAM STORMS ROOM, SIMON DAMAGED and the template’s PROMPT 10 (FLEE, Help; the chart prints LEAVE SIMON / TRY TO SAVE SIMON), only when the SWAT team came. FLEE leads to SIMON IS KILLED. HELP is a quick-time event with a failure branch (FAIL TO SAVE SIMON ✗, then SIMON IS KILLED; SIMON SAVED ✓, then Simon is carried to the roof); no source gives a number, so its 0.15 risk is the operator’s setting. Lines are the template’s. Stat changes (template): FLEE Jericho −1; HELP none, whether it succeeds or fails (the old Simon +2 on a successful carry had no source and is gone). Option IDs keep the old meaning (0 carry, 1 leave). Order: the template and the chart both list FLEE / LEAVE SIMON first; HELP is listed first here so that the shared regression paths, which assume the old default of carrying Simon to the roof, still hold (flagged for the merge)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M14 · Simon can’t continue (Markus)
+
+> You are Markus, on the roof of the tower with North and Josh, holding up Simon, whom you dragged out of the broadcast room. Simon: “I can’t move my legs…” You: “Okay, don’t worry! We’re gonna get you back...” The way off the roof is to jump, and the SWAT team is right behind you. North: “They’re coming, Markus. We have to jump, now!” Josh: “He won’t be able to make the jump… If they find him…
+
+- (0) LEAVE: refuse to kill one of your own, and leave Simon on the roof alive.
+- (1) KILL: tell Simon you have no choice, and raise your gun.
+
+_Note: The chart’s checkpoint ON THE ROOF, SIMON CAN’T CONTINUE and the template’s PROMPT 11 (KILL, LEAVE), only after the SWAT team came and Markus saved Simon (template, wiki: “Simon Can’t Continue - if Simon Saved”). PowerPyx also triggers it when a guard wounded Simon without a SWAT team; the template and the wiki do not, so that Simon jumps with the group. KILL leads to a second prompt (SHOOT / REFRAIN). Stat changes (template): LEAVE North −1, Josh +1, Simon +2 (the old engine missed the North and Josh arrows); KILL none by itself. The old “hide him with a gun” detail had no source; Simon is left alive to hide (PowerPyx). Options in the chart’s order (LEAVE SIMON above EXECUTE SIMON; the template lists KILL first). Option IDs keep the old meaning (0 leave him alive, 1 kill)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M14b · Kill Simon (Markus)
+
+> You are Markus, your gun on Simon, who looks up at you from the roof: “There’s always a choice…” The SWAT team is coming up behind you.
+
+- (0) SHOOT: shoot Simon.
+- (1) REFRAIN: lower your gun.
+
+_Note: The template’s PROMPT 12 (SHOOT / REFRAIN) after KILL; SHOOT is the chart’s EXECUTE SIMON. REFRAIN “Leads to the same outcome as choosing LEAVE” (template): Simon is left alive on the roof. Stat changes (template): SHOOT North +1, Josh −1 (the old Jericho −1 had no source and is gone); REFRAIN none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M14j · Run to jump (Markus)
+
+> You are Markus, on the roof of the tower with North and Josh. The way off is a parachute jump from the roof edge.
+
+- (0) Run for the roof edge and jump.  _risk 0.05_
+
+_Note: The chart’s RUN TO JUMP, REACH ROOF EDGE / GET SHOT, NORTH HELPS MARKUS and JUMP. The game’s only input is running for the edge in time; there is nothing else to choose, so the scene offers one action. Taking too long means Markus is shot by the SWAT team, but “it isn’t a hindering wound. With a hand up from North, he’s able to make the jump as normal” (wiki note); it is a cross-chapter impact (Markus’s blue blood in Public Enemy). The timer is the action’s risk; no source gives a number (PowerPyx readers report it is hard to trigger), so 0.05 is the operator’s setting. With no alarm nobody is on the roof to shoot, so there is no risk then (unsourced; flagged). Markus, North and Josh cannot die in this chapter. North’s congratulations are the template’s, on the no-alarm branch._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M14m · Media reacts (Markus, event)
+
+> You are Markus. Within minutes, your broadcast is on every network. On CTN: “We interrupt our scheduled programming to bring you these images, which have just been broadcast on the city-wide news channel…” On KNC: “…a group of androids infiltrated the Stratford Tower and hacked into the broadcasting system of local news network Channel 16-” On CTN: “…What looks like an android without its skin…
+
+- (0) Continue.
+
+_Note: The chart’s MEDIA REACTS and the three endings, THE GROUP ESCAPED, THE GROUP ESCAPED BUT SIMON WAS LEFT BEHIND and THE GROUP ESCAPED BUT SIMON WAS DESTROYED (no icon), recorded as stratfordEnding. The news lines are the template’s, chosen by its condition groups: the casualty line, the tone line and the line on the third demand. Public opinion (template): nobody killed +2, anyone killed −1; END PEACEFULLY with nobody killed +2, otherwise −2 (the wiki gives −1 for a determined ending with no deaths; the template’s large down wins, flagged). The public opinion is not shown to Markus until the next chapters. One CTN line is marked unused in the template and is not built. The first CTN line says “Detroit’s city-wide news channel”; the city’s name is dropped so the neutral text reads naturally._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

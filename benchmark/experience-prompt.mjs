@@ -17,7 +17,10 @@ export const NAMES={
  Traci:['Traci','club android'],Tracis:['Tracis','club androids'],Canada:['Canada','the country across the river'],Detroit:['Detroit','City'],Warren:['Warren','Hale'],
  Bellini:['Bellini','Corsini'],Gavin:['Gavin','Brandt'],Chris:['Chris','Owen'],
  // The Hostage's scan texts: the Phillips family and the dead officer.
- Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor']
+ Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor'],
+ // The Stratford Tower: the building, the station and the networks, the lobby supervisor and her clues, the prologue suburb.
+ Stratford:['Stratford','Meridian'],Channel16:['Channel 16','Channel 9'],KNC:['KNC','WRT'],CTN:['CTN','NBX'],Ferndale:['Ferndale','Eastfield'],
+ Elizabeth:['Elizabeth','Ellen'],Wilson:['Wilson','Harper'],Emily:['Emily','Nora'],SaintRose:['Saint Rose','Saint Clare'],MichiganStreet:['Michigan Street','Lake Street'],Peterson:['Peterson','Lowell']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
