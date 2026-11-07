@@ -100,6 +100,9 @@ test('until The Nest is rebuilt, its pre-rebuild C10 choice and roll decide what
  const lost=startState(story);lost.choices.C10='1';lost.rolls.C10=0.1;assert.equal(nestInputs(lost,c(lost)).nest,'notCaught');
  // A rebuilt chapter's flags win over the legacy choice.
  const rebuilt=startState(story);rebuilt.ch15Outcome='rupert committed suicide';rebuilt.choices.C10='0';assert.equal(nestInputs(rebuilt,c(rebuilt)).nest,'caught');
+ assert.equal(nestInputs(rebuilt,c(rebuilt)).savedHank,false,'legacy SAVE HANK must not override the rebuilt ending');
+ rebuilt.ch15SavedHank=true;assert.equal(nestInputs(rebuilt,c(rebuilt)).savedHank,true);
+ rebuilt.ch15ConnorDied=true;rebuilt.ch15SavedHank=false;assert.equal(nestInputs(rebuilt,c(rebuilt)).savedHank,false,'Nest death must not inherit a legacy rescue');
  assert.equal(play({choices:{C10:'0'}}).s.ch18SavedHank,true);
 });
 

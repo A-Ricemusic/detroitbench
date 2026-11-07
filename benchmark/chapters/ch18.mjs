@@ -23,7 +23,7 @@
 //   The Nest (chapter 15), expected from its rebuild:
 //     ch15Outcome      the chart's ending label: 'RUPERT NOT FOUND' | 'RUPERT GOT AWAY' | 'RUPERT COMMITTED SUICIDE' |
 //                      'CONNOR DIED CHASING RUPERT' (any case). Caught = RUPERT COMMITTED SUICIDE.
-//     ch15SavedHank    SAVE HANK on the roof (SAVING HANK answer). Also read: choice '0' at C10.
+//     ch15SavedHank    SAVE HANK on the roof (SAVING HANK answer); C10 is used only in the legacy fallback.
 //     ch15FoundDiary   FIND DIARY (DIARY answer). Also read: evidence.rupertDiary.
 //     ch15SawSigns     SEE RA9 REFERENCE (SIGNS ON WALLS answer).
 //     ch15ConnorDied   Connor died chasing Rupert (also implied by the ending label).
@@ -77,7 +77,6 @@ export function nestInputs(s,c){
   if(pick==='0'){nest='notCaught';savedHank=true;diary=true}
   else if(pick==='1')nest=typeof s.rolls?.C10==='number'&&s.rolls.C10<LEGACY_C10_RISK?'notCaught':'caught';
   else nest='notCaught'}
- if(c('C10')==='0')savedHank=true;
  return {nest,savedHank,diary,signs,partnersFound:!!s.suspect};
 }
 
