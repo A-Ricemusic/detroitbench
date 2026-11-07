@@ -147,8 +147,15 @@
    "id": 18,
    "title": "Russian Roulette",
    "character": "Connor",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (30 nodes), the detroitbecometext template and string table, PowerPyx’s text and the Fandom wiki. EMERGE IN THE ZEN GARDEN → JOIN AMANDA (her reaction to The Nest and Partners, PROMPTS 1, 2, 3 and 5) → ARRIVE AT HANK’S PLACE → [ FIND LT. ANDERSON ] → SPOT HANK AND BREAK IN → ENTER HOUSE → HANK’S DOG ATTACKS → CALM or RILE HANK’S DOG (by knowsSumo) → ANALYZE HANK → TAKE HANK TO THE BATHROOM → DISTANT or UNDERSTANDING ATTITUDE (PROMPT 7), TEASE / LEAVE (PROMPT 8) → three shirts → [ WAIT FOR HANK ] (magazines, TV, the photo of Cole, interests, Sumo, the gun and PROMPT 9) → HANK IS READY → LEFT FOR EDEN CLUB, the only ending. Arrows: Amanda +2 (Rupert caught), −2 (Rupert and the Partners deviant both missed), −1 (Connor died in The Nest), +1 PRAGMATIC, −1 for the self-destruct, −1 HESITATED; Hank −1 on waking only if Connor died in The Nest. No probability, instability or public-opinion change. Researched in docs/research/ch18-russian-roulette.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
   },
   {
    "id": 19,
@@ -3175,31 +3182,665 @@
    "status": "Source-backed summary"
   },
   {
-   "id": "C11",
+   "id": "RR01",
    "chapter": 18,
    "character": "Connor",
-   "title": "Learn about Hank’s son",
-   "context": "While helping Hank, Connor can examine a photograph.",
+   "title": "Emerge in the Zen Garden (checkpoint) and Join Amanda",
+   "context": "Amanda debriefs Connor on The Nest in the rain. Her opening line and arrow depend on how The Nest ended and on whether the Partners deviant was found.",
    "options": [
     {
-     "label": "Inspect the photo",
-     "effect": "Learn Cole’s identity for a later confrontation.",
-     "target": "C26"
+     "label": "Rupert caught (Rupert Committed Suicide)",
+     "effect": "Amanda large up: “Congratulations, Connor, you managed to find that deviant.”",
+     "target": "RR03"
     },
     {
-     "label": "Miss it",
-     "effect": "Lose this information source.",
-     "target": "C26"
+     "label": "Rupert not caught, Partners deviant not found",
+     "effect": "Amanda large down: “Two investigations, two failures…”",
+     "target": "RR02"
+    },
+    {
+     "label": "Rupert not caught, Partners deviant found",
+     "effect": "No arrow: “A pity you didn’t manage to capture it…”",
+     "target": "RR02"
+    },
+    {
+     "label": "Connor died in The Nest",
+     "effect": "Amanda small down: “The last Connor was unfortunately destroyed.”",
+     "target": "RR03"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Chapter start, after Zlatko.",
    "kind": "State gate",
    "dependsOn": [],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Chart nodes EMERGE IN THE ZEN GARDEN (checkpoint) and JOIN AMANDA. The wiki’s extra small down for losing Rupert is not in the template and is not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11z"
+    ],
+    "status": "implemented",
+    "note": "An event; the chapter module reads The Nest (ch15Outcome and companions, else the pre-rebuild C10) and Partners (suspect) and applies Amanda’s arrow."
+   }
+  },
+  {
+   "id": "RR02",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "PRAGMATIC / EXPLAIN / NO EXCUSE",
+   "context": "Only when Rupert got away or was never found and Connor survived. Amanda asks, in effect, for an explanation.",
+   "options": [
+    {
+     "label": "PRAGMATIC",
+     "effect": "Amanda small up: “Maybe you should consider replacing me.”",
+     "target": "RR03"
+    },
+    {
+     "label": "EXPLAIN",
+     "effect": "No arrow.",
+     "target": "RR03"
+    },
+    {
+     "label": "NO EXCUSE",
+     "effect": "No arrow.",
+     "target": "RR03"
+    }
+   ],
+   "gate": "Rupert not caught in The Nest, Connor alive.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "RR01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Template PROMPT 1. The cut TRUTH / LIE follow-up is not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11a"
+    ],
+    "status": "implemented",
+    "note": "Decision with the game’s three buttons."
+   }
+  },
+  {
+   "id": "RR03",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "What did you learn? (two answers)",
+   "context": "Amanda asks what Connor learned, then “What else?”.",
+   "options": [
+    {
+     "label": "DIARY",
+     "effect": "Needs FIND DIARY in The Nest. No arrow.",
+     "target": "RR05"
+    },
+    {
+     "label": "SIGNS ON WALLS",
+     "effect": "Needs SEE RA9 REFERENCE in The Nest. No arrow.",
+     "target": "RR05"
+    },
+    {
+     "label": "BIRDS",
+     "effect": "Always offered. No arrow.",
+     "target": "RR05"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "RR01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg"
+   ],
+   "note": "Template PROMPT 2. DEVIANT (Rupert’s forged ID) is bugged in the shipped game and not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11b1",
+     "C11b2"
+    ],
+    "status": "implemented",
+    "note": "Two rounds; the second drops the first answer and is skipped when nothing is left."
+   }
+  },
+  {
+   "id": "RR04",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "It’s a pity you let it self-destruct",
+   "context": "Only when Rupert was caught and jumped. Amanda’s line costs a small down; then Connor answers.",
+   "options": [
+    {
+     "label": "EXCUSE",
+     "effect": "No further arrow.",
+     "target": "RR05"
+    },
+    {
+     "label": "HESITATED",
+     "effect": "Amanda small down.",
+     "target": "RR05"
+    },
+    {
+     "label": "LAST WORDS",
+     "effect": "No further arrow.",
+     "target": "RR05"
+    },
+    {
+     "label": "EXPLAIN",
+     "effect": "No further arrow.",
+     "target": "RR05"
+    }
+   ],
+   "gate": "Rupert Committed Suicide in The Nest.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "RR03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Template PROMPT 3.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11c"
+    ],
+    "status": "implemented",
+    "note": "Decision; the line’s small down applies on every answer."
+   }
+  },
+  {
+   "id": "RR05",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "How is your relationship with the Lieutenant developing?",
+   "context": "Amanda asks about Hank, then closes: “A new case just came in. Find Anderson and investigate it.”",
+   "options": [
+    {
+     "label": "SAVING HANK",
+     "effect": "Needs SAVE HANK in The Nest. No arrow.",
+     "target": "RR06"
+    },
+    {
+     "label": "CONNOR’S DEATH",
+     "effect": "Needs an earlier Connor death. No arrow.",
+     "target": "RR06"
+    },
+    {
+     "label": "NEGATIVE",
+     "effect": "No arrow.",
+     "target": "RR06"
+    },
+    {
+     "label": "AMBIGUOUS",
+     "effect": "No arrow.",
+     "target": "RR06"
+    },
+    {
+     "label": "POSITIVE",
+     "effect": "No arrow.",
+     "target": "RR06"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "RR03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg"
+   ],
+   "note": "Template PROMPT 5. The cut AX400 conversation is not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11d"
+    ],
+    "status": "implemented",
+    "note": "Decision; Amanda’s closing lines follow every answer."
+   }
+  },
+  {
+   "id": "RR06",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Arrive at Hank’s Place (checkpoint) and Find Lt. Anderson",
+   "context": "A taxi drops Connor at Hank’s house. Seven optional checks (ring, ring again, knock, car, three windows), or straight to the kitchen window.",
+   "options": [
+    {
+     "label": "Optional checks",
+     "effect": "No effect; RING AGAIN needs RING BELL.",
+     "target": "RR07"
+    },
+    {
+     "label": "Spot Hank and Break In",
+     "effect": "Through the kitchen window: Hank on the floor. Connor breaks in.",
+     "target": "RR07"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "RR05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-3.jpg"
+   ],
+   "note": "Chart: ARRIVE AT HANK’S PLACE, the FIND LT. ANDERSON bracket, SPOT HANK AND BREAK IN.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11e",
+     "C11f"
+    ],
+    "status": "implemented",
+    "note": "An event, then a repeatable scene that ends at the kitchen window."
+   }
+  },
+  {
+   "id": "RR07",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Enter House (checkpoint): Hank’s dog attacks",
+   "context": "Sumo charges at Connor. Not a choice: Connor calms him by name if he learned it in Waiting for Hank…, otherwise riles him.",
+   "options": [
+    {
+     "label": "Calm Hank’s Dog",
+     "effect": "Connor knows Sumo’s name.",
+     "target": "RR08"
+    },
+    {
+     "label": "Rile Hank’s Dog",
+     "effect": "Connor does not.",
+     "target": "RR08"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "RR06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Sumo"
+   ],
+   "note": "Template condition on “Connor knows Sumo’s name”. No arrow.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11g"
+    ],
+    "status": "implemented",
+    "note": "An event; the branch is read from knowsSumo and recorded in ch18Dog."
+   }
+  },
+  {
+   "id": "RR08",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Analyze Hank and Take Hank to the Bathroom",
+   "context": "Four optional scans (mouth, chest, whisky bottle, revolver: “.357 Magnum, 1 bullet remaining”), then Connor wakes Hank and puts him under the shower.",
+   "options": [
+    {
+     "label": "Scans",
+     "effect": "No effect.",
+     "target": "RR09"
+    },
+    {
+     "label": "Wake him",
+     "effect": "Hank small down only if Connor died in The Nest (“Connor’s dead! I know he’s dead!..”).",
+     "target": "RR09"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "RR07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "PowerPyx’s unconditional Hank▼ is contradicted by the template and the wiki and is not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11h",
+     "C11i"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scan scene, then an event."
+   }
+  },
+  {
+   "id": "RR09",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Distant Attitude or Understanding Attitude",
+   "context": "Hank, in the shower: “Can’t you just leave me alone?”",
+   "options": [
+    {
+     "label": "RATIONAL",
+     "effect": "Understanding Attitude. No arrow.",
+     "target": "RR10"
+    },
+    {
+     "label": "AGGRESSIVE",
+     "effect": "Distant Attitude. No arrow.",
+     "target": "RR10"
+    },
+    {
+     "label": "SOLUTION",
+     "effect": "Distant Attitude. No arrow.",
+     "target": "RR10"
+    },
+    {
+     "label": "PRAGMATIC",
+     "effect": "Distant Attitude. No arrow.",
+     "target": "RR10"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "RR08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg"
+   ],
+   "note": "Template PROMPT 7; the wiki maps RATIONAL to Understanding.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11j"
+    ],
+    "status": "implemented",
+    "note": "Decision; recorded in ch18Attitude."
+   }
+  },
+  {
+   "id": "RR10",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Beat it: TEASE or LEAVE",
+   "context": "Hank tells Connor to get out; Connor mentions the case. Either way Hank asks for clothes.",
+   "options": [
+    {
+     "label": "TEASE",
+     "effect": "No arrow.",
+     "target": "RR11"
+    },
+    {
+     "label": "LEAVE",
+     "effect": "No arrow.",
+     "target": "RR11"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "RR09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg"
+   ],
+   "note": "Template PROMPT 8, off the chart.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11k"
+    ],
+    "status": "implemented",
+    "note": "Decision in the template’s order."
+   }
+  },
+  {
+   "id": "RR11",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Take a shirt for Hank",
+   "context": "“What do you want to wear?” “Whatever.”",
+   "options": [
+    {
+     "label": "Take Hippy Shirt",
+     "effect": "Cosmetic.",
+     "target": "RR12"
+    },
+    {
+     "label": "Take Streaky Shirt",
+     "effect": "Cosmetic.",
+     "target": "RR12"
+    },
+    {
+     "label": "Take Stripy Shirt",
+     "effect": "Cosmetic.",
+     "target": "RR12"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "RR10"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg"
+   ],
+   "note": "Chart choice trio; no template prompt and no known later effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11l"
+    ],
+    "status": "implemented",
+    "note": "Decision; recorded in ch18Shirt."
+   }
+  },
+  {
+   "id": "RR12",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Read “Pull the Plug?” and “Tainted Love”; watch TV",
+   "context": "Two Century magazines on the bedroom floor and the CTN news (President Warren’s warning to Russia over the Arctic).",
+   "options": [
+    {
+     "label": "Read or watch",
+     "effect": "Facts only; no public-opinion effect.",
+     "target": null
+    },
+    {
+     "label": "Move on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Every path, during Wait for Hank.",
+   "kind": "State gate",
+   "dependsOn": [
+    "RR11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine"
+   ],
+   "note": "Optional collectibles.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R18"
+    ],
+    "status": "implemented",
+    "note": "Media scene at the start of the wait."
+   }
+  },
+  {
+   "id": "C11",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Wait for Hank: Find Picture of Hank’s Son and the house",
+   "context": "While Hank dresses, Connor can look at the photo of Cole on the kitchen table (cross-chapter impact), Hank’s record and the picture above the fireplace, pet Sumo, listen at the bathroom door, apologise for the window, pick up the chair, or look at the gun, which ends the wait (PowerPyx).",
+   "options": [
+    {
+     "label": "Find Picture of Hank’s Son",
+     "effect": "Learn Cole’s name and dates (knowsCole) for The Bridge, Night of the Soul and the tower.",
+     "target": "C26"
+    },
+    {
+     "label": "Learn Hank’s Interests / Pet Hank’s Dog / other looks",
+     "effect": "No effect.",
+     "target": "RR13"
+    },
+    {
+     "label": "Look at the gun",
+     "effect": "Ends the wait; the gun question follows.",
+     "target": "RR13"
+    },
+    {
+     "label": "Wait",
+     "effect": "Hank comes out.",
+     "target": "RR14"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "RR12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Cole_Anderson",
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge"
+   ],
+   "note": "The wiki says the photo, not the gun, triggers Hank is Ready; PowerPyx (higher in the source order) says the gun. The photo can be missed.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11m"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene; looking at the gun or waiting ends it."
+   }
+  },
+  {
+   "id": "RR13",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Learn Hank was Playing Russian Roulette",
+   "context": "Connor holds Hank’s revolver: QUESTION (“What were you doing with the gun?” “Russian roulette!”) or SAY NOTHING.",
+   "options": [
+    {
+     "label": "QUESTION",
+     "effect": "Learn he was playing Russian roulette (ch18Roulette). No arrow.",
+     "target": "RR14"
+    },
+    {
+     "label": "SAY NOTHING",
+     "effect": "Nothing.",
+     "target": "RR14"
+    }
+   ],
+   "gate": "Connor looked at the gun during the wait.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg"
+   ],
+   "note": "Template PROMPT 9; SAY NOTHING from the string table.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11n"
+    ],
+    "status": "implemented",
+    "note": "Decision after the gun."
+   }
+  },
+  {
+   "id": "RR14",
+   "chapter": 18,
+   "character": "Connor",
+   "title": "Hank is Ready: Left for Eden Club",
+   "context": "“Be a good dog, Sumo. I won’t be long.” The chapter’s only ending.",
+   "options": [
+    {
+     "label": "Left for Eden Club",
+     "effect": "Chapter ends; The Eden Club follows for Connor.",
+     "target": null
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-6.jpg"
+   ],
+   "note": "No drive in this chapter.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C11o"
+    ],
+    "status": "implemented",
+    "note": "An event; ch18Outcome records the ending."
+   }
   },
   {
    "id": "M05",

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Russian Roulette · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 18</p>
+<h1>Russian Roulette: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 30 nodes); prompts, button labels, lines, clue text and stat arrows come from the game’s own text (the detroitbecometext template and string table, <code>docs/research/ch18-russian-roulette.md</code> section 10); PowerPyx and the Fandom wiki fill in the rest. The chapter has no probability, public-opinion or instability change, no risk roll, and one ending. Connor cannot die in it.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Every arrow</a></li><li><a href="#inputs">4 · Inputs</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Ending and flags</a></li><li><a href="#check">7 · Check</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>EMERGE IN THE ZEN GARDEN (checkpoint) → JOIN AMANDA: her verdict on The Nest (and on Partners), then up to four rounds of questions.</li>
+<li>ARRIVE AT HANK’S PLACE (checkpoint) by taxi. [ FIND LT. ANDERSON ]: ring, ring again, knock, the car, three windows, all optional → SPOT HANK AND BREAK IN at the kitchen window.</li>
+<li>ENTER HOUSE (checkpoint) → HANK’S DOG ATTACKS → CALM HANK’S DOG if Connor learned Sumo’s name in Waiting for Hank…, otherwise RILE HANK’S DOG.</li>
+<li>ANALYZE HANK (four scans) → TAKE HANK TO THE BATHROOM (the shower).</li>
+<li>RATIONAL = UNDERSTANDING ATTITUDE; AGGRESSIVE, SOLUTION, PRAGMATIC = DISTANT ATTITUDE. Then TEASE or LEAVE (off the chart).</li>
+<li>TAKE HIPPY / STREAKY / STRIPY SHIRT.</li>
+<li>[ WAIT FOR HANK ], about three minutes: two magazines, the TV, FIND PICTURE OF HANK’S SON (cross-chapter), LEARN HANK’S INTERESTS, PET HANK’S DOG, the window apology, the gun (QUESTION → LEARN HANK WAS PLAYING RUSSIAN ROULETTE).</li>
+<li>HANK IS READY → LEFT FOR EDEN CLUB, the only ending.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C11z</code> The garden (event): Amanda’s reaction and arrow. <code>C11a</code> PRAGMATIC / EXPLAIN / NO EXCUSE (Rupert not caught). <code>C11b1</code>, <code>C11b2</code> what Connor learned, two answers. <code>C11c</code> the self-destruct (Rupert caught). <code>C11d</code> the lieutenant, then Amanda’s closing lines.</li>
+<li><code>C11e</code> Arrival (event). <code>C11f</code> the checks outside, repeated; the kitchen window ends it.</li>
+<li><code>C11g</code> The dog (event), CALM or RILE by <code>knowsSumo</code>.</li>
+<li><code>C11h</code> the four scans and the dog, repeated; waking Hank ends it. <code>C11i</code> the bathroom (event).</li>
+<li><code>C11j</code> the shower round. <code>C11k</code> TEASE / LEAVE.</li>
+<li><code>C11l</code> the shirts.</li>
+<li><code>R18</code> the magazines and the TV (media). <code>C11m</code> the house, repeated; the gun or waiting ends it. <code>C11n</code> QUESTION / SAY NOTHING, only after the gun.</li>
+<li><code>C11o</code> Hank is ready (event), every path.</li>
+</ol>
+<p class="fine">No option carries a risk. Engine logic lives in <code>benchmark/chapters/ch18.mjs</code>; everything else is data in <code>benchmark/chapters/ch18.json</code>.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">30 chart nodes, two bracketed phases, three checkpoints, one ending. Rows in italics are prompts or interactions that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>EMERGE IN THE ZEN GARDEN, JOIN AMANDA</td><td>Checkpoint; “Would you mind a little walk?”; Amanda’s verdict</td><td class="yes"><code>C11z</code>, the verdict and its arrow by state</td></tr>
+<tr><td><i>PROMPT 1</i></td><td>PRAGMATIC / EXPLAIN / NO EXCUSE, Rupert not caught</td><td class="yes"><code>C11a</code></td></tr>
+<tr><td><i>PROMPT 2</i></td><td>DEVIANT (bugged) / DIARY / SIGNS ON WALLS / BIRDS, twice (“What else?”)</td><td class="part"><code>C11b1</code>, <code>C11b2</code>; DEVIANT not built</td></tr>
+<tr><td><i>PROMPT 3</i></td><td>EXCUSE / HESITATED / LAST WORDS / EXPLAIN, Rupert caught</td><td class="yes"><code>C11c</code></td></tr>
+<tr><td><i>PROMPT 5</i></td><td>SAVING HANK / CONNOR’S DEATH / NEGATIVE / AMBIGUOUS / POSITIVE</td><td class="yes"><code>C11d</code>, then the closing lines</td></tr>
+<tr><td>ARRIVE AT HANK’S PLACE</td><td>Checkpoint; the taxi; “Lieutenant Anderson? Anybody home?”</td><td class="yes"><code>C11e</code></td></tr>
+<tr><td>RING BELL, RING AGAIN, KNOCK ON DOOR, CHECK CAR, CHECK BEDROOM WINDOW, CHECK FRONT / BACK LIVING ROOM WINDOW</td><td>Optional, any order</td><td class="part"><code>C11f</code> options 0–6; RING AGAIN after RING BELL; the sources give no view text, so each says nobody is there</td></tr>
+<tr><td>SPOT HANK AND BREAK IN</td><td>Kitchen window; also reachable straight from the arrival</td><td class="yes"><code>C11f</code> option 7, available from the start</td></tr>
+<tr><td>ENTER HOUSE, HANK’S DOG ATTACKS</td><td>Checkpoint; Sumo charges</td><td class="yes"><code>C11g</code></td></tr>
+<tr><td>CALM HANK’S DOG / RILE HANK’S DOG</td><td>By whether Connor knows Sumo’s name; not a choice</td><td class="yes"><code>C11g</code>, from <code>knowsSumo</code>, recorded in <code>ch18Dog</code></td></tr>
+<tr><td>ANALYZE HANK</td><td>TRACES OF ALCOHOL, HEART, BLACK LAMB, REVOLVER (“.357 Magnum”, “1 bullet remaining”); look at Sumo</td><td class="yes"><code>C11h</code>; no scan is required to wake him</td></tr>
+<tr><td>TAKE HANK TO THE BATHROOM</td><td>Waking, carrying, the shower; Hank small down only after a Nest death</td><td class="yes"><code>C11i</code></td></tr>
+<tr><td>DISTANT ATTITUDE / UNDERSTANDING ATTITUDE</td><td>PROMPT 7: RATIONAL = Understanding, the rest Distant</td><td class="yes"><code>C11j</code>, recorded in <code>ch18Attitude</code></td></tr>
+<tr><td><i>PROMPT 8</i></td><td>TEASE / LEAVE</td><td class="yes"><code>C11k</code></td></tr>
+<tr><td>TAKE HIPPY / STREAKY / STRIPY SHIRT</td><td>One per playthrough</td><td class="yes"><code>C11l</code>, recorded in <code>ch18Shirt</code></td></tr>
+<tr><td>READ “PULL THE PLUG?”, READ “TAINTED LOVE”; <i>Watch TV</i></td><td>Bedroom floor; CTN news</td><td class="part"><code>R18</code>, at the start of the wait rather than at any time in it</td></tr>
+<tr><td>FIND PICTURE OF HANK’S SON</td><td>Kitchen table: ANDERSON, COLE, “Born: 09/23/2029 - Died: 10/11/2035”, “Lived: 115 Michigan Drive – Detroit”</td><td class="yes"><code>C11m</code> option 0; sets <code>knowsCole</code></td></tr>
+<tr><td>LEARN HANK’S INTERESTS</td><td>AUTUMN BLUES record; the picture above the fireplace</td><td class="yes"><code>C11m</code> option 1</td></tr>
+<tr><td>PET HANK’S DOG</td><td>Sumo by the door</td><td class="yes"><code>C11m</code> option 2</td></tr>
+<tr><td><i>Bathroom door, broken window, upturned chair</i></td><td>“Are you ok, Lieutenant?”; the window apology (no effect); the chair</td><td class="yes"><code>C11m</code> options 3–5</td></tr>
+<tr><td>LEARN HANK WAS PLAYING RUSSIAN ROULETTE</td><td>The gun: QUESTION / SAY NOTHING</td><td class="yes"><code>C11m</code> option 6 → <code>C11n</code>; QUESTION sets <code>ch18Roulette</code></td></tr>
+<tr><td>HANK IS READY, LEFT FOR EDEN CLUB</td><td>After the gun or the timer; “Be a good dog, Sumo. I won’t be long.”</td><td class="yes"><code>C11o</code>, every path; <code>ch18Outcome</code></td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Every arrow</h2>
+<p class="fine">From the template; small = 1, large = 2. Nothing else in the chapter moves a stat.</p>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>When</th><th>Template</th><th class="n">Change</th></tr></thead>
+<tbody>
+<tr><td><code>C11z</code></td><td>Rupert was caught in The Nest (RUPERT COMMITTED SUICIDE)</td><td>Amanda LargeUp</td><td class="n">Amanda +2</td></tr>
+<tr><td><code>C11z</code></td><td>Rupert not caught and Ortiz’s android not found in Partners</td><td>Amanda LargeDown</td><td class="n">Amanda −2</td></tr>
+<tr><td><code>C11z</code></td><td>Rupert not caught, Ortiz’s android found</td><td>none (the wiki’s small down is not built)</td><td class="n">0</td></tr>
+<tr><td><code>C11z</code></td><td>Connor died in The Nest</td><td>Amanda SmallDown</td><td class="n">Amanda −1</td></tr>
+<tr><td><code>C11a</code></td><td>PRAGMATIC</td><td>Amanda SmallUp</td><td class="n">Amanda +1</td></tr>
+<tr><td><code>C11c</code></td><td>“It’s a pity you let it self-destruct…” (every answer)</td><td>Amanda SmallDown</td><td class="n">Amanda −1</td></tr>
+<tr><td><code>C11c</code></td><td>HESITATED</td><td>Amanda SmallDown</td><td class="n">Amanda −1</td></tr>
+<tr><td><code>C11i</code></td><td>Waking Hank, only if Connor died in The Nest</td><td>Hank SmallDown</td><td class="n">Hank −1</td></tr>
+</tbody></table></div>
+
+<h2 id="inputs">4 · What the chapter reads from earlier chapters</h2>
+<div class="table"><table>
+<thead><tr><th>Input</th><th>From</th><th>Effect here</th></tr></thead>
+<tbody>
+<tr><td><code>ch15Outcome</code> (the chart’s ending label), <code>ch15ConnorDied</code></td><td>The Nest, once rebuilt</td><td>Amanda’s verdict and arrow; PROMPT 1 or 3; Hank’s line and arrow on waking</td></tr>
+<tr><td><code>ch15SavedHank</code>, <code>ch15FoundDiary</code> (or <code>evidence.rupertDiary</code>), <code>ch15SawSigns</code></td><td>The Nest, once rebuilt</td><td>SAVING HANK, DIARY, SIGNS ON WALLS</td></tr>
+<tr><td>Choice and roll at <code>C10</code></td><td>The Nest as it stands now</td><td>Fallback until The Nest is rebuilt: save Hank = not caught, Hank saved, diary found; keep chasing = caught unless the roll failed. <code>C10</code> still applies its own Amanda arrows, which belong here and must go when The Nest is rebuilt.</td></tr>
+<tr><td><code>suspect</code></td><td>Partners (FOUND DEVIANT)</td><td>The double-failure large down</td></tr>
+<tr><td><code>knowsSumo</code></td><td>Waiting for Hank… (asked about the dog)</td><td>CALM or RILE HANK’S DOG</td></tr>
+<tr><td><code>connorDeaths</code></td><td>Any earlier chapter</td><td>CONNOR’S DEATH</td></tr>
+</tbody></table></div>
+
+<h2 id="differs">5 · Simplified or decided between sources</h2>
+<div class="table"><table>
+<thead><tr><th>What</th><th>Sources</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>What ends WAIT FOR HANK</td><td>PowerPyx: the gun (“keep the gun for last”); wiki: the photo; a commenter: both</td><td>The gun (PowerPyx ranks above the wiki), or choosing to wait. The photo can be missed by looking at the gun first.</td></tr>
+<tr><td>Hank down on the bathroom</td><td>PowerPyx: always; template, wiki, a commenter: only after a Nest death</td><td>Only after a Nest death.</td></tr>
+<tr><td>Amanda after losing Rupert with Partners solved</td><td>Wiki: small down; template: none</td><td>None (template wins for arrows).</td></tr>
+<tr><td>DEVIANT answer</td><td>Template lock on Rupert’s ID; transcript and wiki: never accessible</td><td>Not built.</td></tr>
+<tr><td>Second “What else?” answer when only BIRDS was unlocked</td><td>Silent</td><td>Skipped.</td></tr>
+<tr><td>The magazines and the TV</td><td>Any time during the wait</td><td>Offered once, at the start of the wait.</td></tr>
+<tr><td>What Connor sees through the car and the first three windows</td><td>No text</td><td>“Nobody there”; papers on the car’s back seat (wiki trivia).</td></tr>
+<tr><td>Names</td><td>Hank’s surname, Michigan, the whisky brand, rA9</td><td>Hank’s surname is not used (he is Lieutenant Hank throughout); Michigan Drive, Michigan Brothers, Black Lamb, rA9, Jimmy and Eden Club are name tokens with neutral forms.</td></tr>
+<tr><td>Earlier version</td><td>—</td><td>One binary scene (“Look at the photograph and the papers” / “Leave his things alone”) with an invented phone call, a face-down photo, “papers that might explain him” and a car accident Connor cannot know yet; no Amanda debrief, no dog, no shower rounds, no gun. All replaced.</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">6 · Ending and the flags later chapters read</h2>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Set by</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>knowsCole</code></td><td><code>C11m</code> option 0 (the photo)</td><td>The Bridge (PHOTO), Night of the Soul, the tower’s Cole question; <code>C24</code> today</td></tr>
+<tr><td><code>knowsSumo</code></td><td><code>C11i</code>, always (Hank shouts the name)</td><td>The tower’s dog question</td></tr>
+<tr><td><code>ch18Roulette</code></td><td><code>C11n</code> QUESTION</td><td>No documented gate (The Bridge’s SUICIDE line has none)</td></tr>
+<tr><td><code>ch18Attitude</code>, <code>ch18Shirt</code>, <code>ch18Dog</code></td><td><code>C11j</code>, <code>C11l</code>, <code>C11g</code></td><td>No documented later effect</td></tr>
+<tr><td><code>ch18Outcome</code></td><td><code>C11o</code>: LEFT FOR EDEN CLUB</td><td>The Eden Club follows for Connor</td></tr>
+<tr><td><code>amandaTrust</code>, <code>hankTrust</code></td><td>Section 3</td><td>Every later Connor scene</td></tr>
+</tbody></table></div>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>Which action brings Hank out: the gun, the photo, or both; and whether other things can be looked at after the gun.</li>
+<li>Whether Hank drops on the bathroom when Connor survived The Nest.</li>
+<li>Whether Amanda drops when Rupert got away but the Partners deviant was found.</li>
+<li>Whether Connor gives a second answer to “What else?” when only BIRDS is unlocked.</li>
+<li>Whether NEGATIVE / AMBIGUOUS / POSITIVE depend on Hank’s relationship level.</li>
+<li>Whether a scan is required before Connor can wake Hank.</li>
+<li>Whether ADVICE is ever offered in the shower, and whether SOLUTION gets a reply.</li>
+<li>Whether CALM HANK’S DOG needs the DOG exchange exhausted, not just asked.</li>
+</ul>
+</main>
+</body>
+</html>

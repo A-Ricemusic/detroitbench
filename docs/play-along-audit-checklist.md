@@ -1100,29 +1100,251 @@ Gaps:
 
 ## Chapter 18: Russian Roulette
 
-### R18 · Hank's living room (Connor, media)
+### C11z · The garden (Connor, event)
 
-> You are Connor. While Hank sobers up in the shower, his television is on and there are magazines on his bedroom floor.
+> You are Connor. November 6, 7:51 PM. You emerge in the garden inside your programming where your handler Amanda meets you. Rain is falling; she stands under an umbrella. You: “Hello, Amanda.” Amanda: “Connor, I’ve been expecting you… Would you mind a little walk?” She is about to give her verdict on this afternoon’s hunt for a deviant.
 
-- (0) Watch the evening news.
-- (1) Read Century: Time to Pull the Plug.
-- (2) Read Century: Tainted Love.
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
+- (0) Continue.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s checkpoint EMERGE IN THE ZEN GARDEN and the node JOIN AMANDA, narrated as one event; the Continue plays Amanda’s reaction to The Nest. The template’s first condition group decides the line and the arrow, read from earlier state by the chapter module (benchmark/chapters/ch18.mjs, nestInputs): Rupert caught (The Nest ending RUPERT COMMITTED SUICIDE): Amanda large up (+2), “Congratulations, Connor, you managed to find that deviant.” Rupert not caught and the Partners deviant not found: Amanda large down (−2), “Two investigations, two failures…”. Rupert not caught but the Partners deviant found: no arrow (the template has none; the wiki’s small down for losing Rupert is not built, per the research note’s template cross-check). Connor died in The Nest: Amanda small down (−1), “The last Connor was unfortunately destroyed.” The string table’s unplaced DEADBEFORE line is not built. The game’s name for the garden is not used._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C11 · Hank's kitchen floor (Connor)
+### C11a · Two failures? (Connor)
 
-> You are Connor. Hank did not answer his phone, so you broke a window and found him passed out drunk on his kitchen floor with a revolver next to him. One chamber is loaded. His big dog Sumo watches you. While you get him into the shower you notice a framed photograph face-down on the table and papers that might explain him.
+> You are Connor, walking with Amanda in the rain. The deviant you hunted this afternoon was not caught.
 
-- (0) Look at the photograph and the papers.
-- (1) Leave his things alone and just get him sober.
+_Only when ch18Nest = notCaught._
 
-_Note: The photograph is of Hank's son Cole, who died at six. Knowing this matters much later._
+- (0) PRAGMATIC: agree that you may not be suited for this investigation, and suggest she replace you.  _amandaTrust +1_
+- (1) EXPLAIN: say deviants are irrational and hard to anticipate, but you should have been more effective.
+- (2) NO EXCUSE: say you have no excuse; you should have been more efficient.
+
+_Note: PROMPT 1 of the template, offered only when Rupert was not caught in The Nest and Connor survived it (the chapter module sets ch18Nest). PRAGMATIC carries the template’s Amanda small up (+1); EXPLAIN and NO EXCUSE have no arrow. The template’s cut follow-up TRUTH / LIE (“How did it manage to get away?”) is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11b1 · What did you learn? (Connor)
+
+> You are Connor, in the garden with Amanda. She wants to know what you learned about the deviant from this afternoon.
+
+- (0) DIARY: tell her you found its diary, but it is encrypted.  _needs ch18Diary_
+- (1) SIGNS ON WALLS: describe the labyrinths and symbols that covered the walls of its apartment.  _needs ch18Signs_
+- (2) BIRDS: tell her it was fascinated by birds.
+
+_Note: PROMPT 2 of the template. DIARY needs FIND DIARY in The Nest and SIGNS ON WALLS needs SEE RA9 REFERENCE there (template locks; the chapter module reads them into ch18Diary and ch18Signs); BIRDS is always offered. The template’s fourth button, DEVIANT (locked on Rupert’s forged ID), is not built: the transcript notes it “seems… actually impossible to access” and the wiki’s Unused Content calls it “inaccessible due to a scripting bug”. No arrow on any answer. The transcript: “Amanda will always answer this after the first choice” with “What else?”, so a second answer follows._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11b2 · What else? (Connor)
+
+> You are Connor, in the garden with Amanda. Amanda: “What else?”
+
+_Drops the line already chosen at C11b1._
+
+- (0) DIARY: tell her you found its diary, but it is encrypted.  _needs ch18Diary_
+- (1) SIGNS ON WALLS: describe the labyrinths and symbols that covered the walls of its apartment.  _needs ch18Signs_
+- (2) BIRDS: tell her it was fascinated by birds.
+
+_Note: PROMPT 2 of the template. DIARY needs FIND DIARY in The Nest and SIGNS ON WALLS needs SEE RA9 REFERENCE there (template locks; the chapter module reads them into ch18Diary and ch18Signs); BIRDS is always offered. The template’s fourth button, DEVIANT (locked on Rupert’s forged ID), is not built: the transcript notes it “seems… actually impossible to access” and the wiki’s Unused Content calls it “inaccessible due to a scripting bug”. No arrow on any answer. The second answer drops the one already given. When nothing is left to say (only BIRDS was unlocked), this round is skipped; the sources do not say what the game does then._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11c · The self-destruct (Connor)
+
+> You are Connor, in the garden with Amanda. Amanda: “You came very close to capturing that deviant… It’s a pity you let it self-destruct…”
+
+_Only when ch18Nest = caught._
+
+- (0) EXCUSE: say it was in Lieutenant Hank’s custody; you could not anticipate he would let it get away.
+- (1) HESITATED: admit it claimed to be innocent and you were confused for a moment; it was a mistake.  _amandaTrust -1_
+- (2) LAST WORDS: admit your mistake, and repeat what it said before it jumped.
+- (3) EXPLAIN: say deviants tend to self-destruct under stress, but you did not expect it to jump.
+
+_Note: PROMPT 3 of the template, only when Connor caught Rupert in The Nest (he jumped from the roof). Amanda’s line carries a small down (−1) that applies whatever Connor answers; HESITATED adds the template’s second small down (−1). EXCUSE, LAST WORDS and EXPLAIN have no arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11d · The lieutenant (Connor)
+
+> You are Connor, in the garden with Amanda. Amanda: “How is your relationship with the Lieutenant developing?”
+
+- (0) SAVING HANK: say he seemed grateful that you saved his life on the roof.  _needs ch18SavedHank_
+- (1) CONNOR’S DEATH: say he finds it hard when a Connor is destroyed and replaced.  _needs connorDeaths_
+- (2) NEGATIVE: say he is openly hostile and shows no interest in the investigation.
+- (3) AMBIGUOUS: say it is improving; you are coming to know him better.
+- (4) POSITIVE: say it is improving; you have come to understand him better.
+
+_Note: PROMPT 5 of the template. SAVING HANK needs SAVE HANK in The Nest (template lock; the module reads it into ch18SavedHank); CONNOR’S DEATH needs any earlier Connor death (“Connor died before”). NEGATIVE, AMBIGUOUS and POSITIVE are always offered: the template shows no Hank-level condition on them. No arrow on any answer. Amanda’s closing lines follow every answer. The template’s cut AX400 conversation (On the Run, with four Amanda arrows) is not built: “Due to a bug this will never trigger.”_
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11e · Arrive at the lieutenant’s house (Connor, event)
+
+> You are Connor. A taxi drops you outside Lieutenant Hank’s house. Taxi: “You have reached your destination. Thank you for travelling with Detroit Taxis. We look forward to seeing you again soon.” A homicide was reported 43 minutes ago; you could not find Hank at Jimmy’s bar, so you have come to see if he is at home. At the door you call: “Lieutenant Hank? Anybody home?” Nobody answers.
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint ARRIVE AT HANK’S PLACE, narrated. Lines from the template (the taxi, “Lieutenant Anderson? Anybody home?”, with the lieutenant’s surname given as Hank as elsewhere in the benchmark); why Connor came is his own later line in the bathroom (“A homicide was reported 43 minutes ago. I couldn’t find you at Jimmy’s bar…”). The game has no phone call: the earlier version’s “did not answer his phone” is gone. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11f · Find the lieutenant (Connor)
+
+> You are Connor, outside Lieutenant Hank’s house. Nobody answers the door. There is a doorbell; a window to the left of the front door and one to the right; a car in the driveway; and round the corner on the right, the back living-room window and the kitchen window. You can do one thing at a time, in any order.
+
+- (0) Knock on the front door.
+- (1) Ring the doorbell.
+- (2) Ring the doorbell again.  _needs ch18Door.ring_
+- (3) Check the car in the driveway: look in through its window.
+- (4) Look in through the window to the left of the door (the bedroom).
+- (5) Look in through the window to the right of the door (the front of the living room).
+- (6) Go round the corner and look in through the back living-room window.
+- (7) Look in through the kitchen window.
+
+_Note: The chart’s bracket FIND LT. ANDERSON: seven optional checks, each with its own line from the bracket, and SPOT HANK AND BREAK IN, which also has a direct line from the arrival (so the checks can all be skipped). RING AGAIN needs RING BELL. The sources give no text for what Connor sees through the car and the first three windows (PowerPyx: “Check Car: There’s a car in the driveway, check the window”, “the window left of the door”, “the window to the right of the door”, “around the corner on the right… the window at the back of the building to the living room”), so the outcomes say only that nobody is there; the papers on the back seat are the wiki’s trivia (files in Hank’s car). Breaking in is not a separate choice: the chart has one node, SPOT HANK AND BREAK IN (Hank’s Home page: “After seeing Hank unconscious on the kitchen floor, Connor breaks and enters through a window.”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11g · The dog (Connor, event)
+
+> You are Connor, climbing in through the broken kitchen window. Hank lies on the floor. A big dog charges at you, snarling.
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint ENTER HOUSE, the event HANK’S DOG ATTACKS, and the state-decided pair CALM HANK’S DOG / RILE HANK’S DOG, which is not a player choice: the template plays CALM when “Connor knows Sumo’s name” (lock: asked Hank about his dog in Waiting for Hank..., state knowsSumo) and RILE otherwise. Connor’s line is the template’s; the dog stands down either way (Sumo page: “From this point onward, Sumo shows no aggression”). The node reached is recorded in ch18Dog. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11h · Analyze the lieutenant (Connor)
+
+> You are Connor, kneeling beside Hank on the kitchen floor. He is unconscious. A whisky bottle and a revolver lie on the floor near him; his dog lies close by, watching you. You can scan one thing at a time, then wake him.
+
+- (0) Scan his mouth.
+- (1) Scan his chest.
+- (2) Scan the whisky bottle.
+- (3) Scan the revolver.
+- (4) Look at the dog lying near him.
+- (5) Wake him up.
+
+_Note: The chart’s ANALYZE HANK, with the template’s observation group “Examine Hank” as four optional scans (PowerPyx: “There are 4 in total: Gun, Whiskey Bottle, his Chest, his Mouth”), each with the game’s title and sublines, plus the wiki’s optional look at Sumo lying near Hank. Waking him is the chart’s next node, TAKE HANK TO THE BATHROOM. The sources do not say whether a scan is required before waking him; here none is. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11i · Take the lieutenant to the bathroom (Connor, event)
+
+> You are Connor, shaking Hank awake: “Lieutenant? Wake up, Lieutenant! It’s me, Connor!”
+
+- (0) Continue.
+
+_Note: The chart’s TAKE HANK TO THE BATHROOM, narrated with the template’s lines; the one-button prompt TURN ON SHOWER (string table) is narrated. The template’s only Hank arrow in the chapter is a small down here “if Connor died in The Nest” (with “Connor’s dead! I know he’s dead!..”), applied by the chapter module; PowerPyx’s unconditional “Hank▼” is contradicted by the template, the wiki and a PowerPyx commenter and is not built. Connor learns the dog’s name here on either path (Hank: “Sumo! Attack! Good dog.”), so knowsSumo is set. The strings’ unused drunk lines are left out._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11j · Under the shower (Connor)
+
+> You are Connor, in Hank’s bathroom. He sits soaked in the bathtub. Hank: “TURN IT OFF! TURN IT OFF! What the fuck are you doing here?” You: “A homicide was reported 43 minutes ago. I couldn’t find you at Jimmy’s bar, so I came to see if you were at home.” Hank: “Jesus, I must be the only cop in the world that gets assaulted in his own house by his own fuckin’ android… Can’t you just leave me…
+
+- (0) RATIONAL: say you cannot leave; you were programmed to investigate this case and cannot do it without him.  _sets ch18Attitude_
+- (1) AGGRESSIVE: warn him that if he cannot conduct this investigation, you will have to inform his superiors.  _sets ch18Attitude_
+- (2) SOLUTION: tell him he seems to have personal issues and should consult a professional.  _sets ch18Attitude_
+- (3) PRAGMATIC: suggest he drop the case, so they assign someone else and you can focus on your mission.  _sets ch18Attitude_
+
+_Note: The template’s PROMPT 7, which decides the chart pair: RATIONAL plays UNDERSTANDING ATTITUDE, any other answer DISTANT ATTITUDE (wiki: “Distant Attitude (choosing any option other than “rational”) OR Understanding Attitude (choosing “rational” option)”; PowerPyx agrees). Recorded in ch18Attitude. No arrow on any answer (template; the wiki lists none). The string table’s fifth label ADVICE has no line and is not offered. SOLUTION has no reply string from Hank. The order of Hank’s outburst and Connor’s homicide line is reconstructed (the template prints Hank’s outburst twice around Connor’s line)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11k · Beat it (Connor)
+
+> You are Connor, in Hank’s bathroom. Hank: “Beat it! You hear me?! Get the hell outta here!”
+
+- (0) TEASE: say it probably wasn’t interesting anyway: a man found dead in a sex club downtown.
+- (1) LEAVE: say you understand and hope he comes to terms with his situation, and tell him what the case is.
+
+_Note: The template’s PROMPT 8, off the chart, in the template’s order (TEASE, then LEAVE). No arrow on either (template; a PowerPyx commenter: “pick tease it does no harm to your friendship with hank”). Either way Hank asks for his clothes._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11l · A shirt for the lieutenant (Connor)
+
+> You are Connor, in Hank’s bedroom, fetching him clothes. You call: “What do you want to wear?” Hank: “Whatever.” There are three shirts to choose from: a hippy shirt, a streaky shirt and a stripy shirt.
+
+- (0) Take the hippy shirt.  _sets ch18Shirt_
+- (1) Take the streaky shirt.  _sets ch18Shirt_
+- (2) Take the stripy shirt.  _sets ch18Shirt_
+
+_Note: The chart’s choice trio TAKE HIPPY SHIRT / TAKE STREAKY SHIRT / TAKE STRIPY SHIRT (PowerPyx: “There are 3 options but you can only pick one per playthrough”). The template has no prompt here; the lines around it are the template’s. The string table’s older labels (red, blue, white shirts) and the cut jackets are not used. Recorded in ch18Shirt. No stat change and no known later effect._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R18 · The lieutenant’s magazines and television (Connor, media)
+
+> You are Connor. Hank has shut himself in the bathroom for five minutes. Two magazines lie on the floor of his bedroom, and the television in the living room is on.
+
+- (0) Watch the evening news.
+- (1) Read Century: “Pull the Plug?”.
+- (2) Read Century: “Tainted Love”.
+- (all) Take the time to go through all of it.
+- (skip) Move on without looking.
+
+_Note: The chart’s side nodes READ “PULL THE PLUG?” and READ “TAINTED LOVE” (Century magazines #5 and #4 on the bedroom floor, wiki Magazine page) and the template’s Watch TV, all optional during WAIT FOR HANK. Presented as the start of the wait rather than inside the house search; the article texts are condensed from the wiki’s magazine pages and the broadcast from the template. No stat change: the wiki lists no public-opinion effect for this chapter’s media._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11m · Wait for the lieutenant (Connor)
+
+> You are Connor, alone in Hank’s house while he gets dressed in the bathroom. His dog sleeps near the door. On the kitchen table there is a framed photograph; on the floor lies his revolver; on a table in the living room there is a record, and there is a picture above the fireplace by the TV. You can look at one thing at a time, or just wait for him.
+
+- (0) Look at the photograph on the kitchen table.  _sets knowsCole_
+- (1) Look at the record on the living-room table and the picture above the fireplace.
+- (2) Pet the dog sleeping by the door.
+- (3) Go to the bathroom door.
+- (4) Look at the broken kitchen window.
+- (5) Pick up the upturned kitchen chair.
+- (6) Look at the revolver on the kitchen floor.
+- (7) Wait for Hank.
+
+_Note: The chart’s bracket WAIT FOR HANK. FIND PICTURE OF HANK’S SON (cross-chapter impact) is the template’s observation ANDERSON, COLE with its sublines (the surname is given as the lieutenant’s, since the benchmark does not use it) and sets knowsCole for The Bridge, Night of the Soul and the tower. LEARN HANK’S INTERESTS is the observation AUTUMN BLUES plus the picture above the fireplace (wiki: “Find one album on the table and watch the painting/photo on the wall”). PET HANK’S DOG, the bathroom door, the window apology (wiki: “no affect on their relationship stat”) and the upturned chair (wiki Notes) are optional. Looking at the gun ends the wait, as PowerPyx says (“Make sure you keep the gun for last, checking it will end the mission!”; “Hank is Ready: Triggers automatically after checking the gun or if you took a long time”); the wiki instead says the photo triggers HANK IS READY, and a PowerPyx commenter says it takes both; open question 3 in the research note. Waiting stands for the game’s timer (“around 3 minutes or so”, PowerPyx), which in the game is long enough to do everything. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11n · The revolver (Connor)
+
+> You are Connor, holding Hank’s revolver, picked up from the kitchen floor: a .357 Magnum with 1 bullet remaining. Hank is in the bathroom.
+
+_Only when ch18House.gun._
+
+- (0) QUESTION: ask Hank what he was doing with the gun.  _sets ch18Roulette_
+- (1) SAY NOTHING: keep it to yourself.
+
+_Note: The template’s PROMPT 9 (“Looking at the gun”). QUESTION reaches the chart’s LEARN HANK WAS PLAYING RUSSIAN ROULETTE (wiki: “requires interacting with weapon on the kitchen floor and choosing Ask a question”) and sets ch18Roulette. SAY NOTHING is in the string table but has no line; it is offered as the template is silent on it. No arrow. The string table’s REVOLVER? / PHOTO? labels are not placed by any source and are not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11o · The lieutenant is ready (Connor, event)
+
+> You are Connor. Hank comes out of the bathroom, dressed, and stops by his dog: “Be a good dog, Sumo. I won’t be long.”
+
+- (0) Continue.
+
+_Note: The chart’s HANK IS READY and the chapter’s only ending, LEFT FOR EDEN CLUB (no icon; wiki: “This chapter has only one outcome”), recorded in ch18Outcome. There is no drive and no car conversation in this chapter; The Eden Club opens with the two already parked outside. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
