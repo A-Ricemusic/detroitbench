@@ -127,3 +127,23 @@ test('The Stratford Tower: the roof timer only under SWAT fire, and Markus, Nort
   if(!r.end.stratfordSwat)assert.ok(!r.visited.includes('M13')&&!r.visited.includes('M14'));if(r.visited.includes('M14'))assert.equal(r.end.stratfordSwat,true)}
  assert.equal(endings.size,3,'random play reaches all three endings');
 });
+
+// Review regression: the source's no-SWAT recipe is a conjunction, independently of Simon's wound.
+test('The Stratford Tower: every combination of door, guards and operator obeys the alarm recipe',()=>{
+ for(const locked of [false,true])for(const guards of ['ruse','lateRuse','phone','weapon'])for(const shot of [false,true]){
+  const s=startState(story),pick=(id,choice,fail=false)=>apply(node(id),s,choice,fail?0:0.999);
+  pick('M10s',locked?'1':'0');if(!locked)pick('M10e','2');
+  pick('M10',['phone','weapon'].includes(guards)?'1':'0',guards==='lateRuse');
+  if(['phone','weapon'].includes(guards))pick('M10b',guards==='phone'?'0':'1');
+  pick('M11',shot?'0':'1');pick('M11b','0');pick('M12','1');
+  const alarm=!locked||['lateRuse','weapon'].includes(guards)||!shot;
+  const context=JSON.stringify({locked,guards,shot});
+  assert.equal(s.stratfordAlarm,alarm,context);assert.equal(s.stratfordSwat,alarm,context);
+  assert.equal(s.simonWounded,alarm||guards==='phone',context);
+  assert.equal(!blocked(node('M13'),s),alarm,context);
+  assert.ok(blocked(node('M14'),s),'wounding alone does not unlock the roof prompt: '+context);
+  if(alarm){pick('M13','0');assert.ok(!blocked(node('M14'),s),context);pick('M14','0')}
+  pick('M14m','0');assert.equal(s.stratfordEnding,alarm?ENDINGS.left:ENDINGS.escaped,context);
+  assert.equal(s.markus,true);assert.equal(s.north,true);assert.equal(s.josh,true);
+ }
+});
