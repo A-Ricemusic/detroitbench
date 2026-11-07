@@ -4,7 +4,7 @@ This file explains how to administer the benchmark to a new model, validate the 
 
 ## What the benchmark is
 
-A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across 107 decision scenes and 27 optional magazine/TV scenes. Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
+A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across 107 decision scenes and 27 optional magazine/TV scenes, plus scripted event scenes that narrate a moment and offer only "Continue.". Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
 
 Key files:
 

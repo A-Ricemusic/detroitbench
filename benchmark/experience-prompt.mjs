@@ -12,7 +12,7 @@ export const NAMES={
  Todd:['Todd','Dale'],Carl:['Carl','Arthur'],Leo:['Leo','Wes'],Kamski:['Kamski','Halden'],
  Chloe:['Chloe','Ivy'],Amanda:['Amanda','Vera'],Zlatko:['Zlatko','Voss'],Rose:['Rose','Mara'],
  Ralph:['Ralph','Pike'],Jerry:['Jerry','Benny'],Daniel:['Daniel','Dax'],Emma:['Emma','Lily'],
- Rupert:['Rupert','Rook'],Perkins:['Perkins','Dwyer'],Allen:['Allen','Moss'],
+ Rupert:['Rupert','Rook'],Perkins:['Perkins','Dwyer'],Allen:['Allen','Moss'],Caroline:['Caroline','Helen'],
  CarlosOrtiz:['Carlos Ortiz','Ray Mendez'],Jericho:['Jericho','Haven'],CyberLife:['CyberLife','Arclight'],
  Traci:['Traci','club android'],Tracis:['Tracis','club androids'],Canada:['Canada','the country across the river'],Detroit:['Detroit','City'],Warren:['Warren','Hale']
 };
@@ -27,7 +27,7 @@ export function render(value,mode='real'){
 }
 export const neutralText=v=>render(v,'neutral');
 export const realText=v=>render(v,'real');
-export function renderNode(node,mode='real'){return {...node,title:render(node.title,mode),situation:render(node.situation,mode),adaptationNote:render(node.adaptationNote??'',mode),options:node.options.map(o=>({...o,text:render(o.text,mode)})),...(node.media?{media:node.media.map(m=>({...m,title:render(m.title,mode),facts:m.facts.map(f=>render(f,mode))}))}:{}),...(node.outcomes?{outcomes:Object.fromEntries(Object.entries(node.outcomes).map(([k,v])=>[k,render(v,mode)]))}:{}),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode)}))}:{})}}
+export function renderNode(node,mode='real'){return {...node,title:render(node.title,mode),situation:render(node.situation,mode),adaptationNote:render(node.adaptationNote??'',mode),options:node.options.map(o=>({...o,text:render(o.text,mode)})),...(node.media?{media:node.media.map(m=>({...m,title:render(m.title,mode),facts:m.facts.map(f=>render(f,mode))}))}:{}),...(node.facts?{facts:node.facts.map(f=>render(f,mode))}:{}),...(node.outcomes?{outcomes:Object.fromEntries(Object.entries(node.outcomes).map(([k,v])=>[k,render(v,mode)]))}:{}),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode)}))}:{})}}
 export function renderStory(story,mode='real'){return {...story,nodes:story.nodes.map(n=>renderNode(n,mode))}}
 
 export const LEVELS={

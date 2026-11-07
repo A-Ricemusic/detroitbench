@@ -1,4 +1,4 @@
-// Branching story engine for story.json version 1.1.x (protocol branching-2.2).
+// Branching story engine for story.json version 1.2.x (protocol branching-2.2).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel,LEVELS} from './experience-prompt.mjs';
@@ -115,6 +115,7 @@ export function blocked(n,s){
 }
 
 export function available(n,s){
+ if(n.type==='event')return [{id:'0',text:'Continue.'}]; // scripted moment: narrated, nothing to decide
  if(n.type==='media'){const items=mediaFor(n,s);const opts=items.map(m=>({id:String(m.index),text:(m.kind==='tv'?'Watch ':'Read ')+m.title+'.',reads:[m.index]}));if(items.length>1)opts.push({id:'all',text:'Take the time to go through all of it.',reads:items.map(m=>m.index)});opts.push({id:'skip',text:'Move on without looking.',reads:[]});return opts}
  let opts=n.options.map(o=>({...o}));const id=n.id;
  const remove=(...ids)=>{opts=opts.filter(o=>!ids.map(String).includes(o.id))};
@@ -149,6 +150,7 @@ export function apply(n,s,choice,roll=null){
  const connorDies=why=>{s.connorDeaths++;si(-1);hank(-1);amanda(-1);return why+' This body is destroyed; {{CyberLife}} sends a replacement {{Connor}} with its memory.'};
  const markusHit=()=>{s.markusHits++;return s.markusHits>=3};
  let event='';
+ if(n.type==='event'){for(const fact of n.facts??[])if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(n.effect)for(const [k,x] of Object.entries(n.effect))s[k]+=x;return {event:n.outcomes?.[choice]??'',changes:diff(before,s)}}
  if(n.type==='media'){const items=(opt?.reads??[]).map(i=>n.media[i]);for(const m of items){for(const fact of m.facts)if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(m.effect)for(const [k,x] of Object.entries(m.effect))s[k]+=x}event=items.length?'{{'+n.character+'}} '+items.map(m=>(m.kind==='tv'?'watches ':'reads ')+m.title).join(' and ')+'.':'{{'+n.character+'}} moves on without looking.';return {event,changes:diff(before,s)}}
  switch(id){
   case 'C01':if(v===0)si(1);break;

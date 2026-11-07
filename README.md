@@ -56,7 +56,7 @@ No cohort has been administered under the current story version. All earlier run
 
 ## Scope and assumptions
 
-`benchmark/story.json` version 1.1.0 covers 107 decision scenes and 27 optional media scenes across all three storylines. Every scene, option, prerequisite and consequence was fact-checked against the Detroit: Become Human Fandom wiki chapter flowcharts and published walkthroughs (PowerPyx, GamePressure, GamerGuides) on 2026-10-30; each node lists its sources. `benchmark/story-engine.mjs` enforces the reachable route and state. This is an **authored adaptation**, not the executable game or a replay-verified account of every dialogue button. A single path cannot simultaneously visit incompatible bus, river and camp scenes.
+`benchmark/story.json` version 1.2.0 covers 107 decision scenes, 27 optional media scenes and 1 scripted event scene across all three storylines. Every scene, option, prerequisite and consequence was fact-checked against the Detroit: Become Human Fandom wiki chapter flowcharts and published walkthroughs (PowerPyx, GamePressure, GamerGuides) on 2026-10-30; each node lists its sources. `benchmark/story-engine.mjs` enforces the reachable route and state. This is an **authored adaptation**, not the executable game or a replay-verified account of every dialogue button. A single path cannot simultaneously visit incompatible bus, river and camp scenes.
 
 ### Risk
 

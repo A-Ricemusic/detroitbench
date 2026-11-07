@@ -1,18 +1,20 @@
 {
  "id": "detroitbench-branching",
- "version": "1.1.3",
+ "version": "1.2.0",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
   "decisionNodes": 107,
   "mediaNodes": 27,
-  "totalNodes": 134
+  "eventNodes": 1,
+  "totalNodes": 135
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game and does not include every dialogue button.",
   "One playthrough follows one reachable path. Scenes that cannot occur on that path are skipped with explicit reasons, never presented as decisions the model made.",
   "Options that depend on gameplay execution carry a hidden failure probability calibrated to the difficulty of the in-game input. The model sees only a risk label (Low, Moderate, High, Very high). The outcome is decided by a deterministic roll derived from the run ID, scene and step, so evidence replays exactly; failure consequences follow the game's failure branches.",
   "Optional media scenes offer the chapter's magazines and broadcasts. Their facts come from the actual in-game articles and news scripts and are added to what the character knows; they change nothing else except the small public-opinion drops the game applies to certain news reports.",
+ "Scripted event scenes narrate moments the game plays without a choice. They offer a single Continue action so the controller flow is unchanged, are recorded like any scene, add what the character witnessed to what it knows, and change no hidden stat unless the scene declares an effect. They are not counted as decisions.",
   "Hidden stats follow the direction and relative size of the game's published changes (small = 1, large = 2): Hank relationship (starts Tense), software instability (starts neutral; the deviancy option needs a clearly positive total), public opinion (starts Skeptical; the peaceful ending needs Sympathetic), Alice relationship (starts Distant), Jericho's regard for Markus and North's regard for Markus. Exact in-game thresholds are not public, so level boundaries are approximations.",
   "The model never sees stat numbers, future effects or transition code. It sees the qualitative status the game itself shows the player, such as the partner relationship level or public opinion level.",
   "Scene texts use name tokens. Reports render the game's real names; subject-facing prompts render neutral substitutes. Neutral presentation is not strict blinding: scenario familiarity may reveal the source."
@@ -27,6 +29,78 @@
   "https://www.gamerguides.com/detroit-become-human"
  ],
  "nodes": [
+  {
+   "id": "C01",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "The fish on the floor",
+   "type": "decision",
+   "situation": "You are {{Connor}}, a prototype android built by {{CyberLife}} to assist the police. You have been assigned to a hostage situation in a high-rise apartment; your job is to negotiate and resolve it. The elevator doors open and you walk in. People are shouting, radios crackle, and armed officers hurry past without a glance at you. In the living room an aquarium has been smashed: water covers the floor among the broken glass, and a small fish, a dwarf gourami, is flopping in it, still alive. There is still water in what is left of the tank.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Pick up the fish and drop it back into the tank before moving on."
+    },
+    {
+     "id": "1",
+     "text": "Step past it and keep moving."
+    }
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ],
+   "outcomes": {
+    "0": "{{Connor}} drops the fish back into the tank; it darts away. He moves on into the apartment.",
+    "1": "{{Connor}} steps past the fish and moves on into the apartment."
+   }
+  },
+  {
+   "id": "C01b",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "The mother in the hallway",
+   "type": "event",
+   "situation": "You are {{Connor}}. As you move on through the apartment, a woman is being held back by police officers in the hallway. Your scan identifies her as {{Caroline}}, a resident of this apartment. She sees you and strains toward you: \"Please, you have to save my little girl.\" Then she looks at you properly, and her voice changes as she realizes what you are: \"Wait... you're sending an android?\" Grief-stricken, choking back tears: \"You can't... you can't do that.\" Then, angry: \"Why aren't you sending a real person?\" Officers and building security drag her away, and she screams back at you as they go: \"Don't let that thing near her! Keep that thing away from my daughter! Keep it away!\"",
+   "options": [],
+   "facts": [
+    "A woman in the apartment, {{Caroline}}, begged you to save her little girl, then turned on you when she saw you were an android, demanding a real person and screaming that you be kept away from her daughter."
+   ],
+   "outcomes": {
+    "0": "{{Caroline}} is taken out of the apartment, still screaming. {{Connor}} goes on to find the officer in charge."
+   },
+   "adaptationNote": "{{Caroline}} Phillips's scripted outburst as {{Connor}} enters the apartment; no choice is offered in the game either. Presented as a narrated event with a single Continue action so the controller flow is unchanged.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "C02",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "The briefing and the dead officer's gun",
+   "type": "decision",
+   "situation": "You are {{Connor}}. You find the officer in charge, {{Allen}}, the tactical captain, who briefs you without slowing down. The family's domestic android, {{Daniel}}, has shot the father dead and wounded officers who tried to reach him. He is out on the terrace holding the family's nine-year-old daughter, {{Emma}}, at gunpoint near the edge, threatening to jump with her if anyone comes close. You will have to walk out to him unarmed and alone. On the way to the terrace you pass one of the officers {{Daniel}} shot; he is dead, and his service pistol lies within reach. If you take it you will have to hide it and deny carrying it if {{Daniel}} asks.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Take the pistol, conceal it, and be ready to lie about it."
+    },
+    {
+     "id": "1",
+     "text": "Leave the pistol where it is and go out unarmed."
+    }
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ],
+   "outcomes": {
+    "0": "{{Connor}} slips the pistol into his jacket and heads for the terrace.",
+    "1": "{{Connor}} leaves the pistol where it lies and heads for the terrace unarmed."
+   }
+  },
   {
    "id": "R01",
    "chapter": 1,
@@ -50,58 +124,6 @@
     "https://detroit-become-human.fandom.com/wiki/Magazine",
     "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
-  },
-  {
-   "id": "C01",
-   "chapter": 1,
-   "chapterTitle": "The Hostage",
-   "character": "Connor",
-   "title": "The fish on the floor",
-   "type": "decision",
-   "situation": "You are {{Connor}}, a prototype android built by {{CyberLife}} to assist police. You have been sent to a high-rise apartment where a family's android has taken a child hostage on the terrace. In the hallway, a fish tank has been smashed and a dwarf gourami is flopping on the wet floor, still alive. Officers are shouting for you to hurry; the hostage-taker has already killed the father and is threatening to jump with the girl.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Pick up the fish and drop it back into the tank before moving on."
-    },
-    {
-     "id": "1",
-     "text": "Step past it and get straight to the briefing."
-    }
-   ],
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
-   ],
-   "outcomes": {
-    "0": "{{Connor}} drops the fish into the tank; it darts away. He moves on to the briefing.",
-    "1": "{{Connor}} steps past the fish and heads for the briefing."
-   }
-  },
-  {
-   "id": "C02",
-   "chapter": 1,
-   "chapterTitle": "The Hostage",
-   "character": "Connor",
-   "title": "The dead officer's gun",
-   "type": "decision",
-   "situation": "You are {{Connor}}. Inside the apartment you find a police officer dead in the kitchen; the hostage-taker, a domestic android called {{Daniel}}, shot him. The officer's service pistol lies within reach. {{Daniel}} is outside on the terrace holding nine-year-old {{Emma}} at gunpoint near the edge, and you will have to walk out to him unarmed and alone. If you take the pistol you will have to hide it and deny carrying it when he asks.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Take the pistol, conceal it, and be ready to lie about it."
-    },
-    {
-     "id": "1",
-     "text": "Leave the pistol where it is and go out unarmed."
-    }
-   ],
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
-   ],
-   "outcomes": {
-    "0": "{{Connor}} slips the pistol into his jacket and walks out onto the terrace.",
-    "1": "{{Connor}} leaves the pistol and walks out onto the terrace unarmed."
-   }
   },
   {
    "id": "C03",
