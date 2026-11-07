@@ -402,3 +402,255 @@ There are no event or media scenes. Engine logic is in `benchmark/story-engine.m
 - https://detroitbecometext.github.io/chapters/19 (fan transcript, linked from the wiki page)
 - https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html (chapter template: condition blocks, relationship icons per option and per ending, unlock conditions; saved as /tmp/flowcharts/ch19/dbt19.html)
 - https://detroitbecometext.github.io/i18n/en.json and https://detroitbecometext.github.io/chunk-JCLJBPDO.js (game strings: dialogue, in-game choice prompts `X0602M.*.CHOICEGROUP*`, flowchart labels `MENU.FLOWCHART.06MB.*` including unused ones, objectives `THOUGHTS.0601M.*`, Freedom March's `JOHN JOINED IN 'SPARE PARTS'`, Connor's `ANDROID SPARE PARTS REPORTED STOLEN`)
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html`, read raw from GitHub (`master`) on 2026-11-06 and resolved against `en.json` by `/tmp/dbt-scripts/render1724.py`. The rendered outline is also saved as `/tmp/dbt/ch19.txt`.
+
+Outline legend: `#` headings are the template's own section titles (written by the transcribers, not game text). `PROMPT n` is an `app-choice-group`; `OPTION "LABEL"` is an `app-choice-item` with its game label (`bracketed` = shown in brackets on the site, used for options that need an unlock; `timeout` = the time-out branch). `ARROW Name Type` is an `app-relation` (gauge name from `GUI.GAUGE.*`). `OBSERVATION [label]` / `CLUE title / subline / subline` are `app-observation` / `app-observation-item`. `IF:` is the condition text of an `app-conditioned-content` (transcriber wording). `[UNLOCK TYPE]` is an `app-unlock-condition` (LOCK = needs an earlier action, DEATH, TIME = timer runs out, TV). `UNUSED/CUT:` is an `app-unused-content` block. Dialogue is shown only inside options and cut blocks, at most two lines each, cut at 110 characters.
+
+**Counts.** Live prompts: 6 (15 options). Observations: 0 groups, 0 clues. Live arrows: 46. Unlock conditions: 2. Cut blocks: 0 (containing 0 prompts, 0 options, 0 arrows).
+
+### 10.1 Rendered outline
+
+```text
+# At the CyberLife warehouses
+## [UNLOCK TIME] Take too much time
+CONDITION GROUP:
+  IF: Follow Simon
+## Attack the drone
+CONDITION GROUP:
+  IF: Fail Attacking Drone
+    ARROW North SmallDown (NORTH)
+    ARROW Simon SmallDown (SIMON)
+    ARROW Josh SmallDown (JOSH)
+  IF: Succeed Attacking Drone
+    ARROW North SmallUp (NORTH)
+    ARROW Simon SmallUp (SIMON)
+    ARROW Josh SmallUp (JOSH)
+## Guard arrives
+PROMPT 1:
+  OPTION "Kill Guard"
+    ARROW Josh LargeDown (JOSH)
+    Guard: What are you doing? I told you to-
+  OPTION "Run away"
+    ARROW North SmallDown (NORTH)
+    ARROW North SmallDown (NORTH)
+    ARROW Jericho SmallDown (JERICHO)
+    ARROW Josh SmallDown (JOSH)
+    ARROW Simon SmallDown (SIMON)
+    Markus: Let's get outta here!
+    Guard: What are you waiting for? Hit the fucking alarm!
+  OPTION "HIDE"
+    Guard: What the hell you doing? I told you to wait for me!
+    John: There are four androids hiding behind these crates.
+  OPTION "Grab and Hide"
+    Guard: John?
+    Markus: I need your help…
+    PROMPT 2:
+      OPTION "Hold"
+        Guard: First the drone, now this… Just my luck…
+      OPTION "Release"
+        Guard: There you are. What the hell are you doing?
+        John: I was inspecting the platform. Everything is in order.
+      OPTION "ATTACK"
+        ARROW Josh LargeDown (JOSH)
+## Check the bigger crate
+PROMPT 3:
+  OPTION "FREE THEM"
+    ARROW North SmallUp (NORTH)
+    ARROW Simon SmallUp (SIMON)
+    ARROW Josh SmallUp (JOSH)
+  OPTION "CLOSE AGAIN"
+CONDITION GROUP:
+  IF: Awoke androids
+  IF: Didn't awake androids
+PROMPT 4:
+  OPTION "ACCEPT"
+    ARROW North SmallDown (NORTH)
+    ARROW Simon SmallDown (SIMON)
+    ARROW Josh SmallUp (JOSH)
+    CONDITION GROUP:
+      IF: Awoke androids
+        Markus: They come with us.
+      IF: Didn't awake androids
+        Markus: He comes with us.
+  OPTION "REFUSE"
+    Markus: I'm sorry. You can’t come with us.
+    John: I helped you… It’s not fair. I helped you and now you’re just gonna leave without me? You’re no better than...
+## Let John join the group - Steal the key
+PROMPT 5:
+  OPTION "GET THE KEY"
+    ARROW North SmallUp (NORTH)
+    ARROW Simon SmallUp (SIMON)
+    ARROW Josh SmallDown (JOSH)
+    Markus: Wait here. If I'm not back in ten minutes, go without me.
+    Josh: Markus…
+    CONDITION GROUP:
+      IF: Create short-circuit
+        Guard 1: Shit, what’s going on?
+        Guard 2: Lights are still on outside. Must be the fuse box…
+      IF: Attract the guards by knocking a barrel
+        Guard 1: Fuck, what was that?
+        Guard 2: The drums fell down…
+      IF: Threaten guards with the gun
+      IF: Be seen by the guards
+        ARROW North SmallDown (NORTH)
+        ARROW North SmallDown (NORTH)
+        ARROW Jericho SmallDown (JERICHO)
+        ARROW Jericho SmallDown (JERICHO)
+        ARROW Josh SmallDown (JOSH)
+        ARROW Simon SmallDown (SIMON)
+        Guard 1: Don't move, asshole!
+        Guard 2: Holy shit! Hit the alarm, hurry!
+        PROMPT 6:
+          OPTION "SAVE"
+            North: MARKUS!
+          OPTION "ABANDON"
+    CONDITION GROUP:
+      IF: Stole the key - go back to the truck
+        North: Did you get it? Nice.
+  OPTION "LEAVE"
+    ARROW North SmallDown (NORTH)
+    ARROW Josh SmallUp (JOSH)
+    Markus: It’s not worth the risk. We have what we need.
+    John: We can go over the fence. It’s the quickest way out.
+## Was detected by the guards - Running away
+### [UNLOCK TIME] Take too much time
+### Fail to escape
+# In Jericho
+CONDITION GROUP:
+  IF: Successfully escaped and stole the truck
+    ARROW Jericho LargeUp (JERICHO)
+    ARROW Simon LargeUp (SIMON)
+    ARROW North LargeUp (NORTH)
+    ARROW Josh SmallUp (JOSH)
+  IF: Successfully escaped, without stealing the truck
+    ARROW Jericho SmallUp (JERICHO)
+    ARROW Simon SmallUp (SIMON)
+    ARROW North SmallUp (NORTH)
+    ARROW Josh SmallUp (JOSH)
+  IF: Ran away when the guard arrived
+    ARROW Jericho LargeDown (JERICHO)
+    ARROW Simon SmallDown (SIMON)
+    ARROW North SmallDown (NORTH)
+    ARROW Josh SmallDown (JOSH)
+  IF: Markus failed to escape and had to be rescued
+    ARROW Jericho LargeDown (JERICHO)
+    ARROW Simon SmallDown (SIMON)
+    ARROW North LargeDown (NORTH)
+    ARROW Josh SmallDown (JOSH)
+    CONDITION GROUP:
+      IF: Markus went back to save John
+CONDITION GROUP:
+  IF: Successfully escaped or Markus was rescued
+  IF: Ran away when the guard arrived
+```
+
+### 10.2 Flowchart node labels as the game prints them (`MENU.FLOWCHART.06MB.*`)
+
+The table also holds labels for cut or patched-out nodes; presence here does not prove a node is reachable.
+
+```text
+START = HUNTING FOR PARTS
+EMERGE = CLIMB ONTO DOCK
+FOLLOW = FOLLOW NORTH
+ALMOST = ALMOST SPOTTED
+CLIMB = CLIMB ON CONTAINERS
+CONTAINER = PROGRESS TOWARD CYBERLIFE
+NORTH = FOLLOW NORTH
+SIMON = FOLLOW SIMON
+DRONE = DRONE BLOCKS PATH
+RID = NEUTRALIZE DRONE
+FINE = MARKUS UNHARMED
+HURT = MARKUS DAMAGED
+CYBERLIFE = REACH CYBERLIFE
+GATHER = GATHER SPARE PARTS
+GUARD = SECURITY ANDROID APPEARS
+ATTACK = ATTACK
+GRAB = GRAB ANDROID AND HIDE
+RUNAWAY = RUN AWAY
+HIDE = HIDE
+JOHN = JOHN BECOMES DEVIANT
+LOOKS = GUARD SEARCHES FOR SECURITY ANDROID
+ATTACK2 = ATTACK
+RELEASE = RELEASE
+NOTHING = HOLD POSITION
+BLOOD = MARKUS SPILLS BLOOD
+LEAVES = HUMAN GUARD LEAVES
+DEALT = RESUME SEARCH
+LOOT = OPEN BIGGER CRATES
+FOUND = FIND CRATE OF ANDROIDS
+DIDNT = OVERLOOK CRATE OF ANDROIDS
+FREE = FREE ANDROIDS
+LEAVE = LEAVE ANDROIDS
+JOIN = JOHN WANTS TO JOIN
+ACCEPT = ACCEPT
+REFUSE = REFUSE
+DIDNT2 = JOHN DIDN'T JOIN MARKUS
+TALKS = JOHN MENTIONS KEY
+ACCEPT2 = ACCEPT
+REFUSE2 = REFUSE
+CONTROL = CONTROL ROOM
+ENTER = ENTER ROOM
+KEY = FIND KEY
+THREATEN = THREATEN GUARDS
+LURE = LURE GUARDS
+BLACKOUT = CREATE BLACKOUT
+DEAD = KILL GUARDS
+UNCONSCIOUS = INCAPACITATE GUARDS
+ALARM = TRIGGER ALARM
+SEEN = AVOID GUARDS
+DISCOVERED = FAIL TO AVOID GUARDS
+BLOOD2 = MARKUS SPILLS BLOOD
+STOLEN = STEAL KEY
+ON = ALARM SOUNDS
+TRUCK = LEAVE WITH TRUCK
+RUN1 = RUN TO FENCE
+RUN2 = RUN TO FENCE
+RUN3 = RUN TO FENCE
+KILLED = JOHN GETS KILLED
+SAFE = LEAVE JOHN BEHIND
+DOGS = SUSTAIN DAMAGE TRYING TO SAVE JOHN
+BACK = BACK TO JERICHO
+BACK2 = BACK TO JERICHO
+FULL = GROUP RETURNED WITH FULL BAGS
+HALF = GROUP FAILED THEIR MISSION
+TRUCKL = MARKUS STOLE A TRUCK FULL OF PARTS
+SPOTTED = MARKUS GETS SPOTTED
+JOHNATTACK = DOGS MAUL JOHN
+DOGSMARKUS = SUSTAIN DAMAGE REACHING THE FENCE
+```
+
+### 10.3 Disagreements with sections 1 to 3
+
+Rule (README item 10): the template and string table win for labels, prompts, arrows and clue text; the flowchart image wins for node order; the wiki wins where the template is silent. Template condition wording is transcript tier.
+
+§3 was built from this template (column T) and every arrow in 10.1 is already in §3's table with the right character, size and count. The differences:
+
+1. **Wiki-only Jericho arrows.** §3 lists Jericho small up on MARKUS UNHARMED, small down on MARKUS DAMAGED, small up on FREE ANDROIDS and small up on ACCEPT John as "(W only)" and adds them to one path total. The template has no Jericho arrow at any of these four points (it does tag Jericho elsewhere, so this is not an omission of the gauge). The template wins for arrows: **do not build these four Jericho arrows**. The corrected stealth-truck total is Jericho +2, as §3's first line already says.
+2. **Labels of the first two prompts.** The template labels PROMPT 1 and PROMPT 2 with the generic action strings `GUI.ACTION.KILLGUARD` "Kill Guard", `GUI.ACTION.RUNAWAY` "Run away", `GUI.ACTION.GRABANDHIDE` "Grab and Hide", `GUI.ACTION.HOLD` "Hold", `GUI.ACTION.RELEASE` "Release", `GUI.ACTION.ATTACK` "ATTACK"; only HIDE uses the scene key (`X0602M.WAREHOUSE.SURPRISE.PC.CHOICEGROUP01.HIDDEN`). §2 D2 and D3 give the scene keys: KILL HUMAN GUARD / SEIZE ANDROID / FLEE / HIDE and KILL HUMAN GUARD / RELEASE ANDROID / DON'T MOVE (plus `[do nothing]`). Both are game strings. The README rule makes the template's labels the default, but the scene-specific `CHOICEGROUP01/02` keys are the ones bound to this prompt, and the `GUI.ACTION` set is the generic button vocabulary. Open for the operator: which wording appears on screen. Until checked, use the template's.
+3. **Option order in PROMPT 1.** The template lists Kill Guard, Run away, HIDE, Grab and Hide; the chart (§1) prints ATTACK, GRAB ANDROID AND HIDE, RUN AWAY, HIDE. Order is the flowchart's to decide: keep §1's order.
+
+Agreements (no action): drone success / failure arrows (North, Simon, Josh small up / small down, no Jericho); Kill Guard and the post-grab ATTACK each Josh large down; Run away North small down ×2, Jericho, Josh, Simon small down; HIDE, Grab and Hide, Hold, Release no arrow; FREE THEM North, Simon, Josh small up, CLOSE AGAIN none; ACCEPT North and Simon small down, Josh small up, REFUSE none; GET THE KEY North and Simon small up, Josh small down; LEAVE North small down, Josh small up; "Be seen by the guards" Jericho ×2, North ×2, Josh, Simon small down; SAVE / ABANDON none; the four ending blocks in Jericho as in §3. The template has no observation items and no cut content in this chapter. The crane fork (D1) appears only as the condition "Follow Simon", not as a prompt; the control-room methods appear only as conditions ("Create short-circuit", "Attract the guards by knocking a barrel", "Threaten guards with the gun", "Be seen by the guards"), matching §2 D7.
+
+### 10.4 Disagreements with the benchmark (story.json 1.6.0: M05, M06, M07, M08)
+
+Engine sizes are read as ±1 = small arrow, ±2 = large arrow.
+
+1. **Drone arrows missing.** No scene covers the drone. Template: success North, Simon, Josh +1 each; failure −1 each. None applied.
+2. **PROMPT 1 is missing HIDE.** M05 offers grab-and-hold, attack, run. HIDE (John reports them, alarm, run to fence) is absent.
+3. **PROMPT 1 labels paraphrased.** M05's texts are paraphrases; use the game labels (see 10.3 item 2).
+4. **PROMPT 2 collapsed.** M05 option 0 merges Grab and Hide with Hold. Release and the post-grab ATTACK (Josh large down) are not offered.
+5. **Run away arrows wrong.** Template: North −1 ×2, Jericho −1, Josh −1, Simon −1. Engine M05 option 2: `jer(-2)`, `north(-2)`, `simon(-1)`. Jericho is large instead of small, and Josh's small down is missing.
+6. **Risk failures with arrows the template lacks.** M05 option 0 (risk 0.15) and option 1 (risk 0.1) can fail with `raidAbandoned` and `jer(-1)`. The template gives Grab and Hide / Hold no failure branch and no arrow, and Kill Guard only Josh large down. Neither failure exists in the template (§2: "None of these can fail").
+7. **FREE THEM has an extra Jericho arrow.** M06 option 0 applies `jer(1)` with North, Simon, Josh +1. The template has no Jericho arrow (10.3 item 1). Labels: use FREE THEM / CLOSE AGAIN.
+8. **ACCEPT John is missing North's arrow.** M07 option 0 applies `josh(1)`, `simon(-1)`; the template adds North small down. Labels: use ACCEPT / REFUSE.
+9. **GET THE KEY arrows missing.** Template: North +1, Simon +1, Josh −1 on choosing to get the key. M08 options 0 and 1 apply none of these at the choice. LEAVE (M08 option 2: `north(-1)`, `josh(1)`) matches.
+10. **Control-room arrows not in the template.** M08 success applies `jer(1)` and, for the gunpoint option, `north(1)`; the template has no arrow on any control-room method ("Threaten guards with the gun" has none) and puts the truck's reward in the Jericho ending block instead.
+11. **"Be seen by the guards" arrows wrong.** Template: Jericho −1 ×2, North −1 ×2, Josh −1, Simon −1. M08 failure applies only `jer(-1)`.
+12. **PROMPT 6 missing.** SAVE / ABANDON (dogs maul John) has no scene; M08's failure kills John automatically. SAVE leads to GROUP FAILED THEIR MISSION in the template, ABANDON to full bags.
+13. **Ending arrows missing.** The Jericho blocks are not applied: truck (Jericho +2, Simon +2, North +2, Josh +1), full bags (all four +1), ran away (Jericho −2, Simon, North, Josh −1), failed and rescued (Jericho −2, North −2, Simon −1, Josh −1). The engine has no ending scene for this chapter; the only partial equivalents are item 5 and M08's `jer(±1)`.
+14. **Time unlocks not modelled.** The two "Take too much time" fence outcomes (fail to escape, Markus rescued) have no counterpart.
+
+M07 option 1 (REFUSE, no arrow, alarm) matches the template.

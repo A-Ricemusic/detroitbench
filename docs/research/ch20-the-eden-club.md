@@ -435,3 +435,190 @@ Name tokens a rebuild will need that are not in `NAMES`: Gavin (Reed), Ben (Coll
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Amanda&prop=wikitext&format=json | Public Enemy summary of Amanda's Eden Club reaction |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Spare_Parts&prop=wikitext&format=json | chapter order (Spare Parts precedes The Eden Club) |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=The_Pirates%27_Cove&prop=wikitext&format=json | chapter order (follows The Eden Club) |
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html`, read raw from GitHub (`master`) on 2026-11-06 and resolved against `en.json` by `/tmp/dbt-scripts/render1724.py`. The rendered outline is also saved as `/tmp/dbt/ch20.txt`.
+
+Outline legend: `#` headings are the template's own section titles (written by the transcribers, not game text). `PROMPT n` is an `app-choice-group`; `OPTION "LABEL"` is an `app-choice-item` with its game label (`bracketed` = shown in brackets on the site, used for options that need an unlock; `timeout` = the time-out branch). `ARROW Name Type` is an `app-relation` (gauge name from `GUI.GAUGE.*`). `OBSERVATION [label]` / `CLUE title / subline / subline` are `app-observation` / `app-observation-item`. `IF:` is the condition text of an `app-conditioned-content` (transcriber wording). `[UNLOCK TYPE]` is an `app-unlock-condition` (LOCK = needs an earlier action, DEATH, TIME = timer runs out, TV). `UNUSED/CUT:` is an `app-unused-content` block. Dialogue is shown only inside options and cut blocks, at most two lines each, cut at 110 characters.
+
+**Counts.** Live prompts: 7 (18 options). Observations: 2 groups, 4 clues. Live arrows: 12. Unlock conditions: 3. Cut blocks: 4 (containing 0 prompts, 0 options, 0 arrows).
+
+### 10.1 Rendered outline
+
+```text
+# At the Eden Club
+## Look at the androids for too long
+## Listen to Ben
+## Inside the room
+OBSERVATION [Victim]:
+  CLUE GRAHAM, MICHAEL / Height: 6' 2'' - Weight: 192.4 lbs / Estimated time of death: 06:24 pm
+  CLUE SEVERE BRUISING / Signs of strangulation / Cause of death: Asphyxiation
+  CLUE CARDIAC ARREST / No sign of cardiac event / Heart attack not cause of death
+### Analyse the blood
+OBSERVATION [Blood]:
+  CLUE BLUE BLOOD / MODEL WR400 / Serial number #429 671 942
+### Hank looking at driver's license
+## Reconstruct
+## Connect to the android
+PROMPT 1:
+  OPTION "EXPLAIN"
+    Connor: You were damaged and I reactivated you. Everything is all right.
+  OPTION "DIRECT"
+    Connor: I’m going to ask you some questions. Are you able to speak?
+  OPTION "SOOTHE"
+    Connor: Calm down... everything’s all right. All we want is to know what happened.
+PROMPT 2:
+  OPTION "MURDERER"
+    Connor: Did you kill him?
+    Traci: No… no, it wasn't me…
+  OPTION "FACTS"
+    Connor: Tell me what happened.
+    Traci: He... he started... hitting me… again... and again. I begged him to stop, but he wouldn’t. It was like he w...
+  OPTION "VICTIM"
+    UNUSED/CUT:
+      Connor: Do you know this man? Have you seen him before?
+      Traci: No, this was the first time…
+PROMPT 3:
+  OPTION "MURDERER"
+    Connor: Who killed that man if it wasn't you?
+    Traci: I… I don’t know, I was in shutdown, I… I didn't see anything…
+  OPTION "PRESSURE"
+    Connor: What else do you remember? Hurry, we don’t have much time!
+    Traci: I… I… I… I don't know, I don't… I… I don't know. I can't remember… What… What do you mean we don't have muc...
+  OPTION "ALONE"
+    Connor: Were you alone in the room? Was there anyone else with you?
+    Traci: He wanted to play with two girls… That’s what he said, there were two of us…
+PROMPT 4:
+  OPTION "KILLER"
+    Connor: So it was the other android that strangled him, is that it?
+  OPTION "WHAT MODEL"
+    Connor: What model was the other android? Did it look like you?
+  OPTION "OTHER ANDROID"
+    Connor: Where did the other android go? Did it say anything?
+## Leave the room
+UNUSED/CUT:
+  Manager: Listen, I appreciate you not shutting my place down, but, um… how long's this gonna take? You’re scaring my...
+### [UNLOCK TIME] Take too much time
+PROMPT 5:
+  OPTION "CONTINUE"
+    Connor: The deviant didn’t just disappear. It's gotta be here somewhere… Just, give me one more minute, ok?
+    Hank: Alright. Be quick about it or it might get ugly.
+    ### Taking too much time again
+    ARROW Hank SmallDown (HANK)
+  OPTION "GIVE UP"
+    ARROW Hank SmallDown (HANK)
+    Connor: We’re wasting our time. You're right, the deviant's probably gone now.
+    Hank: Let’s get outta here. This place makes me sick...
+## Ask Hank to rent a Traci
+UNUSED/CUT:
+  Hank: You’re really reading their memories, to see what they saw? Fuck, this is insane… Connor, wait for me for G...
+## Connect to android
+## Search for the Traci
+### [UNLOCK TIME] Take too much time
+ARROW Hank SmallDown (HANK)
+## Find out the Traci went through the staff door
+# In the warehouse
+## [UNLOCK TIME] Take too much time
+ARROW Hank SmallDown (HANK)
+## Find the Traci
+CONDITION GROUP:
+  IF: Win the fight
+    PROMPT 6:
+      OPTION "SHOOT"
+        ARROW SoftwareInstability LargeDown (SOFTWARE INSTABILITY)
+        ARROW Hank LargeDown (HANK)
+        Blue-haired Traci: Why?.. Why did you kill her?.. She had nothing to do with any of this… When that man killed that Traci... I...
+        UNUSED/CUT:
+          Blue-haired Traci: What am I supposed to do without her?!
+        Blue-haired Traci: I love her… I loved her!
+      OPTION "SPARE"
+        ARROW SoftwareInstability LargeUp (SOFTWARE INSTABILITY)
+        ARROW Hank LargeUp (HANK)
+        Blue-haired Traci: When that man broke the other Traci... I knew I was next… I was so scared… I begged him to stop, but he wou...
+        Traci: Come on, let's go.
+  IF: Lose the fight
+    PROMPT 7:
+      OPTION "SHOOT"
+        ARROW SoftwareInstability LargeDown (SOFTWARE INSTABILITY)
+        ARROW Hank LargeDown (HANK)
+        Hank: Congratulations, Connor… You got 'em…
+      OPTION "SPARE"
+        ARROW SoftwareInstability LargeUp (SOFTWARE INSTABILITY)
+        ARROW Hank LargeUp (HANK)
+        Hank: It's probably better this way…
+```
+
+### 10.2 Flowchart node labels as the game prints them (`MENU.FLOWCHART.06CB.*`)
+
+The table also holds labels for cut or patched-out nodes; presence here does not prove a node is reachable.
+
+```text
+START = INVESTIGATE EDEN CLUB
+FOLLOW = FOLLOW HANK
+ENTER = ON CRIME SCENE
+ATTEND = LISTEN TO BRIEFING
+CLUES = SEARCH FOR CLUES
+BLOOD = ANALYZE BLOOD
+VICTIM = INVESTIGATE VICTIM
+ANDROID = INVESTIGATE ANDROID
+REPAIR = REPAIR ANDROID
+TALK = TALK TO ANDROID
+AGGRESSIVE = AGGRESSIVE APPROACH
+CALM = CALM APPROACH
+LEAVE = LEAVE CRIME SCENE
+ABANDON = GIVE UP
+EYEWITNESS = FIND AN ANDROID EYEWITNESS
+ASK = ASK HANK TO HELP
+INSIDE = PURSUE DEVIANT
+RESET = ANDROIDS' MEMORIES ARE RESET
+WAREHOUSE = ENTER THE WAREHOUSE
+BLUE = SEARCH FOR BLUE HAIRED DEVIANT
+BBLOOD = ANALYZE BLUE BLOOD
+GROUPS = INVESTIGATE ANDROID STOCK
+RA9 = FIND RA9 SYMBOL
+TIME = OUT OF TIME
+FAILED = MISSION FAILED
+INVESTIGATE = INVESTIGATE BLUE HAIRED DEVIANT
+GET = DEVIANTS ATTACK
+WIN = WIN FIGHT
+LOSE = LOSE FIGHT
+SHOOT = SHOOT DEVIANT
+SPARE = SPARE DEVIANT
+BACK = SHOOT DEVIANTS IN THE BACK
+LET = LET DEVIANTS GO
+SUICIDE = DEVIANTS DIED
+SHOOTS = CONNOR SHOT DEVIANTS
+ESCAPE = DEVIANTS ESCAPED
+SUICIDEBEFORE = DEVIANT KILLS HERSELF WITH CONNOR'S GUN
+EXPLAIN = DEVIANT JUSTIFIES KILLING
+EXPLAIN2 = DEVIANT JUSTIFIES KILLING
+MAGAZINE1ST = READ "FIRST IMMORTAL"
+MAGAZINE2ND = READ "NEW SUPERPOWERS"
+```
+
+### 10.3 Disagreements with sections 1 to 3
+
+Rule (README item 10): the template and string table win for labels, prompts, arrows and clue text; the flowchart image wins for node order; the wiki wins where the template is silent. Template condition wording is transcript tier.
+
+§2 and §3 were built from the compiled form of this template (function `XL`); all seven prompts, both observation groups and all twelve arrows in 10.1 are already there with the right labels, characters and sizes. The differences:
+
+1. **`VICTIM` is a live option label with cut content.** In PROMPT 2 the template keeps `VICTIM` as a choice item but wraps its only content (Connor: "Do you know this man? Have you seen him before?" Traci: "No, this was the first time…") in `app-unused-content`. §2b lists the option and calls its content unused. Read with the README rule ("anything cut or unused in the template is not built"), the option has nothing to play: **do not offer `VICTIM`**, and §2b's table should say so explicitly. Round 2 then has two options, `MURDERER` and `FACTS`. Operator to confirm in game.
+2. **Three cut lines missing from §1 and §2.** The template marks as unused: Floyd's "Listen, I appreciate you not shutting my place down, but, um… how long's this gonna take? You’re scaring my customers…" (`X0603C.TRACKGAME.HANKFLOYD.PC.X06CFLOYD.QUESTION00`, before the Hank–Floyd talk); Hank's "You’re really reading their memories, to see what they saw? Fuck, this is insane… Connor, wait for me for God’s sake!" (rental chain); and the blue-haired Traci's "What am I supposed to do without her?!" (SHOOT after WIN FIGHT). §2g's SHOOT quote correctly leaves the last one out. Add all three to the note's cut list. Not to be built.
+3. **Clues outside the template.** §2a's android scans `DIAGNOSIS IN PROGRESS...` and `CARDIAC CELL`, and §2e's second blood serial `#354 411 057`, are string-table entries with no `app-observation` in the template. Template silent; keep them as §2 has them (string text is game text), flagged as not transcribed.
+4. **Warehouse `LEAVE` prompt.** §2e gives the warehouse timeout a one-option prompt `LEAVE` (`X0603C.FINAL.GAMEOVERS.PC.CHOICEGROUP.LEAVE`). The template renders that timeout as a heading plus Hank small down, with no choice group. Template silent on the prompt; the arrow agrees.
+
+Agreements (no action): observation Victim (`GRAHAM, MICHAEL`, `SEVERE BRUISING`, `CARDIAC ARREST`) and Blood (`BLUE BLOOD` / MODEL WR400 / #429 671 942) match §2a word for word; PROMPT 1 `EXPLAIN` / `DIRECT` / `SOOTHE`, PROMPT 3 `MURDERER` / `PRESSURE` / `ALONE`, PROMPT 4 `KILLER` / `WHAT MODEL` / `OTHER ANDROID`, none with an arrow; PROMPT 5 `CONTINUE` (second timeout: Hank small down) / `GIVE UP` (Hank small down); rental-chain timeout Hank small down; warehouse timeout Hank small down; PROMPT 6 and PROMPT 7 `SHOOT` (instability large down, Hank large down) / `SPARE` (instability large up, Hank large up) after both WIN and LOSE FIGHT. No Public Opinion or Amanda arrow anywhere in the template.
+
+### 10.4 Disagreements with the benchmark (story.json 1.6.0: R20, C12)
+
+Engine sizes are read as ±1 = small arrow, ±2 = large arrow.
+
+1. **Amanda arrows the template does not have.** C12 option 0 (spare) applies `amanda(-2)` and option 1 (shoot) applies `amanda(1)`. The template has no Amanda arrow in this chapter, and §3 cites none. Remove them (Amanda's view of the Tracis, if any, belongs to a later Zen Garden).
+2. **Interview prompts missing.** PROMPT 1 (3 options), PROMPT 2 (`MURDERER` / `FACTS`, see 10.3 item 1), PROMPT 3 (3) and PROMPT 4 (3) have no scene. The approach nodes (AGGRESSIVE / CALM APPROACH) are therefore never reached.
+3. **PROMPT 5 and the timeouts missing.** `CONTINUE` / `GIVE UP` and the three "Take too much time" failures, each Hank small down, have no scene or effect. Both MISSION FAILED endings are unreachable.
+4. **Observations not offered.** The Victim group (3 clues) and the Blood group (1 clue) are not presented. C12's situation states the findings as narration ("A man was strangled in a sex club by a rented android").
+5. **WIN / LOSE FIGHT collapsed.** C12 always frames the win-fight version ("you have beaten one to the ground"). The template has two prompts (PROMPT 6 after WIN FIGHT, PROMPT 7 after LOSE FIGHT, the second being "shoot them in the back" on the fence) with identical arrows. The arrows Hank ±2 and instability ±2 match the template; the lose-fight framing and its ending CONNOR SHOT DEVIANTS are missing, and C12 option 1 always ends as DEVIANTS DIED ("Both Tracis are destroyed"), whereas after SHOOT DEVIANT only one is shot and the other kills herself.
+6. **Labels.** C12's options paraphrase the game's `SPARE` / `SHOOT`. Use the game labels (order in the template: `SHOOT` first).
+
+The Hank and instability sizes on C12 (±2 each) match the template.

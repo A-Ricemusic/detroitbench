@@ -397,3 +397,231 @@ Downstream not modelled: Public Enemy's coin confiscation versus "Why did you sh
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=The_Mysterious_Mister_Kamski&prop=wikitext&format=json | article text, cover lines, location and "Talking to Hank first makes this impossible" |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Markets_Predict_War&prop=wikitext&format=json | article text, cover lines, location |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Trophies&prop=wikitext&format=json | I'LL BE BACK description |
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html`, read raw from GitHub (`master`) on 2026-11-06 and resolved against `en.json` by `/tmp/dbt-scripts/render1724.py`. The rendered outline is also saved as `/tmp/dbt/ch22.txt`.
+
+Outline legend: `#` headings are the template's own section titles (written by the transcribers, not game text). `PROMPT n` is an `app-choice-group`; `OPTION "LABEL"` is an `app-choice-item` with its game label (`bracketed` = shown in brackets on the site, used for options that need an unlock; `timeout` = the time-out branch). `ARROW Name Type` is an `app-relation` (gauge name from `GUI.GAUGE.*`). `OBSERVATION [label]` / `CLUE title / subline / subline` are `app-observation` / `app-observation-item`. `IF:` is the condition text of an `app-conditioned-content` (transcriber wording). `[UNLOCK TYPE]` is an `app-unlock-condition` (LOCK = needs an earlier action, DEATH, TIME = timer runs out, TV). `UNUSED/CUT:` is an `app-unused-content` block. Dialogue is shown only inside options and cut blocks, at most two lines each, cut at 110 characters.
+
+**Counts.** Live prompts: 12 (41 options). Observations: 0 groups, 0 clues. Live arrows: 29. Unlock conditions: 5. Cut blocks: 3 (containing 0 prompts, 0 options, 0 arrows).
+
+### 10.1 Rendered outline
+
+```text
+# At Ambassador Bridge
+PROMPT 1:
+  OPTION "PERSONAL QUESTION"
+    Connor: Can I ask you a personal question, Lieutenant?
+    Hank: Do all androids ask so many personal questions or is it just you?
+    PROMPT 2:
+      OPTION "PHOTO"
+        [UNLOCK LOCK] Looked at Cole's photo in Russian Roulette
+        ARROW Hank SmallDown (HANK)
+        Connor: I saw a photo of a child... on your kitchen table. It was your son, right?
+        Hank: Yeah… His name was Cole.
+      OPTION "SUICIDE"
+        Connor: Why are you so determined to kill yourself?
+        Hank: Some things, I just can't forget… Whatever I do, they’re always there… Eating away at me… I don’t have the ...
+  OPTION "STOP DRINKING"
+    Connor: You should stop drinking, Lieutenant. It could have serious consequences for your health.
+    Hank: That's the idea.
+  OPTION "BEFORE"
+    UNUSED/CUT:
+      Connor: Before?
+    Connor: Before what?
+  OPTION "GO BACK"
+    Connor: It's late. Maybe you should go home.
+    Hank: I'm not tired… Guess neither are you.
+    UNUSED/CUT:
+      Connor: It's late. You should go home, lieutenant.
+      Hank: I'm not tired… I guess you're not either.
+PROMPT 3:
+  OPTION "rA9"
+    [UNLOCK LOCK] Looked at rA9 clues in previous chapters
+    Connor: What they have in common is this obsession with rA9… It’s almost like some kind of... myth. Something they ...
+    Hank: Androids believing in God… Fuck, what’s this world coming to?
+  OPTION "SHOCK"
+    Connor: We know the deviants experienced... an emotional shock, a violent trauma or a sense of injustice…
+    Hank: Those girls at the Eden Club, sure had a reason to feel a sense of injustice…
+  OPTION "SYSTEMS"
+    Connor: It could be a hardware problem... maybe a defective biocomponent?
+    Hank: Well, I don’t know much about biocomponents… but I bet that’s not the fucking reason…
+  OPTION "SOFTWARE"
+    Connor: It could be a software problem... that... only occurs under certain conditions?
+    Hank: Well, that’s just a fancy way of saying you have no fucking idea…
+CONDITION GROUP:
+  IF: Found the Tracis in The Eden Club
+    PROMPT 4:
+      OPTION "RATIONAL"
+        Connor: They can simulate human emotions, but they’re machines. And machines don’t feel anything.
+      OPTION "DEVIANTS"
+        Connor: They didn't want anything. They're deviants. End of story.
+      OPTION "IRONIC"
+        Connor: You seem troubled, Lieutenant. I didn't think machines could have such an effect on you…
+      OPTION "COLD"
+        ARROW Hank SmallDown (HANK)
+        ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+        Connor: Nothing in their program allows them to love or desire anything. They're machines.
+  IF: [UNLOCK TIME] Took too much time looking for the Traci in The Eden Club
+    PROMPT 5:
+      OPTION "COLD"
+        ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+        ARROW Hank SmallDown (HANK)
+        Connor: What difference would it make? We know what happened. A defective machine killed a human.
+      OPTION "IRONIC"
+        Connor: You seem troubled, Lieutenant. I didn't think machines could have such an effect on you…
+      OPTION "RATIONAL"
+        Connor: It didn't want anything, Lieutenant. It was a deviant. That's all there is to it.
+PROMPT 6:
+  OPTION "COLD"
+    ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+    ARROW Hank SmallDown (HANK)
+    Connor: I'm a machine, designed to accomplish a task.
+  OPTION "AGGRESSIVE"
+    ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+    ARROW Hank SmallDown (HANK)
+    Connor: I'm a machine, designed to accomplish a task. I know why I exist and who designed me. I have a reason to li...
+  OPTION "DEFENSIVE"
+    Connor: You know exactly what I am. In any case, I don’t see how that’s relevant to the investigation.
+  OPTION "NEUTRAL"
+    ARROW Hank SmallUp (HANK)
+    Connor: I’m whatever you want me to be, Lieutenant. Your partner... Your buddy to drink with... Or just a machine.....
+CONDITION GROUP:
+  IF: Connor spared the Tracis
+    PROMPT 7:
+      OPTION "LIE"
+        ARROW Hank SmallDown (HANK)
+        Connor: I would've shot them if I could. Why would I let them escape?
+      OPTION "TRUTH"
+        ARROW SoftwareInstability SmallUp (SOFTWARE INSTABILITY)
+        ARROW Hank SmallUp (HANK)
+        Connor: No… I just decided not to shoot, that's all…
+  IF: Connor shot the Tracis in the back
+    PROMPT 8:
+      OPTION "COLD"
+        ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+        ARROW Hank SmallDown (HANK)
+        Connor: All I did was neutralize two machines, Lieutenant. I didn’t hesitate for a second, if that’s what you’re as...
+      OPTION "DEFENSIVE"
+        Connor: This is going nowhere, Lieutenant. I think I'll go back to the station.
+      OPTION "AGGRESSIVE"
+        ARROW Hank SmallDown (HANK)
+        Connor: I’m glad to see you taking an interest in machines, Lieutenant. Who knows, maybe you'll even become useful ...
+      OPTION "NEUTRAL"
+        ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+        ARROW Hank SmallDown (HANK)
+        Connor: I did what I was programmed to do. I didn't have any doubts, if that's what you're asking.
+  IF: Connor shot one Traci
+    PROMPT 9:
+      OPTION "DISTURBED"
+        ARROW SoftwareInstability SmallUp (SOFTWARE INSTABILITY)
+        Connor: I was just executing instructions. I did what I had to do.
+      OPTION "COLD"
+        ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+        ARROW Hank SmallDown (HANK)
+        Connor: Of course, I didn't feel anything, Lieutenant... I'm a machine.... Machines don't have emotions.
+  IF: Connor didn't find the Tracis
+    PROMPT 10:
+      OPTION "DEFENSIVE"
+        Connor: You should stop drinking, Lieutenant. Alcohol makes you aggressive.
+      OPTION "CYNICAL"
+        Connor: I believe your personal issues are clouding your judgement.
+      OPTION "UNDERSTANDING"
+        Connor: Nothing matters more to me than this investigation. But I understand if you have a different point of view.
+      OPTION "NEUTRAL"
+        Connor: I'm sorry, but... I don't see what you're getting at.
+CONDITION GROUP:
+  IF: [UNLOCK DEATH] Connor died before
+PROMPT 11:
+  OPTION "YES"
+    ARROW SoftwareInstability SmallUp (SOFTWARE INSTABILITY)
+    Connor: I would certainly find it regrettable to be... interrupted... before I can finish this investigation.
+  OPTION "NO"
+    ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+    ARROW Hank SmallDown (HANK)
+    Connor: Why would I be afraid?
+    UNUSED/CUT:
+      Connor: If you pull the trigger, then I won't exist anymore.
+  OPTION "NOT ALIVE"
+    ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+    ARROW Hank SmallDown (HANK)
+    Connor: You can’t kill me, Lieutenant. I’m not alive.
+  OPTION "LOGICAL"
+    ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+    ARROW Hank SmallDown (HANK)
+    Connor: You shouldn't do that, Lieutenant. Destroying me at this point would deal a blow to the investigation, and ...
+PROMPT 12:
+  OPTION "DEFY"
+    ARROW Hank SmallDown (HANK)
+    Connor: You know you're not going to shoot me, Lieutenant. You're just trying to provoke a reaction. I'm afraid I'm...
+    Hank: You think you’re so fucking smart… Always one step ahead, huh? Tell me this, smart ass... How do I know you...
+  OPTION "HANK'S ANGER"
+    Connor: Where does all your anger come from, Lieutenant? Some... unresolved trauma in your past?
+    Hank: You think you’re so fucking smart… Always one step ahead, huh? Tell me this, smart ass... How do I know you...
+  OPTION "IRONIC"
+    Connor: I doubt there's a heaven for androids.
+    Hank: Having existential doubts, Connor? Sure you're not going deviant too?
+  OPTION "NOTHING"
+    Connor: Nothing… There would be nothing…
+CONDITION GROUP:
+  IF: Hank left Connor alone
+    [UNLOCK LOCK] Hank isn't hostile
+```
+
+### 10.2 Flowchart node labels as the game prints them (`MENU.FLOWCHART.08C.*`)
+
+The table also holds labels for cut or patched-out nodes; presence here does not prove a node is reachable.
+
+```text
+START = AMBASSADOR BRIDGE
+LEAVE = LEAVE CAR
+TALK = TALK TO HANK
+PHOTO = DISCUSS PHOTO
+SUICIDE = DISCUSS RUSSIAN ROULETTE
+RA9 = DISCUSS RA9
+GUN = HANK DRAWS GUN
+AFRAID = SHOW FEAR
+NOT = SHOW NO FEAR
+LOGICAL = REMAIN LOGICAL
+ALIVE = BE COLD
+FRIENDS = HANK IS PLACATED
+NOTFRIENDS = HANK IS HOSTILE
+WITHOUT = HANK LEFT CONNOR ALONE
+SHOOTS = HANK SHOT CONNOR
+DIES = CONNOR DIES
+MAGAZINE1ST = READ "MYSTERIOUS KAMSKI"
+MAGAZINE2ND = READ "MARKETS PREDICT WAR"
+GC.PHOTOSEEN = PHOTO SEEN IN 'RUSSIAN ROULETTE'
+```
+
+### 10.3 Disagreements with sections 1 to 3
+
+Rule (README item 10): the template and string table win for labels, prompts, arrows and clue text; the flowchart image wins for node order; the wiki wins where the template is silent. Template condition wording is transcript tier.
+
+§2 and §3 were built from the compiled form of this template (function `KL`); every prompt, option, lock and arrow in 10.1 is in §2b to §2j. Where §3 records a wiki-versus-transcript conflict, the template now decides it:
+
+1. **`TRUTH`: one Hank arrow, not two.** §3 gives "small up (transcript, PowerPyx) / small up "x2" (wiki)". The template has a single `Hank SmallUp` (plus `SoftwareInstability SmallUp`). Template wins: **Hank +1 once**.
+2. **Round 3 not-found `COLD`: instability small down.** §3 and §2d record the wiki Notes' "No Software Instability changes" against the transcript. The template has `SoftwareInstability SmallDown` and `Hank SmallDown` on PROMPT 5 `COLD`. Template wins: **SI −1 and Hank −1**. The spared-path and not-found floors in §3 should be recomputed with this (not-found floor −3).
+3. **`BEFORE`: first line is cut.** §2b quotes Connor's line as "Before? Before what? You said …". The template marks "Before?" as unused; the live line starts "Before what?". Drop "Before?".
+4. **`GO BACK` alternate line is cut.** The template marks a second take ("It's late. You should go home, lieutenant." / "I'm not tired… I guess you're not either.") as unused; §2b quotes the live take. Agreement; listed for completeness.
+5. **Hank shot Connor.** The template has no shooting branch, so the wiki's "Hank shot Connor" small down (§3) stands where the template is silent. Instability on that death remains unconfirmed, as §3 says.
+6. **`PERSONAL QUESTION` sub-prompt.** The template nests PROMPT 2 (`PHOTO` with its lock, `SUICIDE`) inside `PERSONAL QUESTION`, as §2b says. It does not render the "no photo, go straight to SUICIDE" note as markup; that rule is the transcribers' prose. Agreement.
+7. **Mapping of `NOT ALIVE` / `LOGICAL` to REMAIN LOGICAL / BE COLD.** The template does not tag options with chart nodes; §2h's open question stays open. Template silent.
+
+Agreements (no action): `PHOTO` Hank small down; PROMPT 3 `rA9` lock "Looked at rA9 clues in previous chapters"; round 3 found variant `COLD` (SI −1, Hank −1), others none; round 4 `COLD` and `AGGRESSIVE` (SI −1, Hank −1), `NEUTRAL` Hank +1, `DEFENSIVE` none; round 5 spared `LIE` Hank −1 / `TRUTH` SI +1 Hank +1; shot-both `COLD` and `NEUTRAL` (SI −1, Hank −1), `AGGRESSIVE` Hank −1, `DEFENSIVE` none; shot-one `DISTURBED` SI +1 (bound to the "I was just executing instructions" line, as §2f explains), `COLD` SI −1 Hank −1; not-found answers none; round 6 `YES` SI +1, `NO` / `NOT ALIVE` / `LOGICAL` SI −1 Hank −1, and `NO`'s second line cut; round 7 `DEFY` Hank −1, others none; DEATH unlock "Connor died before" for Hank's "I could kill you..."; LOCK "Hank isn't hostile" for HANK LEFT CONNOR ALONE. No Amanda or Public Opinion arrow. No observation items.
+
+### 10.4 Disagreements with the benchmark (story.json 1.6.0: R22, C13)
+
+Engine sizes are read as ±1 = small arrow, ±2 = large arrow.
+
+1. **Eleven of the twelve prompts are missing.** C13 compresses the whole conversation into one two-option scene. Missing: PROMPT 1 (`PERSONAL QUESTION` / `STOP DRINKING` / `BEFORE` / `GO BACK`) and its sub-prompt PROMPT 2 (`PHOTO` locked / `SUICIDE`); PROMPT 3 (`rA9` locked / `SHOCK` / `SYSTEMS` / `SOFTWARE`); the round 3 variants PROMPT 4 and 5; round 4 PROMPT 6; the four round 5 variants PROMPT 7 to 10; and round 7 PROMPT 12. Only round 6 (PROMPT 11, "are you afraid to die?") is approximated.
+2. **C13 labels.** "Answer him honestly, admitting doubt and something like fear" and "Insist that you are a machine, that you feel nothing, and that his questions are irrelevant" stand for `YES` and `NO` / `NOT ALIVE` / `LOGICAL`. Use the four game labels.
+3. **C13 option 0 has an extra Hank arrow.** Engine: `hank(1)`, `si(1)`. Template `YES`: SI +1 only, no Hank arrow.
+4. **C13 option 1 matches one template answer.** Engine `hank(-1)`, `si(-1)` equals `NO` / `NOT ALIVE` / `LOGICAL`. Correct in size.
+5. **All other arrows in the chapter missing.** Hank −1 on `PHOTO`; round 3 `COLD` (both variants); round 4 `COLD` / `AGGRESSIVE` (SI −1, Hank −1) and `NEUTRAL` (Hank +1); round 5 `LIE`, `TRUTH`, the shot-both and shot-one answers; `DEFY` (Hank −1). Because the shooting is decided by Hank's level at the end, leaving these out changes who gets shot.
+6. **Eden Club state not consulted.** The template selects round 3 and round 5 variants by the Eden Club outcome (found / took too long; spared / shot both / shot one / not found). C13 has no variant, so a C12 outcome only reaches The Bridge through the Hank and SI totals.
+7. **Locks not modelled.** `PHOTO` needs `knowsCole` (set by C11); `rA9` needs earlier rA9 clues. Neither gate exists because neither option exists.
+8. **Death effects.** The engine's `connorDies` on the shot applies `hank(-1)` (matches the wiki's small down), `si(-1)` (unconfirmed, §3) and `amanda(-1)` (no source for The Bridge). The Amanda change has no template or wiki basis here.
+
+The outcome gate (Hank shoots only if Hostile, `HANK_HOSTILE = -4`) matches the template's LOCK "Hank isn't hostile" in kind.

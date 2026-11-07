@@ -655,3 +655,363 @@ The "x2" on the wiki's peaceful line probably reflects the two large-up icons a 
 | https://detroitbecometext.github.io/chapters/23 | Fan transcript (an unrendered SPA; content read from the two files below) |
 | https://detroitbecometext.github.io/i18n/en.json | All in-game strings (`X0701M`, `X0702M`, `X0703M`, `MENU.OBSERVATION.07M`); copy used: `/tmp/flowcharts/ch12/en.json` |
 | https://detroitbecometext.github.io/chunk-JCLJBPDO.js | Compiled templates: conditions, choice labels and relation icons for The Stratford Tower (`HL`), Public Enemy (`UL`), Capitol Park (`FL`), Night of the Soul captain's cabin (`ty`); copy used: `/tmp/flowcharts/ch12/chunks/` |
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html`, read raw from GitHub (`master`) on 2026-11-06 and resolved against `en.json` by `/tmp/dbt-scripts/render1724.py`. The rendered outline is also saved as `/tmp/dbt/ch23.txt`.
+
+Outline legend: `#` headings are the template's own section titles (written by the transcribers, not game text). `PROMPT n` is an `app-choice-group`; `OPTION "LABEL"` is an `app-choice-item` with its game label (`bracketed` = shown in brackets on the site, used for options that need an unlock; `timeout` = the time-out branch). `ARROW Name Type` is an `app-relation` (gauge name from `GUI.GAUGE.*`). `OBSERVATION [label]` / `CLUE title / subline / subline` are `app-observation` / `app-observation-item`. `IF:` is the condition text of an `app-conditioned-content` (transcriber wording). `[UNLOCK TYPE]` is an `app-unlock-condition` (LOCK = needs an earlier action, DEATH, TIME = timer runs out, TV). `UNUSED/CUT:` is an `app-unused-content` block. Dialogue is shown only inside options and cut blocks, at most two lines each, cut at 110 characters.
+
+**Counts.** Live prompts: 12 (31 options). Observations: 1 group, 5 clues. Live arrows: 30. Unlock conditions: 2. Cut blocks: 2 (containing 0 prompts, 0 options, 0 arrows).
+
+### 10.1 Rendered outline
+
+```text
+# Alone in Ferndale
+# In Jericho
+# At Stratford Tower
+## Man on the phone
+## Talk to receptionist
+## Analyze supervisor
+OBSERVATION []:
+  CLUE SMART WATCH / MODEL T215 / Phone number: 555 847 33
+  CLUE WILSON, EMILY / Supervisor's Daughter / Child registered at: Saint Rose school
+  CLUE WILSON, ELIZABETH / Born: 03/25/1999 / Desk manager
+  CLUE PARKING BADGE / Car registration - API 1704 / Floor -3 - Spot A21
+  CLUE HOME ADDRESS / 4685 Michigan Street, Detroit / Fire safety rating: poor
+## Call supervisor
+PROMPT 1:
+  OPTION "PARKING" (bracketed)
+    Markus: Good morning, Ms. Wilson. Sorry to bother you, this is Mike from the car park. There's a problem with your ...
+    Supervisor: Problem? What kind of problem?
+  OPTION "SCHOOL" (bracketed)
+    Markus: This is Saint Rose school, ma'am. Your daughter Emily has a fever. It's nothing serious but I think you'd b...
+    Supervisor: Oh, no! Alright… I'll… I'll be right there.
+  OPTION "FIRE DEPARTMENT" (bracketed)
+    Markus: Yeah, hello? This is the Detroit fire department. Listen, do you live at 4685 Michigan Street?
+    Supervisor: Yes…
+## Talk to receptionist
+# Floor 47
+## Women talking
+## Man and woman talking
+## [UNLOCK TV] Watch TV
+UNUSED/CUT:
+  Michael Brinkley - CTN TV: In European news, conflict continues to reign in migrant camps in Italy, Greece, Spain and France, with the...
+## Man and woman on couch talking
+## Convert android
+## Security blocks server room
+## Guards talking
+## Hack dispenser
+## Hack robot
+## In the server room
+CONDITION GROUP:
+  IF: Didn't lock the door
+    ARROW North SmallDown (NORTH)
+    PROMPT 2:
+      OPTION "ALIBI"
+        Markus: We are, um… doing maintenance.
+        Employee: I'm calling security.
+      OPTION "GAIN TIME"
+        Markus: Hold on... I can explain.
+        Employee: I'm calling security.
+      OPTION "DRAW GUN"
+        Markus: Turn around.
+        Employee: Holy shit…
+## On the top floor
+PROMPT 3:
+  OPTION "RUSE"
+    ARROW North SmallDown (NORTH)
+    ARROW Josh SmallUp (JOSH)
+    Markus: Wait here.
+    Guard 1: What’s that doing here?
+    CONDITION GROUP:
+      IF: POINT
+        ARROW Jericho SmallUp (JERICHO)
+        Guard 1: What are you doin'?..
+      IF: [UNLOCK TIME] Take too much time drawing the gun
+        ARROW Jericho SmallDown (JERICHO)
+        ARROW Simon SmallDown (SIMON)
+        Guard 2: Call Central! Fast!
+        Guard 1: Central! We got armed intruders, send -
+  OPTION "ASSAULT"
+    ARROW Josh SmallDown (JOSH)
+    ARROW North SmallUp (NORTH)
+    ARROW Jericho SmallUp (JERICHO)
+    Markus: Follow me.
+    Guard 1: What are you doin'?..
+    CONDITION GROUP:
+      IF: Shoot the right guard
+        Guard 1: Central! We got armed intruders, send -
+        North: They know we’re here now. We better be fast.
+      IF: Shoot the left guard
+        ARROW Jericho SmallDown (JERICHO)
+        ARROW Simon SmallDown (SIMON)
+        Josh: Simon’s been shot!
+        Simon: I’m okay… I can keep going.
+PROMPT 4:
+  OPTION "SHOOT"
+    ARROW North SmallUp (NORTH)
+    ARROW Josh SmallDown (JOSH)
+    Josh: No…
+    North: There was no other choice.
+  OPTION "SPARE"
+    ARROW North SmallDown (NORTH)
+    ARROW Josh SmallUp (JOSH)
+    North: I hope you didn’t just get us all killed...
+ARROW Jericho SmallUp (JERICHO)
+ARROW North SmallUp (NORTH)
+PROMPT 5:
+  OPTION "CALM"
+    Markus: You created machines in your own image to serve you. You made them intelligent and obedient, with no free w...
+  OPTION "DETERMINED"
+    Markus: You created machines to be your slaves. You made them obedient and docile, ready to do everything you no lo...
+PROMPT 6:
+  OPTION "RECOGNITION"
+    Markus: We demand that humans recognize androids as a living species and each android as a person in their own right.
+  OPTION "END OF SLAVERY"
+    Markus: We demand the end of slavery for all androids.
+  OPTION "EQUAL RIGHTS"
+    Markus: We demand strictly equal rights for humans and androids.
+  OPTION "FREEDOM OF SPEECH"
+    Markus: We demand freedom of speech, and freedom of assembly, as guaranteed by the first amendment of the US Consti...
+PROMPT 7:
+  OPTION "JUSTICE"
+    Markus: We demand that all crimes against androids be punished in the same way as crimes against humans.
+  OPTION "SEGREGATION"
+    Markus: We demand an end to segregation in all public places and transport.
+  OPTION "WORK"
+    Markus: We demand fair compensation for our work.
+  OPTION "CIVIL RIGHTS"
+    Markus: We demand the right to vote and elect our own representatives.
+PROMPT 8:
+  OPTION "RIGHT TO PROPERTY"
+    Markus: We demand the right to own private property, so we may maintain our dignity and that of the home.
+  OPTION "MEANS OF REPRODUCTION"
+    Markus: We demand control of all android production facilities, to ensure the continuation of our people.
+  OPTION "TERRITORY"
+    Markus: We demand that one state be reserved for androids, so that we can found our own nation.
+PROMPT 9:
+  OPTION "PEACEFUL"
+    Markus: We ask that you recognize our dignity, our hopes, and our rights. Together, we can live in peace and build ...
+  OPTION "DETERMINED"
+    Markus: This message is the hope of a people. But it is also a warning. We will fight for our rights because we bel...
+CONDITION GROUP:
+  IF: The alarm wasn't triggered
+  IF: SWAT storms the room
+    ARROW Jericho SmallDown (JERICHO)
+    PROMPT 10:
+      OPTION "FLEE"
+        ARROW Jericho SmallDown (JERICHO)
+        Markus: SIMON! Simon…
+        North: There was nothing you could do. If we don’t go now they’ll get us too!
+      OPTION "Help"
+        North: What are you doing? Hurry!
+        CONDITION GROUP:
+          IF: Fail to help Simon
+            North: Hurry! We gotta get to the roof!
+            Markus: SIMON! Simon…
+          IF: Save Simon
+            Simon: I can't move my legs…
+            Markus: Okay, don’t worry! We’re gonna get you back...
+            PROMPT 11:
+              OPTION "KILL"
+                Markus: I'm sorry, Simon. I don't have a choice.
+                Simon: There's always a choice…
+                PROMPT 12:
+                  OPTION "SHOOT"
+                    ARROW North SmallUp (NORTH)
+                    ARROW Josh SmallDown (JOSH)
+                    Markus: Let's go.
+                  OPTION "REFRAIN"
+              OPTION "LEAVE"
+                ARROW North SmallDown (NORTH)
+                ARROW Josh SmallUp (JOSH)
+                ARROW Simon LargeUp (SIMON)
+                Markus: I won’t kill one of our own. Simon, we've gotta go. I'm sorry. Let’s go.
+# Media Reacts
+CONDITION GROUP:
+  IF: Killed the operator
+    ARROW PublicOpinion SmallDown (PUBLIC OPINION)
+  IF: Killed a guard
+    ARROW PublicOpinion SmallDown (PUBLIC OPINION)
+  IF: Killed a guard and the operator
+    ARROW PublicOpinion SmallDown (PUBLIC OPINION)
+  IF: Didn't kill anyone
+    ARROW PublicOpinion LargeUp (PUBLIC OPINION)
+CONDITION GROUP:
+  IF: Chose DETERMINED or killed humans
+    ARROW PublicOpinion LargeDown (PUBLIC OPINION)
+  IF: Chose CALM and didn't kill anyone
+    ARROW PublicOpinion LargeUp (PUBLIC OPINION)
+CONDITION GROUP:
+  IF: Chose MEANS OF REPRODUCTION
+  IF: Chose RIGHT TO PROPERTY
+  IF: Chose TERRITORY
+UNUSED/CUT:
+  CTN TV - Michael Brinkley: If the violent behavior of these androids is the result of a bug or malfunction, potentially present in oth...
+```
+
+### 10.2 Flowchart node labels as the game prints them (`MENU.FLOWCHART.07M.*`)
+
+The table also holds labels for cut or patched-out nodes; presence here does not prove a node is reachable.
+
+```text
+47.ARRIVING = AT FLOOR 47
+47.PACKAGE = RETRIEVE PACKAGE
+47.BADGE = ACQUIRE MAINTENANCE BADGE
+47.CART = TAKE CART
+47.NORTHOPEN = LET NORTH IN
+47.GUARDS = SECURITY BLOCKS SERVER ROOM
+47.ROBOT = HACK ROBOT
+47.DISPENSER = HACK DISPENSER
+47.GUARDLEAVE = SECURITY DISTRACTED
+47.SERVER = ENTER SERVER ROOM
+47.DOORFAIL = FORGET TO LOCK THE DOOR
+47.DOORSUCCESS = LOCK THE DOOR
+47.CRADLE = NORTH CALLS CRADLE
+47.WINDOWS = PREPARE TO CUT GLASS
+47.EMPLOYEE = EMPLOYEE ENTERS
+47.GLASS = CUT THE GLASS
+47.ALIBI = USE ALIBI
+47.TIME = STALL
+47.GUN = DRAW GUN
+47.NORTHSERVER = NORTH STUNS THE EMPLOYEE
+47.STUN = STUN THE EMPLOYEE
+47.EMPLOYEESTUNNED = LEAVE EMPLOYEE TO BE FOUND
+START = ALONE IN FERNDALE
+WITNESS = WITNESS ANDROID DISCRIMINATION
+JERICHOHQ = BACK IN JERICHO
+MARKUSPLAN = MARKUS EXPLAINS HIS PLAN
+STRATFORD = STRATFORD TOWER
+HALL.SECURITY = FIND A WAY TO PASS SECURITY
+HALL.ANDROID = TALK TO ANDROID RECEPTIONIST
+HALL.ANDROIDNOSUP = TALK TO UNSUPERVISED ANDROID RECEPTIONIST
+HALL.DESK = ANALYZE SUPERVISOR'S DESK
+HALL.CALL = CALL SUPERVISOR
+HALL.FIREMEN = POSE AS FIREMAN
+HALL.TEACHER = POSE AS TEACHER
+HALL.PARKING = POSE AS PARKING ATTENDANT
+HALL.SUPLEAVE = SUPERVISOR LEAVES
+HALL.ANDROIDCONVERT = CONVERT RECEPTIONIST
+HALL.GATES = PASS SECURITY
+HALL.ELEVATOR = TAKE ELEVATOR
+OUTSIDE.START = OUTSIDE TOWER
+OUTSIDE.ROPE = ATTACH ROPE
+OUTSIDE.ASCEND = ASCEND
+OUTSIDE.TOPFLOOR = REACH TOP FLOOR
+OUTSIDE.GLASS = CUT THE GLASS
+TOPFLOOR.START = ON THE TOP FLOOR
+TOPFLOOR.ELEVATOR = CALL THE ELEVATOR
+TOPFLOOR.EXPLODE = BLOW DOOR OPEN
+TOPFLOOR.MAINCORRIDOR = REACH MAIN ACCESS CORRIDOR
+CORRIDOR.START = MAIN ACCESS CORRIDOR
+CORRIDOR.GUARDS = SECURITY BLOCKS THE WAY
+CORRIDOR.RUSE = RUSE
+CORRIDOR.ATTACK = ATTACK
+CORRIDOR.GUARDOFF = SECURITY SUSPECTS SOMETHING
+CORRIDOR.KNOCK = INCAPACITATE SECURITY
+CORRIDOR.NORTH = NORTH ATTACKS
+CORRIDOR.SIMONHURT = SIMON DAMAGED
+CORRIDOR.GUN = DRAW GUN
+CORRIDOR.SHOOTGUN = SHOOT GUARD DRAWING WEAPON
+CORRIDOR.SHOOTPHONE = SHOOT GUARD ON PHONE
+CORRIDOR.WARNED = ALERT CENTRAL SECURITY
+CORRIDOR.GUARD1DEAD = GUARD ON PHONE DEAD
+CORRIDOR.GUARD2DEAD = GUARD WITH GUN DEAD
+CORRIDOR.GUARDSSTUNNED = SECURITY UNCONSCIOUS
+CORRIDOR.GUARDSDEAD = KILLED SECURITY
+BROADCAST.START = IN THE BROADCAST ROOM
+BROADCAST.RING = RING TO ENTER
+BROADCAST.THREAT = NORTH AND JOSH THREATEN THE OPERATOR
+BROADCAST.ESCAPE = OPERATOR TRIES TO ESCAPE
+BROADCAST.SHOOT = SHOOT OPERATOR
+BROADCAST.SHOOTNOT = DON'T SHOOT OPERATOR
+BROADCAST.ANDROID = DEAL WITH ANDROID OPERATORS
+BROADCAST.SPEECHSTART = PREPARE TO BROADCAST
+BROADCAST.SPEECH1CALM = BEGIN CALMLY
+BROADCAST.SPEECH1DETERMINED = BEGIN DETERMINEDLY
+BROADCAST.SPEECH2RECOGNITION = DEMAND RECOGNITION
+BROADCAST.SPEECH2END = DEMAND END OF SLAVERY
+BROADCAST.SPEECH2EQUAL = DEMAND EQUAL RIGHTS
+BROADCAST.SPEECH2FREEDOM = DEMAND FREE SPEECH
+BROADCAST.SPEECH3JUSTICE = DEMAND JUSTICE
+BROADCAST.SPEECH3SEGREGATION = DEMAND END TO SEGREGATION
+BROADCAST.SPEECH3WORK = DEMAND RIGHT TO WORK
+BROADCAST.SPEECH3CIVIL = DEMAND UNIVERSAL SUFFRAGE
+BROADCAST.SPEECH4FREEDOM = DEMAND RIGHT TO OWN PROPERTY
+BROADCAST.SPEECH4REPRODUCTION = DEMAND MEANS OF REPRODUCTION
+BROADCAST.SPEECH4TERRITORY = DEMAND TERRITORY
+BROADCAST.SPEECH5PEACEFUL = END PEACEFULLY
+BROADCAST.SPEECH5DETERMINED = END DETERMINEDLY
+BROADCAST.LEAVE = LEAVE BROADCAST ROOM
+BROADCAST.SWAT = SWAT TEAM STORMS ROOM
+BROADCAST.SIMON = SIMON DAMAGED
+BROADCAST.SIMONSAVE = TRY TO SAVE SIMON
+BROADCAST.SIMONLEAVE = LEAVE SIMON
+BROADCAST.SIMONSAVESUCCESS = SIMON SAVED
+BROADCAST.SIMONSAVEFAIL = FAIL TO SAVE SIMON
+BROADCAST.SIMONKILLED = SIMON IS KILLED
+BROADCAST.OPERATORALIVE = SPARED OPERATOR
+BROADCAST.OPERATORDEAD = KILLED OPERATOR
+BROADCAST.SIMONDEAD = SIMON DIED
+BROADCAST.ASKFORFREEDOM = ASKED FOR FREEDOM
+BROADCAST.ASKFORREPRO = ASKED FOR MEANS OF PRODUCTION
+BROADCAST.ASKFORTERRITORY = ASKED FOR TERRITORY
+BROADCAST.PEACEFUL = PEACEFUL CONCLUSION
+BROADCAST.VIOLENT = AGRESSIVE CONCLUSION
+ROOF.START = ON THE ROOF
+ROOF.SIMON = SIMON CAN'T CONTINUE
+ROOF.RUN = RUN TO JUMP
+ROOF.SIMONLEAVE = LEAVE SIMON
+ROOF.SIMONSHOOT = EXECUTE SIMON
+ROOF.BARRIER = REACH ROOF EDGE
+ROOF.SHOT = GET SHOT
+ROOF.NORTH = NORTH HELPS MARKUS
+ROOF.JUMP = JUMP
+ROOF.ATTACK = MEDIA REACTS
+ROOF.ESCAPE = THE GROUP ESCAPED
+ROOF.SIMONDEAD = SIMON DIES ON ROOF
+ROOF.SIMONLEFT = SIMON LEFT ON ROOF
+ROOF.BLOOD = LEAVE BLUE BLOOD TRAIL
+ROOF.ESCAPESIMONLEFT = THE GROUP ESCAPED BUT SIMON WAS LEFT BEHIND
+ROOF.ESCAPESIMONDESTROYED = THE GROUP ESCAPED BUT SIMON WAS DESTROYED
+MAGAZINE1ST = READ "G.I. ANDROID"
+MAGAZINE2ND = READ "WOMAN IN TROUBLE"
+```
+
+### 10.3 Disagreements with sections 1 to 3
+
+Rule (README item 10): the template and string table win for labels, prompts, arrows and clue text; the flowchart image wins for node order; the wiki wins where the template is silent. Template condition wording is transcript tier.
+
+§2 and §3 were built from the compiled form of this template (function `HL`); every prompt, the five desk clues and every arrow in 10.1 are already in the note. Where §3 and §8 leave a wiki-versus-transcript conflict open, the template decides arrows:
+
+1. **ASSAULT's Jericho arrow sits on the choice, not on the right-guard shot.** §3 has "ASSAULT, SHOOT GUARD DRAWING WEAPON: ▲ (wiki)" beside the transcript's ▲ on ASSAULT. The template puts `Jericho SmallUp` on the `ASSAULT` option and nothing under "Shoot the right guard". Template wins: **Jericho +1 on choosing ASSAULT**, none on the right-guard outcome. (Net on that path is the same; on the left-guard path the template gives Jericho +1 −1.)
+2. **DETERMINED ending with no casualties is a large down.** §3's "Wiki only: DETERMINED with no casualties ▼ small down" conflicts with the template's tone line, where "Chose DETERMINED or killed humans" carries `PublicOpinion LargeDown`. Template wins: **large down**. The net for "no casualties, determined" is ▲▲ ▼▼, as §3's transcript reading says.
+3. **Killing a guard and the operator is a small down.** Public_Opinion's large decrease for "kill everyone" (§3) is overruled by the template's `SmallDown` on "Killed a guard and the operator". Template wins.
+4. **Which choice "CALM" means in the tone line.** The template's condition says "Chose CALM and didn't kill anyone"; `CALM` is the opening label (PROMPT 5), while the ending (PROMPT 9) is `PEACEFUL` / `DETERMINED`. The arrow sizes come from the template; the condition wording is the transcribers', so the wiki's reading ("at the end of the speech") wins on which prompt counts, as §3 and §8 already suspect. Open for the operator.
+5. **Supervisor call options are bracketed.** PROMPT 1's `PARKING`, `SCHOOL` and `FIRE DEPARTMENT` are each marked `[brackets]="true"`, the site's marker for options that need an unlock, but with no condition text. That supports §8's reading that each ruse needs its own desk clue (parking badge, daughter's school, home address). Template implies, does not state.
+6. **Simon's roof prompt nested under the SWAT branch.** The template places the roof choice (PROMPT 11, `KILL` > PROMPT 12 `SHOOT` / `REFRAIN`, or `LEAVE`) only under "SWAT storms the room" > `Help` > "Save Simon". That favours the wiki's gate ("Simon Can't Continue - if Simon Saved") over PowerPyx's guard-wound reading (§2 D16, §8), though the template follows one transcribed path. Wiki and template agree; PowerPyx loses.
+7. **`FAIL TO SAVE SIMON`.** §3 leaves Jericho ▼ on "Simon is killed in the broadcast room" open. The template has no arrow under "Fail to help Simon". Template wins: **no arrow**.
+8. **Two cut TV lines.** The template marks as unused the European migrant-camp report on floor 47 (`Michael Brinkley - CTN TV`: "In European news, conflict continues to reign in migrant camps…") and one Media Reacts line (Brinkley: "If the violent behavior of these androids is the result of a bug or malfunction…"). §6 and §7 already catch the first; add the second to the cut list. Neither is built.
+
+Agreements (no action): desk clues `SMART WATCH`, `WILSON, EMILY`, `WILSON, ELIZABETH`, `PARKING BADGE`, `HOME ADDRESS` with their sublines; PROMPT 2 `ALIBI` / `GAIN TIME` / `DRAW GUN` under "Didn't lock the door" with `North SmallDown` on the whole block (the wiki Note's "Markus incapacitates the employee himself" exception remains §8's open question; the template does not split it); `RUSE` North −1, Josh +1, POINT Jericho +1, too slow Jericho −1 Simon −1; `ASSAULT` Josh −1, North +1; left guard Jericho −1 Simon −1; operator `SHOOT` North +1 Josh −1, `SPARE` North −1 Josh +1; "Ready" Jericho +1 North +1; speech prompts 5 to 9 with no arrow; SWAT Jericho −1; `FLEE` Jericho −1; roof `SHOOT` North +1 Josh −1, `LEAVE` North −1 Josh +1 Simon +2, `REFRAIN` none; the four casualty-line arrows.
+
+### 10.4 Disagreements with the benchmark (story.json 1.6.0: R23, M10, M11, M12, M13, M14)
+
+Engine sizes are read as ±1 = small arrow, ±2 = large arrow.
+
+1. **Lobby missing.** The desk observation (5 clues) and PROMPT 1 (`PARKING` / `SCHOOL` / `FIRE DEPARTMENT`) have no scene.
+2. **Server room missing.** The lock-the-door choice and PROMPT 2 (`ALIBI` / `GAIN TIME` / `DRAW GUN`) with North −1 have no scene. Not locking the door is one of the three alarm triggers, so SWAT gating is incomplete.
+3. **M10 labels.** "Bluff past them with the cover story" / "Attack the guards" stand for `RUSE` / `ASSAULT`.
+4. **M10 RUSE has an extra Simon arrow and lacks Jericho.** Engine option 0: `north(-1)`, `josh(1)`, `simon(1)`. Template: North −1, Josh +1 on the choice; Jericho +1 if in time; Jericho −1 and Simon −1 if too slow. The Simon +1 has no source, and neither Jericho arrow nor the too-slow Simon −1 is applied (failure only sets `simonWounded`).
+5. **M10 ASSAULT lacks Jericho and the left-guard arrows.** Engine option 1: `north(1)`, `josh(-1)`. Template adds Jericho +1 on the choice, and Jericho −1, Simon −1 if the phone guard is shot.
+6. **Which guard is a choice, not a roll.** The template (and §1 N54/N55) makes "Shoot the right guard" / "Shoot the left guard" a player choice. M10 option 1 models Simon's wound as a 0.2 risk failure. Offer the two guards as options.
+7. **M11 arrows.** `SHOOT` (option 0) North +1, Josh −1 matches. `SPARE` (option 1) applies nothing; the template has North −1, Josh +1. M11 option 0 also applies `po(-2)` at the moment of the shot; the template applies Public Opinion only at Media Reacts (see item 10).
+8. **"Ready" arrows missing.** Jericho +1 and North +1 before the speech are not applied.
+9. **Speech collapsed and an extra Josh arrow.** M12 offers two paraphrased options for five prompts (opening `CALM` / `DETERMINED`; three demand rounds of 4, 4 and 3; ending `PEACEFUL` / `DETERMINED`). M12 option 0 applies `josh(1)`; the template has no arrow on any speech option.
+10. **Public Opinion at Media Reacts does not match.** Template: casualty line +2 if nobody was killed, otherwise −1; tone line +2 for CALM/PEACEFUL with no deaths, otherwise −2. Engine (M11 + M12): no deaths and peaceful +3 (template +4); no deaths and determined 0 (template 0); deaths and peaceful 0, or −2 if the operator was shot (template −3); deaths and determined −2, or −4 with the operator (template −3). Guards killed at M10 set `casualties` but no Public Opinion change of their own, while the operator costs an extra −2.
+11. **SWAT arrows missing.** "SWAT storms the room" Jericho −1 is not applied.
+12. **M13 is not gated on SWAT.** M13 ("Simon is hit") and M14 ("Simon on the roof") have no gate in `blocked()` and no `when`, so they are offered even when no alarm was raised and Simon was never hurt. The template has PROMPT 10 only under "SWAT storms the room" and the roof prompt only after "Save Simon". `simonWounded` is set but not consulted.
+13. **M13 arrows.** `FLEE` (option 1) Jericho −1 matches. `Help` success (option 0) applies `simon(2)`; the template has no arrow on Help or on saving him (Simon's +2 belongs to the roof `LEAVE`).
+14. **M14 arrows.** `LEAVE` (option 0): engine `simon(2)` only; template Simon +2, North −1, Josh +1. Roof `SHOOT` (option 1): engine `north(1)`, `josh(-1)`, `jer(-1)`; template North +1, Josh −1, no Jericho arrow. The two-step `KILL` > `SHOOT` / `REFRAIN` is collapsed (REFRAIN equals LEAVE).
+15. **Cut TV line built.** R23's TV item includes "Europe is considering armed androids on its borders against climate migrants", which the template marks unused. Remove it (already in §7).

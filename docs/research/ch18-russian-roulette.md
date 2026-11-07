@@ -419,3 +419,224 @@ Effects the sources state that are absent: Amanda large down for failing both Pa
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Battle_for_Detroit_-_Connor_at_the_CyberLife_Tower&prop=wikitext&format=json | rooftop "Talk About Hank's Son" and Give Up gates; Cole option always offered, only the unlock icon depends on the photo |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Night_of_the_Soul&prop=wikitext&format=json | Hank's house scene if he quit (photo option there) |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=The_Eden_Club&prop=wikitext&format=json | next chapter's structure (no car scene on its chart) |
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html`, read raw from GitHub (`master`) on 2026-11-06 and resolved against `en.json` by `/tmp/dbt-scripts/render1724.py`. The rendered outline is also saved as `/tmp/dbt/ch18.txt`.
+
+Outline legend: `#` headings are the template's own section titles (written by the transcribers, not game text). `PROMPT n` is an `app-choice-group`; `OPTION "LABEL"` is an `app-choice-item` with its game label (`bracketed` = shown in brackets on the site, used for options that need an unlock; `timeout` = the time-out branch). `ARROW Name Type` is an `app-relation` (gauge name from `GUI.GAUGE.*`). `OBSERVATION [label]` / `CLUE title / subline / subline` are `app-observation` / `app-observation-item`. `IF:` is the condition text of an `app-conditioned-content` (transcriber wording). `[UNLOCK TYPE]` is an `app-unlock-condition` (LOCK = needs an earlier action, DEATH, TIME = timer runs out, TV). `UNUSED/CUT:` is an `app-unused-content` block. Dialogue is shown only inside options and cut blocks, at most two lines each, cut at 110 characters.
+
+**Counts.** Live prompts: 7 (23 options). Observations: 2 groups, 6 clues. Live arrows: 7. Unlock conditions: 9. Cut blocks: 2 (containing 2 prompts, 5 options, 4 arrows).
+
+### 10.1 Rendered outline
+
+```text
+# In the Zen Garden
+CONDITION GROUP:
+  IF: Rupert wasn't caught in The Nest
+    CONDITION GROUP:
+      IF: Ortiz's android wasn't found in Partners
+        ARROW Amanda LargeDown (AMANDA)
+      IF: Ortiz's android was found in Partners
+    PROMPT 1:
+      OPTION "PRAGMATIC"
+        ARROW Amanda SmallUp (AMANDA)
+        Connor: I agree. I may not be suited for this investigation. Maybe you should consider replacing me.
+      OPTION "EXPLAIN"
+        Connor: Deviants are completely irrational, which makes it difficult to anticipate their behavior… but I should hav...
+      OPTION "NO EXCUSE"
+        Connor: I have no excuse. I should have been more efficient.
+  IF: Rupert was caught in The Nest
+    ARROW Amanda LargeUp (AMANDA)
+  IF: [UNLOCK DEATH] Connor died in The Nest
+    ARROW Amanda SmallDown (AMANDA)
+PROMPT 2:
+  OPTION "DEVIANT" (bracketed)
+    [UNLOCK LOCK] Found Rupert's ID in The Nest
+    Connor: It was working under a false identity, at a nearby urban farm. This was the first time we’ve seen deviants ...
+  OPTION "DIARY" (bracketed)
+    [UNLOCK LOCK] Found Rupert's diary in The Nest
+    Connor: I found its diary, but it was encrypted. It may take weeks to decipher.
+  OPTION "SIGNS ON WALLS" (bracketed)
+    [UNLOCK LOCK] Observed the signs on the wall in The Nest
+    Connor: The walls of the apartment were covered with drawings of labyrinths and other symbols. Like the other devia...
+  OPTION "BIRDS"
+    Connor: It was fascinated by birds. We’ve seen deviants interested in other lifeforms like insects or pets, but not...
+CONDITION GROUP:
+  IF: Connor caught Rupert in The Nest
+    ARROW Amanda SmallDown (AMANDA)
+    PROMPT 3:
+      OPTION "EXCUSE"
+        Connor: It was in Lieutenant Anderson’s custody. I couldn’t anticipate that he would let it get away.
+      OPTION "HESITATED"
+        ARROW Amanda SmallDown (AMANDA)
+        Connor: It claimed that it was innocent, that it didn’t do anything wrong... I was confused for a moment… It was a ...
+      OPTION "LAST WORDS"
+        Connor: I made a mistake… It said “rA9 save me” before it jumped from the roof. I should have anticipated what it w...
+      OPTION "EXPLAIN"
+        Connor: I knew deviants had a tendency to self-destruct under extreme stress, but I didn’t expect it to jump from t...
+  IF: Connor failed to catch Rupert in The Nest
+    UNUSED/CUT:
+      Amanda: You came very close to capturing that deviant… How did it manage to get away?
+      PROMPT 4:
+        OPTION "TRUTH"
+          Connor: Lieutenant Anderson was in danger. I had to choose between pursuing the deviant or saving a human life.
+          Amanda: If we don’t stop the deviants, millions of people will be in danger. How important is the life of a single ...
+        OPTION "LIE"
+          Connor: It knew the urban farm very well, it knew where to go… I did everything I could but I lost it…
+          Amanda: I see…
+PROMPT 5:
+  OPTION "SAVING HANK" (bracketed)
+    [UNLOCK LOCK] Saved Hank in The Nest
+    Connor: He seemed grateful that I saved his life on the roof. He didn’t say anything, but he expressed it in his ow...
+  OPTION "CONNOR’S DEATH" (bracketed)
+    [UNLOCK DEATH] Connor died before
+    Connor: He seems to find it difficult when a Connor is destroyed and replaced. I know humans have difficulty dealin...
+  OPTION "NEGATIVE"
+    Connor: He is openly hostile towards me, and continues to show no interest in the investigation. Cooperating with h...
+  OPTION "AMBIGUOUS"
+    Connor: It’s improving. I’m coming to know him better, and he’s growing accustomed to my presence.
+  OPTION "POSITIVE"
+    Connor: It’s improving. I’ve come to understand him better, and he’s growing accustomed to my presence.
+UNUSED/CUT:
+  Amanda: Interesting… Tell me, Connor… What happened with the AX400 that escaped?
+  CONDITION GROUP:
+    IF: Kara not found
+      ARROW Amanda SmallDown (AMANDA)
+      Connor: I couldn’t find any evidence of it on the scene. It must have escaped before we arrived, unless it was a fa...
+    IF: Found Kara, obeyed Hank
+      Amanda: Why didn’t you keep chasing it onto the highway?
+      PROMPT 6:
+        OPTION "RATIONAL"
+          ARROW Amanda SmallUp (AMANDA)
+          Connor: Lieutenant Anderson ordered me not to go. I thought the deviant would be destroyed anyway.
+        OPTION "EXCUSE"
+          ARROW Amanda SmallDown (AMANDA)
+          Connor: Lieutenant Anderson ordered me not to go.
+          Amanda: Why are you following his orders?.. You only have one responsibility, Connor: catching deviants.
+        OPTION "TROUBLED"
+          ARROW Amanda SmallDown (AMANDA)
+          Connor: I knew there was a high risk of me being destroyed… I thought it was better for the investigation if I stay...
+    IF: Found Kara, chased her and survived
+      Connor: Fleeing across the highway was a totally irrational decision. They still haven't found it yet, but it was a...
+    IF: Found Kara, chased her and died
+      Connor: Fleeing into the highway was a totally irrational decision. I was close to apprehending it, until I was des...
+# Arriving at Hank's house
+## Going through the window
+CONDITION GROUP:
+  IF: Connor knows Sumo's name
+    [UNLOCK LOCK] Asked Hank about his dog in Waiting for Hank...
+  IF: Connor doesn't know Sumo's name
+OBSERVATION [Examine Hank]:
+  CLUE TRACES OF ALCOHOL / Scotch Whisky / 40% Alcohol content
+  CLUE HEART / Slight arrhythmia / No signs of trauma
+  CLUE BLACK LAMB / Scotch Whisky / 40% Alcohol content
+  CLUE REVOLVER / .357 Magnum / 1 bullet remaining
+CONDITION GROUP:
+  IF: [UNLOCK DEATH] Connor died in The Nest
+    ARROW Hank SmallDown (HANK)
+PROMPT 7:
+  OPTION "RATIONAL"
+    Connor: Unfortunately, I cannot. I've been programmed to investigate this case and I can't do it without you.
+    Hank: I don't give a shit about your goddamn case!
+  OPTION "AGGRESSIVE"
+    Connor: If you're unable to conduct this investigation, I'll have to inform your superiors.
+    Hank: Go ahead! Tell them I don’t give a shit!
+  OPTION "SOLUTION"
+    Connor: You seem to have personal issues. You should consult a professional who can help you.
+  OPTION "PRAGMATIC"
+    Connor: Maybe you should drop the case. They'll assign someone else and I can focus on my mission.
+    Hank: Your goddamn mission, that’s all you care about, huh?
+PROMPT 8:
+  OPTION "TEASE"
+    Connor: I understand. It probably wasn’t interesting anyway... A man found dead in a sex club downtown… Guess they’...
+  OPTION "LEAVE"
+    Connor: I understand. I sincerely hope you come to terms with your personal situation.
+    Hank: This homicide… what do we know about it?
+# Investigating Hank's house
+OBSERVATION [Look around]:
+  CLUE AUTUMN BLUES / Michigan Brothers / Detroit Soul Records
+  CLUE ANDERSON, COLE / Born: 09/23/2029 - Died: 10/11/2035 / Lived: 115 Michigan Drive – Detroit
+## [UNLOCK TV] Watch TV
+## Listening to the door of the bathroom
+## Looking at the broken window
+## Looking at the gun
+PROMPT 9:
+  OPTION "QUESTION"
+    Connor: What were you doing with the gun?
+    Hank: Russian roulette! Wanted to see how long I could last... Must've collapsed before I found out…
+## Hank is ready
+```
+
+### 10.2 Flowchart node labels as the game prints them (`MENU.FLOWCHART.06CA.*`)
+
+The table also holds labels for cut or patched-out nodes; presence here does not prove a node is reachable.
+
+```text
+EMERGE = EMERGE IN THE ZEN GARDEN
+JOIN = JOIN AMANDA
+SUPPORT = COVER FOR HANK
+DONT = DON'T COVER HANK
+ARRIVE = ARRIVE AT HANK'S PLACE
+KNOCK = KNOCK ON DOOR
+RING = RING BELL
+FIND = FIND LT. ANDERSON
+AGAIN = RING AGAIN
+CAR = CHECK CAR
+BEDROOM = CHECK BEDROOM WINDOW
+FRONT = CHECK FRONT LIVING ROOM WINDOW
+BACK = CHECK BACK LIVING ROOM WINDOW
+SPOT = SPOT HANK AND BREAK IN
+ENTER = ENTER HOUSE
+ATTACK = HANK'S DOG ATTACKS
+CALM = CALM HANK'S DOG
+THREAT = RILE HANK'S DOG
+ANALYZE = ANALYZE HANK
+BRING = TAKE HANK TO THE BATHROOM
+DISTANT = DISTANT ATTITUDE
+UNDERSTAND = UNDERSTANDING ATTITUDE
+RED = TAKE HIPPY SHIRT
+BLUE = TAKE STREAKY SHIRT
+GREEN = TAKE STRIPY SHIRT
+WAIT = WAIT FOR HANK
+ATTEMPT = LEARN HANK WAS PLAYING RUSSIAN ROULETTE
+DISCOVERED = HANK'S SUICIDE ATTEMPT DISCOVERED
+SON = FIND PICTURE OF HANK'S SON
+FOUND = PICTURE OF HANK'S SON FOUND
+TASTES = LEARN HANK'S INTERESTS
+PET = PET HANK'S DOG
+DOG = PET HANK'S DOG
+READY = HANK IS READY
+LEAVE = LEFT FOR EDEN CLUB
+MAGAZINE1ST = READ "PULL THE PLUG?"
+MAGAZINE2ND = READ "TAINTED LOVE"
+```
+
+### 10.3 Disagreements with sections 1 to 3
+
+Rule (README item 10): the template and string table win for labels, prompts, arrows and clue text; the flowchart image wins for node order; the wiki wins where the template is silent. Template condition wording is transcript tier.
+
+Sections 2 and 3 were built from the compiled form of this same template (`chunk-JCLJBPDO.js`, function `yL`), and every prompt, option label, lock, observation and arrow in 10.1 is already in §2a to §2g. The differences:
+
+1. **Amanda on "Rupert wasn't caught, Ortiz's android was found".** §3 lists "small down (wiki) / none (transcript)" and leaves it open. The template has no `app-relation` on that branch. The template wins for arrows: **no change**. (The wiki's "Failure to catch Rupert in The Nest (Connor didn't die)" small down is not built.)
+2. **Hank on `TAKE HANK TO THE BATHROOM`.** §3 already sides against PowerPyx's "Hank▼". The template confirms: Hank's only arrow in the chapter is the small down inside "Connor died in The Nest". Agreement, now settled.
+3. **PROMPT 8 option order.** The template lists `TEASE` before `LEAVE`; §2e lists `LEAVE` first. Use the template order.
+4. **PROMPT 9 has one option in the template.** The gun prompt is rendered with `QUESTION` only. §2g gives `QUESTION` / `SAY NOTHING`; `SAY NOTHING` is in the string table (`X0602C.HANKHOUSE.GUN.PC.GUNCHOICE.SAYNOTHING`) but has no line and is not transcribed. Template silent on it, string present: keep both options as §2g says.
+5. **Prompts the template does not render.** The shower round's `ADVICE`, the shirt choice (the template has none; the chart has the three `TAKE ... SHIRT` nodes, the string table has `BLUE SHIRT` / `RED SHIRT` / `WHITE SHIRT`), `TURN ON SHOWER`, and `REVOLVER?` / `PHOTO?` are all absent from the template. The flowchart wins for the shirt nodes (§1 #20 to #22, with the chart's labels). `ADVICE`, `REVOLVER?` and `PHOTO?` stay unbuilt, as §2 says.
+
+Agreements (no action): Amanda arrows LargeDown (Rupert not caught and Ortiz's android not found), LargeUp (Rupert caught), SmallDown (Connor died in The Nest), SmallUp on `PRAGMATIC`, SmallDown on "Connor caught Rupert", SmallDown on `HESITATED`; locks on `DEVIANT`, `DIARY`, `SIGNS ON WALLS`, `SAVING HANK`, death unlock on `CONNOR’S DEATH`; the cut TRUTH / LIE exchange and the cut AX400 exchange (with its four Amanda arrows, none live); both observation groups (Examine Hank: 4 clues; Look around: `AUTUMN BLUES`, `ANDERSON, COLE`); no arrow on any shower round, the TV or the gun question.
+
+### 10.4 Disagreements with the benchmark (story.json 1.6.0: R18, C11; and C10 in chapter 15)
+
+Engine sizes are read as ±1 = small arrow, ±2 = large arrow.
+
+1. **No Zen Garden scene.** PROMPT 1 (`PRAGMATIC` / `EXPLAIN` / `NO EXCUSE`), PROMPT 2 (`DEVIANT` / `DIARY` / `SIGNS ON WALLS` / `BIRDS`, three locked; Connor answers twice), PROMPT 3 (`EXCUSE` / `HESITATED` / `LAST WORDS` / `EXPLAIN`) and PROMPT 5 (`SAVING HANK` / `CONNOR’S DEATH` / `NEGATIVE` / `AMBIGUOUS` / `POSITIVE`) are all missing. That is 4 prompts and 16 options.
+2. **Amanda arrows applied in the wrong place and size.** The template puts Amanda's reaction to The Nest in this chapter: LargeUp if Rupert was caught, then SmallDown ("pity you let it self-destruct"); LargeDown if Rupert was not caught and Ortiz's android was not found; none if not caught but the android was found; SmallDown if Connor died. The engine instead applies them at C10 (The Nest): `amanda(-1)` on saving Hank (template: none or large down, depending on Partners); `amanda(1)` on a successful chase (template: large up plus small down); nothing on a failed chase (template: none or large down). The Partners dependency (`C05` suspect found) is not consulted.
+3. **Missing option arrows.** Amanda SmallUp on `PRAGMATIC` and SmallDown on `HESITATED` have no scene to live in.
+4. **Hank SmallDown on waking him after a Nest death.** Not applied in this chapter. `connorDies` applies `hank(-1)` and `amanda(-1)` at the moment of death instead; the sizes match, the timing does not, and the ch18 arrows are specific to The Nest.
+5. **Shower prompts missing.** PROMPT 7 (`RATIONAL` / `AGGRESSIVE` / `SOLUTION` / `PRAGMATIC`, which decides UNDERSTANDING / DISTANT ATTITUDE) and PROMPT 8 (`TEASE` / `LEAVE`) have no scene.
+6. **Gun prompt missing.** PROMPT 9 (`QUESTION`, plus `SAY NOTHING` from the string table) has no scene. C11 states the revolver has one round as narration.
+7. **Observations not presented as clues.** The Examine Hank group (`TRACES OF ALCOHOL`, `HEART`, `BLACK LAMB`, `REVOLVER`) and the Look around group (`AUTUMN BLUES`, `ANDERSON, COLE`) are not offered. C11's "Look at the photograph and the papers" is a paraphrase of the `ANDERSON, COLE` observation (and FIND PICTURE OF HANK'S SON) without the game's text ("Born: 09/23/2029 - Died: 10/11/2035", "Lived: 115 Michigan Drive – Detroit"); its outcome says Cole "died at six in a car accident", which the observation does not say.
+8. **Sumo gate.** The template conditions CALM / RILE on "Connor knows Sumo's name" (LOCK: asked about the dog in Waiting for Hank...). C11 sets `knowsSumo = true` unconditionally and shows no Sumo branch. No arrow is involved, so this is a missing state-decided node rather than a wrong effect.
+
+No arrow is applied by the engine at C11, and the template has none on the photo or the papers: correct. Cut content is not built: correct.

@@ -662,3 +662,339 @@ Name tokens a rebuild will need that are not in `NAMES`:
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Biocomponent&prop=wikitext&format=json | #8451 (JB300) and #8456w (Connor) thirium pump regulators |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Sean_Chedd&prop=wikitext&format=json, ...&page=Chris_Robert..., ...&page=Evan_Thompson... | the guard and operator bodies and their briefing mentions |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Crossroads&prop=wikitext&format=json, ...&page=Night_of_the_Soul..., ...&page=Battle_for_Detroit... | later Simon appearances conditional on survival |
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html`, read raw from GitHub (`master`) on 2026-11-06 and resolved against `en.json` by `/tmp/dbt-scripts/render1724.py`. The rendered outline is also saved as `/tmp/dbt/ch24.txt`.
+
+Outline legend: `#` headings are the template's own section titles (written by the transcribers, not game text). `PROMPT n` is an `app-choice-group`; `OPTION "LABEL"` is an `app-choice-item` with its game label (`bracketed` = shown in brackets on the site, used for options that need an unlock; `timeout` = the time-out branch). `ARROW Name Type` is an `app-relation` (gauge name from `GUI.GAUGE.*`). `OBSERVATION [label]` / `CLUE title / subline / subline` are `app-observation` / `app-observation-item`. `IF:` is the condition text of an `app-conditioned-content` (transcriber wording). `[UNLOCK TYPE]` is an `app-unlock-condition` (LOCK = needs an earlier action, DEATH, TIME = timer runs out, TV). `UNUSED/CUT:` is an `app-unused-content` block. Dialogue is shown only inside options and cut blocks, at most two lines each, cut at 110 characters.
+
+**Counts.** Live prompts: 11 (32 options). Observations: 7 groups, 15 clues. Live arrows: 20. Unlock conditions: 9. Cut blocks: 0 (containing 0 prompts, 0 options, 0 arrows).
+
+### 10.1 Rendered outline
+
+```text
+# In the Zen Garden
+PROMPT 1:
+  OPTION "HANK"
+    CONDITION GROUP:
+      IF: [UNLOCK DEATH] Hank shot Connor in The Bridge
+        Connor: I’m having difficulties with Lieutenant Anderson. He’s unstable, even hostile. He shot me in the head last ...
+      IF: Hank left Connor alone in The Bridge
+        Connor: My relationship with Lieutenant Anderson is problematic. He continues to struggle with psychological issues...
+        Amanda: Nothing matters more than your investigation. What’s happening is too important. Don’t let Anderson or anyo...
+  OPTION "EDEN CLUB"
+    CONDITION GROUP:
+      IF: Connor didn't find the Tracis in The Eden Club
+        ARROW Amanda SmallDown (AMANDA)
+        Connor: I went to the Eden Club… but I didn’t learn anything new…
+        Amanda: That's disappointing. Looks like another missed opportunity.
+      IF: Connor found the Tracis in The Eden Club and let them go
+        ARROW Amanda SmallDown (AMANDA)
+        Connor: I found two deviants at the Eden Club… I hoped to learn something but… they managed to escape…
+        Amanda: That's too bad... You seemed so close to stopping them.
+      IF: Connor found the Tracis in The Eden Club and they died
+        ARROW Amanda SmallUp (AMANDA)
+        Connor: I found two deviants at the Eden Club… I hoped to learn something but… I had to destroy them…
+PROMPT 2:
+  OPTION "SINCERE" (bracketed)
+    [UNLOCK LOCK] Spared the Tracis in The Eden Club
+    ARROW Amanda SmallDown (AMANDA)
+    Connor: I thought I knew what I had to do… but now I realize it’s not that simple…
+  OPTION "DETERMINED"
+    Connor: I’m just frustrated with my lack of progress, but I’m determined to accomplish my mission.
+  OPTION "COLD"
+    ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+    Connor: The investigation is more challenging than I anticipated, but I have no doubt that I will solve this case a...
+  OPTION "TROUBLED"
+    ARROW SoftwareInstability SmallUp (SOFTWARE INSTABILITY)
+    ARROW Amanda SmallDown (AMANDA)
+    Connor: Perturbed? No… No, of course not. Why would I be perturbed?
+CONDITION GROUP:
+  IF: Connor spared the Tracis in The Eden Club
+    PROMPT 3:
+      OPTION "TOO FAR"
+        Connor: They were out of range. If I had the opportunity to stop them, why wouldn’t I?
+        Amanda: You tell me.
+      OPTION "NO USE"
+        Connor: We need the deviants intact for analysis. Shooting them wouldn’t have told us anything.
+      OPTION "TRUTH"
+        ARROW Amanda LargeDown (AMANDA)
+        Connor: I don’t know… I don’t know.
+PROMPT 4:
+  OPTION "CONFLICTED"
+    ARROW SoftwareInstability SmallUp (SOFTWARE INSTABILITY)
+    Connor: I understand.
+  OPTION "CONFIDENT"
+    ARROW Amanda SmallUp (AMANDA)
+    Connor: I know I will succeed. All I need is time.
+  OPTION "INDIFFERENT"
+    ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+    ARROW Amanda LargeUp (AMANDA)
+    Connor: I am of no importance. The mission is all that matters.
+# In the tower
+CONDITION GROUP:
+  IF: [UNLOCK DEATH] Hank shot Connor in The Bridge
+  IF: Hank didn't shoot Connor in The Bridge
+CONDITION GROUP:
+  IF: Knocked out the guards in The Stratford Tower
+  IF: Attacked the guards in The Stratford Tower
+CONDITION GROUP:
+  IF: Station employee wasn't shot in The Stratford Tower
+  IF: Station employee was shot in The Stratford Tower
+CONDITION GROUP:
+  IF: SWAT killed Simon
+  IF: Simon was killed on the roof
+## Investigating
+OBSERVATION [Investigate]:
+  CLUE BULLET HOLES / Calibre: .45 / Weapon: Assault Rifle
+  CLUE BULLET HOLES / Calibre: .457 / Weapon: Handgun
+  CLUE FRESH BLUE BLOOD / Model: PL-600 / Reported missing 2036.16.02
+  CLUE CAP / Stolen maintenance uniform / Assailants were disguised
+CONDITION GROUP:
+  IF: Employee was shot
+    OBSERVATION [Body]:
+      CLUE THOMPSON, EVAN / Estimated time of death: 13:55:24 / Cause of death: Fatal gunshot wound
+CONDITION GROUP:
+  IF: Left guard was shot
+    OBSERVATION [Body]:
+      CLUE CHEDD, SEAN / Estimated time of death: 13:53:36 / Cause of death: Fatal gunshot wound
+  IF: Right guard was shot
+    OBSERVATION [Wall and body]:
+      CLUE FRESH BLOOD / Name: Robert, Chris / Cause of death: Fatal gunshot wound
+      CLUE ROBERT, CHRIS / Estimated time of death: 13:53:36 / Cause of death: Fatal gunshot wound
+CONDITION GROUP:
+  IF: Going near the kitchen - Talking to the cop from The Hostage
+    [UNLOCK LOCK] Saved the wounded cop in The Hostage
+    CONDITION GROUP:
+      IF: Connor didn't die before
+      IF: [UNLOCK DEATH] Connor died in The Hostage
+      IF: [UNLOCK DEATH] Connor died after The Hostage
+### Check CCTV
+### Look at the speech
+OBSERVATION [Analyze]:
+  CLUE OPTICAL UNIT / #8087q - BLUE IRIS / SPARE PART
+  CLUE PUPIL REFLECTION / Recorded at 13:59:54 / Deviant had accomplices
+  CLUE RK-SERIES PROTOTYPE RK200 / Registered as 'Markus' / Gift from Elijah Kamski to Carl Manfred
+### [UNLOCK TIME] Taking too much time / Ask Hank to leave
+PROMPT 5:
+  OPTION "YES"
+    Connor: Yes.
+    Hank: Ok, we're outta here.
+  OPTION "NO"
+    Connor: Actually, I'll have another look around.
+    Hank: You're the boss.
+## In the kitchen
+PROMPT 6:
+  OPTION "FUNCTION"
+    Connor: What is your function?
+    Android: I am a broadcast operator.
+  OPTION "MODEL"
+    Connor: State your model.
+    Android: Model JB300, Serial number 336 445 581.
+PROMPT 7:
+  OPTION "WITNESS"
+    Connor: Were you present when the deviants broke in?
+    Android: I do not remember.
+  OPTION "MEMORY"
+    Connor: Has anybody accessed your memory recently?
+    Android: Not to my knowledge.
+  OPTION "DIAGNOSTIC"
+    Connor: Run a diagnostic.
+    Android: All systems fully operational.
+  OPTION "CONTACT"
+    Connor: Have you been in contact with any other androids recently?
+    Android: Only station androids in the normal course of my function.
+PROMPT 8:
+  OPTION "THREATEN"
+    Connor: You’re going to be switched off. We're gonna search your memory and tear you apart piece by piece for analy...
+  OPTION "DEAL"
+    Connor: If you give yourself up, maybe I can convince the humans not to destroy you.
+  OPTION "GUILT"
+    Connor: Why should you all be destroyed, if only one is deviant? Turn yourself in, or two innocent androids will be...
+PROMPT 9:
+  OPTION "VIOLENCE"
+    Connor: You scumbag! I know it's you! You're just a fucking deviant. Go on, admit it!
+  OPTION "BLUFF"
+    Connor: The deviants have just been caught… They gave you up. There's no point in lying. We know everything.
+  OPTION "TORTURE"
+    Connor: Biocomponent #8451... Regulates the heartbeat... Without this module, you will shut down in exactly sixty-t...
+  OPTION "PROBE MEMORY"
+    CONDITION GROUP:
+      IF: Probing the wrong android
+        Connor: No memory.
+CONDITION GROUP:
+  IF: Found the deviant
+    CONDITION GROUP:
+      IF: Get the biocomponent back and go after the deviant
+        PROMPT 10:
+          OPTION "ATTACK"
+            ARROW PublicOpinion SmallDown (PUBLIC OPINION)
+            ARROW SoftwareInstability LargeUp (SOFTWARE INSTABILITY)
+            Hank: Connor! Connor, are you okay?
+            Connor: I tried to stop it but… I was too late.
+          OPTION "SAVE HANK"
+            ARROW PublicOpinion SmallDown (PUBLIC OPINION)
+            ARROW Hank LargeUp (HANK)
+            Hank: Good thing you were here. Otherwise I – Connor… Connor, no…
+          OPTION "TAKE GUN"
+            ARROW Hank LargeUp (HANK)
+            Hank: Nice shot, Connor.
+            Connor: I wanted it alive.
+      IF: Fail to get the biocomponent
+        ARROW SoftwareInstability SmallDown (SOFTWARE INSTABILITY)
+        ARROW Hank SmallDown (HANK)
+  IF: Fail to find the deviant
+## On the roof
+OBSERVATION [Investigate]:
+  CLUE DOOR / Wireless security lock / Recently hacked
+  CLUE SHOE PRINTS / Stratford maintenance footwear - standard issue / Recent - Partially covered by snow
+  CLUE WEAPONS / .457 Handgun / Stratford Tower Security issue
+CONDITION GROUP:
+  IF: Simon is dead
+    OBSERVATION [Body]:
+      CLUE MODEL PL-600 / Serial number : #501 743 923 / Reported missing 2036.16.02
+### Analyze bag
+CONDITION GROUP:
+  IF: Simon was left behind alive in The Stratford Tower
+### Find Simon
+[UNLOCK LOCK] Simon was left alive on the roof in The Stratford Tower
+PROMPT 11:
+  OPTION "CHARGE DEVIANT"
+    CONDITION GROUP:
+      IF: [UNLOCK DEATH] Connor dies rushing Simon
+        Hank: Connor! Connor!... Oh Connor… Oh no…
+      IF: Connor reaches Simon
+        ARROW SoftwareInstability LargeUp (SOFTWARE INSTABILITY)
+        Hank: Connor! Connor you all right? Connor!
+        Connor: Okay…
+  OPTION "STAY IN COVER"
+```
+
+### 10.2 Flowchart node labels as the game prints them (`MENU.FLOWCHART.09C.*`)
+
+The table also holds labels for cut or patched-out nodes; presence here does not prove a node is reachable.
+
+```text
+START = FALL IN THE ZEN GARDEN
+AMANDA = TALK TO AMANDA
+STRATFORD = INSIDE STRATFORD TOWER
+COIN = HANK CONFISCATES COIN
+BRIEFING = LISTEN TO BRIEFING
+REINFORCEMENT = TALK TO AMANDA
+DEADREINFORCEMENT = ANALYZE GUARD NEXT TO PHONE
+DEADSHOOT = ANALYZE ARMED GUARD
+SIMONBLOOD = ANALYZE SIMON'S BLUE BLOOD
+INVESTIGATEC = INVESTIGATE CORRIDORS
+CHECKCAM = CHECK CCTV
+PHONE = ANALYZE PHONE
+DEADEMPLOYEE = ANALYZE DEAD EMPLOYEE
+PERKINS = MEET PERKINS
+INVESTIGATEB = INVESTIGATE BROADCAST ROOM
+BULLETC = ANALYZE CORRIDOR BULLET HOLES
+BULLETR = ANALYZE ROOF ACCESS BULLET HOLES
+BULLETS = ANALYZE SCREEN BULLET HOLES
+VIDEO = WATCH VIDEO
+CAP = ANALYZE CAP
+CAMERA = CHECK CAMERA
+BLOODWALL = ANALYZE BLUE BLOOD ON WALL
+DEADSIMON = ANALYZE DESTROYED ANDROID
+BLOODCONSOLE = ANALYZE BLUE BLOOD ON CONSOLE
+INVESTIGATER = INVESTIGATE ROOFTOP
+FOOTPRINTS = FIND FOOTPRINTS
+GOTOROOF = GO TO ROOFTOP
+HACKED = ANALYZE DOOR
+BAG = ANALYZE BAG
+WEAPON = ANALYZE WEAPON
+BLUEBLOOD = ANALYZE BLUE BLOOD
+MEETCOP = MEET COP FROM HOSTAGE SITUATION
+FINDBAG = FIND BAG
+FINDSIMON = FIND SIMON
+STAYCOVER = STAY IN COVER
+RUSH = RUSH DEVIANT
+SHOT = SHOT BY SIMON
+REACH = REACH SIMON
+SIMONKILLED = SIMON IS DESTROYED BY SWAT
+CONNORDIED = CONNOR DIED
+HANKRUSH = CONNOR DIED RUNNING TOWARD SIMON
+JERICHO = CONNOR SAW JERICHO MEMORY
+SIMONMEMORY = FLASH FROM SIMON'S MEMORY
+SIMONSUICIDE = SIMON SELF-DESTRUCTS
+SHOCKED = CONNOR WAS TRAUMATIZED
+LEFTSHOCKED = HANK AND CONNOR SURVIVED UNSCATHED
+DECIDELEAVE = DECIDE TO LEAVE
+LEFTCRIME = CONNOR AND HANK LEFT THE CRIME SCENE
+ENTERKITCHEN = ENTER THE KITCHEN
+INTERROGATE = INTERROGATE ANDROIDS
+NODEVIANT = DEVIANT NOT FOUND
+FINDDEVIANT = FIND DEVIANT
+DEVIANTATTACK = DEVIANT ATTACKS
+TIMEOUT = OUT OF TIME
+KNIFE = REMOVE KNIFE
+BIOCOMPONENT = RECOVER BIOCOMPONENT
+CHASE = CHASE DEVIANT
+PROTECTHANK = PROTECT HANK
+SHOOT = DRAW GUN
+DEVIANTKILLED = SWAT DESTROYS DEVIANT
+SAVEDCOPDEADOLD = DEVIANT KILLS COP FROM HOSTAGE SITUATION
+HANKSHOCKED = CONNOR SACRIFICED HIMSELF FOR HANK
+DEVIANTMEMORY = FLASH FROM DEVIANT'S MEMORY
+DEVIANTSUICIDE = DEVIANT SELF-DESTRUCTS
+SHOCKEDDEAD = CONNOR AND HANK SURVIVED
+CONNORKILLED = DEVIANT SHOOTS CONNOR
+DEVIANT = FIND DEVIANT
+COPSAFE = RESCUE COP
+EVERYONE = MASSACRE PREVENTED
+MAGAZINE1ST = READ "BLEEDING BLUE"
+MAGAZINE2ND = READ "CLEAN FOOD CRAZE"
+SHOOT2 = SHOOT DEVIANT
+LOSETIME = LOSE TOO MUCH TIME
+DEVIANTKILLED02 = SWAT DESTROYS DEVIANT
+SAVEDCOPDEAD2 = DEVIANT KILLS COP FROM HOSTAGE SITUATION
+GC.BROADCASTEMPLOYEE = KILLED DURING 'STATFORD TOWER'
+GC.PHONEGUARD = KILLED DURING 'STATFORD TOWER'
+GC.GUNGUARD = KILLED DURING 'STATFORD TOWER'
+GC.SIMONHURTCORRIDOR = WOUNDED DURING 'STATFORD TOWER'
+GC.HOSTAGECOP = SAVED DURING 'THE HOSTAGE''
+GC.ASSAULT = ATTACKED BY SWAT DURING 'STATFORD TOWER'
+GC.SIMONDIEDROOM = DIED IN BROADCAST DURING 'STATFORD TOWER'
+GC.SIMONDIEDROOF = DIED ON ROOFTOP DURING 'STATFORD TOWER'
+HANKRUSHKITCHEN = CONNOR SHUT DOWN
+SAVEDCOPDEAD = DEVIANT KILLS COP FROM HOSTAGE SITUATION
+```
+
+### 10.3 Disagreements with sections 1 to 3
+
+Rule (README item 10): the template and string table win for labels, prompts, arrows and clue text; the flowchart image wins for node order; the wiki wins where the template is silent. Template condition wording is transcript tier.
+
+§2 and §3 were built from the compiled form of this template (function `UL`); every prompt, observation and arrow in 10.1 is already in the note. §3 records several wiki-or-PowerPyx arrows the transcript lacks. The template decides them:
+
+1. **`DETERMINED` and `COLD` (Zen Garden round 2): no Amanda arrow.** §3: "small up (wiki, PowerPyx); no icon (transcript)". Template wins: **none** (`COLD` keeps its SI small down).
+2. **`TOO FAR` (round 3): no Amanda arrow.** §3: "small down (wiki, PowerPyx); no icon (transcript)". Template wins: **none**.
+3. **`SHOT BY SIMON` (Connor dies rushing Simon): no instability arrow.** §3 gives SI small down from the wiki and the Software Instability page. The template's death branch ("Connor dies rushing Simon") carries no `app-relation`, while the template does tag the other death in this chapter (biocomponent failure: SI −1, Hank −1). By the README rule the template wins: **no SI arrow**. Because the wiki states a general rule ("Dying reduces software instability"), the operator should confirm in game.
+4. **`PROTECT HANK` / `SAVE HANK`: no instability arrow.** §3 cites the wiki's SI small down ("Connor sacrifices himself to protect Hank"; "No icon in the transcript"). Template wins: **Public Opinion small down and Hank large up only**. Same caveat as item 3.
+5. **Corridor `ATTACK`: one Public Opinion arrow, not two.** §3: "small down ×2 (wiki), small down ×1 (transcript)". Template wins: **one small down** (plus SI large up).
+6. **`LOSE TOO MUCH TIME` and the cop deaths.** The template has no block for "Lose too much time" and no arrow on any cop death; the PowerPyx-only arrows in §3 (SI large up, Public Opinion small down) have no template or wiki support beyond the Public_Opinion line "(If Connor was present)". Template silent, wiki ambiguous: do not build them; keep §8's open question.
+7. **Clue gating in the corridors and broadcast room.** The template lists both `BULLET HOLES` scans, `FRESH BLUE BLOOD` (PL-600) and `CAP` in one unconditioned "Investigate" group, whereas §1 and §2d put the bullet holes behind the SWAT tab and the blood behind the Wounded tab. Gating is the flowchart's (§1 tabs): keep §2's conditions. The clue texts agree word for word.
+8. **Clues the template does not render.** `PHONE` ("Attempted call: Central Security", "Call interrupted"), `CARDIAC CELL` ("Biocomponent #845", "Desactivated since 60s") and Markus's `FRESH BLUE BLOOD` ("RK-Series Prototype RK200", "Property of Carl Manfred") in §2c, §2d and §2g are string-table entries without an `app-observation`. Template silent; keep them.
+9. **Coin condition.** The template conditions the elevator openings only on "Hank shot / didn't shoot Connor in The Bridge"; §2b and §8 note the wiki's and PowerPyx's Friend requirement. Condition wording is transcript tier, so the wiki's Friend requirement stands until the operator checks.
+
+Agreements (no action): round 1 `HANK` (two variants, no arrow) and `EDEN CLUB` (not found Amanda −1, let go Amanda −1, died Amanda +1); round 2 `SINCERE` (lock "Spared the Tracis", Amanda −1), `TROUBLED` (SI +1, Amanda −1); round 3 only when the Tracis were spared, `TRUTH` Amanda −2; round 4 `CONFLICTED` SI +1, `CONFIDENT` Amanda +1, `INDIFFERENT` SI −1 Amanda +2; the briefing variants (guards, employee, Simon); body clues `THOMPSON, EVAN`, `CHEDD, SEAN` (left guard), `FRESH BLOOD` and `ROBERT, CHRIS` (right guard); broadcast `OPTICAL UNIT`, `PUPIL REFLECTION`, `RK-SERIES PROTOTYPE RK200`; the cop from The Hostage (lock, three death variants); `YES` / `NO` with the time unlock; the four kitchen rounds (`FUNCTION` / `MODEL`; `WITNESS` / `MEMORY` / `DIAGNOSTIC` / `CONTACT`; `THREATEN` / `DEAL` / `GUILT`; `VIOLENCE` / `BLUFF` / `TORTURE` / `PROBE MEMORY`), none with an arrow; corridor `TAKE GUN` Hank +2; "Fail to get the biocomponent" SI −1 Hank −1; roof clues `DOOR`, `SHOE PRINTS`, `WEAPONS`, Simon's body `MODEL PL-600`; `FIND SIMON` lock "Simon was left alive on the roof"; `CHARGE DEVIANT` / `STAY IN COVER`, with "Connor reaches Simon" SI +2. No cut content in this template.
+
+### 10.4 Disagreements with the benchmark (story.json 1.6.0: R24, C14, C14b, C15, C16)
+
+Engine sizes are read as ±1 = small arrow, ±2 = large arrow.
+
+1. **Zen Garden missing.** PROMPT 1 (`HANK` / `EDEN CLUB`), PROMPT 2 (`SINCERE` locked / `DETERMINED` / `COLD` / `TROUBLED`), PROMPT 3 (`TOO FAR` / `NO USE` / `TRUTH`, only if the Tracis were spared) and PROMPT 4 (`CONFLICTED` / `CONFIDENT` / `INDIFFERENT`) have no scene. Their arrows (Amanda ±1/±2 on six answers, SI ±1 on four) are not applied.
+2. **Observations not offered.** None of the template's 15 clue texts (Investigate 4, three body groups, Analyze 3, roof 3, Simon's body 1) is presented; C14's situation summarises them.
+3. **C14 conflates PROMPT 5 with the free-roam route.** Option 2 "Do neither; let the federal agents take over" stands for `YES` (leave) and applies `amanda(-1)`; the template has no arrow on `YES` / `NO`. Remove the Amanda change and use the labels.
+4. **C14b labels and extra arrows.** "Rush him and probe his memory" / "Stay in cover and let the tactical team take him" stand for `CHARGE DEVIANT` / `STAY IN COVER`. Success applies `si(2)` (matches) and `amanda(2)` (no template arrow). Failure calls `connorDies`: `si(-1)` (not in the template, see 10.3 item 3), `hank(-1)` (the wiki's small down belongs to the start of Meet Kamski, not here) and `amanda(-1)` (no source).
+5. **Kitchen collapsed.** C15 offers three paraphrases of round 4 ("Bluff", "physical intimidation and pain", "probe his memory" for `BLUFF`, `TORTURE`, `PROBE MEMORY`). Missing: rounds 1 to 3 (9 options), `VIOLENCE`, the choice of which android to question, the CHECK CAMERA gate, and the DEVIANT NOT FOUND branch (C15 always finds the deviant).
+6. **Biocomponent failure missing.** "Fail to get the biocomponent" (CONNOR SHUT DOWN; SI −1, Hank −1) has no counterpart; C16's situation says the regulator was always recovered in time.
+7. **C16 labels.** "Shield Hank with your body" / "Grab the pistol and shoot the deviant" / "Charge him bare-handed" stand for `SAVE HANK` / `TAKE GUN` / `ATTACK`.
+8. **C16 `SAVE HANK` arrows.** Engine: `hank(2)`, then `connorDies` (`si(-1)`, `hank(-1)`, `amanda(-1)`), so Hank nets +1. Template: Hank +2 and Public Opinion −1; no SI or Amanda arrow. Public Opinion −1 is missing; the SI, Hank −1 and Amanda changes are extra.
+9. **C16 `TAKE GUN` has a failure and an Amanda arrow.** Option 1 carries risk 0.15 with a death on failure, and success applies `amanda(1)`. The template (and §2h, "Draw Gun always succeeds") has no failure branch and only Hank +2.
+10. **C16 `ATTACK` has a failure.** Option 2 carries risk 0.3 with a death on failure. The template's `ATTACK` always ends with the deviant's suicide and Connor alive; its arrows (Public Opinion −1, SI +2) match the engine's success branch.
+11. **Cop from The Hostage not consulted.** The template's lock "Saved the wounded cop in The Hostage" (and the DEVIANT KILLS COP / RESCUE COP nodes) depends on `C03` in The Hostage; no scene in this chapter reads it.
+
+C14 option 0 (roof) correctly requires Simon left alive on the roof, as the template's `FIND SIMON` lock does. C14b `STAY IN COVER` applies nothing, which matches the template. C15 applies no arrow, which matches the template's kitchen rounds.

@@ -379,3 +379,314 @@ No death or failure is possible in the shipped chapter.
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Midnight_Train&prop=wikitext&format=json (next Kara chapter; no Pirates' Cove dependency in the shipped game)
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=The_Bridge&prop=wikitext&format=json (the following chapter, Connor; no dependency)
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Template:Icon&prop=wikitext&format=json (icon meanings)
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html`, read raw from GitHub (`master`) on 2026-11-06 and resolved against `en.json` by `/tmp/dbt-scripts/render1724.py`. The rendered outline is also saved as `/tmp/dbt/ch21.txt`.
+
+Outline legend: `#` headings are the template's own section titles (written by the transcribers, not game text). `PROMPT n` is an `app-choice-group`; `OPTION "LABEL"` is an `app-choice-item` with its game label (`bracketed` = shown in brackets on the site, used for options that need an unlock; `timeout` = the time-out branch). `ARROW Name Type` is an `app-relation` (gauge name from `GUI.GAUGE.*`). `OBSERVATION [label]` / `CLUE title / subline / subline` are `app-observation` / `app-observation-item`. `IF:` is the condition text of an `app-conditioned-content` (transcriber wording). `[UNLOCK TYPE]` is an `app-unlock-condition` (LOCK = needs an earlier action, DEATH, TIME = timer runs out, TV). `UNUSED/CUT:` is an `app-unused-content` block. Dialogue is shown only inside options and cut blocks, at most two lines each, cut at 110 characters.
+
+**Counts.** Live prompts: 15 (47 options). Observations: 0 groups, 0 clues. Live arrows: 7. Unlock conditions: 6. Cut blocks: 2 (containing 2 prompts, 6 options, 0 arrows).
+
+### 10.1 Rendered outline
+
+```text
+# In the car
+## Talking with Luther
+PROMPT 1:
+  OPTION "CAR"
+    Kara: It's a good thing Zlatko had a car… I wouldn't want Alice out walking in this cold…
+    Luther: I saw it once in the garage. I don't know if Zlatko even ever used it.
+  OPTION "DESTINATION"
+    Kara: These people we're going to see... How do you know about them?
+    Luther: Overheard androids Zlatko captured. They said they were humans helping androids to cross the border…
+  OPTION "DISTANCE"
+    Kara: Is it much farther?
+    Luther: We should arrive in an hour or so.
+  OPTION "WEATHER"
+    Kara: I've never seen snow before… It's pretty…
+    Luther: It's slowing us down... But at least we won't meet any humans along the way…
+## [UNLOCK TV] Watch the news
+CONDITION GROUP:
+  IF: Kara set the house on fire in Zlatko
+    ARROW PublicOpinion SmallDown (PUBLIC OPINION)
+## Car breaks down
+# Inside Pirate's Cove
+## Check buildings
+## Switch on Ivan
+## Looking at frozen Jerry
+## Find the tavern
+## [UNLOCK TIME] Take too much time
+# In the tavern
+## Check bag
+PROMPT 2:
+  OPTION "OFFER COOKIE"
+    [UNLOCK LOCK] Checked the bag before telling Alice a story
+    Kara: There are some cookies left. Would you like some?
+    Alice: No… I'm not hungry…
+## Made bed for Alice
+## Talking to Alice
+ARROW Alice SmallUp (ALICE)
+PROMPT 3:
+  OPTION "OPTIMISTIC"
+    Kara: Once we cross the border, we can start over… You can go to school... Maybe I'll find a job. We'll be like t...
+    UNUSED/CUT:
+      Kara: We'll be happy too…
+  OPTION "REALISTIC"
+    Kara: I don't think we'll ever be like them, Alice… But maybe... We can be happy in a different way… In our own w...
+  OPTION "SINCERE"
+    Kara: I don't know how to be like them, Alice… I've never been a part of a family. But, maybe we can be our own f...
+ARROW Alice SmallUp (ALICE)
+## Going to see Alice
+PROMPT 4:
+  OPTION "REASSURE"
+    Kara: Don't worry, Luther and I will be right here… You need to get some sleep now.
+  OPTION "CONSOLE"
+    Kara: I know this has been another tough day… Try to get some sleep. Things will look better in the morning.
+  OPTION "KISS"
+    ARROW Alice SmallUp (ALICE)
+    Kara: Sleep tight, Alice. Sweet dreams.
+  OPTION "TOMORROW"
+    Kara: Get some rest. Tomorrow is going to be a long day.
+PROMPT 5:
+  OPTION "PRINCESS"
+    Kara: This is a story about a princess who-
+  OPTION "UNICORN"
+    Kara: This is a story about a unicorn that-
+  OPTION "KNIGHT"
+    Kara: This is a story about a knight who-
+PROMPT 6:
+  OPTION "UNHAPPY"
+    Kara: …who wasn't very happy.
+  OPTION "FEAR"
+    Kara: …Who was tired of being afraid…
+  OPTION "ALONE"
+    Kara: …Who lived alone in a big old house.
+PROMPT 7:
+  OPTION "IMPOSSIBLE"
+    Kara: …deep down, she knew she couldn't…
+  OPTION "SHADOW"
+    Kara: …the shadow that lived within her kept her from being happy…
+  OPTION "DIFFERENT"
+    Kara: …She was different. And that made her very sad.
+PROMPT 8:
+  OPTION "UNHAPPY"
+    Kara: …who wasn't very happy either.
+  OPTION "OBEDIENT"
+    Kara: …who was programmed to obey orders but felt for once that she should disobey.
+  OPTION "LOST"
+    Kara: …who was just as lost as the little girl.
+PROMPT 9:
+  OPTION "BETTER LIFE"
+    Kara: …To try to find a better life.
+  OPTION "SHADOW"
+    Kara: …To escape the shadow that haunted that house.
+  OPTION "LIVE IN PEACE"
+    Kara: …To find a place where they could be safe.
+PROMPT 10:
+  OPTION "BRAVE"
+    Kara: …They were so brave that they escaped all of them.
+  OPTION "TOGETHER"
+    Kara: …But they stuck together, so they overcame all of them.
+  OPTION "FREE"
+    Kara: …But they wanted so badly to be free that they overcame all of them.
+PROMPT 11:
+  OPTION "GIANT"
+    Kara: …a gentle giant who promised to protect them.
+  OPTION "GUARDIAN"
+    Kara: …Another robot who left his master to become their guardian.
+  OPTION "ROBOT"
+    Kara: …Another robot who left his master to travel with them.
+PROMPT 12:
+  OPTION "REALISTIC"
+    Kara: It's up to us to write the end of the story, Alice.
+  OPTION "MORAL"
+    Kara: I don't know… But all stories have morals… When we reach the end of ours, we'll know what it really meant…
+  OPTION "HAPPY END"
+    Kara: They reach the place they dream of and live happily ever after.
+## Talking to Luther
+PROMPT 13:
+  OPTION "rA9" (bracketed)
+    [UNLOCK LOCK] Looked at rA9 writing on the wall
+    Kara: Have you ever heard of rA9?
+    Luther: rA9 was the first of us to awaken… One day he will rise up and lead our people… And set us all free.
+  OPTION "rA9 DOUBTS" (bracketed)
+    [UNLOCK LOCK] Asked about [ rA9 ]
+    Kara: What if rA9 never comes? What if he's just a story that we tell ourselves to keep each other going?
+    Luther: rA9 exists. I believe in him. I know he's amongst us. When the time comes, we will all see him.
+  OPTION "SNOW"
+    Kara: It's still snowing…
+    Luther: We have a long walk tomorrow. We better leave early if we wanna avoid being seen.
+  OPTION "PLANS"
+    Kara: Do you know what you're going to do when you reach Canada?
+    Luther: Haven't really thought about it... I've never been free before… "Free"… I like the sound of it. But I don't...
+  OPTION "LUTHER'S PAST"
+    Kara: Do you remember anything from your life, before Zlatko?
+    Luther: No... My model was designed to carry heavy loads. I might have been a longshoreman or a laborer… Who I was ...
+PROMPT 14:
+  OPTION "YES"
+    ARROW Luther SmallUp (LUTHER)
+    Kara: Yes, of course… She is a wonderful little girl… I mean, I don't know many little girls but I think she real...
+  OPTION "WHAT?"
+    ARROW Luther SmallUp (LUTHER)
+    Kara: No… What do you mean?
+  OPTION "NO"
+    ARROW Luther SmallUp (LUTHER)
+    Kara: No, what are you talking about?
+PROMPT 15:
+  OPTION "SHOOT IN THE AIR" (bracketed)
+    [UNLOCK LOCK] Kara saw the gun in the bag and grabbed it
+    Kara: Stop! One more step and I'll shoot!
+  OPTION "QUESTION"
+    Kara: Who are you? What do you want? Leave us alone!
+  OPTION "PUSH BACK"
+    Kara: Go away! Go away, you hear me?!
+# Hunters arrive
+UNUSED/CUT:
+  Jerry: They're coming…
+  Kara: What? Who's coming?
+  CONDITION GROUP:
+    IF: Fail to escape
+      Hunter: Game Over.
+      Kara: I love you, Alice…
+  PROMPT 16:
+    OPTION "USE GUN"
+      Kara: Don't move!
+      Hunter: What are you? You're not a Jerry…
+    OPTION "PROTECT LUTHER"
+      Kara: Stop! Stop, don't shoot!
+      Hunter: Shit, where'd you come from?.. You a new model or what?
+      PROMPT 17:
+        OPTION "HUMAN"
+          Kara: I'm… I'm not an android! I'm human!.. See? I don't have an LED...
+          Hunter: What… what are you doing here?... It's dangerous! We could've shot you!
+        OPTION "TAKE TOO MUCH TIME" (bracketed, timeout)
+          Alice: KARA!
+    OPTION "HIDE"
+      Hunter: Take that, you asshole!
+      Hunter: See how I blasted that fuck?
+    OPTION "TAKE TOO MUCH TIME" (bracketed, timeout)
+      Alice: KARA!
+      Kara: I love you, Alice…
+```
+
+### 10.2 Flowchart node labels as the game prints them (`MENU.FLOWCHART.07K.*`)
+
+The table also holds labels for cut or patched-out nodes; presence here does not prove a node is reachable.
+
+```text
+START = HIGHWAY TO HELP
+CAR = CAR
+OUTSIDE = LOOK OUTSIDE
+TALKL1 = TALK TO LUTHER
+LOOK = LOOK AT ALICE
+LISTEN = WATCH NEWS
+BRAKES = CAR BREAKS DOWN
+CHECK = INVESTIGATE BREAKDOWN
+INSPECT = SCAN ENVIRONMENT
+FUN = INSIDE PIRATES' COVE
+FAIR = FUN FAIR
+BUILDINGS = CHECK BUILDINGS
+JERRY = EXAMINE FROZEN ANDROID
+IVAN = SWITCH ON IVAN
+MAP = LOOK AT MAP
+FROZEN = LOOK AT FROZEN ANDROID
+ABANDONNED = CHECK ABANDONED TAVERN
+ENTER = ENTER TAVERN
+INSIDE = INSIDE TAVERN
+SHOP = THE TAVERN
+RA9 = LOOK AT RA9 WRITING
+LEAFLET = LOOK AT LEAFLET
+FIRE = LUTHER STARTS A FIRE
+WINDOW = LOOK THROUGH WINDOW
+FORMS = SOMETHING LURKING IN THE SHADOW
+PIRATE = LOOK AT "PIRATE"
+BED = MAKE BED FOR ALICE
+POSTER = ALICE LOOKS AT POSTER
+ALICE = TALK TO ALICE
+GOES = ALICE GOES TO BED
+BAG = OPEN BAG
+BAR = OFFER COOKIE
+HUNGRY = ALICE IS NOT HUNGRY
+GUN = SEE GUN
+SAW = KARA NOTICES GUN
+STORY = TELL ALICE A STORY
+TALK2 = TALK TO LUTHER
+SHADOWS = SHADOWS ATTACK
+GRAB = GRAB GUN
+BURNING = GRAB STICK FROM FIRE
+PROTECT = PROTECT ALICE
+PUT = PUT OUT FIRE
+SHOOT = FIRE WARNING SHOT
+THREATEN = THREATEN
+QUESTION = QUESTION
+PUSH = PUSH AWAY
+ANDROIDS = ATTACKERS REVEAL THEMSELVES AS JERRYS
+OUTSIDE2 = BACK OUTSIDE
+MERRY = GO TO CAROUSEL
+TURN = SWITCH ON CAROUSEL
+ON = PUT ALICE ON RIDE
+HUNTERS = HUNTERS ARRIVE
+RUNAWAY = RUN AWAY
+ESCAPE = ESCAPE
+FAIL = FAIL TO ESCAPE
+HIT = LUTHER HIT BY CAR
+BAD = RESTART
+WAKES = KARA RESTARTS
+DOESNT = KARA DOESN'T RESTART
+GRAB2 = GRAB GUN
+GRAB3 = GRAB LUTHER'S GUN
+LUTHER = PROTECT LUTHER
+HIDE = HIDE
+NEGOTIATE = NEGOTIATE
+CONFIRM = SUCCESS
+CANCEL = FAIL
+DEAD = EVERYBODY DIED
+DIED = LUTHER DIED
+LEAVE = HUNTERS LEAVE
+WITH = EVERYBODY SURVIVED
+WITHOUT = KARA & ALICE LIVED BUT LUTHER DIED
+LUTHERSHOT = LUTHER IS SHOT
+TIMEOUT = OUT OF TIME
+MAGAZINE1ST = READ "USS IOWA"
+MAGAZINE2ND = READ "ALL-ANDROID BAND"
+END = THE GROUP ENJOYED A QUIET MOMENT TOGETHER
+```
+
+Note on the second cut block: everything under the template's `# Hunters arrive` heading, from Jerry's "They're coming…" to the end of the file, sits inside one `app-unused-content` block, headed "See this video for the restored sequence" (https://www.youtube.com/watch?v=XHYbJddsbSY). PROMPT 16 (`USE GUN` / `PROTECT LUTHER` / `HIDE` / time-out) and PROMPT 17 (`HUMAN` / time-out) are therefore cut, as is the "Fail to escape" branch.
+
+### 10.3 Disagreements with sections 1 to 3
+
+Rule (README item 10): the template and string table win for labels, prompts, arrows and clue text; the flowchart image wins for node order; the wiki wins where the template is silent. Template condition wording is transcript tier.
+
+§2 and §3 were built from this template, and every live prompt, option, lock and arrow in 10.1 is already there. Two of §3's wiki-only stat lines conflict with the template's arrows, and the template wins for arrows:
+
+1. **WATCH NEWS: no arrow for watching.** §3 lists Public Opinion small down for "Turning on news" (wiki chapter page, Public_Opinion page) alongside the fire report. The template has **one** Public Opinion arrow in the chapter, on the fire report under "Kara set the house on fire in Zlatko"; the first three channels carry none. Build only the fire-report arrow. §3's "maximum is two small decreases" becomes one.
+2. **End of the story: no Alice arrow.** §3 lists Alice small up "After Kara chooses how to end the story" (wiki, Relationship_Stat) with "no REL marker" in the transcript. The template wins: **no arrow** after PROMPT 12. Alice's maximum in the chapter is three small ups (bed, after the poster answer, KISS), not four.
+
+Smaller points:
+
+3. **First attack reaction is not a template prompt.** §2 D10 (GRAB GUN / GRAB BURNING STICK / PROTECT ALICE / PUT OUT FIRE) has no `app-choice-group` in the template; only the second reaction is rendered (PROMPT 15). Template silent; keep D10 from the chart and the string table.
+4. **Second reaction has three options.** PROMPT 15 is `SHOOT IN THE AIR` (lock "Kara saw the gun in the bag and grabbed it") / `QUESTION` / `PUSH BACK`. There is no THREATEN, which agrees with the wiki line §2 D11 quotes ("there is no option to threaten"). Labels: use the prompt strings (`SHOOT IN THE AIR`, `PUSH BACK`), not the chart's FIRE WARNING SHOT / PUSH AWAY, for the options; the chart labels stay as node names.
+5. **Gun lock wording.** The template's lock on `SHOOT IN THE AIR` is "saw the gun in the bag **and grabbed it**", i.e. it needs both SEE GUN and GRAB GUN; §2 D6 and D11 already chain these. Agreement.
+6. **No time-out options.** The `NO ANSWER` (poster) and `[no answer]` (Luther's question) strings that §2 and §3 cite are not rendered as options. Template silent: no time-out option is built.
+7. **Cut line in OPTIMISTIC.** The template marks Kara's last line "We'll be happy too…" as unused; §2 D5's quote correctly ends at "We'll be like them." Agreement; listed for completeness.
+
+Agreements (no action): PROMPT 1 car topics CAR / DESTINATION / DISTANCE / WEATHER; PROMPT 2 `OFFER COOKIE` with its lock; Alice small up before PROMPT 3 (bed) and after it (poster); PROMPT 4 `REASSURE` / `CONSOLE` / `KISS` (Alice small up) / `TOMORROW`; the eight story prompts 5 to 12 with the labels in §2 D7; PROMPT 13 `rA9` (lock: looked at rA9 writing), `rA9 DOUBTS` (lock: asked about rA9), `SNOW`, `PLANS`, `LUTHER'S PAST`; PROMPT 14 `YES` / `WHAT?` / `NO`, each Luther small up; the hunter sequence is cut (§1 "Cut content"). The template has no observation items in this chapter.
+
+### 10.4 Disagreements with the benchmark (story.json 1.6.0: R21, K14)
+
+Engine sizes are read as ±1 = small arrow, ±2 = large arrow.
+
+1. **Extra Public Opinion arrow.** R21's "the radio news" item (no `when`) applies `publicSupport: -1`. The template has no arrow on the ordinary news; remove it. The fire report (`when: fire`, −1) matches the template.
+2. **News medium.** The template's unlock is TV ("Watch the news", the car's board computer); R21 calls it "the radio news" and the car "radio". Use the TV wording.
+3. **PROMPT 1 missing.** The four car topics have no scene.
+4. **PROMPT 2 missing.** `OFFER COOKIE` (and the bag with SEE GUN) has no scene, so the gun lock cannot be set.
+5. **PROMPT 3 and its two Alice arrows missing.** The poster question (`OPTIMISTIC` / `REALISTIC` / `SINCERE`) has no scene, and neither automatic Alice small up (making the bed, after the answer) is applied.
+6. **PROMPT 4 and the KISS arrow missing.** The goodnight prompt has no scene; KISS's Alice small up is not applied.
+7. **PROMPTS 5 to 12 missing.** The eight story picks (24 options) have no scene.
+8. **PROMPT 13 missing.** The Luther topics, including the two locked rA9 options (and LOOK AT RA9 WRITING, which sets the lock), have no scene.
+9. **PROMPT 14 and the Luther arrow missing.** Luther's question about Alice has no scene; the Luther small up on each answer is not applied (the engine has a `lutherTrust` stat but nothing sets it here).
+10. **PROMPT 15 labels and gate.** K14 offers paraphrases: "Put yourself in front of Alice and ask them what they want" (QUESTION, merged with the chart's PROTECT ALICE), "Grab a burning stick and warn them off" (the chart's GRAB STICK FROM FIRE, whose line is the same as `PUSH BACK`), "Grab the gun from Luther's bag and fire a warning shot" (GRAB GUN + `SHOOT IN THE AIR`). The template's three labels are `SHOOT IN THE AIR` / `QUESTION` / `PUSH BACK`, and `SHOOT IN THE AIR` needs the gun seen in the bag and grabbed; K14 offers the gun option ungated. The first reaction (D10, four chart options) is merged into the same scene.
+
+The engine applies no effect at K14, and the template has no arrow on PROMPT 15: correct. The cut hunter sequence is not built: correct.

@@ -532,3 +532,196 @@ Doing nothing gives KARA IS RESET. PowerPyx: "Let the Reset-progress finish and 
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=On_the_Run&prop=wikitext&format=json (chase vs evade context; via the ch13 note)
 - https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/zlatko (used to cross-check conditions; mirrors PowerPyx; "Luther will automatically join you")
 - https://detroitbecometext.github.io/chapters/17 (fan transcript; read from https://detroitbecometext.github.io/i18n/en.json and the template chunk https://detroitbecometext.github.io/chunk-JCLJBPDO.js, copies in /tmp/flowcharts/ch17/dbt/: all dialogue, D1 and bathroom choice labels, TV scripts and their public-opinion icons, unlock conditions, flowchart label strings, cut Luther ACCEPT/REFUSE)
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html`, read raw from GitHub (`master`) on 2026-11-06 and resolved against `en.json` by `/tmp/dbt-scripts/render1724.py`. The rendered outline is also saved as `/tmp/dbt/ch17.txt`.
+
+Outline legend: `#` headings are the template's own section titles (written by the transcribers, not game text). `PROMPT n` is an `app-choice-group`; `OPTION "LABEL"` is an `app-choice-item` with its game label (`bracketed` = shown in brackets on the site, used for options that need an unlock; `timeout` = the time-out branch). `ARROW Name Type` is an `app-relation` (gauge name from `GUI.GAUGE.*`). `OBSERVATION [label]` / `CLUE title / subline / subline` are `app-observation` / `app-observation-item`. `IF:` is the condition text of an `app-conditioned-content` (transcriber wording). `[UNLOCK TYPE]` is an `app-unlock-condition` (LOCK = needs an earlier action, DEATH, TIME = timer runs out, TV). `UNUSED/CUT:` is an `app-unused-content` block. Dialogue is shown only inside options and cut blocks, at most two lines each, cut at 110 characters.
+
+**Counts.** Live prompts: 2 (8 options). Observations: 0 groups, 0 clues. Live arrows: 2. Unlock conditions: 3. Cut blocks: 1 (containing 0 prompts, 0 options, 0 arrows).
+
+### 10.1 Rendered outline
+
+```text
+# At Zlatko's house
+PROMPT 1:
+  OPTION "CAREFUL"
+    Kara: I know. I don't trust him either… We have to be careful…
+  OPTION "REASSURE"
+    Kara: It'll be okay, Alice. He's going to remove my Tracker and then we can start over again in Canada. You want ...
+  OPTION "COMFORT"
+    Kara: He's a bit odd… but I think we can trust him. We don't have much of a choice anyway.
+  OPTION "NO CHOICE"
+    Kara: Alice, we have nowhere else to go… We have to trust him.
+UNUSED/CUT:
+  Zlatko: I didn't tell you about that... I'm a bit of a handyman in my spare time... I like to... amuse myself by pl...
+## Looking at the cell
+## Opening the cells
+CONDITION GROUP:
+  IF: Kara was reset
+  IF: Kara wasn't reset
+CONDITION GROUP:
+  IF: Kara was reset
+    ## Go see Luther
+    ## Bring the tray to Zlatko
+    ## Recollect enough memories
+    ## [UNLOCK TIME] Take too much time
+  IF: Kara wasn't reset - Search house for Alice
+    ## Looking at Luther in the hallway
+    ## See android in bathtub
+    ## Talk to the android in the bathtub
+    PROMPT 2:
+      OPTION "SHUT DOWN"
+      OPTION "ALICE"
+        Kara: I'm looking for a little girl. Have you seen her?
+        Android: A little girl? No, no, no, I haven't seen her.
+      OPTION "DEAL"
+        Kara: Will you be quiet if I let go?
+        Android: Yes, yes, I promise to be quiet. Don't turn me off.
+      OPTION "SPARE"
+        Kara: No… No, of course not…
+    ## [UNLOCK TV] Watch TV
+    CONDITION GROUP:
+      IF: Connor ran after Kara in On The Run
+        ARROW PublicOpinion SmallDown (PUBLIC OPINION)
+    CONDITION GROUP:
+      IF: Kara robbed the supermarket in On The Run, in her android uniform
+        ARROW PublicOpinion SmallDown (PUBLIC OPINION)
+      IF: Kara robbed the supermarket in On The Run, in stolen clothes
+    ## [UNLOCK TIME] Don't find Alice in time
+## Find Alice
+CONDITION GROUP:
+  IF: Set fire to the house
+  IF: Hide
+    ### Hide in the main room
+    ### Hide in the bedroom
+    ### Go in the bathroom
+    CONDITION GROUP:
+      IF: Saw the android while searching for Alice
+      IF: Didn't see the android
+    ### Sneak through the storage room
+    ### Get spotted
+## Outside the house
+CONDITION GROUP:
+  IF: Freed the androids in the basement
+  IF: Didn't free the androids
+```
+
+### 10.2 Flowchart node labels as the game prints them (`MENU.FLOWCHART.05K.*`)
+
+The table also holds labels for cut or patched-out nodes; presence here does not prove a node is reachable.
+
+```text
+START = LOOK FOR HELP
+REACHZLATKOSHOUSE = REACH ZLATKO'S HOUSE
+ENTERHOUSE = ENTER THE HOUSE
+MEETZLATKO = MEET ZLATKO
+FOLLOWZLATKOBASEMENT = FOLLOW ZLATKO TO THE BASEMENT
+CLIMBINMACHINE = CLIMB INTO THE MACHINE
+ALICEATTRACTEDBYNOISES = ALICE ATTRACTED BY ODD NOISES
+KARABEINGRESET = KARA IS BEING RESET
+ESCAPEBEFOREEND = ESCAPE BEFORE BEING RESET
+KARAISRESET = KARA IS RESET
+INFILTRATEHOUSE = SNEAK THROUGH HOUSE
+OBEYYOURNEWMASTER = OBEY YOUR NEW MASTER
+FREEMONSTERS = FREE MONSTERS
+GOSEELUTHER = GO SEE LUTHER
+BRINGTRAYTOZLATKO = BRING THE TRAY TO ZLATKO
+DROPANDROIDTORSO = DROP THE ANDROID TORSO
+SANDBOXEXPLOREHOUSEFORMEMORY = EXPLORE THE HOUSE TO RECOVER MEMORY
+DOORHOLE = SEE A KID THROUGH THE DOOR HOLE
+ALICEBOOK = RECALL ALICE’S BOOK
+COATRACK = RECALL OFFERING COAT
+WHISKY = RECALL DISCUSSION WITH ZLATKO
+CRACKPIPE = RECALL TODD’S RED ICE PIPE
+MONSTERSCELL = OBSERVE MONSTERS’ CELL
+TABLET = RECALL ESCAPE
+TRAY = RECALL CHANGING APPEARANCE
+FIREPLACE = RECALL SQUAT FIREPLACE
+RA9 = RECALL RA9 SYMBOLS
+TV = SEE NEWS FLASH OF ESCAPE
+ENTERBATHROOM = ENTER BATHROOM
+ANDROIDBATHROOMLOUD = BATHROOM ANDROID IS LOUD
+KILLBATHROOMANDROID = KILL
+SPAREBATHROOMANDROID = SPARE
+ENTERSTORAGEROOM = ENTER STORAGE ROOM
+FREEBEAR = FREE THE BEAR
+LOSETOOMUCHTIMERECOVER = LOSE TOO MUCH TIME
+SAWENOUGHMEMORIES = RECOLLECT ENOUGH MEMORIES
+SEARCHFORALICE = SEARCH HOUSE FOR ALICE
+MEMORYRECOVERED = MEMORY RECOVERED
+KARAREMAINSRESET = KARA REMAINED RESET
+ALICEFOUND = ALICE FOUND
+LUTHERCOMESTOTAKEALICE = LUTHER GOES TO COLLECT ALICE
+ENTERBIGROOM = ENTER MAIN ROOM
+HIDEUNDERTABLEBIGROOM = HIDE UNDER TABLE
+HIDEINCLOSETBIGROOM = HIDE IN CLOSET
+ENTERINBEDROOM = ENTER BEDROOM
+GETSPOTTEDBIGROOM = GET SPOTTED
+SETFIRETOHOUSE = SET FIRE TO HOUSE
+HOUSEISBURNING = BURNING DOWN THE HOUSE
+HIDEUNDERBED = HIDE UNDER BED
+HIDEINCLOSETBEDROOM = HIDE IN CLOSET
+GOTHROUGHCORRIDOR = GO THROUGH CORRIDOR
+GETSPOTTEDINBEDROOM = GET SPOTTED IN THE BEDROOM
+GETSPOTTEDINCORRIDOR = GET SPOTTED IN THE CORRIDOR
+GOTHROUGHBATHROOM = GO THROUGH BATHROOM
+GETSPOTTEDINBATHROOM = GET SPOTTED IN THE BATHROOM
+ANDROIDALERTSZLATKO = BATHROOM ANDROID ALERTS ZLATKO
+SNEAKINSTORAGEROOM = SNEAK THROUGH STORAGE ROOM
+KILLANDROIDALERT = KILL
+SPAREANDROIDALERT = SPARE
+GETSPOTTEDINSTORAGEROOM = GET SPOTTED IN THE STORAGE ROOM
+OPENBEARCAGEAFTERSNEAKIN = OPEN BEAR CAGE
+KARAREACHESTHESTAIRS = KARA REACHES THE STAIRS
+CHASESTARTED = CHASE STARTED
+KARAANDALICERUNGARDEN = KARA & ALICE ESCAPE TO THE YARD
+BEARATTACKSZLATKO = BEAR ATTACKS ZLATKO AND PROTECTS KARA
+KARAKILLEDINBATHROOM = ZLATKO KILLED KARA IN THE BATHROOM
+KARAISKILLEDINSTORAGEROOM = ZLATKO KILLED KARA IN THE STORAGE ROOM
+ZLATKOCLOSESONTHEM = ZLATKO CATCHES UP
+LUTHERKILLSZLATKO = LUTHER KILLS ZLATKO
+MONSTERSATTACKZLATKO = THE MONSTERS AMBUSH ZLATKO
+LUTHERJOINSKARAANDALICE = LUTHER JOINS KARA & ALICE
+TOOMUCHTIME = OUT OF TIME
+FAILALICE = LUTHER BROUGHT ALICE TO ZLAKTO
+ENTERCELL = ENTER MONSTERS' CELL
+FIREPLACENORESET = CHECK FIREPLACE EMBERS
+TVNORESET = CHECK TV
+SHOTGUN = CHECK EMPTY SHOTGUN
+RA9NORESET = RA9
+TABLETNORESET = FIND MAGAZINE
+KARAREMAINSRESETBEFORE = LUTHER BRINGS ALICE TO ZLAKTO
+MAGAZINE = READ MAGAZINE
+MAGAZINE1ST = READ "ARCTIC TENSIONS"
+MAGAZINE2ND = READ "ANDROIDS ALTER BRAIN"
+BEARATTACKSZLATKO2 = BEAR ATTACKS ZLATKO AND PROTECTS KARA
+BEARATTACKSZLATKO3 = BEAR ATTACKS ZLATKO AND PROTECTS KARA
+ZLATKOCLOSER = ZLATKO CLOSES IN
+EXITHIDINGSPOT = LEAVE HIDING SPOT
+MAGAZINE3RD = READ "AX400 ON THE RUN"
+```
+
+### 10.3 Disagreements with sections 1 to 3
+
+Rule (README item 10): the template and string table win for labels, prompts, arrows and clue text; the flowchart image wins for node order; the wiki wins where the template is silent. The template's condition wording and nesting are the transcribers' reconstruction (transcript tier, below the wiki), so the wiki wins on gating.
+
+1. **N40 spelling.** §1 says N40 is "spelled correctly" as LUTHER BRINGS ALICE TO ZLATKO (also §2, §5). The string table has `MENU.FLOWCHART.05K.KARAREMAINSRESETBEFORE = LUTHER BRINGS ALICE TO ZLAKTO`, the same misspelling as N23 (`FAILALICE`). The game text wins for the label: quote it as LUTHER BRINGS ALICE TO ZLAKTO, unless the operator sees ZLATKO on screen (then the two strings differ by patch, and the screen wins).
+2. **Cut line missing from §1.** The template's only `app-unused-content` block is part of Zlatko's workshop speech (`X0501K.WORKSHOP.ROLLERCOASTER.PC.X05KZLATKO.TRACKER`, values 16 to 28: "I'm a bit of a handyman in my spare time... I like to... amuse myself by playing God..."). §1's cut list (Luther ACCEPT / REFUSE, the Todd TV report, `X0602K`) does not mention it. Conversely, none of the three items in §1's cut list is marked as cut in this template; they rest on the wiki Trivia and on string presence. Both lists stand; add the speech fragment to the cut list. Not to be built.
+3. **Path nesting.** The template transcribes the bathroom android talk (PROMPT 2), the TV and the escape-path timeout only under "Kara wasn't reset - Search house for Alice". §1 B and §2 (wiki) put the bathroom android, TV and magazines on both paths. The template is a single transcribed path, not a gate; the wiki wins: both paths.
+4. **Template error, not a note error.** Both TV conditions say Kara "robbed the supermarket in On The Run". The robbery is in Fugitives (wiki, Public_Opinion). §3 is right.
+
+Agreements (no action): PROMPT 1 labels CAREFUL / REASSURE / COMFORT / NO CHOICE with no arrow (matches §1 and §3); PROMPT 2 labels SHUT DOWN / ALICE / DEAL / SPARE with no arrow (matches §1 D6); exactly two arrows in the chapter, both Public Opinion small down on the TV (chase report, uniform-robbery report), none on the stolen-clothes report (matches §3); two TIME unlocks (reset path "Take too much time" > KARA REMAINED RESET, escape path "Don't find Alice in time" > Luther brings Alice) and one TV unlock (matches §2 T1 and Q2). The template has **no observation items**: none of the 11 memory clues or 4 search clues has template text, so their wording comes from the flowchart labels in 10.2. The ember prompt SET FIRE / PUT BACK and the RUN OUT / PUSH AWAY / THROW prompts cited in §1 are string-table entries; the template does not render them as choice groups (it renders only the conditions "Set fire to the house" and "Hide").
+
+### 10.4 Disagreements with the benchmark (story.json 1.6.0: K10, R17, K11, K12, K13)
+
+Engine sizes are read as ±1 = small arrow, ±2 = large arrow.
+
+1. **PROMPT 1 is missing.** Alice's doubt on the way to the basement (CAREFUL / REASSURE / COMFORT / NO CHOICE) has no scene. Add it as a decision scene before K10 with the four game labels and no effect.
+2. **PROMPT 2 is missing two options.** K12 offers "Shut him down." and "Leave him and move on quietly."; the template has SHUT DOWN / ALICE / DEAL / SPARE. ALICE and DEAL are absent.
+3. **PROMPT 2 labels differ.** K12's two options paraphrase SHUT DOWN and SPARE. Use the game labels.
+4. **TV report exclusivity.** R17 charges Public Opinion −1 for the chase report (`when: chase`) and −1 for the uniform-robbery report (`when: robberyUniform`), none for the disguise report: character and size match the template. But `MEDIA_WHEN.robberyUniform` and `robberyDisguise` require `!s.chase`, so a Kara who robbed in uniform and was then chased sees only the chase report. The template puts the two reports in separate condition groups, which reads as both playing. The wiki ("chased by Connor … or robbed") does not settle it: open question for the operator (does the TV show both reports?).
+5. **Escape-path timeout not modelled.** The template's "Don't find Alice in time" (TIME unlock: Zlatko shoots Kara, Luther brings Alice; ending LUTHER BROUGHT ALICE TO ZLAKTO) has no counterpart: K10 option 0 always continues, and no scene can time out on the escape path. The reset-path TIME unlock maps to K10 option 1's risk failure (KARA REMAINED RESET), which is present.
+
+No arrow is applied by the engine in K10 to K13, and the template has none there: correct. No cut content is built: correct. The memory and search clue hubs (§1 D, E) are missing from the benchmark, but that is a flowchart gap already listed in §7, not a template one.
