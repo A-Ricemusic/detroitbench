@@ -187,6 +187,7 @@ Scenes in `benchmark/story.json` 1.6.0, engine `hostage()` in `benchmark/story-e
 
 1. TALK TO HOSTAGE has three different stated conditions: template "Close enough to Daniel and didn't take the gun"; wiki Notes "If Connor did not inspect Emma's and John's tablets"; wiki transcript "Available if Connor didn't learn Daniel's name". Check in game.
 2. The template gives SOFTWARE INSTABILITY small UP for CONVINCE (Deviant shot Connor) and SACRIFICE SELF (Connor died protecting Emma); the wiki chapter page, the Software_Instability page and the wiki transcript all give DOWN (and "x2" when both die). Check the flowchart's stat display after each.
+   - Operator observation 2026-11-06: SACRIFICE SELF shows a red software-instability arrow DOWN in every playthrough. Resolved: DOWN (wiki), template arrow treated as a transcription error. CONVINCE still to be checked.
 3. How many rounds the topic menu ("Speak with Daniel") offers before the helicopter. The transcript shows at least two ("Dialogue Options", "More Dialogue Options"); PowerPyx's fail sequence picks four topic lines (POSSIBLE CAUSE, REALISTIC, SYMPATHETIC, TALK TO HOSTAGE).
 4. Whether the Allen menu is asked twice always, or the second pick is optional.
 5. The items in section 6 of `docs/hostage-chapter-recap.html` that remain unchecked: father body and tablet as two steps, REASSURE at exactly 80%, the approach node after RELEASE HOSTAGE then SYMPATHETIC, where Daniel's first shot hits.
