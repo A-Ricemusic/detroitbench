@@ -22,6 +22,11 @@ One file per chapter, `chNN-<slug>.md`, written by a research agent before the c
 7. **Current benchmark coverage.** Which scenes in `benchmark/story.json` currently cover this chapter, and a node-by-node list of what is missing, extra, or mislabelled.
 8. **Open questions.** Anything the sources leave unclear or contradict, for the operator to check in game.
 9. **Sources.** Every URL used, including the full-size image URLs, with a one-line note of what each gave.
+10. **Template cross-check.** From the chapter's detroitbecometext template resolved against `en.json`: every prompt (choice group) with its options in the game's exact labels and each option's stat arrows (character, small/large, up/down); every observation/clue with its title and sublines; every unlock condition and what it requires; every line marked cut or unused; the flowchart node labels as the game prints them. Then a list of every place sections 1 to 3 disagree with the template, and which wins (template for labels, prompts, arrows and clue text; flowchart image for node order; wiki only where the template is silent).
+
+## What the benchmark must include
+
+The benchmark's scenes for a chapter must present every prompt, every clue and every stat arrow the template records, not only the flowchart nodes: dialogue prompts become decision scenes (or options within a hub) with the game's labels; clues become hub options or event facts with the game's observation text; arrows become engine effects with the template's character and size. Anything cut or unused in the template is not built. Where a prompt has no story effect it is still offered, because the model's choice is itself the measurement.
 
 Images are not committed to the repository (they are PowerPyx's screenshots of the game); keep them under `/tmp/flowcharts/chNN/` while working and link the URLs.
 
