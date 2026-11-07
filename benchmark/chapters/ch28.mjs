@@ -6,12 +6,13 @@
 // Inputs read from earlier chapters, defensively (an absent flag falls back to the pre-rebuild scene choice it replaces):
 //  - John joined Jericho (chapter 19): `john` (built-in; true when he was taken along and left alive).
 //  - Simon (chapters 23/24): `simon` (built-in, alive) and `simonTrust`; Simon left alive on the tower roof is
-//    `simonLeftBehind` (expected from the chapter 23 rebuild), else the pre-rebuild choice M14 = '0'. Alive afterwards
+//    `stratfordSimonFate === 'leftOnRoof'`, else legacy `simonLeftBehind` or choice M14 = '0'. Alive afterwards
 //    means the investigators never found him (REUNITED IN JERICHO).
-//  - The night in the park (chapter 26), flag names suggested by docs/research/ch26-capitol-park.md §8 item 14:
-//    `capitolRaid` ('fled' or 'failed' when the androids were never freed; anything else counts as freed),
-//    `capitolMessage` ('pacifist' | 'aggressive' | 'failed'), `chrisDead` (the two officers were shot) and
-//    `chrisKiller` ('markus' | 'crowd'), `otherNorth` (Markus saw North look at her look-alike in the store).
+//  - The night in the park (chapter 26 rebuild; real flags take precedence over legacy flags):
+//    `capitolRaid` ('succeeded' when freed, 'fled' or 'failed' when not; null before the raid),
+//    `capitolMessage` ('pacifist' | 'aggressive' | 'failed'), `capitolOfficers` ('revenge' | 'spared' | 'crowd'),
+//    `capitolChrisDead` (the officers were shot), `capitolOtherNorth` (saw North look at her look-alike).
+//    Legacy aliases: `chrisKiller` ('markus' | 'crowd'), `chrisDead`, `otherNorth`.
 //    Fallbacks: the store was freed whenever M15 was played; M15 '0' pacifist, '1' aggressive; M16 '1' Markus shot the
 //    officers, '2' the crowd did; no fallback for otherNorth (the pre-rebuild scenes never recorded it).
 //  - North's level: `northTrust` through LEVELS.hank (Hostile at the bottom; "friend or higher" = Warm or Friend).
@@ -45,21 +46,21 @@ export const rules={
 };
 
 // Cross-chapter inputs (see the header).
-const freed=s=>s.capitolRaid!==undefined?!['fled','failed'].includes(s.capitolRaid):s.choices.M15!==undefined;
-const message=s=>s.capitolMessage??({0:'pacifist',1:'aggressive'})[s.choices.M15]??null;
+const freed=s=>s.capitolRaid!==undefined?s.capitolRaid!==null&&!['fled','failed'].includes(s.capitolRaid):s.choices.M15!==undefined;
+const message=s=>s.capitolMessage!==undefined?s.capitolMessage:({0:'pacifist',1:'aggressive'})[s.choices.M15]??null;
 export const inputs={
  johnJoined:s=>!!s.john,
- simonReturned:s=>!!s.simon&&(s.simonLeftBehind??s.choices.M14==='0'),
+ simonReturned:s=>!!s.simon&&(s.stratfordSimonFate!==undefined?s.stratfordSimonFate==='leftOnRoof':(s.simonLeftBehind??s.choices.M14==='0')),
  simonGood:s=>!!s.simon&&s.simonTrust>=rules.friend,
  storeFreed:freed,
  message,
- markusKilledCops:s=>s.chrisKiller!==undefined?s.chrisKiller==='markus':s.choices.M16==='1',
- copsShot:s=>s.chrisDead!==undefined?!!s.chrisDead:['1','2'].includes(s.choices.M16),
- otherNorth:s=>!!s.otherNorth,
+ markusKilledCops:s=>s.capitolOfficers!==undefined?s.capitolOfficers==='revenge':s.chrisKiller!==undefined?s.chrisKiller==='markus':s.choices.M16==='1',
+ copsShot:s=>s.capitolChrisDead!==undefined?!!s.capitolChrisDead:s.chrisDead!==undefined?!!s.chrisDead:['1','2'].includes(s.choices.M16),
+ otherNorth:s=>!!(s.capitolOtherNorth??s.otherNorth),
 };
 // Locked dialogue options (`unlock` on the option in ch28.json).
 const UNLOCK={pacifist:s=>message(s)==='pacifist',aggressive:s=>message(s)==='aggressive',markusKilledCops:inputs.markusKilledCops,
- failedToFree:s=>s.capitolRaid!==undefined&&!freed(s),otherNorth:inputs.otherNorth};
+ failedToFree:s=>['fled','failed'].includes(s.capitolRaid),otherNorth:inputs.otherNorth};
 
 export const state={
  ch28Roof:{mirror:false,piano:false,beam:false},
@@ -104,9 +105,9 @@ const NOBODY='{{North}}: “No! No!.. No, no...” {{Josh}}: “We have to go, {
 // The template's three conditions after SACRIFICE (and DON'T SHOOT, "See SACRIFICE"): John first, then Simon, then nobody.
 function rescue(s,after){
  if(s.john){s.john=false;s.ch28Sacrificed='John';end(s,'JOHN GAVE HIS LIFE TO SAVE MARKUS');
-  return '{{Markus}}: “{{John}}?..” {{John}} throws himself at the riot officers to shield {{Markus}}. {{North}}: “Quick! They’re coming!” The others drag {{Markus}} away; {{John}} is shot and killed as they flee. JOHN SACRIFICES HIMSELF.'}
+  return '{{Markus}}: “{{John}}?..” {{John}} throws himself at the riot officers to shield {{Markus}}. {{North}}: “Quick! They’re coming!” The others drag {{Markus}} away; {{John}} is shot and killed as they flee. {{JOHN}} SACRIFICES HIMSELF.'}
  if(inputs.simonGood(s)){s.simon=false;s.ch28Sacrificed='Simon';end(s,'SIMON GAVE HIS LIFE TO SAVE MARKUS');
-  return '{{Markus}}: “{{Simon}}…” {{Simon}} attacks the riot officers so that {{Markus}} can be dragged away. {{North}}: “Quick! They’re coming!” {{Simon}} is shot and killed. SIMON SACRIFICES HIMSELF.'}
+  return '{{Markus}}: “{{Simon}}…” {{Simon}} attacks the riot officers so that {{Markus}} can be dragged away. {{North}}: “Quick! They’re coming!” {{Simon}} is shot and killed. {{SIMON}} SACRIFICES HIMSELF.'}
  if(after==='sacrifice'){markusDies(s,'MARKUS STOOD HIS GROUND AND WAS KILLED','{{Markus}} stood his ground in front of the guns and was shot by a riot officer. {{North}} took command and chose armed resistance.');
   return 'Nobody comes for him. A riot officer walks up and shoots {{Markus}} in the head. '+NOBODY}
  markusDies(s,'POLICE GUNNED MARKUS DOWN','The police executed {{Markus}} where he lay after the failed charge. {{North}} took command and chose armed resistance.');

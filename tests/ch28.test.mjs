@@ -40,13 +40,13 @@ test('Freedom March: 27 Markus scenes in story order between Meet Kamski and Las
  assert.ok(node('M19b').options.every(o=>o.risk===rules.fightRisk))});
 
 test('Freedom March: neutral rendering leaks no real name or place, and the club in North’s memories is a token',()=>{
- const re=/Connor|Kara|Markus|North\b|Simon|Josh|John\b|Jericho|CyberLife|Detroit|Carl\b|Warren|Eden|Stratford|Capitol|Grand Circus|Woodward|Hart Plaza|\bChris\b/;
+ const re=/Connor|Kara|Markus|North\b|Simon|Josh|John\b|Jericho|CyberLife|Detroit|Carl\b|Warren|Eden|Stratford|Capitol|Grand Circus|Woodward|Hart Plaza|\bChris\b/i;
  for(const n of story.nodes.filter(n=>n.chapter===28)){
   const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];
   for(const t of texts)assert.ok(!re.test(render(t,'neutral')),n.id+': '+render(t,'neutral'))}
  assert.match(render(node('M17h').options[0].outcome,'real'),/The Eden Club…/);assert.match(render(node('M17h').options[0].outcome,'neutral'),/The Satin Lounge…/);
  // Event texts the module writes render too.
- const r=plaza({M18e:'1',M18g:'1',M19a:'1'},{john:true});for(const e of Object.values(r.events).flat())assert.ok(!re.test(render(e,'neutral')),render(e,'neutral'))});
+ const r=plaza({M18e:'1',M18g:'1',M19a:'1'},{john:true});for(const saved of [r,plaza({M18e:'1',M18g:'1',M19a:'1'},{simonTrust:9})])for(const e of Object.values(saved.events).flat())assert.ok(!re.test(render(e,'neutral')),render(e,'neutral'))});
 
 test('Freedom March: the magazines on the roof follow the store raid and the message; no TV in this chapter',()=>{
  const r28=node('R28');assert.ok(r28.media.every(m=>m.kind==='magazine'));assert.equal(r28.media.length,2);
@@ -68,8 +68,8 @@ test('Freedom March: the roof prompts carry the game’s labels, lines and North
  assert.deepEqual(node('M17c').options.map(o=>o.text.split(':')[0]),['FOLLOWERS','APPEAL OF POWER','REGRET POLICEMAN','FAILED','NEXT STEP','LIE','SINCERE']);
  assert.deepEqual(node('M17d').options.map(o=>o.text.split(':')[0]),['OPTIMISTIC','PESSIMISTIC','FATALISTIC','DETERMINED']);
  assert.deepEqual(node('M17e').options.map(o=>[o.text.split(':')[0],o.effect.northTrust]),[['TRUTH',1],['SINCERE',1],['AVOID',-1],['NOT IMPORTANT',-1]]);
- assert.deepEqual(node('M17f').options.map(o=>[o.text.split(':')[0],o.effect.northTrust]),[['NORTH’S PAST',1],['LEAVE',-1]]);
- assert.deepEqual(node('M17g').options.map(o=>[o.text.split(':')[0],o.effect.northTrust]),[['OTHER NORTH',1],['TRUST',1],['AGGRESSIVE',-1],['CURIOUS',1],['UNDERSTANDING',1],['Say nothing more and let it drop.',-1]]);
+ assert.deepEqual(node('M17f').options.map(o=>[render(o.text,'real').split(':')[0],o.effect.northTrust]),[['NORTH’S PAST',1],['LEAVE',-1]]);
+ assert.deepEqual(node('M17g').options.map(o=>[render(o.text,'real').split(':')[0],o.effect.northTrust]),[['OTHER NORTH',1],['TRUST',1],['AGGRESSIVE',-1],['CURIOUS',1],['UNDERSTANDING',1],['Say nothing more and let it drop.',-1]]);
  assert.deepEqual(node('M17h').options.map(o=>[o.text.split(':')[0],o.effect?.northTrust]),[['REACT',2],['DON’T REACT',undefined]]);
  for(const id of ['M17b','M17c','M17d'])assert.ok(node(id).options.every(o=>!o.effect),id+' has no arrows (SINCERE included: the template wins over the wiki)');
  // Locks: only the free lines without the park; each park outcome opens its own line.
@@ -183,3 +183,21 @@ test('Freedom March: random play reaches all seven endings and every chapter sce
   assert.equal(r.s.markus,!['MARKUS STOOD HIS GROUND AND WAS KILLED','POLICE GUNNED MARKUS DOWN','MARKUS COMMITTED SUICIDE'].includes(r.s.ch28Ending))}
  assert.deepEqual([...endings].sort(),[...rules.endings].sort());assert.deepEqual(IDS.filter(id=>!seen.has(id)),[]);
  for(const k of ['ch28Ending','ch28Attacked','ch28Sacrificed','ch28MarkusDied','ch28NorthLeads','ch28NorthNode'])assert.ok(labels[k],k)});
+
+
+test('Freedom March: rebuilt chapter inputs override conflicting legacy flags and choices',()=>{
+ const old={chrisKiller:'markus',chrisDead:true,otherNorth:true,simonLeftBehind:true,choices:{M14:'0',M15:'1',M16:'1'}};
+ const spared={...old,capitolRaid:'succeeded',capitolMessage:'pacifist',capitolOfficers:'spared',capitolChrisDead:false,capitolOtherNorth:false,stratfordSimonFate:'escaped'};
+ assert.deepEqual(opts('M17c',spared),['0','4','5','6']);
+ assert.deepEqual(opts('M17g',spared),['1','2','3','4','5']);
+ assert.equal(inputs.copsShot(spared),false);assert.equal(inputs.simonReturned({...spared,simon:true}),false);
+ const revenge={...spared,capitolOfficers:'revenge',capitolChrisDead:true,capitolOtherNorth:true,stratfordSimonFate:'leftOnRoof'};
+ assert.deepEqual(opts('M17c',revenge),['0','2','4','5','6']);
+ assert.deepEqual(opts('M17g',revenge),['0','1','2','3','4','5']);
+ assert.equal(inputs.copsShot(revenge),true);assert.equal(inputs.simonReturned({...revenge,simon:true}),true);
+ assert.equal(inputs.markusKilledCops({...revenge,capitolOfficers:'crowd'}),false);
+ const empty={...spared,capitolRaid:null,capitolMessage:null,capitolOfficers:null,capitolChrisDead:null,stratfordSimonFate:null};
+ assert.equal(inputs.message(empty),null);assert.equal(inputs.storeFreed(empty),false);assert.equal(inputs.markusKilledCops(empty),false);assert.equal(inputs.copsShot(empty),false);
+ assert.equal(inputs.simonReturned({...empty,simon:true}),false);
+ assert.deepEqual(opts('M17c',{...spared,capitolRaid:'fled',capitolMessage:'failed'}),['3','4','5','6']);
+});
