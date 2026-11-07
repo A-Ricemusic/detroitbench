@@ -10,7 +10,7 @@
 //    is also Fugitives' forced fallback (ALICE TOO COLD).
 //  - Clothes stolen at the laundromat: the built-in `clothes` (removes the car trunk and the squat's CHANGE CLOTHES).
 //  - The gun from Stormy Night: the built-in `gun` (TAKE GUN BACK / FORGOT GUN, [CHECK GUN], THREATEN with the gun).
-//  - Todd alive or dead: the built-in `todd` (which motel report plays). Who shot him: `ch07Ending` or `toddShooter`
+//  - Todd alive or dead: the built-in `todd` (which motel report plays). Who shot him: `ch07Outcome` (Stormy Night's ending label; legacy `ch07Ending` or `toddShooter`)
 //    matching /alice/i means Alice shot him; otherwise Kara.
 //  - Wire cutters stolen from the supermarket in Fugitives (the squat's Connor dialogue only): `ch10WireCutters`
 //    ('stolen' | 'store' | 'supermarket' | true) or `wireCuttersStolen`.
@@ -71,7 +71,7 @@ const SHELTERS=['car','motel','squat'];
 export function shelterOf(s){
  for(const v of [s.ch10Shelter,s.shelter,s.karaRoute])if(SHELTERS.includes(v))return v;
  const e=String(s.ch10Ending??'');return /motel/i.test(e)?'motel':/squat/i.test(e)?'squat':'car'}
-export const toddShooter=s=>s.todd?null:/alice/i.test(String(s.ch07Ending??s.toddShooter??''))?'Alice':'Kara';
+export const toddShooter=s=>s.todd?null:/alice/i.test(String(s.ch07Outcome??s.ch07Ending??s.toddShooter??''))?'Alice':'Kara';
 export const wireCutters=s=>s.ch10WireCutters===true||['stolen','store','supermarket'].includes(s.ch10WireCutters)||s.wireCuttersStolen===true;
 
 const start=(where)=>s=>shelterOf(s)===where||{car:'Kara did not spend the night in the abandoned car.',motel:'Kara did not spend the night in the motel.',squat:'Kara did not spend the night in the squat.'}[where];

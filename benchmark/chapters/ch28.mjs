@@ -91,7 +91,9 @@ export function available(n,s,opts,h){
  switch(n.id){
   case 'M17a':return s.ch28Roof.mirror?drop(['0']):undefined;
   case 'M17c':case 'M17g':return opts.filter(o=>!o.unlock||UNLOCK[o.unlock](s));
-  case 'M17k':{const m=s.ch28Mall;return drop([m.vendor&&'0',m.personal&&'1',m.cleaner&&'2',m.security&&'3'])}
+  // The exit stays while nobody has joined so Simon's (or Josh's) line plays once; after that refusal it is hidden until
+  // an android is freed, otherwise the same menu could be refused forever (PREPARE THE MARCH needs at least one convert).
+  case 'M17k':{const m=s.ch28Mall,nobody=!(m.vendor||m.personal||m.cleaner||m.security);return drop([m.vendor&&'0',m.personal&&'1',m.cleaner&&'2',m.security&&'3',nobody&&h.c('M17k')==='4'&&'4'])}
   case 'M17l':{const t=s.ch28Street;return drop([t.personal&&'0',t.parked&&'1'])}
   case 'M18b':{const m=s.ch28March;return drop([m.groups>=rules.marchGroups&&'0',m.screens&&'1',(m.chant||m.chantPending)&&'2'])}
  }

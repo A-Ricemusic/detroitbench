@@ -37,14 +37,11 @@ export const ENGINE_CONSTANTS=Object.freeze({...THRESHOLDS,HANK_FRIEND,HANK_HOST
 export const evidenceRoutes=s=>({traci:s.evidence.tracisDead,impersonate:s.evidence.simonBody||s.evidence.kitchenBody,tablet:s.evidence.simonTablet&&s.evidence.statueMap});
 export const armyAwakened=s=>s.deviant&&s.connor&&s.army===true;
 
-// Media conditions: which magazines and broadcasts exist on this path.
+// Media conditions: which magazines and broadcasts exist on this path. Only the built-in names still used by a
+// chapter's media items (Waiting for Hank's Carl report, Battle for Detroit's broadcasts); every other chapter
+// declares its own names in its module's `mediaWhen`.
 const MEDIA_WHEN={
- motel:s=>s.shelter==='motel',carlDead:s=>!s.carl,carlAlive:s=>s.carl,chase:s=>s.chase,noChase:s=>!s.chase,
- motelToddDead:s=>s.shelter==='motel'&&!s.todd,motelToddAlive:s=>s.shelter==='motel'&&s.todd,
- robberyUniform:s=>!s.chase&&s.robbery==='gun'&&!s.clothes,robberyDisguise:s=>!s.chase&&s.robbery==='gun'&&s.clothes,
- fire:s=>s.fire,capitolViolent:s=>choiceAt(s,'M15')==='1',capitolPeaceful:s=>choiceAt(s,'M15')!=='1',
- // Chapter 30 still consumes the march media conditions, using rebuilt chapter 28 outputs.
- marchCharged:s=>!!s.ch28Attacked,marchNotCharged:s=>!s.ch28Attacked,
+ carlDead:s=>!s.carl,carlAlive:s=>s.carl,
  revolution:s=>s.movement==='revolution',demonstration:s=>s.movement==='demonstration',
 };
 export const mediaFor=(n,s)=>(n.media??[]).map((m,i)=>({...m,index:i})).filter(m=>!m.when||(chapterModule(n.chapter)?.mediaWhen?.[m.when]??MEDIA_WHEN[m.when])(s)); // Chapter hook: a module's `mediaWhen` names come first
@@ -86,9 +83,7 @@ export function blocked(n,s){
  // the built-in gate entry below (a media scene still needs an item that exists on the path).
  const moduleGate=chapterGate(n,s);if(typeof moduleGate==='string')return moduleGate;
  if(n.type==='media'){
-  if(id==='R30c'&&!s.jerichoLocated)return 'Connor never reached Jericho.';
-  if(id==='R32c'&&!s.deviant)return 'Only a deviant Connor enters the tower lobby.';
-  if(id==='R32k'&&s.karaRoute==='camp')return 'Kara is in the camp, not the terminal.';
+  // Path gates for media scenes live in the chapter modules (Crossroads' R30c, Battle for Detroit's R32c and R32k).
   if(!mediaFor(n,s).length)return 'No magazine or broadcast exists on this path here.';
   return null;
  }
@@ -245,7 +240,8 @@ export function attitudes(s){
  const rel=g=>level(g,s[SCALES[g].key],s);
  return {
   Connor:[{who:'{{Hank}}',level:s.hank?rel('hank'):'Dead'},{who:'{{Amanda}}',level:rel('amanda')}],
-  Kara:[{who:'{{Alice}}',level:s.alice?rel('alice'):'Dead'},{who:'{{Luther}}',level:s.luther?rel('luther'):(choiceAt(s,'K13')!==undefined?'Dead':'Never met')}],
+  // Luther joins at Zlatko's ending LUTHER JOINS KARA & ALICE (ch17Outcome); after that, `luther` false means he died.
+  Kara:[{who:'{{Alice}}',level:s.alice?rel('alice'):'Dead'},{who:'{{Luther}}',level:s.luther?rel('luther'):(s.ch17Outcome==='LUTHER JOINS KARA & ALICE'?'Dead':'Never met')}],
   Markus:[{who:'{{North}}',level:s.north?rel('north'):'Dead'},{who:'{{Simon}}',level:s.simon?rel('simon'):'Dead'},{who:'{{Josh}}',level:s.josh?rel('josh'):'Dead'},{who:'{{Jericho}}',level:rel('jericho')},{who:'Public opinion',level:rel('publicSupport')},{who:'{{Carl}}',level:s.carl?'Alive':'Dead'}]
  };
 }

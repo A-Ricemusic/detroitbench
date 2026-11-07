@@ -889,7 +889,7 @@ const FINALE={ids:['BF01','C29','C27','BF02','BF03','BF04','BF05','BF06','C28','
   BF09:s=>X.machineConnor(s)&&!s.markus&&['demonstration','revolution'].includes(s.ch32MarkusChart)&&!s.contaminated||'No machine {{Connor}} who saw {{Markus}} stopped.',
   BF10:s=>s.kara&&!s.karaActive&&FIN_ABANDONED(s)&&FIN_SUCCESS(s)&&!s.contaminated||'{{Kara}} did not abandon {{Alice}} before a victory.',
   BF11:s=>s.markus&&!s.markusActive||'{{Markus}} was not cast out of {{Jericho}}.',
-  BF12:s=>!s.kara&&(s.ch17KaraReset===true||/memory was erased/.test(s.karaOutcome??''))||'{{Kara}} was not reset by {{Zlatko}}.',
+  BF12:s=>!s.karaActive&&(s.ch17Outcome==='KARA REMAINED RESET'||s.ch17KaraReset===true||/memory (never came back|was erased)/.test(s.karaOutcome??''))||'{{Kara}} was not reset by {{Zlatko}}.',
   BF13:s=>!s.jerichoLocated&&!s.connor&&!s.markus&&!s.kara||'Not everyone failed before the end.',
  },
  available(n,s,opts,h){
