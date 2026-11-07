@@ -32,9 +32,9 @@
 //       failed message             public opinion +2                       wiki chapter page and Public Opinion page; template silent. Flagged.
 // No Josh or Simon arrow anywhere (none in the template). Markus and North cannot die in this chapter.
 //
-// Inputs from earlier chapters (read in the JSON's situationWhen): simon, simonWounded and choices.M13 (The Stratford Tower:
-// Simon was hit there) for "Simon is here"; choices.M12 for the broadcast's tone. If chapter 23 is rebuilt with other scene IDs,
-// update those requires.
+// Inputs: prefer chapter 23's stratfordSimonFate, stratfordNewsTone and stratfordSwat; JSON variants
+// retain choices.M12/M13, simon and simonWounded fallbacks for legacy states. Radio survival differs
+// from physical presence: leftOnRoof can still speak on the radio while alive.
 // Outputs for later chapters:
 //  capitolRaid      'succeeded' (rammed the store unseen; the Freedom March "Android Riot" magazine) | 'fled' (any flee ending; the
 //                   Freedom March FAILED roof line per its template) | null (chapter not played)
@@ -81,7 +81,7 @@ export function message(s){const p=s.capitolPeace,v=s.capitolViolence;if(p+v===0
 const readsPeaceful=s=>{const p=s.capitolPeace,v=s.capitolViolence;return p+v>0&&p/(p+v)>=rules.peacefulShare};
 const readsViolent=s=>{const p=s.capitolPeace,v=s.capitolViolence;return p+v>0&&v/(p+v)>=rules.peacefulShare};
 const mark=(s,...labels)=>{for(const l of labels)s.capitolNodes.push(l)};
-const radio=s=>s.simon?'{{Simon}}':'{{Josh}}';
+const radio=s=>(['killedBySwat','executed'].includes(s.stratfordSimonFate)?false:s.simon)?'{{Simon}}':'{{Josh}}';
 
 export function available(n,s,opts){
  if(n.id==='CP05'){const d=s.capitolSecure,flying=s.capitolDrone==='flying';
@@ -126,7 +126,7 @@ function plaza(n,s,opt,fail,h){
   case 'hideDrone':if(!fail){s.capitolPrompt=null;h.north(1);mark(s,'HIDE');return '{{Markus}} flattens himself in the hole as the drone passes overhead. {{North}}: “Nice job {{Markus}}.” The drone flies on over the park.'}
    h.north(-1);mark(s,'GET SPOTTED BY DRONE');return 'The drone swings round before {{Markus}} is out of sight, and its light finds him. '+SPOTTED+droneDown(s);
   case 'stayDrone':h.north(-1);mark(s,'GET SPOTTED BY DRONE');return 'The drone’s light finds {{Markus}}. '+SPOTTED+droneDown(s);
-  case 'abandon':flee(s,h,'DECIDED TO FLEE',false);mark(s,'RUN AWAY');return t;
+  case 'abandon':mark(s,'RUN AWAY');flee(s,h,'DECIDED TO FLEE',false);return t;
   case 'kiss':s.capitolPrompt=null;mark(s,'FEIGN KISS');return t;
   case 'hideCar':s.capitolPrompt=null;mark(s,'HIDE AND HACK RADIO');return t;
  }
@@ -174,7 +174,7 @@ function spread(s,opt,h){
  d[opt.group??a]=true;d[a]=true;
  act(opt.meter,rules.spreadNodes[a]);
  if(a==='burnHotel')mark(s,'BURN DUMPSTERS','BURN HOTEL');
- if(a==='burnCoffee')mark(s,'BURN COFFEE SHOP');
+ if(a==='burnCoffee')mark(s,'BURN DUMPSTERS','BURN COFFEE SHOP');
  if((a==='overturnCar'||a==='destroyWindows')&&due()){offer(a==='overturnCar'?'car':'windows');return t+' {{North}} comes up beside him with a bottle, a rag burning in its neck.'}
  return end(s,h,t);
 }

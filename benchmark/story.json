@@ -4032,22 +4032,65 @@
    "situationWhen": [
     {
      "requires": {
-      "simon": true,
-      "choices.M13": false,
-      "simonWounded": false
+      "stratfordSimonFate": "escaped"
      },
      "text": "{{Simon}}: “Our broadcast is all over the news… We got what we wanted. Now humans know…”"
     },
     {
      "requires": {
-      "simon": false
+      "simon": true,
+      "choices.M13": false,
+      "simonWounded": false,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
+     },
+     "text": "{{Simon}}: “Our broadcast is all over the news… We got what we wanted. Now humans know…”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "carried"
+     },
+     "text": "{{Josh}}: “Our broadcast is all over the news. Now humans know…”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "killedBySwat"
+     },
+     "text": "{{Josh}}: “Our broadcast is all over the news. Now humans know…”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "executed"
+     },
+     "text": "{{Josh}}: “Our broadcast is all over the news. Now humans know…”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "leftOnRoof"
+     },
+     "text": "{{Josh}}: “Our broadcast is all over the news. Now humans know…”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": false,
+      "stratfordSwat": true
+     },
+     "text": "{{Josh}}: “Our broadcast is all over the news. Now humans know…”"
+    },
+    {
+     "requires": {
+      "simon": false,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}: “Our broadcast is all over the news. Now humans know…”"
     },
     {
      "requires": {
       "simon": true,
-      "choices.M13": true
+      "choices.M13": true,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}: “Our broadcast is all over the news. Now humans know…”"
     },
@@ -4055,40 +4098,99 @@
      "requires": {
       "simon": true,
       "choices.M13": false,
-      "simonWounded": true
+      "simonWounded": true,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}: “Our broadcast is all over the news. Now humans know…”"
     },
     {
      "requires": {
-      "choices.M12": "0"
+      "stratfordNewsTone": "peaceful"
      },
      "text": "{{North}}: “It was a mistake to reach out to them. They’ll never negotiate with their slaves. We should have shown them that we're prepared to fight.” {{Josh}}: “Violence is never the answer. Dialogue is the only way, I'm sure the humans will listen to us.”"
     },
     {
      "requires": {
-      "choices.M12": "1"
+      "choices.M12": "0",
+      "stratfordNewsTone": false
+     },
+     "text": "{{North}}: “It was a mistake to reach out to them. They’ll never negotiate with their slaves. We should have shown them that we're prepared to fight.” {{Josh}}: “Violence is never the answer. Dialogue is the only way, I'm sure the humans will listen to us.”"
+    },
+    {
+     "requires": {
+      "stratfordNewsTone": "war"
      },
      "text": "{{Josh}}: “They took {{Markus}}’ message as a threat…” {{North}}: “He did the right thing. This is the only language humans understand.” {{Josh}}: “Violence is never the answer. A confrontation will get us nowhere.”"
     },
     {
      "requires": {
-      "simon": true,
-      "choices.M13": false,
-      "simonWounded": false
+      "choices.M12": "1",
+      "stratfordNewsTone": false
+     },
+     "text": "{{Josh}}: “They took {{Markus}}’ message as a threat…” {{North}}: “He did the right thing. This is the only language humans understand.” {{Josh}}: “Violence is never the answer. A confrontation will get us nowhere.”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "escaped"
      },
      "text": "{{Simon}}: “They'll be watching us now. Whatever we do next, we need to think about public opinion.” {{North}}: “Since our broadcast, more and more have been coming to {{Jericho}}... At least our message gave our people hope…” {{Simon}}: “Killing humans wasn't part of the plan.” {{North}}: “They kill our people every day. Do you think they agonize about it?” {{Josh}}: “That's no reason for us to become murderers.” {{North}}: “If killing is the price of freedom, I’ll pay it gladly!” {{Josh}}: “Killing never freed anyone! It just leads to more hatred!” {{North}}: “You're too fond of humans, {{Josh}}. Maybe their lives matter to you more than ours?” {{Josh}}: “If you think murdering humans is going to make us free, then you’re as bad they are!” {{Simon}}: “THAT'S ENOUGH!”"
     },
     {
      "requires": {
-      "simon": false
+      "simon": true,
+      "choices.M13": false,
+      "simonWounded": false,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
+     },
+     "text": "{{Simon}}: “They'll be watching us now. Whatever we do next, we need to think about public opinion.” {{North}}: “Since our broadcast, more and more have been coming to {{Jericho}}... At least our message gave our people hope…” {{Simon}}: “Killing humans wasn't part of the plan.” {{North}}: “They kill our people every day. Do you think they agonize about it?” {{Josh}}: “That's no reason for us to become murderers.” {{North}}: “If killing is the price of freedom, I’ll pay it gladly!” {{Josh}}: “Killing never freed anyone! It just leads to more hatred!” {{North}}: “You're too fond of humans, {{Josh}}. Maybe their lives matter to you more than ours?” {{Josh}}: “If you think murdering humans is going to make us free, then you’re as bad they are!” {{Simon}}: “THAT'S ENOUGH!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "carried"
+     },
+     "text": "{{Josh}}: “{{Simon}} paid with his life…” {{North}}: “{{Simon}} gave his life for our cause.” {{Josh}}: “What difference does that make?” {{North}}: “He's a hero! He died for the revolution – and he won't be the last!” {{Josh}}: “I don’t want a revolution that spills blood!” {{North}}: “Then live as a slave! Because if you're not willing to fight for your freedom, maybe you don't deserve it!” {{Josh}}: “{{North}}, don’t you dare-” You: “THAT'S ENOUGH!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "killedBySwat"
+     },
+     "text": "{{Josh}}: “{{Simon}} paid with his life…” {{North}}: “{{Simon}} gave his life for our cause.” {{Josh}}: “What difference does that make?” {{North}}: “He's a hero! He died for the revolution – and he won't be the last!” {{Josh}}: “I don’t want a revolution that spills blood!” {{North}}: “Then live as a slave! Because if you're not willing to fight for your freedom, maybe you don't deserve it!” {{Josh}}: “{{North}}, don’t you dare-” You: “THAT'S ENOUGH!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "executed"
+     },
+     "text": "{{Josh}}: “{{Simon}} paid with his life…” {{North}}: “{{Simon}} gave his life for our cause.” {{Josh}}: “What difference does that make?” {{North}}: “He's a hero! He died for the revolution – and he won't be the last!” {{Josh}}: “I don’t want a revolution that spills blood!” {{North}}: “Then live as a slave! Because if you're not willing to fight for your freedom, maybe you don't deserve it!” {{Josh}}: “{{North}}, don’t you dare-” You: “THAT'S ENOUGH!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "leftOnRoof"
+     },
+     "text": "{{Josh}}: “{{Simon}} paid with his life…” {{North}}: “{{Simon}} gave his life for our cause.” {{Josh}}: “What difference does that make?” {{North}}: “He's a hero! He died for the revolution – and he won't be the last!” {{Josh}}: “I don’t want a revolution that spills blood!” {{North}}: “Then live as a slave! Because if you're not willing to fight for your freedom, maybe you don't deserve it!” {{Josh}}: “{{North}}, don’t you dare-” You: “THAT'S ENOUGH!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": false,
+      "stratfordSwat": true
+     },
+     "text": "{{Josh}}: “{{Simon}} paid with his life…” {{North}}: “{{Simon}} gave his life for our cause.” {{Josh}}: “What difference does that make?” {{North}}: “He's a hero! He died for the revolution – and he won't be the last!” {{Josh}}: “I don’t want a revolution that spills blood!” {{North}}: “Then live as a slave! Because if you're not willing to fight for your freedom, maybe you don't deserve it!” {{Josh}}: “{{North}}, don’t you dare-” You: “THAT'S ENOUGH!”"
+    },
+    {
+     "requires": {
+      "simon": false,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}: “{{Simon}} paid with his life…” {{North}}: “{{Simon}} gave his life for our cause.” {{Josh}}: “What difference does that make?” {{North}}: “He's a hero! He died for the revolution – and he won't be the last!” {{Josh}}: “I don’t want a revolution that spills blood!” {{North}}: “Then live as a slave! Because if you're not willing to fight for your freedom, maybe you don't deserve it!” {{Josh}}: “{{North}}, don’t you dare-” You: “THAT'S ENOUGH!”"
     },
     {
      "requires": {
       "simon": true,
-      "choices.M13": true
+      "choices.M13": true,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}: “{{Simon}} paid with his life…” {{North}}: “{{Simon}} gave his life for our cause.” {{Josh}}: “What difference does that make?” {{North}}: “He's a hero! He died for the revolution – and he won't be the last!” {{Josh}}: “I don’t want a revolution that spills blood!” {{North}}: “Then live as a slave! Because if you're not willing to fight for your freedom, maybe you don't deserve it!” {{Josh}}: “{{North}}, don’t you dare-” You: “THAT'S ENOUGH!”"
     },
@@ -4096,7 +4198,9 @@
      "requires": {
       "simon": true,
       "choices.M13": false,
-      "simonWounded": true
+      "simonWounded": true,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}: “{{Simon}} paid with his life…” {{North}}: “{{Simon}} gave his life for our cause.” {{Josh}}: “What difference does that make?” {{North}}: “He's a hero! He died for the revolution – and he won't be the last!” {{Josh}}: “I don’t want a revolution that spills blood!” {{North}}: “Then live as a slave! Because if you're not willing to fight for your freedom, maybe you don't deserve it!” {{Josh}}: “{{North}}, don’t you dare-” You: “THAT'S ENOUGH!”"
     },
@@ -4106,9 +4210,17 @@
     },
     {
      "requires": {
+      "stratfordSimonFate": "escaped"
+     },
+     "text": "{{Simon}}: “…not to mention police…”"
+    },
+    {
+     "requires": {
       "simon": true,
       "choices.M13": false,
-      "simonWounded": false
+      "simonWounded": false,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Simon}}: “…not to mention police…”"
     },
@@ -4123,7 +4235,7 @@
    "outcomes": {
     "0": "The five teams leave {{Jericho}}. {{Markus}} and {{North}} take one of the stores, on a plaza by a park downtown."
    },
-   "adaptationNote": "The Jericho prologue the game plays before MISSION START; it has no flowchart node. Every line is the template’s, in the template’s order, with its three condition groups: {{Simon}} here or not (twice) and the tone of the broadcast in the tower. “{{Simon}} is here” is read as {{Simon}} alive and never hit in the tower (no choice at the scene where he is hit, not wounded); “left behind or died” is every other case. Without {{Simon}}, his one line in the plan (“…not to mention police…”) is dropped. The date and time card is the template’s. No stat change; the template has none here.",
+   "adaptationNote": "The Jericho prologue the game plays before MISSION START; it has no flowchart node. Every line is the template’s, in the template’s order, with its three condition groups: {{Simon}} here or not (twice) and the tone of the broadcast in the tower. “{{Simon}} is here” is read as {{Simon}} alive and never hit in the tower (no choice at the scene where he is hit, not wounded); “left behind or died” is every other case. Without {{Simon}}, his one line in the plan (“…not to mention police…”) is dropped. The date and time card is the template’s. No stat change; the template has none here. Rebuilt chapter 23 flags take priority: stratfordSimonFate escaped means here; carried, killedBySwat, executed or leftOnRoof means absent. With no fate, stratfordSwat means absent; otherwise use the old simon/choices.M13/simonWounded conditions. stratfordNewsTone peaceful/war overrides choices.M12.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
     "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
@@ -4534,6 +4646,7 @@
     {
      "requires": {
       "capitolEnding": "DECIDED TO FLEE",
+      "stratfordSimonFate": "escaped",
       "simon": true
      },
      "text": "{{Simon}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
@@ -4541,13 +4654,77 @@
     {
      "requires": {
       "capitolEnding": "DECIDED TO FLEE",
-      "simon": false
+      "stratfordSimonFate": "carried",
+      "simon": true
+     },
+     "text": "{{Simon}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "DECIDED TO FLEE",
+      "stratfordSimonFate": "leftOnRoof",
+      "simon": true
+     },
+     "text": "{{Simon}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "DECIDED TO FLEE",
+      "simon": true,
+      "stratfordSimonFate": false
+     },
+     "text": "{{Simon}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "DECIDED TO FLEE",
+      "stratfordSimonFate": "killedBySwat"
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "DECIDED TO FLEE",
+      "stratfordSimonFate": "executed"
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "DECIDED TO FLEE",
+      "simon": false,
+      "stratfordSimonFate": false
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "DECIDED TO FLEE",
+      "simon": false,
+      "stratfordSimonFate": "escaped"
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "DECIDED TO FLEE",
+      "simon": false,
+      "stratfordSimonFate": "carried"
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "DECIDED TO FLEE",
+      "simon": false,
+      "stratfordSimonFate": "leftOnRoof"
      },
      "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
     },
     {
      "requires": {
       "capitolEnding": "HAD TO FLEE",
+      "stratfordSimonFate": "escaped",
       "simon": true
      },
      "text": "{{Simon}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
@@ -4555,7 +4732,70 @@
     {
      "requires": {
       "capitolEnding": "HAD TO FLEE",
-      "simon": false
+      "stratfordSimonFate": "carried",
+      "simon": true
+     },
+     "text": "{{Simon}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "HAD TO FLEE",
+      "stratfordSimonFate": "leftOnRoof",
+      "simon": true
+     },
+     "text": "{{Simon}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "HAD TO FLEE",
+      "simon": true,
+      "stratfordSimonFate": false
+     },
+     "text": "{{Simon}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "HAD TO FLEE",
+      "stratfordSimonFate": "killedBySwat"
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "HAD TO FLEE",
+      "stratfordSimonFate": "executed"
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "HAD TO FLEE",
+      "simon": false,
+      "stratfordSimonFate": false
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "HAD TO FLEE",
+      "simon": false,
+      "stratfordSimonFate": "escaped"
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "HAD TO FLEE",
+      "simon": false,
+      "stratfordSimonFate": "carried"
+     },
+     "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
+    },
+    {
+     "requires": {
+      "capitolEnding": "HAD TO FLEE",
+      "simon": false,
+      "stratfordSimonFate": "leftOnRoof"
      },
      "text": "{{Josh}}, on the radio: “{{Markus}}, we did it! All teams succeeded – our people are free. We’re heading back to {{Jericho}}.”"
     },
@@ -5069,22 +5309,65 @@
    "situationWhen": [
     {
      "requires": {
-      "simon": true,
-      "choices.M13": false,
-      "simonWounded": false
+      "stratfordSimonFate": "escaped"
      },
      "text": "{{Simon}}, on the radio: “All teams have completed their missions, {{Markus}}.”"
     },
     {
      "requires": {
-      "simon": false
+      "simon": true,
+      "choices.M13": false,
+      "simonWounded": false,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
+     },
+     "text": "{{Simon}}, on the radio: “All teams have completed their missions, {{Markus}}.”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "carried"
+     },
+     "text": "{{Josh}}, on the radio: “We freed hundreds of our people. We did it!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "killedBySwat"
+     },
+     "text": "{{Josh}}, on the radio: “We freed hundreds of our people. We did it!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "executed"
+     },
+     "text": "{{Josh}}, on the radio: “We freed hundreds of our people. We did it!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": "leftOnRoof"
+     },
+     "text": "{{Josh}}, on the radio: “We freed hundreds of our people. We did it!”"
+    },
+    {
+     "requires": {
+      "stratfordSimonFate": false,
+      "stratfordSwat": true
+     },
+     "text": "{{Josh}}, on the radio: “We freed hundreds of our people. We did it!”"
+    },
+    {
+     "requires": {
+      "simon": false,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}, on the radio: “We freed hundreds of our people. We did it!”"
     },
     {
      "requires": {
       "simon": true,
-      "choices.M13": true
+      "choices.M13": true,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}, on the radio: “We freed hundreds of our people. We did it!”"
     },
@@ -5092,7 +5375,9 @@
      "requires": {
       "simon": true,
       "choices.M13": false,
-      "simonWounded": true
+      "simonWounded": true,
+      "stratfordSimonFate": false,
+      "stratfordSwat": false
      },
      "text": "{{Josh}}, on the radio: “We freed hundreds of our people. We did it!”"
     },

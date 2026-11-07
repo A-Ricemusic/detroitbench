@@ -138,3 +138,25 @@ test('Capitol Park: random paths terminate in one of the six endings; Markus and
  for(let i=0;i<200;i++)after.add(check(play({CP05:SECURE},[],{},rng)));
  assert.ok(['RETREAT','HAD TO FLEE','DECIDED TO FLEE'].every(e=>all.has(e)),'random play reaches the flee endings: '+[...all]);
  assert.ok(after.has('MARKUS LED A VIOLENT RIOT')&&after.has('MARKUS LED A PEACEFUL PROTEST'),'random protests reach both message endings: '+[...after])});
+
+test('Capitol Park: rebuilt tower flags override legacy choices for presence, tone and radio survival',()=>{
+ const escaped=play({CP05:SECURE,CP09:['29','29']},[],{stratfordSimonFate:'escaped',stratfordNewsTone:'peaceful',stratfordSwat:false,simon:true,simonWounded:true,choices:{M12:'1',M13:'0'}});
+ assert.match(escaped.situations.CP01[0],/\{\{Simon\}\}: “Our broadcast/);
+ assert.match(escaped.situations.CP01[0],/mistake to reach out/);
+ assert.ok(!escaped.situations.CP01[0].includes('as a threat'));
+ assert.match(escaped.situations.CP10[0],/\{\{Simon\}\}, on the radio/);
+ for(const fate of ['leftOnRoof','killedBySwat','executed']){
+  const r=play({CP05:['12','12','12','12','12']},[],{stratfordSimonFate:fate,stratfordNewsTone:'war',stratfordSwat:true,simon:true,choices:{M12:'0'}});
+  assert.match(r.situations.CP01[0],/\{\{Josh\}\}: “Our broadcast/);
+  assert.match(r.situations.CP01[0],/as a threat/);
+  assert.equal((r.situations.CP01[0].match(/Our broadcast is all over the news/g)||[]).length,1);
+  assert.match(r.text,fate==='leftOnRoof'?/\{\{Simon\}\}, on the radio/:/\{\{Josh\}\}, on the radio/);
+ }
+ const swat=play({},[],{stratfordSwat:true,simon:true});
+ assert.match(swat.situations.CP01[0],/\{\{Josh\}\}: “Our broadcast/);
+ const coffee=play({CP05:SECURE,CP09:['21','31','26','29','29','29']});
+ assert.ok(coffee.s.capitolNodes.includes('BURN DUMPSTERS'));
+ assert.ok(coffee.s.capitolNodes.includes('BURN COFFEE SHOP'));
+ const flee=play({CP05:['5','6','15']},['CP05#2']);
+ assert.ok(flee.s.capitolNodes.indexOf('RUN AWAY')<flee.s.capitolNodes.indexOf('DECIDED TO FLEE'));
+});

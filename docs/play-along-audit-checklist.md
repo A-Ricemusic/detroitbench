@@ -1429,7 +1429,7 @@ Gaps:
 
 - (0) Continue.
 
-_Note: The Jericho prologue the game plays before MISSION START; it has no flowchart node. Every line is the template’s, in the template’s order, with its three condition groups: Simon here or not (twice) and the tone of the broadcast in the tower. “Simon is here” is read as Simon alive and never hit in the tower (no choice at the scene where he is hit, not wounded); “left behind or died” is every other case. Without Simon, his one line in the plan (“…not to mention police…”) is dropped. The date and time card is the template’s. No stat change; the template has none here._
+_Note: The Jericho prologue the game plays before MISSION START; it has no flowchart node. Every line is the template’s, in the template’s order, with its three condition groups: Simon here or not (twice) and the tone of the broadcast in the tower. “Simon is here” is read as Simon alive and never hit in the tower (no choice at the scene where he is hit, not wounded); “left behind or died” is every other case. Without Simon, his one line in the plan (“…not to mention police…”) is dropped. The date and time card is the template’s. No stat change; the template has none here. Rebuilt chapter 23 flags take priority: stratfordSimonFate escaped means here; carried, killedBySwat, executed or leftOnRoof means absent. With no fate, stratfordSwat means absent; otherwise use the old simon/choices.M13/simonWounded conditions. stratfordNewsTone peaceful/war overrides choices.M12._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
