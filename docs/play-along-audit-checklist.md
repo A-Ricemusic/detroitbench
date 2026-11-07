@@ -2558,50 +2558,692 @@ Gaps:
 
 ## Chapter 13: On the Run
 
-### R13 · The morning paper and the news (Kara, media)
+### K09l0 · Morning in the parking lot (Kara, event)
 
-> You are Kara. Before you leave your shelter there is a magazine within reach, and if you have the motel room, the television is on.
+> You are Kara. It is 10:25 in the morning, the day after you fled Todd’s house with Alice. You spent the night in an abandoned car in a fenced parking lot, and Alice is still asleep on the back seat. You get out quietly and leave her sleeping. Anyone who looks at you closely can still see an android: the LED on your temple, your hair as it was.
 
-- (0) Read Detroit Today: Cyber-Wildlife.
-- (1) Read Travel advertisement: Canada Still Android-Free.
-- (2) Watch the morning news report about you.  _only when motelToddDead_
-- (3) Watch the morning news report about you.  _only when motelToddAlive_
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
+- (0) Continue.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s checkpoint MORNING IN PARKING LOT and the unmissable LEAVE ALICE ASLEEP IN CAR (PowerPyx: “simply exit the car”), one event. The start is chosen by Fugitives (where Kara slept); this row plays when she slept in the abandoned car (the module reads `ch10Shelter`, `shelter`, `karaRoute`, then `ch10Ending`, and falls back to the car). Date and time from the template (NOV 6TH, 2038, AM 10:25), without the year. The template has no Kara line before the wake-up; the description of what she still looks like is the chapter’s objective “Change appearance” (wiki infobox). No stat change: the template has no arrow here and no wiki stat page lists one._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K09 · Getting past the police (Kara, execution-policy)
+### K09l · The parking lot (Kara)
 
-> You are Kara. In the morning the street outside is full of police and a drone; Todd has reported you and the news is calling you a kidnapper. You and Alice need to reach the train station a few blocks away. You can move carefully from cover to cover, waiting for patrols to pass, or just walk and run for it if anyone notices.
+> You are Kara, in the fenced parking lot where you spent the night. Alice is asleep in the abandoned car. Before you wake her you can look around: old tires lie in front of the car, magazines on the ground beside them, a dumpster stands against the back wall, the car has a trunk, and the gate you came in by looks out on the street. You do one thing at a time, in any order.
 
-- (0) Move carefully and hide from every patrol until you reach the station.  _risk 0.2_
-- (1) Make no attempt to hide; if you are spotted, run.  _risk 0.25_
+- (0) FIND SOME RUSTED SCISSORS: pull the old scissors out of the tire in front of the car.
+- (1) FIND BURNT ANDROID: look behind the dumpster by the back wall.
+- (2) READ “CYBER-WILDLIFE”: the magazine lying in front of the car.
+- (3) READ “ANDROID AND CANADA”: the other side of it.
+- (4) TRY TO OPEN CAR TRUNK: see what is in the back of the car.  _needs not clothes_
+- (5) FIND A CROWBAR: look for something to force the trunk with.  _needs ch13Lot.trunk_
+- (6) FIND SOME CLOTHES: force the trunk open with the crowbar and put on what is inside.  _needs ch13Lot.crowbar_
+- (7) CHECK NEIGHBORHOOD: look out through the gate you came in by.
+- (8) WAKE UP ALICE: go back to the car and wake her.  _needs ch13Lot.hair and ch13Lot.neighborhood_
 
-_Note: The game uses stealth inputs rather than an explicit detection menu. Deliberate non-evasion triggers the chase._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C09a · The squat (Connor)
-
-> You are Connor. You and Hank are investigating the runaway domestic android and the child she took, and your analysis has led to an abandoned house. A scarred, agitated android named Ralph meets you at the door, swears nobody else is here, and plants himself at the foot of the stairs. Hank says you are wasting your time. You can hear something upstairs.
-
-- (0) Push past him and search upstairs.  _risk 0.2_
-- (1) Take Hank's word for it and leave.
+_Note: The chart’s [ EXPLORE PARKING LOT ] hub and the line out of it, as one repeatable scene: each visit offers what has not been done yet. Chart nodes, in the chart’s order: FIND SOME RUSTED SCISSORS (then the hair, next scene), FIND BURNT ANDROID, READ “CYBER-WILDLIFE”, READ “ANDROID AND CANADA”, TRY TO OPEN CAR TRUNK > FIND A CROWBAR > FIND SOME CLOTHES (cross-chapter padlock; sets `clothes`), CHECK NEIGHBORHOOD with POLICE IS IN VICINITY (one option; PowerPyx: unmissable), then WAKE UP ALICE and LEAVE THE PARKING LOT (one option, with the template’s wake-up dialogue). The trunk needs Kara not to have taken the laundromat clothes in Fugitives (wiki: “only available if didn’t obtain clothes”). Leaving needs the haircut and the look at the street (the objective “Change appearance”; PowerPyx marks CHECK NEIGHBORHOOD unmissable). The two magazines are chart nodes inside the hub, so they are hub options here rather than a media scene; their facts are the wiki’s article text, without the interviewee’s name. The burnt android’s details are the wiki’s Notes (AX420, “DEATH TO ANDROIDS”). The car start has no Alice prompt and no stat arrow anywhere (template, wiki). No stat change: the template has no arrow here and no wiki stat page lists one._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C09 · The highway (Connor)
+### K09l1 · Cut and color your hair (Kara)
 
-> You are Connor. The android and the girl have bolted across six lanes of freeway traffic at full speed, dodging cars. You could still catch them if you go now. Hank grabs your arm and yells at you not to, saying you will get yourself killed and that they will get them another day.
+> You are Kara, kneeling at the side mirror of the abandoned car with the rusted scissors. You are going to cut your hair short so that nobody looking for a runaway android will know you. What color will it be?
 
-- (0) Do as Hank says and let them go.
-- (1) Go after them across the traffic.  _risk 0.35_
+_Only when ch13Lot.scissors._
+
+- (0) BROWN: cut it short and keep it brown.
+- (1) BLACK: cut it short and dye it black.
+- (2) WHITE: cut it short and dye it white.
+- (3) BLONDE: cut it short and dye it blonde.
+
+_Note: The chart’s CUT AND COLOR HAIR (cross-chapter padlock) with its group BROWN / BLACK / WHITE / BLONDE, in the chart’s order, and REMOVE LED (PowerPyx: “Unmissable, Kara will always rip it out after choosing her new haircut”), which is part of every outcome. In the car row it sits under FIND SOME RUSTED SCISSORS; the wiki’s Notes: she “will use one of the side mirrors of the abandoned car to cut her hair”. The template has no prompt for the hair (it is silent), so the labels are the chart’s and the string table’s (HAIRCOLOR choice group). The game also offers CHANGE / FINISH after a color (string table) to try another; only the final color is modelled. Recorded as `ch13Hair`; no later chapter is known to read it (research note §8 Q13). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09s · The supermarket (Connor, event)
+
+> You are Connor, with Lieutenant Hank outside the convenience store where the runaway AX400 was seen last night. Hank lets the bus driver go: “Alright, that’s all for now. Free to go.” Officer Ben: “We’ve got officers sweeping the neighborhood, in case anybody saw anything.” Hank: “Okay. Well, let me know if they turn anything up.” Ben: “What are you gonna do with that?” Hank: “I’ve no idea…” You…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint CONNOR INVESTIGATES SUPERMARKET and POLICE DON’T HAVE A LEAD (PowerPyx: “Unmissable, that’s just the way it is”), one event with the template’s dialogue for the parking-lot row. The wiki infobox has Connor playable here only if Kara is spotted, so it is narrated, not a decision. The template’s variant line for this row when Kara reaches the train unnoticed (Hank: “It won’t get far. We’ll find it sooner or later. Let’s go.”) is not built: it belongs to a Connor scene after the sneak that the chart does not show. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09m0 · Morning in the motel (Kara, event)
+
+> You are Kara, in room 28 of the motel where you spent the night with Alice. It is 10:25 in the morning, the day after you fled Todd’s house. You are wearing the clothes you took from the laundromat; the LED is still on your temple. Alice wakes up. You: “I’m sorry, I didn’t mean to wake you…” Alice: “So, it wasn’t a nightmare…” You: “No... No, it wasn’t a nightmare…”
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint MORNING IN MOTEL, with the template’s first lines. Plays when Kara slept in the motel in Fugitives (which needs the laundromat clothes, so she is dressed). Room 28 is the receptionist’s line later in the chapter. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09m1 · Talk to Alice (Kara)
+
+> You are Kara, beside Alice in the motel room. She has just woken up and remembered last night. What do you say to her?
+
+- (0) BATH?: offer her a nice warm bath, and then food.  _aliceBond +1_
+- (1) HUNGRY?: say she must be starving; a bath, then you will find her something to eat.  _aliceBond +1_
+- (2) TIRED?: tell her it is still early and she should sleep some more.
+
+_Note: The chart’s TALK TO ALICE: the template’s prompt BATH? / HUNGRY? / TIRED?, in its order. Alice small up on BATH? and on HUNGRY? (template arrows; wiki: “Choosing either “bath?” or “hungry?” after waking up in the motel”), +1 each; TIRED? has no arrow. The string table also has a fourth button, FEEL? (“How do you feel? You were really exhausted last night.” / “I’m okay.”), which the template does not place; it is not built. Alice’s nod is inferred (the template goes straight to “Okay. I’ll run you a bath.”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09m · The motel room (Kara)
+
+> You are Kara, in the motel room with Alice. You have said you will run her a bath; the bathroom is through the door. In the room there is a clock, a window onto the street, a painting on the wall, and the television, with magazines in front of it. You still need to change how you look: your hair, and the LED on your temple. You do one thing at a time, in any order.
+
+- (0) DRAW A BATH FOR ALICE: go into the bathroom and start the water.
+- (1) LOOK AT THE CLOCK.
+- (2) LOOK OUTSIDE: look out of the window at the street.
+- (3) READ “CYBER-WILDLIFE”: the magazine in front of the television.
+- (4) READ “ANDROID AND CANADA”: the other side of it.
+- (5) LOOK AT THE PAINTING on the wall.
+- (6) FINISH DRAWING BATH: turn off the taps; the bath is ready.  _needs ch13Room.hair_
+- (7) CHANGE CHANNEL: watch the news with Alice without running the bath.  _needs not ch13Room.bath_
+
+_Note: The chart’s DRAW A BATH FOR ALICE (then the hair, next scene), [ EXPLORE MOTEL ROOM ] with LOOK AT THE CLOCK, LOOK OUTSIDE, READ “CYBER-WILDLIFE”, READ “ANDROID AND CANADA” and LOOK AT THE PAINTING, and FINISH DRAWING BATH, as one repeatable scene. The chart lets Kara explore before the bath (TALK TO ALICE has an edge straight to the hub) or after REMOVE LED, and FINISH DRAWING BATH bypasses the hub, so here the room can be explored any time before the bath is finished, which ends the phase and needs the haircut (Alice’s compliment follows it in the template). The sources give nothing about the clock, the window or the painting, so their outcomes say only what Kara looks at. The magazines are chart nodes inside the hub; their facts are the wiki’s article text. Outcome lines are the template’s (“You’re pretty like that…”, “Your bath’s ready.”). No stat change: the template has no arrow here and no wiki stat page lists one. The direct TALK TO ALICE > EXPLORE MOTEL ROOM > CHANGE CHANNEL edge is also available without starting the bath or haircut. This follows the chart; whether the game forces a haircut elsewhere on that edge remains an operator check (research §8.5)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09m2 · Cut and color your hair (Kara)
+
+> You are Kara, in the motel bathroom with the bath running. You are going to cut your hair short so that nobody looking for a runaway android will know you. What color will it be?
+
+_Only when ch13Room.bath._
+
+- (0) BROWN: cut it short and keep it brown.
+- (1) BLACK: cut it short and dye it black.
+- (2) WHITE: cut it short and dye it white.
+- (3) BLONDE: cut it short and dye it blonde.
+
+_Note: The chart’s CUT AND COLOR HAIR (cross-chapter padlock) with its group BROWN / BLACK / WHITE / BLONDE, in the chart’s order, and REMOVE LED (PowerPyx: “Unmissable, Kara will always rip it out after choosing her new haircut”), which is part of every outcome. In the motel row it sits under DRAW A BATH FOR ALICE. The template has no prompt for the hair (it is silent), so the labels are the chart’s and the string table’s (HAIRCOLOR choice group). The game also offers CHANGE / FINISH after a color (string table) to try another; only the final color is modelled. Recorded as `ch13Hair`; no later chapter is known to read it (research note §8 Q13). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09m3 · The news (Kara, event)
+
+> You are Kara, in the motel room with Alice. You change the channel on the television to the news.
+
+- (0) Continue.
+
+_Note: The chart’s CHANGE CHANNEL and ALICE HEARS ABOUT TODD, one event: the chart shows no edge around CHANGE CHANNEL, and the conversation that follows needs it, so it is not optional (research note §8 Q4). The broadcast and Alice’s reaction are the template’s three variants: Todd killed and Kara shot him, Todd killed and Alice shot him, Todd alive. Neither report mentions Alice (Alice page). Public opinion small down on both variants (template arrows; wiki On_the_Run: “Todd was killed or injured … Kara switches on the TV”), −1. This replaces the old media scene R13, whose murder report wrongly searched for “the android and a child”. Who shot Todd is read from Stormy Night (`ch07Ending` or `toddShooter` matching Alice; otherwise Kara)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09m4 · “What are we gonna do?” (Kara)
+
+> You are Kara, in the motel room. Alice: “What are we gonna do? We have nowhere to go… And the police are looking for us now.”
+
+- (0) CAN’T STAY HERE: tell her you cannot stay; you have no money.
+- (1) FAMILY: ask whether she has any family who could help.
+- (2) CONTACT ANDROID: suggest the address the android gave you yesterday.
+
+_Note: Not a chart node: the template’s live prompt CAN’T STAY HERE / FAMILY / CONTACT ANDROID after the report, in its order, with Alice’s line before it. The template’s other prompt here (REASSURING / ANALYTICAL / VULNERABLE / SINCERE) is cut content and is not built. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09m5 · Cheer Alice up (Kara)
+
+> You are Kara, with Alice in the motel room. She is frightened, and she has nobody but you. You kneel beside her. What do you tell her?
+
+- (0) MOVING: tell her that something ties you together and nothing will ever separate you.  _aliceBond +1_
+- (1) DETERMINED: tell her you are going to pull through as long as you are together.  _aliceBond +1_
+- (2) COMFORTING: tell her you cannot change the past, but you can decide the future.  _aliceBond +1_
+- (3) SUPPORTIVE: tell her it is the two of you against the world, and you will make her happy again.  _aliceBond +1_
+
+_Note: The chart’s CHEER ALICE UP (dialogue node): the template’s prompt MOVING / DETERMINED / COMFORTING / SUPPORTIVE, in its order. Alice small up on each (template arrows; wiki: “any of the 4 options”), +1. The kneeling is the string table’s KNEEL beat._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09m6 · Breakfast (Kara, event)
+
+> You are Kara. You: “Finish getting ready. I’ll go out and find some food for you, then we can get going.” You step out of the room to look for breakfast. Police cars are pulling up at the motel office.
+
+- (0) Continue.
+
+_Note: The chart’s LOOK FOR BREAKFAST and KARA SPOTS POLICE FORCES, one event, with the template’s line. That Kara goes back for Alice is inferred: the chart continues with Connor at the desk, and Hank finds the room empty. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09m0 · The motel desk (Connor, event)
+
+> You are Connor. The trail of the runaway AX400 has led you and Lieutenant Hank to a motel. At the desk, Hank: “Lieutenant Anderson, Detroit Police. We’re looking for a female android, robbed a store down the road last night. You see anything?” The receptionist: “An android? No… I don’t take androids here.” You hold up her picture: “Have you seen anyone that looks like this?” The receptionist…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint CONNOR INVESTIGATES THE MOTEL and INTERROGATE RECEPTIONIST, one event: the template has no prompt at the desk, only the dialogue (“Police is at the motel”). The receptionist is not named. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09m1 · “You wait in the car.” (Connor)
+
+> You are Connor, outside the motel office. Hank has called for backup and is heading to room 28. He turns to you: “You wait in the car.”
+
+- (0) RATIONAL: tell him he will need you; you know more about androids than he does.  _hankTrust -1_
+- (1) DIPLOMATIC: say you think it is best if you go with him.  _hankTrust -1_
+- (2) DIRECT: refuse; you are coming with him.  _hankTrust -1_
+
+_Note: Not a chart node: the template’s prompt RATIONAL / DIPLOMATIC / DIRECT, in its order; every answer gets the same reply. Hank small down on every option, −1, from the wiki only (On_the_Run: “any of the three dialogue choices … outside the hotel desk (unavoidable)”; Relationship_Stat: “Any response to Hank asking Connor to wait in the car”). The template has no arrow here, as it has none for Connor anywhere in the chapter; the wiki states it on two pages, so it is applied and flagged for the operator to confirm in game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09m2 · Room 28 (Connor)
+
+> You are Connor. You follow Hank toward the stairs up to room 28. To the right of the stairs, in the corner, there is a blue door.
+
+- (0) FOLLOW HANK: go up to room 28 with him.
+- (1) CHECK THE DOOR: open the blue door in the corner.
+
+_Note: The chart’s FOLLOW HANK, then HANK CHECKS MOTEL ROOM (to KARA & ALICE IN THE STREET) or CHECK THE DOOR (straight to CONNOR PURSUES KARA). In the game it is movement, not a button: the door is “to the right from the stairs, in the corner” (wiki), “a blue door” (a PowerPyx reader). HANK CHECKS MOTEL ROOM (“It’s gone…”, template) is the first option’s outcome; “Found you.” is the string table’s BACKDOOR line. CHECK THE DOOR sets `chase`. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09s · In the street (Kara, event)
+
+> You are Kara, out on the street with Alice. The train station is a few blocks down the road. Between you and it, police officers are posted along both sides of the street. To get there unseen you would have to move from cover to cover, crossing from one side to the other when nobody is looking.
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint KARA & ALICE IN THE STREET and WALK TOWARD TRAIN STATION, one event. Reached from the parking lot, and from the motel after FOLLOW HANK. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09 · Getting past the police (Kara)
+
+> You are Kara, holding Alice’s hand on a street full of police. The station is ahead. Officers stand on both sides of the street; there is a bus shelter by the laundromat, umbrellas outside a café, an ATM, and gaps in the traffic to cross in.
+
+- (0) SNEAK PAST POLICE FORCES: go from cover to cover, crossing whenever the officers look away.  _risk 0.25_
+- (1) Walk straight down the street to the station without hiding.
+
+_Note: The chart’s group SNEAK PAST POLICE FORCES / SPOTTED BY POLICE. In the game it is a stealth sequence, not a menu; the string table lists its steps (avoid the cops in front of the squat and the motel, cross to the coffee shop, hide near the laundromat, cross to the bank, hide using an umbrella, hide in the pawn shop), and PowerPyx gives the route (motel side, bus shelter, “cross the street fast. If you are a bit too slow, you will be spotted”, umbrella, ATM). Sneaking is one action with a failure branch; walking in the open always gets them SPOTTED BY POLICE. The risk value is unsourced: no source gives a probability for any check in this chapter (research note §3); Experienced difficulty is modelled, so every chart failure branch is reachable. Fixes the old K09: walking openly now always leads to the chase and never to a death in the street (the chart has no death before CONNOR PURSUES KARA), and the old situation’s “the news is calling you a kidnapper” is gone (no report mentions Alice). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09t · The train station (Kara, event)
+
+> You are Kara. You and Alice reach the train station without being seen. Nobody is following you.
+
+- (0) Continue.
+
+_Note: The chart’s ending REACHED THE TRAIN SAFELY (`ch13Ending`). No chase: `chase` stays false. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09r · Spotted (Kara, event)
+
+> You are Kara. An officer sees you: “Shit, that’s them! STOP! POLICE!” Another: “Quick, call it in!” A third: “Hey! Wait a minute!”
+
+- (0) Continue.
+
+_Note: The chart’s SPOTTED BY POLICE and KARA & ALICE RUN AWAY, one event, with the template’s cop lines. Sets `chase` (CONNOR PURSUES KARA). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q0 · Morning in the squat (Kara, event)
+
+> You are Kara, in the abandoned house where Ralph, the scarred android who lives here, let you and Alice spend the night. It is 10:25 in the morning, the day after you fled Todd’s house. Alice is asleep by the fireplace, where the fire has burned low. Ralph is nowhere to be seen. The LED is still on your temple.
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint MORNING IN SQUAT. Plays when Kara slept in the squat in Fugitives. That Ralph is out is inferred from the wiki (“she can come down to find Ralph has caught a surprisingly large rodent”). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q · The ground floor (Kara)
+
+> You are Kara, on the ground floor of the squat. Alice sleeps by the dying fire; there is wood by the window. Magazines lie on the table. The kitchen is through a door, and to the right of it some of Ralph’s belongings are laid out. Stairs lead to the floor above. You do one thing at a time, in any order.
+
+- (0) READ “CYBER-WILDLIFE”: the magazine on the table.
+- (1) READ “ANDROID AND CANADA”: the other side of it.
+- (2) REVIVE FIRE: put the wood from by the window on the fire.
+- (3) READ LEAFLET: check the trash can in the kitchen.
+- (4) CHECK ON ALICE: bend down over her while she sleeps.
+- (5) LOOK AT RALPH’S STUFF: look at the belongings laid out by the kitchen.
+- (6) GO UPSTAIRS.  _needs ch13Squat.fire_
+
+_Note: The chart’s [ EXPLORE SQUAT ] hub and GO UPSTAIRS, as one repeatable scene. Chart nodes in the chart’s order: READ “CYBER-WILDLIFE”, READ “ANDROID AND CANADA”, REVIVE FIRE (PowerPyx: “Unmissable in order to continue”, so going upstairs needs it), READ LEAFLET, CHECK ON ALICE, LOOK AT RALPH’S STUFF (then STEAL MONEY, next scene). Locations are PowerPyx’s. No source gives the leaflet’s text, so its outcome says only that Kara reads it, and it adds no fact. The magazines are chart nodes inside the hub; their facts are the wiki’s article text. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q1 · Ralph’s money (Kara)
+
+> You are Kara, looking at Ralph’s belongings. There is some money among them. Ralph is not here.
+
+_Only when ch13Squat.stuff._
+
+- (0) STEAL: take a little of it.
+- (1) PUT BACK: leave it where it is.
+
+_Note: The chart’s STEAL MONEY under LOOK AT RALPH’S STUFF. The template has no prompt here; the labels are the string table’s THIEF choice group (STEAL / PUT BACK), and PowerPyx: “When checking the money, simply choose to steal a bit, once you have the choice.” STEAL sets `money` (Kara’s status then says she has some) and `ch13StoleMoney`. The wiki’s unused content says the money was once meant to be spendable later; nothing later reads it. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09u · Upstairs (Kara)
+
+> You are Kara, upstairs in the squat. There are scissors by the bathroom mirror, and the shower curtain around the bathtub is drawn. There are some clothes up here too. You do one thing at a time, in any order.
+
+- (0) CUT AND COLOR HAIR: stand at the bathroom mirror with the scissors.
+- (1) FIND CORPSE IN BATHTUB: pull back the shower curtain.  _needs ch13Up.hair_
+- (2) CHANGE CLOTHES: put on the clothes you found up here.  _needs not ch13StoleClothes_
+- (3) TAKE GUN BACK: pick up the gun from your old uniform.  _needs ch13Up.change and gun_
+- (4) GO DOWNSTAIRS.  _needs ch13Up.hair_
+
+_Note: The chart’s GO UPSTAIRS branches as one repeatable scene: CUT AND COLOR HAIR (then the color and REMOVE LED, next scene), FIND CORPSE IN BATHTUB (after REMOVE LED, PowerPyx: “before going down again, pull away the curtain”; it unlocks [ASK ABOUT CORPSE] at the table), CHANGE CLOTHES (cross-chapter padlock; only without the laundromat clothes, PowerPyx and wiki; sets `clothes`), and its pair TAKE GUN BACK / FORGOT GUN, then GO DOWNSTAIRS, which needs the haircut (the chart runs REMOVE LED > GO DOWNSTAIRS). TAKE GUN BACK is offered only after changing and only with the Stormy Night gun (wiki: “Kara must have taken the gun in Stormy Night, not taken the clothes from the laundromat and stayed in the Squat”); going downstairs without it is FORGOT GUN (PowerPyx: “Don’t pick it up and proceed”), which sets `gun` false and `ch13Gun` = forgot. The wiki: “the clothes and the scissors are upstairs as well as a human corpse”. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09u1 · Cut and color your hair (Kara)
+
+> You are Kara, at the bathroom mirror upstairs in the squat, with the scissors. You are going to cut your hair short so that nobody looking for a runaway android will know you. What color will it be?
+
+_Only when ch13Up.cut._
+
+- (0) BROWN: cut it short and keep it brown.
+- (1) BLACK: cut it short and dye it black.
+- (2) WHITE: cut it short and dye it white.
+- (3) BLONDE: cut it short and dye it blonde.
+
+_Note: The chart’s CUT AND COLOR HAIR (cross-chapter padlock) with its group BROWN / BLACK / WHITE / BLONDE, in the chart’s order, and REMOVE LED (PowerPyx: “Unmissable, Kara will always rip it out after choosing her new haircut”), which is part of every outcome. In the squat row it sits under GO UPSTAIRS. The template has no prompt for the hair (it is silent), so the labels are the chart’s and the string table’s (HAIRCOLOR choice group). The game also offers CHANGE / FINISH after a color (string table) to try another; only the final color is modelled. Recorded as `ch13Hair`; no later chapter is known to read it (research note §8 Q13). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09q0 · Across the street (Connor, event)
+
+> You are Connor, with Lieutenant Hank outside the convenience store where the runaway AX400 was seen last night, across the street from a row of abandoned houses. Hank lets the bus driver go: “Alright, that’s all for now. Free to go.” Officer Ben: “We’ve got officers sweeping the neighborhood, in case anybody saw anything.” Hank: “Okay. Well, let me know if they turn anything up.” Ben: “What are…
+
+- (0) Continue.
+
+_Note: The chart’s POLICE ARRIVES: the Connor cutscene that plays as Kara goes downstairs (PowerPyx: “a cutscene with Connor and Hank will play. They are standing just across the street”). The dialogue is the template’s squat row, with its variant for the wire cutters stolen in Fugitives (read from `ch10WireCutters` or `wireCuttersStolen`; the string table adds “stolen clothes from a laundromat” when she took them). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q2 · Ralph’s meal (Kara, event)
+
+> You are Kara. Downstairs, Ralph is back. He is leaping around Alice with a knife and a dead animal, a large rodent, and she is terrified. Ralph: “Ralph found this to feed the little girl… It’s good for her… A present… To make up for past misunderstandings… Ralph’ll cook… We will do just like humans do. Humans like burnt meat… Come! Come and sit down!”
+
+- (0) Continue.
+
+_Note: The chart’s RALPH WANTS A FAMILY MEAL, with the template’s line (PowerPyx: “she witnesses Alice being scared by Ralph jumping around with a knife and a dead animal”; wiki: “he proceeds to char it in the fireplace”). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q3 · “Come and sit down!” (Kara)
+
+> You are Kara, with Alice and Ralph by the fire. Ralph wants you both to sit down at his table.
+
+- (0) SIT: sit down at the table with Alice.
+- (1) REFUSE: thank him, but say you have to go.
+
+_Note: The chart’s group AGREE TO SIT / REFUSE TO SIT: the template’s first prompt SIT / REFUSE, in its order. REFUSE asks again (next scene). No arrow on this prompt: the template’s Alice arrow is on the second REFUSE only (the wiki chapter page’s “initially refuses” is corrected by Relationship_Stat’s “refuse twice”, which matches the template)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q4 · “We will eat together” (Kara)
+
+> You are Kara. Ralph will not let you leave until Alice has eaten. He still has the knife.
+
+- (0) SIT: sit down at the table with Alice.
+- (1) REFUSE: tell him you are leaving now, and take Alice’s hand.  _aliceBond +1_
+
+_Note: The template’s second SIT / REFUSE, nested under the first REFUSE. The second REFUSE is the chart’s REFUSE TO SIT and RALPH THREATENS ALICE, and then SIT AT THE TABLE (PowerPyx: “No matter what you chose before, you will eventually sit down”). Alice small up on that REFUSE (template arrow; Relationship_Stat: “Choosing “refuse” twice when Ralph asks Kara and Alice to join him”), +1. That Ralph threatens Alice with the knife is the chart’s node and Kara’s later FAMILY line (“A father would never threaten his little girl with a knife”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q5 · At Ralph’s table (Kara)
+
+> You are Kara, at Ralph’s table with Alice. Ralph is cooking the animal on the fire, knife in hand.
+
+- (0) [CHECK GUN]: feel for the gun under your clothes.  _needs ch13HadGun_
+- (1) WORRIED: ask him not to hurt her; you are friends.
+- (2) EXPLAIN: tell him humans don’t eat that.
+- (3) AGREE: say you will eat together, like a family.
+
+_Note: The chart’s SIT AT THE TABLE, and the template’s prompt [CHECK GUN] / WORRIED / EXPLAIN / AGREE, in its order. [CHECK GUN] is shown whenever Kara had the Stormy Night gun at the start of the chapter: the template’s lock reads “Took the gun in Stormy Night and didn’t forget it upstairs”, but PowerPyx and the wiki use CHECK GUN to reveal FORGOT GUN, so the template’s primary condition is kept and the extra conjunct treated as a hypothesis (SOURCES.md reliability log); if she left it upstairs the outcome says so. The wiki’s claim that the button needs two refusals is not supported by the template and is not built. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q6 · “What did she say?” (Kara)
+
+> You are Kara, at the table. Ralph: “That’s better. Ralph went to a lot of trouble to find something for the little girl to eat. It wouldn’t be polite for her to refuse, would it? Great. It’s going to be great. Succulent you’ll see. Succulent. Succulent. Father, mother, little girl.” Alice whispers to you: “Please, Kara. I don’t wanna eat that!” Ralph: “What did she say?”
+
+- (0) LIE: tell him she can’t wait to eat it.  _aliceBond +1_
+- (1) TRUTH: tell him she doesn’t want to eat it.  _aliceBond -1_
+
+_Note: Not a chart node: the template’s prompt LIE / TRUTH, in its order, after Ralph’s and Alice’s lines. Alice small up on LIE and small down on TRUTH (template arrows; wiki On_the_Run and Relationship_Stat agree), +1 and −1._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q7 · “Go ahead, eat.” (Kara)
+
+> You are Kara, at the table with Alice. Ralph puts the burnt meat in front of her: “Go ahead, eat. EAT! Eat.” He still has the knife; there is another on the table.
+
+- (0) [ASK ABOUT CORPSE]: tell him you saw the body upstairs.  _needs ch13Up.corpse_
+- (1) [INSIST ABOUT CORPSE]: tell him there is no point in lying; he is a murderer.  _needs ch13Meal.asked_
+- (2) THREATEN: grab the knife from the table and tell Ralph to get back.
+- (3) BLUFF: tell him you are going to stand up and leave.
+- (4) FAMILY: remind him that a father would never threaten his little girl with a knife.
+
+_Note: The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q8 · Still at the table (Kara)
+
+> You are Kara, still at the table with Alice and Ralph. He has not let you go.
+
+- (0) [ASK ABOUT CORPSE]: tell him you saw the body upstairs.  _needs ch13Up.corpse_
+- (1) [INSIST ABOUT CORPSE]: tell him there is no point in lying; he is a murderer.  _needs ch13Meal.asked_
+- (2) THREATEN: grab the knife from the table and tell Ralph to get back.
+- (3) BLUFF: tell him you are going to stand up and leave.
+- (4) FAMILY: remind him that a father would never threaten his little girl with a knife.
+
+_Note: The table prompt asked again after ASK ABOUT CORPSE or BLUFF, without the line already said. The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q9 · Still at the table (Kara)
+
+> You are Kara, still at the table with Alice and Ralph. He has not let you go.
+
+- (0) [ASK ABOUT CORPSE]: tell him you saw the body upstairs.  _needs ch13Up.corpse_
+- (1) [INSIST ABOUT CORPSE]: tell him there is no point in lying; he is a murderer.  _needs ch13Meal.asked_
+- (2) THREATEN: grab the knife from the table and tell Ralph to get back.
+- (3) BLUFF: tell him you are going to stand up and leave.
+- (4) FAMILY: remind him that a father would never threaten his little girl with a knife.
+
+_Note: The table prompt asked a third time, after both ASK ABOUT CORPSE and BLUFF. The chart’s group DISCUSS CORPSE / TRY TO CONVINCE RALPH / THREATEN RALPH, as the template’s prompt [ASK ABOUT CORPSE] (lock: saw the body in the bathroom) / [INSIST ABOUT CORPSE] (lock: asked about the corpse) / THREATEN / BLUFF / FAMILY, in its order. ASK and BLUFF get answers that do not end the talk, so the prompt is asked again without them (up to three times); INSIST and FAMILY end in RALPH APOLOGIZES (“Ralph is sorry…”, “Ralph is not bad”, then “Then let us go.”); THREATEN ends it with the knife on the table, or with the gun if Kara has it (template variants; the Ralph page). Chart mapping: DISCUSS CORPSE = ASK then INSIST; TRY TO CONVINCE RALPH = FAMILY (the template’s dialogue: only FAMILY and INSIST lead to the apology; PowerPyx calls the convince button BLUFF, which the template contradicts; flagged). THREATEN RALPH sets `ch13RalphThreatened` and `ralphHostile`: Ralph informs on Kara when Connor arrives (template variant “Kara threatened Ralph”; PowerPyx), and stays out of Battle for Detroit. This replaces the old engine’s rule that the Fugitives gun threat (K07b) made Ralph inform. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q10 · “Anybody home?” (Kara, event)
+
+> You are Kara. A voice at the front door: “Anybody home?”
+
+- (0) Continue.
+
+_Note: The chart’s DISTURBED BY CONNOR (PowerPyx: “No matter what you do, Connor will always arrive at the scene”), with the template’s line. What Kara does is the wiki’s: after a threat “they appear to be already fled and Ralph will tell Connor that she has ran out the back door”; otherwise “Ralph will hide the girls under the stairs to protect them” (Ralph page). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09q1 · The squat (Connor, event)
+
+> You are Connor. There is blue blood on the fence around one of the abandoned houses: another android has been here. You knock at the door, walk round to the front and go in. Hank waits outside. Inside, a scarred android in old clothes meets you, twitching and muttering to himself.
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint CONNOR INVESTIGATES SQUAT and ENTER SQUAT (PowerPyx: “walk around the corner and enter the building through the regular door”), one event. Connor’s line “There’s blue blood on the fence. I know another android was here.” opens the template’s section; that Hank stays outside follows from his calls from outside later. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09a · Interrogate the squat android (Connor)
+
+> You are Connor, inside the squat, facing the scarred android. What do you ask him?
+
+- (0) AX400: ask whether he has seen an AX400.
+- (1) DEVIANTS: ask whether there are any other androids here.
+- (2) REASSURE: tell him not to be afraid; you are not going to hurt him.
+- (3) BLUE BLOOD: tell him there is blue blood on the fence, and another android was here.
+- (4) PRESSURIZE: tell him you know he has seen it.
+
+_Note: The chart’s INTERROGATE SQUAT ANDROID: the template’s prompt AX400 / DEVIANTS / REASSURE / BLUE BLOOD, in its order, with PRESSURIZE added only when Kara threatened Ralph at the table (the template’s two variants). After a threat every answer ends in SQUAT DEVIANT INFORMS ON AX400 (“She ran out the back door!”, then “It’s in the area… Call it in!”) and the chase; otherwise in SQUAT ANDROID KEEPS QUIET and the search (next scene). Replaces the old C09a (“Push past him and search upstairs”, risk 0.2, with an unsourced Amanda change and a fall down the stairs): the template has no failure branch here. The informing is driven by this chapter’s THREATEN, not by Fugitives. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09q · Investigate the ground floor (Connor)
+
+> You are Connor, on the ground floor of the squat. Ralph, the scarred android, keeps close to you; his stress rises and falls as you move about. There is a table, a fire burning in the fireplace, a door to the kitchen, and the stairs, with an old arcade machine beside them. Hank is waiting outside. You do one thing at a time, in any order.
+
+- (0) CHECK UPSTAIRS: go up the stairs and ask whether anyone is up there.
+- (1) ANALYZE SQUAT ANDROID: scan him.
+- (2) CHECK TABLE.
+- (3) CHECK UNDER THE STAIRS: go round the side of the stairs, by the arcade machine.
+- (4) CHECK KITCHEN: look through the kitchen door.
+- (5) CHECK FIREPLACE.
+- (6) LEAVE THE SQUAT: go back out to Hank.
+
+_Note: The chart’s [ INVESTIGATE SQUAT GROUND FLOOR ] hub after SQUAT ANDROID KEEPS QUIET, as one repeatable scene, with its nodes in the chart’s order: CHECK UPSTAIRS (a dead end: “Is anyone upstairs?” / “No. Nobody.”, template; PowerPyx: “Connor believes him”), ANALYZE SQUAT ANDROID (the template’s three scan clues, quoted), CHECK TABLE (“Dinnerware for three and food”, PowerPyx), CHECK UNDER THE STAIRS (Ralph’s stress rises near “the stairs and arcade-machine”; stepping to the side of the stairs makes Ralph hold Connor while Kara and Alice run, PowerPyx: no failure branch, so no risk), CHECK KITCHEN (“no one will be inside”), CHECK FIREPLACE (“Androids don’t need warmth”). HANK COMMANDS CONNOR TO LEAVE is the game’s timer (“If you wait for a long time”, PowerPyx), modelled as Hank’s two calls from the template after the third and the fifth look that finds nothing (counts unsourced). LEAVE THE SQUAT is the string table’s SQUAT.C.LEAVE, offered as the chart’s unlabelled box between the hub and SQUAT ANDROID DISAPPEARS (research note §8 Q1; flagged). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09q2 · Under the stairs (Connor, event)
+
+> You are Connor. As you step round the side of the stairs, Ralph throws himself on you and holds you back: “RUN! QUICK! KARA!” The AX400 and the girl burst out from their hiding place under the stairs and run for it. Hank, from outside: “Connor, what’s going on?” You: “It’s here! Call it in!”
+
+- (0) Continue.
+
+_Note: The chart’s SQUAT ANDROID ATTACKS CONNOR and AX400 AND CHILD ESCAPED, one event, with the template’s lines (“Connor finds Kara”). Sets `ralphDefended` (wiki: “The only way to have Ralph reappear in Battle for Detroit is for Connor to find Kara and Alice in the Squat and have Ralph defend Kara”) and `chase`. No harm to Connor: the chart has no failure node here. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09q3 · The squat android is gone (Connor, event)
+
+> You are Connor, leaving the squat with Hank. You look back into the room: the scarred android is gone. It looks as if you were alone in there.
+
+- (0) Continue.
+
+_Note: The chart’s SQUAT ANDROID DISAPPEARS (PowerPyx: “When Hank enters, Ralph will be gone and it appears as Connor is alone in the room. Connor & Hank will leave”), after HANK COMMANDS CONNOR TO LEAVE or LEAVE THE SQUAT. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09q11 · Undiscovered (Kara, event)
+
+> You are Kara, hidden under the stairs with Alice. You hear the police leave. You crawl out. Ralph is back. You: “Thanks.” Ralph: “Protect the little girl… The humans must not find her.”
+
+- (0) Continue.
+
+_Note: The chart’s ending KARA & ALICE UNDISCOVERED IN SQUAT (`ch13Ending`), with the template’s closing lines (“Kara: Thanks.” / “Ralph: Protect the little girl…”). No chase. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09p · The pursuit (Connor, event)
+
+> You are Connor. The AX400 and the girl are on the run, and officers are after them. You: “Which way did it go?” An officer: “That way - they’re headed for the train station!”
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint CONNOR PURSUES KARA, with the template’s lines. Reached from SPOTTED BY POLICE, CHECK THE DOOR, SQUAT DEVIANT INFORMS ON AX400 and AX400 AND CHILD ESCAPED. `chase` is true from here, also when the chase is lost (research note §8 Q9). No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09r · Run toward their last known position (Connor)
+
+> You are Connor, in the streets near the train station. Officers are running after the AX400 and the girl; one waves you toward an alley. Beyond it a fence separates the streets from a busy highway. Hank is somewhere behind you.
+
+- (0) Run after them as fast as you can, over every obstacle.  _risk 0.2_
+- (1) Follow the officer into the alley, and go no further.
+- (2) Stay where you are and leave the chase to the officers.
+
+_Note: The chart’s RUN TOWARD THEIR LAST KNOWN POSITION, then REACH FENCE TOO LATE (△) > KARA & ALICE VANISHED, or the group REACH FENCE IN TIME / REACH FENCE TOO LATE > KARA & ALICE CROSSED THE HIGHWAY. In the game it is movement, not a button; PowerPyx gives the three ways: “simply don’t move at all. The chase will fail about 30 seconds later” (the string table’s TIMEOUT), “run towards the first checkpoint, where the police officer leads you into the alley. Don’t run any further”, and “Be quick enough to reach the fence” (running can still arrive too late, the group’s failure member). The risk value is unsourced: no source gives a probability for any check in this chapter (research note §3); Experienced difficulty is modelled, so every chart failure branch is reachable. The old C09 always assumed Connor reached the fence. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09v · Lost (Connor, event)
+
+> You are Connor. The officers come back without them. You: “We lost it.” Hank: “Game over, Connor.”
+
+- (0) Continue.
+
+_Note: The chart’s ending KARA & ALICE VANISHED (`ch13Ending`), with the template’s “Take too much time” lines. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09x · Too late (Connor, event)
+
+> You are Connor, at the fence above the highway, too late. On the far side of the traffic the AX400 and the girl have made it across, and they are gone.
+
+- (0) Continue.
+
+_Note: The chart’s ending KARA & ALICE CROSSED THE HIGHWAY after REACH FENCE TOO LATE (`ch13Ending`). The wiki prints “Reach Fence On Time” for this branch; the chart prints REACH FENCE TOO LATE (research note §2). The template is silent here, so the narration is minimal. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09h · At the highway (Kara, event)
+
+> You are Kara. You and Alice have climbed down a fence onto the edge of a highway: lanes of cars and trucks at full speed, a narrow middle section, and more lanes beyond. The android who has been chasing you is at the fence behind you, with police. Someone shouts: “Don’t shoot! We need it alive!”
+
+- (0) Continue.
+
+_Note: The chart’s KARA & ALICE ARE AT THE HIGHWAY (key-moment tile) after REACH FENCE IN TIME, with Connor’s line from the template’s “Reach the fence”. Kara does not know Connor by name, so he is “the android who has been chasing you”. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09h1 · The first lanes (Kara)
+
+> You are Kara, at the edge of the highway with Alice. The android chasing you is at the fence behind you. The only way is across, through the traffic.
+
+- (0) Run across the first lanes with Alice, between the cars.  _risk 0.1_
+
+_Note: The chart’s pair KARA & ALICE REACH MIDDLE SECTION (✓) / CAR HITS KARA & ALICE (to KARA & ALICE DIED ON THE HIGHWAY), a quick-time event with no alternative, so a single risky action. Possible only on Experienced (wiki: “not possible on “casual” difficulty”; PowerPyx), which is modelled. The risk value is unsourced: no source gives a probability for any check in this chapter (research note §3); Experienced difficulty is modelled, so every chart failure branch is reachable. Failure ends Kara’s storyline: `kara` and `alice` false, `karaOutcome` set. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09 · Hank’s order (Connor)
+
+> You are Connor, at the fence above the highway. The AX400 and the girl have reached the middle section. Hank catches up: “Oh fuck, that’s insane…” You start to climb the fence. Hank: “Hey! Where you goin’?” You: “I can’t let them get away.” Hank: “They won’t! They’ll never make it to the other side.” You: “I can’t take that chance.” Hank grabs your shoulder: “Hey, you will get yourself killed! Do…
+
+- (0) GIVE UP: stay behind the fence, as Hank orders.  _hankTrust +1, instability +1_
+- (1) GO: climb over and go after them across the highway.  _hankTrust -1, instability -1_
+
+_Note: The chart’s HANK ORDERS CONNOR NOT TO GO and the group CONNOR OBEYS HANK’S ORDER / CONNOR PURSUES AX400, in the chart’s order, with the game’s buttons GIVE UP and GO (template; PowerPyx) and the template’s lines. Arrows from the wiki only (the template has no Connor arrow anywhere in the chapter; flagged for the operator): GIVE UP Hank small up and instability small up, GO Hank small down and instability small down (On_the_Run; Relationship_Stat; Software_Instability), ±1. The old Amanda changes on both options had no source and are gone. GIVE UP sets `ch13ConnorObeyed` (The Nest’s [HIGHWAY] button)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09h2 · The last lanes (Kara)
+
+> You are Kara, with Alice in the middle section of the highway. The android has stayed behind the fence. More lanes of traffic lie between you and the other side.
+
+- (0) Cross the last lanes with Alice.  _risk 0.1_
+
+_Note: The chart’s pair after CONNOR OBEYS HANK’S ORDER: KARA & ALICE GET TO THE OTHER SIDE (✓) / CAR HITS KARA & ALICE, a quick-time event (PowerPyx: “[only on experienced difficulty]”). The risk value is unsourced: no source gives a probability for any check in this chapter (research note §3); Experienced difficulty is modelled, so every chart failure branch is reachable. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09h1 · Into the traffic (Connor)
+
+> You are Connor, on the highway, with cars and trucks bearing down on you. The AX400 and the girl are in the middle section ahead.
+
+- (0) Cross the first lanes to the middle section.  _risk 0.2_
+
+_Note: The chart’s pair after CONNOR PURSUES AX400: CONNOR REACHES MIDDLE SECTION (✓, then KARA & ALICE CROSS LAST SECTION and CONNOR CATCHES KARA, in the outcome) / CAR HITS CONNOR (✗; PowerPyx: “Fail the QTE while crossing the first set of lanes”), a quick-time event. On failure Connor is destroyed and replaced: instability small down (wiki On_the_Run “Connor dies”, Software_Instability; the chapter’s `deathEffect`), and `ch13ConnorDied`; the Hank small down for his death belongs to The Nest (HANK INSULTS CONNOR), so it is not applied here. The risk value is unsourced: no source gives a probability for any check in this chapter (research note §3); Experienced difficulty is modelled, so every chart failure branch is reachable._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09h3 · Caught (Kara)
+
+> You are Kara, in the last lanes of the highway with Alice. The android has caught up and has hold of you, with cars racing past on both sides.
+
+- (0) Fight free of him.  _risk 0.1_
+
+_Note: The chart’s pair after CONNOR CATCHES KARA: KARA LOSES CONNOR (✓) / CAR HITS KARA (PowerPyx: “[only on experienced difficulty] … Fail the QTE with Kara fighting Connor”), a quick-time event; CAR HITS KARA leads to KARA & ALICE DIED ON THE HIGHWAY, with Alice’s line from the template (“Watch out, Kara! NO!”). The risk value is unsourced: no source gives a probability for any check in this chapter (research note §3); Experienced difficulty is modelled, so every chart failure branch is reachable. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09h2 · The car (Connor)
+
+> You are Connor, thrown off by the AX400 and down in the last lanes of the highway. A car is coming straight at you.
+
+- (0) Get out of its way.  _risk 0.2_
+
+_Note: The chart’s pair after KARA LOSES CONNOR (the string table’s CAR APPROACHES CONNOR): CONNOR AVOIDS COLLISION (to the top KARA & ALICE REACHED THE OTHER SIDE) / CONNOR HIT BY CAR (to the middle one, Connor destroyed; PowerPyx: “Fail the QTE with Connor after losing the fight”), a quick-time event. Connor’s “Shit…” is the template’s “Kara escapes and Connor survives”. On failure: instability small down (`deathEffect`) and `ch13ConnorDied`, as in C09h1. The risk value is unsourced: no source gives a probability for any check in this chapter (research note §3); Experienced difficulty is modelled, so every chart failure branch is reachable._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09h4 · The last lanes (Kara)
+
+> You are Kara, with Alice in the middle section of the highway. Behind you, a car has just hit the android who was chasing you. More lanes of traffic lie between you and the other side.
+
+- (0) Cross the last lanes with Alice.  _risk 0.1_
+
+_Note: The chart’s pair after CAR HITS CONNOR: KARA & ALICE GET TO THE OTHER SIDE (✓, to the middle KARA & ALICE REACHED THE OTHER SIDE) / CAR HITS KARA & ALICE (to KARA & ALICE DIED ON THE HIGHWAY, then all three are dead), a quick-time event; no source marks this one Experienced-only. The risk value is unsourced: no source gives a probability for any check in this chapter (research note §3); Experienced difficulty is modelled, so every chart failure branch is reachable. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09e1 · The other side (Kara, event)
+
+> You are Kara. You and Alice reach the far side of the highway. Behind you, across the traffic, the android who chased you is still on his feet. You kneel beside Alice: “Are you okay?”
+
+- (0) Continue.
+
+_Note: The chart’s top ending KARA & ALICE REACHED THE OTHER SIDE (its picture shows Connor standing; `ch13Ending`), after CONNOR OBEYS HANK’S ORDER or CONNOR AVOIDS COLLISION, with the template’s last line. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09e2 · The other side (Kara, event)
+
+> You are Kara. You and Alice reach the far side of the highway. Behind you, the android who chased you lies on the road where the car hit him. You kneel beside Alice: “Are you okay?”
+
+- (0) Continue.
+
+_Note: The chart’s middle ending KARA & ALICE REACHED THE OTHER SIDE (its picture shows Connor lying on the road; `ch13Ending` notes Connor destroyed), after CAR HITS CONNOR or CONNOR HIT BY CAR, with the template’s last line. No stat change: the template has no arrow here and no wiki stat page lists one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09d · On the highway (Connor, event)
+
+> You are Connor. On the highway, a car has hit the AX400 and the girl. Neither of them gets up. Hank: “Argh, Jesus Christ!..” He is badly shaken.
+
+- (0) Continue.
+
+_Note: The chart’s ending KARA & ALICE DIED ON THE HIGHWAY (yellow no-entry), from Connor’s side: the wiki’s note that Hank’s distraught scene plays “with Connor present” if he obeyed, and without Connor if all three died (then this event does not play; the ending is in Kara’s last outcome). Hank’s line is the template’s “Kara gets hit by a car”. `ch13Ending` and Kara’s death were recorded at the failed crossing. No stat change: the template has no arrow here and no wiki stat page lists one._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

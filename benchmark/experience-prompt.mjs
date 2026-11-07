@@ -34,7 +34,13 @@ export const NAMES={
  // Two words of the game's lines that contain “counter”, which the subject-facing text keeps clear of (tests/experience.test.mjs).
  Encounter:['encounter','run-in'],Encountered:['encountered','met'],
  OrtizCarlos:['Ortiz Carlos','Mendez Ray'],
- instability:['instability','irregularity']
+ instability:['instability','irregularity'],
+ Anderson:['Anderson','Reyes'],
+ JossDouglas:['Joss Douglas','Tess Morgan'],
+ Michael:['Michael','Paul'],
+ Channel16:['Channel 16','Channel 9'],
+ Williams:['Williams','Barker'],
+ Corktown:['Corktown','Eastgate']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
