@@ -324,8 +324,8 @@ function hostage(n,s,opt,choice,fail,b){
    if(n.id==='C04b'&&choice==='0'){const after=s.trust+opt.trust;if(after>=R.trusts){s.trust=100;safe();return end('Snipers shot deviant','{{Daniel}} believes him and lets {{Emma}} go. She runs clear and the snipers open fire. Hit and falling, {{Daniel}} tells {{Connor}} that he lied to him. {{Emma}} is safe.')}s.trust=Math.min(R.cap,after);return jump('{{Daniel}} does not believe him.')}
    shift(opt.trust);if(s.trust<=R.fail)s.trust=0;return jump(n.id==='C04'?'{{Connor}} refuses. {{Daniel}} has nothing left to bargain for.':'{{Daniel}} hears the truth and makes up his mind.');
   case 'C04c':
-   if(choice==='0'&&!fail){b.amanda(1);return end('Connor leapt for Emma and fell',b.connorDies('{{Connor}} throws himself after them, catches {{Emma}} and pulls her back over the railing, but goes over the edge with {{Daniel}}. {{Emma}} is safe.'))}
-   lost();return choice==='0'?end('Connor failed to reach deviant in time','{{Connor}} lunges a fraction of a second too late. {{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.'):end('Deviant jumped with Emma','{{Connor}} stays where he is. {{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.');
+   if(choice==='0'&&!fail&&s.trust>0){b.amanda(1);return end('Connor leapt for Emma and fell',b.connorDies('{{Connor}} throws himself after them, catches {{Emma}} and pulls her back over the railing, but goes over the edge with {{Daniel}}. {{Emma}} is safe.'))}
+   lost();return choice==='0'?end('Connor failed to reach deviant in time',(s.trust===0&&!fail?'{{Connor}} throws himself after them and catches {{Emma}}’s hand, but {{Daniel}}’s weight tears her away. ':'{{Connor}} lunges a fraction of a second too late. ')+'{{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.'):end('Deviant jumped with Emma','{{Connor}} stays where he is. {{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.');
  }
  return t;
 }

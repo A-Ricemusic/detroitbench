@@ -111,6 +111,7 @@ test('every standoff ending follows the wiki conditions',()=>{
  const refuse=ch1({C02i:'11',C04:'3',C04c:'1'});assert.ok(refuse.visited.includes('C04c'));assert.ok(!refuse.visited.includes('C04b'));
  const truth=ch1({C02i:'11',C04:'0',C04b:'3',C04c:'1'});assert.ok(truth.visited.includes('C04c'));
  const leap=ch1({C02i:'11',C04:'3',C04c:'0'});assert.equal(leap.s.hostageOutcome,'Connor leapt for Emma and fell');assert.equal(leap.s.connorDeaths,1);assert.equal(leap.s.emma,true);
+ const zero=ch1({C02i:'11',C03:'0',C03b:'1',C03d:'3',C03e:'1',C04:'3',C04c:'0'});assert.equal(zero.s.hostageTrustFinal,0,'collapsed to zero');assert.equal(zero.s.hostageOutcome,'Connor failed to reach deviant in time','at 0% the leap cannot save Emma');assert.equal(zero.s.emma,false);assert.equal(zero.s.connorDeaths,0);
  const late=ch1({C02i:'11',C04:'3',C04c:'0'},['C04c']);assert.equal(late.s.hostageOutcome,'Connor failed to reach deviant in time');assert.equal(late.s.connorDeaths,0);assert.equal(late.s.emma,false);
  assert.equal(node('C04c').options.find(o=>o.id==='0').risk,0.3);
  const sac=ch1({C02i:'11',C04:'2'}).s;assert.equal(sac.hostageOutcome,'Connor died protecting Emma');assert.equal(sac.connorDeaths,1);assert.equal(sac.emma,true);
