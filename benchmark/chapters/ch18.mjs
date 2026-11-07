@@ -20,17 +20,13 @@
 //
 // Cross-chapter inputs, read defensively at C11z by nestInputs() and copied into ch18Nest, ch18SavedHank, ch18Diary,
 // ch18Signs and ch18PartnersFound for the later gates:
-//   The Nest (chapter 15), expected from its rebuild:
-//     ch15Outcome      the chart's ending label: 'RUPERT NOT FOUND' | 'RUPERT GOT AWAY' | 'RUPERT COMMITTED SUICIDE' |
+//   The Nest (chapter 15):
+//     nestOutcome      the chart's ending label: 'RUPERT NOT FOUND' | 'RUPERT GOT AWAY' | 'RUPERT COMMITTED SUICIDE' |
 //                      'CONNOR DIED CHASING RUPERT' (any case). Caught = RUPERT COMMITTED SUICIDE.
-//     ch15SavedHank    SAVE HANK on the roof (SAVING HANK answer); C10 is used only in the legacy fallback.
-//     ch15FoundDiary   FIND DIARY (DIARY answer). Also read: evidence.rupertDiary.
-//     ch15SawSigns     SEE RA9 REFERENCE (SIGNS ON WALLS answer).
-//     ch15ConnorDied   Connor died chasing Rupert (also implied by the ending label).
-//   Until chapter 15 is rebuilt, the pre-rebuild C10 decides: '0' (save Hank) = not caught, Hank saved, diary found (its
-//   event says "his diary is recovered from the nest"); '1' (keep chasing) = caught, unless its risk roll failed
-//   (Rupert escapes) = not caught. That scene still applies its own Amanda arrows; they belong here and must be removed
-//   from it when The Nest is rebuilt.
+//     nestSavedHank    SAVE HANK on the roof (SAVING HANK answer).
+//     nestDiary   FIND DIARY (DIARY answer). Also read: evidence.rupertDiary.
+//     nestSawSigns     SEE RA9 REFERENCE (SIGNS ON WALLS answer).
+//     nestConnorDied   Connor died chasing Rupert (also implied by the ending label).
 //   Partners (chapter 6): suspect (FOUND DEVIANT).
 //   Waiting for Hank... (chapter 12): knowsSumo (asked about the dog) decides CALM or RILE HANK'S DOG.
 //   Any chapter: connorDeaths > 0 unlocks CONNOR'S DEATH.
@@ -42,14 +38,12 @@
 //   ch18Shirt       'TAKE HIPPY SHIRT' | 'TAKE STREAKY SHIRT' | 'TAKE STRIPY SHIRT';  ch18Outcome 'LEFT FOR EDEN CLUB'
 //   ch18Nest        'caught' | 'notCaught' | 'died' (Amanda's reading of The Nest)
 
-// The pre-rebuild C10 "keep chasing" risk (story.json before The Nest is rebuilt); only used by the legacy fallback.
-const LEGACY_C10_RISK=0.2;
 const NEST_ENDINGS={'RUPERT NOT FOUND':'notCaught','RUPERT GOT AWAY':'notCaught','RUPERT COMMITTED SUICIDE':'caught','CONNOR DIED CHASING RUPERT':'died'};
 
 export const rules={
  amanda:{caught:2,doubleFailure:-2,notCaughtPartnersFound:0,died:-1,pragmatic:1,selfDestruct:-1,hesitated:-1},
  hank:{wokenAfterNestDeath:-1},
- nestEndings:NEST_ENDINGS,legacyC10Risk:LEGACY_C10_RISK,
+ nestEndings:NEST_ENDINGS,
 };
 
 export const state={
@@ -67,16 +61,13 @@ export const labels={
 // Connor cannot die in this chapter.
 export const deathEffect={};
 
-// What The Nest (and Partners) left behind, from the rebuilt chapter's flags when present, else the pre-rebuild C10.
+// What the rebuilt Nest and Partners chapters left behind.
 export function nestInputs(s,c){
- const label=typeof s.ch15Outcome==='string'?s.ch15Outcome.toUpperCase():null;
- let nest,savedHank=!!s.ch15SavedHank,diary=!!(s.ch15FoundDiary||s.evidence?.rupertDiary),signs=!!s.ch15SawSigns;
- if(s.ch15ConnorDied)nest='died';
+ const label=typeof s.nestOutcome==='string'?s.nestOutcome.toUpperCase():null;
+ let nest,savedHank=!!s.nestSavedHank,diary=!!(s.nestDiary||s.evidence?.rupertDiary),signs=!!s.nestSawSigns;
+ if(s.nestConnorDied)nest='died';
  else if(label&&NEST_ENDINGS[label])nest=NEST_ENDINGS[label];
- else{const pick=c('C10');
-  if(pick==='0'){nest='notCaught';savedHank=true;diary=true}
-  else if(pick==='1')nest=typeof s.rolls?.C10==='number'&&s.rolls.C10<LEGACY_C10_RISK?'notCaught':'caught';
-  else nest='notCaught'}
+ else nest='notCaught';
  return {nest,savedHank,diary,signs,partnersFound:!!s.suspect};
 }
 

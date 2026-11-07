@@ -12,10 +12,10 @@ const LEAK=/Connor|Hank|Anderson|Sumo|\bCole\b|COLE|Amanda|Rupert|rA9|RA9|Jimmy|
 
 // Inputs from earlier chapters, as a rebuilt The Nest and Partners would leave them.
 const NEST={
- caught:{ch15Outcome:'RUPERT COMMITTED SUICIDE'},
- gotAway:{ch15Outcome:'RUPERT GOT AWAY',ch15SavedHank:true,ch15FoundDiary:true,ch15SawSigns:true},
- notFound:{ch15Outcome:'RUPERT NOT FOUND'},
- died:{ch15Outcome:'CONNOR DIED CHASING RUPERT',connorDeaths:1},
+ caught:{nestOutcome:'RUPERT COMMITTED SUICIDE'},
+ gotAway:{nestOutcome:'RUPERT GOT AWAY',nestSavedHank:true,nestDiary:true,nestSawSigns:true},
+ notFound:{nestOutcome:'RUPERT NOT FOUND'},
+ died:{nestOutcome:'CONNOR DIED CHASING RUPERT',connorDeaths:1},
 };
 // Plays chapter 18 alone from a fresh state with `inputs` applied, following the engine's routing. A pick may be an
 // array (one entry per visit of a repeatable scene); unpicked scenes take their first option (media: skip).
@@ -93,17 +93,12 @@ test('the debrief answers unlock from The Nest; the second answer drops the firs
  for(const id of ['2','3','4'])assert.match(play(NEST.notFound,{C11d:id}).events.C11d,/A new case just came in\. Find \{\{Hank\}\} and investigate it\./);
 });
 
-test('until The Nest is rebuilt, its pre-rebuild C10 choice and roll decide what Amanda hears',()=>{
+test('The Nest outputs decide Amanda’s debrief independently of obsolete C10 choices',()=>{
  const c=s=>k=>s.choices[k];
- const saved=startState(story);saved.choices.C10='0';assert.deepEqual(nestInputs(saved,c(saved)),{nest:'notCaught',savedHank:true,diary:true,signs:false,partnersFound:false});
- const chased=startState(story);chased.choices.C10='1';chased.rolls.C10=0.9;chased.suspect=true;assert.deepEqual(nestInputs(chased,c(chased)),{nest:'caught',savedHank:false,diary:false,signs:false,partnersFound:true});
- const lost=startState(story);lost.choices.C10='1';lost.rolls.C10=0.1;assert.equal(nestInputs(lost,c(lost)).nest,'notCaught');
- // A rebuilt chapter's flags win over the legacy choice.
- const rebuilt=startState(story);rebuilt.ch15Outcome='rupert committed suicide';rebuilt.choices.C10='0';assert.equal(nestInputs(rebuilt,c(rebuilt)).nest,'caught');
- assert.equal(nestInputs(rebuilt,c(rebuilt)).savedHank,false,'legacy SAVE HANK must not override the rebuilt ending');
- rebuilt.ch15SavedHank=true;assert.equal(nestInputs(rebuilt,c(rebuilt)).savedHank,true);
- rebuilt.ch15ConnorDied=true;rebuilt.ch15SavedHank=false;assert.equal(nestInputs(rebuilt,c(rebuilt)).savedHank,false,'Nest death must not inherit a legacy rescue');
- assert.equal(play({choices:{C10:'0'}}).s.ch18SavedHank,true);
+ const saved=Object.assign(startState(story),NEST.gotAway);saved.choices.C10='1';assert.deepEqual(nestInputs(saved,c(saved)),{nest:'notCaught',savedHank:true,diary:true,signs:true,partnersFound:false});
+ const caught=Object.assign(startState(story),NEST.caught,{suspect:true});caught.choices.C10='0';assert.equal(nestInputs(caught,c(caught)).nest,'caught');assert.equal(nestInputs(caught,c(caught)).savedHank,false);
+ const died=Object.assign(startState(story),NEST.died);assert.equal(nestInputs(died,c(died)).nest,'died');
+ assert.equal(play(NEST.gotAway).s.ch18SavedHank,true);
 });
 
 test('the dog is calmed by name only if Connor learned it in Waiting for Hank..., and he knows it afterwards',()=>{
