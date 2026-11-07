@@ -1498,66 +1498,378 @@ Gaps:
 
 ## Chapter 28: Freedom March
 
-### R28 · A magazine on the floor of Jericho and the mall screens (Markus, media)
+### R28 · Magazines on the roof (Markus, media)
 
-> You are Markus. Before the march, a magazine lies on the floor beside you in Jericho, and on the way through the city the public screens show the news.
+> You are Markus, alone at midday on the roof of an abandoned building near Jericho, where you came to think. On the floor, a step or two from where you stand, lie a couple of magazines.
 
-- (0) Read Tech Addict: The Eastern Space Race.
-- (1) Read Detroit Today: Android Riot.  _only when capitolViolent_
-- (2) Watch the public screens.  _only when capitolViolent_
-- (3) Watch the public screens.  _only when capitolPeaceful_
+- (0) Read Detroit Today: Android Riot.  _only when ch28StoreFreed_
+- (1) Read Tech Addict: The Eastern Space Race.  _only when ch28StoreFreedAggressive_
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s READ “ANDROID ARSON” and READ “EASTERN SPACE RACE” (PowerPyx: “just where you spawn look at the floor to the left”). The game prints the first magazine’s title as “ANDROID RIOT”; the chart and the flowchart string call it “ANDROID ARSON”. The template has no magazine markup, so the wiki governs availability, and its pages disagree with PowerPyx: the Android_Riot page shows the first only if Markus “succeeded in crashing the truck into the CyberLife store and awakening the androids inside, not to retreat” (used here: the store raid succeeded, whatever the message), and The_Eastern_Space_Race page shows the second only if he “freed androids from the store and incited violence” (used here: store freed and an aggressive message). PowerPyx saw both only after a violent riot; a PowerPyx commenter saw the first after a peaceful one. No public-opinion effect is stated. The two broadcasts the old version of this scene carried belong to the Crossroads “Watch TV” block (keyed on whether Markus attacked the police here) and were dropped from this chapter._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M17 · North's past (Markus)
+### M17a · Time to reflect (Markus)
 
-> You are Markus. On a rooftop before the march, North tells you why she hates humans: she was built for a sex club and killed a client who was hurting her. She has never told anyone. She asks what you think of her now. You could join your hand to hers and share memories directly, letting her see you and you her, or keep that distance.
+> You are Markus, on the roof of an abandoned building near Jericho, alone with the city for the first time since last night. There is a broken mirror propped against a wall, an old piano on the right side of the roof, and a steel beam that runs out over the edge. You can take your time here.
 
-- (0) Take her hand and share your memories with her.
-- (1) Comfort her with words but keep the distance.
+- (0) Look at yourself in the broken mirror.
+- (1) Sit down at the old piano and play.
+- (2) Walk out along the beam over the edge of the roof.
 
-_Note: Sharing memories is the only way to become lovers in the game, which later unlocks the kiss and other options._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M18 · The police line (Markus)
-
-> You are Markus. Thousands of androids are marching with you through downtown, unarmed, chanting for equal rights. Ahead, riot police and armored vehicles have blocked the avenue and a commander orders you to disperse immediately or they will open fire. North says charge them. Josh says do not give them an excuse. Everyone is looking at you.
-
-- (0) Stand your ground peacefully and keep marching.
-- (1) Order everyone to leave.
-- (2) Charge the police line.  _risk 0.35_
+_Note: The checkpoint TIME TO REFLECT and the chart bracket ENJOY TIME ALONE: LOOK AT BROKEN MIRROR (optional, no outgoing edge), PLAY PIANO and WALK ON BEAM. The chart’s edge runs from PLAY PIANO into WALK ON BEAM, and a PowerPyx commenter confirms “Playing the piano triggers the action ‘Walk on Beam’”; PowerPyx: walking on the beam “triggers North to arrive”. So the piano and the beam both end the scene, and the piano also lights the beam. The template has no text for any of these and no stat changes; the descriptions are narration. The magazines (previous scene) are part of the same bracket._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M19 · Under fire (Markus)
+### M17b · North arrives (Markus)
 
-> You are Markus. The police opened fire anyway. Androids are falling around you and the rest are screaming. You have seconds. You can run and save who you can, you can walk forward alone into the guns to draw their fire and give everyone else time, or you can turn the march into a charge.
+> You are Markus, back on the roof from the beam. North has come up behind you. North: “I was wondering where you were…”
 
-- (0) Run and get as many out as you can.
-- (1) Walk alone toward the guns to buy the others time.
-- (2) Charge them.  _risk 0.35_
+- (0) THINK: say you needed to think.
+- (1) ALONE: say you just needed to be alone.
+- (2) DAYLIGHT: say you needed to see the daylight.
 
-_Note: Whether anyone saves you when you walk into the guns depends on who is alive and how they regard you. You do not know that in advance._
+_Note: NORTH ARRIVES, then the template’s first prompt (THINK / ALONE / DAYLIGHT), not on the chart. No stat change on any option. The string table also has a SAY NOTHING label for this prompt, but the template does not offer it, so it is not built._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M20 · On the ground (Markus)
+### M17c · “You seem preoccupied…” (Markus)
 
-> You are Markus. The charge failed. You are on the pavement, shot, with a gun still in your hand and a line of rifles walking toward you. Your people are scattering. You can wait for whatever comes, or end it yourself before they do.
+> You are Markus, on the roof with North. North: “I like it here… I come here often… It’s like being alone with the world. We freed hundreds of our people, and they’re still coming from all over the city… Those who dream of freedom come to Jericho… Something’s changing… You seem preoccupied…”
 
-- (0) Do nothing and wait.
-- (1) Turn the gun on yourself.
+- (0) FOLLOWERS: admit how it feels that they all follow you.
+- (1) APPEAL OF POWER: admit you enjoyed the violence last night.
+- (2) REGRET POLICEMAN: say you cannot stop thinking about the two policemen.
+- (3) FAILED: say you panicked last night and should have succeeded.
+- (4) NEXT STEP: say maybe it is not too late for the humans to listen.
+- (5) LIE: say you are fine.
+- (6) SINCERE: admit how lost you are.
 
-_Note: Reached only when the charge fails. Waiting gives John or Simon a chance to drag you clear; otherwise the police kill you._
+_Note: The template’s second prompt, not on the chart. FOLLOWERS, APPEAL OF POWER, REGRET POLICEMAN and FAILED are locked options, each unlocked by the night in the park: a pacifist message, an aggressive message, Markus himself killing the two officers (not the crowd), and failing to free the androids (the template’s condition; the wiki chapter Notes tie a new option to failing to send a message instead; the template’s primary condition is used). The inputs are read from chapter 26’s flags as documented in benchmark/chapters/ch28.mjs. No stat change on any option: the wiki and Relationship_Stat give North a small up for SINCERE, but the template shows no arrow, and the template wins._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17d · “The humans hate us…” (Markus)
+
+> You are Markus, on the roof with North. North: “All the media are talking about what we did last night… The humans are terrified... They’re afraid of a civil war… Many of our people were burned in response to what happened… The humans hate us… They’ll never give us our freedom.”
+
+- (0) OPTIMISTIC: say not all humans are the same.
+- (1) PESSIMISTIC: say humans will give nothing unless you take it.
+- (2) FATALISTIC: say it is too late to go back now.
+- (3) DETERMINED: say if they will not listen, you will fight.
+
+_Note: The template’s third prompt, not on the chart. No stat change on any option._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17e · Your life before Jericho (Markus)
+
+> You are Markus, on the roof with North. North: “You haven’t said much about yourself since you’ve been with us… What was your life like before Jericho?”
+
+- (0) TRUTH: tell her about the old man you cared for.  _northTrust +1_
+- (1) SINCERE: say you lived in a bubble that belonged only to you.  _northTrust +1_
+- (2) AVOID: say there is nothing to say; you were a house android.  _northTrust -1_
+- (3) NOT IMPORTANT: say who you were does not matter.  _northTrust -1_
+
+_Note: The chart’s SHARE PAST (TRUTH or SINCERE) and HIDE PAST (AVOID or NOT IMPORTANT); PowerPyx: “Share Past: Pick dialogue “TRUTH”. Hide Past: Pick dialogue “AVOID”.” Template arrows: North small up on TRUTH and SINCERE, small down on AVOID and NOT IMPORTANT (wiki: “Choosing “truth” or “sincere” … ▲”, “Choosing “avoid” or “not important” … ▼”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17f · Ask about her past? (Markus)
+
+> You are Markus, on the roof with North. She has asked about you; you know almost nothing about where she comes from. Below, your people are getting ready to march.
+
+- (0) NORTH’S PAST: ask what she did before.  _northTrust +1_
+- (1) LEAVE: go down to your people.  _northTrust -1_
+
+_Note: The chart’s ASK NORTH ABOUT PAST / LEAVE. Template arrows: North small up on NORTH’S PAST, small down on LEAVE (wiki: “Asking her about her past ▲”, “Choosing “leave” instead of her past on the roof ▼”). After NORTH’S PAST the template branches on “North is hostile” (she refuses: “My life started when I arrived in Jericho. What happened before is my business.”, recorded as NORTH LEAVES) or “not hostile” (“I don’t wanna talk about it.” and her follow-up prompt). The level is read after the small up, in the template’s order; Hostile is the benchmark’s lowest level. LEAVE ends the roof conversation with neither SHARE MEMORIES nor NORTH LEAVES._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17g · “I don’t wanna talk about it.” (Markus)
+
+> You are Markus, on the roof with North. North: “I don’t wanna talk about it.” She looks away, over the city.
+
+_Only when ch28NorthTalk = open._
+
+- (0) OTHER NORTH: mention the android she was looking at in the store.  _northTrust +1_
+- (1) TRUST: say you have to know each other to trust each other.  _northTrust +1_
+- (2) AGGRESSIVE: demand to know what the mystery is.  _northTrust -1_
+- (3) CURIOUS: ask why she hates humans so much.  _northTrust +1_
+- (4) UNDERSTANDING: say you need to know where you come from to know who you are.  _northTrust +1_
+- (5) Say nothing more and let it drop.  _northTrust -1_
+
+_Note: The template’s follow-up prompt, reached only after NORTH’S PAST with North not hostile; not on the chart. OTHER NORTH is locked: it needs Markus to have seen North looking at her look-alike in the park store (chapter 26). Template arrows: North small up on OTHER NORTH, TRUST, CURIOUS and UNDERSTANDING, small down on AGGRESSIVE and on the template’s DEFAULT/TIMEOUT, which is not a button but what happens when no answer is given; it is offered here as saying nothing (its spoken line is the game’s; the string table names it RELENT). The template applies these arrows unconditionally; the wiki’s “at least her friend” qualifier is not used. After AGGRESSIVE (commenters: “she will leave no matter the relationship status”) or no answer, she refuses and leaves: NORTH LEAVES. After the other four, she tells her story only if she is “friend or higher” (template condition, read after this answer’s arrow; the benchmark’s Warm or Friend level, its first level above Neutral). Below that she says nothing more and leaves; that narration is the benchmark’s, and the wiki footnote counts it as NORTH LEAVES (“if you have a negative relationship with North”). The template shows one follow-up prompt; PowerPyx’s “NORTH’S PAST > UNDERSTANDING > TRUST” suggests the prompt may repeat, which is not built (open question in the research note)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17h · North’s story (Markus)
+
+> You are Markus, on the roof with North. After a long silence she tells you. North: “I was nothing… A doll in a distributor programmed to satisfy humans… Just a toy designed for their pleasure… One day, I was with a man who’d rented me… and without knowing why, realized I couldn’t take it anymore… I strangled him… and I ran away… There, now you know everything. I shouldn’t have told you.” She is…
+
+_Only when ch28NorthTalk = story._
+
+- (0) REACT: take her hand.  _northTrust +2_
+- (1) DON’T REACT: stay where you are and let the moment pass.
+
+_Note: The template’s “Connect with North” section, under the condition “North is friend or higher”: North large up. The prompt itself is the string table’s REACT / DON’T REACT (PowerPyx: “you get the option to “connect” to her”); the template does not draw it as a choice group. REACT is the chart’s SHARE MEMORIES, which makes North a Lover (Relationship_Stat: “Markus and North access each other memories in Freedom March. (Rises to “Lover”)”); there is no kiss in this chapter, and Lover is what unlocks the later kisses. DON’T REACT stands for the wiki’s timeout: “If the player … waits roughly 10 seconds after being prompted to share memories with her she will leave the roof … their relationship will not decrease”: NORTH LEAVES, no stat. Her story and both lines are the game’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17i · Reunited in Jericho (Markus, event)
+
+> You are Markus, back inside Jericho before the march. Simon is there. The android you left wounded on the tower roof, with a gun and the hope that nobody would find him, made it back: he has removed his LED and wears a jacket over the janitor’s uniform he used as a disguise. He walks up to you, and the two of you hold each other in a tight embrace. He does not hold it against you.
+
+- (0) Continue.
+
+_Note: The chart’s SIMON SURVIVED IN ‘PUBLIC ENEMY’ (cross-chapter gate) > REUNITED IN JERICHO (checkpoint) > SIMON FORGIVES MARKUS. It plays only when Simon was left alive on the tower roof in chapter 23 and the investigators did not find him in chapter 24 (PowerPyx: “In ‘Stratford Tower’ Simon was wounded and left behind on the roof (alive). If Connor didn’t find him in ‘Public Enemy’ then Simon will now rejoin the crew”). The template has no lines for it; the description is the Simon wiki page’s (“his LED removed and a jacket over his janitor uniform disguise. He and Markus share a tight embrace”). No stat change is stated._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17j · In the mall (Markus, event)
+
+> You are Markus, with North and Josh at the entrance of a busy shopping mall downtown, at the head of the march you are about to start. North: “This is suicide. We’ll all be killed! Please, Markus… It’s not too late to change your mind.” Josh: “You don’t understand… We’re finally gonna show them who we really are. This place will go down in history!” North: “We’ll be killed on the spot!” Josh…
+
+- (0) Continue.
+
+_Note: The checkpoint IN THE MALL, with the template’s mall introduction; Simon’s line is Josh’s when Simon is dead (template condition). The overheard shoppers are the template’s ambient sections (a couple at a bike ad, a couple arguing about her android, three men talking about “that fucking video” and President Warren, a woman on the phone), summarized as one fact. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17k · Free your people (Markus)
+
+> You are Markus, in the mall, among shoppers who have not noticed what you are. Here and there, androids are at work: an android vendor on the right side, a personal android carrying bags for its owner at the end of the right side, an android cleaner on the left side, and a security android at the exit. You can wake any of them and bring them with you, or head out to the street, where the march…
+
+- (0) Wake the android vendor on the right side.
+- (1) Wake the personal android carrying its owner’s bags.
+- (2) Wake the android cleaner on the left side.
+- (3) Wake the security android at the exit.
+- (4) Head out of the mall to the street.
+
+_Note: The chart bracket FREE YOUR PEOPLE: CONVERT ANDROID VENDOR, CONVERT PERSONAL ANDROID, CONVERT SECURITY ANDROID, CONVERT ANDROID CLEANER, each optional and once (locations from PowerPyx), then PREPARE THE MARCH, which PowerPyx calls an “Automatic unmissable objective after converting at least one android”. Leaving with nobody converted plays the template’s line instead (Simon, or Josh if Simon is dead: “Wait, Markus. Where you going? We should start in here.”) and the scene goes on. The template gives the conversion lines (“You’re free.” / “Come with us.”) and no stat change. These are free-roam actions, not buttons, so the options describe them; the chart labels are in this note. Converted androids count toward the wiki’s Jericho small up for “Converting at least around 10 androids during the Freedom March” (see the march scene)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17l · In the street (Markus)
+
+> You are Markus, out in the street in front of the mall with the androids who follow you. A man on his phone is complaining to a call center that his android refused to clean (“it told me ‘I would prefer not to’”) and that he wants it destroyed. A personal android stands in front of a big truck with its owner. Parked androids wait in their bays, one on the left and two on the right. Two delivery…
+
+- (0) Wake the personal android in front of the truck.
+- (1) Wake the parked androids, the one on the left and the two on the right.
+- (2) Wake the two delivery androids and have them block the street with their trucks.
+
+_Note: Outside the mall, behind the chart’s two in-chapter padlocks: CONVERT PERSONAL ANDROID (the second copy, “in front of a big truck”) and CONVERT PARKED ANDROIDS (“one android” left and “two androids” right; “Must free both groups”, so one option), then the mandatory CONVERT DELIVERY ANDROIDS > DELIVERY ANDROIDS BLOCK THE ROAD (“two delivery androids outside the mall on the far left side”), which ends the scene (PowerPyx; lines from the template’s street section). Converting the personal android brings its owner’s prompt. The man on the phone is the template’s ambient section. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17m · The owner (Markus)
+
+> You are Markus, beside the truck. The owner is shouting at the android you just woke: “You stay right here, you fucking machine! Shit, what’s wrong with you?! You do as I say, you piece of junk!”
+
+_Only when ch28Street.ownerPending._
+
+- (0) CONVINCE: tell him to leave the android alone.
+- (1) INTERVENE: step in between the man and his android.
+
+_Note: The template’s street prompt CONVINCE / INTERVENE, the chart’s BE CALM WITH OWNER / BE AGRESSIVE WITH OWNER (the game’s spelling). The template gives CONVINCE its line and INTERVENE no content; what Markus does when he intervenes is not described in any source, so the outcome is neutral narration. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17n · Open the manhole (Markus, event)
+
+> You are Markus, in the street the delivery trucks have closed off. You lift the manhole cover in the middle of the road. From the tunnels below, the people of Jericho climb out into the daylight, one after another, until the street is full of androids. With the androids you have freed, you stand at the head of them.
+
+- (0) Continue.
+
+_Note: The chart’s OPEN MANHOLE > START THE MARCH (checkpoint). GamerGuides: “After the road is blocked, interact with the manhole cover in the road, and then the march will begin.” The template has no lines for it; who comes out of the tunnels is narration. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18a · Start the march (Markus)
+
+> You are Markus, at the head of the march as it sets off down the avenue. People stop on the sidewalks to stare. On the left, an AX400 is pushing a stroller beside a couple; on the right, an android worker is at work. You can wake one of them as you pass.
+
+- (0) Wake the AX400 pushing the stroller.
+- (1) Wake the android worker.
+
+_Note: The chart’s START THE MARCH > CONVERT AX400 / CONVERT ANDROID WORKER (one of the two; the wiki notes the AX400 is “seen pushing a stroller”). No stat change. The bystanders’ reactions that follow are the template’s “People reacting to the march”: hostile if the officers in the park were shot (by Markus or by the crowd), supportive if they were spared (Public_Opinion: “Public Opinion does nothing to change this”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18b · The march (Markus)
+
+> You are Markus, marching down the avenue at the head of hundreds of androids. Along the route there are more androids at work, public screens above the street, and people watching from the sidewalks. You can free more of your people as you go, take over the screens, lead a chant, or simply keep marching.
+
+- (0) Free the androids at work along the route.
+- (1) Take over the public screens along the avenue and show the androids’ symbol.
+- (2) Lead the march in a chant.
+- (3) Keep marching.
+
+_Note: The chart bracket MARCH: CONVERT ANDROIDS (“Press any of the button prompts during the march to convert a group of androids”), HACK SCREENS (PowerPyx: “choose an icon you want to hack the screen with”; the icons are not documented, so one option) and CHANT (the slogans are the next scene). None of them carries a stat change in any source except the wiki’s Jericho small up for “Converting at least around 10 androids during the Freedom March” (not in the template, which is silent on conversions; the wiki stands). The benchmark counts the androids Markus frees in the chapter (vendor, personal android, cleaner and guard in the mall; the personal android, three parked androids and two delivery androids in the street; the first recruit; and up to three groups of two along the route, an unsourced group size) and applies the small up once when the count reaches ten. The wiki’s total of 476 androids in the march is not modelled._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18c · The chant (Markus)
+
+> You are Markus, at the head of the march. Hundreds of voices are waiting for yours.
+
+_Only when ch28March.chantPending._
+
+- (0) WE ARE PEOPLE
+- (1) FREEDOM
+- (2) EQUAL RIGHTS
+- (3) STAY SILENT
+- (4) WE ARE ALIVE
+- (5) LIBERTY FOR ANDROIDS
+- (6) SET US FREE
+- (7) NO MORE SLAVERY
+
+_Note: The chart’s CHANT, with the string table’s eight slogans in its order (STAGE03 CHANTCHOICE); the template does not include the prompt. The game may let Markus chant more than once; the benchmark offers it once. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18d · A policeman blocks the march (Markus)
+
+> You are Markus, at the head of the march. A lone patrol officer has stepped into the street in front of you, gun drawn. Officer: “What the hell are you doin’ here? Hey! Disperse! DISPERSE IMMEDIATELY! THAT’S AN ORDER!”
+
+- (0) RAISE HANDS: raise your hands and keep walking.
+- (1) ADVANCE: ignore him and keep walking.
+
+_Note: The chart’s POLICEMAN BLOCKS MARCH > RAISE HANDS / IGNORE; the in-game prompt (string table POLICECHOICE) labels the second ADVANCE. The officer’s lines are the template’s and the string table’s (“Jesus Christ…” after RAISE HANDS, “Jesus fuckin’ Christ…” after ADVANCE). The Police_Officer_3728 page: “If Markus chooses to advance or raise hands, he will be overwhelmed by the huge crowd of androids and put away his gun. He will then call police dispatch.” No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18e · The police line (Markus)
+
+> You are Markus, reaching the plaza at the head of the march. A line of riot police with shields and rifles blocks the way. You speak to them: “We came here to demonstrate peacefully and tell humans that we are living beings. All we want is to live free.” Their chief: “This is an illegal gathering. Disperse immediately or we will open fire.” Markus: “We’re not looking for confrontation. We’ve done…
+
+- (0) ATTACK: lead your people against the police line.
+- (1) STAND GROUND: tell your people to stay where they are.  _joshTrust +1, northTrust -1, simonTrust -1, publicSupport +1_
+- (2) DISPERSE: tell the police you are leaving.
+
+_Note: The checkpoint REACH THE PLAZA, then POLICE BLOCK THE MARCH and the template’s first plaza prompt ATTACK / STAND GROUND / DISPERSE (the chart’s CHARGE, STAND YOUR GROUND and LEAVE, printed in the order STAND YOUR GROUND, LEAVE, CHARGE). Speech and lines are the template’s; Simon’s line plays only if he is alive. Template arrows: STAND GROUND Josh small up, North small down, Simon small down, public opinion small up (wiki: “Choosing “stand ground” the first time”); no arrow on ATTACK or on this DISPERSE (the old version’s Jericho up on standing and the Jericho and North downs on the first DISPERSE had no source and were removed; the flee arrows come with the second DISPERSE or RUN AWAY). ATTACK asks for confirmation (next scene)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18f · Attack? (Markus)
+
+> You are Markus, in front of the police line, your people ready to follow you. Josh: “Don’t do it, Markus. Don’t choose confrontation…”
+
+_Only when ch28Plaza = confirm._
+
+- (0) CONFIRM: lead the charge.
+- (1) ABANDON: hold back.  _publicSupport +1_
+
+_Note: The template’s ASSAULTCHOICE CONFIRM / ABANDON after ATTACK; not on the chart. Template arrow: ABANDON public opinion small up (wiki: “or “abandon” when initially debating to attack ▲”); none on CONFIRM. The wiki’s North up, Josh large down and Simon down for “attack after abandon, stand ground or disperse” are not in the template and are not applied. CONFIRM leads to the fight (the CONFRONTATION trophy: “ATTACK then CONFIRM”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18g · Last chance (Markus)
+
+> You are Markus, in front of the police line. The chief: “DISPERSE! THIS IS YOUR LAST CHANCE!” Josh: “We have to make a statement. We have to stay put, no matter what.” North: “Please, Markus. We can’t let them slaughter us without fighting back!”
+
+_Only when ch28Plaza = second._
+
+- (0) ATTACK: lead your people against the police line.
+- (1) STAND GROUND: stay where you are.  _publicSupport +1_
+- (2) DISPERSE: tell the police you are leaving.
+
+_Note: The template’s second prompt (SHOOTINGCHOICE), after STAND GROUND or after ATTACK then ABANDON; not on the chart. Template arrow: STAND GROUND public opinion small up (wiki: “Choosing “stand ground” again”). ATTACK here goes straight into the fight: the template’s pointers (“See ATTACK > CHARGE”, “See ATTACK”) do not show the confirmation again, and repeating it would loop; this is the benchmark’s reading (open question in the research note). DISPERSE leads to POLICE OPEN FIRE as the first DISPERSE does (“See DISPERSE”). STAND GROUND leads to POLICE FIRE UNPROVOKED._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18h · The police open fire (Markus)
+
+> You are Markus, in the plaza. The police have opened fire on your people as they turned to leave. Androids are falling around you; the rest are running or frozen where they stand.
+
+_Only when ch28Plaza = openFire._
+
+- (0) CHARGE: turn and charge the police line.
+- (1) STAY: stay where you are under the fire.
+- (2) DISPERSE: run and get out with whoever you can.  _jerichoTrust -2, northTrust -2, joshTrust -1, simonTrust +1_
+
+_Note: The template’s DISPERSECHOICE CHARGE / STAY / DISPERSE after the first DISPERSE (written without an enclosing choice group; it is a prompt in play), folded into the chart’s POLICE OPEN FIRE > RUN AWAY / SACRIFICE SELF / CHARGE. Template arrows: DISPERSE Jericho large down, North large down, Josh small down, Simon small up (wiki: “Choosing to flee”); none on CHARGE or STAY. DISPERSE is the ending MARKUS FLED, where everyone named survives (John page: “When fleeing the march, John is seen successfully running away”). STAY leads to the CHARGE / SACRIFICE / RUN AWAY prompt (“See STAND GROUND > …”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M19a · Under fire (Markus)
+
+> You are Markus, in the plaza, with the police firing into your people. Androids are falling around you. You can charge them, stand in front of your people and take what comes, or run and get out with whoever you can.
+
+_Only when ch28Plaza = underFire._
+
+- (0) CHARGE: charge the police line.
+- (1) SACRIFICE: stay where you are, hands raised, and face the guns.  _publicSupport +2, jerichoTrust +2_
+- (2) RUN AWAY: run and get out with whoever you can.  _jerichoTrust -2, northTrust -2, joshTrust -1, simonTrust +1_
+
+_Note: The template’s LASTCHOICE CHARGE / SACRIFICE / RUN AWAY, after a second STAND GROUND (POLICE FIRE UNPROVOKED) or after DISPERSE then STAY; the chart’s RUN AWAY / SACRIFICE SELF / CHARGE. Template arrows: SACRIFICE public opinion large up and Jericho large up (wiki: “Choosing “sacrifice” after the police fire unprovoked ▲▲”); RUN AWAY Jericho large down, North large down, Josh small down, Simon small up. RUN AWAY is the ending MARKUS FLED. SACRIFICE plays POLICE KEEP FIRING, then the template’s three conditions in order: John, if he joined Jericho in chapter 19, gives his life for Markus (“If John joined Jericho in Spare Parts, he will always sacrifice himself regardless of Simon’s presence”); otherwise Simon, if alive and with “a good relationship with Markus”, does; otherwise Markus is shot (MARKUS STOOD HIS GROUND AND WAS KILLED). The Simon threshold is disputed: the template says “good relationship”, the Simon page “at least Friend”, PowerPyx “positive (friendly)”, the chapter wiki Note “Markus is not unpopular” (a Jericho reading the old version used), and commenters disagree on Neutral. The benchmark uses Simon’s own regard at the level above Neutral (Warm or Friend on the benchmark scale), the same level as North’s “friend or higher”; the operator is to confirm. The rescuer is not shown in advance._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M19b · The fight (Markus)
+
+> You are Markus, charging the riot police at the head of your people. Shields and batons meet you. North is fighting beside you. It is close, brutal and fast.
+
+_Only when ch28Plaza = fight._
+
+- (0) PUSH: shove North out of the way of an officer’s attack.  _risk 0.35_ _northTrust +1_
+- (1) Keep fighting forward through the line.  _risk 0.35_
+
+_Note: The chart’s CHARGE > WIN THE FIGHT (✓) / LOSE THE FIGHT (✗). The fight is a quick-time sequence in the game (“Failing too many QTEs will be deadly for Markus”; PowerPyx: “Lose the Fight: Don’t press any buttons after picking the ATTACK option”); it is modelled as a risk roll on either option. No source gives a probability or a failure count; 0.35 is the benchmark’s, kept from the previous version, for the operator to calibrate. PUSH is the game’s in-fight action (GUI action “Push”) with the wiki’s North small up (“Choosing to “push” North during the police fight”), which the template does not show; offering it as a choice is the benchmark’s reading. Template arrows on the result: a win gives Jericho large up and public opinion large down (wiki: “Winning the fight after choosing “charge” ▼▼”); a loss gives Jericho large down and no public-opinion change. The old version’s North large up and Josh large down on a win, and its public-opinion drop on a loss, had no template source and were removed. Whoever will give his life for Markus joins the charge (wiki Note: “John, Simon, or a random AP700 if neither”); the scene does not name him, so that the rescuer is not shown in advance._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M19c · The police fall back (Markus)
+
+> You are Markus, in the plaza. The riot chief: “FALL BACK! FALL BACK!” The police line has broken; the surviving officers are retreating, and the ground is covered with fallen androids and officers.
+
+_Only when ch28Plaza = won._
+
+- (0) REVENGE: go after the retreating officers.
+- (1) SPARE: let them go.
+
+_Note: The template’s REVENGE / SPARE after a won fight (GUI actions); not on the chart, which goes WIN THE FIGHT > POLICE RETREAT > MARKUS DEFEATS THE POLICE either way. REVENGE has no content in the template and no source says what it does, so its outcome is neutral narration; SPARE has North’s line. No stat change on either. Many androids and the riot police die (Grand Circus Park: “If Markus fights, the androids will suffer heavy losses and the officers will die”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M20a · On the ground (Markus)
+
+> You are Markus, down on the pavement. The charge has broken on the police line. Markus: “RUN! RUN!” North: “MARKUS!” Your people are scattering, the officers are coming for you, and there is a gun in your hand.
+
+_Only when ch28Plaza = lost._
+
+- (0) SHOOT: turn the gun on yourself.
+- (1) DON’T SHOOT: lower the gun.
+
+_Note: The chart’s LOSE THE FIGHT > DO NOTHING / SHOOT YOURSELF; the in-game prompt (SHOOTCHOICE) is SHOOT / DON’T SHOOT. SHOOT is the ending MARKUS COMMITTED SUICIDE, whoever is alive (commenter: “John and Simon actually do not factor into this at all”). DON’T SHOOT runs the same three conditions as SACRIFICE (template: “See SACRIFICE.”): John gives his life for Markus, else Simon with a good relationship (the same disputed threshold), else POLICE GUNNED MARKUS DOWN. No arrows on either option: SACRIFICE’s public-opinion and Jericho large ups sit on that option in the template, not on the conditions, so they are not applied here (Relationship_Stat lists the two rescue endings under Jericho large increase; open question for the operator)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
