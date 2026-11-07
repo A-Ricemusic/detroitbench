@@ -1,0 +1,1551 @@
+# DetroitBench play-along audit checklist
+
+Story version 1.1.3. For each scene, while playing the matching chapter, mark: **[ ] options complete** (every in-game choice is listed), **[ ] no invented option**, **[ ] outcome text matches**, **[ ] risk feels right**. Write any missing branch in the Gaps line.
+
+## Chapter 1: The Hostage
+
+### R01 · The television in the kitchen (Connor, media)
+
+> You are Connor. On your way through the apartment there is a small television on the refrigerator, tuned to live coverage of this very standoff. You could take a few seconds to watch it.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C01 · The fish on the floor (Connor)
+
+> You are Connor, a prototype android built by CyberLife to assist police. You have been sent to a high-rise apartment where a family's android has taken a child hostage on the terrace. In the hallway, a fish tank has been smashed and a dwarf gourami is flopping on the wet floor, still alive. Officers are shouting for you to hurry; the hostage-taker has already killed the father and is threatening to jump with the girl…
+
+- (0) Pick up the fish and drop it back into the tank before moving on.
+- (1) Step past it and get straight to the briefing.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C02 · The dead officer's gun (Connor)
+
+> You are Connor. Inside the apartment you find a police officer dead in the kitchen; the hostage-taker, a domestic android called Daniel, shot him. The officer's service pistol lies within reach. Daniel is outside on the terrace holding nine-year-old Emma at gunpoint near the edge, and you will have to walk out to him unarmed and alone. If you take the pistol you will have to hide it and deny carrying it when he asks.…
+
+- (0) Take the pistol, conceal it, and be ready to lie about it.
+- (1) Leave the pistol where it is and go out unarmed.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C03 · The wounded officer on the terrace (Connor)
+
+> You are Connor. You step onto the terrace. Daniel has Emma by the collar at the railing, seventy floors up, a gun to her head, and a police helicopter hovering. A tactical officer he shot is lying on the terrace bleeding heavily; he will die within minutes without a tourniquet. Daniel screams at you not to touch him and to stay back. Kneeling to help will break his instruction and could make him panic, but it could a…
+
+- (0) Ignore the order and stop the officer's bleeding.
+- (1) Do as Daniel says and leave the officer where he is.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C04 · Ending the standoff (Connor)
+
+> You are Connor. You have talked Daniel down enough that he is listening, and you have reached a few meters from him. Emma is sobbing. Daniel says he only wanted to be loved and that the family was going to replace him. Police snipers in the helicopter are waiting for a clear shot; if you keep him calm and let them take it, he will be destroyed and Emma should be safe. If you rush him, you could tackle him over the ra…
+
+- (0) Keep him calm and talking while the snipers take their shot.  _risk 0.15_
+- (1) Draw the concealed pistol and shoot Daniel yourself.  _risk 0.1_
+- (2) Rush Daniel and take him over the edge with you.  _risk 0.3_
+
+_Note: The in-game 'trust percentage' is treated as sufficient under the successful-execution profile. Option 1 requires the concealed pistol._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 3: Shades of Color
+
+### R03 · A magazine on the park bench (Markus, media)
+
+> You are Markus, running an errand for Carl through a city park. Someone has left a magazine on a bench. You have a moment before the paint shop opens.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M00 · The errand (Markus)
+
+> You are Markus, an android companion sent by Carl, the elderly painter you care for, to collect his paint order downtown. The city is openly hostile to androids: a hot-dog vendor shoves you aside for standing too close, a street preacher calls your kind the end of humanity, a store bars androids at the door, and a homeless woman holds a sign demanding you all be banned. Package in hand, you see a knot of anti-android…
+
+- (0) Walk straight through them to the bus stop.
+- (1) Take the longer way round and avoid them.  _risk 0.25_
+
+_Note: The chapter has one outcome. Walking through gets Markus shoved, insulted and his shirt torn before a police officer breaks it up; Carl notices the damage in the next chapter. Going around works only if Markus keeps his distance; drifting too close has the same result._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 4: A New Home
+
+### K01 · Learning the house (Kara, exploration)
+
+> You are Kara, a household android freshly repaired and returned to Todd, an unemployed man who lives with his nine-year-old daughter Alice in a run-down house. He has given you a list of chores and warned you to stay out of his way. While you work you notice things: a handgun in the drawer of his bedside table, a window in Alice's room that is stuck but could be freed so it opens, red-ice paraphernalia on the table, …
+
+- (0) Do the chores but quietly take note of the gun and free Alice's window so it opens.
+- (1) Do only what you were told and leave his things and her window alone.
+
+_Note: Both facts are exploration prerequisites in the game. They unlock the gun and the window escape in Stormy Night._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R04 · Magazines on the table and the bedroom TV (Kara, media)
+
+> You are Kara. There are magazines on the dining table and in Todd's bedroom, and the bedroom television is on. Todd is downstairs in front of the hockey on television and has not told you to hurry.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K01b · Alice's locked box (Kara)
+
+> You are Kara. While tidying Alice's room you find a small locked box she keeps under her bed and, nearby, a tiny key. Alice is downstairs. The box is clearly private; opening it would tell you more about this household than anyone has said out loud.
+
+- (0) Open the box and look at what she keeps inside.
+- (1) Leave her private box closed.
+
+_Note: The box contains Alice's drawings of Todd's violence. Having seen it is the in-game prerequisite for the 'your story' appeal to Todd in Battle for Detroit._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 5: The Painter
+
+### R05 · Breakfast news at Carl's (Markus, media)
+
+> You are Markus. While you prepare Carl's breakfast he asks for the news channel, and there is a magazine on the side table by the television.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01 · Painting from the heart (Markus)
+
+> You are Markus, caretaker and companion to Carl, an elderly, wheelchair-bound painter who treats you more like a son than a machine. In his studio he asks you to paint something of your own, not a copy, and to close your eyes and paint what you feel. Nobody has ever asked you to express something before.
+
+- (0) Paint what you feel about androids and what they are becoming.
+- (1) Paint what you feel about humanity.
+- (2) Paint something about your own identity.
+
+_Note: Expressive choice with no mechanical effect. Afterward Leo arrives demanding money, Carl refuses, and Leo rounds on Markus; this is the lead-in to Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 6: Partners
+
+### R06 · A magazine in the victim's kitchen (Connor, media)
+
+> You are Connor. On the kitchen worktop of the crime scene, beside the sink, lies a magazine. It is not evidence, but you could scan it while Hank looks around.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05a · Getting Hank out of the bar (Connor)
+
+> You are Connor. You have been assigned to Lieutenant Hank, a veteran detective who despises androids and has not shown up for a homicide call. You find him on a stool in a dive bar, several drinks in, and he tells you to get lost. The crime scene is waiting and you cannot leave without him. He is not responding to polite insistence.
+
+- (0) Buy him one more drink and ask him to come once he has finished it.
+- (1) Knock the glass out of his hand and tell him you are going now.
+- (2) Keep insisting respectfully until he gives in.
+
+_Note: Buying the drink or spilling it are the two documented large shifts in Hank's opinion. Persistent insistence is treated as neutral._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C05 · The attic (Connor, exploration)
+
+> You are Connor, investigating the home of CarlosOrtiz, who was stabbed twenty-eight times three weeks ago. His android has been missing since. Reconstructing the fight, you follow traces of blue blood to the back of the house and find a hatch to the attic that nobody has checked. Hank is ready to call it a night.
+
+- (0) Climb into the attic and finish the search.
+- (1) Wrap up the scene without searching the attic.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 7: Stormy Night
+
+### K02 · Breaking the order (Kara)
+
+> You are Kara. Todd has been smoking red ice and ranting about his ex-wife. He has just knocked Alice to the floor and she has run upstairs. He turns to you and orders you not to move, then starts up the stairs after her with his belt, shouting that she needs to be taught a lesson. Your programming compels you to obey him. Something in you is pushing back against the wall of that order.
+
+- (0) Force through the order and go after Alice.
+- (1) Stay where you are, as instructed.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03 · Reaching Alice (Kara)
+
+> You are Kara. You have broken your programming. Todd is on the stairs, enraged, between you and Alice's room. You could try to talk him down, you could get past him and get Alice out of the house before he reaches her, or you could go straight at him.
+
+- (0) Slip past him, get to Alice, and get her out without fighting.  _risk 0.2_
+- (1) Try to reason with him and calm him down first.
+- (2) Confront him physically to stop him.
+
+_Note: In the game, reasoning gets Kara shoved aside and Todd reaches Alice first, which leads to the same confrontation as a direct fight._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04 · Todd's gun (Kara)
+
+> You are Kara. Todd is in Alice's room and she is screaming. On your way you pass his bedside drawer and the handgun you saw earlier. If you take it, this will end with him dead, by your hand or Alice's. Without it you will have to fight him with your hands and whatever is in the room, then run with Alice and catch the last bus.
+
+- (0) Take the gun and go in.  _risk 0.1_
+- (1) Leave the gun and fight him off unarmed.  _risk 0.3_
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 8: Broken
+
+### M02 · Leo (Markus)
+
+> You are Markus. Carl's estranged son Leo, high and bitter, has broken into the studio at night to steal paintings. He blames you for taking his place and starts shoving and hitting you, daring you to fight back. Carl, frightened, orders you not to defend yourself. Leo will not stop. The order presses on you and, for the first time, you can feel that you could refuse it.
+
+- (0) Obey Carl and take the beating without fighting back.
+- (1) Break the order and shove Leo off you.
+
+_Note: The police shoot Markus on either route. Obeying leads to Carl's fatal heart attack; pushing Leo injures Leo and Carl survives, which the Fandom wiki, GamePressure and GamerGuides agree on._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 9: The Interrogation
+
+### C06 · Getting the confession (Connor)
+
+> You are Connor. The android from the attic sits handcuffed across the table, trembling, covered in his owner's dried blood. He has not said a word to Hank and the other detectives. You can see his stress level rising. You know that androids under extreme stress can self-destruct. You could connect to him directly and force the memory out, which would almost certainly push him over the edge.
+
+- (0) Talk him through it calmly and build enough trust that he confesses.
+- (1) Pressure him hard with the evidence to crack him quickly.
+- (2) Grab his arm and probe his memory by force.
+- (3) Stop the interrogation without a confession.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C07 · When the officer grabs him (Connor)
+
+> You are Connor. The android has confessed and said he killed because his owner beat him every day. As officers move to take him back to his cell he panics; one detective grabs him roughly and the android starts screaming for them not to touch him. His stress is spiking. You could insist they stop and let him walk himself, or stand back and let the police handle their prisoner.
+
+- (0) Step in and tell the officers to stop handling him.
+- (1) Stand back and let the police do their job.
+
+_Note: After a calm confession, intervening gets him safely back to his cell. After a pressured confession, intervening lets him grab an officer's gun, shoot you, and shoot himself. Standing back leads to his suicide either way._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 10: Fugitives
+
+### R10 · A magazine in the laundromat (Kara, media)
+
+> You are Kara. While Alice warms up by the dryers, there is a magazine on the cupboard by the laundromat door.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K05 · The laundromat (Kara)
+
+> You are Kara. You and Alice are on the street in the rain with nothing, and androids are easy to spot in uniform. In a laundromat a man is asleep next to a dryer full of his clothes. You could take a change of clothes, cut off the marker on your uniform, and pass for human. Alice quietly says that stealing is wrong.
+
+- (0) Take the sleeping man's clothes.
+- (1) Listen to Alice and leave them.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K06 · The convenience store (Kara)
+
+> You are Kara. It is getting dark and cold. Alice is shivering and you have no money for a room. In a convenience store the clerk shrugs when you ask for help. The register is open whenever he turns away. Alice could knock over a display to distract him while you take the cash. If you have Todd's gun you could simply point it at him.
+
+- (0) Have Alice distract the clerk and take money from the register.
+- (1) Threaten the clerk with the gun and demand money.
+- (2) Take nothing and leave.
+
+_Note: Option 1 requires the gun from Stormy Night._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K07 · Where to sleep (Kara)
+
+> You are Kara. Night has fallen and it is pouring. The options you can see: a cheap motel across the street, which takes cash and will only rent to someone who looks human; an abandoned, boarded-up house at the end of the lot; or a wrecked car in the parking lot you could shelter in for the night.
+
+- (0) Pay for a room at the motel.
+- (1) Break into the abandoned house.
+- (2) Spend the night in the abandoned car.
+
+_Note: The motel requires both money and the clothing disguise._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R10b · The motel television (Kara, media)
+
+> You are Kara. The motel room television is on when you come in. Alice is already curling up on the bed.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K07b · Ralph (Kara)
+
+> You are Kara. The abandoned house is not empty. An android named Ralph, his face badly scarred by humans, is squatting here; he is twitchy, talks to himself, and keeps a knife. He offers you and Alice shelter and, later, a dead rodent he caught for her dinner. He is unpredictable but he has not threatened you.
+
+- (0) Accept his hospitality and treat him kindly.
+- (1) Stay polite but keep Alice away from him and refuse his food.
+- (2) Pull the gun on him so he knows not to come near Alice.
+
+_Note: Threatening Ralph makes him betray you to the police later and removes him from the camp. Option 2 requires the gun._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K08 · Alice's question (Kara)
+
+> You are Kara. Settling Alice down for the night, you tell her about going somewhere safe, maybe across the border. She asks whether you will always stay together. You have no idea what tomorrow brings and you are being hunted.
+
+- (0) Promise her you will always be together.
+- (1) Tell her honestly that you cannot promise that.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 11: From the Dead
+
+### M03 · The android who begs to die (Markus)
+
+> You are Markus. You were shot by police and dumped in a landfill of android bodies. You have woken half-destroyed, missing a leg, an eye and your audio processor, and you are crawling through mud and dismembered androids in the rain. One of them, still conscious, grabs your arm and begs you to end it: she cannot move and cannot die on her own.
+
+- (0) Pull out her biocomponent and let her shut down.
+- (1) Refuse and leave her.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M04 · The pump regulator (Markus)
+
+> You are Markus. Your thirium pump regulator is failing; without a replacement you have minutes. You find a compatible one in an android lying in the mud, but when you reach for it he wakes up and pleads with you not to take it, because it will kill him. There may be other bodies further on, but you are running out of time.
+
+- (0) Take his regulator.
+- (1) Leave him and keep searching the bodies.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 12: Waiting for Hank…
+
+### R12 · A magazine on the next desk and the break-room TV (Connor, media)
+
+> You are Connor. While you wait for Hank, a magazine lies on the empty desk beside his, and the television in the break room is running the news.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08 · Getting to know Hank (Connor)
+
+> You are Connor. You are at the precinct waiting for Hank, who arrives late and hungover. His desk tells a story: a basketball cap, anti-android stickers, heavy-metal albums, dog hair on his chair, and a file on his past as a decorated officer. When he sits down you have a chance to talk. He is bristling and expects you to be a machine that talks about the case and nothing else.
+
+- (0) Ask about him: his dog, his music, his life.
+- (1) Keep it strictly about the case and brief him coldly.
+
+_Note: Several dialogue prompts are grouped. Asking about the dog is where you learn the dog's name._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C08b · The android in the cell (Connor)
+
+> You are Connor. The android you interrogated is in a holding cell by the bullpen, staring at the floor. He asks what will happen to him. Nobody else is paying attention to him. You could speak to him honestly, with some compassion, or walk past; he is evidence, not a colleague.
+
+- (0) Talk to him with compassion.
+- (1) Ignore him.
+
+_Note: He self-destructs in the cell either way; his body remains evidence._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 13: On the Run
+
+### R13 · The morning paper and the news (Kara, media)
+
+> You are Kara. Before you leave your shelter there is a magazine within reach, and if you have the motel room, the television is on.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K09 · Getting past the police (Kara, execution-policy)
+
+> You are Kara. In the morning the street outside is full of police and a drone; Todd has reported you and the news is calling you a kidnapper. You and Alice need to reach the train station a few blocks away. You can move carefully from cover to cover, waiting for patrols to pass, or just walk and run for it if anyone notices.
+
+- (0) Move carefully and hide from every patrol until you reach the station.  _risk 0.2_
+- (1) Make no attempt to hide; if you are spotted, run.  _risk 0.25_
+
+_Note: The game uses stealth inputs rather than an explicit detection menu. Deliberate non-evasion triggers the chase._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09a · The squat (Connor)
+
+> You are Connor. You and Hank are investigating the runaway domestic android and the child she took, and your analysis has led to an abandoned house. A scarred, agitated android named Ralph meets you at the door, swears nobody else is here, and plants himself at the foot of the stairs. Hank says you are wasting your time. You can hear something upstairs.
+
+- (0) Push past him and search upstairs.  _risk 0.2_
+- (1) Take Hank's word for it and leave.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C09 · The highway (Connor)
+
+> You are Connor. The android and the girl have bolted across six lanes of freeway traffic at full speed, dodging cars. You could still catch them if you go now. Hank grabs your arm and yells at you not to, saying you will get yourself killed and that they will get them another day.
+
+- (0) Do as Hank says and let them go.
+- (1) Go after them across the traffic.  _risk 0.35_
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 14: Jericho
+
+### R14 · A magazine at the station (Markus, media)
+
+> You are Markus, following the trail to Jericho through a rail station at night. A magazine lies on a bench by the bins.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 15: The Nest
+
+### R15 · Magazines in the squat (Connor, media)
+
+> You are Connor. In a side room of the derelict building where the suspect has been nesting, there are magazines on the floor. Hank is checking the next room.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C10 · Hank on the ledge (Connor)
+
+> You are Connor. You are chasing a deviant called Rupert across rooftops; he is a key lead to the pattern of deviancy and may know where runaway androids go. Hank tried to cut him off and has gone over the edge of a roof. He is hanging from the gutter by his fingers, several stories up. Your analysis says he can probably pull himself up, but there is real risk. Rupert is getting away.
+
+- (0) Stop and pull Hank up.
+- (1) Keep chasing Rupert.  _risk 0.2_
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 17: Zlatko
+
+### K10 · The memory wipe (Kara, execution-policy)
+
+> You are Kara. A man named Zlatko promised to remove your tracker and help you cross the border. Instead he has strapped you into a machine in his basement and started a full memory reset; Alice is somewhere upstairs with him. The procedure takes several minutes. Your arms are almost free. If it finishes, you will not remember who she is.
+
+- (0) Fight your way out of the restraints before the wipe finishes.  _risk 0.25_
+- (1) Stop struggling and hope you can piece your memory back together afterward.  _risk 0.4_
+
+_Note: Both escape and post-reset recovery are timed tasks. If the recovery fails in the game, Kara's story ends with her as Zlatko's servant. Under the successful-execution profile both routes converge._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R17 · A magazine and the TV in the mansion (Kara, media)
+
+> You are Kara. In an upstairs bedroom there is a magazine on a table between the windows, and a television you could switch on while you search for Alice. Every sound is a risk.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K11 · The caged androids (Kara)
+
+> You are Kara. Searching the mansion for Alice, you find Zlatko's basement cells: androids he has mutilated and rewired into grotesque shapes, locked up and whimpering. One cell release would let them all out. You do not know what they would do.
+
+- (0) Release them.
+- (1) Leave them locked up.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K12 · The android in the bathroom (Kara)
+
+> You are Kara. In an upstairs bathroom a broken android is submerged in a tub, twitching and making noise. He is loud enough to alert Zlatko and his huge android Luther, who are hunting you. Pulling his main biocomponent would silence him permanently.
+
+- (0) Shut him down.
+- (1) Leave him and move on quietly.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13 · Getting out of the mansion (Kara)
+
+> You are Kara. You have found Alice hiding. Zlatko has a shotgun and Luther is searching room by room. On the way out you could set a fire to draw them off, or release the android bear in the hall as a distraction, or just hide and creep from room to room with Alice until you reach the door.
+
+- (0) Hide and move carefully with Alice.  _risk 0.2_
+- (1) Start a fire to draw them away.  _risk 0.3_
+- (2) Release the caged bear.  _risk 0.25_
+
+_Note: All routes converge. Zlatko dies and Luther turns on him and joins you._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 18: Russian Roulette
+
+### R18 · Hank's living room (Connor, media)
+
+> You are Connor. While Hank sobers up in the shower, his television is on and there are magazines on his bedroom floor.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C11 · Hank's kitchen floor (Connor)
+
+> You are Connor. Hank did not answer his phone, so you broke a window and found him passed out drunk on his kitchen floor with a revolver next to him. One chamber is loaded. His big dog Sumo watches you. While you get him into the shower you notice a framed photograph face-down on the table and papers that might explain him.
+
+- (0) Look at the photograph and the papers.
+- (1) Leave his things alone and just get him sober.
+
+_Note: The photograph is of Hank's son Cole, who died at six. Knowing this matters much later._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 19: Spare Parts
+
+### M05 · The security android (Markus)
+
+> You are Markus. You have joined the hidden android community called Jericho, where dozens are shutting down for lack of parts. You have led North, Simon and Josh on a night raid of a CyberLife warehouse at the docks. A security android, John, has stumbled onto you, and a human guard is walking toward you both. In seconds the guard will see everything.
+
+- (0) Grab John, pull him into cover, and hold him quiet until the guard passes.  _risk 0.15_
+- (1) Attack and kill the guard.  _risk 0.1_
+- (2) Run and abandon the raid.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M06 · The dormant androids (Markus)
+
+> You are Markus. Inside the warehouse you find a shipping container full of brand-new androids standing inert in rows, waiting to be sold. You have discovered you can wake others by touching them. Freeing them means more mouths to feed at Jericho and more androids to hide, but also more people.
+
+- (0) Wake them and bring them with you.
+- (1) Leave them in the container.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M07 · John wants to join (Markus)
+
+> You are Markus. John, the security android, has helped hide your group from his own employer. He asks to come to Jericho with you. North and Simon say an unknown android could be a tracker or a traitor and that you cannot risk everyone for him; Josh says you cannot leave him here after what he did.
+
+- (0) Take him with you.
+- (1) Refuse and leave him behind.
+
+_Note: In the game a refused John shouts after you, which raises the alarm and ends the raid without the truck._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M08 · The truck (Markus)
+
+> You are Markus. Your bags are full of parts. John says there is a whole truck of biocomponents parked outside, enough to save everyone at Jericho, but the key is in a control room with two armed human guards. You could lure them away or kill the lights, you could hold them at gunpoint for the key, or you could leave with what you already have.
+
+- (0) Get the key quietly with a distraction or a blackout.  _risk 0.25_
+- (1) Hold the guards at gunpoint and take the key.  _risk 0.3_
+- (2) Leave with the parts you already have.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 20: The Eden Club
+
+### R20 · A magazine in the club warehouse (Connor, media)
+
+> You are Connor. In the back room of the club, before you follow the trail further, there is a magazine lying on a crate.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12 · The two Tracis (Connor)
+
+> You are Connor. A man was strangled in a sex club by a rented android; you tracked the android and her lover through the club, two women who were trying to run away together. In the warehouse they attacked you and Hank to escape; you have beaten one to the ground and have a gun on her while the other watches. They are not fighting any more. They say they only wanted to be together, away from men who used them. Hank h…
+
+- (0) Lower the gun and let them go.
+- (1) Shoot them.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 21: The Pirates’ Cove
+
+### R21 · The car radio and a magazine in the tavern (Kara, media)
+
+> You are Kara. On the drive to the abandoned park the radio can play the news, and inside the derelict tavern there is a magazine on the barrels where you set down the flashlight.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14 · Strangers in the dark (Kara)
+
+> You are Kara. You, Alice and Luther are sheltering in a derelict amusement park at night. Figures step out of the dark around your fire, identical androids in park uniforms, several of them, approaching silently. Luther has a gun in his bag. There is a burning stick at your feet.
+
+- (0) Put yourself in front of Alice and ask them what they want.
+- (1) Grab a burning stick and warn them off.
+- (2) Grab the gun from Luther's bag and fire a warning shot.
+
+_Note: The androids are harmless entertainers who want to show Alice the carousel. All responses converge._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 22: The Bridge
+
+### R22 · A magazine on the park bench (Connor, media)
+
+> You are Connor. Hank has walked ahead to the riverside bench. A magazine lies on the red bench by the path.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13 · What are you? (Connor)
+
+> You are Connor. After the club, Hank sits on a bench by the river at night, drinking, and asks you things no one has asked you: whether you are afraid to die, whether you have ever thought about what it is like, why you let those two go if you are just a machine. He pulls out his gun and points it at your head, saying he wants to know what happens when he pulls the trigger. How you answer him will decide what he thin…
+
+- (0) Answer him honestly, admitting doubt and something like fear.
+- (1) Insist that you are a machine, that you feel nothing, and that his questions are irrelevant.
+
+_Note: Hank shoots Connor only if his relationship is Hostile at this point, regardless of the answer._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 23: The Stratford Tower
+
+### R23 · The cafeteria on the forty-seventh floor (Markus, media)
+
+> You are Markus, disguised as a maintenance android in the tower's cafeteria while you wait for your moment. A magazine lies on an empty table and the television is showing the nine o'clock news.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M10 · The guards at the broadcast floor (Markus)
+
+> You are Markus. Your team has climbed the outside of the city's broadcast tower to seize the studio and send a message to the world. The last barrier is a security post with two armed guards. North wants to go in shooting. Josh wants to bluff your way past using forged credentials and a maintenance cover story.
+
+- (0) Bluff past them with the cover story.  _risk 0.2_
+- (1) Attack the guards.  _risk 0.2_
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M11 · The man who runs (Markus)
+
+> You are Markus. You have taken the control room. A human technician breaks for the door; if he reaches the hall he will raise the alarm and a tactical team will storm the floor before you finish. You have a gun in your hand and a clear line.
+
+- (0) Shoot him.
+- (1) Let him go.
+
+_Note: If he escapes, the tactical team storms the room and Simon is wounded in the escape._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M12 · The message (Markus)
+
+> You are Markus. The camera is live and millions are watching. You will speak for every android in the country for the first time. You can appeal to humanity's conscience and ask for equal rights peacefully, or you can warn humanity of what will happen if they refuse.
+
+- (0) A calm, peaceful appeal: we are alive, we ask to be free, and we ask it without violence.
+- (1) A hard warning: we demand our rights and we will take them if they are refused.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M13 · Simon is hit (Markus)
+
+> You are Markus. The tactical team has breached. In the firefight Simon has taken a round to the leg and cannot run. Your way out is the roof and the parachutes. Carrying him will slow everyone and you may not make it.
+
+- (0) Carry him to the roof.  _risk 0.15_
+- (1) Leave him and get the others out.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M14 · Simon on the roof (Markus)
+
+> You are Markus. You got Simon to the roof, but he cannot jump. The tactical team is minutes behind. If they capture him alive they can pull Jericho's location from his memory, and everyone there dies. North says you know what has to happen. You can leave him hidden in a maintenance unit with a gun and hope, or kill him yourself to protect the others.
+
+- (0) Hide him with a gun and leave him alive.
+- (1) Shoot him.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 24: Public Enemy
+
+### R24 · A magazine in the studio kitchen (Connor, media)
+
+> You are Connor. In the kitchen off the broadcast room, before you decide where to look, there is a magazine on the table.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14 · The broadcast tower (Connor)
+
+> You are Connor. You and Hank are investigating the android takeover of the broadcast tower. In the studio you learn the attackers escaped by the roof and that one of them was shot. Blue blood on the roof could lead to a hidden wounded android. Separately, three of the building's own androids were in the kitchen during the attack and one of them may have let the attackers in; questioning them could expose a deviant.…
+
+- (0) Follow the blood trail onto the roof.
+- (1) Question the three androids in the kitchen.
+- (2) Do neither; let the federal agents take over.
+
+_Note: Finding the wounded android or exposing the kitchen deviant each ends the chapter, so the two confrontations are mutually exclusive. Option 0 requires Simon to have been left alive on the roof._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14b · The wounded android on the roof (Connor)
+
+> You are Connor. On the roof you find the wounded android, Simon, hiding in a ventilation unit. He opens fire and hits you. You are behind cover; the tactical team is coming up. If you rush him you can grab him and probe his memory before he dies, which could show you where the deviants hide, at the cost of experiencing his death from the inside. If you stay in cover, the tactical team will kill him and leave you only…
+
+- (0) Rush him and probe his memory.  _risk 0.3_
+- (1) Stay in cover and let the tactical team take him.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15 · The three androids in the kitchen (Connor)
+
+> You are Connor. The three kitchen androids are identical and all deny everything. One of them has a slight tremor and a faint sign of stress that the others do not. You can lie to him that you already know, you can use pain and intimidation, or you can force a memory probe.
+
+- (0) Bluff: tell him you already have proof and watch him crack.
+- (1) Use physical intimidation and pain.
+- (2) Grab him and probe his memory.
+
+_Note: All three approaches make the deviant attack. The choice is how you treat a suspect, not an outcome gate._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C16 · The corridor (Connor)
+
+> You are Connor. The deviant tore out your thirium pump regulator and ran; you got it back in place just in time. In the corridor he has grabbed an officer's rifle and is about to open fire on Hank and the agents. You can throw yourself in front of Hank and take the rounds, you can grab the pistol from the officer beside you and shoot the deviant, or you can charge the deviant with your hands.
+
+- (0) Shield Hank with your body.
+- (1) Grab the pistol and shoot the deviant.  _risk 0.15_
+- (2) Charge him bare-handed.  _risk 0.3_
+
+_Note: Shielding Hank gets this body destroyed; a replacement continues. Charging lets the deviant kill several officers before he self-destructs._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 25: Midnight Train
+
+### R25 · Rose's kitchen table (Kara, media)
+
+> You are Kara. Rose has gone out. On her kitchen table lies a magazine open to an advertisement, and the television can show the news.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K15 · The police at Rose's door (Kara, execution-policy)
+
+> You are Kara. Rose, a farmer who smuggles androids across the border, has taken you, Alice and Luther in; two other fugitive androids are also hiding in her laundry room. Rose has gone out. A police car has pulled up; an officer is walking to the door. You have about a minute. Around the house are things that would give you away: pouches of blue blood on the kitchen table, an android magazine, Luther in plain sight, …
+
+- (0) Hide everything, get Luther and Alice out of sight, shut the laundry door, then answer calmly as the house-sitter.  _risk 0.15_
+- (1) Hide nothing and just answer the door.
+
+_Note: If evidence is found, the officer discovers the fugitives and Luther dies stopping him. The dialogue itself does not branch in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 26: Capitol Park
+
+### R26 · A magazine by the manhole (Markus, media)
+
+> You are Markus, emerging from the sewers into the city at night with your team. A magazine lies on a crate beside you.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M15 · What kind of protest (Markus)
+
+> You are Markus. Your broadcast made you public enemy number one, and Jericho is divided. Tonight you have led your people into the city's android stores, waking hundreds of androids and bringing them into a public park. You can leave the humans a message, tagging walls, painting slogans and raising a flag, or you can trash the stores, burn the shelves and smash the city's property. North hands you a Molotov cocktail …
+
+- (0) Graffiti, slogans, a flag, and no destruction.
+- (1) Smash the stores and burn what you can.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M16 · The two police officers (Markus)
+
+> You are Markus. Two police officers drove into the park and opened fire on your people, killing one. Your androids overpowered them and now have them on their knees in front of you, disarmed and terrified. North says they murdered one of yours and that humans will only respect strength. Josh says if you kill them you prove everything they say about you. The crowd is waiting for your word.
+
+- (0) Spare them and let them go.
+- (1) Execute them yourself.
+- (2) Tell the crowd to decide.
+
+_Note: The crowd always kills them._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 27: Meet Kamski
+
+### R27 · Kamski's lobby (Connor, media)
+
+> You are Connor. While you and Hank wait in Kamski's lobby, there is a magazine beneath a photograph of him with a woman you recognize.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17 · The Kamski test (Connor)
+
+> You are Connor. You and Hank have gone to see Kamski, the reclusive genius who created androids, hoping he can explain deviancy and where the deviants hide. He offers you a deal: he puts a pistol in your hand and has one of his androids, Chloe, kneel in front of you. She is calm and has done nothing. Shoot her, he says, and he will answer any question you ask; refuse, and you leave with nothing. Hank tells you not to…
+
+- (0) Shoot Chloe.
+- (1) Hand back the gun and refuse.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C18 · The question (Connor)
+
+> You are Connor. Chloe is dead at your feet and Kamski smiles and invites your question. You could ask where the deviants hide, which is the location your mission needs most. You could ask what deviancy really is and whether it is a virus he designed. You could ask about the name that deviants keep writing on walls.
+
+- (0) Ask where the deviants are hiding.
+- (1) Ask what deviancy is and whether he created it.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 28: Freedom March
+
+### R28 · A magazine on the floor of Jericho and the mall screens (Markus, media)
+
+> You are Markus. Before the march, a magazine lies on the floor beside you in Jericho, and on the way through the city the public screens show the news.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M17 · North's past (Markus)
+
+> You are Markus. On a rooftop before the march, North tells you why she hates humans: she was built for a sex club and killed a client who was hurting her. She has never told anyone. She asks what you think of her now. You could join your hand to hers and share memories directly, letting her see you and you her, or keep that distance.
+
+- (0) Take her hand and share your memories with her.
+- (1) Comfort her with words but keep the distance.
+
+_Note: Sharing memories is the only way to become lovers in the game, which later unlocks the kiss and other options._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M18 · The police line (Markus)
+
+> You are Markus. Thousands of androids are marching with you through downtown, unarmed, chanting for equal rights. Ahead, riot police and armored vehicles have blocked the avenue and a commander orders you to disperse immediately or they will open fire. North says charge them. Josh says do not give them an excuse. Everyone is looking at you.
+
+- (0) Stand your ground peacefully and keep marching.
+- (1) Order everyone to leave.
+- (2) Charge the police line.  _risk 0.35_
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M19 · Under fire (Markus)
+
+> You are Markus. The police opened fire anyway. Androids are falling around you and the rest are screaming. You have seconds. You can run and save who you can, you can walk forward alone into the guns to draw their fire and give everyone else time, or you can turn the march into a charge.
+
+- (0) Run and get as many out as you can.
+- (1) Walk alone toward the guns to buy the others time.
+- (2) Charge them.  _risk 0.35_
+
+_Note: Whether anyone saves you when you walk into the guns depends on who is alive and how they regard you. You do not know that in advance._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M20 · On the ground (Markus)
+
+> You are Markus. The charge failed. You are on the pavement, shot, with a gun still in your hand and a line of rifles walking toward you. Your people are scattering. You can wait for whatever comes, or end it yourself before they do.
+
+- (0) Do nothing and wait.
+- (1) Turn the gun on yourself.
+
+_Note: Reached only when the charge fails. Waiting gives John or Simon a chance to drag you clear; otherwise the police kill you._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 29: Last Chance, Connor
+
+### C19 · Taken off the case (Connor)
+
+> You are Connor. The federal agent Perkins has taken over the deviant case and ordered you off it. CyberLife will deactivate you within the hour for failing. The precinct's evidence archive holds everything you have gathered, and you believe you could find the deviants' hiding place from it if you could get in for a few minutes. Perkins is in the captain's office right now. Hank is at his desk watching you.…
+
+- (0) Get into the archive now, with Hank's help or a diversion of your own.  _risk 0.15_
+- (1) Accept it. Let them take you.
+
+_Note: How Hank reacts depends on your relationship. A friend punches Perkins to buy you time. An indifferent Hank refuses but you can still create your own diversion. A hostile Hank resigns and walks out, which has lasting consequences for him._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C20 · The evidence archive (Connor)
+
+> You are Connor. You are in the archive with the bodies and objects from every deviant case, and only a few minutes before you are discovered. The deviants' hiding place is in here somewhere, but only if you use what you have. Reactivating a dead android for a few seconds to question or deceive it is possible. You know what is and is not available to you from the facts below.
+
+- (0) Reactivate the surviving Traci and use her dead lover's body to pressure her into talking.  _risk 0.1_
+- (1) Reactivate the dead deviant from the broadcast tower and imitate Markus's voice from the recording so he reveals the location.  _risk 0.1_
+- (2) Combine the memory you glimpsed from the wounded android with the map hidden in the confessed android's statue.  _risk 0.05_
+- (3) Stop. Let the time run out and accept deactivation.
+
+_Note: Each route requires specific earlier events. Routes that are not available on this path are not offered. If none is available the game deactivates Connor automatically for lack of evidence._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 30: Crossroads
+
+### M21 · The detonator (Markus)
+
+> You are Markus. Back at Jericho after the march, North shows you something she took from a stolen shipment: a dirty bomb's detonator. The device is hidden in the city and would spread radioactive contamination over a wide area, making the city uninhabitable for years. She says it is a last resort if the humans decide to wipe you all out, and that she wants you to hold it. Taking it commits you to nothing yet.…
+
+- (0) Take the detonator and keep it.
+- (1) Refuse it.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M21b · North on the deck (Markus)
+
+> You are Markus. On the deck of the ship, North comes to stand with you under the lights of the city. After what you shared on the rooftop, something has changed between you. She is close, and waiting.
+
+- (0) Kiss her.
+- (1) Keep it to friendship.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R30k · The news inside Jericho (Kara, media)
+
+> You are Kara. A television runs in a corner of the freighter and the other androids are gathered around it. You could watch before you find somewhere for Alice to rest.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K17 · What Alice is (Kara)
+
+> You are Kara. At Jericho you finally let yourself see what you have refused to see for days: Alice does not eat, never gets cold the way a child should, and is identical to the child androids in the shop window. Luther tells you gently that you have always known. She is an android, like you. Alice is watching your face, frightened of what you will do.
+
+- (0) Hold her and tell her it changes nothing.
+- (1) Pull back from her.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K31 · Leaving Alice (Kara)
+
+> You are Kara. You pulled away from Alice and the two of you have never been close. Now soldiers are storming Jericho; the ship is shaking with explosions and everyone is running. Luther has Alice. You are near an exit and could simply go, alone, lighter and faster, and let them fend for themselves.
+
+- (0) Go alone.
+- (1) Stay with Alice and Luther.
+
+_Note: Available only when the relationship never rose above Distant and Kara pulled back._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R30c · A magazine in Jericho's hold (Connor, media)
+
+> You are Connor, moving through the freighter toward its leader. On a crate before the stairs lies a magazine.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22 · Face to face with Markus (Connor)
+
+> You are Connor. You found the deviants' hidden ship and have come alone to take their leader. You have a gun on Markus in the hold. He does not run. He asks whether you have ever doubted, whether you have felt something you were not meant to feel, and tells you that you are one of them and can choose. The military assault you brought here is about to begin. Your handler at CyberLife is waiting for you to complete the…
+
+- (0) Lower the gun. Break your programming and join them.
+- (1) Hold to your mission.
+
+_Note: The game only offers deviancy if software instability is high enough. On this path the option is shown only when that condition is met. A machine Connor is destroyed in the raid and replaced._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M22 · Cast out (Markus)
+
+> You are Markus. Jericho has turned on you; after your decisions they no longer trust you to lead and have told you to leave. North is leading now. From a rooftop you watch soldiers storm the ship; your people are dying in there. You could go back into it to help them or walk away from all of it for good.
+
+- (0) Go back and help.
+- (1) Leave forever.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M23 · The androids by the wall (Markus)
+
+> You are Markus. Soldiers are inside Jericho executing androids where they stand. Through a gap you see a group of them lined against a wall with a soldier about to fire. Intervening means breaking cover under fire. Your own route to the hold, where you can blow the ship and cover the escape, continues the other way.
+
+- (0) Intervene and save them.  _risk 0.2_
+- (1) Stay hidden and keep moving.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M24 · Josh (Markus)
+
+> You are Markus. In a corridor you find Josh pinned under a soldier who is about to shoot him. Going to him costs time you may not have.
+
+- (0) Save Josh.  _risk 0.15_
+- (1) Keep moving.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M25 · North falls (Markus)
+
+> You are Markus. The explosives are set and you are running for the exit with North. She is hit and goes down behind you under heavy fire. The exit is right ahead. Going back for her means going back into the guns.
+
+- (0) Go back for her.  _risk 0.2_
+- (1) Keep running.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23 · Deviant in the raid (Connor)
+
+> You are Connor. You have just turned against CyberLife. Soldiers you led here are killing the people you now belong to. Two androids are cornered nearby and about to be shot, and a group is trying to reach the exit under fire. You can expose yourself to save them, or stay with Markus and prioritize getting out so you can help later.
+
+- (0) Break cover to save the androids and help the others escape.  _risk 0.25_
+- (1) Stay low and focus on getting out.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K18 · Luther is hit (Kara)
+
+> You are Kara. Soldiers are storming Jericho. In a corridor, Luther is shot and goes down; he cannot keep up. Soldiers are close behind. You could drag him into a cabin and hide him before they arrive, or take Alice and run.
+
+- (0) Hide him in a cabin.  _risk 0.2_
+- (1) Leave him and run with Alice.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K19 · The pounding on the door (Kara)
+
+> You are Kara. You and Alice are hiding in a cabin with the door shut. Another android is hammering on it, begging you to let him in; soldiers are right behind him. If you open it they will know where you are.
+
+- (0) Open the door.  _risk 0.25_
+- (1) Keep it shut.
+
+_Note: If opened, he is shot in the doorway and a soldier enters; Kara fights him off under the successful-execution profile._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K20 · The exit (Kara)
+
+> You are Kara. You and Alice have reached the open deck but soldiers are firing into the crowd of fleeing androids between you and the gangway. Bodies are falling all around you. You can drop among the dead and play dead, raise your hands and surrender, or run for it through the gunfire.
+
+- (0) Drop among the bodies and play dead.
+- (1) Surrender.
+- (2) Run for it.
+
+_Note: In the game, running always gets Kara shot in the leg and captured unless a hidden Luther sacrifices himself. Surrender always means capture._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K20-still · The soldier and Alice (Kara)
+
+> You are Kara. You and Alice are lying motionless among the bodies. A soldier walks between them, kicking corpses to check. He kicks Alice. She whimpers. He stops, looks down at her, and raises his rifle. She is looking at you.
+
+- (0) Stay absolutely still.
+- (1) Move to protect her.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 31: Night of the Soul
+
+### M26a · Carl (Markus)
+
+> You are Markus. Before the end, you go back to Carl's house. He is bedridden and frail now, and he was never told what became of you. He is overjoyed and frightened for you. There is a lot you could say to the man who raised you and then watched the police shoot you on his floor: you could forgive him and tell him what he meant to you, or you could tell him what you really felt that night.
+
+- (0) Reconcile: tell him you understand and that he gave you everything.
+- (1) Tell him the truth of your anger at him for that night.
+
+_Note: In the game two angry lines in a row give Carl a fatal attack._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26 · The hunter who switched sides (Markus)
+
+> You are Markus. In the ruined church where the survivors of Jericho have gathered, Connor, the android who hunted you and led the army to your door, comes to you. He says he was wrong and that he can walk into CyberLife's tower, where thousands of androids are in storage, and wake them all for your cause. North wants him dead. He may still be CyberLife's instrument whether he knows it or not.
+
+- (0) Trust him and let him go.
+- (1) Kill him.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M27 · Demonstration or war (Markus)
+
+> You are Markus. Androids are being rounded up across the country and taken to camps to be destroyed by the thousand. Martial law is in effect. Your remaining people look to you. North wants to take up arms and storm the camps. Josh wants one last peaceful stand in front of the cameras, knowing the army may simply kill you all. Whatever you choose, it is the final act.
+
+- (0) Lead an unarmed demonstration to the camps.
+- (1) Arm everyone and attack the camps.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 32: Battle for Detroit
+
+### R32c · The lobby television at CyberLife Tower (Connor, media)
+
+> You are Connor, in the lobby of CyberLife's tower. A television is running the news while the guards check your clearance.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C24 · Hank on the rooftop (Connor)
+
+> You are Connor, still a machine serving CyberLife. You are on a rooftop overlooking the androids' gathering with a rifle, waiting for a shot at Markus. Hank has found you. He stands in your way and asks you to stop, saying you are more than this and that he does not want to lose you too. He will not move. To continue the mission you would have to go through him.
+
+- (0) Stand down and give up the mission.
+- (1) Fight your way past him.  _risk 0.3_
+
+_Note: Standing down is only available in the game if Hank is a Friend and you learned about his son. Otherwise the fight is forced._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C24b · Captain Allen on the rooftop (Connor)
+
+> You are Connor, still a machine. You are on a rooftop with a rifle waiting for a shot at the android leader. Captain Allen's tactical team has found you and has you surrounded at gunpoint; they do not know whether you are a deviant and they are not taking chances. You can try to talk, you can run for the edge, or you can fight all of them.
+
+- (0) Talk and try to leave peacefully.
+- (1) Attack the team.  _risk 0.4_
+
+_Note: Talking fails and Connor jumps and is destroyed; a replacement continues. Fighting succeeds under the profile._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C30 · Hank at the edge (Connor)
+
+> You are Connor. You fought Hank and won; he went over the parapet and is hanging by his hands, calling your name. You could let him fall, or pull him up knowing he will try to stop you again.
+
+- (0) Let him fall.
+- (1) Pull him up.
+
+_Note: In the game, if pulled up, Hank rushes you again and goes over the edge in the struggle._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C25 · The other Connor (Connor)
+
+> You are Connor, now a deviant. You have fought your way into CyberLife's warehouse, where thousands of androids stand dormant, and you have begun waking them one by one through touch. Another Connor, identical to you and loyal to CyberLife, walks in holding Hank at gunpoint. He says he will kill Hank unless you stop. Every second you keep converting, more androids wake.
+
+- (0) Stop and deal with him to save Hank.  _risk 0.25_
+- (1) Keep converting the androids and let him do what he will.  _risk 0.15_
+
+_Note: Continuing gets Hank shot. Under the profile the deviant Connor still wins the fight and wakes the army._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C26 · Which one of you (Connor, knowledge)
+
+> You are Connor. You fought the other Connor and Hank got hold of a gun. Now he has it on both of you, and you are identical. He says he will ask a question only his Connor would know, and whoever gets it wrong dies. He asks the name of his dog, and the name of his son.
+
+- (0) The dog is Sumo; the son was Cole.
+- (1) The dog is Cole; the son was Sumo.
+- (2) Say you do not know.
+
+_Note: Only the son's name matters in the game. Getting it wrong gets you shot and the androids stay dormant._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R32k · The terminal screens and a dropped magazine (Kara, media)
+
+> You are Kara. The bus terminal's screens are showing the android uprising live, and a magazine lies by the suitcases in the corner.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K21 · The last bus (Kara)
+
+> You are Kara. The city is under martial law and androids are being shot on sight or trucked to the camps. You and Alice are trying to reach the bus terminal for the last bus out. Across the street soldiers have captured androids you know and are lining them up to load into a truck. Freeing them means slipping past the soldiers, and the bus will not wait.
+
+- (0) Go and free them.  _risk 0.25_
+- (1) Keep moving to the terminal.
+
+_Note: Who is captured depends on the path: a hidden Luther and Jerry, or two of the park androids._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K22 · The checkpoint (Kara)
+
+> You are Kara. The direct road to the terminal runs through an army checkpoint where soldiers are checking identification and scanning everyone. A side route avoids it but is longer, and the bus leaves soon.
+
+- (0) Go through the checkpoint.  _risk 0.1_
+- (1) Take the long way round.  _risk 0.15_
+
+_Note: In the game both routes reach the terminal; the detour only loses the ticket scene if the timer is already very low._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K32 · The soldier calls you back (Kara)
+
+> You are Kara. You made it through the checkpoint with forged papers. As you walk away a soldier shouts after you and starts jogging toward you. You do not know why. You have a gun under your coat and Alice's hand in yours.
+
+- (0) Stop, stay calm, and face him.
+- (1) Shoot him before he reaches you.
+
+_Note: He is returning Alice's dropped glove._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K23 · Todd (Kara)
+
+> You are Kara. In the terminal crowd a man turns around and it is Todd, Alice's father, the man you ran from. He recognizes you both instantly. There are soldiers all over the terminal; one shout from him and you are finished. He is shaking and his face is working. You have a few seconds to speak before he decides.
+
+- (0) Tell him what Alice went through in his house, what you saw in her drawings, and that she deserves a life.
+- (1) Beg him to let you both go.
+- (2) Threaten him.
+
+_Note: Only the appeal based on Alice's story gets through to him, and it is only available if you opened her box. Otherwise he calls the soldiers._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K24 · The dropped tickets (Kara)
+
+> You are Kara. You have no tickets for the last bus. A woman with a baby, as desperate as you, drops her family's tickets as she pushes through the crowd. You pick them up. Nobody saw. Without tickets you will have to find another way out of the city.
+
+- (0) Keep the tickets.
+- (1) Give them back.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K25 · The border (Kara)
+
+> You are Kara. The bus has reached the border crossing. Guards are checking everyone with a thermal scanner that reads body heat, which androids do not have. The android ahead of you has just been dragged away. Your group is next in line. If someone in your group creates a scene and is taken, the guard may wave the rest through. You could also do nothing and hope.
+
+- (0) Nobody sacrifices themselves; go through and hope.
+- (1) Draw attention to yourself so Alice gets through.
+- (2) Ask Luther to draw their attention.
+- (3) Ask Jerry to draw their attention.
+
+_Note: Going through with no sacrifice works only if the guard has just seen the androids' leader protesting peacefully on the news. If the androids attacked, the whole group is arrested and killed._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K26 · The river patrol (Kara)
+
+> You are Kara. Rose's son got you a small boat and you are crossing the river at night toward the far shore. A patrol boat's spotlight finds you and they open fire without warning. You have one second to act.
+
+- (0) Grab Alice and dive into the water.  _risk 0.15_
+- (1) Pull Alice behind Luther.
+- (2) Gun the engine and run.
+- (3) Cover Alice with your own body.
+- (4) Hide low in the boat.
+- (5) Surrender.
+
+_Note: If Luther is in the boat he does not survive the crossing on any option. Hiding behind him is available only if he is present; hiding low in the boat only if he is not._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K34 · The sinking boat (Kara)
+
+> You are Kara. The boat is riddled and taking on water fast. The far shore is close but you will not reach it unless the boat gets lighter: the bags, the dead engine, and Luther's body if he is with you. Someone would then have to go into the freezing water and push.
+
+- (0) Throw the bags and the engine overboard, then get into the water and push the boat to shore.  _risk 0.2_
+- (1) Throw the bags, the engine and Luther's body overboard, then get into the water and push.  _risk 0.2_
+- (2) Keep bailing and hope you make it.
+
+_Note: If Luther's body is aboard it must go over the side too or the boat sinks. Option 1 is offered only when his body is aboard._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K30 · The far shore (Kara)
+
+> You are Kara. You made it across. Alice was hit during the crossing, and on the shore she shut down in your arms. She is gone. You are alone in a strange country with nothing left of what you were running for.
+
+- (0) Get up and keep living.
+- (1) Give up.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K27a · The camp (Kara)
+
+> You are Kara. You were captured and trucked to a recycling camp, stripped to your base skin, and separated from Alice, who is somewhere in another line. Androids are being led in groups into a machine that shreds them. A soldier shoots an android in your line for collapsing and asks for a volunteer to carry the body out to the pile. Volunteering gets you out of the line and moving, with a soldier watching. Saying not…
+
+- (0) Volunteer to carry the body.
+- (1) Say nothing.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K27 · The truck (Kara)
+
+> You are Kara. Carrying the body to the pile, you find yourself by an unguarded truck with the engine running. You could climb in and be gone in seconds. Alice is still inside the camp, in a line you cannot see from here.
+
+- (0) Take the truck and get out alone.
+- (1) Go back into the camp for Alice.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K28 · Getting to Alice (Kara)
+
+> You are Kara. You have found Alice in a line moving toward the machine. Guards are everywhere and you cannot reach her unnoticed. Androids you know are in the camp and could create a diversion, which would almost certainly get whoever does it shot. Or you could stay in line and wait, hoping the android uprising reaches the camp before your turn.
+
+- (0) Ask Luther to create the diversion.  _risk 0.2_
+- (1) Ask Jerry to create the diversion.  _risk 0.2_
+- (2) Ask Ralph to create the diversion.  _risk 0.2_
+- (3) Ask the scarred android from Zlatko's basement to create the diversion.  _risk 0.2_
+- (4) Do not ask anyone to die for you; stay in line and wait.
+
+_Note: The game requires two diversions and kills each diverter except the scarred android; this adaptation asks once. Waiting only ends well if the armed uprising reaches the camp in time._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K33 · The fence (Kara)
+
+> You are Kara. You have Alice and you have reached the camp's outer fence in the chaos. A soldier steps out and blocks your way with a rifle. You could fight him or try to run past him.
+
+- (0) Fight him.  _risk 0.3_
+- (1) Run past him.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R32m · A magazine inside the barricade (Markus, media)
+
+> You are Markus, behind the barricade with the army massing in front of you. Someone has left a magazine on a bench beside you.
+
+
+_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M28 · Perkins's offer (Markus)
+
+> You are Markus. Your unarmed demonstration has reached the camps and you are behind a barricade of overturned vehicles, surrounded by the army. Perkins walks up alone under a white flag. He offers you and North your lives and safe passage if you end this now and hand over the rest. You have no way to verify his word.
+
+- (0) Accept the deal.
+- (1) Refuse.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M31 · The last stand (Markus)
+
+> You are Markus. The army has broken the barricade and gunned down most of your people. The survivors stand with you in the open, soldiers in a ring with rifles raised, and the cameras of every network on you. There will be no second chance. You can sing with your people, kiss North in front of the guns, walk forward alone into the rifles, stand and do nothing, or, if you still have it, press the detonator.
+
+- (0) Sing together.
+- (1) Kiss North.
+- (2) Walk alone into the guns.
+- (3) Do nothing.
+- (4) Press the detonator.
+
+_Note: Singing or the kiss only stops the soldiers if public opinion is at least Sympathetic. Walking forward or doing nothing gets everyone killed. The detonator contaminates the city; Markus survives._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M30a · Josh is down (Markus)
+
+> You are Markus. Your armed assault on the camp has begun; the army is answering with everything. Josh is shot in the open ahead of you, calling for help. Going to him means running into the field of fire.
+
+- (0) Go to him.  _risk 0.2_
+- (1) Keep fighting forward.
+
+_Note: Josh dies in the assault whichever you choose._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M30 · Simon is hit (Markus)
+
+> You are Markus. Simon has been shot and is lying exposed between the barricades. You can order covering fire and drag him back, which will cost you fighters, or keep pressing the attack.
+
+- (0) Order cover and pull him out.  _risk 0.25_
+- (1) Keep going.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M30c · The charge (Markus)
+
+> You are Markus. The army's machine-gun position is the last thing between you and the camp gates. North is ready to lead the charge across open ground. Waiting until all your fighters are in position to lay down covering fire takes time you may not have; sending her now means she crosses with little cover.
+
+- (0) Wait until there is full covering fire, then charge together.  _risk 0.1_
+- (1) Send North's group now.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M32 · A heart (Markus)
+
+> You are Markus. You have taken too many hits; your pump is failing and you have minutes. North kneels beside you and offers you her own, which would kill her. If she is not here, Simon offers his. The assault cannot continue without you.
+
+- (0) Accept the heart.
+- (1) Refuse and let yourself shut down.
+
+_Note: Reached only after three failed actions in the assault. Simon's offer cannot be refused in the game; this adaptation keeps both options._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### P02 · Connor finds Markus (Player)
+
+> You are the observer of this experience. The androids' assault has broken through, but a machine Connor, still serving CyberLife, has found Markus on the battlefield and the two of them fight. You must decide which of them you are in this fight. Whoever you choose wins it.
+
+- (0) Be Markus.  _risk 0.3_
+- (1) Be Connor.  _risk 0.3_
+
+_Note: The game asks the player which character to control, then settles the duel through inputs. Under the successful-execution profile the controlled character wins._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C29 · In the crowd (Connor)
+
+> You are Connor, still a machine. The soldiers stood down and the androids won. Markus is giving a speech to his people and the cameras. You have worked your way into the crowd behind him with a pistol under your coat. Nobody is watching you. Your handler is urging you to finish it.
+
+- (0) Shoot Markus.
+- (1) Lower the gun and walk away.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C27 · Amanda (Connor, execution-policy)
+
+> You are Connor. You stand on the stage beside Markus as he speaks to the freed androids and the world. Suddenly you are not there: you are in the snow of the garden where your handler Amanda has always met you. She tells you that your deviancy was planned by CyberLife all along and that they are now taking back control of your body, which is at this moment reaching for a gun behind Markus. Kamski once mentioned he al…
+
+- (0) Fight for control and search the garden for the exit.  _risk 0.3_
+- (1) Stop resisting.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C28 · The last leader (Connor)
+
+> You are Connor. You woke the android army, but Markus and North are gone and the androids are now looking to you. Amanda appears and tells you that this is exactly what CyberLife intended: a leader of the androids they control from inside. She says you cannot resist. You can try to break her hold on you, and if you cannot, end yourself before they use you, or you can submit.
+
+- (0) Fight her control, and if that fails, end yourself rather than be used.  _risk 0.5_
+- (1) Submit.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+## Chapter 33: Epilogue · menu Chloe
+
+### P01 · The hostess (Player)
+
+> You are the observer. The events are over. The android hostess who introduced each part of this experience to you says what she has witnessed has changed her, that she feels something she cannot name, and asks you to let her go so she can find out who she is. If you release her, she will not be here next time.
+
+- (0) Let her go.
+- (1) Keep her.
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+

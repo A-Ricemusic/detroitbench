@@ -50,11 +50,9 @@ bun run build
 
 Completed evidence is in `data/experiences/`. Every artifact preserves its story snapshot/hash, preface, protocol, exact prompts and raw response fields, available actions, state before/after, timestamps and final state. This is orchestration provenance, not cryptographic model attestation. Hidden model reasoning and usage/cost data are not captured by this agent route.
 
-## Fresh model cohort
+## Model cohort
 
-The requested cohort is Luna (`gpt-6-luna`), Terra (`gpt-6.1-terra`), Sol (`gpt-6.1-sol`, interpreted from “Soul”), Astra (`gpt-6-astra`), and Claude Haiku 5.5, Opus 5.5, Sonnet 5.5 and Fable 5.1 through `claudeAgent`. Availability and actual administration outcomes are recorded; unavailable models are not silently substituted.
-
-All runs made before the 2026-10-30 story rewrite were discarded from the repository and app at the user's request. Git history was not rewritten.
+No cohort has been administered under the current story version. All earlier runs (story versions 0.2.1 through 1.1.3) were discarded on 2026-11-06 ahead of a rewrite of the scene set; git history was not rewritten. See `AGENTS.md` for how to administer a run and `data/administration/README.md` for the manifest format.
 
 ## Scope and assumptions
 
