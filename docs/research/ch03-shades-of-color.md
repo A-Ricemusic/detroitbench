@@ -210,3 +210,84 @@ To match the chart node for node, the chapter needs, at minimum: the magazine (e
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Henry_Ford_Commemorative_Park&prop=wikitext&format=json : park contents and magazine location.
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Waiting_for_Hank...&prop=wikitext&format=json : checked for a protest-leader dependency; none stated there.
 - https://detroit-become-human.fandom.com/wiki/File:Detroit_Become_Human_-_Shades_of_Color_Flowchart_-_100%25_Walkthrough : wiki's flowchart video (not watched; listed for the operator).
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/3-shades-color-chapter-content/shades-color-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt-scripts/render.py` (Python, run with `-I`; resolves every `t()` and `translateObject()` key against `en.json`). Outline saved to `/tmp/dbt/ch03.txt`; the same with every dialogue line to `/tmp/dbt/ch03-full.txt`. All keys resolved.
+- Counts: 0 prompts (choice groups), 0 options, 0 clues (observation items), 0 stat arrows, 0 unlock conditions, 0 conditioned variants, 0 cut/unused blocks.
+
+Outline key: `PROMPT` is an `app-choice-group`; `OPTION "LABEL"` its `app-choice-item` (brackets `[ ]` as the game draws unlockable options; `TIMEOUT default` marks the option taken when the timer runs out); `ARROW` an `app-relation` (character, small/LARGE, UP/DOWN); `CLUE GROUP` / `CLUE` an `app-observation` and its items (title | sublines); `[LOCK: …]`, `[TIME: …]`, `[TV: …]`, `[DEATH: …]` an `app-unlock-condition` with the transcribers' condition text; `IF …:` one branch of an `app-condition-group`; `CUT/UNUSED >>> … <<<` an `app-unused-content` block (not to be built); `NOTE` the transcribers' own note; `(no effect)` the template's "ø". Dialogue outside prompts is shortened to the first line of each paragraph with a count of the rest; under each option the first line is shown.
+
+### Rendered outline
+
+```text
+# Greek District
+## Man and android near the bench
+Android: "Would you like to go home now?" (+3 more lines)
+## Man running
+Man: "Hey!Water." (+1 more lines)
+## Road Workers
+Road worker: "Hurry up, you plastic idiots! I want this done by 4!"
+## Looking at the Hot dog vendor
+Vendor: "Hey, move it! You're scaring away my customers. Are you deaf, you plastic fuck? I said mov..."
+## Delivery truck
+## Homeless man on the street
+Hey, listen, can you spare some cash?
+I’m not looking for much…
+Hey, you got a dollar?
+Hey ma'am, can’t you help me out?
+I don’t need much, just enough for a cup of coffee
+## Watch preacher
+Preacher: "Poor sinners! The end is nigh! Retribution is at hand! Technology is corrupting us, techno..."
+## Preacher notices Markus
+Preacher: "Why do you look at me so, demon? I know who you are, I can see through you! You are the on..."
+## Couple at table outside restaurant
+Woman: "That new shirt really suits you!" (+2 more lines)
+Woman: "I gotta go soon…" (+7 more lines)
+## At Bellini paints
+Android: "Identification verified. Here's your order #847. That'll be $63.99. Please confirm payment..." (+2 more lines)
+# Going to take the bus
+## Couple looking at Android on display
+Man: "What’s wrong with the one we have?" (+3 more lines)
+## Watching the protest
+Protester: "Androids are stealing our jobs!We've got families to feed and these androids are taking ou..." (+17 more lines)
+## Protester sees Markus
+Protester: "Where the fuck you going, tin can? Hm?No kiddin'…Hey guys, check it out, we got one of tho..." (+11 more lines)
+
+```
+
+### Flowchart labels as the game prints them
+
+`MENU.FLOWCHART.01MA` (13 keys): WALKING IN THE PARK, STARE AT HOT DOG VENDOR, HOT DOG VENDOR PUSHES MARKUS, LISTEN TO BUSKER, WATCH PREACHER, PREACHER YELLS AT MARKUS, VISIT PAINTS STORE, COLLECT PACKAGE, PROTESTERS HARASS MARKUS, MARKUS CLOTHES WERE TORN APPART, MARKUS TOOK THE BUS, READ "SECRET OF ANDROIDS", READ "CLIMATE CHANGE-UP". The twelve chart nodes in section 1 match. `CLOTHES` = "MARKUS CLOTHES WERE TORN APPART" (sic) is not drawn on the chart; it reads as the cross-chapter state that The Painter's CARL NOTICES MARKUS' CLOTHES tests.
+
+### Template against sections 1 to 3
+
+The template has no prompt, clue, arrow or unlock condition, which agrees with section 2 ("Markus has no dialogue choice in the whole chapter") and section 3 (no numbers). Its sections follow the note's list of non-chart interactions (old man and Rose, jogger, road workers, hot dog vendor, delivery android, homeless man, preacher, preacher notices Markus, couple at the restaurant table, Bellini Paints, couple at the display window, the protest, protester sees Markus). It has no busker section (the busker only sings).
+
+| # | Topic | Template | Note | Which wins |
+|---|---|---|---|---|
+| T1 | Road worker | "Hurry up, you plastic idiots! I want this done by 4!" | "by 04:00!" (sections 1 and 3, from the wiki transcript) | Template (game text) |
+| T2 | The harassment's result | The game's own label: "MARKUS CLOTHES WERE TORN APPART" | Section 7: "tear" is "a slight embellishment; 'damage'/'roughed-up' is the sourced wording" | String table for labels: the game says the clothes were torn apart |
+| T3 | Vendor | "Hey, move it! You're scaring away my customers. Are you deaf, you plastic fuck? I said move it!" | Section 2 quotes "Hey! Move it! …" | Template; cosmetic |
+| T4 | Shop | Markus: "Payment confirmed." | "Payment confirmed!" | Template; cosmetic |
+
+Discrepancies with the note: 4 (2 substantive, T1 and T2).
+
+### Template against the benchmark scenes (story 1.6.0)
+
+There is nothing the benchmark must add: the template has no prompt, clue or arrow, so `M00d` (plaza hub) and `M00f` (protesters) are benchmark adaptations of free movement, as their notes say, and their risk values have no template source.
+
+| # | Scene | Template | Benchmark | Fix |
+|---|---|---|---|---|
+| B1 | `M00c` | "I want this done by 4!" | "by 04:00!" | Re-quote |
+| B2 | `M00g`, `M00h`, `M00f` note | "MARKUS CLOTHES WERE TORN APPART" | "so the shirt is not said to be torn"; "clothes roughed up" | Say the clothes were torn (the flag is already `shirtTorn`) |
+| B3 | `M00d` options 0 and 1 | "Hey, move it! You're scaring away my customers." | "Hey! Move it! …" | Cosmetic |
+| B4 | `M00e` | "Payment confirmed." | "Payment confirmed!" | Cosmetic |
+| B5 | `M00g` | "Where the fuck you going, tin can?"; "…but you can't even stand up." | "Where the fuck ya goin' tin can?"; "…stand up!" | Cosmetic |
+| B6 | none | Optional observations: delivery android ("These are supposed to be in bay seven."), the homeless man asking for change, the couple at the restaurant table ("He's gonna wonder where I am!"), the couple at the display window ("All our friends are getting upgrades") | Not offered | Optional; not required by the README (no prompt, clue or arrow) |
+
+Discrepancies with the benchmark: 6 (2 substantive, B1 and B2).

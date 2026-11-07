@@ -333,3 +333,141 @@ Also missing (not chart nodes but carried forward): the Alice in Wonderland book
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Chronology&prop=wikitext&format=json : date and time of the chapter; the 225,000 jobs line.
 - https://detroit-become-human.fandom.com/api.php?action=query&list=search : searches for "New Orleans", "225,000", "11%" to check the R04 TV facts (no chapter source for New Orleans or 11%).
 - Gamerguides and Gamepressure chapter URLs tried for conflict resolution both returned 404; not used.
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/4-new-home-chapter-content/new-home-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt-scripts/render.py` (Python, run with `-I`; resolves every `t()` and `translateObject()` key against `en.json`). Outline saved to `/tmp/dbt/ch04.txt`; the same with every dialogue line to `/tmp/dbt/ch04-full.txt`. All keys resolved.
+- Counts: 4 prompts (choice groups), 13 options, 3 clues (observation items), 10 stat arrows, 2 unlock conditions, 1 conditioned variants, 0 cut/unused blocks.
+
+Outline key: `PROMPT` is an `app-choice-group`; `OPTION "LABEL"` its `app-choice-item` (brackets `[ ]` as the game draws unlockable options; `TIMEOUT default` marks the option taken when the timer runs out); `ARROW` an `app-relation` (character, small/LARGE, UP/DOWN); `CLUE GROUP` / `CLUE` an `app-observation` and its items (title | sublines); `[LOCK: …]`, `[TIME: …]`, `[TV: …]`, `[DEATH: …]` an `app-unlock-condition` with the transcribers' condition text; `IF …:` one branch of an `app-condition-group`; `CUT/UNUSED >>> … <<<` an `app-unused-content` block (not to be built); `NOTE` the transcribers' own note; `(no effect)` the template's "ø". Dialogue outside prompts is shortened to the first line of each paragraph with a count of the rest; under each option the first line is shown.
+
+### Rendered outline
+
+```text
+# At Todd's house
+##  [TIME: Take too much time]
+Todd: "You comin'?"
+## Coming inside
+Todd: "You’ve been gone for two weeks, so the place is a mess… You do the housework, the washing,..." (+2 more lines)
+## Todd in the living room
+Todd: "TV on."
+## Todd on the phone
+Todd: "Yeah?Maybe... Depends on what you need…Yeah, yeah I can get that. Yeah, yeah I'll bring it..."
+## Doing the dishes
+CLUE GROUP: Dishwasher
+  CLUE: DISHWASHER NOT WORKING | Missing component #573BV | 154 sale offers available
+ARROW: Alice small UP
+Todd: "Kara!" (+4 more lines)
+## Looking at the TV for too long
+Todd: "Whatta ya lookin' at?Get the fuck outta here! GET THE FUCK OUTTA HERE!" (+1 more lines)
+## Going in front of the TV
+Todd: "Outta the way for fuck sake!" (+1 more lines)
+## Activating vacuum
+Todd: "Alice! You better stop that right now!Why is she always pushin' me? Always pushin’…"
+## Going in the garden - Talking with Alice
+PROMPT:
+  - OPTION "GAME"
+    ARROW: Alice small UP
+    Kara: "You look bored. Would you like to play a game?"
+  - OPTION "BACKYARD"
+    ARROW: Alice small UP
+    Kara: "You like playing out here?"
+  - OPTION "WEATHER"
+    Kara: "It's not very nice out. You might catch cold,I could get you a sweater if you want."
+  - OPTION "SCHOOL"
+    Kara: "Aren't you going to school today?"
+## Rewash clothes - Find Red ice
+CLUE GROUP: Red ice
+  CLUE: RED ICE | Acetone, Lithium, Thirium | Toluene, Hydrochloric acid
+Todd: "You shouldn't mess around with my stuff. It makes me nervous…" (+3 more lines)
+## Talk to Alice (next to the window)
+PROMPT:
+  - OPTION "TOY"
+    ARROW: Alice small UP
+    Kara: "That's a pretty toy… What's its name?"
+## Taking out the trash – enter the house again
+Todd: "What the fuck, man?"
+## Background dialogues
+Todd: "Fucking headache, man. The girl's a fucking headache."
+## Going upstairs
+Kara: "I’ve made a good start down here. I’ll head upstairs." (+1 more lines)
+# In Todd's room
+CLUE GROUP: Antidepressants
+  CLUE: ANTIDEPRESSANT | Contains Tianeptine | Risk of behavioral disorders
+##  [TV: Watch TV]
+Michael Webb - Channel 16: "And now to sports. First up, basketball: as the Gears prepare for their critical match wit..." (+2 more lines)
+## Running into Todd
+Todd: "Watch it."
+# In Alice's room
+CONDITION GROUP:
+  IF Todd's room was cleaned before Alice's room:
+    Kara: "I just want to tidy up your room a little. I only need two minutes. Is that okay, Alice?"
+## Looking at the book on the floor
+ARROW: Alice small UP
+Kara: "Alice in Wonderland…of course…"
+## Looking at books
+Kara: "Seems you like reading…"
+## Talking with Alice
+PROMPT:
+  - OPTION "FACTUAL"
+    Kara: "If you give me some personal information, I could take better care of you."
+  - OPTION "FRIENDLY"
+    ARROW: Alice small UP
+    Kara: "I'm sure we used to be friends before I was reset. Maybe we can be friends again."
+  - OPTION "DIPLOMATIC"
+    ARROW: Alice small UP
+    Kara: "I know I used to live here, but they erased my memory… I thought maybe you could help me get my bearings, give..."
+PROMPT:
+  - OPTION "NAME KARA"
+    ARROW: Alice small UP
+    Kara: "Your father said you chose my name. Kara, it's nice. How did you choose it?"
+  - OPTION "INTERESTS?"
+    ARROW: Alice small UP
+    Kara: "You should tell me about yourself, what you like to do, where you like to go, your favorite foods… That would..."
+  - OPTION "SEEM QUIET"
+    Kara: "You're very quiet. I hope I don't scare you."
+  - OPTION "MOTHER?"
+    ARROW: Alice small DOWN
+    Kara: "What about your mother? Will she be home soon?"
+  - OPTION "LEAVE ALONE"
+    Kara: "Okay. I can see you want some space. I'll leave you alone…"
+# Going back downstairs
+Todd: "What are you doing?" (+2 more lines)
+
+```
+
+### Flowchart labels as the game prints them
+
+`MENU.FLOWCHART.01KB` (35 keys): WELCOME HOME, JOIN TODD, DISTURB TODD, TAKE OUT TRASH, CHECK BACKYARD, WASH DISHES, TALK WITH ALICE (first floor), CHECK TABLET, ACTIVATE VACUUM, REWASH CLOTHES, FIND RED ICE, ENRAGE TODD, CLEAN FIRST FLOOR, GO UPSTAIRS, TALK WITH ALICE (`TALK01`, `TALK02`), CLEAN BATHROOM, CLEAN TODD'S ROOM, CLEAN TOILET, CLEAN ALICE'S ROOM, VENTILATE ROOM, KARA DISCOVERS A WAY DOWN, TIDY PILLS, KARA SEES GUN, ALICE GOES TO HER ROOM, CLEAN SECOND FLOOR, ALICE GIVES KARA A KEY, OPEN ALICE’S BOX, FINISHED CLEANING, TIDY BOOKS, READ "ANDROID QB", READ "PUTTING A PRICE", ASK TO GO UPSTAIRS, READ "ANDROID POWER!", READ "CONNECTING THE DOTS". Every chart node in section 1 matches. CHECK TABLET and TIDY BOOKS are in the table but not on the chart (the same two appear in the older `01KA` set); treat as cut. The table has two keys for the room talk (`TALK01`, `TALK02`) where the chart draws one node.
+
+### Template against sections 1 to 3
+
+Agreements: all ten arrows match section 3 exactly (Alice small up for WASH DISHES, GAME, BACKYARD, TOY, the book, FRIENDLY, DIPLOMATIC, NAME KARA, INTERESTS?; Alice small down for MOTHER?), and the template confirms no arrow on WEATHER, SCHOOL, FACTUAL, SEEM QUIET, LEAVE ALONE, the vacuum, the TV, the laundry and "Looking at books". The three clues (DISHWASHER NOT WORKING, RED ICE, ANTIDEPRESSANT) match. The condition "Todd's room was cleaned before Alice's room" (Kara's "I only need two minutes" line) matches.
+
+| # | Topic | Template | Note | Which wins |
+|---|---|---|---|---|
+| T1 | Label of the mother line | "MOTHER?" | "MOTHER" (section 2 menu list and the Relationship mapping) | Template |
+| T2 | TOY line | "That's a pretty toy… What's its name?" | "That's a pretty toy! What's it's name?" | Template |
+| T3 | Where TOY is offered | Section "Talk to Alice (next to the window)", after the red ice | "Downstairs, anywhere" | Template places it; minor, the wiki allows any time |
+
+Discrepancies with the note: 3 (all labels or wording).
+
+### Template against the benchmark scenes (story 1.6.0)
+
+Every template prompt, clue and arrow is present. Arrows in the engine: `K01a` option 1 (dishes) +1, option 7 (TOY) +1; `K01y1`/`K01y2` GAME and BACKYARD +1; `K01d` option 8 (book, Alice present) +1; `K01e` FRIENDLY and DIPLOMATIC +1; `K01f`/`K01g` NAME KARA and INTERESTS? +1, MOTHER? -1. The engine applies no arrow the template lacks. Clues: `K01a` options 1 and 4, `K01d` option 1 carry the observation text.
+
+| # | Scene | Template | Benchmark | Fix |
+|---|---|---|---|---|
+| B1 | `K01y1`, `K01y2`, `K01e`, `K01f`, `K01g`, `K01a` option 7 | Button labels GAME, BACKYARD, WEATHER, SCHOOL, FACTUAL, FRIENDLY, DIPLOMATIC, NAME KARA, INTERESTS?, SEEM QUIET, MOTHER?, LEAVE ALONE, TOY | Descriptive texts with the quoted line, no label | Show the label (README) |
+| B2 | `K01f` note | SEEM QUIET has no arrow | "PowerPyx counts it as liked, which the operator should check" | Resolved: no change; drop the caveat |
+| B3 | `K01y1`/`K01y2` option 2 | "I could get you a sweater if you want." | "I could get a sweater if you want." | Re-quote |
+| B4 | `K01a` option 8 | Todd: "Do what you have to do but stop botherin' me." | "…but stop bothering me!" | Cosmetic |
+| B5 | `K01` | TIME line: Todd "You comin'?" | "You coming?" | Cosmetic |
+| B6 | `K01a` option 7 | "That's a pretty toy… What's its name?" | "That's a pretty toy! What's its name?" | Cosmetic |
+| B7 | none | "Looking at the TV for too long" (Todd: "Whatta ya lookin' at? Get the fuck outta here!"; Kara: "I'll get back to work."); "Looking at books" ("Seems you like reading…") | Left out | Optional (no prompt, clue or arrow) |
+
+Discrepancies with the benchmark: 7 (none is a missing prompt, clue or arrow; B1 is the systemic label gap, B2 a stale note).

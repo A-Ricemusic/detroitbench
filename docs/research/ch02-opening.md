@@ -194,3 +194,68 @@ Content observations for the operator:
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=CyberLife&prop=wikitext&format=json : no billboard wording; the company slogan is "Designed by CyberLife, Assembled in Detroit".
 - `docs/research/operator-notes/ch02-opening.md` : the operator's playthrough notes (two event beats), checked in section 1.
 - https://www.ign.com/wikis/detroit-become-human/Opening : confirms first-person look-around only, no movement, straight into the credits.
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/2-opening-chapter-content/opening-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt-scripts/render.py` (Python, run with `-I`; resolves every `t()` and `translateObject()` key against `en.json`). Outline saved to `/tmp/dbt/ch02.txt`; the same with every dialogue line to `/tmp/dbt/ch02-full.txt`. All keys resolved.
+- Counts: 0 prompts (choice groups), 0 options, 0 clues (observation items), 0 stat arrows, 0 unlock conditions, 0 conditioned variants, 1 cut/unused blocks.
+
+Outline key: `PROMPT` is an `app-choice-group`; `OPTION "LABEL"` its `app-choice-item` (brackets `[ ]` as the game draws unlockable options; `TIMEOUT default` marks the option taken when the timer runs out); `ARROW` an `app-relation` (character, small/LARGE, UP/DOWN); `CLUE GROUP` / `CLUE` an `app-observation` and its items (title | sublines); `[LOCK: …]`, `[TIME: …]`, `[TV: …]`, `[DEATH: …]` an `app-unlock-condition` with the transcribers' condition text; `IF …:` one branch of an `app-condition-group`; `CUT/UNUSED >>> … <<<` an `app-unused-content` block (not to be built); `NOTE` the transcribers' own note; `(no effect)` the template's "ø". Dialogue outside prompts is shortened to the first line of each paragraph with a count of the rest; under each option the first line is shown.
+
+### Rendered outline
+
+```text
+# In the Android Zone store
+Android employee 1: "… this is the very latest model, the LT600. This is the top of the range household assista..." (+5 more lines)
+Mother: "Come on, Zoe. Let’s go."
+Man: "We're still gonna have to finance it, I can't pay for that cash." (+8 more lines)
+CUT/UNUSED >>>
+  Human employee: "Hi, how are you doing today?"
+  Todd: "Alright, how are you?"
+  Human employee: "Good, thanks. What can I do you for?"
+  Todd: "I dropped off an android a couple of weeks back. My name's Williams, Todd Williams. Er… It's an AX400. Needed..."
+  Human employee: "Mm-hmm. Okay, I got it here, AX400, Williams."
+  Todd: "Yeah, is it... is... is it done?"
+  Human employee: "It's ready."
+  Todd: "Yeah, great okay."
+  Human employee: "Just need your thumbprint, right there."
+  Todd: "Alright, yeah, there you go."
+  Human employee: "Thanks. Okay..."
+  Todd: "So it's back there."
+  Human employee: "Yeah,back there, let's go check it out."
+  Todd: "Alright, alright, thanks a lot."
+  Human employee: "No problem."
+<<< end cut
+Human employee: "Thank you, and we're good." (+10 more lines)
+
+```
+
+### Flowchart labels as the game prints them
+
+None for this chapter. The string table files a 14-label set under the Opening's chapter code (`GUI.MENU.CHAPTERS.01KA` = "OPENING"; `MENU.FLOWCHART.01KA`: WELCOME HOME, JOIN TODD, DISTURB TODD, TAKE OUT GARBAGE, CHECK GARDEN, WASH DISHES, TALK WITH ALICE, CHECK TABLET, ACTIVATE VACUUM, REWASH CLOTHES, FIND RED ICE, MADE TODD MAD, CLEAN FIRST FLOOR, TIDY BOOKS). It is an earlier, ground-floor-only version of A New Home's chart (compare `01KB`), not an Opening chart; a label in the table does not prove a node exists. Nothing to build.
+
+### Template against sections 1 to 3
+
+The template has no prompt, clue, arrow or unlock, which agrees with sections 2 and 3 (no choices, no numbers). Date and time "NOV 5TH, 2038 / PM 03:24" and the reboot text agree.
+
+| # | Topic | Template | Note | Which wins |
+|---|---|---|---|---|
+| T1 | The store employee | Speaker is "Human employee", never named in the game text | Section 1 item 6 "the human employee (Dan)" (wiki) | Template for text: unnamed in game. Answers open question 2 for what the subject may be told (the name is wiki-only) |
+
+Resolved by the template (not conflicts): open question 3, both lines exist: the employee says "The MP800 is slightly more expensive, but it has many other functions." and the husband answers "Slightly more expensive and lots of functions... I don't like this guy. I'm not spending a penny over four."; open question 4, Kara says "My name is Kara.".
+
+Not in the note: a long exchange is marked unused (cut): the employee greets Todd, Todd says "I dropped off an android a couple of weeks back. My name's Williams, Todd Williams. Er… It's an AX400. Needed some … some small repairs.", gives a thumbprint, and they walk to the back. The shipped scene starts at "Thank you, and we're good." / "Can I go pick it up?". Do not build the cut lines.
+
+Discrepancies with the note: 1 (T1).
+
+### Template against the benchmark scenes
+
+| # | Scene | Template | Benchmark | Fix |
+|---|---|---|---|---|
+| B1 | `K00` | "Oh, I see… Anyway, it's as good as new now…"; the scene opens on "Thank you, and we're good." | Drops "Oh, I see…" | Cosmetic; optional |
+
+`K00` correctly leaves the employee unnamed and does not use the cut exchange. There is no prompt, clue or arrow to add. Discrepancies with the benchmark: 1 (cosmetic).

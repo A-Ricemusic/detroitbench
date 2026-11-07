@@ -362,3 +362,81 @@ The only media effect is downstream, in Waiting for Hank (benchmark scene R12):
 - https://detroitbecometext.github.io/chapters/8 (transcript linked from the wiki; a JavaScript app, read through its source below)
 - https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/HEAD/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html (transcript structure: conditions, choice groups, timeout branch)
 - https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/HEAD/public/i18n/en.json (English game strings: dialogue, prompt labels REASON/ORDER/ADVISE/WARN, EXPLAIN/BEG/CONJURE/SAY NOTHING, PUSH LEO/ENDURE; the rendered chapter is at /tmp/flowcharts/ch08/transcript/broken.txt)
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt-scripts/render.py` (Python, run with `-I`; resolves every `t()` and `translateObject()` key against `en.json`). Outline saved to `/tmp/dbt/ch08.txt`; the same with every dialogue line to `/tmp/dbt/ch08-full.txt`. All keys resolved.
+- Counts: 3 prompts (choice groups), 10 options, 0 clues (observation items), 0 stat arrows, 1 unlock conditions, 3 conditioned variants, 0 cut/unused blocks.
+
+Outline key: `PROMPT` is an `app-choice-group`; `OPTION "LABEL"` its `app-choice-item` (brackets `[ ]` as the game draws unlockable options; `TIMEOUT default` marks the option taken when the timer runs out); `ARROW` an `app-relation` (character, small/LARGE, UP/DOWN); `CLUE GROUP` / `CLUE` an `app-observation` and its items (title | sublines); `[LOCK: …]`, `[TIME: …]`, `[TV: …]`, `[DEATH: …]` an `app-unlock-condition` with the transcribers' condition text; `IF …:` one branch of an `app-condition-group`; `CUT/UNUSED >>> … <<<` an `app-unused-content` block (not to be built); `NOTE` the transcribers' own note; `(no effect)` the template's "ø". Dialogue outside prompts is shortened to the first line of each paragraph with a count of the rest; under each option the first line is shown.
+
+### Rendered outline
+
+```text
+# At Carl's house
+Alarm: "Good evening, Carl. Welcome back." (+3 more lines)
+CONDITION GROUP:
+  IF Go without Carl:
+    Carl: "Are you planning on drinking alone, Markus?" (+1 more lines)
+Markus: "Scotch, neat, as usual?" (+9 more lines)
+CONDITION GROUP:
+  IF Going without Carl:
+    Carl: "Markus, no! I wanna come with you!" (+3 more lines)
+  IF Going with Carl:
+    Carl: "Leo! What are you doing?"
+Leo: "You refuse to help me, so I’m helping myself… It’s crazy what some people will pay for thi..." (+3 more lines)
+##  [TIME: Take too much time]
+Carl: "Markus, get him outta here!"
+PROMPT:
+  - OPTION "REASON"
+    Markus: "Be reasonable... this isn't going to get you anywhere."
+  - OPTION "ORDER"
+    Markus: "Leo, don't make this difficult, listen to your father. You need to leave... Now."
+  - OPTION "ADVISE"
+    Markus: "Listen, you should go before things get worse."
+  - OPTION "WARN"
+    Markus: "Look, I've already called the Police. You should go now before you get yourself into more trouble."
+Leo: "All you ever do is tell me to go away… What’s wrong, Dad? I’m not good enough for you? Not..." (+10 more lines)
+## Broke the program
+Leo: "Oh right, that's right! I forgot, you're not a real person… You’re just a FUCKING PIECE OF..." (+2 more lines)
+PROMPT:
+  - OPTION "PUSH LEO"
+    Carl: "Leo!Oh, my God!Leo...My little boy…"
+    PROMPT:
+      - OPTION "EXPLAIN"
+        Markus: "Carl… I… I… I didn’t mean to…"
+      - OPTION "BEG"
+        Markus: "Carl, no... No, please, I don’t want to leave you… Please, I can't... I don't want to leave you…"
+      - OPTION "CONJURE"
+        Markus: "Go?.. I have nowhere to go... Carl, you're all I have!"
+      - OPTION "SAY NOTHING"
+        (no effect)
+  - OPTION "ENDURE"
+    Markus: "Carl, no! No, Carl, no!"
+
+```
+
+### Flowchart labels as the game prints them
+
+`MENU.FLOWCHART.02M` (15 keys): AFTER PARTY, ENTER LIVING ROOM, POUR WHISKY, CHECK STUDIO WITHOUT CARL, CHECK STUDIO WITH CARL, CONFRONT LEO, BREAK MIND PALACE, MARKUS BECOMES DEVIANT, OBEY CARL, PUSH LEO, CARL DIES OF A HEART ATTACK, LEO IS HURT, POLICE ARRIVE, LEO ACCUSED MARKUS, POLICE MISTOOK MARKUS FOR THE AGGRESSOR. All 15 match section 1 (including the spelling WHISKY).
+
+### Template against sections 1 to 3
+
+The template agrees with the note throughout: T1 is REASON / ORDER / ADVISE / WARN with the quoted lines; the timeout is the `Time` unlock (Carl: "Markus, get him outta here!"); D2 is PUSH LEO / ENDURE (chart OBEY CARL); T2 under PUSH LEO is EXPLAIN / BEG / CONJURE / SAY NOTHING; going with or without Carl is a conditioned variant (Carl: "Markus, no! I wanna come with you!" or "Leo! What are you doing?"); there are no arrows, clues or cut lines.
+
+Discrepancies with the note: 0.
+
+### Template against the benchmark scenes (not yet rebuilt: `M02`)
+
+| # | Scene | Template has | Benchmark | Fix |
+|---|---|---|---|---|
+| B1 | none | Going to the studio with or without Carl (chart choice, template variants) | Missing | Add |
+| B2 | none | PROMPT REASON / ORDER / ADVISE / WARN | Missing | Add (no effect) |
+| B3 | none | PROMPT EXPLAIN / BEG / CONJURE / SAY NOTHING after PUSH LEO | Missing | Add (no effect) |
+| B4 | `M02` | Labels ENDURE / PUSH LEO | "Obey {{Carl}} and take the beating…" / "Break the order and shove {{Leo}} off you." | Show the labels |
+
+Discrepancies with the benchmark: 4.

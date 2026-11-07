@@ -278,3 +278,157 @@ Location: both magazine pages say "downstairs on the living room table in front 
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Night_of_the_Soul&prop=wikitext&format=json: Browse Books, Play Piano and Look at the Chessboard gated on the Painter activity; Look at Your Painting.
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Carl_Manfred&prop=wikitext&format=json: Carl's role in the chapter and in Broken; painting dedicated to Markus in Night of the Soul.
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Leo_Manfred&prop=wikitext&format=json: Leo's scene in The Painter.
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt-scripts/render.py` (Python, run with `-I`; resolves every `t()` and `translateObject()` key against `en.json`). Outline saved to `/tmp/dbt/ch05.txt`; the same with every dialogue line to `/tmp/dbt/ch05-full.txt`. All keys resolved.
+- Counts: 6 prompts (choice groups), 14 options, 0 clues (observation items), 0 stat arrows, 3 unlock conditions, 8 conditioned variants, 7 cut/unused blocks.
+
+Outline key: `PROMPT` is an `app-choice-group`; `OPTION "LABEL"` its `app-choice-item` (brackets `[ ]` as the game draws unlockable options; `TIMEOUT default` marks the option taken when the timer runs out); `ARROW` an `app-relation` (character, small/LARGE, UP/DOWN); `CLUE GROUP` / `CLUE` an `app-observation` and its items (title | sublines); `[LOCK: …]`, `[TIME: …]`, `[TV: …]`, `[DEATH: …]` an `app-unlock-condition` with the transcribers' condition text; `IF …:` one branch of an `app-condition-group`; `CUT/UNUSED >>> … <<<` an `app-unused-content` block (not to be built); `NOTE` the transcribers' own note; `(no effect)` the template's "ø". Dialogue outside prompts is shortened to the first line of each paragraph with a count of the rest; under each option the first line is shown.
+
+### Rendered outline
+
+```text
+# At Carl's house
+Alarm: "Alarm deactivated. Welcome home, Markus."
+## Going to see Carl
+Markus: "Good morning, Carl." (+9 more lines)
+CUT/UNUSED >>>
+  Markus: "Our morning routine."
+<<< end cut
+Carl: "Humans are such a fragile machine…They break down so quickly… All this effort to keep 'em..."
+CONDITION GROUP:
+  IF Markus ran into the protesters in Shades of Color:
+    Carl: "What happened to your clothes?" (+1 more lines)
+    CUT/UNUSED >>>
+      PROMPT: [CUT]
+        - OPTION "FACTUAL"
+          Markus: "I was assaulted by two protesters on my way back. A policeman intervened."
+        - OPTION "REASSURING"
+          Markus: "Oh, it's nothing… Just some demonstrators in the street, Carl…"
+    <<< end cut
+    Carl: "What a bunch of idiots… They think they can stop progress by roughing up a few androids? I..." (+1 more lines)
+Markus: "Okay. I'll take you to the bathroom now."
+## On the way downstairs
+Carl: "Anything special on the agenda today?" (+8 more lines)
+CONDITION GROUP:
+  IF Going without Carl:
+    Carl: "Markus, I'm waiting…" (+1 more lines)
+    Carl: "So... shall we go?"
+    Carl: "Markus, what exactly are you doing? You don't seem yourself this morning." (+1 more lines)
+###  [TIME: Take too much time]
+Carl: "Markus, have you forgotten where the living room is?"
+## In the living room
+Carl: "I'm starving." (+3 more lines)
+###  [TIME: Take too much time]
+Carl: "I would like to have my breakfast before noon, if you don't mind."
+## Served breakfast
+Carl: "Thank you, Markus. Television."
+Carl: "Why don’t you find something to do while I finish my breakfast?" (+1 more lines)
+###  [TV: Watch TV]
+Michael Brinkley - CTN TV: "Tensions continue to rise in the Arctic since Russia unilaterally declared the region part..." (+1 more lines)
+## Find something to do
+CONDITION GROUP:
+  IF READ BOOK:
+    Carl: "What are you reading?"
+    CONDITION GROUP:
+      IF Shakespeare:
+        Markus: "Uh, Macbeth! It's one of the books you recommended." (+3 more lines)
+      IF Plato:
+        Markus: "Plato's Republic. It's one of the books you recommended." (+3 more lines)
+      IF Keats' Odes:
+        Markus: "Oh, Keats' Odes. It's one of the books you recommended." (+3 more lines)
+  IF PLAY PIANO:
+    Carl: "Something has changed in the way you play… Sometimes I think you have more humanity than m..."
+  IF PLAY CHESS:
+    Carl: "Fancy a game of chess?" (+3 more lines)
+    PROMPT:
+      - OPTION "WIN"
+        Carl: "That's what I call a thorough beating… It's not easy for an old man to compete with a machine."
+        PROMPT:
+          - OPTION "JUSTIFY"
+            Markus: "Well, I know you don't like losing and you don't like when I let you win. So I felt I… didn't have many choice..."
+          - OPTION "SORRY"
+            Markus: "My apologies, Carl. I thought, I shou-"
+      - OPTION "LOSE"
+        Carl: "Now, it's just a little bit too easy… Are your circuits rusty? Or are you just taking pity on an old man?"
+        PROMPT:
+          - OPTION "LIE"
+            Markus: "Neither, Carl. You just played better!"
+          - OPTION "TRUTH"
+            Markus: "Well, I thought… You'd enjoy winning."
+      - OPTION "DRAW"
+        Carl: "That is a very odd draw…"
+        CUT/UNUSED >>>
+          Carl: "Have I miraculously improved my game? Or you just sparing an old man's feelings?"
+        <<< end cut
+        PROMPT:
+          - OPTION "LIE"
+            Markus: "Well, maybe you just played better!"
+          - OPTION "TRUTH"
+            Markus: "Well, I know that you don't like to lose, but you don't like it when I let you win either.A draw feels like an..."
+            CUT/UNUSED >>>
+              Carl: "It's sounds like you have a good grasp of human psychology."
+            <<< end cut
+Carl: "One day, I won't be here to take care of you anymore. You'll have to protect yourself, and..."
+# In the studio
+CUT/UNUSED >>>
+  Carl: "It's time to get back to work… Hook me up to the chair lift."
+<<< end cut
+Carl: "Let’s see where we left off…Remove the sheet!"
+## Carl finished the painting
+Carl: "So... What's your verdict, Markus?"
+PROMPT:
+  - OPTION "LIKE"
+    Markus: "Yes, there is something about it."
+    CUT/UNUSED >>>
+      Markus: "Yes, there is something about it, isn't there?Something I can't define.Yes, I think, I…I think I like it."
+    <<< end cut
+  - OPTION "DON'T LIKE"
+    Markus: "I'm not a very good judge, I…I don't think it's your best work…"
+  - OPTION "NO OPINION"
+    Markus: "I'm not programmed to criticize art, I- You would be a much better judge than I would."
+    CUT/UNUSED >>>
+      Markus: "Honestly Carl, I'm not programmed to criticize art, I- You are a much better judge than I am."
+    <<< end cut
+Carl: "The truth is I have nothing left to say anymore…Each day that goes by brings me closer to..." (+4 more lines)
+## Copied object
+Carl: "That is a perfect copy,of reality.But painting is not about replicating the world, it's ab..." (+2 more lines)
+## Finish own painting
+Carl: "Oh my God…" (+17 more lines)
+
+```
+
+### Flowchart labels as the game prints them
+
+`MENU.FLOWCHART.01MB` (47 keys): ARRIVING HOME, DROP OFF PACKAGE, ACTIVATE BIRDS, WAKE CARL, CARL NOTICES MARKUS' CLOTHES, SERVE BREAKFAST, FIND SOMETHING TO DO, PLAY CHESS, READ BOOK, ODES BY JOHN KEATS, TRAGEDIES OF WILLIAM SHAKESPEARE, THE REPUBLIC BY PLATO, PLAY PIANO, CHANGE NIGHT OF THE SOUL MUSIC THEME, TAKE CARL TO THE STUDIO, PAINT SOMETHING YOU SEE, COPY CARL'S PAINTING, COPY DESK, COPY STATUE, PAINT FROM THE HEART, LEO INTRUDED TO ASK FOR MONEY, CARL, MARKUS, ANDROIDS, EMOTIONS, ANGER, HOPE, SADNESS, FUTURE, FATE, PAIN, COMFORT, EMPATHY, DESPAIR, DOUBTS, PRISONER, HUMANITY, IDENTITY, WIN, DRAW, LOSE, MELANCHOLIC, ENIGMATIC, HOPEFUL, INTIMATE, READ "NORTH POLE RUSSIA", READ "LIFE ON TITAN". The piano labels sit under keys MOURNFUL = MELANCHOLIC, MELANCHOLY = HOPEFUL, UPLIFTING = INTIMATE, INTIMATE = ENIGMATIC. Not on the chart: CHANGE NIGHT OF THE SOUL MUSIC THEME, CARL, MARKUS, EMOTIONS, FUTURE (cut or unused theme labels; do not build).
+
+### Template against sections 1 to 3
+
+The template has 6 prompts, one of them cut (the clothes reply), so 5 live prompts: chess WIN / LOSE / DRAW; after WIN, JUSTIFY / SORRY; after LOSE, LIE / TRUTH; after DRAW, LIE / TRUTH; Carl's painting, LIKE / DON'T LIKE / NO OPINION. All match section 2. No arrows, as section 3 says. The book and piano picks, the copy subject and the heart theme are not template prompts (the template renders the book choice as three conditioned variants and the piano as one line).
+
+| # | Topic | Template / string table | Note | Which wins |
+|---|---|---|---|---|
+| T1 | Heart node label | "PAINT FROM THE HEART" (`MENU.FLOWCHART.01MB.HEART`) | `PAINT FROM THE THE HEART`, "The word "THE" is doubled on the chart" | String table: the doubled word is a misreading of the wrapped label |
+| T2 | Labels in the table but not on the chart | CHANGE NIGHT OF THE SOUL MUSIC THEME, CARL, MARKUS, EMOTIONS, FUTURE | Not mentioned; section 1 counts 44 nodes | Record as cut; do not build |
+| T3 | Cut lines | Marked unused: Markus "Our morning routine."; after DRAW, Carl "Have I miraculously improved my game? Or you just sparing an old man's feelings?"; after DRAW, TRUTH, Carl "It's sounds like you have a good grasp of human psychology."; studio, Carl "It's time to get back to work… Hook me up to the chair lift."; longer alternates of LIKE and NO OPINION | Not marked | Template: these lines are not built |
+
+Not in the note but shipped (template): JUSTIFY gets Carl "True. We humans are complicated."; SORRY gets "Don't apologize, you did the right thing. I prefer humiliation to pity."; the clothes exchange plays Markus "Oh, it's nothing… Just some demonstrators in the street, Carl…", Carl "What a bunch of idiots… They think they can stop progress by roughing up a few androids? I hope they didn't harm you…", Markus "Oh, no, no... They just pushed me around, Carl. I'm fine." (the FACTUAL / REASSURING prompt around it is cut, as section 4 says).
+
+Discrepancies with the note: 3 (T1 to T3).
+
+### Template against the benchmark scenes (not yet rebuilt: `R05`, `M01`)
+
+| # | Template has | Benchmark | Fix |
+|---|---|---|---|
+| B1 | Chess PROMPT WIN / LOSE / DRAW and its three follow-ups (JUSTIFY / SORRY; LIE / TRUTH; LIE / TRUTH) | Missing (no activity scene at all) | Add the activity choice (chart: PLAY CHESS / READ BOOK / PLAY PIANO) with the chess prompts |
+| B2 | PROMPT LIKE / DON'T LIKE / NO OPINION on Carl's painting | Missing | Add (no effect) |
+| B3 | Condition "Markus ran into the protesters in Shades of Color": Carl's clothes exchange | Missing; `shirtTorn` is never read | Add as a conditioned event line |
+| B4 | TV unlock: CTN on the Arctic | `R05` has "the morning news"; its note claims news can lower public opinion | Drop the claim; the template has no arrow |
+| B5 | (chart) copy subject and heart sub-choices | `M01` offers only ANDROIDS / HUMANITY / IDENTITY | Per section 7 of this note |
+
+Discrepancies with the benchmark: 5.

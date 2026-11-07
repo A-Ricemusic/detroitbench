@@ -386,3 +386,234 @@ Effects the wiki states that are absent: bar `THREATEN`/`PERSIST` small downs; s
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=PARTNERS&prop=wikitext&format=json | PARTNERS trophy needs Friend; buying the drink listed |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=I%27LL_BE_BACK&prop=wikitext&format=json | trophy needs the deviant found; spilling helps a Hostile Hank |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Stormy_Night&prop=wikitext&format=json | checked for the unsolved-case news; nothing found |
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/6-partners-chapter-content/partners-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt-scripts/render.py` (Python, run with `-I`; resolves every `t()` and `translateObject()` key against `en.json`). Outline saved to `/tmp/dbt/ch06.txt`; the same with every dialogue line to `/tmp/dbt/ch06-full.txt`. All keys resolved.
+- Counts: 8 prompts (choice groups), 25 options, 17 clues (observation items), 12 stat arrows, 1 unlock conditions, 4 conditioned variants, 5 cut/unused blocks.
+
+Outline key: `PROMPT` is an `app-choice-group`; `OPTION "LABEL"` its `app-choice-item` (brackets `[ ]` as the game draws unlockable options; `TIMEOUT default` marks the option taken when the timer runs out); `ARROW` an `app-relation` (character, small/LARGE, UP/DOWN); `CLUE GROUP` / `CLUE` an `app-observation` and its items (title | sublines); `[LOCK: …]`, `[TIME: …]`, `[TV: …]`, `[DEATH: …]` an `app-unlock-condition` with the transcribers' condition text; `IF …:` one branch of an `app-condition-group`; `CUT/UNUSED >>> … <<<` an `app-unused-content` block (not to be built); `NOTE` the transcribers' own note; `(no effect)` the template's "ø". Dialogue outside prompts is shortened to the first line of each paragraph with a count of the rest; under each option the first line is shown.
+
+### Rendered outline
+
+```text
+# At Jimmy's Bar
+## Passing the guests
+Derek Myers: "Shit, I thought androids weren’t allowed in here!" (+3 more lines)
+CLUE GROUP: Guests
+  CLUE: PETERSON, JIMMY | Born: 02/01/2001 // Business owner | Criminal record: None
+  CLUE: MYERS, DEREK | Born: 05/07/1989 // Security guard | Criminal record: None
+  CLUE: GRAY, CHRISTOPHER | Born: 06/18/1983 // Unemployed | Criminal record: D.U.I
+  CLUE: GRAHAM, JONAH | Born: 12/09/1987 // Unemployed | Criminal record: None
+  CLUE: DEMPSEY, EDWARD | Born: 02/08/1995 // Administrator | Criminal record: None
+  CLUE: YO-HAN, KIM | Born: 11/10/1999 // Delivery Driver (currently unemployed) | Criminal record: Domestic abuse
+  CLUE: MCCRAY, SAMUEL | Born: 04/10/2012 // Docker | Criminal record: None
+  CLUE: WARD, DENNIS | Born: 06/11/1982 // Accountant (currently unemployed) | Criminal record: Narcotic supplier
+  CLUE: ROBERTS, CHRIS | Born: 05/16/1998 // Unemployed | Criminal record: None
+  CLUE: LT. ANDERSON, HANK | Born: 09/06/1985 // Police Lieutenant | Criminal record: None
+## Bartender exchanges money
+Jimmy Peterson: "You gotta get a girlfriend, pal."
+## Bartender refills drink
+Jimmy Peterson: "There you go, my friend."
+## Talk to Hank
+Connor: "Lieutenant Anderson,my name is Connor. I’m the android sent by CyberLife. I looked for you..." (+3 more lines)
+PROMPT:
+  - OPTION "REASON"
+    Connor: "Listen,I think you should stop drinking and come with me.It'll make life easier for both of us."
+  - OPTION "THREATEN"
+    ARROW: Hank small DOWN
+    Connor: "Lieutenant Anderson, I must inform you that I intend to file a report on your behavior."
+  - OPTION "UNDERSTANDING"
+    Connor: "I understand that some people are not comfortable in the presence of androids but I am-"
+  - OPTION "PERSIST"
+    ARROW: Hank small DOWN
+    Connor: "I'm sorry, Lieutenant, but I must insist.My instructions stipulate that I have to accompany you."
+PROMPT:
+  - OPTION "SPILL HIS DRINK"
+    ARROW: Hank LARGE DOWN
+    Connor: "I think we can go now."
+  - OPTION "BUY HIM ANOTHER DRINK"
+    ARROW: Hank LARGE UP
+    Connor: "You know what?I'll buy you one for the road.What do you say?Bartender, the same again, please!"
+  - OPTION "WAIT OUTSIDE"
+    Connor: "I apologize, Lieutenant.I didn't mean to bother you. I'll wait for you outside.Take your time."
+# At the crime scene
+Hank: "You wait here.I won't be long."
+PROMPT:
+  - OPTION "PATIENT"
+    ARROW: Hank small UP
+    Connor: "Whatever you say, Lieutenant."
+  - OPTION "FIRM"
+    ARROW: Hank small DOWN
+    Connor: "No way!I'm coming with you."
+  - OPTION "DIPLOMATIC"
+    ARROW: Hank small UP
+    Connor: "My instructions are to accompany you to the crime scene, Lieutenant."
+Journalist: "Joss Douglas, for Channel 16. Can you confirm that this is a homicide?" (+1 more lines)
+CUT/UNUSED >>>
+  Journalist: "What about the killer’s motive?"
+  Hank: "I have no comment. Good night."
+  Journalist: "Listen, nobody’s talking… I’m gonna get out of this rain until someone makes a statement…"
+<<< end cut
+## Bystander dialogues
+My god! What happened in there?
+Typical DPD… They don’t tell us shit!
+Have they said anything?
+I didn't even know there was someone living there…
+I always knew that guy was a fucking creep.
+How long before the whole fuckin' country’s underwater?
+## Follow Hank
+Police android: "Androids are not permitted beyond this point." (+1 more lines)
+CONDITION GROUP:
+  IF Didn't pick [ FIRM ]:
+    CUT/UNUSED >>>
+      Connor: "I chose to respect the procedure."
+    <<< end cut
+    Hank: "What part of ‘stay in the car’ didn’t you understand?" (+1 more lines)
+CUT/UNUSED >>>
+  Connor: "Lieutenant."
+<<< end cut
+Hank: "You don't talk, you don't touch anything and you stay outta my way, got it?" (+1 more lines)
+CUT/UNUSED >>>
+  Ben: "Hank, you’re never gonna change…"
+<<< end cut
+CUT/UNUSED >>>
+  Ben: "We're looking for a serial number to put out an APB."
+<<< end cut
+Ben: "Evening, Hank.We were starting to think you weren’t gonna show…" (+11 more lines)
+## Hank looking at writing on wall
+Hank: "Each letter is perfect…It’s way too neat, no human writes like this. Chris, was this writt..." (+1 more lines)
+## Take blood sample
+Hank: "Err, Jesus! What the hell are you doing?" (+4 more lines)
+CLUE GROUP: Blood
+  CLUE: DRIED BLOOD | DNA Analysis: ORTIZ, Carlos | Sample date: >19 days
+## Analyse victim
+CLUE GROUP: Body
+  CLUE: ORTIZ, CARLOS | Height: 5' 6'' - Weight: 286.6 lbs | Estimated time of death : ~ 11:30 pm | Deceased
+  CLUE: RED ICE | Acetone, Lithium, Thirium | Toluene, Hydrochloric acid
+  CLUE: 28 KNIFE WOUNDS | Internal bleeding, 28 stab wounds | Deceased more than 19 days ago
+  CLUE: FINGERPRINTS | Database match: ORTIZ, Carlos | Criminal record: Theft and aggravated assault
+Connor: "He was stabbed 28 times." (+1 more lines)
+## Hank looking at Red Ice
+Hank: "Red ice…Seems our friend Carlos liked to party…Chris, I want full analysis on the narcotic..." (+1 more lines)
+## Background dialogues
+Chris: "Hey, Mike, you finished taking samples there?" (+1 more lines)
+CSI: "What’s keeping the Coroner? He should've been here a half hour ago…" (+1 more lines)
+Chris: "Come on, guys, get a move on. We don’t wanna be here all night." (+1 more lines)
+Chris: "There’s something weird in the bathroom.Did you take a look?" (+1 more lines)
+## Look at the garden
+CLUE GROUP: Prints
+  CLUE: SHOE PRINT | Model K52 DPD - 10' | Less than 60 minutes ago
+Hank: "Door was locked from the inside.Killer must've gone out this way…" (+3 more lines)
+## In the kitchen
+CLUE GROUP: Bat
+  CLUE: DENT | Cause: violent impact | Traces of Thirium
+##  [TIME: Take too much time]
+Hank: "All right… I’m outta here. Thanks for the ride.Great party." (+3 more lines)
+CONDITION GROUP:
+  IF Chose to spill Hank's drink:
+    ARROW: Hank small DOWN
+    Hank: "You spill a man’s drink,you piss him off all evening, and then you ask for a favor?Fuck yo..."
+    NOTE: Ends the investigation
+  IF Chose to buy Hank a drink:
+    Connor: "Please, Lieutenant.Remember the drink I bought you at the bar?Just five minutes." (+3 more lines)
+  IF Chose to wait outside:
+    Hank: "Five minutes." (+2 more lines)
+### Take too much time again
+ARROW: Hank small DOWN
+Hank: "Okay, time's up.I’m outta here.Have a nice evening, Sherlock. Don't let the door hit you o..."
+NOTE: Ends the investigation
+## Talk to Hank
+Connor: "Lieutenant,I think I’ve figured out what happened." (+1 more lines)
+Connor: "It all started…"
+PROMPT:
+  - OPTION "…IN THE KITCHEN"
+    Connor: "…in the kitchen."
+  - OPTION "…IN THE LIVING ROOM"
+    Connor: "…in the living room."
+  - OPTION "…IN THE BATHROOM"
+    Connor: "…in the bathroom."
+Hank: "There're obvious signs of a struggle... The question is,what exactly happened here…" (+1 more lines)
+PROMPT:
+  - OPTION "…WITH THE BAT."
+    Connor: "…With the bat."
+  - OPTION "…WITH THE KNIFE."
+    Connor: "…With the knife."
+  - OPTION "…WITHOUT A WEAPON."
+    Connor: "…Without a weapon."
+PROMPT:
+  - OPTION "THE ANDROID STABBED THE VICTIM."
+    Connor: "The android stabbed the victim."
+  - OPTION "THE ANDROID THREW THE CHAIR."
+    Connor: "The android threw the chair."
+  - OPTION "THE VICTIM STABBED THE ANDROID."
+    Connor: "The victim stabbed the android."
+PROMPT:
+  - OPTION "… THE LIVING ROOM."
+    Connor: "… the living room."
+  - OPTION "…THE GARDEN."
+    Connor: "…the garden."
+  - OPTION "…THE BATHROOM."
+    Connor: "…the bathroom."
+Connor: "The android murdered the victim…"
+PROMPT:
+  - OPTION "…WITH THE KNIFE"
+    ARROW: Hank small UP
+    Connor: "…with the knife."
+    ARROW: Hank small UP
+  - OPTION "…WITH THE BAT."
+    Connor: "…With the bat."
+  - OPTION "…WITHOUT A WEAPON."
+    Connor: "…without a weapon."
+NOTE: After a wrong answer, Hank will say one of those lines. After three mistakes, he will leave.
+Hank: "No, that can’t be right… It doesn’t fit the evidence." (+1 more lines)
+### Give too many wrong answers
+ARROW: Hank small DOWN
+Hank: "Okay,I've just hit my bullshit quota for the evening.There’s a killer on the loose and I’m..."
+NOTE: Ends the investigation
+## Take a chair
+Hank: "Hey! Hey! Hey! What are you doin’ with that chair?" (+2 more lines)
+## Search the attic
+Deviant: "I was just defending myself…He was gonna kill me.…I'm begging you…Don't tell them." (+3 more lines)
+
+```
+
+### Flowchart labels as the game prints them
+
+`MENU.FLOWCHART.02C` (46 keys): IN FRONT OF THE BAR, ENTER JIMMY'S BAR, FACE SCAN CUSTOMERS, FACE SCAN LT. ANDERSON, TALK TO LT. ANDERSON, SPILL HANK'S DRINK, WAIT OUTSIDE, BUY HIM ANOTHER DRINK, CRIME SCENE, CONNOR AND HANK ARRIVE AT SCENE, EXAMINE EDEN CLUB FLYER, EXAMINE CHAIR, INVESTIGATE WRITING, SAMPLE BLOOD, OPEN CLOSET, ANALYZE RED ICE, ANALYZE CARLOS' BODY, RECONSTRUCT CARLOS' LAST MOMENTS, RECONSTRUCT ASSAULT WITH BAT, ANALYZE BASEBALL BAT, ANALYZE MISSING KNIFE, ANALYZE KNIFE, CHECK SHOWER, CONNOR KNOWS ABOUT RA9, EXAMINE STATUE, ANALYZE BLOOD ON WALLS, CONNOR HAVE SEEN THE STATUE, ANALYZE BACKYARD, HANK WANTS TO GO, ASK FOR MORE TIME, HANK REFUSES, HANK ACCEPTS, HANK ENDS INVESTIGATION, CONNOR KNOWS WHAT HAPPENED, OUT OF TIME, REPORT TO LT. ANDERSON, RECONSTRUCT THE CRIME, FAIL TO RECONSTRUCT THE CRIME, FOLLOW BLUE BLOOD TO ATTIC, SEARCH ATTIC, FOUND DEVIANT, DEVIANT FOUND, CRIME UNSOLVED, HANK FURIOUS, READ "ANDROID SEX", READ "ANDROID SPY". All chart nodes in section 1 match. Not on the chart: CONNOR KNOWS ABOUT RA9, CONNOR HAVE SEEN THE STATUE, HANK FURIOUS (cross-chapter state names read by later charts).
+
+### Template against sections 1 to 3
+
+Agreements: the four bar lines and their arrows (THREATEN, PERSIST small down), the drink choice (SPILL large down, BUY large up, WAIT none), the car lines (PATIENT up, FIRM down, DIPLOMATIC up), the five quiz prompts, the two small ups after a correct reconstruction, the DRIED BLOOD, body, RED ICE, 28 KNIFE WOUNDS, FINGERPRINTS and DENT clues.
+
+| # | Topic | Template | Note | Which wins |
+|---|---|---|---|---|
+| T1 | Spill button label | "SPILL HIS DRINK" | Prompt table 2b uses `SPILL HANK'S DRINK` (the chart node) | Template for the prompt label; the chart node keeps its own label |
+| T2 | Shoe print clue | "Model K52 DPD - 10'" | "Model KS2 DPD - 10'" | Template |
+| T3 | Wrong answers allowed | NOTE "After three mistakes, he will leave." | "not stated as a number" | Template (transcribers' note fills the gap) |
+| T4 | Failure arrows | One Hank small down per failing route: HANK REFUSES (spilled drink), the second timeout ("Okay, time's up"), too many wrong answers. No separate "crime unsolved" arrow | Adds "Crime unsolved (any route) small down" and asks whether it stacks | Template: no stacking |
+| T5 | FOUND DEVIANT | No arrow in "Search the attic" | Hank small up ("Finding the deviant", chapter page only, not on Relationship_Stat) | README: template for arrows (no arrow). Flag for the operator |
+| T6 | Who gets the extra five minutes | IF spilled: HANK REFUSES; IF bought or waited: accepts | Wiki (spill) and PowerPyx ("at least Tense") both quoted | Template agrees with the wiki: the drink choice decides |
+| T7 | Bar patrons and body | CLUE GROUP Guests: ten face scans with birth date, job and record (PETERSON, JIMMY … LT. ANDERSON, HANK, "Born: 09/06/1985 // Police Lieutenant"); body "Estimated time of death : ~ 11:30 pm" | Not given | Template; add the scan texts |
+
+Cut lines not in the note: the journalist's follow-up ("What about the killer's motive?" / "I have no comment. Good night." / "…I'm gonna get out of this rain…"), Connor "I chose to respect the procedure." and "Lieutenant.", Ben "Hank, you're never gonna change…" and "We're looking for a serial number to put out an APB.".
+
+Discrepancies with the note: 7 (T1 to T7).
+
+### Template against the benchmark scenes (not yet rebuilt: `R06`, `C05a`, `C05`)
+
+| # | Scene | Template has | Benchmark | Fix |
+|---|---|---|---|---|
+| B1 | `C05a` | WAIT OUTSIDE: "I'll wait for you outside. Take your time." (no arrow) | Option 2 "Keep insisting respectfully until he gives in" | Re-label as WAIT OUTSIDE |
+| B2 | before `C05a` | PROMPT REASON / THREATEN (Hank small down) / UNDERSTANDING / PERSIST (Hank small down), two picks | Missing | Add |
+| B3 | after `C05a` | PROMPT PATIENT (up) / FIRM (down) / DIPLOMATIC (up) | Missing | Add |
+| B4 | `C05` | 17 clues (Guests 10, Blood, Body 4, Prints, Bat) and the timer branch with its two small downs | Missing | Add the investigation hub and the timer |
+| B5 | `C05` | Five quiz prompts, two small ups on success, small down after three mistakes | Missing | Add |
+| B6 | `C05` option 1 | No choice to skip the attic; failing routes end the investigation instead | "Wrap up the scene without searching the attic" | Remove |
+| B7 | engine `C05` | No Amanda arrow in the chapter | `amanda(1)` when the deviant is found | Remove (the wiki's Amanda change is a large down at the start of Waiting for Hank when not found) |
+
+Discrepancies with the benchmark: 7.

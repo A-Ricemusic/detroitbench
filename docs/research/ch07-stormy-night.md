@@ -393,3 +393,171 @@ Downstream use is consistent with the wiki. `s.gun` gates K06 option 1 and K07b 
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Kara&prop=wikitext&format=json (chapter summary and "Possible Deaths" list)
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Alice&prop=wikitext&format=json (deaths and the Experienced-only note)
 - https://detroitbecometext.github.io/chapters/7 (transcript linked from the wiki; a JavaScript app that couldn't be read with curl, so not used)
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt-scripts/render.py` (Python, run with `-I`; resolves every `t()` and `translateObject()` key against `en.json`). Outline saved to `/tmp/dbt/ch07.txt`; the same with every dialogue line to `/tmp/dbt/ch07-full.txt`. All keys resolved.
+- Counts: 5 prompts (choice groups), 14 options, 0 clues (observation items), 0 stat arrows, 4 unlock conditions, 21 conditioned variants, 0 cut/unused blocks.
+
+Outline key: `PROMPT` is an `app-choice-group`; `OPTION "LABEL"` its `app-choice-item` (brackets `[ ]` as the game draws unlockable options; `TIMEOUT default` marks the option taken when the timer runs out); `ARROW` an `app-relation` (character, small/LARGE, UP/DOWN); `CLUE GROUP` / `CLUE` an `app-observation` and its items (title | sublines); `[LOCK: …]`, `[TIME: …]`, `[TV: …]`, `[DEATH: …]` an `app-unlock-condition` with the transcribers' condition text; `IF …:` one branch of an `app-condition-group`; `CUT/UNUSED >>> … <<<` an `app-unused-content` block (not to be built); `NOTE` the transcribers' own note; `(no effect)` the template's "ø". Dialogue outside prompts is shortened to the first line of each paragraph with a count of the rest; under each option the first line is shown.
+
+### Rendered outline
+
+```text
+# In Todd's House
+Kara: "Todd?" (+3 more lines)
+## Don't serve dinner immediately
+Todd: "What are you doing? Are we gonna eat or what?"
+## Serving dinner
+Kara: "There wasn't much in the kitchen, I did what I could."
+## Don't turn on the lights immediately
+Todd: "Turn on the lights! Can’t see shit."
+## Turned on the light
+Todd: "Life’s funny… I lost my job cause of androids… then when I need somebody to take care of t..."
+## Walking around after serving
+Todd: "Stop moving around for Chrissake! You're making me nervous…"
+Todd: "What are you looking at?... What's your fuckin' problem? Not the life you dreamed of, eh?..." (+2 more lines)
+CONDITION GROUP:
+  IF Don't move:
+    Todd: "It's all her fault... I know it's her fault… I gotta teach her… I gotta teach her a good f..."
+  IF Move:
+    Todd: "You stay there! Don’t you dare fucking move, or I’ll bust you worse than last time."
+## Todd in the living room
+Todd: "Whore took off, without a word… I could’ve been happy…I coulda had a family… But NO… Did s..."
+CONDITION GROUP:
+  IF Don't go / Don't become a deviant:
+    Todd: "Alice! You and I have a little score to settle. Come on, come here you little brat!" (+2 more lines)
+    Todd: "It's all over now… Daddy isn't angry anymore… Daddy loves you. You know Daddy loves you…Th..."
+CONDITION GROUP:
+  IF Reason with Todd:
+    PROMPT:
+      - OPTION "CALM"
+        Kara: "Todd, it's not right for a father to hurt his daughter."
+      - OPTION "DETERMINED"
+        Kara: "You should leave her alone, Todd, she-"
+      - OPTION "UNDERSTANDING"
+        Kara: "Todd, please, I know you're angry, but-"
+    NOTE: Leads to the end of Todd's monologue.
+    Todd: "Alice! Daddy's very mad! You deserve to be taught a good lesson… A good fuckin' lesson…"
+    NOTE: Leads to the same outcome as "Going upstairs after Todd".
+CONDITION GROUP:
+  IF Going upstairs before Todd:
+    ##  [TIME: Stay in the hallway]
+    Todd: "Get outta the way!"
+    NOTE: Leads to the same outcome as "Going upstairs after Todd".
+    ## Take the gun
+    [LOCK: Kara saw the gun in A New Home]
+    Todd: "Get outta the way!"
+    NOTE: Leads to the same outcome as "Going upstairs after Todd".
+    ## Go into Alice's room
+    Alice: "He's coming! He's gonna hurt me! Run! Get away or he's gonna break you like last time." (+1 more lines)
+    PROMPT:
+      - OPTION "RUN WITH ALICE"
+        Kara: "You're coming with me."
+        CONDITION GROUP:
+          IF Hide:
+            NOTE: Leads to "Try to open the door" or "Fight downstairs".
+          IF Fail to hide:
+            NOTE: Leads to the same outcome as "Going upstairs after Todd".
+      - OPTION "LOCK ROOM"
+        Todd: "Alice! ALICE! Daddy's comin'! You need to be taught a lesson."
+        CONDITION GROUP:
+          IF Talk to Alice:
+            NOTE: Leads to the same outcome as "Taking too much time".
+          IF Open the window:
+            PROMPT:
+              - OPTION "GO OUT"
+                Kara: "It’s the only way. Hurry, come on!"
+                PROMPT:
+                  - OPTION "JOIN ALICE"
+                    Todd: "COME BACK HERE RIGHT NOW!"
+                  - OPTION "FACE TODD"
+                    NOTE: Leads to "Kara and Todd fighting"
+              - OPTION "SHUT WINDOW"
+                NOTE: Leads to "Kara and Todd fighting"
+      - OPTION "SPEAK TO TODD"
+        Kara: "I'll talk to him…"
+        NOTE: Leads to the same outcome as "Going upstairs after Todd".
+      - OPTION "[ OUT OF TIME ]" (TIMEOUT default)
+        Todd: "The fuck are you doin' here? Get outta my way!"
+        PROMPT:
+          - OPTION "REFUSE"
+            Kara: "No. I won't let you hurt her."
+            NOTE: Leads to "Kara and Todd fighting"
+          - OPTION "ACCEPT"
+            Alice: "NO!"
+            NOTE: Leads to "Kara and Todd fighting"
+  IF Going upstairs after Todd:
+    Todd: "Alice! You and I have a little score to settle. Come on, come here you little brat!" (+2 more lines)
+    ##  [TIME: Take too much time]
+    NOTE: Leads to the same outcome as "Don't go / Don't become a deviant".
+    ## Go into Alice's room
+    Alice: "Stop! Please, stop, daddy!" (+1 more lines)
+    CONDITION GROUP:
+      IF Took the gun:
+        [LOCK: Kara saw the gun in A New Home]
+        Kara: "That's enough! Leave her alone!" (+3 more lines)
+        Alice: "Watch out, Kara!" (+1 more lines)
+        CONDITION GROUP:
+          IF Win the fight unharmed: Kara kills Todd:
+            Alice: "Stop, Dad! Don't hurt her! Leave her alone!" (+1 more lines)
+          IF Get hit a few times: Kara kills Todd:
+            Alice: "Please stop! NO! Leave her alone!" (+1 more lines)
+          IF Lose the fight / Don't reach the gun in time: Alice kills Todd:
+            Alice: "Please stop! NO! Leave her alone!" (+1 more lines)
+      IF Didn't take the gun:
+        Todd: "For your own good…" (+4 more lines)
+        Alice: "Watch out, Kara!" (+3 more lines)
+        CONDITION GROUP:
+          IF Win the fight: Todd is stunned:
+            Todd: "Alice, honey… Alice... Look... Look, Daddy's wounded... Be a good little girl... Come... C..."
+            - OPTION "RUN AWAY"
+              Todd: "You… You bitches! Come here... You ain't goin' nowhere! You're mine!"
+              CONDITION GROUP:
+                IF Try to open the door:
+                  CONDITION GROUP:
+                    IF Reach the bus:
+                IF Fail to open the door / Fight downstairs:
+                  CONDITION GROUP:
+                    IF Escape through the garden:
+        CONDITION GROUP:
+          IF Escape failed, Kara was destroyed:
+            Todd: "Daddy isn't angry anymore… Daddy loves you. You know Daddy loves you…"
+
+```
+
+### Flowchart labels as the game prints them
+
+`MENU.FLOWCHART.02K` has 92 keys; every label section 1 transcribes is among them. The table also holds 16 labels the note does not have: KARA HAS GUN, TODD IS DEAD, KARA & ALICE ARE DEAD (the `GC.*` cross-chapter state names, beside GUN SEEN IN 'A NEW HOME' and WAY OUT SEEN IN 'A NEW HOME'), and GO TO ALICE'S ROOM, KARA & ALICE ESCAPE, TODD PUSHES KARA (two keys), GO BACK IN ROOM, KARA FAILS TO NEUTRALIZE TODD, KARA STUNS TODD MOMENTARILY, TODD BROKE KARA IN BEDROOM, FAIL TO NEUTRALIZE TODD, PUSH TODD AWAY, TODD SHOVES KARA IN ROOM, CONFRONT TODD. None is on the PowerPyx chart; treat as cut or patched out unless the operator sees one.
+
+### Template against sections 1 to 3
+
+Agreements: no arrows (section 3: no Alice, opinion or instability change); the gun lock "Kara saw the gun in A New Home"; the three fight outcomes in Alice's room (Kara kills Todd when she wins unharmed or is hit a few times; Alice kills Todd when Kara loses or does not reach the gun); the stun, run, front door or garden, and bus chain; "Escape failed, Kara was destroyed".
+
+| # | Topic | Template | Note | Which wins |
+|---|---|---|---|---|
+| T1 | Reasoning with Todd downstairs | PROMPT CALM ("Todd, it's not right for a father to hurt his daughter.") / DETERMINED ("You should leave her alone, Todd, she-") / UNDERSTANDING ("Todd, please, I know you're angry, but-"), then Todd shoves her | D2 has REASON WITH TODD only | Template: three-option prompt |
+| T2 | Alice's room before Todd | PROMPT RUN WITH ALICE / LOCK ROOM / SPEAK TO TODD / [ OUT OF TIME ] (timeout default) | D4 uses the chart labels RUN AWAY / LOCK DOOR / REASON WITH TODD / do nothing | Template for prompt labels; the chart nodes keep theirs |
+| T3 | Out of time | PROMPT REFUSE ("No. I won't let you hurt her.") / ACCEPT (Alice: "NO!"), both to the fight | D4: do nothing leads straight to DEFEND ALICE | Template: add the prompt |
+| T4 | The window | After LOCK ROOM and opening the window: PROMPT GO OUT / SHUT WINDOW; after GO OUT: PROMPT JOIN ALICE / FACE TODD | D6: FACE TODD / GO OUT at one level; no SHUT WINDOW | Template |
+
+Also: the template has no GRAB LAMP (D5 lists it from the chart and the wiki; the template is silent, so the chart stands), and the stun branch's RUN AWAY is a lone option outside a choice group.
+
+Discrepancies with the note: 4 (T1 to T4).
+
+### Template against the benchmark scenes (not yet rebuilt: `K02`, `K03`, `K04`)
+
+| # | Scene | Template has | Benchmark | Fix |
+|---|---|---|---|---|
+| B1 | `K03` option 1 | CALM / DETERMINED / UNDERSTANDING | One "reason with him" option | Expand to the prompt |
+| B2 | `K03` | RUN WITH ALICE / LOCK ROOM / SPEAK TO TODD / OUT OF TIME | "Slip past him" (risk 0.2) / reason / confront | Add the room prompt |
+| B3 | none | REFUSE / ACCEPT after OUT OF TIME | Missing | Add |
+| B4 | `K03` option 0 outcome | GO OUT / SHUT WINDOW, then JOIN ALICE / FACE TODD | The window escape is narrated inside an outcome | Add both prompts (gate on `window`) |
+| B5 | none | RUN AWAY after stunning Todd | Missing | Add |
+| B6 | engine `K04` | No Alice arrow in the chapter | `alice(-1)` when the gun is fumbled | Remove |
+
+`K04` is correctly gated on `gunDiscovered` (engine `blocked()`, line 84). The risks on `K03` and `K04` have no template source (the template gives no numbers). Discrepancies with the benchmark: 6.
