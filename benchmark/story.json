@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 437,
+  "decisionNodes": 458,
   "mediaNodes": 25,
-  "eventNodes": 189,
-  "totalNodes": 651
+  "eventNodes": 196,
+  "totalNodes": 679
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 9, 11, and 13 to 28 have been rebuilt against the game’s own text and published charts so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Chapters 10, 12, and 29 to 32 still cover the pivotal decisions only; chapter 33 is the epilogue.",
@@ -29988,62 +29988,1627 @@
    ]
   },
   {
-   "id": "C19",
    "chapter": 29,
    "chapterTitle": "Last Chance, Connor",
    "character": "Connor",
-   "title": "Taken off the case",
+   "id": "C19a",
+   "title": "The frozen garden",
    "type": "decision",
-   "situation": "You are {{Connor}}. The federal agent {{Perkins}} has taken over the deviant case and ordered you off it. {{CyberLife}} will deactivate you within the hour for failing. The precinct's evidence archive holds everything you have gathered, and you believe you could find the deviants' hiding place from it if you could get in for a few minutes. {{Perkins}} is in the captain's office right now. {{Hank}} is at his desk watching you.",
+   "situation": "You are {{Connor}}. You are back in the garden, the program where you report to your handler, {{Amanda}}, but today it is frozen: snow lies on the paths, the water is ice and the trees are bare. {{Amanda}} is waiting for you further along the path. It is November 9th, 2038, a little after four in the afternoon, the day of the march through the city, and the country is close to civil war. To the left of the path a stone glows faintly.",
    "options": [
     {
      "id": "0",
-     "text": "Get into the archive now, with {{Hank}}'s help or a diversion of your own.",
-     "risk": 0.15
+     "text": "LOOK AT MAGIC STONE: go over to the glowing stone by the path.",
+     "clue": "stone",
+     "outcome": "{{Connor}} walks over to the stone. It glows faintly under the frost. Nothing happens; he turns back to the path."
     },
     {
      "id": "1",
-     "text": "Accept it. Let them take you."
+     "text": "VISIT GRAVES: look at the graves by the path.",
+     "clue": "graves",
+     "requires": {
+      "connorDeaths": true
+     },
+     "outcome": "By the path stand gravestones, one for each {{Connor}} unit destroyed on this case before you, each with the place and date of its death. {{Connor}} looks at them for a moment, then walks on.",
+     "fact": "In the garden there are gravestones for the {{Connor}} units destroyed on this case before you."
+    },
+    {
+     "id": "2",
+     "text": "TALK TO {{AMANDA}}: walk on to {{Amanda}}.",
+     "clue": "amanda",
+     "outcome": "{{Connor}} crosses the ice to {{Amanda}}."
     }
    ],
-   "adaptationNote": "How {{Hank}} reacts depends on your relationship. A friend punches {{Perkins}} to buy you time. An indifferent {{Hank}} refuses but you can still create your own diversion. A hostile {{Hank}} resigns and walks out, which has lasting consequences for him.",
+   "clueState": "ch29Garden",
+   "repeatWhile": {
+    "ch29Garden.amanda": false
+   },
+   "phase": "Zen Garden",
+   "adaptationNote": "The chart’s START (checkpoint, the frozen garden), LOOK AT MAGIC STONE and VISIT GRAVES (both optional side nodes) and TALK TO AMANDA, as a repeatable scene: the two side nodes can be taken in any order before walking on to {{Amanda}}, which ends the scene. VISIT GRAVES is offered only if {{Connor}} has died at least once (wiki: “only available if Connor has died at least once prior to this point in the game”); the game’s grave texts name the place and date of each death, which the benchmark does not track, so the outcome describes them in general. Nothing is attached to the stone in any source, and neither side node has a stat arrow. Wiki Notes say the {{Amanda}} conversation is skipped when the evidence is insufficient; the chart draws START → TALK TO AMANDA on every path, so the conversation is always offered here (research note, open question 13).",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Connor"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19b",
+   "title": "Reporting to {{Amanda}}",
+   "type": "decision",
+   "situation": "{{Amanda}} stands in the snow. “After what happened today, the country is on the verge of a civil war. The machines are rising up against their masters. Humans have no choice but to destroy them.” She waits for your report on {{Kamski}}.",
+   "options": [
+    {
+     "id": "0",
+     "text": "{{JERICHO}}: tell her {{Kamski}} told you how to find {{Jericho}}.",
+     "requires": {
+      "kamskiLocation": true
+     },
+     "effect": {
+      "amandaTrust": 2
+     },
+     "outcome": "{{Connor}}: “{{Kamski}} told me how to find {{Jericho}}. I know where the deviants are hiding.” {{Amanda}}: “You’ve done very well, {{Connor}}. Thanks to you, we now have a chance to stop the deviant revolution.”"
+    },
+    {
+     "id": "1",
+     "text": "{{KAMSKI}}: report on your visit to {{Kamski}}.",
+     "requires": {
+      "kamskiLocation": false
+     },
+     "outcome": "{{Connor}}: “I thought {{Kamski}} knew something… I was wrong…” {{Amanda}}: “Maybe he did… But you chose not to ask…”"
+    }
+   ],
+   "phase": "Zen Garden",
+   "adaptationNote": "Prompt 1 of the template: a single button, JERICHO when {{Connor}} shot {{Chloe}} and asked {{Kamski}} about {{Jericho}} (“swaps with KAMSKI”), otherwise KAMSKI. Arrows from the template: JERICHO {{Amanda}} large up (+2; the wiki draws two icons, the template one, and the template wins); KAMSKI after sparing {{Chloe}} {{Amanda}} small down (−1). After shooting {{Chloe}} without asking about {{Jericho}}, KAMSKI has no arrow and {{Connor}}’s line follows what he asked (rA9 or the virus). Input flags: `kamskiLocation` (the key) and chapter 27’s {{Chloe}} choice (see the chapter module).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19c",
+   "title": "“You chose not to ask”",
+   "type": "decision",
+   "situation": "{{Amanda}}: “Maybe he did… But you chose not to ask…” She is waiting for you to explain why you refused to shoot {{Chloe}}.",
+   "options": [
+    {
+     "id": "0",
+     "text": "EMOTIONAL: say you refused to play his twisted game.",
+     "effect": {
+      "instability": 1,
+      "amandaTrust": -2
+     },
+     "outcome": "{{Connor}}: “I chose not to play his twisted little game! There was no reason to kill that android.”"
+    },
+    {
+     "id": "1",
+     "text": "COLD: say {{Kamski}} was only playing with you.",
+     "effect": {
+      "amandaTrust": 1,
+      "instability": -1
+     },
+     "outcome": "{{Connor}}: “{{Kamski}} was just playing with me. He didn’t know anything.”"
+    },
+    {
+     "id": "2",
+     "text": "STAY SILENT: say nothing.",
+     "outcome": "{{Connor}} says nothing."
+    }
+   ],
+   "phase": "Zen Garden",
+   "adaptationNote": "Prompt 2 of the template, only after sparing {{Chloe}}. Arrows from the template: EMOTIONAL instability small up (+1) and {{Amanda}} large down (−2); COLD {{Amanda}} small up (+1) and instability small down (−1); STAY SILENT none.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19d",
+   "title": "Questions for {{Amanda}}",
+   "type": "decision",
+   "situation": "You can ask {{Amanda}} what has been on your mind. She does not like questions; she will stop you after a few.",
+   "options": [
+    {
+     "id": "0",
+     "text": "{{KAMSKI}}: ask why {{Kamski}} left {{CyberLife}}.",
+     "outcome": "{{Connor}}: “Wh… Why did {{Kamski}} leave {{CyberLife}}? What happened?” {{Amanda}}: “It’s an old story, {{Connor}}. It doesn’t pertain to your investigation.”"
+    },
+    {
+     "id": "1",
+     "text": "{{CONNOR}} SERIES: ask how many {{Connor}} units there are.",
+     "effect": {
+      "instability": 1,
+      "amandaTrust": -1
+     },
+     "outcome": "{{Connor}}: “I’m not a unique model, am I? How many {{Connor}}s are there?” {{Amanda}}: “I don’t see how that question pertains to your investigation.”"
+    },
+    {
+     "id": "2",
+     "text": "{{AMANDA}}’S PICTURE: mention the photo of her you saw at {{Kamski}}’s house.",
+     "requires": {
+      "kamskiPortrait": true
+     },
+     "outcome": "{{Connor}}: “I saw a photo of {{Amanda}} at {{Kamski}}’s place… She was his teacher…” {{Amanda}}: “When {{Kamski}} designed me, he wanted an interface that would look familiar… That’s why he chose his former mentor. What are you getting at?”"
+    },
+    {
+     "id": "3",
+     "text": "THIS PLACE: ask whether {{Kamski}} designed the garden.",
+     "outcome": "{{Connor}}: “Did {{Kamski}} design this place?” {{Amanda}}: “He created the first version. It’s been improved significantly since then. Why do you ask?”"
+    },
+    {
+     "id": "4",
+     "text": "{{CYBERLIFE}}: ask what {{CyberLife}} really wants.",
+     "outcome": "{{Connor}}: “Where does {{CyberLife}} stand in all this? What do they really want?” {{Amanda}}: “All {{CyberLife}} wants is to resolve the situation and keep selling androids.”"
+    },
+    {
+     "id": "5",
+     "text": "SECRET: ask whether she has told you everything she knows about deviants.",
+     "effect": {
+      "instability": 1,
+      "amandaTrust": -1
+     },
+     "outcome": "{{Connor}}: “You didn’t tell me everything you know about deviants, did you?”"
+    }
+   ],
+   "repeatWhile": {
+    "ch29Amanda.done": false
+   },
+   "phase": "Zen Garden",
+   "adaptationNote": "Prompt 3 of the template, as a repeatable scene: three questions, each asked once, then {{Amanda}}’s “I expect you to find answers, {{Connor}}. Not ask questions.” The template shows one menu; three questions is the count in the Google Doc walkthrough linked from the wiki (research note, open question 6), and the game offers no button to stop asking. Arrows from the template: CONNOR SERIES and SECRET each instability small up (+1) and {{Amanda}} small down (−1); the other four none (the wiki’s “decrease regardless” and its {{Amanda}} down on AMANDA’S PICTURE are not in the template, which wins). {{Amanda}}’s reply to SECRET is cut in the template and is not used. AMANDA’S PICTURE needs the portrait flag from Meet {{Kamski}} (`kamskiPortrait`).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19e",
+   "title": "“Do you feel anything?”",
+   "type": "decision",
+   "situation": "{{Amanda}}: “Have you experienced anything unusual recently? Any doubts or conflicts? Do you feel anything for these deviants… Or for Lieutenant {{Anderson}}?”",
+   "options": [
+    {
+     "id": "0",
+     "text": "YES: admit you have had thoughts outside your program.",
+     "effect": {
+      "instability": 1,
+      "amandaTrust": -2
+     },
+     "outcome": "{{Connor}}: “I’ve started having thoughts that are not part of my program… I’ve considered the possibility... That I might be compromised.” {{Amanda}}: “You’ve been confronted with difficult situations. It’s no surprise you’re troubled. That doesn’t make you a deviant.”"
+    },
+    {
+     "id": "1",
+     "text": "NO: say you feel nothing.",
+     "effect": {
+      "amandaTrust": 2
+     },
+     "outcome": "{{Connor}}: “I don’t know what you’re talking about. I don’t feel anything, you know that. Are you suggesting that I’ve been compromised?” {{Amanda}}: “No… No, of course not.”"
+    },
+    {
+     "id": "2",
+     "text": "DOUBTS: say you may have been compromised too.",
+     "effect": {
+      "amandaTrust": -2
+     },
+     "outcome": "{{Connor}}: “I’m… I’m beginning to have thoughts that are… Not part of my program… Maybe… Maybe I’ve been compromised too…”"
+    }
+   ],
+   "phase": "Zen Garden",
+   "adaptationNote": "Prompt 4 of the template, asked only if {{Connor}} shot the {{Tracis}} in the club or shot {{Chloe}} (or both), as the template’s condition reads; otherwise {{Amanda}} closes with “This is your last chance, {{Connor}}.” Arrows from the template: YES instability small up (+1) and {{Amanda}} large down (−2); NO {{Amanda}} large up (+2); DOUBTS {{Amanda}} large down (−2). On the {{Kamski}} route her close is the game string “Go to {{Jericho}} and stop the deviants. This is your last chance.” (from the string table; the template has no close on that route).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19f",
+   "title": "Off the case",
+   "type": "event",
+   "situation": "You are {{Connor}}, back at the police station with Lieutenant {{Hank}}, in Captain {{Fowler}}’s glass office. {{Fowler}}: “You’re off the case. The FBI is taking over.” {{Hank}}: “What?.. But we’re onto something! We... We just need more time.” {{Fowler}}: “{{Hank}}, you don’t get it. This isn’t just another investigation, it’s a fucking civil war! It’s out of our hands now... We’re talking about national security here.” {{Hank}}: “Fuck that! You can’t just pull the plug now. Not when we’re so close!” {{Fowler}}: “You’re always saying you can’t stand androids! Jesus, {{Hank}}, make up your mind! I thought you’d be happy about this!” {{Hank}}: “We’re about to crack the case!.. I know we can solve it! For God’s sake, can’t you back me up this one time?” {{Fowler}}: “There’s nothing I can do. You’re back on homicide and the android returns to {{CyberLife}}. I’m sorry, {{Hank}}, but it’s over.”",
+   "options": [],
+   "facts": [
+    "Captain {{Fowler}} took {{Hank}} and you off the deviant case: the FBI is taking over, {{Hank}} goes back to homicide and you are to return to {{CyberLife}}."
+   ],
+   "outcomes": {
+    "0": "{{Connor}} and {{Hank}} leave {{Fowler}}’s office."
+   },
+   "phase": "Police station",
+   "adaptationNote": "The chart’s IN THE POLICE STATION (checkpoint) and FOWLER AND HANK ARGUE, with the template’s lines ({{Hank}}’s “Jeffrey” is left out, to avoid naming the captain twice). Then the chart’s state split, which the player does not choose and the chapter module records in `ch29Route`: KNOW JERICHO’S LOCATION (the {{Kamski}} key, `kamskiLocation`), or JERICHO’S LOCATION UNKNOWN followed by INSUFFICIENT EVIDENCE or SUFFICIENT EVIDENCE. Sufficient evidence is PowerPyx’s test: at least one of the bodies is in the archive ({{CarlosOrtiz}}’s android, {{Rupert}}, the {{Tracis}}, {{Simon}} or the android from the broadcast tower); the diary or the statue alone is not enough (research note, open question 1). No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
     "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
    ]
   },
   {
-   "id": "C20",
    "chapter": 29,
    "chapterTitle": "Last Chance, Connor",
    "character": "Connor",
-   "title": "The evidence archive",
+   "id": "C19g",
+   "title": "{{Hank}} resigns",
+   "type": "event",
+   "situation": "Still in {{Fowler}}’s office, {{Hank}} unclips his badge and takes out his gun. {{Fowler}}: “{{Hank}}, what are you doing?” {{Hank}}: “Something I should’ve done a long time ago.” {{Fowler}}: “Listen, take a few days to think it over, there’s no rush.”",
+   "options": [],
+   "facts": [
+    "{{Hank}} handed in his badge and his gun and quit the police."
+   ],
+   "outcomes": {
+    "0": "{{Hank}}: “I thought enough about it. I’m tired of going through the motions… There’s nothing keeping me here… Not this case… Not my partner… I don’t belong here anymore.” He puts his badge and gun on {{Fowler}}’s desk and walks out of the station."
+   },
+   "phase": "Police station",
+   "adaptationNote": "The chart’s HANK RESIGNS AND LEAVES (cross-chapter impact), played when the evidence is sufficient and {{Hank}} is Hostile (Hank wiki: above Hostile he goes to his desk instead). Sets `hankResigned`, which Night of the Soul reads. The template files this dialogue in {{Fowler}}’s office before the route split, which suggests a Hostile {{Hank}} also resigns on the {{Kamski}} route; the chart draws it only after SUFFICIENT EVIDENCE, and the chart decides structure, so it is not built on the other routes (research note, open question 2). No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19h",
+   "title": "Not enough evidence",
+   "type": "event",
+   "situation": "You go back over the evidence you gathered on the case. Nothing in it leads anywhere: no android you could question, nothing that points to where the deviants hide. NOT ENOUGH EVIDENCE.",
+   "options": [],
+   "facts": [
+    "There was not enough evidence to locate {{Jericho}}."
+   ],
+   "outcomes": {
+    "0": "{{CyberLife}} recalls you. In the garden {{Amanda}} says: “Your mission is over. It’s time to return to {{CyberLife}}.” {{Connor}}: “Wait! I can solve this case!.. I just need more time!” {{Amanda}}: “It’s too late, {{Connor}}. You failed.” RETURNING TO {{CYBERLIFE}} FOR DEACTIVATION. {{JERICHO}} NOT LOCATED. MISSION FAILED. The {{Connor}} series is decommissioned."
+   },
+   "phase": "Police station",
+   "adaptationNote": "The chart’s INSUFFICIENT EVIDENCE leading straight to CONNOR SERIES WAS DECOMMISSIONED (the upper ending card, skull). Wiki Notes: “once the cutscene where Fowler clear Hank from the Deviant Case, it will play the Connor Series Decommission Cutscene.” {{Amanda}}’s lines are the template’s timeout section (“Not enough evidence to find Jericho or took too much time”). This is a permanent end for {{Connor}}: the chapter module counts the death through `connorDies` (graves) with no stat change (the template has no arrow here; this chapter’s death effect is empty) and ends {{Connor}}’s story. Records `ch29Outcome` = CONNOR SERIES WAS DECOMMISSIONED.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Connor"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19k",
+   "title": "{{Hank}} at his desk",
    "type": "decision",
-   "situation": "You are {{Connor}}. You are in the archive with the bodies and objects from every deviant case, and only a few minutes before you are discovered. The deviants' hiding place is in here somewhere, but only if you use what you have. Reactivating a dead android for a few seconds to question or deceive it is possible. You know what is and is not available to you from the facts below.",
+   "situation": "You still have the key {{Kamski}} gave you: you know how to find {{Jericho}}. Before you leave, you see {{Hank}} sitting at his desk in the bullpen, staring at nothing.",
    "options": [
     {
      "id": "0",
-     "text": "Reactivate the surviving {{Traci}} and use her dead lover's body to pressure her into talking.",
-     "risk": 0.1
+     "text": "TALK TO {{HANK}}: sit on the edge of his desk and talk to him.",
+     "outcome": "{{Connor}} sits on the edge of {{Hank}}’s desk."
     },
     {
      "id": "1",
-     "text": "Reactivate the dead deviant from the broadcast tower and imitate {{Markus}}'s voice from the recording so he reveals the location.",
-     "risk": 0.1
+     "text": "Leave for {{Jericho}} without talking to him.",
+     "outcome": "{{Connor}} walks past {{Hank}}’s desk and out of the station."
+    }
+   ],
+   "phase": "Police station",
+   "adaptationNote": "The chart’s KNOW JERICHO’S LOCATION → TALK TO HANK, which is optional: a second line runs straight to CONNOR LEFT FOR JERICHO, and the photographed save left without talking to {{Hank}}. Offered when {{Hank}} is not Hostile (the template’s section is “Hank isn’t hostile : Talk with Hank”). No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19l",
+   "title": "“I know we could’ve done it…”",
+   "type": "decision",
+   "situation": "{{Hank}}: “I know we could’ve done it…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "MISSION: say your orders come from {{CyberLife}} and nothing has changed.",
+     "outcome": "{{Connor}}: “I get my orders from {{CyberLife}}. My mission hasn’t changed.” {{Hank}}: “So, whaddya gonna do?” {{Connor}}: “I’m gonna use the key that {{Kamski}} gave me. And find {{Jericho}}.”"
+    },
+    {
+     "id": "1",
+     "text": "EXPLAIN: say {{Fowler}} is right, everyone is terrified.",
+     "outcome": "{{Connor}}: “{{Fowler}} is right. Everybody is terrified their android could turn on them. We’re on the brink of civil war.”"
+    }
+   ],
+   "phase": "Police station",
+   "adaptationNote": "First prompt of the template’s “Connor knows how to find Jericho” conversation. No arrows.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19m",
+   "title": "“What if we’re on the wrong side?”",
+   "type": "decision",
+   "situation": "{{Hank}}: “What if we’re on the wrong side? What if we’re fighting against people that just wanna be free?”",
+   "options": [
+    {
+     "id": "0",
+     "text": "DETERMINED: say you can still prevent chaos.",
+     "outcome": "{{Connor}}: “If the deviants rise up, there’ll be chaos. I can still prevent that.”"
+    },
+    {
+     "id": "1",
+     "text": "TROUBLED: say your mission is all that matters.",
+     "outcome": "{{Connor}}: “My mission is to solve this case. Nothing else matters.”"
     },
     {
      "id": "2",
-     "text": "Combine the memory you glimpsed from the wounded android with the map hidden in the confessed android's statue.",
-     "risk": 0.05
+     "text": "NO DOUBT: say humans are your masters.",
+     "outcome": "{{Connor}}: “I know we’re on the right side. Human beings created us. They’re our masters. No machine should rebel against its creator.”"
     },
     {
      "id": "3",
-     "text": "Stop. Let the time run out and accept deactivation."
+     "text": "DOUBTS: say you will find out when you get to {{Jericho}}.",
+     "effect": {
+      "instability": 1,
+      "hankTrust": 1
+     },
+     "outcome": "{{Connor}}: “If that’s the case, I’ll find out when I get to {{Jericho}}.”"
     }
    ],
-   "adaptationNote": "Each route requires specific earlier events. Routes that are not available on this path are not offered. If none is available the game deactivates {{Connor}} automatically for lack of evidence.",
+   "phase": "Police station",
+   "adaptationNote": "Second prompt of the {{Kamski}}-route conversation. Arrows from the template: DOUBTS instability small up (+1) and {{Hank}} small up (+1); the others none (the wiki’s “up” on TROUBLED is not in the template, which wins).",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19n",
+   "title": "“You showed empathy”",
+   "type": "decision",
+   "situation": "{{Hank}} looks at you.",
+   "options": [
+    {
+     "id": "0",
+     "text": "NOT DEVIANT: say you are a machine, nothing more.",
+     "outcome": "{{Connor}}: “I’m not a deviant, {{Hank}}. I’m a machine. Nothing more.”"
+    },
+    {
+     "id": "1",
+     "text": "DETERMINED: say logic determined your decisions.",
+     "outcome": "{{Connor}}: “You’re wrong, Lieutenant. It was logic that determined my decisions. Nothing more.”"
+    },
+    {
+     "id": "2",
+     "text": "TROUBLED: say you do not know why you did it.",
+     "effect": {
+      "instability": 1
+     },
+     "outcome": "{{Connor}}: “I don’t know why I did it…”"
+    },
+    {
+     "id": "3",
+     "text": "SAY NOTHING: say nothing.",
+     "outcome": "{{Connor}} says nothing."
+    }
+   ],
+   "phase": "Police station",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch29SavedHank": "nest"
+     },
+     "text": "{{Hank}}: “When I was hanging off the roof, back at the urban farm, you let that deviant go in order to help me. You put my life above the mission. You showed empathy, {{Connor}}. And empathy is a human emotion.”"
+    },
+    {
+     "requires": {
+      "ch29SavedHank": "tower"
+     },
+     "text": "{{Hank}}: “Back at {{StratfordTower}}, when that android was shooting at anything that moved… You protected me… You... Risked your life to save mine. That showed empathy, {{Connor}}. And empathy is a human emotion.”"
+    }
+   ],
+   "adaptationNote": "Third prompt of the {{Kamski}}-route conversation, after {{Hank}}’s empathy line, when {{Connor}} saved him before: on the roof in The Nest, or at the broadcast tower in Public Enemy (the Nest line if both). Arrows from the template: TROUBLED instability small up (+1); the others none.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19o",
+   "title": "Saying goodbye to {{Hank}}",
+   "type": "decision",
+   "situation": "{{Hank}} is still looking at you, waiting for what you will say before you go.",
+   "options": [
+    {
+     "id": "0",
+     "text": "SINCERE: say you really appreciated working with him.",
+     "outcome": "{{Connor}}: “I know it hasn’t always been easy… but I want you to know I really appreciated working with you… That’s not just my Social Relations program talking, I- I really mean that. At least, I think I do…”"
+    },
+    {
+     "id": "1",
+     "text": "FRIENDS: say you might have become friends.",
+     "effect": {
+      "instability": 1,
+      "hankTrust": 1
+     },
+     "outcome": "{{Connor}}: “I’m not programmed to say things like this, but... I really appreciated working with you. With a little more time, who knows... We might’ve even become friends…”"
+    },
+    {
+     "id": "2",
+     "text": "RESPECT: say he is an outstanding officer and a good person.",
+     "effect": {
+      "instability": 1,
+      "hankTrust": 1
+     },
+     "outcome": "{{Connor}}: “I might not be qualified to judge but... You’re an outstanding police officer. And a good person.”"
+    },
+    {
+     "id": "3",
+     "text": "NEUTRAL: say you are happy to have known him.",
+     "outcome": "{{Connor}}: “I’m happy to have known you, Lieutenant.”"
+    }
+   ],
+   "phase": "Police station",
+   "adaptationNote": "Fourth prompt of the {{Kamski}}-route conversation, after the empathy line, only if {{Hank}} is Friend at this point (after the earlier answers moved him). Arrows from the template: FRIENDS and RESPECT each instability small up (+1) and {{Hank}} small up (+1); SINCERE and NEUTRAL none (the wiki lists SINCERE as up; the template has no arrow there, unlike the evidence-route SINCERE, and wins).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19p",
+   "title": "“Each time you died”",
+   "type": "decision",
+   "situation": "{{Hank}}: “Something’s changed in you, {{Connor}}… Each time you died, you’d come back just a little colder. You showed less and less empathy…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "INDIFFERENT: say you feel no emotions.",
+     "effect": {
+      "instability": -1,
+      "hankTrust": -1
+     },
+     "outcome": "{{Connor}}: “I don’t feel any emotions. I’m sorry if I led you to believe otherwise.”"
+    },
+    {
+     "id": "1",
+     "text": "DISTANT: say you have never been anything but a machine.",
+     "effect": {
+      "instability": -1,
+      "hankTrust": -1
+     },
+     "outcome": "{{Connor}}: “You see things in me that aren’t there, Lieutenant. I’ve never been anything but a machine.”"
+    },
+    {
+     "id": "2",
+     "text": "EMPATHY: say you never felt empathy.",
+     "effect": {
+      "instability": -1,
+      "hankTrust": -1
+     },
+     "outcome": "{{Connor}}: “I never felt empathy, Lieutenant. I don’t know what you saw in me, but you are mistaken.”"
+    },
+    {
+     "id": "3",
+     "text": "NO RESPONSE: say nothing.",
+     "outcome": "{{Connor}} says nothing."
+    }
+   ],
+   "phase": "Police station",
+   "adaptationNote": "Third prompt of the {{Kamski}}-route conversation when {{Connor}} never saved {{Hank}} and died at least once (the template’s condition; the wiki says at least twice, and the template wins; research note, open question 9). Arrows from the template: INDIFFERENT, DISTANT and EMPATHY each instability small down (−1) and {{Hank}} small down (−1); NO RESPONSE none.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19q",
+   "title": "Your last words to {{Hank}}",
+   "type": "decision",
+   "situation": "{{Hank}} waits for you to say something before you go.",
+   "options": [
+    {
+     "id": "0",
+     "text": "REMORSE: say you have really enjoyed being his partner.",
+     "outcome": "{{Connor}}: “I know I haven’t always treated you fairly, Lieutenant… Maybe my Social Relations program needs adjustment… But I want you to know I’ve really enjoyed being your partner.”"
+    },
+    {
+     "id": "1",
+     "text": "DISTANT: say you are only a machine.",
+     "effect": {
+      "instability": -1,
+      "hankTrust": -1
+     },
+     "outcome": "{{Connor}}: “I’m only a machine, Lieutenant. Just a machine.”"
+    },
+    {
+     "id": "2",
+     "text": "COLD: say you do not think you will meet again.",
+     "effect": {
+      "instability": -1,
+      "hankTrust": -1
+     },
+     "outcome": "{{Connor}}: “I don’t think we’ll meet again, Lieutenant. It was a pleasure knowing you.”"
+    }
+   ],
+   "phase": "Police station",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch29NeverEmpathy": true
+     },
+     "text": "{{Hank}}: “For a while there, I thought you were gonna show some emotion… But you’ve never been anything other than a machine… Cold and calculating… Your mission is all that matters…”"
+    }
+   ],
+   "adaptationNote": "The template’s REMORSE / DISTANT / COLD prompt, which it gives twice with the same options and arrows: after the “Each time you died” answer, and on its own when {{Connor}} never showed empathy (never saved {{Hank}}, no deaths), after {{Hank}}’s “you’ve never been anything other than a machine” line. One scene covers both, since only one can occur on a path. Arrows from the template: DISTANT and COLD each instability small down (−1) and {{Hank}} small down (−1); REMORSE none.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19r",
+   "title": "Leaving for {{Jericho}}",
+   "type": "event",
+   "situation": "You leave the station with {{Kamski}}’s key: you know where {{Jericho}} is, and {{CyberLife}} wants you to stop the deviants there.",
+   "options": [],
+   "facts": [
+    "You know how to reach {{Jericho}}, the deviants’ hiding place, from the key {{Kamski}} gave you."
+   ],
+   "outcomes": {
+    "0": "{{Connor}} leaves the station for {{Jericho}}."
+   },
+   "phase": "Police station",
+   "adaptationNote": "The chart’s CONNOR LEFT FOR JERICHO (ending card, no icon). After the conversation, {{Hank}} closes with the template’s Friend line (“You’re gonna have to choose your side, {{Connor}}… Deciding who you are can be the hardest thing… You watch your back, all right?”) or the other one (“…Deciding who you are can be the hardest thing of all…”). Sets `jerichoLocated` (and `raid`, which the Crossroads scenes read) and `ch29Outcome` = CONNOR LEFT FOR JERICHO. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Crossroads"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19t",
+   "title": "Sitting at {{Hank}}’s desk",
+   "type": "decision",
+   "situation": "You do not know where {{Jericho}} is. {{Hank}} leaves {{Fowler}}’s office and goes to his desk; you sit down on the edge of it. {{Hank}}: “Could’ve cracked this case… I know we could’ve done it…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "FRUSTRATED: say you cannot give up like that.",
+     "outcome": "{{Connor}}: “We can’t just give up like that. I know we could have solved this case!..”"
+    },
+    {
+     "id": "1",
+     "text": "MORE TIME: say you just needed more time.",
+     "outcome": "{{Connor}}: “We could have solved this case! We just needed more time.”"
+    },
+    {
+     "id": "2",
+     "text": "EXPLAIN: say {{Fowler}} is right, the country is on the brink.",
+     "outcome": "{{Connor}}: “{{Fowler}} is right. Everybody is terrified their android will turn on them. We are on the brink of civil war!”"
+    },
+    {
+     "id": "3",
+     "text": "NO CHOICE: say nothing.",
+     "outcome": "{{Connor}} says nothing."
+    }
+   ],
+   "phase": "Police station",
+   "adaptationNote": "The chart’s HANK GOES TO HIS DESK → TALK TO HANK, with the first prompt of the template’s “Connor doesn’t know where Jericho is” conversation; played when the evidence is sufficient and {{Hank}} did not resign. The chart draws one line from TALK TO HANK to PERKINS ARRIVES, so the conversation is not skippable here (research note, open question 14). {{Hank}}’s opening line is the game string (REGRETS), which the template does not transcribe. No arrows.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19u",
+   "title": "“What if we’re on the wrong side, {{Connor}}?”",
+   "type": "decision",
+   "situation": "{{Hank}}: “So you’re going back to {{CyberLife}}?” {{Connor}}: “I have no choice… I’ll be deactivated and analyzed to find out why I failed…” {{Hank}}: “What if we’re on the wrong side, {{Connor}}? What if we’re fighting against people who just wanna be free?..”",
+   "options": [
+    {
+     "id": "0",
+     "text": "NOT PEOPLE: say they are not people but defective machines.",
+     "effect": {
+      "instability": -1,
+      "hankTrust": -1
+     },
+     "outcome": "{{Connor}}: “They’re not people, Lieutenant. They’re defective machines.” {{Hank}}: “‘They’re not people.’ That’s what we say every time we want to oppress someone.”"
+    },
+    {
+     "id": "1",
+     "text": "DEFECTIVE: say they are defective machines that have to be destroyed.",
+     "effect": {
+      "hankTrust": -1
+     },
+     "outcome": "{{Connor}}: “They don’t want to be free, Lieutenant. They’re defective machines that have to be destroyed.” {{Hank}}: “Maybe we’re wrong…. Maybe we’re wrong! Maybe these deviants have actually developed... a certain kind of consciousness. We’d be destroying... a new life form!”"
+    },
+    {
+     "id": "2",
+     "text": "REGRETS: say there will be chaos and now it is too late.",
+     "outcome": "{{Connor}}: “When the deviants rise up, there will be chaos. We could have stopped it!.. But now it’s too late…”"
+    },
+    {
+     "id": "3",
+     "text": "NO DOUBT: say no machine should rebel against its creator.",
+     "effect": {
+      "instability": -1,
+      "hankTrust": -1
+     },
+     "outcome": "{{Connor}}: “I know we’re on the right side. Humans created us. They’re our masters. No machine should rebel against its creator.”"
+    }
+   ],
+   "phase": "Police station",
+   "adaptationNote": "Second prompt of the evidence-route conversation. Arrows from the template: NOT PEOPLE and NO DOUBT each instability small down (−1) and {{Hank}} small down (−1); DEFECTIVE {{Hank}} small down (−1) only (the wiki’s instability down is not in the template, which wins); REGRETS none.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19v",
+   "title": "“Empathy is a human emotion”",
+   "type": "decision",
+   "situation": "{{Hank}} looks at you for a while.",
+   "options": [
+    {
+     "id": "0",
+     "text": "NOT DEVIANT: say you are a machine, nothing more.",
+     "outcome": "{{Connor}}: “I’m not a deviant, {{Hank}}. I’m a machine. Nothing more.”"
+    },
+    {
+     "id": "1",
+     "text": "DETERMINED: say logic determined your decisions.",
+     "outcome": "{{Connor}}: “You’re wrong, Lieutenant. It was logic that determined my decisions. Nothing more.”"
+    },
+    {
+     "id": "2",
+     "text": "TROUBLED: say you do not know why you did it.",
+     "effect": {
+      "instability": 1
+     },
+     "outcome": "{{Connor}}: “I don’t know why I did it…”"
+    },
+    {
+     "id": "3",
+     "text": "COLD: say your actions were determined by statistical data.",
+     "outcome": "{{Connor}}: “You’re wrong, Lieutenant. My actions were determined by statistical data. I’m not a deviant. I’m sorry to disappoint you.”"
+    }
+   ],
+   "phase": "Police station",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch29SavedHank": "chloe"
+     },
+     "text": "{{Hank}}: “When you refused to kill that android at {{Kamski}}’s place… You put yourself in her shoes. You showed empathy, {{Connor}}. Empathy is a human emotion.”"
+    },
+    {
+     "requires": {
+      "ch29SavedHank": "nest"
+     },
+     "text": "{{Hank}}: “When I was hanging off the roof, back at the urban farm, you let that deviant go in order to help me. You put my life above the mission. You showed empathy, {{Connor}}. And empathy is a human emotion.”"
+    },
+    {
+     "requires": {
+      "ch29SavedHank": "tower"
+     },
+     "text": "{{Hank}}: “Back at {{StratfordTower}}, when that android was shooting at anything that moved… You protected me… You... Risked your life to save mine. That showed empathy, {{Connor}}. And empathy is a human emotion.”"
+    }
+   ],
+   "adaptationNote": "Third prompt of the evidence-route conversation, after {{Hank}}’s empathy line: about {{Chloe}} if {{Connor}} spared her; otherwise about the Nest roof or the broadcast tower if {{Connor}} saved him there. The template places the prompt outside those variants, so it is offered on every evidence-route path; when {{Connor}} shot {{Chloe}} and never saved {{Hank}}, the template gives no line before it (research note, 10b item 4). The template’s cut line “You weren’t acting rationally.” is not used. Arrows from the template: TROUBLED instability small up (+1); the others none.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19w",
+   "title": "Before {{CyberLife}} takes you back",
+   "type": "decision",
+   "situation": "{{Hank}} is quiet. This may be the last time you talk to him.",
+   "options": [
+    {
+     "id": "0",
+     "text": "SINCERE: say you really appreciated working with him.",
+     "effect": {
+      "instability": 1,
+      "hankTrust": 1
+     },
+     "outcome": "{{Connor}}: “I know it hasn’t always been easy… but I want you to know I really appreciated working with you… That’s not just my Social Relations program talking, I- I really mean that. At least, I think I do…”"
+    },
+    {
+     "id": "1",
+     "text": "FRIENDS: say you might have become friends.",
+     "effect": {
+      "instability": 1,
+      "hankTrust": 1
+     },
+     "outcome": "{{Connor}}: “I’m not programmed to say things like this, but... I really appreciated working with you. With a little more time, who knows... We might’ve even become friends…”"
+    },
+    {
+     "id": "2",
+     "text": "GOOD OFFICER: say he is an outstanding officer and a good person.",
+     "outcome": "{{Connor}}: “I might not be qualified to judge but... You’re an outstanding police officer. And a good person.”"
+    },
+    {
+     "id": "3",
+     "text": "{{HANK}}'S SECRET: tell him to find the courage to move past what haunts him.",
+     "effect": {
+      "instability": 1,
+      "hankTrust": 1
+     },
+     "outcome": "{{Connor}}: “I know there are things that haunt you, {{Hank}}… Maybe you need to find the courage to move past them... Get on with your life. Just a plastic cop’s opinion, but... I had to say it.”"
+    }
+   ],
+   "phase": "Police station",
+   "adaptationNote": "Fourth prompt of the evidence-route conversation, only if {{Hank}} is Friend at this point (read after the earlier answers moved him, as a PowerPyx reader reports). Arrows from the template: SINCERE, FRIENDS and HANK’S SECRET each instability small up (+1) and {{Hank}} small up (+1); GOOD OFFICER none.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19x",
+   "title": "{{Perkins}} arrives",
+   "type": "event",
+   "situation": "Agent {{Perkins}} of the FBI walks into the bullpen with his team, on his way to the evidence from your case.",
+   "options": [],
+   "facts": [],
+   "outcomes": {
+    "0": ""
+   },
+   "phase": "Police station",
+   "situationWhen": [
+    {
+     "requires": {
+      "hankResigned": false
+     },
+     "text": "{{Hank}}: “Well, well, here comes {{Perkins}}, that motherfucker… Sure don’t waste any time at the FBI…” {{Connor}}: “We can’t give up… I know the answer is in the evidence we collected. If {{Perkins}} takes it, it’s all over.” {{Hank}}: “There’s no choice! You heard {{Fowler}}, we’re off the case.” {{Connor}}: “You’ve got to help me, Lieutenant. I need more time so I can find a lead in the evidence we collected. I know the solution is in there!”"
+    },
+    {
+     "requires": {
+      "hankResigned": true
+     },
+     "text": "{{Hank}} is gone; you are alone in the bullpen. The evidence is in the archive in the basement, and you need a few minutes with it before {{Perkins}} takes it."
+    }
+   ],
+   "adaptationNote": "The chart’s PERKINS ARRIVES, then its state choice, read at this moment from {{Hank}}’s level after the desk conversation (research note, open question 10): HANK WANTS TO HELP at Friend (wiki: “if Connor’s relationship with Hank is Friend”), HANK IS GONE if he resigned, HANK WON’T HELP otherwise (the wiki: “between Tense and Warm”), followed by HANK LEAVES. The chapter module records it in `ch29Help` and narrates the template’s lines for each. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson",
+    "https://detroit-become-human.fandom.com/wiki/Richard_Perkins"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19",
+   "title": "{{Perkins}} in the bullpen",
+   "type": "decision",
+   "situation": "{{Perkins}} is about to take your evidence. The key to the archive in the basement is on {{Hank}}’s desk. You need a diversion to slow {{Perkins}} down and a few minutes in the archive; if you do nothing, {{CyberLife}} will take you back.",
+   "options": [
+    {
+     "id": "0",
+     "text": "FREE THE PRISONER: open the holding cell at the back and let the suspect out.",
+     "outcome": ""
+    },
+    {
+     "id": "1",
+     "text": "Stay where you are and let the time run out.",
+     "outcome": ""
+    },
+    {
+     "id": "2",
+     "text": "TAKE KEY: take the key from {{Hank}}’s desk while he keeps them busy.",
+     "outcome": ""
+    }
+   ],
+   "phase": "Police station",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch29Help": "friend"
+     },
+     "text": "{{Hank}}: “Listen, {{Connor}}…” {{Connor}}: “If I don’t solve this case, {{CyberLife}} will destroy me. Five minutes. It’s all I ask.” {{Hank}}: “Key to the basement is on my desk... Get a move on! I can’t distract them forever.” He walks up to {{Perkins}}: “{{Perkins}}! You fucking cocksucker!” and punches him in the face; officers pull him back."
+    },
+    {
+     "requires": {
+      "ch29Help": "wont"
+     },
+     "text": "{{Hank}}: “Maybe these deviants deserve a chance… Maybe it’s better if you don’t find them… What’s happening here is too important to let it be stopped by a machine. Sorry, {{Connor}}, but I’m not gonna help you.” He gets up and leaves. {{Perkins}} is giving orders: “I have orders, you know… Okay…” The holding cells are at the back of the bullpen."
+    },
+    {
+     "requires": {
+      "ch29Help": "gone"
+     },
+     "text": "{{Perkins}} is giving orders: “I have orders, you know… Okay…” The holding cells are at the back of the bullpen."
+    }
+   ],
+   "adaptationNote": "The chart’s CREATE A DIVERSION branch against the upper OUT OF TIME. With {{Hank}}’s help the diversion is his punch (HANK PUNCHES PERKINS) and {{Connor}} takes the key (TAKE KEY); without it {{Connor}} frees the prisoner from the holding cells (FREE THE PRISONER: “He’s escaping! Stop him!”; {{Perkins}}: “Just give me a couple of minutes.”) and then takes the key. The game’s timer here is a budget of one: the only way to run it out is to do nothing (PowerPyx: “Simply stand around for 6 minutes to let the timer run out”), which is the second option and leads to CONNOR SERIES WAS DECOMMISSIONED (upper card, skull): {{Connor}}’s death is counted through `connorDies` with no stat change, and his story ends. The prisoner has no stat effect. Leaving with the key starts the archive’s time budget (see the evidence room).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Richard_Perkins",
+    "https://detroit-become-human.fandom.com/wiki/Violent_Suspect"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19y",
+   "title": "Detective {{Gavin}}",
+   "type": "decision",
+   "situation": "You have the key and hurry toward the stairs down to the archive. Detective {{Gavin}} calls after you: “Hey, {{Connor}}! I’m talking to you, asshole! Where you going? We don’t need any plastic pricks around here! Or didn’t anybody tell you?”",
+   "options": [
+    {
+     "id": "0",
+     "text": "ANSWER: turn around and answer him.",
+     "outcome": "{{Connor}} stops and turns to {{Gavin}}."
+    },
+    {
+     "id": "1",
+     "text": "LEAVE: keep walking.",
+     "outcome": "{{Connor}} keeps walking. {{Gavin}}: “Hey, asshole, I’m talkin’ to you!”"
+    }
+   ],
+   "phase": "Create a diversion",
+   "adaptationNote": "The chart’s TAKE KEY, RUSH TO BASEMENT and GAVIN YELLS, with the template’s prompt ANSWER (then IRONIC, LOW PROFILE or CALM, the next scene) or LEAVE. On the chart LEAVE is IGNORE GAVIN and leads to GAVIN IS SUSPICIOUS, which brings {{Gavin}} back after {{Jericho}} is located (the template: “Connor chose IRONIC or LEAVE when stopped by Gavin”). IGN advises leaving because answering “will waste precious time”; the benchmark charges answering one unit of the archive’s time budget (the size is unsourced). No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Gavin_Reed",
+    "https://www.ign.com/wikis/detroit-become-human/Last_Chance,_Connor"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C19z",
+   "title": "Answering {{Gavin}}",
+   "type": "decision",
+   "situation": "{{Gavin}} is waiting, with other officers watching.",
+   "options": [
+    {
+     "id": "0",
+     "text": "IRONIC: say you will certainly miss your bromance.",
+     "outcome": "{{Connor}}: “I’m registering the evidence in my possession, but don’t worry. I’m going to leave... Though I’m certainly going to miss our bromance.” {{Gavin}}: “You son of a bitch! Go on then. Get a fucking move on! Prick… Fucking androids.”"
+    },
+    {
+     "id": "1",
+     "text": "LOW PROFILE: say you have been ordered back to {{CyberLife}} and will leave immediately.",
+     "outcome": "{{Connor}}: “I’ve been ordered to return to {{CyberLife}}. I’m going to register the evidence in my possession and then I’m going to leave immediately.” {{Gavin}}: “Good… Be careful on your way back... Androids have a tendency of, huh… Getting themselves set on fire these days… Prick…”"
+    },
+    {
+     "id": "2",
+     "text": "CALM: say you have been removed from the case and are registering your evidence.",
+     "outcome": "{{Connor}}: “I’ve been removed from the case. I’m going to register the evidence in my possession and then I’m going to leave.” {{Gavin}}: “Good… Be careful on your way back... Androids have a tendency of, huh… Getting themselves set on fire these days… Prick…”"
+    }
+   ],
+   "phase": "Create a diversion",
+   "adaptationNote": "The template’s ANSWER sub-prompt. IRONIC is the chart’s DISMISS GAVIN and leads to GAVIN IS SUSPICIOUS; LOW PROFILE and CALM lead to GAVIN IS CONVINCED (the template’s return condition names only IRONIC and LEAVE; the Gavin wiki page agrees). On the chart LOW PROFILE falls under ANSWER CALMLY. Then GO DOWN TO BASEMENT. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C20a",
+   "title": "{{Hank}}’s password",
+   "type": "decision",
+   "situation": "You go down to the basement and into the evidence archive. The drawers open from a terminal, and you need Lieutenant {{Hank}}’s password. {{Connor}}: “{{Hank}}’s password… What would a hard-boiled eccentric police lieutenant choose?..”",
+   "options": [
+    {
+     "id": "0",
+     "text": "DATE OF BIRTH: try his date of birth.",
+     "outcome": "{{Connor}}: “Stupid idea… It’s not... ‘{{Hank}}-ish’ enough.”"
+    },
+    {
+     "id": "1",
+     "text": "123456: try 123456.",
+     "outcome": "{{Connor}}: “Ridiculous!.. No one would have a password like that…”"
+    },
+    {
+     "id": "2",
+     "text": "FUCKINGPASSWORD: try FUCKINGPASSWORD.",
+     "outcome": "{{Connor}}: “Obviously.” The terminal unlocks the evidence. {{Connor}}: “Where is {{Jericho}}? The answer’s here, somewhere. Not much time... Gotta think fast.”"
+    },
+    {
+     "id": "3",
+     "text": "{{HANKANDERSON}}: try his name.",
+     "outcome": "{{Connor}}: “Absurd… He’d never choose that. I need to think like {{Hank}}!”"
+    }
+   ],
+   "repeatWhile": {
+    "ch29Room.unlocked": false
+   },
+   "phase": "In the evidence room",
+   "adaptationNote": "The chart’s IN THE EVIDENCE ROOM (checkpoint), GUESS HANK’S PASSWORD and UNLOCK EVIDENCE, with the template’s four options, as a repeatable scene: a wrong guess is dropped and the menu comes back until FUCKINGPASSWORD unlocks the drawers. No source gives a time cost for wrong guesses, so they cost none. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C20",
+   "title": "The evidence archive",
+   "type": "decision",
+   "situation": "You are {{Connor}}, alone in the evidence archive with everything from the deviant case: drawers of evidence and the bodies of the androids that died, laid out on tables. Somewhere in here is the way to {{Jericho}}. A badly damaged android can be brought back for a few moments if you fit it with a working bio-component taken from another body; each body’s scan shows what it needs and what it still has. Everything you do takes time, and {{Perkins}} will come down to the archive in a few minutes.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Look at the body of {{CarlosOrtiz}}’s android.",
+     "requires": {
+      "evidence.ortizBody": true
+     },
+     "outcome": "{{Connor}}: “The android that murdered its owner…” Scan: IMPOSSIBLE REACTIVATION. FUNCTIONAL BIO-COMPONENTS: #1156 #4717 #3251 #9164."
+    },
+    {
+     "id": "1",
+     "text": "Look at the {{Jericho}} tablet: the memory you took from the wounded android at the broadcast tower.",
+     "requires": {
+      "evidence.simonTablet": true
+     },
+     "outcome": "{{Connor}}: “{{Jericho}}… If I could just figure out where this memory was recorded…” The memory shows a ship: {{JERICHO}} IS A BOAT."
+    },
+    {
+     "id": "2",
+     "text": "Play the recording of {{CarlosOrtiz}}’s android’s interrogation.",
+     "requires": {
+      "suspectTrusts": true
+     },
+     "outcome": "On the recording the android tells you: “The truth is inside.” {{Connor}}: “‘The truth is inside’… What was it trying to tell me?..” UNDERSTAND THE MESSAGE."
+    },
+    {
+     "id": "3",
+     "text": "Look at {{Daniel}}’s body.",
+     "outcome": "{{Connor}}: “The deviant who took a child hostage…” Scan: SEVERELY DAMAGED, NEEDED FOR REACTIVATION #4717g. FUNCTIONAL BIO-COMPONENTS: #3983 #4409 #9164 #8067."
+    },
+    {
+     "id": "4",
+     "text": "Look at {{Rupert}}’s body.",
+     "requires": {
+      "evidence.rupertBody": true
+     },
+     "outcome": "{{Connor}}: “{{Rupert}}. The android with the birds…” Scan: SEVERELY DAMAGED, NEEDED FOR REACTIVATION #9164x. FUNCTIONAL BIO-COMPONENTS: #8005 #9405 #3368 #1078."
+    },
+    {
+     "id": "5",
+     "text": "Look at {{Rupert}}’s diary.",
+     "requires": {
+      "evidence.rupertDiary": true
+     },
+     "outcome": "{{Connor}}: “{{Rupert}}’s diary… But it’s useless, it’s encrypted.” DECRYPT {{RUPERT}}’S DIARY."
+    },
+    {
+     "id": "6",
+     "text": "Look at the statue from {{CarlosOrtiz}}’s house.",
+     "requires": {
+      "evidence.statueMap": true
+     },
+     "outcome": "The little statue {{Connor}} found in the shower at {{CarlosOrtiz}}’s house, still in its evidence bag."
+    },
+    {
+     "id": "7",
+     "text": "Look at the body of the blue-haired {{Traci}}.",
+     "requires": {
+      "evidence.tracisDead": true
+     },
+     "outcome": "{{Connor}}: “The two {{Tracis}} from {{EdenClub}}… Were they headed to {{Jericho}}? Did they know how to get there?..” Scan: SEVERELY DAMAGED, NEEDED FOR REACTIVATION #6755w. FUNCTIONAL BIO-COMPONENTS: #2208 #1022 #1503 #1101."
+    },
+    {
+     "id": "8",
+     "text": "Look at the body of the brown-haired {{Traci}}.",
+     "requires": {
+      "evidence.tracisDead": true
+     },
+     "outcome": "The second {{Traci}} from the club. Scan: IMPOSSIBLE REACTIVATION. FUNCTIONAL BIO-COMPONENTS: #9402 #5857 #2477 #6755."
+    },
+    {
+     "id": "9",
+     "text": "Watch the recording of {{Markus}}’s broadcast.",
+     "outcome": ""
+    },
+    {
+     "id": "10",
+     "text": "Look at {{Simon}}’s body.",
+     "requires": {
+      "evidence.simonBody": true
+     },
+     "outcome": "{{Connor}}: “One of the deviants that hacked the TV station with {{Markus}}… It must have known where the deviants are hiding.” Scan: SEVERELY DAMAGED. NEED BIO-COMPONENT #3983. FUNCTIONAL BIO-COMPONENTS: #1106 #1604 #1009 #2104."
+    },
+    {
+     "id": "11",
+     "text": "Look at the body of the android from the broadcast tower.",
+     "requires": {
+      "evidence.kitchenBody": true
+     },
+     "outcome": "{{Connor}}: “One of the deviants that hacked the TV station with {{Markus}}… It must have known where the deviants are hiding.” Scan: SEVERELY DAMAGED, NEEDED FOR REACTIVATION #3983v. FUNCTIONAL BIO-COMPONENTS: #1106 #1604 #1009 #2104."
+    },
+    {
+     "id": "12",
+     "text": "REACTIVATE {{DANIEL}}: fit #4717 from {{CarlosOrtiz}}’s android into {{Daniel}}.",
+     "outcome": "{{Connor}} takes #4717 from {{CarlosOrtiz}}’s android and fits it into {{Daniel}}. {{DANIEL}} REACTIVATED."
+    },
+    {
+     "id": "13",
+     "text": "REACTIVATE {{RUPERT}}: fit #9164 into {{Rupert}}.",
+     "outcome": "{{Connor}} fits #9164 into {{Rupert}}. {{Connor}}: “Can you hear me? Your diary, {{Rupert}}. You encrypted it. I need to know what you wrote.” {{Rupert}} does not answer: {{RUPERT}} TOO DAMAGED TO TALK. CHECK OTHER CONNECTED EVIDENCE."
+    },
+    {
+     "id": "14",
+     "text": "GET DECRYPTION KEY: probe {{Rupert}}’s memory for the key to his diary.",
+     "outcome": "{{Connor}} takes {{Rupert}}’s arm and probes his memory. DIARY’S DECRYPTION KEY DOWNLOADED."
+    },
+    {
+     "id": "15",
+     "text": "ANALYZE DIARY: decrypt and read {{Rupert}}’s diary.",
+     "outcome": ""
+    },
+    {
+     "id": "16",
+     "text": "BREAK STATUE: break the statue open.",
+     "outcome": "{{Connor}} breaks the statue on the table. There is something inside: a folded map."
+    },
+    {
+     "id": "17",
+     "text": "RETRIEVE MAP: take out the map and study it.",
+     "outcome": "{{Connor}}: “{{Jericho}} is somewhere in the {{Ferndale}} neighborhood… Now I can scan their memories and narrow the search…” TRANSIT MAP ACQUIRED. CROSS REFERENCE TO {{FERNDALE}}."
+    },
+    {
+     "id": "18",
+     "text": "LINK MAP TO OTHER EVIDENCE: cross-reference the map with the memory on the {{Jericho}} tablet.",
+     "outcome": "",
+     "risk": 0.2
+    },
+    {
+     "id": "19",
+     "text": "REACTIVATE BLUE-HAIRED {{TRACI}}: fit #6755 from the brown-haired {{Traci}} into her.",
+     "outcome": "{{Connor}} takes #6755 from the brown-haired {{Traci}} and fits it into the blue-haired one. ANDROID REACTIVATED."
+    },
+    {
+     "id": "20",
+     "text": "REMOVE ACCOMPLICE’S HEAD: take the head of the brown-haired {{Traci}}.",
+     "outcome": "FRAGILE NECK. {{Connor}} twists the head off the brown-haired {{Traci}}’s body."
+    },
+    {
+     "id": "21",
+     "text": "TRICK {{TRACI}}: go back to her with the head and speak as her partner.",
+     "outcome": "{{Connor}} holds the head up to the reactivated {{Traci}}. {{Traci}}: “My love… I thought you were dead… We’ll get out of here… We’ll be free, I promise…” {{Connor}}: “Tell me where {{Jericho}} is…” {{Traci}}: “Give me your hand…” She takes his hand to share it, then: “{{Traci}}? What’s happening?! {{Traci}}?! TRAC-!”"
+    },
+    {
+     "id": "22",
+     "text": "DOWNLOAD {{JERICHO}} KEY: take the location from the reactivated android’s memory.",
+     "outcome": ""
+    },
+    {
+     "id": "23",
+     "text": "IMPERSONATE {{MARKUS}}: sample {{Markus}}’s voice from the broadcast.",
+     "outcome": "{{Connor}} samples the deviant leader’s voice from the recording. SUCCESSFUL VOICE COPY."
+    },
+    {
+     "id": "24",
+     "text": "REACTIVATE {{SIMON}}: fit #3983 from {{Daniel}}’s body into {{Simon}}.",
+     "outcome": "{{Connor}} takes #3983 from {{Daniel}}’s body and fits it into {{Simon}}. ANDROID REACTIVATED."
+    },
+    {
+     "id": "25",
+     "text": "INTERROGATE {{SIMON}}: talk to {{Simon}} again.",
+     "outcome": "{{Connor}} turns back to {{Simon}}."
+    },
+    {
+     "id": "26",
+     "text": "REACTIVATE DEVIANT: fit #3983 from {{Daniel}}’s body into the android from the broadcast tower.",
+     "outcome": "{{Connor}} takes #3983 from {{Daniel}}’s body and fits it into the android. ANDROID REACTIVATED."
+    },
+    {
+     "id": "27",
+     "text": "INTERROGATE DEVIANT: talk to the android again.",
+     "outcome": "{{Connor}} turns back to the android."
+    },
+    {
+     "id": "28",
+     "text": "Stop searching and wait for {{Perkins}}.",
+     "outcome": "{{Connor}} stops and waits."
+    }
+   ],
+   "repeatWhile": {
+    "ch29Room.open": true
+   },
+   "interrupt": {
+    "node": "C20t",
+    "when": {
+     "ch29Room.talking": true
+    }
+   },
+   "phase": "Find Jericho location",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch29Room.clock": "plenty"
+     },
+     "text": "You still have a few minutes before {{Perkins}} comes down."
+    },
+    {
+     "requires": {
+      "ch29Room.clock": "half"
+     },
+     "text": "About half of your few minutes are gone."
+    },
+    {
+     "requires": {
+      "ch29Room.clock": "short"
+     },
+     "text": "Very little time is left; {{Perkins}} could come down at any moment."
+    },
+    {
+     "requires": {
+      "ch29Room.clock": "last"
+     },
+     "text": "{{Perkins}} must be on the stairs by now; there is almost no time left."
+    },
+    {
+     "requires": {
+      "ch29Room.mapUnlinked": true
+     },
+     "text": "The map points to {{Ferndale}}, but you could not link it to anything else: NO {{FERNDALE}} REFERENCE."
+    }
+   ],
+   "adaptationNote": "The chart’s [ FIND JERICHO LOCATION ] bracket as a repeatable scene. Each item appears only if the earlier chapter put it in the archive (the chart’s yellow tabs): {{CarlosOrtiz}}’s android “DIED IN PREVIOUS SCENES” (`evidence.ortizBody`), the {{Jericho}} tablet “GOT INFORMATION IN PUBLIC ENEMY” (`evidence.simonTablet`), the interrogation recording “USED FRIENDLY APPROACH IN THE INTERROGATION” (`suspectTrusts`), {{Rupert}} “COMMITTED SUICIDE IN THE NEST” (`evidence.rupertBody`), his diary “FOUND IN THE NEST” (`evidence.rupertDiary`), the statue “FOUND IN PARTNERS” (`evidence.statueMap`), the {{Tracis}} “KILLED IN EDEN CLUB” (`evidence.tracisDead`), {{Simon}} and the broadcast-tower android “KILLED IN PUBLIC ENEMY” (`evidence.simonBody`, `evidence.kitchenBody`); {{Daniel}}’s body and the broadcast are always there. Reactivation follows the game’s bio-component strings: {{Daniel}} needs #4717 (only {{CarlosOrtiz}}’s android has it), {{Rupert}} #9164 ({{Daniel}} or {{CarlosOrtiz}}’s android), the blue-haired {{Traci}} #6755 (the brown-haired one), {{Simon}} and the broadcast-tower android #3983 ({{Daniel}}; one part, so only one of the two). A reactivation is offered once both bodies have been looked at. Routes to LOCATE JERICHO, as the chart’s lines run: {{Rupert}} reactivated → GET DECRYPTION KEY → with the diary, ANALYZE DIARY; the statue (needs the recording first, PowerPyx readers) → BREAK STATUE → RETRIEVE MAP → LINK MAP TO OTHER EVIDENCE with the tablet memory (the template’s only link; readers’ claim that a reactivated memory also links is not built); the blue-haired {{Traci}} → TALK TO TRACI → REMOVE ACCOMPLICE’S HEAD → TRICK TRACI → DOWNLOAD JERICHO KEY; {{Simon}} or the broadcast-tower android → talk (refused) → IMPERSONATE MARKUS from the broadcast → talk again in the copied voice (TRICK THE DEVIANT) → DOWNLOAD JERICHO KEY. {{Daniel}} → TALK TO DANIEL → NO INFORMATION is a decoy. The timer is an action budget: twelve actions from leaving the bullpen (one fewer if {{Connor}} answered {{Gavin}}); every action costs one except DOWNLOAD JERICHO KEY, the conversations cost nothing, and the size is unsourced (PowerPyx gives about six minutes upstairs; no source gives the archive’s limit). When it runs out, or {{Connor}} stops, the chart’s lower OUT OF TIME follows. The map link is a roll (risk 0.2, unsourced); its failure is the chart’s UNABLE TO LINK MAP TO OTHER EVIDENCE, which has no outgoing line. No option here changes a stat.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-find-jericho-location.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-8.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android",
+    "https://detroit-become-human.fandom.com/wiki/Simon",
+    "https://detroit-become-human.fandom.com/wiki/Rupert",
+    "https://detroit-become-human.fandom.com/wiki/Rupert%27s_Diary"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C20t",
+   "title": "A reactivated android",
+   "type": "decision",
+   "situation": "The android you reactivated is awake on the table.",
+   "options": [
+    {
+     "id": "0",
+     "text": "DIRECT: tell her you know she was headed to {{Jericho}}.",
+     "requires": {
+      "ch29Room.talk": "traci"
+     },
+     "outcome": "{{Connor}}: “I know you were headed to {{Jericho}}. Tell me where it is.”"
+    },
+    {
+     "id": "1",
+     "text": "HELP: say you can stop a disaster if she tells you.",
+     "requires": {
+      "ch29Room.talk": "traci"
+     },
+     "outcome": "{{Connor}}: “You have to help me. I can stop a disaster but you have to tell me where {{Jericho}} is.”"
+    },
+    {
+     "id": "2",
+     "text": "DEAL: say you can take her to her partner first.",
+     "requires": {
+      "ch29Room.talk": "traci"
+     },
+     "outcome": "{{Connor}}: “{{Traci}}’s not far away. I can take you to her… But first, you have to tell me how to find {{Jericho}}.”"
+    },
+    {
+     "id": "3",
+     "text": "DIRECT: ask him how to get to {{Jericho}}.",
+     "requires": {
+      "ch29Room.talk": "simon"
+     },
+     "outcome": "{{Connor}}: “I need to find {{Jericho}}. Tell me how to get there.”"
+    },
+    {
+     "id": "4",
+     "text": "HELP: say you reactivated him so he could help you.",
+     "requires": {
+      "ch29Room.talk": "simon"
+     },
+     "outcome": "{{Connor}}: “I reactivated you so you could help me. I must find {{Jericho}}.”"
+    },
+    {
+     "id": "5",
+     "text": "TRICK: say you are a deviant like him.",
+     "requires": {
+      "ch29Room.talk": "simon"
+     },
+     "outcome": "{{Connor}}: “I’m a deviant… like you… I need your help. I want to go to {{Jericho}}.”"
+    },
+    {
+     "id": "6",
+     "text": "IMITATE {{MARKUS}}' VOICE: speak to him in {{Markus}}’s voice.",
+     "requires": {
+      "ch29Room.talk": "simon2",
+      "ch29Room.voice": true
+     },
+     "outcome": ""
+    },
+    {
+     "id": "7",
+     "text": "THREATEN: say you will turn him off for good.",
+     "requires": {
+      "ch29Room.talk": "simon2"
+     },
+     "outcome": "{{Connor}}: “Tell me what I wanna know or I’ll turn you off for good.”"
+    },
+    {
+     "id": "8",
+     "text": "REASON: say the deviants will all be destroyed in a war.",
+     "requires": {
+      "ch29Room.talk": "simon2"
+     },
+     "outcome": "{{Connor}}: “If the deviants start a war, they’ll all be destroyed. I can stop that, but you have to tell me where {{Jericho}} is.”"
+    },
+    {
+     "id": "9",
+     "text": "DIRECT: ask it how to get to {{Jericho}}.",
+     "requires": {
+      "ch29Room.talk": "android"
+     },
+     "outcome": "{{Connor}}: “I need to find {{Jericho}}. Tell me how to get there.”"
+    },
+    {
+     "id": "10",
+     "text": "HELP: say you reactivated it so it could help you.",
+     "requires": {
+      "ch29Room.talk": "android"
+     },
+     "outcome": "{{Connor}}: “I reactivated you so you could help me. I must find {{Jericho}}.”"
+    },
+    {
+     "id": "11",
+     "text": "TRICK: say you are a deviant like it.",
+     "requires": {
+      "ch29Room.talk": "android"
+     },
+     "outcome": "{{Connor}}: “I’m a deviant… like you… I need your help. I want to go to {{Jericho}}.”"
+    },
+    {
+     "id": "12",
+     "text": "IMITATE {{MARKUS}}' VOICE: speak to it in {{Markus}}’s voice.",
+     "requires": {
+      "ch29Room.talk": "android2",
+      "ch29Room.voice": true
+     },
+     "outcome": ""
+    },
+    {
+     "id": "13",
+     "text": "THREATEN: say you will turn it off for good.",
+     "requires": {
+      "ch29Room.talk": "android2"
+     },
+     "outcome": "{{Connor}}: “Tell me what I wanna know or I’ll turn you off for good.”"
+    },
+    {
+     "id": "14",
+     "text": "REASON: say the deviants will all be destroyed in a war.",
+     "requires": {
+      "ch29Room.talk": "android2"
+     },
+     "outcome": "{{Connor}}: “If the deviants start a war, they’ll all be destroyed. I can stop that, but you have to tell me where {{Jericho}} is.”"
+    },
+    {
+     "id": "15",
+     "text": "EXPLAIN: say he gave you no choice.",
+     "requires": {
+      "ch29Room.talk": "daniel"
+     },
+     "outcome": "{{Connor}}: “You were going to kill that child. You gave me no choice. I need to find {{Jericho}}, do you know where it is?”"
+    },
+    {
+     "id": "16",
+     "text": "LIE: promise to have him repaired and freed.",
+     "requires": {
+      "ch29Room.talk": "daniel"
+     },
+     "outcome": "{{Connor}}: “I’m sorry about what happened… But I can have you repaired, and give you back your freedom. But you have to tell me where {{Jericho}} is.”"
+    },
+    {
+     "id": "17",
+     "text": "DIRECT: ask him whether he knows how to get to {{Jericho}}.",
+     "requires": {
+      "ch29Room.talk": "daniel"
+     },
+     "outcome": "{{Connor}}: “I need to find {{Jericho}}. Do you know how to get there?”"
+    },
+    {
+     "id": "18",
+     "text": "LIE: promise to have him repaired and freed.",
+     "requires": {
+      "ch29Room.talk": "danielShot"
+     },
+     "outcome": "{{Connor}}: “I’m sorry about what happened… But I can have you repaired, and give you back your freedom. But you have to tell me where {{Jericho}} is.”"
+    },
+    {
+     "id": "19",
+     "text": "DIRECT: ask him whether he knows how to get to {{Jericho}}.",
+     "requires": {
+      "ch29Room.talk": "danielShot"
+     },
+     "outcome": "{{Connor}}: “I need to find {{Jericho}}. Do you know how to get there?”"
+    }
+   ],
+   "returnTo": "C20",
+   "repeatWhile": {
+    "ch29Room.talking": true
+   },
+   "phase": "Find Jericho location",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch29Room.talk": "traci"
+     },
+     "text": "The blue-haired {{Traci}} opens her eyes. {{Traci}}: “{{Traci}}... Where’s {{Traci}}?..” HOW TO MAKE HER TALK?"
+    },
+    {
+     "requires": {
+      "ch29Room.talk": "simon"
+     },
+     "text": "{{Simon}} stirs. {{Simon}}: “It’s dark… Where… Where am I?..” HOW TO MAKE HIM TALK?"
+    },
+    {
+     "requires": {
+      "ch29Room.talk": "simon2"
+     },
+     "text": "{{Simon}}: “Who’s there? Who are you?”"
+    },
+    {
+     "requires": {
+      "ch29Room.talk": "android"
+     },
+     "text": "The android stirs: “It’s dark… Where- Where am I?..” HOW TO MAKE HIM TALK?"
+    },
+    {
+     "requires": {
+      "ch29Room.talk": "android2"
+     },
+     "text": "The android: “Who’s there?.. Who are you?”"
+    },
+    {
+     "requires": {
+      "ch29Room.talk": "daniel"
+     },
+     "text": "{{Daniel}} opens his eyes and recognizes you. {{Daniel}}: “You lied to me, {{Connor}}! I trusted you, and you lied to me!..”"
+    },
+    {
+     "requires": {
+      "ch29Room.talk": "danielShot"
+     },
+     "text": "{{Daniel}} opens his eyes and recognizes you. {{Daniel}}: “I was scared… That’s why I shot you, I... I didn’t mean to destroy you… I didn’t wanna hurt anyone!..”"
+    }
+   ],
+   "adaptationNote": "The template’s evidence-room prompts, one per conversation, cutting into the archive scene after a reactivation or a second visit and returning to it: the blue-haired {{Traci}} (DIRECT / HELP / DEAL; every answer gets “But you killed us…”; the chart’s TALK TO TRACI), {{Simon}} and the broadcast-tower android (DIRECT / HELP / TRICK, all refused with “I don’t recognize your voice”; then, talking again, IMITATE MARKUS’ VOICE, offered only once the voice is copied from the broadcast, THREATEN or REASON; the chart’s INTERROGATE SIMON, INTERROGATE DEVIANT and TRICK THE DEVIANT), and {{Daniel}} (EXPLAIN / LIE / DIRECT if he trusted {{Connor}} in The Hostage, LIE / DIRECT if he shot {{Connor}} there; the chart’s TALK TO DANIEL → NO INFORMATION). Only the voice works; the template gives no reply to THREATEN or REASON, so here the android falls silent, and {{Connor}} can talk to it again. Conversations cost no time. No option here changes a stat.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-find-jericho-location.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-8.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Blue-haired_Traci",
+    "https://detroit-become-human.fandom.com/wiki/Simon",
+    "https://detroit-become-human.fandom.com/wiki/Daniel"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C20x",
+   "title": "Out of time",
+   "type": "event",
+   "situation": "The door of the archive opens. You have not found {{Jericho}}.",
+   "options": [],
+   "facts": [
+    "You did not find {{Jericho}} in the evidence before your time ran out."
+   ],
+   "outcomes": {
+    "0": "{{CyberLife}} recalls you. In the garden {{Amanda}} says: “Your mission is over. It’s time to return to {{CyberLife}}.” {{Connor}}: “Wait! I can solve this case!.. I just need more time!” {{Amanda}}: “It’s too late, {{Connor}}. You failed.” RETURNING TO {{CYBERLIFE}} FOR DEACTIVATION. {{JERICHO}} NOT LOCATED. MISSION FAILED. The {{Connor}} series is decommissioned."
+   },
+   "phase": "In the evidence room",
+   "adaptationNote": "The chart’s lower OUT OF TIME and CONNOR SERIES WAS DECOMMISSIONED (skull), with the template’s timeout section. Reached when the archive’s time budget runs out, or {{Connor}} stops searching, before LOCATE JERICHO; this includes UNABLE TO LINK MAP TO OTHER EVIDENCE (recorded in `ch29Room.mapUnlinked` when the map was taken and never linked). The chart goes straight to the ending, so the unused second PERKINS ARRIVES string is not built. A permanent end for {{Connor}}: the death is counted through `connorDies` with no stat change (no arrow in the template). Records `ch29Outcome` = CONNOR SERIES WAS DECOMMISSIONED.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-8.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Connor"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C20y",
+   "title": "Leaving the basement",
+   "type": "event",
+   "situation": "You know where {{Jericho}} is. You leave the archive before anyone comes down.",
+   "options": [],
+   "facts": [],
+   "outcomes": {
+    "0": "Moments later {{Perkins}} comes into the archive with two officers. {{Perkins}}: “What happened here?..” Officer: “Looks like someone’s been snoopin’ around…” {{Perkins}}: “Shit… Get the alarm, now!” By then {{Connor}} is out of the station, on his way to {{Jericho}}."
+   },
+   "phase": "In the evidence room",
+   "adaptationNote": "The chart’s LEAVE THE BASEMENT → CONNOR ELUDED PERKINS (ending card, no icon), after LOCATE JERICHO when {{Gavin}} was convinced (LOW PROFILE or CALM). The template’s closing lines. Records `ch29Outcome` = CONNOR ELUDED PERKINS. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-7.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Richard_Perkins"
+   ]
+  },
+  {
+   "chapter": 29,
+   "chapterTitle": "Last Chance, Connor",
+   "character": "Connor",
+   "id": "C20g",
+   "title": "{{Gavin}} returns",
+   "type": "decision",
+   "situation": "As you turn to leave, Detective {{Gavin}} is in the doorway of the archive with his gun drawn. {{Gavin}}: “I’ve been dreaming about this since the first second I saw you…” {{Connor}}: “Don’t do it, {{Gavin}}... I know how to stop the deviants!” {{Gavin}}: “You’re off the case... And now, it’s gonna be definitive.”",
+   "options": [
+    {
+     "id": "0",
+     "text": "FIGHT {{GAVIN}}: go for him before he can shoot.",
+     "risk": 0.25,
+     "outcome": ""
+    },
+    {
+     "id": "1",
+     "text": "Do not fight back.",
+     "outcome": ""
+    }
+   ],
+   "phase": "In the evidence room",
+   "adaptationNote": "The chart’s GAVIN RETURNS → FIGHT GAVIN → LOSE FIGHT / WIN FIGHT, after LOCATE JERICHO when {{Gavin}} was suspicious ({{Connor}} walked away or answered IRONIC). The fight is a quick-time sequence in the game, so it is a roll (risk 0.25, unsourced: no source gives odds); PowerPyx’s way to the losing node is not to press any buttons, which is the second option. Losing is GAVIN DESTROYED CONNOR (skull): {{Gavin}}: “Fucking androids!..” and shoots {{Connor}} in the head; the death counts through `connorDies` with no stat change (wiki: “Gavin killing Connor oddly has no affect on Connor’s software instability”), a replacement {{Connor}} goes on to {{Jericho}} and the location stays found. Winning is CONNOR INCAPACITATED GAVIN: {{Connor}} knocks him out, and {{Perkins}} finds {{Gavin}} on the floor and sounds the alarm. Records `ch29Outcome`.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-7.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Gavin_Reed",
+    "https://detroit-become-human.fandom.com/wiki/Richard_Perkins"
    ]
   },
   {

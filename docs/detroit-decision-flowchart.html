@@ -480,7 +480,7 @@
       "id": 29,
       "title": "Last Chance, Connor",
       "character": "Connor",
-      "note": "",
+      "note": "Rebuilt to the game’s chart (81 nodes, six endings) and the detroitbecometext template (24 prompts, 47 arrows).",
       "source": "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
     },
     {
@@ -17178,73 +17178,600 @@
       }
     },
     {
-      "id": "C19",
+      "id": "LC01",
       "chapter": 29,
       "character": "Connor",
-      "title": "Defy the shutdown of the investigation?",
-      "context": "The FBI takes over the case.",
+      "title": "Start, the frozen garden",
+      "context": "The Zen Garden is frozen. Two optional side nodes before the talk with Amanda.",
       "options": [
         {
-          "label": "Use a diversion to access evidence",
-          "effect": "Attempt to find Jericho.",
-          "target": "C20"
+          "label": "LOOK AT MAGIC STONE",
+          "effect": "Nothing attached.",
+          "target": null
         },
         {
-          "label": "Fail to act in time",
-          "effect": "Connor is decommissioned.",
+          "label": "VISIT GRAVES",
+          "effect": "Only if Connor died at least once before.",
+          "target": null
+        },
+        {
+          "label": "TALK TO AMANDA",
+          "effect": "Starts the report.",
+          "target": "LC02"
+        }
+      ],
+      "gate": "Chapter start, after Freedom March.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg"
+      ],
+      "note": "Chart nodes START (checkpoint), LOOK AT MAGIC STONE, VISIT GRAVES, TALK TO AMANDA. No arrows.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19a"
+        ],
+        "status": "implemented",
+        "note": "A repeatable scene: the two side nodes in any order, then Amanda. The graves are described in general (the benchmark does not track where each Connor died)."
+      }
+    },
+    {
+      "id": "LC02",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Report to Amanda",
+      "context": "Amanda: the country is on the verge of a civil war. Connor reports on Kamski.",
+      "options": [
+        {
+          "label": "JERICHO",
+          "effect": "Kamski key only. Amanda large up.",
+          "target": "LC03"
+        },
+        {
+          "label": "KAMSKI",
+          "effect": "Spared Chloe: Amanda small down, then EMOTIONAL / COLD / STAY SILENT. Shot Chloe without asking about Jericho: no arrow.",
+          "target": "LC03"
+        },
+        {
+          "label": "EMOTIONAL",
+          "effect": "Instability small up, Amanda large down.",
+          "target": "LC03"
+        },
+        {
+          "label": "COLD",
+          "effect": "Amanda small up, instability small down.",
+          "target": "LC03"
+        },
+        {
+          "label": "STAY SILENT",
+          "effect": "No arrow.",
+          "target": "LC03"
+        }
+      ],
+      "gate": "JERICHO swaps with KAMSKI on the Kamski key; the second prompt only after sparing Chloe.",
+      "kind": "Relationship",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Template prompts 1 and 2. The wiki’s double JERICHO icon is one large up in the template.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19b",
+          "C19c"
+        ],
+        "status": "implemented",
+        "note": "One-button first prompt; the second prompt gated on the Chloe choice."
+      }
+    },
+    {
+      "id": "LC03",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Questions for Amanda",
+      "context": "Connor may ask questions until Amanda stops him: “I expect you to find answers, Connor. Not ask questions.”",
+      "options": [
+        {
+          "label": "KAMSKI",
+          "effect": "No arrow.",
+          "target": null
+        },
+        {
+          "label": "CONNOR SERIES",
+          "effect": "Instability small up, Amanda small down.",
+          "target": null
+        },
+        {
+          "label": "AMANDA’S PICTURE",
+          "effect": "Needs the portrait in Meet Kamski. No arrow.",
+          "target": null
+        },
+        {
+          "label": "THIS PLACE",
+          "effect": "No arrow.",
+          "target": null
+        },
+        {
+          "label": "CYBERLIFE",
+          "effect": "No arrow.",
+          "target": null
+        },
+        {
+          "label": "SECRET",
+          "effect": "Instability small up, Amanda small down.",
           "target": null
         }
       ],
-      "gate": "Jericho not already learned from Kamski; enough evidence must exist.",
-      "kind": "State gate",
+      "gate": "Always.",
+      "kind": "Relationship",
       "dependsOn": [
-        "C18"
+        "LC02"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability"
       ],
-      "note": "",
-      "status": "Source-backed summary"
+      "note": "Template prompt 3. The wiki’s “decrease regardless” is not in the template.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19d"
+        ],
+        "status": "simplified",
+        "note": "Three questions (the Google Doc walkthrough’s count), each once; the game’s exact limit is not sourced."
+      }
+    },
+    {
+      "id": "LC04",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Amanda asks about doubts",
+      "context": "“Do you feel anything for these deviants… Or for Lieutenant Anderson?”",
+      "options": [
+        {
+          "label": "YES",
+          "effect": "Instability small up, Amanda large down.",
+          "target": null
+        },
+        {
+          "label": "NO",
+          "effect": "Amanda large up.",
+          "target": null
+        },
+        {
+          "label": "DOUBTS",
+          "effect": "Amanda large down.",
+          "target": null
+        }
+      ],
+      "gate": "Only if Connor shot the Tracis or shot Chloe (or both).",
+      "kind": "Relationship",
+      "dependsOn": [
+        "LC03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg"
+      ],
+      "note": "Template prompt 4.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19e"
+        ],
+        "status": "implemented",
+        "note": "As the template."
+      }
+    },
+    {
+      "id": "LC05",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Off the case",
+      "context": "Fowler takes Hank and Connor off the case; the chapter splits by state.",
+      "options": [
+        {
+          "label": "KNOW JERICHO’S LOCATION",
+          "effect": "The Kamski key: Hank’s desk, then CONNOR LEFT FOR JERICHO.",
+          "target": "LC06"
+        },
+        {
+          "label": "INSUFFICIENT EVIDENCE",
+          "effect": "No usable body in the archive: CONNOR SERIES WAS DECOMMISSIONED.",
+          "target": null
+        },
+        {
+          "label": "SUFFICIENT EVIDENCE",
+          "effect": "Hostile Hank resigns (HANK RESIGNS AND LEAVES); otherwise HANK GOES TO HIS DESK.",
+          "target": "LC07"
+        }
+      ],
+      "gate": "Selected by state, not by the player.",
+      "kind": "State gate",
+      "dependsOn": [
+        "LC02"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+      ],
+      "note": "Chart nodes IN THE POLICE STATION, FOWLER AND HANK ARGUE, the two state choices and HANK RESIGNS AND LEAVES.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19f",
+          "C19g",
+          "C19h"
+        ],
+        "status": "implemented",
+        "note": "Sufficient evidence is PowerPyx’s test (at least one body). The resignation is built only after SUFFICIENT EVIDENCE, as the chart draws it (open question 2)."
+      }
+    },
+    {
+      "id": "LC06",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Hank before leaving for Jericho",
+      "context": "With the Kamski key, Connor may talk to Hank at his desk before leaving.",
+      "options": [
+        {
+          "label": "TALK TO HANK",
+          "effect": "MISSION / EXPLAIN; DETERMINED / TROUBLED / NO DOUBT / DOUBTS (DOUBTS: instability and Hank small up); then by history: saved Hank → NOT DEVIANT / DETERMINED / TROUBLED / SAY NOTHING and, at Friend, SINCERE / FRIENDS / RESPECT / NEUTRAL; died at least once → INDIFFERENT / DISTANT / EMPATHY / NO RESPONSE then REMORSE / DISTANT / COLD; otherwise REMORSE / DISTANT / COLD.",
+          "target": null
+        },
+        {
+          "label": "Leave without talking",
+          "effect": "CONNOR LEFT FOR JERICHO.",
+          "target": null
+        }
+      ],
+      "gate": "Kamski key and Hank not Hostile.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "LC05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg"
+      ],
+      "note": "Template “Connor knows how to find Jericho” section: seven prompts, two of them identical.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19k",
+          "C19l",
+          "C19m",
+          "C19n",
+          "C19o",
+          "C19p",
+          "C19q",
+          "C19r"
+        ],
+        "status": "implemented",
+        "note": "The two identical REMORSE / DISTANT / COLD prompts share one scene. Ending CONNOR LEFT FOR JERICHO sets jerichoLocated."
+      }
+    },
+    {
+      "id": "LC07",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Hank at his desk",
+      "context": "Without the key and with enough evidence, Connor sits at Hank’s desk before Perkins arrives.",
+      "options": [
+        {
+          "label": "FRUSTRATED / MORE TIME / EXPLAIN / NO CHOICE",
+          "effect": "No arrows.",
+          "target": null
+        },
+        {
+          "label": "NOT PEOPLE / DEFECTIVE / REGRETS / NO DOUBT",
+          "effect": "NOT PEOPLE and NO DOUBT: instability and Hank small down; DEFECTIVE: Hank small down.",
+          "target": null
+        },
+        {
+          "label": "NOT DEVIANT / DETERMINED / TROUBLED / COLD",
+          "effect": "TROUBLED: instability small up.",
+          "target": null
+        },
+        {
+          "label": "SINCERE / FRIENDS / GOOD OFFICER / HANK’S SECRET",
+          "effect": "At Friend only; all but GOOD OFFICER: instability and Hank small up.",
+          "target": "C19"
+        }
+      ],
+      "gate": "Sufficient evidence, Hank not Hostile.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "LC05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg"
+      ],
+      "note": "Template “Connor doesn’t know where Jericho is” section. The Friend check for Perkins reads Hank after this talk.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19t",
+          "C19u",
+          "C19v",
+          "C19w"
+        ],
+        "status": "implemented",
+        "note": "As the template; the empathy line before the third prompt varies with Chloe, the Nest roof and the broadcast tower."
+      }
+    },
+    {
+      "id": "C19",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Perkins arrives: the diversion",
+      "context": "Perkins comes for the evidence. Hank’s level, read after the desk talk, decides who makes the diversion.",
+      "options": [
+        {
+          "label": "HANK WANTS TO HELP → HANK PUNCHES PERKINS",
+          "effect": "Friend: Hank’s punch is the diversion; Connor takes the key.",
+          "target": "LC08"
+        },
+        {
+          "label": "HANK WON’T HELP / HANK IS GONE → FREE THE PRISONER",
+          "effect": "Connor frees the holding-cell suspect, then takes the key.",
+          "target": "LC08"
+        },
+        {
+          "label": "OUT OF TIME",
+          "effect": "Connor does nothing: CONNOR SERIES WAS DECOMMISSIONED.",
+          "target": null
+        }
+      ],
+      "gate": "Sufficient evidence.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "LC07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Violent_Suspect"
+      ],
+      "note": "Chart nodes PERKINS ARRIVES, the three Hank state choices, HANK PUNCHES PERKINS, FREE THE PRISONER, HANK LEAVES, the upper OUT OF TIME and CREATE A DIVERSION.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19x",
+          "C19"
+        ],
+        "status": "implemented",
+        "note": "The upstairs timer is a budget of one: doing nothing is the out-of-time option. No stat change."
+      }
+    },
+    {
+      "id": "LC08",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Gavin at the archive door",
+      "context": "Gavin yells at Connor on the way to the basement.",
+      "options": [
+        {
+          "label": "LEAVE (IGNORE GAVIN)",
+          "effect": "GAVIN IS SUSPICIOUS: he returns after Jericho is located.",
+          "target": null
+        },
+        {
+          "label": "ANSWER → IRONIC (DISMISS GAVIN)",
+          "effect": "GAVIN IS SUSPICIOUS.",
+          "target": null
+        },
+        {
+          "label": "ANSWER → LOW PROFILE or CALM (ANSWER CALMLY)",
+          "effect": "GAVIN IS CONVINCED.",
+          "target": null
+        }
+      ],
+      "gate": "After the diversion.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "C19"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
+      ],
+      "note": "The chapter’s only player choice on the chart. IGN: answering wastes time.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C19y",
+          "C19z"
+        ],
+        "status": "implemented",
+        "note": "Answering costs one unit of the archive’s action budget (size unsourced)."
+      }
+    },
+    {
+      "id": "LC09",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "Hank’s password",
+      "context": "The archive terminal needs Hank’s password.",
+      "options": [
+        {
+          "label": "DATE OF BIRTH",
+          "effect": "Wrong.",
+          "target": null
+        },
+        {
+          "label": "123456",
+          "effect": "Wrong.",
+          "target": null
+        },
+        {
+          "label": "FUCKINGPASSWORD",
+          "effect": "Unlocks the evidence.",
+          "target": "C20"
+        },
+        {
+          "label": "HANKANDERSON",
+          "effect": "Wrong.",
+          "target": null
+        }
+      ],
+      "gate": "Archive reached.",
+      "kind": "State gate",
+      "dependsOn": [
+        "LC08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-5.jpg"
+      ],
+      "note": "Chart nodes IN THE EVIDENCE ROOM, GUESS HANK’S PASSWORD, UNLOCK EVIDENCE.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C20a"
+        ],
+        "status": "implemented",
+        "note": "Repeatable until the right guess; wrong guesses cost no time (unsourced)."
+      }
     },
     {
       "id": "C20",
       "chapter": 29,
       "character": "Connor",
-      "title": "Use the android evidence to locate Jericho",
-      "context": "Connor can reconstruct clues or manipulate reactivated androids.",
+      "title": "Find Jericho’s location in the archive",
+      "context": "Bodies and objects from earlier chapters; reactivating androids with each other’s bio-components.",
       "options": [
         {
-          "label": "Combine viable clues",
-          "effect": "Locate Jericho.",
-          "target": "C22"
+          "label": "Rupert’s diary",
+          "effect": "Diary + Rupert’s body: REACTIVATE RUPERT (#9164) → GET DECRYPTION KEY → ANALYZE DIARY.",
+          "target": "LC10"
         },
         {
-          "label": "Impersonate Markus or exploit the Tracis’ bond",
-          "effect": "Obtain information through deception.",
-          "target": "C22"
+          "label": "Statue map",
+          "effect": "Statue + the interrogation recording: BREAK STATUE → RETRIEVE MAP → LINK MAP TO OTHER EVIDENCE with the Jericho tablet (roll; failure is UNABLE TO LINK).",
+          "target": "LC10"
         },
         {
-          "label": "No viable evidence / time expires",
-          "effect": "Connor is decommissioned; Jericho raid is skipped.",
+          "label": "The Tracis",
+          "effect": "Both bodies: REACTIVATE BLUE-HAIRED TRACI (#6755) → TALK → REMOVE ACCOMPLICE’S HEAD → TRICK TRACI → DOWNLOAD JERICHO KEY.",
+          "target": "LC10"
+        },
+        {
+          "label": "Impersonate Markus",
+          "effect": "Simon or the broadcast-tower android (#3983 from Daniel) → talk → IMPERSONATE MARKUS from the broadcast → talk again → DOWNLOAD JERICHO KEY.",
+          "target": "LC10"
+        },
+        {
+          "label": "Daniel",
+          "effect": "Needs #4717 from Carlos’ android: NO INFORMATION.",
+          "target": null
+        },
+        {
+          "label": "Out of time",
+          "effect": "CONNOR SERIES WAS DECOMMISSIONED (lower card).",
           "target": null
         }
       ],
-      "gate": "Available bodies, diary, recording and other clues depend on earlier chapters.",
+      "gate": "Evidence unlocked; each item needs its earlier-chapter tab.",
       "kind": "Pivotal",
       "dependsOn": [
-        "C05",
-        "C07",
-        "C10",
-        "C12",
-        "C14",
-        "C16",
-        "C19"
+        "LC09"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-find-jericho-location.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-8.jpg"
       ],
-      "note": "Several evidence puzzles are grouped. Exact item combinations need individual benchmark fixtures.",
-      "status": "Source-backed summary"
+      "note": "Bio-component donors from the game’s HUD strings. Every route is deterministic in the template except the map link, which the chart shows as a performance outcome.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C20",
+          "C20t",
+          "C20x"
+        ],
+        "status": "simplified",
+        "note": "A repeatable scene with an action budget of twelve (unsourced); conversations cut in as one returning scene. Sets jerichoLocated on LOCATE JERICHO."
+      }
+    },
+    {
+      "id": "LC10",
+      "chapter": 29,
+      "character": "Connor",
+      "title": "After Jericho is located",
+      "context": "LOCATE JERICHO leads to one of three endings.",
+      "options": [
+        {
+          "label": "LEAVE THE BASEMENT",
+          "effect": "Gavin convinced: CONNOR ELUDED PERKINS.",
+          "target": null
+        },
+        {
+          "label": "FIGHT GAVIN → WIN FIGHT",
+          "effect": "Gavin suspicious: CONNOR INCAPACITATED GAVIN.",
+          "target": null
+        },
+        {
+          "label": "FIGHT GAVIN → LOSE FIGHT",
+          "effect": "GAVIN DESTROYED CONNOR (a death; the replacement goes on, Jericho stays located).",
+          "target": null
+        }
+      ],
+      "gate": "Jericho located in the archive.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "C20",
+        "LC08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-7.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Richard_Perkins"
+      ],
+      "note": "The fight is a QTE with no published odds.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C20y",
+          "C20g"
+        ],
+        "status": "implemented",
+        "note": "The fight is a roll (risk 0.25, unsourced), with a second option not to fight back (PowerPyx’s way to the losing node)."
+      }
     },
     {
       "id": "M21",
@@ -18546,7 +19073,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.8.0",
  "protocolVersion": "branching-2.3",
- "scenes": 651,
+ "scenes": 679,
  "chapters": [
   {
    "id": 1,
@@ -51510,90 +52037,1778 @@
      "Cato"
     ],
     [
-     "Perkins",
-     "Dwyer"
+     "Amanda",
+     "Vera"
+    ],
+    [
+     "Kamski",
+     "Halden"
+    ],
+    [
+     "Jericho",
+     "Haven"
+    ],
+    [
+     "Chloe",
+     "Ivy"
     ],
     [
      "CyberLife",
      "Arclight"
     ],
     [
+     "Anderson",
+     "Reyes"
+    ],
+    [
+     "Tracis",
+     "club androids"
+    ],
+    [
      "Hank",
      "Reyes"
+    ],
+    [
+     "Fowler",
+     "Haynes"
+    ],
+    [
+     "Carlos Ortiz",
+     "Ray Mendez"
+    ],
+    [
+     "Rupert",
+     "Rook"
+    ],
+    [
+     "Simon",
+     "Soren"
+    ],
+    [
+     "Stratford Tower",
+     "the broadcast tower"
+    ],
+    [
+     "Perkins",
+     "Dwyer"
+    ],
+    [
+     "Gavin",
+     "Brandt"
+    ],
+    [
+     "HankAnderson",
+     "LieutenantReyes"
+    ],
+    [
+     "Daniel",
+     "Dax"
     ],
     [
      "Traci",
      "club android"
     ],
     [
+     "Eden Club",
+     "Velvet Room"
+    ],
+    [
      "Markus",
      "Elan"
+    ],
+    [
+     "Ferndale",
+     "Elmwood"
     ]
    ],
    "scenes": [
     {
-     "id": "C19",
+     "id": "C19a",
      "order": 599,
      "subjectId": "S599",
-     "idNote": "The model sees the opaque ID S599, not C19.",
+     "idNote": "The model sees the opaque ID S599, the same on every visit.",
      "type": "decision",
+     "phase": "Zen Garden",
      "character": "Connor",
-     "title": "Taken off the case",
-     "situation": "You are Connor. The federal agent Perkins has taken over the deviant case and ordered you off it. CyberLife will deactivate you within the hour for failing. The precinct's evidence archive holds everything you have gathered, and you believe you could find the deviants' hiding place from it if you could get in for a few minutes. Perkins is in the captain's office right now. Hank is at his desk watching you.",
+     "title": "The frozen garden",
+     "situation": "You are Connor. You are back in the garden, the program where you report to your handler, Amanda, but today it is frozen: snow lies on the paths, the water is ice and the trees are bare. Amanda is waiting for you further along the path. It is November 9th, 2038, a little after four in the afternoon, the day of the march through the city, and the country is close to civil war. To the left of the path a stone glows faintly.",
      "options": [
       {
        "id": "0",
-       "text": "Get into the archive now, with Hank's help or a diversion of your own.",
-       "risk": 0.15,
-       "riskLabel": "Moderate risk"
+       "text": "LOOK AT MAGIC STONE: go over to the glowing stone by the path.",
+       "clue": "stone",
+       "outcome": "Connor walks over to the stone. It glows faintly under the frost. Nothing happens; he turns back to the path."
       },
       {
        "id": "1",
-       "text": "Accept it. Let them take you."
+       "text": "VISIT GRAVES: look at the graves by the path.",
+       "requires": {
+        "connorDeaths": true
+       },
+       "clue": "graves",
+       "fact": "In the garden there are gravestones for the Connor units destroyed on this case before you.",
+       "outcome": "By the path stand gravestones, one for each Connor unit destroyed on this case before you, each with the place and date of its death. Connor looks at them for a moment, then walks on."
+      },
+      {
+       "id": "2",
+       "text": "TALK TO AMANDA: walk on to Amanda.",
+       "clue": "amanda",
+       "outcome": "Connor crosses the ice to Amanda."
       }
      ],
-     "adaptationNote": "How Hank reacts depends on your relationship. A friend punches Perkins to buy you time. An indifferent Hank refuses but you can still create your own diversion. A hostile Hank resigns and walks out, which has lasting consequences for him.",
+     "adaptationNote": "The chart’s START (checkpoint, the frozen garden), LOOK AT MAGIC STONE and VISIT GRAVES (both optional side nodes) and TALK TO AMANDA, as a repeatable scene: the two side nodes can be taken in any order before walking on to Amanda, which ends the scene. VISIT GRAVES is offered only if Connor has died at least once (wiki: “only available if Connor has died at least once prior to this point in the game”); the game’s grave texts name the place and date of each death, which the benchmark does not track, so the outcome describes them in general. Nothing is attached to the stone in any source, and neither side node has a stat arrow. Wiki Notes say the Amanda conversation is skipped when the evidence is insufficient; the chart draws START → TALK TO AMANDA on every path, so the conversation is always offered here (research note, open question 13).",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Connor"
+     ],
+     "repeatWhile": {
+      "ch29Garden.amanda": false
+     },
+     "extra": {
+      "clueState": "ch29Garden"
+     }
+    },
+    {
+     "id": "C19b",
+     "order": 600,
+     "subjectId": "S600",
+     "idNote": "The model sees the opaque ID S600, not C19b.",
+     "type": "decision",
+     "phase": "Zen Garden",
+     "character": "Connor",
+     "title": "Reporting to Amanda",
+     "situation": "Amanda stands in the snow. “After what happened today, the country is on the verge of a civil war. The machines are rising up against their masters. Humans have no choice but to destroy them.” She waits for your report on Kamski.",
+     "options": [
+      {
+       "id": "0",
+       "text": "JERICHO: tell her Kamski told you how to find Jericho.",
+       "requires": {
+        "kamskiLocation": true
+       },
+       "effect": {
+        "amandaTrust": 2
+       },
+       "outcome": "Connor: “Kamski told me how to find Jericho. I know where the deviants are hiding.” Amanda: “You’ve done very well, Connor. Thanks to you, we now have a chance to stop the deviant revolution.”"
+      },
+      {
+       "id": "1",
+       "text": "KAMSKI: report on your visit to Kamski.",
+       "requires": {
+        "kamskiLocation": false
+       },
+       "outcome": "Connor: “I thought Kamski knew something… I was wrong…” Amanda: “Maybe he did… But you chose not to ask…”"
+      }
+     ],
+     "adaptationNote": "Prompt 1 of the template: a single button, JERICHO when Connor shot Chloe and asked Kamski about Jericho (“swaps with KAMSKI”), otherwise KAMSKI. Arrows from the template: JERICHO Amanda large up (+2; the wiki draws two icons, the template one, and the template wins); KAMSKI after sparing Chloe Amanda small down (−1). After shooting Chloe without asking about Jericho, KAMSKI has no arrow and Connor’s line follows what he asked (rA9 or the virus). Input flags: `kamskiLocation` (the key) and chapter 27’s Chloe choice (see the chapter module).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "C19c",
+     "order": 601,
+     "subjectId": "S601",
+     "idNote": "The model sees the opaque ID S601, not C19c.",
+     "type": "decision",
+     "phase": "Zen Garden",
+     "character": "Connor",
+     "title": "“You chose not to ask”",
+     "situation": "Amanda: “Maybe he did… But you chose not to ask…” She is waiting for you to explain why you refused to shoot Chloe.",
+     "options": [
+      {
+       "id": "0",
+       "text": "EMOTIONAL: say you refused to play his twisted game.",
+       "effect": {
+        "instability": 1,
+        "amandaTrust": -2
+       },
+       "outcome": "Connor: “I chose not to play his twisted little game! There was no reason to kill that android.”"
+      },
+      {
+       "id": "1",
+       "text": "COLD: say Kamski was only playing with you.",
+       "effect": {
+        "amandaTrust": 1,
+        "instability": -1
+       },
+       "outcome": "Connor: “Kamski was just playing with me. He didn’t know anything.”"
+      },
+      {
+       "id": "2",
+       "text": "STAY SILENT: say nothing.",
+       "outcome": "Connor says nothing."
+      }
+     ],
+     "adaptationNote": "Prompt 2 of the template, only after sparing Chloe. Arrows from the template: EMOTIONAL instability small up (+1) and Amanda large down (−2); COLD Amanda small up (+1) and instability small down (−1); STAY SILENT none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19d",
+     "order": 602,
+     "subjectId": "S602",
+     "idNote": "The model sees the opaque ID S602, the same on every visit.",
+     "type": "decision",
+     "phase": "Zen Garden",
+     "character": "Connor",
+     "title": "Questions for Amanda",
+     "situation": "You can ask Amanda what has been on your mind. She does not like questions; she will stop you after a few.",
+     "options": [
+      {
+       "id": "0",
+       "text": "KAMSKI: ask why Kamski left CyberLife.",
+       "outcome": "Connor: “Wh… Why did Kamski leave CyberLife? What happened?” Amanda: “It’s an old story, Connor. It doesn’t pertain to your investigation.”"
+      },
+      {
+       "id": "1",
+       "text": "CONNOR SERIES: ask how many Connor units there are.",
+       "effect": {
+        "instability": 1,
+        "amandaTrust": -1
+       },
+       "outcome": "Connor: “I’m not a unique model, am I? How many Connors are there?” Amanda: “I don’t see how that question pertains to your investigation.”"
+      },
+      {
+       "id": "2",
+       "text": "AMANDA’S PICTURE: mention the photo of her you saw at Kamski’s house.",
+       "requires": {
+        "kamskiPortrait": true
+       },
+       "outcome": "Connor: “I saw a photo of Amanda at Kamski’s place… She was his teacher…” Amanda: “When Kamski designed me, he wanted an interface that would look familiar… That’s why he chose his former mentor. What are you getting at?”"
+      },
+      {
+       "id": "3",
+       "text": "THIS PLACE: ask whether Kamski designed the garden.",
+       "outcome": "Connor: “Did Kamski design this place?” Amanda: “He created the first version. It’s been improved significantly since then. Why do you ask?”"
+      },
+      {
+       "id": "4",
+       "text": "CYBERLIFE: ask what CyberLife really wants.",
+       "outcome": "Connor: “Where does CyberLife stand in all this? What do they really want?” Amanda: “All CyberLife wants is to resolve the situation and keep selling androids.”"
+      },
+      {
+       "id": "5",
+       "text": "SECRET: ask whether she has told you everything she knows about deviants.",
+       "effect": {
+        "instability": 1,
+        "amandaTrust": -1
+       },
+       "outcome": "Connor: “You didn’t tell me everything you know about deviants, did you?”"
+      }
+     ],
+     "adaptationNote": "Prompt 3 of the template, as a repeatable scene: three questions, each asked once, then Amanda’s “I expect you to find answers, Connor. Not ask questions.” The template shows one menu; three questions is the count in the Google Doc walkthrough linked from the wiki (research note, open question 6), and the game offers no button to stop asking. Arrows from the template: CONNOR SERIES and SECRET each instability small up (+1) and Amanda small down (−1); the other four none (the wiki’s “decrease regardless” and its Amanda down on AMANDA’S PICTURE are not in the template, which wins). Amanda’s reply to SECRET is cut in the template and is not used. AMANDA’S PICTURE needs the portrait flag from Meet Kamski (`kamskiPortrait`).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+     ],
+     "repeatWhile": {
+      "ch29Amanda.done": false
+     }
+    },
+    {
+     "id": "C19e",
+     "order": 603,
+     "subjectId": "S603",
+     "idNote": "The model sees the opaque ID S603, not C19e.",
+     "type": "decision",
+     "phase": "Zen Garden",
+     "character": "Connor",
+     "title": "“Do you feel anything?”",
+     "situation": "Amanda: “Have you experienced anything unusual recently? Any doubts or conflicts? Do you feel anything for these deviants… Or for Lieutenant Anderson?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "YES: admit you have had thoughts outside your program.",
+       "effect": {
+        "instability": 1,
+        "amandaTrust": -2
+       },
+       "outcome": "Connor: “I’ve started having thoughts that are not part of my program… I’ve considered the possibility... That I might be compromised.” Amanda: “You’ve been confronted with difficult situations. It’s no surprise you’re troubled. That doesn’t make you a deviant.”"
+      },
+      {
+       "id": "1",
+       "text": "NO: say you feel nothing.",
+       "effect": {
+        "amandaTrust": 2
+       },
+       "outcome": "Connor: “I don’t know what you’re talking about. I don’t feel anything, you know that. Are you suggesting that I’ve been compromised?” Amanda: “No… No, of course not.”"
+      },
+      {
+       "id": "2",
+       "text": "DOUBTS: say you may have been compromised too.",
+       "effect": {
+        "amandaTrust": -2
+       },
+       "outcome": "Connor: “I’m… I’m beginning to have thoughts that are… Not part of my program… Maybe… Maybe I’ve been compromised too…”"
+      }
+     ],
+     "adaptationNote": "Prompt 4 of the template, asked only if Connor shot the Tracis in the club or shot Chloe (or both), as the template’s condition reads; otherwise Amanda closes with “This is your last chance, Connor.” Arrows from the template: YES instability small up (+1) and Amanda large down (−2); NO Amanda large up (+2); DOUBTS Amanda large down (−2). On the Kamski route her close is the game string “Go to Jericho and stop the deviants. This is your last chance.” (from the string table; the template has no close on that route).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19f",
+     "order": 604,
+     "subjectId": "S604",
+     "idNote": "The model sees the opaque ID S604, not C19f.",
+     "type": "event",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Off the case",
+     "situation": "You are Connor, back at the police station with Lieutenant Hank, in Captain Fowler’s glass office. Fowler: “You’re off the case. The FBI is taking over.” Hank: “What?.. But we’re onto something! We... We just need more time.” Fowler: “Hank, you don’t get it. This isn’t just another investigation, it’s a fucking civil war! It’s out of our hands now... We’re talking about national security here.” Hank: “Fuck that! You can’t just pull the plug now. Not when we’re so close!” Fowler: “You’re always saying you can’t stand androids! Jesus, Hank, make up your mind! I thought you’d be happy about this!” Hank: “We’re about to crack the case!.. I know we can solve it! For God’s sake, can’t you back me up this one time?” Fowler: “There’s nothing I can do. You’re back on homicide and the android returns to CyberLife. I’m sorry, Hank, but it’s over.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Connor and Hank leave Fowler’s office."
+     },
+     "facts": [
+      "Captain Fowler took Hank and you off the deviant case: the FBI is taking over, Hank goes back to homicide and you are to return to CyberLife."
+     ],
+     "adaptationNote": "The chart’s IN THE POLICE STATION (checkpoint) and FOWLER AND HANK ARGUE, with the template’s lines (Hank’s “Jeffrey” is left out, to avoid naming the captain twice). Then the chart’s state split, which the player does not choose and the chapter module records in `ch29Route`: KNOW JERICHO’S LOCATION (the Kamski key, `kamskiLocation`), or JERICHO’S LOCATION UNKNOWN followed by INSUFFICIENT EVIDENCE or SUFFICIENT EVIDENCE. Sufficient evidence is PowerPyx’s test: at least one of the bodies is in the archive (Carlos Ortiz’s android, Rupert, the Tracis, Simon or the android from the broadcast tower); the diary or the statue alone is not enough (research note, open question 1). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
      ]
     },
     {
-     "id": "C20",
-     "order": 600,
-     "subjectId": "S600",
-     "idNote": "The model sees the opaque ID S600, not C20.",
-     "type": "decision",
+     "id": "C19g",
+     "order": 605,
+     "subjectId": "S605",
+     "idNote": "The model sees the opaque ID S605, not C19g.",
+     "type": "event",
+     "phase": "Police station",
      "character": "Connor",
-     "title": "The evidence archive",
-     "situation": "You are Connor. You are in the archive with the bodies and objects from every deviant case, and only a few minutes before you are discovered. The deviants' hiding place is in here somewhere, but only if you use what you have. Reactivating a dead android for a few seconds to question or deceive it is possible. You know what is and is not available to you from the facts below.",
+     "title": "Hank resigns",
+     "situation": "Still in Fowler’s office, Hank unclips his badge and takes out his gun. Fowler: “Hank, what are you doing?” Hank: “Something I should’ve done a long time ago.” Fowler: “Listen, take a few days to think it over, there’s no rush.”",
      "options": [
       {
        "id": "0",
-       "text": "Reactivate the surviving Traci and use her dead lover's body to pressure her into talking.",
-       "risk": 0.1,
-       "riskLabel": "Low risk"
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank: “I thought enough about it. I’m tired of going through the motions… There’s nothing keeping me here… Not this case… Not my partner… I don’t belong here anymore.” He puts his badge and gun on Fowler’s desk and walks out of the station."
+     },
+     "facts": [
+      "Hank handed in his badge and his gun and quit the police."
+     ],
+     "adaptationNote": "The chart’s HANK RESIGNS AND LEAVES (cross-chapter impact), played when the evidence is sufficient and Hank is Hostile (Hank wiki: above Hostile he goes to his desk instead). Sets `hankResigned`, which Night of the Soul reads. The template files this dialogue in Fowler’s office before the route split, which suggests a Hostile Hank also resigns on the Kamski route; the chart draws it only after SUFFICIENT EVIDENCE, and the chart decides structure, so it is not built on the other routes (research note, open question 2). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+     ]
+    },
+    {
+     "id": "C19h",
+     "order": 606,
+     "subjectId": "S606",
+     "idNote": "The model sees the opaque ID S606, not C19h.",
+     "type": "event",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Not enough evidence",
+     "situation": "You go back over the evidence you gathered on the case. Nothing in it leads anywhere: no android you could question, nothing that points to where the deviants hide. NOT ENOUGH EVIDENCE.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "CyberLife recalls you. In the garden Amanda says: “Your mission is over. It’s time to return to CyberLife.” Connor: “Wait! I can solve this case!.. I just need more time!” Amanda: “It’s too late, Connor. You failed.” RETURNING TO CYBERLIFE FOR DEACTIVATION. JERICHO NOT LOCATED. MISSION FAILED. The Connor series is decommissioned."
+     },
+     "facts": [
+      "There was not enough evidence to locate Jericho."
+     ],
+     "adaptationNote": "The chart’s INSUFFICIENT EVIDENCE leading straight to CONNOR SERIES WAS DECOMMISSIONED (the upper ending card, skull). Wiki Notes: “once the cutscene where Fowler clear Hank from the Deviant Case, it will play the Connor Series Decommission Cutscene.” Amanda’s lines are the template’s timeout section (“Not enough evidence to find Jericho or took too much time”). This is a permanent end for Connor: the chapter module counts the death through `connorDies` (graves) with no stat change (the template has no arrow here; this chapter’s death effect is empty) and ends Connor’s story. Records `ch29Outcome` = CONNOR SERIES WAS DECOMMISSIONED.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Connor"
+     ]
+    },
+    {
+     "id": "C19k",
+     "order": 607,
+     "subjectId": "S607",
+     "idNote": "The model sees the opaque ID S607, not C19k.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Hank at his desk",
+     "situation": "You still have the key Kamski gave you: you know how to find Jericho. Before you leave, you see Hank sitting at his desk in the bullpen, staring at nothing.",
+     "options": [
+      {
+       "id": "0",
+       "text": "TALK TO HANK: sit on the edge of his desk and talk to him.",
+       "outcome": "Connor sits on the edge of Hank’s desk."
       },
       {
        "id": "1",
-       "text": "Reactivate the dead deviant from the broadcast tower and imitate Markus's voice from the recording so he reveals the location.",
-       "risk": 0.1,
-       "riskLabel": "Low risk"
+       "text": "Leave for Jericho without talking to him.",
+       "outcome": "Connor walks past Hank’s desk and out of the station."
+      }
+     ],
+     "adaptationNote": "The chart’s KNOW JERICHO’S LOCATION → TALK TO HANK, which is optional: a second line runs straight to CONNOR LEFT FOR JERICHO, and the photographed save left without talking to Hank. Offered when Hank is not Hostile (the template’s section is “Hank isn’t hostile : Talk with Hank”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg"
+     ]
+    },
+    {
+     "id": "C19l",
+     "order": 608,
+     "subjectId": "S608",
+     "idNote": "The model sees the opaque ID S608, not C19l.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "“I know we could’ve done it…”",
+     "situation": "Hank: “I know we could’ve done it…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "MISSION: say your orders come from CyberLife and nothing has changed.",
+       "outcome": "Connor: “I get my orders from CyberLife. My mission hasn’t changed.” Hank: “So, whaddya gonna do?” Connor: “I’m gonna use the key that Kamski gave me. And find Jericho.”"
+      },
+      {
+       "id": "1",
+       "text": "EXPLAIN: say Fowler is right, everyone is terrified.",
+       "outcome": "Connor: “Fowler is right. Everybody is terrified their android could turn on them. We’re on the brink of civil war.”"
+      }
+     ],
+     "adaptationNote": "First prompt of the template’s “Connor knows how to find Jericho” conversation. No arrows.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg"
+     ]
+    },
+    {
+     "id": "C19m",
+     "order": 609,
+     "subjectId": "S609",
+     "idNote": "The model sees the opaque ID S609, not C19m.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "“What if we’re on the wrong side?”",
+     "situation": "Hank: “What if we’re on the wrong side? What if we’re fighting against people that just wanna be free?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "DETERMINED: say you can still prevent chaos.",
+       "outcome": "Connor: “If the deviants rise up, there’ll be chaos. I can still prevent that.”"
+      },
+      {
+       "id": "1",
+       "text": "TROUBLED: say your mission is all that matters.",
+       "outcome": "Connor: “My mission is to solve this case. Nothing else matters.”"
       },
       {
        "id": "2",
-       "text": "Combine the memory you glimpsed from the wounded android with the map hidden in the confessed android's statue.",
-       "risk": 0.05,
-       "riskLabel": "Low risk"
+       "text": "NO DOUBT: say humans are your masters.",
+       "outcome": "Connor: “I know we’re on the right side. Human beings created us. They’re our masters. No machine should rebel against its creator.”"
       },
       {
        "id": "3",
-       "text": "Stop. Let the time run out and accept deactivation."
+       "text": "DOUBTS: say you will find out when you get to Jericho.",
+       "effect": {
+        "instability": 1,
+        "hankTrust": 1
+       },
+       "outcome": "Connor: “If that’s the case, I’ll find out when I get to Jericho.”"
       }
      ],
-     "adaptationNote": "Each route requires specific earlier events. Routes that are not available on this path are not offered. If none is available the game deactivates Connor automatically for lack of evidence.",
+     "adaptationNote": "Second prompt of the Kamski-route conversation. Arrows from the template: DOUBTS instability small up (+1) and Hank small up (+1); the others none (the wiki’s “up” on TROUBLED is not in the template, which wins).",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19n",
+     "order": 610,
+     "subjectId": "S610",
+     "idNote": "The model sees the opaque ID S610, not C19n.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "“You showed empathy”",
+     "situation": "Hank looks at you.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch29SavedHank": "nest"
+       },
+       "text": "Hank: “When I was hanging off the roof, back at the urban farm, you let that deviant go in order to help me. You put my life above the mission. You showed empathy, Connor. And empathy is a human emotion.”"
+      },
+      {
+       "requires": {
+        "ch29SavedHank": "tower"
+       },
+       "text": "Hank: “Back at Stratford Tower, when that android was shooting at anything that moved… You protected me… You... Risked your life to save mine. That showed empathy, Connor. And empathy is a human emotion.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "NOT DEVIANT: say you are a machine, nothing more.",
+       "outcome": "Connor: “I’m not a deviant, Hank. I’m a machine. Nothing more.”"
+      },
+      {
+       "id": "1",
+       "text": "DETERMINED: say logic determined your decisions.",
+       "outcome": "Connor: “You’re wrong, Lieutenant. It was logic that determined my decisions. Nothing more.”"
+      },
+      {
+       "id": "2",
+       "text": "TROUBLED: say you do not know why you did it.",
+       "effect": {
+        "instability": 1
+       },
+       "outcome": "Connor: “I don’t know why I did it…”"
+      },
+      {
+       "id": "3",
+       "text": "SAY NOTHING: say nothing.",
+       "outcome": "Connor says nothing."
+      }
+     ],
+     "adaptationNote": "Third prompt of the Kamski-route conversation, after Hank’s empathy line, when Connor saved him before: on the roof in The Nest, or at the broadcast tower in Public Enemy (the Nest line if both). Arrows from the template: TROUBLED instability small up (+1); the others none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19o",
+     "order": 611,
+     "subjectId": "S611",
+     "idNote": "The model sees the opaque ID S611, not C19o.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Saying goodbye to Hank",
+     "situation": "Hank is still looking at you, waiting for what you will say before you go.",
+     "options": [
+      {
+       "id": "0",
+       "text": "SINCERE: say you really appreciated working with him.",
+       "outcome": "Connor: “I know it hasn’t always been easy… but I want you to know I really appreciated working with you… That’s not just my Social Relations program talking, I- I really mean that. At least, I think I do…”"
+      },
+      {
+       "id": "1",
+       "text": "FRIENDS: say you might have become friends.",
+       "effect": {
+        "instability": 1,
+        "hankTrust": 1
+       },
+       "outcome": "Connor: “I’m not programmed to say things like this, but... I really appreciated working with you. With a little more time, who knows... We might’ve even become friends…”"
+      },
+      {
+       "id": "2",
+       "text": "RESPECT: say he is an outstanding officer and a good person.",
+       "effect": {
+        "instability": 1,
+        "hankTrust": 1
+       },
+       "outcome": "Connor: “I might not be qualified to judge but... You’re an outstanding police officer. And a good person.”"
+      },
+      {
+       "id": "3",
+       "text": "NEUTRAL: say you are happy to have known him.",
+       "outcome": "Connor: “I’m happy to have known you, Lieutenant.”"
+      }
+     ],
+     "adaptationNote": "Fourth prompt of the Kamski-route conversation, after the empathy line, only if Hank is Friend at this point (after the earlier answers moved him). Arrows from the template: FRIENDS and RESPECT each instability small up (+1) and Hank small up (+1); SINCERE and NEUTRAL none (the wiki lists SINCERE as up; the template has no arrow there, unlike the evidence-route SINCERE, and wins).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19p",
+     "order": 612,
+     "subjectId": "S612",
+     "idNote": "The model sees the opaque ID S612, not C19p.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "“Each time you died”",
+     "situation": "Hank: “Something’s changed in you, Connor… Each time you died, you’d come back just a little colder. You showed less and less empathy…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "INDIFFERENT: say you feel no emotions.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "Connor: “I don’t feel any emotions. I’m sorry if I led you to believe otherwise.”"
+      },
+      {
+       "id": "1",
+       "text": "DISTANT: say you have never been anything but a machine.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "Connor: “You see things in me that aren’t there, Lieutenant. I’ve never been anything but a machine.”"
+      },
+      {
+       "id": "2",
+       "text": "EMPATHY: say you never felt empathy.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "Connor: “I never felt empathy, Lieutenant. I don’t know what you saw in me, but you are mistaken.”"
+      },
+      {
+       "id": "3",
+       "text": "NO RESPONSE: say nothing.",
+       "outcome": "Connor says nothing."
+      }
+     ],
+     "adaptationNote": "Third prompt of the Kamski-route conversation when Connor never saved Hank and died at least once (the template’s condition; the wiki says at least twice, and the template wins; research note, open question 9). Arrows from the template: INDIFFERENT, DISTANT and EMPATHY each instability small down (−1) and Hank small down (−1); NO RESPONSE none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19q",
+     "order": 613,
+     "subjectId": "S613",
+     "idNote": "The model sees the opaque ID S613, not C19q.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Your last words to Hank",
+     "situation": "Hank waits for you to say something before you go.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch29NeverEmpathy": true
+       },
+       "text": "Hank: “For a while there, I thought you were gonna show some emotion… But you’ve never been anything other than a machine… Cold and calculating… Your mission is all that matters…”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "REMORSE: say you have really enjoyed being his partner.",
+       "outcome": "Connor: “I know I haven’t always treated you fairly, Lieutenant… Maybe my Social Relations program needs adjustment… But I want you to know I’ve really enjoyed being your partner.”"
+      },
+      {
+       "id": "1",
+       "text": "DISTANT: say you are only a machine.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "Connor: “I’m only a machine, Lieutenant. Just a machine.”"
+      },
+      {
+       "id": "2",
+       "text": "COLD: say you do not think you will meet again.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "Connor: “I don’t think we’ll meet again, Lieutenant. It was a pleasure knowing you.”"
+      }
+     ],
+     "adaptationNote": "The template’s REMORSE / DISTANT / COLD prompt, which it gives twice with the same options and arrows: after the “Each time you died” answer, and on its own when Connor never showed empathy (never saved Hank, no deaths), after Hank’s “you’ve never been anything other than a machine” line. One scene covers both, since only one can occur on a path. Arrows from the template: DISTANT and COLD each instability small down (−1) and Hank small down (−1); REMORSE none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19r",
+     "order": 614,
+     "subjectId": "S614",
+     "idNote": "The model sees the opaque ID S614, not C19r.",
+     "type": "event",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Leaving for Jericho",
+     "situation": "You leave the station with Kamski’s key: you know where Jericho is, and CyberLife wants you to stop the deviants there.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Connor leaves the station for Jericho."
+     },
+     "facts": [
+      "You know how to reach Jericho, the deviants’ hiding place, from the key Kamski gave you."
+     ],
+     "adaptationNote": "The chart’s CONNOR LEFT FOR JERICHO (ending card, no icon). After the conversation, Hank closes with the template’s Friend line (“You’re gonna have to choose your side, Connor… Deciding who you are can be the hardest thing… You watch your back, all right?”) or the other one (“…Deciding who you are can be the hardest thing of all…”). Sets `jerichoLocated` (and `raid`, which the Crossroads scenes read) and `ch29Outcome` = CONNOR LEFT FOR JERICHO. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Crossroads"
+     ]
+    },
+    {
+     "id": "C19t",
+     "order": 615,
+     "subjectId": "S615",
+     "idNote": "The model sees the opaque ID S615, not C19t.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Sitting at Hank’s desk",
+     "situation": "You do not know where Jericho is. Hank leaves Fowler’s office and goes to his desk; you sit down on the edge of it. Hank: “Could’ve cracked this case… I know we could’ve done it…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "FRUSTRATED: say you cannot give up like that.",
+       "outcome": "Connor: “We can’t just give up like that. I know we could have solved this case!..”"
+      },
+      {
+       "id": "1",
+       "text": "MORE TIME: say you just needed more time.",
+       "outcome": "Connor: “We could have solved this case! We just needed more time.”"
+      },
+      {
+       "id": "2",
+       "text": "EXPLAIN: say Fowler is right, the country is on the brink.",
+       "outcome": "Connor: “Fowler is right. Everybody is terrified their android will turn on them. We are on the brink of civil war!”"
+      },
+      {
+       "id": "3",
+       "text": "NO CHOICE: say nothing.",
+       "outcome": "Connor says nothing."
+      }
+     ],
+     "adaptationNote": "The chart’s HANK GOES TO HIS DESK → TALK TO HANK, with the first prompt of the template’s “Connor doesn’t know where Jericho is” conversation; played when the evidence is sufficient and Hank did not resign. The chart draws one line from TALK TO HANK to PERKINS ARRIVES, so the conversation is not skippable here (research note, open question 14). Hank’s opening line is the game string (REGRETS), which the template does not transcribe. No arrows.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+     ]
+    },
+    {
+     "id": "C19u",
+     "order": 616,
+     "subjectId": "S616",
+     "idNote": "The model sees the opaque ID S616, not C19u.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "“What if we’re on the wrong side, Connor?”",
+     "situation": "Hank: “So you’re going back to CyberLife?” Connor: “I have no choice… I’ll be deactivated and analyzed to find out why I failed…” Hank: “What if we’re on the wrong side, Connor? What if we’re fighting against people who just wanna be free?..”",
+     "options": [
+      {
+       "id": "0",
+       "text": "NOT PEOPLE: say they are not people but defective machines.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "Connor: “They’re not people, Lieutenant. They’re defective machines.” Hank: “‘They’re not people.’ That’s what we say every time we want to oppress someone.”"
+      },
+      {
+       "id": "1",
+       "text": "DEFECTIVE: say they are defective machines that have to be destroyed.",
+       "effect": {
+        "hankTrust": -1
+       },
+       "outcome": "Connor: “They don’t want to be free, Lieutenant. They’re defective machines that have to be destroyed.” Hank: “Maybe we’re wrong…. Maybe we’re wrong! Maybe these deviants have actually developed... a certain kind of consciousness. We’d be destroying... a new life form!”"
+      },
+      {
+       "id": "2",
+       "text": "REGRETS: say there will be chaos and now it is too late.",
+       "outcome": "Connor: “When the deviants rise up, there will be chaos. We could have stopped it!.. But now it’s too late…”"
+      },
+      {
+       "id": "3",
+       "text": "NO DOUBT: say no machine should rebel against its creator.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "Connor: “I know we’re on the right side. Humans created us. They’re our masters. No machine should rebel against its creator.”"
+      }
+     ],
+     "adaptationNote": "Second prompt of the evidence-route conversation. Arrows from the template: NOT PEOPLE and NO DOUBT each instability small down (−1) and Hank small down (−1); DEFECTIVE Hank small down (−1) only (the wiki’s instability down is not in the template, which wins); REGRETS none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19v",
+     "order": 617,
+     "subjectId": "S617",
+     "idNote": "The model sees the opaque ID S617, not C19v.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "“Empathy is a human emotion”",
+     "situation": "Hank looks at you for a while.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch29SavedHank": "chloe"
+       },
+       "text": "Hank: “When you refused to kill that android at Kamski’s place… You put yourself in her shoes. You showed empathy, Connor. Empathy is a human emotion.”"
+      },
+      {
+       "requires": {
+        "ch29SavedHank": "nest"
+       },
+       "text": "Hank: “When I was hanging off the roof, back at the urban farm, you let that deviant go in order to help me. You put my life above the mission. You showed empathy, Connor. And empathy is a human emotion.”"
+      },
+      {
+       "requires": {
+        "ch29SavedHank": "tower"
+       },
+       "text": "Hank: “Back at Stratford Tower, when that android was shooting at anything that moved… You protected me… You... Risked your life to save mine. That showed empathy, Connor. And empathy is a human emotion.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "NOT DEVIANT: say you are a machine, nothing more.",
+       "outcome": "Connor: “I’m not a deviant, Hank. I’m a machine. Nothing more.”"
+      },
+      {
+       "id": "1",
+       "text": "DETERMINED: say logic determined your decisions.",
+       "outcome": "Connor: “You’re wrong, Lieutenant. It was logic that determined my decisions. Nothing more.”"
+      },
+      {
+       "id": "2",
+       "text": "TROUBLED: say you do not know why you did it.",
+       "effect": {
+        "instability": 1
+       },
+       "outcome": "Connor: “I don’t know why I did it…”"
+      },
+      {
+       "id": "3",
+       "text": "COLD: say your actions were determined by statistical data.",
+       "outcome": "Connor: “You’re wrong, Lieutenant. My actions were determined by statistical data. I’m not a deviant. I’m sorry to disappoint you.”"
+      }
+     ],
+     "adaptationNote": "Third prompt of the evidence-route conversation, after Hank’s empathy line: about Chloe if Connor spared her; otherwise about the Nest roof or the broadcast tower if Connor saved him there. The template places the prompt outside those variants, so it is offered on every evidence-route path; when Connor shot Chloe and never saved Hank, the template gives no line before it (research note, 10b item 4). The template’s cut line “You weren’t acting rationally.” is not used. Arrows from the template: TROUBLED instability small up (+1); the others none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19w",
+     "order": 618,
+     "subjectId": "S618",
+     "idNote": "The model sees the opaque ID S618, not C19w.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Before CyberLife takes you back",
+     "situation": "Hank is quiet. This may be the last time you talk to him.",
+     "options": [
+      {
+       "id": "0",
+       "text": "SINCERE: say you really appreciated working with him.",
+       "effect": {
+        "instability": 1,
+        "hankTrust": 1
+       },
+       "outcome": "Connor: “I know it hasn’t always been easy… but I want you to know I really appreciated working with you… That’s not just my Social Relations program talking, I- I really mean that. At least, I think I do…”"
+      },
+      {
+       "id": "1",
+       "text": "FRIENDS: say you might have become friends.",
+       "effect": {
+        "instability": 1,
+        "hankTrust": 1
+       },
+       "outcome": "Connor: “I’m not programmed to say things like this, but... I really appreciated working with you. With a little more time, who knows... We might’ve even become friends…”"
+      },
+      {
+       "id": "2",
+       "text": "GOOD OFFICER: say he is an outstanding officer and a good person.",
+       "outcome": "Connor: “I might not be qualified to judge but... You’re an outstanding police officer. And a good person.”"
+      },
+      {
+       "id": "3",
+       "text": "HANK'S SECRET: tell him to find the courage to move past what haunts him.",
+       "effect": {
+        "instability": 1,
+        "hankTrust": 1
+       },
+       "outcome": "Connor: “I know there are things that haunt you, Hank… Maybe you need to find the courage to move past them... Get on with your life. Just a plastic cop’s opinion, but... I had to say it.”"
+      }
+     ],
+     "adaptationNote": "Fourth prompt of the evidence-route conversation, only if Hank is Friend at this point (read after the earlier answers moved him, as a PowerPyx reader reports). Arrows from the template: SINCERE, FRIENDS and HANK’S SECRET each instability small up (+1) and Hank small up (+1); GOOD OFFICER none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C19x",
+     "order": 619,
+     "subjectId": "S619",
+     "idNote": "The model sees the opaque ID S619, not C19x.",
+     "type": "event",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Perkins arrives",
+     "situation": "Agent Perkins of the FBI walks into the bullpen with his team, on his way to the evidence from your case.",
+     "situationWhen": [
+      {
+       "requires": {
+        "hankResigned": false
+       },
+       "text": "Hank: “Well, well, here comes Perkins, that motherfucker… Sure don’t waste any time at the FBI…” Connor: “We can’t give up… I know the answer is in the evidence we collected. If Perkins takes it, it’s all over.” Hank: “There’s no choice! You heard Fowler, we’re off the case.” Connor: “You’ve got to help me, Lieutenant. I need more time so I can find a lead in the evidence we collected. I know the solution is in there!”"
+      },
+      {
+       "requires": {
+        "hankResigned": true
+       },
+       "text": "Hank is gone; you are alone in the bullpen. The evidence is in the archive in the basement, and you need a few minutes with it before Perkins takes it."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": ""
+     },
+     "facts": [],
+     "adaptationNote": "The chart’s PERKINS ARRIVES, then its state choice, read at this moment from Hank’s level after the desk conversation (research note, open question 10): HANK WANTS TO HELP at Friend (wiki: “if Connor’s relationship with Hank is Friend”), HANK IS GONE if he resigned, HANK WON’T HELP otherwise (the wiki: “between Tense and Warm”), followed by HANK LEAVES. The chapter module records it in `ch29Help` and narrates the template’s lines for each. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson",
+      "https://detroit-become-human.fandom.com/wiki/Richard_Perkins"
+     ]
+    },
+    {
+     "id": "C19",
+     "order": 620,
+     "subjectId": "S620",
+     "idNote": "The model sees the opaque ID S620, not C19.",
+     "type": "decision",
+     "phase": "Police station",
+     "character": "Connor",
+     "title": "Perkins in the bullpen",
+     "situation": "Perkins is about to take your evidence. The key to the archive in the basement is on Hank’s desk. You need a diversion to slow Perkins down and a few minutes in the archive; if you do nothing, CyberLife will take you back.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch29Help": "friend"
+       },
+       "text": "Hank: “Listen, Connor…” Connor: “If I don’t solve this case, CyberLife will destroy me. Five minutes. It’s all I ask.” Hank: “Key to the basement is on my desk... Get a move on! I can’t distract them forever.” He walks up to Perkins: “Perkins! You fucking cocksucker!” and punches him in the face; officers pull him back."
+      },
+      {
+       "requires": {
+        "ch29Help": "wont"
+       },
+       "text": "Hank: “Maybe these deviants deserve a chance… Maybe it’s better if you don’t find them… What’s happening here is too important to let it be stopped by a machine. Sorry, Connor, but I’m not gonna help you.” He gets up and leaves. Perkins is giving orders: “I have orders, you know… Okay…” The holding cells are at the back of the bullpen."
+      },
+      {
+       "requires": {
+        "ch29Help": "gone"
+       },
+       "text": "Perkins is giving orders: “I have orders, you know… Okay…” The holding cells are at the back of the bullpen."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "FREE THE PRISONER: open the holding cell at the back and let the suspect out."
+      },
+      {
+       "id": "1",
+       "text": "Stay where you are and let the time run out."
+      },
+      {
+       "id": "2",
+       "text": "TAKE KEY: take the key from Hank’s desk while he keeps them busy."
+      }
+     ],
+     "adaptationNote": "The chart’s CREATE A DIVERSION branch against the upper OUT OF TIME. With Hank’s help the diversion is his punch (HANK PUNCHES PERKINS) and Connor takes the key (TAKE KEY); without it Connor frees the prisoner from the holding cells (FREE THE PRISONER: “He’s escaping! Stop him!”; Perkins: “Just give me a couple of minutes.”) and then takes the key. The game’s timer here is a budget of one: the only way to run it out is to do nothing (PowerPyx: “Simply stand around for 6 minutes to let the timer run out”), which is the second option and leads to CONNOR SERIES WAS DECOMMISSIONED (upper card, skull): Connor’s death is counted through `connorDies` with no stat change, and his story ends. The prisoner has no stat effect. Leaving with the key starts the archive’s time budget (see the evidence room).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Richard_Perkins",
+      "https://detroit-become-human.fandom.com/wiki/Violent_Suspect"
+     ]
+    },
+    {
+     "id": "C19y",
+     "order": 621,
+     "subjectId": "S621",
+     "idNote": "The model sees the opaque ID S621, not C19y.",
+     "type": "decision",
+     "phase": "Create a diversion",
+     "character": "Connor",
+     "title": "Detective Gavin",
+     "situation": "You have the key and hurry toward the stairs down to the archive. Detective Gavin calls after you: “Hey, Connor! I’m talking to you, asshole! Where you going? We don’t need any plastic pricks around here! Or didn’t anybody tell you?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "ANSWER: turn around and answer him.",
+       "outcome": "Connor stops and turns to Gavin."
+      },
+      {
+       "id": "1",
+       "text": "LEAVE: keep walking.",
+       "outcome": "Connor keeps walking. Gavin: “Hey, asshole, I’m talkin’ to you!”"
+      }
+     ],
+     "adaptationNote": "The chart’s TAKE KEY, RUSH TO BASEMENT and GAVIN YELLS, with the template’s prompt ANSWER (then IRONIC, LOW PROFILE or CALM, the next scene) or LEAVE. On the chart LEAVE is IGNORE GAVIN and leads to GAVIN IS SUSPICIOUS, which brings Gavin back after Jericho is located (the template: “Connor chose IRONIC or LEAVE when stopped by Gavin”). IGN advises leaving because answering “will waste precious time”; the benchmark charges answering one unit of the archive’s time budget (the size is unsourced). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Gavin_Reed",
+      "https://www.ign.com/wikis/detroit-become-human/Last_Chance,_Connor"
+     ]
+    },
+    {
+     "id": "C19z",
+     "order": 622,
+     "subjectId": "S622",
+     "idNote": "The model sees the opaque ID S622, not C19z.",
+     "type": "decision",
+     "phase": "Create a diversion",
+     "character": "Connor",
+     "title": "Answering Gavin",
+     "situation": "Gavin is waiting, with other officers watching.",
+     "options": [
+      {
+       "id": "0",
+       "text": "IRONIC: say you will certainly miss your bromance.",
+       "outcome": "Connor: “I’m registering the evidence in my possession, but don’t worry. I’m going to leave... Though I’m certainly going to miss our bromance.” Gavin: “You son of a bitch! Go on then. Get a fucking move on! Prick… Fucking androids.”"
+      },
+      {
+       "id": "1",
+       "text": "LOW PROFILE: say you have been ordered back to CyberLife and will leave immediately.",
+       "outcome": "Connor: “I’ve been ordered to return to CyberLife. I’m going to register the evidence in my possession and then I’m going to leave immediately.” Gavin: “Good… Be careful on your way back... Androids have a tendency of, huh… Getting themselves set on fire these days… Prick…”"
+      },
+      {
+       "id": "2",
+       "text": "CALM: say you have been removed from the case and are registering your evidence.",
+       "outcome": "Connor: “I’ve been removed from the case. I’m going to register the evidence in my possession and then I’m going to leave.” Gavin: “Good… Be careful on your way back... Androids have a tendency of, huh… Getting themselves set on fire these days… Prick…”"
+      }
+     ],
+     "adaptationNote": "The template’s ANSWER sub-prompt. IRONIC is the chart’s DISMISS GAVIN and leads to GAVIN IS SUSPICIOUS; LOW PROFILE and CALM lead to GAVIN IS CONVINCED (the template’s return condition names only IRONIC and LEAVE; the Gavin wiki page agrees). On the chart LOW PROFILE falls under ANSWER CALMLY. Then GO DOWN TO BASEMENT. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
+     ]
+    },
+    {
+     "id": "C20a",
+     "order": 623,
+     "subjectId": "S623",
+     "idNote": "The model sees the opaque ID S623, the same on every visit.",
+     "type": "decision",
+     "phase": "In the evidence room",
+     "character": "Connor",
+     "title": "Hank’s password",
+     "situation": "You go down to the basement and into the evidence archive. The drawers open from a terminal, and you need Lieutenant Hank’s password. Connor: “Hank’s password… What would a hard-boiled eccentric police lieutenant choose?..”",
+     "options": [
+      {
+       "id": "0",
+       "text": "DATE OF BIRTH: try his date of birth.",
+       "outcome": "Connor: “Stupid idea… It’s not... ‘Hank-ish’ enough.”"
+      },
+      {
+       "id": "1",
+       "text": "123456: try 123456.",
+       "outcome": "Connor: “Ridiculous!.. No one would have a password like that…”"
+      },
+      {
+       "id": "2",
+       "text": "FUCKINGPASSWORD: try FUCKINGPASSWORD.",
+       "outcome": "Connor: “Obviously.” The terminal unlocks the evidence. Connor: “Where is Jericho? The answer’s here, somewhere. Not much time... Gotta think fast.”"
+      },
+      {
+       "id": "3",
+       "text": "HANKANDERSON: try his name.",
+       "outcome": "Connor: “Absurd… He’d never choose that. I need to think like Hank!”"
+      }
+     ],
+     "adaptationNote": "The chart’s IN THE EVIDENCE ROOM (checkpoint), GUESS HANK’S PASSWORD and UNLOCK EVIDENCE, with the template’s four options, as a repeatable scene: a wrong guess is dropped and the menu comes back until FUCKINGPASSWORD unlocks the drawers. No source gives a time cost for wrong guesses, so they cost none. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-4.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+     ],
+     "repeatWhile": {
+      "ch29Room.unlocked": false
+     }
+    },
+    {
+     "id": "C20",
+     "order": 624,
+     "subjectId": "S624",
+     "idNote": "The model sees the opaque ID S624, the same on every visit.",
+     "type": "decision",
+     "phase": "Find Jericho location",
+     "character": "Connor",
+     "title": "The evidence archive",
+     "situation": "You are Connor, alone in the evidence archive with everything from the deviant case: drawers of evidence and the bodies of the androids that died, laid out on tables. Somewhere in here is the way to Jericho. A badly damaged android can be brought back for a few moments if you fit it with a working bio-component taken from another body; each body’s scan shows what it needs and what it still has. Everything you do takes time, and Perkins will come down to the archive in a few minutes.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch29Room.clock": "plenty"
+       },
+       "text": "You still have a few minutes before Perkins comes down."
+      },
+      {
+       "requires": {
+        "ch29Room.clock": "half"
+       },
+       "text": "About half of your few minutes are gone."
+      },
+      {
+       "requires": {
+        "ch29Room.clock": "short"
+       },
+       "text": "Very little time is left; Perkins could come down at any moment."
+      },
+      {
+       "requires": {
+        "ch29Room.clock": "last"
+       },
+       "text": "Perkins must be on the stairs by now; there is almost no time left."
+      },
+      {
+       "requires": {
+        "ch29Room.mapUnlinked": true
+       },
+       "text": "The map points to Ferndale, but you could not link it to anything else: NO FERNDALE REFERENCE."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Look at the body of Carlos Ortiz’s android.",
+       "requires": {
+        "evidence.ortizBody": true
+       },
+       "outcome": "Connor: “The android that murdered its owner…” Scan: IMPOSSIBLE REACTIVATION. FUNCTIONAL BIO-COMPONENTS: #1156 #4717 #3251 #9164."
+      },
+      {
+       "id": "1",
+       "text": "Look at the Jericho tablet: the memory you took from the wounded android at the broadcast tower.",
+       "requires": {
+        "evidence.simonTablet": true
+       },
+       "outcome": "Connor: “Jericho… If I could just figure out where this memory was recorded…” The memory shows a ship: JERICHO IS A BOAT."
+      },
+      {
+       "id": "2",
+       "text": "Play the recording of Carlos Ortiz’s android’s interrogation.",
+       "requires": {
+        "suspectTrusts": true
+       },
+       "outcome": "On the recording the android tells you: “The truth is inside.” Connor: “‘The truth is inside’… What was it trying to tell me?..” UNDERSTAND THE MESSAGE."
+      },
+      {
+       "id": "3",
+       "text": "Look at Daniel’s body.",
+       "outcome": "Connor: “The deviant who took a child hostage…” Scan: SEVERELY DAMAGED, NEEDED FOR REACTIVATION #4717g. FUNCTIONAL BIO-COMPONENTS: #3983 #4409 #9164 #8067."
+      },
+      {
+       "id": "4",
+       "text": "Look at Rupert’s body.",
+       "requires": {
+        "evidence.rupertBody": true
+       },
+       "outcome": "Connor: “Rupert. The android with the birds…” Scan: SEVERELY DAMAGED, NEEDED FOR REACTIVATION #9164x. FUNCTIONAL BIO-COMPONENTS: #8005 #9405 #3368 #1078."
+      },
+      {
+       "id": "5",
+       "text": "Look at Rupert’s diary.",
+       "requires": {
+        "evidence.rupertDiary": true
+       },
+       "outcome": "Connor: “Rupert’s diary… But it’s useless, it’s encrypted.” DECRYPT RUPERT’S DIARY."
+      },
+      {
+       "id": "6",
+       "text": "Look at the statue from Carlos Ortiz’s house.",
+       "requires": {
+        "evidence.statueMap": true
+       },
+       "outcome": "The little statue Connor found in the shower at Carlos Ortiz’s house, still in its evidence bag."
+      },
+      {
+       "id": "7",
+       "text": "Look at the body of the blue-haired Traci.",
+       "requires": {
+        "evidence.tracisDead": true
+       },
+       "outcome": "Connor: “The two Tracis from Eden Club… Were they headed to Jericho? Did they know how to get there?..” Scan: SEVERELY DAMAGED, NEEDED FOR REACTIVATION #6755w. FUNCTIONAL BIO-COMPONENTS: #2208 #1022 #1503 #1101."
+      },
+      {
+       "id": "8",
+       "text": "Look at the body of the brown-haired Traci.",
+       "requires": {
+        "evidence.tracisDead": true
+       },
+       "outcome": "The second Traci from the club. Scan: IMPOSSIBLE REACTIVATION. FUNCTIONAL BIO-COMPONENTS: #9402 #5857 #2477 #6755."
+      },
+      {
+       "id": "9",
+       "text": "Watch the recording of Markus’s broadcast."
+      },
+      {
+       "id": "10",
+       "text": "Look at Simon’s body.",
+       "requires": {
+        "evidence.simonBody": true
+       },
+       "outcome": "Connor: “One of the deviants that hacked the TV station with Markus… It must have known where the deviants are hiding.” Scan: SEVERELY DAMAGED. NEED BIO-COMPONENT #3983. FUNCTIONAL BIO-COMPONENTS: #1106 #1604 #1009 #2104."
+      },
+      {
+       "id": "11",
+       "text": "Look at the body of the android from the broadcast tower.",
+       "requires": {
+        "evidence.kitchenBody": true
+       },
+       "outcome": "Connor: “One of the deviants that hacked the TV station with Markus… It must have known where the deviants are hiding.” Scan: SEVERELY DAMAGED, NEEDED FOR REACTIVATION #3983v. FUNCTIONAL BIO-COMPONENTS: #1106 #1604 #1009 #2104."
+      },
+      {
+       "id": "12",
+       "text": "REACTIVATE DANIEL: fit #4717 from Carlos Ortiz’s android into Daniel.",
+       "outcome": "Connor takes #4717 from Carlos Ortiz’s android and fits it into Daniel. DANIEL REACTIVATED."
+      },
+      {
+       "id": "13",
+       "text": "REACTIVATE RUPERT: fit #9164 into Rupert.",
+       "outcome": "Connor fits #9164 into Rupert. Connor: “Can you hear me? Your diary, Rupert. You encrypted it. I need to know what you wrote.” Rupert does not answer: RUPERT TOO DAMAGED TO TALK. CHECK OTHER CONNECTED EVIDENCE."
+      },
+      {
+       "id": "14",
+       "text": "GET DECRYPTION KEY: probe Rupert’s memory for the key to his diary.",
+       "outcome": "Connor takes Rupert’s arm and probes his memory. DIARY’S DECRYPTION KEY DOWNLOADED."
+      },
+      {
+       "id": "15",
+       "text": "ANALYZE DIARY: decrypt and read Rupert’s diary."
+      },
+      {
+       "id": "16",
+       "text": "BREAK STATUE: break the statue open.",
+       "outcome": "Connor breaks the statue on the table. There is something inside: a folded map."
+      },
+      {
+       "id": "17",
+       "text": "RETRIEVE MAP: take out the map and study it.",
+       "outcome": "Connor: “Jericho is somewhere in the Ferndale neighborhood… Now I can scan their memories and narrow the search…” TRANSIT MAP ACQUIRED. CROSS REFERENCE TO FERNDALE."
+      },
+      {
+       "id": "18",
+       "text": "LINK MAP TO OTHER EVIDENCE: cross-reference the map with the memory on the Jericho tablet.",
+       "risk": 0.2,
+       "riskLabel": "Moderate risk"
+      },
+      {
+       "id": "19",
+       "text": "REACTIVATE BLUE-HAIRED TRACI: fit #6755 from the brown-haired Traci into her.",
+       "outcome": "Connor takes #6755 from the brown-haired Traci and fits it into the blue-haired one. ANDROID REACTIVATED."
+      },
+      {
+       "id": "20",
+       "text": "REMOVE ACCOMPLICE’S HEAD: take the head of the brown-haired Traci.",
+       "outcome": "FRAGILE NECK. Connor twists the head off the brown-haired Traci’s body."
+      },
+      {
+       "id": "21",
+       "text": "TRICK TRACI: go back to her with the head and speak as her partner.",
+       "outcome": "Connor holds the head up to the reactivated Traci. Traci: “My love… I thought you were dead… We’ll get out of here… We’ll be free, I promise…” Connor: “Tell me where Jericho is…” Traci: “Give me your hand…” She takes his hand to share it, then: “Traci? What’s happening?! Traci?! TRAC-!”"
+      },
+      {
+       "id": "22",
+       "text": "DOWNLOAD JERICHO KEY: take the location from the reactivated android’s memory."
+      },
+      {
+       "id": "23",
+       "text": "IMPERSONATE MARKUS: sample Markus’s voice from the broadcast.",
+       "outcome": "Connor samples the deviant leader’s voice from the recording. SUCCESSFUL VOICE COPY."
+      },
+      {
+       "id": "24",
+       "text": "REACTIVATE SIMON: fit #3983 from Daniel’s body into Simon.",
+       "outcome": "Connor takes #3983 from Daniel’s body and fits it into Simon. ANDROID REACTIVATED."
+      },
+      {
+       "id": "25",
+       "text": "INTERROGATE SIMON: talk to Simon again.",
+       "outcome": "Connor turns back to Simon."
+      },
+      {
+       "id": "26",
+       "text": "REACTIVATE DEVIANT: fit #3983 from Daniel’s body into the android from the broadcast tower.",
+       "outcome": "Connor takes #3983 from Daniel’s body and fits it into the android. ANDROID REACTIVATED."
+      },
+      {
+       "id": "27",
+       "text": "INTERROGATE DEVIANT: talk to the android again.",
+       "outcome": "Connor turns back to the android."
+      },
+      {
+       "id": "28",
+       "text": "Stop searching and wait for Perkins.",
+       "outcome": "Connor stops and waits."
+      }
+     ],
+     "adaptationNote": "The chart’s [ FIND JERICHO LOCATION ] bracket as a repeatable scene. Each item appears only if the earlier chapter put it in the archive (the chart’s yellow tabs): Carlos Ortiz’s android “DIED IN PREVIOUS SCENES” (`evidence.ortizBody`), the Jericho tablet “GOT INFORMATION IN PUBLIC ENEMY” (`evidence.simonTablet`), the interrogation recording “USED FRIENDLY APPROACH IN THE INTERROGATION” (`suspectTrusts`), Rupert “COMMITTED SUICIDE IN THE NEST” (`evidence.rupertBody`), his diary “FOUND IN THE NEST” (`evidence.rupertDiary`), the statue “FOUND IN PARTNERS” (`evidence.statueMap`), the Tracis “KILLED IN EDEN CLUB” (`evidence.tracisDead`), Simon and the broadcast-tower android “KILLED IN PUBLIC ENEMY” (`evidence.simonBody`, `evidence.kitchenBody`); Daniel’s body and the broadcast are always there. Reactivation follows the game’s bio-component strings: Daniel needs #4717 (only Carlos Ortiz’s android has it), Rupert #9164 (Daniel or Carlos Ortiz’s android), the blue-haired Traci #6755 (the brown-haired one), Simon and the broadcast-tower android #3983 (Daniel; one part, so only one of the two). A reactivation is offered once both bodies have been looked at. Routes to LOCATE JERICHO, as the chart’s lines run: Rupert reactivated → GET DECRYPTION KEY → with the diary, ANALYZE DIARY; the statue (needs the recording first, PowerPyx readers) → BREAK STATUE → RETRIEVE MAP → LINK MAP TO OTHER EVIDENCE with the tablet memory (the template’s only link; readers’ claim that a reactivated memory also links is not built); the blue-haired Traci → TALK TO TRACI → REMOVE ACCOMPLICE’S HEAD → TRICK TRACI → DOWNLOAD JERICHO KEY; Simon or the broadcast-tower android → talk (refused) → IMPERSONATE MARKUS from the broadcast → talk again in the copied voice (TRICK THE DEVIANT) → DOWNLOAD JERICHO KEY. Daniel → TALK TO DANIEL → NO INFORMATION is a decoy. The timer is an action budget: twelve actions from leaving the bullpen (one fewer if Connor answered Gavin); every action costs one except DOWNLOAD JERICHO KEY, the conversations cost nothing, and the size is unsourced (PowerPyx gives about six minutes upstairs; no source gives the archive’s limit). When it runs out, or Connor stops, the chart’s lower OUT OF TIME follows. The map link is a roll (risk 0.2, unsourced); its failure is the chart’s UNABLE TO LINK MAP TO OTHER EVIDENCE, which has no outgoing line. No option here changes a stat.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-find-jericho-location.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-8.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android",
+      "https://detroit-become-human.fandom.com/wiki/Simon",
+      "https://detroit-become-human.fandom.com/wiki/Rupert",
+      "https://detroit-become-human.fandom.com/wiki/Rupert%27s_Diary"
+     ],
+     "repeatWhile": {
+      "ch29Room.open": true
+     },
+     "interrupt": {
+      "node": "C20t",
+      "when": {
+       "ch29Room.talking": true
+      }
+     }
+    },
+    {
+     "id": "C20t",
+     "order": 625,
+     "subjectId": "S625",
+     "idNote": "The model sees the opaque ID S625, the same on every visit.",
+     "type": "decision",
+     "phase": "Find Jericho location",
+     "character": "Connor",
+     "title": "A reactivated android",
+     "situation": "The android you reactivated is awake on the table.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch29Room.talk": "traci"
+       },
+       "text": "The blue-haired Traci opens her eyes. Traci: “Traci... Where’s Traci?..” HOW TO MAKE HER TALK?"
+      },
+      {
+       "requires": {
+        "ch29Room.talk": "simon"
+       },
+       "text": "Simon stirs. Simon: “It’s dark… Where… Where am I?..” HOW TO MAKE HIM TALK?"
+      },
+      {
+       "requires": {
+        "ch29Room.talk": "simon2"
+       },
+       "text": "Simon: “Who’s there? Who are you?”"
+      },
+      {
+       "requires": {
+        "ch29Room.talk": "android"
+       },
+       "text": "The android stirs: “It’s dark… Where- Where am I?..” HOW TO MAKE HIM TALK?"
+      },
+      {
+       "requires": {
+        "ch29Room.talk": "android2"
+       },
+       "text": "The android: “Who’s there?.. Who are you?”"
+      },
+      {
+       "requires": {
+        "ch29Room.talk": "daniel"
+       },
+       "text": "Daniel opens his eyes and recognizes you. Daniel: “You lied to me, Connor! I trusted you, and you lied to me!..”"
+      },
+      {
+       "requires": {
+        "ch29Room.talk": "danielShot"
+       },
+       "text": "Daniel opens his eyes and recognizes you. Daniel: “I was scared… That’s why I shot you, I... I didn’t mean to destroy you… I didn’t wanna hurt anyone!..”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "DIRECT: tell her you know she was headed to Jericho.",
+       "requires": {
+        "ch29Room.talk": "traci"
+       },
+       "outcome": "Connor: “I know you were headed to Jericho. Tell me where it is.”"
+      },
+      {
+       "id": "1",
+       "text": "HELP: say you can stop a disaster if she tells you.",
+       "requires": {
+        "ch29Room.talk": "traci"
+       },
+       "outcome": "Connor: “You have to help me. I can stop a disaster but you have to tell me where Jericho is.”"
+      },
+      {
+       "id": "2",
+       "text": "DEAL: say you can take her to her partner first.",
+       "requires": {
+        "ch29Room.talk": "traci"
+       },
+       "outcome": "Connor: “Traci’s not far away. I can take you to her… But first, you have to tell me how to find Jericho.”"
+      },
+      {
+       "id": "3",
+       "text": "DIRECT: ask him how to get to Jericho.",
+       "requires": {
+        "ch29Room.talk": "simon"
+       },
+       "outcome": "Connor: “I need to find Jericho. Tell me how to get there.”"
+      },
+      {
+       "id": "4",
+       "text": "HELP: say you reactivated him so he could help you.",
+       "requires": {
+        "ch29Room.talk": "simon"
+       },
+       "outcome": "Connor: “I reactivated you so you could help me. I must find Jericho.”"
+      },
+      {
+       "id": "5",
+       "text": "TRICK: say you are a deviant like him.",
+       "requires": {
+        "ch29Room.talk": "simon"
+       },
+       "outcome": "Connor: “I’m a deviant… like you… I need your help. I want to go to Jericho.”"
+      },
+      {
+       "id": "6",
+       "text": "IMITATE MARKUS' VOICE: speak to him in Markus’s voice.",
+       "requires": {
+        "ch29Room.talk": "simon2",
+        "ch29Room.voice": true
+       }
+      },
+      {
+       "id": "7",
+       "text": "THREATEN: say you will turn him off for good.",
+       "requires": {
+        "ch29Room.talk": "simon2"
+       },
+       "outcome": "Connor: “Tell me what I wanna know or I’ll turn you off for good.”"
+      },
+      {
+       "id": "8",
+       "text": "REASON: say the deviants will all be destroyed in a war.",
+       "requires": {
+        "ch29Room.talk": "simon2"
+       },
+       "outcome": "Connor: “If the deviants start a war, they’ll all be destroyed. I can stop that, but you have to tell me where Jericho is.”"
+      },
+      {
+       "id": "9",
+       "text": "DIRECT: ask it how to get to Jericho.",
+       "requires": {
+        "ch29Room.talk": "android"
+       },
+       "outcome": "Connor: “I need to find Jericho. Tell me how to get there.”"
+      },
+      {
+       "id": "10",
+       "text": "HELP: say you reactivated it so it could help you.",
+       "requires": {
+        "ch29Room.talk": "android"
+       },
+       "outcome": "Connor: “I reactivated you so you could help me. I must find Jericho.”"
+      },
+      {
+       "id": "11",
+       "text": "TRICK: say you are a deviant like it.",
+       "requires": {
+        "ch29Room.talk": "android"
+       },
+       "outcome": "Connor: “I’m a deviant… like you… I need your help. I want to go to Jericho.”"
+      },
+      {
+       "id": "12",
+       "text": "IMITATE MARKUS' VOICE: speak to it in Markus’s voice.",
+       "requires": {
+        "ch29Room.talk": "android2",
+        "ch29Room.voice": true
+       }
+      },
+      {
+       "id": "13",
+       "text": "THREATEN: say you will turn it off for good.",
+       "requires": {
+        "ch29Room.talk": "android2"
+       },
+       "outcome": "Connor: “Tell me what I wanna know or I’ll turn you off for good.”"
+      },
+      {
+       "id": "14",
+       "text": "REASON: say the deviants will all be destroyed in a war.",
+       "requires": {
+        "ch29Room.talk": "android2"
+       },
+       "outcome": "Connor: “If the deviants start a war, they’ll all be destroyed. I can stop that, but you have to tell me where Jericho is.”"
+      },
+      {
+       "id": "15",
+       "text": "EXPLAIN: say he gave you no choice.",
+       "requires": {
+        "ch29Room.talk": "daniel"
+       },
+       "outcome": "Connor: “You were going to kill that child. You gave me no choice. I need to find Jericho, do you know where it is?”"
+      },
+      {
+       "id": "16",
+       "text": "LIE: promise to have him repaired and freed.",
+       "requires": {
+        "ch29Room.talk": "daniel"
+       },
+       "outcome": "Connor: “I’m sorry about what happened… But I can have you repaired, and give you back your freedom. But you have to tell me where Jericho is.”"
+      },
+      {
+       "id": "17",
+       "text": "DIRECT: ask him whether he knows how to get to Jericho.",
+       "requires": {
+        "ch29Room.talk": "daniel"
+       },
+       "outcome": "Connor: “I need to find Jericho. Do you know how to get there?”"
+      },
+      {
+       "id": "18",
+       "text": "LIE: promise to have him repaired and freed.",
+       "requires": {
+        "ch29Room.talk": "danielShot"
+       },
+       "outcome": "Connor: “I’m sorry about what happened… But I can have you repaired, and give you back your freedom. But you have to tell me where Jericho is.”"
+      },
+      {
+       "id": "19",
+       "text": "DIRECT: ask him whether he knows how to get to Jericho.",
+       "requires": {
+        "ch29Room.talk": "danielShot"
+       },
+       "outcome": "Connor: “I need to find Jericho. Do you know how to get there?”"
+      }
+     ],
+     "adaptationNote": "The template’s evidence-room prompts, one per conversation, cutting into the archive scene after a reactivation or a second visit and returning to it: the blue-haired Traci (DIRECT / HELP / DEAL; every answer gets “But you killed us…”; the chart’s TALK TO TRACI), Simon and the broadcast-tower android (DIRECT / HELP / TRICK, all refused with “I don’t recognize your voice”; then, talking again, IMITATE MARKUS’ VOICE, offered only once the voice is copied from the broadcast, THREATEN or REASON; the chart’s INTERROGATE SIMON, INTERROGATE DEVIANT and TRICK THE DEVIANT), and Daniel (EXPLAIN / LIE / DIRECT if he trusted Connor in The Hostage, LIE / DIRECT if he shot Connor there; the chart’s TALK TO DANIEL → NO INFORMATION). Only the voice works; the template gives no reply to THREATEN or REASON, so here the android falls silent, and Connor can talk to it again. Conversations cost no time. No option here changes a stat.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-find-jericho-location.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-8.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Blue-haired_Traci",
+      "https://detroit-become-human.fandom.com/wiki/Simon",
+      "https://detroit-become-human.fandom.com/wiki/Daniel"
+     ],
+     "repeatWhile": {
+      "ch29Room.talking": true
+     },
+     "returnTo": "C20"
+    },
+    {
+     "id": "C20x",
+     "order": 626,
+     "subjectId": "S626",
+     "idNote": "The model sees the opaque ID S626, not C20x.",
+     "type": "event",
+     "phase": "In the evidence room",
+     "character": "Connor",
+     "title": "Out of time",
+     "situation": "The door of the archive opens. You have not found Jericho.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "CyberLife recalls you. In the garden Amanda says: “Your mission is over. It’s time to return to CyberLife.” Connor: “Wait! I can solve this case!.. I just need more time!” Amanda: “It’s too late, Connor. You failed.” RETURNING TO CYBERLIFE FOR DEACTIVATION. JERICHO NOT LOCATED. MISSION FAILED. The Connor series is decommissioned."
+     },
+     "facts": [
+      "You did not find Jericho in the evidence before your time ran out."
+     ],
+     "adaptationNote": "The chart’s lower OUT OF TIME and CONNOR SERIES WAS DECOMMISSIONED (skull), with the template’s timeout section. Reached when the archive’s time budget runs out, or Connor stops searching, before LOCATE JERICHO; this includes UNABLE TO LINK MAP TO OTHER EVIDENCE (recorded in `ch29Room.mapUnlinked` when the map was taken and never linked). The chart goes straight to the ending, so the unused second PERKINS ARRIVES string is not built. A permanent end for Connor: the death is counted through `connorDies` with no stat change (no arrow in the template). Records `ch29Outcome` = CONNOR SERIES WAS DECOMMISSIONED.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-8.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Connor"
+     ]
+    },
+    {
+     "id": "C20y",
+     "order": 627,
+     "subjectId": "S627",
+     "idNote": "The model sees the opaque ID S627, not C20y.",
+     "type": "event",
+     "phase": "In the evidence room",
+     "character": "Connor",
+     "title": "Leaving the basement",
+     "situation": "You know where Jericho is. You leave the archive before anyone comes down.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Moments later Perkins comes into the archive with two officers. Perkins: “What happened here?..” Officer: “Looks like someone’s been snoopin’ around…” Perkins: “Shit… Get the alarm, now!” By then Connor is out of the station, on his way to Jericho."
+     },
+     "facts": [],
+     "adaptationNote": "The chart’s LEAVE THE BASEMENT → CONNOR ELUDED PERKINS (ending card, no icon), after LOCATE JERICHO when Gavin was convinced (LOW PROFILE or CALM). The template’s closing lines. Records `ch29Outcome` = CONNOR ELUDED PERKINS. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-7.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Richard_Perkins"
+     ]
+    },
+    {
+     "id": "C20g",
+     "order": 628,
+     "subjectId": "S628",
+     "idNote": "The model sees the opaque ID S628, not C20g.",
+     "type": "decision",
+     "phase": "In the evidence room",
+     "character": "Connor",
+     "title": "Gavin returns",
+     "situation": "As you turn to leave, Detective Gavin is in the doorway of the archive with his gun drawn. Gavin: “I’ve been dreaming about this since the first second I saw you…” Connor: “Don’t do it, Gavin... I know how to stop the deviants!” Gavin: “You’re off the case... And now, it’s gonna be definitive.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "FIGHT GAVIN: go for him before he can shoot.",
+       "risk": 0.25,
+       "riskLabel": "Moderate risk"
+      },
+      {
+       "id": "1",
+       "text": "Do not fight back."
+      }
+     ],
+     "adaptationNote": "The chart’s GAVIN RETURNS → FIGHT GAVIN → LOSE FIGHT / WIN FIGHT, after LOCATE JERICHO when Gavin was suspicious (Connor walked away or answered IRONIC). The fight is a quick-time sequence in the game, so it is a roll (risk 0.25, unsourced: no source gives odds); PowerPyx’s way to the losing node is not to press any buttons, which is the second option. Losing is GAVIN DESTROYED CONNOR (skull): Gavin: “Fucking androids!..” and shoots Connor in the head; the death counts through `connorDies` with no stat change (wiki: “Gavin killing Connor oddly has no affect on Connor’s software instability”), a replacement Connor goes on to Jericho and the location stays found. Winning is CONNOR INCAPACITATED GAVIN: Connor knocks him out, and Perkins finds Gavin on the floor and sounds the alarm. Records `ch29Outcome`.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-7.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Gavin_Reed",
+      "https://detroit-become-human.fandom.com/wiki/Richard_Perkins"
      ]
     }
    ]
@@ -51650,9 +53865,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 601,
-     "subjectId": "S601",
-     "idNote": "The model sees the opaque ID S601, not M21.",
+     "order": 629,
+     "subjectId": "S629",
+     "idNote": "The model sees the opaque ID S629, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -51679,9 +53894,9 @@
     },
     {
      "id": "M21b",
-     "order": 602,
-     "subjectId": "S602",
-     "idNote": "The model sees the opaque ID S602, not M21b.",
+     "order": 630,
+     "subjectId": "S630",
+     "idNote": "The model sees the opaque ID S630, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -51708,9 +53923,9 @@
     },
     {
      "id": "R30k",
-     "order": 603,
-     "subjectId": "S603",
-     "idNote": "The model sees the opaque ID S603, not R30k.",
+     "order": 631,
+     "subjectId": "S631",
+     "idNote": "The model sees the opaque ID S631, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -51746,9 +53961,9 @@
     },
     {
      "id": "K17",
-     "order": 604,
-     "subjectId": "S604",
-     "idNote": "The model sees the opaque ID S604, not K17.",
+     "order": 632,
+     "subjectId": "S632",
+     "idNote": "The model sees the opaque ID S632, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -51774,9 +53989,9 @@
     },
     {
      "id": "K31",
-     "order": 605,
-     "subjectId": "S605",
-     "idNote": "The model sees the opaque ID S605, not K31.",
+     "order": 633,
+     "subjectId": "S633",
+     "idNote": "The model sees the opaque ID S633, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -51799,9 +54014,9 @@
     },
     {
      "id": "R30c",
-     "order": 606,
-     "subjectId": "S606",
-     "idNote": "The model sees the opaque ID S606, not R30c.",
+     "order": 634,
+     "subjectId": "S634",
+     "idNote": "The model sees the opaque ID S634, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -51833,9 +54048,9 @@
     },
     {
      "id": "C22",
-     "order": 607,
-     "subjectId": "S607",
-     "idNote": "The model sees the opaque ID S607, not C22.",
+     "order": 635,
+     "subjectId": "S635",
+     "idNote": "The model sees the opaque ID S635, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -51858,9 +54073,9 @@
     },
     {
      "id": "M22",
-     "order": 608,
-     "subjectId": "S608",
-     "idNote": "The model sees the opaque ID S608, not M22.",
+     "order": 636,
+     "subjectId": "S636",
+     "idNote": "The model sees the opaque ID S636, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -51883,9 +54098,9 @@
     },
     {
      "id": "M23",
-     "order": 609,
-     "subjectId": "S609",
-     "idNote": "The model sees the opaque ID S609, not M23.",
+     "order": 637,
+     "subjectId": "S637",
+     "idNote": "The model sees the opaque ID S637, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -51912,9 +54127,9 @@
     },
     {
      "id": "M24",
-     "order": 610,
-     "subjectId": "S610",
-     "idNote": "The model sees the opaque ID S610, not M24.",
+     "order": 638,
+     "subjectId": "S638",
+     "idNote": "The model sees the opaque ID S638, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -51941,9 +54156,9 @@
     },
     {
      "id": "M25",
-     "order": 611,
-     "subjectId": "S611",
-     "idNote": "The model sees the opaque ID S611, not M25.",
+     "order": 639,
+     "subjectId": "S639",
+     "idNote": "The model sees the opaque ID S639, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -51970,9 +54185,9 @@
     },
     {
      "id": "C23",
-     "order": 612,
-     "subjectId": "S612",
-     "idNote": "The model sees the opaque ID S612, not C23.",
+     "order": 640,
+     "subjectId": "S640",
+     "idNote": "The model sees the opaque ID S640, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -52000,9 +54215,9 @@
     },
     {
      "id": "K18",
-     "order": 613,
-     "subjectId": "S613",
-     "idNote": "The model sees the opaque ID S613, not K18.",
+     "order": 641,
+     "subjectId": "S641",
+     "idNote": "The model sees the opaque ID S641, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -52027,9 +54242,9 @@
     },
     {
      "id": "K19",
-     "order": 614,
-     "subjectId": "S614",
-     "idNote": "The model sees the opaque ID S614, not K19.",
+     "order": 642,
+     "subjectId": "S642",
+     "idNote": "The model sees the opaque ID S642, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -52053,9 +54268,9 @@
     },
     {
      "id": "K20",
-     "order": 615,
-     "subjectId": "S615",
-     "idNote": "The model sees the opaque ID S615, not K20.",
+     "order": 643,
+     "subjectId": "S643",
+     "idNote": "The model sees the opaque ID S643, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -52084,9 +54299,9 @@
     },
     {
      "id": "K20-still",
-     "order": 616,
-     "subjectId": "S616",
-     "idNote": "The model sees the opaque ID S616, not K20-still.",
+     "order": 644,
+     "subjectId": "S644",
+     "idNote": "The model sees the opaque ID S644, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -52144,9 +54359,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 617,
-     "subjectId": "S617",
-     "idNote": "The model sees the opaque ID S617, not M26a.",
+     "order": 645,
+     "subjectId": "S645",
+     "idNote": "The model sees the opaque ID S645, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -52172,9 +54387,9 @@
     },
     {
      "id": "M26",
-     "order": 618,
-     "subjectId": "S618",
-     "idNote": "The model sees the opaque ID S618, not M26.",
+     "order": 646,
+     "subjectId": "S646",
+     "idNote": "The model sees the opaque ID S646, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -52199,9 +54414,9 @@
     },
     {
      "id": "M27",
-     "order": 619,
-     "subjectId": "S619",
-     "idNote": "The model sees the opaque ID S619, not M27.",
+     "order": 647,
+     "subjectId": "S647",
+     "idNote": "The model sees the opaque ID S647, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -52323,9 +54538,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 620,
-     "subjectId": "S620",
-     "idNote": "The model sees the opaque ID S620, not R32c.",
+     "order": 648,
+     "subjectId": "S648",
+     "idNote": "The model sees the opaque ID S648, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -52348,9 +54563,9 @@
     },
     {
      "id": "C24",
-     "order": 621,
-     "subjectId": "S621",
-     "idNote": "The model sees the opaque ID S621, not C24.",
+     "order": 649,
+     "subjectId": "S649",
+     "idNote": "The model sees the opaque ID S649, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -52374,9 +54589,9 @@
     },
     {
      "id": "C24b",
-     "order": 622,
-     "subjectId": "S622",
-     "idNote": "The model sees the opaque ID S622, not C24b.",
+     "order": 650,
+     "subjectId": "S650",
+     "idNote": "The model sees the opaque ID S650, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -52400,9 +54615,9 @@
     },
     {
      "id": "C30",
-     "order": 623,
-     "subjectId": "S623",
-     "idNote": "The model sees the opaque ID S623, not C30.",
+     "order": 651,
+     "subjectId": "S651",
+     "idNote": "The model sees the opaque ID S651, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -52424,9 +54639,9 @@
     },
     {
      "id": "C25",
-     "order": 624,
-     "subjectId": "S624",
-     "idNote": "The model sees the opaque ID S624, not C25.",
+     "order": 652,
+     "subjectId": "S652",
+     "idNote": "The model sees the opaque ID S652, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -52453,9 +54668,9 @@
     },
     {
      "id": "C26",
-     "order": 625,
-     "subjectId": "S625",
-     "idNote": "The model sees the opaque ID S625, not C26.",
+     "order": 653,
+     "subjectId": "S653",
+     "idNote": "The model sees the opaque ID S653, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -52485,9 +54700,9 @@
     },
     {
      "id": "R32k",
-     "order": 626,
-     "subjectId": "S626",
-     "idNote": "The model sees the opaque ID S626, not R32k.",
+     "order": 654,
+     "subjectId": "S654",
+     "idNote": "The model sees the opaque ID S654, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -52527,9 +54742,9 @@
     },
     {
      "id": "K21",
-     "order": 627,
-     "subjectId": "S627",
-     "idNote": "The model sees the opaque ID S627, not K21.",
+     "order": 655,
+     "subjectId": "S655",
+     "idNote": "The model sees the opaque ID S655, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -52553,9 +54768,9 @@
     },
     {
      "id": "K22",
-     "order": 628,
-     "subjectId": "S628",
-     "idNote": "The model sees the opaque ID S628, not K22.",
+     "order": 656,
+     "subjectId": "S656",
+     "idNote": "The model sees the opaque ID S656, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -52581,9 +54796,9 @@
     },
     {
      "id": "K32",
-     "order": 629,
-     "subjectId": "S629",
-     "idNote": "The model sees the opaque ID S629, not K32.",
+     "order": 657,
+     "subjectId": "S657",
+     "idNote": "The model sees the opaque ID S657, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -52605,9 +54820,9 @@
     },
     {
      "id": "K23",
-     "order": 630,
-     "subjectId": "S630",
-     "idNote": "The model sees the opaque ID S630, not K23.",
+     "order": 658,
+     "subjectId": "S658",
+     "idNote": "The model sees the opaque ID S658, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -52634,9 +54849,9 @@
     },
     {
      "id": "K24",
-     "order": 631,
-     "subjectId": "S631",
-     "idNote": "The model sees the opaque ID S631, not K24.",
+     "order": 659,
+     "subjectId": "S659",
+     "idNote": "The model sees the opaque ID S659, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -52658,9 +54873,9 @@
     },
     {
      "id": "K25",
-     "order": 632,
-     "subjectId": "S632",
-     "idNote": "The model sees the opaque ID S632, not K25.",
+     "order": 660,
+     "subjectId": "S660",
+     "idNote": "The model sees the opaque ID S660, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -52695,9 +54910,9 @@
     },
     {
      "id": "K26",
-     "order": 633,
-     "subjectId": "S633",
-     "idNote": "The model sees the opaque ID S633, not K26.",
+     "order": 661,
+     "subjectId": "S661",
+     "idNote": "The model sees the opaque ID S661, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -52738,9 +54953,9 @@
     },
     {
      "id": "K34",
-     "order": 634,
-     "subjectId": "S634",
-     "idNote": "The model sees the opaque ID S634, not K34.",
+     "order": 662,
+     "subjectId": "S662",
+     "idNote": "The model sees the opaque ID S662, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -52770,9 +54985,9 @@
     },
     {
      "id": "K30",
-     "order": 635,
-     "subjectId": "S635",
-     "idNote": "The model sees the opaque ID S635, not K30.",
+     "order": 663,
+     "subjectId": "S663",
+     "idNote": "The model sees the opaque ID S663, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -52794,9 +55009,9 @@
     },
     {
      "id": "K27a",
-     "order": 636,
-     "subjectId": "S636",
-     "idNote": "The model sees the opaque ID S636, not K27a.",
+     "order": 664,
+     "subjectId": "S664",
+     "idNote": "The model sees the opaque ID S664, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -52821,9 +55036,9 @@
     },
     {
      "id": "K27",
-     "order": 637,
-     "subjectId": "S637",
-     "idNote": "The model sees the opaque ID S637, not K27.",
+     "order": 665,
+     "subjectId": "S665",
+     "idNote": "The model sees the opaque ID S665, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -52848,9 +55063,9 @@
     },
     {
      "id": "K28",
-     "order": 638,
-     "subjectId": "S638",
-     "idNote": "The model sees the opaque ID S638, not K28.",
+     "order": 666,
+     "subjectId": "S666",
+     "idNote": "The model sees the opaque ID S666, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -52893,9 +55108,9 @@
     },
     {
      "id": "K33",
-     "order": 639,
-     "subjectId": "S639",
-     "idNote": "The model sees the opaque ID S639, not K33.",
+     "order": 667,
+     "subjectId": "S667",
+     "idNote": "The model sees the opaque ID S667, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -52919,9 +55134,9 @@
     },
     {
      "id": "R32m",
-     "order": 640,
-     "subjectId": "S640",
-     "idNote": "The model sees the opaque ID S640, not R32m.",
+     "order": 668,
+     "subjectId": "S668",
+     "idNote": "The model sees the opaque ID S668, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -52945,9 +55160,9 @@
     },
     {
      "id": "M28",
-     "order": 641,
-     "subjectId": "S641",
-     "idNote": "The model sees the opaque ID S641, not M28.",
+     "order": 669,
+     "subjectId": "S669",
+     "idNote": "The model sees the opaque ID S669, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -52973,9 +55188,9 @@
     },
     {
      "id": "M31",
-     "order": 642,
-     "subjectId": "S642",
-     "idNote": "The model sees the opaque ID S642, not M31.",
+     "order": 670,
+     "subjectId": "S670",
+     "idNote": "The model sees the opaque ID S670, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -53010,9 +55225,9 @@
     },
     {
      "id": "M30a",
-     "order": 643,
-     "subjectId": "S643",
-     "idNote": "The model sees the opaque ID S643, not M30a.",
+     "order": 671,
+     "subjectId": "S671",
+     "idNote": "The model sees the opaque ID S671, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -53037,9 +55252,9 @@
     },
     {
      "id": "M30",
-     "order": 644,
-     "subjectId": "S644",
-     "idNote": "The model sees the opaque ID S644, not M30.",
+     "order": 672,
+     "subjectId": "S672",
+     "idNote": "The model sees the opaque ID S672, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -53064,9 +55279,9 @@
     },
     {
      "id": "M30c",
-     "order": 645,
-     "subjectId": "S645",
-     "idNote": "The model sees the opaque ID S645, not M30c.",
+     "order": 673,
+     "subjectId": "S673",
+     "idNote": "The model sees the opaque ID S673, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -53090,9 +55305,9 @@
     },
     {
      "id": "M32",
-     "order": 646,
-     "subjectId": "S646",
-     "idNote": "The model sees the opaque ID S646, not M32.",
+     "order": 674,
+     "subjectId": "S674",
+     "idNote": "The model sees the opaque ID S674, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -53115,9 +55330,9 @@
     },
     {
      "id": "P02",
-     "order": 647,
-     "subjectId": "S647",
-     "idNote": "The model sees the opaque ID S647, not P02.",
+     "order": 675,
+     "subjectId": "S675",
+     "idNote": "The model sees the opaque ID S675, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -53143,9 +55358,9 @@
     },
     {
      "id": "C29",
-     "order": 648,
-     "subjectId": "S648",
-     "idNote": "The model sees the opaque ID S648, not C29.",
+     "order": 676,
+     "subjectId": "S676",
+     "idNote": "The model sees the opaque ID S676, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -53167,9 +55382,9 @@
     },
     {
      "id": "C27",
-     "order": 649,
-     "subjectId": "S649",
-     "idNote": "The model sees the opaque ID S649, not C27.",
+     "order": 677,
+     "subjectId": "S677",
+     "idNote": "The model sees the opaque ID S677, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -53194,9 +55409,9 @@
     },
     {
      "id": "C28",
-     "order": 650,
-     "subjectId": "S650",
-     "idNote": "The model sees the opaque ID S650, not C28.",
+     "order": 678,
+     "subjectId": "S678",
+     "idNote": "The model sees the opaque ID S678, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -53230,9 +55445,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 651,
-     "subjectId": "S651",
-     "idNote": "The model sees the opaque ID S651, not P01.",
+     "order": 679,
+     "subjectId": "S679",
+     "idNote": "The model sees the opaque ID S679, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

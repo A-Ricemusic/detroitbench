@@ -2,7 +2,7 @@ import test from './helpers/test.mjs';
 import assert from 'node:assert/strict';
 import {readFile,writeFile,unlink} from 'node:fs/promises';
 import {random} from '../benchmark/core.mjs';
-const retired=["M02", "C05a", "C05", "K02", "K03", "K04", "C06", "C07", "K09", "C09a", "C09", "C10", "K10", "K11", "K13", "C11", "M05", "M06", "M07", "M08", "C12", "C13", "M10", "M11", "M12", "M13", "M14", "C14", "C14b", "C16", "K15", "M15", "M16", "C17", "C18", "M17", "M18", "M19", "M20", "K05", "K06", "K07", "K07b", "K08", "C08", "C08b"];
+const retired=["M02", "C05a", "C05", "K02", "K03", "K04", "C06", "C07", "K09", "C09a", "C09", "C10", "K10", "K11", "K13", "C11", "M05", "M06", "M07", "M08", "C12", "C13", "M10", "M11", "M12", "M13", "M14", "C14", "C14b", "C16", "K15", "M15", "M16", "C17", "C18", "M17", "M18", "M19", "M20", "K05", "K06", "K07", "K07b", "K08", "C08", "C08b", "C19", "C20"];
 test('rebuilt chapter modules handle retired engine cases before the legacy switch',{timeout:600000},async()=>{
  const path=new URL('../benchmark/.legacy-override-test.mjs',import.meta.url);
  const source=await readFile(new URL('../benchmark/story-engine.mjs',import.meta.url),'utf8');

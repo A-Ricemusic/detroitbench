@@ -3,78 +3,605 @@
   "id": 29,
   "title": "Last Chance, Connor",
   "character": "Connor",
-  "note": "",
+  "note": "Rebuilt to the game’s chart (81 nodes, six endings) and the detroitbecometext template (24 prompts, 47 arrows).",
   "source": "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
  },
  "decisions": [
   {
-   "id": "C19",
+   "id": "LC01",
    "chapter": 29,
    "character": "Connor",
-   "title": "Defy the shutdown of the investigation?",
-   "context": "The FBI takes over the case.",
+   "title": "Start, the frozen garden",
+   "context": "The Zen Garden is frozen. Two optional side nodes before the talk with Amanda.",
    "options": [
     {
-     "label": "Use a diversion to access evidence",
-     "effect": "Attempt to find Jericho.",
-     "target": "C20"
+     "label": "LOOK AT MAGIC STONE",
+     "effect": "Nothing attached.",
+     "target": null
     },
     {
-     "label": "Fail to act in time",
-     "effect": "Connor is decommissioned.",
+     "label": "VISIT GRAVES",
+     "effect": "Only if Connor died at least once before.",
+     "target": null
+    },
+    {
+     "label": "TALK TO AMANDA",
+     "effect": "Starts the report.",
+     "target": "LC02"
+    }
+   ],
+   "gate": "Chapter start, after Freedom March.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg"
+   ],
+   "note": "Chart nodes START (checkpoint), LOOK AT MAGIC STONE, VISIT GRAVES, TALK TO AMANDA. No arrows.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19a"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene: the two side nodes in any order, then Amanda. The graves are described in general (the benchmark does not track where each Connor died)."
+   }
+  },
+  {
+   "id": "LC02",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Report to Amanda",
+   "context": "Amanda: the country is on the verge of a civil war. Connor reports on Kamski.",
+   "options": [
+    {
+     "label": "JERICHO",
+     "effect": "Kamski key only. Amanda large up.",
+     "target": "LC03"
+    },
+    {
+     "label": "KAMSKI",
+     "effect": "Spared Chloe: Amanda small down, then EMOTIONAL / COLD / STAY SILENT. Shot Chloe without asking about Jericho: no arrow.",
+     "target": "LC03"
+    },
+    {
+     "label": "EMOTIONAL",
+     "effect": "Instability small up, Amanda large down.",
+     "target": "LC03"
+    },
+    {
+     "label": "COLD",
+     "effect": "Amanda small up, instability small down.",
+     "target": "LC03"
+    },
+    {
+     "label": "STAY SILENT",
+     "effect": "No arrow.",
+     "target": "LC03"
+    }
+   ],
+   "gate": "JERICHO swaps with KAMSKI on the Kamski key; the second prompt only after sparing Chloe.",
+   "kind": "Relationship",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Template prompts 1 and 2. The wiki’s double JERICHO icon is one large up in the template.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19b",
+     "C19c"
+    ],
+    "status": "implemented",
+    "note": "One-button first prompt; the second prompt gated on the Chloe choice."
+   }
+  },
+  {
+   "id": "LC03",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Questions for Amanda",
+   "context": "Connor may ask questions until Amanda stops him: “I expect you to find answers, Connor. Not ask questions.”",
+   "options": [
+    {
+     "label": "KAMSKI",
+     "effect": "No arrow.",
+     "target": null
+    },
+    {
+     "label": "CONNOR SERIES",
+     "effect": "Instability small up, Amanda small down.",
+     "target": null
+    },
+    {
+     "label": "AMANDA’S PICTURE",
+     "effect": "Needs the portrait in Meet Kamski. No arrow.",
+     "target": null
+    },
+    {
+     "label": "THIS PLACE",
+     "effect": "No arrow.",
+     "target": null
+    },
+    {
+     "label": "CYBERLIFE",
+     "effect": "No arrow.",
+     "target": null
+    },
+    {
+     "label": "SECRET",
+     "effect": "Instability small up, Amanda small down.",
      "target": null
     }
    ],
-   "gate": "Jericho not already learned from Kamski; enough evidence must exist.",
-   "kind": "State gate",
+   "gate": "Always.",
+   "kind": "Relationship",
    "dependsOn": [
-    "C18"
+    "LC02"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Template prompt 3. The wiki’s “decrease regardless” is not in the template.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19d"
+    ],
+    "status": "simplified",
+    "note": "Three questions (the Google Doc walkthrough’s count), each once; the game’s exact limit is not sourced."
+   }
+  },
+  {
+   "id": "LC04",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Amanda asks about doubts",
+   "context": "“Do you feel anything for these deviants… Or for Lieutenant Anderson?”",
+   "options": [
+    {
+     "label": "YES",
+     "effect": "Instability small up, Amanda large down.",
+     "target": null
+    },
+    {
+     "label": "NO",
+     "effect": "Amanda large up.",
+     "target": null
+    },
+    {
+     "label": "DOUBTS",
+     "effect": "Amanda large down.",
+     "target": null
+    }
+   ],
+   "gate": "Only if Connor shot the Tracis or shot Chloe (or both).",
+   "kind": "Relationship",
+   "dependsOn": [
+    "LC03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-1.jpg"
+   ],
+   "note": "Template prompt 4.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19e"
+    ],
+    "status": "implemented",
+    "note": "As the template."
+   }
+  },
+  {
+   "id": "LC05",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Off the case",
+   "context": "Fowler takes Hank and Connor off the case; the chapter splits by state.",
+   "options": [
+    {
+     "label": "KNOW JERICHO’S LOCATION",
+     "effect": "The Kamski key: Hank’s desk, then CONNOR LEFT FOR JERICHO.",
+     "target": "LC06"
+    },
+    {
+     "label": "INSUFFICIENT EVIDENCE",
+     "effect": "No usable body in the archive: CONNOR SERIES WAS DECOMMISSIONED.",
+     "target": null
+    },
+    {
+     "label": "SUFFICIENT EVIDENCE",
+     "effect": "Hostile Hank resigns (HANK RESIGNS AND LEAVES); otherwise HANK GOES TO HIS DESK.",
+     "target": "LC07"
+    }
+   ],
+   "gate": "Selected by state, not by the player.",
+   "kind": "State gate",
+   "dependsOn": [
+    "LC02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+   ],
+   "note": "Chart nodes IN THE POLICE STATION, FOWLER AND HANK ARGUE, the two state choices and HANK RESIGNS AND LEAVES.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19f",
+     "C19g",
+     "C19h"
+    ],
+    "status": "implemented",
+    "note": "Sufficient evidence is PowerPyx’s test (at least one body). The resignation is built only after SUFFICIENT EVIDENCE, as the chart draws it (open question 2)."
+   }
+  },
+  {
+   "id": "LC06",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Hank before leaving for Jericho",
+   "context": "With the Kamski key, Connor may talk to Hank at his desk before leaving.",
+   "options": [
+    {
+     "label": "TALK TO HANK",
+     "effect": "MISSION / EXPLAIN; DETERMINED / TROUBLED / NO DOUBT / DOUBTS (DOUBTS: instability and Hank small up); then by history: saved Hank → NOT DEVIANT / DETERMINED / TROUBLED / SAY NOTHING and, at Friend, SINCERE / FRIENDS / RESPECT / NEUTRAL; died at least once → INDIFFERENT / DISTANT / EMPATHY / NO RESPONSE then REMORSE / DISTANT / COLD; otherwise REMORSE / DISTANT / COLD.",
+     "target": null
+    },
+    {
+     "label": "Leave without talking",
+     "effect": "CONNOR LEFT FOR JERICHO.",
+     "target": null
+    }
+   ],
+   "gate": "Kamski key and Hank not Hostile.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "LC05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg"
+   ],
+   "note": "Template “Connor knows how to find Jericho” section: seven prompts, two of them identical.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19k",
+     "C19l",
+     "C19m",
+     "C19n",
+     "C19o",
+     "C19p",
+     "C19q",
+     "C19r"
+    ],
+    "status": "implemented",
+    "note": "The two identical REMORSE / DISTANT / COLD prompts share one scene. Ending CONNOR LEFT FOR JERICHO sets jerichoLocated."
+   }
+  },
+  {
+   "id": "LC07",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Hank at his desk",
+   "context": "Without the key and with enough evidence, Connor sits at Hank’s desk before Perkins arrives.",
+   "options": [
+    {
+     "label": "FRUSTRATED / MORE TIME / EXPLAIN / NO CHOICE",
+     "effect": "No arrows.",
+     "target": null
+    },
+    {
+     "label": "NOT PEOPLE / DEFECTIVE / REGRETS / NO DOUBT",
+     "effect": "NOT PEOPLE and NO DOUBT: instability and Hank small down; DEFECTIVE: Hank small down.",
+     "target": null
+    },
+    {
+     "label": "NOT DEVIANT / DETERMINED / TROUBLED / COLD",
+     "effect": "TROUBLED: instability small up.",
+     "target": null
+    },
+    {
+     "label": "SINCERE / FRIENDS / GOOD OFFICER / HANK’S SECRET",
+     "effect": "At Friend only; all but GOOD OFFICER: instability and Hank small up.",
+     "target": "C19"
+    }
+   ],
+   "gate": "Sufficient evidence, Hank not Hostile.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "LC05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg"
+   ],
+   "note": "Template “Connor doesn’t know where Jericho is” section. The Friend check for Perkins reads Hank after this talk.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19t",
+     "C19u",
+     "C19v",
+     "C19w"
+    ],
+    "status": "implemented",
+    "note": "As the template; the empathy line before the third prompt varies with Chloe, the Nest roof and the broadcast tower."
+   }
+  },
+  {
+   "id": "C19",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Perkins arrives: the diversion",
+   "context": "Perkins comes for the evidence. Hank’s level, read after the desk talk, decides who makes the diversion.",
+   "options": [
+    {
+     "label": "HANK WANTS TO HELP → HANK PUNCHES PERKINS",
+     "effect": "Friend: Hank’s punch is the diversion; Connor takes the key.",
+     "target": "LC08"
+    },
+    {
+     "label": "HANK WON’T HELP / HANK IS GONE → FREE THE PRISONER",
+     "effect": "Connor frees the holding-cell suspect, then takes the key.",
+     "target": "LC08"
+    },
+    {
+     "label": "OUT OF TIME",
+     "effect": "Connor does nothing: CONNOR SERIES WAS DECOMMISSIONED.",
+     "target": null
+    }
+   ],
+   "gate": "Sufficient evidence.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "LC07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Violent_Suspect"
+   ],
+   "note": "Chart nodes PERKINS ARRIVES, the three Hank state choices, HANK PUNCHES PERKINS, FREE THE PRISONER, HANK LEAVES, the upper OUT OF TIME and CREATE A DIVERSION.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19x",
+     "C19"
+    ],
+    "status": "implemented",
+    "note": "The upstairs timer is a budget of one: doing nothing is the out-of-time option. No stat change."
+   }
+  },
+  {
+   "id": "LC08",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Gavin at the archive door",
+   "context": "Gavin yells at Connor on the way to the basement.",
+   "options": [
+    {
+     "label": "LEAVE (IGNORE GAVIN)",
+     "effect": "GAVIN IS SUSPICIOUS: he returns after Jericho is located.",
+     "target": null
+    },
+    {
+     "label": "ANSWER → IRONIC (DISMISS GAVIN)",
+     "effect": "GAVIN IS SUSPICIOUS.",
+     "target": null
+    },
+    {
+     "label": "ANSWER → LOW PROFILE or CALM (ANSWER CALMLY)",
+     "effect": "GAVIN IS CONVINCED.",
+     "target": null
+    }
+   ],
+   "gate": "After the diversion.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C19"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
+   ],
+   "note": "The chapter’s only player choice on the chart. IGN: answering wastes time.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C19y",
+     "C19z"
+    ],
+    "status": "implemented",
+    "note": "Answering costs one unit of the archive’s action budget (size unsourced)."
+   }
+  },
+  {
+   "id": "LC09",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Hank’s password",
+   "context": "The archive terminal needs Hank’s password.",
+   "options": [
+    {
+     "label": "DATE OF BIRTH",
+     "effect": "Wrong.",
+     "target": null
+    },
+    {
+     "label": "123456",
+     "effect": "Wrong.",
+     "target": null
+    },
+    {
+     "label": "FUCKINGPASSWORD",
+     "effect": "Unlocks the evidence.",
+     "target": "C20"
+    },
+    {
+     "label": "HANKANDERSON",
+     "effect": "Wrong.",
+     "target": null
+    }
+   ],
+   "gate": "Archive reached.",
+   "kind": "State gate",
+   "dependsOn": [
+    "LC08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-5.jpg"
+   ],
+   "note": "Chart nodes IN THE EVIDENCE ROOM, GUESS HANK’S PASSWORD, UNLOCK EVIDENCE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C20a"
+    ],
+    "status": "implemented",
+    "note": "Repeatable until the right guess; wrong guesses cost no time (unsourced)."
+   }
   },
   {
    "id": "C20",
    "chapter": 29,
    "character": "Connor",
-   "title": "Use the android evidence to locate Jericho",
-   "context": "Connor can reconstruct clues or manipulate reactivated androids.",
+   "title": "Find Jericho’s location in the archive",
+   "context": "Bodies and objects from earlier chapters; reactivating androids with each other’s bio-components.",
    "options": [
     {
-     "label": "Combine viable clues",
-     "effect": "Locate Jericho.",
-     "target": "C22"
+     "label": "Rupert’s diary",
+     "effect": "Diary + Rupert’s body: REACTIVATE RUPERT (#9164) → GET DECRYPTION KEY → ANALYZE DIARY.",
+     "target": "LC10"
     },
     {
-     "label": "Impersonate Markus or exploit the Tracis’ bond",
-     "effect": "Obtain information through deception.",
-     "target": "C22"
+     "label": "Statue map",
+     "effect": "Statue + the interrogation recording: BREAK STATUE → RETRIEVE MAP → LINK MAP TO OTHER EVIDENCE with the Jericho tablet (roll; failure is UNABLE TO LINK).",
+     "target": "LC10"
     },
     {
-     "label": "No viable evidence / time expires",
-     "effect": "Connor is decommissioned; Jericho raid is skipped.",
+     "label": "The Tracis",
+     "effect": "Both bodies: REACTIVATE BLUE-HAIRED TRACI (#6755) → TALK → REMOVE ACCOMPLICE’S HEAD → TRICK TRACI → DOWNLOAD JERICHO KEY.",
+     "target": "LC10"
+    },
+    {
+     "label": "Impersonate Markus",
+     "effect": "Simon or the broadcast-tower android (#3983 from Daniel) → talk → IMPERSONATE MARKUS from the broadcast → talk again → DOWNLOAD JERICHO KEY.",
+     "target": "LC10"
+    },
+    {
+     "label": "Daniel",
+     "effect": "Needs #4717 from Carlos’ android: NO INFORMATION.",
+     "target": null
+    },
+    {
+     "label": "Out of time",
+     "effect": "CONNOR SERIES WAS DECOMMISSIONED (lower card).",
      "target": null
     }
    ],
-   "gate": "Available bodies, diary, recording and other clues depend on earlier chapters.",
+   "gate": "Evidence unlocked; each item needs its earlier-chapter tab.",
    "kind": "Pivotal",
    "dependsOn": [
-    "C05",
-    "C07",
-    "C10",
-    "C12",
-    "C14",
-    "C16",
-    "C19"
+    "LC09"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-find-jericho-location.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-8.jpg"
    ],
-   "note": "Several evidence puzzles are grouped. Exact item combinations need individual benchmark fixtures.",
-   "status": "Source-backed summary"
+   "note": "Bio-component donors from the game’s HUD strings. Every route is deterministic in the template except the map link, which the chart shows as a performance outcome.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C20",
+     "C20t",
+     "C20x"
+    ],
+    "status": "simplified",
+    "note": "A repeatable scene with an action budget of twelve (unsourced); conversations cut in as one returning scene. Sets jerichoLocated on LOCATE JERICHO."
+   }
+  },
+  {
+   "id": "LC10",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "After Jericho is located",
+   "context": "LOCATE JERICHO leads to one of three endings.",
+   "options": [
+    {
+     "label": "LEAVE THE BASEMENT",
+     "effect": "Gavin convinced: CONNOR ELUDED PERKINS.",
+     "target": null
+    },
+    {
+     "label": "FIGHT GAVIN → WIN FIGHT",
+     "effect": "Gavin suspicious: CONNOR INCAPACITATED GAVIN.",
+     "target": null
+    },
+    {
+     "label": "FIGHT GAVIN → LOSE FIGHT",
+     "effect": "GAVIN DESTROYED CONNOR (a death; the replacement goes on, Jericho stays located).",
+     "target": null
+    }
+   ],
+   "gate": "Jericho located in the archive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C20",
+    "LC08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-last-chance-connor-7.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Richard_Perkins"
+   ],
+   "note": "The fight is a QTE with no published odds.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C20y",
+     "C20g"
+    ],
+    "status": "implemented",
+    "note": "The fight is a roll (risk 0.25, unsourced), with a second option not to fight back (PowerPyx’s way to the losing node)."
+   }
   }
  ]
 }

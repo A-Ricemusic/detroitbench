@@ -79,7 +79,9 @@ export const NAMES={
  Reed:['Reed','Brandt'],
  Ivanoff:['Ivanoff','Sorokin'],
  Deviancy:['deviancy','the awakening'],
- RedIce:['red ice','synthetic drug']
+ RedIce:['red ice','synthetic drug'],
+ HankAnderson:['HankAnderson','LieutenantReyes'],
+ StratfordTower:['Stratford Tower','the broadcast tower']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));

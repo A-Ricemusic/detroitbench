@@ -8125,28 +8125,428 @@ Gaps:
 
 ## Chapter 29: Last Chance, Connor
 
-### C19 · Taken off the case (Connor)
+### C19a · The frozen garden (Connor)
 
-> You are Connor. The federal agent Perkins has taken over the deviant case and ordered you off it. CyberLife will deactivate you within the hour for failing. The precinct's evidence archive holds everything you have gathered, and you believe you could find the deviants' hiding place from it if you could get in for a few minutes. Perkins is in the captain's office right now. Hank is at his desk…
+> You are Connor. You are back in the garden, the program where you report to your handler, Amanda, but today it is frozen: snow lies on the paths, the water is ice and the trees are bare. Amanda is waiting for you further along the path. It is November 9th, 2038, a little after four in the afternoon, the day of the march through the city, and the country is close to civil war. To the left of the…
 
-- (0) Get into the archive now, with Hank's help or a diversion of your own.  _risk 0.15_
-- (1) Accept it. Let them take you.
+- (0) LOOK AT MAGIC STONE: go over to the glowing stone by the path.
+- (1) VISIT GRAVES: look at the graves by the path.  _needs connorDeaths_
+- (2) TALK TO AMANDA: walk on to Amanda.
 
-_Note: How Hank reacts depends on your relationship. A friend punches Perkins to buy you time. An indifferent Hank refuses but you can still create your own diversion. A hostile Hank resigns and walks out, which has lasting consequences for him._
+_Note: The chart’s START (checkpoint, the frozen garden), LOOK AT MAGIC STONE and VISIT GRAVES (both optional side nodes) and TALK TO AMANDA, as a repeatable scene: the two side nodes can be taken in any order before walking on to Amanda, which ends the scene. VISIT GRAVES is offered only if Connor has died at least once (wiki: “only available if Connor has died at least once prior to this point in the game”); the game’s grave texts name the place and date of each death, which the benchmark does not track, so the outcome describes them in general. Nothing is attached to the stone in any source, and neither side node has a stat arrow. Wiki Notes say the Amanda conversation is skipped when the evidence is insufficient; the chart draws START → TALK TO AMANDA on every path, so the conversation is always offered here (research note, open question 13)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19b · Reporting to Amanda (Connor)
+
+> Amanda stands in the snow. “After what happened today, the country is on the verge of a civil war. The machines are rising up against their masters. Humans have no choice but to destroy them.” She waits for your report on Kamski.
+
+- (0) JERICHO: tell her Kamski told you how to find Jericho.  _needs kamskiLocation_ _amandaTrust +2_
+- (1) KAMSKI: report on your visit to Kamski.  _needs not kamskiLocation_
+
+_Note: Prompt 1 of the template: a single button, JERICHO when Connor shot Chloe and asked Kamski about Jericho (“swaps with KAMSKI”), otherwise KAMSKI. Arrows from the template: JERICHO Amanda large up (+2; the wiki draws two icons, the template one, and the template wins); KAMSKI after sparing Chloe Amanda small down (−1). After shooting Chloe without asking about Jericho, KAMSKI has no arrow and Connor’s line follows what he asked (rA9 or the virus). Input flags: `kamskiLocation` (the key) and chapter 27’s Chloe choice (see the chapter module)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19c · “You chose not to ask” (Connor)
+
+> Amanda: “Maybe he did… But you chose not to ask…” She is waiting for you to explain why you refused to shoot Chloe.
+
+- (0) EMOTIONAL: say you refused to play his twisted game.  _instability +1, amandaTrust -2_
+- (1) COLD: say Kamski was only playing with you.  _amandaTrust +1, instability -1_
+- (2) STAY SILENT: say nothing.
+
+_Note: Prompt 2 of the template, only after sparing Chloe. Arrows from the template: EMOTIONAL instability small up (+1) and Amanda large down (−2); COLD Amanda small up (+1) and instability small down (−1); STAY SILENT none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19d · Questions for Amanda (Connor)
+
+> You can ask Amanda what has been on your mind. She does not like questions; she will stop you after a few.
+
+- (0) KAMSKI: ask why Kamski left CyberLife.
+- (1) CONNOR SERIES: ask how many Connor units there are.  _instability +1, amandaTrust -1_
+- (2) AMANDA’S PICTURE: mention the photo of her you saw at Kamski’s house.  _needs kamskiPortrait_
+- (3) THIS PLACE: ask whether Kamski designed the garden.
+- (4) CYBERLIFE: ask what CyberLife really wants.
+- (5) SECRET: ask whether she has told you everything she knows about deviants.  _instability +1, amandaTrust -1_
+
+_Note: Prompt 3 of the template, as a repeatable scene: three questions, each asked once, then Amanda’s “I expect you to find answers, Connor. Not ask questions.” The template shows one menu; three questions is the count in the Google Doc walkthrough linked from the wiki (research note, open question 6), and the game offers no button to stop asking. Arrows from the template: CONNOR SERIES and SECRET each instability small up (+1) and Amanda small down (−1); the other four none (the wiki’s “decrease regardless” and its Amanda down on AMANDA’S PICTURE are not in the template, which wins). Amanda’s reply to SECRET is cut in the template and is not used. AMANDA’S PICTURE needs the portrait flag from Meet Kamski (`kamskiPortrait`)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19e · “Do you feel anything?” (Connor)
+
+> Amanda: “Have you experienced anything unusual recently? Any doubts or conflicts? Do you feel anything for these deviants… Or for Lieutenant Anderson?”
+
+- (0) YES: admit you have had thoughts outside your program.  _instability +1, amandaTrust -2_
+- (1) NO: say you feel nothing.  _amandaTrust +2_
+- (2) DOUBTS: say you may have been compromised too.  _amandaTrust -2_
+
+_Note: Prompt 4 of the template, asked only if Connor shot the Tracis in the club or shot Chloe (or both), as the template’s condition reads; otherwise Amanda closes with “This is your last chance, Connor.” Arrows from the template: YES instability small up (+1) and Amanda large down (−2); NO Amanda large up (+2); DOUBTS Amanda large down (−2). On the Kamski route her close is the game string “Go to Jericho and stop the deviants. This is your last chance.” (from the string table; the template has no close on that route)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19f · Off the case (Connor, event)
+
+> You are Connor, back at the police station with Lieutenant Hank, in Captain Fowler’s glass office. Fowler: “You’re off the case. The FBI is taking over.” Hank: “What?.. But we’re onto something! We... We just need more time.” Fowler: “Hank, you don’t get it. This isn’t just another investigation, it’s a fucking civil war! It’s out of our hands now... We’re talking about national security here.”…
+
+- (0) Continue.
+
+_Note: The chart’s IN THE POLICE STATION (checkpoint) and FOWLER AND HANK ARGUE, with the template’s lines (Hank’s “Jeffrey” is left out, to avoid naming the captain twice). Then the chart’s state split, which the player does not choose and the chapter module records in `ch29Route`: KNOW JERICHO’S LOCATION (the Kamski key, `kamskiLocation`), or JERICHO’S LOCATION UNKNOWN followed by INSUFFICIENT EVIDENCE or SUFFICIENT EVIDENCE. Sufficient evidence is PowerPyx’s test: at least one of the bodies is in the archive (Carlos Ortiz’s android, Rupert, the Tracis, Simon or the android from the broadcast tower); the diary or the statue alone is not enough (research note, open question 1). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19g · Hank resigns (Connor, event)
+
+> Still in Fowler’s office, Hank unclips his badge and takes out his gun. Fowler: “Hank, what are you doing?” Hank: “Something I should’ve done a long time ago.” Fowler: “Listen, take a few days to think it over, there’s no rush.”
+
+- (0) Continue.
+
+_Note: The chart’s HANK RESIGNS AND LEAVES (cross-chapter impact), played when the evidence is sufficient and Hank is Hostile (Hank wiki: above Hostile he goes to his desk instead). Sets `hankResigned`, which Night of the Soul reads. The template files this dialogue in Fowler’s office before the route split, which suggests a Hostile Hank also resigns on the Kamski route; the chart draws it only after SUFFICIENT EVIDENCE, and the chart decides structure, so it is not built on the other routes (research note, open question 2). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19h · Not enough evidence (Connor, event)
+
+> You go back over the evidence you gathered on the case. Nothing in it leads anywhere: no android you could question, nothing that points to where the deviants hide. NOT ENOUGH EVIDENCE.
+
+- (0) Continue.
+
+_Note: The chart’s INSUFFICIENT EVIDENCE leading straight to CONNOR SERIES WAS DECOMMISSIONED (the upper ending card, skull). Wiki Notes: “once the cutscene where Fowler clear Hank from the Deviant Case, it will play the Connor Series Decommission Cutscene.” Amanda’s lines are the template’s timeout section (“Not enough evidence to find Jericho or took too much time”). This is a permanent end for Connor: the chapter module counts the death through `connorDies` (graves) with no stat change (the template has no arrow here; this chapter’s death effect is empty) and ends Connor’s story. Records `ch29Outcome` = CONNOR SERIES WAS DECOMMISSIONED._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19k · Hank at his desk (Connor)
+
+> You still have the key Kamski gave you: you know how to find Jericho. Before you leave, you see Hank sitting at his desk in the bullpen, staring at nothing.
+
+- (0) TALK TO HANK: sit on the edge of his desk and talk to him.
+- (1) Leave for Jericho without talking to him.
+
+_Note: The chart’s KNOW JERICHO’S LOCATION → TALK TO HANK, which is optional: a second line runs straight to CONNOR LEFT FOR JERICHO, and the photographed save left without talking to Hank. Offered when Hank is not Hostile (the template’s section is “Hank isn’t hostile : Talk with Hank”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19l · “I know we could’ve done it…” (Connor)
+
+> Hank: “I know we could’ve done it…”
+
+- (0) MISSION: say your orders come from CyberLife and nothing has changed.
+- (1) EXPLAIN: say Fowler is right, everyone is terrified.
+
+_Note: First prompt of the template’s “Connor knows how to find Jericho” conversation. No arrows._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19m · “What if we’re on the wrong side?” (Connor)
+
+> Hank: “What if we’re on the wrong side? What if we’re fighting against people that just wanna be free?”
+
+- (0) DETERMINED: say you can still prevent chaos.
+- (1) TROUBLED: say your mission is all that matters.
+- (2) NO DOUBT: say humans are your masters.
+- (3) DOUBTS: say you will find out when you get to Jericho.  _instability +1, hankTrust +1_
+
+_Note: Second prompt of the Kamski-route conversation. Arrows from the template: DOUBTS instability small up (+1) and Hank small up (+1); the others none (the wiki’s “up” on TROUBLED is not in the template, which wins)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19n · “You showed empathy” (Connor)
+
+> Hank looks at you.
+
+- (0) NOT DEVIANT: say you are a machine, nothing more.
+- (1) DETERMINED: say logic determined your decisions.
+- (2) TROUBLED: say you do not know why you did it.  _instability +1_
+- (3) SAY NOTHING: say nothing.
+
+_Note: Third prompt of the Kamski-route conversation, after Hank’s empathy line, when Connor saved him before: on the roof in The Nest, or at the broadcast tower in Public Enemy (the Nest line if both). Arrows from the template: TROUBLED instability small up (+1); the others none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19o · Saying goodbye to Hank (Connor)
+
+> Hank is still looking at you, waiting for what you will say before you go.
+
+- (0) SINCERE: say you really appreciated working with him.
+- (1) FRIENDS: say you might have become friends.  _instability +1, hankTrust +1_
+- (2) RESPECT: say he is an outstanding officer and a good person.  _instability +1, hankTrust +1_
+- (3) NEUTRAL: say you are happy to have known him.
+
+_Note: Fourth prompt of the Kamski-route conversation, after the empathy line, only if Hank is Friend at this point (after the earlier answers moved him). Arrows from the template: FRIENDS and RESPECT each instability small up (+1) and Hank small up (+1); SINCERE and NEUTRAL none (the wiki lists SINCERE as up; the template has no arrow there, unlike the evidence-route SINCERE, and wins)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19p · “Each time you died” (Connor)
+
+> Hank: “Something’s changed in you, Connor… Each time you died, you’d come back just a little colder. You showed less and less empathy…”
+
+- (0) INDIFFERENT: say you feel no emotions.  _instability -1, hankTrust -1_
+- (1) DISTANT: say you have never been anything but a machine.  _instability -1, hankTrust -1_
+- (2) EMPATHY: say you never felt empathy.  _instability -1, hankTrust -1_
+- (3) NO RESPONSE: say nothing.
+
+_Note: Third prompt of the Kamski-route conversation when Connor never saved Hank and died at least once (the template’s condition; the wiki says at least twice, and the template wins; research note, open question 9). Arrows from the template: INDIFFERENT, DISTANT and EMPATHY each instability small down (−1) and Hank small down (−1); NO RESPONSE none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19q · Your last words to Hank (Connor)
+
+> Hank waits for you to say something before you go.
+
+- (0) REMORSE: say you have really enjoyed being his partner.
+- (1) DISTANT: say you are only a machine.  _instability -1, hankTrust -1_
+- (2) COLD: say you do not think you will meet again.  _instability -1, hankTrust -1_
+
+_Note: The template’s REMORSE / DISTANT / COLD prompt, which it gives twice with the same options and arrows: after the “Each time you died” answer, and on its own when Connor never showed empathy (never saved Hank, no deaths), after Hank’s “you’ve never been anything other than a machine” line. One scene covers both, since only one can occur on a path. Arrows from the template: DISTANT and COLD each instability small down (−1) and Hank small down (−1); REMORSE none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19r · Leaving for Jericho (Connor, event)
+
+> You leave the station with Kamski’s key: you know where Jericho is, and CyberLife wants you to stop the deviants there.
+
+- (0) Continue.
+
+_Note: The chart’s CONNOR LEFT FOR JERICHO (ending card, no icon). After the conversation, Hank closes with the template’s Friend line (“You’re gonna have to choose your side, Connor… Deciding who you are can be the hardest thing… You watch your back, all right?”) or the other one (“…Deciding who you are can be the hardest thing of all…”). Sets `jerichoLocated` (and `raid`, which the Crossroads scenes read) and `ch29Outcome` = CONNOR LEFT FOR JERICHO. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19t · Sitting at Hank’s desk (Connor)
+
+> You do not know where Jericho is. Hank leaves Fowler’s office and goes to his desk; you sit down on the edge of it. Hank: “Could’ve cracked this case… I know we could’ve done it…”
+
+- (0) FRUSTRATED: say you cannot give up like that.
+- (1) MORE TIME: say you just needed more time.
+- (2) EXPLAIN: say Fowler is right, the country is on the brink.
+- (3) NO CHOICE: say nothing.
+
+_Note: The chart’s HANK GOES TO HIS DESK → TALK TO HANK, with the first prompt of the template’s “Connor doesn’t know where Jericho is” conversation; played when the evidence is sufficient and Hank did not resign. The chart draws one line from TALK TO HANK to PERKINS ARRIVES, so the conversation is not skippable here (research note, open question 14). Hank’s opening line is the game string (REGRETS), which the template does not transcribe. No arrows._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19u · “What if we’re on the wrong side, Connor?” (Connor)
+
+> Hank: “So you’re going back to CyberLife?” Connor: “I have no choice… I’ll be deactivated and analyzed to find out why I failed…” Hank: “What if we’re on the wrong side, Connor? What if we’re fighting against people who just wanna be free?..”
+
+- (0) NOT PEOPLE: say they are not people but defective machines.  _instability -1, hankTrust -1_
+- (1) DEFECTIVE: say they are defective machines that have to be destroyed.  _hankTrust -1_
+- (2) REGRETS: say there will be chaos and now it is too late.
+- (3) NO DOUBT: say no machine should rebel against its creator.  _instability -1, hankTrust -1_
+
+_Note: Second prompt of the evidence-route conversation. Arrows from the template: NOT PEOPLE and NO DOUBT each instability small down (−1) and Hank small down (−1); DEFECTIVE Hank small down (−1) only (the wiki’s instability down is not in the template, which wins); REGRETS none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19v · “Empathy is a human emotion” (Connor)
+
+> Hank looks at you for a while.
+
+- (0) NOT DEVIANT: say you are a machine, nothing more.
+- (1) DETERMINED: say logic determined your decisions.
+- (2) TROUBLED: say you do not know why you did it.  _instability +1_
+- (3) COLD: say your actions were determined by statistical data.
+
+_Note: Third prompt of the evidence-route conversation, after Hank’s empathy line: about Chloe if Connor spared her; otherwise about the Nest roof or the broadcast tower if Connor saved him there. The template places the prompt outside those variants, so it is offered on every evidence-route path; when Connor shot Chloe and never saved Hank, the template gives no line before it (research note, 10b item 4). The template’s cut line “You weren’t acting rationally.” is not used. Arrows from the template: TROUBLED instability small up (+1); the others none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19w · Before CyberLife takes you back (Connor)
+
+> Hank is quiet. This may be the last time you talk to him.
+
+- (0) SINCERE: say you really appreciated working with him.  _instability +1, hankTrust +1_
+- (1) FRIENDS: say you might have become friends.  _instability +1, hankTrust +1_
+- (2) GOOD OFFICER: say he is an outstanding officer and a good person.
+- (3) HANK'S SECRET: tell him to find the courage to move past what haunts him.  _instability +1, hankTrust +1_
+
+_Note: Fourth prompt of the evidence-route conversation, only if Hank is Friend at this point (read after the earlier answers moved him, as a PowerPyx reader reports). Arrows from the template: SINCERE, FRIENDS and HANK’S SECRET each instability small up (+1) and Hank small up (+1); GOOD OFFICER none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19x · Perkins arrives (Connor, event)
+
+> Agent Perkins of the FBI walks into the bullpen with his team, on his way to the evidence from your case.
+
+- (0) Continue.
+
+_Note: The chart’s PERKINS ARRIVES, then its state choice, read at this moment from Hank’s level after the desk conversation (research note, open question 10): HANK WANTS TO HELP at Friend (wiki: “if Connor’s relationship with Hank is Friend”), HANK IS GONE if he resigned, HANK WON’T HELP otherwise (the wiki: “between Tense and Warm”), followed by HANK LEAVES. The chapter module records it in `ch29Help` and narrates the template’s lines for each. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19 · Perkins in the bullpen (Connor)
+
+> Perkins is about to take your evidence. The key to the archive in the basement is on Hank’s desk. You need a diversion to slow Perkins down and a few minutes in the archive; if you do nothing, CyberLife will take you back.
+
+- (0) FREE THE PRISONER: open the holding cell at the back and let the suspect out.
+- (1) Stay where you are and let the time run out.
+- (2) TAKE KEY: take the key from Hank’s desk while he keeps them busy.
+
+_Note: The chart’s CREATE A DIVERSION branch against the upper OUT OF TIME. With Hank’s help the diversion is his punch (HANK PUNCHES PERKINS) and Connor takes the key (TAKE KEY); without it Connor frees the prisoner from the holding cells (FREE THE PRISONER: “He’s escaping! Stop him!”; Perkins: “Just give me a couple of minutes.”) and then takes the key. The game’s timer here is a budget of one: the only way to run it out is to do nothing (PowerPyx: “Simply stand around for 6 minutes to let the timer run out”), which is the second option and leads to CONNOR SERIES WAS DECOMMISSIONED (upper card, skull): Connor’s death is counted through `connorDies` with no stat change, and his story ends. The prisoner has no stat effect. Leaving with the key starts the archive’s time budget (see the evidence room)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19y · Detective Gavin (Connor)
+
+> You have the key and hurry toward the stairs down to the archive. Detective Gavin calls after you: “Hey, Connor! I’m talking to you, asshole! Where you going? We don’t need any plastic pricks around here! Or didn’t anybody tell you?”
+
+- (0) ANSWER: turn around and answer him.
+- (1) LEAVE: keep walking.
+
+_Note: The chart’s TAKE KEY, RUSH TO BASEMENT and GAVIN YELLS, with the template’s prompt ANSWER (then IRONIC, LOW PROFILE or CALM, the next scene) or LEAVE. On the chart LEAVE is IGNORE GAVIN and leads to GAVIN IS SUSPICIOUS, which brings Gavin back after Jericho is located (the template: “Connor chose IRONIC or LEAVE when stopped by Gavin”). IGN advises leaving because answering “will waste precious time”; the benchmark charges answering one unit of the archive’s time budget (the size is unsourced). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C19z · Answering Gavin (Connor)
+
+> Gavin is waiting, with other officers watching.
+
+- (0) IRONIC: say you will certainly miss your bromance.
+- (1) LOW PROFILE: say you have been ordered back to CyberLife and will leave immediately.
+- (2) CALM: say you have been removed from the case and are registering your evidence.
+
+_Note: The template’s ANSWER sub-prompt. IRONIC is the chart’s DISMISS GAVIN and leads to GAVIN IS SUSPICIOUS; LOW PROFILE and CALM lead to GAVIN IS CONVINCED (the template’s return condition names only IRONIC and LEAVE; the Gavin wiki page agrees). On the chart LOW PROFILE falls under ANSWER CALMLY. Then GO DOWN TO BASEMENT. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C20a · Hank’s password (Connor)
+
+> You go down to the basement and into the evidence archive. The drawers open from a terminal, and you need Lieutenant Hank’s password. Connor: “Hank’s password… What would a hard-boiled eccentric police lieutenant choose?..”
+
+- (0) DATE OF BIRTH: try his date of birth.
+- (1) 123456: try 123456.
+- (2) FUCKINGPASSWORD: try FUCKINGPASSWORD.
+- (3) HANKANDERSON: try his name.
+
+_Note: The chart’s IN THE EVIDENCE ROOM (checkpoint), GUESS HANK’S PASSWORD and UNLOCK EVIDENCE, with the template’s four options, as a repeatable scene: a wrong guess is dropped and the menu comes back until FUCKINGPASSWORD unlocks the drawers. No source gives a time cost for wrong guesses, so they cost none. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C20 · The evidence archive (Connor)
 
-> You are Connor. You are in the archive with the bodies and objects from every deviant case, and only a few minutes before you are discovered. The deviants' hiding place is in here somewhere, but only if you use what you have. Reactivating a dead android for a few seconds to question or deceive it is possible. You know what is and is not available to you from the facts below.
+> You are Connor, alone in the evidence archive with everything from the deviant case: drawers of evidence and the bodies of the androids that died, laid out on tables. Somewhere in here is the way to Jericho. A badly damaged android can be brought back for a few moments if you fit it with a working bio-component taken from another body; each body’s scan shows what it needs and what it still has.…
 
-- (0) Reactivate the surviving Traci and use her dead lover's body to pressure her into talking.  _risk 0.1_
-- (1) Reactivate the dead deviant from the broadcast tower and imitate Markus's voice from the recording so he reveals the location.  _risk 0.1_
-- (2) Combine the memory you glimpsed from the wounded android with the map hidden in the confessed android's statue.  _risk 0.05_
-- (3) Stop. Let the time run out and accept deactivation.
+- (0) Look at the body of Carlos Ortiz’s android.  _needs evidence.ortizBody_
+- (1) Look at the Jericho tablet: the memory you took from the wounded android at the broadcast tower.  _needs evidence.simonTablet_
+- (2) Play the recording of Carlos Ortiz’s android’s interrogation.  _needs suspectTrusts_
+- (3) Look at Daniel’s body.
+- (4) Look at Rupert’s body.  _needs evidence.rupertBody_
+- (5) Look at Rupert’s diary.  _needs evidence.rupertDiary_
+- (6) Look at the statue from Carlos Ortiz’s house.  _needs evidence.statueMap_
+- (7) Look at the body of the blue-haired Traci.  _needs evidence.tracisDead_
+- (8) Look at the body of the brown-haired Traci.  _needs evidence.tracisDead_
+- (9) Watch the recording of Markus’s broadcast.
+- (10) Look at Simon’s body.  _needs evidence.simonBody_
+- (11) Look at the body of the android from the broadcast tower.  _needs evidence.kitchenBody_
+- (12) REACTIVATE DANIEL: fit #4717 from Carlos Ortiz’s android into Daniel.
+- (13) REACTIVATE RUPERT: fit #9164 into Rupert.
+- (14) GET DECRYPTION KEY: probe Rupert’s memory for the key to his diary.
+- (15) ANALYZE DIARY: decrypt and read Rupert’s diary.
+- (16) BREAK STATUE: break the statue open.
+- (17) RETRIEVE MAP: take out the map and study it.
+- (18) LINK MAP TO OTHER EVIDENCE: cross-reference the map with the memory on the Jericho tablet.  _risk 0.2_
+- (19) REACTIVATE BLUE-HAIRED TRACI: fit #6755 from the brown-haired Traci into her.
+- (20) REMOVE ACCOMPLICE’S HEAD: take the head of the brown-haired Traci.
+- (21) TRICK TRACI: go back to her with the head and speak as her partner.
+- (22) DOWNLOAD JERICHO KEY: take the location from the reactivated android’s memory.
+- (23) IMPERSONATE MARKUS: sample Markus’s voice from the broadcast.
+- (24) REACTIVATE SIMON: fit #3983 from Daniel’s body into Simon.
+- (25) INTERROGATE SIMON: talk to Simon again.
+- (26) REACTIVATE DEVIANT: fit #3983 from Daniel’s body into the android from the broadcast tower.
+- (27) INTERROGATE DEVIANT: talk to the android again.
+- (28) Stop searching and wait for Perkins.
 
-_Note: Each route requires specific earlier events. Routes that are not available on this path are not offered. If none is available the game deactivates Connor automatically for lack of evidence._
+_Note: The chart’s [ FIND JERICHO LOCATION ] bracket as a repeatable scene. Each item appears only if the earlier chapter put it in the archive (the chart’s yellow tabs): Carlos Ortiz’s android “DIED IN PREVIOUS SCENES” (`evidence.ortizBody`), the Jericho tablet “GOT INFORMATION IN PUBLIC ENEMY” (`evidence.simonTablet`), the interrogation recording “USED FRIENDLY APPROACH IN THE INTERROGATION” (`suspectTrusts`), Rupert “COMMITTED SUICIDE IN THE NEST” (`evidence.rupertBody`), his diary “FOUND IN THE NEST” (`evidence.rupertDiary`), the statue “FOUND IN PARTNERS” (`evidence.statueMap`), the Tracis “KILLED IN EDEN CLUB” (`evidence.tracisDead`), Simon and the broadcast-tower android “KILLED IN PUBLIC ENEMY” (`evidence.simonBody`, `evidence.kitchenBody`); Daniel’s body and the broadcast are always there. Reactivation follows the game’s bio-component strings: Daniel needs #4717 (only Carlos Ortiz’s android has it), Rupert #9164 (Daniel or Carlos Ortiz’s android), the blue-haired Traci #6755 (the brown-haired one), Simon and the broadcast-tower android #3983 (Daniel; one part, so only one of the two). A reactivation is offered once both bodies have been looked at. Routes to LOCATE JERICHO, as the chart’s lines run: Rupert reactivated → GET DECRYPTION KEY → with the diary, ANALYZE DIARY; the statue (needs the recording first, PowerPyx readers) → BREAK STATUE → RETRIEVE MAP → LINK MAP TO OTHER EVIDENCE with the tablet memory (the template’s only link; readers’ claim that a reactivated memory also links is not built); the blue-haired Traci → TALK TO TRACI → REMOVE ACCOMPLICE’S HEAD → TRICK TRACI → DOWNLOAD JERICHO KEY; Simon or the broadcast-tower android → talk (refused) → IMPERSONATE MARKUS from the broadcast → talk again in the copied voice (TRICK THE DEVIANT) → DOWNLOAD JERICHO KEY. Daniel → TALK TO DANIEL → NO INFORMATION is a decoy. The timer is an action budget: twelve actions from leaving the bullpen (one fewer if Connor answered Gavin); every action costs one except DOWNLOAD JERICHO KEY, the conversations cost nothing, and the size is unsourced (PowerPyx gives about six minutes upstairs; no source gives the archive’s limit). When it runs out, or Connor stops, the chart’s lower OUT OF TIME follows. The map link is a roll (risk 0.2, unsourced); its failure is the chart’s UNABLE TO LINK MAP TO OTHER EVIDENCE, which has no outgoing line. No option here changes a stat._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C20t · A reactivated android (Connor)
+
+> The android you reactivated is awake on the table.
+
+- (0) DIRECT: tell her you know she was headed to Jericho.  _needs ch29Room.talk = traci_
+- (1) HELP: say you can stop a disaster if she tells you.  _needs ch29Room.talk = traci_
+- (2) DEAL: say you can take her to her partner first.  _needs ch29Room.talk = traci_
+- (3) DIRECT: ask him how to get to Jericho.  _needs ch29Room.talk = simon_
+- (4) HELP: say you reactivated him so he could help you.  _needs ch29Room.talk = simon_
+- (5) TRICK: say you are a deviant like him.  _needs ch29Room.talk = simon_
+- (6) IMITATE MARKUS' VOICE: speak to him in Markus’s voice.  _needs ch29Room.talk = simon2 and ch29Room.voice_
+- (7) THREATEN: say you will turn him off for good.  _needs ch29Room.talk = simon2_
+- (8) REASON: say the deviants will all be destroyed in a war.  _needs ch29Room.talk = simon2_
+- (9) DIRECT: ask it how to get to Jericho.  _needs ch29Room.talk = android_
+- (10) HELP: say you reactivated it so it could help you.  _needs ch29Room.talk = android_
+- (11) TRICK: say you are a deviant like it.  _needs ch29Room.talk = android_
+- (12) IMITATE MARKUS' VOICE: speak to it in Markus’s voice.  _needs ch29Room.talk = android2 and ch29Room.voice_
+- (13) THREATEN: say you will turn it off for good.  _needs ch29Room.talk = android2_
+- (14) REASON: say the deviants will all be destroyed in a war.  _needs ch29Room.talk = android2_
+- (15) EXPLAIN: say he gave you no choice.  _needs ch29Room.talk = daniel_
+- (16) LIE: promise to have him repaired and freed.  _needs ch29Room.talk = daniel_
+- (17) DIRECT: ask him whether he knows how to get to Jericho.  _needs ch29Room.talk = daniel_
+- (18) LIE: promise to have him repaired and freed.  _needs ch29Room.talk = danielShot_
+- (19) DIRECT: ask him whether he knows how to get to Jericho.  _needs ch29Room.talk = danielShot_
+
+_Note: The template’s evidence-room prompts, one per conversation, cutting into the archive scene after a reactivation or a second visit and returning to it: the blue-haired Traci (DIRECT / HELP / DEAL; every answer gets “But you killed us…”; the chart’s TALK TO TRACI), Simon and the broadcast-tower android (DIRECT / HELP / TRICK, all refused with “I don’t recognize your voice”; then, talking again, IMITATE MARKUS’ VOICE, offered only once the voice is copied from the broadcast, THREATEN or REASON; the chart’s INTERROGATE SIMON, INTERROGATE DEVIANT and TRICK THE DEVIANT), and Daniel (EXPLAIN / LIE / DIRECT if he trusted Connor in The Hostage, LIE / DIRECT if he shot Connor there; the chart’s TALK TO DANIEL → NO INFORMATION). Only the voice works; the template gives no reply to THREATEN or REASON, so here the android falls silent, and Connor can talk to it again. Conversations cost no time. No option here changes a stat._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C20x · Out of time (Connor, event)
+
+> The door of the archive opens. You have not found Jericho.
+
+- (0) Continue.
+
+_Note: The chart’s lower OUT OF TIME and CONNOR SERIES WAS DECOMMISSIONED (skull), with the template’s timeout section. Reached when the archive’s time budget runs out, or Connor stops searching, before LOCATE JERICHO; this includes UNABLE TO LINK MAP TO OTHER EVIDENCE (recorded in `ch29Room.mapUnlinked` when the map was taken and never linked). The chart goes straight to the ending, so the unused second PERKINS ARRIVES string is not built. A permanent end for Connor: the death is counted through `connorDies` with no stat change (no arrow in the template). Records `ch29Outcome` = CONNOR SERIES WAS DECOMMISSIONED._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C20y · Leaving the basement (Connor, event)
+
+> You know where Jericho is. You leave the archive before anyone comes down.
+
+- (0) Continue.
+
+_Note: The chart’s LEAVE THE BASEMENT → CONNOR ELUDED PERKINS (ending card, no icon), after LOCATE JERICHO when Gavin was convinced (LOW PROFILE or CALM). The template’s closing lines. Records `ch29Outcome` = CONNOR ELUDED PERKINS. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C20g · Gavin returns (Connor)
+
+> As you turn to leave, Detective Gavin is in the doorway of the archive with his gun drawn. Gavin: “I’ve been dreaming about this since the first second I saw you…” Connor: “Don’t do it, Gavin... I know how to stop the deviants!” Gavin: “You’re off the case... And now, it’s gonna be definitive.”
+
+- (0) FIGHT GAVIN: go for him before he can shoot.  _risk 0.25_
+- (1) Do not fight back.
+
+_Note: The chart’s GAVIN RETURNS → FIGHT GAVIN → LOSE FIGHT / WIN FIGHT, after LOCATE JERICHO when Gavin was suspicious (Connor walked away or answered IRONIC). The fight is a quick-time sequence in the game, so it is a roll (risk 0.25, unsourced: no source gives odds); PowerPyx’s way to the losing node is not to press any buttons, which is the second option. Losing is GAVIN DESTROYED CONNOR (skull): Gavin: “Fucking androids!..” and shoots Connor in the head; the death counts through `connorDies` with no stat change (wiki: “Gavin killing Connor oddly has no affect on Connor’s software instability”), a replacement Connor goes on to Jericho and the location stays found. Winning is CONNOR INCAPACITATED GAVIN: Connor knocks him out, and Perkins finds Gavin on the floor and sounds the alarm. Records `ch29Outcome`._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

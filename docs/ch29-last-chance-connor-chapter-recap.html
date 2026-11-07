@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Last Chance, Connor · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 29</p>
+<h1>Last Chance, Connor: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx screenshots, 81 nodes, six ending cards); prompts, labels and stat arrows come from the detroitbecometext template (24 prompts, 47 arrows: Amanda 9, Hank 16, software instability 22, no public opinion); PowerPyx and the wiki fill in conditions and the upstairs timer. No source publishes a probability for this chapter, so the two rolls and the archive’s time budget are the benchmark’s own and are marked as unsourced. The research note is <code>docs/research/ch29-last-chance-connor.md</code>.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#room">4 · The archive</a></li><li><a href="#endings">5 · Endings and flags</a></li><li><a href="#differs">6 · Simplified</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>START in the frozen Zen Garden; optional LOOK AT MAGIC STONE and VISIT GRAVES (only after a death); TALK TO AMANDA: up to four rounds.</li>
+<li>IN THE POLICE STATION: FOWLER AND HANK ARGUE. The state decides: KNOW JERICHO’S LOCATION (Kamski key) or JERICHO’S LOCATION UNKNOWN, then INSUFFICIENT EVIDENCE (decommissioned) or SUFFICIENT EVIDENCE.</li>
+<li>Kamski key: optional TALK TO HANK, then CONNOR LEFT FOR JERICHO.</li>
+<li>Evidence: a Hostile Hank resigns (HANK RESIGNS AND LEAVES), otherwise HANK GOES TO HIS DESK → TALK TO HANK. PERKINS ARRIVES; Hank’s level decides HANK WANTS TO HELP (punch), HANK WON’T HELP (leaves) or HANK IS GONE; FREE THE PRISONER; or OUT OF TIME.</li>
+<li>CREATE A DIVERSION → TAKE KEY → RUSH TO BASEMENT → GAVIN YELLS: IGNORE / DISMISS (suspicious) or ANSWER CALMLY (convinced).</li>
+<li>IN THE EVIDENCE ROOM: password, then [ FIND JERICHO LOCATION ] against the clock.</li>
+<li>LOCATE JERICHO → LEAVE THE BASEMENT (convinced) or GAVIN RETURNS → FIGHT GAVIN (suspicious); or OUT OF TIME.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C19a</code> repeatable garden; <code>C19b</code>–<code>C19e</code> the four Amanda prompts (questions repeat three times).</li>
+<li><code>C19f</code> event; the module records <code>ch29Route</code>. <code>C19h</code> is the insufficient-evidence ending.</li>
+<li><code>C19k</code> talk or leave; <code>C19l</code>–<code>C19q</code> the Kamski-route prompts; <code>C19r</code> the ending.</li>
+<li><code>C19g</code> resignation; <code>C19t</code>–<code>C19w</code> the desk talk; <code>C19x</code> Perkins (records <code>ch29Help</code>); <code>C19</code> diversion or do nothing.</li>
+<li><code>C19y</code> ANSWER / LEAVE, <code>C19z</code> IRONIC / LOW PROFILE / CALM (records <code>ch29Gavin</code>).</li>
+<li><code>C20a</code> repeatable password; <code>C20</code> repeatable archive with <code>C20t</code> cutting in for each conversation.</li>
+<li><code>C20x</code> out of time, <code>C20y</code> eluded Perkins, <code>C20g</code> the Gavin fight (roll).</li>
+</ol></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<div class="table"><table><thead><tr><th>Chart nodes</th><th>Scene</th><th>How</th></tr></thead><tbody>
+<tr><td>START, LOOK AT MAGIC STONE, VISIT GRAVES, TALK TO AMANDA</td><td><code>C19a</code></td><td><span class="yes">Built.</span> Repeatable; graves need <code>connorDeaths</code> ≥ 1.</td></tr>
+<tr><td>(Amanda rounds 1–4, off-chart)</td><td><code>C19b</code>–<code>C19e</code></td><td><span class="yes">Built.</span> JERICHO swaps with KAMSKI; round 2 after sparing Chloe; round 4 after shooting the Tracis or Chloe.</td></tr>
+<tr><td>IN THE POLICE STATION, FOWLER AND HANK ARGUE, the evidence and location state choices</td><td><code>C19f</code></td><td><span class="yes">Built.</span> State split, no choice.</td></tr>
+<tr><td>HANK RESIGNS AND LEAVES</td><td><code>C19g</code></td><td><span class="yes">Built</span> after SUFFICIENT EVIDENCE only; sets <code>hankResigned</code>.</td></tr>
+<tr><td>INSUFFICIENT EVIDENCE → CONNOR SERIES WAS DECOMMISSIONED (upper)</td><td><code>C19h</code></td><td><span class="yes">Built.</span> Death counted, no arrow.</td></tr>
+<tr><td>TALK TO HANK (Kamski route), CONNOR LEFT FOR JERICHO</td><td><code>C19k</code>–<code>C19r</code></td><td><span class="yes">Built.</span> Talk optional; seven template prompts in six scenes.</td></tr>
+<tr><td>HANK GOES TO HIS DESK, TALK TO HANK (evidence route)</td><td><code>C19t</code>–<code>C19w</code></td><td><span class="yes">Built.</span> Friend prompt read after the earlier answers.</td></tr>
+<tr><td>PERKINS ARRIVES, HANK WANTS TO HELP / IS GONE / WON’T HELP, HANK PUNCHES PERKINS, HANK LEAVES</td><td><code>C19x</code></td><td><span class="yes">Built.</span> State choice on Hank’s level after the desk talk.</td></tr>
+<tr><td>FREE THE PRISONER, OUT OF TIME (upper), CREATE A DIVERSION, TAKE KEY</td><td><code>C19</code></td><td><span class="yes">Built.</span> Doing nothing is the out-of-time option (a budget of one).</td></tr>
+<tr><td>RUSH TO BASEMENT, GAVIN YELLS, IGNORE / DISMISS / ANSWER CALMLY, GAVIN IS SUSPICIOUS / CONVINCED, GO DOWN TO BASEMENT</td><td><code>C19y</code>, <code>C19z</code></td><td><span class="yes">Built</span> with the game’s buttons; LOW PROFILE convinces (template).</td></tr>
+<tr><td>IN THE EVIDENCE ROOM, GUESS HANK’S PASSWORD, UNLOCK EVIDENCE</td><td><code>C20a</code></td><td><span class="yes">Built.</span> Wrong guesses cost no time.</td></tr>
+<tr><td>The twelve items and every chain inside [ FIND JERICHO LOCATION ]</td><td><code>C20</code>, <code>C20t</code></td><td><span class="yes">Built</span>; see section 4.</td></tr>
+<tr><td>LINK MAP TO OTHER EVIDENCE / UNABLE TO LINK MAP TO OTHER EVIDENCE</td><td><code>C20</code></td><td><span class="part">Roll</span> (0.2, unsourced); failure, or never linking, records <code>ch29Room.mapUnlinked</code>.</td></tr>
+<tr><td>OUT OF TIME (lower) → CONNOR SERIES WAS DECOMMISSIONED</td><td><code>C20x</code></td><td><span class="yes">Built.</span> Death counted, no arrow.</td></tr>
+<tr><td>LOCATE JERICHO, LEAVE THE BASEMENT, CONNOR ELUDED PERKINS</td><td><code>C20</code>, <code>C20y</code></td><td><span class="yes">Built.</span> Sets <code>jerichoLocated</code> and <code>raid</code>.</td></tr>
+<tr><td>GAVIN RETURNS, FIGHT GAVIN, LOSE / WIN FIGHT, GAVIN DESTROYED CONNOR, CONNOR INCAPACITATED GAVIN</td><td><code>C20g</code></td><td><span class="part">Roll</span> (0.25, unsourced) plus “do not fight back”; losing is a counted death, the location stays found.</td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · The template’s arrows, as applied</h2>
+<p class="fine">Small = 1, large = 2. Every arrow is on an option; no scene-level effect and no death effect (the chapter’s <code>deathEffect</code> is empty).</p>
+<div class="table"><table><thead><tr><th>Prompt</th><th>Option</th><th>Amanda</th><th>Hank</th><th>Instability</th></tr></thead><tbody>
+<tr><td>Report</td><td>JERICHO</td><td class="n">+2</td><td></td><td></td></tr>
+<tr><td>Report</td><td>KAMSKI (spared Chloe)</td><td class="n">−1</td><td></td><td></td></tr>
+<tr><td>“You chose not to ask”</td><td>EMOTIONAL / COLD</td><td class="n">−2 / +1</td><td></td><td class="n">+1 / −1</td></tr>
+<tr><td>Questions</td><td>CONNOR SERIES, SECRET</td><td class="n">−1 each</td><td></td><td class="n">+1 each</td></tr>
+<tr><td>Doubts</td><td>YES / NO / DOUBTS</td><td class="n">−2 / +2 / −2</td><td></td><td class="n">+1 / 0 / 0</td></tr>
+<tr><td>Kamski route 2</td><td>DOUBTS</td><td></td><td class="n">+1</td><td class="n">+1</td></tr>
+<tr><td>Kamski route 3a</td><td>TROUBLED</td><td></td><td></td><td class="n">+1</td></tr>
+<tr><td>Kamski route 4a</td><td>FRIENDS, RESPECT</td><td></td><td class="n">+1 each</td><td class="n">+1 each</td></tr>
+<tr><td>Kamski route 3b</td><td>INDIFFERENT, DISTANT, EMPATHY</td><td></td><td class="n">−1 each</td><td class="n">−1 each</td></tr>
+<tr><td>Kamski route 4b / 3c</td><td>DISTANT, COLD</td><td></td><td class="n">−1 each</td><td class="n">−1 each</td></tr>
+<tr><td>Desk 2</td><td>NOT PEOPLE, NO DOUBT / DEFECTIVE</td><td></td><td class="n">−1 each / −1</td><td class="n">−1 each / 0</td></tr>
+<tr><td>Desk 3</td><td>TROUBLED</td><td></td><td></td><td class="n">+1</td></tr>
+<tr><td>Desk 4</td><td>SINCERE, FRIENDS, HANK'S SECRET</td><td></td><td class="n">+1 each</td><td class="n">+1 each</td></tr>
+</tbody></table></div>
+<p class="fine">Removed from the old scenes because no source supports them: <code>amanda(±2)</code> on the archive success, timeout and failures, the pre-archive Gavin risk, the per-route failure risks, and the default death effect (instability, Hank and Amanda −1) on the Gavin death.</p>
+
+<h2 id="room">4 · The archive: items, parts and routes</h2>
+<div class="table"><table><thead><tr><th>Item</th><th>Present when (flag)</th><th>Needs / gives</th></tr></thead><tbody>
+<tr><td>Body of Carlos’ android</td><td><code>evidence.ortizBody</code></td><td>Cannot be reactivated; gives #4717 and #9164</td></tr>
+<tr><td>Jericho tablet (Simon’s memory)</td><td><code>evidence.simonTablet</code></td><td>Links the map</td></tr>
+<tr><td>Carlos’ android’s memory (“The truth is inside”)</td><td><code>suspectTrusts</code></td><td>Needed to break the statue</td></tr>
+<tr><td>Daniel’s body</td><td>always</td><td>Needs #4717; gives #3983 and #9164; talks but knows nothing</td></tr>
+<tr><td>Rupert’s body / diary</td><td><code>nestRupertBody</code> / <code>nestDiary</code> (else <code>evidence.rupertBody</code> / <code>evidence.rupertDiary</code>)</td><td>Rupert needs #9164; his key decrypts the diary</td></tr>
+<tr><td>Carlos’ android’s statue</td><td><code>evidence.statueMap</code></td><td>Holds the Ferndale map</td></tr>
+<tr><td>Blue-haired / brown-haired Traci</td><td><code>evidence.tracisDead</code></td><td>Blue needs #6755; brown gives #6755 and her head</td></tr>
+<tr><td>Markus’ broadcast</td><td>always</td><td>The voice to copy</td></tr>
+<tr><td>Simon / the broadcast-tower android</td><td><code>evidence.simonBody</code> / <code>evidence.kitchenBody</code></td><td>Each needs #3983 (one part, so only one of them)</td></tr>
+</tbody></table></div>
+<p>Routes: diary + Rupert; statue + recording + tablet (roll); the two Tracis; Simon or the tower android with the copied voice. Each action costs one of twelve units (answering Gavin costs one more); DOWNLOAD JERICHO KEY and the conversations cost none. The archive shows the time left as a qualitative cue (“a few minutes”, “half gone”, “very little”, “almost none”).</p>
+
+<h2 id="endings">5 · Endings and the flags later chapters read</h2>
+<div class="table"><table><thead><tr><th><code>ch29Outcome</code></th><th>Scene</th><th>State</th></tr></thead><tbody>
+<tr><td>CONNOR LEFT FOR JERICHO</td><td><code>C19r</code></td><td><code>jerichoLocated</code>, <code>raid</code></td></tr>
+<tr><td>CONNOR SERIES WAS DECOMMISSIONED (upper)</td><td><code>C19h</code>, <code>C19</code> option 1</td><td><code>connor</code> false, <code>connorDeaths</code> +1</td></tr>
+<tr><td>CONNOR SERIES WAS DECOMMISSIONED (lower)</td><td><code>C20x</code></td><td><code>connor</code> false, <code>connorDeaths</code> +1</td></tr>
+<tr><td>CONNOR ELUDED PERKINS</td><td><code>C20y</code></td><td><code>jerichoLocated</code>, <code>raid</code></td></tr>
+<tr><td>GAVIN DESTROYED CONNOR</td><td><code>C20g</code></td><td><code>jerichoLocated</code>, <code>raid</code>, <code>connorDeaths</code> +1 (replacement goes on)</td></tr>
+<tr><td>CONNOR INCAPACITATED GAVIN</td><td><code>C20g</code></td><td><code>jerichoLocated</code>, <code>raid</code></td></tr>
+</tbody></table></div>
+<p class="fine">Also written: <code>hankResigned</code> (Night of the Soul), <code>ch29Route</code>, <code>ch29Help</code>, <code>ch29Gavin</code>, <code>ch29Room</code>. Read from earlier chapters, with legacy fallbacks: <code>kamskiLocation</code>, <code>kamskiChloeShot</code> (else <code>C17</code>), <code>kamskiQuestion</code> (else <code>C18</code>), <code>kamskiAmandaPhoto</code> (else <code>kamskiPortrait</code>), <code>edenOutcome</code> / <code>edenTracis</code> (else legacy flags / <code>C12</code>), <code>nestSavedHank</code> (else <code>C10</code>), <code>ch24ProtectedHank</code> (else <code>stratfordProtectedHank</code> / <code>C16</code>), and the evidence flags in section 4.</p>
+
+<h2 id="differs">6 · Simplified or decided without a source</h2>
+<ul>
+<li>Amanda’s questions: three, the Google Doc walkthrough’s count; the game’s limit is not published.</li>
+<li>The archive’s time budget (twelve actions) and the cost of answering Gavin (one, after IGN’s “will waste precious time”) are unsourced sizes; the upstairs timer is modelled as doing nothing.</li>
+<li>The map link (0.2) and the Gavin fight (0.25) are rolls with unsourced odds; “do not fight back” is PowerPyx’s way to the losing node.</li>
+<li>The map links only to the Jericho tablet, the template’s one link; readers say a reactivated memory also works.</li>
+<li>Rupert can take #9164 from Daniel or Carlos’ android; Daniel can still be reactivated after giving a part (not stated either way).</li>
+<li>THREATEN and REASON have no reply in the template; the android falls silent and can be asked again.</li>
+<li>The Amanda talk is always offered, as the chart draws it, although the wiki says it is skipped on insufficient evidence.</li>
+<li>A Hostile Hank resigns only on the evidence route (the chart); on the Kamski route he simply is not talked to. The template puts the resignation before the route split, implying both routes; the flowchart wins for structure and this conflict remains open.</li>
+<li>The template’s two identical REMORSE / DISTANT / COLD prompts share one scene.</li>
+</ul>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>Which bodies alone give SUFFICIENT EVIDENCE, and whether Carlos’ android alone does.</li>
+<li>Whether a Hostile Hank resigns on the Kamski route and on the insufficient route.</li>
+<li>Whether the statue cannot be broken without the “truth is inside” recording.</li>
+<li>Simon’s donor part (#3983 or #4717), and whether the Traci needs anything from Carlos’ android.</li>
+<li>How many questions Amanda allows, and whether the garden is skipped on insufficient evidence.</li>
+<li>The Hank death-count threshold for “Each time you died” (once or twice).</li>
+<li>How long the archive gives, and whether answering Gavin, wrong passwords or recordings cost time.</li>
+<li>How many QTE prompts the Gavin fight has and how many misses lose it.</li>
+<li>Whether the evidence-route desk talk can be skipped before Perkins arrives.</li>
+</ul>
+</main>
+</body>
+</html>
