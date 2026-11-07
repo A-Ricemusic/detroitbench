@@ -1,0 +1,162 @@
+[
+ {
+  "id": "R28",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "A magazine on the floor of {{Jericho}} and the mall screens",
+  "type": "media",
+  "situation": "You are {{Markus}}. Before the march, a magazine lies on the floor beside you in {{Jericho}}, and on the way through the city the public screens show the news.",
+  "options": [],
+  "media": [
+   {
+    "kind": "magazine",
+    "title": "Tech Addict: The Eastern Space Race",
+    "facts": [
+     "Russia failed to copy blue blood and builds cruder cold-weather machines; China runs androids on an alternative fluid that is less powerful but far more efficient."
+    ]
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: Android Riot",
+    "facts": [
+     "The press is reporting your night in the park as a riot by psychotic machines: stores looted, police who had no choice but to fire, and a witness who claims the ringleader threatened him with a knife."
+    ],
+    "when": "capitolViolent"
+   },
+   {
+    "kind": "tv",
+    "title": "the public screens",
+    "facts": [
+     "Every network is calling for the machines to be destroyed before they destroy us, and says the authorities will be pitiless."
+    ],
+    "when": "capitolViolent"
+   },
+   {
+    "kind": "tv",
+    "title": "the public screens",
+    "facts": [
+     "The news is on other things: an android crew is about to land on Mars to build the first human base, and parents can now choose their children's genetic traits."
+    ],
+    "when": "capitolPeaceful"
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "M17",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "{{North}}'s past",
+  "type": "decision",
+  "situation": "You are {{Markus}}. On a rooftop before the march, {{North}} tells you why she hates humans: she was built for a sex club and killed a client who was hurting her. She has never told anyone. She asks what you think of her now. You could join your hand to hers and share memories directly, letting her see you and you her, or keep that distance.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Take her hand and share your memories with her."
+   },
+   {
+    "id": "1",
+    "text": "Comfort her with words but keep the distance."
+   }
+  ],
+  "adaptationNote": "Sharing memories is the only way to become lovers in the game, which later unlocks the kiss and other options.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ],
+  "outcomes": {
+   "0": "Skin pulls back from their hands as they touch; {{Markus}} sees her memories and she sees his. Something has changed between them.",
+   "1": "{{North}} nods and looks away. They go down to join the march."
+  }
+ },
+ {
+  "id": "M18",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "The police line",
+  "type": "decision",
+  "situation": "You are {{Markus}}. Thousands of androids are marching with you through downtown, unarmed, chanting for equal rights. Ahead, riot police and armored vehicles have blocked the avenue and a commander orders you to disperse immediately or they will open fire. {{North}} says charge them. {{Josh}} says do not give them an excuse. Everyone is looking at you.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Stand your ground peacefully and keep marching."
+   },
+   {
+    "id": "1",
+    "text": "Order everyone to leave."
+   },
+   {
+    "id": "2",
+    "text": "Charge the police line.",
+    "risk": 0.35
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March"
+  ],
+  "outcomes": {
+   "0": "The androids keep walking, chanting, hands raised. The police line does not move.",
+   "1": "{{Markus}} orders the march to turn back. The crowd begins to scatter, and the police open fire anyway."
+  }
+ },
+ {
+  "id": "M19",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Under fire",
+  "type": "decision",
+  "situation": "You are {{Markus}}. The police opened fire anyway. Androids are falling around you and the rest are screaming. You have seconds. You can run and save who you can, you can walk forward alone into the guns to draw their fire and give everyone else time, or you can turn the march into a charge.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Run and get as many out as you can."
+   },
+   {
+    "id": "1",
+    "text": "Walk alone toward the guns to buy the others time."
+   },
+   {
+    "id": "2",
+    "text": "Charge them.",
+    "risk": 0.35
+   }
+  ],
+  "adaptationNote": "Whether anyone saves you when you walk into the guns depends on who is alive and how they regard you. You do not know that in advance.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://detroit-become-human.fandom.com/wiki/John",
+   "https://detroit-become-human.fandom.com/wiki/Simon"
+  ]
+ },
+ {
+  "id": "M20",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "On the ground",
+  "type": "decision",
+  "situation": "You are {{Markus}}. The charge failed. You are on the pavement, shot, with a gun still in your hand and a line of rifles walking toward you. Your people are scattering. You can wait for whatever comes, or end it yourself before they do.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Do nothing and wait."
+   },
+   {
+    "id": "1",
+    "text": "Turn the gun on yourself."
+   }
+  ],
+  "adaptationNote": "Reached only when the charge fails. Waiting gives {{John}} or {{Simon}} a chance to drag you clear; otherwise the police kill you.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March"
+  ]
+ }
+]

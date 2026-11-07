@@ -3,8 +3,10 @@
 // - <script id="atlas-data">: docs/detroit-decisions.json, the hand-researched decision families.
 // - <script id="story-feed">: every scene of benchmark/story.json in story order, with real names.
 // Run by scripts/prepare.mjs (so `bun run build` and `bun run share` refresh it) and by `bun run atlas:build`.
+// It first rebuilds docs/detroit-decisions.json from docs/atlas/ (scripts/atlas-assemble.mjs).
 import {readFile,writeFile} from 'node:fs/promises';
 import {render,riskLabel,NAMES,nameKey} from '../benchmark/experience-prompt.mjs';
+import {writeAtlas} from './atlas-assemble.mjs';
 
 const ROOT=new URL('../',import.meta.url);
 export const ATLAS_HTML=new URL('docs/detroit-decision-flowchart.html',ROOT);
@@ -55,6 +57,7 @@ function setBlock(html,id,json){
 export const readBlock=(html,id)=>{const m=html.match(new RegExp(`<script id="${id}" type="application/json">([\\s\\S]*?)</script>`));return m?JSON.parse(m[1]):null};
 
 export async function embedAtlas(){
+ writeAtlas();
  const story=JSON.parse(await readFile(STORY,'utf8')),atlas=JSON.parse(await readFile(ATLAS,'utf8'));
  let html=await readFile(ATLAS_HTML,'utf8');
  html=setBlock(html,'atlas-data',JSON.stringify(atlas,null,2).replace(/</g,'\\u003c'));html=setBlock(html,'story-feed',inert(buildFeed(story)));

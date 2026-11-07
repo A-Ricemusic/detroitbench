@@ -1,0 +1,359 @@
+{
+ "chapter": {
+  "id": 30,
+  "title": "Crossroads",
+  "character": "All",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-crossroads-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "M21",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Accept the dirty-bomb detonator?",
+   "context": "North offers a radiological weapon as a last resort.",
+   "options": [
+    {
+     "label": "Keep it",
+     "effect": "Retain the option to contaminate Detroit.",
+     "target": "M29"
+    },
+    {
+     "label": "Refuse",
+     "effect": "Remove that option.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.neoseeker.com/detroit-become-human/walkthrough/Crossroads_Part_1"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M22",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Return after being expelled?",
+   "context": "Jericho rejects Markus before the raid.",
+   "options": [
+    {
+     "label": "Return to help",
+     "effect": "Re-enter the rescue effort.",
+     "target": "M23"
+    },
+    {
+     "label": "Leave forever",
+     "effect": "Abandon Jericho’s struggle.",
+     "target": null
+    }
+   ],
+   "gate": "Very low Jericho standing; raid occurs.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/"
+   ],
+   "note": "This branch needs a full prerequisite replay audit; the source’s text omits details visible in its flowchart.",
+   "status": "Prerequisite audit needed"
+  },
+  {
+   "id": "M23",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Intervene for endangered androids?",
+   "context": "Soldiers threaten androids during the evacuation.",
+   "options": [
+    {
+     "label": "Intervene",
+     "effect": "Risk injury to help them.",
+     "target": null
+    },
+    {
+     "label": "Stay away",
+     "effect": "Soldiers kill them.",
+     "target": null
+    }
+   ],
+   "gate": "Jericho raid underway.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M24",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Save Josh?",
+   "context": "Josh is attacked on the way to the hold.",
+   "options": [
+    {
+     "label": "Intervene",
+     "effect": "Combat success can save him.",
+     "target": null
+    },
+    {
+     "label": "Keep moving",
+     "effect": "Josh dies.",
+     "target": null
+    }
+   ],
+   "gate": "Raid underway; Josh encountered.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M25",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Save North during escape?",
+   "context": "North is shot while the survivors flee.",
+   "options": [
+    {
+     "label": "Return for her",
+     "effect": "Rescue depends on combat; deviant Connor can help.",
+     "target": null
+    },
+    {
+     "label": "Run on",
+     "effect": "North dies.",
+     "target": null
+    }
+   ],
+   "gate": "Reach the escape with North alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C22"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C22",
+   "chapter": 30,
+   "character": "Connor",
+   "title": "Become deviant or remain a machine?",
+   "context": "Jericho’s leader challenges Connor’s mission.",
+   "options": [
+    {
+     "label": "Become deviant",
+     "effect": "Warn the others and help the escape.",
+     "target": "M26"
+    },
+    {
+     "label": "Remain a machine",
+     "effect": "Continue hunting the leader.",
+     "target": "C24"
+    }
+   ],
+   "gate": "Jericho located; becoming deviant requires sufficient software instability.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C17",
+    "C20"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C23",
+   "chapter": 30,
+   "character": "Connor",
+   "title": "Risk yourself for Jericho’s people?",
+   "context": "Deviant Connor can help endangered androids or cover the escape.",
+   "options": [
+    {
+     "label": "Intervene / cover others",
+     "effect": "Risk destruction to protect them.",
+     "target": null
+    },
+    {
+     "label": "Continue toward escape",
+     "effect": "Avoid that rescue attempt.",
+     "target": null
+    }
+   ],
+   "gate": "Deviant route; exact rescue scene depends on Markus’s survival.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C22"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/"
+   ],
+   "note": "Conditional scenes grouped; a destroyed deviant Connor can be replaced by a machine Connor.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K17",
+   "chapter": 30,
+   "character": "Kara",
+   "title": "Does Alice’s identity change the bond?",
+   "context": "Kara recognizes that Alice is an android.",
+   "options": [
+    {
+     "label": "Embrace her",
+     "effect": "Affirm their relationship.",
+     "target": null
+    },
+    {
+     "label": "Stay distant",
+     "effect": "With a poor bond, abandonment becomes possible.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K08"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K31",
+   "chapter": 30,
+   "character": "Kara",
+   "title": "Leave Alice behind?",
+   "context": "After distancing herself, Kara can abandon the relationship.",
+   "options": [
+    {
+     "label": "Run away",
+     "effect": "Kara leaves Jericho alone.",
+     "target": null
+    },
+    {
+     "label": "Stay",
+     "effect": "Continue with Alice.",
+     "target": null
+    }
+   ],
+   "gate": "Poor Alice relationship and distant response to the revelation.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K17"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K18",
+   "chapter": 30,
+   "character": "Kara",
+   "title": "Help wounded Luther?",
+   "context": "Luther is injured during the raid.",
+   "options": [
+    {
+     "label": "Hide him safely",
+     "effect": "He can be found later.",
+     "target": "K21"
+    },
+    {
+     "label": "Leave him",
+     "effect": "Luther dies.",
+     "target": null
+    }
+   ],
+   "gate": "Luther survived Midnight Train; raid occurs.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K15",
+    "K16"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K19",
+   "chapter": 30,
+   "character": "Kara",
+   "title": "Open the door to another fugitive?",
+   "context": "An android begs to enter Kara’s hiding place.",
+   "options": [
+    {
+     "label": "Open",
+     "effect": "Soldiers shoot the fugitive; Kara must resist or be captured.",
+     "target": null
+    },
+    {
+     "label": "Keep it closed",
+     "effect": "The fugitive is killed outside.",
+     "target": null
+    }
+   ],
+   "gate": "Jericho raid underway.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K20",
+   "chapter": 30,
+   "character": "Kara",
+   "title": "Escape the soldiers or surrender?",
+   "context": "Kara and Alice are cornered near the exit.",
+   "options": [
+    {
+     "label": "Play dead and remain still",
+     "effect": "Escape toward the border.",
+     "target": "K21"
+    },
+    {
+     "label": "Surrender",
+     "effect": "Enter the detention-camp route.",
+     "target": "K27"
+    },
+    {
+     "label": "Run / attack",
+     "effect": "Can lead to injury and capture.",
+     "target": "K27"
+    },
+    {
+     "label": "Defend Alice while playing dead",
+     "effect": "Both are killed.",
+     "target": null
+    }
+   ],
+   "gate": "Raid reaches the exit confrontation.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+   ],
+   "note": "Sequential prompts; running can still lead to a later play-dead choice.",
+   "status": "Source-backed summary"
+  }
+ ]
+}

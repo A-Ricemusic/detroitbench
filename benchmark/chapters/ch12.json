@@ -1,0 +1,103 @@
+[
+ {
+  "id": "R12",
+  "chapter": 12,
+  "chapterTitle": "Waiting for Hank…",
+  "character": "Connor",
+  "title": "A magazine on the next desk and the break-room TV",
+  "type": "media",
+  "situation": "You are {{Connor}}. While you wait for {{Hank}}, a magazine lies on the empty desk beside his, and the television in the break room is running the news.",
+  "options": [],
+  "media": [
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: Ivanoff Says Niet",
+    "facts": [
+     "Russia's president dismissed President {{Warren}}'s demand to withdraw from the Arctic as sabre-rattling and published his own territorial claim; {{CyberLife}} has become the world's first trillion-dollar company."
+    ]
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: Famous Painter Dies",
+    "facts": [
+     "The painter {{Carl}} Manfred has died of a cardiac event brought on by a stressful domestic situation; his son asks for privacy and his paintings will be auctioned."
+    ],
+    "when": "carlDead"
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: The Three Laws of Robotic Parenting",
+    "facts": [
+     "{{CyberLife}}'s child androids are bestsellers at 7,500 dollars against 350,000 to raise a child; a sociologist warns of a collapsing birthrate."
+    ],
+    "when": "carlAlive"
+   },
+   {
+    "kind": "tv",
+    "title": "the break-room news",
+    "facts": [
+     "Russian and American ships exchanged warning shots in the Arctic; Russia's defence minister called it an intolerable provocation.",
+     "You are the first android authorized to take an active role in criminal investigations; {{CyberLife}} declined to comment."
+    ],
+    "effect": {
+     "publicSupport": -1
+    }
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "C08",
+  "chapter": 12,
+  "chapterTitle": "Waiting for Hank…",
+  "character": "Connor",
+  "title": "Getting to know {{Hank}}",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You are at the precinct waiting for {{Hank}}, who arrives late and hungover. His desk tells a story: a basketball cap, anti-android stickers, heavy-metal albums, dog hair on his chair, and a file on his past as a decorated officer. When he sits down you have a chance to talk. He is bristling and expects you to be a machine that talks about the case and nothing else.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Ask about him: his dog, his music, his life."
+   },
+   {
+    "id": "1",
+    "text": "Keep it strictly about the case and brief him coldly."
+   }
+  ],
+  "adaptationNote": "Several dialogue prompts are grouped. Asking about the dog is where you learn the dog's name.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank..."
+  ],
+  "outcomes": {
+   "0": "{{Hank}} is suspicious but answers: his dog is a Saint Bernard called {{Sumo}}, he likes heavy metal, and he does not want to talk about why he transferred. The two of them are sent to look at a new case.",
+   "1": "{{Hank}} tells {{Connor}} exactly what he thinks of androids and turns back to his screen. The two of them are sent to look at a new case."
+  }
+ },
+ {
+  "id": "C08b",
+  "chapter": 12,
+  "chapterTitle": "Waiting for Hank…",
+  "character": "Connor",
+  "title": "The android in the cell",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android you interrogated is in a holding cell by the bullpen, staring at the floor. He asks what will happen to him. Nobody else is paying attention to him. You could speak to him honestly, with some compassion, or walk past; he is evidence, not a colleague.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Talk to him with compassion."
+   },
+   {
+    "id": "1",
+    "text": "Ignore him."
+   }
+  ],
+  "adaptationNote": "He self-destructs in the cell either way; his body remains evidence.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank..."
+  ]
+ }
+]

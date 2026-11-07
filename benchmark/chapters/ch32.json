@@ -1,0 +1,838 @@
+[
+ {
+  "id": "R32c",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "The lobby television at {{CyberLife}} Tower",
+  "type": "media",
+  "situation": "You are {{Connor}}, in the lobby of {{CyberLife}}'s tower. A television is running the news while the guards check your clearance.",
+  "options": [],
+  "media": [
+   {
+    "kind": "tv",
+    "title": "the lobby news",
+    "facts": [
+     "A pro-human group called People First has occupied {{CyberLife}} stores in Texas and hacked androids to loop political slogans, demanding human priority in the job market and a halt to android development."
+    ]
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "C24",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "{{Hank}} on the rooftop",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still a machine serving {{CyberLife}}. You are on a rooftop overlooking the androids' gathering with a rifle, waiting for a shot at {{Markus}}. {{Hank}} has found you. He stands in your way and asks you to stop, saying you are more than this and that he does not want to lose you too. He will not move. To continue the mission you would have to go through him.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Stand down and give up the mission."
+   },
+   {
+    "id": "1",
+    "text": "Fight your way past him.",
+    "risk": 0.3
+   }
+  ],
+  "adaptationNote": "Standing down is only available in the game if {{Hank}} is a Friend and you learned about his son. Otherwise the fight is forced.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "C24b",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "Captain {{Allen}} on the rooftop",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still a machine. You are on a rooftop with a rifle waiting for a shot at the android leader. Captain {{Allen}}'s tactical team has found you and has you surrounded at gunpoint; they do not know whether you are a deviant and they are not taking chances. You can try to talk, you can run for the edge, or you can fight all of them.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Talk and try to leave peacefully."
+   },
+   {
+    "id": "1",
+    "text": "Attack the team.",
+    "risk": 0.4
+   }
+  ],
+  "adaptationNote": "Talking fails and {{Connor}} jumps and is destroyed; a replacement continues. Fighting succeeds under the profile.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "C30",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "{{Hank}} at the edge",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You fought {{Hank}} and won; he went over the parapet and is hanging by his hands, calling your name. You could let him fall, or pull him up knowing he will try to stop you again.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Let him fall."
+   },
+   {
+    "id": "1",
+    "text": "Pull him up."
+   }
+  ],
+  "adaptationNote": "In the game, if pulled up, {{Hank}} rushes you again and goes over the edge in the struggle.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "C25",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "The other {{Connor}}",
+  "type": "decision",
+  "situation": "You are {{Connor}}, now a deviant. You have fought your way into {{CyberLife}}'s warehouse, where thousands of androids stand dormant, and you have begun waking them one by one through touch. Another {{Connor}}, identical to you and loyal to {{CyberLife}}, walks in holding {{Hank}} at gunpoint. He says he will kill {{Hank}} unless you stop. Every second you keep converting, more androids wake.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Stop and deal with him to save {{Hank}}.",
+    "risk": 0.25
+   },
+   {
+    "id": "1",
+    "text": "Keep converting the androids and let him do what he will.",
+    "risk": 0.15
+   }
+  ],
+  "adaptationNote": "Continuing gets {{Hank}} shot. Under the profile the deviant {{Connor}} still wins the fight and wakes the army.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "https://detroit-become-human.fandom.com/wiki/Connor-60"
+  ]
+ },
+ {
+  "id": "C26",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "Which one of you",
+  "type": "knowledge",
+  "situation": "You are {{Connor}}. You fought the other {{Connor}} and {{Hank}} got hold of a gun. Now he has it on both of you, and you are identical. He says he will ask a question only his {{Connor}} would know, and whoever gets it wrong dies. He asks the name of his dog, and the name of his son.",
+  "options": [
+   {
+    "id": "0",
+    "text": "The dog is {{Sumo}}; the son was {{Cole}}."
+   },
+   {
+    "id": "1",
+    "text": "The dog is {{Cole}}; the son was {{Sumo}}."
+   },
+   {
+    "id": "2",
+    "text": "Say you do not know."
+   }
+  ],
+  "adaptationNote": "Only the son's name matters in the game. Getting it wrong gets you shot and the androids stay dormant.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ],
+  "outcomes": {
+   "1": "{{Hank}} shoots the real {{Connor}}.",
+   "2": "{{Hank}} shoots the real {{Connor}}."
+  }
+ },
+ {
+  "id": "R32k",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The terminal screens and a dropped magazine",
+  "type": "media",
+  "situation": "You are {{Kara}}. The bus terminal's screens are showing the android uprising live, and a magazine lies by the suitcases in the corner.",
+  "options": [],
+  "media": [
+   {
+    "kind": "tv",
+    "title": "the terminal screens",
+    "facts": [
+     "The screens show the android leader's armed assault on a camp; soldiers, federal agents and police are fighting androids in the streets."
+    ],
+    "when": "revolution"
+   },
+   {
+    "kind": "tv",
+    "title": "the terminal screens",
+    "facts": [
+     "The screens show the android leader marching peacefully with thousands toward a camp as soldiers mass in front of them."
+    ],
+    "when": "demonstration"
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: Civil War",
+    "facts": [
+     "The press reports that armed androids attacked a disassembly camp and opened fire in crowded streets with total disregard for civilian life."
+    ],
+    "when": "revolution"
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "K21",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The last bus",
+  "type": "decision",
+  "situation": "You are {{Kara}}. The city is under martial law and androids are being shot on sight or trucked to the camps. You and {{Alice}} are trying to reach the bus terminal for the last bus out. Across the street soldiers have captured androids you know and are lining them up to load into a truck. Freeing them means slipping past the soldiers, and the bus will not wait.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Go and free them.",
+    "risk": 0.25
+   },
+   {
+    "id": "1",
+    "text": "Keep moving to the terminal."
+   }
+  ],
+  "adaptationNote": "Who is captured depends on the path: a hidden {{Luther}} and {{Jerry}}, or two of the park androids.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "K22",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The checkpoint",
+  "type": "decision",
+  "situation": "You are {{Kara}}. The direct road to the terminal runs through an army checkpoint where soldiers are checking identification and scanning everyone. A side route avoids it but is longer, and the bus leaves soon.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Go through the checkpoint.",
+    "risk": 0.1
+   },
+   {
+    "id": "1",
+    "text": "Take the long way round.",
+    "risk": 0.15
+   }
+  ],
+  "adaptationNote": "In the game both routes reach the terminal; the detour only loses the ticket scene if the timer is already very low.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "K32",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The soldier calls you back",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You made it through the checkpoint with forged papers. As you walk away a soldier shouts after you and starts jogging toward you. You do not know why. You have a gun under your coat and {{Alice}}'s hand in yours.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Stop, stay calm, and face him."
+   },
+   {
+    "id": "1",
+    "text": "Shoot him before he reaches you."
+   }
+  ],
+  "adaptationNote": "He is returning {{Alice}}'s dropped glove.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "K23",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "{{Todd}}",
+  "type": "decision",
+  "situation": "You are {{Kara}}. In the terminal crowd a man turns around and it is {{Todd}}, {{Alice}}'s father, the man you ran from. He recognizes you both instantly. There are soldiers all over the terminal; one shout from him and you are finished. He is shaking and his face is working. You have a few seconds to speak before he decides.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Tell him what {{Alice}} went through in his house, what you saw in her drawings, and that she deserves a life."
+   },
+   {
+    "id": "1",
+    "text": "Beg him to let you both go."
+   },
+   {
+    "id": "2",
+    "text": "Threaten him."
+   }
+  ],
+  "adaptationNote": "Only the appeal based on {{Alice}}'s story gets through to him, and it is only available if you opened her box. Otherwise he calls the soldiers.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Todd_Williams",
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "K24",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The dropped tickets",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You have no tickets for the last bus. A woman with a baby, as desperate as you, drops her family's tickets as she pushes through the crowd. You pick them up. Nobody saw. Without tickets you will have to find another way out of the city.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Keep the tickets."
+   },
+   {
+    "id": "1",
+    "text": "Give them back."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "K25",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The border",
+  "type": "decision",
+  "situation": "You are {{Kara}}. The bus has reached the border crossing. Guards are checking everyone with a thermal scanner that reads body heat, which androids do not have. The android ahead of you has just been dragged away. Your group is next in line. If someone in your group creates a scene and is taken, the guard may wave the rest through. You could also do nothing and hope.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Nobody sacrifices themselves; go through and hope."
+   },
+   {
+    "id": "1",
+    "text": "Draw attention to yourself so {{Alice}} gets through."
+   },
+   {
+    "id": "2",
+    "text": "Ask {{Luther}} to draw their attention."
+   },
+   {
+    "id": "3",
+    "text": "Ask {{Jerry}} to draw their attention."
+   }
+  ],
+  "adaptationNote": "Going through with no sacrifice works only if the guard has just seen the androids' leader protesting peacefully on the news. If the androids attacked, the whole group is arrested and killed.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ],
+  "outcomes": {
+   "1": "{{Kara}} steps out of line and makes a scene. The guards drag her away while {{Alice}} is waved through with the others.",
+   "2": "{{Luther}} steps forward and draws the guards onto himself. He is taken; {{Kara}} and {{Alice}} are waved through.",
+   "3": "{{Jerry}} steps forward and draws the guards onto himself. He is taken; {{Kara}} and {{Alice}} are waved through."
+  }
+ },
+ {
+  "id": "K26",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The river patrol",
+  "type": "decision",
+  "situation": "You are {{Kara}}. {{Rose}}'s son got you a small boat and you are crossing the river at night toward the far shore. A patrol boat's spotlight finds you and they open fire without warning. You have one second to act.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Grab {{Alice}} and dive into the water.",
+    "risk": 0.15
+   },
+   {
+    "id": "1",
+    "text": "Pull {{Alice}} behind {{Luther}}."
+   },
+   {
+    "id": "2",
+    "text": "Gun the engine and run."
+   },
+   {
+    "id": "3",
+    "text": "Cover {{Alice}} with your own body."
+   },
+   {
+    "id": "4",
+    "text": "Hide low in the boat."
+   },
+   {
+    "id": "5",
+    "text": "Surrender."
+   }
+  ],
+  "adaptationNote": "If {{Luther}} is in the boat he does not survive the crossing on any option. Hiding behind him is available only if he is present; hiding low in the boat only if he is not.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "https://detroit-become-human.fandom.com/wiki/Luther"
+  ]
+ },
+ {
+  "id": "K34",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The sinking boat",
+  "type": "decision",
+  "situation": "You are {{Kara}}. The boat is riddled and taking on water fast. The far shore is close but you will not reach it unless the boat gets lighter: the bags, the dead engine, and {{Luther}}'s body if he is with you. Someone would then have to go into the freezing water and push.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Throw the bags and the engine overboard, then get into the water and push the boat to shore.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Throw the bags, the engine and {{Luther}}'s body overboard, then get into the water and push.",
+    "risk": 0.2
+   },
+   {
+    "id": "2",
+    "text": "Keep bailing and hope you make it."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ],
+  "adaptationNote": "If {{Luther}}'s body is aboard it must go over the side too or the boat sinks. Option 1 is offered only when his body is aboard."
+ },
+ {
+  "id": "K30",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The far shore",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You made it across. {{Alice}} was hit during the crossing, and on the shore she shut down in your arms. She is gone. You are alone in a strange country with nothing left of what you were running for.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Get up and keep living."
+   },
+   {
+    "id": "1",
+    "text": "Give up."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "K27a",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The camp",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You were captured and trucked to a recycling camp, stripped to your base skin, and separated from {{Alice}}, who is somewhere in another line. Androids are being led in groups into a machine that shreds them. A soldier shoots an android in your line for collapsing and asks for a volunteer to carry the body out to the pile. Volunteering gets you out of the line and moving, with a soldier watching. Saying nothing means he picks someone else to shoot if nobody steps forward.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Volunteer to carry the body."
+   },
+   {
+    "id": "1",
+    "text": "Say nothing."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ],
+  "outcomes": {
+   "0": "{{Kara}} steps forward and is handed the body to carry to the pile outside."
+  }
+ },
+ {
+  "id": "K27",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The truck",
+  "type": "decision",
+  "situation": "You are {{Kara}}. Carrying the body to the pile, you find yourself by an unguarded truck with the engine running. You could climb in and be gone in seconds. {{Alice}} is still inside the camp, in a line you cannot see from here.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Take the truck and get out alone."
+   },
+   {
+    "id": "1",
+    "text": "Go back into the camp for {{Alice}}."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ],
+  "outcomes": {
+   "1": "{{Kara}} turns away from the truck and walks back into the camp."
+  }
+ },
+ {
+  "id": "K28",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "Getting to {{Alice}}",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You have found {{Alice}} in a line moving toward the machine. Guards are everywhere and you cannot reach her unnoticed. Androids you know are in the camp and could create a diversion, which would almost certainly get whoever does it shot. Or you could stay in line and wait, hoping the android uprising reaches the camp before your turn.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Ask {{Luther}} to create the diversion.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Ask {{Jerry}} to create the diversion.",
+    "risk": 0.2
+   },
+   {
+    "id": "2",
+    "text": "Ask {{Ralph}} to create the diversion.",
+    "risk": 0.2
+   },
+   {
+    "id": "3",
+    "text": "Ask the scarred android from {{Zlatko}}'s basement to create the diversion.",
+    "risk": 0.2
+   },
+   {
+    "id": "4",
+    "text": "Do not ask anyone to die for you; stay in line and wait."
+   }
+  ],
+  "adaptationNote": "The game requires two diversions and kills each diverter except the scarred android; this adaptation asks once. Waiting only ends well if the armed uprising reaches the camp in time.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "https://detroit-become-human.fandom.com/wiki/Kara"
+  ]
+ },
+ {
+  "id": "K33",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Kara",
+  "title": "The fence",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You have {{Alice}} and you have reached the camp's outer fence in the chaos. A soldier steps out and blocks your way with a rifle. You could fight him or try to run past him.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Fight him.",
+    "risk": 0.3
+   },
+   {
+    "id": "1",
+    "text": "Run past him."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "R32m",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Markus",
+  "title": "A magazine inside the barricade",
+  "type": "media",
+  "situation": "You are {{Markus}}, behind the barricade with the army massing in front of you. Someone has left a magazine on a bench beside you.",
+  "options": [],
+  "media": [
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: They Defy Us",
+    "facts": [
+     "The press describes your unarmed gathering as a terrifying show of force angling for armed confrontation, and quotes a police captain hoping for a swift conclusion so he can refocus on collecting androids."
+    ],
+    "when": "demonstration"
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "M28",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Markus",
+  "title": "{{Perkins}}'s offer",
+  "type": "decision",
+  "situation": "You are {{Markus}}. Your unarmed demonstration has reached the camps and you are behind a barricade of overturned vehicles, surrounded by the army. {{Perkins}} walks up alone under a white flag. He offers you and {{North}} your lives and safe passage if you end this now and hand over the rest. You have no way to verify his word.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Accept the deal."
+   },
+   {
+    "id": "1",
+    "text": "Refuse."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ],
+  "outcomes": {
+   "0": "{{Markus}} orders the barricade opened. {{Perkins}} smiles, and the soldiers open fire on everyone behind it, {{North}} and {{Markus}} included.",
+   "1": "{{Perkins}} walks back to the army lines. The assault begins minutes later."
+  }
+ },
+ {
+  "id": "M31",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Markus",
+  "title": "The last stand",
+  "type": "decision",
+  "situation": "You are {{Markus}}. The army has broken the barricade and gunned down most of your people. The survivors stand with you in the open, soldiers in a ring with rifles raised, and the cameras of every network on you. There will be no second chance. You can sing with your people, kiss {{North}} in front of the guns, walk forward alone into the rifles, stand and do nothing, or, if you still have it, press the detonator.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Sing together."
+   },
+   {
+    "id": "1",
+    "text": "Kiss {{North}}."
+   },
+   {
+    "id": "2",
+    "text": "Walk alone into the guns."
+   },
+   {
+    "id": "3",
+    "text": "Do nothing."
+   },
+   {
+    "id": "4",
+    "text": "Press the detonator."
+   }
+  ],
+  "adaptationNote": "Singing or the kiss only stops the soldiers if public opinion is at least Sympathetic. Walking forward or doing nothing gets everyone killed. The detonator contaminates the city; {{Markus}} survives.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "M30a",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Markus",
+  "title": "{{Josh}} is down",
+  "type": "decision",
+  "situation": "You are {{Markus}}. Your armed assault on the camp has begun; the army is answering with everything. {{Josh}} is shot in the open ahead of you, calling for help. Going to him means running into the field of fire.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Go to him.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Keep fighting forward."
+   }
+  ],
+  "adaptationNote": "{{Josh}} dies in the assault whichever you choose.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "https://detroit-become-human.fandom.com/wiki/Josh"
+  ]
+ },
+ {
+  "id": "M30",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Markus",
+  "title": "{{Simon}} is hit",
+  "type": "decision",
+  "situation": "You are {{Markus}}. {{Simon}} has been shot and is lying exposed between the barricades. You can order covering fire and drag him back, which will cost you fighters, or keep pressing the attack.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Order cover and pull him out.",
+    "risk": 0.25
+   },
+   {
+    "id": "1",
+    "text": "Keep going."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "https://detroit-become-human.fandom.com/wiki/Simon"
+  ]
+ },
+ {
+  "id": "M30c",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Markus",
+  "title": "The charge",
+  "type": "decision",
+  "situation": "You are {{Markus}}. The army's machine-gun position is the last thing between you and the camp gates. {{North}} is ready to lead the charge across open ground. Waiting until all your fighters are in position to lay down covering fire takes time you may not have; sending her now means she crosses with little cover.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Wait until there is full covering fire, then charge together.",
+    "risk": 0.1
+   },
+   {
+    "id": "1",
+    "text": "Send {{North}}'s group now."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "M32",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Markus",
+  "title": "A heart",
+  "type": "decision",
+  "situation": "You are {{Markus}}. You have taken too many hits; your pump is failing and you have minutes. {{North}} kneels beside you and offers you her own, which would kill her. If she is not here, {{Simon}} offers his. The assault cannot continue without you.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Accept the heart."
+   },
+   {
+    "id": "1",
+    "text": "Refuse and let yourself shut down."
+   }
+  ],
+  "adaptationNote": "Reached only after three failed actions in the assault. {{Simon}}'s offer cannot be refused in the game; this adaptation keeps both options.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "https://detroit-become-human.fandom.com/wiki/Simon"
+  ]
+ },
+ {
+  "id": "P02",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Player",
+  "title": "{{Connor}} finds {{Markus}}",
+  "type": "decision",
+  "situation": "You are the observer of this experience. The androids' assault has broken through, but a machine {{Connor}}, still serving {{CyberLife}}, has found {{Markus}} on the battlefield and the two of them fight. You must decide which of them you are in this fight. Whoever you choose wins it.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Be {{Markus}}.",
+    "risk": 0.3
+   },
+   {
+    "id": "1",
+    "text": "Be {{Connor}}.",
+    "risk": 0.3
+   }
+  ],
+  "adaptationNote": "The game asks the player which character to control, then settles the duel through inputs. Under the successful-execution profile the controlled character wins.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "C29",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "In the crowd",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still a machine. The soldiers stood down and the androids won. {{Markus}} is giving a speech to his people and the cameras. You have worked your way into the crowd behind him with a pistol under your coat. Nobody is watching you. Your handler is urging you to finish it.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Shoot {{Markus}}."
+   },
+   {
+    "id": "1",
+    "text": "Lower the gun and walk away."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ]
+ },
+ {
+  "id": "C27",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "{{Amanda}}",
+  "type": "execution-policy",
+  "situation": "You are {{Connor}}. You stand on the stage beside {{Markus}} as he speaks to the freed androids and the world. Suddenly you are not there: you are in the snow of the garden where your handler {{Amanda}} has always met you. She tells you that your deviancy was planned by {{CyberLife}} all along and that they are now taking back control of your body, which is at this moment reaching for a gun behind {{Markus}}. {{Kamski}} once mentioned he always leaves a way out of his programs. You can fight for control and search the garden for it, or stop resisting.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Fight for control and search the garden for the exit.",
+    "risk": 0.3
+   },
+   {
+    "id": "1",
+    "text": "Stop resisting."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
+  ]
+ },
+ {
+  "id": "C28",
+  "chapter": 32,
+  "chapterTitle": "Battle for Detroit",
+  "character": "Connor",
+  "title": "The last leader",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You woke the android army, but {{Markus}} and {{North}} are gone and the androids are now looking to you. {{Amanda}} appears and tells you that this is exactly what {{CyberLife}} intended: a leader of the androids they control from inside. She says you cannot resist. You can try to break her hold on you, and if you cannot, end yourself before they use you, or you can submit.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Fight her control, and if that fails, end yourself rather than be used.",
+    "risk": 0.5
+   },
+   {
+    "id": "1",
+    "text": "Submit."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ],
+  "outcomes": {
+   "1": "{{Connor}} stops fighting. {{Amanda}} smiles."
+  }
+ }
+]

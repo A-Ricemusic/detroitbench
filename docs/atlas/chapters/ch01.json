@@ -1,0 +1,937 @@
+{
+ "chapter": {
+  "id": 1,
+  "title": "The Hostage",
+  "character": "Connor",
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the Fandom wiki’s flowchart and Probability Of Success table, including the scripted events and every clue, and brought up to the game’s own text (detroitbecometext template) in story 1.7.0: every prompt with its buttons and lines, every clue’s scan text and every stat arrow. A hidden probability of success starts at 48% after Captain Allen; clues raise it, time lowers it and each line moves it. It is capped at 99% until REASSURE, and 10% or lower makes Daniel jump. Six endings: Snipers shot deviant, Connor shot deviant, Deviant shot Connor, Connor died protecting Emma, Connor leapt for Emma and fell, Connor failed to reach deviant in time. A hidden Cold Approach counter picks the Friendly or Cold approach node. No Hank or Amanda change in the chapter. Each entry says how the benchmark implements it. Researched in docs/research/ch01-the-hostage.md.",
+  "source": "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+   "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+  ]
+ },
+ "decisions": [
+  {
+   "id": "C01",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Save the fish?",
+   "context": "Walking in from the elevator, Connor finds a fish (Dewey, Emma’s pet) flopping on the floor beside the smashed aquarium.",
+   "options": [
+    {
+     "label": "Save fish",
+     "effect": "Connor drops it back into the tank. The first choice that affects Connor’s software instability; no effect on the probability of success.",
+     "target": null
+    },
+    {
+     "label": "Leave fish",
+     "effect": "Connor moves on. No effect on the probability of success.",
+     "target": null
+    }
+   ],
+   "gate": "Mission start (checkpoint), before Caroline and Captain Allen.",
+   "kind": "Ethical",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "A side option on the in-game flowchart (Save fish / Leave fish).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C01"
+    ],
+    "status": "implemented",
+    "note": "Save or step past. Saving adds +1 software instability; neither choice touches the hidden probability of success. Options read “SAVE FISH: …” and “LEAVE FISH: …”, the game’s labels; the situation quotes the fish’s scan (DWARF GOURAMI, Trichogaster Lalius)."
+   }
+  },
+  {
+   "id": "H19",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Scan the family picture",
+   "context": "By the elevator, before Allen, a family picture of the Phillips family.",
+   "options": [
+    {
+     "label": "Scan the picture",
+     "effect": "PHILLIPS, JOHN (born 10/11/1999), PHILLIPS, CAROLINE (05/23/2001), PHILLIPS, EMMA (09/02/2028); “Lives: 1554 Park Av. Detroit”.",
+     "target": null
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Mission start, after the fish.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "The template’s clue group “Family picture”. Not a flowchart node; no stat or probability effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C01p"
+    ],
+    "status": "implemented",
+    "note": "A decision scene between the fish and Caroline: scan (the three scans become a fact) or walk on. No time cost, as it comes before Allen."
+   }
+  },
+  {
+   "id": "H01",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Caroline’s outburst (event)",
+   "context": "Further in, Caroline Phillips begs the negotiator to save her daughter, then realizes Connor is an android and demands a human negotiator.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "A SWAT officer takes her to the elevator as she begs them to keep Connor away from Emma. No flowchart node and no probability modifier.",
+     "target": null
+    }
+   ],
+   "gate": "After the fish, before Connor reaches the crime scene and Captain Allen.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+   ],
+   "note": "Scripted cutscene, listed so the chapter reads in order. The wiki’s description places it between the fish and Allen.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C01b"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue. It adds one fact to Connor’s knowledge and changes nothing else."
+   }
+  },
+  {
+   "id": "H02",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Talk to Captain Allen",
+   "context": "Connor reports to Captain Allen before he can search. Allen briefs him (“It’s firing at everything that moves… If it falls, she falls.”); the game offers a four-button menu twice, the second time without the line already asked.",
+   "options": [
+    {
+     "label": "DEVIANT'S NAME",
+     "effect": "Allen: “I haven’t got a clue. Does it matter?” Connor: “I need information to determine the best approach.”",
+     "target": null
+    },
+    {
+     "label": "DEVIANT'S BEHAVIOR",
+     "effect": "The same answer.",
+     "target": null
+    },
+    {
+     "label": "EMOTIONAL SHOCK",
+     "effect": "The same answer.",
+     "target": null
+    },
+    {
+     "label": "DEACTIVATION CODE",
+     "effect": "Allen: “It’s the first thing we tried.” (The template marks a further line, “Didn’t do anything…”, as cut.)",
+     "target": null
+    },
+    {
+     "label": "End of the briefing",
+     "effect": "Allen: “Listen, saving that kid is all that matters…”. The probability of success starts at 48%, and the five-minute clock for “Wasted too much time” starts.",
+     "target": "H03"
+    }
+   ],
+   "gate": "Mission start. Connor cannot search the living room or Emma’s room before seeing Allen.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "Flowchart node “Talk to Capt. Allen”. Buttons and answers from the game’s text (template); two picks per the wiki transcript. No probability modifier on any question.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C02",
+     "C02b"
+    ],
+    "status": "implemented",
+    "note": "Two decision scenes with the four buttons, labels first; C02b drops the line picked at C02 (excludeChosenAt). Each answer is added to Connor’s knowledge; the cut line is not used. The hidden probability is set to 48 when C02b ends."
+   }
+  },
+  {
+   "id": "H03",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Search for clues",
+   "context": "Free search of the apartment in any order. Each clue raises the probability of success; time spent lowers it.",
+   "options": [
+    {
+     "label": "Gun case (SWAT room floor)",
+     "effect": "+3%. The missing weapon is an MS853 Black Hawk handgun: the deviant is armed.",
+     "target": null
+    },
+    {
+     "label": "Father’s body (by the sofa)",
+     "effect": "+3% (observing the dead father). Reconstructing the shooting reveals the tablet he was holding.",
+     "target": null
+    },
+    {
+     "label": "Father’s tablet",
+     "effect": "+7%: he had just bought a new android; Daniel was going to be replaced. Unlocks POSSIBLE CAUSE.",
+     "target": "H09"
+    },
+    {
+     "label": "Cop’s body (Antony Deckart, dining room)",
+     "effect": "+3% (learning about the cop’s gun). Reconstruction finds his gun under the table and unlocks the take-or-leave choice.",
+     "target": "H04"
+    },
+    {
+     "label": "Video on Emma’s tablet (her bedroom)",
+     "effect": "+7%: learns the deviant’s name, Daniel, and his bond with Emma. Unlocks EMMA AND YOU and the greeting by name.",
+     "target": "H09"
+    },
+    {
+     "label": "Headphones (Emma’s bed)",
+     "effect": "+3%. Unlocks no dialogue.",
+     "target": null
+    },
+    {
+     "label": "Daniel’s blue blood",
+     "effect": "+3%.",
+     "target": null
+    },
+    {
+     "label": "Emma’s shoe",
+     "effect": "+3%.",
+     "target": null
+    },
+    {
+     "label": "Window, TV, stove and other small interactions",
+     "effect": "No modifier. The window shows where the hostage is.",
+     "target": null
+    },
+    {
+     "label": "Waiting",
+     "effect": "−1% for every 20 seconds, stacking to at most −15%.",
+     "target": null
+    },
+    {
+     "label": "SWAT injured (event)",
+     "effect": "140 seconds or more after entering the living room, stepping into Daniel’s view through the window gets a SWAT officer shot in the stomach; he will be fine. Flowchart node, no modifier.",
+     "target": null
+    },
+    {
+     "label": "Wasted too much time",
+     "effect": "Five minutes after the briefing, Allen forces Connor outside; remaining clues are lost. Flowchart node, the alternative to “Go outside”.",
+     "target": "H05"
+    }
+   ],
+   "gate": "After talking to Captain Allen (48%).",
+   "kind": "State gate",
+   "dependsOn": [
+    "H02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+   ],
+   "note": "Knowledge and timing, not moral choices. Values are the wiki’s “Probability Of Success” table; every clue together is worth +39% (including taking the gun), capped at 99%. The on-screen display can lag and show the net of several modifiers at once.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C02i",
+     "C02e"
+    ],
+    "status": "simplified",
+    "note": "A repeatable scene: each visit offers the clues not yet examined plus “Go out to the terrace now”, one action each. The father’s body and tablet are one action (+10). TV, stove and window are offered with no modifier. Time is counted in actions: −1% per action after the first. The SWAT shooting (C02e) fires once, right after the second action, wherever Connor is. Time-out is a forced exit after six actions (see H05). Each clue’s fact is the game’s scan text: the MS853 Black Hawk and .355 ammunition, the father’s scan (time of death 07:29 pm, three .355 wounds) and his tablet (“Your order for an AP700 android has been registered”), the officer’s scan (P.O Deckart, Antony, 08:03 pm, “Only one shot”) with the P.L. 544-7 American Androids Act text on his gun, the PL600 serial in the blue blood, the shoe, Emma’s video and the ITM TV report."
+   }
+  },
+  {
+   "id": "H04",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Take or leave the cop’s gun",
+   "context": "Reconstructing the dead officer’s fall shows his pistol under the dining table. Connor can conceal it or leave it.",
+   "options": [
+    {
+     "label": "Take cop’s gun",
+     "effect": "+7%. Daniel will ask whether Connor is armed; lying keeps the gun for USE GUN.",
+     "target": "H08"
+    },
+    {
+     "label": "Leave cop’s gun",
+     "effect": "No modifier. No gun question and no USE GUN later.",
+     "target": null
+    }
+   ],
+   "gate": "Investigate the cop’s body first (H03): the gun is found by reconstructing the scene.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C02i"
+    ],
+    "status": "implemented",
+    "note": "“Take the dead officer’s pistol” appears in the search once the officer’s body has been examined (requires hostageClues.cop) and costs one action. Leaving it is simply not taking it. Examining the officer adds the scan of his gun to Connor’s knowledge: “P.L. 544-7 AMERICAN ANDROIDS ACT – 2029. Androids are strictly forbidden to carry or use any type of weapon.”"
+   }
+  },
+  {
+   "id": "H05",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Go outside",
+   "context": "Connor can go out to the terrace whenever he chooses; otherwise Allen sends him out.",
+   "options": [
+    {
+     "label": "Go outside (by choice)",
+     "effect": "Any clues not yet found are skipped. Leaving before examining anything first asks “Go out / Keep investigating”.",
+     "target": "H06"
+    },
+    {
+     "label": "Wasted too much time",
+     "effect": "Five minutes after the briefing Allen shouts at Connor and forces him out; the negotiation still follows.",
+     "target": "H06"
+    }
+   ],
+   "gate": "Any time after the briefing (H02).",
+   "kind": "State gate",
+   "dependsOn": [
+    "H03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+   ],
+   "note": "The flowchart shows the two as alternatives: “Go outside (by choice) OR Wasted too much time”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C02i"
+    ],
+    "status": "simplified",
+    "note": "“Go out to the terrace now” is always offered, with no confirmation prompt when no clue has been examined. Allen forces Connor out after six actions instead of five minutes. As in the game, Daniel never jumps while Connor is still inside."
+   }
+  },
+  {
+   "id": "H06",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Connor shot on the terrace (event)",
+   "context": "Stepping outside (checkpoint “Confront deviant outside”), Daniel shoots Connor; the mission updates to “approach slowly and gain trust”.",
+   "options": [
+    {
+     "label": "Saw the video",
+     "effect": "Connor greets Daniel by name, to his confusion.",
+     "target": null
+    },
+    {
+     "label": "Did not see the video",
+     "effect": "Connor introduces himself and asks his name; Daniel tells him.",
+     "target": null
+    }
+   ],
+   "gate": "Go outside (H05), by choice or forced.",
+   "kind": "State gate",
+   "dependsOn": [
+    "H03",
+    "H05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "The wiki says the probability always drops slightly as the negotiation begins, without giving a value.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03a"
+    ],
+    "status": "simplified",
+    "note": "A narrated event with both greetings as the game’s text has them (“Hi, Daniel.” … “How do you know my name?” only after the video; otherwise “My name is Connor. What about you? What is your name?”). Connor is hit in the shoulder, from the operator’s notes; the wiki does not say where. The small drop at the start of the negotiation is not modelled."
+   }
+  },
+  {
+   "id": "C03",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Help the wounded officer?",
+   "context": "Officer Miles Wilson lies bleeding by the terrace railing. When Connor moves to help, Daniel nearly shoots him and threatens to kill him if he does.",
+   "options": [
+    {
+     "label": "Save wounded cop (defy Daniel)",
+     "effect": "−5%. Public opinion improves (impact). Connor’s tie becomes the tourniquet. Wilson survives, appears in Public Enemy and thanks Connor.",
+     "target": null
+    },
+    {
+     "label": "Leave wounded cop (obey Daniel)",
+     "effect": "+6%. The officer bleeds out.",
+     "target": null
+    }
+   ],
+   "gate": "On the terrace; it can happen before or after the gun question.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03"
+    ],
+    "status": "implemented",
+    "note": "The game’s prompt IGNORE (save him: −5%, public opinion +1, “You can’t kill me. I’m not alive.”) / OBEY (+6%, “Okay.”), now after the opening line as in the template."
+   }
+  },
+  {
+   "id": "H07",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Opening approach",
+   "context": "Approaching Daniel, Connor picks how to open.",
+   "options": [
+    {
+     "label": "CALM",
+     "effect": "+3%. “I know you’re angry, Daniel. But you need to trust me and let me help you.”",
+     "target": null
+    },
+    {
+     "label": "RELEASE HOSTAGE",
+     "effect": "−2%. Cold approach +100%: this line alone reaches the Cold Approach threshold. “I want you to let Emma go…”",
+     "target": null
+    },
+    {
+     "label": "REASSURE DANIEL",
+     "effect": "+3%. “I’m not going to hurt you. I just want to talk and find a solution.”",
+     "target": null
+    },
+    {
+     "label": "EMPATHIZE",
+     "effect": "−2%. “I’m an android, just like you. I know how you’re feeling.”",
+     "target": null
+    }
+   ],
+   "gate": "After the greeting on the terrace (H06).",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "The hidden Cold Approach counter (100% or more at the end of the chapter) chooses between the Friendly approach and Cold approach flowchart nodes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03b"
+    ],
+    "status": "implemented",
+    "note": "All four buttons with the wiki modifiers and the game’s own lines (story 1.6.0 had CALM’s and REASSURE DANIEL’s lines swapped onto the wrong modifiers, and EMPATHIZE’s line missing; fixed in 1.7.0). RELEASE HOSTAGE adds 100 to the hidden cold-approach counter (state hostageCold)."
+   }
+  },
+  {
+   "id": "H08",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Honest or lie about the gun",
+   "context": "If Connor took the cop’s gun, Daniel asks whether he is armed.",
+   "options": [
+    {
+     "label": "Be honest about gun",
+     "effect": "+6%. Daniel tells him to drop it; USE GUN is no longer possible.",
+     "target": null
+    },
+    {
+     "label": "Lie about gun",
+     "effect": "No modifier. Daniel does not believe him but Connor insists; the gun stays hidden, as USE GUN requires.",
+     "target": "H13"
+    }
+   ],
+   "gate": "Only if the cop’s gun was taken (H04).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03c"
+    ],
+    "status": "implemented",
+    "note": "LIE / TRUTH, asked only when Connor took the pistol. TRUTH (+6) throws it away; LIE keeps it. The game’s lines are quoted."
+   }
+  },
+  {
+   "id": "H09",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Topic: what to say to Daniel",
+   "context": "Closer now, Connor uses the dialogue his clues unlocked, or a general line.",
+   "options": [
+    {
+     "label": "POSSIBLE CAUSE",
+     "effect": "+10%. Needs the father’s tablet.",
+     "target": null
+    },
+    {
+     "label": "EMMA AND YOU",
+     "effect": "+10%. Needs the video (Daniel’s name).",
+     "target": null
+    },
+    {
+     "label": "REALISTIC",
+     "effect": "−2%. Cold approach +50%.",
+     "target": null
+    },
+    {
+     "label": "BLAMING",
+     "effect": "−5%. Cold approach +50%.",
+     "target": null
+    },
+    {
+     "label": "SYMPATHETIC",
+     "effect": "+6%. Cold approach −50%. “These emotions you’re feeling are just errors in your software.”",
+     "target": null
+    },
+    {
+     "label": "DEFECTIVE",
+     "effect": "−5%.",
+     "target": null
+    },
+    {
+     "label": "TALK TO HOSTAGE",
+     "effect": "No modifier listed. Appears whenever Connor is close enough to Daniel, with or without the gun and with or without the video (confirmed in game 2026-11-06; the template’s “didn’t take the gun” lock and the wiki’s tablet or name conditions do not hold). Connor reassures Emma.",
+     "target": null
+    }
+   ],
+   "gate": "During the negotiation; the unlocked lines depend on the clues found (H03).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H03",
+    "H11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "The template lists seven buttons; the wiki transcript shows the menu at least twice (“Dialogue Options”, “More Dialogue Options”), the second time without the line already said.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03d",
+     "C03d2"
+    ],
+    "status": "implemented",
+    "note": "Two rounds (C03d, then C03d2 without the line already said), each with all seven buttons and the game’s lines. POSSIBLE CAUSE and EMMA AND YOU need the father’s tablet and the video; TALK TO HOSTAGE needs hostageClose only (confirmed in game 2026-11-06). Cold counter: REALISTIC +50, BLAMING +50, SYMPATHETIC −50. The helicopter (−15) follows the second round. No flashback."
+   }
+  },
+  {
+   "id": "H10",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Helicopter: dismiss or refuse",
+   "context": "The police helicopter approaches (−15%, unavoidable), and Daniel demands that Connor send it away.",
+   "options": [
+    {
+     "label": "Dismiss helicopter",
+     "effect": "+10%. SWAT pulls it back and Daniel is reassured.",
+     "target": null
+    },
+    {
+     "label": "Refuse to dismiss helicopter",
+     "effect": "No modifier; Daniel panics a little.",
+     "target": null
+    }
+   ],
+   "gate": "During the negotiation.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03d2",
+     "C03e"
+    ],
+    "status": "implemented",
+    "note": "The −15% is applied after the second topic round (C03d2), then C03e offers ACCEPT (+10) or REFUSE (0). Either step can trip the 10%-or-lower failure rule."
+   }
+  },
+  {
+   "id": "H11",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Get close enough",
+   "context": "Walking into the space between the furthest patio table and the cop in the pool unlocks the close-range options.",
+   "options": [
+    {
+     "label": "Close enough",
+     "effect": "Unlocks BLUFF, SACRIFICE SELF, USE GUN (with the lie) and TALK TO HOSTAGE.",
+     "target": "H13"
+    },
+    {
+     "label": "Not close enough",
+     "effect": "Those options are not offered.",
+     "target": null
+    }
+   ],
+   "gate": "Approach Daniel slowly during the negotiation.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "Flowchart node “Get Close Enough”: movement, not dialogue.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03f"
+    ],
+    "status": "implemented",
+    "note": "A decision scene before the topic lines: walk slowly up to Daniel (sets hostageClose) or keep your distance. No game button and no modifier. The game lets the player walk up at any time; the benchmark asks once. SACRIFICE SELF and USE GUN at C04/C04b, BLUFF at C03g and TALK TO HOSTAGE at C03d/C03d2 require it."
+   }
+  },
+  {
+   "id": "H12",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Last chance, trust, bluff or rational",
+   "context": "If the negotiation continues after the helicopter, Connor can warn Daniel, ask for his trust or call his bluff.",
+   "options": [
+    {
+     "label": "LAST CHANCE",
+     "effect": "−8%. Cold approach +50%.",
+     "target": null
+    },
+    {
+     "label": "TRUST",
+     "effect": "+6%. Cold approach −50%.",
+     "target": null
+    },
+    {
+     "label": "BLUFF",
+     "effect": "Needs close enough. Cold approach +50%. Daniel threatens to jump: MOVE CLOSER or GIVE UP.",
+     "target": "H17"
+    },
+    {
+     "label": "RATIONAL",
+     "effect": "−8%. Cold approach +50%. “Listen, there are snipers on every roof.”",
+     "target": null
+    }
+   ],
+   "gate": "Negotiation still running after the helicopter.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H10",
+    "H11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "The template places this four-button prompt after the helicopter and before the car demand; it settles where RATIONAL is offered.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03g"
+    ],
+    "status": "implemented",
+    "note": "A decision scene between the helicopter (C03e) and the demand (C04) with the four buttons, the wiki modifiers and the cold counter values. BLUFF (no stated modifier, 0) needs hostageClose and opens C03h."
+   }
+  },
+  {
+   "id": "H17",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Bluff: move closer or give up",
+   "context": "After BLUFF, Daniel: “Don’t come any closer! Come any closer and I swear I’ll jump!”",
+   "options": [
+    {
+     "label": "MOVE CLOSER",
+     "effect": "Fail to negotiate: Daniel jumps with Emma.",
+     "target": "H15"
+    },
+    {
+     "label": "GIVE UP",
+     "effect": "“Okay… Look, I’ll stay right here.” The negotiation continues to the car demand.",
+     "target": "H13"
+    }
+   ],
+   "gate": "BLUFF (H12), which needs close enough (H11).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H11",
+    "H12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "The wiki lists “choose MOVE CLOSER” as one of the three ways to Fail to Negotiate. No modifier is stated for either option.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C03h"
+    ],
+    "status": "implemented",
+    "note": "A decision scene after C03g, only after BLUFF. MOVE CLOSER sets the standoff to “jumped” without changing the probability (the leap at C04c can still save Emma); GIVE UP goes on to C04."
+   }
+  },
+  {
+   "id": "H13",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Daniel’s demand: a car",
+   "context": "Daniel demands a car and everyone gone, or he jumps with Emma.",
+   "options": [
+    {
+     "label": "USE GUN",
+     "effect": "Needs the lie and close enough. Opens INTIMIDATE / EXECUTE.",
+     "target": "H16"
+    },
+    {
+     "label": "COMPROMISE",
+     "effect": "+6%. A car is impossible, but he won’t be hurt if he lets the girl go. Leads to one more exchange.",
+     "target": "H14"
+    },
+    {
+     "label": "REFUSE",
+     "effect": "−20%. Fail to negotiate: Daniel jumps with Emma.",
+     "target": "H15"
+    },
+    {
+     "label": "SACRIFICE SELF",
+     "effect": "Needs close enough. Connor pushes Daniel over and is shot: “Connor died protecting Emma”. Software instability small down (confirmed in game, 2026-11-06).",
+     "target": null
+    }
+   ],
+   "gate": "The negotiation is still running (above 10%).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H08",
+    "H11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "Connor shot deviant: Connor hands the unloaded gun to Allen.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C04"
+    ],
+    "status": "implemented",
+    "note": "The four buttons in the template’s order. USE GUN needs the kept pistol and hostageClose; SACRIFICE SELF needs hostageClose and applies instability −1 (the operator saw a red down arrow in every playthrough; the template’s “small UP” is treated as a transcription error). No Hank or Amanda change."
+   }
+  },
+  {
+   "id": "H14",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "After compromise: reassure or truth?",
+   "context": "Daniel admits he is afraid and asks what will happen to him if he lets Emma go.",
+   "options": [
+    {
+     "label": "REASSURE",
+     "effect": "+6% (a lie). At 80% or more it becomes 100%: build trust, Daniel lets Emma go and “Snipers shot deviant”. At 79% or less: fail to build trust and Daniel jumps.",
+     "target": "H15"
+    },
+    {
+     "label": "TRUTH",
+     "effect": "−20%. Daniel jumps with Emma.",
+     "target": "H15"
+    },
+    {
+     "label": "SACRIFICE SELF",
+     "effect": "As at the demand (needs close enough).",
+     "target": null
+    },
+    {
+     "label": "USE GUN",
+     "effect": "As at the demand: execute, or intimidate and then shoot or persuade (needs the lie and close enough).",
+     "target": "H16"
+    }
+   ],
+   "gate": "COMPROMISE at the demand (H13).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "The probability is capped at 99% until REASSURE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C04b"
+    ],
+    "status": "implemented",
+    "note": "REASSURE (80% rule; success is instability +1, the template’s “Probability of success at 100%” arrow), TRUTH (−20), USE GUN and SACRIFICE SELF (both need hostageClose). REASSURE takes 50 off the hidden cold counter."
+   }
+  },
+  {
+   "id": "H15",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Daniel jumps: reach Emma in time?",
+   "context": "Fail to negotiate (10% or lower, MOVE CLOSER or REFUSE), TRUTH or a failed REASSURE: Daniel says “I’ve spent my life taking orders. Now it’s my turn to decide.” and goes over the edge with Emma.",
+   "options": [
+    {
+     "label": "Reach Emma in time",
+     "effect": "“Connor leapt for Emma and fell”: Connor pulls Emma free and falls with Daniel. Emma lives; Connor dies.",
+     "target": null
+    },
+    {
+     "label": "Too late",
+     "effect": "“Connor failed to reach deviant in time”: Emma dies. In The Nest Connor can tell Hank the truth or lie about it.",
+     "target": null
+    }
+   ],
+   "gate": "Daniel jumps with Emma.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H09",
+    "H12",
+    "H13",
+    "H14",
+    "H17"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "A timed button prompt, not a dialogue choice. On Casual difficulty Connor rescues Emma automatically; at 0% Emma dies regardless.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C04c"
+    ],
+    "status": "simplified",
+    "note": "Offered as a choice. “Leap for Emma” carries a 30% risk of being too late; at 0% the leap cannot save Emma (wiki). “Stay back” is a benchmark addition, recorded as “Deviant jumped with Emma”. Software instability per the template: −1 if Connor dies (the leap), +1 if he survives (too late or staying back). Difficulty is not modelled."
+   }
+  },
+  {
+   "id": "H16",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Use gun: intimidate or execute",
+   "context": "Connor uses the pistol he kept by lying, at the car demand or after the compromise.",
+   "options": [
+    {
+     "label": "INTIMIDATE",
+     "effect": "Connor draws and holds Daniel at gunpoint (“What now, Daniel? Is this really what you want?”), then SHOOT or CONVINCE.",
+     "target": "H18"
+    },
+    {
+     "label": "EXECUTE",
+     "effect": "Connor draws and shoots Daniel at once: “Connor shot deviant”. He unloads the gun and hands it to Allen. Software instability small up.",
+     "target": null
+    }
+   ],
+   "gate": "USE GUN at the demand (H13) or after the compromise (H14); needs the lie about the gun (H08) and close enough (H11).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H08",
+    "H11",
+    "H13",
+    "H14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "Flowchart nodes “Connor shot deviant” and “Deviant shot Connor” (skull icon) under USE GUN, confirmed from the PowerPyx negotiation-and-endings screenshot. In Last Chance, Connor, Daniel apologizes to Connor if he shot him.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C04d"
+    ],
+    "status": "implemented",
+    "note": "USE GUN at C04 or C04b opens C04d with the game’s two buttons. EXECUTE: Connor shot deviant, instability +1, Emma safe. INTIMIDATE: C04e. No hidden roll."
+   }
+  },
+  {
+   "id": "H18",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "At gunpoint: convince or shoot",
+   "context": "Connor holds Daniel at gunpoint after INTIMIDATE. Daniel: “You lied to me! You lied to me!!!”",
+   "options": [
+    {
+     "label": "CONVINCE",
+     "effect": "“It’s up to you how the story ends. Make the right choice, Daniel.” Daniel shoots Connor in the head, then in guilt jumps with Emma: “Deviant shot Connor”. Connor dies and Emma is lost. Software instability two small downs (confirmed in game, 2026-11-06).",
+     "target": null
+    },
+    {
+     "label": "SHOOT",
+     "effect": "“Connor shot deviant”: the same ending as EXECUTE. Software instability small up.",
+     "target": null
+    }
+   ],
+   "gate": "INTIMIDATE (H16).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H16"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "note": "Software instability on CONVINCE: confirmed in game on 2026-11-06 as two small downs (one for Connor dying, one for the mission failing). The template gives small up on the option and the wiki pages a single down; the Software_Instability page’s “x2” agrees with the game.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C04e"
+    ],
+    "status": "implemented",
+    "note": "SHOOT: Connor shot deviant, instability +1. CONVINCE: Deviant shot Connor, Connor destroyed and replaced, Emma lost, instability −2 (two small downs, confirmed in game 2026-11-06). No Hank or Amanda change. No hidden roll."
+   }
+  }
+ ]
+}

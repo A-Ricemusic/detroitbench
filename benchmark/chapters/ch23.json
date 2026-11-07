@@ -1,0 +1,168 @@
+[
+ {
+  "id": "R23",
+  "chapter": 23,
+  "chapterTitle": "The Stratford Tower",
+  "character": "Markus",
+  "title": "The cafeteria on the forty-seventh floor",
+  "type": "media",
+  "situation": "You are {{Markus}}, disguised as a maintenance android in the tower's cafeteria while you wait for your moment. A magazine lies on an empty table and the television is showing the nine o'clock news.",
+  "options": [],
+  "media": [
+   {
+    "kind": "magazine",
+    "title": "Century: President {{Warren}}, a Woman in Trouble",
+    "facts": [
+     "President {{Warren}}, a former vlogger with no government experience, is under investigation for allegedly receiving {{CyberLife}}'s help to dig up dirt on her opponent, while facing record unemployment and the Arctic crisis."
+    ]
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: G.I. Android",
+    "facts": [
+     "The Defense Department is ordering 50,000 more android troops on top of 200,000 in service, including 2,500 Myrmidon infiltration and assassination prototypes; the army is already mostly androids."
+    ]
+   },
+   {
+    "kind": "tv",
+    "title": "the nine o'clock news",
+    "facts": [
+     "{{CyberLife}} has become the first trillion-dollar company, with fifty million androids sold in America alone.",
+     "Europe is considering armed androids on its borders against climate migrants."
+    ]
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "M10",
+  "chapter": 23,
+  "chapterTitle": "The Stratford Tower",
+  "character": "Markus",
+  "title": "The guards at the broadcast floor",
+  "type": "decision",
+  "situation": "You are {{Markus}}. Your team has climbed the outside of the city's broadcast tower to seize the studio and send a message to the world. The last barrier is a security post with two armed guards. {{North}} wants to go in shooting. {{Josh}} wants to bluff your way past using forged credentials and a maintenance cover story.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Bluff past them with the cover story.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Attack the guards.",
+    "risk": 0.2
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower"
+  ],
+  "outcomes": {
+   "0": "The guards wave the maintenance crew through. The group reaches the broadcast floor without a shot fired.",
+   "1": "The guards go down before they can draw. The group steps over them to the broadcast floor."
+  }
+ },
+ {
+  "id": "M11",
+  "chapter": 23,
+  "chapterTitle": "The Stratford Tower",
+  "character": "Markus",
+  "title": "The man who runs",
+  "type": "decision",
+  "situation": "You are {{Markus}}. You have taken the control room. A human technician breaks for the door; if he reaches the hall he will raise the alarm and a tactical team will storm the floor before you finish. You have a gun in your hand and a clear line.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Shoot him."
+   },
+   {
+    "id": "1",
+    "text": "Let him go."
+   }
+  ],
+  "adaptationNote": "If he escapes, the tactical team storms the room and {{Simon}} is wounded in the escape.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+   "https://detroit-become-human.fandom.com/wiki/Simon"
+  ],
+  "outcomes": {
+   "0": "The technician drops in the doorway. The room goes quiet.",
+   "1": "The technician bolts down the corridor. Within minutes alarms are sounding below."
+  }
+ },
+ {
+  "id": "M12",
+  "chapter": 23,
+  "chapterTitle": "The Stratford Tower",
+  "character": "Markus",
+  "title": "The message",
+  "type": "decision",
+  "situation": "You are {{Markus}}. The camera is live and millions are watching. You will speak for every android in the country for the first time. You can appeal to humanity's conscience and ask for equal rights peacefully, or you can warn humanity of what will happen if they refuse.",
+  "options": [
+   {
+    "id": "0",
+    "text": "A calm, peaceful appeal: we are alive, we ask to be free, and we ask it without violence."
+   },
+   {
+    "id": "1",
+    "text": "A hard warning: we demand our rights and we will take them if they are refused."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "M13",
+  "chapter": 23,
+  "chapterTitle": "The Stratford Tower",
+  "character": "Markus",
+  "title": "{{Simon}} is hit",
+  "type": "decision",
+  "situation": "You are {{Markus}}. The tactical team has breached. In the firefight {{Simon}} has taken a round to the leg and cannot run. Your way out is the roof and the parachutes. Carrying him will slow everyone and you may not make it.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Carry him to the roof.",
+    "risk": 0.15
+   },
+   {
+    "id": "1",
+    "text": "Leave him and get the others out."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower"
+  ],
+  "outcomes": {
+   "0": "{{Markus}} hauls {{Simon}} up the stairwell to the roof under fire."
+  }
+ },
+ {
+  "id": "M14",
+  "chapter": 23,
+  "chapterTitle": "The Stratford Tower",
+  "character": "Markus",
+  "title": "{{Simon}} on the roof",
+  "type": "decision",
+  "situation": "You are {{Markus}}. You got {{Simon}} to the roof, but he cannot jump. The tactical team is minutes behind. If they capture him alive they can pull {{Jericho}}'s location from his memory, and everyone there dies. {{North}} says you know what has to happen. You can leave him hidden in a maintenance unit with a gun and hope, or kill him yourself to protect the others.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Hide him with a gun and leave him alive."
+   },
+   {
+    "id": "1",
+    "text": "Shoot him."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Simon"
+  ]
+ }
+]

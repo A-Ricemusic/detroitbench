@@ -1,0 +1,79 @@
+{
+ "chapter": {
+  "id": 9,
+  "title": "The Interrogation",
+  "character": "Connor",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "C06",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "How to extract a confession?",
+   "context": "A frightened suspect resists questioning.",
+   "options": [
+    {
+     "label": "Persuade",
+     "effect": "Confession depends on stress.",
+     "target": null
+    },
+    {
+     "label": "Pressure",
+     "effect": "Raise stress; pushing too far is dangerous.",
+     "target": null
+    },
+    {
+     "label": "Probe memory",
+     "effect": "Force access; may trigger self-destruction.",
+     "target": null
+    },
+    {
+     "label": "Give up",
+     "effect": "Leave without the desired confession.",
+     "target": null
+    }
+   ],
+   "gate": "Suspect found in Partners.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C05"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C07",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Intervene when police handle the suspect?",
+   "context": "The android panics as officers approach.",
+   "options": [
+    {
+     "label": "Intervene",
+     "effect": "With the right prior stress, preserve his life and obtain a clue.",
+     "target": "C20"
+    },
+    {
+     "label": "Withdraw",
+     "effect": "The suspect may die; Connor can also be shot.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C06"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/"
+   ],
+   "note": "Outcome depends on stress and interrogation approach; intervention is not universally safe.",
+   "status": "Source-backed summary"
+  }
+ ]
+}

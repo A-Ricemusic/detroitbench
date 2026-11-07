@@ -1,0 +1,126 @@
+{
+ "chapter": {
+  "id": 17,
+  "title": "Zlatko",
+  "character": "Kara",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "K10",
+   "chapter": 17,
+   "character": "Kara",
+   "title": "Escape the reset or recover afterward?",
+   "context": "Zlatko’s machine starts wiping Kara’s memory.",
+   "options": [
+    {
+     "label": "Break free in time",
+     "effect": "Search for Alice immediately.",
+     "target": null
+    },
+    {
+     "label": "Reset completes",
+     "effect": "Recover memories before time expires or remain enslaved.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+   ],
+   "note": "A timed escape and recovery task, not free consent to a reset.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K11",
+   "chapter": 17,
+   "character": "Kara",
+   "title": "Release Zlatko’s captives?",
+   "context": "Other androids are imprisoned in the house.",
+   "options": [
+    {
+     "label": "Open the cells",
+     "effect": "They can aid the escape and later camp breakout.",
+     "target": "K28"
+    },
+    {
+     "label": "Leave them",
+     "effect": "That help is unavailable.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K12",
+   "chapter": 17,
+   "character": "Kara",
+   "title": "Silence the bathroom android?",
+   "context": "A noisy android threatens to expose Kara.",
+   "options": [
+    {
+     "label": "Kill / shut it down",
+     "effect": "Remove the immediate risk.",
+     "target": null
+    },
+    {
+     "label": "Spare it",
+     "effect": "It can alert Zlatko during the escape.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Ethical",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K13",
+   "chapter": 17,
+   "character": "Kara",
+   "title": "How to escape the house?",
+   "context": "Kara has found Alice.",
+   "options": [
+    {
+     "label": "Hide and move carefully",
+     "effect": "Try to escape unseen.",
+     "target": null
+    },
+    {
+     "label": "Set a fire",
+     "effect": "Create a dangerous diversion.",
+     "target": null
+    },
+    {
+     "label": "Free the bear when available",
+     "effect": "It can interrupt the pursuit.",
+     "target": null
+    }
+   ],
+   "gate": "Memory retained or recovered; Alice found.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K10"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+   ],
+   "note": "Sequential, combinable actions; surviving the chase brings Luther into the group.",
+   "status": "Source-backed summary"
+  }
+ ]
+}

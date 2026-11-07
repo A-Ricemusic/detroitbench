@@ -1,0 +1,103 @@
+{
+ "chapter": {
+  "id": 7,
+  "title": "Stormy Night",
+  "character": "Kara",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "K02",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Obey Todd or protect Alice?",
+   "context": "Todd orders Kara not to move while threatening Alice.",
+   "options": [
+    {
+     "label": "Break the order",
+     "effect": "Attempt to reach and protect Alice.",
+     "target": "K03"
+    },
+    {
+     "label": "Remain still / fail to intervene",
+     "effect": "Kara and Alice’s story ends.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/"
+   ],
+   "note": "Inaction is meaningful here; timing still matters.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K03",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Escape or confront Todd?",
+   "context": "Kara has broken her programming.",
+   "options": [
+    {
+     "label": "Reach Alice and flee",
+     "effect": "Hide or use the discovered window; execution matters.",
+     "target": null
+    },
+    {
+     "label": "Try to reason with Todd",
+     "effect": "He rejects the appeal; confrontation follows.",
+     "target": null
+    },
+    {
+     "label": "Defend Alice directly",
+     "effect": "Fight to escape; the gun is conditional.",
+     "target": "K04"
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "N19",
+    "K02"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K04",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Use Todd’s gun?",
+   "context": "Kara can arm herself to protect Alice.",
+   "options": [
+    {
+     "label": "Take and use the gun",
+     "effect": "Todd can be killed; Kara carries a gun onward.",
+     "target": "K06"
+    },
+    {
+     "label": "Escape unarmed",
+     "effect": "Todd can survive and reappear at the terminal.",
+     "target": "K23"
+    }
+   ],
+   "gate": "Gun discovered in A New Home; Kara reaches it in time.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "N14",
+    "K02"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/"
+   ],
+   "note": "Whether Kara or Alice fires depends on the struggle, not a clean shooter-selection prompt.",
+   "status": "Source-backed summary"
+  }
+ ]
+}

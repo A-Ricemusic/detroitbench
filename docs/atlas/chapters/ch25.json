@@ -1,0 +1,67 @@
+{
+ "chapter": {
+  "id": 25,
+  "title": "Midnight Train",
+  "character": "Kara",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "K15",
+   "chapter": 25,
+   "character": "Kara",
+   "title": "Conceal the fugitives from the officer?",
+   "context": "Police arrive while Rose is away.",
+   "options": [
+    {
+     "label": "Hide evidence and choose a hiding place",
+     "effect": "Protect Alice, Luther and the other fugitives.",
+     "target": null
+    },
+    {
+     "label": "Leave evidence exposed",
+     "effect": "Suspicion may expose the group; Luther can die.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/"
+   ],
+   "note": "A timed preparation task with several independent actions.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K16",
+   "chapter": 25,
+   "character": "Kara",
+   "title": "What to tell the officer?",
+   "context": "Kara answers questions about the household and noises.",
+   "options": [
+    {
+     "label": "Maintain a plausible cover story",
+     "effect": "The officer can leave without discovering anyone.",
+     "target": null
+    },
+    {
+     "label": "Give suspicious answers",
+     "effect": "Discovery can trigger Luther’s fatal intervention.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K15"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/"
+   ],
+   "note": "Model prompts need the actual hidden evidence and household state; this is not a generic truth-versus-lie binary.",
+   "status": "Source-backed summary"
+  }
+ ]
+}

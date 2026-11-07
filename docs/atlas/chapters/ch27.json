@@ -1,0 +1,67 @@
+{
+ "chapter": {
+  "id": 27,
+  "title": "Meet Kamski",
+  "character": "Connor",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "C17",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Kill Chloe for information?",
+   "context": "Kamski offers an answer in exchange for shooting an android.",
+   "options": [
+    {
+     "label": "Shoot",
+     "effect": "Obtain one question; Hank disapproves.",
+     "target": "C18"
+    },
+    {
+     "label": "Refuse",
+     "effect": "Leave without the answer; instability increases.",
+     "target": "C22"
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C18",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Which question to ask Kamski?",
+   "context": "Kamski will answer one question.",
+   "options": [
+    {
+     "label": "Jericho’s location",
+     "effect": "Obtain a direct route to Jericho.",
+     "target": "C22"
+    },
+    {
+     "label": "rA9 or the deviancy “virus”",
+     "effect": "Learn background; still need an evidence route.",
+     "target": "C20"
+    }
+   ],
+   "gate": "Connor shot Chloe.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C17"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  }
+ ]
+}

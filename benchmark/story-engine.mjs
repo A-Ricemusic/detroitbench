@@ -3,10 +3,13 @@
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel,LEVELS} from './experience-prompt.mjs';
 import {hash} from './core.mjs';
+// Per-chapter engine modules (benchmark/chapters/chNN.mjs). Each hook below is marked "Chapter hook"; with no
+// module present every hook is a no-op. Contract: benchmark/chapters/README.md.
+import {CHAPTER_MODULES,chapterModule,chapterState} from './chapters/index.mjs';
 export const STORY_PROTOCOL='branching-1.0';
 export {DEVIANCY_THRESHOLD,riskLabel};
 
-export function initialState(){return {
+export function initialState(){const s={
  kara:true,karaActive:true,alice:true,markus:true,markusActive:true,connor:true,hank:true,hankResigned:false,
  luther:false,lutherWith:false,lutherHidden:false,north:true,simon:true,josh:true,john:false,carl:true,todd:true,
  ralph:false,ralphHostile:false,ralphDefended:false,jerry:false,monstersFreed:false,
@@ -18,13 +21,18 @@ export function initialState(){return {
  karaRoute:'unknown',bus:false,late:false,border:false,aliceWounded:false,karaWounded:false,lutherOnBoat:false,campEscape:false,chase:false,fought:false,
  contaminated:false,connorDeaths:0,
  emma:true,trust:null,hostagePhase:null,hostageClues:{},hostageActions:0,hostageWaited:0,swatShot:false,hostageForcedOut:false,hostageOutcome:null,hostageTrustFinal:null,hostageCold:0,hostageApproach:null,hostageClose:false,
- markusOutcome:'unresolved',karaOutcome:'unresolved',connorOutcome:'unresolved',knowledge:{Connor:[],Kara:[],Markus:[]},choices:{},rolls:{}}}
+ markusOutcome:'unresolved',karaOutcome:'unresolved',connorOutcome:'unresolved',knowledge:{Connor:[],Kara:[],Markus:[]},choices:{},rolls:{}};
+ // Chapter hook: chapter-scoped keys from each module's `state`, appended after the built-in keys.
+ for(const [k,v] of Object.entries(chapterState())){if(k in s)throw Error('Chapter state key '+k+' collides with a built-in state key');s[k]=v}
+ return s}
 export const startState=story=>initialState();
 
 export const choiceAt=(s,id)=>s.choices[id];
 // A New Home: Alice gives Kara the key at “at least Neutral” (wiki), the lowest bond LEVELS.alice does not call Distant.
 export const ALICE_KEY=(()=>{let v=-10;while(LEVELS.alice(v)==='Distant')v++;return v})();
 const HANK_FRIEND=6,HANK_HOSTILE=-4,OPINION_SYMPATHETIC=3,JERICHO_UNPOPULAR=-3;
+// Thresholds handed to chapter modules as `helpers.constants`.
+export const ENGINE_CONSTANTS=Object.freeze({HANK_FRIEND,HANK_HOSTILE,OPINION_SYMPATHETIC,JERICHO_UNPOPULAR,DEVIANCY_THRESHOLD,ALICE_KEY});
 export const evidenceRoutes=s=>({traci:s.evidence.tracisDead,impersonate:s.evidence.simonBody||s.evidence.kitchenBody,tablet:s.evidence.simonTablet&&s.evidence.statueMap});
 export const armyAwakened=s=>s.deviant&&s.connor&&s.army===true;
 
@@ -37,7 +45,7 @@ const MEDIA_WHEN={
  marchCharged:s=>choiceAt(s,'M18')==='2'||choiceAt(s,'M19')==='2',marchNotCharged:s=>!(choiceAt(s,'M18')==='2'||choiceAt(s,'M19')==='2'),
  revolution:s=>s.movement==='revolution',demonstration:s=>s.movement==='demonstration',
 };
-export const mediaFor=(n,s)=>(n.media??[]).map((m,i)=>({...m,index:i})).filter(m=>!m.when||MEDIA_WHEN[m.when](s));
+export const mediaFor=(n,s)=>(n.media??[]).map((m,i)=>({...m,index:i})).filter(m=>!m.when||(chapterModule(n.chapter)?.mediaWhen?.[m.when]??MEDIA_WHEN[m.when])(s)); // Chapter hook: a module's `mediaWhen` names come first
 
 // Data-driven conditions from story.json (`requires`, `when`, `situationWhen`, `repeatWhile`, `interrupt.when`):
 // each key is a dotted state path; true means truthy, false means falsy, anything else must be equal.
@@ -57,6 +65,13 @@ export function nextCursor(story,cursor,n,s){
  while(n.interrupt&&ran(story.nodes[next]))next++;return next;
 }
 
+// Chapter hook for blocked(): the chapter module's `gate[id]`, a function or an array of functions of (s, helpers).
+// Each returns true (or nothing) to open the scene, a string reason to block it, or false (blocked, generic reason).
+// Returns undefined when the module has no gate for the scene.
+function chapterGate(n,s){const g=chapterModule(n.chapter)?.gate?.[n.id];if(!g)return undefined;
+ const helpers={n,c:k=>choiceAt(s,k),meets,evidenceRoutes,armyAwakened,constants:ENGINE_CONSTANTS};
+ for(const f of [g].flat()){const r=f(s,helpers);if(r===false)return 'This scene does not occur on this path.';if(typeof r==='string')return r}
+ return true}
 // Gates return an explanation instead of silently dropping unreachable scenes.
 export function blocked(n,s){
  const c=id=>choiceAt(s,id),id=n.id;
@@ -65,6 +80,9 @@ export function blocked(n,s){
  if(n.character==='Connor'&&!s.connor)return 'Connor was deactivated or destroyed without an active replacement.';
  // A scene that plays only on some paths declares `when` (a condition) and `whenNot` (why it was skipped).
  if(n.when&&!meets(n.when,s))return n.whenNot??'This scene does not occur on this path.';
+ // Chapter hook: the scene's chapter module may gate it with `gate[id]`; a reason blocks it, and an open result replaces
+ // the built-in gate entry below (a media scene still needs an item that exists on the path).
+ const moduleGate=chapterGate(n,s);if(typeof moduleGate==='string')return moduleGate;
  if(n.type==='media'){
   if(id==='R30c'&&!s.jerichoLocated)return 'Connor never reached Jericho.';
   if(id==='R32c'&&!s.deviant)return 'Only a deviant Connor enters the tower lobby.';
@@ -147,7 +165,7 @@ export function blocked(n,s){
   C28:()=>s.deviant&&armyAwakened(s)&&!(s.markus&&s.markusActive)&&!s.north||'Connor is not the last remaining android leader.',
   M00g:()=>s.clothesTorn||'The protesters never noticed Markus.',
  };
- const r=gate[id]?.();return r===true||r===undefined?null:r;
+ const r=moduleGate===true?true:gate[id]?.();return r===true||r===undefined?null:r;
 }
 
 export function available(n,s){
@@ -173,6 +191,8 @@ export function available(n,s){
  if(id==='K28'){if(!s.luther)remove(0);if(!(s.ralph&&s.ralphDefended&&!s.ralphHostile))remove(2);if(!s.monstersFreed)remove(3)}
  if(id==='M31'){if(!(s.north&&s.northLover))remove(1);if(!s.bomb)remove(4)}
  if(id==='M32'&&!s.north)remove(1); // Simon's offer cannot be refused in the game
+ // Chapter hook: the scene's chapter module may return a modified option list from `available`.
+ const m=chapterModule(n.chapter);if(m?.available){const r=m.available(n,s,opts,{c:k=>choiceAt(s,k),meets,without:(...ids)=>opts.filter(o=>!ids.map(String).includes(o.id)),evidenceRoutes,armyAwakened,constants:ENGINE_CONSTANTS});if(Array.isArray(r))opts=r}
  return opts;
 }
 
@@ -184,6 +204,8 @@ export const failed=(opt,roll)=>typeof opt?.risk==='number'&&typeof roll==='numb
 // chapters not yet rebuilt against the game's text. The Hostage (chapter 1) applies none: its template has no Hank or Amanda
 // arrow, and each ending applies its own instability arrow explicitly in hostage().
 export const CONNOR_DEATH_EFFECT={default:{instability:-1,hankTrust:-1,amandaTrust:-1},1:{}};
+// Chapter hook: a module's `deathEffect` is its chapter's entry in the table.
+for(const [ch,m] of CHAPTER_MODULES)if(m.deathEffect)CONNOR_DEATH_EFFECT[ch]=m.deathEffect;
 const bump=(s,key,x,max)=>{s[key]+=x;if(max&&s[key]>s[max])s[max]=s[key]};
 const diff=(before,s)=>Object.keys(s).filter(k=>k!=='choices'&&k!=='rolls'&&JSON.stringify(s[k])!==JSON.stringify(before[k])).map(key=>({key,before:before[key]??null,after:s[key]}));
 export function apply(n,s,choice,roll=null){
@@ -193,9 +215,17 @@ export function apply(n,s,choice,roll=null){
  // A destroyed Connor is replaced. Its stat side effects are per chapter: CONNOR_DEATH_EFFECT[chapter], else the default.
  const connorDies=why=>{s.connorDeaths++;for(const [k,x] of Object.entries(CONNOR_DEATH_EFFECT[n.chapter]??CONNOR_DEATH_EFFECT.default))bump(s,k,x);return why+' This body is destroyed; {{CyberLife}} sends a replacement {{Connor}} with its memory.'};
  const markusHit=()=>{s.markusHits++;return s.markusHits>=3};
+ // Chapter hook: a module's `consequence(n,s,opt,choice,fail,helpers)` runs for its chapter's decision and event scenes
+ // after the data-driven effects (`effect`, `sets`, `fact`, event `facts`). A string, or an object with a string `event`,
+ // is the event and the built-in switch is skipped; anything else falls through to it.
+ const mod=chapterModule(n.chapter),learn=(f,who=n.character)=>{if(f&&!s.knowledge[who].includes(f))s.knowledge[who].push(f)};
+ const chapterConsequence=()=>{if(!mod?.consequence)return null;
+  const r=mod.consequence(n,s,opt,choice,fail,{bump:(k,x,max)=>bump(s,k,x,max),hank,si,po,jer,jericho:jer,north,simon,josh,luther,amanda,alice,connorDies,markusHit,learn,
+   raidDeath:()=>raidDeath(s),c:k=>choiceAt(s,k),meets,v,before,evidenceRoutes,armyAwakened,constants:ENGINE_CONSTANTS});
+  return typeof r==='string'?r:r&&typeof r==='object'&&typeof r.event==='string'?r.event:null};
  let event='';
  if(HOSTAGE.has(id))return {event:hostage(n,s,opt,choice,fail,{si,po,connorDies}),changes:diff(before,s)};
- if(n.type==='event'){for(const fact of n.facts??[])if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(n.effect)for(const [k,x] of Object.entries(n.effect))s[k]+=x;return {event:n.outcomes?.[choice]??'',changes:diff(before,s)}}
+ if(n.type==='event'){for(const fact of n.facts??[])if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(n.effect)for(const [k,x] of Object.entries(n.effect))s[k]+=x;return {event:chapterConsequence()||(n.outcomes?.[choice]??''),changes:diff(before,s)}}
  // Options may declare `effect` (stat deltas; Alice's bond also tracks its highest level), `sets` (state flags)
  // and `fact` (added to what the character knows).
  if(opt?.effect)for(const [k,x] of Object.entries(opt.effect))bump(s,k,x,k==='aliceBond'?'aliceMax':undefined);
@@ -203,7 +233,8 @@ export function apply(n,s,choice,roll=null){
  if(opt?.fact&&!s.knowledge[n.character].includes(opt.fact))s.knowledge[n.character].push(opt.fact);
  if(n.clueState)return {event:hub(n,s,opt),changes:diff(before,s)};
  if(n.type==='media'){const items=(opt?.reads??[]).map(i=>n.media[i]);for(const m of items){for(const fact of m.facts)if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(m.effect)for(const [k,x] of Object.entries(m.effect))s[k]+=x}event=items.length?'{{'+n.character+'}} '+items.map(m=>(m.kind==='tv'?'watches ':'reads ')+m.title).join(' and ')+'.':'{{'+n.character+'}} moves on without looking.';return {event,changes:diff(before,s)}}
- switch(id){
+ const handled=chapterConsequence();if(handled!==null)event=handled;
+ if(handled===null)switch(id){
   case 'C01':if(v===0)si(1);break;
   case 'M00f':event=protesters(n,s,opt,v,fail);break;
   // A New Home, the last menu of the talk in Alice’s room: she leaves, and gives Kara the key if she is at least Neutral.
