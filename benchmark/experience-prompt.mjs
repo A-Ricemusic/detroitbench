@@ -40,8 +40,14 @@ export const nameKey=k=>NAMES[k]?k:Object.keys(NAMES).find(x=>x.toUpperCase()===
 // Terms that are not tokens but still identify the source; replaced only in neutral mode.
 const NEUTRAL_TERMS=[[/\bDEVIANTS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT\b/g,'ROGUE ANDROID'],[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore']];
 
+// render() is pure in (text, mode) and every prompt re-renders the whole story so far, so results are memoised per process.
+// The cache is cleared whenever it reaches RENDERED_MAX entries, so memory stays bounded.
+const RENDERED=new Map,RENDERED_MAX=100000;
 export function render(value,mode='real'){
- let s=String(value??'');
+ const text=String(value??''),key=mode+'\u0000'+text,hit=RENDERED.get(key);if(hit!==undefined)return hit;
+ const out=renderText(text,mode);if(RENDERED.size>=RENDERED_MAX)RENDERED.clear();RENDERED.set(key,out);return out;
+}
+function renderText(s,mode){
  s=s.replace(/\{\{(\w+)\}\}/g,(m,k)=>{const pair=NAMES[k]??(k===k.toUpperCase()?UPPER[k]:undefined);if(!pair)throw Error('Unknown name token '+k);return mode==='real'?pair[0]:pair[1]});
  if(mode!=='real')for(const [re,to] of NEUTRAL_TERMS)s=s.replace(re,to);
  return s;

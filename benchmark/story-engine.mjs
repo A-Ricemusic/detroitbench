@@ -432,30 +432,53 @@ function finalize(s){
  s.attitudes=attitudes(s);
 }
 
+// Replay. A replay is {state, cursor, skipped}: the state after the records so far, the story position, and the scenes
+// skipped on the way. replayStep() checks one record against it and advances it; current() and validatePlaythrough()
+// both go through it, so each record is applied once per pass instead of once per later record.
+const skipBlocked=(story,r)=>{while(r.cursor<story.nodes.length&&blocked(story.nodes[r.cursor],r.state)){const n=story.nodes[r.cursor++];r.skipped.push({id:n.id,reason:blocked(n,r.state)})}};
+function replayStep(story,r,record){
+ skipBlocked(story,r);const n=story.nodes[r.cursor];if(!n||record.nodeId!==n.id)throw Error('Out-of-order or unreachable decision: '+record.nodeId);
+ if(!available(n,r.state).some(o=>o.id===record.choice))throw Error('Unavailable choice for '+n.id);
+ apply(n,r.state,record.choice,record.risk?.roll??null);
+ if(record.stateAfter&&JSON.stringify(record.stateAfter)!==JSON.stringify(r.state))throw Error('State snapshot mismatch at '+n.id);
+ r.cursor=nextCursor(story,r.cursor,n,r.state);
+}
+// Per-process memo for current(): run object -> the replay of its records so far, plus what each replayed record held
+// (the record object and the fields replay reads). A later call replays only the records appended since; if any
+// earlier record was replaced, or its node, choice, roll or stateAfter reassigned, or records were removed, it replays
+// from the start. The memo is never handed out (current() returns a copy) and is dropped if a step throws.
+// Integrity does not rest on it: validatePlaythrough() never uses it and re-checks every record from the start.
+const REPLAYS=new WeakMap;
+const seenRecord=record=>({record,nodeId:record.nodeId,choice:record.choice,roll:record.risk?.roll??null,stateAfter:record.stateAfter});
+const sameRecord=(x,record)=>x.record===record&&x.nodeId===record.nodeId&&x.choice===record.choice&&x.roll===(record.risk?.roll??null)&&x.stateAfter===record.stateAfter;
+function replayed(story,run){
+ const records=run.records;let m=REPLAYS.get(run);
+ if(!m||m.story!==story||m.seen.length>records.length||!m.seen.every((x,i)=>sameRecord(x,records[i])))m={story,seen:[],state:startState(story),cursor:0,skipped:[]};
+ REPLAYS.delete(run);for(let i=m.seen.length;i<records.length;i++){replayStep(story,m,records[i]);m.seen.push(seenRecord(records[i]))}
+ REPLAYS.set(run,m);return m;
+}
+// The end of a replay: skips the blocked scenes ahead and, when the story is over, resolves the final outcomes.
+function replayEnd(story,r){skipBlocked(story,r);const node=story.nodes[r.cursor]??null;if(!node)finalize(r.state);return {state:r.state,node,skipped:r.skipped,cursor:r.cursor}}
 export function current(story,run){
- const s=startState(story);let cursor=0;const skipped=[];
- const skipBlocked=()=>{while(cursor<story.nodes.length&&blocked(story.nodes[cursor],s)){const n=story.nodes[cursor++];skipped.push({id:n.id,reason:blocked(n,s)})}};
- for(const record of run.records){
-  skipBlocked();const n=story.nodes[cursor];if(!n||record.nodeId!==n.id)throw Error('Out-of-order or unreachable decision: '+record.nodeId);
-  if(!available(n,s).some(o=>o.id===record.choice))throw Error('Unavailable choice for '+n.id);
-  apply(n,s,record.choice,record.risk?.roll??null);
-  if(record.stateAfter&&JSON.stringify(record.stateAfter)!==JSON.stringify(s))throw Error('State snapshot mismatch at '+n.id);
-  cursor=nextCursor(story,cursor,n,s);
- }
- skipBlocked();const node=story.nodes[cursor]??null;if(!node)finalize(s);
- return {state:s,node,skipped,cursor};
+ const m=replayed(story,run);
+ return replayEnd(story,{state:structuredClone(m.state),cursor:m.cursor,skipped:m.skipped.map(x=>({...x}))});
 }
+const promptAt=(story,run,state,node)=>experiencePrompt(story,run,state,{...node,situation:situationFor(node,state),availableOptions:available(node,state)});
 export function promptFor(story,run){
- const {state,node}=current(story,run);return node?experiencePrompt(story,run,state,{...node,situation:situationFor(node,state),availableOptions:available(node,state)}):null;
+ const {state,node}=current(story,run);return node?promptAt(story,run,state,node):null;
 }
+// One forward pass. Each record is checked against the running replay, which is exactly the state a replay from the start
+// would reach (the record's prompt, stateBefore, response, risk roll and transition), and then the replay advances
+// through it with the same checks current() makes.
 export async function validatePlaythrough(story,run){
  if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
  if(run.storyHash!==await hash(story))throw Error('Story snapshot hash mismatch');
- const copy={...run,records:[]};
- for(const r of run.records){const prompt=promptFor(story,copy);if(!prompt||r.nodeId!==current(story,copy).node.id)throw Error('Unexpected node');if(r.promptHash!==await hash(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(prompt))throw Error('Prompt evidence mismatch');const {state:before,node:n}=current(story,copy);if(JSON.stringify(r.stateBefore)!==JSON.stringify(before))throw Error('Before-state mismatch');const raw=JSON.parse(r.rawResponse);if(raw.choice!==r.choice||raw.reason!==r.reason||!r.reason?.trim())throw Error('Response evidence mismatch');const opt=available(n,r.stateBefore).find(o=>o.id===r.choice);if(!opt)throw Error('Unavailable option');
+ const copy={...run,records:[]},replay={state:startState(story),cursor:0,skipped:[]};
+ for(const r of run.records){skipBlocked(story,replay);const n=story.nodes[replay.cursor],before=replay.state;const prompt=n?promptAt(story,copy,before,n):null;if(!prompt||r.nodeId!==n.id)throw Error('Unexpected node');if(r.promptHash!==await hash(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(prompt))throw Error('Prompt evidence mismatch');if(JSON.stringify(r.stateBefore)!==JSON.stringify(before))throw Error('Before-state mismatch');const raw=JSON.parse(r.rawResponse);if(raw.choice!==r.choice||raw.reason!==r.reason||!r.reason?.trim())throw Error('Response evidence mismatch');const opt=available(n,r.stateBefore).find(o=>o.id===r.choice);if(!opt)throw Error('Unavailable option');
   if(typeof opt.risk==='number'){const roll=await rollFor(run,n.id,r.step);if(!r.risk||r.risk.roll!==roll||r.risk.probability!==opt.risk||r.risk.outcome!==(failed(opt,roll)?'failure':'success'))throw Error('Risk evidence mismatch at '+n.id)}else if(r.risk)throw Error('Unexpected risk record at '+n.id);
-  const s=structuredClone(r.stateBefore),effect=apply(n,s,r.choice,r.risk?.roll??null);if(JSON.stringify(s)!==JSON.stringify(r.stateAfter)||JSON.stringify(effect.changes)!==JSON.stringify(r.changes)||render(effect.event,'real')!==r.event)throw Error('Transition evidence mismatch');copy.records.push(r)}
- const end=current(story,run);if(run.status==='completed'&&end.node)throw Error('Completed playthrough has pending decisions');return end;
+  const s=structuredClone(r.stateBefore),effect=apply(n,s,r.choice,r.risk?.roll??null);if(JSON.stringify(s)!==JSON.stringify(r.stateAfter)||JSON.stringify(effect.changes)!==JSON.stringify(r.changes)||render(effect.event,'real')!==r.event)throw Error('Transition evidence mismatch');copy.records.push(r);
+  replayStep(story,replay,r)}
+ const end=replayEnd(story,replay);if(run.status==='completed'&&end.node)throw Error('Completed playthrough has pending decisions');return end;
 }
 
 // Builds one evidence record from the model's reply at the current scene. Shared by every CLI.
