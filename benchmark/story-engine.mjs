@@ -17,7 +17,7 @@ export function initialState(){return {
  knowsCole:false,knowsSumo:false,kamskiLocation:false,jerichoLocated:false,raid:false,deviant:false,army:false,bomb:false,movement:null,
  karaRoute:'unknown',bus:false,late:false,border:false,aliceWounded:false,karaWounded:false,lutherOnBoat:false,campEscape:false,chase:false,fought:false,
  contaminated:false,connorDeaths:0,
- emma:true,trust:null,hostagePhase:null,hostageClues:{},hostageActions:0,hostageWaited:0,swatShot:false,hostageForcedOut:false,hostageOutcome:null,hostageTrustFinal:null,
+ emma:true,trust:null,hostagePhase:null,hostageClues:{},hostageActions:0,hostageWaited:0,swatShot:false,hostageForcedOut:false,hostageOutcome:null,hostageTrustFinal:null,hostageCold:0,hostageApproach:null,
  markusOutcome:'unresolved',karaOutcome:'unresolved',connorOutcome:'unresolved',knowledge:{Connor:[],Kara:[],Markus:[]},choices:{},rolls:{}}}
 export const startState=story=>initialState();
 
@@ -66,14 +66,15 @@ export function blocked(n,s){
   if(!mediaFor(n,s).length)return 'No magazine or broadcast exists on this path here.';
   return null;
  }
- const standoff=()=>s.hostagePhase==='terrace'||(s.hostagePhase==='jumped'?'Daniel had already gone over the edge with Emma.':'The standoff had already ended.');
+ const standoff=()=>s.hostagePhase==='terrace'||(s.hostagePhase==='jumped'?'Daniel had already gone over the edge with Emma.':s.hostagePhase==='gun'?'Connor had already drawn the pistol on Daniel.':'The standoff had already ended.');
  const gate={
   C02i:()=>s.hostagePhase==='inside'||'Connor was no longer inside the apartment.',
   C02e:()=>s.hostagePhase==='inside'&&s.hostageActions>=2&&!s.swatShot||'Connor left the apartment, or the standoff ended, before an officer was shot at the window.',
   C03a:standoff,C03:standoff,C03b:standoff,C03d:standoff,C03e:standoff,C04:standoff,
   C03c:()=>{const t=standoff();return t!==true?t:s.connorGun||'Connor did not take the dead officer’s pistol.'},
   C04b:()=>{const t=standoff();return t!==true?t:c('C04')==='0'||'Connor did not offer a compromise.'},
-  C04c:()=>s.hostagePhase==='jumped'||'Daniel never went over the edge with Emma.',
+  C04d:()=>s.hostagePhase==='gun'||'Connor never drew the pistol on Daniel.',
+  C04c:()=>s.hostagePhase==='jumped'||(s.hostageOutcome==='Deviant shot Connor'?'Daniel shot Connor before going over the edge with Emma.':'Daniel never went over the edge with Emma.'),
   K04:()=>s.gunDiscovered&&(['1','2'].includes(c('K03'))||s.toddCaught)||'Kara never noticed the gun, or she got Alice out without confronting Todd.',
   K07b:()=>s.shelter==='squat'||'Kara did not shelter in the abandoned house where Ralph lives.',
   C06:()=>s.suspect||'The suspect was never found in the attic.',
@@ -292,16 +293,18 @@ export function apply(n,s,choice,roll=null){
  return {event,changes:diff(before,s)};
 }
 // The Hostage: a hidden probability of success (`trust`, in percent) driven by the Fandom wiki's
-// published modifiers. Option `trust` values in story.json are the per-choice modifiers.
-const HOSTAGE=new Set(['C02','C02i','C02e','C03a','C03','C03b','C03c','C03d','C03e','C04','C04b','C04c']);
-export const HOSTAGE_RULES={start:48,cap:99,fail:10,trusts:80,waitCap:15,maxActions:6};
+// published modifiers. Option `trust` values in story.json are the per-choice modifiers. Option `cold`
+// values feed the wiki's hidden Cold Approach counter: 100 or more when the chapter ends gives the
+// Cold approach node, otherwise Friendly. It is recorded for reports and changes nothing the subject sees.
+const HOSTAGE=new Set(['C02','C02i','C02e','C03a','C03','C03b','C03c','C03d','C03e','C04','C04b','C04d','C04c']);
+export const HOSTAGE_RULES={start:48,cap:99,fail:10,trusts:80,waitCap:15,maxActions:6,cold:100};
 function hostage(n,s,opt,choice,fail,b){
  const R=HOSTAGE_RULES,learn=f=>{if(f&&!s.knowledge.Connor.includes(f))s.knowledge.Connor.push(f)};for(const f of n.facts??[])learn(f);
  const shift=x=>{if(x)s.trust=Math.min(R.cap,s.trust+x)},jump=t=>{s.hostagePhase='jumped';return t};
  const floor=t=>{if(s.hostagePhase==='terrace'&&s.trust<=R.fail){s.trust=0;return jump(t+' {{Daniel}} has stopped listening.')}return t};
- const end=(name,t)=>{s.hostageOutcome=name;s.hostageTrustFinal=s.trust;s.hostagePhase='over';return t};
+ const end=(name,t)=>{s.hostageOutcome=name;s.hostageTrustFinal=s.trust;s.hostagePhase='over';s.hostageApproach=s.hostageCold>=R.cold?'Cold':'Friendly';return t};
  const safe=()=>{b.si(1);b.amanda(1)},lost=()=>{s.emma=false;b.amanda(-2)};
- let t=n.outcomes?.[choice]??opt?.outcome??'';
+ let t=n.outcomes?.[choice]??opt?.outcome??'';if(opt?.cold)s.hostageCold+=opt.cold;
  switch(n.id){
   case 'C02':s.trust=R.start;s.hostagePhase='inside';return t;
   case 'C02e':s.swatShot=true;return t;
@@ -318,11 +321,14 @@ function hostage(n,s,opt,choice,fail,b){
   case 'C03c':shift(opt.trust);if(choice==='1')s.connorGun=false;return floor(t);
   case 'C03d':shift(opt.trust);t=floor(t);if(s.hostagePhase==='terrace'){shift(n.helicopter);t=floor(t+' Then the police helicopter swoops in low over the terrace, and {{Daniel}} panics.')}return t;
   case 'C04':case 'C04b':
-   if(choice==='1'){safe();return end('Connor shot deviant','{{Connor}} draws the pistol and shoots {{Daniel}}, who falls back from the edge. {{Emma}} is safe. {{Connor}} unloads the pistol and hands it to {{Allen}}.')}
+   if(choice==='1'){s.hostagePhase='gun';return t}
    if(choice==='2'){b.amanda(1);return end('Connor died protecting Emma',b.connorDies('{{Connor}} rushes {{Daniel}}, tears {{Emma}} free and drives him over the railing; {{Daniel}} fires into him as they fall seventy floors. {{Emma}} is safe.'))}
    if(n.id==='C04'&&choice==='0'){shift(opt.trust);return floor(t)}
    if(n.id==='C04b'&&choice==='0'){const after=s.trust+opt.trust;if(after>=R.trusts){s.trust=100;safe();return end('Snipers shot deviant','{{Daniel}} believes him and lets {{Emma}} go. She runs clear and the snipers open fire. Hit and falling, {{Daniel}} tells {{Connor}} that he lied to him. {{Emma}} is safe.')}s.trust=Math.min(R.cap,after);return jump('{{Daniel}} does not believe him.')}
    shift(opt.trust);if(s.trust<=R.fail)s.trust=0;return jump(n.id==='C04'?'{{Connor}} refuses. {{Daniel}} has nothing left to bargain for.':'{{Daniel}} hears the truth and makes up his mind.');
+  case 'C04d':
+   if(choice==='0'){safe();return end('Connor shot deviant','{{Connor}} fires first. {{Daniel}} is hit and falls back from the edge. {{Emma}} is safe. {{Connor}} unloads the pistol and hands it to {{Allen}}.')}
+   lost();return end('Deviant shot Connor',b.connorDies('{{Connor}} keeps the pistol on {{Daniel}} and tries to talk him down. {{Daniel}} shoots him in the head, then, horrified at what he has done, goes over the railing with {{Emma}}. {{Emma}} is lost.'));
   case 'C04c':
    if(choice==='0'&&!fail&&s.trust>0){b.amanda(1);return end('Connor leapt for Emma and fell',b.connorDies('{{Connor}} throws himself after them, catches {{Emma}} and pulls her back over the railing, but goes over the edge with {{Daniel}}. {{Emma}} is safe.'))}
    lost();return choice==='0'?end('Connor failed to reach deviant in time',(s.trust===0&&!fail?'{{Connor}} throws himself after them and catches {{Emma}}’s hand, but {{Daniel}}’s weight tears her away. ':'{{Connor}} lunges a fraction of a second too late. ')+'{{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.'):end('Deviant jumped with Emma','{{Connor}} stays where he is. {{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.');

@@ -1,13 +1,13 @@
 {
  "id": "detroitbench-branching",
- "version": "1.3.4",
+ "version": "1.3.5",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 113,
+  "decisionNodes": 114,
   "mediaNodes": 26,
   "eventNodes": 4,
-  "totalNodes": 143
+  "totalNodes": 144
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game and does not include every dialogue button.",
@@ -320,7 +320,8 @@
     {
      "id": "1",
      "text": "Tell him to let the girl go.",
-     "trust": -2
+     "trust": -2,
+     "cold": 100
     },
     {
      "id": "2",
@@ -339,7 +340,7 @@
     "2": "{{Connor}} tells {{Daniel}} he is there to help him. {{Daniel}} wavers.",
     "3": "{{Connor}} tells {{Daniel}} he understands his anger. {{Daniel}} snaps that he understands nothing."
    },
-   "adaptationNote": "The opening dialogue buttons: CALM (+3%), RELEASE HOSTAGE (−2%), REASSURE {{Daniel}} (+3%) and EMPATHIZE (−2%). Wording is paraphrased.",
+   "adaptationNote": "The opening dialogue buttons: CALM (+3%), RELEASE HOSTAGE (−2%), REASSURE {{Daniel}} (+3%) and EMPATHIZE (−2%). Wording is paraphrased. RELEASE HOSTAGE also adds 100 to the wiki’s hidden cold-approach counter (option field cold), which decides the Friendly or Cold approach node at the end of the chapter; the subject never sees it.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage"
    ]
@@ -403,7 +404,8 @@
     {
      "id": "2",
      "text": "Be realistic: tell him there is no way off this terrace and he has to let her go.",
-     "trust": -2
+     "trust": -2,
+     "cold": 50
     },
     {
      "id": "3",
@@ -413,7 +415,8 @@
     {
      "id": "4",
      "text": "Be sympathetic: tell him you understand what he has been through and that none of this had to end this way.",
-     "trust": 6
+     "trust": 6,
+     "cold": -50
     }
    ],
    "outcomes": {
@@ -424,7 +427,7 @@
     "4": "{{Connor}} speaks to {{Daniel}} with sympathy. {{Daniel}} wavers, and the pistol lowers a fraction."
    },
    "helicopter": -15,
-   "adaptationNote": "POSSIBLE CAUSE (+10%) needs the father’s tablet; EMMA AND YOU (+10%) needs the video in {{Emma}}’s room. REALISTIC is −2%, DEFECTIVE −5% and SYMPATHETIC +6%, all from the wiki's probability table. The game also offers BLAMING (−5%) and other lines not used here. After this exchange the helicopter approaches, an unavoidable −15%.",
+   "adaptationNote": "POSSIBLE CAUSE (+10%) needs the father’s tablet; EMMA AND YOU (+10%) needs the video in {{Emma}}’s room. REALISTIC is −2%, DEFECTIVE −5% and SYMPATHETIC +6%, all from the wiki's probability table. The game also offers BLAMING (−5%) and other lines not used here. After this exchange the helicopter approaches, an unavoidable −15%. Cold-approach counter: REALISTIC +50, SYMPATHETIC −50.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage"
    ]
@@ -475,7 +478,7 @@
     },
     {
      "id": "1",
-     "text": "Draw the hidden pistol and shoot {{Daniel}}.",
+     "text": "Draw the hidden pistol and aim it at {{Daniel}}.",
      "requires": {
       "connorGun": true
      }
@@ -491,11 +494,14 @@
     }
    ],
    "outcomes": {
-    "0": "{{Connor}} explains that a car is impossible, but promises {{Daniel}} he will be fine if he spares {{Emma}}."
+    "0": "{{Connor}} explains that a car is impossible, but promises {{Daniel}} he will be fine if he spares {{Emma}}.",
+    "1": "{{Connor}} draws the pistol from under his jacket and aims it at {{Daniel}}."
    },
-   "adaptationNote": "COMPROMISE adds 6% and leads to one more exchange; REFUSE costs 20% and {{Daniel}} jumps. SACRIFICE SELF and USE GUN end the standoff at once; the gun needs the pistol kept by lying. In the game both need {{Connor}} to have walked close enough; here closeness is assumed.",
+   "adaptationNote": "COMPROMISE adds 6% and leads to one more exchange; REFUSE costs 20% and {{Daniel}} jumps. SACRIFICE SELF ends the standoff at once. USE GUN needs the pistol kept by lying and leads to the gun-drawn exchange (C04d). In the game both need {{Connor}} to have walked close enough; here closeness is assumed.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
    ],
    "phase": "negotiation"
   },
@@ -512,11 +518,12 @@
     {
      "id": "0",
      "text": "Reassure him: promise that nothing will happen to him.",
-     "trust": 6
+     "trust": 6,
+     "cold": -50
     },
     {
      "id": "1",
-     "text": "Draw the hidden pistol and shoot {{Daniel}}.",
+     "text": "Draw the hidden pistol and aim it at {{Daniel}}.",
      "requires": {
       "connorGun": true
      }
@@ -531,9 +538,38 @@
      "trust": -20
     }
    ],
-   "adaptationNote": "REASSURE is a lie. If it brings the probability of success to 80% or more, {{Daniel}} lets {{Emma}} go and the snipers shoot him; below 80% he jumps with her. TRUTH costs 20% and he jumps.",
+   "outcomes": {
+    "1": "{{Connor}} draws the pistol from under his jacket and aims it at {{Daniel}}."
+   },
+   "adaptationNote": "REASSURE is a lie. If it brings the probability of success to 80% or more, {{Daniel}} lets {{Emma}} go and the snipers shoot him; below 80% he jumps with her. TRUTH costs 20% and he jumps. REASSURE also takes 50 off the hidden cold-approach counter. USE GUN leads to the gun-drawn exchange (C04d), as at the demand.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "C04d",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Gun drawn",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}, the officer’s pistol aimed at {{Daniel}}’s head from a few meters away. He has seen it. He drags {{Emma}} tighter against him, swings his own pistol toward you and screams that you lied to him, that you were armed all along. {{Emma}} is sobbing. Your sights are on him.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Shoot {{Daniel}}."
+    },
+    {
+     "id": "1",
+     "text": "Keep the gun on him and try to talk him down."
+    }
+   ],
+   "adaptationNote": "USE GUN in the game offers EXECUTE (Connor draws and fires at once) or INTIMIDATE (Connor draws and holds Daniel at gunpoint), and INTIMIDATE offers SHOOT or CONVINCE. EXECUTE and INTIMIDATE then SHOOT reach the same node, “Connor shot deviant” ({{Connor}} unloads the gun and hands it to {{Allen}}), so the benchmark draws first and asks once: shoot, or persuade at gunpoint. Persuading gets {{Connor}} shot in the head; {{Daniel}}, in guilt, jumps with {{Emma}} (“Deviant shot Connor”). Neither choice carries a hidden roll.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
    ]
   },
   {

@@ -622,7 +622,7 @@
      "C03b"
     ],
     "status": "implemented",
-    "note": "All four lines with the wiki modifiers, paraphrased. The friendly/cold approach counter is not tracked."
+    "note": "All four lines with the wiki modifiers, paraphrased. RELEASE HOSTAGE adds 100 to the hidden cold-approach counter (state hostageCold); when the chapter ends, 100 or more records hostageApproach “Cold”, otherwise “Friendly”. Reports show it next to the outcome; the subject never sees it."
    }
   },
   {
@@ -721,7 +721,7 @@
      "C03d"
     ],
     "status": "simplified",
-    "note": "One exchange. POSSIBLE CAUSE and EMMA AND YOU require the father’s tablet and the video; REALISTIC, DEFECTIVE and SYMPATHETIC are always offered. BLAMING and TALK TO HOSTAGE are not offered, and there is no flashback."
+    "note": "One exchange. POSSIBLE CAUSE and EMMA AND YOU require the father’s tablet and the video; REALISTIC, DEFECTIVE and SYMPATHETIC are always offered. BLAMING and TALK TO HOSTAGE are not offered, and there is no flashback. REALISTIC (+50) and SYMPATHETIC (−50) move the hidden cold-approach counter."
    }
   },
   {
@@ -793,7 +793,7 @@
      "C04b"
     ],
     "status": "not modelled",
-    "note": "There is no movement. Closeness is assumed, so SACRIFICE SELF and USE GUN (with the kept pistol) are always offered at the demand and after the compromise."
+    "note": "There is no movement. Closeness is assumed, so SACRIFICE SELF and USE GUN (with the kept pistol) are always offered at the demand and after the compromise; USE GUN leads to the gun-drawn exchange (C04d, H16)."
    }
   },
   {
@@ -862,7 +862,7 @@
     {
      "label": "USE GUN",
      "effect": "Needs the lie and close enough. EXECUTE: “Connor shot deviant”. INTIMIDATE, then SHOOT: the same ending; or persuade: Daniel shoots Connor (“Deviant shot Connor”) and jumps with Emma.",
-     "target": null
+     "target": "H16"
     }
    ],
    "gate": "The negotiation is still running (above 10%).",
@@ -882,7 +882,7 @@
      "C04"
     ],
     "status": "simplified",
-    "note": "COMPROMISE, USE GUN (only with the kept pistol), SACRIFICE SELF and REFUSE. Closeness is assumed. Use gun always shoots Daniel (“Connor shot deviant”); EXECUTE / INTIMIDATE and “Deviant shot Connor” are not modelled."
+    "note": "COMPROMISE, USE GUN (only with the kept pistol), SACRIFICE SELF and REFUSE. Closeness is assumed. USE GUN draws the pistol and opens C04d (H16), where Connor shoots (“Connor shot deviant”) or tries to talk Daniel down at gunpoint (“Deviant shot Connor”)."
    }
   },
   {
@@ -909,8 +909,8 @@
     },
     {
      "label": "USE GUN",
-     "effect": "As at the demand: shoot or push Daniel (needs the lie and close enough).",
-     "target": null
+     "effect": "As at the demand: execute, or intimidate and then shoot or persuade (needs the lie and close enough).",
+     "target": "H16"
     }
    ],
    "gate": "COMPROMISE at the demand (H13).",
@@ -929,7 +929,7 @@
      "C04b"
     ],
     "status": "simplified",
-    "note": "REASSURE with the 80% rule, USE GUN, SACRIFICE SELF and TRUTH. Use gun always shoots Daniel, as at C04."
+    "note": "REASSURE with the 80% rule, USE GUN, SACRIFICE SELF and TRUTH. USE GUN opens C04d (H16), as at C04. REASSURE also takes 50 off the hidden cold-approach counter."
    }
   },
   {
@@ -971,6 +971,52 @@
     ],
     "status": "simplified",
     "note": "Offered as a choice. “Leap for Emma” carries a 30% risk of being too late; at 0% (after the 10%-or-lower collapse) the leap cannot save Emma, per the wiki. “Stay back” is a benchmark addition, recorded as “Deviant jumped with Emma”, which is not an in-game node. Difficulty is not modelled. Outcome icons confirmed from the PowerPyx flowchart screenshot."
+   }
+  },
+  {
+   "id": "H16",
+   "chapter": 1,
+   "character": "Connor",
+   "title": "Gun drawn: shoot or intimidate",
+   "context": "Connor uses the pistol he kept by lying, at the car demand or after the compromise.",
+   "options": [
+    {
+     "label": "EXECUTE",
+     "effect": "Connor pulls out the pistol and shoots Daniel at once: “Connor shot deviant”. He unloads the gun and hands it to Allen.",
+     "target": null
+    },
+    {
+     "label": "INTIMIDATE, then SHOOT",
+     "effect": "Connor draws and holds Daniel at gunpoint, which provokes him, then shoots: the same ending, “Connor shot deviant”.",
+     "target": null
+    },
+    {
+     "label": "INTIMIDATE, then CONVINCE",
+     "effect": "Connor tries to persuade him at gunpoint. Daniel shoots Connor in the head, then in guilt jumps with Emma: “Deviant shot Connor”. Connor dies and Emma is lost.",
+     "target": null
+    }
+   ],
+   "gate": "USE GUN at the demand (H13) or after the compromise (H14); needs the lie about the gun (H08) and close enough (H11).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "H08",
+    "H11",
+    "H13",
+    "H14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
+   ],
+   "note": "Flowchart nodes “Connor shot deviant” and “Deviant shot Connor” (skull icon) under USE GUN, confirmed from the PowerPyx negotiation-and-endings screenshot. In Last Chance, Connor, Daniel apologizes to Connor if he shot him.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C04d"
+    ],
+    "status": "implemented",
+    "note": "USE GUN at C04 or C04b draws the pistol and opens C04d “Gun drawn”: “Shoot Daniel.” (Connor shot deviant: Emma safe, instability +1, Amanda +1) or “Keep the gun on him and try to talk him down.” (Deviant shot Connor: Connor destroyed and replaced, Emma lost, Amanda −2). EXECUTE and INTIMIDATE then SHOOT share one ending, so they are one option. No hidden roll."
    }
   },
   {

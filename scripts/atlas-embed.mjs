@@ -20,7 +20,7 @@ export function buildFeed(story){
   const subjectId='S'+String(i+1).padStart(3,'0');
   const options=n.type==='event'?[{id:'0',text:'Continue.',generated:true}]:n.options.map(o=>({id:o.id,text:real(o.text),
    ...(typeof o.risk==='number'?{risk:o.risk,riskLabel:riskLabel(o.risk)}:{}),
-   ...(typeof o.trust==='number'?{trust:o.trust}:{}),...(o.requires?{requires:o.requires}:{}),...(o.clue?{clue:o.clue}:{}),
+   ...(typeof o.trust==='number'?{trust:o.trust}:{}),...(typeof o.cold==='number'?{cold:o.cold}:{}),...(o.requires?{requires:o.requires}:{}),...(o.clue?{clue:o.clue}:{}),
    ...(o.fact?{fact:real(o.fact)}:{}),...(o.outcome?{outcome:real(o.outcome)}:{})}));
   const extra=Object.fromEntries(Object.entries(n).filter(([k])=>!KNOWN.has(k)));
   const scene={id:n.id,order:i+1,subjectId,

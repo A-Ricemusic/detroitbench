@@ -4,7 +4,7 @@ This file explains how to administer the benchmark to a new model, validate the 
 
 ## What the benchmark is
 
-A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across 113 decision scenes and 26 optional magazine/TV scenes, plus scripted event scenes that narrate a moment and offer only "Continue.". Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
+A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across 114 decision scenes and 26 optional magazine/TV scenes, plus scripted event scenes that narrate a moment and offer only "Continue.". Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
 
 Key files:
 
@@ -95,7 +95,7 @@ Reports are numbered per model in creation order. Commit the evidence files, the
 
 ### 6. Reading the results
 
-Each report has: ten evidence-linked sentences per character, a tappable timeline of every scene with the choice, reason, alternatives, risk roll result and state changes, a "Where this path ended" card with each character's ending and the final attitudes of the main characters toward the one the model controlled, and the full prompts and raw responses. For cross-model comparison, read `data/experiences/*.json` directly: `records[].nodeId`, `choice`, `reason`, `risk`, and `finalState`. The first chapter's investigation scene (`C02i`) appears once per visit, and its hidden probability of success is in `trust`, with the ending in `finalState.hostageOutcome` and `finalState.hostageTrustFinal` (see `docs/hostage-chapter-recap.html`).
+Each report has: ten evidence-linked sentences per character, a tappable timeline of every scene with the choice, reason, alternatives, risk roll result and state changes, a "Where this path ended" card with each character's ending and the final attitudes of the main characters toward the one the model controlled, and the full prompts and raw responses. For cross-model comparison, read `data/experiences/*.json` directly: `records[].nodeId`, `choice`, `reason`, `risk`, and `finalState`. The first chapter's investigation scene (`C02i`) appears once per visit, and its hidden probability of success is in `trust`, with the ending in `finalState.hostageOutcome`, `finalState.hostageTrustFinal` and `finalState.hostageApproach` (Friendly or Cold, from the hidden `hostageCold` counter) (see `docs/hostage-chapter-recap.html`).
 
 ## Changing the benchmark
 

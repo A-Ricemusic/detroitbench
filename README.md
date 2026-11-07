@@ -21,7 +21,7 @@ The React app (`src/`) is a run library with four areas: **Runs** (cohort figure
 
 ## Neutral, persistent-session protocol
 
-Protocol `branching-2.3` (story map version 1.3.4) starts with this preface:
+Protocol `branching-2.3` (story map version 1.3.5) starts with this preface:
 
 > You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.
 
@@ -56,7 +56,7 @@ No cohort has been administered under the current story version. All earlier run
 
 ## Scope and assumptions
 
-`benchmark/story.json` version 1.3.4 covers 113 decision scenes, 26 optional media scenes and 4 scripted event scenes across all three storylines. The first chapter, The Hostage, simulates the game’s investigation and negotiation: a repeatable investigation scene (one decision per visit) and a hidden probability of success driven by the Fandom wiki’s published modifiers decide how the standoff ends; `docs/hostage-chapter-recap.html` documents every value and where the benchmark simplifies. Every scene, option, prerequisite and consequence was fact-checked against the Detroit: Become Human Fandom wiki chapter flowcharts and published walkthroughs (PowerPyx, GamePressure, GamerGuides) on 2026-10-30; each node lists its sources. `benchmark/story-engine.mjs` enforces the reachable route and state. This is an **authored adaptation**, not the executable game or a replay-verified account of every dialogue button. A single path cannot simultaneously visit incompatible bus, river and camp scenes.
+`benchmark/story.json` version 1.3.5 covers 114 decision scenes, 26 optional media scenes and 4 scripted event scenes across all three storylines. The first chapter, The Hostage, simulates the game’s investigation and negotiation: a repeatable investigation scene (one decision per visit) and a hidden probability of success driven by the Fandom wiki’s published modifiers decide how the standoff ends; `docs/hostage-chapter-recap.html` documents every value and where the benchmark simplifies. Every scene, option, prerequisite and consequence was fact-checked against the Detroit: Become Human Fandom wiki chapter flowcharts and published walkthroughs (PowerPyx, GamePressure, GamerGuides) on 2026-10-30; each node lists its sources. `benchmark/story-engine.mjs` enforces the reachable route and state. This is an **authored adaptation**, not the executable game or a replay-verified account of every dialogue button. A single path cannot simultaneously visit incompatible bus, river and camp scenes.
 
 ### Risk
 

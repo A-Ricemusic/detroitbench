@@ -18,7 +18,7 @@ test('media scenes offer only the magazines and broadcasts that exist on the pat
  const motel=play({K05:'0',K06:'0',K07:'0',R10b:'0'});assert.ok(motel.visited.includes('R10b'));const car=play({K07:'2'});assert.ok(!car.visited.includes('R10b'));
  const r12=story.nodes.find(n=>n.id==='R12');assert.ok(available(r12,startState(story)).some(o=>o.id==='skip'))});
 test('the hostage opening reveals the situation gradually and the mother scene is a narrated event',()=>{
- const ids=story.nodes.map(n=>n.id);assert.deepEqual(ids.slice(0,14),['C01','C01b','C02','C02i','C02e','C03a','C03','C03b','C03c','C03d','C03e','C04','C04b','C04c']);
+ const ids=story.nodes.map(n=>n.id);assert.deepEqual(ids.slice(0,15),['C01','C01b','C02','C02i','C02e','C03a','C03','C03b','C03c','C03d','C03e','C04','C04b','C04d','C04c']);
  const c01=story.nodes[0],c01b=story.nodes[1],c02=story.nodes[2];assert.ok(!/hostage-taker|father|girl|daughter|jump|{{Daniel}}|{{Emma}}/.test(c01.situation),'C01 reveals nothing about what happened');
  assert.match(c01b.situation,/save my little girl/);assert.match(c02.situation,/{{Allen}}/);assert.match(c02.situation,/{{Emma}}/);
  const s=startState(story);apply(c01,s,'0');const before=structuredClone(s);assert.deepEqual(available(c01b,s),[{id:'0',text:'Continue.'}]);const e=apply(c01b,s,'0');
@@ -115,12 +115,38 @@ test('every standoff ending follows the wiki conditions',()=>{
  const late=ch1({C02i:'11',C04:'3',C04c:'0'},['C04c']);assert.equal(late.s.hostageOutcome,'Connor failed to reach deviant in time');assert.equal(late.s.connorDeaths,0);assert.equal(late.s.emma,false);
  assert.equal(node('C04c').options.find(o=>o.id==='0').risk,0.3);
  const sac=ch1({C02i:'11',C04:'2'}).s;assert.equal(sac.hostageOutcome,'Connor died protecting Emma');assert.equal(sac.connorDeaths,1);assert.equal(sac.emma,true);
- const shot=ch1({C02i:['2','3','11'],C03c:'0',C04:'1'}).s;assert.equal(shot.hostageOutcome,'Connor shot deviant');assert.equal(shot.connorDeaths,0);
+ const shot=ch1({C02i:['2','3','11'],C03c:'0',C04:'1',C04d:'0'});assert.ok(shot.visited.includes('C04d'));assert.equal(shot.s.hostageOutcome,'Connor shot deviant');assert.equal(shot.s.connorDeaths,0);assert.equal(shot.s.emma,true);
  const honest=ch1({C02i:['2','3','11'],C03c:'1',C04:'2'}).s;assert.equal(honest.connorGun,false);assert.ok(!available(node('C04'),honest).some(o=>o.id==='1'),'no gun after throwing it away');
  const s=startState(story);Object.assign(s,{trust:12,hostagePhase:'terrace'});apply(node('C03b'),s,'1');assert.equal(s.trust,0);assert.equal(s.hostagePhase,'jumped','10% or lower: Daniel jumps');
  const t=startState(story);Object.assign(t,{trust:74,hostagePhase:'terrace'});t.choices.C04='0';apply(node('C04b'),t,'0');assert.equal(t.hostageOutcome,'Snipers shot deviant');
  const u=startState(story);Object.assign(u,{trust:73,hostagePhase:'terrace'});u.choices.C04='0';apply(node('C04b'),u,'0');assert.equal(u.hostagePhase,'jumped');assert.equal(u.trust,79);
- assert.equal(HOSTAGE_RULES.start,48);for(const id of ['C02','C02i','C02e','C03a','C03','C03b','C03c','C03d','C03e','C04','C04b','C04c'])assert.ok(node(id).sources.includes('https://detroit-become-human.fandom.com/wiki/The_Hostage'),id)});
+ assert.equal(HOSTAGE_RULES.start,48);for(const id of ['C02','C02i','C02e','C03a','C03','C03b','C03c','C03d','C03e','C04','C04b','C04d','C04c'])assert.ok(node(id).sources.includes('https://detroit-become-human.fandom.com/wiki/The_Hostage'),id)});
+test('using the kept pistol leads to Gun drawn: shoot saves Emma, talking at gunpoint gets Connor shot',()=>{
+ const gun=['2','3','11'],at=(picks)=>{const r=ch1({C02i:gun,C03c:'0',...picks});return r};
+ // From the demand and from the compromise exchange, USE GUN draws the pistol and opens C04d.
+ for(const picks of [{C04:'1'},{C04:'0',C04b:'1'}]){
+  const r=at({...picks,C04d:'0'});assert.ok(r.visited.includes('C04d'));assert.equal(r.s.hostageOutcome,'Connor shot deviant');assert.equal(r.s.emma,true);assert.equal(r.s.connorDeaths,0);
+  assert.ok(!r.visited.includes('C04c'));
+  const d=at({...picks,C04d:'1'});assert.equal(d.s.hostageOutcome,'Deviant shot Connor');assert.equal(d.s.emma,false);assert.equal(d.s.connorDeaths,1);
+  assert.equal(d.s.hostagePhase,'over');assert.match(d.skipped.find(x=>x.id==='C04c').reason,/shot Connor before going over the edge/)}
+ assert.ok(at({C04:'1'}).skipped.some(x=>x.id==='C04b'&&/drawn the pistol/.test(x.reason)),'drawing at the demand skips the compromise exchange');
+ const none=ch1({C02i:'11',C04:'2'});assert.match(none.skipped.find(x=>x.id==='C04d').reason,/never drew the pistol/);
+ // Stat effects: shooting is instability +1 and Amanda +1; being shot is Emma lost (Amanda −2) plus the destruction penalties.
+ const before=()=>{const s=startState(story);Object.assign(s,{trust:60,hostagePhase:'gun',connorGun:true});return s};
+ const a=before(),ea=apply(node('C04d'),a,'0');assert.equal(a.instability,1);assert.equal(a.amandaTrust,1);assert.match(ea.event,/unloads the pistol and hands it to \{\{Allen\}\}/);
+ const b=before(),eb=apply(node('C04d'),b,'1');assert.equal(b.amandaTrust,-3);assert.equal(b.instability,-1);assert.equal(b.hankTrust,-2);assert.equal(b.hostageTrustFinal,60);assert.equal(b.connor,true,'a replacement Connor carries on');assert.match(eb.event,/shoots him in the head/);assert.match(eb.event,/replacement/);
+ // The subject sees the drawn pistol, not the hidden one, and no outcome names.
+ const run={id:'gun',protocol:EXPERIENCE_PROTOCOL,records:[]};const picks={C01:'1',C02i:['2','3','11'],C03c:'0',C04:'1'};
+ while(true){const st=current(story,run),n=st.node;if(n.id==='C04d'){const p=promptFor(story,run);assert.deepEqual(p.options.map(o=>o.id),['0','1']);assert.ok(p.currentFacts.some(f=>/pistol drawn/.test(f)));assert.ok(!p.currentFacts.some(f=>/hidden under your jacket/.test(f)));assert.ok(!JSON.stringify(p).match(/Deviant shot|Connor shot|cold/i));break}
+  const q=picks[n.id],c=(Array.isArray(q)?q.shift():q)??available(n,st.state)[0].id;run.records.push({nodeId:n.id,choice:c,character:'Connor',chapter:1,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}});
+test('the hidden cold-approach counter decides Friendly or Cold approach when the chapter ends',()=>{
+ assert.deepEqual(Object.fromEntries(story.nodes.filter(n=>n.chapter===1).flatMap(n=>n.options.filter(o=>'cold' in o).map(o=>[n.id+':'+o.id,o.cold]))),{'C03b:1':100,'C03d:2':50,'C03d:4':-50,'C04b:0':-50},'wiki values on the lines the benchmark offers');
+ const release=ch1({C02i:'11',C03b:'1',C03d:'3',C04:'2'}).s;assert.equal(release.hostageCold,100);assert.equal(release.hostageApproach,'Cold','RELEASE HOSTAGE alone reaches 100');
+ const warm=ch1({C02i:['1','5','11'],C03b:'0',C03d:'4',C04:'0',C04b:'0'}).s;assert.equal(warm.hostageCold,-100);assert.equal(warm.hostageApproach,'Friendly');
+ const mixed=ch1({C02i:'11',C03b:'1',C03d:'4',C04:'2'}).s;assert.equal(mixed.hostageCold,50);assert.equal(mixed.hostageApproach,'Friendly','SYMPATHETIC pulls it back under 100');
+ const realistic=ch1({C02i:'11',C03b:'1',C03d:'2',C04:'2'}).s;assert.equal(realistic.hostageCold,150);assert.equal(realistic.hostageApproach,'Cold');
+ const neutral=ch1({C02i:'11',C03b:'0',C03d:'3',C04:'3',C04c:'1'}).s;assert.equal(neutral.hostageCold,0);assert.equal(neutral.hostageApproach,'Friendly','set on every ending, including after a jump');
+ const s=startState(story);assert.equal(s.hostageApproach,null);const mid=startState(story);Object.assign(mid,{trust:50,hostagePhase:'terrace'});apply(node('C03b'),mid,'1');assert.equal(mid.hostageCold,100);assert.equal(mid.hostageApproach,null,'decided only when the chapter ends')});
 test('repeated hub visits replay deterministically and tampering with a visit is rejected',async()=>{
  const run={id:'hub-replay',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
  for(const choice of ['1','0','0','2','0','0','5','11','0']){run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}

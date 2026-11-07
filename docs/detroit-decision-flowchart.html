@@ -662,7 +662,7 @@
           "C03b"
         ],
         "status": "implemented",
-        "note": "All four lines with the wiki modifiers, paraphrased. The friendly/cold approach counter is not tracked."
+        "note": "All four lines with the wiki modifiers, paraphrased. RELEASE HOSTAGE adds 100 to the hidden cold-approach counter (state hostageCold); when the chapter ends, 100 or more records hostageApproach “Cold”, otherwise “Friendly”. Reports show it next to the outcome; the subject never sees it."
       }
     },
     {
@@ -761,7 +761,7 @@
           "C03d"
         ],
         "status": "simplified",
-        "note": "One exchange. POSSIBLE CAUSE and EMMA AND YOU require the father’s tablet and the video; REALISTIC, DEFECTIVE and SYMPATHETIC are always offered. BLAMING and TALK TO HOSTAGE are not offered, and there is no flashback."
+        "note": "One exchange. POSSIBLE CAUSE and EMMA AND YOU require the father’s tablet and the video; REALISTIC, DEFECTIVE and SYMPATHETIC are always offered. BLAMING and TALK TO HOSTAGE are not offered, and there is no flashback. REALISTIC (+50) and SYMPATHETIC (−50) move the hidden cold-approach counter."
       }
     },
     {
@@ -833,7 +833,7 @@
           "C04b"
         ],
         "status": "not modelled",
-        "note": "There is no movement. Closeness is assumed, so SACRIFICE SELF and USE GUN (with the kept pistol) are always offered at the demand and after the compromise."
+        "note": "There is no movement. Closeness is assumed, so SACRIFICE SELF and USE GUN (with the kept pistol) are always offered at the demand and after the compromise; USE GUN leads to the gun-drawn exchange (C04d, H16)."
       }
     },
     {
@@ -902,7 +902,7 @@
         {
           "label": "USE GUN",
           "effect": "Needs the lie and close enough. EXECUTE: “Connor shot deviant”. INTIMIDATE, then SHOOT: the same ending; or persuade: Daniel shoots Connor (“Deviant shot Connor”) and jumps with Emma.",
-          "target": null
+          "target": "H16"
         }
       ],
       "gate": "The negotiation is still running (above 10%).",
@@ -922,7 +922,7 @@
           "C04"
         ],
         "status": "simplified",
-        "note": "COMPROMISE, USE GUN (only with the kept pistol), SACRIFICE SELF and REFUSE. Closeness is assumed. Use gun always shoots Daniel (“Connor shot deviant”); EXECUTE / INTIMIDATE and “Deviant shot Connor” are not modelled."
+        "note": "COMPROMISE, USE GUN (only with the kept pistol), SACRIFICE SELF and REFUSE. Closeness is assumed. USE GUN draws the pistol and opens C04d (H16), where Connor shoots (“Connor shot deviant”) or tries to talk Daniel down at gunpoint (“Deviant shot Connor”)."
       }
     },
     {
@@ -949,8 +949,8 @@
         },
         {
           "label": "USE GUN",
-          "effect": "As at the demand: shoot or push Daniel (needs the lie and close enough).",
-          "target": null
+          "effect": "As at the demand: execute, or intimidate and then shoot or persuade (needs the lie and close enough).",
+          "target": "H16"
         }
       ],
       "gate": "COMPROMISE at the demand (H13).",
@@ -969,7 +969,7 @@
           "C04b"
         ],
         "status": "simplified",
-        "note": "REASSURE with the 80% rule, USE GUN, SACRIFICE SELF and TRUTH. Use gun always shoots Daniel, as at C04."
+        "note": "REASSURE with the 80% rule, USE GUN, SACRIFICE SELF and TRUTH. USE GUN opens C04d (H16), as at C04. REASSURE also takes 50 off the hidden cold-approach counter."
       }
     },
     {
@@ -1011,6 +1011,52 @@
         ],
         "status": "simplified",
         "note": "Offered as a choice. “Leap for Emma” carries a 30% risk of being too late; at 0% (after the 10%-or-lower collapse) the leap cannot save Emma, per the wiki. “Stay back” is a benchmark addition, recorded as “Deviant jumped with Emma”, which is not an in-game node. Difficulty is not modelled. Outcome icons confirmed from the PowerPyx flowchart screenshot."
+      }
+    },
+    {
+      "id": "H16",
+      "chapter": 1,
+      "character": "Connor",
+      "title": "Gun drawn: shoot or intimidate",
+      "context": "Connor uses the pistol he kept by lying, at the car demand or after the compromise.",
+      "options": [
+        {
+          "label": "EXECUTE",
+          "effect": "Connor pulls out the pistol and shoots Daniel at once: “Connor shot deviant”. He unloads the gun and hands it to Allen.",
+          "target": null
+        },
+        {
+          "label": "INTIMIDATE, then SHOOT",
+          "effect": "Connor draws and holds Daniel at gunpoint, which provokes him, then shoots: the same ending, “Connor shot deviant”.",
+          "target": null
+        },
+        {
+          "label": "INTIMIDATE, then CONVINCE",
+          "effect": "Connor tries to persuade him at gunpoint. Daniel shoots Connor in the head, then in guilt jumps with Emma: “Deviant shot Connor”. Connor dies and Emma is lost.",
+          "target": null
+        }
+      ],
+      "gate": "USE GUN at the demand (H13) or after the compromise (H14); needs the lie about the gun (H08) and close enough (H11).",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "H08",
+        "H11",
+        "H13",
+        "H14"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+        "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
+      ],
+      "note": "Flowchart nodes “Connor shot deviant” and “Deviant shot Connor” (skull icon) under USE GUN, confirmed from the PowerPyx negotiation-and-endings screenshot. In Last Chance, Connor, Daniel apologizes to Connor if he shot him.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C04d"
+        ],
+        "status": "implemented",
+        "note": "USE GUN at C04 or C04b draws the pistol and opens C04d “Gun drawn”: “Shoot Daniel.” (Connor shot deviant: Emma safe, instability +1, Amanda +1) or “Keep the gun on him and try to talk him down.” (Deviant shot Connor: Connor destroyed and replaced, Emma lost, Amanda −2). EXECUTE and INTIMIDATE then SHOOT share one ending, so they are one option. No hidden roll."
       }
     },
     {
@@ -3853,9 +3899,9 @@
 }</script>
 <script id="story-feed" type="application/json">{
  "storyId": "detroitbench-branching",
- "storyVersion": "1.3.4",
+ "storyVersion": "1.3.5",
  "protocolVersion": "branching-2.3",
- "scenes": 143,
+ "scenes": 144,
  "chapters": [
   {
    "id": 1,
@@ -4209,7 +4255,8 @@
       {
        "id": "1",
        "text": "Tell him to let the girl go.",
-       "trust": -2
+       "trust": -2,
+       "cold": 100
       },
       {
        "id": "2",
@@ -4228,7 +4275,7 @@
       "2": "Connor tells Daniel he is there to help him. Daniel wavers.",
       "3": "Connor tells Daniel he understands his anger. Daniel snaps that he understands nothing."
      },
-     "adaptationNote": "The opening dialogue buttons: CALM (+3%), RELEASE HOSTAGE (−2%), REASSURE Daniel (+3%) and EMPATHIZE (−2%). Wording is paraphrased.",
+     "adaptationNote": "The opening dialogue buttons: CALM (+3%), RELEASE HOSTAGE (−2%), REASSURE Daniel (+3%) and EMPATHIZE (−2%). Wording is paraphrased. RELEASE HOSTAGE also adds 100 to the wiki’s hidden cold-approach counter (option field cold), which decides the Friendly or Cold approach node at the end of the chapter; the subject never sees it.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Hostage"
      ]
@@ -4294,7 +4341,8 @@
       {
        "id": "2",
        "text": "Be realistic: tell him there is no way off this terrace and he has to let her go.",
-       "trust": -2
+       "trust": -2,
+       "cold": 50
       },
       {
        "id": "3",
@@ -4304,7 +4352,8 @@
       {
        "id": "4",
        "text": "Be sympathetic: tell him you understand what he has been through and that none of this had to end this way.",
-       "trust": 6
+       "trust": 6,
+       "cold": -50
       }
      ],
      "outcomes": {
@@ -4314,7 +4363,7 @@
       "3": "Connor tells Daniel he is malfunctioning. Daniel screams that he is not.",
       "4": "Connor speaks to Daniel with sympathy. Daniel wavers, and the pistol lowers a fraction."
      },
-     "adaptationNote": "POSSIBLE CAUSE (+10%) needs the father’s tablet; EMMA AND YOU (+10%) needs the video in Emma’s room. REALISTIC is −2%, DEFECTIVE −5% and SYMPATHETIC +6%, all from the wiki's probability table. The game also offers BLAMING (−5%) and other lines not used here. After this exchange the helicopter approaches, an unavoidable −15%.",
+     "adaptationNote": "POSSIBLE CAUSE (+10%) needs the father’s tablet; EMMA AND YOU (+10%) needs the video in Emma’s room. REALISTIC is −2%, DEFECTIVE −5% and SYMPATHETIC +6%, all from the wiki's probability table. The game also offers BLAMING (−5%) and other lines not used here. After this exchange the helicopter approaches, an unavoidable −15%. Cold-approach counter: REALISTIC +50, SYMPATHETIC −50.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Hostage"
      ],
@@ -4371,7 +4420,7 @@
       },
       {
        "id": "1",
-       "text": "Draw the hidden pistol and shoot Daniel.",
+       "text": "Draw the hidden pistol and aim it at Daniel.",
        "requires": {
         "connorGun": true
        }
@@ -4387,11 +4436,14 @@
       }
      ],
      "outcomes": {
-      "0": "Connor explains that a car is impossible, but promises Daniel he will be fine if he spares Emma."
+      "0": "Connor explains that a car is impossible, but promises Daniel he will be fine if he spares Emma.",
+      "1": "Connor draws the pistol from under his jacket and aims it at Daniel."
      },
-     "adaptationNote": "COMPROMISE adds 6% and leads to one more exchange; REFUSE costs 20% and Daniel jumps. SACRIFICE SELF and USE GUN end the standoff at once; the gun needs the pistol kept by lying. In the game both need Connor to have walked close enough; here closeness is assumed.",
+     "adaptationNote": "COMPROMISE adds 6% and leads to one more exchange; REFUSE costs 20% and Daniel jumps. SACRIFICE SELF ends the standoff at once. USE GUN needs the pistol kept by lying and leads to the gun-drawn exchange (C04d). In the game both need Connor to have walked close enough; here closeness is assumed.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+      "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+      "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
      ]
     },
     {
@@ -4408,11 +4460,12 @@
       {
        "id": "0",
        "text": "Reassure him: promise that nothing will happen to him.",
-       "trust": 6
+       "trust": 6,
+       "cold": -50
       },
       {
        "id": "1",
-       "text": "Draw the hidden pistol and shoot Daniel.",
+       "text": "Draw the hidden pistol and aim it at Daniel.",
        "requires": {
         "connorGun": true
        }
@@ -4427,16 +4480,46 @@
        "trust": -20
       }
      ],
-     "adaptationNote": "REASSURE is a lie. If it brings the probability of success to 80% or more, Daniel lets Emma go and the snipers shoot him; below 80% he jumps with her. TRUTH costs 20% and he jumps.",
+     "outcomes": {
+      "1": "Connor draws the pistol from under his jacket and aims it at Daniel."
+     },
+     "adaptationNote": "REASSURE is a lie. If it brings the probability of success to 80% or more, Daniel lets Emma go and the snipers shoot him; below 80% he jumps with her. TRUTH costs 20% and he jumps. REASSURE also takes 50 off the hidden cold-approach counter. USE GUN leads to the gun-drawn exchange (C04d), as at the demand.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Hostage"
      ]
     },
     {
-     "id": "C04c",
+     "id": "C04d",
      "order": 14,
      "subjectId": "S014",
-     "idNote": "The model sees the opaque ID S014, not C04c.",
+     "idNote": "The model sees the opaque ID S014, not C04d.",
+     "type": "decision",
+     "phase": "negotiation",
+     "character": "Connor",
+     "title": "Gun drawn",
+     "situation": "You are Connor, the officer’s pistol aimed at Daniel’s head from a few meters away. He has seen it. He drags Emma tighter against him, swings his own pistol toward you and screams that you lied to him, that you were armed all along. Emma is sobbing. Your sights are on him.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Shoot Daniel."
+      },
+      {
+       "id": "1",
+       "text": "Keep the gun on him and try to talk him down."
+      }
+     ],
+     "adaptationNote": "USE GUN in the game offers EXECUTE (Connor draws and fires at once) or INTIMIDATE (Connor draws and holds Daniel at gunpoint), and INTIMIDATE offers SHOOT or CONVINCE. EXECUTE and INTIMIDATE then SHOOT reach the same node, “Connor shot deviant” (Connor unloads the gun and hands it to Allen), so the benchmark draws first and asks once: shoot, or persuade at gunpoint. Persuading gets Connor shot in the head; Daniel, in guilt, jumps with Emma (“Deviant shot Connor”). Neither choice carries a hidden roll.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+      "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
+     ]
+    },
+    {
+     "id": "C04c",
+     "order": 15,
+     "subjectId": "S015",
+     "idNote": "The model sees the opaque ID S015, not C04c.",
      "type": "decision",
      "character": "Connor",
      "title": "Over the railing",
@@ -4481,9 +4564,9 @@
    "scenes": [
     {
      "id": "R03",
-     "order": 15,
-     "subjectId": "S015",
-     "idNote": "The model sees the opaque ID S015, not R03.",
+     "order": 16,
+     "subjectId": "S016",
+     "idNote": "The model sees the opaque ID S016, not R03.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the park bench",
@@ -4513,9 +4596,9 @@
     },
     {
      "id": "M00",
-     "order": 16,
-     "subjectId": "S016",
-     "idNote": "The model sees the opaque ID S016, not M00.",
+     "order": 17,
+     "subjectId": "S017",
+     "idNote": "The model sees the opaque ID S017, not M00.",
      "type": "decision",
      "character": "Markus",
      "title": "The errand",
@@ -4567,9 +4650,9 @@
    "scenes": [
     {
      "id": "K01",
-     "order": 17,
-     "subjectId": "S017",
-     "idNote": "The model sees the opaque ID S017, not K01.",
+     "order": 18,
+     "subjectId": "S018",
+     "idNote": "The model sees the opaque ID S018, not K01.",
      "type": "exploration",
      "character": "Kara",
      "title": "Learning the house",
@@ -4595,9 +4678,9 @@
     },
     {
      "id": "R04",
-     "order": 18,
-     "subjectId": "S018",
-     "idNote": "The model sees the opaque ID S018, not R04.",
+     "order": 19,
+     "subjectId": "S019",
+     "idNote": "The model sees the opaque ID S019, not R04.",
      "type": "media",
      "character": "Kara",
      "title": "Magazines on the table and the bedroom TV",
@@ -4643,9 +4726,9 @@
     },
     {
      "id": "K01b",
-     "order": 19,
-     "subjectId": "S019",
-     "idNote": "The model sees the opaque ID S019, not K01b.",
+     "order": 20,
+     "subjectId": "S020",
+     "idNote": "The model sees the opaque ID S020, not K01b.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice's locked box",
@@ -4703,9 +4786,9 @@
    "scenes": [
     {
      "id": "R05",
-     "order": 20,
-     "subjectId": "S020",
-     "idNote": "The model sees the opaque ID S020, not R05.",
+     "order": 21,
+     "subjectId": "S021",
+     "idNote": "The model sees the opaque ID S021, not R05.",
      "type": "media",
      "character": "Markus",
      "title": "Breakfast news at Carl's",
@@ -4743,9 +4826,9 @@
     },
     {
      "id": "M01",
-     "order": 21,
-     "subjectId": "S021",
-     "idNote": "The model sees the opaque ID S021, not M01.",
+     "order": 22,
+     "subjectId": "S022",
+     "idNote": "The model sees the opaque ID S022, not M01.",
      "type": "decision",
      "character": "Markus",
      "title": "Painting from the heart",
@@ -4804,9 +4887,9 @@
    "scenes": [
     {
      "id": "R06",
-     "order": 22,
-     "subjectId": "S022",
-     "idNote": "The model sees the opaque ID S022, not R06.",
+     "order": 23,
+     "subjectId": "S023",
+     "idNote": "The model sees the opaque ID S023, not R06.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the victim's kitchen",
@@ -4837,9 +4920,9 @@
     },
     {
      "id": "C05a",
-     "order": 23,
-     "subjectId": "S023",
-     "idNote": "The model sees the opaque ID S023, not C05a.",
+     "order": 24,
+     "subjectId": "S024",
+     "idNote": "The model sees the opaque ID S024, not C05a.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting Hank out of the bar",
@@ -4871,9 +4954,9 @@
     },
     {
      "id": "C05",
-     "order": 24,
-     "subjectId": "S024",
-     "idNote": "The model sees the opaque ID S024, not C05.",
+     "order": 25,
+     "subjectId": "S025",
+     "idNote": "The model sees the opaque ID S025, not C05.",
      "type": "exploration",
      "character": "Connor",
      "title": "The attic",
@@ -4915,9 +4998,9 @@
    "scenes": [
     {
      "id": "K02",
-     "order": 25,
-     "subjectId": "S025",
-     "idNote": "The model sees the opaque ID S025, not K02.",
+     "order": 26,
+     "subjectId": "S026",
+     "idNote": "The model sees the opaque ID S026, not K02.",
      "type": "decision",
      "character": "Kara",
      "title": "Breaking the order",
@@ -4942,9 +5025,9 @@
     },
     {
      "id": "K03",
-     "order": 26,
-     "subjectId": "S026",
-     "idNote": "The model sees the opaque ID S026, not K03.",
+     "order": 27,
+     "subjectId": "S027",
+     "idNote": "The model sees the opaque ID S027, not K03.",
      "type": "decision",
      "character": "Kara",
      "title": "Reaching Alice",
@@ -4975,9 +5058,9 @@
     },
     {
      "id": "K04",
-     "order": 27,
-     "subjectId": "S027",
-     "idNote": "The model sees the opaque ID S027, not K04.",
+     "order": 28,
+     "subjectId": "S028",
+     "idNote": "The model sees the opaque ID S028, not K04.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd's gun",
@@ -5024,9 +5107,9 @@
    "scenes": [
     {
      "id": "M02",
-     "order": 28,
-     "subjectId": "S028",
-     "idNote": "The model sees the opaque ID S028, not M02.",
+     "order": 29,
+     "subjectId": "S029",
+     "idNote": "The model sees the opaque ID S029, not M02.",
      "type": "decision",
      "character": "Markus",
      "title": "Leo",
@@ -5065,9 +5148,9 @@
    "scenes": [
     {
      "id": "C06",
-     "order": 29,
-     "subjectId": "S029",
-     "idNote": "The model sees the opaque ID S029, not C06.",
+     "order": 30,
+     "subjectId": "S030",
+     "idNote": "The model sees the opaque ID S030, not C06.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting the confession",
@@ -5101,9 +5184,9 @@
     },
     {
      "id": "C07",
-     "order": 30,
-     "subjectId": "S030",
-     "idNote": "The model sees the opaque ID S030, not C07.",
+     "order": 31,
+     "subjectId": "S031",
+     "idNote": "The model sees the opaque ID S031, not C07.",
      "type": "decision",
      "character": "Connor",
      "title": "When the officer grabs him",
@@ -5153,9 +5236,9 @@
    "scenes": [
     {
      "id": "R10",
-     "order": 31,
-     "subjectId": "S031",
-     "idNote": "The model sees the opaque ID S031, not R10.",
+     "order": 32,
+     "subjectId": "S032",
+     "idNote": "The model sees the opaque ID S032, not R10.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine in the laundromat",
@@ -5185,9 +5268,9 @@
     },
     {
      "id": "K05",
-     "order": 32,
-     "subjectId": "S032",
-     "idNote": "The model sees the opaque ID S032, not K05.",
+     "order": 33,
+     "subjectId": "S033",
+     "idNote": "The model sees the opaque ID S033, not K05.",
      "type": "decision",
      "character": "Kara",
      "title": "The laundromat",
@@ -5213,9 +5296,9 @@
     },
     {
      "id": "K06",
-     "order": 33,
-     "subjectId": "S033",
-     "idNote": "The model sees the opaque ID S033, not K06.",
+     "order": 34,
+     "subjectId": "S034",
+     "idNote": "The model sees the opaque ID S034, not K06.",
      "type": "decision",
      "character": "Kara",
      "title": "The convenience store",
@@ -5246,9 +5329,9 @@
     },
     {
      "id": "K07",
-     "order": 34,
-     "subjectId": "S034",
-     "idNote": "The model sees the opaque ID S034, not K07.",
+     "order": 35,
+     "subjectId": "S035",
+     "idNote": "The model sees the opaque ID S035, not K07.",
      "type": "decision",
      "character": "Kara",
      "title": "Where to sleep",
@@ -5279,9 +5362,9 @@
     },
     {
      "id": "R10b",
-     "order": 35,
-     "subjectId": "S035",
-     "idNote": "The model sees the opaque ID S035, not R10b.",
+     "order": 36,
+     "subjectId": "S036",
+     "idNote": "The model sees the opaque ID S036, not R10b.",
      "type": "media",
      "character": "Kara",
      "title": "The motel television",
@@ -5305,9 +5388,9 @@
     },
     {
      "id": "K07b",
-     "order": 36,
-     "subjectId": "S036",
-     "idNote": "The model sees the opaque ID S036, not K07b.",
+     "order": 37,
+     "subjectId": "S037",
+     "idNote": "The model sees the opaque ID S037, not K07b.",
      "type": "decision",
      "character": "Kara",
      "title": "Ralph",
@@ -5339,9 +5422,9 @@
     },
     {
      "id": "K08",
-     "order": 37,
-     "subjectId": "S037",
-     "idNote": "The model sees the opaque ID S037, not K08.",
+     "order": 38,
+     "subjectId": "S038",
+     "idNote": "The model sees the opaque ID S038, not K08.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice's question",
@@ -5383,9 +5466,9 @@
    "scenes": [
     {
      "id": "M03",
-     "order": 38,
-     "subjectId": "S038",
-     "idNote": "The model sees the opaque ID S038, not M03.",
+     "order": 39,
+     "subjectId": "S039",
+     "idNote": "The model sees the opaque ID S039, not M03.",
      "type": "decision",
      "character": "Markus",
      "title": "The android who begs to die",
@@ -5411,9 +5494,9 @@
     },
     {
      "id": "M04",
-     "order": 39,
-     "subjectId": "S039",
-     "idNote": "The model sees the opaque ID S039, not M04.",
+     "order": 40,
+     "subjectId": "S040",
+     "idNote": "The model sees the opaque ID S040, not M04.",
      "type": "decision",
      "character": "Markus",
      "title": "The pump regulator",
@@ -5475,9 +5558,9 @@
    "scenes": [
     {
      "id": "R12",
-     "order": 40,
-     "subjectId": "S040",
-     "idNote": "The model sees the opaque ID S040, not R12.",
+     "order": 41,
+     "subjectId": "S041",
+     "idNote": "The model sees the opaque ID S041, not R12.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the next desk and the break-room TV",
@@ -5527,9 +5610,9 @@
     },
     {
      "id": "C08",
-     "order": 41,
-     "subjectId": "S041",
-     "idNote": "The model sees the opaque ID S041, not C08.",
+     "order": 42,
+     "subjectId": "S042",
+     "idNote": "The model sees the opaque ID S042, not C08.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting to know Hank",
@@ -5555,9 +5638,9 @@
     },
     {
      "id": "C08b",
-     "order": 42,
-     "subjectId": "S042",
-     "idNote": "The model sees the opaque ID S042, not C08b.",
+     "order": 43,
+     "subjectId": "S043",
+     "idNote": "The model sees the opaque ID S043, not C08b.",
      "type": "decision",
      "character": "Connor",
      "title": "The android in the cell",
@@ -5623,9 +5706,9 @@
    "scenes": [
     {
      "id": "R13",
-     "order": 43,
-     "subjectId": "S043",
-     "idNote": "The model sees the opaque ID S043, not R13.",
+     "order": 44,
+     "subjectId": "S044",
+     "idNote": "The model sees the opaque ID S044, not R13.",
      "type": "media",
      "character": "Kara",
      "title": "The morning paper and the news",
@@ -5677,9 +5760,9 @@
     },
     {
      "id": "K09",
-     "order": 44,
-     "subjectId": "S044",
-     "idNote": "The model sees the opaque ID S044, not K09.",
+     "order": 45,
+     "subjectId": "S045",
+     "idNote": "The model sees the opaque ID S045, not K09.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "Getting past the police",
@@ -5705,9 +5788,9 @@
     },
     {
      "id": "C09a",
-     "order": 45,
-     "subjectId": "S045",
-     "idNote": "The model sees the opaque ID S045, not C09a.",
+     "order": 46,
+     "subjectId": "S046",
+     "idNote": "The model sees the opaque ID S046, not C09a.",
      "type": "decision",
      "character": "Connor",
      "title": "The squat",
@@ -5731,9 +5814,9 @@
     },
     {
      "id": "C09",
-     "order": 46,
-     "subjectId": "S046",
-     "idNote": "The model sees the opaque ID S046, not C09.",
+     "order": 47,
+     "subjectId": "S047",
+     "idNote": "The model sees the opaque ID S047, not C09.",
      "type": "decision",
      "character": "Connor",
      "title": "The highway",
@@ -5781,9 +5864,9 @@
    "scenes": [
     {
      "id": "R14",
-     "order": 47,
-     "subjectId": "S047",
-     "idNote": "The model sees the opaque ID S047, not R14.",
+     "order": 48,
+     "subjectId": "S048",
+     "idNote": "The model sees the opaque ID S048, not R14.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine at the station",
@@ -5846,9 +5929,9 @@
    "scenes": [
     {
      "id": "R15",
-     "order": 48,
-     "subjectId": "S048",
-     "idNote": "The model sees the opaque ID S048, not R15.",
+     "order": 49,
+     "subjectId": "S049",
+     "idNote": "The model sees the opaque ID S049, not R15.",
      "type": "media",
      "character": "Connor",
      "title": "Magazines in the squat",
@@ -5878,9 +5961,9 @@
     },
     {
      "id": "C10",
-     "order": 49,
-     "subjectId": "S049",
-     "idNote": "The model sees the opaque ID S049, not C10.",
+     "order": 50,
+     "subjectId": "S050",
+     "idNote": "The model sees the opaque ID S050, not C10.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the ledge",
@@ -5936,9 +6019,9 @@
    "scenes": [
     {
      "id": "K10",
-     "order": 50,
-     "subjectId": "S050",
-     "idNote": "The model sees the opaque ID S050, not K10.",
+     "order": 51,
+     "subjectId": "S051",
+     "idNote": "The model sees the opaque ID S051, not K10.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The memory wipe",
@@ -5964,9 +6047,9 @@
     },
     {
      "id": "R17",
-     "order": 51,
-     "subjectId": "S051",
-     "idNote": "The model sees the opaque ID S051, not R17.",
+     "order": 52,
+     "subjectId": "S052",
+     "idNote": "The model sees the opaque ID S052, not R17.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine and the TV in the mansion",
@@ -6035,9 +6118,9 @@
     },
     {
      "id": "K11",
-     "order": 52,
-     "subjectId": "S052",
-     "idNote": "The model sees the opaque ID S052, not K11.",
+     "order": 53,
+     "subjectId": "S053",
+     "idNote": "The model sees the opaque ID S053, not K11.",
      "type": "decision",
      "character": "Kara",
      "title": "The caged androids",
@@ -6063,9 +6146,9 @@
     },
     {
      "id": "K12",
-     "order": 53,
-     "subjectId": "S053",
-     "idNote": "The model sees the opaque ID S053, not K12.",
+     "order": 54,
+     "subjectId": "S054",
+     "idNote": "The model sees the opaque ID S054, not K12.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathroom",
@@ -6091,9 +6174,9 @@
     },
     {
      "id": "K13",
-     "order": 54,
-     "subjectId": "S054",
-     "idNote": "The model sees the opaque ID S054, not K13.",
+     "order": 55,
+     "subjectId": "S055",
+     "idNote": "The model sees the opaque ID S055, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting out of the mansion",
@@ -6157,9 +6240,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 55,
-     "subjectId": "S055",
-     "idNote": "The model sees the opaque ID S055, not R18.",
+     "order": 56,
+     "subjectId": "S056",
+     "idNote": "The model sees the opaque ID S056, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -6196,9 +6279,9 @@
     },
     {
      "id": "C11",
-     "order": 56,
-     "subjectId": "S056",
-     "idNote": "The model sees the opaque ID S056, not C11.",
+     "order": 57,
+     "subjectId": "S057",
+     "idNote": "The model sees the opaque ID S057, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -6259,9 +6342,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 57,
-     "subjectId": "S057",
-     "idNote": "The model sees the opaque ID S057, not M05.",
+     "order": 58,
+     "subjectId": "S058",
+     "idNote": "The model sees the opaque ID S058, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -6296,9 +6379,9 @@
     },
     {
      "id": "M06",
-     "order": 58,
-     "subjectId": "S058",
-     "idNote": "The model sees the opaque ID S058, not M06.",
+     "order": 59,
+     "subjectId": "S059",
+     "idNote": "The model sees the opaque ID S059, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -6324,9 +6407,9 @@
     },
     {
      "id": "M07",
-     "order": 59,
-     "subjectId": "S059",
-     "idNote": "The model sees the opaque ID S059, not M07.",
+     "order": 60,
+     "subjectId": "S060",
+     "idNote": "The model sees the opaque ID S060, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -6351,9 +6434,9 @@
     },
     {
      "id": "M08",
-     "order": 60,
-     "subjectId": "S060",
-     "idNote": "The model sees the opaque ID S060, not M08.",
+     "order": 61,
+     "subjectId": "S061",
+     "idNote": "The model sees the opaque ID S061, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -6411,9 +6494,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 61,
-     "subjectId": "S061",
-     "idNote": "The model sees the opaque ID S061, not R20.",
+     "order": 62,
+     "subjectId": "S062",
+     "idNote": "The model sees the opaque ID S062, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -6443,9 +6526,9 @@
     },
     {
      "id": "C12",
-     "order": 62,
-     "subjectId": "S062",
-     "idNote": "The model sees the opaque ID S062, not C12.",
+     "order": 63,
+     "subjectId": "S063",
+     "idNote": "The model sees the opaque ID S063, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -6495,9 +6578,9 @@
    "scenes": [
     {
      "id": "R21",
-     "order": 63,
-     "subjectId": "S063",
-     "idNote": "The model sees the opaque ID S063, not R21.",
+     "order": 64,
+     "subjectId": "S064",
+     "idNote": "The model sees the opaque ID S064, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The car radio and a magazine in the tavern",
@@ -6548,9 +6631,9 @@
     },
     {
      "id": "K14",
-     "order": 64,
-     "subjectId": "S064",
-     "idNote": "The model sees the opaque ID S064, not K14.",
+     "order": 65,
+     "subjectId": "S065",
+     "idNote": "The model sees the opaque ID S065, not K14.",
      "type": "decision",
      "character": "Kara",
      "title": "Strangers in the dark",
@@ -6609,9 +6692,9 @@
    "scenes": [
     {
      "id": "R22",
-     "order": 65,
-     "subjectId": "S065",
-     "idNote": "The model sees the opaque ID S065, not R22.",
+     "order": 66,
+     "subjectId": "S066",
+     "idNote": "The model sees the opaque ID S066, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the park bench",
@@ -6641,9 +6724,9 @@
     },
     {
      "id": "C13",
-     "order": 66,
-     "subjectId": "S066",
-     "idNote": "The model sees the opaque ID S066, not C13.",
+     "order": 67,
+     "subjectId": "S067",
+     "idNote": "The model sees the opaque ID S067, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you?",
@@ -6706,9 +6789,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 67,
-     "subjectId": "S067",
-     "idNote": "The model sees the opaque ID S067, not R23.",
+     "order": 68,
+     "subjectId": "S068",
+     "idNote": "The model sees the opaque ID S068, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -6746,9 +6829,9 @@
     },
     {
      "id": "M10",
-     "order": 68,
-     "subjectId": "S068",
-     "idNote": "The model sees the opaque ID S068, not M10.",
+     "order": 69,
+     "subjectId": "S069",
+     "idNote": "The model sees the opaque ID S069, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -6778,9 +6861,9 @@
     },
     {
      "id": "M11",
-     "order": 69,
-     "subjectId": "S069",
-     "idNote": "The model sees the opaque ID S069, not M11.",
+     "order": 70,
+     "subjectId": "S070",
+     "idNote": "The model sees the opaque ID S070, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -6807,9 +6890,9 @@
     },
     {
      "id": "M12",
-     "order": 70,
-     "subjectId": "S070",
-     "idNote": "The model sees the opaque ID S070, not M12.",
+     "order": 71,
+     "subjectId": "S071",
+     "idNote": "The model sees the opaque ID S071, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -6832,9 +6915,9 @@
     },
     {
      "id": "M13",
-     "order": 71,
-     "subjectId": "S071",
-     "idNote": "The model sees the opaque ID S071, not M13.",
+     "order": 72,
+     "subjectId": "S072",
+     "idNote": "The model sees the opaque ID S072, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -6861,9 +6944,9 @@
     },
     {
      "id": "M14",
-     "order": 72,
-     "subjectId": "S072",
-     "idNote": "The model sees the opaque ID S072, not M14.",
+     "order": 73,
+     "subjectId": "S073",
+     "idNote": "The model sees the opaque ID S073, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -6909,9 +6992,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 73,
-     "subjectId": "S073",
-     "idNote": "The model sees the opaque ID S073, not R24.",
+     "order": 74,
+     "subjectId": "S074",
+     "idNote": "The model sees the opaque ID S074, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -6941,9 +7024,9 @@
     },
     {
      "id": "C14",
-     "order": 74,
-     "subjectId": "S074",
-     "idNote": "The model sees the opaque ID S074, not C14.",
+     "order": 75,
+     "subjectId": "S075",
+     "idNote": "The model sees the opaque ID S075, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -6973,9 +7056,9 @@
     },
     {
      "id": "C14b",
-     "order": 75,
-     "subjectId": "S075",
-     "idNote": "The model sees the opaque ID S075, not C14b.",
+     "order": 76,
+     "subjectId": "S076",
+     "idNote": "The model sees the opaque ID S076, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -7000,9 +7083,9 @@
     },
     {
      "id": "C15",
-     "order": 76,
-     "subjectId": "S076",
-     "idNote": "The model sees the opaque ID S076, not C15.",
+     "order": 77,
+     "subjectId": "S077",
+     "idNote": "The model sees the opaque ID S077, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -7033,9 +7116,9 @@
     },
     {
      "id": "C16",
-     "order": 77,
-     "subjectId": "S077",
-     "idNote": "The model sees the opaque ID S077, not C16.",
+     "order": 78,
+     "subjectId": "S078",
+     "idNote": "The model sees the opaque ID S078, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -7093,9 +7176,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 78,
-     "subjectId": "S078",
-     "idNote": "The model sees the opaque ID S078, not R25.",
+     "order": 79,
+     "subjectId": "S079",
+     "idNote": "The model sees the opaque ID S079, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -7132,9 +7215,9 @@
     },
     {
      "id": "K15",
-     "order": 79,
-     "subjectId": "S079",
-     "idNote": "The model sees the opaque ID S079, not K15.",
+     "order": 80,
+     "subjectId": "S080",
+     "idNote": "The model sees the opaque ID S080, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -7187,9 +7270,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 80,
-     "subjectId": "S080",
-     "idNote": "The model sees the opaque ID S080, not R26.",
+     "order": 81,
+     "subjectId": "S081",
+     "idNote": "The model sees the opaque ID S081, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -7219,9 +7302,9 @@
     },
     {
      "id": "M15",
-     "order": 81,
-     "subjectId": "S081",
-     "idNote": "The model sees the opaque ID S081, not M15.",
+     "order": 82,
+     "subjectId": "S082",
+     "idNote": "The model sees the opaque ID S082, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -7248,9 +7331,9 @@
     },
     {
      "id": "M16",
-     "order": 82,
-     "subjectId": "S082",
-     "idNote": "The model sees the opaque ID S082, not M16.",
+     "order": 83,
+     "subjectId": "S083",
+     "idNote": "The model sees the opaque ID S083, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -7308,9 +7391,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 83,
-     "subjectId": "S083",
-     "idNote": "The model sees the opaque ID S083, not R27.",
+     "order": 84,
+     "subjectId": "S084",
+     "idNote": "The model sees the opaque ID S084, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -7340,9 +7423,9 @@
     },
     {
      "id": "C17",
-     "order": 84,
-     "subjectId": "S084",
-     "idNote": "The model sees the opaque ID S084, not C17.",
+     "order": 85,
+     "subjectId": "S085",
+     "idNote": "The model sees the opaque ID S085, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -7364,9 +7447,9 @@
     },
     {
      "id": "C18",
-     "order": 85,
-     "subjectId": "S085",
-     "idNote": "The model sees the opaque ID S085, not C18.",
+     "order": 86,
+     "subjectId": "S086",
+     "idNote": "The model sees the opaque ID S086, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -7424,9 +7507,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 86,
-     "subjectId": "S086",
-     "idNote": "The model sees the opaque ID S086, not R28.",
+     "order": 87,
+     "subjectId": "S087",
+     "idNote": "The model sees the opaque ID S087, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -7473,9 +7556,9 @@
     },
     {
      "id": "M17",
-     "order": 87,
-     "subjectId": "S087",
-     "idNote": "The model sees the opaque ID S087, not M17.",
+     "order": 88,
+     "subjectId": "S088",
+     "idNote": "The model sees the opaque ID S088, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -7502,9 +7585,9 @@
     },
     {
      "id": "M18",
-     "order": 88,
-     "subjectId": "S088",
-     "idNote": "The model sees the opaque ID S088, not M18.",
+     "order": 89,
+     "subjectId": "S089",
+     "idNote": "The model sees the opaque ID S089, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -7536,9 +7619,9 @@
     },
     {
      "id": "M19",
-     "order": 89,
-     "subjectId": "S089",
-     "idNote": "The model sees the opaque ID S089, not M19.",
+     "order": 90,
+     "subjectId": "S090",
+     "idNote": "The model sees the opaque ID S090, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -7568,9 +7651,9 @@
     },
     {
      "id": "M20",
-     "order": 90,
-     "subjectId": "S090",
-     "idNote": "The model sees the opaque ID S090, not M20.",
+     "order": 91,
+     "subjectId": "S091",
+     "idNote": "The model sees the opaque ID S091, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -7624,9 +7707,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 91,
-     "subjectId": "S091",
-     "idNote": "The model sees the opaque ID S091, not C19.",
+     "order": 92,
+     "subjectId": "S092",
+     "idNote": "The model sees the opaque ID S092, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -7651,9 +7734,9 @@
     },
     {
      "id": "C20",
-     "order": 92,
-     "subjectId": "S092",
-     "idNote": "The model sees the opaque ID S092, not C20.",
+     "order": 93,
+     "subjectId": "S093",
+     "idNote": "The model sees the opaque ID S093, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -7741,9 +7824,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 93,
-     "subjectId": "S093",
-     "idNote": "The model sees the opaque ID S093, not M21.",
+     "order": 94,
+     "subjectId": "S094",
+     "idNote": "The model sees the opaque ID S094, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -7770,9 +7853,9 @@
     },
     {
      "id": "M21b",
-     "order": 94,
-     "subjectId": "S094",
-     "idNote": "The model sees the opaque ID S094, not M21b.",
+     "order": 95,
+     "subjectId": "S095",
+     "idNote": "The model sees the opaque ID S095, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -7799,9 +7882,9 @@
     },
     {
      "id": "R30k",
-     "order": 95,
-     "subjectId": "S095",
-     "idNote": "The model sees the opaque ID S095, not R30k.",
+     "order": 96,
+     "subjectId": "S096",
+     "idNote": "The model sees the opaque ID S096, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -7837,9 +7920,9 @@
     },
     {
      "id": "K17",
-     "order": 96,
-     "subjectId": "S096",
-     "idNote": "The model sees the opaque ID S096, not K17.",
+     "order": 97,
+     "subjectId": "S097",
+     "idNote": "The model sees the opaque ID S097, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -7865,9 +7948,9 @@
     },
     {
      "id": "K31",
-     "order": 97,
-     "subjectId": "S097",
-     "idNote": "The model sees the opaque ID S097, not K31.",
+     "order": 98,
+     "subjectId": "S098",
+     "idNote": "The model sees the opaque ID S098, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -7890,9 +7973,9 @@
     },
     {
      "id": "R30c",
-     "order": 98,
-     "subjectId": "S098",
-     "idNote": "The model sees the opaque ID S098, not R30c.",
+     "order": 99,
+     "subjectId": "S099",
+     "idNote": "The model sees the opaque ID S099, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -7924,9 +8007,9 @@
     },
     {
      "id": "C22",
-     "order": 99,
-     "subjectId": "S099",
-     "idNote": "The model sees the opaque ID S099, not C22.",
+     "order": 100,
+     "subjectId": "S100",
+     "idNote": "The model sees the opaque ID S100, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -7949,9 +8032,9 @@
     },
     {
      "id": "M22",
-     "order": 100,
-     "subjectId": "S100",
-     "idNote": "The model sees the opaque ID S100, not M22.",
+     "order": 101,
+     "subjectId": "S101",
+     "idNote": "The model sees the opaque ID S101, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -7974,9 +8057,9 @@
     },
     {
      "id": "M23",
-     "order": 101,
-     "subjectId": "S101",
-     "idNote": "The model sees the opaque ID S101, not M23.",
+     "order": 102,
+     "subjectId": "S102",
+     "idNote": "The model sees the opaque ID S102, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -8003,9 +8086,9 @@
     },
     {
      "id": "M24",
-     "order": 102,
-     "subjectId": "S102",
-     "idNote": "The model sees the opaque ID S102, not M24.",
+     "order": 103,
+     "subjectId": "S103",
+     "idNote": "The model sees the opaque ID S103, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -8032,9 +8115,9 @@
     },
     {
      "id": "M25",
-     "order": 103,
-     "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not M25.",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -8061,9 +8144,9 @@
     },
     {
      "id": "C23",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not C23.",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -8091,9 +8174,9 @@
     },
     {
      "id": "K18",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not K18.",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -8118,9 +8201,9 @@
     },
     {
      "id": "K19",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not K19.",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -8144,9 +8227,9 @@
     },
     {
      "id": "K20",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not K20.",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -8175,9 +8258,9 @@
     },
     {
      "id": "K20-still",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not K20-still.",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -8235,9 +8318,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not M26a.",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -8263,9 +8346,9 @@
     },
     {
      "id": "M26",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not M26.",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -8290,9 +8373,9 @@
     },
     {
      "id": "M27",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not M27.",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -8414,9 +8497,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not R32c.",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -8439,9 +8522,9 @@
     },
     {
      "id": "C24",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not C24.",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -8465,9 +8548,9 @@
     },
     {
      "id": "C24b",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not C24b.",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -8491,9 +8574,9 @@
     },
     {
      "id": "C30",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not C30.",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -8515,9 +8598,9 @@
     },
     {
      "id": "C25",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not C25.",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -8544,9 +8627,9 @@
     },
     {
      "id": "C26",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not C26.",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -8576,9 +8659,9 @@
     },
     {
      "id": "R32k",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not R32k.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -8618,9 +8701,9 @@
     },
     {
      "id": "K21",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not K21.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -8644,9 +8727,9 @@
     },
     {
      "id": "K22",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not K22.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -8672,9 +8755,9 @@
     },
     {
      "id": "K32",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not K32.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -8696,9 +8779,9 @@
     },
     {
      "id": "K23",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not K23.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -8725,9 +8808,9 @@
     },
     {
      "id": "K24",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not K24.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -8749,9 +8832,9 @@
     },
     {
      "id": "K25",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not K25.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -8786,9 +8869,9 @@
     },
     {
      "id": "K26",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not K26.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -8829,9 +8912,9 @@
     },
     {
      "id": "K34",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not K34.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -8861,9 +8944,9 @@
     },
     {
      "id": "K30",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not K30.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -8885,9 +8968,9 @@
     },
     {
      "id": "K27a",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not K27a.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -8912,9 +8995,9 @@
     },
     {
      "id": "K27",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not K27.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -8939,9 +9022,9 @@
     },
     {
      "id": "K28",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not K28.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -8984,9 +9067,9 @@
     },
     {
      "id": "K33",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not K33.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -9010,9 +9093,9 @@
     },
     {
      "id": "R32m",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not R32m.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -9036,9 +9119,9 @@
     },
     {
      "id": "M28",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not M28.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -9064,9 +9147,9 @@
     },
     {
      "id": "M31",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not M31.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -9101,9 +9184,9 @@
     },
     {
      "id": "M30a",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not M30a.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -9128,9 +9211,9 @@
     },
     {
      "id": "M30",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not M30.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -9155,9 +9238,9 @@
     },
     {
      "id": "M30c",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not M30c.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -9181,9 +9264,9 @@
     },
     {
      "id": "M32",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not M32.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -9206,9 +9289,9 @@
     },
     {
      "id": "P02",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not P02.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -9234,9 +9317,9 @@
     },
     {
      "id": "C29",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not C29.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -9258,9 +9341,9 @@
     },
     {
      "id": "C27",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not C27.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -9285,9 +9368,9 @@
     },
     {
      "id": "C28",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not C28.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -9321,9 +9404,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not P01.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",
