@@ -697,7 +697,7 @@ Gaps:
 
 ### M01d · Carl notices your clothes (Markus, event)
 
-> You are Markus, finishing Carl’s injection. He looks at you, concerned, and gently touches your arm. “Hey. What happened to your clothes?” You answer: “Oh, it’s nothing… Just some demonstrators in the street, Carl…” “What a bunch of idiots… They think they can stop progress by roughing up a few androids? I hope they didn’t harm you…” “Oh, no, no… They just pushed me around, Carl. I’m fine.”
+> You are Markus, finishing Carl’s injection. He looks at you, concerned, and gently touches your arm. “What happened to your clothes?” You answer: “Oh, it’s nothing… Just some demonstrators in the street, Carl…” “What a bunch of idiots… They think they can stop progress by roughing up a few androids? I hope they didn’t harm you…” “Oh, no, no… They just pushed me around, Carl. I’m fine.”
 
 _Only when clothesTorn._
 

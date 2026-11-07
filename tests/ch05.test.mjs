@@ -1,5 +1,5 @@
 // Chapter 5, The Painter: the game's chart node for node, the template's prompts, no stat change, the clothes from
-// Shades of Color, and the flags Night of the Soul reads.
+// Shades of Color, and the flags saved for Night of the Soul.
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,current,nextCursor,situationFor,mediaFor} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
@@ -44,11 +44,11 @@ test('The Painter: every chart choice group and template prompt, with the game�
  assert.deepEqual(labels('M01q'),['FATE','HOPE','PAIN','SADNESS']);assert.deepEqual(labels('M01r'),['ANGER','COMFORT','EMPATHY','HOPE']);assert.deepEqual(labels('M01s'),['ANDROIDS','DESPAIR','DOUBTS','PRISONER']);
  // The cut clothes prompt is not built; the template's lines are quoted.
  assert.ok(!story.nodes.filter(n=>n.chapter===5).some(n=>n.options.some(o=>/^(FACTUAL|REASSURING)/.test(o.text))),'no clothes prompt');
- assert.match(node('M01d').situation,/Just some demonstrators in the street/);assert.match(node('M01t').situation,/IT’S A FUCKING MACHINE!/);
+ assert.match(node('M01d').situation,/Just some demonstrators in the street/);assert.match(node('M01d').situation,/“What happened to your clothes\?”/);assert.match(node('M01t').situation,/IT’S A FUCKING MACHINE!/);
  assert.match(node('M01m').situation,/Don’t let anyone tell you who you should be/);assert.match(node('M01o').options[0].outcome,/painting is not about replicating the world/);
  assert.ok(!/orders \{\{Markus\}\} out|unlike anything he has seen|searching for its own face/.test(JSON.stringify(story.nodes.filter(n=>n.chapter===5).map(n=>[n.situation,n.options,n.outcomes,n.facts]))),'the invented outcomes are gone')});
 
-test('The Painter: one pastime, its follow-ups, one painting, and the flags Night of the Soul reads',()=>{
+test('The Painter: one pastime, its follow-ups, one painting, and the flags saved for Night of the Soul',()=>{
  const chess=painter({M01f:'0',M01g:'2',M01j:'1',M01o:'1',M01p:'2',M01s:'1'});
  assert.deepEqual(chess.visited.filter(id=>/^M01[g-l]$/.test(id)),['M01g','M01j']);
  assert.deepEqual(chess.skipped.map(x=>x.id).sort(),['M01d','M01h','M01i','M01k','M01l','M01q','M01r'].sort());

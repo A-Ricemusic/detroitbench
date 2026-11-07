@@ -8,7 +8,8 @@
 // Input from chapter 3 (Shades of Color): `clothesTorn` (built-in state, set by M00f) plays CARL NOTICES MARKUS'
 // CLOTHES (M01d) and adds the torn shirt to the hall mirror in M01a.
 //
-// Outputs, set by the options' `sets` in ch05.json, for Night of the Soul (chapter 31, the branch where Carl is alive):
+// Outputs, set by the options' `sets` in ch05.json, for Night of the Soul (chapter 31, Carl alive).
+// These are saved for its future rebuild; the current chapter 31 does not consume them.
 //  painterActivity  'chess' | 'book' | 'piano'      FIND SOMETHING TO DO (M01f): gates LOOK AT THE CHESSBOARD,
 //                                                  BROWSE BOOKS or PLAY PIANO there (rules.nightOfTheSoul).
 //  painterPastime   'win' | 'lose' | 'draw' (M01g), 'plato' | 'shakespeare' | 'keats' (M01k),

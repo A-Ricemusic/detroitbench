@@ -108,7 +108,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>No arrow in the template; no probability, relationship, public-opinion or instability change in any source. Markus’s tracked relationships are Jericho, North, Josh and Simon only.</li>
 <li>Every prompt the template ships: WIN / LOSE / DRAW, JUSTIFY / SORRY, LIE / TRUTH (twice), LIKE / DON’T LIKE / NO OPINION. The FACTUAL / REASSURING reply about the clothes is marked cut.</li>
 <li>CARL NOTICES MARKUS’ CLOTHES needs PROTESTERS HARASS MARKUS in Shades of Color (template condition, wiki, PowerPyx).</li>
-<li>Night of the Soul (Carl alive) reads the pastime (chessboard, books, piano) and shows Markus’s painting in the studio.</li>
+<li>In the game, Night of the Soul (Carl alive) uses the pastime (chessboard, books, piano) and shows Markus’s painting in the studio. The benchmark records these flags for that chapter’s future rebuild; its current chapter 31 does not consume them.</li>
 </ul>
 
 <h2 id="differs">4 · Simplified or left out</h2>
@@ -128,13 +128,13 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="endings">5 · Ending and state flags</h2>
 <div class="table"><table>
-<thead><tr><th>Flag</th><th>Set at</th><th>Values</th><th>Read by</th></tr></thead>
+<thead><tr><th>Flag</th><th>Set at</th><th>Values</th><th>Consumer or intended use</th></tr></thead>
 <tbody>
 <tr><td><code>clothesTorn</code> (in)</td><td>Shades of Color, <code>M00f</code></td><td>true / false</td><td><code>M01a</code> mirror, <code>M01d</code></td></tr>
-<tr><td><code>painterActivity</code></td><td><code>M01f</code></td><td>chess, book, piano</td><td>Night of the Soul: LOOK AT THE CHESSBOARD, BROWSE BOOKS, PLAY PIANO (module <code>rules.nightOfTheSoul</code>)</td></tr>
+<tr><td><code>painterActivity</code></td><td><code>M01f</code></td><td>chess, book, piano</td><td>Future Night of the Soul rebuild: LOOK AT THE CHESSBOARD, BROWSE BOOKS, PLAY PIANO (module <code>rules.nightOfTheSoul</code>)</td></tr>
 <tr><td><code>painterPastime</code></td><td><code>M01g</code>, <code>M01k</code>, <code>M01l</code></td><td>win, lose, draw; plato, shakespeare, keats; melancholic, hopeful, intimate, enigmatic</td><td>gates <code>M01h</code>–<code>M01j</code></td></tr>
 <tr><td><code>painterCopy</code></td><td><code>M01o</code></td><td>painting, desk, statue</td><td>reports</td></tr>
-<tr><td><code>painterTheme</code>, <code>painterFeeling</code></td><td><code>M01p</code>; <code>M01q</code>–<code>M01s</code></td><td>the chart’s labels in lower case</td><td>Night of the Soul: LOOK AT YOUR PAINTING (module <code>rules.paintings</code>)</td></tr>
+<tr><td><code>painterTheme</code>, <code>painterFeeling</code></td><td><code>M01p</code>; <code>M01q</code>–<code>M01s</code></td><td>the chart’s labels in lower case</td><td>Future Night of the Soul rebuild: LOOK AT YOUR PAINTING (module <code>rules.paintings</code>)</td></tr>
 <tr><td><code>painterOutcome</code></td><td><code>M01t</code></td><td>Leo intruded to ask for money</td><td>reports</td></tr>
 </tbody></table></div>
 
