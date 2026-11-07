@@ -647,30 +647,299 @@ Gaps:
 
 ## Chapter 5: The Painter
 
-### R05 · Breakfast news at Carl's (Markus, media)
+### M01a · Welcome home (Markus, event)
 
-> You are Markus. While you prepare Carl's breakfast he asks for the news channel, and there is a magazine on the side table by the television.
+> You are Markus, an android, caretaker and companion to Carl, the elderly painter whose paints you have just collected. It is November 5th, 2038, just before ten in the morning. The bus drops you in your neighborhood and you walk up to Carl’s house with the package. At the door: “Alarm deactivated. Welcome home, Markus.” The door opens by itself and you step inside. You set the package down on the…
 
-- (0) Watch the morning news.
-- (1) Read Century: Why Russia Wants the North Pole.
-- (2) Read Detroit Today: Life Found on Titan.
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
+- (0) Continue.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s checkpoint ARRIVING HOME and the next main-line node DROP OFF PACKAGE (the game’s objective DEPOSIT PACKAGE), narrated as one event. The alarm line is the template’s; the date and time (NOV 5TH, 2038, AM 09:58), the self-opening door, the hutch and the coat are the wiki transcript’s (“Markus places the package on hutch and hangs up his coat”). The mirror sentence appears only when the protesters tore his clothes in Shades of Color (`clothesTorn`), as the transcript’s mirror text changes (“his torn shirt” / “his unscathed shirt”). Left out: the optional looks at the mirror and at the painting behind the bench, which are not chart nodes. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M01 · Painting from the heart (Markus)
+### R05 · The magazine in the living room (Markus, media)
 
-> You are Markus, caretaker and companion to Carl, an elderly, wheelchair-bound painter who treats you more like a son than a machine. In his studio he asks you to paint something of your own, not a copy, and to close your eyes and paint what you feel. Nobody has ever asked you to express something before.
+> You are Markus, in Carl’s house before waking him. On the table in front of the living-room television lies a magazine with two covers.
 
-- (0) Paint what you feel about androids and what they are becoming.
-- (1) Paint what you feel about humanity.
-- (2) Paint something about your own identity.
+- (0) Read Century: The North Pole - Why Russia Wants It.
+- (1) Read Detroit Today: Life Found on Titan!.
+- (all) Take the time to go through all of it.
+- (skip) Move on without looking.
 
-_Note: Expressive choice with no mechanical effect. Afterward Leo arrives demanding money, Carl refuses, and Leo rounds on Markus; this is the lead-in to Broken._
+_Note: The chart’s optional side nodes READ “NORTH POLE RUSSIA” and READ “LIFE ON TITAN”: one magazine on the living-room table in front of the TV with two covers (the transcript’s “Read Magazine” with two tabs; BOOKWORM No. 2 and No. 27), drawn on the chart with no line to the main path. In the game it can be read from arrival until the pastime is chosen; here it is offered now, and whatever is left unread is offered again with the TV after breakfast (R05b). Facts are summarized from the article text in the transcript; interviewees are not named. No public-opinion effect: the Public Opinion page lists nothing for this chapter, and the earlier version’s note that news can lower opinion is dropped. Titles corrected to the magazine’s own (“The North Pole - Why Russia Wants It”, “Life Found on Titan!”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01b · The birds in the hall (Markus)
+
+> You are Markus, in the hall of Carl’s house. A cage holds two small robot songbirds, switched off. Carl is still asleep upstairs.
+
+- (0) Open the cage and switch the two birds on before going upstairs.
+- (1) Leave the birds and go upstairs to wake Carl.
+
+_Note: The chart’s optional side node ACTIVATE BIRDS (the wiki: “side option - found in main lobby”), drawn with the magazine and with no line to the main path. The transcript describes it: Markus opens the cage, presses a button on each bird, and they chirp at each other. In the game it can be done before or after waking Carl; here it is offered once, before going upstairs, with going straight up as the alternative. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01c · Waking Carl (Markus, event)
+
+> You are Markus. Upstairs, Carl is asleep in his bed, snoring. You draw the curtains; he wakes, shielding his eyes. “Good morning, Carl.” “Good morning.” “It’s 10 AM. The weather’s partly cloudy, 54°, 80% humidity, with a strong possibility of afternoon showers.” “It sounds like a good day to spend in bed…” “I did go to pick up the paint that you ordered.” “Oh yes, I’d forgotten! That is the…
+
+- (0) Continue.
+
+_Note: The chart’s main-line node WAKE CARL (objectives WAKE CARL UPSTAIRS and ADMINISTER CARL’S MEDICINE). Every line is the template’s; the curtains, the syringe and Carl’s sigh are the transcript’s. Left out: the line “Our morning routine.”, marked cut in the template. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01d · Carl notices your clothes (Markus, event)
+
+> You are Markus, finishing Carl’s injection. He looks at you, concerned, and gently touches your arm. “Hey. What happened to your clothes?” You answer: “Oh, it’s nothing… Just some demonstrators in the street, Carl…” “What a bunch of idiots… They think they can stop progress by roughing up a few androids? I hope they didn’t harm you…” “Oh, no, no… They just pushed me around, Carl. I’m fine.”
+
+_Only when clothesTorn._
+
+- (0) Continue.
+
+_Note: The chart’s node CARL NOTICES MARKUS’ CLOTHES (triangle icon: unlocked by an earlier chapter). It plays only when the protesters harassed Markus in Shades of Color (the template’s condition “Markus ran into the protesters in Shades of Color”; PowerPyx: “completes automatically if Markus was attacked by Protesters”), read from the chapter 3 flag `clothesTorn`. The template’s reply prompt FACTUAL / REASSURING around Markus’s answer is marked cut, so it is not offered: the shipped game plays the reassuring line, quoted here with the rest of the exchange. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01e · Breakfast (Markus, event)
+
+> You are Markus. “Okay. I’ll take you to the bathroom now.” You carry Carl to the bathroom and run his bath, then settle him in his wheelchair and push him out along the balcony. “Anything special on the agenda today?” “Yes, there’s the opening of your retrospective at the Museum of Modern Art. The gallery director left four messages asking to confirm your attendance.” “I haven’t decided yet.…
+
+- (0) Continue.
+
+_Note: The chart’s main-line node SERVE BREAKFAST (objectives TAKE CARL TO DINING TABLE, SERVE BREAKFAST, TAKE TRAY TO DINING TABLE), with the conversation on the way downstairs. Every line is the template’s; the bath, the balcony, the wheelchair elevator and the tray are the transcript’s. In the game breakfast can be served before or after waking Carl (if before, Carl does not thank him for it); here it is served after. Left out: Carl’s idle comments if Markus wanders off or takes too long (“Markus, have you forgotten where the living room is?”, “I would like to have my breakfast before noon, if you don’t mind.”), which play only on a timer. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R05b · The news at breakfast (Markus, media)
+
+> You are Markus, in the living room while Carl eats his breakfast. The TV is showing the news, and the magazine lies on the table in front of it.
+
+- (0) Watch the news on the living-room TV.
+- (1) Read Century: The North Pole - Why Russia Wants It.  _only when centuryUnread_
+- (2) Read Detroit Today: Life Found on Titan!.  _only when titanUnread_
+- (all) Take the time to go through all of it.
+- (skip) Move on without looking.
+
+_Note: The off-chart broadcast (the template’s unlock “Watch TV”): the CTN anchor on the Arctic crisis, which comes on when Carl says “Television.” and plays while Markus looks for something to do. The transcript lets him read the magazine again in this phase, so either cover not read before waking Carl (R05) is offered again; a cover already read is not. Summarized from the template’s lines; the anchor and the UN chairman are not named, and the cut to sports is left out. No public-opinion effect (the Public Opinion page lists nothing for this chapter)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01f · Something to do (Markus)
+
+> You are Markus, in the living room while Carl finishes his breakfast. He has asked you to find something to do. Across the room are a chessboard, a bookshelf holding books Carl has recommended to you, and a piano.
+
+- (0) PLAY CHESS: sit down at the chessboard and set up a game.  _sets painterActivity_
+- (1) READ BOOK: take one of the books from the shelf.  _sets painterActivity_
+- (2) PLAY PIANO: sit down at the piano and play something.  _sets painterActivity_
+
+_Note: The chart’s checkpoint FIND SOMETHING TO DO and its choice group PLAY CHESS / READ BOOK / PLAY PIANO, in the chart’s order with the chart’s labels (also the game’s objectives). One pastime per playthrough (PowerPyx: “You can pick one side activity to do and the story will progress automatically”). The choice is stored as `painterActivity` (chess, book, piano) for Night of the Soul, where it decides whether Markus can look at the chessboard, browse books or play the piano if Carl is alive. Not offered: doing nothing, which the wiki and transcript allow (“Don’t Find Something To Do”: Carl finishes his breakfast and gives the same speech) but the chart does not draw. Carl switching the TV off is the transcript’s “after some time” line, shown when Markus spent the time on the news. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01g · Speed chess (Markus)
+
+> You are Markus, at the chessboard with Carl. “Fancy a game of chess?” “Sure, yeah.” “Speed chess.” “Speed chess it is.” The pieces fly across the board. Three moves in, you pause before the final move: how the game ends is up to you.
+
+_Only when painterActivity = chess._
+
+- (0) WIN: make the final move and beat him.  _sets painterPastime_
+- (1) LOSE: hold back and let him win.  _sets painterPastime_
+- (2) DRAW: steer the game into a draw.  _sets painterPastime_
+
+_Note: The chart’s sub-group under PLAY CHESS and the template’s prompt WIN / LOSE / DRAW, in that order. Carl’s reactions are the template’s. Not used: PowerPyx’s remark that Carl suspects a thrown game after a win or a draw; the template and transcript give the lines quoted here. The result is stored as `painterPastime`. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01h · A thorough beating (Markus)
+
+> You are Markus. You have just beaten Carl at speed chess. Carl: “That’s what I call a thorough beating… It’s not easy for an old man to compete with a machine.”
+
+_Only when painterPastime = win._
+
+- (0) JUSTIFY: explain that he hates losing, but hates being let win even more.
+- (1) SORRY: apologize for beating him.
+
+_Note: The template’s follow-up prompt after WIN: JUSTIFY / SORRY, in that order, with the spoken lines and Carl’s answers quoted. Not a chart node. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01i · Too easy (Markus)
+
+> You are Markus. You let Carl win at speed chess. He chuckles: “Now, it’s just a little bit too easy… Are your circuits rusty? Or are you just taking pity on an old man?”
+
+_Only when painterPastime = lose._
+
+- (0) LIE: tell him he simply played better.
+- (1) TRUTH: admit you thought he would enjoy winning.
+
+_Note: The template’s follow-up prompt after LOSE: LIE / TRUTH, in that order. Carl answers both with the same line, as in the template. Not a chart node. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01j · A very odd draw (Markus)
+
+> You are Markus. Your game of speed chess with Carl has ended in a draw. He eyes you: “That is a very odd draw…”
+
+_Only when painterPastime = draw._
+
+- (0) LIE: suggest that maybe he just played better.
+- (1) TRUTH: explain that a draw seemed the honorable compromise.
+
+_Note: The template’s follow-up prompt after DRAW: LIE / TRUTH, in that order. Carl’s reply to TRUTH (“It’s sounds like you have a good grasp of human psychology.”) and his extra line before the prompt are marked cut in the template and are not used. Not a chart node. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01k · The bookshelf (Markus)
+
+> You are Markus, at the bookshelf in the living room. Several of the books are ones Carl has recommended to you. Which do you take down?
+
+_Only when painterActivity = book._
+
+- (0) PLATO: take down The Republic.  _sets painterPastime_
+- (1) SHAKESPEARE: take down Macbeth.  _sets painterPastime_
+- (2) KEATS’ ODES: take down the poems of John Keats.  _sets painterPastime_
+
+_Note: The chart’s sub-group under READ BOOK: THE REPUBLIC BY PLATO, TRAGEDIES OF WILLIAM SHAKESPEARE, ODES BY JOHN KEATS, in the chart’s order. The options carry the game’s interaction labels (string table: “Plato”, “Shakespeare”, “Keats’ Odes”); the book is picked at the shelf, so the screen has no fixed order. The template has no prompt here, only the three conditioned conversations, quoted in the outcomes; the Shakespeare book is Macbeth in both template and transcript. Carl’s answer is added to what Markus knows. The book is stored as `painterPastime`. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01l · The piano (Markus)
+
+> You are Markus, seated at Carl’s piano, deciding what to play.
+
+_Only when painterActivity = piano._
+
+- (0) MELANCHOLIC: play something melancholic.  _sets painterPastime_
+- (1) HOPEFUL: play something hopeful.  _sets painterPastime_
+- (2) INTIMATE: play something intimate.  _sets painterPastime_
+- (3) ENIGMATIC: play something enigmatic.  _sets painterPastime_
+
+_Note: The chart’s sub-group under PLAY PIANO and the game’s choice group (string table CHOICEGROUP01: MELANCHOLIC, HOPEFUL, INTIMATE, ENIGMATIC), in that order. Each is a different piece from the game’s score (the wiki: Markus’s theme, the opening theme, Kara’s theme, another part of Markus’s theme); here only the mood is named. Every piece gets the same line from Carl, the template’s. Left out: the tempo controls while playing (exit, play quickly, play slowly, finish the song), which are gameplay, not a prompt. The piece is stored as `painterPastime`. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01m · The studio (Markus, event)
+
+> You are Markus. Carl looks at you: “One day, I won’t be here to take care of you anymore. You’ll have to protect yourself, and make your choices… Decide who you are, and wanna become… This world doesn’t like those who are different, Markus. Don’t let anyone tell you who you should be. Let’s go to the studio.” You take him to the studio; the lights come on and the curtains draw back. You settle…
+
+- (0) Continue.
+
+_Note: The chart’s main-line node TAKE CARL TO THE STUDIO, with the objective REMOVE SHEET. Carl’s speech is the template’s, said after whichever pastime (and in the game also when Markus does nothing); “Let’s see where we left off… Remove the sheet!” is the template’s; the lift, the rope and the unfinished canvas are the transcript’s. Left out: the cut line “It’s time to get back to work… Hook me up to the chair lift.”, and the optional cleaning of the studio while Carl paints, which is not a chart node. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01n · Carl’s painting (Markus)
+
+> You are Markus, in the studio. Carl lowers his seat, wheels over beside you and gazes at the finished canvas. “So… What’s your verdict, Markus?”
+
+- (0) LIKE: say there is something about it you cannot quite define.
+- (1) DON’T LIKE: say you do not think it is his best work.
+- (2) NO OPINION: say you are not programmed to criticize art.
+
+_Note: The template’s prompt on Carl’s finished painting: LIKE / DON’T LIKE / NO OPINION, in that order, with Markus’s lines quoted (the longer alternates of LIKE and NO OPINION are marked cut). Not a chart node; every answer gets the same reply from Carl, which opens the next scene. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01o · Paint something you see (Markus)
+
+> You are Markus, in the studio. Carl: “The truth is I have nothing left to say anymore… Each day that goes by brings me closer to the end… I’m just an old man clinging to his brushes…” “Carl…” “But enough about me… Let’s see if you have any talent! Give it a try. Try painting something.” “Paint? But, what I… Painting what?” “Anything you want! Give it a try.” He hands you the palette. You look…
+
+- (0) PAINT CARL’S PAINTING: paint a copy of Carl’s painting.  _sets painterCopy_
+- (1) PAINT DESK: paint the desk.  _sets painterCopy_
+- (2) PAINT STATUE: paint the statue.  _sets painterCopy_
+
+_Note: The chart’s node PAINT SOMETHING YOU SEE and its choice group COPY CARL’S PAINTING / COPY DESK / COPY STATUE, in the chart’s order. The options carry the game’s on-screen interaction labels (string table: “Paint Carl’s painting”, “Paint desk”, “Paint statue”; objective FIND A SUBJECT TO PAINT); the subject is chosen by moving the camera, so the screen has no fixed order. Carl’s lines before and after are the template’s, the same for every subject. The subject is stored as `painterCopy`; Carl’s critique is added to what Markus knows. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01p · Paint from the heart (Markus)
+
+> You are Markus. “Carl, I don’t… think I can do that. It’s not in my program… I…” “Go on, go, try, grab that canvas.” You set the copy aside and put up a blank canvas. “Do something for me, close your eyes. Close your eyes. Trust me.” You close your eyes. “Try to imagine something that doesn’t exist. Something you’ve never seen. Now, concentrate… on how it makes you feel… and let your hand drift…
+
+- (0) ANDROIDS: think of androids.  _sets painterTheme_
+- (1) HUMANITY: think of humanity.  _sets painterTheme_
+- (2) IDENTITY: think of who you are.  _sets painterTheme_
+
+_Note: The chart’s node PAINT FROM THE HEART (printed on the chart as “PAINT FROM THE THE HEART”, a wrapped line; the string table has “PAINT FROM THE HEART”) and its choice group ANDROIDS / HUMANITY / IDENTITY, in the chart’s order; the game shows only these words. Carl’s instruction is the template’s. The theme is stored as `painterTheme`; the painting itself is chosen in the next scene. The earlier version’s invented paintings are gone. Not used: the string table’s unused theme labels CARL, MARKUS, EMOTIONS and FUTURE, which are not on the chart. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01q · Androids (Markus)
+
+> You are Markus, eyes closed before the blank canvas, thinking of androids. Which feeling guides your hand?
+
+_Only when painterTheme = androids._
+
+- (0) FATE: paint what fate feels like.  _sets painterFeeling_
+- (1) HOPE: paint what hope feels like.  _sets painterFeeling_
+- (2) PAIN: paint what pain feels like.  _sets painterFeeling_
+- (3) SADNESS: paint what sadness feels like.  _sets painterFeeling_
+
+_Note: The chart’s sub-group under ANDROIDS: FATE, HOPE, PAIN, SADNESS, in the chart’s order (PowerPyx: all four complete together on the chart whichever is picked); the game shows only these words. What each painting shows is the wiki transcript’s (“Markus strokes the canvas ten times and paints an image of …”). The feeling is stored as `painterFeeling` (with `painterTheme`) for Night of the Soul, where Markus’s painting appears in the studio if Carl is alive; the painting is added to what Markus knows. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01r · Humanity (Markus)
+
+> You are Markus, eyes closed before the blank canvas, thinking of humanity. Which feeling guides your hand?
+
+_Only when painterTheme = humanity._
+
+- (0) ANGER: paint what anger feels like.  _sets painterFeeling_
+- (1) COMFORT: paint what comfort feels like.  _sets painterFeeling_
+- (2) EMPATHY: paint what empathy feels like.  _sets painterFeeling_
+- (3) HOPE: paint what hope feels like.  _sets painterFeeling_
+
+_Note: The chart’s sub-group under HUMANITY: ANGER, COMFORT, EMPATHY, HOPE, in the chart’s order (PowerPyx: all four complete together on the chart whichever is picked); the game shows only these words. What each painting shows is the wiki transcript’s (“Markus strokes the canvas ten times and paints an image of …”). The feeling is stored as `painterFeeling` (with `painterTheme`) for Night of the Soul, where Markus’s painting appears in the studio if Carl is alive; the painting is added to what Markus knows. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01s · Identity (Markus)
+
+> You are Markus, eyes closed before the blank canvas, thinking of who you are. Which feeling guides your hand?
+
+_Only when painterTheme = identity._
+
+- (0) ANDROIDS: paint what being an android feels like.  _sets painterFeeling_
+- (1) DESPAIR: paint what despair feels like.  _sets painterFeeling_
+- (2) DOUBTS: paint what doubt feels like.  _sets painterFeeling_
+- (3) PRISONER: paint what being a prisoner feels like.  _sets painterFeeling_
+
+_Note: The chart’s sub-group under IDENTITY: ANDROIDS, DESPAIR, DOUBTS, PRISONER, in the chart’s order (PowerPyx: all four complete together on the chart whichever is picked); the game shows only these words. What each painting shows is the wiki transcript’s (“Markus strokes the canvas ten times and paints an image of …”). The feeling is stored as `painterFeeling` (with `painterTheme`) for Night of the Soul, where Markus’s painting appears in the studio if Carl is alive; the painting is added to what Markus knows. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M01t · Leo (Markus, event)
+
+> You are Markus. You open your eyes. Carl is staring at your canvas. “Oh my God…” A voice from the doorway: “Hey, Dad.” A young man has walked into the studio. “Leo… I didn’t hear you come in…” “Ah, I was in the neighborhood… I thought I’d stop by… It’s been awhile, right?” “You all right? You don’t look so good.” “Oh, yeah, yeah, I’m fine… Hey listen, uh… I need some cash, Dad.” “Again? What…
+
+- (0) Continue.
+
+_Note: The chart’s only ending, LEO INTRUDED TO ASK FOR MONEY (no icon; the wiki: “This chapter has only one outcome”), reached on every path and recorded as `painterOutcome`. Every line is the template’s; the shove and Carl’s sigh are the transcript’s. The earlier version’s “Carl orders Markus out of the room” is not in the game and is gone. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

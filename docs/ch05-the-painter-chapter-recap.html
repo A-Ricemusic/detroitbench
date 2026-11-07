@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>The Painter · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 5</p>
+<h1>The Painter: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots); prompts and lines come from the game’s own text (the detroitbecometext template and string table); the Fandom wiki’s chapter page and transcript fill in the rest. The chapter has no published number of any kind and no stat arrow; section 4 lists every simplification.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Simplified</a></li><li><a href="#endings">5 · Ending and flags</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>ARRIVING HOME (checkpoint), 09:58: “Alarm deactivated. Welcome home, Markus.” DROP OFF PACKAGE on the hutch.</li>
+<li>Optional, any time before the pastime: the magazine in front of the TV (READ “NORTH POLE RUSSIA”, READ “LIFE ON TITAN”) and ACTIVATE BIRDS.</li>
+<li>WAKE CARL: curtains, weather, the injection (“Humans are such a fragile machine…”).</li>
+<li>CARL NOTICES MARKUS’ CLOTHES, only if the protesters harassed him in Shades of Color.</li>
+<li>SERVE BREAKFAST: bath, the agenda (retrospective, no news from Leo), bacon and eggs, “Television.” The CTN news on the Arctic plays (not on the chart).</li>
+<li>FIND SOMETHING TO DO (checkpoint): PLAY CHESS (WIN / LOSE / DRAW, each with a reply prompt), READ BOOK (Plato, Shakespeare, Keats) or PLAY PIANO (four moods).</li>
+<li>Carl: “One day, I won’t be here to take care of you anymore…” TAKE CARL TO THE STUDIO; Carl finishes his canvas; the verdict prompt LIKE / DON’T LIKE / NO OPINION (not on the chart).</li>
+<li>PAINT SOMETHING YOU SEE: Carl’s painting, the desk or a statue. “That is a perfect copy, of reality…”</li>
+<li>PAINT FROM THE HEART: ANDROIDS, HUMANITY or IDENTITY, then one of four feelings each.</li>
+<li>LEO INTRUDED TO ASK FOR MONEY: the only ending.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>M01a</code> Welcome home (event): both start nodes; the mirror shows the torn shirt when <code>clothesTorn</code>.</li>
+<li><code>R05</code> The magazine in the living room (media); <code>M01b</code> The birds in the hall (decision, optional).</li>
+<li><code>M01c</code> Waking Carl (event).</li>
+<li><code>M01d</code> Carl notices your clothes (event), only when <code>clothesTorn</code>.</li>
+<li><code>M01e</code> Breakfast (event); <code>R05b</code> The news at breakfast (media: the TV, plus any cover left unread).</li>
+<li><code>M01f</code> Something to do; then <code>M01g</code> Speed chess with <code>M01h</code> / <code>M01i</code> / <code>M01j</code>, or <code>M01k</code> The bookshelf, or <code>M01l</code> The piano.</li>
+<li><code>M01m</code> The studio (event); <code>M01n</code> Carl’s painting (decision).</li>
+<li><code>M01o</code> Paint something you see (decision).</li>
+<li><code>M01p</code> Paint from the heart; then <code>M01q</code> Androids, <code>M01r</code> Humanity or <code>M01s</code> Identity.</li>
+<li><code>M01t</code> Leo (event), every path; sets <code>painterOutcome</code>.</li>
+</ol>
+<p class="fine">Nothing in the chapter changes public opinion, a relationship or any other hidden stat: the template has no arrow and Markus has no Carl relationship. Carl’s key lines and Markus’s painting are added to what Markus knows, which every later Markus scene shows him.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">The chart has 44 nodes: 2 checkpoints, 1 ending, 7 main-line nodes, 3 optional side nodes and 31 options in 9 choice groups. Rows in italics are template prompts or interactions that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>ARRIVING HOME</td><td>Start node and checkpoint</td><td class="yes"><code>M01a</code>, narrated</td></tr>
+<tr><td>DROP OFF PACKAGE</td><td>Objective DEPOSIT PACKAGE; on the hutch, coat hung up</td><td class="part"><code>M01a</code>, merged with the checkpoint</td></tr>
+<tr><td>READ “NORTH POLE RUSSIA”</td><td>Optional, Century, BOOKWORM No. 2</td><td class="yes"><code>R05</code> option 0, or <code>R05b</code> if still unread</td></tr>
+<tr><td>READ “LIFE ON TITAN”</td><td>Optional, Detroit Today, BOOKWORM No. 27</td><td class="yes"><code>R05</code> option 1, or <code>R05b</code> if still unread</td></tr>
+<tr><td>ACTIVATE BIRDS</td><td>Optional, before or after waking Carl</td><td class="part"><code>M01b</code> option 0, offered once, before going upstairs</td></tr>
+<tr><td>WAKE CARL</td><td>Curtains, weather, injection</td><td class="yes"><code>M01c</code>, quoted</td></tr>
+<tr><td>CARL NOTICES MARKUS’ CLOTHES</td><td>Triangle icon; only after PROTESTERS HARASS MARKUS</td><td class="yes"><code>M01d</code>, gated on <code>clothesTorn</code>; the cut FACTUAL / REASSURING prompt is not offered</td></tr>
+<tr><td>SERVE BREAKFAST</td><td>Bath, agenda, breakfast, “Television.”</td><td class="yes"><code>M01e</code>, quoted</td></tr>
+<tr><td><i>Watch the news</i></td><td>CTN on the Arctic; Carl may switch it off</td><td class="yes"><code>R05b</code>; Carl’s “Television: off” line shows in <code>M01f</code> if Markus watched</td></tr>
+<tr><td>FIND SOMETHING TO DO</td><td>Checkpoint; one pastime</td><td class="yes"><code>M01f</code>: PLAY CHESS / READ BOOK / PLAY PIANO</td></tr>
+<tr><td>WIN / LOSE / DRAW</td><td>Speed chess, final move</td><td class="yes"><code>M01g</code></td></tr>
+<tr><td><i>JUSTIFY / SORRY; LIE / TRUTH; LIE / TRUTH</i></td><td>Template prompts after each result</td><td class="yes"><code>M01h</code>, <code>M01i</code>, <code>M01j</code></td></tr>
+<tr><td>THE REPUBLIC BY PLATO / TRAGEDIES OF WILLIAM SHAKESPEARE / ODES BY JOHN KEATS</td><td>Shelf interactions “Plato”, “Shakespeare” (Macbeth), “Keats’ Odes”</td><td class="yes"><code>M01k</code>, game’s labels, chart order</td></tr>
+<tr><td>MELANCHOLIC / HOPEFUL / INTIMATE / ENIGMATIC</td><td>The game’s piano choice group</td><td class="yes"><code>M01l</code></td></tr>
+<tr><td>TAKE CARL TO THE STUDIO</td><td>Carl’s speech; remove the sheet</td><td class="yes"><code>M01m</code>; studio cleaning left out</td></tr>
+<tr><td><i>LIKE / DON’T LIKE / NO OPINION</i></td><td>Template prompt on Carl’s painting</td><td class="yes"><code>M01n</code></td></tr>
+<tr><td>PAINT SOMETHING YOU SEE · COPY CARL’S PAINTING / COPY DESK / COPY STATUE</td><td>Buttons “Paint Carl’s painting”, “Paint desk”, “Paint statue”</td><td class="yes"><code>M01o</code>, game’s labels, chart order</td></tr>
+<tr><td>PAINT FROM THE (THE) HEART · ANDROIDS / HUMANITY / IDENTITY</td><td>Eyes closed; Carl’s instruction</td><td class="yes"><code>M01p</code></td></tr>
+<tr><td>FATE / HOPE / PAIN / SADNESS</td><td>Under ANDROIDS</td><td class="yes"><code>M01q</code></td></tr>
+<tr><td>ANGER / COMFORT / EMPATHY / HOPE</td><td>Under HUMANITY</td><td class="yes"><code>M01r</code></td></tr>
+<tr><td>ANDROIDS / DESPAIR / DOUBTS / PRISONER</td><td>Under IDENTITY</td><td class="yes"><code>M01s</code></td></tr>
+<tr><td>LEO INTRUDED TO ASK FOR MONEY</td><td>The only ending</td><td class="yes"><code>M01t</code>, quoted; <code>painterOutcome</code></td></tr>
+</tbody></table></div>
+<h3>The paintings</h3>
+<div class="table"><table>
+<thead><tr><th>Theme</th><th>Feeling</th><th>What Markus paints (transcript)</th></tr></thead>
+<tbody>
+<tr><td rowspan="4">ANDROIDS</td><td>FATE</td><td>himself on his knees</td></tr><tr><td>HOPE</td><td>his hand covered in what looks like oil</td></tr><tr><td>PAIN</td><td>himself decaying and in agony</td></tr><tr><td>SADNESS</td><td>hands covered in blue blood</td></tr>
+<tr><td rowspan="4">HUMANITY</td><td>ANGER</td><td>himself enraged and screaming</td></tr><tr><td>COMFORT</td><td>Carl with a brave and stoic expression</td></tr><tr><td>EMPATHY</td><td>two hands in blue blood and two in red blood</td></tr><tr><td>HOPE</td><td>two hands grasping each other</td></tr>
+<tr><td rowspan="4">IDENTITY</td><td>ANDROIDS</td><td>himself covered in blue blood</td></tr><tr><td>DESPAIR</td><td>himself with his hand on his face</td></tr><tr><td>DOUBTS</td><td>himself in ordinary clothes before a red wall</td></tr><tr><td>PRISONER</td><td>himself with Carl behind him</td></tr>
+</tbody></table></div>
+
+<h2 id="confirmed">3 · Confirmed by the sources</h2>
+<p class="fine">Sources: <a href="https://detroit-become-human.fandom.com/wiki/The_Painter">chapter page</a>, <a href="https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)">transcript</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html">template</a>, <a href="https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/">PowerPyx walkthrough</a>, chart screenshots <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg">1</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg">2</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg">3</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg">4</a>.</p>
+<ul>
+<li>One ending (“This chapter has only one outcome”), LEO INTRUDED TO ASK FOR MONEY, with no icon.</li>
+<li>All 44 chart nodes, their order and their nesting; the piano order is the game’s choice group (MELANCHOLIC, HOPEFUL, INTIMATE, ENIGMATIC).</li>
+<li>No arrow in the template; no probability, relationship, public-opinion or instability change in any source. Markus’s tracked relationships are Jericho, North, Josh and Simon only.</li>
+<li>Every prompt the template ships: WIN / LOSE / DRAW, JUSTIFY / SORRY, LIE / TRUTH (twice), LIKE / DON’T LIKE / NO OPINION. The FACTUAL / REASSURING reply about the clothes is marked cut.</li>
+<li>CARL NOTICES MARKUS’ CLOTHES needs PROTESTERS HARASS MARKUS in Shades of Color (template condition, wiki, PowerPyx).</li>
+<li>Night of the Soul (Carl alive) reads the pastime (chessboard, books, piano) and shows Markus’s painting in the studio.</li>
+</ul>
+
+<h2 id="differs">4 · Simplified or left out</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Doing nothing</td><td>Wiki and transcript: Markus can skip the pastime; Carl gives the same speech</td><td>not offered: the chart draws no line for it</td></tr>
+<tr><td>Free roaming before waking Carl</td><td>Magazine and birds in any order, before or after waking Carl</td><td>magazine (<code>R05</code>), then the birds (<code>M01b</code>), then upstairs; unread covers come back in <code>R05b</code></td></tr>
+<tr><td>Breakfast timing</td><td>Can be served before Carl wakes</td><td>served after</td></tr>
+<tr><td>Book and copy order</td><td>Picked at the shelf or with the camera; no screen order</td><td>the chart’s order with the game’s button labels</td></tr>
+<tr><td>Piano tempo</td><td>Exit, play quickly, play slowly, finish the song</td><td>left out (gameplay)</td></tr>
+<tr><td>Studio cleaning, mirror, globe, giraffe, dinosaur, deer, stair carpet</td><td>Optional interactions, not chart nodes</td><td>left out; the mirror’s torn shirt is in <code>M01a</code></td></tr>
+<tr><td>Carl’s idle comments</td><td>On a timer if Markus dawdles</td><td>left out</td></tr>
+<tr><td>TV switched off</td><td>“After some time”, if Markus has not interacted</td><td>shown in <code>M01f</code> when Markus chose the TV in <code>R05b</code></td></tr>
+<tr><td>Earlier version</td><td>one scene (ANDROIDS / HUMANITY / IDENTITY) with invented paintings and “Carl orders Markus out”</td><td>replaced by 22 scenes; invented text removed</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · Ending and state flags</h2>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Set at</th><th>Values</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>clothesTorn</code> (in)</td><td>Shades of Color, <code>M00f</code></td><td>true / false</td><td><code>M01a</code> mirror, <code>M01d</code></td></tr>
+<tr><td><code>painterActivity</code></td><td><code>M01f</code></td><td>chess, book, piano</td><td>Night of the Soul: LOOK AT THE CHESSBOARD, BROWSE BOOKS, PLAY PIANO (module <code>rules.nightOfTheSoul</code>)</td></tr>
+<tr><td><code>painterPastime</code></td><td><code>M01g</code>, <code>M01k</code>, <code>M01l</code></td><td>win, lose, draw; plato, shakespeare, keats; melancholic, hopeful, intimate, enigmatic</td><td>gates <code>M01h</code>–<code>M01j</code></td></tr>
+<tr><td><code>painterCopy</code></td><td><code>M01o</code></td><td>painting, desk, statue</td><td>reports</td></tr>
+<tr><td><code>painterTheme</code>, <code>painterFeeling</code></td><td><code>M01p</code>; <code>M01q</code>–<code>M01s</code></td><td>the chart’s labels in lower case</td><td>Night of the Soul: LOOK AT YOUR PAINTING (module <code>rules.paintings</code>)</td></tr>
+<tr><td><code>painterOutcome</code></td><td><code>M01t</code></td><td>Leo intruded to ask for money</td><td>reports</td></tr>
+</tbody></table></div>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether doing nothing at FIND SOMETHING TO DO leaves all three pastime nodes grey and still reaches TAKE CARL TO THE STUDIO.</li>
+<li>The on-screen order of the book and copy options, if any; and the order of the heart sub-choices.</li>
+<li>Whether the magazine can still be read after breakfast, and whether ACTIVATE BIRDS can be done after waking Carl.</li>
+<li>Whether the painting shown in Night of the Soul is the heart painting only, or also the copy.</li>
+<li>The legend: the triangle on CARL NOTICES MARKUS’ CLOTHES and the bracketed icon on the side group.</li>
+</ul>
+</main>
+</body>
+</html>
