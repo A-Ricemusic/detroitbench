@@ -1,6 +1,6 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {X} from 'lucide-react';
-import {cx,Dot,useMediaQuery} from './ui.jsx';
+import {cx,Dot,Select,useMediaQuery} from './ui.jsx';
 import {ABBR,BROKE,DIM,FinalStrip,NumberLegend,chapterSeries,groupBy,levelOf,useWidth} from './Charts.jsx';
 import {EndingCard,CARDS} from './EndingCharts.jsx';
 import {CHAR_VAR,compareRuns,runLabel,tidy} from '../lib/data.js';
@@ -11,7 +11,8 @@ import {href} from '../lib/router.jsx';
 // The relationship charts after Slopalytics' chart feed (docs/design/slopalytics-reference.md §1.3, §2): every relationship
 // gauge is its own section on one scrolling page, reached by tabs grouped by character, with the section in view kept in
 // `?chart=`. Each chart plots the run's value at the end of every chapter on the game's level bands, names each line at
-// its right end, isolates a model on hover, and pins a point for a details card that turns into a comparison.
+// its right end and isolates a run on hover with a details card for the point; clicking a point or a name opens that
+// run's full report (phones pin the tapped point's card instead, with a link to the report).
 // Skipped from the reference: the log axis (levels are ordinal), the Pareto line ("higher" is not better on every gauge)
 // and Code only.
 const ORDER=['Connor','Kara','Markus'],FINAL='where-they-ended';
@@ -46,7 +47,6 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
  useEffect(()=>{const f=e=>{if(e.key==='Escape'&&!document.querySelector('[role=dialog]')){setPin(null);setHot(null)}};addEventListener('keydown',f);return()=>removeEventListener('keydown',f)},[]);
  useEffect(()=>{setPin(null);setHot(null)},[scale.key,runs]);
  const find=k=>points.find(p=>p.key===k);const hp=hot?find(hot):null,pp=pin?find(pin):null;
- const togglePin=p=>{setPin(k=>k===p.key?null:p.key);if(compact)focus.setHover(pin===p.key?null:p.s.r.id)};
  // Phones: a tap anywhere pins the nearest point within 40px, or unpins.
  const tap=e=>{if(!compact)return;const b=svg.current.getBoundingClientRect(),mx=(e.clientX-b.left)/b.width*W,my=(e.clientY-b.top)/b.height*H;let best=null,bd=40;for(const p of points){const d=Math.hypot(px(p)-mx,py(p)-my);if(d<bd){bd=d;best=p}}
   if(best){setPin(best.key);focus.setHover(best.s.r.id)}else{setPin(null);focus.setHover(null)}};
@@ -56,8 +56,8 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
   <text x={x0+6} y={gy-7} className="halo-text" style={{fontSize:11}}>{levelOf(scale,p.v)} · {p.v>0?'+':''}{p.v}</text>
   <text x={Math.min(gx+6,x1-90)} y={y0-8} className="halo-text" style={{fontSize:11}}>{p.c===0?'Start':`Ch. ${p.c}`}</text>
  </g>};
- const name=r=>runLabel(r,runs);
- const card=hp||pp?<Card a={pp&&hp&&pp.key!==hp.key?pp:null} b={hp??pp} pinned={!!pp&&(!hp||hp.key===pp.key)} scale={scale} colors={colors} nums={nums} name={name} titles={titles} onClose={()=>{setPin(null);setHot(null);if(compact)focus.setHover(null)}} compact={compact}/>:null;
+ const name=runLabel;
+ const card=hp||pp?<Card p={hp??pp} pinned={!!pp&&!hp} scale={scale} colors={colors} nums={nums} name={name} titles={titles} onClose={()=>{setPin(null);setHot(null);if(compact)focus.setHover(null)}} compact={compact}/>:null;
  return <div>
   <div ref={ref} className="relative">
    <svg ref={svg} width={W} height={H} role="group" aria-label={`${scale.label} toward ${scale.toward} at the end of each chapter, on the game’s level bands`} className="block max-w-full select-none" onPointerDown={compact?tap:undefined}>
@@ -75,20 +75,19 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
       {s.ended&&last&&<text x={x(last.c)} y={y(last.v)+dodge(s.r.id,last.c)} dx="9" textAnchor="middle" dominantBaseline="central" className="end-mark" style={{fill:col}}>{BROKE.has(scale.key)?'|':'✕'}</text>}
      </g>})}
     {points.map(p=>{const col=colors[p.s.r.displayName]??DIM,on=hp?.key===p.key||pp?.key===p.key,faded=!active&&hp&&!on;
-     return <g key={p.key} role={compact?undefined:'button'} tabIndex={compact?undefined:0} aria-label={compact?undefined:`${p.s.r.displayName}, ${p.c===0?'start':'chapter '+p.c}, ${levelOf(scale,p.v)} (${p.v>0?'+':''}${p.v})`} aria-pressed={compact?undefined:pp?.key===p.key}
-      style={{opacity:groupOp(p.s)*(faded?0.45:1),pointerEvents:compact?'none':undefined}} className="outline-none [&:focus-visible>circle:last-child]:stroke-[var(--ink)]"
-      onPointerEnter={()=>setHot(p.key)} onPointerLeave={()=>setHot(null)} onFocus={()=>setHot(p.key)} onBlur={()=>setHot(null)} onClick={()=>togglePin(p)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();togglePin(p)}}}>
-      <circle cx={px(p)} cy={py(p)} r="13" fill="transparent"/>
-      <circle cx={px(p)} cy={py(p)} r={on?7:4.5} fill={col} stroke="var(--plot-bg)" strokeWidth="1.8"/>
-     </g>})}
+     const dot=<><circle cx={px(p)} cy={py(p)} r="13" fill="transparent"/><circle cx={px(p)} cy={py(p)} r={on?7:4.5} fill={col} stroke="var(--plot-bg)" strokeWidth="1.8"/></>,style={opacity:groupOp(p.s)*(faded?0.45:1)};
+     if(compact)return <g key={p.key} style={{...style,pointerEvents:'none'}}>{dot}</g>;
+     return <a key={p.key} href={href('runs/'+p.s.r.id+'/report')} aria-label={`${p.s.r.displayName}, ${p.c===0?'start':'chapter '+p.c}, ${levelOf(scale,p.v)} (${p.v>0?'+':''}${p.v}). Open the full report`}
+      style={style} className="cursor-pointer outline-none [&:focus-visible>circle:last-child]:stroke-[var(--ink)]"
+      onPointerEnter={()=>setHot(p.key)} onPointerLeave={()=>setHot(null)} onFocus={()=>setHot(p.key)} onBlur={()=>setHot(null)}>{dot}</a>})}
     {labels.map(l=>{const s=l.s,col=colors[s.r.displayName]??DIM,n=nums[s.r.displayName],pinned=focus.pins.has(s.r.id);
-     return <g key={s.r.id} role="button" tabIndex={0} aria-pressed={pinned} aria-label={`Highlight ${s.r.displayName}`} className="cursor-pointer outline-none [&:focus-visible_.lbl-name]:underline" style={{opacity:active&&!active.has(s.r.id)?0.4:1}}
-      onPointerEnter={()=>focus.setHover(s.r.id)} onPointerLeave={()=>focus.setHover(null)} onFocus={()=>focus.setHover(s.r.id)} onBlur={()=>focus.setHover(null)} onClick={()=>focus.togglePin(s.r.id)} onKeyDown={e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();focus.togglePin(s.r.id)}}}>
+     return <a key={s.r.id} href={href('runs/'+s.r.id+'/report')} aria-label={`${s.r.displayName}: open the full report`} className="cursor-pointer outline-none [&:hover_.lbl-name]:underline [&:focus-visible_.lbl-name]:underline" style={{opacity:active&&!active.has(s.r.id)?0.4:1}}
+      onPointerEnter={()=>focus.setHover(s.r.id)} onPointerLeave={()=>focus.setHover(null)} onFocus={()=>focus.setHover(s.r.id)} onBlur={()=>focus.setHover(null)}>
       <path d={`M${l.ax+6},${l.ay}L${x1+18},${l.ly}L${x1+20},${l.ly}`} fill="none" stroke={col} strokeWidth=".75" opacity=".22" pointerEvents="none"/>
       <rect x={x1+20} y={l.ly-12} width={W-x1-20} height="24" fill="transparent"/>
       <circle cx={x1+31} cy={l.ly} r="8" className="num-badge" style={{stroke:col}}/><text x={x1+31} y={l.ly} textAnchor="middle" dominantBaseline="central" className="num-text">{n}</text>
       <text x={x1+46} y={l.ly} dominantBaseline="central" className="lbl-name" style={{fill:'var(--ink)',fontSize:13,fontWeight:pinned?700:550}}>{name(s.r)}</text>
-     </g>})}
+     </a>})}
    </svg>
    {!compact&&card&&<div className="pointer-events-none absolute right-2 bottom-[72px] z-20">{card}</div>}
   </div>
@@ -96,19 +95,14 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
   {compact&&card&&<div className="sticky bottom-[calc(4rem+env(safe-area-inset-bottom))] z-20 mt-3">{card}</div>}
  </div>}
 
-// Details for one point, or a Selected / Hovered / Difference comparison when a point is pinned and another is hovered.
-function Card({a,b,pinned,scale,colors,nums,name,titles,onClose,compact}){
+// Details for the hovered point (desktop, where a click opens the run's report) or the tapped one (phones, pinned until
+// closed, with a link to the report).
+function Card({p,pinned,scale,colors,nums,name,titles,onClose,compact}){
  const head=(p,small)=><span className="flex min-w-0 items-center gap-2"><span className={cx('inline-flex shrink-0 items-center justify-center rounded-full border font-mono font-semibold text-ink-2',small?'size-4 text-[9px]':'size-5 text-[10px]')} style={{borderColor:colors[p.s.r.displayName]}}>{nums[p.s.r.displayName]}</span><span className={cx('truncate font-semibold text-ink',small?'text-xs':'text-[13px]')}>{name(p.s.r)}</span></span>;
  const ch=p=>p.c===0?'Start':`Chapter ${p.c} · ${titles[p.c]??''}`;
  const close=pinned&&<button type="button" aria-label="Close details" onClick={onClose} className="pointer-events-auto -mr-1.5 -mt-1 inline-flex size-7 shrink-0 items-center justify-center rounded text-ink-3 hover:text-ink"><X aria-hidden="true" className="size-4"/></button>;
- const box=cx('rounded-lg border border-line-2 bg-surface px-4 py-3.5 text-left shadow-lg',compact?'w-full':a?'w-[400px]':'w-[272px]');
- if(a){const dl=b.v-a.v,lv=scale.bands.findIndex(x=>x.level===levelOf(scale,b.v))-scale.bands.findIndex(x=>x.level===levelOf(scale,a.v));
-  return <div role="status" className={box}><div className="flex items-start justify-between gap-3">{head(b)}</div>
-   <p className="mt-1 flex items-center gap-1.5 text-[11.5px] text-ink-2">vs {head(a,true)}<span className="truncate">· {a.c===0?'Start':`Ch. ${a.c}`}</span></p>
-   <table className="mt-2.5 w-full text-xs tnum"><thead className="text-ink-3"><tr><th scope="col" className="sr-only">Metric</th><th scope="col" className="py-1 text-right font-medium">Selected</th><th scope="col" className="py-1 text-right font-medium">Hovered</th><th scope="col" className="py-1 text-right font-medium">Difference</th></tr></thead>
-    <tbody>{[['Chapter',a.c===0?'Start':a.c,b.c===0?'Start':b.c,b.c-a.c?signed(b.c-a.c):'same'],['Level',levelOf(scale,a.v),levelOf(scale,b.v),lv?`${signed(lv)} ${Math.abs(lv)===1?'level':'levels'}`:'same'],['Points',(a.v>0?'+':'')+a.v,(b.v>0?'+':'')+b.v,signed(dl)]].map(([k,va,vb,d])=><tr key={k} className="border-t border-line"><th scope="row" className="whitespace-nowrap py-1 pr-2 text-left font-normal text-ink-2">{k}</th><td className="whitespace-nowrap py-1 pl-2 text-right text-ink font-medium">{va}</td><td className="whitespace-nowrap py-1 pl-2 text-right text-ink font-medium">{vb}</td><td className="whitespace-nowrap py-1 pl-2 text-right text-ink-2">{d}</td></tr>)}</tbody></table>
-  </div>}
- const p=b,decision=changeIn(p.s.r,scale.key,p.c);
+ const box=cx('rounded-lg border border-line-2 bg-surface px-4 py-3.5 text-left shadow-lg',compact?'w-full':'w-[272px]');
+ const decision=changeIn(p.s.r,scale.key,p.c);
  return <div role="status" className={cx(box,pinned&&'pointer-events-auto')}>
   <div className="flex items-start justify-between gap-3">{head(p)}{close}</div>
   <p className="mt-0.5 text-[11.5px] text-ink-2">{ch(p)}{pinned?' · Pinned':''}</p>
@@ -118,7 +112,7 @@ function Card({a,b,pinned,scale,colors,nums,name,titles,onClose,compact}){
    <dt className="whitespace-nowrap text-ink-2">Change this chapter</dt><dd className="whitespace-nowrap text-right font-medium text-ink tnum">{p.d===null?'—':signed(p.d)}</dd>
    {decision&&<><dt className="col-span-2 mt-1 text-ink-2">Decision</dt><dd className="col-span-2 text-ink [text-wrap:pretty]">{decision}</dd></>}
   </dl>
-  <a href={href('runs/'+p.s.r.id+'/report')} tabIndex={pinned?0:-1} className={cx('mt-2.5 inline-block text-[11.5px] text-ink underline underline-offset-2',!pinned&&'pointer-events-none')}>Open report</a>
+  {pinned?<a href={href('runs/'+p.s.r.id+'/report')} className="mt-2.5 inline-block text-[11.5px] text-ink underline underline-offset-2">Open report</a>:<p className="mt-2.5 text-[11.5px] text-ink-3">Click to open the full report</p>}
  </div>}
 
 // Phones: the legend under the chart, two columns of toggles that keep a highlight on.
@@ -130,7 +124,7 @@ function Legend({runs,colors,nums,name}){const focus=useModelFocus();
 // "Where they ended", each a section reached by the sticky tabs, with the section in view kept in `?chart=`.
 // `runs` is the whole library (colours and numbers), `shown` the runs the model sidebar leaves visible.
 const ENDINGS=[{id:'connor-ending',label:'Connor',card:0},{id:'kara-alice-ending',label:'Kara & Alice',card:1},{id:'markus-ending',label:'Markus',card:2}];
-export function ChartFeed({runs,shown,scales,colors,nums,onPick,empty}){
+export function ChartFeed({runs,shown,scales,colors,nums,empty}){
  const compact=useMediaQuery('(max-width: 900px)');
  const titles=useMemo(()=>{const t={0:'Start'};for(const r of runs)for(const s of r.track.steps)t[s.chapter]??=s.chapterTitle;return t},[runs]);
  const groups=useMemo(()=>{const g=groupBy(scales,s=>s.toward);return ORDER.filter(c=>g[c]).map(c=>({c,scales:g[c]}))},[scales]);
@@ -148,23 +142,25 @@ export function ChartFeed({runs,shown,scales,colors,nums,onPick,empty}){
  const tab=(id,label,extra)=>{const on=current===id;return <button key={id} type="button" aria-current={on?'true':undefined} onClick={()=>go(id)} className={cx('relative shrink-0 whitespace-nowrap py-3 text-[12.5px] transition-colors',on?'text-ink':'text-ink-2 hover:text-ink',extra)}>{label}{on&&<span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-0.5 rounded bg-ink"/>}</button>};
  const sep=k=><span key={k} aria-hidden="true" className="my-auto h-3.5 w-px shrink-0 bg-line-2"/>,cap=t=><span key={'c'+t} aria-hidden="true" className="my-auto shrink-0 font-mono text-[10px] uppercase tracking-[.08em] text-ink-3">{t}</span>;
  const head=(id,title,sub,note)=><div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"><h2 id={'chart-'+id+'-h'} className="flex items-center gap-2 text-lg font-semibold md:text-xl">{title}{sub&&<span className="text-sm font-normal text-ink-3">{sub}</span>}</h2>{note&&<p className="cap">{note}</p>}</div>;
- const sec='scroll-mt-[calc(var(--header-h)+56px)] border-b border-line py-6 md:py-8';
+ const sec='scroll-mt-[calc(var(--header-h)+64px)] md:scroll-mt-[calc(var(--header-h)+96px)] border-b border-line py-6 md:py-8';
  return <div className="min-w-0">
   <div ref={tabs} className="sticky top-[var(--header-h)] z-20 -mx-4 border-b border-line bg-bg/92 px-4 backdrop-blur-md md:mx-0 md:px-0">
-   <nav aria-label="Charts" className="no-scrollbar fade-x flex items-stretch gap-4 overflow-x-auto">
+   {/* Phones: one menu of charts; wider screens: the tabs wrap onto a second line rather than scroll sideways. */}
+   <div className="py-2 md:hidden"><Select label="Chart" hideLabel value={current} onChange={go} options={[...ENDINGS.map(e=>({value:e.id,label:e.label,hint:'Ending'})),...groups.flatMap(g=>g.scales.map(s=>({value:slug(s),label:s.label,hint:`toward ${g.c}`,icon:CHAR_VAR[g.c]}))),{value:FINAL,label:'Where they ended'}]}/></div>
+   <nav aria-label="Charts" className="hidden md:flex flex-wrap items-stretch gap-x-4">
     {cap('Endings')}{ENDINGS.map(e=>tab(e.id,e.label))}
     {groups.flatMap(g=>[sep('s'+g.c),cap(g.c),...g.scales.map(s=>tab(slug(s),s.label))])}
     {sep('sf')}{tab(FINAL,'Where they ended','pr-4')}
    </nav>
   </div>
-  {ENDINGS.map(e=><section key={e.id} id={'chart-'+e.id} aria-label={`${e.label} ending`} className={sec}>{empty||<EndingCard {...CARDS[e.card]} runs={shown} nums={nums} colors={colors} onPick={onPick}/>}</section>)}
+  {ENDINGS.map(e=><section key={e.id} id={'chart-'+e.id} aria-label={`${e.label} ending`} className={sec}>{empty||<EndingCard {...CARDS[e.card]} runs={shown} nums={nums} colors={colors}/>}</section>)}
   {groups.flatMap(g=>g.scales.map(s=>{const id=slug(s);return <section key={id} id={'chart-'+id} aria-labelledby={'chart-'+id+'-h'} className={sec}>
    {head(id,<><Dot color={CHAR_VAR[s.toward]} className="size-2"/>{s.label}</>,`toward ${s.toward}`,s.key==='instability'?'Unstable = deviancy 4+':null)}
    {empty||<div className="plot-grid rounded-2xl border border-line p-2 md:p-3"><LevelChart scale={s} runs={shown} colors={colors} nums={nums} titles={titles} compact={compact}/></div>}
   </section>}))}
-  <section id={'chart-'+FINAL} aria-labelledby={'chart-'+FINAL+'-h'} className="scroll-mt-[calc(var(--header-h)+56px)] py-6 md:py-8">
+  <section id={'chart-'+FINAL} aria-labelledby={'chart-'+FINAL+'-h'} className="scroll-mt-[calc(var(--header-h)+64px)] md:scroll-mt-[calc(var(--header-h)+96px)] py-6 md:py-8">
    {head(FINAL,'Where they ended',null,'Final level per run · ♥ North as lover')}
    {empty||<div className="plot-grid grid grid-cols-[minmax(0,1fr)] gap-10 rounded-2xl border border-line px-4 py-5 md:px-8 md:py-8">{groups.map(g=><div key={g.c} className="min-w-0"><h3 className="cap !text-[11px] text-ink-2 flex items-center gap-2 mb-4"><Dot color={CHAR_VAR[g.c]} className="size-2"/>Around {g.c}</h3><div className="grid gap-6">{g.scales.map(s=><div key={s.key}><div className="flex items-baseline justify-between gap-3 mb-2"><b className="text-sm font-semibold">{s.label}</b>{s.key==='instability'&&<span className="text-xs text-ink-3">Unstable = deviancy 4+</span>}</div><FinalStrip scale={s} runs={shown} colors={colors} nums={nums}/></div>)}</div></div>)}
-    <div className="border-t border-[var(--plot-rule-2)] pt-5"><NumberLegend runs={shown} colors={colors} nums={nums} onPick={onPick} label="Models shown"/></div></div>}
+    <div className="border-t border-[var(--plot-rule-2)] pt-5"><NumberLegend runs={shown} colors={colors} nums={nums} linked label="Models shown"/></div></div>}
   </section>
  </div>}

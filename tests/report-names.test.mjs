@@ -12,6 +12,17 @@ test('report names are human, per-model numbered and collision-free',()=>{
  assert.equal(reportFileName(runs[0],runs),names.get('9f-second').file);
 });
 
+test('display names come from the registry and reasoning level; earlier report files keep their names',()=>{
+ const ctx={registry:{vendors:[],models:{'gpt-6.1-sol':{name:'GPT-6.1 Sol'}}},reasoning:new Map([['b-low','low'],['c-high','high'],['d-high','high']])};
+ const runs=[stub('a-run','Sol 6.1 run 1','gpt-6.1-sol','2026-11-07T10:00:00.000Z'),stub('b-low','Sol 6.1 low','gpt-6.1-sol','2026-11-07T11:00:00.000Z'),stub('c-high','Sol 6.1 high','gpt-6.1-sol','2026-11-07T12:00:00.000Z'),stub('d-high','Sol 6.1 high','gpt-6.1-sol','2026-11-07T13:00:00.000Z'),stub('e-new','Terra','gpt-6.1-terra','2026-11-07T14:00:00.000Z')];
+ const names=assignReportNames(runs,ctx,new Set(['detroitbench-gpt-6-1-sol-6-1-low-run-01-2026-11-07.html']));
+ assert.deepEqual([...runs].map(r=>names.get(r.id).displayName),['GPT-6.1 Sol · run 1','GPT-6.1 Sol · low','GPT-6.1 Sol · high','GPT-6.1 Sol · high · run 2','GPT-6.1 Terra · run 1']);
+ assert.equal(names.get('b-low').title,'GPT-6.1 Sol · low');
+ assert.equal(names.get('b-low').file,'detroitbench-gpt-6-1-sol-6-1-low-run-01-2026-11-07.html','an existing report keeps its earlier file name');
+ assert.equal(names.get('c-high').file,'detroitbench-gpt-6-1-sol-high-run-01-2026-11-07.html');assert.equal(names.get('a-run').file,'detroitbench-gpt-6-1-sol-run-1-run-01-2026-11-07.html');
+ assert.equal(new Set([...names.values()].map(n=>n.file)).size,runs.length);assert.deepEqual(assignReportNames([...runs].reverse(),ctx,new Set(['detroitbench-gpt-6-1-sol-6-1-low-run-01-2026-11-07.html'])),names);
+});
+
 test('standalone report owns its palette and keeps IDs out of the hero',{timeout:600000},async()=>{const run=await fixture(),html=runHTML(run),hero=html.slice(html.indexOf('<header class="hero'),html.indexOf('</header>'));
  assert.ok(html.includes('<meta name="color-scheme" content="light dark">'));assert.match(html,/color-scheme:dark/);assert.match(html,/html\{background:var\(--bg\);color:var\(--text\)/);
  assert.ok(!/var\(--(foreground|card|muted-foreground|primary|font-sans)\b/.test(html),'must not depend on host theme variables');

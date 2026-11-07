@@ -13,14 +13,14 @@
 // Grey wires run along the spine; the taken path is routed orthogonally through the gaps (and under any scene it
 // skipped). Colours come from --fc-* custom properties that each host maps onto its palette.
 
-const PAD=20,GAP=30,BRK=9,NODE_W=150,EVENT_W=132,START_W=104,END_W=236,ROW_GAP=3,GRID_GAP=10,GROUP_PAD=14,CAPTION=15,LANE_GAP=40,LANE_LABEL=28,MAX_ROWS=7,CUT_GAP=56,CHAIN_GAP=NODE_W,END_GAP=12;
+const PAD=20,GAP=30,BRK=9,NODE_W=150,EVENT_W=132,START_W=104,END_W=236,ROW_GAP=3,GRID_GAP=10,GROUP_PAD=14,CAPTION=15,LANE_GAP=40,LANE_LABEL=28,MAX_ROWS=7,CUT_GAP=60,CUT_LABEL=31,CHAIN_GAP=NODE_W,END_GAP=12;
 const LABEL=9.5,LABEL_LINE=11.5,LABEL_LS=.45,END_SIZE=11.5,END_LINE=14,BIG=22,BIG_LINE=24,HEAD_TOP=110;
 
 export const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const r1=n=>Math.round(n*10)/10;
 
 // Rough advance widths (em) for the sans fonts both hosts use; good enough to wrap labels without a DOM.
-function textWidth(s,size,ls=0){let w=0;for(const ch of String(s)){w+=/[iIl.,:;'’!|j]/.test(ch)?.28:/[ ]/.test(ch)?.28:/[MW@]/.test(ch)?.9:/[mw]/.test(ch)?.82:/[A-Z0-9&]/.test(ch)?.7:/[a-z]/.test(ch)?.55:.5;}return w*size+String(s).length*ls}
+export function textWidth(s,size,ls=0){let w=0;for(const ch of String(s)){w+=/[iIl.,:;'’!|j]/.test(ch)?.28:/[ ]/.test(ch)?.28:/[MW@]/.test(ch)?.9:/[mw]/.test(ch)?.82:/[A-Z0-9&]/.test(ch)?.7:/[a-z]/.test(ch)?.55:.5;}return w*size+String(s).length*ls}
 export function wrap(s,maxW,size,maxLines,ls=0){const words=String(s).split(/\s+/).filter(Boolean),lines=[];let line='';
  for(const w of words){const next=line?line+' '+w:w;if(line&&textWidth(next,size,ls)>maxW){lines.push(line);line=w}else line=next}
  if(line)lines.push(line);
@@ -146,7 +146,7 @@ export function layoutBoxes(L){const out=[];
   const box=(b,kind,extra={})=>{if(b.type==='event')return {kind,id:b.c.id,lane:li,x:b.x-BRK,y:b.y,w:b.w+2*BRK,h:b.h,...extra};
    const gx=b.x+(b.w-b.g.w)/2,capH=b.caption?CAPTION:0;return {kind,id:b.c.id,lane:li,x:gx-BRK,y:b.y-2-capH,w:b.g.w+2*BRK,h:b.g.h+4+capH,...extra}};
   for(const b of l.blocks){const hb=box(b,'block');out.push(hb);
-   if(b.chain){const gx=b.x+(b.w-b.g.w)/2;out.push({kind:'cutin-label',id:b.c.id,lane:li,x:gx-6+10,y:b.y+b.g.h+16-9,w:textWidth('CUT-IN · AFTER ACTION 10',8.5,.7),h:11});
+   if(b.chain){const gx=b.x+(b.w-b.g.w)/2;out.push({kind:'cutin-label',id:b.c.id,lane:li,x:gx-6+10,y:b.y+b.g.h+CUT_LABEL-8.5*.8,w:textWidth('CUT-IN · AFTER ACTION 10',8.5,.7),h:8.5});
     b.chain.forEach((k,i)=>out.push(box(k,'cutin',{hub:b.c.id,index:i,hubBottom:b.y+b.g.h})))}}
   for(const e of l.ends)out.push({kind:'end',id:e.e.label,lane:li,x:e.x-4,y:e.y-3,w:END_W+8,h:e.h+6});
   for(const r of l.runs)if(r.key)out.push({kind:'group',id:r.key,lane:li,x:r.x,y:r.y,w:r.w,h:r.h,members:r.blocks.flatMap(b=>[b.c.id,...(b.chain??[]).map(k=>k.c.id)])})}
@@ -238,7 +238,7 @@ function renderLane(l,{interactive,multi,width}){const out=[],wires=[],path=[],n
    if(b.chain){// The cut-in branch: down from under the hub, through the scenes it cut in, and back up into the hub.
     const first=b.chain[0].c,chainOn=b.chain.some(k=>k.c.visited),lx=gx-6,rx=gx+g.w+6,ry=b.rowMid,bx=b.chain.at(-1).x+b.chain.at(-1).w+BRK;
     const after=first.cutinAfter!=null&&first.visited?` · AFTER ACTION ${first.cutinAfter}`:'';
-    deco.push(`<text class="fc-cut" x="${r1(lx+10)}" y="${r1(bot+16)}" font-size="8.5" aria-hidden="true">CUT-IN${esc(after)}</text>`);
+    deco.push(`<text class="fc-cut" x="${r1(lx+10)}" y="${r1(bot+CUT_LABEL)}" font-size="8.5" aria-hidden="true">CUT-IN${esc(after)}</text>`);
     // In: down from under the hub's left bracket into the middle of the gap, across to the left of the first cut-in, and
     // down beside it, so the wire never crosses a box. Out: right past the last cut-in and the hub, then up into it.
     const ex=Math.min(lx,b.chain[0].x-BRK-10),gy2=bot+CUT_GAP/2,inRoute=`M${r1(lx)} ${r1(bot+2)}V${r1(gy2)}H${r1(ex)}V${r1(ry)}H${r1(b.chain[0].x-BRK)}`,RX=Math.max(rx,bx)+12;
@@ -247,13 +247,21 @@ function renderLane(l,{interactive,multi,width}){const out=[],wires=[],path=[],n
     const saved={taken,skipped};taken={x:lx,y:bot+2};skipped=[];
     if(chainOn){path.push(inRoute.replace(/H[-\d.]+$/,''));taken={x:ex,y:ry}}
     b.chain.forEach((k,i)=>{if(i)wires.push(`M${r1(b.chain[i-1].x+b.chain[i-1].w+BRK)} ${r1(ry)}H${r1(k.x-BRK)}`);drawBlock(k,{inChain:true,rowMid:ry})});
-    if(chainOn){path.push(route(taken,{x:RX,y:ry},null)+`V${r1(bot+8)}`)}
+    // Back to the hub, under any cut-in this path skipped rather than through it.
+    if(chainOn){const below=skipped.length?Math.max(...skipped.map(k=>k.y+k.h))+12:null;path.push(route(taken,{x:RX,y:ry},below)+`V${r1(bot+8)}`)}
     taken=saved.taken;skipped=saved.skipped}
    return}
   // A stack: in to the chosen option, out of the last one chosen.
-  if(on){const first=t[0],lastN=t.at(-1),fy=gy+first.gy+first.h/2,ly=gy+lastN.gy+lastN.h/2;goTo(gx-BRK,fy);path.push(`M${r1(gx-BRK)} ${r1(fy)}H${r1(gx+first.gx)}`);
-   const lastCol=lastN.col===g.cols-1;if(lastCol)path.push(`M${r1(gx+lastN.gx+NODE_W)} ${r1(ly)}H${r1(gx+g.w+BRK)}`);taken={x:gx+g.w+BRK,y:lastCol?ly:rowMid};
-   deco.push(port(gx-BRK,fy,true),port(gx+g.w+BRK,taken.y,true))}
+  if(on){const first=t[0],lastN=t.at(-1),fy=gy+first.gy+first.h/2,ly=gy+lastN.gy+lastN.h/2,chan=bot+6;
+   // An option in a later column is reached through the channel under the grid and the gap between columns, so the
+   // path never runs through the options beside it; leaving from an earlier column mirrors that on the right.
+   let inY=fy;if(first.col>0){inY=chan;const gapX=gx+first.gx-GRID_GAP/2;goTo(gx-BRK,chan);path.push(`M${r1(gx-BRK)} ${r1(chan)}H${r1(gapX)}V${r1(fy)}H${r1(gx+first.gx)}`)}
+   else{goTo(gx-BRK,fy);path.push(`M${r1(gx-BRK)} ${r1(fy)}H${r1(gx+first.gx)}`)}
+   const lastCol=lastN.col===g.cols-1;let outY=ly;
+   if(lastCol)path.push(`M${r1(gx+lastN.gx+NODE_W)} ${r1(ly)}H${r1(gx+g.w+BRK)}`);
+   else{outY=chan;const gapX=gx+lastN.gx+NODE_W+GRID_GAP/2;path.push(`M${r1(gx+lastN.gx+NODE_W)} ${r1(ly)}H${r1(gapX)}V${r1(chan)}H${r1(gx+g.w+BRK)}`)}
+   taken={x:gx+g.w+BRK,y:outY};
+   deco.push(port(gx-BRK,inY,true),port(gx+g.w+BRK,outY,true))}
   else if(!c.visited)skipped.push(b)}
  // Endings column.
  cur=null;if(ends.length){const inX=ends[0].x-14,ys=ends.map(e=>e.y+e.h/2);wires.push(`M${r1(prevOut)} ${r1(mid)}H${r1(inX)}`,`M${r1(inX)} ${r1(Math.min(...ys,mid))}V${r1(Math.max(...ys,mid))}`);

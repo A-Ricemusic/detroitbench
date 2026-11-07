@@ -18,7 +18,7 @@ function FocusHeading({skip}){useEffect(()=>{if(skip)return;const h=document.que
 function Loading(){return <div className="grid gap-4" aria-busy="true"><Skeleton className="h-9 w-72"/><Skeleton className="h-5 w-full max-w-xl"/><Skeleton className="h-40"/><p className="sr-only" role="status">Loading…</p></div>}
 function App(){
  const [route,navigate]=useRoute();const section=route.segs[0];
- // #/runs/<id>/report is the in-app run report; #/runs/<id> stays the runs page with that run's sheet open.
+ // #/runs/<id>/report is the in-app run report (the router redirects #/runs/<id> there).
  const report=section==='runs'&&route.segs[2]==='report'&&route.segs[1];
  const pageKey=section==='research'?route.segs.slice(0,2).join('/'):report?'report/'+report:section;
  useEffect(()=>{if(route.n>0)scrollTo({top:0,behavior:'instant'})},[pageKey]);
@@ -31,8 +31,8 @@ function App(){
   <div className="pb-[calc(3.5rem+env(safe-area-inset-bottom))] md:pb-0">
    <main id="main" tabIndex={-1} className="container-x mx-auto max-w-7xl pt-6 md:pt-10 min-h-[70dvh] outline-none scroll-mt-[var(--header-h)]">
     <ModelFocusProvider key={pageKey}><ErrorBoundary key={report?'report':section}><Suspense fallback={<Loading/>}>
-     {section==='runs'&&!report&&<Runs route={route} navigate={navigate}/>}
-     {report&&<Report key={report} id={report}/>}
+     {section==='runs'&&!report&&<Runs/>}
+     {report&&<Report key={report} id={report} chapter={route.query.chapter}/>}
      {section==='research'&&<Research route={route} navigate={navigate}/>}
      {section==='sources'&&<Sources/>}
      {section==='how'&&<HowItWasMade route={route}/>}

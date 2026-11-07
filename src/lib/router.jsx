@@ -12,6 +12,9 @@ export function parseHash(hash){
  // The Relationships page merged into the runs page in November 2026: land on its charts, at the named one if any.
  if(segs[0]==='relationships')return {segs:['runs'],query:{...query,chart:query.chart||'hank'},path:'runs'};
  if(!['runs','research','sources','how'].includes(segs[0]))return {segs:['runs'],query:{},path:'runs'};
+ // The run details sheet was removed in November 2026: #/runs/<id> opens the run's full report, and the sheet's
+ // flowchart view (?view=flow&chapter=N) opens the report's flowchart at that chapter.
+ if(segs[0]==='runs'&&segs.length===2){const {view,chapter,...rest}=query,q={...rest,...(chapter?{chapter}:{})};segs.push('report');return {segs,query:q,path:segs.join('/')}}
  return {segs,query,path:segs.join('/')};
 }
 const canonical=r=>'#/'+r.path+(Object.keys(r.query).length?'?'+new URLSearchParams(r.query):'');

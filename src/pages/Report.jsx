@@ -97,18 +97,21 @@ function JumpNav(){
  return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8 overflow-x-auto no-scrollbar"><ul className="flex gap-2 px-4 md:px-0 min-w-max">{JUMPS.map(([id,label])=><li key={id}><button type="button" onClick={()=>go(id)} className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2">{label}</button></li>)}</ul></nav>}
 
 /* ---------- Page ---------- */
-export default function Report({id}){
+export default function Report({id,chapter}){
  const {data:d,error,retry}=useReport(id);
  useEffect(()=>{document.title=(d?d.title+' · Full report':'Full report')+' · DetroitBench'},[d]);
  const entries=useMemo(()=>{const m=new Map;for(const c of d?.chapters??[])for(const e of c.entries)if(!m.has(keyOf(e)))m.set(keyOf(e),e);return m},[d]);
  const flowRun=useMemo(()=>({flowUrl:'/data/flows/'+encodeURIComponent(id)+'.json'}),[id]);
  const renderDetail=useCallback(sel=>sel&&<NodePanel d={d} entries={entries} sel={sel}/>,[d,entries]);
- const back=<a href={href('runs/'+id)} className="inline-flex items-center gap-1.5 min-h-11 -ml-1 px-1 text-sm font-medium text-ink-2 hover:text-ink"><ArrowLeft aria-hidden="true" className="size-4"/>Run details</a>;
+ // A link that names a chapter (#/runs/<id>/report?chapter=N) lands on the flowchart at that chapter.
+ const opened=Number(chapter)||null;
+ useEffect(()=>{if(!d||!opened)return;const t=setTimeout(()=>document.getElementById('flowchart')?.scrollIntoView({block:'start'}),60);return()=>clearTimeout(t)},[d,opened]);
+ const back=<a href={href('runs')} className="inline-flex items-center gap-1.5 min-h-11 -ml-1 px-1 text-sm font-medium text-ink-2 hover:text-ink"><ArrowLeft aria-hidden="true" className="size-4"/>All runs</a>;
  if(error)return <>{back}<PageHeader title="Full report"/><Notice tone={error.missing?'warn':'bad'}>{error.message}.{!error.missing&&<> <Button size="sm" variant="link" onClick={retry}>Try again</Button></>}</Notice></>;
  if(!d)return <>{back}<div className="grid gap-4 mt-2" aria-busy="true"><Skeleton className="h-9 w-72"/><Skeleton className="h-5 w-full max-w-md"/><Skeleton className="h-8 w-full max-w-lg"/><Skeleton className="h-48"/><Skeleton className="h-64"/><p className="sr-only" role="status">Loading the report…</p></div></>;
  return <>
   {back}
-  <PageHeader eyebrow="Full report" title={<>{d.displayName} <span className="text-ink-3 font-normal">· Run {d.runNumber}</span></>} lede={`${d.date} · ${d.vendor} · ${plural(d.decisions,'decision')} · ${d.unreached} scenes not reached`}>
+  <PageHeader eyebrow="Full report" title={d.displayName} lede={`${d.date} · ${d.vendor} · ${plural(d.decisions,'decision')} · ${d.unreached} scenes not reached`}>
    <p className="mt-1 font-mono text-xs text-ink-3">{d.model}</p>
   </PageHeader>
   <JumpNav/>
@@ -121,7 +124,7 @@ export default function Report({id}){
   </Section>
   <Section id="flowchart" className="scroll-mt-20" title="Flowchart" lede={`Every chapter as the game draws it: the path this run took is highlighted, the branches it did not take are dimmed, and every possible ending sits on the right. Select any node, taken or not, for the situation, the options, the model’s exact reason, the risk roll and what changed.`}>
    <p className="mb-3 -mt-1 flex items-center gap-1.5 text-xs text-ink-3"><MousePointerClick aria-hidden="true" className="size-4 shrink-0"/><span className="md:hidden">Tap a node for its full record.</span><span className="hidden md:inline">Click a node, or focus the chart, Tab to a node and press Enter. Escape closes the details.</span></p>
-   <RunFlowchart r={flowRun} variant="page" renderDetail={renderDetail}/>
+   <RunFlowchart r={flowRun} initialChapter={opened} renderDetail={renderDetail}/>
   </Section>
   <div className="mt-12 md:mt-16">
    <Disclosure id="protocol" title="Protocol, context and provenance">

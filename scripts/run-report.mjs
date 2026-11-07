@@ -1,3 +1,4 @@
+import {loadModelContext,displayBase} from './model-registry.mjs';
 import {readFile,writeFile,mkdir,readdir,rm} from 'node:fs/promises';
 import {validatePlaythrough,promptsOf,hashSync,initialState} from '../benchmark/story-engine.mjs';
 import {packPrompts,unpackPrompts} from './prompt-pack.mjs';
@@ -41,15 +42,27 @@ export const friendlyDate=iso=>iso&&!Number.isNaN(Date.parse(iso))?new Date(iso)
 export const providerName=p=>({codex:'Codex',claudeAgent:'Claude Agent',fixture:'Test fixture'})[p]??(p||'Unknown provider');
 export function modelDisplayName(run){const label=String(run.label??'').trim()||String(run.model??'Model'),m=String(run.model??'');if(/^claude-/i.test(m)&&!/^claude\b/i.test(label))return 'Claude '+label;const g=m.match(/^gpt-([\d.]+)-/i);if(g&&!/^gpt/i.test(label))return `GPT-${g[1]} ${label}`;return label}
 // Numbers runs per model in creation order (id breaks ties), so names are deterministic and never collide.
-export function assignReportNames(runs){
+// With the model context (registry and reasoning levels, from scripts/model-registry.mjs) the display name is the
+// registry name plus the reasoning level ("GPT-6.1 Sol · low"), or plus the run number for a run without one
+// ("GPT-6.1 Sol · run 1"), made unique by a run number when a model and level repeat; the file name follows the display
+// name, except that a run whose report already exists under its earlier, label-based name (`existing`, the file names
+// in docs/runs/) keeps that file. Without the context the earlier naming applies throughout.
+export function assignReportNames(runs,ctx=null,existing=new Set){
  const unique=[...new Map(runs.filter(r=>r?.id).map(r=>[r.id,r])).values()].sort((a,b)=>String(a.createdAt??'').localeCompare(String(b.createdAt??''))||String(a.id).localeCompare(String(b.id)));
- const counts=new Map,used=new Set,names=new Map;
- for(const run of unique){const displayName=modelDisplayName(run),slug=slugify(displayName),n=(counts.get(slug)??0)+1;counts.set(slug,n);const runNumber=String(n).padStart(2,'0'),stamp=run.createdAt??run.completedAt,day=stamp&&!Number.isNaN(Date.parse(stamp))?new Date(stamp).toISOString().slice(0,10):'undated';let base=`detroitbench-${slug}-run-${runNumber}-${day}`;if(used.has(base))base+='-'+slugify(run.id).slice(0,8);used.add(base);names.set(run.id,{displayName,runNumber,title:`${displayName} · Run ${runNumber}`,date:friendlyDate(stamp),file:base+'.html',json:base+'.json'})}
+ const counts=new Map,legacyCounts=new Map,used=new Set,names=new Map,shown=new Map;
+ const numbered=(map,slug)=>{const n=(map.get(slug)??0)+1;map.set(slug,n);return String(n).padStart(2,'0')};
+ for(const run of unique){const legacy=modelDisplayName(run),stamp=run.createdAt??run.completedAt,day=stamp&&!Number.isNaN(Date.parse(stamp))?new Date(stamp).toISOString().slice(0,10):'undated';
+  const legacyNumber=numbered(legacyCounts,slugify(legacy)),legacyFile=`detroitbench-${slugify(legacy)}-run-${legacyNumber}-${day}`;
+  let displayName=legacy,runNumber=legacyNumber,file=legacyFile;
+  if(ctx){const base=displayBase(run,ctx),k=(shown.get(base)??0)+1;shown.set(base,k);displayName=k>1?`${base} · run ${k}`:base;
+   if(!existing.has(legacyFile+'.html')){const slug=slugify(displayName);runNumber=numbered(counts,slug);file=`detroitbench-${slug}-run-${runNumber}-${day}`}}
+  if(used.has(file))file+='-'+slugify(run.id).slice(0,8);used.add(file);
+  names.set(run.id,{displayName,runNumber,title:ctx?displayName:`${displayName} · Run ${runNumber}`,date:friendlyDate(stamp),file:file+'.html',json:file+'.json'})}
  return names;
 }
 export const reportFileName=(run,peers=[run])=>assignReportNames([...peers,run]).get(run.id).file;
 // Numbering considers every session in data/experiences (finished or not) so a later completion never renames an earlier report.
-export async function loadReportNames(extra=[]){const dir=new URL('../data/experiences/',import.meta.url),all=[];for(const name of (await readdir(dir).catch(()=>[])).filter(n=>n.endsWith('.json'))){try{const {id,label,model,createdAt,completedAt}=JSON.parse(await readFile(new URL(name,dir),'utf8'));all.push({id,label,model,createdAt,completedAt})}catch{}}return assignReportNames([...all,...extra])}
+export async function loadReportNames(extra=[]){const dir=new URL('../data/experiences/',import.meta.url),all=[];for(const name of (await readdir(dir).catch(()=>[])).filter(n=>n.endsWith('.json'))){try{const {id,label,model,createdAt,completedAt}=JSON.parse(await readFile(new URL(name,dir),'utf8'));all.push({id,label,model,createdAt,completedAt})}catch{}}const existing=new Set(await readdir(new URL('../docs/runs/',import.meta.url)).catch(()=>[]));return assignReportNames([...all,...extra],await loadModelContext(),existing)}
 
 // ---- Shared standalone palette (never depends on host CSS variables) ----
 const BASE_CSS=`:root{color-scheme:dark;--bg:#0a0f16;--surface:#121a25;--surface-2:#182230;--node:#121a25;--node-hover:#182230;--chart:#0e141d;--text:#e8eef5;--text-2:#aab6c4;--text-3:#7d8a9a;--border:#243040;--border-strong:#2f3d50;--accent:#7fe0dc;--accent-soft:#1b3a40;--accent-text:#06211f;--edge:#2f3d50;--connor:#7fe0dc;--kara:#eac28b;--markus:#b8a3eb;--player:#9aa6b4;--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 8px 24px rgba(0,0,0,.35);--radius:14px;--font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
@@ -136,7 +149,7 @@ export function runHTML(run,story=run.story,name=assignReportNames([run]).get(ru
 ${BASE_CSS}
 ${REPORT_CSS}
 </style></head><body><nav class="topbar" aria-label="Site"><a class="back" href="../#playthroughs">← All runs</a><span class="wordmark">DETROIT<b>BENCH</b></span></nav><main>
-<header class="hero compact"><h1>${e(name.displayName)} <span class="dot">·</span> Run ${e(name.runNumber)}</h1><p class="lede">${e(name.date)} · ${e(({codex:'OpenAI',claudeAgent:'Anthropic'})[provider]??providerName(provider))} · ${decisionCount(run,story)} decisions</p>
+<header class="hero compact"><h1>${e(name.displayName)}${name.title===name.displayName?'':` <span class="dot">·</span> Run ${e(name.runNumber)}`}</h1><p class="lede">${e(name.date)} · ${e(({codex:'OpenAI',claudeAgent:'Anthropic'})[provider]??providerName(provider))} · ${decisionCount(run,story)} decisions</p>
 <ul class="outcomes status" aria-label="Where it ended">${statusChips(run,out).map(c=>`<li class="${c.ok?'ok':'no'}"><b>${e(c.who)}</b>${e(c.text)}</li>`).join('')}</ul></header>
 ${chaptersHTML(run,story,out)}<section id="flowchart"><h2 class="sr-only">Complete decision flowchart</h2><div class="legend"><span><i class="swatch" style="--c:var(--connor)"></i>Connor</span><span><i class="swatch" style="--c:var(--kara)"></i>Kara &amp; Alice</span><span><i class="swatch" style="--c:var(--markus)"></i>Markus</span><span><i class="dashed"></i>Not reached</span></div><div class="controls"><label id="layout-wrap">Layout<select id="layout"><option value="stacked">Single path</option><option value="lanes">Three character lanes</option></select></label><label>Character<select id="character"><option value="All characters">All characters</option><option value="Connor">Connor</option><option value="Kara">Kara &amp; Alice</option><option value="Markus">Markus</option><option value="Player">Player choice</option></select></label><label class="check"><input id="include-skipped" type="checkbox"> Show scenes not reached</label></div><p class="chart-count" id="chart-count"></p><div class="chart-scroll" id="chart"></div><p id="error" class="error" role="alert"></p></section>
 <details class="card" id="summaries"><summary>Character summaries</summary><section aria-label="Character summaries">${summarySections}</section></details>

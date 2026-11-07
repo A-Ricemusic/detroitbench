@@ -41,7 +41,7 @@ function Panel({runs,colors,nums,sel,onReset,sheet=false,searchRef,onDone}){
    onFocus={e=>{if(on&&e.currentTarget.matches(':focus-visible'))setHover(r.id)}} onBlur={()=>setHover(null)}
    className={cx('group -mx-1.5 flex w-[calc(100%+12px)] items-center gap-[9px] rounded-[5px] px-1.5 text-left hover:bg-surface-2',rowH)}>
    <span aria-hidden="true" className={cx('w-4 shrink-0 text-right font-mono text-[10.5px] text-ink-3 tnum',on?'opacity-100':'opacity-40 group-hover:opacity-100')}>{nums[r.displayName]}</span>
-   <span className={cx('min-w-0 grow truncate',on?'text-ink':'text-ink-3')}>{runLabel(r,runs)}</span>
+   <span className={cx('min-w-0 grow truncate',on?'text-ink':'text-ink-3')}>{runLabel(r)}</span>
    <span aria-hidden="true" className={cx('size-[7px] shrink-0 rounded-full',!on&&'opacity-50')} style={{color,background:on?'currentColor':'transparent',boxShadow:'inset 0 0 0 1px currentColor'}}/>
   </button></li>};
  const group=(title,list,actions)=>list.length?<section aria-label={title}>

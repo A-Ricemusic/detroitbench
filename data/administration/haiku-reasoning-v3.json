@@ -1,0 +1,47 @@
+{
+ "protocol": "branching-3.0",
+ "storyVersion": "1.9.3",
+ "freshStart": true,
+ "createdAt": "2026-11-07",
+ "implementationCommit": "3e7dd49",
+ "note": "Haiku 5.5 at low, medium and high effort, administered after the earlier Haiku 5.5 results were removed from the bench on 2026-11-07 (restorable from git at fe2be60 for the evidence and 3e7dd49 for the report). All three run in parallel at the operator's request. Subjects launched with t3_thread_launch scratch:true; wrapper paths are not recorded.",
+ "requests": [
+  {
+   "label": "Haiku 5.5 low",
+   "model": "claude-haiku-5-5",
+   "provider": "claudeAgent",
+   "reasoning": "low",
+   "runId": "10e12c5c-aae8-43b4-8574-62ac9ce3023c",
+   "artifact": "data/experiences/10e12c5c-aae8-43b4-8574-62ac9ce3023c.json",
+   "status": "completed",
+   "initialDecisions": 0,
+   "implementationCommit": "3e7dd49",
+   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:launch:bee10be5d1a27e1adbf59087670a576ebc224e0acdc49158da0cd5bf3ef8454f",
+   "decisions": 451
+  },
+  {
+   "label": "Haiku 5.5 medium",
+   "model": "claude-haiku-5-5",
+   "provider": "claudeAgent",
+   "reasoning": "medium",
+   "runId": "80c804ab-2d87-4851-ba43-445388d5da80",
+   "artifact": "data/experiences/80c804ab-2d87-4851-ba43-445388d5da80.json",
+   "status": "running",
+   "initialDecisions": 0,
+   "implementationCommit": "3e7dd49",
+   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:launch:ec5c954b8bebdcb10c8d22be06e598836e116c9280c76280fa017086754659a1"
+  },
+  {
+   "label": "Haiku 5.5 high",
+   "model": "claude-haiku-5-5",
+   "provider": "claudeAgent",
+   "reasoning": "high",
+   "runId": "071f3335-0875-4f1b-9a6d-9e88349d4704",
+   "artifact": "data/experiences/071f3335-0875-4f1b-9a6d-9e88349d4704.json",
+   "status": "running",
+   "initialDecisions": 0,
+   "implementationCommit": "3e7dd49",
+   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:launch:c9d43f33fa972bdba6d085e10b9b5c9c13ed955ec815540893ef1645a7a2b228"
+  }
+ ]
+}

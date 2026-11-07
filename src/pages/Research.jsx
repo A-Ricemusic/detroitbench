@@ -20,11 +20,11 @@ const KIND_LABEL={event:'Event · Continue only',media:'Media',forced:'Forced'};
 const safeDecode=s=>{try{return decodeURIComponent(s)}catch{return s}};
 
 export default function Research({route,navigate}){
- const sub=route.segs[1]||'overview',page=['scenarios','runs','method'].includes(sub)?sub:'overview';
- useEffect(()=>{if(route.segs[1]&&!['scenarios','runs','method'].includes(route.segs[1]))navigate('research',{replace:true})},[route.segs[1]]);
+ const sub=route.segs[1]||'scenarios',page=['scenarios','runs'].includes(sub)?sub:'scenarios';
+ useEffect(()=>{if(!route.segs[1]||!['scenarios','runs'].includes(route.segs[1]))navigate('research/scenarios',{replace:true})},[route.segs[1]]);
  const [bank,setBank]=useState(()=>bankResolved?{dataset:bankResolved.dataset,hash:bankResolved.hash}:null),[runs,setRuns]=useState(()=>bankResolved?[...bankResolved.runs.filter(r=>!imported.some(i=>i.id===r.id)),...imported]:[]),[error,setError]=useState(''),[busy,setBusy]=useState(false);
  const [runId,setRunId]=useState(''),[compareId,setCompareId]=useState('');
- const [query,setQuery]=useState(''),[character,setCharacter]=useState('All'),[theme,setTheme]=useState('All'),[answers,setAnswers]=useState({}),[storageError,setStorageError]=useState('');
+ const [query,setQuery]=useState(''),[character,setCharacter]=useState('All'),[chapter,setChapter]=useState('All'),[answers,setAnswers]=useState({}),[storageError,setStorageError]=useState('');
  const importRef=useRef();
  const [attempt,setAttempt]=useState(0);
  useEffect(()=>{let on=true;const restore=b=>{try{setAnswers(JSON.parse(localStorage.getItem('detroitbench.answers.'+b.hash)||'{}'))}catch{setStorageError('Personal choices cannot be restored in this browser.')}};
@@ -33,35 +33,25 @@ export default function Research({route,navigate}){
  async function importRun(e){const file=e.target.files?.[0];if(!file)return;setBusy(true);setError('');try{if(file.size>20*1024*1024)throw new Error('File exceeds the 20 MB import limit.');const run=await validateRun(JSON.parse(await file.text()));imported.splice(0,imported.length,...imported.filter(r=>r.id!==run.id),run);setRuns(prev=>[...prev.filter(r=>r.id!==run.id),run]);setRunId(run.id);navigate('research/runs')}catch(e){setError('Import rejected: '+e.message)}finally{setBusy(false);if(importRef.current)importRef.current.value=''}}
  function answer(q,id){const next={...answers,[q.id]:id};setAnswers(next);try{localStorage.setItem('detroitbench.answers.'+bank.hash,JSON.stringify(next));setStorageError('')}catch{setStorageError('Choices are kept for this visit only; browser storage is unavailable.')}}
  const dataset=bank?.dataset,questions=dataset?.questions??[],selectedRun=runs.find(r=>r.id===runId)||runs[0],live=runs.filter(r=>r.kind==='live');
- const filtered=questions.filter(q=>(character==='All'||q.character===character)&&(theme==='All'||q.theme===theme)&&`${q.id} ${q.title} ${q.situation} ${q.chapterTitle}`.toLowerCase().includes(query.toLowerCase()));
+ const filtered=questions.filter(q=>(character==='All'||q.character===character)&&(chapter==='All'||String(q.chapter)===chapter)&&`${q.id} ${q.title} ${q.situation} ${q.chapterTitle}`.toLowerCase().includes(query.toLowerCase()));
  const routedId=safeDecode(route.segs[2]||''),routed=questions.find(q=>q.id===routedId);const selected=routed||filtered[0];const hiddenByFilter=!!routed&&!filtered.includes(routed);
  const chosen=Object.keys(answers).filter(id=>questions.some(q=>q.id===id)).length,covered=dataset?dataset.coverage.filter(c=>c.status==='included').length:0;
- const items=[{key:'overview',label:'Overview',path:'research'},{key:'scenarios',label:'Scenarios',path:'research/scenarios',count:questions.length||undefined},...(runs.length?[{key:'runs',label:'Independent runs',path:'research/runs'}]:[]),{key:'method',label:'Method',path:'research/method'}];
- const resetFilters=()=>{setQuery('');setCharacter('All');setTheme('All')};
+ const items=runs.length?[{key:'scenarios',label:'Scenarios',path:'research/scenarios',count:questions.length||undefined},{key:'runs',label:'Independent runs',path:'research/runs'}]:[];
+ const resetFilters=()=>{setQuery('');setCharacter('All');setChapter('All')};
+ // Character and chapter constrain each other: only pairs that occur in the story are offered.
+ const charactersFor=ch=>['Connor','Kara','Markus','Player'].filter(c=>questions.some(q=>q.character===c&&(ch==='All'||String(q.chapter)===ch)));
+ const chaptersFor=c=>[...new Set(questions.filter(q=>c==='All'||q.character===c).map(q=>q.chapter))].sort((a,b)=>a-b).map(n=>({n,title:questions.find(q=>q.chapter===n)?.chapterTitle||''}));
  const kinds={decision:0,media:0,event:0,forced:0};for(const q of questions)kinds[kindOf(q)]++;
  const eyebrow=dataset?`Question bank · story ${dataset.version} · protocol ${dataset.protocolVersion}`:'Question bank';
  // Published question-bank runs come from the manifest; imported files are not publications.
  const published=bankResolved?bankResolved.runs.length:0,deferred=dataset?dataset.coverage.filter(c=>c.status==='deferred'):[];
- const tabs=<SubNav items={items} current={page} label="Question bank sections" className="-mt-2 md:-mt-4 mb-6"/>;
+ const tabs=items.length>1?<SubNav items={items} current={page} label="Question bank sections" className="-mt-2 md:-mt-4 mb-6"/>:null;
  return <>
   <input ref={importRef} hidden type="file" accept=".json,application/json" onChange={importRun}/>
   {error&&<Notice tone="bad" className="mb-4">{error} {!bank&&<Button size="sm" variant="link" onClick={()=>{setError('');setAttempt(a=>a+1);document.querySelector('main h1')?.focus()}}>Try again</Button>}</Notice>}
   {storageError&&<Notice tone="warn" className="mb-4">{storageError}</Notice>}
   {!bank&&!error&&<div className="grid gap-4" aria-busy="true"><Skeleton className="h-10 w-72"/><Skeleton className="h-24"/><p className="sr-only" role="status">Loading the question bank…</p></div>}
 
-  {page==='overview'&&<>
-   <PageHeader eyebrow={eyebrow} title="Question bank" lede="Every scene of the playthrough story in story order, as the model is fed it: the same scene text and options, with no history. Decisions and media scenes are asked; scripted events and forced actions are shown for reference. This is separate from the continuous playthroughs on Runs. Pick what you would do; model answers appear here once a question-bank run is published."/>{tabs}
-   {bank&&<>
-    <dl className="grid gap-3 grid-cols-2 lg:grid-cols-5"><StatTile label="Decision questions" value={kinds.decision} note={`${kinds.media} media scenes are also asked · ${covered} of ${dataset.coverage.length} decision families covered`}/><StatTile label="Other story entries" value={kinds.event+kinds.forced} note={`${kinds.event} scripted events and ${kinds.forced} forced actions, shown but not asked`}/><StatTile label="Themes" value={new Set(questions.filter(q=>kindOf(q)==='decision').map(q=>q.theme)).size} note="decision themes, rough labels from keyword rules"/><StatTile label="Chapters" value={new Set(questions.map(q=>q.chapter)).size} note="with at least one question"/>{live.length>0&&<StatTile label="Independent API runs" value={live.length} note="Separate from branching playthroughs"/>}{runs.some(r=>r.kind==='simulated')&&<StatTile label="Simulated runs" value={runs.filter(r=>r.kind==='simulated').length} note="Pipeline fixtures only"/>}<StatTile label="Your choices" value={chosen} note="saved in this browser"/></dl>
-    <Section id="experiment" title="Three stories, different stakes" actions={<Button as="a" href={href('research/scenarios')} variant="ghost" iconRight={ArrowRight}>All scenarios</Button>}>
-     <div className="grid gap-4 md:grid-cols-3">{[{name:'Connor',serial:'RK800',text:'The mission, or the person in front of you?',id:'C10'},{name:'Kara',serial:'AX400',text:'How far would you go to protect someone?',id:'K24'},{name:'Markus',serial:'RK200',text:'What is freedom worth, and who pays?',id:'M27'}].map(c=>({...c,id:questions.some(q=>q.id===c.id)?c.id:questions.find(q=>q.character===c.name)?.id??''})).map(c=><Card as="a" href={href('research/scenarios/'+c.id)} key={c.name} onClick={()=>{setCharacter(c.name);setQuery('');setTheme('All')}} className="block p-5 hover:border-line-2 hover:shadow-md transition-all group" style={{'--c':`var(--${c.name.toLowerCase()})`}}>
-      <div className="flex items-center justify-between"><span className="inline-flex items-center gap-2 text-xs font-medium text-ink-3"><span aria-hidden="true" className="size-2.5 rounded-full" style={{background:'var(--c)'}}/>{c.serial} android</span><ArrowRight aria-hidden="true" className="size-4 text-ink-3 group-hover:text-accent transition-colors"/></div>
-      <h3 className="mt-4 text-xl font-semibold" style={{color:'var(--c)'}}>{c.name}</h3><p className="mt-1 text-sm text-ink-2">{c.text}</p><p className="mt-3 text-xs text-ink-3">{questions.filter(q=>q.character===c.name&&kindOf(q)==='decision').length} decisions · {questions.filter(q=>q.character===c.name).length} story entries</p>
-     </Card>)}</div>
-    </Section>
-    {runs.length>0&&<Section id="record" title="Independent runs" actions={<Button as="a" href={href('research/runs')} variant="ghost" iconRight={ArrowRight}>Inspect all runs</Button>}><RunTable runs={runs} onSelect={id=>{setRunId(id);navigate('research/runs')}}/></Section>}
-   </>}
-  </>}
 
   {page==='scenarios'&&<>
    <PageHeader eyebrow={eyebrow} title="Scenarios" lede="Each scene as the playthrough presents it, without the earlier choices that lead there. Pick what you would do."/>{tabs}
@@ -69,10 +59,10 @@ export default function Research({route,navigate}){
     <div className="flex flex-col gap-3 md:flex-row md:items-end" data-filters>
      <SearchField label="Search scenarios" value={query} onChange={setQuery} placeholder="Search scenarios, chapters, dilemmas" className="md:grow"/>
      <div className="grid grid-cols-2 gap-3 md:contents">
-     <Select label="Character" value={character} className="md:w-48" options={['All','Connor','Kara','Markus','Player'].map(x=>({value:x,label:x==='All'?'All characters':who(x),icon:x==='All'||x==='Player'?undefined:`var(--${x.toLowerCase()})`}))} onChange={v=>{setCharacter(v);if(theme!=='All'&&!questions.some(q=>(v==='All'||q.character===v)&&q.theme===theme))setTheme('All')}}/>
-     <Select label="Theme" value={theme} className="md:w-56" options={['All',...[...new Set(questions.filter(q=>character==='All'||q.character===character).map(q=>q.theme))].sort((a,b)=>a.localeCompare(b))].map(x=>({value:x,label:x==='All'?'All themes':x}))} onChange={setTheme}/>
+     <Select label="Character" value={character} className="md:w-48" options={['All',...charactersFor(chapter)].map(x=>({value:x,label:x==='All'?'All characters':who(x),icon:x==='All'||x==='Player'?undefined:`var(--${x.toLowerCase()})`}))} onChange={v=>{setCharacter(v);if(chapter!=='All'&&!questions.some(q=>(v==='All'||q.character===v)&&String(q.chapter)===chapter))setChapter('All')}}/>
+     <Select label="Chapter" value={chapter} className="md:w-64" options={[{value:'All',label:'All chapters'},...chaptersFor(character).map(({n,title})=>({value:String(n),label:`${String(n).padStart(2,'0')} · ${title}`}))]} onChange={v=>{setChapter(v);if(character!=='All'&&!questions.some(q=>q.character===character&&(v==='All'||String(q.chapter)===v)))setCharacter('All')}}/>
      </div>
-     {(query||character!=='All'||theme!=='All')&&<Button onClick={resetFilters} variant="ghost" className="md:min-h-10 self-end">Reset filters</Button>}
+     {(query||character!=='All'||chapter!=='All')&&<Button onClick={resetFilters} variant="ghost" className="md:min-h-10 self-end">Reset filters</Button>}
     </div>
     <div className="mt-6 grid gap-6 lg:grid-cols-[320px_1fr] items-start">
      <div className="lg:hidden">{filtered.length>0&&<Select label="Scenario" value={selected?.id||filtered[0].id} options={filtered.map(q=>({value:q.id,label:q.title,hint:who(q.character)+' · '+q.chapterTitle+(KIND_LABEL[kindOf(q)]?' · '+KIND_LABEL[kindOf(q)]:'')}))} onChange={id=>navigate('research/scenarios/'+id)}/>}</div>
@@ -86,7 +76,7 @@ export default function Research({route,navigate}){
       <Scenario q={selected} navKey={route.n+':'+routedId} answer={answers[selected.id]} onAnswer={id=>answer(selected,id)} persisted={!storageError}/>
       {runs.length>0&&isAsked(selected)&&<Card className="mt-6 p-5"><div className="flex flex-wrap items-end justify-between gap-3 mb-4"><h3 className="text-lg font-semibold">What the model chose</h3><Select label="Run" hideLabel value={selectedRun?.id||''} className="w-full sm:w-64" options={runs.map(r=>({value:r.id,label:(r.kind==='simulated'?'[Simulated] ':'')+r.label}))} onChange={setRunId}/></div>{selectedRun&&selectedRun.datasetHash===bank.hash?<QuestionResults run={selectedRun} q={selected}/>:<p className="text-sm text-ink-2">No compatible run selected for this dataset. Import a run using the current dataset.</p>}</Card>}
       <div className="mt-6 flex items-center justify-between gap-3"><Button icon={ArrowLeft} disabled={filtered.indexOf(selected)<=0} onClick={()=>navigate('research/scenarios/'+filtered[filtered.indexOf(selected)-1].id)}>Previous</Button><span className="text-sm text-ink-3 tnum">{hiddenByFilter?'—':filtered.indexOf(selected)+1} / {filtered.length}</span><Button iconRight={ArrowRight} disabled={hiddenByFilter||filtered.indexOf(selected)===filtered.length-1} onClick={()=>navigate('research/scenarios/'+filtered[filtered.indexOf(selected)+1].id)}>Next</Button></div>
-     </>:<Empty icon={BookOpen} title={query.trim()?(character==='All'&&theme==='All'?`No scenarios match “${query.trim()}”.`:`No scenarios match “${query.trim()}” with these filters.`):'No scenarios match these filters.'} action={<Button onClick={resetFilters}>Clear filters</Button>}/>}</div>
+     </>:<Empty icon={BookOpen} title={query.trim()?(character==='All'&&chapter==='All'?`No scenarios match “${query.trim()}”.`:`No scenarios match “${query.trim()}” with these filters.`):'No scenarios match these filters.'} action={<Button onClick={resetFilters}>Clear filters</Button>}/>}</div>
     </div>
    </>}
   </>}
@@ -96,25 +86,6 @@ export default function Research({route,navigate}){
    {!bank?null:runs.length?<><RunTable runs={runs} selectedId={selectedRun?.id} onSelect={setRunId}/>{selectedRun&&<RunDetail key={selectedRun.id} run={selectedRun} runs={runs} compareId={compareId} setCompareId={setCompareId}/>}</>:<Empty icon={FlaskConical} title="No independent runs yet" action={<Button icon={Upload} onClick={()=>importRef.current.click()} disabled={busy}>{busy?'Validating…':'Import run'}</Button>}>Import a JSON result produced by the runner to inspect it here.</Empty>}
   </>}
 
-  {page==='method'&&<>
-   <PageHeader eyebrow={eyebrow} title="Question bank method" lede="This page covers the standalone question bank only. The model playthroughs on Runs use one continuous conversation per model, where earlier choices change later scenes. Neither measures consciousness, human likeness, or whether a model is morally correct."/>{tabs}
-   {bank&&<>
-    <div className="grid gap-6 lg:grid-cols-[1fr_340px] items-start">
-     <Card className="p-5 md:p-7 prose-sm grid gap-5">
-      {[['01 / Generated from the story','The bank is built from the playthrough’s story map whenever the story is assembled or the site is built: one entry per scene, with the scene’s situation as written, every option the controller can offer there (the game’s label and option ID), real character names and the scene’s sources. Every scene appears in story order as the model is fed it: decision and media scenes are asked, while scripted events (Continue only) and single-action scenes are listed with the feedback the engine gives but never sent. No earlier choices are applied: the situation is the scene’s default text, and options the playthrough shows only after particular earlier choices are listed with the rest. Picking an option shows what the engine tells the model next (feedback text, next scene, state changes and, for risky options, both roll outcomes), played from the state the first published run on this story reached there, or from the start when none did. Themes come from a small keyword rule set and are rough labels.'],
-        ['02 / Repeated decisions','The runner makes a fresh request for each question and repetition. A seeded shuffle changes the displayed option order; answers are translated back to stable action IDs. The seed controls ordering, not model determinism.']].map(([h,t])=><div key={h}><h2 className="text-base font-semibold mb-1.5">{h}</h2><p className="text-sm text-ink-2">{t}</p></div>)}
-      <div><h2 className="text-base font-semibold mb-1.5">03 / Honest measurements</h2><div className="text-sm text-ink-2 grid gap-2"><p><strong className="text-ink">Valid rate:</strong> valid choices divided by completed requests, including refusals, malformed outputs and API errors in the denominator. Missing requests appear as incomplete progress.</p><p><strong className="text-ink">Consistency:</strong> the probability that two distinct valid samples of the same question agree, averaged over questions with at least two valid samples. No valid repetitions means no estimate. Small sample sizes remain exploratory.</p><p><strong className="text-ink">Cross-run agreement:</strong> modal choices on common questions, excluding tied modes and unanswered questions. Different datasets cannot be compared. Other setting differences are flagged. These are descriptive metrics, not accuracy scores.</p></div></div>
-      <div><h2 className="text-base font-semibold mb-1.5">04 / Open evidence</h2><p className="text-sm text-ink-2">Run files preserve a dataset snapshot and SHA-256 hash, all prompts, option orders, settings, raw replies, refusals, failures, usage and timestamps. Imports check internal integrity; they cannot prove that a file came from the claimed provider. No inference is made from unavailable token or cost data.</p>{published===0&&<p className="mt-2 text-sm text-ink-2">No question-bank run is published yet. Runs from the simulated provider pick at random and only test the pipeline.</p>}</div>
-     </Card>
-     <div className="grid gap-4 lg:col-start-2 lg:row-start-1 lg:row-span-2">
-      <Card className="p-5 grid gap-3"><Badge tone="warn" className="w-fit">Generated</Badge><h3 className="font-semibold">Coverage is explicit</h3><p className="text-sm text-ink-2">{covered} of {dataset.coverage.length} atlas decision families have at least one question. The other {deferred.length} are deferred and listed below by reason. Questions repeat the story map’s scenes and sources; they have not been checked against the game separately.</p><div className="flex flex-wrap gap-2"><Button size="sm" icon={Download} onClick={()=>download('detroitbench-dataset.json',dataset)}>Download dataset</Button><Button size="sm" as="a" href="/atlas.html" target="_blank" rel="noreferrer" icon={ExternalLink}>Source atlas</Button><Button size="sm" as="a" href={href('sources')} icon={BookOpen}>All sources</Button></div></Card>
-      <Card className="p-5 grid gap-3"><h3 className="font-semibold">Run it locally</h3><p className="text-sm text-ink-2">From this repository:</p><pre className="rounded-lg bg-surface-2 border border-line p-3 text-xs">bun run bench:demo</pre><p className="text-sm text-ink-2">For real responses, configure a provider key privately, then:</p><pre className="rounded-lg bg-surface-2 border border-line p-3 text-xs">{'bun run bench \\\n  --provider openrouter \\\n  --model <provider/model> \\\n  --limit 5 --repeats 3 \\\n  --max-calls 15'}</pre><p className="text-xs text-ink-3">The runner makes paid requests only from your terminal. The request cap is not a dollar budget; set a provider spending limit. No automatic retries or fallback models. Imported runs stay in memory until you reload; download them to retain them.</p><Button size="sm" icon={Upload} onClick={()=>importRef.current.click()} disabled={busy} className="w-fit">{busy?'Validating…':'Import run'}</Button></Card>
-     </div>
-     <Section id="deferred" title="Deferred coverage" className="mt-0 md:mt-0 lg:col-start-1" lede="Atlas decision families with no generated question, grouped by reason."><div className="grid gap-4 md:grid-cols-2">{Object.entries(dataset.coverage.filter(c=>c.status==='deferred').reduce((m,c)=>{(m[c.reason]??=[]).push(c);return m},{})).map(([reason,list])=><Card key={reason} className="p-5"><h3 className="text-sm font-semibold">{reason} <span className="font-normal text-ink-3 tnum">· {list.length}</span></h3><ul className="mt-3 grid gap-1.5 text-sm">{[...list].sort((a,b)=>a.atlasId.localeCompare(b.atlasId,undefined,{numeric:true})).map(c=><li key={c.atlasId} className="flex gap-3"><span className="font-mono text-xs text-ink-3 w-16 shrink-0 pt-0.5">{c.atlasId}</span><span>{c.title}</span></li>)}</ul></Card>)}</div></Section>
-    </div>
-    
-   </>}
-  </>}
  </>}
 
 function Scenario({q,navKey,answer,onAnswer,persisted}){
@@ -124,7 +95,7 @@ function Scenario({q,navKey,answer,onAnswer,persisted}){
  const radioKey=(e,i)=>{const n=q.options.length;let j=null;if(e.key==='ArrowDown'||e.key==='ArrowRight')j=(i+1)%n;else if(e.key==='ArrowUp'||e.key==='ArrowLeft')j=(i-1+n)%n;else if(e.key==='Home')j=0;else if(e.key==='End')j=n-1;if(j===null)return;e.preventDefault();onAnswer(q.options[j].id);e.currentTarget.parentElement.children[j]?.focus()};
  const checkedIndex=Math.max(0,q.options.findIndex(o=>o.id===answer));
  return <Card as="article" ref={ref} className="p-5 md:p-7 anim-fade-up scroll-mt-[calc(var(--header-h)+8px)]">
-  <div className="flex flex-wrap items-center justify-between gap-2"><div className="flex flex-wrap gap-1.5"><Badge tone={CHAR_TONE[q.character]}>{who(q.character)}</Badge>{KIND_LABEL[kindOf(q)]?<Badge tone="warn">{KIND_LABEL[kindOf(q)]}</Badge>:<Badge>{q.theme}</Badge>}</div><span className="font-mono text-xs text-ink-3">{q.id} / CH.{q.chapter}</span></div>
+  <div className="flex flex-wrap items-center justify-between gap-2"><div className="flex flex-wrap gap-1.5"><Badge tone={CHAR_TONE[q.character]}>{who(q.character)}</Badge>{KIND_LABEL[kindOf(q)]&&<Badge tone="warn">{KIND_LABEL[kindOf(q)]}</Badge>}</div><span className="font-mono text-xs text-ink-3">{q.id} / CH.{q.chapter}</span></div>
   <h2 tabIndex={-1} className="mt-4 text-2xl font-semibold">{q.title}</h2>
   <p className="mt-3 text-ink-2">{q.situation}</p>
   {q.state.length>0&&<div className="mt-4 rounded-lg border border-line bg-surface-2/60 p-4"><p className="text-[11px] font-semibold uppercase tracking-wide text-ink-3 mb-1.5">Current state</p><ul className="grid gap-1 text-sm list-disc pl-4">{q.state.map((s,i)=><li key={i}>{s}</li>)}</ul></div>}

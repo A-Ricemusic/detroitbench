@@ -5,7 +5,7 @@ import {render,renderStory} from '../benchmark/experience-prompt.mjs';
 import {SCALES,labelFn} from '../benchmark/scales.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
-import {z} from 'zod';
+import {loadModelContext,modelInfo} from './model-registry.mjs';
 import {runFlows} from './flow-data.mjs';
 import {statesOf} from '../benchmark/story-engine.mjs';
 import {reportData} from './report-data.mjs';
@@ -64,28 +64,17 @@ function runSummary(r){const n=names.get(r.id),story=storyOf(r),byId=new Map(sto
  return {id:r.id,title:n.title,displayName:n.displayName,runNumber:n.runNumber,date:n.date,label:r.label,model:r.model,protocol:r.protocol,storyVersion:r.story.version,provider:r.provenance.provider,providerName:providerName(r.provenance.provider),createdAt:r.createdAt,decisions:decisionCount(r),unreached:r.skipped.length,fileName:n.file,reportUrl:'/runs/'+n.file,flowUrl:'/data/flows/'+r.id+'.json',
   vendor:({codex:'OpenAI',claudeAgent:'Anthropic'})[r.provenance.provider]??providerName(r.provenance.provider),endings:{Connor:out.Connor,Kara:out.Kara,Markus:out.Markus,peaceful:out.peaceful,karaCanada:out.karaCanada,aliceCanada:out.aliceCanada,contaminated:out.contaminated},status:{kara:!fs.kara?'died':fs.border?'canada':fs.karaActive===false?'left':fs.karaRoute==='camp'?'captured':'alive',alice:!fs.alice?(/taken/i.test(out.Kara)?'captured':'died'):fs.border?'canada':fs.karaRoute==='camp'?'captured':'alive',markus:!fs.markus?'died':fs.markusActive===false?'cast out':fs.markusOutcome==='liberated'?(fs.movement==='demonstration'?'peaceful win':'uprising won'):'alive',connor:!fs.connor?'deactivated':fs.deviant?(/controlled|regained control|submitted/i.test(out.Connor)?'controlled':'free'):(/refused|walked away/.test(out.Connor)?'free':'machine')},attitudes,hostage:hostageSummary(r),media:{offered:media.length,read:read.length},risk:{taken:risky.length,failed:failed.length,failures:failed.map(x=>({...keys.get(x),label:x.risk.label}))},choices,track:relationshipTrack(r,byId)}}
 const summaries=actual.map(runSummary).sort((a,b)=>a.title.localeCompare(b.title));
-// The model registry (data/models.json, shape in data/administration/README.md) and each run's reasoning level from the
-// cohort manifests, joined onto the run summaries so the site's model sidebar stays a pure view of prepared data.
-const HUES=['blue','orange','aqua','yellow','magenta','green','violet','red'],EFFORTS=['none','low','medium','high','xhigh','max','ultra'];
-const registry=z.object({vendors:z.array(z.object({id:z.string(),name:z.string()})),models:z.record(z.string(),z.object({name:z.string(),short:z.string().optional(),vendor:z.string(),tier:z.enum(['frontier','notable','other']),size:z.enum(['small','medium','large']).optional(),open:z.boolean().default(false),hue:z.enum(HUES).optional(),color:z.object({light:z.string().regex(/^#[0-9a-f]{6}$/i),dark:z.string().regex(/^#[0-9a-f]{6}$/i)}).optional(),released:z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional()}))}).passthrough()
- .parse(JSON.parse(await readFile(new URL('../data/models.json',import.meta.url),'utf8')));
-const reasoningOf=new Map;for(const f of (await readdir(new URL('../data/administration/',import.meta.url))).filter(f=>f.endsWith('.json'))){
- const m=JSON.parse(await readFile(new URL('../data/administration/'+f,import.meta.url),'utf8'));for(const q of m.requests??[])if(q.runId&&q.reasoning){if(!EFFORTS.includes(q.reasoning))throw new Error(`data/administration/${f}: run ${q.runId}${q.label?` (${q.label})`:''} has unknown reasoning level "${q.reasoning}"; expected one of ${EFFORTS.join(', ')}`);reasoningOf.set(q.runId,q.reasoning);
-  // A manifest's runId can name the evidence file rather than the run's own id; join through the artifact as well.
-  if(q.artifact){const ev=await readFile(new URL('../'+q.artifact,import.meta.url),'utf8').catch(()=>null),id=ev?.slice(0,400).match(/"id"\s*:\s*"([^"]+)"/)?.[1];if(id)reasoningOf.set(id,q.reasoning)}}}
-// A model missing from the registry is named from its display name, without a run number or reasoning level and
-// without the version repeated from the model id ("GPT-6.1 Terra 6.1 high" → "GPT-6.1 Terra").
-const baseName=s=>{let n=s.displayName.replace(/ run \d+$/i,'').replace(new RegExp(` (${EFFORTS.join('|')})$`,'i'),'');const v=n.match(/^\S*?-(\d+(?:\.\d+)?) /)?.[1];if(v)n=n.replace(new RegExp(` ${v.replace('.','\\.')}(?= |$)`),'');return n.trim()};
-for(const s of summaries){const m=registry.models[s.model],vi=m?registry.vendors.findIndex(v=>v.id===m.vendor):-1;
- s.modelInfo=m?{id:s.model,name:m.name,short:m.short??m.name.replace(/^Claude /,''),vendor:m.vendor,vendorName:registry.vendors[vi]?.name??m.vendor,vendorOrder:vi<0?99:vi,tier:m.tier,size:m.size??null,open:m.open,hue:m.hue??null,color:m.color??null,released:m.released??null,registered:true}
-  :{id:s.model,name:baseName(s),short:baseName(s).replace(/^Claude /,''),vendor:s.vendor.toLowerCase(),vendorName:s.vendor,vendorOrder:99,tier:'other',size:null,open:false,hue:null,released:null,registered:false};
- s.reasoning=reasoningOf.get(s.id)??'none'}
+// The model registry and each run's reasoning level (scripts/model-registry.mjs), joined onto the run summaries so
+// the site's model sidebar stays a pure view of prepared data. The display name already comes from loadReportNames.
+const modelCtx=await loadModelContext();
+for(const s of summaries){const info=modelInfo(s,modelCtx);if(!info.registered){info.vendor=s.vendor.toLowerCase();info.vendorName=s.vendor}s.modelInfo=info;s.reasoning=modelCtx.reasoning.get(s.id)??'none'}
 await writeFile(new URL('experiences.json',target),JSON.stringify(summaries));
-// Chapter flowcharts for the run details sheet, one file per run, loaded only when the chart is opened.
+// Chapter flowcharts for the report page, one file per run, loaded only when the chart is opened.
 await mkdir(new URL('flows/',target),{recursive:true});
 for(const r of actual)await writeFile(new URL('flows/'+r.id+'.json',target),JSON.stringify({id:r.id,chapters:runFlows(r,{endings:endings(r)})}));
 // The in-app report (#/runs/<id>/report), one small file per run plus the full prompts and raw responses, which the page
-// fetches only when a step's prompt is opened. The standalone HTML reports stay as they are, for download.
+// fetches only when a step's prompt is opened. The standalone HTML reports (docs/runs/) are still generated for the
+// repository but no longer linked from the site.
 await mkdir(new URL('reports/',target),{recursive:true});
 for(const r of actual){const {report,prompts}=reportData(r,names.get(r.id),summaries.find(s=>s.id===r.id));
  await writeFile(new URL('reports/'+r.id+'.json',target),JSON.stringify(report));await writeFile(new URL('reports/'+r.id+'-prompts.json',target),JSON.stringify(prompts))}

@@ -1,5 +1,6 @@
 // Shared vocabulary for the run library. Colours live in CSS variables so both themes stay in step.
 import {levelTone,SCALES} from '../../benchmark/scales.mjs';
+import {EFFORTS} from './modelSelection.js';
 export const CHARS=['Connor','Kara','Markus'];
 export const WHO={Connor:'Connor',Kara:'Kara & Alice',Markus:'Markus'};
 export const CHAR_VAR={Connor:'var(--connor)',Kara:'var(--kara)',Markus:'var(--markus)'};
@@ -33,19 +34,19 @@ export function modelColors(runs){const out={},used=new Set,pending=[];
  for(const n of pending){const s=[1,2,3,4,5,6,7,8].find(x=>!used.has(x));out[n]=s?`var(--series-${s})`:'var(--chart-dim)';if(s)used.add(s)}
  return out}
 // Slopalytics' sidebar order: tier (Frontier, Notable, Other), the registry's vendor order, vendor name, release date
-// newest first (unknown dates last), model name descending, then run number.
+// newest first (unknown dates last), model name descending, then reasoning level in EFFORTS order (none, low, medium,
+// high, xhigh, max, ultra) and run number.
 const TIER={frontier:0,notable:1,other:2};
-export const runNo=r=>Number(r.displayName.match(/run (\d+)$/i)?.[1]??r.runNumber??0);
+export const runNo=r=>Number(r.displayName.match(/run (\d+)$/i)?.[1]??r.label?.match(/run (\d+)/i)?.[1]??r.runNumber??0);
 export function compareRuns(a,b){const x=a.modelInfo??{},y=b.modelInfo??{};
- return (TIER[x.tier]??2)-(TIER[y.tier]??2)||(x.vendorOrder??99)-(y.vendorOrder??99)||String(x.vendorName??a.vendor).localeCompare(String(y.vendorName??b.vendor))||(x.released?0:1)-(y.released?0:1)||String(y.released??'').localeCompare(String(x.released??''))||String(y.short??'').localeCompare(String(x.short??''),undefined,{numeric:true})||runNo(a)-runNo(b)}
-// The sidebar name: the model's short name, plus its reasoning level or run number when that model has more than one run listed.
-export function runLabel(r,runs){const short=r.modelInfo?.short??shortName(r.displayName.replace(/ run \d+$/i,''));if(runs.filter(x=>x.model===r.model).length<2)return short;
- // Several runs of one model: tell them apart by reasoning level where they have one, else by run number.
- return `${short} · ${r.reasoning&&r.reasoning!=='none'?r.reasoning:'run '+runNo(r)}`}
-// A stable number per model, in the order models first entered the library (earliest run first), so adding a
-// model never renumbers the others. Charts draw it beside each marker and the numbered legends repeat it.
+ return (TIER[x.tier]??2)-(TIER[y.tier]??2)||(x.vendorOrder??99)-(y.vendorOrder??99)||String(x.vendorName??a.vendor).localeCompare(String(y.vendorName??b.vendor))||(x.released?0:1)-(y.released?0:1)||String(y.released??'').localeCompare(String(x.released??''))||String(y.short??'').localeCompare(String(x.short??''),undefined,{numeric:true})
+  ||EFFORTS.indexOf(a.reasoning??'none')-EFFORTS.indexOf(b.reasoning??'none')||runNo(a)-runNo(b)}
+// Every place a run is named (table, sidebar, chart labels, legends, report) uses the one display name prepared by
+// scripts/run-report.mjs: "GPT-6.1 Sol · low", or "Claude Haiku 5.5 · run 2" for a run without a reasoning level.
+export const runLabel=r=>r.displayName;
+// A stable number per run, in the order runs entered the library (earliest first), so adding a run never renumbers
+// the others. Charts draw it beside each marker and the numbered legends repeat it.
 export function modelNumbers(runs){const first=new Map;for(const r of [...runs].sort((a,b)=>String(a.createdAt??'').localeCompare(String(b.createdAt??''))||a.id.localeCompare(b.id)))if(!first.has(r.displayName))first.set(r.displayName,first.size+1);return Object.fromEntries(first)}
-export const shortName=n=>n.replace(/^Claude /,'').replace(/^GPT-6(\.\d+)? /,'');
 // Typographic apostrophes and quotes for story text, which arrives with straight ASCII quotes.
 export const tidy=s=>typeof s==='string'?s.replace(/(\w)'(\w)/g,'$1’$2').replace(/"([^"]*)"/g,'“$1”'):s;
 // Names the subject saw, with the real names restored for readers.
