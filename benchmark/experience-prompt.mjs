@@ -17,7 +17,10 @@ export const NAMES={
  Traci:['Traci','club android'],Tracis:['Tracis','club androids'],Canada:['Canada','the country across the river'],Detroit:['Detroit','City'],Warren:['Warren','Hale'],
  Bellini:['Bellini','Corsini'],Gavin:['Gavin','Brandt'],Chris:['Chris','Owen'],
  // The Hostage's scan texts: the Phillips family and the dead officer.
- Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor']
+ Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor'],
+ // The Nest: the food truck's owner and the gambler (with the surnames their scans show), the suspect's forged surname
+ // (its initials stay R.T. in both modes) and the sign the deviants write.
+ Pedro:['Pedro','Paolo'],Aabdar:['Aabdar','Haddad'],Gary:['Gary','Walt'],Kayes:['Kayes','Brook'],Travis:['Travis','Tanner'],RA9:['rA9','zK7']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));

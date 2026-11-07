@@ -126,8 +126,19 @@
    "id": 15,
    "title": "The Nest",
    "character": "Connor",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 to the PowerPyx 100% chart (31 nodes, the bracket INVESTIGATE APARTMENT) and the game’s text (the detroitbecometext template: 8 prompts, 26 options, 18 clues, 12 arrows). LUNCH BREAK → JOIN HANK → TALK TO HANK (or HANK INSULTS CONNOR if Connor died in On the Run) → IN THE ELEVATOR → INTO THE NEST → [ INVESTIGATE APARTMENT ] → HANK AND CONNOR LEAVE THE APARTMENT → RUPERT NOT FOUND, or FIND RUPERT → CHASE RUPERT → GAINING ON RUPERT → RUPERT PUSHES HANK → FOLLOW RUPERT (RUPERT COMMITTED SUICIDE) / SAVE HANK (RUPERT GOT AWAY); LOSE SIGHT OF RUPERT (RUPERT GOT AWAY); CONNOR DIED (CONNOR DIED CHASING RUPERT). Hank arrows: insult −1, APOLOGIZE FOR BEHAVIOR +1, CHOLESTEROL +1, COMPANY +1, homework LIE −1, SINCERE +1, PSYCHOLOGICAL +1, COLD −1, SAVE HANK +2, CHASE DEVIANT −2; instability SAVE +2, CHASE −2, timeout −4/−4 (wiki), chase deaths −1 (ladder −2). No public opinion; Amanda reacts in Russian Roulette. Cross-chapter: the diary and Rupert’s body (Last Chance, Connor), the rA9 writing, the forged ID and saving Hank (Russian Roulette), Rupert escaped (Crossroads). Researched in docs/research/ch15-the-nest.md.",
+   "source": "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-5.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-6.jpg"
+   ]
   },
   {
    "id": 16,
@@ -3033,31 +3044,510 @@
    "status": "Source-backed summary"
   },
   {
-   "id": "C10",
+   "id": "NS01",
    "chapter": 15,
    "character": "Connor",
-   "title": "Save Hank or catch Rupert?",
-   "context": "Hank is hanging from a rooftop during the chase.",
+   "title": "Lunch Break (checkpoint), Join Hank, or Hank Insults Connor",
+   "context": "At the Chicken Feed food truck. If Connor died in On the Run, the replacement finds Hank, who insults him (“Are you gonna come back like this every time you get killed?”) and the whole conversation is skipped.",
    "options": [
     {
-     "label": "Save Hank",
-     "effect": "Rupert escapes; Hank’s trust increases.",
+     "label": "Arrive together",
+     "effect": "Hank, Gary and Pedro’s horse-race tip; the conversation follows.",
+     "target": "NS02"
+    },
+    {
+     "label": "Connor finds Hank (Connor died in On the Run)",
+     "effect": "HANK INSULTS CONNOR: Hank small down; straight to In the Elevator.",
+     "target": "NS06"
+    }
+   ],
+   "gate": "Chapter start, after Jericho. Which variant plays depends on On the Run.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg"
+   ],
+   "note": "Template condition group: lock “Connor didn’t die in On The Run” / death unlock “Connor died in On The Run” (Hank SmallDown).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10a",
+     "C10b"
+    ],
+    "status": "implemented",
+    "note": "Two event scenes, gated on a Connor death on the highway (read from C09 until chapter 13 sets `ch13ConnorDied`). C10b applies Hank −1."
+   }
+  },
+  {
+   "id": "NS02",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "Analyze Environment",
+   "context": "Two optional scan prompts at the truck: Pedro, Hank, Gary and the expired food hygiene license; then Hank’s soda and hamburger at the table.",
+   "options": [
+    {
+     "label": "Scan Pedro / Hank / Gary / license",
+     "effect": "The game’s scan text; Pedro and Gary unlock COMPANY.",
      "target": null
     },
     {
-     "label": "Chase Rupert",
-     "effect": "Rupert dies by suicide; his body becomes evidence.",
-     "target": "C20"
+     "label": "Scan soda / hamburger",
+     "effect": "The game’s scan text; the hamburger unlocks CHOLESTEROL.",
+     "target": null
+    },
+    {
+     "label": "Go on",
+     "effect": "Hank turns to Connor / Connor joins Hank at the table.",
+     "target": "NS03"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/"
+   "gate": "Arrive-together path only.",
+   "kind": "State gate",
+   "dependsOn": [
+    "NS01"
    ],
-   "note": "Hank survives the alternative too; the prompt should disclose only Connor’s immediate estimate of risk.",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg"
+   ],
+   "note": "Chart node ANALYZE ENVIRONMENT (filled when every item is scanned, wiki). No stat effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10c",
+     "C10c2",
+     "C10c3",
+     "C10c4",
+     "C10c5",
+     "C10e",
+     "C10e2",
+     "C10e3"
+    ],
+    "status": "implemented",
+    "note": "Two scan menus, one scan per visit, unrolled into one scene per visit; facts go to Connor’s knowledge."
+   }
+  },
+  {
+   "id": "NS03",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "Talk to Hank: the first menu",
+   "context": "Hank: “What is your problem? Don’t you ever do as you’re told?”",
+   "options": [
+    {
+     "label": "APOLOGIZE FOR BEHAVIOR",
+     "effect": "Hank small up.",
+     "target": "NS04"
+    },
+    {
+     "label": "PARTNERS",
+     "effect": "No effect.",
+     "target": "NS04"
+    },
+    {
+     "label": "RECONCILE",
+     "effect": "No effect.",
+     "target": "NS04"
+    },
+    {
+     "label": "REVIEW FACTS",
+     "effect": "No effect.",
+     "target": "NS04"
+    }
+   ],
+   "gate": "Arrive-together path only.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "NS01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Template choice group; chart node TALK TO HANK.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10d"
+    ],
+    "status": "implemented",
+    "note": "APOLOGIZE FOR BEHAVIOR +1 Hank."
+   }
+  },
+  {
+   "id": "NS04",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "At the table: small talk",
+   "context": "Hank eats; Connor can make several remarks before getting down to business.",
+   "options": [
+    {
+     "label": "[GAMBLING]",
+     "effect": "No effect (unlocked by watching Hank with Pedro).",
+     "target": null
+    },
+    {
+     "label": "[CHOLESTEROL]",
+     "effect": "WARN HANK ABOUT CHOLESTEROL: Hank small up (needs the hamburger scan).",
+     "target": null
+    },
+    {
+     "label": "[COMPANY]",
+     "effect": "WARN HANK ABOUT HIS FRIENDS: Hank small up (needs Pedro and Gary scanned).",
+     "target": null
+    },
+    {
+     "label": "HABIT / FREE MEAL / ENJOY YOUR MEAL / AREA",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Arrive-together path only.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "NS02",
+    "NS03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Relationship Stat: “two increases possible”. How many lines the game allows is not published.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10f",
+     "C10f2",
+     "C10f3"
+    ],
+    "status": "simplified",
+    "note": "Up to three lines, each once, with the choice to stop from the second; the cap of three is the benchmark’s."
+   }
+  },
+  {
+   "id": "NS05",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "Down to business, the Emma question and Be Frank with Hank",
+   "context": "[HIGHWAY] / ABOUT CONNOR / HANK AND ANDROIDS / DEVIANTS; “You ever dealt with deviants before?”; “So, I guess you’ve done all your homework, right?”",
+   "options": [
+    {
+     "label": "[HIGHWAY]",
+     "effect": "Only if Connor obeyed Hank on the highway in On the Run. No effect.",
+     "target": null
+    },
+    {
+     "label": "Emma: TRUTH / LIE",
+     "effect": "Only if Emma died in The Hostage; otherwise Connor answers that he saved her. No effect.",
+     "target": null
+    },
+    {
+     "label": "Homework TRUTH, then SINCERE / PSYCHOLOGICAL / COLD",
+     "effect": "Hank small up / small up / small down.",
+     "target": null
+    },
+    {
+     "label": "Homework LIE",
+     "effect": "Hank small down; ends the conversation.",
+     "target": "NS06"
+    }
+   ],
+   "gate": "Arrive-together path only.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "NS04",
+    "C09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart node BE FRANK WITH HANK. The wiki’s claim that SINCERE raises the bar more is not in the template (both small up).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10g",
+     "C10h",
+     "C10i",
+     "C10j",
+     "C10k"
+    ],
+    "status": "implemented",
+    "note": "[HIGHWAY] read from C09 until chapter 13 sets `ch13ConnorObeyed`; the Emma branch from `emma`."
+   }
+  },
+  {
+   "id": "NS06",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "In the Elevator (checkpoint), Examine Feathers, Into the Nest",
+   "context": "The report of a man hiding an LED under his cap; feathers in the corridor; Hank kicks the door in.",
+   "options": [
+    {
+     "label": "Examine the feathers",
+     "effect": "FEATHERS: Columba livia, rock pigeon.",
+     "target": null
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": "NS07"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "NS01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg"
+   ],
+   "note": "EXAMINE FEATHERS is an optional side branch on the chart.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10l",
+     "C10m",
+     "C10n"
+    ],
+    "status": "implemented",
+    "note": "An event, a two-option decision and an event; no stat change."
+   }
+  },
+  {
+   "id": "NS07",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "Investigate Apartment",
+   "context": "A timed free search: poster and diary, jacket, forged license, LED in the sink, the rA9 writing, the stool, the cage and their reconstructions, birdseed, fridge, closet, two magazines.",
+   "options": [
+    {
+     "label": "SEE RA9 REFERENCE",
+     "effect": "Russian Roulette: SIGNS ON WALLS.",
+     "target": null
+    },
+    {
+     "label": "INVESTIGATE STOOL / INVESTIGATE CAGE",
+     "effect": "Reconstructions; the cage shows the suspect is in the ceiling.",
+     "target": "NS09"
+    },
+    {
+     "label": "FIND LED",
+     "effect": "SUSPECT IS A DEVIANT.",
+     "target": null
+    },
+    {
+     "label": "FIND DIARY",
+     "effect": "Cross-chapter: diary evidence in Last Chance, Connor.",
+     "target": "C20"
+    },
+    {
+     "label": "READ “RED ICE EPIDEMIC” / “PAST THE TIPPING POINT”",
+     "effect": "Magazines; no public-opinion effect.",
+     "target": null
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "NS06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Rupert%27s_Diary"
+   ],
+   "note": "About five minutes before Hank wants to leave (PowerPyx).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R15",
+     "C10o1",
+     "C10o2",
+     "C10o3",
+     "C10o4",
+     "C10o5",
+     "C10o6",
+     "C10o7",
+     "C10o8",
+     "C10o9",
+     "C10o10",
+     "C10o11"
+    ],
+    "status": "simplified",
+    "note": "The timer is an action budget (eight, then three after STAY; counts are the benchmark’s). Finding the deviant needs the cage reconstruction; the stool needs the writing."
+   }
+  },
+  {
+   "id": "NS08",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "Hank wants to leave: STAY or LEAVE",
+   "context": "“There’s nothing else to see here… Let’s get out of this shithole before I die of an asthma attack.”",
+   "options": [
+    {
+     "label": "STAY",
+     "effect": "Two more minutes; if they run out too, the LEAVE lines.",
+     "target": "NS07"
+    },
+    {
+     "label": "LEAVE",
+     "effect": "HANK AND CONNOR LEAVE THE APARTMENT → RUPERT NOT FOUND.",
+     "target": null
+    }
+   ],
+   "gate": "When the search time runs out without finding the suspect.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "NS07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-6.jpg"
+   ],
+   "note": "No relationship gate on STAY (wiki, template, two commenters; PowerPyx’s main text disagrees).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10ox",
+     "C10p"
+    ],
+    "status": "implemented",
+    "note": "STAY gives three more actions; RUPERT NOT FOUND is recorded as `nestOutcome`."
+   }
+  },
+  {
+   "id": "NS09",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "Find Rupert (checkpoint) and Chase Rupert",
+   "context": "Rupert drops from the ceiling and runs; a QTE chase across the urban farm with previewed routes (EASY BUT SLOW, FAST BUT RISKY, SAFER DETOUR, BALANCED, DIRECT BUT CROWDED, DIRECT BUT SLOW, SAFE BUT SLOW).",
+   "options": [
+    {
+     "label": "GAINING ON RUPERT",
+     "effect": "Rupert pushes Hank off the roof.",
+     "target": "C10"
+    },
+    {
+     "label": "LOSE SIGHT OF RUPERT",
+     "effect": "RUPERT GOT AWAY.",
+     "target": null
+    },
+    {
+     "label": "CONNOR DIED",
+     "effect": "CONNOR DIED CHASING RUPERT; software instability small down (×2 for the ladder).",
+     "target": null
+    }
+   ],
+   "gate": "After FIND RUPERT.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "NS07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ],
+   "note": "No published failure rates; the wiki lists fourteen places to lose him and four ways to die.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10q",
+     "C10r",
+     "C10s",
+     "C10t",
+     "C10u",
+     "C10v",
+     "C10w"
+    ],
+    "status": "simplified",
+    "note": "Hesitating at the door loses him; five route forks with the game’s twelve route labels carry risk rolls (losing him on slow routes, death on fast ones); grouping and probabilities are the benchmark’s."
+   }
+  },
+  {
+   "id": "C10",
+   "chapter": 15,
+   "character": "Connor",
+   "title": "Save Hank or follow Rupert?",
+   "context": "Rupert pushes Hank, who hangs from the roof edge. Connor’s HUD: CHANCE OF SURVIVAL: 89%. A timed choice.",
+   "options": [
+    {
+     "label": "SAVE HANK",
+     "effect": "Hank large up, software instability large up; Rupert gets away (RUPERT GOT AWAY).",
+     "target": null
+    },
+    {
+     "label": "FOLLOW RUPERT (Chase Deviant)",
+     "effect": "Hank large down, software instability large down; Hank cuffs Rupert, who says “rA9, save me.” and jumps (RUPERT COMMITTED SUICIDE): his body becomes evidence.",
+     "target": "C20"
+    },
+    {
+     "label": "No choice in time",
+     "effect": "Hank large down ×2, software instability large down ×2 (wiki); outcome not published.",
+     "target": null
+    }
+   ],
+   "gate": "Reached only after GAINING ON RUPERT and RUPERT PUSHES HANK.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "NS09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Nest",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Hank survives in every branch; the 89% is a displayed estimate, not a roll. Rupert cannot be taken alive in the released game (the arrest/release dilemma is cut). Amanda’s reaction is in Russian Roulette.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C10"
+    ],
+    "status": "implemented",
+    "note": "Three options: SAVE HANK (+2/+2), CHASE DEVIANT (−2/−2) and the timeout (−4/−4, sent down FOLLOW RUPERT, flagged). No risk roll. Output flags nestOutcome, nestRupert, nestRupertBody, nestSavedHank, nestHesitated."
+   }
   },
   {
    "id": "K10",
