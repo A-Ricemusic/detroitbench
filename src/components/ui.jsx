@@ -83,7 +83,7 @@ function DialogFrame({open,onOpenChange,title,description,children,footer,wide,c
    <Dialog.Overlay className="fixed inset-0 z-40 bg-overlay backdrop-blur-[2px] anim-fade-in"/>
    <Dialog.Content onOpenAutoFocus={openAutoFocus} onCloseAutoFocus={onCloseAutoFocus} {...(description?{}:{'aria-describedby':undefined})} className={cx('fixed z-50 flex flex-col bg-surface text-ink shadow-lg outline-none','inset-x-0 bottom-0 max-h-[92dvh] rounded-t-2xl sheet-up',
     center?'md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-h-[85dvh] md:w-[calc(100%-32px)] md:rounded-2xl md:border md:border-line md:anim-fade-up':'md:inset-y-0 md:right-0 md:left-auto md:bottom-auto md:max-h-none md:h-dvh md:w-full md:rounded-none md:border-l md:border-line md:sheet-right',
-    wide?'md:max-w-3xl':'md:max-w-xl')}>
+    wide==='xl'?'md:max-w-6xl':wide?'md:max-w-3xl':'md:max-w-xl')}>
     <div className="flex items-start justify-between gap-3 px-5 pt-4 pb-3 border-b border-line md:px-7 md:pt-6">
      <div className="min-w-0"><Dialog.Title id={titleId} ref={titleRef} tabIndex={-1} className="text-lg md:text-xl font-semibold leading-tight outline-none">{title}</Dialog.Title>{description&&<Dialog.Description className="mt-1 text-sm text-ink-2">{description}</Dialog.Description>}</div>
      <Dialog.Close asChild><IconButton label="Close" icon={X} className="-mr-2 -mt-1"/></Dialog.Close>

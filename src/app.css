@@ -18,6 +18,10 @@
  --chart-dim:#c4cbd5;--chart-band-a:rgba(17,24,32,.025);--chart-band-b:rgba(17,24,32,.06);--chart-grid:#dfe3e8;--chart-axis:#b9c1cc;
  --shadow-sm:0 1px 2px rgba(17,24,32,.06);--shadow:0 1px 2px rgba(17,24,32,.05),0 8px 24px -12px rgba(17,24,32,.18);--shadow-lg:0 24px 60px -20px rgba(17,24,32,.35);
  --overlay:rgba(17,24,32,.45);
+ /* Chapter flowcharts (src/lib/flowchart.js) */
+ --fc-ink:var(--ink);--fc-ink-2:var(--ink-2);--fc-ink-3:var(--ink-3);--fc-accent:var(--accent);--fc-on-accent:var(--on-accent);--fc-node:var(--surface);--fc-group:rgba(17,24,32,.035);
+ --fc-wire:#b9c1cc;--fc-wire-strong:var(--line-2);--fc-focus:var(--connor);--fc-bad:var(--bad);--fc-warn:var(--warn);--fc-good:var(--good);--fc-icon-ink:#ffffff;--fc-icon-hole:var(--bad);
+ --fc-connor:var(--connor);--fc-kara:var(--kara);--fc-markus:var(--markus);--fc-font:'Inter Variable',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
 }
 [data-theme=dark]{
  --bg:#0b1017;--surface:#121a25;--surface-2:#182230;--surface-3:#1f2a3a;--raised:#15202c;
@@ -31,6 +35,7 @@
  --chart-dim:#3a4657;--chart-band-a:rgba(255,255,255,.03);--chart-band-b:rgba(255,255,255,.12);--chart-grid:#243040;--chart-axis:#324259;
  --shadow-sm:0 1px 2px rgba(0,0,0,.4);--shadow:0 1px 0 rgba(255,255,255,.03) inset,0 8px 24px -8px rgba(0,0,0,.5);--shadow-lg:0 24px 60px -16px rgba(0,0,0,.7);
  --overlay:rgba(3,6,10,.6);
+ --fc-group:rgba(255,255,255,.035);--fc-wire:#3a4657;--fc-wire-strong:#4a586b;--fc-icon-ink:#0b1017;
 }
 
 @theme inline{
