@@ -8,7 +8,7 @@ One file per chapter, `chNN-<slug>.md`, written by a research agent before the c
 2. The Detroit: Become Human Wiki chapter page (https://detroit-become-human.fandom.com/wiki/<Chapter_Title>), read as wikitext through the MediaWiki API: `https://detroit-become-human.fandom.com/api.php?action=parse&page=<Title>&prop=wikitext&format=json` (direct page fetches are blocked for scripts; the API is not). Its Flowchart section, Probability/Relationship/Public Opinion/Software Instability tables and Trivia carry the numbers and the gating.
 3. The wiki's stat pages (Public_Opinion, Software_Instability, Relationship_Stat) and the Magazine page for media scenes.
 4. Gamepressure, GamerGuides, IGN only to resolve conflicts.
-5. The operator's own playthrough notes, which they will add as they audit. Where notes and the wiki disagree, the wiki wins unless the flowchart image shows otherwise.
+5. The operator's own playthrough journal in `operator-notes/` (see `operator-notes/README.md`), dictated to a dedicated journal thread as they replay the game. Where the journal and the wiki disagree, the wiki wins unless the flowchart image shows otherwise or the operator has reproduced the observation and the sources are silent.
 
 ## What each note must contain
 
@@ -23,3 +23,7 @@ One file per chapter, `chNN-<slug>.md`, written by a research agent before the c
 9. **Sources.** Every URL used, including the full-size image URLs, with a one-line note of what each gave.
 
 Images are not committed to the repository (they are PowerPyx's screenshots of the game); keep them under `/tmp/flowcharts/chNN/` while working and link the URLs.
+
+## Source inventory
+
+`SOURCES.md` (maintained by a source-hunting agent) lists every source found for the game, with what each is good for and how to read it.
