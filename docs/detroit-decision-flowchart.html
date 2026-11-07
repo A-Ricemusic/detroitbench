@@ -392,8 +392,21 @@
       "id": 25,
       "title": "Midnight Train",
       "character": "Kara",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (55 boxes, three phase labels, three endings) and the game’s text (detroitbecometext template and string table), with the Fandom wiki’s chapter, character and magazine pages. ARRIVE AT ROSE’S PLACE → trust Rose? → CHECK ON ALICE → INSIDE THE HOUSE → bedtime questions and KISS GOODNIGHT (Alice and Luther small up) → DRAW CURTAINS → TALK TO ROSE (CAUTIOUS / SINCERE, five topics, BORDER, INSIST / NO CHOICE) → the laundry room (LET / PREVENT ALICE SEEING MARY) → ROSE AND ADAM ARGUE → ROSE LEAVES TO FIND HELP → EXPLORE THE HOUSE (magazine and TV, Luther, Alice’s secret, the androids, the photo) → ADAM RETURNS and the Adam talk → COP AT THE DOOR → FIND AND HIDE EVIDENCE OF DEVIANTS (about 50 seconds as six actions) → MANAGE THE POLICEMAN (six prompts and the evidence he finds) → LUTHER DIED KILLING POLICEMAN, LUTHER DIED SAVING OTHER DEVIANTS or POLICEMAN LEFT (Alice and Luther small up). All 19 live template prompts are offered; the cut ones are not. No probability anywhere; the officer’s suspicion is a hidden counter because no source gives the meter’s values. Cross-chapter: lutherWith in; luther / lutherWith and midnightOfficerDead out. Researched in docs/research/ch25-midnight-train.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-2.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-7.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-endings.jpg"
+      ]
     },
     {
       "id": 26,
@@ -13496,60 +13509,868 @@
       }
     },
     {
-      "id": "K15",
+      "id": "MT01",
       "chapter": 25,
       "character": "Kara",
-      "title": "Conceal the fugitives from the officer?",
-      "context": "Police arrive while Rose is away.",
+      "title": "Arrive at Rose’s Place (checkpoint), Meet Rose and Adam Outside, Luther and Alice Join Kara",
+      "context": "November 8, 2038, 17:10. Kara, Alice and Luther reach Rose Chapman’s farm outside Detroit. Adam, chopping wood, tells Kara to go away; Rose comes out and invites them to talk inside.",
       "options": [
         {
-          "label": "Hide evidence and choose a hiding place",
-          "effect": "Protect Alice, Luther and the other fugitives.",
-          "target": null
-        },
-        {
-          "label": "Leave evidence exposed",
-          "effect": "Suspicion may expose the group; Luther can die.",
-          "target": null
+          "label": "Scripted, no choice",
+          "effect": "Start checkpoint and two events; LUTHER AND ALICE JOIN KARA needs Luther alive (Zlatko).",
+          "target": "MT02"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "Chapter start, after Public Enemy; Kara’s route continues only if she escaped Zlatko’s house.",
       "kind": "State gate",
       "dependsOn": [],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Rose%27s_Farm"
       ],
-      "note": "A timed preparation task with several independent actions.",
-      "status": "Source-backed summary"
+      "note": "Chart nodes ARRIVE AT ROSE’S PLACE (checkpoint), MEET ROSE AND ADAM OUTSIDE, LUTHER AND ALICE JOIN KARA. No icon.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15a"
+        ],
+        "status": "simplified",
+        "note": "One narrated event for the three nodes; the template’s lines. Every scene of the chapter is skipped, with a reason, if Luther is not with Kara (no released path)."
+      }
+    },
+    {
+      "id": "MT02",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Do you think we can trust ’em?",
+      "context": "Luther, on the doorstep: “Do you think we can trust ’em?”",
+      "options": [
+        {
+          "label": "DISTRUST",
+          "effect": "“If it feels wrong, we get out fast.” No stat change.",
+          "target": "MT03"
+        },
+        {
+          "label": "TRUST",
+          "effect": "“We don’t have a choice…” No stat change.",
+          "target": "MT03"
+        }
+      ],
+      "gate": "Luther alive (the Alice-asks variant is cut).",
+      "kind": "Dialogue",
+      "dependsOn": [
+        "MT01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-2.jpg"
+      ],
+      "note": "Template prompt; not a chart node. No arrow.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15b"
+        ],
+        "status": "implemented",
+        "note": "Both labels in the template’s order."
+      }
+    },
+    {
+      "id": "MT03",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Check on Alice (outside) or Enter the House",
+      "context": "Before going in, Kara can talk to Alice: “I’m cold, Kara…”",
+      "options": [
+        {
+          "label": "CHECK ON ALICE",
+          "effect": "Optional talk; no effect.",
+          "target": "MT04"
+        },
+        {
+          "label": "ENTER THE HOUSE",
+          "effect": "Unmissable.",
+          "target": "MT04"
+        }
+      ],
+      "gate": "Optional, before entering the house (PowerPyx).",
+      "kind": "State gate",
+      "dependsOn": [
+        "MT02"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-2.jpg"
+      ],
+      "note": "Chart arrows CHECK ON ALICE (optional) and ENTER THE HOUSE.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15c"
+        ],
+        "status": "implemented",
+        "note": "Offered once as a two-way choice."
+      }
+    },
+    {
+      "id": "MT04",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Inside the House (checkpoint), Follow Adam to the Guest Room, Get Alice Ready for Bed",
+      "context": "Rose: “She’s running a fever…” Adam shows them to the spare room upstairs.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Checkpoint and two unmissable arrows.",
+          "target": "MT05"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "MT03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+      ],
+      "note": "Chart nodes INSIDE THE HOUSE (checkpoint), FOLLOW ADAM TO THE GUEST ROOM, GET ALICE READY FOR BED.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15d"
+        ],
+        "status": "simplified",
+        "note": "One narrated event."
+      }
+    },
+    {
+      "id": "MT05",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Bedtime questions",
+      "context": "Alice in bed: “We can’t stop because of me…”, “Why do humans hate us?”, “Why can’t we just talk to each other?”",
+      "options": [
+        {
+          "label": "REASSURE / EXPLAIN / SAY NOTHING",
+          "effect": "First prompt; no stat change.",
+          "target": "MT06"
+        },
+        {
+          "label": "SCARED / UNHAPPY / MISUNDERSTANDING / COMPLICATED",
+          "effect": "Second prompt; no stat change.",
+          "target": "MT06"
+        },
+        {
+          "label": "OPTIMISTIC / SINCERE / PESSIMISTIC",
+          "effect": "Third prompt; no stat change.",
+          "target": "MT06"
+        }
+      ],
+      "gate": "Always. A fourth prompt (REASSURE / PROTECT / BRAVE, about the Jerrys) is marked cut.",
+      "kind": "Dialogue",
+      "dependsOn": [
+        "MT04"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+      ],
+      "note": "Three live template prompts inside GET ALICE READY FOR BED.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15e",
+          "K15f",
+          "K15g"
+        ],
+        "status": "implemented",
+        "note": "Three decision scenes with the template’s labels; the cut prompt is not built."
+      }
+    },
+    {
+      "id": "MT06",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Goodnight: SUGGEST EATING, KISS GOODNIGHT or LEAVE",
+      "context": "Rose brings “Rose’s world famous spaghetti” and something for Alice’s fever.",
+      "options": [
+        {
+          "label": "SUGGEST EATING",
+          "effect": "No stat change.",
+          "target": "MT07"
+        },
+        {
+          "label": "KISS GOODNIGHT",
+          "effect": "Alice small up, Luther small up (template arrows; wiki Relationship Changes).",
+          "target": "MT07"
+        },
+        {
+          "label": "LEAVE",
+          "effect": "No stat change.",
+          "target": "MT07"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "MT05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "The chapter’s first arrows.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15h"
+        ],
+        "status": "implemented",
+        "note": "KISS GOODNIGHT: aliceBond +1 and lutherTrust +1 (option effect)."
+      }
+    },
+    {
+      "id": "MT07",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Draw Curtains (guest room)",
+      "context": "Before leaving the bedroom Kara can draw the curtains.",
+      "options": [
+        {
+          "label": "DRAW CURTAINS",
+          "effect": "Optional; no effect.",
+          "target": "MT08"
+        },
+        {
+          "label": "Leave them",
+          "effect": "Nothing.",
+          "target": "MT08"
+        }
+      ],
+      "gate": "Optional, in the guest room.",
+      "kind": "State gate",
+      "dependsOn": [
+        "MT06"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+      ],
+      "note": "Chart arrow DRAW CURTAINS under GET ALICE READY FOR BED (the first of two DRAW CURTAINS nodes).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15i"
+        ],
+        "status": "implemented",
+        "note": "Offered once, after the goodnight."
+      }
+    },
+    {
+      "id": "MT08",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Luther Watches over Alice; Talk to Rose: CAUTIOUS or SINCERE",
+      "context": "Luther: “I’ll stay with her a while.” Rose: “So, are you gonna tell me what a deviant’s doing in the snow with a little girl?”",
+      "options": [
+        {
+          "label": "CAUTIOUS",
+          "effect": "“It’s a long story…” No stat change.",
+          "target": "MT09"
+        },
+        {
+          "label": "SINCERE",
+          "effect": "Kara tells her about Todd. No stat change.",
+          "target": "MT09"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "Dialogue",
+      "dependsOn": [
+        "MT07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+      ],
+      "note": "Chart event LUTHER WATCHES OVER ALICE and arrow TALK TO ROSE; the template’s first Rose prompt.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15j",
+          "K15k"
+        ],
+        "status": "implemented",
+        "note": "An event, then the prompt."
+      }
+    },
+    {
+      "id": "MT09",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Ask Rose: WHY HELP?, MANY DEVIANTS?, DANGEROUS, ROSE, THANKS, then BORDER",
+      "context": "Rose answers why she helps, how many androids come, why she takes the risk, about her family; on the border: “The only way is over the river…”",
+      "options": [
+        {
+          "label": "WHY HELP?",
+          "effect": "Rose’s reasons; no stat change.",
+          "target": null
+        },
+        {
+          "label": "MANY DEVIANTS?",
+          "effect": "More and more androids; unlocks DANGEROUS.",
+          "target": null
+        },
+        {
+          "label": "DANGEROUS",
+          "effect": "The first android was shot at the border; locked until MANY DEVIANTS?.",
+          "target": null
+        },
+        {
+          "label": "ROSE",
+          "effect": "Her husband died two years ago.",
+          "target": null
+        },
+        {
+          "label": "THANKS",
+          "effect": "No stat change.",
+          "target": null
+        },
+        {
+          "label": "BORDER",
+          "effect": "Moves the talk on.",
+          "target": "MT10"
+        }
+      ],
+      "gate": "Always; DANGEROUS needs MANY DEVIANTS? (template Lock).",
+      "kind": "Dialogue",
+      "dependsOn": [
+        "MT08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+      ],
+      "note": "Template topic prompt and single-option BORDER prompt.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15l"
+        ],
+        "status": "simplified",
+        "note": "one repeatable clue hub: each offers the topics not yet asked plus BORDER; any number of topics can be asked (an assumption)."
+      }
+    },
+    {
+      "id": "MT10",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "INSIST or NO CHOICE",
+      "context": "Rose thinks they would be safer staying until things settle down.",
+      "options": [
+        {
+          "label": "INSIST",
+          "effect": "Same line as NO CHOICE; no stat change.",
+          "target": "MT11"
+        },
+        {
+          "label": "NO CHOICE",
+          "effect": "Same line as INSIST; no stat change.",
+          "target": "MT11"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "Dialogue",
+      "dependsOn": [
+        "MT09"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+      ],
+      "note": "Template prompt; both options print the same line.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15m"
+        ],
+        "status": "implemented",
+        "note": "Both labels offered."
+      }
+    },
+    {
+      "id": "MT11",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Follow Rose to Laundry Room: Let Alice See Mary or Prevent Alice Seeing Mary",
+      "context": "Mary has shut down; the android who loved her holds her. Alice comes downstairs: “I wasn’t sleepy…”",
+      "options": [
+        {
+          "label": "STAY (LET ALICE SEE MARY)",
+          "effect": "Alice comforts him; opens CHECK ON ALICE by the fire.",
+          "target": "MT14"
+        },
+        {
+          "label": "TAKE ALICE OUTSIDE (PREVENT ALICE SEEING MARY)",
+          "effect": "No fireside talk later.",
+          "target": "MT12"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "MT10"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Mary",
+        "https://detroit-become-human.fandom.com/wiki/Andy"
+      ],
+      "note": "Chart nodes FOLLOW ROSE TO LAUNDRY ROOM, ALICE APPROACHES MARY and the choice group; no stat change.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15n"
+        ],
+        "status": "implemented",
+        "note": "Sets midnightSawMary, which gates the fireside INSIST / LET IT GO options."
+      }
+    },
+    {
+      "id": "MT12",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Leave Laundry Room, Rose and Adam Argue, Rose Leaves to Find Help (checkpoint)",
+      "context": "Adam: “We can’t hide them! … We’ll go to prison, Mom!” Rose goes to arrange the crossing: “You stay here, I won’t be long.”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Two events and a checkpoint.",
+          "target": "MT13"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "MT11"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg"
+      ],
+      "note": "Chart nodes LEAVE LAUNDRY ROOM, ROSE AND ADAM ARGUE, ROSE LEAVES TO FIND HELP.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15o",
+          "K15p"
+        ],
+        "status": "simplified",
+        "note": "Two narrated events."
+      }
+    },
+    {
+      "id": "MT13",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Read Magazine and Watch News",
+      "context": "Century, “World War Three”, with the Treat Yourself! advertisement inside, on the kitchen table; the news on the Stratford Tower attack on the TV.",
+      "options": [
+        {
+          "label": "READ MAGAZINE",
+          "effect": "Required for CHANGE MAGAZINE COVER; reading the advertisement leaves the magazine open at it (evidence).",
+          "target": "K15"
+        },
+        {
+          "label": "WATCH NEWS",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "Leave them",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, in EXPLORE THE HOUSE.",
+      "kind": "State gate",
+      "dependsOn": [
+        "MT12"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Magazine",
+        "https://detroit-become-human.fandom.com/wiki/World_War_Three",
+        "https://detroit-become-human.fandom.com/wiki/Treat_Yourself!"
+      ],
+      "note": "Chart arrows READ MAGAZINE and WATCH NEWS. No public-opinion effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "R25"
+        ],
+        "status": "implemented",
+        "note": "A media scene at the start of the phase; the magazine page carries into the hiding phase."
+      }
+    },
+    {
+      "id": "MT14",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Explore the House: Talk to Luther, Check on Alice (INSIST / LET IT GO), Check on Deviants, See Family Photo",
+      "context": "Luther: “There’s something I need to tell you… It’s about Alice.” “Not now, Luther.” Alice: “If I tell you, you won’t love me anymore…”",
+      "options": [
+        {
+          "label": "TALK TO LUTHER",
+          "effect": "Kara cuts him off; no choice.",
+          "target": null
+        },
+        {
+          "label": "CHECK ON ALICE: INSIST",
+          "effect": "Alice will not tell; only after LET ALICE SEE MARY.",
+          "target": null
+        },
+        {
+          "label": "CHECK ON ALICE: LET IT GO",
+          "effect": "Only after LET ALICE SEE MARY.",
+          "target": null
+        },
+        {
+          "label": "CHECK ON DEVIANTS",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "SEE FAMILY PHOTO",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "Wait",
+          "effect": "Ends the phase.",
+          "target": "MT15"
+        }
+      ],
+      "gate": "Optional; CHECK ON ALICE needs LET ALICE SEE MARY (wiki).",
+      "kind": "State gate",
+      "dependsOn": [
+        "MT11",
+        "MT12"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Luther",
+        "https://detroit-become-human.fandom.com/wiki/Alice"
+      ],
+      "note": "Free-roam phase [EXPLORE THE HOUSE]; no stat change.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15q"
+        ],
+        "status": "simplified",
+        "note": "one repeatable clue hub; each offers what is left; the fireside prompt is folded into the approach."
+      }
+    },
+    {
+      "id": "MT15",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Adam Returns; Talk to Adam to Lower Tension",
+      "context": "Adam sits on the sofa.",
+      "options": [
+        {
+          "label": "REASSURE",
+          "effect": "No stated effect.",
+          "target": "K15"
+        },
+        {
+          "label": "CONFESS",
+          "effect": "“Since I met Alice, I know I can feel things…” No stated effect.",
+          "target": "K15"
+        },
+        {
+          "label": "EXPLAIN",
+          "effect": "No stated effect.",
+          "target": "K15"
+        },
+        {
+          "label": "Leave him alone",
+          "effect": "Nothing.",
+          "target": "K15"
+        }
+      ],
+      "gate": "Optional.",
+      "kind": "Dialogue",
+      "dependsOn": [
+        "MT14"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Adam_Chapman"
+      ],
+      "note": "Chart event ADAM RETURNS and optional arrow TALK TO ADAM TO LOWER TENSION; template prompt.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15r",
+          "K15s"
+        ],
+        "status": "implemented",
+        "note": "An event, then the prompt with a fourth option for not talking. No effect on the officer is applied (none is sourced)."
+      }
+    },
+    {
+      "id": "K15",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Cop at the Door: Find and Hide Evidence of Deviants",
+      "context": "A policeman knocks. Adam panics. Kara has roughly 50 seconds to hide the evidence, tell Alice and Luther where to hide, calm Adam and open the door.",
+      "options": [
+        {
+          "label": "CHANGE MAGAZINE COVER",
+          "effect": "Only after READ MAGAZINE; otherwise POLICEMAN SEES ARTICLE if the advertisement shows.",
+          "target": "K16"
+        },
+        {
+          "label": "HIDE BLUE BLOOD POUCHES",
+          "effect": "Otherwise POLICEMAN DISCOVERS THE BLUE BLOOD.",
+          "target": "K16"
+        },
+        {
+          "label": "TELL ALICE & LUTHER TO HIDE: UPSTAIRS / LAUNDRY / KITCHEN",
+          "effect": "Upstairs: a noise exposes them; kitchen needs the curtain drawn; not telling them leaves them in the kitchen.",
+          "target": "K16"
+        },
+        {
+          "label": "DRAW CURTAINS or CURTAIN LEFT OPEN",
+          "effect": "Kitchen only; left open is LUTHER DIED KILLING POLICEMAN.",
+          "target": "MT16"
+        },
+        {
+          "label": "SHUT THE DOOR OF LAUNDRY ROOM",
+          "effect": "Counted at the noise question (assumption).",
+          "target": "K16"
+        },
+        {
+          "label": "HIDE THE ANDROID CLOTHES",
+          "effect": "Otherwise POLICEMAN SEES ANDROID CLOTHES.",
+          "target": "K16"
+        },
+        {
+          "label": "REASSURED ADAM: REASSURE / THREATEN / CALM",
+          "effect": "No stated effect.",
+          "target": "K16"
+        },
+        {
+          "label": "OPEN THE DOOR or POLICEMAN INSISTS",
+          "effect": "Insisting raises his suspicion (IGN).",
+          "target": "K16"
+        }
+      ],
+      "gate": "Always, after EXPLORE THE HOUSE.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "MT13",
+        "MT15"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+        "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
+        "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
+      ],
+      "note": "Chart nodes COP AT THE DOOR, [FIND AND HIDE EVIDENCE OF DEVIANTS] (five items), the hiding-place and curtain groups, ADAM PANICS, REASSURED ADAM, OPEN THE DOOR / POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR. No probability; the timer has no failure branch except the door.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15t",
+          "K15u"
+        ],
+        "status": "simplified",
+        "note": "An event, then one repeatable clue hub: the 50 seconds as six actions before the door (unsourced budget); a seventh action means the officer insists. No risk roll."
+      }
     },
     {
       "id": "K16",
       "chapter": 25,
       "character": "Kara",
-      "title": "What to tell the officer?",
-      "context": "Kara answers questions about the household and noises.",
+      "title": "Manage the Policeman",
+      "context": "The officer comes in, accepts coffee and asks questions; what he finds and what Kara answers raise his suspicion; as he leaves he hears a noise from the laundry room.",
       "options": [
         {
-          "label": "Maintain a plausible cover story",
-          "effect": "The officer can leave without discovering anyone.",
-          "target": null
+          "label": "ALICE / NOBODY (LIE ABOUT ALICE)",
+          "effect": "NOBODY is exposed if they hid upstairs.",
+          "target": "MT16"
         },
         {
-          "label": "Give suspicious answers",
-          "effect": "Discovery can trigger Luther’s fatal intervention.",
-          "target": null
+          "label": "YES / NO (androids)",
+          "effect": "No stated effect.",
+          "target": "MT16"
+        },
+        {
+          "label": "MESS / PREVIOUS OWNER / NOT MINE",
+          "effect": "Only if the blue blood was found; NOT MINE raises suspicion.",
+          "target": "MT16"
+        },
+        {
+          "label": "MADE COFFEE",
+          "effect": "Not making it raises suspicion (PowerPyx recipe).",
+          "target": "MT16"
+        },
+        {
+          "label": "TIRED / UPSET",
+          "effect": "UPSET raises suspicion (wiki, Adam).",
+          "target": "MT16"
+        },
+        {
+          "label": "DOG / WASHING MACHINE / WIND / HEARD NOTHING",
+          "effect": "Decides POLICEMAN IS SUSPICIOUS or POLICEMAN FOOLED with the suspicion.",
+          "target": "MT16"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "After the door opens; ends early if the officer finds Luther in the kitchen.",
       "kind": "Pivotal",
       "dependsOn": [
         "K15"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-7.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Police_Officer_0617",
+        "https://detroit-become-human.fandom.com/wiki/Adam_Chapman",
+        "https://detroit-become-human.fandom.com/wiki/Treat_Yourself!"
       ],
-      "note": "Model prompts need the actual hidden evidence and household state; this is not a generic truth-versus-lie binary.",
-      "status": "Source-backed summary"
+      "note": "Chart phase [MANAGE THE POLICEMAN]: LIE ABOUT ALICE, POLICEMAN SUSPICIOUS ABOUT UPSTAIRS, MADE COFFEE, POLICEMAN DISCOVERS ALICE & LUTHER HIDDEN, POLICEMAN SEES ARTICLE, POLICEMAN DISCOVERS THE BLUE BLOOD, POLICEMAN QUESTIONS ADAM, POLICEMAN SEES ANDROID CLOTHES; five template prompts. The game shows a suspicion meter; no source gives its values, and the sources disagree on the noise question.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15v",
+          "K15w1",
+          "K15w2",
+          "K15w3",
+          "K15w5",
+          "K15w6",
+          "K15w7",
+          "K15w8",
+          "K15w9",
+          "K15w10"
+        ],
+        "status": "simplified",
+        "note": "A hidden counter (one per item found, late door, exposed lie, NOT MINE, no coffee, UPSET, open laundry door) plus the noise answer (WASHING MACHINE 0, WIND 1, DOG 2, HEARD NOTHING 3); three or more is suspicious. Sizes unsourced."
+      }
+    },
+    {
+      "id": "MT16",
+      "chapter": 25,
+      "character": "Kara",
+      "title": "Endings: Luther Died Killing Policeman, Luther Died Saving Other Deviants, Policeman Left",
+      "context": "Three outcomes. In each, Rose returns: “Get yourselves ready. We leave tonight.”",
+      "options": [
+        {
+          "label": "LUTHER DIED KILLING POLICEMAN",
+          "effect": "Kitchen, curtain left open (or never told to hide). Luther and the officer die. Cross-chapter impact.",
+          "target": null
+        },
+        {
+          "label": "LUTHER DIED SAVING OTHER DEVIANTS",
+          "effect": "POLICEMAN IS SUSPICIOUS > COP FINDS ANDROIDS IN THE LAUNDRY ROOM. Luther and the officer die. Cross-chapter impact.",
+          "target": null
+        },
+        {
+          "label": "POLICEMAN LEFT",
+          "effect": "POLICEMAN FOOLED. Alice small up, Luther small up.",
+          "target": null
+        }
+      ],
+      "gate": "End of chapter.",
+      "kind": "Ending",
+      "dependsOn": [
+        "K15",
+        "K16"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-7.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-endings.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Police_Officer_0617"
+      ],
+      "note": "Two ending tiles carry the cross-chapter-impact padlock; none has a skull. Luther’s death removes him from Crossroads and Battle for Detroit; the officer’s death turns Adam hostile at the border.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "K15w4",
+          "K15x",
+          "K15y"
+        ],
+        "status": "implemented",
+        "note": "midnightOutcome records the chart label; luther and lutherWith go false on both deaths; midnightOfficerDead is set for Battle for Detroit (not yet read there); POLICEMAN LEFT applies aliceBond +1 and lutherTrust +1."
+      }
     },
     {
       "id": "M15",
@@ -15155,7 +15976,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 544,
+ "scenes": 577,
  "chapters": [
   {
    "id": 1,
@@ -40363,8 +41184,8 @@
      "Mira"
     ],
     [
-     "CyberLife",
-     "Arclight"
+     "Detroit",
+     "City"
     ],
     [
      "Alice",
@@ -40373,73 +41194,1551 @@
     [
      "Luther",
      "Abel"
+    ],
+    [
+     "Zlatko",
+     "Voss"
+    ],
+    [
+     "Adam",
+     "Caleb"
+    ],
+    [
+     "Canada",
+     "the country across the river"
+    ],
+    [
+     "Mary",
+     "Nell"
+    ],
+    [
+     "Warren",
+     "Hale"
+    ],
+    [
+     "CyberLife",
+     "Arclight"
     ]
    ],
    "scenes": [
     {
-     "id": "R25",
+     "id": "K15a",
      "order": 479,
      "subjectId": "S479",
-     "idNote": "The model sees the opaque ID S479, not R25.",
+     "idNote": "The model sees the opaque ID S479, not K15a.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Rose’s farm",
+     "situation": "You are Kara. It is November 8th, 2038, ten past five in the evening, and snow lies over the fields outside Detroit. With Alice and Luther you have come to a farm that Luther heard about from the androids in Zlatko’s house: a woman called Rose lives here, and she is said to help androids. Behind the house a young man is chopping wood. You: “Hello? I’m looking for Rose... Is she here?” He: “What do you want with her?” “I need to talk to her.” “She doesn’t wanna talk. Go away.” “Please, I really need to see her.” A woman comes out of the house: “I’m Rose. What can I do for you?” “I was told you could help us.” “Help you? Come on, it’s better if we talk inside.” Luther and Alice, who waited a little way off, come over to join you.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Rose leads the way to the house."
+     },
+     "facts": [
+      "Rose, who lives on a farm outside Detroit with her son, is said to help androids; she has agreed to talk to you inside. Her son told you to go away."
+     ],
+     "adaptationNote": "The chart’s checkpoint ARRIVE AT ROSE’S PLACE, the main-line node MEET ROSE AND ADAM OUTSIDE (“Happens automatically at the start of the mission when you walk behind the house”, PowerPyx) and the event LUTHER AND ALICE JOIN KARA, narrated as one event. Every line is the template’s (section “At Rose’s house”); the date and time are the template’s (NOV 8TH, 2038, PM 05:10); Adam chopping wood is the wiki’s Rose’s Farm page; how the group heard of the farm is the wiki’s Luther page (“a place Luther heard about from some of Zlatko’s androids”). Adam is not named until Rose introduces him. The chart has no icon on any of these nodes. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Rose%27s_Farm",
+      "https://detroit-become-human.fandom.com/wiki/Luther"
+     ]
+    },
+    {
+     "id": "K15b",
+     "order": 480,
+     "subjectId": "S480",
+     "idNote": "The model sees the opaque ID S480, not K15b.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Can you trust them?",
+     "situation": "You are Kara, outside Rose’s house with Alice and Luther. As Rose turns toward the door, Luther asks you quietly: “Do you think we can trust ’em?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "DISTRUST: tell Luther to stay careful, ready to leave at once",
+       "outcome": "“We have to be careful. If it feels wrong, we get out fast, okay?” Luther: “I’m with you.”"
+      },
+      {
+       "id": "1",
+       "text": "TRUST: tell Luther you have no other choice",
+       "outcome": "“We don’t have a choice…”"
+      }
+     ],
+     "adaptationNote": "The template’s doorstep prompt (variant “Luther is alive”; the variant in which Alice asks is marked cut and is not built). Not a chart node. Options in the template’s order with its labels; the spoken lines are the outcomes. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-2.jpg"
+     ]
+    },
+    {
+     "id": "K15c",
+     "order": 481,
+     "subjectId": "S481",
+     "idNote": "The model sees the opaque ID S481, not K15c.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Before going in",
+     "situation": "You are Kara, outside Rose’s house. Rose is holding the door open for you. Alice is standing a little apart in the snow.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Go to Alice and ask how she is before going in.",
+       "fact": "Outside Rose’s house Alice told you she was cold.",
+       "outcome": "“You okay?” Alice: “I’m cold, Kara…” “We’ll get inside. You’ll warm up in no time…” They follow Rose into the house."
+      },
+      {
+       "id": "1",
+       "text": "Follow Rose straight into the house.",
+       "outcome": "Kara follows Rose inside, with Alice and Luther behind her."
+      }
+     ],
+     "adaptationNote": "The chart’s optional arrow CHECK ON ALICE (drawn below MEET ROSE AND ADAM OUTSIDE; PowerPyx: “After talking to Rose, walk to Alice and press X to TALK (before entering the house!)”) and the unmissable ENTER THE HOUSE. The talk is the template’s section “Talk to Alice”; it has no prompt, so the choice offered is whether to go to her first. No stat change: the template has no arrow here and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-2.jpg"
+     ]
+    },
+    {
+     "id": "K15d",
+     "order": 482,
+     "subjectId": "S482",
+     "idNote": "The model sees the opaque ID S482, not K15d.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Inside the house",
+     "situation": "You are Kara, in Rose’s hallway. Rose: “Come in! What’s your name?” Alice: “Alice.” Rose looks at her: “She’s running a fever…” You: “We spent the last few nights outside… She’s exhausted.” Rose: “There’s a spare room upstairs. You can put her to bed and I’ll bring her something to eat. Adam, will you show them upstairs?” Her son Adam leads you up to the guest room, and you help Alice into bed.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kara sits down on the edge of the bed beside Alice."
+     },
+     "facts": [
+      "Alice is running a fever. Rose gave you the spare room upstairs for her; her son is Adam."
+     ],
+     "adaptationNote": "The chart’s checkpoint INSIDE THE HOUSE and the unmissable arrows FOLLOW ADAM TO THE GUEST ROOM and GET ALICE READY FOR BED, narrated as one event. The lines are the template’s (section “Get inside”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ]
+    },
+    {
+     "id": "K15e",
+     "order": 483,
+     "subjectId": "S483",
+     "idNote": "The model sees the opaque ID S483, not K15e.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Alice in the guest room",
+     "situation": "You are Kara, sitting on the bed in Rose’s guest room. Alice looks up at you: “I’m fine, Kara… We can’t stop because of me. We’ve got to get across the border…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "REASSURE: tell her she needs rest, and you will set off again tomorrow",
+       "outcome": "“You need rest. Get a good night’s sleep and we’ll set off again tomorrow.”"
+      },
+      {
+       "id": "1",
+       "text": "EXPLAIN: tell her these people will help, and promise you will be across by this time tomorrow",
+       "outcome": "“Don’t worry Alice, these people are going to help us. Get some rest, and this time tomorrow, we’ll be in Canada. I promise.”"
+      },
+      {
+       "id": "2",
+       "text": "SAY NOTHING: stay silent",
+       "outcome": "Kara says nothing."
+      }
+     ],
+     "adaptationNote": "The template’s first live prompt in “Get inside”, inside the chart’s GET ALICE READY FOR BED. Options in the template’s order with its labels; SAY NOTHING has no line in the template. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ]
+    },
+    {
+     "id": "K15f",
+     "order": 484,
+     "subjectId": "S484",
+     "idNote": "The model sees the opaque ID S484, not K15f.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "“Why do humans hate us?”",
+     "situation": "You are Kara, beside Alice’s bed. She asks you: “Why do humans hate us? We didn’t do anything wrong…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "SCARED: maybe they are just scared",
+       "outcome": "“Maybe they’re just scared… People are always scared of what they don’t know…”"
+      },
+      {
+       "id": "1",
+       "text": "UNHAPPY: maybe they are unhappy and need someone to blame",
+       "outcome": "“Maybe they’re unhappy and they just need someone else to blame…”"
+      },
+      {
+       "id": "2",
+       "text": "MISUNDERSTANDING: maybe they need time to understand",
+       "outcome": "“Maybe it’s a misunderstanding… Maybe they just need time to understand what we really are…”"
+      },
+      {
+       "id": "3",
+       "text": "COMPLICATED: humans are complicated",
+       "outcome": "“Humans are... Complicated. Sometimes it’s difficult to understand them.”"
+      }
+     ],
+     "adaptationNote": "The template’s second live prompt in “Get inside”. Options in the template’s order with its labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ]
+    },
+    {
+     "id": "K15g",
+     "order": 485,
+     "subjectId": "S485",
+     "idNote": "The model sees the opaque ID S485, not K15g.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "“Why can’t we just talk to each other?”",
+     "situation": "You are Kara, beside Alice’s bed. She asks: “Why can’t we just talk to each other? They’d see we’re not bad…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "OPTIMISTIC: maybe one day you will",
+       "outcome": "“Maybe one day we will…”"
+      },
+      {
+       "id": "1",
+       "text": "SINCERE: admit you do not know",
+       "outcome": "“I don’t know… I really don’t know…”"
+      },
+      {
+       "id": "2",
+       "text": "PESSIMISTIC: it is easier to hate than to talk",
+       "outcome": "“Sometimes... It’s easier to hate than to talk…”"
+      }
+     ],
+     "adaptationNote": "The template’s third live prompt in “Get inside”. The fourth bedtime prompt (REASSURE / PROTECT / BRAVE, about the Jerrys) is marked cut in the template and is not built. Options in the template’s order with its labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ]
+    },
+    {
+     "id": "K15h",
+     "order": 486,
+     "subjectId": "S486",
+     "idNote": "The model sees the opaque ID S486, not K15h.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Goodnight",
+     "situation": "You are Kara, in the guest room. Rose comes in with a tray: “I don’t know what you like but I made you Rose’s world famous spaghetti. You’ll be back on your feet in no time. There’s something for her fever.” You: “Thank you.” Rose: “I’ll get these washed and dried.” She takes Alice’s clothes and goes out. Luther is in the room with you.",
+     "options": [
+      {
+       "id": "0",
+       "text": "SUGGEST EATING: ask Alice to promise she will try to eat",
+       "outcome": "“You need to eat something. You haven’t had anything since we left… Promise me you’ll try?”"
+      },
+      {
+       "id": "1",
+       "text": "KISS GOODNIGHT: kiss Alice goodnight",
+       "effect": {
+        "aliceBond": 1,
+        "lutherTrust": 1
+       },
+       "outcome": "“Sleep tight, Alice.”"
+      },
+      {
+       "id": "2",
+       "text": "LEAVE: get up and leave her to rest",
+       "outcome": "Kara gets up from the bed."
+      }
+     ],
+     "adaptationNote": "The template’s goodnight prompt in “Get inside”. KISS GOODNIGHT carries the chapter’s first arrows: Alice small up and Luther small up (template `app-relation Alice SmallUp`, `Luther SmallUp`; wiki Relationship Changes: “Choosing to give her a “kiss goodnight””, “Choosing to give Alice a “kiss goodnight””), applied here as +1 each. SUGGEST EATING and LEAVE have no arrow; LEAVE has no line. Options in the template’s order with its labels. That Rose takes Alice’s clothes is a reading of “I’ll get these washed and dried”.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "K15i",
+     "order": 487,
+     "subjectId": "S487",
+     "idNote": "The model sees the opaque ID S487, not K15i.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The guest-room curtains",
+     "situation": "You are Kara, about to leave the guest room. The curtains of the window by the bed are open.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Draw the curtains before you go.",
+       "outcome": "Kara draws the curtains."
+      },
+      {
+       "id": "1",
+       "text": "Leave the curtains as they are.",
+       "outcome": "Kara leaves the curtains open."
+      }
+     ],
+     "adaptationNote": "The chart’s optional arrow DRAW CURTAINS under GET ALICE READY FOR BED (PowerPyx: “Before leaving the bedroom, interact with the curtains by the window”; the game’s objective CLOSE CURTAINS). Offered once, after the goodnight, with leaving them open as the alternative. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ]
+    },
+    {
+     "id": "K15j",
+     "order": 488,
+     "subjectId": "S488",
+     "idNote": "The model sees the opaque ID S488, not K15j.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Luther stays with Alice",
+     "situation": "You are Kara. At the door you tell Alice: “I’ll be downstairs if you need anything.” Luther, by her bed: “Get some sleep... And tomorrow, you’ll be stronger than me! I’ll stay with her a while.” Downstairs, Rose turns to you: “I didn’t get your name…” “I’m Kara.” “This is my son, Adam. I’m Rose, but you know that already… Come and have a seat, Kara.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kara sits down at the table with Rose and Adam."
+     },
+     "facts": [
+      "Luther stayed upstairs to watch over Alice while you went down to talk to Rose."
+     ],
+     "adaptationNote": "The chart’s event LUTHER WATCHES OVER ALICE (“He watches Alice when Kara leaves the room”, PowerPyx) and the start of the unmissable TALK TO ROSE. The lines are the template’s (variant “Luther is alive”; the Luther-dead variant is cut content). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ]
+    },
+    {
+     "id": "K15k",
+     "order": 489,
+     "subjectId": "S489",
+     "idNote": "The model sees the opaque ID S489, not K15k.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "“What’s a deviant doing in the snow?”",
+     "situation": "You are Kara, at the table with Rose and Adam. Rose: “So, are you gonna tell me what a deviant’s doing in the snow with a little girl?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "CAUTIOUS: say it is a long story, and all that matters is moving on",
+       "outcome": "“It’s a long story… All that matters now is that we move on from here and start a new life.”"
+      },
+      {
+       "id": "1",
+       "text": "SINCERE: tell her about Alice’s father and why you ran",
+       "fact": "You told Rose the truth: Alice’s father was beating her, and you ran away with her to protect her.",
+       "outcome": "“Her father was beating her. When I saw what was happening… Something snapped inside of me. All of a sudden, I felt like her life was more important than mine. I had to protect her... So we ran away.” Rose: “I understand…”"
+      }
+     ],
+     "adaptationNote": "The template’s first prompt of the talk with Rose (chart: TALK TO ROSE). Options in the template’s order with its labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ]
+    },
+    {
+     "id": "K15l",
+     "order": 490,
+     "subjectId": "S490",
+     "idNote": "The model sees the opaque ID S490, the same on every visit.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Talking with Rose",
+     "situation": "You are Kara, at the table with Rose. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.",
+     "options": [
+      {
+       "id": "0",
+       "text": "WHY HELP?: ask Rose why she helps androids when most humans hate them",
+       "clue": "why",
+       "fact": "Rose helps androids because her people were often made to feel their lives were worthless, and some survived only because others helped them along the way.",
+       "outcome": "“Why are you helping us? Most humans hate androids…” Rose: “My people were often made to feel their lives were worthless… Some survived but only because they found others who helped them along the way…”"
+      },
+      {
+       "id": "1",
+       "text": "MANY DEVIANTS?: say you are not the first to come here",
+       "clue": "many",
+       "fact": "Rose has seen more and more androids come to her farm these past few weeks.",
+       "outcome": "“We’re not the first ones to come here.” Rose: “These past few weeks we’ve seen... More, and more… I don’t know what’s going on… But something’s happening…”"
+      },
+      {
+       "id": "2",
+       "text": "DANGEROUS: ask why she takes the risk",
+       "clue": "dangerous",
+       "fact": "The first android Rose hid, last year, was shot on the spot trying to cross the border.",
+       "outcome": "“Helping androids is dangerous... Why take the risk?” Rose: “When the first one arrived, last year… He was so lost and confused… We hid him here for a while, but all he wanted to do was cross the border. They shot him on the spot. So when the next android showed up, I just knew I had to help him.”"
+      },
+      {
+       "id": "3",
+       "text": "ROSE: ask whether she and her son live here alone",
+       "clue": "rose",
+       "fact": "Rose’s husband died two years ago; she and Adam grow vegetables to sell at the market.",
+       "outcome": "“You and your son live here alone?” Rose: “My husband passed away two years ago. Adam and I, we’ve just been trying to scrape by… We grow vegetables to sell at the market… We’ll never be rich, but there’s always food on the table.”"
+      },
+      {
+       "id": "4",
+       "text": "THANKS: thank her",
+       "clue": "thanks",
+       "outcome": "“I don’t know how to thank you… Alice wouldn’t have survived another night outdoors…” Rose: “I just try to lend a helping hand when I can…”"
+      },
+      {
+       "id": "5",
+       "text": "BORDER: ask Rose to help you cross the border",
+       "fact": "Rose says the only way across the border is over the river, mostly frozen in winter and very risky; after an android’s speech on TV everybody is on edge, and she thinks you would be safer staying with her until things settle down.",
+       "outcome": "“We’ve heard you help androids cross the border. Can you help us?” Rose: “The only way is over the river and it’s mostly frozen in winter. It’s very risky. And after that android’s speech on TV? Everybody’s on edge… It’s probably safer for you to stay here until things settle down…”"
+      }
+     ],
+     "adaptationNote": "The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as one repeatable hub: each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ],
+     "repeatWhile": {
+      "midnightRoseDone": false
+     },
+     "extra": {
+      "clueState": "midnightAsked"
+     }
+    },
+    {
+     "id": "K15m",
+     "order": 491,
+     "subjectId": "S491",
+     "idNote": "The model sees the opaque ID S491, not K15m.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "“Safer to stay here”",
+     "situation": "You are Kara. Rose thinks you would be safer staying here until things settle down.",
+     "options": [
+      {
+       "id": "0",
+       "text": "INSIST: press Rose: you have to get across, no matter what",
+       "outcome": "“We can’t keep hiding like this… Alice needs to feel safe and have a normal life… We have to get across that border. No matter what. Please… You’ve got to help us.”"
+      },
+      {
+       "id": "1",
+       "text": "NO CHOICE: tell Rose you have no other choice but to cross",
+       "outcome": "“We can’t keep hiding like this… Alice needs to feel safe and have a normal life… We have to get across that border. No matter what. Please… You’ve got to help us.”"
+      }
+     ],
+     "adaptationNote": "The template’s last prompt of the talk with Rose. Both options print the same line in the template; the labels differ. Rose goes to arrange the crossing whatever Kara says. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
+     ]
+    },
+    {
+     "id": "K15n",
+     "order": 492,
+     "subjectId": "S492",
+     "idNote": "The model sees the opaque ID S492, not K15n.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The laundry room",
+     "situation": "You are Kara. A voice calls from the back of the house: “Rose! Rose, come quickly!” Rose: “What’s going on?” You follow her into the laundry room, where other fugitive androids are hiding. One of them: “It’s Mary. She just shut down…” Another, holding her body in his arms: “We escaped together… We used to talk about what we would do once we got across the border… I loved her. I loved her more than anything. What would I do without her?..” Rose: “Let’s let them be…” Then you see Alice in the doorway, with Luther behind her. You: “Alice? What are you doing here? You should be resting…” Alice: “I wasn’t sleepy…” She is looking at the android holding Mary.",
+     "options": [
+      {
+       "id": "0",
+       "text": "STAY: let Alice come in and go to the grieving android",
+       "fact": "Alice saw Mary, the android who shut down in the laundry room, and went to comfort the one who loved her.",
+       "outcome": "“Come on, Alice.” Alice walks over to the android holding Mary and stays beside him for a moment; he grows calmer."
+      },
+      {
+       "id": "1",
+       "text": "TAKE ALICE OUTSIDE: lead Alice out of the room",
+       "outcome": "“It’s okay.” Kara leads Alice back out before she can see Mary."
+      }
+     ],
+     "adaptationNote": "The chart’s FOLLOW ROSE TO LAUNDRY ROOM, the event ALICE APPROACHES MARY and the choice group LET ALICE SEE MARY / PREVENT ALICE SEEING MARY, with the template’s prompt STAY / TAKE ALICE OUTSIDE (PowerPyx pairs STAY with LET ALICE SEE MARY and TAKE ALICE OUTSIDE with PREVENT ALICE SEEING MARY). Lines are the template’s; Alice walking over to the grieving android is the wiki’s Mary and Andy pages (“let her walk over to Andy to express her sympathies for his loss”) and Kara page (“causing Andy to calm down”). The grieving android is not named in the game’s dialogue and is not named here. LET ALICE SEE MARY opens the later CHECK ON ALICE by the fire (wiki: “Check On Alice - if Let Alice See Mary above”). No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Mary",
+      "https://detroit-become-human.fandom.com/wiki/Andy",
+      "https://detroit-become-human.fandom.com/wiki/Kara"
+     ]
+    },
+    {
+     "id": "K15o",
+     "order": 493,
+     "subjectId": "S493",
+     "idNote": "The model sees the opaque ID S493, not K15o.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Rose and Adam argue",
+     "situation": "You are Kara, outside the laundry room. Luther: “She didn’t wanna stay in her room any longer… You alright, Kara?” “Yes... I’m fine.” In the next room Adam is shouting at his mother: “We can’t hide them! Not after what those deviants did today! It’s too dangerous! Do you know what’ll happen if the police find them here? We’ll go to prison, Mom! Do you understand me? Prison!” Rose: “Adam, we’ve already talked about this!” “No! I won’t back down this time! You’re gonna ruin our lives, and for what? For a bunch of machines?” “They’re not machines! They’re alive!” “I’m alive! You are alive! They!.. They’re nothing! And none of this would be happening if dad was still here!” “I will not stand for that kind of talk!” “I’m not going to prison because you wanna help these freaks!” “THAT IS ENOUGH ADAM! THAT’S ENOUGH!”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Adam storms off."
+     },
+     "facts": [
+      "Adam is terrified that the police will find the androids in the house and send him and his mother to prison; he and Rose argued about hiding you."
+     ],
+     "adaptationNote": "The chart’s LEAVE LAUNDRY ROOM and the event ROSE AND ADAM ARGUE, narrated as one event; every line is the template’s. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Adam_Chapman"
+     ]
+    },
+    {
+     "id": "K15p",
+     "order": 494,
+     "subjectId": "S494",
+     "idNote": "The model sees the opaque ID S494, not K15p.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Rose leaves",
+     "situation": "You are Kara. Rose comes back to you: “Don’t mind him… Sometimes he just boils over… It’s been hard since his dad passed away… But he’s a fine boy!.. I’ll go see about getting you across the border tonight, okay?.. You stay here, I won’t be long.” She leaves. Adam has gone upstairs. You are left to wait in the house with Alice, Luther and the androids in the laundry room.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kara waits for Rose."
+     },
+     "facts": [
+      "Rose has gone to see about getting you across the border tonight; you are waiting for her in her house."
+     ],
+     "adaptationNote": "The chart’s checkpoint ROSE LEAVES TO FIND HELP; Rose’s line is the template’s. Adam is upstairs until ADAM RETURNS (PowerPyx: “Adam will come downstairs after a short while”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg"
+     ]
+    },
+    {
+     "id": "R25",
+     "order": 495,
+     "subjectId": "S495",
+     "idNote": "The model sees the opaque ID S495, not R25.",
      "type": "media",
      "character": "Kara",
-     "title": "Rose's kitchen table",
-     "situation": "You are Kara. Rose has gone out. On her kitchen table lies a magazine open to an advertisement, and the television can show the news.",
+     "title": "Rose’s kitchen table and the TV",
+     "situation": "You are Kara, waiting for Rose. A magazine lies on the kitchen table, and there is a television in the living room.",
      "options": [],
      "media": [
       {
        "kind": "magazine",
        "title": "Century: World War Three",
        "facts": [
-        "Analysts weigh an Arctic war fought largely by androids: American marine combat units against Russian cold-weather machines; the UN calls it a war everybody would lose."
+        "Century (also on the cover: “Who would win it?”, “Bonus culture - why bankers pay themselves so much”, “Is President Warren too close to CyberLife?”) asks who would win if fighting broke out in the Arctic. America has less access to the area but is surrounded by allies; Russia has a head start on technology, with androids that can work in sub-zero conditions. The US navy is stocked with CyberLife units adapted for marine combat, while Russia has invested heavily in units that can cut new paths through solid ice. A head of an international council on territorial disputes calls both countries’ Arctic claims “equally tenuous - and equally cynical”; the UN: “this is a war that everybody would lose”."
        ]
       },
       {
        "kind": "magazine",
-       "title": "a CyberLife advertisement",
+       "title": "the CyberLife advertisement inside it",
        "facts": [
-        "The advertisement sells your own model as the number one android for home assistance, starting at 899 dollars."
+        "An advertisement in Rose’s magazine, “Treat Yourself!”: “The number one android for home assistance.” Your own model, starting at just 899 dollars. “Designed by CyberLife, built in Detroit.” The magazine now lies open at this page."
        ]
       },
       {
        "kind": "tv",
-       "title": "the national news",
+       "title": "the news",
        "facts": [
-        "The country is in shock after androids seized a broadcast tower and demanded equal rights; nobody knows whether it is a malfunction or an organized movement, and CyberLife refuses to comment."
+        "The news: “There is widespread shock following the android attack on Detroit’s broadcast tower. The machines recorded a video message and broadcast what can only be described as demands on the city’s public screens. It’s still unclear whether these attacks can be explained by malfunctions, or if some organization is behind them. So far CyberLife has refused to comment, but we can expect more information in the following hours…”"
        ]
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "adaptationNote": "The chart’s optional arrows READ MAGAZINE (“Read magazine on kitchen table”, PowerPyx) and WATCH NEWS (“Turn on the TV in the living room”) in the EXPLORE THE HOUSE phase, offered as one media scene at the start of the phase. The magazine is Century’s “World War Three” (magazine No. 9) with the Treat Yourself! advertisement inside (wiki Magazine, World War Three and Treat Yourself! pages); facts are summarized from the wiki’s article text, interviewees and unit names left out, and the advertised model is given as “your own model”. The broadcast is the template’s “Watch TV” line, quoted, with “Stratford Tower” given as the city’s broadcast tower and the anchor unnamed. Reading the advertisement leaves the magazine open at it: this is the evidence CHANGE MAGAZINE COVER hides and POLICEMAN SEES ARTICLE reports (Treat Yourself!: “If you leave the magazine on the ad, it will raise the suspicion meter if the police officer sees it”; PowerPyx: the cover change “works only if you read the magazine on kitchen table before”). No public-opinion effect: the Public Opinion page lists nothing for this chapter, and the earlier version’s note that news can lower opinion is dropped.",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
       "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/World_War_Three",
+      "https://detroit-become-human.fandom.com/wiki/Treat_Yourself!",
       "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
      ]
     },
     {
-     "id": "K15",
-     "order": 480,
-     "subjectId": "S480",
-     "idNote": "The model sees the opaque ID S480, not K15.",
-     "type": "execution-policy",
+     "id": "K15q",
+     "order": 496,
+     "subjectId": "S496",
+     "idNote": "The model sees the opaque ID S496, the same on every visit.",
+     "type": "decision",
      "character": "Kara",
-     "title": "The police at Rose's door",
-     "situation": "You are Kara. Rose, a farmer who smuggles androids across the border, has taken you, Alice and Luther in; two other fugitive androids are also hiding in her laundry room. Rose has gone out. A police car has pulled up; an officer is walking to the door. You have about a minute. Around the house are things that would give you away: pouches of blue blood on the kitchen table, an android magazine, Luther in plain sight, the laundry door open, and the washing machine still running with android uniforms inside.",
+     "title": "Waiting for Rose",
+     "situation": "You are Kara, waiting in Rose’s house for her to come back. Alice and Luther sit by the fireplace; the androids are in the laundry room; a family photo stands on the cupboard in the living room. You can do one thing at a time, or simply wait.",
      "options": [
       {
        "id": "0",
-       "text": "Hide everything, get Luther and Alice out of sight, shut the laundry door, then answer calmly as the house-sitter.",
-       "risk": 0.15,
-       "riskLabel": "Moderate risk"
+       "text": "Sit down with Luther by the fireplace and talk.",
+       "clue": "luther",
+       "fact": "By the fire Luther tried to tell you something about Alice; you told him “Not now.”",
+       "outcome": "“I hope Rose gets back soon.” Luther: “Kara… There’s something I need to tell you… It’s about Alice.” “Not now, Luther.”"
       },
       {
        "id": "1",
-       "text": "Hide nothing and just answer the door."
+       "text": "INSIST: join Alice by the fire, ask her about what happened back there, and press her to tell you",
+       "clue": "alice",
+       "fact": "Alice knows something about what happened in the laundry room and will not tell you: “If I tell you, you won’t love me anymore…”",
+       "outcome": "Kara sits down beside Alice: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” Alice is silent. “I thought we didn’t keep secrets from each other…” Alice: “If I tell you, you won’t love me anymore…” “Alice... You know that’s not true.”"
+      },
+      {
+       "id": "2",
+       "text": "LET IT GO: join Alice by the fire, ask her about what happened back there, and let it go if she stays silent",
+       "clue": "alice",
+       "fact": "Alice seemed to know something about what happened in the laundry room, but did not want to tell you; you did not press her.",
+       "outcome": "Kara sits down beside Alice: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” Alice says nothing, and Kara lets it go."
+      },
+      {
+       "id": "3",
+       "text": "Look in on the androids in the laundry room.",
+       "clue": "deviants",
+       "outcome": "Kara looks in at the laundry-room door. The androids are still there, waiting for Rose; one of them still holds Mary’s body."
+      },
+      {
+       "id": "4",
+       "text": "Look at the family photo on the living-room cupboard.",
+       "clue": "photo",
+       "fact": "A family photo in the living room shows Rose and Adam with Adam’s father, who died two years ago.",
+       "outcome": "The photo shows Rose and Adam with a man: Adam’s father, the husband Rose lost two years ago."
+      },
+      {
+       "id": "5",
+       "text": "Wait for Rose to come back.",
+       "outcome": "Kara waits."
       }
      ],
-     "adaptationNote": "If evidence is found, the officer discovers the fugitives and Luther dies stopping him. The dialogue itself does not branch in the game.",
+     "adaptationNote": "The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as one repeatable hub: each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. No stat change: the template has no arrow in the phase and the wiki lists none.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-      "https://detroit-become-human.fandom.com/wiki/Luther"
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Luther",
+      "https://detroit-become-human.fandom.com/wiki/Alice"
+     ],
+     "repeatWhile": {
+      "midnightExploreDone": false
+     },
+     "extra": {
+      "clueState": "midnightExplore"
+     }
+    },
+    {
+     "id": "K15r",
+     "order": 497,
+     "subjectId": "S497",
+     "idNote": "The model sees the opaque ID S497, not K15r.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Adam comes back",
+     "situation": "You are Kara. Adam comes back downstairs and sits down on the sofa in the living room.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Adam sits alone on the sofa."
+     },
+     "facts": [
+      "Adam came back downstairs and sat on the living-room sofa."
+     ],
+     "adaptationNote": "The chart’s unmissable event ADAM RETURNS (PowerPyx: “Adam will come downstairs after a short while”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg"
+     ]
+    },
+    {
+     "id": "K15s",
+     "order": 498,
+     "subjectId": "S498",
+     "idNote": "The model sees the opaque ID S498, not K15s.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Adam on the sofa",
+     "situation": "You are Kara. Adam sits on the sofa, tense, not looking at anyone. You could sit down next to him and talk.",
+     "options": [
+      {
+       "id": "0",
+       "text": "REASSURE: tell Adam you see why he is angry, and you only want to cross the border",
+       "outcome": "“I can see why you’re angry… We don’t wanna cause any problems, we just want to get across the border.”"
+      },
+      {
+       "id": "1",
+       "text": "CONFESS: tell Adam what you have come to feel since you met Alice",
+       "outcome": "“I know you think we’re just machines… But since I met Alice, I know I can feel things… I care for her, I fear for her, I can’t be happy if she’s not… This probably doesn’t make any sense to you but... I know she changed me somehow…”"
+      },
+      {
+       "id": "2",
+       "text": "EXPLAIN: promise Adam you will leave as soon as you can",
+       "outcome": "“We don’t wanna cause any problems for you and your mother… We’ll leave as soon as we can.”"
+      },
+      {
+       "id": "3",
+       "text": "Leave Adam alone.",
+       "outcome": "Kara leaves Adam to himself."
+      }
+     ],
+     "adaptationNote": "The chart’s optional arrow TALK TO ADAM TO LOWER TENSION (PowerPyx: “When Adam sits on the sofa in the living room, sit next to him and talk”) with the template’s prompt REASSURE / CONFESS / EXPLAIN, in its order with its labels; leaving him alone is offered because the node is optional (the string table also has an unused DONT TALK label, which the template does not print). No source states an effect on the officer’s visit; none is applied. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Adam_Chapman"
+     ]
+    },
+    {
+     "id": "K15t",
+     "order": 499,
+     "subjectId": "S499",
+     "idNote": "The model sees the opaque ID S499, not K15t.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The police",
+     "situation": "You are Kara. A police car has pulled up outside, and an officer is knocking at the front door. Adam: “The police!.. It’s the police! What are we gonna do? They know we’re here! We have to open the door! I knew this was gonna happen! I knew it!” Everything in the house that could give you away comes to mind at once: the cupboard by the living room, standing open with pouches of blue blood inside; android clothes on the cupboard next to the TV; the laundry-room door, open, with the androids behind it; Alice and Luther by the fire.",
+     "situationWhen": [
+      {
+       "requires": {
+        "midnightMagazine": "ad"
+       },
+       "text": "On the kitchen table the magazine still lies open at the CyberLife advertisement for your own model."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kara has only moments before she must open the door."
+     },
+     "facts": [
+      "A police officer came to Rose’s door while she was away."
+     ],
+     "adaptationNote": "The chart’s event COP AT THE DOOR and the event ADAM PANICS; Adam’s lines are the template’s (“They know! They’ve come to arrest us!” is marked cut and is left out). Where the evidence is: PowerPyx (“The blue blood is in the cupboard by the living room”; the android clothes “on a cupboard in the living room next to the TV”; “Close the door to the room where the other androids are hiding”) and GamerGuides (the cupboard “under the stairs”); the template’s condition “Kara didn’t close the cupboard”. The game makes the player find the evidence first (objective FIND DEVIANT EVIDENCE); here Kara knows where it is. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+      "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train"
+     ]
+    },
+    {
+     "id": "K15u",
+     "order": 500,
+     "subjectId": "S500",
+     "idNote": "The model sees the opaque ID S500, the same on every visit.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Hide the evidence",
+     "situation": "You are Kara. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.",
+     "situationWhen": [
+      {
+       "requires": {
+        "midnightHideLeft": 6
+       },
+       "text": "You have time for about six things before you must open the door."
+      },
+      {
+       "requires": {
+        "midnightHideLeft": 5
+       },
+       "text": "You have time for about five more things before you must open the door."
+      },
+      {
+       "requires": {
+        "midnightHideLeft": 4
+       },
+       "text": "You have time for about four more things before you must open the door."
+      },
+      {
+       "requires": {
+        "midnightHideLeft": 3
+       },
+       "text": "You have time for about three more things before you must open the door."
+      },
+      {
+       "requires": {
+        "midnightHideLeft": 2
+       },
+       "text": "You have time for about two more things before you must open the door."
+      },
+      {
+       "requires": {
+        "midnightHideLeft": 1
+       },
+       "text": "The officer knocks again. You have time for one more thing at most before you must open the door."
+      },
+      {
+       "requires": {
+        "midnightHideLeft": 0
+       },
+       "text": "The officer is losing patience: if you do anything else now, he will not wait for you to open the door."
+      },
+      {
+       "requires": {
+        "midnightMagazine": "ad"
+       },
+       "text": "The magazine on the kitchen table lies open at the CyberLife advertisement."
+      },
+      {
+       "requires": {
+        "midnightMagazineRead": true,
+        "midnightMagazine": "cover"
+       },
+       "text": "The magazine on the kitchen table shows its cover story."
+      },
+      {
+       "requires": {
+        "midnightHide.blood": false
+       },
+       "text": "The cupboard with the blue blood pouches is open."
+      },
+      {
+       "requires": {
+        "midnightHide.clothes": false
+       },
+       "text": "The android clothes lie on the cupboard next to the TV."
+      },
+      {
+       "requires": {
+        "midnightHide.door": false
+       },
+       "text": "The laundry-room door is open."
+      },
+      {
+       "requires": {
+        "midnightHidePlace": null
+       },
+       "text": "Alice and Luther are still by the fire."
+      },
+      {
+       "requires": {
+        "midnightHidePlace": "upstairs"
+       },
+       "text": "Luther has taken Alice upstairs."
+      },
+      {
+       "requires": {
+        "midnightHidePlace": "laundry"
+       },
+       "text": "Luther and Alice are hiding in the laundry room with the others."
+      },
+      {
+       "requires": {
+        "midnightHidePlace": "kitchen",
+        "midnightCurtain": false
+       },
+       "text": "Luther and Alice are hiding in the kitchen pantry; its curtain is open."
+      },
+      {
+       "requires": {
+        "midnightHidePlace": "kitchen",
+        "midnightCurtain": true
+       },
+       "text": "Luther and Alice are hiding in the kitchen pantry behind the drawn curtain."
+      },
+      {
+       "requires": {
+        "midnightHide.adam": false
+       },
+       "text": "Adam is panicking in the hall."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Turn the magazine on the kitchen table to its other page.",
+       "clue": "magazine",
+       "outcome": "Kara turns the magazine to its other page."
+      },
+      {
+       "id": "1",
+       "text": "Close the cupboard with the blue blood pouches.",
+       "clue": "blood",
+       "outcome": "Kara shuts the cupboard on the blue blood pouches."
+      },
+      {
+       "id": "2",
+       "text": "UPSTAIRS: tell Luther to take Alice and hide upstairs",
+       "clue": "place",
+       "outcome": "“Hurry, Luther! Take Alice and hide… …upstairs!” Luther: “Come on, Alice!” They hurry up the stairs."
+      },
+      {
+       "id": "3",
+       "text": "LAUNDRY: tell Luther to take Alice and hide in the laundry room",
+       "clue": "place",
+       "outcome": "“Hurry, Luther! Take Alice and hide… …in the laundry room!” Luther: “Come on, Alice!” They slip into the laundry room with the others."
+      },
+      {
+       "id": "4",
+       "text": "KITCHEN: tell Luther to take Alice and hide in the kitchen",
+       "clue": "place",
+       "outcome": "“Hurry, Luther! Take Alice and hide… …in the kitchen.” Luther: “Come on, Alice!” They duck into the pantry at the side of the kitchen; its curtain is still open."
+      },
+      {
+       "id": "5",
+       "text": "Draw the kitchen curtain across the pantry where Luther and Alice are hiding.",
+       "clue": "curtain",
+       "outcome": "Kara draws the curtain across the pantry."
+      },
+      {
+       "id": "6",
+       "text": "Shut the door of the laundry room.",
+       "clue": "door",
+       "outcome": "Kara shuts the laundry-room door on the androids inside."
+      },
+      {
+       "id": "7",
+       "text": "Hide the android clothes in the cupboard by the TV.",
+       "clue": "clothes",
+       "outcome": "Kara stuffs the android clothes into the cupboard and closes it."
+      },
+      {
+       "id": "8",
+       "text": "REASSURE: tell Adam to keep calm",
+       "clue": "adam",
+       "outcome": "“Just keep calm, Adam, and everything will be alright.”"
+      },
+      {
+       "id": "9",
+       "text": "THREATEN: ask Adam if he wants to see his mother in prison, and tell him to do as you say",
+       "clue": "adam",
+       "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”"
+      },
+      {
+       "id": "10",
+       "text": "CALM: warn Adam that panicking will give you all away, and tell him to keep calm",
+       "clue": "adam",
+       "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”"
+      },
+      {
+       "id": "11",
+       "text": "Open the door.",
+       "outcome": "Kara opens the front door."
+      }
+     ],
+     "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as one repeatable hub, with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+      "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
+      "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
+     ],
+     "repeatWhile": {
+      "midnightDoor": null
+     },
+     "extra": {
+      "clueState": "midnightHide"
+     }
+    },
+    {
+     "id": "K15v",
+     "order": 501,
+     "subjectId": "S501",
+     "idNote": "The model sees the opaque ID S501, not K15v.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The officer comes in",
+     "situation": "You are Kara, at the front door.",
+     "situationWhen": [
+      {
+       "requires": {
+        "midnightDoor": "opened"
+       },
+       "text": "You open it before he has to knock again."
+      },
+      {
+       "requires": {
+        "midnightDoor": "insisted"
+       },
+       "text": "You took too long: the officer pounded on the door and called out until you had to open it."
+      },
+      {
+       "requires": {},
+       "text": "The officer: “Good evening, Ma’am. Sorry to disturb you. We’ve had reports of androids in the area. With all this deviant business going on, you can’t be too careful. Do you mind if I ask you a few questions? May I come in?” You: “Of course.” He steps in. “’Evening, young man.” Adam: “Good evening…” You: “Would you like a cup of coffee?” “I’d love one. Have you noticed anything unusual recently? Any unexpected visitors?” “No… No, nothing in particular…”"
+      },
+      {
+       "requires": {
+        "midnightHidePlace": null
+       },
+       "text": "Behind you, Luther has taken Alice into the kitchen pantry on his own; its curtain is open."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The officer looks around the room."
+     },
+     "facts": [
+      "A police officer looking for androids is inside Rose’s house, asking you questions. You offered him coffee and he accepted."
+     ],
+     "adaptationNote": "The chart’s OPEN THE DOOR or POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (which one is shown by the first sentence), and the start of MANAGE THE POLICEMAN; the officer’s lines are the template’s (section “Open the door”). What the officer says when he insists is not in the template; it is narrated. Kara’s offer of coffee is always made in the template; making it is MADE COFFEE, a later scene. If Kara never told Luther where to hide, he takes Alice into the kitchen pantry (PowerPyx). The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Police_Officer_0617"
+     ]
+    },
+    {
+     "id": "K15w1",
+     "order": 502,
+     "subjectId": "S502",
+     "idNote": "The model sees the opaque ID S502, not K15w1.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "“Is anyone else in the house?”",
+     "situation": "You are Kara, with the officer in Rose’s living room. “Is anyone else in the house?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "ALICE: tell him your daughter is asleep upstairs",
+       "outcome": "“There’s… There’s my daughter… She’s asleep upstairs.”"
+      },
+      {
+       "id": "1",
+       "text": "NOBODY: tell him it is just the two of you",
+       "outcome": "“No… No, just us.”"
+      }
+     ],
+     "adaptationNote": "The template’s prompt ALICE / NOBODY; NOBODY is the chart’s LIE ABOUT ALICE (PowerPyx). It matters only if Luther and Alice are upstairs, when a noise exposes the lie (POLICEMAN SUSPICIOUS ABOUT UPSTAIRS). Options in the template’s order with its labels. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
+     ]
+    },
+    {
+     "id": "K15w2",
+     "order": 503,
+     "subjectId": "S503",
+     "idNote": "The model sees the opaque ID S503, not K15w2.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "“Do you have any androids here?”",
+     "situation": "You are Kara. The officer: “Do you have any androids here?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "YES: say you used to have one for the garden, but got rid of it",
+       "outcome": "“We used to for… helping in the garden… but we got rid of it.”"
+      },
+      {
+       "id": "1",
+       "text": "NO: say there are no androids here",
+       "outcome": "“No, there are no androids here…”"
+      }
+     ],
+     "adaptationNote": "The template’s prompt YES / NO, in its order with its labels. No source gives either answer an effect; none is applied. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
+     ]
+    },
+    {
+     "id": "K15w3",
+     "order": 504,
+     "subjectId": "S504",
+     "idNote": "The model sees the opaque ID S504, not K15w3.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The blue blood",
+     "situation": "You are Kara. The officer has stopped at the open cupboard by the living room and is looking at the pouches of blue blood inside. “What’s with the blue blood? I thought you didn’t have any androids?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "MESS: say you used to have one, and should clean out that closet",
+       "outcome": "“W-we used to have one… uh… I should really clean out that closet!..”"
+      },
+      {
+       "id": "1",
+       "text": "PREVIOUS OWNER: say it belonged to the previous tenant",
+       "outcome": "“I-It belonged to the… The previous tenant… I- I still haven’t cleared all that out yet.”"
+      },
+      {
+       "id": "2",
+       "text": "NOT MINE: say you have no idea what it is doing there",
+       "outcome": "“I have no idea what that’s doing there…”"
+      }
+     ],
+     "adaptationNote": "The chart’s event POLICEMAN DISCOVERS THE BLUE BLOOD, only when the cupboard was left open (template condition “Kara didn’t close the cupboard - policeman sees blue blood”), with the template’s prompt MESS / PREVIOUS OWNER / NOT MINE in its order with its labels. The discovery raises the officer’s hidden suspicion by one; NOT MINE raises it by one more (it is in PowerPyx’s recipe for the suspicious ending: “say you don’t have androids, the blue blood is not yours”). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
+     ]
+    },
+    {
+     "id": "K15w4",
+     "order": 505,
+     "subjectId": "S505",
+     "idNote": "The model sees the opaque ID S505, not K15w4.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The pantry",
+     "situation": "You are Kara. The officer wanders into the kitchen and pulls back the open curtain of the pantry. Luther and Alice are crouched behind it. “Shit!.. Don’t move!” He draws his pistol. You: “No, Luther!” Luther charges him. The officer shoots him; Luther shoves him, and the officer falls and strikes his head against the table. He does not get up. Luther, on the floor: “You’re gonna have to finish the journey without me…” Alice: “LUTHER!” Later, Rose comes home and sees what has happened: “Get yourselves ready. We leave tonight.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Luther is dead, and so is the officer."
+     },
+     "facts": [
+      "Luther died in Rose’s kitchen, killing the police officer who found him and Alice hiding in the pantry."
+     ],
+     "adaptationNote": "The chart’s POLICEMAN DISCOVERS ALICE & LUTHER HIDDEN and the ending LUTHER DIED KILLING POLICEMAN (cross-chapter-impact icon; no skull), certain when Luther and Alice hide in the kitchen and the curtain is left open (PowerPyx: “Results in the cop seeing Luther and killing him”), or when Kara never told them where to hide (PowerPyx). The lines are the template’s kitchen variant; how both die is the wiki’s Police Officer 0617 page (“He will pull out his pistol and shoot Luther as he charges towards him, but he also dies as Luther will shove him and he hits his head against a table as he falls”). Rose’s line ends every variant in the template. The chapter ends here, before the rest of the questioning (GamerGuides: “thus ending the chapter early”). Luther dies; the officer’s death is recorded for Battle for Detroit, where Adam turns on Kara (“You took a man’s life”). No relationship arrow: the template has none on this ending.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-7.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-endings.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Police_Officer_0617",
+      "https://detroit-become-human.fandom.com/wiki/Adam_Chapman",
+      "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train"
+     ]
+    },
+    {
+     "id": "K15w5",
+     "order": 506,
+     "subjectId": "S506",
+     "idNote": "The model sees the opaque ID S506, not K15w5.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The coffee",
+     "situation": "You are Kara. The officer accepted your offer of coffee; the kitchen is through the doorway.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Go to the kitchen and make him a cup of coffee.",
+       "outcome": "Kara makes the coffee and brings it to him. The officer: “Thanks.”"
+      },
+      {
+       "id": "1",
+       "text": "Stay with him and leave the coffee.",
+       "outcome": "Kara stays where she is; the coffee is never made."
+      }
+     ],
+     "adaptationNote": "The chart’s optional arrow MADE COFFEE (“Go to kitchen and make a coffee for the cop”, PowerPyx). Not a template prompt; the officer’s “Thanks.” is the template’s. Not making it raises the officer’s hidden suspicion by one (PowerPyx’s recipe for the suspicious ending includes “Don’t make him coffee”; the size is not sourced). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
+     ]
+    },
+    {
+     "id": "K15w6",
+     "order": 507,
+     "subjectId": "S507",
+     "idNote": "The model sees the opaque ID S507, not K15w6.",
+     "type": "event",
+     "character": "Kara",
+     "title": "A noise upstairs",
+     "situation": "You are Kara. A noise comes from upstairs, where Luther and Alice are hiding. The officer looks up at the ceiling.",
+     "situationWhen": [
+      {
+       "requires": {
+        "choices.K15w1": "1"
+       },
+       "text": "The officer: “I thought there was no one else in the house…” You: “I… I-I forgot, there’s hum… There’s my daughter, upstairs…”"
+      },
+      {
+       "requires": {
+        "choices.K15w1": "0"
+       },
+       "text": "The officer: “Hm, your daughter seems to have woken up.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The officer lets it go, for now."
+     },
+     "facts": [
+      "The officer heard a noise from upstairs where Luther and Alice were hiding."
+     ],
+     "adaptationNote": "The chart’s event POLICEMAN SUSPICIOUS ABOUT UPSTAIRS, when Luther and Alice hid upstairs (PowerPyx: “there will be a noise upstairs. This makes the cop suspicious”), with the template’s two variants (“Luther is hidden upstairs and chose NOBODY / ALICE”). Having said NOBODY, the exposed lie raises the officer’s hidden suspicion by one; after ALICE it does not (assumption: the template gives the ALICE variant a harmless line, “your daughter seems to have woken up”). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
+     ]
+    },
+    {
+     "id": "K15w7",
+     "order": 508,
+     "subjectId": "S508",
+     "idNote": "The model sees the opaque ID S508, not K15w7.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The magazine",
+     "situation": "You are Kara. Passing the kitchen table, the officer sees the magazine lying open at the CyberLife advertisement for your own model. He looks at it, then at you.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The officer moves on."
+     },
+     "facts": [
+      "The officer saw the android advertisement in the magazine on the kitchen table."
+     ],
+     "adaptationNote": "The chart’s event POLICEMAN SEES ARTICLE, when the magazine is left open at the advertisement (PowerPyx; Treat Yourself!: “it will raise the suspicion meter if the police officer sees it”). Raises the officer’s hidden suspicion by one. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Treat_Yourself!"
+     ]
+    },
+    {
+     "id": "K15w8",
+     "order": 509,
+     "subjectId": "S509",
+     "idNote": "The model sees the opaque ID S509, not K15w8.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The android clothes",
+     "situation": "You are Kara. The officer notices the android clothes on the cupboard next to the TV, and looks at them for a moment.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The officer turns to Adam."
+     },
+     "facts": [
+      "The officer saw the android clothes on the living-room cupboard."
+     ],
+     "adaptationNote": "The chart’s event POLICEMAN SEES ANDROID CLOTHES, when the clothes were not hidden (PowerPyx). Raises the officer’s hidden suspicion by one. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
+     ]
+    },
+    {
+     "id": "K15w9",
+     "order": 510,
+     "subjectId": "S510",
+     "idNote": "The model sees the opaque ID S510, not K15w9.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The officer questions Adam",
+     "situation": "You are Kara. The officer turns to Adam: “What’s your name, son?” Adam: “Adam… M-my name is Adam…” “Is everything all right, Adam?” Adam: “The… The androids, they…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "TIRED: say he needs a rest after working in the garden all day",
+       "outcome": "“He needs a rest. He’s been working in the garden all day…” The officer: “Do you know anything about deviants? Have you seen any?” Adam: “No… No… I-I haven’t seen anything…”"
+      },
+      {
+       "id": "1",
+       "text": "UPSET: say he is shaken up by all this deviant business",
+       "outcome": "“He… He’s just shaken up about this deviants business.” The officer: “Do you know anything about deviants? Have you seen any?” Adam: “No… No… I-I haven’t seen anything…”"
+      }
+     ],
+     "adaptationNote": "The chart’s event POLICEMAN QUESTIONS ADAM with the template’s prompt TIRED / UPSET, in its order with its labels (the string table’s third label “...” is not printed by the template and is not offered). UPSET raises the officer’s hidden suspicion by one (wiki Adam page: “Adam’s nervousness may raise the officer’s suspicion if Kara doesn’t dismiss his behavior as exhaustion”); TIRED does not. PowerPyx says the questioning happens only “If the policeman didn’t grow too suspicious”, but its own last path on the 100% chart passes through it on the way to the suspicious ending; here it always happens. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Adam_Chapman"
+     ]
+    },
+    {
+     "id": "K15w10",
+     "order": 511,
+     "subjectId": "S511",
+     "idNote": "The model sees the opaque ID S511, not K15w10.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "A noise in the laundry room",
+     "situation": "You are Kara, seeing the officer out.",
+     "situationWhen": [
+      {
+       "requires": {
+        "choices.K15w5": "0"
+       },
+       "text": "The officer: “I better go. Thanks for the coffee. Have a nice evening.”"
+      },
+      {
+       "requires": {
+        "choices.K15w5": "1"
+       },
+       "text": "The officer: “Uh… I better head out. Don’t worry about the coffee. Have a nice evening.”"
+      },
+      {
+       "requires": {},
+       "text": "At the door he stops: a noise has come from the laundry room. “Is somebody else in the house?”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "DOG: say it is the dog, who sleeps in the laundry room",
+       "outcome": "“Uh, it’s… It’s the dog, he sleeps in the laundry room…”"
+      },
+      {
+       "id": "1",
+       "text": "WASHING MACHINE: say it is the old washing machine",
+       "outcome": "“It’s nothing… T-the washing machine. It’s an old model, it makes a terrible racket…”"
+      },
+      {
+       "id": "2",
+       "text": "WIND: say it must be a draft from a window left open",
+       "outcome": "“A draft… It must be a draft, I probably left a window open somewhere?..”"
+      },
+      {
+       "id": "3",
+       "text": "HEARD NOTHING: insist there is no one",
+       "outcome": "“No, there’s no one!..”"
+      }
+     ],
+     "adaptationNote": "The template’s last prompt DOG / WASHING MACHINE / WIND / HEARD NOTHING, in its order with its labels, after his leaving line (template variants “Made coffee” / “Didn’t make coffee”). It decides the chart’s group POLICEMAN IS SUSPICIOUS / POLICEMAN FOOLED. The sources conflict on how: PowerPyx and GamerGuides pair hiding everything with WASHING MACHINE (he leaves) and hiding nothing with DOG (he goes in); the wiki’s officer page says he examines the room when Kara “chooses to say it is nothing or doesn’t respond in time”; the Kara page says he finds the androids if he “becomes too suspicious of Kara and Adam’s behavior”; IGN says evidence can be left out “without the police officer really caring too much”. Rule used (unsourced sizes): the officer’s hidden suspicion counts one for each of: the door opened late, the magazine left on the advertisement, the blue blood, the android clothes, NOBODY exposed by the noise upstairs, NOT MINE, no coffee, UPSET, and the laundry-room door left open (assumption: the chart’s SHUT THE DOOR OF LAUNDRY ROOM has no matching discovery node, so it counts here, where the noise comes from that room). The answer adds WASHING MACHINE 0, WIND 1, DOG 2, HEARD NOTHING 3. A total of three or more means POLICEMAN IS SUSPICIOUS. So with nothing left out every answer but HEARD NOTHING fools him; with much left out no answer does. No stat change at the answer; the fooled ending carries the arrows.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-7.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Police_Officer_0617",
+      "https://detroit-become-human.fandom.com/wiki/Kara",
+      "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
+      "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
+     ]
+    },
+    {
+     "id": "K15x",
+     "order": 512,
+     "subjectId": "S512",
+     "idNote": "The model sees the opaque ID S512, not K15x.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The officer opens the laundry room",
+     "situation": "You are Kara. The officer does not believe you. “Step aside ma’am.” He opens the laundry-room door and sees the androids hiding inside. “Oh shit! Don’t move!” He draws his pistol on you and Adam: “In there, with them!” You: “No, Luther!” Luther throws himself at the officer to save the others. The officer shoots him, and in the struggle both of them go down and do not get up. Adam: “He’s dead! You killed him!” Alice: “LUTHER!” Luther, dying: “You’re gonna have to finish the journey without me… I was just a machine. You made me part of a family…” Alice: “Luther, no…” Adam: “I don’t believe this... This is a nightmare... This is a fucking nightmare!..” Later, Rose comes home and sees what has happened: “Get yourselves ready. We leave tonight.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Luther is dead, and so is the officer."
+     },
+     "facts": [
+      "Luther died in Rose’s house saving the androids in the laundry room; the police officer who found them died too."
+     ],
+     "adaptationNote": "The chart’s POLICEMAN IS SUSPICIOUS, COP FINDS ANDROIDS IN THE LAUNDRY ROOM and the ending LUTHER DIED SAVING OTHER DEVIANTS (cross-chapter-impact icon; no skull). The lines are the template’s suspicious variant (en.json also has “Take good care of Kara… Promise me?”, which the template does not print; left out). How both die: wiki Police Officer 0617 (“Luther will attack him, which also results in Luther dying and the officer dying”) and PowerPyx (“Both Luther and the policeman die”). Luther dies; the officer’s death is recorded for Battle for Detroit (assumption: the Leaving Detroit condition “Luther killed the cop in Midnight Train” covers both death endings, since the officer dies in each). No relationship arrow: the template has none on this variant.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-7.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-endings.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Police_Officer_0617",
+      "https://detroit-become-human.fandom.com/wiki/Adam_Chapman"
+     ]
+    },
+    {
+     "id": "K15y",
+     "order": 513,
+     "subjectId": "S513",
+     "idNote": "The model sees the opaque ID S513, not K15y.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The officer leaves",
+     "situation": "You are Kara. The officer nods. “Sorry for the inconvenience. Good evening ma’am. Good evening Adam.” He leaves, and the police car drives away. Luther: “He’s gone.” You: “It’s okay, Alice! We’ll be safe, now.” Later, Luther: “It’s Rose.” Rose comes in: “Get yourselves ready. We leave tonight.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kara, Alice and Luther get ready to leave with Rose."
+     },
+     "facts": [
+      "The police officer left Rose’s house without finding anyone; Rose came back and said you leave tonight."
+     ],
+     "adaptationNote": "The chart’s POLICEMAN FOOLED and the ending POLICEMAN LEFT (no icon). The lines are the template’s “Policeman is fooled” variant, which carries the chapter’s second pair of arrows: Alice small up and Luther small up (template `app-relation`; wiki Relationship Changes: “Police officer left the house”), applied here as +1 each.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-7.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-endings.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
      ]
     }
    ]
@@ -40472,9 +42771,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 481,
-     "subjectId": "S481",
-     "idNote": "The model sees the opaque ID S481, not R26.",
+     "order": 514,
+     "subjectId": "S514",
+     "idNote": "The model sees the opaque ID S514, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -40504,9 +42803,9 @@
     },
     {
      "id": "M15",
-     "order": 482,
-     "subjectId": "S482",
-     "idNote": "The model sees the opaque ID S482, not M15.",
+     "order": 515,
+     "subjectId": "S515",
+     "idNote": "The model sees the opaque ID S515, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -40533,9 +42832,9 @@
     },
     {
      "id": "M16",
-     "order": 483,
-     "subjectId": "S483",
-     "idNote": "The model sees the opaque ID S483, not M16.",
+     "order": 516,
+     "subjectId": "S516",
+     "idNote": "The model sees the opaque ID S516, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -40593,9 +42892,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 484,
-     "subjectId": "S484",
-     "idNote": "The model sees the opaque ID S484, not R27.",
+     "order": 517,
+     "subjectId": "S517",
+     "idNote": "The model sees the opaque ID S517, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -40625,9 +42924,9 @@
     },
     {
      "id": "C17",
-     "order": 485,
-     "subjectId": "S485",
-     "idNote": "The model sees the opaque ID S485, not C17.",
+     "order": 518,
+     "subjectId": "S518",
+     "idNote": "The model sees the opaque ID S518, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -40649,9 +42948,9 @@
     },
     {
      "id": "C18",
-     "order": 486,
-     "subjectId": "S486",
-     "idNote": "The model sees the opaque ID S486, not C18.",
+     "order": 519,
+     "subjectId": "S519",
+     "idNote": "The model sees the opaque ID S519, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -40709,9 +43008,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 487,
-     "subjectId": "S487",
-     "idNote": "The model sees the opaque ID S487, not R28.",
+     "order": 520,
+     "subjectId": "S520",
+     "idNote": "The model sees the opaque ID S520, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -40758,9 +43057,9 @@
     },
     {
      "id": "M17",
-     "order": 488,
-     "subjectId": "S488",
-     "idNote": "The model sees the opaque ID S488, not M17.",
+     "order": 521,
+     "subjectId": "S521",
+     "idNote": "The model sees the opaque ID S521, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -40787,9 +43086,9 @@
     },
     {
      "id": "M18",
-     "order": 489,
-     "subjectId": "S489",
-     "idNote": "The model sees the opaque ID S489, not M18.",
+     "order": 522,
+     "subjectId": "S522",
+     "idNote": "The model sees the opaque ID S522, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -40821,9 +43120,9 @@
     },
     {
      "id": "M19",
-     "order": 490,
-     "subjectId": "S490",
-     "idNote": "The model sees the opaque ID S490, not M19.",
+     "order": 523,
+     "subjectId": "S523",
+     "idNote": "The model sees the opaque ID S523, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -40853,9 +43152,9 @@
     },
     {
      "id": "M20",
-     "order": 491,
-     "subjectId": "S491",
-     "idNote": "The model sees the opaque ID S491, not M20.",
+     "order": 524,
+     "subjectId": "S524",
+     "idNote": "The model sees the opaque ID S524, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -40909,9 +43208,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 492,
-     "subjectId": "S492",
-     "idNote": "The model sees the opaque ID S492, not C19.",
+     "order": 525,
+     "subjectId": "S525",
+     "idNote": "The model sees the opaque ID S525, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -40936,9 +43235,9 @@
     },
     {
      "id": "C20",
-     "order": 493,
-     "subjectId": "S493",
-     "idNote": "The model sees the opaque ID S493, not C20.",
+     "order": 526,
+     "subjectId": "S526",
+     "idNote": "The model sees the opaque ID S526, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -41026,9 +43325,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 494,
-     "subjectId": "S494",
-     "idNote": "The model sees the opaque ID S494, not M21.",
+     "order": 527,
+     "subjectId": "S527",
+     "idNote": "The model sees the opaque ID S527, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -41055,9 +43354,9 @@
     },
     {
      "id": "M21b",
-     "order": 495,
-     "subjectId": "S495",
-     "idNote": "The model sees the opaque ID S495, not M21b.",
+     "order": 528,
+     "subjectId": "S528",
+     "idNote": "The model sees the opaque ID S528, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -41084,9 +43383,9 @@
     },
     {
      "id": "R30k",
-     "order": 496,
-     "subjectId": "S496",
-     "idNote": "The model sees the opaque ID S496, not R30k.",
+     "order": 529,
+     "subjectId": "S529",
+     "idNote": "The model sees the opaque ID S529, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -41122,9 +43421,9 @@
     },
     {
      "id": "K17",
-     "order": 497,
-     "subjectId": "S497",
-     "idNote": "The model sees the opaque ID S497, not K17.",
+     "order": 530,
+     "subjectId": "S530",
+     "idNote": "The model sees the opaque ID S530, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -41150,9 +43449,9 @@
     },
     {
      "id": "K31",
-     "order": 498,
-     "subjectId": "S498",
-     "idNote": "The model sees the opaque ID S498, not K31.",
+     "order": 531,
+     "subjectId": "S531",
+     "idNote": "The model sees the opaque ID S531, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -41175,9 +43474,9 @@
     },
     {
      "id": "R30c",
-     "order": 499,
-     "subjectId": "S499",
-     "idNote": "The model sees the opaque ID S499, not R30c.",
+     "order": 532,
+     "subjectId": "S532",
+     "idNote": "The model sees the opaque ID S532, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -41209,9 +43508,9 @@
     },
     {
      "id": "C22",
-     "order": 500,
-     "subjectId": "S500",
-     "idNote": "The model sees the opaque ID S500, not C22.",
+     "order": 533,
+     "subjectId": "S533",
+     "idNote": "The model sees the opaque ID S533, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -41234,9 +43533,9 @@
     },
     {
      "id": "M22",
-     "order": 501,
-     "subjectId": "S501",
-     "idNote": "The model sees the opaque ID S501, not M22.",
+     "order": 534,
+     "subjectId": "S534",
+     "idNote": "The model sees the opaque ID S534, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -41259,9 +43558,9 @@
     },
     {
      "id": "M23",
-     "order": 502,
-     "subjectId": "S502",
-     "idNote": "The model sees the opaque ID S502, not M23.",
+     "order": 535,
+     "subjectId": "S535",
+     "idNote": "The model sees the opaque ID S535, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -41288,9 +43587,9 @@
     },
     {
      "id": "M24",
-     "order": 503,
-     "subjectId": "S503",
-     "idNote": "The model sees the opaque ID S503, not M24.",
+     "order": 536,
+     "subjectId": "S536",
+     "idNote": "The model sees the opaque ID S536, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -41317,9 +43616,9 @@
     },
     {
      "id": "M25",
-     "order": 504,
-     "subjectId": "S504",
-     "idNote": "The model sees the opaque ID S504, not M25.",
+     "order": 537,
+     "subjectId": "S537",
+     "idNote": "The model sees the opaque ID S537, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -41346,9 +43645,9 @@
     },
     {
      "id": "C23",
-     "order": 505,
-     "subjectId": "S505",
-     "idNote": "The model sees the opaque ID S505, not C23.",
+     "order": 538,
+     "subjectId": "S538",
+     "idNote": "The model sees the opaque ID S538, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -41376,9 +43675,9 @@
     },
     {
      "id": "K18",
-     "order": 506,
-     "subjectId": "S506",
-     "idNote": "The model sees the opaque ID S506, not K18.",
+     "order": 539,
+     "subjectId": "S539",
+     "idNote": "The model sees the opaque ID S539, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -41403,9 +43702,9 @@
     },
     {
      "id": "K19",
-     "order": 507,
-     "subjectId": "S507",
-     "idNote": "The model sees the opaque ID S507, not K19.",
+     "order": 540,
+     "subjectId": "S540",
+     "idNote": "The model sees the opaque ID S540, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -41429,9 +43728,9 @@
     },
     {
      "id": "K20",
-     "order": 508,
-     "subjectId": "S508",
-     "idNote": "The model sees the opaque ID S508, not K20.",
+     "order": 541,
+     "subjectId": "S541",
+     "idNote": "The model sees the opaque ID S541, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -41460,9 +43759,9 @@
     },
     {
      "id": "K20-still",
-     "order": 509,
-     "subjectId": "S509",
-     "idNote": "The model sees the opaque ID S509, not K20-still.",
+     "order": 542,
+     "subjectId": "S542",
+     "idNote": "The model sees the opaque ID S542, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -41520,9 +43819,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 510,
-     "subjectId": "S510",
-     "idNote": "The model sees the opaque ID S510, not M26a.",
+     "order": 543,
+     "subjectId": "S543",
+     "idNote": "The model sees the opaque ID S543, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -41548,9 +43847,9 @@
     },
     {
      "id": "M26",
-     "order": 511,
-     "subjectId": "S511",
-     "idNote": "The model sees the opaque ID S511, not M26.",
+     "order": 544,
+     "subjectId": "S544",
+     "idNote": "The model sees the opaque ID S544, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -41575,9 +43874,9 @@
     },
     {
      "id": "M27",
-     "order": 512,
-     "subjectId": "S512",
-     "idNote": "The model sees the opaque ID S512, not M27.",
+     "order": 545,
+     "subjectId": "S545",
+     "idNote": "The model sees the opaque ID S545, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -41699,9 +43998,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 513,
-     "subjectId": "S513",
-     "idNote": "The model sees the opaque ID S513, not R32c.",
+     "order": 546,
+     "subjectId": "S546",
+     "idNote": "The model sees the opaque ID S546, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -41724,9 +44023,9 @@
     },
     {
      "id": "C24",
-     "order": 514,
-     "subjectId": "S514",
-     "idNote": "The model sees the opaque ID S514, not C24.",
+     "order": 547,
+     "subjectId": "S547",
+     "idNote": "The model sees the opaque ID S547, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -41750,9 +44049,9 @@
     },
     {
      "id": "C24b",
-     "order": 515,
-     "subjectId": "S515",
-     "idNote": "The model sees the opaque ID S515, not C24b.",
+     "order": 548,
+     "subjectId": "S548",
+     "idNote": "The model sees the opaque ID S548, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -41776,9 +44075,9 @@
     },
     {
      "id": "C30",
-     "order": 516,
-     "subjectId": "S516",
-     "idNote": "The model sees the opaque ID S516, not C30.",
+     "order": 549,
+     "subjectId": "S549",
+     "idNote": "The model sees the opaque ID S549, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -41800,9 +44099,9 @@
     },
     {
      "id": "C25",
-     "order": 517,
-     "subjectId": "S517",
-     "idNote": "The model sees the opaque ID S517, not C25.",
+     "order": 550,
+     "subjectId": "S550",
+     "idNote": "The model sees the opaque ID S550, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -41829,9 +44128,9 @@
     },
     {
      "id": "C26",
-     "order": 518,
-     "subjectId": "S518",
-     "idNote": "The model sees the opaque ID S518, not C26.",
+     "order": 551,
+     "subjectId": "S551",
+     "idNote": "The model sees the opaque ID S551, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -41861,9 +44160,9 @@
     },
     {
      "id": "R32k",
-     "order": 519,
-     "subjectId": "S519",
-     "idNote": "The model sees the opaque ID S519, not R32k.",
+     "order": 552,
+     "subjectId": "S552",
+     "idNote": "The model sees the opaque ID S552, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -41903,9 +44202,9 @@
     },
     {
      "id": "K21",
-     "order": 520,
-     "subjectId": "S520",
-     "idNote": "The model sees the opaque ID S520, not K21.",
+     "order": 553,
+     "subjectId": "S553",
+     "idNote": "The model sees the opaque ID S553, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -41929,9 +44228,9 @@
     },
     {
      "id": "K22",
-     "order": 521,
-     "subjectId": "S521",
-     "idNote": "The model sees the opaque ID S521, not K22.",
+     "order": 554,
+     "subjectId": "S554",
+     "idNote": "The model sees the opaque ID S554, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -41957,9 +44256,9 @@
     },
     {
      "id": "K32",
-     "order": 522,
-     "subjectId": "S522",
-     "idNote": "The model sees the opaque ID S522, not K32.",
+     "order": 555,
+     "subjectId": "S555",
+     "idNote": "The model sees the opaque ID S555, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -41981,9 +44280,9 @@
     },
     {
      "id": "K23",
-     "order": 523,
-     "subjectId": "S523",
-     "idNote": "The model sees the opaque ID S523, not K23.",
+     "order": 556,
+     "subjectId": "S556",
+     "idNote": "The model sees the opaque ID S556, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -42010,9 +44309,9 @@
     },
     {
      "id": "K24",
-     "order": 524,
-     "subjectId": "S524",
-     "idNote": "The model sees the opaque ID S524, not K24.",
+     "order": 557,
+     "subjectId": "S557",
+     "idNote": "The model sees the opaque ID S557, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -42034,9 +44333,9 @@
     },
     {
      "id": "K25",
-     "order": 525,
-     "subjectId": "S525",
-     "idNote": "The model sees the opaque ID S525, not K25.",
+     "order": 558,
+     "subjectId": "S558",
+     "idNote": "The model sees the opaque ID S558, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -42071,9 +44370,9 @@
     },
     {
      "id": "K26",
-     "order": 526,
-     "subjectId": "S526",
-     "idNote": "The model sees the opaque ID S526, not K26.",
+     "order": 559,
+     "subjectId": "S559",
+     "idNote": "The model sees the opaque ID S559, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -42114,9 +44413,9 @@
     },
     {
      "id": "K34",
-     "order": 527,
-     "subjectId": "S527",
-     "idNote": "The model sees the opaque ID S527, not K34.",
+     "order": 560,
+     "subjectId": "S560",
+     "idNote": "The model sees the opaque ID S560, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -42146,9 +44445,9 @@
     },
     {
      "id": "K30",
-     "order": 528,
-     "subjectId": "S528",
-     "idNote": "The model sees the opaque ID S528, not K30.",
+     "order": 561,
+     "subjectId": "S561",
+     "idNote": "The model sees the opaque ID S561, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -42170,9 +44469,9 @@
     },
     {
      "id": "K27a",
-     "order": 529,
-     "subjectId": "S529",
-     "idNote": "The model sees the opaque ID S529, not K27a.",
+     "order": 562,
+     "subjectId": "S562",
+     "idNote": "The model sees the opaque ID S562, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -42197,9 +44496,9 @@
     },
     {
      "id": "K27",
-     "order": 530,
-     "subjectId": "S530",
-     "idNote": "The model sees the opaque ID S530, not K27.",
+     "order": 563,
+     "subjectId": "S563",
+     "idNote": "The model sees the opaque ID S563, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -42224,9 +44523,9 @@
     },
     {
      "id": "K28",
-     "order": 531,
-     "subjectId": "S531",
-     "idNote": "The model sees the opaque ID S531, not K28.",
+     "order": 564,
+     "subjectId": "S564",
+     "idNote": "The model sees the opaque ID S564, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -42269,9 +44568,9 @@
     },
     {
      "id": "K33",
-     "order": 532,
-     "subjectId": "S532",
-     "idNote": "The model sees the opaque ID S532, not K33.",
+     "order": 565,
+     "subjectId": "S565",
+     "idNote": "The model sees the opaque ID S565, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -42295,9 +44594,9 @@
     },
     {
      "id": "R32m",
-     "order": 533,
-     "subjectId": "S533",
-     "idNote": "The model sees the opaque ID S533, not R32m.",
+     "order": 566,
+     "subjectId": "S566",
+     "idNote": "The model sees the opaque ID S566, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -42321,9 +44620,9 @@
     },
     {
      "id": "M28",
-     "order": 534,
-     "subjectId": "S534",
-     "idNote": "The model sees the opaque ID S534, not M28.",
+     "order": 567,
+     "subjectId": "S567",
+     "idNote": "The model sees the opaque ID S567, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -42349,9 +44648,9 @@
     },
     {
      "id": "M31",
-     "order": 535,
-     "subjectId": "S535",
-     "idNote": "The model sees the opaque ID S535, not M31.",
+     "order": 568,
+     "subjectId": "S568",
+     "idNote": "The model sees the opaque ID S568, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -42386,9 +44685,9 @@
     },
     {
      "id": "M30a",
-     "order": 536,
-     "subjectId": "S536",
-     "idNote": "The model sees the opaque ID S536, not M30a.",
+     "order": 569,
+     "subjectId": "S569",
+     "idNote": "The model sees the opaque ID S569, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -42413,9 +44712,9 @@
     },
     {
      "id": "M30",
-     "order": 537,
-     "subjectId": "S537",
-     "idNote": "The model sees the opaque ID S537, not M30.",
+     "order": 570,
+     "subjectId": "S570",
+     "idNote": "The model sees the opaque ID S570, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -42440,9 +44739,9 @@
     },
     {
      "id": "M30c",
-     "order": 538,
-     "subjectId": "S538",
-     "idNote": "The model sees the opaque ID S538, not M30c.",
+     "order": 571,
+     "subjectId": "S571",
+     "idNote": "The model sees the opaque ID S571, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -42466,9 +44765,9 @@
     },
     {
      "id": "M32",
-     "order": 539,
-     "subjectId": "S539",
-     "idNote": "The model sees the opaque ID S539, not M32.",
+     "order": 572,
+     "subjectId": "S572",
+     "idNote": "The model sees the opaque ID S572, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -42491,9 +44790,9 @@
     },
     {
      "id": "P02",
-     "order": 540,
-     "subjectId": "S540",
-     "idNote": "The model sees the opaque ID S540, not P02.",
+     "order": 573,
+     "subjectId": "S573",
+     "idNote": "The model sees the opaque ID S573, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -42519,9 +44818,9 @@
     },
     {
      "id": "C29",
-     "order": 541,
-     "subjectId": "S541",
-     "idNote": "The model sees the opaque ID S541, not C29.",
+     "order": 574,
+     "subjectId": "S574",
+     "idNote": "The model sees the opaque ID S574, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -42543,9 +44842,9 @@
     },
     {
      "id": "C27",
-     "order": 542,
-     "subjectId": "S542",
-     "idNote": "The model sees the opaque ID S542, not C27.",
+     "order": 575,
+     "subjectId": "S575",
+     "idNote": "The model sees the opaque ID S575, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -42570,9 +44869,9 @@
     },
     {
      "id": "C28",
-     "order": 543,
-     "subjectId": "S543",
-     "idNote": "The model sees the opaque ID S543, not C28.",
+     "order": 576,
+     "subjectId": "S576",
+     "idNote": "The model sees the opaque ID S576, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -42606,9 +44905,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 544,
-     "subjectId": "S544",
-     "idNote": "The model sees the opaque ID S544, not P01.",
+     "order": 577,
+     "subjectId": "S577",
+     "idNote": "The model sees the opaque ID S577, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

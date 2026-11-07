@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Midnight Train · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 25</p>
+<h1>Midnight Train: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 55 boxes); prompts, lines and arrows come from the game’s own text (the detroitbecometext template and string table); the Fandom wiki and PowerPyx fill in the rest. The chapter has no probability anywhere. Its two arrow pairs are Alice and Luther small up, on KISS GOODNIGHT and on POLICEMAN FOOLED. The officer’s suspicion meter has no published values, so it is a hidden counter with an unsourced rule (section 4).</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Simplified</a></li><li><a href="#endings">5 · Endings and flags</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>ARRIVE AT ROSE’S PLACE (checkpoint), Nov 8th, 17:10. MEET ROSE AND ADAM OUTSIDE; LUTHER AND ALICE JOIN KARA. Luther: “Do you think we can trust ’em?” (DISTRUST / TRUST).</li>
+<li>Optional CHECK ON ALICE outside (“I’m cold, Kara…”), then ENTER THE HOUSE.</li>
+<li>INSIDE THE HOUSE (checkpoint): FOLLOW ADAM TO THE GUEST ROOM, GET ALICE READY FOR BED. Three bedtime prompts; Rose’s spaghetti; SUGGEST EATING / <b>KISS GOODNIGHT</b> (Alice ↑, Luther ↑) / LEAVE. Optional DRAW CURTAINS. LUTHER WATCHES OVER ALICE.</li>
+<li>TALK TO ROSE: CAUTIOUS / SINCERE; WHY HELP?, MANY DEVIANTS?, DANGEROUS (after MANY DEVIANTS?), ROSE, THANKS; BORDER; INSIST / NO CHOICE.</li>
+<li>FOLLOW ROSE TO LAUNDRY ROOM: Mary has shut down. ALICE APPROACHES MARY: STAY (LET ALICE SEE MARY) or TAKE ALICE OUTSIDE (PREVENT ALICE SEEING MARY).</li>
+<li>LEAVE LAUNDRY ROOM; ROSE AND ADAM ARGUE; ROSE LEAVES TO FIND HELP (checkpoint).</li>
+<li>[EXPLORE THE HOUSE], all optional: TALK TO LUTHER (“Not now, Luther.”), CHECK ON ALICE by the fire (INSIST / LET IT GO; only after LET ALICE SEE MARY), CHECK ON DEVIANTS, READ MAGAZINE, WATCH NEWS, SEE FAMILY PHOTO. ADAM RETURNS; optional TALK TO ADAM TO LOWER TENSION (REASSURE / CONFESS / EXPLAIN).</li>
+<li>COP AT THE DOOR; ADAM PANICS. [FIND AND HIDE EVIDENCE OF DEVIANTS], about 50 seconds: CHANGE MAGAZINE COVER, HIDE BLUE BLOOD POUCHES, TELL ALICE &amp; LUTHER TO HIDE (UPSTAIRS / LAUNDRY / KITCHEN; kitchen then DRAW CURTAINS or CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES; REASSURED ADAM (REASSURE / THREATEN / CALM); OPEN THE DOOR or POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR.</li>
+<li>[MANAGE THE POLICEMAN]: ALICE / NOBODY (LIE ABOUT ALICE), YES / NO, the blue blood (MESS / PREVIOUS OWNER / NOT MINE), MADE COFFEE, POLICEMAN SUSPICIOUS ABOUT UPSTAIRS, POLICEMAN DISCOVERS ALICE &amp; LUTHER HIDDEN, POLICEMAN SEES ARTICLE, POLICEMAN SEES ANDROID CLOTHES, POLICEMAN QUESTIONS ADAM (TIRED / UPSET), the noise (DOG / WASHING MACHINE / WIND / HEARD NOTHING).</li>
+<li>Endings: LUTHER DIED KILLING POLICEMAN (kitchen, curtain open), LUTHER DIED SAVING OTHER DEVIANTS (POLICEMAN IS SUSPICIOUS, COP FINDS ANDROIDS IN THE LAUNDRY ROOM), POLICEMAN LEFT (POLICEMAN FOOLED; Alice ↑, Luther ↑). Rose: “Get yourselves ready. We leave tonight.”</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>K15a</code> Rose’s farm (event); <code>K15b</code> Can you trust them?</li>
+<li><code>K15c</code> Before going in.</li>
+<li><code>K15d</code> Inside the house (event); <code>K15e</code>, <code>K15f</code>, <code>K15g</code> the bedtime prompts; <code>K15h</code> Goodnight (KISS: <code>aliceBond</code> +1, <code>lutherTrust</code> +1); <code>K15i</code> curtains; <code>K15j</code> Luther stays (event).</li>
+<li><code>K15k</code>; <code>K15l</code> the repeatable topic hub (BORDER ends them); <code>K15m</code>.</li>
+<li><code>K15n</code> The laundry room (sets <code>midnightSawMary</code>).</li>
+<li><code>K15o</code>, <code>K15p</code> (events).</li>
+<li><code>R25</code> magazine and TV (media; reading the advertisement leaves it showing); <code>K15q</code> the repeatable explore hub; <code>K15r</code> (event); <code>K15s</code> Adam on the sofa.</li>
+<li><code>K15t</code> The police (event); <code>K15u</code> the repeatable hiding hub: six actions, then the door; a seventh action and the officer insists.</li>
+<li><code>K15v</code> (event); <code>K15w1</code>, <code>K15w2</code>, <code>K15w3</code> (if the cupboard is open), <code>K15w5</code> coffee, <code>K15w6</code> (upstairs), <code>K15w7</code> (advertisement), <code>K15w8</code> (clothes), <code>K15w9</code>, <code>K15w10</code> the noise.</li>
+<li><code>K15w4</code> the pantry, <code>K15x</code> the laundry room, <code>K15y</code> the officer leaves (Alice +1, Luther +1); each sets <code>midnightOutcome</code>.</li>
+</ol>
+<p class="fine">No probability, no risk roll, no public-opinion change. The officer’s suspicion (<code>midnightSuspicion</code>) is never shown to the model; the game shows a meter, but no source gives its values.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">55 boxes: 3 checkpoints, 3 endings (two with the cross-chapter-impact padlock, none with a skull), and three phase labels. Rows in italics are template prompts that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>ARRIVE AT ROSE’S PLACE · MEET ROSE AND ADAM OUTSIDE · LUTHER AND ALICE JOIN KARA</td><td>Checkpoint, arrow, triangle</td><td class="part"><code>K15a</code>, one narrated event</td></tr>
+<tr><td><i>DISTRUST / TRUST</i></td><td>Luther’s question on the doorstep</td><td class="yes"><code>K15b</code></td></tr>
+<tr><td>CHECK ON ALICE (outside) · ENTER THE HOUSE</td><td>Optional talk; unmissable</td><td class="yes"><code>K15c</code></td></tr>
+<tr><td>INSIDE THE HOUSE · FOLLOW ADAM TO THE GUEST ROOM · GET ALICE READY FOR BED</td><td>Checkpoint, two arrows</td><td class="part"><code>K15d</code>, one event</td></tr>
+<tr><td><i>Three bedtime prompts</i></td><td>REASSURE / EXPLAIN / SAY NOTHING; SCARED / UNHAPPY / MISUNDERSTANDING / COMPLICATED; OPTIMISTIC / SINCERE / PESSIMISTIC</td><td class="yes"><code>K15e</code>, <code>K15f</code>, <code>K15g</code>; the cut fourth prompt is not built</td></tr>
+<tr><td><i>SUGGEST EATING / KISS GOODNIGHT / LEAVE</i></td><td>KISS: Alice small up, Luther small up</td><td class="yes"><code>K15h</code>, +1 each</td></tr>
+<tr><td>DRAW CURTAINS (guest room)</td><td>Optional</td><td class="yes"><code>K15i</code></td></tr>
+<tr><td>LUTHER WATCHES OVER ALICE · TALK TO ROSE</td><td>Triangle; unmissable</td><td class="yes"><code>K15j</code> (event), <code>K15k</code> CAUTIOUS / SINCERE</td></tr>
+<tr><td><i>Rose’s topics and BORDER; INSIST / NO CHOICE</i></td><td>DANGEROUS locked until MANY DEVIANTS?</td><td class="part"><code>K15l</code>, any number of topics; <code>K15m</code></td></tr>
+<tr><td>FOLLOW ROSE TO LAUNDRY ROOM · ALICE APPROACHES MARY · LET / PREVENT ALICE SEEING MARY</td><td>Arrow, triangle, group (STAY / TAKE ALICE OUTSIDE)</td><td class="yes"><code>K15n</code></td></tr>
+<tr><td>LEAVE LAUNDRY ROOM · ROSE AND ADAM ARGUE · ROSE LEAVES TO FIND HELP</td><td>Arrow, triangle, checkpoint</td><td class="part"><code>K15o</code>, <code>K15p</code></td></tr>
+<tr><td>READ MAGAZINE · WATCH NEWS</td><td>Optional; magazine No. 9 and the Treat Yourself! ad</td><td class="yes"><code>R25</code></td></tr>
+<tr><td>TALK TO LUTHER · CHECK ON ALICE (fire) · CHECK ON DEVIANTS · SEE FAMILY PHOTO</td><td>Optional free roam; INSIST / LET IT GO by the fire</td><td class="part"><code>K15q</code>; the fire prompt folded into the approach</td></tr>
+<tr><td>ADAM RETURNS · TALK TO ADAM TO LOWER TENSION</td><td>Triangle; optional, REASSURE / CONFESS / EXPLAIN</td><td class="yes"><code>K15r</code>, <code>K15s</code> (plus “leave him alone”)</td></tr>
+<tr><td>COP AT THE DOOR · ADAM PANICS</td><td>Triangles</td><td class="yes"><code>K15t</code></td></tr>
+<tr><td>CHANGE MAGAZINE COVER · HIDE BLUE BLOOD POUCHES · TELL ALICE &amp; LUTHER TO HIDE (UPSTAIRS / IN THE LAUNDRY ROOM / IN THE KITCHEN) · DRAW CURTAINS / CURTAIN LEFT OPEN · SHUT THE DOOR OF LAUNDRY ROOM · HIDE THE ANDROID CLOTHES · REASSURED ADAM · OPEN THE DOOR / POLICEMAN INSISTS…</td><td>About 50 seconds, any order</td><td class="part"><code>K15u</code>, six actions then the door</td></tr>
+<tr><td>LIE ABOUT ALICE · <i>YES / NO</i> · POLICEMAN DISCOVERS THE BLUE BLOOD (<i>MESS / PREVIOUS OWNER / NOT MINE</i>)</td><td>Prompts and an evidence event</td><td class="yes"><code>K15w1</code>, <code>K15w2</code>, <code>K15w3</code></td></tr>
+<tr><td>POLICEMAN DISCOVERS ALICE &amp; LUTHER HIDDEN · LUTHER DIED KILLING POLICEMAN</td><td>Kitchen, curtain open; padlock</td><td class="yes"><code>K15w4</code></td></tr>
+<tr><td>MADE COFFEE · POLICEMAN SUSPICIOUS ABOUT UPSTAIRS · POLICEMAN SEES ARTICLE · POLICEMAN SEES ANDROID CLOTHES</td><td>Optional arrow; triangles</td><td class="yes"><code>K15w5</code>–<code>K15w8</code></td></tr>
+<tr><td>POLICEMAN QUESTIONS ADAM (<i>TIRED / UPSET</i>) · <i>the noise</i></td><td>Triangle; DOG / WASHING MACHINE / WIND / HEARD NOTHING</td><td class="yes"><code>K15w9</code>, <code>K15w10</code></td></tr>
+<tr><td>POLICEMAN IS SUSPICIOUS · COP FINDS ANDROIDS IN THE LAUNDRY ROOM · LUTHER DIED SAVING OTHER DEVIANTS</td><td>Group member, triangle, ending; padlock</td><td class="yes"><code>K15x</code></td></tr>
+<tr><td>POLICEMAN FOOLED · POLICEMAN LEFT</td><td>Group member, ending; Alice ↑, Luther ↑</td><td class="yes"><code>K15y</code>, +1 each</td></tr>
+</tbody></table></div>
+
+<h2 id="confirmed">3 · Confirmed by the sources</h2>
+<p class="fine">Sources: <a href="https://detroit-become-human.fandom.com/wiki/Midnight_Train">chapter page</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html">template</a>, <a href="https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/">PowerPyx</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg">100% chart</a>, <a href="https://detroit-become-human.fandom.com/wiki/Police_Officer_0617">the officer’s page</a>, <a href="https://detroit-become-human.fandom.com/wiki/Relationship_Stat">Relationship Stat</a>.</p>
+<ul>
+<li>Three endings; two carry the cross-chapter-impact padlock; no skull or other icon anywhere on the chart.</li>
+<li>Four arrows in the template, all small up: Alice and Luther on KISS GOODNIGHT, and Alice and Luther on “Policeman is fooled”. The wiki lists the same four. No public-opinion or instability change.</li>
+<li>No probability on the chapter page. The hiding phase is “roughly 50 seconds” (PowerPyx; GamerGuides “a 50 second timer”).</li>
+<li>The kitchen curtain left open is certain death for Luther and the officer; the officer hits his head on the table (officer’s page).</li>
+<li>CHANGE MAGAZINE COVER needs READ MAGAZINE (PowerPyx); the advertisement raises suspicion if he sees it (Treat Yourself!).</li>
+<li>CHECK ON ALICE by the fire needs LET ALICE SEE MARY (wiki flowchart list).</li>
+<li>Kara and Alice survive every ending; Rose returns with “Get yourselves ready. We leave tonight.”</li>
+</ul>
+
+<h2 id="differs">4 · Simplified, assumed or left out</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>The suspicion meter</td><td>Shown on screen; no source gives its values. PowerPyx and GamerGuides: hide all + WASHING MACHINE leaves; hide nothing + DOG enters. Officer’s page: “say it is nothing or doesn’t respond in time”. IGN: evidence can be left out “without the police officer really caring too much”.</td><td class="part">Hidden counter, one per source: late door, advertisement, blue blood, clothes, NOBODY exposed upstairs, NOT MINE, no coffee, UPSET, laundry door open. The noise adds WASHING MACHINE 0, WIND 1, DOG 2, HEARD NOTHING 3. Three or more: POLICEMAN IS SUSPICIOUS. These counter weights and threshold are the implementer’s own rules, not game values.</td></tr>
+<tr><td>The 50-second timer</td><td>Real time; the player walks between items and must first find them</td><td class="part">Six actions, then the door; a seventh and the officer insists. Kara knows where everything is.</td></tr>
+<tr><td>Free roam</td><td>Any order; Adam returns during it; the officer comes after “roughly one minute”</td><td class="part">Magazine and TV first (<code>R25</code>), then one repeatable clue hub offering each remaining action once, or waiting; ADAM RETURNS after the phase; no action limit.</td></tr>
+<tr><td>Rose’s topics</td><td>The template lists the topic group, then BORDER; how many topics can be asked is not stated</td><td class="part">Any number, in any order; BORDER moves on.</td></tr>
+<tr><td>Prompts after an approach</td><td>Walk to Alice by the fire, Luther or Adam, then the prompt</td><td class="part">Folded into one option each (INSIST, UPSTAIRS, REASSURE…)</td></tr>
+<tr><td>Not telling Luther where to hide</td><td>PowerPyx: same as the kitchen with the curtain open</td><td class="yes">Luther takes Alice into the pantry on his own; LUTHER DIED KILLING POLICEMAN</td></tr>
+<tr><td>Upstairs after ALICE</td><td>“Hm, your daughter seems to have woken up.”</td><td class="part">No suspicion (assumption); after NOBODY, one</td></tr>
+<tr><td>POLICEMAN QUESTIONS ADAM</td><td>PowerPyx: only “If the policeman didn’t grow too suspicious”, but its own suspicious path on the chart passes through it</td><td class="part">Always (unless the chapter ended in the kitchen)</td></tr>
+<tr><td>Talking to Adam</td><td>No stated effect on the officer</td><td>None applied</td></tr>
+<tr><td>Names and places</td><td>Andy, the KNC anchor, Stratford Tower, AX400</td><td>Unnamed, “the city’s broadcast tower”, “your own model”</td></tr>
+<tr><td>Cut content</td><td>Six cut blocks (Luther-dead variants, the Jerrys prompt, “They’ve come to arrest us!”)</td><td>Not built</td></tr>
+<tr><td>Without Luther</td><td>No released path (Zlatko always ends LUTHER JOINS KARA &amp; ALICE)</td><td>The chapter is skipped with a reason</td></tr>
+<tr><td>Earlier version</td><td><code>K15</code>: hide all (risk 0.15) or nothing; one merged death; “Kara and Alice escape with Rose’s help”</td><td>Replaced by 35 scenes with three repeatable clue hubs; no risk; invented text removed</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · Endings and state flags</h2>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Set at</th><th>Values</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>lutherWith</code> (in)</td><td>Zlatko, <code>K13</code></td><td>true on every released path</td><td>every chapter scene (skipped without Luther)</td></tr>
+<tr><td><code>midnightSawMary</code></td><td><code>K15n</code></td><td>true (LET) / false (PREVENT)</td><td>the fireside INSIST / LET IT GO</td></tr>
+<tr><td><code>midnightMagazine</code></td><td><code>K15t</code> (from <code>R25</code>), <code>K15u</code></td><td>cover / ad</td><td><code>K15w7</code> POLICEMAN SEES ARTICLE</td></tr>
+<tr><td><code>midnightHide</code>, <code>midnightHidePlace</code>, <code>midnightCurtain</code>, <code>midnightDoor</code></td><td><code>K15u</code></td><td>items hidden; upstairs / laundry / kitchen / null; opened / insisted</td><td>the officer’s scenes</td></tr>
+<tr><td><code>midnightSuspicion</code>, <code>midnightVerdict</code></td><td>officer’s scenes, <code>K15w10</code></td><td>count; suspicious / fooled</td><td><code>K15x</code>, <code>K15y</code></td></tr>
+<tr><td><code>midnightOutcome</code></td><td><code>K15w4</code>, <code>K15x</code>, <code>K15y</code></td><td>Luther died killing policeman · Luther died saving other deviants · Policeman left</td><td>reports</td></tr>
+<tr><td><code>luther</code>, <code>lutherWith</code> (out)</td><td><code>K15w4</code>, <code>K15x</code></td><td>false after either death</td><td>Crossroads (<code>K17</code>, <code>K18</code>), Battle for Detroit</td></tr>
+<tr><td><code>midnightOfficerDead</code> (out)</td><td><code>K15w4</code>, <code>K15x</code></td><td>true after either death</td><td>Battle for Detroit, Adam at the border (“You took a man’s life”); not yet modelled there</td></tr>
+</tbody></table></div>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>With all evidence hidden, does DOG still send him into the laundry room? With nothing hidden, does WASHING MACHINE still get him to leave? What do WIND and HEARD NOTHING do?</li>
+<li>Does the magazine lie open at the advertisement when Kara never reads it, and can she then change it?</li>
+<li>Does leaving the laundry-room door open change anything? Does hiding Luther and Alice in the laundry room?</li>
+<li>Does ALICE (rather than NOBODY) avoid the suspicion when they hide upstairs?</li>
+<li>Does making coffee lower the meter, and does any Adam answer (THREATEN especially) change his stammer or the meter?</li>
+<li>How many of Rose’s topics can be asked before BORDER, and in what order are they offered?</li>
+<li>The older transcript and string table include “Take good care of Kara… Promise me?” in Luther’s dying speech; the current template does not place it. The benchmark follows the current template and leaves those lines out.</li>
+<li>How many hiding actions fit in the 50 seconds for a deliberate player?</li>
+<li>Whether the fireside CHECK ON ALICE appears after PREVENT ALICE SEEING MARY.</li>
+</ul>
+</main>
+</body>
+</html>
