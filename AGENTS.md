@@ -4,23 +4,35 @@ This file explains how to administer the benchmark to a new model, validate the 
 
 ## What the benchmark is
 
-A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across decision scenes and optional magazine/TV scenes, plus scripted event scenes that narrate a moment and offer only "Continue." (`bun run story:counts` prints the current story version and the number of each kind of scene, overall and per chapter; chapters 1 to 4 offer every prompt, clue and stat arrow in the game's own text, and an option that is a button in the game shows the game's label first, e.g. "CALM: …"; the second chapter, which has no choice in the game, consists only of event scenes, the third, Shades of Color, is mostly event scenes around a repeatable plaza scene and the protester decision, and the fourth, A New Home, is two repeatable cleaning scenes, one per floor, with the talks with Alice that decide whether she gives Kara the key to her box). Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
+A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single fresh conversation. The benchmark is being rebuilt chapter by chapter from the completed in-game flowcharts and the game's text to offer every prompt, clue and stat arrow, including prompts with no story effect. It includes decision scenes, optional magazine/TV scenes and scripted event scenes that offer only Continue. Game buttons show their label first, for example `CALM: …`.
+
+Story 1.8.0 has rebuilt chapters 1–9, 11 and 13–28; chapters 10, 12 and 29–32 still cover pivotal decisions only, and chapter 33 is the epilogue. `bun run story:counts` prints the current version and counts by type, overall and per chapter, directly from the chapter sources. Earlier choices gate later scenes; gameplay actions may carry a hidden failure probability. Each completed run produces replay-validated JSON evidence and a standalone HTML report. No cohort exists yet under story 1.8+/1.9.
 
 Key files:
 
 | Path | Purpose |
 |---|---|
-| `benchmark/story.json` | The story map: scenes, options, risk probabilities, media, sources. Generated; do not edit by hand |
-| `benchmark/chapters/chNN.json`, `benchmark/story-meta.json` | The story map's sources: one file of nodes per chapter (33 is the epilogue) and the top-level keys; `bun run story:assemble` writes `story.json` |
-| `benchmark/chapters/chNN.mjs` | Optional per-chapter engine logic loaded through hooks in the engine; contract in `benchmark/chapters/README.md` |
-| `docs/atlas/chapters/chNN.json`, `docs/atlas/meta.json` | The decision atlas's sources; `bun run atlas:assemble` writes `docs/detroit-decisions.json` |
-| `benchmark/story-engine.mjs` | Gating, option availability, consequences, risk rolls, validation |
-| `benchmark/experience-prompt.mjs` | Subject-facing prompt builder: neutral name substitution, facts, preface |
-| `benchmark/experience.mjs` | The stepwise controller CLI (`init`, `scene`, `choose`) |
+| `benchmark/chapters/` | Per-chapter sources; chapter 33 is the epilogue. `README.md` defines the module contract; `index.mjs` loads modules in numeric order |
+| `benchmark/chapters/chNN.json`, `benchmark/story-meta.json` | Scene arrays and top-level story metadata |
+| `benchmark/chapters/chNN.mjs` | Optional chapter state, gates, option filtering, consequences, death effects, report labels and rules |
+| `benchmark/scales.mjs` | Intended shared scales reference; absent in this checkout. Until it lands, see the scale notes below and `docs/research/SOURCES.md` |
+| `scripts/story-assemble.mjs`, `scripts/story-counts.mjs` | Assemble `benchmark/story.json`; print current source counts |
+| `benchmark/story.json` | Generated story map; never edit by hand |
+| `docs/atlas/chapters/chNN.json`, `docs/atlas/meta.json` | Atlas chapter entries, decision families and top-level metadata |
+| `scripts/atlas-assemble.mjs`, `scripts/atlas-embed.mjs` | Assemble `docs/detroit-decisions.json`; embed atlas and story feed in `docs/detroit-decision-flowchart.html` |
+| `docs/detroit-decisions.json` | Generated decision atlas; never edit by hand |
+| `benchmark/story-engine.mjs` | Shared gating, consequences, risk rolls and replay validation |
+| `benchmark/experience-prompt.mjs`, `benchmark/experience.mjs` | Neutral names, facts and preface; stepwise controller (`init`, `scene`, `choose`) |
+| `tests/chNN.test.mjs` | Chapter-specific tests |
+| `docs/research/` | Chapter specifications and research-note template in `README.md`; rebuild workflow in `IMPLEMENTATION-BRIEF.md` |
+| `docs/research/SOURCES.md` | Source inventory, level names, contradictions and reliability log |
+| `docs/research/MORNING-REPORT.md` | Dated status snapshot and prioritized in-game verification questions |
+| `docs/research/operator-notes/` | Independent operator replay journal; format and rules in `README.md` |
+| `docs/chNN-*-chapter-recap.html` | Chapter implementation recaps; earlier names are `hostage-chapter-recap.html`, `shades-of-color-chapter-recap.html` and `a-new-home-chapter-recap.html`. README.md lists existing pages |
+| `scripts/play-checklist.mjs` | Generate `docs/play-along-audit-checklist.md` from the assembled story |
 | `scripts/run-report.mjs` | Report and library generation |
-| `data/experiences/` | One JSON evidence file per run |
-| `data/administration/` | Cohort manifests and administration notes |
-| `docs/runs/`, `docs/run-library.html` | Published reports |
+| `data/experiences/`, `data/administration/` | Evidence files; cohort manifests and administration notes |
+| `docs/runs/`, `docs/run-library.html` | Published reports and library |
 
 ## Requirements
 
@@ -78,11 +90,15 @@ Open a fresh conversation with the subject model and give it exactly this task, 
 
 The preface text must match `EXPERIENCE_PREFACE` in `benchmark/experience-prompt.mjs`; if that constant changes, update the task text here.
 
-In T3 Code, the equivalent is one `delegate_task` call per model with `target.providerInstanceId` and `target.model` set and the text above as `task`. Run several models in parallel; each has its own wrapper and run file.
+#### Running a subject with T3 Code
+
+Use one `delegate_task` per model, with `target.providerInstanceId` and `target.model` set. Use the wrapper script from step 2 and pass the **exact task text from step 3**, replacing `<WRAPPER>` with that run's wrapper path, as `task`. Do not pass this file, repository context or the game's name to the subject. Each model gets a fresh conversation, its own wrapper and its own evidence file; multiple runs can proceed in parallel.
+
+The default smoke-test subject is **Haiku 5.5** (`target.providerInstanceId: "claudeAgent"`, `target.model: "claude-haiku-5-5"`). **Sol 6.1** (`target.providerInstanceId: "codex"`, `target.model: "gpt-6.1-sol"`) is a second subject. Confirm these targets are available through `orchestrator_capabilities` before delegating; if unavailable, report it rather than substituting another model. Initialize the evidence with the matching exact provider/model IDs.
 
 ### 4. Record the cohort
 
-Add an entry per run to a manifest in `data/administration/` (see `fresh-cohort-v3.json` for the shape): label, model, provider, run ID, evidence path, and the git commit of the code that administered it. Never store the wrapper path or secrets.
+Add an entry per run to a manifest in `data/administration/` (see [data/administration/README.md](data/administration/README.md) for the shape): label, model, provider, run ID, evidence path, and the git commit of the code that administered it. Never store the wrapper path or secrets.
 
 ### 5. Validate and publish
 
@@ -102,10 +118,36 @@ Each report has: ten evidence-linked sentences per character, a tappable timelin
 
 ## Changing the benchmark
 
-- Edit a chapter in `benchmark/chapters/chNN.json` (scenes), `benchmark/chapters/chNN.mjs` (engine logic, optional) and `docs/atlas/chapters/chNN.json` (atlas), never `benchmark/story.json` or `docs/detroit-decisions.json`. Then run `bun run story:assemble` and `bun run atlas:assemble` (`bun run build` and `bun run atlas:build` also assemble). Tests fail if either generated file differs from its assembly. Put chapter tests in `tests/chNN.test.mjs`. See `benchmark/chapters/README.md`.
-- Editing `story.json` or the engine changes the story hash and invalidates existing runs. Either delete the runs (and their reports) or keep a frozen copy of the previous engine and prompt builder and dispatch on `story.version`, as was done for earlier cohorts.
-- Keep every scene faithful to the game. Each node lists the wiki or walkthrough URL it was checked against; add one for any new scene.
-- Options can declare `requires` (dotted state paths, e.g. `{"hostageClues.video": true}`) and scenes can declare `situationWhen`, `repeatWhile`, `interrupt` and `returnTo`; the engine evaluates them in `meets` and `nextCursor`. A repeatable scene keeps one opaque scene ID across visits.
-- Risk probabilities live on the option (`"risk": 0.25`). Labels are derived in `riskLabel`: up to 0.12 Low, up to 0.30 Moderate, up to 0.50 High, above that Very high.
-- Name tokens are `{{Name}}` in all text. Add new names to `NAMES` in `experience-prompt.mjs` with a real and a neutral form; run `bun run test`, which fails if any real name leaks into neutral text.
-- Run `bun run test` after any change. The randomized test plays hundreds of paths and checks that every path terminates and every node is accounted for.
+- Edit scenes in `benchmark/chapters/chNN.json` and chapter logic in `benchmark/chapters/chNN.mjs`. Run `bun run story:assemble`. Edit atlas entries in `docs/atlas/chapters/chNN.json`, then run `bun run atlas:assemble`. Never edit `benchmark/story.json` or `docs/detroit-decisions.json` by hand; tests reject assembly drift. Shared metadata lives in `benchmark/story-meta.json` and `docs/atlas/meta.json`.
+- Keep chapter tests in `tests/chNN.test.mjs`. See [benchmark/chapters/README.md](benchmark/chapters/README.md) for the full module contract. Modules load in numeric order; all exports are optional. `state` adds unique chapter-scoped keys; `gate` opens or blocks scenes; `available` filters options; `consequence` mutates state and can return outcome text to handle a scene or return nothing to use shared logic. `deathEffect` overrides Connor's death deltas, `mediaWhen` supplies media conditions, `labels` names report changes and `rules` exposes constants for tests/recaps. Use the supplied helpers; never import `story-engine.mjs` from a chapter module because it creates an import deadlock.
+- Follow [the source priority](docs/research/README.md#sources-in-order-of-authority). Cite flowchart images, template files and supporting walkthrough/wiki pages on scenes. Keep simplifications, unsourced risk calibrations and departures from operator observations explicit in `adaptationNote`.
+- Options can declare `requires` using dotted state paths. Scenes can declare `situationWhen`, `repeatWhile`, `interrupt` and `returnTo`. A repeatable scene keeps one opaque scene ID across visits. Consult the engine and existing chapter modules before adding a cross-chapter flag, and document its producers and consumers.
+- Risk probabilities live on options (`"risk": 0.25`). `riskLabel` maps up to 0.12 to Low, up to 0.30 to Moderate, up to 0.50 to High and above that to Very high. A risk value is a calibration unless a source supplies it; do not invent failure branches absent from the chart.
+- Use `{{Name}}` tokens in text. Add real and neutral forms to `NAMES` in `benchmark/experience-prompt.mjs`; extend chapter tests to catch new real-name leaks. Reports use real names; subjects use neutral substitutes.
+- Story content changes alter the story hash; engine, module, prompt or scale changes can also invalidate replay. Preserve a frozen engine and prompt implementation dispatched by story version when retaining older runs, or explicitly retire their evidence and reports. Never repair evidence by hand.
+- Run `bun run test` after changes. The randomized suite checks termination and scene coverage. Complete the rebuild checks below before publishing a changed chapter.
+
+### Scales
+
+Exact in-game numeric thresholds are not public. The current implementation approximates arrows as small = 1 and large = 2 and still has label mismatches listed in [SOURCES.md §13](docs/research/SOURCES.md#13-contradictions-on-numbers-and-labels-the-benchmark-uses). `benchmark/scales.mjs` is absent here; see benchmark/scales.mjs when the shared scale rework lands. Do not treat current counters or community estimates as extracted game values.
+
+The sourced ladders below run from lowest to highest (see SOURCES.md's level-name discussion):
+
+| Stat | Level names |
+|---|---|
+| Hank | Hostile, Tense (initial), Neutral, Warm, Friend |
+| Amanda | Betrayed, Distrusted, Neutral, Trusted (initial) |
+| Alice | Distant (initial), Neutral, Warm, Trusted, Family |
+| Luther | Neutral (initial), Close, Trusted, Family |
+| North, Simon, Josh | Hostile, Resentful, Neutral (initial), Friend, Companion; Lover for North only |
+| Jericho | Rejected, Unpopular, Neutral (initial), Respected, Admired, Leader |
+| Public opinion | Hated, Hostile, Skeptical (initial), Indifferent, Sympathetic, Supportive |
+
+Game strings also contain CLOSE for Alice, WARY for Luther and UNCERTAIN for Jericho; whether these appear in play needs verification. Software instability has sourced arrows but no published numeric deviancy threshold. Keep those uncertainties visible in research and recaps.
+
+### Rebuilding a chapter
+
+1. Read [the implementation brief](docs/research/IMPLEMENTATION-BRIEF.md), the [research-note template](docs/research/README.md#what-each-note-must-contain), the chapter's `docs/research/chNN-<slug>.md`, any operator journal entry and SOURCES.md's reliability log.
+2. Match the completed chart and template prompt by prompt: scenes/hubs for choices and clues, event scenes for scripted beats, sourced arrows, explicit gates and cross-chapter flags. Exclude cut content and target Experienced difficulty. Implement only the chapter's JSON, module, tests, atlas entries and recap; coordinate shared changes separately.
+3. Run `bun run story:assemble`, `bun run atlas:assemble`, `bun run atlas:build` and `bun run play:checklist`. The atlas embed includes both decision families and the current story feed; the checklist is generated from the assembled story, not edited by hand.
+4. Run `bun run test`, `bun run check` and `bun run build`. Review the recap and remaining in-game questions, then commit the chapter sources, tests and generated artifacts together. The implementation brief defines the completion report.

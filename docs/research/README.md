@@ -2,6 +2,15 @@
 
 One file per chapter, `chNN-<slug>.md`, written by a research agent before the chapter's scenes are rebuilt. The benchmark's scene set for a chapter must match the game's completed in-game flowchart node for node, with the wiki's published probabilities and stat changes where they exist. These notes are the specification the implementation is checked against, and the operator audits them while replaying the game.
 
+## Where things are
+
+- **Chapter notes:** `chNN-<slug>.md` in this directory; the template is [What each note must contain](#what-each-note-must-contain) below.
+- **Operator notes:** [operator-notes/](operator-notes/README.md), an independent replay journal kept separate from research specifications.
+- **Source inventory:** [SOURCES.md](SOURCES.md), including access methods, level names, contradictions and a reliability log. The source priority below governs when older summaries differ.
+- **Replay checks:** [MORNING-REPORT.md](MORNING-REPORT.md), with prioritized questions; its opening status is a dated snapshot rather than a current merge ledger.
+- **Implementation:** [IMPLEMENTATION-BRIEF.md](IMPLEMENTATION-BRIEF.md), the chapter rebuild instructions and completion checks.
+- **Chapter recaps:** `../chNN-*-chapter-recap.html`, plus the earlier Hostage, Shades of Color and A New Home filenames. The [root README](../../README.md#sources-research-and-limits) lists the existing pages.
+
 ## Sources, in order of authority
 
 Set by the operator on 2026-11-06.
