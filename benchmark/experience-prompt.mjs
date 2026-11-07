@@ -15,14 +15,19 @@ export const NAMES={
  Rupert:['Rupert','Rook'],Perkins:['Perkins','Dwyer'],Allen:['Allen','Moss'],Caroline:['Caroline','Helen'],
  CarlosOrtiz:['Carlos Ortiz','Ray Mendez'],Jericho:['Jericho','Haven'],CyberLife:['CyberLife','Arclight'],
  Traci:['Traci','club android'],Tracis:['Tracis','club androids'],Canada:['Canada','the country across the river'],Detroit:['Detroit','City'],Warren:['Warren','Hale'],
- Bellini:['Bellini','Corsini'],Gavin:['Gavin','Brandt'],Chris:['Chris','Owen']
+ Bellini:['Bellini','Corsini'],Gavin:['Gavin','Brandt'],Chris:['Chris','Owen'],
+ // The Hostage's scan texts: the Phillips family and the dead officer.
+ Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor']
 };
+// A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
+const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
+export const nameKey=k=>NAMES[k]?k:Object.keys(NAMES).find(x=>x.toUpperCase()===k)??null;
 // Terms that are not tokens but still identify the source; replaced only in neutral mode.
-const NEUTRAL_TERMS=[[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore']];
+const NEUTRAL_TERMS=[[/\bDEVIANTS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT\b/g,'ROGUE ANDROID'],[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore']];
 
 export function render(value,mode='real'){
  let s=String(value??'');
- s=s.replace(/\{\{(\w+)\}\}/g,(m,k)=>{const pair=NAMES[k];if(!pair)throw Error('Unknown name token '+k);return mode==='real'?pair[0]:pair[1]});
+ s=s.replace(/\{\{(\w+)\}\}/g,(m,k)=>{const pair=NAMES[k]??(k===k.toUpperCase()?UPPER[k]:undefined);if(!pair)throw Error('Unknown name token '+k);return mode==='real'?pair[0]:pair[1]});
  if(mode!=='real')for(const [re,to] of NEUTRAL_TERMS)s=s.replace(re,to);
  return s;
 }
@@ -53,7 +58,7 @@ export function sceneFacts(state,node){
   if(state.instability>=DEVIANCY_THRESHOLD)f.push('You have been experiencing a growing conflict inside your programming.');else if(state.instability<=-2)f.push('Your programming has felt entirely stable.');
   f.push(state.deviant?'You have broken from your mission and act on your own.':'You are operating under your assigned mission.'+(ch>=12?` Your handler’s satisfaction with you: ${LEVELS.hank(state.amandaTrust??0)}.`:''));
   if(state.jerichoLocated)f.push('You know where the deviants are hiding.');
-  if(ch===1){if(state.connorGun)f.push(state.hostagePhase==='gun'?'You have the pistol drawn and aimed at {{Daniel}}.':'You are carrying a pistol, hidden under your jacket.');if(node.phase==='negotiation'&&typeof state.trust==='number')f.push(`{{Daniel}} is ${LEVELS.daniel(state.trust)}.`)}
+  if(ch===1){if(state.connorGun)f.push(state.hostagePhase==='aim'?'You have the pistol drawn and aimed at {{Daniel}}.':'You are carrying a pistol, hidden under your jacket.');if(node.phase==='negotiation'&&typeof state.trust==='number')f.push(`{{Daniel}} is ${LEVELS.daniel(state.trust)}.`)}
  }
  // Kara's status starts in Todd's house (chapter 4); in the Opening she has not met Alice yet.
  if(c==='Kara'&&ch>=4){

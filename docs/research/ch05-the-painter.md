@@ -226,7 +226,7 @@ Location: both magazine pages say "downstairs on the living room table in front 
 - **Covers** only PAINT FROM THE THE HEART → ANDROIDS / HUMANITY / IDENTITY.
 - **Missing chart nodes:**
   - DROP OFF PACKAGE, WAKE CARL, SERVE BREAKFAST: path nodes, could be one event scene.
-  - CARL NOTICES MARKUS' CLOTHES: conditional on `shirtTorn`. The engine already sets `s.shirtTorn` in M00 (story-engine.mjs line 184), but no chapter-5 scene reads it. It needs a `situationWhen` or an event.
+  - CARL NOTICES MARKUS' CLOTHES: conditional on `clothesTorn` (renamed from `shirtTorn` in story 1.7.0). The engine already sets `s.clothesTorn` in M00 (story-engine.mjs line 184), but no chapter-5 scene reads it. It needs a `situationWhen` or an event.
   - FIND SOMETHING TO DO: decision PLAY CHESS / READ BOOK / PLAY PIANO.
   - Chess WIN / LOSE / DRAW; book THE REPUBLIC BY PLATO / TRAGEDIES OF WILLIAM SHAKESPEARE / ODES BY JOHN KEATS; piano MELANCHOLIC / HOPEFUL / INTIMATE / ENIGMATIC. These are three decision scenes gated on the activity.
   - TAKE CARL TO THE STUDIO: path.
@@ -427,7 +427,7 @@ Discrepancies with the note: 3 (T1 to T3).
 |---|---|---|---|
 | B1 | Chess PROMPT WIN / LOSE / DRAW and its three follow-ups (JUSTIFY / SORRY; LIE / TRUTH; LIE / TRUTH) | Missing (no activity scene at all) | Add the activity choice (chart: PLAY CHESS / READ BOOK / PLAY PIANO) with the chess prompts |
 | B2 | PROMPT LIKE / DON'T LIKE / NO OPINION on Carl's painting | Missing | Add (no effect) |
-| B3 | Condition "Markus ran into the protesters in Shades of Color": Carl's clothes exchange | Missing; `shirtTorn` is never read | Add as a conditioned event line |
+| B3 | Condition "Markus ran into the protesters in Shades of Color": Carl's clothes exchange | Missing; `clothesTorn` (renamed from `shirtTorn` in story 1.7.0) is never read | Add as a conditioned event line |
 | B4 | TV unlock: CTN on the Arctic | `R05` has "the morning news"; its note claims news can lower public opinion | Drop the claim; the template has no arrow |
 | B5 | (chart) copy subject and heart sub-choices | `M01` offers only ANDROIDS / HUMANITY / IDENTITY | Per section 7 of this note |
 

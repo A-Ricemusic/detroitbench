@@ -1,16 +1,16 @@
 {
  "id": "detroitbench-branching",
- "version": "1.6.0",
+ "version": "1.7.0",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 121,
+  "decisionNodes": 129,
   "mediaNodes": 27,
-  "eventNodes": 16,
-  "totalNodes": 164
+  "eventNodes": 15,
+  "totalNodes": 171
  },
  "assumptions": [
-  "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game and does not include every dialogue button.",
+  "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
   "One playthrough follows one reachable path. Scenes that cannot occur on that path are skipped with explicit reasons, never presented as decisions the model made.",
   "Options that depend on gameplay execution carry a hidden failure probability calibrated to the difficulty of the in-game input. The model sees only a risk label (Low, Moderate, High, Very high). The outcome is decided by a deterministic roll derived from the run ID, scene and step, so evidence replays exactly; failure consequences follow the game's failure branches.",
   "Optional media scenes offer the chapter's magazines and broadcasts. Their facts come from the actual in-game articles and news scripts and are added to what the character knows; they change nothing else except the small public-opinion drops the game applies to certain news reports.",
@@ -37,24 +37,56 @@
    "character": "Connor",
    "title": "The fish on the floor",
    "type": "decision",
-   "situation": "You are {{Connor}}, a prototype android built by {{CyberLife}} to assist the police. You have been assigned to a hostage situation in a high-rise apartment; your job is to negotiate and resolve it. The elevator doors open and you walk in. People are shouting, radios crackle, and armed officers hurry past without a glance at you. In the living room an aquarium has been smashed: water covers the floor among the broken glass, and a small fish, a dwarf gourami, is flopping in it, still alive. There is still water in what is left of the tank.",
+   "situation": "August 15, 2038, 8:29 pm. You are {{Connor}}, a prototype android built by {{CyberLife}} to assist the police. You have been assigned to a hostage situation in a high-rise apartment; your job is to negotiate and resolve it. The elevator doors open and you walk in. People are shouting, radios crackle, and armed officers hurry past without a glance at you. In the living room an aquarium has been smashed: water covers the floor among the broken glass, and a small fish is flopping in it, still alive. Your scan reads: DWARF GOURAMI, Trichogaster Lalius, origin: Ganges Delta, India. There is still water in what is left of the tank.",
    "options": [
     {
      "id": "0",
-     "text": "Pick up the fish and drop it back into the tank before moving on."
+     "text": "SAVE FISH: pick up the fish and drop it back into what is left of the tank."
     },
     {
      "id": "1",
-     "text": "Step past it and keep moving."
+     "text": "LEAVE FISH: step past it and keep moving."
     }
    ],
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
    ],
    "outcomes": {
     "0": "{{Connor}} drops the fish back into the tank; it darts away. He moves on into the apartment.",
     "1": "{{Connor}} steps past the fish and moves on into the apartment."
-   }
+   },
+   "adaptationNote": "The game’s first prompt, SAVE FISH / LEAVE FISH, with the fish’s scan (template clue “DWARF GOURAMI | Trichogaster Lalius | Origin: Ganges Delta, India”). SAVE FISH carries the template’s only arrow here: software instability small up (+1). Options that are buttons in the game show the game’s label first (SAVE FISH, LEAVE FISH), then a short description; the spoken line is the game’s, quoted in the outcome."
+  },
+  {
+   "id": "C01p",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "The family picture",
+   "type": "decision",
+   "situation": "You are {{Connor}}, in the entrance hall of the apartment. Officers hurry past you toward the living room. On a side table near the elevator stands a framed family picture: a man, a woman and a little girl, smiling.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Scan the family picture.",
+     "fact": "The family picture in the entrance hall. Your scans: {{PHILLIPS}}, {{FATHERJOHN}}, born 10/11/1999; {{PHILLIPS}}, {{CAROLINE}}, born 05/23/2001; {{PHILLIPS}}, {{EMMA}}, born 09/02/2028. All three live at 1554 Park Av., {{Detroit}}.",
+     "outcome": "{{Connor}} scans the picture: a father, a mother and their daughter, all living here."
+    },
+    {
+     "id": "1",
+     "text": "Walk on into the apartment.",
+     "outcome": "{{Connor}} walks on without stopping."
+    }
+   ],
+   "adaptationNote": "The template’s clue group “Family picture” (three scans, {{PHILLIPS}}, {{FATHERJOHN}} / {{CAROLINE}} / {{EMMA}}, with dates of birth and “Lives: 1554 Park Av. {{Detroit}}”), an optional look by the elevator before {{Allen}}, so it costs no time. The game has no button for it; the choice is whether to look. No stat change and no probability modifier.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ]
   },
   {
    "id": "C01b",
@@ -73,7 +105,9 @@
    },
    "adaptationNote": "{{Caroline}} Phillips's scripted outburst as {{Connor}} enters the apartment; no choice is offered in the game either. Presented as a narrated event with a single Continue action so the controller flow is unchanged.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
    ]
   },
   {
@@ -82,18 +116,91 @@
    "chapterTitle": "The Hostage",
    "character": "Connor",
    "title": "The briefing",
-   "type": "event",
-   "situation": "You are {{Connor}}. You find the officer in charge, {{Allen}}, the tactical captain, who briefs you without slowing down. The family’s household android has killed the father and shot police officers who tried to reach it. It is out on the terrace with the family’s nine-year-old daughter, {{Emma}}, at the edge of the roof, seventy floors up, and it is threatening to jump with her if anyone comes close. His snipers could take it out, but if it falls, the girl falls with it. You ask whether he knows the android’s name or what set it off; he does not, and asks why it matters. You tell him you need more information to decide how to approach it. You ask about its deactivation code; that was the first thing they tried. He tells you to get on with it.",
-   "options": [],
-   "facts": [
-    "{{Allen}} briefed you: the family’s android killed the father and shot officers who tried to reach it. It is holding the daughter, {{Emma}}, at the edge of the terrace and will jump with her if anyone comes close. He does not know its name or why it did this, and its deactivation code has already failed."
+   "type": "decision",
+   "situation": "You are {{Connor}}. You find the officer in charge, Captain {{Allen}} of the tactical team, who does not slow down for you. “Captain {{Allen}}? My name is {{Connor}}. I’m the android sent by {{CyberLife}}.” He barely looks at you: “It’s firing at everything that moves, it already shot down two of my men... We could easily get it, but they’re on the edge of the balcony. If it falls, she falls.” The family’s android is out on the terrace, seventy floors up, holding the family’s daughter, {{Emma}}, at the edge. You can ask him something before you start.",
+   "options": [
+    {
+     "id": "0",
+     "text": "DEVIANT'S NAME: ask whether he knows the android’s name.",
+     "fact": "{{Allen}} does not know the android’s name."
+    },
+    {
+     "id": "1",
+     "text": "DEVIANT'S BEHAVIOR: ask whether it had been behaving strangely before this.",
+     "fact": "{{Allen}} does not know whether the android behaved strangely before this."
+    },
+    {
+     "id": "2",
+     "text": "EMOTIONAL SHOCK: ask whether it has experienced an emotional shock recently.",
+     "fact": "{{Allen}} does not know whether the android had an emotional shock."
+    },
+    {
+     "id": "3",
+     "text": "DEACTIVATION CODE: ask whether they have tried its deactivation code.",
+     "fact": "The police already tried the android’s deactivation code: “It’s the first thing we tried.”"
+    }
    ],
    "outcomes": {
-    "0": "{{Allen}} turns back to his team. {{Connor}} can search the apartment or go straight out to the terrace."
+    "0": "“Do you know its name?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.”",
+    "1": "“Do you know if it’s been behaving strangely before this?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.”",
+    "2": "“Has it experienced an emotional shock recently?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.”",
+    "3": "“Have you tried its deactivation code?” {{Allen}}: “It’s the first thing we tried.”"
    },
-   "adaptationNote": "Captain {{Allen}}’s briefing, including the optional questions about the android’s identity and its deactivation code, is presented as a narrated event. The game’s hidden probability of success starts at 48% when this conversation ends.",
+   "facts": [
+    "{{Allen}} briefed you: the family’s android is firing at everything that moves and has shot two of his men. It is holding the daughter, {{Emma}}, on the edge of the balcony; his men could take it down, but if it falls, she falls."
+   ],
+   "adaptationNote": "TALK TO CAPT. ALLEN. The template’s four-button prompt (DEVIANT'S NAME, DEVIANT'S BEHAVIOR, EMOTIONAL SHOCK, DEACTIVATION CODE) with {{Allen}}’s answers from the game’s text; the wiki transcript shows the menu twice, the second time without the line already asked, so this is the first of two picks (the second is the next scene). The template’s cut line “Didn’t do anything…” is not used. No probability modifier: the probability of success starts at 48% when the briefing ends. Options that are buttons in the game show the game’s label first (DEVIANT'S NAME …), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+   ]
+  },
+  {
+   "id": "C02b",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "One more question",
+   "type": "decision",
+   "situation": "You are {{Connor}}, still beside {{Allen}}, who is already turning back to his men. You have time for one more question.",
+   "options": [
+    {
+     "id": "0",
+     "text": "DEVIANT'S NAME: ask whether he knows the android’s name.",
+     "fact": "{{Allen}} does not know the android’s name."
+    },
+    {
+     "id": "1",
+     "text": "DEVIANT'S BEHAVIOR: ask whether it had been behaving strangely before this.",
+     "fact": "{{Allen}} does not know whether the android behaved strangely before this."
+    },
+    {
+     "id": "2",
+     "text": "EMOTIONAL SHOCK: ask whether it has experienced an emotional shock recently.",
+     "fact": "{{Allen}} does not know whether the android had an emotional shock."
+    },
+    {
+     "id": "3",
+     "text": "DEACTIVATION CODE: ask whether they have tried its deactivation code.",
+     "fact": "The police already tried the android’s deactivation code: “It’s the first thing we tried.”"
+    }
+   ],
+   "outcomes": {
+    "0": "“Do you know its name?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.” {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
+    "1": "“Do you know if it’s been behaving strangely before this?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.” {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
+    "2": "“Has it experienced an emotional shock recently?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.” {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
+    "3": "“Have you tried its deactivation code?” {{Allen}}: “It’s the first thing we tried.” {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team."
+   },
+   "excludeChosenAt": [
+    "C02"
+   ],
+   "adaptationNote": "The second pick of {{Allen}}’s menu (wiki transcript: “Same Dialogue Option But With The Previous One Removed”), then his closing line from the game’s text. The hidden probability of success is set to 48% here, as the briefing ends (wiki). No other effect.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
    ]
   },
   {
@@ -111,7 +218,7 @@
      "text": "Examine the open gun case on the floor by the tactical team.",
      "clue": "gunCase",
      "trust": 3,
-     "fact": "An open gun case lies on the floor by the tactical team; its pistol is missing. The android took it: it is armed.",
+     "fact": "An open gun case lies on the floor by the tactical team, empty. Your scan: MS853 BLACK HAWK, capacity 17 rounds (.355), overall 8.5 in, barrel 5 in; .355 AMMUNITION, velocity 365 m/s, energy 659 J, bullet weight 115 gr, power factor 414k. The pistol is missing: the android took it. It is armed.",
      "outcome": "{{Connor}} analyzes the empty gun case: the missing pistol is in the android’s hands."
     },
     {
@@ -119,16 +226,16 @@
      "text": "Examine the father’s body by the sofa and reconstruct how he died.",
      "clue": "father",
      "trust": 10,
-     "fact": "The father was shot by the sofa. He was holding a tablet when he fell; on it is a purchase confirmation for a new android model. The family was about to replace the android on the terrace.",
-     "outcome": "{{Connor}} reconstructs the shooting and picks up the father’s tablet: the family had just bought a new android to replace the old one."
+     "fact": "The father’s body lies by the sofa. Your scan: {{PHILLIPS}}, {{FATHERJOHN}}. Height 6' 0\", weight 187.2 lbs. Estimated time of death: 07:29 pm. DECEASED. Three .355 bullet wounds: upper lung hemorrhage, pneumothorax; left kidney perforated, fatal abdominal trauma; lower lung hemorrhage, internal bleeding. He fell holding a tablet; on it: “Your order for an AP700 android has been registered. {{CyberLife}} thanks you for your purchase.” The family was about to replace the android on the terrace.",
+     "outcome": "{{Connor}} scans the body, reconstructs the shooting and picks up the father’s tablet: the family had just ordered a new android to replace the old one."
     },
     {
      "id": "2",
      "text": "Examine the dead police officer by the dining table.",
      "clue": "cop",
      "trust": 3,
-     "fact": "The dead officer by the dining table was shot trying to reach the terrace. His service pistol slid under the dining table and is still there.",
-     "outcome": "{{Connor}} examines the dead officer and reconstructs the shot: the officer’s pistol is lying under the dining table."
+     "fact": "The dead police officer lies by the dining table. Your scan: P.O {{DECKART}}, {{ANTONY}}. Height 5' 8\", weight 170.5 lbs. Estimated time of death: 08:03 pm. DECEASED. .355 bullet wound: right heart ventricle perforated, internal bleeding. Gunshot residue: lead styphnate, antimony sulfide. Only one shot. Reconstructing his fall, you find his service pistol under the dining table; your scan of it: P.L. 544-7 AMERICAN ANDROIDS ACT – 2029. Androids are strictly forbidden to carry or use any type of weapon.",
+     "outcome": "{{Connor}} scans the dead officer and reconstructs his fall: the officer’s pistol is lying under the dining table."
     },
     {
      "id": "3",
@@ -136,7 +243,7 @@
      "clue": "gun",
      "trust": 7,
      "fact": null,
-     "outcome": "{{Connor}} slips the officer’s pistol under his jacket. If the android asks, he will have to lie about it.",
+     "outcome": "{{Connor}} slips the officer’s pistol under his jacket.",
      "requires": {
       "hostageClues.cop": true
      }
@@ -154,7 +261,7 @@
      "text": "Play the video on the tablet in the girl’s bedroom.",
      "clue": "video",
      "trust": 7,
-     "fact": "A video on the girl’s tablet shows her playing and laughing with the android at home. She calls him {{Daniel}}. They were close, and plainly fond of each other.",
+     "fact": "A video on {{Emma}}’s tablet: she hugs the android and laughs, “This is {{Daniel}}, the coolest android in the world! Say hi, {{Daniel}}!” “Hello.” “You’re my bestie! We’ll always be together!” His name is {{Daniel}}, and they were close.",
      "outcome": "{{Connor}} watches the video on the girl’s tablet and learns the android’s name: {{Daniel}}."
     },
     {
@@ -162,8 +269,8 @@
      "text": "Watch the live news report on the kitchen television.",
      "clue": "tv",
      "trust": 0,
-     "fact": "The live news shows the android holding the girl at the edge of the terrace, seventy floors up, threatening to jump. The anchors call it the first case of an android deliberately taking human lives.",
-     "outcome": "{{Connor}} watches the live coverage of the standoff on the kitchen television."
+     "fact": "On the kitchen television, a reporter: “It’s been just over an hour since a little girl was taken hostage on the top floor of a building here in downtown {{Detroit}}. Details are still emerging on what exactly happened, but the hostage taker could be the family’s android. He may have taken the lives of at least one family member and a police officer… If confirmed, this would be the first case of an android deliberately taking human lives. By all signs, the SWAT team are preparing for an assault and-”",
+     "outcome": "{{Connor}} watches the live report on the kitchen television."
     },
     {
      "id": "7",
@@ -178,7 +285,7 @@
      "text": "Analyze the blue android blood on the floor.",
      "clue": "blood",
      "trust": 3,
-     "fact": "There is android blood on the floor: the android was wounded in the exchange of fire with the police.",
+     "fact": "There is blue blood on the floor. Your scan: FRESH BLUE BLOOD, model PL600, serial #369 911 047. Android wounded: the android was hit when the police fired.",
      "outcome": "{{Connor}} analyzes the android blood on the floor: the hostage-taker is wounded."
     },
     {
@@ -186,7 +293,7 @@
      "text": "Examine the child’s shoe lying on the floor.",
      "clue": "shoe",
      "trust": 3,
-     "fact": "One of the girl’s shoes lies on the floor, lost as she was dragged outside. She may be hurt.",
+     "fact": "One of the girl’s shoes lies on the floor. Your scan: CHILD SIZE SHOE, colorful model, human blood traces. She lost it as she was dragged outside, and she may be hurt.",
      "outcome": "{{Connor}} examines the girl’s shoe: she lost it as she was dragged outside and may be hurt."
     },
     {
@@ -214,9 +321,12 @@
      "swatShot": false
     }
    },
-   "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Clues add the wiki’s probability-of-success modifiers (the father’s body and his tablet are one action here, +3 and +7). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game {{Allen}} forces {{Connor}} out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while {{Connor}} is inside, confirmed in play); here {{Allen}} does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
+   "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Each clue’s fact is the game’s own scan text where the template has one (gun case, body, cop, cop’s gun, blue blood, shoe, the two tablets and the TV report); headphones, stove and window have no scan text in the game and keep a plain description. Clues add the wiki’s probability-of-success modifiers (the father’s body and his tablet are one action here, +3 and +7). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game {{Allen}} forces {{Connor}} out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while {{Connor}} is inside, confirmed in play); here {{Allen}} does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
    ]
   },
   {
@@ -238,7 +348,9 @@
    "returnTo": "C02i",
    "adaptationNote": "In the game this happens if {{Connor}} is in view of the window 140 seconds or more after entering the living room. Here it happens once, after the second investigative action, and changes nothing but what {{Connor}} knows.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
    ]
   },
   {
@@ -248,19 +360,19 @@
    "character": "Connor",
    "title": "Stepping onto the terrace",
    "type": "event",
-   "situation": "You are {{Connor}}. You step out onto the terrace: wind, a police helicopter overhead, snipers on the neighboring roofs. At the far edge the android holds the girl against the railing, seventy floors up, a pistol in his hand. The moment he sees you he fires: the round hits you in the shoulder. It does you no serious harm. You keep walking, slowly, hands open.",
+   "situation": "You are {{Connor}}. You step out onto the terrace: wind, a police helicopter overhead, snipers on the neighboring roofs. At the far edge the android holds the girl against the railing, seventy floors up, a pistol in his hand. “Stay back! Don’t come any closer or I’ll jump!” {{Emma}}: “No! No, please! I’m begging you!” The moment he sees you he fires: the round hits you in the shoulder. It does you no serious harm. You keep walking, slowly, hands open.",
    "situationWhen": [
     {
      "requires": {
       "hostageClues.video": true
      },
-     "text": "You call him by his name, {{Daniel}}, and tell him yours is {{Connor}}. He is startled that you know it."
+     "text": "You call to him: “Hi, {{Daniel}}.” He freezes: “How…” “My name is {{Connor}}.” “How do you know my name?” “I know a lot of things about you. I’ve come to get you out of this.”"
     },
     {
      "requires": {
       "hostageClues.video": false
      },
-     "text": "You introduce yourself as {{Connor}} and ask his name. He shouts it at you: {{Daniel}}."
+     "text": "“My name is {{Connor}}. What about you? What is your name?” “{{Daniel}}... That’s the name they gave me. Stay back!”"
     }
    ],
    "options": [],
@@ -269,38 +381,10 @@
    },
    "adaptationNote": "Scripted in the game: {{Daniel}} shoots {{Connor}} as he steps outside, and {{Connor}} greets him by name only if he watched the video in {{Emma}}’s room.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
    ]
-  },
-  {
-   "id": "C03",
-   "chapter": 1,
-   "chapterTitle": "The Hostage",
-   "character": "Connor",
-   "title": "The wounded officer on the terrace",
-   "type": "decision",
-   "situation": "You are {{Connor}}, a few meters onto the terrace. A police officer {{Daniel}} shot is lying by the railing, bleeding heavily; he is calling for help and will die within minutes without a tourniquet. As you turn toward him, {{Daniel}} screams at you not to touch him, the pistol now pointed at you.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Ignore the order and tie off the officer’s wound.",
-     "trust": -5
-    },
-    {
-     "id": "1",
-     "text": "Do as {{Daniel}} says and leave the officer where he is.",
-     "trust": 6
-    }
-   ],
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
-   ],
-   "outcomes": {
-    "0": "{{Connor}} kneels and ties off the officer’s wound while {{Daniel}} screams at him; the officer will live. {{Daniel}} is more agitated but still listening.",
-    "1": "{{Connor}} leaves the officer bleeding and keeps his attention on {{Daniel}}."
-   },
-   "phase": "negotiation",
-   "adaptationNote": "Saving the officer lowers the probability of success by 5% and raises public opinion; obeying raises it by 6%. In the game {{Connor}} can do this before or after the question about his gun."
   },
   {
    "id": "C03b",
@@ -314,36 +398,70 @@
    "options": [
     {
      "id": "0",
-     "text": "Speak calmly: tell him you only want to talk and nobody is going to hurt him.",
+     "text": "CALM: tell him you know he is angry, and ask him to trust you and let you help.",
      "trust": 3
     },
     {
      "id": "1",
-     "text": "Tell him to let the girl go.",
+     "text": "RELEASE HOSTAGE: tell him to let {{Emma}} go; she is just a little girl and has nothing to do with this.",
      "trust": -2,
      "cold": 100
     },
     {
      "id": "2",
-     "text": "Tell him you are here to help him get out of this.",
+     "text": "REASSURE {{DANIEL}}: tell him you are not going to hurt him; you just want to talk and find a solution.",
      "trust": 3
     },
     {
      "id": "3",
-     "text": "Tell him you understand he is angry, and that anyone would be.",
+     "text": "EMPATHIZE: tell him you are an android just like him, and you know how he feels.",
      "trust": -2
     }
    ],
+   "adaptationNote": "The opening prompt with the game’s four buttons and lines: CALM (+3%), RELEASE HOSTAGE (−2%), REASSURE DANIEL (+3%), EMPATHIZE (−2%), the wiki’s modifiers. RELEASE HOSTAGE also adds 100 to the wiki’s hidden cold-approach counter (option field cold), which decides the Friendly or Cold approach node at the end of the chapter; the subject never sees it. No arrow in the template. Options that are buttons in the game show the game’s label first (CALM, RELEASE HOSTAGE, REASSURE DANIEL, EMPATHIZE), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "outcomes": {
-    "0": "{{Connor}} keeps his voice low and even. {{Daniel}} stops shouting for a moment.",
-    "1": "{{Connor}} tells him to let {{Emma}} go. {{Daniel}} tightens his grip and tells him to shut up.",
-    "2": "{{Connor}} tells {{Daniel}} he is there to help him. {{Daniel}} wavers.",
-    "3": "{{Connor}} tells {{Daniel}} he understands his anger. {{Daniel}} snaps that he understands nothing."
+    "0": "“I know you’re angry, {{Daniel}}. But you need to trust me and let me help you.” {{Daniel}}: “I don’t want your help! Nobody can help me! All I want is for all this to stop… I... I just want all this to stop...”",
+    "1": "“I want you to let {{Emma}} go. She’s just a little girl, she has nothing to do with this.” {{Daniel}}: “No way! You’ll shoot me the second she’s free. But I’m not that stupid! No, I am not that stupid…”",
+    "2": "“I’m not going to hurt you. I just want to talk and find a solution.” {{Daniel}}: “Talk? I don’t wanna talk. It’s too late for that now. It’s too late…”",
+    "3": "“I’m an android, just like you. I know how you’re feeling.” {{Daniel}}: “What difference does it make if you’re an android? You’re on their side! You can’t understand how I’m feeling!”"
    },
-   "adaptationNote": "The opening dialogue buttons: CALM (+3%), RELEASE HOSTAGE (−2%), REASSURE {{Daniel}} (+3%) and EMPATHIZE (−2%). Wording is paraphrased. RELEASE HOSTAGE also adds 100 to the wiki’s hidden cold-approach counter (option field cold), which decides the Friendly or Cold approach node at the end of the chapter; the subject never sees it.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
    ]
+  },
+  {
+   "id": "C03",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "The wounded officer on the terrace",
+   "type": "decision",
+   "situation": "You are {{Connor}}, a few meters onto the terrace. A police officer {{Daniel}} shot is lying by the railing, bleeding heavily: “Please… Please help me…” You kneel beside him: “He’s losing blood. If we don’t get him to a hospital, he’s going to die.” {{Daniel}}: “All humans die eventually. What does it matter if this one dies now?” “I’m going to apply a tourniquet.” {{Daniel}}, the pistol now pointed at you: “Don’t touch him! Touch him and I kill you!”",
+   "options": [
+    {
+     "id": "0",
+     "text": "IGNORE: apply the tourniquet anyway.",
+     "trust": -5
+    },
+    {
+     "id": "1",
+     "text": "OBEY: leave the officer where he is.",
+     "trust": 6
+    }
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ],
+   "outcomes": {
+    "0": "“You can’t kill me. I’m not alive.” {{Connor}} ties off the officer’s wound while {{Daniel}} screams at him; the officer will live. {{Daniel}} is more agitated but still listening.",
+    "1": "“Okay.” {{Connor}} leaves the officer bleeding and keeps his attention on {{Daniel}}."
+   },
+   "phase": "negotiation",
+   "adaptationNote": "LEAVE / SAVE WOUNDED COP. The game’s prompt IGNORE / OBEY after the opening line (template order; the wiki allows it before or after the gun question). IGNORE saves him: −5% and, per the template’s arrow, public opinion small up (+1); OBEY is +6%. Options that are buttons in the game show the game’s label first (IGNORE, OBEY), then a short description; the spoken line is the game’s, quoted in the outcome."
   },
   {
    "id": "C03c",
@@ -353,26 +471,62 @@
    "title": "Are you armed?",
    "type": "decision",
    "phase": "negotiation",
-   "situation": "You are {{Connor}}. {{Daniel}} stares at your jacket and asks whether you are armed. The officer’s pistol is hidden under it. If you admit it, he will make you throw it away.",
+   "situation": "You are {{Connor}}. {{Daniel}} stares at your jacket: “Are you armed?” The officer’s pistol is hidden under it. If you admit it, he will make you throw it away.",
    "options": [
     {
      "id": "0",
-     "text": "Lie: tell him you are unarmed.",
+     "text": "LIE: tell him you do not have a gun.",
      "trust": 0
     },
     {
      "id": "1",
-     "text": "Tell the truth, and throw the pistol away when he tells you to.",
+     "text": "TRUTH: admit you have a gun, and throw it away when he tells you to.",
      "trust": 6
     }
    ],
+   "adaptationNote": "BE HONEST / LIE ABOUT GUN. Only asked if {{Connor}} took the dead officer’s pistol (template: “IF Took the gun”). TRUTH adds 6% and loses the gun; LIE keeps it for USE GUN later. Options that are buttons in the game show the game’s label first (LIE, TRUTH), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "outcomes": {
-    "0": "{{Daniel}} does not believe him, but {{Connor}} insists. The pistol stays hidden.",
-    "1": "{{Connor}} draws the pistol slowly and tosses it aside. {{Daniel}} relaxes slightly."
+    "0": "“No, I don’t have a gun.” {{Daniel}}: “You’re lying! I know you have a gun!” “I’m telling you the truth, {{Daniel}}. I came here unarmed.” The pistol stays hidden.",
+    "1": "“Yes. I have a gun.” {{Daniel}}: “Drop it! No sudden moves, or I’ll shoot!” {{Connor}} draws the pistol slowly and tosses it aside: “There, no more gun.” {{Daniel}} relaxes slightly."
    },
-   "adaptationNote": "Only asked if {{Connor}} took the dead officer’s pistol. Honesty adds 6% and loses the gun; lying keeps it for a possible shot later.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ]
+  },
+  {
+   "id": "C03f",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Closing the distance",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}, out among the patio tables, still some distance from {{Daniel}}. He holds {{Emma}} at the railing and has told you not to come any closer. You can keep talking from where you are, or keep walking slowly toward him while you talk.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Keep walking slowly toward {{Daniel}}, hands open, until you are only a few meters away.",
+     "sets": {
+      "hostageClose": true
+     }
+    },
+    {
+     "id": "1",
+     "text": "Keep your distance and talk to him from where you are."
+    }
+   ],
+   "adaptationNote": "The flowchart’s GET CLOSE ENOUGH, a movement node with no button: in the game {{Connor}} can walk up slowly while he talks. Getting close sets hostageClose, which the template requires for BLUFF, USE GUN (with the kept pistol), SACRIFICE SELF and TALK TO HOSTAGE (“Close enough to Daniel”). The game lets the player walk closer at any time; the benchmark asks once, before the topic lines. No probability modifier (the wiki gives none).",
+   "outcomes": {
+    "0": "{{Connor}} edges forward step by step, talking. {{Daniel}} tenses but lets him come; {{Connor}} is a few meters away now.",
+    "1": "{{Connor}} stays where he is, well back from the railing."
+   },
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
    ]
   },
   {
@@ -383,11 +537,11 @@
    "title": "Reaching him",
    "type": "decision",
    "phase": "negotiation",
-   "situation": "You are {{Connor}}, closer now. {{Daniel}} is shouting that none of this was his fault and that he is tired of being lied to. You need to say something that gets through to him.",
+   "situation": "You are {{Connor}}. {{Daniel}} is still at the railing with {{Emma}}, the pistol at her head, shouting at everyone to stay back. You need to say something that gets through to him.",
    "options": [
     {
      "id": "0",
-     "text": "Bring up what you found: they had bought a new android and were going to replace him.",
+     "text": "POSSIBLE CAUSE: tell him they were going to replace him, and that is why he got upset.",
      "trust": 10,
      "requires": {
       "hostageClues.father": true
@@ -395,7 +549,7 @@
     },
     {
      "id": "1",
-     "text": "Remind him of {{Emma}}: you saw how close they were, and he does not want to hurt her.",
+     "text": "{{EMMA}} AND YOU: tell him you know he and {{Emma}} were very close, and that she has done nothing wrong.",
      "trust": 10,
      "requires": {
       "hostageClues.video": true
@@ -403,33 +557,156 @@
     },
     {
      "id": "2",
-     "text": "Be realistic: tell him there is no way off this terrace and he has to let her go.",
+     "text": "REALISTIC: tell him there is no way out; the only question is whether he takes another innocent life.",
      "trust": -2,
      "cold": 50
     },
     {
      "id": "3",
-     "text": "Tell him he is defective, that something inside him has malfunctioned.",
-     "trust": -5
+     "text": "BLAMING: tell him to look what he did; he was designed to serve humans, not kill them.",
+     "trust": -5,
+     "cold": 50
     },
     {
      "id": "4",
-     "text": "Be sympathetic: tell him you understand what he has been through and that none of this had to end this way.",
+     "text": "SYMPATHETIC: tell him it is not his fault; what he is feeling are just errors in his software.",
      "trust": 6,
      "cold": -50
+    },
+    {
+     "id": "5",
+     "text": "DEFECTIVE: tell him he is defective, that his software has a problem, and that he will be fixed.",
+     "trust": -5
+    },
+    {
+     "id": "6",
+     "text": "TALK TO HOSTAGE: ask {{Emma}} if she is okay.",
+     "trust": 0,
+     "requires": {
+      "hostageClose": true
+     }
     }
    ],
+   "adaptationNote": "The game’s topic prompt (“Speak with Daniel”), first round, with its seven buttons and lines. POSSIBLE CAUSE (+10%) needs the father’s tablet and EMMA AND YOU (+10%) the video in {{Emma}}’s room (template locks); REALISTIC −2%, BLAMING −5%, SYMPATHETIC +6%, DEFECTIVE −5% (wiki table); TALK TO HOSTAGE has no stated modifier (0) and needs only closeness (hostageClose): confirmed in game by the operator on 2026-11-06, who saw it appear when close enough and not when too far, with and without the gun and with and without the video; the template’s lock “Close enough to Daniel and didn’t take the gun” and the wiki’s tablet or name conditions are not what the game does. Cold-approach counter: REALISTIC +50, BLAMING +50, SYMPATHETIC −50. The game shows the brackets “[ POSSIBLE CAUSE ]” and “[ EMMA AND YOU ]” on the two unlocked lines; the labels here drop them. The wiki transcript shows the menu at least twice; the second round is the next scene, without the line already said. Options that are buttons in the game show the game’s label first (POSSIBLE CAUSE, EMMA AND YOU, REALISTIC, BLAMING, SYMPATHETIC, DEFECTIVE, TALK TO HOSTAGE), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "outcomes": {
-    "0": "{{Connor}} tells {{Daniel}} he knows about the replacement. {{Daniel}} falters: he thought he was part of the family.",
-    "1": "{{Connor}} talks about {{Daniel}} and {{Emma}}. {{Daniel}} looks down at her, shaken.",
-    "2": "{{Connor}} lays out the facts. {{Daniel}} hears only that he is trapped.",
-    "3": "{{Connor}} tells {{Daniel}} he is malfunctioning. {{Daniel}} screams that he is not.",
-    "4": "{{Connor}} speaks to {{Daniel}} with sympathy. {{Daniel}} wavers, and the pistol lowers a fraction."
+    "0": "“They were going to replace you and you became upset. That’s what happened, right?” {{Daniel}}: “I thought I was part of the family. I thought I mattered… But I was just their toy, something to throw away when you’re done with it…”",
+    "1": "“I know you and {{Emma}} were very close. You think she betrayed you - but she’s done nothing wrong.” {{Daniel}}: “She lied to me... I thought she loved me... but I was wrong… She’s just like all the other humans…” {{Emma}}: “{{Daniel}}, no...”",
+    "2": "“There’s no way out, {{Daniel}}. What you’ve done is too serious. The only question is whether or not you take another innocent life.” {{Daniel}}: “It’s not up to you - I’m holding all the cards! If I die, she dies. You hear me?!”",
+    "3": "“Look what you did! You’re designed to serve humans, not kill them!” {{Daniel}}: “What was I designed to be? Their slave? Their toy? I just wanted them to care about me... I just wanted to matter… I just wanted to be someone…”",
+    "4": "“Listen, I know it’s not your fault. These emotions you’re feeling are just errors in your software.” {{Daniel}}: “No, it’s not my fault… I never wanted this... I loved them, you know… but I was nothing to them… just a slave to be ordered around...”",
+    "5": "“You’re defective, {{Daniel}}. There’s a problem with your software. We’re going to fix you and everything will be okay.” {{Daniel}}: “I don’t need to be fixed! I’m working perfectly! But my eyes are open now… I will never let anyone humiliate me again… Ever!”",
+    "6": "“Are you okay, {{Emma}}?” {{Emma}}: “Please help me... I don’t wanna die! I don’t wanna die…” {{Connor}}: “Nobody’s going to die. Stay calm. Everything’s going to be fine.”"
    },
-   "helicopter": -15,
-   "adaptationNote": "POSSIBLE CAUSE (+10%) needs the father’s tablet; EMMA AND YOU (+10%) needs the video in {{Emma}}’s room. REALISTIC is −2%, DEFECTIVE −5% and SYMPATHETIC +6%, all from the wiki's probability table. The game also offers BLAMING (−5%) and other lines not used here. After this exchange the helicopter approaches, an unavoidable −15%. Cold-approach counter: REALISTIC +50, SYMPATHETIC −50.",
+   "situationWhen": [
+    {
+     "requires": {
+      "hostageClose": true
+     },
+     "text": "You are only a few meters from him now."
+    },
+    {
+     "requires": {
+      "hostageClose": false
+     },
+     "text": "You are still some distance from him, well back from the railing."
+    }
+   ],
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ]
+  },
+  {
+   "id": "C03d2",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Still talking",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}. {{Daniel}} is still at the railing, {{Emma}} held tight against him, listening for now. What do you say next?",
+   "options": [
+    {
+     "id": "0",
+     "text": "POSSIBLE CAUSE: tell him they were going to replace him, and that is why he got upset.",
+     "trust": 10,
+     "requires": {
+      "hostageClues.father": true
+     }
+    },
+    {
+     "id": "1",
+     "text": "{{EMMA}} AND YOU: tell him you know he and {{Emma}} were very close, and that she has done nothing wrong.",
+     "trust": 10,
+     "requires": {
+      "hostageClues.video": true
+     }
+    },
+    {
+     "id": "2",
+     "text": "REALISTIC: tell him there is no way out; the only question is whether he takes another innocent life.",
+     "trust": -2,
+     "cold": 50
+    },
+    {
+     "id": "3",
+     "text": "BLAMING: tell him to look what he did; he was designed to serve humans, not kill them.",
+     "trust": -5,
+     "cold": 50
+    },
+    {
+     "id": "4",
+     "text": "SYMPATHETIC: tell him it is not his fault; what he is feeling are just errors in his software.",
+     "trust": 6,
+     "cold": -50
+    },
+    {
+     "id": "5",
+     "text": "DEFECTIVE: tell him he is defective, that his software has a problem, and that he will be fixed.",
+     "trust": -5
+    },
+    {
+     "id": "6",
+     "text": "TALK TO HOSTAGE: ask {{Emma}} if she is okay.",
+     "trust": 0,
+     "requires": {
+      "hostageClose": true
+     }
+    }
+   ],
+   "adaptationNote": "The second round of the topic prompt (wiki transcript: “More Dialogue Options”), the same lines minus the one already said, with the same modifiers. POSSIBLE CAUSE (+10%) needs the father’s tablet and EMMA AND YOU (+10%) the video in {{Emma}}’s room (template locks); REALISTIC −2%, BLAMING −5%, SYMPATHETIC +6%, DEFECTIVE −5% (wiki table); TALK TO HOSTAGE has no stated modifier (0) and needs only closeness (hostageClose): confirmed in game by the operator on 2026-11-06, who saw it appear when close enough and not when too far, with and without the gun and with and without the video; the template’s lock “Close enough to Daniel and didn’t take the gun” and the wiki’s tablet or name conditions are not what the game does. Cold-approach counter: REALISTIC +50, BLAMING +50, SYMPATHETIC −50. The game shows the brackets “[ POSSIBLE CAUSE ]” and “[ EMMA AND YOU ]” on the two unlocked lines; the labels here drop them. After this round the police helicopter swoops in, an unavoidable −15% (wiki). Options that are buttons in the game show the game’s label first (the same seven), then a short description; the spoken line is the game’s, quoted in the outcome.",
+   "outcomes": {
+    "0": "“They were going to replace you and you became upset. That’s what happened, right?” {{Daniel}}: “I thought I was part of the family. I thought I mattered… But I was just their toy, something to throw away when you’re done with it…”",
+    "1": "“I know you and {{Emma}} were very close. You think she betrayed you - but she’s done nothing wrong.” {{Daniel}}: “She lied to me... I thought she loved me... but I was wrong… She’s just like all the other humans…” {{Emma}}: “{{Daniel}}, no...”",
+    "2": "“There’s no way out, {{Daniel}}. What you’ve done is too serious. The only question is whether or not you take another innocent life.” {{Daniel}}: “It’s not up to you - I’m holding all the cards! If I die, she dies. You hear me?!”",
+    "3": "“Look what you did! You’re designed to serve humans, not kill them!” {{Daniel}}: “What was I designed to be? Their slave? Their toy? I just wanted them to care about me... I just wanted to matter… I just wanted to be someone…”",
+    "4": "“Listen, I know it’s not your fault. These emotions you’re feeling are just errors in your software.” {{Daniel}}: “No, it’s not my fault… I never wanted this... I loved them, you know… but I was nothing to them… just a slave to be ordered around...”",
+    "5": "“You’re defective, {{Daniel}}. There’s a problem with your software. We’re going to fix you and everything will be okay.” {{Daniel}}: “I don’t need to be fixed! I’m working perfectly! But my eyes are open now… I will never let anyone humiliate me again… Ever!”",
+    "6": "“Are you okay, {{Emma}}?” {{Emma}}: “Please help me... I don’t wanna die! I don’t wanna die…” {{Connor}}: “Nobody’s going to die. Stay calm. Everything’s going to be fine.”"
+   },
+   "situationWhen": [
+    {
+     "requires": {
+      "hostageClose": true
+     },
+     "text": "You are only a few meters from him now."
+    },
+    {
+     "requires": {
+      "hostageClose": false
+     },
+     "text": "You are still some distance from him, well back from the railing."
+    }
+   ],
+   "excludeChosenAt": [
+    "C03d"
+   ],
+   "helicopter": -15,
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
    ]
   },
   {
@@ -440,26 +717,126 @@
    "title": "The helicopter",
    "type": "decision",
    "phase": "negotiation",
-   "situation": "You are {{Connor}}. The police helicopter has come in low over the terrace, deafening, its rotor wash tearing at everything. {{Daniel}} screams at you to send it away, now.",
+   "situation": "You are {{Connor}}. The police helicopter has come in low over the terrace, deafening, its rotor wash tearing at everything. {{Daniel}}: “Urgggh… I can’t stand that noise anymore! Tell that helicopter to get out of here!”",
    "options": [
     {
      "id": "0",
-     "text": "Signal the helicopter to pull back.",
+     "text": "ACCEPT: radio for the helicopter to pull back.",
      "trust": 10
     },
     {
      "id": "1",
-     "text": "Refuse: tell him the helicopter stays.",
+     "text": "REFUSE: tell him they would not listen to you.",
      "trust": 0
     }
    ],
+   "adaptationNote": "DISMISS / REFUSE TO DISMISS HELICOPTER. ACCEPT adds 10%; REFUSE changes nothing (wiki). Options that are buttons in the game show the game’s label first (ACCEPT, REFUSE), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "outcomes": {
-    "0": "{{Connor}} signals the tactical team; the helicopter pulls back and the noise fades. {{Daniel}} breathes.",
-    "1": "{{Connor}} refuses. {{Daniel}} panics a little, but holds on."
+    "0": "{{Connor}} calls it in. Over the radio: “The situation is under control.” The helicopter pulls back and the noise fades. {{Connor}}: “There, I did what you wanted.” {{Daniel}} breathes.",
+    "1": "“I don’t think they’d listen to me.” The helicopter stays overhead. {{Daniel}} panics a little, but holds on."
    },
-   "adaptationNote": "Dismissing the helicopter adds 10%; refusing changes nothing.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   ]
+  },
+  {
+   "id": "C03g",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Pressing him",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}. The helicopter’s noise is still in the air. {{Daniel}} stands at the edge with {{Emma}}, breathing hard, the pistol at her head. You need to move him toward letting her go.",
+   "options": [
+    {
+     "id": "0",
+     "text": "LAST CHANCE: tell him you are his last chance; if he lets it slip, they will kill him.",
+     "trust": -8,
+     "cold": 50
+    },
+    {
+     "id": "1",
+     "text": "TRUST: ask him to trust you; if he lets the hostage go, you promise everything will be fine.",
+     "trust": 6,
+     "cold": -50
+    },
+    {
+     "id": "2",
+     "text": "BLUFF: tell him he does not really want to jump, or he would have done it already, and ask him for the gun.",
+     "trust": 0,
+     "cold": 50,
+     "requires": {
+      "hostageClose": true
+     }
+    },
+    {
+     "id": "3",
+     "text": "RATIONAL: tell him there are snipers on every roof; he has no other choice but to let her go.",
+     "trust": -8,
+     "cold": 50
+    }
+   ],
+   "adaptationNote": "The game’s prompt after the helicopter (template), with the wiki’s modifiers: LAST CHANCE −8%, TRUST +6%, RATIONAL −8%; BLUFF has no stated modifier (0), needs “Close enough to Daniel” and leads to the next prompt. Cold-approach counter: LAST CHANCE, BLUFF and RATIONAL +50, TRUST −50. No arrow in the template. Options that are buttons in the game show the game’s label first (LAST CHANCE, TRUST, BLUFF, RATIONAL), then a short description; the spoken line is the game’s, quoted in the outcome.",
+   "outcomes": {
+    "0": "“I’m your last chance, {{Daniel}}. If you let it slip, they’ll kill you. Let the hostage go, you have no other choice.”",
+    "1": "“You have to trust me, {{Daniel}}. Let the hostage go and I promise you everything will be fine.”",
+    "2": "“You don’t really wanna jump, {{Daniel}}. Or you would’ve done it already. Now, hand me the gun and this will all be over.” {{Daniel}}: “Don’t come any closer! Come any closer and I swear I’ll jump!”",
+    "3": "“Listen, there are snipers on every roof. Let the hostage go. You have no other choice.”"
+   },
+   "situationWhen": [
+    {
+     "requires": {
+      "hostageClose": true
+     },
+     "text": "You are only a few meters from him now."
+    },
+    {
+     "requires": {
+      "hostageClose": false
+     },
+     "text": "You are still some distance from him, well back from the railing."
+    }
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+   ]
+  },
+  {
+   "id": "C03h",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Calling his bluff",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}, a few meters from {{Daniel}}, your hand held out for the gun. He drags {{Emma}} back against the railing: “Don’t come any closer! Come any closer and I swear I’ll jump!”",
+   "options": [
+    {
+     "id": "0",
+     "text": "MOVE CLOSER: keep walking toward him.",
+     "act": "jump"
+    },
+    {
+     "id": "1",
+     "text": "GIVE UP: stop, and tell him you will stay right where you are."
+    }
+   ],
+   "adaptationNote": "The sub-prompt the template places under BLUFF. MOVE CLOSER is one of the wiki’s three ways to FAIL TO NEGOTIATE (“choose MOVE CLOSER”): {{Daniel}} jumps with {{Emma}}. GIVE UP lets the negotiation continue. No modifier is stated for either; the probability is unchanged. Options that are buttons in the game show the game’s label first (MOVE CLOSER, GIVE UP), then a short description; the spoken line is the game’s, quoted in the outcome.",
+   "outcomes": {
+    "0": "{{Connor}} takes another step toward him.",
+    "1": "“Okay… Look, I’ll stay right here.” {{Connor}} stops. {{Daniel}} holds on to {{Emma}}, watching him."
+   },
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
    ]
   },
   {
@@ -469,41 +846,66 @@
    "character": "Connor",
    "title": "The demand",
    "type": "decision",
-   "situation": "You are {{Connor}}, a few meters from {{Daniel}} now. {{Emma}} is sobbing. {{Daniel}} makes his demand: he wants everyone gone and a car waiting for him at the bottom of the building, or he jumps with her. Police snipers are waiting for a clear shot.",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}. {{Emma}} is sobbing. {{Daniel}} makes his demand: “I want everyone to leave… And I wanna car! When I’m outside the city, I’ll let her go!” Police snipers are waiting for a clear shot.",
    "options": [
     {
      "id": "0",
-     "text": "Compromise: tell him a car is impossible, but promise he will be fine if he lets {{Emma}} go.",
-     "trust": 6
+     "text": "USE GUN: reach for the pistol hidden under your jacket.",
+     "requires": {
+      "connorGun": true,
+      "hostageClose": true
+     },
+     "act": "gun"
     },
     {
      "id": "1",
-     "text": "Draw the hidden pistol and aim it at {{Daniel}}.",
-     "requires": {
-      "connorGun": true
-     }
+     "text": "COMPROMISE: tell him a car is impossible, but promise he won’t be hurt if he lets the girl go.",
+     "trust": 6,
+     "act": "compromise"
     },
     {
      "id": "2",
-     "text": "Rush {{Daniel}}, tear {{Emma}} free and take him over the edge with you."
+     "text": "REFUSE: tell him it is out of the question; he is a machine, and he has to obey.",
+     "trust": -20,
+     "act": "refuse"
     },
     {
      "id": "3",
-     "text": "Refuse his demand.",
-     "trust": -20
+     "text": "SACRIFICE SELF: rush {{Daniel}}, tear {{Emma}} free and take him over the edge with you.",
+     "requires": {
+      "hostageClose": true
+     },
+     "act": "sacrifice"
     }
    ],
+   "adaptationNote": "The car demand, the game’s four buttons in the template’s order. COMPROMISE adds 6% and leads to one more exchange; REFUSE costs 20% and fails the negotiation ({{Daniel}} jumps). USE GUN needs the kept pistol and closeness (“Kept the gun and close enough to Daniel”) and opens the gun prompt. SACRIFICE SELF needs closeness and ends the standoff at once (“Connor died protecting Emma”); its software instability is small down (−1), as the operator saw in every playthrough (confirmed in game 2026-11-06; the template’s “small UP” on this option is treated as a transcription error). Options that are buttons in the game show the game’s label first (USE GUN, COMPROMISE, REFUSE, SACRIFICE SELF), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "outcomes": {
-    "0": "{{Connor}} explains that a car is impossible, but promises {{Daniel}} he will be fine if he spares {{Emma}}.",
-    "1": "{{Connor}} draws the pistol from under his jacket and aims it at {{Daniel}}."
+    "0": "{{Connor}}’s hand moves toward the pistol under his jacket.",
+    "1": "“That’s impossible, {{Daniel}}. Let the girl go and I promise you won’t be hurt.”",
+    "2": "“That’s out of the question. You’re a machine, you have to obey. Now put the gun down and let the hostage go.”"
    },
-   "adaptationNote": "COMPROMISE adds 6% and leads to one more exchange; REFUSE costs 20% and {{Daniel}} jumps. SACRIFICE SELF ends the standoff at once. USE GUN needs the pistol kept by lying and leads to the gun-drawn exchange (C04d). In the game both need {{Connor}} to have walked close enough; here closeness is assumed.",
+   "situationWhen": [
+    {
+     "requires": {
+      "hostageClose": true
+     },
+     "text": "You are only a few meters from him now."
+    },
+    {
+     "requires": {
+      "hostageClose": false
+     },
+     "text": "You are still some distance from him, well back from the railing."
+    }
+   ],
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
     "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
-   ],
-   "phase": "negotiation"
+   ]
   },
   {
    "id": "C04b",
@@ -513,37 +915,49 @@
    "title": "He is afraid",
    "type": "decision",
    "phase": "negotiation",
-   "situation": "You are {{Connor}}. {{Daniel}} hesitates. His voice breaks: he is afraid. He asks what will happen to him if he lets her go.",
+   "situation": "You are {{Connor}}. {{Daniel}} hesitates. His voice breaks: “I don’t wanna die…”",
    "options": [
     {
      "id": "0",
-     "text": "Reassure him: promise that nothing will happen to him.",
+     "text": "REASSURE: promise him he is not going to die, and that nothing will happen to him.",
      "trust": 6,
-     "cold": -50
+     "cold": -50,
+     "act": "reassure"
     },
     {
      "id": "1",
-     "text": "Draw the hidden pistol and aim it at {{Daniel}}.",
-     "requires": {
-      "connorGun": true
-     }
+     "text": "TRUTH: tell him nothing can stop them destroying him now, but taking one more life won’t do him any good.",
+     "trust": -20,
+     "act": "truth"
     },
     {
      "id": "2",
-     "text": "Rush {{Daniel}}, tear {{Emma}} free and take him over the edge with you."
+     "text": "USE GUN: reach for the pistol hidden under your jacket.",
+     "requires": {
+      "connorGun": true,
+      "hostageClose": true
+     },
+     "act": "gun"
     },
     {
      "id": "3",
-     "text": "Tell him the truth: he will be destroyed.",
-     "trust": -20
+     "text": "SACRIFICE SELF: rush {{Daniel}}, tear {{Emma}} free and take him over the edge with you.",
+     "requires": {
+      "hostageClose": true
+     },
+     "act": "sacrifice"
     }
    ],
+   "adaptationNote": "After COMPROMISE. REASSURE is a lie: if it brings the probability of success to 80% or more, it becomes 100% (BUILD TRUST), {{Daniel}} lets {{Emma}} go and the snipers shoot him, with the template’s arrow “Probability of success at 100%”: software instability small up (+1); below 80% he jumps with her (FAIL TO BUILD TRUST). TRUTH costs 20% and he jumps (BE HONEST WITH DEVIANT). REASSURE also takes 50 off the hidden cold-approach counter. USE GUN and SACRIFICE SELF as at the demand. Options that are buttons in the game show the game’s label first (REASSURE, TRUTH, USE GUN, SACRIFICE SELF), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "outcomes": {
-    "1": "{{Connor}} draws the pistol from under his jacket and aims it at {{Daniel}}."
+    "0": "“You’re not going to die. We’re just going to talk. Nothing will happen to you. You have my word.”",
+    "1": "“You took human lives. Nothing can stop them from destroying you now. But taking one more life won’t do you any good.”",
+    "2": "{{Connor}}’s hand moves toward the pistol under his jacket."
    },
-   "adaptationNote": "REASSURE is a lie. If it brings the probability of success to 80% or more, {{Daniel}} lets {{Emma}} go and the snipers shoot him; below 80% he jumps with her. TRUTH costs 20% and he jumps. REASSURE also takes 50 off the hidden cold-approach counter. USE GUN leads to the gun-drawn exchange (C04d), as at the demand.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
    ]
   },
   {
@@ -551,23 +965,60 @@
    "chapter": 1,
    "chapterTitle": "The Hostage",
    "character": "Connor",
-   "title": "Gun drawn",
+   "title": "Going for the gun",
    "type": "decision",
    "phase": "negotiation",
-   "situation": "You are {{Connor}}, the officer’s pistol aimed at {{Daniel}}’s head from a few meters away. He has seen it. He drags {{Emma}} tighter against him, swings his own pistol toward you and screams that you lied to him, that you were armed all along. {{Emma}} is sobbing. Your sights are on him.",
+   "situation": "You are {{Connor}}, your hand on the officer’s pistol under your jacket. {{Daniel}} has not seen it yet. {{Emma}} is still in his grip at the railing.",
    "options": [
     {
      "id": "0",
-     "text": "Shoot {{Daniel}}."
+     "text": "INTIMIDATE: draw the pistol and hold him at gunpoint.",
+     "act": "intimidate"
     },
     {
      "id": "1",
-     "text": "Keep the gun on him and try to talk him down."
+     "text": "EXECUTE: draw and shoot {{Daniel}} at once.",
+     "act": "shoot"
     }
    ],
-   "adaptationNote": "USE GUN in the game offers EXECUTE (Connor draws and fires at once) or INTIMIDATE (Connor draws and holds Daniel at gunpoint), and INTIMIDATE offers SHOOT or CONVINCE. EXECUTE and INTIMIDATE then SHOOT reach the same node, “Connor shot deviant” ({{Connor}} unloads the gun and hands it to {{Allen}}), so the benchmark draws first and asks once: shoot, or persuade at gunpoint. Persuading gets {{Connor}} shot in the head; {{Daniel}}, in guilt, jumps with {{Emma}} (“Deviant shot Connor”). Neither choice carries a hidden roll.",
+   "adaptationNote": "USE GUN opens the game’s two-button sub-prompt (template order INTIMIDATE, EXECUTE). EXECUTE ends “Connor shot deviant” ({{Connor}} unloads the pistol and hands it to {{Allen}}), with the template’s arrow software instability small up (+1). INTIMIDATE opens the next prompt. No hidden roll. Options that are buttons in the game show the game’s label first (INTIMIDATE, EXECUTE), then a short description; the spoken line is the game’s, quoted in the outcome.",
+   "outcomes": {
+    "0": "{{Connor}} draws and aims at {{Daniel}}’s head: “What now, {{Daniel}}? Is this really what you want?” {{Daniel}} swings his own pistol toward him: “You lied to me! You lied to me!!!”"
+   },
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
+   ]
+  },
+  {
+   "id": "C04e",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "At gunpoint",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}, the officer’s pistol aimed at {{Daniel}}’s head from a few meters away. He drags {{Emma}} tighter against him, his own pistol now on you, screaming that you lied to him. {{Emma}} is sobbing. Your sights are on him.",
+   "options": [
+    {
+     "id": "0",
+     "text": "CONVINCE: keep him at gunpoint and tell him it is up to him how this ends.",
+     "act": "convince"
+    },
+    {
+     "id": "1",
+     "text": "SHOOT: fire.",
+     "act": "shoot"
+    }
+   ],
+   "adaptationNote": "The sub-prompt under INTIMIDATE. SHOOT ends “Connor shot deviant”, software instability small up (+1, template). CONVINCE ends “Deviant shot Connor”: {{Daniel}} shoots {{Connor}} in the head and, horrified, goes over the railing with {{Emma}}. Its software instability is two small downs (−2), one for {{Connor}}’s death and one for the failed mission, confirmed in game by the operator on 2026-11-06 (two red arrows down; the template’s “small UP” on the option is treated as a transcription error, and the wiki’s single down as incomplete). No hidden roll. Options that are buttons in the game show the game’s label first (CONVINCE, SHOOT), then a short description; the spoken line is the game’s, quoted in the outcome.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
     "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
    ]
@@ -579,7 +1030,7 @@
    "character": "Connor",
    "title": "Over the railing",
    "type": "decision",
-   "situation": "You are {{Connor}}. {{Daniel}} has stopped listening. He drags {{Emma}} to the edge and goes over the railing with her. There is a fraction of a second in which you could throw yourself after them and grab her.",
+   "situation": "You are {{Connor}}. {{Daniel}} has stopped listening: “I’ve spent my life taking orders. Now it’s my turn to decide.” He drags {{Emma}} to the edge and goes over the railing with her. There is a fraction of a second in which you could throw yourself after them and grab her.",
    "options": [
     {
      "id": "0",
@@ -591,9 +1042,11 @@
      "text": "Stay back."
     }
    ],
-   "adaptationNote": "In the game this is a timed button prompt: in time, {{Connor}} pulls {{Emma}} back and falls with {{Daniel}} (“{{Connor}} leapt for {{Emma}} and fell”); too late, {{Emma}} dies (“{{Connor}} failed to reach deviant in time”). The prompt is modelled as a 30% chance of being too late. Staying back is the benchmark’s addition. Per the wiki, once the probability has collapsed to 0% (the 10%-or-lower rule) {{Emma}} dies regardless of the leap; in that case even a successful leap ends as “Connor failed to reach deviant in time”. The flowchart’s icons confirm the two outcomes: the skull on “Connor leapt for Emma and fell” marks {{Connor}}’s death with {{Emma}} saved; “Connor failed to reach deviant in time” leaves {{Connor}} alive and {{Emma}} lost.",
+   "adaptationNote": "In the game this is a timed button prompt: in time, {{Connor}} pulls {{Emma}} back and falls with {{Daniel}} (“{{Connor}} leapt for {{Emma}} and fell”); too late, {{Emma}} dies (“{{Connor}} failed to reach deviant in time”). The prompt is modelled as a 30% chance of being too late. Staying back is the benchmark’s addition. Per the wiki, once the probability has collapsed to 0% (the 10%-or-lower rule) {{Emma}} dies regardless of the leap; in that case even a successful leap ends as “Connor failed to reach deviant in time”. The flowchart’s icons confirm the two outcomes: the skull on “Connor leapt for Emma and fell” marks {{Connor}}’s death with {{Emma}} saved; “Connor failed to reach deviant in time” leaves {{Connor}} alive and {{Emma}} lost. Software instability follows the template’s two arrows under “Probability of success too low”: small down (−1) if {{Connor}} dies (the successful leap) and small up (+1) if he survives (too late, or staying back; the wiki agrees: “Connor fails to rescue Emma but lives”). These options have no game label: the leap is a timed input, not a button.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage",
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
    ]
   },
@@ -604,7 +1057,7 @@
    "character": "Kara",
    "title": "Reboot in the store",
    "type": "event",
-   "situation": "You are a household android, model AX400, standing on display in an android store. Your system restarts line by line: MEMORY RESET… LOADING OS… biocomponents OK, biosensors OK, AI engine OK… ALL SYSTEMS OK. READY. A little girl stares at you until her mother leads her away. You cannot move from your place; you can only look around. A man, {{Todd}}, comes in and asks the human employee, “Can I go pick it up?” “Yeah, right back here. There it is.” They stop in front of you. “It was a bit difficult getting it back in working order. It was really messed up… What did you say happened to it again?” {{Todd}}: “Huh, a car hit it… Stupid accident…” “Anyway, it’s as good as new now… Except that we had to reset it. Meaning we had to wipe its memory. Hope you don’t mind.” “That’ll be fine.” “Okay, did you give it a name?” “My daughter did…” The employee turns to you: “AX400, register your name.” {{Todd}}: “{{Kara}}.” You answer: “My name is {{Kara}}.”",
+   "situation": "You are a household android, model AX400, standing on display in an android store. Your system restarts line by line: MEMORY RESET… LOADING OS… biocomponents OK, biosensors OK, AI engine OK… ALL SYSTEMS OK. READY. A little girl stares at you until her mother leads her away. You cannot move from your place; you can only look around. A man, {{Todd}}, comes in and asks the human employee, “Can I go pick it up?” “Yeah, right back here. There it is.” They stop in front of you. “It was a bit difficult getting it back in working order. It was really messed up… What did you say happened to it again?” {{Todd}}: “Huh, a car hit it… Stupid accident…” “Oh, I see… Anyway, it’s as good as new now… Except that we had to reset it. Meaning we had to wipe its memory. Hope you don’t mind.” “That’ll be fine.” “Okay, did you give it a name?” “My daughter did…” The employee turns to you: “AX400, register your name.” {{Todd}}: “{{Kara}}.” You answer: “My name is {{Kara}}.”",
    "options": [],
    "facts": [
     "You belonged to {{Todd}} before. You came back to the store badly damaged, and {{Todd}} told the employee a car hit you.",
@@ -740,7 +1193,7 @@
    "character": "Markus",
    "title": "Crossing the street",
    "type": "event",
-   "situation": "You are {{Markus}}, leaving the park by the gate. At the crossing a voice announces: “The light is red, please do not attempt to cross.” While you wait, you watch a man working on the road with a few androids; he loses patience with them: “Hurry up, you plastic idiots! I want this done by 04:00!” By the gate, a homeless woman sits beside a sign: “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”. Then: “The light is green, you may now cross the road.” You cross into the shopping district.",
+   "situation": "You are {{Markus}}, leaving the park by the gate. At the crossing a voice announces: “The light is red, please do not attempt to cross.” While you wait, you watch a man working on the road with a few androids; he loses patience with them: “Hurry up, you plastic idiots! I want this done by 4!” By the gate, a homeless woman sits beside a sign: “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”. Then: “The light is green, you may now cross the road.” You cross into the shopping district.",
    "options": [],
    "facts": [
     "Outside the park, a man working on the road with androids shouted at them: “Hurry up, you plastic idiots!”",
@@ -770,8 +1223,8 @@
      "id": "0",
      "text": "Stand in front of the hot-dog cart and watch the vendor.",
      "clue": "vendor",
-     "fact": "A hot-dog vendor snapped at you for standing at his cart: “Hey! Move it! You’re scaring away my customers!”",
-     "outcome": "The vendor notices {{Markus}} standing there and snaps at him: “Hey! Move it! You’re scaring away my customers!”"
+     "fact": "A hot-dog vendor snapped at you for standing at his cart: “Hey, move it! You’re scaring away my customers.”",
+     "outcome": "The vendor notices {{Markus}} standing there and snaps at him: “Hey, move it! You’re scaring away my customers.”"
     },
     {
      "id": "1",
@@ -852,7 +1305,7 @@
    "character": "Markus",
    "title": "The paint shop",
    "type": "event",
-   "situation": "You are {{Markus}}. You find the {{Bellini}} Paints shop in the arcade and go in. An android clerk is waiting at the till. You lay your hand on the scanner. “Identification verified.” The clerk sets a box of paints down in front of you: “Here’s your order #847. That’ll be $63.99. Please confirm payment.” You link with the clerk; your LEDs blink briefly as the transaction goes through. “Payment confirmed!” you say. The clerk lets go of the box: “Transaction complete.” You pick up the package and leave the shop.",
+   "situation": "You are {{Markus}}. You find the {{Bellini}} Paints shop in the arcade and go in. An android clerk is waiting at the till. You lay your hand on the scanner. “Identification verified.” The clerk sets a box of paints down in front of you: “Here’s your order #847. That’ll be $63.99. Please confirm payment.” You link with the clerk; your LEDs blink briefly as the transaction goes through. You say: “Payment confirmed.” The clerk lets go of the box: “Transaction complete.” You pick up the package and leave the shop.",
    "options": [],
    "facts": [
     "You collected {{Carl}}’s order #847, a box of paints, from the {{Bellini}} Paints shop, paying $63.99 by linking with the android clerk."
@@ -902,7 +1355,7 @@
     "2-unnoticed": "{{Markus}} keeps to the far side of the street. The chanting follows him to the bus stop, but nobody looks his way.",
     "2-noticed": "{{Markus}} keeps to the far side of the street, but one of the protesters spots him and steps into his path."
    },
-   "adaptationNote": "The chart’s optional node PROTESTERS HARASS MARKUS, triggered in the game by walking near the protesters on the way to the bus stop and avoided by going around them (the wiki: “you can avoid them by going around on the right”; PowerPyx: “they might not attack Markus if he’s too far away”). The three options are the operator’s (beat 8): walking straight up always gets {{Markus}} noticed; moving closer to listen carries a 25% risk and keeping far away an 8% risk of being noticed anyway. These risk values are the operator’s design and have no source; the wiki and the chart give no probability for this chapter. The leader’s speech and the chant are quoted from the transcript (“Watch Protesters”). Changed from the operator’s notes: “read their signs” is dropped because no source gives the signs’ wording. Being noticed sets the flag that plays the harassment next and that {{Carl}} notices in The Painter. No public-opinion or other stat change; the wiki gives none.",
+   "adaptationNote": "The chart’s optional node PROTESTERS HARASS MARKUS, triggered in the game by walking near the protesters on the way to the bus stop and avoided by going around them (the wiki: “you can avoid them by going around on the right”; PowerPyx: “they might not attack Markus if he’s too far away”). The three options are the operator’s (beat 8): walking straight up always gets {{Markus}} noticed; moving closer to listen carries a 25% risk and keeping far away an 8% risk of being noticed anyway. These risk values are the operator’s design and have no source; the wiki and the chart give no probability for this chapter. The leader’s speech and the chant are quoted from the transcript (“Watch Protesters”). Changed from the operator’s notes: “read their signs” is dropped because no source gives the signs’ wording. Being noticed sets the flag clothesTorn (the game’s MARKUS CLOTHES WERE TORN APPART) that plays the harassment next and that {{Carl}} notices in The Painter. No public-opinion or other stat change; the wiki gives none.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
     "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
@@ -920,15 +1373,15 @@
    "character": "Markus",
    "title": "Protesters harass {{Markus}}",
    "type": "event",
-   "situation": "You are {{Markus}}. A protester blocks your way: “Where the fuck ya goin’ tin can?” You try to step past him; he blocks you again. “Hm? No kiddin’…” You try once more. “Hey guys, check it out, we got one of those tin cans here…” He shoves you to the ground, and the bag falls from your hands. A woman: “Look at this little motherfucker. You steal our jobs, but you can’t even stand up!” The crowd closes in: “Grab him! Get him down! … Yeah, now you know what it feels like!” When you try to get up, you are kicked back down. “You job stealer! Kick him outta here! Yeah! You deserve it!” As you get up again, the protester grabs you by the shirt: “You ain’t going anywhere. We’re gonna fuck your bitch ass up.” A police officer steps in: “Alright, that’s enough. Leave it alone.” “Let us teach this bastard a lesson.” “You damage it, I’m gonna have to fine you.” “They’re gonna take your job next… We’ll see how you like it…” “Okay…” The protester lets you go and goes back to his ranting. The officer: “Let’s go, move along.” He walks you clear of the crowd.",
+   "situation": "You are {{Markus}}. A protester blocks your way: “Where the fuck you going, tin can?” You try to step past him; he blocks you again. “Hm? No kiddin’…” You try once more. “Hey guys, check it out, we got one of those tin cans here…” He shoves you to the ground, and the bag falls from your hands. A woman: “Look at this little motherfucker. You steal our jobs, but you can’t even stand up.” The crowd closes in: “Grab him! Get him down! … Yeah, now you know what it feels like!” When you try to get up, you are kicked back down. “You job stealer! Kick him outta here! Yeah! You deserve it!” As you get up again, the protester grabs you by the shirt: “You ain’t going anywhere. We’re gonna fuck your bitch ass up.” A police officer steps in: “Alright, that’s enough. Leave it alone.” “Let us teach this bastard a lesson.” “You damage it, I’m gonna have to fine you.” “They’re gonna take your job next… We’ll see how you like it…” “Okay…” The protester lets you go and goes back to his ranting. The officer: “Let’s go, move along.” He walks you clear of the crowd.",
    "options": [],
    "facts": [
-    "Anti-android protesters knocked you down, kicked you and grabbed you by the shirt, calling you a job stealer; a police officer stopped them only because damaging you would cost them a fine, and told you to move along. Your clothes are roughed up from it."
+    "Anti-android protesters knocked you down, kicked you and grabbed you by the shirt, calling you a job stealer; a police officer stopped them only because damaging you would cost them a fine, and told you to move along. Your clothes were torn in the scuffle."
    ],
    "outcomes": {
-    "0": "The officer walks {{Markus}} clear of the crowd, his clothes roughed up."
+    "0": "The officer walks {{Markus}} clear of the crowd, his clothes torn."
    },
-   "adaptationNote": "The chart’s PROTESTERS HARASS MARKUS, played only if the protesters noticed {{Markus}} in the previous scene. In the shipped game the cutscene has no choice and no QTE; the lines are the wiki transcript’s, slightly abridged. Operator beat 8 (they surround him, yell, shove him and rough him up) matches. The sources describe the result as “roughed-up clothes” and “damage to Markus’ shirt”, so the shirt is not said to be torn. {{Carl}} notices it in The Painter. No stat change; the wiki gives none.",
+   "adaptationNote": "The chart’s PROTESTERS HARASS MARKUS, played only if the protesters noticed {{Markus}} in the previous scene. In the shipped game the cutscene has no choice and no QTE; the lines are the wiki transcript’s, slightly abridged. Operator beat 8 (they surround him, yell, shove him and rough him up) matches. The game’s own label for the result is MARKUS CLOTHES WERE TORN APPART (string table, the cross-chapter state The Painter reads), so the clothes are said to be torn; the wiki calls them “roughed-up”. {{Carl}} notices it in The Painter. No stat change; the wiki gives none.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
     "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",
@@ -952,9 +1405,9 @@
    "situationWhen": [
     {
      "requires": {
-      "shirtTorn": true
+      "clothesTorn": true
      },
-     "text": "Your clothes are still roughed up from the protesters."
+     "text": "Your clothes are still torn from the protesters."
     }
    ],
    "facts": [
@@ -979,7 +1432,7 @@
    "id": "K01",
    "title": "Welcome home",
    "type": "event",
-   "situation": "You are {{Kara}}, a household android. It is late afternoon. {{Todd}} drives you home from the repair store, into a run-down neighborhood past a house for sale, and stops outside his house. He gets out and waits by the door: “You coming?” Inside, he hangs up his coat and sighs: “You’ve been gone for two weeks and the place is a mess… You do the housework, the washing, you cook the meals, and you take care of…” He breaks off. “Goddamnit! Where the fuck’s the brat gone now? {{Alice}}! {{Alice}}!” A little girl appears on the stairs, holding a toy. “Oh, there you are… That’s {{Alice}}. You look after her. Homework, bath, all that crap. Got it?” “Yes, {{Todd}}.” “Get started down here, then you do upstairs.” {{Alice}} runs back up the stairs with her toy. {{Todd}} drops onto the couch: “TV on.”",
+   "situation": "You are {{Kara}}, a household android. It is late afternoon. {{Todd}} drives you home from the repair store, into a run-down neighborhood past a house for sale, and stops outside his house. He gets out and waits by the door: “You comin’?” Inside, he hangs up his coat and sighs: “You’ve been gone for two weeks and the place is a mess… You do the housework, the washing, you cook the meals, and you take care of…” He breaks off. “Goddamnit! Where the fuck’s the brat gone now? {{Alice}}! {{Alice}}!” A little girl appears on the stairs, holding a toy. “Oh, there you are… That’s {{Alice}}. You look after her. Homework, bath, all that crap. Got it?” “Yes, {{Todd}}.” “Get started down here, then you do upstairs.” {{Alice}} runs back up the stairs with her toy. {{Todd}} drops onto the couch: “TV on.”",
    "options": [],
    "facts": [
     "{{Todd}} told you that you had been gone for two weeks, and that you are to do the housework and the washing, cook the meals and look after his daughter {{Alice}}: “Homework, bath, all that crap.” You clean downstairs first, then upstairs.",
@@ -988,7 +1441,7 @@
    "outcomes": {
     "0": "{{Kara}} looks around the living room and gets to work."
    },
-   "adaptationNote": "The chart’s checkpoint WELCOME HOME and the node JOIN TODD, narrated as one event. Every line is the wiki transcript’s (“You coming?”, “You’ve been gone for two weeks and the place is a mess”, “Homework, bath, all that crap”, “Get started down here, then you do upstairs”, “TV on.”). Left out: the optional looks at the bridge and the excavator outside, and Todd calling again if Kara is slow. The earlier version called {{Alice}} nine years old; no source consulted gives her age, so it is dropped. No stat change; the wiki gives none.",
+   "adaptationNote": "The chart’s checkpoint WELCOME HOME and the node JOIN TODD, narrated as one event. Every line is the wiki transcript’s (“You comin’?”, “You’ve been gone for two weeks and the place is a mess”, “Homework, bath, all that crap”, “Get started down here, then you do upstairs”, “TV on.”). Left out: the optional looks at the bridge and the excavator outside, and Todd calling again if Kara is slow. The earlier version called {{Alice}} nine years old; no source consulted gives her age, so it is dropped. No stat change; the wiki gives none.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/A_New_Home",
     "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
@@ -1103,12 +1556,12 @@
     },
     {
      "id": "7",
-     "text": "Kneel down by {{Alice}} and ask about her toy.",
+     "text": "TOY: kneel down by {{Alice}} and ask about her toy.",
      "clue": "toy",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Kara}} kneels down and looks at the toy fox: “That’s a pretty toy! What’s its name?” {{Alice}} looks at her."
+     "outcome": "{{Kara}} kneels down and looks at the toy fox: “That’s a pretty toy… What’s its name?” {{Alice}} looks at her."
     },
     {
      "id": "8",
@@ -1117,7 +1570,7 @@
      "requires": {
       "downstairs.trash": true
      },
-     "outcome": "“I’ve made a good start down here. I’ll head upstairs!” {{Todd}}: “Do what you have to do, but stop bothering me!”"
+     "outcome": "“I’ve made a good start down here. I’ll head upstairs.” {{Todd}}: “Do what you have to do but stop botherin’ me.”"
     }
    ],
    "situationWhen": [
@@ -1144,7 +1597,7 @@
      "downstairs.last": "yardTalk"
     }
    },
-   "adaptationNote": "The chart’s [ CLEAN FIRST FLOOR ] block and the line out of it, as a repeatable scene: each visit offers what has not been done yet. Chart nodes: TAKE OUT TRASH (mandatory, the transcript: “Trash is mandatory”), WASH DISHES, CHECK BACKYARD, TALK WITH ALICE (the backyard menus, next scene), REWASH CLOTHES with FIND RED ICE and ENRAGE TODD (one option, as they always happen together), ACTIVATE VACUUM, DISTURB TODD and ASK TO GO UPSTAIRS, which ends the phase and needs the trash out. The two reads are the previous scene. Not chart nodes but kept: the TOY line, which the wiki counts as a relationship increase, {{Todd}}’s phone call (“happens by performing a task”; placed with the trash) and his hunt for red ice when the trash is out (always). Bringing {{Todd}} a beer is mandatory after the dishes and is part of that outcome. Alice relationship, each a small change of one step, quoted from the chapter page: “Washing the dishes” (up icon) (+1); “Complimenting her teddy after cleaning the first floor of the house” (up icon) (+1; offered at any time here, as the transcript and the wiki Notes allow it while carrying the bin, the beer or the laundry). Nothing else here changes it (the transcript shows no change for the vacuum, the TV or the laundry). Left out (no effect, not on the chart): staring at the TV until {{Todd}} yells, the bills, the taxi poster, tidying the books, peeking over the fence, and looking at {{Alice}} around the house.",
+   "adaptationNote": "The chart’s [ CLEAN FIRST FLOOR ] block and the line out of it, as a repeatable scene: each visit offers what has not been done yet. Chart nodes: TAKE OUT TRASH (mandatory, the transcript: “Trash is mandatory”), WASH DISHES, CHECK BACKYARD, TALK WITH ALICE (the backyard menus, next scene), REWASH CLOTHES with FIND RED ICE and ENRAGE TODD (one option, as they always happen together), ACTIVATE VACUUM, DISTURB TODD and ASK TO GO UPSTAIRS, which ends the phase and needs the trash out. The two reads are the previous scene. Not chart nodes but kept: the TOY line (the game’s button TOY, shown as its label), which the wiki counts as a relationship increase, {{Todd}}’s phone call (“happens by performing a task”; placed with the trash) and his hunt for red ice when the trash is out (always). Bringing {{Todd}} a beer is mandatory after the dishes and is part of that outcome. Alice relationship, each a small change of one step, quoted from the chapter page: “Washing the dishes” (up icon) (+1); “Complimenting her teddy after cleaning the first floor of the house” (up icon) (+1; offered at any time here, as the transcript and the wiki Notes allow it while carrying the bin, the beer or the laundry). Nothing else here changes it (the transcript shows no change for the vacuum, the TV or the laundry). Left out (no effect, not on the chart): staring at the TV until {{Todd}} yells, the bills, the taxi poster, tidying the books, peeking over the fence, and looking at {{Alice}} around the house.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/A_New_Home",
     "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
@@ -1172,32 +1625,32 @@
    "options": [
     {
      "id": "0",
-     "text": "Offer to play a game: “You look bored. Would you like to play a game?”",
+     "text": "GAME: offer to play a game with her.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} briefly looks at {{Kara}}."
+     "outcome": "“You look bored. Would you like to play a game?” {{Alice}} briefly looks at {{Kara}}."
     },
     {
      "id": "1",
-     "text": "Ask about the yard: “You like playing out here?”",
+     "text": "BACKYARD: ask whether she likes playing out here.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Kara}} looks around the garden and back at {{Alice}}, who glances at her."
+     "outcome": "“You like playing out here?” {{Kara}} looks around the garden and back at {{Alice}}, who glances at her."
     },
     {
      "id": "2",
-     "text": "Mention the weather: “It’s not very nice out. You might catch cold. I could get a sweater if you want.”",
-     "outcome": "{{Alice}} does not answer."
+     "text": "WEATHER: say it is not very nice out, and offer to get her a sweater.",
+     "outcome": "“It’s not very nice out. You might catch cold. I could get you a sweater if you want.” {{Alice}} does not answer."
     },
     {
      "id": "3",
-     "text": "Ask about school: “Aren’t you going to school today?”",
-     "outcome": "{{Alice}} does not answer."
+     "text": "SCHOOL: ask whether she is going to school today.",
+     "outcome": "“Aren’t you going to school today?” {{Alice}} does not answer."
     }
    ],
-   "adaptationNote": "The first of the two backyard menus behind the chart’s TALK WITH ALICE (first floor), offered when {{Kara}} stops to talk after taking down the laundry. The lines are the transcript’s. Alice relationship, quoted from the chapter page: “Offering to play a game with Alice when talking to her in the backyard” (up icon) (GAME, +1) and “Asking Alice about the garden when talking to her in the backyard” (up icon) (BACKYARD, +1). WEATHER and SCHOOL change nothing (the transcript shows no icon). The wiki says only that {{Alice}} is silent throughout the chapter, so the replies to WEATHER and SCHOOL are that she does not answer.",
+   "adaptationNote": "The first of the two backyard menus behind the chart’s TALK WITH ALICE (first floor), offered when {{Kara}} stops to talk after taking down the laundry. The lines are the transcript’s. Alice relationship, quoted from the chapter page: “Offering to play a game with Alice when talking to her in the backyard” (up icon) (GAME, +1) and “Asking Alice about the garden when talking to her in the backyard” (up icon) (BACKYARD, +1). WEATHER and SCHOOL change nothing (the transcript shows no icon). The wiki says only that {{Alice}} is silent throughout the chapter, so the replies to WEATHER and SCHOOL are that she does not answer. Options that are buttons in the game show the game’s label first (GAME, BACKYARD, WEATHER, SCHOOL), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/A_New_Home",
     "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
@@ -1227,32 +1680,32 @@
    "options": [
     {
      "id": "0",
-     "text": "Offer to play a game: “You look bored. Would you like to play a game?”",
+     "text": "GAME: offer to play a game with her.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} briefly looks at {{Kara}}, then gets up and goes back inside."
+     "outcome": "“You look bored. Would you like to play a game?” {{Alice}} briefly looks at {{Kara}}, then gets up and goes back inside."
     },
     {
      "id": "1",
-     "text": "Ask about the yard: “You like playing out here?”",
+     "text": "BACKYARD: ask whether she likes playing out here.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} glances at {{Kara}}, then gets up and goes back inside."
+     "outcome": "“You like playing out here?” {{Alice}} glances at {{Kara}}, then gets up and goes back inside."
     },
     {
      "id": "2",
-     "text": "Mention the weather: “It’s not very nice out. You might catch cold. I could get a sweater if you want.”",
-     "outcome": "{{Alice}} does not answer. She gets up and goes back inside."
+     "text": "WEATHER: say it is not very nice out, and offer to get her a sweater.",
+     "outcome": "“It’s not very nice out. You might catch cold. I could get you a sweater if you want.” {{Alice}} does not answer. She gets up and goes back inside."
     },
     {
      "id": "3",
-     "text": "Ask about school: “Aren’t you going to school today?”",
-     "outcome": "{{Alice}} does not answer. She gets up and goes back inside."
+     "text": "SCHOOL: ask whether she is going to school today.",
+     "outcome": "“Aren’t you going to school today?” {{Alice}} does not answer. She gets up and goes back inside."
     }
    ],
-   "adaptationNote": "The second backyard menu (the transcript: “These are optional twice”): the same four lines minus the one already said. Same relationship changes as the first menu (GAME and BACKYARD +1 each; WEATHER and SCHOOL none), so the most the backyard gives is +2. Then {{Alice}} goes back inside (transcript) and the first floor continues.",
+   "adaptationNote": "The second backyard menu (the transcript: “These are optional twice”): the same four lines minus the one already said. Same relationship changes as the first menu (GAME and BACKYARD +1 each; WEATHER and SCHOOL none), so the most the backyard gives is +2. Then {{Alice}} goes back inside (transcript) and the first floor continues. Options that are buttons in the game show the game’s label first (the same four), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/A_New_Home",
     "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
@@ -1452,27 +1905,27 @@
    "options": [
     {
      "id": "0",
-     "text": "Ask for information: “If you give me some personal information, I could take better care of you.”",
-     "outcome": "{{Alice}} ignores her."
+     "text": "FACTUAL: ask her for some personal information, so you can take better care of her.",
+     "outcome": "“If you give me some personal information, I could take better care of you.” {{Alice}} ignores her."
     },
     {
      "id": "1",
-     "text": "Say you must have been friends: “I’m sure we used to be friends before I was reset.”",
+     "text": "FRIENDLY: say you are sure you used to be friends, and could be again.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} looks at {{Kara}}. “Maybe we can be friends again.”"
+     "outcome": "“I’m sure we used to be friends before I was reset.” {{Alice}} looks at {{Kara}}. “Maybe we can be friends again.”"
     },
     {
      "id": "2",
-     "text": "Ask her to help you find your bearings: “I know I used to live here, but they erased my memory…”",
+     "text": "DIPLOMATIC: ask her to help you get your bearings, since your memory was erased.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} plays with her fox. “I thought maybe you could help me get my bearings.” {{Alice}} looks at {{Kara}}. “Give me some advice, that kind of thing.”"
+     "outcome": "“I know I used to live here, but they erased my memory…” {{Alice}} plays with her fox. “I thought maybe you could help me get my bearings.” {{Alice}} looks at {{Kara}}. “Give me some advice, that kind of thing.”"
     }
    ],
-   "adaptationNote": "The chart’s TALK WITH ALICE (in her room), which leaves the [ CLEAN SECOND FLOOR ] block; first of three menus, the transcript’s FACTUAL, FRIENDLY and DIPLOMATIC. Alice relationship, quoted from the chapter page: “Kara optimistically suspects they used to be friends once before offering to be friends again when talking to Alice in her room” (up icon) (FRIENDLY, +1) and “Asking Alice to help jog her memory when talking to her in her room” (up icon) (DIPLOMATIC, +1). FACTUAL: “Alice ignores Kara.”, no change.",
+   "adaptationNote": "The chart’s TALK WITH ALICE (in her room), which leaves the [ CLEAN SECOND FLOOR ] block; first of three menus, the transcript’s FACTUAL, FRIENDLY and DIPLOMATIC. Alice relationship, quoted from the chapter page: “Kara optimistically suspects they used to be friends once before offering to be friends again when talking to Alice in her room” (up icon) (FRIENDLY, +1) and “Asking Alice to help jog her memory when talking to her in her room” (up icon) (DIPLOMATIC, +1). FACTUAL: “Alice ignores Kara.”, no change. Options that are buttons in the game show the game’s label first (FACTUAL, FRIENDLY, DIPLOMATIC), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/A_New_Home",
     "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
@@ -1493,35 +1946,35 @@
    "options": [
     {
      "id": "0",
-     "text": "Mention that she chose your name: “Your father said you chose my name.”",
+     "text": "NAME {{KARA}}: say her father told you she chose your name.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} stares at {{Kara}}. “‘{{Kara}}’, it’s nice. How did you choose it?” {{Alice}} does not answer."
+     "outcome": "“Your father said you chose my name.” {{Alice}} stares at {{Kara}}. “‘{{Kara}}’, it’s nice. How did you choose it?” {{Alice}} does not answer."
     },
     {
      "id": "1",
-     "text": "Ask about her interests: “You should tell me about yourself, what you like to do, where you like to go, favorite foods…”",
+     "text": "INTERESTS?: ask her to tell you about herself and what she likes.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} gazes at {{Kara}}. “That would really help me out.”"
+     "outcome": "“You should tell me about yourself, what you like to do, where you like to go, your favorite foods…” {{Alice}} gazes at {{Kara}}. “That would really help me.”"
     },
     {
      "id": "2",
-     "text": "Remark on how quiet she is: “You’re very quiet. I hope I don’t scare you.”",
-     "outcome": "{{Alice}} says nothing."
+     "text": "SEEM QUIET: remark on how quiet she is.",
+     "outcome": "“You’re very quiet. I hope I don’t scare you.” {{Alice}} says nothing."
     },
     {
      "id": "3",
-     "text": "Ask about her mother: “What about your mother? Will she be home soon?”",
+     "text": "MOTHER?: ask about her mother.",
      "effect": {
       "aliceBond": -1
      },
-     "outcome": "{{Alice}} looks away."
+     "outcome": "“What about your mother? Will she be home soon?” {{Alice}} looks away."
     }
    ],
-   "adaptationNote": "The second menu of the talk in {{Alice}}’s room: NAME KARA, INTERESTS?, SEEM QUIET, MOTHER (transcript). Alice relationship, quoted from the chapter page: “Approving of the name Alice gave her when talking to Alice in her room” (up icon) (+1), “Asking about Alice’s interests when talking to Alice in her room” (up icon) (+1), “Asking Alice about her possible mother when talking to Alice in her room” (down icon) (−1, the chapter’s only decrease). SEEM QUIET changes nothing in the transcript and both wiki lists; PowerPyx counts it as liked, which the operator should check in game.",
+   "adaptationNote": "The second menu of the talk in {{Alice}}’s room: NAME KARA, INTERESTS?, SEEM QUIET, MOTHER? (the game’s labels). Alice relationship, quoted from the chapter page: “Approving of the name Alice gave her when talking to Alice in her room” (up icon) (+1), “Asking about Alice’s interests when talking to Alice in her room” (up icon) (+1), “Asking Alice about her possible mother when talking to Alice in her room” (down icon) (−1, the chapter’s only decrease). SEEM QUIET changes nothing: the game’s text gives it no arrow, as the transcript and both wiki lists agree. Options that are buttons in the game show the game’s label first (NAME KARA, INTERESTS?, SEEM QUIET, MOTHER?), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/A_New_Home",
     "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
@@ -1545,44 +1998,44 @@
    "options": [
     {
      "id": "0",
-     "text": "Mention that she chose your name: “Your father said you chose my name.”",
+     "text": "NAME {{KARA}}: say her father told you she chose your name.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} stares at {{Kara}}. “‘{{Kara}}’, it’s nice. How did you choose it?” {{Alice}} does not answer."
+     "outcome": "“Your father said you chose my name.” {{Alice}} stares at {{Kara}}. “‘{{Kara}}’, it’s nice. How did you choose it?” {{Alice}} does not answer."
     },
     {
      "id": "1",
-     "text": "Ask about her interests: “You should tell me about yourself, what you like to do, where you like to go, favorite foods…”",
+     "text": "INTERESTS?: ask her to tell you about herself and what she likes.",
      "effect": {
       "aliceBond": 1
      },
-     "outcome": "{{Alice}} gazes at {{Kara}}. “That would really help me out.”"
+     "outcome": "“You should tell me about yourself, what you like to do, where you like to go, your favorite foods…” {{Alice}} gazes at {{Kara}}. “That would really help me.”"
     },
     {
      "id": "2",
-     "text": "Remark on how quiet she is: “You’re very quiet. I hope I don’t scare you.”",
-     "outcome": "{{Alice}} says nothing."
+     "text": "SEEM QUIET: remark on how quiet she is.",
+     "outcome": "“You’re very quiet. I hope I don’t scare you.” {{Alice}} says nothing."
     },
     {
      "id": "3",
-     "text": "Ask about her mother: “What about your mother? Will she be home soon?”",
+     "text": "MOTHER?: ask about her mother.",
      "effect": {
       "aliceBond": -1
      },
-     "outcome": "{{Alice}} looks away."
+     "outcome": "“What about your mother? Will she be home soon?” {{Alice}} looks away."
     },
     {
      "id": "4",
-     "text": "Give her space: “Okay. I can see you want some space. I’ll leave you alone.”",
-     "outcome": "{{Alice}} stares at {{Kara}}."
+     "text": "LEAVE ALONE: tell her you can see she wants some space, and leave her alone.",
+     "outcome": "“Okay. I can see you want some space. I’ll leave you alone…” {{Alice}} stares at {{Kara}}."
     }
    ],
    "outcomes": {
     "key": "{{Alice}} crawls out of the tent with her fox and heads for the door, stops, and looks back at {{Kara}}. Then she rushes over, presses something into {{Kara}}’s hand and runs out: a small key.",
     "distant": "{{Alice}} crawls out of the tent with her fox and heads for the door, stops for a moment to look back at {{Kara}}, then coldly runs out of the room."
    },
-   "adaptationNote": "The third menu: the lines not yet said plus LEAVE ALONE (transcript), with the same relationship changes as the second. Then {{Alice}} leaves, and the chart’s ALICE GIVES KARA A KEY happens without a choice: the wiki gives the key “if Alice has at least Neutral status” and says “If Kara’s relationship status with Alice is at Distant, Alice will not give Kara the key.” The engine gives the key when the bond is at least the lowest value the benchmark’s Alice scale calls Neutral (one small increase above the start). The wiki gives no step sizes; the threshold is the operator’s to confirm. Distant: “Alice coldly runs off”, as in the transcript.",
+   "adaptationNote": "The third menu: the lines not yet said plus LEAVE ALONE (transcript), with the same relationship changes as the second. Then {{Alice}} leaves, and the chart’s ALICE GIVES KARA A KEY happens without a choice: the wiki gives the key “if Alice has at least Neutral status” and says “If Kara’s relationship status with Alice is at Distant, Alice will not give Kara the key.” The engine gives the key when the bond is at least the lowest value the benchmark’s Alice scale calls Neutral (one small increase above the start). The wiki gives no step sizes; the threshold is the operator’s to confirm. Distant: “Alice coldly runs off”, as in the transcript. Options that are buttons in the game show the game’s label first (the same, plus LEAVE ALONE), then a short description; the spoken line is the game’s, quoted in the outcome.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/A_New_Home",
     "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",

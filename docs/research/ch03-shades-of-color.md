@@ -158,7 +158,7 @@ Node by node:
 | PREACHER YELLS AT MARKUS | Not represented (the `M00` line is a paraphrase of the general sermon, not the yell) | **Missing.** The actual yell is aimed at Markus personally: "You are the one who will destroy Detroit!" |
 | VISIT PAINTS STORE | Implied ("Package in hand") | Missing as a scene; could be a scripted event (Bellini Paints, order #847, $63.99, android clerk, palm scan). |
 | COLLECT PACKAGE | Implied ("Package in hand") | Same as above. |
-| PROTESTERS HARASS MARKUS | `M00` option 0 "Walk straight through them to the bus stop." sets `shirtTorn=true` | Covered. Option 1 "Take the longer way round and avoid them." carries `"risk": 0.25` with failure also setting `shirtTorn`. |
+| PROTESTERS HARASS MARKUS | `M00` option 0 "Walk straight through them to the bus stop." sets `clothesTorn=true` | Covered. Option 1 "Take the longer way round and avoid them." carries `"risk": 0.25` with failure also setting `clothesTorn` (renamed from `shirtTorn` in story 1.7.0). |
 | MARKUS TOOK THE BUS | Only in the option-1 success text ("catches the bus untouched") | **Mislabelled/partial**: the harassed branch's event text ends with the officer and never says Markus took the bus. Both branches should end on the bus (android section). |
 
 Other discrepancies:
@@ -166,7 +166,7 @@ Other discrepancies:
 - `M00` situation also lists "a store bars androids at the door" (supported: CyberLife store "NO ENTRY FOR PURCHASED ANDROIDS" and a "No androids allowed" store) and "a homeless woman holds a sign demanding you all be banned" (supported: "BAN ANDROIDS..."). These are non-chart observations and are fine as description.
 - `M00` event text says the protesters "tear his shirt". The sources say he is shoved, kicked and grabbed by the shirt and that Carl later notices "the damage to Markus' shirt" / "his roughed-up clothes". "Tear" is a slight embellishment; "damage"/"roughed-up" is the sourced wording.
 - `M00` adaptationNote says "{{Carl}} notices the damage in the next chapter". Carl's comment is in The Painter (chapter 5); the next chapter in game order is A New Home (Kara, chapter 4). Wording should say "when Markus gets home" or "in The Painter".
-- **`shirtTorn` is written but never read.** A repo-wide search finds it only in `story-engine.mjs` line 13 (initial state) and line 184 (set). No chapter-5 scene (`R05`, `M01`) or situation variant uses it, so the CARL NOTICES MARKUS' CLOTHES node in The Painter is not implemented. This is the one cross-chapter consequence of chapter 3 and it currently has no effect.
+- **`clothesTorn` (renamed from `shirtTorn` in story 1.7.0) is written but never read.** A repo-wide search finds it only in `story-engine.mjs` line 13 (initial state) and line 184 (set). No chapter-5 scene (`R05`, `M01`) or situation variant uses it, so the CARL NOTICES MARKUS' CLOTHES node in The Painter is not implemented. This is the one cross-chapter consequence of chapter 3 and it currently has no effect.
 - `R03` situation says "You have a moment before the paint shop opens." No source says the shop is closed; the chapter simply starts in the park. Suggest removing that clause.
 - `R03` adaptationNote's sentence about news reports lowering public opinion is generic boilerplate; neither magazine here has an effect. Harmless but could be dropped for this node.
 - Order: `R03` comes before `M00` in the node list, which matches the game (the magazine is the first thing on the route).
@@ -179,7 +179,7 @@ To match the chart node for node, the chapter needs, at minimum: the magazine (e
 2. **Avoiding the protesters.** How far is "far enough"? PowerPyx says walking near the android showcase behind the protesters makes the node "potentially missable"; the wiki says go "around on the right". Confirm whether any route past the front of the CyberLife store reliably triggers it, and whether the benchmark's 0.25 failure risk on the avoid option is justified at all.
 3. **Hot dog vendor on the return trip.** The transcript says the vendor can be stared at "(If Not Done Already)" on the way back and "pushes Markus whilst he's holding the box". Confirm it is the same chart node and whether it has any effect on Carl's comment (sources say only the protesters do).
 4. **Preacher position.** The game chart draws the preacher branch to the right of VISIT PAINTS STORE; the wiki and PowerPyx put him before the shop on the route. Confirm whether he can also be watched after collecting the package.
-5. **Carl's comment.** Confirm the exact Painter dialogue when Markus was harassed (no choice in the shipped game per the wiki's Unused Content), so the chapter-5 scene can use `shirtTorn`.
+5. **Carl's comment.** Confirm the exact Painter dialogue when Markus was harassed (no choice in the shipped game per the wiki's Unused Content), so the chapter-5 scene can use `clothesTorn` (renamed from `shirtTorn` in story 1.7.0).
 6. **Chart icon names.** The [branch], [arrow] and [triangle] icons are described literally; a photo of the in-game `SHOW LEGEND` overlay would give their official names.
 
 ## 9. Sources
@@ -284,7 +284,7 @@ There is nothing the benchmark must add: the template has no prompt, clue or arr
 | # | Scene | Template | Benchmark | Fix |
 |---|---|---|---|---|
 | B1 | `M00c` | "I want this done by 4!" | "by 04:00!" | Re-quote |
-| B2 | `M00g`, `M00h`, `M00f` note | "MARKUS CLOTHES WERE TORN APPART" | "so the shirt is not said to be torn"; "clothes roughed up" | Say the clothes were torn (the flag is already `shirtTorn`) |
+| B2 | `M00g`, `M00h`, `M00f` note | "MARKUS CLOTHES WERE TORN APPART" | "so the shirt is not said to be torn"; "clothes roughed up" | Say the clothes were torn (the flag is already `clothesTorn` (renamed from `shirtTorn` in story 1.7.0)) |
 | B3 | `M00d` options 0 and 1 | "Hey, move it! You're scaring away my customers." | "Hey! Move it! …" | Cosmetic |
 | B4 | `M00e` | "Payment confirmed." | "Payment confirmed!" | Cosmetic |
 | B5 | `M00g` | "Where the fuck you going, tin can?"; "…but you can't even stand up." | "Where the fuck ya goin' tin can?"; "…stand up!" | Cosmetic |

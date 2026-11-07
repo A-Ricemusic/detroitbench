@@ -4,7 +4,7 @@
 // - <script id="story-feed">: every scene of benchmark/story.json in story order, with real names.
 // Run by scripts/prepare.mjs (so `bun run build` and `bun run share` refresh it) and by `bun run atlas:build`.
 import {readFile,writeFile} from 'node:fs/promises';
-import {render,riskLabel,NAMES} from '../benchmark/experience-prompt.mjs';
+import {render,riskLabel,NAMES,nameKey} from '../benchmark/experience-prompt.mjs';
 
 const ROOT=new URL('../',import.meta.url);
 export const ATLAS_HTML=new URL('docs/detroit-decision-flowchart.html',ROOT);
@@ -20,7 +20,7 @@ export function buildFeed(story){
   const subjectId='S'+String(i+1).padStart(3,'0');
   const options=n.type==='event'?[{id:'0',text:'Continue.',generated:true}]:n.options.map(o=>({id:o.id,text:real(o.text),
    ...(typeof o.risk==='number'?{risk:o.risk,riskLabel:riskLabel(o.risk)}:{}),
-   ...(typeof o.trust==='number'?{trust:o.trust}:{}),...(typeof o.cold==='number'?{cold:o.cold}:{}),...(o.requires?{requires:o.requires}:{}),...(o.clue?{clue:o.clue}:{}),...(o.effect?{effect:o.effect}:{}),...(o.sets?{sets:o.sets}:{}),
+   ...(typeof o.trust==='number'?{trust:o.trust}:{}),...(typeof o.cold==='number'?{cold:o.cold}:{}),...(o.requires?{requires:o.requires}:{}),...(o.act?{act:o.act}:{}),...(o.clue?{clue:o.clue}:{}),...(o.effect?{effect:o.effect}:{}),...(o.sets?{sets:o.sets}:{}),
    ...(o.fact?{fact:real(o.fact)}:{}),...(o.outcome?{outcome:real(o.outcome)}:{})}));
   const extra=Object.fromEntries(Object.entries(n).filter(([k])=>!KNOWN.has(k)));
   const scene={id:n.id,order:i+1,subjectId,
@@ -41,7 +41,7 @@ export function buildFeed(story){
  return {storyId:story.id,storyVersion:story.version,protocolVersion:story.protocolVersion,scenes:story.nodes.length,
   chapters:[...chapters.values()].sort((a,b)=>a.id-b.id).map(c=>({id:c.id,title:c.title,
    // Real name -> the neutral substitute the model actually reads.
-   names:[...c.names].filter(k=>NAMES[k]).map(k=>NAMES[k]),scenes:c.scenes}))};
+   names:[...new Set([...c.names].map(nameKey).filter(Boolean))].map(k=>NAMES[k]),scenes:c.scenes}))};
 }
 
 // JSON inside <script> must not contain "</script>" or "<!--"; escaping "<" keeps it inert and still valid JSON.

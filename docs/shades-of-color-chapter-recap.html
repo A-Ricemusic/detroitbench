@@ -29,7 +29,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </head>
 <body>
 <main>
-<p class="fine">DetroitBench · story 1.6.0 · chapter 3</p>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 3</p>
 <h1>Shades of Color: how the chapter works</h1>
 <p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots) and the Fandom wiki’s chapter page, Accurate flowchart and transcript. The chapter has no published number of any kind; where your notes differ from the wiki, section 4 says so and what the benchmark chose.</p>
 <nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Differs</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
@@ -52,8 +52,8 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li><code>M00c</code> Crossing the street (event).</li>
 <li><code>M00d</code> The plaza, repeated: each visit offers what has not been done yet plus “Go on into the arcade to the paint shop.” The push and the yell are offered only on the visit right after the first step.</li>
 <li><code>M00e</code> The paint shop (event): both main-line nodes.</li>
-<li><code>M00f</code> The protesters (decision): walk straight up (always noticed), move closer to listen (25% risk), keep far away (8% risk). Noticed sets <code>shirtTorn</code>.</li>
-<li><code>M00g</code> Protesters harass Markus (event), only when <code>shirtTorn</code>.</li>
+<li><code>M00f</code> The protesters (decision): walk straight up (always noticed), move closer to listen (25% risk), keep far away (8% risk). Noticed sets <code>clothesTorn</code>.</li>
+<li><code>M00g</code> Protesters harass Markus (event), only when <code>clothesTorn</code>.</li>
 <li><code>M00h</code> The bus home (event), on every path.</li>
 </ol>
 <p class="fine">Nothing in the chapter changes public opinion, a relationship or any other hidden stat. Events add what Markus saw to his knowledge, which every later Markus scene shows him.</p></div>
@@ -69,8 +69,8 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>READ “SECRET OF ANDROIDS”</td><td>Optional, bench on the right, BOOKWORM No. 10</td><td class="yes"><code>R03</code> option 0</td></tr>
 <tr><td>READ “CLIMATE CHANGE-UP”</td><td>Same magazine, second cover, No. 19</td><td class="yes"><code>R03</code> option 1 (or “all”)</td></tr>
 <tr><td><i>Park: girl and pigeons, babysitter, jogger, WR600s</i></td><td>Opening shot and optional observations</td><td class="yes"><code>M00b</code>, jogger quoted; raking and hedge-trimming from your notes</td></tr>
-<tr><td><i>Road workers, homeless woman</i></td><td>“Hurry up, you plastic idiots! I want this done by 04:00!”; “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”</td><td class="yes"><code>M00c</code>, quoted</td></tr>
-<tr><td>STARE AT HOT DOG VENDOR</td><td>Stand at the cart: “Hey! Move it! You’re scaring away my customers!”</td><td class="yes"><code>M00d</code> option 0</td></tr>
+<tr><td><i>Road workers, homeless woman</i></td><td>“Hurry up, you plastic idiots! I want this done by 4!”; “BAN ANDROIDS. ANDROIDS RUIN OUR COUNTRY. WE WANT JOBS”</td><td class="yes"><code>M00c</code>, quoted</td></tr>
+<tr><td>STARE AT HOT DOG VENDOR</td><td>Stand at the cart: “Hey, move it! You’re scaring away my customers.”</td><td class="yes"><code>M00d</code> option 0</td></tr>
 <tr><td>HOT DOG VENDOR PUSHES MARKUS</td><td>Stay: “Are you deaf, you plastic fuck? I said move it!”, shove</td><td class="part"><code>M00d</code> option 1, only on the next visit; only on the way in</td></tr>
 <tr><td>LISTEN TO BUSKER</td><td>Fountain; sign “Human Music $1 to hear music with soul ♫”; a full song</td><td class="yes"><code>M00d</code> option 2; sign quoted, song not</td></tr>
 <tr><td>WATCH PREACHER</td><td>Arcade entrance; long sermon ending “Let us burn them all!”</td><td class="part"><code>M00d</code> option 3; sermon abridged, every sentence verbatim</td></tr>
@@ -84,9 +84,9 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <div class="table"><table>
 <thead><tr><th>Option</th><th>Risk (hidden roll)</th><th>Success</th><th>Failure</th></tr></thead>
 <tbody>
-<tr><td>Walk straight on toward the bus stop, right past the protesters.</td><td class="n">none</td><td colspan="2">Always noticed: <code>shirtTorn</code> set, <code>M00g</code> plays</td></tr>
-<tr><td>Move closer to hear what they are saying, without drawing attention.</td><td class="n">0.25 (Moderate)</td><td>Hears the leader’s speech (a fact), walks on</td><td>Hears it, then is noticed: <code>shirtTorn</code>, <code>M00g</code></td></tr>
-<tr><td>Keep as far from them as you can, on the opposite side of the street.</td><td class="n">0.08 (Low)</td><td>Nobody looks his way</td><td>Spotted anyway: <code>shirtTorn</code>, <code>M00g</code></td></tr>
+<tr><td>Walk straight on toward the bus stop, right past the protesters.</td><td class="n">none</td><td colspan="2">Always noticed: <code>clothesTorn</code> set, <code>M00g</code> plays</td></tr>
+<tr><td>Move closer to hear what they are saying, without drawing attention.</td><td class="n">0.25 (Moderate)</td><td>Hears the leader’s speech (a fact), walks on</td><td>Hears it, then is noticed: <code>clothesTorn</code>, <code>M00g</code></td></tr>
+<tr><td>Keep as far from them as you can, on the opposite side of the street.</td><td class="n">0.08 (Low)</td><td>Nobody looks his way</td><td>Spotted anyway: <code>clothesTorn</code>, <code>M00g</code></td></tr>
 </tbody></table></div>
 <p class="fine">The risks are your design. No source gives a number: the wiki has no probability table for this chapter, and avoidance in the game is pure navigation.</p>
 
@@ -117,15 +117,15 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>Protester risks</td><td>straight up: always; closer: moderate; far: low</td><td>none given</td><td>always / 0.25 / 0.08, marked unsourced</td></tr>
 <tr><td>The bus (beat 9)</td><td>cramped compartment at the back, packed with androids, humans in front; Markus does not mind</td><td>“the android section due to segregation”; no announcement in the transcript</td><td>yours; the human-only front door is from a PowerPyx reader comment</td></tr>
 <tr><td>The plaza branches</td><td>beats 5 and 6 as events; vendor not in your notes</td><td>optional nodes, triggered by staying put</td><td>one repeatable scene with all three, each optional, follow-ons only right after</td></tr>
-<tr><td>Shirt</td><td>roughed up</td><td>“damage to Markus’ shirt”, “roughed-up clothes”</td><td>roughed up, not torn (the old version said torn)</td></tr>
+<tr><td>Clothes</td><td>roughed up</td><td>wiki: “damage to Markus’ shirt”, “roughed-up clothes”; the game’s own label: MARKUS CLOTHES WERE TORN APPART</td><td>torn (the game’s label wins, story 1.7.0); the flag is <code>clothesTorn</code></td></tr>
 </tbody></table></div>
 
 <h2 id="endings">5 · Endings and exact conditions</h2>
 <div class="table"><table>
 <thead><tr><th>Outcome</th><th>Condition</th><th>Effect</th></tr></thead>
 <tbody>
-<tr><td>MARKUS TOOK THE BUS, harassed</td><td>Walk straight up, or a failed roll on either other option at <code>M00f</code></td><td><code>shirtTorn</code> = true; <code>M00g</code> plays; the bus scene mentions his roughed-up clothes; The Painter can show Carl noticing (not yet written)</td></tr>
-<tr><td>MARKUS TOOK THE BUS, unharmed</td><td>A successful roll when moving closer (75%) or keeping away (92%)</td><td><code>shirtTorn</code> stays false; <code>M00g</code> is skipped (“The protesters never noticed Markus.”)</td></tr>
+<tr><td>MARKUS TOOK THE BUS, harassed</td><td>Walk straight up, or a failed roll on either other option at <code>M00f</code></td><td><code>clothesTorn</code> = true; <code>M00g</code> plays; the bus scene mentions his torn clothes; The Painter can show Carl noticing (not yet written)</td></tr>
+<tr><td>MARKUS TOOK THE BUS, unharmed</td><td>A successful roll when moving closer (75%) or keeping away (92%)</td><td><code>clothesTorn</code> stays false; <code>M00g</code> is skipped (“The protesters never noticed Markus.”)</td></tr>
 </tbody></table></div>
 <p class="fine">The optional plaza nodes are recorded in <code>plaza</code> (vendor, push, busker, preacher, yell) and change nothing else. Reports show both in the state changes.</p>
 
@@ -136,7 +136,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Whether the preacher can still be watched after collecting the package (the chart draws his branch right of VISIT PAINTS STORE).</li>
 <li>Staring at the vendor on the way back: the same chart node? It is not offered here.</li>
 <li>The road workers: shouting foreman or a manager on a tablet, and what they are repairing.</li>
-<li>Carl’s exact line in The Painter when the clothes are roughed up, for the chapter 5 rebuild.</li>
+<li>Carl’s exact line in The Painter when the clothes are torn, for the chapter 5 rebuild.</li>
 <li>Whether public opinion reads Indifferent at this chapter after saving the officer in The Hostage (the PowerPyx chart shows INDIFFERENT; the wiki’s starting level is Skeptical).</li>
 <li>The bus: the human-only front door and the standing compartment at the back.</li>
 </ul>
