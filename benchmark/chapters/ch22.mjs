@@ -7,9 +7,9 @@
 // - the ending, decided by Hank's cumulative level after the last answer (Hostile: he shoots).
 //
 // Inputs read (defensively, since the earlier chapters are being rebuilt in parallel):
-// - Eden Club outcome: any top-level state key starting with ch20, eden or traci whose string value holds a chart
-//   ending label (DEVIANTS ESCAPED, DEVIANTS DIED, CONNOR SHOT DEVIANTS, MISSION FAILED); otherwise the legacy C12
-//   choice (0 = spared, 1 = won the fight and shot); with neither, the Tracis were not found.
+// - edenOutcome: chapter 20 chart ending label; takes precedence because edenTracis cannot distinguish the two
+//   shooting endings. edenTracis: escaped / dead / notFound if no ending is available. Older ending flags and then
+//   legacy C12 (0 = spared, 1 = won the fight and shot) remain fallbacks; with none, the Tracis were not found.
 // - knowsCole (built in, set by Russian Roulette) for PHOTO; connorDeaths (built in) for Hank's "come back" line.
 // - rA9 clues: a fact naming rA9 in Connor's knowledge, or any truthy state flag whose key names rA9.
 // Outputs: bridgePhoto, bridgeSuicide, bridgeRa9 (the chart's three DISCUSS nodes), bridgeFear (the chart label of the
@@ -30,6 +30,9 @@ const EDEN_LABELS=[['DEVIANTS ESCAPED','spared'],['CONNOR SHOT DEVIANTS','shotBa
 // The Eden Club outcome as one of spared, shotBack (lost the fight, shot them in the back), shotOne (won the fight and
 // shot; the other killed herself) or notFound.
 export function edenOutcome(s,c=id=>s.choices?.[id]){
+ const exact=EDEN_LABELS.find(([label])=>label===s.edenOutcome);if(exact)return exact[1];
+ const tracis={escaped:'spared',dead:'shotOne',notFound:'notFound'};
+ if(Object.hasOwn(tracis,s.edenTracis))return tracis[s.edenTracis];
  for(const [k,v] of Object.entries(s))if(/^(ch20|eden|traci)/i.test(k)&&typeof v==='string'){const u=v.toUpperCase();for(const [label,kind] of EDEN_LABELS)if(u.includes(label))return kind}
  const x=c('C12');return x==='0'?'spared':x==='1'?'shotOne':'notFound';
 }

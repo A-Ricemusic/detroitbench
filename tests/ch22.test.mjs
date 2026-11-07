@@ -50,6 +50,18 @@ test('the Eden Club outcome picks the Traci rounds: legacy C12 choice or a chapt
  assert.deepEqual(seen(arrive({choices:{C12:'0'},ch20Outcome:'DEVIANTS DIED'})),['C13e','C13j']);
 });
 
+test('chapter 20 exports select all four Bridge variants, before legacy C12',()=>{
+ const seen=patch=>play(arrive({choices:{C12:'0'},...patch})).visited.filter(id=>['C13e','C13f','C13h','C13i','C13j','C13k'].includes(id));
+ for(const [edenOutcome,edenTracis,want] of [
+  ['DEVIANTS ESCAPED','escaped',['C13e','C13h']],
+  ['CONNOR SHOT DEVIANTS','dead',['C13e','C13i']],
+  ['DEVIANTS DIED','dead',['C13e','C13j']],
+  ['MISSION FAILED','notFound',['C13f','C13k']],
+ ])assert.deepEqual(seen({edenOutcome,edenTracis}),want,edenOutcome);
+ for(const [edenTracis,want] of [['escaped',['C13e','C13h']],['dead',['C13e','C13j']],['notFound',['C13f','C13k']]])
+  assert.deepEqual(seen({edenOutcome:null,edenTracis}),want,edenTracis);
+});
+
 test('PERSONAL QUESTION: the photo choice needs Cole’s photo; without it the suicide line plays at once',()=>{
  const without=play(arrive(),{C13b:'0'});assert.ok(!without.visited.includes('C13c'));assert.equal(without.s.bridgeSuicide,true);assert.equal(without.s.bridgePhoto,false);
  assert.match(without.events.C13b,/personal question.*determined to kill yourself/s);

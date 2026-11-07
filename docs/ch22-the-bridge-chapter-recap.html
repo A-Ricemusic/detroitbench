@@ -110,7 +110,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="flags">5 · Flags in and out</h2>
 <div class="table"><table><thead><tr><th>State</th><th>Direction</th><th>Meaning</th></tr></thead><tbody>
-<tr><td>Eden Club outcome</td><td>in</td><td>A state key starting <code>ch20</code>, <code>eden</code> or <code>traci</code> holding the chart label (DEVIANTS ESCAPED, CONNOR SHOT DEVIANTS, DEVIANTS DIED, MISSION FAILED); otherwise the legacy <code>C12</code> choice (0 spared, 1 won the fight and shot); otherwise not found</td></tr>
+<tr><td>Eden Club outcome</td><td>in</td><td><code>edenOutcome</code> holding the chart label (DEVIANTS ESCAPED, CONNOR SHOT DEVIANTS, DEVIANTS DIED, MISSION FAILED) takes precedence; otherwise <code>edenTracis</code> (escaped, dead, notFound). Older chart-label flags are accepted, then the legacy <code>C12</code> choice (0 spared, 1 won the fight and shot); otherwise not found</td></tr>
 <tr><td><code>knowsCole</code></td><td>in</td><td>PHOTO in <code>C13c</code></td></tr>
 <tr><td>rA9 clues</td><td>in</td><td>A fact naming rA9 in Connor’s knowledge, or a truthy state flag whose key names rA9</td></tr>
 <tr><td><code>connorDeaths</code></td><td>in, out</td><td>Hank’s “come back” line at one or more deaths; +1 when Hank shoots</td></tr>
