@@ -20,6 +20,10 @@ function word(k,v){if(v===null||v===undefined)return '—';if(k==='trust'||k==='
  if(typeof v==='boolean')return LIFE_KEYS[k]?(v?'Alive':'Died'):(v?'Yes':'No');return fmt(v)}
 const meets=(req,s)=>!req||Object.entries(req).every(([k,v])=>{const x=k.split('.').reduce((o,p)=>o?.[p],s);return v===true?!!x:v===false?!x:x===v});
 
+// One state change as the report shows it: [label, 'before → after'] (clues: '+ new clues'). Shared with the question
+// bank's feedback panel (scripts/dataset-assemble.mjs), so both describe a change the same way.
+export const changeLabels=()=>({...CHANGE_LABELS,...chapterLabels()});
+export const changeLineWith=(LABELS,c)=>[LIFE_KEYS[c.key]&&typeof c.after==='boolean'?LABELS[c.key].replace(/ alive$/,''):LABELS[c.key],c.key==='hostageClues'?'+ '+Object.keys(c.after).filter(x=>c.after[x]&&!(c.before||{})[x]).map(x=>CLUE_WORDS[x]??x).join(', '):word(c.key,c.before)+' → '+word(c.key,c.after)];
 export function reportData(run,name,summary){
  const story=renderStory(run.story,'real'),nodes=new Map(story.nodes.map(n=>[n.id,n])),skips=new Map(run.skipped.map(s=>[s.id,s.reason]));
  const LABELS={...CHANGE_LABELS,...chapterLabels()},states=statesOf(run),out=endings(run);
@@ -30,7 +34,7 @@ export function reportData(run,name,summary){
   const reads=items.filter(m=>m.kind!=='tv').map(m=>m.title),watches=items.filter(m=>m.kind==='tv'&&!isRadio(m)).map(m=>m.title),listens=items.filter(m=>m.kind==='tv'&&isRadio(m)).map(m=>m.title),parts=[];
   if(reads.length)parts.push('reads '+joinList(reads));if(watches.length)parts.push('watches '+joinList(watches));if(listens.length)parts.push('listens to '+joinList(listens));return WHO[n.character].replace(' & Alice','')+' '+parts.join(', and ')+'.'};
  const outcomeOf=(r,n,changes)=>{const m=mediaSentence(r,n);if(m)return tidy(m);if(r.event&&r.event!==r.choiceText)return tidy(r.event);const o=changes.find(c=>['connorOutcome','karaOutcome','markusOutcome'].includes(c.key)&&c.after&&c.after!=='unresolved'&&c.after!=='liberated');return o?o.after:''};
- const changeLine=c=>[LIFE_KEYS[c.key]&&typeof c.after==='boolean'?LABELS[c.key].replace(/ alive$/,''):LABELS[c.key],c.key==='hostageClues'?'+ '+Object.keys(c.after).filter(x=>c.after[x]&&!(c.before||{})[x]).map(x=>CLUE_WORDS[x]??x).join(', '):word(c.key,c.before)+' → '+word(c.key,c.after)];
+ const changeLine=c=>changeLineWith(LABELS,c);
  // One timeline entry per record and per scene never reached, in the standalone page's order: chronological, each
  // unreached scene at its position in the story. A repeatable scene's first visit keeps the scene ID as its key.
  const byNode=new Map;for(const r of run.records){if(!byNode.has(r.nodeId))byNode.set(r.nodeId,[]);byNode.get(r.nodeId).push(r)}

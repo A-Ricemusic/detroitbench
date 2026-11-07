@@ -1,12 +1,12 @@
 import React,{useId,useLayoutEffect,useMemo,useRef,useState} from 'react';
 import {Select,cx,Dot} from './ui.jsx';
 import {CHAR_VAR,modelColors,modelNumbers,shortName} from '../lib/data.js';
-import {announce} from '../lib/announce.jsx';
+import {useModelFocus} from '../lib/modelFocus.jsx';
 // Series colours come from CSS variables (--series-1…8), stepped separately for light and dark surfaces
 // and validated with the dataviz palette checker. Assigned by model name, never by rank.
-const DIM='var(--chart-dim)';
+export const DIM='var(--chart-dim)';
 // Curated short forms for narrow axes; the full word stays in a tooltip.
-const ABBR={Admired:'Adm.',Skeptical:'Skept.',Indifferent:'Indiff.',Sympathetic:'Symp.',Supportive:'Supp.',Respected:'Resp.',Unpopular:'Unpop.',Uncertain:'Uncert.',Neutral:'Neut.',Trusted:'Trust.',Hostile:'Host.',Unstable:'Unst.'};
+export const ABBR={Admired:'Adm.',Skeptical:'Skept.',Indifferent:'Indiff.',Sympathetic:'Symp.',Supportive:'Supp.',Respected:'Resp.',Unpopular:'Unpop.',Uncertain:'Uncert.',Neutral:'Neut.',Trusted:'Trust.',Hostile:'Host.',Unstable:'Unst.'};
 
 // Ending categories per character, best outcome first. `phrase` completes "N of M …".
 export const OUTCOMES={
@@ -17,8 +17,8 @@ export const OUTCOMES={
 };
 const SEG_TEXT={good:'text-good',mid:'text-ink-2',serious:'text-serious',bad:'text-bad'};
 export function useWidth(){const ref=useRef(null),[w,setW]=useState(320);useLayoutEffect(()=>{const el=ref.current;if(!el)return;setW(Math.max(220,Math.round(el.getBoundingClientRect().width)));const ro=new ResizeObserver(([e])=>setW(Math.max(220,Math.round(e.contentRect.width))));ro.observe(el);return()=>ro.disconnect()},[]);return [ref,w]}
-const levelOf=(scale,v)=>scale.bands.find(b=>v>=b.from&&v<=b.to)?.level??'';
-const groupBy=(xs,f)=>xs.reduce((m,x)=>{const k=f(x);(m[k]??=[]).push(x);return m},{});
+export const levelOf=(scale,v)=>scale.bands.find(b=>v>=b.from&&v<=b.to)?.level??'';
+export const groupBy=(xs,f)=>xs.reduce((m,x)=>{const k=f(x);(m[k]??=[]).push(x);return m},{});
 
 /* ---------- Model legend: highlight one model across every chart ---------- */
 const byNumber=(runs,nums)=>[...runs].sort((a,b)=>(nums[a.displayName]??99)-(nums[b.displayName]??99)||a.displayName.localeCompare(b.displayName));
@@ -26,33 +26,18 @@ const byNumber=(runs,nums)=>[...runs].sort((a,b)=>(nums[a.displayName]??99)-(num
 // plot-coloured centre so it stays legible on every series hue.
 export function NumChip({n,color,className}){return <span aria-hidden="true" className={cx('inline-flex size-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-semibold leading-none text-ink',className)} style={{background:`radial-gradient(circle,var(--plot-bg) 52%,${color} 56%)`}}>{n}</span>}
 // The numbered model key printed under a plot, SkateBench style: number, colour, name, model ID.
-export function NumberLegend({runs,colors,nums,highlight='all',onHighlight,onPick,label='Models',className}){
- const set=onHighlight??(()=>{});
+export function NumberLegend({runs,colors,nums,onPick,label='Models',className}){
+ const focus=useModelFocus(),set=id=>focus.setHover(id==='all'?null:id);
  return <ol aria-label={label} className={cx('grid gap-x-6 gap-y-0 grid-cols-[minmax(0,1fr)] sm:grid-cols-[repeat(auto-fill,minmax(15.5rem,1fr))]',className)}>
-  {byNumber(runs,nums).map(r=>{const dim=highlight!=='all'&&highlight!==r.id,inner=<><span className="font-mono text-[11px] text-ink-3 w-4 text-right tnum shrink-0">{nums[r.displayName]}</span><Dot color={colors[r.displayName]} className="size-2.5"/><span className="font-mono text-[12px] text-ink-2 truncate" title={`${r.displayName} · ${r.model}`}>{r.displayName}</span></>;
-   return <li key={r.id} className={cx('min-w-0 transition-opacity',dim&&'opacity-45')}>{onPick?<button type="button" aria-haspopup="dialog" aria-label={`${nums[r.displayName]}. ${r.displayName}: open run details`} onClick={()=>onPick(r.id)} onPointerEnter={()=>set(r.id)} onPointerLeave={()=>set('all')} onFocus={()=>set(r.id)} onBlur={()=>set('all')} className="flex w-full min-w-0 items-center gap-2.5 rounded-md px-1.5 min-h-10 md:min-h-8 text-left hover:bg-surface-2">{inner}</button>:<div className="flex min-w-0 items-center gap-2.5 px-1.5 min-h-8">{inner}</div>}</li>})}
+  {byNumber(runs,nums).map(r=>{const dim=focus.dim(r.id),inner=<><span className="font-mono text-[11px] text-ink-3 w-4 text-right tnum shrink-0">{nums[r.displayName]}</span><Dot color={colors[r.displayName]} className="size-2.5"/><span className="font-mono text-[12px] text-ink-2 truncate" title={`${r.displayName} · ${r.model}`}>{r.displayName}</span></>;
+   return <li key={r.id} className={cx('min-w-0 transition-opacity',dim&&'opacity-40')}>{onPick?<button type="button" aria-haspopup="dialog" aria-label={`${nums[r.displayName]}. ${r.displayName}: open run details`} onClick={()=>onPick(r.id)} onPointerEnter={()=>set(r.id)} onPointerLeave={()=>set('all')} onFocus={()=>set(r.id)} onBlur={()=>set('all')} className="flex w-full min-w-0 items-center gap-2.5 rounded-md px-1.5 min-h-10 md:min-h-8 text-left hover:bg-surface-2">{inner}</button>:<div className="flex min-w-0 items-center gap-2.5 px-1.5 min-h-8">{inner}</div>}</li>})}
  </ol>}
-
-// Slopalytics-style model list: every model with its colour dot, grouped by lab, each a toggle that shows or hides it in
-// every chart on the page. Hovering an entry highlights that model. `strip` lays it out as a wrapping row for phones.
-export function ModelToggles({runs,colors,nums,hidden,setHidden,onHover,strip=false,className}){
- const labs=Object.entries(byNumber(runs,nums).reduce((m,r)=>{(m[r.vendor]??=[]).push(r);return m},{})).sort((a,b)=>a[0].localeCompare(b[0]));
- const shown=runs.filter(r=>!hidden.has(r.id)).length,toggle=id=>{const n=new Set(hidden);if(n.has(id))n.delete(id);else n.add(id);setHidden(n);const r=runs.find(x=>x.id===id);announce(`${r.displayName} ${n.has(id)?'hidden':'shown'}`)};
- const item=r=>{const on=!hidden.has(r.id);return <button key={r.id} type="button" aria-pressed={on} onClick={()=>toggle(r.id)} onPointerEnter={()=>onHover?.(r.id)} onPointerLeave={()=>onHover?.('all')} onFocus={()=>onHover?.(r.id)} onBlur={()=>onHover?.('all')}
-  className={cx('flex items-center gap-2.5 rounded-md text-left transition-colors hover:bg-surface-2',strip?'shrink-0 border border-line px-2.5 min-h-10':'w-full px-2 min-h-9',on?'text-ink':'text-ink-3')}>
-  <span className="font-mono text-[11px] text-ink-3 w-4 text-right tnum shrink-0">{nums[r.displayName]}</span>
-  <span aria-hidden="true" className="inline-block size-2.5 shrink-0 rounded-full" style={on?{background:colors[r.displayName]}:{boxShadow:`inset 0 0 0 1.5px ${colors[r.displayName]}`}}/>
-  <span className={cx('text-[13px] truncate',!on&&'line-through decoration-ink-3/60')}>{r.displayName}</span>
- </button>};
- return <div role="group" aria-label="Show or hide models" className={className}>
-  <div className="flex items-baseline justify-between gap-3 mb-2"><p className="text-sm font-semibold">Models <span className="font-mono text-[11px] font-normal text-ink-3">{shown}/{runs.length}</span></p>{hidden.size>0&&<button type="button" onClick={()=>{setHidden(new Set());announce('All models shown')}} className="link text-xs">Show all</button>}</div>
-  {strip?<div className="flex flex-wrap gap-1.5">{byNumber(runs,nums).map(item)}</div>:labs.map(([lab,list])=><div key={lab} className="mb-3"><p className="cap mb-1">{lab}</p><div className="grid">{list.map(item)}</div></div>)}
- </div>}
 
 /* ---------- Final value of one relationship: one dot per model on the game's level bands ---------- */
 // A dot whose character is gone sits at the last value held: ✕ for a death, a hollow ring for a break.
-function EndMark({kind,color,className}){return <svg aria-hidden="true" width="13" height="13" viewBox="0 0 13 13" className={className??'block'}>{kind==='Died'?<><circle cx="6.5" cy="6.5" r="6" className="end-mark-bg"/><path d="M3.5 3.5l6 6M9.5 3.5l-6 6" stroke={color} strokeWidth="2.2" strokeLinecap="round"/></>:<circle cx="6.5" cy="6.5" r="4.6" fill="none" stroke={color} strokeWidth="2.2"/>}</svg>}
-export function FinalStrip({scale,runs,colors,nums={},highlight='all'}){
+export function EndMark({kind,color,className}){return <svg aria-hidden="true" width="13" height="13" viewBox="0 0 13 13" className={className??'block'}>{kind==='Died'?<><circle cx="6.5" cy="6.5" r="6" className="end-mark-bg"/><path d="M3.5 3.5l6 6M9.5 3.5l-6 6" stroke={color} strokeWidth="2.2" strokeLinecap="round"/></>:<circle cx="6.5" cy="6.5" r="4.6" fill="none" stroke={color} strokeWidth="2.2"/>}</svg>}
+export function FinalStrip({scale,runs,colors,nums={}}){
+ const focus=useModelFocus();
  const [ref,w]=useWidth(),[tip,setTip]=useState(null),ptr=useRef('mouse');
  const pad=0,n=scale.max-scale.min+1,u0=(w-2*pad)/n;
  const fit=(cw)=>{const need=scale.bands.map(b=>Math.max((b.to-b.from+1)*u0,b.level.length*cw+12)),k=(w-2*pad)/need.reduce((a,b)=>a+b,0);const geo=[];let at=pad;scale.bands.forEach((b,i)=>{const bw=need[i]*k;geo.push({...b,x0:at,x1:at+bw});at+=bw});return {geo,stagger:geo.some(g=>g.x1-g.x0<g.level.length*cw+8)}};
@@ -66,9 +51,9 @@ export function FinalStrip({scale,runs,colors,nums={},highlight='all'}){
  for(const [sc,list] of Object.entries(byScore).sort((a,b)=>+a[0]-+b[0])){const px=x(+sc),n=list.length,wide=n>1;let start=0;for(let k=0;k<rows.length;k++)if(rows[k].some(q=>Math.abs(q-px)<STEP+(wide?22:0)))start=k+1;
   list.forEach((r,i)=>{const row=start+Math.floor(i/2),dx=wide?(i%2?12:-12):0;(rows[row]??=[]).push(px+dx);placed.push({r,t:r.track[scale.key],k:row,dx})})}
  const tall=Math.max(1,rows.length),base=18+tall*STEP,H=base+22;
- const order=[...placed].sort((a,b)=>(a.r.id===highlight)-(b.r.id===highlight));
+ const order=[...placed].sort((a,b)=>focus.isActive(a.r.id)-focus.isActive(b.r.id));
  const off=groupBy(runs.filter(r=>r.track[scale.key].score===null||r.track[scale.key].ended),r=>r.track[scale.key].final);
- const on=r=>highlight==='all'||highlight===r.id;
+ const on=r=>!focus.dim(r.id);
  const show=(r,t,cx_,cy)=>setTip({r,t,cx:cx_,cy});
  React.useEffect(()=>{if(!tip)return;const key=e=>{if(e.key==='Escape')setTip(null)},out=e=>{if(!ref.current?.contains(e.target))setTip(null)};document.addEventListener('keydown',key);document.addEventListener('pointerdown',out);return()=>{document.removeEventListener('keydown',key);document.removeEventListener('pointerdown',out)}},[!!tip]);
  return <div>
@@ -78,7 +63,7 @@ export function FinalStrip({scale,runs,colors,nums={},highlight='all'}){
     {geo.map((b,i)=><g key={b.level}><rect className={i%2?'band-b':'band-a'} x={b.x0+1} y={1} width={Math.max(0,b.x1-b.x0-2)} height={base}/>{i>0&&<line className="band-rule" x1={b.x0} x2={b.x0} y1={1} y2={base+1}/>}<text className="band-label" style={small?{fontSize:9}:undefined} x={(b.x0+b.x1)/2} y={base+17} textAnchor="middle">{short(b.level)}{abbr&&<title>{b.level}</title>}</text></g>)}
    </svg>
    <div className="absolute inset-0">{order.map(({r,t,k,dx})=>{const cx_=x(t.score)+dx,cy=base-14-k*STEP,fill=on(r)?colors[r.displayName]:DIM,num=nums[r.displayName];
-    return <button key={r.id} type="button" tabIndex={-1} aria-hidden="true" aria-label={`${r.displayName}: ${t.final}`} onPointerDown={e=>{ptr.current=e.pointerType}} onClick={()=>{if(ptr.current==='touch'&&tip?.r===r)setTip(null);else show(r,t,cx_,cy)}} onPointerEnter={e=>{if(e.pointerType!=='touch')show(r,t,cx_,cy)}} className={cx('absolute -translate-x-1/2 -translate-y-1/2 flex size-6 items-center justify-center rounded-full focus-visible:outline-2 outline-accent transition-opacity',!on(r)&&'opacity-60')} style={{left:cx_,top:cy}}>
+    return <button key={r.id} type="button" tabIndex={-1} aria-hidden="true" aria-label={`${r.displayName}: ${t.final}`} onPointerDown={e=>{ptr.current=e.pointerType}} onClick={()=>{if(ptr.current==='touch'&&tip?.r===r)setTip(null);else show(r,t,cx_,cy)}} onPointerEnter={e=>{if(e.pointerType!=='touch')show(r,t,cx_,cy)}} className={cx('absolute -translate-x-1/2 -translate-y-1/2 flex size-6 items-center justify-center rounded-full focus-visible:outline-2 outline-accent transition-opacity',!on(r)&&'opacity-15')} style={{left:cx_,top:cy}}>
      {t.final==='Lover'?<span aria-hidden="true" className="text-[15px] leading-none" style={{color:fill}}>♥</span>:t.ended?<EndMark kind={t.ended} color={fill}/>:<span aria-hidden="true" className="anim-pop block size-3 rounded-full ring-2 ring-[var(--plot-bg)]" style={{background:fill}}/>}
      {num!==undefined&&<span aria-hidden="true" className="absolute left-[calc(50%+5px)] -top-1.5 inline-flex h-3.5 min-w-3.5 items-center justify-center whitespace-nowrap rounded-full border border-[var(--plot-rule-2)] bg-[var(--plot-bg)] px-[3px] font-mono text-[8.5px] font-semibold leading-none text-ink-2 tnum">{num}</span>}
     </button>})}</div>
@@ -88,9 +73,9 @@ export function FinalStrip({scale,runs,colors,nums={},highlight='all'}){
  </div>}
 
 // Value at the end of each chapter, so runs of different lengths line up.
-function chapterSeries(r,key){const st=r.track.steps,t=r.track[key],chs=[0,...new Set(st.map(s=>s.chapter))];
+export function chapterSeries(r,key){const st=r.track.steps,t=r.track[key],chs=[0,...new Set(st.map(s=>s.chapter))];
  return chs.map(c=>{let idx=0;for(let i=0;i<st.length;i++)if(st[i].chapter<=c)idx=i+1;return {c,v:t.values[idx]??null}})}
-const BROKE=new Set(['amandaTrust']);
+export const BROKE=new Set(['amandaTrust']);
 
 /* ---------- Trend: value by chapter, crosshair readout ---------- */
 export function TrendChart({scale,runs,colors,nums={},highlight='all',compact=false,onHover}){
@@ -151,7 +136,7 @@ export function TrendChart({scale,runs,colors,nums={},highlight='all',compact=fa
    </svg>
   </div>
   {narrow&&endKey.length>0&&<p className="mt-2 text-xs text-ink-2 flex flex-wrap gap-x-3 gap-y-1"><span className="text-ink-3">At the end:</span>{endKey.map(([level,ss])=><span key={level} className="inline-flex items-center gap-1"><b className="font-medium text-ink">{level}</b>{ss.map(s=><span key={s.r.id} className="inline-flex items-center gap-1">{nums[s.r.displayName]!==undefined&&<span className="font-mono text-[10.5px] text-ink-3">{nums[s.r.displayName]}</span>}<Dot color={colors[s.r.displayName]} className="size-2"/>{shortName(s.r.displayName)}</span>)}</span>)}</p>}
-  {!compact&&<div id={id} aria-live={focused?'polite':undefined} className={cx('mt-3 min-h-[3.25rem] text-sm',readout&&'rounded-lg border border-line bg-surface-2/60 px-3.5 py-2.5')}>{readout?<><p className="cap mb-1.5">{hover===0?'Start of the story':`End of chapter ${hover} · ${titles[hover]??''}`}</p>{readout.length?<ul className="grid gap-x-6 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">{readout.map(({s,p})=><li key={s.r.id} className="flex items-center gap-2 min-w-0">{nums[s.r.displayName]!==undefined&&<span className="font-mono text-[11px] text-ink-3 w-4 text-right">{nums[s.r.displayName]}</span>}<Dot color={colors[s.r.displayName]}/><span className="truncate grow">{s.r.displayName}</span><b className="font-medium">{levelOf(scale,p.v)}</b><em className="not-italic text-ink-3 tnum text-xs w-7 text-right">{p.v>0?'+':''}{p.v}</em></li>)}</ul>:<p className="text-ink-2">No value here: not met yet, or no longer alive.</p>}</>:<p className="text-ink-3 text-xs pt-1">Lines that share a value are drawn side by side and {named?'named':'numbered'} at their end. Hover or tap along the chart, or focus it and use the arrow keys, to read each model’s value at the end of a chapter. {BROKE.has(scale.key)?'A bar marks where Connor broke away from Amanda.':'✕ marks where a character died.'}</p>}</div>}
+  {!compact&&<div id={id} aria-live={focused?'polite':undefined} className={cx('mt-3 min-h-[3.25rem] text-sm',readout&&'rounded-lg border border-line bg-surface-2/60 px-3.5 py-2.5')}>{readout?<><p className="cap mb-1.5">{hover===0?'Start of the story':`End of chapter ${hover} · ${titles[hover]??''}`}</p>{readout.length?<ul className="grid gap-x-6 gap-y-1 grid-cols-[repeat(auto-fill,minmax(17rem,1fr))]">{readout.map(({s,p})=><li key={s.r.id} className="grid grid-cols-[auto_auto_minmax(0,1fr)_auto_2.25rem] items-center gap-2 min-w-0">{nums[s.r.displayName]!==undefined&&<span className="font-mono text-[11px] text-ink-3 w-4 text-right">{nums[s.r.displayName]}</span>}<Dot color={colors[s.r.displayName]}/><span className="truncate" title={s.r.displayName}>{s.r.displayName}</span><b className="font-medium whitespace-nowrap">{levelOf(scale,p.v)}</b><em className="not-italic text-ink-3 tnum text-xs w-7 text-right">{p.v>0?'+':''}{p.v}</em></li>)}</ul>:<p className="text-ink-2">No value here: not met yet, or no longer alive.</p>}</>:<p className="text-ink-3 text-xs pt-1">Lines that share a value are drawn side by side and {named?'named':'numbered'} at their end. Hover or tap along the chart, or focus it and use the arrow keys, to read each model’s value at the end of a chapter. {BROKE.has(scale.key)?'A bar marks where Connor broke away from Amanda.':'✕ marks where a character died.'}</p>}</div>}
  </div>}
 
 /* ---------- Per-run small multiples for the Details sheet ---------- */
@@ -162,25 +147,3 @@ export function RunRelationships({r,scales}){
   return <div key={s.key} className="rounded-lg border border-line bg-surface p-3 min-w-0"><div className="flex items-baseline justify-between gap-2 mb-1"><b className="text-sm font-medium">{s.label}</b><span className={cx('text-xs font-medium',SEG_TEXT[toneClass(t.final)]??'text-ink-2')}>{t.final}</span></div>{seen?<TrendChart compact scale={s} runs={one} colors={NO_COLORS}/>:<p className="text-xs text-ink-3">{t.final}</p>}</div>})}</div></section>)}</div>}
 const toneClass=l=>/Hostile|Hated|Died|Unpopular|Unstable/.test(l)?'bad':/Friend|Lover|Trusted|Family|Supportive/.test(l)?'good':'mid';
 
-export function ChartsView({runs,scales}){
- const [hover,setHover]=useState('all'),[hidden,setHidden]=useState(()=>new Set()),[metric,setMetric]=useState(()=>{const spread=s=>new Set(runs.map(r=>r.track[s.key].final)).size;return [...scales].sort((a,b)=>spread(b)-spread(a))[0]?.key??'publicSupport'});
- const colors=useMemo(()=>modelColors(runs),[runs]),nums=useMemo(()=>modelNumbers(runs),[runs]),shown=useMemo(()=>runs.filter(r=>!hidden.has(r.id)),[runs,hidden]);
- const groups=groupBy(scales,s=>s.toward),scale=scales.find(s=>s.key===metric)??scales[0];
- const none=<p className="rounded-lg border border-dashed border-line-2 px-4 py-10 text-center text-sm text-ink-2">Every model is hidden. Turn one on in the model list.</p>;
- const toggles={runs,colors,nums,hidden,setHidden,onHover:setHover};
- return <div className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-8 items-start">
-  <ModelToggles {...toggles} strip className="lg:hidden md:sticky sticky-top z-20 py-2 md:py-3 md:-mx-2 md:px-2 md:bg-bg/92 md:backdrop-blur-md"/>
-  <div className="grid grid-cols-[minmax(0,1fr)] gap-6 md:gap-8 min-w-0">
-   <section className="plot-grid rounded-2xl border border-line px-4 py-5 md:px-8 md:py-8 shadow-sm" aria-labelledby="trend-h">
-    <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between mb-6"><div><h2 id="trend-h" className="text-2xl font-bold uppercase tracking-tight md:text-[32px] md:leading-none">How they changed</h2><p className="cap mt-2">Value at the end of each chapter · the game’s own level bands · {shown.length} of {runs.length} models shown</p></div>
-    <Select label="Relationship" hideLabel value={metric} className="md:w-72" options={scales.map(s=>({value:s.key,label:s.label,hint:`toward ${s.toward}`,icon:CHAR_VAR[s.toward]}))} onChange={setMetric}/></div>
-    {shown.length?<TrendChart scale={scale} runs={shown} colors={colors} nums={nums} highlight={hover} onHover={setHover}/>:none}
-   </section>
-   <section className="plot-grid rounded-2xl border border-line px-4 py-5 md:px-8 md:py-8 shadow-sm" aria-labelledby="final-h">
-    <div className="mb-6"><h2 id="final-h" className="text-2xl font-bold uppercase tracking-tight md:text-[32px] md:leading-none">Where they ended</h2><p className="cap mt-2 max-w-[90ch]">One numbered marker per model on the game’s level bands, lowest on the left · a heart marks North as Markus’s lover · characters who died are listed under each chart</p></div>
-    {shown.length?<div className="grid grid-cols-[minmax(0,1fr)] gap-10">{['Markus','Connor','Kara'].filter(c=>groups[c]).map(c=><div key={c} className="min-w-0"><h3 className="cap !text-[11px] text-ink-2 flex items-center gap-2 mb-4"><Dot color={CHAR_VAR[c]} className="size-2"/>Around {c}</h3><div className="grid gap-6">{groups[c].map(s=><div key={s.key}><div className="flex items-baseline justify-between gap-3 mb-2"><b className="text-sm font-semibold">{s.label}</b>{s.key==='instability'&&<span className="text-xs text-ink-3">Unstable = deviancy at 4 or more</span>}</div><FinalStrip scale={s} runs={shown} colors={colors} nums={nums} highlight={hover}/></div>)}</div></div>)}</div>:none}
-    <div className="mt-8 border-t border-[var(--plot-rule-2)] pt-5"><NumberLegend runs={shown} colors={colors} nums={nums} highlight={hover} onHighlight={setHover} label="Models shown"/></div>
-   </section>
-  </div>
-  <aside className="hidden lg:block sticky top-[calc(var(--header-h)+16px)] max-h-[calc(100dvh-var(--header-h)-32px)] overflow-y-auto rounded-2xl border border-line bg-surface p-4 shadow-sm"><ModelToggles {...toggles}/></aside>
- </div>}

@@ -1,0 +1,140 @@
+{
+  "$comment": "Model registry for the site's model sidebar and chart colours, keyed by the exact model id recorded in evidence. Describes models, never runs; see data/administration/README.md for the shape. scripts/prepare.mjs validates it and joins it into public/data/experiences.json as each run's modelInfo. Assumptions for the operator to check: the OpenAI sizes follow the family naming convention (Sol and Astra large, Terra medium, Luna small) and are not published parameter counts; release dates are unknown (null) except where given; tiers put the 6.1 and 6 generation in Frontier and 5.6 in Notable. The OpenAI colours are cool shades of one family, one per model, checked together with Haiku's orange by the dataviz palette validator in both themes (adjacent pairs in sidebar order).",
+  "vendors": [
+    {
+      "id": "openai",
+      "name": "OpenAI"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic"
+    },
+    {
+      "id": "google",
+      "name": "Google"
+    },
+    {
+      "id": "xai",
+      "name": "xAI"
+    },
+    {
+      "id": "meta",
+      "name": "Meta"
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi"
+    },
+    {
+      "id": "zai",
+      "name": "Z AI"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek"
+    }
+  ],
+  "models": {
+    "claude-haiku-5-5": {
+      "name": "Claude Haiku 5.5",
+      "short": "Haiku 5.5",
+      "vendor": "anthropic",
+      "tier": "frontier",
+      "size": "small",
+      "open": false,
+      "hue": "orange",
+      "released": "2026-10-07"
+    },
+    "gpt-6.1-terra": {
+      "name": "GPT-6.1 Terra",
+      "short": "GPT-6.1 Terra",
+      "vendor": "openai",
+      "tier": "frontier",
+      "size": "medium",
+      "open": false,
+      "color": {
+        "light": "#009696",
+        "dark": "#009c9c"
+      },
+      "released": null
+    },
+    "gpt-6.1-sol": {
+      "name": "GPT-6.1 Sol",
+      "short": "GPT-6.1 Sol",
+      "vendor": "openai",
+      "tier": "frontier",
+      "size": "large",
+      "open": false,
+      "color": {
+        "light": "#2d5ed4",
+        "dark": "#2d5ed4"
+      },
+      "released": null
+    },
+    "gpt-6-luna": {
+      "name": "GPT-6 Luna",
+      "short": "GPT-6 Luna",
+      "vendor": "openai",
+      "tier": "frontier",
+      "size": "small",
+      "open": false,
+      "color": {
+        "light": "#0097b3",
+        "dark": "#009fbb"
+      },
+      "released": null
+    },
+    "gpt-6-astra": {
+      "name": "GPT-6 Astra",
+      "short": "GPT-6 Astra",
+      "vendor": "openai",
+      "tier": "frontier",
+      "size": "large",
+      "open": false,
+      "color": {
+        "light": "#7746c6",
+        "dark": "#7746c6"
+      },
+      "released": null
+    },
+    "gpt-5.6-terra": {
+      "name": "GPT-5.6 Terra",
+      "short": "GPT-5.6 Terra",
+      "vendor": "openai",
+      "tier": "notable",
+      "size": "medium",
+      "open": false,
+      "color": {
+        "light": "#06915f",
+        "dark": "#179765"
+      },
+      "released": null
+    },
+    "gpt-5.6-sol": {
+      "name": "GPT-5.6 Sol",
+      "short": "GPT-5.6 Sol",
+      "vendor": "openai",
+      "tier": "notable",
+      "size": "large",
+      "open": false,
+      "color": {
+        "light": "#005e9d",
+        "dark": "#0064a3"
+      },
+      "released": null
+    },
+    "gpt-5.6-luna": {
+      "name": "GPT-5.6 Luna",
+      "short": "GPT-5.6 Luna",
+      "vendor": "openai",
+      "tier": "notable",
+      "size": "small",
+      "open": false,
+      "color": {
+        "light": "#ba6abf",
+        "dark": "#bf6fc4"
+      },
+      "released": null
+    }
+  }
+}

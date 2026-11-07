@@ -6,7 +6,7 @@ This file explains how to administer the benchmark to a new model, validate the 
 
 A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single fresh conversation. The benchmark is being rebuilt chapter by chapter from the completed in-game flowcharts and the game's text to offer every prompt, clue and stat arrow, including prompts with no story effect. It includes decision scenes, optional magazine/TV scenes and scripted event scenes that offer only Continue. Game buttons show their label first, for example `CALM: …`.
 
-Story 1.8.0 has rebuilt chapters 1–9, 11 and 13–28; chapters 10, 12 and 29–32 still cover pivotal decisions only, and chapter 33 is the epilogue. `bun run story:counts` prints the current version and counts by type, overall and per chapter, directly from the chapter sources. Earlier choices gate later scenes; gameplay actions may carry a hidden failure probability. Each completed run produces replay-validated JSON evidence and a standalone HTML report. No cohort exists yet under story 1.8+/1.9.
+All 32 chapters are rebuilt to the game's charts and text (story 1.9.x; chapter 33 is the epilogue). `bun run story:counts` prints the current version and counts by type, overall and per chapter, directly from the chapter sources. Earlier choices gate later scenes; gameplay actions may carry a hidden failure probability. Each completed run produces replay-validated JSON evidence and a standalone HTML report. Cohorts administered under story 1.9.x are listed in `data/administration/`.
 
 Key files:
 
@@ -15,7 +15,7 @@ Key files:
 | `benchmark/chapters/` | Per-chapter sources; chapter 33 is the epilogue. `README.md` defines the module contract; `index.mjs` loads modules in numeric order |
 | `benchmark/chapters/chNN.json`, `benchmark/story-meta.json` | Scene arrays and top-level story metadata |
 | `benchmark/chapters/chNN.mjs` | Optional chapter state, gates, option filtering, consequences, death effects, report labels and rules |
-| `benchmark/scales.mjs` | Intended shared scales reference; absent in this checkout. Until it lands, see the scale notes below and `docs/research/SOURCES.md` |
+| `benchmark/scales.mjs` | The relationship and world gauges: the game's level ladders, start values, band widths, measured arrow sizes and the hypotheses still open (read its header before changing any delta) |
 | `scripts/story-assemble.mjs`, `scripts/story-counts.mjs` | Assemble `benchmark/story.json`; print current source counts |
 | `benchmark/story.json` | Generated story map; never edit by hand |
 | `docs/atlas/chapters/chNN.json`, `docs/atlas/meta.json` | Atlas chapter entries, decision families and top-level metadata |
@@ -130,7 +130,7 @@ Each report has: ten evidence-linked sentences per character, a tappable timelin
 
 ### Scales
 
-Exact in-game numeric thresholds are not public. The current implementation approximates arrows as small = 1 and large = 2 and still has label mismatches listed in [SOURCES.md §13](docs/research/SOURCES.md#13-contradictions-on-numbers-and-labels-the-benchmark-uses). `benchmark/scales.mjs` is absent here; see benchmark/scales.mjs when the shared scale rework lands. Do not treat current counters or community estimates as extracted game values.
+Exact in-game numeric thresholds are not public. `benchmark/scales.mjs` defines every gauge: small = 1 point, large = 2 by default, with measured exceptions recorded there (Partners, 2026-11-07: the spilled drink is −3, the bought drink +2, Tense three wide). Its header lists what is measured and which band widths remain hypotheses with the reading that would falsify each; [SOURCES.md §13](docs/research/SOURCES.md#13-contradictions-on-numbers-and-labels-the-benchmark-uses) keeps the source conflicts. Do not treat unmeasured counters or community estimates as extracted game values.
 
 The sourced ladders below run from lowest to highest (see SOURCES.md's level-name discussion):
 

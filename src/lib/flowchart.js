@@ -13,7 +13,7 @@
 // Grey wires run along the spine; the taken path is routed orthogonally through the gaps (and under any scene it
 // skipped). Colours come from --fc-* custom properties that each host maps onto its palette.
 
-const PAD=20,GAP=30,BRK=9,NODE_W=150,EVENT_W=132,START_W=104,END_W=236,ROW_GAP=3,GRID_GAP=10,GROUP_PAD=14,CAPTION=15,LANE_GAP=40,LANE_LABEL=28,MAX_ROWS=7,CUT_GAP=40,CHAIN_GAP=22,END_GAP=12;
+const PAD=20,GAP=30,BRK=9,NODE_W=150,EVENT_W=132,START_W=104,END_W=236,ROW_GAP=3,GRID_GAP=10,GROUP_PAD=14,CAPTION=15,LANE_GAP=40,LANE_LABEL=28,MAX_ROWS=7,CUT_GAP=56,CHAIN_GAP=NODE_W,END_GAP=12;
 const LABEL=9.5,LABEL_LINE=11.5,LABEL_LS=.45,END_SIZE=11.5,END_LINE=14,BIG=22,BIG_LINE=24,HEAD_TOP=110;
 
 export const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -95,7 +95,7 @@ function measure(c,all,chain=[]){
   return {c,type:'event',w:EVENT_W,h,up:h/2,down:h/2,lines}}
  const g=grid(visibleOptions(c,all),{badges:c.kind==='hub'});
  const b={c,type:c.kind==='hub'?'hub':'stack',g,w:g.w,h:g.h,up:g.h/2,down:g.h/2,caption:true};
- if(b.type==='hub'&&chain.length){b.chain=chain.map(x=>measure(x,all));const cw=b.chain.reduce((s,x)=>s+x.w+2*BRK,0)+(b.chain.length-1)*CHAIN_GAP+24;
+ if(b.type==='hub'&&chain.length){b.chain=chain.map(x=>measure(x,all));const cw=b.chain.reduce((s,x)=>s+x.w+2*BRK,0)+(b.chain.length-1)*CHAIN_GAP+40;
   b.chainUp=Math.max(...b.chain.map(x=>x.up+(x.type==='stack'?CAPTION:0)));b.chainDown=Math.max(...b.chain.map(x=>x.down));
   b.w=Math.max(b.w,cw);b.down=g.h/2+CUT_GAP+b.chainUp+b.chainDown}
  return b}
@@ -131,13 +131,26 @@ export function layoutChapter(flow,{showUntaken=true}={}){
   const top=y+(multi?LANE_LABEL:0),mid=top+up+4;
   for(const r of runs)if(r.key){r.y=mid-r.up-GROUP_PAD-headOf(r);r.h=mid+r.down+GROUP_PAD-r.y}
   for(const b of blocks){b.y=mid-b.h/2;
-   if(b.chain){const rowMid=mid+b.h/2+CUT_GAP+b.chainUp;let cx=b.x+12+BRK;b.rowMid=rowMid;for(const k of b.chain){k.x=cx;k.y=rowMid-k.h/2;cx+=k.w+2*BRK+CHAIN_GAP}}}
+   if(b.chain){const rowMid=mid+b.h/2+CUT_GAP+b.chainUp;let cx=b.x+20+BRK;b.rowMid=rowMid;for(const k of b.chain){k.x=cx;k.y=rowMid-k.h/2;cx+=k.w+2*BRK+CHAIN_GAP}}}
   const endX=x+16;let ey=mid-endH/2;for(const e of ends){e.x=endX;e.y=ey;ey+=e.h+END_GAP}
   const width=endX+(ends.length?END_W:0)+PAD,bottom=mid+down+12;
   lanes.push({lane,top:y,labelY:top-10,mid,start:{x:PAD,y:mid-11,w:START_W,h:22},blocks,runs,ends,width,bottom});
   y=bottom+LANE_GAP}
  const width=Math.max(header.w,...lanes.map(l=>l.width));
  return {flow,header,lanes,width:Math.ceil(width),height:Math.ceil((lanes.at(-1)?.bottom??header.h)+PAD),showUntaken}}
+
+// The boxes a laid-out chapter draws, for overlap checks (tests/flowchart.test.mjs): every scene block with its brackets
+// and caption, every cut-in block, the "CUT-IN" label, the endings, and each group frame with the blocks it holds.
+export function layoutBoxes(L){const out=[];
+ for(const [li,l] of L.lanes.entries()){
+  const box=(b,kind,extra={})=>{if(b.type==='event')return {kind,id:b.c.id,lane:li,x:b.x-BRK,y:b.y,w:b.w+2*BRK,h:b.h,...extra};
+   const gx=b.x+(b.w-b.g.w)/2,capH=b.caption?CAPTION:0;return {kind,id:b.c.id,lane:li,x:gx-BRK,y:b.y-2-capH,w:b.g.w+2*BRK,h:b.g.h+4+capH,...extra}};
+  for(const b of l.blocks){const hb=box(b,'block');out.push(hb);
+   if(b.chain){const gx=b.x+(b.w-b.g.w)/2;out.push({kind:'cutin-label',id:b.c.id,lane:li,x:gx-6+10,y:b.y+b.g.h+16-9,w:textWidth('CUT-IN · AFTER ACTION 10',8.5,.7),h:11});
+    b.chain.forEach((k,i)=>out.push(box(k,'cutin',{hub:b.c.id,index:i,hubBottom:b.y+b.g.h})))}}
+  for(const e of l.ends)out.push({kind:'end',id:e.e.label,lane:li,x:e.x-4,y:e.y-3,w:END_W+8,h:e.h+6});
+  for(const r of l.runs)if(r.key)out.push({kind:'group',id:r.key,lane:li,x:r.x,y:r.y,w:r.w,h:r.h,members:r.blocks.flatMap(b=>[b.c.id,...(b.chain??[]).map(k=>k.c.id)])})}
+ return out}
 
 function headerLayout(flow){const w=Math.max(380,textWidth(flow.title.toUpperCase(),30,.6)+PAD*2+10);
  // Stat chips wrap onto extra rows only when they would run past a generous width.
@@ -226,12 +239,15 @@ function renderLane(l,{interactive,multi,width}){const out=[],wires=[],path=[],n
     const first=b.chain[0].c,chainOn=b.chain.some(k=>k.c.visited),lx=gx-6,rx=gx+g.w+6,ry=b.rowMid,bx=b.chain.at(-1).x+b.chain.at(-1).w+BRK;
     const after=first.cutinAfter!=null&&first.visited?` · AFTER ACTION ${first.cutinAfter}`:'';
     deco.push(`<text class="fc-cut" x="${r1(lx+10)}" y="${r1(bot+16)}" font-size="8.5" aria-hidden="true">CUT-IN${esc(after)}</text>`);
-    wires.push(`M${r1(lx)} ${r1(bot+2)}V${r1(ry)}H${r1(b.chain[0].x-BRK)}M${r1(bx)} ${r1(ry)}H${r1(Math.max(rx,bx+12))}V${r1(bot+6)}`);
-    deco.push(`<path class="fc-arrow${chainOn?' on':''}" d="M${r1(Math.max(rx,bx+12)-3.5)} ${r1(bot+8)}l3.5 -5.5l3.5 5.5z"/>`);
+    // In: down from under the hub's left bracket into the middle of the gap, across to the left of the first cut-in, and
+    // down beside it, so the wire never crosses a box. Out: right past the last cut-in and the hub, then up into it.
+    const ex=Math.min(lx,b.chain[0].x-BRK-10),gy2=bot+CUT_GAP/2,inRoute=`M${r1(lx)} ${r1(bot+2)}V${r1(gy2)}H${r1(ex)}V${r1(ry)}H${r1(b.chain[0].x-BRK)}`,RX=Math.max(rx,bx)+12;
+    wires.push(inRoute+`M${r1(bx)} ${r1(ry)}H${r1(RX)}V${r1(bot+6)}`);
+    deco.push(`<path class="fc-arrow${chainOn?' on':''}" d="M${r1(RX-3.5)} ${r1(bot+8)}l3.5 -5.5l3.5 5.5z"/>`);
     const saved={taken,skipped};taken={x:lx,y:bot+2};skipped=[];
-    if(chainOn){path.push(`M${r1(lx)} ${r1(bot+2)}V${r1(ry)}`);taken={x:lx,y:ry}}
+    if(chainOn){path.push(inRoute.replace(/H[-\d.]+$/,''));taken={x:ex,y:ry}}
     b.chain.forEach((k,i)=>{if(i)wires.push(`M${r1(b.chain[i-1].x+b.chain[i-1].w+BRK)} ${r1(ry)}H${r1(k.x-BRK)}`);drawBlock(k,{inChain:true,rowMid:ry})});
-    if(chainOn){path.push(route(taken,{x:Math.max(rx,bx+12),y:ry},null)+`V${r1(bot+8)}`)}
+    if(chainOn){path.push(route(taken,{x:RX,y:ry},null)+`V${r1(bot+8)}`)}
     taken=saved.taken;skipped=saved.skipped}
    return}
   // A stack: in to the chosen option, out of the last one chosen.

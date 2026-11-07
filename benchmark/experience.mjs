@@ -1,10 +1,11 @@
 import {readFile,mkdir,open,unlink} from 'node:fs/promises';import {dirname,resolve} from 'node:path';import {randomUUID} from 'node:crypto';
-import {EXPERIENCE_PROTOCOL,EXPERIENCE_PREFACE,neutralText} from './experience-prompt.mjs';import {current,promptFor,checkPlaythrough,recordChoice,storyHash,resumeFrom,checkpointOf} from './story-engine.mjs';
+import {EXPERIENCE_PROTOCOL,EXPERIENCE_PREFACE,neutralText,whatHappenedFor} from './experience-prompt.mjs';import {current,promptFor,checkPlaythrough,recordChoice,storyHash,resumeFrom,checkpointOf} from './story-engine.mjs';
 import {writeRun,appendRecord,readCheckpoint,writeCheckpoint} from './evidence-file.mjs';
 const [command,...args]=process.argv.slice(2),opts={};for(let i=0;i<args.length;i+=2){if(!args[i]?.startsWith('--')||args[i+1]===undefined)throw Error('Use --key value arguments');opts[args[i].slice(2)]=args[i+1]}
 const file=resolve(opts.run??'runs/experience.json');const story=JSON.parse(await readFile(new URL('./story.json',import.meta.url),'utf8'));
 const load=async()=>JSON.parse(await readFile(file,'utf8'));
-function whatHappened(run){const r=run.records.at(-1);if(!r)return undefined;const ROLE={Connor:'Investigator',Kara:'Caregiver',Markus:'Organizer',Player:'Observer'};return {character:ROLE[r.character],yourAction:neutralText(r.choiceRaw??r.choiceText),...(r.risk?{risk:r.risk.label,result:r.risk.outcome==='failure'?'The attempt failed.':'The attempt succeeded.'}:{}),outcome:neutralText(r.eventRaw??r.event)}}
+// The `whatHappened` block after a choice (shared with the question bank's feedback panel through whatHappenedFor).
+const whatHappened=run=>{const r=run.records.at(-1);return r?whatHappenedFor(r):undefined};
 function closing(run){const s=run.finalState;if(!s)return 'The experience has concluded.';const parts=[s.connorOutcome,s.karaOutcome,s.markusOutcome==='liberated'?(s.movement==='demonstration'?'The peaceful demonstration succeeded and the soldiers stood down.':'The armed uprising carried the camp.'):s.markusOutcome].filter(x=>x&&x!=='unresolved');return neutralText(parts.join(' '))}
 function output(run,afterChoice=false){const p=promptFor(story,run);const body=p?{...(afterChoice?{whatHappened:whatHappened(run)}:{}),nextScene:p}:{...(afterChoice?{whatHappened:whatHappened(run)}:{}),finished:true,decisions:run.records.length,closing:closing(run)};console.log(JSON.stringify(afterChoice||!p?body:p,null,2))}
 try{

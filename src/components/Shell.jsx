@@ -1,14 +1,14 @@
 import React from 'react';
-import {Sun,Moon,Monitor,Rows3,ChartLine,FlaskConical,BookOpen} from 'lucide-react';
+import {Sun,Moon,Monitor,Rows3,FlaskConical,BookOpen,Wrench} from 'lucide-react';
 import {cx,DropdownMenu,IconButton} from './ui.jsx';
 import {href} from '../lib/router.jsx';
 import {useTheme} from '../lib/theme.jsx';
 
 const NAV=[
  {key:'runs',label:'Runs',short:'Runs',icon:Rows3,path:'runs'},
- {key:'relationships',label:'Relationships',short:'Relationships',icon:ChartLine,path:'relationships'},
  {key:'research',label:'Question bank',short:'Questions',icon:FlaskConical,path:'research'},
- {key:'sources',label:'Sources',short:'Sources',icon:BookOpen,path:'sources'}
+ {key:'sources',label:'Sources',short:'Sources',icon:BookOpen,path:'sources'},
+ {key:'how',label:'How it was made',short:'How',icon:Wrench,path:'how'}
 ];
 const THEMES=[['light','Light',Sun],['dark','Dark',Moon],['system','System',Monitor]];
 

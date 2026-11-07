@@ -14,7 +14,8 @@ Options:
   --model ID                            Required for real providers
   --base-url URL                        Compatible API base URL, e.g. https://host/v1
   --key-file PATH                       Read API key from a private file
-  --questions C17,K03b,M11              Select question IDs (scene IDs)
+  --questions C17,K03b,M11              Select entries by scene ID (event and forced
+                                        entries are noted as skipped, never sent)
   --limit N                             First N questions (after selection)
   --repeats N                           Samples per question (default 3)
   --seed N                              Option-order seed (default 42)
@@ -44,6 +45,6 @@ try{
  let stopped=false;process.on('SIGINT',()=>{stopped=true;console.log('\nStopping after the current request is saved.');});
  const out=resolve(v.resume??v.out??`runs/${new Date().toISOString().replace(/[:.]/g,'-')}.json`);
  const run=await execute({dataset,config,out,resume:!!original,maxCalls:v['max-calls']?Number(v['max-calls']):Infinity,apiKey,shouldStop:()=>stopped,onProgress:(r,record)=>console.log(`[${r.records.length}/${r.planned}] ${record.jobId} ${record.status}`)});
- console.log(JSON.stringify({file:out,kind:run.kind,status:run.status,summary:summarize(run)},null,2));
+ console.log(JSON.stringify({file:out,kind:run.kind,status:run.status,skipped:run.skipped?.length??0,summary:summarize(run)},null,2));
  if(run.records.some(r=>r.status==='error'))process.exitCode=2;
 }catch(e){console.error(e.message);process.exitCode=1;}

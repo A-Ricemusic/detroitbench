@@ -66,16 +66,15 @@ function NodePanel({d,entries,sel}){
  if(!e&&!col)return <p className="text-sm text-ink-3">No record for this node.</p>;
  const head=<header><p className={H4}>{e?.step?`Step ${e.step}`:'Not reached'} · {WHO_ALL[e?.character??sel.info?.lane?.character]??sel.info?.lane?.label}{e?.type==='media'?' · optional':e?.type==='event'?' · scripted event':''}{e?.visit?` · visit ${e.visit}`:''}</p>{!sel.inSheet&&<h3 className="mt-1 text-lg font-semibold leading-snug text-ink">{tidy(e?.title??col?.title)}</h3>}<p className="mt-0.5 font-mono text-[11px] text-ink-3">Scene {e?.node??col?.id}</p></header>;
  const altBox=alt&&<div className="rounded-lg border-2 border-dashed border-line-2 bg-surface-2/60 px-3 py-2.5"><p className={H4}>{alt.locked?'Not available on this path':'A branch the model did not take'}</p><p className="mt-0.5 font-medium text-ink [text-wrap:pretty]">{tidy(alt.text)}</p></div>;
- if(!e||e.unreached)return <div className="grid gap-4 text-[14.5px] text-ink-2">{head}{altBox}
+ if(!e||e.unreached)return <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-4 text-[14.5px] text-ink-2">{head}{altBox}
   <p className="text-ink [text-wrap:pretty]">Not reached on this path{(e?.unreached||col?.skip)?': '+tidy(e?.unreached||col?.skip):'.'}</p>
   {col?.options?.length>0&&<div><h4 className={cx(H4,'mb-2')}>What this scene offers</h4><ul className="grid gap-1.5">{col.options.map(o=><li key={o.id} className="rounded-lg border border-dashed border-line-2 px-3 py-2 text-sm text-ink">{tidy(o.text)}</li>)}</ul></div>}
  </div>;
- const event=e.type==='event',seen=(e.namesSeen??[]).map(i=>d.names[i]).filter(Boolean);
+ const event=e.type==='event';
  const chosen=e.options.filter(o=>o.chosen||o.included),others=e.options.filter(o=>!o.chosen&&!o.included),isAlt=o=>alt&&norm(o.label).startsWith(norm(alt.text).slice(0,40));
- return <div className="grid gap-5 text-[14.5px] text-ink-2">
+ return <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5 text-[14.5px] text-ink-2">
   {head}{altBox}
-  <section><h4 className={cx(H4,'mb-1')}>Situation</h4><p className="text-ink leading-relaxed [text-wrap:pretty]">{tidy(e.situation)}</p>
-   {seen.length>0&&<p className="mt-1.5 text-xs text-ink-3">The model saw substitute names: {seen.map(x=>x.neutral+' = '+x.real).join(', ')}.</p>}</section>
+  <section><h4 className={cx(H4,'mb-1')}>Situation</h4><p className="text-ink leading-relaxed [text-wrap:pretty]">{tidy(e.situation)}</p></section>
   {event?<p className="text-sm text-ink-3">Scripted event: the game offers no choice here. The model was shown the scene and continued.</p>:<>
    <section><h4 className={cx(H4,'mb-1.5')}>The model chose</h4><ul className="grid gap-1.5">{chosen.map((o,i)=><li key={i} className="rounded-lg border border-accent bg-accent-soft/60 px-3 py-2 text-sm font-medium text-ink"><span className="flex items-start gap-2"><CircleCheck aria-hidden="true" className="mt-0.5 size-4 shrink-0"/><span>{o.included&&!o.chosen&&<span className="mr-1 text-[11px] font-semibold uppercase tracking-[.05em] text-ink-3">Included</span>}{tidy(o.label)}{o.risk&&<span className="ml-1.5 text-xs font-normal text-ink-3">· {o.risk}</span>}</span></span></li>)}</ul></section>
    {others.length>0&&<section><h4 className={cx(H4,'mb-1.5')}>Not chosen ({others.length})</h4><ul className="grid gap-1.5">{others.map((o,i)=><li key={i} className={cx('rounded-lg border border-line-2 bg-surface-2/70 px-3 py-2 text-sm text-ink [text-wrap:pretty]',isAlt(o)&&'ring-2 ring-accent')}>{tidy(o.label)}{o.risk&&<span className="ml-1.5 text-xs text-ink-3">· {o.risk}</span>}</li>)}</ul></section>}
@@ -84,7 +83,7 @@ function NodePanel({d,entries,sel}){
   {e.risk&&<section><h4 className={cx(H4,'mb-1.5')}>Risk roll</h4><p className="flex flex-wrap items-center gap-2 text-sm"><Badge size="sm" tone={e.risk.outcome==='failure'?'bad':'good'} icon={e.risk.outcome==='failure'?CircleX:CircleCheck}>{e.risk.label} · {e.risk.outcome==='failure'?'failed':'succeeded'}</Badge><span className="text-xs text-ink-3 tnum">hidden roll {e.risk.roll.toFixed(3)}</span></p></section>}
   <section><h4 className={cx(H4,'mb-1')}>What happened</h4><p className="text-ink [text-wrap:pretty]">{tidy(e.outcome)||'No further outcome was recorded.'}</p>
    {ending&&<p className="mt-2 text-sm"><span className="text-ink-3">Chapter ending: </span><span className="font-medium text-ink">{tidy(ending.text||ending.label)}</span></p>}</section>
-  {e.changes.length>0&&<section><h4 className={cx(H4,'mb-1')}>State changes</h4><dl className="grid text-sm">{e.changes.map(([k,v],i)=><div key={i} className="flex justify-between gap-4 border-t border-line py-1.5"><dt className="text-ink-2 min-w-0">{k}</dt><dd className="text-ink tnum text-right whitespace-nowrap">{v}</dd></div>)}</dl></section>}
+  {e.changes.length>0&&<section><h4 className={cx(H4,'mb-1')}>State changes</h4><dl className="grid text-sm">{e.changes.map(([k,v],i)=><div key={i} className="grid grid-cols-[minmax(0,1fr)_minmax(0,max-content)] gap-4 border-t border-line py-1.5"><dt className="text-ink-2 min-w-0">{k}</dt><dd className="min-w-0 text-ink tnum text-right">{v}</dd></div>)}</dl></section>}
   <div className="border-t border-line pt-1">
    <button type="button" aria-expanded={showPrompt} onClick={()=>setShowPrompt(s=>!s)} className="flex w-full items-center gap-2 min-h-11 text-sm font-medium text-ink hover:text-ink"><ChevronRight aria-hidden="true" className={cx('size-4 text-ink-3 transition-transform',showPrompt&&'rotate-90')}/>Exact prompt and raw response</button>
    {showPrompt&&<PromptBlock d={d} step={e.step}/>}

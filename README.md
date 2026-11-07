@@ -6,7 +6,7 @@ A branching behavioral benchmark adapted from *Detroit: Become Human*. One model
 
 The benchmark is being rebuilt chapter by chapter to offer every prompt, clue and stat arrow of the game, using the completed in-game flowcharts and the game's own text. Dialogue options show the game's button label first, such as `CALM: …`; even prompts without a story effect are offered. Scripted events offer only Continue, and optional media scenes let the model read magazines or watch broadcasts. Repeatable hubs let it investigate or explore one action at a time.
 
-Story 1.8.0 includes rebuilt chapters 1–9, 11 and 13–28. Chapters 10, 12 and 29–32 still cover pivotal decisions only; chapter 33 is the epilogue. For the current version and scene counts, overall and per chapter, run:
+All 32 chapters are rebuilt to the game's charts and text (story 1.9.x; chapter 33 is the epilogue). For the current version and scene counts, overall and per chapter, run:
 
 ```sh
 bun run story:counts

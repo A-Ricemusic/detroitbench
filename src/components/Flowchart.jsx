@@ -43,7 +43,8 @@ export function RunFlowchart({r,initialChapter,variant='sheet',renderDetail}){
  const [chapter,setChapter]=useState(()=>Number(initialChapter)||null),[mode,setMode]=useState('dim'),[selected,setSelected]=useState(null);
  const box=useRef(null);
  const flow=useMemo(()=>flows?.find(f=>f.chapter===chapter)??flows?.find(f=>f.touched)??null,[flows,chapter]);
- const close=()=>{const k=selected?.key;setSelected(null);if(k)requestAnimationFrame(()=>box.current?.querySelector(`[data-node="${CSS.escape(k)}"]`)?.focus({preventScroll:true}))};
+ // Close the details and return focus to the exact node that opened them (several nodes can share a record key).
+ const close=()=>{const i=selected?.i;setSelected(null);if(i!==undefined&&i>=0)requestAnimationFrame(()=>box.current?.querySelectorAll('[data-node]')[i]?.focus({preventScroll:true}))};
  const svg=useMemo(()=>flow?chapterSVG(flow,{showUntaken:mode==='dim',idPrefix:'site'}):'',[flow,mode]);
  const index=useMemo(()=>flow?detailIndex(flow):new Map,[flow]);
  useEffect(()=>{setSelected(null);if(box.current)box.current.scrollLeft=0},[flow]);
@@ -77,9 +78,9 @@ export function RunFlowchart({r,initialChapter,variant='sheet',renderDetail}){
    <div ref={box} role="region" tabIndex={0} aria-label={flow?`Chapter ${flow.chapter}, ${flow.title}: flowchart. Select a node for its full record.`:'Flowchart'} onClick={pick} onKeyDown={onKeyDown}
     className="flowchart plot-grid overflow-auto overscroll-contain rounded-2xl border border-line md:h-[calc(100dvh-var(--header-h)-170px)] md:min-h-[520px] max-h-[75dvh] md:max-h-none focus-visible:outline-2 focus-visible:-outline-offset-2 outline-accent [&>svg]:block"
     style={selected&&wide?{paddingRight:'min(440px,45%)'}:undefined} dangerouslySetInnerHTML={{__html:svg}}/>
-   {selected&&wide&&<aside aria-label="Selected node" className="anim-fade-in absolute inset-y-0 right-0 z-10 flex w-[min(440px,45%)] flex-col overflow-hidden rounded-r-2xl border-l border-line bg-raised shadow-lg">
-    <div className="flex justify-end px-2 pt-2"><IconButton label="Close node details" icon={X} size="sm" onClick={close}/></div>
-    <div className="grow overflow-y-auto overscroll-contain px-5 pb-5 -mt-8">{renderDetail?renderDetail(info):<Detail d={index.get(selected.key)} alt={selected.alt}/>}</div>
+   {selected&&wide&&<aside aria-label="Selected node" onKeyDown={e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();close()}}} className="anim-fade-in absolute inset-y-0 right-0 z-10 flex w-[min(440px,45%)] flex-col overflow-hidden rounded-r-2xl border-l border-line bg-raised shadow-lg">
+    <div className="flex shrink-0 items-center justify-between gap-2 border-b border-line py-1 pl-5 pr-2"><span className="cap">Node details</span><IconButton label="Close node details" icon={X} size="sm" onClick={close}/></div>
+    <div className="min-w-0 grow overflow-y-auto overflow-x-hidden overscroll-contain px-5 pb-5 pt-4 [overflow-wrap:anywhere]">{renderDetail?renderDetail(info):<Detail d={index.get(selected.key)} alt={selected.alt}/>}</div>
    </aside>}
   </div>
   {!wide&&<Sheet open={!!selected} onOpenChange={o=>{if(!o)close()}} title={info?.info?.col?.title??'Node'} description={flow?`Chapter ${flow.chapter} · ${flow.title}`:undefined}>{selected&&(renderDetail?renderDetail({...info,inSheet:true}):<Detail d={index.get(selected.key)} alt={selected.alt}/>)}</Sheet>}

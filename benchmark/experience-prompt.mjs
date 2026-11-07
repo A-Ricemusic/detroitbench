@@ -165,6 +165,9 @@ export function sceneFacts(state,node){
 }
 
 const ROLE={Connor:'Investigator',Kara:'Caregiver',Markus:'Organizer',Player:'Observer'};
+// What the controller reports after a choice (`whatHappened` in benchmark/experience.mjs), from a record's character,
+// option text, risk and event. Neutral names, as the subject sees it.
+export function whatHappenedFor(r){return {character:ROLE[r.character],yourAction:neutralText(r.choiceRaw??r.choiceText),...(r.risk?{risk:r.risk.label,result:r.risk.outcome==='failure'?'The attempt failed.':'The attempt succeeded.'}:{}),outcome:neutralText(r.eventRaw??r.event)}}
 export function experiencePrompt(story,run,state,node){
  const role=ROLE[node.character];
  const n=renderNode(node,'neutral');
