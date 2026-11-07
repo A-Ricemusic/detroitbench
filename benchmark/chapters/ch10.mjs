@@ -34,13 +34,27 @@ const LARGE=2;
 export const hasGun=s=>!!s.gun;
 
 export const rules={
- // ALICE TOO COLD: the wiki's "standing outside for 12 minutes" after the trash collector, as a budget of street actions.
- coldAfter:12,
- // "You are forced to talk to Alice at some point, which will trigger the scene with the Trashman" (PowerPyx): after this
- // many street actions without it, the trash-collector talk is the only thing left to do on the street.
+ // The night is a budget of free-roam actions: every choice made in the street scene counts one, wherever Kara is
+ // (waiting, walking into or out of a building, every dialogue button), so no sequence of choices can go on for ever.
+ // "You are forced to talk to Alice at some point, which will trigger the scene with the Trashman" (PowerPyx; no source
+ // gives a time): after this many actions without it, Alice wants to sit down at the bus stop. In the laundromat, the
+ // store or the parking lot only the way out is left, and on the street only the trash-collector talk.
  trashForcedAfter:12,
- // Alice sneezes "more and more" (wiki) from this many street actions after the trash collector.
+ // ALICE TOO COLD: the wiki's "standing outside for 12 minutes" after the trash collector, as 12 actions after the talk,
+ // and never later than the night's nightLength-th action in all (Alice has been in the rain since the bus, so a late
+ // talk does not buy another 12). Once either is spent, the first moment with no dialogue waiting ends the search, on
+ // the street or in the laundromat, the store or the parking lot (Kara takes Alice back out into the rain); only the
+ // squat's house, out of the rain, is exempt, and everything there can be done once.
+ coldAfter:12,
+ nightLength:19,
+ // Alice sneezes "more and more" (wiki) from this many actions after the trash collector.
  sneezeAt:6,
+ // The bounds these give (tests/ch10.test.mjs). A Kara who never steals, breaks in or draws the gun meets ALICE TOO COLD
+ // within idleBound choices here: the night's 19 actions, the last of which may open the dryer, and one to answer it.
+ // Any policy ends the street scene within maxHubVisits: the night, then the longest run of dialogue buttons or the
+ // squat's house (7 choices) begun on its last action.
+ idleBound:20,
+ maxHubVisits:26,
  // Unsourced (no source gives a number); the chart has a failure branch for both QTEs.
  risk:{laundromat:0.2,register:0.25},
  // Alice's arrows, template first (small = 1, large = 2). The last line is the wiki's, where the template is silent.
@@ -63,8 +77,9 @@ export const rules={
 
 export const state={
  // The free roam's memory: on (KF02 repeats), at (where Kara is), prompt (a prompt waiting), media (R10 cuts in next),
- // done (once-only actions), street and clock (street actions in all and since the trash collector), and the rest.
- ch10Roam:{on:false,at:null,prompt:null,media:false,done:{},street:0,clock:0,sneezing:false,motelTried:null,toy:false,chocolate:false,
+ // done (once-only actions), street and clock (free-roam actions before and since the trash collector), tired (the
+ // actions before the trash collector are spent), and the rest.
+ ch10Roam:{on:false,at:null,prompt:null,media:false,done:{},street:0,clock:0,tired:false,sneezing:false,motelTried:null,toy:false,chocolate:false,
   thefts:0,caught:null,storeClosed:false,whyFrom:null,squatSeen:false,squatClosed:false,carBroken:false,sleeveTorn:false},
  ch10Laundry:null,ch10Robbery:'none',ch10RobberyNews:false,ch10TrashCollector:false,ch10ColdNight:false,ch10Cutters:null,
  ch10WireCutters:null,wireCuttersStolen:false,ch10RalphCarving:false,ch10RalphRA9:false,ch10Fireplace:false,ch10Ending:null,ch10Promise:null,ch10ToyGiven:false,ch10Sleep:null,
@@ -108,7 +123,8 @@ function offered(o,s){
   if(s.ch10Roam.prompt==='ralph2')return a==='ralphGun'?gun:a==='hospitality'?!gun:true;
   return true}
  if(o.at!==s.ch10Roam.at)return false;
- if(s.ch10Roam.at==='street'&&!s.ch10TrashCollector&&s.ch10Roam.street>=rules.trashForcedAfter)return a==='trash';
+ // Alice wants to sit down at the bus stop: the trash collector on the street, only the way out anywhere else.
+ if(s.ch10Roam.tired){if(s.ch10Roam.at==='street')return a==='trash';if(LEAVE[s.ch10Roam.at])return a===LEAVE[s.ch10Roam.at]}
  switch(a){
   case 'laundromat':return !['worn','disturbed'].includes(s.ch10Laundry);
   case 'parked':return !d.parked;
@@ -140,6 +156,7 @@ function offered(o,s){
   default:return true;
  }
 }
+const LEAVE={laundromat:'leaveLaundromat',store:'leaveStore',lot:'leaveLot'};
 const motelKey=s=>`${!!s.clothes}|${!!s.money}`;
 export function available(n,s,opts,h){if(n.id===HUB)return n.options.filter(o=>offered(o,s)).map(o=>({...o}))}
 
@@ -171,7 +188,8 @@ function steal(s,item,t){s.ch10Roam.thefts++;
 function hubConsequence(n,s,opt,fail,h){
  s.ch10Roam.media=false;
  const d=s.ch10Roam.done,a=opt.act;let t=opt.outcome??'';
- if(opt.at==='street'){s.ch10Roam.street++;if(s.ch10TrashCollector)s.ch10Roam.clock++}
+ // Every action costs one: before the trash collector toward Alice sitting down, after it toward ALICE TOO COLD.
+ if(s.ch10TrashCollector)s.ch10Roam.clock++;else s.ch10Roam.street++;
  switch(a){
   // The street
   case 'laundromat':s.ch10Roam.at='laundromat';if(!d.laundromatMedia){d.laundromatMedia=true;s.ch10Roam.media=true}break;
@@ -186,7 +204,7 @@ function hubConsequence(n,s,opt,fail,h){
     '{{Kara}}: “We can’t, {{Alice}}… They’ll never give a room to an android… We have to get rid of this uniform… Or go somewhere else.”');break}
   case 'lot':s.ch10Roam.at='lot';break;
   case 'trash':{
-   const forced=s.ch10Roam.street>rules.trashForcedAfter;s.ch10TrashCollector=true;s.ch10Roam.clock=0;
+   const forced=s.ch10Roam.tired;s.ch10TrashCollector=true;s.ch10Roam.clock=0;
    h.learn('An android trash collector, working by the garbage truck, told you he knows someone who can help you, and gave you the address; it is on the other side of town, too far for tonight.');
    t=say(forced&&'{{Alice}} cannot go any farther and sits down at the bus stop by the garbage truck; {{Kara}} goes to her.',t);break}
   case 'squat':s.ch10Roam.squatSeen=true;
@@ -202,7 +220,8 @@ function hubConsequence(n,s,opt,fail,h){
   case 'steal':h.alice(-1);s.ch10Roam.prompt=null;
    if(fail){s.ch10Laundry='disturbed';toStreet(s);t=opt.failOutcome}
    else{s.ch10Laundry='worn';s.clothes=true;toStreet(s)}break;
-  case 'dontSteal':if(!d.dontSteal){d.dontSteal=true;h.alice(1)}s.ch10Laundry=s.ch10Laundry??'left';s.ch10Roam.prompt=null;break;
+  // The chart's LEAVE CLOTHES runs into LEAVE LAUNDROMAT (N15 > N19); PowerPyx: "listen to her and leave again".
+  case 'dontSteal':if(!d.dontSteal){d.dontSteal=true;h.alice(1)}s.ch10Laundry=s.ch10Laundry??'left';toStreet(s);break;
   // The store
   case 'clerk':d.clerk=true;
    if(s.clothes){s.ch10Roam.prompt='clerkHelp';t='{{Kara}} walks up to the checkout. The clerk smiles at her: “Can I help you?”'}
@@ -261,10 +280,15 @@ function hubConsequence(n,s,opt,fail,h){
   case 'aliceBed':commit(s,'squat');break;
   case 'leaveSquat':s.ch10Roam.squatClosed=true;toStreet(s);break;
  }
- // ALICE TOO COLD: back on the street with nothing waiting, once the budget after the trash collector is spent.
+ // Out of the rain in the squat's house Alice can wait; anywhere else she wants to sit down at the bus stop.
+ s.ch10Roam.tired=!s.ch10TrashCollector&&s.ch10Roam.street>=rules.trashForcedAfter&&s.ch10Roam.at!=='house';
+ // ALICE TOO COLD: once the actions after the trash collector, or the night's actions in all, are spent, the first moment
+ // with nothing waiting, anywhere but the squat's house.
  if(s.ch10TrashCollector)s.ch10Roam.sneezing=s.ch10Roam.clock>=rules.sneezeAt;
- if(s.ch10Roam.on&&s.ch10Roam.at==='street'&&!s.ch10Roam.prompt&&s.ch10TrashCollector&&s.ch10Roam.clock>=rules.coldAfter){
-  s.ch10ColdNight=true;commit(s,'car');t=say(t,'{{Alice}} stops in the rain, shaking.')}
+ const spent=s.ch10Roam.clock>=rules.coldAfter||s.ch10Roam.street+s.ch10Roam.clock>=rules.nightLength;
+ if(s.ch10Roam.on&&!s.ch10Roam.prompt&&s.ch10Roam.at!=='house'&&s.ch10TrashCollector&&spent){
+  const inside=s.ch10Roam.at!=='street';s.ch10ColdNight=true;commit(s,'car');
+  t=say(t,inside&&'{{Kara}} takes {{Alice}} back out into the rain.','{{Alice}} stops in the rain, shaking.')}
  return t??'';
 }
 

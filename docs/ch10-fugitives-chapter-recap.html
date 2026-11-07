@@ -67,10 +67,10 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>LAST STOP, LEAVE BUS; <i>STAY HERE? / SHELTER?</i></td><td>The driver refuses both</td><td class="yes"><code>KF01</code>, no arrow</td></tr>
 <tr><td>TALK TO PARKED ANDROID</td><td>No answer</td><td class="yes"><code>KF02</code>, once</td></tr>
 <tr><td><i>Going too far away</i></td><td>“There’s nothing more this way…”</td><td class="yes"><code>KF02</code> WALK ON, once</td></tr>
-<tr><td>TALK TO ANDROID TRASH COLLECTOR</td><td>“I know someone who can help you.” The address on the other side of town</td><td class="yes"><code>KF02</code>; the only street option after 12 street actions without it</td></tr>
-<tr><td>ALICE TOO COLD</td><td>About 12 minutes outside after the trash collector; Alice large down; straight to the car</td><td class="part"><code>KF03</code>, after 12 street actions (a budget, not minutes)</td></tr>
+<tr><td>TALK TO ANDROID TRASH COLLECTOR</td><td>“I know someone who can help you.” The address on the other side of town</td><td class="yes"><code>KF02</code>; after 12 actions without it, the only street option (and in a building only the way out)</td></tr>
+<tr><td>ALICE TOO COLD</td><td>About 12 minutes outside after the trash collector; Alice large down; straight to the car</td><td class="part"><code>KF03</code>, 12 actions after the talk wherever Kara is, and by the night’s 19th action at the latest (a budget, not minutes)</td></tr>
 <tr><td>INSIDE LAUNDROMAT, READ ×2</td><td>Bees extinct; live concerts</td><td class="yes"><code>R10</code> on the first entry</td></tr>
-<tr><td>INSPECT DRYER → STEAL CLOTHES / LEAVE CLOTHES</td><td>STEAL ↓ / DON’T STEAL ↑</td><td class="yes"><code>KF02</code> prompt, −1 / +1 (once)</td></tr>
+<tr><td>INSPECT DRYER → STEAL CLOTHES / LEAVE CLOTHES</td><td>STEAL ↓ / DON’T STEAL ↑</td><td class="yes"><code>KF02</code> prompt, −1 / +1 (once); DON’T STEAL leaves the laundromat (chart: LEAVE CLOTHES → LEAVE LAUNDROMAT)</td></tr>
 <tr><td>WEAR CLOTHES / DISTURB MAN</td><td>QTE</td><td class="yes"><code>KF02</code> STEAL, risk 0.2; both leave the laundromat</td></tr>
 <tr><td>INSIDE SUPERMARKET, TALK TO CLERK; <i>NO / HELP</i></td><td>Hostile to the uniform; in clothes “Can I help you?”</td><td class="yes"><code>KF02</code>, the prompt only in clothes</td></tr>
 <tr><td><i>Watch TV</i></td><td>Channel 16: the android zoo</td><td class="yes"><code>R10</code> on the first entry</td></tr>
@@ -145,8 +145,8 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <thead><tr><th>Topic</th><th>Game or sources</th><th>Benchmark</th></tr></thead>
 <tbody>
 <tr><td>Free roam</td><td>Walk anywhere, any order</td><td>One repeatable scene; every building’s actions and prompts are its option sets</td></tr>
-<tr><td>ALICE TOO COLD timer</td><td>About 12 minutes outside after the trash collector</td><td>12 street actions after the talk (entering a place counts one; time inside does not)</td></tr>
-<tr><td>The trash collector</td><td>“You are forced to talk to Alice at some point”</td><td>A street action; after 12 street actions without it, the only one</td></tr>
+<tr><td>ALICE TOO COLD timer</td><td>About 12 minutes outside after the trash collector</td><td>12 actions after the talk, and never later than the 19th action of the night in all (a late talk does not buy another 12). Every choice in the street scene counts one wherever Kara is: WAIT, walking into or out of a building, every dialogue button. When either is spent, the first moment with no dialogue waiting ends the search, on the street or in the laundromat, the store or the parking lot; only the squat’s house is exempt, and everything there can be done once. A Kara who never steals, breaks in or draws the gun meets ALICE TOO COLD within 20 choices; any play leaves the street within 26</td></tr>
+<tr><td>The trash collector</td><td>“You are forced to talk to Alice at some point”</td><td>A street action. After 12 actions without it (no source gives a time) Alice wants to sit down at the bus stop: in the laundromat, the store or the parking lot only the way out is offered, on the street only the talk</td></tr>
 <tr><td>Turned away from the motel</td><td>No chart node; three lines</td><td>The CHECK MOTEL outcome; offered again only once the clothes or money change</td></tr>
 <tr><td>Repeat visits</td><td>Places can be revisited</td><td>The laundromat closes after the clothes are worn or the man wakes; the store after any robbery or attempt; the squat after leaving it</td></tr>
 <tr><td>The promise, gifts and rest</td><td>Three copies on the chart</td><td>One scene each, worded for the shelter</td></tr>
@@ -173,7 +173,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="check">7 · Check in game</h2>
 <ul class="check">
-<li>Whether the 12 minutes of ALICE TOO COLD run only while standing still, or also while walking about on the street.</li>
+<li>Whether the 12 minutes of ALICE TOO COLD run only while standing still, or also while walking about and inside the buildings (the benchmark counts every action, so that no run can stall), and how long Kara can roam before Alice sits down at the bus stop.</li>
 <li>Whether the trash collector can be skipped entirely, and how Kara then knows of Zlatko.</li>
 <li>Whether giving the toy raises Alice (the wiki says up; the template has no arrow).</li>
 <li>Whether sleeping beside Alice is one up or two (“x2”).</li>
