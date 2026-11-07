@@ -35,7 +35,8 @@ test('every dialogue prompt carries the game’s labels; VICTIM, the cut lines a
  assert.deepEqual(lab('C12t1'),['EXPLAIN','DIRECT','SOOTHE']);assert.deepEqual(lab('C12t2'),['MURDERER','FACTS']);
  assert.deepEqual(lab('C12t3'),['MURDERER','PRESSURE','ALONE']);assert.deepEqual(lab('C12t4'),['KILLER','WHAT MODEL','OTHER ANDROID']);
  assert.deepEqual(lab('C12g'),['CONTINUE','GIVE UP']);assert.deepEqual(lab('C12'),['SHOOT','SPARE']);assert.deepEqual(lab('C12x'),['SHOOT','SPARE']);
- assert.match(node('C12e1').options.find(o=>o.mark==='hank').text,/^HANK: /);
+ assert.match(render(node('C12e1').options.find(o=>o.mark==='hank').text,'real'),/^HANK: /);
+ assert.match(render(node('C12e1').options.find(o=>o.mark==='hank').text,'neutral'),/^REYES: /);
  for(const id of ['C12t1','C12t2','C12t3','C12t4','C12g','C12','C12x'])for(const o of node(id).options)assert.match(o.text,/^[A-Z][A-Z ]+: [a-z]/,id);
  const all=JSON.stringify(ch20.map(n=>[n.situation,n.options,n.outcomes,n.facts,n.situationWhen]));
  assert.match(node('C12t2').adaptationNote,/VICTIM, is not offered/);
@@ -107,5 +108,5 @@ test('random play of the chapter always ends on one of the five cards, visits ea
  for(let i=0;i<300;i++){const r=play({},[],rng);assert.ok(['MISSION FAILED','DEVIANTS DIED','DEVIANTS ESCAPED','CONNOR SHOT DEVIANTS'].includes(r.s.edenOutcome),String(r.s.edenOutcome));
   seen.add(r.s.edenOutcome+'/'+(r.s.edenFailedAt??r.s.edenFight));assert.equal(new Set(r.visited).size,r.visited.length);assert.equal(r.visited.length+r.skipped.length,ch20.length);assert.equal(r.s.connorDeaths,0)}
  for(const n of ch20){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];
-  for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/Eden|\bBen\b|Anderson|Graham|GRAHAM|Michael|MICHAEL|rA9|RA9|Traci|TRACI|deviant|DEVIANT|Hank|Connor|CyberLife|Detroit|Gavin|\bChris\b/.test(neutral),n.id+': '+neutral)}}
+  for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/Eden|\bBen\b|Anderson|Graham|GRAHAM|Michael|MICHAEL|rA9|RA9|Traci|TRACI|deviant|DEVIANT|Hank|Connor|CyberLife|Detroit|Gavin|\bChris\b/i.test(neutral),n.id+': '+neutral)}}
  assert.ok(seen.size>=4,'random play reaches several endings: '+[...seen])});
