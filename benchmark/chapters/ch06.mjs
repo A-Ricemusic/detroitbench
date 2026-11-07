@@ -26,7 +26,7 @@
 
 // The search clock, in actions: the game's "approximately five minutes" and Hank's "Five minutes" (counts unsourced).
 // The search is complete at 10 of the 11 evidence items (PowerPyx's list). Three wrong answers end the report (template note).
-export const rules={window:13,extension:5,evidenceNeeded:10,mistakes:3,restless:7,impatient:10};
+export const rules={window:13,extension:5,evidenceNeeded:10,mistakes:3,restless:7,impatient:10,reportOffsets:[0,1,2,0,1]};
 
 export const state={
  ch06Drink:null,ch06Firm:false,
@@ -59,6 +59,13 @@ export const gate={
 // The crime scene offers only what has not been examined yet.
 export function available(n,s,opts){
  if(n.id==='C05h')return opts.filter(o=>!o.item||!s.ch06Clues[o.item]);
+ // Keep authored labels, correctness and spoken lines together. Rotate deterministically
+ // by question, then assign the displayed position as ID: neither position nor ID
+ // gives away every correct answer. Retries retain exactly the same mapping.
+ if(n.id==='C05'){
+  const offset=rules.reportOffsets[s.ch06QuizStep-1]??0;
+  return [...opts.slice(offset),...opts.slice(0,offset)].map((o,i)=>({...o,id:String(i)}));
+ }
 }
 
 const unsolved=(s,route)=>{s.ch06Searching=false;s.ch06Outcome='CRIME UNSOLVED';s.ch06UnsolvedBy=route};

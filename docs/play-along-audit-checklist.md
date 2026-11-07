@@ -838,20 +838,20 @@ Gaps:
 - (0) …IN THE KITCHEN: the fight started in the kitchen.  _needs ch06QuizStep = 1_
 - (1) …IN THE LIVING ROOM: the fight started in the living room.  _needs ch06QuizStep = 1_
 - (2) …IN THE BATHROOM: the fight started in the bathroom.  _needs ch06QuizStep = 1_
-- (0) …WITH THE BAT: the victim attacked the android with the bat.  _needs ch06QuizStep = 2_
-- (1) …WITH THE KNIFE: the victim attacked the android with the knife.  _needs ch06QuizStep = 2_
-- (2) …WITHOUT A WEAPON: the victim attacked the android with his bare hands.  _needs ch06QuizStep = 2_
-- (0) THE ANDROID STABBED THE VICTIM: the android stabbed him.  _needs ch06QuizStep = 3_
-- (1) THE ANDROID THREW THE CHAIR: the android threw the chair at him.  _needs ch06QuizStep = 3_
-- (2) THE VICTIM STABBED THE ANDROID: the victim stabbed the android.  _needs ch06QuizStep = 3_
-- (0) … THE LIVING ROOM: the victim fled to the living room.  _needs ch06QuizStep = 4_
-- (1) …THE GARDEN: the victim fled to the garden.  _needs ch06QuizStep = 4_
-- (2) …THE BATHROOM: the victim fled to the bathroom.  _needs ch06QuizStep = 4_
+- (0) …WITH THE BAT.: the victim attacked the android with the bat.  _needs ch06QuizStep = 2_
+- (1) …WITH THE KNIFE.: the victim attacked the android with the knife.  _needs ch06QuizStep = 2_
+- (2) …WITHOUT A WEAPON.: the victim attacked the android with his bare hands.  _needs ch06QuizStep = 2_
+- (0) THE ANDROID STABBED THE VICTIM.: the android stabbed him.  _needs ch06QuizStep = 3_
+- (1) THE ANDROID THREW THE CHAIR.: the android threw the chair at him.  _needs ch06QuizStep = 3_
+- (2) THE VICTIM STABBED THE ANDROID.: the victim stabbed the android.  _needs ch06QuizStep = 3_
+- (0) … THE LIVING ROOM.: the victim fled to the living room.  _needs ch06QuizStep = 4_
+- (1) …THE GARDEN.: the victim fled to the garden.  _needs ch06QuizStep = 4_
+- (2) …THE BATHROOM.: the victim fled to the bathroom.  _needs ch06QuizStep = 4_
 - (0) …WITH THE KNIFE: the android killed him with the knife.  _needs ch06QuizStep = 5_
-- (1) …WITH THE BAT: the android killed him with the bat.  _needs ch06QuizStep = 5_
-- (2) …WITHOUT A WEAPON: the android killed him with its bare hands.  _needs ch06QuizStep = 5_
+- (1) …WITH THE BAT.: the android killed him with the bat.  _needs ch06QuizStep = 5_
+- (2) …WITHOUT A WEAPON.: the android killed him with its bare hands.  _needs ch06QuizStep = 5_
 
-_Note: The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with its three buttons in the game’s order (in every one the correct answer happens to be the first button). A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with Hank’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: Hank points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with the template’s two Hank small ups (+1 for the reconstruction, +1 when Hank is impressed by the thirium explanation). The chapter page’s separate “Failing to solve the crime” down is not added on top._
+_Note: The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with the game’s three button labels; the module rotates their display order deterministically by question and remaps IDs to positions (correct positions 1, 3, 2, 1, 3), a deliberate departure from the template order to remove the always-first answer cue. A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with Hank’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: Hank points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with the template’s two Hank small ups (+1 for the reconstruction, +1 when Hank is impressed by the thirium explanation). The chapter page’s separate “Failing to solve the crime” down is not added on top._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

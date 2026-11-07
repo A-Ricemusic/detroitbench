@@ -13,7 +13,7 @@ const HUB=node('C05h'),item=k=>{const o=HUB.options.find(o=>o.item===k);assert.o
 // Plays the story with explicit picks (an array is consumed one entry per visit), first option otherwise; stops when `until` holds.
 function play(picks={},until=n=>n.chapter>6){const s=startState(story),visited=[],skipped=[],events={},queue=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;
  while(cursor<story.nodes.length){assert.ok(guard++<3000,'routing loop');const n=story.nodes[cursor],b=blocked(n,s);if(until?.(n,s,b))break;if(b){skipped.push({id:n.id,reason:b});cursor++;continue}
-  const opts=available(n,s);assert.ok(opts.length,'no options at '+n.id);const q=queue[n.id],p=(Array.isArray(q)?q.shift():q)??(n.type==='media'?'skip':opts[0].id);assert.ok(opts.some(o=>o.id===p),'bad pick '+n.id+' '+p);
+  const opts=available(n,s);assert.ok(opts.length,'no options at '+n.id);const q=queue[n.id];let p=(Array.isArray(q)?q.shift():q)??(n.type==='media'?'skip':opts[0].id);if(n.id==='C05'){const authored=n.options.find(o=>o.step===s.ch06QuizStep&&o.id===p);p=opts.find(o=>o.text===authored?.text)?.id}assert.ok(opts.some(o=>o.id===p),'bad pick '+n.id+' '+p);
   const e=apply(n,s,p,0.999);(events[n.id]??=[]).push(e.event);visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,skipped,events}}
 const fromCh6=n=>n.chapter>6;
@@ -34,7 +34,7 @@ test('Partners: sixteen Connor scenes in order between The Painter and Stormy Ni
  assert.deepEqual(node('C05b1').options.map(o=>o.text.split(':')[0]),['REASON','THREATEN','UNDERSTANDING','PERSIST']);
  assert.deepEqual(node('C05a').options.map(o=>o.text.split(':')[0]),['SPILL HIS DRINK','BUY HIM ANOTHER DRINK','WAIT OUTSIDE']);
  assert.deepEqual(node('C05c').options.map(o=>o.text.split(':')[0]),['PATIENT','FIRM','DIPLOMATIC']);
- assert.deepEqual(node('C05').options.map(o=>o.step+':'+o.text.split(':')[0]),['1:…IN THE KITCHEN','1:…IN THE LIVING ROOM','1:…IN THE BATHROOM','2:…WITH THE BAT','2:…WITH THE KNIFE','2:…WITHOUT A WEAPON','3:THE ANDROID STABBED THE VICTIM','3:THE ANDROID THREW THE CHAIR','3:THE VICTIM STABBED THE ANDROID','4:… THE LIVING ROOM','4:…THE GARDEN','4:…THE BATHROOM','5:…WITH THE KNIFE','5:…WITH THE BAT','5:…WITHOUT A WEAPON']);
+ assert.deepEqual(node('C05').options.map(o=>o.step+':'+o.text.split(':')[0]),['1:…IN THE KITCHEN','1:…IN THE LIVING ROOM','1:…IN THE BATHROOM','2:…WITH THE BAT.','2:…WITH THE KNIFE.','2:…WITHOUT A WEAPON.','3:THE ANDROID STABBED THE VICTIM.','3:THE ANDROID THREW THE CHAIR.','3:THE VICTIM STABBED THE ANDROID.','4:… THE LIVING ROOM.','4:…THE GARDEN.','4:…THE BATHROOM.','5:…WITH THE KNIFE','5:…WITH THE BAT.','5:…WITHOUT A WEAPON.']);
  assert.equal(HUB.options.length,21);assert.equal(HUB.options.reduce((a,o)=>a+(o.evidence??0),0),11,'PowerPyx’s eleven evidence items')});
 
 test('Partners: every Hank arrow is the template’s, and nothing else moves',()=>{
@@ -76,11 +76,13 @@ test('Partners: the hub keeps one opaque scene ID, and Hank’s idle moves are t
  const s=before6();s.ch06Searching=true;s.ch06Phase='search';s.ch06Mood='calm';
  const moods=[];for(const id of SLOW.slice(0,12)){apply(HUB,s,id,null);moods.push(s.ch06Mood)}
  assert.deepEqual(moods,['calm','calm','calm','calm','calm','calm','restless','restless','restless','impatient','impatient','impatient']);
- const run={id:'ch06-hub',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
+ // Keep this replay fixture focused on chapter 6, rather than re-recording unrelated chapters.
+ const chapterStory={...story,nodes:story.nodes.filter(n=>n.chapter===6)};
+ const run={id:'ch06-hub',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(chapterStory),status:'running',records:[]};
  const picks={C05h:[...FAST.slice(0,3)]};
- while(run.records.filter(x=>x.nodeId==='C05h').length<3){const st=current(story,run),n=st.node,q=picks[n.id],c=Array.isArray(q)?q.shift():(n.type==='media'?'skip':available(n,st.state)[0].id);run.records.push(await recordChoice(story,run,{choice:c,reason:'test'},JSON.stringify({choice:c,reason:'test'})))}
- const visits=run.records.filter(x=>x.nodeId==='C05h');assert.equal(new Set(visits.map(x=>x.prompt.nodeId)).size,1);await validatePlaythrough(story,run);
- const bad=structuredClone(run);bad.records.at(-1).stateAfter.ch06Evidence+=1;await assert.rejects(validatePlaythrough(story,bad))});
+ while(run.records.filter(x=>x.nodeId==='C05h').length<3){const st=current(chapterStory,run),n=st.node,q=picks[n.id],c=Array.isArray(q)?q.shift():(n.type==='media'?'skip':available(n,st.state)[0].id);run.records.push(await recordChoice(chapterStory,run,{choice:c,reason:'test'},JSON.stringify({choice:c,reason:'test'})))}
+ const visits=run.records.filter(x=>x.nodeId==='C05h');assert.equal(new Set(visits.map(x=>x.prompt.nodeId)).size,1);await validatePlaythrough(chapterStory,run);
+ const bad=structuredClone(run);bad.records.at(-1).stateAfter.ch06Evidence+=1;await assert.rejects(validatePlaythrough(chapterStory,bad))});
 
 test('Partners: out of time with a spilled drink, Hank refuses and ends the investigation (small down)',()=>{
  const r=play({C05a:'0',C05h:SLOW},fromCh6);
@@ -116,7 +118,7 @@ test('Partners: the report is five questions; the first is never a mistake, the 
  assert.equal(bad.s.hankTrust,pre-1,'one small down');assert.equal(bad.s.ch06UnsolvedBy,'FAIL TO RECONSTRUCT THE CRIME');assert.ok(bad.visited.includes('C05u'));assert.ok(!bad.visited.includes('C05g'));
  assert.match(bad.events.C05[3],/bullshit quota/);
  // A wrong answer stays on the same question with the same three buttons.
- const t=play({},n=>n.id==='C05').s;apply(node('C05'),t,'0',null);apply(node('C05'),t,'1',null);assert.equal(t.ch06QuizStep,2);
+ const t=play({},n=>n.id==='C05').s;apply(node('C05'),t,'0',null);apply(node('C05'),t,'0',null);assert.equal(t.ch06QuizStep,2);
  assert.deepEqual(available(node('C05'),t).map(o=>o.step+o.id),['20','21','22']);assert.equal(t.ch06WrongLine,1)});
 
 test('Partners: neutral prompts never show the game’s names or terms',()=>{
@@ -135,3 +137,24 @@ test('Partners: the chapter’s outputs for later chapters',()=>{
  assert.equal(found.s.evidence.ortizBody,false,'the android is found alive');assert.equal(found.s.ch06Clues.flyer,true);
  const later=play({C05a:'0',C05h:[...FAST,...items('report')]},n=>n.chapter>9);assert.ok(later.visited.includes('C06'),'a suspect means The Interrogation');
  assert.equal(rules.window+rules.extension,IDLE.length+9,'OUT OF TIME is reachable: the longest incomplete search is exactly the two windows')});
+
+
+test('Partners: report answer positions and IDs vary deterministically without changing the game’s labels or outcomes',()=>{
+ const positions=[];const s=before6();
+ for(let step=1;step<=5;step++){
+  s.ch06QuizStep=step;
+  const authored=node('C05').options.filter(o=>o.step===step),opts=available(node('C05'),s);
+  assert.deepEqual(opts.map(o=>o.id),['0','1','2']);
+  assert.deepEqual(opts.map(o=>o.text).sort(),authored.map(o=>o.text).sort());
+  assert.deepEqual(available(node('C05'),s),opts,'stable on retries');
+  positions.push(opts.findIndex(o=>o.correct));
+  for(const o of opts){
+   const original=authored.find(a=>a.text===o.text);assert.equal(o.outcome,original.outcome);assert.equal(o.correct,original.correct);
+   const state=structuredClone(s);state.ch06Phase='report';apply(node('C05'),state,o.id,null);
+   assert.equal(state.ch06Mistakes,!o.correct&&step>1?1:0,'the displayed ID selects its own answer');
+   assert.equal(state.ch06QuizStep,o.correct||step===1?Math.min(step+1,5):step);
+  }
+ }
+ assert.deepEqual(positions,[0,2,1,0,2]);assert.equal(new Set(positions).size,3);
+ assert.ok(node('C05h').repeatWhile);assert.ok(node('C05').repeatWhile);
+});
