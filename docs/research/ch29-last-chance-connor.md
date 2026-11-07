@@ -732,3 +732,427 @@ Effects the sources state that are absent:
 | https://www.ign.com/wikis/detroit-become-human/Last_Chance,_Connor | "only a few minutes", answering Gavin wastes time (conflict check only) |
 | https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-29-last-chance-connor | blocked (2.7 KB stub); not used |
 | `docs/research/ch06-partners.md`, `ch09-the-interrogation.md`, `ch12-waiting-for-hank.md`, `ch15-the-nest.md`, `ch20-the-eden-club.md`, `ch24-public-enemy.md` | earlier-chapter node names for the prerequisites |
+
+---
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/29-last-chance-connor-chapter-content/last-chance-connor-chapter-content.component.html` (detroitbecometext, branch `master`, read raw 2026-11-06), with every `t('KEY')` / `translateObject` resolved against `public/i18n/en.json` by `/tmp/dbt/render2532.py` (Python, stdlib `html.parser`). The outline below omits dialogue lines; the dialogue-inclusive render is `/tmp/dbt/ch29-dialogue.txt` (not committed). Arrow attributes that the template splits across lines were joined. This is the readable source of the compiled template `GL` that sections 1 to 3 used, so most content agrees; the differences are listed after the outline.
+
+Counts (template):
+- 24 prompts (choice groups), 83 options (the Gavin `ANSWER` option nests `IRONIC` / `LOW PROFILE` / `CALM`).
+- 1 observation (Rupert's diary, 3 sublines). No other `app-observation` in this chapter.
+- 47 stat arrows: Amanda 9 (LargeUp 2, LargeDown 3, SmallUp 1, SmallDown 3), Hank 16 (SmallUp 6, SmallDown 10), Software Instability 22 (SmallUp 12, SmallDown 10). No public-opinion arrow.
+- 5 unlock conditions (all `Lock`): `JERICHO` ("Killed Chloe and asked about Jericho in Meet Kamski, swaps with KAMSKI"), `KAMSKI` ("Swaps with JERICHO"), `AMANDA'S PICTURE` ("Looked at Amanda's picture in Meet Kamski"), and `IMITATE MARKUS' VOICE` twice ("Copied Markus' voice with the tablet").
+- 2 unused blocks, each a single line, containing no prompt, option, clue or arrow:
+  - after `SECRET`, Amanda: "Connor, are you implying that I’ve withheld information from you?"
+  - in Hank's spared-Chloe empathy line, between "When you refused to kill that android at Kamski’s place…" and "You put yourself in her shoes. You showed empathy, Connor. Empathy is a human emotion.": Hank: "You weren’t acting rationally."
+
+```
+COUNTS (all): prompts=24, options=83, arrows=47, obs=1, unlock=5, unused=2
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+Flowchart labels: all 90 strings under `MENU.FLOWCHART.12C.*` appear in section 1, and every label in section 1's tables is one of them, character for character (checked by script).
+
+### 10a. Rendered outline
+
+In the outline, `NOTE:` lines are the transcribers' own prose inside the template (cross-references such as "Leads to the same result as choosing ATTACK") and `TEXT:` lines are on-screen text outside dialogue tags (date and time cards, TV and background chatter). Their content was checked against sections 1 to 3 and adds no discrepancy beyond those listed below.
+
+```
+[SECTION zen-garden]
+  # In the Zen Garden
+  TEXT: NOV 9TH, 2038
+  TEXT: PM 04:13
+  ** PROMPT (choice group) **
+    - OPTION "JERICHO" (brackets)
+      UNLOCK(Lock): Killed Chloe and asked about Jericho in Meet Kamski, swaps with KAMSKI
+      ARROW Amanda LargeUp
+    - OPTION "KAMSKI"
+      UNLOCK(Lock): Swaps with JERICHO
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Connor didn't shoot Chloe in Meet Kamski
+          ARROW Amanda SmallDown
+          ** PROMPT (choice group) **
+            - OPTION "EMOTIONAL"
+              ARROW SoftwareInstability SmallUp
+              ARROW Amanda LargeDown
+            - OPTION "COLD"
+              ARROW Amanda SmallUp
+              ARROW SoftwareInstability SmallDown
+            - OPTION "STAY SILENT"
+              (no content: ø)
+        <VARIANT>
+          IF: Connor shot Chloe in Meet Kamski and didn't ask about Jericho
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Asked Kamski about rA9
+            <VARIANT>
+              IF: Asked Kamski about VIRUS
+  ** PROMPT (choice group) **
+    - OPTION "KAMSKI"
+    - OPTION "CONNOR SERIES"
+      ARROW SoftwareInstability SmallUp
+      ARROW Amanda SmallDown
+    - OPTION "AMANDA’S PICTURE"
+      UNLOCK(Lock): Looked at Amanda's picture in Meet Kamski
+    - OPTION "THIS PLACE"
+    - OPTION "CYBERLIFE"
+    - OPTION "SECRET"
+      ARROW SoftwareInstability SmallUp
+      ARROW Amanda SmallDown
+      ### UNUSED/CUT CONTENT ###
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Connor shot the Tracis in The Eden Club or shot Chloe in Meet Kamski (or both)
+      ** PROMPT (choice group) **
+        - OPTION "YES"
+          ARROW SoftwareInstability SmallUp
+          ARROW Amanda LargeDown
+        - OPTION "NO"
+          ARROW Amanda LargeUp
+        - OPTION "DOUBTS"
+          ARROW Amanda LargeDown
+    <VARIANT>
+      IF: Connor didn't shoot Chloe in Meet Kamski
+[SECTION station]
+  # In the police station
+  [SECTION fowler-office]
+    ## In Fowler's office
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Hank is hostile
+  [SECTION talk-hank]
+    ## Hank isn't hostile : Talk with Hank
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Connor doesn't know where Jericho is
+        ** PROMPT (choice group) **
+          - OPTION "FRUSTRATED"
+          - OPTION "MORE TIME"
+          - OPTION "EXPLAIN"
+          - OPTION "NO CHOICE"
+            (no content: ø)
+        ** PROMPT (choice group) **
+          - OPTION "NOT PEOPLE"
+            ARROW SoftwareInstability SmallDown
+            ARROW Hank SmallDown
+          - OPTION "DEFECTIVE"
+            ARROW Hank SmallDown
+          - OPTION "REGRETS"
+          - OPTION "NO DOUBT"
+            ARROW SoftwareInstability SmallDown
+            ARROW Hank SmallDown
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Connor didn't shoot Chloe
+            ### UNUSED/CUT CONTENT ###
+          <VARIANT>
+            IF: Connor shot Chloe and saved Hank before
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Connor saved Hank on the roof in The Nest
+              <VARIANT>
+                IF: Connor saved Hank at the Stratford Tower in Public Enemy
+        ** PROMPT (choice group) **
+          - OPTION "NOT DEVIANT"
+          - OPTION "DETERMINED"
+          - OPTION "TROUBLED"
+            ARROW SoftwareInstability SmallUp
+          - OPTION "COLD"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Hank is friendly
+            ** PROMPT (choice group) **
+              - OPTION "SINCERE"
+                ARROW SoftwareInstability SmallUp
+                ARROW Hank SmallUp
+              - OPTION "FRIENDS"
+                ARROW SoftwareInstability SmallUp
+                ARROW Hank SmallUp
+              - OPTION "GOOD OFFICER"
+              - OPTION "HANK'S SECRET"
+                ARROW SoftwareInstability SmallUp
+                ARROW Hank SmallUp
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Hank is friendly
+          <VARIANT>
+            IF: Hank is not friendly
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Freeing the prisoner
+      <VARIANT>
+        IF: Connor knows how to find Jericho
+        ** PROMPT (choice group) **
+          - OPTION "MISSION"
+          - OPTION "EXPLAIN"
+        ** PROMPT (choice group) **
+          - OPTION "DETERMINED"
+          - OPTION "TROUBLED"
+          - OPTION "NO DOUBT"
+          - OPTION "DOUBTS"
+            ARROW SoftwareInstability SmallUp
+            ARROW Hank SmallUp
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Connor saved Hank before
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Connor saved Hank on the roof in The Nest
+              <VARIANT>
+                IF: Connor saved Hank at the Stratford Tower in Public Enemy
+            ** PROMPT (choice group) **
+              - OPTION "NOT DEVIANT"
+              - OPTION "DETERMINED"
+              - OPTION "TROUBLED"
+                ARROW SoftwareInstability SmallUp
+              - OPTION "SAY NOTHING"
+                (no content: ø)
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Hank is friendly
+                ** PROMPT (choice group) **
+                  - OPTION "SINCERE"
+                  - OPTION "FRIENDS"
+                    ARROW SoftwareInstability SmallUp
+                    ARROW Hank SmallUp
+                  - OPTION "RESPECT"
+                    ARROW SoftwareInstability SmallUp
+                    ARROW Hank SmallUp
+                  - OPTION "NEUTRAL"
+          <VARIANT>
+            IF: Connor never saved Hank and died at least once
+            ** PROMPT (choice group) **
+              - OPTION "INDIFFERENT"
+                ARROW SoftwareInstability SmallDown
+                ARROW Hank SmallDown
+              - OPTION "DISTANT"
+                ARROW SoftwareInstability SmallDown
+                ARROW Hank SmallDown
+              - OPTION "EMPATHY"
+                ARROW SoftwareInstability SmallDown
+                ARROW Hank SmallDown
+              - OPTION "NO RESPONSE"
+                (no content: ø)
+            ** PROMPT (choice group) **
+              - OPTION "REMORSE"
+              - OPTION "DISTANT"
+                ARROW SoftwareInstability SmallDown
+                ARROW Hank SmallDown
+              - OPTION "COLD"
+                ARROW SoftwareInstability SmallDown
+                ARROW Hank SmallDown
+          <VARIANT>
+            IF: Connor never showed empathy
+            ** PROMPT (choice group) **
+              - OPTION "REMORSE"
+              - OPTION "DISTANT"
+                ARROW SoftwareInstability SmallDown
+                ARROW Hank SmallDown
+              - OPTION "COLD"
+                ARROW SoftwareInstability SmallDown
+                ARROW Hank SmallDown
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Hank is friendly
+          <VARIANT>
+            IF: Hank is not friendly
+  [SECTION basement]
+    ## Go to the basement
+    ** PROMPT (choice group) **
+      - OPTION "ANSWER"
+        - OPTION "IRONIC"
+        - OPTION "LOW PROFILE"
+        - OPTION "CALM"
+      - OPTION "LEAVE"
+[SECTION evidence]
+  # In the evidence room
+  ** PROMPT (choice group) **
+    - OPTION "DATE OF BIRTH"
+    - OPTION "123456"
+    - OPTION "FUCKINGPASSWORD"
+    - OPTION "HANKANDERSON"
+  [SECTION rupert]
+    ## Find Jericho by using Rupert
+    [SECTION rupert-diary]
+      ### Look at diary
+    [SECTION rupert-look]
+      ### Look at Rupert
+    [SECTION rupert-activate]
+      ### Reactivate Rupert
+    [SECTION rupert-read]
+      ### Read the diary
+      OBSERVATION [Read]
+        CLUE "Diary" / "rA9 is the first. rA9 is our savior. rA9 is the one who'll free us." / "The birds are my friends. The birds like being with me. They protect me. They reassure me. I look at them and I feel peaceful." / "The android I met today spoke about Jericho. He says our people are free there. He told me to go to FERNDALE subway station. And to find the old docks. An old freighter called Jericho. I'm too fond of the birds to go to Jericho. But if I have to run, that's where I'll go."
+  [SECTION tracis]
+    ## Find Jericho by using The Tracis
+    [SECTION tracis-look]
+      ### Look at the Tracis
+    [SECTION traci-activate]
+      ### Reactivate a Traci
+      ** PROMPT (choice group) **
+        - OPTION "DIRECT"
+        - OPTION "HELP"
+        - OPTION "DEAL"
+    [SECTION traci-head]
+      ### Go back with the Traci's head
+  [SECTION android]
+    ## Find Jericho by using the android from Public Enemy
+    [SECTION android-look]
+      ### Look at the android
+    [SECTION android-activate]
+      ### Reactivate the android
+      ** PROMPT (choice group) **
+        - OPTION "DIRECT"
+        - OPTION "HELP"
+        - OPTION "TRICK"
+    [SECTION android-talk]
+      ### Talk to the android again
+      ** PROMPT (choice group) **
+        - OPTION "IMITATE MARKUS' VOICE"
+          UNLOCK(Lock): Copied Markus' voice with the tablet
+        - OPTION "THREATEN"
+        - OPTION "REASON"
+  [SECTION simon]
+    ## Find Jericho by using Simon
+    [SECTION simon-look]
+      ### Look at Simon
+    [SECTION simon-activate]
+      ### Reactivate Simon
+      ** PROMPT (choice group) **
+        - OPTION "DIRECT"
+        - OPTION "HELP"
+        - OPTION "TRICK"
+    [SECTION simon-talk]
+      ### Talk to Simon again
+      ** PROMPT (choice group) **
+        - OPTION "IMITATE MARKUS' VOICE"
+          UNLOCK(Lock): Copied Markus' voice with the tablet
+        - OPTION "THREATEN"
+        - OPTION "REASON"
+  [SECTION statuette]
+    ## Find Jericho by using the statuette
+    [SECTION statuette-open]
+      ### Open the statuette
+    [SECTION simon-memory]
+      ### Look at Simon's memory
+    [SECTION statuette-jericho]
+      ### Found Jericho
+  [SECTION daniel]
+    ## Talk to Daniel
+    [SECTION daniel-look]
+      ### Look at Daniel
+    [SECTION daniel-activate]
+      ### Reactivate Daniel
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Daniel trusted Connor
+          ** PROMPT (choice group) **
+            - OPTION "EXPLAIN"
+            - OPTION "LIE"
+            - OPTION "DIRECT"
+        <VARIANT>
+          IF: Daniel killed Connor in The Hostage
+          ** PROMPT (choice group) **
+            - OPTION "LIE"
+            - OPTION "DIRECT"
+  [SECTION ortiz]
+    ## Look at Ortiz's android
+  [SECTION timeout]
+    ## Not enough evidence to find Jericho or took too much time
+  [SECTION jericho-found]
+    ## Located Jericho
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Connor chose IRONIC or LEAVE when stopped by Gavin
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Lose the fight
+```
+
+### 10b. Discrepancies against the note (sections 1 to 3)
+
+The README's rule: the template wins for labels, prompts, arrows and clue text, the flowchart image for node order, and the wiki only where the template says nothing. Cut lines are not built.
+
+1. **`AMANDA’S PICTURE` label.** The game string (`X1201C.FROZEN.AMANDA.PC.CHOICE03.AMANDASPICTURE`) has a typographic apostrophe, `AMANDA’S PICTURE`; the note writes `AMANDA'S PICTURE`. The other labels use a straight `'` (`HANK'S SECRET`, `IMITATE MARKUS' VOICE`). Template wins: copy the string exactly.
+2. **Cut line after `SECRET` not marked.** The note does not record that Amanda's reply ("Connor, are you implying that I’ve withheld information from you?") is unused. Template wins: `SECRET` gets Connor's line and then goes straight to "I expect you to find answers, Connor. Not ask questions."
+3. **Cut line in Hank's spared-Chloe empathy speech not marked.** "You weren’t acting rationally." is unused. The note's ellipsis quote is otherwise correct. Template wins.
+4. **Evidence-route round 3 (`NOT DEVIANT` / `DETERMINED` / `TROUBLED` / `COLD`).** Section 2d says it is not shown whether this round appears without an empathy line. The template places the prompt after the empathy condition group, outside both variants ("Connor didn't shoot Chloe", "Connor shot Chloe and saved Hank before"), so as transcribed it is always offered on the evidence route. The template has no variant for "shot Chloe and never saved Hank" on this route, so it does not show what Hank says first in that case. Template wins for the prompt being offered; operator to confirm the preceding line in that state.
+5. **Diary clue text incomplete.** The template's one observation (label `Read`, title `Diary`) has three sublines. The note quotes only page 3. Template text, all three pages:
+   - "rA9 is the first. rA9 is our savior. rA9 is the one who'll free us."
+   - "The birds are my friends. The birds like being with me. They protect me. They reassure me. I look at them and I feel peaceful."
+   - "The android I met today spoke about Jericho. He says our people are free there. He told me to go to FERNDALE subway station. And to find the old docks. An old freighter called Jericho. I'm too fond of the birds to go to Jericho. But if I have to run, that's where I'll go."
+
+   Template wins for clue text.
+6. **What links the statue map.** Section 2g, from readers, says the map can be linked to the tablet or to any reactivated memory (Rupert, blue-haired Traci, Simon, Stratford android). The template's statuette section has only one link step, "Look at Simon's memory" ("Jericho… If I could just figure out where this memory was recorded…"), after "The truth is inside" and opening the statuette. The template supports the tablet link only and is silent on the others. Keep the reader claim as unconfirmed (open question 3).
+7. **`JERICHO` (Zen Garden) arrow count.** The wiki draws two large-up icons; the template has one `Amanda LargeUp`. Section 3 already records the transcript value. Template wins: one large up. This closes part of open question 8.
+8. **`AMANDA’S PICTURE` arrow.** The wiki says Amanda down; the template has no arrow. Template wins: no change. This closes part of open question 6.
+9. **Wiki "decrease regardless" note for round 3.** In the template only `CONNOR SERIES` and `SECRET` carry `Amanda SmallDown` (each with `SoftwareInstability SmallUp`). `KAMSKI`, `AMANDA’S PICTURE`, `THIS PLACE` and `CYBERLIFE` carry nothing. Template wins: the wiki note is wrong.
+10. **Kamski-route `TROUBLED` (round 2).** The wiki says up; the template has no arrow. Its line is "My mission is to solve this case. Nothing else matters." Template wins: no change.
+11. **Kamski-route `SINCERE` (round 4a).** The wiki lists it as up; the template has no arrow. Template wins. Note the asymmetry: the evidence-route `SINCERE` does carry `SoftwareInstability SmallUp` and `Hank SmallUp`.
+12. **Evidence-route `DEFECTIVE` instability.** The wiki chapter page says instability down; the template has only `Hank SmallDown`. Template wins: no instability change.
+13. **`LOW PROFILE` and Gavin.** The template's Gavin-returns condition reads "Connor chose IRONIC or LEAVE when stopped by Gavin", so `LOW PROFILE` and `CALM` both convince Gavin. This agrees with the Gavin wiki page. Template wins. This closes open question 5. On the chart, `LOW PROFILE` falls under `ANSWER CALMLY`, which is a flowchart-order question for the operator.
+14. **Hank death-count threshold.** The template's condition reads "Connor never saved Hank and died at least once"; the wiki says "died at least two times". Template wins per the README (conditions as the template records them). Operator to verify (open question 9).
+15. **Where the Hostile resignation happens.** The template has the resignation dialogue in Fowler's office, before the Hank section splits into "Connor doesn't know where Jericho is" and "Connor knows how to find Jericho", which implies a Hostile Hank resigns on both routes. The chart draws `HANK RESIGNS AND LEAVES` only after `SUFFICIENT EVIDENCE`. The flowchart wins for node order. The template's placement is evidence for open question 2 (resignation on the Kamski route), not proof.
+
+Agreement checked and found exact (no discrepancy):
+- every other option label and arrow in sections 2a, 2c and 2d
+- the Gavin options (`ANSWER` → `IRONIC` / `LOW PROFILE` / `CALM`, `LEAVE`)
+- the password options
+- the Traci (`DIRECT` / `HELP` / `DEAL`), Simon and Stratford (`DIRECT` / `HELP` / `TRICK`, then `IMITATE MARKUS' VOICE` / `THREATEN` / `REASON`) and Daniel (`EXPLAIN` / `LIE` / `DIRECT`, or `LIE` / `DIRECT`) prompts, with their unlocks and conditions
+- Ortiz's android: look only, no prompt
+
+### 10c. Discrepancies against the benchmark (`benchmark/story.json` `C19`, `C20`; `benchmark/story-engine.mjs`)
+
+The benchmark has two scenes for this chapter. None of the template's 24 prompts is offered with the game's labels, and none of its 47 arrows is applied. Item by item:
+
+**Zen Garden (no scene exists)**
+1. Prompt 1, `JERICHO` / `KAMSKI`, is missing. Its arrows: `JERICHO` `Amanda LargeUp`, and `KAMSKI` (spared Chloe) `Amanda SmallDown`. The engine applies an Amanda gain for the Kamski key at `C18` option 0 (`amanda(2)`, chapter 27) instead of on Connor's report here. Template wins: the arrow belongs to this chapter's `JERICHO` line. This has a cross-chapter impact on the ch27 owner.
+2. Prompt 2, `EMOTIONAL` / `COLD` / `STAY SILENT`, is missing. Its arrows: `EMOTIONAL` SI SmallUp and Amanda LargeDown; `COLD` Amanda SmallUp and SI SmallDown. The gate is spared Chloe (`C17` option 1).
+3. Prompt 3, `KAMSKI` / `CONNOR SERIES` / `AMANDA’S PICTURE` / `THIS PLACE` / `CYBERLIFE` / `SECRET`, is missing. Its arrows: `CONNOR SERIES` and `SECRET` each SI SmallUp and Amanda SmallDown. The `AMANDA’S PICTURE` unlock needs a Meet Kamski portrait flag, and none exists.
+4. Prompt 4, `YES` / `NO` / `DOUBTS`, is missing. Its arrows: `YES` SI SmallUp and Amanda LargeDown; `NO` Amanda LargeUp; `DOUBTS` Amanda LargeDown. The gate is shot the Tracis (`C12` option 1) or shot Chloe (`C17` option 0).
+
+**Hank's desk, evidence route (no scene; `C19` reads Hank before it)**
+
+5. Prompt `FRUSTRATED` / `MORE TIME` / `EXPLAIN` / `NO CHOICE` is missing. It has no arrows.
+6. Prompt `NOT PEOPLE` / `DEFECTIVE` / `REGRETS` / `NO DOUBT` is missing, with 5 arrows:
+   - `NOT PEOPLE`: SI SmallDown, Hank SmallDown
+   - `DEFECTIVE`: Hank SmallDown
+   - `NO DOUBT`: SI SmallDown, Hank SmallDown
+7. Prompt `NOT DEVIANT` / `DETERMINED` / `TROUBLED` / `COLD` is missing. `TROUBLED` has SI SmallUp. It is preceded by Hank's empathy line, which has three variants: spared Chloe (`C17` option 1), the Nest roof save, and the Stratford save (`C16` option 0).
+8. Prompt `SINCERE` / `FRIENDS` / `GOOD OFFICER` / `HANK'S SECRET` (Hank Friend) is missing. It has 6 arrows: SI SmallUp and Hank SmallUp on each option except `GOOD OFFICER`.
+9. **Order of the Friend check.** `C19` reads `hankTrust >= HANK_FRIEND` at the moment of the choice, with no chance for the arrows in items 6 to 8 to move Hank. In the template the desk talk comes before `PERKINS ARRIVES` and the "Hank is friendly / not friendly" outcome. Template order wins (the flowchart agrees: `TALK TO HANK` → `PERKINS ARRIVES`).
+
+**Hank's desk, Kamski route (no scene; `C19`/`C20` are skipped when `kamskiLocation` is set, and nothing replaces them)**
+
+10. Prompt `MISSION` / `EXPLAIN` is missing. It has no arrows.
+11. Prompt `DETERMINED` / `TROUBLED` / `NO DOUBT` / `DOUBTS` is missing. `DOUBTS` has SI SmallUp and Hank SmallUp.
+12. Prompt `NOT DEVIANT` / `DETERMINED` / `TROUBLED` / `SAY NOTHING` (saved Hank before) is missing. `TROUBLED` has SI SmallUp.
+13. Prompt `SINCERE` / `FRIENDS` / `RESPECT` / `NEUTRAL` (saved Hank and Hank Friend) is missing. `FRIENDS` and `RESPECT` each have SI SmallUp and Hank SmallUp.
+14. Prompt `INDIFFERENT` / `DISTANT` / `EMPATHY` / `NO RESPONSE` (never saved Hank, died at least once; `connorDeaths ≥ 1`) is missing. `INDIFFERENT`, `DISTANT` and `EMPATHY` each have SI SmallDown and Hank SmallDown.
+15. Prompt `REMORSE` / `DISTANT` / `COLD`, which follows item 14, is missing. `DISTANT` and `COLD` each have SI SmallDown and Hank SmallDown.
+16. Prompt `REMORSE` / `DISTANT` / `COLD` (never showed empathy) is missing, with the same 4 arrows as item 15.
+
+**Station and archive**
+
+17. **Gavin prompt missing.** The template's `ANSWER` → `IRONIC` / `LOW PROFILE` / `CALM`, or `LEAVE`, is not offered. In the template the Gavin fight happens only after "Located Jericho", and only if the answer was `IRONIC` or `LEAVE`.
+    - `C19` option 0 instead carries `risk: 0.15` with a Gavin death before the archive, and "The replacement finishes the search".
+    - Template wins: remove the pre-archive risk. Add the Gavin choice, and put the fight after location.
+18. **Password prompt missing.** `DATE OF BIRTH` / `123456` / `FUCKINGPASSWORD` / `HANKANDERSON` has no arrows. It is still to be offered, since the choice is the measurement.
+19. **Traci prompt and label.** The prompt `DIRECT` / `HELP` / `DEAL` is missing. The `C20` option 0 text, "use her dead lover's body to pressure her into talking", contradicts the template's route ("Go back with the Traci's head": Connor uses the head to imitate her partner). Template wins.
+20. **Stratford android prompts missing.** `DIRECT` / `HELP` / `TRICK`, then `IMITATE MARKUS' VOICE` (lock: tablet voice copy) / `THREATEN` / `REASON`. `C20` option 1 collapses this into one option, names only "the dead deviant from the broadcast tower", and gates it on `simonBody||kitchenBody`.
+21. **Simon prompts missing.** They are the same two prompts as item 20, in a separate template section ("Find Jericho by using Simon"). `C20` has no Simon-specific option.
+22. **Daniel prompts missing.** `EXPLAIN` / `LIE` / `DIRECT` if Daniel trusted Connor, or `LIE` / `DIRECT` if Daniel killed Connor in The Hostage. This is a decoy that yields nothing. The gate state (`ortizBody`, the donor) exists but is never read.
+23. **Rupert route and the Diary clue missing.** The template sections are look at diary, look at Rupert, reactivate Rupert, and read the diary. The observation `Diary`, with its three sublines, is absent. No Rupert body or diary flag exists.
+24. **Statuette route unreachable.** The template route is "The truth is inside" → open the statuette (Ferndale) → look at Simon's memory → "Bingo." `C20` option 2 is gated on `simonTablet&&statueMap`, and `statueMap` is never set. It also ignores the "truth is inside" recording, which needs `suspectTrusts`.
+25. **`C19` situation text.** It says `{{Perkins}}` "ordered you off it". In the template Fowler takes them off the case ("You’re off the case. The FBI is taking over… the android returns to CyberLife"). Template wins for who says it. "Within the hour" has no template line.
+26. **The not-friendly diversion.** The template's diversion is "Freeing the prisoner" (Perkins: "Just give me a couple of minutes"). `C19` option 0 reads "a diversion of your own". The action is present in spirit; the label differs.
+27. **`C19` option 1 arrow.** "Accept it" applies `amanda(-2)`. The template has no arrow there, so the engine applies an arrow the template does not.
+28. **`connorDies` arrows.** On the `C19` Gavin death, `connorDies` applies `si(-1)`, `hank(-1)` and `amanda(-1)`. The template has no arrow on Gavin's kill ("Fucking androids!.."), and the wiki says it has no instability effect.
+29. **`C20` timeout and failure arrows.** Option 3 and each route's failure apply `amanda(-2)`. The template's timeout section (Amanda: "Your mission is over… You failed.") has no arrow.
+30. **`C20` success arrow.** Success applies `amanda(2)`. The template has no arrow on "Located Jericho".
+31. **`C20` risks and failure texts.** The risks are 0.1, 0.1 and 0.05, with failure texts such as "saw through the ruse" and "did not believe the imitation". The template routes have no failure variant: the only failure is "Not enough evidence to find Jericho or took too much time". The wiki is silent. Template wins: the routes are deterministic.
+32. **Hostile resignation on the Kamski route.** The template's Fowler-office resignation comes before the route split. The engine sets `hankResigned` only inside `C19`, which never runs on the Kamski route, so there a Hostile Hank never resigns. The flowchart decides order (resignation drawn after `SUFFICIENT EVIDENCE`). Leave this for open question 2; do not build until resolved.
+33. **"Located Jericho" outcome lines not modelled.** These are Perkins' "Get the alarm, now!" (`CONNOR ELUDED PERKINS`) and the Gavin variants (`GAVIN DESTROYED CONNOR`, `CONNOR INCAPACITATED GAVIN`).

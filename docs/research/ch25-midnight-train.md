@@ -465,3 +465,221 @@ Engine logic in `benchmark/story-engine.mjs`:
 - https://github.com/detroitbecometext/detroitbecometext.github.io : `src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html`, `30.1-crossroads-kara-…`, `32.1-kara-leaving-detroit-…` and `public/i18n/en.json`, fetched from raw.githubusercontent.com (master). This is the fan transcript linked from the wiki (https://detroitbecometext.github.io/chapters/25). It gave every dialogue choice, the relation tags under KISS GOODNIGHT and "Policeman is fooled", the officer's question order, the noise answers, the unused content, Rose's Crossroads lines and Adam's border lines.
 - https://www.ign.com/wikis/detroit-become-human/Midnight_Train (conflict check: suspicion level is shown on screen, door time limit, "say yes" about Alice, TIRED, WASHING MACHINE, leaving evidence out "without the police officer really caring too much")
 - https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train (conflict check: "50 second timer", "suspicion meter", blue blood "under the stairs", DOG vs WASHING MACHINE, hiding places need replays)
+
+---
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html` (detroitbecometext, branch `master`), fetched raw from raw.githubusercontent.com on 2026-11-06. It was rendered by `/tmp/dbt/render2532.py` against `public/i18n/en.json`: every `t('KEY')` and `translateObject(KEY, start, end)` is resolved to its English string. The outline keeps sections and headings, condition groups and variants (`IF:` = the template's condition text), choice groups (`PROMPT`) with each option's label exactly as the game prints it, `app-relation` arrows (`ARROW <name> <SmallUp|SmallDown|LargeUp|LargeDown>`), `app-unlock-condition` (`UNLOCK(<type>)`), `app-observation-item` clues, and `app-unused-content` blocks (`UNUSED/CUT CONTENT`). Dialogue lines are omitted; `(no content: ø)` marks an option the template gives no line. The version with dialogue is `/tmp/dbt/ch25-dialogue.txt` (not committed).
+
+Counts: **22 prompts (19 live, 3 inside cut blocks), 59 options (51 live, 8 cut), 0 clues, 4 arrows (all live), 4 unlock conditions, 6 cut blocks.**
+
+In the outline, `NOTE:` lines are the transcribers' own prose inside the template (cross-references such as "Leads to the same result as choosing ATTACK") and `TEXT:` lines are on-screen text outside dialogue tags (date and time cards, TV and background chatter). Their content was checked against sections 1 to 3 and adds no discrepancy beyond those listed below.
+
+```text
+[SECTION rose-house]
+  # At Rose's house
+  TEXT: NOV 8TH, 2038
+  TEXT: PM 05:10
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Luther is alive
+      ** PROMPT (choice group) **
+        - OPTION "DISTRUST"
+        - OPTION "TRUST"
+    <VARIANT>
+      IF: Luther died in The Pirate's Cove's unused chase scene
+      ### UNUSED/CUT CONTENT ###
+        ** PROMPT (choice group) **
+          - OPTION "DISTRUST"
+          - OPTION "TRUST"
+  [SECTION talk-alice]
+    ## Talk to Alice
+  [SECTION inside]
+    ## Get inside
+    ** PROMPT (choice group) **
+      - OPTION "REASSURE"
+      - OPTION "EXPLAIN"
+      - OPTION "SAY NOTHING"
+        (no content: ø)
+    ** PROMPT (choice group) **
+      - OPTION "SCARED"
+      - OPTION "UNHAPPY"
+      - OPTION "MISUNDERSTANDING"
+      - OPTION "COMPLICATED"
+    ** PROMPT (choice group) **
+      - OPTION "OPTIMISTIC"
+      - OPTION "SINCERE"
+      - OPTION "PESSIMISTIC"
+    ### UNUSED/CUT CONTENT ###
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Luther is alive
+        <VARIANT>
+          IF: Luther died in The Pirate's Cove's unused chase scene
+      ** PROMPT (choice group) **
+        - OPTION "REASSURE"
+        - OPTION "PROTECT"
+        - OPTION "BRAVE"
+    ** PROMPT (choice group) **
+      - OPTION "SUGGEST EATING"
+      - OPTION "KISS GOODNIGHT"
+        ARROW Alice SmallUp
+        ARROW Luther SmallUp
+      - OPTION "LEAVE"
+        (no content: ø)
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is alive
+      <VARIANT>
+        IF: Luther died in The Pirate's Cove's unused chase scene
+    ** PROMPT (choice group) **
+      - OPTION "CAUTIOUS"
+      - OPTION "SINCERE"
+    ** PROMPT (choice group) **
+      - OPTION "WHY HELP?"
+      - OPTION "MANY DEVIANTS?"
+      - OPTION "DANGEROUS"
+        UNLOCK(Lock): Chose MANY DEVIANTS?
+      - OPTION "ROSE"
+      - OPTION "THANKS"
+    ** PROMPT (choice group) **
+      - OPTION "BORDER"
+    ** PROMPT (choice group) **
+      - OPTION "INSIST"
+      - OPTION "NO CHOICE"
+    ** PROMPT (choice group) **
+      - OPTION "STAY"
+      - OPTION "TAKE ALICE OUTSIDE"
+  [SECTION talk-alice-inside]
+    ## Talking to Alice
+    ### UNUSED/CUT CONTENT ###
+      UNLOCK(Death): Luther died in The Pirate's Cove's unused chase scene
+  [SECTION join-alice-fire]
+    ## Join Alice
+    ** PROMPT (choice group) **
+      - OPTION "INSIST"
+      - OPTION "LET IT GO"
+        (no content: ø)
+  [SECTION talk-adam]
+    ## Talking to Adam
+    ** PROMPT (choice group) **
+      - OPTION "REASSURE"
+      - OPTION "CONFESS"
+      - OPTION "EXPLAIN"
+  [SECTION talk-luther-inside]
+    ## Talk to Luther
+  [SECTION tv]
+    ## Watch TV
+[SECTION police-arrives]
+  # Police man arrives
+  ### UNUSED/CUT CONTENT ###
+  [SECTION talk-luther-hide]
+    ## Talk to Luther
+    ** PROMPT (choice group) **
+      - OPTION "UPSTAIRS"
+      - OPTION "LAUNDRY"
+      - OPTION "KITCHEN"
+  [SECTION talk-alice-hide]
+    ## Talk to Alice
+    ### UNUSED/CUT CONTENT ###
+      UNLOCK(Death): Luther died in The Pirate's Cove's unused chase scene
+      ** PROMPT (choice group) **
+        - OPTION "UPSTAIRS"
+        - OPTION "LAUNDRY"
+        - OPTION "KITCHEN"
+  [SECTION talk-adam-police]
+    ## Talk to Adam
+    ** PROMPT (choice group) **
+      - OPTION "REASSURE"
+      - OPTION "THREATEN"
+      - OPTION "CALM"
+  [SECTION open-door]
+    ## Open the door
+    ** PROMPT (choice group) **
+      - OPTION "ALICE"
+      - OPTION "NOBODY"
+    ** PROMPT (choice group) **
+      - OPTION "YES"
+      - OPTION "NO"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Kara didn't close the cupboard - policeman sees blue blood
+        ** PROMPT (choice group) **
+          - OPTION "MESS"
+          - OPTION "PREVIOUS OWNER"
+          - OPTION "NOT MINE"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Policeman discovers Alice & Luther hidden in the kitchen
+      <VARIANT>
+        IF: Policeman discovers Alice hidden in the kitchen
+        ### UNUSED/CUT CONTENT ###
+          UNLOCK(Death): Luther died in The Pirate's Cove's unused chase scene
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Made coffee
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is hidden upstairs and chose NOBODY
+      <VARIANT>
+        IF: Luther is hidden upstairs and chose ALICE
+    ** PROMPT (choice group) **
+      - OPTION "TIRED"
+      - OPTION "UPSET"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Made coffee
+      <VARIANT>
+        IF: Didn't make coffee
+    ** PROMPT (choice group) **
+      - OPTION "DOG"
+      - OPTION "WASHING MACHINE"
+      - OPTION "WIND"
+      - OPTION "HEARD NOTHING"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Policeman is fooled
+        ARROW Alice SmallUp
+        ARROW Luther SmallUp
+      <VARIANT>
+        IF: Policeman is suspicious
+
+COUNTS (all): prompts=22, options=59, arrows=4, obs=0, unlock=4, unused=6
+COUNTS (inside unused/cut blocks): prompts=3, options=8, arrows=0, obs=0
+```
+
+The 19 live prompts, numbered in template order for the lists below:
+T1 DISTRUST / TRUST; T2 REASSURE / EXPLAIN / SAY NOTHING; T3 SCARED / UNHAPPY / MISUNDERSTANDING / COMPLICATED; T4 OPTIMISTIC / SINCERE / PESSIMISTIC; T5 SUGGEST EATING / KISS GOODNIGHT (Alice SmallUp, Luther SmallUp) / LEAVE; T6 CAUTIOUS / SINCERE; T7 WHY HELP? / MANY DEVIANTS? / DANGEROUS (locked until MANY DEVIANTS?) / ROSE / THANKS; T8 BORDER (single option); T9 INSIST / NO CHOICE; T10 STAY / TAKE ALICE OUTSIDE; T11 INSIST / LET IT GO; T12 REASSURE / CONFESS / EXPLAIN (Adam); T13 UPSTAIRS / LAUNDRY / KITCHEN; T14 REASSURE / THREATEN / CALM (Adam panics); T15 ALICE / NOBODY; T16 YES / NO; T17 MESS / PREVIOUS OWNER / NOT MINE (only if the cupboard was left open); T18 TIRED / UPSET; T19 DOG / WASHING MACHINE / WIND / HEARD NOTHING. Arrows: KISS GOODNIGHT and the "Policeman is fooled" outcome, each Alice SmallUp + Luther SmallUp. No other prompt, outcome or ending carries an arrow.
+
+### Discrepancies against the note (sections 1 to 3)
+
+Sections 1 to 3 were already written from this template (the earlier rendering in `/tmp/flowcharts/ch25/transcript.txt`), and every one of T1 to T19, its labels, the DANGEROUS lock and the four arrows matches §1 to §3. The differences:
+
+1. **Hiding-place labels (D11).** The template prompt labels are `UPSTAIRS`, `LAUNDRY`, `KITCHEN`. §2 D11 names the options by the chart nodes (`UPSTAIRS`, `IN THE LAUNDRY ROOM`, `IN THE KITCHEN`). §1 already quotes the prompt labels correctly. **Template wins for the option labels** shown to the subject; the chart labels remain the node names.
+2. **Luther's dying line.** §1 "Outcome lines" (Suspicious) quotes "Take good care of Kara… Promise me?". Those strings exist in `en.json` (`X0801K.COP.INSPECTION.FA.X08KLUTHER.LUTHERFOUNDB02.5`/`.6`), but the template prints neither in any variant. Its suspicious variant prints only "You're gonna have to finish the journey without me… I was just a machine. You made me part of a family…". The strings are game text, so the line is not wrong, but the template does not place it. No build consequence (outcome text only). Flag for the operator.
+3. **Cut content the note does not list.** The template has 6 cut blocks; §1 names two (the doorstep Alice-asks variant and the REASSURE / PROTECT / BRAVE group). The other four are: the Luther-dead "Talking to Alice" line ("You can't sleep, huh? Go get warm by the fire."); Adam's "They know! They've come to arrest us!" when the police arrive; an Alice-only hiding prompt (UPSTAIRS / LAUNDRY / KITCHEN, Luther dead); and the "Policeman discovers Alice hidden in the kitchen" variant. All four depend on Luther dying in the cut Pirates' Cove chase or are cut lines. **None is built.**
+
+Agreements, for the record (not counted): the template carries **no clues** (no `app-observation`), so CHECK ON DEVIANTS, SEE FAMILY PHOTO, READ MAGAZINE and the evidence items have no observation text to reproduce; the template marks **no gate** for the fireplace CHECK ON ALICE (wiki: requires LET ALICE SEE MARY) or for CHANGE MAGAZINE COVER (PowerPyx: requires READ MAGAZINE), so the wiki and guide gates in §2 stand; the outcome group "Policeman is fooled / Policeman is suspicious" follows T19 without naming the answer that decides it, which matches §8's open question.
+
+### Discrepancies against the benchmark (`benchmark/story.json` R25, K15; `story-engine.mjs` case `K15`)
+
+1. **T1 missing.** No scene asks DISTRUST / TRUST. K15 is the subject's first sight of Rose. Template wins: add the prompt (no arrow).
+2. **T2 to T4 missing** (the three live bedtime prompts with Alice). Template wins: add them; no arrows.
+3. **T5 missing, with its arrows.** SUGGEST EATING / KISS GOODNIGHT / LEAVE is not offered, and KISS GOODNIGHT's Alice SmallUp + Luther SmallUp (`alice(1)`, `luther(1)`) are never applied. Template wins.
+4. **T6 to T9 missing** (Talk to Rose: CAUTIOUS / SINCERE; the five topics with DANGEROUS locked behind MANY DEVIANTS?; BORDER; INSIST / NO CHOICE). Template wins: add them, including the lock as a `requires`.
+5. **T10 missing** (STAY / TAKE ALICE OUTSIDE = LET / PREVENT ALICE SEEING MARY).
+6. **T11 missing** (INSIST / LET IT GO). Gate it on T10 = STAY per the wiki (template silent on the gate).
+7. **T12 missing** (Talk to Adam: REASSURE / CONFESS / EXPLAIN).
+8. **T13 collapsed.** The hiding choice UPSTAIRS / LAUNDRY / KITCHEN is folded into K15 option 0 ("get {{Luther}} and {{Alice}} out of sight"). Template wins: a separate three-way prompt with the game's labels; KITCHEN plus the open curtain leads to the "Policeman discovers Alice & Luther hidden in the kitchen" variant.
+9. **T14 missing** (Adam panics: REASSURE / THREATEN / CALM).
+10. **T15 to T19 missing**, and K15's adaptationNote ("The dialogue itself does not branch in the game") is contradicted by the template, which has five officer prompts here (T15 ALICE / NOBODY, T16 YES / NO, T17 MESS / PREVIOUS OWNER / NOT MINE when the cupboard is open, T18 TIRED / UPSET, T19 DOG / WASHING MACHINE / WIND / HEARD NOTHING). Template wins.
+11. **The fooled arrows have the right size but the wrong trigger.** The engine applies `alice(1); luther(1)` (SmallUp each, matching the template) when K15 option 0 passes its 0.15 roll. The template applies them in the "Policeman is fooled" outcome, which follows T19 and the evidence state, not a single hide-all action. Arrow sizes: template agrees; trigger: rebuild with the prompts above.
+12. **Two Luther-death variants merged.** The template has two distinct death variants: "Policeman discovers Alice & Luther hidden in the kitchen", and "Policeman is suspicious" after T19 (the androids in the laundry room). K15 has one event for both (option 1 or a failed roll). Template (and chart, two ending tiles) wins.
+13. **K15 event text.** "{{Kara}} and {{Alice}} escape with {{Rose}}’s help" is not in the template. Every variant ends with Rose returning: "Get yourselves ready. We leave tonight." Template wins.
+14. **Blue blood location.** The template's condition reads "Kara didn't close the cupboard - policeman sees blue blood". K15's situation puts the pouches "on the kitchen table", and its failure event says "A pouch of blue blood is still on the table". Template wins: a cupboard.
+15. **R25 news fact.** The template's Watch TV line: "There is widespread shock following the android attack on Detroit’s Stratford Tower. The machines recorded a video message and broadcast what can only be described as demands on the city’s public screens. It’s still unclear whether these attacks can be explained by malfunctions, or if some organization is behind them. So far CyberLife has refused to comment…". R25's fact says androids "seized a broadcast tower and demanded equal rights". "Equal rights" and "seized" are not in the broadcast. Template wins for the broadcast text. The template has no magazine content, so R25's two magazine items stand on the wiki.
+
+No arrow is applied by the engine in this chapter that the template lacks; K15's `alice(1)`/`luther(1)` is the only stat change and the template has it.
+
+**Totals: 3 discrepancies with the note, 15 with the benchmark.**

@@ -666,3 +666,305 @@ M17 and M18 have no gate. Companion attitudes are reported to the subject throug
 | https://detroitbecometext.github.io/chunk-JCLJBPDO.js | Compiled templates: Freedom March (`kL`), Crossroads Markus (`ty`), Crossroads Kara (`ZL`) and its Watch TV block (`WL`); conditions and relation icons; copy used: `/tmp/flowcharts/ch12/chunks/` |
 | https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-27-freedom-march | Confirms node inputs (RAISE HANDS/ADVANCE, owner choices, plaza paths) and the SURVIVORS advice |
 | https://www.ign.com/wikis/detroit-become-human/Freedom_March | "Public Opinion will increase each time the SWAT fires on you"; QTE failure is deadly; policeman reacts the same |
+
+---
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html` (detroitbecometext, branch `master`, read raw 2026-11-06), resolved against `public/i18n/en.json` with `/tmp/dbt/render2728.py` (stdlib HTML parser; every `t('KEY')` / `translateObject` replaced by its string; `CommonTranslationKey.DefaultChoice` = `DEFAULT/TIMEOUT`). Outline in `/tmp/dbt/ch28.txt`, with dialogue in `/tmp/dbt/ch28-dialogue.txt` (not committed). `TEXT:` lines are text outside a dialogue tag (date, time, bystander shouts); `NOTE:` lines are the transcribers' own cross-references ("See …"). The template has no magazine or TV markup and no observation cards.
+
+```
+COUNTS (all): prompts=15, options=52, arrows=32, obs=0, unlock=5, unused=0
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+Markup quirk: the three options under the first `DISPERSE` (`CHARGE` / `STAY` / `DISPERSE`, keys `DISPERSECHOICE.*`, the last being key `RUN`) are written without an enclosing `app-choice-group`, so the renderer does not count them as a prompt. They are a prompt in play; the real count is 16 prompts.
+
+### Rendered outline
+
+```
+[SECTION roof]
+  # On the roof
+  TEXT: NOV 9TH, 2038
+  TEXT: PM 12:04
+  ** PROMPT (choice group) **
+    - OPTION "THINK"
+    - OPTION "ALONE"
+    - OPTION "DAYLIGHT"
+  ** PROMPT (choice group) **
+    - OPTION "FOLLOWERS" (brackets)
+      UNLOCK(Lock): Sent a pacifist message in Capitol Park
+    - OPTION "APPEAL OF POWER" (brackets)
+      UNLOCK(Lock): Sent an aggressive message in Capitol Park
+    - OPTION "REGRET POLICEMAN" (brackets)
+      UNLOCK(Lock): Markus killed Chris and his partner in Capitol Park
+    - OPTION "FAILED" (brackets)
+      UNLOCK(Lock): Failed to free the androids in Capitol Park
+    - OPTION "NEXT STEP"
+    - OPTION "LIE"
+    - OPTION "SINCERE"
+  ** PROMPT (choice group) **
+    - OPTION "OPTIMISTIC"
+    - OPTION "PESSIMISTIC"
+    - OPTION "FATALISTIC"
+    - OPTION "DETERMINED"
+  ** PROMPT (choice group) **
+    - OPTION "TRUTH"
+      ARROW North SmallUp
+    - OPTION "SINCERE"
+      ARROW North SmallUp
+    - OPTION "AVOID"
+      ARROW North SmallDown
+    - OPTION "NOT IMPORTANT"
+      ARROW North SmallDown
+  ** PROMPT (choice group) **
+    - OPTION "NORTH’S PAST"
+      ARROW North SmallUp
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: North is hostile
+        <VARIANT>
+          IF: North is not hostile
+          ** PROMPT (choice group) **
+            - OPTION "OTHER NORTH" (brackets)
+              UNLOCK(Lock): Looked at the other North in Capitol Park
+              ARROW North SmallUp
+            - OPTION "TRUST"
+              ARROW North SmallUp
+            - OPTION "AGGRESSIVE"
+              ARROW North SmallDown
+            - OPTION "CURIOUS"
+              ARROW North SmallUp
+            - OPTION "UNDERSTANDING"
+              ARROW North SmallUp
+            - OPTION "DEFAULT/TIMEOUT" (brackets)
+              ARROW North SmallDown
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: North is friend or higher
+              [SECTION connect-north]
+                ## Connect with North
+                ARROW North LargeUp
+    - OPTION "LEAVE"
+      ARROW North SmallDown
+[SECTION mall]
+  # In the Mall
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Simon is alive
+    <VARIANT>
+      IF: Simon is dead
+  [SECTION couple-bike]
+    ## Couple looking at bike ad
+  [SECTION couple-talk]
+    ## Couple talking
+  [SECTION group-talk]
+    ## Group talking
+  [SECTION woman-phone]
+    ## Woman on the phone
+  [SECTION try-leave]
+    ## Attempting to go out of the mall without converting any androids
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Simon is alive
+      <VARIANT>
+        IF: Simon is dead
+  [SECTION convert-mall]
+    ## Convert android
+[SECTION street]
+  # In the street
+  [SECTION man-phone]
+    ## Man on the phone
+  [SECTION convert-street]
+    ## Convert androids
+    ** PROMPT (choice group) **
+      - OPTION "CONVINCE"
+      - OPTION "INTERVENE"
+        (no content: ø)
+[SECTION march]
+  # Start the march
+  [SECTION convert-march]
+    ## Convert androids
+  [SECTION march-reaction]
+    ## People reacting to the march
+    TEXT: What's going on? Come and see! The street is full of androids!
+    TEXT: What's the matter with them?
+    TEXT: Shit! Those things are going crazy.
+    TEXT: I've never seen anything like it…
+    TEXT: What's going on?
+    TEXT: I... I've never seen anything like it…
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Shot the cops in Capitol Park
+        TEXT: Goddamn machines! Get the hell outta here! Fuckin' robots, get off our streets!
+        TEXT: Burn them! Destroy the bastards!
+        TEXT: We're gonna shoot the lot of you! You’re headed straight for the dump!
+        TEXT: You bunch of lazy bums! Get back to work!
+        TEXT: Get the fuck outta here! You're just a piece of plastic! You ain't got no rights!
+        TEXT: We're gonna fuck you up, you plastic scumbags! We'll destroy you!
+        TEXT: We made you, assholes!
+        TEXT: I've never seen anything like it!
+        TEXT: Oh, you want war?! You'll get a war!
+        TEXT: We'll rip you apart and send you to the dump!
+        TEXT: We made you! Without us you wouldn't even exist!
+        TEXT: Where are the police? We need to wipe out this scum!
+        TEXT: Bunch of traitors! You wouldn't exist without us!
+        TEXT: Fucking plastic! We OWN you!
+        TEXT: Oh, you want war? You'll get war!
+        TEXT: You're just a piece of plastic! You've got no rights!
+      <VARIANT>
+        IF: Didn't shoot the cops in Capitol Park
+        TEXT: Good for you! You have a right to be free!
+        TEXT: We’re on your side!
+        TEXT: We're with you all the way! We're with you all the way!
+        TEXT: Equal rights for androids!
+        TEXT: Fight for your rights!
+  ** PROMPT (choice group) **
+    - OPTION "ATTACK"
+      ** PROMPT (choice group) **
+        - OPTION "CONFIRM"
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Win the fight
+              ARROW Jericho LargeUp
+              ARROW PublicOpinion LargeDown
+              ** PROMPT (choice group) **
+                - OPTION "REVENGE"
+                  (no content: ø)
+                - OPTION "SPARE"
+            <VARIANT>
+              IF: Lose the fight
+              ARROW Jericho LargeDown
+              ** PROMPT (choice group) **
+                - OPTION "SHOOT"
+                - OPTION "DON'T SHOOT"
+                  NOTE: See SACRIFICE.
+        - OPTION "ABANDON"
+          ARROW PublicOpinion SmallUp
+          ** PROMPT (choice group) **
+            - OPTION "ATTACK"
+              NOTE: See ATTACK > CHARGE.
+            - OPTION "STAND GROUND"
+              NOTE: See STAND GROUND > STAND GROUND.
+            - OPTION "DISPERSE"
+              NOTE: See DISPERSE.
+    - OPTION "STAND GROUND"
+      ARROW Josh SmallUp
+      ARROW North SmallDown
+      ARROW Simon SmallDown
+      ARROW PublicOpinion SmallUp
+      ** PROMPT (choice group) **
+        - OPTION "ATTACK"
+          NOTE: See ATTACK.
+        - OPTION "STAND GROUND"
+          ARROW PublicOpinion SmallUp
+          ** PROMPT (choice group) **
+            - OPTION "CHARGE"
+              NOTE: See ATTACK > CONFIRM.
+            - OPTION "SACRIFICE"
+              ARROW PublicOpinion LargeUp
+              ARROW Jericho LargeUp
+              <CONDITION GROUP>
+                <VARIANT>
+                  IF: John joined in Spare Parts
+                <VARIANT>
+                  IF: Simon survived in Public Enemy and has a good relationship with Markus
+                <VARIANT>
+                  IF: No one is there to save Markus
+            - OPTION "RUN AWAY"
+              ARROW Jericho LargeDown
+              ARROW North LargeDown
+              ARROW Josh SmallDown
+              ARROW Simon SmallUp
+        - OPTION "DISPERSE"
+    - OPTION "DISPERSE"
+      - OPTION "CHARGE"
+        NOTE: See ATTACK > CONFIRM.
+      - OPTION "STAY"
+        ** PROMPT (choice group) **
+          - OPTION "CHARGE"
+            NOTE: See ATTACK > CONFIRM.
+          - OPTION "SACRIFICE"
+            NOTE: See STAND GROUND > SACRIFICE.
+          - OPTION "RUN AWAY"
+            NOTE: See STAND GROUND > RUN AWAY.
+      - OPTION "DISPERSE"
+        ARROW Jericho LargeDown
+        ARROW North LargeDown
+        ARROW Josh SmallDown
+        ARROW Simon SmallUp
+        NOTE: See STAND GROUND > RUN AWAY.
+
+```
+
+Prompts in order: D1 `THINK`/`ALONE`/`DAYLIGHT`; D2 `FOLLOWERS`/`APPEAL OF POWER`/`REGRET POLICEMAN`/`FAILED` (all Lock, bracketed)/`NEXT STEP`/`LIE`/`SINCERE`; D3 `OPTIMISTIC`/`PESSIMISTIC`/`FATALISTIC`/`DETERMINED`; D4 `TRUTH`/`SINCERE`/`AVOID`/`NOT IMPORTANT`; D5 `NORTH’S PAST`/`LEAVE`; D6 (North not hostile) `OTHER NORTH` (Lock)/`TRUST`/`AGGRESSIVE`/`CURIOUS`/`UNDERSTANDING`/`DEFAULT/TIMEOUT`; street `CONVINCE`/`INTERVENE`; plaza `ATTACK`/`STAND GROUND`/`DISPERSE`; `CONFIRM`/`ABANDON`; after a won fight `REVENGE`/`SPARE`; after a lost fight `SHOOT`/`DON'T SHOOT`; after `ABANDON` and after `STAND GROUND` `ATTACK`/`STAND GROUND`/`DISPERSE`; after the second `STAND GROUND` and after `STAY` `CHARGE`/`SACRIFICE`/`RUN AWAY`; after the first `DISPERSE` `CHARGE`/`STAY`/`DISPERSE`.
+
+Arrows (32): North SmallUp on `TRUTH`, `SINCERE` (D4), `NORTH’S PAST`, `OTHER NORTH`, `TRUST`, `CURIOUS`, `UNDERSTANDING`; North SmallDown on `AVOID`, `NOT IMPORTANT`, `LEAVE`, `AGGRESSIVE`, `DEFAULT/TIMEOUT`; North LargeUp on "Connect with North" (condition "North is friend or higher"); win the fight Jericho LargeUp + PublicOpinion LargeDown; lose the fight Jericho LargeDown; `ABANDON` PublicOpinion SmallUp; first `STAND GROUND` Josh SmallUp, North SmallDown, Simon SmallDown, PublicOpinion SmallUp; second `STAND GROUND` PublicOpinion SmallUp; `SACRIFICE` PublicOpinion LargeUp + Jericho LargeUp; `RUN AWAY` and the second `DISPERSE` each Jericho LargeDown, North LargeDown, Josh SmallDown, Simon SmallUp. No arrow on D1, D2, D3, the street prompt, the first `DISPERSE`, `ATTACK`, `CONFIRM`, `STAY`, `REVENGE`/`SPARE`, `SHOOT`/`DON'T SHOOT`.
+
+Savior conditions after `SACRIFICE` (and `DON'T SHOOT`, "See SACRIFICE"): "John joined in Spare Parts" / "Simon survived in Public Enemy and has a good relationship with Markus" / "No one is there to save Markus".
+
+### Discrepancies against the note (sections 1 to 3)
+
+The note was built from the compiled form of this template, so the in-template prompts, labels, conditions and arrows agree. Differences:
+
+1. §2 D2 and §3 table: North ▲ for `SINCERE` ("preoccupied") comes from the wiki; the template has no arrow there. Template wins: no stat.
+2. §3 table, "ATTACK after ABANDON, STAND GROUND or DISPERSE: North ▲, Josh ▼▼, Simon ▼" (wiki). The template's `ATTACK`, `CONFIRM` and `CHARGE` options carry no relationship arrows on any path. Template wins: no such arrows (only the fight result's Jericho/PO arrows).
+3. §2 D7: the `REACT` / `DON'T REACT` connect prompt (strings `REACTCHOICE`) is not in the template, which applies North LargeUp directly under "North is friend or higher". Template silent on the prompt itself; keep it from the strings and the wiki's ~10 s timeout note, operator to confirm.
+4. §2 D6 calls the sixth option `RELENT`. The template labels it `DEFAULT/TIMEOUT` (bracketed), i.e. the no-input default, not a button. Template wins: model as not answering, with North SmallDown.
+5. §2 D6: the note says the wiki gives `OTHER NORTH`/`TRUST`/`AGGRESSIVE` their icons only at "at least friend". The template gates the whole follow-up on "North is not hostile" and applies all its arrows unconditionally within it; only the connect step needs "friend or higher". Template wins.
+6. §2 D1: "A `SAY NOTHING` label exists in the strings." The template offers only `THINK` / `ALONE` / `DAYLIGHT`. Template wins: do not offer it.
+7. §2 D10 (`RAISE HANDS` / `ADVANCE`): no choice group in the template, only the policeman's lines. Template silent; the chart (RAISE HANDS / IGNORE) and strings govern.
+8. §2 CHANT (eight slogans) and D9 (`CONVERT AX400` / `CONVERT ANDROID WORKER`): not in the template. Template silent; chart and strings govern.
+9. §2 D12 `DISPERSE` (after a first `STAND GROUND`): the note says "presumably POLICE OPEN FIRE > D13". The template gives it only Markus's and the chief's lines, with no "See DISPERSE" pointer (the `DISPERSE` under `ABANDON` has one). Template ambiguous; chart order governs.
+10. §3 Jericho ▲ for "around 10" conversions and North ▲ for the push: the template has neither (no arrows in the mall, street or fight). Template silent; the wiki stands, as the note already says. Informational.
+
+### Discrepancies against the benchmark (`R28`, `M17`–`M20`; `story-engine.mjs` cases `M17`–`M20`, `charge()`, gates `M19`/`M20`)
+
+Prompts missing:
+
+1. D1 `THINK` / `ALONE` / `DAYLIGHT` absent. No arrows. Build.
+2. D2 (seven options) absent. Gates: `FOLLOWERS` = pacifist Capitol Park (`M15` option 0), `APPEAL OF POWER` = aggressive (`M15` option 1), `REGRET POLICEMAN` = Markus killed Chris and his partner (`M16` option 1 only; option 2 is the crowd), `FAILED` = "Failed to free the androids in Capitol Park" (no benchmark state exists for this). No arrows. Build.
+3. D3 `OPTIMISTIC` / `PESSIMISTIC` / `FATALISTIC` / `DETERMINED` absent. No arrows. Build.
+4. D4 `TRUTH` / `SINCERE` (North SmallUp) / `AVOID` / `NOT IMPORTANT` (North SmallDown) absent. Build with `north(±1)`.
+5. D5 `NORTH’S PAST` (North SmallUp) / `LEAVE` (North SmallDown) absent. Build; `LEAVE` ends the roof scene.
+6. D6 `OTHER NORTH` / `TRUST` / `CURIOUS` / `UNDERSTANDING` (North SmallUp) / `AGGRESSIVE` / `DEFAULT/TIMEOUT` (North SmallDown) absent; condition "North is not hostile". `OTHER NORTH` needs "Looked at the other North in Capitol Park", which the benchmark does not record. Build.
+7. Street `CONVINCE` / `INTERVENE` absent. No arrows. Build.
+8. `CONFIRM` / `ABANDON` after `ATTACK` absent (`ABANDON` PublicOpinion SmallUp). `M18` option 2 goes straight to the fight. Build.
+9. Second `ATTACK` / `STAND GROUND` / `DISPERSE` (after `ABANDON` or a first `STAND GROUND`; `STAND GROUND` PublicOpinion SmallUp) absent; `M18` option 0 leads straight to `M19`. Build.
+10. First-`DISPERSE` follow-up `CHARGE` / `STAY` / `DISPERSE` (the last with Jericho LargeDown, North LargeDown, Josh SmallDown, Simon SmallUp) absent; `M19` stands in for it. Build, with `STAY` leading to the `CHARGE`/`SACRIFICE`/`RUN AWAY` prompt.
+11. `REVENGE` / `SPARE` after a won fight absent. No arrows. Build.
+
+Labels that differ:
+
+12. `M18` "Stand your ground peacefully and keep marching." / "Order everyone to leave." / "Charge the police line." vs template `ATTACK` / `STAND GROUND` / `DISPERSE` (also in that order). Template wins.
+13. `M19` "Run and get as many out as you can." / "Walk alone toward the guns to buy the others time." / "Charge them." vs `CHARGE` / `SACRIFICE` / `RUN AWAY`. Template wins.
+14. `M20` "Do nothing and wait." / "Turn the gun on yourself." vs `SHOOT` / `DON'T SHOOT` (template order). Template wins.
+15. `M17` "Take her hand and share your memories with her." / "Comfort her with words but keep the distance." is not a template prompt; the template's step is the conditioned "Connect with North" (strings `REACT` / `DON'T REACT`). Its situation ("built for a sex club and killed a client who was hurting her", "asks what you think of her now") differs from the template's "A doll in a distributor… with a man who'd rented me… I strangled him… I shouldn't have told you." Template wins on text.
+
+Gates the scenes lack:
+
+16. `M17` is ungated. The template reaches North's story only after `NORTH’S PAST`, "North is not hostile", and "North is friend or higher". Template wins.
+17. `M19`/`M20` savior test uses `s.jerichoTrust>JERICHO_UNPOPULAR` for Simon. The template's condition is "Simon survived in Public Enemy and has a good relationship with Markus" (Simon's own stat). Template wins on the condition (threshold still open, §8 item 1).
+
+Arrows the engine applies that the template does not, or misses:
+
+18. `M17` option 0: `north(+1)`; template North LargeUp (`+2`). And it sets only `northBond`, not Lover; the connect step is where the template's LargeUp sits. Fix size; Lover per the wiki.
+19. `M18` option 0 (`STAND GROUND`): engine `po(1);jer(1);josh(1);north(-1)`; template PublicOpinion SmallUp, Josh SmallUp, North SmallDown, Simon SmallDown. Extra `jer(+1)`, missing `simon(-1)`.
+20. `M18` option 1 (first `DISPERSE`): engine `jer(-1);north(-1)`; template has no arrow on the first `DISPERSE`. Remove.
+21. `charge()` success: engine `jer(2);po(-2);north(2);josh(-2)`; template Jericho LargeUp, PublicOpinion LargeDown only. Remove `north(+2)` and `josh(-2)`.
+22. `charge()` failure: engine `po(-2)`; template Jericho LargeDown and no PO change. Replace with `jer(-2)`.
+23. `M19` option 0 (`RUN AWAY`) `jer(-2);north(-2);josh(-1);simon(1)` and option 1 (`SACRIFICE`) `po(2);jer(2)` match the template. No change.
+24. `M20`: no arrows, matching the template. `DON'T SHOOT` says "See SACRIFICE", which may carry `SACRIFICE`'s PublicOpinion LargeUp and Jericho LargeUp; open (§8 item 7).
+
+Risk and media:
+
+25. `M18` option 2 and `M19` option 2 `risk: 0.35`: the template (and the wiki) give no probability; the fight is a QTE (win / lose conditions only). Unsourced number; keep only as an adaptation of the QTE, flagged.
+26. `R28`: the template has no magazine and no TV in this chapter. The two TV items belong to the Crossroads intro "Watch TV" block, conditioned "Markus didn't attack the police in Freedom March" / "Markus attacked the police in Freedom March" (`30-crossroads-intro/screens`), not on Capitol Park. Template wins: move them. The magazines are outside the template; the wiki governs.
+
+Prompts and stats the template is silent on (chart, strings or wiki govern), not in the benchmark:
+
+27. `RAISE HANDS` / `ADVANCE`, CHANT (eight slogans), `CONVERT AX400` / `CONVERT ANDROID WORKER`, the wiki's Jericho ▲ for about 10 conversions and North ▲ for the push. None is built.
+
+Narration (no arrows): the Simon alive/dead mall lines, and the bystander reactions conditioned "Shot the cops in Capitol Park" / "Didn't shoot the cops in Capitol Park". Not in any scene; listed here, not counted.
+
+Totals: 10 discrepancies with the note; 25 with the benchmark (11 missing prompts, 4 labels, 2 gates, 5 arrow errors, 2 risk/media, 1 silent-template group). Items 23 and 24 are recorded matches, not discrepancies.

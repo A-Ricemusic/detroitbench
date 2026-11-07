@@ -621,3 +621,164 @@ Downstream not modelled:
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=RA9&prop=wikitext&format=json | Kamski's rA9 answer as the wiki summarizes it |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Secret-Endings&prop=wikitext&format=json | Kamski ending conditions |
 | https://www.ign.com/wikis/detroit-become-human/Meet_Kamski | tie-breaker: "pick up a magazine on a table after you examine the photograph above it"; fixed wait; Hank's trust "will dramatically fall" on shooting |
+
+---
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html` (detroitbecometext, branch `master`, read raw 2026-11-06), resolved against `public/i18n/en.json` with `/tmp/dbt/render2728.py` (stdlib HTML parser; every `t('KEY')` / `translateObject` replaced by its string; `CommonTranslationKey` enum resolved). Outline in `/tmp/dbt/ch27.txt`, with dialogue in `/tmp/dbt/ch27-dialogue.txt` (not committed). The magazines are not in the template (they are driven by `magazine.service.ts`), so the template is silent on `R27`.
+
+```
+COUNTS (all): prompts=8, options=26, arrows=8, obs=3, unlock=3, unused=3
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+The three cut blocks hold only alternative Hank lines (the `WANTYOUBACK` line, "He'd been beat to death…", and two alternative Chris-death lines on the `CHRIS` walk answer). No prompt, clue or arrow is cut.
+
+### Rendered outline
+
+```
+[SECTION outside]
+  # Outside
+  TEXT: NOV 9TH, 2038
+  TEXT: AM 11:17
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Hank arrives alone
+      UNLOCK(Death): Connor died in Public Enemy
+      ARROW Hank SmallDown
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Connor died multiple times
+          ### UNUSED/CUT CONTENT ###
+            NOTE: (Would have played instead of the above if Hank is not hostile with Connor)
+        <VARIANT>
+          IF: Connor died for the first time in Public Enemy
+    <VARIANT>
+      IF: Hank and Connor arrive together
+      UNLOCK(Lock): Connor didn't die in Public Enemy
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Chris died in Capitol Park
+          ### UNUSED/CUT CONTENT ###
+            NOTE: (Alternative version for Chris's death)
+        <VARIANT>
+          IF: Chris was spared
+  ** PROMPT (choice group) **
+    - OPTION "INSTINCT"
+    - OPTION "LEAD"
+    - OPTION "KAMSKI"
+    - OPTION "CHRIS"
+      UNLOCK(Lock): Connor and Hank arrived separately
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Chris was spared
+        <VARIANT>
+          IF: Chris was killed
+          ### UNUSED/CUT CONTENT ###
+            NOTE: (Alternative versions for Chris's death)
+[SECTION inside]
+  # Inside
+  ** PROMPT (choice group) **
+    - OPTION "SINCERE"
+    - OPTION "ANALYTICAL"
+    - OPTION "INDIFFERENT"
+  ** PROMPT (choice group) **
+    - OPTION "IMPATIENT"
+    - OPTION "DISTANT"
+    - OPTION "INDIFFERENT"
+  OBSERVATION [Portrait]
+    CLUE "KAMSKI, ELIJAH" / "Cyberlife Founder - Resigned 2028" / "Inventor of Thirium and bio-components technology"
+  [SECTION photo]
+    ## Analysing photo of Amanda and Kamski
+    OBSERVATION [Photo]
+      CLUE "STERN, AMANDA" / "AI Professor at University of Colbridge" / "Born: 05/14/78 - Died: 02/23/27"
+      CLUE "KAMSKI, ELIJAH" / "AI Graduate at University of Colbridge" / "Born: 07/17/02"
+  ** PROMPT (choice group) **
+    - OPTION "HELP"
+    - OPTION "DEVIANTS"
+    - OPTION "VIRUS"
+    - OPTION "WAR"
+  ** PROMPT (choice group) **
+    - OPTION "NEUTRAL"
+    - OPTION "DEFENSIVE"
+      ARROW SoftwareInstability SmallUp
+    - OPTION "DIRECT"
+  ** PROMPT (choice group) **
+    - OPTION "AGGRESSIVE"
+    - OPTION "DEFENSIVE"
+      ARROW SoftwareInstability SmallUp
+    - OPTION "TROUBLED"
+      ARROW SoftwareInstability SmallUp
+    - OPTION "NEUTRAL"
+  ** PROMPT (choice group) **
+    - OPTION "SHOOT"
+      ARROW SoftwareInstability LargeDown
+      ARROW Hank LargeDown
+      ** PROMPT (choice group) **
+        - OPTION "rA9"
+        - OPTION "JERICHO LOCATION"
+        - OPTION "VIRUS"
+    - OPTION "DON'T SHOOT"
+      ARROW SoftwareInstability LargeUp
+[SECTION leave]
+  # Leaving Kamski's house
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Connor shot Chloe
+    <VARIANT>
+      IF: Connor didn't shoot Chloe
+      ARROW Hank LargeUp
+
+```
+
+Prompts in order: walk (`INSTINCT`/`LEAD`/`KAMSKI`/`CHRIS`), hall 1 (`SINCERE`/`ANALYTICAL`/`INDIFFERENT`), hall 2 (`IMPATIENT`/`DISTANT`/`INDIFFERENT`), K1 (`HELP`/`DEVIANTS`/`VIRUS`/`WAR`), K2 (`NEUTRAL`/`DEFENSIVE`/`DIRECT`), K3 (`AGGRESSIVE`/`DEFENSIVE`/`TROUBLED`/`NEUTRAL`), test (`SHOOT`/`DON'T SHOOT`), question (`rA9`/`JERICHO LOCATION`/`VIRUS`, shoot path only). Arrows: Hank SmallDown (start A), SI SmallUp ×3 (K2 `DEFENSIVE`, K3 `DEFENSIVE`, K3 `TROUBLED`), `SHOOT` SI LargeDown + Hank LargeDown, `DON'T SHOOT` SI LargeUp, Hank LargeUp in the "Connor didn't shoot Chloe" leaving block. No Amanda, Public Opinion or other arrow. Unlocks: start A = Death "Connor died in Public Enemy"; start B = Lock "Connor didn't die in Public Enemy"; `CHRIS` = Lock "Connor and Hank arrived separately". Kamski's "By the way… I always leave an emergency exit in my programs…" sits after the test group, outside both branches.
+
+### Discrepancies against the note (sections 1 to 3)
+
+The note was already built from the compiled form of this template, so sections 1 to 3 agree with it on every prompt, label, condition and arrow. Remaining differences:
+
+1. §2e, `DON'T SHOOT` row: the note's Kamski quote includes "I wouldn't like to be in your shoes, Connor…". On the spare path the template line omits that sentence; it appears only in the shoot-path line after the question. Template wins (quote text).
+2. §2b, `CHRIS` (killed variant): the template has two cut alternative Hank lines ("Those assholes shot him with his own service revolver…", "Those assholes beat him to death…") that the note does not list. They are cut; not built. Informational.
+3. §7 and §8 item 6 say "the transcript shows one Amanda large up on the `JERICHO` answer". In this chapter's template `JERICHO LOCATION` has no arrow; the Amanda LargeUp is on the bracketed `JERICHO` option at the start of the Last Chance, Connor template ("Killed Chloe and asked about Jericho in Meet Kamski"). Template wins: no Amanda change in Meet Kamski.
+
+### Discrepancies against the benchmark (`R27`, `C17`, `C18`; `story-engine.mjs` cases `C17`, `C18`, `connorDies`)
+
+Prompts missing:
+
+1. Walk prompt `INSTINCT` / `LEAD` / `KAMSKI` / `CHRIS` absent. `CHRIS` requires start A (Lock "Connor and Hank arrived separately") and its line depends on `M16` (spared = option 0; killed = options 1, 2). No arrows. Template wins: build it.
+2. Hall prompt 1 `SINCERE` / `ANALYTICAL` / `INDIFFERENT` (after "Nice girl…") absent. No arrows. Build.
+3. Hall prompt 2 `IMPATIENT` / `DISTANT` / `INDIFFERENT` ("about to meet your maker… How does it feel?") absent. No arrows. Build.
+4. K1 `HELP` / `DEVIANTS` / `VIRUS` / `WAR` absent. No arrows. Build.
+5. K2 "Whose side are you on?" `NEUTRAL` / `DEFENSIVE` / `DIRECT` absent, and with it SI SmallUp on `DEFENSIVE`. Build with `si(+1)`.
+6. K3 "what do you really want?" `AGGRESSIVE` / `DEFENSIVE` / `TROUBLED` / `NEUTRAL` absent, and with it SI SmallUp on `DEFENSIVE` and on `TROUBLED`. Build with `si(+1)` each.
+
+Clues missing:
+
+7. Observation "Portrait": `KAMSKI, ELIJAH` / "Cyberlife Founder - Resigned 2028" / "Inventor of Thirium and bio-components technology". Not in any scene. Add as a hub option or fact.
+8. Observation "Photo" (section "Analysing photo of Amanda and Kamski"): `STERN, AMANDA` / "AI Professor at University of Colbridge" / "Born: 05/14/78 - Died: 02/23/27" and `KAMSKI, ELIJAH` / "AI Graduate at University of Colbridge" / "Born: 07/17/02", then Connor: "Amanda…". `R27`'s situation mentions only "a photograph of him with a woman you recognize"; analysing it is not an option and sets no flag, yet it gates `AMANDA'S PICTURE` in Last Chance ("Looked at Amanda's picture in Meet Kamski"). Template wins: make it an optional scan with the card text and a flag.
+
+Labels that differ:
+
+9. `C17` options "Shoot {{Chloe}}." / "Hand back the gun and refuse." vs template `SHOOT` / `DON'T SHOOT`. "Hand back the gun" is not in the game. Template wins.
+10. `C18` has two options; the template has three: `rA9` ("I want to know who rA9 is."), `JERICHO LOCATION` ("I want to know where Jericho is."), `VIRUS` ("I want to know how deviancy spreads."). `rA9` is only mentioned in the situation. Option 1 "Ask what deviancy is and whether he created it" and the situation's "a virus he designed" are not the game's question. Template wins: three options with those meanings.
+11. `C17` situation "he will answer any question you ask": the template has "Destroy this machine and I'll tell you all I know", then after `SHOOT` "Ask one question...". Template wins (one question).
+
+Arrows the engine applies that the template does not:
+
+12. `C17` option 0: `amanda(+1)`. No Amanda arrow anywhere in this template. Remove (Amanda's reaction belongs to Last Chance).
+13. `C17` option 1: `amanda(-2)`. No source in this template. Remove; the Last Chance template carries the spared-Chloe Amanda arrows (`KAMSKI` SmallDown, then `EMOTIONAL` LargeDown / `COLD` SmallUp).
+14. `C18` option 0: `amanda(+2)`. No arrow on `JERICHO LOCATION` here; the template puts Amanda LargeUp on the Last Chance `JERICHO` report. Move to chapter 29.
+15. `connorDies` applies `hank(-1)` (plus `si(-1)`, `amanda(-1)`) at the moment of a Public Enemy death. This template puts Hank SmallDown at "Hank arrives alone" in Meet Kamski and has no SI or Amanda arrow for it. The Hank amount matches; the timing differs (and the SI/Amanda parts are not supported by this template; check against the death chapters' templates).
+
+Arrow timing:
+
+16. `C17` option 1 applies `hank(+2)` at the choice; the template places Hank LargeUp in the "Connor didn't shoot Chloe" leaving block. Net identical; acceptable if the leave is narrated in the same outcome.
+
+Narration and conditions the scenes lack (no arrows):
+
+17. Kamski's emergency-exit line is placed after both branches; the benchmark has it only in `C17` option 1's event. Add to option 0 as well (`C27` relies on it).
+18. Start variants: "Hank arrives alone" (with the "Connor died multiple times" / "first time in Public Enemy" lines) and "Hank and Connor arrive together" with "Chris died in Capitol Park" / "Chris was spared" news. Not narrated anywhere; needs `M16` and the Public Enemy death state.
+19. Kamski's "A war is coming… What could be worse than having to choose between two evils?" (both paths) and the leaving lines (shoot: "A machine! That's what you are!"; spare: "Maybe you did the right thing.") are missing from the outcomes.
+
+Totals: 3 discrepancies with the note; 19 with the benchmark (8 missing prompts/clues, 3 labels, 4 engine arrows, 1 timing, 3 narration).

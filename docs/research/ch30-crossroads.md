@@ -1522,3 +1522,856 @@ Engine references in `benchmark/story-engine.mjs`:
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Secret_Endings&prop=wikitext&format=json | "Alone again" (Kara), "Wasted Potential" (Markus), Kamski Ending conditions |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Trophies&prop=wikitext&format=json | THREE AT JERICHO, SCORCHED EARTH, BLOODHOUND |
 | https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-29-crossroads-kara (and `-markus`, `-connor`) | conflict checks: "Play as both Markus and Connor"; Josh's sacrifice needs good standing; "the third hit will kill him"; 10-second timer |
+
+---
+
+## 10. Template cross-check
+
+Written 2026-11-06 from the detroitbecometext templates (master), read raw from `raw.githubusercontent.com`, under `src/app/chapters/components/chapter-contents/`:
+- Intro: `30-crossroads-intro/screens/screens.component.html` (the Jericho TV) and `30-crossroads-intro/background-dialogues/background-dialogues.component.html`. Both are embedded (`<app-screens>`, `<app-background-dialogues>`) in the Kara and Connor templates.
+- Kara: `30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html`.
+- Connor: `30.2-crossroads-connor-chapter-content/crossroads-connor-chapter-content.component.html`.
+- Markus: `30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html`.
+
+Rendered with `/tmp/dbt/render2532.py` (Python, stdlib `html.parser`), which resolves every `t('KEY')` and `translateObject(KEY, start, end)` against `public/i18n/en.json` and prints sections, condition groups and variants (`IF:` is the transcribers' condition text), choice groups (`** PROMPT **`) with each option's label, `app-relation` arrows (`ARROW <name> <type>`), `app-unlock-condition` (`UNLOCK(<type>)`), `app-observation-item` clues, and `app-unused-content` blocks. Dialogue lines are omitted from the outline (a full version with dialogue is in `/tmp/dbt/ch30*-dialogue.txt`, not committed). `(no content: ø)` marks an option the template leaves empty.
+
+Counts (all / inside cut blocks):
+
+| Part | Prompts | Options | Clues | Arrows | Unlocks | Cut blocks |
+|---|---|---|---|---|---|---|
+| Intro (screens) | 0 | 0 | 0 | 0 | 0 | 1 (two TV items) |
+| Intro (background dialogues) | 0 | 0 | 0 | 0 | 0 | 0 |
+| 30.1 Kara | 12 / 0 | 32 / 0 | 0 | 10 / 0 | 2 | 0 |
+| 30.2 Connor | 13 / 0 | 40 / 0 | 0 | 20 / 0 | 4 | 3 (dialogue only) |
+| 30.3 Markus | 10 / 0 | 30 / 0 | 0 | 34 / 0 | 6 | 2 (dialogue only) |
+
+No prompt, option, clue or arrow in this chapter sits inside a cut block; the cut blocks hold only dialogue lines and two TV items. The templates contain no `app-observation` clues for this chapter (the magazines are handled by the site's magazine service, not the templates, and the flowchart node labels live in `MENU.FLOWCHART.02A.*`, already checked in section 1).
+
+Cut lines, for the record (not to be built):
+- TV (screens): KNC "Deep Space 5, the NASA shuttle, is about to reach the planet Mars…"; Channel 16 "New Horizon is a company that now offers parents the possibility of defining the genetic characteristics of their children…".
+- Connor: background "Who's that? Never seen this model before…" / "No… Neither have I…" / "Wonder where he came from."; at Lucy, Connor "No, I-"; machine hold, after Markus reaches the gun, Markus "You could have joined us. You could have been free…".
+- Markus: Josh in the pacifist-march-and-pacifist-speech variant, "Thousands of our people are about to be destroyed because you decided to fight humans."; Markus on `REMORSE`, "Yeah, maybe I made some mistakes."
+
+### 10a. Rendered outlines
+
+In the outline, `NOTE:` lines are the transcribers' own prose inside the template (cross-references such as "Leads to the same result as choosing ATTACK") and `TEXT:` lines are on-screen text outside dialogue tags (date and time cards, TV and background chatter). Their content was checked against sections 1 to 3 and adds no discrepancy beyond those listed below.
+
+#### Intro (30-crossroads-intro: screens, then background-dialogues)
+
+```
+=== 30-crossroads-intro/screens ===
+[SECTION tv]
+  ## Watch TV
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Markus didn't attack the police in Freedom March
+    <VARIANT>
+      IF: Markus attacked the police in Freedom March
+  ### UNUSED/CUT CONTENT ###
+
+COUNTS (all): prompts=0, options=0, arrows=0, obs=0, unlock=0, unused=1
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+=== 30-crossroads-intro/background-dialogues ===
+TEXT: They're conducting raids across the city! Androids were hanged all along Woodward Avenue.
+TEXT: We've gotta do something!.. We can't just stand by and let them slaughter us!
+TEXT: Our people are being lined up and executed…
+TEXT: Quick, he needs blue blood!
+TEXT: They opened fire on us even though we were unarmed… Hundreds of us died there, the place was covered with blue blood!.. We cannot just sit here and watch them murder us, we've gotta defend ourselves! We've gotta fight back, we have no choice!
+TEXT: They'll kill us all if we don't do something…
+TEXT: They're slaughtering our people! We can't talk with them! We have to stand up to them! Blood for blood!
+TEXT: We were just there. We didn't do anything wrong!… We just wanted to tell them "We want freedom!"… Then they opened fire!.. It was carnage. Carnage…
+TEXT: Why? Why did they do it! Why?
+TEXT: We gotta kill the bastards! We've got to avenge our dead!
+TEXT: They're going to kill us all! Well I'm willing to fight. We can't just let them slaughter us!
+<CONDITION GROUP>
+  <VARIANT>
+    IF: Markus is alive
+    TEXT: Markus will have to choose between vengeance and dialogue with the humans.
+    TEXT: What's Markus doing? He's the leader. If he's rA9, it's up to him to save our people!
+  <VARIANT>
+    IF: Markus died in Freedom March
+    TEXT: Markus is dead? He was rA9! Who's going to lead us now?
+    TEXT: North is going to take his place. She knew him best.
+    TEXT: They've killed Markus! They shot him in the square…
+    TEXT: I was there… I saw Markus get shot… He fought to the very end to save his people… but there were too many of them…
+    TEXT: Markus dead? That's impossible, what will we do without him?!
+    TEXT: I heard North was going to take his place.
+    TEXT: They've killed Markus… He was our guide… I'm sure he was rA9. He was the only one who could save us.
+    TEXT: Markus is dead… The humans killed him!
+
+COUNTS (all): prompts=0, options=0, arrows=0, obs=0, unlock=0, unused=0
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+#### 30.1 Crossroads - Kara
+
+```
+[SECTION car]
+  # In the car
+  TEXT: NOV 9TH, 2038
+  TEXT: PM 09:34
+  [SECTION car-window]
+    ## Looking out the window
+  [SECTION car-radio]
+    ## Listening to the radio
+  [SECTION car-jericho]
+    ## Arriving at Jericho
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Luther is alive
+[SECTION jericho]
+  # In Jericho
+  <<embedded app-screens>>
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Luther is alive
+  [SECTION backgroud-dialogues]
+    ## Background dialogues
+    <<embedded app-background-dialogues>>
+  [SECTION sit-down]
+    ## Sitting down
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is alive
+      <VARIANT>
+        IF: Luther died in Midnight Train
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Talking to Markus
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Luther is alive
+        <VARIANT>
+          IF: Luther is dead
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Connor knows the location of Jericho
+        <VARIANT>
+          IF: Connor series was decommissioned
+      ** PROMPT (choice group) **
+        - OPTION "BOND"
+        - OPTION "NO DIFFERENCE"
+        - OPTION "SECRET"
+    <VARIANT>
+      IF: Talking to North
+      UNLOCK(Death): Markus died in Freedom March
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Luther is alive
+        <VARIANT>
+          IF: Luther is dead
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Connor knows the location of Jericho
+        <VARIANT>
+          IF: Connor series was decommissioned
+      ** PROMPT (choice group) **
+        - OPTION "MARKUS…"
+        - OPTION "THANK YOU"
+      ** PROMPT (choice group) **
+        - OPTION "BOND"
+        - OPTION "NO DIFFERENCE"
+        - OPTION "SECRET"
+  [SECTION alice-return]
+    ## Returning to Alice
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Todd chased Kara escaping in Stormy Night
+        NOTE: Flashback
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is alive
+      <VARIANT>
+        IF: Luther is dead
+    ** PROMPT (choice group) **
+      - OPTION "HUG"
+        ARROW Alice LargeUp
+        ARROW Luther SmallUp
+        NOTE: Kara's part of this chapter ends if Jericho is not attacked (Connor series decommissioned).
+      - OPTION "DISTANT"
+        ARROW Alice LargeDown
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Luther is alive
+            NOTE: Luther and Alice leave Kara.
+        NOTE: Kara's gameplay ends here if Jericho is not attacked (Connor series decommissioned).
+  [SECTION jericho-attack]
+    ## Jericho under attack
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is alive
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Alice is DISTANT, but Kara chose LOOK FOR ALICE
+        UNLOCK(Lock): Alice relation is below WARM and choose DISTANT
+        ARROW Alice LargeUp
+  [SECTION wrong-way]
+    ## Go the wrong way
+  [SECTION shot]
+    ## Get shot
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Out of time or wrong way
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Luther is alive
+    <VARIANT>
+      IF: Luther is dead
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Luther is alive
+      ** PROMPT (choice group) **
+        - OPTION "HELP LUTHER"
+          ARROW Alice SmallUp
+          ARROW Luther SmallUp
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Get Luther to safety
+            <VARIANT>
+              IF: Fail to get to safety
+        - OPTION "PROTECT ALICE"
+          ARROW Alice SmallDown
+          ** PROMPT (choice group) **
+            - OPTION "CONSOLE"
+            - OPTION "HURRY"
+              ARROW Alice SmallDown
+    <VARIANT>
+      IF: Luther is dead
+  [SECTION hide-cabin]
+    ## Hide in cabin
+    ** PROMPT (choice group) **
+      - OPTION "OPEN"
+        ARROW Alice SmallUp
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Kill soldier
+          <VARIANT>
+            IF: Lose fight
+            (no content: ø)
+      - OPTION "DON'T OPEN"
+        ARROW Alice SmallDown
+  [SECTION flee]
+    ## Kara flees for the breach
+    ** PROMPT (choice group) **
+      - OPTION "PLAY DEAD"
+        ** PROMPT (choice group) **
+          - OPTION "DEFEND ALICE"
+            NOTE: Leads to the same result as choosing ATTACK.
+          - OPTION "DON'T MOVE"
+      - OPTION "RUN"
+        ** PROMPT (choice group) **
+          - OPTION "GET UP"
+            ** PROMPT (choice group) **
+              - OPTION "CRAWL"
+              - OPTION "ATTACK"
+                NOTE: Leads to the same result as choosing ATTACK.
+              - OPTION "SURRENDER"
+          - OPTION "ATTACK"
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Luther is alive - Luther sacrifices himself
+              <VARIANT>
+                IF: Luther is dead
+              <VARIANT>
+                IF: Luther is dead and Kara played dead before attacking
+                NOTE: -00:00:04 SHUTDOWN IMMINENT
+          - OPTION "SURRENDER"
+          - OPTION "PLAY DEAD"
+            NOTE: Leads to the same result as choosing PLAY DEAD.
+      - OPTION "SURRENDER"
+        ** PROMPT (choice group) **
+          - OPTION "RUN"
+            NOTE: Leads to the same result as choosing RUN.
+          - OPTION "CONVINCE"
+          - OPTION "ATTACK"
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Luther is alive - Luther sacrifices himself
+              <VARIANT>
+                IF: Luther is dead
+          - OPTION "OBEY"
+
+COUNTS (all): prompts=12, options=32, arrows=10, obs=0, unlock=2, unused=0
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+#### 30.2 Crossroads - Connor
+
+```
+[SECTION jericho]
+  # In Jericho
+  <<embedded app-screens>>
+  [SECTION background-dialogues]
+    ## Background dialogues
+    <<embedded app-background-dialogues>>
+    ### UNUSED/CUT CONTENT ###
+  [SECTION stairs]
+    ## Going to the stairs
+    ### UNUSED/CUT CONTENT ###
+[SECTION captain-cabin]
+  # Captain's Cabin
+  [SECTION find-markus]
+    ## Finding Markus
+    ** PROMPT (choice group) **
+      - OPTION "REASON"
+        ARROW SoftwareInstability SmallUp
+      - OPTION "DEFY"
+      - OPTION "DISCOURAGE"
+      - OPTION "THREATEN"
+    ** PROMPT (choice group) **
+      - OPTION "INTIMIDATE"
+      - OPTION "INSTRUCTIONS"
+    ** PROMPT (choice group) **
+      - OPTION "CONVINCE"
+        ARROW SoftwareInstability SmallUp
+      - OPTION "APPEAL"
+        ARROW SoftwareInstability SmallUp
+      - OPTION "I KNOW YOU"
+      - OPTION "OUR CAUSE"
+        ARROW SoftwareInstability SmallUp
+    ** PROMPT (choice group) **
+      - OPTION "STAY BACK!"
+        ARROW SoftwareInstability SmallDown
+      - OPTION "WARNING SHOT"
+        ARROW SoftwareInstability SmallDown
+        (no content: ø)
+      - OPTION "ENOUGH!"
+        ARROW SoftwareInstability SmallDown
+      - OPTION "SAY NOTHING"
+        (no content: ø)
+    ** PROMPT (choice group) **
+      - OPTION "SOW DOUBTS"
+        ARROW SoftwareInstability SmallUp
+      - OPTION "QUESTION"
+        ARROW SoftwareInstability SmallUp
+      - OPTION "RALLY"
+        ARROW SoftwareInstability SmallUp
+      - OPTION "UNDERMINE"
+        ARROW SoftwareInstability SmallUp
+    ** PROMPT (choice group) **
+      - OPTION "BECOME A DEVIANT" (brackets)
+        UNLOCK(Lock): Have enough software instability
+        ARROW Amanda LargeDown
+        NOTE: See
+        NOTE: Crossroads - Markus
+        NOTE: : In the corridor.
+      - OPTION "REMAIN A MACHINE"
+  [SECTION find-north]
+    ## Find North - If Markus is dead or rejected by Jericho
+    ** PROMPT (choice group) **
+      - OPTION "INSTRUCTIONS"
+      - OPTION "INTIMIDATE"
+    ** PROMPT (choice group) **
+      - OPTION "STAY BACK!"
+        ARROW SoftwareInstability SmallDown
+      - OPTION "WARNING SHOT"
+        ARROW SoftwareInstability SmallDown
+        (no content: ø)
+      - OPTION "ENOUGH!"
+        ARROW SoftwareInstability SmallDown
+      - OPTION "SAY NOTHING"
+        (no content: ø)
+    ** PROMPT (choice group) **
+      - OPTION "DISTURBED"
+        ARROW SoftwareInstability SmallUp
+      - OPTION "SAY NOTHING"
+        (no content: ø)
+      - OPTION "COLD"
+        ARROW SoftwareInstability SmallDown
+    ** PROMPT (choice group) **
+      - OPTION "COLD"
+        ARROW SoftwareInstability SmallDown
+      - OPTION "DISTURBED"
+        ARROW SoftwareInstability SmallUp
+      - OPTION "SAY NOTHING"
+        (no content: ø)
+    ** PROMPT (choice group) **
+      - OPTION "BECOME A DEVIANT" (brackets)
+        UNLOCK(Lock): Have enough software instability
+        ARROW Amanda LargeDown
+      - OPTION "REMAIN A MACHINE"
+[SECTION deviant-connor]
+  # Deviant Connor in corridor : Markus is dead or rejected
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Soldiers shoot Connor twice before arming explosive
+      NOTE: See
+      NOTE: Crossroads - Markus
+      NOTE: : Surviving characters jump.
+  [SECTION lucy]
+    ## Meet Lucy
+  [SECTION bridge]
+    ## Bridge breaks under Connor
+  [SECTION soldiers-threaten]
+    ## Soldiers threaten androids
+    ** PROMPT (choice group) **
+      - OPTION "INTERVENE"
+      - OPTION "DON'T INTERVENE"
+        (no content: ø)
+  [SECTION soldiers-coming]
+    ## Soldiers coming
+  [SECTION androids-chased]
+    ## Androids are chased by soldiers
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Knock soldiers out
+  [SECTION josh-dying]
+    ## Josh is dying
+  [SECTION deviant-hold]
+    ## In the hold
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Connor dies
+  [SECTION explosives]
+    ## Explosive armed
+    NOTE: See
+    NOTE: Crossroads - Markus
+    NOTE: : Escape from Jericho.
+[SECTION machine-connor]
+  # Connor remained a machine
+  [SECTION cargo-hall]
+    ## Cargo Hall
+    ** PROMPT (choice group) **
+      - OPTION "LIE"
+      - OPTION "PERKINS EXCUSE"
+      - OPTION "ATTACK"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Lose the fight
+      - OPTION "RUN"
+  [SECTION machine-hold]
+    ## In the hold
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Markus is alive - Connor finds Markus
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Reach the gun
+            UNLOCK(Death): Markus kills Connor
+            ### UNUSED/CUT CONTENT ###
+            NOTE: See
+            NOTE: Crossroads - Markus: Escape from Jericho.
+          <VARIANT>
+            IF: Fail to reach the gun
+            UNLOCK(Death): Connor kills Markus
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Simon is alive
+              <VARIANT>
+                IF: Simon is dead
+            NOTE: See
+            NOTE: Crossroads - Markus: Surviving characters jump.
+      <VARIANT>
+        IF: Markus is dead or left Jericho - Connor goes after North
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Attacked the soldier
+          <VARIANT>
+            IF: Didn't attack the soldier
+        NOTE: See
+        NOTE: Crossroads - Markus: Surviving characters jump.
+
+COUNTS (all): prompts=13, options=40, arrows=20, obs=0, unlock=4, unused=3
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+#### 30.3 Crossroads - Markus
+
+```
+[SECTION captain-cabin]
+  # In the captain's cabin
+  [SECTION markus-alive]
+    ## Markus is alive
+    ** PROMPT (choice group) **
+      - OPTION "AGGRESSIVE"
+      - OPTION "DETERMINED"
+      - OPTION "RIGHTEOUS"
+      - OPTION "SOMBER"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Lead a peaceful march in Freedom March and made a pacifist speech in Stratford Tower
+        ### UNUSED/CUT CONTENT ###
+      <VARIANT>
+        IF: Lead a peaceful march in Freedom March and made an aggressive speech in Stratford Tower
+      <VARIANT>
+        IF: Attacked the Police during the march in Freedom March
+    ** PROMPT (choice group) **
+      - OPTION "ANGRY"
+        ARROW Josh SmallDown
+      - OPTION "BITTER"
+      - OPTION "REMORSE"
+        ARROW Josh SmallUp
+        ### UNUSED/CUT CONTENT ###
+      - OPTION "NO REGRETS"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Reputation with Jericho is higher than 'unpopular'
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Simon is here
+          <VARIANT>
+            IF: Simon is dead
+        ** PROMPT (choice group) **
+          - OPTION "CONFRONTATION"
+            ARROW North SmallUp
+            ARROW Josh SmallDown
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Simon is alive
+          - OPTION "DIALOGUE"
+            ARROW North SmallDown
+            ARROW Josh SmallUp
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Simon is alive
+          - OPTION "STAY HIDING"
+            ARROW Josh SmallUp
+            ARROW North SmallDown
+            ARROW Simon SmallUp
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Simon is alive
+              <VARIANT>
+                IF: Simon is dead
+        ** PROMPT (choice group) **
+          - OPTION "SAD"
+          - OPTION "ANGRY"
+          - OPTION "THOUGHTFUL"
+          - OPTION "BITTER"
+        ** PROMPT (choice group) **
+          - OPTION "KEEP"
+          - OPTION "REFUSE"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: North has lover relationship status
+            ** PROMPT (choice group) **
+              - OPTION "KISS"
+              - OPTION "DON'T KISS"
+                ARROW North LargeDown
+        [SECTION connor-arrives-popular]
+          ### Connor arrives to find Markus
+          UNLOCK(Lock): Connor found Jericho
+          NOTE: See
+          NOTE: Crossroads - Connor
+          NOTE: : Finding Markus.
+      <VARIANT>
+        IF: Reputation with Jericho is unpopular
+        ARROW Jericho LargeDown
+        [SECTION connor-arrives-unpopular]
+          ### Connor arrives to find North
+          UNLOCK(Lock): Connor found Jericho
+          NOTE: See
+          NOTE: Crossroads - Connor
+          NOTE: : Find North.
+  [SECTION markus-dead]
+    ## Markus died in Freedom March
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Simon is alive
+      <VARIANT>
+        IF: Simon is dead
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Simon is alive
+      <VARIANT>
+        IF: Simon is dead
+    [SECTION connor-arrives-north]
+      ### Connor arrives
+      UNLOCK(Lock): Connor found Jericho
+      NOTE: See
+      NOTE: Crossroads - Connor
+      NOTE: : Find North.
+[SECTION corridor]
+  # In the corridor
+  ** PROMPT (choice group) **
+    - OPTION "MESSAGE"
+    - OPTION "SIMON AND JOSH"
+      UNLOCK(None): Simon is alive
+    - OPTION "JOSH"
+      UNLOCK(Death): Simon is dead
+    - OPTION "HELICOPTERS"
+    - OPTION "BLOW UP JERICHO"
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Connor became deviant
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Soldiers shoot Markus twice
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Connor became deviant
+          NOTE: See
+          NOTE: Crossroads - Connor
+          NOTE: : Deviant Connor in corridor.
+  [SECTION lucy]
+    ## Meet Lucy
+  [SECTION bridge]
+    ## Bridge breaks under Markus
+  [SECTION soldiers-androids]
+    ## Soldiers threaten androids
+    ** PROMPT (choice group) **
+      - OPTION "INTERVENE"
+        ARROW Jericho SmallUp
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Deal with soldiers
+          <VARIANT>
+            IF: Get shot
+      - OPTION "DON'T INTERVENE"
+        ARROW Jericho SmallDown
+        (no content: ø)
+  [SECTION soldiers-coming]
+    ## Soldiers coming Markus' way
+  [SECTION androids-chased]
+    ## Androids are chased by soldiers
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Knock soldiers out
+        ARROW Jericho SmallUp
+      <VARIANT>
+        IF: Abandoned androids
+        ARROW Jericho SmallDown
+        (no content: ø)
+  [SECTION josh-fighting]
+    ## Josh is fighting a soldier
+    ** PROMPT (choice group) **
+      - OPTION "INTERVENE"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Neutralize soldiers
+            ARROW Jericho SmallUp
+            ARROW Josh LargeUp
+          <VARIANT>
+            IF: Lose the upper hand
+            ARROW Jericho SmallDown
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Markus shot twice
+              <VARIANT>
+                IF: Markus wounded
+      - OPTION "HIDE"
+        ARROW Jericho SmallDown
+  [SECTION hold]
+    ## In the hold
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Connor became a deviant
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Lose the fight
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Simon is alive
+              <VARIANT>
+                IF: Simon is dead
+      <VARIANT>
+        IF: Connor remained a machine
+        NOTE: Connor interrupts; See
+        NOTE: Connor - Crossroads: Connor remained a machine.
+[SECTION jericho-escape]
+  # Escape from Jericho
+  [SECTION explosives]
+    ## Explosives were activated
+    ARROW North SmallUp
+    ARROW Jericho SmallUp
+    ARROW Josh SmallUp
+    ARROW Simon SmallUp
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Markus was rejected by Jericho
+        UNLOCK(Lock): Markus did not leave forever
+      <VARIANT>
+        IF: Markus wasn't rejected
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Lose too much time
+    [SECTION north-shot]
+      ### North is shot
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Simon is alive
+        <VARIANT>
+          IF: Simon is dead
+      ** PROMPT (choice group) **
+        - OPTION "SAVE NORTH"
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Markus is injured - cannot save North
+              ARROW Jericho SmallDown
+              ARROW Simon SmallDown
+              ARROW Josh LargeDown
+            <VARIANT>
+              IF: Markus is not injured
+              ARROW Jericho SmallUp
+              ARROW North LargeUp
+              ARROW Josh SmallUp
+              ARROW Simon SmallUp
+              <CONDITION GROUP>
+                <VARIANT>
+                  IF: Save North
+                  <CONDITION GROUP>
+                    <VARIANT>
+                      IF: Connor became deviant - Connor protects Markus and North
+                      <CONDITION GROUP>
+                        <VARIANT>
+                          IF: Connor kills the soldiers
+                  <CONDITION GROUP>
+                    <VARIANT>
+                      IF: Run to exit
+                    <VARIANT>
+                      IF: Fail to run to exit (Connor stayed a machine) - Markus dies
+                <VARIANT>
+                  IF: Fail to save North
+                  <CONDITION GROUP>
+                    <VARIANT>
+                      IF: Connor became a deviant - North dies, Connor rescues Markus
+                      ARROW Jericho SmallDown
+                    <VARIANT>
+                      IF: Connor stayed a machine - Markus dies, North escapes
+        - OPTION "RUN"
+          ARROW Jericho SmallDown
+          ARROW Simon SmallDown
+          ARROW Josh LargeDown
+  [SECTION jump]
+    ## Surviving characters jump
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Explosives were activated
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Markus survived
+          <VARIANT>
+            IF: Markus died or was rejected
+      <VARIANT>
+        IF: Explosives weren't activated
+
+COUNTS (all): prompts=10, options=30, arrows=34, obs=0, unlock=6, unused=2
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+### 10b. Discrepancies
+
+Rule applied (README): the template wins for labels, prompts, arrows and clue text; the flowchart image wins for node order and node names; the wiki only where the template is silent; cut content is not built. Unlock and condition texts are the transcribers' reconstruction (SOURCES.md 1.1: transcript tier, below the wiki), so for gates the wiki stands and conflicts go to the operator. An arrow written on an option before its outcome variants applies whatever the outcome; an arrow inside a variant applies only on that outcome.
+
+#### Against the note (sections 1 to 3)
+
+Intro: none. Section 6 already records both TV variants, the shared Arctic item and the two cut items.
+
+Kara (30.1):
+1. **Surrender round labels.** Section 2e names the options `FACE` / `CONVINCE` / `OBEY` / `RUN AWAY`. The template's buttons read `RUN`, `CONVINCE`, `ATTACK`, `OBEY`, in that order. `FACE` and `RUN AWAY` are chart node names. The template wins for the labels the scene offers.
+2. **Leg-shot round labels.** Section 2e lists `FACE (transcript ATTACK)`. The template's first round is `GET UP` / `ATTACK` / `SURRENDER` / `PLAY DEAD`, and after `GET UP` it is `CRAWL` / `ATTACK` / `SURRENDER`. `OUT OF TIME` is a timeout, not a button. Template wins: the button is `ATTACK`.
+3. **Luther on `DISTANT`.** Section 3 (Luther table) keeps "small down, W only". The template has no Luther arrow on `DISTANT`. Template wins: no Luther change.
+4. **Abandonment gate (`RUN AWAY` / `FIND ALICE`).** The template's lock reads "Alice relation is below WARM and choose DISTANT"; the wiki reads "did not increase to NEUTRAL". Section 2b quotes both and does not resolve them. Under the rule above the wiki gate stands (never above Distant). Open question 4 already asks the operator. The template has no choice group here, only the `LOOK FOR ALICE` variant with Alice large up. The chart label is `FIND ALICE` (`MENU.FLOWCHART.02A.K.ALICECHOICEFIND`), so the chart wins for the name.
+5. **Arrows apply before the QTE.** `HELP LUTHER` (Alice small up, Luther small up) and `OPEN` (Alice small up) carry their arrows on the option, ahead of the `Get Luther to safety` / `Fail to get to safety` and `Kill soldier` / `Lose fight` variants, so they apply on any outcome. The tables in 2c, 2d and 3 do not say this. Template wins.
+
+Connor (30.2):
+6. **`DISCOURAGE`.** Section 2g/3 and open question 2 leave the conflict open (W and SI page: up; T: none). Template wins: no SI change.
+7. **`OUR CAUSE`.** Section 3 calls the wiki's missing icon "probably" an omission. Template wins: SI small up.
+8. **Cut lines.** "No, I-" at Lucy and Markus's "You could have joined us. You could have been free…" are not recorded as cut in the note (only the background line is, in 2g). Record only; do not build.
+
+Markus (30.3):
+9. **`KISS`.** Sections 2f and 3 give North large up (W, RS; "T: none"). The template has no arrow on `KISS`; `DON'T KISS` has North large down. Template wins: no change on `KISS` (open question 3 can still be confirmed in game).
+10. **Exiled Markus who returns.** Sections 2j and 3 give Jericho large up "instead" of the rejoin arrows (W, RS). In the template, the four rejoin arrows (North, Jericho, Josh and Simon, each small up) sit at the top of "Explosives were activated". They come before the `Markus was rejected by Jericho` / `Markus wasn't rejected` split, so they apply to a returning exile too. There is no Jericho large up anywhere in the template. Template wins: four small ups and no large up (answers the second half of open question 10).
+11. **`SAVE NORTH` arrows.** The template puts Jericho small up, North large up, Josh small up and Simon small up on choosing `SAVE NORTH` while "Markus is not injured", before the `Save North` / `Fail to save North` split. Failing with a deviant Connor adds only Jericho small down. Failing with a machine Connor (Markus dies, North escapes) adds nothing. Section 2j's table puts the ups on the success row only, and section 3 keeps the wiki's "failing to save her: Jericho down, Josh large down, Simon down" for the failure. Template wins. Josh large down and Simon small down apply only to `RUN` and the injured case.
+12. **Josh fight, `LOSE THE UPPER HAND`.** The template's variants are `Markus shot twice` (the soldier kills Markus: "Got you, motherfucker." North: "Markus! No...") and `Markus wounded` (Josh's dying line "Don't become like them, Markus…"). Section 2j frames the split as "not wounded / wounded" before the fight. The template reads as a hit counter (this hit wounds Markus; on the third hit he dies), which matches "Soldiers shoot Markus twice" in the corridor. The template is silent on whether the state is prior or resulting, so the wiki and the chart stand on structure. Add to open questions 6 and 7.
+13. **Cut lines.** Josh's "Thousands of our people are about to be destroyed…" (pacifist variant) and Markus's "Yeah, maybe I made some mistakes." (`REMORSE`) are not recorded as cut. Record only.
+
+No discrepancy with section 1. The templates carry no flowchart node labels. Their section headings are the transcribers' prose and agree in order with the chart: Kara car → Jericho → sit down → Markus/North → Alice → attack → corridor → crossroad → cabin → flee; Connor cabin → deviant corridor / machine cargo hall → hold; Markus cabin → corridor → Lucy → bridge → androids → soldiers coming → reservoir → Josh → hold → escape → jump.
+
+#### Against the benchmark (`benchmark/story.json` 1.6.0, `benchmark/story-engine.mjs`)
+
+Magnitudes: engine ±1 = small, ±2 = large. Every benchmark option is prose; the game's label is given here for each.
+
+Intro:
+14. **`R30k` is Kara-only.** The template embeds the Jericho TV (`<app-screens>`, "Watch TV") in Connor's "In Jericho" section as well as Kara's. A Connor viewing (when he reaches Jericho) is missing.
+15. **`R30k` facts differ from the template's TV text.**
+    - "State of emergency… gathered into military camps for immediate destruction… androids are being lynched" is in neither variant. The TV says "delivered to the nearest police station or army barracks", and the lynchings are background talk.
+    - The not-charged item (`media[1]`) carries "Hospitals and schools are closing… two thirds of their personnel", which is only in the attacked variant (and Kara's car radio).
+    - The template wins for the text. There are no arrows on either variant; `R30k` has no effect, which is correct.
+
+Kara:
+16. **Missing prompt (Markus alive).** `BOND` / `NO DIFFERENCE` / `SECRET` (no arrows). No scene.
+17. **Missing prompts (Markus died in Freedom March, `UNLOCK(Death)`).** `MARKUS…` / `THANK YOU`, then `BOND` / `NO DIFFERENCE` / `SECRET` (no arrows). No scene.
+18. **`K17` labels and situation.**
+    - The labels should be `HUG` / `DISTANT` (benchmark: "Hold her and tell her it changes nothing." / "Pull back from her.").
+    - The arrows match: `alice(±2)`, and `luther(+1)` on HUG when Luther is with her.
+    - The template gives the explanation to Lucy when Luther is dead; the situation always names Luther.
+    - Fix: use the game's labels and add the Lucy variant.
+19. **`K31` is missing Alice large up on option 1.** The template's `LOOK FOR ALICE` carries Alice large up, but the engine applies none. Template wins; add `alice(+2)`. `K31` itself is a chart-only choice and the chart keeps it. For the gate, see item 4.
+20. **`K18` arrows.**
+    - The template's `HELP LUTHER` gives Alice small up and Luther small up on any outcome.
+    - The engine gives `luther(+2)` (wrong size) on success only, nothing on failure, and no Alice arrow.
+    - Fix: `alice(+1)`, `luther(+1)` on option 0 regardless of the roll.
+    - `PROTECT ALICE` `alice(-1)` matches.
+21. **`K18` labels.** They should be `HELP LUTHER` / `PROTECT ALICE` (benchmark: "Hide him in a cabin." / "Leave him and run with Alice.").
+22. **Missing prompt after `PROTECT ALICE`.** `CONSOLE` / `HURRY`, with `HURRY` giving Alice small down. No scene.
+23. **`K19` labels and situation.** The arrows match (`alice(+1)` / `alice(-1)`). The labels should be `OPEN` / `DON'T OPEN`. The template's android is female ("She'll die out there Kara!"); the situation says "him".
+24. **`K20` labels and order.** The template has `PLAY DEAD` / `RUN` / `SURRENDER`. The benchmark has play dead / surrender / run, in prose. No arrows on either side.
+25. **Missing prompts after `RUN`.**
+    - `GET UP` / `ATTACK` / `SURRENDER` / `PLAY DEAD`, then after `GET UP`, `CRAWL` / `ATTACK` / `SURRENDER`.
+    - `ATTACK` has three variants: Luther alive and sacrificing himself; Luther dead; Luther dead after playing dead.
+    - The engine auto-resolves `RUN`.
+26. **Missing prompt after `SURRENDER`.** `RUN` / `CONVINCE` / `ATTACK` / `OBEY`; `ATTACK` with Luther alive leads to Luther's sacrifice. The engine always captures.
+27. **`K20-still` labels and order.** The template has `DEFEND ALICE` then `DON'T MOVE`; the benchmark has still first, in prose. No arrows on either side. The kick and whimper are not in the template.
+
+Connor:
+28 to 32. **Missing prompts (facing Markus), with 11 SI arrows the engine never applies.**
+   - 28: `REASON` (SI small up) / `DEFY` / `DISCOURAGE` / `THREATEN`.
+   - 29: `INTIMIDATE` / `INSTRUCTIONS`.
+   - 30: `CONVINCE` (up) / `APPEAL` (up) / `I KNOW YOU` / `OUR CAUSE` (up).
+   - 31: `STAY BACK!` (SI small down) / `WARNING SHOT` (down) / `ENOUGH!` (down) / `SAY NOTHING`.
+   - 32: `SOW DOUBTS` / `QUESTION` / `RALLY` / `UNDERMINE` (each up).
+33 to 37. **Missing North version ("Find North - If Markus is dead or rejected by Jericho"), with 8 SI arrows and Amanda large down.**
+   - 33: `INSTRUCTIONS` / `INTIMIDATE`.
+   - 34: `STAY BACK!` / `WARNING SHOT` / `ENOUGH!` (each down) / `SAY NOTHING`.
+   - 35: `DISTURBED` (up) / `SAY NOTHING` / `COLD` (down).
+   - 36: `COLD` (down) / `DISTURBED` (up) / `SAY NOTHING`.
+   - 37: `BECOME A DEVIANT` / `REMAIN A MACHINE`.
+   - `C22` always presents Markus.
+38. **`C22` labels and setting.** The labels should be `BECOME A DEVIANT` (lock "Have enough software instability") / `REMAIN A MACHINE`. The setting is the captain's cabin, not "the hold". The engine's threshold `instability >= 4` has no source; the template gives none.
+39. **`C22` is missing Amanda large down on `BECOME A DEVIANT`.** Add `amanda(-2)`.
+40. **`C22` machine option applies arrows the template does not have.** It calls `connorDies` (`si(-1)`, `hank(-1)`, `amanda(-1)`), and the template has none of these. It also appends Hank's suicide when `hankResigned`, which is not in this template (that is Night of the Soul). Remove both from this scene.
+41. **Missing machine-branch prompt.** Cargo hall: `LIE` / `PERKINS EXCUSE` / `ATTACK` (variant "Lose the fight") / `RUN` (no arrows). After it comes the hold outcome: "Reach the gun" → Markus kills Connor; "Fail to reach the gun" → Connor kills Markus. Neither is in the benchmark; machine Connor always dies at `C22`.
+42. **`C23` matches no template prompt.**
+    - The only deviant prompt is in "Deviant Connor in corridor: Markus is dead or rejected": `INTERVENE` / `DON'T INTERVENE`, with no arrows.
+    - The engine's `si(+1)` on success and `risk: 0.25` are unsupported.
+    - `C23` also runs while Markus is alive and on his mission, where the template gives Connor no choice.
+    - Fix: replace it with the template prompt, gated on Markus dead or rejected, with no arrows.
+
+Markus:
+43. **Missing prompt.** `AGGRESSIVE` / `DETERMINED` / `RIGHTEOUS` / `SOMBER` (no arrows).
+44. **Missing prompt.** `ANGRY` (Josh small down) / `BITTER` / `REMORSE` (Josh small up) / `NO REGRETS`.
+45. **Missing prompt (Jericho above Unpopular).** `CONFRONTATION` (North up, Josh down) / `DIALOGUE` (North down, Josh up) / `STAY HIDING` (Josh up, North down, Simon up). Seven small arrows.
+46. **Missing prompt.** `SAD` / `ANGRY` / `THOUGHTFUL` / `BITTER` (no arrows).
+47. **Missing Jericho large down on the ousting.** It applies in the "Reputation with Jericho is unpopular" variant; the engine applies none (`M21` only performs the no-raid exit).
+48. **`M21` labels.** They should be `KEEP` / `REFUSE`.
+49. **`M21` applies an arrow the template does not.** `north(+1)` on KEEP has no arrow in the template. Remove it.
+50. **`M21` gate.** The template offers `KEEP` / `REFUSE` only in the above-Unpopular variant; the engine offers `M21` to an ousted Markus too.
+51. **`M21b` labels and gate.**
+    - The labels should be `KISS` / `DON'T KISS`.
+    - The gate should be "North has lover relationship status" inside the above-Unpopular variant; the engine uses `northBond && north`, with no ousting check.
+    - The setting is the cabin after the detonator; the benchmark has "the deck".
+52. **`M21b` applies an arrow the template does not.** `north(+1)` on KISS has no arrow in the template. `DON'T KISS` `north(-2)` matches large down.
+53. **`M22` go-back arrow.** `M22` is a chart-only choice; the template's only trace is the lock "Markus did not leave forever". Its `jer(+2)` on going back has no template arrow. The template gives the four rejoin small ups instead (item 56). Remove `jer(+2)`.
+54. **Missing prompt.** The corridor team round: `MESSAGE` / `SIMON AND JOSH` (Simon alive) / `JOSH` (`UNLOCK(Death)`, Simon dead) / `HELICOPTERS` / `BLOW UP JERICHO` (no arrows; a deviant Connor adds a line).
+55. **`M23` labels and arrows.**
+    - The labels should be `INTERVENE` / `DON'T INTERVENE`.
+    - The template's Jericho small up is on `INTERVENE` itself, before the `Deal with soldiers` / `Get shot` variants. The engine gives `jer(+1)` only on success.
+    - On failure the template wounds Markus and the androids escape. The engine says the androids are shot anyway.
+    - `DON'T INTERVENE` `jer(-1)` matches.
+56. **Missing rejoin arrows.** "Explosives were activated": North, Jericho, Josh and Simon each small up. The engine applies none.
+57. **Missing reservoir arrows.** "Knock soldiers out" gives Jericho small up; "Abandoned androids" gives Jericho small down. These are conditioned content, not a choice group; the chart has the interaction. No scene.
+58. **`M24` labels and arrows.**
+    - The labels should be `INTERVENE` / `HIDE`.
+    - On `Neutralize soldiers` the engine gives `josh(+2)`, which matches Josh large up, but Jericho small up is missing.
+    - On `Lose the upper hand` Jericho small down is missing. The engine's Josh death plus `markusHit` agrees with the template's hit-count reading (item 12).
+    - On `HIDE` Jericho small down is missing.
+59. **`M25` labels and arrows.**
+    - The labels should be `SAVE NORTH` / `RUN`.
+    - **Uninjured.** Jericho small up is missing, and the engine gives the North, Simon and Josh ups only on success, where the template gives them on the choice (item 11).
+    - **Failure with a deviant Connor.** Jericho small down is missing.
+    - **Failure with a machine Connor.** The template has Markus die and North escape; the engine kills North.
+    - **`RUN`.** Jericho small down, Simon small down and Josh large down are missing; the engine applies nothing.
+    - **Injured branch.** The template's "Markus is injured - cannot save North" (Jericho small down, Simon small down, Josh large down) is missing.
+
+Totals: 13 discrepancies with the note (Kara 5, Connor 3, Markus 5, intro 0); 46 with the benchmark (intro 2, Kara 12, Connor 15, Markus 17).

@@ -583,3 +583,254 @@ Content not modelled:
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Magazine&prop=wikitext&format=json | no magazine in this chapter |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Lucy&prop=wikitext&format=json | no appearance in this chapter |
 | https://www.ign.com/wikis/detroit-become-human/Night_of_the_Soul | walkthrough text (`ext/ign.txt`): four grave rounds, talk order, "brief moment" with North, Hank's suicide as a bad-path marker, "no stopping North" on the Connor branch |
+
+---
+
+## 10. Template cross-check
+
+Written 2026-11-06 from the detroitbecometext templates (branch `master`), fetched raw from raw.githubusercontent.com:
+- Markus: `src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html`
+- Connor: `src/app/chapters/components/chapter-contents/31.2-night-soul-connor-chapter-content/night-soul-connor-chapter-content.component.html`
+
+Rendered with `/tmp/dbt/render2532.py` (Python stdlib `html.parser`) against `public/i18n/en.json`. Every `t('KEY')` and `translateObject(KEY, start, end)` is resolved to its English string. The outline prints sections and headings, condition groups and variants (`IF:` is the transcribers' condition text), choice groups (`PROMPT`) with each option's label as the game prints it, `app-relation` arrows (`ARROW <name> <SmallUp|SmallDown|LargeUp|LargeDown>`), `app-unlock-condition` (`UNLOCK(<type>)`), `app-observation-item` clues and `app-unused-content` blocks. `TEXT:` lines are on-screen text outside dialogue tags (here only the date and time cards). Dialogue lines are omitted; the version with dialogue is `/tmp/dbt/v2/d31.1.txt` and `d31.2.txt` (not committed). An arrow placed on a section, before its condition group, applies whenever that section is played; an arrow on an option applies when that option is chosen.
+
+Counts:
+
+| Part | Prompts | Options | Clues | Arrows | Unlocks | Cut blocks |
+|---|---|---|---|---|---|---|
+| 31.1 Markus | 12 | 39 | 0 | 11 | 1 | 2 (dialogue only) |
+| 31.2 Connor | 4 | 12 | 0 | 0 | 5 | 0 |
+
+No prompt, option, clue or arrow sits inside a cut block. The two cut blocks hold one line each, neither to be built: the caretaker's "Sir! Sir! He's stopped breathing!" before "He's dead." (second `ANGER`), and Markus's "Well, I hope you make it. You really deserve some happiness, after all you've been through." in the Kara talk. The choice label `HOSTAGES` (`X0904M.CHURCH.DECISION.PC.CHOICEGROUP01.HOSTAGES`) is not used by the template at all, so it is not built.
+
+Flowchart labels: all 71 strings under `MENU.FLOWCHART.03A.*` appear in section 1 (checked by script; curly apostrophes normalised).
+
+### 10a. Rendered outlines
+
+#### 31.1 Night of the Soul - Markus
+
+```
+[SECTION carl-dead]
+  # Carl died in Broken
+  TEXT: NOV 10TH, 2038
+  TEXT: PM 04:17
+  ** PROMPT (choice group) **
+    - OPTION "HEARTFUL"
+    - OPTION "MOURNFUL"
+    - OPTION "REGRETFUL"
+    - OPTION "REFLECTIVE"
+  ** PROMPT (choice group) **
+    - OPTION "DEPRESSED"
+    - OPTION "DOUBTFUL"
+    - OPTION "PESSIMISTIC"
+    - OPTION "CONFLICTED"
+  ** PROMPT (choice group) **
+    - OPTION "ADVICE"
+    - OPTION "BIG DECISION"
+    - OPTION "ANGRY"
+  ** PROMPT (choice group) **
+    - OPTION "DESPAIRING"
+    - OPTION "EMOTIONAL"
+    - OPTION "LOST"
+[SECTION carl-alive]
+  # Carl is still alive
+  TEXT: NOV 10TH, 2038
+  TEXT: PM 07:31
+  [SECTION leo-message]
+    ## Listen to Leo's message
+  [SECTION upstairs]
+    ## Go upstairs
+    ** PROMPT (choice group) **
+      - OPTION "RESIGNED"
+      - OPTION "FATALISTIC"
+      - OPTION "LOST"
+      - OPTION "GRIM"
+    ** PROMPT (choice group) **
+      - OPTION "ADVICE"
+      - OPTION "DECISION"
+      - OPTION "ANGER"
+        ** PROMPT (choice group) **
+          - OPTION "REASON"
+          - OPTION "ANGER"
+            ### UNUSED/CUT CONTENT ###
+[SECTION church]
+  # In the church : Jericho was attacked
+  [SECTION simon]
+    ## Talking with Simon
+    ARROW Simon SmallUp
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: North is dead
+        ** PROMPT (choice group) **
+          - OPTION "SITUATION"
+          - OPTION "NORTH"
+          - OPTION "HOW MANY"
+          - OPTION "CAMPS"
+          - OPTION "JOSH"
+            UNLOCK(Death): Josh is dead
+  [SECTION josh]
+    ## Talking with Josh
+    ARROW Josh SmallUp
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: North died in Crossroads
+  [SECTION connor]
+    ## Talking with Connor
+    ** PROMPT (choice group) **
+      - OPTION "TRUST"
+        ARROW Jericho SmallUp
+      - OPTION "DON'T TRUST"
+  [SECTION north]
+    ## Talking with North
+    ARROW North SmallUp
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Markus wasn't rejected by Jericho
+        ** PROMPT (choice group) **
+          - OPTION "SITUATION"
+          - OPTION "SURVIVORS"
+          - OPTION "WOUND"
+          - OPTION "CAMPS"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: North has lover relationship status
+      <VARIANT>
+        IF: Markus was rejected by Jericho
+        ** PROMPT (choice group) **
+          - OPTION "HUMBLE"
+            ARROW North SmallUp
+          - OPTION "FORGIVING"
+          - OPTION "RESENTFUL"
+  [SECTION kara]
+    ## Talking with Kara
+    ### UNUSED/CUT CONTENT ###
+[SECTION speak]
+  # Speak to androids
+  ** PROMPT (choice group) **
+    - OPTION "DEMONSTRATION"
+      ARROW Josh SmallUp
+      ARROW North SmallDown
+      ARROW Jericho LargeUp
+    - OPTION "REVOLUTION"
+      ARROW North SmallUp
+      ARROW Josh SmallDown
+      ARROW Jericho LargeUp
+
+COUNTS (all): prompts=12, options=39, arrows=11, obs=0, unlock=1, unused=2
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+#### 31.2 Night of the Soul - Connor
+
+```
+[SECTION zen-garden]
+  # In the Zen Garden
+  TEXT: NOV 10TH, 2038
+  TEXT: PM 07:31
+  UNLOCK(Lock): Connor stayed a machine or died in Crossroads
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Connor died in Crossroads
+    <VARIANT>
+      IF: Connor stayed a machine and didn't die in Crossroads (killed Markus), North is leading a violent revolution
+[SECTION hank-house]
+  # At Hank's house
+  UNLOCK(Lock): Hank was hostile in Last Chance, Connor and resigned
+  ** PROMPT (choice group) **
+    - OPTION "GOODBYE"
+    - OPTION "APOLOGIZE"
+    - OPTION "WORRIED ABOUT HANK"
+    - OPTION "RECONCILE"
+  ** PROMPT (choice group) **
+    - OPTION "PHOTO" (brackets)
+      UNLOCK(Lock): Looked at Cole's photo in Russian Roulette
+    - OPTION "GUN"
+    - OPTION "ALCOHOL"
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Connor died multiple times
+    <VARIANT>
+      IF: Connor never died
+  ** PROMPT (choice group) **
+    - OPTION "CONVINCE"
+    - OPTION "DON'T INSIST"
+[SECTION church]
+  # In the church : Jericho was attacked
+  UNLOCK(None): Connor became a deviant and Markus is dead / rejected and did not return
+  [SECTION kara]
+    ## Talking with Kara
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Connor went after Kara and Alice on the highway in On The Run
+  [SECTION north-speech]
+    ## Talking with North
+    ** PROMPT (choice group) **
+      - OPTION "MARKUS"
+        UNLOCK(Death): Markus is dead
+      - OPTION "SITUATION"
+      - OPTION "SURVIVORS"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Markus detonated the bomb
+          <VARIANT>
+            IF: Connor detonated the bomb
+          <VARIANT>
+            IF: Markus died without detonating the bomb
+[SECTION north]
+  # North calls to arms
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Markus died
+    <VARIANT>
+      IF: Markus was rejected by Jericho
+
+COUNTS (all): prompts=4, options=12, arrows=0, obs=0, unlock=5, unused=0
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+Arrow summary (all 11, all Markus half): Simon SmallUp (Simon talk, section); Josh SmallUp (Josh talk, section); `TRUST` Jericho SmallUp; North SmallUp (North talk, section, before the rejected/not-rejected variants); `HUMBLE` North SmallUp (rejected variant); `DEMONSTRATION` Josh SmallUp, North SmallDown, Jericho LargeUp; `REVOLUTION` North SmallUp, Josh SmallDown, Jericho LargeUp. `DON'T TRUST`, `FORGIVING`, `RESENTFUL`, every Carl and grave round, the Kara talk and the whole Connor half carry none.
+
+### 10b. Discrepancies
+
+Rule applied (README): the template wins for labels, prompts, arrows and clue text; the flowchart image wins for node order and node names; the wiki only where the template is silent; cut content is not built.
+
+#### Against the note (sections 1 to 3): 6
+
+1. **North small up applies on both variants.** Section 3's row reads "Talk to North (not rejected)", and the wiki limits it to Lover. The template puts `ARROW North SmallUp` on the North section before the `Markus wasn't rejected` / `Markus was rejected` variants, so any talk with North gives it, rejected or not, Lover or not; on the rejected variant `HUMBLE` adds a second small up. Template wins. This settles open question 2 (no separate change for `SHARE A MOMENT WITH NORTH`; the lover variant is a line inside the not-rejected branch).
+2. **`DON'T TRUST` has no Jericho arrow.** Sections 2e and 3 carry the wiki's Jericho small down alongside the transcript's none. The template records the option and gives it no arrow; it is not silent here, so the template wins: no change. Settles open question 3 for the build (operator may still confirm in game).
+3. **Cut caretaker line not listed.** Section 2c quotes the caretaker's "He's dead." but not the cut "Sir! Sir! He's stopped breathing!" before it. Not to be built.
+4. **Connor's North talk has no `WOUND` option in the template**, not even as cut content. Section 2g reports a cut `WOUND` from the wiki Notes. The template's round is `MARKUS` (lock: Markus is dead) / `SITUATION` / `SURVIVORS`. Either way nothing is built; record the template's three options as the prompt.
+5. **Thin Ice variants.** Section 2i treats the second Zen Garden variant ("Connor stayed a machine and didn't die in Crossroads (killed Markus), North is leading a violent revolution") as misfiled. The template's own lock reads "Connor stayed a machine or died in Crossroads", and the variant does use `X1303C.ZENGARDEN.BRIDGE.*` keys (Battle for Detroit). The template supports the wider lock; the flowchart and wiki support death only. Node order and gating go to the flowchart and wiki, so section 2i stands; open question 4 remains.
+6. **Hank's response has only two template variants**, "Connor died multiple times" and "Connor never died". Exactly one death has no variant in the template. Section 2h quotes both; add that the single-death case is unspecified (open question 1).
+
+No other differences: the grave rounds, both Carl rounds and the `ANGER` follow-up, the Simon round (North dead; `JOSH` locked on Josh dead), the North rounds, `TRUST`/`DON'T TRUST`, the speech and its arrows, the three Hank rounds (with the `PHOTO` lock "Looked at Cole's photo in Russian Roulette") and the Connor church lock ("Connor became a deviant and Markus is dead / rejected and did not return") all match sections 2 and 3 label for label. The template does not include the house exploration nodes other than Leo's message (`PLAY PIANO`, `BROWSE BOOKS`, `LOOK AT THE CHESSBOARD`, `LOOK AT YOUR PAINTING`), the Josh and Simon checks on Connor's side, or `READ MAGAZINE`; it is silent there, so the chart and wiki stand.
+
+#### Against the benchmark (`benchmark/story.json` `M26a`, `M26`, `M27`; `benchmark/story-engine.mjs`): 24
+
+Markus (31.1):
+1. **Grave branch missing.** Four prompts (`HEARTFUL`/`MOURNFUL`/`REGRETFUL`/`REFLECTIVE`; `DEPRESSED`/`DOUBTFUL`/`PESSIMISTIC`/`CONFLICTED`; `ADVICE`/`BIG DECISION`/`ANGRY`; `DESPAIRING`/`EMOTIONAL`/`LOST`) have no scene; with `!s.carl` the `M26a` gate skips Markus's Carl segment entirely. Template wins: build as no-effect decision scenes.
+2. **Leo's message missing.** The house section "Listen to Leo's message" is not offered (no hub, no fact). Offer as an optional action with the message as an event fact.
+3. **Bedside round 1 missing.** `RESIGNED` / `FATALISTIC` / `LOST` / `GRIM` (no effect) has no scene.
+4. **`M26a` labels.** The template's round 2 is `ADVICE` / `DECISION` / `ANGER`; `M26a` offers two prose options, "Reconcile: tell him you understand…" and "Tell him the truth of your anger at him for that night". Option 1's content contradicts the template (Markus's anger is at humans). Template wins.
+5. **Round 3 missing.** `REASON` / `ANGER` (only after `ANGER`) does not exist; `M26a` kills Carl on one choice. In the template Carl dies only on `ANGER` then `ANGER`.
+6. **`M26a` outcome 0** ("weeps and tells Markus he is proud of him") is not in the template; Carl gives the "Being alive is making choices… Face the abyss" advice. Template wins.
+7. **Church talks are not offered.** The template's church is a set of optional sections (Simon, Josh, Connor, North, Kara) before the speech; the benchmark has only `M26` and `M27`. A hub before `M27` (raid path) is needed.
+8. **Simon talk.** `ARROW Simon SmallUp` (section) is never applied; the North-dead round `SITUATION` / `NORTH` / `HOW MANY` / `CAMPS` / `JOSH` (`JOSH` locked unless Josh is dead) is missing.
+9. **Josh talk.** `ARROW Josh SmallUp` (section) is never applied.
+10. **North talk.** `ARROW North SmallUp` (section, both variants) is never applied; the not-rejected round `SITUATION` / `SURVIVORS` / `WOUND` / `CAMPS` is missing.
+11. **North rejected variant.** `HUMBLE` / `FORGIVING` / `RESENTFUL` is missing, and `HUMBLE`'s North SmallUp with it. The engine's "rejected but returned" state is `M22` option 0.
+12. **Kara talk (Markus)** is not offered. No arrow; event content only.
+13. **`M26` labels.** Template `TRUST` / `DON'T TRUST`; benchmark "Trust him and let him go." / "Kill him." Template wins (chart nodes `SPARE CONNOR` / `KILL CONNOR` are the result names).
+14. **`M26` `TRUST` arrow missing.** Template Jericho SmallUp; the engine applies nothing on option 0.
+15. **`M26` `DON'T TRUST` arrows the template lacks.** The engine applies `jer(-1)`, `north(+1)`, `josh(-1)`, and through `connorDies` `si(-1)`, `hank(-1)`, `amanda(-1)`. The template has no arrow. Remove them; keep `connorDeaths++`, `deviant=false` and the replacement, which are story state.
+16. **`M26` situation content.** It reveals Connor's CyberLife plan before the choice and says "{{North}} wants him dead". In the template Connor only apologises ("It's my fault the humans managed to locate Jericho…"); the plan comes after `TRUST`, and North does not speak. Template wins.
+17. **`M27` labels.** Template `DEMONSTRATION` / `REVOLUTION`; benchmark "Lead an unarmed demonstration to the camps." / "Arm everyone and attack the camps."
+18. **`M27` Jericho LargeUp missing** on both options (`jer(2)`). The North and Josh directions and sizes (`north(±1)`, `josh(∓1)`) match.
+19. **`M27` situation content.** The template's speech opens with Markus: "Humans have decided to exterminate us… Time has come to make a choice". "Martial law is in effect", "{{North}} wants to take up arms" and "{{Josh}} wants one last peaceful stand" are not in the template, and name North and Josh even when they are dead.
+
+Connor (31.2):
+20. **Zen Garden (Thin Ice) not played.** The template's section (lock "Connor stayed a machine or died in Crossroads") has Amanda's briefing and no prompt; the benchmark only narrates "the replacement serves CyberLife" in `C22`/`C23`/`M26`. Event scene, no choice.
+21. **Hank's house prompts missing.** `GOODBYE` / `APOLOGIZE` / `WORRIED ABOUT HANK` / `RECONCILE`; `PHOTO` (brackets; lock "Looked at Cole's photo in Russian Roulette", engine flag `knowsCole` from `C11`) / `GUN` / `ALCOHOL`; `CONVINCE` / `DON'T INSIST`. No arrows. Hank's reply variant should key on `connorDeaths` ("multiple times" vs "never").
+22. **Hank's suicide is in the wrong chapter and too narrowly gated.** The engine folds it into Crossroads `C22` and only when `C22` plays. The template's lock is "Hank was hostile in Last Chance, Connor and resigned" (engine `hankResigned`), with no Crossroads condition, and the chart places `HANK'S HOUSE` → `HANK COMMITTED SUICIDE` in this chapter. Chart wins for placement; template for the lock.
+23. **Connor on Sacred Ground missing.** Lock (`UnlockType.None`) "Connor became a deviant and Markus is dead / rejected and did not return". The North round `MARKUS` (lock: Markus is dead) / `SITUATION` / `SURVIVORS` (three variants: Markus detonated the bomb, Connor detonated it, Markus died without detonating) and the Kara talk (variant: Connor went after Kara and Alice on the highway in On the Run) have no scene. With Markus gone the engine gives a deviant Connor nothing until Battle for Detroit.
+24. **North calls to arms** (variants "Markus died" / "Markus was rejected by Jericho") has no event; the engine only sets `movement='revolution'` in `M20`/`M21`. No choice, so an event scene suffices.

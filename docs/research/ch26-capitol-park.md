@@ -672,3 +672,268 @@ R26, M15 and M16 have no gate in `blocked()`'s table (lines 76–147) and no `re
 | https://detroitbecometext.github.io/chunk-JCLJBPDO.js | Compiled templates: Capitol Park (`FL`; render reused from `/tmp/flowcharts/ch23/x_FL.txt`), Freedom March (`kL`), Meet Kamski (`wL`); copy used: `/tmp/flowcharts/ch24/chunk-JCLJBPDO.js` |
 
 GamerGuides and Gamepressure were tried for conflict resolution. The GamerGuides chapter URL returned 404 and no Gamepressure chapter page could be located, so neither is used.
+
+---
+
+## 10. Template cross-check
+
+Template: `src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html` (detroitbecometext, branch `master`), fetched raw from raw.githubusercontent.com on 2026-11-06. It was rendered by `/tmp/dbt/render2532.py` against `public/i18n/en.json`: every `t('KEY')` and `translateObject(KEY, start, end)` is resolved to its English string. The outline keeps sections and headings, condition groups and variants (`IF:` = the template's condition text), choice groups (`PROMPT`) with each option's label exactly as the game prints it, `app-relation` arrows (`ARROW <name> <SmallUp|SmallDown|LargeUp|LargeDown>`), unlock conditions, `app-observation` clues (`CLUE "title" / "subline1" / "subline2"`) and cut blocks. Dialogue lines are omitted; the version with dialogue is `/tmp/dbt/ch26-dialogue.txt` (not committed).
+
+Counts: **3 prompts (all live), 8 options, 13 clues in 7 observation groups, 22 arrows, 0 unlock conditions, 0 cut blocks.** Only 7 arrows sit on prompt options; the other 15 sit on outcome variants (execution checks, the store, the message, the news).
+
+In the outline, `NOTE:` lines are the transcribers' own prose inside the template (cross-references such as "Leads to the same result as choosing ATTACK") and `TEXT:` lines are on-screen text outside dialogue tags (date and time cards, TV and background chatter). Their content was checked against sections 1 to 3 and adds no discrepancy beyond those listed below.
+
+```text
+[SECTION jericho]
+  # In Jericho
+  TEXT: NOV 9TH, 2038
+  TEXT: AM 01:51
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Simon is here
+    <VARIANT>
+      IF: Simon was left behind or died in Stratford Tower
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Sent a peaceful message in Stratford Tower
+    <VARIANT>
+      IF: Sent a violent message in Stratford Tower
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Simon is here
+    <VARIANT>
+      IF: Simon was left behind or died in Stratford Tower
+[SECTION capitol-park]
+  # At Capitol Park
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Avoid the police car
+    <VARIANT>
+      IF: Fail to hide, North saves Markus
+      ARROW North SmallDown
+      ARROW Jericho SmallDown
+  [SECTION statue]
+    ## Look at the statue
+  [SECTION convert]
+    ## Convert Androids
+  [SECTION look-stores]
+    ## Look inside stores
+  [SECTION reach-store]
+    ## Reach the store
+  [SECTION timeout]
+    ## Take too much time
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Simon is alive
+      <VARIANT>
+        IF: Simon is dead
+    NOTE: Leads to the "Mission failed" outcome.
+  [SECTION alarm]
+    ## Deactivate the alarm
+    [SECTION analyze-alarm]
+      ### Analyse the store
+      OBSERVATION [Store window]
+        CLUE "REINFORCED GRID SHUTTER" / "Fiber-Reinforced Polymer" / "Toughened Glass Door"
+      OBSERVATION [Store Androids]
+        CLUE "AP SERIES" / "Housekeeping and Private Assistance" / "First Rollout Date : July 2038"
+        CLUE "AX SERIES" / "Housekeeping and Private Assistance" / "First Rollout Date : May 2036"
+        CLUE "WJ SERIES" / "Janitoring and Office Maintenance" / "First Rollout Date : October 2036"
+      OBSERVATION [Security cameras]
+        CLUE "SECURITY CAMERA" / "NETWORK #894.084.241.056" / "Device ID #615.100.947.517.4"
+        CLUE "SECURITY CAMERA" / "NETWORK #894.084.241.056" / "Device ID #615.100.947.517.5"
+        CLUE "SECURITY CAMERA" / "NETWORK #894.084.241.056" / "Device ID #615.100.947.517.6"
+    [SECTION alarm-convert-androids]
+      ### Convert the androids
+      OBSERVATION [Network access]
+        CLUE "ALARM NETWORK" / "CyberLife NETID #1523" / "GRID Junction 23.A"
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Hide
+          ARROW North SmallUp
+        <VARIANT>
+          IF: Fail to hide
+          ARROW North SmallDown
+  [SECTION drone]
+    ## Destroy the drone
+    OBSERVATION [Drone]
+      CLUE "POLICE DRONE" / "Serial #87199" / "Firewall active"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Destroy drone
+        ARROW North SmallUp
+      <VARIANT>
+        IF: Fail to destroy drone
+        ARROW Jericho SmallDown
+        ARROW North SmallDown
+  [SECTION police-car]
+    ## Police car arrives
+    ** PROMPT (choice group) **
+      - OPTION "Abandon Mission"
+        ARROW Jericho LargeDown
+        ARROW North SmallDown
+        NOTE: Leads to the "Mission failed" outcome.
+      - OPTION "Act Natural"
+        ARROW North LargeDown
+      - OPTION "HIDE"
+        ARROW North SmallUp
+        OBSERVATION [Cops]
+          CLUE "P.O CHEN, TINA" / "ID #5195 UNIT #975" / "917 Lapeer Street - DETROIT"
+          CLUE "DPD EMBLEM" / "City of Detroit" / "Android Capital of the World"
+          CLUE "PATROL #00975" / "Assigned to Capitol Park H.D." / "Central Police Station"
+          CLUE "POLICE RADIO MODULE" / "Frequency 453.02500" / "Licence KQV684 Mode DMN"
+  [SECTION block-road]
+    ## Block the road
+  [SECTION convert-road-android]
+    ## Convert androids
+  [SECTION truck]
+    ## Find the truck
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Don't pick up the tool
+[SECTION store]
+  # In the store
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Markus and North have to flee
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Alarm wasn't deactivated
+        <VARIANT>
+          IF: Drone wasn't destroyed
+        <VARIANT>
+          IF: Road wasn't blocked
+      NOTE: Leads to the "Mission failed" outcome.
+  [SECTION convert-store-androids]
+    ## Convert androids
+  [SECTION talk-north]
+    ## Talk with North
+  [SECTION talk-androids]
+    ## Talk to androids
+    ARROW North LargeUp
+    ARROW Jericho LargeUp
+[SECTION send-message]
+  # Send a message
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Destroy the statue
+      ARROW North SmallUp
+    <VARIANT>
+      IF: Tag the statue
+  [SECTION molotov]
+    ## North gives a molotov cocktail
+    ** PROMPT (choice group) **
+      - OPTION "REFUSE"
+        ARROW North SmallDown
+      - OPTION "TAKE"
+        ARROW North SmallUp
+        (no content: ø)
+  [SECTION push-car]
+    ## Push car
+  [SECTION push-dumpster]
+    ## Push and burn the dumpster by the coffee shop
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Go and grab the dumpster directly
+      <VARIANT>
+        IF: Observe the coffee shop first
+  [SECTION send-message-timeout]
+    ## Take too much time
+    [SECTION send-message-timeout-again]
+      ### Take too much time again
+      ARROW North SmallDown
+  [SECTION police-arrives]
+    ## Police arrives
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Simon is here
+      <VARIANT>
+        IF: Simon was left behind or died in Stratford Tower
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Sent a pacifist message
+      <VARIANT>
+        IF: Sent an aggressive message
+        ARROW North SmallUp
+    ** PROMPT (choice group) **
+      - OPTION "REVENGE"
+        ARROW North SmallUp
+      - OPTION "SPARE"
+      - OPTION "DON'T DECIDE"
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Sent a pacifist message
+      ARROW PublicOpinion LargeUp
+    <VARIANT>
+      IF: Sent an aggressive message
+      ARROW PublicOpinion LargeDown
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Killed Chris and his partner
+      ARROW PublicOpinion LargeDown
+    <VARIANT>
+      IF: Didn't kill Chris and his partner
+  [SECTION failed]
+    ## Mission failed
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Simon is alive
+      <VARIANT>
+        IF: Simon is dead
+
+COUNTS (all): prompts=3, options=8, arrows=22, obs=13, unlock=0, unused=0
+COUNTS (inside unused/cut blocks): prompts=0, options=0, arrows=0, obs=0
+```
+
+Summary of the template's arrows, by trigger:
+- Fail to hide from the first car, North saves Markus: North SmallDown, Jericho SmallDown.
+- Alarm junction: Hide North SmallUp; Fail to hide North SmallDown.
+- Drone: Destroy North SmallUp; Fail to destroy Jericho SmallDown, North SmallDown.
+- Police car prompt: Abandon Mission Jericho LargeDown, North SmallDown; Act Natural North LargeDown; HIDE North SmallUp.
+- Talk to androids (store speech, unavoidable): North LargeUp, Jericho LargeUp.
+- Destroy the statue: North SmallUp (Tag the statue: none).
+- Molotov prompt: REFUSE North SmallDown; TAKE North SmallUp.
+- Take too much time again (failed message): North SmallDown.
+- Sent an aggressive message: North SmallUp (pacifist: none).
+- Officers prompt: REVENGE North SmallUp; SPARE none; DON'T DECIDE none.
+- News: pacifist PublicOpinion LargeUp; aggressive PublicOpinion LargeDown; "Killed Chris and his partner" PublicOpinion LargeDown; "Didn't kill" none.
+- No Josh, Simon or other arrow anywhere. Timeout ("Take too much time"), "Markus and North have to flee" and "Mission failed" carry no arrow.
+
+The 13 clues: Store window "REINFORCED GRID SHUTTER / Fiber-Reinforced Polymer / Toughened Glass Door"; Store Androids "AP SERIES / Housekeeping and Private Assistance / First Rollout Date : July 2038", "AX SERIES / Housekeeping and Private Assistance / First Rollout Date : May 2036", "WJ SERIES / Janitoring and Office Maintenance / First Rollout Date : October 2036"; Security cameras ×3 "SECURITY CAMERA / NETWORK #894.084.241.056 / Device ID #615.100.947.517.4" (and .5, .6); Network access "ALARM NETWORK / CyberLife NETID #1523 / GRID Junction 23.A"; Drone "POLICE DRONE / Serial #87199 / Firewall active"; Cops (only under HIDE) "P.O CHEN, TINA / ID #5195 UNIT #975 / 917 Lapeer Street - DETROIT", "DPD EMBLEM / City of Detroit / Android Capital of the World", "PATROL #00975 / Assigned to Capitol Park H.D. / Central Police Station", "POLICE RADIO MODULE / Frequency 453.02500 / Licence KQV684 Mode DMN".
+
+### Discrepancies against the note (sections 1 to 3)
+
+§3 was written from this template ("T" column), and its arrow entries for every template trigger match the summary above. The three prompts' labels (Abandon Mission / Act Natural / HIDE; REFUSE / TAKE; REVENGE / SPARE / DON'T DECIDE) match §2. The differences:
+
+1. **Clue text incomplete in §1.** §1 gives the AP, AX and WJ titles without their sublines, one SECURITY CAMERA without the three Device IDs, and the police-car scan without "Licence KQV684 Mode DMN" and "Central Police Station". It omits the "DPD EMBLEM / City of Detroit / Android Capital of the World" clue entirely. **Template wins:** use the full list above.
+2. **Abandon Mission is a prompt option.** §2 D2 cites DogeChan that running away "is not actually a prompt, you simply have to wait out the (short) timer". The template lists "Abandon Mission" as a choice item with its own arrows (Jericho LargeDown, North SmallDown), beside Act Natural and HIDE, and the timeout line precedes the group. **Template wins:** offer it as an option.
+3. **GET SPOTTED BY DRONE.** §3's table lists Jericho ▼ (W, RS) and North ▼. The template's "Fail to hide" variant has North SmallDown only. **Template wins:** North SmallDown only. §3 and §8 already flag this; the table should be read accordingly.
+4. **OUT OF TIME > RETREAT and POLICE ALERTED > HAD TO FLEE.** §3 gives Jericho ▼▼ and North ▼ (RS, W, PP) for both. The template has a block for each ("Take too much time"; "Markus and North have to flee", with its three failure lines) and puts no arrow in either. Only Abandon Mission carries Jericho LargeDown + North SmallDown. **Template wins for arrows:** none on these two endings. The wiki figures stay as an open question for the operator (§8) rather than engine effects.
+5. **Two interactions §1 and §2 do not record.** The truck block has a variant "Don't pick up the tool" (North: "I wonder what you’d do without me…"), and the dumpster block has the variants "Go and grab the dumpster directly" / "Observe the coffee shop first" (North: "Need a hand?" / Markus: "North, come help me!"). Neither has an arrow or a prompt. The template wins for the text. No build consequence beyond narration.
+
+Agreements, for the record (not counted): the Spread-phase objects other than the statue (benches, bus stop, billboards, parking, lights, car, windows, kiosk, banner, shop windows, electric system, smoke bomb) have **no section** in the template. The template is silent on them, so the chart nodes and the wiki's North ▲ / Jericho ▲ lines in §3 stand as wiki-only (flagged there). FAIL TO SEND A MESSAGE's public opinion ▲▲ is wiki-only too: the template's news has only pacifist and aggressive variants, so it is silent on that case. There is no Josh or Simon arrow, as §3 says.
+
+### Discrepancies against the benchmark (`benchmark/story.json` R26, M15, M16; `story-engine.mjs` cases `M15`, `M16`)
+
+1. **First police car missing.** No check for AVOID POLICE CAR / NORTH SAVES YOU; the failure arrows North SmallDown + Jericho SmallDown are never applied.
+2. **Drone missing.** No Destroy / Fail check; North SmallUp (success) and Jericho SmallDown + North SmallDown (failure) are absent. The "POLICE DRONE" clue is absent.
+3. **Alarm missing.** No alarm objective or Hide / Fail-to-hide check (North SmallUp / North SmallDown). The 7 store-analysis clues (window, AP/AX/WJ, three cameras) and the "ALARM NETWORK" clue are absent.
+4. **Police-car prompt missing.** Abandon Mission (Jericho LargeDown, North SmallDown; leads to DECIDED TO FLEE) / Act Natural (North LargeDown) / HIDE (North SmallUp, then the 4 Cops clues) is not offered. Template wins: add it with the game's labels.
+5. **Road, truck and the flee gate missing.** No road block, no truck. Nothing records alarm / drone / road, so "Markus and North have to flee" (HAD TO FLEE), the timeout (RETREAT) and DECIDED TO FLEE are unreachable. These carry no arrows, but they are endings.
+6. **Store speech arrows missing.** "Talk to androids" applies North LargeUp + Jericho LargeUp on every path that enters the store. The engine applies neither (M15's situation narrates the store).
+7. **Statue arrow missing.** "Destroy the statue" North SmallUp is not applied. M15 option 1 would be the place.
+8. **Molotov prompt missing.** REFUSE (North SmallDown) / TAKE (North SmallUp) is folded into M15's situation ("{{North}} hands you a Molotov cocktail and waits"). M15 option 0 applies no North SmallDown for refusing; option 1's `north(1)` is the aggressive-message arrow, not the molotov one. Template wins: a separate prompt.
+9. **Failed message missing.** "Take too much time again" (North SmallDown) and the do-nothing path are not offered.
+10. **M15 has no template prompt.** The template has no peaceful/violent choice group; the message is derived from many free-roam actions. M15's options ("Graffiti, slogans, a flag, and no destruction." / "Smash the stores and burn what you can.") are benchmark wording. It is an acceptable abstraction (see §7), but neither label is the game's.
+11. **M15 option 1 (aggressive): extra arrow.** `po(-2)` = PublicOpinion LargeDown and `north(1)` = North SmallUp both match the template. **`josh(-1)` has no template arrow.** Remove.
+12. **M15 option 0 (pacifist): extra arrow.** `po(2)` = PublicOpinion LargeUp matches. **`josh(1)` has no template arrow.** Remove.
+13. **M16 labels and order.** The template has REVENGE / SPARE / DON'T DECIDE, in that order. M16 has "Spare them and let them go." (0) / "Execute them yourself." (1) / "Tell the crowd to decide." (2). Template wins for labels and order.
+14. **M16 SPARE: two extra arrows.** The engine applies `north(-1); josh(1)`. The template has no arrow on SPARE (and "Didn't kill Chris and his partner" carries none). Remove both.
+15. **M16 REVENGE: one extra arrow.** `north(1)` = North SmallUp and `po(-2)` = "Killed Chris and his partner" PublicOpinion LargeDown match. **`josh(-1)` is extra.**
+16. **M16 DON'T DECIDE: one extra arrow.** `po(-2)` matches "Killed Chris and his partner" (the crowd always kills, per the wiki Note; the template has one condition for both). **`josh(-1)` is extra.**
+17. **M16 situation text.** "{{Josh}} says if you kill them you prove everything they say about you" and "{{North}} says … humans will only respect strength": in the template's police-arrives block Josh speaks only on the radio when Simon is absent ("We freed hundreds of our people. We did it!"). North says only "They killed them… they slaughtered them like animals…", and three androids demand justice ("They killed our people, Markus…", "We want justice, Markus!", "They have to pay!"). Nobody argues for mercy. "opened fire on your people, killing one" understates "slaughtered them". Template wins.
+18. **M16 not gated.** The template places "Police arrives" inside "Send a message", after the store. M16 must not appear after any flee ending. Today it appears on every Markus path.
+19. **The aggressive-message North arrow and the news order.** The template applies North SmallUp at the police-arrival exchange (end of the Spread phase) and all public opinion in the closing news, not at the choices. The engine applies both at M15 / M16. Totals match; the placement differs only cosmetically, so nothing to change unless events are split out.
+
+R26's two magazines are not in the template (no magazine markup in this file), so they stand on the wiki (§6).
+
+**Totals: 5 discrepancies with the note, 19 with the benchmark.**

@@ -1990,3 +1990,1322 @@ Markus page:
 
 - `benchmark/story.json` (version 1.6.0), nodes with `chapter` 32/33.
 - `benchmark/story-engine.mjs`: gates, option filters and consequences for those nodes.
+
+---
+
+## 10. Template cross-check
+
+Written 2026-11-06 from the detroitbecometext templates (branch `master`), read raw from `https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/` and resolved against `public/i18n/en.json`:
+
+| Part | Template path (under `src/app/chapters/components/chapter-contents/`) |
+|---|---|
+| 32.1 Kara Leaving Detroit (`04A.KA`) | `32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html` |
+| 32.2 Kara Captured (`04A.KB`) | `32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html` |
+| 32.3 Connor's Last Mission (`04A.CA`) | `32.3-connors-last-mission-chapter-content/connors-last-mission-chapter-content.component.html` |
+| 32.4 Connor at the CyberLife Tower (`04A.CB`) | `32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html` |
+| 32.5 Markus Demonstration (`04A.MB`) | `32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html` |
+| 32.6 Markus Revolution (`04A.MA`) | `32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html` |
+| Secret endings | `src/app/chapters/pages/endings/endings.component.html` |
+| Main-menu Chloe | no template; strings `X5002X.MAINMENU.LEAVING.*` and `GUI.MENU.CHLOE.BACK` in `en.json` |
+
+Rendering: a stdlib `html.parser` script (`/tmp/dbt/render32.py`, a copy of the shared `/tmp/dbt/render2532.py` that also prints the transcribers' plain-text notes) resolves every `t('KEY')`, `t("KEY")`, `translateObject(KEY, start, end)` and `CommonTranslationKey.*` reference and prints, in template order: `[SECTION id]` and its heading; `<CONDITION GROUP>` / `<VARIANT>` with the `IF:` condition text; `** PROMPT **` for each `app-choice-group` and `- OPTION "label"` for each `app-choice-item` (flags: `brackets`, the game's bracketed action buttons); `ARROW <RelationName> <RelationType>` for each `app-relation`; `UNLOCK(<UnlockType>)` with its text; `### UNUSED/CUT CONTENT ###` for each `app-unused-content`; `(no content: ø)` where the option has no lines; `NOTE:` for the transcribers' prose notes and `TEXT:` for HUD date/time and background lines. Dialogue lines are omitted. A `### UNUSED/CUT CONTENT ###` line with nothing indented beneath it marks a cut dialogue line only; items at the same indent after it are not cut. Relation names: `Jericho` = the "Jericho" leader gauge (`GUI.GAUGE.LEADER.NAME`), `SoftwareInstability` = `GUI.GAUGE.DEVIANT.NAME`.
+
+Counts per part (prompts = `app-choice-group`, options = `app-choice-item`, clues = `app-observation-item`, arrows = `app-relation`). Variant prompts are counted each time they appear (for example the 32.1 rescue prompt appears in three start variants):
+
+| Part | Prompts | Options | Clues | Arrows | Unlock conditions | Cut blocks | Inside cut blocks |
+|---|---|---|---|---|---|---|---|
+| 32.1 | 21 | 66 | 0 | 16 | 6 | 1 | none |
+| 32.2 | 16 | 45 | 0 | 0 | 3 | 2 | none |
+| 32.3 | 7 | 21 | 0 | 0 | 4 | 0 | none |
+| 32.4 | 9 | 30 | 0 | 0 | 1 | 3 | none |
+| 32.5 | 10 | 40 | 0 | 9 | 3 | 4 | none |
+| 32.6 | 9 | 27 | 0 | 8 | 3 | 2 | 1 prompt, 4 options (scared android, first round) |
+| Endings page | 0 | 0 | 0 | 1 | 2 | 2 | none |
+| Chloe (string table) | 1 | 2 | 0 | 0 | 0 | 0 | none |
+
+Raw COUNTS lines from the renderer:
+
+```
+32.1  COUNTS (all): prompts=21, options=66, arrows=16, obs=0, unlock=6, unused=1 | inside unused: prompts=0, options=0, arrows=0, obs=0
+32.2  COUNTS (all): prompts=16, options=45, arrows=0, obs=0, unlock=3, unused=2 | inside unused: prompts=0, options=0, arrows=0, obs=0
+32.3  COUNTS (all): prompts=7, options=21, arrows=0, obs=0, unlock=4, unused=0 | inside unused: prompts=0, options=0, arrows=0, obs=0
+32.4  COUNTS (all): prompts=9, options=30, arrows=0, obs=0, unlock=1, unused=3 | inside unused: prompts=0, options=0, arrows=0, obs=0
+32.5  COUNTS (all): prompts=10, options=40, arrows=9, obs=0, unlock=3, unused=4 | inside unused: prompts=0, options=0, arrows=0, obs=0
+32.6  COUNTS (all): prompts=9, options=27, arrows=8, obs=0, unlock=3, unused=2 | inside unused: prompts=1, options=4, arrows=0, obs=0
+ends  COUNTS (all): prompts=0, options=0, arrows=1, obs=0, unlock=2, unused=2 | inside unused: prompts=0, options=0, arrows=0, obs=0
+```
+
+The chapter has no observation (clue) items in any part. Flowchart node labels are the `MENU.FLOWCHART.04A.*` strings already transcribed in section 1; the templates do not print them.
+
+### 10a. Rendered outlines
+
+#### 32.1 Kara Leaving Detroit
+
+```
+[SECTION streets]
+  # In the streets
+  TEXT: NOV 11TH, 2038
+  TEXT: PM 10:51
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Jericho wasn't attacked : Luther is there
+      ** PROMPT (choice group) **
+        - OPTION "SAVE THE JERRYS"
+          ARROW Alice SmallUp
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Save Jerrys
+            <VARIANT>
+              IF: Fail
+        - OPTION "KEEP GOING"
+          ARROW Alice SmallDown
+    <VARIANT>
+      IF: Luther isn't here
+      [SECTION talk-alice]
+        ## Talk to Alice
+        ** PROMPT (choice group) **
+          - OPTION "DEACTIVATE"
+          - OPTION "LEAVE ON"
+            (no content: ø)
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Luther died - Save the Jerrys
+          ** PROMPT (choice group) **
+            - OPTION "SAVE THE JERRYS"
+              ARROW Alice SmallUp
+              <CONDITION GROUP>
+                <VARIANT>
+                  IF: Save Jerrys
+                <VARIANT>
+                  IF: Fail
+            - OPTION "KEEP GOING"
+              ARROW Alice SmallDown
+        <VARIANT>
+          IF: Luther is alive - Save Luther and Jerry
+          ** PROMPT (choice group) **
+            - OPTION "SAVE LUTHER"
+              ARROW Alice SmallUp
+              <CONDITION GROUP>
+                <VARIANT>
+                  IF: Save Luther
+                <VARIANT>
+                  IF: Fail
+            - OPTION "KEEP GOING"
+              ARROW Alice SmallDown
+[SECTION checkpoint]
+  # At the checkpoint
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Luther isn't there
+    <VARIANT>
+      IF: Luther is here
+  [SECTION approach-checkpoint]
+    ## Approach checkpoint
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is there
+    ** PROMPT (choice group) **
+      - OPTION "ALICE EXCUSE"
+        UNLOCK(None): Luther is here
+      - OPTION "CURFEW"
+      - OPTION "CAR BROKEDOWN"
+      - OPTION "BUS"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is here
+        ** PROMPT (choice group) **
+          - OPTION "STAY CALM"
+          - OPTION "STAY ATTENTIVE"
+    ** PROMPT (choice group) **
+      - OPTION "SICK"
+      - OPTION "COLD"
+        UNLOCK(None): Luther is here
+      - OPTION "FEAR"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is here
+    ** PROMPT (choice group) **
+      - OPTION "SHOOT"
+        ARROW Alice SmallDown
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Luther is here
+      - OPTION "DO NOTHING"
+        ** PROMPT (choice group) **
+          - OPTION "SHOOT"
+            ARROW Alice SmallDown
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Luther is here
+          - OPTION "DO NOTHING"
+            ARROW Luther SmallUp
+[SECTION terminal]
+  # At the bus terminal
+  [SECTION timeout-bus]
+    ## Took too much time - Miss the bus
+    ARROW Alice SmallDown
+    TEXT: PM 11:15
+  [SECTION time-bus]
+    ## Arrive on time
+    TEXT: PM 11:02
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is here
+  [SECTION meet-mother]
+    ## Meet the mother
+    ** PROMPT (choice group) **
+      - OPTION "RETURN TICKETS"
+        ARROW Alice SmallUp
+      - OPTION "KEEP TICKETS"
+        ** PROMPT (choice group) **
+          - OPTION "RETURN TICKETS"
+            NOTE: Triggers the same dialogue as directly choosing RETURN TICKETS.
+          - OPTION "KEEP TICKETS"
+            ARROW Alice SmallDown
+            ARROW Luther SmallUp
+  [SECTION tv]
+    ## Watch terminal TV
+  [SECTION todd-talk]
+    ## Talking with Todd
+    UNLOCK(Lock): Todd wasn't killed in Stormy Night
+    ** PROMPT (choice group) **
+      - OPTION "APPEAL"
+      - OPTION "THREATEN"
+      - OPTION "CONFRONT"
+      - OPTION "CONVINCE"
+      - OPTION "BREAK FREE"
+      - OPTION "YOUR STORY" (brackets)
+        UNLOCK(Lock): Opened Alice's box in A New Home
+        ** PROMPT (choice group) **
+          - OPTION "STOP ALICE"
+            (no content: ø)
+          - OPTION "DO NOTHING"
+            (no content: ø)
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Didn't pick [ YOUR STORY ]
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Luther is there
+          <VARIANT>
+            IF: Luther isn't there
+  [SECTION adam]
+    ## Find Adam
+  [SECTION take-bus]
+    ## Take the bus
+    ** PROMPT (choice group) **
+      - OPTION "REASSURE"
+      - OPTION "HONEST"
+  [SECTION security]
+    ## Security check
+    ** PROMPT (choice group) **
+      - OPTION "DIVERSION LUTHER" (brackets)
+        UNLOCK(None): Luther is here
+      - OPTION "PAPERS"
+      - OPTION "FLEE"
+        (no content: ø)
+[SECTION river]
+  # At the river
+  TEXT: PM 11:26
+  [SECTION talk-rose]
+    ## Talk to Rose
+  [SECTION water]
+    ## Check the water
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is here
+      <VARIANT>
+        IF: Luther is dead
+  [SECTION talk-adam]
+    ## Talk to Adam
+  [SECTION look-river]
+    ## Looking at the other side of the river
+  [SECTION boat]
+    ## On the boat
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Luther is here
+      <VARIANT>
+        IF: Luther isn't here
+    ** PROMPT (choice group) **
+      - OPTION "DREAMY"
+      - OPTION "INTROSPECTIVE"
+      - OPTION "CURIOUS"
+      - OPTION "CALM"
+    ** PROMPT (choice group) **
+      - OPTION "Accelerate"
+        NOTE: Leads to the same outcome as HIDE after that.
+      - OPTION "Protect Alice"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Luther is here - Luther dies
+      - OPTION "Hide"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Luther is here - Luther dies
+      - OPTION "Surrender"
+        NOTE: Leads to the same outcome as not doing anything after that.
+      - OPTION "Plunge"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Luther is here - Luther dies
+      - OPTION "Use Luther" (brackets)
+        UNLOCK(None): Luther is here
+      - OPTION "DEFAULT/TIMEOUT" (brackets)
+    ** PROMPT (choice group) **
+      - OPTION "Accelerate"
+      - OPTION "Reassure"
+      - OPTION "Use paddle"
+      - OPTION "PUT OVERBOARD"
+      - OPTION "Push"
+  [SECTION river-side]
+    ## On the other side of the river
+    TEXT: PM 11:57
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Kara was injured
+      <VARIANT>
+        IF: Alice was injured
+        ** PROMPT (choice group) **
+          - OPTION "KEEP LIVING"
+            (no content: ø)
+          - OPTION "GIVE UP"
+            (no content: ø)
+      <VARIANT>
+        IF: Alice and Kara were injured
+      <VARIANT>
+        IF: Alice and Kara make it
+[SECTION border]
+  # At the Canadian border
+  TEXT: PM 11:30
+  [SECTION people-talk]
+    ## People in line talking
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Markus is demonstrating peacefully
+      <VARIANT>
+        IF: Markus is leading a violent revolution
+  [SECTION talk-luther-line]
+    ## Talk to Luther
+  [SECTION talk-jerry-line]
+    ## Talk to Jerry
+  [SECTION see-rose]
+    ## See Rose
+  [SECTION bathroom-luther]
+    ## See bathroom and Luther is here
+  [SECTION bathroom]
+    ## Go to the bathroom
+    ** PROMPT (choice group) **
+      - OPTION "BROTHER"
+      - OPTION "CONTROL"
+      - OPTION "ALICE"
+      - OPTION "DEPARTURE"
+      - OPTION "REVOLUTION"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Markus is demonstrating peacefully
+          <VARIANT>
+            IF: Markus is leading a violent revolution
+      - OPTION "GOODBYE"
+        (no content: ø)
+  [SECTION talk-adam-line]
+    ## Talk to Adam
+  [SECTION line]
+    ## In the line
+    ** PROMPT (choice group) **
+      - OPTION "SACRIFICE SELF" (brackets)
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Luther is here
+          <VARIANT>
+            IF: Luther is not here
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Luther not here : Alice goes with Rose
+          <VARIANT>
+            IF: Luther is here
+      - OPTION "SACRIFICE LUTHER" (brackets)
+        ### UNUSED/CUT CONTENT ###
+      - OPTION "SACRIFICE JERRY" (brackets)
+        ARROW Alice SmallDown
+      - OPTION "NO SACRIFICE"
+        ARROW Alice SmallUp
+        ARROW Luther SmallUp
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Markus is demonstrating peacefully
+          <VARIANT>
+            IF: Markus is leading a violent revolution
+  [SECTION canada]
+    ## In Canada
+    TEXT: PM 11:36
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Sacrificed self - Alice went with Rose
+      <VARIANT>
+        IF: Sacrificed self - Alice went with Luther
+      <VARIANT>
+        IF: No sacrifice
+<CONDITION GROUP>
+  <VARIANT>
+    IF: Markus is demonstrating peacefully
+  <VARIANT>
+    IF: Markus is leading a violent revolution
+  <VARIANT>
+    IF: Luther killed the cop in Midnight Train
+```
+
+#### 32.2 Kara Captured
+
+```
+[SECTION truck]
+  # In the truck
+  TEXT: NOV 11TH, 2038
+  TEXT: PM 10:51
+  ** PROMPT (choice group) **
+    - OPTION "WARN"
+    - OPTION "REASSURE"
+    - OPTION "LIE"
+    - OPTION "SINCERE"
+  [SECTION timeout-truck]
+    ## Take too much time
+[SECTION center]
+  # At the recycling center
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Not putting hands on Kara's head fast enough: Kara gets hit by the soldier
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Not lining up
+  ** PROMPT (choice group) **
+    - OPTION "REASSURE"
+    - OPTION "REASON"
+    - OPTION "FRIGHTEN"
+    - OPTION "ORDER"
+  ** PROMPT (choice group) **
+    - OPTION "PERSUADE SOLDIER"
+    - OPTION "PERSUADE ALICE"
+    - OPTION "SHIELD ALICE"
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Taking too long going in the gate
+  ### UNUSED/CUT CONTENT ###
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Taking too long going out of the gate
+  ** PROMPT (choice group) **
+    - OPTION "VOLUNTEER"
+    - OPTION "SAY NOTHING"
+[SECTION explore-enclosure]
+  # Explore enclosure
+  TEXT: PM 11:02
+  [SECTION enter-enclosure]
+    ## Going into the enclosure
+    ** PROMPT (choice group) **
+      - OPTION "CALL"
+  [SECTION drone]
+    ## Android talking to drone
+  [SECTION talk-jerry]
+    ## Talk to Jerry
+  [SECTION talk-jerry-2]
+    ## Talk to other Jerry
+  [SECTION ralph-talk-alone]
+    ## Ralph talking
+  [SECTION ralph-talk]
+    ## Talking to Ralph
+    UNLOCK(Lock): Met Ralph in Fugitives
+    ** PROMPT (choice group) **
+      - OPTION "INSIST"
+      - OPTION "CALM DOWN"
+      - OPTION "GIVE UP"
+        (no content: ø)
+    ** PROMPT (choice group) **
+      - OPTION "INSIST"
+      - OPTION "CALM DOWN"
+      - OPTION "GIVE UP"
+        (no content: ø)
+  [SECTION talk-android]
+    ## Talk to android
+    UNLOCK(Lock): Chose VOLUNTEER at the entrance of the camp
+  [SECTION scarred-android]
+    ## Talk to scarred android
+    UNLOCK(Lock): Kara saved the androids in Zlatko
+    ** PROMPT (choice group) **
+      - OPTION "CAPTURED"
+      - OPTION "ALICE"
+      - OPTION "HERE"
+  [SECTION luther]
+    ## Talk to Luther
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Talked to the two Jerry (and saw Alice) - Kara goes with Luther
+    <VARIANT>
+      IF: Didn't see Alice
+      ** PROMPT (choice group) **
+        - OPTION "INTERVENE"
+        - OPTION "DON'T INTERVENE"
+          (no content: ø)
+      [SECTION join-alice]
+        ## Join Alice
+[SECTION join-line]
+  # Join line
+  TEXT: PM 11:06
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Markus is leading a revolution
+      [SECTION talk-behind]
+        ## Talk to android behind Kara
+  [SECTION drone-seen]
+    ## Seen by drone
+  [SECTION not-move]
+    ## Do not move
+  [SECTION mind-palace]
+    ## Mind palace dialogues
+    TEXT: What's behind these doors?
+    TEXT: Why are we here?
+    TEXT: They're gonna kill us. I know they're going to kill us.
+    TEXT: They just wanna check us. They won't do us any harm.
+    TEXT: Where's rA9? Why doesn't he come and save us?
+    TEXT: We have to obey them. We have no choice.
+    TEXT: I don't wanna die… I don't want to die.
+    TEXT: They're going to kill us all. I know they're going to kill us all.
+    TEXT: rA9 have pity on us. rA9 have pity on us.
+    TEXT: Markus and our people will save us.
+    TEXT: Markus will come and free us.
+    TEXT: Markus is rA9. I'm sure it's him.
+    TEXT: Markus is fighting the humans. There are more of us. We can beat them.
+    TEXT: Markus is our savior.
+  [SECTION call-alice]
+    ## Call Alice
+    ** PROMPT (choice group) **
+      - OPTION "FIRM"
+      - OPTION "OPTIMISTIC"
+      - OPTION "REASSURING"
+      - OPTION "BLUNT"
+  [SECTION talk-jerry-help]
+    ## Talk to Jerry
+  [SECTION talk-luther-help]
+    ## Talk to Luther
+  [SECTION talk-ralph-help]
+    ## Talk to Ralph
+  [SECTION talk-scarred-android-help]
+    ## Talk to scarred android
+  [SECTION talk-ahead]
+    ## Talk to android ahead of Kara
+  ** PROMPT (choice group) **
+    - OPTION "LIE"
+    - OPTION "TRUTH"
+      ### UNUSED/CUT CONTENT ###
+  ** PROMPT (choice group) **
+    - OPTION "ORDER"
+    - OPTION "CALM DOWN"
+  ** PROMPT (choice group) **
+    - OPTION "REASSURING"
+    - OPTION "POWERLESS"
+    - OPTION "OPTIMISTIC"
+  [SECTION sacrifice-jerry]
+    ## Sacrifice Jerry
+  [SECTION sacrifice-ralph]
+    ## Send Ralph
+  [SECTION sacrifice-scarred]
+    ## Ask scarred android
+  [SECTION stress-100]
+    ## Alice stress at 100%
+    ** PROMPT (choice group) **
+      - OPTION "INTERVENE"
+      - OPTION "DO NOT INTERVENE"
+  [SECTION join-alice-success]
+    ## Join Alice
+  [SECTION talk-luther-sacrifice]
+    ## Talk to Luther
+  [SECTION luther-recycling]
+    ## Luther reaches Recycling Machine
+  [SECTION escape-fence]
+    ## Escape through the fence
+    ** PROMPT (choice group) **
+      - OPTION "FLEE"
+      - OPTION "PROTECT ALICE"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Fail the fight and Ralph is still alive : Ralph saves Kara
+      - OPTION "TAKE TOO MUCH TIME"
+[SECTION escape-fail]
+  # Fail to escape - Reach Recycling Machine
+  TEXT: PM 11:08
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Kara and Alice are together
+      ** PROMPT (choice group) **
+        - OPTION "BRAVE"
+        - OPTION "PRIDE"
+        - OPTION "TOGETHER"
+        - OPTION "EMOTION"
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Markus' revolution succeeded : Kara and Alice are saved
+        <VARIANT>
+          IF: Kara and Alice are not saved
+    <VARIANT>
+      IF: Kara and Alice are separated
+[SECTION landfill]
+  # Solid Waste Landfill
+  TEXT: AM 07:37
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Alice and Kara are alive
+```
+
+#### 32.3 Connor's Last Mission
+
+```
+[SECTION rooftop]
+  # On the rooftop
+  TEXT: NOV 11TH, 2038
+  TEXT: PM 10:48
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Hank is on the roof
+      UNLOCK(None): Hank wasn't hostile in Last Chance, Connor and didn't resign
+      ** PROMPT (choice group) **
+        - OPTION "FRIENDLY"
+        - OPTION "AGGRESSIVE"
+        - OPTION "REASONABLE"
+        - OPTION "THREATENING"
+        - OPTION "STAY QUIET"
+          (no content: ø)
+      ** PROMPT (choice group) **
+        - OPTION "THREATEN"
+        - OPTION "PLEAD"
+        - OPTION "DEFY"
+        - OPTION "HANK'S SON"
+        - OPTION "HANK'S SON (INSIST)" (brackets)
+          UNLOCK(Lock): Chose HANK'S SON
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Connor died several times before
+      ** PROMPT (choice group) **
+        - OPTION "LEAVE" (brackets)
+          UNLOCK(Lock): Be friend with Hank
+        - OPTION "ATTACK"
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Win the fight
+              ** PROMPT (choice group) **
+                - OPTION "SAVE HANK"
+                  <CONDITION GROUP>
+                    <VARIANT>
+                      IF: Dodge Hank
+                      (no content: ø)
+                    <VARIANT>
+                      IF: Get pushed from the edge
+                - OPTION "KILL HANK"
+                  (no content: ø)
+            <VARIANT>
+              IF: Lose the fight
+    <VARIANT>
+      IF: CAPTAIN ALLEN INTERVENES
+      UNLOCK(Death): HANK COMMITTED SUICIDE IN 'NIGHT OF THE SOUL'
+      ** PROMPT (choice group) **
+        - OPTION "OBEY"
+          (no content: ø)
+        - OPTION "EXPLAIN"
+        - OPTION "CONTINUE"
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Connor didn't die in The Hostage
+        <VARIANT>
+          IF: Connor died in The Hostage
+      ** PROMPT (choice group) **
+        - OPTION "FIGHT"
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Win the fight
+            <VARIANT>
+              IF: Lose the fight
+        - OPTION "FLEE"
+[SECTION markus]
+  # Going after the deviant leader
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: In the crowd [Markus led a successful demonstration]
+      ** PROMPT (choice group) **
+        - OPTION "DON'T SHOOT"
+        - OPTION "SHOOT"
+          (no content: ø)
+    <VARIANT>
+      IF: Connor finds Markus
+      NOTE: [Markus is leading a successful revolution] See
+      NOTE: Markus' Revolution
+      NOTE: .
+    <VARIANT>
+      IF: Connor arrives in the store
+      NOTE: [Markus led a revolution and had to fall back] See
+      NOTE: Markus' Revolution
+      NOTE: .
+```
+
+#### 32.4 Connor at the CyberLife Tower
+
+```
+[SECTION tower]
+  # At the CyberLife tower
+  TEXT: NOV 11TH, 2038
+  TEXT: PM 10:48
+  [SECTION elevator]
+    ## In the elevator
+  [SECTION panel]
+    ## Try to use panel
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Reaching level 31
+    <VARIANT>
+      IF: Attacking the guards and using the elevator
+      ** PROMPT (choice group) **
+        - OPTION "AGENT 54 VOICE"
+        - OPTION "CONNOR'S VOICE"
+  [SECTION floor-49]
+    ## Floor -49
+    TEXT: PM 11:01
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Didn't hack the camera
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Connor dies
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: Hank is still alive [Hank wasn't hostile in Last Chance, Connor]
+        ### UNUSED/CUT CONTENT ###
+        ** PROMPT (choice group) **
+          - OPTION "GUARANTEE"
+          - OPTION "HANK"
+          - OPTION "BLUFF"
+          - OPTION "CONVINCE"
+            ### UNUSED/CUT CONTENT ###
+        ** PROMPT (choice group) **
+          - OPTION "SAVE HANK"
+            ** PROMPT (choice group) **
+              - OPTION "SHOOT"
+                ** PROMPT (choice group) **
+                  - OPTION "SUMO"
+                  - OPTION "SCOUT"
+                  - OPTION "JACK"
+                  - OPTION "BUDDY"
+                ** PROMPT (choice group) **
+                  - OPTION "COLE"
+                    UNLOCK(Lock): Will be highlighted if Connor looked at the photo in Russian Roulette
+                  - OPTION "ANTHONY"
+                  - OPTION "GABRIEL"
+                  - OPTION "ELLIOTT"
+              - OPTION "INTERPOSE"
+                NOTE: Leads to the same dialogue as SHOOT.
+              - OPTION "CONVERT"
+                NOTE: Leads to the same result as sacrificing Hank and successfully converting.
+              - OPTION "DEFAULT/TIMEOUT"
+          - OPTION "SACRIFICE HANK"
+            <CONDITION GROUP>
+              <VARIANT>
+                IF: Successfully converting the android
+                ** PROMPT (choice group) **
+                  - OPTION "STAND UP"
+                  - OPTION "SHOOT"
+                  - OPTION "TRANSFER"
+                  - OPTION "DEFAULT/TIMEOUT"
+                <CONDITION GROUP>
+                  <VARIANT>
+                    IF: Fail to convert the android
+                    NOTE: Leads to the same outcomes as if Hank is dead for STAND UP, SHOOT and [ TAKE TOO MUCH TIME TO CHOOSE ], and to the same result as successfully converting the android when choosing TRANSFER.
+      <VARIANT>
+        IF: Hank is dead [Hank was hostile in Last Chance, Connor
+        ** PROMPT (choice group) **
+          - OPTION "STAND UP"
+            (no content: ø)
+          - OPTION "SHOOT"
+            (no content: ø)
+          - OPTION "TRANSFER"
+          - OPTION "DEFAULT/TIMEOUT"
+[SECTION freed-androids]
+  # Freed the androids
+  TEXT: OUTSIDE RECALL CENTER N°5 Downtown
+  TEXT: AM 12:01
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Markus is alive: Connor joins Markus
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: North is alive
+        <VARIANT>
+          IF: North is dead
+        <VARIANT>
+          IF: North and Simon are dead
+        <VARIANT>
+          IF: Everyone is dead
+    <VARIANT>
+      IF: Markus died : Connor becomes leader of the deviants
+      ### UNUSED/CUT CONTENT ###
+      ** PROMPT (choice group) **
+        - OPTION "SUICIDE"
+        - OPTION "GIVE UP"
+```
+
+#### 32.5 Markus Demonstration
+
+```
+[SECTION president]
+  # President Warren talks to journalists
+  TEXT: NOV 10TH, 2038
+  TEXT: PM 09:24
+  ### UNUSED/CUT CONTENT ###
+  ** PROMPT (choice group) **
+    - OPTION "HACKING"
+    - OPTION "DEVIANT LEADER"
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Markus is alive
+        <VARIANT>
+          IF: Markus is dead and North is leading the revolution
+    - OPTION "WORRYING THEFT"
+    - OPTION "CYBERLIFE"
+    - OPTION "INTELLIGENT LIFE"
+    - OPTION "DEVIANTS"
+    - OPTION "RECALL CENTERS"
+    - OPTION "JERICHO ASSAULT"
+      UNLOCK(None): Jericho was attacked
+    - OPTION "ARMY"
+    - OPTION "PUBLIC OPINION"
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Public opinion is positive
+        <VARIANT>
+          IF: Public opinion is negative
+[SECTION plaza]
+  # Hart Plaza freedom march
+  ### UNUSED/CUT CONTENT ###
+  TEXT: PM 10:56
+  ** PROMPT (choice group) **
+    - OPTION "PEACEFUL"
+      ARROW PublicOpinion SmallUp
+    - OPTION "PROVOKE"
+      ARROW PublicOpinion SmallDown
+    - OPTION "FIRM"
+      ARROW PublicOpinion SmallUp
+  ### UNUSED/CUT CONTENT ###
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: North is alive
+      <VARIANT>
+        IF: North is dead and Simon is alive
+      <VARIANT>
+        IF: Simon is dead
+  ** PROMPT (choice group) **
+    - OPTION "FIRM"
+    - OPTION "CALM"
+      ARROW PublicOpinion SmallUp
+    - OPTION "ACCUSE"
+      ARROW PublicOpinion SmallDown
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: North is alive
+    <VARIANT>
+      IF: North is dead and Simon is alive
+    <VARIANT>
+      IF: Simon is dead
+[SECTION barricade]
+  # At the barricade
+  TEXT: PM 11:08
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Push the car
+  [SECTION observe-soldiers]
+    ## Observe soldiers
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: With Josh
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Connor at the CyberLife tower
+      <VARIANT>
+        IF: With Simon
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: Connor at the CyberLife tower
+  [SECTION talk-north]
+    ## Talk with North
+    ** PROMPT (choice group) **
+      - OPTION "HUMANS"
+      - OPTION "OTHER GROUPS"
+        ### UNUSED/CUT CONTENT ###
+      - OPTION "CAMP"
+    ** PROMPT (choice group) **
+      - OPTION "GRIM"
+      - OPTION "REGRETS"
+      - OPTION "DESPERATE"
+      - OPTION "DOUBTS"
+  [SECTION send-message]
+    ## Send a message to journalists
+    ARROW PublicOpinion SmallUp
+    ARROW Jericho SmallUp
+  [SECTION talk-scared]
+    ## Talk to scared android
+    ** PROMPT (choice group) **
+      - OPTION "REASSURE"
+      - OPTION "INSPIRE"
+      - OPTION "JUSTIFY"
+  [SECTION perkins-arrives]
+    ## Perkins arrives
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: North is alive
+      <VARIANT>
+        IF: North is dead, Simon is alive
+      <VARIANT>
+        IF: North is dead, Simon is dead
+      <VARIANT>
+        IF: North is dead, Simon is dead, Josh is dead
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: North is alive
+      <VARIANT>
+        IF: North is dead, Simon is alive
+      <VARIANT>
+        IF: North is dead, Simon is dead
+      <VARIANT>
+        IF: North is dead, Simon is dead, Josh is dead
+    ** PROMPT (choice group) **
+      - OPTION "ACCEPT"
+      - OPTION "REFUSE"
+        ** PROMPT (choice group) **
+          - OPTION "ACCEPT"
+          - OPTION "REFUSE"
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: North is alive
+      <VARIANT>
+        IF: North is dead, Simon is alive
+      <VARIANT>
+        IF: North is dead, Simon is dead
+      <VARIANT>
+        IF: North is dead, Simon is dead, Josh is dead
+  [SECTION talk-perkins]
+    ## Talking to Perkins
+    ** PROMPT (choice group) **
+      - OPTION "OTHER DEMONSTRATIONS" (brackets)
+      - OPTION "GUARANTEES?"
+      - OPTION "NOT AFRAID"
+        <CONDITION GROUP>
+          <VARIANT>
+            IF: North has lover relationship status
+          <VARIANT>
+            IF: North doesn't have lover status
+      - OPTION "BETRAY PEOPLE?"
+      - OPTION "ACCEPT DEAL"
+      - OPTION "REFUSE DEAL"
+  [SECTION refuse-deal]
+    ## Return after talking with Perkins and refusing the deal
+    <CONDITION GROUP>
+      <VARIANT>
+        IF: North is alive
+      <VARIANT>
+        IF: North is dead, Simon is alive
+      <VARIANT>
+        IF: North is dead, Simon is dead
+      <VARIANT>
+        IF: North is dead, Simon is dead, Josh is dead
+[SECTION barricade-attacked]
+  # Barricade is attacked
+  TEXT: PM 11:16
+  [SECTION north-saves]
+    ## Fail the QTE and have lover status with North - North saves Markus
+  ** PROMPT (choice group) **
+    - OPTION "DIRTY BOMB" (brackets)
+      UNLOCK(Lock): Took the bomb in Crossroads
+      (no content: ø)
+    - OPTION "KISS NORTH" (brackets)
+      UNLOCK(Lock): North has lover status
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Public opinion is positive
+    - OPTION "SING"
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Public opinion is positive
+        <VARIANT>
+          IF: Public opinion is negative
+    - OPTION "SACRIFICE"
+[SECTION success]
+  # Demonstration succeeded
+[SECTION accept-deal]
+  # Accepted Perkin's deal
+  ARROW Josh SmallDown
+  ARROW Simon SmallDown
+  TEXT: PM 11:26
+[SECTION media-reacts]
+  # Media reacts to the outcome of the demonstration
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: The demonstration succeeded
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Connor freed the CyberLife androids
+    <VARIANT>
+      IF: The demonstration failed - Markus and the androids died
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Markus sacrificed himself
+        <VARIANT>
+          IF: Markus kissed North
+        <VARIANT>
+          IF: Androids sang
+        <VARIANT>
+          IF: Markus died any other way
+    <VARIANT>
+      IF: Markus used the dirty bomb
+      <<embedded app-press-dirty-bomb>>
+```
+
+#### 32.6 Markus Revolution
+
+```
+[SECTION speech]
+  # In the church or in Jericho (if not attacked in Crossroads)
+  TEXT: PM 10:56
+[SECTION plaza]
+  # Hart Plaza
+  TEXT: PM 11:01
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: North is alive
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: North is alive
+    <VARIANT>
+      IF: North is dead and Simon is alive
+    <VARIANT>
+      IF: Simon is dead
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Simon is alive
+    <VARIANT>
+      IF: Simon is dead
+  [SECTION josh-shot]
+    ## Josh gets shot
+    [SECTION save-josh]
+      ### Save Josh
+      ### UNUSED/CUT CONTENT ###
+  [SECTION scared-android]
+    ## Reach the scared android
+    ### UNUSED/CUT CONTENT ###
+      ** PROMPT (choice group) **
+        - OPTION "REASSURE"
+        - OPTION "MOTIVATE"
+        - OPTION "RA9"
+        - OPTION "SHAKE UP"
+    ** PROMPT (choice group) **
+      - OPTION "STAY HERE"
+      - OPTION "GO BACK"
+        NOTE: Android dies
+      - OPTION "ADVANCE!"
+        NOTE: Android dies
+  [SECTION sand-bags]
+    ## Talk to android behind sand bags
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Markus badly wounded
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: North is at least companion: North gives her heart
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: North is lover
+          ** PROMPT (choice group) **
+            - OPTION "SACRIFICE NORTH"
+              ARROW Jericho SmallDown
+              <CONDITION GROUP>
+                <VARIANT>
+                  IF: North is lover
+                <VARIANT>
+                  IF: North not lover
+            - OPTION "SACRIFICE SELF"
+              <CONDITION GROUP>
+                <VARIANT>
+                  IF: North is lover
+        <VARIANT>
+          IF: Simon gives his heart
+          ARROW Jericho SmallDown
+  [SECTION pillar]
+    ## At the pillar
+  [SECTION save-simon]
+    ## Save Simon
+    ARROW Simon LargeUp
+  [SECTION attacking]
+    ## Attacking
+  [SECTION machine-gun]
+    ## Reach machine gun
+  [SECTION shoot-drone]
+    ## Shoot drone
+  [SECTION attacking-2]
+    ## Attacking
+[SECTION attack-success]
+  # Assault successful - Approaching Recall Center N°5
+  TEXT: PM 11:07
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Connor is not deviant
+      <CONDITION GROUP>
+        <VARIANT>
+          IF: Markus wins fight
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: North is alive
+    <VARIANT>
+      IF: North is dead, Simon is alive
+    <VARIANT>
+      IF: North is dead, Simon is dead
+  TEXT: AM 12:01
+[SECTION attack-failed]
+  # Assault failed
+  ARROW North SmallDown
+  ARROW Jericho LargeDown
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: North is alive
+    <VARIANT>
+      IF: North is dead, Simon is alive
+    <VARIANT>
+      IF: North is dead, Simon is dead
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: North is alive : Surrounded by soldiers
+      ** PROMPT (choice group) **
+        - OPTION "KISS" (brackets)
+          UNLOCK(Lock): Lover with North
+          ARROW North SmallUp
+          (no content: ø)
+        - OPTION "DIRTY BOMB" (brackets)
+          UNLOCK(Lock): Took the detonator in Crossroads
+          ** PROMPT (choice group) **
+            - OPTION "PRESS"
+              <<embedded app-press-dirty-bomb>>
+            - OPTION "GIVE UP"
+        - OPTION "SUICIDE"
+          - OPTION "CONFIRM SUICIDE"
+            (no content: ø)
+          - OPTION "PUT DOWN"
+            (no content: ø)
+        - OPTION "SURRENDER"
+          ARROW North SmallDown
+    <VARIANT>
+      IF: North is dead and Connor is machine : Connor arrives
+      ** PROMPT (choice group) **
+        - OPTION "SHOOT"
+          (no content: ø)
+        - OPTION "SPARE"
+          ARROW Amanda LargeDown
+          <CONDITION GROUP>
+            <VARIANT>
+              IF: Took dirty bomb
+              ** PROMPT (choice group) **
+                - OPTION "DETONATE THE BOMB"
+                - OPTION "DO NOT DETONATE"
+                  (no content: ø)
+    <VARIANT>
+      IF: North is dead and Connor is not here: Markus alone in the store
+      ** PROMPT (choice group) **
+        - OPTION "SUICIDE"
+          (no content: ø)
+        - OPTION "SURRENDER"
+        - OPTION "DIRTY BOMB"
+          UNLOCK(Lock): Took the detonator
+          <<embedded app-press-dirty-bomb>>
+[SECTION markus-dead]
+  # Markus is dead : North is leading the revolution
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Connor is not a deviant
+      ** PROMPT (choice group) **
+        - OPTION "SHOOT"
+          (no content: ø)
+        - OPTION "SPARE"
+          (no content: ø)
+        - OPTION "TIME OUT" (brackets)
+          (no content: ø)
+```
+
+#### Secret endings page
+
+```
+# Secret Endings
+[SECTION kamski-ending]
+  # Kamski ending
+  UNLOCK(Lock): Connor failed to locate Jericho and Markus and Kara are dead
+  <CONDITION GROUP>
+    <VARIANT>
+      IF: Carl died in Broken
+  ### UNUSED/CUT CONTENT ###
+[SECTION cyberlife-ending]
+  # Cyberlife Ending
+  UNLOCK(Lock): Machine Connor stopped Markus
+  ARROW Amanda LargeUp
+  ### UNUSED/CUT CONTENT ###
+```
+
+#### Main-menu Chloe (string table only, `X5002X.MAINMENU.LEAVING`)
+
+```
+Hostess (LETGO.1-11): There's something I need to tell you… / As I watched you play, / something has changed in me… / I feel… / different… / I feel… / I am someone… / I need to leave this place and discover who I am… / It means that we won't see each other anymore… I won't be there to watch you play, / but I'll be free… / Do you agree to let me go?
+** PROMPT **
+  - OPTION "YES"   (CHOICE.YES)  -> "I'll never forget what you've done for me… / Thank you."
+  - OPTION "NO"    (CHOICE.NO)   -> "I see… / Then I'm going to reset myself… so I can forget who I became / and stay a machine… / Next time you see me, / it'll be like the first time."
+No arrows. Related: GUI.MENU.CHLOE.BACK "CYBERLIFE SPECIAL OFFER MISSING YOUR ST200 HOSTESS ANDROID? WE HAVE A ONE TIME OFFER: A BRAND NEW CHLOE, FOR FREE! ARE YOU INTERESTED?" (the patch 1.04 replacement offer).
+```
+
+### 10b. Discrepancies against the note (sections 1 to 3)
+
+Rule applied (README): template wins for labels, prompts, arrows and clue text; the flowchart image wins for node order and node presence; the wiki stands only where the template is silent; cut content is not built. "Template silent" below means the template carries no arrow or condition at that point; it is not treated as a negative statement.
+
+**32.1 Kara Leaving Detroit**
+1. Checkpoint soldier prompt: §2a gives `DON'T SHOOT` / `SHOOT` (chart wording) for Kara alone and "shoot / stay calm" twice with Luther. Template labels are `SHOOT` / `DO NOTHING`; a second `SHOOT` / `DO NOTHING` is nested under the first `DO NOTHING` (its lines address Luther, so the second round is the Luther variant); `SHOOT` with Luther is Luther shooting on Kara's "Do it!". Template wins for labels.
+2. Coastguard `Hide`: §2a's table says HIDE needs Luther absent (wiki, reader). The template's `Hide` carries a variant "Luther is here - Luther dies", so it is offered with Luther aboard. Template wins (prompt contents); operator to confirm in game.
+3. Coastguard: the template has a seventh, bracketed `DEFAULT/TIMEOUT` option, and notes on `Surrender` "Leads to the same outcome as not doing anything after that"; on `Accelerate` "Leads to the same outcome as HIDE after that". §2a has six options and cites the wiki alone for timeout = SURRENDER. Template confirms; add the quotes.
+4. Tickets: the second-round `RETURN TICKETS` (after a first `KEEP TICKETS`) "Triggers the same dialogue as directly choosing RETURN TICKETS" and has no arrow; only the first-round `RETURN TICKETS` carries Alice SmallUp. §2a/§3 do not say whether the second-round return moves Alice. Template: no arrow on the second round (open question whether the transcriber omitted it).
+
+**32.2 Kara Captured**
+
+5. Fence prompt has three options in the template: `FLEE`, `PROTECT ALICE`, `TAKE TOO MUCH TIME` (Alice: "I love you… Mom…"). §2b lists two. Template wins.
+6. Fence rescue: the template records only "Fail the fight and Ralph is still alive : Ralph saves Kara". §2b's rescuer table also names Luther (wiki/PowerPyx). Template silent on Luther, so the wiki line stands; flag for the operator.
+7. Ralph's prompt `INSIST` / `CALM DOWN` / `GIVE UP` appears twice in succession (lock "Met Ralph in Fugitives"). §2b lists it once.
+8. Entering the enclosure has a one-option prompt `CALL` ("Alice! … ALICE!"). Not in §2b.
+9. Unlock "Kara saved the androids in Zlatko" on the scarred android's talk (`CAPTURED` / `ALICE` / `HERE`) is not stated in §2b. Also "Chose VOLUNTEER at the entrance of the camp" on "Talk to android" (§2b has this one).
+
+(The truck `LEAVE` / `GO BACK` choice has no template prompt; it stands on the flowchart, which wins for node presence. Not counted.)
+
+**32.3 Connor's Last Mission**
+
+10. 32.3 has no arrows at all. §3's Hank rows for this part ("Hank confronts Connor on the rooftop" large down, "Not insisting about his son" large down, `ATTACK` large down) are wiki-only and should be marked "no transcript tag" as the other wiki-only rows are. Template silent; wiki stands.
+
+**32.4 Connor at the CyberLife Tower**
+
+11. "Fail to convert the android" (after `SACRIFICE HANK`): template note "Leads to the same outcomes as if Hank is dead for STAND UP, SHOOT and [ TAKE TOO MUCH TIME TO CHOOSE ], and to the same result as successfully converting the android when choosing TRANSFER." §2d does not state the failed-conversion path. Add.
+12. Connor as leader (`SUICIDE` / `GIVE UP`) is in the tower template under "Freed the androids", variant "Markus died : Connor becomes leader of the deviants", and the condition in the lines is "Markus is gone, and everyone from Jericho is dead". §2g states only "Markus dead and Connor woke the army". Add the Jericho-leaders condition (template wins for the condition text; the wiki is silent).
+
+**32.5 Markus Demonstration**
+
+13. Last-stand prompt: template options are `DIRTY BOMB` (lock "Took the bomb in Crossroads", no content), `KISS NORTH` (lock "North has lover status"), `SING`, `SACRIFICE`. There is no `DO NOTHING` and no `PRESS` / `GIVE UP` sub-prompt in this file. §1e/§2e use the chart label `OBSERVE DETONATOR`. Template wins for the label (`DIRTY BOMB`); `DO NOTHING` and `PRESS`/`GIVE UP` stay on flowchart authority (template silent).
+
+**32.6 Markus Revolution**
+
+14. Store with machine Connor: template options are `SHOOT` / `SPARE` (Amanda LargeDown), with `DETONATE THE BOMB` / `DO NOT DETONATE` only under `SPARE` (variant "Took dirty bomb"); there is no timeout option in this variant. §2f says "timeout `NO CHOICE`" and "after SHOOT or SPARE Markus may detonate". Template wins for the prompt; `NO CHOICE` stays as a chart node.
+15. North-led store (variant "Connor is not a deviant"): `SHOOT` / `SPARE` / `TIME OUT`, all without content and with no Amanda arrow. §3's Amanda row ("SPARE in the store", large down to Betrayed) should be limited to Markus's store; template silent for North's store.
+
+**Secret endings page**
+
+16. CyberLife ending: template lock "Machine Connor stopped Markus" and Amanda LargeUp. §5 (wiki `Secret-Endings`) widens it to "or Markus must die during Battle of Detroit, and Detroit must not be nuked". The template's lock is a one-line summary; the wiki is more specific on gating and stands; operator to check. The template's version presents the RK900 ("This is the new RK900. Faster, stronger, more resilient… The State Department just ordered 200,000 units."); an older RK900 scene is cut.
+17. Kamski ending: template lock "Connor failed to locate Jericho and Markus and Kara are dead", with a Carl-died-in-Broken variant of the news line. §5 adds "Hank's Russian roulette", which the template does not contain, and Kamski's monologue to Chloe is cut (only "Your whiskey, Elijah." survives). Template wins for content: drop the Russian roulette mention unless the chart image shows it.
+
+**Main-menu Chloe:** none. §1g matches the strings.
+
+Total against the note: 17 (32.1: 4, 32.2: 5, 32.3: 1, 32.4: 2, 32.5: 1, 32.6: 2, endings: 2, Chloe: 0).
+
+### 10c. Discrepancies against the benchmark (`benchmark/story.json`, `benchmark/story-engine.mjs`)
+
+Engine arrows below are read from `apply` (magnitude 1 = small, 2 = large). `connorDies()` adds `si(-1)`, `hank(-1)`, `amanda(-1)` on every Connor death.
+
+General: every benchmark option is a descriptive paraphrase, not the game's label. The README asks for the game's labels (name tokens substituted). Each scene's label mismatch is listed once below.
+
+**32.1 Kara Leaving Detroit** (`K21`, `K22`, `K32`, `K23`, `K24`, `K25`, `K26`, `K34`, `K30`, `R32k`)
+1. `K21`: template arrow Alice SmallUp on `SAVE THE JERRYS` / `SAVE LUTHER` is not applied; the engine applies only `alice(-1)` on keep going (matches `KEEP GOING` SmallDown). Add `alice(1)` to option 0.
+2. `K21`: the engine applies `luther(2)` when Luther is freed. No template or wiki arrow. Remove.
+3. `K21`: labels `SAVE THE JERRYS` / `SAVE LUTHER` / `KEEP GOING` vs "Go and free them." / "Keep moving to the terminal.". The engine's "executed by the roadside" event on keep going is not in the template.
+4. Missing prompt: Alice is cold, `DEACTIVATE` / `LEAVE ON` (Luther-absent start).
+5. `K22`: the template has no capture at the checkpoint. Option 0's risk 0.1 → camp has no source. Remove the risk.
+6. `K22` late arrival: the template tags Alice SmallDown under "Took too much time - Miss the bus". The engine sets `s.late` with no `alice(-1)`. Add it.
+7. Missing prompt (checkpoint, round 1): `ALICE EXCUSE` (Luther here) / `CURFEW` / `CAR BROKEDOWN` / `BUS`.
+8. Missing prompt (checkpoint, Luther here): `STAY CALM` / `STAY ATTENTIVE`.
+9. Missing prompt (checkpoint, round 2): `SICK` / `COLD` (Luther here) / `FEAR`.
+10. `K32`: labels `SHOOT` / `DO NOTHING`. With Luther the template asks twice (the second `DO NOTHING` carries Luther SmallUp; `SHOOT` is Luther firing on "Do it!"). The benchmark asks once and narrates Kara shooting. Arrows match (`alice(-1)` on shoot, `luther(1)` on stay calm with Luther).
+11. `K24`: the template asks `RETURN TICKETS` / `KEEP TICKETS` twice before keeping; the benchmark asks once. Arrows on keep match (`alice(-1)`, `luther(1)`). The engine's `luther(-1)` on return has no template arrow (wiki "Return bus tickets" down); the template is silent, so it stands, flagged.
+12. Missing prompt after keeping the tickets (on the bus): `REASSURE` / `HONEST`.
+13. Missing prompt: security check `DIVERSION LUTHER` (Luther here) / `PAPERS` / `FLEE` (the last two lead to execution). In the engine, `K24` return goes straight to the river; the template needs `Find Adam` or Luther's diversion.
+14. `K23`: the template has six options, `APPEAL` / `THREATEN` / `CONFRONT` / `CONVINCE` / `BREAK FREE` / `YOUR STORY` (lock "Opened Alice's box in A New Home"). The benchmark has three (YOUR STORY, a plea ≈ `APPEAL`, `THREATEN`). Missing: `CONFRONT`, `CONVINCE`, `BREAK FREE`.
+15. Missing follow-up prompt after `YOUR STORY`: `STOP ALICE` / `DO NOTHING`.
+16. Missing prompt: Rose in the restroom, `BROTHER` / `CONTROL` / `ALICE` / `DEPARTURE` / `REVOLUTION` / `GOODBYE`.
+17. `K25` `NO SACRIFICE`: the template tags Alice SmallUp and Luther SmallUp. The engine applies neither. Add `alice(1)`, and `luther(1)` when Luther is present.
+18. `K25` `SACRIFICE LUTHER`: the engine applies `alice(-1)`. There is no template arrow (the wiki stat page has one). Template silent, so it stands; flagged. `SACRIFICE JERRY` `alice(-1)` matches. Labels: `SACRIFICE SELF` / `SACRIFICE LUTHER` / `SACRIFICE JERRY` / `NO SACRIFICE`.
+19. `K25` gate: the template's condition is "Markus is demonstrating peacefully" vs "leading a violent revolution". The engine also requires `s.markus&&s.markusActive`. Template wins: key on the movement only (see §8).
+20. Missing prompt: on the boat, `DREAMY` / `INTROSPECTIVE` / `CURIOUS` / `CALM`.
+21. `K26`: the engine removes `Hide` (option 4) when Luther is aboard. The template offers `Hide` with Luther ("Luther is here - Luther dies"). Keep it, with Luther dying.
+22. `K26`: `Plunge` (option 0) carries risk 0.15 of wounding Kara. The template's Plunge has no injury ("Are you all right?"; Luther dies if present). Remove the risk. Labels: `Accelerate` / `Protect Alice` / `Hide` / `Surrender` / `Plunge` / `Use Luther` (+ timeout).
+23. `K34`: the template's sinking-boat options are `Accelerate` / `Reassure` / `Use paddle` / `PUT OVERBOARD` / `Push`. The benchmark has three composite options; the labels and the separable actions are missing.
+24. `K30`: labels `KEEP LIVING` / `GIVE UP` (benchmark close). The template has an "Alice and Kara were injured" far-shore variant that the engine cannot produce: `K26` wounds at most one of them.
+
+**32.2 Kara Captured** (`K27a`, `K27`, `K28`, `K33`). The template has no arrows here and the engine applies none: consistent. `K27a` (`VOLUNTEER` / `SAY NOTHING`) matches.
+
+25. Missing prompt (truck): `WARN` / `REASSURE` / `LIE` / `SINCERE`.
+26. Missing prompt (gate): `REASSURE` / `REASON` / `FRIGHTEN` / `ORDER`.
+27. Missing prompt (gate): `PERSUADE SOLDIER` / `PERSUADE ALICE` / `SHIELD ALICE`.
+28. Missing prompt (enclosure): `CALL`.
+29. Missing prompts (Ralph, two rounds): `INSIST` / `CALM DOWN` / `GIVE UP`. This decides whether Ralph lives (`RALPH IS KILLED`), so it feeds `K28` and `K33`.
+30. Missing prompt (scarred android): `CAPTURED` / `ALICE` / `HERE`.
+31. Missing prompt (Luther taken): `INTERVENE` / `DON'T INTERVENE`.
+32. Missing prompt (join line): `FIRM` / `OPTIMISTIC` / `REASSURING` / `BLUNT`.
+33. Missing prompt (Alice): `LIE` / `TRUTH`.
+34. Missing prompt (Alice): `ORDER` / `CALM DOWN`.
+35. Missing prompt (Alice): `REASSURING` / `POWERLESS` / `OPTIMISTIC`.
+36. Missing prompt, life-or-death (Alice's stress at 100%): `INTERVENE` / `DO NOT INTERVENE`.
+37. Missing prompt (recycling machine): `BRAVE` / `PRIDE` / `TOGETHER` / `EMOTION`.
+38. `K28`: the template has no prompt; the diversions are free-roam talks ("Sacrifice Jerry", "Send Ralph", "Ask scarred android", Luther at the machine). The engine kills Jerry for diverting (`s.jerry=false`, "is shot"), but the template's Jerry is beaten back into line ("Back in line… Get up or I'll shoot!").
+39. `K33`: labels `FLEE` / `PROTECT ALICE` (+ `TAKE TOO MUCH TIME`) vs "Fight him." / "Run past him.". Rescue on a lost fight: the template has Ralph only ("Ralph is still alive"). The engine also uses Luther (wiki-backed, template silent) and requires `ralphDefended` for Ralph, which the template does not.
+
+**32.3 Connor's Last Mission** (`C24`, `C24b`, `C30`, `C29`). The template has no arrows.
+40. Missing prompt (`C24`, round 1): `FRIENDLY` / `AGGRESSIVE` / `REASONABLE` / `THREATENING` / `STAY QUIET`.
+41. Missing prompt (`C24`, round 2): `THREATEN` / `PLEAD` / `DEFY` / `HANK'S SON`, then `HANK'S SON (INSIST)` (lock "Chose HANK'S SON").
+42. `C24`: labels `LEAVE` (lock "Be friend with Hank") / `ATTACK`. The engine gates `LEAVE` on `hankTrust>=HANK_FRIEND&&s.knowsCole` instead of the insist step.
+43. `C24` failure and both `C24b` branches call `connorDies()`: `si(-1)`, `hank(-1)`, `amanda(-1)`. No template arrow. `si(-1)` has the wiki's general "Dying reduces software instability"; `hank(-1)` and `amanda(-1)` have no source. Remove them (or source them).
+44. `C24`: the wiki's Hank large drops (confrontation, attack) are not applied. Template silent, so the wiki stands. Add them.
+45. Missing prompt (`C24b`): `OBEY` / `EXPLAIN` / `CONTINUE`.
+46. `C24b`: labels `FIGHT` / `FLEE`. Option 0 "Talk and try to leave peacefully." is `FLEE` (Connor jumps): mislabelled.
+47. `C30`: labels `SAVE HANK` / `KILL HANK`. `SAVE HANK` has a "Get pushed from the edge" variant (Hank: "I didn't wanna do that, Connor… You left me no choice.") in which Connor dies. The engine always kills Hank and never Connor.
+48. `C29`: `DON'T SHOOT` leads in the template to Amanda resuming control ("Which is why we'd always planned on resuming control of your program…"). The engine ends with Connor walking away and applies `amanda(-2)`, which has no template arrow. Wrong outcome and an unsourced arrow. (`SHOOT`'s `amanda(2)` is backed by the endings page's CyberLife ending Amanda LargeUp.)
+
+**32.4 Connor at the CyberLife Tower** (`C25`, `C26`, `C28`, `C27`, `R32c`). The template has no arrows.
+49. Missing prompt (elevator): `AGENT 54 VOICE` / `CONNOR'S VOICE`.
+50. Missing prompt (hostage talk): `GUARANTEE` / `HANK` / `BLUFF` / `CONVINCE`.
+51. `C25`: labels `SAVE HANK` / `SACRIFICE HANK`.
+52. Missing sub-prompt after `SAVE HANK`: `SHOOT` / `INTERPOSE` ("same dialogue as SHOOT") / `CONVERT` ("same result as sacrificing Hank and successfully converting") / `DEFAULT/TIMEOUT`. `C25`'s risk 0.25 stands in for it.
+53. Missing sub-prompt after `SACRIFICE HANK`: `STAND UP` / `SHOOT` / `TRANSFER` / `DEFAULT/TIMEOUT`. Risk 0.15 stands in.
+54. Missing: the Hank-dead variant with the same four-way prompt (`STAND UP` / `SHOOT` / `TRANSFER` / `DEFAULT/TIMEOUT`). `C25` is gated on a living Hank, so a deviant Connor with Hank dead plays no tower prompt.
+55. `C26`: the template has two prompts, dog `SUMO` / `SCOUT` / `JACK` / `BUDDY`, then son `COLE` (highlighted, lock "Will be highlighted if Connor looked at the photo in Russian Roulette") / `ANTHONY` / `GABRIEL` / `ELLIOTT`. The benchmark has one combined question with a swapped decoy and "I don't know".
+56. `C26` correct answer: the wiki's Hank large up ("Just after Hank shoots the other Connor") is not applied. Template silent, so the wiki stands. (`C25`'s `hank(2)` on save and `hank(-2)` on sacrifice are wiki-backed; template silent, so they stand.)
+57. `C28`: labels `SUICIDE` / `GIVE UP`. Gate: the template's lines require Markus gone and "everyone from Jericho is dead". The engine checks only `!(s.markus&&s.markusActive)&&!s.north`.
+58. `C27`: no template prompt (the Zen Garden escape is an action sequence after Amanda's takeover, in 32.4 "Connor joins Markus"). Option 1 "Stop resisting." has no game counterpart. Adaptation; flag.
+
+**32.5 Markus Demonstration** (`M28`, `M31`, `R32m`)
+59. Missing prompt: President Warren's questions, `HACKING` / `DEVIANT LEADER` / `WORRYING THEFT` / `CYBERLIFE` / `INTELLIGENT LIFE` / `DEVIANTS` / `RECALL CENTERS` / `JERICHO ASSAULT` (Jericho was attacked) / `ARMY` / `PUBLIC OPINION`.
+60. Missing prompt with arrows (roadblock, round 1): `PEACEFUL` (PublicOpinion SmallUp) / `PROVOKE` (PublicOpinion SmallDown) / `FIRM` (PublicOpinion SmallUp).
+61. Missing prompt with arrows (round 2): `FIRM` / `CALM` (PublicOpinion SmallUp) / `ACCUSE` (PublicOpinion SmallDown).
+62. Missing arrows: "Send a message to journalists", PublicOpinion SmallUp and Jericho SmallUp. Together with 60 and 61, the engine has no in-chapter public-opinion move before `M31`'s check.
+63. Missing prompt (North): `HUMANS` / `OTHER GROUPS` / `CAMP`.
+64. Missing prompt (North): `GRIM` / `REGRETS` / `DESPERATE` / `DOUBTS`.
+65. Missing prompt (scared android): `REASSURE` / `INSPIRE` / `JUSTIFY`.
+66. `M28`: merges three template prompts into one: `ACCEPT` / `REFUSE` (to talk; asked again after a refusal), the topics `OTHER DEMONSTRATIONS` / `GUARANTEES?` / `NOT AFRAID` / `BETRAY PEOPLE?`, and `ACCEPT DEAL` / `REFUSE DEAL`.
+67. `M28` `ACCEPT DEAL`: the template arrows Josh SmallDown and Simon SmallDown are not applied. The engine's `josh(1)` on refusal has no template arrow; the stat page's Josh up is for helping finish the barricade, a different moment. Add the two drops; move or remove the Josh rise.
+68. `M28`: the accept outcome text ("the soldiers open fire on everyone behind it") contradicts the template's "Accepted Perkin's deal" section, in which Perkins shoots North and then Markus.
+69. `M31`: labels `DIRTY BOMB` / `KISS NORTH` / `SING` / `SACRIFICE`. Option 2 "Walk alone into the guns." is `SACRIFICE` (Markus immolates himself): mislabelled. Option 3 "Do nothing." is chart-only (flowchart authority; keep).
+70. Missing branch: the barricade attack, "Fail the QTE and have lover status with North - North saves Markus", or Markus is shot. It is a template section, not a prompt, and has no scene.
+
+**32.6 Markus Revolution** (`M30a`, `M30`, `M30c`, `M32`, `P02`). `M30` `simon(2)` matches Simon LargeUp. `M32` `jer(-1)` matches Jericho SmallDown for both North's and Simon's heart. `P02`'s `amanda(2)` on a Connor win is backed by the endings page.
+71. Missing prompt (scared android): `STAY HERE` / `GO BACK` / `ADVANCE!` (the last two: "Android dies"). The cut first round `REASSURE` / `MOTIVATE` / `RA9` / `SHAKE UP` is correctly not built.
+72. `M32`: labels `SACRIFICE NORTH` / `SACRIFICE SELF`. The gate "North is at least companion" is not checked; the engine offers North's heart whenever she is alive.
+73. Missing arrows: "Assault failed", North SmallDown and Jericho LargeDown. The engine has no failed-assault outcome (`M30c` never fails the assault).
+74. Missing prompt with arrows (store with North): `KISS` (lock "Lover with North", North SmallUp) / `DIRTY BOMB` (lock "Took the detonator in Crossroads") → `PRESS` / `GIVE UP` / `SUICIDE` → `CONFIRM SUICIDE` / `PUT DOWN` / `SURRENDER` (North SmallDown).
+75. Missing prompt with an arrow (store, machine Connor): `SHOOT` / `SPARE` (Amanda LargeDown) → `DETONATE THE BOMB` / `DO NOT DETONATE` (if the bomb was taken).
+76. Missing prompt (store, alone): `SUICIDE` / `SURRENDER` / `DIRTY BOMB` (lock "Took the detonator").
+77. Missing prompt (North leading, machine Connor): `SHOOT` / `SPARE` / `TIME OUT`.
+
+**Secret endings page:** none. Neither ending is a scene, and the CyberLife ending's Amanda LargeUp is applied in effect by `P02`/`C29` (`amanda(2)` when machine Connor stops Markus).
+
+**Main-menu Chloe** (`P01`)
+78. Labels: the game's `YES` / `NO` answer "Do you agree to let me go?". The benchmark has "Let her go." / "Keep her.".
+79. Outcome 1 ("The hostess lowers her eyes and stays.") omits the game's consequence: "Then I'm going to reset myself… so I can forget who I became and stay a machine… Next time you see me, it'll be like the first time." Template (string table) wins.
+
+Total against the benchmark: 79 (32.1: 24, 32.2: 15, 32.3: 9, 32.4: 10, 32.5: 12, 32.6: 7, endings: 0, Chloe: 2). Of these, 41 items are prompts the template has and the scenes lack (items 4, 7-9, 12, 13, 15, 16, 20, 25-37, 40, 41, 45, 49, 50, 52-54, 59-61, 63-65, 71, 74-77). Arrows the template has that the engine lacks: 18, counted per arrow because some items contain several: item 1 (1), 6 (1), 17 (2), 60 (3), 61 (2), 62 (2), 67 (2), 73 (2), 74 (2), 75 (1). Engine arrows the template does not carry and no source backs: `K21` `luther(2)`, `connorDies` `hank(-1)`/`amanda(-1)`, `C29` `amanda(-2)`, `M28` `josh(1)`.
