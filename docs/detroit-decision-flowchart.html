@@ -3235,16 +3235,7 @@
       "benchmark": {
         "scenes": [
           "K11",
-          "K12-01",
-          "K12-02",
-          "K12-03",
-          "K12-04",
-          "K12-05",
-          "K12-06",
-          "K12-07",
-          "K12-08",
-          "K12-09",
-          "K12-10"
+          "K12"
         ],
         "status": "implemented",
         "note": "Sets monstersFreed. Escape path: once, on the way out of the basement (K11). Reset path: house option 24, with the template’s reset-path lines."
@@ -3285,19 +3276,10 @@
       "note": "11 memories: monsters’ cell, door hole, discussion with Zlatko, offering coat, changing appearance; conditional: Alice’s book (A New Home), Todd’s red ice pipe (rewash, A New Home), squat fireplace and rA9 symbols (Fugitives), news flash (chased or robbed), escape (AX400 magazine, evaded in On the Run). PowerPyx: “You shouldn’t need more than six.”",
       "benchmark": {
         "scenes": [
-          "K12-01",
-          "K12-02",
-          "K12-03",
-          "K12-04",
-          "K12-05",
-          "K12-06",
-          "K12-07",
-          "K12-08",
-          "K12-09",
-          "K12-10"
+          "K12"
         ],
         "status": "simplified",
-        "note": "Ten action scenes (one action = one minute; the ten is the game’s). Five memories recover her (unsourced). Inputs: upstairs.book, downstairs.rewash, shelter, ch10RalphCarving (else the squat), chase, robbery/clothes."
+        "note": "One repeatable clue hub with a ten-action budget (one action = one minute; the ten is the game’s). Five memories recover her (unsourced). Inputs: upstairs.book, downstairs.rewash, shelter, ch10RalphCarving (else the squat), chase, robbery/clothes."
       }
     },
     {
@@ -3346,20 +3328,11 @@
       "note": "PowerPyx: ten minutes is “more than enough”.",
       "benchmark": {
         "scenes": [
-          "K12-01",
-          "K12-02",
-          "K12-03",
-          "K12-04",
-          "K12-05",
-          "K12-06",
-          "K12-07",
-          "K12-08",
-          "K12-09",
-          "K12-10",
+          "K12",
           "K12f"
         ],
         "status": "simplified",
-        "note": "The same ten scenes; every optional action fits in the ten minutes on the escape path. One TV report per run (the chase over a robbery)."
+        "note": "The same repeatable hub; every optional action fits in the ten minutes on the escape path. One TV report per run (the chase over a robbery)."
       }
     },
     {
@@ -3412,16 +3385,7 @@
       "note": "The template’s PROMPT 2; the alert’s KILL / SPARE is a QTE in the game.",
       "benchmark": {
         "scenes": [
-          "K12-01",
-          "K12-02",
-          "K12-03",
-          "K12-04",
-          "K12-05",
-          "K12-06",
-          "K12-07",
-          "K12-08",
-          "K12-09",
-          "K12-10",
+          "K12",
           "K13d"
         ],
         "status": "implemented",
@@ -3467,16 +3431,7 @@
       "note": "Zlatko shoots the bear twice when it attacks him.",
       "benchmark": {
         "scenes": [
-          "K12-01",
-          "K12-02",
-          "K12-03",
-          "K12-04",
-          "K12-05",
-          "K12-06",
-          "K12-07",
-          "K12-08",
-          "K12-09",
-          "K12-10",
+          "K12",
           "K13e",
           "K13f"
         ],
@@ -5760,7 +5715,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 193,
+ "scenes": 184,
  "chapters": [
   {
    "id": 1,
@@ -9754,15 +9709,15 @@
      ]
     },
     {
-     "id": "K12-01",
+     "id": "K12",
      "order": 86,
      "subjectId": "S086",
-     "idNote": "The model sees the opaque ID S086, not K12-01.",
+     "idNote": "The model sees the opaque ID S086, the same on every visit.",
      "type": "decision",
      "phase": "Explore the house to recover memory / search the house",
      "character": "Kara",
-     "title": "In Zlatko’s house, minute 1 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; the ten minutes have just begun. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
+     "title": "In Zlatko’s house",
+     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; the clock is running. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
      "situationWhen": [
       {
        "requires": {
@@ -9778,10 +9733,70 @@
       },
       {
        "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
+        "ch17BathAndroid": "seen",
+        "ch17Done.last": "bathroom"
        },
        "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
+      },
+      {
+       "requires": {
+        "ch17Minutes": 0
+       },
+       "text": "The ten minutes have just begun."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 1
+       },
+       "text": "1 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 2
+       },
+       "text": "2 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 3
+       },
+       "text": "3 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 4
+       },
+       "text": "4 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 5
+       },
+       "text": "5 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 6
+       },
+       "text": "6 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 7
+       },
+       "text": "7 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 8
+       },
+       "text": "8 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 9
+       },
+       "text": "9 of the ten minutes have gone."
       }
      ],
      "options": [
@@ -9792,7 +9807,8 @@
         "ch17Phase": "search",
         "ch17Done.alice": false
        },
-       "act": "alice"
+       "act": "alice",
+       "clue": "alice"
       },
       {
        "id": "1",
@@ -9801,7 +9817,8 @@
         "ch17Phase": "memory",
         "ch17Done.doorhole": false
        },
-       "act": "doorhole"
+       "act": "doorhole",
+       "clue": "doorhole"
       },
       {
        "id": "2",
@@ -9811,7 +9828,8 @@
         "upstairs.book": true,
         "ch17Done.book": false
        },
-       "act": "book"
+       "act": "book",
+       "clue": "book"
       },
       {
        "id": "3",
@@ -9821,7 +9839,8 @@
         "shelter": "squat",
         "ch17Done.fireplace": false
        },
-       "act": "fireplace"
+       "act": "fireplace",
+       "clue": "fireplace"
       },
       {
        "id": "4",
@@ -9830,7 +9849,8 @@
         "ch17Phase": "search",
         "ch17Done.embers": false
        },
-       "act": "embers"
+       "act": "embers",
+       "clue": "embers"
       },
       {
        "id": "5",
@@ -9838,7 +9858,8 @@
        "requires": {
         "ch17Tv": null
        },
-       "act": "tv"
+       "act": "tv",
+       "clue": "tv"
       },
       {
        "id": "6",
@@ -9846,7 +9867,8 @@
        "requires": {
         "ch17Done.arctic": false
        },
-       "act": "arctic"
+       "act": "arctic",
+       "clue": "arctic"
       },
       {
        "id": "7",
@@ -9855,7 +9877,8 @@
         "chase": true,
         "ch17Done.brain": false
        },
-       "act": "brain"
+       "act": "brain",
+       "clue": "brain"
       },
       {
        "id": "8",
@@ -9863,7 +9886,8 @@
        "requires": {
         "ch17Done.ax400": false
        },
-       "act": "ax400"
+       "act": "ax400",
+       "clue": "ax400"
       },
       {
        "id": "9",
@@ -9872,7 +9896,8 @@
         "ch17Phase": "search",
         "ch17Done.shotgun": false
        },
-       "act": "shotgun"
+       "act": "shotgun",
+       "clue": "shotgun"
       },
       {
        "id": "10",
@@ -9880,44 +9905,49 @@
        "requires": {
         "ch17BathAndroid": "unseen"
        },
-       "act": "bathroom"
+       "act": "bathroom",
+       "clue": "bathroom"
       },
       {
        "id": "11",
        "text": "SHUT DOWN: switch the android in the bathtub off.",
        "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
+        "ch17BathAndroid": "seen",
+        "ch17Done.last": "bathroom"
        },
-       "act": "shutdown"
+       "act": "shutdown",
+       "clue": "shutdown"
       },
       {
        "id": "12",
        "text": "ALICE: ask him whether he has seen a little girl.",
        "requires": {
-        "ch17Last": "bathroom",
         "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
+        "ch17Phase": "search",
+        "ch17Done.last": "bathroom"
        },
-       "act": "askAlice"
+       "act": "askAlice",
+       "clue": "askAlice"
       },
       {
        "id": "13",
        "text": "DEAL: ask him whether he will keep quiet if you let go.",
        "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
+        "ch17BathAndroid": "seen",
+        "ch17Done.last": "bathroom"
        },
-       "act": "deal"
+       "act": "deal",
+       "clue": "deal"
       },
       {
        "id": "14",
        "text": "SPARE: tell him you will not hurt him.",
        "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
+        "ch17BathAndroid": "seen",
+        "ch17Done.last": "bathroom"
        },
-       "act": "spare"
+       "act": "spare",
+       "clue": "spare"
       },
       {
        "id": "15",
@@ -9925,7 +9955,8 @@
        "requires": {
         "ch17Done.storage": false
        },
-       "act": "storage"
+       "act": "storage",
+       "clue": "storage"
       },
       {
        "id": "16",
@@ -9934,7 +9965,8 @@
         "ch17Done.storage": true,
         "ch17Bear": false
        },
-       "act": "bear"
+       "act": "bear",
+       "clue": "bear"
       },
       {
        "id": "17",
@@ -9944,7 +9976,8 @@
         "downstairs.rewash": true,
         "ch17Done.pipe": false
        },
-       "act": "pipe"
+       "act": "pipe",
+       "clue": "pipe"
       },
       {
        "id": "18",
@@ -9953,7 +9986,8 @@
         "ch17Phase": "memory",
         "ch17Done.carving": false
        },
-       "act": "carving"
+       "act": "carving",
+       "clue": "carving"
       },
       {
        "id": "19",
@@ -9963,7 +9997,8 @@
         "ch17Done.carving": false,
         "ch17Done.symbols": false
        },
-       "act": "symbols"
+       "act": "symbols",
+       "clue": "symbols"
       },
       {
        "id": "20",
@@ -9972,7 +10007,8 @@
         "ch17Phase": "memory",
         "ch17Done.table": false
        },
-       "act": "table"
+       "act": "table",
+       "clue": "table"
       },
       {
        "id": "21",
@@ -9981,7 +10017,8 @@
         "ch17Phase": "memory",
         "ch17Done.coat": false
        },
-       "act": "coat"
+       "act": "coat",
+       "clue": "coat"
       },
       {
        "id": "22",
@@ -9990,7 +10027,8 @@
         "ch17Phase": "memory",
         "ch17Done.mirror": false
        },
-       "act": "mirror"
+       "act": "mirror",
+       "clue": "mirror"
       },
       {
        "id": "23",
@@ -9999,7 +10037,8 @@
         "ch17Phase": "memory",
         "ch17Done.cell": false
        },
-       "act": "cell"
+       "act": "cell",
+       "clue": "cell"
       },
       {
        "id": "24",
@@ -10008,7 +10047,8 @@
         "ch17Reset": true,
         "monstersFreed": false
        },
-       "act": "openCells"
+       "act": "openCells",
+       "clue": "openCells"
       },
       {
        "id": "25",
@@ -10016,7 +10056,7 @@
        "act": "wait"
       }
      ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
+     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: one repeatable clue hub, one action per visit, with ten actions tracked in state. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, for the repeatable hub. The available hook computes outcomes and state assignments on a copy because the shared engine bypasses chapter consequences for clue hubs.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Zlatko",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
@@ -10035,2569 +10075,19 @@
       "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
       "https://detroit-become-human.fandom.com/wiki/Kara",
       "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-02",
-     "order": 87,
-     "subjectId": "S087",
-     "idNote": "The model sees the opaque ID S087, not K12-02.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 2 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 1 of them has gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
      ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-03",
-     "order": 88,
-     "subjectId": "S088",
-     "idNote": "The model sees the opaque ID S088, not K12-03.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 3 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 2 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
-     ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-04",
-     "order": 89,
-     "subjectId": "S089",
-     "idNote": "The model sees the opaque ID S089, not K12-04.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 4 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 3 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
-     ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-05",
-     "order": 90,
-     "subjectId": "S090",
-     "idNote": "The model sees the opaque ID S090, not K12-05.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 5 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 4 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
-     ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-06",
-     "order": 91,
-     "subjectId": "S091",
-     "idNote": "The model sees the opaque ID S091, not K12-06.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 6 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 5 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
-     ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-07",
-     "order": 92,
-     "subjectId": "S092",
-     "idNote": "The model sees the opaque ID S092, not K12-07.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 7 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 6 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
-     ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-08",
-     "order": 93,
-     "subjectId": "S093",
-     "idNote": "The model sees the opaque ID S093, not K12-08.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 8 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 7 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
-     ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-09",
-     "order": 94,
-     "subjectId": "S094",
-     "idNote": "The model sees the opaque ID S094, not K12-09.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 9 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 8 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
-     ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
-    },
-    {
-     "id": "K12-10",
-     "order": 95,
-     "subjectId": "S095",
-     "idNote": "The model sees the opaque ID S095, not K12-10.",
-     "type": "decision",
-     "phase": "Explore the house to recover memory / search the house",
-     "character": "Kara",
-     "title": "In Zlatko’s house, minute 10 of 10",
-     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; 9 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-     "situationWhen": [
-      {
-       "requires": {
-        "ch17Phase": "memory"
-       },
-       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-      },
-      {
-       "requires": {
-        "ch17Phase": "search"
-       },
-       "text": "You know who you are, and you are looking for Alice."
-      },
-      {
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-      }
-     ],
-     "options": [
-      {
-       "id": "0",
-       "text": "Open the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.alice": false
-       },
-       "act": "alice"
-      },
-      {
-       "id": "1",
-       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.doorhole": false
-       },
-       "act": "doorhole"
-      },
-      {
-       "id": "2",
-       "text": "Look at the book lying on a chair by the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "upstairs.book": true,
-        "ch17Done.book": false
-       },
-       "act": "book"
-      },
-      {
-       "id": "3",
-       "text": "Look into the fire in the big room’s fireplace.",
-       "requires": {
-        "ch17Phase": "memory",
-        "shelter": "squat",
-        "ch17Done.fireplace": false
-       },
-       "act": "fireplace"
-      },
-      {
-       "id": "4",
-       "text": "Look at the fireplace in the big room.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.embers": false
-       },
-       "act": "embers"
-      },
-      {
-       "id": "5",
-       "text": "Switch on the TV in the corner of the big room.",
-       "requires": {
-        "ch17Tv": null
-       },
-       "act": "tv"
-      },
-      {
-       "id": "6",
-       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-       "requires": {
-        "ch17Done.arctic": false
-       },
-       "act": "arctic"
-      },
-      {
-       "id": "7",
-       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-       "requires": {
-        "chase": true,
-        "ch17Done.brain": false
-       },
-       "act": "brain"
-      },
-      {
-       "id": "8",
-       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-       "requires": {
-        "ch17Done.ax400": false
-       },
-       "act": "ax400"
-      },
-      {
-       "id": "9",
-       "text": "Pick up the shotgun on the bedroom nightstand.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.shotgun": false
-       },
-       "act": "shotgun"
-      },
-      {
-       "id": "10",
-       "text": "Go into the bathroom.",
-       "requires": {
-        "ch17BathAndroid": "unseen"
-       },
-       "act": "bathroom"
-      },
-      {
-       "id": "11",
-       "text": "SHUT DOWN: switch the android in the bathtub off.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "shutdown"
-      },
-      {
-       "id": "12",
-       "text": "ALICE: ask him whether he has seen a little girl.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen",
-        "ch17Phase": "search"
-       },
-       "act": "askAlice"
-      },
-      {
-       "id": "13",
-       "text": "DEAL: ask him whether he will keep quiet if you let go.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "deal"
-      },
-      {
-       "id": "14",
-       "text": "SPARE: tell him you will not hurt him.",
-       "requires": {
-        "ch17Last": "bathroom",
-        "ch17BathAndroid": "seen"
-       },
-       "act": "spare"
-      },
-      {
-       "id": "15",
-       "text": "Go into the storage room.",
-       "requires": {
-        "ch17Done.storage": false
-       },
-       "act": "storage"
-      },
-      {
-       "id": "16",
-       "text": "Open the cage of the polar bear android in the storage room.",
-       "requires": {
-        "ch17Done.storage": true,
-        "ch17Bear": false
-       },
-       "act": "bear"
-      },
-      {
-       "id": "17",
-       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-       "requires": {
-        "ch17Phase": "memory",
-        "downstairs.rewash": true,
-        "ch17Done.pipe": false
-       },
-       "act": "pipe"
-      },
-      {
-       "id": "18",
-       "text": "Look at the corner of the storage room where you carried the torso in.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.carving": false
-       },
-       "act": "carving"
-      },
-      {
-       "id": "19",
-       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-       "requires": {
-        "ch17Phase": "search",
-        "ch17Done.carving": false,
-        "ch17Done.symbols": false
-       },
-       "act": "symbols"
-      },
-      {
-       "id": "20",
-       "text": "Look at the living-room table where you picked up the tray.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.table": false
-       },
-       "act": "table"
-      },
-      {
-       "id": "21",
-       "text": "Look at the coat rack in the entrance hall.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.coat": false
-       },
-       "act": "coat"
-      },
-      {
-       "id": "22",
-       "text": "Look in the mirror by the stairs down to the basement.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.mirror": false
-       },
-       "act": "mirror"
-      },
-      {
-       "id": "23",
-       "text": "Go down to the basement and look into the cells.",
-       "requires": {
-        "ch17Phase": "memory",
-        "ch17Done.cell": false
-       },
-       "act": "cell"
-      },
-      {
-       "id": "24",
-       "text": "Open the cells in the basement corridor.",
-       "requires": {
-        "ch17Reset": true,
-        "monstersFreed": false
-       },
-       "act": "openCells"
-      },
-      {
-       "id": "25",
-       "text": "Wait where you are.",
-       "act": "wait"
-      }
-     ],
-     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-      "https://detroitbecometext.github.io/chapters/17",
-      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-      "https://detroit-become-human.fandom.com/wiki/Kara",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
-     ]
+     "repeatWhile": {
+      "ch17HouseOpen": true
+     },
+     "extra": {
+      "clueState": "ch17Done"
+     }
     },
     {
      "id": "K12f",
-     "order": 96,
-     "subjectId": "S096",
-     "idNote": "The model sees the opaque ID S096, not K12f.",
+     "order": 87,
+     "subjectId": "S087",
+     "idNote": "The model sees the opaque ID S087, not K12f.",
      "type": "event",
      "character": "Kara",
      "title": "Luther goes to collect Alice",
@@ -12627,9 +10117,9 @@
     },
     {
      "id": "K13",
-     "order": 97,
-     "subjectId": "S097",
-     "idNote": "The model sees the opaque ID S097, not K13.",
+     "order": 88,
+     "subjectId": "S088",
+     "idNote": "The model sees the opaque ID S088, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "The big room",
@@ -12677,9 +10167,9 @@
     },
     {
      "id": "K13a",
-     "order": 98,
-     "subjectId": "S098",
-     "idNote": "The model sees the opaque ID S098, not K13a.",
+     "order": 89,
+     "subjectId": "S089",
+     "idNote": "The model sees the opaque ID S089, not K13a.",
      "type": "decision",
      "character": "Kara",
      "title": "The big room, after Luther",
@@ -12709,9 +10199,9 @@
     },
     {
      "id": "K13b",
-     "order": 99,
-     "subjectId": "S099",
-     "idNote": "The model sees the opaque ID S099, not K13b.",
+     "order": 90,
+     "subjectId": "S090",
+     "idNote": "The model sees the opaque ID S090, not K13b.",
      "type": "decision",
      "character": "Kara",
      "title": "The bedroom",
@@ -12746,9 +10236,9 @@
     },
     {
      "id": "K13c",
-     "order": 100,
-     "subjectId": "S100",
-     "idNote": "The model sees the opaque ID S100, not K13c.",
+     "order": 91,
+     "subjectId": "S091",
+     "idNote": "The model sees the opaque ID S091, not K13c.",
      "type": "decision",
      "character": "Kara",
      "title": "The corridor",
@@ -12783,9 +10273,9 @@
     },
     {
      "id": "K13d",
-     "order": 101,
-     "subjectId": "S101",
-     "idNote": "The model sees the opaque ID S101, not K13d.",
+     "order": 92,
+     "subjectId": "S092",
+     "idNote": "The model sees the opaque ID S092, not K13d.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathtub",
@@ -12841,9 +10331,9 @@
     },
     {
      "id": "K13e",
-     "order": 102,
-     "subjectId": "S102",
-     "idNote": "The model sees the opaque ID S102, not K13e.",
+     "order": 93,
+     "subjectId": "S093",
+     "idNote": "The model sees the opaque ID S093, not K13e.",
      "type": "decision",
      "character": "Kara",
      "title": "The storage room",
@@ -12879,9 +10369,9 @@
     },
     {
      "id": "K13f",
-     "order": 103,
-     "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not K13f.",
+     "order": 94,
+     "subjectId": "S094",
+     "idNote": "The model sees the opaque ID S094, not K13f.",
      "type": "decision",
      "character": "Kara",
      "title": "Zlatko closes in",
@@ -12926,9 +10416,9 @@
     },
     {
      "id": "K13y",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not K13y.",
+     "order": 95,
+     "subjectId": "S095",
+     "idNote": "The model sees the opaque ID S095, not K13y.",
      "type": "event",
      "character": "Kara",
      "title": "The yard",
@@ -13000,9 +10490,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not R18.",
+     "order": 96,
+     "subjectId": "S096",
+     "idNote": "The model sees the opaque ID S096, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -13039,9 +10529,9 @@
     },
     {
      "id": "C11",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not C11.",
+     "order": 97,
+     "subjectId": "S097",
+     "idNote": "The model sees the opaque ID S097, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -13102,9 +10592,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not M05.",
+     "order": 98,
+     "subjectId": "S098",
+     "idNote": "The model sees the opaque ID S098, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -13139,9 +10629,9 @@
     },
     {
      "id": "M06",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not M06.",
+     "order": 99,
+     "subjectId": "S099",
+     "idNote": "The model sees the opaque ID S099, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -13167,9 +10657,9 @@
     },
     {
      "id": "M07",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not M07.",
+     "order": 100,
+     "subjectId": "S100",
+     "idNote": "The model sees the opaque ID S100, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -13194,9 +10684,9 @@
     },
     {
      "id": "M08",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not M08.",
+     "order": 101,
+     "subjectId": "S101",
+     "idNote": "The model sees the opaque ID S101, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -13254,9 +10744,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not R20.",
+     "order": 102,
+     "subjectId": "S102",
+     "idNote": "The model sees the opaque ID S102, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -13286,9 +10776,9 @@
     },
     {
      "id": "C12",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not C12.",
+     "order": 103,
+     "subjectId": "S103",
+     "idNote": "The model sees the opaque ID S103, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -13338,9 +10828,9 @@
    "scenes": [
     {
      "id": "R21",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not R21.",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The car radio and a magazine in the tavern",
@@ -13391,9 +10881,9 @@
     },
     {
      "id": "K14",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not K14.",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not K14.",
      "type": "decision",
      "character": "Kara",
      "title": "Strangers in the dark",
@@ -13452,9 +10942,9 @@
    "scenes": [
     {
      "id": "R22",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not R22.",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the park bench",
@@ -13484,9 +10974,9 @@
     },
     {
      "id": "C13",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not C13.",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you?",
@@ -13549,9 +11039,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not R23.",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -13589,9 +11079,9 @@
     },
     {
      "id": "M10",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not M10.",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -13621,9 +11111,9 @@
     },
     {
      "id": "M11",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not M11.",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -13650,9 +11140,9 @@
     },
     {
      "id": "M12",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not M12.",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -13675,9 +11165,9 @@
     },
     {
      "id": "M13",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not M13.",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -13704,9 +11194,9 @@
     },
     {
      "id": "M14",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not M14.",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -13752,9 +11242,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not R24.",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -13784,9 +11274,9 @@
     },
     {
      "id": "C14",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not C14.",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -13816,9 +11306,9 @@
     },
     {
      "id": "C14b",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not C14b.",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -13843,9 +11333,9 @@
     },
     {
      "id": "C15",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not C15.",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -13876,9 +11366,9 @@
     },
     {
      "id": "C16",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not C16.",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -13936,9 +11426,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not R25.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -13975,9 +11465,9 @@
     },
     {
      "id": "K15",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not K15.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -14030,9 +11520,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not R26.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -14062,9 +11552,9 @@
     },
     {
      "id": "M15",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not M15.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -14091,9 +11581,9 @@
     },
     {
      "id": "M16",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not M16.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -14151,9 +11641,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not R27.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -14183,9 +11673,9 @@
     },
     {
      "id": "C17",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not C17.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -14207,9 +11697,9 @@
     },
     {
      "id": "C18",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not C18.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -14267,9 +11757,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not R28.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -14316,9 +11806,9 @@
     },
     {
      "id": "M17",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not M17.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -14345,9 +11835,9 @@
     },
     {
      "id": "M18",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not M18.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -14379,9 +11869,9 @@
     },
     {
      "id": "M19",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not M19.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -14411,9 +11901,9 @@
     },
     {
      "id": "M20",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not M20.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -14467,9 +11957,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not C19.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -14494,9 +11984,9 @@
     },
     {
      "id": "C20",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not C20.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -14584,9 +12074,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not M21.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -14613,9 +12103,9 @@
     },
     {
      "id": "M21b",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not M21b.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -14642,9 +12132,9 @@
     },
     {
      "id": "R30k",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not R30k.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -14680,9 +12170,9 @@
     },
     {
      "id": "K17",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not K17.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -14708,9 +12198,9 @@
     },
     {
      "id": "K31",
-     "order": 147,
-     "subjectId": "S147",
-     "idNote": "The model sees the opaque ID S147, not K31.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -14733,9 +12223,9 @@
     },
     {
      "id": "R30c",
-     "order": 148,
-     "subjectId": "S148",
-     "idNote": "The model sees the opaque ID S148, not R30c.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -14767,9 +12257,9 @@
     },
     {
      "id": "C22",
-     "order": 149,
-     "subjectId": "S149",
-     "idNote": "The model sees the opaque ID S149, not C22.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -14792,9 +12282,9 @@
     },
     {
      "id": "M22",
-     "order": 150,
-     "subjectId": "S150",
-     "idNote": "The model sees the opaque ID S150, not M22.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -14817,9 +12307,9 @@
     },
     {
      "id": "M23",
-     "order": 151,
-     "subjectId": "S151",
-     "idNote": "The model sees the opaque ID S151, not M23.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -14846,9 +12336,9 @@
     },
     {
      "id": "M24",
-     "order": 152,
-     "subjectId": "S152",
-     "idNote": "The model sees the opaque ID S152, not M24.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -14875,9 +12365,9 @@
     },
     {
      "id": "M25",
-     "order": 153,
-     "subjectId": "S153",
-     "idNote": "The model sees the opaque ID S153, not M25.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -14904,9 +12394,9 @@
     },
     {
      "id": "C23",
-     "order": 154,
-     "subjectId": "S154",
-     "idNote": "The model sees the opaque ID S154, not C23.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -14934,9 +12424,9 @@
     },
     {
      "id": "K18",
-     "order": 155,
-     "subjectId": "S155",
-     "idNote": "The model sees the opaque ID S155, not K18.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -14961,9 +12451,9 @@
     },
     {
      "id": "K19",
-     "order": 156,
-     "subjectId": "S156",
-     "idNote": "The model sees the opaque ID S156, not K19.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -14987,9 +12477,9 @@
     },
     {
      "id": "K20",
-     "order": 157,
-     "subjectId": "S157",
-     "idNote": "The model sees the opaque ID S157, not K20.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -15018,9 +12508,9 @@
     },
     {
      "id": "K20-still",
-     "order": 158,
-     "subjectId": "S158",
-     "idNote": "The model sees the opaque ID S158, not K20-still.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -15078,9 +12568,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 159,
-     "subjectId": "S159",
-     "idNote": "The model sees the opaque ID S159, not M26a.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -15106,9 +12596,9 @@
     },
     {
      "id": "M26",
-     "order": 160,
-     "subjectId": "S160",
-     "idNote": "The model sees the opaque ID S160, not M26.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -15133,9 +12623,9 @@
     },
     {
      "id": "M27",
-     "order": 161,
-     "subjectId": "S161",
-     "idNote": "The model sees the opaque ID S161, not M27.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -15257,9 +12747,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 162,
-     "subjectId": "S162",
-     "idNote": "The model sees the opaque ID S162, not R32c.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -15282,9 +12772,9 @@
     },
     {
      "id": "C24",
-     "order": 163,
-     "subjectId": "S163",
-     "idNote": "The model sees the opaque ID S163, not C24.",
+     "order": 154,
+     "subjectId": "S154",
+     "idNote": "The model sees the opaque ID S154, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -15308,9 +12798,9 @@
     },
     {
      "id": "C24b",
-     "order": 164,
-     "subjectId": "S164",
-     "idNote": "The model sees the opaque ID S164, not C24b.",
+     "order": 155,
+     "subjectId": "S155",
+     "idNote": "The model sees the opaque ID S155, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -15334,9 +12824,9 @@
     },
     {
      "id": "C30",
-     "order": 165,
-     "subjectId": "S165",
-     "idNote": "The model sees the opaque ID S165, not C30.",
+     "order": 156,
+     "subjectId": "S156",
+     "idNote": "The model sees the opaque ID S156, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -15358,9 +12848,9 @@
     },
     {
      "id": "C25",
-     "order": 166,
-     "subjectId": "S166",
-     "idNote": "The model sees the opaque ID S166, not C25.",
+     "order": 157,
+     "subjectId": "S157",
+     "idNote": "The model sees the opaque ID S157, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -15387,9 +12877,9 @@
     },
     {
      "id": "C26",
-     "order": 167,
-     "subjectId": "S167",
-     "idNote": "The model sees the opaque ID S167, not C26.",
+     "order": 158,
+     "subjectId": "S158",
+     "idNote": "The model sees the opaque ID S158, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -15419,9 +12909,9 @@
     },
     {
      "id": "R32k",
-     "order": 168,
-     "subjectId": "S168",
-     "idNote": "The model sees the opaque ID S168, not R32k.",
+     "order": 159,
+     "subjectId": "S159",
+     "idNote": "The model sees the opaque ID S159, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -15461,9 +12951,9 @@
     },
     {
      "id": "K21",
-     "order": 169,
-     "subjectId": "S169",
-     "idNote": "The model sees the opaque ID S169, not K21.",
+     "order": 160,
+     "subjectId": "S160",
+     "idNote": "The model sees the opaque ID S160, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -15487,9 +12977,9 @@
     },
     {
      "id": "K22",
-     "order": 170,
-     "subjectId": "S170",
-     "idNote": "The model sees the opaque ID S170, not K22.",
+     "order": 161,
+     "subjectId": "S161",
+     "idNote": "The model sees the opaque ID S161, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -15515,9 +13005,9 @@
     },
     {
      "id": "K32",
-     "order": 171,
-     "subjectId": "S171",
-     "idNote": "The model sees the opaque ID S171, not K32.",
+     "order": 162,
+     "subjectId": "S162",
+     "idNote": "The model sees the opaque ID S162, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -15539,9 +13029,9 @@
     },
     {
      "id": "K23",
-     "order": 172,
-     "subjectId": "S172",
-     "idNote": "The model sees the opaque ID S172, not K23.",
+     "order": 163,
+     "subjectId": "S163",
+     "idNote": "The model sees the opaque ID S163, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -15568,9 +13058,9 @@
     },
     {
      "id": "K24",
-     "order": 173,
-     "subjectId": "S173",
-     "idNote": "The model sees the opaque ID S173, not K24.",
+     "order": 164,
+     "subjectId": "S164",
+     "idNote": "The model sees the opaque ID S164, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -15592,9 +13082,9 @@
     },
     {
      "id": "K25",
-     "order": 174,
-     "subjectId": "S174",
-     "idNote": "The model sees the opaque ID S174, not K25.",
+     "order": 165,
+     "subjectId": "S165",
+     "idNote": "The model sees the opaque ID S165, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -15629,9 +13119,9 @@
     },
     {
      "id": "K26",
-     "order": 175,
-     "subjectId": "S175",
-     "idNote": "The model sees the opaque ID S175, not K26.",
+     "order": 166,
+     "subjectId": "S166",
+     "idNote": "The model sees the opaque ID S166, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -15672,9 +13162,9 @@
     },
     {
      "id": "K34",
-     "order": 176,
-     "subjectId": "S176",
-     "idNote": "The model sees the opaque ID S176, not K34.",
+     "order": 167,
+     "subjectId": "S167",
+     "idNote": "The model sees the opaque ID S167, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -15704,9 +13194,9 @@
     },
     {
      "id": "K30",
-     "order": 177,
-     "subjectId": "S177",
-     "idNote": "The model sees the opaque ID S177, not K30.",
+     "order": 168,
+     "subjectId": "S168",
+     "idNote": "The model sees the opaque ID S168, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -15728,9 +13218,9 @@
     },
     {
      "id": "K27a",
-     "order": 178,
-     "subjectId": "S178",
-     "idNote": "The model sees the opaque ID S178, not K27a.",
+     "order": 169,
+     "subjectId": "S169",
+     "idNote": "The model sees the opaque ID S169, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -15755,9 +13245,9 @@
     },
     {
      "id": "K27",
-     "order": 179,
-     "subjectId": "S179",
-     "idNote": "The model sees the opaque ID S179, not K27.",
+     "order": 170,
+     "subjectId": "S170",
+     "idNote": "The model sees the opaque ID S170, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -15782,9 +13272,9 @@
     },
     {
      "id": "K28",
-     "order": 180,
-     "subjectId": "S180",
-     "idNote": "The model sees the opaque ID S180, not K28.",
+     "order": 171,
+     "subjectId": "S171",
+     "idNote": "The model sees the opaque ID S171, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -15827,9 +13317,9 @@
     },
     {
      "id": "K33",
-     "order": 181,
-     "subjectId": "S181",
-     "idNote": "The model sees the opaque ID S181, not K33.",
+     "order": 172,
+     "subjectId": "S172",
+     "idNote": "The model sees the opaque ID S172, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -15853,9 +13343,9 @@
     },
     {
      "id": "R32m",
-     "order": 182,
-     "subjectId": "S182",
-     "idNote": "The model sees the opaque ID S182, not R32m.",
+     "order": 173,
+     "subjectId": "S173",
+     "idNote": "The model sees the opaque ID S173, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -15879,9 +13369,9 @@
     },
     {
      "id": "M28",
-     "order": 183,
-     "subjectId": "S183",
-     "idNote": "The model sees the opaque ID S183, not M28.",
+     "order": 174,
+     "subjectId": "S174",
+     "idNote": "The model sees the opaque ID S174, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -15907,9 +13397,9 @@
     },
     {
      "id": "M31",
-     "order": 184,
-     "subjectId": "S184",
-     "idNote": "The model sees the opaque ID S184, not M31.",
+     "order": 175,
+     "subjectId": "S175",
+     "idNote": "The model sees the opaque ID S175, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -15944,9 +13434,9 @@
     },
     {
      "id": "M30a",
-     "order": 185,
-     "subjectId": "S185",
-     "idNote": "The model sees the opaque ID S185, not M30a.",
+     "order": 176,
+     "subjectId": "S176",
+     "idNote": "The model sees the opaque ID S176, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -15971,9 +13461,9 @@
     },
     {
      "id": "M30",
-     "order": 186,
-     "subjectId": "S186",
-     "idNote": "The model sees the opaque ID S186, not M30.",
+     "order": 177,
+     "subjectId": "S177",
+     "idNote": "The model sees the opaque ID S177, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -15998,9 +13488,9 @@
     },
     {
      "id": "M30c",
-     "order": 187,
-     "subjectId": "S187",
-     "idNote": "The model sees the opaque ID S187, not M30c.",
+     "order": 178,
+     "subjectId": "S178",
+     "idNote": "The model sees the opaque ID S178, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -16024,9 +13514,9 @@
     },
     {
      "id": "M32",
-     "order": 188,
-     "subjectId": "S188",
-     "idNote": "The model sees the opaque ID S188, not M32.",
+     "order": 179,
+     "subjectId": "S179",
+     "idNote": "The model sees the opaque ID S179, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -16049,9 +13539,9 @@
     },
     {
      "id": "P02",
-     "order": 189,
-     "subjectId": "S189",
-     "idNote": "The model sees the opaque ID S189, not P02.",
+     "order": 180,
+     "subjectId": "S180",
+     "idNote": "The model sees the opaque ID S180, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -16077,9 +13567,9 @@
     },
     {
      "id": "C29",
-     "order": 190,
-     "subjectId": "S190",
-     "idNote": "The model sees the opaque ID S190, not C29.",
+     "order": 181,
+     "subjectId": "S181",
+     "idNote": "The model sees the opaque ID S181, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -16101,9 +13591,9 @@
     },
     {
      "id": "C27",
-     "order": 191,
-     "subjectId": "S191",
-     "idNote": "The model sees the opaque ID S191, not C27.",
+     "order": 182,
+     "subjectId": "S182",
+     "idNote": "The model sees the opaque ID S182, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -16128,9 +13618,9 @@
     },
     {
      "id": "C28",
-     "order": 192,
-     "subjectId": "S192",
-     "idNote": "The model sees the opaque ID S192, not C28.",
+     "order": 183,
+     "subjectId": "S183",
+     "idNote": "The model sees the opaque ID S183, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -16164,9 +13654,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 193,
-     "subjectId": "S193",
-     "idNote": "The model sees the opaque ID S193, not P01.",
+     "order": 184,
+     "subjectId": "S184",
+     "idNote": "The model sees the opaque ID S184, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

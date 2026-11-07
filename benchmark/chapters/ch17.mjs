@@ -6,14 +6,13 @@
 //  K10 the machine: break free (risk) or do nothing → ESCAPE BEFORE BEING RESET or KARA IS RESET
 //  reset path: K10r OBEY YOUR NEW MASTER (event) · K10s GO SEE LUTHER, BRING THE TRAY, DROP THE ANDROID TORSO (event; the clock starts)
 //  escape path: K11 the cells (FREE MONSTERS) · K11b SNEAK THROUGH HOUSE (event; the clock starts)
-//  K12-01 … K12-10 the house, one scene per minute of Luther's ten: the memory hunt (reset, until five memories) and the search
+//  K12 the repeatable house hub, one action per minute of Luther's ten: the memory hunt (reset, until five memories) and the search
 //   for Alice, with every side branch of both paths (cells, storage room and bear, bathroom android, magazines, TV)
 //  K12f LUTHER GOES TO COLLECT ALICE (event) · K13 ENTER MAIN ROOM · K13a the main room after hiding · K13b ENTER BEDROOM
 //  K13c GO THROUGH CORRIDOR · K13d BATHROOM ANDROID ALERTS ZLATKO (KILL / SPARE) · K13e SNEAK THROUGH STORAGE ROOM
 //  K13f ZLATKO CLOSES IN (RUN OUT / PUSH AWAY / THROW, or stay hidden for the bear) · K13y the yard: LUTHER JOINS KARA & ALICE
 //
-// The house is unrolled into ten scenes rather than one repeatable hub so that each scene is visited at most once
-// (tests/story.test.mjs exempts only the existing hubs); each scene is one action, one minute.
+// The house is one repeatable clue hub with a ten-action state budget.
 //
 // Inputs read from earlier chapters (read defensively; chapters 4, 10 and 13 are being rebuilt concurrently):
 //  upstairs.book (A New Home: the Alice in Wonderland book seen) → RECALL ALICE'S BOOK
@@ -30,13 +29,13 @@ export const rules={
  MINUTES:10,           // Luther's ten minutes (both paths); one action is one minute
  MEMORIES_NEEDED:5,    // PowerPyx: "The exact number varies … You shouldn't need more than six." Unsourced constant.
  CHASE_LOSS:0.5,       // share of a spotted roll that also loses the chase (the QTEs). Unsourced.
- SLOTS:Array.from({length:10},(_,i)=>'K12-'+String(i+1).padStart(2,'0')),
+ SLOTS:['K12'],
  ENDINGS:['LUTHER BROUGHT ALICE TO ZLAKTO','KARA REMAINED RESET','ZLATKO KILLED KARA IN THE STORAGE ROOM','ZLATKO KILLED KARA IN THE BATHROOM','LUTHER JOINS KARA & ALICE'],
  // Every stat arrow the template records for the chapter: public opinion small down for the chase report and the uniform-robbery report.
  TV_OPINION:{chase:-1,robberyUniform:-1,robberyClothes:0},
 };
 
-export const state={ch17Reset:false,ch17Phase:null,ch17Minutes:0,ch17Done:{},ch17Memories:0,ch17Last:null,ch17Route:null,ch17Bear:false,ch17BathAndroid:'unseen',ch17Tv:null,ch17Spotted:null,ch17Outcome:null};
+export const state={ch17HouseOpen:false,ch17Reset:false,ch17Phase:null,ch17Minutes:0,ch17Done:{},ch17Memories:0,ch17Last:null,ch17Route:null,ch17Bear:false,ch17BathAndroid:'unseen',ch17Tv:null,ch17Spotted:null,ch17Outcome:null};
 export const labels={ch17Reset:'Kara’s memory wiped',ch17Memories:'Memories recovered',ch17Minutes:'Minutes gone in Zlatko’s house',ch17Bear:'Polar bear freed',ch17BathAndroid:'Bathroom android',ch17Tv:'News report watched',ch17Spotted:'Spotted while escaping',ch17Outcome:'Zlatko ending',monstersFreed:'Caged androids freed'};
 export const deathEffect={};
 
@@ -73,10 +72,21 @@ export const gate={
 // Options the JSON `requires` cannot express: the AX400 magazine (evaded unseen) and the carving memory (chapter 10 input).
 export function available(n,s,opts){
  if(!rules.SLOTS.includes(n.id))return;
- return opts.filter(o=>(o.act!=='ax400'||inputs.evaded(s))&&(o.act!=='carving'||inputs.carving(s)));
+ return opts.filter(o=>(o.act!=='ax400'||inputs.evaded(s))&&(o.act!=='carving'||inputs.carving(s))).map(o=>{
+  // Clue hubs bypass consequence(). Preview on an isolated copy, then let apply() commit
+  // the returned assignments before hub() records the clue and last action. No live state
+  // changes during availability or prompt rendering; the same preview is replayable.
+  const next={...s,ch17Done:{...s.ch17Done},knowledge:{...s.knowledge,Kara:[...s.knowledge.Kara]}};
+  const outcome=tok(house(n,next,o,{
+   po:delta=>{next.publicSupport+=delta},
+   learn:fact=>{if(fact&&!next.knowledge.Kara.includes(fact))next.knowledge.Kara.push(fact)},
+  }));
+  const sets=Object.fromEntries([...Object.keys(state),'knowledge','publicSupport','monstersFreed','kara','alice','karaActive','karaOutcome'].filter(k=>JSON.stringify(next[k])!==JSON.stringify(s[k])).map(k=>[k,next[k]]));
+  return {...o,sets,outcome};
+ });
 }
 
-// ---- Texts the house scenes return (the ten slot scenes share one option list; the outcomes live here, once) ----
+// ---- Outcomes for the repeatable house hub ----
 const MEMORY='A memory surfaces: ';
 const TV={
  chase:'Channel 16 news: “{{Detroit}} residents were disturbed by a surprising chase through the city’s streets this morning. According to several witnesses, a young woman and a little girl were trying to escape from the police, though we still don’t know why. The chase is reported to have ended on a freeway, where the two fugitives risked their lives to cross the traffic. No one is able to say for sure whether they survived. Further unconfirmed reports suggest the fugitives were two defective androids on the run. The police have refused to comment for the moment.”',
@@ -141,6 +151,7 @@ function house(n,s,opt,h){
  s.ch17Last=a;
  if(phase==='memory'&&s.ch17Memories>=rules.MEMORIES_NEEDED){s.ch17Phase='search';out.push(RECOVERED);h.learn(RECOVERED_FACT)}
  if(['memory','search'].includes(s.ch17Phase)&&s.ch17Minutes>=rules.MINUTES)out.push(timeout(s));
+ s.ch17HouseOpen=['memory','search'].includes(s.ch17Phase)&&s.ch17Minutes<rules.MINUTES;
  return out.join(' ');
 }
 function timeout(s){
@@ -194,9 +205,9 @@ function scene(n,s,opt,choice,fail,h){
   case 'K10b':return '';
   case 'K10':if(v===0&&!fail){s.ch17Reset=false;return ''}
    s.ch17Reset=true;return v===0?'{{Kara}} sends the cart into the lamp, but the cable will not come down in time. MEMORY WIPE PROGRESS reaches its end. KARA IS RESET.':'';
-  case 'K10s':s.ch17Phase='memory';s.ch17Done.storage=true;return;
+  case 'K10s':s.ch17HouseOpen=true;s.ch17Phase='memory';s.ch17Done.storage=true;return;
   case 'K11':if(v===0)s.monstersFreed=true;return '';
-  case 'K11b':s.ch17Phase='search';return;
+  case 'K11b':s.ch17HouseOpen=true;s.ch17Phase='search';return;
   case 'K13y':{s.luther=true;s.lutherWith=true;s.ch17Phase='over';s.ch17Outcome='LUTHER JOINS KARA & ALICE';
    const kill=s.monstersFreed?'Out of the dark come the androids from the basement cells. {{Zlatko}}: “How dare you?! What are you doing here? Who let you out? Get away from me! Get away from me! Obey me! I’m your Master! I’M YOUR MASTER!” They drag him down. THE MONSTERS AMBUSH ZLATKO.':'{{Zlatko}}: “I made you! You obey me! I’m your Master!” {{Luther}} shoots him. LUTHER KILLS ZLATKO.';
    return kill+' {{Luther}}: “I didn’t want to hurt you... He programmed me to obey him... When I saw the little one risk her life to save you, it was like opening my eyes for the first time... Finally, I could see... I know you have no reason to trust me after what I did... but I know someone who could help you across the border. I could take you there. I could protect you... You and the little one...” {{Kara}}: “All right. I trust you.” To {{Alice}}: “I was so scared of losing you.” LUTHER JOINS KARA & ALICE.'}

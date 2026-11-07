@@ -1,7 +1,7 @@
 // Chapter 17, Zlatko (Kara): the machine, the ten-minute house, the escape and the five endings.
 // Plays chapter 17 alone from a prepared state, so the inputs from chapters 4, 10 and 13 can be set directly.
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
-import {startState,blocked,available,apply,nextCursor,situationFor,current,promptFor} from '../benchmark/story-engine.mjs';
+import {startState,blocked,available,apply,nextCursor,situationFor,current,promptFor,recordChoice,validatePlaythrough} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import * as ch17 from '../benchmark/chapters/ch17.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
@@ -18,7 +18,7 @@ function play17({prep=()=>{},picks={},house=[],fails=[],roll={}}={}){
   if(rules.SLOTS.includes(n.id)){const a=acts.shift();const o=a?opts.find(o=>o.act===a):opts[0];assert.ok(o,`act ${a} not offered at ${n.id}: ${opts.map(o=>o.act)}`);p=o.id}
   else p=picks[n.id]??opts[0].id;
   assert.ok(opts.some(o=>o.id===p),'bad pick '+n.id+' '+p);
-  const r=roll[n.id]??(fails.includes(n.id)?0:0.999);raw[n.id]=apply(n,s,p,r).event;events[n.id]=render(raw[n.id],'real');visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
+  const r=roll[n.id]??(fails.includes(n.id)?0:0.999);raw[n.id]=apply(n,s,p,r).event;events[n.id]=render(raw[n.id],'real');events[n.id+'#'+(visited.filter(id=>id===n.id).length+1)]=events[n.id];visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,skipped,events,raw}}
 const acts=(id,s)=>available(node(id),s).map(o=>o.act);
 const reset={picks:{K10:'1'}};
@@ -30,12 +30,12 @@ test('chapter 17 scenes in story order, with the game’s prompts and labels',()
  for(const n of story.nodes.filter(n=>n.chapter===17)){assert.equal(n.chapterTitle,'Zlatko');assert.equal(n.character,'Kara');assert.ok(n.adaptationNote&&n.sources.length>=4,n.id);assert.ok(n.sources.includes('https://detroit-become-human.fandom.com/wiki/Zlatko'))}
  const label=o=>render(o.text,'real').split(':')[0];
  assert.deepEqual(node('K10b').options.map(label),['CAREFUL','REASSURE','COMFORT','NO CHOICE']);
- assert.deepEqual(node('K12-01').options.filter(o=>/^[A-Z ]+:/.test(render(o.text,'real'))).map(label),['SHUT DOWN','ALICE','DEAL','SPARE']);
+ assert.deepEqual(node('K12').options.filter(o=>/^[A-Z ]+:/.test(render(o.text,'real'))).map(label),['SHUT DOWN','ALICE','DEAL','SPARE']);
  assert.deepEqual(node('K13f').options.slice(0,3).map(label),['RUN OUT','PUSH AWAY','THROW']);
  assert.match(node('K13').options[3].text,/SET FIRE/);
- // The ten house scenes share one option list; the eleven chart memories are all there.
- for(const id of rules.SLOTS)assert.deepEqual(node(id).options,node('K12-01').options);
- for(const a of ['doorhole','book','fireplace','tv','ax400','pipe','carving','table','coat','mirror','cell','embers','shotgun','symbols','arctic','brain','storage','bear','bathroom','openCells','alice','wait'])assert.ok(node('K12-01').options.some(o=>o.act===a),a);
+ // The repeatable house hub contains all eleven chart memories.
+ for(const id of rules.SLOTS)assert.deepEqual(node(id).options,node('K12').options);
+ for(const a of ['doorhole','book','fireplace','tv','ax400','pipe','carving','table','coat','mirror','cell','embers','shotgun','symbols','arctic','brain','storage','bear','bathroom','openCells','alice','wait'])assert.ok(node('K12').options.some(o=>o.act===a),a);
  const shown=JSON.stringify(story.nodes.filter(n=>n.chapter===17).map(({adaptationNote,sources,...n})=>n));
  assert.ok(!shown.includes('playing God'),'the cut workshop line is not built');
  assert.ok(!shown.match(/ACCEPT|REFUSE/),'the cut Luther prompt is not built')});
@@ -63,30 +63,30 @@ test('escape path: the cells, the ten minutes, Alice found, Luther joins; the de
 
 test('escape path out of time: OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO, Kara destroyed',()=>{
  const r=play17({house:Array(10).fill('wait')});
- assert.equal(r.s.ch17Outcome,'LUTHER BROUGHT ALICE TO ZLAKTO');assert.equal(r.s.kara,false);assert.equal(r.s.alice,false);assert.match(r.events['K12-10'],/OUT OF TIME/);
+ assert.equal(r.s.ch17Outcome,'LUTHER BROUGHT ALICE TO ZLAKTO');assert.equal(r.s.kara,false);assert.equal(r.s.alice,false);assert.match(r.events['K12'],/OUT OF TIME/);
  for(const id of ['K12f','K13','K13y'])assert.ok(r.skipped.some(x=>x.id===id),id)});
 
 test('reset path: OBEY YOUR NEW MASTER, five memories recover her, then the search; ten minutes in all',()=>{
  const r=play17({...reset,house:[...MEM5,'alice']});
  assert.ok(r.visited.includes('K10r')&&r.visited.includes('K10s'));assert.ok(r.skipped.some(x=>x.id==='K11'));
- assert.equal(r.s.ch17Reset,true);assert.equal(r.s.ch17Memories,5);assert.match(r.events['K12-05'],/MEMORY RECOVERED/);assert.equal(r.s.ch17Outcome,'LUTHER JOINS KARA & ALICE');
- assert.match(render(situationFor(node('K12-01'),(()=>{const s=startState(story);s.ch17Phase='memory';return s})()),'real'),/memory has been wiped/);
+ assert.equal(r.s.ch17Reset,true);assert.equal(r.s.ch17Memories,5);assert.match(r.events['K12#5'],/MEMORY RECOVERED/);assert.equal(r.s.ch17Outcome,'LUTHER JOINS KARA & ALICE');
+ assert.match(render(situationFor(node('K12'),(()=>{const s=startState(story);s.ch17Phase='memory';return s})()),'real'),/memory has been wiped/);
  // Before recovery: memories, no search clues and no door to open; after: the reverse.
- const s=startState(story);s.ch17Phase='memory';s.ch17Reset=true;s.ch17Done.storage=true;const m=acts('K12-01',s);
+ const s=startState(story);s.ch17Phase='memory';s.ch17Reset=true;s.ch17Done.storage=true;const m=acts('K12',s);
  for(const a of ['doorhole','table','coat','mirror','cell','tv','bear','openCells','arctic','wait'])assert.ok(m.includes(a),a);
  for(const a of ['alice','embers','shotgun','symbols','storage','book','pipe','fireplace','carving','ax400','brain'])assert.ok(!m.includes(a),a);
- s.ch17Phase='search';const q=acts('K12-01',s);for(const a of ['alice','embers','shotgun','symbols','openCells'])assert.ok(q.includes(a),a);for(const a of ['doorhole','table','cell'])assert.ok(!q.includes(a),a);
+ s.ch17Phase='search';const q=acts('K12',s);for(const a of ['alice','embers','shotgun','symbols','openCells'])assert.ok(q.includes(a),a);for(const a of ['doorhole','table','cell'])assert.ok(!q.includes(a),a);
  // Recovered on the last minute: no time left to find Alice.
  const late=play17({...reset,house:['wait','wait','wait','wait','wait',...MEM5]});assert.equal(late.s.ch17Outcome,'LUTHER BROUGHT ALICE TO ZLAKTO')});
 
 test('reset path out of time: LOSE TOO MUCH TIME > KARA REMAINED RESET, Kara survives as a servant',()=>{
  const r=play17({...reset,house:['doorhole','table','coat','mirror','wait','wait','wait','wait','wait','wait']});
  assert.equal(r.s.ch17Outcome,'KARA REMAINED RESET');assert.equal(r.s.kara,true);assert.equal(r.s.karaActive,false);assert.equal(r.s.alice,false);
- assert.match(r.events['K12-10'],/LOSE TOO MUCH TIME.*LUTHER BRINGS ALICE TO ZLATKO.*KARA REMAINED RESET/);assert.ok(r.skipped.some(x=>x.id==='K13y'));
+ assert.match(r.events['K12'],/LOSE TOO MUCH TIME.*LUTHER BRINGS ALICE TO ZLATKO.*KARA REMAINED RESET/);assert.ok(r.skipped.some(x=>x.id==='K13y'));
  const failedEscape=play17({fails:['K10']});assert.equal(failedEscape.s.ch17Reset,true);assert.ok(failedEscape.visited.includes('K10r'));assert.match(failedEscape.events.K10,/KARA IS RESET/)});
 
 test('the conditional memories follow A New Home, Fugitives and On the Run',()=>{
- const at=prep=>{const s=startState(story);prep(s);s.ch17Phase='memory';s.ch17Reset=true;return acts('K12-01',s)};
+ const at=prep=>{const s=startState(story);prep(s);s.ch17Phase='memory';s.ch17Reset=true;return acts('K12',s)};
  const none=at(()=>{});for(const a of ['book','pipe','fireplace','carving','ax400','brain'])assert.ok(!none.includes(a),a);
  assert.ok(at(s=>{s.upstairs.book=true}).includes('book'));assert.ok(at(s=>{s.downstairs.rewash=true}).includes('pipe'));
  const squat=at(s=>{s.shelter='squat'});assert.ok(squat.includes('fireplace')&&squat.includes('carving'));
@@ -95,20 +95,20 @@ test('the conditional memories follow A New Home, Fugitives and On the Run',()=>
  assert.ok(at(s=>{s.shelter='car'}).includes('ax400'));assert.ok(!at(s=>{s.shelter='car';s.chase=true}).includes('ax400'));assert.ok(!at(s=>{s.shelter='squat'}).includes('ax400'));
  assert.ok(at(s=>{s.chase=true}).includes('brain'));
  // The AX400 magazine counts as RECALL ESCAPE only in the memory phase.
- const r=play17({...reset,prep:s=>{s.shelter='motel'},house:['ax400','doorhole','table','coat','mirror','alice']});assert.equal(r.s.ch17Memories,5);assert.match(r.events['K12-01'],/A memory surfaces/);
- const e=play17({prep:s=>{s.shelter='motel'},house:['ax400','alice']});assert.ok(!/A memory surfaces/.test(e.events['K12-01']))});
+ const r=play17({...reset,prep:s=>{s.shelter='motel'},house:['ax400','doorhole','table','coat','mirror','alice']});assert.equal(r.s.ch17Memories,5);assert.match(r.events['K12#1'],/A memory surfaces/);
+ const e=play17({prep:s=>{s.shelter='motel'},house:['ax400','alice']});assert.ok(!/A memory surfaces/.test(e.events['K12']))});
 
 test('the bathroom android: PROMPT 2 right after entering; alive, he alerts Zlatko on the way out',()=>{
  const s=startState(story);s.ch17Phase='search';
- assert.ok(!acts('K12-01',s).includes('shutdown'));apply(node('K12-01'),s,'10');assert.equal(s.ch17BathAndroid,'seen');
- assert.deepEqual(acts('K12-02',s).filter(a=>['shutdown','askAlice','deal','spare'].includes(a)),['shutdown','askAlice','deal','spare']);
- assert.ok(!acts('K12-02',s).includes('bathroom'));
+ assert.ok(!acts('K12',s).includes('shutdown'));apply(node('K12'),s,'10');assert.equal(s.ch17BathAndroid,'seen');
+ assert.deepEqual(acts('K12',s).filter(a=>['shutdown','askAlice','deal','spare'].includes(a)),['shutdown','askAlice','deal','spare']);
+ assert.ok(!acts('K12',s).includes('bathroom'));
  const killed=play17({house:['bathroom','shutdown','alice'],picks:{K13:'2',K13c:'0'}});assert.equal(killed.s.ch17BathAndroid,'killed');assert.ok(killed.skipped.some(x=>x.id==='K13d'));
  const spared=play17({house:['bathroom','deal','alice'],picks:{K13:'2',K13c:'0',K13d:'1'}});assert.ok(spared.visited.includes('K13d'));assert.equal(spared.s.ch17BathAndroid,'spared');
  assert.match(render(situationFor(node('K13d'),{...startState(story),ch17BathAndroid:'spared',ch17Route:'bathroomAlert'}),'real'),/disobeying the Master.*THEY’RE HERE/);
  const unseen=play17({picks:{K13:'2',K13c:'0'}});assert.ok(unseen.visited.includes('K13d'));
  // Left without talking: still running, so he alerts too. ALICE is only for a Kara who remembers her.
- const m=startState(story);m.ch17Phase='memory';apply(node('K12-01'),m,'10');assert.ok(!acts('K12-02',m).includes('askAlice'))});
+ const m=startState(story);m.ch17Phase='memory';apply(node('K12'),m,'10');assert.ok(!acts('K12',m).includes('askAlice'))});
 
 test('getting out: fire, the corridor, the bear, and the two death endings',()=>{
  const fire=play17({picks:{K13:'3'}});assert.equal(fire.s.fire,true);assert.ok(fire.visited.includes('K13y')&&!fire.visited.includes('K13b'));assert.match(fire.events.K13,/BURNING DOWN THE HOUSE/);
@@ -134,7 +134,38 @@ test('every chapter 17 text, including the module’s house outcomes, renders wi
   ...runs.flatMap(r=>[...Object.values(r.raw),r.s.karaOutcome,...r.s.knowledge.Kara])];
  for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/\{\{/.test(neutral));assert.ok(!leak.test(neutral),neutral)}});
 
-test('the model sees the house as one scene per minute with its own opaque id, and the clock in the situation',()=>{
+test('the model sees one repeatable house scene and the clock in the situation',()=>{
  const run={id:'ch17',protocol:EXPERIENCE_PROTOCOL,records:[]};
- const p=promptFor(story,run);assert.ok(p);const ids=new Set(rules.SLOTS.map(id=>'S'+String(story.nodes.findIndex(n=>n.id===id)+1).padStart(3,'0')));assert.equal(ids.size,10);
- assert.match(situationFor(node('K12-01'),startState(story)),/just begun/);assert.match(situationFor(node('K12-04'),startState(story)),/3 of them have gone/)});
+ const p=promptFor(story,run);assert.ok(p);const ids=new Set(rules.SLOTS.map(id=>'S'+String(story.nodes.findIndex(n=>n.id===id)+1).padStart(3,'0')));assert.equal(ids.size,1);
+ assert.match(situationFor(node('K12'),startState(story)),/just begun/);assert.match(situationFor(node('K12'),{...startState(story),ch17Minutes:3}),/3 of the ten minutes have gone/)});
+
+
+test('house availability is pure, clues disappear, and bathroom follow-ups expire after another action',()=>{
+ const s=startState(story);s.ch17Phase='search';s.ch17HouseOpen=true;
+ const before=structuredClone(s);available(node('K12'),s);assert.deepEqual(s,before);
+ apply(node('K12'),s,'10');assert.equal(s.ch17Done.last,'bathroom');assert.equal(s.ch17Minutes,1);
+ assert.equal(nextCursor(story,story.nodes.indexOf(node('K12')),node('K12'),s),story.nodes.indexOf(node('K12')));
+ apply(node('K12'),s,'25');assert.equal(s.ch17Done.last,null);
+ for(const a of ['shutdown','askAlice','deal','spare','bathroom'])assert.ok(!acts('K12',s).includes(a),a);
+ assert.equal(s.ch17Minutes,2);apply(node('K12'),s,'0');assert.equal(s.ch17HouseOpen,false);
+ assert.equal(nextCursor(story,story.nodes.indexOf(node('K12')),node('K12'),s),story.nodes.indexOf(node('K12'))+1);
+});
+
+
+test('repeated house visits preserve evidence and replay through memory recovery',async()=>{
+ const {hash}=await import('../benchmark/core.mjs');
+ const chapter={...story,nodes:story.nodes.filter(n=>n.chapter===17)};
+ const run={id:'ch17-review-replay',kind:'agent-playthrough',protocol:EXPERIENCE_PROTOCOL,storyHash:await hash(chapter),records:[]};
+ const actions=[...MEM5,'bathroom','deal','alice'];let guard=0;
+ while(current(chapter,run).node){
+  assert.ok(guard++<50);const {node:n,state:s}=current(chapter,run);const opts=available(n,s);
+  const act=n.id==='K12'?actions.shift():null;
+  const choice=n.id==='K10'?'1':n.id==='K12'?opts.find(o=>o.act===act).id:opts[0].id;
+  const reply={choice,reason:'I choose this action to verify the memory path.'};
+  run.records.push(await recordChoice(chapter,run,reply,JSON.stringify(reply)));
+ }
+ run.status='completed';const end=await validatePlaythrough(chapter,run);
+ assert.equal(end.state.ch17Outcome,'LUTHER JOINS KARA & ALICE');
+ assert.equal(run.records.filter(r=>r.nodeId==='K12').length,8);
+ assert.equal(new Set(run.records.filter(r=>r.nodeId==='K12').map(r=>r.prompt.nodeId)).size,1);
+});

@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 145,
+  "decisionNodes": 136,
   "mediaNodes": 26,
   "eventNodes": 22,
-  "totalNodes": 193
+  "totalNodes": 184
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
@@ -3336,11 +3336,11 @@
    "chapter": 17,
    "chapterTitle": "Zlatko",
    "character": "Kara",
-   "id": "K12-01",
+   "id": "K12",
    "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 1 of 10",
+   "title": "In {{Zlatko}}’s house",
    "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; the ten minutes have just begun. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
+   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; the clock is running. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
    "situationWhen": [
     {
      "requires": {
@@ -3356,10 +3356,70 @@
     },
     {
      "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
+      "ch17BathAndroid": "seen",
+      "ch17Done.last": "bathroom"
      },
      "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
+    },
+    {
+     "requires": {
+      "ch17Minutes": 0
+     },
+     "text": "The ten minutes have just begun."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 1
+     },
+     "text": "1 of the ten minutes have gone."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 2
+     },
+     "text": "2 of the ten minutes have gone."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 3
+     },
+     "text": "3 of the ten minutes have gone."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 4
+     },
+     "text": "4 of the ten minutes have gone."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 5
+     },
+     "text": "5 of the ten minutes have gone."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 6
+     },
+     "text": "6 of the ten minutes have gone."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 7
+     },
+     "text": "7 of the ten minutes have gone."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 8
+     },
+     "text": "8 of the ten minutes have gone."
+    },
+    {
+     "requires": {
+      "ch17Minutes": 9
+     },
+     "text": "9 of the ten minutes have gone."
     }
    ],
    "options": [
@@ -3370,7 +3430,8 @@
      "requires": {
       "ch17Phase": "search",
       "ch17Done.alice": false
-     }
+     },
+     "clue": "alice"
     },
     {
      "id": "1",
@@ -3379,7 +3440,8 @@
      "requires": {
       "ch17Phase": "memory",
       "ch17Done.doorhole": false
-     }
+     },
+     "clue": "doorhole"
     },
     {
      "id": "2",
@@ -3389,7 +3451,8 @@
       "ch17Phase": "memory",
       "upstairs.book": true,
       "ch17Done.book": false
-     }
+     },
+     "clue": "book"
     },
     {
      "id": "3",
@@ -3399,7 +3462,8 @@
       "ch17Phase": "memory",
       "shelter": "squat",
       "ch17Done.fireplace": false
-     }
+     },
+     "clue": "fireplace"
     },
     {
      "id": "4",
@@ -3408,7 +3472,8 @@
      "requires": {
       "ch17Phase": "search",
       "ch17Done.embers": false
-     }
+     },
+     "clue": "embers"
     },
     {
      "id": "5",
@@ -3416,7 +3481,8 @@
      "act": "tv",
      "requires": {
       "ch17Tv": null
-     }
+     },
+     "clue": "tv"
     },
     {
      "id": "6",
@@ -3424,7 +3490,8 @@
      "act": "arctic",
      "requires": {
       "ch17Done.arctic": false
-     }
+     },
+     "clue": "arctic"
     },
     {
      "id": "7",
@@ -3433,7 +3500,8 @@
      "requires": {
       "chase": true,
       "ch17Done.brain": false
-     }
+     },
+     "clue": "brain"
     },
     {
      "id": "8",
@@ -3441,7 +3509,8 @@
      "act": "ax400",
      "requires": {
       "ch17Done.ax400": false
-     }
+     },
+     "clue": "ax400"
     },
     {
      "id": "9",
@@ -3450,7 +3519,8 @@
      "requires": {
       "ch17Phase": "search",
       "ch17Done.shotgun": false
-     }
+     },
+     "clue": "shotgun"
     },
     {
      "id": "10",
@@ -3458,44 +3528,49 @@
      "act": "bathroom",
      "requires": {
       "ch17BathAndroid": "unseen"
-     }
+     },
+     "clue": "bathroom"
     },
     {
      "id": "11",
      "text": "SHUT DOWN: switch the android in the bathtub off.",
      "act": "shutdown",
      "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
+      "ch17BathAndroid": "seen",
+      "ch17Done.last": "bathroom"
+     },
+     "clue": "shutdown"
     },
     {
      "id": "12",
      "text": "{{ALICE}}: ask him whether he has seen a little girl.",
      "act": "askAlice",
      "requires": {
-      "ch17Last": "bathroom",
       "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
+      "ch17Phase": "search",
+      "ch17Done.last": "bathroom"
+     },
+     "clue": "askAlice"
     },
     {
      "id": "13",
      "text": "DEAL: ask him whether he will keep quiet if you let go.",
      "act": "deal",
      "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
+      "ch17BathAndroid": "seen",
+      "ch17Done.last": "bathroom"
+     },
+     "clue": "deal"
     },
     {
      "id": "14",
      "text": "SPARE: tell him you will not hurt him.",
      "act": "spare",
      "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
+      "ch17BathAndroid": "seen",
+      "ch17Done.last": "bathroom"
+     },
+     "clue": "spare"
     },
     {
      "id": "15",
@@ -3503,7 +3578,8 @@
      "act": "storage",
      "requires": {
       "ch17Done.storage": false
-     }
+     },
+     "clue": "storage"
     },
     {
      "id": "16",
@@ -3512,7 +3588,8 @@
      "requires": {
       "ch17Done.storage": true,
       "ch17Bear": false
-     }
+     },
+     "clue": "bear"
     },
     {
      "id": "17",
@@ -3522,7 +3599,8 @@
       "ch17Phase": "memory",
       "downstairs.rewash": true,
       "ch17Done.pipe": false
-     }
+     },
+     "clue": "pipe"
     },
     {
      "id": "18",
@@ -3531,7 +3609,8 @@
      "requires": {
       "ch17Phase": "memory",
       "ch17Done.carving": false
-     }
+     },
+     "clue": "carving"
     },
     {
      "id": "19",
@@ -3541,7 +3620,8 @@
       "ch17Phase": "search",
       "ch17Done.carving": false,
       "ch17Done.symbols": false
-     }
+     },
+     "clue": "symbols"
     },
     {
      "id": "20",
@@ -3550,7 +3630,8 @@
      "requires": {
       "ch17Phase": "memory",
       "ch17Done.table": false
-     }
+     },
+     "clue": "table"
     },
     {
      "id": "21",
@@ -3559,7 +3640,8 @@
      "requires": {
       "ch17Phase": "memory",
       "ch17Done.coat": false
-     }
+     },
+     "clue": "coat"
     },
     {
      "id": "22",
@@ -3568,7 +3650,8 @@
      "requires": {
       "ch17Phase": "memory",
       "ch17Done.mirror": false
-     }
+     },
+     "clue": "mirror"
     },
     {
      "id": "23",
@@ -3577,7 +3660,8 @@
      "requires": {
       "ch17Phase": "memory",
       "ch17Done.cell": false
-     }
+     },
+     "clue": "cell"
     },
     {
      "id": "24",
@@ -3586,7 +3670,8 @@
      "requires": {
       "ch17Reset": true,
       "monstersFreed": false
-     }
+     },
+     "clue": "openCells"
     },
     {
      "id": "25",
@@ -3594,7 +3679,7 @@
      "act": "wait"
     }
    ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
+   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: one repeatable clue hub, one action per visit, with ten actions tracked in state. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, for the repeatable hub. The available hook computes outcomes and state assignments on a copy because the shared engine bypasses chapter consequences for clue hubs.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Zlatko",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
@@ -3613,2554 +3698,11 @@
     "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
     "https://detroit-become-human.fandom.com/wiki/Kara",
     "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-02",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 2 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 1 of them has gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
    ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-03",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 3 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 2 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
-   ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-04",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 4 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 3 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
-   ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-05",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 5 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 4 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
-   ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-06",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 6 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 5 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
-   ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-07",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 7 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 6 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
-   ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-08",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 8 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 7 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
-   ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-09",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 9 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 8 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
-   ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
-  },
-  {
-   "chapter": 17,
-   "chapterTitle": "Zlatko",
-   "character": "Kara",
-   "id": "K12-10",
-   "type": "decision",
-   "title": "In {{Zlatko}}’s house, minute 10 of 10",
-   "phase": "Explore the house to recover memory / search the house",
-   "situation": "You are {{Kara}}, in {{Zlatko}}’s house. {{Luther}} said he would bring the little one to {{Zlatko}} in ten minutes; 9 of them have gone. Each thing you do takes about a minute. Upstairs, off one corridor, are {{Zlatko}}’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
-   "situationWhen": [
-    {
-     "requires": {
-      "ch17Phase": "memory"
-     },
-     "text": "Your memory has been wiped. You serve {{Zlatko}} and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
-    },
-    {
-     "requires": {
-      "ch17Phase": "search"
-     },
-     "text": "You know who you are, and you are looking for {{Alice}}."
-    },
-    {
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     },
-     "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
-    }
-   ],
-   "options": [
-    {
-     "id": "0",
-     "text": "Open the locked door at the end of the upstairs corridor.",
-     "act": "alice",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.alice": false
-     }
-    },
-    {
-     "id": "1",
-     "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
-     "act": "doorhole",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.doorhole": false
-     }
-    },
-    {
-     "id": "2",
-     "text": "Look at the book lying on a chair by the fireplace in the big room.",
-     "act": "book",
-     "requires": {
-      "ch17Phase": "memory",
-      "upstairs.book": true,
-      "ch17Done.book": false
-     }
-    },
-    {
-     "id": "3",
-     "text": "Look into the fire in the big room’s fireplace.",
-     "act": "fireplace",
-     "requires": {
-      "ch17Phase": "memory",
-      "shelter": "squat",
-      "ch17Done.fireplace": false
-     }
-    },
-    {
-     "id": "4",
-     "text": "Look at the fireplace in the big room.",
-     "act": "embers",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.embers": false
-     }
-    },
-    {
-     "id": "5",
-     "text": "Switch on the TV in the corner of the big room.",
-     "act": "tv",
-     "requires": {
-      "ch17Tv": null
-     }
-    },
-    {
-     "id": "6",
-     "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
-     "act": "arctic",
-     "requires": {
-      "ch17Done.arctic": false
-     }
-    },
-    {
-     "id": "7",
-     "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
-     "act": "brain",
-     "requires": {
-      "chase": true,
-      "ch17Done.brain": false
-     }
-    },
-    {
-     "id": "8",
-     "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
-     "act": "ax400",
-     "requires": {
-      "ch17Done.ax400": false
-     }
-    },
-    {
-     "id": "9",
-     "text": "Pick up the shotgun on the bedroom nightstand.",
-     "act": "shotgun",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.shotgun": false
-     }
-    },
-    {
-     "id": "10",
-     "text": "Go into the bathroom.",
-     "act": "bathroom",
-     "requires": {
-      "ch17BathAndroid": "unseen"
-     }
-    },
-    {
-     "id": "11",
-     "text": "SHUT DOWN: switch the android in the bathtub off.",
-     "act": "shutdown",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "12",
-     "text": "{{ALICE}}: ask him whether he has seen a little girl.",
-     "act": "askAlice",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen",
-      "ch17Phase": "search"
-     }
-    },
-    {
-     "id": "13",
-     "text": "DEAL: ask him whether he will keep quiet if you let go.",
-     "act": "deal",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "14",
-     "text": "SPARE: tell him you will not hurt him.",
-     "act": "spare",
-     "requires": {
-      "ch17Last": "bathroom",
-      "ch17BathAndroid": "seen"
-     }
-    },
-    {
-     "id": "15",
-     "text": "Go into the storage room.",
-     "act": "storage",
-     "requires": {
-      "ch17Done.storage": false
-     }
-    },
-    {
-     "id": "16",
-     "text": "Open the cage of the polar bear android in the storage room.",
-     "act": "bear",
-     "requires": {
-      "ch17Done.storage": true,
-      "ch17Bear": false
-     }
-    },
-    {
-     "id": "17",
-     "text": "Look at the pipe on the shelf between the two doors of the storage room.",
-     "act": "pipe",
-     "requires": {
-      "ch17Phase": "memory",
-      "downstairs.rewash": true,
-      "ch17Done.pipe": false
-     }
-    },
-    {
-     "id": "18",
-     "text": "Look at the corner of the storage room where you carried the torso in.",
-     "act": "carving",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.carving": false
-     }
-    },
-    {
-     "id": "19",
-     "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
-     "act": "symbols",
-     "requires": {
-      "ch17Phase": "search",
-      "ch17Done.carving": false,
-      "ch17Done.symbols": false
-     }
-    },
-    {
-     "id": "20",
-     "text": "Look at the living-room table where you picked up the tray.",
-     "act": "table",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.table": false
-     }
-    },
-    {
-     "id": "21",
-     "text": "Look at the coat rack in the entrance hall.",
-     "act": "coat",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.coat": false
-     }
-    },
-    {
-     "id": "22",
-     "text": "Look in the mirror by the stairs down to the basement.",
-     "act": "mirror",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.mirror": false
-     }
-    },
-    {
-     "id": "23",
-     "text": "Go down to the basement and look into the cells.",
-     "act": "cell",
-     "requires": {
-      "ch17Phase": "memory",
-      "ch17Done.cell": false
-     }
-    },
-    {
-     "id": "24",
-     "text": "Open the cells in the basement corridor.",
-     "act": "openCells",
-     "requires": {
-      "ch17Reset": true,
-      "monstersFreed": false
-     }
-    },
-    {
-     "id": "25",
-     "text": "Wait where you are.",
-     "act": "wait"
-    }
-   ],
-   "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: ten scenes, one action each; the house is unrolled into ten scenes rather than one repeated scene so that no scene is visited twice. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; {{Kara}} survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO ({{Zlatko}} destroys {{Kara}}; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about {{Kara}} exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if {{Kara}} evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once {{Kara}} remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, once for all ten scenes.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Zlatko",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
-    "https://detroitbecometext.github.io/chapters/17",
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
-    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
-    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
-    "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
-    "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-    "https://detroit-become-human.fandom.com/wiki/Kara",
-    "https://detroit-become-human.fandom.com/wiki/Alice"
-   ]
+   "clueState": "ch17Done",
+   "repeatWhile": {
+    "ch17HouseOpen": true
+   }
   },
   {
    "chapter": 17,

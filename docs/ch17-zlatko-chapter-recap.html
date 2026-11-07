@@ -50,12 +50,12 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li><code>K10a</code> arrival (event), <code>K10b</code> Alice’s doubt (four labels), <code>K10c</code> the basement (event).</li>
 <li><code>K10</code> the machine: fight it (risk 0.15) or do nothing. Failure or doing nothing is KARA IS RESET.</li>
 <li>Reset: <code>K10r</code> OBEY YOUR NEW MASTER and <code>K10s</code> the tray and the torso (events; the clock starts). Escape: <code>K11</code> the cells (FREE MONSTERS) and <code>K11b</code> SNEAK THROUGH HOUSE (event; the clock starts).</li>
-<li><code>K12-01</code> … <code>K12-10</code>: the house, one scene per minute, one action each. The memory hunt and the search share the ten.</li>
+<li><code>K12</code>: the repeatable house hub, one action per visit, with a ten-action budget in state. The memory hunt and the search share the ten.</li>
 <li><code>K12f</code> LUTHER GOES TO COLLECT ALICE (event).</li>
 <li><code>K13</code> the big room, <code>K13a</code> after hiding there, <code>K13b</code> the bedroom, <code>K13c</code> the corridor, <code>K13d</code> the alert, <code>K13e</code> the storage room, <code>K13f</code> ZLATKO CLOSES IN.</li>
 <li><code>K13y</code> the yard (event): LUTHER JOINS KARA &amp; ALICE.</li>
 </ol>
-<p class="fine">The house is ten scenes rather than one repeated scene so that each is visited at most once. The outcomes of the house actions live once in <code>benchmark/chapters/ch17.mjs</code>.</p></div>
+<p class="fine">The house uses <code>repeatWhile</code> and <code>clueState</code>; each clue disappears after inspection, and bathroom follow-ups require <code>ch17Done.last</code> from the previous action. The outcomes of the house actions live once in <code>benchmark/chapters/ch17.mjs</code>.</p></div>
 </div>
 
 <h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
@@ -88,7 +88,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </tbody></table></div>
 
 <h2 id="house">3 · The ten minutes</h2>
-<p>Each house scene offers what can be done now; each action is a minute. A reset Kara needs five memories (PowerPyx: “You shouldn’t need more than six”); then the memory options go and the search options appear, with whatever time is left.</p>
+<p>Each visit to the house hub offers what can be done now; each action is a minute. A reset Kara needs five memories (PowerPyx: “You shouldn’t need more than six”); then the memory options go and the search options appear, with whatever time is left.</p>
 <div class="table"><table>
 <thead><tr><th>Memory (chart)</th><th>Option</th><th>Condition</th></tr></thead>
 <tbody>
@@ -167,8 +167,9 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>What follows BURNING DOWN THE HOUSE: can Kara still be spotted?</li>
 <li>What sends GO THROUGH CORRIDOR straight to the stairs.</li>
 <li>Alice’s fate in the two shotgun endings, and whether LUTHER BROUGHT ALICE TO ZLAKTO shows Kara killed.</li>
-<li>Whether N40 reads LUTHER BRINGS ALICE TO ZLAKTO (string table) or ZLATKO on screen.</li>
+<li>N40 reads LUTHER BRINGS ALICE TO ZLAKTO in the screenshot crop as well as the string table; the earlier research transcription’s ZLATKO was incorrect.</li>
 </ul>
+<p class="fine">Review integration notes: this worktree has no chapter 10 module yet. The fireplace uses the legacy shelter flag, the carving memory prefers an explicit ch10RalphCarving boolean and otherwise falls back to the squat, and robbery news uses robbery/clothes. Reconcile those inputs with the chapter 10 rebuild before combining chapters. The chase QTE adapter reads <code>s.rolls[n.id]</code>; the engine should expose that roll through a helper. The repeatable hub previews each action on copied mutable state and returns its assignments and outcome through <code>available</code>, because the engine skips chapter consequence hooks for clue hubs. The string-table SET FIRE / PUT BACK interaction remains collapsed into choosing fire or another route; the two template choice groups are complete.</p>
 </main>
 </body>
 </html>
