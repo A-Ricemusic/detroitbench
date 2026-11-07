@@ -16,9 +16,9 @@
 // leaving (C18b `effect`). No Amanda, public opinion or other change.
 //
 // Cross-chapter inputs, read defensively:
-//   - Connor died in Public Enemy: a boolean `publicEnemyConnorDied` if a chapter 24 module declares one, otherwise
+//   - Connor died in Public Enemy: `ch24ConnorDied` first, then legacy `publicEnemyConnorDied`, otherwise
 //     derived from the current Public Enemy scenes (C16 shield Hank; a failed C16 shot or charge; a failed C14b rush).
-//   - Chris's fate: a boolean `capitolCopsSpared` if a chapter 26 module declares one, otherwise Capitol Park's M16
+//   - Chris's fate: `capitolChrisDead`, then `capitolOfficers`, then legacy `capitolCopsSpared`, otherwise M16
 //     (0 spared; 1 executed, 2 left to the crowd, both killed). Unknown: no news, and no CHRIS answer on the walk.
 // Outputs (state flags):
 //   kamskiArrival 'alone' | 'together'; kamskiAmandaPhoto (Last Chance: AMANDA'S PICTURE); kamskiChloeShot;
@@ -28,7 +28,7 @@
 import {readFileSync} from 'node:fs';
 
 export const state={kamskiArrival:null,kamskiLobby:{},kamskiAmandaPhoto:false,kamskiChloeShot:null,kamskiQuestion:null,kamskiExitHeard:false,kamskiOutcome:null};
-export const labels={kamskiArrival:'Arrival at Kamski’s house',kamskiLobby:'Looked at in Kamski’s lobby',kamskiAmandaPhoto:'Saw the photo of Amanda at Kamski’s',kamskiChloeShot:'Shot Chloe in the Kamski test',kamskiQuestion:'Question asked of Kamski',kamskiLocation:'Kamski gave the key to Jericho',kamskiExitHeard:'Heard Kamski’s emergency-exit remark',kamskiOutcome:'Meet Kamski ending'};
+export const labels={kamskiArrival:'Arrival at Kamski’s house',kamskiLobby:'Looked at in Kamski’s lobby',kamskiAmandaPhoto:'Saw the photo of Amanda at Kamski’s',kamskiChloeShot:'Shot Chloe in the Kamski test',kamskiQuestion:'Question asked of Kamski',kamskiLocation:'Kamski gave the key to Jericho',jerichoLocated:'Jericho located',kamskiExitHeard:'Heard Kamski’s emergency-exit remark',kamskiOutcome:'Meet Kamski ending'};
 export const deathEffect={}; // Connor cannot die in this chapter.
 
 export const ENDINGS={shot:'Hank was disappointed with Connor’s decision',spared:'Hank thought Connor made the right decision'};
@@ -50,12 +50,16 @@ export const rules={
 const PUBLIC_ENEMY=(()=>{try{return JSON.parse(readFileSync(new URL('./ch24.json',import.meta.url),'utf8'))}catch{return []}})();
 const failedAt=(s,id)=>{const risk=PUBLIC_ENEMY.find(n=>n.id===id)?.options?.find(o=>o.id===s.choices[id])?.risk;return typeof risk==='number'&&typeof s.rolls?.[id]==='number'&&s.rolls[id]<risk};
 export function diedInPublicEnemy(s){
+ if(typeof s.ch24ConnorDied==='boolean')return s.ch24ConnorDied;
  if(typeof s.publicEnemyConnorDied==='boolean')return s.publicEnemyConnorDied;
  const c16=s.choices.C16;
  return c16==='0'||(c16!==undefined&&failedAt(s,'C16'))||(s.choices.C14b==='0'&&failedAt(s,'C14b'));
 }
 // 'spared', 'killed' or null when Capitol Park left nothing on the path.
 export function chrisFate(s){
+ if(typeof s.capitolChrisDead==='boolean')return s.capitolChrisDead?'killed':'spared';
+ if(s.capitolOfficers==='spared')return 'spared';
+ if(['revenge','crowd'].includes(s.capitolOfficers))return 'killed';
  if(typeof s.capitolCopsSpared==='boolean')return s.capitolCopsSpared?'spared':'killed';
  const m=s.choices.M16;return m==='0'?'spared':m==='1'||m==='2'?'killed':null;
 }

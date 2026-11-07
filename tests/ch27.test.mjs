@@ -23,12 +23,13 @@ test('Meet Kamski: the chapter’s scenes in story order, each sourced and annot
  assert.ok(ch27.filter(n=>n.type==='decision'&&n.id!=='C17g').every(n=>n.sources.some(u=>u.includes('detroitbecometext'))),'every prompt cites the template');
  assert.ok(ch27.every(n=>!n.options.some(o=>typeof o.risk==='number')),'no timer or failure branch, so no risk');
  assert.deepEqual(mod.deathEffect,{},'Connor cannot die in this chapter');
- for(const k of ['kamskiArrival','kamskiAmandaPhoto','kamskiChloeShot','kamskiQuestion','kamskiExitHeard','kamskiOutcome'])assert.ok(mod.labels[k],k+' is labelled')});
+ for(const k of ['kamskiArrival','kamskiAmandaPhoto','kamskiChloeShot','kamskiQuestion','kamskiLocation','jerichoLocated','kamskiExitHeard','kamskiOutcome'])assert.ok(mod.labels[k],k+' is labelled')});
 
 test('Meet Kamski: every prompt offers the game’s buttons in the game’s order',{timeout:120000},()=>{
  const want={C17c:['INSTINCT','LEAD','KAMSKI','CHRIS'],C17e:['SINCERE','ANALYTICAL','INDIFFERENT'],C17f:['IMPATIENT','DISTANT','INDIFFERENT'],C17i:['HELP','DEVIANTS','VIRUS','WAR'],
   C17j:['NEUTRAL','DEFENSIVE','DIRECT'],C17k:['AGGRESSIVE','DEFENSIVE','TROUBLED','NEUTRAL'],C17:['SHOOT','DON’T SHOOT'],C18:['rA9','JERICHO LOCATION','VIRUS']};
  for(const [id,labels] of Object.entries(want))assert.deepEqual(node(id).options.map(label),labels,id);
+ assert.match(render(node('C17d').situation,'real'),/Lieutenant Hank Anderson, Detroit Police Department/);
  assert.deepEqual(node('C18').options.map(o=>o.id),['1','0','2'],'0 stays the Jericho answer');
  assert.match(render(node('C17j').options[1].outcome,'real'),/It’s not about me, Mr\. Kamski/);assert.match(render(node('C18').options[1].outcome,'real'),/Ferndale Station is the door/)});
 
@@ -95,3 +96,15 @@ test('Meet Kamski: neutral text names no one from the game',{timeout:120000},()=
  s.kamskiArrival='alone';moduleTexts.push(apply(node('C17c'),structuredClone(s),'3').event);s.choices.M16='0';moduleTexts.push(apply(node('C17b'),structuredClone(s),'0').event,apply(node('C17c'),structuredClone(s),'3').event);
  for(const t of [...texts,...moduleTexts]){const n=render(t,'neutral');assert.ok(!/\{\{/.test(n));
   assert.ok(!/Connor|Hank|Kamski|Elijah|Chloe|Amanda|Stern|Colbridge|Ferndale|rA9|RA9|Anderson|Miller|\bChris\b|Markus|Jericho|CyberLife|Cyberlife|Detroit|deviant|Thirium/i.test(n),'leak: '+n.slice(0,120))}});
+
+
+test('Meet Kamski: rebuilt chapter inputs take precedence over legacy choices',()=>{
+ const s=startState(story);s.choices.C16='0';s.publicEnemyConnorDied=true;s.ch24ConnorDied=false;
+ assert.equal(mod.diedInPublicEnemy(s),false);s.ch24ConnorDied=true;assert.equal(mod.diedInPublicEnemy(s),true);
+ s.choices.M16='1';s.capitolCopsSpared=false;s.capitolOfficers='revenge';s.capitolChrisDead=false;
+ assert.equal(mod.chrisFate(s),'spared');s.capitolChrisDead=true;s.capitolOfficers='spared';assert.equal(mod.chrisFate(s),'killed');
+ s.capitolChrisDead=null;assert.equal(mod.chrisFate(s),'spared');
+ for(const f of ['revenge','crowd']){s.capitolOfficers=f;s.capitolCopsSpared=true;assert.equal(mod.chrisFate(s),'killed')}
+ s.capitolOfficers=null;assert.equal(mod.chrisFate(s),'spared');delete s.capitolCopsSpared;assert.equal(mod.chrisFate(s),'killed');
+ assert.deepEqual(node('C17g').repeatWhile,{'kamskiLobby.left':false});
+});

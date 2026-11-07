@@ -1468,7 +1468,7 @@ Gaps:
 
 - (0) Continue.
 
-_Note: The chart’s start for a Connor who died in Public Enemy: the checkpoint WAIT FOR HANK and the event HANK ISN’T PLEASED TO SEE CONNOR, behind the condition tab CONNOR DIED IN ‘PUBLIC ENEMY’, narrated as one event. Hank’s greeting is the outcome and follows the template’s two variants: “Still immortal, huh Connor?” when Connor has died more than once in all (the template’s “Connor died multiple times”; the wiki notes this plays even if the earlier death was in The Hostage), otherwise “You died in my arms…”. The template’s cut alternative (“I couldn’t decide whether I wanted you to come back this time…”) is not built. Arrow: Hank small down here (template “Hank arrives alone”, ARROW Hank SmallDown; wiki “Connor died in Public Enemy” down; Relationship Stat “At the beginning of Meet Kamski if Connor died in Public Enemy”). Whether Connor died in Public Enemy is read from a chapter 24 flag if one exists (publicEnemyConnorDied), otherwise from the current Public Enemy scenes (shielding Hank, or a failed rush on the roof or in the corridor). That Connor came on his own and waits in the snow is the chart’s reading (start B is ARRIVE WITH HANK; the checkpoint image shows Hank getting out of his car while Connor waits)._
+_Note: The chart’s start for a Connor who died in Public Enemy: the checkpoint WAIT FOR HANK and the event HANK ISN’T PLEASED TO SEE CONNOR, behind the condition tab CONNOR DIED IN ‘PUBLIC ENEMY’, narrated as one event. Hank’s greeting is the outcome and follows the template’s two variants: “Still immortal, huh Connor?” when Connor has died more than once in all (the template’s “Connor died multiple times”; the wiki notes this plays even if the earlier death was in The Hostage), otherwise “You died in my arms…”. The template’s cut alternative (“I couldn’t decide whether I wanted you to come back this time…”) is not built. Arrow: Hank small down here (template “Hank arrives alone”, ARROW Hank SmallDown; wiki “Connor died in Public Enemy” down; Relationship Stat “At the beginning of Meet Kamski if Connor died in Public Enemy”). Whether Connor died in Public Enemy is read from a chapter 24 flag if one exists (ch24ConnorDied first, then legacy publicEnemyConnorDied), otherwise from the current Public Enemy scenes (shielding Hank, or a failed rush on the roof or in the corridor). That Connor came on his own and waits in the snow is the chart’s reading (start B is ARRIVE WITH HANK; the checkpoint image shows Hank getting out of his car while Connor waits)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1500,7 +1500,7 @@ Gaps:
 
 ### C17d · The android at the door (Connor, event)
 
-> You are Connor. Hank rings at the door of the villa. An android opens it, a young woman. Hank: “Hi… Uh... I’m, er, Lieutenant Anderson, Detroit Police Department. I’m here to see Mr. Elijah Kamski.” The android: “Please, come in.” Hank: “Okay.” She shows you into a large lobby: “I’ll let Elijah know you’re here. But please, make yourself comfortable.”
+> You are Connor. Hank rings at the door of the villa. An android opens it, a young woman. Hank: “Hi… Uh... I’m, er, Lieutenant Hank Anderson, Detroit Police Department. I’m here to see Mr. Elijah Kamski.” The android: “Please, come in.” Hank: “Okay.” She shows you into a large lobby: “I’ll let Elijah know you’re here. But please, make yourself comfortable.”
 
 - (0) Continue.
 

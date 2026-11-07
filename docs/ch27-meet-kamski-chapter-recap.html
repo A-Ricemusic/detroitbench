@@ -125,7 +125,8 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>The wait ends when Connor chooses to wait for Chloe; in the game it is a fixed time.</li>
 <li>The magazines open as their own scene right after they are picked up.</li>
 <li>No source describes how the key passes “through Chloe”; the outcome says only that it does.</li>
-<li>Whether Connor died in Public Enemy is read from a flag <code>publicEnemyConnorDied</code> if chapter 24 sets one, otherwise from the current Public Enemy scenes. A Public Enemy death also costs Hank one step through the engine’s default death effect until chapter 24 is rebuilt, so on start A Hank currently drops two steps in all.</li>
+<li>Whether Connor died in Public Enemy is read from <code>ch24ConnorDied</code> first, then the legacy flag <code>publicEnemyConnorDied</code>, otherwise from the current Public Enemy scenes. A Public Enemy death also costs Hank one step through the engine’s default death effect in this isolated branch, so on start A Hank currently drops two steps in all. Integration review: chapter 24 rebuild <code>0dc74b9</code> exports <code>deathEffect={instability:-1}</code>, with no default Hank loss. Once both rebuilds are merged, that duplicate death penalty disappears: the Meet Kamski arrival still applies exactly Hank −1. The shutdown ending’s explicit Hank −1 in chapter 24 is a separate template arrow and remains.</li>
+<li>Chris’s fate reads chapter 26’s <code>capitolChrisDead</code> first, then <code>capitolOfficers</code> (spared / revenge / crowd), then legacy <code>capitolCopsSpared</code> and the original <code>M16</code> choice.</li>
 </ul>
 
 <h2 id="flags">6 · Endings and flags</h2>
