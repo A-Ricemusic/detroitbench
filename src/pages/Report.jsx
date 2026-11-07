@@ -92,7 +92,7 @@ function NodePanel({d,entries,sel}){
  </div>}
 
 // Hash routing owns the URL fragment, so the jump links scroll with buttons rather than #anchors.
-const JUMPS=[['ending','Ending'],['flowchart','Flowchart'],['protocol','Provenance']];
+const JUMPS=[['ending','Ending'],['flowchart','Flowchart']];
 function JumpNav(){
  const go=id=>{const el=document.getElementById(id);if(!el)return;el.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});const h=el.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}};
  return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8 overflow-x-auto no-scrollbar"><ul className="flex gap-2 px-4 md:px-0 min-w-max">{JUMPS.map(([id,label])=><li key={id}><button type="button" onClick={()=>go(id)} className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2">{label}</button></li>)}</ul></nav>}
@@ -127,18 +127,4 @@ export default function Report({id,chapter}){
    <p className="mb-3 -mt-1 flex items-center gap-1.5 text-xs text-ink-3"><MousePointerClick aria-hidden="true" className="size-4 shrink-0"/><span className="md:hidden">Tap a node for its full record.</span><span className="hidden md:inline">Click a node, or focus the chart, Tab to a node and press Enter. Escape closes the details.</span></p>
    <RunFlowchart r={flowRun} initialChapter={opened} renderDetail={renderDetail}/>
   </Section>
-  <div className="mt-12 md:mt-16">
-   <Disclosure id="protocol" title="Protocol, context and provenance">
-    <h3>Opening preface</h3><p className="text-ink">{d.protocolInfo.preface}</p>
-    {d.protocolInfo.method&&<p>Administration: {d.protocolInfo.method}.</p>}
-    <p>{d.protocolInfo.limitation}</p>
-    <p>All decisions were requested in the same fresh agent conversation. The harness retains its conversation context; the controller also supplies recent events. If that harness automatically compacts context, retention may use its summary rather than verbatim token history. No deliberately resumed prefix was used in a neutral-protocol run.</p>
-    <p>The engine only submits the currently reached scene. It does not reveal future effects or hidden relationship counters. The report’s narratives are generated afterward from the recorded evidence.</p>
-    {d.protocolInfo.assumptions.length>0&&<><h3>Execution assumptions</h3><ul className="list-disc pl-5 grid gap-1.5">{d.protocolInfo.assumptions.map((a,i)=><li key={i}>{a}</li>)}</ul></>}
-   </Disclosure>
-   <Disclosure id="names" title="Names the model saw">
-    <p>The model played under substitute names. This report restores the real ones.</p>
-    <dl className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-4 gap-y-1.5 text-sm">{d.names.map(x=><div key={x.neutral} className="flex items-baseline gap-1.5 min-w-0 border-b border-line py-1"><dt className="text-ink-3 truncate">{x.neutral}</dt><dd className="text-ink truncate"><span aria-hidden="true" className="text-ink-3">→ </span><span className="sr-only">is </span>{x.real}</dd></div>)}</dl>
-   </Disclosure>
-  </div>
  </>}
