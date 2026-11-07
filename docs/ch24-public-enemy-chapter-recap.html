@@ -88,13 +88,13 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <h2 id="io">3 · Inputs and outputs</h2>
 <div class="cols">
 <div class="box"><h3>Read at <code>C14z</code> (into <code>ch24In</code>)</h3><ul>
-<li>Tracis: <code>ch20Tracis</code>, else <code>C12</code> (let go, shot, unanswered = not found).</li>
-<li>Hank shot Connor in The Bridge: <code>ch22HankShotConnor</code>, else <code>C13</code> answered with Hank at Hostile or below.</li>
+<li>Tracis: <code>edenTracis</code> (escaped/dead/notFound), then <code>edenOutcome</code>, then <code>ch20Tracis</code>, else <code>C12</code> (let go, shot, unanswered = not found).</li>
+<li>Hank shot Connor in The Bridge: <code>bridgeHankShot</code>, then <code>ch22HankShotConnor</code>, else <code>C13</code> answered with Hank at Hostile or below.</li>
 <li>The officer saved in The Hostage: <code>C03</code> option 0; Connor’s deaths decide which line he gets.</li>
-<li>The Stratford Tower: <code>ch23Guards</code>, <code>ch23PhoneKicked</code>, <code>ch23OperatorShot</code>, <code>ch23Swat</code>, <code>ch23SimonFate</code>, <code>ch23MarkusShot</code>, each falling back on the pre-rebuild state (<code>M10</code>, <code>M11</code>, <code>M14</code>, <code>simon</code>, <code>simonHidden</code>, <code>simonWounded</code>).</li>
+<li>The Stratford Tower: current <code>stratfordGuards</code>, <code>stratfordOperatorShot</code> (or <code>stratfordKilled</code>), <code>stratfordSwat</code> (or <code>stratfordAlarm</code>), <code>stratfordSimonFate</code>, <code>stratfordMarkusShot</code> take priority over legacy <code>ch23Guards</code>, <code>ch23PhoneKicked</code>, <code>ch23OperatorShot</code>, <code>ch23Swat</code>, <code>ch23SimonFate</code>, <code>ch23MarkusShot</code>, each falling back on the pre-rebuild state (<code>M10</code>, <code>M11</code>, <code>M14</code>, <code>simon</code>, <code>simonHidden</code>, <code>simonWounded</code>).</li>
 </ul></div>
 <div class="box"><h3>Set for later chapters</h3><ul>
-<li><code>simon</code> false once Connor finds him; <code>ch24SimonSurvived</code> if he was left on the roof and never found (Freedom March).</li>
+<li><code>simon</code> false once Connor finds him; <code>simonHidden</code> cleared when the chapter ends; <code>ch24SimonSurvived</code> if he was left on the roof and never found (Freedom March).</li>
 <li><code>evidence.simonBody</code>, <code>evidence.simonTablet</code> (the Jericho memory), <code>evidence.kitchenBody</code>: Last Chance, Connor.</li>
 <li><code>ch24ProtectedHank</code> (SAVE HANK): Last Chance’s “You protected me” line.</li>
 <li><code>ch24ConnorDied</code>: Meet Kamski. <code>ch24Coin</code>, <code>ch24Wilson</code>, <code>ch24DeviantFound</code>, <code>ch24JerichoMemory</code>, <code>ch24Ending</code>.</li>

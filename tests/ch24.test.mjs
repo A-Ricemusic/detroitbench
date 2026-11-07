@@ -205,3 +205,22 @@ test('Public Enemy: the subject reads neutral names only',{timeout:60000},()=>{
  for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/\{\{/.test(neutral),t);assert.ok(!LEAK.test(neutral),neutral)}
  assert.match(render(node('C14').options.find(o=>o.clue==='video').outcome,'real'),/Gift from Elijah Kamski to Carl Manfred/);
 });
+
+test('Public Enemy: rebuilt chapter inputs override legacy aliases, including false and enum translations',()=>{
+ const legacy={choices:{C12:'0',M10:'1',M11:'0',M14:'1'},simon:false,simonWounded:false,
+  ch20Tracis:'spared',ch22HankShotConnor:true,ch23Guards:'phoneShot',ch23OperatorShot:true,ch23Swat:true,ch23SimonFate:'roofKilled',ch23MarkusShot:true};
+ const modern={...legacy,edenTracis:'dead',bridgeHankShot:false,stratfordGuards:'knockedOut',stratfordOperatorShot:false,
+  stratfordSwat:false,stratfordAlarm:true,stratfordSimonFate:'escaped',stratfordMarkusShot:false};
+ const i=readInputs(modern);assert.equal(i.tracis,'died');assert.equal(i.bridgeShot,false);assert.equal(i.employeeShot,false);
+ assert.equal(i.swat,false);assert.equal(i.simonFate,'escaped');assert.equal(i.markusShot,false);assert.equal(i.phoneGuardShot,false);
+ for(const [raw,want] of [['escaped','spared'],['dead','died'],['notFound','notFound']])assert.equal(readInputs({...legacy,edenTracis:raw}).tracis,want);
+ for(const [raw,want] of [['MISSION FAILED','notFound'],['DEVIANTS ESCAPED','spared'],['DEVIANTS DIED','died'],['CONNOR SHOT DEVIANTS','died']])assert.equal(readInputs({...legacy,edenTracis:null,edenOutcome:raw}).tracis,want);
+ for(const [raw,want] of [['leftOnRoof','roofHidden'],['executed','roofKilled'],['killedBySwat','roomKilled']])assert.equal(readInputs({...legacy,stratfordSimonFate:raw}).simonFate,want);
+ for(const [raw,phone,armed,kicked] of [['knockedOut',false,false,false],['phoneShot',true,false,false],['weaponShot',false,true,true],['northAttacks',false,false,true]]){
+  const r=readInputs({...legacy,stratfordGuards:raw});assert.deepEqual([r.phoneGuardShot,r.armedGuardShot,r.phoneKicked],[phone,armed,kicked]);
+ }
+ assert.equal(readInputs({...legacy,stratfordKilled:'none'}).employeeShot,false);
+ assert.equal(readInputs({...legacy,stratfordKilled:'operator'}).employeeShot,true);
+ assert.equal(readInputs({...legacy,stratfordAlarm:false}).swat,false);
+ assert.equal(readInputs({...legacy,edenTracis:'unknown',edenOutcome:null}).tracis,'spared');
+});

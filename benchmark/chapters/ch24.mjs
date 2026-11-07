@@ -36,16 +36,10 @@
 //   The Hank small down for a Connor death in this chapter belongs to the start of Meet Kamski (wiki), read there from
 //   `ch24ConnorDied`.
 //
-// Cross-chapter inputs, snapshotted into `ch24In` at C14z. Each reads an explicit flag from the earlier chapter's rebuild
-// when it exists, else falls back on the pre-rebuild engine state:
-//   tracis: `ch20Tracis` ('notFound' | 'spared' | 'died'), else C12 (0 = let go, 1 = shot, unanswered = not found).
-//   bridgeShot (Hank shot Connor in The Bridge): `ch22HankShotConnor`, else C13 answered with Hank at Hostile or below.
-//   copSaved (Officer Wilson saved in The Hostage): C03 option 0 (IGNORE, the tourniquet). copMemory from connorDeaths and
-//   the Hostage ending: 'remembers' (no death yet), 'diedInHostage', 'diedAfter'.
-//   Stratford Tower: `ch23Guards` ('knockedOut' | 'phoneShot' | 'armedShot', else M10 1 = 'armedShot'), `ch23PhoneKicked`
-//   (else armedShot), `ch23OperatorShot` (else M11 0), `ch23Swat` (else simonWounded: the old M12 storms only then),
-//   `ch23SimonFate` ('escaped' | 'roofHidden' | 'roofKilled' | 'roomKilled', else from simon, simonHidden and M14),
-//   simonWounded (built-in, or any fate but 'escaped'), `ch23MarkusShot` (no fallback).
+// Cross-chapter inputs are read defensively by readInputs: chapter 20's edenTracis/edenOutcome,
+// chapter 22's bridgeHankShot, and chapter 23's stratford* exports take priority over chNN aliases
+// and the original engine's choices. Enum translations and nullable defaults are handled below.
+// The saved terrace officer is C03 option 0; prior Connor deaths select his recognition dialogue.
 //
 // Cross-chapter outputs:
 //   simon (built-in): false once Connor finds him (every Simon ending). simonHidden: false when the chapter ends.
@@ -87,24 +81,35 @@ export const rules={ENDINGS,ENDING_SCENES,DEVIANT,DEATH_EFFECT,risks:{charge:0.3
 // The chapter's inputs, read once at the start (C14z) and kept in `ch24In` so scene conditions can name them.
 export function readInputs(s,hankHostile=-4){
  const c=id=>s.choices?.[id];
- const tracis=['notFound','spared','died'].includes(s.ch20Tracis)?s.ch20Tracis:c('C12')==='0'?'spared':c('C12')==='1'?'died':'notFound';
- const bridgeShot=typeof s.ch22HankShotConnor==='boolean'?s.ch22HankShotConnor:c('C13')!==undefined&&s.hankTrust<=hankHostile;
+ const enumValue=(map,...values)=>values.map(v=>Object.hasOwn(map,v)?map[v]:undefined).find(v=>v!==undefined);
+ const bool=(...values)=>values.find(v=>typeof v==='boolean');
+ const tracis=enumValue({notFound:'notFound',escaped:'spared',spared:'spared',dead:'died',died:'died'},s.edenTracis)
+  ??enumValue({'MISSION FAILED':'notFound','DEVIANTS ESCAPED':'spared','DEVIANTS DIED':'died','CONNOR SHOT DEVIANTS':'died'},s.edenOutcome)
+  ??enumValue({notFound:'notFound',spared:'spared',died:'died'},s.ch20Tracis)
+  ??(c('C12')==='0'?'spared':c('C12')==='1'?'died':'notFound');
+ const bridgeShot=bool(s.bridgeHankShot,s.ch22HankShotConnor)??(c('C13')!==undefined&&s.hankTrust<=hankHostile);
  const copSaved=c('C03')==='0',hostageDeath=HOSTAGE_DEATHS.includes(s.hostageOutcome);
  const copMemory=s.connorDeaths===0?'remembers':hostageDeath&&s.connorDeaths===1?'diedInHostage':'diedAfter';
- const guards=['knockedOut','phoneShot','armedShot'].includes(s.ch23Guards)?s.ch23Guards:c('M10')==='1'?'armedShot':'knockedOut';
- const phoneKicked=typeof s.ch23PhoneKicked==='boolean'?s.ch23PhoneKicked:guards==='armedShot';
- const employeeShot=typeof s.ch23OperatorShot==='boolean'?s.ch23OperatorShot:c('M11')==='0';
- const simonFate=['escaped','roofHidden','roofKilled','roomKilled'].includes(s.ch23SimonFate)?s.ch23SimonFate
-  :!s.simon?(c('M14')==='1'?'roofKilled':'roomKilled'):s.simonHidden?'roofHidden':'escaped';
- const swat=typeof s.ch23Swat==='boolean'?s.ch23Swat:!!s.simonWounded;
+ const guards=enumValue({knockedOut:'knockedOut',northAttacks:'northAttacks',phoneShot:'phoneShot',weaponShot:'armedShot'},s.stratfordGuards)
+  ??enumValue({knockedOut:'knockedOut',phoneShot:'phoneShot',armedShot:'armedShot'},s.ch23Guards)
+  ??(c('M10')==='1'?'armedShot':'knockedOut');
+ const phoneKicked=typeof s.stratfordGuards==='string'&&['knockedOut','northAttacks','phoneShot','weaponShot'].includes(s.stratfordGuards)
+  ?['weaponShot','northAttacks'].includes(s.stratfordGuards):bool(s.ch23PhoneKicked)??guards==='armedShot';
+ const employeeShot=bool(s.stratfordOperatorShot)
+  ??enumValue({none:false,guard:false,operator:true,both:true},s.stratfordKilled)
+  ??bool(s.ch23OperatorShot)??(c('M11')==='0');
+ const simonFate=enumValue({escaped:'escaped',leftOnRoof:'roofHidden',executed:'roofKilled',killedBySwat:'roomKilled'},s.stratfordSimonFate)
+  ??enumValue({escaped:'escaped',roofHidden:'roofHidden',roofKilled:'roofKilled',roomKilled:'roomKilled'},s.ch23SimonFate)
+  ??(!s.simon?(c('M14')==='1'?'roofKilled':'roomKilled'):s.simonHidden?'roofHidden':'escaped');
+ const swat=bool(s.stratfordSwat,s.stratfordAlarm,s.ch23Swat)??!!s.simonWounded;
  const simonWounded=!!s.simonWounded||simonFate!=='escaped';
  return {tracis,bridgeShot,copSaved,copMemory,guards,phoneGuardShot:guards==='phoneShot',armedGuardShot:guards==='armedShot',
-  guardsAttacked:guards!=='knockedOut',phoneKicked,employeeShot,swat,simonWounded,simonFate,
+  guardsAttacked:guards==='phoneShot'||guards==='armedShot',phoneKicked,employeeShot,swat,simonWounded,simonFate,
   simonOnRoof:simonFate==='roofHidden',simonDead:simonFate==='roofKilled'||simonFate==='roomKilled',
   simonDiedRoof:simonFate==='roofKilled',simonDiedRoom:simonFate==='roomKilled',
   // ANALYZE BLUE BLOOD ON WALL: SWAT stormed and Simon was helped toward the roof (PowerPyx).
   wallBlood:swat&&simonWounded&&simonFate!=='roomKilled',roofBlood:simonFate==='roofHidden'||simonFate==='roofKilled',
-  markusShot:!!s.ch23MarkusShot};
+  markusShot:bool(s.stratfordMarkusShot,s.ch23MarkusShot)??false};
 }
 
 const phase=p=>s=>s.ch24Phase===p||'Connor is elsewhere in the tower, or the chapter has ended.';
