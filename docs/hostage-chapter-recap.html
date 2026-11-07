@@ -29,7 +29,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </head>
 <body>
 <main>
-<p class="fine">DetroitBench · story 1.3.2 · chapter 1</p>
+<p class="fine">DetroitBench · story 1.3.3 · chapter 1</p>
 <h1>The Hostage: how the chapter works</h1>
 <p class="lede">A reference for replaying the chapter. Numbers come from the Fandom wiki’s probability table; where your notes differ, section 4 says so and what the benchmark chose.</p>
 <nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#table">2 · Every modifier</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Differs</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
@@ -52,7 +52,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li><code>C01</code> The fish: save (+1 software instability) or step past.</li>
 <li><code>C01b</code> The mother in the hallway (event).</li>
 <li><code>C02</code> The briefing (event). Hidden <code>trust</code> set to 48.</li>
-<li><code>C02i</code> Searching the apartment, repeated: each visit lists the clues not yet examined plus “Go out to the terrace now”. Each clue is one action, adds its modifier and its fact, costs 1% after the first action, and carries a hidden 0.2% (“Low risk”) chance that Daniel jumps before Connor gets out.</li>
+<li><code>C02i</code> Searching the apartment, repeated: each visit lists the clues not yet examined plus “Go out to the terrace now”. Each clue is one action, adds its modifier and its fact, costs 1% after the first action, . Nothing makes Daniel jump while Connor is inside; after six actions Allen forces Connor out.</li>
 <li><code>C02e</code> The officer at the window (event), once, right after the second action.</li>
 <li>After six actions Allen orders Connor outside.</li>
 <li><code>C03a</code> Stepping onto the terrace (event): shot in the shoulder; greeting by name only after the video.</li>
@@ -133,7 +133,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>POSSIBLE CAUSE</td><td class="n">+10</td><td class="n">+10</td><td>+10 (agrees)</td></tr>
 <tr><td>Dismiss helicopter</td><td class="n">+20</td><td class="n">+10</td><td>+10</td></tr>
 <tr><td>Officer shot at the window</td><td>after exactly two actions</td><td>140 s in view of the window</td><td>after the second action (confirmed in game by the operator, 2026-11-06)</td></tr>
-<tr><td>Running out of time</td><td>Daniel jumps</td><td>Allen forces you outside after 5 min</td><td>both: 0.2% per action that Daniel jumps (labelled “Wasted too much time”, unlike the wiki’s meaning), and Allen forces you out after six actions</td></tr>
+<tr><td>Running out of time</td><td>Daniel jumps</td><td>Allen forces you outside after 5 min</td><td>Allen forces you out after six actions; no jump while inside (confirmed in play 2026-11-06 and by the wiki)</td></tr>
 <tr><td>Connor shot in the shoulder</td><td>yes</td><td>“shoots Connor”, body part not stated</td><td>shoulder, from your notes; not confirmed by the text available</td></tr>
 <tr><td>Emma shot by Daniel</td><td>mentioned</td><td>not in any source</td><td>not modelled</td></tr>
 <tr><td>Use gun</td><td>shoots Daniel</td><td>EXECUTE shoots him; INTIMIDATE then persuade gets Connor shot (“Deviant shot Connor”)</td><td>always shoots Daniel</td></tr>
@@ -155,7 +155,6 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>Connor leapt for Emma and fell</td><td>Daniel jumps (REFUSE, TRUTH, REASSURE below 80, or trust ≤ 10), leap succeeds (70%)</td><td>Emma safe, Connor destroyed and replaced; Amanda +1</td></tr>
 <tr><td>Connor failed to reach deviant in time</td><td>Daniel jumps, leap fails (30%)</td><td>Emma lost, Connor lives; Amanda −2</td></tr>
 <tr><td>Deviant jumped with Emma</td><td>Daniel jumps, Connor stays back</td><td>Emma lost, Connor lives; Amanda −2</td></tr>
-<tr><td>Wasted too much time</td><td>an investigative action’s hidden 0.2% roll fails</td><td>Emma lost before Connor reaches the terrace; Amanda −2</td></tr>
 </tbody></table></div>
 <p class="fine">The final value is stored as <code>hostageTrustFinal</code>; reports show it with the outcome. In the game, “Deviant shot Connor” (intimidate, then persuade) is a seventh ending the benchmark does not offer.</p>
 
@@ -166,6 +165,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Whether the father’s body and his tablet show as two steps (+3 then +7).</li>
 <li>Confirmed 2026-11-06: POSSIBLE CAUSE and EMMA AND YOU only appear after the tablet and the video, as the benchmark gates them.</li>
 <li>Confirmed 2026-11-06: the window officer is shot after the second action, as the benchmark does.</li>
+<li>Confirmed 2026-11-06: waiting inside never makes Daniel jump; after about five minutes Allen forces Connor out. The benchmark forces Connor out after six actions and has no hidden jump roll.</li>
 <li>What happens at 5 minutes: Allen’s order, or Daniel jumping.</li>
 <li>Where Daniel’s first shot hits Connor.</li>
 <li>The meter after REASSURE at 74–79% before it: does it fail, and does 80% exactly succeed?</li>

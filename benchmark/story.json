@@ -1,6 +1,6 @@
 {
  "id": "detroitbench-branching",
- "version": "1.3.2",
+ "version": "1.3.3",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
@@ -111,7 +111,6 @@
      "text": "Examine the open gun case on the floor by the tactical team.",
      "clue": "gunCase",
      "trust": 3,
-     "risk": 0.002,
      "fact": "An open gun case lies on the floor by the tactical team; its pistol is missing. The android took it: it is armed.",
      "outcome": "{{Connor}} analyzes the empty gun case: the missing pistol is in the android’s hands."
     },
@@ -120,7 +119,6 @@
      "text": "Examine the father’s body by the sofa and reconstruct how he died.",
      "clue": "father",
      "trust": 10,
-     "risk": 0.002,
      "fact": "The father was shot by the sofa. He was holding a tablet when he fell; on it is a purchase confirmation for a new android model. The family was about to replace the android on the terrace.",
      "outcome": "{{Connor}} reconstructs the shooting and picks up the father’s tablet: the family had just bought a new android to replace the old one."
     },
@@ -129,7 +127,6 @@
      "text": "Examine the dead police officer by the dining table.",
      "clue": "cop",
      "trust": 3,
-     "risk": 0.002,
      "fact": "The dead officer by the dining table was shot trying to reach the terrace. His service pistol slid under the dining table and is still there.",
      "outcome": "{{Connor}} examines the dead officer and reconstructs the shot: the officer’s pistol is lying under the dining table."
     },
@@ -138,7 +135,6 @@
      "text": "Take the dead officer’s pistol from under the table and hide it under your jacket.",
      "clue": "gun",
      "trust": 7,
-     "risk": 0.002,
      "fact": null,
      "outcome": "{{Connor}} slips the officer’s pistol under his jacket. If the android asks, he will have to lie about it.",
      "requires": {
@@ -150,7 +146,6 @@
      "text": "Go into the girl’s bedroom and pick up the headphones on the bed.",
      "clue": "headphones",
      "trust": 3,
-     "risk": 0.002,
      "fact": "The headphones on the girl’s bed are still playing music: she was wearing them and did not hear the shots that killed her father.",
      "outcome": "{{Connor}} picks up the headphones in the girl’s bedroom: she did not hear the gunshots."
     },
@@ -159,7 +154,6 @@
      "text": "Play the video on the tablet in the girl’s bedroom.",
      "clue": "video",
      "trust": 7,
-     "risk": 0.002,
      "fact": "A video on the girl’s tablet shows her playing and laughing with the android at home. She calls him {{Daniel}}. They were close, and plainly fond of each other.",
      "outcome": "{{Connor}} watches the video on the girl’s tablet and learns the android’s name: {{Daniel}}."
     },
@@ -168,7 +162,6 @@
      "text": "Watch the live news report on the kitchen television.",
      "clue": "tv",
      "trust": 0,
-     "risk": 0.002,
      "fact": "The live news shows the android holding the girl at the edge of the terrace, seventy floors up, threatening to jump. The anchors call it the first case of an android deliberately taking human lives.",
      "outcome": "{{Connor}} watches the live coverage of the standoff on the kitchen television."
     },
@@ -177,7 +170,6 @@
      "text": "Turn off the pot boiling over on the kitchen stove.",
      "clue": "stove",
      "trust": 0,
-     "risk": 0.002,
      "fact": "A pot was left boiling on the stove: the family was about to have dinner when it happened.",
      "outcome": "{{Connor}} turns off the stove: the family was about to sit down to dinner."
     },
@@ -186,7 +178,6 @@
      "text": "Analyze the blue android blood on the floor.",
      "clue": "blood",
      "trust": 3,
-     "risk": 0.002,
      "fact": "There is android blood on the floor: the android was wounded in the exchange of fire with the police.",
      "outcome": "{{Connor}} analyzes the android blood on the floor: the hostage-taker is wounded."
     },
@@ -195,7 +186,6 @@
      "text": "Examine the child’s shoe lying on the floor.",
      "clue": "shoe",
      "trust": 3,
-     "risk": 0.002,
      "fact": "One of the girl’s shoes lies on the floor, lost as she was dragged outside. She may be hurt.",
      "outcome": "{{Connor}} examines the girl’s shoe: she lost it as she was dragged outside and may be hurt."
     },
@@ -204,7 +194,6 @@
      "text": "Look out through the window at the terrace.",
      "clue": "window",
      "trust": 0,
-     "risk": 0.002,
      "fact": "Through the window you see the android at the edge of the terrace, holding the girl in front of him with a pistol in his other hand, and a police helicopter circling.",
      "outcome": "{{Connor}} looks out through the window: the android and the girl are at the very edge of the terrace."
     },
@@ -225,7 +214,7 @@
      "swatShot": false
     }
    },
-   "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Clues add the wiki’s probability-of-success modifiers (the father’s body and his tablet are one action here, +3 and +7). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. Each action carries a 0.5% hidden chance that the android jumps before {{Connor}} gets outside. In the game {{Allen}} forces {{Connor}} out after five minutes; here he does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
+   "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Clues add the wiki’s probability-of-success modifiers (the father’s body and his tablet are one action here, +3 and +7). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game {{Allen}} forces {{Connor}} out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while {{Connor}} is inside, confirmed in play); here {{Allen}} does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage"
    ]

@@ -66,14 +66,14 @@ export function blocked(n,s){
   if(!mediaFor(n,s).length)return 'No magazine or broadcast exists on this path here.';
   return null;
  }
- const standoff=()=>s.hostagePhase==='terrace'||(s.hostageOutcome==='Wasted too much time'?'Daniel jumped with Emma before Connor reached the terrace.':s.hostagePhase==='jumped'?'Daniel had already gone over the edge with Emma.':'The standoff had already ended.');
+ const standoff=()=>s.hostagePhase==='terrace'||(s.hostagePhase==='jumped'?'Daniel had already gone over the edge with Emma.':'The standoff had already ended.');
  const gate={
   C02i:()=>s.hostagePhase==='inside'||'Connor was no longer inside the apartment.',
   C02e:()=>s.hostagePhase==='inside'&&s.hostageActions>=2&&!s.swatShot||'Connor left the apartment, or the standoff ended, before an officer was shot at the window.',
   C03a:standoff,C03:standoff,C03b:standoff,C03d:standoff,C03e:standoff,C04:standoff,
   C03c:()=>{const t=standoff();return t!==true?t:s.connorGun||'Connor did not take the dead officer’s pistol.'},
   C04b:()=>{const t=standoff();return t!==true?t:c('C04')==='0'||'Connor did not offer a compromise.'},
-  C04c:()=>s.hostagePhase==='jumped'||(s.hostageOutcome==='Wasted too much time'?'Daniel jumped with Emma before Connor reached the terrace.':'Daniel never went over the edge with Emma.'),
+  C04c:()=>s.hostagePhase==='jumped'||'Daniel never went over the edge with Emma.',
   K04:()=>s.gunDiscovered&&(['1','2'].includes(c('K03'))||s.toddCaught)||'Kara never noticed the gun, or she got Alice out without confronting Todd.',
   K07b:()=>s.shelter==='squat'||'Kara did not shelter in the abandoned house where Ralph lives.',
   C06:()=>s.suspect||'The suspect was never found in the attic.',
@@ -311,7 +311,6 @@ function hostage(n,s,opt,choice,fail,b){
    s.hostageClues[opt.clue]=true;learn(opt.fact);if(opt.clue==='gun')s.connorGun=true;s.hostageActions++;shift(opt.trust);
    // Waiting costs 1% per action after the first (the game: 1% per 20 seconds), at most 15% in total.
    if(s.hostageActions>1&&s.hostageWaited<R.waitCap){s.hostageWaited++;s.trust--}
-   if(fail){lost();return end('Wasted too much time',t+' But time has run out: before {{Connor}} reaches the terrace, the android goes over the railing with {{Emma}}. Both are lost.')}
    if(s.hostageActions>=R.maxActions){s.hostagePhase='terrace';s.hostageForcedOut=true;t+=' {{Allen}} has run out of patience: he orders {{Connor}} out onto the terrace, now.'}
    return t}
   case 'C03':if(choice==='0')b.po(1);shift(opt.trust);return floor(t);

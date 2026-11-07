@@ -76,7 +76,7 @@ test('the investigation hub repeats, drops examined clues, and the window shooti
  assert.equal(r.s.swatShot,true);assert.equal(r.s.connorGun,true);assert.deepEqual(r.s.hostageClues,{gunCase:true,cop:true,gun:true});
  const hub=node('C02i'),s=startState(story);s.hostagePhase='inside';s.trust=48;assert.ok(!available(hub,s).some(o=>o.id==='3'),'the pistol needs the dead officer examined first');
  s.hostageClues.cop=true;assert.ok(available(hub,s).some(o=>o.id==='3'));s.hostageClues.gunCase=true;assert.ok(!available(hub,s).some(o=>o.id==='0'),'examined clues disappear');
- for(const o of available(hub,startState(story)))assert.equal(o.risk,o.id==='11'?undefined:0.002);
+ for(const o of available(hub,startState(story)))assert.equal(o.risk,undefined,'investigation carries no hidden roll');
  const early=ch1({C02i:['0','11']});assert.ok(!early.visited.includes('C02e'));assert.match(early.skipped.find(x=>x.id==='C02e').reason,/before an officer was shot/);
  const none=ch1({C02i:'11'});assert.equal(none.visited.filter(x=>x==='C02i').length,1);assert.ok(none.skipped.some(x=>x.id==='C03c'),'no pistol, no gun question')});
 test('clues and waiting move the hidden probability of success by the wiki values; Allen forces Connor out after six actions',()=>{
@@ -87,10 +87,6 @@ test('clues and waiting move the hidden probability of success by the wiki value
  assert.equal(trustAfterHub(['6','7','10']).trust,48-2,'knowledge-only actions cost only time');
  const forced=ch1({C02i:['0','1','2','4','5','6']});assert.equal(forced.visited.filter(x=>x==='C02i').length,6);assert.equal(forced.s.hostageForcedOut,true);assert.ok(forced.visited.includes('C03a'));
  const s=trustAfterHub(['0','1','2','4','5','8']);assert.equal(s.trust,48+3+10+3+3+7+3-5);assert.equal(s.hostagePhase,'terrace');assert.equal(s.hostageWaited,5)});
-test('running out of time: a failed investigative roll ends the chapter before the terrace',()=>{
- const r=ch1({C02i:['0','1']},['C02i#2']);assert.equal(r.s.hostageOutcome,'Wasted too much time');assert.equal(r.s.emma,false);
- const s=startState(story);apply(node('C02'),s,'0');apply(node('C02i'),s,'0',0);assert.equal(s.amandaTrust,-2);assert.equal(s.hostageTrustFinal,51);
- for(const id of ['C02e','C03a','C03','C04','C04c'])assert.ok(r.skipped.some(x=>x.id===id),id);assert.ok(!r.visited.includes('C03a'))});
 test('negotiation modifiers, the helicopter, the 99% cap and the qualitative read on Daniel',()=>{
  const neg=(picks,clues=['1','5'])=>ch1({C02i:[...clues,'11'],...picks});
  const t0=48+10+7-1;// father's tablet and the video, one action of waiting
@@ -128,6 +124,6 @@ test('repeated hub visits replay deterministically and tampering with a visit is
  const run={id:'hub-replay',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
  for(const choice of ['1','0','0','2','0','0','5','11','0']){run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
  assert.deepEqual(run.records.map(r=>r.nodeId),['C01','C01b','C02','C02i','C02i','C02e','C02i','C02i','C03a']);assert.equal(new Set(run.records.filter(r=>r.nodeId==='C02i').map(r=>r.prompt.nodeId)).size,1,'the hub keeps one opaque scene ID');
- assert.ok(run.records.filter(r=>r.nodeId==='C02i').every(r=>r.risk||r.choice==='11'));await validatePlaythrough(story,run);
+ assert.ok(run.records.filter(r=>r.nodeId==='C02i').every(r=>!r.risk),'investigation has no hidden roll');await validatePlaythrough(story,run);
  const bad=structuredClone(run);bad.records[6].choice='0';await assert.rejects(validatePlaythrough(story,bad));
- const bad2=structuredClone(run);bad2.records[4].risk.roll=0.001;await assert.rejects(validatePlaythrough(story,bad2))});
+ const bad2=structuredClone(run);bad2.records[4].stateAfter.trust+=1;await assert.rejects(validatePlaythrough(story,bad2))});

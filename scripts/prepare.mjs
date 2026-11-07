@@ -2,6 +2,7 @@ import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
 import {publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
 import {render,renderStory,LEVELS,DEVIANCY_THRESHOLD} from '../benchmark/experience-prompt.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
+import {embedAtlas} from './atlas-embed.mjs';
 const dataset=datasetSchema.parse(JSON.parse(await readFile(new URL('../benchmark/dataset.json',import.meta.url),'utf8')));
 const published=new URL('../data/published/',import.meta.url),target=new URL('../public/data/',import.meta.url);
 await mkdir(published,{recursive:true});await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
@@ -9,6 +10,8 @@ const runs=[];for(const file of (await readdir(published)).filter(f=>f.endsWith(
  const run=await validateRun(JSON.parse(await readFile(new URL(file,published),'utf8')));const name=run.id+'.json';await writeFile(new URL(name,target),JSON.stringify(run));runs.push({id:run.id,url:'/data/'+name});
 }
 await writeFile(new URL('dataset.json',target),JSON.stringify(dataset));await writeFile(new URL('index.json',target),JSON.stringify({datasetHash:await hash(dataset),datasetUrl:'/data/dataset.json',runs}));
+// Re-embed the atlas data and the generated story feed so the page always matches story.json.
+await embedAtlas();
 await copyFile(new URL('../docs/detroit-decision-flowchart.html',import.meta.url),new URL('../public/atlas.html',import.meta.url));
 const actual=await publishRunLibrary();
 const names=await loadReportNames(actual);
@@ -86,7 +89,7 @@ async function buildSources(){
  (function walk(v,path){if(typeof v==='string'){if(/^https?:\/\//.test(v))back(v,owner(atlas,path))}else if(v&&typeof v==='object')for(const [k,x] of Object.entries(v))walk(x,[...path,k])})(atlas,[]);
  for(const s of backed.values())s.backs.sort((a,b)=>(a.kind==='chapter'?0:1)-(b.kind==='chapter'?0:1)||(a.chapter??0)-(b.chapter??0)||String(a.id).localeCompare(String(b.id),undefined,{numeric:true}));
  const storyHosts=groupByHost([...cited.values()]),atlasHosts=groupByHost([...backed.values()]);
- return {storyVersion:story.version,atlasVersion:atlas.version,atlasResearched:atlas.researched??null,scenes:story.nodes.length,
+ return {storyVersion:story.version,atlasVersion:atlas.version,atlasResearched:atlas.researched??null,atlasUpdated:atlas.updated??null,scenes:story.nodes.length,
   method:METHOD_REFERENCES,story:{count:cited.size,hosts:storyHosts},atlas:{count:backed.size,hosts:atlasHosts}}}
 const sources=await buildSources();
 await writeFile(new URL('sources.json',target),JSON.stringify(sources));

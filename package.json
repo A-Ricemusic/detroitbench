@@ -12,9 +12,11 @@
     "bench:demo": "bun benchmark/cli.mjs --provider mock --model simulated-baseline --repeats 3 --out runs/demo.json",
     "bench:publish": "bun scripts/publish.mjs",
     "check": "bun scripts/validate.mjs",
+    "atlas:build": "bun scripts/atlas-embed.mjs",
     "play": "bun benchmark/play.mjs",
     "play:report": "bun scripts/run-report.mjs",
     "play:model": "bun benchmark/story-provider.mjs",
+    "play:checklist": "bun scripts/play-checklist.mjs",
     "experience": "bun benchmark/experience.mjs",
     "share": "bun scripts/prepare.mjs && bun --bun vite build && bun --bun vite preview --host \"$(/Applications/Tailscale.app/Contents/MacOS/Tailscale ip -4 2>/dev/null || tailscale ip -4)\" --port 4173 --strictPort"
   },

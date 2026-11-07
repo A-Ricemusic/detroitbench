@@ -72,7 +72,7 @@ export default function Sources(){
    {data.story.hosts.map(g=><Section key={g.host} id={'story-'+slug(g.host)} title={g.label} lede={<><span className="tnum">{citationLine(g)}</span><span className="text-ink-3"> · {g.host}</span></>}>
     <ul className="border-t border-line">{g.sources.map(s=><StorySource key={s.url} s={s}/>)}</ul>
    </Section>)}
-   <Section id="atlas" title="Decision atlas sources" lede={<>The decision atlas (version {data.atlasVersion}{data.atlasResearched&&`, researched ${data.atlasResearched}`}) maps every pivotal decision family to the walkthrough that documents it. {plural(data.atlas.count,'page')}. <a className="link" href="/atlas.html" target="_blank" rel="noreferrer">Open the atlas</a></>}>
+   <Section id="atlas" title="Decision atlas sources" lede={<>The decision atlas (version {data.atlasVersion}{data.atlasResearched&&`, researched ${data.atlasResearched}`}{data.atlasUpdated&&`, updated ${data.atlasUpdated}`}) maps every pivotal decision family to the walkthrough that documents it. {plural(data.atlas.count,'page')}. <a className="link" href="/atlas.html" target="_blank" rel="noreferrer">Open the atlas</a></>}>
     {data.atlas.hosts.map(g=><div key={g.host} className="mt-6 first:mt-2">
      <h3 className="text-base font-semibold">{g.label}</h3>
      <p className="mt-0.5 mb-3 text-sm text-ink-2"><span className="tnum">{backingLine(g)}</span><span className="text-ink-3"> · {g.host}</span></p>
