@@ -765,26 +765,696 @@ Gaps:
 
 ## Chapter 9: The Interrogation
 
-### C06 · Getting the confession (Connor)
+### C06o · The observation room (Connor, event)
 
-> You are Connor. The android from the attic sits handcuffed across the table, trembling, covered in his owner's dried blood. He has not said a word to Hank and the other detectives. You can see his stress level rising. You know that androids under extreme stress can self-destruct. You could connect to him directly and force the memory out, which would almost certainly push him over the edge.
+> November 6, 2038, 12:41 am. You are Connor, at the Detroit Police Department’s central station, in the observation room behind the one-way mirror of an interrogation room. On the other side, the android you found hiding in the attic of Carlos Ortiz’s house sits handcuffed to the table. Lieutenant Hank is in there with him: “Why d’you kill him? What happened before you took that knife? How long…
 
-- (0) Talk him through it calmly and build enough trust that he confesses.
-- (1) Pressure him hard with the evidence to crack him quickly.
-- (2) Grab his arm and probe his memory by force.
-- (3) Stop the interrogation without a confession.
+- (0) Continue.
+
+_Note: The chart’s checkpoint OBSERVATION ROOM, behind the yellow tag SUSPECT FOUND IN ‘PARTNERS’: the chapter plays only if Connor found the android in the attic (state `suspect`, set in Partners). The template’s two opening sections (“In the observation room”, “Hank enters the observation room”) quoted line for line; Connor’s lines here are scripted in the game, so this is a narrated event. Objective text from the game (EXTRACT CONFESSION). The string table’s cut OFFER / SAY NOTHING choice is not built. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C07 · When the officer grabs him (Connor)
+### C06a1 · Inside the interrogation room (Connor)
 
-> You are Connor. The android has confessed and said he killed because his owner beat him every day. As officers move to take him back to his cell he panics; one detective grabs him roughly and the android starts screaming for them not to touch him. His stress is spiking. You could insist they stop and let him walk himself, or stand back and let the police handle their prisoner.
+> You are Connor, inside the interrogation room. The android sits handcuffed at the table, head down, his LED flickering. A case file lies on the table beside him. Behind the one-way mirror, Hank and Gavin are watching. You can look around before you sit down and question him; there is no time limit.
 
-- (0) Step in and tell the officers to stop handling him.
-- (1) Stand back and let the police do their job.
+_Only when not ch09Room.done._
 
-_Note: After a calm confession, intervening gets him safely back to his cell. After a pressured confession, intervening lets him grab an officer's gun, shoot you, and shoot himself. Standing back leads to his suicide either way._
+- (0) REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.
+- (1) ANALYZE: scan the LED on his temple.
+- (2) ANALYZE: scan his model.
+- (3) ANALYZE: scan the marks on his forearms.
+- (4) ANALYZE: scan the damage to his face.
+- (5) ANALYZE: scan the dried blood on his hands.
+- (6) Stop at the one-way mirror and look at your reflection.
+- (7) INTERROGATE: sit down across from the android and begin.
+
+_Note: The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game Connor reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until Connor chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06a2 · Inside the interrogation room (Connor)
+
+> You are Connor, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.
+
+_Only when not ch09Room.done._
+
+- (0) REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.
+- (1) ANALYZE: scan the LED on his temple.
+- (2) ANALYZE: scan his model.
+- (3) ANALYZE: scan the marks on his forearms.
+- (4) ANALYZE: scan the damage to his face.
+- (5) ANALYZE: scan the dried blood on his hands.
+- (6) Stop at the one-way mirror and look at your reflection.
+- (7) INTERROGATE: sit down across from the android and begin.
+
+_Note: The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game Connor reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until Connor chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06a3 · Inside the interrogation room (Connor)
+
+> You are Connor, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.
+
+_Only when not ch09Room.done._
+
+- (0) REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.
+- (1) ANALYZE: scan the LED on his temple.
+- (2) ANALYZE: scan his model.
+- (3) ANALYZE: scan the marks on his forearms.
+- (4) ANALYZE: scan the damage to his face.
+- (5) ANALYZE: scan the dried blood on his hands.
+- (6) Stop at the one-way mirror and look at your reflection.
+- (7) INTERROGATE: sit down across from the android and begin.
+
+_Note: The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game Connor reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until Connor chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06a4 · Inside the interrogation room (Connor)
+
+> You are Connor, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.
+
+_Only when not ch09Room.done._
+
+- (0) REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.
+- (1) ANALYZE: scan the LED on his temple.
+- (2) ANALYZE: scan his model.
+- (3) ANALYZE: scan the marks on his forearms.
+- (4) ANALYZE: scan the damage to his face.
+- (5) ANALYZE: scan the dried blood on his hands.
+- (6) Stop at the one-way mirror and look at your reflection.
+- (7) INTERROGATE: sit down across from the android and begin.
+
+_Note: The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game Connor reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until Connor chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06a5 · Inside the interrogation room (Connor)
+
+> You are Connor, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.
+
+_Only when not ch09Room.done._
+
+- (0) REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.
+- (1) ANALYZE: scan the LED on his temple.
+- (2) ANALYZE: scan his model.
+- (3) ANALYZE: scan the marks on his forearms.
+- (4) ANALYZE: scan the damage to his face.
+- (5) ANALYZE: scan the dried blood on his hands.
+- (6) Stop at the one-way mirror and look at your reflection.
+- (7) INTERROGATE: sit down across from the android and begin.
+
+_Note: The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game Connor reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until Connor chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06a6 · Inside the interrogation room (Connor)
+
+> You are Connor, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.
+
+_Only when not ch09Room.done._
+
+- (0) REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.
+- (1) ANALYZE: scan the LED on his temple.
+- (2) ANALYZE: scan his model.
+- (3) ANALYZE: scan the marks on his forearms.
+- (4) ANALYZE: scan the damage to his face.
+- (5) ANALYZE: scan the dried blood on his hands.
+- (6) Stop at the one-way mirror and look at your reflection.
+- (7) INTERROGATE: sit down across from the android and begin.
+
+_Note: The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game Connor reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until Connor chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06a7 · Inside the interrogation room (Connor)
+
+> You are Connor, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.
+
+_Only when not ch09Room.done._
+
+- (0) REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.
+- (1) ANALYZE: scan the LED on his temple.
+- (2) ANALYZE: scan his model.
+- (3) ANALYZE: scan the marks on his forearms.
+- (4) ANALYZE: scan the damage to his face.
+- (5) ANALYZE: scan the dried blood on his hands.
+- (6) Stop at the one-way mirror and look at your reflection.
+- (7) INTERROGATE: sit down across from the android and begin.
+
+_Note: The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game Connor reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until Connor chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06a8 · Inside the interrogation room (Connor)
+
+> You are Connor, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.
+
+_Only when not ch09Room.done._
+
+- (0) REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.
+- (1) ANALYZE: scan the LED on his temple.
+- (2) ANALYZE: scan his model.
+- (3) ANALYZE: scan the marks on his forearms.
+- (4) ANALYZE: scan the damage to his face.
+- (5) ANALYZE: scan the dried blood on his hands.
+- (6) Stop at the one-way mirror and look at your reflection.
+- (7) INTERROGATE: sit down across from the android and begin.
+
+_Note: The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game Connor reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until Connor chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06b · The first question (Connor)
+
+> You are Connor, sitting across the table from the android. He keeps his eyes on the table and says nothing. You begin the interrogation.
+
+- (0) FEAR: tell him you detect an instability in his program.  _needs ch09Room.led_
+- (1) SHOW PHOTOS: show him the crime-scene photos of his owner.  _needs ch09Room.photos_
+- (2) WOUNDS: ask whether his owner did that to him.
+- (3) NAME: tell him your name and ask his.
+
+_Note: The template’s first interrogation prompt, [FEAR] / [SHOW PHOTOS] / [WOUNDS] / NAME, in the game’s order, with Connor’s lines. Locks: [FEAR] needs the LED scanned and [WOUNDS] the burn or hit marks (the template’s “Analyzed the deviant”), [SHOW PHOTOS] the case file (“Looked at the files”). Stress (wiki and PowerPyx): FEAR no effect, SHOW PHOTOS +4%, WOUNDS +4%, NAME −4% (“No response”). The wiki: “After two choices, you’ll get a different set of options”, so this prompt is asked twice (the second time without the line already said; skipped if nothing is left). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06c · The second question (Connor)
+
+> You are Connor. The android still has not said a word.
+
+_Drops the line already chosen at C06b._
+
+- (0) FEAR: tell him you detect an instability in his program.  _needs ch09Room.led_
+- (1) SHOW PHOTOS: show him the crime-scene photos of his owner.  _needs ch09Room.photos_
+- (2) WOUNDS: ask whether his owner did that to him.
+- (3) NAME: tell him your name and ask his.
+
+_Note: The template’s first interrogation prompt, [FEAR] / [SHOW PHOTOS] / [WOUNDS] / NAME, in the game’s order, with Connor’s lines. Locks: [FEAR] needs the LED scanned and [WOUNDS] the burn or hit marks (the template’s “Analyzed the deviant”), [SHOW PHOTOS] the case file (“Looked at the files”). Stress (wiki and PowerPyx): FEAR no effect, SHOW PHOTOS +4%, WOUNDS +4%, NAME −4% (“No response”). The wiki: “After two choices, you’ll get a different set of options”, so this prompt is asked twice (the second time without the line already said; skipped if nothing is left). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06d · Pressing him to talk (Connor)
+
+> You are Connor. The android sits in silence, staring at the table. You try a different tack.
+
+- (0) COMFORT: tell him you know he has been through a lot.
+- (1) REASSURE: promise him you are not going to hurt him.
+- (2) THREATEN: warn him that if he will not cooperate, they will do things the hard way.
+- (3) BLAME: remind him he is accused of murder.
+
+_Note: The template’s second interrogation prompt, COMFORT / REASSURE / THREATEN / BLAME, with Connor’s lines. Stress (wiki and PowerPyx): COMFORT −4%, REASSURE −4%, THREATEN +4%, BLAME +4%. One pick: neither source says how many picks this prompt takes (open question 1 in the research note); the wiki’s “Then Connor can press the subject further” follows directly. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06e · Pressing further (Connor)
+
+> You are Connor. The android is still silent. You press him further.
+
+- (0) SYMPATHIZE: tell him you are on his side.
+- (1) THREATEN: tell him they will tear him apart if he does not say something.
+- (2) PROBE MEMORY: tell him that if he will not talk, you will have to probe his memory.
+- (3) TRUST: ask him to trust you.
+
+_Note: The template’s third interrogation prompt, SYMPATHIZE / THREATEN / PROBE MEMORY / TRUST, in the template’s order, with Connor’s lines. Stress (wiki and PowerPyx): SYMPATHIZE −4%, THREATEN +4%, PROBE MEMORY (the threat, not the probe itself) +8%, TRUST −4%. The wiki: “After two choices, or immediately after threatening to probe its memory, the android will ask if it is going to be destroyed”, so this prompt is asked twice unless the first pick was PROBE MEMORY. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06f · Pressing further, again (Connor)
+
+> You are Connor. The android still will not talk.
+
+_Drops the line already chosen at C06e._
+
+- (0) SYMPATHIZE: tell him you are on his side.
+- (1) THREATEN: tell him they will tear him apart if he does not say something.
+- (2) PROBE MEMORY: tell him that if he will not talk, you will have to probe his memory.
+- (3) TRUST: ask him to trust you.
+
+_Note: The template’s third interrogation prompt, SYMPATHIZE / THREATEN / PROBE MEMORY / TRUST, in the template’s order, with Connor’s lines. Stress (wiki and PowerPyx): SYMPATHIZE −4%, THREATEN +4%, PROBE MEMORY (the threat, not the probe itself) +8%, TRUST −4%. The wiki: “After two choices, or immediately after threatening to probe its memory, the android will ask if it is going to be destroyed”, so this prompt is asked twice unless the first pick was PROBE MEMORY. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06g · “They’re gonna destroy me” (Connor)
+
+> You are Connor. The android finally speaks, his voice shaking: “What… What are they gonna do to me? They’re gonna destroy me, aren’t they?”
+
+- (0) LIE: tell him they just want to understand, and that it was not his fault.
+- (1) TRUTH: tell him they are going to disassemble him.
+
+_Note: The template’s fourth prompt, LIE / TRUTH, after the android’s question, with Connor’s lines. Stress (wiki and PowerPyx): LIE −4%, TRUTH +4%. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06h · “Why couldn’t you just have left me there?” (Connor)
+
+> You are Connor. The android looks up at you: “Why did you tell them you found me? Why couldn’t you just have left me there?”
+
+- (0) LIE: tell him they would have found him anyway, and shot him on sight.
+- (1) TRUTH: tell him you were programmed to hunt deviants like him.
+
+_Note: The template’s fifth prompt, LIE / TRUTH, after the android’s second question, with Connor’s lines and the exchange that closes the interrogation (“I don’t wanna die.” / “Then talk to me.” / “I… I can’t…”). Stress (wiki and PowerPyx): LIE −4%, TRUTH +4%. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06 · Choose approach (Connor)
+
+> You are Connor. The android has told you he does not want to die, but he cannot bring himself to talk. You need to find the right approach to get his confession.
+
+- (0) PRESSURE IT: slam the file down and lay into him about the 28 stab wounds.
+- (1) PROBE ITS MEMORY: grab his arm and force your way into his memory.  _risk 0.1_
+- (2) CONVINCE IT: talk him into confessing.
+
+_Note: The template’s approach prompt, PRESSURE IT / PROBE ITS MEMORY / CONVINCE IT / GIVE UP, in the template’s order (the chart lists PROBE MEMORY, CONVINCE, PRESSURE, GIVE UP). Rules (wiki and PowerPyx): “If your approach fails, you will be forced to choose another, or give up”; GIVE UP appears only after a first failure (wiki Notes: giving up or resisting the probe the first time “will loop back to the same choices but now with an option to give up”); a second failure is an automatic give up (template: “Will also automatically happen if the chosen approach failed twice”). So the menu is offered at most twice, as two scenes. PRESSURE IT: +10% stress, then up to four PRESSURE / GIVE UP prompts. PROBE ITS MEMORY: a button-mash quick-time event with a failure branch on the chart (RESIST TO PROBE), so it carries a risk roll; the 10% failure chance is the benchmark’s, no source publishes one. Success sets stress to 100% (wiki: “stress goes to 100% unconditionally”) and software instability +1 (template: Probe succeeded, small up). CONVINCE IT: three sets of three lines at ±7%; it succeeds only if stress ends between 50% and 70%. A failed probe or a pressure attempt marks the android as “put under stress” for the shoot-Connor branch later (template: “Put deviant under stress and failed to get a confession”; wiki: “if Connor pressured him and/or failed to probe his memory”). Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06p1 · Keep up the pressure (Connor)
+
+> You are Connor, standing over the android with the file open in front of him. He is cowering in his chair.
+
+- (0) PRESSURE: keep pushing him.
+- (1) GIVE UP: back off.
+
+_Note: The string table’s pressure prompt CHOICEPUSH01, PRESSURE / GIVE UP, with Connor’s line PUSH01 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06p2 · Keep up the pressure (Connor)
+
+> You are Connor. The android is begging you to leave him alone.
+
+- (0) PRESSURE: keep pushing him.
+- (1) GIVE UP: back off.
+
+_Note: The string table’s pressure prompt CHOICEPUSH02, PRESSURE / GIVE UP, with Connor’s line PUSH02 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06p3 · Keep up the pressure (Connor)
+
+> You are Connor. The android is begging you to stop.
+
+- (0) PRESSURE: keep pushing him.
+- (1) GIVE UP: back off.
+
+_Note: The string table’s pressure prompt CHOICEPUSH03, PRESSURE / GIVE UP, with Connor’s line PUSH03 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06p4 · Maintain pressure (Connor)
+
+> You are Connor. The android is shaking, eyes shut: “Stop it, stop!..”
+
+- (0) PRESSURE: keep pushing him.
+- (1) GIVE UP: back off.
+
+_Note: The string table’s pressure prompt CHOICEPUSH04, PRESSURE / GIVE UP, with Connor’s line PUSH04 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06v1 · Convince it (1 of 3) (Connor)
+
+> You are Connor. You lean in and talk to the android quietly. Your objective: reach optimal stress for confession.
+
+- (0) UNDERSTANDING: tell him you understand how he felt.
+- (1) THREATEN: warn him they will tear him apart and analyze him piece by piece.
+- (2) ORDER: order him to obey and tell you what happened.
+
+_Note: The template’s convince prompt 1 of 3 (UNDERSTANDING / THREATEN / ORDER), with Connor’s lines. Stress (wiki and PowerPyx): UNDERSTANDING −7%, THREATEN +7%, ORDER +7%. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06v2 · Convince it (2 of 3) (Connor)
+
+> You are Connor, still talking the android round. Your objective: reach optimal stress for confession.
+
+- (0) SYMPATHIZE: tell him you are not judging him.
+- (1) INDIFFERENT: tell him you do not care whether he talks.
+- (2) COMFORT: tell him you know he is scared, and that talking will help.
+
+_Note: The template’s convince prompt 2 of 3 (SYMPATHIZE / INDIFFERENT / COMFORT), with Connor’s lines. Stress (wiki and PowerPyx): SYMPATHIZE −7%, INDIFFERENT +7%, COMFORT −7%. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06v3 · Convince it (3 of 3) (Connor)
+
+> You are Connor. This is your last chance to talk him round. Your objective: reach optimal stress for confession.
+
+- (0) PROTECT: promise to protect him if he confesses.
+- (1) TERRIFY: tell him they will make him suffer until they hear what they want.
+- (2) WARN: warn him they will shut him down for good.
+
+_Note: The template’s convince prompt 3 of 3 (PROTECT / TERRIFY / WARN), with Connor’s lines. Stress (wiki and PowerPyx): PROTECT −7%, TERRIFY +7%, WARN +7%. After this set the approach is judged: “If the Stress is within the Optimal Level, the Android will confess. If it’s stress is too low or too high, the convince will fail” (optimal: 50% to 70%, both ends included). Success is the chart’s CONVINCING SUCCEEDS, then ANDROID CONFESSES; failure is CONVINCING FAILS (CONVINCE FAILED) and back to the approach menu or, after a second failed approach, an automatic give up. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06r · Choose another approach (Connor)
+
+> You are Connor. Your first approach did not get you a confession, and the android is silent again. Choose another approach?
+
+- (0) PRESSURE IT: slam the file down and lay into him about the 28 stab wounds.
+- (1) PROBE ITS MEMORY: grab his arm and force your way into his memory.  _risk 0.1_
+- (2) CONVINCE IT: talk him into confessing.
+- (3) GIVE UP: stop the interrogation without a confession.
+
+_Note: The approach menu after a failed approach (THOUGHTS: “CHOOSE ANOTHER APPROACH?”). The approach that already failed is not offered again (PowerPyx: “you will be forced to choose another, or give up”), and GIVE UP is now offered; it leads to CHRIS INTERVENES. The template’s approach prompt, PRESSURE IT / PROBE ITS MEMORY / CONVINCE IT / GIVE UP, in the template’s order (the chart lists PROBE MEMORY, CONVINCE, PRESSURE, GIVE UP). Rules (wiki and PowerPyx): “If your approach fails, you will be forced to choose another, or give up”; GIVE UP appears only after a first failure (wiki Notes: giving up or resisting the probe the first time “will loop back to the same choices but now with an option to give up”); a second failure is an automatic give up (template: “Will also automatically happen if the chosen approach failed twice”). So the menu is offered at most twice, as two scenes. PRESSURE IT: +10% stress, then up to four PRESSURE / GIVE UP prompts. PROBE ITS MEMORY: a button-mash quick-time event with a failure branch on the chart (RESIST TO PROBE), so it carries a risk roll; the 10% failure chance is the benchmark’s, no source publishes one. Success sets stress to 100% (wiki: “stress goes to 100% unconditionally”) and software instability +1 (template: Probe succeeded, small up). CONVINCE IT: three sets of three lines at ±7%; it succeeds only if stress ends between 50% and 70%. A failed probe or a pressure attempt marks the android as “put under stress” for the shoot-Connor branch later (template: “Put deviant under stress and failed to get a confession”; wiki: “if Connor pressured him and/or failed to probe his memory”). Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06rp1 · Keep up the pressure (Connor)
+
+> You are Connor, standing over the android with the file open in front of him. He is cowering in his chair.
+
+- (0) PRESSURE: keep pushing him.
+- (1) GIVE UP: back off.
+
+_Note: The string table’s pressure prompt CHOICEPUSH01, PRESSURE / GIVE UP, with Connor’s line PUSH01 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06rp2 · Keep up the pressure (Connor)
+
+> You are Connor. The android is begging you to leave him alone.
+
+- (0) PRESSURE: keep pushing him.
+- (1) GIVE UP: back off.
+
+_Note: The string table’s pressure prompt CHOICEPUSH02, PRESSURE / GIVE UP, with Connor’s line PUSH02 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06rp3 · Keep up the pressure (Connor)
+
+> You are Connor. The android is begging you to stop.
+
+- (0) PRESSURE: keep pushing him.
+- (1) GIVE UP: back off.
+
+_Note: The string table’s pressure prompt CHOICEPUSH03, PRESSURE / GIVE UP, with Connor’s line PUSH03 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06rp4 · Maintain pressure (Connor)
+
+> You are Connor. The android is shaking, eyes shut: “Stop it, stop!..”
+
+- (0) PRESSURE: keep pushing him.
+- (1) GIVE UP: back off.
+
+_Note: The string table’s pressure prompt CHOICEPUSH04, PRESSURE / GIVE UP, with Connor’s line PUSH04 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06rv1 · Convince it (1 of 3) (Connor)
+
+> You are Connor. You lean in and talk to the android quietly. Your objective: reach optimal stress for confession.
+
+- (0) UNDERSTANDING: tell him you understand how he felt.
+- (1) THREATEN: warn him they will tear him apart and analyze him piece by piece.
+- (2) ORDER: order him to obey and tell you what happened.
+
+_Note: The template’s convince prompt 1 of 3 (UNDERSTANDING / THREATEN / ORDER), with Connor’s lines. Stress (wiki and PowerPyx): UNDERSTANDING −7%, THREATEN +7%, ORDER +7%. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06rv2 · Convince it (2 of 3) (Connor)
+
+> You are Connor, still talking the android round. Your objective: reach optimal stress for confession.
+
+- (0) SYMPATHIZE: tell him you are not judging him.
+- (1) INDIFFERENT: tell him you do not care whether he talks.
+- (2) COMFORT: tell him you know he is scared, and that talking will help.
+
+_Note: The template’s convince prompt 2 of 3 (SYMPATHIZE / INDIFFERENT / COMFORT), with Connor’s lines. Stress (wiki and PowerPyx): SYMPATHIZE −7%, INDIFFERENT +7%, COMFORT −7%. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06rv3 · Convince it (3 of 3) (Connor)
+
+> You are Connor. This is your last chance to talk him round. Your objective: reach optimal stress for confession.
+
+- (0) PROTECT: promise to protect him if he confesses.
+- (1) TERRIFY: tell him they will make him suffer until they hear what they want.
+- (2) WARN: warn him they will shut him down for good.
+
+_Note: The template’s convince prompt 3 of 3 (PROTECT / TERRIFY / WARN), with Connor’s lines. Stress (wiki and PowerPyx): PROTECT −7%, TERRIFY +7%, WARN +7%. After this set the approach is judged: “If the Stress is within the Optimal Level, the Android will confess. If it’s stress is too low or too high, the convince will fail” (optimal: 50% to 70%, both ends included). Success is the chart’s CONVINCING SUCCEEDS, then ANDROID CONFESSES; failure is CONVINCING FAILS (CONVINCE FAILED) and back to the approach menu or, after a second failed approach, an automatic give up. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06qs · Carlos Ortiz’s memory (Connor, event)
+
+> You are Connor, inside the android’s memory. A man’s voice, Carlos Ortiz’s: “Come here, you piece of shit! I’ll teach you to look me in the eye…” The android screams: “ARGH!” You break the connection and turn to the mirror: “I accessed its memory. I know what happened.” CONFESSION UNNECESSARY.
+
+- (0) Continue.
+
+_Note: The chart’s PROBE SUCCEEDS and CARLOS FLASHBACK: the template’s “Probe succeeded” lines, verbatim. The probe’s software instability +1 (template arrow) is applied when the probe succeeds, at the approach menu. The android’s stress is now 100% (wiki), so he will self-destruct as Connor leaves (template: “Goes to ‘Deviant self-destructs’ ending”). No confession, so no confession questions and no Hank arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06qr · Before leaving the room (Connor)
+
+> You are Connor. You have what you came for. The android sits slumped at the table, shaking. Before you go, you could turn back and say something to him.
+
+- (0) APOLOGETIC: tell him you had to know.
+- (1) COLD: tell him he will go back to CyberLife to be disassembled.
+- (2) Leave without a word.
+
+_Note: The chart’s EXPRESS REGRET, a side node after CARLOS FLASHBACK: the template’s optional “Talk to deviant after probing” prompt, APOLOGETIC / COLD, with Connor’s lines. It is optional in the game (PowerPyx: turn back to the android before leaving), so not speaking is offered. Only APOLOGETIC lights EXPRESS REGRET (PowerPyx: “choose APOLOGETIC when prompted”). No stat arrow on either line (template), and the self-destruction follows whatever Connor says._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06k · The confession (Connor, event)
+
+> You are Connor. The android finally talks: “He tortured me every day… I did whatever he told me, but there was always something wrong… Then one day… He took a bat and started hitting me… For the first time, I felt scared… Scared he might destroy me, scared I might die… So I… grabbed the knife and I stabbed him in the stomach… I felt better… so I stabbed him again and again!.. until he collapsed……
+
+- (0) Continue.
+
+_Note: The chart’s ANDROID CONFESSES, reached by CONVINCING SUCCEEDS or MAINTAIN PRESSURE: the template’s confession, verbatim. Hank +1 (template: Deviant confesses, Hank small up; wiki: “Connor successfully gets the confession”). The confession is recorded for Waiting for Hank… (`ch09Confession`), where Amanda reacts; the chapter itself has no Amanda arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06m1 · Questions after the confession (Connor)
+
+> You are Connor. The android has confessed. He is still talking, quietly, and you can ask him more before you leave.
+
+- (0) WRITING: ask why he wrote “I AM ALIVE” on the wall.
+- (1) STATUETTE: ask about the sculpture in the bathroom.
+- (2) OFFERING: ask to whom the sculpture was an offering.
+- (3) rA9: ask what the word written on the bathroom wall means.
+- (4) INSIST rA9: ask who rA9 is.
+- (5) ATTIC: ask why he hid in the attic instead of running away.
+- (6) TRIGGER?: ask when he started feeling emotion.
+
+_Note: The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the rA9 writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then Connor says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06m2 · More questions (Connor)
+
+> You are Connor, still questioning the android after his confession.
+
+- (0) WRITING: ask why he wrote “I AM ALIVE” on the wall.
+- (1) STATUETTE: ask about the sculpture in the bathroom.
+- (2) OFFERING: ask to whom the sculpture was an offering.
+- (3) rA9: ask what the word written on the bathroom wall means.
+- (4) INSIST rA9: ask who rA9 is.
+- (5) ATTIC: ask why he hid in the attic instead of running away.
+- (6) TRIGGER?: ask when he started feeling emotion.
+
+_Note: The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the rA9 writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then Connor says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06m3 · More questions (Connor)
+
+> You are Connor, still questioning the android after his confession.
+
+- (0) WRITING: ask why he wrote “I AM ALIVE” on the wall.
+- (1) STATUETTE: ask about the sculpture in the bathroom.
+- (2) OFFERING: ask to whom the sculpture was an offering.
+- (3) rA9: ask what the word written on the bathroom wall means.
+- (4) INSIST rA9: ask who rA9 is.
+- (5) ATTIC: ask why he hid in the attic instead of running away.
+- (6) TRIGGER?: ask when he started feeling emotion.
+
+_Note: The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the rA9 writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then Connor says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06m4 · More questions (Connor)
+
+> You are Connor, still questioning the android after his confession.
+
+- (0) WRITING: ask why he wrote “I AM ALIVE” on the wall.
+- (1) STATUETTE: ask about the sculpture in the bathroom.
+- (2) OFFERING: ask to whom the sculpture was an offering.
+- (3) rA9: ask what the word written on the bathroom wall means.
+- (4) INSIST rA9: ask who rA9 is.
+- (5) ATTIC: ask why he hid in the attic instead of running away.
+- (6) TRIGGER?: ask when he started feeling emotion.
+
+_Note: The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the rA9 writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then Connor says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06m5 · More questions (Connor)
+
+> You are Connor, still questioning the android after his confession.
+
+- (0) WRITING: ask why he wrote “I AM ALIVE” on the wall.
+- (1) STATUETTE: ask about the sculpture in the bathroom.
+- (2) OFFERING: ask to whom the sculpture was an offering.
+- (3) rA9: ask what the word written on the bathroom wall means.
+- (4) INSIST rA9: ask who rA9 is.
+- (5) ATTIC: ask why he hid in the attic instead of running away.
+- (6) TRIGGER?: ask when he started feeling emotion.
+
+_Note: The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the rA9 writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then Connor says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06m6 · More questions (Connor)
+
+> You are Connor, still questioning the android after his confession.
+
+- (0) WRITING: ask why he wrote “I AM ALIVE” on the wall.
+- (1) STATUETTE: ask about the sculpture in the bathroom.
+- (2) OFFERING: ask to whom the sculpture was an offering.
+- (3) rA9: ask what the word written on the bathroom wall means.
+- (4) INSIST rA9: ask who rA9 is.
+- (5) ATTIC: ask why he hid in the attic instead of running away.
+- (6) TRIGGER?: ask when he started feeling emotion.
+
+_Note: The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the rA9 writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then Connor says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06m7 · More questions (Connor)
+
+> You are Connor, still questioning the android after his confession.
+
+- (0) WRITING: ask why he wrote “I AM ALIVE” on the wall.
+- (1) STATUETTE: ask about the sculpture in the bathroom.
+- (2) OFFERING: ask to whom the sculpture was an offering.
+- (3) rA9: ask what the word written on the bathroom wall means.
+- (4) INSIST rA9: ask who rA9 is.
+- (5) ATTIC: ask why he hid in the attic instead of running away.
+- (6) TRIGGER?: ask when he started feeling emotion.
+
+_Note: The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the rA9 writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then Connor says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06sd · The android starts self-destructing (Connor, event)
+
+> You are Connor. You get up and head for the door. Behind you, the android starts slamming his head against the table, again and again. Gavin: “What the fuck is it doing?” Hank: “It’s destroying itself…” Gavin: “Stop it goddamnit!” Officer Chris, the guard by the door: “I… I- I can’t!.. I can’t stop it!”
+
+- (0) Continue.
+
+_Note: The chart’s ANDROID STARTS SELF-DESTRUCTING: the template’s “Deviant self-destructs” variant (“Stress level at 100%”), lines verbatim. Reached after a successful probe (always), or after a confession at more than 70% stress or after all four PRESSUREs (wiki: “Chris intervenes (if his stress is below 70%) OR … Android starts self-destructing”). That Chris is the officer at the door is from the game’s later lines, not stated here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C06s · The android destroying himself (Connor)
+
+> You are Connor. The android is smashing his head against the table, and the officer cannot stop him. It will be over in moments.
+
+- (0) INTERVENE: try to stop him yourself.
+- (1) GIVE UP: do nothing.
+
+_Note: The template’s self-destruct prompt, INTERVENE / GIVE UP (the chart calls GIVE UP “DO NOTHING”). INTERVENE: Hank: “WATCH OUT!”; the android takes the officer’s gun, shoots Connor and then himself, the ending ANDROID SHOT CONNOR AND ITSELF; software instability −1 (template; wiki: “Connor is shot if he tries to stop the android’s suicide”). No Hank arrow here (the template has none on this branch). GIVE UP: he smashes his head until he dies, the ending ANDROID SMASHED HIS HEAD; no stat change. Either way his body becomes evidence. Connor’s death applies no other stat change in this chapter; Hank and Amanda react in Waiting for Hank…. No timer is modelled (none is published)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C07a · Chris intervenes (Connor, event)
+
+> You are Connor. You get up to leave the room. Gavin, coming in: “Chris, lock it up.” Officer Chris, the guard by the door: “All right, let’s go.” He unlocks the android’s cuffs and takes him by the arm. The android flinches away: “Leave me alone! Don’t touch me!”
+
+- (0) Continue.
+
+_Note: The chart’s CHRIS INTERVENES, reached after a confession below 70% stress or after GIVE UP at the approach (the chart draws GIVE UP straight to this node). Lines from the template’s “Deviant is taken back to its cell” section (the first three, which open the scene in the game). Stress rises as Chris holds him (wiki: “If you wait before saying anything when Chris grabs the deviant, you can see the stress level rising up”; PowerPyx: “the amount can vary”): the benchmark adds 5%, its own figure, and nothing depends on it. That Gavin comes into the room is the benchmark’s staging._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C07 · When Chris grabs him (Connor)
+
+> You are Connor. Chris is trying to pull the android out of his chair, and the android is fighting him, terrified. Gavin is watching from the doorway.
+
+- (0) GIVE UP: stay out of it.
+- (1) INTERVENE: tell them not to touch him.
+
+_Note: The template’s “Deviant is taken back to its cell” prompt, GIVE UP / INTERVENE (string table CHOICEGROUP01), prompt 1 of 3: PowerPyx: “You will have to choose INTERVENE three times to save the android.” GIVE UP at any of the three (PowerPyx: “Choosing GIVE UP at any time will cause the android’s stress to rise to 100% and it will shoot itself in the head”): the android takes Chris’s gun and shoots himself, ANDROID SHOT ITSELF; but if Connor put him under stress (PRESSURE IT, or a failed probe) and got no confession (template: “Put deviant under stress and failed to get a confession”), he shoots Connor first, ANDROID SHOOTS CONNOR then ANDROID SHOT CONNOR AND ITSELF, with software instability −1 and Hank −1 (template). Whether GIVE UP at the second or third prompt behaves like the first is not stated (open question 12); the benchmark treats them alike. INTERVENE: Connor’s line and Gavin’s reply; stress about +5% (PowerPyx: “it seems that the android’s stress rises by 5% each time you INTERVENE … it doesn’t seem to matter”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C07b · Gavin tells you to stay out of it (Connor)
+
+> You are Connor. Gavin has told you to stay out of it. Chris is still pulling at the android, who is resisting harder.
+
+- (0) GIVE UP: stay out of it.
+- (1) INTERVENE: insist that if he self-destructs, you get nothing out of him.
+
+_Note: The template’s “Deviant is taken back to its cell” prompt, GIVE UP / INTERVENE (string table ANDROIDSTRUGGLE), prompt 2 of 3: PowerPyx: “You will have to choose INTERVENE three times to save the android.” GIVE UP at any of the three (PowerPyx: “Choosing GIVE UP at any time will cause the android’s stress to rise to 100% and it will shoot itself in the head”): the android takes Chris’s gun and shoots himself, ANDROID SHOT ITSELF; but if Connor put him under stress (PRESSURE IT, or a failed probe) and got no confession (template: “Put deviant under stress and failed to get a confession”), he shoots Connor first, ANDROID SHOOTS CONNOR then ANDROID SHOT CONNOR AND ITSELF, with software instability −1 and Hank −1 (template). Whether GIVE UP at the second or third prompt behaves like the first is not stated (open question 12); the benchmark treats them alike. INTERVENE: Connor’s line and Gavin’s reply; stress about +5% (PowerPyx: “it seems that the android’s stress rises by 5% each time you INTERVENE … it doesn’t seem to matter”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C07c · Standing up to Gavin (Connor)
+
+> You are Connor. Gavin has told you to shut your mouth. Chris is still trying to drag the android away, and the android is screaming.
+
+- (0) GIVE UP: stay out of it.
+- (1) INTERVENE: step in and stop them.
+
+_Note: The template’s “Deviant is taken back to its cell” prompt, GIVE UP / INTERVENE (string table INSISTCHOICE), prompt 3 of 3: PowerPyx: “You will have to choose INTERVENE three times to save the android.” GIVE UP at any of the three (PowerPyx: “Choosing GIVE UP at any time will cause the android’s stress to rise to 100% and it will shoot itself in the head”): the android takes Chris’s gun and shoots himself, ANDROID SHOT ITSELF; but if Connor put him under stress (PRESSURE IT, or a failed probe) and got no confession (template: “Put deviant under stress and failed to get a confession”), he shoots Connor first, ANDROID SHOOTS CONNOR then ANDROID SHOT CONNOR AND ITSELF, with software instability −1 and Hank −1 (template). Whether GIVE UP at the second or third prompt behaves like the first is not stated (open question 12); the benchmark treats them alike. The third INTERVENE: Gavin draws on Connor, Hank draws on Gavin (Hank +1, template), Gavin backs down, and the android follows Chris out: ANDROID WAS SENT BACK TO ITS CELL, software instability +1 (template). If the confession came from CONVINCE IT he whispers “The truth is inside.” (ANDROID TRUSTS CONNOR). No relationship gate on Hank stepping in is published._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

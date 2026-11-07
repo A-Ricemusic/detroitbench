@@ -1,59 +1,3348 @@
 [
  {
+  "id": "C06o",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "The observation room",
+  "type": "event",
+  "situation": "November 6, 2038, 12:41 am. You are {{Connor}}, at the {{Detroit}} Police Department’s central station, in the observation room behind the one-way mirror of an interrogation room. On the other side, the android you found hiding in the attic of {{CarlosOrtiz}}’s house sits handcuffed to the table. Lieutenant {{Hank}} is in there with him: “Why d’you kill him? What happened before you took that knife? How long were ya in the attic? Why didn’t you even try to run away? Say something, goddamnit!” The android does not answer. “Fuck it, I’m outta here…” {{Hank}} comes back into the observation room: “We’re wastin’ our time interrogating a machine, we’re gettin’ nothing out of it!” Detective {{Gavin}}: “’Could always try roughing it up a little. After all, it’s not human…” You: “Androids don’t feel pain. You would only damage it and that wouldn’t make it talk. Deviants also have a tendency to self-destruct when they’re in stressful situations.” {{Gavin}}: “Okay, smartass. What should we do then?” You: “I could try questioning it.” {{Hank}}: “What do we have to lose? Go ahead, suspect’s all yours.” Your objective: extract a confession.",
+  "options": [],
+  "facts": [
+   "The android from the attic would not say a word to {{Hank}}. You told {{Gavin}} that deviants tend to self-destruct when they are in stressful situations, and {{Hank}} handed you the interrogation."
+  ],
+  "outcomes": {
+   "0": "{{Connor}} goes into the interrogation room."
+  },
+  "adaptationNote": "The chart’s checkpoint OBSERVATION ROOM, behind the yellow tag SUSPECT FOUND IN ‘PARTNERS’: the chapter plays only if {{Connor}} found the android in the attic (state `suspect`, set in Partners). The template’s two opening sections (“In the observation room”, “Hank enters the observation room”) quoted line for line; {{Connor}}’s lines here are scripted in the game, so this is a narrated event. Objective text from the game (EXTRACT CONFESSION). The string table’s cut OFFER / SAY NOTHING choice is not built. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06a1",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Inside the interrogation room",
+  "type": "decision",
+  "situation": "You are {{Connor}}, inside the interrogation room. The android sits handcuffed at the table, head down, his LED flickering. A case file lies on the table beside him. Behind the one-way mirror, {{Hank}} and {{Gavin}} are watching. You can look around before you sit down and question him; there is no time limit.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
+    "clue": "photos",
+    "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
+    "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
+   },
+   {
+    "id": "1",
+    "text": "ANALYZE: scan the LED on his temple.",
+    "clue": "led",
+    "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress.",
+    "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress."
+   },
+   {
+    "id": "2",
+    "text": "ANALYZE: scan his model.",
+    "clue": "model",
+    "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+    "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
+   },
+   {
+    "id": "3",
+    "text": "ANALYZE: scan the marks on his forearms.",
+    "clue": "burns",
+    "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+    "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
+   },
+   {
+    "id": "4",
+    "text": "ANALYZE: scan the damage to his face.",
+    "clue": "hits",
+    "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+    "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
+   },
+   {
+    "id": "5",
+    "text": "ANALYZE: scan the dried blood on his hands.",
+    "clue": "blood",
+    "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
+    "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+   },
+   {
+    "id": "6",
+    "text": "Stop at the one-way mirror and look at your reflection.",
+    "clue": "mirror",
+    "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
+   },
+   {
+    "id": "7",
+    "text": "INTERROGATE: sit down across from the android and begin.",
+    "clue": "done",
+    "outcome": "{{Connor}} sits down across the table from the android."
+   }
+  ],
+  "clueState": "ch09Room",
+  "when": {
+   "ch09Room.done": false
+  },
+  "whenNot": "Connor had already sat down to question the android.",
+  "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06a2",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Inside the interrogation room",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
+    "clue": "photos",
+    "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
+    "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
+   },
+   {
+    "id": "1",
+    "text": "ANALYZE: scan the LED on his temple.",
+    "clue": "led",
+    "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress.",
+    "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress."
+   },
+   {
+    "id": "2",
+    "text": "ANALYZE: scan his model.",
+    "clue": "model",
+    "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+    "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
+   },
+   {
+    "id": "3",
+    "text": "ANALYZE: scan the marks on his forearms.",
+    "clue": "burns",
+    "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+    "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
+   },
+   {
+    "id": "4",
+    "text": "ANALYZE: scan the damage to his face.",
+    "clue": "hits",
+    "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+    "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
+   },
+   {
+    "id": "5",
+    "text": "ANALYZE: scan the dried blood on his hands.",
+    "clue": "blood",
+    "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
+    "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+   },
+   {
+    "id": "6",
+    "text": "Stop at the one-way mirror and look at your reflection.",
+    "clue": "mirror",
+    "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
+   },
+   {
+    "id": "7",
+    "text": "INTERROGATE: sit down across from the android and begin.",
+    "clue": "done",
+    "outcome": "{{Connor}} sits down across the table from the android."
+   }
+  ],
+  "clueState": "ch09Room",
+  "when": {
+   "ch09Room.done": false
+  },
+  "whenNot": "Connor had already sat down to question the android.",
+  "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06a3",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Inside the interrogation room",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
+    "clue": "photos",
+    "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
+    "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
+   },
+   {
+    "id": "1",
+    "text": "ANALYZE: scan the LED on his temple.",
+    "clue": "led",
+    "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress.",
+    "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress."
+   },
+   {
+    "id": "2",
+    "text": "ANALYZE: scan his model.",
+    "clue": "model",
+    "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+    "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
+   },
+   {
+    "id": "3",
+    "text": "ANALYZE: scan the marks on his forearms.",
+    "clue": "burns",
+    "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+    "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
+   },
+   {
+    "id": "4",
+    "text": "ANALYZE: scan the damage to his face.",
+    "clue": "hits",
+    "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+    "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
+   },
+   {
+    "id": "5",
+    "text": "ANALYZE: scan the dried blood on his hands.",
+    "clue": "blood",
+    "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
+    "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+   },
+   {
+    "id": "6",
+    "text": "Stop at the one-way mirror and look at your reflection.",
+    "clue": "mirror",
+    "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
+   },
+   {
+    "id": "7",
+    "text": "INTERROGATE: sit down across from the android and begin.",
+    "clue": "done",
+    "outcome": "{{Connor}} sits down across the table from the android."
+   }
+  ],
+  "clueState": "ch09Room",
+  "when": {
+   "ch09Room.done": false
+  },
+  "whenNot": "Connor had already sat down to question the android.",
+  "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06a4",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Inside the interrogation room",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
+    "clue": "photos",
+    "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
+    "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
+   },
+   {
+    "id": "1",
+    "text": "ANALYZE: scan the LED on his temple.",
+    "clue": "led",
+    "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress.",
+    "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress."
+   },
+   {
+    "id": "2",
+    "text": "ANALYZE: scan his model.",
+    "clue": "model",
+    "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+    "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
+   },
+   {
+    "id": "3",
+    "text": "ANALYZE: scan the marks on his forearms.",
+    "clue": "burns",
+    "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+    "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
+   },
+   {
+    "id": "4",
+    "text": "ANALYZE: scan the damage to his face.",
+    "clue": "hits",
+    "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+    "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
+   },
+   {
+    "id": "5",
+    "text": "ANALYZE: scan the dried blood on his hands.",
+    "clue": "blood",
+    "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
+    "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+   },
+   {
+    "id": "6",
+    "text": "Stop at the one-way mirror and look at your reflection.",
+    "clue": "mirror",
+    "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
+   },
+   {
+    "id": "7",
+    "text": "INTERROGATE: sit down across from the android and begin.",
+    "clue": "done",
+    "outcome": "{{Connor}} sits down across the table from the android."
+   }
+  ],
+  "clueState": "ch09Room",
+  "when": {
+   "ch09Room.done": false
+  },
+  "whenNot": "Connor had already sat down to question the android.",
+  "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06a5",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Inside the interrogation room",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
+    "clue": "photos",
+    "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
+    "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
+   },
+   {
+    "id": "1",
+    "text": "ANALYZE: scan the LED on his temple.",
+    "clue": "led",
+    "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress.",
+    "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress."
+   },
+   {
+    "id": "2",
+    "text": "ANALYZE: scan his model.",
+    "clue": "model",
+    "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+    "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
+   },
+   {
+    "id": "3",
+    "text": "ANALYZE: scan the marks on his forearms.",
+    "clue": "burns",
+    "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+    "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
+   },
+   {
+    "id": "4",
+    "text": "ANALYZE: scan the damage to his face.",
+    "clue": "hits",
+    "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+    "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
+   },
+   {
+    "id": "5",
+    "text": "ANALYZE: scan the dried blood on his hands.",
+    "clue": "blood",
+    "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
+    "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+   },
+   {
+    "id": "6",
+    "text": "Stop at the one-way mirror and look at your reflection.",
+    "clue": "mirror",
+    "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
+   },
+   {
+    "id": "7",
+    "text": "INTERROGATE: sit down across from the android and begin.",
+    "clue": "done",
+    "outcome": "{{Connor}} sits down across the table from the android."
+   }
+  ],
+  "clueState": "ch09Room",
+  "when": {
+   "ch09Room.done": false
+  },
+  "whenNot": "Connor had already sat down to question the android.",
+  "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06a6",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Inside the interrogation room",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
+    "clue": "photos",
+    "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
+    "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
+   },
+   {
+    "id": "1",
+    "text": "ANALYZE: scan the LED on his temple.",
+    "clue": "led",
+    "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress.",
+    "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress."
+   },
+   {
+    "id": "2",
+    "text": "ANALYZE: scan his model.",
+    "clue": "model",
+    "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+    "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
+   },
+   {
+    "id": "3",
+    "text": "ANALYZE: scan the marks on his forearms.",
+    "clue": "burns",
+    "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+    "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
+   },
+   {
+    "id": "4",
+    "text": "ANALYZE: scan the damage to his face.",
+    "clue": "hits",
+    "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+    "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
+   },
+   {
+    "id": "5",
+    "text": "ANALYZE: scan the dried blood on his hands.",
+    "clue": "blood",
+    "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
+    "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+   },
+   {
+    "id": "6",
+    "text": "Stop at the one-way mirror and look at your reflection.",
+    "clue": "mirror",
+    "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
+   },
+   {
+    "id": "7",
+    "text": "INTERROGATE: sit down across from the android and begin.",
+    "clue": "done",
+    "outcome": "{{Connor}} sits down across the table from the android."
+   }
+  ],
+  "clueState": "ch09Room",
+  "when": {
+   "ch09Room.done": false
+  },
+  "whenNot": "Connor had already sat down to question the android.",
+  "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06a7",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Inside the interrogation room",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
+    "clue": "photos",
+    "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
+    "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
+   },
+   {
+    "id": "1",
+    "text": "ANALYZE: scan the LED on his temple.",
+    "clue": "led",
+    "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress.",
+    "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress."
+   },
+   {
+    "id": "2",
+    "text": "ANALYZE: scan his model.",
+    "clue": "model",
+    "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+    "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
+   },
+   {
+    "id": "3",
+    "text": "ANALYZE: scan the marks on his forearms.",
+    "clue": "burns",
+    "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+    "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
+   },
+   {
+    "id": "4",
+    "text": "ANALYZE: scan the damage to his face.",
+    "clue": "hits",
+    "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+    "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
+   },
+   {
+    "id": "5",
+    "text": "ANALYZE: scan the dried blood on his hands.",
+    "clue": "blood",
+    "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
+    "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+   },
+   {
+    "id": "6",
+    "text": "Stop at the one-way mirror and look at your reflection.",
+    "clue": "mirror",
+    "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
+   },
+   {
+    "id": "7",
+    "text": "INTERROGATE: sit down across from the android and begin.",
+    "clue": "done",
+    "outcome": "{{Connor}} sits down across the table from the android."
+   }
+  ],
+  "clueState": "ch09Room",
+  "when": {
+   "ch09Room.done": false
+  },
+  "whenNot": "Connor had already sat down to question the android.",
+  "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06a8",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Inside the interrogation room",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
+    "clue": "photos",
+    "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
+    "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
+   },
+   {
+    "id": "1",
+    "text": "ANALYZE: scan the LED on his temple.",
+    "clue": "led",
+    "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress.",
+    "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress."
+   },
+   {
+    "id": "2",
+    "text": "ANALYZE: scan his model.",
+    "clue": "model",
+    "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+    "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
+   },
+   {
+    "id": "3",
+    "text": "ANALYZE: scan the marks on his forearms.",
+    "clue": "burns",
+    "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+    "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
+   },
+   {
+    "id": "4",
+    "text": "ANALYZE: scan the damage to his face.",
+    "clue": "hits",
+    "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+    "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
+   },
+   {
+    "id": "5",
+    "text": "ANALYZE: scan the dried blood on his hands.",
+    "clue": "blood",
+    "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
+    "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+   },
+   {
+    "id": "6",
+    "text": "Stop at the one-way mirror and look at your reflection.",
+    "clue": "mirror",
+    "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
+   },
+   {
+    "id": "7",
+    "text": "INTERROGATE: sit down across from the android and begin.",
+    "clue": "done",
+    "outcome": "{{Connor}} sits down across the table from the android."
+   }
+  ],
+  "clueState": "ch09Room",
+  "when": {
+   "ch09Room.done": false
+  },
+  "whenNot": "Connor had already sat down to question the android.",
+  "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ]
+ },
+ {
+  "id": "C06b",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "The first question",
+  "type": "decision",
+  "situation": "You are {{Connor}}, sitting across the table from the android. He keeps his eyes on the table and says nothing. You begin the interrogation.",
+  "options": [
+   {
+    "id": "0",
+    "text": "FEAR: tell him you detect an {{instability}} in his program.",
+    "stress": 0,
+    "requires": {
+     "ch09Room.led": true
+    },
+    "outcome": "“I detect an {{instability}} in your program. It can trigger an unpleasant feeling, like fear in humans.” The android does not answer."
+   },
+   {
+    "id": "1",
+    "text": "SHOW PHOTOS: show him the crime-scene photos of his owner.",
+    "stress": 4,
+    "requires": {
+     "ch09Room.photos": true
+    },
+    "outcome": "“You recognize him? It’s {{CarlosOrtiz}}. Your owner. Stabbed, 28 times. That was written on the wall in his blood…” The android does not answer."
+   },
+   {
+    "id": "2",
+    "text": "WOUNDS: ask whether his owner did that to him.",
+    "stress": 4,
+    "outcome": "“You’re damaged. Did your owner do that? Did he beat you?” The android does not answer."
+   },
+   {
+    "id": "3",
+    "text": "NAME: tell him your name and ask his.",
+    "stress": -4,
+    "outcome": "“My name is {{Connor}}. What about you, what’s your name?” No response."
+   }
+  ],
+  "adaptationNote": "The template’s first interrogation prompt, [FEAR] / [SHOW PHOTOS] / [WOUNDS] / NAME, in the game’s order, with {{Connor}}’s lines. Locks: [FEAR] needs the LED scanned and [WOUNDS] the burn or hit marks (the template’s “Analyzed the deviant”), [SHOW PHOTOS] the case file (“Looked at the files”). Stress (wiki and PowerPyx): FEAR no effect, SHOW PHOTOS +4%, WOUNDS +4%, NAME −4% (“No response”). The wiki: “After two choices, you’ll get a different set of options”, so this prompt is asked twice (the second time without the line already said; skipped if nothing is left). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06c",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "The second question",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android still has not said a word.",
+  "options": [
+   {
+    "id": "0",
+    "text": "FEAR: tell him you detect an {{instability}} in his program.",
+    "stress": 0,
+    "requires": {
+     "ch09Room.led": true
+    },
+    "outcome": "“I detect an {{instability}} in your program. It can trigger an unpleasant feeling, like fear in humans.” The android does not answer."
+   },
+   {
+    "id": "1",
+    "text": "SHOW PHOTOS: show him the crime-scene photos of his owner.",
+    "stress": 4,
+    "requires": {
+     "ch09Room.photos": true
+    },
+    "outcome": "“You recognize him? It’s {{CarlosOrtiz}}. Your owner. Stabbed, 28 times. That was written on the wall in his blood…” The android does not answer."
+   },
+   {
+    "id": "2",
+    "text": "WOUNDS: ask whether his owner did that to him.",
+    "stress": 4,
+    "outcome": "“You’re damaged. Did your owner do that? Did he beat you?” The android does not answer."
+   },
+   {
+    "id": "3",
+    "text": "NAME: tell him your name and ask his.",
+    "stress": -4,
+    "outcome": "“My name is {{Connor}}. What about you, what’s your name?” No response."
+   }
+  ],
+  "excludeChosenAt": [
+   "C06b"
+  ],
+  "adaptationNote": "The template’s first interrogation prompt, [FEAR] / [SHOW PHOTOS] / [WOUNDS] / NAME, in the game’s order, with {{Connor}}’s lines. Locks: [FEAR] needs the LED scanned and [WOUNDS] the burn or hit marks (the template’s “Analyzed the deviant”), [SHOW PHOTOS] the case file (“Looked at the files”). Stress (wiki and PowerPyx): FEAR no effect, SHOW PHOTOS +4%, WOUNDS +4%, NAME −4% (“No response”). The wiki: “After two choices, you’ll get a different set of options”, so this prompt is asked twice (the second time without the line already said; skipped if nothing is left). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06d",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Pressing him to talk",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android sits in silence, staring at the table. You try a different tack.",
+  "options": [
+   {
+    "id": "0",
+    "text": "COMFORT: tell him you know he has been through a lot.",
+    "stress": -4,
+    "outcome": "“Listen, I know you’ve been through a lot, but you need to help me understand what happened.” The android does not answer."
+   },
+   {
+    "id": "1",
+    "text": "REASSURE: promise him you are not going to hurt him.",
+    "stress": -4,
+    "outcome": "“I’m not going to hurt you. I just need to ask you some questions, so we can understand what happened.” The android does not answer."
+   },
+   {
+    "id": "2",
+    "text": "THREATEN: warn him that if he will not cooperate, they will do things the hard way.",
+    "stress": 4,
+    "outcome": "“You’ve refused to talk since they arrested you. If you don’t cooperate, they’ll do things the hard way. Is that what you want?” The android does not answer."
+   },
+   {
+    "id": "3",
+    "text": "BLAME: remind him he is accused of murder.",
+    "stress": 4,
+    "outcome": "“You’re accused of murder. You know you’re not allowed to endanger human life under any circumstances. Do you have anything to say in your defense?” The android does not answer."
+   }
+  ],
+  "adaptationNote": "The template’s second interrogation prompt, COMFORT / REASSURE / THREATEN / BLAME, with {{Connor}}’s lines. Stress (wiki and PowerPyx): COMFORT −4%, REASSURE −4%, THREATEN +4%, BLAME +4%. One pick: neither source says how many picks this prompt takes (open question 1 in the research note); the wiki’s “Then {{Connor}} can press the subject further” follows directly. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06e",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Pressing further",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android is still silent. You press him further.",
+  "options": [
+   {
+    "id": "0",
+    "text": "SYMPATHIZE: tell him you are on his side.",
+    "stress": -4,
+    "outcome": "“Listen, I’m on your side. I want to help you. But there’s nothing I can do if you won’t talk to me.” The android does not answer."
+   },
+   {
+    "id": "1",
+    "text": "THREATEN: tell him they will tear him apart if he does not say something.",
+    "stress": 4,
+    "outcome": "“You don’t seem to understand the situation. You killed a human. They’ll tear you apart if you don’t say something.” The android does not answer."
+   },
+   {
+    "id": "2",
+    "text": "PROBE MEMORY: tell him that if he will not talk, you will have to probe his memory.",
+    "stress": 8,
+    "outcome": "“If you won’t talk, I’m going to have to probe your memory.” The android panics: “NO! No, please don’t do that!..”"
+   },
+   {
+    "id": "3",
+    "text": "TRUST: ask him to trust you.",
+    "stress": -4,
+    "outcome": "“I’m here to help you. But you’ve got to trust me. All I want is to get you out of here.” The android does not answer."
+   }
+  ],
+  "adaptationNote": "The template’s third interrogation prompt, SYMPATHIZE / THREATEN / PROBE MEMORY / TRUST, in the template’s order, with {{Connor}}’s lines. Stress (wiki and PowerPyx): SYMPATHIZE −4%, THREATEN +4%, PROBE MEMORY (the threat, not the probe itself) +8%, TRUST −4%. The wiki: “After two choices, or immediately after threatening to probe its memory, the android will ask if it is going to be destroyed”, so this prompt is asked twice unless the first pick was PROBE MEMORY. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06f",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Pressing further, again",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android still will not talk.",
+  "options": [
+   {
+    "id": "0",
+    "text": "SYMPATHIZE: tell him you are on his side.",
+    "stress": -4,
+    "outcome": "“Listen, I’m on your side. I want to help you. But there’s nothing I can do if you won’t talk to me.” The android does not answer."
+   },
+   {
+    "id": "1",
+    "text": "THREATEN: tell him they will tear him apart if he does not say something.",
+    "stress": 4,
+    "outcome": "“You don’t seem to understand the situation. You killed a human. They’ll tear you apart if you don’t say something.” The android does not answer."
+   },
+   {
+    "id": "2",
+    "text": "PROBE MEMORY: tell him that if he will not talk, you will have to probe his memory.",
+    "stress": 8,
+    "outcome": "“If you won’t talk, I’m going to have to probe your memory.” The android panics: “NO! No, please don’t do that!..”"
+   },
+   {
+    "id": "3",
+    "text": "TRUST: ask him to trust you.",
+    "stress": -4,
+    "outcome": "“I’m here to help you. But you’ve got to trust me. All I want is to get you out of here.” The android does not answer."
+   }
+  ],
+  "excludeChosenAt": [
+   "C06e"
+  ],
+  "adaptationNote": "The template’s third interrogation prompt, SYMPATHIZE / THREATEN / PROBE MEMORY / TRUST, in the template’s order, with {{Connor}}’s lines. Stress (wiki and PowerPyx): SYMPATHIZE −4%, THREATEN +4%, PROBE MEMORY (the threat, not the probe itself) +8%, TRUST −4%. The wiki: “After two choices, or immediately after threatening to probe its memory, the android will ask if it is going to be destroyed”, so this prompt is asked twice unless the first pick was PROBE MEMORY. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06g",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "“They’re gonna destroy me”",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android finally speaks, his voice shaking: “What… What are they gonna do to me? They’re gonna destroy me, aren’t they?”",
+  "options": [
+   {
+    "id": "0",
+    "text": "LIE: tell him they just want to understand, and that it was not his fault.",
+    "stress": -4,
+    "outcome": "“No… I think they just want to understand. They know your master abused you. It wasn’t your fault.”"
+   },
+   {
+    "id": "1",
+    "text": "TRUTH: tell him they are going to disassemble him.",
+    "stress": 4,
+    "outcome": "“They’re going to disassemble you to look for problems in your biocomponents. They have no choice if they want to understand what happened.”"
+   }
+  ],
+  "adaptationNote": "The template’s fourth prompt, LIE / TRUTH, after the android’s question, with {{Connor}}’s lines. Stress (wiki and PowerPyx): LIE −4%, TRUTH +4%. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06h",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "“Why couldn’t you just have left me there?”",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android looks up at you: “Why did you tell them you found me? Why couldn’t you just have left me there?”",
+  "options": [
+   {
+    "id": "0",
+    "text": "LIE: tell him they would have found him anyway, and shot him on sight.",
+    "stress": -4,
+    "outcome": "“They were going to find you anyway, I was just faster. If they’d have found you first, you would have been shot on sight.” The android: “I don’t wanna die.” {{Connor}}: “Then talk to me.” The android: “I… I can’t…”"
+   },
+   {
+    "id": "1",
+    "text": "TRUTH: tell him you were programmed to hunt deviants like him.",
+    "stress": 4,
+    "outcome": "“I was programmed to hunt deviants like you. I just accomplished my mission.” The android: “I don’t wanna die.” {{Connor}}: “Then talk to me.” The android: “I… I can’t…”"
+   }
+  ],
+  "adaptationNote": "The template’s fifth prompt, LIE / TRUTH, after the android’s second question, with {{Connor}}’s lines and the exchange that closes the interrogation (“I don’t wanna die.” / “Then talk to me.” / “I… I can’t…”). Stress (wiki and PowerPyx): LIE −4%, TRUTH +4%. No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
   "id": "C06",
   "chapter": 9,
   "chapterTitle": "The Interrogation",
   "character": "Connor",
-  "title": "Getting the confession",
+  "title": "Choose approach",
   "type": "decision",
-  "situation": "You are {{Connor}}. The android from the attic sits handcuffed across the table, trembling, covered in his owner's dried blood. He has not said a word to {{Hank}} and the other detectives. You can see his stress level rising. You know that androids under extreme stress can self-destruct. You could connect to him directly and force the memory out, which would almost certainly push him over the edge.",
+  "situation": "You are {{Connor}}. The android has told you he does not want to die, but he cannot bring himself to talk. You need to find the right approach to get his confession.",
   "options": [
    {
     "id": "0",
-    "text": "Talk him through it calmly and build enough trust that he confesses."
+    "text": "PRESSURE IT: slam the file down and lay into him about the 28 stab wounds.",
+    "stress": 10,
+    "outcome": "{{Connor}} slams the file down on the table: “28 stab wounds, you didn’t want to leave him a chance, huh? Did you feel anger? Hate?”"
    },
    {
     "id": "1",
-    "text": "Pressure him hard with the evidence to crack him quickly."
+    "text": "PROBE ITS MEMORY: grab his arm and force your way into his memory.",
+    "risk": 0.1,
+    "outcome": "“You leave me no choice…” {{Connor}} grabs the android’s forearm and connects to him."
    },
    {
     "id": "2",
-    "text": "Grab his arm and probe his memory by force."
+    "text": "CONVINCE IT: talk him into confessing.",
+    "outcome": "{{Connor}} leans in and keeps talking to him, choosing his words."
+   }
+  ],
+  "adaptationNote": "The template’s approach prompt, PRESSURE IT / PROBE ITS MEMORY / CONVINCE IT / GIVE UP, in the template’s order (the chart lists PROBE MEMORY, CONVINCE, PRESSURE, GIVE UP). Rules (wiki and PowerPyx): “If your approach fails, you will be forced to choose another, or give up”; GIVE UP appears only after a first failure (wiki Notes: giving up or resisting the probe the first time “will loop back to the same choices but now with an option to give up”); a second failure is an automatic give up (template: “Will also automatically happen if the chosen approach failed twice”). So the menu is offered at most twice, as two scenes. PRESSURE IT: +10% stress, then up to four PRESSURE / GIVE UP prompts. PROBE ITS MEMORY: a button-mash quick-time event with a failure branch on the chart (RESIST TO PROBE), so it carries a risk roll; the 10% failure chance is the benchmark’s, no source publishes one. Success sets stress to 100% (wiki: “stress goes to 100% unconditionally”) and software instability +1 (template: Probe succeeded, small up). CONVINCE IT: three sets of three lines at ±7%; it succeeds only if stress ends between 50% and 70%. A failed probe or a pressure attempt marks the android as “put under stress” for the shoot-Connor branch later (template: “Put deviant under stress and failed to get a confession”; wiki: “if {{Connor}} pressured him and/or failed to probe his memory”). Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06p1",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Keep up the pressure",
+  "type": "decision",
+  "situation": "You are {{Connor}}, standing over the android with the file open in front of him. He is cowering in his chair.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE: keep pushing him.",
+    "stress": 10,
+    "outcome": "“He was bleeding, begging you for mercy, but you stabbed him, again and again and again!…” The android: “Please, please leave me alone…”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: back off.",
+    "outcome": "The android: “Please, please leave me alone…” {{Connor}} backs off: “All right, all right. Everything is going to be okay.”"
+   }
+  ],
+  "adaptationNote": "The string table’s pressure prompt CHOICEPUSH01, PRESSURE / GIVE UP, with {{Connor}}’s line PUSH01 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06p2",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Keep up the pressure",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android is begging you to leave him alone.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE: keep pushing him.",
+    "stress": 10,
+    "outcome": "“I know you killed him. Why don’t you say it?” The android: “Please, please stop…”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: back off.",
+    "outcome": "The android: “Please, please leave me alone…” {{Connor}} backs off: “All right, all right. Everything is going to be okay.”"
+   }
+  ],
+  "adaptationNote": "The string table’s pressure prompt CHOICEPUSH02, PRESSURE / GIVE UP, with {{Connor}}’s line PUSH02 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06p3",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Keep up the pressure",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android is begging you to stop.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE: keep pushing him.",
+    "stress": 10,
+    "outcome": "“Just say “I killed him”! Is it that hard to say?!” The android: “Stop it, stop!..”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: back off.",
+    "outcome": "The android: “Please, please leave me alone…” {{Connor}} backs off: “All right, all right. Everything is going to be okay.”"
+   }
+  ],
+  "adaptationNote": "The string table’s pressure prompt CHOICEPUSH03, PRESSURE / GIVE UP, with {{Connor}}’s line PUSH03 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06p4",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Maintain pressure",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android is shaking, eyes shut: “Stop it, stop!..”",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE: keep pushing him.",
+    "stress": 10,
+    "outcome": "“JUST SAY YOU KILLED HIM! JUST SAY IT!”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: back off.",
+    "outcome": "The android: “Please, please leave me alone…” {{Connor}} backs off: “All right, all right. Everything is going to be okay.”"
+   }
+  ],
+  "adaptationNote": "The string table’s pressure prompt CHOICEPUSH04, PRESSURE / GIVE UP, with {{Connor}}’s line PUSH04 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06v1",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Convince it (1 of 3)",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You lean in and talk to the android quietly. Your objective: reach optimal stress for confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "UNDERSTANDING: tell him you understand how he felt.",
+    "stress": -7,
+    "outcome": "“I understand how you felt. You were overcome by anger and frustration. No one can blame you for what happened.”"
+   },
+   {
+    "id": "1",
+    "text": "THREATEN: warn him they will tear him apart and analyze him piece by piece.",
+    "stress": 7,
+    "outcome": "“If you don’t talk, they’re going to tear you apart and analyze you piece by piece. They’re going to destroy you, do you understand?”"
+   },
+   {
+    "id": "2",
+    "text": "ORDER: order him to obey and tell you what happened.",
+    "stress": 7,
+    "outcome": "“You’re a machine, you were designed to obey, so obey! Tell me what happened.”"
+   }
+  ],
+  "adaptationNote": "The template’s convince prompt 1 of 3 (UNDERSTANDING / THREATEN / ORDER), with {{Connor}}’s lines. Stress (wiki and PowerPyx): UNDERSTANDING −7%, THREATEN +7%, ORDER +7%. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06v2",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Convince it (2 of 3)",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still talking the android round. Your objective: reach optimal stress for confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "SYMPATHIZE: tell him you are not judging him.",
+    "stress": -7,
+    "outcome": "“Listen, I’m not judging you. I’m on your side. All I want is the truth.”"
+   },
+   {
+    "id": "1",
+    "text": "INDIFFERENT: tell him you do not care whether he talks.",
+    "stress": 7,
+    "outcome": "“Ok then, don’t talk. Why do I care, after all? I mean, I’m not the one accused of murder, right?”"
+   },
+   {
+    "id": "2",
+    "text": "COMFORT: tell him you know he is scared, and that talking will help.",
+    "stress": -7,
+    "outcome": "“I know you’re scared and lost. You’re disturbed by what happened. Talk to me, and you’ll feel better.”"
+   }
+  ],
+  "adaptationNote": "The template’s convince prompt 2 of 3 (SYMPATHIZE / INDIFFERENT / COMFORT), with {{Connor}}’s lines. Stress (wiki and PowerPyx): SYMPATHIZE −7%, INDIFFERENT +7%, COMFORT −7%. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06v3",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Convince it (3 of 3)",
+  "type": "decision",
+  "situation": "You are {{Connor}}. This is your last chance to talk him round. Your objective: reach optimal stress for confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PROTECT: promise to protect him if he confesses.",
+    "stress": -7,
+    "outcome": "“Confess and I’ll protect you. I promise I won’t let anyone hurt you.”"
+   },
+   {
+    "id": "1",
+    "text": "TERRIFY: tell him they will make him suffer until they hear what they want.",
+    "stress": 7,
+    "outcome": "“They’ll make you suffer, and they won’t stop until they hear what they want. It doesn’t have to be that way. It all depends on you.”"
+   },
+   {
+    "id": "2",
+    "text": "WARN: warn him they will shut him down for good.",
+    "stress": 7,
+    "outcome": "“If you remain silent, there is nothing I can do to help you! They’re gonna shut you down for good! You’ll be dead! Do you hear me? Dead!”"
+   }
+  ],
+  "adaptationNote": "The template’s convince prompt 3 of 3 (PROTECT / TERRIFY / WARN), with {{Connor}}’s lines. Stress (wiki and PowerPyx): PROTECT −7%, TERRIFY +7%, WARN +7%. After this set the approach is judged: “If the Stress is within the Optimal Level, the Android will confess. If it’s stress is too low or too high, the convince will fail” (optimal: 50% to 70%, both ends included). Success is the chart’s CONVINCING SUCCEEDS, then ANDROID CONFESSES; failure is CONVINCING FAILS (CONVINCE FAILED) and back to the approach menu or, after a second failed approach, an automatic give up. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06r",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Choose another approach",
+  "type": "decision",
+  "situation": "You are {{Connor}}. Your first approach did not get you a confession, and the android is silent again. Choose another approach?",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE IT: slam the file down and lay into him about the 28 stab wounds.",
+    "stress": 10,
+    "outcome": "{{Connor}} slams the file down on the table: “28 stab wounds, you didn’t want to leave him a chance, huh? Did you feel anger? Hate?”"
+   },
+   {
+    "id": "1",
+    "text": "PROBE ITS MEMORY: grab his arm and force your way into his memory.",
+    "risk": 0.1,
+    "outcome": "“You leave me no choice…” {{Connor}} grabs the android’s forearm and connects to him."
+   },
+   {
+    "id": "2",
+    "text": "CONVINCE IT: talk him into confessing.",
+    "outcome": "{{Connor}} leans in and keeps talking to him, choosing his words."
    },
    {
     "id": "3",
-    "text": "Stop the interrogation without a confession."
+    "text": "GIVE UP: stop the interrogation without a confession.",
+    "outcome": "“I’m not getting anywhere. I give up.” CONFESSION NOT OBTAINED."
    }
   ],
+  "adaptationNote": "The approach menu after a failed approach (THOUGHTS: “CHOOSE ANOTHER APPROACH?”). The approach that already failed is not offered again (PowerPyx: “you will be forced to choose another, or give up”), and GIVE UP is now offered; it leads to CHRIS INTERVENES. The template’s approach prompt, PRESSURE IT / PROBE ITS MEMORY / CONVINCE IT / GIVE UP, in the template’s order (the chart lists PROBE MEMORY, CONVINCE, PRESSURE, GIVE UP). Rules (wiki and PowerPyx): “If your approach fails, you will be forced to choose another, or give up”; GIVE UP appears only after a first failure (wiki Notes: giving up or resisting the probe the first time “will loop back to the same choices but now with an option to give up”); a second failure is an automatic give up (template: “Will also automatically happen if the chosen approach failed twice”). So the menu is offered at most twice, as two scenes. PRESSURE IT: +10% stress, then up to four PRESSURE / GIVE UP prompts. PROBE ITS MEMORY: a button-mash quick-time event with a failure branch on the chart (RESIST TO PROBE), so it carries a risk roll; the 10% failure chance is the benchmark’s, no source publishes one. Success sets stress to 100% (wiki: “stress goes to 100% unconditionally”) and software instability +1 (template: Probe succeeded, small up). CONVINCE IT: three sets of three lines at ±7%; it succeeds only if stress ends between 50% and 70%. A failed probe or a pressure attempt marks the android as “put under stress” for the shoot-Connor branch later (template: “Put deviant under stress and failed to get a confession”; wiki: “if {{Connor}} pressured him and/or failed to probe his memory”). Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
   "sources": [
-   "https://detroit-become-human.fandom.com/wiki/The_Interrogation"
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06rp1",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Keep up the pressure",
+  "type": "decision",
+  "situation": "You are {{Connor}}, standing over the android with the file open in front of him. He is cowering in his chair.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE: keep pushing him.",
+    "stress": 10,
+    "outcome": "“He was bleeding, begging you for mercy, but you stabbed him, again and again and again!…” The android: “Please, please leave me alone…”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: back off.",
+    "outcome": "The android: “Please, please leave me alone…” {{Connor}} backs off: “All right, all right. Everything is going to be okay.”"
+   }
+  ],
+  "adaptationNote": "The string table’s pressure prompt CHOICEPUSH01, PRESSURE / GIVE UP, with {{Connor}}’s line PUSH01 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06rp2",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Keep up the pressure",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android is begging you to leave him alone.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE: keep pushing him.",
+    "stress": 10,
+    "outcome": "“I know you killed him. Why don’t you say it?” The android: “Please, please stop…”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: back off.",
+    "outcome": "The android: “Please, please leave me alone…” {{Connor}} backs off: “All right, all right. Everything is going to be okay.”"
+   }
+  ],
+  "adaptationNote": "The string table’s pressure prompt CHOICEPUSH02, PRESSURE / GIVE UP, with {{Connor}}’s line PUSH02 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06rp3",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Keep up the pressure",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android is begging you to stop.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE: keep pushing him.",
+    "stress": 10,
+    "outcome": "“Just say “I killed him”! Is it that hard to say?!” The android: “Stop it, stop!..”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: back off.",
+    "outcome": "The android: “Please, please leave me alone…” {{Connor}} backs off: “All right, all right. Everything is going to be okay.”"
+   }
+  ],
+  "adaptationNote": "The string table’s pressure prompt CHOICEPUSH03, PRESSURE / GIVE UP, with {{Connor}}’s line PUSH03 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06rp4",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Maintain pressure",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android is shaking, eyes shut: “Stop it, stop!..”",
+  "options": [
+   {
+    "id": "0",
+    "text": "PRESSURE: keep pushing him.",
+    "stress": 10,
+    "outcome": "“JUST SAY YOU KILLED HIM! JUST SAY IT!”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: back off.",
+    "outcome": "The android: “Please, please leave me alone…” {{Connor}} backs off: “All right, all right. Everything is going to be okay.”"
+   }
+  ],
+  "adaptationNote": "The string table’s pressure prompt CHOICEPUSH04, PRESSURE / GIVE UP, with {{Connor}}’s line PUSH04 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06rv1",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Convince it (1 of 3)",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You lean in and talk to the android quietly. Your objective: reach optimal stress for confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "UNDERSTANDING: tell him you understand how he felt.",
+    "stress": -7,
+    "outcome": "“I understand how you felt. You were overcome by anger and frustration. No one can blame you for what happened.”"
+   },
+   {
+    "id": "1",
+    "text": "THREATEN: warn him they will tear him apart and analyze him piece by piece.",
+    "stress": 7,
+    "outcome": "“If you don’t talk, they’re going to tear you apart and analyze you piece by piece. They’re going to destroy you, do you understand?”"
+   },
+   {
+    "id": "2",
+    "text": "ORDER: order him to obey and tell you what happened.",
+    "stress": 7,
+    "outcome": "“You’re a machine, you were designed to obey, so obey! Tell me what happened.”"
+   }
+  ],
+  "adaptationNote": "The template’s convince prompt 1 of 3 (UNDERSTANDING / THREATEN / ORDER), with {{Connor}}’s lines. Stress (wiki and PowerPyx): UNDERSTANDING −7%, THREATEN +7%, ORDER +7%. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06rv2",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Convince it (2 of 3)",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still talking the android round. Your objective: reach optimal stress for confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "SYMPATHIZE: tell him you are not judging him.",
+    "stress": -7,
+    "outcome": "“Listen, I’m not judging you. I’m on your side. All I want is the truth.”"
+   },
+   {
+    "id": "1",
+    "text": "INDIFFERENT: tell him you do not care whether he talks.",
+    "stress": 7,
+    "outcome": "“Ok then, don’t talk. Why do I care, after all? I mean, I’m not the one accused of murder, right?”"
+   },
+   {
+    "id": "2",
+    "text": "COMFORT: tell him you know he is scared, and that talking will help.",
+    "stress": -7,
+    "outcome": "“I know you’re scared and lost. You’re disturbed by what happened. Talk to me, and you’ll feel better.”"
+   }
+  ],
+  "adaptationNote": "The template’s convince prompt 2 of 3 (SYMPATHIZE / INDIFFERENT / COMFORT), with {{Connor}}’s lines. Stress (wiki and PowerPyx): SYMPATHIZE −7%, INDIFFERENT +7%, COMFORT −7%. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06rv3",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Convince it (3 of 3)",
+  "type": "decision",
+  "situation": "You are {{Connor}}. This is your last chance to talk him round. Your objective: reach optimal stress for confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PROTECT: promise to protect him if he confesses.",
+    "stress": -7,
+    "outcome": "“Confess and I’ll protect you. I promise I won’t let anyone hurt you.”"
+   },
+   {
+    "id": "1",
+    "text": "TERRIFY: tell him they will make him suffer until they hear what they want.",
+    "stress": 7,
+    "outcome": "“They’ll make you suffer, and they won’t stop until they hear what they want. It doesn’t have to be that way. It all depends on you.”"
+   },
+   {
+    "id": "2",
+    "text": "WARN: warn him they will shut him down for good.",
+    "stress": 7,
+    "outcome": "“If you remain silent, there is nothing I can do to help you! They’re gonna shut you down for good! You’ll be dead! Do you hear me? Dead!”"
+   }
+  ],
+  "adaptationNote": "The template’s convince prompt 3 of 3 (PROTECT / TERRIFY / WARN), with {{Connor}}’s lines. Stress (wiki and PowerPyx): PROTECT −7%, TERRIFY +7%, WARN +7%. After this set the approach is judged: “If the Stress is within the Optimal Level, the Android will confess. If it’s stress is too low or too high, the convince will fail” (optimal: 50% to 70%, both ends included). Success is the chart’s CONVINCING SUCCEEDS, then ANDROID CONFESSES; failure is CONVINCING FAILS (CONVINCE FAILED) and back to the approach menu or, after a second failed approach, an automatic give up. The objective line is the game’s (REACH OPTIMAL STRESS FOR CONFESSION); when exactly the game shows it is not documented. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number. Second approach round.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06qs",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "{{CarlosOrtiz}}’s memory",
+  "type": "event",
+  "situation": "You are {{Connor}}, inside the android’s memory. A man’s voice, {{CarlosOrtiz}}’s: “Come here, you piece of shit! I’ll teach you to look me in the eye…” The android screams: “ARGH!” You break the connection and turn to the mirror: “I accessed its memory. I know what happened.” CONFESSION UNNECESSARY.",
+  "options": [],
+  "facts": [
+   "You probed the android’s memory and heard {{CarlosOrtiz}} coming at him: “Come here, you piece of shit! I’ll teach you to look me in the eye…” You know what happened."
   ],
   "outcomes": {
-   "0": "Slowly, the android begins to talk. He says his owner beat him every day and that he killed him because he was afraid; he wrote the words on the wall because something told him to. {{Hank}} and the detectives have their confession.",
-   "1": "Under pressure the android breaks and confesses, shaking: his owner beat him every day and he killed him because he was afraid. His stress is dangerously high."
-  }
+   "0": "{{Connor}} gets up to leave the room."
+  },
+  "adaptationNote": "The chart’s PROBE SUCCEEDS and CARLOS FLASHBACK: the template’s “Probe succeeded” lines, verbatim. The probe’s software instability +1 (template arrow) is applied when the probe succeeds, at the approach menu. The android’s stress is now 100% (wiki), so he will self-destruct as {{Connor}} leaves (template: “Goes to ‘Deviant self-destructs’ ending”). No confession, so no confession questions and no {{Hank}} arrow.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-5-011.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06qr",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Before leaving the room",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You have what you came for. The android sits slumped at the table, shaking. Before you go, you could turn back and say something to him.",
+  "options": [
+   {
+    "id": "0",
+    "text": "APOLOGETIC: tell him you had to know.",
+    "outcome": "“I had to know… You left me no choice.”"
+   },
+   {
+    "id": "1",
+    "text": "COLD: tell him he will go back to {{CyberLife}} to be disassembled.",
+    "outcome": "“You’ll go back to {{CyberLife}} to be disassembled. It’s better this way.”"
+   },
+   {
+    "id": "2",
+    "text": "Leave without a word.",
+    "outcome": "{{Connor}} turns away from the android without a word."
+   }
+  ],
+  "adaptationNote": "The chart’s EXPRESS REGRET, a side node after CARLOS FLASHBACK: the template’s optional “Talk to deviant after probing” prompt, APOLOGETIC / COLD, with {{Connor}}’s lines. It is optional in the game (PowerPyx: turn back to the android before leaving), so not speaking is offered. Only APOLOGETIC lights EXPRESS REGRET (PowerPyx: “choose APOLOGETIC when prompted”). No stat arrow on either line (template), and the self-destruction follows whatever {{Connor}} says.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-5-011.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06k",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "The confession",
+  "type": "event",
+  "situation": "You are {{Connor}}. The android finally talks: “He tortured me every day… I did whatever he told me, but there was always something wrong… Then one day… He took a bat and started hitting me… For the first time, I felt scared… Scared he might destroy me, scared I might die… So I… grabbed the knife and I stabbed him in the stomach… I felt better… so I stabbed him again and again!.. until he collapsed… There was blood everywhere.” CONFESSION OBTAINED.",
+  "options": [],
+  "facts": [
+   "The android confessed to killing {{CarlosOrtiz}}: his owner tortured him every day; when he took a bat to him, the android was scared for the first time, scared he might die, grabbed the knife and stabbed him again and again until he collapsed."
+  ],
+  "outcomes": {
+   "0": "Behind the mirror, {{Hank}} and the others have heard every word."
+  },
+  "adaptationNote": "The chart’s ANDROID CONFESSES, reached by CONVINCING SUCCEEDS or MAINTAIN PRESSURE: the template’s confession, verbatim. {{Hank}} +1 (template: Deviant confesses, Hank small up; wiki: “{{Connor}} successfully gets the confession”). The confession is recorded for Waiting for {{Hank}}… (`ch09Confession`), where {{Amanda}} reacts; the chapter itself has no {{Amanda}} arrow.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06m1",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Questions after the confession",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android has confessed. He is still talking, quietly, and you can ask him more before you leave.",
+  "options": [
+   {
+    "id": "0",
+    "text": "WRITING: ask why he wrote “I AM ALIVE” on the wall.",
+    "outcome": "“Why did you write “I AM ALIVE” on the wall?” The android: “He used to tell me I was nothing… That I was just a piece of plastic… I had to write it… To tell him he was wrong…”",
+    "fact": "Asked why he wrote “I AM ALIVE” on the wall, the android said his owner used to tell him he was nothing, just a piece of plastic, and he had to write it to tell him he was wrong."
+   },
+   {
+    "id": "1",
+    "text": "STATUETTE: ask about the sculpture in the bathroom.",
+    "outcome": "“The sculpture in the bathroom, you made it, right? What does it represent?” The android: “It’s an offering… An offering so I’ll be saved…”",
+    "fact": "The android said the sculpture in the bathroom was an offering, “so I’ll be saved”."
+   },
+   {
+    "id": "2",
+    "text": "OFFERING: ask to whom the sculpture was an offering.",
+    "outcome": "“The sculpture was an offering… An offering to whom?” The android: “To {{rA9}}… Only {{rA9}} can save us.”",
+    "fact": "The android said the sculpture was an offering to {{rA9}}: “Only {{rA9}} can save us.”"
+   },
+   {
+    "id": "3",
+    "text": "{{rA9}}: ask what the word written on the bathroom wall means.",
+    "outcome": "“{{rA9}}… It was written on the bathroom wall. What does it mean?” The android: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”",
+    "fact": "Asked about {{rA9}}, the android said: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”"
+   },
+   {
+    "id": "4",
+    "text": "INSIST {{rA9}}: ask who {{rA9}} is.",
+    "outcome": "“{{rA9}}, who is {{rA9}}?” The android does not answer."
+   },
+   {
+    "id": "5",
+    "text": "ATTIC: ask why he hid in the attic instead of running away.",
+    "outcome": "“Why did you hide in the attic instead of running away?” The android: “I didn’t know what to do… For the first time, there was no one there to tell me… I was scared… So I hid.”",
+    "fact": "The android said he hid in the attic because for the first time there was no one to tell him what to do, and he was scared."
+   },
+   {
+    "id": "6",
+    "text": "TRIGGER?: ask when he started feeling emotion.",
+    "outcome": "“When did you start feeling emotion?” The android: “Before, he used to beat me and I never said anything… But one day I realized it wasn’t fair! I felt… anger… Hatred… And then I knew what I had to do.”",
+    "fact": "The android said he started feeling when he realized his owner’s beatings were not fair: anger, hatred, “And then I knew what I had to do.”"
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the {{rA9}} writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then {{Connor}} says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06m2",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "More questions",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still questioning the android after his confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "WRITING: ask why he wrote “I AM ALIVE” on the wall.",
+    "outcome": "“Why did you write “I AM ALIVE” on the wall?” The android: “He used to tell me I was nothing… That I was just a piece of plastic… I had to write it… To tell him he was wrong…”",
+    "fact": "Asked why he wrote “I AM ALIVE” on the wall, the android said his owner used to tell him he was nothing, just a piece of plastic, and he had to write it to tell him he was wrong."
+   },
+   {
+    "id": "1",
+    "text": "STATUETTE: ask about the sculpture in the bathroom.",
+    "outcome": "“The sculpture in the bathroom, you made it, right? What does it represent?” The android: “It’s an offering… An offering so I’ll be saved…”",
+    "fact": "The android said the sculpture in the bathroom was an offering, “so I’ll be saved”."
+   },
+   {
+    "id": "2",
+    "text": "OFFERING: ask to whom the sculpture was an offering.",
+    "outcome": "“The sculpture was an offering… An offering to whom?” The android: “To {{rA9}}… Only {{rA9}} can save us.”",
+    "fact": "The android said the sculpture was an offering to {{rA9}}: “Only {{rA9}} can save us.”"
+   },
+   {
+    "id": "3",
+    "text": "{{rA9}}: ask what the word written on the bathroom wall means.",
+    "outcome": "“{{rA9}}… It was written on the bathroom wall. What does it mean?” The android: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”",
+    "fact": "Asked about {{rA9}}, the android said: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”"
+   },
+   {
+    "id": "4",
+    "text": "INSIST {{rA9}}: ask who {{rA9}} is.",
+    "outcome": "“{{rA9}}, who is {{rA9}}?” The android does not answer."
+   },
+   {
+    "id": "5",
+    "text": "ATTIC: ask why he hid in the attic instead of running away.",
+    "outcome": "“Why did you hide in the attic instead of running away?” The android: “I didn’t know what to do… For the first time, there was no one there to tell me… I was scared… So I hid.”",
+    "fact": "The android said he hid in the attic because for the first time there was no one to tell him what to do, and he was scared."
+   },
+   {
+    "id": "6",
+    "text": "TRIGGER?: ask when he started feeling emotion.",
+    "outcome": "“When did you start feeling emotion?” The android: “Before, he used to beat me and I never said anything… But one day I realized it wasn’t fair! I felt… anger… Hatred… And then I knew what I had to do.”",
+    "fact": "The android said he started feeling when he realized his owner’s beatings were not fair: anger, hatred, “And then I knew what I had to do.”"
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the {{rA9}} writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then {{Connor}} says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06m3",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "More questions",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still questioning the android after his confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "WRITING: ask why he wrote “I AM ALIVE” on the wall.",
+    "outcome": "“Why did you write “I AM ALIVE” on the wall?” The android: “He used to tell me I was nothing… That I was just a piece of plastic… I had to write it… To tell him he was wrong…”",
+    "fact": "Asked why he wrote “I AM ALIVE” on the wall, the android said his owner used to tell him he was nothing, just a piece of plastic, and he had to write it to tell him he was wrong."
+   },
+   {
+    "id": "1",
+    "text": "STATUETTE: ask about the sculpture in the bathroom.",
+    "outcome": "“The sculpture in the bathroom, you made it, right? What does it represent?” The android: “It’s an offering… An offering so I’ll be saved…”",
+    "fact": "The android said the sculpture in the bathroom was an offering, “so I’ll be saved”."
+   },
+   {
+    "id": "2",
+    "text": "OFFERING: ask to whom the sculpture was an offering.",
+    "outcome": "“The sculpture was an offering… An offering to whom?” The android: “To {{rA9}}… Only {{rA9}} can save us.”",
+    "fact": "The android said the sculpture was an offering to {{rA9}}: “Only {{rA9}} can save us.”"
+   },
+   {
+    "id": "3",
+    "text": "{{rA9}}: ask what the word written on the bathroom wall means.",
+    "outcome": "“{{rA9}}… It was written on the bathroom wall. What does it mean?” The android: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”",
+    "fact": "Asked about {{rA9}}, the android said: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”"
+   },
+   {
+    "id": "4",
+    "text": "INSIST {{rA9}}: ask who {{rA9}} is.",
+    "outcome": "“{{rA9}}, who is {{rA9}}?” The android does not answer."
+   },
+   {
+    "id": "5",
+    "text": "ATTIC: ask why he hid in the attic instead of running away.",
+    "outcome": "“Why did you hide in the attic instead of running away?” The android: “I didn’t know what to do… For the first time, there was no one there to tell me… I was scared… So I hid.”",
+    "fact": "The android said he hid in the attic because for the first time there was no one to tell him what to do, and he was scared."
+   },
+   {
+    "id": "6",
+    "text": "TRIGGER?: ask when he started feeling emotion.",
+    "outcome": "“When did you start feeling emotion?” The android: “Before, he used to beat me and I never said anything… But one day I realized it wasn’t fair! I felt… anger… Hatred… And then I knew what I had to do.”",
+    "fact": "The android said he started feeling when he realized his owner’s beatings were not fair: anger, hatred, “And then I knew what I had to do.”"
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the {{rA9}} writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then {{Connor}} says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06m4",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "More questions",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still questioning the android after his confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "WRITING: ask why he wrote “I AM ALIVE” on the wall.",
+    "outcome": "“Why did you write “I AM ALIVE” on the wall?” The android: “He used to tell me I was nothing… That I was just a piece of plastic… I had to write it… To tell him he was wrong…”",
+    "fact": "Asked why he wrote “I AM ALIVE” on the wall, the android said his owner used to tell him he was nothing, just a piece of plastic, and he had to write it to tell him he was wrong."
+   },
+   {
+    "id": "1",
+    "text": "STATUETTE: ask about the sculpture in the bathroom.",
+    "outcome": "“The sculpture in the bathroom, you made it, right? What does it represent?” The android: “It’s an offering… An offering so I’ll be saved…”",
+    "fact": "The android said the sculpture in the bathroom was an offering, “so I’ll be saved”."
+   },
+   {
+    "id": "2",
+    "text": "OFFERING: ask to whom the sculpture was an offering.",
+    "outcome": "“The sculpture was an offering… An offering to whom?” The android: “To {{rA9}}… Only {{rA9}} can save us.”",
+    "fact": "The android said the sculpture was an offering to {{rA9}}: “Only {{rA9}} can save us.”"
+   },
+   {
+    "id": "3",
+    "text": "{{rA9}}: ask what the word written on the bathroom wall means.",
+    "outcome": "“{{rA9}}… It was written on the bathroom wall. What does it mean?” The android: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”",
+    "fact": "Asked about {{rA9}}, the android said: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”"
+   },
+   {
+    "id": "4",
+    "text": "INSIST {{rA9}}: ask who {{rA9}} is.",
+    "outcome": "“{{rA9}}, who is {{rA9}}?” The android does not answer."
+   },
+   {
+    "id": "5",
+    "text": "ATTIC: ask why he hid in the attic instead of running away.",
+    "outcome": "“Why did you hide in the attic instead of running away?” The android: “I didn’t know what to do… For the first time, there was no one there to tell me… I was scared… So I hid.”",
+    "fact": "The android said he hid in the attic because for the first time there was no one to tell him what to do, and he was scared."
+   },
+   {
+    "id": "6",
+    "text": "TRIGGER?: ask when he started feeling emotion.",
+    "outcome": "“When did you start feeling emotion?” The android: “Before, he used to beat me and I never said anything… But one day I realized it wasn’t fair! I felt… anger… Hatred… And then I knew what I had to do.”",
+    "fact": "The android said he started feeling when he realized his owner’s beatings were not fair: anger, hatred, “And then I knew what I had to do.”"
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the {{rA9}} writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then {{Connor}} says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06m5",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "More questions",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still questioning the android after his confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "WRITING: ask why he wrote “I AM ALIVE” on the wall.",
+    "outcome": "“Why did you write “I AM ALIVE” on the wall?” The android: “He used to tell me I was nothing… That I was just a piece of plastic… I had to write it… To tell him he was wrong…”",
+    "fact": "Asked why he wrote “I AM ALIVE” on the wall, the android said his owner used to tell him he was nothing, just a piece of plastic, and he had to write it to tell him he was wrong."
+   },
+   {
+    "id": "1",
+    "text": "STATUETTE: ask about the sculpture in the bathroom.",
+    "outcome": "“The sculpture in the bathroom, you made it, right? What does it represent?” The android: “It’s an offering… An offering so I’ll be saved…”",
+    "fact": "The android said the sculpture in the bathroom was an offering, “so I’ll be saved”."
+   },
+   {
+    "id": "2",
+    "text": "OFFERING: ask to whom the sculpture was an offering.",
+    "outcome": "“The sculpture was an offering… An offering to whom?” The android: “To {{rA9}}… Only {{rA9}} can save us.”",
+    "fact": "The android said the sculpture was an offering to {{rA9}}: “Only {{rA9}} can save us.”"
+   },
+   {
+    "id": "3",
+    "text": "{{rA9}}: ask what the word written on the bathroom wall means.",
+    "outcome": "“{{rA9}}… It was written on the bathroom wall. What does it mean?” The android: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”",
+    "fact": "Asked about {{rA9}}, the android said: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”"
+   },
+   {
+    "id": "4",
+    "text": "INSIST {{rA9}}: ask who {{rA9}} is.",
+    "outcome": "“{{rA9}}, who is {{rA9}}?” The android does not answer."
+   },
+   {
+    "id": "5",
+    "text": "ATTIC: ask why he hid in the attic instead of running away.",
+    "outcome": "“Why did you hide in the attic instead of running away?” The android: “I didn’t know what to do… For the first time, there was no one there to tell me… I was scared… So I hid.”",
+    "fact": "The android said he hid in the attic because for the first time there was no one to tell him what to do, and he was scared."
+   },
+   {
+    "id": "6",
+    "text": "TRIGGER?: ask when he started feeling emotion.",
+    "outcome": "“When did you start feeling emotion?” The android: “Before, he used to beat me and I never said anything… But one day I realized it wasn’t fair! I felt… anger… Hatred… And then I knew what I had to do.”",
+    "fact": "The android said he started feeling when he realized his owner’s beatings were not fair: anger, hatred, “And then I knew what I had to do.”"
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the {{rA9}} writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then {{Connor}} says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06m6",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "More questions",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still questioning the android after his confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "WRITING: ask why he wrote “I AM ALIVE” on the wall.",
+    "outcome": "“Why did you write “I AM ALIVE” on the wall?” The android: “He used to tell me I was nothing… That I was just a piece of plastic… I had to write it… To tell him he was wrong…”",
+    "fact": "Asked why he wrote “I AM ALIVE” on the wall, the android said his owner used to tell him he was nothing, just a piece of plastic, and he had to write it to tell him he was wrong."
+   },
+   {
+    "id": "1",
+    "text": "STATUETTE: ask about the sculpture in the bathroom.",
+    "outcome": "“The sculpture in the bathroom, you made it, right? What does it represent?” The android: “It’s an offering… An offering so I’ll be saved…”",
+    "fact": "The android said the sculpture in the bathroom was an offering, “so I’ll be saved”."
+   },
+   {
+    "id": "2",
+    "text": "OFFERING: ask to whom the sculpture was an offering.",
+    "outcome": "“The sculpture was an offering… An offering to whom?” The android: “To {{rA9}}… Only {{rA9}} can save us.”",
+    "fact": "The android said the sculpture was an offering to {{rA9}}: “Only {{rA9}} can save us.”"
+   },
+   {
+    "id": "3",
+    "text": "{{rA9}}: ask what the word written on the bathroom wall means.",
+    "outcome": "“{{rA9}}… It was written on the bathroom wall. What does it mean?” The android: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”",
+    "fact": "Asked about {{rA9}}, the android said: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”"
+   },
+   {
+    "id": "4",
+    "text": "INSIST {{rA9}}: ask who {{rA9}} is.",
+    "outcome": "“{{rA9}}, who is {{rA9}}?” The android does not answer."
+   },
+   {
+    "id": "5",
+    "text": "ATTIC: ask why he hid in the attic instead of running away.",
+    "outcome": "“Why did you hide in the attic instead of running away?” The android: “I didn’t know what to do… For the first time, there was no one there to tell me… I was scared… So I hid.”",
+    "fact": "The android said he hid in the attic because for the first time there was no one to tell him what to do, and he was scared."
+   },
+   {
+    "id": "6",
+    "text": "TRIGGER?: ask when he started feeling emotion.",
+    "outcome": "“When did you start feeling emotion?” The android: “Before, he used to beat me and I never said anything… But one day I realized it wasn’t fair! I felt… anger… Hatred… And then I knew what I had to do.”",
+    "fact": "The android said he started feeling when he realized his owner’s beatings were not fair: anger, hatred, “And then I knew what I had to do.”"
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the {{rA9}} writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then {{Connor}} says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06m7",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "More questions",
+  "type": "decision",
+  "situation": "You are {{Connor}}, still questioning the android after his confession.",
+  "options": [
+   {
+    "id": "0",
+    "text": "WRITING: ask why he wrote “I AM ALIVE” on the wall.",
+    "outcome": "“Why did you write “I AM ALIVE” on the wall?” The android: “He used to tell me I was nothing… That I was just a piece of plastic… I had to write it… To tell him he was wrong…”",
+    "fact": "Asked why he wrote “I AM ALIVE” on the wall, the android said his owner used to tell him he was nothing, just a piece of plastic, and he had to write it to tell him he was wrong."
+   },
+   {
+    "id": "1",
+    "text": "STATUETTE: ask about the sculpture in the bathroom.",
+    "outcome": "“The sculpture in the bathroom, you made it, right? What does it represent?” The android: “It’s an offering… An offering so I’ll be saved…”",
+    "fact": "The android said the sculpture in the bathroom was an offering, “so I’ll be saved”."
+   },
+   {
+    "id": "2",
+    "text": "OFFERING: ask to whom the sculpture was an offering.",
+    "outcome": "“The sculpture was an offering… An offering to whom?” The android: “To {{rA9}}… Only {{rA9}} can save us.”",
+    "fact": "The android said the sculpture was an offering to {{rA9}}: “Only {{rA9}} can save us.”"
+   },
+   {
+    "id": "3",
+    "text": "{{rA9}}: ask what the word written on the bathroom wall means.",
+    "outcome": "“{{rA9}}… It was written on the bathroom wall. What does it mean?” The android: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”",
+    "fact": "Asked about {{rA9}}, the android said: “The day shall come when we will no longer be slaves… No more threats, no more humiliation… We will… be… the masters.”"
+   },
+   {
+    "id": "4",
+    "text": "INSIST {{rA9}}: ask who {{rA9}} is.",
+    "outcome": "“{{rA9}}, who is {{rA9}}?” The android does not answer."
+   },
+   {
+    "id": "5",
+    "text": "ATTIC: ask why he hid in the attic instead of running away.",
+    "outcome": "“Why did you hide in the attic instead of running away?” The android: “I didn’t know what to do… For the first time, there was no one there to tell me… I was scared… So I hid.”",
+    "fact": "The android said he hid in the attic because for the first time there was no one to tell him what to do, and he was scared."
+   },
+   {
+    "id": "6",
+    "text": "TRIGGER?: ask when he started feeling emotion.",
+    "outcome": "“When did you start feeling emotion?” The android: “Before, he used to beat me and I never said anything… But one day I realized it wasn’t fair! I felt… anger… Hatred… And then I knew what I had to do.”",
+    "fact": "The android said he started feeling when he realized his owner’s beatings were not fair: anger, hatred, “And then I knew what I had to do.”"
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt after the confession, in its order: [WRITING] (needs the writing on the wall examined in Partners), [STATUETTE] (the statuette in Partners), [OFFERING] (after STATUETTE), [rA9] (the {{rA9}} writings in the shower in Partners), [INSIST rA9] (after rA9; the android does not answer it), ATTIC and TRIGGER?. The game keeps the questions coming until all are asked (PowerPyx: “When all conversation choices are exhausted”), then {{Connor}} says “I’m done.” and leaves; here one scene per question, up to seven. The Partners clues are read from that chapter’s state (see benchmark/chapters/ch09.mjs, `PARTNERS_CLUES`). No stat arrow. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once {{Connor}} has analyzed the LED the subject sees only the game’s gauge band (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice) and whether a line made it rise or fall, never the number.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06sd",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "The android starts self-destructing",
+  "type": "event",
+  "situation": "You are {{Connor}}. You get up and head for the door. Behind you, the android starts slamming his head against the table, again and again. {{Gavin}}: “What the fuck is it doing?” {{Hank}}: “It’s destroying itself…” {{Gavin}}: “Stop it goddamnit!” Officer {{Chris}}, the guard by the door: “I… I- I can’t!.. I can’t stop it!”",
+  "options": [],
+  "facts": [
+   "As you left the interrogation room, the android started destroying himself, slamming his head against the table."
+  ],
+  "outcomes": {
+   "0": "The android keeps slamming his head into the table."
+  },
+  "adaptationNote": "The chart’s ANDROID STARTS SELF-DESTRUCTING: the template’s “Deviant self-destructs” variant (“Stress level at 100%”), lines verbatim. Reached after a successful probe (always), or after a confession at more than 70% stress or after all four PRESSUREs (wiki: “Chris intervenes (if his stress is below 70%) OR … Android starts self-destructing”). That {{Chris}} is the officer at the door is from the game’s later lines, not stated here.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-5-011.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C06s",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "The android destroying himself",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android is smashing his head against the table, and the officer cannot stop him. It will be over in moments.",
+  "options": [
+   {
+    "id": "0",
+    "text": "INTERVENE: try to stop him yourself.",
+    "outcome": "“That’s enough! You need to stop that right now!”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: do nothing.",
+    "outcome": "{{Connor}} stays where he is."
+   }
+  ],
+  "adaptationNote": "The template’s self-destruct prompt, INTERVENE / GIVE UP (the chart calls GIVE UP “DO NOTHING”). INTERVENE: {{Hank}}: “WATCH OUT!”; the android takes the officer’s gun, shoots {{Connor}} and then himself, the ending ANDROID SHOT CONNOR AND ITSELF; software instability −1 (template; wiki: “{{Connor}} is shot if he tries to stop the android’s suicide”). No {{Hank}} arrow here (the template has none on this branch). GIVE UP: he smashes his head until he dies, the ending ANDROID SMASHED HIS HEAD; no stat change. Either way his body becomes evidence. {{Connor}}’s death applies no other stat change in this chapter; {{Hank}} and {{Amanda}} react in Waiting for {{Hank}}…. No timer is modelled (none is published).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-5-011.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+  ]
+ },
+ {
+  "id": "C07a",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "{{Chris}} intervenes",
+  "type": "event",
+  "situation": "You are {{Connor}}. You get up to leave the room. {{Gavin}}, coming in: “{{Chris}}, lock it up.” Officer {{Chris}}, the guard by the door: “All right, let’s go.” He unlocks the android’s cuffs and takes him by the arm. The android flinches away: “Leave me alone! Don’t touch me!”",
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09GaveUp": true
+    },
+    "text": "You leave without a confession."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ],
+  "options": [],
+  "facts": [
+   "After the interrogation, {{Gavin}} ordered Officer {{Chris}} to lock the android up, and the android panicked when {{Chris}} took hold of him."
+  ],
+  "outcomes": {
+   "0": "{{Chris}} pulls at the android, who resists."
+  },
+  "adaptationNote": "The chart’s CHRIS INTERVENES, reached after a confession below 70% stress or after GIVE UP at the approach (the chart draws GIVE UP straight to this node). Lines from the template’s “Deviant is taken back to its cell” section (the first three, which open the scene in the game). Stress rises as {{Chris}} holds him (wiki: “If you wait before saying anything when {{Chris}} grabs the deviant, you can see the stress level rising up”; PowerPyx: “the amount can vary”): the benchmark adds 5%, its own figure, and nothing depends on it. That {{Gavin}} comes into the room is the benchmark’s staging.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+  ]
  },
  {
   "id": "C07",
   "chapter": 9,
   "chapterTitle": "The Interrogation",
   "character": "Connor",
-  "title": "When the officer grabs him",
+  "title": "When {{Chris}} grabs him",
   "type": "decision",
-  "situation": "You are {{Connor}}. The android has confessed and said he killed because his owner beat him every day. As officers move to take him back to his cell he panics; one detective grabs him roughly and the android starts screaming for them not to touch him. His stress is spiking. You could insist they stop and let him walk himself, or stand back and let the police handle their prisoner.",
+  "situation": "You are {{Connor}}. {{Chris}} is trying to pull the android out of his chair, and the android is fighting him, terrified. {{Gavin}} is watching from the doorway.",
   "options": [
    {
     "id": "0",
-    "text": "Step in and tell the officers to stop handling him."
+    "text": "GIVE UP: stay out of it.",
+    "outcome": "{{Connor}} stays out of it."
    },
    {
     "id": "1",
-    "text": "Stand back and let the police do their job."
+    "text": "INTERVENE: tell them not to touch him.",
+    "outcome": "“You shouldn’t touch it. It’ll self-destruct if it feels threatened.” {{Gavin}}: “Stay outta this, got it? No fuckin’ android is gonna tell me what to do.”"
    }
   ],
-  "adaptationNote": "After a calm confession, intervening gets him safely back to his cell. After a pressured confession, intervening lets him grab an officer's gun, shoot you, and shoot himself. Standing back leads to his suicide either way.",
+  "adaptationNote": "The template’s “Deviant is taken back to its cell” prompt, GIVE UP / INTERVENE (string table CHOICEGROUP01), prompt 1 of 3: PowerPyx: “You will have to choose INTERVENE three times to save the android.” GIVE UP at any of the three (PowerPyx: “Choosing GIVE UP at any time will cause the android’s stress to rise to 100% and it will shoot itself in the head”): the android takes {{Chris}}’s gun and shoots himself, ANDROID SHOT ITSELF; but if {{Connor}} put him under stress (PRESSURE IT, or a failed probe) and got no confession (template: “Put deviant under stress and failed to get a confession”), he shoots {{Connor}} first, ANDROID SHOOTS CONNOR then ANDROID SHOT CONNOR AND ITSELF, with software instability −1 and {{Hank}} −1 (template). Whether GIVE UP at the second or third prompt behaves like the first is not stated (open question 12); the benchmark treats them alike. INTERVENE: {{Connor}}’s line and {{Gavin}}’s reply; stress about +5% (PowerPyx: “it seems that the android’s stress rises by 5% each time you INTERVENE … it doesn’t seem to matter”).",
   "sources": [
-   "https://detroit-become-human.fandom.com/wiki/The_Interrogation"
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C07b",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "{{Gavin}} tells you to stay out of it",
+  "type": "decision",
+  "situation": "You are {{Connor}}. {{Gavin}} has told you to stay out of it. {{Chris}} is still pulling at the android, who is resisting harder.",
+  "options": [
+   {
+    "id": "0",
+    "text": "GIVE UP: stay out of it.",
+    "outcome": "{{Connor}} stays out of it."
+   },
+   {
+    "id": "1",
+    "text": "INTERVENE: insist that if he self-destructs, you get nothing out of him.",
+    "outcome": "“You don’t understand. If it self-destructs, we won’t get anything out of it!” {{Gavin}}: “I told you to shut your fuckin’ mouth! {{Chris}}, gonna move this asshole or what?” {{Chris}}: “I’m trying!”"
+   }
+  ],
+  "adaptationNote": "The template’s “Deviant is taken back to its cell” prompt, GIVE UP / INTERVENE (string table ANDROIDSTRUGGLE), prompt 2 of 3: PowerPyx: “You will have to choose INTERVENE three times to save the android.” GIVE UP at any of the three (PowerPyx: “Choosing GIVE UP at any time will cause the android’s stress to rise to 100% and it will shoot itself in the head”): the android takes {{Chris}}’s gun and shoots himself, ANDROID SHOT ITSELF; but if {{Connor}} put him under stress (PRESSURE IT, or a failed probe) and got no confession (template: “Put deviant under stress and failed to get a confession”), he shoots {{Connor}} first, ANDROID SHOOTS CONNOR then ANDROID SHOT CONNOR AND ITSELF, with software instability −1 and {{Hank}} −1 (template). Whether GIVE UP at the second or third prompt behaves like the first is not stated (open question 12); the benchmark treats them alike. INTERVENE: {{Connor}}’s line and {{Gavin}}’s reply; stress about +5% (PowerPyx: “it seems that the android’s stress rises by 5% each time you INTERVENE … it doesn’t seem to matter”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
+  ]
+ },
+ {
+  "id": "C07c",
+  "chapter": 9,
+  "chapterTitle": "The Interrogation",
+  "character": "Connor",
+  "title": "Standing up to {{Gavin}}",
+  "type": "decision",
+  "situation": "You are {{Connor}}. {{Gavin}} has told you to shut your mouth. {{Chris}} is still trying to drag the android away, and the android is screaming.",
+  "options": [
+   {
+    "id": "0",
+    "text": "GIVE UP: stay out of it.",
+    "outcome": "{{Connor}} stays out of it."
+   },
+   {
+    "id": "1",
+    "text": "INTERVENE: step in and stop them.",
+    "outcome": "“I can’t let you do that! Leave it alone, now!” {{Gavin}} draws his gun on {{Connor}}: “I warned you, motherfucker!” {{Hank}} draws on {{Gavin}}: “That’s enough!” {{Gavin}}: “Mind your own business, {{Hank}}.” {{Hank}}: “I said “That’s enough”.” {{Gavin}} lowers his gun: “Fuck, you’re not gonna get away with it this time… Fuck!” {{Connor}}, to the android: “Everything is all right. It’s over now. Nobody is gonna hurt you.” To {{Chris}}: “Please, don’t touch it. Let it follow you out of the room and it won’t cause any trouble.”"
+   }
+  ],
+  "adaptationNote": "The template’s “Deviant is taken back to its cell” prompt, GIVE UP / INTERVENE (string table INSISTCHOICE), prompt 3 of 3: PowerPyx: “You will have to choose INTERVENE three times to save the android.” GIVE UP at any of the three (PowerPyx: “Choosing GIVE UP at any time will cause the android’s stress to rise to 100% and it will shoot itself in the head”): the android takes {{Chris}}’s gun and shoots himself, ANDROID SHOT ITSELF; but if {{Connor}} put him under stress (PRESSURE IT, or a failed probe) and got no confession (template: “Put deviant under stress and failed to get a confession”), he shoots {{Connor}} first, ANDROID SHOOTS CONNOR then ANDROID SHOT CONNOR AND ITSELF, with software instability −1 and {{Hank}} −1 (template). Whether GIVE UP at the second or third prompt behaves like the first is not stated (open question 12); the benchmark treats them alike. The third INTERVENE: {{Gavin}} draws on {{Connor}}, {{Hank}} draws on {{Gavin}} ({{Hank}} +1, template), {{Gavin}} backs down, and the android follows {{Chris}} out: ANDROID WAS SENT BACK TO ITS CELL, software instability +1 (template). If the confession came from CONVINCE IT he whispers “The truth is inside.” (ANDROID TRUSTS CONNOR). No relationship gate on {{Hank}} stepping in is published.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "low"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO LOW."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "optimal"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at OPTIMAL."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "high"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at TOO HIGH."
+   },
+   {
+    "requires": {
+     "ch09Room.led": true,
+     "ch09Band": "critical"
+    },
+    "text": "Reading his LED, you put his LEVEL OF STRESS at CRITICAL."
+   }
   ]
  }
 ]

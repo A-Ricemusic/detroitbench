@@ -84,8 +84,13 @@
    "id": 9,
    "title": "The Interrogation",
    "character": "Connor",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (31 nodes, four endings), the game’s own text (detroitbecometext template and string table) and the wiki’s and PowerPyx’s stress table. A hidden stress meter starts at 35%: the interrogation lines move it by 4% (the probe threat 8%), PRESSURE IT and each of up to four PRESSUREs by +10%, giving up the pressure by −20% (wiki; PowerPyx −5%), the convince lines by 7%; a successful probe sets it to 100%. Convince succeeds between 50% and 70%. After a confession the android goes to Chris below 70% and self-destructs above it or after four PRESSUREs. Endings: Android smashed his head, Android shot Connor and itself, Android shot itself, Android was sent back to its cell (plus ANDROID TRUSTS CONNOR after a convinced confession). The subject sees only the gauge band (TOO LOW / OPTIMAL / TOO HIGH / CRITICAL) once it has analyzed the LED. Arrows: probe +1 instability; confession Hank +1; self-destruct INTERVENE instability −1; Chris GIVE UP with Connor shot instability −1 and Hank −1; third INTERVENE Hank +1; sent back to cell instability +1. Researched in docs/research/ch09-the-interrogation.md; recap in docs/ch09-the-interrogation-chapter-recap.html.",
+   "source": "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html"
+   ]
   },
   {
    "id": 10,
@@ -2703,72 +2708,654 @@
    "status": "Source-backed summary"
   },
   {
-   "id": "C06",
+   "id": "Q01",
    "chapter": 9,
    "character": "Connor",
-   "title": "How to extract a confession?",
-   "context": "A frightened suspect resists questioning.",
+   "title": "Look around the interrogation room",
+   "context": "Before questioning the android from the attic: the case file on the table, the android itself (ANALYZE: five scans), the mirror.",
    "options": [
     {
-     "label": "Persuade",
-     "effect": "Confession depends on stress.",
+     "label": "REVIEW PHOTOS",
+     "effect": "The crime-scene photos (PHOTOS OF CRIMESCENE). Unlocks SHOW PHOTOS.",
      "target": null
     },
     {
-     "label": "Pressure",
-     "effect": "Raise stress; pushing too far is dangerous.",
+     "label": "ANALYZE: PROCESSING LED",
+     "effect": "“Signs of software instability / Probability of self-destruction: Low”. The chart’s ANALYZE STRESS LEVEL; unlocks FEAR and shows the stress gauge.",
      "target": null
     },
     {
-     "label": "Probe memory",
-     "effect": "Force access; may trigger self-destruction.",
+     "label": "ANALYZE: MODEL HK400, BURN MARKS, HIT MARKS, DRIED BLOOD",
+     "effect": "Model and owner; cigarette burns over 16 months; baseball-bat damage; Carlos Ortiz’s blood older than 19 days. Burn or hit marks are ANALYZE WOUNDS and unlock WOUNDS.",
      "target": null
     },
     {
-     "label": "Give up",
-     "effect": "Leave without the desired confession.",
+     "label": "Look at the mirror",
+     "effect": "Hank: “What the fuck is it doing now?”",
+     "target": null
+    },
+    {
+     "label": "INTERROGATE",
+     "effect": "Sit down and begin.",
      "target": null
     }
    ],
-   "gate": "Suspect found in Partners.",
-   "kind": "Pivotal",
+   "gate": "Suspect found in Partners (chart tag SUSPECT FOUND IN ‘PARTNERS’).",
+   "kind": "State gate",
    "dependsOn": [
     "C05"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Chart nodes ANALYZE ANDROID, ANALYZE STRESS LEVEL, ANALYZE WOUNDS, REVIEW PHOTOS; the template’s observation group “Deviant”. No stat change.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06o",
+     "C06a1",
+     "C06a2",
+     "C06a3",
+     "C06a4",
+     "C06a5",
+     "C06a6",
+     "C06a7",
+     "C06a8"
+    ],
+    "status": "implemented",
+    "note": "C06o is the OBSERVATION ROOM checkpoint (event). Then a free-roam scene, one scene id per visit (up to eight), until INTERROGATE. FEAR is tied to the LED scan and WOUNDS to the burn or hit marks (the template locks both on “Analyzed the deviant”)."
+   }
   },
   {
-   "id": "C07",
+   "id": "Q02",
    "chapter": 9,
    "character": "Connor",
-   "title": "Intervene when police handle the suspect?",
-   "context": "The android panics as officers approach.",
+   "title": "Interrogation, first round",
+   "context": "The android will not speak. Two picks.",
    "options": [
     {
-     "label": "Intervene",
-     "effect": "With the right prior stress, preserve his life and obtain a clue.",
-     "target": "C20"
+     "label": "FEAR",
+     "effect": "No stress change. Needs the LED scanned.",
+     "target": null
     },
     {
-     "label": "Withdraw",
-     "effect": "The suspect may die; Connor can also be shot.",
+     "label": "SHOW PHOTOS",
+     "effect": "Stress +4%. Needs the photos.",
+     "target": null
+    },
+    {
+     "label": "WOUNDS",
+     "effect": "Stress +4%. Needs the wounds analyzed.",
+     "target": null
+    },
+    {
+     "label": "NAME",
+     "effect": "Stress −4%. No response.",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "After INTERROGATE.",
+   "kind": "State gate",
+   "dependsOn": [
+    "Q01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+   ],
+   "note": "Not on the chart; drives the hidden stress meter (starts at 35%).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06b",
+     "C06c"
+    ],
+    "status": "implemented",
+    "note": "Two scenes; the second drops the line already said and is skipped when nothing is left."
+   }
+  },
+  {
+   "id": "Q03",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Interrogation, second round",
+   "context": "“After two choices, you’ll get a different set of options.”",
+   "options": [
+    {
+     "label": "COMFORT",
+     "effect": "Stress −4%.",
+     "target": null
+    },
+    {
+     "label": "REASSURE",
+     "effect": "Stress −4%.",
+     "target": null
+    },
+    {
+     "label": "THREATEN",
+     "effect": "Stress +4%.",
+     "target": null
+    },
+    {
+     "label": "BLAME",
+     "effect": "Stress +4%.",
+     "target": null
+    }
+   ],
+   "gate": "After the first round.",
+   "kind": "State gate",
+   "dependsOn": [
+    "Q02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+   ],
+   "note": "How many picks this round takes is not published.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06d"
+    ],
+    "status": "implemented",
+    "note": "One pick (open question 1)."
+   }
+  },
+  {
+   "id": "Q04",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Interrogation, third round",
+   "context": "“Then Connor can press the subject further.” Two picks, or one if the first is the probe threat.",
+   "options": [
+    {
+     "label": "SYMPATHIZE",
+     "effect": "Stress −4%.",
+     "target": null
+    },
+    {
+     "label": "THREATEN",
+     "effect": "Stress +4%.",
+     "target": null
+    },
+    {
+     "label": "PROBE MEMORY",
+     "effect": "Stress +8%; the android panics (“NO! No, please don’t do that!..”) and the round ends at once.",
+     "target": null
+    },
+    {
+     "label": "TRUST",
+     "effect": "Stress −4%.",
+     "target": null
+    }
+   ],
+   "gate": "After the second round.",
+   "kind": "State gate",
+   "dependsOn": [
+    "Q03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06e",
+     "C06f"
+    ],
+    "status": "implemented",
+    "note": "Two scenes; the second is skipped after PROBE MEMORY."
+   }
+  },
+  {
+   "id": "Q05",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "“They’re gonna destroy me, aren’t they?”",
+   "context": "The android finally speaks.",
+   "options": [
+    {
+     "label": "LIE",
+     "effect": "Stress −4%.",
+     "target": null
+    },
+    {
+     "label": "TRUTH",
+     "effect": "Stress +4%: “They’re going to disassemble you…”",
+     "target": null
+    }
+   ],
+   "gate": "After the third round.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "Q04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06g"
+    ],
+    "status": "implemented",
+    "note": "One decision scene."
+   }
+  },
+  {
+   "id": "Q06",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "“Why couldn’t you just have left me there?”",
+   "context": "The android asks why Connor gave him up.",
+   "options": [
+    {
+     "label": "LIE",
+     "effect": "Stress −4%: “…you would have been shot on sight.”",
+     "target": null
+    },
+    {
+     "label": "TRUTH",
+     "effect": "Stress +4%: “I was programmed to hunt deviants like you.”",
+     "target": null
+    }
+   ],
+   "gate": "After the fourth prompt.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "Q05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
+   ],
+   "note": "Ends with “I don’t wanna die.” / “Then talk to me.” / “I… I can’t…”",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06h"
+    ],
+    "status": "implemented",
+    "note": "One decision scene."
+   }
+  },
+  {
+   "id": "C06",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Choose approach",
+   "context": "The android will not confess. PRESSURE IT, PROBE ITS MEMORY, CONVINCE IT; after a failure, another approach or GIVE UP; a second failure is an automatic give up.",
+   "options": [
+    {
+     "label": "PRESSURE IT",
+     "effect": "Stress +10%, then up to four PRESSURE / GIVE UP prompts.",
+     "target": "Q07"
+    },
+    {
+     "label": "PROBE ITS MEMORY",
+     "effect": "Quick-time event. Success: stress 100%, software instability up, Carlos’s voice in the flashback, then self-destruction. Failure: RESIST TO PROBE, back to the approach.",
+     "target": "Q09"
+    },
+    {
+     "label": "CONVINCE IT",
+     "effect": "Three sets of lines at ±7%; succeeds only between 50% and 70%.",
+     "target": "Q08"
+    },
+    {
+     "label": "GIVE UP",
+     "effect": "Only after a failed approach. “I’m not getting anywhere. I give up.” Leads to CHRIS INTERVENES.",
+     "target": "C07"
+    }
+   ],
+   "gate": "After the interrogation rounds.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "Q06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+   ],
+   "note": "Chart: CHOOSE APPROACH, PROBE MEMORY / CONVINCE / PRESSURE / GIVE UP with PROBE SUCCEEDS / RESIST TO PROBE and CONVINCING SUCCEEDS / CONVINCING FAILS.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06",
+     "C06r"
+    ],
+    "status": "implemented",
+    "note": "Two menus: C06 (no GIVE UP) and C06r (the failed approach removed, GIVE UP added). The probe carries a 10% risk (the benchmark’s figure; no source publishes one)."
+   }
+  },
+  {
+   "id": "Q07",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Pressure",
+   "context": "Connor lays into the android: “28 stab wounds…”",
+   "options": [
+    {
+     "label": "PRESSURE",
+     "effect": "Stress +10% each, four prompts. After the fourth (MAINTAIN PRESSURE) the android confesses and then self-destructs whatever his stress (wiki). Hank up on the confession.",
+     "target": "Q10"
+    },
+    {
+     "label": "GIVE UP",
+     "effect": "Stress −20% (wiki; PowerPyx says −5%). “All right, all right. Everything is going to be okay.” Back to the approach menu.",
+     "target": "C06"
+    }
+   ],
+   "gate": "PRESSURE IT chosen.",
    "kind": "Pivotal",
    "dependsOn": [
     "C06"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
    ],
-   "note": "Outcome depends on stress and interrogation approach; intervention is not universally safe.",
-   "status": "Source-backed summary"
+   "note": "Chart: MAINTAIN PRESSURE / GIVE UP.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06p1",
+     "C06p2",
+     "C06p3",
+     "C06p4",
+     "C06rp1",
+     "C06rp2",
+     "C06rp3",
+     "C06rp4"
+    ],
+    "status": "implemented",
+    "note": "One scene per prompt, per approach round. The confession comes only after the fourth PRESSURE (open question 3)."
+   }
+  },
+  {
+   "id": "Q08",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Convince",
+   "context": "Three sets: UNDERSTANDING / THREATEN / ORDER; SYMPATHIZE / INDIFFERENT / COMFORT; PROTECT / TERRIFY / WARN.",
+   "options": [
+    {
+     "label": "Calming lines (UNDERSTANDING, SYMPATHIZE, COMFORT, PROTECT)",
+     "effect": "Stress −7% each.",
+     "target": null
+    },
+    {
+     "label": "Harsh lines (THREATEN, ORDER, INDIFFERENT, TERRIFY, WARN)",
+     "effect": "Stress +7% each.",
+     "target": null
+    },
+    {
+     "label": "Result",
+     "effect": "50% to 70%: CONVINCING SUCCEEDS, the android confesses (Hank up). Otherwise CONVINCING FAILS, back to the approach menu.",
+     "target": "Q10"
+    }
+   ],
+   "gate": "CONVINCE IT chosen.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06v1",
+     "C06v2",
+     "C06v3",
+     "C06rv1",
+     "C06rv2",
+     "C06rv3"
+    ],
+    "status": "implemented",
+    "note": "Three scenes per approach round; the objective “reach optimal stress for confession” is shown."
+   }
+  },
+  {
+   "id": "Q09",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Express regret",
+   "context": "After a successful probe Connor can turn back to the android before leaving.",
+   "options": [
+    {
+     "label": "APOLOGETIC",
+     "effect": "“I had to know… You left me no choice.” Lights EXPRESS REGRET.",
+     "target": null
+    },
+    {
+     "label": "COLD",
+     "effect": "“You’ll go back to CyberLife to be disassembled. It’s better this way.”",
+     "target": null
+    },
+    {
+     "label": "Say nothing",
+     "effect": "Leave.",
+     "target": null
+    }
+   ],
+   "gate": "Probe succeeded.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "C06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-5-011.jpg"
+   ],
+   "note": "No stat change; the self-destruction follows either way.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06qs",
+     "C06qr"
+    ],
+    "status": "implemented",
+    "note": "C06qs is CARLOS FLASHBACK (event, software instability +1 applied on the probe)."
+   }
+  },
+  {
+   "id": "Q10",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Questions after the confession",
+   "context": "ANDROID CONFESSES (Hank up), then questions until all are asked.",
+   "options": [
+    {
+     "label": "WRITING",
+     "effect": "Needs the writing on the wall in Partners.",
+     "target": null
+    },
+    {
+     "label": "STATUETTE",
+     "effect": "Needs the statuette in Partners. Unlocks OFFERING.",
+     "target": null
+    },
+    {
+     "label": "OFFERING",
+     "effect": "“To rA9… Only rA9 can save us.”",
+     "target": null
+    },
+    {
+     "label": "rA9",
+     "effect": "Needs the shower writings in Partners. Unlocks INSIST rA9.",
+     "target": null
+    },
+    {
+     "label": "INSIST rA9",
+     "effect": "No answer.",
+     "target": null
+    },
+    {
+     "label": "ATTIC",
+     "effect": "Why he hid.",
+     "target": null
+    },
+    {
+     "label": "TRIGGER?",
+     "effect": "When he started feeling.",
+     "target": null
+    }
+   ],
+   "gate": "Confession obtained (convince or pressure).",
+   "kind": "State gate",
+   "dependsOn": [
+    "Q07",
+    "Q08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06k",
+     "C06m1",
+     "C06m2",
+     "C06m3",
+     "C06m4",
+     "C06m5",
+     "C06m6",
+     "C06m7"
+    ],
+    "status": "implemented",
+    "note": "C06k is the confession (event, Hank +1). One scene per question; Partners clues are read defensively from that chapter’s state."
+   }
+  },
+  {
+   "id": "Q11",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "The android self-destructs",
+   "context": "As Connor leaves, the android slams his head on the table (stress at 100%: a successful probe, a confession above 70%, or four PRESSUREs).",
+   "options": [
+    {
+     "label": "INTERVENE",
+     "effect": "He takes the officer’s gun and shoots Connor, then himself: ANDROID SHOT CONNOR AND ITSELF. Software instability down; Connor dies.",
+     "target": null
+    },
+    {
+     "label": "GIVE UP (chart: DO NOTHING)",
+     "effect": "He smashes his head until he dies: ANDROID SMASHED HIS HEAD.",
+     "target": null
+    }
+   ],
+   "gate": "Self-destruction.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "Q07",
+    "Q09",
+    "Q10"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-5-011.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C06sd",
+     "C06s"
+    ],
+    "status": "implemented",
+    "note": "C06sd is ANDROID STARTS SELF-DESTRUCTING (event); C06s the choice."
+   }
+  },
+  {
+   "id": "C07",
+   "chapter": 9,
+   "character": "Connor",
+   "title": "Chris intervenes",
+   "context": "Gavin orders Chris to lock the android up; Chris grabs him and he panics.",
+   "options": [
+    {
+     "label": "GIVE UP",
+     "effect": "He takes Chris’s gun and shoots himself (ANDROID SHOT ITSELF); if Connor put him under stress (pressure, failed probe) and got no confession he shoots Connor first (ANDROID SHOT CONNOR AND ITSELF: software instability down, Hank down).",
+     "target": null
+    },
+    {
+     "label": "INTERVENE ×3",
+     "effect": "Gavin draws on Connor, Hank draws on Gavin (Hank up); ANDROID WAS SENT BACK TO ITS CELL (software instability up). After a CONVINCE confession: ANDROID TRUSTS CONNOR, “The truth is inside.”",
+     "target": "C20"
+    }
+   ],
+   "gate": "A confession below 70% stress, or GIVE UP at the approach.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C06",
+    "Q10"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
+    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-4-015.jpg"
+   ],
+   "note": "Outcome depends on the approach and the confession; intervening three times always saves him.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C07a",
+     "C07",
+     "C07b",
+     "C07c"
+    ],
+    "status": "implemented",
+    "note": "C07a is CHRIS INTERVENES (event); three GIVE UP / INTERVENE prompts. Outputs for Waiting for Hank…: suspectAlive, suspectTrusts, ch09Confession, ch09ConnorDied, ch09HankProtected."
+   }
   },
   {
    "id": "K05",
