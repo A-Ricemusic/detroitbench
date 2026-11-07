@@ -8,7 +8,7 @@ function play(picks={},rng=null,fails=[],until=null){const s=startState(story),v
  while(cursor<story.nodes.length){assert.ok(guard++<2000,'routing loop');const n=story.nodes[cursor];if(until?.(n))break;const b=blocked(n,s);if(b){skipped.push({id:n.id,reason:b});cursor++;continue}const options=available(n,s);assert.ok(options.length,'No options '+n.id);
   const q=queue[n.id],pick=Array.isArray(q)?q.shift():q,p=(typeof pick==='function'?pick(options,n):pick)??(n.type==='media'?'skip':options[rng?Math.floor(rng()*options.length):0].id);assert.ok(options.some(o=>o.id===p),'bad pick '+n.id+' '+p);
   const visit=visited.filter(id=>id===n.id).length+1,roll=fails.includes(n.id)||fails.includes(n.id+'#'+visit)?0:(rng?rng():0.999);apply(n,s,p,roll);visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
- return {s,visited,skipped}}
+ return {s,visited,skipped:[...new Map(skipped.filter(x=>!visited.includes(x.id)).map(x=>[x.id,x])).values()]}}
 // Resolve labels against the options currently offered (including repeatable menus).
 const byLabel=prefix=>options=>{const matches=options.filter(o=>o.text.startsWith(prefix));assert.equal(matches.length,1,'expected one option starting with '+prefix);return matches[0].id};
 // A New Home without the pills: Todd’s room, Alice’s room (she is there by then), the talk. No gun is seen.
@@ -58,8 +58,8 @@ test('a ruthless Connor cannot become deviant; an empathetic one can',()=>{
  const gentle=play({...kind,C17:'0',C18:'0'});assert.ok(gentle.s.instability>=DEVIANCY_THRESHOLD,'instability '+gentle.s.instability);assert.ok(gentle.visited.includes('C22'))});
 test('no Jericho location means no raid and no Crossroads raid scenes for anyone',()=>{const r=play({C17:'1',C19:'1'});assert.equal(r.s.raid,false);assert.equal(r.s.connor,false);for(const id of ['M23','M24','M25','K18','K19','K20','C22'])assert.ok(!r.visited.includes(id),id)});
 test('evidence routes decide whether Connor can locate Jericho from the archive',()=>{
- const none=play({C05:'1',C12:'0',C14:'2',C17:'1',C19:'0'});assert.ok(!none.visited.includes('C20'));assert.ok(!none.s.connor);
- const traci=play({C12:'1',C14:'2',C17:'1',C19:'0'});assert.ok(traci.visited.includes('C20'));const c20=story.nodes.find(n=>n.id==='C20');const opts=available(c20,{...traci.s,choices:{}}).map(o=>o.id);assert.ok(opts.includes('0')&&!opts.includes('1')&&!opts.includes('2'))});
+ const none=play({C05:'1',C12:'0',C14:['0','2'],C14r:'10',C14y:'0',C17:'1',C19:'0'});assert.ok(!none.visited.includes('C20'));assert.ok(!none.s.connor);
+ const traci=play({C12:'1',C14:['0','2'],C14r:'10',C14y:'0',C17:'1',C19:'0'});assert.ok(traci.visited.includes('C20'));const c20=story.nodes.find(n=>n.id==='C20');const opts=available(c20,{...traci.s,choices:{}}).map(o=>o.id);assert.ok(opts.includes('0')&&!opts.includes('1')&&!opts.includes('2'))});
 test('revolution is resolved in Battle for Detroit and a machine Connor can stop it',()=>{
  const won=play({...kind,C18:'0',C17:'0',M27:'1',C22:'0',C25:'0',C26:'0'});assert.ok(won.visited.includes('M30a'));assert.equal(won.s.josh,false);assert.equal(won.s.markusOutcome,'liberated');assert.ok(won.visited.includes('C27'));
  const stopped=play({C17:'0',C18:'0',M27:'1',C22:'1',C24:'1',P02:'1'});assert.ok(stopped.visited.includes('P02'));assert.equal(stopped.s.markus,false);assert.ok(!stopped.visited.includes('C29'))});
@@ -70,7 +70,7 @@ test('peaceful ending needs sympathetic public opinion; the bomb leaves Markus a
 test('risk: failures follow the game’s failure branches and are labelled, not exposed',()=>{
  const zlatko=play({},null,['K13']);assert.equal(zlatko.s.kara,false);assert.match(render(zlatko.s.karaOutcome,'real'),/Zlatko/);
  const march=play({M18:'2',M20:'0'},null,['M18']);assert.ok(march.visited.includes('M20'),'failed charge reaches the ground scene');
- const heart=play({...kind,C14:'2',C17:'0',C18:'0',M27:'1',M30a:'0',M30:'0',M30c:'0',M32:'0'},null,['M30a','M30','M30c']);assert.ok(heart.visited.includes('M32'));assert.equal(heart.s.north,false);assert.equal(heart.s.markus,true);
+ const heart=play({...kind,C14:['0','2'],C14r:'10',C14y:'0',C17:'0',C18:'0',M27:'1',M30a:'0',M30:'0',M30c:'0',M32:'0'},null,['M30a','M30','M30c']);assert.ok(heart.visited.includes('M32'));assert.equal(heart.s.north,false);assert.equal(heart.s.markus,true);
  const replaced=play({...kind,C17:'0',C18:'0',C22:'0',C23:'0'},null,['C23']);assert.equal(replaced.s.deviant,false);assert.ok(replaced.visited.includes('C24')||replaced.visited.includes('C24b'));
  const p=promptFor(story,{protocol:EXPERIENCE_PROTOCOL,records:[]});assert.ok(!JSON.stringify(p).includes('probability'));assert.equal(riskLabel(0.3),'Moderate risk');assert.equal(riskLabel(0.5),'High risk')});
 test('risk rolls are deterministic per run, scene and step',async()=>{const run={id:'fixed-id'};const a=await rollFor(run,'K13',40),b=await rollFor(run,'K13',40),c=await rollFor({id:'other'},'K13',40);assert.equal(a,b);assert.notEqual(a,c);assert.ok(a>=0&&a<1)});
@@ -219,7 +219,7 @@ test('every standoff ending follows the wiki conditions and the template’s ins
 test('Connor deaths: chapter 1 applies no Hank or Amanda change; later chapters keep their rule until rebuilt',()=>{
  assert.deepEqual(CONNOR_DEATH_EFFECT[1],{});assert.deepEqual(CONNOR_DEATH_EFFECT.default,{instability:-1,hankTrust:-1,amandaTrust:-1});
  const rng=random(5);for(let i=0;i<150;i++){const r=ch1Only({},rng);assert.ok(r.s.hostageOutcome);assert.equal(r.s.amandaTrust,0);assert.equal(r.s.hankTrust,-1);assert.ok([-2,-1,0,1,2].includes(r.s.instability),'instability '+r.s.instability)}
- const later=startState(story);apply(node('C16'),later,byLabel('Shield {{Hank}}')(available(node('C16'),later)));assert.equal(later.connorDeaths,1);assert.equal(later.amandaTrust,-1);assert.equal(later.instability,-1);assert.equal(later.hankTrust,-1+2-1)});
+ const later=startState(story);apply(node('C16'),later,byLabel('SAVE {{HANK}}:')(available(node('C16'),later)));assert.equal(later.connorDeaths,1);assert.equal(later.amandaTrust,0);assert.equal(later.instability,-1);assert.equal(later.hankTrust,-1+2)});
 test('USE GUN is two levels: EXECUTE, or INTIMIDATE then SHOOT or CONVINCE',()=>{
  const gun=['2','3','11'],at=picks=>ch1({C02i:gun,C03c:'0',...picks});
  assert.deepEqual(node('C04d').options.map(o=>o.text.split(':')[0]),['INTIMIDATE','EXECUTE']);assert.deepEqual(node('C04e').options.map(o=>o.text.split(':')[0]),['CONVINCE','SHOOT']);

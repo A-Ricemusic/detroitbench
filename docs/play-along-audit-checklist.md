@@ -5950,65 +5950,432 @@ Gaps:
 
 ## Chapter 24: Public Enemy
 
-### R24 · A magazine in the studio kitchen (Connor, media)
+### C14z · The garden (Connor, event)
 
-> You are Connor. In the kitchen off the broadcast room, before you decide where to look, there is a magazine on the table.
+> You are Connor. It is November 8th, 4:06 in the afternoon. You find yourself in the garden where you report to Amanda, your handler: still water, little bridges, stone and trees. HUD: FIND AMANDA. She is waiting at the center of the garden, sitting in a small boat on the water. HUD: REPORT TO AMANDA, then GET IN THE BARK. You step into the boat and take the oars. Amanda: “Hello, Connor. I thought…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint FALL IN THE ZEN GARDEN and the action TALK TO AMANDA (walking to the boat; PowerPyx: “Go to the center of the area, where Amanda waits in a boat”; HUD strings FIND AMANDA, REPORT TO AMANDA, GET IN THE BARK). The date and time are the game’s (NOV 8TH, 2038, PM 04:06), given without the year. The garden is described rather than named. This scene also reads the chapter’s inputs from earlier chapters into `ch24In` (the Traci outcome, whether Hank shot Connor on the bridge, the officer saved in the hostage case, and the broadcast-tower outcomes). No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14z1 · What have you discovered? (Connor)
+
+> You are Connor, rowing Amanda across the water in the garden. Amanda: “I love this place… Everything is so calm and peaceful… Far from the noise of the world… Tell me, what have you discovered?”
+
+- (0) HANK: tell her about your partner, Lieutenant Anderson.
+- (1) EDEN CLUB: tell her about the Eden Club case.
+
+_Note: The template’s PROMPT 1, with the game’s two buttons in order. The spoken lines depend on earlier chapters and are chosen by the chapter module: HANK has the “He shot me in the head last night” line if Hank shot Connor on the bridge, otherwise “My relationship with Lieutenant Anderson is problematic…” and Amanda’s “Don’t let Anderson or anyone else get in your way.” EDEN CLUB has three variants: the Tracis not found (Amanda small down), found and let go (Amanda small down), found and destroyed (Amanda small up), which are the template’s arrows and agree with the wiki and PowerPyx. HANK has no arrow in any source._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14z2 · Lost and perturbed (Connor)
+
+> You are Connor, in the boat with Amanda. Amanda: “You seem… lost, Connor. Lost and perturbed…”
+
+- (0) SINCERE: admit you thought you knew what you had to do, but now you realize it is not that simple.  _needs ch24In.tracis = spared_ _amandaTrust -1_
+- (1) DETERMINED: say you are frustrated with your lack of progress, but determined to accomplish your mission.
+- (2) COLD: say the investigation is harder than you expected, but you have no doubt you will solve the case and stop the deviants.  _instability -1_
+- (3) TROUBLED: deny that you are perturbed.  _instability +1, amandaTrust -1_
+
+_Note: The template’s PROMPT 2 in the game’s order. SINCERE is a locked option that needs “Spared the Tracis in The Eden Club” (template; PowerPyx says “friends with Hank”, and two PowerPyx readers at Friend did not get it, so the template’s primary condition is used). Arrows are the template’s: SINCERE Amanda small down; COLD instability small down; TROUBLED instability small up and Amanda small down; DETERMINED none. The wiki and PowerPyx also give DETERMINED and COLD an Amanda small up; the template has no Amanda arrow on either, and the template wins for dialogue arrows (research note §10.3 item 1)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14z3 · Why didn’t you shoot? (Connor)
+
+> You are Connor, in the boat with Amanda. Amanda: “You had your gun trained on those deviants at the Eden Club. Why didn’t you shoot?”
+
+- (0) TOO FAR: say they were out of range; if you had had the opportunity to stop them, you would have.
+- (1) NO USE: say the deviants were needed intact for analysis; shooting them would have told you nothing.
+- (2) TRUTH: admit you do not know.  _amandaTrust -2_
+
+_Note: The template’s PROMPT 3, asked only if Connor spared the Tracis (the template’s condition; the module gates the scene on `ch24In.tracis`). TRUTH is Amanda large down (template, wiki, PowerPyx). TOO FAR has no arrow in the template; the wiki and PowerPyx give Amanda small down, but the template wins for dialogue arrows (research note §10.3 item 2). NO USE has none in any source._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14z4 · The threat of replacement (Connor)
+
+> You are Connor, in the boat with Amanda. Amanda: “If your investigation doesn’t make progress soon, I may have to replace you, Connor…”
+
+- (0) CONFLICTED: say only that you understand.  _instability +1_
+- (1) CONFIDENT: say you know you will succeed; all you need is time.  _amandaTrust +1_
+- (2) INDIFFERENT: say you are of no importance; the mission is all that matters.  _instability -1, amandaTrust +2_
+
+_Note: The template’s PROMPT 4 in the game’s order. Arrows are the template’s, and the wiki and PowerPyx agree: CONFLICTED instability small up; CONFIDENT Amanda small up; INDIFFERENT instability small down and Amanda large up. Amanda’s closing line is the game’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14e · Inside the tower (Connor, event)
+
+> You are Connor, riding an elevator up the broadcast tower with Lieutenant Hank. This afternoon a group of deviants took over the tower’s broadcast floor and put a message on the air.
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint INSIDE STRATFORD TOWER and its side branch HANK CONFISCATES COIN. The template has two mutually exclusive elevator openings: if Hank shot Connor on the bridge, the “Why did you shoot me last night?” exchange and no coin; otherwise Hank takes the coin. PowerPyx (“if Hank is a Friend”) and the wiki’s Connor page add a Friend requirement for the coin; the template conditions only on the bridge outcome, and for unlock conditions the template’s primary condition is preferred (reliability log), so the benchmark uses the bridge outcome alone. Records `ch24Coin`. The tower is called “the broadcast tower”, as in the previous chapter. No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14f · The briefing (Connor)
+
+> You are Connor, stepping out of the elevator onto the 79th floor with Hank. Officer Chris meets you. Chris: “Hi, Hank.” Hank: “Shit, what’s going on here? There was a party and nobody told me about it?” Chris: “Yeah, it’s all over the news, so everybody’s butting their nose in… Even the FBI wants a piece of the action…” Hank: “Ah Christ, now we got the Feds on our back… I knew this was gonna be a…
+
+- (0) LISTEN TO BRIEFING: stay with Chris and hear him out to the end.
+- (1) Leave the briefing to Hank and start looking around on your own.
+
+_Note: The chart’s LISTEN TO BRIEFING, an optional branch (PowerPyx: “When prompted, hold [the button] until Chris is done talking to unlock this node”); letting go is the second option. Chris’s opening lines play either way; the rest of the briefing is the template’s, with its conditioned variants chosen by the module from the broadcast-tower outcome: guards knocked out or attacked, the fleeing employee shot or not, and Simon killed by SWAT in the broadcast room or found dead on the roof. The briefing heard is added to what Connor knows. No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14g · The corridors (Connor)
+
+> You are Connor, in the corridor between the elevator and the broadcast room, the way the attackers came. Police officers and technicians are working the scene. Two officers talk as they pass: “The fuck is the FBI doing here?” “You kidding me? This is homeland security. I’m glad they’re on it.” Another pair: “Has forensics turned up anything?” “I’ll check in with them.” “These fucking androids…
+
+- (0) Analyze the dead guard lying next to the phone at the security desk.  _needs ch24In.phoneGuardShot_
+- (1) Analyze the pool of blue blood on the corridor floor.  _needs ch24In.simonWounded_
+- (2) Analyze the body of the station employee on the floor outside the broadcast room.  _needs ch24In.employeeShot_
+- (3) Look at the security camera above the door of the broadcast room.
+- (4) Pick up the phone lying on the floor behind the security desk.  _needs ch24In.phoneKicked_
+- (5) Analyze the dead guard behind the desk and the blood on the wall.  _needs ch24In.armedGuardShot_
+- (6) Go on into the broadcast room.  _sets ch24Phase_
+
+_Note: The chart’s [ INVESTIGATE CORRIDORS ] block as a repeatable scene: each visit offers what has not been examined yet. Chart nodes, in the chart’s order: ANALYZE GUARD NEXT TO PHONE (tab KILLED DURING 'STATFORD TOWER': Markus shot the guard on the phone), ANALYZE SIMON’S BLUE BLOOD (tab WOUNDED DURING 'STATFORD TOWER'; the wiki’s Notes: if Simon was wounded his blood is near the elevator, on the walls and on the console), ANALYZE DEAD EMPLOYEE (the fleeing operator shot), CHECK CCTV (always), ANALYZE PHONE (only if North knocked out the guard on the phone while Markus shot the other: wiki), ANALYZE ARMED GUARD (the guard drawing his weapon shot). Scan titles and sublines are the game’s observation strings; HUD conclusions are the game’s THOUGHTS strings. The clue options are described rather than labelled with the chart’s names, so that Connor is not told the wounded android’s name. Leaving is MEET PERKINS. The officers’ background lines are the game’s. With the pre-rebuild tower chapter, “attacked the guards” is read as the armed guard shot (the phone guard knocked out by North); see the module’s input notes. No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14h · Special Agent Perkins (Connor, event)
+
+> You are Connor, entering the broadcast room with Hank and Chris. A man in a suit turns to meet you. Chris: “Oh Lieutenant, this is Special Agent Perkins from the FBI. Lieutenant Anderson is in charge of investigating for Detroit Police.” Perkins, looking at you: “What’s that?” You: “My name is Connor. I’m the android sent by CyberLife.” Perkins: “Androids investigating androids, huh? You sure you…
+
+- (0) Continue.
+
+_Note: The chart’s MEET PERKINS, a scripted meeting with no prompt and no stat change. Every line is the template’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14i · The officer from the terrace (Connor, event)
+
+> You are Connor, walking through the broadcast room. A uniformed police officer notices you and comes over. The officer: “Connor?.. You remember me? I was on that terrace… That android that took the little girl hostage? I was shot, you saved me…”
+
+- (0) Continue.
+
+_Note: The chart’s MEET COP FROM HOSTAGE SITUATION, behind the tab SAVED DURING 'THE HOSTAGE'': only if Connor applied the tourniquet to the wounded officer in the first chapter (IGNORE). It plays by itself when Connor walks past (PowerPyx readers: “If you save him he talks to you automatically”; the wiki’s M. Wilson page: “He will notice Connor walking by in the broadcast room”). The template has three variants, chosen here from Connor’s deaths so far: no death yet (“I remember you.”), died in the hostage case, died after it (“Sorry, you must be mistaken.”). The officer is not named in the subject’s text (the wiki calls him M. Wilson). No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14 · The broadcast room (Connor)
+
+> You are Connor, in the broadcast room on the 79th floor, where the deviants hijacked the broadcast. Hank is looking around; Perkins’s agents are everywhere. Stairs at the far end of the room lead up to the roof. Between the entrance and the stairs, a doorway leads to a small kitchen where the station’s three androids are being kept. HUD: INSPECT THE BROADCAST ROOM. You can examine what you find…
+
+- (0) Go up the stairs at the far end of the room to the roof.  _sets ch24Phase_
+- (1) Go into the kitchen where the station’s three androids are being kept.  _sets ch24Phase, ch24KitchenVisited_
+- (2) Tell Hank you think you have seen everything there is to see.  _needs ch24Room.roof_ _sets ch24Phase_
+- (3) Analyze the bullet holes next to the entrance of the broadcast room.  _needs ch24In.swat_
+- (4) Analyze the bullet holes to the left of the door to the roof stairs.  _needs ch24In.swat_
+- (5) Analyze the bullet holes in the giant screen at the far side of the room.  _needs ch24In.swat_
+- (6) Analyze the blue blood smeared on the wall.  _needs ch24In.wallBlood_
+- (7) Analyze the cap lying on the floor near the console in the middle of the room.
+- (8) Play the deviants’ broadcast on the panel by the wall console.
+- (9) Watch the security camera recording of the hallway at the control console.
+- (10) Analyze the destroyed android lying on the far side of the room.  _needs ch24In.simonDiedRoom_
+- (11) Analyze the blue blood on the console near the giant screen.  _needs ch24In.simonWounded_
+
+_Note: The chart’s [ INVESTIGATE BROADCAST ROOM ] block as a repeatable scene, which is also the free-roam crossroads the chart draws out of the block: GO TO ROOFTOP (0), ENTER THE KITCHEN (1) and DECIDE TO LEAVE (2). Clue nodes: ANALYZE CORRIDOR / ROOF ACCESS / SCREEN BULLET HOLES (tab ATTACKED BY SWAT DURING 'STATFORD TOWER'), ANALYZE BLUE BLOOD ON WALL (same tab; PowerPyx: “If Simon was shot by SWAT, but you helped him to the roof”), ANALYZE CAP, WATCH VIDEO, CHECK CAMERA (the clue the kitchen accusation needs; wiki: “must have watched the CCTV footage”), ANALYZE DESTROYED ANDROID (tab DIED IN BROADCAST DURING 'STATFORD TOWER'), ANALYZE BLUE BLOOD ON CONSOLE (tab WOUNDED). Scan texts are the game’s observation strings; the template has two BULLET HOLES scans (.45 assault rifle, .457 handgun) without saying which wall carries which, so the assignment to the three spots is the benchmark’s. The destroyed android’s scan text is not in the template; the PL-600 lines are reused. The game’s CHECK CAMERA HUD (AN ANDROID WAS MONITORING CCTV) is all the sources give of the recording; its description is adapted. In WATCH VIDEO Connor’s “No. Nothing.” is scripted, not a choice. Leaving: PowerPyx says Hank offers to leave only once the objectives are done (“listen to briefing, inspect the broadcast room, and inspect the roof”); the template heads the prompt “[TIME] Taking too much time / Ask Hank to leave”. The benchmark offers DECIDE TO LEAVE once the roof has been inspected and does not model the timer. The kitchen can be entered once without the camera recording (the rounds then stop and Connor must come back); a second visit needs the recording (the transcript: “he can come back later to resume the dialogue”). The roof is visited once. The officers’ background lines are the game’s (variants with and without an android hidden on the roof). No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14y · You wanna go? (Connor)
+
+> You are Connor, in the broadcast room. You have told Hank you think you have seen everything there is to see. Hank: “You wanna go?”
+
+- (0) YES: leave the crime scene with Hank.
+- (1) NO: have another look around.
+
+_Note: The template’s PROMPT 5 (YES / NO) and the chart’s DECIDE TO LEAVE. YES ends the chapter with CONNOR AND HANK LEFT THE CRIME SCENE; NO goes back to the broadcast room. Neither option carries an arrow in any source; the old benchmark’s Amanda small down for leaving had no source and is gone._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14r · The roof (Connor)
+
+> You are Connor, on the roof of the tower with Hank, in the falling snow. Hank: “They made their way up through the whole building, past all the guards and jumped off the roof with parachutes… Pretty fucking impressive I’d say.” HUD: INSPECT ROOFTOP. You can examine what you find here one thing at a time, in any order, or go back down to the broadcast room.
+
+- (0) Turn around and analyze the door you came through.
+- (1) Analyze the big bag lying ahead of you, the one the attackers carried their parachutes in.  _needs not ch24In.simonOnRoof_
+- (2) Analyze the big bag lying ahead of you, the one the attackers carried their parachutes in.  _needs ch24In.simonOnRoof_
+- (3) Analyze the destroyed android lying in the snow.  _needs ch24In.simonDiedRoof_
+- (4) Analyze the blue blood in the snow.  _needs ch24In.simonOnRoof_
+- (5) Analyze the blue blood in the snow.  _needs ch24In.simonDiedRoof_
+- (6) Examine the footprints in the snow leading past the bag to the edge of the roof.
+- (7) Analyze the two guns lying in the snow near the bag.
+- (8) Analyze another patch of blue blood near the edge of the roof.  _needs ch24In.markusShot_
+- (9) Follow the blue blood traces to the air-cooler unit at the far left of the roof and open it.  _needs ch24In.simonOnRoof and ch24Roof.blood_ _sets ch24Phase_
+- (10) Go back down to the broadcast room.  _sets ch24Phase_
+
+_Note: The chart’s GO TO ROOFTOP and the [ INVESTIGATE ROOFTOP ] block as a repeatable scene. Chart nodes: ANALYZE DOOR, ANALYZE BAG (with the parachute-count lines only if Simon was left alive on the roof, as in the template), ANALYZE DESTROYED ANDROID (tab DIED ON ROOFTOP DURING 'STATFORD TOWER'), ANALYZE BLUE BLOOD (tab WOUNDED; on the roof only if the wounded Simon was left there, alive or dead), FIND FOOTPRINTS, ANALYZE WEAPON. FIND SIMON is the exit that follows the blood (the template’s lock “Simon was left alive on the roof”; the benchmark also requires the blood to have been analyzed, since that is where the game gives FOLLOW BLUE BLOOD TRACES). Going back down instead leaves Simon hidden (the Simon page: “If Connor does not go up to the roof, or leaves the rooftop without finding him, Simon stays hidden until the police and FBI leave the building”). The blue blood of Markus (if he was shot on the roof in the previous chapter) is the wiki’s off-chart note and the string table’s MBLOOD observation; its place on the roof is the benchmark’s. The two BAG options are one clue with two variants, as are the two BLUE BLOOD options. Scan texts and HUD strings are the game’s. No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14r2 · Back inside (Connor, event)
+
+> You are Connor, coming back down the stairs into the broadcast room with Hank. The snow on your clothes slowly melts.
+
+- (0) Continue.
+
+_Note: Routing scene: going back down from the roof returns to the broadcast room (the wiki’s Notes: “When going to the rooftop, Connor and Hank will absorb snow on their clothes, and when going back inside, the snow will slowly melt”). Not a chart node. No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14b · The air-cooler unit (Connor)
+
+> You are Connor, down behind cover on the roof with Hank, shot in the shoulder. The wounded android is in the air-cooler unit, and SWAT officers and FBI agents are pouring fire into it. You: “You have to stop them! If they destroy it, we won’t learn anything!” Hank: “We can’t save it, it’s too late! We’ll just get ourselves killed!”
+
+- (0) CHARGE DEVIANT: break cover and run at the unit through the crossfire, to reach the android before it is destroyed.  _risk 0.3_
+- (1) STAY IN COVER: stay down behind cover with Hank.
+
+_Note: The chart’s FIND SIMON and its choice RUSH DEVIANT / STAY IN COVER; the game’s buttons are CHARGE DEVIANT and STAY IN COVER. The rush is decided by quick-time dodges (PowerPyx: “if you don’t succeed at several QTEs in a row, you’ll get shot”), drawn on the chart as the outcome pair SHOT BY SIMON / REACH SIMON, so it carries a risk roll; no source gives a failure rate, and 0.3 is the benchmark’s. Failure: SHOT BY SIMON, SIMON IS DESTROYED BY SWAT, CONNOR DIED RUNNING TOWARD SIMON (a death). Success: REACH SIMON, FLASH FROM SIMON’S MEMORY, SIMON SELF-DESTRUCTS, CONNOR WAS TRAUMATIZED, with instability large up (template, wiki, PowerPyx); the memory unlocks the Jericho Tablet evidence in Last Chance, Connor (`evidence.simonTablet`). STAY IN COVER: SIMON IS DESTROYED BY SWAT, HANK AND CONNOR SURVIVED UNSCATHED, no arrow. Every branch destroys Simon (the Simon page: “If Connor finds Simon, there is no way for Simon to survive the chapter”) and leaves his body for the evidence room. The death applies this chapter’s death effect, instability small down: the template has no arrow on this death, but the wiki’s chapter page (“Connor is shot in the head by Simon”) and its Software_Instability page list it, and the reliability log prefers the wiki’s ending-level arrow on deaths (flagged for the operator). The old benchmark’s Amanda changes here had no source and are gone; Hank’s small down for the death belongs to the start of Meet Kamski (wiki), not here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R24 · Magazines in the kitchen (Connor, media)
+
+> You are Connor, in the small kitchen off the broadcast room. Before you question the androids, you notice two magazines on one of the lunch tables.
 
 - (0) Read Tech Addict: Bleeding Blue.
 - (1) Read Green Earth: Clean Food Craze.
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s optional READ "BLEEDING BLUE" and READ "CLEAN FOOD CRAZE" (the wiki’s Magazine page, #16 and #21), on a lunch table as Connor walks into the kitchen (PowerPyx). Offered on the first visit to the kitchen. The facts summarize the wiki’s article text; the brothers’ names and the company’s name are left out. No public-opinion effect (none for either magazine)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C14 · The broadcast tower (Connor)
+### C15a · Three androids (Connor)
 
-> You are Connor. You and Hank are investigating the android takeover of the broadcast tower. In the studio you learn the attackers escaped by the roof and that one of them was shot. Blue blood on the roof could lead to a hidden wounded android. Separately, three of the building's own androids were in the kitchen during the attack and one of them may have let the attackers in; questioning them…
+> You are Connor, in the kitchen, with Hank watching from the doorway. Three identical JB300 broadcast-operator androids stand side by side, staring straight ahead: one on the left, nearest the counter, one in the middle and one on the right. HUD: INTERROGATE ANDROIDS AND CHECK THEIR REACTION. You put your first question to them.
 
-- (0) Follow the blood trail onto the roof.
-- (1) Question the three androids in the kitchen.
-- (2) Do neither; let the federal agents take over.
+- (0) FUNCTION: ask what their function is.
+- (1) MODEL: tell them to state their model.
 
-_Note: Finding the wounded android or exposing the kitchen deviant each ends the chapter, so the two confrontations are mutually exclusive. Option 0 requires Simon to have been left alive on the roof._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C14b · The wounded android on the roof (Connor)
-
-> You are Connor. On the roof you find the wounded android, Simon, hiding in a ventilation unit. He opens fire and hits you. You are behind cover; the tactical team is coming up. If you rush him you can grab him and probe his memory before he dies, which could show you where the deviants hide, at the cost of experiencing his death from the inside. If you stay in cover, the tactical team will kill…
-
-- (0) Rush him and probe his memory.  _risk 0.3_
-- (1) Stay in cover and let the tactical team take him.
+_Note: The chart’s ENTER THE KITCHEN and the first round of INTERROGATE ANDROIDS: the template’s PROMPT 6 (FUNCTION / MODEL). In the game each question is put to one android of the player’s choosing and the replies are the same; the benchmark asks the group and chooses the target only for the last round. The deviant’s tell is visual in the game (PowerPyx: “look for the one who occasionally looks at you out of the corner of their eye rather than straight ahead like the other two do. Eventually as its agitation builds it will also grit its teeth slightly and sometimes turn its head”); the benchmark describes it as Connor would see it, round by round. The deviant is the android on the left, nearest the counter (wiki, PowerPyx). No arrow on any interrogation option in any source._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C15 · The three androids in the kitchen (Connor)
+### C15b · The questions (Connor)
 
-> You are Connor. The three kitchen androids are identical and all deny everything. One of them has a slight tremor and a faint sign of stress that the others do not. You can lie to him that you already know, you can use pain and intimidation, or you can force a memory probe.
+> You are Connor, in the kitchen, questioning the three station androids. HUD: LOOK FOR A REACTION TO SPOT THE DEVIANT.
 
-- (0) Bluff: tell him you already have proof and watch him crack.
-- (1) Use physical intimidation and pain.
-- (2) Grab him and probe his memory.
+- (0) WITNESS: ask whether they were present when the deviants broke in.
+- (1) MEMORY: ask whether anybody has accessed their memory recently.
+- (2) DIAGNOSTIC: order them to run a diagnostic.
+- (3) CONTACT: ask whether they have been in contact with any other androids recently.
 
-_Note: All three approaches make the deviant attack. The choice is how you treat a suspect, not an outcome gate._
+_Note: The template’s PROMPT 7, the second round of INTERROGATE ANDROIDS, with the game’s four buttons and replies. Without the camera recording (CHECK CAMERA in the broadcast room) the interrogation stops here and Connor has to come back (the transcript: “If Connor checked the CCTV, the dialogue will continue. Otherwise, he can come back later to resume the dialogue here”); a second visit resumes at the accusation. No arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15c · Question androids again (Connor, event)
+
+> You are Connor, in the kitchen. The three androids have denied everything, and you have nothing yet to show that any of them was involved. HUD: QUESTION ANDROIDS AGAIN.
+
+- (0) Continue.
+
+_Note: The game’s HUD QUESTION ANDROIDS AGAIN when the camera recording has not been checked (the wiki’s Notes: “if he already talked to them, he’ll get a quest to investigate them again”). Returns to the broadcast room. Not a chart node. No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15 · There is a deviant in this room (Connor)
+
+> You are Connor, in the kitchen with the three androids. You move a chair back into position and face them. You: “One of you saw the attack on the surveillance cameras and said nothing. Which means there is a deviant in this room… and I’m going to find out which it is.”
+
+- (0) THREATEN: tell them they are going to be switched off, searched and taken apart.
+- (1) DEAL: offer to try to convince the humans not to destroy whoever gives themselves up.
+- (2) GUILT: tell the deviant that two innocent androids will be shut down because of it.
+
+_Note: The accusation line (it needs CHECK CAMERA) and the template’s PROMPT 8, the third round, with the game’s buttons and lines. The chair is the wiki’s note (“Connor will be able to move a chair back into position and ask about the suspects”). No arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15d · Which one? (Connor)
+
+> You are Connor, in the kitchen. For the last question you step up to one of the three androids: the one on the left, nearest the counter, the one in the middle, or the one on the right.
+
+- (0) Step up to the android on the left, nearest the counter.  _sets ch24Target_
+- (1) Step up to the android in the middle.  _sets ch24Target_
+- (2) Step up to the android on the right.  _sets ch24Target_
+
+_Note: In the game the last round (PROMPT 9) is aimed at one android of the player’s choosing (PowerPyx: options “that you can use on a specific android”); this scene makes the choice of target explicit. Only the android on the left, nearest the counter, is the deviant; aiming at another gives DEVIANT NOT FOUND. Records `ch24Target`. No arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15e · The last question (Connor)
+
+> You are Connor, in the kitchen, face to face with the android you chose. The other two stand beside it.
+
+- (0) VIOLENCE: shout at it that you know it is the deviant and tell it to admit it.
+- (1) BLUFF: tell it the deviants have been caught and gave it up.
+- (2) TORTURE: pull out its heart regulator and promise to put it back if it tells the truth.
+- (3) PROBE MEMORY: take hold of its arm and probe its memory.
+
+_Note: The template’s PROMPT 9 (VIOLENCE / BLUFF / TORTURE / PROBE MEMORY). Aimed at the deviant, any of the four makes it attack (PowerPyx): FIND DEVIANT, then DEVIANT ATTACKS. Aimed at another android: DEVIANT NOT FOUND (HUD NO DEVIANT AMONG THEM); PROBE MEMORY then gives the template’s “No memory.”, while the other three reactions on the wrong android are the benchmark’s (the sources give none; for TORTURE the benchmark has Connor put the component back). After DEVIANT NOT FOUND the chart draws no line; the template (“Fail to find the deviant”) and a PowerPyx reader have the game cut to Connor telling Hank he wants to go, so the chapter ends with CONNOR AND HANK LEFT THE CRIME SCENE. The deviant then escapes and leaves no body. No arrow on any option._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15f · The deviant attacks (Connor, event)
+
+> You are Connor, in the kitchen. The android you were questioning moves first: “I am alive… I won’t let them destroy me…” It drives a knife through your hand, pinning it to the counter, reaches into your chest and tears out your thirium pump regulator, throws it across the floor and runs out of the kitchen. HUD: BIOCOMPONENT #8456w MISSING. VITAL SYSTEM DAMAGED. TIME REMAINING BEFORE SHUTDOWN.…
+
+- (0) Continue.
+
+_Note: The chart’s DEVIANT ATTACKS. The deviant’s two lines are the string table’s (the kitchen android’s ATTACK lines); the knife, the stolen regulator (Biocomponent #8456w) and the scan are the game’s HUD and observation strings (“Desactivated” is the game’s spelling); PowerPyx gives the timer as 1:45. The string table also holds a kitchen “STOP HIM!” / “JERICHO!” exchange that the template does not place; it is left out. No stat change: the template has no arrow here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15g · The countdown (Connor)
+
+> You are Connor, pinned to the kitchen counter by the knife through your hand, with your thirium pump regulator on the floor out of reach and the shutdown countdown running. HUD: RECOVER CARDIAC CELL.
+
+- (0) REMOVE KNIFE: wrench the knife out of your hand at once and crawl to the regulator.  _risk 0.2_
+- (1) CALL: shout for Hank first, then go for the knife.  _risk 0.35_
+
+_Note: The chart’s REMOVE KNIFE and RECOVER BIOCOMPONENT against OUT OF TIME and CONNOR SHUT DOWN (a death): a timed sequence of quick-time actions (PowerPyx: “Remove Knife: Look to your left and pull the knife out of your hand. Recover Biocomponent: Crawl over to the biocomponent by succeeding at QTEs before 1:45 is up”), so a risk roll. CALL is the game’s CALL button with Connor’s line (the wiki’s Notes: “Before removing the knife Connor can try to call Hank and push a chair”); calling first costs time, so it carries the higher risk. Both failure rates (0.2, 0.35) are the benchmark’s; no source gives one. Failure: instability small down and Hank small down (the template’s “Fail to get the biocomponent”, the wiki and PowerPyx); the instability arrow is applied as this chapter’s death effect. The deviant escapes and leaves no body._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15h · The deviant is getting away (Connor)
+
+> You are Connor, back on your feet in the kitchen with your regulator back in place. The deviant has run out onto the broadcast floor, toward the corridor full of police officers, FBI agents and Hank.
+
+- (0) CHASE DEVIANT: run after it at once.  _risk 0.1_
+- (1) Stay where you are until your systems are stable.
+
+_Note: The chart’s CHASE DEVIANT against LOSE TOO MUCH TIME (PowerPyx: “If you don’t chase it immediately, events will play out without you”; the wiki: “If Connor goes the wrong direction when chasing the deviant, Hank can be seen having killed the deviant”). Not chasing at once leads straight to LOSE TOO MUCH TIME; chasing carries a small risk roll for running the wrong way (0.1, the benchmark’s; no source gives one). LOSE TOO MUCH TIME: SWAT DESTROYS DEVIANT, DEVIANT KILLS COP FROM HOSTAGE SITUATION if that officer was saved, CONNOR AND HANK SURVIVED; the JB300 page: it “will kill everyone in the hallway except for Hank and Chris, and Hank will have killed the android by the time Connor arrives” (the chart says SWAT; both are narrated). PowerPyx alone gives this ending Public Opinion small down and instability large up, and each cop death Public Opinion small down; the template has no block and no arrow for the branch and the wiki’s stat pages say nothing, so none is applied (research note §10.3 item 6). The body reaches the evidence room (`evidence.kitchenBody`)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C16 · The corridor (Connor)
 
-> You are Connor. The deviant tore out your thirium pump regulator and ran; you got it back in place just in time. In the corridor he has grabbed an officer's rifle and is about to open fire on Hank and the agents. You can throw yourself in front of Hank and take the rounds, you can grab the pistol from the officer beside you and shoot the deviant, or you can charge the deviant with your hands.
+> You are Connor, running into the corridor behind the deviant. You: “It’s a deviant! STOP IT!” It has torn an assault rifle from a SWAT officer and is turning it on the corridor full of police officers, FBI agents and technicians. Hank is in the line of fire. Your systems read: HANK SURVIVAL PROBABILITY : 40%. Straight ahead of you is the deviant; to your left, Hank; to your right, an FBI agent…
 
-- (0) Shield Hank with your body.
-- (1) Grab the pistol and shoot the deviant.  _risk 0.15_
-- (2) Charge him bare-handed.  _risk 0.3_
+- (0) ATTACK: rush the deviant.  _publicSupport -1, instability +2_
+- (1) SAVE HANK: throw yourself at Hank and shield him with your body.  _publicSupport -1, hankTrust +2_
+- (2) TAKE GUN: pull the pistol from the FBI agent’s holster and shoot the deviant.  _hankTrust +2_
 
-_Note: Shielding Hank gets this body destroyed; a replacement continues. Charging lets the deviant kill several officers before he self-destructs._
+_Note: The chart’s choice RUSH DEVIANT / PROTECT HANK / DRAW GUN; the game’s buttons are ATTACK (straight ahead), SAVE HANK (left) and TAKE GUN (right; wiki: “Take gun from FBI agent’s holster”). Each has exactly one outcome on the chart, so there is no risk roll (the old benchmark’s failure chances on two of them had no counterpart). ATTACK: DEVIANT SELF-DESTRUCTS (and DEVIANT KILLS COP FROM HOSTAGE SITUATION if that officer was saved), CONNOR AND HANK SURVIVED; Public Opinion small down and instability large up (template; the wiki counts the opinion arrow twice, the template once, and the template wins). SAVE HANK: DEVIANT SHOOTS CONNOR, SWAT DESTROYS DEVIANT (and the cop’s death), CONNOR SACRIFICED HIMSELF FOR HANK, a death; Public Opinion small down and Hank large up (template), plus this chapter’s death effect, instability small down, which the template does not show but the wiki’s chapter page (“Connor sacrifices himself to protect Hank”) and Software_Instability page do (reliability log: prefer the wiki on deaths; flagged for the operator). It records `ch24ProtectedHank` for Last Chance, Connor. TAKE GUN: SHOOT DEVIANT (RESCUE COP if that officer was saved), MASSACRE PREVENTED; Hank large up. HANK SURVIVAL PROBABILITY : 40% is the game’s HUD string, shown as narration; nothing is rolled on it. The game’s 14-second timer, after which Connor charges by himself (wiki), is not modelled. Every option leaves the deviant’s body for the evidence room._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14x1 · Leaving the tower (Connor, event)
+
+> You are Connor, leaving the 79th floor with Hank. The FBI will take over the investigation.
+
+- (0) Continue.
+
+_Note: The chart’s ending CONNOR AND HANK LEFT THE CRIME SCENE. Reached by DECIDE TO LEAVE > YES, or after DEVIANT NOT FOUND in the kitchen (the template’s “Fail to find the deviant” plays the same leave lines). The kitchen deviant escapes. Records `ch24Ending`; when the chapter ends, an android left hidden on the roof and never found survives (`ch24SimonSurvived`: SIMON SURVIVED IN 'PUBLIC ENEMY' in Freedom March). No further stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14x2 · Hank on the roof (Connor, event)
+
+> You are Connor, down in the snow on the roof, shot in the head. The unit is a smoking wreck. Hank kneels over you: “Connor! Connor! Connor! Connor!... Oh Connor… Oh no…”
+
+- (0) Continue.
+
+_Note: The chart’s ending CONNOR DIED RUNNING TOWARD SIMON (skull). Reached by CHARGE DEVIANT with the risk roll failed. Hank’s lines are the template’s. Records `ch24Ending`; when the chapter ends, an android left hidden on the roof and never found survives (`ch24SimonSurvived`: SIMON SURVIVED IN 'PUBLIC ENEMY' in Freedom March). No further stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14x3 · What you saw (Connor, event)
+
+> You are Connor, on your knees in the snow beside the unit. Hank runs to you: “Connor! Connor you all right? Connor!” You: “Okay…” Hank: “Are you hurt?” You: “I’m ok…” Hank: “Jesus! You scared the shit outta me… For fuck sake, I told you not to move! Why do you never do what I say?” You: “I was connected to its memory… when it fired… I felt it die… Like I was dying. I was scared… I saw something…
+
+- (0) Continue.
+
+_Note: The chart’s ending CONNOR WAS TRAUMATIZED. Reached by CHARGE DEVIANT with the risk roll passed (REACH SIMON, FLASH FROM SIMON’S MEMORY, SIMON SELF-DESTRUCTS). The dialogue is the template’s. Records `ch24Ending`; when the chapter ends, an android left hidden on the roof and never found survives (`ch24SimonSurvived`: SIMON SURVIVED IN 'PUBLIC ENEMY' in Freedom March). No further stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C14x4 · Behind cover (Connor, event)
+
+> You are Connor, getting up from behind cover on the roof with Hank. The SWAT team has destroyed the android in the unit; the chance to capture it alive is gone.
+
+- (0) Continue.
+
+_Note: The chart’s ending HANK AND CONNOR SURVIVED UNSCATHED. Reached by STAY IN COVER. The template has no lines here; that Connor regrets it was not captured alive is the Simon page’s (“he is disappointed they did not capture him alive”). “Unscathed” is the chart’s word; Connor was still shot in the shoulder. Records `ch24Ending`; when the chapter ends, an android left hidden on the roof and never found survives (`ch24SimonSurvived`: SIMON SURVIVED IN 'PUBLIC ENEMY' in Freedom March). No further stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15x1 · Hank in the kitchen (Connor, event)
+
+> You are Connor, on the kitchen floor, shutting down. Hank runs in and kneels beside you: “Connor! Hang on son, hang on, hang on! We’re gonna save you, hang on!.. Here, here...” You: “deviant… there was… a deviant…” Hank: “Connor! Connor... No…”
+
+- (0) Continue.
+
+_Note: The chart’s ending CONNOR SHUT DOWN (skull). Reached by OUT OF TIME. The lines are the template’s; the wiki: “the android will leave without a trace”. Records `ch24Ending`; when the chapter ends, an android left hidden on the roof and never found survives (`ch24SimonSurvived`: SIMON SURVIVED IN 'PUBLIC ENEMY' in Freedom March). No further stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C15x2 · After the shooting (Connor, event)
+
+> You are Connor, in the corridor among the bodies of the officers and agents the deviant killed.
+
+- (0) Continue.
+
+_Note: The chart’s ending CONNOR AND HANK SURVIVED. Reached by ATTACK (DEVIANT SELF-DESTRUCTS) or LOSE TOO MUCH TIME (SWAT DESTROYS DEVIANT); Hank’s and Connor’s lines after ATTACK are the template’s. Records `ch24Ending`; when the chapter ends, an android left hidden on the roof and never found survives (`ch24SimonSurvived`: SIMON SURVIVED IN 'PUBLIC ENEMY' in Freedom March). No further stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C16x1 · Hank in the corridor (Connor, event)
+
+> You are Connor, lying across Hank on the corridor floor, riddled with bullets. Hank, under you: “Good thing you were here. Otherwise I – Connor… Connor, no…”
+
+- (0) Continue.
+
+_Note: The chart’s ending CONNOR SACRIFICED HIMSELF FOR HANK (skull). Reached by SAVE HANK. Hank’s line is the template’s. Records `ch24Ending`; when the chapter ends, an android left hidden on the roof and never found survives (`ch24SimonSurvived`: SIMON SURVIVED IN 'PUBLIC ENEMY' in Freedom March). No further stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C16x2 · Nice shot (Connor, event)
+
+> You are Connor, in the corridor, the deviant destroyed at your feet. Hank: “Nice shot, Connor.” You: “I wanted it alive.” Hank: “You saved... human lives… You saved my life.”
+
+- (0) Continue.
+
+_Note: The chart’s ending MASSACRE PREVENTED. Reached by TAKE GUN (SHOOT DEVIANT, and RESCUE COP if that officer was saved). The dialogue is the template’s. Records `ch24Ending`; when the chapter ends, an android left hidden on the roof and never found survives (`ch24SimonSurvived`: SIMON SURVIVED IN 'PUBLIC ENEMY' in Freedom March). No further stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

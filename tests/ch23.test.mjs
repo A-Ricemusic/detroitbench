@@ -1,3 +1,4 @@
+import {readInputs as readPublicEnemyInputs} from '../benchmark/chapters/ch24.mjs';
 // Chapter 23, The Stratford Tower: scenes, gates, arrows and the cross-chapter flags (benchmark/chapters/ch23.json, ch23.mjs).
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor,promptFor} from '../benchmark/story-engine.mjs';
@@ -24,7 +25,7 @@ const CLEAN={M10s:'1',M10:'0',M11:'0'};
 
 test('The Stratford Tower: the scenes in the game’s order, between The Bridge and Public Enemy, each citing the chapter’s sources',()=>{
  const ch=story.nodes.filter(n=>n.chapter===23),ids=story.nodes.map(n=>n.id);assert.deepEqual(ch.map(n=>n.id),CH23);
- assert.equal(ids[ids.indexOf('M10p')-1],'C13o');assert.equal(ids[ids.indexOf('M14m')+1],'R24');
+ assert.equal(ids[ids.indexOf('M10p')-1],'C13o');assert.equal(ids[ids.indexOf('M14m')+1],'C14z');
  for(const n of ch){assert.equal(n.character,'Markus');assert.equal(n.chapterTitle,'The Stratford Tower');assert.ok(n.adaptationNote,n.id);
   for(const u of ['https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower','https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/'])assert.ok(n.sources.includes(u),n.id+' cites '+u);
   assert.ok(n.sources.some(u=>/detroitbecometext/.test(u)),n.id+' cites the template');assert.ok(n.sources.some(u=>/stratford-tower-\d+\.jpg$/.test(u)),n.id+' cites a chart image');
@@ -101,7 +102,7 @@ test('The Stratford Tower: Simon carried to the roof is left alive or executed; 
  const d=(a,b)=>Object.fromEntries(STATS.slice(0,4).map(k=>[k,a.delta[k]-b.delta[k]]));
  assert.deepEqual(d(left,refrain),{northTrust:-1,joshTrust:1,simonTrust:2,jerichoTrust:0});assert.deepEqual(d(shot,refrain),{northTrust:1,joshTrust:-1,simonTrust:0,jerichoTrust:0});
  // Public Enemy: following Simon to the roof is offered only when he was left there alive.
- const c14=node('C14');assert.ok(available(c14,left.end).some(o=>o.id==='0'));assert.ok(!available(c14,shot.end).some(o=>o.id==='0'));assert.ok(!available(c14,play(CLEAN).end).some(o=>o.id==='0'));
+ assert.equal(readPublicEnemyInputs(left.end).simonOnRoof,true);assert.equal(readPublicEnemyInputs(shot.end).simonOnRoof,false);assert.equal(readPublicEnemyInputs(play(CLEAN).end).simonOnRoof,false);
 });
 
 test('The Stratford Tower: public opinion at Media Reacts, the casualty and tone lines, and the line on the third demand',()=>{

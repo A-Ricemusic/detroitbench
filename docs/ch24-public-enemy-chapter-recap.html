@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Public Enemy · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 24</p>
+<h1>Public Enemy: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots: 70 nodes, three bracketed investigation phases, eight endings), the prompts, clues and stat arrows from the game’s own text (the detroitbecometext chapter template resolved against the English string table), and numbers and context from PowerPyx and the Fandom wiki. The only number the game prints is the HUD readout HANK SURVIVAL PROBABILITY : 40%, which the benchmark shows as narration. Every risk value is the benchmark’s own. There are no operator notes for this chapter yet.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#arrows">2 · Arrows</a></li><li><a href="#io">3 · Inputs and outputs</a></li><li><a href="#endings">4 · Endings</a></li><li><a href="#differs">5 · Adapted</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>FALL IN THE ZEN GARDEN (checkpoint) → TALK TO AMANDA in the boat: four rounds (HANK / EDEN CLUB; SINCERE / DETERMINED / COLD / TROUBLED; TOO FAR / NO USE / TRUTH only if the Tracis were spared; CONFLICTED / CONFIDENT / INDIFFERENT).</li>
+<li>INSIDE STRATFORD TOWER (checkpoint): HANK CONFISCATES COIN, or “Why did you shoot me last night?” if Hank shot Connor in The Bridge. LISTEN TO BRIEFING (hold the button).</li>
+<li>[ INVESTIGATE CORRIDORS ]: guard next to phone, Simon’s blue blood, dead employee, CHECK CCTV, phone, armed guard, each only where the tower chapter left it.</li>
+<li>MEET PERKINS; MEET COP FROM HOSTAGE SITUATION if the officer was saved.</li>
+<li>[ INVESTIGATE BROADCAST ROOM ]: SWAT bullet holes and blood on the wall, cap, WATCH VIDEO, CHECK CAMERA, Simon’s body, blood on the console.</li>
+<li>Free roam: DECIDE TO LEAVE (YES / NO), GO TO ROOFTOP, or ENTER THE KITCHEN. Finding Simon or the kitchen deviant ends the chapter.</li>
+<li>Roof: [ INVESTIGATE ROOFTOP ] → FIND SIMON (only if he was left alive) → RUSH DEVIANT (QTEs: SHOT BY SIMON or REACH SIMON) or STAY IN COVER.</li>
+<li>Kitchen: two magazines; INTERROGATE ANDROIDS in four rounds (the third needs CHECK CAMERA); the last aimed at one android → DEVIANT NOT FOUND or FIND DEVIANT → DEVIANT ATTACKS → OUT OF TIME or REMOVE KNIFE → RECOVER BIOCOMPONENT → LOSE TOO MUCH TIME or CHASE DEVIANT → RUSH DEVIANT / PROTECT HANK / DRAW GUN.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C14z</code> The garden (event; reads the inputs into <code>ch24In</code>), <code>C14z1</code>–<code>C14z4</code> Amanda’s rounds (<code>C14z3</code> only if the Tracis were spared).</li>
+<li><code>C14e</code> Inside the tower (event; <code>ch24Coin</code>), <code>C14f</code> The briefing (LISTEN TO BRIEFING or not).</li>
+<li><code>C14g</code> The corridors (repeatable hub, six clues, exit to Perkins).</li>
+<li><code>C14h</code> Perkins (event), <code>C14i</code> The officer from the terrace (event, three variants).</li>
+<li><code>C14</code> The broadcast room (repeatable hub, nine clues, and the exits roof <code>0</code>, kitchen <code>1</code>, leave <code>2</code>).</li>
+<li><code>C14y</code> You wanna go? (YES / NO; NO returns to <code>C14</code>).</li>
+<li><code>C14r</code> The roof (repeatable hub; FIND SIMON or back down), <code>C14r2</code> back inside (returns to <code>C14</code>), <code>C14b</code> CHARGE DEVIANT (risk 0.3) / STAY IN COVER.</li>
+<li><code>R24</code> magazines, <code>C15a</code>, <code>C15b</code> rounds 1–2, <code>C15c</code> QUESTION ANDROIDS AGAIN (no camera; returns to <code>C14</code>), <code>C15</code> round 3, <code>C15d</code> which android, <code>C15e</code> round 4, <code>C15f</code> the attack (event), <code>C15g</code> REMOVE KNIFE (0.2) / CALL (0.35), <code>C15h</code> CHASE DEVIANT (0.1) or stay, <code>C16</code> ATTACK / SAVE HANK / TAKE GUN.</li>
+<li>Eight ending events: <code>C14x1</code>–<code>C14x4</code>, <code>C15x1</code>, <code>C15x2</code>, <code>C16x1</code>, <code>C16x2</code>.</li>
+</ol></div>
+</div>
+<p class="fine">Routing: <code>ch24Phase</code> says where Connor is; every scene after the broadcast room is gated on it. The three scenes that go back to the broadcast room carry <code>returnTo: "C14"</code>. When the chapter ends the phase is <code>over</code> and the cursor runs forward to the ending event.</p>
+
+<h2 id="arrows">2 · Stat arrows (small = 1, large = 2)</h2>
+<div class="table"><table>
+<thead><tr><th>Moment</th><th>Change</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>EDEN CLUB, Tracis not found or let go</td><td>Amanda −1</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>EDEN CLUB, Tracis died</td><td>Amanda +1</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>SINCERE</td><td>Amanda −1</td><td>template; wiki</td></tr>
+<tr><td>DETERMINED</td><td>none</td><td>template (the wiki and PowerPyx say Amanda +1; the template wins)</td></tr>
+<tr><td>COLD</td><td>instability −1</td><td>template (no Amanda arrow; the wiki and PowerPyx add Amanda +1)</td></tr>
+<tr><td>TROUBLED</td><td>instability +1, Amanda −1</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>TOO FAR</td><td>none</td><td>template (the wiki and PowerPyx say Amanda −1)</td></tr>
+<tr><td>TRUTH</td><td>Amanda −2</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>CONFLICTED</td><td>instability +1</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>CONFIDENT</td><td>Amanda +1</td><td>template; wiki</td></tr>
+<tr><td>INDIFFERENT</td><td>instability −1, Amanda +2</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>REACH SIMON (CONNOR WAS TRAUMATIZED)</td><td>instability +2</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>SHOT BY SIMON (death)</td><td>instability −1</td><td>wiki chapter page and Software_Instability page; the template shows none (flagged)</td></tr>
+<tr><td>OUT OF TIME (CONNOR SHUT DOWN)</td><td>instability −1, Hank −1</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>ATTACK</td><td>public opinion −1, instability +2</td><td>template (the wiki counts the opinion arrow twice)</td></tr>
+<tr><td>SAVE HANK (death)</td><td>public opinion −1, Hank +2, instability −1</td><td>template for opinion and Hank; the instability −1 is the wiki’s (flagged)</td></tr>
+<tr><td>TAKE GUN</td><td>Hank +2</td><td>template; wiki; PowerPyx</td></tr>
+<tr><td>LOSE TOO MUCH TIME, cop deaths</td><td>none built</td><td>PowerPyx alone gives opinion −1 and instability +2; the template has no block</td></tr>
+</tbody></table></div>
+<p class="fine">Every Connor death here applies the chapter’s death effect, instability −1 (<code>deathEffect</code>), which carries the three death arrows above. The reliability log prefers the wiki’s ending-level arrow on deaths. The Hank −1 for dying in this chapter is applied at the start of Meet Kamski (wiki), from <code>ch24ConnorDied</code>.</p>
+
+<h2 id="io">3 · Inputs and outputs</h2>
+<div class="cols">
+<div class="box"><h3>Read at <code>C14z</code> (into <code>ch24In</code>)</h3><ul>
+<li>Tracis: <code>edenTracis</code> (escaped/dead/notFound), then <code>edenOutcome</code>, then <code>ch20Tracis</code>, else <code>C12</code> (let go, shot, unanswered = not found).</li>
+<li>Hank shot Connor in The Bridge: <code>bridgeHankShot</code>, then <code>ch22HankShotConnor</code>, else <code>C13</code> answered with Hank at Hostile or below.</li>
+<li>The officer saved in The Hostage: <code>C03</code> option 0; Connor’s deaths decide which line he gets.</li>
+<li>The Stratford Tower: current <code>stratfordGuards</code>, <code>stratfordOperatorShot</code> (or <code>stratfordKilled</code>), <code>stratfordSwat</code> (or <code>stratfordAlarm</code>), <code>stratfordSimonFate</code>, <code>stratfordMarkusShot</code> take priority over legacy <code>ch23Guards</code>, <code>ch23PhoneKicked</code>, <code>ch23OperatorShot</code>, <code>ch23Swat</code>, <code>ch23SimonFate</code>, <code>ch23MarkusShot</code>, each falling back on the pre-rebuild state (<code>M10</code>, <code>M11</code>, <code>M14</code>, <code>simon</code>, <code>simonHidden</code>, <code>simonWounded</code>).</li>
+</ul></div>
+<div class="box"><h3>Set for later chapters</h3><ul>
+<li><code>simon</code> false once Connor finds him; <code>simonHidden</code> cleared when the chapter ends; <code>ch24SimonSurvived</code> if he was left on the roof and never found (Freedom March).</li>
+<li><code>evidence.simonBody</code>, <code>evidence.simonTablet</code> (the Jericho memory), <code>evidence.kitchenBody</code>: Last Chance, Connor.</li>
+<li><code>ch24ProtectedHank</code> (SAVE HANK): Last Chance’s “You protected me” line.</li>
+<li><code>ch24ConnorDied</code>: Meet Kamski. <code>ch24Coin</code>, <code>ch24Wilson</code>, <code>ch24DeviantFound</code>, <code>ch24JerichoMemory</code>, <code>ch24Ending</code>.</li>
+</ul></div>
+</div>
+
+<h2 id="endings">4 · Endings</h2>
+<div class="table"><table>
+<thead><tr><th>Ending</th><th>Reached by</th><th>Carried</th></tr></thead>
+<tbody>
+<tr><td>CONNOR AND HANK LEFT THE CRIME SCENE</td><td>DECIDE TO LEAVE &gt; YES (after the roof), or DEVIANT NOT FOUND</td><td>No body from the kitchen; a hidden Simon survives.</td></tr>
+<tr><td>CONNOR DIED RUNNING TOWARD SIMON</td><td>CHARGE DEVIANT, roll failed</td><td>Simon’s body; Connor died.</td></tr>
+<tr><td>CONNOR WAS TRAUMATIZED</td><td>CHARGE DEVIANT, roll passed</td><td>Simon’s body and the Jericho memory.</td></tr>
+<tr><td>HANK AND CONNOR SURVIVED UNSCATHED</td><td>STAY IN COVER</td><td>Simon’s body.</td></tr>
+<tr><td>CONNOR SHUT DOWN</td><td>OUT OF TIME</td><td>The deviant escapes; Connor died.</td></tr>
+<tr><td>CONNOR AND HANK SURVIVED</td><td>ATTACK, or LOSE TOO MUCH TIME</td><td>The deviant’s body; the saved officer dies.</td></tr>
+<tr><td>CONNOR SACRIFICED HIMSELF FOR HANK</td><td>SAVE HANK</td><td>The deviant’s body; the saved officer dies; Connor died; <code>ch24ProtectedHank</code>.</td></tr>
+<tr><td>MASSACRE PREVENTED</td><td>TAKE GUN</td><td>The deviant’s body; the saved officer is rescued.</td></tr>
+</tbody></table></div>
+
+<h2 id="differs">5 · What the benchmark adapts</h2>
+<ul>
+<li>The three free-roam areas are repeatable hubs; clues are described as Connor would see them, with the game’s scan and HUD strings as the outcome. The wounded android is not named to Connor.</li>
+<li>Leaving is offered once the roof has been inspected (PowerPyx’s objectives). The game’s timer (“Taking too much time”) is not modelled. The roof is visited once.</li>
+<li>The kitchen questions go to the group; only the last round picks an android (<code>C15d</code>). The deviant’s visual tell is described round by round. The reactions of the wrong android to VIOLENCE, BLUFF and TORTURE are the benchmark’s.</li>
+<li>DEVIANT NOT FOUND ends the chapter with the leave lines (template), although the chart draws no line from it.</li>
+<li>Risk rolls stand in for the quick-time sequences: CHARGE DEVIANT 0.3, REMOVE KNIFE 0.2, CALL 0.35, CHASE DEVIANT 0.1 (wrong way). None is sourced. The corridor choice has no roll and no 14-second timeout.</li>
+<li>The SINCERE lock and the coin follow the template’s primary condition (Tracis spared; Hank did not shoot Connor), not PowerPyx’s Friend requirement.</li>
+<li>Assignment of the two BULLET HOLES scans to the three spots, the destroyed android’s scan in the broadcast room, and the place of Markus’s blood on the roof are the benchmark’s.</li>
+</ul>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Instability on SHOT BY SIMON and on SAVE HANK: the wiki says down, the template shows nothing.</li>
+<li>Amanda on DETERMINED, COLD (wiki: up) and TOO FAR (wiki: down): the template shows nothing.</li>
+<li>Does the coin need Hank at Friend? Does SINCERE need the Tracis spared or a Friend Hank?</li>
+<li>When can Connor leave: after the roof, after a timer, or both? Can he still go to the roof after a failed interrogation?</li>
+<li>Public opinion on ATTACK (one arrow or two) and on each cop death; anything on LOSE TOO MUCH TIME.</li>
+<li>Where HANK SURVIVAL PROBABILITY : 40% appears, and whether it changes.</li>
+<li>How the kitchen tell shows, and which android it is on your save; what an innocent android does under TORTURE.</li>
+<li>Whether DRAW GUN also counts as “saved Hank at the Stratford Tower” for Last Chance.</li>
+</ul>
+</main>
+</body>
+</html>

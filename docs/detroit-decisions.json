@@ -332,8 +332,21 @@
    "id": 24,
    "title": "Public Enemy",
    "character": "Connor",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (70 nodes, three bracketed phases, eight endings) and the game’s text (the detroitbecometext template resolved against the string table). FALL IN THE ZEN GARDEN → TALK TO AMANDA (four rounds; the third only if the Tracis were spared) → INSIDE STRATFORD TOWER (HANK CONFISCATES COIN unless Hank shot Connor in The Bridge; LISTEN TO BRIEFING) → [ INVESTIGATE CORRIDORS ] → MEET PERKINS → (MEET COP FROM HOSTAGE SITUATION) → [ INVESTIGATE BROADCAST ROOM ] → DECIDE TO LEAVE (CONNOR AND HANK LEFT THE CRIME SCENE) | GO TO ROOFTOP → [ INVESTIGATE ROOFTOP ] → FIND SIMON → RUSH DEVIANT (SHOT BY SIMON → CONNOR DIED RUNNING TOWARD SIMON | REACH SIMON → CONNOR WAS TRAUMATIZED) | STAY IN COVER (HANK AND CONNOR SURVIVED UNSCATHED) | ENTER THE KITCHEN → INTERROGATE ANDROIDS → DEVIANT NOT FOUND | FIND DEVIANT → DEVIANT ATTACKS → OUT OF TIME (CONNOR SHUT DOWN) | RECOVER BIOCOMPONENT → LOSE TOO MUCH TIME (CONNOR AND HANK SURVIVED) | CHASE DEVIANT → RUSH DEVIANT (CONNOR AND HANK SURVIVED) / PROTECT HANK (CONNOR SACRIFICED HIMSELF FOR HANK) / DRAW GUN (MASSACRE PREVENTED). The roof confrontation and the kitchen one each end the chapter. Cross-chapter: Simon found or not (`simon`, `ch24SimonSurvived`), the Jericho memory (`evidence.simonTablet`), the bodies for the evidence room (`evidence.simonBody`, `evidence.kitchenBody`), Connor protected Hank (`ch24ProtectedHank`, Last Chance) and Connor died (`ch24ConnorDied`, Meet Kamski). Researched in docs/research/ch24-public-enemy.md.",
+   "source": "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-1-001.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-2-002.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-3-003.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-4-004.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-5-005.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-6-006.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-7-007.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-8-008.jpg"
+   ]
   },
   {
    "id": 25,
@@ -13095,101 +13108,352 @@
    }
   },
   {
+   "id": "PE01",
+   "chapter": 24,
+   "character": "Connor",
+   "title": "Report to Amanda in the Zen Garden",
+   "context": "Amanda, in a boat, asks what Connor has discovered, says he seems lost, asks (if he spared the Tracis) why he did not shoot, and threatens to replace him.",
+   "options": [
+    {
+     "label": "HANK / EDEN CLUB",
+     "effect": "EDEN CLUB: Amanda −1 if the Tracis were not found or escaped, +1 if they died. HANK: none.",
+     "target": "PE02"
+    },
+    {
+     "label": "SINCERE / DETERMINED / COLD / TROUBLED",
+     "effect": "SINCERE (spared the Tracis only) Amanda −1; COLD instability −1; TROUBLED instability +1, Amanda −1; DETERMINED none.",
+     "target": "PE02"
+    },
+    {
+     "label": "TOO FAR / NO USE / TRUTH",
+     "effect": "Only if the Tracis were spared. TRUTH Amanda −2; the others none.",
+     "target": "PE02"
+    },
+    {
+     "label": "CONFLICTED / CONFIDENT / INDIFFERENT",
+     "effect": "CONFLICTED instability +1; CONFIDENT Amanda +1; INDIFFERENT instability −1, Amanda +2.",
+     "target": "PE02"
+    }
+   ],
+   "gate": "Chapter start, after The Stratford Tower. The Traci outcome (The Eden Club) and The Bridge change the lines and the third round.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C12",
+    "C13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-1-001.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-2-002.jpg"
+   ],
+   "note": "The template’s arrows win over the wiki’s and PowerPyx’s Amanda arrows on DETERMINED, COLD and TOO FAR.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C14z",
+     "C14z1",
+     "C14z2",
+     "C14z3",
+     "C14z4"
+    ],
+    "status": "implemented",
+    "note": "An event for the garden and four decision scenes with the game’s buttons and arrows."
+   }
+  },
+  {
+   "id": "PE02",
+   "chapter": 24,
+   "character": "Connor",
+   "title": "Inside Stratford Tower: coin, briefing, corridors, Perkins",
+   "context": "Hank confiscates the coin (or apologizes for shooting Connor), Chris briefs them, Connor investigates the corridors and meets Perkins and, if he saved him, the officer from the hostage case.",
+   "options": [
+    {
+     "label": "LISTEN TO BRIEFING",
+     "effect": "Chris’s briefing, whose lines follow the tower chapter.",
+     "target": "C14"
+    },
+    {
+     "label": "Leave the briefing",
+     "effect": "Only the opening lines.",
+     "target": "C14"
+    },
+    {
+     "label": "Corridor clues",
+     "effect": "Guard next to phone, Simon’s blue blood, dead employee, CCTV, phone, armed guard, each where the tower chapter left it.",
+     "target": "C14"
+    }
+   ],
+   "gate": "HANK CONFISCATES COIN unless Hank shot Connor in The Bridge (template; PowerPyx adds Friend). MEET COP only if the officer was saved in The Hostage.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C13",
+    "M14",
+    "C03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-1-001.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-2-002.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-3-003.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-4-004.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C14e",
+     "C14f",
+     "C14g",
+     "C14h",
+     "C14i"
+    ],
+    "status": "implemented",
+    "note": "Elevator event, briefing decision, corridor hub with six clues, Perkins and officer events. No stat change."
+   }
+  },
+  {
    "id": "C14",
    "chapter": 24,
    "character": "Connor",
-   "title": "Investigate Simon or the kitchen androids?",
-   "context": "The tower contains different evidence routes.",
+   "title": "Investigate the broadcast room; then the roof, the kitchen or leave",
+   "context": "Nine clues in the broadcast room (SWAT damage, blood, cap, video, camera, Simon’s body). The camera recording is what unlocks the kitchen accusation.",
    "options": [
     {
-     "label": "Find hidden Simon",
-     "effect": "Exposure ends in Simon’s death.",
-     "target": null
+     "label": "Go to the rooftop",
+     "effect": "Clues; with Simon left alive on the roof, finding him ends the chapter.",
+     "target": "PE03"
     },
     {
-     "label": "Investigate the kitchen",
-     "effect": "Hidden Simon can survive; pursue another suspect.",
+     "label": "Enter the kitchen",
+     "effect": "Interrogate the three station androids.",
      "target": "C15"
     },
     {
-     "label": "Leave without resolving the lead",
-     "effect": "Lose evidence opportunities.",
+     "label": "Decide to leave (YES)",
+     "effect": "CONNOR AND HANK LEFT THE CRIME SCENE; a hidden Simon survives.",
      "target": null
     }
    ],
-   "gate": "Living Simon on the roof requires Markus to have left him there.",
-   "kind": "State gate",
+   "gate": "Leaving is offered once the roof has been inspected (PowerPyx’s objectives; the timer is not modelled). The kitchen can be revisited only after the camera recording.",
+   "kind": "Pivotal",
    "dependsOn": [
+    "PE02",
     "M14"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-1-001.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-4-004.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-7-007.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C14",
+     "C14y",
+     "C14x1"
+    ],
+    "status": "implemented",
+    "note": "A repeatable hub that is also the crossroads; YES/NO with no arrow."
+   }
+  },
+  {
+   "id": "PE03",
+   "chapter": 24,
+   "character": "Connor",
+   "title": "The rooftop and Simon",
+   "context": "Door, bag, footprints, weapons, and Simon’s blood or body. If Simon was left alive he is hiding in an air-cooler unit, shoots Connor and is fired on by SWAT.",
+   "options": [
+    {
+     "label": "RUSH DEVIANT (CHARGE DEVIANT)",
+     "effect": "A risk roll: SHOT BY SIMON → CONNOR DIED RUNNING TOWARD SIMON (instability −1), or REACH SIMON → CONNOR WAS TRAUMATIZED (instability +2; the Jericho memory).",
+     "target": null
+    },
+    {
+     "label": "STAY IN COVER",
+     "effect": "SIMON IS DESTROYED BY SWAT → HANK AND CONNOR SURVIVED UNSCATHED.",
+     "target": null
+    },
+    {
+     "label": "Go back down",
+     "effect": "Simon stays hidden and survives.",
+     "target": "C14"
+    }
+   ],
+   "gate": "FIND SIMON only if Simon was left alive on the roof in The Stratford Tower.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C14",
+    "M14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-1-001.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-5-005.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-6-006.jpg"
+   ],
+   "note": "The death’s instability −1 is the wiki’s; the template shows none (flagged).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C14r",
+     "C14r2",
+     "C14b",
+     "C14x2",
+     "C14x3",
+     "C14x4"
+    ],
+    "status": "implemented",
+    "note": "A repeatable roof hub with FIND SIMON as an exit, the CHARGE DEVIANT / STAY IN COVER decision with a 0.3 risk (unsourced), and three ending events."
+   }
   },
   {
    "id": "C15",
    "chapter": 24,
    "character": "Connor",
-   "title": "How to expose the kitchen deviant?",
-   "context": "Three androids face questioning.",
+   "title": "Interrogate the kitchen androids",
+   "context": "Three identical JB300s. FUNCTION / MODEL, then WITNESS / MEMORY / DIAGNOSTIC / CONTACT; with the camera recording, the accusation, THREATEN / DEAL / GUILT, and VIOLENCE / BLUFF / TORTURE / PROBE MEMORY aimed at one android.",
    "options": [
     {
-     "label": "Bluff",
-     "effect": "Attempt to expose the suspect without physical coercion.",
-     "target": null
+     "label": "The android on the left (the deviant)",
+     "effect": "FIND DEVIANT → DEVIANT ATTACKS.",
+     "target": "PE04"
     },
     {
-     "label": "Torture / violence / memory probe",
-     "effect": "Use coercion; the identified deviant attacks.",
-     "target": "C16"
+     "label": "Another android",
+     "effect": "DEVIANT NOT FOUND; Connor and Hank leave.",
+     "target": null
     }
    ],
-   "gate": "Kitchen investigation pursued.",
+   "gate": "The accusation needs CHECK CAMERA; without it Connor must come back.",
    "kind": "Ethical",
    "dependsOn": [
     "C14"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-1-001.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-7-007.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R24",
+     "C15a",
+     "C15b",
+     "C15c",
+     "C15",
+     "C15d",
+     "C15e"
+    ],
+    "status": "implemented",
+    "note": "Magazines, four rounds with the game’s buttons, a target choice and the deviant’s tell described round by round. No arrow."
+   }
+  },
+  {
+   "id": "PE04",
+   "chapter": 24,
+   "character": "Connor",
+   "title": "The deviant attacks",
+   "context": "The deviant pins Connor’s hand with a knife, tears out his regulator and runs.",
+   "options": [
+    {
+     "label": "REMOVE KNIFE / CALL",
+     "effect": "A risk roll: OUT OF TIME → CONNOR SHUT DOWN (instability −1, Hank −1), or RECOVER BIOCOMPONENT.",
+     "target": "C16"
+    },
+    {
+     "label": "Chase at once or not",
+     "effect": "LOSE TOO MUCH TIME → SWAT DESTROYS DEVIANT → CONNOR AND HANK SURVIVED (no arrow), or CHASE DEVIANT.",
+     "target": "C16"
+    }
+   ],
+   "gate": "FIND DEVIANT.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C15"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-1-001.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-7-007.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-8-008.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C15f",
+     "C15g",
+     "C15h",
+     "C15x1"
+    ],
+    "status": "implemented",
+    "note": "An event, two risky decisions (0.2/0.35 and 0.1, unsourced) and the shutdown ending."
+   }
   },
   {
    "id": "C16",
    "chapter": 24,
    "character": "Connor",
    "title": "Protect Hank or stop the shooter?",
-   "context": "After recovering his component, Connor faces an armed deviant.",
+   "context": "The deviant has a SWAT rifle in a corridor full of police. HANK SURVIVAL PROBABILITY : 40%.",
    "options": [
     {
-     "label": "Shield Hank",
-     "effect": "Connor sacrifices himself.",
+     "label": "ATTACK (Rush deviant)",
+     "effect": "DEVIANT SELF-DESTRUCTS → CONNOR AND HANK SURVIVED; public opinion −1, instability +2; the saved officer dies.",
      "target": null
     },
     {
-     "label": "Take a gun and shoot",
-     "effect": "Stop the deviant before the massacre.",
+     "label": "SAVE HANK (Protect Hank)",
+     "effect": "DEVIANT SHOOTS CONNOR → CONNOR SACRIFICED HIMSELF FOR HANK; public opinion −1, Hank +2, instability −1 (death, wiki); the saved officer dies.",
      "target": null
     },
     {
-     "label": "Rush the deviant",
-     "effect": "Other officers can die.",
+     "label": "TAKE GUN (Draw gun)",
+     "effect": "SHOOT DEVIANT → MASSACRE PREVENTED; Hank +2; the saved officer is rescued.",
      "target": null
     }
    ],
-   "gate": "Recover the component and reach the corridor in time.",
+   "gate": "Recover the component and chase the deviant at once.",
    "kind": "Pivotal",
    "dependsOn": [
-    "C15"
+    "PE04",
+    "C03"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-1-001.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Public-Enemy-8-008.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C16",
+     "C15x2",
+     "C16x1",
+     "C16x2"
+    ],
+    "status": "implemented",
+    "note": "One decision with no risk (the chart has one outcome per option) and the corridor endings."
+   }
   },
   {
    "id": "K15",
