@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>The Stratford Tower · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 23</p>
+<h1>The Stratford Tower: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Prompts, button labels, lines, clue text and stat arrows come from the game’s own text (the detroitbecometext template, <code>docs/research/ch23-the-stratford-tower.md</code> section 10); node order and endings come from the PowerPyx 100% chart (104 boxes); the alarm rule comes from the Fandom wiki. No source gives a probability anywhere in the chapter, so the three risk values are the operator’s settings. Engine logic: <code>benchmark/chapters/ch23.mjs</code>.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#alarm">2 · The alarm</a></li><li><a href="#arrows">3 · Every arrow</a></li><li><a href="#opinion">4 · Public opinion</a></li><li><a href="#endings">5 · Endings and flags</a></li><li><a href="#differs">6 · Open points</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="table"><table>
+<tr><th>Scene</th><th>Type</th><th>Chart nodes</th><th>What happens</th></tr>
+<tr><td class="n">M10p</td><td>event</td><td>ALONE IN FERNDALE … MARKUS EXPLAINS HIS PLAN</td><td>Prologue: the man berating an android, the plan in Jericho.</td></tr>
+<tr><td class="n">M10l</td><td>decision</td><td>STRATFORD TOWER, [FIND A WAY TO PASS SECURITY], TALK TO ANDROID RECEPTIONIST</td><td>Optional talk with the supervised receptionist, or straight to the supervisor.</td></tr>
+<tr><td class="n">M10d</td><td>event</td><td>ANALYZE SUPERVISOR’S DESK</td><td>The five clues as facts: SMART WATCH, WILSON, EMILY, WILSON, ELIZABETH, PARKING BADGE, HOME ADDRESS.</td></tr>
+<tr><td class="n">M10c</td><td>decision</td><td>CALL SUPERVISOR, POSE AS … , SUPERVISOR LEAVES</td><td>PARKING / SCHOOL / FIRE DEPARTMENT, each needing its clue. No effect.</td></tr>
+<tr><td class="n">M10r</td><td>event</td><td>TALK TO UNSUPERVISED ANDROID RECEPTIONIST … TAKE ELEVATOR</td><td>Convert the receptionist, pass security, elevator.</td></tr>
+<tr><td class="n">M10f, R23</td><td>event, media</td><td>AT FLOOR 47, READ “G.I. ANDROID”, READ “WOMAN IN TROUBLE”</td><td>Ambient talk; the counter magazine (two covers) and Channel 16’s TV. No opinion change.</td></tr>
+<tr><td class="n">M10g</td><td>event</td><td>RETRIEVE PACKAGE … SECURITY BLOCKS SERVER ROOM</td><td>Disguise, badge, cart, North let in, the guards at the door.</td></tr>
+<tr><td class="n">M10h</td><td>decision</td><td>HACK ROBOT / HACK DISPENSER, SECURITY DISTRACTED</td><td>No effect.</td></tr>
+<tr><td class="n">M10s</td><td>decision</td><td>FORGET TO LOCK THE DOOR / LOCK THE DOOR</td><td>Unlocked: the employee walks in (alarm).</td></tr>
+<tr><td class="n">M10e</td><td>decision</td><td>EMPLOYEE ENTERS, USE ALIBI / STALL / DRAW GUN, LEAVE EMPLOYEE TO BE FOUND</td><td>Only with the door unlocked. North −1 on every option.</td></tr>
+<tr><td class="n">M10k, M10t</td><td>events</td><td>NORTH CALLS CRADLE … CUT THE GLASS (×2), ON THE TOP FLOOR … REACH MAIN ACCESS CORRIDOR</td><td>The climb (no failure) and the top floor.</td></tr>
+<tr><td class="n">M10</td><td>decision</td><td>SECURITY BLOCKS THE WAY, RUSE / ATTACK</td><td>RUSE has the timing check (risk 0.2): in time INCAPACITATE SECURITY; too slow SECURITY SUSPECTS SOMETHING, ALERT CENTRAL SECURITY, NORTH ATTACKS, SIMON DAMAGED.</td></tr>
+<tr><td class="n">M10b</td><td>decision</td><td>DRAW GUN, SHOOT GUARD ON PHONE / SHOOT GUARD DRAWING WEAPON</td><td>Only after ASSAULT. Phone: Simon shot, no alarm. Weapon: central alerted.</td></tr>
+<tr><td class="n">M11</td><td>decision</td><td>IN THE BROADCAST ROOM … SHOOT OPERATOR / DON’T SHOOT OPERATOR</td><td>Spared: alarm.</td></tr>
+<tr><td class="n">M11b</td><td>event</td><td>DEAL WITH ANDROID OPERATORS, PREPARE TO BROADCAST</td><td>Face skin off; “Ready.” Jericho +1, North +1.</td></tr>
+<tr><td class="n">M12a–M12d, M12</td><td>decisions</td><td>BEGIN …, DEMAND … (4, 4, 3), END PEACEFULLY / END DETERMINEDLY</td><td>Spoken lines; then LEAVE BROADCAST ROOM or SWAT TEAM STORMS ROOM.</td></tr>
+<tr><td class="n">M13</td><td>decision</td><td>SIMON DAMAGED, LEAVE SIMON / TRY TO SAVE SIMON, FAIL / SIMON SAVED, SIMON IS KILLED</td><td>Only with the SWAT team. HELP has the quick-time check (risk 0.15).</td></tr>
+<tr><td class="n">M14, M14b</td><td>decisions</td><td>ON THE ROOF, SIMON CAN’T CONTINUE, LEAVE SIMON / EXECUTE SIMON</td><td>Only after Simon was saved. KILL leads to SHOOT / REFRAIN.</td></tr>
+<tr><td class="n">M14j</td><td>decision</td><td>RUN TO JUMP, REACH ROOF EDGE / GET SHOT, NORTH HELPS MARKUS, JUMP</td><td>One action; the timer (risk 0.05) only under SWAT fire.</td></tr>
+<tr><td class="n">M14m</td><td>event</td><td>MEDIA REACTS and the three endings</td><td>The news lines; public opinion; the ending.</td></tr>
+</table></div>
+
+<h2 id="alarm">2 · The alarm and the SWAT team</h2>
+<p>The SWAT team storms the broadcast room after the speech if <strong>any</strong> of these happened (wiki flowchart, “Leave Broadcast Room - if Incapacitate Security OR Shoot Guard on Phone AND Shoot Operator, Lock the Server Door also required”):</p>
+<ul><li>the server room door was left unlocked (the employee is left to be found);</li><li>central security was alerted (RUSE too slow, or ASSAULT and shooting the guard drawing his weapon);</li><li>the operator was spared.</li></ul>
+<p>Only the SWAT team hits Simon in the broadcast room, and only then do the Simon prompts play. A guard can also hit Simon in the corridor (RUSE too slow, or shooting the guard on the phone); with no SWAT team that Simon keeps going and jumps with the group. The old engine played the breach and Simon’s wound on every run.</p>
+
+<h2 id="arrows">3 · Every stat arrow (template; small = 1, large = 2)</h2>
+<div class="table"><table>
+<tr><th>Trigger</th><th>Jericho</th><th>North</th><th>Josh</th><th>Simon</th></tr>
+<tr><td>EMPLOYEE ENTERS (door unlocked), any option</td><td></td><td class="no">−1</td><td></td><td></td></tr>
+<tr><td>RUSE</td><td></td><td class="no">−1</td><td class="yes">+1</td><td></td></tr>
+<tr><td>RUSE in time</td><td class="yes">+1</td><td></td><td></td><td></td></tr>
+<tr><td>RUSE too slow</td><td class="no">−1</td><td></td><td></td><td class="no">−1</td></tr>
+<tr><td>ASSAULT</td><td class="yes">+1</td><td class="yes">+1</td><td class="no">−1</td><td></td></tr>
+<tr><td>Shoot guard on phone</td><td class="no">−1</td><td></td><td></td><td class="no">−1</td></tr>
+<tr><td>SHOOT operator</td><td></td><td class="yes">+1</td><td class="no">−1</td><td></td></tr>
+<tr><td>SPARE operator</td><td></td><td class="no">−1</td><td class="yes">+1</td><td></td></tr>
+<tr><td>“Ready.”</td><td class="yes">+1</td><td class="yes">+1</td><td></td><td></td></tr>
+<tr><td>SWAT storms the room</td><td class="no">−1</td><td></td><td></td><td></td></tr>
+<tr><td>FLEE</td><td class="no">−1</td><td></td><td></td><td></td></tr>
+<tr><td>Roof LEAVE</td><td></td><td class="no">−1</td><td class="yes">+1</td><td class="yes">+2</td></tr>
+<tr><td>Roof KILL &gt; SHOOT</td><td></td><td class="yes">+1</td><td class="no">−1</td><td></td></tr>
+</table></div>
+<p class="fine">No arrow on the phone ruses, the hacks, the speech lines, HELP (success or failure) or REFRAIN.</p>
+
+<h2 id="opinion">4 · Public opinion at MEDIA REACTS</h2>
+<div class="table"><table>
+<tr><th>Line</th><th>Condition</th><th>Change</th></tr>
+<tr><td>Casualty</td><td>Nobody killed</td><td class="yes">+2</td></tr>
+<tr><td>Casualty</td><td>The operator, a guard, or both killed</td><td class="no">−1</td></tr>
+<tr><td>Tone</td><td>END PEACEFULLY and nobody killed</td><td class="yes">+2</td></tr>
+<tr><td>Tone</td><td>END DETERMINEDLY, or anyone killed</td><td class="no">−2</td></tr>
+</table></div>
+<p>Net: +4 (no deaths, peaceful), 0 (no deaths, determined), −3 (any death). A path with no deaths always brings the SWAT team, because the operator must be spared.</p>
+
+<h2 id="endings">5 · Endings and the flags later chapters read</h2>
+<ul>
+<li><strong>THE GROUP ESCAPED</strong>: no SWAT team (so always a death: the operator).</li>
+<li><strong>THE GROUP ESCAPED BUT SIMON WAS LEFT BEHIND</strong>: SWAT, HELP saved him, then LEAVE or KILL &gt; REFRAIN. Sets <code>simonHidden</code>, which opens Public Enemy’s roof search.</li>
+<li><strong>THE GROUP ESCAPED BUT SIMON WAS DESTROYED</strong>: FLEE, a failed HELP, or KILL &gt; SHOOT. Sets <code>simon</code> false.</li>
+</ul>
+<p>Flags: <code>simonWounded</code>, <code>simonHidden</code>, <code>casualties</code>, <code>stratfordAlarm</code>, <code>stratfordSwat</code>, <code>stratfordDoorLocked</code>, <code>stratfordEmployee</code>, <code>stratfordGuards</code>, <code>stratfordCentralAlerted</code>, <code>stratfordOperatorShot</code>, <code>stratfordKilled</code>, <code>stratfordSpeech</code>, <code>stratfordNewsTone</code>, <code>stratfordSimonFate</code>, <code>stratfordMarkusShot</code>, <code>stratfordEnding</code>. Markus, North and Josh survive every path.</p>
+
+<h2 id="differs">6 · Open points to check in game</h2>
+<ul>
+<li>North −1 on DRAW GUN with the employee: the template applies it to the whole unlocked-door block; the wiki says Markus stunning him avoids it. Built as the template.</li>
+<li>The tone line’s “CALM”: built on the ending (END PEACEFULLY), as the wiki says, not on the opening.</li>
+<li>DETERMINED with no deaths: built as the template’s −2; the wiki says −1.</li>
+<li>A Simon wounded by a guard with no SWAT team: built as jumping with the group (template and wiki); PowerPyx says the roof prompt plays.</li>
+<li>ASSAULT without drawing (SECURITY SUSPECTS SOMETHING from the group bracket) and doing nothing at the desk are not offered separately.</li>
+<li>GET SHOT with no SWAT team: built as impossible.</li>
+<li>Option order in the broadcast room: HELP is listed before FLEE (the sources list FLEE first) to keep the shared regression paths; LEAVE before KILL on the roof follows the chart.</li>
+<li>Risks: RUSE timing 0.2, HELP 0.15, the roof timer 0.05; none is sourced.</li>
+</ul>
+</main>
+</body>
+</html>

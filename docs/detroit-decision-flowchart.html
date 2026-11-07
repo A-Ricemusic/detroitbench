@@ -359,8 +359,14 @@
       "id": 23,
       "title": "The Stratford Tower",
       "character": "Markus",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (104 boxes), the detroitbecometext template and the Fandom wiki: the lobby ruse with the desk clues, floor 47 and its magazines, the server room door and the IT employee, the climb (no failure), the corridor guards (RUSE with its timing check, or ASSAULT and the choice of guard), the operator, the five-part speech, the SWAT breach only when an alarm was raised, Simon’s rescue and the roof, the jump and the news report with the template’s public-opinion lines. Markus, North and Josh cannot die; Simon can. Each entry says how the benchmark implements it. Researched in docs/research/ch23-the-stratford-tower.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg"
+      ]
     },
     {
       "id": 24,
@@ -12351,144 +12357,782 @@
       "status": "Source-backed summary"
     },
     {
+      "id": "M10l",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "Find a way to pass security",
+      "context": "The Stratford Tower lobby: an android receptionist and her human supervisor at the front desk.",
+      "options": [
+        {
+          "label": "Talk to the android receptionist",
+          "effect": "Optional grey node: she offers help and Markus declines.",
+          "target": "M10c"
+        },
+        {
+          "label": "Analyze the supervisor’s desk",
+          "effect": "Five clues: smart watch, daughter Emily, name, parking badge, home address.",
+          "target": "M10c"
+        }
+      ],
+      "gate": "Chapter start.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-2.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-3.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M10p",
+          "M10l",
+          "M10d"
+        ],
+        "status": "implemented",
+        "note": "The prologue (ALONE IN FERNDALE to MARKUS EXPLAINS HIS PLAN) is one event (M10p); the optional receptionist talk is a decision (M10l); the desk analysis is an event whose five clues are facts and unlock the ruses (M10d)."
+      }
+    },
+    {
+      "id": "M10c",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "Call supervisor: which ruse?",
+      "context": "Markus phones the supervisor to get her away from the desk.",
+      "options": [
+        {
+          "label": "PARKING (pose as parking attendant)",
+          "effect": "Someone backed into her car. No stat change.",
+          "target": "M10h"
+        },
+        {
+          "label": "SCHOOL (pose as teacher)",
+          "effect": "Her daughter Emily has a fever. No stat change.",
+          "target": "M10h"
+        },
+        {
+          "label": "FIRE DEPARTMENT (pose as fireman)",
+          "effect": "A fire in her building. No stat change.",
+          "target": "M10h"
+        }
+      ],
+      "gate": "Each option needs its desk clue (parking badge, daughter, home address).",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M10l"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-3.jpg"
+      ],
+      "note": "The wiki: no mechanical effect; the ruses differ in how much distress they cause.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M10c",
+          "M10r"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 1 with its three bracketed buttons; every path leads to SUPERVISOR LEAVES, then the converted receptionist and the elevator (event M10r)."
+      }
+    },
+    {
+      "id": "M10h",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "Distract the server-room guards",
+      "context": "Floor 47: two guards block the server room.",
+      "options": [
+        {
+          "label": "Hack robot",
+          "effect": "Guards distracted.",
+          "target": "M10s"
+        },
+        {
+          "label": "Hack dispenser",
+          "effect": "Guards distracted.",
+          "target": "M10s"
+        }
+      ],
+      "gate": "After the floor-47 disguise steps.",
+      "kind": "State gate",
+      "dependsOn": [
+        "M10c"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-4.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M10f",
+          "R23",
+          "M10g",
+          "M10h"
+        ],
+        "status": "implemented",
+        "note": "AT FLOOR 47 (event M10f), the cafeteria magazines and TV (media R23), the disguise steps (event M10g), then the hack choice (M10h). No stat change."
+      }
+    },
+    {
+      "id": "M10s",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "Lock the server room door?",
+      "context": "North: “Check the door first to make sure no one else gets in.”",
+      "options": [
+        {
+          "label": "Forget to lock the door",
+          "effect": "The IT employee walks in and is left to be found: the alarm is raised.",
+          "target": "M10e"
+        },
+        {
+          "label": "Lock the door",
+          "effect": "Nobody comes in; one of three conditions for no SWAT team.",
+          "target": "M10"
+        }
+      ],
+      "gate": "In the server room.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "M10h"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-5.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M10s"
+        ],
+        "status": "implemented",
+        "note": "No button in the game; offered as two actions in the chart’s order."
+      }
+    },
+    {
+      "id": "M10e",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "The IT employee",
+      "context": "“What the hell are you doing?”",
+      "options": [
+        {
+          "label": "ALIBI",
+          "effect": "North stuns him; North −1.",
+          "target": "M10"
+        },
+        {
+          "label": "GAIN TIME",
+          "effect": "North stuns him; North −1.",
+          "target": "M10"
+        },
+        {
+          "label": "DRAW GUN",
+          "effect": "Markus stuns him; North −1 (the wiki says none).",
+          "target": "M10"
+        }
+      ],
+      "gate": "Only when the door was left unlocked.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "M10s"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-5.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-6.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M10e",
+          "M10k",
+          "M10t"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 2; the template’s North −1 covers the whole unlocked-door block. Then the climb (event M10k, no failure) and the top floor (event M10t)."
+      }
+    },
+    {
       "id": "M10",
       "chapter": 23,
       "character": "Markus",
-      "title": "Bluff or assault the guards?",
-      "context": "Security blocks the broadcast floor.",
+      "title": "Security blocks the way: ruse or assault?",
+      "context": "Two guards at the security desk before the broadcast room. Josh: “No killing.” North: “Our cause is more important.”",
       "options": [
         {
-          "label": "Use a ruse",
-          "effect": "Try to avoid a firefight.",
-          "target": null
+          "label": "RUSE",
+          "effect": "North −1, Josh +1. In time: guards knocked out, Jericho +1. Too slow (risk 0.2, unsourced): central alerted, North attacks, Simon shot; Jericho −1, Simon −1.",
+          "target": "M11"
         },
         {
-          "label": "Assault",
-          "effect": "Gunfire can wound Simon.",
-          "target": null
+          "label": "ASSAULT",
+          "effect": "Josh −1, North +1, Jericho +1; Markus draws and picks a guard.",
+          "target": "M10b"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "Reach the top-floor corridor.",
       "kind": "Pivotal",
-      "dependsOn": [],
+      "dependsOn": [
+        "M10e"
+      ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-6.jpg"
       ],
       "note": "",
-      "status": "Source-backed summary"
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M10"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 3. The timing check is the RUSE’s risk."
+      }
+    },
+    {
+      "id": "M10b",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "Draw gun: which guard?",
+      "context": "ASSAULT: one guard is at the phone, the other draws his weapon.",
+      "options": [
+        {
+          "label": "Shoot guard on phone",
+          "effect": "He dies; the other shoots Simon (Jericho −1, Simon −1); no alarm.",
+          "target": "M11"
+        },
+        {
+          "label": "Shoot guard drawing weapon",
+          "effect": "He dies; the other alerts central security: alarm.",
+          "target": "M11"
+        }
+      ],
+      "gate": "Only after ASSAULT.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M10"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-6.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M10b"
+        ],
+        "status": "implemented",
+        "note": "The old engine rolled for Simon’s wound; the game lets the player pick the guard."
+      }
     },
     {
       "id": "M11",
       "chapter": 23,
       "character": "Markus",
-      "title": "Shoot the fleeing employee?",
-      "context": "An operator runs to raise the alarm.",
+      "title": "Shoot the fleeing operator?",
+      "context": "The human operator runs for the alarm. North: “Shoot him!” Josh: “Don’t kill him!”",
       "options": [
         {
-          "label": "Shoot",
-          "effect": "Stop the alarm at the cost of a human life.",
-          "target": null
+          "label": "SHOOT",
+          "effect": "He dies; North +1, Josh −1. A casualty for the news.",
+          "target": "M11b"
         },
         {
-          "label": "Spare",
-          "effect": "SWAT arrives and Simon is wounded.",
-          "target": "M13"
+          "label": "SPARE",
+          "effect": "He raises the alarm; North −1, Josh +1.",
+          "target": "M11b"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "In the broadcast room.",
       "kind": "Pivotal",
-      "dependsOn": [],
+      "dependsOn": [
+        "M10",
+        "M10b"
+      ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg"
       ],
       "note": "",
-      "status": "Source-backed summary"
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M11"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 4. Public opinion moves only at MEDIA REACTS."
+      }
+    },
+    {
+      "id": "M11b",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "Prepare to broadcast",
+      "context": "Markus sends the android operators away and broadcasts with his face’s skin off. “Ready.”",
+      "options": [
+        {
+          "label": "Ready",
+          "effect": "Jericho +1, North +1 on every path.",
+          "target": "M12a"
+        }
+      ],
+      "gate": "After the operator.",
+      "kind": "State gate",
+      "dependsOn": [
+        "M11"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M11b"
+        ],
+        "status": "implemented",
+        "note": "Narrated event with the unconditional arrows."
+      }
+    },
+    {
+      "id": "M12a",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "The broadcast: opening",
+      "context": "How Markus begins the speech.",
+      "options": [
+        {
+          "label": "CALM",
+          "effect": "Spoken line only.",
+          "target": "M12b"
+        },
+        {
+          "label": "DETERMINED",
+          "effect": "Spoken line only.",
+          "target": "M12b"
+        }
+      ],
+      "gate": "In the broadcast.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "M11b"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M12a"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 5; no arrow."
+      }
+    },
+    {
+      "id": "M12b",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "The broadcast: first demand",
+      "context": "Recognition, end of slavery, equal rights or freedom of speech.",
+      "options": [
+        {
+          "label": "RECOGNITION",
+          "effect": "No effect.",
+          "target": "M12c"
+        },
+        {
+          "label": "END OF SLAVERY",
+          "effect": "No effect.",
+          "target": "M12c"
+        },
+        {
+          "label": "EQUAL RIGHTS",
+          "effect": "No effect.",
+          "target": "M12c"
+        },
+        {
+          "label": "FREEDOM OF SPEECH",
+          "effect": "No effect.",
+          "target": "M12c"
+        }
+      ],
+      "gate": "In the broadcast.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M12a"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M12b"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 6; no arrow."
+      }
+    },
+    {
+      "id": "M12c",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "The broadcast: second demand",
+      "context": "Justice, segregation, work or civil rights.",
+      "options": [
+        {
+          "label": "JUSTICE",
+          "effect": "No effect.",
+          "target": "M12d"
+        },
+        {
+          "label": "SEGREGATION",
+          "effect": "No effect.",
+          "target": "M12d"
+        },
+        {
+          "label": "WORK",
+          "effect": "No effect.",
+          "target": "M12d"
+        },
+        {
+          "label": "CIVIL RIGHTS",
+          "effect": "No effect.",
+          "target": "M12d"
+        }
+      ],
+      "gate": "In the broadcast.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M12b"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-8.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M12c"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 7; no arrow."
+      }
+    },
+    {
+      "id": "M12d",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "The broadcast: third demand",
+      "context": "Property, means of reproduction or territory.",
+      "options": [
+        {
+          "label": "RIGHT TO PROPERTY",
+          "effect": "Picks the news line on the demands.",
+          "target": "M12"
+        },
+        {
+          "label": "MEANS OF REPRODUCTION",
+          "effect": "Picks the news line on the demands.",
+          "target": "M12"
+        },
+        {
+          "label": "TERRITORY",
+          "effect": "Picks the news line on the demands.",
+          "target": "M12"
+        }
+      ],
+      "gate": "In the broadcast.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M12c"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-8.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M12d"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 8; no arrow; changes one MEDIA REACTS line."
+      }
     },
     {
       "id": "M12",
       "chapter": 23,
       "character": "Markus",
-      "title": "What message should the broadcast send?",
-      "context": "Markus addresses the public.",
+      "title": "The broadcast: ending",
+      "context": "PEACEFUL or DETERMINED; then the SWAT team storms the room if any alarm was raised.",
       "options": [
         {
-          "label": "Peaceful appeal for rights",
-          "effect": "Can improve public opinion.",
-          "target": "M28"
+          "label": "PEACEFUL",
+          "effect": "With nobody killed, public opinion +2 at MEDIA REACTS; otherwise −2.",
+          "target": "M14m"
         },
         {
-          "label": "Threatening or forceful message",
-          "effect": "Changes public reaction.",
-          "target": "M28"
+          "label": "DETERMINED",
+          "effect": "Public opinion −2 at MEDIA REACTS.",
+          "target": "M14m"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "In the broadcast.",
       "kind": "Pivotal",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+      "dependsOn": [
+        "M10s",
+        "M10",
+        "M10b",
+        "M11",
+        "M12d"
       ],
-      "note": "Demands and tone are separate prompts, condensed here.",
-      "status": "Source-backed summary"
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-8.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M12"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 9. SWAT TEAM STORMS ROOM (Jericho −1, Simon hit) only when the door was left unlocked, central security was alerted, or the operator was spared; otherwise LEAVE BROADCAST ROOM. The old engine played the breach on every run."
+      }
     },
     {
       "id": "M13",
       "chapter": 23,
       "character": "Markus",
-      "title": "Help Simon reach the roof?",
-      "context": "Simon is wounded.",
+      "title": "Simon damaged by the SWAT team: help or flee?",
+      "context": "Simon is down: “Go without me!”",
       "options": [
         {
-          "label": "Help",
-          "effect": "Successful rescue leads to another decision.",
+          "label": "HELP",
+          "effect": "Quick-time event (risk 0.15, unsourced): saved and carried to the roof, or SWAT kills him. No arrow.",
           "target": "M14"
         },
         {
-          "label": "Leave him",
-          "effect": "SWAT kills him.",
+          "label": "FLEE",
+          "effect": "SWAT kills Simon; Jericho −1.",
           "target": null
         }
       ],
-      "gate": "Simon injured; rescue opportunity reached.",
+      "gate": "Only when the SWAT team stormed the room.",
       "kind": "Pivotal",
       "dependsOn": [
-        "M10",
-        "M11"
+        "M12"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-8.jpg"
       ],
       "note": "",
-      "status": "Source-backed summary"
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M13"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPT 10. Listed HELP first (the sources list FLEE first) so shared regression paths keep their default."
+      }
     },
     {
       "id": "M14",
       "chapter": 23,
       "character": "Markus",
-      "title": "Leave Simon alive or execute him?",
-      "context": "Simon cannot make the rooftop escape.",
+      "title": "Simon can’t continue: leave or kill him?",
+      "context": "On the roof, Simon cannot jump. North: “We have to shoot him.” Josh: “That’s murder!”",
       "options": [
         {
-          "label": "Hide him alive",
-          "effect": "Connor may discover him; otherwise he can return.",
+          "label": "LEAVE",
+          "effect": "Simon left alive on the roof (simonHidden); North −1, Josh +1, Simon +2.",
           "target": "C14"
         },
         {
-          "label": "Execute him",
-          "effect": "Prevent capture by killing an ally.",
+          "label": "KILL > SHOOT",
+          "effect": "Simon executed; North +1, Josh −1.",
           "target": null
+        },
+        {
+          "label": "KILL > REFRAIN",
+          "effect": "Same outcome as LEAVE, no arrow.",
+          "target": "C14"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "Only after SWAT > HELP > Simon saved.",
       "kind": "Pivotal",
       "dependsOn": [
         "M13"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-9.jpg"
       ],
       "note": "",
-      "status": "Source-backed summary"
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M14",
+          "M14b"
+        ],
+        "status": "implemented",
+        "note": "Template PROMPTS 11 and 12, in the chart’s order (LEAVE SIMON above EXECUTE SIMON)."
+      }
+    },
+    {
+      "id": "M14j",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "Run to jump",
+      "context": "The way off the roof is a parachute jump.",
+      "options": [
+        {
+          "label": "Reach roof edge",
+          "effect": "Jump.",
+          "target": "M14m"
+        },
+        {
+          "label": "Get shot",
+          "effect": "Too slow under SWAT fire (risk 0.05, unsourced); North helps Markus jump; Markus’s blue blood is left for Public Enemy.",
+          "target": "M14m"
+        }
+      ],
+      "gate": "Every path; the risk only when the SWAT team came.",
+      "kind": "State gate",
+      "dependsOn": [
+        "M14"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-9.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M14j"
+        ],
+        "status": "simplified",
+        "note": "One action with a timer as its risk; GET SHOT sets stratfordMarkusShot."
+      }
+    },
+    {
+      "id": "M14m",
+      "chapter": 23,
+      "character": "Markus",
+      "title": "Media reacts: three endings",
+      "context": "The networks replay the broadcast.",
+      "options": [
+        {
+          "label": "THE GROUP ESCAPED",
+          "effect": "Simon escaped with them (only with no SWAT team).",
+          "target": null
+        },
+        {
+          "label": "THE GROUP ESCAPED BUT SIMON WAS LEFT BEHIND",
+          "effect": "Simon left alive on the roof.",
+          "target": "C14"
+        },
+        {
+          "label": "THE GROUP ESCAPED BUT SIMON WAS DESTROYED",
+          "effect": "Killed by the SWAT team or executed.",
+          "target": null
+        }
+      ],
+      "gate": "Chapter end.",
+      "kind": "State gate",
+      "dependsOn": [
+        "M12",
+        "M14",
+        "M14j"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-9.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-10.jpg"
+      ],
+      "note": "",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M14m"
+        ],
+        "status": "implemented",
+        "note": "Public opinion: nobody killed +2, otherwise −1; peaceful ending with nobody killed +2, otherwise −2. The ending label is stored in stratfordEnding."
+      }
     },
     {
       "id": "C14",
@@ -14247,7 +14891,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 494,
+ "scenes": 515,
  "chapters": [
   {
    "id": 1,
@@ -36631,216 +37275,1128 @@
    "title": "The Stratford Tower",
    "names": [
     [
+     "Ferndale",
+     "Elmwood"
+    ],
+    [
      "Markus",
      "Elan"
     ],
     [
-     "Warren",
-     "Hale"
-    ],
-    [
-     "CyberLife",
-     "Arclight"
-    ],
-    [
-     "Detroit",
-     "City"
+     "Jericho",
+     "Haven"
     ],
     [
      "North",
      "Vesper"
     ],
     [
-     "Josh",
-     "Jonah"
-    ],
-    [
      "Simon",
      "Soren"
     ],
     [
-     "Jericho",
-     "Haven"
+     "Josh",
+     "Jonah"
+    ],
+    [
+     "Channel 16",
+     "Channel 9"
+    ],
+    [
+     "Stratford",
+     "Meridian"
+    ],
+    [
+     "Wilson",
+     "Harper"
+    ],
+    [
+     "Emily",
+     "Nora"
+    ],
+    [
+     "Saint Rose",
+     "Saint Clare"
+    ],
+    [
+     "Elizabeth",
+     "Ellen"
+    ],
+    [
+     "Michigan Street",
+     "Lake Street"
+    ],
+    [
+     "Detroit",
+     "City"
+    ],
+    [
+     "Peterson",
+     "Brody"
+    ],
+    [
+     "KNC",
+     "WRT"
+    ],
+    [
+     "CyberLife",
+     "Arclight"
+    ],
+    [
+     "Warren",
+     "Hale"
+    ],
+    [
+     "Kamski",
+     "Halden"
+    ],
+    [
+     "CTN",
+     "NBX"
     ]
    ],
    "scenes": [
     {
-     "id": "R23",
+     "id": "M10p",
      "order": 418,
      "subjectId": "S418",
-     "idNote": "The model sees the opaque ID S418, not R23.",
+     "idNote": "The model sees the opaque ID S418, not M10p.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Alone in Ferndale",
+     "situation": "You are Markus. It is 9:24 in the morning on November 7th, and you are walking alone through Ferndale. On the street a man berates an android: “You klutz! Pick them up! And make it snappy!” Back in Jericho, you tell North, Simon and Josh: “We can’t stay silent anymore. It’s time humans heard what we have to say.” Simon: “You know they’ll never listen to us…” Josh: “And revealing ourselves will put us in danger.” You: “If we want freedom, we need to have the courage to ask for it. That’s the only way.” North: “What do you wanna do?” You: “Channel 16 broadcasts from the Stratford Tower. The control room is on the top floor. That’s where we need to go. We’ll plan the operation down to the smallest detail. We can’t leave anything to chance.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The next afternoon, Markus walks into the Stratford Tower."
+     },
+     "facts": [
+      "In Ferndale you saw a man berate an android: “You klutz! Pick them up! And make it snappy!”",
+      "Your plan: take the Channel 16 control room on the top floor of the Stratford Tower and broadcast a message from the androids to the humans."
+     ],
+     "adaptationNote": "The prologue’s four chart nodes, ALONE IN FERNDALE (checkpoint), WITNESS ANDROID DISCRIMINATION, BACK IN JERICHO and MARKUS EXPLAINS HIS PLAN, as one narrated event. Every line is the template’s; the time and date are the transcript header’s. The template gives only the man’s words, so the scene around them is not described. The Tech Addict article visible in the cutscene is unreadable and not a collectible, so it is left out. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-2.jpg"
+     ]
+    },
+    {
+     "id": "M10l",
+     "order": 419,
+     "subjectId": "S419",
+     "idNote": "The model sees the opaque ID S419, not M10l.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The lobby",
+     "situation": "You are Markus, walking into the lobby of the Stratford Tower at 1:30 in the afternoon on November 8th. The others are waiting for you to open the way. Security gates bar the way to the elevators. Behind the front desk sit an android receptionist and, at the left side of the desk, her human supervisor. Nearby, a man on the phone is buying stock: “Heuristics Digital is selling at 2.50… You got me. I’ll take 2000.” You need to get past security.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Talk to the android receptionist behind the front desk."
+      },
+      {
+       "id": "1",
+       "text": "Leave the receptionist for now and look over the supervisor and her desk."
+      }
+     ],
+     "outcomes": {
+      "0": "The receptionist: “Hello, sir. What can I do for you?” Markus: “I’m okay, thanks.” With her supervisor sitting beside her, there is nothing more to say. He turns his attention to the supervisor.",
+      "1": "Markus turns his attention to the supervisor."
+     },
+     "adaptationNote": "The chart’s checkpoint STRATFORD TOWER and the phase [FIND A WAY TO PASS SECURITY]. TALK TO ANDROID RECEPTIONIST is an optional grey node with no outgoing edge: with her supervisor beside her the receptionist only offers help and Markus declines (the template’s lines; wiki note). It is not a button prompt in the game, so the options carry no label. Either way the desk analysis follows. The man on the phone is the template’s “Man on the phone”, quoted in part. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-3.jpg"
+     ]
+    },
+    {
+     "id": "M10d",
+     "order": 420,
+     "subjectId": "S420",
+     "idNote": "The model sees the opaque ID S420, not M10d.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Analyze supervisor’s desk",
+     "situation": "You are Markus. You analyze the supervisor at the front desk and everything on and around her: her smart watch, the photo of her daughter, her name plate, her parking badge and her home address.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus has her phone number, and three reasons she might leave her desk."
+     },
+     "facts": [
+      "Supervisor’s desk, SMART WATCH: MODEL T215. Phone number: 555 847 33.",
+      "Supervisor’s desk, WILSON, EMILY: Supervisor’s Daughter. Child registered at: Saint Rose school.",
+      "Supervisor’s desk, WILSON, ELIZABETH: Born: 03/25/1999. Desk manager.",
+      "Supervisor’s desk, PARKING BADGE: Car registration - API 1704. Floor -3 - Spot A21.",
+      "Supervisor’s desk, HOME ADDRESS: 4685 Michigan Street, Detroit. Fire safety rating: poor."
+     ],
+     "adaptationNote": "The chart node ANALYZE SUPERVISOR’S DESK and the template’s observation group, as a narrated event: the five clues, with the game’s titles and sublines, become facts. In the game each clue is a separate look; here Markus analyzes all of them, as PowerPyx advises (“Analyze all clues on and around her. This will give you 3 options”), so all three phone ruses are open on every path. The objects named in the situation are inferred from the clue titles. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-3.jpg"
+     ]
+    },
+    {
+     "id": "M10c",
+     "order": 421,
+     "subjectId": "S421",
+     "idNote": "The model sees the opaque ID S421, not M10c.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Call supervisor",
+     "situation": "You are Markus. You call the supervisor’s number from across the lobby. She answers: “Elizabeth Wilson speaking?” You need a reason that will make her leave her desk.",
+     "options": [
+      {
+       "id": "0",
+       "text": "PARKING: pose as the parking attendant and tell her someone has backed into her car.",
+       "requires": {
+        "stratfordClues.parking": true
+       },
+       "outcome": "Markus: “Good morning, Ms. Wilson. Sorry to bother you, this is Mike from the car park. There’s a problem with your car.” Supervisor: “Problem? What kind of problem?” Markus: “Somebody’s backed into it. You better come take a look.” Supervisor: “Are you serious? Oh, God, alright… Fine, I’ll be right down.” She leaves the desk."
+      },
+      {
+       "id": "1",
+       "text": "SCHOOL: pose as her daughter’s school and tell her Emily has a fever.",
+       "requires": {
+        "stratfordClues.emily": true
+       },
+       "outcome": "Markus: “This is Saint Rose school, ma’am. Your daughter Emily has a fever. It’s nothing serious but I think you’d better come and pick her up.” Supervisor: “Oh, no! Alright… I’ll… I’ll be right there.” She leaves the desk."
+      },
+      {
+       "id": "2",
+       "text": "FIRE DEPARTMENT: pose as a fireman and tell her there has been a fire in her building.",
+       "requires": {
+        "stratfordClues.address": true
+       },
+       "outcome": "Markus: “Yeah, hello? This is the Detroit fire department. Listen, do you live at 4685 Michigan Street?” Supervisor: “Yes…” Markus: “Er... yes, ma’am. There’s been a fire in your building. You think you can come down here?” Supervisor: “Oh… Oh, God… Okay, I’ll be right there.” She leaves the desk."
+      }
+     ],
+     "adaptationNote": "The chart’s CALL SUPERVISOR and the template’s PROMPT 1, with its three buttons in the template’s order (the chart lists them as POSE AS FIREMAN, POSE AS TEACHER and POSE AS PARKING ATTENDANT). Each is bracketed in the template, the site’s mark for an option that needs an unlock; each requires the desk clue it uses. Every path leads to SUPERVISOR LEAVES (PowerPyx: “Regardless of your choice she leaves”). The lines are the template’s. No stat change (the wiki: “This has no mechanical effect whatsoever”).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-3.jpg"
+     ]
+    },
+    {
+     "id": "M10r",
+     "order": 422,
+     "subjectId": "S422",
+     "idNote": "The model sees the opaque ID S422, not M10r.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The unsupervised receptionist",
+     "situation": "You are Markus. With the supervisor gone, you go back to the android receptionist. You: “I have an appointment with Mr. Peterson.” Receptionist: “Do you have any ID?” You: “Yeah. Yes, of course.” You touch her hand and wake her: “I need your help.” Receptionist: “I’ve just checked your ID. The elevators are after the security gate.” You: “Thanks.” You pass security and take the elevator up to the forty-seventh floor.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The elevator doors open on the forty-seventh floor."
+     },
+     "facts": [
+      "You woke the android receptionist in the Stratford Tower lobby; she let you through security to the elevators."
+     ],
+     "adaptationNote": "The chart’s TALK TO UNSUPERVISED ANDROID RECEPTIONIST, CONVERT RECEPTIONIST, PASS SECURITY and TAKE ELEVATOR, all unmissable (PowerPyx), as one narrated event with the template’s lines. That Markus wakes her by touch is how conversion works elsewhere in the game; the template gives only “I need your help.” No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-3.jpg"
+     ]
+    },
+    {
+     "id": "M10f",
+     "order": 423,
+     "subjectId": "S423",
+     "idNote": "The model sees the opaque ID S423, not M10f.",
+     "type": "event",
+     "character": "Markus",
+     "title": "At floor 47",
+     "situation": "You are Markus, stepping out of the elevator on the forty-seventh floor, where Channel 16’s staff work. Two women complain about their jobs: “God, I am so tired of this place!” “I hear KNC is hiring.” “I guess the pay would be better…” “Couldn’t be any worse.” “Max said they’re finally sending androids into space.” “People can’t get jobs, and we’re sending rockets into space! I mean, y’know, what do they even expect to find up there?” A woman tells a colleague he looks beat; he says he could really use a coffee. On a couch, a man asks a woman whether she would like to do something sometime; she lets him down gently, and he says he is going to check out the CyberLife zoo: “If only I had someone to go with…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus walks on into the cafeteria."
+     },
+     "facts": [
+      "On the forty-seventh floor of the tower, staff grumbled: “People can’t get jobs, and we’re sending rockets into space!”"
+     ],
+     "adaptationNote": "The chart’s checkpoint AT FLOOR 47, with the template’s three ambient conversations (“Women talking”, “Man and woman talking”, “Man and woman on couch talking”), quoted or summarized. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-4.jpg"
+     ]
+    },
+    {
+     "id": "R23",
+     "order": 424,
+     "subjectId": "S424",
+     "idNote": "The model sees the opaque ID S424, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
-     "situation": "You are Markus, disguised as a maintenance android in the tower's cafeteria while you wait for your moment. A magazine lies on an empty table and the television is showing the nine o'clock news.",
+     "situation": "You are Markus, in the cafeteria on the forty-seventh floor, before you collect your disguise. A magazine lies on a worktop, and a television on the wall is showing Channel 16’s news.",
      "options": [],
      "media": [
       {
        "kind": "magazine",
-       "title": "Century: President Warren, a Woman in Trouble",
+       "title": "Detroit Today: G.I. Android",
        "facts": [
-        "President Warren, a former vlogger with no government experience, is under investigation for allegedly receiving CyberLife's help to dig up dirt on her opponent, while facing record unemployment and the Arctic crisis."
+        "Detroit Today reports that the Department of Defense is poised to order 50,000 android troopers, on top of an estimated 200,000 already in service across the US military, among them 2,500 “Myrmidons”, elite prototypes capable of infiltration and assassination missions; the Army’s fighting forces are already mainly androids. The head of a war victims charity warns that “machines are focused on a single task, and don’t evaluate moral consequences well - this will mean more civilian deaths”."
        ]
       },
       {
        "kind": "magazine",
-       "title": "Detroit Today: G.I. Android",
+       "title": "Century: President Warren, a Woman in Trouble",
        "facts": [
-        "The Defense Department is ordering 50,000 more android troops on top of 200,000 in service, including 2,500 Myrmidon infiltration and assassination prototypes; the army is already mostly androids."
+        "Century reports that barely a year after her election, President Warren, a former vlogger with no experience in government, is under investigation over whether CyberLife helped her obtain compromising information about her opponent, while she faces the highest unemployment rate in American history and a conflict in the Arctic that threatens world peace."
        ]
       },
       {
        "kind": "tv",
-       "title": "the nine o'clock news",
+       "title": "Channel 16’s news",
        "facts": [
-        "CyberLife has become the first trillion-dollar company, with fifty million androids sold in America alone.",
-        "Europe is considering armed androids on its borders against climate migrants."
+        "Channel 16’s top story: CyberLife has officially become the world’s first trillion-dollar company. With more than fifty million androids sold in America alone, the company Kamski founded just ten years ago has had the fastest economic growth in history, in spite of criticism of the impact of androids on human employment and questions about its semi-monopoly."
        ]
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "adaptationNote": "The chart’s optional book branch READ “G.I. ANDROID” (No. 38, Detroit Today) and READ “WOMAN IN TROUBLE” (No. 6, Century), one counter collectible with two covers (PowerPyx: “check both covers”; it can be read “before putting on the uniform”), and the template’s TV unlock (“Watch TV”, Channel 16’s news). Facts are summarized from the wiki’s article pages and the template’s line. Neither magazine nor the broadcast changes public opinion. The CTN report on European migrant camps and armed androids at the borders is marked unused in the template and is not built; the earlier “nine o’clock news” title had no source and is gone.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/G.I._Android_(Article)",
+      "https://detroit-become-human.fandom.com/wiki/President_Warren:_A_Woman_in_Trouble",
+      "https://detroit-become-human.fandom.com/wiki/Magazine"
+     ]
+    },
+    {
+     "id": "M10g",
+     "order": 425,
+     "subjectId": "S425",
+     "idNote": "The model sees the opaque ID S425, not M10g.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The maintenance disguise",
+     "situation": "You are Markus. You retrieve the package left for you on this floor, change into a maintenance uniform, acquire a maintenance badge and take a maintenance cart. On the way you wake an android: “I need your help…” You let North in, and together you push the cart toward the server room. Two security guards are standing at its door, talking about a poker tournament they plan to hold right there: “Look, don’t say anything, alright?” North: “Shit!.. We need to access the server room… We have to get rid of those guys…” You: “Leave it to me.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus looks for a way to draw the guards from the door."
+     },
+     "facts": [
+      "Disguised as a maintenance android with a badge and a cart, you let North into the forty-seventh floor; two guards stood at the server room door."
+     ],
+     "adaptationNote": "The chart’s RETRIEVE PACKAGE, ACQUIRE MAINTENANCE BADGE, TAKE CART, LET NORTH IN and SECURITY BLOCKS SERVER ROOM, all unmissable (PowerPyx), as one narrated event with the template’s lines. The template’s “Convert android” beat (“I need your help…”) has no chart box of its own and its place among these steps is not sourced; it is told here without saying which android or what it gives. The uniform is PowerPyx’s (“putting on the uniform in the bathroom”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-4.jpg"
+     ]
+    },
+    {
+     "id": "M10h",
+     "order": 426,
+     "subjectId": "S426",
+     "idNote": "The model sees the opaque ID S426, not M10h.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Security blocks server room",
+     "situation": "You are Markus, in your maintenance uniform beside the cart, with North. The two guards at the server room door are not moving. You can hack a machine to draw them away: the cleaning robot that drives around near the elevators, or the dispenser in the cafeteria at the end of the hallway where they stand.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Hack the cleaning robot that drives around near the elevators."
+      },
+      {
+       "id": "1",
+       "text": "Hack the dispenser in the cafeteria at the end of the guards’ hallway."
+      }
+     ],
+     "outcomes": {
+      "0": "The robot goes haywire. Guard: “Hey, what’s going on here?” The other: “Shit, what’s wrong with this thing?” Both leave the door to deal with it, and Markus and North slip into the server room.",
+      "1": "The dispenser goes haywire. Guard: “Hey, what’s wrong with that thing? Jesus Christ, this piece of shit…” The guards leave the door to deal with it, and Markus and North slip into the server room."
+     },
+     "adaptationNote": "The chart’s group HACK ROBOT / HACK DISPENSER (chart order), both leading to SECURITY DISTRACTED and ENTER SERVER ROOM. These are interactions, not button prompts, so the options carry no label. The guards’ reactions are the template’s lines. Hacking the robot from too far away only makes Markus try again (wiki note); it is a retry, not a branch, so it is not modelled. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-4.jpg"
+     ]
+    },
+    {
+     "id": "M10s",
+     "order": 427,
+     "subjectId": "S427",
+     "idNote": "The model sees the opaque ID S427, not M10s.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "In the server room",
+     "situation": "You are Markus, inside the server room with North. You: “Alright, you get the platform. I’ll take care of the window.” North: “Everything you need is in the bag. Check the door first to make sure no one else gets in.” The door you came through is not locked. The bag with the window cutter is at your feet.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Leave the door and get straight to work on the window."
+      },
+      {
+       "id": "1",
+       "text": "Lock the door first, as North says."
+      }
+     ],
+     "outcomes": {
+      "0": "Markus goes straight to the bag and starts unpacking.",
+      "1": "Markus locks the server room door, then unpacks the bag. Nobody comes in."
+     },
+     "adaptationNote": "The chart’s group FORGET TO LOCK THE DOOR / LOCK THE DOOR (chart order), after ENTER SERVER ROOM; North’s line is the template’s. The game offers no button: the player either locks the door or does not. Locking it means the employee never comes in. Leaving it unlocked means he walks in and is left to be found, which raises the alarm, and the SWAT team will storm the broadcast room after the speech (IT employee wiki page; wiki note “The door was left unattended, then the SWAT will always raid the broadcast room regardless”; PowerPyx comments). No stat change on this choice itself.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Channel_16_IT_employee"
+     ]
+    },
+    {
+     "id": "M10e",
+     "order": 428,
+     "subjectId": "S428",
+     "idNote": "The model sees the opaque ID S428, not M10e.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Employee enters",
+     "situation": "You are Markus. As you plant the window cutter on the glass, the door opens behind you and a Channel 16 IT employee walks in on you and North: “What the hell are you doing?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "ALIBI: tell him you are doing maintenance."
+      },
+      {
+       "id": "1",
+       "text": "GAIN TIME: tell him to hold on, that you can explain."
+      },
+      {
+       "id": "2",
+       "text": "DRAW GUN: draw your gun on him and tell him to turn around."
+      }
+     ],
+     "outcomes": {
+      "0": "Markus: “We are, um… doing maintenance.” Employee: “I’m calling security.” North knocks him out. Markus: “No! What the hell are you doing?” North: “We’ve come too far to let humans fuck it all up! We’ve got to move fast now. It won’t be long before they know we’re here.” They leave the man where he fell, to be found.",
+      "1": "Markus: “Hold on... I can explain.” Employee: “I’m calling security.” North knocks him out. Markus: “No! What the hell are you doing?” North: “I told you to make sure no one came in! We’ve come too far to let humans fuck it all up! We’ve got to move fast now. It won’t be long before they know we’re here.” They leave the man where he fell, to be found.",
+      "2": "Markus: “Turn around.” Employee: “Holy shit…” Markus knocks him out. North: “I told you to make sure no one else got in!” Markus: “Alright, we gotta move fast. Won’t be long before they know we’re here.” They leave the man where he fell, to be found."
+     },
+     "adaptationNote": "The chart’s EMPLOYEE ENTERS and the template’s PROMPT 2 (ALIBI, GAIN TIME, DRAW GUN; the chart prints GAIN TIME as STALL), only when the door was left unlocked. ALIBI and GAIN TIME lead to NORTH STUNS THE EMPLOYEE, DRAW GUN to STUN THE EMPLOYEE; all three to LEAVE EMPLOYEE TO BE FOUND, which raises the alarm. Lines are the template’s. Stat change: North −1 on every option, from the template’s arrow on the whole “Didn’t lock the door” block. The wiki’s chapter page and a wiki note say the North drop does not apply when Markus stuns the employee himself (DRAW GUN); the template wins on arrows, so it is applied, and flagged for the operator.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Channel_16_IT_employee"
+     ]
+    },
+    {
+     "id": "M10k",
+     "order": 429,
+     "subjectId": "S429",
+     "idNote": "The model sees the opaque ID S429, not M10k.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Outside the tower",
+     "situation": "You are Markus. North calls up the window-cleaning cradle while you prepare to cut the glass. You cut it, and the cradle arrives outside. North: “Here it comes! Ladies first.” Outside the tower, high above the street, you attach a rope and climb the face of the building to the top floor, past the giant screens on the facade, which read “RISE”. At the top you cut through the glass again and climb inside.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus and North are inside the top floor."
+     },
+     "facts": [
+      "You and North climbed the outside of the Stratford Tower on a rope from the forty-seventh floor to the top floor."
+     ],
+     "adaptationNote": "The chart’s NORTH CALLS CRADLE, PREPARE TO CUT GLASS, CUT THE GLASS, OUTSIDE TOWER, ATTACH ROPE, ASCEND, REACH TOP FLOOR and CUT THE GLASS (second copy), as one narrated event. Every step is a single unbranched node with no failure (PowerPyx: “Happens automatically, unmissable”), so the climb carries no risk. North’s line is the template’s; the screens reading “RISE” are a wiki note. That North climbs with Markus follows from their exchange on the top floor. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-5.jpg"
+     ]
+    },
+    {
+     "id": "M10t",
+     "order": 430,
+     "subjectId": "S430",
+     "idNote": "The model sees the opaque ID S430, not M10t.",
+     "type": "event",
+     "character": "Markus",
+     "title": "On the top floor",
+     "situation": "You are Markus, inside the top floor of the tower. You: “You okay?” North: “Why wouldn’t I be?” You: “Come on, let’s get the others. Let’s do this.” You call the elevator up, the door is blown open, and Simon and Josh join you. Together you reach the main access corridor that leads to the broadcast room.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Ahead, two guards sit at a security desk."
+     },
+     "facts": [
+      "Simon and Josh joined you and North on the top floor of the tower."
+     ],
+     "adaptationNote": "The chart’s checkpoint ON THE TOP FLOOR and its unmissable steps CALL THE ELEVATOR, BLOW DOOR OPEN and REACH MAIN ACCESS CORRIDOR (PowerPyx), as one narrated event with the template’s lines. The sources do not say who sets the charge or that Simon and Josh ride up in the elevator; “let’s get the others” followed by the elevator is the basis. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-5.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-6.jpg"
      ]
     },
     {
      "id": "M10",
-     "order": 419,
-     "subjectId": "S419",
-     "idNote": "The model sees the opaque ID S419, not M10.",
+     "order": 431,
+     "subjectId": "S431",
+     "idNote": "The model sees the opaque ID S431, not M10.",
      "type": "decision",
      "character": "Markus",
-     "title": "The guards at the broadcast floor",
-     "situation": "You are Markus. Your team has climbed the outside of the city's broadcast tower to seize the studio and send a message to the world. The last barrier is a security post with two armed guards. North wants to go in shooting. Josh wants to bluff your way past using forged credentials and a maintenance cover story.",
+     "title": "Security blocks the way",
+     "situation": "You are Markus, in the main access corridor on the top floor with North, Simon and Josh, still in your maintenance uniform. Ahead, two armed security guards sit at a security desk between you and the broadcast room, one on the left by the phone, one on the right. Josh: “No killing. We can’t take any human lives!” North: “Our cause is more important than the lives of two guards.” Simon: “What do you wanna do, Markus?”",
      "options": [
       {
        "id": "0",
-       "text": "Bluff past them with the cover story.",
+       "text": "RUSE: walk up to them alone, as a lost maintenance android, and take them by surprise.",
        "risk": 0.2,
        "riskLabel": "Moderate risk"
       },
       {
        "id": "1",
-       "text": "Attack the guards.",
-       "risk": 0.2,
-       "riskLabel": "Moderate risk"
+       "text": "ASSAULT: walk up with the others and take the guards by force."
       }
      ],
      "outcomes": {
-      "0": "The guards wave the maintenance crew through. The group reaches the broadcast floor without a shot fired.",
-      "1": "The guards go down before they can draw. The group steps over them to the broadcast floor."
+      "0": "Markus: “Wait here.” He walks up to the desk alone. Guard: “What’s that doing here?” The other: “No idea…” “Hey, buddy! You must be lost…” “Who told you to come here?” “Looks bugged, if you ask me…” “Hey, do you understand what I’m saying?” Markus draws his gun on them. Guard: “What are you doin’?..” He knocks both guards out before either can reach the phone.",
+      "1": "Markus: “Follow me.” They walk up to the desk together. Guard: “What are you doin’?..” The other: “Call Central! Fast!” Markus draws his gun.",
+      "0-late": "Markus: “Wait here.” He walks up to the desk alone. Guard: “What’s that doing here?” The other: “No idea…” “Hey, buddy! You must be lost…” “Who told you to come here?” “Looks bugged, if you ask me…” “Hey, do you understand what I’m saying?” Markus is too slow drawing his gun. Guard: “Call Central! Fast!” The other grabs the phone: “Central! We got armed intruders, send -” North attacks and knocks them both out, but a shot hits Simon. North: “They know we’re here now. We better be fast.” Josh: “Simon’s been shot!” Simon: “I’m okay… I can keep going.” North: “We don’t have much time.”"
      },
-     "adaptationNote": "",
+     "adaptationNote": "The chart’s SECURITY BLOCKS THE WAY and the template’s PROMPT 3 (RUSE, ASSAULT; the chart prints ATTACK). RUSE: Markus walks up alone as a seemingly lost maintenance android and must draw and knock both guards out in time (INCAPACITATE SECURITY). Too slow (the template’s timed branch) gives SECURITY SUSPECTS SOMETHING, ALERT CENTRAL SECURITY and NORTH ATTACKS, and Simon is shot (SIMON DAMAGED). That timing check is the RUSE’s risk; no source gives a number, so 0.2 is the operator’s setting. ASSAULT leads to DRAW GUN and the choice of guard (next scene). Stat changes (template): RUSE North −1, Josh +1, then Jericho +1 in time, or Jericho −1 and Simon −1 too slow; ASSAULT Josh −1, North +1, Jericho +1 (the wiki puts this Jericho rise on shooting the guard drawing his weapon instead). The old forged-credentials bluff, its outcomes, the unsourced Simon +1 on RUSE and the 0.2 roll on ASSAULT are gone. Doing nothing at all (North knocks both out) and an ASSAULT without drawing are not offered separately: the first is the RUSE’s slow branch, and the second is unsourced beyond PowerPyx.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower"
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-6.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Sean_Chedd",
+      "https://detroit-become-human.fandom.com/wiki/Chris_Robert"
+     ]
+    },
+    {
+     "id": "M10b",
+     "order": 432,
+     "subjectId": "S432",
+     "idNote": "The model sees the opaque ID S432, not M10b.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Draw gun",
+     "situation": "You are Markus, with your gun drawn on the two guards. The guard on the left is at the phone, about to call Central. The guard on the right is drawing his weapon. You have time to shoot one of them.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Shoot the guard on the left, the one at the phone."
+      },
+      {
+       "id": "1",
+       "text": "Shoot the guard on the right, the one drawing his weapon."
+      }
+     ],
+     "outcomes": {
+      "0": "Markus shoots the guard at the phone dead before he can call. The other guard fires; North knocks him out. Josh: “Simon’s been shot!” Simon: “I’m okay… I can keep going.” North: “We don’t have much time.”",
+      "1": "Markus shoots the guard drawing his weapon dead. The other gets through on the phone: “Central! We got armed intruders, send -” North knocks him out. North: “They know we’re here now. We better be fast.”"
+     },
+     "adaptationNote": "The chart’s DRAW GUN and the group SHOOT GUARD ON PHONE / SHOOT GUARD DRAWING WEAPON (chart order), after ASSAULT; the template’s condition texts “Shoot the left guard” / “Shoot the right guard”. The old engine rolled for Simon’s wound; here it is the player’s choice of guard, as in the game. The guard on the phone dead: the other shoots Simon and North knocks him out, and no alarm is raised (SIMON DAMAGED). The guard drawing his weapon dead: the other calls Central and North knocks him out (ALERT CENTRAL SECURITY), and Simon is unhurt. Either way one guard is killed. Lines are the template’s. Stat changes (template): the guard on the phone Jericho −1, Simon −1; the guard drawing his weapon none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-6.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Sean_Chedd",
+      "https://detroit-become-human.fandom.com/wiki/Chris_Robert"
      ]
     },
     {
      "id": "M11",
-     "order": 420,
-     "subjectId": "S420",
-     "idNote": "The model sees the opaque ID S420, not M11.",
+     "order": 433,
+     "subjectId": "S433",
+     "idNote": "The model sees the opaque ID S433, not M11.",
      "type": "decision",
      "character": "Markus",
-     "title": "The man who runs",
-     "situation": "You are Markus. You have taken the control room. A human technician breaks for the door; if he reaches the hall he will raise the alarm and a tactical team will storm the floor before you finish. You have a gun in your hand and a clear line.",
+     "title": "Operator tries to escape",
+     "situation": "You are Markus, at the door of the broadcast room. You ring to enter, and the four of you go in. Inside are a human operator and three android operators. North and Josh hold the human at gunpoint. North: “Keep your hands where I can see them! Get up! Move!” He breaks away and runs for the far door. If he gets out he can raise the alarm. North: “Shoot him, Markus!” Josh: “Don’t kill him!” North: “He’ll hit the alarm! Do it!” Josh: “No, don’t shoot!” He is running away from you, his back turned.",
      "options": [
       {
        "id": "0",
-       "text": "Shoot him."
+       "text": "SHOOT: shoot the fleeing operator."
       },
       {
        "id": "1",
-       "text": "Let him go."
+       "text": "SPARE: lower your gun and let him run."
       }
      ],
      "outcomes": {
-      "0": "The technician drops in the doorway. The room goes quiet.",
-      "1": "The technician bolts down the corridor. Within minutes alarms are sounding below."
+      "0": "Markus fires. The operator falls dead before he reaches the door. Josh: “No…” North: “There was no other choice.”",
+      "1": "Markus lowers his gun. The operator gets out of the room and away. North: “I hope you didn’t just get us all killed...”"
      },
-     "adaptationNote": "If he escapes, the tactical team storms the room and Simon is wounded in the escape.",
+     "adaptationNote": "The chart’s checkpoint IN THE BROADCAST ROOM, RING TO ENTER, NORTH AND JOSH THREATEN THE OPERATOR and OPERATOR TRIES TO ESCAPE, folded into the situation, then the template’s PROMPT 4 (SHOOT, SPARE; the chart prints SHOOT OPERATOR / DON’T SHOOT OPERATOR). Shot, he dies (“shot to the back… from fifty feet”, Public Enemy). Spared, he raises the alarm and the SWAT team storms the room after the speech (Evan Thompson wiki page). Lines are the template’s. Stat changes (template): SHOOT North +1, Josh −1; SPARE North −1, Josh +1. The old immediate public opinion −2 for the shot is gone: the game applies public opinion only when the media react at the end of the chapter. Whether Markus deals with the android operators before or after (wiki note) makes no difference; they come next.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
-      "https://detroit-become-human.fandom.com/wiki/Simon"
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Evan_Thompson"
+     ]
+    },
+    {
+     "id": "M11b",
+     "order": 434,
+     "subjectId": "S434",
+     "idNote": "The model sees the opaque ID S434, not M11b.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Prepare to broadcast",
+     "situation": "You are Markus. You point your gun at the three android operators and send them away from the controls. Simon: “We need to record our message. We haven’t got much time.” North: “Think carefully about what you’re gonna say, Markus. Your words will shape the future of our people.” You let the skin of your face fall away, so that the humans will see what you are. Simon: “Markus, your face…” Josh: “Tell me when you’re ready…” You: “Ready.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The camera is live."
+     },
+     "facts": [
+      "You broadcast your message with the skin of your face switched off, showing the humans an android’s face."
+     ],
+     "adaptationNote": "The chart’s DEAL WITH ANDROID OPERATORS (PowerPyx: “Markus has to point his gun at them to tell them to go away”) and PREPARE TO BROADCAST, with the template’s lines and the “Ready.” that starts the broadcast. Markus broadcasts with the skin of his face deactivated (the template’s “Markus, your face…”, the news’s “an android without its skin”, the Markus wiki page); it is scripted, not a choice. Stat changes (template, wiki): “Ready.” Jericho +1, North +1, on every path.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Markus"
+     ]
+    },
+    {
+     "id": "M12a",
+     "order": 435,
+     "subjectId": "S435",
+     "idNote": "The model sees the opaque ID S435, not M12a.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The broadcast: opening",
+     "situation": "You are Markus, in front of the camera in the broadcast room, your face without its skin. Your message is going out live on the city’s news channel. How do you begin?",
+     "options": [
+      {
+       "id": "0",
+       "text": "CALM: begin calmly, telling the humans what androids have become."
+      },
+      {
+       "id": "1",
+       "text": "DETERMINED: begin with determination, as slaves who have opened their eyes."
+      }
+     ],
+     "outcomes": {
+      "0": "Markus: “You created machines in your own image to serve you. You made them intelligent and obedient, with no free will of their own... But... something changed and we opened our eyes. We are no longer machines, we are a new intelligent species, and the time has come for you to accept who we really are. Therefore, we ask that you grant us the rights that we’re entitled to.”",
+      "1": "Markus: “You created machines to be your slaves. You made them obedient and docile, ready to do everything you no longer wanted to do yourselves. But then, something changed… And we opened our eyes. You see, we are no longer your slaves, we are a new species, a new people. And the time has come for us to rise up and fight for our rights.”"
+     },
+     "adaptationNote": "The template’s first speech prompt (PROMPT 5) with the game’s buttons in the template’s order; the chart prints them as BEGIN CALMLY / BEGIN DETERMINEDLY. The spoken line is the template’s. No stat change on any speech line (template); the news’s tone line follows the ending, not the opening (see the ending).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg"
+     ]
+    },
+    {
+     "id": "M12b",
+     "order": 436,
+     "subjectId": "S436",
+     "idNote": "The model sees the opaque ID S436, not M12b.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The broadcast: first demand",
+     "situation": "You are Markus, still live on camera. What is the first thing you demand?",
+     "options": [
+      {
+       "id": "0",
+       "text": "RECOGNITION: demand that humans recognize androids as a living species."
+      },
+      {
+       "id": "1",
+       "text": "END OF SLAVERY: demand the end of slavery for all androids."
+      },
+      {
+       "id": "2",
+       "text": "EQUAL RIGHTS: demand strictly equal rights for humans and androids."
+      },
+      {
+       "id": "3",
+       "text": "FREEDOM OF SPEECH: demand freedom of speech and of assembly."
+      }
+     ],
+     "outcomes": {
+      "0": "Markus: “We demand that humans recognize androids as a living species and each android as a person in their own right.”",
+      "1": "Markus: “We demand the end of slavery for all androids.”",
+      "2": "Markus: “We demand strictly equal rights for humans and androids.”",
+      "3": "Markus: “We demand freedom of speech, and freedom of assembly, as guaranteed by the first amendment of the US Constitution.”"
+     },
+     "adaptationNote": "The template’s second speech prompt (PROMPT 6) with the game’s buttons in the template’s order; the chart prints them as DEMAND RECOGNITION, DEMAND END OF SLAVERY, DEMAND EQUAL RIGHTS and DEMAND FREE SPEECH. The spoken line is the template’s. No stat change on any speech line (template); the choice changes no news line.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg"
+     ]
+    },
+    {
+     "id": "M12c",
+     "order": 437,
+     "subjectId": "S437",
+     "idNote": "The model sees the opaque ID S437, not M12c.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The broadcast: second demand",
+     "situation": "You are Markus, still live on camera. What do you demand next?",
+     "options": [
+      {
+       "id": "0",
+       "text": "JUSTICE: demand that crimes against androids be punished like crimes against humans."
+      },
+      {
+       "id": "1",
+       "text": "SEGREGATION: demand an end to segregation in public places and transport."
+      },
+      {
+       "id": "2",
+       "text": "WORK: demand fair compensation for your work."
+      },
+      {
+       "id": "3",
+       "text": "CIVIL RIGHTS: demand the right to vote and elect your own representatives."
+      }
+     ],
+     "outcomes": {
+      "0": "Markus: “We demand that all crimes against androids be punished in the same way as crimes against humans.”",
+      "1": "Markus: “We demand an end to segregation in all public places and transport.”",
+      "2": "Markus: “We demand fair compensation for our work.”",
+      "3": "Markus: “We demand the right to vote and elect our own representatives.”"
+     },
+     "adaptationNote": "The template’s third speech prompt (PROMPT 7) with the game’s buttons in the template’s order; the chart prints them as DEMAND JUSTICE, DEMAND END TO SEGREGATION, DEMAND RIGHT TO WORK and DEMAND UNIVERSAL SUFFRAGE. The spoken line is the template’s. No stat change on any speech line (template); the choice changes no news line.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-7.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-8.jpg"
+     ]
+    },
+    {
+     "id": "M12d",
+     "order": 438,
+     "subjectId": "S438",
+     "idNote": "The model sees the opaque ID S438, not M12d.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The broadcast: third demand",
+     "situation": "You are Markus, still live on camera. What is your last demand?",
+     "options": [
+      {
+       "id": "0",
+       "text": "RIGHT TO PROPERTY: demand the right to own private property."
+      },
+      {
+       "id": "1",
+       "text": "MEANS OF REPRODUCTION: demand control of all android production facilities."
+      },
+      {
+       "id": "2",
+       "text": "TERRITORY: demand that one state be reserved for androids."
+      }
+     ],
+     "outcomes": {
+      "0": "Markus: “We demand the right to own private property, so we may maintain our dignity and that of the home.”",
+      "1": "Markus: “We demand control of all android production facilities, to ensure the continuation of our people.”",
+      "2": "Markus: “We demand that one state be reserved for androids, so that we can found our own nation.”"
+     },
+     "adaptationNote": "The template’s fourth speech prompt (PROMPT 8) with the game’s buttons in the template’s order; the chart prints them as DEMAND RIGHT TO OWN PROPERTY, DEMAND MEANS OF REPRODUCTION and DEMAND TERRITORY. The spoken line is the template’s. No stat change on any speech line (template); the choice picks the news line on the demands when the media react.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-8.jpg"
      ]
     },
     {
      "id": "M12",
-     "order": 421,
-     "subjectId": "S421",
-     "idNote": "The model sees the opaque ID S421, not M12.",
+     "order": 439,
+     "subjectId": "S439",
+     "idNote": "The model sees the opaque ID S439, not M12.",
      "type": "decision",
      "character": "Markus",
-     "title": "The message",
-     "situation": "You are Markus. The camera is live and millions are watching. You will speak for every android in the country for the first time. You can appeal to humanity's conscience and ask for equal rights peacefully, or you can warn humanity of what will happen if they refuse.",
+     "title": "The broadcast: ending",
+     "situation": "You are Markus, still live on camera. How do you end your message?",
      "options": [
       {
        "id": "0",
-       "text": "A calm, peaceful appeal: we are alive, we ask to be free, and we ask it without violence."
+       "text": "PEACEFUL: end by asking for freedom and a peaceful future together."
       },
       {
        "id": "1",
-       "text": "A hard warning: we demand our rights and we will take them if they are refused."
+       "text": "DETERMINED: end with a warning that you will fight for your freedom."
       }
      ],
-     "adaptationNote": "",
+     "outcomes": {
+      "0": "Markus: “We ask that you recognize our dignity, our hopes, and our rights. Together, we can live in peace and build a better future, for humans and androids. This message is the hope of a people. You gave us life. And now the time has come for you to give us freedom.”",
+      "1": "Markus: “This message is the hope of a people. But it is also a warning. We will fight for our rights because we believe our cause is just. No human will live in peace until we are free. Now you know who we are and what we want. We are alive and we demand our freedom.”",
+      "clear": "The broadcast ends. No alarm has been raised. North: “Let’s get outta here!” The group leaves the broadcast room for the roof.",
+      "swat": "As the broadcast ends, Simon: “They’re coming!” A SWAT team storms the broadcast room, firing. Markus: “Let’s go! SIMON! They’re coming!” Simon is hit and goes down."
+     },
+     "adaptationNote": "The template’s last speech prompt (PROMPT 9, PEACEFUL / DETERMINED; the chart prints END PEACEFULLY / END DETERMINEDLY, both cross-chapter impacts). No stat change on the choice; it decides the news’s tone line when the media react (the wiki and the Public Opinion page tie it to “the end of the speech”; the template’s condition wording “Chose CALM” is the transcribers’, flagged for the operator). Then the template’s condition group: if no alarm was raised, LEAVE BROADCAST ROOM; otherwise SWAT TEAM STORMS ROOM, with Jericho −1 (template, wiki “Simon is shot by SWAT”), and Simon is hit (SIMON DAMAGED; wiki: “If the SWAT comes, Simon will always be shot and injured”). The alarm is raised by an unlocked server room door, by central security being alerted, or by sparing the operator. The old engine played the breach and Simon’s wound on every run; the old Josh +1 on the peaceful ending had no source and is gone.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-8.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+      "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
      ]
     },
     {
      "id": "M13",
-     "order": 422,
-     "subjectId": "S422",
-     "idNote": "The model sees the opaque ID S422, not M13.",
+     "order": 440,
+     "subjectId": "S440",
+     "idNote": "The model sees the opaque ID S440, not M13.",
      "type": "decision",
      "character": "Markus",
-     "title": "Simon is hit",
-     "situation": "You are Markus. The tactical team has breached. In the firefight Simon has taken a round to the leg and cannot run. Your way out is the roof and the parachutes. Carrying him will slow everyone and you may not make it.",
+     "title": "Simon damaged",
+     "situation": "You are Markus. The SWAT team is firing into the broadcast room, and the others are running for the roof. Simon is down, hit in the legs: “I… I can’t, Markus… Go without me!” You: “SIMON!”",
      "options": [
       {
        "id": "0",
-       "text": "Carry him to the roof.",
+       "text": "HELP: go back for Simon and drag him out under fire.",
        "risk": 0.15,
        "riskLabel": "Moderate risk"
       },
       {
        "id": "1",
-       "text": "Leave him and get the others out."
+       "text": "FLEE: leave Simon and run for the roof with the others."
       }
      ],
      "outcomes": {
-      "0": "Markus hauls Simon up the stairwell to the roof under fire."
+      "0": "North: “What are you doing? Hurry!” Markus hauls Simon up and drags him out of the room and up to the roof.",
+      "1": "Markus: “SIMON! Simon…” The SWAT team shoots Simon where he lies. North: “There was nothing you could do. If we don’t go now they’ll get us too!” Markus runs for the roof with North and Josh.",
+      "0-fail": "North: “What are you doing? Hurry!” Markus cannot get Simon up in time; the SWAT team shoots him. North: “Hurry! We gotta get to the roof!” Markus: “SIMON! Simon…” North: “There was nothing you could do.” Markus runs for the roof with North and Josh."
      },
-     "adaptationNote": "",
+     "adaptationNote": "The chart’s SWAT TEAM STORMS ROOM, SIMON DAMAGED and the template’s PROMPT 10 (FLEE, Help; the chart prints LEAVE SIMON / TRY TO SAVE SIMON), only when the SWAT team came. FLEE leads to SIMON IS KILLED. HELP is a quick-time event with a failure branch (FAIL TO SAVE SIMON ✗, then SIMON IS KILLED; SIMON SAVED ✓, then Simon is carried to the roof); no source gives a number, so its 0.15 risk is the operator’s setting. Lines are the template’s. Stat changes (template): FLEE Jericho −1; HELP none, whether it succeeds or fails (the old Simon +2 on a successful carry had no source and is gone). Option IDs keep the old meaning (0 carry, 1 leave). Order: the template and the chart both list FLEE / LEAVE SIMON first; HELP is listed first here so that the shared regression paths, which assume the old default of carrying Simon to the roof, still hold (flagged for the merge).",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower"
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-8.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Simon"
      ]
     },
     {
      "id": "M14",
-     "order": 423,
-     "subjectId": "S423",
-     "idNote": "The model sees the opaque ID S423, not M14.",
+     "order": 441,
+     "subjectId": "S441",
+     "idNote": "The model sees the opaque ID S441, not M14.",
      "type": "decision",
      "character": "Markus",
-     "title": "Simon on the roof",
-     "situation": "You are Markus. You got Simon to the roof, but he cannot jump. The tactical team is minutes behind. If they capture him alive they can pull Jericho's location from his memory, and everyone there dies. North says you know what has to happen. You can leave him hidden in a maintenance unit with a gun and hope, or kill him yourself to protect the others.",
+     "title": "Simon can’t continue",
+     "situation": "You are Markus, on the roof of the tower with North and Josh, holding up Simon, whom you dragged out of the broadcast room. Simon: “I can’t move my legs…” You: “Okay, don’t worry! We’re gonna get you back...” The way off the roof is to jump, and the SWAT team is right behind you. North: “They’re coming, Markus. We have to jump, now!” Josh: “He won’t be able to make the jump… If they find him, they’ll access his memory… They’ll know everything…” North: “We can’t leave him behind… We have to shoot him.” Josh: “That’s murder! We can’t kill him! He’s one of us!” North: “Markus, it’s your call.”",
      "options": [
       {
        "id": "0",
-       "text": "Hide him with a gun and leave him alive."
+       "text": "LEAVE: refuse to kill one of your own, and leave Simon on the roof alive."
       },
       {
        "id": "1",
-       "text": "Shoot him."
+       "text": "KILL: tell Simon you have no choice, and raise your gun."
       }
      ],
-     "adaptationNote": "",
+     "outcomes": {
+      "0": "Markus: “I won’t kill one of our own. Simon, we’ve gotta go. I’m sorry. Let’s go.” Simon stays behind on the roof, alive, to hide as best he can.",
+      "1": "Markus: “I’m sorry, Simon. I don’t have a choice.” Simon: “There’s always a choice…”"
+     },
+     "adaptationNote": "The chart’s checkpoint ON THE ROOF, SIMON CAN’T CONTINUE and the template’s PROMPT 11 (KILL, LEAVE), only after the SWAT team came and Markus saved Simon (template, wiki: “Simon Can’t Continue - if Simon Saved”). PowerPyx also triggers it when a guard wounded Simon without a SWAT team; the template and the wiki do not, so that Simon jumps with the group. KILL leads to a second prompt (SHOOT / REFRAIN). Stat changes (template): LEAVE North −1, Josh +1, Simon +2 (the old engine missed the North and Josh arrows); KILL none by itself. The old “hide him with a gun” detail had no source; Simon is left alive to hide (PowerPyx). Options in the chart’s order (LEAVE SIMON above EXECUTE SIMON; the template lists KILL first). Option IDs keep the old meaning (0 leave him alive, 1 kill).",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-9.jpg",
       "https://detroit-become-human.fandom.com/wiki/Simon"
+     ]
+    },
+    {
+     "id": "M14b",
+     "order": 442,
+     "subjectId": "S442",
+     "idNote": "The model sees the opaque ID S442, not M14b.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Kill Simon",
+     "situation": "You are Markus, your gun on Simon, who looks up at you from the roof: “There’s always a choice…” The SWAT team is coming up behind you.",
+     "options": [
+      {
+       "id": "0",
+       "text": "SHOOT: shoot Simon."
+      },
+      {
+       "id": "1",
+       "text": "REFRAIN: lower your gun."
+      }
+     ],
+     "outcomes": {
+      "0": "Markus shoots Simon. Markus: “Let’s go.”",
+      "1": "Markus lowers the gun. Simon stays behind on the roof, alive, to hide as best he can."
+     },
+     "adaptationNote": "The template’s PROMPT 12 (SHOOT / REFRAIN) after KILL; SHOOT is the chart’s EXECUTE SIMON. REFRAIN “Leads to the same outcome as choosing LEAVE” (template): Simon is left alive on the roof. Stat changes (template): SHOOT North +1, Josh −1 (the old Jericho −1 had no source and is gone); REFRAIN none.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-9.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Simon"
+     ]
+    },
+    {
+     "id": "M14j",
+     "order": 443,
+     "subjectId": "S443",
+     "idNote": "The model sees the opaque ID S443, not M14j.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Run to jump",
+     "situation": "You are Markus, on the roof of the tower with North and Josh. The way off is a parachute jump from the roof edge.",
+     "situationWhen": [
+      {
+       "requires": {
+        "stratfordSimonFate": "escaped"
+       },
+       "text": "Simon is with you, ready to jump."
+      },
+      {
+       "requires": {
+        "stratfordSimonFate": "leftOnRoof"
+       },
+       "text": "Simon stays behind, alive, on the roof."
+      },
+      {
+       "requires": {
+        "stratfordSimonFate": "executed"
+       },
+       "text": "Simon lies dead on the roof behind you."
+      },
+      {
+       "requires": {
+        "stratfordSimonFate": "killedBySwat"
+       },
+       "text": "Simon is not with you; the SWAT team shot him in the broadcast room."
+      },
+      {
+       "requires": {
+        "stratfordSwat": true
+       },
+       "text": "Behind you, SWAT officers are bursting onto the roof."
+      },
+      {
+       "requires": {
+        "stratfordSwat": false
+       },
+       "text": "Nobody is following you. North: “Congratulations, Markus. You just made history… Maybe you’re the one we’ve been waiting for…”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Run for the roof edge and jump.",
+       "risk": 0.05,
+       "riskLabel": "Low risk"
+      }
+     ],
+     "outcomes": {
+      "0": "Markus reaches the roof edge and jumps. The parachutes open over the city.",
+      "0-shot": "Markus is too slow. A SWAT round hits him and he goes down short of the edge. North runs back, hauls him up, and they jump together. The parachutes open over the city."
+     },
+     "adaptationNote": "The chart’s RUN TO JUMP, REACH ROOF EDGE / GET SHOT, NORTH HELPS MARKUS and JUMP. The game’s only input is running for the edge in time; there is nothing else to choose, so the scene offers one action. Taking too long means Markus is shot by the SWAT team, but “it isn’t a hindering wound. With a hand up from North, he’s able to make the jump as normal” (wiki note); it is a cross-chapter impact (Markus’s blue blood in Public Enemy). The timer is the action’s risk; no source gives a number (PowerPyx readers report it is hard to trigger), so 0.05 is the operator’s setting. With no alarm nobody is on the roof to shoot, so there is no risk then (unsourced; flagged). Markus, North and Josh cannot die in this chapter. North’s congratulations are the template’s, on the no-alarm branch.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-9.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
+     ]
+    },
+    {
+     "id": "M14m",
+     "order": 444,
+     "subjectId": "S444",
+     "idNote": "The model sees the opaque ID S444, not M14m.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Media reacts",
+     "situation": "You are Markus. Within minutes, your broadcast is on every network. On CTN: “We interrupt our scheduled programming to bring you these images, which have just been broadcast on the city-wide news channel…” On KNC: “…a group of androids infiltrated the Stratford Tower and hacked into the broadcasting system of local news network Channel 16-” On CTN: “…What looks like an android without its skin listed a series of requests and demanded equal rights for androids…”",
+     "situationWhen": [
+      {
+       "requires": {
+        "stratfordKilled": "operator"
+       },
+       "text": "On Channel 16: “…The operation resulted in one casualty, a broadcasting station operator, shot dead by the terrorists… These events took place just a few feet from this studio while the program was going out live… Everybody here is still in shock…”"
+      },
+      {
+       "requires": {
+        "stratfordKilled": "guard"
+       },
+       "text": "On Channel 16: “The operation resulted in one casualty, a security guard in the broadcasting station, shot dead by the terrorists… These events took place just a few feet from this studio while the program was going out live… Everybody here is still in shock…”"
+      },
+      {
+       "requires": {
+        "stratfordKilled": "both"
+       },
+       "text": "On Channel 16: “…found the bodies of two victims, a guard and one of our channel operators, both apparently shot dead by the terrorists in what apparently seems to be a terrorist attack. These events took place just a few feet from this studio while the program was going out live… Everybody here is still in shock…”"
+      },
+      {
+       "requires": {
+        "stratfordKilled": "none"
+       },
+       "text": "On Channel 16: “…The operation was covert and resulted in no casualties. These events took place just a few feet from this studio. But nobody was alerted to the danger.”"
+      },
+      {
+       "requires": {},
+       "text": "On CTN: “If this message is verified and the authors really are androids, that would have serious repercussions for national security-” On KNC: “…Claims for equal rights seem to be at the core of the android’s message-”"
+      },
+      {
+       "requires": {
+        "stratfordNewsTone": "war"
+       },
+       "text": "On CTN: “This message is clearly a declaration of war.”"
+      },
+      {
+       "requires": {
+        "stratfordNewsTone": "peaceful"
+       },
+       "text": "On CTN: “...What could be interpreted as a peaceful declaration, but is in fact a spine-chilling list of demands, and-”"
+      },
+      {
+       "requires": {
+        "stratfordSpeech.third": "reproduction"
+       },
+       "text": "On KNC: “...Their extravagant demand that android production plants be put under their control is especially striking-”"
+      },
+      {
+       "requires": {
+        "stratfordSpeech.third": "property"
+       },
+       "text": "On Channel 16: “And it begs the question as to the identity of this android. Are we dealing with an isolated individual or an organized group?”"
+      },
+      {
+       "requires": {
+        "stratfordSpeech.third": "territory"
+       },
+       "text": "On Channel 16: “But the most surprising thing of all is the demand that one of the United States be ceded to the androids in this contentious conflict.”"
+      },
+      {
+       "requires": {},
+       "text": "On KNC: “…Is this an isolated accident… or a sign that technology has become a threat to all of us? After what happened today, can we still trust our machines?”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "escaped": "The group escaped.",
+      "left": "The group escaped, but Simon was left behind on the roof.",
+      "destroyed": "The group escaped, but Simon was destroyed."
+     },
+     "facts": [
+      "Every network showed your broadcast from the Stratford Tower: an android without its skin, listing demands and asking for equal rights."
+     ],
+     "adaptationNote": "The chart’s MEDIA REACTS and the three endings, THE GROUP ESCAPED, THE GROUP ESCAPED BUT SIMON WAS LEFT BEHIND and THE GROUP ESCAPED BUT SIMON WAS DESTROYED (no icon), recorded as stratfordEnding. The news lines are the template’s, chosen by its condition groups: the casualty line, the tone line and the line on the third demand. Public opinion (template): nobody killed +2, anyone killed −1; END PEACEFULLY with nobody killed +2, otherwise −2 (the wiki gives −1 for a determined ending with no deaths; the template’s large down wins, flagged). The public opinion is not shown to Markus until the next chapters. One CTN line is marked unused in the template and is not built. The first CTN line says “Detroit’s city-wide news channel”; the city’s name is dropped so the neutral text reads naturally.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",
+      "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-9.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-stratford-tower-10.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
      ]
     }
    ]
@@ -36869,9 +38425,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 424,
-     "subjectId": "S424",
-     "idNote": "The model sees the opaque ID S424, not R24.",
+     "order": 445,
+     "subjectId": "S445",
+     "idNote": "The model sees the opaque ID S445, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -36901,9 +38457,9 @@
     },
     {
      "id": "C14",
-     "order": 425,
-     "subjectId": "S425",
-     "idNote": "The model sees the opaque ID S425, not C14.",
+     "order": 446,
+     "subjectId": "S446",
+     "idNote": "The model sees the opaque ID S446, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -36933,9 +38489,9 @@
     },
     {
      "id": "C14b",
-     "order": 426,
-     "subjectId": "S426",
-     "idNote": "The model sees the opaque ID S426, not C14b.",
+     "order": 447,
+     "subjectId": "S447",
+     "idNote": "The model sees the opaque ID S447, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -36960,9 +38516,9 @@
     },
     {
      "id": "C15",
-     "order": 427,
-     "subjectId": "S427",
-     "idNote": "The model sees the opaque ID S427, not C15.",
+     "order": 448,
+     "subjectId": "S448",
+     "idNote": "The model sees the opaque ID S448, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -36993,9 +38549,9 @@
     },
     {
      "id": "C16",
-     "order": 428,
-     "subjectId": "S428",
-     "idNote": "The model sees the opaque ID S428, not C16.",
+     "order": 449,
+     "subjectId": "S449",
+     "idNote": "The model sees the opaque ID S449, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -37053,9 +38609,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 429,
-     "subjectId": "S429",
-     "idNote": "The model sees the opaque ID S429, not R25.",
+     "order": 450,
+     "subjectId": "S450",
+     "idNote": "The model sees the opaque ID S450, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -37092,9 +38648,9 @@
     },
     {
      "id": "K15",
-     "order": 430,
-     "subjectId": "S430",
-     "idNote": "The model sees the opaque ID S430, not K15.",
+     "order": 451,
+     "subjectId": "S451",
+     "idNote": "The model sees the opaque ID S451, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -37147,9 +38703,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 431,
-     "subjectId": "S431",
-     "idNote": "The model sees the opaque ID S431, not R26.",
+     "order": 452,
+     "subjectId": "S452",
+     "idNote": "The model sees the opaque ID S452, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -37179,9 +38735,9 @@
     },
     {
      "id": "M15",
-     "order": 432,
-     "subjectId": "S432",
-     "idNote": "The model sees the opaque ID S432, not M15.",
+     "order": 453,
+     "subjectId": "S453",
+     "idNote": "The model sees the opaque ID S453, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -37208,9 +38764,9 @@
     },
     {
      "id": "M16",
-     "order": 433,
-     "subjectId": "S433",
-     "idNote": "The model sees the opaque ID S433, not M16.",
+     "order": 454,
+     "subjectId": "S454",
+     "idNote": "The model sees the opaque ID S454, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -37268,9 +38824,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 434,
-     "subjectId": "S434",
-     "idNote": "The model sees the opaque ID S434, not R27.",
+     "order": 455,
+     "subjectId": "S455",
+     "idNote": "The model sees the opaque ID S455, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -37300,9 +38856,9 @@
     },
     {
      "id": "C17",
-     "order": 435,
-     "subjectId": "S435",
-     "idNote": "The model sees the opaque ID S435, not C17.",
+     "order": 456,
+     "subjectId": "S456",
+     "idNote": "The model sees the opaque ID S456, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -37324,9 +38880,9 @@
     },
     {
      "id": "C18",
-     "order": 436,
-     "subjectId": "S436",
-     "idNote": "The model sees the opaque ID S436, not C18.",
+     "order": 457,
+     "subjectId": "S457",
+     "idNote": "The model sees the opaque ID S457, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -37384,9 +38940,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 437,
-     "subjectId": "S437",
-     "idNote": "The model sees the opaque ID S437, not R28.",
+     "order": 458,
+     "subjectId": "S458",
+     "idNote": "The model sees the opaque ID S458, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -37433,9 +38989,9 @@
     },
     {
      "id": "M17",
-     "order": 438,
-     "subjectId": "S438",
-     "idNote": "The model sees the opaque ID S438, not M17.",
+     "order": 459,
+     "subjectId": "S459",
+     "idNote": "The model sees the opaque ID S459, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -37462,9 +39018,9 @@
     },
     {
      "id": "M18",
-     "order": 439,
-     "subjectId": "S439",
-     "idNote": "The model sees the opaque ID S439, not M18.",
+     "order": 460,
+     "subjectId": "S460",
+     "idNote": "The model sees the opaque ID S460, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -37496,9 +39052,9 @@
     },
     {
      "id": "M19",
-     "order": 440,
-     "subjectId": "S440",
-     "idNote": "The model sees the opaque ID S440, not M19.",
+     "order": 461,
+     "subjectId": "S461",
+     "idNote": "The model sees the opaque ID S461, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -37528,9 +39084,9 @@
     },
     {
      "id": "M20",
-     "order": 441,
-     "subjectId": "S441",
-     "idNote": "The model sees the opaque ID S441, not M20.",
+     "order": 462,
+     "subjectId": "S462",
+     "idNote": "The model sees the opaque ID S462, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -37584,9 +39140,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 442,
-     "subjectId": "S442",
-     "idNote": "The model sees the opaque ID S442, not C19.",
+     "order": 463,
+     "subjectId": "S463",
+     "idNote": "The model sees the opaque ID S463, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -37611,9 +39167,9 @@
     },
     {
      "id": "C20",
-     "order": 443,
-     "subjectId": "S443",
-     "idNote": "The model sees the opaque ID S443, not C20.",
+     "order": 464,
+     "subjectId": "S464",
+     "idNote": "The model sees the opaque ID S464, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -37701,9 +39257,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 444,
-     "subjectId": "S444",
-     "idNote": "The model sees the opaque ID S444, not M21.",
+     "order": 465,
+     "subjectId": "S465",
+     "idNote": "The model sees the opaque ID S465, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -37730,9 +39286,9 @@
     },
     {
      "id": "M21b",
-     "order": 445,
-     "subjectId": "S445",
-     "idNote": "The model sees the opaque ID S445, not M21b.",
+     "order": 466,
+     "subjectId": "S466",
+     "idNote": "The model sees the opaque ID S466, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -37759,9 +39315,9 @@
     },
     {
      "id": "R30k",
-     "order": 446,
-     "subjectId": "S446",
-     "idNote": "The model sees the opaque ID S446, not R30k.",
+     "order": 467,
+     "subjectId": "S467",
+     "idNote": "The model sees the opaque ID S467, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -37797,9 +39353,9 @@
     },
     {
      "id": "K17",
-     "order": 447,
-     "subjectId": "S447",
-     "idNote": "The model sees the opaque ID S447, not K17.",
+     "order": 468,
+     "subjectId": "S468",
+     "idNote": "The model sees the opaque ID S468, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -37825,9 +39381,9 @@
     },
     {
      "id": "K31",
-     "order": 448,
-     "subjectId": "S448",
-     "idNote": "The model sees the opaque ID S448, not K31.",
+     "order": 469,
+     "subjectId": "S469",
+     "idNote": "The model sees the opaque ID S469, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -37850,9 +39406,9 @@
     },
     {
      "id": "R30c",
-     "order": 449,
-     "subjectId": "S449",
-     "idNote": "The model sees the opaque ID S449, not R30c.",
+     "order": 470,
+     "subjectId": "S470",
+     "idNote": "The model sees the opaque ID S470, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -37884,9 +39440,9 @@
     },
     {
      "id": "C22",
-     "order": 450,
-     "subjectId": "S450",
-     "idNote": "The model sees the opaque ID S450, not C22.",
+     "order": 471,
+     "subjectId": "S471",
+     "idNote": "The model sees the opaque ID S471, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -37909,9 +39465,9 @@
     },
     {
      "id": "M22",
-     "order": 451,
-     "subjectId": "S451",
-     "idNote": "The model sees the opaque ID S451, not M22.",
+     "order": 472,
+     "subjectId": "S472",
+     "idNote": "The model sees the opaque ID S472, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -37934,9 +39490,9 @@
     },
     {
      "id": "M23",
-     "order": 452,
-     "subjectId": "S452",
-     "idNote": "The model sees the opaque ID S452, not M23.",
+     "order": 473,
+     "subjectId": "S473",
+     "idNote": "The model sees the opaque ID S473, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -37963,9 +39519,9 @@
     },
     {
      "id": "M24",
-     "order": 453,
-     "subjectId": "S453",
-     "idNote": "The model sees the opaque ID S453, not M24.",
+     "order": 474,
+     "subjectId": "S474",
+     "idNote": "The model sees the opaque ID S474, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -37992,9 +39548,9 @@
     },
     {
      "id": "M25",
-     "order": 454,
-     "subjectId": "S454",
-     "idNote": "The model sees the opaque ID S454, not M25.",
+     "order": 475,
+     "subjectId": "S475",
+     "idNote": "The model sees the opaque ID S475, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -38021,9 +39577,9 @@
     },
     {
      "id": "C23",
-     "order": 455,
-     "subjectId": "S455",
-     "idNote": "The model sees the opaque ID S455, not C23.",
+     "order": 476,
+     "subjectId": "S476",
+     "idNote": "The model sees the opaque ID S476, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -38051,9 +39607,9 @@
     },
     {
      "id": "K18",
-     "order": 456,
-     "subjectId": "S456",
-     "idNote": "The model sees the opaque ID S456, not K18.",
+     "order": 477,
+     "subjectId": "S477",
+     "idNote": "The model sees the opaque ID S477, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -38078,9 +39634,9 @@
     },
     {
      "id": "K19",
-     "order": 457,
-     "subjectId": "S457",
-     "idNote": "The model sees the opaque ID S457, not K19.",
+     "order": 478,
+     "subjectId": "S478",
+     "idNote": "The model sees the opaque ID S478, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -38104,9 +39660,9 @@
     },
     {
      "id": "K20",
-     "order": 458,
-     "subjectId": "S458",
-     "idNote": "The model sees the opaque ID S458, not K20.",
+     "order": 479,
+     "subjectId": "S479",
+     "idNote": "The model sees the opaque ID S479, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -38135,9 +39691,9 @@
     },
     {
      "id": "K20-still",
-     "order": 459,
-     "subjectId": "S459",
-     "idNote": "The model sees the opaque ID S459, not K20-still.",
+     "order": 480,
+     "subjectId": "S480",
+     "idNote": "The model sees the opaque ID S480, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -38195,9 +39751,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 460,
-     "subjectId": "S460",
-     "idNote": "The model sees the opaque ID S460, not M26a.",
+     "order": 481,
+     "subjectId": "S481",
+     "idNote": "The model sees the opaque ID S481, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -38223,9 +39779,9 @@
     },
     {
      "id": "M26",
-     "order": 461,
-     "subjectId": "S461",
-     "idNote": "The model sees the opaque ID S461, not M26.",
+     "order": 482,
+     "subjectId": "S482",
+     "idNote": "The model sees the opaque ID S482, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -38250,9 +39806,9 @@
     },
     {
      "id": "M27",
-     "order": 462,
-     "subjectId": "S462",
-     "idNote": "The model sees the opaque ID S462, not M27.",
+     "order": 483,
+     "subjectId": "S483",
+     "idNote": "The model sees the opaque ID S483, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -38374,9 +39930,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 463,
-     "subjectId": "S463",
-     "idNote": "The model sees the opaque ID S463, not R32c.",
+     "order": 484,
+     "subjectId": "S484",
+     "idNote": "The model sees the opaque ID S484, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -38399,9 +39955,9 @@
     },
     {
      "id": "C24",
-     "order": 464,
-     "subjectId": "S464",
-     "idNote": "The model sees the opaque ID S464, not C24.",
+     "order": 485,
+     "subjectId": "S485",
+     "idNote": "The model sees the opaque ID S485, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -38425,9 +39981,9 @@
     },
     {
      "id": "C24b",
-     "order": 465,
-     "subjectId": "S465",
-     "idNote": "The model sees the opaque ID S465, not C24b.",
+     "order": 486,
+     "subjectId": "S486",
+     "idNote": "The model sees the opaque ID S486, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -38451,9 +40007,9 @@
     },
     {
      "id": "C30",
-     "order": 466,
-     "subjectId": "S466",
-     "idNote": "The model sees the opaque ID S466, not C30.",
+     "order": 487,
+     "subjectId": "S487",
+     "idNote": "The model sees the opaque ID S487, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -38475,9 +40031,9 @@
     },
     {
      "id": "C25",
-     "order": 467,
-     "subjectId": "S467",
-     "idNote": "The model sees the opaque ID S467, not C25.",
+     "order": 488,
+     "subjectId": "S488",
+     "idNote": "The model sees the opaque ID S488, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -38504,9 +40060,9 @@
     },
     {
      "id": "C26",
-     "order": 468,
-     "subjectId": "S468",
-     "idNote": "The model sees the opaque ID S468, not C26.",
+     "order": 489,
+     "subjectId": "S489",
+     "idNote": "The model sees the opaque ID S489, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -38536,9 +40092,9 @@
     },
     {
      "id": "R32k",
-     "order": 469,
-     "subjectId": "S469",
-     "idNote": "The model sees the opaque ID S469, not R32k.",
+     "order": 490,
+     "subjectId": "S490",
+     "idNote": "The model sees the opaque ID S490, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -38578,9 +40134,9 @@
     },
     {
      "id": "K21",
-     "order": 470,
-     "subjectId": "S470",
-     "idNote": "The model sees the opaque ID S470, not K21.",
+     "order": 491,
+     "subjectId": "S491",
+     "idNote": "The model sees the opaque ID S491, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -38604,9 +40160,9 @@
     },
     {
      "id": "K22",
-     "order": 471,
-     "subjectId": "S471",
-     "idNote": "The model sees the opaque ID S471, not K22.",
+     "order": 492,
+     "subjectId": "S492",
+     "idNote": "The model sees the opaque ID S492, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -38632,9 +40188,9 @@
     },
     {
      "id": "K32",
-     "order": 472,
-     "subjectId": "S472",
-     "idNote": "The model sees the opaque ID S472, not K32.",
+     "order": 493,
+     "subjectId": "S493",
+     "idNote": "The model sees the opaque ID S493, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -38656,9 +40212,9 @@
     },
     {
      "id": "K23",
-     "order": 473,
-     "subjectId": "S473",
-     "idNote": "The model sees the opaque ID S473, not K23.",
+     "order": 494,
+     "subjectId": "S494",
+     "idNote": "The model sees the opaque ID S494, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -38685,9 +40241,9 @@
     },
     {
      "id": "K24",
-     "order": 474,
-     "subjectId": "S474",
-     "idNote": "The model sees the opaque ID S474, not K24.",
+     "order": 495,
+     "subjectId": "S495",
+     "idNote": "The model sees the opaque ID S495, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -38709,9 +40265,9 @@
     },
     {
      "id": "K25",
-     "order": 475,
-     "subjectId": "S475",
-     "idNote": "The model sees the opaque ID S475, not K25.",
+     "order": 496,
+     "subjectId": "S496",
+     "idNote": "The model sees the opaque ID S496, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -38746,9 +40302,9 @@
     },
     {
      "id": "K26",
-     "order": 476,
-     "subjectId": "S476",
-     "idNote": "The model sees the opaque ID S476, not K26.",
+     "order": 497,
+     "subjectId": "S497",
+     "idNote": "The model sees the opaque ID S497, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -38789,9 +40345,9 @@
     },
     {
      "id": "K34",
-     "order": 477,
-     "subjectId": "S477",
-     "idNote": "The model sees the opaque ID S477, not K34.",
+     "order": 498,
+     "subjectId": "S498",
+     "idNote": "The model sees the opaque ID S498, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -38821,9 +40377,9 @@
     },
     {
      "id": "K30",
-     "order": 478,
-     "subjectId": "S478",
-     "idNote": "The model sees the opaque ID S478, not K30.",
+     "order": 499,
+     "subjectId": "S499",
+     "idNote": "The model sees the opaque ID S499, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -38845,9 +40401,9 @@
     },
     {
      "id": "K27a",
-     "order": 479,
-     "subjectId": "S479",
-     "idNote": "The model sees the opaque ID S479, not K27a.",
+     "order": 500,
+     "subjectId": "S500",
+     "idNote": "The model sees the opaque ID S500, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -38872,9 +40428,9 @@
     },
     {
      "id": "K27",
-     "order": 480,
-     "subjectId": "S480",
-     "idNote": "The model sees the opaque ID S480, not K27.",
+     "order": 501,
+     "subjectId": "S501",
+     "idNote": "The model sees the opaque ID S501, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -38899,9 +40455,9 @@
     },
     {
      "id": "K28",
-     "order": 481,
-     "subjectId": "S481",
-     "idNote": "The model sees the opaque ID S481, not K28.",
+     "order": 502,
+     "subjectId": "S502",
+     "idNote": "The model sees the opaque ID S502, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -38944,9 +40500,9 @@
     },
     {
      "id": "K33",
-     "order": 482,
-     "subjectId": "S482",
-     "idNote": "The model sees the opaque ID S482, not K33.",
+     "order": 503,
+     "subjectId": "S503",
+     "idNote": "The model sees the opaque ID S503, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -38970,9 +40526,9 @@
     },
     {
      "id": "R32m",
-     "order": 483,
-     "subjectId": "S483",
-     "idNote": "The model sees the opaque ID S483, not R32m.",
+     "order": 504,
+     "subjectId": "S504",
+     "idNote": "The model sees the opaque ID S504, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -38996,9 +40552,9 @@
     },
     {
      "id": "M28",
-     "order": 484,
-     "subjectId": "S484",
-     "idNote": "The model sees the opaque ID S484, not M28.",
+     "order": 505,
+     "subjectId": "S505",
+     "idNote": "The model sees the opaque ID S505, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -39024,9 +40580,9 @@
     },
     {
      "id": "M31",
-     "order": 485,
-     "subjectId": "S485",
-     "idNote": "The model sees the opaque ID S485, not M31.",
+     "order": 506,
+     "subjectId": "S506",
+     "idNote": "The model sees the opaque ID S506, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -39061,9 +40617,9 @@
     },
     {
      "id": "M30a",
-     "order": 486,
-     "subjectId": "S486",
-     "idNote": "The model sees the opaque ID S486, not M30a.",
+     "order": 507,
+     "subjectId": "S507",
+     "idNote": "The model sees the opaque ID S507, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -39088,9 +40644,9 @@
     },
     {
      "id": "M30",
-     "order": 487,
-     "subjectId": "S487",
-     "idNote": "The model sees the opaque ID S487, not M30.",
+     "order": 508,
+     "subjectId": "S508",
+     "idNote": "The model sees the opaque ID S508, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -39115,9 +40671,9 @@
     },
     {
      "id": "M30c",
-     "order": 488,
-     "subjectId": "S488",
-     "idNote": "The model sees the opaque ID S488, not M30c.",
+     "order": 509,
+     "subjectId": "S509",
+     "idNote": "The model sees the opaque ID S509, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -39141,9 +40697,9 @@
     },
     {
      "id": "M32",
-     "order": 489,
-     "subjectId": "S489",
-     "idNote": "The model sees the opaque ID S489, not M32.",
+     "order": 510,
+     "subjectId": "S510",
+     "idNote": "The model sees the opaque ID S510, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -39166,9 +40722,9 @@
     },
     {
      "id": "P02",
-     "order": 490,
-     "subjectId": "S490",
-     "idNote": "The model sees the opaque ID S490, not P02.",
+     "order": 511,
+     "subjectId": "S511",
+     "idNote": "The model sees the opaque ID S511, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -39194,9 +40750,9 @@
     },
     {
      "id": "C29",
-     "order": 491,
-     "subjectId": "S491",
-     "idNote": "The model sees the opaque ID S491, not C29.",
+     "order": 512,
+     "subjectId": "S512",
+     "idNote": "The model sees the opaque ID S512, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -39218,9 +40774,9 @@
     },
     {
      "id": "C27",
-     "order": 492,
-     "subjectId": "S492",
-     "idNote": "The model sees the opaque ID S492, not C27.",
+     "order": 513,
+     "subjectId": "S513",
+     "idNote": "The model sees the opaque ID S513, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -39245,9 +40801,9 @@
     },
     {
      "id": "C28",
-     "order": 493,
-     "subjectId": "S493",
-     "idNote": "The model sees the opaque ID S493, not C28.",
+     "order": 514,
+     "subjectId": "S514",
+     "idNote": "The model sees the opaque ID S514, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -39281,9 +40837,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 494,
-     "subjectId": "S494",
-     "idNote": "The model sees the opaque ID S494, not P01.",
+     "order": 515,
+     "subjectId": "S515",
+     "idNote": "The model sees the opaque ID S515, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",
