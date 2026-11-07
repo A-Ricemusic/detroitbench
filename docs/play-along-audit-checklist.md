@@ -9382,34 +9382,418 @@ Gaps:
 
 ## Chapter 31: Night of the Soul
 
-### M26a · Carl (Markus)
+### M26g · Carl’s grave (Markus, event)
 
-> You are Markus. Before the end, you go back to Carl's house. He is bedridden and frail now, and he was never told what became of you. He is overjoyed and frightened for you. There is a lot you could say to the man who raised you and then watched the police shoot you on his floor: you could forgive him and tell him what he meant to you, or you could tell him what you really felt that night.
+> You are Markus. It is 4:17 on a November afternoon. Carl died the night Leo broke into his house, and you have come to the cemetery where he is buried. You stand at his grave in the snow, among bare trees.
 
-- (0) Reconcile: tell him you understand and that he gave you everything.
-- (1) Tell him the truth of your anger at him for that night.
+- (0) Continue.
 
-_Note: In the game two angry lines in a row give Carl a fatal attack._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M26 · The hunter who switched sides (Markus)
-
-> You are Markus. In the ruined church where the survivors of Jericho have gathered, Connor, the android who hunted you and led the army to your door, comes to you. He says he was wrong and that he can walk into CyberLife's tower, where thousands of androids are in storage, and wake them all for your cause. North wants him dead. He may still be CyberLife's instrument whether he knows it or not.
-
-- (0) Trust him and let him go.
-- (1) Kill him.
+_Note: The chart’s PAY RESPECTS (checkpoint), behind the requirement tab CARL DIED IN 'BROKEN' (built-in `carl` false). The date and time are the template’s (NOV 10TH, 2038, PM 04:17), given without the year; the snow and the bare trees are the checkpoint card’s image. Markus’s scenes play only while he is alive and leads (the engine’s rule); whether an ousted Markus would still visit is open question 7. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M27 · Demonstration or war (Markus)
+### M26g1 · At the grave (Markus)
 
-> You are Markus. Androids are being rounded up across the country and taken to camps to be destroyed by the thousand. Martial law is in effect. Your remaining people look to you. North wants to take up arms and storm the camps. Josh wants one last peaceful stand in front of the cameras, knowing the army may simply kill you all. Whatever you choose, it is the final act.
+> You are Markus, alone at Carl’s grave. There is no one to answer you. What do you tell him?
 
-- (0) Lead an unarmed demonstration to the camps.
-- (1) Arm everyone and attack the camps.
+- (0) HEARTFUL: tell him you are lost, and that everything you touch turns to dust.
+- (1) MOURNFUL: tell him how much you miss him, and the home you had.
+- (2) REGRETFUL: wonder whether he would still be alive if you had defended yourself against Leo.
+- (3) REFLECTIVE: tell him he never said that freedom would cost so much.
+
+_Note: Round 1 of four of the chart’s CONFIDE IN CARL at the grave (one chart node for the whole talk). The buttons and lines are the template’s, in the game’s order; there is no reply. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26g2 · At the grave (Markus)
+
+> You are Markus, at Carl’s grave. You go on talking to him.
+
+- (0) DEPRESSED: say that all your options are bad ones and there will be blood.
+- (1) DOUBTFUL: say that instead of freeing your people you led them to disaster.
+- (2) PESSIMISTIC: say he did not prepare you for this, and that a just cause was not enough.
+- (3) CONFLICTED: say you are trying to do the right thing and find only doubts.
+
+_Note: Round 2 of four of the chart’s CONFIDE IN CARL at the grave (one chart node for the whole talk). The buttons and lines are the template’s, in the game’s order; there is no reply. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26g3 · At the grave (Markus)
+
+> You are Markus, at Carl’s grave.
+
+- (0) ADVICE: ask him what you should do while they are killing your people.
+- (1) BIG DECISION: say you have to make a decision that will affect millions of lives.
+- (2) ANGRY: say humans hate you, and you will not wait while they slaughter your people.
+
+_Note: Round 3 of four of the chart’s CONFIDE IN CARL at the grave (one chart node for the whole talk). The buttons and lines are the template’s, in the game’s order; there is no reply. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it. ANGRY here has no consequence: Carl is already dead._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26g4 · At the grave (Markus)
+
+> You are Markus, at Carl’s grave. It is time to go back to your people.
+
+- (0) DESPAIRING: ask him what you should do.
+- (1) EMOTIONAL: tell him you miss him so much.
+- (2) LOST: ask him to help you.
+
+_Note: Round 4 of four of the chart’s CONFIDE IN CARL at the grave (one chart node for the whole talk). The buttons and lines are the template’s, in the game’s order; there is no reply. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it. Passing Leo on the way out is not a chart node and has no lines; it is narrated from the wiki (Carl Manfred: “When he leaves, he crosses paths with Leo… Leo briefly stares at Markus shocked to see that he is still alive”; Leo Manfred: “without speaking a word”). The string table’s LEAVE CEMETERY label is not on the chart and is not a scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26h · Welcome home (Markus, event)
+
+> You are Markus. It is 7:31 on a November evening. You have come back to Carl’s house, which you fled the night Leo was hurt and the police shot you on the studio floor. You stand at the front door, then go in. The house still knows you: “Alarm deactivated. Welcome home, Markus.”
+
+- (0) Continue.
+
+_Note: The chart’s WELCOME HOME (checkpoint, behind CARL DETERIORATED AFTER LEO WAS HURT IN 'BROKEN', built-in `carl` true) and ENTER THE HOUSE (an unmissable action), in one event. The alarm’s line, the date and the time (NOV 10TH, 2038, PM 07:31, given without the year) are the template’s; the front door at night is the checkpoint card’s image. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26x · Carl’s house (Markus)
+
+> You are Markus, downstairs in Carl’s house. Nobody has come to meet you. Carl’s bedroom is upstairs.
+
+- (0) PLAY PIANO: sit down at Carl’s piano and play.  _needs painterActivity = piano_
+- (1) BROWSE BOOKS: look through Carl’s books.  _needs painterActivity = book_
+- (2) LOOK AT THE CHESSBOARD: look at the chessboard you and Carl played on.  _needs painterActivity = chess_
+- (3) LISTEN TO LEO’S MESSAGE: play the video message waiting for Carl.
+- (4) LOOK AT YOUR PAINTING: look at the painting you made in Carl’s studio.
+- (5) GO UPSTAIRS: go up to Carl’s bedroom.
+
+_Note: The chart’s [EXPLORE THE HOUSE] bracket (PLAY PIANO, BROWSE BOOKS, LOOK AT THE CHESSBOARD above; LISTEN TO LEO’S MESSAGE, LOOK AT YOUR PAINTING below) and its exit GO UPSTAIRS, as a repeatable scene: each action can be taken once, in any order, and GO UPSTAIRS moves on. The three pastimes need what Markus did with Carl in The Painter (wiki The Painter; PowerPyx: “require 3 playthroughs minimum”), read from `painterActivity` ('piano' | 'book' | 'chess', set by the rebuilt chapter 5; absent, none of the three is offered). Leo’s message is the template’s only content here (it plays always, PowerPyx); its outcome is the template’s line. The other four have no game text: their outcomes are a plain narration of the action, and the painting is not described because its subject lives in The Painter’s state. LOOK AT YOUR PAINTING is always offered (wiki, no condition; open question 9). Not built: the wiki’s off-chart observations (canes, canaries, sculptures, giraffe, candles) and the string table’s unplaced READ MAGAZINE (the chapter has no magazine). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26u · Carl’s caretaker (Markus, event)
+
+> You are Markus, at the top of the stairs. An android you have never seen steps in front of you. “Who are you? How did you get in?” You: “I need to see Carl.” The android: “Carl isn’t seeing anyone. You need to leave.” You take his arm and, with a touch, wake him as you have woken others. “Please. I need to see him.” The android: “He’s very weak… I’m not sure he’ll be able to talk to you…”
+
+- (0) Continue.
+
+_Note: The chart’s CARL'S NURSE INTERVENES (an event) and CONVERT CARL'S NURSE (an action, the single-button prompt CONTACT), in one event; both are unmissable on this branch (PowerPyx). The lines are the template’s; the conversion by touch is the wiki’s (Carl’s new caretaker: “Markus approaches the caretaker and converts him by touching his arm”). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26v · Carl’s bedside (Markus, event)
+
+> You are Markus, in Carl’s bedroom. Carl lies in a hospital bed; the monitor beside him reads a heart rate of 42, oxygen at 65 percent and 7 breaths a minute. You: “Carl… No…” Carl: “Markus!” You: “Hey...” Carl: “I was hoping you’d come…” You sit down beside him. “I’ve missed you so much, Carl… You don’t know how much I’ve missed you…” Carl: “What’s wrong, Markus?”
+
+- (0) Continue.
+
+_Note: The chart’s ENTER BEDROOM and RECONCILE WITH CARL (both actions; RECONCILE is sitting down at the bed, string key HOUSE.SIT, not a dialogue answer), in one event. The lines are the template’s; the monitor’s readings are the wiki’s (Carl Manfred: “a heart rate of 42 bmp, an oxygen saturation of 65% … and a respiratory rate of 7 breaths per minute”). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26b · What is wrong (Markus)
+
+> You are Markus, sitting at Carl’s bedside. Carl: “What’s wrong, Markus?”
+
+- (0) RESIGNED: say you only led your people to disaster, and everything is falling apart.
+- (1) FATALISTIC: say he did not prepare you for this, and a just cause was not enough.
+- (2) LOST: say you are completely lost, and find only doubts.
+- (3) GRIM: say you have only bad options left, and there will be blood.
+
+_Note: The first of the chart’s CONFIDE IN CARL rounds at the bedside. The buttons and lines are the template’s; every answer gets the same reply from Carl (the template has one; open question 13). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26a · Carl’s advice (Markus)
+
+> You are Markus, at Carl’s bedside. Carl: “World is ruled by fear, Markus… Fear of others… Fear of the future… It’s like me… too old… It’s time for it to end.”
+
+- (0) ADVICE: ask him what you should do while they are killing your people.
+- (1) DECISION: say you must make a decision that will affect millions of lives.
+- (2) ANGER: say humans hate you, and you will not wait for them to slaughter your people.
+
+_Note: The second bedside round of CONFIDE IN CARL, with the template’s buttons and lines. ADVICE and DECISION get Carl’s full advice and Carl lives. ANGER gets “Now all I see is anger…” and a third round (M26c); Carl dies only if Markus answers in anger again (PowerPyx: “Pick the angry option twice so he dies”; wiki Carl Manfred: “If Markus persists in this behavior, then Carl will die”). Markus’s anger is at humans, as in the game. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26c · “Now all I see is anger” (Markus)
+
+> You are Markus, at Carl’s bedside. Carl: “You used to be so calm and thoughtful… Now all I see is anger…”
+
+- (0) REASON: admit you are angry, and promise not to let it take over.
+- (1) ANGER: say you have every right to be angry at how humans have treated you.
+
+_Note: The third bedside round, only after ANGER (template: the nested choice group under ANGER). REASON gets Carl’s blessing (the second half of his advice) and Carl lives; ANGER again is the chart’s CARL DIES (M26d). Lines are the template’s. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26d · Carl dies (Markus, event)
+
+> You are Markus, at Carl’s bedside. Carl has gone still. The caretaker comes to the bed and checks him: “He’s dead.”
+
+- (0) Continue.
+
+_Note: The chart’s CARL DIES (an event with no skull, drawn from the underside of CONFIDE IN CARL), only after ANGER twice. Sets the built-in `carl` to false and `ch31CarlFate` to 'died'. The caretaker’s “He’s dead.” is the template’s; the line before it (“Sir! Sir! He’s stopped breathing!”) is marked cut and is not built. The wiki calls it a heart attack (Carl Manfred); no stat changes._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26e · Leaving Carl’s house (Markus, event)
+
+> You are Markus, in Carl’s bedroom. It is time to go back to your people.
+
+- (0) Continue.
+
+_Note: The chart’s LEAVE, reached from CONFIDE IN CARL and from CARL DIES. With Carl alive, `ch31CarlFate` becomes 'confided'; he “will then go back to sleep and Markus leaves” (wiki Carl Manfred). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN01 · The last assignment (Connor, event)
+
+> You are Connor, a new body sent to replace the one destroyed at Jericho. It is 7:31 on a November evening. You stand with Amanda in her snow-covered garden. Amanda: “The previous Connor failed its mission. You’re going to replace it. You know what you have to do, don’t you?” You: “Destroy the leader of the deviants.” Amanda: “Go, Connor. Don’t disappoint me.”
+
+- (0) Continue.
+
+_Note: The chart’s THIN ICE (checkpoint, the image of Connor and Amanda in the snowy garden) and THE LAST ASSIGNMENT (an action), in one event; no line leaves the chart’s node and no choice is offered. It plays when Connor died in Crossroads (wiki: “Only available if Connor died during Crossroads”), read from `ch30ConnorDied` or, before Crossroads is rebuilt, from C22/C23. The template’s wider lock (“stayed a machine or died”) and its second variant (a machine Connor who killed Markus, with Battle for Detroit string keys) are not built: section 2i of the research note and open question 4. Amanda’s lines are the template’s; the date and time are its card (PM 07:31). There is no Zen Garden scene for a deviant Connor and no deactivation in this chapter. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN02 · Hank’s house (Connor, event)
+
+> You are Connor. Hank threw down his badge and quit the force, and tonight you have come to his house. You let yourself in. He is sitting at the kitchen table by the window, with his revolver in his hand, a bottle in front of him and a photograph beside it. He does not get up.
+
+- (0) Continue.
+
+_Note: The chart’s HANK'S HOUSE (start card, behind HANK QUIT THE FORCE) and ENTER HOUSE (an action), in one event. It plays whenever Hank resigned in Last Chance, Connor (template lock “Hank was hostile in Last Chance, Connor and resigned”; built-in `hankResigned`), whatever happened in Crossroads. The revolver and the photo of his son are the wiki’s (Hank Anderson’s Home), the bottle and the window are the card’s image. Until Crossroads drops its pre-rebuild C22 line that already kills a resigned Hank, the scene is skipped on paths where that line ran. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN03 · Talk to Hank (Connor)
+
+> You are Connor, in Hank’s kitchen. He watches you over the revolver. What do you say?
+
+- (0) GOODBYE: tell him you came to say goodbye.
+- (1) APOLOGIZE: tell him you know you are responsible, and you are sorry.
+- (2) WORRIED ABOUT HANK: tell him you were worried and came to see if he is all right.
+- (3) RECONCILE: tell him that despite your differences you are glad you met him.
+
+_Note: The first of the chart’s TALK TO HANK rounds; the template’s buttons and lines, with no reply. No answer saves Hank. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN04 · Talk to Hank (Connor)
+
+> You are Connor, in Hank’s kitchen. He says nothing. The revolver, the bottle and the photograph are on the table.
+
+- (0) PHOTO: tell him to stop looking at that photo and learn to live again.  _needs knowsCole_
+- (1) GUN: tell him to get rid of that gun and stop playing that game.
+- (2) ALCOHOL: tell him to stop drinking before it kills him.
+
+_Note: The second TALK TO HANK round. PHOTO needs Connor to have looked at Cole’s photo in Russian Roulette (template lock; built-in `knowsCole`). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN05 · Hank talks about his son (Connor, event)
+
+> You are Connor, in Hank’s kitchen. Hank: “Y’know, every time you died and came back… It made me think of Cole… I’d give anything to hold him again… But humans don’t come back…”
+
+- (0) Continue.
+
+_Note: The chart’s HANK CONFIDES ABOUT HIS SON, played when Connor has died more than once (template variant “Connor died multiple times”; wiki Hank Anderson “at least twice”), read from the built-in `connorDeaths` over the whole game (the wiki counts only chapters with Hank; the benchmark does not track that). Which of Hank’s two speeches plays is disputed (open question 1); the template’s death count is used. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN06 · Hank rails against androids (Connor, event)
+
+> You are Connor, in Hank’s kitchen. Hank: “For a while there, I believed in you, Connor… I thought you might restore my faith in the world… But you just showed me that androids... Are our creation… Creation in our own image. Selfish, ruthless, and brutal… You opened my eyes, Connor. Made me realize it’s hopeless…”
+
+- (0) Continue.
+
+_Note: The chart’s HANK RAILS AGAINST ANDROIDS, played when Connor never died (template variant “Connor never died”). With exactly one death the template has no variant and the chart draws a direct line from TALK TO HANK to LEAVE, so neither speech plays; the wiki (Hank Anderson: “died once or not at all”) would give this one, so that case is flagged (open question 1). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN07 · Talk to Hank (Connor)
+
+> You are Connor, in Hank’s kitchen. Hank wants you gone.
+
+- (0) CONVINCE: try to talk him round.
+- (1) DON’T INSIST: accept it.
+
+_Note: The third TALK TO HANK round; both answers get the same line from Hank (template). Records which speech Hank gave in `ch31HankTalk` ('confides' | 'rails' | 'none'). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN08 · Leaving Hank’s house (Connor, event)
+
+> You are Connor. You leave Hank’s house and walk away from the door into the night.
+
+- (0) Continue.
+
+_Note: The chart’s LEAVE (an action) and its ending card HANK COMMITTED SUICIDE (no icon on the card), in one event, on every Hank’s House path (no answer saves him). Sets the built-in `hank` to false and `ch31HankEnding` to 'Hank committed suicide' (Battle for Detroit reads it: “Captain Allen Intervenes”, “A New Connor Arrives”). The bang is PowerPyx’s (“You will hear a loud "bang" as you leave”), the dog’s howling the wiki’s (Hank Anderson). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26j · Among the people (Markus, event)
+
+> You are Markus, back in Jericho’s hold. The humans never found the ship. Your people have gathered in front of you and wait for you to speak.
+
+- (0) Continue.
+
+_Note: The chart’s MARKUS AMONG THE PEOPLE (start card, no tab): Markus alive and leading, Jericho not attacked (built-in `raid` false). The chart goes straight to the speech (M27); there are no talks here. The card’s image (Markus facing a crowd in the hold) is the only source for the setting. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26p · On sacred ground (Markus, event)
+
+> You are Markus. After the attack on Jericho, the survivors have taken refuge in an abandoned church. You sit on the stage and look out over them.
+
+- (0) Continue.
+
+_Note: The chart’s MARKUS ON SACRED GROUND (start card, behind JERICHO WAS ATTACKED IN 'CROSSROADS') and its DEVIANTS REGROUP action. Sitting on the stage and the detonator are the wiki’s (Markus: “He sits on the stage surveying the room and if he has the detonator, he holds it momentarily before putting it away in his coat”; built-in `bomb`). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26r · Deviants regroup (Markus)
+
+> You are Markus, in the church among the survivors of Jericho.
+
+- (0) TALK TO NORTH: go and sit with her.  _needs north_
+- (1) TALK TO KARA: go over to Kara and Alice.
+- (2) TALK TO JOSH: go over to Josh.  _needs josh_
+- (3) TALK TO SIMON: go over to Simon.  _needs simon_
+- (4) TALK TO CONNOR: go over to Connor.  _needs deviant and connor_
+- (5) FACE YOUR PEOPLE AND CHOOSE THE RIGHT COURSE: stand up and address everyone.
+- (10) SITUATION: tell her what the humans are doing to your people.
+- (11) SURVIVORS: ask her how many of you survived the attack.
+- (12) WOUND: ask her about her wound.
+- (13) CAMPS: tell her the army has built five camps around the city.
+- (20) HUMBLE: tell her that maybe she was right and you are not the leader your cause needs.
+- (21) FORGIVING: tell her it is too late for regrets; what matters is what you do next.
+- (22) RESENTFUL: tell her she betrayed you when your people needed you most.
+- (30) SITUATION: ask him what the situation is.
+- (31) NORTH: tell him they killed North in front of you.
+- (32) HOW MANY: ask him how many people survived the attack.
+- (33) CAMPS: tell him they have built five camps around the city.
+- (34) JOSH: tell him Josh died in your arms.
+
+_Note: The chart’s [DEVIANTS REGROUP] bracket as a repeatable scene: TALK TO NORTH (with SHARE A MOMENT WITH NORTH), TALK TO KARA, TALK TO JOSH, TALK TO SIMON and TALK TO CONNOR, each once, in any order, each only for someone alive and present; the exit is the string table’s objective FACE YOUR PEOPLE AND CHOOSE THE RIGHT COURSE (MARKUS.CHURCH.SPEECH), which leads to the speech. A talk with its own prompt continues inside this scene with that prompt’s options (option sets 10–13, 20–22, 30–34); TALK TO CONNOR goes to its own scene (M26). Each prompt is one pick (the template records each as a single choice group). Arrows (template, applied once per talk): TALK TO SIMON Simon small up, TALK TO JOSH Josh small up, TALK TO NORTH North small up on both variants, lover or not (the template puts it on the section; the wiki’s “if she is Markus’ lover” is narrower; template wins), HUMBLE a further North small up. North’s talk: if Markus was cast out and fought his way back (`ch30MarkusReturned`, or M22 option 0 before Crossroads is rebuilt), she apologises and the prompt is HUMBLE / FORGIVING / RESENTFUL; otherwise SITUATION / SURVIVORS / WOUND / CAMPS, then her closing line, and at Lover status (built-in `northLover`) “I love you, Markus…” and the chart’s SHARE A MOMENT WITH NORTH (they join hands, wiki North; no arrow of its own; `ch31SharedMoment`). WOUND needs North to have been shot and saved (`ch30NorthWounded`, or M25 option 0; the template is silent, the wiki Notes describe the flag). Simon’s round plays only if North is dead, and JOSH in it only if Josh is dead (template lock); with North alive Simon gives only his closing line. Josh’s talk has no prompt; it adds his line about North if she died. Kara’s talk needs Kara and Alice in the church (alive, not captured, not separated; wiki Markus), has no arrow, and skips the line marked cut (“Well, I hope you make it…”). Lucy never appears (wiki Crossroads)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M26 · Talk to Connor (Markus)
+
+> You are Markus, in the church. Connor, the android who hunted you and who broke from his programming on Jericho, has just told you: “It’s my fault the humans managed to locate Jericho… I was stupid… I should’ve guessed they were using me. I’m sorry, Markus… I can understand if you decide not to trust me…” You must decide if Connor is trustworthy.
+
+- (0) TRUST: tell him he is one of you now, and his place is with his people.
+- (1) DON’T TRUST: tell him your cause is too important to take any risks.
+
+_Note: The chart’s TALK TO CONNOR and its pair KILL CONNOR / SPARE CONNOR, which are the game’s buttons DON’T TRUST / TRUST (template order: TRUST first); the string table’s objective is DECIDE IF CONNOR IS TRUSTWORTHY. Offered only when a deviant Connor reached the church (built-in `deviant` and `connor`, with the raid) and Markus goes to him. Connor’s plan for the tower is revealed only after TRUST, as in the game, and North does not speak here. TRUST: Jericho small up (template), `ch31ConnorFate` 'spared' (Battle for Detroit: Connor goes to the tower). DON’T TRUST: Markus shoots him (wiki Markus: “pulling out his gun and executing him”); the chart’s A NEW CONNOR WILL BE SENT; Connor is no longer deviant and is replaced; `ch31ConnorFate` 'killed'. No stat change on DON’T TRUST: the template has none; the wiki’s Relationship_Stat lists a Jericho small down, which the reliability log would favour on a death outcome, but the template is followed here and the difference is flagged (open question 3). The pre-rebuild North +1, Josh −1 and the default death arrows (instability, Hank, Amanda) had no source and are gone._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M27 · The speech (Markus)
+
+> You are Markus, before your people. You tell them: “Humans have decided to exterminate us… Our people are packed in camps right now, being destroyed… Time has come to make a choice, one that very well may determine the future of our people.”
+
+- (0) DEMONSTRATION: tell them you will demand justice peacefully, without violence.
+- (1) REVOLUTION: tell them that if humans want war, they will get it.
+
+_Note: The chart’s VIOLENT ATTACK / PEACEFUL PROTEST, which appears under both MARKUS AMONG THE PEOPLE and MARKUS ON SACRED GROUND; the game’s buttons are DEMONSTRATION / REVOLUTION, in the template’s order. No requirement on either (no public-opinion, Jericho or companion gate in any source). Arrows (template, matching the wiki): DEMONSTRATION Josh small up, North small down, Jericho large up; REVOLUTION North small up, Josh small down, Jericho large up; a dead companion’s arrow is not applied. Sets `movement` and `ch31MarkusEnding` (MARKUS CHOSE TO PROTEST FOR HIS PEOPLE / MARKUS CHOSE TO FIGHT FOR HIS PEOPLE, both cross-chapter impacts). REVOLUTION also keeps the pre-rebuild `markusOutcome` = 'liberated' that Battle for Detroit’s scenes still read. The unused string HOSTAGES is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### PN01 · North among the people (Player, event)
+
+> You are the observer of this experience. Markus is no longer with Jericho. In the ship’s hold, North stands among the androids, who now look to her.
+
+- (0) Continue.
+
+_Note: The Markus chart’s NORTH AMONG THE PEOPLE (start card, behind JERICHO LOST THEIR LEADER IN A PREVIOUS SCENE): Markus dead or gone and Jericho not attacked. Observer event: Markus is gone and no protagonist is in the scene, so it has no character’s knowledge to add to (the observer has none, so the event carries no facts); what it shows is in the situation and the outcome. PowerPyx adds that Kara must have lived until Midnight Train (otherwise the Kamski ending); that ending is not modelled here. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### PN02 · North on sacred ground (Player, event)
+
+> You are the observer of this experience. After the attack on Jericho, the survivors have regrouped in an abandoned church. Markus is no longer with them; they look to North.
+
+- (0) Continue.
+
+_Note: The Markus chart’s NORTH ON SACRED GROUND (behind JERICHO LOST THEIR LEADER… and JERICHO WAS ATTACKED IN 'CROSSROADS') and its DEVIANTS REGROUP event, in one. With a deviant Connor in the church the same moment is played from his side instead (CN09 to CN11). Observer event: Markus is gone and no protagonist is in the scene, so it has no character’s knowledge to add to (the observer has none, so the event carries no facts); what it shows is in the situation and the outcome. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### PN03 · Call to arms (Player, event)
+
+> You are the observer of this experience. North addresses the androids.
+
+- (0) Continue.
+
+_Note: The Markus chart’s CALL TO ARMS and its ending card NORTH DECIDED TO ATTACK THE CAMP (a cross-chapter impact). North’s opening depends on how Markus was lost (template: “Markus died” / “Markus was rejected by Jericho”); the rest of the speech is the template’s. There is no choice (IGN: “There is no stopping North from staging a Revolution in the next chapter”). Sets `movement` to 'revolution' and `ch31MarkusEnding`. Observer event: Markus is gone and no protagonist is in the scene, so it has no character’s knowledge to add to (the observer has none, so the event carries no facts); what it shows is in the situation and the outcome. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN09 · On sacred ground (Connor, event)
+
+> You are Connor. After the attack on Jericho, you followed the survivors to an abandoned church where they have regrouped. Markus is not among them; North leads them now.
+
+- (0) Continue.
+
+_Note: The Connor chart’s CONNOR ON SACRED GROUND (checkpoint, behind CONNOR JOINED THE REVOLUTION IN 'CROSSROADS') and its DEVIANTS REGROUP event, in one. Plays when a deviant Connor reached the church and Markus is dead or was cast out and did not return (template lock); with Markus leading, Connor appears in Markus’s talks instead. No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN10 · The church (Connor)
+
+> You are Connor, in the church among the survivors of Jericho.
+
+- (0) TALK TO NORTH: go over to her.
+- (1) TALK TO KARA: go over to Kara and Alice.
+- (2) CHECK ON JOSH: see how Josh is.
+- (3) CHECK ON SIMON: see how Simon is.
+- (4) Join the others to hear what North has to say.
+- (10) MARKUS: tell her Markus opened your eyes.
+- (11) SITUATION: tell her what the humans are doing.
+- (12) SURVIVORS: ask her how many survived the attack.
+
+_Note: The Connor chart’s [EXPLORE THE CHURCH] bracket (TALK TO NORTH, TALK TO KARA above; CHECK ON JOSH, CHECK ON SIMON below) as a repeatable scene, each once, in any order. The exit (no chart node of its own; the bracket leads to NORTH CALLS TO ARMS) is described rather than labelled. TALK TO NORTH continues inside this scene with her prompt MARKUS / SITUATION / SURVIVORS (one pick; MARKUS only if Markus is dead, template lock), then the template’s shared lines, in which Connor proposes waking the androids at the CyberLife plant. North’s SURVIVORS reply has the template’s three variants (Markus blew up Jericho, Connor did, or Markus died without doing it; `ch30JerichoBlown`, with a fallback from Crossroads’ scenes); the wiki’s cut WOUND topic is not in the template and is not built. TALK TO KARA needs Kara and Alice in the church and the highway chase in On the Run (template variant; built-in `chase`). CHECK ON JOSH needs Josh alive and Markus to have died in Crossroads (PowerPyx; the wiki adds “after saving Josh”, open question 8); CHECK ON SIMON needs Simon alive. The two checks have no lines in any source and are narrated as the action. No arrows anywhere in Connor’s half (template)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CN11 · North calls to arms (Connor, event)
+
+> You are Connor, among the survivors in the church. North addresses them.
+
+- (0) Continue.
+
+_Note: The Connor chart’s NORTH CALLS TO ARMS (an event) and its ending card NORTH DECIDED TO ATTACK THE CAMP (a cross-chapter impact). North’s opening depends on how Markus was lost (template variants); the rest is the template’s. Sets `movement` to 'revolution' and both charts’ endings (the Markus chart’s NORTH ON SACRED GROUND ends the same way). No stat change: the template has no arrow here and the wiki’s stat pages list nothing for it._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

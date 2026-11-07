@@ -104,8 +104,6 @@ export function blocked(n,s){
   C04e:()=>s.hostagePhase==='aim'||(s.hostagePhase==='over'&&c('C04d')==='1'?'Connor shot Daniel without holding him at gunpoint first.':'Connor never held Daniel at gunpoint.'),
   C04c:()=>s.hostagePhase==='jumped'||(s.hostageOutcome==='Deviant shot Connor'?'Daniel shot Connor before going over the edge with Emma.':'Daniel never went over the edge with Emma.'),
   K31:()=>s.raid&&c('K17')==='1'&&s.aliceMax<1||'Alice’s relationship was never low enough, or there was no raid, for the abandonment prompt.',
-  M26a:()=>s.carl||'Carl is dead.',
-  M26:()=>s.deviant&&s.connor&&s.raid||'No deviant Connor came to the church.',
   C24:()=>!s.deviant&&s.hank||'Requires a machine Connor and a living Hank.',
   C24b:()=>!s.deviant&&!s.hank||'Requires a machine Connor with Hank dead.',
   C30:()=>c('C24')==='1'&&s.fought||'Connor did not beat Hank on the rooftop.',
@@ -205,9 +203,6 @@ export function apply(n,s,choice,roll=null){
   // A New Home, the last menu of the talk in Alice’s room: she leaves, and gives Kara the key if she is at least Neutral.
   case 'K01g':s.aliceKey=s.aliceBond>=ALICE_KEY;event=(opt.outcome??'')+' '+n.outcomes[s.aliceKey?'key':'distant'];break;
   case 'K31':if(v===0){s.karaActive=false;s.karaOutcome='{{Kara}} abandoned {{Alice}} and left alone.'}break;
-  case 'M26a':if(v===1){s.carl=false;event='{{Carl}}’s heart gives out.'}break;
-  case 'M26':s.markusHits=0;if(v===1){s.deviant=false;jer(-1);north(1);josh(-1);event=connorDies('{{Markus}} shoots {{Connor}}.')+' The replacement serves {{CyberLife}}.'}break;
-  case 'M27':s.markusHits=0;s.movement=v===0?'demonstration':'revolution';if(v===1){north(1);josh(-1);s.markusOutcome='liberated';event='The androids arm themselves. Unless something stops it, the assault will carry the camp.'}else{north(-1);josh(1)}break;
   case 'C24':if(v===0)s.connorOutcome='{{Connor}} gave up the mission on the rooftop.';else if(fail)event=connorDies('{{Hank}} gets the better of him and shoots {{Connor}} on the roof.')+' {{Hank}} walks away; the replacement never reaches the rifle.';else{s.fought=true;event='{{Connor}} beats {{Hank}} down; {{Hank}} goes over the parapet and hangs from the edge.'}break;
   case 'C24b':if(v===0)event=connorDies('The team refuses to let him go; {{Connor}} jumps from the roof.')+' The replacement leaves the rooftop with the rifle damaged.';else if(fail)event=connorDies('The tactical team cuts {{Connor}} down on the roof.');else event='{{Connor}} kills the tactical team and leaves the rooftop.';break;
   case 'C30':s.hank=false;event=v===0?'{{Hank}} falls to his death.':'{{Connor}} pulls {{Hank}} up; {{Hank}} lunges at him again and goes over the edge in the struggle.';break;

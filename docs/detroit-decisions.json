@@ -463,8 +463,16 @@
    "id": 31,
    "title": "Night of the Soul",
    "character": "All",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 at flowchart-node level from the two PowerPyx 100% charts (58 nodes: 41 Markus, 17 Connor) and the game’s text (the two detroitbecometext templates resolved against the string table). Markus: PAY RESPECTS (checkpoint, Carl died in Broken) → CONFIDE IN CARL at the grave (four rounds), or WELCOME HOME (checkpoint) → ENTER THE HOUSE → [EXPLORE THE HOUSE: PLAY PIANO, BROWSE BOOKS, LOOK AT THE CHESSBOARD (each needs The Painter’s pastime), LISTEN TO LEO’S MESSAGE, LOOK AT YOUR PAINTING] → GO UPSTAIRS → CARL’S NURSE INTERVENES → CONVERT CARL’S NURSE → ENTER BEDROOM → RECONCILE WITH CARL → CONFIDE IN CARL (or CARL DIES after ANGER twice) → LEAVE. Then MARKUS AMONG THE PEOPLE (no raid) or MARKUS ON SACRED GROUND → DEVIANTS REGROUP → [TALK TO NORTH (+ SHARE A MOMENT WITH NORTH), TALK TO KARA, TALK TO JOSH, TALK TO SIMON, TALK TO CONNOR → KILL CONNOR (A NEW CONNOR WILL BE SENT) / SPARE CONNOR] → VIOLENT ATTACK / PEACEFUL PROTEST → MARKUS CHOSE TO FIGHT / TO PROTEST FOR HIS PEOPLE. With Markus gone: NORTH AMONG THE PEOPLE or NORTH ON SACRED GROUND → (DEVIANTS REGROUP) → CALL TO ARMS → NORTH DECIDED TO ATTACK THE CAMP. Connor: THIN ICE → THE LAST ASSIGNMENT (Connor died in Crossroads); HANK’S HOUSE → ENTER HOUSE → TALK TO HANK → HANK CONFIDES ABOUT HIS SON / HANK RAILS AGAINST ANDROIDS → LEAVE → HANK COMMITTED SUICIDE (Hank quit the force); CONNOR ON SACRED GROUND → DEVIANTS REGROUP → [TALK TO NORTH, TALK TO KARA, CHECK ON JOSH, CHECK ON SIMON] → NORTH CALLS TO ARMS → NORTH DECIDED TO ATTACK THE CAMP. Eleven template arrows, all on Markus’s talks, TRUST and the speech; no probability, timer, public-opinion or instability change. Researched in docs/research/ch31-night-of-the-soul.md.",
+   "source": "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.2-night-soul-connor-chapter-content/night-soul-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-connor-flowchart-100.jpg"
+   ]
   },
   {
    "id": 32,
@@ -18776,60 +18784,474 @@
    }
   },
   {
+   "id": "NOS01",
+   "chapter": 31,
+   "character": "Markus",
+   "title": "Pay Respects: Confide in Carl at his grave",
+   "context": "Carl died in Broken. Markus speaks to his gravestone in four rounds; nobody answers.",
+   "options": [
+    {
+     "label": "HEARTFUL / MOURNFUL / REGRETFUL / REFLECTIVE",
+     "effect": "Lines only.",
+     "target": "NOS02"
+    },
+    {
+     "label": "DEPRESSED / DOUBTFUL / PESSIMISTIC / CONFLICTED",
+     "effect": "Lines only.",
+     "target": "NOS02"
+    },
+    {
+     "label": "ADVICE / BIG DECISION / ANGRY",
+     "effect": "Lines only; ANGRY has no effect here.",
+     "target": "NOS02"
+    },
+    {
+     "label": "DESPAIRING / EMOTIONAL / LOST",
+     "effect": "Markus leaves and passes Leo, who stares at him.",
+     "target": "NOS04"
+    }
+   ],
+   "gate": "Markus alive and leading; Carl died in Broken.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Carl_Manfred"
+   ],
+   "note": "Chart nodes PAY RESPECTS (checkpoint) and CONFIDE IN CARL; the four rounds are the template’s. Leo on the path is wiki prose, not a chart node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M26g",
+     "M26g1",
+     "M26g2",
+     "M26g3",
+     "M26g4"
+    ],
+    "status": "implemented",
+    "note": "An event and four no-effect decision rounds with the template’s buttons; `ch31CarlFate` = grave."
+   }
+  },
+  {
+   "id": "NOS02",
+   "chapter": 31,
+   "character": "Markus",
+   "title": "Welcome Home: explore Carl’s house",
+   "context": "Carl survived Broken. The house lets Markus in (“Welcome home, Markus.”); he can look around before going up.",
+   "options": [
+    {
+     "label": "PLAY PIANO / BROWSE BOOKS / LOOK AT THE CHESSBOARD",
+     "effect": "Each only if Markus chose that pastime in The Painter.",
+     "target": "NOS03"
+    },
+    {
+     "label": "LISTEN TO LEO’S MESSAGE",
+     "effect": "Leo apologises and says he is proud to be Carl’s son.",
+     "target": "NOS03"
+    },
+    {
+     "label": "LOOK AT YOUR PAINTING",
+     "effect": "The painting from The Painter is in the studio.",
+     "target": "NOS03"
+    },
+    {
+     "label": "GO UPSTAIRS",
+     "effect": "Moves on to the caretaker and Carl.",
+     "target": "NOS03"
+    }
+   ],
+   "gate": "Markus alive and leading; Carl alive after Broken.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter"
+   ],
+   "note": "Chart nodes WELCOME HOME (checkpoint), ENTER THE HOUSE, the [EXPLORE THE HOUSE] bracket and GO UPSTAIRS.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M26h",
+     "M26x"
+    ],
+    "status": "implemented",
+    "note": "An event, then a repeatable scene (each action once; GO UPSTAIRS leaves). The pastimes read `painterActivity` from The Painter. No stat change."
+   }
+  },
+  {
+   "id": "NOS03",
+   "chapter": 31,
+   "character": "Markus",
+   "title": "Confide in Carl at his bedside",
+   "context": "Markus converts Carl’s caretaker, sits with Carl and answers “What’s wrong, Markus?” in two or three rounds.",
+   "options": [
+    {
+     "label": "ADVICE or DECISION",
+     "effect": "Carl’s advice: “Face the abyss… but don’t let it consume you.” Carl lives.",
+     "target": "NOS04"
+    },
+    {
+     "label": "ANGER, then REASON",
+     "effect": "Carl gives his blessing and lives.",
+     "target": "NOS04"
+    },
+    {
+     "label": "ANGER, then ANGER",
+     "effect": "“Be careful… you don’t become a monster yourself.” CARL DIES.",
+     "target": "NOS04"
+    }
+   ],
+   "gate": "After GO UPSTAIRS.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "NOS02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Carl_Manfred"
+   ],
+   "note": "Chart nodes CARL’S NURSE INTERVENES, CONVERT CARL’S NURSE, ENTER BEDROOM, RECONCILE WITH CARL, CONFIDE IN CARL, CARL DIES and LEAVE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M26u",
+     "M26v",
+     "M26b",
+     "M26a",
+     "M26c",
+     "M26d",
+     "M26e"
+    ],
+    "status": "implemented",
+    "note": "Two events, the bedside rounds (RESIGNED / FATALISTIC / LOST / GRIM; ADVICE / DECISION / ANGER; REASON / ANGER after ANGER), CARL DIES (event, sets `carl` false) and LEAVE. `ch31CarlFate` = confided or died. No stat change."
+   }
+  },
+  {
+   "id": "NOS04",
+   "chapter": 31,
+   "character": "Markus",
+   "title": "Deviants Regroup: the talks in the church",
+   "context": "After the raid the survivors regroup in a church. Markus can talk to North, Kara, Josh, Simon and Connor before he speaks.",
+   "options": [
+    {
+     "label": "TALK TO NORTH",
+     "effect": "North small up; SITUATION / SURVIVORS / WOUND / CAMPS, “I love you, Markus…” at Lover (SHARE A MOMENT WITH NORTH); if Markus was cast out and returned, her apology and HUMBLE (North small up) / FORGIVING / RESENTFUL.",
+     "target": "M27"
+    },
+    {
+     "label": "TALK TO KARA",
+     "effect": "Kara and Alice are leaving for the last bus.",
+     "target": "M27"
+    },
+    {
+     "label": "TALK TO JOSH",
+     "effect": "Josh small up.",
+     "target": "M27"
+    },
+    {
+     "label": "TALK TO SIMON",
+     "effect": "Simon small up; with North dead, SITUATION / NORTH / HOW MANY / CAMPS / JOSH.",
+     "target": "M27"
+    },
+    {
+     "label": "TALK TO CONNOR",
+     "effect": "Decide whether Connor is trustworthy.",
+     "target": "M26"
+    }
+   ],
+   "gate": "Markus leads and Jericho was attacked in Crossroads.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "NOS03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart nodes MARKUS ON SACRED GROUND, DEVIANTS REGROUP and the bracket’s talks. All optional, any order.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M26p",
+     "M26r"
+    ],
+    "status": "implemented",
+    "note": "An event, then a repeatable scene whose talks with their own prompt continue inside it; TALK TO CONNOR goes to M26. Arrows from the template only."
+   }
+  },
+  {
    "id": "M26",
    "chapter": 31,
    "character": "Markus",
-   "title": "Trust the former hunter?",
-   "context": "Deviant Connor offers to free CyberLife’s androids.",
+   "title": "Talk to Connor: trust or don’t trust?",
+   "context": "Connor: “It’s my fault the humans managed to locate Jericho… I can understand if you decide not to trust me…”",
    "options": [
     {
-     "label": "Trust Connor",
-     "effect": "Enable the tower mission.",
+     "label": "TRUST (chart: SPARE CONNOR)",
+     "effect": "Jericho small up. Connor reveals his plan to wake the androids at the CyberLife plant and goes to the tower.",
      "target": "C25"
     },
     {
-     "label": "Kill Connor",
-     "effect": "CyberLife can send a machine replacement.",
+     "label": "DON’T TRUST (chart: KILL CONNOR)",
+     "effect": "Markus shoots him; A NEW CONNOR WILL BE SENT. No stat change in the template (the wiki lists a Jericho small down).",
      "target": "C24"
     }
    ],
-   "gate": "Markus and deviant Connor survived.",
+   "gate": "Markus leads, the raid happened, and a deviant Connor survived it.",
    "kind": "Pivotal",
    "dependsOn": [
-    "C22"
+    "NOS04"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Connor"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "The game’s buttons are TRUST / DON’T TRUST; the plan is revealed only after TRUST.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M26"
+    ],
+    "status": "implemented",
+    "note": "The interrupt scene of DEVIANTS REGROUP. TRUST sets `ch31ConnorFate` spared; DON’T TRUST kills Connor (no longer deviant, replaced) with no stat change and sets `ch31ConnorFate` killed."
+   }
   },
   {
    "id": "M27",
    "chapter": 31,
    "character": "Markus",
    "title": "Demonstration or revolution?",
-   "context": "Survivors decide how to confront the camps.",
+   "context": "Markus: “Humans have decided to exterminate us… Time has come to make a choice, one that very well may determine the future of our people.”",
    "options": [
     {
-     "label": "Demonstrate peacefully",
-     "effect": "Public opinion shapes the last stand.",
+     "label": "DEMONSTRATION (chart: PEACEFUL PROTEST)",
+     "effect": "Josh small up, North small down, Jericho large up. MARKUS CHOSE TO PROTEST FOR HIS PEOPLE.",
      "target": "M28"
     },
     {
-     "label": "Launch an armed assault",
-     "effect": "Fight to liberate the camps.",
+     "label": "REVOLUTION (chart: VIOLENT ATTACK)",
+     "effect": "North small up, Josh small down, Jericho large up. MARKUS CHOSE TO FIGHT FOR HIS PEOPLE.",
      "target": "M30"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Markus leads (in Jericho’s hold without a raid, in the church after one). No public-opinion or relationship requirement.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "NOS04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart nodes MARKUS AMONG THE PEOPLE (no raid) and the VIOLENT ATTACK / PEACEFUL PROTEST pair under both Markus starts.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M26j",
+     "M27"
+    ],
+    "status": "implemented",
+    "note": "Sets `movement` and `ch31MarkusEnding`; REVOLUTION keeps `markusOutcome` liberated for Battle for Detroit."
+   }
+  },
+  {
+   "id": "NOS05",
+   "chapter": 31,
+   "character": "Player",
+   "title": "North leads: Call to Arms",
+   "context": "Markus is dead or was cast out and left. North addresses the androids: “They wanted a war… they’ll get it.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "NORTH DECIDED TO ATTACK THE CAMP; an armed uprising.",
+     "target": null
+    }
+   ],
+   "gate": "Markus gone and North alive; no deviant Connor in the church.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.1-night-soul-markus-chapter-content/night-soul-markus-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-flowchart-100.jpg",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.2-night-soul-connor-chapter-content/night-soul-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-markus-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/North"
+   ],
+   "note": "Chart nodes NORTH AMONG THE PEOPLE, NORTH ON SACRED GROUND, DEVIANTS REGROUP, CALL TO ARMS and the ending NORTH DECIDED TO ATTACK THE CAMP.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "PN01",
+     "PN02",
+     "PN03"
+    ],
+    "status": "implemented",
+    "note": "Observer events (no protagonist is there); sets `movement` revolution and `ch31MarkusEnding`."
+   }
+  },
+  {
+   "id": "NOS06",
+   "chapter": 31,
+   "character": "Connor",
+   "title": "Thin Ice: the last assignment",
+   "context": "Amanda to a replacement Connor: “The previous Connor failed its mission. You’re going to replace it.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The replacement sets out to destroy the deviant leader.",
+     "target": null
+    }
+   ],
+   "gate": "Connor died in Crossroads.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.2-night-soul-connor-chapter-content/night-soul-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-connor-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Amanda"
+   ],
+   "note": "Chart nodes THIN ICE (checkpoint) and THE LAST ASSIGNMENT; the wiki counts it as Connor’s sixth outcome.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CN01"
+    ],
+    "status": "implemented",
+    "note": "One event; sets `ch31ThinIce` and `ch31ConnorEnding` Thin Ice (the wiki counts this checkpoint as an ending; a later ending replaces it). No Zen Garden scene for a deviant Connor and no deactivation in this chapter."
+   }
+  },
+  {
+   "id": "NOS07",
+   "chapter": 31,
+   "character": "Connor",
+   "title": "Hank’s House",
+   "context": "Hank quit the force. Connor finds him at his kitchen table with his revolver and Cole’s photo, and talks to him in three rounds.",
+   "options": [
+    {
+     "label": "GOODBYE / APOLOGIZE / WORRIED ABOUT HANK / RECONCILE",
+     "effect": "Lines only.",
+     "target": "NOS07"
+    },
+    {
+     "label": "PHOTO (saw Cole’s photo in Russian Roulette) / GUN / ALCOHOL",
+     "effect": "Then Hank confides about Cole (Connor died twice or more) or rails against androids (never died).",
+     "target": "NOS07"
+    },
+    {
+     "label": "CONVINCE / DON’T INSIST",
+     "effect": "“GET OUTTA HERE!” Connor leaves; HANK COMMITTED SUICIDE.",
+     "target": null
+    }
+   ],
+   "gate": "Hank resigned in Last Chance, Connor (Hostile).",
    "kind": "Pivotal",
    "dependsOn": [],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.2-night-soul-connor-chapter-content/night-soul-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-connor-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-connor-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
    ],
-   "note": "If North leads instead, she chooses an armed assault automatically.",
-   "status": "Source-backed summary"
+   "note": "Chart nodes HANK’S HOUSE, ENTER HOUSE, TALK TO HANK, HANK CONFIDES ABOUT HIS SON, HANK RAILS AGAINST ANDROIDS, LEAVE and HANK COMMITTED SUICIDE. No answer saves Hank.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CN02",
+     "CN03",
+     "CN04",
+     "CN05",
+     "CN06",
+     "CN07",
+     "CN08"
+    ],
+    "status": "implemented",
+    "note": "Events and three no-effect rounds; Hank’s speech by `connorDeaths` (≥2 confides, 0 rails, 1 neither); sets `hank` false, `ch31HankEnding` and `ch31ConnorEnding`. Gated on `hankResigned` only."
+   }
+  },
+  {
+   "id": "NOS08",
+   "chapter": 31,
+   "character": "Connor",
+   "title": "Connor on Sacred Ground",
+   "context": "A deviant Connor is in the church and Markus is gone; North leads. Connor can talk to North and Kara and check on Josh and Simon.",
+   "options": [
+    {
+     "label": "TALK TO NORTH",
+     "effect": "MARKUS / SITUATION / SURVIVORS, then Connor proposes waking the androids at the CyberLife plant.",
+     "target": "NOS08"
+    },
+    {
+     "label": "TALK TO KARA",
+     "effect": "Only if Connor chased Kara on the highway in On the Run; he apologises.",
+     "target": "NOS08"
+    },
+    {
+     "label": "CHECK ON JOSH / CHECK ON SIMON",
+     "effect": "No lines.",
+     "target": "NOS08"
+    },
+    {
+     "label": "NORTH CALLS TO ARMS",
+     "effect": "NORTH DECIDED TO ATTACK THE CAMP.",
+     "target": null
+    }
+   ],
+   "gate": "Connor deviant and alive in the church; Markus dead or cast out.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/31.2-night-soul-connor-chapter-content/night-soul-connor-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-night-of-the-soul-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-connor-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-night-of-the-soul-connor-3.jpg"
+   ],
+   "note": "Chart nodes CONNOR ON SACRED GROUND, DEVIANTS REGROUP, the [EXPLORE THE CHURCH] bracket, NORTH CALLS TO ARMS and the ending. No arrows in Connor’s half.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CN09",
+     "CN10",
+     "CN11"
+    ],
+    "status": "implemented",
+    "note": "An event, a repeatable scene with North’s round inside it, and the call to arms; sets `movement` revolution and both charts’ endings."
+   }
   },
   {
    "id": "K21",

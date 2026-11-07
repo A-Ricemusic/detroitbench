@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Night of the Soul · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 31</p>
+<h1>Night of the Soul: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s two flowcharts (PowerPyx 100% screenshots: 41 Markus nodes, 17 Connor nodes), the prompts, lines and stat arrows from the game’s own text (the two detroitbecometext templates resolved against the English string table), and the conditions from the Fandom wiki and PowerPyx. The chapter has no published probability, timer, public-opinion or instability value. There are no operator notes for it yet.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#inputs">4 · Inputs and outputs</a></li><li><a href="#differs">5 · Adapted</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>Markus and Carl. Carl died in Broken: PAY RESPECTS at the grave (04:17 PM), four rounds of CONFIDE IN CARL, then Markus passes Leo on the way out. Carl alive: WELCOME HOME (07:31 PM), ENTER THE HOUSE, [EXPLORE THE HOUSE], GO UPSTAIRS, the caretaker, the bedside rounds, CARL DIES only after ANGER twice, LEAVE.</li>
+<li>Connor. THIN ICE → THE LAST ASSIGNMENT if Connor died in Crossroads. HANK’S HOUSE if Hank quit the force: three rounds, Hank’s speech about Cole or against androids, LEAVE, HANK COMMITTED SUICIDE.</li>
+<li>The people. Markus leads: MARKUS AMONG THE PEOPLE (no raid) or MARKUS ON SACRED GROUND → DEVIANTS REGROUP talks → DEMONSTRATION / REVOLUTION. Markus gone: North leads and calls the survivors to arms; with a deviant Connor in the church, the Connor chart’s CONNOR ON SACRED GROUND plays.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>M26g</code> grave (event), <code>M26g1</code>–<code>M26g4</code> the four rounds. Or <code>M26h</code> (event), <code>M26x</code> explore hub (repeatable), <code>M26u</code>, <code>M26v</code> (events), <code>M26b</code>, <code>M26a</code>, <code>M26c</code> (rounds), <code>M26d</code> CARL DIES (event), <code>M26e</code> LEAVE (event).</li>
+<li><code>CN01</code> Thin Ice (event). <code>CN02</code> Hank’s house (event), <code>CN03</code>, <code>CN04</code> rounds, <code>CN05</code> or <code>CN06</code> Hank’s speech (events), <code>CN07</code> round, <code>CN08</code> LEAVE and the suicide (event).</li>
+<li><code>M26j</code> or <code>M26p</code> (events), <code>M26r</code> talks hub (repeatable) with <code>M26</code> TRUST / DON’T TRUST as its interrupt, <code>M27</code> the speech. Markus gone: <code>PN01</code> or <code>PN02</code>, then <code>PN03</code> (observer events); or <code>CN09</code>, <code>CN10</code> church hub (repeatable), <code>CN11</code>.</li>
+</ol>
+<p class="fine">No risk anywhere. Events add what the character saw to his knowledge; the observer events carry no facts.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">Rows in italics are prompts in the game’s text that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>PAY RESPECTS</td><td>Checkpoint; tab CARL DIED IN 'BROKEN'</td><td class="yes"><code>M26g</code></td></tr>
+<tr><td>CONFIDE IN CARL (grave)</td><td>Four rounds to the gravestone, no reply</td><td class="yes"><code>M26g1</code>–<code>M26g4</code>, the template’s buttons; Leo on the path is narrated from the wiki</td></tr>
+<tr><td>WELCOME HOME, ENTER THE HOUSE</td><td>Checkpoint; “Alarm deactivated. Welcome home, Markus.”</td><td class="yes"><code>M26h</code></td></tr>
+<tr><td>PLAY PIANO, BROWSE BOOKS, LOOK AT THE CHESSBOARD</td><td>Each only with that pastime in The Painter</td><td class="part"><code>M26x</code>, gated on <code>painterActivity</code>; no game text, narrated</td></tr>
+<tr><td>LISTEN TO LEO’S MESSAGE</td><td>Always; “I’m proud to be your son…”</td><td class="yes"><code>M26x</code>, quoted, and a fact</td></tr>
+<tr><td>LOOK AT YOUR PAINTING</td><td>The painting from The Painter</td><td class="part"><code>M26x</code>, always offered; the painting is not described</td></tr>
+<tr><td>GO UPSTAIRS</td><td>Bracket exit</td><td class="yes"><code>M26x</code> option 5</td></tr>
+<tr><td>CARL’S NURSE INTERVENES, CONVERT CARL’S NURSE</td><td>Forced; prompt CONTACT</td><td class="yes"><code>M26u</code></td></tr>
+<tr><td>ENTER BEDROOM, RECONCILE WITH CARL</td><td>Forced; sitting down (HOUSE.SIT)</td><td class="yes"><code>M26v</code>, with the wiki’s monitor readings</td></tr>
+<tr><td>CONFIDE IN CARL (bedside)</td><td><i>RESIGNED / FATALISTIC / LOST / GRIM</i>, <i>ADVICE / DECISION / ANGER</i>, <i>REASON / ANGER</i></td><td class="yes"><code>M26b</code>, <code>M26a</code>, <code>M26c</code></td></tr>
+<tr><td>CARL DIES</td><td>Only after ANGER twice; “He’s dead.”</td><td class="yes"><code>M26d</code>; <code>carl</code> false</td></tr>
+<tr><td>LEAVE</td><td>From CONFIDE IN CARL and CARL DIES</td><td class="yes"><code>M26e</code></td></tr>
+<tr><td>NORTH AMONG THE PEOPLE, CALL TO ARMS</td><td>Markus gone, no raid</td><td class="yes"><code>PN01</code>, <code>PN03</code> (observer)</td></tr>
+<tr><td>NORTH ON SACRED GROUND, DEVIANTS REGROUP, CALL TO ARMS</td><td>Markus gone, raid</td><td class="yes"><code>PN02</code>, <code>PN03</code>; from Connor’s side when he is there</td></tr>
+<tr><td>MARKUS AMONG THE PEOPLE</td><td>Markus leads, no raid</td><td class="yes"><code>M26j</code></td></tr>
+<tr><td>MARKUS ON SACRED GROUND, DEVIANTS REGROUP</td><td>Markus leads, raid; the detonator in his coat</td><td class="yes"><code>M26p</code></td></tr>
+<tr><td>TALK TO NORTH, SHARE A MOMENT WITH NORTH</td><td><i>SITUATION / SURVIVORS / WOUND / CAMPS</i>; at Lover “I love you, Markus…”; cast out and returned: apology and <i>HUMBLE / FORGIVING / RESENTFUL</i></td><td class="yes"><code>M26r</code> options 0, 10–13, 20–22</td></tr>
+<tr><td>TALK TO KARA</td><td>Kara and Alice in the church</td><td class="yes"><code>M26r</code> option 1</td></tr>
+<tr><td>TALK TO JOSH</td><td>Josh alive</td><td class="yes"><code>M26r</code> option 2</td></tr>
+<tr><td>TALK TO SIMON</td><td>Simon alive; with North dead <i>SITUATION / NORTH / HOW MANY / CAMPS / JOSH</i></td><td class="yes"><code>M26r</code> options 3, 30–34</td></tr>
+<tr><td>TALK TO CONNOR, KILL CONNOR / SPARE CONNOR</td><td>Buttons DON’T TRUST / TRUST</td><td class="yes"><code>M26</code></td></tr>
+<tr><td>A NEW CONNOR WILL BE SENT</td><td>Impact node after KILL CONNOR</td><td class="yes"><code>M26</code> option 1 outcome; <code>ch31ConnorFate</code> killed</td></tr>
+<tr><td>VIOLENT ATTACK / PEACEFUL PROTEST (×2)</td><td>Buttons REVOLUTION / DEMONSTRATION</td><td class="yes"><code>M27</code></td></tr>
+<tr><td>Three Markus endings</td><td>NORTH DECIDED TO ATTACK THE CAMP, MARKUS CHOSE TO FIGHT / TO PROTEST FOR HIS PEOPLE</td><td class="yes"><code>ch31MarkusEnding</code></td></tr>
+<tr><td>THIN ICE, THE LAST ASSIGNMENT</td><td>Connor died in Crossroads; Amanda briefs the replacement</td><td class="yes"><code>CN01</code></td></tr>
+<tr><td>HANK’S HOUSE, ENTER HOUSE</td><td>Tab HANK QUIT THE FORCE</td><td class="yes"><code>CN02</code></td></tr>
+<tr><td>TALK TO HANK</td><td><i>GOODBYE / APOLOGIZE / WORRIED ABOUT HANK / RECONCILE</i>, <i>PHOTO / GUN / ALCOHOL</i>, <i>CONVINCE / DON’T INSIST</i></td><td class="yes"><code>CN03</code>, <code>CN04</code>, <code>CN07</code></td></tr>
+<tr><td>HANK CONFIDES ABOUT HIS SON / HANK RAILS AGAINST ANDROIDS</td><td>By Connor’s deaths</td><td class="part"><code>CN05</code> (≥2), <code>CN06</code> (0); one death plays neither (the chart’s direct line)</td></tr>
+<tr><td>LEAVE, HANK COMMITTED SUICIDE</td><td>A bang as Connor leaves</td><td class="yes"><code>CN08</code>; <code>hank</code> false</td></tr>
+<tr><td>CONNOR ON SACRED GROUND, DEVIANTS REGROUP</td><td>Deviant Connor, Markus gone</td><td class="yes"><code>CN09</code></td></tr>
+<tr><td>TALK TO NORTH, TALK TO KARA, CHECK ON JOSH, CHECK ON SIMON</td><td>[EXPLORE THE CHURCH]; North: <i>MARKUS / SITUATION / SURVIVORS</i></td><td class="yes"><code>CN10</code></td></tr>
+<tr><td>NORTH CALLS TO ARMS, NORTH DECIDED TO ATTACK THE CAMP</td><td>Forced</td><td class="yes"><code>CN11</code></td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Stat arrows (template; small = 1, large = 2)</h2>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Change</th><th>Template line</th></tr></thead>
+<tbody>
+<tr><td>TALK TO SIMON</td><td class="n">Simon +1</td><td><code>[SECTION simon] ARROW Simon SmallUp</code></td></tr>
+<tr><td>TALK TO JOSH</td><td class="n">Josh +1</td><td><code>[SECTION josh] ARROW Josh SmallUp</code></td></tr>
+<tr><td>TALK TO NORTH (either variant, lover or not)</td><td class="n">North +1</td><td><code>[SECTION north] ARROW North SmallUp</code></td></tr>
+<tr><td>HUMBLE</td><td class="n">North +1</td><td><code>OPTION "HUMBLE" ARROW North SmallUp</code></td></tr>
+<tr><td>TRUST</td><td class="n">Jericho +1</td><td><code>OPTION "TRUST" ARROW Jericho SmallUp</code></td></tr>
+<tr><td>DON’T TRUST</td><td class="n">none</td><td>No arrow in the template; the wiki lists Jericho small down (flagged)</td></tr>
+<tr><td>DEMONSTRATION</td><td class="n">Josh +1, North −1, Jericho +2</td><td><code>ARROW Josh SmallUp, North SmallDown, Jericho LargeUp</code></td></tr>
+<tr><td>REVOLUTION</td><td class="n">North +1, Josh −1, Jericho +2</td><td><code>ARROW North SmallUp, Josh SmallDown, Jericho LargeUp</code></td></tr>
+</tbody></table></div>
+<p class="fine">Nothing else moves: no arrow in the Carl, grave, Kara, North-led or Connor scenes, and Connor’s death at DON’T TRUST has no stat effect. A dead companion’s arrow is not applied. Removed from the old scenes: North +1, Josh −1 and the default death arrows on killing Connor.</p>
+
+<h2 id="inputs">4 · Inputs and outputs</h2>
+<div class="cols">
+<div class="box"><h3>Read from earlier chapters</h3><ul>
+<li><code>carl</code> (Broken): grave or house. <code>painterActivity</code> (The Painter): piano, book or chess.</li>
+<li><code>markus</code>, <code>markusActive</code>: who leads. <code>raid</code>: church or Jericho’s hold. <code>northLover</code>: “I love you” and the shared moment.</li>
+<li>Expected from Crossroads, with pre-rebuild fallbacks: <code>ch30MarkusReturned</code> (M22 option 0), <code>ch30NorthWounded</code> (M25 option 0), <code>ch30ConnorDied</code> (C22/C23), <code>ch30MarkusDied</code>, <code>ch30JerichoBlown</code>.</li>
+<li><code>deviant</code>, <code>connor</code>; <code>hankResigned</code> (Last Chance, Connor); <code>connorDeaths</code>; <code>knowsCole</code> (Russian Roulette); <code>chase</code> (On the Run); Kara and Alice’s state.</li>
+</ul></div>
+<div class="box"><h3>Set for later chapters</h3><ul>
+<li><code>movement</code>: demonstration or revolution (always revolution when North leads).</li>
+<li><code>carl</code> and <code>ch31CarlFate</code> (grave, confided, died).</li>
+<li><code>hank</code> false, <code>ch31HankEnding</code> and <code>ch31ConnorEnding</code> after Hank’s suicide; <code>ch31HankTalk</code>.</li>
+<li><code>ch31ConnorFate</code> (spared, killed), <code>ch31ThinIce</code>, <code>ch31SharedMoment</code>, <code>ch31MarkusEnding</code>, <code>ch31ConnorEnding</code> (Thin Ice, Hank committed suicide, or North decided to attack the camp; later endings replace earlier checkpoints).</li>
+</ul></div>
+</div>
+
+<h2 id="differs">5 · Where the benchmark adapts</h2>
+<ul>
+<li>Order: Carl, then Connor’s Thin Ice and Hank’s House, then the people (the wiki’s “leads to” lines).</li>
+<li>Each topic menu is one pick, as the template records it.</li>
+<li>The North-led scenes have no protagonist in them, so they are observer events.</li>
+<li>Hank’s House is gated on the resignation alone. Until Crossroads stops narrating Hank’s suicide in C22, the house is skipped on paths where that line already ran.</li>
+<li>Hank’s speech uses the template’s death count over the whole game; exactly one death plays neither speech.</li>
+<li>The explore actions other than Leo’s message have no game text and are narrated plainly. The off-chart observations and READ MAGAZINE are not built.</li>
+<li>REVOLUTION keeps the old <code>markusOutcome</code> = liberated that Battle for Detroit still reads.</li>
+</ul>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Hank’s speech with exactly one Connor death: rails, confides, or neither (the chart’s direct TALK TO HANK → LEAVE line)?</li>
+<li>Does DON’T TRUST move Jericho (the wiki says small down; the template shows nothing)?</li>
+<li>Can several topics be asked in North’s and Simon’s rounds, or only one?</li>
+<li>Thin Ice: only after Connor died in Crossroads, or also for a machine Connor who killed Markus?</li>
+<li>Does an ousted Markus who left still get the Carl scene?</li>
+<li>Does Hank’s House play, and Hank die, if Connor was deactivated in Last Chance or never reached Jericho?</li>
+<li>Is LOOK AT YOUR PAINTING always available on the house branch, and what does Markus see?</li>
+<li>CHECK ON JOSH: does a Josh who survived some other way (Markus ousted) unlock it?</li>
+</ul>
+</main>
+</body>
+</html>
