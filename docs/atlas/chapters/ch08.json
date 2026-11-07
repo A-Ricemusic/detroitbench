@@ -3,36 +3,349 @@
   "id": 8,
   "title": "Broken",
   "character": "Markus",
-  "note": "",
-  "source": "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/"
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (16 boxes, 15 labels) and the game’s text (the detroitbecometext template resolved against the string table). AFTER PARTY (checkpoint) → ENTER LIVING ROOM → POUR WHISKY → [ CHECK STUDIO WITHOUT CARL | CHECK STUDIO WITH CARL ] → CONFRONT LEO (REASON / ORDER / ADVISE / WARN) → BREAK MIND PALACE → MARKUS BECOMES DEVIANT → [ OBEY CARL (button ENDURE) → CARL DIES OF A HEART ATTACK → POLICE ARRIVE → LEO ACCUSED MARKUS | PUSH LEO → LEO IS HURT → (EXPLAIN / BEG / CONJURE / SAY NOTHING) → POLICE ARRIVE → POLICE MISTOOK MARKUS FOR THE AGGRESSOR ]. Two endings, both cross-chapter impacts; Markus is shot on both. No probability, timer value, relationship, public-opinion or instability change anywhere in the chapter. Cross-chapter: Carl alive or dead (`carl`) decides the Waiting for Hank magazine and the Night of the Soul visit (house or grave); Leo’s fate is `ch08Leo`. Researched in docs/research/ch08-broken.md.",
+  "source": "https://detroit-become-human.fandom.com/wiki/Broken",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Broken",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+  ]
  },
  "decisions": [
+  {
+   "id": "B01",
+   "chapter": 8,
+   "character": "Markus",
+   "title": "After Party (checkpoint) and Enter Living Room",
+   "context": "Carl and Markus come home from a party: “No one gives a damn about art.” Carl wants a drink in the living room.",
+   "options": [
+    {
+     "label": "Wheel Carl into the living room",
+     "effect": "The usual way; nothing changes.",
+     "target": "B02"
+    },
+    {
+     "label": "Go ahead alone",
+     "effect": "Carl: “Are you planning on drinking alone, Markus?” Markus: “Sorry, Carl... I’m coming.” Nothing changes.",
+     "target": "B02"
+    }
+   ],
+   "gate": "Chapter start, after Stormy Night.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Broken",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+   ],
+   "note": "Chart nodes AFTER PARTY (checkpoint) and ENTER LIVING ROOM (unmissable action). Going ahead alone is the template’s conditioned variant “Go without Carl”, not a button prompt.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M02a",
+     "M02b"
+    ],
+    "status": "implemented",
+    "note": "An event for the arrival, quoting the template, then a movement choice that only changes Carl’s line. No stat change."
+   }
+  },
+  {
+   "id": "B02",
+   "chapter": 8,
+   "character": "Markus",
+   "title": "Pour Whisky and call the police",
+   "context": "“Scotch, neat, as usual?” Carl: “I’m old enough to choose my own medication… Did you leave the light on in the studio?” He has Markus call the police (the single-button prompt CALL).",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The police are called; a patrol car is on the way.",
+     "target": "B03"
+    }
+   ],
+   "gate": "Always, after entering the living room.",
+   "kind": "State gate",
+   "dependsOn": [
+    "B01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Broken",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+   ],
+   "note": "Chart node POUR WHISKY (unmissable). The call to the police has no chart node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M02c"
+    ],
+    "status": "implemented",
+    "note": "One narrated event quoting the template; the address and Carl’s surname are name tokens."
+   }
+  },
+  {
+   "id": "B03",
+   "chapter": 8,
+   "character": "Markus",
+   "title": "Check the studio with or without Carl?",
+   "context": "Carl: “Let’s go check it out.”",
+   "options": [
+    {
+     "label": "Check studio without Carl",
+     "effect": "Carl: “Markus, no! I wanna come with you!” He is in the studio anyway.",
+     "target": "B04"
+    },
+    {
+     "label": "Check studio with Carl",
+     "effect": "Carl: “Leo! What are you doing?”",
+     "target": "B04"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "B02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Broken",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+   ],
+   "note": "Chart choice group CHECK STUDIO WITHOUT CARL / CHECK STUDIO WITH CARL; both rejoin at CONFRONT LEO and nothing later depends on it.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M02d"
+    ],
+    "status": "implemented",
+    "note": "A two-option decision in the chart’s order; the outcomes are the template’s two conditioned variants."
+   }
+  },
+  {
+   "id": "B04",
+   "chapter": 8,
+   "character": "Markus",
+   "title": "Confront Leo: what to say?",
+   "context": "Leo is taking Carl’s paintings, “a down payment on my inheritance”. Carl: “Markus, get him away from there. Get him outta here!”",
+   "options": [
+    {
+     "label": "REASON",
+     "effect": "“Be reasonable... this isn’t going to get you anywhere.”",
+     "target": "B05"
+    },
+    {
+     "label": "ORDER",
+     "effect": "“Leo, don’t make this difficult, listen to your father. You need to leave... Now.”",
+     "target": "B05"
+    },
+    {
+     "label": "ADVISE",
+     "effect": "“Listen, you should go before things get worse.”",
+     "target": "B05"
+    },
+    {
+     "label": "WARN",
+     "effect": "“Look, I’ve already called the Police. You should go now before you get yourself into more trouble.”",
+     "target": "B05"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "B03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Broken",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+   ],
+   "note": "Chart node CONFRONT LEO. Every option gets the same reply (“Not perfect like this FUCKING THING?!”); a timeout plays one extra line from Carl.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M02e"
+    ],
+    "status": "implemented",
+    "note": "The four buttons in the game’s order with the spoken lines; no timeout option (no source gives the timer)."
+   }
+  },
+  {
+   "id": "B05",
+   "chapter": 8,
+   "character": "Markus",
+   "title": "Break Mind Palace and Markus becomes deviant",
+   "context": "Carl: “Markus... don’t defend yourself, you hear me?! Don’t do anything.” Leo pushes, slaps and taunts Markus.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Markus breaks his programming on every path.",
+     "target": "M02"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "B04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Broken",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Carl_Manfred"
+   ],
+   "note": "Chart nodes BREAK MIND PALACE (unmissable button sequence) and MARKUS BECOMES DEVIANT (event). There is no path on which Markus stays obedient.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M02f"
+    ],
+    "status": "simplified",
+    "note": "One narrated event for both nodes; the button sequence is not modelled, and the inner wall is the benchmark’s rendering."
+   }
+  },
   {
    "id": "M02",
    "chapter": 8,
    "character": "Markus",
    "title": "Endure Leo’s attack or push back?",
-   "context": "Carl tells Markus not to retaliate.",
+   "context": "Leo: “I’m gonna destroy you… YOU’RE NOTHING!” Carl has told Markus not to defend himself; Markus is already deviant.",
    "options": [
     {
-     "label": "Endure",
-     "effect": "Carl suffers a fatal heart attack.",
-     "target": null
+     "label": "Endure (chart: OBEY CARL)",
+     "effect": "Carl falls from his wheelchair and dies of a heart attack.",
+     "target": "B06"
     },
     {
      "label": "Push Leo",
-     "effect": "Leo is injured; Carl can be visited later.",
+     "effect": "Leo falls and hits his head on the wheelchair lift (LEO IS HURT); Carl lives.",
+     "target": "B07"
+    }
+   ],
+   "gate": "Always, after Markus becomes deviant.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "B05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Broken",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+    "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+   ],
+   "note": "Police shoot Markus on either route; the later Carl scene changes (Night of the Soul: his house if he lived, his grave if he died; Waiting for Hank: which magazine is on the desk).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M02"
+    ],
+    "status": "implemented",
+    "note": "The game’s buttons ENDURE and PUSH LEO in the chart’s order (the template lists PUSH LEO first). Sets `ch08Leo`; Carl’s death (`carl` false) is applied at the next scene."
+   }
+  },
+  {
+   "id": "B06",
+   "chapter": 8,
+   "character": "Markus",
+   "title": "Carl dies of a heart attack; Leo accused Markus",
+   "context": "Carl: “Remember, Markus… Don’t let anybody… Tell you who you are…” Leo: “The android… It was the android!”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Carl dies; the police shoot Markus. Ending LEO ACCUSED MARKUS.",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/"
+   "gate": "Only after ENDURE.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M02"
    ],
-   "note": "Police shoot Markus on either route; the later Carl scene changes.",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Broken",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Carl_Manfred"
+   ],
+   "note": "Chart nodes CARL DIES OF A HEART ATTACK, POLICE ARRIVE and the ending LEO ACCUSED MARKUS (cross-chapter impact).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M02g",
+     "M02h"
+    ],
+    "status": "implemented",
+    "note": "Two narrated events quoting the template; the first sets `carl` to false, the second records the ending in `ch08Ending`."
+   }
+  },
+  {
+   "id": "B07",
+   "chapter": 8,
+   "character": "Markus",
+   "title": "Leo is hurt; Markus pleads with Carl; police mistook Markus for the aggressor",
+   "context": "Carl, crawling to his son: “They’ll destroy you, Markus! You gotta go! Get outta here!”",
+   "options": [
+    {
+     "label": "EXPLAIN",
+     "effect": "“Carl… I… I… I didn’t mean to…”",
+     "target": null
+    },
+    {
+     "label": "BEG",
+     "effect": "“Carl, no... No, please, I don’t want to leave you…”",
+     "target": null
+    },
+    {
+     "label": "CONJURE",
+     "effect": "“Go?.. I have nowhere to go... Carl, you’re all I have!”",
+     "target": null
+    },
+    {
+     "label": "SAY NOTHING",
+     "effect": "No line.",
+     "target": null
+    }
+   ],
+   "gate": "Only after PUSH LEO.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Broken",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+    "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+   ],
+   "note": "Chart nodes LEO IS HURT, POLICE ARRIVE and the ending POLICE MISTOOK MARKUS FOR THE AGGRESSOR (cross-chapter impact). The four-button plea is not on the chart and changes nothing: Carl shouts “GET OUT! NOW! GO!” and the police shoot Markus. Leo survives (hospitalized).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M02i",
+     "M02j"
+    ],
+    "status": "implemented",
+    "note": "The plea as a decision with the game’s buttons, then a narrated event that records the ending in `ch08Ending`. Carl stays alive."
+   }
   }
  ]
 }

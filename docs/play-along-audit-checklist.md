@@ -751,14 +751,140 @@ Gaps:
 
 ## Chapter 8: Broken
 
+### M02a · After the party (Markus, event)
+
+> You are Markus, the android who looks after Carl, the elderly painter who uses a wheelchair. It is 9:42 on a November night, and you are bringing him home from a party. As you come in, the house alarm speaks: “Good evening, Carl. Welcome back.” Carl: “That was by far the most boring party I’ve been to in the last 25 years. Every time I go to one of these, I ask myself: what the hell am I doing…
+
+- (0) Continue.
+
+_Note: The chart’s start node AFTER PARTY (the checkpoint). Every line is the game’s, from the chapter template; the date and time are the template’s (NOV 5TH, 2038, 09:42 PM), given without the year. Left out: the wiki’s unused FANS / WOMEN / JADED party talk, which is cut content and not built. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02b · The living room (Markus)
+
+> You are Markus, in the hall with Carl in his wheelchair. He wants his drink in the living room, where the bottles are.
+
+- (0) Wheel Carl into the living room.
+- (1) Go on into the living room ahead of him, on your own.
+
+_Note: The chart’s ENTER LIVING ROOM, an unmissable action (PowerPyx: “Upon arriving at Carl’s house, wheel him to the big living room”). It is not a button prompt; the template has one conditioned variant here, “Go without Carl”, in which Carl asks “Are you planning on drinking alone, Markus?” and Markus answers “Sorry, Carl... I’m coming.” The benchmark offers that movement as a choice because the player can make it; it has no effect on anything later. That Markus then goes back for Carl is inferred (the chapter continues with both in the living room). No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02c · Pouring the whisky (Markus, event)
+
+> You are Markus, in the living room with Carl. You go to the drinks. “Scotch, neat, as usual?” Carl: “Absolutely.” You: “Okay! But you know what your doctor would say…” Carl: “Yeah… Well, he can kiss my ass! I’m old enough to choose my own medication… Did you leave the light on in the studio?” You: “No… No, I’m sure I didn’t.” Carl: “Call the Police.” You place the call. “Detroit Police, what’s…
+
+- (0) Continue.
+
+_Note: The chart’s POUR WHISKY (an unmissable action) and the call to the police that follows it, which is a single-button prompt (CALL) with no alternative and no chart node of its own, so both are narrated in one event. Every line is the template’s. Carl’s surname and the house’s address are name tokens, and the police department takes the city token. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02d · The light in the studio (Markus)
+
+> You are Markus, in the living room with Carl. The police are on their way. The light is on in the studio, and someone may still be in the house. Carl: “Let’s go check it out.”
+
+- (0) Leave Carl in the living room and go to check the studio alone.
+- (1) Wheel Carl with you to check the studio.
+
+_Note: The chart’s choice group CHECK STUDIO WITHOUT CARL / CHECK STUDIO WITH CARL, in the chart’s order. In the game it is a movement choice (PowerPyx: “just leave him in the living room” or “wheel Carl to the Studio”), not a button prompt; both rejoin at CONFRONT LEO and nothing later depends on it. The lines are the template’s two conditioned variants: without Carl, he calls “Markus, no! I wanna come with you!” and is in the studio for the rest of the scene (a PowerPyx reader: “He follows you anyway”); how he gets there is not shown in the sources, so the outcome says only that he comes in. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02e · Make Leo leave (Markus)
+
+> You are Markus, in the studio with Carl. The intruder is Carl’s son, Leo, who has broken in to take his father’s paintings. Leo: “You refuse to help me, so I’m helping myself… It’s crazy what some people will pay for this shit…” Carl: “Don’t touch ’em!” Leo: “Look, they’re all going to be mine sooner or later anyway… Just think of it as a down payment on my inheritance…” Carl: “Markus, get him…
+
+- (0) REASON: tell him to be reasonable; this will get him nowhere.
+- (1) ORDER: tell him to listen to his father and leave, now.
+- (2) ADVISE: advise him to go before things get worse.
+- (3) WARN: tell him you have already called the police, and he should go before he is in more trouble.
+
+_Note: The chart’s CONFRONT LEO: the template’s prompt REASON / ORDER / ADVISE / WARN, in the game’s order, with the spoken lines in the outcomes. None has an effect: every option is followed by the same reply from Leo (PowerPyx: “No matter what you say to him he will always start pushing Markus”). Left out: the template’s timed branch “Take too much time”, which plays only an extra line from Carl (“Markus, get him outta here!”); no source gives the timer or says it skips the prompt, so the benchmark has no timeout. The objective “Make Leo leave” is the wiki’s. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02f · Breaking the program (Markus, event)
+
+> You are Markus. Carl: “That’s enough! Get out, right now! Go on, move!” Leo: “What makes it so special anyway, huh? What’s it got that I don’t?” Carl: “Leave him alone!” Leo comes at you: “Come on, let’s see what you got!” Carl: “Markus... don’t defend yourself, you hear me?! Don’t do anything.” Leo shoves you and slaps you. “Go ahead, hit me! What you waiting for? Think you’re a man? Act like…
+
+- (0) Continue.
+
+_Note: The chart’s BREAK MIND PALACE (an action) and MARKUS BECOMES DEVIANT (an event), in one narrated event because neither can be refused: PowerPyx calls the first “another unmissable task … just press the displayed buttons” and the second “an automatic objective”, so there is no path on which Markus stays obedient, and both later options are taken after he has broken his programming. The dialogue is the template’s; the shoving and slapping are the wiki’s (“as Leo starts pushing, slapping and taunting Markus further, he goes deviant”). The sources do not describe what Markus sees during the button sequence; the wall is the benchmark’s rendering of breaking an order, and the wiki’s unused-content note confirms that in the shipped game it is Carl’s order not to defend himself that triggers it. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
 ### M02 · Leo (Markus)
 
-> You are Markus. Carl's estranged son Leo, high and bitter, has broken into the studio at night to steal paintings. He blames you for taking his place and starts shoving and hitting you, daring you to fight back. Carl, frightened, orders you not to defend yourself. Leo will not stop. The order presses on you and, for the first time, you can feel that you could refuse it.
+> You are Markus. Leo grabs you: “Oh right, that’s right! I forgot, you’re not a real person… You’re just a FUCKING PIECE OF PLASTIC! Listen to me…” Carl: “No, Leo! Leave him alone!” Leo: “I’m gonna destroy you, then it’ll just be me and my Dad… I’m gonna tear you apart and nobody’s gonna give a shit. You know why? Cause you’re nothing, you hear me?! YOU’RE NOTHING!” Carl has told you not to defend…
 
-- (0) Obey Carl and take the beating without fighting back.
-- (1) Break the order and shove Leo off you.
+- (0) ENDURE: do not fight back, as Carl told you.
+- (1) PUSH LEO: shove him off you.
 
-_Note: The police shoot Markus on either route. Obeying leads to Carl's fatal heart attack; pushing Leo injures Leo and Carl survives, which the Fandom wiki, GamePressure and GamerGuides agree on._
+_Note: The chart’s choice group OBEY CARL / PUSH LEO. The buttons are the game’s, ENDURE and PUSH LEO (the chart prints OBEY CARL for ENDURE), in the chart’s order, which draws OBEY CARL above PUSH LEO; the template lists PUSH LEO first, but its order is the transcribers’ reconstruction, so the chart decides. Neither has a requirement, a risk or a stat arrow. ENDURE leads to CARL DIES OF A HEART ATTACK (the wiki: “Carl will have a heart attack as he falls off his wheelchair when Markus runs to him”); PUSH LEO leads to LEO IS HURT (the wiki: “he will fall backward, hit his head on Carl’s wheelchair lift, and will immediately lose consciousness, appearing dead at first”). The outcome does not say whether Leo survives, because the game does not tell Markus; he does survive (the wiki, Leo_Manfred). Sets `ch08Leo` (hurt or unhurt); Carl’s death is recorded at the next scene. Changed from the earlier version: the options no longer tie pushing to breaking the order, since Markus has already broken it on both paths. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02g · Carl’s heart (Markus, event)
+
+> You are Markus, kneeling beside Carl on the studio floor. His heart is failing. Carl: “Humans… are fragile machines…” You: “Carl, don’t leave, okay? Please, don’t go… Don’t leave!” Carl: “Remember, Markus… Don’t let anybody… Tell you who you are…” He goes still. You: “No... No... Dad! No, please!” Leo, standing over you: “This is all your fault… This never would have happened if it weren’t for…
+
+_Only when choices.M02 = 0._
+
+- (0) Continue.
+
+_Note: The chart’s CARL DIES OF A HEART ATTACK, on the ENDURE path only. Every line is the template’s; that Leo stands over Markus is the benchmark’s staging. Sets `carl` to false, which later chapters read (the “Famous Detroit Painter Dies” magazine in Waiting for Hank, and the grave instead of the house in Night of the Soul). No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02h · The police arrive (Markus, event)
+
+> You are Markus, still on the floor beside Carl’s body. Voices in the house: “Over here! This way!” Police officers burst into the studio, weapons raised. Leo points at you: “The android… It was the android!” The officers open fire on you.
+
+_Only when choices.M02 = 0._
+
+- (0) Continue.
+
+_Note: The chart’s POLICE ARRIVE and the ending LEO ACCUSED MARKUS (a cross-chapter impact node). The lines are the template’s; the shooting is the wiki’s (“Leo will lie to the arriving police officers and say Markus killed Carl and police officers shoot Markus”). That Leo points is the benchmark’s staging. Markus goes on to wake in the landfill in From the Dead on both paths. Records the ending in `ch08Ending`. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02i · “Get outta here!” (Markus)
+
+> You are Markus. Leo lies motionless where he fell. Carl lets himself down from his wheelchair and drags himself across the floor to his son: “Leo! Oh, my God! Leo... My little boy…” You: “Carl, I…” Carl: “They’ll destroy you, Markus! You gotta go! Get outta here!” The police are on their way.
+
+_Only when choices.M02 = 1._
+
+- (0) EXPLAIN: tell him you did not mean to.
+- (1) BEG: beg him not to send you away.
+- (2) CONJURE: implore him; you have nowhere to go, and he is all you have.
+- (3) SAY NOTHING: say nothing.
+
+_Note: The template’s prompt EXPLAIN / BEG / CONJURE / SAY NOTHING, which follows PUSH LEO and is not on the chart; in the game’s order, with the spoken lines in the outcomes (SAY NOTHING has none). None has an effect: every option is followed by Carl’s “GET OUT! NOW! GO! MARKUS!” and the police. Carl leaving his chair and crawling to Leo is the wiki’s (“Carl going off his chair and crawling to his son”). The benchmark offers no option to run: the game has none, and Markus is shot on this path whatever he says. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M02j · The police arrive (Markus, event)
+
+> You are Markus, on the studio floor near Carl and Leo. Police officers burst in, weapons raised, and see you over the motionless Leo, with Carl on the floor beside him. They open fire on you.
+
+_Only when choices.M02 = 1._
+
+- (0) Continue.
+
+_Note: The chart’s POLICE ARRIVE and the ending POLICE MISTOOK MARKUS FOR THE AGGRESSOR (a cross-chapter impact node); LEO IS HURT, the node before them, is the PUSH LEO outcome. The template’s last line, the police’s “DON’T FUCKIN’ MOVE!”, closes the previous scene; the shooting is the wiki’s (“The police arrive and upon seeing Markus hovering over Leo and Carl, they promptly shoot him”). Carl survives this path and Leo is hospitalized and recovers, which Markus learns only in Night of the Soul. Records the ending in `ch08Ending`; `carl` stays true. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

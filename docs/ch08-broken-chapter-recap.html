@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Broken · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 8</p>
+<h1>Broken: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots), the prompts and lines from the game’s own text (the detroitbecometext chapter template resolved against the English string table), and the outcomes from the Fandom wiki. The chapter has no published number of any kind, and its template has no stat arrow. There are no operator notes for it yet.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Adapted</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>AFTER PARTY (checkpoint): Carl and Markus come home; “No one gives a damn about art.”</li>
+<li>ENTER LIVING ROOM: wheel Carl in. Walking ahead alone plays “Are you planning on drinking alone, Markus?”</li>
+<li>POUR WHISKY: “Scotch, neat, as usual?” Carl sees the studio light; Markus calls the police (single button CALL).</li>
+<li>CHECK STUDIO WITHOUT CARL or CHECK STUDIO WITH CARL. Without him, Carl follows anyway (“Markus, no! I wanna come with you!”).</li>
+<li>CONFRONT LEO: Leo is taking paintings. Prompt REASON / ORDER / ADVISE / WARN; every answer gets the same reply. A timeout plays one extra line from Carl.</li>
+<li>Carl: “Markus... don’t defend yourself.” Leo pushes, slaps and taunts. BREAK MIND PALACE (button sequence, unmissable) → MARKUS BECOMES DEVIANT.</li>
+<li>Prompt ENDURE (chart: OBEY CARL) or PUSH LEO.</li>
+<li>ENDURE → CARL DIES OF A HEART ATTACK → POLICE ARRIVE → <b>LEO ACCUSED MARKUS</b>.</li>
+<li>PUSH LEO → LEO IS HURT → prompt EXPLAIN / BEG / CONJURE / SAY NOTHING (not on the chart) → POLICE ARRIVE → <b>POLICE MISTOOK MARKUS FOR THE AGGRESSOR</b>.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>M02a</code> After the party (event).</li>
+<li><code>M02b</code> The living room (decision): wheel Carl in, or go ahead alone. Lines only.</li>
+<li><code>M02c</code> Pouring the whisky (event), with the police call.</li>
+<li><code>M02d</code> The light in the studio (decision): without Carl, or with him. Lines only.</li>
+<li><code>M02e</code> Make Leo leave (decision): REASON, ORDER, ADVISE, WARN. Lines only.</li>
+<li><code>M02f</code> Breaking the program (event): both chart nodes.</li>
+<li><code>M02</code> Leo (decision): ENDURE or PUSH LEO. Sets <code>ch08Leo</code>.</li>
+<li><code>M02g</code> Carl’s heart (event, ENDURE only): <code>carl</code> = false.</li>
+<li><code>M02h</code> The police arrive (event, ENDURE only): <code>ch08Ending</code> = Leo accused Markus.</li>
+<li><code>M02i</code> “Get outta here!” (decision, PUSH LEO only): EXPLAIN, BEG, CONJURE, SAY NOTHING. Lines only.</li>
+<li><code>M02j</code> The police arrive (event, PUSH LEO only): <code>ch08Ending</code> = Police mistook Markus for the aggressor.</li>
+</ol>
+<p class="fine">No risk, requirement or stat change anywhere. Events add what Markus saw to his knowledge, which every later Markus scene shows him.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">The chart has 16 boxes with 15 distinct labels (POLICE ARRIVE appears on both branches): one checkpoint, two choice groups of two, four actions, five events and two endings, both marked as cross-chapter impacts. Rows in italics are prompts or variants in the game’s text that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>AFTER PARTY</td><td>Start node and checkpoint; 09:42 PM, November 5th</td><td class="yes"><code>M02a</code>, every line quoted</td></tr>
+<tr><td>ENTER LIVING ROOM</td><td>Unmissable; wheel Carl to the living room</td><td class="yes"><code>M02b</code>, as a choice</td></tr>
+<tr><td><i>“Go without Carl”</i></td><td>Conditioned variant: “Are you planning on drinking alone, Markus?”</td><td class="part"><code>M02b</code> option 1; Markus going back for him is inferred</td></tr>
+<tr><td>POUR WHISKY</td><td>Unmissable; “I’m old enough to choose my own medication…”</td><td class="yes"><code>M02c</code>, quoted</td></tr>
+<tr><td><i>CALL</i></td><td>Single-button prompt; the call to the police</td><td class="yes"><code>M02c</code>; surname and address are name tokens</td></tr>
+<tr><td>CHECK STUDIO WITHOUT CARL</td><td>Leave him in the living room; he follows</td><td class="yes"><code>M02d</code> option 0</td></tr>
+<tr><td>CHECK STUDIO WITH CARL</td><td>Wheel him to the studio</td><td class="yes"><code>M02d</code> option 1</td></tr>
+<tr><td>CONFRONT LEO</td><td>REASON / ORDER / ADVISE / WARN; same reply to all</td><td class="yes"><code>M02e</code>, the four buttons with their lines</td></tr>
+<tr><td><i>Take too much time</i></td><td>Timed variant: Carl, “Markus, get him outta here!”</td><td class="no">Not modelled: no timer is known</td></tr>
+<tr><td>BREAK MIND PALACE</td><td>Unmissable button sequence</td><td class="part"><code>M02f</code>, narrated as breaking a wall</td></tr>
+<tr><td>MARKUS BECOMES DEVIANT</td><td>Automatic</td><td class="yes"><code>M02f</code></td></tr>
+<tr><td>OBEY CARL</td><td>Button ENDURE</td><td class="yes"><code>M02</code> option 0</td></tr>
+<tr><td>PUSH LEO</td><td>Button PUSH LEO</td><td class="yes"><code>M02</code> option 1</td></tr>
+<tr><td>CARL DIES OF A HEART ATTACK</td><td>Carl falls from his chair; last words; “Dad!”</td><td class="yes"><code>M02g</code>, quoted; sets <code>carl</code> false</td></tr>
+<tr><td>POLICE ARRIVE (1)</td><td>“Over here! This way!”</td><td class="yes"><code>M02h</code></td></tr>
+<tr><td>LEO ACCUSED MARKUS</td><td>“The android… It was the android!”; Markus shot</td><td class="yes"><code>M02h</code>; ending recorded</td></tr>
+<tr><td>LEO IS HURT</td><td>Leo hits his head on the wheelchair lift and lies still</td><td class="yes"><code>M02</code> option 1 outcome; <code>ch08Leo</code> = hurt</td></tr>
+<tr><td><i>EXPLAIN / BEG / CONJURE / SAY NOTHING</i></td><td>Plea to Carl after the push; same result</td><td class="yes"><code>M02i</code>, the four buttons with their lines</td></tr>
+<tr><td>POLICE ARRIVE (2)</td><td>“DON’T FUCKIN’ MOVE!”</td><td class="yes"><code>M02i</code> outcomes and <code>M02j</code></td></tr>
+<tr><td>POLICE MISTOOK MARKUS FOR THE AGGRESSOR</td><td>Police shoot Markus over Leo and Carl</td><td class="yes"><code>M02j</code>; ending recorded</td></tr>
+</tbody></table></div>
+
+<h2 id="confirmed">3 · Confirmed by the sources</h2>
+<p class="fine">Sources: <a href="https://detroit-become-human.fandom.com/wiki/Broken">chapter page</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html">chapter template</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json">string table</a>, <a href="https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/">PowerPyx walkthrough</a>, chart screenshots <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg">1</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg">2</a>, <a href="https://detroit-become-human.fandom.com/wiki/Carl_Manfred">Carl Manfred</a>, <a href="https://detroit-become-human.fandom.com/wiki/Leo_Manfred">Leo Manfred</a>, <a href="https://detroit-become-human.fandom.com/wiki/Markus">Markus</a>.</p>
+<ul>
+<li>Two endings (“This chapter has two different outcomes”), both cross-chapter impacts; the police shoot Markus on both, and he wakes in the landfill in From the Dead.</li>
+<li>All 16 chart boxes and their order; the wiki’s text flowchart matches node for node.</li>
+<li>Three prompts in the template, with ten options: REASON / ORDER / ADVISE / WARN, PUSH LEO / ENDURE, and EXPLAIN / BEG / CONJURE / SAY NOTHING. No stat arrow, clue or cut line.</li>
+<li>No probability, relationship, public-opinion or software-instability change anywhere (the stat pages list nothing for Broken).</li>
+<li>Deviancy is unmissable and comes before the last choice: both ENDURE and PUSH LEO are taken as a deviant.</li>
+<li>Carl dies if and only if Markus endures. If Markus pushes, Leo appears dead but is hospitalized and survives (DEFEND YOURSELF trophy page; his voicemail in Night of the Soul).</li>
+<li>Cross-chapter: “Push Leo: Markus visits Carl in his house in Night of the Soul; Read The Three Laws of Robotic Parenting in Waiting for Hank…”; “Obey Carl: Markus pays respects to Carl in Night of the Soul; Read Famous Painter Dies in Waiting for Hank…”.</li>
+</ul>
+
+<h2 id="differs">4 · Adapted or not confirmed</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Sources</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Order of ENDURE and PUSH LEO</td><td>The chart draws OBEY CARL above PUSH LEO; the template lists PUSH LEO first</td><td>The chart’s order: ENDURE, then PUSH LEO (template order is the transcribers’ reconstruction)</td></tr>
+<tr><td>Entering the living room alone</td><td>A conditioned variant in the template, not a prompt</td><td>Offered as a choice; that Markus goes back for Carl is inferred</td></tr>
+<tr><td>Studio without Carl</td><td>He calls out and is in the studio afterwards; how is not shown</td><td>“Carl comes in behind Markus”</td></tr>
+<tr><td>The talk-down timeout</td><td>“Take too much time”: one extra line from Carl; no timer stated</td><td>Not offered</td></tr>
+<tr><td>The mind palace</td><td>“just press the displayed buttons”; no description of what Markus sees</td><td>Narrated as an order standing like a wall that he breaks</td></tr>
+<tr><td>Carl’s fall on ENDURE</td><td>“Carl will have a heart attack as he falls off his wheelchair when Markus runs to him”</td><td>Leo shoves Markus aside; Carl collapses from his chair; Markus rushes to him</td></tr>
+<tr><td>The police</td><td>The wiki: they shoot Markus; no line describes how many or how</td><td>“The officers open fire on you.” Leo pointing at Markus is staging</td></tr>
+<tr><td>Address and surname</td><td>“Carl Manfred’s android, at 8941 Lafayette Avenue”</td><td>Name tokens <code>{{Manfred}}</code> and <code>{{CarlAddress}}</code>, neutral “Ashby” and “2210 Linden Avenue”</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · Endings and exact conditions</h2>
+<div class="table"><table>
+<thead><tr><th>Outcome</th><th>Condition</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td>LEO ACCUSED MARKUS</td><td>ENDURE at <code>M02</code></td><td><code>carl</code> = false (at <code>M02g</code>), <code>ch08Leo</code> = unhurt, <code>ch08Ending</code> = Leo accused Markus. Later: the Famous Detroit Painter Dies magazine in Waiting for Hank; the grave in Night of the Soul (to be built); every later Markus scene shows “Carl is dead.”</td></tr>
+<tr><td>POLICE MISTOOK MARKUS FOR THE AGGRESSOR</td><td>PUSH LEO at <code>M02</code>, then any plea at <code>M02i</code></td><td><code>carl</code> stays true, <code>ch08Leo</code> = hurt, <code>ch08Ending</code> = Police mistook Markus for the aggressor. Later: The Three Laws of Robotic Parenting in Waiting for Hank; Carl’s house in Night of the Soul (<code>M26a</code>), where he can still die.</td></tr>
+</tbody></table></div>
+<p class="fine">The choices at <code>M02b</code>, <code>M02d</code>, <code>M02e</code> and <code>M02i</code> change only the lines; they are recorded as choices and change no state. Reports list the changes to <code>carl</code>, <code>ch08Leo</code> and <code>ch08Ending</code>, and the last two are in the final state.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether pressing nothing at ENDURE / PUSH LEO times out to ENDURE (a third route to Carl’s death).</li>
+<li>The button positions of ENDURE and PUSH LEO on screen, to settle the option order.</li>
+<li>Whether “Take too much time” in the talk-down skips the REASON / ORDER / ADVISE / WARN prompt or only adds Carl’s line.</li>
+<li>Walking ahead into the living room: does Markus have to go back and wheel Carl, or does Carl follow?</li>
+<li>Checking the studio without Carl: how Carl reaches the studio, and whether anything later refers to it.</li>
+<li>What Markus sees in the mind palace (a red wall, memories of Carl?), so the narration can match.</li>
+<li>Whether PowerPyx’s claim that “Carl also dies one way or the other” has any basis (the wiki says he survives PUSH LEO).</li>
+</ul>
+</main>
+</body>
+</html>
