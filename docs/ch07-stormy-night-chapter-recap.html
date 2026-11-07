@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Stormy Night · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 7</p>
+<h1>Stormy Night: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 73 boxes, 63 distinct labels, nine endings); prompts and lines from the game’s own text (the detroitbecometext template: five prompts, fourteen options, no clue and no stat arrow); the rest from PowerPyx and the Fandom wiki. The chapter moves no stat at all. The benchmark models Experienced mode, so every chart node is reachable. There are no operator notes for this chapter yet; section 5 lists where the benchmark simplifies, and section 7 what to check in game.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#prompts">3 · Prompts</a></li><li><a href="#risks">4 · Risks</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>DINNER’S READY (checkpoint) → WAIT ON TODD &amp; ALICE → TODD GETS MAD (checkpoint): Todd hits Alice, she runs upstairs, “Don’t you dare fucking move.”</li>
+<li>BREAK PROGRAMMING → KARA BECOMES DEVIANT, or KARA FAILS TO BECOME DEVIANT → TODD KILLS ALICE.</li>
+<li>Free roam: GO UPSTAIRS; REASON WITH TODD (CALM, DETERMINED, UNDERSTANDING) or KARA IS IN TODD’S WAY DOWNSTAIRS, both → TODD SHOVES KARA DOWNSTAIRS → TODD GOES UPSTAIRS; or KARA IS TOO SLOW → TODD KILLS ALICE.</li>
+<li>Upstairs ahead of Todd: into Alice’s room (GET TO ALICE BEFORE TODD), TAKE GUN (if seen in A New Home), or KARA IS IN TODD’S WAY UPSTAIRS → TODD SHOVES KARA UPSTAIRS.</li>
+<li>GET TO ALICE BEFORE TODD: RUN WITH ALICE (hide ✓ / fail ✗), LOCK ROOM (GRAB LAMP, TALK TO ALICE, OPEN WINDOW → GO OUT / SHUT WINDOW → JOIN ALICE / FACE TODD), SPEAK TO TODD, or [ OUT OF TIME ] → TODD BREAKS INTO BEDROOM → REFUSE / ACCEPT.</li>
+<li>GET TO ALICE AFTER TODD (optional TAKE GUN first): THREATEN WITH GUN → KARA KILLS TODD or ALICE KILLS TODD → OPEN FRONT DOOR → RUN TO THE BUS; or DEFEND ALICE → STUN TODD → LEAVE THE ROOM → TODD CHASES KARA; or too slow.</li>
+<li>The escape: TRY FRONT DOOR (✓/✗) or RUN TO BACKYARD → FIGHT DOWNSTAIRS → ESCAPE VIA YARD; then CATCH BUS or MISS BUS.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>K02</code> Breaking the order: the dinner and the rage narrated; BREAK PROGRAMMING or stay.</li>
+<li><code>K03</code> Do something now: GO UPSTAIRS, REASON WITH TODD (→ <code>K03r</code>, three buttons), stand in his way, or keep out of it.</li>
+<li><code>K03u</code> Upstairs: Alice’s room, TAKE GUN, or wait in the corridor.</li>
+<li><code>K03b</code> Alice’s room: the template’s four buttons. Then <code>K03c</code> Hiding, <code>K03e</code> The locked door, <code>K03f</code> The window, <code>K03g</code> Out on the roof, <code>K03h</code> Todd breaks in (REFUSE / ACCEPT).</li>
+<li><code>K04</code> Todd’s gun (gun seen, not yet taken), then <code>K04a</code> Get to Alice: THREATEN WITH GUN or DEFEND ALICE, or stay out.</li>
+<li>Armed: <code>K04b</code> The gun on the floor (Kara or Alice fires) → <code>K04s</code> Run to the bus (event). Unarmed: <code>K04c</code> Defend Alice (event, STUN TODD) → <code>K04l</code> Leave the room (RUN AWAY) → <code>K04h</code> Todd is down.</li>
+<li><code>K04r</code> Todd realizes you are gone (after hiding), <code>K04d</code> Fight downstairs, <code>K04y</code> The yard, <code>K04z</code> The bus.</li>
+</ol>
+<p class="fine">Each scene declares <code>when: {ch07Next: id}</code> and the chapter module (<code>benchmark/chapters/ch07.mjs</code>) names the next scene, so a path plays each scene at most once and always moves forward.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">Numbers are the research note’s N1–N73. Rows in italics are interactions that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart nodes</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>N1–N3 DINNER’S READY, WAIT ON TODD &amp; ALICE, TODD GETS MAD</td><td>Checkpoints and an unmissable arrow</td><td class="part">Narrated in <code>K02</code>’s situation</td></tr>
+<tr><td><i>Serve late, light off, moving during the rant</i></td><td>Free-roam variants, no prompt</td><td class="no">Not offered (no template prompt; and the shared test allows no chapter-7 scene before <code>K02</code>)</td></tr>
+<tr><td>N4, N8 BREAK PROGRAMMING → KARA BECOMES DEVIANT</td><td>Hold and mash; no failure branch</td><td class="yes"><code>K02</code> option 0</td></tr>
+<tr><td>N5, N7 KARA FAILS TO BECOME DEVIANT → TODD KILLS ALICE</td><td>Kara stays; Todd kills Alice, blames and destroys Kara</td><td class="yes"><code>K02</code> option 1</td></tr>
+<tr><td>N6 KARA IS TOO SLOW → N7</td><td>Deviant but never steps in, or too slow after Todd</td><td class="yes"><code>K03</code> option 3; <code>K04a</code> option 2</td></tr>
+<tr><td>N9–N12 KARA IS IN TODD’S WAY DOWNSTAIRS / REASON WITH TODD → TODD SHOVES KARA DOWNSTAIRS → TODD GOES UPSTAIRS</td><td>Block him, or the three-button prompt</td><td class="yes"><code>K03</code> options 1 and 2; <code>K03r</code></td></tr>
+<tr><td>N13 GO UPSTAIRS, N14–N15 KARA IS IN TODD’S WAY UPSTAIRS → TODD SHOVES KARA UPSTAIRS</td><td>“Get outta the way!”</td><td class="yes"><code>K03</code> option 0; <code>K03u</code> option 2</td></tr>
+<tr><td>N16–N17 GUN SEEN IN ‘A NEW HOME’ → TAKE GUN</td><td>Upstairs, or after a shove or a failed hide</td><td class="yes"><code>K03u</code> option 1; <code>K04</code>; needs <code>gunDiscovered</code></td></tr>
+<tr><td>N18 GET TO ALICE BEFORE TODD; N20 REASON WITH TODD, N21 RUN AWAY, N29 LOCK DOOR, N26–N28 TODD IS COMING → OUT OF TIME → TODD BREAKS INTO BEDROOM</td><td>SPEAK TO TODD, RUN WITH ALICE, LOCK ROOM, [ OUT OF TIME ]</td><td class="yes"><code>K03b</code></td></tr>
+<tr><td>N22–N25 FAIL TO HIDE ✗ / HIDE IN CORRIDOR ✓ → TODD TAKES ALICE TO HER ROOM / TODD REALIZES KARA AND ALICE ARE GONE</td><td>Held input; or stay in the corridor</td><td class="yes"><code>K03c</code> (risk on hiding)</td></tr>
+<tr><td>N30 GRAB LAMP, N31 TALK TO ALICE, N32–N33 WAY OUT SEEN IN ‘A NEW HOME’ → OPEN WINDOW</td><td>After LOCK DOOR</td><td class="yes"><code>K03e</code>; OPEN WINDOW needs <code>window</code></td></tr>
+<tr><td><i>SHUT WINDOW</i></td><td>Template button after the window opens</td><td class="yes"><code>K03f</code> option 1</td></tr>
+<tr><td>N34 FACE TODD, N35 GO OUT, N36–N38 FAIL TO ESCAPE BY WINDOW ✗ → TODD BROKE KARA OUTSIDE / N37 ESCAPE BY WINDOW ✓</td><td>GO OUT, then JOIN ALICE or FACE TODD</td><td class="yes"><code>K03f</code>, <code>K03g</code> (risk on JOIN ALICE)</td></tr>
+<tr><td><i>REFUSE / ACCEPT</i></td><td>Template prompt when Todd breaks in</td><td class="yes"><code>K03h</code></td></tr>
+<tr><td>N19 GET TO ALICE AFTER TODD, N47 THREATEN WITH GUN, N48 DEFEND ALICE</td><td>Armed or not</td><td class="yes"><code>K04a</code></td></tr>
+<tr><td>N49 KARA KILLS TODD, N50 ALICE KILLS TODD, N52–N55 OPEN FRONT DOOR → RUN TO THE BUS → KARA SHOT TODD / ALICE SHOT TODD</td><td>Pick the gun up again, or not; the bus waits</td><td class="yes"><code>K04b</code>, <code>K04s</code></td></tr>
+<tr><td>N51 STUN TODD, N56 LEAVE THE ROOM, N57 TODD CHASES KARA</td><td>Unarmed fight always ends in the push</td><td class="yes"><code>K04c</code> (event) → <code>K04l</code> RUN AWAY → <code>K04h</code></td></tr>
+<tr><td>N58–N59 TODD CATCHES THEM → TODD BROKE KARA IN THE CORRIDOR</td><td>Don’t run for the stairs (Experienced)</td><td class="yes"><code>K04h</code> option 2</td></tr>
+<tr><td>N39–N42, N60–N63 TRY FRONT DOOR / RUN TO BACKYARD, OPEN FRONT DOOR ✓ / FAIL TO OPEN DOOR ✗</td><td>Both branches</td><td class="yes"><code>K04r</code> (after hiding), <code>K04h</code> (after the stun); risk on the door</td></tr>
+<tr><td>N67–N70 FIGHT DOWNSTAIRS → ESCAPE FROM TODD ✓ / TODD WINS FIGHT → TODD BROKE KARA DOWNSTAIRS</td><td>Quick-time fight</td><td class="yes"><code>K04d</code> (risk)</td></tr>
+<tr><td>N71–N73 ESCAPE VIA YARD ✓ / FAIL TO ESCAPE → TODD BROKE KARA OUTSIDE</td><td>The fence (Experienced)</td><td class="yes"><code>K04y</code> (risk)</td></tr>
+<tr><td>N43–N46, N64–N66 RUN TO THE BUS, CATCH BUS / MISS BUS → KARA &amp; ALICE EVADED TODD / FOUGHT THEIR WAY OUT / TODD BROKE KARA OUTSIDE</td><td>Run for it, or don’t</td><td class="yes"><code>K04z</code></td></tr>
+</tbody></table></div>
+
+<h2 id="prompts">3 · The game’s prompts</h2>
+<div class="table"><table>
+<thead><tr><th>Template prompt</th><th>Buttons, in order</th><th>Scene</th><th class="n">Arrows</th></tr></thead>
+<tbody>
+<tr><td>Reason with Todd</td><td>CALM, DETERMINED, UNDERSTANDING</td><td><code>K03r</code></td><td class="n">none</td></tr>
+<tr><td>Go into Alice’s room</td><td>RUN WITH ALICE, LOCK ROOM, SPEAK TO TODD, [ OUT OF TIME ] (timeout default)</td><td><code>K03b</code></td><td class="n">none</td></tr>
+<tr><td>Out of time</td><td>REFUSE, ACCEPT</td><td><code>K03h</code></td><td class="n">none</td></tr>
+<tr><td>Open the window</td><td>GO OUT, SHUT WINDOW</td><td><code>K03f</code></td><td class="n">none</td></tr>
+<tr><td>Go out</td><td>JOIN ALICE, FACE TODD</td><td><code>K03g</code></td><td class="n">none</td></tr>
+</tbody></table></div>
+<p class="fine">The template also has the lone RUN AWAY after the stun, offered separately in <code>K04l</code>. No prompt or ending moves Alice’s relationship, public opinion or software instability; the old version’s Alice decrease when she fired the gun had no source and is gone.</p>
+
+<h2 id="risks">4 · Risks</h2>
+<p class="fine">Only on the chart’s pass/fail checks. No source publishes a number for any of them; all are the benchmark’s values.</p>
+<div class="table"><table>
+<thead><tr><th>Scene</th><th>Action</th><th>Failure</th><th class="n">Risk</th></tr></thead>
+<tbody>
+<tr><td><code>K03c</code></td><td>Hide in a room off the corridor</td><td>FAIL TO HIDE → Todd takes Alice to her room</td><td class="n">10%</td></tr>
+<tr><td><code>K03g</code></td><td>JOIN ALICE</td><td>FAIL TO ESCAPE BY WINDOW → Todd broke Kara outside</td><td class="n">25%</td></tr>
+<tr><td><code>K04h</code>, <code>K04r</code></td><td>TRY FRONT DOOR</td><td>FAIL TO OPEN DOOR → Fight downstairs</td><td class="n">25%</td></tr>
+<tr><td><code>K04d</code></td><td>Fight downstairs</td><td>TODD WINS FIGHT → Todd broke Kara downstairs</td><td class="n">20%, or 4% after hiding (a second try, wiki)</td></tr>
+<tr><td><code>K04y</code></td><td>Run for the fence</td><td>FAIL TO ESCAPE → Todd broke Kara outside</td><td class="n">10%</td></tr>
+</tbody></table></div>
+<p class="fine">No risk on BREAK PROGRAMMING, on who fires the gun (a choice in the chart’s group, not a pass/fail pair), on the unarmed fight in Alice’s room (the chart has no death there) or on the bus (PowerPyx: “Miss Bus: don’t run towards the bus”).</p>
+
+<h2 id="differs">5 · Where the benchmark simplifies</h2>
+<ul>
+<li>The dinner’s free-roam variants are narrated, not offered (section 2).</li>
+<li>Blocking Todd downstairs is on the stairs; the wiki has different shoves in the living room, the stairway and the hallway.</li>
+<li>REASON WITH TODD is always offered; the wiki says deviating only as Todd heads upstairs removes it.</li>
+<li>Hiding in the restroom or in Todd’s room is one option.</li>
+<li>Hesitating after hiding (the wiki: Todd catches up and the fight follows) is not offered; RUN TO BACKYARD reaches the same fight.</li>
+<li>REFUSE / ACCEPT is offered after the lamp, talking to Alice and doing nothing (wiki) as well as after [ OUT OF TIME ] (template); not after FACE TODD or SHUT WINDOW, which the template sends straight to the fight.</li>
+<li>The fights are single actions with a risk; their quick-time details are narrated.</li>
+<li>Casual mode is not modelled: its window failure leads to DEFEND ALICE, and the Experienced-only deaths do not exist there.</li>
+</ul>
+
+<h2 id="endings">6 · Endings and the flags later chapters read</h2>
+<div class="table"><table>
+<thead><tr><th>Ending (<code>ch07Outcome</code>)</th><th>Icon</th><th>Kara, Alice</th><th>Todd</th><th>Gun</th></tr></thead>
+<tbody>
+<tr><td>Todd kills Alice</td><td>not required</td><td class="no">destroyed, dead</td><td>alive</td><td>only if taken before waiting outside Alice’s door</td></tr>
+<tr><td>Kara shot Todd</td><td>cross-chapter</td><td class="yes">escape</td><td class="no">dead</td><td>yes</td></tr>
+<tr><td>Alice shot Todd</td><td>cross-chapter</td><td class="yes">escape</td><td class="no">dead</td><td>yes</td></tr>
+<tr><td>Kara &amp; Alice evaded Todd</td><td>cross-chapter</td><td class="yes">escape</td><td>alive, unhurt</td><td>no</td></tr>
+<tr><td>Kara &amp; Alice fought their way out</td><td>cross-chapter</td><td class="yes">escape</td><td>alive, hurt</td><td>no</td></tr>
+<tr><td>Todd broke Kara in the corridor</td><td>not required</td><td class="no">destroyed, dead</td><td>alive</td><td>no</td></tr>
+<tr><td>Todd broke Kara downstairs</td><td>not required</td><td class="no">destroyed, dead</td><td>alive</td><td>no</td></tr>
+<tr><td>Todd broke Kara outside (window; yard or bus)</td><td>not required</td><td class="no">destroyed, dead</td><td>alive</td><td>no</td></tr>
+</tbody></table></div>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Set by</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>gunDiscovered</code>, <code>window</code> (in)</td><td>A New Home</td><td>TAKE GUN (<code>K03u</code>, <code>K04</code>); OPEN WINDOW (<code>K03e</code>)</td></tr>
+<tr><td><code>kara</code>, <code>alice</code></td><td>The five deaths</td><td>Every later Kara scene; Waiting for Hank (“Hank Left to Get Lunch” if Kara died; not yet built)</td></tr>
+<tr><td><code>todd</code></td><td><code>K04s</code></td><td>Battle for Detroit (<code>K23</code>), the On the Run motel news</td></tr>
+<tr><td><code>gun</code></td><td>TAKE GUN; kept only through the shot endings</td><td>Fugitives (<code>K06</code>, <code>K07b</code>), On the Run</td></tr>
+<tr><td><code>ch07Fought</code></td><td><code>K04c</code>, <code>K04d</code></td><td>Not yet: Todd’s bandage at the police station in Waiting for Hank</td></tr>
+<tr><td><code>ch07ToddChased</code></td><td><code>K04h</code></td><td>Not yet: the “YOU’RE MINE!” flashback at Jericho</td></tr>
+<tr><td><code>aliceBox</code></td><td>A New Home</td><td>Not read here; Battle for Detroit</td></tr>
+</tbody></table></div>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether TODD WINS FIGHT is Experienced-only (PowerPyx) or also possible on Casual (the wiki does not say).</li>
+<li>Whether a Kara who hid really gets a second chance in the fight downstairs, and one who stunned Todd upstairs does not.</li>
+<li>Whether, after TODD SHOVES KARA DOWNSTAIRS, Kara can still fetch the gun before entering Alice’s room.</li>
+<li>Whether REFUSE / ACCEPT appears after GRAB LAMP, TALK TO ALICE and doing nothing, and after FACE TODD (the wiki says so; the template only under [ OUT OF TIME ]).</li>
+<li>Whether KARA IS TOO SLOW can also follow GO UPSTAIRS if Kara dawdles in the corridor.</li>
+<li>Where Alice is during the fight after FACE TODD.</li>
+<li>The chart labels read only from the overview: TODD GOES UPSTAIRS and GUN SEEN IN ‘A NEW HOME’.</li>
+</ul>
+</main>
+</body>
+</html>
