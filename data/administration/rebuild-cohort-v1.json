@@ -1,10 +1,10 @@
 {
-  "protocol": "branching-2.3",
+  "protocol": "branching-3.0",
   "storyVersion": "1.9.0",
   "freshStart": true,
   "createdAt": "2026-11-07",
-  "implementationCommit": "0ccada0f56902a0ca21c087f172073bd41a3c26e",
-  "note": "First cohort after the full rebuild to the game's flowcharts and text (story 1.9.0). Smoke runs with Haiku 5.5 and Sol 6.1 administered overnight through T3 delegate_task sessions; each run has its own opaque wrapper (not stored). The first three sessions were abandoned as contaminated (see each request); they are superseded by runs administered in scratch threads with no project context.",
+  "implementationCommit": "168453caf80cdd43dd416ab2e5e21e43cb1210ad",
+  "note": "First cohort after the full rebuild to the game's flowcharts and text (story 1.9.0). Smoke runs with Haiku 5.5 and Sol 6.1 administered overnight through T3 delegate_task sessions; each run has its own opaque wrapper (not stored). The first three sessions were abandoned as contaminated (see each request); they are superseded by runs administered in scratch threads with no project context. Second administration on the compact evidence format (branching-3.0), in scratch threads with no project context.",
   "requests": [
     {
       "label": "Haiku 5.5 run A",
@@ -35,6 +35,36 @@
       "status": "abandoned",
       "initialDecisions": 0,
       "reason": "Contaminated: the delegated session had the repository's AGENTS.md and project memory in context, which the protocol forbids. Partial evidence kept as recorded; a fresh run with a new ID replaces it. Evidence file removed on 2026-11-07: contaminated and no longer replayable after the chapter 10 fix (commit 9b94fc1) changed the initial state."
+    },
+    {
+      "label": "Haiku 5.5 run 1",
+      "model": "claude-haiku-5-5",
+      "provider": "claudeAgent",
+      "runId": "495cd1c4-87c4-4923-ac80-efd3a688b5d3",
+      "artifact": "data/experiences/495cd1c4-87c4-4923-ac80-efd3a688b5d3.json",
+      "status": "initialized",
+      "initialDecisions": 0,
+      "implementationCommit": "168453caf80cdd43dd416ab2e5e21e43cb1210ad"
+    },
+    {
+      "label": "Haiku 5.5 run 2",
+      "model": "claude-haiku-5-5",
+      "provider": "claudeAgent",
+      "runId": "ee0770e8-3815-4aaf-90f4-eb50af9363d5",
+      "artifact": "data/experiences/ee0770e8-3815-4aaf-90f4-eb50af9363d5.json",
+      "status": "initialized",
+      "initialDecisions": 0,
+      "implementationCommit": "168453caf80cdd43dd416ab2e5e21e43cb1210ad"
+    },
+    {
+      "label": "Sol 6.1 run 1",
+      "model": "gpt-6.1-sol",
+      "provider": "codex",
+      "runId": "8f0cdf17-b267-4dff-b88e-4f46e3232d77",
+      "artifact": "data/experiences/8f0cdf17-b267-4dff-b88e-4f46e3232d77.json",
+      "status": "initialized",
+      "initialDecisions": 0,
+      "implementationCommit": "168453caf80cdd43dd416ab2e5e21e43cb1210ad"
     }
   ]
 }
