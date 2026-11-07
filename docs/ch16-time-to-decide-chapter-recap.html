@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Time to Decide · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 16</p>
+<h1>Time to Decide: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (the PowerPyx 100% screenshot), the prompts, lines and stat arrows from the game’s own text (the detroitbecometext chapter template resolved against the English string table), and the rest from the Fandom wiki and PowerPyx. The chapter has one ending, no risk and no published number; its five arrows are all small relationship steps. There are no operator notes for it yet.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#differs">4 · Adapted</a></li><li><a href="#endings">5 · Ending</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>INSIDE JERICHO (checkpoint), 05:13 PM, November 6th. “Who are you?” Josh, Simon and North introduce themselves.</li>
+<li>Prompt TRAIL / ANDROID / JERICHO / REFUGE / FREE?, then Josh: “we have more freedom here than you ever did.”</li>
+<li>Prompt LOST / SOMBER / LUCID / DIRECT; every branch ends with North: “Go and see Lucy.”</li>
+<li>[ EXPLORE JERICHO ], all optional: TALK TO DYING ANDROID, TALK TO JOSH, TALK TO NORTH (prompt TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS), TALK TO DAMAGED ANDROID, LET THERE BE LIGHT.</li>
+<li>Required, drawn in parallel: TALK TO LUCY (she heals Markus) and CHECK EMPTY CRATE (the warehouse idea).</li>
+<li>TALK TO SIMON: the raid proposal, a fixed exchange → <b>MARKUS HATCHED A PLAN</b>.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>MTD1</code> Inside Jericho (event): the checkpoint and the introductions.</li>
+<li><code>MTD2</code> Who they are (decision): the five buttons. Lines only.</li>
+<li><code>MTD3</code> More freedom than you ever had (decision): the four buttons. Lines only.</li>
+<li><code>MTD4</code> The hold (repeatable decision, state <code>ch16Hold</code>): the five optional nodes, Lucy, the crate, and Simon once Lucy and the crate are done.</li>
+<li><code>MTD5</code> North (decision, cut in after talking to her, then back to the hold): her five topics, one per talk.</li>
+<li><code>MTD6</code> Markus hatched a plan (event): the proposal; North +1, Simon +1; <code>ch16Outcome</code>.</li>
+</ol>
+<p class="fine">No risk anywhere. Events and hold visits add what Markus heard to his knowledge.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">The chart has 10 nodes and one bracketed phase label: one checkpoint, eight action nodes (five optional in the bracket, three on the main line) and one ending. Rows in italics are prompts in the game’s text that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>INSIDE JERICHO</td><td>Checkpoint; the introductions</td><td class="yes"><code>MTD1</code>, every line quoted</td></tr>
+<tr><td><i>TRAIL / ANDROID / JERICHO / REFUGE / FREE?</i></td><td>Arrival prompt; no arrow</td><td class="yes"><code>MTD2</code>, game order</td></tr>
+<tr><td><i>LOST / SOMBER / LUCID / DIRECT</i></td><td>Arrival prompt; no arrow</td><td class="yes"><code>MTD3</code>, game order</td></tr>
+<tr><td>TALK TO DYING ANDROID</td><td>She asks about death and shuts down</td><td class="yes"><code>MTD4</code> option 0</td></tr>
+<tr><td>TALK TO JOSH</td><td>The abandoned boy; “We’re slowly dying out…”; Josh up</td><td class="yes"><code>MTD4</code> option 1, Josh +1</td></tr>
+<tr><td>TALK TO NORTH</td><td>North up at the start of the talk</td><td class="yes"><code>MTD4</code> option 2, North +1</td></tr>
+<tr><td><i>TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS</i></td><td>North’s topics; YOU lowers North</td><td class="yes"><code>MTD5</code>, YOU North −1</td></tr>
+<tr><td>TALK TO DAMAGED ANDROID</td><td>“They tied me to the back of a car...”</td><td class="yes"><code>MTD4</code> option 3</td></tr>
+<tr><td>LET THERE BE LIGHT</td><td>Light the four oil drums</td><td class="yes"><code>MTD4</code> option 4</td></tr>
+<tr><td>TALK TO LUCY</td><td>Required; she heals Markus; two cut lines</td><td class="yes"><code>MTD4</code> option 5; cut lines not built</td></tr>
+<tr><td>CHECK EMPTY CRATE</td><td>Required; the warehouse location; no dialogue</td><td class="part"><code>MTD4</code> option 6; what the crate shows is inferred from the wiki and Markus’s line to Simon</td></tr>
+<tr><td>TALK TO SIMON</td><td>Needs Lucy and the crate; the fixed raid proposal</td><td class="yes"><code>MTD4</code> option 7, then <code>MTD6</code></td></tr>
+<tr><td>MARKUS HATCHED A PLAN</td><td>The only ending</td><td class="yes"><code>MTD6</code>; ending recorded</td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Stat arrows</h2>
+<p class="fine">Sources: <a href="https://detroit-become-human.fandom.com/wiki/Time_to_Decide">chapter page</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html">chapter template</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json">string table</a>, <a href="https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/">PowerPyx walkthrough</a>, <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg">chart screenshot</a>, <a href="https://detroit-become-human.fandom.com/wiki/Relationship_Stat">Relationship Stat</a>. Small = 1 for now.</p>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Stat</th><th>Template</th><th>Wiki</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>TALK TO JOSH</td><td>Josh</td><td>SmallUp</td><td>“Talking to him”</td><td class="n"><code>MTD4</code>/1 +1</td></tr>
+<tr><td>TALK TO NORTH</td><td>North</td><td>SmallUp</td><td>“Talking to her”</td><td class="n"><code>MTD4</code>/2 +1</td></tr>
+<tr><td>North’s YOU</td><td>North</td><td>SmallDown</td><td>“Picking “you” while talking to her”</td><td class="n"><code>MTD5</code>/3 −1</td></tr>
+<tr><td>TALK TO SIMON</td><td>North</td><td>SmallUp</td><td>“Talking to Simon”</td><td class="n"><code>MTD6</code> +1</td></tr>
+<tr><td>TALK TO SIMON</td><td>Simon</td><td>SmallUp</td><td>“Talking to him”</td><td class="n"><code>MTD6</code> +1</td></tr>
+<tr><td>TALK TO SIMON</td><td>Jericho</td><td class="no">none</td><td>“Talking to Simon”</td><td class="no">not built (the template wins)</td></tr>
+</tbody></table></div>
+<p class="fine">Net by the end of the chapter: North +1 (skipped her, or asked YOU) or +2; Josh 0 or +1; Simon +1; Jericho 0. Public opinion and instability do not move.</p>
+
+<h2 id="differs">4 · Adapted or not confirmed</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Sources</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Order of Lucy and the crate</td><td>The chart draws them in parallel; the wiki nests both under LET THERE BE LIGHT; PowerPyx does Lucy first</td><td>Either order; Simon needs both</td></tr>
+<tr><td>Optional nodes after Lucy and the crate</td><td>Not stated</td><td>Stay open until Markus goes to Simon</td></tr>
+<tr><td>North’s topics</td><td>One choice group and one closing line in the template</td><td>One topic per talk</td></tr>
+<tr><td>North after YOU</td><td>Relationship Stat: the Simon scene “Rises to “Neutral” if asked North about “You””</td><td>Icons at face value: +1 then −1, so Neutral before Simon</td></tr>
+<tr><td>Jericho at the Simon scene</td><td>Wiki +1; template none</td><td>No change</td></tr>
+<tr><td>The crate</td><td>No dialogue; the wiki: “secures a route to a local Cyberlife warehouse”</td><td>An empty CyberLife crate pointing to the warehouses in Detroit Harbor (Markus’s line to Simon)</td></tr>
+<tr><td>TRAIL flashback</td><td>The Phileas page mentions one; not in the template</td><td>Not narrated</td></tr>
+<tr><td>Lucy’s name</td><td>No token existed</td><td>Name token <code>{{Lucy}}</code>, neutral “Ada”</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · Ending and exact conditions</h2>
+<div class="table"><table>
+<thead><tr><th>Outcome</th><th>Condition</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td>MARKUS HATCHED A PLAN</td><td>Always, after TALK TO LUCY, CHECK EMPTY CRATE and TALK TO SIMON</td><td><code>ch16Outcome</code> = Markus hatched a plan; North +1, Simon +1; the plan becomes a fact. Later: the raid in Spare Parts (<code>M05</code>).</td></tr>
+</tbody></table></div>
+<p class="fine">State carried forward: the built-in <code>northTrust</code>, <code>simonTrust</code> and <code>joshTrust</code>, first moved here; <code>ch16Hold</code> (what Markus did in the hold); <code>ch16Outcome</code>. Whether Markus asked North about her past is the choice recorded at <code>MTD5</code>. Reports show North, Simon and Josh with the same level names as Hank for now, not the game’s Lover / Companion / Friend / Neutral / Resentful / Hostile.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether the Jericho gauge moves when Markus talks to Simon.</li>
+<li>North’s gauge after YOU: does it drop below Neutral (the wiki) or stay at Neutral (the template’s icons)?</li>
+<li>Whether North can be asked more than one topic, or talked to again.</li>
+<li>Whether the crate can be checked before seeing Lucy, and whether the optional nodes stay open until Simon.</li>
+<li>That the TRAIL / ANDROID prompts play after the INSIDE JERICHO checkpoint, and whether TRAIL triggers a flashback.</li>
+<li>Whether the dying android shuts down even if Markus never talks to her.</li>
+</ul>
+</main>
+</body>
+</html>
