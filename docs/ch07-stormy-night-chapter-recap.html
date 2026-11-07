@@ -51,7 +51,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li><code>K03u</code> Upstairs: Alice’s room, TAKE GUN, or wait in the corridor.</li>
 <li><code>K03b</code> Alice’s room: the template’s four buttons. Then <code>K03c</code> Hiding, <code>K03e</code> The locked door, <code>K03f</code> The window, <code>K03g</code> Out on the roof, <code>K03h</code> Todd breaks in (REFUSE / ACCEPT).</li>
 <li><code>K04</code> Todd’s gun (gun seen, not yet taken), then <code>K04a</code> Get to Alice: THREATEN WITH GUN or DEFEND ALICE, or stay out.</li>
-<li>Armed: <code>K04b</code> The gun on the floor (Kara or Alice fires) → <code>K04s</code> Run to the bus (event). Unarmed: <code>K04c</code> Defend Alice (event, STUN TODD) → <code>K04h</code> Todd is down.</li>
+<li>Armed: <code>K04b</code> The gun on the floor (Kara or Alice fires) → <code>K04s</code> Run to the bus (event). Unarmed: <code>K04c</code> Defend Alice (event, STUN TODD) → <code>K04l</code> Leave the room (RUN AWAY) → <code>K04h</code> Todd is down.</li>
 <li><code>K04r</code> Todd realizes you are gone (after hiding), <code>K04d</code> Fight downstairs, <code>K04y</code> The yard, <code>K04z</code> The bus.</li>
 </ol>
 <p class="fine">Each scene declares <code>when: {ch07Next: id}</code> and the chapter module (<code>benchmark/chapters/ch07.mjs</code>) names the next scene, so a path plays each scene at most once and always moves forward.</p></div>
@@ -78,7 +78,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td><i>REFUSE / ACCEPT</i></td><td>Template prompt when Todd breaks in</td><td class="yes"><code>K03h</code></td></tr>
 <tr><td>N19 GET TO ALICE AFTER TODD, N47 THREATEN WITH GUN, N48 DEFEND ALICE</td><td>Armed or not</td><td class="yes"><code>K04a</code></td></tr>
 <tr><td>N49 KARA KILLS TODD, N50 ALICE KILLS TODD, N52–N55 OPEN FRONT DOOR → RUN TO THE BUS → KARA SHOT TODD / ALICE SHOT TODD</td><td>Pick the gun up again, or not; the bus waits</td><td class="yes"><code>K04b</code>, <code>K04s</code></td></tr>
-<tr><td>N51 STUN TODD, N56 LEAVE THE ROOM, N57 TODD CHASES KARA</td><td>Unarmed fight always ends in the push</td><td class="yes"><code>K04c</code> (event) → <code>K04h</code></td></tr>
+<tr><td>N51 STUN TODD, N56 LEAVE THE ROOM, N57 TODD CHASES KARA</td><td>Unarmed fight always ends in the push</td><td class="yes"><code>K04c</code> (event) → <code>K04l</code> RUN AWAY → <code>K04h</code></td></tr>
 <tr><td>N58–N59 TODD CATCHES THEM → TODD BROKE KARA IN THE CORRIDOR</td><td>Don’t run for the stairs (Experienced)</td><td class="yes"><code>K04h</code> option 2</td></tr>
 <tr><td>N39–N42, N60–N63 TRY FRONT DOOR / RUN TO BACKYARD, OPEN FRONT DOOR ✓ / FAIL TO OPEN DOOR ✗</td><td>Both branches</td><td class="yes"><code>K04r</code> (after hiding), <code>K04h</code> (after the stun); risk on the door</td></tr>
 <tr><td>N67–N70 FIGHT DOWNSTAIRS → ESCAPE FROM TODD ✓ / TODD WINS FIGHT → TODD BROKE KARA DOWNSTAIRS</td><td>Quick-time fight</td><td class="yes"><code>K04d</code> (risk)</td></tr>
@@ -96,7 +96,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>Open the window</td><td>GO OUT, SHUT WINDOW</td><td><code>K03f</code></td><td class="n">none</td></tr>
 <tr><td>Go out</td><td>JOIN ALICE, FACE TODD</td><td><code>K03g</code></td><td class="n">none</td></tr>
 </tbody></table></div>
-<p class="fine">The template also has the lone RUN AWAY after the stun, folded into <code>K04h</code>’s running options. No prompt or ending moves Alice’s relationship, public opinion or software instability; the old version’s Alice decrease when she fired the gun had no source and is gone.</p>
+<p class="fine">The template also has the lone RUN AWAY after the stun, offered separately in <code>K04l</code>. No prompt or ending moves Alice’s relationship, public opinion or software instability; the old version’s Alice decrease when she fired the gun had no source and is gone.</p>
 
 <h2 id="risks">4 · Risks</h2>
 <p class="fine">Only on the chart’s pass/fail checks. No source publishes a number for any of them; all are the benchmark’s values.</p>
@@ -127,7 +127,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <div class="table"><table>
 <thead><tr><th>Ending (<code>ch07Outcome</code>)</th><th>Icon</th><th>Kara, Alice</th><th>Todd</th><th>Gun</th></tr></thead>
 <tbody>
-<tr><td>Todd kills Alice</td><td>not required</td><td class="no">destroyed, dead</td><td>alive</td><td>no</td></tr>
+<tr><td>Todd kills Alice</td><td>not required</td><td class="no">destroyed, dead</td><td>alive</td><td>only if taken before waiting outside Alice’s door</td></tr>
 <tr><td>Kara shot Todd</td><td>cross-chapter</td><td class="yes">escape</td><td class="no">dead</td><td>yes</td></tr>
 <tr><td>Alice shot Todd</td><td>cross-chapter</td><td class="yes">escape</td><td class="no">dead</td><td>yes</td></tr>
 <tr><td>Kara &amp; Alice evaded Todd</td><td>cross-chapter</td><td class="yes">escape</td><td>alive, unhurt</td><td>no</td></tr>

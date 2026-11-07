@@ -3,7 +3,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor} from '../benchmark/story-engine.mjs';
 import {render} from '../benchmark/experience-prompt.mjs';
-import {ENDINGS,RISKS,rules} from '../benchmark/chapters/ch07.mjs';
+import {ENDINGS,RISKS,rules,labels} from '../benchmark/chapters/ch07.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 const node=id=>story.nodes.find(n=>n.id===id);
 const CH7=story.nodes.filter(n=>n.chapter===7).map(n=>n.id);
@@ -24,7 +24,7 @@ const WIN={K01d:WINDOW,...LOCKED,K03e:'2'};        // OPEN WINDOW
 const STUN={K01d:NO_GUN,K03:'1',K03r:'0',K04a:'1'}; // REASON WITH TODD → shoved → DEFEND ALICE unarmed → STUN TODD
 
 test('chapter 7 scenes are in story order, all Kara, and every scene plays at most once on a path',()=>{
- assert.deepEqual(CH7,['K02','K03','K03r','K03u','K03b','K03c','K03e','K03f','K03g','K03h','K04','K04a','K04b','K04s','K04c','K04h','K04r','K04d','K04y','K04z']);
+ assert.deepEqual(CH7,['K02','K03','K03r','K03u','K03b','K03c','K03e','K03f','K03g','K03h','K04','K04a','K04b','K04s','K04c','K04l','K04h','K04r','K04d','K04y','K04z']);
  for(const id of CH7){const n=node(id);assert.equal(n.character,'Kara');assert.equal(n.chapterTitle,'Stormy Night');assert.ok(n.adaptationNote,id);assert.ok(n.sources.includes('https://detroit-become-human.fandom.com/wiki/Stormy_Night'),id);
   if(id!=='K02'&&id!=='K03')assert.deepEqual(n.when,{ch07Next:id},id+' is gated on the chapter step')}
  for(const p of [{},{K02:'1'},STUN,{...STUN,K04h:'1'},WIN,{K01d:GUN,K03:'2'}]){const r=play(p);assert.equal(new Set(r.visited).size,r.visited.length)}});
@@ -97,3 +97,21 @@ test('no stat arrow anywhere in the chapter; risks only on the chart’s pass/fa
  assert.deepEqual(risky,['K03c:0','K03g:0','K04h:0','K04r:1','K04d:0','K04y:0']);
  for(const id of CH7)for(const o of node(id).options){assert.ok(!o.effect,id+' has no effect');
   for(const t of [o.text,o.outcome,o.fact].filter(Boolean))assert.ok(!/Todd|Alice|Kara|Detroit|deviant/i.test(render(t,'neutral')),id+' leaks a name')}});
+
+test('the template’s lone RUN AWAY and report labels use the module contract',()=>{
+  assert.deepEqual(node('K04l').options.map(o=>o.text.split(':')[0]),['RUN AWAY']);
+  const r=play(STUN);assert.equal(r.visited[r.visited.indexOf('K04c')+1],'K04l');
+  assert.equal(r.visited[r.visited.indexOf('K04l')+1],'K04h');
+  assert.equal(labels.ch07Outcome,'Stormy Night ending');
+  for(const id of CH7)if(node(id).options.some(o=>'risk' in o))assert.match(node(id).adaptationNote,/no source gives|unsourced/);
+ });
+
+test('all template and chart-only bedroom prompt labels retain the game order',()=>{
+ for(const [id,want] of Object.entries({K03r:['CALM','DETERMINED','UNDERSTANDING'],K03b:['RUN WITH ALICE','LOCK ROOM','SPEAK TO TODD','[ OUT OF TIME ]'],K03e:['GRAB LAMP','TALK TO ALICE','OPEN WINDOW'],K03f:['GO OUT','SHUT WINDOW'],K03g:['JOIN ALICE','FACE TODD'],K03h:['REFUSE','ACCEPT'],K04l:['RUN AWAY']}))
+  assert.deepEqual(node(id).options.slice(0,want.length).map(o=>render(o.text,'real').split(':')[0]),want,id);
+});
+test('each of the five death boxes records both deaths and a Kara outcome',()=>{
+ for(const [p,f] of [[{K02:'1'},[]],[{...STUN,K04h:'2'},[]],[{...STUN,K04h:'1'},['K04d']],[{...WIN,K03f:'0',K03g:'0'},['K03g']],[{...STUN,K04h:'0',K04z:'1'},[]]]){
+  const {s}=play(p,f);assert.equal(s.kara,false);assert.equal(s.alice,false);assert.equal(s.todd,true);assert.ok(s.karaOutcome&&s.karaOutcome!=='unresolved');assert.ok(Object.values(ENDINGS).includes(s.ch07Outcome));
+ }
+});

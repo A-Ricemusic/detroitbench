@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 144,
+  "decisionNodes": 145,
   "mediaNodes": 27,
   "eventNodes": 17,
-  "totalNodes": 188
+  "totalNodes": 189
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
@@ -2965,6 +2965,35 @@
    ]
   },
   {
+   "id": "K04l",
+   "chapter": 7,
+   "chapterTitle": "Stormy Night",
+   "character": "Kara",
+   "title": "Leave the room",
+   "type": "decision",
+   "when": {
+    "ch07Next": "K04l"
+   },
+   "whenNot": "Kara did not stun Todd in the bedroom.",
+   "situation": "You are {{Kara}}. {{Todd}} is down on the floor of {{Alice}}’s room, wounded and begging her to help him. {{Alice}} is beside you. The doorway is clear.",
+   "options": [
+    {
+     "id": "0",
+     "text": "RUN AWAY: take {{Alice}} and leave the room.",
+     "outcome": "{{Kara}} takes {{Alice}} out into the corridor. {{Todd}} gets up behind them: “You… You bitches! Come here... You ain’t goin’ nowhere! You’re mine!”"
+    }
+   ],
+   "adaptationNote": "The template’s lone RUN AWAY button after “Win the fight: Todd is stunned”, outside a choice group. The chart calls it LEAVE THE ROOM, followed by TODD CHASES KARA. Offered separately before the corridor and exit-route actions; no risk and no stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-b.jpg"
+   ]
+  },
+  {
    "id": "K04h",
    "chapter": 7,
    "chapterTitle": "Stormy Night",
@@ -2975,7 +3004,7 @@
     "ch07Next": "K04h"
    },
    "whenNot": "Kara did not stun Todd in Alice’s room.",
-   "situation": "You are {{Kara}}. {{Todd}} is on the floor of {{Alice}}’s room, begging her to help him. {{Alice}} is beside you. He will not stay down for long. The stairs lead down to the front door, and to the back door and the yard.",
+   "situation": "You are {{Kara}}, in the upstairs corridor with {{Alice}}. Behind you, {{Todd}} is getting up from the floor of her room. The stairs lead down to the front door, and to the back door and the yard.",
    "options": [
     {
      "id": "0",
@@ -2994,7 +3023,7 @@
      "outcome": "{{Kara}} stays in the corridor with {{Alice}}. {{Todd}} gets up and comes after them: “COME BACK HERE!... YOU’RE MINE!.. YOU’RE BOTH MINE!” He catches them in the corridor and breaks {{Kara}} apart. Then he turns to {{Alice}}: “Daddy isn’t angry anymore… Daddy loves you. You know Daddy loves you…”"
     }
    ],
-   "adaptationNote": "STUN TODD → LEAVE THE ROOM (the template’s lone RUN AWAY button) → TODD CHASES KARA, then the chart’s three ways on: TRY FRONT DOOR (check: OPEN FRONT DOOR ✓ → CATCH BUS / MISS BUS, or FAIL TO OPEN DOOR ✗ → FIGHT DOWNSTAIRS), RUN TO BACKYARD (→ FIGHT DOWNSTAIRS), and TODD CATCHES THEM → TODD BROKE KARA IN THE CORRIDOR (ending, not-required icon; Experienced only; PowerPyx: “don’t run towards the stairs and let him get you”). The lone RUN AWAY is folded into the two running options. The 25% risk on the door is the benchmark’s value; no source gives one. Every option sets ch07ToddChased (wiki: “If Todd chased Kara, later on at Jericho, an additional flashback of Todd yelling ‘YOU’RE MINE!’ will play out”). Lines are the template’s (“RUN AWAY”, “Try to open the door”, “Fail to open the door / Fight downstairs”, “Escape failed, Kara was destroyed”).",
+   "adaptationNote": "STUN TODD → LEAVE THE ROOM (the template’s lone RUN AWAY button) → TODD CHASES KARA, then the chart’s three ways on: TRY FRONT DOOR (check: OPEN FRONT DOOR ✓ → CATCH BUS / MISS BUS, or FAIL TO OPEN DOOR ✗ → FIGHT DOWNSTAIRS), RUN TO BACKYARD (→ FIGHT DOWNSTAIRS), and TODD CATCHES THEM → TODD BROKE KARA IN THE CORRIDOR (ending, not-required icon; Experienced only; PowerPyx: “don’t run towards the stairs and let him get you”). The template’s lone RUN AWAY is offered separately in K04l before these corridor and exit-route actions. The 25% risk on the door is the benchmark’s value; no source gives one. Every option sets ch07ToddChased (wiki: “If Todd chased Kara, later on at Jericho, an additional flashback of Todd yelling ‘YOU’RE MINE!’ will play out”). Lines are the template’s (“RUN AWAY”, “Try to open the door”, “Fail to open the door / Fight downstairs”, “Escape failed, Kara was destroyed”).",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",

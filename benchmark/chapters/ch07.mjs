@@ -11,7 +11,7 @@
 //  - kara, alice: false in the five endings where Todd destroys Kara and kills Alice (karaOutcome says how).
 //  - todd: false after KARA SHOT TODD or ALICE SHOT TODD (Waiting for Hank, the On the Run news, Battle for Detroit).
 //  - gun: true from TAKE GUN on; a Kara who took it leaves the house only with Todd shot, so after the chapter gun is
-//    true exactly after the two shot endings (Fugitives' gun options, On the Run's Forgot Gun).
+//    true on surviving paths exactly after the two shot endings (Fugitives' gun options, On the Run's Forgot Gun).
 //  - ch07Outcome: the chart's ending label (ENDINGS below).
 //  - ch07Fought: Kara fought Todd off and he lived hurt (stunned upstairs or beaten off downstairs); the Todd Williams
 //    page: "If Kara fought and stunned him, he will be seen with a bandage" at the police station in Waiting for Hank.
@@ -28,11 +28,9 @@ export const ENDINGS=Object.freeze({
 export const RISKS=Object.freeze({hide:0.1,window:0.25,frontDoor:0.25,fightDownstairs:0.2,yard:0.1});
 
 export const state={ch07Next:null,ch07Exit:null,ch07Fought:false,ch07ToddChased:false,ch07Outcome:null};
-// Report labels for the output flags. Not exported as `labels` yet: tests/chapter-modules.test.mjs asserts that the only
-// chapter labels in the report are its fake chapter 99's, so exporting them fails that shared test. Whoever merges the
-// chapters can export these once that test allows real chapter labels.
-const LABELS={ch07Outcome:'Stormy Night ending',ch07Fought:'Kara fought Todd off (he lived, hurt)',ch07ToddChased:'Todd chased Kara and Alice'};
-export const rules={ENDINGS,RISKS,labels:LABELS,
+// Human labels consumed by the run report through the chapter-module contract.
+export const labels={ch07Outcome:'Stormy Night ending',ch07Fought:'Kara fought Todd off (he lived, hurt)',ch07ToddChased:'Todd chased Kara and Alice'};
+export const rules={ENDINGS,RISKS,
  // A Kara who hid gets a second try at the fight downstairs (wiki: "Kara will be presented with the same chance to charge and
  // stun Todd downstairs. Otherwise, if Kara already stunned Todd upstairs, Kara will shut down"): two tries at the same risk.
  fightDownstairsAfterHiding:RISKS.fightDownstairs**2,
@@ -84,7 +82,8 @@ export function consequence(n,s,opt,choice,fail,h){
    return '';
   case 'K04b':go('K04s');return '';
   case 'K04s':s.todd=false;s.gun=true;s.ch07Outcome=h.c('K04b')==='1'?ENDINGS.aliceShot:ENDINGS.karaShot;go(null);return '';
-  case 'K04c':s.ch07Fought=true;go('K04h');return '';
+  case 'K04c':s.ch07Fought=true;go('K04l');return '';
+  case 'K04l':go('K04h');return '';
   case 'K04h':
    s.ch07ToddChased=true;
    if(v===2){dies(s,ENDINGS.corridor,'{{Todd}} caught {{Kara}} and {{Alice}} in the upstairs corridor, broke {{Kara}} apart and killed {{Alice}}.');return ''}
