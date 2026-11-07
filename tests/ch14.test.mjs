@@ -24,7 +24,7 @@ function playChapter(picks={},init={}){const s=Object.assign(startState(story),i
   const r=apply(n,s,p,0);visited.push(n.id);events[n.id]=r.event;r.changes.forEach(c=>changes.add(c.key));cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,events,changes}}
 
-test('Jericho: sixteen Markus scenes in chart order, one media, five side-branch decisions, the rest events',()=>{
+test('Jericho: sixteen Markus scenes in play order, one media, five side-branch decisions, the rest events',()=>{
  assert.deepEqual(ch.map(n=>n.id),ORDER);
  for(const n of ch){assert.equal(n.character,'Markus');assert.equal(n.chapterTitle,'Jericho');
   assert.ok(n.sources.includes('https://detroit-become-human.fandom.com/wiki/Jericho'),n.id);assert.ok(n.sources.some(u=>u.includes('jericho-chapter-content')),n.id+' cites the template');
@@ -33,14 +33,19 @@ test('Jericho: sixteen Markus scenes in chart order, one media, five side-branch
  assert.deepEqual(ch.filter(n=>n.type==='decision').map(n=>n.id),Object.keys(SIDE));
  assert.deepEqual(ch.filter(n=>n.type==='media').map(n=>n.id),['R14']);
  for(const n of ch.filter(n=>n.type==='event'))assert.ok(n.facts?.length,n.id+' has facts');
+ assert.equal(Object.keys(CHART).length+3,29,'26 named nodes plus the three body nodes');
+ for(const [id,label] of Object.entries(SIDE))assert.ok(node(id).adaptationNote.includes(label),id+' optional chart node');
  for(const [label,id] of Object.entries(CHART))assert.ok(node(id).adaptationNote.includes(label),label+' named in '+id);
 });
 
 test('Jericho: no option carries risk, effect or flags, and no path changes a stat',()=>{
  for(const n of ch){for(const o of n.options){assert.equal(o.risk,undefined,n.id);assert.equal(o.effect,undefined,n.id);assert.equal(o.sets,undefined,n.id)}assert.equal(n.effect,undefined,n.id)}
  for(const n of ch.filter(n=>n.type==='decision'))assert.deepEqual(n.options.map(o=>o.id),['0','1'],n.id);
- for(const picks of [{},{MJ14c:'1',MJ14e:'1',MJ14h:'1',MJ14j:'1',MJ14l:'1',R14:'all'},{R14:'1'},{R14:'2',MJ14c:'0'}]){
-  const r=playChapter(picks);assert.deepEqual(r.visited,ORDER,'side branches never skip or add a scene');
+ // Exhaust every combination of side branches and both cross-chapter inputs.
+ for(let mask=0;mask<32;mask++)for(const chase of [false,true])for(const carl of [false,true]){
+  const picks=Object.fromEntries(Object.keys(SIDE).map((id,i)=>[id,String((mask>>i)&1)]));
+  picks.R14='all';
+  const r=playChapter(picks,{chase,carl});assert.deepEqual(r.visited,ORDER,'side branches never skip or add a scene');
   for(const k of r.changes)assert.ok(['knowledge','ch14Ending','ch14BodiesSeen'].includes(k),'unexpected change '+k);
   assert.equal(r.s.ch14Ending,'Met People of Jericho');
   const fresh=startState(story);for(const k of ['instability','publicSupport','jerichoTrust','northTrust','simonTrust','joshTrust','hankTrust','aliceBond','markus','markusHits'])assert.equal(r.s[k],fresh[k],k)}
@@ -79,7 +84,7 @@ test('Jericho: the passers-by talk about Carl as the template’s two variants, 
 test('Jericho: neutral prompts leak no real name, place or band',()=>{
  const run={records:[]};
  for(const n of ch){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{}),...Object.values(mod.rules.carlLines)];
-  for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/\{\{/.test(neutral));assert.ok(!/Ferndale|Manfred|Phileas|Here4u|Markus|Jericho|JERICHO|Carl\b|Simon|North|Josh|CyberLife|Detroit|Kara|Connor/.test(neutral),n.id+': '+neutral)}
+  for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/\{\{/.test(neutral));assert.ok(!/Ferndale|Manfred|Phileas|Here4u|Markus|Jericho|JERICHO|Carl\b|Simon|North|Josh|Lucy|CyberLife|Detroit|Kara|Connor/.test(neutral),n.id+': '+neutral)}
   if(n.type!=='media'){const s=startState(story),p=experiencePrompt(story,run,s,{...n,availableOptions:available(n,s)});assert.ok(!/Ferndale|Manfred|Jericho|Markus/.test(JSON.stringify(p)),n.id)}}
  assert.match(render(node('MJ14k').situation,'neutral'),/lettered in big white capitals: HAVEN\./);
 });
