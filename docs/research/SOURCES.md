@@ -286,3 +286,15 @@ The benchmark's own labels also disagree with **both** the wiki and the game str
 - Amanda is reported through `LEVELS.hank`. Her real levels are Trusted (initial) / Neutral / Distrusted / Betrayed. The engine also starts her at 0, which the Hank ladder calls "Neutral", while the game starts her at Trusted.
 
 No source found contradicts the wiki's Hostage probability table. Every non-zero `PROBABILITY OF SUCCESS (+n%)` value the wiki transcript prints also appears in the `The_Hostage` table, and the benchmark's `C02i`/`C03*` values are consistent with it (for example, the father's body at +10 = the wiki's +3 for the body plus +7 for learning about the replacement).
+
+
+## Reliability log
+
+Cases where sources disagreed and the operator settled the answer in game. Use this to weight sources when they conflict again.
+
+| Date | Chapter | Question | Correct | Wrong | Silent |
+|---|---|---|---|---|---|
+| 2026-11-06 | 1 The Hostage | Software instability on SACRIFICE SELF (Connor died protecting Emma) | Wiki chapter page, wiki Software_Instability page, wiki transcript (small down) | detroitbecometext template (small up on the option) | PowerPyx |
+| 2026-11-06 | 1 The Hostage | Software instability on USE GUN > INTIMIDATE > CONVINCE (Deviant shot Connor) | Wiki chapter page, Software_Instability page and transcript (down ×2: Connor's death and the failed mission) | detroitbecometext template (small up on the option) | PowerPyx |
+
+Pattern so far: the template's per-option arrows on chapter 1's death endings are wrong twice in the same prompt tree, while the wiki's per-ending Software_Instability page was right both times. When a template arrow sits on an option that leads to a death or mission failure, prefer the wiki's ending-level arrow and ask the operator; for ordinary dialogue arrows no error has been found yet.
