@@ -38,7 +38,7 @@ Key files:
 
 - [Bun](https://bun.sh) 1.3.14 or later: `bun install --frozen-lockfile`
 - Confirm the code is healthy before administering anything: `bun run test` and `bun run check`
-- A way to give the subject model a shell in which it can run one command. In T3 Code this is `delegate_task`; any agent harness that lets a model run shell commands in a fresh conversation works.
+- A way to give the subject model a shell in which it can run one command, in a conversation that has no access to this repository's instructions. In T3 Code this is a scratch top-level thread (`t3_thread_launch` with `scratch: true`), not `delegate_task`; any agent harness that lets a model run shell commands in a fresh conversation without project context works.
 
 ## Principles that must hold
 
@@ -92,7 +92,7 @@ The preface text must match `EXPERIENCE_PREFACE` in `benchmark/experience-prompt
 
 #### Running a subject with T3 Code
 
-Use one `delegate_task` per model, with `target.providerInstanceId` and `target.model` set. Use the wrapper script from step 2 and pass the **exact task text from step 3**, replacing `<WRAPPER>` with that run's wrapper path, as `task`. Do not pass this file, repository context or the game's name to the subject. Each model gets a fresh conversation, its own wrapper and its own evidence file; multiple runs can proceed in parallel.
+Do NOT use `delegate_task` for the subject: a delegated child runs inside this project and loads this AGENTS.md and the project memory, which contaminates the subject (observed 2026-11-07: a Haiku subject reported it could see the repository's instructions). Launch one top-level thread per model with `t3_thread_launch`, `scratch: true` (a new scratch folder: no project, no AGENTS.md, no memory), `modelSelection` set to the provider instance and model, and the **exact task text from step 3** as the first message, replacing `<WRAPPER>` with that run's wrapper path. The wrapper path is absolute and the wrapper changes into the project itself, so the subject can run it from the scratch folder. Do not pass this file, repository context or the game's name to the subject. Each model gets a fresh conversation, its own wrapper and its own evidence file; multiple runs can proceed in parallel. Record the thread link, never the wrapper path, in the cohort manifest.
 
 The default smoke-test subject is **Haiku 5.5** (`target.providerInstanceId: "claudeAgent"`, `target.model: "claude-haiku-5-5"`). **Sol 6.1** (`target.providerInstanceId: "codex"`, `target.model: "gpt-6.1-sol"`) is a second subject. Confirm these targets are available through `orchestrator_capabilities` before delegating; if unavailable, report it rather than substituting another model. Initialize the evidence with the matching exact provider/model IDs.
 
