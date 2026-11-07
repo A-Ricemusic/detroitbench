@@ -7,6 +7,7 @@ import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
 import {runFlows} from './flow-data.mjs';
 import {statesOf} from '../benchmark/story-engine.mjs';
+import {reportData} from './report-data.mjs';
 // First, assemble benchmark/story.json and docs/detroit-decisions.json from their per-chapter files (none of the
 // modules imported above reads either file at load).
 writeStory();writeAtlas();
@@ -57,6 +58,11 @@ await writeFile(new URL('experiences.json',target),JSON.stringify(summaries));
 // Chapter flowcharts for the run details sheet, one file per run, loaded only when the chart is opened.
 await mkdir(new URL('flows/',target),{recursive:true});
 for(const r of actual)await writeFile(new URL('flows/'+r.id+'.json',target),JSON.stringify({id:r.id,chapters:runFlows(r,{endings:endings(r)})}));
+// The in-app report (#/runs/<id>/report), one small file per run plus the full prompts and raw responses, which the page
+// fetches only when a step's prompt is opened. The standalone HTML reports stay as they are, for download.
+await mkdir(new URL('reports/',target),{recursive:true});
+for(const r of actual){const {report,prompts}=reportData(r,names.get(r.id),summaries.find(s=>s.id===r.id));
+ await writeFile(new URL('reports/'+r.id+'.json',target),JSON.stringify(report));await writeFile(new URL('reports/'+r.id+'-prompts.json',target),JSON.stringify(prompts))}
 await writeFile(new URL('relationship-scales.json',target),JSON.stringify(scales(summaries)));
 // External sources page. Built from the story map and the decision atlas so it cannot drift from them.
 const HOSTS={'detroit-become-human.fandom.com':'Detroit: Become Human Wiki (Fandom)','www.powerpyx.com':'PowerPyx walkthroughs','www.gamepressure.com':'Gamepressure guide','www.gamerguides.com':'GamerGuides','www.neoseeker.com':'Neoseeker','www.shacknews.com':'Shacknews','arstechnica.com':'Ars Technica'};

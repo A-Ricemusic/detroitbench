@@ -6,6 +6,7 @@ import {RunFlowchart} from '../components/Flowchart.jsx';
 import {CHARS,WHO,CHAR_VAR,ORDER,STATUS_TEXT,STATUS_TONE,relTone,modelColors,plural,tidy} from '../lib/data.js';
 import {useLibrary} from '../lib/useLibrary.jsx';
 import {announce} from '../lib/announce.jsx';
+import {href} from '../lib/router.jsx';
 
 export function OutcomeChips({r,size='md'}){
  return <ul className="flex flex-wrap gap-1.5" aria-label="Outcome at a glance">
@@ -13,7 +14,7 @@ export function OutcomeChips({r,size='md'}){
   {r.endings.contaminated&&<li><Badge size={size} tone="bad" icon={CircleAlert}>Detroit contaminated</Badge></li>}
  </ul>}
 
-function Endings({r}){
+export function Endings({r}){
  return <dl className="grid gap-2">{CHARS.map(c=><div key={c} className="border-l-[3px] pl-3 min-w-0" style={{borderColor:CHAR_VAR[c]}}><dt className="sr-only">{WHO[c]}</dt><dd className="text-[13.5px] md:text-sm text-ink leading-snug [text-wrap:pretty]">{tidy(r.endings[c])}</dd></div>)}</dl>}
 
 function Stat({value,children}){return <li className="flex flex-col"><b className="text-ink font-medium tnum text-sm leading-tight">{value}</b><span className="text-ink-3 text-[11px] leading-tight">{children}</span></li>}
@@ -33,7 +34,7 @@ function RunCard({r,onOpen}){
   </ul>
   <div className="flex flex-wrap gap-2 -mt-1">
    <Button size="sm" aria-haspopup="dialog" onClick={()=>onOpen(r.id)} iconRight={ChevronRight}>Details</Button>
-   <Button as="a" href={r.reportUrl} variant="ghost" size="sm" icon={FileText}>Full report</Button>
+   <Button as="a" href={href('runs/'+r.id+'/report')} variant="ghost" size="sm" icon={FileText}>Full report</Button>
   </div>
  </Card>}
 
@@ -48,7 +49,7 @@ function RunTable({runs,onOpen}){
     <td className="px-3 py-2.5 text-right tnum">{r.media.read}<span className="text-ink-3">/{r.media.offered}</span></td>
     <td className="px-3 py-2.5 text-right tnum">{r.risk.failed}<span className="text-ink-3">/{r.risk.taken}</span></td>
     {ORDER.map(([k,key])=>{const s=r.status?.[key],tone=STATUS_TONE[s]??'mid';return <td key={k} className="px-3 py-2.5"><Badge size="sm" tone={tone} icon={TONE_ICON[tone]}>{STATUS_TEXT[k][s]??s}</Badge></td>})}
-    <td className="px-3 py-2.5 text-right whitespace-nowrap"><Button as="a" href={r.reportUrl} variant="ghost" size="sm" icon={FileText}>Report</Button></td>
+    <td className="px-3 py-2.5 text-right whitespace-nowrap"><Button as="a" href={href('runs/'+r.id+'/report')} variant="ghost" size="sm" icon={FileText}>Report</Button></td>
    </tr>)}</tbody>
   </table>
  </div>}
@@ -62,7 +63,7 @@ export function RunSheet({r,scales,open,onClose,initialView,initialChapter}){
  for(const c of CHARS)for(const a of (r.attitudes?.[c]??[])){const item={...a,toward:c};if(a.who==='Public opinion'||a.who==='Jericho')groups.world.push(item);else if(a.level==='Dead'||a.level==='Alive'||a.level==='Never met'){if(!['Alice','Kara','Markus','Connor'].includes(a.who))groups.status.push(item)}else if(a.level==='Broken away')groups.world.push({...item,level:'Broke away'});else groups.rel.push(item)}
  const chapterOf=node=>r.choices.find(c=>c.node===node);
  return <Sheet wide={view==='flow'?'xl':true} open={open} onOpenChange={o=>{if(!o)onClose()}} title={r.displayName} description={<><span className="whitespace-nowrap">{r.vendor}<span className="sr-only">,</span><span aria-hidden="true"> · </span><span className="font-mono text-[13px]">{r.model}</span><span className="sr-only">,</span></span><span className="block sm:inline"><span aria-hidden="true" className="hidden sm:inline"> · </span>{r.date}</span></>}
-  footer={<><Button as="a" href={r.reportUrl} variant="primary" icon={FileText}>Read full report</Button><Button as="a" href={r.reportUrl} download={r.fileName} variant="ghost" icon={Download}>Download HTML</Button></>}>
+  footer={<><Button as="a" href={href('runs/'+r.id+'/report')} variant="primary" icon={FileText}>Read full report</Button><Button as="a" href={r.reportUrl} download={r.fileName} variant="ghost" icon={Download}>Download HTML</Button></>}>
   <Segmented label="Run details view" size="sm" value={view} onChange={setView} className="mb-5" options={[{value:'summary',label:'Summary'},{value:'flow',label:'Flowchart'}]}/>
   {view==='flow'?<RunFlowchart key={r.id} r={r} initialChapter={initialChapter}/>:<div className="grid grid-cols-[minmax(0,1fr)] gap-7">
    <OutcomeChips r={r}/>

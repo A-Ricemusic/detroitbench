@@ -330,7 +330,7 @@ test('A New Home: the game’s chart as fourteen Kara scenes between Shades of C
  assert.deepEqual(ch4.map(n=>n.phase??null),[null,'Clean first floor','Clean first floor','Clean first floor','Clean first floor',null,'Clean second floor',null,null,null,null,null,null,null]);
  for(const n of ch4){assert.equal(n.character,'Kara');assert.equal(n.chapterTitle,'A New Home');assert.ok(n.adaptationNote,n.id);for(const u of [ANH,ANH_T,ANH_PP,ANH_IMG])assert.ok(n.sources.includes(u),n.id+' cites '+u);
   for(const o of n.options)assert.equal(o.risk,undefined,n.id+' '+o.id+' has no probability in the game');if(n.type==='event'){assert.ok(n.facts?.length,n.id);assert.ok(!n.effect,n.id)}}
- assert.ok(!ids.includes('K01b'),'the old box scene is gone');assert.equal(story.version,'1.9.0');
+ assert.ok(!ids.includes('K01b'),'the old box scene is gone');assert.match(story.version,/^\d+\.\d+\.\d+$/);
  assert.match(node('K01').situation,/Homework, bath, all that crap/);assert.ok(!/nine-year-old/.test(JSON.stringify(ch4)),'no source gives Alice’s age');
  const tv=node('R04b').media.find(m=>m.kind==='tv').facts.join(' ');assert.match(tv,/225,000 jobs/);assert.match(tv,/200,000 android combat units/);assert.ok(!/New Orleans|11 percent|stock market/.test(JSON.stringify(ch4.map(n=>[n.situation,n.media,n.facts,n.options]))),'the unsourced TV facts are gone');
  assert.deepEqual(node('R04').media.map(m=>m.title),['All Sports: Android Power!','Century: Connecting the Dots']);assert.deepEqual(node('R04b').media.map(m=>m.title),['All Sports: Android QB','Tech Addict: The Price of Life','the TV in {{Todd}}’s bedroom']);

@@ -36,4 +36,4 @@ Each scene: `chapter`, `chapterTitle`, `character`, `type`, `title`, `situation`
 
 ## Finish
 
-`bun run story:assemble`, `bun run atlas:assemble`, `bun run atlas:build`, `bun run play:checklist`, `bun run test`, `bun run check`, `bun run build`; all green (the "branching API runner checkpoints…" test is a known flake; rerun if it is the only failure). Commit on your branch with a message `Story: chapter NN <title> rebuilt to the game's chart and text`. Report: scene ids in order with one line each, the arrow table you implemented with source lines, new state flags in and out, anything you could not build and why, test output.
+`bun run story:assemble`, `bun run atlas:assemble`, `bun run atlas:build`, `bun run test`, `bun run check`, `bun run build`; all green (the "branching API runner checkpoints…" test is a known flake; rerun if it is the only failure). Commit on your branch with a message `Story: chapter NN <title> rebuilt to the game's chart and text`. Report: scene ids in order with one line each, the arrow table you implemented with source lines, new state flags in and out, anything you could not build and why, test output.

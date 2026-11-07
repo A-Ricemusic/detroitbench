@@ -49,7 +49,7 @@ export function TabBar({section}){
 export function Footer(){
  return <footer className="container-x mx-auto max-w-7xl mt-16 mb-8 border-t border-line pt-6 text-xs text-ink-3 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
   <span className="font-semibold tracking-wide text-ink-2">DetroitBench</span>
-  <span className="flex flex-wrap gap-x-3 gap-y-1"><a className="link" href="/playthrough-results.html">Standalone run library</a><span>Independent fan research · Full-story spoilers · Not affiliated with Quantic Dream</span></span>
+  <span>Independent fan research · Full-story spoilers · Not affiliated with Quantic Dream</span>
  </footer>}
 
 export function SubNav({items,current,label,className}){

@@ -29,7 +29,7 @@ Key files:
 | `docs/research/MORNING-REPORT.md` | Dated status snapshot and prioritized in-game verification questions |
 | `docs/research/operator-notes/` | Independent operator replay journal; format and rules in `README.md` |
 | `docs/chNN-*-chapter-recap.html` | Chapter implementation recaps; earlier names are `hostage-chapter-recap.html`, `shades-of-color-chapter-recap.html` and `a-new-home-chapter-recap.html`. README.md lists existing pages |
-| `scripts/play-checklist.mjs` | Generate `docs/play-along-audit-checklist.md` from the assembled story |
+| `scripts/play-checklist.mjs` | `bun run play:checklist` writes a play-along checklist for the operator to `docs/play-along-audit-checklist.md` (generated on demand, not committed) |
 | `scripts/run-report.mjs` | Report and library generation |
 | `data/experiences/`, `data/administration/` | Evidence files; cohort manifests and administration notes |
 | `docs/runs/`, `docs/run-library.html` | Published reports and library |
@@ -149,5 +149,5 @@ Game strings also contain CLOSE for Alice, WARY for Luther and UNCERTAIN for Jer
 
 1. Read [the implementation brief](docs/research/IMPLEMENTATION-BRIEF.md), the [research-note template](docs/research/README.md#what-each-note-must-contain), the chapter's `docs/research/chNN-<slug>.md`, any operator journal entry and SOURCES.md's reliability log.
 2. Match the completed chart and template prompt by prompt: scenes/hubs for choices and clues, event scenes for scripted beats, sourced arrows, explicit gates and cross-chapter flags. Exclude cut content and target Experienced difficulty. Implement only the chapter's JSON, module, tests, atlas entries and recap; coordinate shared changes separately.
-3. Run `bun run story:assemble`, `bun run atlas:assemble`, `bun run atlas:build` and `bun run play:checklist`. The atlas embed includes both decision families and the current story feed; the checklist is generated from the assembled story, not edited by hand.
+3. Run `bun run story:assemble`, `bun run atlas:assemble` and `bun run atlas:build`. The atlas embed includes both decision families and the current story feed.
 4. Run `bun run test`, `bun run check` and `bun run build`. Review the recap and remaining in-game questions, then commit the chapter sources, tests and generated artifacts together. The implementation brief defines the completion report.
