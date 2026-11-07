@@ -14,7 +14,7 @@ Options:
   --model ID                            Required for real providers
   --base-url URL                        Compatible API base URL, e.g. https://host/v1
   --key-file PATH                       Read API key from a private file
-  --questions C17,C22,K25-peaceful       Select question IDs
+  --questions C17,K03b,M11              Select question IDs (scene IDs)
   --limit N                             First N questions (after selection)
   --repeats N                           Samples per question (default 3)
   --seed N                              Option-order seed (default 42)

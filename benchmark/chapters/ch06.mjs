@@ -7,10 +7,13 @@
 // C05y HANK REFUSES] → C05z OUT OF TIME → C05, the five-question reconstruction (repeatable) → C05e, C05f, C05g
 // (FOLLOW BLUE BLOOD TO ATTIC, SEARCH ATTIC, FOUND DEVIANT) or C05u (CRIME UNSOLVED).
 //
-// Hank arrows (template; small = 1, large = 2): THREATEN −1, PERSIST −1 (C05b1/C05b2, option `effect`); SPILL −2, BUY +2
-// (C05a, `effect`); PATIENT +1, FIRM −1, DIPLOMATIC +1 (C05c, `effect`); HANK REFUSES −1 (C05y); OUT OF TIME −1 (C05z);
-// three wrong answers −1, the full reconstruction +1 and the thirium explanation +1 (C05). Nothing else: no arrow for
-// FOUND DEVIANT or for CRIME UNSOLVED itself, no Amanda, public-opinion or instability change, no risk roll.
+// Hank arrows (template, small = 1; sizes measured by the operator, 2026-11-07, two replays, level read in the chart header,
+// benchmark/scales.mjs M4): THREATEN −1, PERSIST −1 (C05b1/C05b2, option `effect`); SPILL −3, BUY +2 (C05a, `effect`;
+// story 1.9.2 and earlier: SPILL −2, in their snapshots' data); PATIENT +1, FIRM −1, DIPLOMATIC +1 (C05c, `effect`);
+// HANK REFUSES −1 (C05y); OUT OF TIME −1 (C05z); three wrong answers −1, and one +1 for the full reconstruction with the
+// thirium explanation, on the blue-blood line (C05; see RECONSTRUCTION_ARROWS). Nothing else: no arrow for FOUND DEVIANT
+// (the wiki's small up was not seen on screen) or for CRIME UNSOLVED itself, no Amanda (she does not appear in Partners),
+// public-opinion or instability change, no risk roll.
 //
 // Cross-chapter outputs (read by later chapters):
 //   suspect, suspectAlive    true at FOUND DEVIANT (The Interrogation's C06 gate reads `suspect`)
@@ -88,21 +91,26 @@ function search(s,opt){
  return t;
 }
 
+// Small Hank ups for the full reconstruction and the thirium explanation together. Story 1.9.3 marks C05 with
+// `reconstructionArrows: 1` (the operator saw one arrow, on the blue-blood line); older story snapshots lack the field and
+// replay with the template's two (+1 for the reconstruction, +1 for the explanation).
+export const RECONSTRUCTION_ARROWS={current:1,legacy:2};
 const WRONG=['“No, that can’t be right… It doesn’t fit the evidence.”','“Your story makes no sense… You’ve gotta stick to the facts.”'];
 const RIGHT={
  2:'{{Hank}}: “That lines up with the evidence… Go on.”',
  3:'{{Hank}}: “So the android was trying to defend itself, right?.. Okay, then what happened?”',
  4:'{{Hank}}: “And he tried to get away from the android… All right, that makes sense…”',
 };
-function report(s,opt,h){
+function report(n,s,opt,h){
  const step=s.ch06QuizStep,line=opt.outcome;
  if(opt.correct||step===1){
   s.ch06WrongLine=0;
   if(step===1){s.ch06QuizStep=2;return opt.correct?line:line+' {{Hank}}: “I think you should look harder at the mess in the kitchen... I think that’s where it all started.”'}
   if(step<5){s.ch06QuizStep=step+1;return line+' '+RIGHT[step]}
-  h.hank(1);
+  const arrows=n.reconstructionArrows??RECONSTRUCTION_ARROWS.legacy;
+  if(arrows>1)h.hank(1); // story 1.9.2 and earlier: the reconstruction's own arrow
   const t=line+' {{Hank}}: “Ok, your theory’s not totally ridiculous… but it doesn’t tell us where the android went.” {{Connor}}: “It was damaged by the bat… and lost some thirium…” {{Hank}}: “Lost some what?” {{Connor}}: “Thirium. You call it “Blue Blood”. It’s the fluid that powers androids’ biocomponents. It evaporates after a few hours and becomes invisible to the naked eye.” {{Hank}}: “Oh… But I bet you can still see it, can’t you?” {{Connor}}: “Correct.” {{Hank}}: “Yeah…”';
-  h.hank(1);s.ch06Phase='reconstructed';return t;
+  h.hank(1);s.ch06Phase='reconstructed';return t; // the blue-blood line's arrow
  }
  s.ch06Mistakes++;
  if(s.ch06Mistakes>=rules.mistakes){h.hank(-1);s.ch06Phase='failed';s.ch06WrongLine=0;unsolved(s,'FAIL TO RECONSTRUCT THE CRIME');
@@ -120,7 +128,7 @@ export function consequence(n,s,opt,choice,fail,h){
   case 'C05x':s.ch06Phase='extension';s.ch06Clock=0;s.ch06Mood='extension';return '';
   case 'C05y':h.hank(-1);s.ch06Phase='refused';unsolved(s,'HANK ENDS INVESTIGATION');return '';
   case 'C05z':h.hank(-1);unsolved(s,'OUT OF TIME');return '';
-  case 'C05':return report(s,opt,h);
+  case 'C05':return report(n,s,opt,h);
   case 'C05e':case 'C05f':return '';
   case 'C05g':s.suspect=s.suspectAlive=true;s.ch06DeviantFound=true;s.ch06Outcome='FOUND DEVIANT';s.ch06Phase='over';return '';
   case 'C05u':return '';

@@ -28,4 +28,6 @@ export function writeAtlas(){const text=assembleAtlas(),old=existsSync(ATLAS_FIL
 if(import.meta.main){
  if(process.argv.includes('--check')){const ok=existsSync(ATLAS_FILE)&&readFileSync(ATLAS_FILE,'utf8')===assembleAtlas();console.log(ok?'docs/detroit-decisions.json matches its chapter files.':'docs/detroit-decisions.json is stale: run `bun run atlas:assemble`.');process.exit(ok?0:1)}
  const changed=writeAtlas(),a=assembleAtlasObject();console.log(`${changed?'Wrote':'Unchanged:'} docs/detroit-decisions.json, ${a.decisions.length} decisions in ${a.chapters.length} chapters.`);
+ // The question bank's atlas IDs and coverage come from the atlas; regenerate it so it cannot drift.
+ const {writeDataset}=await import('./dataset-assemble.mjs');console.log(`${writeDataset()?'Wrote':'Unchanged:'} benchmark/dataset.json.`);
 }

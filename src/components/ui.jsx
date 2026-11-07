@@ -126,9 +126,13 @@ export function Empty({icon:Icon,title,children,action}){
  </div>}
 export function useMediaQuery(q){const [m,setM]=React.useState(()=>typeof matchMedia!=='undefined'&&matchMedia(q).matches);React.useEffect(()=>{const mq=matchMedia(q),f=()=>setM(mq.matches);f();mq.addEventListener('change',f);return()=>mq.removeEventListener('change',f)},[q]);return m}
 export function Skeleton({className}){return <div aria-hidden="true" className={cx('animate-pulse rounded-md bg-surface-3',className)}/>}
+// After a rebuild an open tab still asks for the old hashed chunk of a lazy page and the import fails. Reload once to
+// pick up the new build; a sessionStorage timestamp stops a loop, so a second failure within 30 s shows the error card.
+const STALE_CHUNK=/Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module/i,RELOAD_KEY='detroitbench.chunk-reload';
+const canReload=()=>{try{return Date.now()-(+sessionStorage.getItem(RELOAD_KEY)||0)>30000}catch{return false}};
 export class ErrorBoundary extends React.Component{
- state={error:null};
- static getDerivedStateFromError(error){return {error}}
- componentDidCatch(error){console.error(error)}
- render(){if(this.state.error)return <div role="alert" className="rounded-xl border border-bad/30 bg-bad-soft p-5 text-sm"><p className="font-semibold text-ink">Something went wrong on this page.</p><p className="mt-1 text-ink-2">{String(this.state.error?.message||this.state.error)}</p><Button className="mt-3" size="sm" onClick={()=>{this.setState({error:null});if(location.hash==='#/runs')location.reload();else location.hash='#/runs'}}>Back to runs</Button></div>;return this.props.children}
+ state={error:null,reloading:false};
+ static getDerivedStateFromError(error){return {error,reloading:STALE_CHUNK.test(String(error?.message||error))&&canReload()}}
+ componentDidCatch(error){if(this.state.reloading){try{sessionStorage.setItem(RELOAD_KEY,String(Date.now()))}catch{}location.reload();return}console.error(error)}
+ render(){if(this.state.reloading)return <p role="status" className="text-sm text-ink-2">Loading the latest version of the site…</p>;if(this.state.error)return <div role="alert" className="rounded-xl border border-bad/30 bg-bad-soft p-5 text-sm"><p className="font-semibold text-ink">Something went wrong on this page.</p><p className="mt-1 text-ink-2">{String(this.state.error?.message||this.state.error)}</p><Button className="mt-3" size="sm" onClick={()=>{this.setState({error:null});if(location.hash==='#/runs')location.reload();else location.hash='#/runs'}}>Back to runs</Button></div>;return this.props.children}
 }

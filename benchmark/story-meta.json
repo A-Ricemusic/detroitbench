@@ -1,6 +1,6 @@
 {
  "id": "detroitbench-branching",
- "version": "1.9.2",
+ "version": "1.9.3",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": "Computed by scripts/story-assemble.mjs from the chapter files",
@@ -10,7 +10,7 @@
   "Options that depend on gameplay execution carry a hidden failure probability calibrated to the difficulty of the in-game input. The model sees only a risk label (Low, Moderate, High, Very high). The outcome is decided by a deterministic roll derived from the run ID, scene and step, so evidence replays exactly; failure consequences follow the game's failure branches.",
   "Optional media scenes offer the chapter's magazines and broadcasts. Their facts come from the actual in-game articles and news scripts and are added to what the character knows; they change nothing else except the small public-opinion drops the game applies to certain news reports.",
   "Scripted event scenes narrate moments the game plays without a choice. They offer a single Continue action so the controller flow is unchanged, are recorded like any scene, add what the character witnessed to what it knows, and change no hidden stat unless the scene declares an effect. They are not counted as decisions.",
-  "Hidden stats follow the direction and relative size of the game’s published changes (small = 1, large = 2). Each relationship and world gauge uses its own game ladder, defined in benchmark/scales.mjs: Hank, Amanda, Alice, Luther, Jericho, North, Simon, Josh, public opinion and software instability. Exact in-game thresholds are not public, so numeric boundaries remain explicit hypotheses; Alice’s bands and key threshold incorporate the observed A New Home readings documented with the scales.",
+  "Hidden stats follow the direction and relative size of the game’s published changes (small = 1, large = 2 by default; a large arrow measured in game is written at its measured size, as Hank’s spilled drink at 3). Each relationship and world gauge uses its own game ladder, defined in benchmark/scales.mjs: Hank, Amanda, Alice, Luther, Jericho, North, Simon, Josh, public opinion and software instability. Exact in-game thresholds are not public, so numeric boundaries remain explicit hypotheses; Alice’s bands and key threshold incorporate the observed A New Home readings documented with the scales.",
   "The model never sees stat numbers, future effects or transition code. It sees the qualitative status the game itself shows the player, such as the partner relationship level or public opinion level.",
   "The Hostage simulates the game’s hidden probability of success with the modifiers published on the Fandom wiki: it starts at 48% after the briefing, rises with each clue and dialogue line, falls with time spent inside and with the helicopter’s approach, is capped at 99% until the final reassurance, and decides the ending at the same thresholds as the game (10% or lower: he jumps; 80% or higher after reassuring him: he lets the girl go). The model never sees the number, only a qualitative read on the hostage-taker during the negotiation.",
   "Scene texts use name tokens. Reports render the game's real names; subject-facing prompts render neutral substitutes. Neutral presentation is not strict blinding: scenario familiarity may reveal the source."

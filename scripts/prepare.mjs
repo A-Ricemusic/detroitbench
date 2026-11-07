@@ -1,4 +1,4 @@
-import {writeStory} from './story-assemble.mjs';import {writeAtlas,assembleAtlasObject} from './atlas-assemble.mjs';
+import {writeStory} from './story-assemble.mjs';import {writeDataset} from './dataset-assemble.mjs';import {writeAtlas,assembleAtlasObject} from './atlas-assemble.mjs';
 import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
 import {publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
 import {render,renderStory} from '../benchmark/experience-prompt.mjs';
@@ -9,17 +9,18 @@ import {runFlows} from './flow-data.mjs';
 import {statesOf} from '../benchmark/story-engine.mjs';
 import {reportData} from './report-data.mjs';
 // First, assemble benchmark/story.json and docs/detroit-decisions.json from their per-chapter files (none of the
-// modules imported above reads either file at load).
-writeStory();writeAtlas();
+// modules imported above reads either file at load), then the question bank, benchmark/dataset.json, from both.
+writeStory();writeAtlas();writeDataset();
 const dataset=datasetSchema.parse(JSON.parse(await readFile(new URL('../benchmark/dataset.json',import.meta.url),'utf8')));
 const published=new URL('../data/published/',import.meta.url),target=new URL('../public/data/',import.meta.url);
 await mkdir(published,{recursive:true});await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
 const runs=[];for(const file of (await readdir(published)).filter(f=>f.endsWith('.json')).sort()){
  const run=await validateRun(JSON.parse(await readFile(new URL(file,published),'utf8')));const name=run.id+'.json';await writeFile(new URL(name,target),JSON.stringify(run));runs.push({id:run.id,url:'/data/'+name});
 }
-// An atlas decision with no coverage entry is implicitly deferred; the published copy lists it as deferred so the
-// Research page counts it. The hash stays that of benchmark/dataset.json, which keeps saved answers keyed the same.
-const uncovered=assembleAtlasObject().decisions.filter(a=>!dataset.coverage.some(c=>c.atlasId===a.id)).map(a=>({atlasId:a.id,title:a.title,chapter:a.chapter,character:a.character,status:'deferred',questionIds:[],reason:'No authored question yet'}));
+// The generated dataset has a coverage entry for every atlas decision. Should one be missing (an older or hand-made
+// dataset), the published copy lists it as deferred so the Research page counts it. The hash stays that of
+// benchmark/dataset.json, which keeps saved answers keyed the same.
+const uncovered=assembleAtlasObject().decisions.filter(a=>!dataset.coverage.some(c=>c.atlasId===a.id)).map(a=>({atlasId:a.id,title:a.title,chapter:a.chapter,character:a.character,status:'deferred',questionIds:[],reason:'No question generated for this family'}));
 await writeFile(new URL('dataset.json',target),JSON.stringify(uncovered.length?{...dataset,coverage:[...dataset.coverage,...uncovered]}:dataset));await writeFile(new URL('index.json',target),JSON.stringify({datasetHash:await hash(dataset),datasetUrl:'/data/dataset.json',runs}));
 // Re-embed the atlas data and the generated story feed so the page always matches story.json.
 await embedAtlas();
@@ -65,11 +66,17 @@ for(const r of actual){const {report,prompts}=reportData(r,names.get(r.id),summa
  await writeFile(new URL('reports/'+r.id+'.json',target),JSON.stringify(report));await writeFile(new URL('reports/'+r.id+'-prompts.json',target),JSON.stringify(prompts))}
 await writeFile(new URL('relationship-scales.json',target),JSON.stringify(scales(summaries)));
 // External sources page. Built from the story map and the decision atlas so it cannot drift from them.
-const HOSTS={'detroit-become-human.fandom.com':'Detroit: Become Human Wiki (Fandom)','www.powerpyx.com':'PowerPyx walkthroughs','www.gamepressure.com':'Gamepressure guide','www.gamerguides.com':'GamerGuides','www.neoseeker.com':'Neoseeker','www.shacknews.com':'Shacknews','arstechnica.com':'Ars Technica'};
+const HOSTS={'detroit-become-human.fandom.com':'Detroit: Become Human Wiki (Fandom)','www.powerpyx.com':'PowerPyx walkthroughs','raw.githubusercontent.com':'Detroit Become Text: templates and string table (raw files)','github.com':'Detroit Become Text: templates (GitHub)','detroitbecometext.github.io':'Detroit Become Text (site)','www.gamepressure.com':'Gamepressure guide','www.gamerguides.com':'GamerGuides','www.neoseeker.com':'Neoseeker','www.shacknews.com':'Shacknews','arstechnica.com':'Ars Technica','www.ign.com':'IGN wiki','www.thesixthaxis.com':'TheSixthAxis'};
 // References the method relies on that no scene or atlas entry cites directly.
 const METHOD_REFERENCES=[
  {title:'In-game flowchart (Chapters menu)',url:null,description:'The game’s own per-chapter flowchart, used to confirm branch order, gates and endings.'},
- {title:'The Hostage: Probability of Success table',url:'https://detroit-become-human.fandom.com/wiki/The_Hostage',description:'The wiki’s probability-of-success modifiers, used for the hidden trust values in story 1.3.0’s Hostage chapter.'},
+ // The completed flowcharts stored in docs/flowcharts (see its README), the rank 1 source.
+ {title:'PowerPyx chapter flowchart photos',url:'https://www.powerpyx.com/detroit-become-human-full-walkthrough-all-chapters/',description:'PowerPyx’s photographs of each completed in-game chapter flowchart, from its chapter walkthroughs; stored in docs/flowcharts and used for structure, node order, gates and endings.'},
+ {title:'throwawaydeviant9’s 100% flowcharts (2018, after patch 1.06)',url:'https://www.reddit.com/r/DetroitBecomeHuman/comments/99b65j/',description:'Imgur albums of every chapter chart at 100% in world-stats mode; stored in docs/flowcharts where PowerPyx photographed an incomplete save.'},
+ {title:'Steam guide 2162781882, “Detroit: Become Human | 100% Chapter Flowcharts”',url:'https://steamcommunity.com/sharedfiles/filedetails/?id=2162781882',description:'A mirror of throwawaydeviant9’s 100% charts, with a stitched chart for On the Run; stored in docs/flowcharts.'},
+ {title:'Steam guide 3361490965, Chinese 100% chapter flowcharts',url:'https://steamcommunity.com/sharedfiles/filedetails/?id=3361490965',description:'Stitched 100% panoramas from the Chinese-language game, used to confirm the Last Chance, Connor and Crossroads charts.'},
+ {title:'Detroit Become Text repository',url:'https://github.com/detroitbecometext/detroitbecometext.github.io',description:'The game’s English string table (en.json) and per-chapter templates, the source for every prompt label, clue and stat arrow.'},
+ {title:'The Hostage: Probability of Success table',url:'https://detroit-become-human.fandom.com/wiki/The_Hostage',description:'The wiki’s probability-of-success modifiers, used for the hidden trust values in the Hostage chapter.'},
  {title:'Public Opinion',url:'https://detroit-become-human.fandom.com/wiki/Public_Opinion',description:'Direction of public-opinion changes for each choice.'},
  {title:'Software Instability',url:'https://detroit-become-human.fandom.com/wiki/Software_Instability',description:'Direction of Connor’s software-instability changes for each choice.'},
  {title:'Relationship Stat',url:'https://detroit-become-human.fandom.com/wiki/Relationship_Stat',description:'Direction of relationship changes for each choice.'},
@@ -77,11 +84,17 @@ const METHOD_REFERENCES=[
  {title:'Operator playthrough notes, November 2026',url:null,description:'Notes from the operator’s own playthrough, used to rewrite and check scenes.'}];
 const SOURCE_NOTES={'https://www.powerpyx.com/detroit-become-human-full-walkthrough-all-chapters/':'Replaces the PowerPyx 100% completion walkthrough link (/detroit-become-human-walkthrough-100-completion-all-endings/), which is dead, since story 1.3.1.'};
 function sourceTitle(url){const u=new URL(url),segs=u.pathname.split('/').filter(Boolean).map(s=>{try{return decodeURIComponent(s)}catch{return s}});
- if(u.host==='detroit-become-human.fandom.com')return (segs.at(-1)??u.host).replace(/[_-]+/g,' ');
+ if(u.host==='detroit-become-human.fandom.com')return (segs.filter(s=>s!=='wiki').join(' ')||u.host).replace(/[_-]+/g,' ');
+ // Detroit Become Text: the string table, chapter pages and chapter templates.
+ const file=segs.at(-1)??'',words=t=>t.replace(/[-_]+/g,' ').trim().split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+ if(file==='en.json'&&/detroitbecometext/.test(url))return 'English string table (en.json)';
+ if(u.host==='detroitbecometext.github.io'){if(segs[0]==='chapters'&&segs[1])return `Chapter ${segs[1]} page`;if(/^chunk-.*\.js$/.test(file))return 'Site script bundle';}
+ if(/\.component\.html$/.test(file)&&/detroitbecometext/.test(url)){const name=file.replace(/\.component\.html$/,'');
+  return /-chapter-content$/.test(name)?words(name.replace(/-chapter-content$/,''))+' chapter template':words(name)+' template'}
  // Drop path segments that are only filing: section names, article numbers, dates, short IDs.
  const named=segs.filter(s=>!/^(wiki|article|gaming|walkthrough|\d+)$/i.test(s)&&!/^[a-z]{2,4}\d[a-z0-9]*$/i.test(s));let slug=named.at(-1);
  if(!slug)return u.host;if(slug==='detroit-become-human')return 'Detroit: Become Human guide index';
- slug=slug.replace(/^detroit-become-human-/,'').replace(/-detroit-become-human$/,'').replace(/[-_]+/g,' ').trim();
+ slug=slug.replace(/^detroit-become-human-/,'').replace(/-detroit-become-human$/,'').replace(/-100$/,' 100%').replace(/[-_]+/g,' ').trim();
  return slug.split(' ').map((w,i)=>i&&/^(a|an|and|for|of|on|the|to|in)$/i.test(w)?w.toLowerCase():w[0].toUpperCase()+w.slice(1)).join(' ')}
 const hostOf=url=>new URL(url).host,hostLabel=h=>HOSTS[h]??h,hostRank=h=>{const i=Object.keys(HOSTS).indexOf(h);return i<0?99:i};
 // Story order: general references first, then by the earliest chapter a source backs.

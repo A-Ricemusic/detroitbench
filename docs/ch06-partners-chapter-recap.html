@@ -89,24 +89,24 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </tbody></table></div>
 
 <h2 id="hank">3 · Hank’s relationship, arrow by arrow</h2>
-<p class="fine">Hank starts at Tense (−1 on the benchmark’s scale: −4 or less Hostile, −3 to −1 Tense, 0 to 2 Neutral, 3 to 5 Warm, 6 or more Friend). Small arrow = 1 step, large = 2 (the scale rework comes later). Every arrow below is in the template; nothing else in the chapter moves any stat.</p>
+<p class="fine">Hank starts at Tense (−1 on the benchmark’s scale: −4 or less Hostile, −3 to −1 Tense, 0 to 2 Neutral, 3 to 5 Warm, 6 or more Friend). Small arrow = 1 step. The large arrows are not one size: the operator’s two replays on 7 November 2026 (Hank’s level read in the chart header after every arrow; <code>docs/research/operator-notes/ch06-partners.md</code>) measure the spill at 3 and the drink at 2 (story 1.9.3; <code>benchmark/scales.mjs</code> M4). The arrows below are the template’s, at the sizes and on the beats the operator saw; nothing else in the chapter moves any stat, and Amanda does not appear in Partners.</p>
 <div class="table"><table>
 <thead><tr><th>Moment</th><th>Template</th><th>Benchmark</th></tr></thead>
 <tbody>
 <tr><td>THREATEN, PERSIST</td><td>small down each</td><td class="n">−1 each</td></tr>
 <tr><td>REASON, UNDERSTANDING</td><td>none</td><td class="n">0</td></tr>
-<tr><td>SPILL HIS DRINK</td><td>LARGE down</td><td class="n">−2</td></tr>
-<tr><td>BUY HIM ANOTHER DRINK</td><td>LARGE up</td><td class="n">+2</td></tr>
+<tr><td>SPILL HIS DRINK</td><td>LARGE down (operator: Tense → Hostile, still Hostile after one small up)</td><td class="n">−3 (story 1.9.2: −2)</td></tr>
+<tr><td>BUY HIM ANOTHER DRINK</td><td>LARGE up (operator: Tense → Neutral, still Neutral after two small ups)</td><td class="n">+2</td></tr>
 <tr><td>WAIT OUTSIDE</td><td>none</td><td class="n">0</td></tr>
 <tr><td>PATIENT, DIPLOMATIC / FIRM</td><td>small up / small down</td><td class="n">+1 / −1</td></tr>
 <tr><td>HANK REFUSES</td><td>small down</td><td class="n">−1</td></tr>
 <tr><td>OUT OF TIME (“Take too much time again”)</td><td>small down</td><td class="n">−1</td></tr>
 <tr><td>Three wrong answers</td><td>small down</td><td class="n">−1</td></tr>
-<tr><td>Correct reconstruction; the thirium explanation</td><td>small up; small up</td><td class="n">+1, +1</td></tr>
-<tr><td>FOUND DEVIANT</td><td>none (chapter page: “Finding the deviant” up)</td><td class="n part">0, flagged</td></tr>
+<tr><td>Correct reconstruction and the thirium explanation</td><td>template: small up; small up. Operator: one small up in total, on the blue-blood line</td><td class="n">+1 once (story 1.9.2: +1, +1)</td></tr>
+<tr><td>FOUND DEVIANT</td><td>none (operator: no arrow shown; the chapter page’s “Finding the deviant” up is unobserved)</td><td class="n">0</td></tr>
 <tr><td>CRIME UNSOLVED itself</td><td>none (chapter page: “Failing to solve the crime” down)</td><td class="n part">0, not stacked</td></tr>
 </tbody></table></div>
-<p class="fine">Best case: BUY, PATIENT or DIPLOMATIC, no THREATEN or PERSIST, reconstruct: −1 + 2 + 1 + 2 = 4 (Warm). Worst case: THREATEN, PERSIST, SPILL, FIRM, refused: −1 − 2 − 2 − 1 − 1 = −7 (Hostile).</p>
+<p class="fine">Best case: BUY, PATIENT or DIPLOMATIC, no THREATEN or PERSIST, reconstruct: −1 + 2 + 1 + 1 = 3 (Warm). Worst case: THREATEN, PERSIST, SPILL, FIRM, refused: −1 − 2 − 3 − 1 − 1 = −8 (Hostile). The operator’s Run A (PERSIST, SPILL, PATIENT, reconstruct, found) reads Tense, Tense, Hostile, Hostile, Tense, Tense; Run B (PERSIST, BUY, the same after) reads Tense, Tense, Neutral, Neutral, Neutral, Neutral; <code>tests/ch06.test.mjs</code> replays both.</p>
 
 <h2 id="clock">4 · The clock and the evidence</h2>
 <ul>
@@ -147,7 +147,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Roughly how many looks fit in the first five minutes, and in the extra five.</li>
 <li>Is the wrong-answer count per question or for the whole report, and does a wrong button stay offered?</li>
 <li>Does Hank refuse after THREATEN, PERSIST, FIRM and WAIT OUTSIDE without a spill (PowerPyx’s “at least Tense”)?</li>
-<li>Is there any Hank arrow on FOUND DEVIANT (the chapter page says up; the template shows none)?</li>
+<li>Settled (operator, 2026-11-07, story 1.9.3): no Hank arrow on FOUND DEVIANT, one small up (not two) for the reconstruction and the blue-blood line, the spill −3 and the drink +2, and no Amanda in Partners.</li>
 <li>Settled (story 1.9.2): the statue is one of the ten, so the deviant-found ending always has it.</li>
 </ul>
 </main>

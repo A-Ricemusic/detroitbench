@@ -36,4 +36,6 @@ export function writeStory(){const text=assembleStory(),old=existsSync(STORY_FIL
 if(import.meta.main){
  if(process.argv.includes('--check')){const ok=existsSync(STORY_FILE)&&readFileSync(STORY_FILE,'utf8')===assembleStory();console.log(ok?'benchmark/story.json matches its chapter files.':'benchmark/story.json is stale: run `bun run story:assemble`.');process.exit(ok?0:1)}
  const changed=writeStory(),s=assembleStoryObject();console.log(`${changed?'Wrote':'Unchanged:'} benchmark/story.json, story ${s.version}, ${s.nodes.length} scenes from ${chapterFiles().length} chapter files.`);
+ // The question bank is a generated view of story.json; regenerate it so it cannot drift.
+ const {writeDataset}=await import('./dataset-assemble.mjs');console.log(`${writeDataset()?'Wrote':'Unchanged:'} benchmark/dataset.json.`);
 }

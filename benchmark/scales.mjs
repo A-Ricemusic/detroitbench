@@ -3,8 +3,11 @@
 //
 // Units. Every gauge counts in "points", and one point is one small arrow (`small`). Story data writes its deltas
 // as literal points (`{"aliceBond": 1}`, `hank(2)`), so `small` and `large` record the assumption the data was
-// written under; tests/scales.test.mjs checks that every delta in story.json is ±small or ±large. Changing `large`
-// for a gauge therefore also means rewriting that gauge's literal 2s.
+// written under. A large arrow's size is per event (M4 below): the chapter data writes each arrow as its literal delta,
+// and `large` is only the default (2) for a large arrow nobody has measured. A measured large arrow of another size is
+// listed in MEASURED_ARROWS below with its source; tests/scales.test.mjs checks that every delta in story.json is
+// ±small or ±large except exactly those listed, which must carry their listed value. Changing `large` for a gauge
+// therefore also means rewriting that gauge's literal 2s (not the measured exceptions).
 //
 // Shape of a scale (see SCALES below):
 //   levels      the game's ladder for the gauge, lowest first, spelled as in the string table (GUI.GAUGE.<NAME>.*,
@@ -26,6 +29,18 @@
 //   M2  Alice with one increase and one decrease (net 0) ends on Distant, with no key.
 //   M3  Right after a single increase the in-scene tag read Distant (weak: the wiki notes the Distant tag can flash
 //       when the gauge moves within a level, so the chapter header and the key are the decisive readings).
+//  MEASURED (operator, Partners, 2026-11-07, two replays, level read in the flowchart header after every arrow;
+//  docs/research/operator-notes/ch06-partners.md, SOURCES.md reliability log):
+//   M4  Hank's large arrows are not one size. Run A: start TENSE; PERSIST (small down) TENSE; SPILL HANK'S DRINK (large
+//       down) HOSTILE; car PATIENT (small up) HOSTILE; the correct reconstruction and the blue-blood explanation, one
+//       small up in total, TENSE; FOUND DEVIANT, no arrow, TENSE. Run B: start TENSE; PERSIST TENSE; BUY HIM ANOTHER
+//       DRINK (large up) NEUTRAL; PATIENT NEUTRAL; reconstruction and blue blood, one small up, NEUTRAL; FOUND DEVIANT,
+//       no arrow, NEUTRAL (as the PowerPyx 100% chart header). In points, with start −1 at the top of Tense, Tense
+//       [−w, −1] and Neutral [0, w−1]: Run A forces the spill to be exactly w; Run B forces the drink to be between 2 and
+//       w−1, so w ≥ 3. The minimal fit, adopted, is w = 3: Tense [−3, −1], Hostile from −4, Neutral from 0, spill −3,
+//       drink +2 (R1's Atticvs reading exactly). Under w = 3, Run B also rules out a second small up on the
+//       reconstruction and a hidden small up on FOUND DEVIANT (either would have read Warm). Amanda does not appear in
+//       Partners.
 //  COMMUNITY (Reddit, SOURCES.md section 5; below the wiki, and in conflict with M1 if read as one global width):
 //   R1  Hank: "each stage of a relationship has five sublevels"; a drink bought +2, spilled −3; saving Hank in The
 //       Nest +8 to +10; sparing / shooting the Tracis +6 / −4 (all in small steps). Large is not one fixed size.
@@ -43,11 +58,16 @@
 //       band wider than the rest).
 //   H2  Alice's key (A New Home) at "at least Neutral" (wiki) = ALICE_KEY = 2 points. Falsified by a run with
 //       exactly one net increase that gets the key.
-//   H3  Large = 2 small on every gauge. Contradicted in part by R1 (+2 / −3 for the drink; +8 to +10 for The Nest).
-//       Falsified for a gauge by any large arrow that moves it by other than two small arrows' worth of levels.
-//   H4  Hank: width 3 (between Alice's measured 2 and R1's five sublevels), start −1 at the top of Tense, so one
-//       small increase reads Neutral and Friend needs +7 net. Falsified by a single small increase at the start of
-//       Partners (patient / diplomatic) leaving Hank on Tense, or by Friend shown at a net below +7.
+//   H3  FALSIFIED for Hank by M4 (the spill is 3 small, not 2); it was "large = 2 small on every gauge". The rule now:
+//       a large arrow's size is per event and is written as its literal delta in the chapter data; `large` (2) is the
+//       default for every gauge, Hank included, wherever no measurement says otherwise (MEASURED_ARROWS lists the
+//       exceptions). Still a hypothesis for every unmeasured large arrow; R1 suggests others differ too (+8 to +10 for
+//       The Nest). Falsified for an arrow by a reading that moves its gauge by other than two small arrows' worth.
+//   H4  Hank: width 3, start −1 at the top of Tense, so one small increase reads Neutral and Friend needs +7 net.
+//       Consistent with M4 and its minimal fit (a wider Tense would need a larger spill and allow a larger drink).
+//       Falsified by a single small increase at the start of Partners (patient / diplomatic) leaving Hank on Tense,
+//       by Friend shown at a net below +7, or by a further reading that needs w > 3 (for example Run B's route
+//       plus one more small up still reading Neutral).
 //   H5  Amanda: starts on Trusted (wiki), at the bottom of it, width 3, so the first small decrease reads Neutral.
 //       Betrayed is reached only by turning deviant (wiki). Falsified by Amanda still Trusted after one small
 //       decrease from the start (for example FRIENDLY in Waiting for Hank).
@@ -70,6 +90,11 @@
 //       option appearing at a net below +4, or missing at +4 or more.
 
 const SMALL=1,LARGE=2;
+// Measured large arrows whose size is not `large` (M4). Each names the scene, option and state key whose literal delta
+// it is; tests/scales.test.mjs accepts exactly these as exceptions to ±small / ±large.
+export const MEASURED_ARROWS=Object.freeze([
+ Object.freeze({gauge:'hank',node:'C05a',option:'0',key:'hankTrust',delta:-3,what:'SPILL HANK’S DRINK (Partners)',source:'M4: operator, 2026-11-07, Run A'}),
+]);
 export const SCALES=Object.freeze({
  hank:{key:'hankTrust',who:'Hank',toward:'Connor',game:'GUI.GAUGE.HANK',levels:['Hostile','Tense','Neutral','Warm','Friend'],start:'Tense',startValue:-1,width:3,anchor:['Neutral',0],small:SMALL,large:LARGE},
  amanda:{key:'amandaTrust',who:'Amanda',toward:'Connor',game:'GUI.GAUGE.AMANDA',levels:['Betrayed','Distrusted','Neutral','Trusted'],eventLevels:{Betrayed:{when:s=>s.deviant===true,why:'Connor turned deviant'}},start:'Trusted',startValue:0,width:3,anchor:['Trusted',0],small:SMALL,large:LARGE},

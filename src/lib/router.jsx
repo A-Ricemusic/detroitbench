@@ -1,11 +1,14 @@
 import {useCallback,useEffect,useState} from 'react';
 // Hash routes. Legacy hashes from older reports and bookmarks map onto the current routes.
-const LEGACY=[[/^playthroughs\/charts$/,'relationships'],[/^playthroughs\/split$/,'splits'],[/^playthroughs(\/.*)?$/,'runs'],[/^lab$/,'research'],[/^overview$/,'research'],[/^scenarios(\/.*)?$/,(m)=>'research/scenarios'+(m[1]||'')],[/^runs$/,'research/runs'],[/^method$/,'research/method']];
+// Retired pages, in either hash form, land on the runs page: the "Where they split" page was removed in November 2026.
+const RETIRED=[[/^splits(\/.*)?$/,'runs']];
+const LEGACY=[[/^playthroughs\/charts$/,'relationships'],[/^playthroughs\/split$/,'runs'],[/^playthroughs(\/.*)?$/,'runs'],[/^lab$/,'research'],[/^overview$/,'research'],[/^scenarios(\/.*)?$/,(m)=>'research/scenarios'+(m[1]||'')],[/^runs$/,'research/runs'],[/^method$/,'research/method']];
 export function parseHash(hash){
  const legacy=!/^#\//.test(hash||'');let raw=(hash||'').replace(/^#\/?/,'');const [pathPart,queryPart='']=raw.split('?');let path=pathPart.replace(/\/+$/,'');
  if(legacy)for(const [re,to] of LEGACY){const m=path.match(re);if(m){path=typeof to==='function'?to(m):to;break}}
+ for(const [re,to] of RETIRED)if(re.test(path)){path=to;break}
  const segs=path.split('/').filter(Boolean);const query=Object.fromEntries(new URLSearchParams(queryPart));
- if(!['runs','relationships','splits','research','sources'].includes(segs[0]))return {segs:['runs'],query:{},path:'runs'};
+ if(!['runs','relationships','research','sources'].includes(segs[0]))return {segs:['runs'],query:{},path:'runs'};
  return {segs,query,path:segs.join('/')};
 }
 const canonical=r=>'#/'+r.path+(Object.keys(r.query).length?'?'+new URLSearchParams(r.query):'');

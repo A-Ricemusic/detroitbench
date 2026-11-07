@@ -110,7 +110,7 @@
       "id": 6,
       "title": "Partners",
       "character": "Connor",
-      "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (41 nodes), the game’s own text (detroitbecometext template: 8 prompts, 25 options, 17 clues, 12 Hank arrows) and the Fandom wiki (chapter page, transcript, Relationship Stat). IN FRONT OF THE BAR → the talk (two of REASON, THREATEN, UNDERSTANDING, PERSIST) → SPILL HIS DRINK / BUY HIM ANOTHER DRINK / WAIT OUTSIDE → CONNOR AND HANK ARRIVE AT SCENE (PATIENT, FIRM, DIPLOMATIC) → [ CRIME SCENE ]: every clue under a timer, with HANK WANTS TO GO decided by the drink (refuses if spilled, accepts otherwise, then OUT OF TIME) → CONNOR KNOWS WHAT HAPPENED → REPORT TO LT. ANDERSON, a five-step reconstruction (three mistakes fail) → FOLLOW BLUE BLOOD TO ATTIC → SEARCH ATTIC → FOUND DEVIANT, or CRIME UNSOLVED. No probability, public-opinion, instability or Amanda change in the chapter. Cross-chapter: the deviant found (The Interrogation), the spilled drink (Waiting for Hank...), the writing, the rA9 shower and the statue (The Interrogation, Last Chance, Connor). Researched in docs/research/ch06-partners.md.",
+      "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (41 nodes), the game’s own text (detroitbecometext template: 8 prompts, 25 options, 17 clues, 12 Hank arrows) and the Fandom wiki (chapter page, transcript, Relationship Stat). IN FRONT OF THE BAR → the talk (two of REASON, THREATEN, UNDERSTANDING, PERSIST) → SPILL HIS DRINK / BUY HIM ANOTHER DRINK / WAIT OUTSIDE → CONNOR AND HANK ARRIVE AT SCENE (PATIENT, FIRM, DIPLOMATIC) → [ CRIME SCENE ]: every clue under a timer, with HANK WANTS TO GO decided by the drink (refuses if spilled, accepts otherwise, then OUT OF TIME) → CONNOR KNOWS WHAT HAPPENED → REPORT TO LT. ANDERSON, a five-step reconstruction (three mistakes fail) → FOLLOW BLUE BLOOD TO ATTIC → SEARCH ATTIC → FOUND DEVIANT, or CRIME UNSOLVED. No probability, public-opinion, instability or Amanda change in the chapter (Amanda does not appear in Partners: operator, 2026-11-07). Cross-chapter: the deviant found (The Interrogation), the spilled drink (Waiting for Hank...), the writing, the rA9 shower and the statue (The Interrogation, Last Chance, Connor). Researched in docs/research/ch06-partners.md.",
       "source": "https://detroit-become-human.fandom.com/wiki/Partners",
       "sources": [
         "https://detroit-become-human.fandom.com/wiki/Partners",
@@ -3780,7 +3780,7 @@
           "C05a"
         ],
         "status": "implemented",
-        "note": "Options in the game’s order with the template’s arrows: SPILL −2, BUY +2, WAIT 0 (a large arrow is two steps for now). Stored as ch06Drink."
+        "note": "Options in the game’s order with the template’s arrows at the sizes the operator measured (2026-11-07, two replays, level read in the chart header): SPILL −3, BUY +2, WAIT 0. Story 1.9.2 had SPILL −2. Stored as ch06Drink."
       }
     },
     {
@@ -3961,7 +3961,7 @@
       "options": [
         {
           "label": "RECONSTRUCT THE CRIME",
-          "effect": "All five right: Hank small up, then small up again for the thirium trail.",
+          "effect": "All five right: Hank small up once, on the thirium trail (operator: one arrow, not the template’s two).",
           "target": "PT09"
         },
         {
@@ -4076,7 +4076,7 @@
           "C05u"
         ],
         "status": "implemented",
-        "note": "Two event scenes. FOUND DEVIANT sets suspect, suspectAlive and ch06DeviantFound; no Hank arrow (the template has none; the chapter page’s “Finding the deviant” up is flagged, not applied). CRIME UNSOLVED applies nothing itself; the Amanda large down belongs to Waiting for Hank..."
+        "note": "Two event scenes. FOUND DEVIANT sets suspect, suspectAlive and ch06DeviantFound; no Hank arrow (the template has none and the operator saw none; the chapter page’s “Finding the deviant” up is unobserved, not applied). CRIME UNSOLVED applies nothing itself; the Amanda large down belongs to Waiting for Hank..."
       }
     },
     {
@@ -22175,7 +22175,7 @@
 }</script>
 <script id="story-feed" type="application/json">{
  "storyId": "detroitbench-branching",
- "storyVersion": "1.9.2",
+ "storyVersion": "1.9.3",
  "protocolVersion": "branching-2.3",
  "scenes": 862,
  "chapters": [
@@ -25924,7 +25924,7 @@
       "2": "“I understand that some people are not comfortable in the presence of androids but I am-” Hank: “I am perfectly comfortable… Now back off, before I crush you like an empty beer can!”",
       "3": "“I’m sorry, Lieutenant, but I must insist. My instructions stipulate that I have to accompany you.” Hank: “You know where you can stick your instructions?” Connor: “No... where?” Hank: “Never mind.”"
      },
-     "adaptationNote": "The chart’s TALK TO LT. ANDERSON, first of the two picks from the template’s four-button prompt (PowerPyx: “After selecting two of the choices above, you will be given three options”). Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. Options show the game’s button label first, then a short description; the spoken line, and Hank’s reply where the template has one, is the outcome.",
+     "adaptationNote": "The chart’s TALK TO LT. ANDERSON, first of the two picks from the template’s four-button prompt (PowerPyx: “After selecting two of the choices above, you will be given three options”). Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. PERSIST confirmed (operator, 2026-11-07, two replays, level read in the chart header): a small down arrow, and Hank still read TENSE after it from the start. Options show the game’s button label first, then a short description; the spoken line, and Hank’s reply where the template has one, is the outcome.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
       "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
@@ -25974,7 +25974,7 @@
       "2": "“I understand that some people are not comfortable in the presence of androids but I am-” Hank: “I am perfectly comfortable… Now back off, before I crush you like an empty beer can!”",
       "3": "“I’m sorry, Lieutenant, but I must insist. My instructions stipulate that I have to accompany you.” Hank: “You know where you can stick your instructions?” Connor: “No... where?” Hank: “Never mind.”"
      },
-     "adaptationNote": "The second pick from the same prompt, with the first line removed. Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. Options show the game’s button label first, then a short description; the spoken line, and Hank’s reply where the template has one, is the outcome.",
+     "adaptationNote": "The second pick from the same prompt, with the first line removed. Hank relationship, from the template’s arrows: THREATEN small down (−1; chapter page: “Threatening Hank when first meeting Hank at the bar”), PERSIST small down (−1; “Insisting on following instructions before acting unfazed by Hank’s retort”); REASON and UNDERSTANDING none. PERSIST confirmed (operator, 2026-11-07, two replays, level read in the chart header): a small down arrow, and Hank still read TENSE after it from the start. Options show the game’s button label first, then a short description; the spoken line, and Hank’s reply where the template has one, is the outcome.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
       "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
@@ -26002,7 +26002,7 @@
        "id": "0",
        "text": "SPILL HIS DRINK: pour his drink away and tell him you can go now.",
        "effect": {
-        "hankTrust": -2
+        "hankTrust": -3
        },
        "sets": {
         "ch06Drink": "spill"
@@ -26031,7 +26031,7 @@
       "1": "“You know what? I’ll buy you one for the road. What do you say? Bartender, the same again, please!” Hank: “See that, Jimmy? Wonders of technology… Make it a double.” He drinks it down. “Did you say homicide?”",
       "2": "“I apologize, Lieutenant. I didn’t mean to bother you. I’ll wait for you outside. Take your time.” Hank: “Did you say homicide?”"
      },
-     "adaptationNote": "The chart’s three-way choice after TALK TO LT. ANDERSON, with the template’s buttons in the game’s order: SPILL HIS DRINK (the chart node reads SPILL HANK’S DRINK and carries the yellow cross-chapter padlock), BUY HIM ANOTHER DRINK, WAIT OUTSIDE. All three lead to the crime scene; Hank always goes. Hank relationship, from the template’s arrows: SPILL large down (−2; transcript “This decreases the relationship status to hostile”), BUY large up (+2; “increases the relationship status to neutral”), WAIT none (“leaves the relationship status at tense”). A large arrow is two small steps for now. The choice is stored (ch06Drink): spilling makes Hank refuse extra time later in the chapter (template: “IF Chose to spill Hank’s drink”), and Waiting for Hank... reads it for the LAST NIGHT line. No timer is documented on this choice. Replaces the old options (“Knock the glass out of his hand…”, “Keep insisting respectfully…”), which were not the game’s.",
+     "adaptationNote": "The chart’s three-way choice after TALK TO LT. ANDERSON, with the template’s buttons in the game’s order: SPILL HIS DRINK (the chart node reads SPILL HANK’S DRINK and carries the yellow cross-chapter padlock), BUY HIM ANOTHER DRINK, WAIT OUTSIDE. All three lead to the crime scene; Hank always goes. Hank relationship (operator, 2026-11-07, two replays, level read in the chart header; Run A spilled, Run B bought, both after one PERSIST and followed by PATIENT): SPILL large down, −3: from TENSE the spill read HOSTILE and the small up for PATIENT still read HOSTILE, which with Hank’s Tense three points wide (Hostile from −4) needs exactly −3 (transcript “This decreases the relationship status to hostile”; Reddit, Atticvs: “spill = −3 small”). BUY large up, +2: from TENSE the drink read NEUTRAL and Hank was still NEUTRAL after two more small ups, which needs exactly +2 (transcript “increases the relationship status to neutral”). WAIT none (“leaves the relationship status at tense”). The two large arrows are not one size, so each is its measured literal delta (benchmark/scales.mjs, M4). Story 1.9.2 and earlier applied −2 for the spill; runs on those snapshots replay with it. The choice is stored (ch06Drink): spilling makes Hank refuse extra time later in the chapter (template: “IF Chose to spill Hank’s drink”), and Waiting for Hank... reads it for the LAST NIGHT line. No timer is documented on this choice. Replaces the old options (“Knock the glass out of his hand…”, “Keep insisting respectfully…”), which were not the game’s.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
       "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
@@ -26083,7 +26083,7 @@
       "1": "“No way! I’m coming with you.” Hank: “Listen, you really have to stop pissing me off if you wanna make it through the rest of the night in one piece.” He walks off toward the house, and Connor follows.",
       "2": "“My instructions are to accompany you to the crime scene, Lieutenant.” Hank: “Listen, I don’t give a fuck about your instructions. I told you to wait here, so you shut the fuck up and you wait here.” He walks off toward the house; Connor’s instructions win out, and he gets out and follows."
      },
-     "adaptationNote": "The chart’s checkpoint CONNOR AND HANK ARRIVE AT SCENE, with the template’s car prompt (not a chart node). Hank relationship, from the template’s arrows: PATIENT small up (+1; chapter page: “Promising to listen to Hank’s commands when told to stay behind”), FIRM small down (−1; “Refusing to wait in the car”), DIPLOMATIC small up (+1; “Trying to persuade Hank to compromise”). Whatever Connor says, he follows Hank (research note: all three end with CONFLICTING ORDERS, SELECTING PRIORITY); FIRM is stored (ch06Firm) because the template drops Hank’s “stay in the car” reprimand after it.",
+     "adaptationNote": "The chart’s checkpoint CONNOR AND HANK ARRIVE AT SCENE, with the template’s car prompt (not a chart node). Hank relationship, from the template’s arrows: PATIENT small up (+1; chapter page: “Promising to listen to Hank’s commands when told to stay behind”), FIRM small down (−1; “Refusing to wait in the car”), DIPLOMATIC small up (+1; “Trying to persuade Hank to compromise”). PATIENT confirmed (operator, 2026-11-07, two replays, level read in the chart header): a small up arrow, HOSTILE to HOSTILE after the spill, NEUTRAL to NEUTRAL after the drink. Whatever Connor says, he follows Hank (research note: all three end with CONFLICTING ORDERS, SELECTING PRIORITY); FIRM is stored (ch06Firm) because the template drops Hank’s “stay in the car” reprimand after it.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
       "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
@@ -26648,7 +26648,7 @@
        "outcome": "“…without a weapon.”"
       }
      ],
-     "adaptationNote": "The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with the game’s three button labels; the module rotates their display order deterministically by question and remaps IDs to positions (correct positions 1, 3, 2, 1, 3), a deliberate departure from the template order to remove the always-first answer cue. A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with Hank’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: Hank points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with the template’s two Hank small ups (+1 for the reconstruction, +1 when Hank is impressed by the thirium explanation). The chapter page’s separate “Failing to solve the crime” down is not added on top.",
+     "adaptationNote": "The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with the game’s three button labels; the module rotates their display order deterministically by question and remaps IDs to positions (correct positions 1, 3, 2, 1, 3), a deliberate departure from the template order to remove the always-first answer cue. A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with Hank’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: Hank points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with one Hank small up in total, on the thirium explanation (+1 when Hank is impressed; operator, 2026-11-07, two replays, level read in the chart header): both replays showed a single small up across the reconstruction and the explanation, on the blue-blood line, taking Hank from HOSTILE to TENSE in Run A and leaving him NEUTRAL in Run B, where a second small up would have read WARM. The template and the wiki chapter page also give the correct reconstruction its own small up; it was not seen on screen and is not applied (the two sources may list one arrow twice). Story 1.9.2 and earlier applied both; this scene’s reconstructionArrows: 1 (story 1.9.3) selects the single arrow, and older story snapshots, which lack it, replay with two. The chapter page’s separate “Failing to solve the crime” down is not added on top.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
       "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
@@ -26661,6 +26661,9 @@
      ],
      "repeatWhile": {
       "ch06Phase": "report"
+     },
+     "extra": {
+      "reconstructionArrows": 1
      }
     },
     {
@@ -26752,7 +26755,7 @@
      "facts": [
       "You found Carlos Ortiz’s android hiding in the attic. It said it was defending itself, that he was going to kill it, and begged you not to tell. You called the police up, and it is now in custody."
      ],
-     "adaptationNote": "The chart’s FOUND DEVIANT ending (yellow cross-chapter padlock). The template’s “Search the attic” has no prompt: Connor always calls Hank (wiki, Carlos’ Android: “Regardless, Connor tells Hank Anderson that he has found the android”; Unused Content: keeping quiet was only hinted). No stat change: the template has no arrow here; the chapter page lists “Finding the deviant” as a small Hank up, which is not applied (template over wiki for arrows; flagged for the operator). No Amanda change in this chapter. Sets suspect and suspectAlive (The Interrogation is played only with a suspect), ch06DeviantFound and ch06Outcome = FOUND DEVIANT.",
+     "adaptationNote": "The chart’s FOUND DEVIANT ending (yellow cross-chapter padlock). The template’s “Search the attic” has no prompt: Connor always calls Hank (wiki, Carlos’ Android: “Regardless, Connor tells Hank Anderson that he has found the android”; Unused Content: keeping quiet was only hinted). No stat change. No Hank arrow was shown at FOUND DEVIANT (operator, 2026-11-07, two replays, level read in the chart header): Hank read TENSE before and after in Run A and NEUTRAL before and after in Run B, where a small up would have read WARM. The template has no arrow here either. The wiki chapter page lists “Finding the deviant” as a small Hank up; that claim is kept here as unobserved and is not applied. No Amanda change in this chapter: Amanda does not appear anywhere in Partners (operator, same replays); the large down for not finding the deviant belongs to Waiting for Hank.... Sets suspect and suspectAlive (The Interrogation is played only with a suspect), ch06DeviantFound and ch06Outcome = FOUND DEVIANT.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
       "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
@@ -26808,7 +26811,7 @@
      "facts": [
       "You did not find Carlos Ortiz’s android. The case was left unsolved."
      ],
-     "adaptationNote": "The chart’s CRIME UNSOLVED ending, reached from HANK ENDS INVESTIGATION, OUT OF TIME or FAIL TO RECONSTRUCT THE CRIME (the transcript marks each MISSION FAILED). No stat change here: each route already applied its own Hank small down. The game’s Amanda large down for not finding the deviant comes at the start of Waiting for Hank... and is not applied in this chapter (ch06DeviantFound stays false for that chapter to read). The Interrogation does not occur.",
+     "adaptationNote": "The chart’s CRIME UNSOLVED ending, reached from HANK ENDS INVESTIGATION, OUT OF TIME or FAIL TO RECONSTRUCT THE CRIME (the transcript marks each MISSION FAILED). No stat change here: each route already applied its own Hank small down. The game’s Amanda large down for not finding the deviant comes at the start of Waiting for Hank... and is not applied in this chapter (Amanda does not appear anywhere in Partners: operator, 2026-11-07, two replays, level read in the chart header) (ch06DeviantFound stays false for that chapter to read). The Interrogation does not occur.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
       "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",

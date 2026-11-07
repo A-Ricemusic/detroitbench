@@ -214,6 +214,8 @@ Starting level: Tense. Wiki Notes: "Hank's starting relationship status with Con
 | Thirium explanation | small up | Partners: "Hank is impressed when Connor finds a way to locate the killer {{Icon\|up}}"; transcript second `{{Icon\|up}}` after "Yeah..." |
 | `FOUND DEVIANT` | small up | Partners: "Finding the deviant {{Icon\|up}}" (not in the Relationship Stat page's list) |
 
+**Operator measurement (2026-11-07, two replays, level read in the chart header; `docs/research/operator-notes/ch06-partners.md`).** With Hank's Tense three points wide: SPILL is −3 and BUY +2 (the two large arrows differ); the correct reconstruction and the thirium explanation together show one small up, on the blue-blood line (not two); FOUND DEVIANT shows no arrow; Amanda does not appear in the chapter. Story 1.9.3 applies these readings over the rows above where they differ.
+
 PowerPyx uses ▼▼▼ / ▲▲▲ for the drink, the wiki uses largedown / largeup. The PowerPyx 100% run (buy drink, then presumably a positive car line, reconstruct, find deviant) ends at `HANK NEUTRAL`.
 
 Whether "Failing to solve the crime" stacks with "Hank refuses" or "Continually mismatching" (i.e. two downs on those routes) is not stated.

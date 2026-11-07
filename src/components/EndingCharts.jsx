@@ -47,7 +47,8 @@ export const storyChoices=(r,owner)=>r.choices?.filter(c=>c.character===owner).l
 function niceAxis(min,max){const pad=Math.max((max-min)*0.15,max*0.08,2),lo0=Math.max(0,min-pad),hi0=max+pad;const steps=[1,2,5,10,20,25,50,100,200,250,500];const step=steps.find(s=>(hi0-lo0)/s<=5)??Math.ceil((hi0-lo0)/5);const lo=Math.floor(lo0/step)*step;return {step,lo,top:Math.max(lo+step,Math.ceil(hi0/step)*step)}}
 
 // One model on the plot: a dot in the model's colour with its number on a badge at the upper right (as on SkateBench's
-// value matrix), and a tooltip with the ending in full.
+// value matrix), and a tooltip with the ending in full. Phone lanes skip the tooltip (a tap opens the run, which has it),
+// since a hidden 16rem box beside a marker at the screen edge would still widen the page.
 function Marker({r,n,color,col,name,align,below,dim,onPick,setHl,inline=false,style,count}){
  const ending=tidy(r.endings?.[OUTCOMES[name].owner]);
  return <button type="button" aria-haspopup="dialog" aria-label={`${n}. ${r.displayName}: ${col.full}${count!==undefined?`, ${count} choices in the storyline`:''}. Open run details`} onClick={()=>onPick?.(r.id)}
@@ -55,11 +56,11 @@ function Marker({r,n,color,col,name,align,below,dim,onPick,setHl,inline=false,st
   className={cx('group flex size-9 items-center justify-center rounded-full transition-opacity duration-200 focus-visible:outline-2 outline-accent hover:z-10 focus-visible:z-10',inline?'relative':'absolute -translate-x-1/2 -translate-y-1/2',dim&&'opacity-25')}>
   <span aria-hidden="true" className="anim-pop relative block size-[18px] rounded-full ring-2 ring-[var(--plot-bg)] transition-transform duration-200 group-hover:scale-125 group-focus-visible:scale-125" style={{background:color,boxShadow:`0 0 0 6px color-mix(in oklab, ${color} 18%, transparent)`}}/>
   <span aria-hidden="true" className="absolute left-[calc(50%+8px)] top-[-3px] inline-flex h-4 min-w-4 items-center justify-center whitespace-nowrap rounded-full border border-[var(--plot-rule-2)] bg-[var(--plot-bg)] px-1 font-mono text-[9.5px] font-semibold leading-none text-ink-2 tnum">{n}</span>
-  <span aria-hidden="true" className={cx('pointer-events-none absolute z-20 w-64 rounded-lg border border-line bg-raised px-3 py-2.5 text-left shadow-lg opacity-0 invisible transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100',below?'top-[calc(100%+8px)]':'bottom-[calc(100%+8px)]',align==='start'?'left-0':align==='end'?'right-0':'left-1/2 -translate-x-1/2')}>
+  {!inline&&<span aria-hidden="true" className={cx('pointer-events-none absolute z-20 w-64 rounded-lg border border-line bg-raised px-3 py-2.5 text-left shadow-lg opacity-0 invisible transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-visible:visible group-focus-visible:opacity-100',below?'top-[calc(100%+8px)]':'bottom-[calc(100%+8px)]',align==='start'?'left-0':align==='end'?'right-0':'left-1/2 -translate-x-1/2')}>
    <span className="flex items-center gap-2 text-[13px] font-semibold text-ink"><span className="font-mono text-[11px] text-ink-3">{n}</span><Dot color={color} className="size-2"/>{r.displayName}</span>
    <span className="mt-1 flex items-center gap-1.5 text-xs font-medium text-ink"><ToneIcon tone={col.tone}/>{col.full}{count!==undefined&&<span className="font-normal text-ink-3"> · {count} choices</span>}</span>
    {ending&&<span className="mt-1 block text-xs leading-snug text-ink-2">{ending}</span>}
-  </span>
+  </span>}
  </button>}
 
 // Desktop: a value-matrix scatter. Endings are columns (worst left, best right); each model sits in its ending's column
@@ -123,7 +124,7 @@ function EndingCard({title,names,runs,nums,colors,hl,setHl,onPick}){
   <header className="mb-6 flex items-start justify-between gap-4 md:mb-8">
    <div className="min-w-0">
     <h3 id={id} className="text-2xl font-bold uppercase tracking-tight md:text-[32px] md:leading-none">{title}</h3>
-    <p className="cap mt-2 flex items-start gap-2"><Dot color={CHAR_VAR[OUTCOMES[names[0]].owner]} className="size-2 mt-[3px]"/>{single?'Ending':'Endings'} by model · worst to best · height is choices made in the storyline</p>
+    <p className="cap mt-2 flex items-start gap-2"><Dot color={CHAR_VAR[OUTCOMES[names[0]].owner]} className="size-2 mt-[3px]"/><span>{single?'Ending':'Endings'} by model · worst to best<span className="hidden md:inline"> · height is choices made in the storyline</span></span></p>
    </div>
    {single&&<p className="text-right shrink-0"><span className="block text-3xl font-semibold leading-none tracking-tight md:text-5xl">{h.n}<span className="text-ink-3 text-xl md:text-3xl">/{runs.length}</span></span><span className="cap mt-1.5 block">{h.phrase}</span></p>}
   </header>

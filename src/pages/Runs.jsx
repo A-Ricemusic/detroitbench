@@ -3,7 +3,6 @@ import {FileText,Download,CircleX,CircleAlert,Minus,ArrowUp,ArrowDown,ChevronsUp
 import {Badge,Button,Empty,Notice,PageHeader,Section,Segmented,Select,Sheet,Skeleton,TONE_ICON,cx} from '../components/ui.jsx';
 import {OUTCOMES,RunRelationships,NumChip} from '../components/Charts.jsx';
 import {EndingCharts} from '../components/EndingCharts.jsx';
-import {Rankings} from '../components/Rankings.jsx';
 import {RunFlowchart} from '../components/Flowchart.jsx';
 import {CHARS,WHO,CHAR_VAR,ORDER,STATUS_TEXT,STATUS_TONE,relTone,modelColors,modelNumbers,plural,tidy} from '../lib/data.js';
 import {useLibrary} from '../lib/useLibrary.jsx';
@@ -125,10 +124,7 @@ export default function Runs({route,navigate}){
  return <>
   <Hero runs={runs}/>
   {openId&&!openRun&&<Notice tone="warn" className="mb-6" onDismiss={()=>navigate('runs',{replace:true})}>No run with that ID is in the library.</Notice>}
-  {runs.length>0&&<Section id="leaderboard" className="mt-4 md:mt-6" title="Leaderboard" lede="Models ranked on how their stories ended and how far they got. Select a model to open its run.">
-   <Rankings runs={runs} onPick={open}/>
-  </Section>}
-  {runs.length>0&&<Section id="endings" title="How each story ended" lede="Every model on each character’s endings, worst to best, placed at the height of the choices it made in that storyline. Select a marker or a model to open its run.">
+  {runs.length>0&&<Section id="endings" className="mt-4 md:mt-6" title="How each story ended" lede="Every model on each character’s endings, worst to best, placed at the height of the choices it made in that storyline. Select a marker or a model to open its run.">
    <EndingCharts runs={runs} onPick={open}/>
   </Section>}
   <Section id="every-run" title="Every run" lede="Sort by any column. Open a model for its relationships, failed risks and reading, or read the full report with every scene and reason."

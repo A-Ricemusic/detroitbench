@@ -3,7 +3,8 @@ import {forgeState} from './helpers/evidence.mjs';
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,current,promptFor,recordChoice,validatePlaythrough,situationFor} from '../benchmark/story-engine.mjs';
 import {hash} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL,experiencePrompt} from '../benchmark/experience-prompt.mjs';
-import {rules} from '../benchmark/chapters/ch06.mjs';
+import {rules,RECONSTRUCTION_ARROWS} from '../benchmark/chapters/ch06.mjs';
+import {level} from '../benchmark/scales.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 const node=id=>story.nodes.find(n=>n.id===id);
 const CH6=['C05s','C05b1','C05b2','C05a','C05c','C05d','C05h','C05t','C05x','C05y','C05z','C05','C05e','C05f','C05g','C05u'];
@@ -12,10 +13,10 @@ const TEMPLATE='https://raw.githubusercontent.com/detroitbecometext/detroitbecom
 const HUB=node('C05h'),item=k=>{const o=HUB.options.find(o=>o.item===k);assert.ok(o,k);return o.id},items=(...ks)=>ks.map(item);
 
 // Plays the story with explicit picks (an array is consumed one entry per visit), first option otherwise; stops when `until` holds.
-function play(picks={},until=n=>n.chapter>6){const s=startState(story),visited=[],skipped=[],events={},queue=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;
+function play(picks={},until=n=>n.chapter>6,onStep){const s=startState(story),visited=[],skipped=[],events={},queue=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;
  while(cursor<story.nodes.length){assert.ok(guard++<3000,'routing loop');const n=story.nodes[cursor],b=blocked(n,s);if(until?.(n,s,b))break;if(b){skipped.push({id:n.id,reason:b});cursor++;continue}
   const opts=available(n,s);assert.ok(opts.length,'no options at '+n.id);const q=queue[n.id];let p=(Array.isArray(q)?q.shift():q)??(n.type==='media'?'skip':opts[0].id);if(n.id==='C05'){const authored=n.options.find(o=>o.step===s.ch06QuizStep&&o.id===p);p=opts.find(o=>o.text===authored?.text)?.id}assert.ok(opts.some(o=>o.id===p),'bad pick '+n.id+' '+p);
-  const e=apply(n,s,p,0.999);(events[n.id]??=[]).push(e.event);visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
+  const e=apply(n,s,p,0.999);(events[n.id]??=[]).push(e.event);visited.push(n.id);onStep?.(n,s);cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,skipped,events}}
 const fromCh6=n=>n.chapter>6;
 const before6=()=>{const r=play({},n=>n.chapter>=6);return r.s};
@@ -44,11 +45,11 @@ test('Partners: sixteen Connor scenes in order between The Painter and Stormy Ni
 test('Partners: every Hank arrow is the template’s, and nothing else moves',()=>{
  const arrow=(id,choice,s=before6())=>{const n=node(id),b=structuredClone(s);apply(n,s,choice,0.999);return [s.hankTrust-b.hankTrust,s.amandaTrust-b.amandaTrust,s.instability-b.instability,s.publicSupport-b.publicSupport]};
  assert.deepEqual(['0','1','2','3'].map(c=>arrow('C05b1',c)[0]),[0,-1,0,-1],'REASON, THREATEN, UNDERSTANDING, PERSIST');
- assert.deepEqual(['0','1','2'].map(c=>arrow('C05a',c)),[[-2,0,0,0],[2,0,0,0],[0,0,0,0]],'SPILL large down, BUY large up, WAIT none');
+ assert.deepEqual(['0','1','2'].map(c=>arrow('C05a',c)),[[-3,0,0,0],[2,0,0,0],[0,0,0,0]],'SPILL large down (measured −3), BUY large up (+2), WAIT none');
  assert.deepEqual(['0','1','2'].map(c=>arrow('C05c',c)[0]),[1,-1,1],'PATIENT, FIRM, DIPLOMATIC');
  const s0=before6();assert.equal(s0.hankTrust,-1,'Hank starts Tense');
- // Best case: buy, patient, reconstruct: -1 +2 +1 +2 = 4 (Warm).
- const best=play({C05b1:'0',C05b2:'2',C05a:'1',C05c:'0'});assert.equal(best.s.hankTrust,4);assert.equal(best.s.amandaTrust,s0.amandaTrust,'no Amanda change in Partners');
+ // Best case: buy, patient, reconstruct with the blue-blood line: -1 +2 +1 +1 = 3 (Warm).
+ const best=play({C05b1:'0',C05b2:'2',C05a:'1',C05c:'0'});assert.equal(best.s.hankTrust,3);assert.equal(level('hank',best.s.hankTrust),'Warm');assert.equal(best.s.amandaTrust,s0.amandaTrust,'no Amanda change in Partners');
  assert.equal(best.s.instability,s0.instability);assert.equal(best.s.publicSupport,s0.publicSupport)});
 
 test('Partners: the bar is two picks from the four lines, then the drink; FIRM drops Hank’s reprimand',()=>{
@@ -113,7 +114,7 @@ test('Partners: with the drink bought or not spilled Hank gives five more minute
 
 test('Partners: the report is five questions; the first is never a mistake, the third mistake ends it',()=>{
  const pre=play({},n=>n.id==='C05').s.hankTrust;
- const good=play({},fromCh6);assert.deepEqual(good.visited.filter(x=>x==='C05').length,5);assert.equal(good.s.hankTrust,pre+2,'two small ups');assert.match(good.events.C05[4],/You call it “Blue Blood”/);
+ const good=play({},fromCh6);assert.deepEqual(good.visited.filter(x=>x==='C05').length,5);assert.equal(good.s.hankTrust,pre+1,'one small up for the reconstruction and the blue-blood line together');assert.match(good.events.C05[4],/You call it “Blue Blood”/);
  assert.deepEqual(good.visited.slice(-3),['C05e','C05f','C05g']);assert.equal(good.s.suspect,true);assert.equal(good.s.suspectAlive,true);assert.equal(good.s.ch06Outcome,'FOUND DEVIANT');
  const q1=play({C05:['1','0','0','0','0']},fromCh6);assert.equal(q1.s.ch06Mistakes,0);assert.match(q1.events.C05[0],/look harder at the mess in the kitchen/);assert.equal(q1.s.ch06Outcome,'FOUND DEVIANT');
  const retry=play({C05:['0','2','0','1','0','0','0']},fromCh6);assert.equal(retry.s.ch06Mistakes,2);assert.equal(retry.s.ch06Outcome,'FOUND DEVIANT');
@@ -161,4 +162,24 @@ test('Partners: report answer positions and IDs vary deterministically without c
  }
  assert.deepEqual(positions,[0,2,1,0,2]);assert.equal(new Set(positions).size,3);
  assert.ok(node('C05h').repeatWhile);assert.ok(node('C05').repeatWhile);
+});
+
+// The operator's two replays of 2026-11-07 (docs/research/operator-notes/ch06-partners.md), Hank's level read in the chart
+// header: chapter start, PERSIST, the drink, PATIENT, the full reconstruction with the blue-blood line, FOUND DEVIANT.
+test('Partners: the operator’s Run A (spill) and Run B (buy) read the same Hank levels step by step',()=>{
+ const replay=drink=>{const seen=[];let start;
+  play({C05b1:'3',C05b2:'0',C05a:drink,C05c:'0',C05h:FAST},fromCh6,(n,s)=>{
+   if(n.id==='C05s')start=level('hank',s.hankTrust);
+   if(['C05b1','C05a','C05c','C05g'].includes(n.id)||(n.id==='C05'&&s.ch06Phase==='reconstructed'&&!seen.some(x=>x[0]==='C05')))seen.push([n.id,level('hank',s.hankTrust).toUpperCase()])});
+  assert.deepEqual(seen.map(x=>x[0]),['C05b1','C05a','C05c','C05','C05g']);return [start.toUpperCase(),...seen.map(x=>x[1])]};
+ assert.deepEqual(replay('0'),['TENSE','TENSE','HOSTILE','HOSTILE','TENSE','TENSE'],'Run A: PERSIST, SPILL, PATIENT, reconstruct, found');
+ assert.deepEqual(replay('1'),['TENSE','TENSE','NEUTRAL','NEUTRAL','NEUTRAL','NEUTRAL'],'Run B: PERSIST, BUY, PATIENT, reconstruct, found');
+});
+
+test('Partners: story snapshots without reconstructionArrows replay the old two arrows; the current scene gives one',()=>{
+ assert.equal(node('C05').reconstructionArrows,RECONSTRUCTION_ARROWS.current);assert.equal(RECONSTRUCTION_ARROWS.current,1);assert.equal(RECONSTRUCTION_ARROWS.legacy,2);
+ const finish=n=>{const s=play({C05:['0','0','0','0']},(x,st)=>x.id==='C05'&&st.ch06QuizStep===5).s,b=s.hankTrust,opt=available(n,s).find(o=>o.text.startsWith('…WITH THE KNIFE'));
+  apply(n,s,opt.id,0.999);assert.equal(s.ch06Phase,'reconstructed');return s.hankTrust-b};
+ assert.equal(finish(node('C05')),1);
+ const legacy=structuredClone(node('C05'));delete legacy.reconstructionArrows;assert.equal(finish(legacy),2);
 });

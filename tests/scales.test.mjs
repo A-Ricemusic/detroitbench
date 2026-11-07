@@ -1,7 +1,7 @@
 // The gauge definitions in benchmark/scales.mjs: the in-game Alice calibration, the start levels, the game's ladders,
 // the named thresholds (whose meaning must not drift), and that every consumer reads the same labels.
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile,readdir} from 'node:fs/promises';
-import {SCALES,GAUGES,THRESHOLDS,level,labelFn,pointLevels,atLeast,atMost,bandMins,levelTone,gaugeForKey} from '../benchmark/scales.mjs';
+import {SCALES,GAUGES,THRESHOLDS,level,labelFn,pointLevels,atLeast,atMost,bandMins,levelTone,gaugeForKey,MEASURED_ARROWS} from '../benchmark/scales.mjs';
 import {LEVELS,DEVIANCY_THRESHOLD,sceneFacts} from '../benchmark/experience-prompt.mjs';
 import {initialState,ENGINE_CONSTANTS,ALICE_KEY,attitudes} from '../benchmark/story-engine.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
@@ -92,18 +92,35 @@ test('no engine, prompt or chapter module compares a gauge against a bare number
  for(const [f,src] of SOURCES)src.split('\n').forEach((line,i)=>assert.ok(!re.test(line),f+':'+(i+1)+' '+line.match(re)?.[0]));
 });
 
-test('literal stat deltas are small or large arrows, including The Nest’s documented two-large timeout',()=>{
+test('literal stat deltas are small or large arrows, except The Nest’s two-large timeout and the measured arrows in MEASURED_ARROWS',()=>{
  const nest=story.nodes.findIndex(n=>n.id==='C10'),timeout=story.nodes[nest].options.findIndex(o=>o.id==='2');
  assert.match(story.nodes[nest].adaptationNote,/large down ×2/);
  const doubled=new Set(['hankTrust','instability'].map(k=>'nodes['+nest+'].options['+timeout+'].effect.'+k));
- const bad=[],step=(g,v,where)=>{const {small,large}=SCALES[g];if(doubled.has(where)){assert.equal(v,-2*large,where+' is two large decreases');return}if(![small,large].includes(Math.abs(v)))bad.push(where+' '+v)};
+ // Each measured exception is one option's data-driven effect, checked at exactly its listed value; nothing else is exempt.
+ const measured=new Map(MEASURED_ARROWS.map(m=>{const ni=story.nodes.findIndex(n=>n.id===m.node),oi=story.nodes[ni]?.options.findIndex(o=>o.id===m.option);
+  assert.ok(ni>=0&&oi>=0,'measured arrow '+m.node+' option '+m.option+' exists');assert.equal(gaugeForKey[m.key],m.gauge,m.node);
+  assert.ok(![SCALES[m.gauge].small,SCALES[m.gauge].large].includes(Math.abs(m.delta)),m.node+' is listed only because it differs from small and large');
+  return ['nodes['+ni+'].options['+oi+'].effect.'+m.key,m]}));
+ const used=new Set;
+ const bad=[],step=(g,v,where)=>{const {small,large}=SCALES[g];if(doubled.has(where)){assert.equal(v,-2*large,where+' is two large decreases');return}
+  if(measured.has(where)){assert.equal(v,measured.get(where).delta,where+' is its measured size');used.add(where);return}if(![small,large].includes(Math.abs(v)))bad.push(where+' '+v)};
  (function walk(o,path){if(Array.isArray(o))o.forEach((x,i)=>walk(x,path+'['+i+']'));else if(o&&typeof o==='object')for(const [k,v] of Object.entries(o)){
   if(gaugeForKey[k]&&typeof v==='number'&&/effect$/i.test(path))step(gaugeForKey[k],v,path+'.'+k);walk(v,path+'.'+k)}})(story.nodes,'nodes');
  const helper={hank:'hank',amanda:'amanda',alice:'alice',luther:'luther',jer:'jericho',jericho:'jericho',north:'north',simon:'simon',josh:'josh',po:'publicSupport',si:'instability'};
  for(const [f,src] of SOURCES){for(const m of src.matchAll(/\b(hank|amanda|alice|luther|jer|jericho|north|simon|josh|po|si)\((-?\d+)\)/g))step(helper[m[1]],Number(m[2]),f+' '+m[0]);
   // Effect tables in chapter modules ({hankTrust:-1}); the engine's initial state is not a delta.
   if(MODULES.includes(f))for(const m of src.matchAll(new RegExp(`\\b(${Object.keys(gaugeForKey).join('|')}):(-?\\d+)`,'g')))step(gaugeForKey[m[1]],Number(m[2]),f+' '+m[0])}
- assert.deepEqual(bad,[]);
+ assert.deepEqual(bad,[]);assert.deepEqual([...used].sort(),[...measured.keys()].sort(),'every measured arrow is present in the story data');
+});
+
+test('Hank’s measured large arrows in Partners (M4): the spill is three small, the drink two',()=>{
+ assert.deepEqual(MEASURED_ARROWS.map(m=>[m.node,m.option,m.key,m.delta]),[['C05a','0','hankTrust',-3]]);
+ const drink=story.nodes.find(n=>n.id==='C05a'),eff=id=>drink.options.find(o=>o.id===id).effect?.hankTrust??0;
+ assert.equal(eff('0'),-3,'SPILL HANK’S DRINK');assert.equal(eff('1'),SCALES.hank.large,'BUY HIM ANOTHER DRINK is the default large');assert.equal(eff('2'),0,'WAIT OUTSIDE');
+ // Run A and Run B from the start, one small down for PERSIST first.
+ const {startValue:s,small}=SCALES.hank;
+ assert.equal(level('hank',s-small+eff('0')),'Hostile');assert.equal(level('hank',s-small+eff('0')+small),'Hostile');assert.equal(level('hank',s-small+eff('0')+2*small),'Tense');
+ assert.equal(level('hank',s-small+eff('1')),'Neutral');assert.equal(level('hank',s-small+eff('1')+2*small),'Neutral');assert.equal(level('hank',s-small+eff('1')+3*small),'Warm');
 });
 
 test('every ladder level has a display tone on the site, except the neutral ones',()=>{
