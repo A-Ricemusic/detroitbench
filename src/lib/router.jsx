@@ -5,7 +5,7 @@ export function parseHash(hash){
  const legacy=!/^#\//.test(hash||'');let raw=(hash||'').replace(/^#\/?/,'');const [pathPart,queryPart='']=raw.split('?');let path=pathPart.replace(/\/+$/,'');
  if(legacy)for(const [re,to] of LEGACY){const m=path.match(re);if(m){path=typeof to==='function'?to(m):to;break}}
  const segs=path.split('/').filter(Boolean);const query=Object.fromEntries(new URLSearchParams(queryPart));
- if(!['runs','relationships','splits','research'].includes(segs[0]))return {segs:['runs'],query:{},path:'runs'};
+ if(!['runs','relationships','splits','research','sources'].includes(segs[0]))return {segs:['runs'],query:{},path:'runs'};
  return {segs,query,path:segs.join('/')};
 }
 const canonical=r=>'#/'+r.path+(Object.keys(r.query).length?'?'+new URLSearchParams(r.query):'');

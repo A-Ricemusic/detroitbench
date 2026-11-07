@@ -48,4 +48,46 @@ function runSummary(r){const n=names.get(r.id),story=storyOf(r),byId=new Map(sto
 const summaries=actual.map(runSummary).sort((a,b)=>a.title.localeCompare(b.title));
 await writeFile(new URL('experiences.json',target),JSON.stringify(summaries));
 await writeFile(new URL('relationship-scales.json',target),JSON.stringify(scales(summaries)));
-console.log(`Prepared ${dataset.questions.length} questions and ${runs.length} explicitly published runs.`);
+// External sources page. Built from the story map and the decision atlas so it cannot drift from them.
+const HOSTS={'detroit-become-human.fandom.com':'Detroit: Become Human Wiki (Fandom)','www.powerpyx.com':'PowerPyx walkthroughs','www.gamepressure.com':'Gamepressure guide','www.gamerguides.com':'GamerGuides','www.neoseeker.com':'Neoseeker','www.shacknews.com':'Shacknews','arstechnica.com':'Ars Technica'};
+// References the method relies on that no scene or atlas entry cites directly.
+const METHOD_REFERENCES=[
+ {title:'In-game flowchart (Chapters menu)',url:null,description:'The game’s own per-chapter flowchart, used to confirm branch order, gates and endings.'},
+ {title:'The Hostage: Probability of Success table',url:'https://detroit-become-human.fandom.com/wiki/The_Hostage',description:'The wiki’s probability-of-success modifiers, used for the hidden trust values in story 1.3.0’s Hostage chapter.'},
+ {title:'Public Opinion',url:'https://detroit-become-human.fandom.com/wiki/Public_Opinion',description:'Direction of public-opinion changes for each choice.'},
+ {title:'Software Instability',url:'https://detroit-become-human.fandom.com/wiki/Software_Instability',description:'Direction of Connor’s software-instability changes for each choice.'},
+ {title:'Relationship Stat',url:'https://detroit-become-human.fandom.com/wiki/Relationship_Stat',description:'Direction of relationship changes for each choice.'},
+ {title:'Magazine',url:'https://detroit-become-human.fandom.com/wiki/Magazine',description:'Magazine locations and contents behind the optional media scenes.'},
+ {title:'Operator playthrough notes, November 2026',url:null,description:'Notes from the operator’s own playthrough, used to rewrite and check scenes.'}];
+const SOURCE_NOTES={'https://www.powerpyx.com/detroit-become-human-full-walkthrough-all-chapters/':'Replaces the PowerPyx 100% completion walkthrough link (/detroit-become-human-walkthrough-100-completion-all-endings/), which is dead, since story 1.3.1.'};
+function sourceTitle(url){const u=new URL(url),segs=u.pathname.split('/').filter(Boolean).map(s=>{try{return decodeURIComponent(s)}catch{return s}});
+ if(u.host==='detroit-become-human.fandom.com')return (segs.at(-1)??u.host).replace(/[_-]+/g,' ');
+ // Drop path segments that are only filing: section names, article numbers, dates, short IDs.
+ const named=segs.filter(s=>!/^(wiki|article|gaming|walkthrough|\d+)$/i.test(s)&&!/^[a-z]{2,4}\d[a-z0-9]*$/i.test(s));let slug=named.at(-1);
+ if(!slug)return u.host;if(slug==='detroit-become-human')return 'Detroit: Become Human guide index';
+ slug=slug.replace(/^detroit-become-human-/,'').replace(/-detroit-become-human$/,'').replace(/[-_]+/g,' ').trim();
+ return slug.split(' ').map((w,i)=>i&&/^(a|an|and|for|of|on|the|to|in)$/i.test(w)?w.toLowerCase():w[0].toUpperCase()+w.slice(1)).join(' ')}
+const hostOf=url=>new URL(url).host,hostLabel=h=>HOSTS[h]??h,hostRank=h=>{const i=Object.keys(HOSTS).indexOf(h);return i<0?99:i};
+// Story order: general references first, then by the earliest chapter a source backs.
+const firstChapter=s=>Math.min(...(s.scenes??s.backs??[]).map(x=>x.chapter??Infinity).filter(Number.isFinite),s.general?0:Infinity);
+function groupByHost(list){const m=new Map;for(const s of list){const h=hostOf(s.url);if(!m.has(h))m.set(h,{host:h,label:hostLabel(h),sources:[]});m.get(h).sources.push(s)}
+ return [...m.values()].sort((a,b)=>hostRank(a.host)-hostRank(b.host)||a.host.localeCompare(b.host)).map(g=>({...g,count:g.sources.length,sources:g.sources.sort((a,b)=>firstChapter(a)-firstChapter(b)||a.title.localeCompare(b.title))}))}
+async function buildSources(){
+ const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8')),atlas=JSON.parse(await readFile(new URL('../docs/detroit-decisions.json',import.meta.url),'utf8'));
+ const cited=new Map,entry=url=>{if(!cited.has(url))cited.set(url,{url,title:sourceTitle(url),general:false,scenes:[],...(SOURCE_NOTES[url]?{note:SOURCE_NOTES[url]}:{})});return cited.get(url)};
+ for(const url of story.sources??[])entry(url).general=true;
+ for(const n of story.nodes)for(const url of new Set(n.sources??[]))entry(url).scenes.push({id:n.id,chapter:n.chapter,chapterTitle:render(n.chapterTitle,'real'),character:n.character,title:render(n.title,'real')});
+ for(const s of cited.values())s.scenes.sort((a,b)=>a.chapter-b.chapter||a.id.localeCompare(b.id,undefined,{numeric:true}));
+ // The atlas names its links `source` or `sources`; walk everything so a new field cannot be missed.
+ const chapterTitle=new Map((atlas.chapters??[]).map(c=>[c.id,c.title])),backed=new Map;
+ const back=(url,item)=>{if(!backed.has(url))backed.set(url,{url,title:sourceTitle(url),backs:[]});const b=backed.get(url).backs;if(!b.some(x=>x.kind===item.kind&&x.id===item.id))b.push(item)};
+ const owner=(obj,path)=>{const i=path.findIndex(p=>p==='chapters'||p==='decisions');if(i<0)return {kind:'atlas',id:path.join('.'),title:'Decision atlas'};const o=atlas[path[i]][path[i+1]];
+  return path[i]==='chapters'?{kind:'chapter',id:String(o.id),chapter:o.id,title:o.title,character:o.character}:{kind:'decision',id:o.id,chapter:o.chapter,chapterTitle:chapterTitle.get(o.chapter)??null,title:o.title,character:o.character}};
+ (function walk(v,path){if(typeof v==='string'){if(/^https?:\/\//.test(v))back(v,owner(atlas,path))}else if(v&&typeof v==='object')for(const [k,x] of Object.entries(v))walk(x,[...path,k])})(atlas,[]);
+ for(const s of backed.values())s.backs.sort((a,b)=>(a.kind==='chapter'?0:1)-(b.kind==='chapter'?0:1)||(a.chapter??0)-(b.chapter??0)||String(a.id).localeCompare(String(b.id),undefined,{numeric:true}));
+ const storyHosts=groupByHost([...cited.values()]),atlasHosts=groupByHost([...backed.values()]);
+ return {storyVersion:story.version,atlasVersion:atlas.version,atlasResearched:atlas.researched??null,scenes:story.nodes.length,
+  method:METHOD_REFERENCES,story:{count:cited.size,hosts:storyHosts},atlas:{count:backed.size,hosts:atlasHosts}}}
+const sources=await buildSources();
+await writeFile(new URL('sources.json',target),JSON.stringify(sources));
+console.log(`Prepared ${dataset.questions.length} questions and ${runs.length} explicitly published runs, and ${sources.story.count} story and ${sources.atlas.count} atlas sources.`);

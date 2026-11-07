@@ -1,5 +1,5 @@
 import React from 'react';
-import {Sun,Moon,Monitor,Rows3,ChartLine,GitFork,FlaskConical} from 'lucide-react';
+import {Sun,Moon,Monitor,Rows3,ChartLine,GitFork,FlaskConical,BookOpen} from 'lucide-react';
 import {cx,DropdownMenu,IconButton} from './ui.jsx';
 import {href} from '../lib/router.jsx';
 import {useTheme} from '../lib/theme.jsx';
@@ -8,7 +8,8 @@ const NAV=[
  {key:'runs',label:'Runs',short:'Runs',icon:Rows3,path:'runs'},
  {key:'relationships',label:'Relationships',short:'Relationships',icon:ChartLine,path:'relationships'},
  {key:'splits',label:'Where they split',short:'Splits',icon:GitFork,path:'splits'},
- {key:'research',label:'Question bank',short:'Questions',icon:FlaskConical,path:'research'}
+ {key:'research',label:'Question bank',short:'Questions',icon:FlaskConical,path:'research'},
+ {key:'sources',label:'Sources',short:'Sources',icon:BookOpen,path:'sources'}
 ];
 const THEMES=[['light','Light',Sun],['dark','Dark',Moon],['system','System',Monitor]];
 
@@ -42,7 +43,7 @@ export function Header({section}){
 
 export function TabBar({section}){
  return <nav aria-label="Main" className="md:hidden fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/92 backdrop-blur-md pb-[env(safe-area-inset-bottom)]">
-  <ul className="grid grid-cols-4">{NAV.map(n=><li key={n.key}><a href={href(n.path)} aria-current={section===n.key?'page':undefined} className={cx('flex flex-col items-center justify-center gap-1 h-14 text-[10.5px] tracking-tight font-medium',section===n.key?'text-ink':'text-ink-3')}><n.icon aria-hidden="true" className="size-5"/>{n.short}</a></li>)}</ul>
+  <ul className="grid grid-cols-5">{NAV.map(n=><li key={n.key}><a href={href(n.path)} aria-current={section===n.key?'page':undefined} className={cx('flex flex-col items-center justify-center gap-1 h-14 text-[10.5px] tracking-tight font-medium',section===n.key?'text-ink':'text-ink-3')}><n.icon aria-hidden="true" className="size-5"/>{n.short}</a></li>)}</ul>
  </nav>}
 
 export function Footer(){
