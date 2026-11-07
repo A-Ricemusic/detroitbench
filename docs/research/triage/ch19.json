@@ -1,0 +1,258 @@
+{
+ "chapter": 19,
+ "title": "Spare Parts",
+ "itemsInDump": 42,
+ "entries": [
+  {
+   "id": "ch19-01",
+   "verdict": "needs-play",
+   "topic": "Jericho arrow on the drone, FREE THEM and ACCEPT",
+   "originals": [
+    "Jericho icon on the drone, the crate and ACCEPT",
+    "Do the Jericho meters move on the drone, on FREE THEM and on ACCEPT",
+    "Wiki-only Jericho arrows",
+    "\"Taking other androids with them.\""
+   ],
+   "question": "When Markus freed the three androids in the crate (FREE THEM), did a Jericho arrow appear along with the North, Simon and Josh arrows?",
+   "impact": "arrow",
+   "why": "template gives North/Simon/Josh only on the drone, FREE THEM and ACCEPT although it tags Jericho elsewhere in the chapter; wiki (Jericho list lines 100-104) and PowerPyx ('North▲, Jericho▲, Josh▲, Simon▲' on freeing) add Jericho up/down; the reliability log has the template wrong twice on arrows. One answer settles all three moments. Benchmark applies no Jericho arrow (up to +3/-1 Jericho at stake)"
+  },
+  {
+   "id": "ch19-02",
+   "verdict": "needs-play",
+   "topic": "Control-room alarm and BACK TO JERICHO",
+   "originals": [
+    "The edges out of the two RUN TO FENCE nodes",
+    "After a control-room alarm, are the only outcomes the dogs and Markus's damage, or can the group reach BACK TO JERICHO?"
+   ],
+   "question": "After the guards raised the alarm in the control room, did the group ever get over the fence without the dogs catching John?",
+   "impact": "ending",
+   "why": "lines at the SUSTAIN DAMAGE junction cross in sp-7.jpg; the wiki nests 'Back to Jericho > Group Failed Their Mission OR Group Returned With Full Bags' under Fail to Avoid Guards > Run to Fence; benchmark gives only dogs (M05n) or damage, so John always dies after a control-room alarm"
+  },
+  {
+   "id": "ch19-03",
+   "verdict": "needs-play",
+   "topic": "Fence failure without an alarm",
+   "originals": [
+    "Can Markus be damaged at the fence when no alarm has sounded (after LEAVE)?"
+   ],
+   "question": "After LEAVE at the truck-key question (no alarm), could Markus still be too slow at the fence and get damaged?",
+   "impact": "ending",
+   "why": "the template files the fence 'Take too much time' under '## Was detected by the guards - Running away'; the chart's lower RUN TO FENCE (fed by both the alarm and LEAVE) has an uncertain edge to SUSTAIN DAMAGE REACHING THE FENCE; benchmark rolls 0.08 for failure after LEAVE"
+  },
+  {
+   "id": "ch19-04",
+   "verdict": "resolved",
+   "topic": "John cannot be saved",
+   "originals": [
+    "Can SAVE ever save John? (§8 item 4)",
+    "Can SAVE ever save John? (recap)"
+   ],
+   "answer": "No. The 100% chart's DOGS MAUL JOHN group holds only LEAVE JOHN BEHIND and SUSTAIN DAMAGE TRYING TO SAVE JOHN (> GROUP FAILED THEIR MISSION), and the John page says he 'dies regardless if Markus chooses to go back for him or leave'",
+   "source": "sp-7.jpg; /tmp/flowcharts/ch19/wiki.txt lines 72-77; research note §4 quoting the John page",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-05",
+   "verdict": "resolved",
+   "topic": "HIDE takes the ran-away ending",
+   "originals": [
+    "HIDE and the failed ending",
+    "HIDE takes the \"Ran away when the guard arrived\" ending block, like RUN AWAY",
+    "Does HIDE give the same Jericho ending block as RUN AWAY?"
+   ],
+   "answer": "Yes. The chart sends HIDE along the same bottom line as RUN AWAY to the lower ALARM SOUNDS; the template's HIDE ends with 'Hit the fucking alarm!' before the bags are filled; PowerPyx: HIDE 'ends in the team running away and ending the mission early'. The only template block for that run is 'Ran away when the guard arrived'",
+   "source": "sp-4.jpg (group ATTACK / GRAB / RUN AWAY / HIDE); transcript.txt lines 49-52 and In Jericho block; wiki.txt line 44 ('Hide - leads to Alarm Sounds')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-06",
+   "verdict": "resolved",
+   "topic": "TRIGGER ALARM carries the seen-by-guards arrows",
+   "originals": [
+    "The \"Be seen by the guards\" arrows also apply on TRIGGER ALARM",
+    "Does TRIGGER ALARM carry the \"Be seen by the guards\" arrows? Can Markus be seen after taking the key",
+    "Which control-room failures carry the \"Be seen by the guards\" icons?"
+   ],
+   "answer": "Yes for TRIGGER ALARM: it is a failure to get the key followed by the run to the fence, and the wiki ties the North double down to exactly that ('Running to the fence after failing to get the key' x2; Notes: 'If Markus fails to get the key, Markus' relationship with North decreases twice'). The template's 'Threaten guards with the gun' block is empty, so it adds nothing on top. Being seen after taking the key is an unmodelled rare path (see ch19-14)",
+   "source": "transcript.txt 'Be seen by the guards' block; wiki.txt lines 105, 119 and Notes",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-07",
+   "verdict": "resolved",
+   "topic": "Run-away arrows",
+   "originals": [
+    "Run away arrows wrong?"
+   ],
+   "answer": "Template 'Run away': North SmallDown x2, Jericho, Josh, Simon SmallDown. M05e option 2 now applies northTrust -2, jerichoTrust -1, joshTrust -1, simonTrust -1",
+   "source": "transcript.txt line 46; ch19.json M05e",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-08",
+   "verdict": "resolved",
+   "topic": "Seen-by-guards arrows",
+   "originals": [
+    "\"Be seen by the guards\" arrows wrong?"
+   ],
+   "answer": "Template: North x2, Jericho x2, Josh, Simon SmallDown. ch19.mjs ARROWS.seen applies exactly that on every control-room alarm",
+   "source": "transcript.txt 'Be seen by the guards' block; ch19.mjs ARROWS.seen",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-09",
+   "verdict": "resolved",
+   "topic": "Old risk failures removed",
+   "originals": [
+    "Risk failures with arrows the template lacks?",
+    "The previous version gave grabbing and attacking a 15% and 10% failure"
+   ],
+   "answer": "The first two prompts (M05e, M05f) now have no risk and no failure branch, as the chart (no alarm edge from the GUARD SEARCHES group) and the template show",
+   "source": "sp-4.jpg; ch19.json M05e/M05f",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-10",
+   "verdict": "resolved",
+   "topic": "Methods carry no arrows",
+   "originals": [
+    "Methods carry no arrow of their own"
+   ],
+   "answer": "Template condition blocks 'Create short-circuit', 'Attract the guards by knocking a barrel' and 'Threaten guards with the gun ø' carry no REL",
+   "source": "transcript.txt control-room CONDGROUP",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-11",
+   "verdict": "resolved",
+   "topic": "KILL GUARDS as the failure side of the threat",
+   "originals": [
+    "KILL GUARDS as a \"failure\"?",
+    "KILL GUARDS is the failure side of the threaten roll, as the chart marks it"
+   ],
+   "answer": "The game makes it a QTE result: wiki 'Kill Guards (failure) (succeeding in strangling the first guard then failing thereafter)', PowerPyx 'After chocking the guard stop pressing any buttons'; it still leads to STEAL KEY. Only Derek dies: wiki Notes 'Al Dante is never killed onscreen regardless'",
+   "source": "wiki.txt lines 82-85 and Notes; research note §2 Q2 quoting PowerPyx",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-12",
+   "verdict": "resolved",
+   "topic": "PROMPT 1 order",
+   "originals": [
+    "Option order in PROMPT 1?"
+   ],
+   "answer": "Chart order ATTACK, GRAB ANDROID AND HIDE, RUN AWAY, HIDE",
+   "source": "sp-4.jpg",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch19-13",
+   "verdict": "adaptation",
+   "topic": "Risk values",
+   "originals": [
+    "Risk values are unsourced: drone 0.2; TAKE GUN 0.3",
+    "So this is a single action with a risk roll",
+    "No source gives a probability; the value is the operator's to confirm",
+    "The chart's pass/fail sets are risk rolls",
+    "The benchmark makes it a single action with a risk roll: 0.15 after an alarm"
+   ],
+   "why": "the chart's QTE pass/fail groups and the fence timer are kept as nodes; the values are documented calibrations of player skill that no replay can measure"
+  },
+  {
+   "id": "ch19-14",
+   "verdict": "adaptation",
+   "topic": "Timers and idle lines not offered",
+   "originals": [
+    "[do nothing] at the first encounter?",
+    "North calling out if Markus lags behind",
+    "Not modelled: being seen after taking the key, the [do nothing] time-out, and North calling out"
+   ],
+   "why": "time-outs and idle calls are not offered as choices anywhere in the benchmark; being seen after the key is a rare QTE path that the wiki says spares North's penalty, documented in M05l"
+  },
+  {
+   "id": "ch19-15",
+   "verdict": "adaptation",
+   "topic": "Experienced difficulty",
+   "originals": [
+    "Difficulty?"
+   ],
+   "why": "AGENTS.md: target Experienced difficulty; RUN AWAY is offered for that reason"
+  },
+  {
+   "id": "ch19-16",
+   "verdict": "adaptation",
+   "topic": "Walking in as a fourth option",
+   "originals": [
+    "Walking in (MARKUS GETS SPOTTED) is offered as a fourth option with no roll"
+   ],
+   "why": "the chart node exists (from ENTER ROOM and FIND KEY); making the inaction explicit changes no arrow or ending"
+  },
+  {
+   "id": "ch19-17",
+   "verdict": "adaptation",
+   "topic": "Skipping the crate as a choice",
+   "originals": [
+    "Skipping the crate is a choice (M05g)"
+   ],
+   "why": "the chart draws RESUME SEARCH straight to JOHN WANTS TO JOIN and the wiki says the crate 'can jump directly'"
+  },
+  {
+   "id": "ch19-18",
+   "verdict": "adaptation",
+   "topic": "ALMOST SPOTTED narrated",
+   "originals": [
+    "ALMOST SPOTTED?",
+    "Is ALMOST SPOTTED optional?"
+   ],
+   "why": "a movement event with no arrow, prompt or later effect"
+  },
+  {
+   "id": "ch19-19",
+   "verdict": "adaptation",
+   "topic": "Object positions",
+   "originals": [
+    "Exactly where each object sits is simplified?"
+   ],
+   "why": "the three object buttons are the game's; positions only"
+  },
+  {
+   "id": "ch19-20",
+   "verdict": "cosmetic",
+   "topic": "Button wording on the first two prompts",
+   "originals": [
+    "Labels of the first two prompts?",
+    "Labels: the first two prompts use the template's button labels",
+    "Which wording is on the first two prompts' buttons: Kill Guard or KILL HUMAN GUARD?"
+   ],
+   "why": "same four and three actions either way; only the button text differs"
+  },
+  {
+   "id": "ch19-21",
+   "verdict": "cosmetic",
+   "topic": "Spare-parts clue in Crossroads",
+   "originals": [
+    "ANDROID SPARE PARTS REPORTED STOLEN?"
+   ],
+   "why": "a Connor thought string (THOUGHTS.02A04.MEDICAL) no template places and no benchmark scene reads"
+  },
+  {
+   "id": "ch19-22",
+   "verdict": "cosmetic",
+   "topic": "Recap source list",
+   "originals": [
+    "Sources: PowerPyx walkthrough and chart · Fandom wiki: Spare Parts"
+   ],
+   "why": "not a question; the recap's source line was swept into the dump"
+  }
+ ]
+}

@@ -933,7 +933,7 @@
     "text": "{{Adam}} is panicking in the hall."
    }
   ],
-  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as one repeatable hub, with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
+  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as one repeatable hub, with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes). When the officer has to pound on the door (POLICEMAN INSISTS) the outcome adds “He sounds suspicious already.”, the qualitative cue for the suspicion that adds (story 1.9.2).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -948,7 +948,8 @@
   "clueState": "midnightHide",
   "repeatWhile": {
    "midnightDoor": null
-  }
+  },
+  "suspicionCue": true
  },
  {
   "id": "K15v",
@@ -1085,7 +1086,7 @@
     "outcome": "“I have no idea what that’s doing there…”"
    }
   ],
-  "adaptationNote": "The chart’s event POLICEMAN DISCOVERS THE BLUE BLOOD, only when the cupboard was left open (template condition “Kara didn’t close the cupboard - policeman sees blue blood”), with the template’s prompt MESS / PREVIOUS OWNER / NOT MINE in its order with its labels. The discovery raises the officer’s hidden suspicion by one; NOT MINE raises it by one more (it is in PowerPyx’s recipe for the suspicious ending: “say you don’t have androids, the blue blood is not yours”). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+  "adaptationNote": "The chart’s event POLICEMAN DISCOVERS THE BLUE BLOOD, only when the cupboard was left open (template condition “Kara didn’t close the cupboard - policeman sees blue blood”), with the template’s prompt MESS / PREVIOUS OWNER / NOT MINE in its order with its labels. The discovery raises the officer’s hidden suspicion by one; NOT MINE raises it by one more (it is in PowerPyx’s recipe for the suspicious ending: “say you don’t have androids, the blue blood is not yours”). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note. When this raises the officer’s suspicion the outcome adds a short qualitative cue (“The officer’s eyes narrow: he has noticed something.”, “The officer frowns; his suspicion is growing.”, “The officer is openly suspicious now.”, by how many things he has noticed), because the game shows the suspicion meter on screen and the player watches it fill (PowerPyx; Treat Yourself!: “it will raise the suspicion meter”); no number is shown, since no source gives the meter’s values (story 1.9.2; story 1.9.1 gave no cue).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -1093,7 +1094,8 @@
    "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
-  ]
+  ],
+  "suspicionCue": true
  },
  {
   "id": "K15w4",
@@ -1145,7 +1147,7 @@
     "outcome": "{{Kara}} stays where she is; the coffee is never made."
    }
   ],
-  "adaptationNote": "The chart’s optional arrow MADE COFFEE (“Go to kitchen and make a coffee for the cop”, PowerPyx). Not a template prompt; the officer’s “Thanks.” is the template’s. Not making it raises the officer’s hidden suspicion by one (PowerPyx’s recipe for the suspicious ending includes “Don’t make him coffee”; the size is not sourced). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+  "adaptationNote": "The chart’s optional arrow MADE COFFEE (“Go to kitchen and make a coffee for the cop”, PowerPyx). Not a template prompt; the officer’s “Thanks.” is the template’s. Not making it raises the officer’s hidden suspicion by one (PowerPyx’s recipe for the suspicious ending includes “Don’t make him coffee”; the size is not sourced). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note. When this raises the officer’s suspicion the outcome adds a short qualitative cue (“The officer’s eyes narrow: he has noticed something.”, “The officer frowns; his suspicion is growing.”, “The officer is openly suspicious now.”, by how many things he has noticed), because the game shows the suspicion meter on screen and the player watches it fill (PowerPyx; Treat Yourself!: “it will raise the suspicion meter”); no number is shown, since no source gives the meter’s values (story 1.9.2; story 1.9.1 gave no cue).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -1153,7 +1155,8 @@
    "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
-  ]
+  ],
+  "suspicionCue": true
  },
  {
   "id": "K15w6",
@@ -1184,7 +1187,7 @@
   "outcomes": {
    "0": "The officer lets it go, for now."
   },
-  "adaptationNote": "The chart’s event POLICEMAN SUSPICIOUS ABOUT UPSTAIRS, when Luther and Alice hid upstairs (PowerPyx: “there will be a noise upstairs. This makes the cop suspicious”), with the template’s two variants (“Luther is hidden upstairs and chose NOBODY / ALICE”). Having said NOBODY, the exposed lie raises the officer’s hidden suspicion by one; after ALICE it does not (assumption: the template gives the ALICE variant a harmless line, “your daughter seems to have woken up”). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+  "adaptationNote": "The chart’s event POLICEMAN SUSPICIOUS ABOUT UPSTAIRS, when Luther and Alice hid upstairs (PowerPyx: “there will be a noise upstairs. This makes the cop suspicious”), with the template’s two variants (“Luther is hidden upstairs and chose NOBODY / ALICE”). Having said NOBODY, the exposed lie raises the officer’s hidden suspicion by one; after ALICE it does not (assumption: the template gives the ALICE variant a harmless line, “your daughter seems to have woken up”). No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note. When this raises the officer’s suspicion the outcome adds a short qualitative cue (“The officer’s eyes narrow: he has noticed something.”, “The officer frowns; his suspicion is growing.”, “The officer is openly suspicious now.”, by how many things he has noticed), because the game shows the suspicion meter on screen and the player watches it fill (PowerPyx; Treat Yourself!: “it will raise the suspicion meter”); no number is shown, since no source gives the meter’s values (story 1.9.2; story 1.9.1 gave no cue).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -1192,7 +1195,8 @@
    "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
-  ]
+  ],
+  "suspicionCue": true
  },
  {
   "id": "K15w7",
@@ -1209,7 +1213,7 @@
   "outcomes": {
    "0": "The officer moves on."
   },
-  "adaptationNote": "The chart’s event POLICEMAN SEES ARTICLE, when the magazine is left open at the advertisement (PowerPyx; Treat Yourself!: “it will raise the suspicion meter if the police officer sees it”). Raises the officer’s hidden suspicion by one. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+  "adaptationNote": "The chart’s event POLICEMAN SEES ARTICLE, when the magazine is left open at the advertisement (PowerPyx; Treat Yourself!: “it will raise the suspicion meter if the police officer sees it”). Raises the officer’s hidden suspicion by one. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note. When this raises the officer’s suspicion the outcome adds a short qualitative cue (“The officer’s eyes narrow: he has noticed something.”, “The officer frowns; his suspicion is growing.”, “The officer is openly suspicious now.”, by how many things he has noticed), because the game shows the suspicion meter on screen and the player watches it fill (PowerPyx; Treat Yourself!: “it will raise the suspicion meter”); no number is shown, since no source gives the meter’s values (story 1.9.2; story 1.9.1 gave no cue).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -1218,7 +1222,8 @@
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
    "https://detroit-become-human.fandom.com/wiki/Treat_Yourself!"
-  ]
+  ],
+  "suspicionCue": true
  },
  {
   "id": "K15w8",
@@ -1235,7 +1240,7 @@
   "outcomes": {
    "0": "The officer turns to {{Adam}}."
   },
-  "adaptationNote": "The chart’s event POLICEMAN SEES ANDROID CLOTHES, when the clothes were not hidden (PowerPyx). Raises the officer’s hidden suspicion by one. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+  "adaptationNote": "The chart’s event POLICEMAN SEES ANDROID CLOTHES, when the clothes were not hidden (PowerPyx). Raises the officer’s hidden suspicion by one. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note. When this raises the officer’s suspicion the outcome adds a short qualitative cue (“The officer’s eyes narrow: he has noticed something.”, “The officer frowns; his suspicion is growing.”, “The officer is openly suspicious now.”, by how many things he has noticed), because the game shows the suspicion meter on screen and the player watches it fill (PowerPyx; Treat Yourself!: “it will raise the suspicion meter”); no number is shown, since no source gives the meter’s values (story 1.9.2; story 1.9.1 gave no cue).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -1243,7 +1248,8 @@
    "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg"
-  ]
+  ],
+  "suspicionCue": true
  },
  {
   "id": "K15w9",
@@ -1265,7 +1271,7 @@
     "outcome": "“He… He’s just shaken up about this deviants business.” The officer: “Do you know anything about deviants? Have you seen any?” {{Adam}}: “No… No… I-I haven’t seen anything…”"
    }
   ],
-  "adaptationNote": "The chart’s event POLICEMAN QUESTIONS ADAM with the template’s prompt TIRED / UPSET, in its order with its labels (the string table’s third label “...” is not printed by the template and is not offered). UPSET raises the officer’s hidden suspicion by one (wiki Adam page: “Adam’s nervousness may raise the officer’s suspicion if Kara doesn’t dismiss his behavior as exhaustion”); TIRED does not. PowerPyx says the questioning happens only “If the policeman didn’t grow too suspicious”, but its own last path on the 100% chart passes through it on the way to the suspicious ending; here it always happens. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note.",
+  "adaptationNote": "The chart’s event POLICEMAN QUESTIONS ADAM with the template’s prompt TIRED / UPSET, in its order with its labels (the string table’s third label “...” is not printed by the template and is not offered). UPSET raises the officer’s hidden suspicion by one (wiki Adam page: “Adam’s nervousness may raise the officer’s suspicion if Kara doesn’t dismiss his behavior as exhaustion”); TIRED does not. PowerPyx says the questioning happens only “If the policeman didn’t grow too suspicious”, but its own last path on the 100% chart passes through it on the way to the suspicious ending; here it always happens. No stat change. The officer’s suspicion is a hidden counter (the game shows a meter whose values no source gives); the rule is in the chapter module (`rules.suspicion`) and is summarized in the noise scene’s note. When this raises the officer’s suspicion the outcome adds a short qualitative cue (“The officer’s eyes narrow: he has noticed something.”, “The officer frowns; his suspicion is growing.”, “The officer is openly suspicious now.”, by how many things he has noticed), because the game shows the suspicion meter on screen and the player watches it fill (PowerPyx; Treat Yourself!: “it will raise the suspicion meter”); no number is shown, since no source gives the meter’s values (story 1.9.2; story 1.9.1 gave no cue).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -1274,7 +1280,8 @@
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
    "https://detroit-become-human.fandom.com/wiki/Adam_Chapman"
-  ]
+  ],
+  "suspicionCue": true
  },
  {
   "id": "K15w10",

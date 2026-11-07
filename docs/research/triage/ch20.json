@@ -1,0 +1,263 @@
+{
+ "chapter": 20,
+ "title": "The Eden Club",
+ "itemsInDump": 55,
+ "entries": [
+  {
+   "id": "ch20-01",
+   "verdict": "resolved",
+   "topic": "Last Chance 'do you feel anything' trigger",
+   "originals": [
+    "Last Chance Amanda condition"
+   ],
+   "answer": "The Last Chance template files Amanda's 'Do you feel anything for these deviants… Or for Lieutenant Anderson?' under 'Connor shot the Tracis in The Eden Club or shot Chloe in Meet Kamski (or both)'. PowerPyx's Last Chance page uses 'You shot the Tracis in The Eden Club (won fight, then chose the Shoot option)', so 'shot the Tracis' covers DEVIANTS DIED as well as CONNOR SHOT DEVIANTS. The benchmark's ch29 input counts only CONNOR SHOT DEVIANTS, so a won-fight SHOOT (DEVIANTS DIED) never opens C19e or round 4 unless Chloe was shot; its own legacy fallback (choices.C12==='1', the won-fight SHOOT) disagrees with the main branch",
+   "source": "/tmp/flowcharts/ch20/x_GL.txt lines 145-157; /tmp/flowcharts/ch29/ext PowerPyx text ('won fight, then chose the Shoot option'); benchmark/chapters/ch29.mjs line 50",
+   "benchmarkMatches": false,
+   "fix": "benchmark/chapters/ch29.mjs inputs.tracisShot (line 50): s.edenOutcome==='CONNOR SHOT DEVIANTS' → ['DEVIANTS DIED','CONNOR SHOT DEVIANTS'].includes(s.edenOutcome); update tests/ch29.test.mjs line 207-208 to cover DEVIANTS DIED"
+  },
+  {
+   "id": "ch20-02",
+   "verdict": "resolved",
+   "topic": "Interview length",
+   "originals": [
+    "How long is the interview?",
+    "Whether the shutdown can cut the interview short before the fourth prompt",
+    "The shutdown timer (TIME BEFORE SHUTDOWN …) is the budget"
+   ],
+   "answer": "Four prompts: the template renders CHOICEGROUP01-04, gives the Traci replies for the first three, and only Connor's lines for KILLER / WHAT MODEL / OTHER ANDROID before Hank's 'So, there was another android…'. Only a hesitating player could lose a round to the timer, and the benchmark has no timeouts",
+   "source": "/tmp/flowcharts/ch20/transcript.txt lines 97-170",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-03",
+   "verdict": "resolved",
+   "topic": "Second android always learned",
+   "originals": [
+    "Can the second android be missed in the interview?",
+    "Whether the second android can be missed in the interview"
+   ],
+   "answer": "No. Hank's 'So, there was another android…' follows the fourth prompt unconditionally in the template, and PowerPyx calls the interview unmissable; the Blue Haired Traci page's 'failing to determine that there was actually a second Traci' is outranked",
+   "source": "transcript.txt lines 172-180; research note §2a/§2b quoting PowerPyx",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-04",
+   "verdict": "resolved",
+   "topic": "VICTIM and prompt-4 extras not offered",
+   "originals": [
+    "VICTIM is a live option label with cut content",
+    "Prompt 2's VICTIM is not offered"
+   ],
+   "answer": "The template wraps VICTIM's only content ('Do you know this man?…' / 'No, this was the first time…') in app-unused-content; the string table's OTHER GIRL and ANDROID labels for prompt 4 (strings.txt lines 335-336) are absent from the template's CHOICEGROUP04",
+   "source": "transcript.txt lines 125-131 and 154-162; strings.txt lines 335-339",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-05",
+   "verdict": "resolved",
+   "topic": "Cut lines",
+   "originals": [
+    "Three cut lines missing from §1 and §2",
+    "The cut lines are not built"
+   ],
+   "answer": "All three are app-unused-content in the template: the manager's 'how long's this gonna take?' (line 297), Hank's 'You're really reading their memories…' (line 336 block), the blue-haired Traci's 'What am I supposed to do without her?!' (line 405). None is used",
+   "source": "transcript.txt lines 297-300, 336-338, 405-407",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-06",
+   "verdict": "resolved",
+   "topic": "Amanda arrows removed",
+   "originals": [
+    "Amanda arrows the template does not have?"
+   ],
+   "answer": "The template has no Amanda relation in this chapter; C12 and C12x now carry only instability ±2 and Hank ±2, as the template's four SHOOT/SPARE buttons show",
+   "source": "transcript.txt lines 399-444; ch20.json C12, C12x",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-07",
+   "verdict": "resolved",
+   "topic": "SHOOT before SPARE",
+   "originals": [
+    "SHOOT is listed before SPARE on both prompts"
+   ],
+   "answer": "Template order: SHOOT (KILL / FAILCHOICE.SHOOT) then SPARE on both prompts",
+   "source": "transcript.txt lines 399, 414, 435, 441",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-08",
+   "verdict": "resolved",
+   "topic": "Warehouse LEAVE is a single button",
+   "originals": [
+    "Warehouse LEAVE prompt?"
+   ],
+   "answer": "The string table has one button, X0603C.FINAL.GAMEOVERS.PC.CHOICEGROUP.LEAVE = LEAVE; the template renders the timeout as Hank SmallDown and lines with no choice group. Nothing to decline",
+   "source": "strings.txt line 207; transcript.txt lines 372-378",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-09",
+   "verdict": "resolved",
+   "topic": "Blue blood before the corner Tracis",
+   "originals": [
+    "Warehouse gate?",
+    "Whether the corner Tracis need the blue blood first, and whether the warehouse LEAVE prompt can be declined",
+    "The warehouse corner needs the blue blood first (PowerPyx, GamerGuides); one reader says it does not"
+   ],
+   "answer": "Required: PowerPyx's walkthrough and GamerGuides say 'you must first have analyzed the blue blood'; the contrary report is a reader comment (lowest tier). LEAVE has one button (ch20-08)",
+   "source": "research note §2e quoting PowerPyx and GamerGuides; strings.txt line 207",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-10",
+   "verdict": "resolved",
+   "topic": "Memory reset has no prompt",
+   "originals": [
+    "Memory reset vs give-up prompt",
+    "Whether any prompt appears at the memory reset, and whether Hank's CONTINUE / GIVE UP can appear during the chain"
+   ],
+   "answer": "The template's 'search-connect-timeout' is an UnlockType.Time heading with Hank SmallDown and lines, no choice group; CONTINUE / GIVE UP belong to the 'Leave the room' timeout before the chain (CHOICEGROUP02 under TRACKGAME.STILLSEARCHING). PowerPyx's 'agree to give up when Hank wants to leave' describes that earlier prompt",
+   "source": "transcript.txt lines 223-246 and 340-348",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-11",
+   "verdict": "resolved",
+   "topic": "TOO FAR arrow in Public Enemy",
+   "originals": [
+    "Public Enemy TOO FAR?"
+   ],
+   "answer": "No arrow in the template: TOO FAR and NO USE carry no app-relation while TRUTH carries Amanda LargeDown in the same group; the wiki's small down is outranked. ch24 C14z3 already applies none",
+   "source": "/tmp/flowcharts/ch20/x_UL.txt lines 122-136; benchmark/chapters/ch24.json C14z3",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch20-12",
+   "verdict": "adaptation",
+   "topic": "Memory chain as six hops and three mistakes",
+   "originals": [
+    "Rental chain structure?",
+    "The memory chain: how many hops, how many wrong probes fit before the reset, and whether Hank pays for every rental",
+    "PURSUE DEVIANT / ANDROIDS' MEMORIES ARE RESET: hop 1",
+    "The route (the front dancer, pod 17, pod 25 …)",
+    "hop 1, second try",
+    "hop 2",
+    "hop 2, second try",
+    "hop 3",
+    "hop 3, second try",
+    "hop 4",
+    "hop 4, second try",
+    "hop 5",
+    "hop 5, second try",
+    "hop 6",
+    "hop 6, second try",
+    "The memory chain's route is one reader's working sequence"
+   ],
+   "why": "the route matches the one sourced sequence (a PowerPyx reader: pod 9, front dancer, pod 17, pod 25, pod 23, private room, custodian) and the HUD conclusions; the mistake budget stands for an unpublished clock ('We only have a few minutes'), and no player can count wrong probes from memory; Hank's rental lines carry no arrow"
+  },
+  {
+   "id": "ch20-13",
+   "verdict": "adaptation",
+   "topic": "Idle timeouts as action budgets",
+   "originals": [
+    "The idle timeout is an action budget: after three actions",
+    "The budget sizes are not sourced (crime scene)",
+    "The idle timeout is a budget of five actions",
+    "The budget is not sourced (wiki: 'If you wait a while')"
+   ],
+   "why": "the template's three TIME unlocks and their Hank small downs are kept; only the length of each wait is a calibration"
+  },
+  {
+   "id": "ch20-14",
+   "verdict": "adaptation",
+   "topic": "Fight as two risk rolls",
+   "originals": [
+    "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: two risk rolls",
+    "The risk values (0.2 in the storage room, 0.1 in the alley)",
+    "The fight's two branching prompts are the options at the two rolls"
+   ],
+   "why": "WIN FIGHT / LOSE FIGHT and the wiki's two loss points are kept; QTE skill has no published rate"
+  },
+  {
+   "id": "ch20-15",
+   "verdict": "adaptation",
+   "topic": "No-input outcomes at SHOOT / SPARE",
+   "originals": [
+    "What no input at SHOOT / SPARE does to the arrows",
+    "No input at shoot/spare?",
+    "The timed prompts' no-input outcomes are not offered"
+   ],
+   "why": "the benchmark offers no time-outs at these prompts, so the no-input arrows are never needed; both template buttons and their arrows are offered"
+  },
+  {
+   "id": "ch20-16",
+   "verdict": "adaptation",
+   "topic": "Magazines before the warehouse search",
+   "originals": [
+    "The magazines come before the warehouse search"
+   ],
+   "why": "same two covers, no arrows; only their timing relative to the fight is fixed"
+  },
+  {
+   "id": "ch20-17",
+   "verdict": "adaptation",
+   "topic": "Hank's line about staring at display androids",
+   "originals": [
+    "Left out: Hank's 'Connor!"
+   ],
+   "why": "no prompt, no arrow (wiki Notes, PowerPyx comments)"
+  },
+  {
+   "id": "ch20-18",
+   "verdict": "cosmetic",
+   "topic": "Approach node",
+   "originals": [
+    "Approach node logic",
+    "The approach node: AGGRESSIVE if DIRECT, MURDERER or PRESSURE",
+    "Which answers give AGGRESSIVE vs CALM APPROACH, and which node EXPLAIN gives"
+   ],
+   "why": "only the recorded chart label changes; no source gives the approach an arrow, gate or later effect, and the interview length is fixed by the template"
+  },
+  {
+   "id": "ch20-19",
+   "verdict": "cosmetic",
+   "topic": "Which gun",
+   "originals": [
+    "Which gun?"
+   ],
+   "why": "event wording only (chart: CONNOR'S GUN; wiki: Hank's)"
+  },
+  {
+   "id": "ch20-20",
+   "verdict": "cosmetic",
+   "topic": "Clue text outside the template",
+   "originals": [
+    "Second blue-blood serial?",
+    "Clues outside the template?",
+    "Where the second blue-blood serial (#354 411 057) is scanned?"
+   ],
+   "why": "string-table text (BLUEBLOOD.2.SUBLINE02, DIAGNOSIS IN PROGRESS…, CARDIAC CELL) shown as clue wording; placement changes no option or arrow"
+  },
+  {
+   "id": "ch20-21",
+   "verdict": "cosmetic",
+   "topic": "Night of the Soul cameo",
+   "originals": [
+    "Night of the Soul cameo after MISSION FAILED?"
+   ],
+   "why": "background appearance in the church; ch31 reads no Traci state and offers no prompt on it"
+  }
+ ]
+}

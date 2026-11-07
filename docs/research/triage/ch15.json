@@ -1,0 +1,307 @@
+{
+ "chapter": 15,
+ "title": "The Nest",
+ "itemsInDump": 53,
+ "entries": [
+  {
+   "id": "ch15-01",
+   "verdict": "adaptation",
+   "topic": "Chase forks, route labels and their risks",
+   "originals": [
+    "Chase structure?",
+    "The chase’s twelve route previews are grouped into five forks; which fork holds?",
+    "How the route previews group into forks, and where each death QTE is?",
+    "How the twelve previews group into forks, which fork holds which death, and?",
+    "The labels are the game’s route previews, HUD strings THOUGHTS.0501C.CHASEGHOST01 and 02; PowerPyx?",
+    "The labels are the game’s route previews, HUD strings CHASEGHOST03 to 05 (the?",
+    "The labels are the game’s route previews, HUD strings CHASEGHOST06 to 08 (the?",
+    "The labels are the game’s route previews, HUD strings CHASEGHOST09 and 10; PowerPyx?",
+    "The labels are the game’s route previews, HUD strings CHASEGHOST11 and 12; PowerPyx?"
+   ],
+   "why": "The twelve labels are the game's own HUD strings (en.json THOUGHTS.0501C.CHASEGHOST01–12) and every death the wiki names has a home; in the game routes are run, not picked from menus, so the fork grouping and the 8/10/13% values are a documented calibration that a replay could not measure."
+  },
+  {
+   "id": "ch15-02",
+   "verdict": "adaptation",
+   "topic": "First roof slide carries a 5% death risk",
+   "originals": [
+    "Running carries a Low risk for the first quick-time event that can kill?",
+    "The 5% is the benchmark’s; no source gives a figure?"
+   ],
+   "why": "The death itself is sourced (PowerPyx: 'When you slide down the first roof … don't press any buttons and Connor will fall'); only the probability is a calibration (SOURCES.md §10)."
+  },
+  {
+   "id": "ch15-03",
+   "verdict": "resolved",
+   "topic": "The 89% is a HUD estimate, not a roll; the ledge has no failure",
+   "originals": [
+    "The 89% is the game’s HUD string THOUGHTS.0501C.RISKHANK, a displayed estimate, not a?",
+    "No risk: the chart has one outcome after each button, and Hank always?"
+   ],
+   "answer": "THOUGHTS.0501C.RISKHANK = 'CHANCE OF SURVIVAL: 89%' is a thought label; the chart has no 'Hank fell' node (SAVE HANK → RUPERT GOT AWAY, FOLLOW RUPERT → RUPERT COMMITTED SUICIDE), and the wiki Connor page says Hank 'would most likely survive without help' and is shown cuffing Rupert afterwards. Benchmark C10 has no risk.",
+   "source": "en.json THOUGHTS.0501C.RISKHANK and MENU.FLOWCHART.05C.* (no Hank-death label); wiki Connor lines 87-89",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-04",
+   "verdict": "adaptation",
+   "topic": "Apartment timer as an action budget",
+   "originals": [
+    "Investigation timer?",
+    "The timer (wiki Connor page: “if he cannot deduce the deviant’s location in?",
+    "How long the search lasts, and whether it pauses during reconstructions?"
+   ],
+   "why": "A real-time limit ('about five minutes', PowerPyx; STAY = 'two minutes', template) is collapsed into 8 + 3 actions, documented in C10o1; whether the clock pauses during reconstructions has no counterpart in a turn-based scene."
+  },
+  {
+   "id": "ch15-05",
+   "verdict": "adaptation",
+   "topic": "How many small-talk lines Hank's table allows",
+   "originals": [
+    "Round 2 and Round 3 picks?",
+    "How many small-talk lines the table allows, and whether the down-to-business menu allows?"
+   ],
+   "why": "PowerPyx only says 'When small talk is exhausted, Connor will get down to business'; the cap of three is documented in C10f, and both arrow-bearing lines ([CHOLESTEROL], [COMPANY]) fit inside it. The down-to-business menu is a single prompt in the template (one PROMPT, one pick), which C10g matches."
+  },
+  {
+   "id": "ch15-06",
+   "verdict": "resolved",
+   "topic": "MILITARY JACKET and OPENED MARKER PEN clue text",
+   "originals": [
+    "MILITARY JACKET clue text (section 2d)?",
+    "OPENED MARKER PEN clue text (section 2d)?"
+   ],
+   "answer": "MILITARY JACKET: 'Second hand : Initials R.T. | 90% cotton, 10% synthetic fiber'; OPENED MARKER PEN: 'Still wet - Used recently | Color: Midnight mood [black]'. Benchmark C10o1 options 2 and 6 quote both sublines.",
+   "source": "template OBSERVATION GROUP 'Jacket' and 'Stool'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-07",
+   "verdict": "resolved",
+   "topic": "Old chase failure, diary-on-save and Amanda changes removed",
+   "originals": [
+    "C10 option 1 risk the template does not have?",
+    "The earlier version had only the ledge (C10) and the magazines?",
+    "C10 Amanda arrows the template does not have?"
+   ],
+   "answer": "The template has one outcome per ledge button (Chase Deviant: Rupert cuffed, 'rA9, save me', jumps) and no Amanda arrow in The Nest; Amanda's reaction is in Russian Roulette's Zen Garden. Benchmark C10 has no risk and no Amanda effect; ch18.mjs applies Amanda at C11z.",
+   "source": "template '## Chase end' (Catch Rupert PROMPT); template ch18 '# In the Zen Garden'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-08",
+   "verdict": "adaptation",
+   "topic": "Magazines read before the search",
+   "originals": [
+    "In the game they can be read at any time during the search?",
+    "The magazines come before the search instead of at any time during it?"
+   ],
+   "why": "Free-roam order collapsed; each read still costs one action of the search budget, so the trade-off is kept."
+  },
+  {
+   "id": "ch15-09",
+   "verdict": "resolved",
+   "topic": "Chase-death software-instability arrows",
+   "originals": [
+    "Chase deaths (section 3, software instability)?"
+   ],
+   "answer": "Wiki: 'Connor falls to his death' down, 'chopped by a plow' down, ladder down ×2; the template is silent on the death variant. Benchmark: deathEffect instability −1, plus one more on the ladder death (chaseFails).",
+   "source": "wiki The_Nest Software Instability list (via research §3); Software_Instability 'Being killed while chasing Rupert'; reliability log (wiki right on death arrows); ch15.mjs deathEffect and chaseFails",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-10",
+   "verdict": "needs-play",
+   "topic": "Amanda's arrow after losing Rupert when Partners was solved",
+   "originals": [
+    "Amanda after losing Rupert with Partners solved?"
+   ],
+   "question": "In Russian Roulette's Zen Garden, after Rupert got away in The Nest (Carlos's android found in Partners), did Amanda's 'A pity you didn't manage to capture it' show an Amanda-down arrow? (yes/no)",
+   "impact": "arrow",
+   "why": "the ch18 template prints the line with no arrow (benchmark ch18.mjs notCaughtPartnersFound: 0); wiki Russian_Roulette and Relationship_Stat give small down. It is a mission-failure arrow, where the reliability log says the wiki has been right against the template. The other half (caught: large up, then small down for the suicide, shown separately) is settled by the template and built."
+  },
+  {
+   "id": "ch15-11",
+   "verdict": "resolved",
+   "topic": "SINCERE and PSYCHOLOGICAL are the same size",
+   "originals": [
+    "SINCERE vs PSYCHOLOGICAL size (section 3, Hank table)?"
+   ],
+   "answer": "Template: SINCERE Hank SmallUp, PSYCHOLOGICAL Hank SmallUp (same size); the wiki's 'known to raise higher' is a note, not an icon. Benchmark C10k gives both +1.",
+   "source": "template Be Frank prompt; wiki The_Nest line 74 (both 'up') vs Notes line 106",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-12",
+   "verdict": "needs-play",
+   "topic": "What happens if neither ledge button is pressed",
+   "originals": [
+    "Ledge timeout ×2 penalties (section 3)?",
+    "The prompt is timed (wiki: “Do nothing during the choice to save Hank?",
+    "Where the timeout leads is not published (research note, open question 3); its?",
+    "The ledge timeout is offered as a third option and sent down FOLLOW?",
+    "Timeout at the ledge?",
+    "What happens if no button is pressed at the ledge, and how long?"
+   ],
+   "question": "At the ledge, if you pressed neither SAVE HANK nor CHASE DEVIANT, which ending did you get: RUPERT COMMITTED SUICIDE or RUPERT GOT AWAY?",
+   "impact": "ending",
+   "why": "the wiki gives only the arrows (Hank and instability large down ×2, lines 77/86); the template has no timeout branch; no source names the ending. Benchmark option 2 applies −4/−4 and sends it to RUPERT COMMITTED SUICIDE (which also decides Rupert's body in Last Chance and Amanda's reaction)."
+  },
+  {
+   "id": "ch15-13",
+   "verdict": "resolved",
+   "topic": "STAY is offered whatever the relationship",
+   "originals": [
+    "STAY gating?",
+    "Whether STAY is offered at Hostile?"
+   ],
+   "answer": "The template's STAY/LEAVE prompt has no lock; the wiki: 'if you choose STAY Hank will be annoyed but will agree to give Connor two minutes'; two PowerPyx commenters on Hostile saves still got STAY. Only PowerPyx's main text says it needs a good relationship. Benchmark C10o1 offers STAY whenever time runs out.",
+   "source": "template '## Take too much time' PROMPT STAY/LEAVE; wiki The_Nest line 117; PowerPyx comments ('I am Hostile with Hank and he still gave me 2 more minutes'; 'I have a HOSTILE relationship with Hank, and it still gave me the two minutes extra option')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-14",
+   "verdict": "needs-play",
+   "topic": "What FIND RUPERT needs",
+   "originals": [
+    "What is strictly required to reach FIND RUPERT?",
+    "What is required to reach FIND RUPERT: the cage reconstruction alone, or also?",
+    "Whether the stool reconstruction or the LED is also required is not published?"
+   ],
+   "question": "Could you look up from the chair and find Rupert after reconstructing only the bird cage, without having done the stool reconstruction or examined the LED in the sink? (yes/no)",
+   "impact": "gate",
+   "why": "PowerPyx says the cage reconstruction shows 'the android has climbed up into the ceiling' but lists the stool and the LED as steps too; the chart only hangs INVESTIGATE STOOL off SEE RA9 REFERENCE; HUD objectives (CONFIRM SUSPECT IS DEVIANT, SUSPECT IS STILL HERE) do not say which are required. Benchmark needs only the cage reconstruction."
+  },
+  {
+   "id": "ch15-15",
+   "verdict": "resolved",
+   "topic": "Emma TRUTH/LIE: no arrow, keyed on Emma only",
+   "originals": [
+    "Emma TRUTH/LIE?"
+   ],
+   "answer": "Template condition group 'Connor saved Emma in The Hostage' (no prompt) / 'Emma died in The Hostage' (TRUTH / LIE, no arrow); the Connor-died variant is cut content. Benchmark C10h (emma true, event) and C10i (emma false, TRUTH/LIE, no effect).",
+   "source": "template '# At the Chicken Feed' CONDITION GROUP after the business prompt",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-16",
+   "verdict": "resolved",
+   "topic": "HANK INSULTS CONNOR needs a death in On the Run only",
+   "originals": [
+    "HANK INSULTS CONNOR trigger?",
+    "HANK INSULTS CONNOR (sections 2a and 3)?"
+   ],
+   "answer": "Template variant 'Connor finds Hank' is locked on 'Connor died in On The Run' (with Hank SmallDown); the wiki says the same; a PowerPyx commenter corrected the guide's Interrogation claim from the wiki. Benchmark C10b gates on ch13ConnorDied only, Hank −1, and skips the whole lunch.",
+   "source": "template CONDITION (Death): Connor died in On The Run; wiki The_Nest line 35; PowerPyx comment 'in order for Hank to insult Connor you need Connor to die in the highway chase'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-17",
+   "verdict": "resolved",
+   "topic": "Bracketed clue-unlocked labels",
+   "originals": [
+    "Clue-gated labels (section 2b)?"
+   ],
+   "answer": "[GAMBLING] (Watch Hank with Pedro), [CHOLESTEROL] (Scan the hamburger), [COMPANY] (Scan Pedro and Gary), [HIGHWAY] (Didn't pursue Kara on the highway). Benchmark C10f/C10g use the bracketed labels and these locks.",
+   "source": "template PROMPT option locks",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-18",
+   "verdict": "needs-play",
+   "topic": "Is Rupert seen in Jericho after RUPERT NOT FOUND?",
+   "originals": [
+    "Whether Rupert appears in Jericho after RUPERT NOT FOUND or a Connor death?",
+    "Crossroads \"Spot Rupert\"?"
+   ],
+   "question": "If The Nest ended RUPERT NOT FOUND (Hank and Connor left the apartment), could Connor spot Rupert in Jericho in Crossroads? (yes/no)",
+   "impact": "options",
+   "why": "Crossroads: 'Spot Rupert (only available if he escaped in The Nest)'; for a Connor death the wiki Connor page says 'Rupert escapes', so that case is settled (benchmark sets nestRupert 'escaped'); for NOT FOUND no source says. Benchmark sets nestRupert 'not found', so ch30 does not offer the clue."
+  },
+  {
+   "id": "ch15-19",
+   "verdict": "resolved",
+   "topic": "The diary is optional",
+   "originals": [
+    "Can the diary be missed on a successful run?"
+   ],
+   "answer": "FIND DIARY is a side node (cross-chapter tab) on the bracket, reached by scanning the poster twice then pulling it off; PowerPyx lists it as its own task. Benchmark makes the poster and diary optional and does not require them for FIND RUPERT.",
+   "source": "en.json MENU.FLOWCHART.05C.BOOK; PowerPyx 'Find Diary: [CROSS CHAPTER IMPACT] … Scan it for 2 clues, then you'll be able to pull it off'; wiki The_Nest line 50",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-20",
+   "verdict": "adaptation",
+   "topic": "Repeatable clue hubs with stable ids",
+   "originals": [
+    "Repeatable clue hubs keep one scene ID across visits; examined items and spoken?",
+    "Review correction: scans C10c/C10e, small talk C10f and apartment C10o1 are repeatable clue?"
+   ],
+   "why": "Free-roam scanning collapsed into once-only hub options; ids are an engine detail with no story effect."
+  },
+  {
+   "id": "ch15-21",
+   "verdict": "resolved",
+   "topic": "Ledge button order",
+   "originals": [
+    "The ledge retains SAVE HANK first (PowerPyx’s button order and the existing default?"
+   ],
+   "answer": "The chart's group lists FOLLOW RUPERT above SAVE HANK and the template lists Chase Deviant before Save Hank; PowerPyx names the buttons in the other order but gives no screen order. Benchmark presents SAVE HANK first to keep an old default path.",
+   "source": "flowchart image detroit-become-human-the-nest-4.jpg (choice group after RUPERT PUSHES HANK: FOLLOW RUPERT above SAVE HANK); template '## Chase end' option order",
+   "benchmarkMatches": false,
+   "fix": "C10 options array: [id 0 SAVE HANK, id 1 CHASE DEVIANT, id 2 neither] → [id 1 CHASE DEVIANT, id 0 SAVE HANK, id 2 neither] (ids are explicit, so ch15.mjs, ch18 and ch30 readers of choices.C10 are unaffected); update the adaptationNote and any test that assumes the first option is SAVE HANK."
+  },
+  {
+   "id": "ch15-22",
+   "verdict": "cosmetic",
+   "topic": "Rupert's serial number mismatch",
+   "originals": [
+    "Rupert's serial?"
+   ],
+   "why": "A game inconsistency (Connor says 874 004 961, the blood scan reads #847 004 961); the benchmark quotes the scan, and nothing depends on the digits."
+  },
+  {
+   "id": "ch15-23",
+   "verdict": "resolved",
+   "topic": "Who says what at the jacket",
+   "originals": [
+    "Jacket dialogue attribution (section 2d)?"
+   ],
+   "answer": "Hank: '\"R.T.\"... He put his initials on his jacket?..'; Connor: 'Deviants have a habit of putting their names on things. It seems important to them.' Benchmark hank-jacket outcome matches.",
+   "source": "template '## Hank looking at the jacket'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-24",
+   "verdict": "resolved",
+   "topic": "Nest magazines",
+   "originals": [
+    "R15 (magazines)?"
+   ],
+   "answer": "Two chart nodes, READ \"RED ICE EPIDEMIC\" and READ \"PAST THE TIPPING POINT\"; the template has no magazine markup and no source gives an effect. Benchmark R15 offers both, no effect.",
+   "source": "en.json MENU.FLOWCHART.05C.MAGAZINE1ST / 2ND; PowerPyx 'Read \"Red Ice Epidemic\" … Read \"Past the Tipping Point\"'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch15-25",
+   "verdict": "adaptation",
+   "topic": "Neutral names in Hank's scan and the forged ID",
+   "originals": [
+    "Hank’s scan includes his surname through a neutral name token; the forged name?"
+   ],
+   "why": "Neutral-framing substitution (AGENTS.md principle 1); clue content otherwise as in the template."
+  }
+ ]
+}

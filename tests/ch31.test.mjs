@@ -8,7 +8,8 @@ const first31=story.nodes.findIndex(n=>n.chapter===31);
 // Plays from the start with the first option everywhere unless picked (an array is consumed one entry per visit),
 // risky actions succeeding unless listed in `fails`. `mutate(s)` runs once when chapter 31 begins, to stand in for the
 // cross-chapter flags the earlier chapters' rebuilds will set. Stops when chapter 32 begins.
-function play(picks={},{fails=[],mutate}={}){const s=startState(story),visited=[],skipped=[],events={},prompts={},q=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0,mutated=false;
+// M13 HELP and C10 SAVE HANK: the old first options (story 1.9.2 lists FLEE and CHASE DEVIANT first, as the game does).
+function play(picks={},{fails=[],mutate}={}){const s=startState(story),visited=[],skipped=[],events={},prompts={},q=Object.fromEntries(Object.entries({M13:'0',C10:'0',...picks}).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0,mutated=false;
  while(cursor<story.nodes.length){assert.ok(guard++<3000,'routing loop');const n=story.nodes[cursor];if(n.chapter>31)break;
   if(n.chapter===31&&!mutated){mutated=true;s.painterActivity=null;mutate?.(s)}
   const b=blocked(n,s);if(b){skipped.push({id:n.id,reason:b});cursor++;continue}
@@ -139,13 +140,16 @@ test('Night of the Soul: with no raid Markus speaks in Jericho’s hold, without
 });
 
 test('Night of the Soul: with Markus gone North calls the survivors to arms, from Connor’s side when he is in the church',()=>{
- const gone=play({M18e:'0',M18f:'0',M19b:'0',M20a:'0',C22:'1'},{fails:['M19b']});assert.equal(gone.s.markus,false);assert.equal(gone.s.raid,true);
+ // C20: the Traci route. The default archive walk also looks at the statue now (every found-deviant run has seen it in Partners)
+ // and runs one action short.
+ const TRACI_ROUTE=['7','8','19','20','21','22'];
+ const gone=play({M18e:'0',M18f:'0',M19b:'0',M20a:'0',C22:'1',C20:TRACI_ROUTE},{fails:['M19b']});assert.equal(gone.s.markus,false);assert.equal(gone.s.raid,true);
  assert.deepEqual(gone.ids.filter(id=>id.startsWith('PN')),['PN02','PN03']);
  const hold=play({M18e:'0',M18f:'0',M19b:'0',M20a:'0',C17:'1',C19:'1'},{fails:['M19b']});assert.equal(hold.s.raid,false);assert.deepEqual(hold.ids.filter(id=>id.startsWith('PN')),['PN01','PN03']);
- const fromConnor=play({M18e:'0',M18f:'0',M19b:'0',M20a:'0'},{fails:['M19b'],mutate:s=>{s.deviant=true;s.connor=true}});assert.ok(fromConnor.ids.includes('CN09')&&!fromConnor.ids.some(id=>id.startsWith('PN')),'a deviant Connor in the church plays it from his side');
+ const fromConnor=play({M18e:'0',M18f:'0',M19b:'0',M20a:'0',C20:TRACI_ROUTE},{fails:['M19b'],mutate:s=>{s.deviant=true;s.connor=true}});assert.ok(fromConnor.ids.includes('CN09')&&!fromConnor.ids.some(id=>id.startsWith('PN')),'a deviant Connor in the church plays it from his side');
  assert.equal(gone.s.movement,'revolution');assert.equal(gone.s.ch31MarkusEnding,ENDINGS.north);
  assert.ok(!gone.ids.some(id=>id.startsWith('M2')),'no Markus scene');assert.match(gone.prompts.PN03[0].situation,/gave his life for our people/);
- const left=play({C22:'1'},{mutate:s=>{s.markusActive=false}});assert.match(left.prompts.PN03[0].situation,/chose to walk away/);assert.match(play({},{mutate:s=>{s.markusActive=false}}).prompts.CN11[0].situation,/chose to walk away/);
+ const left=play({C22:'1'},{mutate:s=>{s.markusActive=false}});assert.match(left.prompts.PN03[0].situation,/chose to walk away/);assert.match(play({C20:TRACI_ROUTE},{mutate:s=>{s.markusActive=false}}).prompts.CN11[0].situation,/chose to walk away/);
  // Deviant Connor in the church with Markus dead (stands in for a Markus who died in Crossroads).
  const church=play({...deviantRaid,CN10:['0','12','1','2','3','4']},{mutate:s=>{s.markus=false;s.simon=true;s.chase=true;s.ch30JerichoBlown='connor';s.ch30MarkusDied=true}});
  assert.deepEqual(church.ids.filter(id=>/^(CN09|CN10|CN11|PN)/.test(id)),['CN09','CN10','CN10','CN10','CN10','CN10','CN10','CN11']);

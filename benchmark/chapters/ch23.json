@@ -711,13 +711,13 @@
   "situation": "You are {{Markus}}. The SWAT team is firing into the broadcast room, and the others are running for the roof. {{Simon}} is down, hit in the legs: “I… I can’t, {{Markus}}… Go without me!” You: “{{SIMON}}!”",
   "options": [
    {
+    "id": "1",
+    "text": "FLEE: leave {{Simon}} and run for the roof with the others."
+   },
+   {
     "id": "0",
     "text": "HELP: go back for {{Simon}} and drag him out under fire.",
     "risk": 0.15
-   },
-   {
-    "id": "1",
-    "text": "FLEE: leave {{Simon}} and run for the roof with the others."
    }
   ],
   "outcomes": {
@@ -725,7 +725,7 @@
    "0": "{{North}}: “What are you doing? Hurry!” {{Markus}} hauls {{Simon}} up and drags him out of the room and up to the roof.",
    "0-fail": "{{North}}: “What are you doing? Hurry!” {{Markus}} cannot get {{Simon}} up in time; the SWAT team shoots him. {{North}}: “Hurry! We gotta get to the roof!” {{Markus}}: “{{SIMON}}! {{Simon}}…” {{North}}: “There was nothing you could do.” {{Markus}} runs for the roof with {{North}} and {{Josh}}."
   },
-  "adaptationNote": "The chart’s SWAT TEAM STORMS ROOM, SIMON DAMAGED and the template’s PROMPT 10 (FLEE, Help; the chart prints LEAVE SIMON / TRY TO SAVE SIMON), only when the SWAT team came. FLEE leads to SIMON IS KILLED. HELP is a quick-time event with a failure branch (FAIL TO SAVE SIMON ✗, then SIMON IS KILLED; SIMON SAVED ✓, then {{Simon}} is carried to the roof); no source gives a number, so its 0.15 risk is the operator’s setting. Lines are the template’s. Stat changes (template): FLEE {{Jericho}} −1; HELP none, whether it succeeds or fails (the old {{Simon}} +2 on a successful carry had no source and is gone). Option IDs keep the old meaning (0 carry, 1 leave). Order: the template and the chart both list FLEE / LEAVE SIMON first; HELP is listed first here so that the shared regression paths, which assume the old default of carrying {{Simon}} to the roof, still hold (flagged for the merge).",
+  "adaptationNote": "The chart’s SWAT TEAM STORMS ROOM, SIMON DAMAGED and the template’s PROMPT 10 (FLEE, Help; the chart prints LEAVE SIMON / TRY TO SAVE SIMON), only when the SWAT team came. FLEE leads to SIMON IS KILLED. HELP is a quick-time event with a failure branch (FAIL TO SAVE SIMON ✗, then SIMON IS KILLED; SIMON SAVED ✓, then {{Simon}} is carried to the roof); no source gives a number, so its 0.15 risk is the operator’s setting. Lines are the template’s. Stat changes (template): FLEE {{Jericho}} −1; HELP none, whether it succeeds or fails (the old {{Simon}} +2 on a successful carry had no source and is gone). Option IDs keep the old meaning (0 carry, 1 leave). Order: FLEE first, then HELP, as the template’s PROMPT 10 (FLEE, Help) and the chart (LEAVE SIMON, TRY TO SAVE SIMON) both list them; story 1.9.1 listed HELP first to keep the shared regression paths’ old default.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Stratford_Tower",
    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/23-stratford-tower-chapter-content/stratford-tower-chapter-content.component.html",

@@ -3,9 +3,11 @@
 // The android's hidden stress meter, like The Hostage's probability of success: the wiki's and PowerPyx's published
 // values (start 35%; interrogation lines ±4%, the probe threat +8%; PRESSURE IT and each PRESSURE +10%, at most four
 // PRESSUREs; GIVE UP in the pressure branch −20% (wiki; PowerPyx says −5%, an open conflict); convince lines ±7%; a
-// successful probe sets 100%). The subject never sees the number: once Connor has analyzed the LED, each scene adds the
-// game's gauge band (TOO LOW / OPTIMAL / TOO HIGH / CRITICAL, from `ch09Band` via situationWhen) and each line's outcome
-// says whether his stress rose or fell.
+// successful probe sets 100%). Once Connor has analyzed the LED, each scene adds the game's gauge band (TOO LOW / OPTIMAL /
+// TOO HIGH / CRITICAL, from `ch09Band` via situationWhen) and each line's outcome says whether his stress rose or fell. The
+// game shows the LEVEL OF STRESS gauge as a percentage (PowerPyx readers quote 63%, 73%, 93% and 16% read off it), so a
+// scene marked `stressReadout` (story 1.9.2) also prints the new value with its band: "His stress rises to 43% (TOO LOW)."
+// Older story snapshots, without the mark, replay with the direction only.
 //
 // Flow (all forward; the approach menu is offered at most twice, as C06 then C06r, each with its own pressure and
 // convince scenes, so no scene is ever visited twice):
@@ -69,8 +71,11 @@ export const sawInPartners=(s,clue)=>PARTNERS_CLUES[clue].some(p=>!!look(s,p));
 export const bandOf=v=>Object.entries(RULES.bands).find(([,[lo,hi]])=>v>=lo&&v<=hi)[0];
 const setStress=(s,v)=>{s.ch09Stress=Math.max(0,Math.min(RULES.max,v));s.ch09Band=bandOf(s.ch09Stress)};
 // What the subject learns from a stress change: only the direction, and only once the LED has been analyzed.
-const read=(s,before)=>!s.ch09Room?.led?'':s.ch09Stress>before?' His stress rises.':s.ch09Stress<before?' His stress falls.':' His stress does not change.';
-const shift=(s,x,t)=>{const b=s.ch09Stress;setStress(s,b+(x??0));return t+read(s,b)};
+export const BAND_LABELS={low:'TOO LOW',optimal:'OPTIMAL',high:'TOO HIGH',critical:'CRITICAL'};
+const read=(s,before,n)=>{if(!s.ch09Room?.led)return '';const now=s.ch09Stress;
+ if(!n?.stressReadout)return now>before?' His stress rises.':now<before?' His stress falls.':' His stress does not change.';
+ const v=`${now}% (${BAND_LABELS[s.ch09Band]})`;return now>before?` His stress rises to ${v}.`:now<before?` His stress falls to ${v}.`:` His stress does not change: ${v}.`};
+const shift=(s,x,t,n)=>{const b=s.ch09Stress;setStress(s,b+(x??0));return t+read(s,b,n)};
 
 const wounds=s=>!!(s.ch09Room?.burns||s.ch09Room?.hits);
 // Round 1 options still open for the second pick.
@@ -124,31 +129,31 @@ const androidDies=(s,outcome)=>{s.suspectAlive=false;s.evidence.ortizBody=true;s
 const leaveRoom=s=>{s.ch09Phase=s.ch09Pushes>=RULES.pushes||s.ch09Stress>RULES.selfDestructAbove?'selfDestruct':'chris'};
 const CHRIS_GIVE_UP='{{Connor}} stays out of it. {{Gavin}}: “The fuck are you doing? Move it!” {{Chris}}: “Okay, come now. Don’t be difficult, it’ll only make things harder!” The android: “NO! No, don’t touch me!” {{Gavin}}: “{{Chris}}, you gonna move this asshole or what?” {{Chris}}: “I’m trying but it’s not moving!” The android: “Please, please leave me alone!” {{Chris}}: “Take it easy, I’m not going to hurt you! Stop resist… Stop resisting.” The android tears {{Chris}}’s gun from its holster';
 
-function approach(s,opt,choice,fail,h,t){
+function approach(n,s,opt,choice,fail,h,t){
  s.ch09Attempts++;
- if(choice==='0'){s.ch09Stressed=true;s.pressured=true;s.ch09Pushes=0;s.ch09Phase='pressure';return shift(s,opt.stress,t)}
+ if(choice==='0'){s.ch09Stressed=true;s.pressured=true;s.ch09Pushes=0;s.ch09Phase='pressure';return shift(s,opt.stress,t,n)}
  if(choice==='2'){s.ch09ConvinceStep=0;s.ch09Phase='convince';return t}
  if(choice==='3'){s.ch09Attempts--;s.ch09Phase='chris';s.ch09GaveUp=true;return t}
  // PROBE ITS MEMORY: a quick-time event with a failure branch (RESIST TO PROBE).
  if(fail){s.ch09Stressed=true;return t+' The android: “Uh… ARGH! ARGH! ARGHH!” He fights {{Connor}} off and breaks the connection. {{Connor}}: “It resisted. I couldn’t see anything…” PROBE FAILED.'+failApproach(s,'probe')}
  s.ch09Probed=true;s.ch09Phase='probed';h.si(1);const b=s.ch09Stress;setStress(s,RULES.max);
- return t+' The android: “Uh… ARGH! AHH!” {{Connor}} forces his way into his memory. PROBE SUCCESSFUL.'+read(s,b)}
+ return t+' The android: “Uh… ARGH! AHH!” {{Connor}} forces his way into his memory. PROBE SUCCESSFUL.'+read(s,b,n)}
 
 export function consequence(n,s,opt,choice,fail,h){
  const id=n.id,t=opt?.outcome??n.outcomes?.[choice]??'';
  if(['C06o','C06qs','C06sd'].includes(id))return '';
- if(['C06b','C06c','C06d','C06e','C06f','C06g'].includes(id))return shift(s,opt.stress,t);
- if(id==='C06h'){const r=shift(s,opt.stress,t);s.ch09Phase='approach';return r}
- if(id==='C06'||id==='C06r')return approach(s,opt,choice,fail,h,t);
+ if(['C06b','C06c','C06d','C06e','C06f','C06g'].includes(id))return shift(s,opt.stress,t,n);
+ if(id==='C06h'){const r=shift(s,opt.stress,t,n);s.ch09Phase='approach';return r}
+ if(id==='C06'||id==='C06r')return approach(n,s,opt,choice,fail,h,t);
  if(/^C06r?p\d$/.test(id)){
-  if(choice==='1'){const r=shift(s,RULES.pressureGiveUp,t);return r+failApproach(s,'pressure')}
-  s.ch09Pushes++;let r=shift(s,opt.stress,t);
+  if(choice==='1'){const r=shift(s,RULES.pressureGiveUp,t,n);return r+failApproach(s,'pressure')}
+  s.ch09Pushes++;let r=shift(s,opt.stress,t,n);
   if(s.ch09Pushes<RULES.pushes)return r;
   // MAINTAIN PRESSURE: he talks if his stress is above 50%; otherwise “Pressure it” fails and the GIVE UP dialogue plays.
   if(s.ch09Stress>RULES.talksAbove){confess(s,'pressure');return r+' The android breaks.'}
   return r+' The android: “Please, please leave me alone…” {{Connor}}: “All right, all right. Everything is going to be okay.”'+failApproach(s,'pressure')}
  if(/^C06r?v\d$/.test(id)){
-  s.ch09ConvinceStep++;const r=shift(s,opt.stress,t);if(s.ch09ConvinceStep<3)return r;
+  s.ch09ConvinceStep++;const r=shift(s,opt.stress,t,n);if(s.ch09ConvinceStep<3)return r;
   const [lo,hi]=RULES.optimal;if(s.ch09Stress>=lo&&s.ch09Stress<=hi){confess(s,'convince');return r+' CONVINCING SUCCEEDS.'}
   return r+' The android does not answer. CONVINCE FAILED.'+failApproach(s,'convince')}
  if(id==='C06qr'){s.ch09Regret=choice==='0'?'apologetic':choice==='1'?'cold':null;s.ch09Phase='selfDestruct';return t}
@@ -158,14 +163,14 @@ export function consequence(n,s,opt,choice,fail,h){
   if(choice==='0'){h.si(-1);s.ch09ConnorDied=true;androidDies(s,OUTCOMES.shotBoth);
    return h.connorDies(t+' {{Hank}}: “WATCH OUT!” The android tears the officer’s gun from its holster, shoots {{Connor}}, then turns it on himself. {{Hank}}: “Holy shit...”')}
   androidDies(s,OUTCOMES.smashed);return t+' The android smashes his head against the table until he stops moving. {{Hank}}: “Holy shit!”'}
- if(id==='C07a')return shift(s,RULES.grab,n.outcomes['0']);
+ if(id==='C07a')return shift(s,RULES.grab,n.outcomes['0'],n);
  if(['C07','C07b','C07c'].includes(id)){
   if(choice==='0'){setStress(s,RULES.max);
    if(s.ch09Stressed&&!s.ch09Confession){h.si(-1);h.hank(-1);s.ch09ConnorDied=true;androidDies(s,OUTCOMES.shotBoth);
     return h.connorDies(CHRIS_GIVE_UP+', shoots {{Connor}}, then puts the gun to his own head and fires. {{Hank}}: “Holy shit...”')}
    androidDies(s,OUTCOMES.shotSelf);return CHRIS_GIVE_UP+' and puts it to his own head and fires. {{Hank}}: “Holy shit...”'}
   s.ch09Intervened++;
-  if(s.ch09Intervened<3)return shift(s,RULES.intervene,t);
+  if(s.ch09Intervened<3)return shift(s,RULES.intervene,t,n);
   h.hank(1);s.ch09HankProtected=true;h.si(1);s.ch09Outcome=OUTCOMES.cell;s.ch09Phase='over';let r=t;
   if(s.ch09ConfessedVia==='convince'){s.suspectTrusts=true;r+=' As he passes {{Connor}}, the android whispers: “The truth is inside.”';if(sawInPartners(s,'statue'))s.evidence.statueMap=true}
   return r+' The android follows {{Chris}} out of the room to a holding cell.'}

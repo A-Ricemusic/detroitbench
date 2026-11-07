@@ -107,7 +107,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>DESTROY DRONE</td><td>North +1</td><td>template</td></tr>
 <tr><td>FALL FROM DRONE</td><td>Jericho −1, North −1</td><td>template</td></tr>
 <tr><td>HIDE (drone)</td><td>North +1</td><td>template</td></tr>
-<tr><td>GET SPOTTED BY DRONE</td><td>North −1</td><td>template (the wiki’s Jericho −1 is not applied)</td></tr>
+<tr><td>GET SPOTTED BY DRONE</td><td>North −1, Jericho −1</td><td>template (North); wiki “If Markus was spotted by the drone” (Jericho, applied from story 1.9.2)</td></tr>
 <tr><td>DEACTIVATE ALARM with the drone already destroyed</td><td>North +1</td><td class="part">wiki, Relationship Stat</td></tr>
 <tr><td>Abandon Mission</td><td>Jericho −2, North −1</td><td>template</td></tr>
 <tr><td>Act Natural</td><td>North −2</td><td>template</td></tr>
@@ -166,7 +166,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <ul>
 <li>Whether the truck can be taken before the area is secure (a commenter says it would not start). The benchmark allows the ram at any time so HAD TO FLEE is reachable.</li>
 <li>Arrows on RETREAT and HAD TO FLEE: the template has none; the wiki, Relationship Stat and PowerPyx give Jericho large down, North small down. Applied and flagged under the Reliability log’s rule to prefer ending-level wiki arrows on mission failures.</li>
-<li>Jericho down on GET SPOTTED BY DRONE (wiki only): not applied.</li>
+<li>One rule for wiki-only arrows (story 1.9.2): where the template has the block but no arrow for a character, the wiki’s arrow for that character is applied; the template’s own arrows are never overridden. So Jericho down on GET SPOTTED BY DRONE (wiki only) is now applied, like RETREAT and HAD TO FLEE above; story 1.9.1 left it out.</li>
 <li>North up for overturning benches or a car, destroying parking, freeing the shop-window androids: one line on the wiki; applied once per act.</li>
 <li>The failed message’s public opinion (wiki large up; the template’s news has no failed variant): applied.</li>
 <li>The meter between 40% and 60%, the Molotov “enough peaceful actions” threshold, the protest’s length and OVERLOAD ELECTRIC SYSTEM’s side: benchmark rules above.</li>

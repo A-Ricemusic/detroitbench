@@ -689,7 +689,10 @@ const KC_RULES={stressStart:30,stressAnswer:{0:10,1:0,2:0,3:10,4:20},stressPerAc
  stressReply:{10:-10,11:15,12:10,13:10,14:-10,15:-10,16:15,17:-10},questionAt:{1:'q1',3:'q2',5:'q3'},jerryDiesAt:4,
  escapeBuzzerAt:[2,4],lutherMachineAt:3,machineAt:5,droneCatches:2};
 const kcFrees=s=>s.ch32AssaultSucceeded===true;                          // the Markus-led revolution liberated the camp
-const kcRalph=s=>s.ralph&&s.ralphDefended&&!s.ralphHostile;              // MET IN 'FUGITIVES' (the Ralph who defended Kara), alive
+// MET IN 'FUGITIVES': the template's only lock ("Met Ralph in Fugitives"), alive, and not threatened there (wiki Ralph page:
+// "if Kara ran into him in Fugitives and she didn't threaten him"). The wiki's Battle for Detroit page also asks that he attacked
+// Connor in On the Run (ralphDefended, required up to story 1.9.1); template unlock conditions outrank wiki prose.
+const kcRalph=s=>s.ralph&&!s.ralphHostile;
 const kcBehind=s=>s.movement==='revolution'&&(X.markusLeads(s)||s.ch32MarkusChart==='revolution');
 const kcStressLevel=v=>v>=70?'breaking':v>=45?'scared':'calm';
 function kcEnd(s,key,text){const [card,label]=KC_CARDS[key];X.ending(s,'Kara',label);s.ch32kc.endingCard=card;s.karaOutcome=text;

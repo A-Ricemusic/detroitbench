@@ -65,12 +65,14 @@ test('From the Dead: sparing her opens the dead android’s regulator near the s
  assert.equal(r.s.fromDeadOutcome,'Markus came back from the dead');
 });
 
-test('From the Dead: random paths visit every scene but the search once, never skip one, and always reach the one ending',()=>{
- const rng=random(11);const seen={beg:new Set,pump:new Set};
- for(let i=0;i<300;i++){const r=ch11({},rng);assert.deepEqual(r.skipped,[]);
-  for(const id of CH11.filter(x=>x!=='M03g'))assert.equal(r.visited.filter(x=>x===id).length,1,id);
+test('From the Dead: random paths visit every scene but the search at most once, skip only the optional middle, and always reach the one ending',()=>{
+ const rng=random(11);const seen={beg:new Set,pump:new Set,middle:new Set};
+ for(let i=0;i<300;i++){const r=ch11({},rng);const middle=r.visited.includes('M03');seen.middle.add(middle);
+  assert.deepEqual(r.skipped.map(x=>x.id),middle?[]:['M03','M04'],'only the middle of the junkyard is optional (PowerPyx: “or you never found it in the first place”)');
+  for(const id of CH11.filter(x=>x!=='M03g'&&(middle||!['M03','M04'].includes(x))))assert.equal(r.visited.filter(x=>x===id).length,1,id);
   assert.equal(r.s.fromDeadOutcome,'Markus came back from the dead');assert.ok(r.s.fromDeadPumpReplaced);seen.beg.add(r.s.fromDeadBeggar);seen.pump.add(r.s.fromDeadPump+'|'+r.s.fromDeadPumpSource)}
- assert.deepEqual([...seen.beg].sort(),['Kill','Refuse to kill']);assert.deepEqual([...seen.pump].sort(),['Kill for pump|Living android','Refuse to kill for pump|Dead android']);
+ assert.deepEqual([...seen.beg].filter(Boolean).sort(),['Kill','Refuse to kill']);assert.deepEqual([...seen.middle].sort(),[false,true]);
+ for(const p of ['Kill for pump|Living android','Refuse to kill for pump|Dead android','null|Dead android'])assert.ok(seen.pump.has(p),p);
 });
 
 test('From the Dead: every combination of the two prompts preserves every tracked stat and sets the output flags',()=>{
@@ -100,4 +102,18 @@ test('From the Dead: a recorded run through the chapter replays exactly',{timeou
   run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})));if(n.id==='M04c')break}
  const end=await validatePlaythrough(story,run);assert.equal(end.state.fromDeadOutcome,'Markus came back from the dead');assert.equal(end.state.fromDeadPumpSource,'Dead android');
  const pumpRecord=run.records.find(r=>r.nodeId==='M04');assert.ok(pumpRecord.changes.some(c=>c.key==='fromDeadPump'&&c.after==='Refuse to kill for pump'));
+});
+
+// Story 1.9.2 (triage ch11-02): the dead android's regulator near the slope needs only the new eye, not sparing the android
+// in the middle (PowerPyx: "If you didn't kill the android in the middle of the area for its pump (or you never found it in
+// the first place) you can also get a pump regulator from a dead android near the slope").
+test('From the Dead: the dead android’s regulator without ever meeting the android in the middle; after it, only SPARE',()=>{
+ const hub=node('M03g');assert.deepEqual(hub.options.find(o=>o.id==='4').requires,{fromDeadPumpReplaced:false,'fromDeadSearch.head':true});
+ const r=ch11({M03g:['0','4','5','7']});
+ assert.deepEqual(r.skipped.map(x=>x.id),['M03','M04']);assert.equal(r.s.fromDeadPump,null);assert.equal(r.s.fromDeadBeggar,null);
+ assert.equal(r.s.fromDeadPumpSource,'Dead android');assert.equal(r.s.fromDeadOutcome,'Markus came back from the dead');
+ // Taking it first and then going to the middle: the begging android still asks, and the pump android offers only SPARE.
+ const t=startState(story);apply(hub,t,'0');apply(hub,t,'4');assert.equal(t.fromDeadPumpReplaced,true);apply(hub,t,'2');apply(node('M03'),t,'1');
+ assert.deepEqual(available(node('M04'),t).map(o=>o.id),['1'],'he no longer needs her part');assert.match(situationFor(node('M04'),t),/do not need hers/);
+ const u=startState(story);apply(hub,u,'2');assert.deepEqual(available(node('M04'),u).map(o=>o.id),['0','1'],'both buttons when he still needs one');
 });

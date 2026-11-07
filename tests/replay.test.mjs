@@ -43,8 +43,9 @@ async function refValidate(story,run){
 const outcome=async f=>{try{const v=await f();return {ok:true,v:JSON.stringify(v)}}catch(e){return {ok:false,error:e.message}}};
 
 // A run of `length` decisions, alternating first and last offered option so both stats and branches move.
-async function build(length){const run={id:'replay-equivalence',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
- while(run.records.length<length&&current(story,run).node){const p=promptFor(story,run),o=p.options,choice=(o.find(x=>x.id==='skip')??o[run.records.length%2?o.length-1:0]).id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
+// `untilRisk` keeps going past `length` until a risky action is recorded (story 1.9.2 has none in chapters 1 to 6).
+async function build(length,{untilRisk=false}={}){const run={id:'replay-equivalence',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
+ while((run.records.length<length||untilRisk&&!run.records.some(x=>x.risk))&&current(story,run).node){const p=promptFor(story,run),o=p.options,choice=(o.find(x=>x.id==='skip')??o[run.records.length%2?o.length-1:0]).id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
  return run}
 
 test('current() memo matches a fresh replay after every appended record and sees reassigned or removed records',async()=>{
@@ -67,16 +68,18 @@ test('single-pass validatePlaythrough accepts and rejects exactly what the from-
    r=>{r.records[i].event='changed'},r=>{r.records[i].changes=[]},r=>{r.records[i].nodeId='C01'},r=>{r.records[i].risk={probability:0.5,label:'High risk',roll:0.1,outcome:'failure'}},r=>{r.records.splice(i,1)},
    r=>{const x=r.records[i];x.choice=x.choice==='0'?'1':'0';x.rawResponse=JSON.stringify({choice:x.choice,reason:x.reason})},r=>{delete r.records[i].stateAfterHash});
  }
- const risky=run.records.findIndex(x=>x.risk);assert.ok(risky>=0,'the run has a risky action');mutations.push(r=>{const x=r.records[risky];x.risk.outcome=x.risk.outcome==='failure'?'success':'failure'},r=>{r.records[risky].risk.roll+=1e-9},r=>{delete r.records[risky].risk});
+ // The risk-roll tampering runs on a longer run that reaches the first risky action.
+ const riskRun=await build(30,{untilRisk:true}),risky=riskRun.records.findIndex(x=>x.risk);assert.ok(risky>=0,'the run has a risky action');
+ const riskMutations=[r=>{const x=r.records[risky];x.risk.outcome=x.risk.outcome==='failure'?'success':'failure'},r=>{r.records[risky].risk.roll+=1e-9},r=>{delete r.records[risky].risk}];
  mutations.push(r=>{[r.records[3],r.records[4]]=[r.records[4],r.records[3]]},r=>{r.status='completed'},r=>{r.storyHash='0'},r=>{r.protocol='other'},r=>{r.records.push(structuredClone(r.records.at(-1)))});
  // Fields only the chain (or the new per-record checks) protect: a consistent edit of reason and raw response, the timestamp,
  // the chain itself, the step, the stored options, the option and event texts, and a forged knowledge change.
  for(const i of [2,28])mutations.push(r=>{const x=r.records[i];x.reason='edited';x.rawResponse=JSON.stringify({choice:x.choice,reason:'edited'})},r=>{r.records[i].recordedAt='2020-01-01T00:00:00.000Z'},r=>{r.records[i].chainHash='0'},
   r=>{r.records[i].step+=1},r=>{r.records[i].prompt.options[0].text='changed'},r=>{r.records[i].choiceText='changed'},r=>{r.records[i].presentedChoiceText='changed'},r=>{r.records[i].eventRaw='changed'},
   r=>{r.records[i].changes.push({key:'knowledge',added:{Kara:['forged']}})});
- assert.ok(mutations.length>=36,'every original tamper case is still present: '+mutations.length);
- let rejected=0;for(const mutate of mutations){const a=structuredClone(run),b=structuredClone(run);mutate(a);mutate(b);const got=await outcome(()=>validatePlaythrough(story,a)),want=await outcome(()=>refValidate(story,b));assert.deepEqual(got,want,mutate.toString());if(!got.ok)rejected++}
- assert.ok(rejected>=mutations.length-2,'almost every mutation is tampering: '+rejected+'/'+mutations.length);
+ assert.ok(mutations.length+riskMutations.length>=36,'every original tamper case is still present: '+(mutations.length+riskMutations.length));
+ let rejected=0;for(const [base,list] of [[run,mutations],[riskRun,riskMutations]])for(const mutate of list){const a=structuredClone(base),b=structuredClone(base);mutate(a);mutate(b);const got=await outcome(()=>validatePlaythrough(story,a)),want=await outcome(()=>refValidate(story,b));assert.deepEqual(got,want,mutate.toString());if(!got.ok)rejected++}
+ assert.ok(rejected>=mutations.length+riskMutations.length-2,'almost every mutation is tampering: '+rejected+'/'+(mutations.length+riskMutations.length));
 });
 
 test('a record keeps the scene part of its prompt and hashes; the full prompt and every state are reproducible from the records',async()=>{

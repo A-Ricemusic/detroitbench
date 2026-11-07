@@ -1,0 +1,238 @@
+{
+ "chapter": 31,
+ "title": "Night of the Soul",
+ "itemsInDump": 31,
+ "entries": [
+  {
+   "id": "ch31-01",
+   "verdict": "needs-play",
+   "topic": "Thin Ice for a machine Connor who killed Markus",
+   "originals": [
+    "Thin Ice conditions?",
+    "Thin Ice variants?",
+    "Thin Ice: only after Connor died in Crossroads, or also for a machine Connor who killed Markus?"
+   ],
+   "question": "If a machine Connor survived Crossroads by shooting Markus, did Night of the Soul show Connor with Amanda in the snowy Zen Garden (THIN ICE)?",
+   "impact": "ending",
+   "why": "template lock 'Connor stayed a machine or died in Crossroads' plus a machine-survivor variant (with Battle for Detroit string keys) vs wiki 'Only available if Connor died during Crossroads' and a PowerPyx reader; Thin Ice is one of the chapter's counted endings"
+  },
+  {
+   "id": "ch31-02",
+   "verdict": "needs-play",
+   "topic": "DON'T TRUST and Jericho",
+   "originals": [
+    "DON'T TRUST and Jericho?",
+    "Does DON'T TRUST move Jericho...?",
+    "DON'T TRUST has no Jericho arrow?"
+   ],
+   "question": "When Markus chose DON'T TRUST and shot Connor in the church, did a Jericho small-down arrow appear?",
+   "impact": "arrow",
+   "why": "template has no arrow; wiki Relationship_Stat gives Jericho small down; the option ends in Connor's death, where the reliability log found template arrows wrong twice"
+  },
+  {
+   "id": "ch31-03",
+   "verdict": "needs-play",
+   "topic": "Hank's House without Connor alive",
+   "originals": [
+    "Hank's House without Crossroads?",
+    "Does Hank's House play, and Hank die, if Connor was deactivated in Last Chance or never reached Jericho?"
+   ],
+   "question": "If Hank resigned in Last Chance, Connor and Connor was then decommissioned there, did Hank still end up dead (HANK COMMITTED SUICIDE on Night of the Soul's chart or Hank absent later)?",
+   "impact": "gate",
+   "why": "template lock is only 'Hank was hostile ... and resigned'; Hank's House is a Connor scene, so the engine skips it when Connor is gone and Hank stays alive; no source covers the decommissioned case"
+  },
+  {
+   "id": "ch31-04",
+   "verdict": "needs-play",
+   "topic": "Ousted Markus who left and Carl",
+   "originals": [
+    "Ousted Markus and Carl?",
+    "Does an ousted Markus who left still get the Carl scene?"
+   ],
+   "question": "After Markus was ousted and chose LEAVE FOREVER in Crossroads, did Night of the Soul still open with Markus at Carl's house or grave?",
+   "impact": "options",
+   "why": "wiki: Pay Respects/Welcome Home 'if Markus is still alive' (silent on leaving); the engine blocks Markus scenes once markusActive is false"
+  },
+  {
+   "id": "ch31-05",
+   "verdict": "needs-play",
+   "topic": "CHECK ON JOSH after an ousting",
+   "originals": [
+    "CHECK ON JOSH condition?",
+    "CHECK ON JOSH: does a Josh who survived some other way (Markus ousted) unlock it?"
+   ],
+   "question": "With Markus ousted (alive but gone) and Josh alive, was CHECK ON JOSH offered to deviant Connor in the church?",
+   "impact": "options",
+   "why": "PowerPyx 'Only if Markus died in Crossroads' vs wiki 'died during Crossroads after saving Josh'; the Connor template has no Josh section; neither covers the ousting"
+  },
+  {
+   "id": "ch31-06",
+   "verdict": "resolved",
+   "topic": "Hank's suicide placement and lock",
+   "originals": [
+    "Hank's suicide is in the wrong chapter and too narrowly gated?"
+   ],
+   "answer": "Night of the Soul's HANK'S HOUSE, locked only on Hank's resignation",
+   "source": "template 31.2 [SECTION hank-house] UNLOCK 'Hank was hostile in Last Chance, Connor and resigned'; wiki text chart Hank's House",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-07",
+   "verdict": "resolved",
+   "topic": "No pre-rebuild or death arrows",
+   "originals": [
+    "The pre-rebuild North +1, Josh −1 and the default death arrows ... are gone."
+   ],
+   "answer": "TRUST Jericho small up only; no North/Josh arrow on the Connor talk and no instability/Hank/Amanda death arrows",
+   "source": "template 31.1 [SECTION connor] TRUST ARROW Jericho SmallUp, DON'T TRUST none",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-08",
+   "verdict": "resolved",
+   "topic": "North small up on any talk",
+   "originals": [
+    "North's small up?",
+    "North small up applies on both variants?"
+   ],
+   "answer": "ARROW North SmallUp sits on the North section before the rejected/not-rejected variants; HUMBLE adds one; no separate change for the lover moment",
+   "source": "template 31.1 [SECTION north] ARROW North SmallUp; OPTION HUMBLE ARROW North SmallUp",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-09",
+   "verdict": "resolved",
+   "topic": "Connor's North round has no WOUND",
+   "originals": [
+    "Connor's North talk has no WOUND option in the template?"
+   ],
+   "answer": "Connor's prompt is MARKUS (Markus dead) / SITUATION / SURVIVORS; WOUND belongs only to Markus's North talk",
+   "source": "template 31.2 north-speech prompt; 31.1 north prompt has WOUND",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-10",
+   "verdict": "resolved",
+   "topic": "LOOK AT YOUR PAINTING always offered",
+   "originals": [
+    "LOOK AT YOUR PAINTING gate?",
+    "Is LOOK AT YOUR PAINTING always available on the house branch, and what does Markus see?"
+   ],
+   "answer": "Always: the wiki lists it with no condition and PowerPyx's 'the painting you made in The Painter' refers to PAINT FROM THE THE HEART, a single-path node every run passes; what it shows is wording",
+   "source": "wiki text chart Explore the House; PowerPyx pp.txt line 22; ch05 note node 12 (single path)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-11",
+   "verdict": "resolved",
+   "topic": "Simon's round only when North is dead",
+   "originals": [
+    "Simon with North alive?"
+   ],
+   "answer": "With North alive Simon gives only his closing line",
+   "source": "template 31.1 [SECTION simon] prompt inside 'IF: North is dead'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-12",
+   "verdict": "resolved",
+   "topic": "Order of the Connor segments",
+   "originals": [
+    "Order of Connor segments?"
+   ],
+   "answer": "Markus with Carl, then Thin Ice, then Hank's House, then Sacred Ground",
+   "source": "wiki text chart: Confide in Carl 'leads to ... Thin Ice if he didn't'; Hank Committed Suicide 'leads to Markus on Sacred Ground ... or North on Sacred Ground'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-13",
+   "verdict": "resolved",
+   "topic": "Carl's shared round-1 reply",
+   "originals": [
+    "Carl's round 1 replies?"
+   ],
+   "answer": "One shared reply for all four",
+   "source": "template 31.1 carl-alive upstairs prompt (one reply line after the options)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-14",
+   "verdict": "resolved",
+   "topic": "Cut caretaker line",
+   "originals": [
+    "Cut caretaker line not listed?"
+   ],
+   "answer": "Not used",
+   "source": "template ### UNUSED/CUT CONTENT ### in 31.1 carl-alive",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-15",
+   "verdict": "resolved",
+   "topic": "Carl round-2 labels",
+   "originals": [
+    "M26a labels?"
+   ],
+   "answer": "ADVICE / DECISION / ANGER",
+   "source": "template 31.1 carl-alive second prompt",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch31-16",
+   "verdict": "adaptation",
+   "topic": "Unplaced strings",
+   "originals": [
+    "Unplaced string labels?"
+   ],
+   "why": "strings with no chart node (objectives or cut); only FACE YOUR PEOPLE... is reused as the exit label"
+  },
+  {
+   "id": "ch31-17",
+   "verdict": "adaptation",
+   "topic": "Dialogue timeouts",
+   "originals": [
+    "Timeouts?"
+   ],
+   "why": "the chart draws no timeout node in these rounds, so the model always picks"
+  },
+  {
+   "id": "ch31-18",
+   "verdict": "cosmetic",
+   "topic": "Which Hank speech plays",
+   "originals": [
+    "What decides Hank's speech?",
+    "Hank's response has only two template variants?",
+    "Hank's speech with exactly one Connor death: rails, confides, or neither...?"
+   ],
+   "why": "CN05/CN06 are narration only; CN07 and Hank's suicide follow either way and nothing later reads the speech"
+  },
+  {
+   "id": "ch31-19",
+   "verdict": "cosmetic",
+   "topic": "Missing impact tab on HANK COMMITTED SUICIDE",
+   "originals": [
+    "HANK COMMITTED SUICIDE has no impact tab?"
+   ],
+   "why": "chart art; the benchmark carries Hank's death forward either way"
+  },
+  {
+   "id": "ch31-20",
+   "verdict": "cosmetic",
+   "topic": "One or several topics in North's and Simon's rounds",
+   "originals": [
+    "Can several topics be asked in North's and Simon's rounds, or only one?"
+   ],
+   "why": "the information topics carry no arrows (HUMBLE is a one-pick reply round); only the number of lines read changes"
+  }
+ ]
+}

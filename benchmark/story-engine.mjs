@@ -207,7 +207,10 @@ function hostage(n,s,opt,choice,fail,b){
   case 'C02':return t;
   case 'C02b':s.trust=R.start;s.hostagePhase='inside';return t;
   case 'C02e':s.swatShot=true;return t;
-  case 'C03a':case 'C03f':return t;
+  // The helicopter fly-by (−15%, unavoidable) lands on the scene that declares `helicopter`: C03a, right after the greeting
+  // (wiki transcript, story 1.9.2); older story snapshots carry it on C03d2 instead, and replay with it there.
+  case 'C03a':if(n.helicopter){shift(n.helicopter);t=floor(t)}return t;
+  case 'C03f':return t;
   case 'C02i':{
    if(!opt.clue){s.hostagePhase='terrace';return t}
    s.hostageClues[opt.clue]=true;if(opt.clue==='gun')s.connorGun=true;s.hostageActions++;shift(opt.trust);
@@ -218,7 +221,7 @@ function hostage(n,s,opt,choice,fail,b){
   case 'C03':if(choice==='0')b.po(1);shift(opt.trust);return floor(t);
   case 'C03b':case 'C03d':case 'C03e':case 'C03g':shift(opt.trust);return floor(t);
   case 'C03c':shift(opt.trust);if(choice==='1')s.connorGun=false;return floor(t);
-  case 'C03d2':shift(opt.trust);t=floor(t);if(s.hostagePhase==='terrace'){shift(n.helicopter);t=floor(t+' Then the police helicopter swoops in low over the terrace, and {{Daniel}} panics.')}return t;
+  case 'C03d2':shift(opt.trust);t=floor(t);if(n.helicopter&&s.hostagePhase==='terrace'){shift(n.helicopter);t=floor(t+' Then the police helicopter swoops in low over the terrace, and {{Daniel}} panics.')}return t;
   // BLUFF, then MOVE CLOSER: one of the wiki's three ways to FAIL TO NEGOTIATE; the probability itself is unchanged.
   case 'C03h':return opt.act==='jump'?jump(t+' {{Daniel}} screams and backs into the railing.'):t;
   case 'C04':case 'C04b':
@@ -232,9 +235,10 @@ function hostage(n,s,opt,choice,fail,b){
   case 'C04d':if(opt.act==='intimidate'){s.hostagePhase='aim';return t}return shot();// EXECUTE
   case 'C04e':if(opt.act==='shoot')return shot();
    s.emma=false;b.si(-2);return end('Deviant shot Connor',b.connorDies('“It’s up to you how the story ends. Make the right choice, {{Daniel}}.” {{Daniel}}: “I didn’t want this... no, you left me no choice… No choice…” He shoots {{Connor}} in the head, then, horrified at what he has done, goes over the railing with {{Emma}}. {{Emma}} is lost and the mission has failed; {{Connor}} is destroyed.'));
+  // The leap is a press prompt the player controls (PowerPyx); story 1.9.2 gives it no risk, older snapshots rolled 0.3.
   case 'C04c':
    if(choice==='0'&&!fail&&s.trust>0){b.si(-1);return end('Connor leapt for Emma and fell',b.connorDies('{{Connor}} throws himself after them, catches {{Emma}} and pulls her back over the railing, but goes over the edge with {{Daniel}}. {{Emma}} is safe.'))}
-   s.emma=false;b.si(1);return choice==='0'?end('Connor failed to reach deviant in time',(s.trust===0&&!fail?'{{Connor}} throws himself after them and catches {{Emma}}’s hand, but {{Daniel}}’s weight tears her away. ':'{{Connor}} lunges a fraction of a second too late. ')+'{{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.'):end('Deviant jumped with Emma','{{Connor}} stays where he is. {{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.');
+   s.emma=false;b.si(1);return choice==='0'?end('Connor failed to reach deviant in time',(s.trust===0&&!fail?'{{Connor}} throws himself after them and catches {{Emma}}’s hand, but {{Daniel}}’s weight tears her away. ':'{{Connor}} lunges a fraction of a second too late. ')+'{{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.'):end('Connor failed to reach deviant in time','{{Connor}} stays where he is. {{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.');// staying back is the game's not-pressing (PowerPyx): the chart's six endings have no separate stay-back node
  }
  return t;
 }

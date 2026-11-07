@@ -1163,15 +1163,6 @@
   "situation": "You are {{Connor}}. {{Hank}} is hanging from the edge of the roof by his hands. Your analysis: CHANCE OF SURVIVAL: 89%. The deviant is getting away across the roofs. You have only a moment.",
   "options": [
    {
-    "id": "0",
-    "text": "SAVE {{HANK}}: pull {{Hank}} back up.",
-    "effect": {
-     "hankTrust": 2,
-     "instability": 2
-    },
-    "outcome": "{{Connor}} pulls {{Hank}} back onto the roof. The deviant is gone. {{Hank}}: “Shit! Oh SHIT! We had it! FUCK!” You: “It’s my fault, I should have been faster.” {{Hank}}: “You’d have caught it if it weren’t for me… That’s alright. We know what it looks like. We’ll find it… Hey, {{Connor}}… Nothing.”"
-   },
-   {
     "id": "1",
     "text": "CHASE DEVIANT: leave {{Hank}} and go after the deviant.",
     "effect": {
@@ -1179,6 +1170,15 @@
      "instability": -2
     },
     "outcome": "{{Connor}} runs on and corners the deviant at the edge of a roof. The deviant: “Please, I’ve done nothing wrong… I just wanted to be free. You know what they’ll do to me if you turn me in…” You: “Model 874 004 961, serious malfunctions have been detected in your software, including Class 4 errors. You’ve been deemed defective and will be sent back to {{CyberLife}} for deactivation.” {{Hank}}, who has pulled himself up, catches up and slaps you: “Don’t you fucking move! You bastard! You saw I was gonna fall and you’d rather let me die than fail your fucking mission!” You: “I had to make a choice... It seemed to me…” {{Hank}}: “What am I to you? A statistic? A “zero”, a “one” in your fucking program? Uh? Is that how you see humans, you bastard?! Jesus!” You: “I understand you’re upset… Perhaps I didn’t assess th-” {{Hank}}: “Fuck you and your fuckin assessment! Come here.” He cuffs the deviant. The deviant: “Why are you doing this?” {{Hank}}: “Alright, shut up!” The deviant, to you: “You’re one of us! You’re helping humans… But you’re just their slave!” {{Hank}}: “I said shut up! Alright. Come along!” The deviant: “{{RA9}}, save me.” He tears free and throws himself off the roof. {{Hank}}: “Hey! What the f- Holy shit…”"
+   },
+   {
+    "id": "0",
+    "text": "SAVE {{HANK}}: pull {{Hank}} back up.",
+    "effect": {
+     "hankTrust": 2,
+     "instability": 2
+    },
+    "outcome": "{{Connor}} pulls {{Hank}} back onto the roof. The deviant is gone. {{Hank}}: “Shit! Oh SHIT! We had it! FUCK!” You: “It’s my fault, I should have been faster.” {{Hank}}: “You’d have caught it if it weren’t for me… That’s alright. We know what it looks like. We’ll find it… Hey, {{Connor}}… Nothing.”"
    },
    {
     "id": "2",
@@ -1190,7 +1190,7 @@
     "outcome": "{{Connor}} stays where he is until the moment has passed, then runs on after the deviant."
    }
   ],
-  "adaptationNote": "The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; they retain the existing controller order (Save Hank, Chase Deviant), also PowerPyx’s button order; the template lists Chase Deviant first. This presentation-order departure preserves existing default-path behavior. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and {{Hank}} always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
+  "adaptationNote": "The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; in the game’s order, Chase Deviant first: the chart’s choice group after RUPERT PUSHES HANK lists FOLLOW RUPERT above SAVE HANK (detroit-become-human-the-nest-4.jpg) and the template lists Chase Deviant first; PowerPyx names them the other way round but gives no screen order. Story 1.9.1 listed SAVE HANK first to keep an old default path; the ids are unchanged. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and {{Hank}} always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Nest",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",

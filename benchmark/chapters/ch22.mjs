@@ -36,13 +36,16 @@ export function edenOutcome(s,c=id=>s.choices?.[id]){
  for(const [k,v] of Object.entries(s))if(/^(ch20|eden|traci)/i.test(k)&&typeof v==='string'){const u=v.toUpperCase();for(const [label,kind] of EDEN_LABELS)if(u.includes(label))return kind}
  const x=c('C12');return x==='0'?'spared':x==='1'?'shotOne':'notFound';
 }
+// The rA9 answer's lock is "Looked at rA9 clues in previous chapters" (template): Connor's clues only. What Connor knows,
+// plus the flags of the chapters where he can find them: Partners (CHECK SHOWER), The Interrogation (the rA9 questions)
+// and The Nest (the rA9 writing). Kara's rA9 flags (Fugitives ch10RalphRA9 / ch10Roam.done.rA9, The Pirates' Cove
+// ch21Tavern.ra9 / ch21Talk.ra9) do not count; up to story 1.9.1 any state key named after rA9 did.
 const RA9=/ra9/i;
+export const CONNOR_RA9=['ch06KnowsRA9','ch06Clues.shower','ch09Asked.3','ch09Asked.4','nestSawSigns','nestSearch.seen.ra9'];
+const at=(s,path)=>path.split('.').reduce((o,k)=>o?.[k],s);
 export function seenRa9(s){
  if((s.knowledge?.Connor??[]).some(f=>RA9.test(f)))return true;
- for(const [k,v] of Object.entries(s)){if(k==='choices'||k==='rolls'||k==='knowledge'||k==='bridgeRa9')continue;
-  if(RA9.test(k)&&v)return true;
-  if(v&&typeof v==='object'&&!Array.isArray(v))for(const [k2,v2] of Object.entries(v))if(RA9.test(k2)&&v2)return true}
- return false;
+ return CONNOR_RA9.some(p=>!!at(s,p));
 }
 export const hankHostile=s=>LEVELS.hank(s.hankTrust)==='Hostile';
 

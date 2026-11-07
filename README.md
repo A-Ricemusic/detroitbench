@@ -54,12 +54,18 @@ Relationships, public opinion and software instability follow sourced arrows, bu
 
 Chapter recap pages explain implemented nodes, gates, arrows, simplifications and replay questions. Existing numbered recaps:
 
+- [ch01-the-hostage](docs/ch01-the-hostage-chapter-recap.html)
+- [ch02-opening](docs/ch02-opening-chapter-recap.html)
+- [ch03-shades-of-color](docs/ch03-shades-of-color-chapter-recap.html)
+- [ch04-a-new-home](docs/ch04-a-new-home-chapter-recap.html)
 - [ch05-the-painter](docs/ch05-the-painter-chapter-recap.html)
 - [ch06-partners](docs/ch06-partners-chapter-recap.html)
 - [ch07-stormy-night](docs/ch07-stormy-night-chapter-recap.html)
 - [ch08-broken](docs/ch08-broken-chapter-recap.html)
 - [ch09-the-interrogation](docs/ch09-the-interrogation-chapter-recap.html)
+- [ch10-fugitives](docs/ch10-fugitives-chapter-recap.html)
 - [ch11-from-the-dead](docs/ch11-from-the-dead-chapter-recap.html)
+- [ch12-waiting-for-hank](docs/ch12-waiting-for-hank-chapter-recap.html)
 - [ch13-on-the-run](docs/ch13-on-the-run-chapter-recap.html)
 - [ch14-jericho](docs/ch14-jericho-chapter-recap.html)
 - [ch15-the-nest](docs/ch15-the-nest-chapter-recap.html)
@@ -76,8 +82,11 @@ Chapter recap pages explain implemented nodes, gates, arrows, simplifications an
 - [ch26-capitol-park](docs/ch26-capitol-park-chapter-recap.html)
 - [ch27-meet-kamski](docs/ch27-meet-kamski-chapter-recap.html)
 - [ch28-freedom-march](docs/ch28-freedom-march-chapter-recap.html)
+- [ch29-last-chance-connor](docs/ch29-last-chance-connor-chapter-recap.html)
+- [ch30-crossroads](docs/ch30-crossroads-chapter-recap.html)
+- [ch31-night-of-the-soul](docs/ch31-night-of-the-soul-chapter-recap.html)
+- [ch32-battle-for-detroit](docs/ch32-battle-for-detroit-chapter-recap.html)
 
-The earlier recap filenames are [The Hostage](docs/hostage-chapter-recap.html), [Shades of Color](docs/shades-of-color-chapter-recap.html) and [A New Home](docs/a-new-home-chapter-recap.html).
 
 ## Run locally
 
@@ -109,7 +118,7 @@ The independent-question CLI (`bun run bench --help`) and sequential API runner 
 
 ## Share
 
-`docs/run-library.html` links the standalone reports in `docs/runs/`. Build preparation exposes the library at `/playthrough-results.html` and reports at `/runs/<filename>.html`. Individual HTML reports can be downloaded and shared offline.
+The site's Runs page is the run library; each run's full report renders in the app at `#/runs/<id>/report`. Build preparation also copies the standalone reports from `docs/runs/` to `/runs/<filename>.html`, offered as Download HTML for offline sharing.
 
 To inspect the built site locally, run `bun run preview`. To share on this machine's Tailscale network, run `bun run share`; it builds and serves on the machine's Tailscale address at port 4173. A Tailscale installation and network connection are required. The Vercel configuration uses `bun install --frozen-lockfile`, `bun run build` and output directory `dist`; building locally does not publish the site.
 

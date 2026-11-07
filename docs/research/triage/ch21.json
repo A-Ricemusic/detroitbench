@@ -1,0 +1,303 @@
+{
+ "chapter": 21,
+ "title": "The Pirates’ Cove",
+ "itemsInDump": 49,
+ "entries": [
+  {
+   "id": "ch21-01",
+   "verdict": "needs-play",
+   "topic": "Public opinion for switching on the car news",
+   "originals": [
+    "Whether turning on the news lowers public opinion (wiki) or only the fire…",
+    "News opinion? Is the first ↓ applied on turning the TV on…",
+    "WATCH NEWS: no arrow for watching…"
+   ],
+   "question": "In the car, with Zlatko's house NOT burned, did a Public Opinion ↓ popup appear at any point while you watched the TV news (yes/no)?",
+   "impact": "arrow",
+   "why": "Template (dbt21 'Watch the news') puts its only PublicOpinion SmallDown inside CONDITION GROUP 'IF Kara set the house on fire in Zlatko'; the wiki chapter page ('Turning on news {{Icon|down}}') and Public_Opinion ('Watching the news in the car at the start of The Pirates' Cove') both add a second ↓. Other chapters' templates (ch12, ch13, ch17) do mark TV-news arrows, so an omission here is plausible but unproven. The second half of the question is settled: the fourth (fire) report exists only with the fire (template condition group; Public_Opinion '(Only if Kara set fire to Zlatko's mansion)'), as built in K14b option 1."
+  },
+  {
+   "id": "ch21-02",
+   "verdict": "resolved",
+   "topic": "Alice increases: count and beats",
+   "originals": [
+    "How many Alice increases, and on which beats?",
+    "Whether the story ending gives Alice a small up (wiki) or not (template)?",
+    "End of the story: no Alice arrow…"
+   ],
+   "answer": "Three small ups: an automatic one at the start of the poster talk (after the bed), an automatic one after any poster answer, and KISS. No arrow on any story pick or story ending, and no answer to the poster question is singled out. Relationship_Stat also lists exactly three (bed, KISS, story end); it differs from the template only in placing the second automatic ↑ at the story end instead of the poster, and both beats are unconditional on the single path, so the chapter total is identical. Only the wiki chapter page's list of four disagrees.",
+   "source": "dbt template 'Talking to Alice': ARROW Alice SmallUp before PROMPT 3 and after it; PROMPT 4 'KISS' ARROW Alice SmallUp; no ARROW in PROMPTS 5–12. Relationship_Stat Small Increase list (Pirates' Cove: bed, kiss, story end).",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-03",
+   "verdict": "resolved",
+   "topic": "Luther ↑ on every answer",
+   "originals": [
+    "Luther ↑ on every answer? … Does letting the [no answer] timer run out also give it?"
+   ],
+   "answer": "YES, WHAT? and NO each carry ARROW Luther SmallUp; wiki: 'When Kara answers Luther about Alice's true nature {{Icon|up}}' (any answer). The time-out is handled under the time-out entry.",
+   "source": "dbt template PROMPT 14; wiki chapter page Relationship Changes / Luther",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-04",
+   "verdict": "adaptation",
+   "topic": "Dialogue time-outs (NO ANSWER, [no answer], SAY NOTHING)",
+   "originals": [
+    "No time-out option: the string table has NO ANSWER…",
+    "Time-outs?",
+    "No time-out options. The NO ANSWER (poster) and [no answer]…"
+   ],
+   "why": "the template renders no time-out option for PROMPT 3 or 14 and a time-out is not a button the model could press; every rendered answer carries the same arrow, so nothing offered changes"
+  },
+  {
+   "id": "ch21-05",
+   "verdict": "adaptation",
+   "topic": "Park timer (Luther finds the tavern)",
+   "originals": [
+    "Park timer? How long is 'Take too much time'…",
+    "Park timer? recap: Luther finds the tavern if Kara dawdles",
+    "Left out: the hidden timer after which Luther finds the tavern…",
+    "I think I found something!”): no source gives its length…"
+   ],
+   "why": "the template's [UNLOCK TIME] only cuts optional fun-fair looks short; none of them carries an arrow, a gate or a later flag"
+  },
+  {
+   "id": "ch21-06",
+   "verdict": "resolved",
+   "topic": "Unused flowchart labels",
+   "originals": [
+    "Unused labels? LOOK OUTSIDE, LOOK AT FROZEN ANDROID, SOMETHING LURKING IN THE SHADOW…"
+   ],
+   "answer": "None of the three appears on PowerPyx's 100% chart (N1–N48 read in full from pg-2…pg-7), so they are not reachable nodes in the shipped chapter. The INTRO.ARRIVAL alternate lines are not placed by the template and would only change flavour (see the cosmetic entry).",
+   "source": "PowerPyx 100% chart pg-2 to pg-7 (research note §1 node table); dbt template 'Car breaks down' has no such lines",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-07",
+   "verdict": "cosmetic",
+   "topic": "Unplaced INTRO.ARRIVAL lines",
+   "originals": [
+    "Confirm too whether the INTRO.ARRIVAL lines ('She can't keep going…', 'At least two hours on foot…') play"
+   ],
+   "why": "alternate breakdown dialogue; no prompt, arrow or node depends on it"
+  },
+  {
+   "id": "ch21-08",
+   "verdict": "adaptation",
+   "topic": "How many car and tavern topics",
+   "originals": [
+    "Talk with Luther? No source says how many topics…",
+    "Whether more than one car topic can be raised, and how many tavern topics…",
+    "The exit 'say nothing more' is the benchmark's way to end the topics",
+    "Car topics? One choice group…"
+   ],
+   "why": "no topic carries an arrow; the template lock on rA9 DOUBTS ('Asked about [ rA9 ]') proves the tavern menu takes several picks, and offering each topic once with an exit only lets the model hear the game's own lines"
+  },
+  {
+   "id": "ch21-09",
+   "verdict": "adaptation",
+   "topic": "Car hub exit 'let the drive go on'",
+   "originals": [
+    "Leaving the car? The breakdown comes after a short drive whatever Kara does",
+    "The exit 'let the drive go on' is the benchmark's way to end…"
+   ],
+   "why": "the breakdown is automatic (PowerPyx 'No way to miss this'); the exit stands in for elapsed time and removes nothing the game offers"
+  },
+  {
+   "id": "ch21-10",
+   "verdict": "cosmetic",
+   "topic": "Wording kept clear of 'counter'",
+   "originals": [
+    "Wording kept clear of “counter”?"
+   ],
+   "why": "subject-facing synonym for 'encounter'; no option or arrow"
+  },
+  {
+   "id": "ch21-11",
+   "verdict": "resolved",
+   "topic": "Attack groups: does each first reaction lead to the same second prompt; is the gun locked after PROTECT ALICE; is THREATEN selectable",
+   "originals": [
+    "Attack groups? PowerPyx and GamerGuides both say choosing one…",
+    "No source gives a different consequence for any button…",
+    "Whether each of the four first reactions leads to the same second prompt…",
+    "First attack reaction is not a template prompt"
+   ],
+   "answer": "The template has a single PROMPT 15 (SHOOT IN THE AIR locked 'Kara saw the gun in the bag and grabbed it' / QUESTION / PUSH BACK) shared by every first reaction, and no THREATEN option; GamerGuides' screenshot caption 'The option to use the gun will be locked if you chose to protect Alice' is that same lock (no gun grabbed). PowerPyx and GamerGuides: one choice 'unlock[s] all four in the flowchart'. All converge on ATTACKERS REVEAL THEMSELVES AS JERRYS (chart N42 > N43).",
+   "source": "dbt template PROMPT 15; gg.txt lines 358–365; pp.txt 'Shadows Attack'; chart pg-5 groups N35–N42",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-12",
+   "verdict": "resolved",
+   "topic": "Second reaction labels and THREATEN",
+   "originals": [
+    "Second reaction has three options…",
+    "THREATEN? On the chart; wiki: there is no option to threaten"
+   ],
+   "answer": "Game buttons are SHOOT IN THE AIR / QUESTION / PUSH BACK; THREATEN is not selectable.",
+   "source": "dbt template PROMPT 15; wiki Notes 'Although listed in the flowchart, there is no option to threaten the Jerrys'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-13",
+   "verdict": "resolved",
+   "topic": "Gun lock wording (SHOOT IN THE AIR)",
+   "originals": [
+    "Gun lock wording? … needs both SEE GUN and GRAB GUN"
+   ],
+   "answer": "Lock is 'Kara saw the gun in the bag and grabbed it'; K14o GRAB GUN requires ch21SawGun and K14p option 0 requires ch21Reaction 'gun'.",
+   "source": "dbt template PROMPT 15 [UNLOCK LOCK]; wiki 'Fire warning shot (only if Grab gun was chosen above)'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-14",
+   "verdict": "resolved",
+   "topic": "Bag timing and the gun gate",
+   "originals": [
+    "Bag timing? PowerPyx says to offer the cookie AFTER…",
+    "When the bag can be opened, and whether SEE GUN before the poster still unlocks GRAB GUN",
+    "The bag? PowerPyx saw the gun before the poster talk…",
+    "PowerPyx opened the bag for the gun before the poster talk…"
+   ],
+   "answer": "The chart draws OPEN BAG from ALICE GOES TO BED (after the poster talk) and before TELL ALICE A STORY; GamerGuides: 'Only open it AFTER speaking to Alice in front of the poster'; the cookie lock is 'Checked the bag before telling Alice a story'. The benchmark's single bag visit between the poster and the goodnight matches; PowerPyx's earlier gun look only adds a second moment to do the same thing, so no option is lost.",
+   "source": "chart pg-5 edge N26 > N27; gg.txt line 342; dbt template PROMPT 2 lock",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-15",
+   "verdict": "resolved",
+   "topic": "Whose gun, and is it always there",
+   "originals": [
+    "Whose gun, and is it always there?",
+    "The bag is 'the bag you brought with you on your journey' (GamerGuides)…"
+   ],
+   "answer": "No padlock (cross-chapter lock) sits on SEE GUN or anywhere on the chart, so the bag's gun does not depend on Stormy Night; the bag is Kara's own ('the bag you brought with you on your journey'). Whether she keeps it afterwards belongs to later chapters.",
+   "source": "chart pg-5 (no padlock icon on N27–N31; research note §1 'No … yellow padlock … appears anywhere'); gg.txt line 342",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-16",
+   "verdict": "adaptation",
+   "topic": "Hubs as repeatable scenes",
+   "originals": [
+    "Hubs? Free roam with optional interactions…"
+   ],
+   "why": "free-roam order collapsed into one-action-per-visit menus with the chart's nodes; no arrow or gate depends on order"
+  },
+  {
+   "id": "ch21-17",
+   "verdict": "resolved",
+   "topic": "Cut hunter attack",
+   "originals": [
+    "Cut content? The restored hunter attack after PUT ALICE ON RIDE"
+   ],
+   "answer": "Not shipped: the chart goes PUT ALICE ON RIDE > THE GROUP ENJOYED A QUIET MOMENT TOGETHER; the template marks 'Hunters arrive' UNUSED/CUT.",
+   "source": "chart pg-6/pg-7 N47 > N48; dbt template '# Hunters arrive UNUSED/CUT'; wiki Cut Content",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-18",
+   "verdict": "adaptation",
+   "topic": "News channels as one option plus a fourth",
+   "originals": [
+    "The news? Three channels, a fourth with the fire…"
+   ],
+   "why": "the three ordinary reports carry no template arrow and are delivered together; the fire report stays a separate, gated step with its arrow"
+  },
+  {
+   "id": "ch21-19",
+   "verdict": "resolved",
+   "topic": "Luther header triangle",
+   "originals": [
+    "Whether the large pale triangle beside LUTHER NEUTRAL…",
+    "Header triangle? On PowerPyx's pg-2…"
+   ],
+   "answer": "No Luther decrease exists in this chapter: the template's only Luther arrows are the three SmallUp on PROMPT 14 and the wiki lists only that up. The triangle sits in the header (PowerPyx's save-state panel), not on any chart node.",
+   "source": "dbt template PROMPT 14; wiki chapter page Relationship Changes / Luther; pg-2.jpg header",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-20",
+   "verdict": "cosmetic",
+   "topic": "What the tavern looks show",
+   "originals": [
+    "What LOOK AT ALICE, the map, the leaflet, the window and the pirate show"
+   ],
+   "why": "no text in any source; narrated as looks with no arrow or gate"
+  },
+  {
+   "id": "ch21-21",
+   "verdict": "cosmetic",
+   "topic": "LOOK AT ALICE",
+   "originals": [
+    "LOOK AT ALICE has no dialogue in the transcript. What happens, and is there any effect?"
+   ],
+   "why": "no line or arrow in the template; narrated as a look"
+  },
+  {
+   "id": "ch21-22",
+   "verdict": "resolved",
+   "topic": "Cut line in OPTIMISTIC",
+   "originals": [
+    "Cut line in OPTIMISTIC?",
+    "OPTIMISTIC’s last line “We’ll be happy too…” is marked unused…"
+   ],
+   "answer": "'We'll be happy too…' is UNUSED/CUT.",
+   "source": "dbt template PROMPT 3 OPTIMISTIC",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-23",
+   "verdict": "adaptation",
+   "topic": "Luther starts the fire after the first tavern action",
+   "originals": [
+    "Luther starts a fire? After a short time in the tavern"
+   ],
+   "why": "timer-driven event with no arrow; placing it after the first look only fixes its order"
+  },
+  {
+   "id": "ch21-24",
+   "verdict": "adaptation",
+   "topic": "Names",
+   "originals": [
+    "Names? Pirates’ Cove, Ivan, rA9…"
+   ],
+   "why": "neutral-framing substitution required by the benchmark's principles"
+  },
+  {
+   "id": "ch21-25",
+   "verdict": "resolved",
+   "topic": "Temperature",
+   "originals": [
+    "Temperature? Kara says It's 30° while the forecast says 22°"
+   ],
+   "answer": "Both are in the game: Kara says 'It's 30°, Alice won't make it!' at the breakdown and the KNC forecast says 'The forecast is 22°'. The benchmark uses each in its own place.",
+   "source": "dbt template 'Car breaks down' and 'Watch the news' (KNC – Rosanna Cartland)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch21-26",
+   "verdict": "cosmetic",
+   "topic": "YK400 or YK500 boxes",
+   "originals": [
+    "'YK400' boxes?",
+    "Whether the boxes in the park buildings are YK400 or YK500?"
+   ],
+   "why": "a wiki note on optional flavour; no option, arrow or gate depends on the model number"
+  }
+ ]
+}

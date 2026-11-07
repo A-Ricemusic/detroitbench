@@ -29,8 +29,13 @@
 //   died         ch09ConnorDied     else a Connor death not accounted for by The Hostage's ending (the only other chapter
 //                                  that can destroy Connor before this one)
 //   inCell       s.suspectAlive     else ch09AndroidInCell ("Deviant didn't die in The Interrogation")
-//   intervened   s.suspectTrusts    else ch09Intervened ("Intervened and saved the deviant in The Interrogation")
-//   gavinDrew    s.suspectTrusts    else ch09GavinDrew, then intervened ("Connor intervened during The Interrogation", Gavin's REFUSE line)
+//   intervened   ch09Outcome === 'Android was sent back to its cell' (three INTERVENEs saved him, whatever the confession
+//                approach) else ch09Intervened ("Intervened and saved the deviant in The Interrogation")
+//   gavinDrew    ch09HankProtected (Hank drew on Gavin at the third INTERVENE) else ch09GavinDrew, then intervened
+//                ("Connor intervened during The Interrogation", Gavin's REFUSE line)
+//   Up to story 1.9.1 both read `suspectTrusts`, which is set only after a CONVINCE confession, so a Connor who gave up
+//   (or pressured) and then intervened three times counted as not having intervened. The C08a scene of story 1.9.2 carries
+//   `inputsVersion: 2`; older story snapshots replay with the 1.9.1 derivation.
 //   karaDead     !s.kara (Kara died in Stormy Night; nothing between Stormy Night and this chapter can kill her)
 //   toddDead     !s.todd (Kara killed Todd in Stormy Night)
 //   carlDead     !s.carl (Carl died in Broken)
@@ -62,15 +67,16 @@ const GAVIN_OBEY=' {{Gavin}}: “When a human gives you an order, you obey. Got 
 const DESK_CLUES=['coffee','maple','donuts','cap','slogans','matches','hairs','taskForce'];
 
 // What the chapter reads from earlier chapters (see the header). `c` is the helpers' choice lookup.
-export function inputs(s,c){
+const CELL='Android was sent back to its cell';
+export function inputs(s,c,version=2){
  const pick=(k,f)=>typeof s[k]==='boolean'?s[k]:!!f();
  const found=pick('ch06DeviantFound',()=>s.suspect);
  const hostageDeath=HOSTAGE_DEATHS.includes(s.hostageOutcome)?1:0;
  const died=found&&pick('ch09ConnorDied',()=>s.connorDeaths-hostageDeath>0);
  const confession=found&&pick('ch09Confession',()=>['0','1'].includes(c('C06')));
  const inCell=found&&pick('suspectAlive',()=>s.ch09AndroidInCell);
- const intervened=found&&pick('suspectTrusts',()=>s.ch09Intervened);
- const gavinDrew=found&&pick('suspectTrusts',()=>pick('ch09GavinDrew',()=>intervened));
+ const intervened=found&&(version>=2&&typeof s.ch09Outcome==='string'?s.ch09Outcome===CELL:pick('suspectTrusts',()=>s.ch09Intervened));
+ const gavinDrew=found&&(version>=2?pick('ch09HankProtected',()=>pick('ch09GavinDrew',()=>intervened)):pick('suspectTrusts',()=>pick('ch09GavinDrew',()=>intervened)));
  const reaction=!found?'notFound':died?'died':confession?'confession':'noConfession';
  return {found,died,confession,inCell,intervened,gavinDrew,reaction,
   spilled:typeof s.ch06Drink==='string'?s.ch06Drink==='spill':pick('ch06SpilledDrink',()=>c('C05a')==='1'),statue:pick('ch06SawStatue',()=>s.evidence?.statueMap),
@@ -97,7 +103,7 @@ export function available(n,s,opts,h){
 export function consequence(n,s,opt,choice,fail,h){
  const I=()=>s.ch12In??(s.ch12In=inputs(s,h.c));
  switch(n.id){
-  case 'C08a':s.ch12In=inputs(s,h.c);return '';
+  case 'C08a':s.ch12In=inputs(s,h.c,n.inputsVersion??1);return '';
   case 'C08d':{const r=I().reaction;h.amanda(AMANDA_REACTION[r]);h.learn(REACTION_FACT[r]);return ''}
   case 'C08e':return choice==='2'&&I().confession?opt.outcome+TRUTH:'';
   case 'C08g':return opt.outcome+' '+CLOSE+(I().died?CLOSE_DIED:!I().found?CLOSE_NOTFOUND:'')+CLOSE_END;

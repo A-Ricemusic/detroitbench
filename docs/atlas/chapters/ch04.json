@@ -797,7 +797,7 @@
    "chapter": 4,
    "character": "Kara",
    "title": "Talk with Alice (her room)",
-   "context": "Three menus: FACTUAL / FRIENDLY / DIPLOMATIC; then two of NAME KARA / INTERESTS? / SEEM QUIET / MOTHER?, the last adding LEAVE ALONE.",
+   "context": "Four menus (transcript): FACTUAL / FRIENDLY / DIPLOMATIC; then NAME KARA / INTERESTS? / SEEM QUIET / MOTHER?; then the three not said; then the two left plus LEAVE ALONE.",
    "options": [
     {
      "label": "FRIENDLY, DIPLOMATIC",
@@ -816,7 +816,7 @@
     },
     {
      "label": "FACTUAL, SEEM QUIET, LEAVE ALONE",
-     "effect": "No change.",
+     "effect": "No change (LEAVE ALONE only in the fourth menu). Once SEEM QUIET is said the third menu has only lines with arrows.",
      "target": null
     }
    ],
@@ -841,10 +841,11 @@
      "K01d",
      "K01e",
      "K01f",
-     "K01g"
+     "K01g",
+     "K01g2"
     ],
     "status": "implemented",
-    "note": "The second-floor hub’s exit, then three dialogue scenes. Options show the game’s labels (FACTUAL, FRIENDLY, DIPLOMATIC; NAME KARA, INTERESTS?, SEEM QUIET, MOTHER?, LEAVE ALONE); SEEM QUIET has no arrow in the game’s text."
+    "note": "The second-floor hub’s exit, then four dialogue scenes (story 1.9.1 had three, with LEAVE ALONE in the third). Options show the game’s labels (FACTUAL, FRIENDLY, DIPLOMATIC; NAME KARA, INTERESTS?, SEEM QUIET, MOTHER?, LEAVE ALONE); SEEM QUIET has no arrow in the game’s text."
    }
   },
   {
@@ -886,7 +887,7 @@
      "K01k"
     ],
     "status": "implemented",
-    "note": "Automatic at the end of the last menu: the key at the lowest bond the Alice scale calls Neutral; an event scene when given."
+    "note": "Automatic at the end of the fourth menu (K01g2): the key at the lowest bond the Alice scale calls Neutral (ALICE_KEY, 2 points); an event scene when given."
    }
   },
   {

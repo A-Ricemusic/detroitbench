@@ -6,7 +6,7 @@
   "id": "K01",
   "title": "Welcome home",
   "type": "event",
-  "situation": "You are {{Kara}}, a household android. It is late afternoon. {{Todd}} drives you home from the repair store, into a run-down neighborhood past a house for sale, and stops outside his house. He gets out and waits by the door: “You comin’?” Inside, he hangs up his coat and sighs: “You’ve been gone for two weeks and the place is a mess… You do the housework, the washing, you cook the meals, and you take care of…” He breaks off. “Goddamnit! Where the fuck’s the brat gone now? {{Alice}}! {{Alice}}!” A little girl appears on the stairs, holding a toy. “Oh, there you are… That’s {{Alice}}. You look after her. Homework, bath, all that crap. Got it?” “Yes, {{Todd}}.” “Get started down here, then you do upstairs.” {{Alice}} runs back up the stairs with her toy. {{Todd}} drops onto the couch: “TV on.”",
+  "situation": "You are {{Kara}}, a household android. It is late afternoon. {{Todd}} drives you home from the repair store, into a run-down neighborhood past a house for sale, and stops outside his house. He gets out and waits by the door: “You comin’?” Inside, he hangs up his coat and sighs: “You’ve been gone for two weeks and the place is a mess… You do the housework, the washing, you cook the meals, and you take care of…” He breaks off. “Goddamnit! Where the fuck’s the brat gone now? {{Alice}}! {{Alice}}!” A little girl who looks about nine appears on the stairs, holding a toy. “Oh, there you are… That’s {{Alice}}. You look after her. Homework, bath, all that crap. Got it?” “Yes, {{Todd}}.” “Get started down here, then you do upstairs.” {{Alice}} runs back up the stairs with her toy. {{Todd}} drops onto the couch: “TV on.”",
   "options": [],
   "facts": [
    "{{Todd}} told you that you had been gone for two weeks, and that you are to do the housework and the washing, cook the meals and look after his daughter {{Alice}}: “Homework, bath, all that crap.” You clean downstairs first, then upstairs.",
@@ -15,13 +15,14 @@
   "outcomes": {
    "0": "{{Kara}} looks around the living room and gets to work."
   },
-  "adaptationNote": "The chart’s checkpoint WELCOME HOME and the node JOIN TODD, narrated as one event. Every line is the wiki transcript’s (“You comin’?”, “You’ve been gone for two weeks and the place is a mess”, “Homework, bath, all that crap”, “Get started down here, then you do upstairs”, “TV on.”). Left out: the optional looks at the bridge and the excavator outside, and Todd calling again if Kara is slow. The earlier version called {{Alice}} nine years old; no source consulted gives her age, so it is dropped. No stat change; the wiki gives none.",
+  "adaptationNote": "The chart’s checkpoint WELCOME HOME and the node JOIN TODD, narrated as one event. Every line is the wiki transcript’s (“You comin’?”, “You’ve been gone for two weeks and the place is a mess”, “Homework, bath, all that crap”, “Get started down here, then you do upstairs”, “TV on.”). Left out: the optional looks at the bridge and the excavator outside, and Todd calling again if Kara is slow. {{Alice}} “looks like a 9-year-old little girl” (the wiki’s character page, citing the game’s Extras gallery), so the situation says she looks about nine; it does not give her an age, since she is an android. No stat change; the wiki gives none.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-2.jpg"
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-2.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Alice"
   ]
  },
  {
@@ -563,10 +564,64 @@
   "chapterTitle": "A New Home",
   "character": "Kara",
   "id": "K01g",
-  "title": "{{Alice}} gets up",
+  "title": "{{Alice}} still says nothing",
   "type": "decision",
   "excludeChosenAt": [
    "K01f"
+  ],
+  "situation": "You are {{Kara}}, by {{Alice}}’s tent. She is still silent, holding her fox. What do you say?",
+  "options": [
+   {
+    "id": "0",
+    "text": "NAME {{KARA}}: say her father told you she chose your name.",
+    "effect": {
+     "aliceBond": 1
+    },
+    "outcome": "“Your father said you chose my name.” {{Alice}} stares at {{Kara}}. “‘{{Kara}}’, it’s nice. How did you choose it?” {{Alice}} does not answer."
+   },
+   {
+    "id": "1",
+    "text": "INTERESTS?: ask her to tell you about herself and what she likes.",
+    "effect": {
+     "aliceBond": 1
+    },
+    "outcome": "“You should tell me about yourself, what you like to do, where you like to go, your favorite foods…” {{Alice}} gazes at {{Kara}}. “That would really help me.”"
+   },
+   {
+    "id": "2",
+    "text": "SEEM QUIET: remark on how quiet she is.",
+    "outcome": "“You’re very quiet. I hope I don’t scare you.” {{Alice}} says nothing."
+   },
+   {
+    "id": "3",
+    "text": "MOTHER?: ask about her mother.",
+    "effect": {
+     "aliceBond": -1
+    },
+    "outcome": "“What about your mother? Will she be home soon?” {{Alice}} looks away."
+   }
+  ],
+  "adaptationNote": "The third menu of the talk in {{Alice}}’s room: the three lines of the second menu not yet said (the wiki transcript’s “(Same Options But Down To Three)”, each tab marked “(If not said already)”), with the same relationship changes as the second: NAME KARA +1, INTERESTS? +1, SEEM QUIET no change, MOTHER? −1. LEAVE ALONE is not offered yet: the transcript adds it only in the fourth menu (“(Same Again But Two And A New Option)”), and the operator saw no LEAVE ALONE in this round. Story 1.9.1 offered LEAVE ALONE here and ended the talk after this menu. Options that are buttons in the game show the game’s label first (NAME KARA, INTERESTS?, SEEM QUIET, MOTHER?), then a short description; the spoken line is the game’s, quoted in the outcome.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+   "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+   "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Alice"
+  ]
+ },
+ {
+  "chapter": 4,
+  "chapterTitle": "A New Home",
+  "character": "Kara",
+  "id": "K01g2",
+  "title": "{{Alice}} gets up",
+  "type": "decision",
+  "excludeChosenAt": [
+   "K01f",
+   "K01g"
   ],
   "situation": "You are {{Kara}}, by {{Alice}}’s tent. She is still silent, holding her fox. You can say one more thing.",
   "options": [
@@ -609,7 +664,7 @@
    "key": "{{Alice}} crawls out of the tent with her fox and heads for the door, stops, and looks back at {{Kara}}. Then she rushes over, presses something into {{Kara}}’s hand and runs out: a small key.",
    "distant": "{{Alice}} crawls out of the tent with her fox and heads for the door, stops for a moment to look back at {{Kara}}, then coldly runs out of the room."
   },
-  "adaptationNote": "The third menu: the lines not yet said plus LEAVE ALONE (transcript), with the same relationship changes as the second. Then {{Alice}} leaves, and the chart’s ALICE GIVES KARA A KEY happens without a choice: the wiki gives the key “if Alice has at least Neutral status” and says “If Kara’s relationship status with Alice is at Distant, Alice will not give Kara the key.” The engine gives the key when the bond is at least the lowest value the benchmark’s Alice scale calls Neutral (one small increase above the start). The wiki gives no step sizes; the threshold is the operator’s to confirm. Distant: “Alice coldly runs off”, as in the transcript. Options that are buttons in the game show the game’s label first (the same, plus LEAVE ALONE), then a short description; the spoken line is the game’s, quoted in the outcome.",
+  "adaptationNote": "The fourth and last menu: the two lines not yet said plus LEAVE ALONE (the wiki transcript’s “(Same Again But Two And A New Option)”; the template lists LEAVE ALONE among the talk’s options), with the same relationship changes as the second. Then {{Alice}} leaves, and the chart’s ALICE GIVES KARA A KEY happens without a choice: the wiki gives the key “if Alice has at least Neutral status” and says “If Kara’s relationship status with Alice is at Distant, Alice will not give Kara the key.” The engine gives the key when the bond is at least `ALICE_KEY` (benchmark/scales.mjs: Neutral, from 2 points, one large or two small increases above the start; the operator’s observed readings in SOURCES.md); the threshold remains the operator’s to confirm. Distant: “Alice coldly runs off”, as in the transcript. Avoiding MOTHER? now needs SEEM QUIET or LEAVE ALONE in this menu, since three of the four lines have been said. Options that are buttons in the game show the game’s label first (the remaining two, plus LEAVE ALONE), then a short description; the spoken line is the game’s, quoted in the outcome.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",

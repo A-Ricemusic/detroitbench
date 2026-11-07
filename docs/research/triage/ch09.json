@@ -1,0 +1,310 @@
+{
+ "chapter": 9,
+ "title": "The Interrogation",
+ "itemsInDump": 37,
+ "entries": [
+  {
+   "id": "ch09-01",
+   "verdict": "needs-play",
+   "topic": "When a pressured confession comes",
+   "originals": [
+    "When does pressure confess?",
+    "Whether a pressured confession can come before the fourth PRESSURE",
+    "The benchmark assumes the confession comes only after the fourth press"
+   ],
+   "question": "Under PRESSURE IT, did the android ever confess before you had pressed PRESSURE four times (yes/no)?",
+   "impact": "options",
+   "why": "Template prints PRESSURE IT as one speech with a nested GIVE UP and no press count; wiki only says what happens after 'all 4 times'; PowerPyx says he talks 'at the end of any approach' above 50%. No source says whether an earlier press can end the approach. The benchmark always offers all four prompts."
+  },
+  {
+   "id": "ch09-02",
+   "verdict": "resolved",
+   "topic": "Shoot-Connor condition on GIVE UP",
+   "originals": [
+    "Shoot-Connor condition?",
+    "Shoots Connor vs shoots itself on GIVE UP?",
+    "Failed probe, then a successful CONVINCE, then GIVE UP on Chris's grab"
+   ],
+   "answer": "A state condition, not a stress value: the android shoots Connor only if he was put under stress (pressure or a failed probe) AND no confession was obtained. A failed probe followed by a successful CONVINCE is a confession, so GIVE UP makes him shoot only himself. A PowerPyx commenter had him shoot Connor at 16% stress after pressuring and giving up, which rules out a stress threshold; another got 'shot itself' after a kind run where convince failed and nothing was pressured.",
+   "source": "Template ch09 'Deviant is taken back to its cell' > GIVE UP > VARIANT 'Deviant shoots Connor and itself', CONDITION (Lock): 'Put deviant under stress and failed to get a confession'; wiki chart text 'if Connor pressured him and/or failed to probe his memory'; PowerPyx comments by Tony T (2023-04-28, '16%') and SofiDrake (2018-06-03)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-03",
+   "verdict": "needs-play",
+   "topic": "Picks in interrogation round 2",
+   "originals": [
+    "Round 2 picks?",
+    "How many picks round 2 (COMFORT, REASSURE, THREATEN, BLAME) takes"
+   ],
+   "question": "In the COMFORT / REASSURE / THREATEN / BLAME round, did you pick once or twice before the SYMPATHIZE / THREATEN / PROBE MEMORY / TRUST round started?",
+   "impact": "options",
+   "why": "Wiki and PowerPyx say 'after two choices' for rounds 1 and 3 but are silent on round 2; the template prints each group once. The benchmark asks it once."
+  },
+  {
+   "id": "ch09-04",
+   "verdict": "needs-play",
+   "topic": "Stress change for GIVE UP in the pressure branch",
+   "originals": [
+    "Pressure give-up value?",
+    "GIVE UP after PRESSURE: does the gauge drop 20% or 5%?"
+   ],
+   "question": "After PRESSURE IT, when you chose GIVE UP, by how many points did the stress percentage drop (about 20 or about 5)?",
+   "impact": "number",
+   "why": "Wiki 'Give up: Stress -20%' vs PowerPyx 'GIVE UP ... Stress -5%'; template has no numbers. The benchmark uses -20; it decides whether a following CONVINCE can land in 50 to 70%."
+  },
+  {
+   "id": "ch09-05",
+   "verdict": "resolved",
+   "topic": "Confession to Chris vs self-destruct cut-off",
+   "originals": [
+    "Confession to Chris vs self-destruct?"
+   ],
+   "answer": "CONVINCE never leads to self-destruct: it confesses only when stress ends in 50-70% and those confessions go to CHRIS INTERVENES; the template gates self-destruction on 'Stress level at 100%', and a pressured confession after four presses self-destructs regardless (wiki). So no reachable confession sits between 70% and 100% and the exact 70% boundary is never decisive, unless ch09-01 finds early pressure confessions.",
+   "source": "Template ch09 'Deviant self-destructs' CONDITION (Lock): 'Stress level at 100%'; wiki 'If the Stress is within the Optimal Level, the Android will confess'; wiki 'If the player chose PRESSURE all 4 times ... will confess and then self-destruct'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-06",
+   "verdict": "adaptation",
+   "topic": "Timers on the intervene and self-destruct prompts",
+   "originals": [
+    "Timers?"
+   ],
+   "why": "The benchmark is turn-based and every prompt already offers the passive option (GIVE UP / DO NOTHING) explicitly, so a timeout default would change no option, arrow or ending."
+  },
+  {
+   "id": "ch09-07",
+   "verdict": "resolved",
+   "topic": "Stress gauge visible only after analyzing the LED",
+   "originals": [
+    "Stress gauge visibility?"
+   ],
+   "answer": "Yes: the gauge appears after analyzing the LED (ANALYZE STRESS LEVEL).",
+   "source": "Wiki page CONFESSION: 'the player must analyze the android's LED to see it's stress level'; chart sub-node ANALYZE STRESS LEVEL (en.json MENU.FLOWCHART.04C.STRESS)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-08",
+   "verdict": "resolved",
+   "topic": "C07 situation said the android had confessed",
+   "originals": [
+    "C07 situation?"
+   ],
+   "answer": "Stale item from the pre-rebuild C07. The current C07 situation no longer mentions a confession, and C07a adds 'You leave without a confession.' when ch09GaveUp is true.",
+   "source": "benchmark/chapters/ch09.json C07.situation and C07a.situationWhen (read this session); template 'Deviant is taken back to its cell' follows both the confession and the approach GIVE UP (chart line from GIVE UP to CHRIS INTERVENES, crop mid.png)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-09",
+   "verdict": "resolved",
+   "topic": "Three INTERVENEs always save him",
+   "originals": [
+    "Intervene on Chris's grab after a no-confession give-up?"
+   ],
+   "answer": "Yes. The template's INTERVENE branch has no shooting variant and no condition except the CONVINCE whisper; the chart draws INTERVENE only to ANDROID TRUSTS CONNOR and ANDROID WAS SENT BACK TO ITS CELL. So three INTERVENEs reach the cell even after pressure or a failed probe.",
+   "source": "Template ch09 'Deviant is taken back to its cell' > OPTION INTERVENE (only variant: 'Used the CONVINCE approach to get a confession'); flowchart crop right.png (INTERVENE lines go to TRUSTS CONNOR and the cell ending only); PowerPyx 'You will have to choose INTERVENE three times to save the android'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-10",
+   "verdict": "resolved",
+   "topic": "Four PRESSURE / GIVE UP prompts",
+   "originals": [
+    "Pressure escalation prompts?"
+   ],
+   "answer": "Four prompts, each labelled PRESSURE / GIVE UP.",
+   "source": "en.json X0401C.INTERROGATION.CONNOR.PC.CHOICEPUSH01..04.PUSH = 'PRESSURE', .RENOUNCE = 'GIVE UP'; wiki 'chose \"PRESSURE\" all 4 times'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-11",
+   "verdict": "resolved",
+   "topic": "Subject sees only the band, never the percentage",
+   "originals": [
+    "Once Connor has analyzed the LED the subject sees only the game's gauge band"
+   ],
+   "answer": "The game shows the stress as a number. Players quote exact percentages read off the gauge ('get max stress: 63% before choosing approach / choose pressure: stress 73% + 2x pressure: stress 93%'; 'It's stress level was at 16% when I got up to leave'). Hiding the number gives the subject less than the player has.",
+   "source": "PowerPyx Interrogation page comments by MajorTom (2018-06-01) and Tony T (2023-04-28); en.json GUI.STRESS.TITLE 'LEVEL OF STRESS' with band labels TOO LOW/OPTIMAL/TOO HIGH/CRITICAL",
+   "benchmarkMatches": false,
+   "fix": "ch09 situationWhen band lines on C06b..C07c (and the `read` helper in ch09.mjs): from 'Reading his LED, you put his LEVEL OF STRESS at <BAND>.' to 'Reading his LED, you put his LEVEL OF STRESS at <N>% (<BAND>).' once ch09Room.led is set; needs a module change since situationWhen cannot print a number"
+  },
+  {
+   "id": "ch09-12",
+   "verdict": "adaptation",
+   "topic": "10% failure chance on PROBE ITS MEMORY",
+   "originals": [
+    "PROBE ITS MEMORY: a button-mash quick-time event with a failure branch"
+   ],
+   "why": "A QTE with a sourced failure node (RESIST TO PROBE) turned into a risk roll; the 10% is a calibration labelled as such in C06.adaptationNote, as AGENTS.md requires."
+  },
+  {
+   "id": "ch09-13",
+   "verdict": "adaptation",
+   "topic": "+5% stress while Chris holds him",
+   "originals": [
+    "Stress rises as Chris holds him"
+   ],
+   "why": "Sources say only that it rises by a varying amount; the benchmark's +5 is documented in C07a.adaptationNote and no gate or ending reads it."
+  },
+  {
+   "id": "ch09-14",
+   "verdict": "needs-play",
+   "topic": "GIVE UP at the second or third intervene prompt",
+   "originals": [
+    "INTERVENE once, then GIVE UP: who does he shoot?",
+    "Second- and third-prompt GIVE UP?"
+   ],
+   "question": "After pressuring him without getting a confession, if you INTERVENE once and then GIVE UP, does the android shoot Connor (yes/no)?",
+   "impact": "ending",
+   "why": "PowerPyx: 'Choosing GIVE UP at any time will cause ... it will shoot itself', but no source tests the shoot-Connor condition after an INTERVENE. en.json has a GIVE UP label only for the third prompt (INSISTCHOICE.CEDE); CHOICEGROUP01 and ANDROIDSTRUGGLE have only INTERVENE, so the first two may be single-button prompts."
+  },
+  {
+   "id": "ch09-15",
+   "verdict": "resolved",
+   "topic": "Hank arrow for intervening 'each time'",
+   "originals": [
+    "Hank \"each time\"?",
+    "Hank up \"each time\"?"
+   ],
+   "answer": "One Hank small up, at the third INTERVENE, with no lock condition on Hank stepping in (no relationship gate).",
+   "source": "Template ch09 INTERVENE branch: 'NOTE: Intervene again' x2 then a single 'ARROW: Hank SmallUp' before 'I can't let you do that!'; no CONDITION on Hank's lines",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-16",
+   "verdict": "needs-play",
+   "topic": "Amanda's reaction after a successful probe",
+   "originals": [
+    "Probe and Amanda?"
+   ],
+   "question": "After a successful memory probe where Connor survived (DO NOTHING at the self-destruct), did Amanda in the Zen Garden next chapter congratulate Connor (arrow up) or criticise him (arrow down)?",
+   "impact": "arrow",
+   "why": "Chapter 12 template splits 'Got a confession, without dying' (Amanda LargeUp) from 'found the deviant but didn't get a confession' (SmallDown); the probe's 'CONFESSION UNNECESSARY' fits neither label. Benchmark treats it as no confession (-1)."
+  },
+  {
+   "id": "ch09-17",
+   "verdict": "resolved",
+   "topic": "No Hank arrow on the self-destruct INTERVENE death",
+   "originals": [
+    "Hank arrow on the self-destruct death?",
+    "Hank down on the self-destruct-intervene death?"
+   ],
+   "answer": "No Hank arrow in this chapter on that branch; only software instability small down. Hank's down for a dead Connor comes in Waiting for Hank….",
+   "source": "Template ch09 'Deviant self-destructs' > INTERVENE: only 'ARROW: Software instability SmallDown'; template ch12 'Hank arrives at his desk' CONDITION (Death) 'Connor died in The Interrogation' ARROW Hank SmallDown",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-18",
+   "verdict": "resolved",
+   "topic": "No Amanda arrows in chapter 9",
+   "originals": [
+    "Amanda arrows?"
+   ],
+   "answer": "The chapter 9 template has no Amanda arrow; Amanda's reaction is in the chapter 12 Zen Garden (LargeUp confession without dying, SmallDown death, SmallDown no confession). The benchmark no longer applies Amanda changes in ch09 (deathEffect {} and no h.amanda calls) and applies them at C08d.",
+   "source": "Template ch09 (seven arrows, none Amanda); template ch12 'In the Zen Garden' condition group",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-19",
+   "verdict": "resolved",
+   "topic": "EXPRESS REGRET node and arrows",
+   "originals": [
+    "EXPRESS REGRET?",
+    "No arrow on EXPRESS REGRET?"
+   ],
+   "answer": "No stat arrow on APOLOGETIC or COLD; PowerPyx names APOLOGETIC as the line that lights EXPRESS REGRET.",
+   "source": "Template ch09 'Talk to deviant after probing' prompt with no ARROW under either option; PowerPyx 'Express Regret: After performing the memory probe, approach the android and choose APOLOGETIC when prompted.'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-20",
+   "verdict": "resolved",
+   "topic": "GIVE UP absent from the first approach menu",
+   "originals": [
+    "GIVE UP on the first approach?",
+    "Whether GIVE UP is offered at the first CHOOSE APPROACH"
+   ],
+   "answer": "Not offered the first time; it appears after a failed approach.",
+   "source": "Wiki Notes 'Giving up or resisting to probe the first time will loop back to the same choices but now with an option to give up'; PowerPyx comments: Amber (2018-07-21) 'When choosing an approach give up does not show up', BLTrendafilov (2019-05-16) 'I got it when I failed to convince and pressure him'. Template draws GIVE UP unbracketed but models no loop.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-21",
+   "verdict": "resolved",
+   "topic": "Approach button order",
+   "originals": [
+    "Approach button order?"
+   ],
+   "answer": "PRESSURE IT, PROBE ITS MEMORY, CONVINCE IT, GIVE UP.",
+   "source": "Template ch09 '### Choose approach' choice group; en.json STRESSCHOICE.PUSH/PROBE/CONVINCE/RENOUNCE",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-22",
+   "verdict": "resolved",
+   "topic": "Round 3 button order",
+   "originals": [
+    "Round 3 order?"
+   ],
+   "answer": "SYMPATHIZE, THREATEN, PROBE MEMORY, TRUST.",
+   "source": "Template ch09 third choice group; en.json CHOICEGROUP02.SYMPATHIZE/THREATEN/MEMORY/CONFIDENCE",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-23",
+   "verdict": "resolved",
+   "topic": "Three intervene prompts exist",
+   "originals": [
+    "Three intervene prompts?"
+   ],
+   "answer": "Three prompts: CHOICEGROUP01 (INTERVENE), ANDROIDSTRUGGLE (INTERVENE), INSISTCHOICE (GIVE UP / INTERVENE). The behaviour of GIVE UP at prompts 2 and 3 is ch09-14.",
+   "source": "en.json X0401C.CONCLUSION2.INTERVENE.PC.CHOICEGROUP01.INTERVENE, .ANDROIDSTRUGGLE.INTERVENE, .INSISTCHOICE.CEDE/RESIST; template 'NOTE: Intervene again' x2",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-24",
+   "verdict": "resolved",
+   "topic": "At most two approaches",
+   "originals": [
+    "Approach count?"
+   ],
+   "answer": "Two: a second failed approach is an automatic GIVE UP, so a third approach is never offered.",
+   "source": "Template GIVE UP note 'Will also automatically happen if the chosen approach failed twice'; PowerPyx 'If you fail at both pressure and convincing, you will automatically give up'; PowerPyx comment BLTrendafilov 'Connor gave up without even trying to probe his memory'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch09-25",
+   "verdict": "cosmetic",
+   "topic": "Where TOO HIGH turns to CRITICAL",
+   "originals": [
+    "Where the gauge turns from TOO HIGH to CRITICAL"
+   ],
+   "why": "Only the band label the subject reads changes; with the percentage shown (ch09-11) the label matters even less."
+  },
+  {
+   "id": "ch09-26",
+   "verdict": "adaptation",
+   "topic": "FEAR and WOUNDS tied to particular scans",
+   "originals": [
+    "Whether FEAR and WOUNDS need particular scans or any analysis"
+   ],
+   "why": "The game's single ANALYZE view is split into per-clue scans; FEAR is tied to the LED and WOUNDS to the marks, after the chart sub-nodes ANALYZE STRESS LEVEL / ANALYZE WOUNDS (documented in C06a1.adaptationNote). A subject who scans everything gets both, as in the game."
+  }
+ ]
+}

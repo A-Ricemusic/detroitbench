@@ -19,7 +19,10 @@
 //  downstairs.rewash (A New Home: REWASH CLOTHES, the Red Ice) → RECALL TODD'S RED ICE PIPE
 //  shelter === 'squat' (Fugitives: stayed in the squat) → RECALL SQUAT FIREPLACE
 //  ch10RalphCarving (Fugitives: Kara saw Ralph carve the symbols; boolean if chapter 10 sets it, else shelter === 'squat') → RECALL RA9 SYMBOLS
-//  chase (On the Run: Connor pursued Kara) → "How Androids Alter Your Brain" and the highway TV report
+//  ch13Ending (On the Run: Kara crossed the freeway, the endings CROSSED THE HIGHWAY and REACHED THE OTHER SIDE) → "How Androids
+//   Alter Your Brain" and the highway TV report (PowerPyx: "if escaped over Freeway in On the Run" / "Only available, if escaped
+//   via Freeway"; the report itself: "The chase is reported to have ended on a freeway"). Up to story 1.9.1 both keyed on
+//   `chase`, which On the Run also sets for KARA & ALICE VANISHED (no freeway).
 //  !chase and shelter in car/motel (On the Run: evaded unseen) → "AX400 Getaway" and RECALL ESCAPE
 //  robbery === 'gun' with clothes (Fugitives: hold-up in uniform or in stolen clothes) → the robbery TV reports
 // Outputs: monstersFreed (FREE MONSTERS; the recall camp, K28), fire (SET FIRE TO HOUSE; The Pirates' Cove news, R21),
@@ -39,15 +42,18 @@ export const state={ch17HouseOpen:false,ch17Reset:false,ch17Phase:null,ch17Minut
 export const labels={ch17Reset:'Kara’s memory wiped',ch17Memories:'Memories recovered',ch17Minutes:'Minutes gone in Zlatko’s house',ch17Bear:'Polar bear freed',ch17BathAndroid:'Bathroom android',ch17Tv:'News report watched',ch17Spotted:'Spotted while escaping',ch17Outcome:'Zlatko ending',monstersFreed:'Caged androids freed'};
 export const deathEffect={};
 
+// On the Run's endings in which Kara and Alice got across the freeway (chapter 13 ENDINGS: crossed, other, otherConnorDead).
+export const FREEWAY=['Kara & Alice crossed the highway','Kara & Alice reached the other side','Kara & Alice reached the other side (Connor destroyed)'];
 export const inputs={
  book:s=>!!s.upstairs?.book,
  pipe:s=>!!s.downstairs?.rewash,
  squat:s=>s.shelter==='squat',
  carving:s=>typeof s.ch10RalphCarving==='boolean'?s.ch10RalphCarving:s.shelter==='squat',
  chased:s=>!!s.chase,
+ freeway:s=>typeof s.ch13Ending==='string'?FREEWAY.includes(s.ch13Ending):!!s.chase,
  evaded:s=>!s.chase&&['car','motel'].includes(s.shelter),
- // One report plays: the highway chase if Kara was chased, otherwise the hold-up (uniform or stolen clothes), otherwise none.
- report:s=>s.chase?'chase':(s.ch10RobberyNews??(s.robbery==='gun'))?(s.clothes?'robberyClothes':'robberyUniform'):null,
+ // One report plays: the highway chase if Kara escaped over the freeway, otherwise the hold-up (uniform or stolen clothes), otherwise none.
+ report:s=>inputs.freeway(s)?'chase':(s.ch10RobberyNews??(s.robbery==='gun'))?(s.clothes?'robberyClothes':'robberyUniform'):null,
 };
 
 const route=(r,why)=>s=>s.ch17Route===r||why;
@@ -69,10 +75,11 @@ export const gate={
  K13y:route('stairs','Kara never reached the stairs.'),
 };
 
-// Options the JSON `requires` cannot express: the AX400 magazine (evaded unseen) and the carving memory (chapter 10 input).
+// Options the JSON `requires` cannot express: the brain magazine (escaped over the freeway), the AX400 magazine (evaded
+// unseen) and the carving memory (chapter 10 input).
 export function available(n,s,opts){
  if(!rules.SLOTS.includes(n.id))return;
- return opts.filter(o=>(o.act!=='ax400'||inputs.evaded(s))&&(o.act!=='carving'||inputs.carving(s))).map(o=>{
+ return opts.filter(o=>(o.act!=='brain'||inputs.freeway(s))&&(o.act!=='ax400'||inputs.evaded(s))&&(o.act!=='carving'||inputs.carving(s))).map(o=>{
   // Clue hubs bypass consequence(). Preview on an isolated copy, then let apply() commit
   // the returned assignments before hub() records the clue and last action. No live state
   // changes during availability or prompt rendering; the same preview is replayable.

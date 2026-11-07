@@ -92,7 +92,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Every prompt label and order, from the template: BATH? / HUNGRY? / TIRED?; CAN’T STAY HERE / FAMILY / CONTACT ANDROID; MOVING / DETERMINED / COMFORTING / SUPPORTIVE; RATIONAL / DIPLOMATIC / DIRECT; SIT / REFUSE twice; [CHECK GUN] / WORRIED / EXPLAIN / AGREE; LIE / TRUTH; [ASK ABOUT CORPSE] / [INSIST ABOUT CORPSE] / THREATEN / BLUFF / FAMILY; AX400 / DEVIANTS / REASSURE / BLUE BLOOD (/ PRESSURIZE); GO / GIVE UP. The hair colors and STEAL / PUT BACK are from the chart and the string table.</li>
 <li>The scan of Ralph (PROCESSING LED, MODEL WR600 - Gardener, BURN MARK) and both TV reports are quoted from the game’s text. Neither report mentions Alice.</li>
 <li>THREATEN is always offered: with the knife on the table, or the gun if Kara has it (template variants, the Ralph page). It is this threat that makes Ralph tell Connor “She ran out the back door!”.</li>
-<li>Ralph defends Kara only if Connor checks under the stairs; that is what lets him return in Battle for Detroit (<code>ralphDefended</code>).</li>
+<li>Ralph defends Kara only if Connor checks under the stairs (<code>ralphDefended</code>). The wiki says that is what lets him return in Battle for Detroit, but the camp template’s lock is only “Met Ralph in Fugitives”, which story 1.9.2 follows.</li>
 </ul>
 
 <h2 id="differs">4 · Adapted or not in the sources</h2>
@@ -101,7 +101,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Gameplay checks with a failure branch on the chart are risk rolls: the street sneak (0.25), the run to the fence (0.2), Kara’s three crossings and the fight (0.1 each), Connor’s two (0.2 each). All values are unsourced. Experienced difficulty is modelled.</li>
 <li>Connor’s search: Hank calls after three empty looks and orders Connor out after the fifth. PowerPyx only says “if you wait for a long time”.</li>
 <li>CHANGE CHANNEL is unavoidable (no bypass edge on the chart), so the motel start always costs public opinion.</li>
-<li>[CHECK GUN] is shown whenever Kara started with the gun. If she left it upstairs, the outcome says so. This follows PowerPyx and the wiki over the template’s “didn’t forget it upstairs”.</li>
+<li>[CHECK GUN] is shown when Kara started with the gun and refused to sit twice (RALPH THREATENS ALICE; the wiki: “Kara must refuse both times”, and two PowerPyx readers; story 1.9.2). If she left the gun upstairs, the outcome says so. This follows PowerPyx and the wiki over the template’s “didn’t forget it upstairs”.</li>
 <li>TRY TO CONVINCE RALPH is read as FAMILY: only FAMILY and INSIST lead to the apology in the template. PowerPyx calls it BLUFF.</li>
 <li>LEAVE THE SQUAT (string table) fills the chart’s unlabelled box between the search and SQUAT ANDROID DISAPPEARS.</li>
 <li>Not built: the cut prompt REASSURING / ANALYTICAL / VULNERABLE / SINCERE; the string table’s unplaced FEEL? button; the hair CHANGE / FINISH retry; Hank’s line after a quiet escape in the car row. The leaflet’s text is unknown.</li>
@@ -118,14 +118,14 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>KARA &amp; ALICE REACHED THE OTHER SIDE (Connor destroyed)</td><td><code>K09e2</code></td><td>GO, then CAR HITS CONNOR and Kara makes the last lanes; or the fight won and CONNOR HIT BY CAR.</td></tr>
 <tr><td>KARA &amp; ALICE DIED ON THE HIGHWAY</td><td>Failed Kara roll; <code>C09d</code></td><td>Any failed Kara crossing or the fight. Kara’s storyline ends (<code>kara</code>, <code>alice</code> false).</td></tr>
 </tbody></table></div>
-<p class="fine">State written for later chapters: <code>chase</code> (Jericho’s magazine, Zlatko’s TV), <code>ch13ConnorObeyed</code> (The Nest’s [HIGHWAY]), <code>ch13ConnorDied</code> (The Nest’s HANK INSULTS CONNOR), <code>ralphDefended</code> / <code>ralphHostile</code> (the camp), <code>clothes</code>, <code>gun</code>, <code>money</code>, <code>ch13Hair</code>, <code>ch13Gun</code>, <code>ch13Ending</code>.</p>
+<p class="fine">State written for later chapters: <code>chase</code> (Jericho’s magazine), <code>ch13Ending</code> (Zlatko’s chase report and brain magazine, freeway endings only), <code>ch13ConnorObeyed</code> (The Nest’s [HIGHWAY]), <code>ch13ConnorDied</code> (The Nest’s HANK INSULTS CONNOR), <code>ralphDefended</code> (recorded; no longer read) / <code>ralphHostile</code> (the camp), <code>clothes</code>, <code>gun</code>, <code>money</code>, <code>ch13Hair</code>, <code>ch13Gun</code>, <code>ch13Ending</code>.</p>
 
 <h2 id="check">6 · What to check when you replay</h2>
 <ul class="check">
 <li>Does any Hank or instability arrow show at the motel’s “You wait in the car.”, at GIVE UP / GO, and when Connor is hit? The template shows none; the wiki shows all of them.</li>
 <li>Does the direct TALK TO ALICE → EXPLORE MOTEL ROOM → CHANGE CHANNEL route allow leaving without the bath and haircut? The benchmark permits it from the chart; check whether the game forces the haircut elsewhere.</li>
 <li>Is CHANGE CHANNEL avoidable? Can Kara leave the motel without it?</li>
-<li>Is [CHECK GUN] shown when the gun was forgotten upstairs? Does it need two refusals?</li>
+<li>Settled from the wiki and PowerPyx (story 1.9.2): [CHECK GUN] is shown when the gun was forgotten upstairs, and it needs two refusals.</li>
 <li>Which table line is TRY TO CONVINCE RALPH on the chart: FAMILY or BLUFF? Does BLUFF bring the menu back?</li>
 <li>What is the red-padlock box between INVESTIGATE SQUAT GROUND FLOOR and SQUAT ANDROID DISAPPEARS? Is it LEAVE THE SQUAT?</li>
 <li>How many looks around the squat before Hank calls, and before he orders Connor out?</li>

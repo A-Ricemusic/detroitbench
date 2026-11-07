@@ -22,6 +22,9 @@ export function modelColors(runs){const out={},used=new Set();const byLab=runs.r
  labs.forEach((lab,li)=>{const slots=li===0?WARM:li===1?COOL:[];[...new Set(byLab[lab].map(r=>r.displayName))].sort((a,b)=>a.localeCompare(b)).forEach((n,i)=>{const s=slots[i];if(s&&!used.has(s)){out[n]=`var(--series-${s})`;used.add(s)}else pending.push(n)})});
  for(const n of pending){const s=[1,2,3,4,5,6,7,8].find(x=>!used.has(x));out[n]=s?`var(--series-${s})`:'var(--chart-dim)';if(s)used.add(s)}
  return out}
+// A stable number per model, in the order models first entered the library (earliest run first), so adding a
+// model never renumbers the others. Charts draw it beside each marker and the numbered legends repeat it.
+export function modelNumbers(runs){const first=new Map;for(const r of [...runs].sort((a,b)=>String(a.createdAt??'').localeCompare(String(b.createdAt??''))||a.id.localeCompare(b.id)))if(!first.has(r.displayName))first.set(r.displayName,first.size+1);return Object.fromEntries(first)}
 export const shortName=n=>n.replace(/^Claude /,'').replace(/^GPT-6(\.\d+)? /,'');
 // Typographic apostrophes and quotes for story text, which arrives with straight ASCII quotes.
 export const tidy=s=>typeof s==='string'?s.replace(/(\w)'(\w)/g,'$1’$2').replace(/"([^"]*)"/g,'“$1”'):s;

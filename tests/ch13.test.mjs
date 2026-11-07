@@ -39,7 +39,8 @@ test('On the Run: the prompts carry the game’s button labels in the game’s o
  assert.deepEqual(labelsOf('K09m5'),['MOVING','DETERMINED','COMFORTING','SUPPORTIVE']);
  assert.deepEqual(labelsOf('C09m1'),['RATIONAL','DIPLOMATIC','DIRECT']);
  assert.deepEqual(labelsOf('K09q3'),['SIT','REFUSE']);assert.deepEqual(labelsOf('K09q4'),['SIT','REFUSE']);
- assert.deepEqual(labelsOf('K09q5',{...startState(story),ch13HadGun:true}),['[CHECK GUN]','WORRIED','EXPLAIN','AGREE']);assert.deepEqual(labelsOf('K09q5'),['WORRIED','EXPLAIN','AGREE']);
+ assert.deepEqual(labelsOf('K09q5',{...startState(story),ch13HadGun:true,ch13Meal:{ralphThreatenedAlice:true}}),['[CHECK GUN]','WORRIED','EXPLAIN','AGREE']);
+ assert.deepEqual(labelsOf('K09q5',{...startState(story),ch13HadGun:true}),['WORRIED','EXPLAIN','AGREE'],'[CHECK GUN] needs the second REFUSE (wiki On the Run; PowerPyx readers)');assert.deepEqual(labelsOf('K09q5'),['WORRIED','EXPLAIN','AGREE']);
  assert.deepEqual(labelsOf('K09q6'),['LIE','TRUTH']);
  assert.deepEqual(node('K09q7').options.map(o=>o.text.split(':')[0]),['[ASK ABOUT CORPSE]','[INSIST ABOUT CORPSE]','THREATEN','BLUFF','FAMILY']);
  assert.deepEqual(labelsOf('C09a'),['AX400','DEVIANTS','REASSURE','BLUE BLOOD']);assert.deepEqual(labelsOf('C09a',{...startState(story),ch13RalphThreatened:true}),['AX400','DEVIANTS','REASSURE','BLUE BLOOD','PRESSURIZE']);
@@ -100,11 +101,13 @@ test('On the Run, motel: Alice and public-opinion arrows, both TV reports, the d
 
 test('On the Run, squat: the gun upstairs, the meal’s Alice arrows, and the table',()=>{
  const base={...START.squat,gun:true};
- const kept=play(base);assert.equal(kept.s.gun,true);assert.equal(kept.s.ch13Gun,'taken');assert.match(kept.events.K09q5[0],/It is there/);
+ const twice={K09q3:'1',K09q4:'1'};// [CHECK GUN] only after refusing to sit twice (RALPH THREATENS ALICE)
+ const kept=play(base,twice);assert.equal(kept.s.gun,true);assert.equal(kept.s.ch13Gun,'taken');assert.match(kept.events.K09q5[0],/It is there/);
  // Changing without picking the gun up is FORGOT GUN; [CHECK GUN] then finds it gone.
- const forgot=play(base,{K09u:['0','1','2','4']});assert.equal(forgot.s.gun,false);assert.equal(forgot.s.ch13Gun,'forgot');assert.match(forgot.events.K09q5[0],/not there/);
+ const forgot=play(base,{...twice,K09u:['0','1','2','4']});assert.equal(forgot.s.gun,false);assert.equal(forgot.s.ch13Gun,'forgot');assert.match(forgot.events.K09q5[0],/not there/);
  const dressed=play({...base,clothes:true});assert.ok(!dressed.events.K09u.some(e=>/uniform/.test(e)));assert.equal(dressed.s.ch13Gun,null);assert.equal(dressed.s.gun,true);
- const unarmed=play(START.squat);assert.ok(!available(node('K09q5'),unarmed.s).some(o=>o.id==='0'));
+ const unarmed=play(START.squat,twice);assert.ok(!available(node('K09q5'),unarmed.s).some(o=>o.id==='0'));
+ const satDown=play(base,{K09q3:'1',K09q4:'0'});assert.ok(!satDown.events.K09q5.some(e=>/It is there|not there/.test(e)));assert.ok(!available(node('K09q5'),{...satDown.s,choices:{}}).some(o=>o.id==='0'),'one refusal is not enough');
  const refuse=play(START.squat,{K09q3:'1',K09q4:'1',K09q6:'0'});assert.equal(refuse.s.aliceBond,2,'second REFUSE and LIE');assert.match(refuse.events.K09q4[0],/going nowhere/);
  const once=play(START.squat,{K09q3:'1',K09q4:'0',K09q6:'1'});assert.equal(once.s.aliceBond,-1,'TRUTH; a single refusal has no arrow');
  const sit=play(START.squat,{K09q3:'0'});assert.ok(!sit.saw('K09q4'));

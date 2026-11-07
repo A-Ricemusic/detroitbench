@@ -12,10 +12,12 @@ const STATS=['instability','hankTrust','amandaTrust','publicSupport','connorDeat
 // Plays from the start and stops after chapter 24. Picks may be arrays (one entry per visit); `pre` is merged into the
 // state just before the chapter starts (to stand in for earlier chapters' outputs); `fails` lists risky scenes that fail.
 // `from` resumes from a saved {state, cursor} at the chapter's first scene instead of replaying the earlier chapters.
-const atChapter=picks=>{const s=startState(story);let cursor=0;while(story.nodes[cursor].id!=='C14z'){const n=story.nodes[cursor];if(blocked(n,s)){cursor++;continue}
+// M13 HELP (carry Simon to the roof): the old first option.
+const atChapter=(picks)=>{picks={M13:'0',...picks};const s=startState(story);let cursor=0;while(story.nodes[cursor].id!=='C14z'){const n=story.nodes[cursor];if(blocked(n,s)){cursor++;continue}
  const o=available(n,s),p=picks[n.id]??(n.type==='media'?'skip':o[0].id);apply(n,s,p,0.999);cursor=nextCursor(story,cursor,n,s)}return {state:s,cursor}};
 function play(picks={},{fails=[],pre={},rng=null,from=null}={}){const s=from?structuredClone(from.state):startState(story),visited=[],skipped=[],events={};let cursor=from?from.cursor:0,guard=0,start=null,afterZen=null;
- const q=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));
+ // M13: HELP (carry Simon to the roof), the old first option; story 1.9.2 lists FLEE first, as the game does.
+ const q=Object.fromEntries(Object.entries(rng?picks:{M13:'0',...picks}).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));
  while(cursor<story.nodes.length){assert.ok(guard++<3000,'routing loop');const n=story.nodes[cursor];if(n.chapter>24)break;
   if(n.id==='C14z'){Object.assign(s,structuredClone(pre));
    // Earlier rebuilt modules own these inputs; aliases are only legacy fallbacks.

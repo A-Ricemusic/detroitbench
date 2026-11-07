@@ -1,0 +1,388 @@
+{
+ "chapter": 29,
+ "title": "Last Chance, Connor",
+ "itemsInDump": 65,
+ "entries": [
+  {
+   "id": "ch29-01",
+   "verdict": "needs-play",
+   "topic": "Which bodies make SUFFICIENT EVIDENCE",
+   "originals": [
+    "Exact SUFFICIENT EVIDENCE test?",
+    "Which bodies alone give SUFFICIENT EVIDENCE, and whether Carlos' android alone does?"
+   ],
+   "question": "With Carlos' android dead but Rupert escaped, the Tracis spared, Simon alive and the Stratford deviant escaped, did Fowler's office lead to the evidence room (yes) or straight to decommissioning (no)?",
+   "impact": "ending",
+   "why": "PowerPyx (pp.txt lines 39/43) counts any deviant body, so Carlos' body alone is sufficient although it opens no route; two PowerPyx readers (Tereza: Simon's memory seen yet 'straight for deactivation') contradict; template and chart are silent on the test"
+  },
+  {
+   "id": "ch29-02",
+   "verdict": "needs-play",
+   "topic": "Hostile Hank resigns on the Kamski and insufficient routes",
+   "originals": [
+    "Where the Hostile resignation happens?",
+    "A Hostile Hank resigns only on the evidence route (the chart)...",
+    "Kamski route with a Hostile Hank?",
+    "Whether a Hostile Hank resigns on the Kamski route and on the insufficient route?"
+   ],
+   "question": "With Hank Hostile and Connor holding Kamski's Jericho key, did Hank hand in his badge and gun in Fowler's office (yes/no)?",
+   "impact": "gate",
+   "why": "chart (lcc-2.jpg) draws HANK RESIGNS AND LEAVES only off the SUFFICIENT EVIDENCE group; the template files the resignation in Fowler's office before the route split and the Connor wiki (line 124) says Connor talks to Hank on the Kamski route 'unless Hank quit the force'; decides hankResigned for Night of the Soul"
+  },
+  {
+   "id": "ch29-03",
+   "verdict": "needs-play",
+   "topic": "Zen Garden on insufficient evidence",
+   "originals": [
+    "Zen Garden skipped?",
+    "The Amanda talk is always offered, as the chart draws it...",
+    "How many questions Amanda allows, and whether the garden is skipped on insufficient (second half)"
+   ],
+   "question": "On a save with insufficient evidence, did the chapter open in the frozen Zen Garden with Amanda (yes) or straight in Fowler's office (no)?",
+   "impact": "options",
+   "why": "wiki Notes line 159 and a PowerPyx reader ('Connor opens his eyes in the office') say skipped; template and chart (START -> TALK TO AMANDA) show no condition; the reliability log treats wiki prose on gating as a hypothesis"
+  },
+  {
+   "id": "ch29-04",
+   "verdict": "needs-play",
+   "topic": "Evidence-room time limit",
+   "originals": [
+    "Timers?",
+    "The archive's time budget (twelve actions) and the cost of answering Gavin...",
+    "The timer is an action budget: twelve actions...",
+    "How long the archive gives, and whether answering Gavin, wrong passwords or recordings cost time?"
+   ],
+   "question": "In the evidence archive, about how many minutes passed before OUT OF TIME if you just stood still (upstairs PowerPyx says about 6)?",
+   "impact": "number",
+   "why": "no source gives the archive limit (no GUI.TIMER string; IGN only 'a few minutes'); the 12-action budget is the benchmark's calibration"
+  },
+  {
+   "id": "ch29-05",
+   "verdict": "needs-play",
+   "topic": "Gavin fight QTE tolerance",
+   "originals": [
+    "Gavin fight QTE?",
+    "How many QTE prompts the Gavin fight has and how many misses lose it?",
+    "The map link (0.2) and the Gavin fight (0.25) are rolls with unsourced odds (Gavin half)",
+    "The fight is a quick-time sequence in the game, so it is a roll (risk 0.25...)"
+   ],
+   "question": "In the archive fight with Gavin, does missing a single QTE prompt lose the fight (yes), or can you miss one or two and still win (no)?",
+   "impact": "number",
+   "why": "wiki: failing the first QTE only wounds Connor; PowerPyx: win by pressing '(most of)' the sequences; no prompt count or odds anywhere; risk 0.25 is a calibration"
+  },
+  {
+   "id": "ch29-06",
+   "verdict": "needs-play",
+   "topic": "What the statue map can be linked to",
+   "originals": [
+    "What links the statue map?",
+    "The map links only to the Jericho tablet, the template's one link; readers say a reactivated memory also works."
+   ],
+   "question": "With the statue map but no Jericho tablet, could you link the map to a reactivated android's memory (e.g. Rupert's) and locate Jericho (yes/no)?",
+   "impact": "options",
+   "why": "template has only the tablet link step and PowerPyx names the tablet; the wiki WR400 page (line 40) and readers say a reactivated memory also cross-references; matters only when Rupert's body is present without the diary"
+  },
+  {
+   "id": "ch29-07",
+   "verdict": "resolved",
+   "topic": "Hank 'Each time you died' threshold",
+   "originals": [
+    "Hank death-count line?",
+    "Hank death-count threshold?",
+    "The Hank death-count threshold for 'Each time you died' (once or twice)?"
+   ],
+   "answer": "Died at least once (and never saved Hank).",
+   "source": "template /tmp/dbt/ch29.txt: 'IF: Connor never saved Hank and died at least once'; reliability log: prefer the template's primary condition over wiki prose ('died at least two times')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-08",
+   "verdict": "resolved",
+   "topic": "Gavin prompt and fight placement",
+   "originals": [
+    "Gavin prompt missing?",
+    "the Gavin options (ANSWER -> IRONIC / LOW PROFILE / CALM, LEAVE)"
+   ],
+   "answer": "ANSWER (IRONIC / LOW PROFILE / CALM) or LEAVE at the basement stairs; the fight comes only after Located Jericho for IRONIC or LEAVE; no pre-archive death",
+   "source": "template [SECTION basement] prompt and [SECTION jericho-found] 'IF: Connor chose IRONIC or LEAVE when stopped by Gavin'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-09",
+   "verdict": "resolved",
+   "topic": "LOW PROFILE convinces Gavin",
+   "originals": [
+    "Which choices count as ANSWER CALMLY?",
+    "LOW PROFILE and Gavin?"
+   ],
+   "answer": "LOW PROFILE and CALM both convince Gavin; only IRONIC and LEAVE bring him back",
+   "source": "template 'IF: Connor chose IRONIC or LEAVE when stopped by Gavin'; Gavin_Reed wiki line 74 ('low profile' or 'calm' satisfies him); PowerPyx reader Ben G ('answering low key also makes Gavin convinced')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-10",
+   "verdict": "resolved",
+   "topic": "Map link roll and archive route risks",
+   "originals": [
+    "C20 risks and failure texts?",
+    "The map link (0.2) and the Gavin fight (0.25) are rolls with unsourced odds (map half)",
+    "The map link is a roll (risk 0.2, unsourced); its failure is the chart's UNABLE TO LINK MAP..."
+   ],
+   "answer": "Routes are deterministic. UNABLE TO LINK MAP TO OTHER EVIDENCE is reached by breaking the statue and letting the time run out, not by a failed link; the old route risks are gone but the map link still rolls 0.2",
+   "source": "PowerPyx pp.txt line 145 ('Break the statue and wait for time to run out'), reader comment on patch 1.05; template timeout section is the only failure",
+   "benchmarkMatches": false,
+   "fix": "C20 option 18 (LINK MAP TO OTHER EVIDENCE): remove risk 0.2 and the fail branch in ch29.mjs room() linkMap; UNABLE TO LINK stays recorded via the timeout path (mapUnlinked when d.map and time runs out)"
+  },
+  {
+   "id": "ch29-11",
+   "verdict": "resolved",
+   "topic": "No arrow on Connor's deaths in this chapter",
+   "originals": [
+    "connorDies arrows?"
+   ],
+   "answer": "No stat change on the Gavin death or either decommission",
+   "source": "template [SECTION jericho-found]/'Lose the fight' and [SECTION timeout] carry no ARROW; wiki Notes 'Gavin killing Connor oddly has no affect on Connor's software instability'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-12",
+   "verdict": "resolved",
+   "topic": "Zen Garden and desk arrows (wiki vs template)",
+   "originals": [
+    "Icon conflicts at Hank's desk?",
+    "JERICHO (Zen Garden) arrow count?",
+    "AMANDA'S PICTURE arrow?",
+    "Wiki 'decrease regardless' note for round 3?",
+    "Kamski-route TROUBLED (round 2)?",
+    "Kamski-route SINCERE (round 4a)?",
+    "Evidence-route DEFECTIVE instability?",
+    "Amanda round 3? (arrow parts)"
+   ],
+   "answer": "JERICHO Amanda large up once; AMANDA'S PICTURE, KAMSKI, THIS PLACE, CYBERLIFE none; only CONNOR SERIES and SECRET carry SI up + Amanda small down; Kamski TROUBLED and SINCERE none; evidence DEFECTIVE Hank small down only",
+   "source": "template /tmp/dbt/ch29.txt Zen Garden and talk-hank prompts (ARROW lines); dialogue arrows, not death/failure arrows, so the reliability-log caveat does not apply",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-13",
+   "verdict": "resolved",
+   "topic": "Amanda question count",
+   "originals": [
+    "Amanda round 3? (count part)",
+    "Amanda's questions: three, the Google Doc walkthrough's count..."
+   ],
+   "answer": "Three questions, then the scene fades to Fowler's office",
+   "source": "Google Doc walkthrough (ext/gdoc.txt lines 302-306: Kamski, Connor Series, Amanda Picture, then 'The screen will fade'); template shows one menu with no count",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-14",
+   "verdict": "resolved",
+   "topic": "Amanda round 4 trigger",
+   "originals": [
+    "Amanda round 4 trigger?"
+   ],
+   "answer": "Asked whenever Connor shot the Tracis or shot Chloe (so always on the Kamski route); skipped when he spared Chloe and the Tracis",
+   "source": "template condition group 'IF: Connor shot the Tracis in The Eden Club or shot Chloe in Meet Kamski (or both)' / 'IF: Connor didn't shoot Chloe'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-15",
+   "verdict": "resolved",
+   "topic": "Friend check read after the desk talk",
+   "originals": [
+    "When the Friend check is read?"
+   ],
+   "answer": "Read after the desk conversation",
+   "source": "template order: talk-hank prompts precede the 'Hank is friendly / not friendly' condition group; chart TALK TO HANK -> PERKINS ARRIVES; PowerPyx reader who dropped Friend -> Warm mid-talk",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-16",
+   "verdict": "resolved",
+   "topic": "Evidence-route desk talk not skippable",
+   "originals": [
+    "TALK TO HANK optional on the evidence route?",
+    "Whether the evidence-route desk talk can be skipped before Perkins arrives?"
+   ],
+   "answer": "Not skippable: one line HANK GOES TO HIS DESK -> TALK TO HANK -> PERKINS ARRIVES, unlike the Kamski route's bypass line",
+   "source": "flowchart image lcc-2.jpg (viewed this session)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-17",
+   "verdict": "resolved",
+   "topic": "Statue needs the 'truth is inside' recording",
+   "originals": [
+    "Statue without the recording?",
+    "Whether the statue cannot be broken without the 'truth is inside' recording? (both copies)"
+   ],
+   "answer": "BREAK STATUE requires the friendly-interrogation recording",
+   "source": "PowerPyx pp.txt line 139 'You can only break the statue if you got the tip ... requires him to trust you'; reader Moon concurs",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-18",
+   "verdict": "resolved",
+   "topic": "Bio-component donors",
+   "originals": [
+    "Bio-component donors?",
+    "Simon's donor part (#3983 or #4717), and whether the Traci needs anything from Carlos' android?"
+   ],
+   "answer": "Daniel #4717 (Carlos), Rupert #9164 (Daniel or Carlos), blue-haired Traci #6755 (brown-haired Traci, not Carlos), Simon and Stratford android #3983 (Daniel). SIMON.01 '#4717g' is a copy of DANIEL.01 (SIMON.02 likewise equals ANDROID.02)",
+   "source": "HUD strings hud12C.txt: SIMON.3983.VALUE/NEED, TRACI1.6755.NEED, TRACI2.6755.EXTRACTED, DANIEL.3983.9164; Simon wiki line 71 'parts from Daniel'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-19",
+   "verdict": "resolved",
+   "topic": "Evidence-route round 3 always offered",
+   "originals": [
+    "Evidence-route round 3 (NOT DEVIANT / DETERMINED / TROUBLED / COLD)?"
+   ],
+   "answer": "Offered on every evidence-route path; the missing lead-in line when Connor shot Chloe and never saved Hank is wording only",
+   "source": "template: prompt sits after the empathy condition group, outside both variants",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-20",
+   "verdict": "resolved",
+   "topic": "Template agreement items",
+   "originals": [
+    "every other option label and arrow in sections 2a, 2c and 2d?",
+    "the Traci (DIRECT / HELP / DEAL), Simon and Stratford ... prompts",
+    "the password options?",
+    "Ortiz's android: look only, no prompt?"
+   ],
+   "answer": "Labels, prompts, unlocks and conditions as the template; Ortiz's android is look-only",
+   "source": "template /tmp/dbt/ch29.txt evidence sections; compared with C19*/C20a/C20/C20t option lists",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-21",
+   "verdict": "resolved",
+   "topic": "Traci route wording",
+   "originals": [
+    "Traci prompt and label?"
+   ],
+   "answer": "DIRECT/HELP/DEAL, then remove the brown-haired Traci's head and go back with it",
+   "source": "template [SECTION tracis] 'Go back with the Traci's head'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-22",
+   "verdict": "resolved",
+   "topic": "AMANDA'S PICTURE label",
+   "originals": [
+    "AMANDA'S PICTURE label?"
+   ],
+   "answer": "Typographic apostrophe, AMANDA’S PICTURE",
+   "source": "template OPTION 'AMANDA’S PICTURE'; C19d option 2 uses ’",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-23",
+   "verdict": "resolved",
+   "topic": "Cut lines not used",
+   "originals": [
+    "Cut line after SECRET not marked?",
+    "Cut line in Hank's spared-Chloe empathy speech not marked?"
+   ],
+   "answer": "Both lines are UNUSED/CUT and are not used",
+   "source": "template ### UNUSED/CUT CONTENT ### after SECRET and in the 'didn't shoot Chloe' variant",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-24",
+   "verdict": "resolved",
+   "topic": "Diary clue text",
+   "originals": [
+    "Diary clue text incomplete?"
+   ],
+   "answer": "All three diary pages",
+   "source": "template OBSERVATION [Read] CLUE 'Diary'; ch29.mjs DIARY constant has all three",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch29-25",
+   "verdict": "adaptation",
+   "topic": "Upstairs timer as 'do nothing'",
+   "originals": [
+    "The game's timer here is a budget of one..."
+   ],
+   "why": "PowerPyx's only way to OUT OF TIME upstairs is to stand still for 6 minutes; the option reproduces that"
+  },
+  {
+   "id": "ch29-26",
+   "verdict": "adaptation",
+   "topic": "Archive clock starts with the key; costs of Gavin and guesses",
+   "originals": [
+    "Leaving with the key starts the archive's time budget",
+    "IGN advises leaving because answering 'will waste precious time'...",
+    "No source gives a time cost for wrong guesses, so they cost none."
+   ],
+   "why": "bookkeeping of the unsourced budget (see the time-limit question); IGN supports a Gavin cost, nothing gives a guess cost"
+  },
+  {
+   "id": "ch29-27",
+   "verdict": "adaptation",
+   "topic": "Stop searching reaches the lower timeout",
+   "originals": [
+    "Reached when the archive's time budget runs out, or Connor stops searching..."
+   ],
+   "why": "the 'wait' option collapses standing still until OUT OF TIME, which PowerPyx gives as the way to that node"
+  },
+  {
+   "id": "ch29-28",
+   "verdict": "adaptation",
+   "topic": "Shared REMORSE / DISTANT / COLD scene",
+   "originals": [
+    "The template's two identical REMORSE / DISTANT / COLD prompts share one scene."
+   ],
+   "why": "identical options and arrows, and only one can occur per path"
+  },
+  {
+   "id": "ch29-29",
+   "verdict": "adaptation",
+   "topic": "THREATEN / REASON get silence",
+   "originals": [
+    "THREATEN and REASON have no reply in the template..."
+   ],
+   "why": "template gives no reply and no unlock; the only working option (the voice) is unchanged"
+  },
+  {
+   "id": "ch29-30",
+   "verdict": "adaptation",
+   "topic": "Daniel's parts and reactivation",
+   "originals": [
+    "Rupert can take #9164 from Daniel or Carlos' android; Daniel can still be reactivated after giving a part"
+   ],
+   "why": "Daniel's own route yields NO INFORMATION in every source, so the order of parts changes no outcome"
+  },
+  {
+   "id": "ch29-31",
+   "verdict": "cosmetic",
+   "topic": "Fowler's first name dropped",
+   "originals": [
+    "The chart's IN THE POLICE STATION ... (Hank's 'Jeffrey' is left out)"
+   ],
+   "why": "one name in one line; no option or gate"
+  }
+ ]
+}

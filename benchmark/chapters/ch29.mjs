@@ -47,7 +47,9 @@ export const inputs={
  chloeShot:s=>bool(s.kamskiChloeShot,s.choices.C17==='0'),
  kamskiQuestion:s=>typeof s.kamskiQuestion==='string'?s.kamskiQuestion:s.choices.C18==='1'?'virus':null,
  amandaPhoto:s=>bool(s.kamskiAmandaPhoto,!!s.kamskiPortrait),
- tracisShot:s=>typeof s.edenOutcome==='string'?s.edenOutcome==='CONNOR SHOT DEVIANTS':bool(s.edenTracisShot,s.choices.C12==='1'),
+ // "Connor shot the Tracis in The Eden Club" (template): either shooting ending, the won-fight SHOOT (DEVIANTS DIED; PowerPyx
+ // "won fight, then chose the Shoot option") and the shot in the back (CONNOR SHOT DEVIANTS). Story 1.9.1 counted only the latter.
+ tracisShot:s=>typeof s.edenOutcome==='string'?['DEVIANTS DIED','CONNOR SHOT DEVIANTS'].includes(s.edenOutcome):bool(s.edenTracisShot,s.choices.C12==='1'),
  rupertBody:s=>bool(s.nestRupertBody,!!s.evidence.rupertBody),
  rupertDiary:s=>bool(s.nestDiary,!!s.evidence.rupertDiary),
  tracisBodies:s=>typeof s.edenTracis==='string'?s.edenTracis==='dead':bool(s.edenTracis,!!s.evidence.tracisDead),
@@ -106,9 +108,9 @@ function room(n,s,opt,choice,fail,h){
   case 'analyzeDiary':locate(s,R,'diary');h.learn('{{Rupert}}’s diary: go to {{Ferndale}} subway station, find the old docks and an old freighter called {{Jericho}}.');text=DIARY+LOCATED;break;
   case 'breakStatue':d.statueBroken=true;break;
   case 'retrieveMap':d.map=true;h.learn('The map in the statue places {{Jericho}} somewhere in the {{Ferndale}} neighborhood.');break;
-  case 'linkMap':d.mapTried=true;
-   if(fail){R.mapUnlinked=true;text='{{Connor}} runs the map against the memory on the tablet. SEEKING FOR {{FERNDALE}} REFERENCE... NO {{FERNDALE}} REFERENCE. The map and the memory do not match up.'}
-   else{locate(s,R,'map');h.learn('{{Jericho}} is a ship moored at the old docks in {{Ferndale}}.');text='{{Connor}} runs the map against the memory on the tablet. SEEKING FOR {{FERNDALE}} REFERENCE... {{FERNDALE}} LOCATED. The ship in the memory is moored at the old docks. {{Connor}}: “Bingo.”'+LOCATED}break;
+  // LINK MAP TO OTHER EVIDENCE always works (PowerPyx: UNABLE TO LINK MAP TO OTHER EVIDENCE is reached by breaking the statue
+  // and letting the time run out, recorded by the timeout as mapUnlinked); story 1.9.1 rolled 0.2 here.
+  case 'linkMap':d.mapTried=true;locate(s,R,'map');h.learn('{{Jericho}} is a ship moored at the old docks in {{Ferndale}}.');text='{{Connor}} runs the map against the memory on the tablet. SEEKING FOR {{FERNDALE}} REFERENCE... {{FERNDALE}} LOCATED. The ship in the memory is moored at the old docks. {{Connor}}: “Bingo.”'+LOCATED;break;
   case 'reactivateTraci':d.traciOn=true;talk='traci';break;
   case 'removeHead':d.head=true;break;
   case 'trickTraci':d.traciTricked=true;break;

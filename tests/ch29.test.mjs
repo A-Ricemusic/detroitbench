@@ -126,10 +126,14 @@ test('every evidence route locates Jericho with the right parts, and Daniel is a
  assert.match(daniel.text,/That’s why I shot you|No… No, I don’t know anything about Jericho/);assert.ok(daniel.s.ch29Room.done.danielTalked);assert.equal(daniel.s.ch29Room.located,null);
  const one=play(all(spareChloe,ev('simonBody','kitchenBody')),{...station,C20:[R.daniel,R.simon,R.android,R.reactivateSimon],C20t:'3'},[]);
  assert.ok(!available(node('C20'),base({...one.s,ch29Room:{...one.s.ch29Room,open:true}})).some(o=>o.id===R.reactivateAndroid));
- // The statue needs the recording first; a failed link is UNABLE TO LINK MAP TO OTHER EVIDENCE and the map leads nowhere.
+ // The statue needs the recording first. The link always works (story 1.9.2; PowerPyx reaches UNABLE TO LINK MAP TO OTHER
+ // EVIDENCE by breaking the statue and letting the time run out): with the map taken and never linked, the timeout records it.
  const noRecording=toRoom(ev('statueMap','simonTablet'),[R.statue]);assert.ok(!available(node('C20'),base({...noRecording.s,ch29Room:{...noRecording.s.ch29Room,open:true}})).some(o=>o.id===R.breakStatue));
- const unlinked=play(all(spareChloe,ev('statueMap','simonTablet','simonBody'),s=>{s.suspectTrusts=true}),{...station,C20:[R.memory,R.statue,R.breakStatue,R.retrieveMap,R.tablet,R.linkMap]},['C20']);
- assert.equal(unlinked.s.ch29Room.mapUnlinked,true);assert.equal(unlinked.s.ch29Outcome,'CONNOR SERIES WAS DECOMMISSIONED');assert.match(unlinked.text,/NO FERNDALE REFERENCE/);
+ assert.equal(node('C20').options.find(o=>o.id===R.linkMap).risk,undefined,'no roll on the link');
+ const linked=play(all(spareChloe,ev('statueMap','simonTablet','simonBody'),s=>{s.suspectTrusts=true}),{...station,C20:[R.memory,R.statue,R.breakStatue,R.retrieveMap,R.tablet,R.linkMap]},['C20']);
+ assert.equal(linked.s.ch29Room.located,'map','even a run that fails every roll links the map');assert.equal(linked.s.ch29Room.mapUnlinked,false);
+ const unlinked=play(all(spareChloe,ev('statueMap','simonBody'),s=>{s.suspectTrusts=true}),{...station,C20:[R.memory,R.statue,R.breakStatue,R.retrieveMap,R.wait]});
+ assert.equal(unlinked.s.ch29Room.mapUnlinked,true);assert.equal(unlinked.s.ch29Outcome,'CONNOR SERIES WAS DECOMMISSIONED');assert.ok(!/NO FERNDALE REFERENCE/.test(unlinked.text));
 });
 
 test('the archive timer is an action budget: twelve actions, one fewer after answering Gavin',()=>{
@@ -206,6 +210,8 @@ test('rebuilt chapter handoffs take precedence over legacy flags and choices',()
  assert.equal(rules.inputs.chloeShot(s),false);assert.equal(rules.inputs.kamskiQuestion(s),'rA9');
  assert.equal(rules.inputs.tracisShot(s),false);assert.equal(rules.inputs.nestSavedHank(s),false);assert.equal(rules.inputs.towerProtectedHank(s),false);
  s.edenOutcome='CONNOR SHOT DEVIANTS';s.choices.C12='0';assert.equal(rules.inputs.tracisShot(s),true);
+ // Story 1.9.2 (triage ch20-01): the won-fight SHOOT (DEVIANTS DIED) is also “shot the Tracis” (template; PowerPyx).
+ s.edenOutcome='DEVIANTS DIED';assert.equal(rules.inputs.tracisShot(s),true);s.edenOutcome='DEVIANTS ESCAPED';assert.equal(rules.inputs.tracisShot(s),false);s.edenOutcome='MISSION FAILED';assert.equal(rules.inputs.tracisShot(s),false);
  const diary=toRoom(s=>{s.nestRupertBody=true;s.nestDiary=true},[R.diary,R.rupert,R.daniel,R.reactivateRupert,R.decryptionKey,R.analyzeDiary]);
  assert.equal(diary.s.ch29Room.located,'diary');
  const suppressed=startState(story);Object.assign(suppressed,{nestRupertBody:false,nestDiary:false,edenTracis:'alive'});
@@ -217,4 +223,20 @@ test('rebuilt chapter handoffs take precedence over legacy flags and choices',()
  assert.equal(traci.s.ch29Room.located,'traci');assert.ok(traci.visited.includes('C19e'));
  const saved=play(all(kamskiKey,withHank(6),s=>{s.ch24ProtectedHank=true;s.stratfordProtectedHank=false}),{C19d:['0','3','4']});
  assert.equal(saved.s.ch29SavedHank,'tower');assert.ok(saved.visited.includes('C19n'));assert.ok(saved.visited.includes('C19o'));
+});
+
+// Story 1.9.2 (triage ch20-01): a won fight then SHOOT opens Amanda's doubts question and round 4 like the shot in the back.
+test('Amanda asks about feelings after either Eden Club shooting ending, or after Chloe was shot',()=>{
+ const gate=s=>blocked(node('C19e'),s);
+ for(const [eden,open] of [['DEVIANTS DIED',true],['CONNOR SHOT DEVIANTS',true],['DEVIANTS ESCAPED',false],['MISSION FAILED',false]]){
+  const s=startState(story);s.edenOutcome=eden;s.choices.C17='1';const g=gate(s);
+  if(open)assert.ok(!g||!/spared both/.test(g),eden+' opens C19e');else assert.match(g??'',/spared both the Tracis and Chloe/,eden)}
+});
+
+// Story 1.9.2 (triage ch29.md): Daniel's "You lied to me… I trusted you" is the template's "Daniel trusted Connor" variant.
+test('Daniel’s reactivation: “I trusted you” only after SNIPERS SHOT DEVIANT; the shot-Connor variant unchanged',()=>{
+ const sit=outcome=>{const s=startState(story);s.hostageOutcome=outcome;s.ch29Room={...s.ch29Room,talk:outcome==='Deviant shot Connor'?'danielShot':'daniel',talking:true};return situationFor(node('C20t'),s)};
+ assert.match(sit('Snipers shot deviant'),/You lied to me, \{\{Connor\}\}! I trusted you/);
+ for(const o of ['Connor shot deviant','Connor died protecting Emma','Connor leapt for Emma and fell','Connor failed to reach deviant in time']){const t=sit(o);assert.ok(!/lied to me|trusted you/.test(t),o);assert.match(t,/opens his eyes and recognizes you\./,o)}
+ assert.match(sit('Deviant shot Connor'),/That’s why I shot you/);
 });

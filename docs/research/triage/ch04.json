@@ -1,0 +1,258 @@
+{
+ "chapter": 4,
+ "title": "A New Home",
+ "itemsInDump": 39,
+ "entries": [
+  {
+   "id": "ch04-01",
+   "verdict": "needs-play",
+   "topic": "Key threshold: is one increase enough?",
+   "originals": [
+    "Key threshold?",
+    "How many small increases take Alice from Distant to Neutral, and whether one?"
+   ],
+   "question": "In the pending dishes-only run (wash the dishes, nothing else that raises Alice, no MOTHER?), does Alice give Kara the key at the end of the room talk?",
+   "impact": "gate",
+   "why": "The wiki says 'at least Neutral' but gives no step size. The operator has seen 8 increases end at Trusted and net 0 end at Distant with no key, and the indicator flashed Distant after one increase, which the wiki's display quirk leaves inconclusive. The benchmark needs 2 (scales.mjs H2: ALICE_KEY = 2 points), and a key here would falsify that."
+  },
+  {
+   "id": "ch04-02",
+   "verdict": "resolved",
+   "topic": "Eight increases end at Trusted, not Family",
+   "originals": [
+    "Step size?",
+    "Whether every increase lands at Trusted or beyond (the wiki says Trusted is?"
+   ],
+   "answer": "All eight positive actions end the chapter at Trusted in the chart header, and Family is not reachable. This matches the wiki ('Trusted in this very chapter'). The current scale (six levels including CLOSE, width 2, Neutral from 2) puts 8 in Trusted [8, 9].",
+   "source": "docs/research/ch04-a-new-home.md §8 item 2, operator observations 2026-11-06 ('ends the chapter with Alice at Trusted in the flowchart header; Family was not reachable'); SOURCES.md Reliability log row 4; /tmp/flowcharts/ch04/wiki.txt (chapter page) line 112; benchmark/scales.mjs H1.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-03",
+   "verdict": "resolved",
+   "topic": "Earlier R04 TV facts are not in this chapter",
+   "originals": [
+    "Earlier version?",
+    "This replaces the earlier R04, which merged \"Android QB\" into \"Android Power\" and?",
+    "R04 TV facts?",
+    "Dropped from the earlier R04: the stock market \"up 11 percent\" and \"New?"
+   ],
+   "answer": "Neither the stock market 'up 11 percent' nor 'New Orleans underwater by 2055' appears in this chapter's transcript or wiki page. Todd's TV carries Channel 16 sports, the job figures, hockey and KNC on President Warren. The benchmark has dropped both facts and split the magazines correctly.",
+   "source": "grep of /tmp/flowcharts/ch04/w_A_New_Home__Transcript_.txt and /tmp/flowcharts/ch04/wiki.txt (chapter page) for '11%', 'percent', 'New Orleans', '2055', 'stock': no match; /tmp/flowcharts/ch04/w_A_New_Home__Transcript_.txt lines ~1380-1388 (TV channels).",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-04",
+   "verdict": "resolved",
+   "topic": "Label MOTHER?",
+   "originals": [
+    "Label of the mother line?"
+   ],
+   "answer": "The game's button reads 'MOTHER?' (the transcript's 'MOTHER' drops the question mark).",
+   "source": "/tmp/dbt/ch04.txt (template) OPTION \"MOTHER?\" (ARROW Alice small DOWN).",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-05",
+   "verdict": "resolved",
+   "topic": "SEEM QUIET has no arrow",
+   "originals": [
+    "SEEM QUIET?",
+    "K01f note?"
+   ],
+   "answer": "No arrow. The template gives SEEM QUIET none, and the transcript prints no ALICE icon after it. PowerPyx's 'all of these make her like you' is an overstatement in a recipe that also contains FRIENDLY, NAME KARA and INTERESTS?.",
+   "source": "/tmp/dbt/ch04.txt (template) OPTION \"SEEM QUIET\" (no ARROW, unlike NAME KARA / INTERESTS? / MOTHER?); /tmp/flowcharts/ch04/w_A_New_Home__Transcript_.txt SEEM QUIET tabs (no icon).",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-06",
+   "verdict": "resolved",
+   "topic": "TOY is available any time on the first floor",
+   "originals": [
+    "Which talk lights the first-floor TALK WITH ALICE node?",
+    "Whether the yard menus or the TOY line light the first-floor TALK WITH?",
+    "Where TOY is offered?"
+   ],
+   "answer": "TOY needs no finished floor. The transcript offers 'Talk To Alice' → TOY (ALICE up) while Kara holds the trash bin, a beer or the laundry basket, and the template gives it no lock. 'After cleaning the first floor' on the chapter page is loose prose. Which conversation lights the TALK WITH ALICE node changes nothing the subject sees: the benchmark reaches the node through the backyard menus, and TOY is offered at any time on the first floor.",
+   "source": "/tmp/flowcharts/ch04/w_A_New_Home__Transcript_.txt lines 880-912 ('(Kara Is Holding A Trash Bin)', '(Kara Is Holding A Beer Bottle)', 'Kara Is Holding A Laundry Basket', TOY … ALICE up); /tmp/dbt/ch04.txt (template) '## Talk to Alice (next to the window)' PROMPT TOY, no LOCK.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-07",
+   "verdict": "cosmetic",
+   "topic": "Legend for triangles and the grey DISTURB TODD box",
+   "originals": [
+    "Triangle icon meaning?",
+    "The legend for the triangle icons and for the grey DISTURB TODD box?"
+   ],
+   "why": "The legend strings exist (EVENT, ACTION, …; path types CURRENT / PREVIOUS / LOCKED PATHS in en.json GUI.MENU.FLOWCHART.LEGEND). The glyph names never reach the subject, and all four triangle nodes are already modelled as automatic events."
+  },
+  {
+   "id": "ch04-08",
+   "verdict": "needs-play",
+   "topic": "Can Alice's room be finished with the window shut?",
+   "originals": [
+    "Is VENTILATE ROOM in Alice's room mandatory?",
+    "Whether Alice's room can be finished with the window shut, and whether ALICE?"
+   ],
+   "question": "In Alice's room, after making her bed but without opening her window, did TIDIED ALICE'S ROOM appear and could you kneel to talk to Alice?",
+   "impact": "gate",
+   "why": "The transcript lists MAKE BED and VENTILATE ROOM as the room's objectives, the same pattern as Todd's room, where the benchmark bundles the window into the mandatory tidy. The wiki says Kara 'may also open a window', and the chart draws VENTILATE ROOM as an optional child. If it is mandatory, the window escape in Stormy Night (window flag) is always unlocked."
+  },
+  {
+   "id": "ch04-09",
+   "verdict": "resolved",
+   "topic": "ALICE GOES TO HER ROOM always fires",
+   "originals": [
+    "ALICE GOES TO HER ROOM?"
+   ],
+   "answer": "It always fires. It is triggered unconditionally while making Todd's bed, which is mandatory: 'Alice goes to her room. Kara finishes making the bed.' Cleaning Alice's room first only changes Kara's greeting line (template CONDITION 'IF Todd's room was cleaned before Alice's room').",
+   "source": "/tmp/flowcharts/ch04/w_A_New_Home__Transcript_.txt line 1400; PowerPyx ppx.html 'After making Todd's bed Alice will go to her room automatically'; /tmp/dbt/ch04.txt (template) '# In Alice's room' CONDITION GROUP.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-10",
+   "verdict": "needs-play",
+   "topic": "Does the room talk need the bathroom, the book and the shelf?",
+   "originals": [
+    "Prerequisites for the room talk?",
+    "Whether the room talk really needs the bathroom, the book and the shelf?"
+   ],
+   "question": "Could you kneel to talk to Alice with both bedrooms done but the bathroom not cleaned and without looking at the Alice in Wonderland book or her shelf?",
+   "impact": "options",
+   "why": "PowerPyx's walkthrough (above the wiki) requires the bathroom, the book and the shelf. The transcript requires only both bedrooms, and a PowerPyx reader's recipe skips the bathroom and the book. If the book is required, every run gets its +1, which moves the key threshold. This can be tested in the same replay as ch04-08."
+  },
+  {
+   "id": "ch04-11",
+   "verdict": "resolved",
+   "topic": "Red Ice recall: REWASH and FIND RED ICE are inseparable",
+   "originals": [
+    "Red Ice recall in Zlatko?"
+   ],
+   "answer": "Inseparable. The rewash always finds the Red Ice, then Todd pins Kara to the wall, with no condition in between. Zlatko's 'If Kara washed Todd's clothes' therefore cannot tell the two apart. The benchmark's single option is exact.",
+   "source": "/tmp/flowcharts/ch04/w_A_New_Home__Transcript_.txt lines 849-876 ('REWASH LAUNDRY' … finds red ice … 'REWASHED LAUNDRY', no tab); /tmp/flowcharts/ch04/w_Zlatko.txt line 64.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-12",
+   "verdict": "cosmetic",
+   "topic": "OPEN ALICE'S BOX drawn blue, not yellow",
+   "originals": [
+    "OPEN ALICE'S BOX?"
+   ],
+   "why": "Only the chart styling is unresolved. The cross-chapter effect itself is sourced (wiki line 84 'required to persuade Todd… Battle for Detroit'; w_Todd_Williams.txt line 57), and the benchmark's aliceBox flag follows it."
+  },
+  {
+   "id": "ch04-13",
+   "verdict": "resolved",
+   "topic": "Box is a child of the key",
+   "originals": [
+    "Wiki structure vs chart?"
+   ],
+   "answer": "On the chart OPEN ALICE'S BOX is a child of ALICE GIVES KARA A KEY. The chart outranks the wiki's sibling nesting, and the transcript's key scene ends with 'Kara looks at a box on the drawer'.",
+   "source": "/tmp/flowcharts/ch04/ppx-5.jpg (viewed: TALK WITH ALICE → ALICE GIVES KARA A KEY → OPEN ALICE'S BOX, box joined to the key node, no line to FINISHED CLEANING); /tmp/flowcharts/ch04/w_A_New_Home__Transcript_.txt '(Alice Is Trusting)' tab.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-14",
+   "verdict": "adaptation",
+   "topic": "Rewash chain as one option",
+   "originals": [
+    "Rewash chain?"
+   ],
+   "why": "The three nodes always happen together (ch04-11), so one option reaches all of them."
+  },
+  {
+   "id": "ch04-15",
+   "verdict": "adaptation",
+   "topic": "Toilet only after Todd's room",
+   "originals": [
+    "The toilet?",
+    "Simplified: Todd leaves the restroom when Kara comes out of his room (the?"
+   ],
+   "why": "This follows the transcript's order. It is optional with no effect, and every path can still reach CLEAN TOILET."
+  },
+  {
+   "id": "ch04-16",
+   "verdict": "adaptation",
+   "topic": "Magazines at fixed points",
+   "originals": [
+    "Magazines?"
+   ],
+   "why": "They are collectibles with no stat effect (Public_Opinion lists nothing for this chapter). Fixing when they are offered removes no node."
+  },
+  {
+   "id": "ch04-17",
+   "verdict": "adaptation",
+   "topic": "Pills and window only after their room is tidied",
+   "originals": [
+    "The pills and the window?"
+   ],
+   "why": "The chart draws them as children of their rooms, and both stay offered until the talk, so no reachable state is lost."
+  },
+  {
+   "id": "ch04-18",
+   "verdict": "cosmetic",
+   "topic": "Book title through the name token",
+   "originals": [
+    "The book's title?"
+   ],
+   "why": "Neutral framing renders the title as '<Alice-token> in Wonderland'. The arrow and gate are unchanged."
+  },
+  {
+   "id": "ch04-19",
+   "verdict": "adaptation",
+   "topic": "No-effect looks left out",
+   "originals": [
+    "Left out?",
+    "Left out: the optional looks at the bridge and the excavator outside, and?",
+    "Left out (no effect, not on the chart): staring at the TV until?",
+    "With them, the bedroom TV, which is not a chart node: Channel 16?",
+    "Left out: the bedroom TV and magazine (R04b), the shelf (\"Seems you like?"
+   ],
+   "why": "None of these is a chart node and none has an arrow in the template. The one that might matter, the shelf as a talk prerequisite, is asked in ch04-10."
+  },
+  {
+   "id": "ch04-20",
+   "verdict": "resolved",
+   "topic": "Alice's age has a source",
+   "originals": [
+    "Alice's age?",
+    "The earlier version called Alice nine years old; no source consulted gives her?"
+   ],
+   "answer": "The wiki character page says 'Alice looks like a 9-year-old little girl', citing the game's Extras gallery. 'Looks about nine' is therefore sourced; a flat 'nine years old' would overstate it, since she is an android.",
+   "source": "/tmp/flowcharts/ch04/w_Alice_Williams.txt line 27.",
+   "benchmarkMatches": false,
+   "fix": "K01 adaptationNote: replace 'no source consulted gives her age, so it is dropped' with the sourced 'looks like a 9-year-old' (optional: restore 'a girl who looks about nine' in the K01 situation)."
+  },
+  {
+   "id": "ch04-21",
+   "verdict": "resolved",
+   "topic": "TOY line wording",
+   "originals": [
+    "TOY line?"
+   ],
+   "answer": "The line is 'That's a pretty toy… What's its name?', which the benchmark uses.",
+   "source": "/tmp/dbt/ch04.txt (template) OPTION \"TOY\" Kara line.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch04-22",
+   "verdict": "cosmetic",
+   "topic": "Whether the photo girl is visibly not Alice",
+   "originals": [
+    "Whether the girl in the box photo is visibly not Alice?"
+   ],
+   "why": "It affects only how the box's fact is worded; aliceBox and the Battle for Detroit option are unaffected."
+  }
+ ]
+}

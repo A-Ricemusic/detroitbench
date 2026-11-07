@@ -1,0 +1,328 @@
+{
+ "chapter": 12,
+ "title": "Waiting for Hank…",
+ "itemsInDump": 46,
+ "entries": [
+  {
+   "id": "ch12-01",
+   "verdict": "cosmetic",
+   "topic": "Grey nodes on the PowerPyx 100% screenshot",
+   "originals": [
+    "Grey nodes on the PowerPyx save?"
+   ],
+   "why": "Only how one screenshot shows nodes; TALK WITH GAVIN and the three reads are built either way and nothing the subject sees depends on it."
+  },
+  {
+   "id": "ch12-02",
+   "verdict": "resolved",
+   "topic": "Amanda's reaction after a confession and a later death",
+   "originals": [
+    "Confession and death together?",
+    "With a confession and a later death in The Interrogation, does Amanda give"
+   ],
+   "answer": "The death reaction (SmallDown): the confession variant is worded 'Got a confession, without dying'.",
+   "source": "Template ch12 '# In the Zen Garden' condition group: 'Got a confession, without dying' ARROW Amanda LargeUp; 'Connor died during The Interrogation' ARROW Amanda SmallDown",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-03",
+   "verdict": "resolved",
+   "topic": "Labels, arrows and other conditions",
+   "originals": [
+    "Labels, arrows, other conditions?"
+   ],
+   "answer": "All agree with the template (Amanda, Hank, COMPASSIONATE, break-room TV, cell gate, INTERVENTION/REGRETS/STATUETTE/NEW CONNOR/LAST NIGHT locks); the current ch12 scenes carry them.",
+   "source": "Template ch12 outline (read this session); ch12.json / ch12.mjs rules",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-04",
+   "verdict": "resolved",
+   "topic": "Hank arrival arrow scoped to an Interrogation death",
+   "originals": [
+    "Hank arrival arrow mis-scoped?"
+   ],
+   "answer": "Stale: the Hank SmallDown is applied at C08n only when Connor died in The Interrogation; chapter 1's death effect is {} and chapter 9's deathEffect is {}, so a Hostage death no longer lowers Hank.",
+   "source": "Template ch12 '## Hank arrives at his desk' CONDITION (Death) 'Connor died in The Interrogation' ARROW Hank SmallDown; story-engine.mjs CONNOR_DEATH_EFFECT {default:…,1:{}}; ch12.mjs C08n",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-05",
+   "verdict": "resolved",
+   "topic": "Partners and Interrogation no longer apply Amanda/Hank changes",
+   "originals": [
+    "Until Partners and The Interrogation are rebuilt, the engine still gives Amanda +1"
+   ],
+   "answer": "Stale: both chapters are rebuilt; ch06.mjs and ch09.mjs make no Amanda call and both export deathEffect {}; the reactions are applied once at C08d and C08n.",
+   "source": "benchmark/chapters/ch06.mjs, ch09.mjs (grep for amanda: none); template ch12 Zen Garden arrows",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-06",
+   "verdict": "needs-play",
+   "topic": "Amanda after a successful probe",
+   "originals": [
+    "Probe route?"
+   ],
+   "question": "Same question as ch09-16: after a successful memory probe where Connor survived, did Amanda congratulate Connor (arrow up) or criticise him (arrow down)?",
+   "impact": "arrow",
+   "why": "Duplicate of ch09-16 (ask once). The dump's claim that the benchmark gives +1 is stale: ch12.mjs now gives the no-confession -1."
+  },
+  {
+   "id": "ch12-07",
+   "verdict": "resolved",
+   "topic": "HANK IS MAD arrow",
+   "originals": [
+    "HANK IS MAD has no arrow in the template?",
+    "HANK IS MAD prompt missing?",
+    "Hank-is-mad timing?",
+    "Is Hank's −1 at HANK IS MAD applied on the answer, at the"
+   ],
+   "answer": "Every answer gives Hank a small down. The template is silent, not contrary, so the next sources decide, and all three agree. Whether it pops on the answer or at the collar grab is the same scene and changes nothing.",
+   "source": "PowerPyx 'Hank is mad: Connor can't win with this one. All responses cause Hank▼'; wiki chapter page 'When Hank gets angry with Connor (unavoidable) {{Icon|down}}'; Relationship_Stat 'When Hank gets mad at the end of Waiting for Hank...'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-08",
+   "verdict": "resolved",
+   "topic": "Break-room TV contents",
+   "originals": [
+    "Break-room TV?"
+   ],
+   "answer": "Stale: the Arctic report is now the reception TV (R12a, no arrow); the break-room TV has both Partners variants (prototype detective / Carlos Ortiz body), each -1 public opinion.",
+   "source": "Template ch12 '### Watch TV' (Public opinion SmallDown on both variants) and reception 'Watch TV'; ch12.json R12 media items ch12TvFound / ch12TvNotFound (read this session)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-09",
+   "verdict": "resolved",
+   "topic": "Skipping the break-room news",
+   "originals": [
+    "Public opinion drop if the TV is skipped?",
+    "Does leaving the break room before the news avoid the opinion drop, and"
+   ],
+   "answer": "Leaving before the report avoids the drop, and it does not reappear later: the Jericho template has no public-opinion arrow or TV report, and the Public Opinion page lists only the break-room report.",
+   "source": "PowerPyx comment by Andrew (2018-06-17) 'if you leave right away before the news comes on it doesn't change'; template ch14 (no ARROW lines); wiki Public_Opinion 'Listening to the television in the break room after talking to Gavin in Waiting for Hank...'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-10",
+   "verdict": "cosmetic",
+   "topic": "Magic stone and graves have no description",
+   "originals": [
+    "Neither has a line, a clue text or a stat change in the",
+    "The stone in the archway is not described by any source",
+    "What does the magic stone look like, and what happens when Connor touches"
+   ],
+   "why": "Only the outcome text; no line, clue, arrow or gate in any source."
+  },
+  {
+   "id": "ch12-11",
+   "verdict": "cosmetic",
+   "topic": "Todd filing a report at the station",
+   "originals": [
+    "Todd at the station?"
+   ],
+   "why": "A background figure with no prompt or arrow; at most it would add one sentence to the reception scene."
+  },
+  {
+   "id": "ch12-12",
+   "verdict": "resolved",
+   "topic": "LAST NIGHT unlock and placement",
+   "originals": [
+    "LAST NIGHT condition?",
+    "LAST NIGHT unlock?",
+    "Does LAST NIGHT appear after a spilled drink when the deviant was found?"
+   ],
+   "answer": "Unlocked by spilling Hank's drink in Partners alone (the deviant may have been found); it is in the first Talk-to-Hank prompt.",
+   "source": "Template ch12 '## Checking on Hank' first prompt: [LAST NIGHT] CONDITION (Lock) 'Spilled Hank's drink in Partners'; PowerPyx comment darkrage6 (2018-11-03) 'only available if you spilled his drink during Partners'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-13",
+   "verdict": "resolved",
+   "topic": "Skipping the cell visit",
+   "originals": [
+    "Skipped cell visit?",
+    "If the cell visit is skipped, is there a body in the evidence",
+    "The self-destruction of Carlos' android is narrated in the outcome of the second"
+   ],
+   "answer": "If Connor does not visit him before sitting down at the desk, his body does not appear in the evidence room and Connor still remembers what he said; whether he survives is not stated.",
+   "source": "Wiki Waiting for Hank... Notes: 'It is possible to skip the interaction with Carlos Ortiz's HK400 if Connor does not go see him before sitting down at the desk. Doing so allows you to remember what the android said without him appearing in the evidence room'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-14",
+   "verdict": "resolved",
+   "topic": "Who brings the Ravendale lead",
+   "originals": [
+    "Ending speaker?",
+    "Ending speaker?"
+   ],
+   "answer": "Officer Chris.",
+   "source": "Template ch12 dialogue 'Chris: Lieutenant...uh...sorry to disturb you. I have some information on the AX400 ... Ravendale district'; wiki chapter text",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-15",
+   "verdict": "resolved",
+   "topic": "Desk clues",
+   "originals": [
+    "Desk clue set?",
+    "The eight desk clues?"
+   ],
+   "answer": "Eight 'Look at the desk' items (COFFEE CUP, JAPANESE MAPLE, DONUTS, DETROIT BASKETBALL CAP, ANTI-ANDROID SLOGANS, MATCHES, HAIRS, RED ICE TASK FORCE 2027), plus the music and three research articles; no nameplate, tissue or police cases.",
+   "source": "Template ch12 '## Analyze Hank's desk' observation groups; PowerPyx 'Scan the desk to find 8 clues'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-16",
+   "verdict": "resolved",
+   "topic": "Amanda's first question only if the deviant was found",
+   "originals": [
+    "Amanda question 1 when the deviant was not found?",
+    "Amanda question 1 is only asked if the deviant was found?"
+   ],
+   "answer": "Yes: the TRAUMATIZED / DEVIANCY / INTERVENTION / REGRETS / SIMULATION prompt is nested inside 'Connor found the deviant in Partners'.",
+   "source": "Template ch12 '# In the Zen Garden' (prompt inside the found variant)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-17",
+   "verdict": "resolved",
+   "topic": "Cut lines not built",
+   "originals": [
+    "Cut lines not recorded in §2?"
+   ],
+   "answer": "The template marks them CUT/UNUSED; none is built.",
+   "source": "Template ch12 CUT/UNUSED CONTENT blocks; ch12.json notes (cut lines 'not built')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-18",
+   "verdict": "cosmetic",
+   "topic": "One gravestone per earlier Connor death",
+   "originals": [
+    "The graveyard shows one gravestone per earlier Connor death"
+   ],
+   "why": "Only the count in the outcome text; the node and its unlock (any earlier Connor death) are sourced."
+  },
+  {
+   "id": "ch12-19",
+   "verdict": "resolved",
+   "topic": "THANKS is cut",
+   "originals": [
+    "THANKS is cut, not bugged?"
+   ],
+   "answer": "Cut: the template wraps [THANKS] in CUT/UNUSED CONTENT ('This option seems to always be locked').",
+   "source": "Template ch12 second Talk-to-Hank prompt",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-20",
+   "verdict": "resolved",
+   "topic": "Concluding before reading every case file",
+   "originals": [
+    "The case files can be read in any order and Connor can conclude",
+    "Must every case file be opened before Connor's conclusion plays?"
+   ],
+   "answer": "Reading the files one by one is optional: a player can press on without scanning them.",
+   "source": "PowerPyx comment by kit (2021-07-08) 'if you scan through the case files one by one (not hit A) you will find out more information'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-21",
+   "verdict": "adaptation",
+   "topic": "Waiting phase as one scene, break room last",
+   "originals": [
+    "The waiting phase is one repeatable scene before Hank arrives?",
+    "Simplifications: in the game the station can be explored in any order and"
+   ],
+   "why": "Free-roam order collapsed (documented in C08i.adaptationNote); every node, prompt and arrow is still offered once."
+  },
+  {
+   "id": "ch12-22",
+   "verdict": "adaptation",
+   "topic": "Following Hank to Fowler's office",
+   "originals": [
+    "Following Hank to Fowler's office is a plain choice (not a game button)?",
+    "That it cannot be heard from the desk is the benchmark's reading"
+   ],
+   "why": "Walking to the glass is movement, not a button; documented in C08o/C08p notes, and the chart node is optional with no arrow."
+  },
+  {
+   "id": "ch12-23",
+   "verdict": "resolved",
+   "topic": "What can be done before Hank arrives",
+   "originals": [
+    "Hank's arrival trigger?",
+    "Can Carlos' android, Gavin and the magazines be visited before Hank arrives, or"
+   ],
+   "answer": "Gavin and the cell can be visited while waiting, before Hank arrives; the cell visit must come before Connor sits down at the desk, which moves the scene on. Sitting briefly then getting up is EXPLORE THE STATION.",
+   "source": "PowerPyx 'Talk with Gavin: While waiting for Hank you can also find Det. Gavin Reed in the break room'; PowerPyx 'Explore the Station: At Hank's desk, sit in the chair in front of it briefly, then get up again'; wiki Notes 'if Connor does not go see him before sitting down at the desk'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-24",
+   "verdict": "resolved",
+   "topic": "Case files and conclusion when Kara died",
+   "originals": [
+    "Kara dead but Todd file?",
+    "Kara-dead files?"
+   ],
+   "answer": "Case 6 varies only on whether Kara killed Todd; the conclusion has three variants (Todd not killed, Todd killed, Kara died in Stormy Night with the generic line).",
+   "source": "Template ch12 'START WORKING' Case 6 condition group and the three conclusion variants",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-25",
+   "verdict": "resolved",
+   "topic": "Magazines",
+   "originals": [
+    "Magazines?"
+   ],
+   "answer": "READ 'IVANOFF SAYS NIET!' always; 'FAMOUS PAINTER DIES' only if Carl died; 'ROBOTIC PARENTING' only if he lived; on the counter near Hank's desk.",
+   "source": "Wiki chapter flowchart text (three Read nodes with conditions); PowerPyx 'Read the magazine collectible on the counter near Hank's desk'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-26",
+   "verdict": "resolved",
+   "topic": "Old 'Ask about him' / 'Keep it strictly about the case' options removed",
+   "originals": [
+    "The earlier version's two options (\"Ask about him\" +1 and \"Keep it strictly"
+   ],
+   "answer": "The game has no such buttons; the Talk-to-Hank prompts are NEW CONNOR / LAST NIGHT / UNDERSTANDING / PRAGMATIC / CONSTRUCTIVE and PARTNERS / POSITIVE / DESK, with no arrows.",
+   "source": "Template ch12 '## Checking on Hank'; PowerPyx 'No effect' on each",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch12-27",
+   "verdict": "adaptation",
+   "topic": "Todd's surname left out",
+   "originals": [
+    "Todd's surname is left out"
+   ],
+   "why": "Neutral-name policy (AGENTS.md principle 1); the case file's content is unchanged."
+  }
+ ]
+}

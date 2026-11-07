@@ -1,0 +1,228 @@
+{
+ "chapter": 3,
+ "title": "Shades of Color",
+ "itemsInDump": 37,
+ "entries": [
+  {
+   "id": "ch03-01",
+   "verdict": "resolved",
+   "topic": "Protester avoidance is by route, not chance",
+   "originals": [
+    "Avoiding the protesters?",
+    "How far is far enough from the protesters: does walking past the front?",
+    "Protester risks?",
+    "The three options are the operator's (beat 8): walking straight up always gets?",
+    "These risk values are the operator's design and have no source; the wiki?"
+   ],
+   "answer": "The outcome depends only on the route. On the way to the bus, the transcript offers two outcomes: 'Go Straight To Bus = Markus avoids the crowd by walking on the opposite side' and 'Run Into Protesters = A protester notices Markus and harasses him'. Watching the protesters ('Watch Protesters', the chant) is a separate optional interaction with no consequence, offered on both passes. The wiki agrees: 'you can avoid them by going around on the right'. Walking straight into them always triggers the harassment, as the benchmark does. Keeping to the far side never does; the benchmark gives it an 8% risk. For listening from nearby, the sources show no risk; the 25% is the operator's own design.",
+   "source": "/tmp/flowcharts/ch03/w-Shades_Of_Color_(Transcript).txt 'Markus heads for the bus.' tabber: 'Go Straight To Bus' / 'Run Into Protesters' (after line 860); lines 415 and 811 'Watch Protesters'; /tmp/flowcharts/ch03/wiki.txt (chapter page) line 72 '(Or you can avoid them by going around on the right)', line 97.",
+   "benchmarkMatches": false,
+   "fix": "M00f option 2: remove \"risk\": 0.08 (the far side never triggers). Option 1: remove \"risk\": 0.25, or keep it explicitly labelled in adaptationNote as the operator's design overriding the transcript's safe 'Watch Protesters'. Option 0 is unchanged (always noticed)."
+  },
+  {
+   "id": "ch03-02",
+   "verdict": "needs-play",
+   "topic": "Does one small public-opinion increase read INDIFFERENT?",
+   "originals": [
+    "Public opinion shown as INDIFFERENT?",
+    "Whether public opinion reads Indifferent at this chapter after saving the officer in?"
+   ],
+   "question": "In your current playthrough, if Connor saved the wounded cop in The Hostage, does the Shades of Color chart header read PUBLIC OPINION INDIFFERENT, or still SKEPTICAL?",
+   "impact": "number",
+   "why": "The PowerPyx chart shows INDIFFERENT; the wiki starts at Skeptical, and saving the cop is the only possible mover before this chapter. benchmark/scales.mjs H9 predicts Indifferent, and a SKEPTICAL reading would falsify it."
+  },
+  {
+   "id": "ch03-03",
+   "verdict": "cosmetic",
+   "topic": "Official names of the chart icons",
+   "originals": [
+    "Chart icon names?"
+   ],
+   "why": "The legend strings are known (ACTION, EVENT, DIALOG, CHOICE, …, NOT REQUIRED FOR COMPLETION in en.json GUI.MENU.FLOWCHART.LEGEND); which glyph is which affects only the research note's labels, never the subject."
+  },
+  {
+   "id": "ch03-04",
+   "verdict": "resolved",
+   "topic": "The vendor on the return trip is the same node, with no Carl effect",
+   "originals": [
+    "Hot dog vendor on the return trip?",
+    "Staring at the vendor on the way back: the same chart node?"
+   ],
+   "answer": "It is the same node. The return-trip tab is 'Stare At Hotdog Vendor (If Not Done Already)', and the chart has one STARE AT HOT DOG VENDOR / HOT DOG VENDOR PUSHES MARKUS pair, so it can happen once on either pass. Carl's comment in The Painter is conditioned only on 'Markus ran into the protesters'. The benchmark offers the node on the way to the shop only, which is a documented omission of a second chance at the same node.",
+   "source": "/tmp/flowcharts/ch03/w-Shades_Of_Color_(Transcript).txt lines 655-671; en.json MENU.FLOWCHART.01MA HOTDOG / PUSHED (single keys); /tmp/dbt/ch05-full.txt 'IF Markus ran into the protesters in Shades of Color'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-05",
+   "verdict": "resolved",
+   "topic": "Carl's line about the clothes",
+   "originals": [
+    "Carl's comment?",
+    "Carl's exact line in The Painter when the clothes are torn, for the?"
+   ],
+   "answer": "Carl: 'What happened to your clothes?' Markus: 'Oh, it's nothing… Just some demonstrators in the street, Carl…' Carl: 'What a bunch of idiots… They think they can stop progress by roughing up a few androids? I hope they didn't harm you…' Markus: 'Oh, no, no... They just pushed me around, Carl. I'm fine.' The FACTUAL/REASSURING prompt is cut, so the game has no choice here. The ch05 benchmark plays this exchange from clothesTorn.",
+   "source": "/tmp/dbt/ch05-full.txt lines 20-32 (CONDITION 'IF Markus ran into the protesters in Shades of Color', CUT prompt FACTUAL/REASSURING).",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-06",
+   "verdict": "resolved",
+   "topic": "The push and the yell need Markus to stay put",
+   "originals": [
+    "The plaza branches?",
+    "Whether the push and the yell really need Markus to stay put the?"
+   ],
+   "answer": "Both need it. The push is '(If Markus Keeps Standing By Him)'. The yell needs him to 'stay there and watch him' (wiki flowchart list) and is the 'Disturb Preacher' follow-on to 'Observe Preacher'. The benchmark offers each follow-on only on the visit right after its first step.",
+   "source": "/tmp/flowcharts/ch03/w-Shades_Of_Color_(Transcript).txt line 665 '(If Markus Keeps Standing By Him)', lines 277-287; /tmp/flowcharts/ch03/wiki.txt (chapter page) line 41 'Preacher yells at Markus - stay there and watch him'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-07",
+   "verdict": "resolved",
+   "topic": "Road workers: a shouting man, 'by 4'",
+   "originals": [
+    "Road workers (beat 4)?",
+    "Changed from the operator's notes to match the wiki transcript (\"Look At Road?",
+    "Road worker?",
+    "The road workers: shouting foreman or a manager on a tablet, and what?"
+   ],
+   "answer": "A human road worker shouts at his androids: 'Hurry up, you plastic idiots! I want this done by 4!' No source says what they are repairing, and the benchmark names nothing.",
+   "source": "/tmp/dbt/ch03-full.txt (template) '## Road Workers' Road worker: \"Hurry up, you plastic idiots! I want this done by 4!\"; /tmp/flowcharts/ch03/wiki.txt (chapter page) line 55 'a constructor yelling at his androids'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-08",
+   "verdict": "resolved",
+   "topic": "The preacher, his sermon and his yell",
+   "originals": [
+    "Who gives the speech (beat 6)?",
+    "The speech?",
+    "The yell?",
+    "Changed from the operator's notes to match the wiki: the speaker is a?"
+   ],
+   "answer": "The speaker is the preacher by the arcade entrance. His sermon includes 'the slaves are becoming the master!' and 'they care for our old!', and the yell is 'You are the one by whom The Evil will come! You are the one who will destroy Detroit!'. Afterwards 'The preacher continues ranting.' The benchmark quotes these lines.",
+   "source": "/tmp/dbt/ch03-full.txt (template) '## Watch preacher' and '## Preacher notices Markus'; /tmp/flowcharts/ch03/w-Shades_Of_Color_(Transcript).txt line 287; en.json 01MA PREACHER/SHOUTED.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-09",
+   "verdict": "cosmetic",
+   "topic": "Busker's sign punctuation",
+   "originals": [
+    "Busker's sign (beat 5)?"
+   ],
+   "why": "The transcript reads 'Human Music $1 to hear music with soul ♫' and the Busker page reads 'Human Music! $1 … ♬'. The difference is punctuation only."
+  },
+  {
+   "id": "ch03-10",
+   "verdict": "cosmetic",
+   "topic": "Park androids raking and trimming",
+   "originals": [
+    "Park workers (beat 3)?"
+   ],
+   "why": "The park page says only that 'A group of WR600 androids are also seen doing work inside the park'. The raking and trimming are scenery in an event scene."
+  },
+  {
+   "id": "ch03-11",
+   "verdict": "cosmetic",
+   "topic": "Protesters' signs",
+   "originals": [
+    "Protesters: \"read their signs\"?",
+    "Changed from the operator's notes: \"read their signs\" is dropped because no source?"
+   ],
+   "why": "No source gives the signs' wording, and the speech and chant are quoted instead. Wording only."
+  },
+  {
+   "id": "ch03-12",
+   "verdict": "cosmetic",
+   "topic": "Bus compartment and front door",
+   "originals": [
+    "The bus (beat 9)?",
+    "The bus: the human-only front door and the standing compartment at the back?"
+   ],
+   "why": "The transcript says only 'Markus enters the bus in the android section due to segregation' (line 949). The layout details change only the event text."
+  },
+  {
+   "id": "ch03-13",
+   "verdict": "resolved",
+   "topic": "Clothes torn apart",
+   "originals": [
+    "Clothes?",
+    "The harassment's result?"
+   ],
+   "answer": "The game's own label is 'MARKUS CLOTHES WERE TORN APPART', so 'torn' is right. The wiki's 'roughed-up' is prose.",
+   "source": "en.json MENU.FLOWCHART.01MA CLOTHES = 'MARKUS CLOTHES WERE TORN APPART'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-14",
+   "verdict": "resolved",
+   "topic": "Vendor's lines",
+   "originals": [
+    "Vendor?"
+   ],
+   "answer": "The vendor says 'Hey, move it! You're scaring away my customers. Are you deaf, you plastic fuck? I said move it!' The benchmark splits the line across the stare and the push.",
+   "source": "/tmp/dbt/ch03-full.txt (template) '## Looking at the Hot dog vendor'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-15",
+   "verdict": "resolved",
+   "topic": "Shop line",
+   "originals": [
+    "Shop?"
+   ],
+   "answer": "Markus says 'Payment confirmed.' with a full stop, which M00e uses.",
+   "source": "/tmp/dbt/ch03-full.txt (template) '## At Bellini paints' Markus: \"Payment confirmed.\"",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-16",
+   "verdict": "resolved",
+   "topic": "The preacher is passed only before the shop",
+   "originals": [
+    "Preacher position?",
+    "Whether the preacher can still be watched after collecting the package (the chart?"
+   ],
+   "answer": "Only before the shop. The wiki puts him 'to the right-hand side of the entrance' that Markus passes before going in. The transcript's return-trip interactions (vendor, busker 'Can Happen Again', homeless man, display-window couple, protesters) do not include him. The chart's placement is layout, not order.",
+   "source": "/tmp/flowcharts/ch03/wiki.txt (chapter page) line 57; /tmp/flowcharts/ch03/w-Shades_Of_Color_(Transcript).txt return-trip tabs after line 630 (no preacher; preacher only at lines 277-287).",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch03-17",
+   "verdict": "adaptation",
+   "topic": "Unsourced 'moment before the shop opens' dropped",
+   "originals": [
+    "Dropped from the earlier version: \"You have a moment before the paint shop?"
+   ],
+   "why": "It removes an unsourced line and adds nothing, so there is nothing to check."
+  },
+  {
+   "id": "ch03-18",
+   "verdict": "adaptation",
+   "topic": "'BELLINI PAINTS IS NOT THIS WAY' barriers left out",
+   "originals": [
+    "Left out: the barriers that turn Markus back (\"BELLINI PAINTS IS NOT THIS?"
+   ],
+   "why": "It is an invisible-wall prompt with no node or effect."
+  },
+  {
+   "id": "ch03-19",
+   "verdict": "adaptation",
+   "topic": "Honking driver left out",
+   "originals": [
+    "Left out: standing in the road until a driver honks?"
+   ],
+   "why": "It is an idle reaction that forces Markus on, with no node or effect (wiki line 55)."
+  }
+ ]
+}

@@ -1,0 +1,281 @@
+{
+ "chapter": 23,
+ "title": "The Stratford Tower",
+ "itemsInDump": 44,
+ "entries": [
+  {
+   "id": "ch23-01",
+   "verdict": "needs-play",
+   "topic": "Simon wounded by a guard, no SWAT team: does the roof prompt play",
+   "originals": [
+    "SIMON CAN'T CONTINUE without SWAT?",
+    "Simon's roof prompt nested under the SWAT branch?",
+    "A Simon wounded by a guard with no SWAT team: built as jumping…"
+   ],
+   "question": "On a run with ASSAULT > shoot the guard on the phone (Simon is shot), the server door locked and the operator shot (so no SWAT team), did the roof scene 'Simon can't continue' with LEAVE / KILL appear (yes/no)?",
+   "impact": "ending",
+   "why": "The template nests PROMPT 11 only under SWAT storms the room > Help > Save Simon, and the wiki flowchart says 'Simon Can't Continue - if Simon Saved, otherwise Run to Jump'; but PowerPyx says it 'Triggers if Simon was wounded during the mission. Either you chose the ASSAULT option … and shot the guy on phone or …' (and lists the same path under SIMON WAS LEFT BEHIND), the wiki's own note says 'The only way for Simon to escape is by locking the door, incapacitating both guards and shooting the fleeing reporter', and the Simon page says 'If Simon was injured by SWAT and/or security, he is unable to make the jump off the roof'. Against them, the template's left-guard line is Simon's 'I'm okay… I can keep going.' The benchmark has that Simon jump with the group (THE GROUP ESCAPED), which changes Simon's survival into Public Enemy."
+  },
+  {
+   "id": "ch23-02",
+   "verdict": "needs-play",
+   "topic": "Which speech choice drives the news tone line",
+   "originals": [
+    "Public-opinion tone line? (a) Does 'CALM' … mean the opening … or the ending",
+    "Which choice 'CALM' means in the tone line?",
+    "The tone line's 'CALM': built on the ending (END PEACEFULLY)…"
+   ],
+   "question": "With nobody killed, BEGIN CALMLY and END DETERMINEDLY: did Public Opinion go up at Media Reacts (yes/no)? (A 'no' means the ending drives the tone line, as built.)",
+   "impact": "arrow",
+   "why": "Template tone condition reads 'Chose CALM and didn't kill anyone' (CALM is the opening's label, PROMPT 5) and 'Chose DETERMINED or killed humans' (a label on both PROMPT 5 and 9); the wiki chapter page and Public_Opinion tie it to 'the \"peaceful\" option at the end of the speech'; PowerPyx needs 'the calm start & peaceful ending'. The benchmark keys it on the ending (M12). Worth ±2 public opinion either way."
+  },
+  {
+   "id": "ch23-03",
+   "verdict": "resolved",
+   "topic": "DETERMINED ending with no casualties: size of the drop",
+   "originals": [
+    "DETERMINED ending with no casualties is a large down?",
+    "DETERMINED with no deaths: built as the template's −2; the wiki says −1?"
+   ],
+   "answer": "Large down: the template's tone line gives PublicOpinion LargeDown for 'Chose DETERMINED or killed humans' (an ordinary arrow; the reliability log has no template error of this kind); the wiki's small down is outranked.",
+   "source": "dbt template Media Reacts, second CONDITION GROUP; wiki Public Opinion list",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-04",
+   "verdict": "resolved",
+   "topic": "Casualties: size of the drop, and 'kill everyone'",
+   "originals": [
+    "'If you kill everyone' (Public_Opinion, Large Decrease)?",
+    "Killing a guard and the operator is a small down?"
+   ],
+   "answer": "The casualty line is a small down for one or two casualties ('Killed a guard and the operator' SmallDown, as Public_Opinion's 'one or two casualties'); the large decrease for killing people is the tone line's 'Chose DETERMINED or killed humans' LargeDown, which the benchmark applies whenever anyone was killed (M14m).",
+   "source": "dbt template Media Reacts, both CONDITION GROUPs; wiki Public_Opinion lines 45 and 55–56",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-05",
+   "verdict": "resolved",
+   "topic": "Jericho on ASSAULT",
+   "originals": [
+    "Jericho ▲ on ASSAULT?",
+    "ASSAULT's Jericho arrow sits on the choice, not on the right-guard shot?"
+   ],
+   "answer": "Jericho SmallUp on choosing ASSAULT; 'Shoot the left guard' adds Jericho SmallDown and Simon SmallDown; the right guard has no arrow. Net 0 Jericho on the left-guard path. Ordinary arrows, template outranks the wiki's placement.",
+   "source": "dbt template PROMPT 3 ASSAULT and its condition group",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-06",
+   "verdict": "resolved",
+   "topic": "Jericho when Simon dies in the broadcast room",
+   "originals": [
+    "FAIL TO SAVE SIMON relationships?",
+    "FAIL TO SAVE SIMON. §3 leaves Jericho ▼…",
+    "Stat changes (template): FLEE Jericho −1; HELP none…"
+   ],
+   "answer": "SWAT storming gives Jericho SmallDown (wiki 'Simon is shot by SWAT'); FLEE adds Jericho SmallDown (wiki 'Leave Simon in the broadcast room'); 'Fail to help Simon' has no arrow. Relationship_Stat's 'If Simon is killed in the broadcast room' matches the FLEE arrow.",
+   "source": "dbt template PROMPT 10 and its condition group; wiki chapter page Jericho list",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-07",
+   "verdict": "resolved",
+   "topic": "RUSE arrows",
+   "originals": [
+    "M10 RUSE has an extra Simon arrow and lacks Jericho?",
+    "The old forged-credentials bluff, its outcomes, the unsourced Simon +1 on RUSE…"
+   ],
+   "answer": "RUSE North −1, Josh +1; in time ('POINT') Jericho +1; too slow Jericho −1, Simon −1. ch23.mjs case 'M10' applies exactly these.",
+   "source": "dbt template PROMPT 3 RUSE",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-08",
+   "verdict": "resolved",
+   "topic": "Roof SHOOT / REFRAIN arrows",
+   "originals": [
+    "Stat changes (template): SHOOT North +1, Josh −1 (the old Jericho −1…"
+   ],
+   "answer": "SHOOT North SmallUp, Josh SmallDown; REFRAIN none.",
+   "source": "dbt template PROMPT 12",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-09",
+   "verdict": "needs-play",
+   "topic": "North ↓ when Markus stuns the employee himself",
+   "originals": [
+    "North ▼ on an unlocked door?",
+    "North −1 on DRAW GUN with the employee…"
+   ],
+   "question": "With the server door unlocked, when you chose DRAW GUN and Markus knocked the employee out himself, did a North ↓ popup appear (yes/no)?",
+   "impact": "arrow",
+   "why": "The template puts ARROW North SmallDown at the top of the whole 'IF: Didn't lock the door' block (before PROMPT 2); the wiki chapter page lists it as 'Forgetting to lock the door and North stuns the employee' and a wiki note says explicitly that if Markus 'incapacitates the employee himself, then his relationship with North will not decrease'. The benchmark applies −1 on all three options (M10e)."
+  },
+  {
+   "id": "ch23-10",
+   "verdict": "resolved",
+   "topic": "Guard choice is the player's, not a roll",
+   "originals": [
+    "Which guard is a choice, not a roll?",
+    "The old engine rolled for Simon's wound…"
+   ],
+   "answer": "A choice: the template's conditions 'Shoot the right guard' / 'Shoot the left guard'; PowerPyx: shoot the left guard with L1 or the right with R1. M10b offers both.",
+   "source": "dbt template PROMPT 3 ASSAULT; pp.txt 'Shoot Guard on Phone' / 'Shoot Guard Drawing Weapon'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-11",
+   "verdict": "adaptation",
+   "topic": "Unsourced risks: RUSE timing, HELP QTE, roof timer",
+   "originals": [
+    "Risks: RUSE timing 0.2, HELP 0.15, the roof timer 0.05; none is sourced?",
+    "That timing check is the RUSE's risk…",
+    "HELP is a quick-time event with a failure branch…",
+    "The timer is the action's risk…",
+    "GET SHOT reachability? … about 1% of players"
+   ],
+   "why": "each failure branch is sourced (template '[UNLOCK TIME] Take too much time drawing the gun', 'Fail to help Simon', chart GET SHOT); only the probability is a calibration, documented as such per AGENTS.md, and no source gives a number to contradict it"
+  },
+  {
+   "id": "ch23-12",
+   "verdict": "adaptation",
+   "topic": "No roof timer without an alarm; GET SHOT with no SWAT",
+   "originals": [
+    "With no alarm nobody is on the roof to shoot…",
+    "GET SHOT with no SWAT team: built as impossible?"
+   ],
+   "why": "documented assumption; PowerPyx ties the run to 'when the SWAT breaks the door' and no source shows GET SHOT on a no-alarm run"
+  },
+  {
+   "id": "ch23-13",
+   "verdict": "resolved",
+   "topic": "The climb carries no risk",
+   "originals": [
+    "Every step is a single unbranched node with no failure…"
+   ],
+   "answer": "Each climb node is single and unbranched on the chart; PowerPyx marks each 'Happens automatically, unmissable'.",
+   "source": "pp.txt North Calls Cradle … Cut the Glass; wiki flowchart",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-14",
+   "verdict": "adaptation",
+   "topic": "Phone-ruse buttons need their desk clues",
+   "originals": [
+    "Supervisor call options are bracketed?",
+    "Lobby ruse gating?"
+   ],
+   "why": "the template brackets each ruse (needs an unlock), and the benchmark gates each on its clue but always analyses all five (PowerPyx: 'Analyze all clues … This will give you 3 options'); the ruses have no mechanical effect (wiki note)"
+  },
+  {
+   "id": "ch23-15",
+   "verdict": "resolved",
+   "topic": "Alarm state and SWAT scope",
+   "originals": [
+    "Benchmark scope? M13 and M14 are currently shown on every path…",
+    "The old engine played the breach and Simon's wound on every run…"
+   ],
+   "answer": "SWAT comes only when the door was unlocked, central security was alerted, or the operator was spared; ch23.mjs now keeps stratfordAlarm and gates M13 on stratfordSwat.",
+   "source": "wiki flowchart 'Leave Broadcast Room - if Incapacitate Security OR Shoot Guard on Phone AND Shoot Operator, Lock the Server Door also required'; PowerPyx commenter Antony",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-16",
+   "verdict": "resolved",
+   "topic": "Alarm when Markus stuns the employee himself",
+   "originals": [
+    "Does the alarm from LEAVE EMPLOYEE TO BE FOUND fire even if Markus stuns…"
+   ],
+   "answer": "Yes: any unlocked-door path brings the SWAT team; both employee branches end at LEAVE EMPLOYEE TO BE FOUND.",
+   "source": "wiki note 'The door was left unattended, then the SWAT will always raid the broadcast room regardless'; wiki flowchart (Draw Gun > Stun the Employee > Leave Employee to be Found); PowerPyx commenter Antony",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-17",
+   "verdict": "adaptation",
+   "topic": "'Convert android' on floor 47",
+   "originals": [
+    "The 'Convert android' section on Floor 47…"
+   ],
+   "why": "a scripted unmissable beat folded into the disguise event; no source shows a choice, failure or arrow"
+  },
+  {
+   "id": "ch23-18",
+   "verdict": "resolved",
+   "topic": "Cut TV lines",
+   "originals": [
+    "Two cut TV lines?",
+    "The CTN report on European migrant camps…"
+   ],
+   "answer": "Both the floor-47 CTN migrant-camp report and the Media Reacts 'bug or malfunction' line are UNUSED/CUT; neither is built.",
+   "source": "dbt template 'Watch TV' and end of 'Media Reacts'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch23-19",
+   "verdict": "resolved",
+   "topic": "Order of FLEE and HELP in the broadcast room",
+   "originals": [
+    "Option order in the broadcast room: HELP is listed before FLEE…",
+    "Order: the template and the chart both list FLEE / LEAVE SIMON first…"
+   ],
+   "answer": "Sources list FLEE / LEAVE SIMON first, then HELP / TRY TO SAVE SIMON. The benchmark lists HELP first for its regression tests, which departs from the game's order and puts the rescue in the first slot.",
+   "source": "dbt template PROMPT 10 (FLEE, Help); wiki flowchart (Leave Simon, Try To Save Simon)",
+   "benchmarkMatches": false,
+   "fix": "M13.options: list option id 1 (FLEE) before option id 0 (HELP), ids unchanged; update the regression paths that assume the first option"
+  },
+  {
+   "id": "ch23-20",
+   "verdict": "cosmetic",
+   "topic": "Tech Addict article in the cutscene",
+   "originals": [
+    "The Tech Addict article visible in the cutscene is unreadable…"
+   ],
+   "why": "unreadable background prop, not a collectible"
+  },
+  {
+   "id": "ch23-21",
+   "verdict": "cosmetic",
+   "topic": "Blue boxes on PowerPyx's chart",
+   "originals": [
+    "Blue on PowerPyx's chart?"
+   ],
+   "why": "chart colouring only; no option, arrow or gate"
+  },
+  {
+   "id": "ch23-22",
+   "verdict": "adaptation",
+   "topic": "ASSAULT without drawing / doing nothing at the guards",
+   "originals": [
+    "ATTACK without drawing the gun?",
+    "ASSAULT without drawing (SECURITY SUSPECTS SOMETHING from the group bracket) and doing nothing…"
+   ],
+   "why": "an inaction path (wiki note: 'North will knock out both of them'), not a button; the same consequence is reachable through RUSE's slow branch"
+  },
+  {
+   "id": "ch23-23",
+   "verdict": "resolved",
+   "topic": "Simon left on the roof hides",
+   "originals": [
+    "The old 'hide him with a gun' detail had no source…"
+   ],
+   "answer": "Left alive, Simon hides from the police and Connor can find or ignore him in Public Enemy.",
+   "source": "pp.txt 'Leave Simon … He will hide from the police'",
+   "benchmarkMatches": true,
+   "fix": null
+  }
+ ]
+}

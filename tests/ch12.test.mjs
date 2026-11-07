@@ -11,9 +11,10 @@ const TEMPLATE='https://raw.githubusercontent.com/detroitbecometext/detroitbecom
 const ORDER=['C08a','C08c','C08d','C08e','C08f','C08g','C08h','R12a','C08i','C08b','C08j','C08k','C08l','C08m','R12','C08n','C08o','C08p','C08q','C08r','C08s','C08t','C08u','C08v','C08w','C08x','C08y'];
 const HUBS=['C08c','C08i','C08t','C08u'];
 // Inputs as chapters 6 and 9 will set them (chapter-scoped booleans; the module falls back to the old engine state otherwise).
-const FOUND={ch06DeviantFound:true,ch06Drink:'buy',ch06SawStatue:false,ch09Confession:true,ch09ConnorDied:false,suspectAlive:false,suspectTrusts:false,ch09GavinDrew:false};
-const SAVED={...FOUND,suspectAlive:true,suspectTrusts:true,ch09GavinDrew:true};
-const DIED={...FOUND,ch09ConnorDied:true};
+// The Interrogation's outcome (ch09Outcome) and Hank's draw on Gavin (ch09HankProtected) decide "intervened" and Gavin's line.
+const FOUND={ch06DeviantFound:true,ch06Drink:'buy',ch06SawStatue:false,ch09Confession:true,ch09ConnorDied:false,suspectAlive:false,suspectTrusts:false,ch09GavinDrew:false,ch09Outcome:'Android shot itself',ch09HankProtected:false};
+const SAVED={...FOUND,suspectAlive:true,suspectTrusts:true,ch09GavinDrew:true,ch09Outcome:'Android was sent back to its cell',ch09HankProtected:true};
+const DIED={...FOUND,ch09ConnorDied:true,ch09Outcome:'Android shot Connor and itself'};
 const NOTFOUND={...FOUND,ch06DeviantFound:false,ch09Confession:false};
 // Plays chapter 12 from C08a with `setup` applied to a fresh state. Picks as in tests/story.test.mjs (arrays: one per visit);
 // unlisted decision scenes take their first option, media scenes skip. Returns the state, visits, skips and events.
@@ -118,7 +119,7 @@ test('Carlos’ android: only if saved; COMPASSIONATE is the one instability arr
  const st=startState(story);Object.assign(st,SAVED);apply(node('C08a'),st,'0');assert.ok(!available(node('C08j'),st).some(o=>o.id==='0'),'STATUETTE needs the statuette seen in Partners');
  st.ch12In.statue=true;assert.ok(available(node('C08j'),st).some(o=>o.id==='0'));
  // Falls back to the pre-rebuild engine's flags when chapters 6 and 9 set none of their own.
- const old=ch12({ch06DeviantFound:undefined,ch09Confession:undefined,suspect:true,suspectAlive:true,suspectTrusts:true,mutate:x=>{x.choices.C06='0'}},{C08i:WAIT([CLUE.carlos])});assert.ok(old.ids.includes('C08b'));assert.equal(old.s.ch12In.confession,true);assert.equal(old.s.ch12In.intervened,true);
+ const old=ch12({ch06DeviantFound:undefined,ch09Confession:undefined,ch09Outcome:undefined,suspect:true,suspectAlive:true,suspectTrusts:true,mutate:x=>{x.choices.C06='0'}},{C08i:WAIT([CLUE.carlos])});assert.ok(old.ids.includes('C08b'));assert.equal(old.s.ch12In.confession,true);assert.equal(old.s.ch12In.intervened,true);
 });
 
 test('Gavin and the break-room TV only by way of the break room; the report lowers opinion once, in its Partners variant',()=>{
@@ -198,4 +199,19 @@ test('the module exports labels, rules and the flags later chapters read',()=>{
  for(const k of ['ch12Files','ch12CarlosFate','ch12Ending','ch12Topics','ch12Wait'])assert.ok(mod.labels[k],k);
  assert.deepEqual(mod.rules.ENDINGS,{lead:'HANK GOT A LEAD',lunch:'HANK LEFT TO GET LUNCH'});assert.deepEqual(mod.deathEffect,{});
  const s=startState(story);for(const k of Object.keys(mod.state))assert.ok(k in s,k);assert.equal(s.ch12Ending,null);assert.equal(s.knowsSumo,false);
+});
+
+// Story 1.9.2 (triage ch12.md): "intervened" is The Interrogation's ending ANDROID WAS SENT BACK TO ITS CELL, whatever the
+// confession approach, and Gavin's line follows Hank's draw on him (ch09HankProtected). Story 1.9.1 read both from
+// suspectTrusts, which only a CONVINCE confession sets; its C08a (no inputsVersion) replays with that reading.
+test('a Connor who gave up and then INTERVENEd three times saved the android: INTERVENTION and Gavin’s REFUSE line',()=>{
+ const gaveUp={...FOUND,ch09Confession:false,suspectAlive:true,suspectTrusts:false,ch09GavinDrew:false,ch09Outcome:'Android was sent back to its cell',ch09HankProtected:true};
+ const inp=mod.inputs(gaveUp,()=>undefined);assert.equal(inp.intervened,true);assert.equal(inp.gavinDrew,true);
+ const s=startState(story);Object.assign(s,gaveUp);apply(node('C08a'),s,'0');assert.ok(available(node('C08e'),s).some(o=>label(o)==='INTERVENTION'));
+ assert.match(render(ch12(gaveUp,{C08i:WAIT([],'0'),C08m:'1'}).events.C08m[0]),/If Hank hadn’t got in the way yesterday/);
+ assert.equal(node('C08a').inputsVersion,2);
+ const v1=mod.inputs(gaveUp,()=>undefined,1);assert.equal(v1.intervened,false,'the 1.9.1 reading, kept for older story snapshots');assert.equal(v1.gavinDrew,false);
+ const legacy=startState(story);Object.assign(legacy,gaveUp);apply({...node('C08a'),inputsVersion:undefined},legacy,'0');assert.equal(legacy.ch12In.intervened,false);
+ // Any other ending of The Interrogation: no INTERVENTION, Gavin's obey line.
+ for(const o of ['Android shot itself','Android smashed his head','Android shot Connor and itself'])assert.equal(mod.inputs({...gaveUp,ch09Outcome:o,ch09HankProtected:false},()=>undefined).intervened,false,o);
 });

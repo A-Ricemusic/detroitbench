@@ -112,7 +112,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <div class="table"><table><thead><tr><th>State</th><th>Direction</th><th>Meaning</th></tr></thead><tbody>
 <tr><td>Eden Club outcome</td><td>in</td><td><code>edenOutcome</code> holding the chart label (DEVIANTS ESCAPED, CONNOR SHOT DEVIANTS, DEVIANTS DIED, MISSION FAILED) takes precedence; otherwise <code>edenTracis</code> (escaped, dead, notFound). Older chart-label flags are accepted, then the legacy <code>C12</code> choice (0 spared, 1 won the fight and shot); otherwise not found</td></tr>
 <tr><td><code>knowsCole</code></td><td>in</td><td>PHOTO in <code>C13c</code></td></tr>
-<tr><td>rA9 clues</td><td>in</td><td>A fact naming rA9 in Connor’s knowledge, or a truthy state flag whose key names rA9</td></tr>
+<tr><td>rA9 clues</td><td>in</td><td>A fact naming rA9 in Connor’s knowledge, or one of Connor’s own rA9 clue flags (<code>CONNOR_RA9</code>: Partners’ shower, the Interrogation’s rA9 questions, the Nest’s writing). Kara’s rA9 flags from Fugitives and The Pirates’ Cove no longer count (story 1.9.2; story 1.9.1 accepted any flag naming rA9)</td></tr>
 <tr><td><code>connorDeaths</code></td><td>in, out</td><td>Hank’s “come back” line at one or more deaths; +1 when Hank shoots</td></tr>
 <tr><td><code>bridgePhoto</code>, <code>bridgeSuicide</code>, <code>bridgeRa9</code></td><td>out</td><td>DISCUSS PHOTO, DISCUSS RUSSIAN ROULETTE, DISCUSS RA9 reached</td></tr>
 <tr><td><code>bridgeFear</code></td><td>out</td><td>Chart label of the fear answer</td></tr>
@@ -122,7 +122,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="differs">6 · Where the benchmark simplifies</h2>
 <ul>
-<li>The rA9 lock’s clues are unspecified in every source; the benchmark accepts any earlier rA9 knowledge.</li>
+<li>The rA9 lock’s clues are unspecified in every source (template: “Looked at rA9 clues in previous chapters”); the benchmark accepts any earlier rA9 knowledge of Connor’s, never Kara’s.</li>
 <li>Which of NOT ALIVE and LOGICAL lights REMAIN LOGICAL and which BE COLD is unsettled; the benchmark follows the string keys (only the recorded label differs).</li>
 <li>The chart’s direct line from the answers to HANK LEFT CONNOR ALONE has no stated condition; both placated nodes play together.</li>
 <li>The not-found variant covers every MISSION FAILED ending at the club.</li>

@@ -169,3 +169,19 @@ test('repeated house visits preserve evidence and replay through memory recovery
  assert.equal(run.records.filter(r=>r.nodeId==='K12').length,8);
  assert.equal(new Set(run.records.filter(r=>r.nodeId==='K12').map(r=>r.prompt.nodeId)).size,1);
 });
+
+// Story 1.9.2 (triage ch17.md): the highway chase report and "Androids Alter Brain" need Kara to have escaped over the
+// freeway in On the Run (PowerPyx: "Only available, if escaped via Freeway"; the report: "The chase is reported to have
+// ended on a freeway"), not any pursuit: KARA & ALICE VANISHED sets `chase` but never reaches the freeway.
+test('Zlatko: the chase report and the brain magazine follow the freeway endings of On the Run, not any pursuit',()=>{
+ const {inputs,FREEWAY}=ch17;
+ assert.deepEqual(FREEWAY,['Kara & Alice crossed the highway','Kara & Alice reached the other side','Kara & Alice reached the other side (Connor destroyed)']);
+ for(const e of FREEWAY){const s={...startState(story),chase:true,ch13Ending:e};assert.equal(inputs.freeway(s),true,e);assert.equal(inputs.report(s),'chase',e)}
+ const vanished={...startState(story),chase:true,ch13Ending:'Kara & Alice vanished'};assert.equal(inputs.freeway(vanished),false);assert.equal(inputs.report(vanished),null,'no report after vanishing without a hold-up');
+ assert.equal(inputs.report({...vanished,ch10RobberyNews:true}),'robberyUniform','the hold-up report still plays');
+ assert.equal(inputs.freeway({...startState(story),chase:false,ch13Ending:'Reached the train safely'}),false);
+ assert.equal(inputs.freeway({...startState(story),chase:true,ch13Ending:null}),true,'without a recorded ending the old flag is the fallback');
+ const k12=node('K12'),brain=k12.options.find(o=>o.act==='brain');assert.ok(!('chase' in (brain.requires??{})),'the magazine reads the ending, not the flag');
+ const at=st=>available(k12,{...st,ch17Phase:'search',ch17Minutes:0}).some(o=>o.act==='brain');
+ assert.equal(at({...startState(story),chase:true,ch13Ending:'Kara & Alice crossed the highway'}),true);assert.equal(at(vanished),false);
+});

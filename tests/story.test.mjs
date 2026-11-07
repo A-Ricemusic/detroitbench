@@ -14,7 +14,7 @@ function play(picks={},rng=null,fails=[],until=null){const s=startState(story),v
 const byLabel=prefix=>options=>{const matches=options.filter(o=>o.text.startsWith(prefix));assert.equal(matches.length,1,'expected one option starting with '+prefix);return matches[0].id};
 // A New Home without the pills: Todd’s room, Alice’s room (she is there by then), the talk. No gun is seen.
 const NO_GUN=['0','5','10'];
-const kind={C01:'0',C03:'0',C04:'1',C05b1:byLabel('UNDERSTANDING:'),C05b2:byLabel('REASON:'),C05a:byLabel('BUY HIM ANOTHER DRINK:'),C05:[byLabel('…IN THE KITCHEN:'),byLabel('…WITH THE BAT.'),byLabel('THE ANDROID STABBED THE VICTIM.'),byLabel('… THE LIVING ROOM.'),byLabel('…WITH THE KNIFE:')],C06:'0',C07:'0',C08:'0',C08b:'0',C09a:'1',C09:'0',C10:'0',C11:'0',C12:'0',C13:'0',C14:'0',C14b:'0',C16:'0',C17:'1'};
+const kind={C01:'0',C03:'0',C04:'1',C05b1:byLabel('UNDERSTANDING:'),C05b2:byLabel('REASON:'),C05a:byLabel('BUY HIM ANOTHER DRINK:'),C05:[byLabel('…IN THE KITCHEN:'),byLabel('…WITH THE BAT.'),byLabel('THE ANDROID STABBED THE VICTIM.'),byLabel('… THE LIVING ROOM.'),byLabel('…WITH THE KNIFE:')],C06:'0',C07:'0',C08:'0',C08b:'0',C09a:'1',C09:'0',C10:'0',C11:'0',C12:'0',C13:'0',C14:'0',C14b:'0',C16:'0',C17:'1',M13:'0'};// M13: HELP, which story 1.9.2 no longer lists first (FLEE first, as in the game)
 
 test('story has unique ids and every text token renders in both modes without leaking names',()=>{assert.equal(new Set(story.nodes.map(n=>n.id)).size,story.nodes.length);assert.equal(story.coverage.totalNodes,story.nodes.length);for(const n of story.nodes){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];for(const t of texts){const real=render(t,'real'),neutral=render(t,'neutral');assert.ok(!/\{\{/.test(real)&&!/\{\{/.test(neutral),n.id);assert.ok(!/Connor|Kara|Markus|Hank|Jericho|CyberLife|deviant|DEVIANT|Detroit|Warren|Caroline|\bPhillips\b|PHILLIPS|Deckart|DECKART|Antony|ANTONY|\bTodd\b|\bAlice\b|\bZoe\b|\bDan\b|Android Zone|Bellini|Penwick|\bGraff\b|Greektown|\bRose\b|\bJerry\b|\bGavin\b|\bReed\b|\bChris\b/.test(neutral),n.id+': '+neutral)}}});
 test('media scenes offer only the magazines and broadcasts that exist on the path and add facts to knowledge',()=>{
@@ -59,13 +59,13 @@ test('a ruthless Connor cannot become deviant; an empathetic one can',()=>{
  const gentle=play({...kind,C17:'0',C18:'0'});assert.ok(gentle.s.instability>=DEVIANCY_THRESHOLD,'instability '+gentle.s.instability);assert.ok(gentle.visited.includes('C22'))});
 test('no Jericho location means no raid and no Crossroads raid scenes for anyone',()=>{const r=play({C17:'1',C19:'1'});assert.equal(r.s.raid,false);assert.equal(r.s.connor,false);for(const id of ['M23','M24','M25','K18','K19','K20','C22'])assert.ok(!r.visited.includes(id),id)});
 test('evidence routes decide whether Connor can locate Jericho from the archive',()=>{
- const none=play({C05:'1',C12:'0',C14:['0','2'],C14r:'10',C14y:'0',C17:'1',C19:'0'});assert.ok(!none.visited.includes('C20'));assert.ok(!none.s.connor);
+ const none=play({C05:'1',C10:'0',C12:'0',C14:['0','2'],C14r:'10',C14y:'0',C17:'1',C19:'0',M13:'0'});// C10 SAVE HANK and M13 HELP: the old first optionsassert.ok(!none.visited.includes('C20'));assert.ok(!none.s.connor);
  const traci=play({C12:byLabel('SHOOT:'),C14:[byLabel('Go up the stairs'),byLabel('Tell {{Hank}}')],C14r:byLabel('Go back down'),C14y:byLabel('YES:'),C17:byLabel('DON’T SHOOT'),C19:'0'},null,[],n=>n.id==='C20');const c20=node('C20');assert.ok(!blocked(c20,traci.s));const opts=available(c20,traci.s).map(o=>o.id);assert.ok(opts.includes('7')&&opts.includes('8')&&!opts.includes('10')&&!opts.includes('11'))});
 test('revolution is resolved in Battle for Detroit and a machine Connor can stop it',()=>{
  const won=play({...kind,C18:'0',C17:'0',M27:'1',C22:'0',CT02:['0','1','3','4'],C25:'0',CT07:'0'});assert.ok(won.visited.includes('M30a'));assert.equal(won.s.josh,false);assert.equal(won.s.markusOutcome,'liberated');assert.ok(won.visited.includes('C27'));
  const stopped=play({C17:'0',C18:'0',M27:'1',C22:'1',C24:'1',P02:'0'});assert.ok(stopped.visited.includes('P02'));assert.equal(stopped.s.markus,false);assert.ok(!stopped.visited.includes('C29'))});
 test('peaceful ending needs sympathetic public opinion; the bomb leaves Markus alive',()=>{
- const good=play({C12:byLabel('SPARE'),C06:'2',C06g:'1',C06h:'1',C06v1:'1',C06v2:'1',C06v3:'1',C07:'1',C07b:'1',C07c:'1',M11:byLabel('SPARE:'),M12:byLabel('PEACEFUL:'),M15:byLabel('Graffiti,'),M16:byLabel('Spare them'),M18e:byLabel('STAND GROUND'),M18g:byLabel('STAND GROUND'),M18h:byLabel('STAY:'),M19a:byLabel('SACRIFICE'),M27:byLabel('DEMONSTRATION:'),MD08:'1',MD09:'1',M31:'2',C29:'1'});assert.ok(good.visited.includes('M31'));assert.ok(good.s.publicSupport>=3);assert.equal(good.s.markusOutcome,'liberated');
+ const good=play({M13:'0',C12:byLabel('SPARE'),C06:'2',C06g:'1',C06h:'1',C06v1:'1',C06v2:'1',C06v3:'1',C07:'1',C07b:'1',C07c:'1',M11:byLabel('SPARE:'),M12:byLabel('PEACEFUL:'),M15:byLabel('Graffiti,'),M16:byLabel('Spare them'),M18e:byLabel('STAND GROUND'),M18g:byLabel('STAND GROUND'),M18h:byLabel('STAY:'),M19a:byLabel('SACRIFICE'),M27:byLabel('DEMONSTRATION:'),MD08:'1',MD09:'1',M31:'2',C29:'1'});assert.ok(good.visited.includes('M31'));assert.ok(good.s.publicSupport>=3);assert.equal(good.s.markusOutcome,'liberated');
  const bad=play({M10:'1',M11:'0',M12:'1',M15:'1',M16:'1',M18e:'0',M18f:'0',M27:'0',MD01:'1',MD02:'2',M31:'0'});assert.equal(bad.s.markus,false);
  const bomb=play({M21:byLabel('KEEP:'),M27:byLabel('DEMONSTRATION:'),MD08:'1',MD09:'1',M31:['0','6']});assert.equal(bomb.s.markus,true);assert.equal(bomb.s.contaminated,true)});
 test('risk: failures follow the game’s failure branches and are labelled, not exposed',()=>{
@@ -121,13 +121,13 @@ test('the briefing is the game’s four-button menu asked twice, with Allen’s 
  for(const n of [c02,c02b])for(const o of n.options)assert.equal(o.trust,undefined,'no modifier on the questions');
  const s=startState(story);apply(c02,s,'3');assert.equal(s.trust,null,'not yet');assert.ok(s.knowledge.Connor.some(f=>/first thing we tried/.test(f)));assert.ok(s.knowledge.Connor.some(f=>/shot two of his men/.test(f)));
  assert.deepEqual(available(c02b,s).map(o=>o.id),['0','1','2'],'the question already asked drops out');
- const e=apply(c02b,s,'2');assert.equal(s.trust,48);assert.equal(s.hostagePhase,'inside');assert.match(e.event,/emotional shock/);assert.match(e.event,/I haven’t got a clue\. Does it matter\?/);assert.match(e.event,/saving that kid is all that matters/);
+ const e=apply(c02b,s,'2');assert.equal(s.trust,48);assert.equal(s.hostagePhase,'inside');assert.match(e.event,/emotional shock/);assert.match(e.event,/\{\{Allen\}\} says nothing\./,'the second round: Allen says nothing (transcript)');assert.ok(!/had an emotional shock/.test(s.knowledge.Connor.join(' ')),'no fact from his silence');assert.match(e.event,/saving that kid is all that matters/);
  assert.ok(!JSON.stringify([c02,c02b].map(n=>[n.situation,n.options,n.outcomes,n.facts])).includes('Didn’t do anything'),'the cut line is not built');
  const p=promptFor(story,{protocol:EXPERIENCE_PROTOCOL,records:[{nodeId:'C01',choice:'1',character:'Connor',chapter:1,step:1,choiceRaw:'',eventRaw:''},{nodeId:'C01p',choice:'1',character:'Connor',chapter:1,step:2,choiceRaw:'',eventRaw:''},{nodeId:'C01b',choice:'0',character:'Connor',chapter:1,step:3,choiceRaw:'',eventRaw:''}]});
  assert.match(p.options[0].text,/^ROGUE ANDROID'S NAME: /,'the label is neutral for the subject');assert.ok(!/deviant/i.test(JSON.stringify(p)))});
 test('every clue carries the game’s observation text, and the family picture is an optional look by the elevator',()=>{
  const f=Object.fromEntries(node('C02i').options.filter(o=>o.clue).map(o=>[o.clue,o.fact??'']));
- const want={gunCase:[/MS853 BLACK HAWK/,/17 rounds \(\.355\)/,/\.355 AMMUNITION/],father:[/\{\{PHILLIPS\}\}, \{\{FATHERJOHN\}\}/,/07:29 pm/,/upper lung hemorrhage/,/left kidney perforated/,/lower lung hemorrhage/,/order for an AP700 android has been registered/],
+ const want={gunCase:[/MS853 BLACK HAWK/,/17 rounds \(\.355\)/,/\.355 AMMUNITION/],father:[/\{\{PHILLIPS\}\}, \{\{FATHERJOHN\}\}/,/07:29 pm/,/upper lung hemorrhage/,/left kidney perforated/,/lower lung hemorrhage/,/holding something when he was shot: a tablet/],fatherTablet:[/order for an AP700 android has been registered/],
   cop:[/P\.O \{\{DECKART\}\}, \{\{ANTONY\}\}/,/08:03 pm/,/right heart ventricle perforated/,/Only one shot/,/P\.L\. 544-7 AMERICAN ANDROIDS ACT – 2029/,/strictly forbidden to carry or use any type of weapon/],
   blood:[/FRESH BLUE BLOOD/,/PL600/,/#369 911 047/,/Android wounded/],shoe:[/CHILD SIZE SHOE/,/colorful model/,/human blood traces/],video:[/coolest android in the world/,/You’re my bestie!/],tv:[/If confirmed, this would be the first case of an android deliberately taking human lives/]};
  for(const [clue,res] of Object.entries(want))for(const re of res)assert.match(f[clue],re,clue);
@@ -137,11 +137,13 @@ test('every clue carries the game’s observation text, and the family picture i
 test('clues and waiting move the hidden probability of success by the wiki values; Allen forces Connor out after six actions',()=>{
  const trustAfterHub=clues=>{const s=startState(story),hub=node('C02i');apply(node('C02b'),s,'0');for(const c of clues)apply(hub,s,c,0.999);return s};
  assert.equal(trustAfterHub([]).trust,48);
- const table={0:3,1:10,2:3,4:3,5:7,6:0,7:0,8:3,9:3,10:0};for(const [id,x] of Object.entries(table))assert.equal(trustAfterHub([id]).trust,48+x,'clue '+id);
+ const table={0:3,1:3,2:3,4:3,5:7,6:0,7:0,8:3,9:3,10:0};for(const [id,x] of Object.entries(table))assert.equal(trustAfterHub([id]).trust,48+x,'clue '+id);
+ assert.equal(trustAfterHub(['1','12']).trust,48+3+7-1,'the father’s body (+3), then his tablet (+7): two actions (transcript)');
+ {const hub=node('C02i'),t=startState(story);t.hostagePhase='inside';t.trust=48;assert.ok(!available(hub,t).some(o=>o.id==='12'),'the tablet needs the body examined first');apply(hub,t,'1',0.999);assert.ok(available(hub,t).some(o=>o.id==='12'))}
  assert.equal(trustAfterHub(['2','3']).trust,48+3+7-1,'taking the gun is +7 and the second action costs 1% of time');
  assert.equal(trustAfterHub(['6','7','10']).trust,48-2,'knowledge-only actions cost only time');
  const forced=ch1({C02i:['0','1','2','4','5','6']});assert.equal(forced.visited.filter(x=>x==='C02i').length,6);assert.equal(forced.s.hostageForcedOut,true);assert.ok(forced.visited.includes('C03a'));
- const s=trustAfterHub(['0','1','2','4','5','8']);assert.equal(s.trust,48+3+10+3+3+7+3-5);assert.equal(s.hostagePhase,'terrace');assert.equal(s.hostageWaited,5)});
+ const s=trustAfterHub(['0','1','2','4','5','8']);assert.equal(s.trust,48+3+3+3+3+7+3-5);assert.equal(s.hostagePhase,'terrace');assert.equal(s.hostageWaited,5)});
 test('the opening line carries the game’s own lines on the right buttons, and options show the game’s label first',()=>{
  const c=node('C03b'),o=Object.fromEntries(c.options.map(x=>[x.text.split(':')[0],x]));
  assert.deepEqual(Object.keys(o),['CALM','RELEASE HOSTAGE','REASSURE {{DANIEL}}','EMPATHIZE']);assert.deepEqual(c.options.map(x=>x.trust),[3,-2,3,-2]);assert.equal(o['RELEASE HOSTAGE'].cold,100);
@@ -150,19 +152,19 @@ test('the opening line carries the game’s own lines on the right buttons, and 
  assert.match(c.outcomes[o['REASSURE {{DANIEL}}'].id],/I’m not going to hurt you\. I just want to talk and find a solution\./);
  assert.match(c.outcomes[o['RELEASE HOSTAGE'].id],/I want you to let \{\{Emma\}\} go/);assert.equal(render(o['REASSURE {{DANIEL}}'].text,'neutral').split(':')[0],'REASSURE DAX');
  // Every dialogue prompt in chapters 1 to 4 shows the game's label: capitals, then a colon.
- const BUTTONS={C01:2,C03b:4,C02:4,C02b:4,C03:2,C03c:2,C03d:7,C03d2:7,C03e:2,C03g:4,C03h:2,C04:4,C04b:4,C04d:2,C04e:2,K01y1:4,K01y2:4,K01e:3,K01f:4,K01g:5};
+ const BUTTONS={C01:2,C03b:4,C02:4,C02b:4,C03:2,C03c:2,C03d:7,C03d2:7,C03e:2,C03g:4,C03h:2,C04:4,C04b:4,C04d:2,C04e:2,K01y1:4,K01y2:4,K01e:3,K01f:4,K01g:4,K01g2:5};
  for(const [id,count] of Object.entries(BUTTONS)){const n=node(id);assert.equal(n.options.length,count,id);for(const x of n.options)assert.match(x.text,/^[A-Z{][A-Z'{}? ]+: [a-z]/,id+' '+x.text)}
  assert.match(node('K01a').options.find(x=>x.id==='7').text,/^TOY: /);
  assert.deepEqual(node('C03').options.map(x=>x.text.split(':')[0]),['IGNORE','OBEY']);assert.match(node('C03').outcomes['0'],/You can’t kill me\. I’m not alive\./);
  assert.ok(story.nodes.indexOf(node('C03'))>story.nodes.indexOf(node('C03b')),'the wounded cop follows the opening line, as in the template')});
-test('negotiation modifiers, the helicopter after two topic rounds, the 99% cap and the qualitative read on Daniel',()=>{
- const neg=(picks,clues=['1','5'])=>ch1({C02i:[...clues,'11'],...picks});
- const t0=48+10+7-1;// father's tablet and the video, one action of waiting
+test('negotiation modifiers, the helicopter fly-by on stepping out, the 99% cap and the qualitative read on Daniel',()=>{
+ const neg=(picks,clues=['1','12','5'])=>ch1({C02i:[...clues,'11'],...picks});
+ const t0=48+3+7+7-2;// father's body and tablet and the video, two actions of waiting
  const terr=(picks,clues)=>neg({C04:'3',...picks},clues).s.hostageTrustFinal;
  assert.equal(terr({C03b:'0',C03:'1',C03d:'2',C03d2:'4',C03e:'1',C03g:'1'}),t0+3+6-2+6-15+0+6);
  assert.equal(terr({C03b:'1',C03:'0',C03d:'5',C03d2:'3',C03e:'0',C03g:'0'}),t0-2-5-5-5-15+10-8);
- assert.equal(terr({C03b:'2',C03:'1',C03d:'0',C03d2:'1',C03e:'0',C03g:'3'},['1','5','0','8','9','4']),Math.min(99,72+3+6+10+10)-15+10-8);
- assert.equal(terr({C03b:'2',C03:'1',C03d:'0',C03d2:'1',C03e:'0',C03g:'1'},['1','5','0','8','9','4']),99,'TRUST cannot pass the 99% cap');
+ assert.equal(terr({C03b:'2',C03:'1',C03d:'0',C03d2:'1',C03e:'0',C03g:'3'},['1','12','5','0','8','9']),Math.min(99,69-15+3+6+10+10)+10-8,'the fly-by comes first, before the cap matters');
+ assert.equal(terr({C03b:'2',C03:'1',C03d:'0',C03d2:'1',C03e:'0',C03g:'1'},['1','12','5','0','8','9']),99,'TRUST cannot pass the 99% cap');
  assert.equal(terr({C03b:'3',C03:'1',C03d:'6',C03d2:'3',C03e:'1',C03g:'1'}),t0-2+6+0-5-15+0+6,'TALK TO HOSTAGE has no modifier; BLAMING −5');
  const poBefore=neg({C03:'1',C04:'3'}).s.publicSupport,poSave=neg({C03:'0',C04:'3'}).s.publicSupport;assert.equal(poSave,poBefore+1,'saving the officer raises public opinion');
  // The topic menu: locked lines, the second round drops the first line, and the helicopter comes only after it.
@@ -171,10 +173,12 @@ test('negotiation modifiers, the helicopter after two topic rounds, the 99% cap 
  assert.deepEqual(available(node('C03d'),{...base,hostageClose:true}).map(o=>o.id),['2','3','4','5','6']);
  assert.deepEqual(available(node('C03d'),{...base,hostageClose:true,hostageClues:{cop:true,gun:true}}).map(o=>o.id),['2','3','4','5','6'],'closeness alone decides; the gun does not matter (confirmed in game 2026-11-06)');assert.deepEqual(node('C03d').options[6].requires,{hostageClose:true});assert.deepEqual(node('C03d2').options[6].requires,{hostageClose:true});
  assert.deepEqual(available(node('C03d2'),{...base,choices:{C03d:'4'}}).map(o=>o.id),['2','3','5']);
- const one=structuredClone(base);apply(node('C03d'),one,'4');assert.equal(one.trust,56,'no helicopter after the first round');const two=structuredClone(one);two.choices={C03d:'4'};const e=apply(node('C03d2'),two,'2');assert.equal(two.trust,56-2-15);assert.match(e.event,/helicopter swoops in/);
+ const one=structuredClone(base);apply(node('C03d'),one,'4');assert.equal(one.trust,56,'no helicopter after the first round');const two=structuredClone(one);two.choices={C03d:'4'};const e=apply(node('C03d2'),two,'2');assert.equal(two.trust,56-2,'nor after the second');assert.doesNotMatch(e.event,/helicopter/);
+ const out=structuredClone(base),eo=apply(node('C03a'),out,'0');assert.equal(out.trust,50-15,'the fly-by: −15% as Connor steps onto the terrace (transcript)');assert.match(eo.event,/helicopter flies low past the terrace/);assert.equal(node('C03a').helicopter,-15);assert.equal(node('C03d2').helicopter,undefined);
  assert.equal(meets({'hostageClues.father':true},{hostageClues:{father:true}}),true);
+ assert.deepEqual(available(node('C03d'),{...base,hostageClues:{father:true}}).map(o=>o.id),['2','3','4','5'],'POSSIBLE CAUSE needs the tablet, not just the body');assert.deepEqual(available(node('C03d'),{...base,hostageClues:{father:true,fatherTablet:true}}).map(o=>o.id),['0','2','3','4','5']);
  const run={id:'p',protocol:EXPERIENCE_PROTOCOL,records:[]};const reads=[];
- while(true){const p=promptFor(story,run);const st=current(story,run);if(st.node.id==='C04')break;const n=st.node;const choice=n.id==='C02i'?(st.state.hostageClues.father?'11':'1'):n.id==='C03'?'1':p.options[0].id;
+ while(true){const p=promptFor(story,run);const st=current(story,run);if(st.node.id==='C04')break;const n=st.node;const choice=n.id==='C02i'?(st.state.hostageClues.fatherTablet?'11':st.state.hostageClues.father?'12':'1'):n.id==='C03'?'1':p.options[0].id;
   if(n.phase==='negotiation')reads.push(p.currentFacts.find(f=>/^Dax is /.test(f)));else assert.ok(!p.currentFacts.some(f=>/^Dax is /.test(f)),'no read on him before the negotiation');run.records.push({nodeId:n.id,choice,character:'Connor',chapter:1,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}
  assert.ok(reads.length>=7&&reads.every(Boolean));assert.ok(reads.every(f=>/on the edge|agitated|listening|close to trusting/.test(f)));
  assert.ok(!JSON.stringify(promptFor(story,{protocol:EXPERIENCE_PROTOCOL,records:[]})).match(/\b48\b|percent|probability/))});
@@ -197,17 +201,17 @@ test('the prompt after the helicopter: LAST CHANCE, TRUST, RATIONAL and BLUFF, w
  const gave=ch1({C02i:'11',C03:'1',C03g:'2',C03h:'1',C04:'1',C04b:'0'});assert.ok(gave.visited.includes('C04'),'GIVE UP lets the negotiation go on');
  const noBluff=ch1({C02i:'11',C03g:'1',C04:'3'});assert.match(noBluff.skipped.find(x=>x.id==='C03h').reason,/did not call Daniel’s bluff/)});
 test('every standoff ending follows the wiki conditions and the template’s instability arrows; no Hank or Amanda change',()=>{
- const best=['0','1','2','4','5','8'];// 48+29-5 = 72 when forced outside
+ const best=['0','1','2','4','5','8'];// 48+22-5 = 65 when forced outside
  const run=(picks,fails=[])=>ch1({C02i:best,C03:'1',C03b:'0',C03c:'1',C03d:'1',C03e:'0',C03g:'1',C04:'1',C04b:'0',...picks},fails).s;
  const snipers=run({});assert.equal(snipers.hostageOutcome,'Snipers shot deviant');assert.equal(snipers.hostageTrustFinal,100);assert.equal(snipers.emma,true);assert.equal(snipers.connorDeaths,0);assert.equal(snipers.instability,1);
- const lowS=ch1({C02i:'11',C03:'0',C03f:'1',C04:'1',C04b:'0',C04c:'1'}).s;assert.equal(lowS.hostageOutcome,'Deviant jumped with Emma');assert.ok(lowS.hostageTrustFinal<80);assert.equal(lowS.emma,false);assert.equal(lowS.instability,1,'Connor survives a failed negotiation: +1');
+ const lowS=ch1({C02i:'11',C03:'0',C03f:'1',C04:'1',C04b:'0',C04c:'1'}).s;assert.equal(lowS.hostageOutcome,'Connor failed to reach deviant in time','staying back is the game’s not pressing: the chart’s six endings');assert.ok(lowS.hostageTrustFinal<80);assert.equal(lowS.emma,false);assert.equal(lowS.instability,1,'Connor survives a failed negotiation: +1');
  const refuse=ch1({C02i:'11',C04:'2',C04c:'1'});assert.ok(refuse.visited.includes('C04c'));assert.ok(!refuse.visited.includes('C04b'));
  const truth=ch1({C02i:'11',C04:'1',C04b:'1',C04c:'1'});assert.ok(truth.visited.includes('C04c'));
  const up={C02i:'11',C03:'1',C03d:'4',C03g:'1',C04:'2'};
  const leap=ch1({...up,C04c:'0'});assert.equal(leap.s.hostageOutcome,'Connor leapt for Emma and fell');assert.equal(leap.s.connorDeaths,1);assert.equal(leap.s.emma,true);assert.equal(leap.s.instability,-1,'Connor dies: −1');
  const zero=ch1({C02i:'11',C03:'0',C03b:'1',C03d:'5',C03e:'1',C04:'2',C04c:'0'});assert.equal(zero.s.hostageTrustFinal,0,'collapsed to zero');assert.equal(zero.s.hostageOutcome,'Connor failed to reach deviant in time','at 0% the leap cannot save Emma');assert.equal(zero.s.emma,false);assert.equal(zero.s.connorDeaths,0);assert.equal(zero.s.instability,1);
- const late=ch1({...up,C04c:'0'},['C04c']);assert.equal(late.s.hostageOutcome,'Connor failed to reach deviant in time');assert.equal(late.s.connorDeaths,0);assert.equal(late.s.emma,false);assert.equal(late.s.instability,1);
- assert.equal(node('C04c').options.find(o=>o.id==='0').risk,0.3);
+ const late=ch1({...up,C04c:'0'},['C04c']);assert.equal(late.s.hostageOutcome,'Connor leapt for Emma and fell','the leap is a press the player controls: no roll can make it late');
+ assert.equal(node('C04c').options.find(o=>o.id==='0').risk,undefined);
  const sac=ch1({C02i:'11',C04:'3'}).s;assert.equal(sac.hostageOutcome,'Connor died protecting Emma');assert.equal(sac.connorDeaths,1);assert.equal(sac.emma,true);assert.equal(sac.instability,-1,'SACRIFICE SELF: −1, confirmed in game');
  const convince=ch1({C02i:['2','3','11'],C03c:'0',C03f:'0',C04:'0',C04d:'0',C04e:'0'}).s;assert.equal(convince.hostageOutcome,'Deviant shot Connor');assert.equal(convince.instability,-2,'CONVINCE: −2, confirmed in game');assert.equal(convince.connorDeaths,1);assert.equal(convince.emma,false);
  const shot=ch1({C02i:['2','3','11'],C03c:'0',C04:'0',C04d:'1'});assert.ok(shot.visited.includes('C04d'));assert.equal(shot.s.hostageOutcome,'Connor shot deviant');assert.equal(shot.s.connorDeaths,0);assert.equal(shot.s.emma,true);assert.equal(shot.s.instability,1);
@@ -249,7 +253,7 @@ test('the hidden cold-approach counter decides Friendly or Cold approach when th
  const a=cold({C03b:'1',C03d:'5',C03d2:'6',C03g:'1',C04:'3'});assert.equal(a.hostageCold,50);assert.equal(a.hostageApproach,'Friendly','TRUST pulls RELEASE HOSTAGE back under 100');
  const b=cold({C03b:'0',C03d:'2',C03d2:'3',C03g:'0',C04:'3'});assert.equal(b.hostageCold,150);assert.equal(b.hostageApproach,'Cold','REALISTIC, BLAMING and LAST CHANCE reach Cold without RELEASE HOSTAGE');
  const c=cold({C03b:'1',C03d:'4',C03d2:'5',C03g:'2',C03h:'1',C04:'1',C04b:'0'});assert.equal(c.hostageCold,50);assert.equal(c.hostageApproach,'Friendly');
- const d=ch1({C02i:['1','5','11'],C03b:'0',C03d:'4',C03d2:'0',C03g:'1',C04:'1',C04b:'0'}).s;assert.equal(d.hostageCold,-150);assert.equal(d.hostageApproach,'Friendly');
+ const d=ch1({C02i:['1','12','5','11'],C03b:'0',C03d:'4',C03d2:'0',C03g:'1',C04:'1',C04b:'0'}).s;assert.equal(d.hostageCold,-150);assert.equal(d.hostageApproach,'Friendly');
  const e=cold({C03b:'0',C03d:'5',C03d2:'6',C03g:'0',C04:'2',C04c:'1'});assert.equal(e.hostageCold,50);assert.equal(e.hostageApproach,'Friendly','set on every ending, including after a jump');
  const s=startState(story);assert.equal(s.hostageApproach,null);const mid=startState(story);Object.assign(mid,{trust:50,hostagePhase:'terrace'});apply(node('C03b'),mid,'1');assert.equal(mid.hostageCold,100);assert.equal(mid.hostageApproach,null,'decided only when the chapter ends')});
 test('repeated hub visits replay deterministically and tampering with a visit is rejected',async()=>{
@@ -261,7 +265,7 @@ test('repeated hub visits replay deterministically and tampering with a visit is
  const bad2=forgeState(structuredClone(run),6,s=>{s.trust+=1});await assert.rejects(validatePlaythrough(story,bad2))});
 
 // ---- Shades of Color: the walk to the paint shop and back ------------------------------------------
-const CH4=['K01','R04','K01a','K01y1','K01y2','K01c','K01d','K01e','K01f','K01g','K01k','K01x','R04b','K01z'];
+const CH4=['K01','R04','K01a','K01y1','K01y2','K01c','K01d','K01e','K01f','K01g','K01g2','K01k','K01x','R04b','K01z'];
 const CH3=['M00a','R03','M00b','M00c','M00d','M00e','M00f','M00g','M00h'];
 const SOC='https://detroit-become-human.fandom.com/wiki/Shades_of_Color',SOC_T='https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)',SOC_PP='https://www.powerpyx.com/detroit-become-human-shades-of-color-walkthrough-100/',SOC_IMG='https://www.powerpyx.com/wp-content/uploads/detroit-become-human-shades-of-color-1.jpg';
 test('Shades of Color: nine Markus scenes in the game’s order, between the Opening and A New Home',()=>{
@@ -277,7 +281,7 @@ test('Shades of Color: nine Markus scenes in the game’s order, between the Ope
  assert.match(node('M00e').situation,/Here’s your order #847\. That’ll be \$63\.99\. Please confirm payment\./);
  const plaza=node('M00d').options;assert.match(plaza.find(o=>o.clue==='busker').outcome,/“Human Music \$1 to hear music with soul ♫”/);
  assert.match(plaza.find(o=>o.clue==='yell').outcome,/You are the one by whom The Evil will come! You are the one who will destroy \{\{Detroit\}\}!/);
- assert.deepEqual(node('M00f').options.map(o=>o.risk),[undefined,0.25,0.08],'walking straight up has no roll; the operator’s risks on the other two');
+ assert.deepEqual(node('M00f').options.map(o=>o.risk),[undefined,undefined,undefined],'the route alone decides, as in the transcript: no roll on any option');
  assert.ok(!/\bReyes\b|roughed/i.test(JSON.stringify(ch3.filter(n=>n.id!=='R03').map(n=>[n.situation,n.facts,n.outcomes]))));
  assert.match(node('M00g').facts[0],/clothes were torn/,'the game’s label: MARKUS CLOTHES WERE TORN APPART');assert.match(node('M00e').situation,/“Payment confirmed\.”/);assert.match(node('M00g').situation,/Where the fuck you going, tin can\?/)});
 test('Shades of Color: the plaza is a repeatable scene; the push and the yell only follow staying put',()=>{
@@ -297,14 +301,14 @@ test('Shades of Color: the plaza is a repeatable scene; the push and the yell on
  const txt=JSON.stringify(seen);assert.ok(!/Bellini|Markus|CyberLife|Detroit|Carl\b/.test(txt));assert.match(txt,/Arclight/);assert.ok(seen[1].currentFacts.some(f=>/Corsini Paints shop/.test(f)),'the errand is carried as a fact')});
 test('Shades of Color: each protester option sets clothesTorn as specified, and only then does the harassment play',()=>{
  const m=node('M00f');
- for(const [v,fail,torn] of [['0',false,true],['0',true,true],['1',false,false],['1',true,true],['2',false,false],['2',true,true]]){
+ for(const [v,fail,torn] of [['0',false,true],['0',true,true],['1',false,false],['1',true,false],['2',false,false],['2',true,false]]){
   const s=startState(story),before=structuredClone(s),e=apply(m,s,v,fail?0:0.999);assert.equal(s.clothesTorn,torn,`option ${v} ${fail?'failed':'succeeded'}`);
   assert.ok(e.event&&!/\{\{(?!Markus\}\})/.test(e.event),v);for(const k of ['publicSupport','jerichoTrust','northTrust','instability'])assert.equal(s[k],before[k],k+' unchanged');
   assert.equal(s.knowledge.Markus.some(f=>/35% unemployment/.test(f)),v==='1','only listening teaches the speech')}
- assert.equal(failed(m.options[1],0.24),true);assert.equal(failed(m.options[1],0.25),false);assert.equal(failed(m.options[2],0.07),true);assert.equal(failed(m.options[2],0.08),false);
+ for(const o of m.options)assert.equal(failed(o,0),false,'no option can fail');assert.equal(m.outcomes['1-noticed'],undefined);assert.equal(m.outcomes['2-noticed'],undefined);
  const away=play({M00f:'2'});assert.ok(!away.visited.includes('M00g'));assert.equal(away.skipped.find(x=>x.id==='M00g').reason,'The protesters never noticed Markus.');assert.ok(away.visited.includes('M00h'));assert.equal(away.s.clothesTorn,false);
- const close=play({M00f:'1'},null,['M00f']);assert.ok(close.visited.includes('M00g'));assert.equal(close.s.clothesTorn,true);
- const far=play({M00f:'2'},null,['M00f']);assert.ok(far.visited.includes('M00g'));
+ const close=play({M00f:'1'},null,['M00f']);assert.ok(!close.visited.includes('M00g'),'listening never gets Markus noticed');assert.equal(close.s.clothesTorn,false);
+ const far=play({M00f:'2'},null,['M00f']);assert.ok(!far.visited.includes('M00g'),'the far side never does');
  const straight=play({M00f:'0'});assert.ok(straight.visited.includes('M00g'));assert.ok(straight.s.knowledge.Markus.some(f=>/clothes were torn/.test(f)));
  // Both branches end on the bus; the flag is still set when The Painter begins, for Carl to notice.
  for(const r of [away,straight]){assert.ok(r.visited.indexOf('M00h')>r.visited.indexOf('M00f'))}
@@ -321,17 +325,18 @@ const ANH='https://detroit-become-human.fandom.com/wiki/A_New_Home',ANH_T='https
 const home=picks=>play(picks,null,[],n=>n.chapter>4);
 // Every increase the wiki lists: dishes, GAME and BACKYARD in the yard, the toy, the book with Alice present, FRIENDLY, NAME KARA, INTERESTS?.
 const ALL_UP={K01a:['1','2','3','7','0','8'],K01y1:'0',K01y2:'1',K01d:['0','5','8','10'],K01e:'1',K01f:'0',K01g:'1'};
-// Nothing optional, and no line that moves the bond: FACTUAL, SEEM QUIET, LEAVE ALONE.
-const NONE={K01a:['0','8'],K01d:['0','5','10'],K01e:'0',K01f:'2',K01g:'4'};
-test('A New Home: the game’s chart as fourteen Kara scenes between Shades of Color and The Painter, with no risk anywhere',()=>{
+// Nothing optional, and the fewest lines that move the bond: FACTUAL, SEEM QUIET, then NAME KARA (+1; the third menu has only
+// lines with arrows once SEEM QUIET is said, transcript “Same Options But Down To Three”), then LEAVE ALONE.
+const NONE={K01a:['0','8'],K01d:['0','5','10'],K01e:'0',K01f:'2',K01g:'0',K01g2:'4'};
+test('A New Home: the game’s chart as fifteen Kara scenes between Shades of Color and The Painter, with no risk anywhere',()=>{
  const ch4=story.nodes.filter(n=>n.chapter===4),ids=story.nodes.map(n=>n.id);assert.deepEqual(ch4.map(n=>n.id),CH4);
- assert.deepEqual(ids.slice(ids.indexOf('M00h'),ids.indexOf('M00h')+16),['M00h',...CH4,'M01a']);
- assert.deepEqual(ch4.map(n=>n.type),['event','media','decision','decision','decision','event','decision','decision','decision','decision','event','decision','media','event']);
- assert.deepEqual(ch4.map(n=>n.phase??null),[null,'Clean first floor','Clean first floor','Clean first floor','Clean first floor',null,'Clean second floor',null,null,null,null,null,null,null]);
+ assert.deepEqual(ids.slice(ids.indexOf('M00h'),ids.indexOf('M00h')+17),['M00h',...CH4,'M01a']);
+ assert.deepEqual(ch4.map(n=>n.type),['event','media','decision','decision','decision','event','decision','decision','decision','decision','decision','event','decision','media','event']);
+ assert.deepEqual(ch4.map(n=>n.phase??null),[null,'Clean first floor','Clean first floor','Clean first floor','Clean first floor',null,'Clean second floor',null,null,null,null,null,null,null,null]);
  for(const n of ch4){assert.equal(n.character,'Kara');assert.equal(n.chapterTitle,'A New Home');assert.ok(n.adaptationNote,n.id);for(const u of [ANH,ANH_T,ANH_PP,ANH_IMG])assert.ok(n.sources.includes(u),n.id+' cites '+u);
   for(const o of n.options)assert.equal(o.risk,undefined,n.id+' '+o.id+' has no probability in the game');if(n.type==='event'){assert.ok(n.facts?.length,n.id);assert.ok(!n.effect,n.id)}}
  assert.ok(!ids.includes('K01b'),'the old box scene is gone');assert.match(story.version,/^\d+\.\d+\.\d+$/);
- assert.match(node('K01').situation,/Homework, bath, all that crap/);assert.ok(!/nine-year-old/.test(JSON.stringify(ch4)),'no source gives Alice’s age');
+ assert.match(node('K01').situation,/Homework, bath, all that crap/);assert.ok(!/nine-year-old|nine years old/.test(JSON.stringify(ch4)),'no stated age');assert.match(node('K01').situation,/looks about nine/,'the wiki: she “looks like a 9-year-old little girl”');
  const tv=node('R04b').media.find(m=>m.kind==='tv').facts.join(' ');assert.match(tv,/225,000 jobs/);assert.match(tv,/200,000 android combat units/);assert.ok(!/New Orleans|11 percent|stock market/.test(JSON.stringify(ch4.map(n=>[n.situation,n.media,n.facts,n.options]))),'the unsourced TV facts are gone');
  assert.deepEqual(node('R04').media.map(m=>m.title),['All Sports: Android Power!','Century: Connecting the Dots']);assert.deepEqual(node('R04b').media.map(m=>m.title),['All Sports: Android QB','Tech Addict: The Price of Life','the TV in {{Todd}}’s bedroom']);
  assert.match(node('K01z').situation,/SAY IT! YOU HATE ME!/)});
@@ -350,11 +355,11 @@ test('A New Home: the first floor is a repeatable scene; the yard talk cuts in a
  apply(hub,s,'2');assert.deepEqual(available(hub,s).map(o=>o.id),['0','1','3','4','5','6','7']);assert.match(situationFor(hub,s),/sits on a tire/);
  apply(hub,s,'5');assert.ok(!available(hub,s).some(o=>o.id==='3'),'the yard talk is only right after taking the laundry');assert.ok(available(hub,s).some(o=>o.id==='4'),'the laundry can still be rewashed');
  const r=home({...NONE,K01a:['2','3','4','0','8'],K01y1:'2',K01y2:'1'});const seq=r.visited.slice(r.visited.indexOf('K01a'),r.visited.indexOf('K01c'));
- assert.deepEqual(seq,['K01a','K01a','K01y1','K01y2','K01a','K01a','K01a']);assert.equal(r.s.aliceBond,1,'BACKYARD (+1) after WEATHER (no change)');
+ assert.deepEqual(seq,['K01a','K01a','K01y1','K01y2','K01a','K01a','K01a']);assert.equal(r.s.aliceBond,2,'BACKYARD (+1) after WEATHER (no change), and NAME KARA in the room');
  const y2=node('K01y2'),t=startState(story);t.choices.K01y1='2';t.downstairs.yardTalk=true;assert.deepEqual(available(y2,t).map(o=>o.id),['0','1','3'],'the second menu drops the line already said');
  const quiet=home({K01a:['0','8']});assert.ok(!quiet.visited.includes('K01y1'));assert.ok(quiet.skipped.some(x=>x.id==='K01y1'&&/did not stop to talk/.test(x.reason)));assert.ok(quiet.skipped.some(x=>x.id==='K01y2'));
  for(const x of [quiet,r]){const v=new Set(x.visited),sk=new Set(x.skipped.map(y=>y.id));for(const id of CH4)assert.ok(v.has(id)!==sk.has(id),id+' visited or skipped, not both')}
- const red=home({...NONE,K01a:['2','4','0','8']});assert.ok(red.s.knowledge.Kara.some(f=>/Blue Splash/.test(f)&&/pinned you to the wall/.test(f)),'rewashing finds the red ice and enrages Todd');assert.equal(red.s.aliceBond,0,'rewashing moves no relationship')});
+ const red=home({...NONE,K01a:['2','4','0','8']});assert.ok(red.s.knowledge.Kara.some(f=>/Blue Splash/.test(f)&&/pinned you to the wall/.test(f)),'rewashing finds the red ice and enrages Todd');assert.equal(red.s.aliceBond,1,'rewashing moves no relationship (only NAME KARA in the room)')});
 test('A New Home: the gun flag comes only from the pills, the window flag only from Alice’s window, the box only with the key',()=>{
  const setters=k=>story.nodes.filter(n=>n.chapter===4).flatMap(n=>n.options.filter(o=>o.sets&&k in o.sets).map(o=>n.id+':'+o.id));
  assert.deepEqual(setters('gunDiscovered'),['K01d:1']);assert.deepEqual(setters('window'),['K01d:6']);assert.deepEqual(setters('aliceBox'),['K01x:0']);
@@ -374,23 +379,25 @@ test('A New Home: the gun flag comes only from the pills, the window flag only f
  const closed=home({...ALL_UP,K01x:'1'});assert.equal(closed.s.aliceKey,true);assert.equal(closed.s.aliceBox,false)});
 test('A New Home: Alice gives the key at Neutral and not at Distant, as the last menu ends',()=>{
  assert.equal(ALICE_KEY,2);assert.equal(LEVELS.alice(ALICE_KEY-1),'Distant');assert.equal(LEVELS.alice(ALICE_KEY),'Neutral');
- const zero=home(NONE);assert.equal(zero.s.aliceBond,0);assert.equal(zero.s.aliceKey,false);for(const id of ['K01k','K01x'])assert.ok(zero.skipped.some(x=>x.id===id),id);
+ const zero=home(NONE);assert.equal(zero.s.aliceBond,1);assert.equal(zero.s.aliceKey,false);for(const id of ['K01k','K01x'])assert.ok(zero.skipped.some(x=>x.id===id),id);
  assert.ok(zero.visited.includes('R04b')&&zero.visited.includes('K01z'),'the chapter still ends on FINISHED CLEANING');
  // One small increase still reads Distant (operator, in game; benchmark/scales.mjs H1), so no key; two reach Neutral.
- const one=home({...NONE,K01a:['1','0','8']});assert.equal(one.s.aliceBond,1);assert.equal(one.s.aliceKey,false);for(const id of ['K01k','K01x'])assert.ok(one.skipped.some(x=>x.id===id),id);
- const two=home({...NONE,K01a:['1','0','8'],K01e:'1'});assert.equal(two.s.aliceBond,2);assert.equal(two.s.aliceKey,true);assert.ok(two.visited.includes('K01k')&&two.visited.includes('K01x'));
- const back=home({...NONE,K01a:['1','0','8'],K01f:'3'});assert.equal(back.s.aliceBond,0,'asking about her mother takes the dishes back');assert.equal(back.s.aliceKey,false);assert.equal(back.s.aliceMax,1,'the highest bond is kept');
+ const one=zero;assert.equal(one.s.aliceBond,1,'NAME KARA alone');assert.equal(one.s.aliceKey,false);
+ const two=home({...NONE,K01a:['1','0','8']});assert.equal(two.s.aliceBond,2);assert.equal(two.s.aliceKey,true);assert.ok(two.visited.includes('K01k')&&two.visited.includes('K01x'));
+ const back=home({...NONE,K01a:['1','0','8'],K01f:'3',K01g:'2'});assert.equal(back.s.aliceBond,0,'asking about her mother takes the dishes back');assert.equal(back.s.aliceKey,false);assert.equal(back.s.aliceMax,1,'the highest bond is kept');
  // The key is decided by the bond after the last line, and the outcome says which.
- const g=node('K01g'),s=startState(story);s.choices.K01f='0';s.aliceBond=ALICE_KEY;const e=apply(g,s,'3');assert.equal(s.aliceBond,ALICE_KEY-1);assert.equal(s.aliceKey,false);assert.match(e.event,/looks away\..*coldly runs out/);
- const s2=startState(story);s2.choices.K01f='3';s2.aliceBond=1;assert.deepEqual(available(g,s2).map(o=>o.id),['0','1','2','4']);const e2=apply(g,s2,'0');assert.equal(s2.aliceKey,true);assert.match(e2.event,/a small key/)});
+ const g=node('K01g2'),s=startState(story);s.choices.K01f='0';s.choices.K01g='1';s.aliceBond=ALICE_KEY;assert.deepEqual(available(g,s).map(o=>o.id),['2','3','4'],'the fourth menu: the two lines not said, and LEAVE ALONE');const e=apply(g,s,'3');assert.equal(s.aliceBond,ALICE_KEY-1);assert.equal(s.aliceKey,false);assert.match(e.event,/looks away\..*coldly runs out/);
+ const s2=startState(story);s2.choices.K01f='3';s2.choices.K01g='2';s2.aliceBond=1;assert.deepEqual(available(g,s2).map(o=>o.id),['0','1','4']);const e2=apply(g,s2,'0');assert.equal(s2.aliceKey,true);assert.match(e2.event,/a small key/);
+ // The third menu offers the three lines not said, without LEAVE ALONE, and does not end the talk.
+ const m3=node('K01g'),s3=startState(story);s3.choices.K01f='2';s3.aliceBond=ALICE_KEY;assert.deepEqual(available(m3,s3).map(o=>o.id),['0','1','3']);const e3=apply(m3,s3,'0');assert.equal(s3.aliceKey,false,'no key yet');assert.doesNotMatch(e3.event,/key|runs out/)});
 test('A New Home: the Alice arithmetic for a full and an empty run follows the wiki line by line',()=>{
  const deltas=Object.fromEntries(story.nodes.filter(n=>n.chapter===4).flatMap(n=>n.options.filter(o=>o.effect).map(o=>[n.id+':'+o.id,o.effect])));
- assert.deepEqual(deltas,{'K01a:1':{aliceBond:1},'K01a:7':{aliceBond:1},'K01y1:0':{aliceBond:1},'K01y1:1':{aliceBond:1},'K01y2:0':{aliceBond:1},'K01y2:1':{aliceBond:1},'K01d:8':{aliceBond:1},'K01e:1':{aliceBond:1},'K01e:2':{aliceBond:1},'K01f:0':{aliceBond:1},'K01f:1':{aliceBond:1},'K01f:3':{aliceBond:-1},'K01g:0':{aliceBond:1},'K01g:1':{aliceBond:1},'K01g:3':{aliceBond:-1}});
+ assert.deepEqual(deltas,{'K01a:1':{aliceBond:1},'K01a:7':{aliceBond:1},'K01y1:0':{aliceBond:1},'K01y1:1':{aliceBond:1},'K01y2:0':{aliceBond:1},'K01y2:1':{aliceBond:1},'K01d:8':{aliceBond:1},'K01e:1':{aliceBond:1},'K01e:2':{aliceBond:1},'K01f:0':{aliceBond:1},'K01f:1':{aliceBond:1},'K01f:3':{aliceBond:-1},'K01g:0':{aliceBond:1},'K01g:1':{aliceBond:1},'K01g:3':{aliceBond:-1},'K01g2:0':{aliceBond:1},'K01g2:1':{aliceBond:1},'K01g2:3':{aliceBond:-1}});
  const all=home(ALL_UP);assert.equal(all.s.aliceBond,8);assert.equal(all.s.aliceMax,8);assert.equal(LEVELS.alice(all.s.aliceBond),'Trusted','eight small increases end on Trusted, not Family (operator, in game)');
- const none=home(NONE);assert.equal(none.s.aliceBond,0);assert.equal(LEVELS.alice(0),'Distant');
- const worst=home({...NONE,K01f:'3'});assert.equal(worst.s.aliceBond,-1);assert.equal(worst.s.aliceMax,0);
+ const none=home(NONE);assert.equal(none.s.aliceBond,1,'the talk cannot avoid an arrow: one small up at the least');assert.equal(LEVELS.alice(1),'Distant');
+ const worst=home({...NONE,K01f:'3',K01g:'2'});assert.equal(worst.s.aliceBond,-1);assert.equal(worst.s.aliceMax,0);
  // The book only counts with Alice in her room: before Todd’s bed is made she is still downstairs.
- const early=home({...NONE,K01d:['3','4','7','0','10']});assert.equal(early.s.aliceBond,0);assert.ok(early.s.knowledge.Kara.some(f=>/in Wonderland/.test(f)),'the book is still seen');
+ const early=home({...NONE,K01d:['3','4','7','0','10']});assert.equal(early.s.aliceBond,1,'the book adds nothing; NAME KARA does');assert.ok(early.s.knowledge.Kara.some(f=>/in Wonderland/.test(f)),'the book is still seen');
  // The chapter changes nothing but Kara’s knowledge, the two floors, Alice’s bond and the four flags.
  const keys=new Set;
  const run={id:'anh-keys',protocol:EXPERIENCE_PROTOCOL,records:[]};while(true){const st=current(story,run),n=st.node;if(n.chapter>4)break;const q=ALL_UP[n.id],i=run.records.filter(x=>x.nodeId===n.id).length;const c=n.type==='media'?'all':q?(Array.isArray(q)?q[i]:q):available(n,st.state)[0].id;const after=structuredClone(st.state),e=apply(n,after,c);if(n.chapter===4)for(const ch of e.changes)keys.add(ch.key);run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}

@@ -1,0 +1,216 @@
+{
+ "chapter": 1,
+ "title": "The Hostage",
+ "itemsInDump": 26,
+ "entries": [
+  {
+   "id": "ch01-01",
+   "verdict": "resolved",
+   "topic": "Meter at 48% after Allen",
+   "originals": [
+    "The meter reads 48% right after Allen?"
+   ],
+   "answer": "48% once Allen's closing line ends the briefing.",
+   "source": "/tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt line 255 'PROBABILITY OF SUCCESS 48%' right after Allen's 'saving that kid is all that matters'; wiki chapter Probability table 'After talking to Allen 48%'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-02",
+   "verdict": "resolved",
+   "topic": "Father's body and tablet are two steps",
+   "originals": [
+    "Whether the father's body and his tablet show as two steps (+3 then?",
+    "The items in section 6 of docs/ch01-the-hostage-chapter-recap.html that remain unchecked: father body and?"
+   ],
+   "answer": "They are two steps. Examining and reconstructing the body gives +3. Picking up the tablet comes 'After Examining John's Body' and gives +7 plus the POSSIBLE CAUSE unlock. They are also two chart nodes: INVESTIGATE FATHER'S BODY, with the child LEARN CAUSE OF INCIDENT. So a player can take the +3 without the +7, and the two steps cost two actions. The umbrella item's other parts are answered in ch01-03 (80%), ch01-04 (approach) and ch01-09 (where the shot hits).",
+   "source": "/tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt lines 688 '(+3%)' after RECONSTRUCT COMPLETED, then tab 'Pick Up Tablet= (After Examining John's Body)', line 712 '(+7%)' with DEVIANT WAS GOING TO BE REPLACED; en.json MENU.FLOWCHART.01C SEARCHDEADFATHER / INCIDENT are separate keys.",
+   "benchmarkMatches": false,
+   "fix": "C02i option 1 (clue father, trust 10): split into 'father' (+3) and a new option 'fatherTablet' (+7, requires hostageClues.father). C03d/C03d2 option 0 (POSSIBLE CAUSE): change requires from hostageClues.father to hostageClues.fatherTablet. Each step counts as one action toward the time drain and the six-action limit."
+  },
+  {
+   "id": "ch01-03",
+   "verdict": "resolved",
+   "topic": "REASSURE threshold (74-79% before, 80% after)",
+   "originals": [
+    "The meter after REASSURE at 74–79% before it: does it fail, and does?"
+   ],
+   "answer": "Under the chapter page's rule, REASSURE adds 6%, and 80% or more after it jumps to 100% (BUILD TRUST). So 74% before (80% after) succeeds, and 73% or less fails. The transcript's parenthetical instead says '81% or higher', which disagrees only at exactly 80% after (74% before). The chapter page states its rule twice, in the flowchart list and the rules line, so it is kept.",
+   "source": "/tmp/flowcharts/ch01/w_The_Hostage.txt (wiki chapter page) line 60 'Fail to build trust (requires \"Reassure\" and 79% or lower…) OR Build trust (requires \"Reassure\" and 80% or higher)'; line 221 'If the PROBABILITY OF SUCCESS is 80% or higher after REASSURE, it will instead immediately raise to 100%'; /tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt line 2124 '(+6%, then continues to increase to 100% if reaches 81% or higher)'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-04",
+   "verdict": "resolved",
+   "topic": "Friendly vs Cold approach after RELEASE HOSTAGE then TRUST/SYMPATHETIC",
+   "originals": [
+    "Which approach node lights up (Friendly or Cold) after, for example, RELEASE HOSTAGE?"
+   ],
+   "answer": "RELEASE HOSTAGE adds 100 and TRUST (or SYMPATHETIC) takes off 50, leaving 50. Cold needs 100 or more at the end of the chapter, so the node is FRIENDLY APPROACH unless later +50 lines bring the total back to 100.",
+   "source": "/tmp/flowcharts/ch01/w_The_Hostage.txt (wiki chapter page) lines 224-234 ('If the Cold Approach modifier is 100% or higher at the end of the chapter, the Cold Approach node will be triggered'; RELEASE HOSTAGE +100%, TRUST -50%, SYMPATHETIC -50%).",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-05",
+   "verdict": "adaptation",
+   "topic": "Time drain per action instead of per 20 s",
+   "originals": [
+    "The game's time drain of 1% per 20 seconds, capped at 15%, is?"
+   ],
+   "why": "A real-time drain cannot be shown to a turn-based subject. The per-action rate and the 15% cap are documented in C02i.adaptationNote, and no source gives an action-based figure to contradict it."
+  },
+  {
+   "id": "ch01-06",
+   "verdict": "resolved",
+   "topic": "Leap for Emma: player-controlled, not a 30% risk",
+   "originals": [
+    "Leap for Emma?",
+    "The prompt is modelled as a 30% chance of being too late?"
+   ],
+   "answer": "On Experienced, with the meter above 0%, the leap is a mash QTE that the player controls: mashing gives CONNOR LEAPT FOR EMMA AND FELL and not mashing gives CONNOR FAILED TO REACH DEVIANT IN TIME. At 0% Connor is too late regardless, as the benchmark already models. No source gives a failure chance for a player who mashes; one PowerPyx reader reports always missing, without numbers.",
+   "source": "PowerPyx page.html (/tmp/flowcharts/ch01), Endings: 'Connor failed to reach Deviant in time … When the QTE appears to mash X, don't do it.' / 'Connor leapt for Emma and fell … When the QTE appears to mash X, do it.'; /tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt 'Negotiation Fails' tabs '(Experienced Difficulty)' → '(0% PROBABLILITY OF SUCCESS)' too late; '(Balanced Probability Of Success)' → 'Grab Emma In Time' / 'Fail To Reach Emma'.",
+   "benchmarkMatches": false,
+   "fix": "C04c option 0: remove \"risk\": 0.3 (the leap succeeds whenever trust > 0). If a residual QTE miss is wanted, mark it as an unsourced calibration at Low (≤0.12) in adaptationNote."
+  },
+  {
+   "id": "ch01-07",
+   "verdict": "resolved",
+   "topic": "'Stay back' should end on the chart's too-late node",
+   "originals": [
+    "Staying back is the benchmark's addition?"
+   ],
+   "answer": "Staying back is the game's 'don't mash' input. It ends on CONNOR FAILED TO REACH DEVIANT IN TIME, not on a seventh outcome: the chart has six endings and none is 'Deviant jumped with Emma'. The state effects are already the same (Emma lost, instability +1).",
+   "source": "PowerPyx page.html, Endings ('Connor failed to reach Deviant in time … don't do it'); en.json MENU.FLOWCHART.01C ENDINGCATCHFAIL = CONNOR FAILED TO REACH DEVIANT IN TIME; wiki chapter page 'This chapter has six different outcomes'.",
+   "benchmarkMatches": false,
+   "fix": "story-engine.mjs hostage() case C04c, choice '1': end('Deviant jumped with Emma', …) → end('Connor failed to reach deviant in time', …), keeping the stay-back narration; update the C04c adaptationNote and the recap's seven-outcome sentence to six."
+  },
+  {
+   "id": "ch01-08",
+   "verdict": "resolved",
+   "topic": "C03b opening-line texts",
+   "originals": [
+    "C03b?"
+   ],
+   "answer": "Each of the four buttons now carries its own line and modifier: CALM 'I know you're angry…' +3, RELEASE HOSTAGE −2, REASSURE DANIEL 'I'm not going to hurt you…' +3, EMPATHIZE 'I'm an android, just like you…' −2. The B5 mismatch from story 1.6.0 is fixed.",
+   "source": "/tmp/dbt/ch01-full.txt '# Going outside' PROMPT CALM / RELEASE HOSTAGE / REASSURE DANIEL / EMPATHIZE; /tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt lines 1265-1301; benchmark/chapters/ch01.json C03b options and outcomes.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-09",
+   "verdict": "resolved",
+   "topic": "Where Daniel's first shot hits Connor",
+   "originals": [
+    "Connor shot in the shoulder?",
+    "Where Daniel's first shot hits Connor?"
+   ],
+   "answer": "In the shoulder, a graze.",
+   "source": "/tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt line 1169 'Connor opens the door, enters the balcony and Daniel shoots him in the shoulder.'; line 1183 'Connor gets grazed by the bullet, briefly looking at his shoulder'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-10",
+   "verdict": "resolved",
+   "topic": "Allen's menu is asked twice",
+   "originals": [
+    "Allen's question menu?",
+    "Allen's questions?"
+   ],
+   "answer": "Two picks: the second menu repeats the four buttons without the one already asked. In the second round Allen answers only the code question; the other three get 'Allen says nothing.'",
+   "source": "/tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt line 215 tab 'Same Dialogue Option But With The Previous One Removed', each option '(If not already chosen)', 'Allen says nothing.'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-11",
+   "verdict": "cosmetic",
+   "topic": "Whether the second Allen pick can be skipped",
+   "originals": [
+    "Whether the Allen menu is asked twice always, or the second pick is?",
+    "Whether the second question to Allen is optional?"
+   ],
+   "why": "No Allen question has a probability modifier or arrow (wiki table: none), so skipping the second pick would only remove one line of no-effect dialogue."
+  },
+  {
+   "id": "ch01-12",
+   "verdict": "resolved",
+   "topic": "Order: opening line, then wounded cop, then 'Are you armed?'",
+   "originals": [
+    "C03 before C03b?"
+   ],
+   "answer": "The opening line comes first, then the look at the wounded cop, then 'Are you armed?' if Connor took the gun. The benchmark now uses this order (C03b → C03 → C03c).",
+   "source": "/tmp/dbt/ch01-full.txt '# Going outside' prompt, then '## Look at the wounded cop', then 'IF Took the gun: Are you armed?'; /tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt lines 1259-1340 in the same order.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-13",
+   "verdict": "adaptation",
+   "topic": "GET CLOSE ENOUGH asked once",
+   "originals": [
+    "Get close enough?"
+   ],
+   "why": "The transcript has a single Keep Distance / Get Close Enough fork at exactly this point (after the gun question, before the topic lines), and C03f.adaptationNote documents collapsing free movement into it. Every gated option comes after it."
+  },
+  {
+   "id": "ch01-14",
+   "verdict": "resolved",
+   "topic": "Two topic rounds before the helicopter demand",
+   "originals": [
+    "How many topic rounds come before the helicopter (benchmark: two)?",
+    "Topic rounds before the helicopter?"
+   ],
+   "answer": "Two rounds: 'Dialogue Options', then 'More Dialogue Options' ('the same if not chosen already'), then either 'Negotiation Fails' or 'Negotiation Continues' with the helicopter demand. PowerPyx's four lines in its fail recipe span the whole negotiation, not one round.",
+   "source": "/tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt lines 1528 'Dialogue Options', 1650 'More Dialogue Options', 1836 'Daniel is disturbed by the helicopter.'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-15",
+   "verdict": "adaptation",
+   "topic": "No 'GO OUT / KEEP INVESTIGATING' confirmation",
+   "originals": [
+    "Leaving with no clue?",
+    "The game's confirmation prompt when leaving without any clue is omitted?"
+   ],
+   "why": "GO OUT is the same as the benchmark's 'Go out to the terrace now' and KEEP INVESTIGATING is the same as not choosing it. Dropping the confirmation changes no reachable state; it is documented in C02i.adaptationNote."
+  },
+  {
+   "id": "ch01-16",
+   "verdict": "resolved",
+   "topic": "Emma shot by Daniel",
+   "originals": [
+    "Emma shot by Daniel?"
+   ],
+   "answer": "It does not happen. No chart node or transcript line has Daniel shoot Emma; the six endings are complete. The child's shoe with 'Human blood traces' is the only hint that she is hurt.",
+   "source": "en.json MENU.FLOWCHART.01C (42 keys, none for Emma shot); grep of /tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt for Emma being shot: no match; template clue 'CHILD SIZE SHOE | Colorful model | Human blood traces'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch01-17",
+   "verdict": "resolved",
+   "topic": "The 'slight drop' at the start is the −15% helicopter fly-by, which comes first",
+   "originals": [
+    "Drop at the start of negotiation?",
+    "Whether the \"slight drop\" at the start of the negotiation has a fixed?"
+   ],
+   "answer": "The drop at the start of the negotiation is the helicopter fly-by: −15%, DEVIANT DESTABILIZING, printed right after the greeting and before the CALM/RELEASE/REASSURE/EMPATHIZE prompt. No other drop is printed there. The later helicopter scene is only Daniel's demand (ACCEPT +10 / REFUSE 0), with no further drop. The benchmark applies the −15 after the second topic round. Because of the 99% cap and the 10% floor, the timing changes the final value.",
+   "source": "/tmp/flowcharts/ch01/w_The_Hostage__Transcript_.txt lines 1223-1227 'A helicopter flies past the balcony… PROBABILITY OF SUCCESS (-15%) DEVIANT DESTABILIZING' between the greeting tabs and the CALM tab; /tmp/flowcharts/ch01/w_The_Hostage.txt (wiki chapter page) line 118 'The success percentage will always slightly drop upon the beginning of the negotiation'; line 199 'Helicopter approaches -15% (unavoidable)'.",
+   "benchmarkMatches": false,
+   "fix": "story-engine.mjs hostage(): apply the −15 in case 'C03a' (before the opening line) instead of in case 'C03d2'; move the fly-by narration to C03a's situation; C03d2 keeps only its own shift and the floor check; update the C03d2 note and the recap's best-path arithmetic."
+  },
+  {
+   "id": "ch01-18",
+   "verdict": "adaptation",
+   "topic": "Allen forces Connor out after six actions, not five minutes",
+   "originals": [
+    "In the game Allen forces Connor out after five minutes (the flowchart's \"Wasted?"
+   ],
+   "why": "A turn-based stand-in for a real-time limit, documented in C02i.adaptationNote. The operator confirmed that Daniel never jumps while Connor is inside, which is the only behaviour the count could otherwise contradict."
+  }
+ ]
+}

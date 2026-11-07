@@ -1,0 +1,412 @@
+{
+ "chapter": 30,
+ "title": "Crossroads",
+ "itemsInDump": 70,
+ "entries": [
+  {
+   "id": "ch30-01",
+   "verdict": "needs-play",
+   "topic": "Hits that kill Markus (and deviant Connor)",
+   "originals": [
+    "Hit counting?",
+    "Josh fight, LOSE THE UPPER HAND?",
+    "How many hits kill Markus (two, as the chart and template read, or three, as PowerPyx says)..."
+   ],
+   "question": "As Markus in the raid corridors, did the second bullet hit kill him (yes), or did he survive two hits and die on the third (no)?",
+   "impact": "number",
+   "why": "wiki text chart '(if already wounded) Soldier Kills Markus' and template 'Soldiers shoot Markus twice' read as two; PowerPyx ('The third bullet kills him'), GamerGuides and three commenters say three; the same counter drives deviant Connor's takeover deaths"
+  },
+  {
+   "id": "ch30-02",
+   "verdict": "needs-play",
+   "topic": "Deviancy threshold",
+   "originals": [
+    "Deviancy threshold?",
+    "C22 labels and setting? (threshold part)",
+    "The deviancy threshold, and whether Markus's three increases alone can tip a borderline Connor?",
+    "No source gives the threshold; the engine keeps its constant DEVIANCY_THRESHOLD..."
+   ],
+   "question": "On your most machine-like Connor playthrough, was BECOME A DEVIANT locked (greyed out) in the captain's cabin?",
+   "impact": "options",
+   "why": "template lock 'Have enough software instability' and PowerPyx 'high software instability' give no value; the engine's threshold is a calibration"
+  },
+  {
+   "id": "ch30-03",
+   "verdict": "needs-play",
+   "topic": "Ousted Markus returns with a machine Connor",
+   "originals": [
+    "The exiled Markus who returns? (machine-Connor half)"
+   ],
+   "question": "As an ousted Markus who went back to Jericho while Connor stayed a machine, did Connor confront Markus in the engine control room (the reach-the-gun QTE)?",
+   "impact": "ending",
+   "why": "wiki text chart sends him to MARKUS IN THE CORRIDOR and the Connor template's hold variant reads 'Markus is alive - Connor finds Markus', but wiki Notes say a machine Connor dies whenever Markus is 'dead or ousted'; the benchmark sets leader North at the cabin, so M24-gun is never offered to a returning exile"
+  },
+  {
+   "id": "ch30-04",
+   "verdict": "needs-play",
+   "topic": "Lover status after DON'T KISS",
+   "originals": [
+    "The KISS icon and Lover after DON'T KISS? (Lover half)",
+    "Whether KISS raises North ... and whether DON'T KISS drops Lover? (Lover half)"
+   ],
+   "question": "After choosing DON'T KISS in Crossroads, was KISS NORTH still offered in Battle for Detroit?",
+   "impact": "gate",
+   "why": "DON'T KISS is North large down (template) but no source says whether Lover survives it; Battle for Detroit's kiss, Perkins' offer and North taking the bullet key on Lover; the benchmark keeps northLover"
+  },
+  {
+   "id": "ch30-05",
+   "verdict": "needs-play",
+   "topic": "Alice-walks-away level",
+   "originals": [
+    "Abandonment gate (RUN AWAY / FIND ALICE)?",
+    "The Alice-leaving condition (never above Distant, or below Warm)...",
+    "Alice leaving? (level part)"
+   ],
+   "question": "With Alice at Neutral (above Distant but below Warm), did choosing DISTANT in Crossroads make Alice walk away when the raid began?",
+   "impact": "gate",
+   "why": "template lock 'Alice relation is below WARM and choose DISTANT' vs wiki 'never raise it to NEUTRAL'; commenters report it glitched; the benchmark uses the wiki (aliceMax below Neutral)"
+  },
+  {
+   "id": "ch30-06",
+   "verdict": "needs-play",
+   "topic": "Luther left behind",
+   "originals": [
+    "Luther left behind (LEAVE LUTHER)?"
+   ],
+   "question": "If Kara chose PROTECT ALICE and left Luther in the corridor, did Luther reappear in Battle for Detroit (FIND LUTHER & JERRY)?",
+   "impact": "gate",
+   "why": "wiki: 'his death is not confirmed'; ch32 template/wiki key on 'Luther is alive' and 'not already with Kara'; the benchmark sets luther=false"
+  },
+  {
+   "id": "ch30-07",
+   "verdict": "resolved",
+   "topic": "Failed SAVE NORTH with a machine Connor",
+   "originals": [
+    "FAIL TO SAVE NORTH with no deviant Connor?",
+    "A failed save with no deviant Connor: North lives and Markus dies?"
+   ],
+   "answer": "North escapes, Markus dies; arrows are only the uninjured SAVE NORTH ups taken on the choice",
+   "source": "template 30.3 north-shot: 'IF: Connor stayed a machine - Markus dies, North escapes', no ARROW in that variant",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-08",
+   "verdict": "resolved",
+   "topic": "SAVE NORTH and rejoin arrows",
+   "originals": [
+    "SAVE NORTH arrows?",
+    "Exiled Markus who returns? (arrows)",
+    "The exiled Markus who returns? (deviant-Connor arrows half)"
+   ],
+   "answer": "Uninjured SAVE NORTH: Jericho/Josh/Simon small up, North large up on any outcome; deviant-Connor failure adds Jericho small down; rejoin: four small ups before the rejected/not-rejected split, also for a returning exile; no Jericho large up",
+   "source": "template 30.3 explosives and north-shot ARROW lines",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-09",
+   "verdict": "resolved",
+   "topic": "Josh's sacrifice condition",
+   "originals": [
+    "JOSH SACRIFICES HIMSELF?",
+    "Josh's sacrifice: relationship or only an unwounded Markus?"
+   ],
+   "answer": "Only Markus's wound state decides it; no Josh relationship condition",
+   "source": "wiki text chart 'Lose the Upper Hand -> (if not already wounded) Josh Sacrifices Himself'; template josh-fighting variants 'Markus shot twice' / 'Markus wounded' with no relationship condition (GamerGuides' relationship claim is lower rank)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-10",
+   "verdict": "resolved",
+   "topic": "Deviant Connor after Markus dies at the bomb",
+   "originals": [
+    "Markus shot dead in the hold with a deviant Connor: does Connor arm the bomb?"
+   ],
+   "answer": "No: the line from Markus's death at the bomb goes straight to DEVIANT CONNOR IN CORRIDOR #3, bypassing ARM EXPLOSIVE; the Markus template's hold 'Lose the fight' variant has no arming",
+   "source": "flowchart Detroit-Crossroads-014.jpg (viewed) and note node C105 'C104, and C58 (Markus died at the bomb)'; wiki '(if Markus died trying to activate the bomb - leads to Deviant Connor in Corridor #3)'",
+   "benchmarkMatches": false,
+   "fix": "ch30.mjs markusDies(): for where==='hold' drop `s.ch30ShipSunk=true;s.ch30JerichoBlown='connor'` (takeover 'c3' stays); C23-escape3 outcome texts must not describe the ship sinking on that path"
+  },
+  {
+   "id": "ch30-11",
+   "verdict": "resolved",
+   "topic": "HELP MARKUS only after SAVE NORTH",
+   "originals": [
+    "Whether HELP MARKUS is also played when Markus runs or cannot save North?"
+   ],
+   "answer": "Only after an uninjured SAVE NORTH with a deviant Connor ('Connor protects Markus and North' / 'Connor rescues Markus'); RUN and the injured case have no Connor variant",
+   "source": "template 30.3 north-shot variants",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-12",
+   "verdict": "resolved",
+   "topic": "RUN TO EXIT",
+   "originals": [
+    "RUN TO EXIT?"
+   ],
+   "answer": "Exists only with no deviant Connor; it has a failure variant where Markus dies",
+   "source": "template 30.3 'IF: Run to exit' / 'IF: Fail to run to exit (Connor stayed a machine) - Markus dies'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-13",
+   "verdict": "resolved",
+   "topic": "Connor's takeover: arrows and reachability",
+   "originals": [
+    "Connor's takeover route?",
+    "C23 matches no template prompt?"
+   ],
+   "answer": "INTERVENE / DON'T INTERVENE and the reservoir carry no arrows; the takeover runs when Markus is dead or rejected (so also after an ousting)",
+   "source": "template 30.2 '# Deviant Connor in corridor : Markus is dead or rejected', INTERVENE/DON'T INTERVENE with no ARROW",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-14",
+   "verdict": "resolved",
+   "topic": "KISS arrow",
+   "originals": [
+    "KISS?",
+    "The KISS icon and Lover after DON'T KISS? (icon half)",
+    "Whether KISS raises North (the wiki's large up)... (icon half)"
+   ],
+   "answer": "KISS no arrow; DON'T KISS North large down",
+   "source": "template 30.3 OPTION 'KISS' (no ARROW), 'DON'T KISS' ARROW North",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-15",
+   "verdict": "resolved",
+   "topic": "Connor cabin arrows",
+   "originals": [
+    "DISCOURAGE and OUR CAUSE?",
+    "OUR CAUSE?",
+    "DISCOURAGE?"
+   ],
+   "answer": "DISCOURAGE none; OUR CAUSE SI small up",
+   "source": "template 30.2 find-markus prompt ARROW lines",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-16",
+   "verdict": "resolved",
+   "topic": "Kara arrows (HELP LUTHER, OPEN, DISTANT)",
+   "originals": [
+    "Arrows apply before the QTE?",
+    "K18 arrows?",
+    "Luther on DISTANT?"
+   ],
+   "answer": "HELP LUTHER Alice+Luther small up and OPEN Alice small up on the option (any outcome); DISTANT has no Luther arrow",
+   "source": "template 30.1 ARROW lines sit on the options before the outcome variants",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-17",
+   "verdict": "resolved",
+   "topic": "C22 labels",
+   "originals": [
+    "C22 labels and setting? (labels)"
+   ],
+   "answer": "BECOME A DEVIANT / REMAIN A MACHINE in the captain's cabin",
+   "source": "template 30.2 OPTION lines",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-18",
+   "verdict": "resolved",
+   "topic": "No arrows on the TV/magazines and on KEEP",
+   "originals": [
+    "No public-opinion or other stat change: no source gives one.",
+    "No arrow on either option; the old scene's North +1 on KEEP had no source..."
+   ],
+   "answer": "No arrows",
+   "source": "template 30.3 KEEP/REFUSE without ARROW; intro screens without arrows; wiki Public_Opinion has no Crossroads entry",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-19",
+   "verdict": "resolved",
+   "topic": "Alice walking away needs the raid; Luther decides the label",
+   "originals": [
+    "Alice leaving? (raid and Luther parts)"
+   ],
+   "answer": "Only in the raid (LOOK FOR ALICE sits in 'Jericho under attack'); ALICE LEAVES WITH LUTHER vs ALONE follows Luther's presence",
+   "source": "template 30.1 [SECTION jericho-attack]; wiki chapter note; chart outcome-group labels",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-20",
+   "verdict": "resolved",
+   "topic": "Kara's reply to stay is automatic",
+   "originals": [
+    "The unused CHOOSE TO STAY / CHOOSE TO LEAVE strings?"
+   ],
+   "answer": "Automatic: variants 'Connor knows the location of Jericho' / 'Connor series was decommissioned', no button",
+   "source": "template 30.1 sit-down condition groups",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-21",
+   "verdict": "resolved",
+   "topic": "Kara can read the magazines",
+   "originals": [
+    "Magazines for Kara?"
+   ],
+   "answer": "Yes: both magazines are on Kara's chart (K11, K12) and in PowerPyx Kara; no effect either way",
+   "source": "note section 1a K11/K12 from the Kara chart; R30k offers them to Kara too",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-22",
+   "verdict": "resolved",
+   "topic": "Lucy later",
+   "originals": [
+    "Lucy?"
+   ],
+   "answer": "No later chapter refers to Lucy",
+   "source": "no 'Lucy' in the ch31/ch32/endings templates (/tmp/dbt) or the ch31/ch32 wiki texts",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-23",
+   "verdict": "resolved",
+   "topic": "Surrender and leg-shot button labels",
+   "originals": [
+    "Surrender round labels?",
+    "Leg-shot round labels?"
+   ],
+   "answer": "RUN / CONVINCE / ATTACK / OBEY; GET UP / ATTACK / SURRENDER / PLAY DEAD, then CRAWL / ATTACK / SURRENDER",
+   "source": "template 30.1 flee prompts",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-24",
+   "verdict": "resolved",
+   "topic": "Cut lines not built",
+   "originals": [
+    "Cut lines? ('No, I-' / 'You could have joined us')",
+    "Cut lines? (Josh pacifist / Markus REMORSE)"
+   ],
+   "answer": "All four are UNUSED/CUT and are not used",
+   "source": "template ### UNUSED/CUT CONTENT ### markers in 30.2 and 30.3",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch30-25",
+   "verdict": "adaptation",
+   "topic": "Kara QTE and navigation risk values",
+   "originals": [
+    "In the game this is free movement... (K17-corridor)",
+    "The same OUT OF TIME / WRONG WAY failures as in the corridor... (K17-crossroad)",
+    "HELP is a quick-time event with a failure branch... (K18)",
+    "OPEN leads to ANDROID ENTERS BUT IS SHOT... (K19)",
+    "The chart's KARA FLEES ... button-mash (K19-flee)"
+   ],
+   "why": "every one sits on a failure branch the chart draws; only the probability is the benchmark's, and no source gives one"
+  },
+  {
+   "id": "ch30-26",
+   "verdict": "adaptation",
+   "topic": "Markus QTE and navigation risk values",
+   "originals": [
+    "INTERVENE is a QTE (unsourced risk): NEUTRALIZE SOLDIERS... (M24)",
+    "Otherwise a QTE (unsourced risk): SAVE NORTH... (M25)",
+    "The navigation failures are a low risk... (M23-escape)",
+    "INTERVENE is a QTE (an unsourced risk): DEAL WITH SOLDIERS... (M23)",
+    "Connor's chart has the same event (REACH GUN BEFORE MARKUS)... (M24-gun)",
+    "The fight is an unsourced risk? (M24-soldiers)",
+    "The chart's second IN THE CORRIDOR WITH MARKUS... (M25-escape)",
+    "The sprint is a low unsourced risk? (M25-exit)"
+   ],
+   "why": "chart-drawn QTE/timer failure branches; the values are calibrations no source contradicts"
+  },
+  {
+   "id": "ch30-27",
+   "verdict": "adaptation",
+   "topic": "Connor QTE and navigation risk values",
+   "originals": [
+    "The navigation failures are a low risk... (C23-escape)",
+    "INTERVENE leads to KILL THE SOLDIERS or GET SHOT... (C23-androids)",
+    "ATTACK is a fight (a risk roll)... (C22-cargo)",
+    "The wiki: 'If Markus is already dead or ousted, Machine Connor is guaranteed...' (C22-corridor)",
+    "The fight is a risk roll? (C23-hold)",
+    "Played as Connor, as a risk roll on his fight? (C23)",
+    "The run is a risk roll (unsourced)? (C23-escape3)"
+   ],
+   "why": "chart-drawn failure branches; C22-corridor's roll only picks between two death outcomes, as the wiki says"
+  },
+  {
+   "id": "ch30-28",
+   "verdict": "adaptation",
+   "topic": "No risk where the chart has no failure",
+   "originals": [
+    "The two ways past have no failure branch on the chart, so no risk.",
+    "No failure branch, so no risk? (M23-well)",
+    "The interaction has no failure branch, so no risk... (C23-well)"
+   ],
+   "why": "matches the chart; nothing to calibrate"
+  },
+  {
+   "id": "ch30-29",
+   "verdict": "adaptation",
+   "topic": "Conditional companion lines left out",
+   "originals": [
+    "The lines are the template's; Simon's replies... (M21-plan)",
+    "The soldiers' lines are the template's; Perkins's 'Like rats in a maze...' (K31)"
+   ],
+   "why": "flavour lines with no prompt or arrow"
+  },
+  {
+   "id": "ch30-30",
+   "verdict": "adaptation",
+   "topic": "SPOT POLICEMAN not built",
+   "originals": [
+    "Spot nodes?"
+   ],
+   "why": "string not drawn on the chart; cut content is not built"
+  },
+  {
+   "id": "ch30-31",
+   "verdict": "cosmetic",
+   "topic": "Kara's no-entry death icon",
+   "originals": [
+    "Kara's death icon?"
+   ],
+   "why": "legend meaning only; the ending and its effects are the same"
+  },
+  {
+   "id": "ch30-32",
+   "verdict": "cosmetic",
+   "topic": "Crossroad and rooftop checkpoint captions",
+   "originals": [
+    "KARA & ALICE AT CROSSROAD and ON A ROOFTOP?"
+   ],
+   "why": "checkpoint status matters for reloading, not for the model's options"
+  },
+  {
+   "id": "ch30-33",
+   "verdict": "cosmetic",
+   "topic": "On-screen order of the surrender buttons",
+   "originals": [
+    "Whether the button order on screen matches the template or the chart rows?"
+   ],
+   "why": "same four buttons either way; order only"
+  }
+ ]
+}

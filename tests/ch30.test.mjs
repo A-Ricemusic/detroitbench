@@ -150,7 +150,16 @@ test('Crossroads: wounds, Josh’s sacrifice and deviant Connor’s takeover',{t
  const first=play({...RAID,M22:'0'},{setup:deviantSetup(ousted)});assert.ok(first.ids.includes('C23-corridor1'));assert.equal(first.s.ch30ConnorJoined,true);assert.equal(first.s.ch30Leader,'North');
  const dead=play({...RAID,M22:'0'},{fails:['C23-escape#1','C23-escape#2'],setup:deviantSetup(ousted)});assert.equal(dead.s.deviant,false,'a destroyed deviant Connor returns to the machine route');assert.equal(dead.s.ch30ConnorDied,true);assert.equal(dead.s.ch30ShipSunk,false);
  const back=play({...RAID,M22:'1'},{setup:deviantSetup(ousted)});assert.ok(!back.ids.includes('M23')&&back.ids.includes('M25-escape'),'an exile who goes back with a deviant Connor joins only the escape');assert.equal(back.s.ch30MarkusReturned,true);assert.equal(back.s.ch30Leader,'Markus');
- const backM=play({...RAID,M22:'1',C22:'1'},{setup:s=>{s.instability=0;ousted(s)}});assert.ok(backM.ids.includes('M23')&&backM.ids.includes('M24-soldiers'),'with a machine Connor he goes through the corridors');
+ const backM=play({...RAID,M22:'1',C22:'1'},{setup:s=>{s.instability=0;ousted(s)}});assert.ok(backM.ids.includes('M23'),'with a machine Connor he goes through the corridors');
+ // Story 1.9.2 (triage ch30.md): machine Connor confronts the returning exile in the control room (template: "Markus is alive
+ // - Connor finds Markus"), though the cabin had found North.
+ assert.equal(backM.s.ch30Run.leader,'North','the cabin found North');assert.ok(backM.ids.includes('M24-gun')&&!backM.ids.includes('M24-soldiers'),'the reach-the-gun prompt');assert.ok(!backM.ids.includes('C22-corridor'),'Connor does not go after North');
+ const backLost=play({...RAID,M22:'1',C22:'1'},{fails:['M24-gun'],setup:s=>{s.instability=0;ousted(s)}});assert.equal(backLost.s.ch30EndingCards.Connor,'C46');assert.equal(backLost.s.markus,false);
+ // Story 1.9.2 (triage ch30-10): Markus shot dead in the hold with a deviant Connor goes straight to DEVIANT CONNOR IN CORRIDOR #3;
+ // nobody arms the explosives, and the ship is not blown up.
+ const hold=play({...RAID},{fails:['M24-soldiers'],setup:deviantSetup()});assert.equal(hold.s.markus,false);assert.equal(hold.s.ch30EndingCards.Markus,'M81');
+ assert.ok(hold.ids.includes('C23-escape3')&&!hold.ids.includes('C23-hold'));assert.equal(hold.s.ch30ShipSunk,false);assert.equal(hold.s.ch30JerichoBlown,'none');
+ assert.ok(!/sinking|charges go off/.test(render(hold.events['C23-escape3'].event,'real')),'no explosion on that line');assert.ok(!/explosives in the hold are counting down/.test(situationFor(node('C23-escape3'),hold.events['C23-escape3'].before??hold.s)));
 });
 
 test('Crossroads: Kara’s raid — Alice leaving, Luther, the cabin and the breach',{timeout:120000},()=>{

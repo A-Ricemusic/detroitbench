@@ -110,8 +110,10 @@ test('Capitol Park: the drone at the alarm junction, HIDE or be spotted; RAM STO
  const hid=play({CP05:['3','4','13','5','6','7','8','10','11']},[],{},null,'CP09');
  assert.ok(hid.s.capitolNodes.includes('HIDE'));assert.equal(hid.s.capitolRaid,'succeeded');assert.equal(hid.s.northTrust-base.northTrust,1+1+2,'hide, drone, speech');
  const spotted=play({CP05:['3','4','14','17','7','8','9','11']},[],{},null,'CP09');
- assert.ok(spotted.s.capitolNodes.includes('GET SPOTTED BY DRONE'));assert.equal(spotted.s.capitolDrone,'north');assert.equal(spotted.s.jerichoTrust-base.jerichoTrust,2,'the template has no Jericho arrow on being spotted');
+ assert.ok(spotted.s.capitolNodes.includes('GET SPOTTED BY DRONE'));assert.equal(spotted.s.capitolDrone,'north');assert.equal(spotted.s.jerichoTrust-base.jerichoTrust,2-1,'the speech’s +2 and the wiki’s Jericho down for being spotted (story 1.9.2: wiki arrows fill every block where the template is silent)');
  const failedHide=play({CP05:['3','4','13','16']},['CP05#3']);assert.ok(failedHide.s.capitolNodes.includes('GET SPOTTED BY DRONE'));
+ // Failing to hide is spotted the same way: the same two downs (North template, Jericho wiki) as not hiding.
+ const failedTo=play({CP05:['3','4','13','17','7','8','9','11']},['CP05#3'],{},null,'CP09');assert.ok(failedTo.s.capitolNodes.includes('GET SPOTTED BY DRONE'));assert.equal(failedTo.s.jerichoTrust,spotted.s.jerichoTrust);assert.equal(failedTo.s.northTrust,spotted.s.northTrust);
  for(const [picks,why] of [[['5','6','7','8','9','11'],/didn't deactivate the alarm/],[['3','4','13','7','8','9','11'],/forgot about the drone/],[['5','6','3','4','8','9','11'],/blocked the road/]]){
   const r=play({CP05:picks});assert.equal(r.s.capitolEnding,'HAD TO FLEE');assert.ok(r.s.capitolNodes.includes('POLICE ALERTED'));assert.match(r.text,why);
   assert.ok(r.visited.includes('CP06')&&!r.visited.includes('CP07'))}

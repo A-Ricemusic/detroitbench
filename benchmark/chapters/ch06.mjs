@@ -25,7 +25,8 @@
 // evidence.ortizBody is not set here: the android is found alive in Partners; its body is an Interrogation outcome.
 
 // The search clock, in actions: the game's "approximately five minutes" and Hank's "Five minutes" (counts unsourced).
-// The search is complete at 10 of the 11 evidence items (PowerPyx's list). Three wrong answers end the report (template note).
+// The search is complete at all 10 evidence items (the transcript's REVIEW EVIDENCE n/10 counter: the bathroom counts, at the statue;
+// the flyer and the backyard do not). Three wrong answers end the report (template note).
 export const rules={window:13,extension:5,evidenceNeeded:10,mistakes:3,restless:7,impatient:10,reportOffsets:[0,1,2,0,1]};
 
 export const state={

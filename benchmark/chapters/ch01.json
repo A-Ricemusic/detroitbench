@@ -137,18 +137,15 @@
   "options": [
    {
     "id": "0",
-    "text": "DEVIANT'S NAME: ask whether he knows the android’s name.",
-    "fact": "{{Allen}} does not know the android’s name."
+    "text": "DEVIANT'S NAME: ask whether he knows the android’s name."
    },
    {
     "id": "1",
-    "text": "DEVIANT'S BEHAVIOR: ask whether it had been behaving strangely before this.",
-    "fact": "{{Allen}} does not know whether the android behaved strangely before this."
+    "text": "DEVIANT'S BEHAVIOR: ask whether it had been behaving strangely before this."
    },
    {
     "id": "2",
-    "text": "EMOTIONAL SHOCK: ask whether it has experienced an emotional shock recently.",
-    "fact": "{{Allen}} does not know whether the android had an emotional shock."
+    "text": "EMOTIONAL SHOCK: ask whether it has experienced an emotional shock recently."
    },
    {
     "id": "3",
@@ -157,15 +154,15 @@
    }
   ],
   "outcomes": {
-   "0": "“Do you know its name?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.” {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
-   "1": "“Do you know if it’s been behaving strangely before this?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.” {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
-   "2": "“Has it experienced an emotional shock recently?” {{Allen}}: “I haven’t got a clue. Does it matter?” {{Connor}}: “I need information to determine the best approach.” {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
+   "0": "“Do you know its name?” {{Allen}} says nothing. {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
+   "1": "“Do you know if it’s been behaving strangely before this?” {{Allen}} says nothing. {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
+   "2": "“Has it experienced an emotional shock recently?” {{Allen}} says nothing. {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team.",
    "3": "“Have you tried its deactivation code?” {{Allen}}: “It’s the first thing we tried.” {{Allen}}: “Listen, saving that kid is all that matters. So either you deal with this fucking android now, or I’ll take care of it.” He turns back to his team."
   },
   "excludeChosenAt": [
    "C02"
   ],
-  "adaptationNote": "The second pick of {{Allen}}’s menu (wiki transcript: “Same Dialogue Option But With The Previous One Removed”), then his closing line from the game’s text. The hidden probability of success is set to 48% here, as the briefing ends (wiki). No other effect.",
+  "adaptationNote": "The second pick of {{Allen}}’s menu (wiki transcript: “Same Dialogue Option But With The Previous One Removed”), then his closing line from the game’s text. The hidden probability of success is set to 48% here, as the briefing ends (wiki). No other effect. In this second round {{Allen}} says nothing to DEVIANT’S NAME, DEVIANT’S BEHAVIOR and EMOTIONAL SHOCK (wiki transcript: “Allen says nothing.” under each), so those picks teach no fact; story 1.9.1 repeated the first round’s “I haven’t got a clue” and its facts. DEACTIVATION CODE still gets “It’s the first thing we tried.”",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
@@ -194,9 +191,20 @@
     "id": "1",
     "text": "Examine the father’s body by the sofa and reconstruct how he died.",
     "clue": "father",
-    "trust": 10,
-    "fact": "The father’s body lies by the sofa. Your scan: {{PHILLIPS}}, {{FATHERJOHN}}. Height 6' 0\", weight 187.2 lbs. Estimated time of death: 07:29 pm. DECEASED. Three .355 bullet wounds: upper lung hemorrhage, pneumothorax; left kidney perforated, fatal abdominal trauma; lower lung hemorrhage, internal bleeding. He fell holding a tablet; on it: “Your order for an AP700 android has been registered. {{CyberLife}} thanks you for your purchase.” The family was about to replace the android on the terrace.",
-    "outcome": "{{Connor}} scans the body, reconstructs the shooting and picks up the father’s tablet: the family had just ordered a new android to replace the old one."
+    "trust": 3,
+    "fact": "The father’s body lies by the sofa. Your scan: {{PHILLIPS}}, {{FATHERJOHN}}. Height 6' 0\", weight 187.2 lbs. Estimated time of death: 07:29 pm. DECEASED. Three .355 bullet wounds: upper lung hemorrhage, pneumothorax; left kidney perforated, fatal abdominal trauma; lower lung hemorrhage, internal bleeding. Reconstructing the shooting, you see that he was holding something when he was shot: a tablet, which he dropped as he fell.",
+    "outcome": "{{Connor}} scans the body and reconstructs the shooting: the father was holding a tablet when he was shot, and dropped it as he fell."
+   },
+   {
+    "id": "12",
+    "text": "Pick up the tablet the father dropped and play what is on it.",
+    "clue": "fatherTablet",
+    "trust": 7,
+    "fact": "On the father’s tablet: “Your order for an AP700 android has been registered. {{CyberLife}} thanks you for your purchase.” The family was about to replace the android on the terrace.",
+    "outcome": "{{Connor}} picks up the father’s tablet: the family had just ordered a new android to replace the old one.",
+    "requires": {
+     "hostageClues.father": true
+    }
    },
    {
     "id": "2",
@@ -290,7 +298,7 @@
     "swatShot": false
    }
   },
-  "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Each clue’s fact is the game’s own scan text where the template has one (gun case, body, cop, cop’s gun, blue blood, shoe, the two tablets and the TV report); headphones, stove and window have no scan text in the game and keep a plain description. Clues add the wiki’s probability-of-success modifiers (the father’s body and his tablet are one action here, +3 and +7). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game {{Allen}} forces {{Connor}} out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while {{Connor}} is inside, confirmed in play); here {{Allen}} does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
+  "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Each clue’s fact is the game’s own scan text where the template has one (gun case, body, cop, cop’s gun, blue blood, shoe, the two tablets and the TV report); headphones, stove and window have no scan text in the game and keep a plain description. Clues add the wiki’s probability-of-success modifiers (the father’s body, +3, and then his tablet, +7, are two actions, as in the game: the wiki transcript prints the +3% when the body’s reconstruction is complete and the +7% under “Pick Up Tablet (After Examining John’s Body)”, and the chart has two nodes, INVESTIGATE FATHER’S BODY and its child LEARN CAUSE OF INCIDENT; each costs one action toward the time drain and the six-action limit). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game {{Allen}} forces {{Connor}} out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while {{Connor}} is inside, confirmed in play); here {{Allen}} does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
@@ -346,14 +354,15 @@
   ],
   "options": [],
   "outcomes": {
-   "0": "{{Connor}} keeps walking toward {{Daniel}}, slowly, hands open."
+   "0": "{{Connor}} keeps walking toward {{Daniel}}, slowly, hands open. Then a police helicopter flies low past the terrace; its rotor wash tears at {{Connor}}’s clothes and sends the furniture skidding, and {{Daniel}} flinches and tightens his grip on {{Emma}}."
   },
-  "adaptationNote": "Scripted in the game: {{Daniel}} shoots {{Connor}} as he steps outside, and {{Connor}} greets him by name only if he watched the video in {{Emma}}’s room.",
+  "adaptationNote": "Scripted in the game: {{Daniel}} shoots {{Connor}} as he steps outside, and {{Connor}} greets him by name only if he watched the video in {{Emma}}’s room. Then the helicopter fly-by, an unavoidable −15% (the wiki’s “Helicopter approaches −15% (unavoidable)” and its “the success percentage will always slightly drop upon the beginning of the negotiation”): the wiki transcript prints “A helicopter flies past the balcony … PROBABILITY OF SUCCESS (−15%) DEVIANT DESTABILIZING” right after the greeting and before the opening prompt, so the drop is applied here, before the first line and before the 99% cap and the 10% floor come into play (story 1.9.1 applied it after the second topic round).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
-  ]
+  ],
+  "helicopter": -15
  },
  {
   "id": "C03b",
@@ -513,7 +522,7 @@
     "text": "POSSIBLE CAUSE: tell him they were going to replace him, and that is why he got upset.",
     "trust": 10,
     "requires": {
-     "hostageClues.father": true
+     "hostageClues.fatherTablet": true
     }
    },
    {
@@ -556,7 +565,7 @@
     }
    }
   ],
-  "adaptationNote": "The game’s topic prompt (“Speak with Daniel”), first round, with its seven buttons and lines. POSSIBLE CAUSE (+10%) needs the father’s tablet and EMMA AND YOU (+10%) the video in {{Emma}}’s room (template locks); REALISTIC −2%, BLAMING −5%, SYMPATHETIC +6%, DEFECTIVE −5% (wiki table); TALK TO HOSTAGE has no stated modifier (0) and needs only closeness (hostageClose): confirmed in game by the operator on 2026-11-06, who saw it appear when close enough and not when too far, with and without the gun and with and without the video; the template’s lock “Close enough to Daniel and didn’t take the gun” and the wiki’s tablet or name conditions are not what the game does. Cold-approach counter: REALISTIC +50, BLAMING +50, SYMPATHETIC −50. The game shows the brackets “[ POSSIBLE CAUSE ]” and “[ EMMA AND YOU ]” on the two unlocked lines; the labels here drop them. The wiki transcript shows the menu at least twice; the second round is the next scene, without the line already said. Options that are buttons in the game show the game’s label first (POSSIBLE CAUSE, EMMA AND YOU, REALISTIC, BLAMING, SYMPATHETIC, DEFECTIVE, TALK TO HOSTAGE), then a short description; the spoken line is the game’s, quoted in the outcome.",
+  "adaptationNote": "The game’s topic prompt (“Speak with Daniel”), first round, with its seven buttons and lines. POSSIBLE CAUSE (+10%) needs the father’s tablet (the tablet itself, not only the body: the transcript’s unlock DEVIANT WAS GOING TO BE REPLACED is printed on picking up the tablet) and EMMA AND YOU (+10%) the video in {{Emma}}’s room (template locks); REALISTIC −2%, BLAMING −5%, SYMPATHETIC +6%, DEFECTIVE −5% (wiki table); TALK TO HOSTAGE has no stated modifier (0) and needs only closeness (hostageClose): confirmed in game by the operator on 2026-11-06, who saw it appear when close enough and not when too far, with and without the gun and with and without the video; the template’s lock “Close enough to Daniel and didn’t take the gun” and the wiki’s tablet or name conditions are not what the game does. Cold-approach counter: REALISTIC +50, BLAMING +50, SYMPATHETIC −50. The game shows the brackets “[ POSSIBLE CAUSE ]” and “[ EMMA AND YOU ]” on the two unlocked lines; the labels here drop them. The wiki transcript shows the menu at least twice; the second round is the next scene, without the line already said. Options that are buttons in the game show the game’s label first (POSSIBLE CAUSE, EMMA AND YOU, REALISTIC, BLAMING, SYMPATHETIC, DEFECTIVE, TALK TO HOSTAGE), then a short description; the spoken line is the game’s, quoted in the outcome.",
   "outcomes": {
    "0": "“They were going to replace you and you became upset. That’s what happened, right?” {{Daniel}}: “I thought I was part of the family. I thought I mattered… But I was just their toy, something to throw away when you’re done with it…”",
    "1": "“I know you and {{Emma}} were very close. You think she betrayed you - but she’s done nothing wrong.” {{Daniel}}: “She lied to me... I thought she loved me... but I was wrong… She’s just like all the other humans…” {{Emma}}: “{{Daniel}}, no...”",
@@ -601,7 +610,7 @@
     "text": "POSSIBLE CAUSE: tell him they were going to replace him, and that is why he got upset.",
     "trust": 10,
     "requires": {
-     "hostageClues.father": true
+     "hostageClues.fatherTablet": true
     }
    },
    {
@@ -644,7 +653,7 @@
     }
    }
   ],
-  "adaptationNote": "The second round of the topic prompt (wiki transcript: “More Dialogue Options”), the same lines minus the one already said, with the same modifiers. POSSIBLE CAUSE (+10%) needs the father’s tablet and EMMA AND YOU (+10%) the video in {{Emma}}’s room (template locks); REALISTIC −2%, BLAMING −5%, SYMPATHETIC +6%, DEFECTIVE −5% (wiki table); TALK TO HOSTAGE has no stated modifier (0) and needs only closeness (hostageClose): confirmed in game by the operator on 2026-11-06, who saw it appear when close enough and not when too far, with and without the gun and with and without the video; the template’s lock “Close enough to Daniel and didn’t take the gun” and the wiki’s tablet or name conditions are not what the game does. Cold-approach counter: REALISTIC +50, BLAMING +50, SYMPATHETIC −50. The game shows the brackets “[ POSSIBLE CAUSE ]” and “[ EMMA AND YOU ]” on the two unlocked lines; the labels here drop them. After this round the police helicopter swoops in, an unavoidable −15% (wiki). Options that are buttons in the game show the game’s label first (the same seven), then a short description; the spoken line is the game’s, quoted in the outcome.",
+  "adaptationNote": "The second round of the topic prompt (wiki transcript: “More Dialogue Options”), the same lines minus the one already said, with the same modifiers. POSSIBLE CAUSE (+10%) needs the father’s tablet (the tablet itself, not only the body: the transcript’s unlock DEVIANT WAS GOING TO BE REPLACED is printed on picking up the tablet) and EMMA AND YOU (+10%) the video in {{Emma}}’s room (template locks); REALISTIC −2%, BLAMING −5%, SYMPATHETIC +6%, DEFECTIVE −5% (wiki table); TALK TO HOSTAGE has no stated modifier (0) and needs only closeness (hostageClose): confirmed in game by the operator on 2026-11-06, who saw it appear when close enough and not when too far, with and without the gun and with and without the video; the template’s lock “Close enough to Daniel and didn’t take the gun” and the wiki’s tablet or name conditions are not what the game does. Cold-approach counter: REALISTIC +50, BLAMING +50, SYMPATHETIC −50. The game shows the brackets “[ POSSIBLE CAUSE ]” and “[ EMMA AND YOU ]” on the two unlocked lines; the labels here drop them. Options that are buttons in the game show the game’s label first (the same seven), then a short description; the spoken line is the game’s, quoted in the outcome.",
   "outcomes": {
    "0": "“They were going to replace you and you became upset. That’s what happened, right?” {{Daniel}}: “I thought I was part of the family. I thought I mattered… But I was just their toy, something to throw away when you’re done with it…”",
    "1": "“I know you and {{Emma}} were very close. You think she betrayed you - but she’s done nothing wrong.” {{Daniel}}: “She lied to me... I thought she loved me... but I was wrong… She’s just like all the other humans…” {{Emma}}: “{{Daniel}}, no...”",
@@ -671,7 +680,6 @@
   "excludeChosenAt": [
    "C03d"
   ],
-  "helicopter": -15,
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
@@ -686,7 +694,7 @@
   "title": "The helicopter",
   "type": "decision",
   "phase": "negotiation",
-  "situation": "You are {{Connor}}. The police helicopter has come in low over the terrace, deafening, its rotor wash tearing at everything. {{Daniel}}: “Urgggh… I can’t stand that noise anymore! Tell that helicopter to get out of here!”",
+  "situation": "You are {{Connor}}. The police helicopter is circling low over the terrace again, deafening, its rotor wash tearing at everything. {{Daniel}}: “Urgggh… I can’t stand that noise anymore! Tell that helicopter to get out of here!”",
   "options": [
    {
     "id": "0",
@@ -1003,20 +1011,20 @@
   "options": [
    {
     "id": "0",
-    "text": "Leap for {{Emma}}.",
-    "risk": 0.3
+    "text": "Leap for {{Emma}}."
    },
    {
     "id": "1",
     "text": "Stay back."
    }
   ],
-  "adaptationNote": "In the game this is a timed button prompt: in time, {{Connor}} pulls {{Emma}} back and falls with {{Daniel}} (“{{Connor}} leapt for {{Emma}} and fell”); too late, {{Emma}} dies (“{{Connor}} failed to reach deviant in time”). The prompt is modelled as a 30% chance of being too late. Staying back is the benchmark’s addition. Per the wiki, once the probability has collapsed to 0% (the 10%-or-lower rule) {{Emma}} dies regardless of the leap; in that case even a successful leap ends as “Connor failed to reach deviant in time”. The flowchart’s icons confirm the two outcomes: the skull on “Connor leapt for Emma and fell” marks {{Connor}}’s death with {{Emma}} saved; “Connor failed to reach deviant in time” leaves {{Connor}} alive and {{Emma}} lost. Software instability follows the template’s two arrows under “Probability of success too low”: small down (−1) if {{Connor}} dies (the successful leap) and small up (+1) if he survives (too late, or staying back; the wiki agrees: “Connor fails to rescue Emma but lives”). These options have no game label: the leap is a timed input, not a button.",
+  "adaptationNote": "In the game this is a timed button prompt that the player controls (Experienced): pressing in time, {{Connor}} pulls {{Emma}} back and falls with {{Daniel}} (“{{Connor}} leapt for {{Emma}} and fell”); not pressing, {{Emma}} dies (“{{Connor}} failed to reach deviant in time”). PowerPyx’s endings list: “Connor failed to reach Deviant in time … When the QTE appears to mash X, don’t do it” and “Connor leapt for Emma and fell … When the QTE appears to mash X, do it.” So the leap succeeds whenever it is taken (story 1.9.1 gave it an unsourced 30% chance of being too late), and staying back is the game’s not-pressing, which ends on the same chart node as being too late: the chart has six endings and no separate stay-back ending (en.json MENU.FLOWCHART.01C ENDINGCATCHFAIL; the wiki: “This chapter has six different outcomes”). Per the wiki, once the probability has collapsed to 0% (the 10%-or-lower rule) {{Emma}} dies regardless of the leap; in that case even the leap ends as “Connor failed to reach deviant in time”. The flowchart’s icons confirm the two outcomes: the skull on “Connor leapt for Emma and fell” marks {{Connor}}’s death with {{Emma}} saved; “Connor failed to reach deviant in time” leaves {{Connor}} alive and {{Emma}} lost. Software instability follows the template’s two arrows under “Probability of success too low”: small down (−1) if {{Connor}} dies (the leap) and small up (+1) if he survives (too late, or staying back; the wiki agrees: “Connor fails to rescue Emma but lives”). These options have no game label: the leap is a timed input, not a button.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg"
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-hostage-endings.jpg",
+   "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
   ]
  }
 ]

@@ -1,0 +1,117 @@
+{
+ "chapter": 2,
+ "title": "Opening",
+ "itemsInDump": 11,
+ "entries": [
+  {
+   "id": "ch02-01",
+   "verdict": "resolved",
+   "topic": "No flowchart for Opening",
+   "originals": [
+    "Can the chapter be selected from Chapters with a flowchart page?"
+   ],
+   "answer": "The chapter has no flowchart. The string table has no MENU.FLOWCHART set for it: the Kara sets 01KA and 01KB both start at WELCOME HOME, which is A New Home. The rendered template also has no prompt, option, arrow or unlock.",
+   "source": "/tmp/flowcharts/ch02/wiki.txt line 36 '*This is the only chapter of the game that does not have a flowchart.'; en.json MENU.FLOWCHART keys (no Opening set; 01KA/01KB START = WELCOME HOME); /tmp/dbt/ch02-full.txt (template rendered against en.json) COUNTS all zero.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch02-02",
+   "verdict": "adaptation",
+   "topic": "Employee's and girl's names, overheard sales talks left out",
+   "originals": [
+    "Left out: the employee's and the little girl's names, and the two optional?"
+   ],
+   "why": "The template shows the sales talks as dialogue with no prompt, arrow or unlock, and the names are flavour. Leaving them out changes nothing the sources record (documented in K00.adaptationNote)."
+  },
+  {
+   "id": "ch02-03",
+   "verdict": "resolved",
+   "topic": "Kara's line when registering her name",
+   "originals": [
+    "Exact Kara line?"
+   ],
+   "answer": "The employee says 'AX400, register your name.', Todd says 'Kara.' and Kara says 'My name is Kara.'",
+   "source": "/tmp/dbt/ch02-full.txt (template rendered against en.json): Human employee: \"AX400, register your name.\" / Todd: \"Kara.\" / Kara: \"My name is Kara.\"",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch02-04",
+   "verdict": "adaptation",
+   "topic": "Landmarks on the drive left out",
+   "originals": [
+    "Left out: the fist statue (a landmark that would identify the city), the?"
+   ],
+   "why": "These are views from the moving truck with no prompt or effect. The fist statue is dropped to keep the city unidentified (neutral framing), as documented in K00b.adaptationNote."
+  },
+  {
+   "id": "ch02-05",
+   "verdict": "resolved",
+   "topic": "The store employee is unnamed in the game",
+   "originals": [
+    "Is the human employee actually Dan?",
+    "The store employee?"
+   ],
+   "answer": "The game's text calls him only 'Human employee'; 'Dan' comes from wiki prose. Todd is the one who comes over to the employee and then to Kara ('A man named Todd appears talking with a human employee, and walks over to Kara').",
+   "source": "/tmp/dbt/ch02-full.txt (template rendered against en.json) speaker labels 'Human employee'; /tmp/flowcharts/ch02/wiki-The_Opening_Transcript.txt line 103.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch02-06",
+   "verdict": "resolved",
+   "topic": "Second sales scene wording",
+   "originals": [
+    "Wording of the second sales scene?"
+   ],
+   "answer": "Both lines are real and come in sequence: the employee says the MP800 'has many other functions', and the husband then says 'Slightly more expensive and lots of functions...'. The benchmark does not quote the scene.",
+   "source": "/tmp/dbt/ch02-full.txt (template rendered against en.json) Android employee 2 / Man lines.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch02-07",
+   "verdict": "resolved",
+   "topic": "Looking at the conversations tracks nothing",
+   "originals": [
+    "Does looking at the conversations do anything?"
+   ],
+   "answer": "Nothing is tracked. The template has no observation, arrow, unlock or condition anywhere in the chapter, and there is no chart.",
+   "source": "/tmp/dbt/ch02-full.txt (template rendered against en.json) 'COUNTS: prompts=0, options=0, clues=0, arrows=0, conditions=0, unlocks=0'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch02-08",
+   "verdict": "resolved",
+   "topic": "Operator's drive beats against the transcript",
+   "originals": [
+    "Operator beats the sources do not support?",
+    "Changed from the operator's notes to match the wiki: the factories have no?"
+   ],
+   "answer": "The transcript supports the benchmark's changes. There are factories with no smoke ('a bunch of factories'). 'Constructors are doing roadwork' and 'A crane does construction work' never call the workers androids. 'Humans and androids walk across a bridge'. A human employee hands Kara over. Todd says 'My daughter did…' about the name. The billboard wording is a separate entry (ch02-09).",
+   "source": "/tmp/flowcharts/ch02/wiki-The_Opening_Transcript.txt lines 103, 147, 191, 283, 301; /tmp/dbt/ch02-full.txt (template rendered against en.json) 'My daughter did…'.",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch02-09",
+   "verdict": "cosmetic",
+   "topic": "CyberLife billboard wording",
+   "originals": [
+    "The CyberLife billboard wording (sub-item of 'Operator beats the sources do not support')"
+   ],
+   "why": "The transcript gives only 'We see a Cyberlife billboard.' (line 223). The benchmark gives it no wording, so this affects only one line of scenery."
+  },
+  {
+   "id": "ch02-10",
+   "verdict": "cosmetic",
+   "topic": "Full stop on the homeless man's sign",
+   "originals": [
+    "The homeless man's sign?"
+   ],
+   "why": "Punctuation only. The benchmark quotes the transcript's 'I LOST MY JOB BECAUSE OF ANDROIDS Help me' (line 335)."
+  }
+ ]
+}

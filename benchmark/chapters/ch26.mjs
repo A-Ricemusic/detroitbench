@@ -7,12 +7,15 @@
 // CP09 Send a message (repeatable: SPREAD YOUR MESSAGE, the Molotov prompt, the protest meter) · CP10 Police patrol arrives ·
 // M16 the two officers · CP11 Team returns to Jericho (the news, with every public-opinion arrow).
 //
-// Arrows (small = 1, large = 2). Template = the game's text; wiki = applied only where the template is silent.
+// Arrows (small = 1, large = 2). Template = the game's text; wiki = applied only where the template is silent. One rule for
+// every wiki-only arrow (story 1.9.2): where the template has the block but no arrow for a character, the wiki's arrow for that
+// character is applied (RETREAT and HAD TO FLEE, the alarm North up, the vandalism ups, the failed-message opinion up, and the
+// drone's Jericho down, which story 1.9.1 left out). The template's own arrows are never overridden.
 //  CP03 NORTH SAVES YOU            North −1, Jericho −1                    template "Fail to hide, North saves Markus"
 //  CP05 DESTROY DRONE              North +1                                template
 //       FALL FROM DRONE            Jericho −1, North −1                    template "Fail to destroy drone"
 //       HIDE (drone at the alarm)  North +1                                template
-//       GET SPOTTED BY DRONE       North −1                                template "Fail to hide" (the wiki's Jericho −1 not applied)
+//       GET SPOTTED BY DRONE       North −1, Jericho −1                    template "Fail to hide" (North); wiki "If Markus was spotted by the drone" (Jericho)
 //       DEACTIVATE ALARM, drone already destroyed  North +1               wiki "deactivated the alarm after destroying the drone", Relationship Stat
 //       Abandon Mission (RUN AWAY) Jericho −2, North −1                    template (option `effect` in the JSON)
 //       Act Natural (FEIGN KISS)   North −2                                template (option `effect`)
@@ -124,8 +127,8 @@ function plaza(n,s,opt,fail,h){
  const a=opt.act,d=s.capitolSecure;let t=opt.outcome??'';
  switch(a){
   case 'hideDrone':if(!fail){s.capitolPrompt=null;h.north(1);mark(s,'HIDE');return '{{Markus}} flattens himself in the hole as the drone passes overhead. {{North}}: “Nice job {{Markus}}.” The drone flies on over the park.'}
-   h.north(-1);mark(s,'GET SPOTTED BY DRONE');return 'The drone swings round before {{Markus}} is out of sight, and its light finds him. '+SPOTTED+droneDown(s);
-  case 'stayDrone':h.north(-1);mark(s,'GET SPOTTED BY DRONE');return 'The drone’s light finds {{Markus}}. '+SPOTTED+droneDown(s);
+   h.north(-1);h.jer(-1);mark(s,'GET SPOTTED BY DRONE');return 'The drone swings round before {{Markus}} is out of sight, and its light finds him. '+SPOTTED+droneDown(s);
+  case 'stayDrone':h.north(-1);h.jer(-1);mark(s,'GET SPOTTED BY DRONE');return 'The drone’s light finds {{Markus}}. '+SPOTTED+droneDown(s);
   case 'abandon':mark(s,'RUN AWAY');flee(s,h,'DECIDED TO FLEE',false);return t;
   case 'kiss':s.capitolPrompt=null;mark(s,'FEIGN KISS');return t;
   case 'hideCar':s.capitolPrompt=null;mark(s,'HIDE AND HACK RADIO');return t;

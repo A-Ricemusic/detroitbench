@@ -19,7 +19,8 @@
 //
 // Cross-chapter outputs:
 //  - `chase` (built-in): CONNOR PURSUES KARA happened (any chase, including VANISHED and CROSSED THE HIGHWAY). Read by
-//    the Jericho magazine (Android on the Run! / Fortune Teller) and Zlatko's TV.
+//    the Jericho magazine (Android on the Run! / Fortune Teller). Zlatko's chase report and "Androids Alter Brain" read
+//    `ch13Ending` instead (only the freeway endings; chapter 17's FREEWAY).
 //  - `ch13ConnorObeyed`: GIVE UP at the fence (The Nest's [HIGHWAY] button: "Didn't pursue Kara on the highway").
 //  - `ch13ConnorDied`: CAR HITS CONNOR or CONNOR HIT BY CAR (The Nest: HANK INSULTS CONNOR, Hank small down there;
 //    this chapter applies only the instability down, so the Nest's Hank down is not double-counted).

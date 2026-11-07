@@ -1,0 +1,264 @@
+{
+ "chapter": 11,
+ "title": "From the Dead",
+ "itemsInDump": 40,
+ "entries": [
+  {
+   "id": "ch11-01",
+   "verdict": "cosmetic",
+   "topic": "Timer on the failing pump regulator",
+   "originals": [
+    "Does the HUD show any timer for the defective regulator?",
+    "Is there a pump timer?",
+    "No timer on the failing pump regulator: no source gives one",
+    "The old scene's \"you have minutes\" is gone: no source gives a timer"
+   ],
+   "why": "The chart has no failure node for the regulator and no source mentions a countdown, so a HUD timer could only add a line of urgency to the subject's text; options and the single ending are unchanged."
+  },
+  {
+   "id": "ch11-02",
+   "verdict": "resolved",
+   "topic": "Pump android can be skipped",
+   "originals": [
+    "Is D2 skippable?",
+    "The dead android's regulator is offered only after sparing the pump android",
+    "Can Markus take the dead android's regulator before ever meeting the living one,"
+   ],
+   "answer": "Yes: the dead android near the slope supplies a regulator even if Markus never found the living one. PowerPyx implies the new eye is used to find it ('You can scan the area and find another one near the slope').",
+   "source": "PowerPyx From the Dead: 'Find Pump Regulator in Dead Android: If you didn't kill the android in the middle of the area for its pump (or you never found it in the first place) you can also get a pump regulator from a dead android near the slope.'",
+   "benchmarkMatches": false,
+   "fix": "ch11.json M03g option 4 requires: from {\"fromDeadPump\":\"Refuse to kill for pump\",\"fromDeadPumpReplaced\":false,\"fromDeadSearch.head\":true} to {\"fromDeadPumpReplaced\":false,\"fromDeadSearch.head\":true}. Only if the operator wants the game's optional encounter; the current forced encounter is a documented, deliberate departure (M03g.adaptationNote 'Departures')."
+  },
+  {
+   "id": "ch11-03",
+   "verdict": "resolved",
+   "topic": "Analyze self, legs and passage cannot fail",
+   "originals": [
+    "PowerPyx: \"Follow the button prompts to repair the legs, nothing you can do",
+    "Press the button prompts here.\" Neither the chart nor any source shows a",
+    "ANALYZE SELF and REPAIR LEGS are narrated events"
+   ],
+   "answer": "No failure branch: all four diagnosis spots are required, the leg repair 'nothing you can do wrong', and the passage has no failure node.",
+   "source": "PowerPyx 'There are 4 spots on Markus's body that need to be analyzed', 'Repair Legs: Follow the button prompts to repair the legs, nothing you can do wrong here'; wiki chart text (no failure node in the chapter)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-04",
+   "verdict": "resolved",
+   "topic": "No arrows and no failure in the chapter",
+   "originals": [
+    "No risk, no stat change: the chapter has no failure node and no",
+    "Arrows?"
+   ],
+   "answer": "No stat arrow anywhere in the chapter and one ending.",
+   "source": "Template ch11 outline (no ARROW lines); wiki 'This chapter has only one outcome' and no Relationship Changes section",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-05",
+   "verdict": "needs-play",
+   "topic": "When the begging android can still be met",
+   "originals": [
+    "The Android Begs to Die trigger?",
+    "When can the android who begs to die still be triggered",
+    "The android who begs to die is optional and easy to miss"
+   ],
+   "question": "After Markus had already fitted both the new eye and the new audio processor, could the crawling android still grab him and beg to die (yes/no)?",
+   "impact": "options",
+   "why": "Wiki: must happen 'before replacing Markus' damaged parts'; PowerPyx's own route meets him after the eye; commenters disagree (audio first only; eye and audio both first; 'walked over him like 20 times'). Benchmark always plays him on the way to the middle, at any point."
+  },
+  {
+   "id": "ch11-06",
+   "verdict": "cosmetic",
+   "topic": "Wall head vs ground head for the eye",
+   "originals": [
+    "Two routes to the eye?",
+    "Is the AK700 head the one in the wall that triggers the crane,",
+    "The AK700 head is the eye's only source, as in the template"
+   ],
+   "why": "Either route yields the same #8087q eye; the difference is only whether the CRANE DUMPS BODIES / DIG YOURSELF OUT chart nodes are narrated, with no choice, arrow or gate."
+  },
+  {
+   "id": "ch11-07",
+   "verdict": "resolved",
+   "topic": "Order of the parts search",
+   "originals": [
+    "Order?"
+   ],
+   "answer": "Parts can be found in any order; the chart draws no edge between the search branches.",
+   "source": "PowerPyx (the junkyard parts in any order; 'With all parts found ... you can now climb'); flowchart bracket SEARCH FOR PARTS",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-08",
+   "verdict": "adaptation",
+   "topic": "Flowchart-registration bug after patch 1.04",
+   "originals": [
+    "Patch bug?"
+   ],
+   "why": "A game bug in recording REFUSE TO KILL FOR PUMP on the chart, not game logic; the benchmark records the choice directly."
+  },
+  {
+   "id": "ch11-09",
+   "verdict": "resolved",
+   "topic": "KILL / SPARE labels",
+   "originals": [
+    "Prompt labels?"
+   ],
+   "answer": "KILL / SPARE at both prompts.",
+   "source": "Template ch11 'Android begs to die' and 'Try to take pump regulator from android'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-10",
+   "verdict": "adaptation",
+   "topic": "Optical-unit chain as one option",
+   "originals": [
+    "Both choices therefore come on every path?"
+   ],
+   "why": "Engine constraint (one interrupt per repeatable scene) documented in the recap; head, crane and dig have no choice or arrow between them."
+  },
+  {
+   "id": "ch11-11",
+   "verdict": "resolved",
+   "topic": "Part numbers",
+   "originals": [
+    "Incompatible eye number?",
+    "Part-number discrepancies?",
+    "Incompatible right leg number?"
+   ],
+   "answer": "#9754h (eye) and #6321t (right leg), as the template prints them.",
+   "source": "Template ch11 observation groups 'Search for components' and 'Incompatible right leg'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-12",
+   "verdict": "resolved",
+   "topic": "Jericho background line is heard",
+   "originals": [
+    "The MUSTGO Jericho lines?",
+    "MUSTGO Jericho line?",
+    "Is the \"I have to get to Jericho…\" background line heard"
+   ],
+   "answer": "Heard in the shipping game: the template lists it among the background dialogues, which it says are audible though not subtitled; it is not in the unused-content block.",
+   "source": "Template ch11 '## Background dialogues' NOTE '(There are no subtitles shown in game, but some dialogues can be heard.)' ... 'I have to get to Jericho...'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-13",
+   "verdict": "resolved",
+   "topic": "Final words",
+   "originals": [
+    "Final words?"
+   ],
+   "answer": "Only 'My name is Markus.' is spoken; 'Markus.' is unused.",
+   "source": "Template ch11 '## Climb the slope' CUT/UNUSED CONTENT 'Markus: Markus.' then 'My name is Markus.'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-14",
+   "verdict": "resolved",
+   "topic": "Leg readouts",
+   "originals": [
+    "Leg clues missing?",
+    "Left leg readout?"
+   ],
+   "answer": "Three leg readouts: #6847j FUNCTIONAL COMPATIBLE, #6321t DAMAGED INCOMPATIBLE, left #8427g FUNCTIONAL COMPATIBLE; now in M03c in that order.",
+   "source": "Template ch11 observation groups 'Compatible right leg', 'Incompatible right leg', 'Left leg'; ch11.json M03c (read this session)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-15",
+   "verdict": "adaptation",
+   "topic": "Incompatible part scans as optional looks",
+   "originals": [
+    "The three incompatible readouts of the template's \"Search for components\" group"
+   ],
+   "why": "Observation items with no prompt, arrow or gate, offered as optional looks with the template's text (M03g.adaptationNote)."
+  },
+  {
+   "id": "ch11-16",
+   "verdict": "resolved",
+   "topic": "Who is male and who is female",
+   "originals": [
+    "Who is who?"
+   ],
+   "answer": "The android who begs to die is male (Sorrowful Android); the pump android is female (Begging Android). The pump part #2886 is listed as from a WE900; the benchmark names no models.",
+   "source": "Wiki Sorrowful_Android infobox gender=Male; Begging_Android infobox gender=Female; Optical unit / Thirium pump regulator table '#2886 ... WE900 in From the Dead'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-17",
+   "verdict": "resolved",
+   "topic": "What KILL takes from the begging android",
+   "originals": [
+    "What does KILL take from the begging-to-die android?"
+   ],
+   "answer": "Markus takes out his heart (thirium pump) to end him; the chart gives no part from this branch, and Markus still needs a regulator from the pump android or the dead android.",
+   "source": "Wiki Sorrowful_Android 'Markus takes out the android's heart, causing him to shut down'; wiki chart text (ANDROID BEGS TO DIE > REFUSE TO KILL OR KILL, no part node)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-18",
+   "verdict": "resolved",
+   "topic": "ANALYZE SELF readouts",
+   "originals": [
+    "ANALYZE SELF spots?",
+    "ANALYZE SELF spots?"
+   ],
+   "answer": "OPTICAL UNIT, AUDIO PROCESSOR, THIRIUM PUMP REGULATOR, LEFT AND RIGHT LEG COMPONENTS.",
+   "source": "Template ch11 observation group 'Diagnose'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-19",
+   "verdict": "cosmetic",
+   "topic": "Which android carries #2886",
+   "originals": [
+    "Which android carries #2886: the pump android, the dead one near the slope,"
+   ],
+   "why": "Only the part number printed on the dead android's readout; the regulator works either way."
+  },
+  {
+   "id": "ch11-20",
+   "verdict": "resolved",
+   "topic": "Unsourced 'single word' and 'symbol' removed",
+   "originals": [
+    "The old scene's \"single word\" and \"symbol\" had no source and are gone"
+   ],
+   "answer": "The dying android only says 'There's a place where we can be free! Find Jericho! Find Jericho!..'; no word or symbol.",
+   "source": "Template ch11 '## Android grabs Markus' (Phileas line only)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch11-21",
+   "verdict": "adaptation",
+   "topic": "TL400 lines and other background chatter left out",
+   "originals": [
+    "The two TL400 lines and the others are left out"
+   ],
+   "why": "Unsubtitled ambient lines with no prompt, arrow or node; a sample is quoted."
+  },
+  {
+   "id": "ch11-22",
+   "verdict": "adaptation",
+   "topic": "Singing and grappling androids left out",
+   "originals": [
+    "Left out (not in the template, not on the chart): the singing android"
+   ],
+   "why": "Neither is in the template or on the chart; the grappling android is an optional look with no prompt (wiki Grappling_Android) and the singer an easter egg."
+  }
+ ]
+}

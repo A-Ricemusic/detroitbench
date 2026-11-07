@@ -1,0 +1,300 @@
+{
+ "chapter": 24,
+ "title": "Public Enemy",
+ "itemsInDump": 48,
+ "entries": [
+  {
+   "id": "ch24-01",
+   "verdict": "needs-play",
+   "topic": "Zen Garden Amanda arrows on DETERMINED, COLD and TOO FAR",
+   "originals": [
+    "DETERMINED and COLD (Zen Garden round 2): no Amanda arrow?",
+    "TOO FAR (round 3): no Amanda arrow?",
+    "Amanda on DETERMINED, COLD (wiki: up) and TOO FAR (wiki: down)…",
+    "Amanda icons in round 2 and round 3?"
+   ],
+   "question": "In the opening Zen Garden talk, did DETERMINED or COLD show an Amanda ↑, and did TOO FAR show an Amanda ↓ (yes/no for each)?",
+   "impact": "arrow",
+   "why": "The template has no Amanda arrow on DETERMINED, COLD or TOO FAR (dbt PROMPT 2 and 3) while PowerPyx lists per-option popups 'DETERMINED: Amanda▲', 'COLD: Software Instability▼Amanda▲', 'TOO FAR: Amanda▼' and the wiki agrees; PowerPyx matches the template on every other option in this chapter and in The Bridge. The benchmark follows the template (C14z2, C14z3)."
+  },
+  {
+   "id": "ch24-02",
+   "verdict": "resolved",
+   "topic": "Corridor choices have no failure branch",
+   "originals": [
+    "C16 TAKE GUN has a failure and an Amanda arrow?",
+    "C16 ATTACK has a failure?",
+    "Each has exactly one outcome on the chart, so there is no risk"
+   ],
+   "answer": "Each corridor option has one outcome: ATTACK > DEVIANT SELF-DESTRUCTS, PROTECT HANK > DEVIANT SHOOTS CONNOR, DRAW GUN > SHOOT DEVIANT; TAKE GUN carries only Hank LargeUp. C16 has no risk and no Amanda arrow.",
+   "source": "dbt template PROMPT 10; PowerPyx chart page 7/8 (RUSH DEVIANT / PROTECT HANK / DRAW GUN)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-03",
+   "verdict": "cosmetic",
+   "topic": "Where HANK SURVIVAL PROBABILITY : 40% appears",
+   "originals": [
+    "Where does HANK SURVIVAL PROBABILITY : 40% appear?",
+    "Where HANK SURVIVAL PROBABILITY : 40% appears, and whether it changes"
+   ],
+   "why": "a HUD string (THOUGHTS.0901C.HANKCHANCES) shown as narration; nothing is rolled on it"
+  },
+  {
+   "id": "ch24-04",
+   "verdict": "adaptation",
+   "topic": "When Connor can leave the tower",
+   "originals": [
+    "DECIDE TO LEAVE requirements?",
+    "When can Connor leave: after the roof, after a timer, or both?"
+   ],
+   "why": "requiring the roof follows PowerPyx ('completed all the objectives … inspect the roof') and readers whose leave option waited on the roof tick; the template's '[UNLOCK TIME] Taking too much time' offer is an idle path the model cannot take"
+  },
+  {
+   "id": "ch24-05",
+   "verdict": "resolved",
+   "topic": "What follows DEVIANT NOT FOUND",
+   "originals": [
+    "What follows DEVIANT NOT FOUND? … Can Simon still be found after a failed interrogation?"
+   ],
+   "answer": "The chapter ends: under 'Fail to find the deviant' the template plays Connor's 'I think we have seen everything there is to see', Hank's 'You wanna go?', 'Yes.', 'Ok, we're outta here.'; PowerPyx reader Jamteacups: after failing, Connor 'leaves back into the broadcast room then tells hank that he wants to leave'. The chart draws no line from DEVIANT NOT FOUND. C15e ends with CONNOR AND HANK LEFT THE CRIME SCENE.",
+   "source": "dbt transcript lines 520–529; pp.txt comment by Jamteacups; PowerPyx chart page 7",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-06",
+   "verdict": "resolved",
+   "topic": "Roof without Simon / leaving the roof with Simon hidden",
+   "originals": [
+    "Roof without Simon? … can Connor leave the roof without following the blood"
+   ],
+   "answer": "Yes, Connor can leave without finding him and Simon stays hidden; with no hidden Simon the roof is clues only (template 'On the roof' observations; FIND SIMON is locked 'Simon was left alive on the roof').",
+   "source": "wiki Simon: 'If Connor does not go up to the roof, or leaves the rooftop without finding him, Simon stays hidden until the police and FBI leave the building'; dbt template 'On the roof'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-07",
+   "verdict": "resolved",
+   "topic": "Saved Hank at the Stratford Tower (Last Chance)",
+   "originals": [
+    "Last Chance 'saved Hank at the Stratford Tower'?",
+    "Whether DRAW GUN also counts as 'saved Hank at the Stratford Tower'…"
+   ],
+   "answer": "Only PROTECT HANK (SAVE HANK): Hank's Last Chance line under that condition is 'You protected me… You... Risked your life to save mine', and the wiki lists it as occurring 'if Connor sacrificed himself to protect Hank in Public Enemy'. Benchmark sets ch24ProtectedHank only on SAVE HANK.",
+   "source": "dbt ch29-dialogue.txt line 160; wiki Last_Chance,_Connor lines 178–180",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-08",
+   "verdict": "adaptation",
+   "topic": "Unsourced risks: rush, biocomponent, chase",
+   "originals": [
+    "Biocomponent timer?",
+    "The rush is decided by quick-time dodges…",
+    "Recover Biocomponent: … before 1:45 is up”), so a risk roll",
+    "CALL is the game's CALL button…",
+    "Not chasing at once leads straight to LOSE TOO MUCH TIME…",
+    "Reached by CHARGE DEVIANT with the risk roll failed",
+    "Reached by CHARGE DEVIANT with the risk roll passed",
+    "Both failure rates (0.2, 0.35) are the benchmark's…"
+   ],
+   "why": "every failure branch is on the chart (SHOT BY SIMON, OUT OF TIME, LOSE TOO MUCH TIME); only the probabilities (and CALL costing more) are calibrations, documented per AGENTS.md, and no source gives a number to contradict them"
+  },
+  {
+   "id": "ch24-09",
+   "verdict": "resolved",
+   "topic": "Corridor ATTACK: one Public Opinion arrow",
+   "originals": [
+    "Corridor PO? Is RUSH DEVIANT one small down … or two",
+    "Public opinion on ATTACK (one arrow or two) and on each cop death…",
+    "Corridor ATTACK: one Public Opinion arrow, not two?"
+   ],
+   "answer": "One small down plus SI large up on ATTACK; no arrow on any cop death. The wiki's second down is its ending line 'Connor and Hank survived (If Connor was present)', which the template does not show; ordinary (non-death) arrow, template outranks.",
+   "source": "dbt template PROMPT 10 ATTACK; wiki Public_Opinion Small Decrease list",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-10",
+   "verdict": "resolved",
+   "topic": "LOSE TOO MUCH TIME and cop deaths: no arrows",
+   "originals": [
+    "LOSE TOO MUCH TIME and the cop deaths?",
+    "LOSE TOO MUCH TIME stats?"
+   ],
+   "answer": "No arrows: the template has no block for it, and the Public_Opinion page limits the 'Connor and Hank survived' down to 'If Connor was present', which excludes this branch; the Software_Instability line '(or choosing not to do anything within the time limit)' belongs to 'Choosing to attack the deviant … at the end of Public Enemy' (the corridor timer). Only PowerPyx gives arrows.",
+   "source": "dbt template PROMPT 10 condition groups; wiki Public_Opinion; wiki Software_Instability line 18",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-11",
+   "verdict": "resolved",
+   "topic": "Instability on SHOT BY SIMON and SAVE HANK deaths",
+   "originals": [
+    "PROTECT HANK SI?",
+    "SHOT BY SIMON (Connor dies rushing Simon): no instability arrow?",
+    "PROTECT HANK / SAVE HANK: no instability arrow?",
+    "Instability on SHOT BY SIMON and on SAVE HANK…"
+   ],
+   "answer": "Small down on both: the Software_Instability page lists 'Any ending of Public Enemy in which Connor dies: Connor died running toward Simon. Connor sacrificed himself for Hank.' The template is silent on these deaths (no contrary arrow), and the reliability log prefers the wiki's ending-level arrow on deaths. Benchmark applies −1 as the chapter's death effect.",
+   "source": "wiki Software_Instability lines 67–69; SOURCES Reliability log",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-12",
+   "verdict": "resolved",
+   "topic": "No Amanda arrows in the roof rush; Hank's down after the death",
+   "originals": [
+    "C14b labels and extra arrows?",
+    "The old benchmark's Amanda changes here had no source and are gone…"
+   ],
+   "answer": "No source gives an Amanda arrow on CHARGE DEVIANT / STAY IN COVER; the only rush arrow is SI LargeUp on 'Connor reaches Simon'.",
+   "source": "dbt template PROMPT 11",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-13",
+   "verdict": "resolved",
+   "topic": "Leave prompt has no arrow",
+   "originals": [
+    "Neither option carries an arrow in any source; the old benchmark's Amanda small down for leaving…"
+   ],
+   "answer": "YES / NO carry no arrows.",
+   "source": "dbt template PROMPT 5",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-14",
+   "verdict": "resolved",
+   "topic": "SINCERE gate",
+   "originals": [
+    "SINCERE gate?",
+    "Does the coin need Hank at Friend? Does SINCERE need the Tracis spared or a Friend Hank?"
+   ],
+   "answer": "Spared the Tracis: the template lock is 'Spared the Tracis in The Eden Club'; PowerPyx's 'friends with Hank' is contradicted by its own readers (commenter: 'I am friends with hank but the option was not available').",
+   "source": "dbt template PROMPT 2 SINCERE; pp.txt comment line 268",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-15",
+   "verdict": "resolved",
+   "topic": "Kitchen accusation needs CHECK CAMERA, not the corridor CCTV",
+   "originals": [
+    "Kitchen gate?"
+   ],
+   "answer": "On PowerPyx's 100% save the corridor CHECK CCTV box is grey while ENTER THE KITCHEN > INTERROGATE ANDROIDS > FIND DEVIANT are blue, so the corridor node is not required; the transcript's lines under 'Check CCTV' ('There are cameras in the hallway…') are the broadcast-room screen (WATCHSCREEN).",
+   "source": "PowerPyx Detroit-Public-Enemy-3-003.jpg (CHECK CCTV grey) and -7-007.jpg (kitchen line blue); transcript lines 348–358, 438",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-16",
+   "verdict": "resolved",
+   "topic": "SIMON SURVIVED IN 'PUBLIC ENEMY' for Freedom March",
+   "originals": [
+    "SIMON SURVIVED IN 'PUBLIC ENEMY' for Freedom March?"
+   ],
+   "answer": "The reunion (REUNITED IN JERICHO > SIMON FORGIVES MARKUS) needs the left-behind Simon; the sacrifice needs any living Simon ('If John is not there, and if Simon survived in Public Enemy and Markus is not unpopular… If neither … Simon is either dead or Markus is unpopular'). ch28.mjs already reads it that way (simonReturned = left on the roof and alive; simonGood = alive with a good relationship); ch24SimonSurvived itself has no consumer.",
+   "source": "wiki Freedom_March flowchart lines 41–43 and Notes; benchmark/chapters/ch28.mjs lines 53–54",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-17",
+   "verdict": "resolved",
+   "topic": "Clue gating in the corridors and broadcast room",
+   "originals": [
+    "Clue gating in the corridors and broadcast room?"
+   ],
+   "answer": "The chart puts each body/blood clue behind a yellow tab (KILLED DURING / WOUNDED DURING 'STATFORD TOWER'); CHECK CCTV and ANALYZE PHONE have none. C14g/C14 gate the same way.",
+   "source": "PowerPyx Detroit-Public-Enemy-3-003.jpg",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-18",
+   "verdict": "resolved",
+   "topic": "Coin condition",
+   "originals": [
+    "Coin condition? Does HANK CONFISCATES COIN need Hank at Friend…",
+    "Coin condition. The template conditions the elevator openings only on…"
+   ],
+   "answer": "Only that Hank did not shoot Connor on the bridge: the template's two elevator openings are 'Hank shot / didn't shoot Connor in The Bridge'; the wiki Hank page ('If Hank did not shoot Connor, Connor will be seen playing with his quarter, which Hank then confiscates') and Quarter_coin page agree; the Friend condition (Connor page, PowerPyx) matches Hank later imitating the tricks 'If he is friends with Connor'. Reliability log: template's primary unlock condition held over wiki prose.",
+   "source": "dbt template 'In the tower' first condition group; wiki Hank_Anderson lines 91 and 323; Quarter_coin line 22",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-19",
+   "verdict": "resolved",
+   "topic": "JB300 body after LOSE TOO MUCH TIME",
+   "originals": [
+    "JB300 body after LOSE TOO MUCH TIME?"
+   ],
+   "answer": "Destroyed either way ('Hank will have killed the android by the time Connor arrives'; chart SWAT DESTROYS DEVIANT), so the body reaches the evidence room; C15h sets evidence.kitchenBody.",
+   "source": "wiki JB300_336_445_581 line 47",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-20",
+   "verdict": "resolved",
+   "topic": "Unused flowchart strings",
+   "originals": [
+    "Unused strings? FLASH FROM DEVIANT'S MEMORY, CONNOR SAW JERICHO MEMORY, FIND BAG and CONNOR DIED…"
+   ],
+   "answer": "None of the four is on PowerPyx's 100% chart (the rush branch reads SHOT BY SIMON / REACH SIMON > FLASH FROM SIMON'S MEMORY > SIMON SELF-DESTRUCTS; the kitchen line has no memory flash), so they are unreachable.",
+   "source": "PowerPyx Detroit-Public-Enemy-6-006.jpg and -7-007.jpg; strings09C.txt lines 163–193",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-21",
+   "verdict": "resolved",
+   "topic": "Clues the template does not render",
+   "originals": [
+    "Clues the template does not render?"
+   ],
+   "answer": "They are game strings: 'Attempted call: Central Security', 'Desactivated since 60s', 'Property of Carl Manfred' are in en.json (rank 2 with the template).",
+   "source": "en.json (cached /tmp/flowcharts/ch24/en.json)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch24-22",
+   "verdict": "cosmetic",
+   "topic": "Kitchen tell and an innocent android under TORTURE",
+   "originals": [
+    "How the kitchen tell shows, and which android it is on your save; what an innocent android does under TORTURE"
+   ],
+   "why": "the tell is visual and the wrong-target reactions are narration; the target choice and its outcome (DEVIANT NOT FOUND) are sourced"
+  },
+  {
+   "id": "ch24-23",
+   "verdict": "adaptation",
+   "topic": "Magazine names left out",
+   "originals": [
+    "The facts summarize the wiki's article text; the brothers' names…"
+   ],
+   "why": "neutral framing; no stat"
+  },
+  {
+   "id": "ch24-24",
+   "verdict": "adaptation",
+   "topic": "Unplaced kitchen 'STOP HIM!' / 'JERICHO!' strings",
+   "originals": [
+    "The string table also holds a kitchen 'STOP HIM!' / 'JERICHO!' exchange…"
+   ],
+   "why": "the template does not place the lines; flavour only"
+  }
+ ]
+}

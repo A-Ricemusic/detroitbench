@@ -12,7 +12,10 @@
 // No mutation happens while rendering available options.
 //
 // The officer's suspicion is a hidden counter (midnightSuspicion). The game shows a meter but no source gives its values,
-// and the sources disagree on what decides the noise question (see rules.suspicion and the note on K15w10).
+// and the sources disagree on what decides the noise question (see rules.suspicion and the note on K15w10). Because the
+// player sees that meter fill, each scene marked `suspicionCue` (story 1.9.2) adds a short qualitative cue to its outcome
+// when the suspicion rises (SUSPICION_CUES, by how many things he has noticed), never a number. Older story snapshots,
+// without the mark, replay without cues.
 //
 // Inputs: `lutherWith` (built-in; set by Zlatko, K13). Every released path into this chapter has Luther (Zlatko's ending
 // LUTHER JOINS KARA & ALICE); the template's Luther-dead variants are cut content, so without Luther the chapter is skipped
@@ -123,26 +126,33 @@ export function available(n,s,opts){
   }
   if(sets.midnightHideActions>=HIDE_BUDGET){
    sets.midnightDoor='insisted';sets.midnightSuspicion=s.midnightSuspicion+1;
-   outcome+=' Before she can do anything more, the officer pounds on the door: he will not wait any longer.';
+   outcome+=' Before she can do anything more, the officer pounds on the door: he will not wait any longer.'+(n.suspicionCue?' '+DOOR_CUE:'');
   }
   return {...o,sets,outcome};
  });
 }
 
+// Qualitative cues after a rise, indexed by the suspicion reached (1, 2, 3 or more); the door cue for POLICEMAN INSISTS.
+export const SUSPICION_CUES=['','The officer’s eyes narrow: he has noticed something.','The officer frowns; his suspicion is growing.','The officer is openly suspicious now.'];
+export const DOOR_CUE='He sounds suspicious already.';
+const cue=(n,s,before,choice,opt)=>{if(!n.suspicionCue||s.midnightSuspicion<=before)return '';
+ const base=n.type==='event'?(n.outcomes?.[choice]??''):(n.outcomes?.[choice]??opt?.outcome??'');
+ return (base+' '+SUSPICION_CUES[Math.min(s.midnightSuspicion,SUSPICION_CUES.length-1)]).trim()};
+
 const lutherDies=(s,outcome)=>{s.luther=false;s.lutherWith=false;s.lutherHidden=false;s.midnightOfficerDead=true;s.midnightOutcome=outcome};
 
 export function consequence(n,s,opt,choice,fail,h){
- const id=n.id;
+ const id=n.id,before=s.midnightSuspicion;
  switch(id){
   case 'K15n':s.midnightSawMary=choice==='0';return '';
   // COP AT THE DOOR: the page the magazine was left at. Reading the advertisement (or everything) leaves it open there.
   case 'K15t':{const r=s.choices.R25;s.midnightMagazineRead=['0','1','all'].includes(r);s.midnightMagazine=['1','all'].includes(r)?'ad':'cover';return ''}
-  case 'K15w3':s.midnightSuspicion+=1+(choice==='2'?1:0);return '';
+  case 'K15w3':s.midnightSuspicion+=1+(choice==='2'?1:0);return cue(n,s,before,choice,opt);
   case 'K15w4':lutherDies(s,OUTCOMES.kitchen);return '';
-  case 'K15w5':if(choice==='1')s.midnightSuspicion++;return '';
-  case 'K15w6':if(h.c('K15w1')==='1')s.midnightSuspicion++;return '';
-  case 'K15w7':case 'K15w8':s.midnightSuspicion++;return '';
-  case 'K15w9':if(choice==='1')s.midnightSuspicion++;return '';
+  case 'K15w5':if(choice==='1')s.midnightSuspicion++;return cue(n,s,before,choice,opt);
+  case 'K15w6':if(h.c('K15w1')==='1')s.midnightSuspicion++;return cue(n,s,before,choice,opt);
+  case 'K15w7':case 'K15w8':s.midnightSuspicion++;return cue(n,s,before,choice,opt);
+  case 'K15w9':if(choice==='1')s.midnightSuspicion++;return cue(n,s,before,choice,opt);
   case 'K15w10':s.midnightSuspicion+=(s.midnightHide.door?0:1)+rules.suspicion.noise[choice];
    s.midnightVerdict=s.midnightSuspicion>=rules.suspicion.threshold?'suspicious':'fooled';return '';
   case 'K15x':lutherDies(s,OUTCOMES.laundry);return '';

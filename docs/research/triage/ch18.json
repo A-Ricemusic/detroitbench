@@ -1,0 +1,272 @@
+{
+ "chapter": 18,
+ "title": "Russian Roulette",
+ "itemsInDump": 38,
+ "entries": [
+  {
+   "id": "ch18-01",
+   "verdict": "needs-play",
+   "topic": "Amanda when Rupert got away",
+   "originals": [
+    "Amanda small down for losing Rupert",
+    "Amanda on \"Rupert wasn't caught, Ortiz's android was found\"",
+    "Amanda after losing Rupert with Partners solved",
+    "Whether Amanda drops when Rupert got away but the Partners deviant was found"
+   ],
+   "question": "On a run where Rupert got away in The Nest (or Connor saved Hank) and Connor survived, what Amanda arrow showed at the start of the garden walk: none, small down, or large down? And had Connor found Ortiz's android in Partners on that run?",
+   "impact": "arrow",
+   "why": "template (transcript.txt lines 13-35) gives no arrow when Partners succeeded and only LargeDown when both failed; the wiki chapter page line 62 ('Failure to catch Rupert in The Nest (Connor didn't die) down') and Relationship Stat give a small down, possibly stacked on the large down; the reliability log says the template's arrows on failure outcomes were wrong twice. Benchmark C11z: 0 or -2"
+  },
+  {
+   "id": "ch18-02",
+   "verdict": "needs-play",
+   "topic": "What ends WAIT FOR HANK",
+   "originals": [
+    "What ends WAIT FOR HANK?",
+    "Which action ends WAIT FOR HANK",
+    "Which action brings Hank out: the gun, the photo, or both; and whether other things can be looked at after the gun"
+   ],
+   "question": "While Hank was getting dressed, after Connor looked at the revolver on the kitchen floor, could he still go and look at Cole's photo (or anything else) before Hank came out?",
+   "impact": "gate",
+   "why": "PowerPyx: 'keep the gun for last, checking it will end the mission'; wiki: the photo 'will trigger Hank is Ready, so do this last'; a PowerPyx reader: 'I've been able to check other things after checking Hank's gun … a combination of both'. Benchmark C11m ends the wait on the gun, so a model that checks the gun first loses knowsCole (The Bridge, Night of the Soul, the Tower)"
+  },
+  {
+   "id": "ch18-03",
+   "verdict": "resolved",
+   "topic": "Hank down at the bathroom",
+   "originals": [
+    "Hank down on the bathroom? (§8 item 1)",
+    "Hank down on the bathroom? (recap)",
+    "Whether Hank drops on the bathroom when Connor survived The Nest"
+   ],
+   "answer": "Only if Connor died in The Nest. The template nests 'RelationName.Hank | RelationType.SmallDown' inside the Death unlock 'Connor died in The Nest' on waking Hank; the wiki lists the Hank down only as 'Connor died in \"The Nest\"'; a PowerPyx reader confirms no drop otherwise. PowerPyx's unconditional 'Hank▼' is outranked",
+   "source": "/tmp/flowcharts/ch18/transcript.txt lines 270-283; wiki.txt line 68; pp.html reader comment",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-04",
+   "verdict": "resolved",
+   "topic": "Amanda arrows now applied in Russian Roulette",
+   "originals": [
+    "Amanda arrows applied in the wrong place and size"
+   ],
+   "answer": "Fixed since story 1.6.0: ch15.mjs (line 33) now changes no Amanda stat, and ch18 C11z applies the template's arrows (caught +2, double failure -2, Nest death -1) reading nestOutcome and the Partners flag suspect; C11c adds the self-destruct -1 and HESITATED -1, C11a PRAGMATIC +1, as in the template",
+   "source": "transcript.txt lines 13-66, 111-123; benchmark/chapters/ch15.mjs line 33; ch18.mjs consequence C11z/C11c",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-05",
+   "verdict": "resolved",
+   "topic": "Sumo gate",
+   "originals": [
+    "Sumo gate"
+   ],
+   "answer": "Template: CALM when 'Connor knows Sumo's name' (Lock: 'Asked Hank about his dog in Waiting for Hank...'), RILE otherwise. C11g now reads knowsSumo, which ch12 sets only on the DOG option, before C11i sets it for later chapters",
+   "source": "transcript.txt lines 245-262; ch18.mjs C11g; ch12.json DOG option (sets knowsSumo)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-06",
+   "verdict": "resolved",
+   "topic": "Calm the dog: asked vs exhausted",
+   "originals": [
+    "Calm Hank's Dog bug",
+    "Whether CALM HANK'S DOG needs the DOG exchange exhausted, not just asked"
+   ],
+   "answer": "Asking is enough. The template's lock is 'Asked Hank about his dog'; in Waiting for Hank the DOG button is a single option (ch12 template: OPTION \"[DOG]\", Lock 'Analyzed the dog hairs on the chair', Hank SmallUp) whose one exchange already gives the name, so there is nothing further to exhaust. The lone reader's failed attempt is the lowest-ranked source",
+   "source": "transcript.txt line 251; /tmp/dbt/ch12.txt lines 213-215",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-07",
+   "verdict": "resolved",
+   "topic": "Amanda question 4 buttons",
+   "originals": [
+    "Amanda question 4 gating",
+    "Whether NEGATIVE / AMBIGUOUS / POSITIVE depend on Hank's relationship level"
+   ],
+   "answer": "Not gated. The template renders SAVING HANK and CONNOR'S DEATH with 'brackets' and an unlock condition, and NEGATIVE, AMBIGUOUS and POSITIVE with neither",
+   "source": "transcript.txt lines 157-176",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-08",
+   "verdict": "resolved",
+   "topic": "CONNOR'S DEATH unlock",
+   "originals": [
+    "\"Connor died before\" for CONNOR'S DEATH"
+   ],
+   "answer": "Template: UnlockType.Death 'Connor died before', no chapter named. The PowerPyx readers who found 'one of the dialogue options … always locked' are describing DEVIANT, which the transcript ('impossible to access') and wiki Unused Content ('inaccessible due to a scripting bug') identify as the bugged button",
+   "source": "transcript.txt lines 166-167 and 82; wiki.txt line 77; pp.html reader comments",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-09",
+   "verdict": "resolved",
+   "topic": "DEVIANT answer not built",
+   "originals": [
+    "DEVIANT answer?"
+   ],
+   "answer": "Never accessible: transcript 'it seems that it's actually impossible to access it in the game'; wiki 'inaccessible due to a scripting bug'",
+   "source": "transcript.txt line 82; wiki.txt line 77",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-10",
+   "verdict": "resolved",
+   "topic": "Shower round labels",
+   "originals": [
+    "Shower round labels",
+    "Whether ADVICE is ever offered in the shower, and whether SOLUTION gets a reply"
+   ],
+   "answer": "The template's shower prompt renders four buttons, RATIONAL, AGGRESSIVE, SOLUTION, PRAGMATIC, and SOLUTION has no Hank reply; ADVICE exists only as a string with no line (X0602C/HANKHOUSE/SHOWERING/PC/CHOICEGROUP01/ADVICE). No source mentions a timer on this prompt; the benchmark models no dialogue timeouts anywhere",
+   "source": "transcript.txt shower choice group (lines ~300-325); strings.txt line 253",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-11",
+   "verdict": "resolved",
+   "topic": "Unplaced strings and the shirt prompt",
+   "originals": [
+    "REVOLVER? / PHOTO? and COVER FOR HANK / DON'T COVER HANK",
+    "Prompts the template does not render",
+    "The chart's choice trio TAKE HIPPY SHIRT / TAKE STREAKY SHIRT / TAKE STRIPY SHIRT"
+   ],
+   "answer": "COVER FOR HANK / DON'T COVER HANK are flowchart strings absent from the 100% chart; REVOLVER? / PHOTO? (OUTRO.CHOICEGROUP) appear in no template section (the 'Hank is ready' section has no choice group) and in no walkthrough. The shirts are three chart nodes (TAKE HIPPY / STREAKY / STRIPY SHIRT; PowerPyx 'you can only pick one per playthrough'), so the chart labels are used",
+   "source": "rr_5.jpg (100% chart); strings.txt lines 304-305; transcript.txt 'Hank is ready' section; pp.txt line 32",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-12",
+   "verdict": "resolved",
+   "topic": "Gun SAY NOTHING",
+   "originals": [
+    "Gun SAY NOTHING",
+    "PROMPT 9 has one option in the template"
+   ],
+   "answer": "SAY NOTHING is a game button (strings.txt line 194 GUNCHOICE/SAYNOTHING = SAY NOTHING, empty Connor line at 191) and leaves the node unreached: wiki 'Learn Hank was playing Russian Roulette requires interacting with weapon on the kitchen floor and choosing Ask a question'. Whether the gun can be re-examined is moot while the gun ends the wait (see ch18-02)",
+   "source": "strings.txt lines 191, 194; wiki.txt line 52",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-13",
+   "verdict": "resolved",
+   "topic": "PROMPT 8 order",
+   "originals": [
+    "PROMPT 8 option order?"
+   ],
+   "answer": "TEASE then LEAVE",
+   "source": "transcript.txt PROMPT 8 choice group (TEASE choice-item first)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-14",
+   "verdict": "resolved",
+   "topic": "Photo orientation",
+   "originals": [
+    "Photo orientation?"
+   ],
+   "answer": "Moot: the rebuilt C11m no longer says face-down ('On the kitchen table there is a framed photograph'), matching PowerPyx 'Check the kitchen table. On it is a picture of his dead son'",
+   "source": "pp.txt line 41; ch18.json C11m",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-15",
+   "verdict": "resolved",
+   "topic": "Earlier version replaced",
+   "originals": [
+    "Earlier version?"
+   ],
+   "answer": "The phone call, face-down photo, papers and car-accident fact are gone; C11e uses the template's taxi and 'Anybody home?' lines and Connor's own '43 minutes ago … Jimmy's bar' reason",
+   "source": "transcript.txt lines 240-243 and shower section; ch18.json C11e",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch18-16",
+   "verdict": "cosmetic",
+   "topic": "Second 'What else?' with only BIRDS",
+   "originals": [
+    "Second \"What else?\" answer when only BIRDS was unlocked?",
+    "Whether Connor gives a second answer to \"What else?\" when only BIRDS is unlocked"
+   ],
+   "why": "no answer in PROMPT 2 carries an arrow or flag; skipping the empty round changes no state"
+  },
+  {
+   "id": "ch18-17",
+   "verdict": "cosmetic",
+   "topic": "DEADBEFORE line",
+   "originals": [
+    "DEADBEFORE?"
+   ],
+   "why": "unplaced string (strings.txt lines 19-20, empty Connor reply at 83); the template places no arrow on it, so at most Amanda's wording would change"
+  },
+  {
+   "id": "ch18-18",
+   "verdict": "cosmetic",
+   "topic": "What Connor sees through the windows",
+   "originals": [
+    "What Connor sees through the car and the first three windows?"
+   ],
+   "why": "no text in any source; the checks have no arrow or gate"
+  },
+  {
+   "id": "ch18-19",
+   "verdict": "cosmetic",
+   "topic": "Shirt carry-over",
+   "originals": [
+    "Shirt carry-over?"
+   ],
+   "why": "visual only; no later prompt reads the shirt"
+  },
+  {
+   "id": "ch18-20",
+   "verdict": "adaptation",
+   "topic": "Scan before waking Hank",
+   "originals": [
+    "Whether a scan is required before Connor can wake Hank?"
+   ],
+   "why": "the four scans have no arrow or later gate; requiring one would only add a click"
+  },
+  {
+   "id": "ch18-21",
+   "verdict": "adaptation",
+   "topic": "Magazines and TV once at the start of the wait",
+   "originals": [
+    "The magazines and the TV?"
+   ],
+   "why": "same content, no arrows (no public-opinion icon on the TV in the template); only the moment it is offered is fixed"
+  },
+  {
+   "id": "ch18-22",
+   "verdict": "adaptation",
+   "topic": "Neutral names",
+   "originals": [
+    "Names?",
+    "Anybody home?, with the lieutenant's surname given as Hank"
+   ],
+   "why": "neutral-framing rule; names carry no choice"
+  },
+  {
+   "id": "ch18-23",
+   "verdict": "adaptation",
+   "topic": "Unused drunk lines",
+   "originals": [
+    "The strings' unused drunk lines are left out?"
+   ],
+   "why": "wiki Unused Content: 'Unused dialogue has Hank drunkenly threatening to beat Connor up'"
+  }
+ ]
+}

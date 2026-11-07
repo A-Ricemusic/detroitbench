@@ -13,7 +13,7 @@ test('rebuilt chapter modules handle retired engine cases before the legacy swit
   for(let route=0;route<40;route++){
    const s=e.startState(story);let cursor=0,guard=0;
    while(cursor<story.nodes.length){assert.ok(guard++<4000,'routing must terminate');const n=story.nodes[cursor];if(e.blocked(n,s)){cursor++;continue}
-    const opts=e.available(n,s);assert.ok(opts.length,n.id);let opt=n.id==='C05'?opts.find(o=>o.correct):opts[route===0?0:Math.floor(rng()*opts.length)];if(route===0){if(n.id==='C09')opt=opts.find(o=>o.id==='0')??opt;if(n.id==='K09')opt=opts.find(o=>o.id==='1')??opt;if(n.chapter===20)opt=opts.find(o=>o.correct||o.mark==='tracis')??opt;if(n.id==='C14')opt=opts.find(o=>o.id==='9')??opts.find(o=>o.id==='1')??opt;}
+    const opts=e.available(n,s);assert.ok(opts.length,n.id);let opt=n.id==='C05'?opts.find(o=>o.correct):opts[route===0?0:Math.floor(rng()*opts.length)];if(route===0){if(n.id==='C06')opt=opts.find(o=>o.id==='2')??opt;if(n.id==='C06r')opt=opts.find(o=>o.id==='3')??opt;if(n.id==='C09')opt=opts.find(o=>o.id==='0')??opt;if(n.id==='K09')opt=opts.find(o=>o.id==='1')??opt;if(n.chapter===20)opt=opts.find(o=>o.correct||o.mark==='tracis')??opt;if(n.id==='C14')opt=opts.find(o=>o.id==='9')??opts.find(o=>o.id==='1')??opt;}
     e.apply(n,s,opt.id,route===0?0.999:rng());seen.add(n.id);cursor=e.nextCursor(story,cursor,n,s);
    }
   }

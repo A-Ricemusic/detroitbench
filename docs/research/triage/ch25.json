@@ -1,0 +1,327 @@
+{
+ "chapter": 25,
+ "title": "Midnight Train",
+ "itemsInDump": 51,
+ "entries": [
+  {
+   "id": "ch25-01",
+   "verdict": "needs-play",
+   "topic": "Noise answer with all evidence hidden",
+   "originals": [
+    "What makes the officer suspicious?",
+    "The suspicion meter?",
+    "With all evidence hidden, does DOG still send him…",
+    "Rule used (unsourced sizes)…",
+    "The sources conflict on how: PowerPyx and GamerGuides…",
+    "So with nothing left out every answer but HEARD NOTHING…"
+   ],
+   "question": "With every piece of evidence hidden, coffee made, ALICE and TIRED answered, if you answer DOG to the laundry-room noise, does the officer open the laundry room (yes/no)?",
+   "impact": "ending",
+   "why": "PowerPyx/GamerGuides give only recipes (hide nothing + DOG = suspicious; hide all + WASHING MACHINE = fooled); officer wiki page says HEARD NOTHING or a timeout sends him in; no source states the meter values. Benchmark (K15w10 rule: weights DOG 2, WIND 1, WASHING MACHINE 0, HEARD NOTHING 3, threshold 3) says no for DOG, yes for HEARD NOTHING."
+  },
+  {
+   "id": "ch25-02",
+   "verdict": "needs-play",
+   "topic": "Noise answer with nothing hidden",
+   "originals": [
+    "With nothing hidden, does WASHING MACHINE still get him to leave?"
+   ],
+   "question": "With no evidence hidden (door opened in time, Luther and Alice upstairs), does WASHING MACHINE still make the officer leave (yes/no)?",
+   "impact": "ending",
+   "why": "IGN: evidence can be left out 'without the police officer really caring too much'; PowerPyx's suspicious recipe uses DOG. Benchmark: no answer fools him once three or more evidence items are out."
+  },
+  {
+   "id": "ch25-03",
+   "verdict": "needs-play",
+   "topic": "What moves the suspicion meter",
+   "originals": [
+    "Adam's two conversations?",
+    "Does making coffee lower the meter, and does any Adam answer…",
+    "Coffee?",
+    "Talking to Adam?",
+    "No source states an effect on the officer's visit; none is applied",
+    "No source gives either answer an effect; none is applied"
+   ],
+   "question": "In one replay with the meter on screen: does skipping the coffee raise it, and does UPSET (instead of TIRED) raise it (yes/no for each)?",
+   "impact": "number",
+   "why": "Template prints Adam's stammer 'The… The androids, they…' unconditionally (so his line never changes), and gives no suspicion data. PowerPyx's suspicious recipe includes 'Don't make him coffee'; the Adam wiki page says nervousness raises suspicion unless dismissed as exhaustion. Benchmark: +1 for no coffee, +1 UPSET, +1 NOT MINE; TALK TO ADAM, REASSURE/THREATEN/CALM and YES/NO have no effect."
+  },
+  {
+   "id": "ch25-04",
+   "verdict": "needs-play",
+   "topic": "Laundry-room door left open",
+   "originals": [
+    "Does the laundry door left open have its own evidence node?",
+    "Does leaving the laundry-room door open change anything?"
+   ],
+   "question": "With everything else hidden and the laundry-room door left open, does the officer still leave after WASHING MACHINE (yes/no)?",
+   "impact": "ending",
+   "why": "Chart has SHUT THE DOOR OF LAUNDRY ROOM but no 'policeman sees' node for it; no source states the consequence. Benchmark counts it +1 suspicion at the noise question."
+  },
+  {
+   "id": "ch25-05",
+   "verdict": "needs-play",
+   "topic": "Hiding-phase length",
+   "originals": [
+    "The 50-second timer?",
+    "How many hiding actions fit in the 50 seconds…",
+    "The chart's timed phase FIND AND HIDE EVIDENCE…",
+    "The budget of six is not sourced…"
+   ],
+   "question": "Moving deliberately, how many of the hiding actions (cover, blood cupboard, clothes, laundry door, tell Luther, curtain, Adam) can you finish before the officer insists (a number)?",
+   "impact": "number",
+   "why": "PowerPyx 'roughly 50 seconds', GamerGuides '50 second timer'; no source gives an action count. Benchmark: six actions, a seventh forces POLICEMAN INSISTS (+1 suspicion)."
+  },
+  {
+   "id": "ch25-06",
+   "verdict": "needs-play",
+   "topic": "Fireside CHECK ON ALICE gate",
+   "originals": [
+    "Alice's secret?",
+    "Whether the fireside CHECK ON ALICE appears after PREVENT ALICE SEEING MARY",
+    "T11 missing?"
+   ],
+   "question": "After TAKE ALICE OUTSIDE (PREVENT ALICE SEEING MARY), can Kara still sit with Alice by the fire and get the INSIST / LET IT GO prompt (yes/no)?",
+   "impact": "options",
+   "why": "Only the wiki flowchart list gates it ('Check On Alice - if Let Alice See Mary above'); template marks no gate; PowerPyx lists it unconditionally. Benchmark (K15q) offers it only after STAY."
+  },
+  {
+   "id": "ch25-07",
+   "verdict": "resolved",
+   "topic": "Hiding upstairs can still end in the laundry-room death",
+   "originals": [
+    "Hiding upstairs and the death ending?"
+   ],
+   "answer": "Yes. PowerPyx's last (blue) path runs UPSTAIRS > … > POLICEMAN IS SUSPICIOUS > COP FINDS ANDROIDS IN THE LAUNDRY ROOM > LUTHER DIED SAVING OTHER DEVIANTS; its text also gets the same ending with Luther in the kitchen behind a drawn curtain. Only kitchen + open curtain (or no order) gives the kitchen death.",
+   "source": "flowchart mt-5.jpg (UPSTAIRS filled blue), mt-7.jpg (suspicious/laundry/ending filled blue); pp.txt 'I told Luther to hide in the kitchen and then closed the curtain to get this outcome'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-08",
+   "verdict": "resolved",
+   "topic": "Hiding in the laundry room",
+   "originals": [
+    "Hiding in the laundry room?",
+    "…Does hiding Luther and Alice in the laundry room?"
+   ],
+   "answer": "The hiding place itself causes no discovery: IGN 'The only place that can get you into trouble is in the kitchen'. If the officer ends suspicious he opens the laundry room, and the chart has a single outcome for that branch (COP FINDS ANDROIDS IN THE LAUNDRY ROOM > LUTHER DIED SAVING OTHER DEVIANTS); there is no other ending tile.",
+   "source": "ign.txt 'Hiding Luthor and Alice: The only place that can get you into trouble is in the kitchen'; mt-7.jpg three ending tiles only",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-09",
+   "verdict": "resolved",
+   "topic": "POLICEMAN QUESTIONS ADAM always happens",
+   "originals": [
+    "POLICEMAN QUESTIONS ADAM?"
+   ],
+   "answer": "It happens on the suspicious path too: the node is filled blue on PowerPyx's last run, which ended POLICEMAN IS SUSPICIOUS; the template prints the questioning outside any condition group.",
+   "source": "flowchart mt-6.jpg (POLICEMAN QUESTIONS ADAM blue alongside POLICEMAN IS SUSPICIOUS); template section open-door, 'What's your name, son?' unconditional",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-10",
+   "verdict": "resolved",
+   "topic": "Magazine starting page",
+   "originals": [
+    "The magazine's starting page?",
+    "Does the magazine lie open at the advertisement when Kara never reads it…"
+   ],
+   "answer": "If Kara never reads it, the officer does not see the article: PowerPyx's last run has READ MAGAZINE grey and POLICEMAN SEES ARTICLE grey. CHANGE MAGAZINE COVER needs a prior read (PowerPyx: 'Works only if you read the magazine on kitchen table before').",
+   "source": "flowchart mt-4.jpg (READ MAGAZINE grey on the blue run), mt-6.jpg (POLICEMAN SEES ARTICLE grey); pp.txt Change Magazine Cover line",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-11",
+   "verdict": "resolved",
+   "topic": "ALICE vs NOBODY",
+   "originals": [
+    "ALICE vs NOBODY?",
+    "Upstairs after ALICE?",
+    "Does ALICE (rather than NOBODY) avoid the suspicion when they hide upstairs?"
+   ],
+   "answer": "The chart draws POLICEMAN SUSPICIOUS ABOUT UPSTAIRS as a child of LIE ABOUT ALICE, so the suspicion node follows NOBODY (with Luther upstairs) only; after ALICE the template gives the harmless 'Hm, your daughter seems to have woken up.' NOBODY with another hiding place has no follow-up node.",
+   "source": "flowchart mt-6.jpg edge LIE ABOUT ALICE > POLICEMAN SUSPICIOUS ABOUT UPSTAIRS; template variants 'Luther is hidden upstairs and chose NOBODY / ALICE'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-12",
+   "verdict": "resolved",
+   "topic": "Fooled arrows trigger",
+   "originals": [
+    "The fooled arrows have the right size but the wrong trigger?"
+   ],
+   "answer": "Template applies Alice SmallUp + Luther SmallUp in the 'Policeman is fooled' variant after the noise prompt. The rebuild applies h.alice(1); h.luther(1) in K15y (POLICEMAN FOOLED), not on a hide-all roll.",
+   "source": "template open-door, variant 'Policeman is fooled' ARROW Alice SmallUp / Luther SmallUp; ch25.mjs consequence K15y",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-13",
+   "verdict": "resolved",
+   "topic": "Both deaths make Adam hostile",
+   "originals": [
+    "Do the two ending deaths both trigger Adam's hostility?"
+   ],
+   "answer": "Yes. Luther kills the officer in both: the officer's wiki page says in the pantry he 'also dies as Luther will shove him', and in the laundry 'Luther will attack him, which also results in … the officer dying'; the template's suspicious variant has Adam 'He's dead! You killed him!'. Leaving Detroit's condition is 'Luther killed the cop in Midnight Train'. Benchmark sets midnightOfficerDead in both and ch32.mjs reads it.",
+   "source": "Police_Officer_0617 wiki page; ch32.1 template condition 'Luther killed the cop in Midnight Train'; ch25 template suspicious variant",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-14",
+   "verdict": "resolved",
+   "topic": "Not telling Luther where to hide",
+   "originals": [
+    "Not telling Luther where to hide?"
+   ],
+   "answer": "Same as kitchen with curtain open: PowerPyx 'send Luther to the kitchen (or don't talk to him at all) and don't close the curtain'.",
+   "source": "pp.txt, ending 'Luther Died Killing Policeman'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-15",
+   "verdict": "resolved",
+   "topic": "Cut content not built",
+   "originals": [
+    "Cut content the note does not list?",
+    "Unused bedtime question?",
+    "Cut content?",
+    "They've come to arrest us!” is marked cut…"
+   ],
+   "answer": "The template wraps all six blocks (doorstep Alice variant, REASSURE/PROTECT/BRAVE, Luther-dead lines, Alice-only hiding prompt, hide-and-seek variant, Adam's 'They know!' line) in UNUSED/CUT CONTENT; none is built.",
+   "source": "template ch25 outline, unused=6",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-16",
+   "verdict": "resolved",
+   "topic": "Hiding-place labels",
+   "originals": [
+    "Hiding-place labels (D11)?"
+   ],
+   "answer": "Benchmark options read UPSTAIRS / LAUNDRY / KITCHEN, the template labels.",
+   "source": "template talk-luther-hide prompt; ch25.json K15u options 2-4",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-17",
+   "verdict": "resolved",
+   "topic": "Officer prompts T15–T19",
+   "originals": [
+    "T15 to T19 missing?"
+   ],
+   "answer": "All five officer prompts are built (K15w1 ALICE/NOBODY, K15w2 YES/NO, K15w3 MESS/PREVIOUS OWNER/NOT MINE when the cupboard is open, K15w9 TIRED/UPSET, K15w10 DOG/WASHING MACHINE/WIND/HEARD NOTHING).",
+   "source": "template open-door section; ch25.json",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-18",
+   "verdict": "resolved",
+   "topic": "R25 news text",
+   "originals": [
+    "R25 news fact?"
+   ],
+   "answer": "R25 now quotes the template's Watch TV line ('widespread shock following the android attack…'), with only the tower name neutralised.",
+   "source": "template tv section / dialogue; ch25.json R25 media",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-19",
+   "verdict": "resolved",
+   "topic": "Without Luther",
+   "originals": [
+    "Without Luther?"
+   ],
+   "answer": "Every Luther-dead variant in the template is conditioned on 'Luther died in The Pirate's Cove's unused chase scene' inside cut blocks; Zlatko wiki: the option to not take Luther was removed. Skipping the chapter without Luther invents nothing.",
+   "source": "template conditions; Zlatko wiki Notes",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch25-20",
+   "verdict": "adaptation",
+   "topic": "Earlier version",
+   "originals": [
+    "Earlier version?"
+   ],
+   "why": "historical comparison row in the recap; the old K15 was replaced, nothing to check"
+  },
+  {
+   "id": "ch25-21",
+   "verdict": "adaptation",
+   "topic": "Rose's topics order and count",
+   "originals": [
+    "Rose's topics?",
+    "How many of Rose's topics can be asked before BORDER…"
+   ],
+   "why": "documented assumption in K15l; topics carry no arrow or later gate, only the DANGEROUS lock, which is built"
+  },
+  {
+   "id": "ch25-22",
+   "verdict": "adaptation",
+   "topic": "Hidden counter instead of visible meter",
+   "originals": [
+    "The officer's suspicion is a hidden counter…"
+   ],
+   "why": "no source gives meter values, so showing a number would invent one; the ending question is covered by the needs-play entries above"
+  },
+  {
+   "id": "ch25-23",
+   "verdict": "adaptation",
+   "topic": "Explore phase without a time limit",
+   "originals": [
+    "Free roam?"
+   ],
+   "why": "documented in K15q; nothing in the explore phase carries an arrow, and the only downstream gate (READ MAGAZINE) is preserved"
+  },
+  {
+   "id": "ch25-24",
+   "verdict": "adaptation",
+   "topic": "Prompts folded into the approach",
+   "originals": [
+    "Prompts after an approach?"
+   ],
+   "why": "walking to a character then pressing a button is collapsed into one option; same prompt, labels and effects"
+  },
+  {
+   "id": "ch25-25",
+   "verdict": "adaptation",
+   "topic": "Names and places",
+   "originals": [
+    "Names and places?"
+   ],
+   "why": "neutral-naming rule; the anchor, Andy and Stratford Tower are unnamed by design"
+  },
+  {
+   "id": "ch25-26",
+   "verdict": "adaptation",
+   "topic": "Magazine summary",
+   "originals": [
+    "The magazine is Century's “World War Three”…"
+   ],
+   "why": "article summarised from the wiki text; no stat or gate attached"
+  },
+  {
+   "id": "ch25-27",
+   "verdict": "cosmetic",
+   "topic": "Luther's dying line",
+   "originals": [
+    "Luther's dying line?",
+    "The older transcript and string table include “Take good care of Kara…”",
+    "The lines are the template's suspicious variant…"
+   ],
+   "why": "en.json has 'Take good care of Kara… Promise me?' but the template does not place it; outcome text only"
+  }
+ ]
+}

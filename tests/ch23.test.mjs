@@ -37,7 +37,7 @@ test('The Stratford Tower: the scenes in the game’s order, between The Bridge 
  assert.deepEqual(labels('M10'),['RUSE','ASSAULT']);assert.deepEqual(labels('M11'),['SHOOT','SPARE']);assert.deepEqual(labels('M12a'),['CALM','DETERMINED']);
  assert.deepEqual(labels('M12b'),['RECOGNITION','END OF SLAVERY','EQUAL RIGHTS','FREEDOM OF SPEECH']);assert.deepEqual(labels('M12c'),['JUSTICE','SEGREGATION','WORK','CIVIL RIGHTS']);
  assert.deepEqual(labels('M12d'),['RIGHT TO PROPERTY','MEANS OF REPRODUCTION','TERRITORY']);assert.deepEqual(labels('M12'),['PEACEFUL','DETERMINED']);
- assert.deepEqual(labels('M13'),['HELP','FLEE']);assert.deepEqual(labels('M14'),['LEAVE','KILL']);assert.deepEqual(labels('M14b'),['SHOOT','REFRAIN']);
+ assert.deepEqual(labels('M13'),['FLEE','HELP'],'the template’s PROMPT 10 order (FLEE, Help) and the chart’s (LEAVE SIMON, TRY TO SAVE SIMON)');assert.deepEqual(node('M13').options.map(o=>o.id),['1','0'],'ids keep their meaning');assert.deepEqual(labels('M14'),['LEAVE','KILL']);assert.deepEqual(labels('M14b'),['SHOOT','REFRAIN']);
  assert.ok(!JSON.stringify(node('R23').media).includes('Europe'),'the cut migrant-camp report is not built');assert.ok(!/nine o.clock/.test(JSON.stringify(node('R23').media)));
 });
 

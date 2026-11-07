@@ -1,0 +1,226 @@
+{
+ "chapter": 22,
+ "title": "The Bridge",
+ "itemsInDump": 39,
+ "entries": [
+  {
+   "id": "ch22-01",
+   "verdict": "needs-play",
+   "topic": "Instability when Hank shoots Connor",
+   "originals": [
+    "Whether the shooting changes instability?",
+    "Stat effects of the shooting? … whether SI changes on this death",
+    "Hank shot Connor? … Instability on that death remains unconfirmed",
+    "No instability change: the Software Instability page lists no death in this chapter"
+   ],
+   "question": "When Hank shot Connor on the bridge, did a Software Instability ↓ popup appear (yes/no)?",
+   "impact": "arrow",
+   "why": "Template has no shooting branch; the wiki Software_Instability page says 'Dying reduces software instability no matter if Connor dies…' but its decrease list names deaths in The Hostage, The Interrogation, On the Run, The Nest and Public Enemy and not The Bridge; SOURCES §13 lists conflicting community claims on death SI. The benchmark applies none (C13o, deathEffect {hankTrust:-1})."
+  },
+  {
+   "id": "ch22-02",
+   "verdict": "resolved",
+   "topic": "Other effects of the shooting (Hank, Amanda)",
+   "originals": [
+    "Death effects? The engine's connorDies applies hank(-1)… amanda(-1)",
+    "Stat effects of the shooting? Confirm the Hank small down"
+   ],
+   "answer": "Hank small down on HANK SHOT CONNOR; nothing for Amanda (she is absent and no source lists a change).",
+   "source": "wiki chapter page Relationship Changes: 'Hank shot Connor {{Icon|down}}'; no Amanda line on the chapter page or Relationship_Stat for The Bridge",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-03",
+   "verdict": "resolved",
+   "topic": "Not-found COLD arrows and variant",
+   "originals": [
+    "Not-found round 3 COLD? … Does the Eden Club 'give up' ending use the same variant",
+    "Round 3 not-found COLD: instability small down",
+    "Whether the not-found COLD moves instability?",
+    "The not-found variant covers every MISSION FAILED ending at the club"
+   ],
+   "answer": "PROMPT 5 COLD carries SoftwareInstability SmallDown and Hank SmallDown; this is an ordinary dialogue arrow, where the template has no recorded error, and the wiki's own SI list ('Picking \"Cold\" when Hank talks about the Tracis') does not exclude the not-found variant, so only the Notes line disagrees. Every Eden Club MISSION FAILED (timeout, give up, memories reset) is a not-found outcome; the template conditions PROMPT 10 on 'Connor didn't find the Tracis'.",
+   "source": "dbt template PROMPT 5 and PROMPT 10 conditions; wiki The_Bridge Software Instability list; The_Eden_Club flowchart (Give Up > Mission Failed)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-04",
+   "verdict": "resolved",
+   "topic": "TRUTH raises Hank once",
+   "originals": [
+    "TRUTH Hank up 'x2'?",
+    "TRUTH: one Hank arrow, not two?",
+    "Whether TRUTH raises Hank once or twice?"
+   ],
+   "answer": "One Hank SmallUp plus one SoftwareInstability SmallUp; Relationship_Stat and PowerPyx ('TRUTH Software Instability ▲, Hank ▲') agree; only the chapter page's 'x2' differs.",
+   "source": "dbt template PROMPT 7 TRUTH; pp.txt Dialogue Set 4",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-05",
+   "verdict": "adaptation",
+   "topic": "Direct chart line to HANK LEFT CONNOR ALONE",
+   "originals": [
+    "Direct line to HANK LEFT CONNOR ALONE?",
+    "The chart's direct line from the answers to HANK LEFT CONNOR ALONE has no stated condition",
+    "The chart also draws a line from the answer bracket straight to HANK…"
+   ],
+   "why": "both lines end at the same ending tile (br_4.jpg), so the only difference is whether the HANK IS PLACATED event node lights; options, arrows and the ending are unchanged"
+  },
+  {
+   "id": "ch22-06",
+   "verdict": "resolved",
+   "topic": "PowerPyx's repeated 'Dialogue Set 4'",
+   "originals": [
+    "PowerPyx's repeated 'Dialogue Set 4'?"
+   ],
+   "answer": "The extra round is the Eden-outcome follow-up, not a relationship-based repeat: PROMPT 8 (COLD / DEFENSIVE / AGGRESSIVE / NEUTRAL, the same labels as PROMPT 6) plays when Connor shot the Tracis in the back; PROMPTS 7 and 9 for the other outcomes. Benchmark C13h/C13i/C13j/C13k.",
+   "source": "dbt template PROMPT 8 'IF: Connor shot the Tracis in the back'; PowerPyx commenter Kali ('If you killed the Tracies… you get a different question')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-07",
+   "verdict": "adaptation",
+   "topic": "Which earlier clues unlock rA9",
+   "originals": [
+    "rA9 lock? Which earlier clues unlock the rA9 answer",
+    "Which earlier clues unlock rA9?",
+    "The template's third prompt (rA9, SHOCK, SYSTEMS, SOFTWARE), no arrows",
+    "The rA9 lock's clues are unspecified in every source"
+   ],
+   "why": "template lock is only 'Looked at rA9 clues in previous chapters'; the answer has no arrow and leads only to DISCUSS RA9, so accepting any Connor rA9 clue changes no stat or ending (but see ch22.md: the current check also accepts Kara's rA9 flags, a bug)"
+  },
+  {
+   "id": "ch22-08",
+   "verdict": "resolved",
+   "topic": "YES has no Hank change",
+   "originals": [
+    "YES: instability small up, no Hank change"
+   ],
+   "answer": "YES carries only SoftwareInstability SmallUp.",
+   "source": "dbt template PROMPT 11 YES; pp.txt 'YES Software Instability ▲, Hank –'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-09",
+   "verdict": "resolved",
+   "topic": "Coin confiscation condition",
+   "originals": [
+    "Coin confiscation? Does it need only 'Hank didn't shoot Connor'…"
+   ],
+   "answer": "Only that Hank did not shoot Connor on the bridge; the Friend condition belongs to Hank later imitating the coin tricks, not to the confiscation.",
+   "source": "wiki Hank_Anderson: 'If Hank did not shoot Connor, Connor will be seen playing with his quarter, which Hank then confiscates'; Quarter_coin: 'if Hank did not shoot him at the end of The Bridge'; Hank_Anderson Trivia: imitation 'If he is friends with Connor'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-10",
+   "verdict": "resolved",
+   "topic": "'Connor died before' line",
+   "originals": [
+    "'Connor died before' line?",
+    "Whether Hank's 'come back' line needs one earlier death or two?"
+   ],
+   "answer": "One earlier death: the template unlock is '[UNLOCK DEATH] Connor died before'; the Hank page's '(if Connor died more than once)' is wiki prose, and the reliability log favours the template's primary unlock condition over wiki prose. Text only.",
+   "source": "dbt template CONDITION GROUP before PROMPT 11; SOURCES Reliability log (unlock conditions)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-11",
+   "verdict": "resolved",
+   "topic": "CONNOR DIES label",
+   "originals": [
+    "CONNOR DIES label? … Cut content?"
+   ],
+   "answer": "Not a chart node: the 100% chart's death is HANK IS HOSTILE > HANK SHOT CONNOR (skull tile) and no CONNOR DIES box appears, so the string is unused.",
+   "source": "PowerPyx br_4.jpg (100% chart end)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-12",
+   "verdict": "adaptation",
+   "topic": "When Hank's level is read (can DEFY tip it)",
+   "originals": [
+    "Hostile measured when?",
+    "Whether Hank's level is read after the trigger round (DEFY can tip it)…"
+   ],
+   "why": "the template prints the 'Hank isn't hostile' lock after PROMPT 12, so reading the level after DEFY's arrow follows its order; nothing contradicts it and the hidden thresholds make the boundary case impractical to replay"
+  },
+  {
+   "id": "ch22-13",
+   "verdict": "cosmetic",
+   "topic": "Which of NOT ALIVE / LOGICAL lights REMAIN LOGICAL vs BE COLD",
+   "originals": [
+    "Which answers map to REMAIN LOGICAL and BE COLD?",
+    "Mapping of NOT ALIVE / LOGICAL…",
+    "Which of NOT ALIVE and LOGICAL lights REMAIN LOGICAL…",
+    "Which answer lights REMAIN LOGICAL and which BE COLD?"
+   ],
+   "why": "both answers carry identical arrows (SI↓, Hank↓) and lead to the same ending; only the recorded chart label differs (PowerPyx commenters report the button-to-node mapping flips on the hostile path)"
+  },
+  {
+   "id": "ch22-14",
+   "verdict": "adaptation",
+   "topic": "Dialogue timeouts",
+   "originals": [
+    "Timeouts? What happens if no answer is picked…",
+    "Timeouts on the dialogue rounds are not modelled"
+   ],
+   "why": "no source renders a time-out option; a time-out is not a button the model could press"
+  },
+  {
+   "id": "ch22-15",
+   "verdict": "resolved",
+   "topic": "DISTURBED / COLD lines",
+   "originals": [
+    "The DISTURBED/COLD line swap?"
+   ],
+   "answer": "DISTURBED is 'I was just executing instructions. I did what I had to do.' and COLD is 'Of course, I didn't feel anything…', with SI↑ on DISTURBED.",
+   "source": "dbt template PROMPT 9",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-16",
+   "verdict": "cosmetic",
+   "topic": "One magazine object or two",
+   "originals": [
+    "One magazine object or two?",
+    "This replaces the earlier single 'magazine on the red bench'…"
+   ],
+   "why": "the chart has two READ nodes and the benchmark offers both articles in one media scene; no stat"
+  },
+  {
+   "id": "ch22-17",
+   "verdict": "resolved",
+   "topic": "Cut lines in BEFORE and GO BACK",
+   "originals": [
+    "BEFORE: first line is cut?",
+    "GO BACK alternate line is cut?"
+   ],
+   "answer": "'Before?' and the second GO BACK take are UNUSED/CUT; live lines are 'Before what?' and 'It's late. Maybe you should go home.'",
+   "source": "dbt template PROMPT 1",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch22-18",
+   "verdict": "resolved",
+   "topic": "PERSONAL QUESTION sub-prompt",
+   "originals": [
+    "PERSONAL QUESTION sub-prompt?"
+   ],
+   "answer": "PROMPT 2 (PHOTO, lock 'Looked at Cole's photo in Russian Roulette'; SUICIDE) nests in PERSONAL QUESTION; without the photo the SUICIDE line plays directly.",
+   "source": "dbt template PROMPT 2; wiki Notes ('he will automatically say the suicide dialog line')",
+   "benchmarkMatches": true,
+   "fix": null
+  }
+ ]
+}

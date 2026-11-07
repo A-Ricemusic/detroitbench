@@ -1362,7 +1362,8 @@
     "id": "0",
     "text": "[CHECK GUN]: feel for the gun under your clothes.",
     "requires": {
-     "ch13HadGun": true
+     "ch13HadGun": true,
+     "ch13Meal.ralphThreatenedAlice": true
     },
     "outcome": "{{Kara}} feels for the gun."
    },
@@ -1382,7 +1383,7 @@
     "outcome": "{{Kara}}: “Okay. We’ll... eat together… like a family…”"
    }
   ],
-  "adaptationNote": "The chart’s SIT AT THE TABLE, and the template’s prompt [CHECK GUN] / WORRIED / EXPLAIN / AGREE, in its order. [CHECK GUN] is shown whenever Kara had the Stormy Night gun at the start of the chapter: the template’s lock reads “Took the gun in Stormy Night and didn’t forget it upstairs”, but PowerPyx and the wiki use CHECK GUN to reveal FORGOT GUN, so the template’s primary condition is kept and the extra conjunct treated as a hypothesis (SOURCES.md reliability log); if she left it upstairs the outcome says so. The wiki’s claim that the button needs two refusals is not supported by the template and is not built. No stat change: the template has no arrow here and no wiki stat page lists one.",
+  "adaptationNote": "The chart’s SIT AT THE TABLE, and the template’s prompt [CHECK GUN] / WORRIED / EXPLAIN / AGREE, in its order. [CHECK GUN] is shown whenever Kara had the Stormy Night gun at the start of the chapter: the template’s lock reads “Took the gun in Stormy Night and didn’t forget it upstairs”, but PowerPyx and the wiki use CHECK GUN to reveal FORGOT GUN, so the template’s primary condition is kept and the extra conjunct treated as a hypothesis (SOURCES.md reliability log); if she left it upstairs the outcome says so. [CHECK GUN] also needs Kara to have refused to sit twice (RALPH THREATENS ALICE, `ch13Meal.ralphThreatenedAlice`, set by the second REFUSE): the wiki’s On the Run page (“Kara must refuse both times. This will cause Ralph to stop Alice, and Kara will have the option to Check Gun”) and two PowerPyx readers (M83, 2018-06-26: “If you just decide to sit, you won’t be able to unlock the node”; Cee, 2020-01-09: “I just had to choose to refuse to sit down twice”); the template is silent on the refusals, so the wiki fills it (story 1.9.1 offered the button whenever Kara had the gun). No stat change: the template has no arrow here and no wiki stat page lists one.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
@@ -1772,7 +1773,7 @@
   "outcomes": {
    "0": "{{Connor}} shakes {{Ralph}} off and goes after them."
   },
-  "adaptationNote": "The chart’s SQUAT ANDROID ATTACKS CONNOR and AX400 AND CHILD ESCAPED, one event, with the template’s lines (“Connor finds Kara”). Sets `ralphDefended` (wiki: “The only way to have Ralph reappear in Battle for Detroit is for Connor to find Kara and Alice in the Squat and have Ralph defend Kara”) and `chase`. No harm to Connor: the chart has no failure node here. No stat change: the template has no arrow here and no wiki stat page lists one.",
+  "adaptationNote": "The chart’s SQUAT ANDROID ATTACKS CONNOR and AX400 AND CHILD ESCAPED, one event, with the template’s lines (“Connor finds Kara”). Sets `ralphDefended` and `chase`. The wiki says this is “the only way to have Ralph reappear in Battle for Detroit”, but the camp template locks his section only on “Met Ralph in Fugitives” and template unlock conditions rank above wiki prose, so from story 1.9.2 the camp no longer reads `ralphDefended` (it is still recorded). No harm to Connor: the chart has no failure node here. No stat change: the template has no arrow here and no wiki stat page lists one.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",

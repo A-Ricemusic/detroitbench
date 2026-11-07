@@ -1,0 +1,220 @@
+{
+ "chapter": 14,
+ "title": "Jericho",
+ "itemsInDump": 43,
+ "entries": [
+  {
+   "id": "ch14-01",
+   "verdict": "resolved",
+   "topic": "Where the arrival conversation plays, and its timer",
+   "originals": [
+    "Where does the arrival conversation play?",
+    "The arrival conversation (§4, §8 Q1)?",
+    "The arrival conversation (“Who are you?”, TRAIL / ANDROID / …)?"
+   ],
+   "answer": "The template ends Jericho on Simon's 'Welcome to Jericho.' and opens Time to Decide ('In Jericho', PM 05:13) with 'Who are you?' and the prompts TRAIL / ANDROID / JERICHO / REFUGE / FREE? then LOST / SOMBER / LUCID / DIRECT; the strings are keyed X0503M (asset code), and only the second prompt has a timeout key (CHOICE02.TIMEOUT = TIME OUT). Benchmark builds both prompts in Time to Decide (MTD2, MTD3) after MJ14o's 'Welcome to Jericho.' The silent TIME OUT on the second prompt is not offered; it has no line, arrow or gate, so nothing needs fixing (timer length is in no source).",
+   "source": "template ch14 '## Finding Jericho' and ch16 '# In Jericho'; en.json X0503M.JERICHO.ENCOUNTER.PC.CHOICE01.* / CHOICE02.* incl. CHOICE02.TIMEOUT, X05MSIMON.WELCOME.1",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch14-02",
+   "verdict": "cosmetic",
+   "topic": "Number of marks on the station mural",
+   "originals": [
+    "How many marks are on the station mural, one or two?",
+    "Graffiti #1 marks?",
+    "Graffiti #1 clue count?"
+   ],
+   "why": "Only the description of a mural the model reads; the game prints no observation text for the marks (no MENU.OBSERVATION.05M strings) and nothing depends on the count."
+  },
+  {
+   "id": "ch14-03",
+   "verdict": "resolved",
+   "topic": "Linear chapter: no prompt, risk, failure node or arrow (jumps, climb, door, magazine, bodies)",
+   "originals": [
+    "No choice, no risk and no stat change: the chapter’s template has no?",
+    "No risk and no stat change?",
+    "Do a wall jump to cross over to the other side.” The wall?",
+    "The climb has no failure branch and carries no risk?",
+    "A deliberate, scripted jump that always lands safely (“You will have landed safely?",
+    "The door control is an input hurdle with no failure branch, so no?",
+    "Can any jump fail?",
+    "Can any jump (the gap, the ladder, the crane) fail, and what happens?",
+    "No public-opinion effect: no source gives one?",
+    "No source describes the body further or gives it an effect?"
+   ],
+   "answer": "The chart is a single line to MET PEOPLE OF JERICHO with optional dead-end side nodes and no failure or death node; the 29 flowchart strings contain no fall or failure label; the template has no prompt, clue or arrow; PowerPyx says the crane jump lands 'safely in water'. A missed input can at most be retried, so there is nothing to model. Benchmark has no risk and no stat change anywhere in ch14.",
+   "source": "flowchart image jericho-100-flowchart-1.jpg (linear, one ending); en.json MENU.FLOWCHART.05M.* (no failure labels); template ch14 (no PROMPT/ARROW); PowerPyx 'Climb Crane and Jump … You will have landed safely'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch14-04",
+   "verdict": "resolved",
+   "topic": "Bridge collapse is scripted",
+   "originals": [
+    "Backtrack to where you came from.” The collapse is scripted, not a failure,?"
+   ],
+   "answer": "'Bridge Collapses: When you walk the bridge for long enough it collapses. No worries, it won't kill you. Backtrack.' No failure node. Benchmark MJ14l has no risk.",
+   "source": "PowerPyx 'Walk Bridge' / 'Bridge Collapses'; en.json 05M.WALKONBRIDGE / BRIDGECOLLAPSE",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch14-05",
+   "verdict": "needs-play",
+   "topic": "Magazine after a chase that ended in VANISHED or with Kara and Alice dead",
+   "originals": [
+    "Magazine gate edge cases?",
+    "Magazine edge cases?",
+    "Which magazine appears after a chase that ended with Kara and Alice dead?"
+   ],
+   "question": "In a run where Connor stood still and Kara & Alice VANISHED in On the Run, which cover was on the Ferndale bench in Jericho: 'Android on the Run!' or 'Fortune Teller'?",
+   "impact": "text",
+   "why": "wiki Android_on_the_Run! line 36: 'Only appears if Kara and Alice were pursued by Connor'; PowerPyx text: 'she was seen by police and ran across the highway'; PowerPyx reader Hadley (2023-09-12, asks for confirmation) puts VANISHED and DIED ON THE HIGHWAY under Fortune Teller. The same flag drives Zlatko's chase report (public opinion down), so the answer also fixes an arrow. Benchmark: any pursuit sets chase → Android on the Run!. The died case needs no answer for Zlatko (Kara's story is over) and only changes a magazine cover."
+  },
+  {
+   "id": "ch14-06",
+   "verdict": "cosmetic",
+   "topic": "Markus's coat lost in the water",
+   "originals": [
+    "Markus's coat?",
+    "The coat lost in the water?"
+   ],
+   "why": "Narration only (PowerPyx readers); no node, option or arrow depends on the coat."
+  },
+  {
+   "id": "ch14-07",
+   "verdict": "resolved",
+   "topic": "The two Carl variants",
+   "originals": [
+    "The two Carl variants, word for word?"
+   ],
+   "answer": "Carl dead: 'Yeah… Kinda sad.' / 'I heard his android killed him.'; Carl alive: 'Yeah… I hope he makes it.' / 'I heard his android attacked him.'; both end 'Don't believe everything you read.' Benchmark ch14.mjs CARL_DEAD / CARL_ALIVE paraphrase them correctly by `carl`.",
+   "source": "template '## Two people talking on the street' both variants; en.json X0501M.PBY.LINES.FA.X05MBUSMAN.CARLDEAD02 / CARLALIVE02, X05MBUSWOMAN.CARLDEAD01 / CARLALIVE01",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch14-08",
+   "verdict": "adaptation",
+   "topic": "Train announcements placed by assumption",
+   "originals": [
+    "Train announcements (§1 \"Ambient lines\")?",
+    "Train announcements?"
+   ],
+   "why": "The lines are the game's own strings (en.json X0501M.MONORAIL ANNOUNCE01/02/04); only their order is assumed, which is narration with no option or arrow."
+  },
+  {
+   "id": "ch14-09",
+   "verdict": "adaptation",
+   "topic": "Boy band name cut",
+   "originals": [
+    "The boy band?"
+   ],
+   "why": "'Here4u' would identify the source game (neutral-framing principle); the rest of the line is kept."
+  },
+  {
+   "id": "ch14-10",
+   "verdict": "cosmetic",
+   "topic": "How far onto the bridge Markus gets",
+   "originals": [
+    "How far onto the bridge does Markus get before it collapses?"
+   ],
+   "why": "Narration distance only; the collapse is scripted and harmless."
+  },
+  {
+   "id": "ch14-11",
+   "verdict": "resolved",
+   "topic": "The bus-stop android gives no reply",
+   "originals": [
+    "The android’s reply?",
+    "Does the android at the bus stop answer?",
+    "Ask android: Markus's \"Do you know where Jericho is?\" with no reply (§2?",
+    "Does the bus-stop android answer “Do you know where Jericho is?” at all?"
+   ],
+   "answer": "The string group for this encounter (X0501M.NPCFRIEND.ANDPARK) contains only Markus's 'Do you know where Jericho is?'; there is no reply string, and the template has none. Benchmark MJ14c: 'It gave you no answer.'",
+   "source": "en.json X0501M.NPCFRIEND.ANDPARK.FA.X05MMARKUS.WHERE (only key in the group); template '## Talking to parked android'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch14-12",
+   "verdict": "resolved",
+   "topic": "Where the second body is",
+   "originals": [
+    "Where the second body is?"
+   ],
+   "answer": "After the gap jump: 'Drop down into the next yard. There's another android body here … far left side of the area'. Benchmark offers it in MJ14h after CROSS THE GAP.",
+   "source": "PowerPyx 'See Android Body' after 'Cross the Gap'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch14-13",
+   "verdict": "cosmetic",
+   "topic": "'News about a detective android' on the train",
+   "originals": [
+    "“News about a detective android”?",
+    "\"News about a detective android.\"?",
+    "The template has no line for the \"news about a detective android\" (§8?",
+    "Is there a screen with news about the detective android on the train?",
+    "Left out: the wiki’s “news about a detective android”, which has no line?"
+   ],
+   "why": "Only the wiki Markus page (line 56) mentions it; no template line and no X05M news string exists, so at most it is background texture with no option, arrow or gate."
+  },
+  {
+   "id": "ch14-14",
+   "verdict": "cosmetic",
+   "topic": "A second magazine on the ship",
+   "originals": [
+    "Is there a magazine elsewhere on the ship?"
+   ],
+   "why": "The chart has only the three bench covers (en.json 05M.MAGAZINE1ST–3RD); a copy on the ship, if any, adds no node or effect."
+  },
+  {
+   "id": "ch14-15",
+   "verdict": "cosmetic",
+   "topic": "Phileas flashback when Markus mentions the trail",
+   "originals": [
+    "The flashback trigger?"
+   ],
+   "why": "The automatic flashback on leaving the train is the chart node (PowerPyx 'Cannot be missed'); the Phileas page's 'may appear in a flashback if Markus mentions the trail' (line 32) would be a visual during TRAIL in Time to Decide, with no option or arrow."
+  },
+  {
+   "id": "ch14-16",
+   "verdict": "resolved",
+   "topic": "Lucy is not in the arrival group",
+   "originals": [
+    "Lucy in J29?",
+    "Is Lucy among the androids at the end, or only Simon, North and?"
+   ],
+   "answer": "Only Josh, Simon and North introduce themselves ('My name is Josh.' / 'I'm Simon.' / 'North.'), and North then says 'Go and see Lucy. She may be able to help you.' Benchmark MJ14o leaves the androids unnamed and MTD1/MTD3 introduce the three, with Lucy met later.",
+   "source": "template ch16 '# In Jericho'; en.json X0503M.JERICHO.ENCOUNTER WELCOME keys (Josh, Simon, MARLA=North only) and MARLA.CONT.1–2",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch14-17",
+   "verdict": "adaptation",
+   "topic": "Casual-only graffiti hint",
+   "originals": [
+    "Casual-only \"Obstrued symbol\" hint?"
+   ],
+   "why": "Casual-only UI hint; Experienced is the target and the obstruction's name (pallet vs plank) changes nothing."
+  },
+  {
+   "id": "ch14-18",
+   "verdict": "resolved",
+   "topic": "Simon's closing line",
+   "originals": [
+    "Simon's closing line?"
+   ],
+   "answer": "'Welcome to Jericho.' is the chapter's last line. Benchmark MJ14o ends on it.",
+   "source": "template ch14 '## Finding Jericho'; en.json X05MSIMON.WELCOME.1",
+   "benchmarkMatches": true,
+   "fix": null
+  }
+ ]
+}

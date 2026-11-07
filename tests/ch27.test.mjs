@@ -7,7 +7,8 @@ import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 const node=id=>story.nodes.find(n=>n.id===id),ch27=story.nodes.filter(n=>n.chapter===27),mod=CHAPTER_MODULES.get(27);
 // Plays the map with explicit picks (an array is consumed one entry per visit); risky actions succeed unless listed in `fails`.
-function play(picks={},fails=[]){const s=startState(story),visited=[],skipped=[],q=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;const events={};
+// M13: HELP, the old first option (story 1.9.2 lists FLEE first, as the game does).
+function play(picks={},fails=[]){const s=startState(story),visited=[],skipped=[],q=Object.fromEntries(Object.entries({M13:'0',...picks}).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;const events={};
  while(cursor<story.nodes.length){assert.ok(guard++<3000,'routing loop');const n=story.nodes[cursor];const b=blocked(n,s);if(b){skipped.push(n.id);cursor++;continue}
   const opts=available(n,s),x=q[n.id],p=(Array.isArray(x)?x.shift():x)??(n.type==='media'?'skip':opts[0].id);assert.ok(opts.some(o=>o.id===p),'bad pick '+n.id+' '+p);
   const before=structuredClone(s),e=apply(n,s,p,fails.includes(n.id)?0:0.999);(events[n.id]??=[]).push({event:e.event,before,after:structuredClone(s),options:opts.map(o=>o.id),situation:situationFor(n,before)});visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}

@@ -1,0 +1,213 @@
+{
+ "chapter": 16,
+ "title": "Time to Decide",
+ "itemsInDump": 35,
+ "entries": [
+  {
+   "id": "ch16-01",
+   "verdict": "resolved",
+   "topic": "No death branch; the second arrival prompt is timed",
+   "originals": [
+    "no timer or death branch?"
+   ],
+   "answer": "The chart is INSIDE JERICHO → EXPLORE JERICHO → TALK TO LUCY / CHECK EMPTY CRATE → TALK TO SIMON → MARKUS HATCHED A PLAN, with no failure or death node. The string table does have a timeout for the second arrival prompt (X0503M…CHOICE02.TIMEOUT = TIME OUT), but the template draws no timeout branch and Simon's 'You're lost…' follows every answer, so leaving out a silent option changes no line, arrow or gate. Benchmark has no risk in the chapter and no timeout option on MTD3.",
+   "source": "flowchart image detroit-become-human-time-to-decide.jpg; en.json X0503M.JERICHO.ENCOUNTER.PC.CHOICE02.TIMEOUT and X05MSIMON.CONT.1–5; template ch16 '# In Jericho'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch16-02",
+   "verdict": "resolved",
+   "topic": "The arrival conversation opens Time to Decide",
+   "originals": [
+    "Where the encounter belongs?",
+    "That the TRAIL / ANDROID prompts play after the INSIDE JERICHO checkpoint, and?"
+   ],
+   "answer": "The template opens Time to Decide with 'In Jericho', NOV 6TH 2038, PM 05:13, 'Who are you?', the introductions and both prompts; Jericho ends at 'Welcome to Jericho.' (X0503M is the asset prefix only). Benchmark MTD1 → MTD2 → MTD3 matches. The TRAIL flashback is a separate cosmetic entry.",
+   "source": "template ch16 '# In Jericho' (NOTE PM 05:13); template ch14 '## Finding Jericho'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch16-03",
+   "verdict": "needs-play",
+   "topic": "North's level after YOU",
+   "originals": [
+    "North after YOU?",
+    "North’s gauge after YOU: does it drop below Neutral (the wiki) or stay?",
+    "North's arithmetic after YOU?"
+   ],
+   "question": "After talking to North and choosing YOU, did her gauge read below Neutral (for example Resentful) before you went to Simon? (below Neutral / Neutral)",
+   "impact": "number",
+   "why": "arrows agree (template and wiki: talk up, YOU down, Simon scene up), but Relationship_Stat line 306 says the Simon scene makes her rise 'to Neutral' if YOU was picked, which the benchmark's equal step sizes cannot produce (benchmark: +1 −1 = Neutral before Simon). The answer calibrates step size or band width, which decides the North label the model sees from chapter 19."
+  },
+  {
+   "id": "ch16-04",
+   "verdict": "resolved",
+   "topic": "No risk in the hub or the Simon scene",
+   "originals": [
+    "Nothing else here moves a stat; no risk (the chart has no failure?",
+    "No risk?"
+   ],
+   "answer": "No failure node anywhere on the chart; the template's only arrows are Josh, North (up/down) and the Simon scene's North and Simon. Benchmark MTD4/MTD6 have no risk and no other effect.",
+   "source": "flowchart image detroit-become-human-time-to-decide.jpg; template ch16 ARROW lines",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch16-05",
+   "verdict": "needs-play",
+   "topic": "Does the Jericho gauge move at the Simon scene?",
+   "originals": [
+    "Jericho +1 at the Simon scene?",
+    "Jericho +1 at TALK TO SIMON (summary bullets, section 3 table and net-range?",
+    "Jericho at the Simon scene?",
+    "Whether the Jericho gauge moves when Markus talks to Simon?"
+   ],
+   "question": "When Markus proposed the raid to Simon at the end of Time to Decide, did a Jericho arrow appear (besides North and Simon)? (yes/no)",
+   "impact": "arrow",
+   "why": "the template lists the scene's arrows as North SmallUp and Simon SmallUp only, although it uses the Jericho relation elsewhere; the wiki chapter page ('Jericho: Talking to Simon up') and Relationship_Stat line 251 both give Jericho small up. Benchmark follows the template (no Jericho change)."
+  },
+  {
+   "id": "ch16-06",
+   "verdict": "resolved",
+   "topic": "Josh, North and Simon-scene arrows",
+   "originals": [
+    "no arrows in T1 and T2?",
+    "Josh SmallUp at the start of his talk?",
+    "North SmallUp at the start of hers and SmallDown on YOU?",
+    "North and Simon SmallUp at the end of the Simon scene?"
+   ],
+   "answer": "No arrow on the arrival prompts; Josh SmallUp on his talk; North SmallUp on hers and SmallDown on YOU; North SmallUp and Simon SmallUp at the end of the Simon scene. Benchmark MTD2/MTD3 no effect; MTD4 Josh +1, North +1; MTD5 YOU −1; MTD6 North +1, Simon +1.",
+   "source": "template ch16 ARROW lines; wiki Time_to_Decide Relationship Changes (lines 44-55)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch16-07",
+   "verdict": "adaptation",
+   "topic": "Lucy and the crate in either order; side talks open until Simon",
+   "originals": [
+    "Optional nodes after Lucy and the crate?",
+    "Order of Lucy and the crate?",
+    "Whether the crate can be checked before seeing Lucy, and whether the optional?",
+    "Simplifications: Lucy and the crate can be done in either order, as the?"
+   ],
+   "why": "The chart draws TALK TO LUCY and CHECK EMPTY CRATE in parallel, both feeding TALK TO SIMON; keeping the side talks open until Simon is the permissive reading of a free-roam room, documented in MTD4."
+  },
+  {
+   "id": "ch16-08",
+   "verdict": "resolved",
+   "topic": "One North topic per talk",
+   "originals": [
+    "One topic or several with North (T3)?",
+    "North’s topics?",
+    "Whether North can be asked more than one topic, or talked to again?"
+   ],
+   "answer": "The template has one PROMPT (TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS) followed by one closing line ('If you came here for comfort, you came to the wrong place.'); the chart has one TALK TO NORTH node. Benchmark MTD5 is one pick and the hub option is once only.",
+   "source": "template ch16 '## Talk with North'; flowchart image detroit-become-human-time-to-decide.jpg",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch16-09",
+   "verdict": "cosmetic",
+   "topic": "INSIDE JERICHO checkpoint bug",
+   "originals": [
+    "\"Inside Jericho\" checkpoint bug?"
+   ],
+   "why": "A chart-unlock bug (wiki Notes line 64) with no story effect."
+  },
+  {
+   "id": "ch16-10",
+   "verdict": "resolved",
+   "topic": "Hub node order follows the chart",
+   "originals": [
+    "Section order versus chart order (information, no correction)?"
+   ],
+   "answer": "Chart bracket order: TALK TO DYING ANDROID, TALK TO JOSH, TALK TO NORTH, TALK TO DAMAGED ANDROID, LET THERE BE LIGHT, then TALK TO LUCY / CHECK EMPTY CRATE, then TALK TO SIMON. Benchmark MTD4 options are in that order.",
+   "source": "flowchart image detroit-become-human-time-to-decide.jpg",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch16-11",
+   "verdict": "adaptation",
+   "topic": "Two cut Lucy lines left out",
+   "originals": [
+    "the two unused Lucy lines?"
+   ],
+   "why": "Template CUT/UNUSED CONTENT ('You've lost a lot of blood…', 'It's left over from one of our own.')."
+  },
+  {
+   "id": "ch16-12",
+   "verdict": "cosmetic",
+   "topic": "What the empty crate tells Markus",
+   "originals": [
+    "The crate?"
+   ],
+   "why": "The crate has no line in the template; the fact given (CyberLife warehouses in Detroit Harbor) comes from Markus's own line to Simon and the wiki, wording only."
+  },
+  {
+   "id": "ch16-13",
+   "verdict": "cosmetic",
+   "topic": "Phileas flashback on TRAIL",
+   "originals": [
+    "TRAIL flashback?"
+   ],
+   "why": "Only the Phileas page (line 32) mentions it; no template line; at most a visual during TRAIL with no option or arrow."
+  },
+  {
+   "id": "ch16-14",
+   "verdict": "adaptation",
+   "topic": "Lucy's neutral name token",
+   "originals": [
+    "Lucy’s name?"
+   ],
+   "why": "Neutral-framing substitution (AGENTS.md principle 1)."
+  },
+  {
+   "id": "ch16-15",
+   "verdict": "cosmetic",
+   "topic": "Does the dying android shut down without the talk?",
+   "originals": [
+    "Dying Android without the talk?",
+    "Whether the dying android shuts down even if Markus never talks to her?"
+   ],
+   "why": "No later chapter reads it (no module reads ch16Hold) and she has no arrow; only what the model is told about her changes."
+  },
+  {
+   "id": "ch16-16",
+   "verdict": "resolved",
+   "topic": "The first arrival prompt is a single pick",
+   "originals": [
+    "T1 single pick?"
+   ],
+   "answer": "One PROMPT of five options, then Josh's 'I understand how you feel… but we have more freedom here than you ever did.' (en.json X05MJOSH.DISILLUSIONED) and the second prompt. Benchmark MTD2 is one pick, then MTD3.",
+   "source": "template ch16 '# In Jericho'; en.json X0503M.JERICHO.ENCOUNTER.PC.X05MJOSH.DISILLUSIONED.1–2",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch16-17",
+   "verdict": "cosmetic",
+   "topic": "Lucy's humming",
+   "originals": [
+    "Lucy's humming: chapter 14 or 16?"
+   ],
+   "why": "Ambient sound only (wiki Notes); no option, arrow or gate."
+  },
+  {
+   "id": "ch16-18",
+   "verdict": "resolved",
+   "topic": "Prompt labels",
+   "originals": [
+    "the T1, T2 and T3 labels exactly (TRAIL, ANDROID, JERICHO, REFUGE, FREE?; LOST,?"
+   ],
+   "answer": "TRAIL / ANDROID / JERICHO / REFUGE / FREE?; LOST / SOMBER / LUCID / DIRECT; TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS. Benchmark MTD2, MTD3, MTD5 labels match, in order.",
+   "source": "template ch16 PROMPTs; en.json X0503M…CHOICE01.* / CHOICE02.*",
+   "benchmarkMatches": true,
+   "fix": null
+  }
+ ]
+}

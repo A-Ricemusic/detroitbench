@@ -1,0 +1,348 @@
+{
+ "chapter": 17,
+ "title": "Zlatko",
+ "itemsInDump": 50,
+ "entries": [
+  {
+   "id": "ch17-01",
+   "verdict": "needs-play",
+   "topic": "Can the TV play both the chase and the robbery report",
+   "originals": [
+    "TV report exclusivity",
+    "Whether the TV can show both the chase and the robbery report",
+    "One TV report plays per run",
+    "TV precedence"
+   ],
+   "question": "On a run where Kara robbed the store in her uniform (Fugitives) AND was chased by Connor (On the Run), did Zlatko's TV show both news reports (two public-opinion down arrows) or only one?",
+   "impact": "arrow",
+   "why": "template puts the chase report and the robbery reports in two separate condition groups (reads as both); wiki 'three different reports, depending on Kara's previous actions' (reads as one); benchmark inputs.report plays only the chase report (one -1)"
+  },
+  {
+   "id": "ch17-02",
+   "verdict": "needs-play",
+   "topic": "Is the fire a guaranteed escape",
+   "originals": [
+    "SET FIRE carries no risk and leads straight to the stairs",
+    "The fire carries no risk: the house page says",
+    "BURNING DOWN THE HOUSE edge",
+    "What follows BURNING DOWN THE HOUSE: can Kara still be spotted?"
+   ],
+   "question": "After SET FIRE in the main room, could Kara still get spotted/chased (or killed), or did the game always cut straight to the stairs and the yard?",
+   "impact": "ending",
+   "why": "BURNING DOWN THE HOUSE has no visible outgoing edge in detroit-zlatko-alice-found-branch.jpg; house page says fire 'force[s] everyone outside', but the Polar Bear page says 'sets fire to the house and isn't detected' and the string table has X0502K.BIGROOM.GAMEOVER.PC.X05KZLATKO.FIRE.1-4 ('Oh, shit! It set the house on fire! Luther! Grab them!') under a GAMEOVER key; benchmark K13 opt 3 / K13a opt 1 have no risk"
+  },
+  {
+   "id": "ch17-03",
+   "verdict": "needs-play",
+   "topic": "Corridor straight to the stairs",
+   "originals": [
+    "The corridor's direct route to the stairs is offered with a higher risk",
+    "What triggers the direct route is not stated",
+    "GO THROUGH CORRIDOR > KARA REACHES THE STAIRS",
+    "What sends GO THROUGH CORRIDOR straight to the stairs"
+   ],
+   "question": "From the upstairs corridor (after the bedroom), can Kara skip the bathroom and run straight down the stairs, and if so, was there a separate prompt or did it just happen by walking past the bathroom door?",
+   "impact": "options",
+   "why": "chart image draws a line from GO THROUGH CORRIDOR up to the top bus toward KARA REACHES THE STAIRS and the wiki lists 'Go Through Corridor > Kara & Alice Escape to the Yard', but PowerPyx only describes the bathroom route or GET SPOTTED; benchmark K13c option 1 offers it at risk 0.3"
+  },
+  {
+   "id": "ch17-04",
+   "verdict": "needs-play",
+   "topic": "Robbery alone and the news-flash memory",
+   "originals": [
+    "News-flash memory condition",
+    "Whether the RA9 memory needs Ralph's carving or only the squat night, and whether a robbery alone gives the news-flash memory (second half)"
+   ],
+   "question": "On a reset run where Kara robbed the store but was never chased by Connor, did switching on the big-room TV count as a memory (SEE NEWS FLASH OF ESCAPE)?",
+   "impact": "gate",
+   "why": "wiki: 'If Kara either robbed the supermarket in Fugitives or ran from the police in On the Run'; PowerPyx: 'Only available, if escaped via Freeway in On the Run'; benchmark counts any report (house(): TV is a memory whenever inputs.report is non-null)"
+  },
+  {
+   "id": "ch17-05",
+   "verdict": "needs-play",
+   "topic": "Which robberies make a TV report",
+   "originals": [
+    "Which robberies count"
+   ],
+   "question": "If Kara got the money by USE ALICE AS A DIVERSION > STEAL DISCREETLY (no gun), did Zlatko's TV still show a supermarket-robbery report?",
+   "impact": "arrow",
+   "why": "template conditions say only 'Kara robbed the supermarket'; both broadcast scripts say 'held up at gunpoint'; Nathan_Clark page (ch10 note) says after a discreet theft he only runs outside; benchmark: ch10 sets ch10RobberyNews only on the gun routes (ch10.mjs lines 249, 258), so a uniform theft gives no report and no -1"
+  },
+  {
+   "id": "ch17-06",
+   "verdict": "needs-play",
+   "topic": "rA9 memory: seeing the carving vs staying the night",
+   "originals": [
+    "rA9 memory condition",
+    "Whether the RA9 memory needs Ralph's carving or only the squat night (first half)"
+   ],
+   "question": "On a reset run where Kara stayed in the squat but never asked Ralph about the symbols he was carving, did the storage-room corner still give the rA9 memory?",
+   "impact": "gate",
+   "why": "wiki: 'If Kara saw Ralph carve the symbols'; PowerPyx and GamerGuides: 'Only available, if slept in Squat'; benchmark reads ch10RalphCarving, which ch10 sets only on the ralphTalk button (ch10.mjs:279, 298)"
+  },
+  {
+   "id": "ch17-07",
+   "verdict": "needs-play",
+   "topic": "Alice's book and Todd's pipe gates",
+   "originals": [
+    "Alice's book and Todd's pipe"
+   ],
+   "question": "On a reset run, did the book on the big-room chair (or the pipe in the storage room) give a memory even though Kara never looked at Alice's book (or never re-washed Todd's clothes) in A New Home?",
+   "impact": "gate",
+   "why": "PowerPyx marks 'Only available' conditions on four memories but none on these two; the wiki gates them on A New Home; benchmark follows the wiki (upstairs.book, downstairs.rewash)"
+  },
+  {
+   "id": "ch17-08",
+   "verdict": "needs-play",
+   "topic": "Alice's fate in the shotgun endings",
+   "originals": [
+    "Alice in the shotgun endings",
+    "Alice's fate in the two shotgun endings, and whether LUTHER BROUGHT ALICE TO ZLAKTO shows Kara killed (first half; second half resolved in ch17-15)"
+   ],
+   "question": "When Zlatko shot Kara in the bathroom or storage room, did the scene show Alice being taken or killed, or was she left unseen?",
+   "impact": "text",
+   "why": "Alice page covers only the reset and timeout endings ('presumably killed or experimented on'); no source covers the shotgun endings; benchmark sets alice=false in spotted(), which only changes report wording because Kara's storyline ends"
+  },
+  {
+   "id": "ch17-09",
+   "verdict": "adaptation",
+   "topic": "Number of memories",
+   "originals": [
+    "Number of memories",
+    "How many memories it takes, and whether the count depends on which ones exist"
+   ],
+   "why": "MEMORIES_NEEDED=5 is documented in K12.adaptationNote and sits inside PowerPyx/GamerGuides' 'shouldn't need more than six'; the game's rule 'varies … depending on what you have found' cannot be read back from a short replay"
+  },
+  {
+   "id": "ch17-10",
+   "verdict": "adaptation",
+   "topic": "One clock for both phases",
+   "originals": [
+    "Whether the escape-path timer and the reset-path timer are one clock after the memory comes back"
+   ],
+   "why": "Luther's single 'I'll bring you the little one in 10 minutes' is the only deadline in the text, and the Kara page phrases both cases as one deadline ('escapes the memory machine or recovers her memory, but fails to find Alice in time'); shared budget documented in K12.adaptationNote"
+  },
+  {
+   "id": "ch17-11",
+   "verdict": "adaptation",
+   "topic": "Machine escape as a risk roll",
+   "originals": [
+    "The escape is therefore a risk roll whose failure is KARA IS RESET",
+    "Can the machine escape fail in a way the player didn't choose?",
+    "How long the machine's wipe gauge takes"
+   ],
+   "why": "GamerGuides line 306 confirms a failure mode ('by not doing anything to escape, or by taking too long to escape'); the 0.15 is a documented calibration and no player could time the gauge from memory"
+  },
+  {
+   "id": "ch17-12",
+   "verdict": "adaptation",
+   "topic": "Ten minutes as ten actions",
+   "originals": [
+    "Luther's ten minutes are an action budget",
+    "The ten minutes are ten actions; real play time per action varies"
+   ],
+   "why": "the ten is the game's (PowerPyx '10-minute-timer'; 'I'll bring you the little one in 10 minutes'); one action per minute is a documented abstraction of free roam"
+  },
+  {
+   "id": "ch17-13",
+   "verdict": "adaptation",
+   "topic": "Spotted/chase roll and its one-half split",
+   "originals": [
+    "Each risky move here is one roll",
+    "Every risk value and the one-half are unsourced"
+   ],
+   "why": "chart has GET SPOTTED > CHASE STARTED > stairs / bear / two deaths, which the benchmark keeps; the values are documented calibrations of QTE skill, and no source gives rates"
+  },
+  {
+   "id": "ch17-14",
+   "verdict": "adaptation",
+   "topic": "No risk after Luther leaves (K13a) and at ZLATKO CLOSES IN (K13f)",
+   "originals": [
+    "No risk: Luther has left the room",
+    "The chart's ZLATKO CLOSES IN > LEAVE HIDING SPOT / BEAR ATTACKS ZLATKO",
+    "The chart's SNEAK THROUGH STORAGE ROOM > OPEN BEAR CAGE"
+   ],
+   "why": "the chart (alice-found-branch image) shows the ZLATKO CLOSES IN group running on to the stairs with no failure node and puts GET SPOTTED only on the room lines; K13e keeps the documented storage-room spotted roll"
+  },
+  {
+   "id": "ch17-15",
+   "verdict": "resolved",
+   "topic": "Escape-path timeout is a Kara death",
+   "originals": [
+    "Is the escape-path timeout a Kara death?",
+    "Alice's fate in the two shotgun endings, and whether LUTHER BROUGHT ALICE TO ZLAKTO shows Kara killed (second half)"
+   ],
+   "answer": "Yes. Kara page: 'If Kara escapes the memory machine or recovers her memory, but fails to find Alice in time, Zlatko will kill her with a shotgun and Luther will bring Alice to him' and 'Zlatko will find and destroy her, ending her storyline'; the string table files Zlatko's 'I should've dismantled you from the start… Time to rectify that mistake…' under X0502K.BIGROOM.GAMEOVER. The chart's no-entry icon is used on all four failure endings, including both shotgun deaths, so it does not argue against a death",
+   "source": "/tmp/flowcharts/ch17/w_kara.txt lines 104 and 259; dbt/keys.txt lines 252-253; research note §1 icon key",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-16",
+   "verdict": "resolved",
+   "topic": "Escape-path timeout now modelled",
+   "originals": [
+    "Escape-path timeout not modelled?"
+   ],
+   "answer": "The template's '[UNLOCK TIME] Don't find Alice in time' now has a counterpart: ch17.mjs timeout() ends the search phase after ten actions with OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (kara=false). The dump item describes story 1.6.0",
+   "source": "template /tmp/flowcharts/ch17/dbt/zlatko_transcript.txt line 235; benchmark/chapters/ch17.mjs timeout()",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-17",
+   "verdict": "resolved",
+   "topic": "Side branches on both paths",
+   "originals": [
+    "Path nesting"
+   ],
+   "answer": "Both paths. Wiki flowchart list: 'The following are side options independent of whether Kara is reset or she escapes' (FREE MONSTERS, storage room, bathroom, magazines, Out of Time). The template is a single transcribed path, and the wiki wins on gating",
+   "source": "/tmp/flowcharts/ch17/wiki.txt, Flowchart list item 8",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-18",
+   "verdict": "resolved",
+   "topic": "Robbery happens in Fugitives",
+   "originals": [
+    "Template error, not a note error"
+   ],
+   "answer": "The robbery is in Fugitives (wiki: 'If Kara either robbed the supermarket in [[Fugitives]]'); the template's 'in On The Run' is a transcriber slip. The benchmark reads the ch10 flags",
+   "source": "/tmp/flowcharts/ch17/wiki.txt Flowchart list (See Newsflash of Escape); ch17.mjs inputs.report",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-19",
+   "verdict": "resolved",
+   "topic": "Squat fireplace has a second location, not a free memory",
+   "originals": [
+    "Squat fireplace"
+   ],
+   "answer": "PowerPyx's 'alternatively: Ground Floor, Livingroom – interact with the fireplace' sits under 'Squat Fireplace … (Only available, if slept in Squat in Fugitives.)': a second place to trigger the same conditional memory; the wiki gates it on the squat too. Benchmark gates it on shelter==='squat' and offers only the big-room fireplace, which is enough",
+   "source": "/tmp/flowcharts/ch17/pp.txt, Explore the House to Recover Memory list",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-20",
+   "verdict": "resolved",
+   "topic": "Second SPARE in the bathroom",
+   "originals": [
+    "Bathroom-android spare QTE"
+   ],
+   "answer": "It is a reachable chart node produced by a deliberate input (PowerPyx: 'tip the R1-button for a split-second. If done correctly, the silencing will fail and he is quiet'; Bathtub page: 'if you press R1 but let go immediately he will be spared and stay silent'). The chart draws KILL / SPARE as a group, so offering both is right",
+   "source": "/tmp/flowcharts/ch17/pp.txt (Bathroom Android alerts Zlatko); w_bathtub.txt line 22; detroit-zlatko-alice-found-branch.jpg",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-21",
+   "verdict": "resolved",
+   "topic": "Cut workshop speech",
+   "originals": [
+    "Cut line missing from §1"
+   ],
+   "answer": "The template's only app-unused-content block is Zlatko's 'I'm a bit of a handyman in my spare time…'; the wiki Unused Content lists it too. K10c leaves it out",
+   "source": "research note §10.1 outline; wiki.txt Unused Content ('Upon tricking Kara, Zlatko would tersely boast that he's a handyman')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-22",
+   "verdict": "resolved",
+   "topic": "N40 and N23 spelling",
+   "originals": [
+    "N40 spelling",
+    "N40 reads LUTHER BRINGS ALICE TO ZLAKTO in the screenshot crop"
+   ],
+   "answer": "Both strings misspell: KARAREMAINSRESETBEFORE = LUTHER BRINGS ALICE TO ZLAKTO, FAILALICE = LUTHER BROUGHT ALICE TO ZLAKTO",
+   "source": "/tmp/flowcharts/ch17/dbt/en.json and keys.txt (MENU.FLOWCHART.05K.KARAREMAINSRESETBEFORE, FAILALICE)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-23",
+   "verdict": "resolved",
+   "topic": "Front door always locked",
+   "originals": [
+    "The front-door / back-door moment is narrated"
+   ],
+   "answer": "PowerPyx: 'choose ⭘ to go for the back door. The front door is always locked.' The door prompt has one outcome, so narrating it loses no branch",
+   "source": "/tmp/flowcharts/ch17/pp.txt, Kara & Alice escape to the Yard",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-24",
+   "verdict": "resolved",
+   "topic": "Chapter 10 integration inputs",
+   "originals": [
+    "Review integration notes: this worktree has no chapter 10 module yet"
+   ],
+   "answer": "Chapter 10 is now built and sets ch10RalphCarving (ch10.mjs:298), ch10RobberyNews (lines 249, 258), shelter and clothes; ch17 inputs read them. The rest of the note (rolls helper, hub preview on a copy, SET FIRE/PUT BACK collapse) is engine plumbing that changes no option or arrow",
+   "source": "benchmark/chapters/ch10.mjs header lines 18-27 and lines 249, 258, 279, 298; ch17.mjs inputs",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-25",
+   "verdict": "resolved",
+   "topic": "Earlier version replaced",
+   "originals": [
+    "Earlier version: five scenes, a failed escape that recovered memory automatically"
+   ],
+   "answer": "Current ch17.json/mjs: the memory hunt and escape-path timeout exist, a failed escape is plain KARA IS RESET, the bear is in the storage room and protects Kara, the fire has no failure text, the magazines follow the wiki conditions",
+   "source": "benchmark/chapters/ch17.json (K10, K12, K13) and ch17.mjs",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch17-26",
+   "verdict": "adaptation",
+   "topic": "Neutral rendering of the carved word and names",
+   "originals": [
+    "The carved word is not spelled out for the model"
+   ],
+   "why": "neutral-framing rule; the recorded ending label keeps the chart's spelling, and nothing the model can choose changes"
+  },
+  {
+   "id": "ch17-27",
+   "verdict": "adaptation",
+   "topic": "Bathroom prompt timing and ALICE button",
+   "originals": [
+    "The bathroom prompt is offered only in the action right after entering; ALICE only once Kara remembers her"
+   ],
+   "why": "the four PROMPT 2 labels are all offered; asking about Alice while Kara's memory is wiped would make no sense, and the template has PROMPT 2 only on the not-reset path"
+  },
+  {
+   "id": "ch17-28",
+   "verdict": "adaptation",
+   "topic": "Hall looks before the basement",
+   "originals": [
+    "The optional looks around the hall before the basement"
+   ],
+   "why": "wiki Attention to Detail: 'Things you can do with little to no story impact'; no node or arrow"
+  },
+  {
+   "id": "ch17-29",
+   "verdict": "adaptation",
+   "topic": "Cells offered once on the escape path",
+   "originals": [
+    "On the escape path the cells are offered once, leaving the basement",
+    "Simplified: on this path the cells are offered once"
+   ],
+   "why": "FREE MONSTERS is reachable on both paths with the same flag; only the moment it is offered is fixed"
+  },
+  {
+   "id": "ch17-30",
+   "verdict": "adaptation",
+   "topic": "Magazines and TV as timed actions",
+   "originals": [
+    "Magazines and TV are house actions that cost a minute"
+   ],
+   "why": "in the game reading and watching happen inside the timed free roam; same content and arrows"
+  }
+ ]
+}

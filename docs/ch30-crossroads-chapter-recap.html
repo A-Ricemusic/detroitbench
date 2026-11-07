@@ -49,7 +49,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <div class="box"><h3>The raid</h3><ol>
 <li>Kara: RUN AWAY / FIND ALICE if Alice left; the corridor; the crossroad and Luther; the cabin door; the breach and the soldiers.</li>
 <li>Markus (leading): the team, the corridors (wounds), the androids, the timer, the well, Josh, the control room (machine Connor’s gun QTE, or soldiers), the escape, North shot, the jump. An ousted Markus chooses on a rooftop whether to go back.</li>
-<li>Machine Connor: pursuit, the cargo hall, then the gun QTE with Markus (he can kill Markus or be killed) or, if Markus is dead or ousted, the corridor confrontation with North (always destroyed).</li>
+<li>Machine Connor: pursuit, the cargo hall, then the gun QTE with Markus whenever Markus is alive in the hold, including an ousted Markus who went back (template: “Markus is alive - Connor finds Markus”; story 1.9.2), or, if Markus is dead or left Jericho, the corridor confrontation with North (always destroyed).</li>
 <li>Deviant Connor: with Markus alive he stays with North and can cover Markus and North at the exit (HELP MARKUS); with Markus gone he takes over the mission from where Markus fell (wiki list) and can arm the explosive and jump.</li>
 </ol></div>
 </div>
@@ -89,7 +89,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td><code>M24</code></td><td>Markus</td><td>APPROACH THE HOLD, JOSH FIGHTING A SOLDIER, INTERVENE / HIDE</td><td>Josh saved, sacrificed or shot</td></tr>
 <tr><td><code>C23-josh</code></td><td>Connor</td><td>CONNOR TAKES OVER MARKUS’ MISSION, APPROACH HOLD, JOSH IS DYING, COMFORT JOSH</td><td>Josh dies</td></tr>
 <tr><td><code>K19-flee</code>, <code>K20</code>, <code>K20-surrender</code>, <code>K20-leg</code>, <code>K20-still</code></td><td>Kara</td><td>KARA FLEES, TRY TO ESCAPE, PLAY DEAD / RUN / SURRENDER, the surrender round, the leg shot (repeats after GET UP), SOLDIERS CLOSE IN</td><td>Every Kara ending of the breach</td></tr>
-<tr><td><code>M24-gun</code>, <code>M24-soldiers</code></td><td>Markus</td><td>IN THE HOLD WITH MARKUS, ENTER OLD ENGINE CONTROL ROOM; the gun QTE with machine Connor, or SOLDIERS INTERRUPT; TRIGGER THE COUNTDOWN</td><td>Played as Markus</td></tr>
+<tr><td><code>M24-gun</code>, <code>M24-soldiers</code></td><td>Markus</td><td>IN THE HOLD WITH MARKUS, ENTER OLD ENGINE CONTROL ROOM; the gun QTE with machine Connor, or SOLDIERS INTERRUPT; TRIGGER THE COUNTDOWN</td><td>Played as Markus; the gun QTE needs Markus alive there and machine Connor pursuing, whoever led at the cabin (story 1.9.1 required that Markus led, so a returning exile never met him)</td></tr>
 <tr><td><code>C22-corridor</code></td><td>Connor</td><td>CORRIDOR CONFRONTATION, FIND JOSH, SPOT NORTH, MADE IT / SHOT BY SOLDIER</td><td>Always destroyed</td></tr>
 <tr><td><code>C23-hold</code></td><td>Connor</td><td>IN THE HOLD WITH DEVIANT CONNOR, IN CONTROL ROOM, SOLDIERS INTERRUPT, ARM EXPLOSIVE</td><td>Takeover</td></tr>
 <tr><td><code>M25-escape</code>, <code>M25</code>, <code>M25-exit</code></td><td>Markus</td><td>IN THE CORRIDOR WITH MARKUS, JOIN THE OTHERS, TRY TO ESCAPE, NORTH IS SHOT (SAVE NORTH / RUN), RUN TO EXIT</td><td>See section 4</td></tr>
@@ -131,7 +131,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>Luther left behind</td><td>“not seen again… death not confirmed”</td><td>Leaves the story (<code>luther</code> false), fate <code>left</code></td></tr>
 <tr><td>North’s rescue</td><td>Template variants; wiki</td><td>Injured Markus cannot try (no QTE). Failure with a deviant Connor: North dies, Connor rescues Markus. Failure without: Markus dies, North escapes. Success without: RUN TO EXIT (failure: Markus dies)</td></tr>
 <tr><td>Josh’s sacrifice</td><td>Disputed (good standing vs not wounded)</td><td>The chart’s reading: an unwounded Markus losing the fight means Josh sacrifices himself</td></tr>
-<tr><td>Markus shot dead in the hold with a deviant Connor</td><td>Connor’s chart goes to corridor #3; the note: he then arms the bomb</td><td>The ship sinks; Connor goes to the jump</td></tr>
+<tr><td>Markus shot dead in the hold with a deviant Connor</td><td>Connor’s chart goes straight to corridor #3, bypassing ARM EXPLOSIVE (Detroit-Crossroads-014.jpg; note node C105; the wiki’s “leads to Deviant Connor in Corridor #3”)</td><td>The ship is not blown up; Connor goes to the jump (story 1.9.1 followed the note’s 2j and sank it)</td></tr>
 <tr><td>HELP MARKUS</td><td>Same event as KILL THE SOLDIERS / DIE BUYING SOME TIME</td><td>A Connor scene (<code>C23</code>) after SAVE NORTH; if Markus runs or is injured, Connor simply jumps with him</td></tr>
 <tr><td>Lover</td><td>Template “North has lover relationship status”</td><td><code>northLover</code>; only when absent, the pre-rebuild <code>northBond</code> is accepted and KISS then sets <code>northLover</code></td></tr>
 <tr><td>Hank</td><td>Never appears</td><td>Nothing here; his suicide is Night of the Soul’s</td></tr>
@@ -188,7 +188,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Whether KISS raises North (the wiki’s large up) and whether DON’T KISS drops Lover.</li>
 <li>Josh’s sacrifice: relationship or only an unwounded Markus.</li>
 <li>A failed save with no deviant Connor: North lives and Markus dies?</li>
-<li>Markus shot dead in the hold with a deviant Connor: does Connor arm the bomb?</li>
+<li>Settled from the chart (story 1.9.2): with Markus shot dead in the hold, a deviant Connor does not arm the bomb.</li>
 <li>Whether HELP MARKUS is also played when Markus runs or cannot save North.</li>
 <li>Whether the button order on screen matches the template or the chart rows.</li>
 </ul>

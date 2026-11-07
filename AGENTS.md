@@ -26,13 +26,14 @@ Key files:
 | `tests/chNN.test.mjs` | Chapter-specific tests |
 | `docs/research/` | Chapter specifications and research-note template in `README.md`; rebuild workflow in `IMPLEMENTATION-BRIEF.md` |
 | `docs/research/SOURCES.md` | Source inventory, level names, contradictions and reliability log |
-| `docs/research/MORNING-REPORT.md` | Dated status snapshot and prioritized in-game verification questions |
+| `docs/flowcharts/` | The game's completed chapter flowcharts as photographed by PowerPyx (rank 1 source), one folder per chapter with a README per chapter and an index in `README.md` |
+| `docs/research/MORNING-REPORT.md` | The operator's open-question list: only what the sources cannot settle, one question per line; rationale per item in `docs/research/triage/` |
 | `docs/research/operator-notes/` | Independent operator replay journal; format and rules in `README.md` |
-| `docs/chNN-*-chapter-recap.html` | Chapter implementation recaps; earlier names are `hostage-chapter-recap.html`, `shades-of-color-chapter-recap.html` and `a-new-home-chapter-recap.html`. README.md lists existing pages |
+| `docs/chNN-*-chapter-recap.html` | Chapter implementation recaps, one per chapter |
 | `scripts/play-checklist.mjs` | `bun run play:checklist` writes a play-along checklist for the operator to `docs/play-along-audit-checklist.md` (generated on demand, not committed) |
 | `scripts/run-report.mjs` | Report and library generation |
 | `data/experiences/`, `data/administration/` | Evidence files; cohort manifests and administration notes |
-| `docs/runs/`, `docs/run-library.html` | Published reports and library |
+| `docs/runs/` | Standalone HTML reports (the site renders the same report in the app) |
 
 ## Requirements
 
@@ -114,7 +115,7 @@ Reports are numbered per model in creation order. Commit the evidence files, the
 
 ### 6. Reading the results
 
-Each report has: ten evidence-linked sentences per character, a tappable timeline of every scene with the choice, reason, alternatives, risk roll result and state changes, a "Where this path ended" card with each character's ending and the final attitudes of the main characters toward the one the model controlled, and the full prompts and raw responses. For cross-model comparison, read `data/experiences/*.json` directly: `records[].nodeId`, `choice`, `reason`, `risk`, and `finalState`. The first chapter's investigation scene (`C02i`) appears once per visit, and its hidden probability of success is in `trust`, with the ending in `finalState.hostageOutcome`, `finalState.hostageTrustFinal` and `finalState.hostageApproach` (Friendly or Cold, from the hidden `hostageCold` counter) (see `docs/hostage-chapter-recap.html`). The third chapter’s plaza scene (`M00d`) is repeatable in the same way; whether the protesters harassed Markus is `finalState.shirtTorn` (see `docs/shades-of-color-chapter-recap.html`).
+Each report has: ten evidence-linked sentences per character, a tappable timeline of every scene with the choice, reason, alternatives, risk roll result and state changes, a "Where this path ended" card with each character's ending and the final attitudes of the main characters toward the one the model controlled, and the full prompts and raw responses. For cross-model comparison, read `data/experiences/*.json` directly: `records[].nodeId`, `choice`, `reason`, `risk`, and `finalState`. The first chapter's investigation scene (`C02i`) appears once per visit, and its hidden probability of success is in `trust`, with the ending in `finalState.hostageOutcome`, `finalState.hostageTrustFinal` and `finalState.hostageApproach` (Friendly or Cold, from the hidden `hostageCold` counter) (see `docs/ch01-the-hostage-chapter-recap.html`). The third chapter’s plaza scene (`M00d`) is repeatable in the same way; whether the protesters harassed Markus is `finalState.shirtTorn` (see `docs/ch03-shades-of-color-chapter-recap.html`).
 
 ## Changing the benchmark
 

@@ -59,7 +59,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
 <div class="table"><table><thead><tr><th>Chart nodes</th><th>Scene</th><th>How</th></tr></thead><tbody>
 <tr><td>START, LOOK AT MAGIC STONE, VISIT GRAVES, TALK TO AMANDA</td><td><code>C19a</code></td><td><span class="yes">Built.</span> Repeatable; graves need <code>connorDeaths</code> ≥ 1.</td></tr>
-<tr><td>(Amanda rounds 1–4, off-chart)</td><td><code>C19b</code>–<code>C19e</code></td><td><span class="yes">Built.</span> JERICHO swaps with KAMSKI; round 2 after sparing Chloe; round 4 after shooting the Tracis or Chloe.</td></tr>
+<tr><td>(Amanda rounds 1–4, off-chart)</td><td><code>C19b</code>–<code>C19e</code></td><td><span class="yes">Built.</span> JERICHO swaps with KAMSKI; round 2 after sparing Chloe; round 4 after shooting the Tracis (either shooting ending, DEVIANTS DIED or CONNOR SHOT DEVIANTS; story 1.9.1 counted only the second) or Chloe.</td></tr>
 <tr><td>IN THE POLICE STATION, FOWLER AND HANK ARGUE, the evidence and location state choices</td><td><code>C19f</code></td><td><span class="yes">Built.</span> State split, no choice.</td></tr>
 <tr><td>HANK RESIGNS AND LEAVES</td><td><code>C19g</code></td><td><span class="yes">Built</span> after SUFFICIENT EVIDENCE only; sets <code>hankResigned</code>.</td></tr>
 <tr><td>INSUFFICIENT EVIDENCE → CONNOR SERIES WAS DECOMMISSIONED (upper)</td><td><code>C19h</code></td><td><span class="yes">Built.</span> Death counted, no arrow.</td></tr>
@@ -70,7 +70,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>RUSH TO BASEMENT, GAVIN YELLS, IGNORE / DISMISS / ANSWER CALMLY, GAVIN IS SUSPICIOUS / CONVINCED, GO DOWN TO BASEMENT</td><td><code>C19y</code>, <code>C19z</code></td><td><span class="yes">Built</span> with the game’s buttons; LOW PROFILE convinces (template).</td></tr>
 <tr><td>IN THE EVIDENCE ROOM, GUESS HANK’S PASSWORD, UNLOCK EVIDENCE</td><td><code>C20a</code></td><td><span class="yes">Built.</span> Wrong guesses cost no time.</td></tr>
 <tr><td>The twelve items and every chain inside [ FIND JERICHO LOCATION ]</td><td><code>C20</code>, <code>C20t</code></td><td><span class="yes">Built</span>; see section 4.</td></tr>
-<tr><td>LINK MAP TO OTHER EVIDENCE / UNABLE TO LINK MAP TO OTHER EVIDENCE</td><td><code>C20</code></td><td><span class="part">Roll</span> (0.2, unsourced); failure, or never linking, records <code>ch29Room.mapUnlinked</code>.</td></tr>
+<tr><td>LINK MAP TO OTHER EVIDENCE / UNABLE TO LINK MAP TO OTHER EVIDENCE</td><td><code>C20</code></td><td><span class="yes">No roll</span> (story 1.9.2): the link always works; UNABLE TO LINK is recorded (<code>ch29Room.mapUnlinked</code>) when the time runs out with the map taken and not linked, PowerPyx’s “Break the statue and wait for time to run out”. Story 1.9.1 rolled 0.2.</td></tr>
 <tr><td>OUT OF TIME (lower) → CONNOR SERIES WAS DECOMMISSIONED</td><td><code>C20x</code></td><td><span class="yes">Built.</span> Death counted, no arrow.</td></tr>
 <tr><td>LOCATE JERICHO, LEAVE THE BASEMENT, CONNOR ELUDED PERKINS</td><td><code>C20</code>, <code>C20y</code></td><td><span class="yes">Built.</span> Sets <code>jerichoLocated</code> and <code>raid</code>.</td></tr>
 <tr><td>GAVIN RETURNS, FIGHT GAVIN, LOSE / WIN FIGHT, GAVIN DESTROYED CONNOR, CONNOR INCAPACITATED GAVIN</td><td><code>C20g</code></td><td><span class="part">Roll</span> (0.25, unsourced) plus “do not fight back”; losing is a counted death, the location stays found.</td></tr>
@@ -100,14 +100,14 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>Body of Carlos’ android</td><td><code>evidence.ortizBody</code></td><td>Cannot be reactivated; gives #4717 and #9164</td></tr>
 <tr><td>Jericho tablet (Simon’s memory)</td><td><code>evidence.simonTablet</code></td><td>Links the map</td></tr>
 <tr><td>Carlos’ android’s memory (“The truth is inside”)</td><td><code>suspectTrusts</code></td><td>Needed to break the statue</td></tr>
-<tr><td>Daniel’s body</td><td>always</td><td>Needs #4717; gives #3983 and #9164; talks but knows nothing</td></tr>
+<tr><td>Daniel’s body</td><td>always</td><td>Needs #4717; gives #3983 and #9164; talks but knows nothing. “You lied to me… I trusted you” only after SNIPERS SHOT DEVIANT (template variant “Daniel trusted Connor”; story 1.9.2), “I was scared…” after he shot Connor, otherwise he wakes without either line</td></tr>
 <tr><td>Rupert’s body / diary</td><td><code>nestRupertBody</code> / <code>nestDiary</code> (else <code>evidence.rupertBody</code> / <code>evidence.rupertDiary</code>)</td><td>Rupert needs #9164; his key decrypts the diary</td></tr>
 <tr><td>Carlos’ android’s statue</td><td><code>evidence.statueMap</code></td><td>Holds the Ferndale map</td></tr>
 <tr><td>Blue-haired / brown-haired Traci</td><td><code>evidence.tracisDead</code></td><td>Blue needs #6755; brown gives #6755 and her head</td></tr>
 <tr><td>Markus’ broadcast</td><td>always</td><td>The voice to copy</td></tr>
 <tr><td>Simon / the broadcast-tower android</td><td><code>evidence.simonBody</code> / <code>evidence.kitchenBody</code></td><td>Each needs #3983 (one part, so only one of them)</td></tr>
 </tbody></table></div>
-<p>Routes: diary + Rupert; statue + recording + tablet (roll); the two Tracis; Simon or the tower android with the copied voice. Each action costs one of twelve units (answering Gavin costs one more); DOWNLOAD JERICHO KEY and the conversations cost none. The archive shows the time left as a qualitative cue (“a few minutes”, “half gone”, “very little”, “almost none”).</p>
+<p>Routes: diary + Rupert; statue + recording + tablet; the two Tracis; Simon or the tower android with the copied voice. Each action costs one of twelve units (answering Gavin costs one more); DOWNLOAD JERICHO KEY and the conversations cost none. The archive shows the time left as a qualitative cue (“a few minutes”, “half gone”, “very little”, “almost none”).</p>
 
 <h2 id="endings">5 · Endings and the flags later chapters read</h2>
 <div class="table"><table><thead><tr><th><code>ch29Outcome</code></th><th>Scene</th><th>State</th></tr></thead><tbody>
@@ -124,7 +124,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <ul>
 <li>Amanda’s questions: three, the Google Doc walkthrough’s count; the game’s limit is not published.</li>
 <li>The archive’s time budget (twelve actions) and the cost of answering Gavin (one, after IGN’s “will waste precious time”) are unsourced sizes; the upstairs timer is modelled as doing nothing.</li>
-<li>The map link (0.2) and the Gavin fight (0.25) are rolls with unsourced odds; “do not fight back” is PowerPyx’s way to the losing node.</li>
+<li>The Gavin fight (0.25) is a roll with unsourced odds (the map link’s 0.2 is gone, story 1.9.2); “do not fight back” is PowerPyx’s way to the losing node.</li>
 <li>The map links only to the Jericho tablet, the template’s one link; readers say a reactivated memory also works.</li>
 <li>Rupert can take #9164 from Daniel or Carlos’ android; Daniel can still be reactivated after giving a part (not stated either way).</li>
 <li>THREATEN and REASON have no reply in the template; the android falls silent and can be asked again.</li>

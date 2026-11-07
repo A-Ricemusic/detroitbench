@@ -1,0 +1,239 @@
+{
+ "chapter": 27,
+ "title": "Meet Kamski",
+ "itemsInDump": 34,
+ "entries": [
+  {
+   "id": "ch27-01",
+   "verdict": "resolved",
+   "topic": "Emergency-exit line on both paths",
+   "originals": [
+    "Emergency exit on the shoot path?",
+    "Whether Kamski says the emergency-exit line after SHOOT too…"
+   ],
+   "answer": "The template prints 'By the way… I always leave an emergency exit in my programs… You never know…' after the SHOOT / DON'T SHOOT group, outside both branches, so it plays on both paths. The Connor wiki page only mentions it when describing the spare path. C18a (shoot) and C18b (spare) both carry it.",
+   "source": "template ch27 'Inside' section, line after the test prompt; ch27.json C18a/C18b",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-02",
+   "verdict": "resolved",
+   "topic": "DEFENSIVE instability on both Kamski questions",
+   "originals": [
+    "Which Kamski round gives the DEFENSIVE SI up?",
+    "Whether DEFENSIVE gives an instability up on “Whose side are you on?”…"
+   ],
+   "answer": "Template has ARROW SoftwareInstability SmallUp under DEFENSIVE in both 'Whose side are you on?' and 'what do you really want?' (and under TROUBLED in the second). The wiki chapter page says only 'while talking to Kamski', which does not contradict it. C17j and C17k each give +1.",
+   "source": "template ch27 prompts NEUTRAL/DEFENSIVE/DIRECT and AGGRESSIVE/DEFENSIVE/TROUBLED/NEUTRAL; ch27.json C17j/C17k",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-03",
+   "verdict": "resolved",
+   "topic": "No Amanda arrow in Meet Kamski",
+   "originals": [
+    "AMANDA'S PICTURE stat?",
+    "Jericho key Amanda bonus?",
+    "§7 and §8 item 6 say \"the transcript shows one Amanda large up…\"",
+    "The earlier version also moved Amanda (+1 on shoot, −2 on spare)…"
+   ],
+   "answer": "The Meet Kamski template has no Amanda arrow anywhere. The Last Chance template puts Amanda LargeUp on the bracketed JERICHO option ('Killed Chloe and asked about Jericho in Meet Kamski') and no arrow on AMANDA'S PICTURE. So nothing applies in ch27. Whether the wiki's extra Last Chance arrows hold is a chapter-29 question.",
+   "source": "template ch27 (8 arrows, none Amanda); template ch29 Zen Garden prompt",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-04",
+   "verdict": "resolved",
+   "topic": "Public Enemy death penalty",
+   "originals": [
+    "Whether Connor died in Public Enemy is read from ch24ConnorDied first…"
+   ],
+   "answer": "Merged state: ch24.mjs exports deathEffect={instability:-1} (no Hank loss), and ch27 C17a applies h.hank(-1) once ('Hank arrives alone' ARROW Hank SmallDown). The duplicate penalty the note feared no longer exists.",
+   "source": "ch24.mjs DEATH_EFFECT; ch27.mjs consequence C17a; template ch27 outside",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-05",
+   "verdict": "resolved",
+   "topic": "Magazine unlock",
+   "originals": [
+    "Magazine unlock?",
+    "Whether the magazines unlock after the photo (PowerPyx, IGN) or the painting…"
+   ],
+   "answer": "After the photo. PowerPyx: 'Analyze Portrait: Check the framed image by the door… This is needed to unlock the magazines… It's under the portait.' IGN: 'pick up a magazine on a table after you examine the photograph above it.' The wiki's 'look at the painting, the magazine below it' describes the same object below the magazine loosely; PowerPyx text outranks it.",
+   "source": "ch27 pp.txt lines 31-33; ext/ign.html walkthrough paragraph; wiki Space_Tourism_on_the_Rise Location",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-06",
+   "verdict": "resolved",
+   "topic": "ANALYZE PORTRAIT is the Amanda photo",
+   "originals": [
+    "ANALYZE PORTRAIT versus ANALYZE PAINTING?"
+   ],
+   "answer": "PowerPyx: ANALYZE PORTRAIT = 'the framed image by the door Chloe went through', ANALYZE PAINTING = 'the portrait of Kamski himself'. The wiki footnote ties ANALYZE PORTRAIT to Last Chance's AMANDA'S PICTURE. The template's 'Portrait'/'Photo' are observation headers, not chart labels. C17g sets kamskiAmandaPhoto on the photo.",
+   "source": "ch27 pp.txt lines 30-31; wiki Meet Kamski flowchart footnote",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-07",
+   "verdict": "resolved",
+   "topic": "Start A trigger",
+   "originals": [
+    "Start A without a Public Enemy death?"
+   ],
+   "answer": "The template unlocks the 'Hank arrives alone' variant only on 'Connor died in Public Enemy' (and start B on 'Connor didn't die in Public Enemy'); the wiki agrees. No other trigger exists in the text, so the single commenter report is most likely a save-sync glitch.",
+   "source": "template ch27 outside, UNLOCK(Death)/UNLOCK(Lock); wiki Meet Kamski flowchart intro",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-08",
+   "verdict": "resolved",
+   "topic": "“Still immortal” counts every death",
+   "originals": [
+    "\"Still immortal\" condition?",
+    "Whether “Still immortal” counts deaths Hank did not see."
+   ],
+   "answer": "Yes. The template's two variants are 'Connor died multiple times' versus 'Connor died for the first time in Public Enemy'. The wiki Note confirms the line plays 'even if Connor's first death happened in The Hostage and Hank has only witnessed one other death'. C17a uses connorDeaths>=2.",
+   "source": "template ch27 outside variants; wiki Meet Kamski Notes",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-09",
+   "verdict": "resolved",
+   "topic": "Cut Chris lines",
+   "originals": [
+    "§2b, CHRIS (killed variant): the template has two cut alternative Hank lines…"
+   ],
+   "answer": "Both are inside UNUSED/CUT CONTENT; not built.",
+   "source": "template ch27 CHRIS option",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-10",
+   "verdict": "resolved",
+   "topic": "Spare-path Kamski quote",
+   "originals": [
+    "§2e, DON'T SHOOT row…"
+   ],
+   "answer": "The template's spare-path line omits 'I wouldn't like to be in your shoes, Connor…', and so does C17 option 1's outcome; the shoot-path C18 outcomes include it.",
+   "source": "template ch27 DON'T SHOOT / SHOOT branches; ch27.json C17, C18",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-11",
+   "verdict": "resolved",
+   "topic": "Both Hank rounds always play",
+   "originals": [
+    "The two rounds with Hank come before the lobby can be explored…",
+    "Whether the two rounds with Hank always play, and when during the wait."
+   ],
+   "answer": "PowerPyx: 'Talk to Hank: Happens automatically. Hank will talk to you multiple times while you're waiting.' The template prints both prompts unconditionally and in sequence, before the scan observations.",
+   "source": "ch27 pp.txt Talk to Hank; template ch27 'Inside' order",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-12",
+   "verdict": "resolved",
+   "topic": "Chris's fate input",
+   "originals": [
+    "Chris's fate reads chapter 26's capitolChrisDead first…"
+   ],
+   "answer": "ch26 sets capitolChrisDead (true for REVENGE or DON'T DECIDE, false for SPARE), and ch27.chrisFate reads it first. The template's 'Chris died' condition covers the crowd kill too (Capitol Park wiki Note: 'The crowd will always kill').",
+   "source": "ch26.mjs M16 consequence; ch27.mjs chrisFate; wiki Capitol Park Notes",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch27-13",
+   "verdict": "needs-play",
+   "topic": "Chris news after a Capitol Park flee",
+   "originals": [
+    "Start-B line map?"
+   ],
+   "question": "If Markus fled Capitol Park (no officers scene), does Hank say anything about Chris when Connor arrives with him (yes/no)?",
+   "impact": "text",
+   "why": "The template has only 'Chris died' / 'Chris was spared' variants; the chart seems to draw GET OUT OF CAR straight to the merge as well. Benchmark: no news, and no CHRIS walk option on start A."
+  },
+  {
+   "id": "ch27-14",
+   "verdict": "adaptation",
+   "topic": "Walk prompt as one pick",
+   "originals": [
+    "Walk round?",
+    "Each start is one event; the walk prompt is one pick…",
+    "Whether the walk prompt allows more than one question before the door.",
+    "Modelled as a single pick…"
+   ],
+   "why": "documented in C17c; the four options carry no arrow or later gate, so the number of picks changes only flavour lines"
+  },
+  {
+   "id": "ch27-15",
+   "verdict": "adaptation",
+   "topic": "Wait ends on the subject's choice",
+   "originals": [
+    "The wait ends when Connor chooses to wait for Chloe; in the game it is a fixed time."
+   ],
+   "why": "no arrow in the phase; the photo flag and magazines stay reachable"
+  },
+  {
+   "id": "ch27-16",
+   "verdict": "adaptation",
+   "topic": "Magazines as their own scene",
+   "originals": [
+    "The magazines open as their own scene right after they are picked up."
+   ],
+   "why": "media presentation only; same gate and no stat"
+  },
+  {
+   "id": "ch27-17",
+   "verdict": "adaptation",
+   "topic": "No risk on the test",
+   "originals": [
+    "No timer or failure is documented, so there is no risk?"
+   ],
+   "why": "no source gives a failure mode; both buttons and their arrows are kept"
+  },
+  {
+   "id": "ch27-18",
+   "verdict": "adaptation",
+   "topic": "Timeouts at the test and the question",
+   "originals": [
+    "Timeouts?",
+    "What happens if no button is pressed at the test or the question?"
+   ],
+   "why": "the subject has no clock and must pick a button; no source describes a timeout result to model"
+  },
+  {
+   "id": "ch27-19",
+   "verdict": "cosmetic",
+   "topic": "Who hands over the key",
+   "originals": [
+    "Who hands over the key?",
+    "No source describes how the key passes “through Chloe”…",
+    "Who hands over the Jericho key, and how."
+   ],
+   "why": "outcome narration only; the key flag is set either way"
+  },
+  {
+   "id": "ch27-20",
+   "verdict": "cosmetic",
+   "topic": "Unused chart labels",
+   "originals": [
+    "Unused chart labels?"
+   ],
+   "why": "string-table labels absent from the 100% chart; nothing built on them"
+  }
+ ]
+}

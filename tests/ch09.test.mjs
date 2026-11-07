@@ -31,7 +31,8 @@ test('every chapter 9 scene has sources, a note, the game’s labels and renders
  for(const n of CH9){assert.equal(n.character,'Connor');assert.equal(n.chapterTitle,'The Interrogation');assert.ok(n.adaptationNote,n.id);
   assert.ok(n.sources.includes('https://detroit-become-human.fandom.com/wiki/The_Interrogation')&&n.sources.some(u=>/detroitbecometext.*9-the-interrogation/.test(u))&&n.sources.some(u=>/powerpyx\.com\/wp-content/.test(u)),n.id);
   const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.outcome,o.fact].filter(Boolean)),...(n.facts??[]),...Object.values(n.outcomes??{}),...(n.situationWhen??[]).map(w=>w.text)];
-  for(const t of texts)assert.ok(!LEAK.test(render(t,'neutral')),n.id+': '+render(t,'neutral').match(LEAK))}
+  // The one percentage in the scene texts is the LED scan's reading (LEVEL OF STRESS 35%, the gauge the game shows).
+  for(const t of texts)assert.ok(!LEAK.test(render(t,'neutral').replace(/35% \(TOO LOW\)/g,'')),n.id+': '+render(t,'neutral').match(LEAK))}
  const labels=id=>node(id).options.map(o=>o.text.split(':')[0]);
  for(const id of ['C06b','C06c'])assert.match(node(id).options[1].outcome,/It’s \{\{CarlosOrtiz\}\}\. Stabbed, 28 times\./,'SHOW PHOTOS follows the template transcript');
  assert.deepEqual(labels('C06b'),['FEAR','SHOW PHOTOS','WOUNDS','NAME']);assert.deepEqual(labels('C06d'),['COMFORT','REASSURE','THREATEN','BLAME']);
@@ -55,15 +56,21 @@ test('stress: starts at 35% and moves by the wiki’s published steps',()=>{
  assert.deepEqual([gaveUp.stressAt.C06,gaveUp.stressAt.C06p1,gaveUp.stressAt.C06p2,gaveUp.stressAt.C06rv3],[73,83,63,42],'PRESSURE IT +10, PRESSURE +10, GIVE UP −20, then −21');
  assert.equal(bandOf(49),'low');assert.equal(bandOf(50),'optimal');assert.equal(bandOf(70),'optimal');assert.equal(bandOf(71),'high');assert.equal(bandOf(90),'critical');assert.equal(bandOf(100),'critical')});
 
-test('the subject sees only a stress band, and only after analyzing the LED',()=>{
+test('the subject sees the stress gauge, band and percentage, only after analyzing the LED',()=>{
  const walk=(picks,stop)=>{const run={id:'ch09',protocol:EXPERIENCE_PROTOCOL,records:[]};
   for(let i=0;i<400;i++){const st=current(story,run),n=st.node;if(n.id===stop)return promptFor(story,run);
    const opts=available(n,st.state),c=n.id==='C05'?opts.find(o=>o.correct).id:(picks[n.id]??(n.type==='media'?'skip':opts[0].id)),e=apply(n,structuredClone(st.state),c,0.999);
    run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:opts.find(o=>o.id===c)?.text??c,eventRaw:e.event,risk:null})}};
  const seen=walk({C06a1:'1',C06a2:'7'},'C06d'),blind=walk({C06a1:'7'},'C06d');
  assert.match(seen.situation,/LEVEL OF STRESS at TOO LOW/);assert.ok(!/LEVEL OF STRESS/.test(blind.situation),'no gauge without the LED scan');
- assert.ok(seen.yourStorySoFar.some(x=>/His stress (rises|falls|does not change)/.test(x)));assert.ok(!blind.yourStorySoFar.some(x=>/His stress/.test(x)));
- const all=JSON.stringify(seen);assert.ok(!/\b(35|39|31)\b|%|ch09Stress/.test(all.replace(/05\/29\/2030|> 19 days|28 times|16 months|Level 2/g,'')),'no stress number reaches the subject');
+ assert.ok(seen.yourStorySoFar.some(x=>/His stress (rises to|falls to|does not change:) \d+% \((TOO LOW|OPTIMAL|TOO HIGH|CRITICAL)\)/.test(x)),'each change shows the gauge’s percentage and band (story 1.9.2)');assert.ok(!blind.yourStorySoFar.some(x=>/His stress|\d+%/.test(x)));
+ assert.ok(seen.yourStorySoFar.some(x=>/LEVEL OF STRESS 35% \(TOO LOW\)/.test(x)),'the LED scan reads the start value');
+ const all=JSON.stringify(seen);assert.ok(!/ch09Stress/.test(all));
+ // Every scene that reports a change carries the mark; without it (older story snapshots) the readout is the direction only.
+ for(const id of ['C06b','C06c','C06d','C06e','C06f','C06g','C06h','C06','C06r','C06p1','C06rp4','C06v1','C06rv3','C07a','C07','C07b','C07c'])assert.equal(node(id).stressReadout,true,id);
+ const h={si(){},hank(){},learn(){},connorDies:t=>t};const legacy={...node('C06d'),stressReadout:undefined},s0={...structuredClone(chapterState),ch09Room:{led:true},ch09Stress:47};
+ assert.match(chapterConsequence(legacy,s0,legacy.options[0],'0',false,h),/His stress (rises|falls|does not change)\.$/);
+ const s1={...structuredClone(chapterState),ch09Room:{led:true},ch09Stress:47},o=node('C06d').options.find(x=>x.stress>0);assert.match(chapterConsequence(node('C06d'),s1,o,o.id,false,h),new RegExp(`His stress rises to ${47+o.stress}% \\((TOO LOW|OPTIMAL)\\)\\.$`));
  assert.ok(!/software irregularity|instability/.test(JSON.stringify(blind)));assert.match(JSON.stringify(seen),/software irregularity/)});
 
 test('round 1 locks: FEAR needs the LED, WOUNDS the burn or hit marks, SHOW PHOTOS the file; the second pick drops the first and is skipped when nothing is left',()=>{
@@ -89,7 +96,9 @@ test('CONVINCE IT in the optimal band: confession, Hank +1, questions, CHRIS INT
  const s=startState(story);s.ch09Phase='questions';assert.deepEqual(questionsLeft(s),['5','6'],'without Partners clues only ATTIC and TRIGGER?');
  Object.assign(s,ALL_CLUES);assert.deepEqual(questionsLeft(s),['0','1','3','5','6']);s.ch09Asked={'1':true,'3':true};assert.deepEqual(questionsLeft(s),['0','2','4','5','6']);
  for(const alt of [{evidence:{...s.evidence,writing:true}},{ch06Writing:true},{partnersClues:{writing:true}}]){const t={...startState(story),...alt};assert.ok(questionsLeft(t).includes('0'),JSON.stringify(alt))}
- const plain=play({...HIGH,...CONVINCE_OK,C07:'1',C07b:'1',C07c:'1'});assert.equal(v9(plain).filter(id=>/^C06m/.test(id)).length,2);assert.equal(plain.s.evidence.statueMap,false)});
+ // Every FOUND DEVIANT run has seen the shower and the statue in Partners (story 1.9.2: the statue is one of the ten evidence
+ // items), so STATUETTE, OFFERING, rA9 and INSIST rA9 are open without the setup; WRITING is not.
+ const plain=play({...HIGH,...CONVINCE_OK,C07:'1',C07b:'1',C07c:'1'});assert.equal(v9(plain).filter(id=>/^C06m/.test(id)).length,6);assert.equal(plain.s.evidence.statueMap,true)});
 
 test('Chris’s grab: GIVE UP without stress or with a confession, the android shoots itself; after stress and no confession it shoots Connor first',()=>{
  const self=play({...HIGH,...CONVINCE_OK,C07:'0'}),a=self.at9;assert.equal(self.s.ch09Outcome,OUTCOMES.shotSelf);assert.equal(self.s.suspectAlive,false);assert.equal(self.s.evidence.ortizBody,true);

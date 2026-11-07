@@ -184,3 +184,18 @@ test('Midnight Train: three repeatable clue hubs keep one ID and availability is
   assert.equal(nextCursor(story,story.nodes.indexOf(n),n,s),story.nodes.indexOf(n));
  }
 });
+
+// Story 1.9.2 (triage ch25.md): the game shows the officer's suspicion meter; the subject gets a qualitative cue after each
+// rise (scenes marked `suspicionCue`), never a number. Older snapshots, without the mark, replay without cues.
+test('Midnight Train: a qualitative cue after each thing the officer notices, never a number',()=>{
+ const {SUSPICION_CUES,DOOR_CUE}=mod;assert.equal(SUSPICION_CUES.length,4);for(const t of [...SUSPICION_CUES,DOOR_CUE])assert.ok(!/\d/.test(t),t);
+ for(const id of ['K15w3','K15w5','K15w6','K15w7','K15w8','K15w9','K15u'])assert.equal(node(id).suspicionCue,true,id);
+ const at=(sus,extra={})=>({...startState(story),lutherWith:true,midnightSuspicion:sus,...extra});
+ const a=at(0),ea=apply(node('K15w7'),a,'0');assert.equal(a.midnightSuspicion,1);assert.ok(ea.event.endsWith(SUSPICION_CUES[1]),ea.event);
+ const b=at(1),eb=apply(node('K15w8'),b,'0');assert.ok(eb.event.endsWith(SUSPICION_CUES[2]));
+ const c=at(2,{midnightHide:{blood:false}}),ec=apply(node('K15w3'),c,'2');assert.equal(c.midnightSuspicion,4);assert.ok(ec.event.endsWith(SUSPICION_CUES[3]),'NOT MINE: openly suspicious');
+ const d=at(0),ed=apply(node('K15w9'),d,'0');assert.equal(d.midnightSuspicion,0);assert.ok(!SUSPICION_CUES.slice(1).some(x=>ed.event.includes(x)),'no rise, no cue');
+ const old={...node('K15w7'),suspicionCue:undefined},o=at(0),eo=apply(old,o,'0');assert.equal(o.midnightSuspicion,1);assert.ok(!SUSPICION_CUES.slice(1).some(x=>eo.event.includes(x)),'older snapshots: no cue');
+ // POLICEMAN INSISTS: the seventh action before the door.
+ const late={...at(0),midnightHideActions:6};const door=available(node('K15u'),late).find(o=>o.id==='7');assert.match(door.outcome,/he will not wait any longer\. He sounds suspicious already\.$/);
+});

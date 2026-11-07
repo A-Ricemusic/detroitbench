@@ -76,9 +76,13 @@ test('rA9 is offered only after Connor has met rA9 earlier',()=>{
  const c13d=node('C13d');const ids=s=>available(c13d,s).map(o=>o.id);
  assert.deepEqual(ids(arrive()),['1','2','3']);
  const k=arrive();k.knowledge.Connor.push('“{{rA9}}” is written over and over across the shower walls.');assert.deepEqual(ids(k),['0','1','2','3']);
- assert.deepEqual(ids(arrive({ch06Ra9:true})),['0','1','2','3'],'a flag naming rA9');
- assert.deepEqual(ids(arrive({ch06Clues:{shower:true,rA9:true}})),['0','1','2','3'],'a nested flag naming rA9');
+ // Connor's own rA9 clues (template: "Looked at rA9 clues in previous chapters"): Partners' shower, the Interrogation's
+ // rA9 questions, the Nest's writing.
+ for(const extra of [{ch06KnowsRA9:true},{ch06Clues:{shower:true}},{ch09Asked:{'3':true}},{nestSawSigns:true}])assert.deepEqual(ids(arrive(extra)),['0','1','2','3'],JSON.stringify(extra));
  assert.deepEqual(ids(arrive({ch06Clues:{rA9:false}})),['1','2','3']);
+ // Story 1.9.2 (triage ch22.md): Kara's rA9 flags from Fugitives and The Pirates' Cove do not unlock Connor's answer.
+ for(const extra of [{ch10RalphRA9:true},{ch21Tavern:{ra9:true}},{ch21Talk:{ra9:true}},{ch10Roam:{done:{rA9:true}}},{ch06Ra9:true}])assert.deepEqual(ids(arrive(extra)),['1','2','3'],JSON.stringify(extra));
+ const kara=arrive({ch21Tavern:{ra9:true}});kara.knowledge.Kara.push('{{rA9}} was carved all over the walls.');assert.deepEqual(ids(kara),['1','2','3'],'what Kara knows is not what Connor knows');
  const r=play(k,{C13d:'0'});assert.equal(r.s.bridgeRa9,true);
 });
 

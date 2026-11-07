@@ -116,7 +116,7 @@ test('The Nest: the chase can lose the deviant or kill Connor; deaths move insta
  const ok=chapter({C10r:'1',C10s:'1',C10u:'1'});assert.ok(ok.ch.includes('C10w')&&ok.ch.includes('C10'))});
 
 test('The Nest: the ledge: SAVE HANK, CHASE DEVIANT and the timeout, with the template’s and the wiki’s arrows and the output flags',{timeout:60000},()=>{
- assert.deepEqual(node('C10').options.map(o=>o.id),['0','1','2']);assert.ok(node('C10').options.every(o=>o.risk===undefined));
+ assert.deepEqual(node('C10').options.map(o=>o.id),['1','0','2'],'CHASE DEVIANT first, as the chart (FOLLOW RUPERT above SAVE HANK) and the template list them');assert.match(node('C10').options[0].text,/^CHASE DEVIANT:/);assert.ok(node('C10').options.every(o=>o.risk===undefined));
  const at=play({},[],n=>n.id==='C10').s;
  const run=c=>{const s=structuredClone(at);const e=apply(node('C10'),s,c);return {s,e}};
  const save=run('0'),chase=run('1'),wait=run('2');

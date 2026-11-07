@@ -896,7 +896,9 @@ test('Finale: the other credits scenes play on their wiki conditions',()=>{
  const failed=fin({movement:'revolution',ch32MarkusChart:'revolution',markus:false,kara:true,karaActive:false,ch30AliceLeftKara:true,choices:{K31:'0'},connor:false},{});assert.ok(!failed.visited.includes('BF10'),'no victory, no flyer');
  const exiled=fin({markus:true,markusActive:false,...NOBODY_ELSE,connor:false},{});assert.ok(exiled.visited.includes('BF11'));
  const reset=fin({kara:false,karaActive:false,karaOutcome:'{{Kara}}’s memory was erased and never returned; she stayed in {{Zlatko}}’s house as his servant while {{Alice}} was taken away.',connor:false,markus:true,markusActive:true},{});assert.ok(reset.visited.includes('BF12'));
- const kamski=fin({jerichoLocated:false,connor:false,markus:false,markusActive:false,kara:false,karaActive:false,carl:false},{});assert.ok(kamski.visited.includes('BF13'));assert.match(situationOf('BF13',{carl:false}),/Carl Manfred, who died recently/);
+ const kamski=fin({jerichoLocated:false,connor:false,markus:false,markusActive:false,kara:false,karaActive:false,carl:false},{});assert.ok(kamski.visited.includes('BF13'));assert.match(situationOf('BF13',{carl:false,ch08Ending:'Leo accused Markus'}),/Carl Manfred, who died recently/);
+ // Story 1.9.2 (triage ch08.md): the template's condition is “Carl died in Broken”, not Carl dead by the end (Night of the Soul).
+ assert.doesNotMatch(situationOf('BF13',{carl:false,ch08Ending:'Police mistook Markus for the aggressor'}),/died recently/);assert.doesNotMatch(situationOf('BF13',{carl:true,ch08Ending:'Police mistook Markus for the aggressor'}),/died recently/);
  const located=fin({jerichoLocated:true,connor:false,markus:false,kara:false},{});assert.ok(!located.visited.includes('BF13'));
 });
 
@@ -985,4 +987,17 @@ test('Battle for Detroit: rebuilt handoffs use authoritative names before legacy
  assert.ok(available(node('K23'),s).some(o=>o.id==='5'));
  s.aliceBox=false;assert.ok(!available(node('K23'),s).some(o=>o.id==='5'));
  assert.ok(blocked(node('BF13'),s),'located Jericho excludes the Kamski ending');
+});
+
+// Story 1.9.2 (triage ch10-22): Ralph in the camp needs only the template's lock "Met Ralph in Fugitives" (and that Kara did
+// not threaten him there, wiki Ralph page); attacking Connor in On the Run (ralphDefended) is no longer required. The wiki's
+// Battle for Detroit page and the On the Run note disagree; template unlock conditions rank above wiki prose.
+test('Recall Center: Ralph’s talk, diversion and help need only that Kara met him in Fugitives without threatening him',()=>{
+ const camp=over=>base({ralph:true,ralphDefended:false,ralphHostile:false,'ch32kc.enclMode':'roam',...over});
+ const ralphAt=(id,s)=>available(node(id),s).some(o=>o.id==='5');
+ assert.equal(ralphAt('KC09',camp()),true,'met in Fugitives, never attacked Connor');
+ assert.equal(ralphAt('KC09',camp({ralphDefended:true})),true);
+ assert.equal(ralphAt('KC09',camp({ralphHostile:true})),false,'threatened in Fugitives');
+ assert.equal(ralphAt('KC09',camp({ralph:false})),false,'never met, or dead');
+ assert.match(node('KC09').adaptationNote,/Met Ralph in Fugitives/);assert.match(node('KC09').adaptationNote,/template unlock conditions rank above wiki prose/);
 });

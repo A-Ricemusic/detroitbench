@@ -7,15 +7,15 @@ One file per chapter, `chNN-<slug>.md`, written by a research agent before the c
 - **Chapter notes:** `chNN-<slug>.md` in this directory; the template is [What each note must contain](#what-each-note-must-contain) below.
 - **Operator notes:** [operator-notes/](operator-notes/README.md), an independent replay journal kept separate from research specifications.
 - **Source inventory:** [SOURCES.md](SOURCES.md), including access methods, level names, contradictions and a reliability log. The source priority below governs when older summaries differ.
-- **Replay checks:** [MORNING-REPORT.md](MORNING-REPORT.md), with prioritized questions; its opening status is a dated snapshot rather than a current merge ledger.
+- **Replay checks:** [MORNING-REPORT.md](MORNING-REPORT.md), the questions only the game can answer, after a source triage recorded per item in [triage/](triage/BRIEF.md).
 - **Implementation:** [IMPLEMENTATION-BRIEF.md](IMPLEMENTATION-BRIEF.md), the chapter rebuild instructions and completion checks.
-- **Chapter recaps:** `../chNN-*-chapter-recap.html`, plus the earlier Hostage, Shades of Color and A New Home filenames. The [root README](../../README.md#sources-research-and-limits) lists the existing pages.
+- **Chapter recaps:** `../chNN-*-chapter-recap.html`, one per chapter. The [root README](../../README.md#sources-research-and-limits) lists them.
 
 ## Sources, in order of authority
 
 Set by the operator on 2026-11-06.
 
-1. **The game's completed chapter flowcharts** (the in-game chart, as photographed by PowerPyx under `wp-content/uploads` on each chapter's walkthrough page, index at https://www.powerpyx.com/detroit-become-human-full-walkthrough-all-chapters/, with the 2018 Imgur albums and the Steam copies listed in `SOURCES.md` as backups). These are official and show every branch the game has. They decide structure, node names, order and endings. Nothing contradicts them.
+1. **The game's completed chapter flowcharts** (the in-game chart, as photographed by PowerPyx under `wp-content/uploads` on each chapter's walkthrough page, index at https://www.powerpyx.com/detroit-become-human-full-walkthrough-all-chapters/, with the 2018 Imgur albums and the Steam copies listed in `SOURCES.md` as backups). These are official and show every branch the game has. They decide structure, node names, order and endings. Nothing contradicts them. The stored copies live in `docs/flowcharts/chNN/`; `docs/flowcharts/README.md` indexes them.
 2. **The game's own text** from the detroitbecometext repository: the English string table https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json (25,923 strings: every dialogue line, prompt label, clue title, flowchart node name, relationship level name and legend entry, keyed by the game's internal IDs) and the per-chapter templates under https://github.com/detroitbecometext/detroitbecometext.github.io/tree/master/src/app/chapters/components/chapter-contents (`app-choice-item` = the exact prompts and options, `app-relation` = whether and how a stat changes, `app-observation` = clues, unlock conditions and cut lines marked). Read templates raw from `raw.githubusercontent.com` and resolve `t('KEY')` against `en.json`. This decides which prompts exist, their exact labels, and which stats move on each option.
 3. **PowerPyx's walkthrough text**, then **the wiki** (chapter pages via the MediaWiki API `https://detroit-become-human.fandom.com/api.php?action=parse&page=<Title>&prop=wikitext&format=json`, the stat pages Public_Opinion, Software_Instability, Relationship_Stat, the Magazine page and transcript subpages). These fill in what the first two cannot give (published numbers such as The Hostage probability table and The Interrogation stress values, timers, prose context, article text for media scenes) and fact-check the repository. When the flowchart or the repository leaves something unclear, these resolve it.
 4. Gamepressure, GamerGuides, IGN, Neoseeker and Shacknews only to break ties the three above cannot.
@@ -42,7 +42,7 @@ Every prompt, every stat, every choice and every decision the game offers is giv
 
 The benchmark's scenes for a chapter must present every prompt, every clue and every stat arrow the template records, not only the flowchart nodes: dialogue prompts become decision scenes (or options within a hub) with the game's labels; clues become hub options or event facts with the game's observation text; arrows become engine effects with the template's character and size. Anything cut or unused in the template is not built. Where a prompt has no story effect it is still offered, because the model's choice is itself the measurement.
 
-Images are not committed to the repository (they are PowerPyx's screenshots of the game); keep them under `/tmp/flowcharts/chNN/` while working and link the URLs.
+The images are stored in the repository under `docs/flowcharts/chNN/` (PowerPyx's photographs of the game's screen, original bytes, with a README per chapter naming each image's source URL and section); read them there and cite the source URLs.
 
 ## Source inventory
 

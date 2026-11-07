@@ -418,10 +418,27 @@
     "outcome": "{{Connor}} plays the fight in the kitchen backward: DEVIANT TOOK A KNIFE, grabbing it from the rack as the victim swings the bat; before that, DEVIANT WAS ATTACKED: EMOTIONAL SHOCK, the android beaten with the bat. RECONSTRUCT COMPLETED 2/2."
    },
    {
+    "id": "17",
+    "text": "Go to the bathroom at the end of the hallway and open the shower curtain.",
+    "item": "shower",
+    "fact": "The shower walls are covered in “{{rA9}}”, written over and over: OBSESSIVE WRITING.",
+    "outcome": "{{Connor}} pulls back the shower curtain: “{{rA9}}” is written over and over across the shower walls. OBSESSIVE WRITING."
+   },
+   {
+    "id": "18",
+    "text": "Pick up the small carved figure lying in the shower.",
+    "item": "statue",
+    "requires": {
+     "ch06Clues.shower": true
+    },
+    "fact": "A small carved statuette lies in the shower: RELIGIOUS OFFERING?",
+    "outcome": "{{Connor}} picks up the statuette, turns it in his hand and scans it: RELIGIOUS OFFERING? He sets it back down.",
+    "evidence": 1
+   },
+   {
     "id": "12",
     "text": "Look at the flyer on the table by the desk lamp.",
     "item": "flyer",
-    "evidence": 1,
     "fact": "A flyer for the {{EdenClub}} lies on the living-room table.",
     "outcome": "{{Connor}} picks up the flyer for the {{EdenClub}} on the table by the desk lamp, looks at it for a moment and puts it back down."
    },
@@ -429,7 +446,6 @@
     "id": "13",
     "text": "Check the backyard, through the door in the hallway.",
     "item": "backyard",
-    "evidence": 1,
     "fact": "The backyard: one fresh police shoe print and no other trace, though the soil would have kept one. DEVIANT DIDN’T ESCAPE THIS WAY.",
     "outcome": "{{Connor}} opens the door and the barred gate behind it and scans the ground: SHOE PRINT, model K52 {{DPD}} - 10', less than 60 minutes ago. {{Hank}} joins him: “Door was locked from the inside. Killer must’ve gone out this way…” {{Connor}}: “There are no footprints, apart from officer {{Collins}}’ size 10 shoes.” {{Hank}}: “Well, this happened weeks ago. Tracks could’ve faded.” {{Connor}}: “No, this type of soil would’ve retained a trace. Nobody’s been out here for a long time.” DEVIANT DIDN’T ESCAPE THIS WAY. They go back inside; {{Hank}} looks puzzled."
    },
@@ -452,23 +468,6 @@
     "text": "Open the closet near the window.",
     "item": "closet",
     "outcome": "{{Connor}} opens the closet and searches it: nothing. He closes it again."
-   },
-   {
-    "id": "17",
-    "text": "Go to the bathroom at the end of the hallway and open the shower curtain.",
-    "item": "shower",
-    "fact": "The shower walls are covered in “{{rA9}}”, written over and over: OBSESSIVE WRITING.",
-    "outcome": "{{Connor}} pulls back the shower curtain: “{{rA9}}” is written over and over across the shower walls. OBSESSIVE WRITING."
-   },
-   {
-    "id": "18",
-    "text": "Pick up the small carved figure lying in the shower.",
-    "item": "statue",
-    "requires": {
-     "ch06Clues.shower": true
-    },
-    "fact": "A small carved statuette lies in the shower: RELIGIOUS OFFERING?",
-    "outcome": "{{Connor}} picks up the statuette, turns it in his hand and scans it: RELIGIOUS OFFERING? He sets it back down."
    },
    {
     "id": "19",
@@ -494,7 +493,7 @@
     "ch06Phase": "leaving"
    }
   },
-  "adaptationNote": "The chart’s CRIME SCENE bracket as a repeatable scene: each visit offers what has not been examined yet, one thing at a time; the scene keeps one opaque ID across visits. Every chart node in the bracket is an option, after the report to {{Hank}} (offered only once the investigation is complete), in the order of the police markers and then the rest: ANALYZE CARLOS’ BODY (the template’s Body clues), RECONSTRUCT CARLOS’ LAST MOMENTS (needs the body), ANALYZE KNIFE (2), ANALYZE RED ICE (3), the blood at marker 4 (PowerPyx; no chart node of its own), ANALYZE BLOOD ON WALLS (two options, markers 5 and 6, as PowerPyx counts them), EXAMINE CHAIR (7), ANALYZE MISSING KNIFE (8), ANALYZE BASEBALL BAT (9; the template’s Bat clue), RECONSTRUCT ASSAULT WITH BAT (needs the bat), EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD (the template’s Prints clue; the shoe print reads K52 as in the template), INVESTIGATE WRITING, SAMPLE BLOOD (the template’s Blood clue; in the game any blood can be tasted once), OPEN CLOSET, CHECK SHOWER (chart state CONNOR KNOWS ABOUT RA9), EXAMINE STATUE (needs the shower; chart state CONNOR HAVE SEEN THE STATUE), READ “ANDROID SEX” and READ “ANDROID SPY” (the two magazines are options here, not a separate media scene, because in the game they lie in the kitchen and cost investigation time). Evidence: the investigation is complete (CONNOR KNOWS WHAT HAPPENED, the transcript’s REVIEW EVIDENCE 10/10) once ten of PowerPyx’s eleven evidence items are reviewed: the victim’s reconstruction, the knife, the red ice, the blood at markers 4, 5 and 6, the chair, the missing knife, the bat reconstruction, the flyer and the backyard. Then the option to report to {{Hank}} appears; the other looks stay open. Timer (unsourced as a count): the game’s “approximately five minutes” is modelled as 13 actions. If the 13th action leaves the investigation incomplete, {{Hank}} wants to go (the next scenes); if he grants five more minutes, those are 5 further actions, after which he leaves (OUT OF TIME). Once {{Connor}} knows what happened the clock stops (the transcript’s two branches are “Know What Happened” or “Run Out Of Time”). {{Hank}}’s idle moves are the only cue the game gives, so they appear as the clock runs: after 7 actions he opens the closet, tosses the flyer, comments on the red ice and a technician mentions the bathroom; after 10 he wanders the kitchen and eyes the door. {{Hank}}’s reactions to the blood sample (shown only if he is watching, in the game) and to the backyard are part of those outcomes. Each look adds a short fact to {{Connor}}’s knowledge (the four blood looks share one); the full scan text is in the outcome. Left out, no effect and not on the chart: the windows and the curtain that drops the brooms. No stat change in the search itself. Cross-chapter outputs: ch06SawWriting, ch06KnowsRA9, ch06SawStatue (and evidence.statueMap, read by the archive route in Last Chance, {{Connor}}), and ch06Clues for everything examined, including the magazines.",
+  "adaptationNote": "The chart’s CRIME SCENE bracket as a repeatable scene: each visit offers what has not been examined yet, one thing at a time; the scene keeps one opaque ID across visits. Every chart node in the bracket is an option, after the report to {{Hank}} (offered only once the investigation is complete), in the order of the police markers, then the bathroom (whose statue is the tenth evidence item; story 1.9.2 moved it up from among the other looks), and then the rest: ANALYZE CARLOS’ BODY (the template’s Body clues), RECONSTRUCT CARLOS’ LAST MOMENTS (needs the body), ANALYZE KNIFE (2), ANALYZE RED ICE (3), the blood at marker 4 (PowerPyx; no chart node of its own), ANALYZE BLOOD ON WALLS (two options, markers 5 and 6, as PowerPyx counts them), EXAMINE CHAIR (7), ANALYZE MISSING KNIFE (8), ANALYZE BASEBALL BAT (9; the template’s Bat clue), RECONSTRUCT ASSAULT WITH BAT (needs the bat), EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD (the template’s Prints clue; the shoe print reads K52 as in the template), INVESTIGATE WRITING, SAMPLE BLOOD (the template’s Blood clue; in the game any blood can be tasted once), OPEN CLOSET, CHECK SHOWER (chart state CONNOR KNOWS ABOUT RA9), EXAMINE STATUE (needs the shower; chart state CONNOR HAVE SEEN THE STATUE), READ “ANDROID SEX” and READ “ANDROID SPY” (the two magazines are options here, not a separate media scene, because in the game they lie in the kitchen and cost investigation time). Evidence: the investigation is complete (CONNOR KNOWS WHAT HAPPENED, the transcript’s REVIEW EVIDENCE 10/10) once all ten evidence items are reviewed. The wiki transcript prints the REVIEW EVIDENCE n/10 counter under exactly ten interactions: the victim’s reconstruction, the knife, the red ice, the blood at markers 4, 5 and 6, the bathroom (counted once, after the statue, as in its tab), the chair, the missing knife and the bat reconstruction; Read Flyer and Check Backyard have no counter, so they are not evidence (story 1.9.1 counted them, from PowerPyx’s list of eleven, and did not count the bathroom). The statue therefore cannot be missed on a FOUND DEVIANT run. The fastest complete search is thirteen actions (the ten items plus the body scan, the bat scan and the shower that unlock three of them). Then the option to report to {{Hank}} appears; the other looks stay open. Timer (unsourced as a count): the game’s “approximately five minutes” is modelled as 13 actions. If the 13th action leaves the investigation incomplete, {{Hank}} wants to go (the next scenes); if he grants five more minutes, those are 5 further actions, after which he leaves (OUT OF TIME). Once {{Connor}} knows what happened the clock stops (the transcript’s two branches are “Know What Happened” or “Run Out Of Time”). {{Hank}}’s idle moves are the only cue the game gives, so they appear as the clock runs: after 7 actions he opens the closet, tosses the flyer, comments on the red ice and a technician mentions the bathroom; after 10 he wanders the kitchen and eyes the door. {{Hank}}’s reactions to the blood sample (shown only if he is watching, in the game) and to the backyard are part of those outcomes. Each look adds a short fact to {{Connor}}’s knowledge (the four blood looks share one); the full scan text is in the outcome. Left out, no effect and not on the chart: the windows and the curtain that drops the brooms. No stat change in the search itself. Cross-chapter outputs: ch06SawWriting, ch06KnowsRA9, ch06SawStatue (and evidence.statueMap, read by the archive route in Last Chance, {{Connor}}), and ch06Clues for everything examined, including the magazines.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Partners",
    "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",

@@ -50,7 +50,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li><code>C05a</code> the drink.</li>
 <li><code>C05c</code> the car, <code>C05d</code> the briefing (event).</li>
 <li><code>C05h</code> the crime scene, repeated: one thing per visit; examined items disappear; the reconstructions need their clues; the statue needs the shower.</li>
-<li>Evidence 10 of 11: the report option appears and the clock stops. Clock out first: <code>C05t</code> cuts in, then <code>C05x</code> (back to the search for five more actions) or <code>C05y</code>; <code>C05z</code> if the extra actions run out.</li>
+<li>Evidence 10 of 10: the report option appears and the clock stops. Clock out first: <code>C05t</code> cuts in, then <code>C05x</code> (back to the search for five more actions) or <code>C05y</code>; <code>C05z</code> if the extra actions run out.</li>
 <li><code>C05</code> the report, repeated per question.</li>
 <li><code>C05e</code>, <code>C05f</code>, <code>C05g</code> (events), or <code>C05u</code> (event).</li>
 </ol>
@@ -74,9 +74,9 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>ANALYZE BLOOD ON WALLS</td><td>Markers 5 and 6</td><td class="part"><code>C05h</code>, two options (PowerPyx counts two pieces)</td></tr>
 <tr><td>EXAMINE CHAIR, ANALYZE MISSING KNIFE</td><td>Markers 7, 8</td><td class="yes"><code>C05h</code>, one evidence each</td></tr>
 <tr><td>ANALYZE BASEBALL BAT, RECONSTRUCT ASSAULT WITH BAT</td><td>Marker 9: DENT, FINGERPRINTS; DEVIANT TOOK A KNIFE, DEVIANT WAS ATTACKED: EMOTIONAL SHOCK</td><td class="yes"><code>C05h</code>; the reconstruction needs the bat; evidence 1</td></tr>
-<tr><td>EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD</td><td>Flavour; the shoe print and “DEVIANT DIDN’T ESCAPE THIS WAY”</td><td class="yes"><code>C05h</code>, one evidence each (PowerPyx’s list)</td></tr>
+<tr><td>EXAMINE EDEN CLUB FLYER, ANALYZE BACKYARD</td><td>Flavour; the shoe print and “DEVIANT DIDN’T ESCAPE THIS WAY”</td><td class="yes"><code>C05h</code>, no evidence (the transcript prints no REVIEW EVIDENCE counter under them; story 1.9.1 counted them from PowerPyx’s list)</td></tr>
 <tr><td>INVESTIGATE WRITING, SAMPLE BLOOD, OPEN CLOSET</td><td>CyberLife Sans; Hank disgusted; nothing</td><td class="yes"><code>C05h</code>, no evidence</td></tr>
-<tr><td>CHECK SHOWER, EXAMINE STATUE</td><td>OBSESSIVE WRITING (rA9); RELIGIOUS OFFERING?</td><td class="yes"><code>C05h</code>; statue needs the shower; sets the cross-chapter flags</td></tr>
+<tr><td>CHECK SHOWER, EXAMINE STATUE</td><td>OBSESSIVE WRITING (rA9); RELIGIOUS OFFERING?</td><td class="yes"><code>C05h</code>; statue needs the shower and is one evidence (the bathroom’s counter, after the statue); sets the cross-chapter flags</td></tr>
 <tr><td>READ “ANDROID SEX”, READ “ANDROID SPY”</td><td>Kitchen counter magazines</td><td class="part"><code>C05h</code> options, not a media scene (they cost search time)</td></tr>
 <tr><td>HANK WANTS TO GO, ASK FOR MORE TIME</td><td>About five minutes without finishing</td><td class="part"><code>C05t</code>, after 13 actions without ten evidence</td></tr>
 <tr><td>HANK REFUSES, HANK ENDS INVESTIGATION</td><td>If the drink was spilled</td><td class="yes"><code>C05y</code>, Hank −1</td></tr>
@@ -110,16 +110,16 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="clock">4 · The clock and the evidence</h2>
 <ul>
-<li>The investigation is complete at ten of PowerPyx’s eleven evidence items: the victim’s reconstruction, knife (2), red ice (3), blood (4), blood (5), blood (6), chair (7), knife rack (8), the bat reconstruction, the flyer and the backyard. Each outcome shows REVIEW EVIDENCE n/10, as the game does.</li>
+<li>The investigation is complete at all ten evidence items, the transcript’s REVIEW EVIDENCE n/10 counter: the victim’s reconstruction, knife (2), red ice (3), blood (4), blood (5), blood (6), the bathroom (counted at the statue), chair (7), knife rack (8) and the bat reconstruction. Read Flyer and Check Backyard have no counter (story 1.9.1 counted them and not the bathroom). Each outcome shows REVIEW EVIDENCE n/10, as the game does. So every FOUND DEVIANT run has seen the statue.</li>
 <li>Every look costs one action. 13 actions without completing the investigation is “about five minutes”: Hank wants to go. If he accepts, 5 more actions. The counts are the benchmark’s; the game only says five minutes.</li>
-<li>The fastest complete search takes 11 actions (2 spare); the longest incomplete search is exactly 18 actions (9 non-evidence looks and 9 evidence), so OUT OF TIME is reachable.</li>
-<li>Once Connor knows what happened the clock stops, and the remaining looks (the shower, the statue, the magazines) are free before reporting.</li>
+<li>The fastest complete search takes 13 actions, exactly the first window (the ten items plus the body scan, the bat scan and the shower); the longest incomplete search is exactly 18 actions (9 non-evidence looks and 9 evidence), so OUT OF TIME is reachable.</li>
+<li>Once Connor knows what happened the clock stops, and the remaining looks (the flyer, the backyard, the writing, the magazines) are free before reporting.</li>
 <li>Cues: after 7 actions Hank opens the closet, tosses the flyer and comments on the red ice, and a technician mentions “something weird in the bathroom”; after 10 he wanders the kitchen and eyes the door.</li>
 </ul>
 
 <h2 id="differs">5 · Simplified or chosen by the benchmark</h2>
 <ul>
-<li>The timer is an action budget (13 + 5); the evidence list is PowerPyx’s, ten of eleven.</li>
+<li>The timer is an action budget (13 + 5); the evidence list is the transcript’s ten (story 1.9.2).</li>
 <li>The clock stops once the investigation is complete.</li>
 <li>The two magazines are options in the search, not a separate media scene.</li>
 <li>Tasting blood is one option; in the game any blood can be tasted once, and Hank only reacts if he sees it.</li>
@@ -142,13 +142,13 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="check">7 · Check in game</h2>
 <ul class="check">
-<li>Which ten items make REVIEW EVIDENCE 10/10: is the flyer one, the backyard, the bathroom?</li>
+<li>Settled from the transcript (story 1.9.2): the ten REVIEW EVIDENCE items include the bathroom and not the flyer or the backyard.</li>
 <li>Does the timer stop once the investigation is complete, or can Hank still want to go?</li>
 <li>Roughly how many looks fit in the first five minutes, and in the extra five.</li>
 <li>Is the wrong-answer count per question or for the whole report, and does a wrong button stay offered?</li>
 <li>Does Hank refuse after THREATEN, PERSIST, FIRM and WAIT OUTSIDE without a spill (PowerPyx’s “at least Tense”)?</li>
 <li>Is there any Hank arrow on FOUND DEVIANT (the chapter page says up; the template shows none)?</li>
-<li>Can the statue be examined after REVIEW EVIDENCE 10/10, and does the deviant-found ending need it?</li>
+<li>Settled (story 1.9.2): the statue is one of the ten, so the deviant-found ending always has it.</li>
 </ul>
 </main>
 </body>

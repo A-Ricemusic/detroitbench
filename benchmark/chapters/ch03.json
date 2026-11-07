@@ -241,23 +241,19 @@
    {
     "id": "1",
     "text": "Move closer to hear what they are saying, without drawing attention.",
-    "risk": 0.25,
     "fact": "Anti-android protesters outside the {{CyberLife}} store blamed androids for 35% unemployment, shouting that machines are meant to serve people, not replace them, and chanted for androids to be banned now."
    },
    {
     "id": "2",
-    "text": "Keep as far from them as you can, on the opposite side of the street.",
-    "risk": 0.08
+    "text": "Keep as far from them as you can, on the opposite side of the street."
    }
   ],
   "outcomes": {
    "0": "{{Markus}} walks straight toward the crowd. One of the protesters steps into his path.",
    "1-unnoticed": "{{Markus}} edges close enough to hear the leader: “Androids are stealing our jobs! We’ve got families to feed and these androids are taking our place! Machines, ladies and gentlemen, are meant to serve us, not to replace us! … 35% unemployment, millions out of work, are we gonna do something?” The crowd chants “BAN ANDROIDS!” Nobody looks his way, and he walks on to the bus stop.",
-   "1-noticed": "{{Markus}} edges close enough to hear the leader: “Androids are stealing our jobs! We’ve got families to feed and these androids are taking our place! … 35% unemployment, millions out of work, are we gonna do something?” Then one of the protesters turns and sees him, and steps into his path.",
-   "2-unnoticed": "{{Markus}} keeps to the far side of the street. The chanting follows him to the bus stop, but nobody looks his way.",
-   "2-noticed": "{{Markus}} keeps to the far side of the street, but one of the protesters spots him and steps into his path."
+   "2-unnoticed": "{{Markus}} keeps to the far side of the street. The chanting follows him to the bus stop, but nobody looks his way."
   },
-  "adaptationNote": "The chart’s optional node PROTESTERS HARASS MARKUS, triggered in the game by walking near the protesters on the way to the bus stop and avoided by going around them (the wiki: “you can avoid them by going around on the right”; PowerPyx: “they might not attack Markus if he’s too far away”). The three options are the operator’s (beat 8): walking straight up always gets {{Markus}} noticed; moving closer to listen carries a 25% risk and keeping far away an 8% risk of being noticed anyway. These risk values are the operator’s design and have no source; the wiki and the chart give no probability for this chapter. The leader’s speech and the chant are quoted from the transcript (“Watch Protesters”). Changed from the operator’s notes: “read their signs” is dropped because no source gives the signs’ wording. Being noticed sets the flag clothesTorn (the game’s MARKUS CLOTHES WERE TORN APPART) that plays the harassment next and that {{Carl}} notices in The Painter. No public-opinion or other stat change; the wiki gives none.",
+  "adaptationNote": "The chart’s optional node PROTESTERS HARASS MARKUS, triggered in the game by walking near the protesters on the way to the bus stop and avoided by going around them (the wiki: “you can avoid them by going around on the right”; PowerPyx: “they might not attack Markus if he’s too far away”). The three options are the operator’s (beat 8), and the outcome follows the route alone, as in the wiki transcript: on the way to the bus it has exactly two outcomes, “Go Straight To Bus = Markus avoids the crowd by walking on the opposite side” and “Run Into Protesters = A protester notices Markus and harasses him”, and “Watch Protesters” (the leader’s speech and the chant) is a separate optional interaction with no consequence. So walking straight up always gets {{Markus}} noticed, and moving closer to listen or keeping to the far side never does. The operator’s journal asked for a 25% and an 8% risk on those two (story 1.9.1 built them); the transcript ranks above the journal (docs/research/README.md, source order), so story 1.9.2 drops both risks. PowerPyx’s “they might not attack Markus if he’s too far away” agrees with the route rule. The leader’s speech and the chant are quoted from the transcript (“Watch Protesters”). Changed from the operator’s notes: “read their signs” is dropped because no source gives the signs’ wording. Being noticed sets the flag clothesTorn (the game’s MARKUS CLOTHES WERE TORN APPART) that plays the harassment next and that {{Carl}} notices in The Painter. No public-opinion or other stat change; the wiki gives none.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color",
    "https://detroit-become-human.fandom.com/wiki/Shades_Of_Color_(Transcript)",

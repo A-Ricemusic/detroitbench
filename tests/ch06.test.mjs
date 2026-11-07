@@ -21,10 +21,11 @@ const fromCh6=n=>n.chapter>6;
 const before6=()=>{const r=play({},n=>n.chapter>=6);return r.s};
 
 // The non-evidence looks (9 actions) and the evidence items in an order that keeps the investigation incomplete longest.
-const IDLE=items('closet','writing','sample','shower','statue','magazineSex','magazineSpy','body','bat');
+// Evidence is the transcript's ten REVIEW EVIDENCE items (story 1.9.2): the statue counts; the flyer and the backyard do not.
+const IDLE=items('closet','writing','sample','shower','flyer','backyard','magazineSex','magazineSpy','body');
 const SLOW=[...IDLE,...items('victim','knife','redIce','floorBlood')];                 // 13 actions, 4 evidence: Hank wants to go
-const EXTRA=items('doorBlood','wallBlood','chair','missingKnife','flyer');               // 5 more, 9 evidence: out of time
-const FAST=items('body','victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','flyer','backyard'); // 11 actions, 10 evidence
+const EXTRA=items('doorBlood','wallBlood','chair','missingKnife','statue');              // 5 more, 9 evidence: out of time (no bat)
+const FAST=items('body','victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','bat','assault','shower','statue'); // 13 actions, 10 evidence
 
 test('Partners: sixteen Connor scenes in order between The Painter and Stormy Night, each sourced to the game’s template',()=>{
  const ch6=story.nodes.filter(n=>n.chapter===6);assert.deepEqual(ch6.map(n=>n.id),CH6);
@@ -36,7 +37,9 @@ test('Partners: sixteen Connor scenes in order between The Painter and Stormy Ni
  assert.deepEqual(node('C05a').options.map(o=>o.text.split(':')[0]),['SPILL HIS DRINK','BUY HIM ANOTHER DRINK','WAIT OUTSIDE']);
  assert.deepEqual(node('C05c').options.map(o=>o.text.split(':')[0]),['PATIENT','FIRM','DIPLOMATIC']);
  assert.deepEqual(node('C05').options.map(o=>o.step+':'+o.text.split(':')[0]),['1:…IN THE KITCHEN','1:…IN THE LIVING ROOM','1:…IN THE BATHROOM','2:…WITH THE BAT.','2:…WITH THE KNIFE.','2:…WITHOUT A WEAPON.','3:THE ANDROID STABBED THE VICTIM.','3:THE ANDROID THREW THE CHAIR.','3:THE VICTIM STABBED THE ANDROID.','4:… THE LIVING ROOM.','4:…THE GARDEN.','4:…THE BATHROOM.','5:…WITH THE KNIFE','5:…WITH THE BAT.','5:…WITHOUT A WEAPON.']);
- assert.equal(HUB.options.length,21);assert.equal(HUB.options.reduce((a,o)=>a+(o.evidence??0),0),11,'PowerPyx’s eleven evidence items')});
+ assert.equal(HUB.options.length,21);assert.equal(HUB.options.reduce((a,o)=>a+(o.evidence??0),0),10,'the transcript’s ten REVIEW EVIDENCE items');
+ assert.deepEqual(HUB.options.filter(o=>o.evidence).map(o=>o.item),['victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','assault','statue']);
+ for(const k of ['flyer','backyard'])assert.equal(HUB.options.find(o=>o.item===k).evidence,undefined,k+' has no REVIEW EVIDENCE counter in the transcript')});
 
 test('Partners: every Hank arrow is the template’s, and nothing else moves',()=>{
  const arrow=(id,choice,s=before6())=>{const n=node(id),b=structuredClone(s);apply(n,s,choice,0.999);return [s.hankTrust-b.hankTrust,s.amandaTrust-b.amandaTrust,s.instability-b.instability,s.publicSupport-b.publicSupport]};
@@ -64,13 +67,13 @@ test('Partners: the crime scene repeats, drops examined items, gates the reconst
  apply(HUB,s,item('statue'),null);assert.equal(s.ch06SawStatue,true);assert.equal(s.evidence.statueMap,true,'the statue goes to the evidence archive');
  apply(HUB,s,item('writing'),null);assert.equal(s.ch06SawWriting,true);
  assert.ok(s.knowledge.Connor.some(f=>/\{\{rA9\}\}/.test(f)));assert.ok(s.knowledge.Connor.some(f=>/RELIGIOUS OFFERING\?/.test(f)));
- // The default walk reviews the evidence first: complete at the 11th action, before the clock, then reports at once.
- const r=play({});const hub=r.visited.filter(x=>x==='C05h').length;assert.equal(hub,13,'twelve looks and the report');assert.equal(r.s.ch06Evidence,10);assert.equal(r.s.ch06Knows,true);
+ // The default walk reviews the evidence first: complete at the 13th action, just inside the clock, then reports at once.
+ const r=play({});const hub=r.visited.filter(x=>x==='C05h').length;assert.equal(hub,14,'thirteen looks and the report');assert.equal(r.s.ch06Evidence,10);assert.equal(r.s.ch06Knows,true);
  assert.ok(!r.visited.includes('C05t'));assert.match(r.skipped.find(x=>x.id==='C05t').reason,/finished the investigation/);
- assert.match(r.events.C05h[1],/REVIEW EVIDENCE 1\/10/);assert.match(r.events.C05h[11],/REVIEW EVIDENCE 10\/10\. INVESTIGATE CRIME SCENE: complete/);
- assert.equal(r.s.ch06SawStatue,false);assert.equal(r.s.evidence.statueMap,false,'the statue can be missed on a found-deviant run');
+ assert.match(r.events.C05h[1],/REVIEW EVIDENCE 1\/10/);assert.match(r.events.C05h[12],/REVIEW EVIDENCE 10\/10\. INVESTIGATE CRIME SCENE: complete/);
+ assert.equal(r.s.ch06SawStatue,true);assert.equal(r.s.evidence.statueMap,true,'the statue is evidence: every found-deviant run has seen it');
  // Once Connor knows, the clock stops: every remaining look is still offered.
- const all=play({C05h:[...FAST,...items('closet','writing','sample','shower','statue','magazineSex','magazineSpy','bat','assault','report')]});assert.equal(all.s.ch06Clock,10,'the clock stopped at the tenth evidence');assert.ok(!all.visited.includes('C05t'));assert.equal(all.s.ch06SawStatue,true);assert.equal(all.s.ch06Outcome,'FOUND DEVIANT')});
+ const all=play({C05h:[...FAST,...items('closet','writing','sample','flyer','backyard','magazineSex','magazineSpy','report')]});assert.equal(all.s.ch06Clock,12,'the clock stopped at the tenth evidence');assert.ok(!all.visited.includes('C05t'));assert.equal(all.s.ch06SawStatue,true);assert.equal(all.s.ch06Outcome,'FOUND DEVIANT')});
 
 test('Partners: the hub keeps one opaque scene ID, and Hank’s idle moves are the only cue of the clock',{timeout:60000},async()=>{
  const r=play({C05h:SLOW},n=>n.id==='C05t');assert.equal(r.s.ch06Phase,'leaving');
@@ -105,7 +108,7 @@ test('Partners: with the drink bought or not spilled Hank gives five more minute
  const sit=(st)=>render([node('C05x').situation,...node('C05x').situationWhen.filter(w=>Object.entries(w.requires).every(([k,v])=>st[k]===v)).map(w=>w.text)].join(' '),'real');
  assert.match(sit(bought.s),/Remember the drink I bought you/);assert.ok(!/Remember the drink/.test(sit(waited.s)));
  // Finishing within the extra minutes reaches the report.
- const saved=play({C05a:'2',C05h:items('closet','writing','sample','shower','statue','body','victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','flyer','backyard','report')},fromCh6);
+ const saved=play({C05a:'2',C05h:items('closet','writing','sample','shower','statue','body','victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','bat','assault','report')},fromCh6);
  assert.ok(saved.visited.includes('C05x')&&saved.visited.includes('C05'));assert.equal(saved.s.ch06Clock,2,'finished on the third of the five extra actions');assert.equal(saved.s.ch06Outcome,'FOUND DEVIANT')});
 
 test('Partners: the report is five questions; the first is never a mistake, the third mistake ends it',()=>{
@@ -123,7 +126,7 @@ test('Partners: the report is five questions; the first is never a mistake, the 
  assert.deepEqual(available(node('C05'),t).map(o=>o.step+o.id),['20','21','22']);assert.equal(t.ch06WrongLine,1)});
 
 test('Partners: neutral prompts never show the game’s names or terms',()=>{
- const seen=[],events=[];const picks={C05s:'1',C05a:'1',C05h:items('shower','statue','magazineSex','magazineSpy','flyer','backyard','writing','sample','body','victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','report')};
+ const seen=[],events=[];const picks={C05s:'1',C05a:'1',C05h:items('shower','statue','magazineSex','magazineSpy','writing','sample','body','victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','bat','assault','flyer','backyard','report')};
  const r=play(picks,(n,st,b)=>{if(n.chapter===6&&!b)seen.push(experiencePrompt(story,{records:[]},st,{...n,situation:situationFor(n,st),availableOptions:available(n,st)}));return n.chapter>6});
  for(const [id,list] of Object.entries(r.events))if(node(id).chapter===6)for(const e of list)events.push(render(e,'neutral'));
  const txt=JSON.stringify(seen)+JSON.stringify(events);
@@ -133,7 +136,7 @@ test('Partners: neutral prompts never show the game’s names or terms',()=>{
  assert.match(txt,/Reyes/);assert.match(txt,/Ray Mendez/);assert.match(txt,/qL7/);assert.match(txt,/BRODY, SAL/)});
 
 test('Partners: the chapter’s outputs for later chapters',()=>{
- const found=play({C05a:'0',C05h:[...FAST,...items('shower','statue','report')]},fromCh6);
+ const found=play({C05a:'0',C05h:[...FAST,...items('flyer','report')]},fromCh6);
  assert.equal(found.s.ch06Drink,'spill');assert.equal(found.s.ch06DeviantFound,true);assert.equal(found.s.ch06KnowsRA9,true);assert.equal(found.s.ch06SawStatue,true);assert.equal(found.s.evidence.statueMap,true);
  assert.equal(found.s.evidence.ortizBody,false,'the android is found alive');assert.equal(found.s.ch06Clues.flyer,true);
  const later=play({C05a:'0',C05h:[...FAST,...items('report')]},n=>n.chapter>9);assert.ok(later.visited.includes('C06'),'a suspect means The Interrogation');

@@ -1,0 +1,465 @@
+{
+ "chapter": 13,
+ "title": "On the Run",
+ "itemsInDump": 63,
+ "entries": [
+  {
+   "id": "ch13-01",
+   "verdict": "needs-play",
+   "topic": "Unlabelled red-padlock box Q46 (LEAVE THE SQUAT?)",
+   "originals": [
+    "The unlabelled node Q46?",
+    "What is the red-padlock box between INVESTIGATE SQUAT GROUND FLOOR and SQUAT ANDROID?",
+    "LEAVE THE SQUAT (string table) fills the chart’s unlabelled box between the search?"
+   ],
+   "question": "As Connor searching the squat (Ralph kept quiet), could you walk out on your own before Hank ordered you out, and did that unlock a LEAVE THE SQUAT node? (yes/no)",
+   "impact": "options",
+   "why": "chart crop inv-zoom.png shows only a red padlock and '[...]' to the right of the hub; en.json has MENU.FLOWCHART.04K.SQUAT.C.LEAVE = LEAVE THE SQUAT in the Connor squat group, but no source shows it is reachable; PowerPyx commenters (Jun–Jul 2018) never unlocked it and one says it was removed by a patch. Benchmark offers it as C09q option 6."
+  },
+  {
+   "id": "ch13-02",
+   "verdict": "resolved",
+   "topic": "C09 GO outcomes and the fence timeout",
+   "originals": [
+    "C09 outcomes?"
+   ],
+   "answer": "The template's three GO variants (Connor dies on the highway / Kara gets hit by a car / Kara escapes and Connor survives) and 'Take too much time' (We lost it / Game over) are all built: C09h1 failure (CAR HITS CONNOR), K09h3 failure (CAR HITS KARA), C09h2 ('Shit…'), and C09v (KARA & ALICE VANISHED).",
+   "source": "template ch13 '# Connor pursues Kara' (Take too much time; Reach the fence GO variants); benchmark ch13.json C09r/C09v/C09h1/K09h3/C09h2",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-03",
+   "verdict": "resolved",
+   "topic": "Old K09/C09a bugs fixed (street death, upstairs search risk)",
+   "originals": [
+    "Old bugs fixed: walking openly in the street no longer kills Kara and?",
+    "K09?"
+   ],
+   "answer": "The street is a scripted 'Spotted by Police' with no death before CONNOR PURSUES KARA; no broadcast mentions a kidnapping. Connor's 'Go upstairs' is a dead end ('Is anyone upstairs?' / 'No. Nobody.'); the hiding place is under the stairs with no failure node. Benchmark K09 has no death; C09q upstairs is a dead end; CHECK UNDER THE STAIRS has no risk.",
+   "source": "template '## Spotted by Police', '### Go upstairs'; PowerPyx 'Check Upstairs: … Ralph declines and Connor believes him', 'Check under the Stairs … Ralph will hold Connor'; Todd_Williams wiki line 52 ('mentions nothing about Alice')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-04",
+   "verdict": "resolved",
+   "topic": "Connor's interrogation of Ralph (prompt, scan, PRESSURIZE)",
+   "originals": [
+    "Connor's interrogation of Ralph (§1 Q35–Q37, §2 D8)?",
+    "Missing prompt: Connor's interrogation?",
+    "Replaces the old C09a (“Push past him and search upstairs”, risk 0.2, with?"
+   ],
+   "answer": "Prompt AX400 / DEVIANTS / REASSURE / BLUE BLOOD, plus PRESSURIZE only in the 'Kara threatened Ralph' variant; the scan (PROCESSING LED / MODEL WR600 / BURN MARK) only in the 'nice' variant; no failure branch, no Amanda change. Benchmark C09a matches (PRESSURIZE filtered unless ch13RalphThreatened; the scan is C09q option 1, only reachable when Ralph kept quiet).",
+   "source": "template '## Connor investigates the squat' both variants; en.json MENU.OBSERVATION.04K.MP.LED/RALPH/INJURY",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-05",
+   "verdict": "adaptation",
+   "topic": "Risk values on the chase and sneak are calibrations",
+   "originals": [
+    "Gameplay checks with a failure branch on the chart are risk rolls: the?",
+    "The risk value is unsourced: no source gives a probability for any check?"
+   ],
+   "why": "QTE/stealth checks have no published probability (research §3; SOURCES.md §10: risk probabilities stay calibrations); documented in each adaptationNote and not answerable by play."
+  },
+  {
+   "id": "ch13-06",
+   "verdict": "adaptation",
+   "topic": "Hank's search timer modelled as look counts",
+   "originals": [
+    "How many looks around the squat before Hank calls, and before he orders?",
+    "Connor’s search: Hank calls after three empty looks and orders Connor out after?",
+    "HANK COMMANDS CONNOR TO LEAVE is the game’s timer (“If you wait for?"
+   ],
+   "why": "The game uses real time (PowerPyx: 'If you wait for a long time'); converting a wall-clock timer into 3/5 looks is a documented collapse; the template's two calls are both used, and the count is not something the operator can read off the game."
+  },
+  {
+   "id": "ch13-07",
+   "verdict": "resolved",
+   "topic": "Squat search hub contents",
+   "originals": [
+    "Nobody.”, template; PowerPyx: “Connor believes him”), ANALYZE SQUAT ANDROID (the template’s three scan?",
+    "The search hub (§1 Q38–Q46)?"
+   ],
+   "answer": "Hub nodes CHECK UPSTAIRS (dead end), ANALYZE SQUAT ANDROID, CHECK TABLE ('Dinnerware for three and food'), CHECK UNDER THE STAIRS (Ralph holds Connor, no failure), CHECK KITCHEN ('no one will be inside'), CHECK FIREPLACE ('Androids don't need warmth'), HANK COMMANDS CONNOR TO LEAVE after Hank's two calls. Benchmark C09q matches; the Q46 label is handled separately.",
+   "source": "flowchart crop inv-zoom.png (hub labels); template '### Go upstairs', '### Take too much time', '### Taking too much time again'; PowerPyx squat-branch text",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-08",
+   "verdict": "adaptation",
+   "topic": "First-lane highway crossing as one risky action",
+   "originals": [
+    "The chart’s pair KARA & ALICE REACH MIDDLE SECTION (✓) / CAR HITS?",
+    "The chart’s pair after CAR HITS CONNOR: KARA & ALICE GET TO THE?"
+   ],
+   "why": "A QTE pair with no alternative button becomes one risky action; the chart's success/failure pair is preserved and Experienced is the target difficulty, so every failure branch stays reachable."
+  },
+  {
+   "id": "ch13-09",
+   "verdict": "needs-play",
+   "topic": "Fence GIVE UP / GO arrows (Hank, software instability)",
+   "originals": [
+    "Fence prompt (§2 D12, §3 Hank and Software instability) (arrow conflict)?",
+    "C09 arrows the template does not have?"
+   ],
+   "question": "At the fence, did GO show Hank down and software instability down, and GIVE UP Hank up and instability up? (yes/no for each)",
+   "impact": "arrow",
+   "why": "template has GO/GIVE UP with no arrow (GIVE UP 'ø') although it records Hank/SI arrows in other chapters; wiki On_the_Run, Relationship_Stat lines 110/130 and Software_Instability lines 30/57 give them; a PowerPyx commenter (Skullfracturz, 2019-07-08) confirms GIVE UP raises both. Benchmark applies the wiki (C09 effects ±1)."
+  },
+  {
+   "id": "ch13-10",
+   "verdict": "resolved",
+   "topic": "K07b no longer decides the meal arrow or Ralph's betrayal",
+   "originals": [
+    "K07b stands in for the meal, with the wrong arrow and gate?"
+   ],
+   "answer": "The meal is its own prompt chain in this chapter (K09q3–K09q9) with the template's arrows (Alice up only on the second REFUSE, LIE up, TRUTH down), and THREATEN at the table (knife or gun) sets ch13RalphThreatened. Benchmark matches; the Fugitives-threat question is separate.",
+   "source": "template '## In the squat with Ralph'; ch13.mjs consequence K09q7–K09q9",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-11",
+   "verdict": "resolved",
+   "topic": "Motel wake-up prompt",
+   "originals": [
+    "Motel wake-up prompt (§1 \"Interactions\", §3 Alice)?"
+   ],
+   "answer": "BATH? (Alice small up), HUNGRY? (Alice small up), TIRED? (no arrow). Benchmark K09m1 matches.",
+   "source": "template '# Kara stayed at the Motel' first PROMPT; wiki Relationship_Stat line 177",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-12",
+   "verdict": "resolved",
+   "topic": "Motel 'What are we gonna do?' prompt",
+   "originals": [
+    "Motel \"what are we gonna do\" prompt?"
+   ],
+   "answer": "Live prompt CAN'T STAY HERE / FAMILY / CONTACT ANDROID, no arrows, after the TV report and before CHEER ALICE UP. Benchmark K09m4 matches.",
+   "source": "template, after the cut REASSURING… prompt: Alice 'What are we gonna do?…' PROMPT",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-13",
+   "verdict": "needs-play",
+   "topic": "Motel desk 'You wait in the car' Hank arrow",
+   "originals": [
+    "Connor at the motel desk (§1, §2 D10, §3 Hank) (arrow conflict)?",
+    "Does any Hank or instability arrow show at the motel’s “You wait in?"
+   ],
+   "question": "At the motel, when Hank said 'You wait in the car' and Connor answered (RATIONAL / DIPLOMATIC / DIRECT), did a Hank-down arrow appear? (yes/no)",
+   "impact": "arrow",
+   "why": "template prompt has no arrow; wiki On_the_Run ('any of the three … (unavoidable)') and Relationship_Stat line 129 give Hank small down. Benchmark applies −1 on all three C09m1 options."
+  },
+  {
+   "id": "ch13-14",
+   "verdict": "resolved",
+   "topic": "Ralph's meal SIT / REFUSE arrow",
+   "originals": [
+    "Ralph's meal, SIT/REFUSE (§2 D6, §3 Alice)?"
+   ],
+   "answer": "Alice small up only on the second REFUSE (the first REFUSE opens a second SIT/REFUSE). Benchmark K09q3 has no arrow, K09q4 REFUSE +1.",
+   "source": "template '## In the squat with Ralph' nested PROMPT; wiki Relationship_Stat line 179 ('refuse twice')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-15",
+   "verdict": "resolved",
+   "topic": "[CHECK GUN] gating: needs the second REFUSE, and shows even if the gun was left upstairs",
+   "originals": [
+    "Prompt missing from the note: [CHECK GUN] / WORRIED / EXPLAIN / AGREE?",
+    "[CHECK GUN] is shown whenever Kara started with the gun?",
+    "Is [CHECK GUN] shown when the gun was forgotten upstairs?"
+   ],
+   "answer": "CHECK GUN is how FORGOT GUN is revealed, so it is offered when the gun was left upstairs; it appears only after Kara refuses to sit twice. The benchmark gets the forgotten-gun part right but offers [CHECK GUN] even when Kara sat at once.",
+   "source": "wiki On_the_Run line 229 ('Kara must refuse both times. This will cause Ralph to stop Alice, and Kara will have the option to Check Gun'); PowerPyx 'Forgot Gun: … choose the Check Gun option to realize you didn't pick it up'; PowerPyx comments M83 2018-06-26 ('you have to refuse to sit … If you just decide to sit, you won't be able to unlock the node') and Cee 2020-01-09 ('I just had to choose to refuse to sit down twice'); template lock is rank 2 but its extra conjunct contradicts the FORGOT GUN node",
+   "benchmarkMatches": false,
+   "fix": "K09q5 option 0 ([CHECK GUN]) requires: {\"ch13HadGun\": true} → {\"ch13HadGun\": true, \"ch13Meal.ralphThreatenedAlice\": true} (the flag K09q4 REFUSE already sets); update the adaptationNote sentence 'The wiki's claim that the button needs two refusals … is not built'."
+  },
+  {
+   "id": "ch13-16",
+   "verdict": "needs-play",
+   "topic": "Is the WORRIED / EXPLAIN / AGREE prompt shown when Kara sits at once?",
+   "originals": [
+    "(not in dump: raised by this triage, follows from the [CHECK GUN] entry)"
+   ],
+   "question": "When Kara agreed to sit at once (no refusal), did the WORRIED / EXPLAIN / AGREE prompt still appear, or did Ralph go straight to 'That's better…'? (shown / not shown)",
+   "impact": "options",
+   "why": "chart: AGREE TO SIT goes straight to SIT AT THE TABLE while REFUSE TO SIT passes RALPH THREATENS ALICE; the prompt's lines ('You're not gonna hurt her, are you?', 'Okay. We'll… eat together') answer a threat; the template lists the prompt unnested. Benchmark K09q5 always shows it."
+  },
+  {
+   "id": "ch13-17",
+   "verdict": "resolved",
+   "topic": "LIE / TRUTH placement and arrows",
+   "originals": [
+    "LIE / TRUTH (§3 Alice, §8 Q11)?",
+    "\"lie\" / \"truth\" with Ralph?"
+   ],
+   "answer": "After the [CHECK GUN]/WORRIED/EXPLAIN/AGREE prompt and Alice's 'Please, Kara. I don't wanna eat that!', before the table prompt; LIE Alice small up, TRUTH small down. Benchmark K09q6 matches.",
+   "source": "template '## In the squat with Ralph' PROMPT order; wiki Relationship_Stat lines 180/203",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-18",
+   "verdict": "needs-play",
+   "topic": "Which table line is TRY TO CONVINCE RALPH; does BLUFF end the talk?",
+   "originals": [
+    "Table prompt (§1 Q28–Q30, §2 D7, §8 Q3)?",
+    "TRY TO CONVINCE RALPH is read as FAMILY: only FAMILY and INSIST lead?",
+    "Which table line is TRY TO CONVINCE RALPH on the chart: FAMILY or?"
+   ],
+   "question": "At Ralph's table, after choosing BLUFF ('We're going to stand up now…'), did the menu come back, or did Ralph apologise and let them go? (menu back / apologised)",
+   "impact": "options",
+   "why": "template: BLUFF gets 'No… you're not going to leave. Not until Ralph says so.' (no apology), FAMILY and INSIST end with 'Then let us go.'; PowerPyx: 'Try to Convince Ralph: Press BLUFF'. Labels and THREATEN's knife/gun variants are settled by the template; benchmark K09q7–K09q9 re-asks after BLUFF."
+  },
+  {
+   "id": "ch13-19",
+   "verdict": "resolved",
+   "topic": "Motel Connor scenes exist (prompt, FOLLOW HANK / CHECK THE DOOR)",
+   "originals": [
+    "Missing prompt: Connor at the motel desk?"
+   ],
+   "answer": "RATIONAL / DIPLOMATIC / DIRECT is now scene C09m1, FOLLOW HANK / CHECK THE DOOR is C09m2, and HANK CHECKS MOTEL ROOM narrates 'It's gone…'. The arrow question is separate.",
+   "source": "template '## Police is at the motel', '### Go into the room'; en.json MENU.FLOWCHART.04K.MOTEL.C.FOLLOW / ROOM / DOOR",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-20",
+   "verdict": "resolved",
+   "topic": "CHANGE CHANNEL is unavoidable; both reports lower public opinion",
+   "originals": [
+    "Is CHANGE CHANNEL avoidable?",
+    "Motel TV, public opinion (§3, §8 Q4)?",
+    "CHANGE CHANNEL is unavoidable (no bypass edge on the chart), so the motel?",
+    "Is CHANGE CHANNEL avoidable?"
+   ],
+   "answer": "Both the EXPLORE MOTEL ROOM hub and FINISH DRAWING BATH feed CHANGE CHANNEL, the only edge into ALICE HEARS ABOUT TODD; the template puts Public opinion SmallDown on both the Todd-killed and Todd-alive variants, with two Alice reactions in the killed case. Benchmark K09m3 is unavoidable, −1 public opinion, three variants.",
+   "source": "flowchart image detroit-become-human-on-the-run-4.jpg (motel row: hub and FINISH DRAWING BATH both join the line into CHANGE CHANNEL); template '## Watch TV'; wiki Kara line 80 ('Either outcome will lower Public Opinion')",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-21",
+   "verdict": "resolved",
+   "topic": "Parking-lot Connor labels and playability",
+   "originals": [
+    "Parking-lot start (§1 P21–P22, labels marked \"inferred\")?",
+    "Labels that were only inferred?",
+    "The wiki infobox has Connor playable here only if Kara is spotted, so?"
+   ],
+   "answer": "Labels are CONNOR INVESTIGATES SUPERMARKET and POLICE DON’T HAVE A LEAD; PowerPyx calls it 'Unmissable, that's just the way it is', and the template has dialogue but no prompt there. Benchmark C09s is a narrated event with those labels.",
+   "source": "en.json MENU.FLOWCHART.04K.CONNOR.SHOP / CONNOR.NOLEAD; PowerPyx parking-lot branch; template '# Kara stayed at the Parking lot'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-22",
+   "verdict": "adaptation",
+   "topic": "Casual-only differences in the highway deaths",
+   "originals": [
+    "Difficulty and the highway deaths?",
+    "Which highway deaths are possible on Casual?"
+   ],
+   "why": "The benchmark targets Experienced (AGENTS.md rebuild rule), where every highway death is possible; Casual availability changes nothing the model sees."
+  },
+  {
+   "id": "ch13-23",
+   "verdict": "resolved",
+   "topic": "Hank's down arrow for Connor's death is applied in The Nest",
+   "originals": [
+    "Hank ↓ for Connor's death?"
+   ],
+   "answer": "The wiki lists it under The Nest ('Connor died in On the Run' down). ch13 deathEffect applies instability −1 only; ch15 C10b ('Hank insults Connor') carries hankTrust −1.",
+   "source": "wiki The_Nest line 68; benchmark ch13.mjs deathEffect {instability:-1}; ch15.json scene C10b effect",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-24",
+   "verdict": "cosmetic",
+   "topic": "Hair colour has no later gate",
+   "originals": [
+    "Hair colour impact?"
+   ],
+   "why": "The colour 'remains for the rest of the game' (wiki Kara line 208) as appearance only; no page names a gate and the benchmark reads ch13Hair nowhere else."
+  },
+  {
+   "id": "ch13-25",
+   "verdict": "resolved",
+   "topic": "Pursuit section: VANISHED, GO variants, GIVE UP",
+   "originals": [
+    "Pursuit (§1 H2–H28, §2 D11)?"
+   ],
+   "answer": "Take too much time = KARA & ALICE VANISHED (C09v); GO's three variants built; GIVE UP 'ø'; the obey-path second-lane death is K09h2's failure. Benchmark matches.",
+   "source": "template '# Connor pursues Kara'; wiki On_the_Run flowchart list lines 140-170",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-26",
+   "verdict": "resolved",
+   "topic": "STEAL MONEY and TAKE GUN BACK have no later use",
+   "originals": [
+    "Does STEAL MONEY or TAKE GUN BACK have any later use?"
+   ],
+   "answer": "The money's later use was cut ('Initially, Kara could make use of whatever money she kept for future purchases', Unused Content); on the chart only CUT AND COLOR HAIR and CHANGE CLOTHES carry the cross-chapter padlock, not FORGOT GUN / TAKE GUN BACK. Battle for Detroit's Kara gun is found there (ch32 FIND A GUN). Benchmark reads neither later.",
+   "source": "wiki On_the_Run line 248; flowchart image detroit-ontherun-squat-branch-explore.jpg (padlock tabs only on CUT AND COLOR HAIR and CHANGE CLOTHES; none on STEAL MONEY, FORGOT GUN, TAKE GUN BACK); ch32.mjs line 294",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-27",
+   "verdict": "resolved",
+   "topic": "THREATEN RALPH is always offered (knife without the gun)",
+   "originals": [
+    "THREATEN RALPH without the gun?"
+   ],
+   "answer": "THREATEN has two variants: 'No gun: Kara takes a knife' and 'Kara has a gun'. Benchmark always offers THREATEN and swaps the text by s.gun (the gun left upstairs means the knife).",
+   "source": "template table PROMPT, THREATEN CONDITION GROUP; wiki Ralph line 36; PowerPyx comments Megan 2023-04-30, Jayden 2024-12-29",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-28",
+   "verdict": "resolved",
+   "topic": "Zlatko magazines: AX400 Getaway only after evading unseen",
+   "originals": [
+    "Zlatko magazines?"
+   ],
+   "answer": "'AX400 Getaway' spawns only if Kara slept in the car or motel 'then made it past the police without being seen'; 'How Androids Alter Your Brain' if chased. Benchmark ch17.mjs inputs.evaded = !chase && shelter in car/motel (the old inverted R17 rule is gone).",
+   "source": "wiki AX400_Getaway line 34; ch17.mjs lines 47-48",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-29",
+   "verdict": "needs-play",
+   "topic": "Can Kara leave the motel without the bath and haircut?",
+   "originals": [
+    "Skipping the bath?",
+    "Does the direct TALK TO ALICE → EXPLORE MOTEL ROOM → CHANGE CHANNEL?"
+   ],
+   "question": "In the motel, could Kara go to the TV without drawing the bath, so that she never cut her hair or removed her LED? (yes/no)",
+   "impact": "options",
+   "why": "the chart draws an edge from TALK TO ALICE straight to EXPLORE MOTEL ROOM (wiki list 'Go directly to Explore Motel Room'), but the wiki chapter text says the motel Kara 'still needs to cut her hair' (line 176) and the template plays 'You're pretty like that' before the TV; a PowerPyx commenter (2018-07-26) asked the same and got no answer. Benchmark K09m allows CHANGE CHANNEL without the bath."
+  },
+  {
+   "id": "ch13-30",
+   "verdict": "resolved",
+   "topic": "Two REACH FENCE TOO LATE nodes",
+   "originals": [
+    "The two REACH FENCE TOO LATE nodes?"
+   ],
+   "answer": "Standing still gives VANISHED ('The chase will fail about 30 seconds later'); stopping at the alley officer gives CROSSED THE HIGHWAY; the string table has TIMEOUT and TOOLATE both 'REACH FENCE TOO LATE' and SUCCESS 'REACH FENCE IN TIME', so the wiki's 'Reach Fence On Time' is a typo. Benchmark C09r option 2 → C09v, options 0 (failed) and 1 → C09x.",
+   "source": "PowerPyx 'Reach Fence too late (1/2)' and '(2/2)'; en.json MENU.FLOWCHART.04K.CHASECONNOR.TIMEOUT / TOOLATE / SUCCESS",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-31",
+   "verdict": "resolved",
+   "topic": "CHEER ALICE UP prompt",
+   "originals": [
+    "CHEER ALICE UP?"
+   ],
+   "answer": "MOVING / DETERMINED / COMFORTING / SUPPORTIVE, each Alice small up; REASSURING / ANALYTICAL / VULNERABLE / SINCERE is cut. Benchmark K09m5 matches.",
+   "source": "template CHEER prompt and CUT/UNUSED CONTENT block",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-32",
+   "verdict": "resolved",
+   "topic": "Wire-cutters variant of the squat opening",
+   "originals": [
+    "Squat start, wire cutters (§4, not in the note)?"
+   ],
+   "answer": "Dialogue-only variant 'Kara stole wire cutters from the supermarket in Fugitives'. Benchmark C09q0 uses it (reads ch10WireCutters).",
+   "source": "template '# Kara stayed at the Squat' CONDITION GROUP; ch13.json C09q0 adaptationNote",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch13-33",
+   "verdict": "adaptation",
+   "topic": "Free-roam phases as repeatable hubs",
+   "originals": [
+    "Free-roam phases are repeatable scenes: the parking lot, the motel room, the squat’s?"
+   ],
+   "why": "Free-roam order collapsed into once-only hub options; the exit gates (haircut, CHECK NEIGHBORHOOD, REVIVE FIRE) are PowerPyx's 'unmissable' steps."
+  },
+  {
+   "id": "ch13-34",
+   "verdict": "adaptation",
+   "topic": "Cut content and unplaced strings not built",
+   "originals": [
+    "Not built: the cut prompt REASSURING / ANALYTICAL / VULNERABLE / SINCERE; the?"
+   ],
+   "why": "Cut prompt (template CUT/UNUSED), the unplaced FEEL? string and the hair retry have no chart node or live prompt; Hank's quiet-escape line belongs to an unshown Connor scene."
+  },
+  {
+   "id": "ch13-35",
+   "verdict": "adaptation",
+   "topic": "Ambient cop lines in the street and pursuit",
+   "originals": [
+    "Ambient lines not in the note?"
+   ],
+   "why": "Narration only (template 'Spotted by Police' / 'Which way did it go?'), no prompt, arrow or node."
+  },
+  {
+   "id": "ch13-36",
+   "verdict": "needs-play",
+   "topic": "What makes Ralph inform: does a Fugitives gun threat count?",
+   "originals": [
+    "What makes Ralph inform?",
+    "Does a gun threat on Ralph in Fugitives also make him inform here?"
+   ],
+   "question": "If Kara threatened Ralph with the gun in Fugitives but was kind at the table in On the Run, did Ralph give her away to Connor ('She ran out the back door!')? (yes/no)",
+   "impact": "gate",
+   "why": "template variant reads only 'Kara threatened Ralph'; PowerPyx: 'If Kara threatened Ralph with her Gun a few seconds back'; wiki Kara line 90: 'if Kara had threatened Ralph at any point'. Benchmark uses only the table THREATEN."
+  },
+  {
+   "id": "ch13-37",
+   "verdict": "needs-play",
+   "topic": "Do VANISHED and CROSSED THE HIGHWAY count as 'pursued by Connor'?",
+   "originals": [
+    "Do VANISHED and CROSSED THE HIGHWAY count as \"pursued by Connor\"?"
+   ],
+   "question": "After KARA & ALICE VANISHED (Connor never moved), did Markus find 'Android on the Run!' (not 'Fortune Teller') on the Ferndale station bench in Jericho? (same question as ch14-05; ask once)",
+   "impact": "text",
+   "why": "wiki: 'Only appears if Kara and Alice were pursued by Connor'; PowerPyx main text ties it to running across the highway; a PowerPyx reader (Hadley, 2023-09-12, unconfirmed) lists VANISHED under Fortune Teller. Also decides Zlatko's chase report and its public-opinion arrow. Benchmark sets chase on every pursuit."
+  },
+  {
+   "id": "ch13-38",
+   "verdict": "cosmetic",
+   "topic": "Leaflet text unknown",
+   "originals": [
+    "No source gives the leaflet’s text, so its outcome says only that Kara?"
+   ],
+   "why": "READ LEAFLET is a chart node with no published text; it gates nothing and the outcome only says Kara reads it."
+  },
+  {
+   "id": "ch13-39",
+   "verdict": "resolved",
+   "topic": "Old Amanda changes on the fence removed",
+   "originals": [
+    "The old Amanda changes on both options had no source and are gone?"
+   ],
+   "answer": "No source gives an Amanda change in this chapter; C09 now carries only Hank/instability.",
+   "source": "template (no Amanda arrow); research note §3 ('no wiki source gives an Amanda change in this chapter'); ch13.json C09 effects",
+   "benchmarkMatches": true,
+   "fix": null
+  }
+ ]
+}

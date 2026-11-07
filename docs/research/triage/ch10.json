@@ -1,0 +1,459 @@
+{
+ "chapter": 10,
+ "title": "Fugitives",
+ "itemsInDump": 58,
+ "entries": [
+  {
+   "id": "ch10-01",
+   "verdict": "resolved",
+   "topic": "Third option after CLERK GRABS A GUN",
+   "originals": [
+    "Pre-patch hold-up group?"
+   ],
+   "answer": "There is none on the current version: patch 1.06 removed the unreachable third node, leaving CONVINCE / GIVE UP.",
+   "source": "PowerPyx Fugitives page header 'Fixed with Patch 1.06: There is a missing decision from the supermarket while using the gun'; comments HorseySeven (2018-07-10) 'Patch 1.06 fixed the last option in the supermarket! It's been removed entirely', CMorb (2018-07-11); template prompt CONVINCE / GIVE UP only",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-02",
+   "verdict": "adaptation",
+   "topic": "ALICE TOO COLD as an action budget",
+   "originals": [
+    "ALICE TOO COLD timer?",
+    "ALICE TOO COLD (the wiki's 12 minutes outside after the trash collector) is",
+    "Wiki: \"requires having talked to the android trash collector, then standing outside for"
+   ],
+   "why": "A real-time 12-minute timer has no turn-based equivalent; the 12-action budget is documented in KF02/KF03 adaptationNote and the arrow (LargeDown) and ending are unchanged."
+  },
+  {
+   "id": "ch10-03",
+   "verdict": "adaptation",
+   "topic": "QTE risk values 0.2 and 0.25",
+   "originals": [
+    "QTE risks?",
+    "Risks: the laundromat QTE 0.2 and the register QTE 0.25 are unsourced"
+   ],
+   "why": "Both QTEs have sourced failure nodes (DISTURB MAN, TAKE TOO MUCH TIME); the numbers are labelled calibrations in KF02.adaptationNote, as AGENTS.md requires."
+  },
+  {
+   "id": "ch10-04",
+   "verdict": "resolved",
+   "topic": "ALICE TOO COLD clock runs while walking and inside",
+   "originals": [
+    "Whether the 12 minutes of ALICE TOO COLD run only while standing still,"
+   ],
+   "answer": "The time counts in total, whatever Kara does, and entering buildings does not reset it; the scene fires when Kara next moves Alice after the time is up, not while standing still.",
+   "source": "PowerPyx Fugitives comments: k (2021-06-27) 'Just spend that time (in total) on the street doing whatever, even entering the buildings will not reset this timer'; Big Daddy (2023-01-22) 'Making Alice walk after standing in the cold triggers it'; Marcus (2018-10-17) stood 25 minutes without it firing",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-05",
+   "verdict": "resolved",
+   "topic": "No failure branch on breaking the car window or cutting the fence",
+   "originals": [
+    "Breaking the car window and cutting the fence have no failure branch and"
+   ],
+   "answer": "The chart has no failure node after BREAK INTO CAR or CUT STREET / PARKING LOT FENCE.",
+   "source": "PowerPyx squat-branch and parking-branch chart images (BREAK INTO CAR > STAY / FIND ANOTHER OPTION; TAKE WIRE CUTTERS > CUT STREET FENCE / CUT PARKING LOT FENCE > INSIDE SQUAT); wiki chart text",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-06",
+   "verdict": "resolved",
+   "topic": "Supermarket TV broadcast",
+   "originals": [
+    "Supermarket TV?",
+    "The old motel-television scene (R10b) is gone"
+   ],
+   "answer": "The template's 'Watch TV' (Channel 16, Michael Webb, CyberLife zoo) is in the supermarket; no source has a TV in the Fugitives motel.",
+   "source": "Template ch10 '# In the supermarket > ## Watch TV' (Channel 16 - Michael Webb)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-07",
+   "verdict": "needs-play",
+   "topic": "Sleeping next to Alice arrow",
+   "originals": [
+    "Sleeping place?",
+    "\"x2\" on sleeping beside Alice?",
+    "Whether sleeping beside Alice is one up or two (\"x2\")"
+   ],
+   "question": "When Kara chose to sleep next to Alice in the motel or squat, how many Alice up-arrows appeared: none, one or two?",
+   "impact": "arrow",
+   "why": "Template has no arrow there; wiki 'Sleeping beside Alice either in the Squat or the Motel {{Icon|up}} x2'; Relationship_Stat lists one entry with no x2. Benchmark gives +1."
+  },
+  {
+   "id": "ch10-08",
+   "verdict": "resolved",
+   "topic": "Arrows and prompts after the robbery",
+   "originals": [
+    "Lie / truth / apologize after a robbery?",
+    "Where the robbery arrows sit?",
+    "Post-robbery prompt?"
+   ],
+   "answer": "One arrow on Alice's 'How did you get it?': SmallUp if Kara convinced the clerk (automatic LIE), otherwise SmallDown. TRUTH leads to FACTUAL / JUSTIFY / UNCERTAIN / APOLOGIZE (APOLOGIZE SmallUp); LIE has no arrow. After the diversion (its own SmallDown), the four come directly with no lie option.",
+   "source": "Template ch10 'Try to steal money' (NOTE 'If Kara convinced the clerk ... directly to the LIE option with an increase', ARROW Alice SmallUp / SmallDown; TRUTH/LIE; diversion variant FACTUAL/JUSTIFY/UNCERTAIN/APOLOGIZE)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-09",
+   "verdict": "resolved",
+   "topic": "Bus prompt",
+   "originals": [
+    "Bus prompt missing from the note?"
+   ],
+   "answer": "STAY HERE? / SHELTER? on the bus, no arrow.",
+   "source": "Template ch10 '# In the bus' prompt",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-10",
+   "verdict": "resolved",
+   "topic": "Caught stealing: one arrow and its exits",
+   "originals": [
+    "Caught stealing: one arrow, not two?"
+   ],
+   "answer": "One Alice SmallDown on [GUN], then ANGRY / APOLOGETIC / CALM; gunless exits LEAVE (seen at the register) and PUT BACK (seen with food or toy).",
+   "source": "Template ch10 '## Be seen stealing'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-11",
+   "verdict": "resolved",
+   "topic": "Laundromat buttons",
+   "originals": [
+    "Laundromat button labels?"
+   ],
+   "answer": "STEAL (Alice SmallDown) / DON'T STEAL (SmallUp); the failure variant leaves the laundromat.",
+   "source": "Template ch10 '## Open the washing machine'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-12",
+   "verdict": "resolved",
+   "topic": "FOREVER one-button prompt",
+   "originals": [
+    "FOREVER prompt?"
+   ],
+   "answer": "After PROMISE / CAN'T PROMISE, a one-option prompt FOREVER at every shelter, no arrow.",
+   "source": "Template ch10 motel, squat and car 'Talking with Alice' sections",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-13",
+   "verdict": "needs-play",
+   "topic": "Arrow for giving Alice the toy",
+   "originals": [
+    "Gifts?",
+    "Whether giving the toy raises Alice (the wiki says up; the template has no arrow)"
+   ],
+   "question": "When Kara gave Alice the stolen toy, did an Alice up-arrow appear (yes/no)?",
+   "impact": "arrow",
+   "why": "Template has the toy lines with no arrow; the wiki chapter page and Relationship_Stat both list a small up; the chart has a GIVE TOY node. Benchmark gives no arrow."
+  },
+  {
+   "id": "ch10-14",
+   "verdict": "resolved",
+   "topic": "Forced car night skips promise, gifts and sleeping arrow",
+   "originals": [
+    "ALICE TOO COLD has no promise?",
+    "ALICE TOO COLD path?"
+   ],
+   "answer": "No promise prompt and no gifts on ALICE TOO COLD; the chart line runs from ALICE TOO COLD straight to the car's KARA SLEEPS NEXT TO ALICE, and the wiki limits the sleeping up to the squat or motel, so only the LargeDown applies.",
+   "source": "Template ch10 '## Take too much time' (ARROW Alice LargeDown, no prompt); PowerPyx parking-branch chart image (line into KARA SLEEPS NEXT TO ALICE bypassing TALK TO ALICE); wiki 'Sleeping beside Alice either in the Squat or the Motel'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-15",
+   "verdict": "resolved",
+   "topic": "Car prompt labels",
+   "originals": [
+    "Car prompt labels?"
+   ],
+   "answer": "STAY HERE (Alice LargeDown, then the promise prompts) / KEEP SEARCHING.",
+   "source": "Template ch10 '## Looking at the car'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-16",
+   "verdict": "resolved",
+   "topic": "Hold-up arrow by route",
+   "originals": [
+    "Gun robbery arrow wrong on the convince route?"
+   ],
+   "answer": "SmallDown only when the money was taken without convincing; CONVINCE SmallUp; the two give-up exits none. Current module: backOff/turnAround -1, convince +1, customerLeave/clerkGiveUp 0.",
+   "source": "Template ch10 'Try to steal money' arrows; benchmark/chapters/ch10.mjs hubConsequence (read this session)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-17",
+   "verdict": "adaptation",
+   "topic": "Left-out flavour interactions",
+   "originals": [
+    "Left out?",
+    "Left out: the shop scans, the second washer, the motel mural, the window"
+   ],
+   "why": "The wiki lists them under 'Attention to Detail: things you can do with little to no story impact'; no prompt, arrow or node."
+  },
+  {
+   "id": "ch10-18",
+   "verdict": "needs-play",
+   "topic": "Robbery report on Zlatko's TV",
+   "originals": [
+    "Robbery news and public opinion?",
+    "Whether CONVINCE counts as a robbery for Zlatko's newsflash, and whether DRAW GUN"
+   ],
+   "question": "In Zlatko, did the TV report on Kara robbing the store play when she had got the money only through Alice's can diversion, with no gun (yes/no)?",
+   "impact": "arrow",
+   "why": "Zlatko template: 'Kara robbed the supermarket ... in her android uniform' ARROW PublicOpinion SmallDown, without naming the method. Benchmark counts the diversion, the hold-up and a gun drawn when caught (even without the money), but not CONVINCE; CONVINCE and gun-without-money are secondary unknowns."
+  },
+  {
+   "id": "ch10-19",
+   "verdict": "resolved",
+   "topic": "One promise prompt per shelter",
+   "originals": [
+    "The chart's TALK TO ALICE > MAKE PROMISE / DON'T MAKE PROMISE, drawn",
+    "The promise, gifts and rest?"
+   ],
+   "answer": "The three chart copies are the same template prompt with the same arrows (PROMISE SmallUp, CAN'T PROMISE SmallDown) in the motel, squat and car, so one scene worded per shelter loses nothing.",
+   "source": "Template ch10 three 'Talking with Alice' / 'Looking at the car' prompts",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-20",
+   "verdict": "resolved",
+   "topic": "Diversion needs both NOTICE nodes",
+   "originals": [
+    "Diversion gate?"
+   ],
+   "answer": "Both: NOTICE CASH REGISTER and NOTICE CAN STACK.",
+   "source": "PowerPyx 'Use Alice as a Diversion: after noticing both aforementioned things'; chart (both NOTICE nodes feed the group); template lock 'Kara noticed the can stack'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-21",
+   "verdict": "resolved",
+   "topic": "Squat entry by cutting the fence",
+   "originals": [
+    "Squat entry?"
+   ],
+   "answer": "Stale item: the squat is now entered by CUT STREET FENCE / CUT PARKING LOT FENCE, gated on having wire cutters, with the template's 'just a scratch' lines.",
+   "source": "Template ch10 '## Found a wire cutter: going through the fence'; benchmark KF02 options 6 and 57 (read this session)",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-22",
+   "verdict": "resolved",
+   "topic": "Ralph in the Recall Center camp",
+   "originals": [
+    "Ralph in the camp?"
+   ],
+   "answer": "The camp's Ralph section is locked only on 'Met Ralph in Fugitives'; the Ralph page agrees ('sent to Recall Center Nº5 if Kara ran into him in Fugitives and she didn't threaten him'). Attacking Connor in On the Run is not required; the Battle for Detroit page and the On the Run note say otherwise, but the operator's reliability log ranks template unlock conditions above wiki prose.",
+   "source": "Template ch32.2 (Kara captured) '## Talking to Ralph' UNLOCK(Lock): 'Met Ralph in Fugitives' (/tmp/dbt/ch32.2-notes.txt); wiki Ralph page",
+   "benchmarkMatches": false,
+   "fix": "benchmark/chapters/ch32.mjs kcRalph: from `s.ralph&&s.ralphDefended&&!s.ralphHostile` to `s.ralph&&!s.ralphHostile` (which threat sets ralphHostile is ch10-29)"
+  },
+  {
+   "id": "ch10-23",
+   "verdict": "resolved",
+   "topic": "Turned away at the motel",
+   "originals": [
+    "Turned away at the motel?",
+    "Turned away from the motel?"
+   ],
+   "answer": "No chart node: three dialogue variants (no clothes and no money / clothes, no money / money, no clothes), then Kara is back on the street.",
+   "source": "Template ch10 '# At the Motel' condition group (dialogue only); PowerPyx 'Have Money and Disguise: To successfully enter the Motel, Kara needs to get 40$ ... and new clothes'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-24",
+   "verdict": "needs-play",
+   "topic": "Generator pliers before seeing the fence",
+   "originals": [
+    "Wire cutters from the store?",
+    "Whether the parking-lot pliers need the fence seen first"
+   ],
+   "question": "Could Kara pick up the pliers on the parking-lot generator before she had looked at the squat's fence (yes/no)?",
+   "impact": "gate",
+   "why": "PowerPyx and a commenter say only the store's wire cutters need the fence checked first; the chart draws CHECK SQUAT before the single TAKE WIRE CUTTERS node. Benchmark lets her take the pliers any time."
+  },
+  {
+   "id": "ch10-25",
+   "verdict": "resolved",
+   "topic": "Clerk NO / HELP prompt",
+   "originals": [
+    "Clerk prompt?"
+   ],
+   "answer": "In stolen clothes the clerk asks 'Can I help you?' with NO / HELP; in uniform there is no prompt.",
+   "source": "Template ch10 '## Talk to the Clerk'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-26",
+   "verdict": "resolved",
+   "topic": "Gun hold-up prompts",
+   "originals": [
+    "Gun hold-up prompts?"
+   ],
+   "answer": "SINCERE / CALM / AGGRESSIVE; CASH REGISTER; STAY / LEAVE; BACK OFF! / TURN AROUND! / OPEN THE REGISTER! / BILLS! (BILLS! after OPEN THE REGISTER!); CONVINCE / GIVE UP.",
+   "source": "Template ch10 'Threaten the clerk with the gun'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-27",
+   "verdict": "resolved",
+   "topic": "Motel ID prompt",
+   "originals": [
+    "Motel ID prompt?"
+   ],
+   "answer": "IN THE CAR / FORGOT / NO LICENSE / SAY NOTHING, all answered 'No worries. We can deal with it tomorrow'.",
+   "source": "Template ch10 '## Have clothes and money : going in the motel'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-28",
+   "verdict": "resolved",
+   "topic": "Ralph prompts",
+   "originals": [
+    "Ralph prompts?"
+   ],
+   "answer": "ANDROID / LITTLE GIRL / INNOCENT / JUSTIFY; [GUN] / INSIST / REASSURE / HOSPITALITY (locked on no gun) / LEAVE; LEAVE / STAY.",
+   "source": "Template ch10 '# At the squat'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-29",
+   "verdict": "needs-play",
+   "topic": "Which threat on Ralph counts later",
+   "originals": [
+    "Threatening Ralph in Fugitives vs On the Run?"
+   ],
+   "question": "If Kara pulled the gun on Ralph in Fugitives but sat down peacefully at his meal in On the Run, did Ralph still tell Connor that she ran out the back (yes/no)?",
+   "impact": "gate",
+   "why": "On the Run template has the variant 'Kara threatened Ralph' without naming the chapter; the Ralph page says 'if Kara ran into him in Fugitives and she didn't threaten him'. Benchmark: ch10 [GUN] sets ralphHostile (keeps him out of the camp) but ch13 uses only the meal threat for the betrayal. Same question as ch13-36; ask it once."
+  },
+  {
+   "id": "ch10-30",
+   "verdict": "adaptation",
+   "topic": "Trash collector as a chosen street action",
+   "originals": [
+    "Trash collector?",
+    "The trash collector?"
+   ],
+   "why": "The template has the WR600 lines with no prompt under 'Alice sits at the bus stop'; walking to that bus stop is offered as the chart node TALK TO ANDROID TRASH COLLECTOR and forced after 12 actions (PowerPyx 'You are forced to talk to Alice at some point'), documented in KF02.adaptationNote; no arrow."
+  },
+  {
+   "id": "ch10-31",
+   "verdict": "adaptation",
+   "topic": "Free roam as one repeatable scene",
+   "originals": [
+    "Free roam?",
+    "Simplifications: the template's turned-away lines are the CHECK MOTEL outcome, and CHECK MOTEL"
+   ],
+   "why": "Walking order collapsed into one hub whose options are the chart's nodes and the template's prompts; documented in KF02.adaptationNote; no prompt, arrow or ending lost."
+  },
+  {
+   "id": "ch10-32",
+   "verdict": "resolved",
+   "topic": "Earlier-version changes",
+   "originals": [
+    "Earlier version?"
+   ],
+   "answer": "Each change follows the template: PROMISE is SmallUp (+1, not +2); no Ralph arrow in Fugitives; hold-up arrow by route; no motel TV; LED removal belongs to On the Run.",
+   "source": "Template ch10 arrows (PROMISE SmallUp; no arrow in the squat prompts); template ch10 Watch TV in the supermarket",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-33",
+   "verdict": "resolved",
+   "topic": "DRAW GUN then optional money",
+   "originals": [
+    "DRAW GUN outputs?"
+   ],
+   "answer": "After drawing on the clerk Kara may take the register money or leave without it, and that money opens the motel.",
+   "source": "Wiki chart text 'Draw Gun AND Leave Supermarket AND/OR Take Money'; PowerPyx comment by Die (2018-06-18): caught, pulled the gun, kept the items, took the money, then stayed in the motel",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-34",
+   "verdict": "needs-play",
+   "topic": "Shelter before meeting the trash collector",
+   "originals": [
+    "Is the trash collector unmissable?",
+    "Whether the trash collector can be skipped entirely, and how Kara then knows"
+   ],
+   "question": "Could Kara settle into a shelter (for example the abandoned car) without ever meeting the trash-collector android (yes/no)?",
+   "impact": "options",
+   "why": "PowerPyx says the scene is forced 'at some point' but not before shelters; On the Run's lines ('That android yesterday… he gave me an address') assume it always happened. Benchmark lets Kara commit to a shelter first."
+  },
+  {
+   "id": "ch10-35",
+   "verdict": "resolved",
+   "topic": "No second try at clothes or money",
+   "originals": [
+    "Whether Kara can re-enter the laundromat after the man wakes, and the store",
+    "Repeat visits?"
+   ],
+   "answer": "Once the clothes or the money attempt has failed, it cannot be retried, so closing the laundromat after the man wakes and the store after any robbery attempt matches the game.",
+   "source": "PowerPyx 'If you have failed one of these two things, you can't get into the Motel on your current playthrough'; PowerPyx 'Disturb Man: Fail the QTE to wake the man and leave the shop again – with no clothes'; wiki 'leave the abandoned house after meeting Ralph ... closes off the Squat ending'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-36",
+   "verdict": "resolved",
+   "topic": "Shoplifting detection is deterministic",
+   "originals": [
+    "Shoplifting \"less likely to be caught\"?",
+    "Being caught is deterministic, as PowerPyx says"
+   ],
+   "answer": "Deterministic: one item is safe, a second is always seen, even across visits.",
+   "source": "PowerPyx 'Stealing a second item will always get you busted'; wiki Notes 'If you steal two items, the store clerk will still catch you, even if Kara stole an item and then returned later'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-37",
+   "verdict": "resolved",
+   "topic": "Caught without the gun loses everything",
+   "originals": [
+    "Whether caught at the register without the gun, Kara also loses what she"
+   ],
+   "answer": "Yes: without the gun Kara loses all stolen goods.",
+   "source": "Wiki Notes 'If you are caught by the store clerk in the supermarket and you do not use the gun ..., you will lose all of your stolen goods'",
+   "benchmarkMatches": true,
+   "fix": null
+  },
+  {
+   "id": "ch10-38",
+   "verdict": "adaptation",
+   "topic": "Money flag kept after paying",
+   "originals": [
+    "The benchmark keeps money set after paying"
+   ],
+   "why": "No later chapter reads `money` from Fugitives (only ch13 sets it again), so leaving it set changes nothing."
+  }
+ ]
+}

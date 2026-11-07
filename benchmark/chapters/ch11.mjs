@@ -27,8 +27,9 @@ export const labels={
  fromDeadOutcome:'From the Dead ending',
 };
 
-// The two choices play only from the hub's "middle of the junkyard" option (the hub's interrupt); on every path that
-// climbs out they have run, because the slope needs a pump regulator and the dead android's needs REFUSE TO KILL FOR PUMP.
+// The two choices play only from the hub's "middle of the junkyard" option (the hub's interrupt). Going there is optional
+// (story 1.9.2): the dead android's regulator near the slope needs only the new eye (PowerPyx: "or you never found it in the
+// first place"), so a path can climb out without either encounter.
 export const gate={
  M03:s=>!!s.fromDeadSearch?.middle||'Markus never crossed to the middle of the junkyard.',
  M04:s=>!!s.fromDeadSearch?.middle||'Markus never crossed to the middle of the junkyard.',
@@ -56,6 +57,12 @@ export const rules={
  },
  ending:'Markus came back from the dead',
 };
+
+// Markus already has the dead android's regulator when he reaches the android in the middle: KILL is not offered (he no
+// longer needs her part; the two regulators are alternatives, PowerPyx). Only SPARE remains.
+export function available(n,s,opts,h){
+ if(n.id==='M04'&&s.fromDeadPumpReplaced)return h.without('0');
+}
 
 export function consequence(n,s,opt,choice,fail,h){
  switch(n.id){

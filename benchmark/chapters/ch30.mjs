@@ -161,7 +161,10 @@ function hitConnor(s){const r=R(s);r.connorWounds++;return r.connorWounds>=2}
 function markusDies(s,card,where,text){const r=R(s);s.markus=false;s.ch30MarkusDied=true;s.movement='revolution';r.markus='done';
  ending(s,'Markus',card,text??'{{Markus}} was killed in the raid on {{Jericho}}.');
  if(deviantUp(s)&&r.takeover==='withNorth'){r.fromMarkus=where;r.takeover={corridor1:'c2',corridor2:'josh',josh:'josh',hold:'c3',escape:'escaped'}[where]??null;
-  if(where==='hold'){s.ch30ShipSunk=true;s.ch30JerichoBlown='connor'}}                                           // the note (2j): after Markus is shot dead in the hold, Connor arms the bomb
+  // After Markus is shot dead in the hold, the chart's line goes straight to DEVIANT CONNOR IN CORRIDOR #3, bypassing ARM
+  // EXPLOSIVE (Detroit-Crossroads-014.jpg; note node C105; wiki "if Markus died trying to activate the bomb - leads to Deviant
+  // Connor in Corridor #3"), so the ship is not blown up (story 1.9.1 followed the research note's 2j and sank it).
+ }
 }
 const CONNOR_SUMMARY={C36:'{{Connor}} was destroyed by the soldiers in the cargo hall.',C43:'{{Markus}} shot {{Connor}} in the control room.',
  C54:'A soldier killed {{Connor}} in the corridor while {{North}} got away.',C85:'Deviant {{Connor}} was shot down in the corridors on his way to the hold.',
@@ -216,8 +219,11 @@ export const gate={
  'C22-cargo':connorAt('cargo'),
  M24:s=>R(s).markus==='josh'&&s.josh||'Josh is not fighting a soldier on Markus’s way.',
  'C23-josh':takeoverAt('josh'),
- 'M24-gun':s=>R(s).markus==='hold'&&R(s).leader==='Markus'&&connorUp(s)&&R(s).connor==='pursuit'||'No machine Connor reaches the control room.',
- 'M24-soldiers':s=>R(s).markus==='hold'&&!(R(s).leader==='Markus'&&connorUp(s)&&R(s).connor==='pursuit')||'Markus does not reach the control room, or machine Connor is there.',
+ // Machine Connor confronts Markus in the hold whenever Markus is alive there (template, Connor's hold variant "Markus is alive -
+ // Connor finds Markus"; the other variant is "Markus is dead or left Jericho - Connor goes after North"), including an ousted
+ // Markus who came back, whom the cabin scene had not found (leader North). Story 1.9.1 required that Markus led at the cabin.
+ 'M24-gun':s=>R(s).markus==='hold'&&markusOn(s)&&connorUp(s)&&R(s).connor==='pursuit'||'No machine Connor reaches the control room.',
+ 'M24-soldiers':s=>R(s).markus==='hold'&&!(markusOn(s)&&connorUp(s)&&R(s).connor==='pursuit')||'Markus does not reach the control room, or machine Connor is there.',
  'C22-corridor':connorAt('pursuit'),
  'C23-hold':takeoverAt('hold'),
  'M25-escape':markusAt('escape','awaitEscape'),M25:markusAt('north'),'M25-exit':markusAt('exit'),
@@ -393,7 +399,7 @@ function step(n,s,choice,fail,h){
    s.ch30ShipSunk=true;s.ch30JerichoBlown='connor';r.takeover=markusOn(s)&&r.returned?'joinMarkus':'c3';return pick(n,'armed');
   case 'C23-escape3':{const jumpers=alive(s,'simon','north');
    if(fail){r.takeover=null;return connorDestroyed(s,h,'C112',pick(n,'late')+jumpLine(s,'her',alive(s,'simon'),false))}
-   connorEscapes(s);return pick(n,'made')+jumpLine(s,'him',jumpers,false)}
+   connorEscapes(s);return pick(n,!s.ch30ShipSunk&&n.outcomes?.['made-intact']!==undefined?'made-intact':'made')+jumpLine(s,'him',jumpers,false)}
  }
 }
 function jumpLine(s,whom,names,connor){const all=[...names.map(x=>'{{'+x[0].toUpperCase()+x.slice(1)+'}}'),...(connor?['{{Connor}}']:[])];
