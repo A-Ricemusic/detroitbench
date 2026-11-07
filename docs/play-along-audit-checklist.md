@@ -1743,10 +1743,10 @@ Gaps:
 
 > You are Connor, in the alley behind the Eden Club’s warehouse, holding Hank’s gun. You won the fight. The brown-haired Traci picks herself up and runs straight at you, unarmed; the blue-haired one, the Traci who left the dead man’s room, is behind her. Hank is still getting up. You have a moment to decide.
 
-- (0) SPARE: hold your fire.  _instability +2, hankTrust +2_
 - (1) SHOOT: fire at the brown-haired Traci as she runs at you.  _instability -2, hankTrust -2_
+- (0) SPARE: hold your fire.  _instability +2, hankTrust +2_
 
-_Note: After WIN FIGHT: the template’s prompt 6, with the game’s labels. SPARE is listed before SHOOT (the template lists SHOOT first; in the game they are two face buttons with no reading order, SHOOT on circle and SPARE on cross per PowerPyx), which keeps the previous version’s order so the shared regression paths through later chapters are unchanged. SHOOT (the chart’s SHOOT DEVIANT): software instability large down and Hank large down (template); Connor shoots the brown-haired Traci, and the blue-haired one takes his gun and kills herself (DEVIANT KILLS HERSELF WITH CONNOR’S GUN, then DEVIANTS DIED); her cut line “What am I supposed to do without her?!” is not used. SPARE (SPARE DEVIANT): instability large up and Hank large up; DEVIANTS ESCAPED. The game’s prompt is timed and has a no-input outcome (Connor stands still); it is not offered. The gun is Hank’s (wiki); the chart calls it Connor’s. The earlier version shot both Tracis on this branch, had Hank walk off in disgust, and applied Amanda changes the template does not have (Amanda reacts in a later chapter); all three are removed._
+_Note: After WIN FIGHT: the template’s prompt 6, with the game’s labels. SHOOT is listed before SPARE, in the template’s order; option IDs retain their earlier meanings. SHOOT (the chart’s SHOOT DEVIANT): software instability large down and Hank large down (template); Connor shoots the brown-haired Traci, and the blue-haired one takes his gun and kills herself (DEVIANT KILLS HERSELF WITH CONNOR’S GUN, then DEVIANTS DIED); her cut line “What am I supposed to do without her?!” is not used. SPARE (SPARE DEVIANT): instability large up and Hank large up; DEVIANTS ESCAPED. The game’s prompt is timed and has a no-input outcome (Connor stands still); it is not offered. The gun is Hank’s (wiki); the chart calls it Connor’s. The earlier version shot both Tracis on this branch, had Hank walk off in disgust, and applied Amanda changes the template does not have (Amanda reacts in a later chapter); all three are removed._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1755,10 +1755,10 @@ Gaps:
 
 > You are Connor, down in the alley and badly damaged. You lost the fight. The two Tracis stop. The blue-haired one, the Traci who left the dead man’s room, looks down at you: “When that man broke the other Traci... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… And so I put my hands around his throat, and I squeezed... until he stopped moving… I didn’t mean to kill him……
 
-- (0) SPARE: let them go.  _instability +2, hankTrust +2_
 - (1) SHOOT: shoot them in the back as they climb.  _instability -2, hankTrust -2_
+- (0) SPARE: let them go.  _instability +2, hankTrust +2_
 
-_Note: After LOSE FIGHT: the template’s prompt 7, SPARE listed first as after a won fight. Here the blue-haired Traci’s explanation comes before the choice, as in the template. SHOOT (the chart’s SHOOT DEVIANTS IN THE BACK, ending CONNOR SHOT DEVIANTS) and SPARE (LET DEVIANTS GO, ending DEVIANTS ESCAPED) carry the same arrows as after a won fight: instability and Hank large down, or large up. The no-input outcome (Connor stands still as they leave) is not offered. No Amanda change._
+_Note: After LOSE FIGHT: the template’s prompt 7, SHOOT before SPARE as in the template, with stable option IDs. Here the blue-haired Traci’s explanation comes before the choice, as in the template. SHOOT (the chart’s SHOOT DEVIANTS IN THE BACK, ending CONNOR SHOT DEVIANTS) and SPARE (LET DEVIANTS GO, ending DEVIANTS ESCAPED) carry the same arrows as after a won fight: instability and Hank large down, or large up. The no-input outcome (Connor stands still as they leave) is not offered. No Amanda change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

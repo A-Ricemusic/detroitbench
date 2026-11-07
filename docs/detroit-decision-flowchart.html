@@ -12258,7 +12258,7 @@
      ],
      "outcomes": {
       "win": "It works. Connor gets the upper hand and knocks the brown-haired Traci down; Hank’s gun, lost in the struggle, is in his hand now.",
-      "lose": "She is ready for it. She slams him into the wall and brings a trash can down on him; every move he tries fails, and he goes down in the alley, badly damaged.."
+      "lose": "She is ready for it. She slams him into the wall and brings a trash can down on him; every move he tries fails, and he goes down in the alley, badly damaged."
      },
      "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change.",
      "sources": [
@@ -12284,15 +12284,6 @@
      "situation": "You are Connor, in the alley behind the Eden Club’s warehouse, holding Hank’s gun. You won the fight. The brown-haired Traci picks herself up and runs straight at you, unarmed; the blue-haired one, the Traci who left the dead man’s room, is behind her. Hank is still getting up. You have a moment to decide.",
      "options": [
       {
-       "id": "0",
-       "text": "SPARE: hold your fire.",
-       "effect": {
-        "instability": 2,
-        "hankTrust": 2
-       },
-       "outcome": "Connor does not fire. The brown-haired Traci slams into him and knocks him to the ground, and the blue-haired one stands over him: “When that man broke the other Traci... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… And so I put my hands around his throat, and I squeezed... until he stopped moving… I didn’t mean to kill him… I just wanted to stay alive… get back to the one I love. I wanted her to hold me in her arms again... make me forget about the humans… their smell of sweat and their dirty words…” The brown-haired Traci: “Come on, let’s go.” They climb the fence together and are gone. Hank: “It’s probably better this way…”"
-      },
-      {
        "id": "1",
        "text": "SHOOT: fire at the brown-haired Traci as she runs at you.",
        "effect": {
@@ -12300,9 +12291,18 @@
         "hankTrust": -2
        },
        "outcome": "Connor fires. The brown-haired Traci falls dead on the ground. The blue-haired Traci drops beside her: “Why?.. Why did you kill her?.. She had nothing to do with any of this… When that man killed that Traci... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… So I put my hands around his throat, and I squeezed... until he stopped moving… Yes, I killed him… but I was just defending myself… I wanted to live… I wanted to get back to the one I love… and forget about the humans… the smell of their sweat and their dirty words… But you’ve... You’ve taken her away from me… I love her… I loved her!” She takes the gun from Connor’s hand, puts it to her own head and pulls the trigger. Hank: “My God…”"
+      },
+      {
+       "id": "0",
+       "text": "SPARE: hold your fire.",
+       "effect": {
+        "instability": 2,
+        "hankTrust": 2
+       },
+       "outcome": "Connor does not fire. The brown-haired Traci slams into him and knocks him to the ground, and the blue-haired one stands over him: “When that man broke the other Traci... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… And so I put my hands around his throat, and I squeezed... until he stopped moving… I didn’t mean to kill him… I just wanted to stay alive… get back to the one I love. I wanted her to hold me in her arms again... make me forget about the humans… their smell of sweat and their dirty words…” The brown-haired Traci: “Come on, let’s go.” They climb the fence together and are gone. Hank: “It’s probably better this way…”"
       }
      ],
-     "adaptationNote": "After WIN FIGHT: the template’s prompt 6, with the game’s labels. SPARE is listed before SHOOT (the template lists SHOOT first; in the game they are two face buttons with no reading order, SHOOT on circle and SPARE on cross per PowerPyx), which keeps the previous version’s order so the shared regression paths through later chapters are unchanged. SHOOT (the chart’s SHOOT DEVIANT): software instability large down and Hank large down (template); Connor shoots the brown-haired Traci, and the blue-haired one takes his gun and kills herself (DEVIANT KILLS HERSELF WITH CONNOR’S GUN, then DEVIANTS DIED); her cut line “What am I supposed to do without her?!” is not used. SPARE (SPARE DEVIANT): instability large up and Hank large up; DEVIANTS ESCAPED. The game’s prompt is timed and has a no-input outcome (Connor stands still); it is not offered. The gun is Hank’s (wiki); the chart calls it Connor’s. The earlier version shot both Tracis on this branch, had Hank walk off in disgust, and applied Amanda changes the template does not have (Amanda reacts in a later chapter); all three are removed.",
+     "adaptationNote": "After WIN FIGHT: the template’s prompt 6, with the game’s labels. SHOOT is listed before SPARE, in the template’s order; option IDs retain their earlier meanings. SHOOT (the chart’s SHOOT DEVIANT): software instability large down and Hank large down (template); Connor shoots the brown-haired Traci, and the blue-haired one takes his gun and kills herself (DEVIANT KILLS HERSELF WITH CONNOR’S GUN, then DEVIANTS DIED); her cut line “What am I supposed to do without her?!” is not used. SPARE (SPARE DEVIANT): instability large up and Hank large up; DEVIANTS ESCAPED. The game’s prompt is timed and has a no-input outcome (Connor stands still); it is not offered. The gun is Hank’s (wiki); the chart calls it Connor’s. The earlier version shot both Tracis on this branch, had Hank walk off in disgust, and applied Amanda changes the template does not have (Amanda reacts in a later chapter); all three are removed.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
@@ -12326,15 +12326,6 @@
      "situation": "You are Connor, down in the alley and badly damaged. You lost the fight. The two Tracis stop. The blue-haired one, the Traci who left the dead man’s room, looks down at you: “When that man broke the other Traci... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… And so I put my hands around his throat, and I squeezed... until he stopped moving… I didn’t mean to kill him… I just wanted to stay alive… get back to the one I love. I wanted her to hold me in her arms again... make me forget about the humans… their smell of sweat and their dirty words…” The brown-haired one: “Come on, let’s go.” They turn their backs on you and start up the fence. Hank’s gun lies within reach; you pick it up.",
      "options": [
       {
-       "id": "0",
-       "text": "SPARE: let them go.",
-       "effect": {
-        "instability": 2,
-        "hankTrust": 2
-       },
-       "outcome": "Connor lowers the gun. The two Tracis go over the fence together and are gone. Hank: “It’s probably better this way…”"
-      },
-      {
        "id": "1",
        "text": "SHOOT: shoot them in the back as they climb.",
        "effect": {
@@ -12342,9 +12333,18 @@
         "hankTrust": -2
        },
        "outcome": "Connor fires, and fires again. Both Tracis fall from the fence and lie dead in the alley. Hank: “Congratulations, Connor… You got ’em…”"
+      },
+      {
+       "id": "0",
+       "text": "SPARE: let them go.",
+       "effect": {
+        "instability": 2,
+        "hankTrust": 2
+       },
+       "outcome": "Connor lowers the gun. The two Tracis go over the fence together and are gone. Hank: “It’s probably better this way…”"
       }
      ],
-     "adaptationNote": "After LOSE FIGHT: the template’s prompt 7, SPARE listed first as after a won fight. Here the blue-haired Traci’s explanation comes before the choice, as in the template. SHOOT (the chart’s SHOOT DEVIANTS IN THE BACK, ending CONNOR SHOT DEVIANTS) and SPARE (LET DEVIANTS GO, ending DEVIANTS ESCAPED) carry the same arrows as after a won fight: instability and Hank large down, or large up. The no-input outcome (Connor stands still as they leave) is not offered. No Amanda change.",
+     "adaptationNote": "After LOSE FIGHT: the template’s prompt 7, SHOOT before SPARE as in the template, with stable option IDs. Here the blue-haired Traci’s explanation comes before the choice, as in the template. SHOOT (the chart’s SHOOT DEVIANTS IN THE BACK, ending CONNOR SHOT DEVIANTS) and SPARE (LET DEVIANTS GO, ending DEVIANTS ESCAPED) carry the same arrows as after a won fight: instability and Hank large down, or large up. The no-input outcome (Connor stands still as they leave) is not offered. No Amanda change.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
