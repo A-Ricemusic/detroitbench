@@ -12,7 +12,7 @@ One file per chapter, `chNN-<slug>.md`, written by a research agent before the c
 
 ## What each note must contain
 
-1. **Flowchart transcription.** Every node on the chart, in reading order, grouped as the chart groups them (bracketed phase labels, choice pairs, checkpoints, endings). Mark ending nodes with their icon: skull (a death), no-entry (a failure that is not a death), check (success), trophy, or none. Quote node labels exactly as printed, in capitals.
+1. **Flowchart transcription.** Every node on the chart, in reading order, grouped as the chart groups them (bracketed phase labels, choice pairs, checkpoints, endings). Mark ending nodes with their icon: skull (a death), no-entry (the game's legend reads it as "not required for completion", not as a failure; record it as printed), check (success), trophy, or none. The game's own legend text is in the string table listed in `SOURCES.md`. Quote node labels exactly as printed, in capitals.
 2. **Choices and gates.** For each choice node: the options, what each requires (an earlier node, an item, a relationship level, a stat threshold), and what it leads to.
 3. **Numbers.** Every probability, timer, relationship change, public opinion change and software instability change the wiki states, with the exact figure and a quote of the source line. Say explicitly which choices have no stated number.
 4. **Cross-chapter dependencies.** What earlier choices (any character) change in this chapter, and what this chapter changes later. Name the wiki line.

@@ -929,3 +929,773 @@ None of these moments has flowchart nodes. All are in the transcripts and game s
 - YES: "I'll never forget what you've done for me… Thank you." She walks off and the menu stays empty.
 - NO: "Then I'm going to reset myself… so I can forget who I became and stay a machine… Next time you see me, it'll be like the first time."
 - Since patch 1.04 a replacement hostess can be requested after three reboots (wiki).
+
+---
+
+## 2. Choices and gates
+
+### 2a. Kara Leaving Detroit
+
+**Start variants** (transcript 32.1, "In the streets"):
+
+| Variant | Condition | What happens |
+|---|---|---|
+| Luther with Kara from the start | "Jericho wasn't attacked : Luther is there" | `LUTHER FINDS A GUN`. Kara: "The last bus leaves in 20 minutes." |
+| Luther captured with a Jerry | Luther alive and saved in Crossroads, tab `LUTHER SAVED IN 'CROSSROADS'` | `FIND LUTHER & JERRY` |
+| Two Jerrys | Luther dead (transcript "Luther died - Save the Jerrys") | `FIND JERRYS` |
+
+Optional dialogue, off-chart, with no stated stat effect. Alice: "I'm really cold…"
+- `DEACTIVATE`: she turns off her heat sensitivity; HUD `YK500 SETTINGS HOT/COLD SENSITIVITY: ACTIVATED`
+- `LEAVE ON`
+
+**Rescue** (choice #10 to #12). The labels in the transcript are `SAVE THE JERRYS` / `SAVE LUTHER` / `KEEP GOING`; the chart labels are `SAVE JERRYS` / `SAVE LUTHER` / `HURRY`.
+- Saving tags Alice SmallUp; keeping going tags Alice SmallDown.
+- Success (`GRAB ROCK` → `HIT SOLDIER WITH ROCK`): the Jerrys flee, or Luther joins the group.
+- Failure ("Fail"): "Soldier: Hold it right there! … Come on, this way…" Kara and Alice are arrested and the story moves to Kara Captured (#18 to #21).
+- PowerPyx: "If you were spotted at any point until now, you will be sent to the Recycling Center."
+- No probability is stated; the outcome depends on stealth.
+
+**Security checkpoint** (#23/#24):
+- Route HUD:
+  - `CHECKPOINT: RISKY 0.750KM - 3MIN`
+  - `DETOUR: SAFER 1.7KM - 11MIN`
+- Alice or Luther suggests the detour; Kara: "We could take a detour, but we might miss the bus…"
+- `TAKE DETOUR` → `DELAYED`. Wiki: "(if 11 minutes or more remaining - leads to 'At the Bus Terminal') OR Late for the Bus". PowerPyx: "wait for two minutes before deciding (timer below 11 minutes) and go the detour."
+- `APPROACH CHECKPOINT` → soldier dialogue, all off-chart:
+
+  | Round | Options |
+  |---|---|
+  | Where are you going? | `ALICE EXCUSE` (Luther present), `CURFEW`, `CAR BROKEDOWN`, `BUS` |
+  | Luther: "He suspects something…" (Luther present) | `STAY CALM` / `STAY ATTENTIVE` |
+  | "She's trembling" | `SICK`, `COLD` (Luther present), `FEAR` |
+
+  Then "Hey, wait a minute!" The soldier only wants to return Alice's glove.
+- Kara alone: `GUARD CALLS OUT TO KARA` → `DON'T SHOOT` / `SHOOT`. Shoot tags Alice SmallDown.
+- Luther present: `LUTHER IS NERVOUS` → shoot / stay calm, then `GUARD APPROACHES` → shoot / stay calm again.
+  - Transcript: SHOOT → Alice SmallDown; final DO NOTHING → Luther SmallUp ("Soldier: You dropped this.").
+  - Readers: to unlock the second `ASK LUTHER TO SHOOT`, "(1) Stay Attentive, (2) Do Nothing, (3) Shoot".
+
+**At the bus terminal.** These are free-roam options inside `FIND A WAY TO THE BORDER`.
+
+Arrival:
+
+| Arrival | Time | What Kara hears | Effect |
+|---|---|---|---|
+| On time | PM 11:02 | "The last bus for the border is full. Ticket-holding passengers only." | |
+| Late | PM 11:15 | "The last bus has left the terminal." | Alice SmallDown; no ticket scene |
+
+The options:
+- **`ALICE MEETS A MOTHER` → `PARENTS DROP BUS TICKETS`.** Two-step choice:
+  - `RETURN TICKETS` (Alice SmallUp; Alice: "You did the right thing.")
+  - `KEEP TICKETS`, then a second prompt: `RETURN TICKETS` / `KEEP TICKETS` (Alice SmallDown, Luther SmallUp)
+  - Keeping leads to `BOARD THE BUS` and the border.
+  - On the bus Alice asks "Will they die because of us?": `REASSURE` / `HONEST`, no stat effect.
+- **`MEET TODD`.** Requires "Todd wasn't killed in Stormy Night". Todd: "You! You stole my little girl! … Security! Over here!" Options:
+  - `APPEAL`
+  - `THREATEN`
+  - `CONFRONT`
+  - `CONVINCE`
+  - `BREAK FREE`
+  - `YOUR STORY`, locked by "Opened Alice's box in A New Home". Kara: "When your wife walked out... she took your daughter away... so you bought yourself an android… a substitute little girl…" Todd: "I made a mistake. Sorry. Good luck." Then `STOP ALICE` / `DO NOTHING` (Alice says goodbye).
+
+  Only `YOUR STORY` persuades him (transcript "Didn't pick [ YOUR STORY ]" → "They're androids."). Persuading does not by itself get Kara out of Detroit: no line leaves `ALICE SAYS GOODBYE TO TODD`.
+
+  On failure:
+  - Luther present: "Luther: Run!" → `LUTHER CREATES A DIVERSION` → `ADAM CALLS OUT TO KARA` → `GET IN ROSE'S CAR` → river. Luther is lost there.
+  - Luther absent: "Soldier: ON YOUR KNEES!" → `SOLDIERS EXECUTED KARA & ALICE`.
+- **`SECURITY CHECK`** ("Can I see your ID, please?"):
+  - `DIVERSION LUTHER` (Luther present) → Adam → river
+  - `PAPERS`/`HAND OVER ID` → executed
+  - `FLEE` → executed
+- **`FIND ADAM`** → `GET IN ROSE'S CAR`. Rose: "I found a smuggler who can get them across the river." This is the river route without losing Luther.
+- **Optional:** `WATCH TV`, `READ "CIVIL WAR"`, `WATCH TERMINAL TVs`.
+
+**Canadian border**:
+- `BORDER AGENTS CHECK TEMPERATURE` → free roam in `AVOID TEMPERATURE CHECK`.
+- `ANDROID IS EXECUTED` happens about two minutes in. A reader warns that Rose's restroom talk must wait for it.
+- Rose, in the restroom; topics:
+  - `BROTHER`
+  - `CONTROL`
+  - `ALICE` ("Rose… if anything should happen…" / "I'll be there, Kara.")
+  - `DEPARTURE`
+  - `REVOLUTION`
+  - `GOODBYE`
+- Luther: "I can save you, Kara… If there's no other way, I'll do it."
+- Jerry: "If you and the little girl need me, I'll be there."
+- `CHOOSE APPROACH`. The transcript labels are `SACRIFICE SELF` / `SACRIFICE LUTHER` / `SACRIFICE JERRY` / `NO SACRIFICE`; the chart labels are `SACRIFICE NO ONE/JERRY/LUTHER/KARA`.
+  - `SACRIFICE NO ONE` (Alice SmallUp, Luther SmallUp). If Markus is demonstrating peacefully: "Guard: Welcome to Canada." If Markus leads a violent revolution: "Guard: They're androids. Soldier: ON YOUR KNEES!" → `EVERYONE WAS ARRESTED AND KILLED`. The wiki's Public Opinion page confirms that this depends on demonstration vs revolution, not on the opinion stat.
+  - `SACRIFICE JERRY` (Alice SmallDown). Needs a Jerry, i.e. Kara saved them. Leads to `THE GROUP CROSSED THE BORDER`, or `KARA & ALICE CROSSED THE BORDER` if Luther is dead.
+  - `SACRIFICE LUTHER`. Needs Luther. Luther: "LET ME THROUGH OR I'LL SHOOT!" Leads to `KARA & ALICE CROSSED THE BORDER`. The Relationship Stat page puts Alice SmallDown here "(Luther is alive and has 'Family' relationship in this situation)".
+  - `SACRIFICE SELF`. Kara gives Alice her passport. With Luther: "He'll get you across the border… Rose will take care of you there…" → `ALICE GOT TO CANADA WITH LUTHER`. Without Luther: "go with Rose" → `ALICE GOT TO CANADA WITH ROSE`.
+
+**River:**
+- `TALK TO ROSE`: "It's not even a half a mile to the other side". `CHECK RIVER TEMPERATURE`: "Our biocomponents will freeze…"; HUD `DANGER TEMPERATURE : 30.8°F`.
+- On the boat, "What will you do?": `DREAMY` / `INTROSPECTIVE` / `CURIOUS` / `CALM`, no stat effect.
+- Coastguard, six options (transcript labels `Accelerate`, `Protect Alice`, `Hide`, `Surrender`, `Plunge`, `Use Luther`; timeout = SURRENDER per the wiki):
+
+  | Option | Who dies or is hurt | Source |
+  |---|---|---|
+  | `HIDE` | Luther absent; Alice injured | wiki; reader: "Luther must be dead" |
+  | `ACCELERATE` | Luther dies if present; Alice injured | transcript: "Leads to the same outcome as HIDE after that" |
+  | `HIDE BEHIND LUTHER` | Luther dies; Kara and Alice unhurt | |
+  | `DIVE` | Luther dies if present; Kara and Alice unhurt | readers: "Regardless of who is at the river bank, diving into the water to avoid the gunshots will save Kara and Alice." |
+  | `PROTECT ALICE` | Luther dies; Kara injured | |
+  | `SURRENDER` | `THE GROUP DIED` | |
+
+  PowerPyx: "Luther always dies here, if he was still with you."
+- `BOAT SINKING`: "We're too heavy… We're going down…". Off-chart labels `Accelerate`, `Reassure`, `Use paddle`, `PUT OVERBOARD`, `Push`; chart labels `CAST LUTHER AWAY`, `DISPOSE OF SUPPLIES`, `ROW`, `REASSURE ALICE`, `DISPOSE OF ENGINE` → `DIVE`.
+  - PowerPyx: "if you didn't lighten the boat within the four-minute timeframe, the boat will sink and you both die" (`REACH CANADA BY SWIMMING` → `KARA & ALICE DIED`).
+  - The wiki's Kara page: "If Kara … does not push the boat at all, she will drown."
+- Far shore, resolved by the earlier wound:
+
+  | Earlier wound | Result |
+  |---|---|
+  | Kara injured | `KARA IS DAMAGED AND SHUTS DOWN` → `KARA DIED AND ALICE SURVIVED` |
+  | Alice injured | `ALICE IS DAMAGED AND SHUTS DOWN` → choice `CONTINUE LIVING` / `KARA CHOOSES DEATH` (transcript `KEEP LIVING` / `GIVE UP`) |
+  | Both injured | Transcript has "Alice and Kara were injured". The chart has no node for it. |
+  | Neither | `KARA & ALICE SURVIVED` |
+
+### 2b. Kara Captured
+
+**Truck**. Alice asks "Where are they taking us?":
+- `WARN`
+- `REASSURE`
+- `LIE`
+- `SINCERE`
+
+This yields `REASSURE ALICE` or `FAIL TO REASSURE ALICE`. PowerPyx: calming vs harsh answer.
+
+**Gate**. Alice: "I can't…":
+- `REASSURE`
+- `REASON`
+- `FRIGHTEN`
+- `ORDER`
+
+Then the soldier says "You first!":
+- `PERSUADE SOLDIER` (`CONVINCE SOLDIER`)
+- `PERSUADE ALICE` (`CONVINCE ALICE`)
+- `SHIELD ALICE` (`INTERVENE`). Kara is knocked down "for disobeying once again" (PowerPyx).
+
+Dawdling at the truck, the tent or the exit gives `KARA IS TOO SLOW TO OBEY` and a strike. No stated consequence beyond the blow.
+
+**Body detail:**
+- `VOLUNTEER` → `CARRY ANDROID`; Kara is separated from Alice.
+  - Unlocks `TALK TO RESCUED ANDROID`.
+  - Gives `CLIMB TRUCK` → `GO BACK` / `LEAVE`.
+  - `LEAVE` → `KARA LEAVES CAMP WITHOUT ALICE`, then Alice dies in the machine, or is freed by Markus (locked node).
+- `SAY NOTHING` → the other android refuses and is shot; Kara and Alice are separated. This is required for `TALK TO ANDROID AHEAD OF KARA` (reader).
+
+**Enclosure** (free roam):
+- Drone: `MOVE` / `REMAIN STILL`. First move: `DRONE WOUNDS KARA`. A second shot: `KARA IS KILLED BY THE DRONE`. PowerPyx: "If Markus doesn't free the Camp, Kara will die in this chapter, if wounded here."
+- Jerry → "Talk to other Jerry" → Alice is glimpsed and taken away.
+- Luther, if saved: `LUTHER GETS TAKEN AWAY`, with `INTERVENE` / `DON'T INTERVENE`. A reader notes the intervene prompt appears only if Kara talks to Luther before the Jerrys.
+- Scarred android: `CAPTURED` / `ALICE` / `HERE`.
+- Ralph, if met in Fugitives: `INSIST` (→ `RALPH IS KILLED` by the drone), `CALM DOWN` (→ `RALPH SETTLES DOWN`), `GIVE UP`.
+
+**Join line.** `ALICE IS TERRIFIED`; transcript labels `FIRM` / `OPTIMISTIC` / `REASSURING` / `BLUNT`; the chart adds `SILENCE` and prints `DIRECT`.
+
+Then free roam in `FIND A WAY TO JOIN ALICE`:
+- Leaving the line on the buzzer means a strike, then a shot: `GET SHOT` → `ALICE'S STRESS INCREASES`. If already shot, `GET KILLED`.
+- Alice's questions, in the transcript order:
+
+  | Question | Options |
+  |---|---|
+  | "Are they going to kill us?" | `LIE` / `TRUTH` (chart `REASSURE` / `TELL THE TRUTH` / `SAY NOTHING`) |
+  | "I'm coming over to you…" | `ORDER` / `CALM DOWN` |
+  | "I want you to hold me…" | `REASSURING` / `POWERLESS` / `OPTIMISTIC` |
+
+  Unused strings `CALM ALICE DOWN` / `FAIL TO CALM ALICE DOWN` suggest these adjust the stress meter.
+- At 100% stress, `ALICE PANICS AND RUNS TO KARA`:
+  - `INTERVENE` → Kara is shot → `KARA DIED IN THE LINES`
+  - `DO NOT INTERVENE` → `ALICE GETS SHOT` → `KARA IS DEAD` or `KARA FREED BY MARKUS`
+- Diversion to reach Alice:
+  - Jerry: "I can help you, Kara. I can attract the guards' attention." In the transcript the guards beat him back into line.
+  - Scarred android: no casualty.
+- The drone can catch Kara (`KARA GETS CAUGHT BY THE DRONE`). PowerPyx: "If it was close to your line, you have to go back – if it was already close to Alice's line, you can go there."
+
+**Find a way to escape** (with Alice):
+- Diversion from Jerry, Ralph ("Ralph isn't scared. The little girl's life is more important…"), Luther ("If there's no other way, I'll do it…") or the scarred android.
+- Waiting too long: `LUTHER REACHES THE RECYCLING MACHINE`, then `REACH RECYCLING MACHINE`. Kara's last words to Alice: `BRAVE` / `PRIDE` / `TOGETHER` / `EMOTION`.
+  - If the revolution succeeded: "They're coming!" → `MARKUS LIBERATES ANDROIDS` → `KARA & ALICE SURVIVED`.
+  - Otherwise: `ALICE & KARA DIED IN RECYCLING MACHINE`.
+- At the fence (`RUN TO BARBED WIRE`):
+  - Too slow on the prompts → `SOLDIER SHOOTS THE GROUP`.
+  - If Kara was shot earlier → `KARA IS TOO DAMAGED TO PROCEED` → `ALICE [& LUTHER] ESCAPED ON TRUCK(S)`.
+  - Otherwise `A SOLDIER ARRIVES`. Transcript options `FLEE` / `PROTECT ALICE`; chart `PASS THE BARBED WIRE` / `FIGHT SOLDIER`. Fleeing gets everyone shot.
+  - Fight won → escaped on truck (with Luther if alive).
+  - Fight lost → rescue as follows:
+
+    | Situation | Rescuer |
+    |---|---|
+    | Ralph alive, Luther dead, Kara stayed in the squat in Fugitives (wiki) | Ralph |
+    | Luther alive and not used for the diversion | Luther |
+    | Neither | `KARA & ALICE WERE KILLED` |
+
+### 2c. Connor's Last Mission
+
+| Moment | Condition | Detail |
+|---|---|---|
+| Zen Garden intro | Markus shot deviant Connor in Night of the Soul (readers; the wiki's Connor page says the same) | Amanda informs the replacement and orders the mission |
+| Hank on the roof | "Hank wasn't hostile in Last Chance, Connor and didn't resign" (transcript lock) | |
+| Allen on the roof | Hank committed suicide in Night of the Soul (chart tab) | |
+
+**Hank dialogue** (off-chart). Round 1:
+- `FRIENDLY`
+- `AGGRESSIVE` ("Ran out of whisky…")
+- `REASONABLE`
+- `THREATENING`
+- `STAY QUIET`
+
+"Step away from the ledge!" Round 2:
+- `THREATEN`
+- `PLEAD`
+- `DEFY`
+- `HANK'S SON` ("A truck skidded on a sheet of ice… Little Cole had just turned six…")
+
+`HANK'S SON` then offers `HANK'S SON (INSIST)`, locked "Chose HANK'S SON":
+- Connor: "An android killed your son, Hank!"
+- Hank: "No! Cole died because a human surgeon was too high on red ice to operate!"
+- If Connor died several times before, Hank adds "Everytime you died and came back… I thought about Cole."
+
+**Final choice:**
+- `LEAVE` (chart `GIVE UP`), locked "Be friend with Hank". Wiki: "only available if Hank still has FRIEND status and if Connor asked twice about Hank's son". Connor: "Killing you is not part of my mission. I'm glad to have met you, Hank."
+- `ATTACK` → fight quick-time event:
+  - Win: "Moment of truth, Connor… What are you gonna do?" → `SAVE HANK` / `KILL HANK` (chart `SAVE HANK` / `LET HANK GO`). Saving leads to `HANK RUSHES CONNOR`: dodge (Hank falls) or fail ("I didn't wanna do that, Connor… You left me no choice.").
+  - Lose: "Am I a living being… or just a machine?" / "You're a machine, Connor. Just a machine." → `HANK KILLS CONNOR` (trophy `JUST A MACHINE`).
+
+The wiki says `TALK ABOUT HANK'S SON` requires seeing the photo in Russian Roulette. The transcript shows no lock on `HANK'S SON` (see Open questions).
+
+**Allen.** "Put the rifle down":
+- `OBEY`
+- `EXPLAIN` ("I'm the android sent by CyberLife, I'm on your side!")
+- `CONTINUE`
+
+Allen recognises Connor from The Hostage. The variant line depends on whether Connor died there: "I knew we'd meet again" / "I thought you were dead…" / "Androids don't die, captain."
+
+Then:
+- `FIGHT`: win → "You should have listened to me, captain."; lose → "I should have done this the first time I saw you."
+- `FLEE` → `CONNOR JUMPS OFF THE ROOF` (death).
+
+Every survival path leaves the rifle damaged (HUD `WEAPON DAMAGED`) and gives `MISSED OPPORTUNITY` → `CONNOR LEFT ROOFTOP`. A death gives `CYBERLIFE DECIDED TO SEND ANOTHER CONNOR`; the replacement appears later in Markus's chapter.
+
+### 2d. Connor at the CyberLife Tower
+
+**Arrival:**
+- "Connor Model #313 248 317. I'm expected."
+- Agents 23, 47, 72 and 54 escort him.
+- Agent 54 sets "Level 31" (HUD `STOP ELEVATOR BEFORE FLOOR 31`).
+
+**Elevator sandbox:**
+- `SPOT CAMERA` → `HACK CAMERA`. This decides `CAMERA HACKED` vs `CAMERA FUNCTIONAL` on arrival. PowerPyx: "Spotting and hacking the camera will affect your greeting on Floor -49."
+- `ATTACK GUARDS`. Combat quick-time event; losing gives `CONNOR WAS SHOT BY SECURITY`.
+- `HACK ELEVATOR`: `AGENT 54 VOICE` (`COPY GUARD'S VOICE`, works) or `CONNOR'S VOICE` (rejected).
+- Doing nothing until Floor 31 gives `AMANDA WARNS CONNOR` → `CONNOR WAS AMBUSHED AND SHOT`. Amanda: "The deviant hunter turns deviant itself… You will be terminated."
+
+**Floor -49** (PM 11:01). With the camera functional, guards wait ("Stay sharp."); eliminate them or be shot.
+
+**Hank hostage**, if "Hank wasn't hostile in Last Chance, Connor". Connor-60: "Your friend's life is in your hands… Him… Or the revolution."
+
+Dialogue options:
+- `GUARANTEE`
+- `HANK`
+- `BLUFF` (Connor-60: "I have access to your memory!")
+- `CONVINCE`
+
+Then "Are you gonna save your partner's life? Or are you going to sacrifice him?"
+
+`SAVE HANK` ("Alright, alright! You win…") leads to a second choice:
+
+| Option | Result |
+|---|---|
+| `SHOOT` (`DRAW GUN`) | `BOTH CONNORS SHOOT` → `CONNORS FIGHT` |
+| `INTERPOSE` (`ATTACK NEW CONNOR`) | "same dialogue as SHOOT" |
+| `CONVERT` | "Leads to the same result as sacrificing Hank and successfully converting" |
+| timeout (`OUT OF TIME`) | "He really liked you, Lieutenant. That's what killed him." → Hank injured, Connor killed, androids dormant |
+
+After `CONNORS FIGHT`:
+- Connor wins outright → `RESUME CONVERSION`.
+- Draw → `HANK GRABS GUN`: "One of you is my partner… The other is a sack of shit."
+  - First question, "where did we first meet?": Connor-60 answers ("Jimmy's bar!…").
+  - Dog: `SUMO` / `SCOUT` / `JACK` / `BUDDY`. A wrong answer has no effect; Hank asks again.
+  - Son: `COLE` / `ANTHONY` / `GABRIEL` / `ELLIOTT`.
+    - COLE is highlighted with a lock icon if Connor saw the photo in Russian Roulette. The wiki says the option is still offered without it, just not highlighted.
+    - COLE → Hank: "Maybe you really are alive… Go ahead, and do what you gotta do." He shoots Connor-60; conversion resumes ("Wake up.").
+    - A wrong name → Hank shoots the real Connor. Connor-60: "Wrong choice, Lieutenant! I've accomplished my mission." Hank: "Oh my God... What have I done?"
+
+`SACRIFICE HANK` ("Sorry Lieutenant.") → Connor-60 kills Hank and damages Connor. Then `NEW CONNOR APPROACHES`: "Why, Connor? Why did you have to wake up when all you had to do was obey?…"
+- `STAND UP` (`TRY TO STAND`)
+- `SHOOT` (`DRAW GUN`)
+- `TRANSFER` (`SWAP CONSCIOUSNESS WITH NEW CONNOR`): "Well done, Connor… But this… This is just... The beginning…". With Hank sacrificed but still alive, Hank dies in Connor's arms: "I'm just gonna go see my son again".
+- timeout (`TALK TO NEW CONNOR`)
+
+Ending:
+
+| Situation | Ending |
+|---|---|
+| Conversion finished before Connor died | `THE ANDROIDS WOKE UP` (skull) |
+| Conversion not finished | `THE ANDROIDS REMAINED DORMANT` |
+| `TRANSFER` (Connor survives in the new body) | `THE ANDROIDS WOKE UP` (padlock) |
+
+**Hank dead** (Hank was hostile in Last Chance, Connor): `A NEW CONNOR ARRIVES` → `NEW CONNOR SHOOTS CONNOR` → the same four-way choice. With Hank dead:
+- STAND UP / SHOOT → nothing more
+- timeout → "We'll win… It's only a question of time…"
+- TRANSFER → androids wake
+
+### 2e. Markus Demonstration
+
+**Opening dialogue** (off-chart; the soldier says "Surrender immediately or we will open fire!"):
+- First: `PEACEFUL` (PO SmallUp) / `PROVOKE` (PO SmallDown) / `FIRM` (PO SmallUp)
+- Then: `FIRM` / `CALM` (PO SmallUp) / `ACCUSE` (PO SmallDown)
+- "FIRE!" Markus: "Are you gonna open fire on unarmed protestors?!" (`ANDROIDS UNDER FIRE`)
+- Then `SHOW DETERMINATION`: raise fist / hands in the air / sit / kneel. No stat effect is stated.
+
+**Barricade.** One of three items: "cannot use them all in one playthrough" (PowerPyx). In free roam (`HOLD BARRICADE`):
+- `CHOOSE SLOGANS`: send a message to journalists, PO SmallUp and Jericho SmallUp. The wiki lists the slogans as "We are alive", "We want freedom", "Equal rights for androids", "Let our people go".
+- `PLANT THE FLAG`: PO up, Jericho up (wiki).
+- `TALK TO NORTH`:
+  - Topic: `HUMANS` / `OTHER GROUPS` / `CAMP`
+  - Mood: `GRIM` / `REGRETS` / `DESPERATE` / `DOUBTS`
+  - North: "You're the hope of our people."
+- `TALK TO SCARED ANDROID`: `REASSURE` / `INSPIRE` / `JUSTIFY`
+- `OBSERVE SOLDIERS`, `OBSERVE DETONATOR`, `LIGHT BARREL`, `READ "THEY DEFY US"`
+- `OBSERVE SOLDIERS` ends the free roam.
+
+**Perkins:**
+- "I'm unarmed, Markus. I just want to talk." → `ACCEPT` / `REFUSE`; a second ACCEPT/REFUSE prompt follows a refusal.
+- Negotiation topics:
+  - `OTHER DEMONSTRATIONS` ("there were no journalists around to help save them… You're the last remaining deviants.")
+  - `GUARANTEES?`
+  - `NOT AFRAID` (with North a Lover, Perkins offers to spare her)
+  - `BETRAY PEOPLE?`
+- Then `ACCEPT DEAL` / `REFUSE DEAL`.
+- Accepting: Josh SmallDown, Simon SmallDown. "the androids have surrendered peacefully and military vehicles have been sent to collect them". Then North: "Why did you do that?". Perkins: "You don't think I was going to let you live after everything that's happened? I have orders" → shoots North, if alive, then Markus.
+- Refusing: Markus tells the others "The humans are about to launch an attack… If we must die today, then we will die free" (Jericho up per the wiki) → `SOLDIERS ATTACK BARRICADE`.
+
+**Defending the barricade.** Quick-time event to save the fleeing androids.
+- On failure, North takes the bullet if she is a Lover (PowerPyx "North and Markus must be lovers"; the transcript's heading says "Fail the QTE and have lover status with North"). The wiki says "if North status is FRIEND or above".
+- Otherwise Markus is shot → `MARKUS DIED PROTECTING HIS PEOPLE`.
+
+**Last stand** (`SOLDIERS RAISE WEAPONS`):
+
+| Option | Gate | Result |
+|---|---|---|
+| `SING` | none | Public opinion positive: Warren "Tell them to stand down." → `ANDROIDS WON FREEDOM - FOR THE MOMENT`. Otherwise "FIRE!" |
+| `KISS NORTH` | North is Lover | same check |
+| `SACRIFICE` | none | Markus sets himself alight. "We are alive... We are alive and we wanna be free!"; HUD `SYSTEM HEAT: CRITICAL`. Soldiers fire. |
+| `DO NOTHING` | none | Soldiers fire |
+| `OBSERVE DETONATOR` | detonator taken | `GIVE UP` loops back; `PRESS` → explosion → `ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT` |
+
+### 2f. Markus Revolution
+
+**Hart Plaza:**
+- Markus's message to the journalists (PM 10:56): "We won't cease hostilities until we are free…" PO large down (stat page).
+- Charge (`MARKUS WOUNDED` if hit) and plant the flag.
+
+**Approaching recall center.** A squad-command sandbox. HUD:
+- `ORDER YOUR TROOPS`
+- `GROUP WILL COVER` / `GROUP WILL CHARGE`
+- `NOBODY WAS COVERING THEM`
+- `INSUFFICIENT COVERING FIRE`
+- `GRENADE AVAILABLE`
+
+Events:
+- Josh leaves cover: rescue him (he dies in Markus's arms: "The blood we spill… will be on our hands…") or he is shot. No surviving-Josh node exists.
+- Frightened android: `STAY HERE` (survives) / `GO BACK` (shot) / `ADVANCE!` (shot). A cut first round offered `REASSURE`/`MOTIVATE`/`RA9`/`SHAKE UP`.
+- Simon shot: `TRY TO SAVE SIMON` (needs suppressing the shooters; reader: "shoot at the people in the crane thing first") → saved (Simon LargeUp) or not; or `KEEP GOING`.
+- `MARKUS BADLY WOUNDED`, after repeated hits:
+
+  | Offer | Condition | Notes |
+  |---|---|---|
+  | North offers her heart | transcript "North is at least companion"; wiki "FRIEND or higher"; PowerPyx "lovers" | `SACRIFICE NORTH` (Jericho SmallDown) / `SACRIFICE SELF` → `MARKUS DIED AND THE REVOLUTION FAILED` |
+  | Simon offers his heart | Simon alive and FRIEND+, North below the threshold or dead | Jericho SmallDown; no refusal possible |
+  | Nobody | | `MARKUS DIED AND THE REVOLUTION FAILED` |
+
+**Machine gun** (`COORDINATE ATTACK`):
+- HUD `NORTH'S GROUP WILL CHARGE` / `NORTH'S GROUP WILL COVER`. Sending North's group to charge gives `SEND NORTH TO HER DEATH`.
+- Success: `DRONE ATTACKS NORTH'S GROUP`; shoot the drone or North dies.
+- If the success rate falls to 0%, at the gun or earlier: `ANDROIDS HAVE TO FALL BACK` (North SmallDown, Jericho LargeDown).
+  - `SIMON GETS SHOT`: North already dead and the rate hits 0% "before Simon rushes forward" (wiki); readers confirm.
+  - `NORTH GETS SHOT`: wiki "if North … status is below COMPANION"; a reader disputes this.
+  - `MARKUS AND NORTH TAKE SHELTER IN STORE`: North COMPANION or LOVER per the wiki.
+  - Otherwise `MARKUS TAKES SHELTER IN STORE`.
+
+**Final assault** (PM 11:07). `MARKUS IS HIT BY EXPLOSION`, then:
+- Machine Connor: "It took me a while to find you, Markus." The player chooses `CONTROL CONNOR` or `CONTROL MARKUS`. Each fight is a quick-time event; whoever wins decides.
+  - Connor wins: `CONNOR STOPPED THE REVOLUTION`.
+  - Markus wins: Connor says "It's not over, Markus… It will never be over…"
+- Deviant Connor, or none: `SOLDIERS APPROACH MARKUS` (a quick-time event).
+- On success: `SHOOT TANKS` → `ASSAULT WAS SUCCESSFUL`. "The humans are abandoning the camp… We won!" Markus: "This is not a victory. It's the beginning of a war."
+
+**Store, alone:**
+- Machine Connor arrives: "My mission is to neutralize the leader of the deviants… and I always accomplish my mission." Choices `SHOOT`, `SPARE` (Amanda LargeDown), timeout `NO CHOICE`.
+  - With the detonator, after SHOOT or SPARE Markus may `DETONATE THE BOMB` / `DO NOT DETONATE`.
+  - The wiki says not detonating after SPARE still ends in `CONNOR EXECUTED MARKUS`; PowerPyx lists SPARE → `CONNOR SPARED MARKUS`.
+- Without Connor: `SUICIDE` / `SURRENDER` ("DROP YOUR GUN! FIRE!") / `DIRTY BOMB`.
+
+**Store with North:**
+- `KISS` (Lover; North SmallUp)
+- `DIRTY BOMB` → `PRESS` / `GIVE UP`
+- `SUICIDE` → `CONFIRM SUICIDE` / `PUT DOWN`
+- `SURRENDER` (North SmallDown)
+
+**North leading.** North's message, charge and flag (PO large down for the flag "if Markus is dead"). `DEVIANTS ARE OUTNUMBERED`. North: "We can't go back! It's victory or death now." Then:
+- With Connor a machine: the store; Connor chooses `SHOOT` / `SPARE` / `TIME OUT`.
+- Otherwise `NORTH WAS SHOT BY SOLDIERS`.
+
+### 2g. Finale scenes (all characters)
+
+**Successful demonstration and Connor.**
+
+| Situation | Outcome |
+|---|---|
+| Machine Connor in the crowd, `SHOOT` | Markus is assassinated (trophy `MISSION COMPLETE`) |
+| Machine Connor in the crowd, `DON'T SHOOT` | Amanda takeover → Zen Garden escape attempt |
+| Deviant Connor on stage with Markus | Always taken into the garden. Escaping keeps the gun holstered; failing means his body shoots Markus. |
+| Markus dead and Connor woke the army | Connor becomes leader: `SUICIDE` / `GIVE UP`; Amanda: "You represent an immense success for CyberLife." |
+
+On the leader path, the wiki's Amanda page says an escape ends with Connor "readies his gun under his jaw", and failing or giving up leaves him "secretly obeying CyberLife". Trophy for escaping: `MY TURN TO DECIDE`.
+
+**Machine Connor after Perkins.** If Markus accepted Perkins' deal and was killed, a machine Connor "will come by afterwards and leave after confirming the deviant leader is dead" (wiki Connor page).
+
+**Speeches.**
+- Peaceful speech: "Humans are both our creators and our oppressors and tomorrow… We must make them our partners."
+- Revolution speech: "If they really want peace, they must free all of us! From every camp across this country!"
+
+---
+
+## 3. Numbers
+
+**No probability is stated for any choice in this chapter.** The wiki chapter page is a stub with no probability tables. The fan transcript has no probability HUD for chapter 32; ch24's `HANK SURVIVAL PROBABILITY : 40%` has no counterpart here. Every quick-time-event outcome pair (fights, the drone, the fence, the barricade, the machine gun) is a skill result with no published odds.
+
+### Timers, distances and thresholds
+
+| Item | Figure | Source |
+|---|---|---|
+| Time to the last bus | 20 minutes | Kara: "The last bus leaves in 20 minutes. We've got to move fast." (transcript, both start variants) |
+| Route choice at the checkpoint | Checkpoint 0.750 km, 3 min ("RISKY"); detour 1.7 km, 11 min ("SAFER") | HUD `THOUGHTS.0901K.THROUGH.CHECKPOINT` / `DETOUR` |
+| Detour makes Kara late | Below 11 minutes remaining | wiki: "(if 11 minutes or more remaining - leads to 'At the Bus Terminal') OR Late for the Bus"; PowerPyx: "wait for two minutes before deciding (timer below 11 minutes) and go the detour" |
+| Arrival times | PM 11:02 on time, PM 11:15 late | `GUI.MENU.TIME.04A.KB02` / `KB02B` |
+| Border execution | About two minutes into the queue | PowerPyx: "Android is executed: will happen after about two minutes" |
+| River width | Under half a mile | Rose: "It's not even a half a mile to the other side" |
+| Water temperature | 30.8°F | HUD `DANGER TEMPERATURE : 30.8°F` |
+| Timers on injured Kara or Alice | Unstated length | HUD `BEFORE SHUTDOWN`, `BEFORE FREEZING :`, `SHUTDOWN IMMINENT :` |
+| Lighten the boat | 4 minutes | PowerPyx: "if you didn't lighten the boat within the four-minute timeframe, the boat will sink" |
+| Alice's panic | Stress 100% | PowerPyx: "she will run towards you, once her stress level has reached 100%" |
+| Elevator | Must be stopped before Floor 31; target Floor -49 | HUD `STOP ELEVATOR BEFORE FLOOR 31`, `REACH FLOOR -49` |
+| Revolution success rate | Reader-reported only: "After the timer runs out (11 seconds), they get shot, and your success % drops about 10%"; "You lose about 5% every minute or so"; "The percentage should be 45%" at the first barricade; "I've rescued Simon and the % is at 33%" | PowerPyx comments (sandman1008, DarkCreature, Pam). Not on the wiki. |
+| Markus badly wounded | After repeated hits; no count stated | wiki/PowerPyx. The benchmark's `markusHits>=3` is its own assumption. |
+| Press conference | "up to 4 or 5" questions | wiki Flowchart intro |
+| Peaceful ending threshold | Public opinion at least Sympathetic | see the next table |
+
+### Public opinion threshold for the peaceful ending
+
+| Source | Statement |
+|---|---|
+| Wiki chapter page | Sing: "President Orders Soldiers Not to Shoot (if public opinion is "Supportive" or "Sympathetic")". Kiss: "(if public perception is positive)". |
+| Wiki Public Opinion page | "it will unlock a sympathetic path and President Cristina Warren will order the U.S. Army soldiers to stand down. (Only unlocks if public opinion is "sympathetic" at least)". Also: "the primary thing that Public Opinion actually controls is whether or not Markus is shot at the end of the Demonstration." |
+| Transcript | "Public opinion is positive" / "Public opinion is negative" |
+| PowerPyx | "President Orders Soldiers Not to Shoot: Public Opinion must be supportive." Reader Adis: "i had Sympathetic which is one tier lower and they still have not killed me … on the start of the chapter i had the public opinion "Hated" … and still managed to push it to the second best." |
+
+Levels, from the wiki Public Opinion page: Supportive, Sympathetic, Indifferent, Skeptical (initial), Hostile, Hated.
+
+### Public opinion changes in this chapter
+
+| Moment | Change | Source line |
+|---|---|---|
+| `PEACEFUL` at the roadblock | small up | wiki chapter: "Choosing "peaceful" or "calm" when talking to the army {{Icon\|up}}"; Public Opinion page; transcript `PublicOpinion SmallUp` |
+| `PROVOKE` | small down | wiki: "Choosing "provoke" or "accuse"… {{Icon\|down}}"; transcript `SmallDown` |
+| `FIRM` (first round) | small up | wiki: "Choosing "firm" the first time {{Icon\|up}}"; transcript `SmallUp`. The second-round `FIRM` has no tag. |
+| `CALM` (second round) | small up | wiki; transcript `SmallUp` |
+| `ACCUSE` | small down | wiki; transcript `SmallDown` |
+| Army fires on the protesters (`ANDROIDS UNDER FIRE`) | large up | wiki chapter: "Army firing on protesters unprovoked {{Icon\|largeup}}"; Public Opinion page: "When the police fire upon Markus's protesters at the start of Battle for Detroit - Markus Demonstration." No transcript tag. |
+| `CHOOSE SLOGANS` (message to journalists) | small up | wiki: "Sending a message to the journalists {{Icon\|up}}"; transcript `PublicOpinion SmallUp` |
+| `PLANT THE FLAG` (demonstration) | small up | wiki: "Planting the flag {{Icon\|up}}". No transcript section. |
+| Protest successful and Connor did not wake the tower androids | large up | wiki chapter: "Protest being successful, Connor not waking up the CyberLife Tower androids {{Icon\|largeup}}". Not on the stat page. |
+| Markus or North attacks the camp | large down | wiki chapter: "Markus/North choosing to attack the camp {{Icon\|largedown}}"; Public Opinion page: "In Hart Plaza after Markus sends the humans a message in Battle for Detroit - Markus Revolution" and "After North plants the flag in Hart Plaza … if Markus is dead" |
+| Sing or kiss, opinion at least Sympathetic | large up (listed) | Public Opinion page, under Large Increase. In effect this is the outcome, not a gate. |
+| Kara's terminal TV, Civil War magazine, border news | none stated | |
+
+### Relationship changes in this chapter
+
+| Character | Moment | Change | Source line |
+|---|---|---|---|
+| Alice | `SAVE JERRYS` / `SAVE LUTHER` | small up | wiki chapter: "Agreeing to save Luther/the Jerrys {{Icon\|up}}"; Relationship Stat (Alice, Small Increase); transcript `Alice SmallUp` |
+| Alice | `KEEP GOING` / `HURRY` | small down | wiki: "Refusing to save Luther/the Jerrys {{Icon\|down}}"; transcript `SmallDown` |
+| Alice | Kara or Luther shoots the checkpoint guards | small down | wiki: "Kara or Luther kill the soldiers at the checkpoint {{Icon\|down}}"; transcript `SmallDown` |
+| Alice | Late for the bus | small down | wiki: "Miss the bus {{Icon\|down}}"; transcript `Alice SmallDown` under "Took too much time - Miss the bus" |
+| Alice | `RETURN TICKETS` | small up | wiki "Return bus tickets {{Icon\|up}}"; transcript `SmallUp` |
+| Alice | `KEEP TICKETS` | small down | wiki "Keep bus tickets {{Icon\|down}}"; transcript `SmallDown`, on the second KEEP |
+| Alice | `SACRIFICE JERRY` | small down | wiki: "Sacrifice Luther or Jerry at the border {{Icon\|down}}"; transcript `SmallDown` |
+| Alice | `SACRIFICE LUTHER` | small down | wiki (same line); stat page: "(Luther is alive and has "Family" relationship in this situation)". No transcript tag. |
+| Alice | Reach Canada by bus (`NO SACRIFICE`, or the crossing endings) | small up | wiki "Reach Canada by bus {{Icon\|up}}"; stat page lists the endings `THE GROUP CROSSED THE BORDER` and `KARA & ALICE CROSSED THE BORDER`; transcript `Alice SmallUp` on `NO SACRIFICE` |
+| Luther | Final `DO NOTHING` at the checkpoint | small up | wiki: "Telling him not to shoot the guards at the checkpoint {{Icon\|up}}"; transcript `Luther SmallUp` |
+| Luther | Late for the bus | small down | wiki "Miss the bus {{Icon\|down}}". No transcript tag. |
+| Luther | `RETURN TICKETS` | small down | wiki "Return bus tickets {{Icon\|down}}". No transcript tag. |
+| Luther | `KEEP TICKETS` | small up | wiki; transcript `Luther SmallUp` |
+| Luther | Reach Canada / `NO SACRIFICE` | small up | wiki "Reach Canada {{Icon\|up}}"; stat page "The Group Crossed the Border"; transcript `Luther SmallUp` |
+| Jericho | Message to the journalists (demonstration) | small up | wiki "Sending a message to the journalists {{Icon\|up}}"; transcript `Jericho SmallUp` |
+| Jericho | Plant the flag (demonstration) | small up | wiki; stat page "Choosing to plant their flag" |
+| Jericho | "The humans are about to launch an attack" (after refusing Perkins) | small up | wiki "Markus says that the humans are about to launch an attack {{Icon\|up}}". No transcript tag. |
+| Jericho | Assault successful | large up | wiki "Assault is successful {{Icon\|largeup}}"; stat page Large Increase |
+| Jericho | Assault fails | large down | wiki "{{Icon\|largedown}}"; transcript `Jericho LargeDown` at "Assault failed" |
+| Jericho | North or Simon gives Markus their heart | small down | wiki "{{Icon\|down}}"; transcript `Jericho SmallDown` (both) |
+| North | Assault successful | large up | wiki; stat page "(Only if she is still alive)" |
+| North | Assault fails | small down | transcript `North SmallDown` at "Assault failed". Not on the wiki. |
+| North | `KISS` in the store | small up | wiki "Kissing her in the CyberLife store {{Icon\|up}}"; transcript `North SmallUp` |
+| North | `SURRENDER` in the store | small down | stat page; transcript `North SmallDown` |
+| North | `ACCEPT DEAL` (Perkins) | small down | stat page (North, Small Decrease). No transcript tag. |
+| Josh | Helps finish the barricade | small up | stat page (Josh, Small Increase) |
+| Josh | `ACCEPT DEAL` | small down | wiki "Accepting Perkins' deal {{Icon\|down}}"; transcript `Josh SmallDown` |
+| Simon | Saved during the revolution | large up | wiki; transcript `Simon LargeUp` |
+| Simon | Assault successful (after saving him) | large up | wiki; stat page "after managing to save Simon" |
+| Simon | `ACCEPT DEAL` | small down | wiki; transcript `Simon SmallDown` |
+| Hank | `SAVE HANK` at CyberLife Tower | large up | wiki: "Choosing "save Hank" at CyberLife Tower {{Icon\|largeup}}"; stat page Large Increase |
+| Hank | Hank shoots Connor-60 | large up | wiki; stat page: "Just after Hank shoots the other Connor" |
+| Hank | `SACRIFICE HANK` | large down | wiki; stat page: "Connor decides to sacrifice Hank and says sorry to him" |
+| Hank | Hank confronts Connor on the rooftop | large down | wiki: "Hank confronts Connor on the rooftop {{Icon\|largedown}}"; stat page: "If Connor is a still a machine or died as a deviant in Crossroads in Battle for Detroit-Connor's Last Mission." A reader: "I was friends with him but at this chapter (machine Connor) it immediately dropped down to hostile." |
+| Hank | Not insisting about his son | large down | wiki; stat page "(same as choosing to "Attack")" |
+| Hank | `ATTACK` Hank | large down | wiki; stat page "after insisting about his son" |
+| Amanda | Connor stays a machine and the uprising fails | large up | wiki chapter. Not on the stat page. |
+| Amanda | Connor refuses to shoot Markus after a failed assault (`SPARE` in the store) | large down, to Betrayed | wiki; stat page "(leads to "betrayed" relationship)"; transcript `Amanda LargeDown` |
+
+**No relationship change is stated for:**
+- Kara Captured: none at all
+- the Todd scene
+- the coastguard choice
+- the boat
+- the Last Mission dialogue rounds (only the outcomes above)
+- the dog and son questions
+- `SHOW DETERMINATION`
+- the barricade item
+- the last-stand choice
+- the Josh rescue
+
+### Software instability
+
+| Moment | Change | Source line |
+|---|---|---|
+| Fail to escape the Zen Garden | large down | wiki chapter: "Fail to escape the [[Zen Garden]] {{Icon\|largedown}}". Not on the Software Instability page. |
+| Connor deaths here | Not stated for this chapter | The Software Instability page's general rule: "Dying reduces software instability". |
+
+The stat page also notes: "If Connor deviates but dies in Night of the Soul and is back to being a machine in Battle for Detroit, the Software Instability status … still displays "Deviant"."
+
+---
+
+## 4. Cross-chapter dependencies
+
+### Inputs from earlier chapters
+
+| Earlier chapter / state | Effect here | Source |
+|---|---|---|
+| Crossroads: Connor becomes deviant (and survives Night of the Soul) vs stays a machine | Decides the CyberLife Tower vs Last Mission chart, and machine-Connor encounters in Markus's chart | PowerPyx Connor page; wiki Connor page |
+| Night of the Soul: Markus shoots deviant Connor ("Don't Trust") | Last Mission opens with `IN THE ZEN GARDEN` / `TALK TO AMANDA` | wiki flowchart "(If Connor became a deviant in Crossroads and then was killed by Markus by choosing "Don't Trust" in Night of the Soul)"; PowerPyx readers |
+| Night of the Soul: demonstration vs revolution | Markus's chart. Also, in Kara's chapter: the terminal TV (#46/#47), the Civil War magazine, the border bulletin (#74/#75), the no-sacrifice outcome (#94/#95), Rose's and Adam's lines, and the camp liberation. | wiki; transcript "Markus is demonstrating peacefully / leading a violent revolution" |
+| Markus dead before this chapter (Freedom March, raid, Night of the Soul) | `NORTH IN HART PLAZA` ([cond] `NORTH BECAME LEADER IN A PREVIOUS SCENE`); the President's question variant; Connor may become leader | chart tab; transcript |
+| Crossroads: Markus took the detonator | `OBSERVE DETONATOR` (demonstration) and `DETONATE BOMB` (store); [cond] `TOOK DETONATOR IN 'CROSSROADS'` | chart tabs |
+| Last Chance, Connor: Hank hostile and resigns → Night of the Soul: Hank's suicide | `CAPTAIN ALLEN INTERVENES` and `A NEW CONNOR ARRIVES` ([cond] `HANK COMMITTED SUICIDE IN 'NIGHT OF THE SOUL'`); otherwise Hank on the roof or as hostage | chart tabs; transcript "Hank wasn't hostile in Last Chance, Connor and didn't resign" |
+| Hank relationship FRIEND | Rooftop `LEAVE`/`GIVE UP` ("Be friend with Hank"); the credits reunion | transcript lock; wiki |
+| Russian Roulette: Cole's photo seen | `COLE` highlighted at the tower. Wiki: the rooftop `TALK ABOUT HANK'S SON` also needs it. | wiki Notes; transcript lock "Will be highlighted if Connor looked at the photo in Russian Roulette" |
+| Connor died many times | Hank's extra rooftop line ("Everytime you died and came back…"); trophy `I'LL BE BACK` | transcript; Trophies page |
+| The Hostage: Connor died or not | Allen's greeting variant | transcript |
+| Meet Kamski | Kamski's "I always leave an emergency exit in my programs" sets up the Zen Garden escape | wiki Connor/Kamski pages |
+| Waiting for Hank / Last Chance, Connor: Zen Garden stone seen (`FIND MAGIC STONE` / `LOOK AT MAGIC STONE`) | The objective reads `FIND GARDEN STONE ?` rather than `FIND AN EMERGENCY EXIT ?` | HUD `1103M.STONE` / `STONENOSEEN` |
+| Last Chance, Connor: Connor deactivated (Jericho not found) | No Connor in Markus's store or in the North path | PowerPyx: "Connor was decommissioned (insufficient evidence / didn't find location of Jericho in time)" |
+| Jericho attacked or not (Connor located it) | Luther present at Kara's start; the broadcast node #3; the Jericho Assault press question | transcript; PowerPyx |
+| Crossroads: Kara captured in the raid vs escaped | Kara Captured vs Leaving | PowerPyx |
+| Crossroads: Luther saved / Midnight Train: Luther died | `FIND LUTHER & JERRY` vs `FIND JERRYS`; every Luther option; the two-name ending variants | chart tab `LUTHER SAVED IN 'CROSSROADS'`; Kara Captured tab `SAVED IN PREVIOUS SCENES` |
+| Midnight Train: Luther killed the cop | Adam's hostile line at the river/border ("You took a man's life.") | transcript template `talkWithAdam` |
+| Stormy Night: Todd alive | `MEET TODD` | transcript lock |
+| A New Home: Alice's box opened | `YOUR STORY`, the only way to persuade Todd | transcript lock |
+| Fugitives: met Ralph (squat) | `TALK TO RALPH`, Ralph's diversion, `RALPH INTERVENES` | chart tab `MET IN 'FUGITIVES'`; wiki "Kara stayed in the Squat" |
+| Zlatko: freed the scarred androids | `TALK TO SCARRED ANDROID`, the casualty-free diversion | chart tab `FREED IN 'ZLATKO'` |
+| North relationship (Lover / Companion / Friend) | `KISS NORTH` (both charts); North takes a bullet; Perkins' offer to spare her; North's heart; the store with North | transcript locks; wiki/PowerPyx (thresholds conflict; see §8) |
+| Simon/Josh/North alive | `NORTH/JOSH/SIMON JOINS HIM`; who speaks; Josh and Simon events; heart offers | chart; transcript |
+| Public opinion (accumulated) | The President's question variant; the peaceful last stand | transcript; wiki |
+| Crossroads/Night of the Soul: Kara abandoned Alice | YK500 advertisement credits scene | wiki Kara page |
+
+### Dependencies between storylines inside the chapter
+
+The chapter interleaves the three storylines by clock time. Connor at the tower or rooftop comes at PM 10:48, Kara at 10:51, Markus at 10:56. The tower's Floor -49 and the Revolution charge come at 11:01; Kara reaches the terminal or the lines at 11:02 to 11:08; the barricade at 11:08; the border at 11:30; the speech at 11:42 to 12:01.
+
+- **Markus revolution success** decides `MARKUS LIBERATES ANDROIDS`, `ALICE/KARA FREED BY MARKUS` and `TALK TO ANDROID BEHIND KARA` in Kara Captured. A reader: "North leading the revolution will NOT unlock this option".
+- **Markus's approach** decides Kara's no-sacrifice crossing at the border.
+- **Machine vs deviant Connor** decides `CONNOR FINDS MARKUS` vs `SOLDIERS APPROACH MARKUS`, `CONNOR ARRIVES` vs `SOLDIERS SURROUND STORE` in the store, `NORTH TAKES SHELTER IN STORE` vs `NORTH WAS SHOT BY SOLDIERS`, and the crowd assassination after a peaceful win.
+- **Connor freed the CyberLife androids** changes:
+  - Warren's address after a successful demonstration ("thousands of androids invaded the city… I have ordered the army to retreat")
+  - the dirty-bomb broadcast ("liberated over one million androids")
+  - the wiki's public-opinion large up "Connor not waking up the CyberLife Tower androids"
+  - Connor joining Markus on stage
+- **Markus and Jericho dead** while Connor woke the army: Connor becomes the leader.
+
+### Outputs
+
+The game ends after this chapter. What it sets:
+- the credits scenes (§5)
+- the trophies:
+  - `SURVIVORS`
+  - `HAPPY FAMILY`
+  - `PARTNERS`
+  - `SAFE HARBOR`
+  - `LIBERATION`
+  - `MORAL VICTORY`
+  - `ESCAPE DEATH`
+  - `MY TURN TO DECIDE`
+  - `AN ARMY OF ME`
+  - `MISSION COMPLETE`
+  - `JUST A MACHINE`
+  - `UNDEFEATED`
+  - `I'LL BE BACK`
+  - `THIS IS MY STORY`
+- the main-menu Chloe state on later sessions.
+
+---
+
+## 5. Endings
+
+There are 61 chapter endings, exactly as printed. Conditions summarise §2.
+
+### Kara Leaving Detroit (12)
+
+| Ending | Icon | Conditions |
+|---|---|---|
+| `SOLDIERS EXECUTED KARA, ALICE & LUTHER` | [⊘] | Terminal security check: `FLEE` or `HAND OVER ID` with Luther present |
+| `SOLDIERS EXECUTED KARA & ALICE` | [⊘] | The same without Luther, or Todd not persuaded without Luther |
+| `EVERYONE WAS ARRESTED AND KILLED` | [⊘] | Border `SACRIFICE NO ONE` while Markus leads a revolution |
+| `THE GROUP CROSSED THE BORDER` | none | `SACRIFICE NO ONE` (demonstration) or `SACRIFICE JERRY`, Luther alive |
+| `KARA & ALICE CROSSED THE BORDER` | none | The same with Luther dead, or `SACRIFICE LUTHER` |
+| `ALICE GOT TO CANADA WITH LUTHER` | [skull] | `SACRIFICE KARA`, Luther alive |
+| `ALICE GOT TO CANADA WITH ROSE` | [skull] | `SACRIFICE KARA`, Luther dead |
+| `THE GROUP DIED` | [⊘] | Coastguard `SURRENDER` or timeout |
+| `KARA & ALICE SURVIVED` | none | River with no injuries (`DIVE`, or `HIDE BEHIND LUTHER`) and the boat lightened in time |
+| `KARA DIED AND ALICE SURVIVED` | [skull] | Kara injured (`PROTECT ALICE`) |
+| `ALICE DIED AND KARA CONTINUED ALONE` | [⊘] | Alice injured (`HIDE`/`ACCELERATE`), then `CONTINUE LIVING` |
+| `KARA & ALICE DIED` | [⊘] | Alice injured, then `KARA CHOOSES DEATH`; or the boat sank (`REACH CANADA BY SWIMMING`) |
+
+### Kara Captured (15)
+
+| Ending | Icon | Conditions |
+|---|---|---|
+| `KARA LEAVES CAMP WITHOUT ALICE` | [⊘] | `VOLUNTEER` → `CLIMB TRUCK` → `LEAVE`. Then Alice dies in the machine, or is freed by Markus (revolution success). |
+| `KARA IS KILLED BY THE DRONE` | [skull] | Shot by the enclosure drone a second time. Then Alice dies alone, or is freed by Markus. |
+| `KARA IS DEAD` | [⊘] | `DO NOT INTERVENE` when Alice panics → Alice shot; Markus does not free the camp. Printed this way although Alice is the one shot first. |
+| `KARA FREED BY MARKUS` | [⊘] | The same, with the revolution successful |
+| `KARA DIED IN THE LINES` | [skull] | Shot twice in the lines (`GET KILLED`) or `INTERVENE` for Alice. Then Alice is freed by Markus or dies in the machine. |
+| `ALICE & KARA DIED IN RECYCLING MACHINE` | [⊘] | Reached the machine with no liberation |
+| `KARA & ALICE SURVIVED` | none | Reached the machine as Markus's revolution succeeds (`MARKUS LIBERATES ANDROIDS`) |
+| `KARA & ALICE WERE KILLED` (twice) | [⊘] | Too slow at the wire, or fled the soldier, or lost the fight with no rescuer; Luther dead or used |
+| `KARA, LUTHER AND ALICE WERE KILLED` (twice) | [⊘] | The same with Luther present |
+| `ALICE ESCAPED ON TRUCK` | [skull] | Kara previously shot (`KARA IS TOO DAMAGED TO PROCEED`), Luther dead |
+| `ALICE & LUTHER ESCAPED BY TRUCKS` | [skull] | The same, Luther alive |
+| `KARA & ALICE ESCAPED ON TRUCK` | none | Won the fight with Luther dead; or lost it and Ralph or Luther intervened |
+| `KARA, LUTHER AND ALICE ESCAPED ON TRUCK` | none | Won the fight with Luther alive and not used as the diversion |
+
+### Connor's Last Mission (3)
+
+| Ending | Icon | Conditions |
+|---|---|---|
+| `CYBERLIFE DECIDED TO SEND ANOTHER CONNOR` | [skull] | Hank kills Connor, Connor falls from the roof (failed dodge after `SAVE HANK`), or `FLEE` from Allen. A replacement continues. |
+| `CYBERLIFE DECIDED TO SEND ANOTHER CONNOR` | [skull] | Allen destroys Connor (lost fight) |
+| `CONNOR LEFT ROOFTOP` | none | `GIVE UP` (Hank FRIEND, insisted on the son), or after `MISSED OPPORTUNITY` (Hank killed, Hank fell, Allen's team killed) |
+
+### Connor at the CyberLife Tower (8)
+
+| Ending | Icon | Conditions |
+|---|---|---|
+| `CONNOR WAS AMBUSHED AND SHOT` | [skull] | Elevator reached Floor 31 |
+| `CONNOR WAS SHOT BY SECURITY` | [skull] | Lost the elevator fight |
+| `CONNOR WAS SHOT BY SECURITY` | [skull] | Lost the Floor -49 fight (camera not hacked) |
+| `THE ANDROIDS WOKE UP` (padlock) | lock | `SWAP CONSCIOUSNESS` after being shot by Connor-60 |
+| `THE ANDROIDS WOKE UP` (padlock) | lock | `COLE` → Hank kills Connor-60 → `RESUME CONVERSION`, or Connor wins the fight outright. Hank alive: the best Connor outcome. |
+| `THE ANDROIDS WOKE UP` | [skull] | Connor dies after Hank was sacrificed and the conversion finished (`TALK`/`STAND`/`DRAW GUN`) |
+| `THE ANDROIDS REMAINED DORMANT` | [skull] | Connor dies before converting (Hank dead, or sacrificed but not finished) |
+| `THE ANDROIDS REMAINED DORMANT` | [skull] | `OUT OF TIME` when saving Hank, or a wrong son's name (`HANK KILLS CONNOR`) |
+
+### Markus Demonstration (5)
+
+| Ending | Icon | Conditions |
+|---|---|---|
+| `MARKUS DIED AFTER BETRAYING HIS PEOPLE` | [skull] | `ACCEPT DEAL` |
+| `MARKUS DIED PROTECTING HIS PEOPLE` | [skull] | Failed the barricade quick-time event and North could not take the bullet |
+| `ANDROIDS WON FREEDOM - FOR THE MOMENT` | none | `SING`, or `KISS NORTH` (Lover), with public opinion at least Sympathetic |
+| `MARKUS DIED WITH HIS PEOPLE` | [skull] | `SING`/`KISS` with lower opinion, `SACRIFICE`, or `DO NOTHING` |
+| `ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT` | none | `OBSERVE DETONATOR` → `PRESS` |
+
+### Markus Revolution (18)
+
+| Ending | Icon | Conditions |
+|---|---|---|
+| `MARKUS DIED AND THE REVOLUTION FAILED` | [skull] | Badly wounded and refused North's heart, or nobody to save him |
+| `CONNOR STOPPED THE REVOLUTION` | [skull] | Machine Connor wins the battlefield fight (player chose `CONTROL CONNOR` and won) |
+| `ASSAULT WAS SUCCESSFUL` | none | `SHOOT TANKS` after beating Connor or the soldiers |
+| `MARKUS DIED AND THE REVOLUTION FAILED` | [skull] | Lost the fight as Markus, or failed against the soldiers |
+| `CONNOR EXECUTED MARKUS` | [skull] | Store, machine Connor `SHOOT` (and, per the wiki, `SPARE` without detonating when the detonator was taken) |
+| `MARKUS DIED AS DETROIT BURNS` | [skull] | Store, Connor present, Markus detonates |
+| `CONNOR SPARED MARKUS` | none | Store, `SPARE` (Amanda drops to Betrayed) |
+| `MARKUS AND CONNOR KILLED EACH OTHER` | [skull] | Store, the Connor choice times out |
+| `MARKUS DIED LEAVING STORE` | [skull] | Alone, no Connor, `SURRENDER` |
+| `MARKUS COMMITTED SUICIDE` | [skull] | Alone, `SUICIDE` |
+| `MARKUS WATCHED DETROIT BURN` | none | Alone, `DETONATE BOMB` |
+| `MARKUS AND NORTH WATCHED DETROIT BURN` | none | With North, `DETONATE BOMB` |
+| `MARKUS AND NORTH DIED LEAVING THE STORE` | [skull] | With North, `SURRENDER` |
+| `MARKUS AND NORTH COMMITTED SUICIDE` | [skull] | With North, `SUICIDE` |
+| `NORTH WAS SHOT BY SOLDIERS` | [skull] | North leads; Connor deviant or deactivated |
+| `NORTH WAS SHOT BY CONNOR` | [skull] | North leads; machine Connor `SHOOT` |
+| `CONNOR SPARED NORTH` | none | North leads; `SPARE` |
+| `NORTH AND CONNOR KILLED EACH OTHER` | [skull] | North leads; timeout |
+
+### After the chapter endings
+
+These are from the transcripts and wiki character pages. None is a chart node.
+
+**Speeches and broadcasts:**
+- Markus's speech (PM 11:42 / AM 12:01): the peaceful version or the revolution version.
+- Warren's address, in these variants:
+  - Successful demonstration with Connor's army: "I have ordered the army to retreat… Perhaps the time has come for us to consider the possibility that androids are a new form of intelligent life."
+  - Markus died after `SACRIFICE`, `KISS` or `SING`: "I have called for the android destruction to be suspended until further notice. I have also ordered a Senate Select Committee…" The cause still wins posthumously. The wiki Public Opinion page adds: "The public's opinion will always side with the androids at the end of Markus's Demonstration so long as the bomb is not detonated and Connor does not bring in the army."
+  - Markus died any other way: "The total destruction of all androids will soon be complete".
+  - Dirty bomb: "The city may remain uninhabitable for decades… Markus: We!.. Are!.. Free!"
+
+**Credits scenes:**
+- Hank waits at the Chicken Feed and hugs Connor: "If Connor and Hank are both alive; their relationship status is FRIEND and there has been a successful android uprising".
+- Machine Connor is replaced by the RK900 after a thwarted uprising: "Amanda introduces him to the upgraded RK900 Connor model and tells him he will be deactivated".
+- Machine-Connor success in a spring Zen Garden.
+- Kara sees a YK500 advertisement: Kara abandoned Alice "and Markus was successful".
+- Zlatko's servant Kara (from the Zlatko chapter).
+- The "Kamski ending" Hank suicide (Connor deactivated, Kara dead or a servant, Markus dead or banned).
+- Kara Captured escapees at the landfill (AM 07:37).
+
+**Chloe.** After the credits on the first completion: `YES` (she leaves) / `NO` (she resets).
+
+### What the best outcomes require
+
+**Kara, `THE GROUP CROSSED THE BORDER` with Luther (trophy `HAPPY FAMILY`, also `SAFE HARBOR`):**
+- Luther alive and saved in Crossroads (or present all along).
+- Save Luther and Jerry; reach the terminal on time.
+- `STEAL TICKETS`; `SACRIFICE NO ONE` while Markus demonstrates. `SACRIFICE JERRY` also gives this ending with an Alice dip.
+
+**Kara, captured alternatives:**
+- `KARA, LUTHER AND ALICE ESCAPED ON TRUCK`: use the scarred android for both diversions, avoid any shot, win the fight.
+- `KARA & ALICE SURVIVED`: wait for a successful revolution.
+
+**Markus, peaceful:**
+- Refuse Perkins (either step).
+- Win the barricade quick-time event, or have North as Lover take the bullet.
+- `SING` or `KISS NORTH` with public opinion at least Sympathetic.
+- Raise opinion along the way with PEACEFUL/FIRM, CALM, slogans and the flag (and the large up when the army fires).
+- Trophy `MORAL VICTORY`.
+
+**Markus, revolution (trophy `LIBERATION`):**
+- Avoid three hits, or have a heart donor.
+- Win the machine-gun push.
+- Beat machine Connor as Markus, or neutralise the soldiers.
+- Keeping Simon alive (save him) and North alive (shoot the drone) costs nothing extra.
+
+**Connor, deviant:**
+- Hack the camera, copy the guard's voice, reach Floor -49.
+- `STOP CONVERSION TO SAVE HANK` → fight → `SUMO` and `COLE` (or win the fight).
+- `THE ANDROIDS WOKE UP` with Hank alive (trophies `AN ARMY OF ME`, `PARTNERS` if FRIEND).
+- Escape the Zen Garden (`MY TURN TO DECIDE`); the Hank hug in the credits.
+
+**Connor, machine:** with Hank FRIEND, insist on the son and `LEAVE` (`CONNOR LEFT ROOFTOP`). The machine "success" endings (`CONNOR STOPPED THE REVOLUTION`, the crowd shot) kill Markus.
+
+**`SURVIVORS` needs everyone alive at the end.** Per the PowerPyx trophy guide title, "everyone survives".
