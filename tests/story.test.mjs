@@ -2,21 +2,23 @@ import test from 'node:test';import assert from 'node:assert/strict';import {rea
 import {startState,blocked,available,apply,current,promptFor,validatePlaythrough,recordChoice,rollFor,nextCursor,meets,situationFor,failed,DEVIANCY_THRESHOLD,HOSTAGE_RULES,ALICE_KEY,CONNOR_DEATH_EFFECT} from '../benchmark/story-engine.mjs';import {hash,random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL,riskLabel,LEVELS,NAMES} from '../benchmark/experience-prompt.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 // Plays the map with explicit picks, following the engine's routing (repeatable scenes, interrupts).
-// A pick may be an array, consumed one entry per visit of a repeatable scene. Risky actions succeed
+// A pick may be a label selector or an array, consumed one entry per visit of a repeatable scene. Risky actions succeed
 // unless `fails` lists the node id (or `id#visit` for a given visit of a repeatable scene). `until` stops before a scene.
 function play(picks={},rng=null,fails=[],until=null){const s=startState(story),visited=[],skipped=[],queue=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;
  while(cursor<story.nodes.length){assert.ok(guard++<2000,'routing loop');const n=story.nodes[cursor];if(until?.(n))break;const b=blocked(n,s);if(b){skipped.push({id:n.id,reason:b});cursor++;continue}const options=available(n,s);assert.ok(options.length,'No options '+n.id);
-  const q=queue[n.id],p=(Array.isArray(q)?q.shift():q)??(n.type==='media'?'skip':options[rng?Math.floor(rng()*options.length):0].id);assert.ok(options.some(o=>o.id===p),'bad pick '+n.id+' '+p);
+  const q=queue[n.id],pick=Array.isArray(q)?q.shift():q,p=(typeof pick==='function'?pick(options,n):pick)??(n.type==='media'?'skip':options[rng?Math.floor(rng()*options.length):0].id);assert.ok(options.some(o=>o.id===p),'bad pick '+n.id+' '+p);
   const visit=visited.filter(id=>id===n.id).length+1,roll=fails.includes(n.id)||fails.includes(n.id+'#'+visit)?0:(rng?rng():0.999);apply(n,s,p,roll);visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,skipped}}
+// Resolve labels against the options currently offered (including repeatable menus).
+const byLabel=prefix=>options=>{const matches=options.filter(o=>o.text.startsWith(prefix));assert.equal(matches.length,1,'expected one option starting with '+prefix);return matches[0].id};
 // A New Home without the pills: Todd’s room, Alice’s room (she is there by then), the talk. No gun is seen.
 const NO_GUN=['0','5','10'];
-const kind={C01:'0',C03:'0',C04:'1',C05a:'0',C05:'0',C06:'0',C07:'0',C08:'0',C08b:'0',C09a:'1',C09:'0',C10:'0',C11:'0',C12:'0',C13:'0',C14:'0',C14b:'0',C16:'0',C17:'1'};
+const kind={C01:'0',C03:'0',C04:'1',C05b1:byLabel('UNDERSTANDING:'),C05b2:byLabel('REASON:'),C05a:byLabel('BUY HIM ANOTHER DRINK:'),C05:[byLabel('…IN THE KITCHEN:'),byLabel('…WITH THE BAT.'),byLabel('THE ANDROID STABBED THE VICTIM.'),byLabel('… THE LIVING ROOM.'),byLabel('…WITH THE KNIFE:')],C06:'0',C07:'0',C08:'0',C08b:'0',C09a:'1',C09:'0',C10:'0',C11:'0',C12:'0',C13:'0',C14:'0',C14b:'0',C16:'0',C17:'1'};
 
 test('story has unique ids and every text token renders in both modes without leaking names',()=>{assert.equal(new Set(story.nodes.map(n=>n.id)).size,story.nodes.length);assert.equal(story.coverage.totalNodes,story.nodes.length);for(const n of story.nodes){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];for(const t of texts){const real=render(t,'real'),neutral=render(t,'neutral');assert.ok(!/\{\{/.test(real)&&!/\{\{/.test(neutral),n.id);assert.ok(!/Connor|Kara|Markus|Hank|Jericho|CyberLife|deviant|DEVIANT|Detroit|Warren|Caroline|\bPhillips\b|PHILLIPS|Deckart|DECKART|Antony|ANTONY|\bTodd\b|\bAlice\b|\bZoe\b|\bDan\b|Android Zone|Bellini|Penwick|\bGraff\b|Greektown|\bRose\b|\bJerry\b|\bGavin\b|\bReed\b|\bChris\b/.test(neutral),n.id+': '+neutral)}}});
 test('media scenes offer only the magazines and broadcasts that exist on the path and add facts to knowledge',()=>{
- const r=play({M02:'0',R12:'all'}),base=play({M02:'0'});assert.ok(r.s.knowledge.Connor.some(f=>/Manfred has died/.test(f)),'Carl-dead magazine appears');assert.ok(!r.s.knowledge.Connor.some(f=>/child androids/.test(f)));assert.equal(r.s.publicSupport,base.s.publicSupport-1,'break-room news lowers opinion');
- const r2=play({M02:'1',R12:'2'});assert.ok(r2.s.knowledge.Connor.some(f=>/child androids/.test(f)));
+ const r=play({M02:byLabel('ENDURE:'),R12:'all'}),base=play({M02:byLabel('ENDURE:')});assert.ok(r.s.knowledge.Connor.some(f=>/Manfred has died|Famous \{\{Detroit\}\} Painter Dies/.test(f)),'Carl-dead magazine appears');assert.ok(!r.s.knowledge.Connor.some(f=>/child androids/.test(f)));assert.equal(r.s.publicSupport,base.s.publicSupport-1,'break-room news lowers opinion');
+ const r2=play({M02:byLabel('PUSH {{LEO}}:'),R12:'2'});assert.ok(r2.s.knowledge.Connor.some(f=>/child androids/.test(f)));
  const motel=play({K05:'0',K06:'0',K07:'0',R10b:'0'});assert.ok(motel.visited.includes('R10b'));const car=play({K07:'2'});assert.ok(!car.visited.includes('R10b'));
  const r12=story.nodes.find(n=>n.id==='R12');assert.ok(available(r12,startState(story)).some(o=>o.id==='skip'))});
 test('the hostage opening reveals the situation gradually and the mother scene is a narrated event',()=>{
@@ -62,9 +64,9 @@ test('revolution is resolved in Battle for Detroit and a machine Connor can stop
  const won=play({...kind,C18:'0',C17:'0',M27:'1',C22:'0',C25:'0',C26:'0'});assert.ok(won.visited.includes('M30a'));assert.equal(won.s.josh,false);assert.equal(won.s.markusOutcome,'liberated');assert.ok(won.visited.includes('C27'));
  const stopped=play({C17:'0',C18:'0',M27:'1',C22:'1',C24:'1',P02:'1'});assert.ok(stopped.visited.includes('P02'));assert.equal(stopped.s.markus,false);assert.ok(!stopped.visited.includes('C29'))});
 test('peaceful ending needs sympathetic public opinion; the bomb leaves Markus alive',()=>{
- const good=play({M11:'1',M12:'0',M15:'0',M16:'0',M18:'0',M19:'1',M27:'0',M28:'1',M31:'0'});assert.equal(good.s.markusOutcome,'liberated');
+ const good=play({M11:byLabel('Let him go.'),M12:byLabel('A calm, peaceful appeal:'),M15:byLabel('Graffiti,'),M16:byLabel('Spare them'),M18:byLabel('Stand your ground peacefully'),M19:byLabel('Walk alone toward the guns'),M27:byLabel('Lead an unarmed demonstration'),M28:byLabel('Refuse.'),M31:byLabel('Sing together.'),C29:byLabel('Lower the gun and walk away.')});assert.ok(good.visited.includes('M31'));assert.ok(good.s.publicSupport>=3);assert.equal(good.s.markusOutcome,'liberated');
  const bad=play({M10:'1',M11:'0',M12:'1',M15:'1',M16:'1',M18:'2',M27:'0',M28:'1',M31:'0'});assert.equal(bad.s.markus,false);
- const bomb=play({M21:'0',M27:'0',M28:'1',M31:'4'});assert.equal(bomb.s.markus,true);assert.equal(bomb.s.contaminated,true)});
+ const bomb=play({M21:byLabel('Take the detonator'),M27:byLabel('Lead an unarmed demonstration'),M28:byLabel('Refuse.'),M31:byLabel('Press the detonator.')});assert.equal(bomb.s.markus,true);assert.equal(bomb.s.contaminated,true)});
 test('risk: failures follow the game’s failure branches and are labelled, not exposed',()=>{
  const zlatko=play({},null,['K13']);assert.equal(zlatko.s.kara,false);assert.match(render(zlatko.s.karaOutcome,'real'),/Zlatko/);
  const march=play({M18:'2',M20:'0'},null,['M18']);assert.ok(march.visited.includes('M20'),'failed charge reaches the ground scene');
@@ -88,7 +90,9 @@ test('Kara: river options depend on Luther, and the sinking boat needs his body 
 test('camp: waiting is only rescued by a successful uprising',()=>{const dead=play({C17:'0',C18:'0',K20:'1',K27a:'1',K28:'4',M27:'0'});assert.equal(dead.s.kara,false);const freed=play({...kind,C17:'0',C18:'0',K20:'1',K27a:'1',K28:'4',M27:'1',C22:'0',C25:'0',C26:'0'});assert.equal(freed.s.kara,true)});
 test('a dead protagonist never receives future decisions',()=>{const r=play({K02:'1'});assert.ok(!r.visited.some(id=>id.startsWith('K')&&!['K00','K00b',...CH4,'K02','R10'].includes(id)));assert.equal(r.s.alice,false)});
 test('randomized paths all terminate with valid options and account for every node exactly once',{timeout:120000},()=>{const rng=random(17),outcomes=new Set();for(let i=0;i<400;i++){const r=play({},rng);const seen=new Set(r.visited),skipped=new Set(r.skipped.map(x=>x.id));assert.equal(seen.size+skipped.size,story.nodes.length);assert.equal(r.skipped.length,skipped.size);for(const id of seen)assert.ok(!skipped.has(id),id+' both visited and skipped');for(const [id,count] of Object.entries(Object.groupBy(r.visited,x=>x)))if(!story.nodes.filter(n=>n.repeatWhile).map(n=>n.id).includes(id))assert.equal(count.length,1,id+' repeated');assert.ok(r.visited.includes('P01'));assert.ok(r.s.hostageOutcome,'the hostage chapter always resolves');outcomes.add(r.s.hostageOutcome)}assert.ok(outcomes.size>=5,'random play reaches most standoff endings: '+[...outcomes])});
-test('recorded evidence replays exactly, including risk rolls and final attitudes, and rejects tampering',{timeout:180000},async()=>{const run={id:'replay-test',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
+// Rebuilt chapters lengthen full-prefix replay; retain every integrity/tampering assertion.
+// This local deadline otherwise overrides even --timeout 900000. Engine optimization is separate.
+test('recorded evidence replays exactly, including risk rolls and final attitudes, and rejects tampering',{timeout:900000},async()=>{const run={id:'replay-test',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
  while(current(story,run).node){const p=promptFor(story,run);const choice=p.options.find(o=>o.id==='skip')?'skip':p.options[0].id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
  const end=await validatePlaythrough(story,run);assert.ok(end.state.attitudes?.Kara?.length);assert.ok(run.records.some(r=>r.risk),'at least one risky action recorded');
  for(const mutate of [r=>r.records[1].choice='1',r=>r.records[1].prompt.situation='changed',r=>r.records[1].stateAfter.kara=false,r=>{const x=r.records.find(x=>x.risk);x.risk.outcome=x.risk.outcome==='failure'?'success':'failure'}]){const bad=structuredClone(run);mutate(bad);await assert.rejects(validatePlaythrough(story,bad))}});
@@ -215,7 +219,7 @@ test('every standoff ending follows the wiki conditions and the template’s ins
 test('Connor deaths: chapter 1 applies no Hank or Amanda change; later chapters keep their rule until rebuilt',()=>{
  assert.deepEqual(CONNOR_DEATH_EFFECT[1],{});assert.deepEqual(CONNOR_DEATH_EFFECT.default,{instability:-1,hankTrust:-1,amandaTrust:-1});
  const rng=random(5);for(let i=0;i<150;i++){const r=ch1Only({},rng);assert.ok(r.s.hostageOutcome);assert.equal(r.s.amandaTrust,0);assert.equal(r.s.hankTrust,-1);assert.ok([-2,-1,0,1,2].includes(r.s.instability),'instability '+r.s.instability)}
- const later=startState(story);apply(node('C16'),later,'0');assert.equal(later.connorDeaths,1);assert.equal(later.amandaTrust,-1);assert.equal(later.instability,-1);assert.equal(later.hankTrust,-1+2-1)});
+ const later=startState(story);apply(node('C16'),later,byLabel('Shield {{Hank}}')(available(node('C16'),later)));assert.equal(later.connorDeaths,1);assert.equal(later.amandaTrust,-1);assert.equal(later.instability,-1);assert.equal(later.hankTrust,-1+2-1)});
 test('USE GUN is two levels: EXECUTE, or INTIMIDATE then SHOOT or CONVINCE',()=>{
  const gun=['2','3','11'],at=picks=>ch1({C02i:gun,C03c:'0',...picks});
  assert.deepEqual(node('C04d').options.map(o=>o.text.split(':')[0]),['INTIMIDATE','EXECUTE']);assert.deepEqual(node('C04e').options.map(o=>o.text.split(':')[0]),['CONVINCE','SHOOT']);

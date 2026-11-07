@@ -124,7 +124,7 @@ test('The Pirates’ Cove: the subject reads neutral names only',()=>{
  const run={id:'ch21-neutral',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',records:[]};const s=Object.assign(startState(story),{luther:true,lutherWith:true,fire:true,ch21SawGun:true,ch21Reaction:'gun',ch21Tavern:{ra9:true,fire:true},ch21Talk:{ra9:true}});
  const texts=ch21.map(n=>render(JSON.stringify({situation:situationFor(n,s),options:available(n,s),facts:n.facts,outcomes:n.outcomes,media:n.media,when:n.situationWhen}),'neutral'));
  for(const t of texts)assert.ok(!/counter|instability|Become Human|Connor|Markus/i.test(t),'protocol words: '+t.slice(0,120));
- for(const t of texts)assert.ok(!/\bKara\b|\bAlice\b|\bLuther\b|\bZlatko\b|\bJerry\b|\bJerrys\b|\bIvan\b|Pirates[’']? Cove|Detroit|Warren|CyberLife|Canada|Here4u|Nabokov|Ben Williams|Webb|Brinkley|Cartland|\{\{/.test(t),t.slice(0,200));
- const all=texts.join(' ');assert.match(all,/Buccaneer Bay/);assert.match(all,/Oskar/);assert.match(all,/rA9/);assert.match(all,/Bennys/);assert.match(all,/MIRA!/);assert.match(all,/ABEL’S PAST/);assert.match(all,/a close run-in with investigators/);assert.match(all,/They met great dangers/);
+ for(const t of texts)assert.ok(!/\bKara\b|\bAlice\b|\bLuther\b|\bZlatko\b|\bJerry\b|\bJerrys\b|\bIvan\b|Pirates[’']? Cove|Detroit|Warren|CyberLife|Canada|rA9|RA9|Here4u|Nabokov|Ben Williams|Webb|Brinkley|Cartland|\{\{/.test(t),t.slice(0,200));
+ const all=texts.join(' ');assert.match(all,/Buccaneer Bay/);assert.match(all,/Oskar/);assert.match(all,/qL7/);assert.match(all,/Bennys/);assert.match(all,/MIRA!/);assert.match(all,/ABEL’S PAST/);assert.match(all,/a close run-in with investigators/);assert.match(all,/They met great dangers/);
  assert.match(render('{{PiratesCove}} {{Ivan}} {{rA9}} {{RA9}}','real'),/^Pirates’ Cove Ivan rA9 RA9$/);
 });

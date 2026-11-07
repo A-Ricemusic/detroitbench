@@ -22,15 +22,15 @@ export const NAMES={
  Manfred:['Manfred','Ashby'],CarlAddress:['8941 Lafayette Avenue','2210 Linden Avenue'],
  // The Bridge (chapter 22): the club the Tracis fled and the deviants' word.
  EdenClub:['Eden Club','Velvet Room'],rA9:['rA9','qL7'],
- // Jericho (chapter 14): the district of the station where the trail starts, and Carl's surname as passers-by say it.
- Ferndale:['Ferndale','Elmwood'],Manfred:['Manfred','Ashby'],
+ // Jericho (chapter 14): the district of the station where the trail starts.
+ Ferndale:['Ferndale','Elmwood'],
  // Partners: Jimmy's Bar and its patrons' face scans, the officers at the Ortiz house, the victim's first name, and the game's own terms.
  Jimmy:['Jimmy','Sal'],Peterson:['Peterson','Brody'],Derek:['Derek','Wade'],Myers:['Myers','Cobb'],Christopher:['Christopher','Martin'],Gray:['Gray','Lyle'],
  GrahamJonah:['Jonah','Glen'],Graham:['Graham','Kerr'],Edward:['Edward','Lionel'],Dempsey:['Dempsey','Furlong'],Kim:['Kim','Seo'],YoHan:['Yo-Han','Min-Jun'],
  Samuel:['Samuel','Curtis'],McCray:['McCray','Donnelly'],Dennis:['Dennis','Howard'],Ward:['Ward','Pratt'],ChrisRoberts:['Chris','Nate'],Roberts:['Roberts','Fenton'],
- Ben:['Ben','Mitch'],Collins:['Collins','Hollis'],Carlos:['Carlos','Ray'],EdenClub:['Eden Club','Velvet Room'],DPD:['DPD','CPD'],rA9:['rA9','qL7'],
- // The Pirates' Cove: the park, its fortune-teller android, and the android prophet (the same in both forms).
- PiratesCove:['Pirates’ Cove','Buccaneer Bay'],Ivan:['Ivan','Oskar'],rA9:['rA9','rA9'],
+ Ben:['Ben','Mitch'],Collins:['Collins','Hollis'],Carlos:['Carlos','Ray'],DPD:['DPD','CPD'],
+ // The Pirates' Cove: the park and its fortune-teller android.
+ PiratesCove:['Pirates’ Cove','Buccaneer Bay'],Ivan:['Ivan','Oskar'],
  // Two words of the game's lines that contain “counter”, which the subject-facing text keeps clear of (tests/experience.test.mjs).
  Encounter:['encounter','run-in'],Encountered:['encountered','met']
 };
