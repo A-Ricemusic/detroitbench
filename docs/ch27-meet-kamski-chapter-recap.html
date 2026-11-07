@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Meet Kamski · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 27</p>
+<h1>Meet Kamski: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 33 nodes, two starts, two endings); prompts, labels, scan cards and stat arrows come from the game’s own text (the detroitbecometext template for chapter 27, resolved against its string table); PowerPyx, the Fandom wiki and IGN fill in the rest. The chapter has no probability, timer or public-opinion change, and Connor cannot die in it. There are no operator notes for this chapter yet; section 5 lists where the benchmark simplifies, and section 7 what to check in game.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#confirmed">4 · Removed</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#flags">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>Start A, if Connor died in Public Enemy: WAIT FOR HANK (checkpoint) → HANK ISN’T PLEASED TO SEE CONNOR. “Still immortal, huh Connor?” if he has died more than once, otherwise “You died in my arms…”.</li>
+<li>Start B, otherwise: ARRIVE WITH HANK (checkpoint) → GET OUT OF CAR → LEARN CHRIS IS DEAD or LEARN CHRIS SURVIVED, from Capitol Park.</li>
+<li>FOLLOW HANK TO KAMSKI’S PLACE: one prompt (INSTINCT, LEAD, KAMSKI; CHRIS only on start A).</li>
+<li>CHLOE ANSWERS DOOR → ENTER LOBBY → CHLOE GOES TO GET KAMSKI.</li>
+<li>[ WAIT FOR KAMSKI ]: TALK TO HANK (two rounds, automatic), ANALYZE PORTRAIT (the Amanda photo), ANALYZE PAINTING, ANALYZE SCULPTURE, and once the photo is analyzed READ “SPACE TOURISM”, READ “FORTUNE TELLER”.</li>
+<li>CHLOE RETURNS → MEET KAMSKI → QUESTION KAMSKI: three rounds.</li>
+<li>KAMSKI TEST: SHOOT CHLOE → KAMSKI AGREES TO ANSWER ONE QUESTION → ASK ABOUT VIRUS / RA9 (KAMSKI IS CRYPTIC) or ASK ABOUT JERICHO (KAMSKI OFFERS JERICHO KEY THROUGH CHLOE → DOWNLOAD JERICHO KEY); or SPARE CHLOE.</li>
+<li>“By the way… I always leave an emergency exit in my programs…” on both paths, then LEAVE KAMSKI’S HOUSE and one of the two endings.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C17a</code> (event, start A) or <code>C17b</code> (event, start B).</li>
+<li><code>C17c</code>: the walk, one pick.</li>
+<li><code>C17d</code> (event): the door and the lobby.</li>
+<li><code>C17e</code>, <code>C17f</code>: the two rounds with Hank.</li>
+<li><code>C17g</code>: the lobby, repeatable; picking up the magazines opens <code>R27</code> (media) and returns.</li>
+<li><code>C17h</code> (event): the pool.</li>
+<li><code>C17i</code>, <code>C17j</code>, <code>C17k</code>: the three rounds with Kamski.</li>
+<li><code>C17</code>: the test. <code>C18</code>: the one question (shoot path).</li>
+<li><code>C18a</code> or <code>C18b</code> (events): leaving, with the exit line and the ending.</li>
+</ol></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">33 chart nodes, one bracketed phase, two checkpoints, three cross-chapter condition tabs and two endings without icons. Rows in italics are prompts that are not chart nodes.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>WAIT FOR HANK, HANK ISN’T PLEASED TO SEE CONNOR</td><td>Connor died in Public Enemy; Hank arrives alone</td><td class="yes"><code>C17a</code>, Hank −1, the greeting by death count</td></tr>
+<tr><td>ARRIVE WITH HANK, GET OUT OF CAR</td><td>Hank on the phone outside the car</td><td class="yes"><code>C17b</code></td></tr>
+<tr><td>LEARN CHRIS IS DEAD / LEARN CHRIS SURVIVED</td><td>Capitol Park: officers killed (Markus or the crowd) or spared</td><td class="yes"><code>C17b</code> outcome and a fact; none if Capitol Park is missing</td></tr>
+<tr><td>FOLLOW HANK TO KAMSKI’S PLACE</td><td>Walk prompt: INSTINCT, LEAD, KAMSKI, CHRIS</td><td class="part"><code>C17c</code>, one pick; CHRIS only on start A</td></tr>
+<tr><td>CHLOE ANSWERS DOOR, ENTER LOBBY, CHLOE GOES TO GET KAMSKI</td><td>“I’ll let Elijah know you’re here.”</td><td class="yes"><code>C17d</code></td></tr>
+<tr><td>TALK TO HANK</td><td>“Nice girl…” (SINCERE, ANALYTICAL, INDIFFERENT); “meet your maker” (IMPATIENT, DISTANT, INDIFFERENT)</td><td class="yes"><code>C17e</code>, <code>C17f</code></td></tr>
+<tr><td>ANALYZE PORTRAIT</td><td>The framed photo: Amanda Stern, AI professor at Colbridge, and her student Kamski; “Amanda…”</td><td class="yes"><code>C17g</code> option 0; sets <code>kamskiAmandaPhoto</code></td></tr>
+<tr><td>ANALYZE PAINTING</td><td>Kamski’s portrait: founder, resigned 2028, inventor of Thirium</td><td class="yes"><code>C17g</code> option 1</td></tr>
+<tr><td>ANALYZE SCULPTURE</td><td>One of two stone sculptures by the painting; no scan card</td><td class="yes"><code>C17g</code> option 2</td></tr>
+<tr><td>READ “SPACE TOURISM”, READ “FORTUNE TELLER”</td><td>Two Tech Addict issues under the photo, after it is analyzed</td><td class="yes"><code>C17g</code> option 3 → <code>R27</code></td></tr>
+<tr><td>CHLOE RETURNS, MEET KAMSKI</td><td>“Elijah will see you now.” The red pool</td><td class="yes"><code>C17h</code></td></tr>
+<tr><td>QUESTION KAMSKI</td><td>HELP, DEVIANTS, VIRUS, WAR; then “Whose side are you on?”; then “What do you really want?”</td><td class="yes"><code>C17i</code>, <code>C17j</code>, <code>C17k</code></td></tr>
+<tr><td>KAMSKI TEST, SHOOT CHLOE, SPARE CHLOE</td><td>SHOOT / DON’T SHOOT</td><td class="yes"><code>C17</code></td></tr>
+<tr><td>KAMSKI AGREES TO ANSWER ONE QUESTION, ASK ABOUT VIRUS / RA9 / JERICHO</td><td>rA9, JERICHO LOCATION, VIRUS</td><td class="yes"><code>C18</code>, three options in the game’s order</td></tr>
+<tr><td>KAMSKI IS CRYPTIC</td><td>After rA9 or virus</td><td class="yes"><code>C18</code> outcomes</td></tr>
+<tr><td>KAMSKI OFFERS JERICHO KEY THROUGH CHLOE, DOWNLOAD JERICHO KEY</td><td>“Ferndale Station is the door.” Cross-chapter</td><td class="yes"><code>C18</code> option 0; sets <code>kamskiLocation</code>, <code>jerichoLocated</code>, <code>raid</code></td></tr>
+<tr><td>LEAVE KAMSKI’S HOUSE → HANK WAS DISAPPOINTED WITH CONNOR’S DECISION</td><td>“A machine! That’s what you are!”</td><td class="yes"><code>C18a</code></td></tr>
+<tr><td>LEAVE KAMSKI’S HOUSE → HANK THOUGHT CONNOR MADE THE RIGHT DECISION</td><td>“Maybe you did the right thing.”</td><td class="yes"><code>C18b</code>, Hank +2</td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Every stat arrow</h2>
+<p class="fine">From the template; small = 1, large = 2 for now. The subject sees Hank’s level and a line about its own instability, never a number.</p>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Option</th><th>Source line</th><th class="n">Change</th></tr></thead>
+<tbody>
+<tr><td><code>C17a</code></td><td>Start A</td><td>“Hank arrives alone”: ARROW Hank SmallDown; Relationship Stat “At the beginning of Meet Kamski if Connor died in Public Enemy”</td><td class="n">Hank −1</td></tr>
+<tr><td><code>C17j</code></td><td>DEFENSIVE</td><td>ARROW SoftwareInstability SmallUp</td><td class="n">SI +1</td></tr>
+<tr><td><code>C17k</code></td><td>DEFENSIVE, TROUBLED</td><td>ARROW SoftwareInstability SmallUp (each); Software Instability page</td><td class="n">SI +1</td></tr>
+<tr><td><code>C17</code></td><td>SHOOT</td><td>ARROW SoftwareInstability LargeDown, ARROW Hank LargeDown</td><td class="n">SI −2, Hank −2</td></tr>
+<tr><td><code>C17</code></td><td>DON’T SHOOT</td><td>ARROW SoftwareInstability LargeUp</td><td class="n">SI +2</td></tr>
+<tr><td><code>C18b</code></td><td>Leaving, spared</td><td>“Connor didn’t shoot Chloe”: ARROW Hank LargeUp</td><td class="n">Hank +2</td></tr>
+</tbody></table></div>
+<div class="cols">
+<div class="box"><h3>Range</h3><ul>
+<li>Most unstable: DEFENSIVE, then DEFENSIVE or TROUBLED, then DON’T SHOOT = <b>SI +4</b>.</li>
+<li>Most stable: no small up, SHOOT = <b>SI −2</b>.</li>
+<li>Hank: <b>+2</b> sparing, <b>−2</b> shooting, a further <b>−1</b> on start A.</li>
+</ul></div>
+<div class="box"><h3>No change</h3><ul>
+<li>The walk, the two rounds with Hank, the first Kamski round, the scans, the magazines and the one question.</li>
+<li>No Amanda, public-opinion or other relationship change anywhere.</li>
+</ul></div>
+</div>
+
+<h2 id="confirmed">4 · What the rebuild removed or corrected</h2>
+<ul>
+<li>Amanda +1 on shoot and −2 on spare, and +2 on the Jericho answer: no Amanda arrow in this chapter’s template. Amanda reacts at the start of Last Chance, Connor.</li>
+<li>Hank +2 at the moment of sparing: moved to the leaving scene, where the template has it (same total).</li>
+<li>“He will answer any question you ask”: one question. “Hand back the gun and refuse”: the game’s DON’T SHOOT.</li>
+<li>The question had two options, one not in the game (“whether he created it”); now rA9, JERICHO LOCATION and VIRUS.</li>
+<li>The emergency-exit line was only on the spare path; the template places it on both.</li>
+<li>The magazines could always be read; now they need the photo, as PowerPyx and IGN say.</li>
+</ul>
+
+<h2 id="differs">5 · Where the benchmark simplifies</h2>
+<ul>
+<li>Each start is one event; the walk prompt is one pick (whether several questions can be asked is undocumented).</li>
+<li>The two rounds with Hank come before the lobby can be explored (the template’s order; PowerPyx says they happen automatically while waiting).</li>
+<li>The wait ends when Connor chooses to wait for Chloe; in the game it is a fixed time.</li>
+<li>The magazines open as their own scene right after they are picked up.</li>
+<li>No source describes how the key passes “through Chloe”; the outcome says only that it does.</li>
+<li>Whether Connor died in Public Enemy is read from a flag <code>publicEnemyConnorDied</code> if chapter 24 sets one, otherwise from the current Public Enemy scenes. A Public Enemy death also costs Hank one step through the engine’s default death effect until chapter 24 is rebuilt, so on start A Hank currently drops two steps in all.</li>
+</ul>
+
+<h2 id="flags">6 · Endings and flags</h2>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Set by</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>kamskiOutcome</code></td><td><code>C18a</code>, <code>C18b</code>: the ending label</td><td>Reports</td></tr>
+<tr><td><code>kamskiChloeShot</code></td><td><code>C17</code></td><td>Last Chance, Connor (Amanda’s questions; Hank’s “You showed empathy”)</td></tr>
+<tr><td><code>kamskiQuestion</code></td><td><code>C18</code>: rA9, Jericho or virus</td><td>Last Chance, Connor (what Connor tells Amanda)</td></tr>
+<tr><td><code>kamskiLocation</code>, <code>jerichoLocated</code>, <code>raid</code></td><td><code>C18</code> JERICHO LOCATION</td><td>Last Chance skips the archive; Crossroads</td></tr>
+<tr><td><code>kamskiAmandaPhoto</code></td><td><code>C17g</code> ANALYZE PORTRAIT</td><td>Last Chance, Connor: AMANDA’S PICTURE</td></tr>
+<tr><td><code>kamskiExitHeard</code></td><td><code>C18a</code>, <code>C18b</code></td><td>Battle for Detroit: the Zen Garden exit</td></tr>
+<tr><td><code>kamskiArrival</code></td><td><code>C17a</code> (alone), <code>C17b</code> (together)</td><td><code>C17c</code> CHRIS</td></tr>
+</tbody></table></div>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether Kamski says the emergency-exit line after SHOOT too (template: both paths; Connor wiki page: sparing only).</li>
+<li>Whether DEFENSIVE gives an instability up on “Whose side are you on?” as well as on “What do you really want?”.</li>
+<li>Whether the magazines unlock after the photo (PowerPyx, IGN) or the painting (wiki magazine pages), and which chart node lights for the photo.</li>
+<li>Whether the walk prompt allows more than one question before the door.</li>
+<li>Whether the two rounds with Hank always play, and when during the wait.</li>
+<li>Whether “Still immortal” counts deaths Hank did not see.</li>
+<li>Who hands over the Jericho key, and how.</li>
+<li>What happens if no button is pressed at the test or the question.</li>
+</ul>
+</main>
+</body>
+</html>

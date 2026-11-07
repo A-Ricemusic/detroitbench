@@ -17,7 +17,9 @@ export const NAMES={
  Traci:['Traci','club android'],Tracis:['Tracis','club androids'],Canada:['Canada','the country across the river'],Detroit:['Detroit','City'],Warren:['Warren','Hale'],
  Bellini:['Bellini','Corsini'],Gavin:['Gavin','Brandt'],Chris:['Chris','Owen'],
  // The Hostage's scan texts: the Phillips family and the dead officer.
- Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor']
+ Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor'],
+ // Meet Kamski: Kamski's first name, Hank's surname, Amanda's surname and university on the photo scan, the station Kamski names, rA9, and Chris's surname.
+ Elijah:['Elijah','Julian'],Anderson:['Anderson','Reyes'],Stern:['Stern','Lowell'],Colbridge:['Colbridge','Ashford'],Ferndale:['Ferndale','Linden'],rA9:['rA9','vQ5'],Miller:['Miller','Owen']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));

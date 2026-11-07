@@ -3,36 +3,392 @@
   "id": 27,
   "title": "Meet Kamski",
   "character": "Connor",
-  "note": "",
-  "source": "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (33 nodes) and the detroitbecometext template (8 prompts, 8 arrows, 3 observations). Two starts: WAIT FOR HANK if Connor died in Public Enemy (Hank small down), else ARRIVE WITH HANK → GET OUT OF CAR → LEARN CHRIS IS DEAD / SURVIVED (Capitol Park). Then FOLLOW HANK TO KAMSKI’S PLACE (one prompt), CHLOE ANSWERS DOOR → ENTER LOBBY → CHLOE GOES TO GET KAMSKI, [ WAIT FOR KAMSKI ] (two rounds with Hank; the Amanda photo, the painting and a sculpture; the two magazines once the photo is analyzed), CHLOE RETURNS → MEET KAMSKI → QUESTION KAMSKI (three rounds; DEFENSIVE and TROUBLED give instability small up), KAMSKI TEST: SHOOT CHLOE (instability and Hank large down; one question: rA9, Jericho location, or virus; the Jericho answer gives the key) or SPARE CHLOE (instability large up; Hank large up on leaving). Kamski’s emergency-exit line plays on both paths. Endings HANK WAS DISAPPOINTED WITH CONNOR’S DECISION and HANK THOUGHT CONNOR MADE THE RIGHT DECISION. No Amanda or public-opinion change. Researched in docs/research/ch27-meet-kamski.md.",
+  "source": "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+  ]
  },
  "decisions": [
+  {
+   "id": "MK01",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Wait for Hank (checkpoint) and Hank isn’t pleased to see Connor",
+   "context": "Connor died in Public Enemy; the replacement waits outside Kamski’s villa and Hank arrives alone. “Still immortal, huh Connor?” if Connor has died more than once, otherwise “You died in my arms… Fuck you.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Hank small down.",
+     "target": "MK03"
+    }
+   ],
+   "gate": "Condition tab CONNOR DIED IN ‘PUBLIC ENEMY’.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
+   ],
+   "note": "Start A. Template: “Hank arrives alone”, ARROW Hank SmallDown; the cut “I couldn’t decide whether I wanted you to come back” is not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C17a"
+    ],
+    "status": "implemented",
+    "note": "A narrated event; the greeting follows the death count. Reads a chapter 24 flag publicEnemyConnorDied if present, else the current Public Enemy scenes."
+   }
+  },
+  {
+   "id": "MK02",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Arrive with Hank (checkpoint), Get out of car, Learn Chris is dead / survived",
+   "context": "Connor did not die in Public Enemy and arrives in Hank’s car; Hank has been on the phone and tells him about Officer Chris Miller, attacked on patrol last night.",
+   "options": [
+    {
+     "label": "COPS KILLED IN ‘CAPITOL PARK’",
+     "effect": "LEARN CHRIS IS DEAD: executed with his own service weapon; he had just become a father.",
+     "target": "MK03"
+    },
+    {
+     "label": "COPS SPARED IN ‘CAPITOL PARK’",
+     "effect": "LEARN CHRIS SURVIVED: “He said he was saved by Markus himself.”",
+     "target": "MK03"
+    }
+   ],
+   "gate": "Connor did not die in Public Enemy; the news follows the Capitol Park choice.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Chris_Miller",
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
+   ],
+   "note": "Start B. No arrow. The crowd always kills when Markus leaves it to them.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C17b"
+    ],
+    "status": "implemented",
+    "note": "A narrated event; Hank’s news is the outcome and a fact Connor keeps. No news if the Capitol Park choice is missing."
+   }
+  },
+  {
+   "id": "MK03",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Follow Hank to Kamski’s place: the walk to the door",
+   "context": "One prompt on the path to the door.",
+   "options": [
+    {
+     "label": "INSTINCT",
+     "effect": "“I have a bad feeling, lieutenant.”",
+     "target": "MK04"
+    },
+    {
+     "label": "LEAD",
+     "effect": "How did Hank find Kamski?",
+     "target": "MK04"
+    },
+    {
+     "label": "KAMSKI",
+     "effect": "Why meet a man who left CyberLife ten years ago?",
+     "target": "MK04"
+    },
+    {
+     "label": "CHRIS",
+     "effect": "Only if Connor arrived alone: what happened to Officer Chris.",
+     "target": "MK04"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "Relationship",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg"
+   ],
+   "note": "No arrow on any option. CHRIS requires “Connor and Hank arrived separately”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C17c"
+    ],
+    "status": "implemented",
+    "note": "One pick (whether several can be asked is undocumented)."
+   }
+  },
+  {
+   "id": "MK04",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Chloe answers door, Enter lobby, Chloe goes to get Kamski",
+   "context": "An RT600 opens the door: “I’ll let Elijah know you’re here. But please, make yourself comfortable.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "None.",
+     "target": "MK05"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg"
+   ],
+   "note": "Three chart nodes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C17d"
+    ],
+    "status": "implemented",
+    "note": "One narrated event."
+   }
+  },
+  {
+   "id": "MK05",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Talk to Hank: two rounds in the lobby",
+   "context": "Hank: “Nice girl…”, then “So, you’re about to meet your maker, Connor. How does it feel?”",
+   "options": [
+    {
+     "label": "SINCERE / ANALYTICAL / INDIFFERENT",
+     "effect": "Reply to “Nice girl…”. No arrow.",
+     "target": "MK06"
+    },
+    {
+     "label": "IMPATIENT / DISTANT / INDIFFERENT",
+     "effect": "Reply to “meet your maker”. No arrow.",
+     "target": "MK06"
+    }
+   ],
+   "gate": "[ WAIT FOR KAMSKI ]; PowerPyx: happens automatically.",
+   "kind": "Relationship",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg"
+   ],
+   "note": "Chart node TALK TO HANK.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C17e",
+     "C17f"
+    ],
+    "status": "implemented",
+    "note": "Two decision scenes before the lobby can be explored (the template’s order)."
+   }
+  },
+  {
+   "id": "MK06",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Wait for Kamski: the photo of Amanda, the painting, the sculpture",
+   "context": "Optional scans while waiting. ANALYZE PORTRAIT (the framed photo by the door): Amanda Stern, AI professor at Colbridge, died 02/23/27, with her student Elijah Kamski; Connor: “Amanda…”. ANALYZE PAINTING: Kamski, CyberLife founder, resigned 2028, inventor of Thirium. ANALYZE SCULPTURE.",
+   "options": [
+    {
+     "label": "ANALYZE PORTRAIT",
+     "effect": "Unlocks the magazines, and AMANDA’S PICTURE with Amanda in Last Chance.",
+     "target": "MK07"
+    },
+    {
+     "label": "ANALYZE PAINTING",
+     "effect": "The Kamski scan card.",
+     "target": null
+    },
+    {
+     "label": "ANALYZE SCULPTURE",
+     "effect": "No card.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, during the wait.",
+   "kind": "State gate",
+   "dependsOn": [
+    "MK04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
+   ],
+   "note": "The template and PowerPyx use “portrait” for different objects; the wiki ties ANALYZE PORTRAIT to Amanda’s Picture.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C17g"
+    ],
+    "status": "implemented",
+    "note": "A repeatable lobby scene; the photo sets kamskiAmandaPhoto; waiting ends it."
+   }
+  },
+  {
+   "id": "MK07",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Read “Space Tourism” and “Fortune Teller”",
+   "context": "Two Tech Addict issues on the table under the photo: space tourism for the rich (Clear Skies); CyberLife’s quantum ‘Fortune Teller’ computer.",
+   "options": [
+    {
+     "label": "READ “SPACE TOURISM”",
+     "effect": "No stat change.",
+     "target": null
+    },
+    {
+     "label": "READ “FORTUNE TELLER”",
+     "effect": "No stat change.",
+     "target": null
+    }
+   ],
+   "gate": "After analyzing the photo (PowerPyx, IGN; the wiki’s magazine pages say the painting).",
+   "kind": "State gate",
+   "dependsOn": [
+    "MK06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://www.ign.com/wikis/detroit-become-human/Meet_Kamski"
+   ],
+   "note": "Magazines #15 and #17.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R27"
+    ],
+    "status": "implemented",
+    "note": "A media scene reached from the lobby when the magazines are picked up; it returns to the lobby."
+   }
+  },
+  {
+   "id": "MK08",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Chloe returns, Meet Kamski, Question Kamski",
+   "context": "At the pool Kamski calls deviants “perfect beings with infinite intelligence”, then asks Connor whose side he is on and what he really wants.",
+   "options": [
+    {
+     "label": "HELP / DEVIANTS / VIRUS / WAR",
+     "effect": "Connor’s opening question. No arrow.",
+     "target": "C17"
+    },
+    {
+     "label": "NEUTRAL / DEFENSIVE / DIRECT",
+     "effect": "“Whose side are you on?” DEFENSIVE: instability small up.",
+     "target": "C17"
+    },
+    {
+     "label": "AGGRESSIVE / DEFENSIVE / TROUBLED / NEUTRAL",
+     "effect": "“What do you really want?” DEFENSIVE and TROUBLED: instability small up.",
+     "target": "C17"
+    }
+   ],
+   "gate": "Every path.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "MK04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+    "https://detroit-become-human.fandom.com/wiki/Kamski%27s_house"
+   ],
+   "note": "The wiki’s Software Instability page names only the second question; the template has the small up on DEFENSIVE in both.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C17h",
+     "C17i",
+     "C17j",
+     "C17k"
+    ],
+    "status": "implemented",
+    "note": "One event and three decision scenes; at most two small ups on one path."
+   }
+  },
   {
    "id": "C17",
    "chapter": 27,
    "character": "Connor",
-   "title": "Kill Chloe for information?",
-   "context": "Kamski offers an answer in exchange for shooting an android.",
+   "title": "Kamski test: shoot Chloe for information?",
+   "context": "Kamski has Chloe kneel and puts a gun in Connor’s hand: “Destroy this machine and I’ll tell you all I know. Or spare it, if you feel it’s alive.” Hank: “Connor, don’t…”",
    "options": [
     {
-     "label": "Shoot",
-     "effect": "Obtain one question; Hank disapproves.",
+     "label": "SHOOT",
+     "effect": "Instability large down, Hank large down; Kamski answers one question.",
      "target": "C18"
     },
     {
-     "label": "Refuse",
-     "effect": "Leave without the answer; instability increases.",
-     "target": "C22"
+     "label": "DON’T SHOOT",
+     "effect": "Instability large up; Hank large up when they leave. “CyberLife’s last chance to save humanity... is itself a deviant.”",
+     "target": "MK10"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Every path.",
    "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+   "dependsOn": [
+    "MK08"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+    "https://detroit-become-human.fandom.com/wiki/Chloe"
+   ],
+   "note": "Chart nodes KAMSKI TEST, SHOOT CHLOE, SPARE CHLOE. No Amanda change in this chapter.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C17"
+    ],
+    "status": "implemented",
+    "note": "Decision scene with the game’s buttons; the earlier Amanda changes are removed."
+   }
   },
   {
    "id": "C18",
@@ -42,13 +398,18 @@
    "context": "Kamski will answer one question.",
    "options": [
     {
-     "label": "Jericho’s location",
-     "effect": "Obtain a direct route to Jericho.",
+     "label": "rA9",
+     "effect": "KAMSKI IS CRYPTIC: “Maybe it’s a messiah. Maybe it’s just a myth…”",
+     "target": "C20"
+    },
+    {
+     "label": "JERICHO LOCATION",
+     "effect": "KAMSKI OFFERS JERICHO KEY THROUGH CHLOE, DOWNLOAD JERICHO KEY: Last Chance skips the archive.",
      "target": "C22"
     },
     {
-     "label": "rA9 or the deviancy “virus”",
-     "effect": "Learn background; still need an evidence route.",
+     "label": "VIRUS",
+     "effect": "KAMSKI IS CRYPTIC: a copy error spread through androids’ identification data.",
      "target": "C20"
     }
    ],
@@ -58,10 +419,65 @@
     "C17"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "No arrow on any answer; Amanda’s reaction comes in Last Chance.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C18"
+    ],
+    "status": "implemented",
+    "note": "Three options in the game’s order; the Jericho answer sets kamskiLocation, jerichoLocated and raid."
+   }
+  },
+  {
+   "id": "MK10",
+   "chapter": 27,
+   "character": "Connor",
+   "title": "Leave Kamski’s house: the two endings",
+   "context": "Kamski: “By the way… I always leave an emergency exit in my programs… You never know…” Then Hank, in the snow.",
+   "options": [
+    {
+     "label": "HANK WAS DISAPPOINTED WITH CONNOR’S DECISION",
+     "effect": "Shot Chloe: “A machine! That’s what you are!”",
+     "target": null
+    },
+    {
+     "label": "HANK THOUGHT CONNOR MADE THE RIGHT DECISION",
+     "effect": "Spared Chloe: “Maybe you did the right thing.” Hank large up.",
+     "target": null
+    }
+   ],
+   "gate": "Decided by the test.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C17"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-endings.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
+   ],
+   "note": "The template places the emergency-exit line after the test, on both paths (the Connor wiki page puts it on sparing only).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C18a",
+     "C18b"
+    ],
+    "status": "implemented",
+    "note": "Two narrated events; the exit line is a fact on both; kamskiOutcome records the ending."
+   }
   }
  ]
 }
