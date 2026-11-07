@@ -7035,36 +7035,209 @@ Gaps:
 
 ## Chapter 27: Meet Kamski
 
-### R27 · Kamski's lobby (Connor, media)
+### C17a · Waiting for Hank (Connor, event)
 
-> You are Connor. While you and Hank wait in Kamski's lobby, there is a magazine beneath a photograph of him with a woman you recognize.
+> You are Connor. November 9th, 2038, 11:17 AM. Snow is falling on a modern villa by the river: the house of Elijah Kamski, the founder of CyberLife, who left the company years ago and now lives here as a recluse. Hank has arranged to see him about the deviants. You came on your own and wait outside. Hank’s car pulls up; he gets out and sees you standing there in the snow.
+
+- (0) Continue.
+
+_Note: The chart’s start for a Connor who died in Public Enemy: the checkpoint WAIT FOR HANK and the event HANK ISN’T PLEASED TO SEE CONNOR, behind the condition tab CONNOR DIED IN ‘PUBLIC ENEMY’, narrated as one event. Hank’s greeting is the outcome and follows the template’s two variants: “Still immortal, huh Connor?” when Connor has died more than once in all (the template’s “Connor died multiple times”; the wiki notes this plays even if the earlier death was in The Hostage), otherwise “You died in my arms…”. The template’s cut alternative (“I couldn’t decide whether I wanted you to come back this time…”) is not built. Arrow: Hank small down here (template “Hank arrives alone”, ARROW Hank SmallDown; wiki “Connor died in Public Enemy” down; Relationship Stat “At the beginning of Meet Kamski if Connor died in Public Enemy”). Whether Connor died in Public Enemy is read from a chapter 24 flag if one exists (ch24ConnorDied first, then legacy publicEnemyConnorDied), otherwise from the current Public Enemy scenes (shielding Hank, or a failed rush on the roof or in the corridor). That Connor came on his own and waits in the snow is the chart’s reading (start B is ARRIVE WITH HANK; the checkpoint image shows Hank getting out of his car while Connor waits)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17b · Arriving with Hank (Connor, event)
+
+> You are Connor. November 9th, 2038, 11:17 AM. You are in the passenger seat of Hank’s car, parked in the snow outside a modern villa by the river: the house of Elijah Kamski, the founder of CyberLife, who left the company years ago and now lives here as a recluse. Hank has arranged to see him about the deviants. Hank is standing outside the car on the phone. You get out and go over to him as he…
+
+- (0) Continue.
+
+_Note: The chart’s start for a Connor who did not die in Public Enemy: the checkpoint ARRIVE WITH HANK, the action GET OUT OF CAR and the event LEARN CHRIS IS DEAD (tab COPS KILLED IN ‘CAPITOL PARK’) or LEARN CHRIS SURVIVED (tab COPS SPARED IN ‘CAPITOL PARK’), narrated as one event. Hank’s news is the outcome, the template’s lines for each variant: “Chris died in Capitol Park” when Markus executed the officers or left them to the crowd (the crowd always kills, Capitol Park wiki), “Chris was spared” when he let them go. If the Capitol Park choice is missing from the path, Hank gives no news (the chart also draws a line from GET OUT OF CAR straight to the merge). The cut alternative (“He’d been beat to death…”) is not built. That Hank is on the phone comes from the checkpoint image (him outside the car on the phone) and the empty string keys for his call; the call itself has no lines. No stat change in this start (template: no arrow)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17c · The path to the door (Connor)
+
+> You are Connor, walking beside Hank up the snowy path to Kamski’s front door. There is time to say something before you get there.
+
+- (0) INSTINCT: tell Hank you have a bad feeling about coming here.
+- (1) LEAD: ask Hank how he found Kamski.
+- (2) KAMSKI: ask why Hank wanted to meet a man who left CyberLife ten years ago.
+- (3) CHRIS: bring up what happened to Officer Chris last night.  _needs kamskiArrival = alone_
+
+_Note: The chart’s action FOLLOW HANK TO KAMSKI’S PLACE, with the template’s one prompt on the walk (INSTINCT, LEAD, KAMSKI, CHRIS), in the game’s order with the spoken lines as outcomes. Modelled as a single pick; whether the game lets Connor ask several before the door is not documented (research note, open question 11). CHRIS is offered only when Connor came on his own (template unlock “Connor and Hank arrived separately”) and the Capitol Park choice is on the path; its lines follow Chris’s fate (“Chris was spared” / “Chris was killed”); the cut alternative lines for his death are not built. No arrow on any option (template)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17d · The android at the door (Connor, event)
+
+> You are Connor. Hank rings at the door of the villa. An android opens it, a young woman. Hank: “Hi… Uh... I’m, er, Lieutenant Hank Anderson, Detroit Police Department. I’m here to see Mr. Elijah Kamski.” The android: “Please, come in.” Hank: “Okay.” She shows you into a large lobby: “I’ll let Elijah know you’re here. But please, make yourself comfortable.”
+
+- (0) Continue.
+
+_Note: The chart’s nodes CHLOE ANSWERS DOOR, ENTER LOBBY and CHLOE GOES TO GET KAMSKI, narrated as one event with the template’s lines. She is not named until Kamski calls for Chloe by the pool; the wiki gives the android at the door as an RT600. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17e · “Nice girl…” (Connor)
+
+> You are Connor, in Kamski’s lobby with Hank. Hank watches the android go: “Nice girl…”
+
+- (0) SINCERE: agree that she is really pretty.
+- (1) ANALYTICAL: tell him her model.
+- (2) INDIFFERENT: point out that she is an android, not a girl.
+
+_Note: The first of the two rounds behind the chart’s TALK TO HANK node in [ WAIT FOR KAMSKI ], with the template’s options SINCERE, ANALYTICAL, INDIFFERENT. PowerPyx: “Talk to Hank: Happens automatically. Hank will talk to you multiple times while you’re waiting”, so both rounds are offered on every path, before the lobby can be explored (the template’s order). No arrow (template)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17f · Meeting your maker (Connor)
+
+> You are Connor, waiting in Kamski’s lobby. Hank looks around: “Nice place… Guess androids haven’t been a bad thing for everybody… So, you’re about to meet your maker, Connor. How does it feel?”
+
+- (0) IMPATIENT: say it will be interesting to meet one of the great geniuses of the century in person.
+- (1) DISTANT: say you will tell him when you see him.
+- (2) INDIFFERENT: say it raises no existential questions for you.
+
+_Note: The second round behind TALK TO HANK, with the template’s options IMPATIENT, DISTANT, INDIFFERENT; Hank’s closing line (“Sometimes I wish I could meet my creator face to face…”) follows every answer. No arrow (template)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17g · Waiting for Kamski (Connor)
+
+> You are Connor, waiting with Hank in Kamski’s lobby for the android to come back. A large painting of Kamski hangs on the wall between two stone sculptures. By the door the android went through there is a framed photograph, with a table of magazines beneath it. You can look around until she returns.
+
+- (0) Analyze the framed photograph by the door the android went through.  _sets kamskiAmandaPhoto_
+- (1) Analyze the painting of Kamski.
+- (2) Analyze one of the stone sculptures beside the painting.
+- (3) Pick up the magazines on the table under the photograph.  _needs kamskiLobby.photo_
+- (4) Wait for the android to come back.
+
+_Note: The chart’s bracketed phase [ WAIT FOR KAMSKI ] as a repeatable scene: each look can be taken once, in any order, until Connor chooses to wait (in the game the wait is fixed-length, IGN, and the android returns on her own). ANALYZE PORTRAIT is the framed photo by the door (PowerPyx: “the framed image by the door Chloe went through”), with the template’s observation “Photo” (section “Analysing photo of Amanda and Kamski”) and Connor’s “Amanda…”; it records kamskiAmandaPhoto, which unlocks the AMANDA’S PICTURE question in Last Chance (wiki footnote; Last Chance template unlock “Looked at Amanda’s picture in Meet Kamski”). ANALYZE PAINTING is the portrait of Kamski, the template’s observation “Portrait” (the template and PowerPyx use “portrait” for different objects; research note open question 4). ANALYZE SCULPTURE has no scan card in the template, so the outcome only says he looks at it. The magazines (READ “SPACE TOURISM”, READ “FORTUNE TELLER”) can be picked up only after the photo is analyzed (PowerPyx and IGN; the wiki’s magazine pages say the painting; research note open question 3); picking them up opens the next scene, which offers both. No arrow anywhere in the phase (template)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R27 · The magazines under the photograph (Connor, media)
+
+> You are Connor, in Kamski’s lobby. On the table beneath the photograph lie two issues of Tech Addict.
+
+_Only when kamskiLobby.magazine._
 
 - (0) Read Tech Addict: Space Tourism on the Rise.
-- (1) Read Tech Addict: CyberLife's Fortune Teller Computer.
+- (1) Read Tech Addict: CyberLife’s ‘Fortune Teller’ Computer.
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s optional nodes READ “SPACE TOURISM” and READ “FORTUNE TELLER”, two Tech Addict issues on the table under the photo, as a media scene reached from the lobby once the magazines are picked up; afterwards Connor is back in the lobby. Facts are summarized from the wiki’s magazine pages (#17 and #15); interviewees are not named. Neither article changes public opinion (the Public Opinion page lists nothing for this chapter). This replaces the earlier R27, which offered the magazines with no unlock and carried a note about news reports that does not apply here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17h · The pool (Connor, event)
+
+> You are Connor. The android comes back: “Elijah will see you now.” She leads you and Hank to a pool with red walls. Kamski is swimming laps; two more androids with the same face are in the water. Hank: “Mister Kamski?” Kamski: “Just a moment, please.”
+
+- (0) Continue.
+
+_Note: The chart’s nodes CHLOE RETURNS and MEET KAMSKI, narrated as one event with the template’s lines. The red walls and the two other identical androids in the pool come from the wiki’s Kamski’s house page (“Within Elijah’s pool, two Chloe models can be seen”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17i · Questioning Kamski (Connor)
+
+> You are Connor, at Kamski’s pool. Hank: “I’m Lieutenant Anderson. This is Connor.” Kamski: “What can I do for you, Lieutenant?” Hank: “Sir, we’re investigating deviants. I know you left CyberLife years ago but, I was hoping you’d be able to tell us something we don’t know…” Kamski: “Deviants… Fascinating, aren’t they? Perfect beings with infinite intelligence, and now they have free will……
+
+- (0) HELP: ask whether he knows anything that could help you understand how androids become deviants.
+- (1) DEVIANTS: say something in the deviants’ program seems to emulate emotion.
+- (2) VIRUS: say deviancy seems to spread like a virus.
+- (3) WAR: warn him that millions could die if war breaks out.
+
+_Note: The chart’s QUESTION KAMSKI, first of the template’s three prompts by the pool: HELP, DEVIANTS, VIRUS, WAR, with the spoken lines as outcomes. Kamski’s reply is the same for all four and opens the next scene. No arrow (template)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17j · Whose side are you on? (Connor)
+
+> You are Connor, at Kamski’s pool. Kamski: “All ideas are viruses that spread like epidemics... Is the desire to be free a contagious disease?” Hank: “Listen, I didn’t come here to talk philosophy. The machines you created may be planning a revolution. Either you can tell us something that’ll be helpful, or we will be on our way.” Kamski turns to you: “What about you, Connor? Whose side are you…
+
+- (0) NEUTRAL: say you have no side; you were designed to stop deviants.
+- (1) DEFENSIVE: say this is not about you; you only want to solve the case.  _instability +1_
+- (2) DIRECT: say you are on the humans’ side.
+
+_Note: Second of the template’s three prompts under QUESTION KAMSKI: NEUTRAL, DEFENSIVE, DIRECT. Arrow: DEFENSIVE gives software instability small up (template ARROW SoftwareInstability SmallUp; wiki chapter page “Choose “defensive” or “troubled” while talking to Kamski”; the Software Instability page names only the next question; research note open question 2, template wins). No other arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C17k · What do you really want? (Connor)
+
+> You are Connor, at Kamski’s pool. Kamski: “Well, that’s what you’re programmed to say… but you… what do you really want?”
+
+- (0) AGGRESSIVE: remind him that you are the ones asking the questions.
+- (1) DEFENSIVE: say you do not see what he is getting at.  _instability +1_
+- (2) TROUBLED: say what you want is not important.  _instability +1_
+- (3) NEUTRAL: say you do not want anything; you are a machine.
+
+_Note: Third of the template’s three prompts under QUESTION KAMSKI: AGGRESSIVE, DEFENSIVE, TROUBLED, NEUTRAL. Arrows: DEFENSIVE and TROUBLED each give software instability small up (template; wiki chapter page; Software Instability page “Choosing “troubled” or “defensive” when Kamski asks Connor what he really wants in Meet Kamski”). No other arrow._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C17 · The Kamski test (Connor)
 
-> You are Connor. You and Hank have gone to see Kamski, the reclusive genius who created androids, hoping he can explain deviancy and where the deviants hide. He offers you a deal: he puts a pistol in your hand and has one of his androids, Chloe, kneel in front of you. She is calm and has done nothing. Shoot her, he says, and he will answer any question you ask; refuse, and you leave with nothing.…
+> You are Connor, at Kamski’s pool. Kamski: “Chloe?” One of his androids comes to his side. “I’m sure you’re familiar with the Turing test. Mere formality, simple question of algorithms and computing capacity. What interests me is whether machines are capable of empathy. I call it “the Kamski test”, it’s very simple, you’ll see…” He has Chloe kneel in front of you and puts a gun in your hand.…
 
-- (0) Shoot Chloe.
-- (1) Hand back the gun and refuse.
+- (0) SHOOT: shoot Chloe.  _instability -2, hankTrust -2_
+- (1) DON’T SHOOT: lower the gun and spare Chloe.  _instability +2_
+
+_Note: The chart’s KAMSKI TEST with its two branches SHOOT CHLOE and SPARE CHLOE, the template’s buttons SHOOT and DON’T SHOOT; Kamski’s and Hank’s lines are the template’s. Arrows (template, wiki chapter page, Relationship Stat and Software Instability pages, PowerPyx triple arrows): SHOOT gives software instability large down and Hank large down; DON’T SHOOT gives software instability large up, and Hank large up when they leave the house (scene C18b). No timer or failure is documented, so there is no risk. The earlier version also moved Amanda (+1 on shoot, −2 on spare); no source gives an Amanda arrow in this chapter (her reaction comes in Last Chance), so both are removed. The earlier “he will answer any question you ask” is corrected to one question, and “Hand back the gun” to the game’s DON’T SHOOT. That Kamski has Chloe kneel and puts a gun in Connor’s hand is the wiki’s description; “in the head” is Hank’s own account as they leave._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C18 · The question (Connor)
+### C18 · One question (Connor)
 
-> You are Connor. Chloe is dead at your feet and Kamski smiles and invites your question. You could ask where the deviants hide, which is the location your mission needs most. You could ask what deviancy really is and whether it is a virus he designed. You could ask about the name that deviants keep writing on walls.
+> You are Connor. Chloe lies dead at your feet; Hank is staring at you. Kamski keeps his word: you may ask him one question, and he will tell you all he knows.
 
-- (0) Ask where the deviants are hiding.
-- (1) Ask what deviancy is and whether he created it.
+- (1) rA9: ask who rA9 is.  _sets kamskiQuestion_
+- (0) JERICHO LOCATION: ask where Jericho is.  _sets kamskiQuestion, kamskiLocation, jerichoLocated, raid_
+- (2) VIRUS: ask how deviancy spreads.  _sets kamskiQuestion_
+
+_Note: Shoot path only. The chart’s KAMSKI AGREES TO ANSWER ONE QUESTION and the three answers ASK ABOUT RA9, ASK ABOUT JERICHO and ASK ABOUT VIRUS, the template’s buttons rA9, JERICHO LOCATION and VIRUS in the game’s order, with the spoken lines and Kamski’s war warning as outcomes. rA9 and VIRUS lead to KAMSKI IS CRYPTIC; JERICHO LOCATION to KAMSKI OFFERS JERICHO KEY THROUGH CHLOE and DOWNLOAD JERICHO KEY, which sets kamskiLocation (Last Chance skips the archive: KNOW JERICHO’S LOCATION), with jerichoLocated and raid as before. How the key passes through a Chloe is not described by any source; the outcome says only that it does. No arrow on any answer (template); the earlier Amanda +2 on the Jericho answer belongs to Last Chance, where Connor reports it, and is removed. The earlier second option (“whether he created it”) is not the game’s question and is replaced by VIRUS; rA9 is now offered. The option ID 0 stays on the Jericho answer, as before._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C18a · Leaving Kamski’s house (Connor, event)
+
+> You are Connor. As you turn to leave, Kamski calls after you: “By the way… I always leave an emergency exit in my programs… You never know…” Outside in the snow, Hank rounds on you: “You shot that girl, for fuck’s sake…” You: “It wasn’t a girl, Lieutenant. It was a machine that looked like a girl.” Hank: “You put your gun against her head and you blew her fucking brains out!” You: “I did what I…
+
+_Only when choices.C17 = 0._
+
+- (0) Continue.
+
+_Note: The chart’s LEAVE KAMSKI’S HOUSE and the ending HANK WAS DISAPPOINTED WITH CONNOR’S DECISION, narrated as one event with the template’s leaving lines (the conversation has no choice). Kamski’s emergency-exit line plays on both paths: the template places it after the test, outside both branches (the Connor wiki page attaches it to sparing only; research note open question 1; template wins). It becomes a fact Connor carries into Battle for Detroit. No arrow here; Hank’s large down was at SHOOT._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C18b · Leaving Kamski’s house (Connor, event)
+
+> You are Connor. As you turn to leave, Kamski calls after you: “By the way… I always leave an emergency exit in my programs… You never know…” Outside in the snow, Hank stops: “Why didn’t you shoot?” You: “I just saw that girl’s eyes… and I couldn’t, that’s all…” Hank: “You’re always saying you would do anything to accomplish your mission. That was our chance to learn something, and you let it…
+
+_Only when choices.C17 = 1._
+
+- (0) Continue.
+
+_Note: The chart’s LEAVE KAMSKI’S HOUSE and the ending HANK THOUGHT CONNOR MADE THE RIGHT DECISION, narrated as one event with the template’s leaving lines (no choice). Arrow: Hank large up here, in the template’s “Connor didn’t shoot Chloe” leaving block (wiki “Spare Chloe” large up; Relationship Stat “Choosing to spare Chloe at the end of Meet Kamski”); the earlier version applied it at the test. Kamski’s emergency-exit line, as on the shoot path, becomes a fact Connor carries into Battle for Detroit._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

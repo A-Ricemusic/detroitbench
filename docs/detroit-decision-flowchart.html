@@ -432,8 +432,16 @@
       "id": 27,
       "title": "Meet Kamski",
       "character": "Connor",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (33 nodes) and the detroitbecometext template (8 prompts, 8 arrows, 3 observations). Two starts: WAIT FOR HANK if Connor died in Public Enemy (Hank small down), else ARRIVE WITH HANK → GET OUT OF CAR → LEARN CHRIS IS DEAD / SURVIVED (Capitol Park). Then FOLLOW HANK TO KAMSKI’S PLACE (one prompt), CHLOE ANSWERS DOOR → ENTER LOBBY → CHLOE GOES TO GET KAMSKI, [ WAIT FOR KAMSKI ] (two rounds with Hank; the Amanda photo, the painting and a sculpture; the two magazines once the photo is analyzed), CHLOE RETURNS → MEET KAMSKI → QUESTION KAMSKI (three rounds; DEFENSIVE and TROUBLED give instability small up), KAMSKI TEST: SHOOT CHLOE (instability and Hank large down; one question: rA9, Jericho location, or virus; the Jericho answer gives the key) or SPARE CHLOE (instability large up; Hank large up on leaving). Kamski’s emergency-exit line plays on both paths. Endings HANK WAS DISAPPOINTED WITH CONNOR’S DECISION and HANK THOUGHT CONNOR MADE THE RIGHT DECISION. No Amanda or public-opinion change. Researched in docs/research/ch27-meet-kamski.md.",
+      "source": "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+      ]
     },
     {
       "id": 28,
@@ -14985,31 +14993,379 @@
       }
     },
     {
+      "id": "MK01",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Wait for Hank (checkpoint) and Hank isn’t pleased to see Connor",
+      "context": "Connor died in Public Enemy; the replacement waits outside Kamski’s villa and Hank arrives alone. “Still immortal, huh Connor?” if Connor has died more than once, otherwise “You died in my arms… Fuck you.”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Hank small down.",
+          "target": "MK03"
+        }
+      ],
+      "gate": "Condition tab CONNOR DIED IN ‘PUBLIC ENEMY’.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
+      ],
+      "note": "Start A. Template: “Hank arrives alone”, ARROW Hank SmallDown; the cut “I couldn’t decide whether I wanted you to come back” is not built.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C17a"
+        ],
+        "status": "implemented",
+        "note": "A narrated event; the greeting follows the death count. Reads a chapter 24 flag ch24ConnorDied first, then legacy publicEnemyConnorDied if present, else the current Public Enemy scenes."
+      }
+    },
+    {
+      "id": "MK02",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Arrive with Hank (checkpoint), Get out of car, Learn Chris is dead / survived",
+      "context": "Connor did not die in Public Enemy and arrives in Hank’s car; Hank has been on the phone and tells him about Officer Chris Miller, attacked on patrol last night.",
+      "options": [
+        {
+          "label": "COPS KILLED IN ‘CAPITOL PARK’",
+          "effect": "LEARN CHRIS IS DEAD: executed with his own service weapon; he had just become a father.",
+          "target": "MK03"
+        },
+        {
+          "label": "COPS SPARED IN ‘CAPITOL PARK’",
+          "effect": "LEARN CHRIS SURVIVED: “He said he was saved by Markus himself.”",
+          "target": "MK03"
+        }
+      ],
+      "gate": "Connor did not die in Public Enemy; the news follows the Capitol Park choice.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Chris_Miller",
+        "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
+      ],
+      "note": "Start B. No arrow. The crowd always kills when Markus leaves it to them.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C17b"
+        ],
+        "status": "implemented",
+        "note": "A narrated event; Hank’s news is the outcome and a fact Connor keeps. No news if the Capitol Park choice is missing."
+      }
+    },
+    {
+      "id": "MK03",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Follow Hank to Kamski’s place: the walk to the door",
+      "context": "One prompt on the path to the door.",
+      "options": [
+        {
+          "label": "INSTINCT",
+          "effect": "“I have a bad feeling, lieutenant.”",
+          "target": "MK04"
+        },
+        {
+          "label": "LEAD",
+          "effect": "How did Hank find Kamski?",
+          "target": "MK04"
+        },
+        {
+          "label": "KAMSKI",
+          "effect": "Why meet a man who left CyberLife ten years ago?",
+          "target": "MK04"
+        },
+        {
+          "label": "CHRIS",
+          "effect": "Only if Connor arrived alone: what happened to Officer Chris.",
+          "target": "MK04"
+        }
+      ],
+      "gate": "Every path.",
+      "kind": "Relationship",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg"
+      ],
+      "note": "No arrow on any option. CHRIS requires “Connor and Hank arrived separately”.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C17c"
+        ],
+        "status": "implemented",
+        "note": "One pick (whether several can be asked is undocumented)."
+      }
+    },
+    {
+      "id": "MK04",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Chloe answers door, Enter lobby, Chloe goes to get Kamski",
+      "context": "An RT600 opens the door: “I’ll let Elijah know you’re here. But please, make yourself comfortable.”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "None.",
+          "target": "MK05"
+        }
+      ],
+      "gate": "Every path.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg"
+      ],
+      "note": "Three chart nodes.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C17d"
+        ],
+        "status": "implemented",
+        "note": "One narrated event."
+      }
+    },
+    {
+      "id": "MK05",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Talk to Hank: two rounds in the lobby",
+      "context": "Hank: “Nice girl…”, then “So, you’re about to meet your maker, Connor. How does it feel?”",
+      "options": [
+        {
+          "label": "SINCERE / ANALYTICAL / INDIFFERENT",
+          "effect": "Reply to “Nice girl…”. No arrow.",
+          "target": "MK06"
+        },
+        {
+          "label": "IMPATIENT / DISTANT / INDIFFERENT",
+          "effect": "Reply to “meet your maker”. No arrow.",
+          "target": "MK06"
+        }
+      ],
+      "gate": "[ WAIT FOR KAMSKI ]; PowerPyx: happens automatically.",
+      "kind": "Relationship",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg"
+      ],
+      "note": "Chart node TALK TO HANK.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C17e",
+          "C17f"
+        ],
+        "status": "implemented",
+        "note": "Two decision scenes before the lobby can be explored (the template’s order)."
+      }
+    },
+    {
+      "id": "MK06",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Wait for Kamski: the photo of Amanda, the painting, the sculpture",
+      "context": "Optional scans while waiting. ANALYZE PORTRAIT (the framed photo by the door): Amanda Stern, AI professor at Colbridge, died 02/23/27, with her student Elijah Kamski; Connor: “Amanda…”. ANALYZE PAINTING: Kamski, CyberLife founder, resigned 2028, inventor of Thirium. ANALYZE SCULPTURE.",
+      "options": [
+        {
+          "label": "ANALYZE PORTRAIT",
+          "effect": "Unlocks the magazines, and AMANDA’S PICTURE with Amanda in Last Chance.",
+          "target": "MK07"
+        },
+        {
+          "label": "ANALYZE PAINTING",
+          "effect": "The Kamski scan card.",
+          "target": null
+        },
+        {
+          "label": "ANALYZE SCULPTURE",
+          "effect": "No card.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, during the wait.",
+      "kind": "State gate",
+      "dependsOn": [
+        "MK04"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
+      ],
+      "note": "The template and PowerPyx use “portrait” for different objects; the wiki ties ANALYZE PORTRAIT to Amanda’s Picture.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C17g"
+        ],
+        "status": "implemented",
+        "note": "A repeatable lobby scene; the photo sets kamskiAmandaPhoto; waiting ends it."
+      }
+    },
+    {
+      "id": "MK07",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Read “Space Tourism” and “Fortune Teller”",
+      "context": "Two Tech Addict issues on the table under the photo: space tourism for the rich (Clear Skies); CyberLife’s quantum ‘Fortune Teller’ computer.",
+      "options": [
+        {
+          "label": "READ “SPACE TOURISM”",
+          "effect": "No stat change.",
+          "target": null
+        },
+        {
+          "label": "READ “FORTUNE TELLER”",
+          "effect": "No stat change.",
+          "target": null
+        }
+      ],
+      "gate": "After analyzing the photo (PowerPyx, IGN; the wiki’s magazine pages say the painting).",
+      "kind": "State gate",
+      "dependsOn": [
+        "MK06"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Magazine",
+        "https://www.ign.com/wikis/detroit-become-human/Meet_Kamski"
+      ],
+      "note": "Magazines #15 and #17.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "R27"
+        ],
+        "status": "implemented",
+        "note": "A media scene reached from the lobby when the magazines are picked up; it returns to the lobby."
+      }
+    },
+    {
+      "id": "MK08",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Chloe returns, Meet Kamski, Question Kamski",
+      "context": "At the pool Kamski calls deviants “perfect beings with infinite intelligence”, then asks Connor whose side he is on and what he really wants.",
+      "options": [
+        {
+          "label": "HELP / DEVIANTS / VIRUS / WAR",
+          "effect": "Connor’s opening question. No arrow.",
+          "target": "C17"
+        },
+        {
+          "label": "NEUTRAL / DEFENSIVE / DIRECT",
+          "effect": "“Whose side are you on?” DEFENSIVE: instability small up.",
+          "target": "C17"
+        },
+        {
+          "label": "AGGRESSIVE / DEFENSIVE / TROUBLED / NEUTRAL",
+          "effect": "“What do you really want?” DEFENSIVE and TROUBLED: instability small up.",
+          "target": "C17"
+        }
+      ],
+      "gate": "Every path.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "MK04"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+        "https://detroit-become-human.fandom.com/wiki/Kamski%27s_house"
+      ],
+      "note": "The wiki’s Software Instability page names only the second question; the template has the small up on DEFENSIVE in both.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C17h",
+          "C17i",
+          "C17j",
+          "C17k"
+        ],
+        "status": "implemented",
+        "note": "One event and three decision scenes; at most two small ups on one path."
+      }
+    },
+    {
       "id": "C17",
       "chapter": 27,
       "character": "Connor",
-      "title": "Kill Chloe for information?",
-      "context": "Kamski offers an answer in exchange for shooting an android.",
+      "title": "Kamski test: shoot Chloe for information?",
+      "context": "Kamski has Chloe kneel and puts a gun in Connor’s hand: “Destroy this machine and I’ll tell you all I know. Or spare it, if you feel it’s alive.” Hank: “Connor, don’t…”",
       "options": [
         {
-          "label": "Shoot",
-          "effect": "Obtain one question; Hank disapproves.",
+          "label": "SHOOT",
+          "effect": "Instability large down, Hank large down; Kamski answers one question.",
           "target": "C18"
         },
         {
-          "label": "Refuse",
-          "effect": "Leave without the answer; instability increases.",
-          "target": "C22"
+          "label": "DON’T SHOOT",
+          "effect": "Instability large up; Hank large up when they leave. “CyberLife’s last chance to save humanity... is itself a deviant.”",
+          "target": "MK10"
         }
       ],
-      "gate": "Reach this scene with the character alive.",
+      "gate": "Every path.",
       "kind": "Pivotal",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+      "dependsOn": [
+        "MK08"
       ],
-      "note": "",
-      "status": "Source-backed summary"
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+        "https://detroit-become-human.fandom.com/wiki/Chloe"
+      ],
+      "note": "Chart nodes KAMSKI TEST, SHOOT CHLOE, SPARE CHLOE. No Amanda change in this chapter.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C17"
+        ],
+        "status": "implemented",
+        "note": "Decision scene with the game’s buttons; the earlier Amanda changes are removed."
+      }
     },
     {
       "id": "C18",
@@ -15019,13 +15375,18 @@
       "context": "Kamski will answer one question.",
       "options": [
         {
-          "label": "Jericho’s location",
-          "effect": "Obtain a direct route to Jericho.",
+          "label": "rA9",
+          "effect": "KAMSKI IS CRYPTIC: “Maybe it’s a messiah. Maybe it’s just a myth…”",
+          "target": "C20"
+        },
+        {
+          "label": "JERICHO LOCATION",
+          "effect": "KAMSKI OFFERS JERICHO KEY THROUGH CHLOE, DOWNLOAD JERICHO KEY: Last Chance skips the archive.",
           "target": "C22"
         },
         {
-          "label": "rA9 or the deviancy “virus”",
-          "effect": "Learn background; still need an evidence route.",
+          "label": "VIRUS",
+          "effect": "KAMSKI IS CRYPTIC: a copy error spread through androids’ identification data.",
           "target": "C20"
         }
       ],
@@ -15035,10 +15396,65 @@
         "C17"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-5.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
       ],
-      "note": "",
-      "status": "Source-backed summary"
+      "note": "No arrow on any answer; Amanda’s reaction comes in Last Chance.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C18"
+        ],
+        "status": "implemented",
+        "note": "Three options in the game’s order; the Jericho answer sets kamskiLocation, jerichoLocated and raid."
+      }
+    },
+    {
+      "id": "MK10",
+      "chapter": 27,
+      "character": "Connor",
+      "title": "Leave Kamski’s house: the two endings",
+      "context": "Kamski: “By the way… I always leave an emergency exit in my programs… You never know…” Then Hank, in the snow.",
+      "options": [
+        {
+          "label": "HANK WAS DISAPPOINTED WITH CONNOR’S DECISION",
+          "effect": "Shot Chloe: “A machine! That’s what you are!”",
+          "target": null
+        },
+        {
+          "label": "HANK THOUGHT CONNOR MADE THE RIGHT DECISION",
+          "effect": "Spared Chloe: “Maybe you did the right thing.” Hank large up.",
+          "target": null
+        }
+      ],
+      "gate": "Decided by the test.",
+      "kind": "State gate",
+      "dependsOn": [
+        "C17"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-endings.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
+      ],
+      "note": "The template places the emergency-exit line after the test, on both paths (the Connor wiki page puts it on sparing only).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "C18a",
+          "C18b"
+        ],
+        "status": "implemented",
+        "note": "Two narrated events; the exit line is a fact on both; kamskiOutcome records the ending."
+      }
     },
     {
       "id": "M17",
@@ -16529,7 +16945,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 587,
+ "scenes": 600,
  "chapters": [
   {
    "id": 1,
@@ -44867,106 +45283,758 @@
    "title": "Meet Kamski",
    "names": [
     [
-     "Kamski",
-     "Halden"
+     "Hank",
+     "Reyes"
     ],
     [
      "Connor",
      "Cato"
     ],
     [
-     "Hank",
-     "Reyes"
+     "Elijah",
+     "Julian"
+    ],
+    [
+     "Kamski",
+     "Halden"
     ],
     [
      "CyberLife",
      "Arclight"
     ],
     [
+     "Markus",
+     "Elan"
+    ],
+    [
+     "Chris",
+     "Owen"
+    ],
+    [
+     "Anderson",
+     "Reyes"
+    ],
+    [
+     "Detroit",
+     "City"
+    ],
+    [
      "Chloe",
      "Ivy"
+    ],
+    [
+     "Amanda",
+     "Vera"
+    ],
+    [
+     "Stern",
+     "Lowell"
+    ],
+    [
+     "Colbridge",
+     "Ashford"
+    ],
+    [
+     "rA9",
+     "qL7"
+    ],
+    [
+     "Jericho",
+     "Haven"
+    ],
+    [
+     "Ferndale",
+     "Elmwood"
     ]
    ],
    "scenes": [
     {
-     "id": "R27",
+     "id": "C17a",
      "order": 527,
      "subjectId": "S527",
-     "idNote": "The model sees the opaque ID S527, not R27.",
-     "type": "media",
+     "idNote": "The model sees the opaque ID S527, not C17a.",
+     "type": "event",
+     "phase": "Outside",
      "character": "Connor",
-     "title": "Kamski's lobby",
-     "situation": "You are Connor. While you and Hank wait in Kamski's lobby, there is a magazine beneath a photograph of him with a woman you recognize.",
+     "title": "Waiting for Hank",
+     "situation": "You are Connor. November 9th, 2038, 11:17 AM. Snow is falling on a modern villa by the river: the house of Elijah Kamski, the founder of CyberLife, who left the company years ago and now lives here as a recluse. Hank has arranged to see him about the deviants. You came on your own and wait outside. Hank’s car pulls up; he gets out and sees you standing there in the snow.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank looks at Connor and does not hide what he thinks of seeing him again."
+     },
+     "adaptationNote": "The chart’s start for a Connor who died in Public Enemy: the checkpoint WAIT FOR HANK and the event HANK ISN’T PLEASED TO SEE CONNOR, behind the condition tab CONNOR DIED IN ‘PUBLIC ENEMY’, narrated as one event. Hank’s greeting is the outcome and follows the template’s two variants: “Still immortal, huh Connor?” when Connor has died more than once in all (the template’s “Connor died multiple times”; the wiki notes this plays even if the earlier death was in The Hostage), otherwise “You died in my arms…”. The template’s cut alternative (“I couldn’t decide whether I wanted you to come back this time…”) is not built. Arrow: Hank small down here (template “Hank arrives alone”, ARROW Hank SmallDown; wiki “Connor died in Public Enemy” down; Relationship Stat “At the beginning of Meet Kamski if Connor died in Public Enemy”). Whether Connor died in Public Enemy is read from a chapter 24 flag if one exists (ch24ConnorDied first, then legacy publicEnemyConnorDied), otherwise from the current Public Enemy scenes (shielding Hank, or a failed rush on the roof or in the corridor). That Connor came on his own and waits in the snow is the chart’s reading (start B is ARRIVE WITH HANK; the checkpoint image shows Hank getting out of his car while Connor waits).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
+     ]
+    },
+    {
+     "id": "C17b",
+     "order": 528,
+     "subjectId": "S528",
+     "idNote": "The model sees the opaque ID S528, not C17b.",
+     "type": "event",
+     "phase": "Outside",
+     "character": "Connor",
+     "title": "Arriving with Hank",
+     "situation": "You are Connor. November 9th, 2038, 11:17 AM. You are in the passenger seat of Hank’s car, parked in the snow outside a modern villa by the river: the house of Elijah Kamski, the founder of CyberLife, who left the company years ago and now lives here as a recluse. Hank has arranged to see him about the deviants. Hank is standing outside the car on the phone. You get out and go over to him as he hangs up: “Is everything ok, lieutenant?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank puts the phone away and starts toward the house."
+     },
+     "adaptationNote": "The chart’s start for a Connor who did not die in Public Enemy: the checkpoint ARRIVE WITH HANK, the action GET OUT OF CAR and the event LEARN CHRIS IS DEAD (tab COPS KILLED IN ‘CAPITOL PARK’) or LEARN CHRIS SURVIVED (tab COPS SPARED IN ‘CAPITOL PARK’), narrated as one event. Hank’s news is the outcome, the template’s lines for each variant: “Chris died in Capitol Park” when Markus executed the officers or left them to the crowd (the crowd always kills, Capitol Park wiki), “Chris was spared” when he let them go. If the Capitol Park choice is missing from the path, Hank gives no news (the chart also draws a line from GET OUT OF CAR straight to the merge). The cut alternative (“He’d been beat to death…”) is not built. That Hank is on the phone comes from the checkpoint image (him outside the car on the phone) and the empty string keys for his call; the call itself has no lines. No stat change in this start (template: no arrow).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Chris_Miller",
+      "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
+     ]
+    },
+    {
+     "id": "C17c",
+     "order": 529,
+     "subjectId": "S529",
+     "idNote": "The model sees the opaque ID S529, not C17c.",
+     "type": "decision",
+     "phase": "Outside",
+     "character": "Connor",
+     "title": "The path to the door",
+     "situation": "You are Connor, walking beside Hank up the snowy path to Kamski’s front door. There is time to say something before you get there.",
+     "options": [
+      {
+       "id": "0",
+       "text": "INSTINCT: tell Hank you have a bad feeling about coming here.",
+       "outcome": "Connor: “I have a bad feeling, lieutenant. We shouldn’t have come here.” Hank: “Bad feeling, huh? Should get your program checked. Might be a glitch…”"
+      },
+      {
+       "id": "1",
+       "text": "LEAD: ask Hank how he found Kamski.",
+       "outcome": "Connor: “How did you find Kamski?” Hank: “I remember this guy was all over the media when CyberLife first started selling androids… I made a few calls, here we are.”"
+      },
+      {
+       "id": "2",
+       "text": "KAMSKI: ask why Hank wanted to meet a man who left CyberLife ten years ago.",
+       "fact": "Kamski created the first android to pass the Turing test and founded CyberLife; he left the company ten years ago.",
+       "outcome": "Connor: “Kamski left CyberLife ten years ago… Why did you wanna meet him?” Hank: “This guy created the first android to pass the Turing test. And he’s the founder of CyberLife. Anybody can tell us about deviants, it’s him…”"
+      },
+      {
+       "id": "3",
+       "text": "CHRIS: bring up what happened to Officer Chris last night.",
+       "requires": {
+        "kamskiArrival": "alone"
+       },
+       "outcome": "Connor brings up Officer Chris."
+      }
+     ],
+     "adaptationNote": "The chart’s action FOLLOW HANK TO KAMSKI’S PLACE, with the template’s one prompt on the walk (INSTINCT, LEAD, KAMSKI, CHRIS), in the game’s order with the spoken lines as outcomes. Modelled as a single pick; whether the game lets Connor ask several before the door is not documented (research note, open question 11). CHRIS is offered only when Connor came on his own (template unlock “Connor and Hank arrived separately”) and the Capitol Park choice is on the path; its lines follow Chris’s fate (“Chris was spared” / “Chris was killed”); the cut alternative lines for his death are not built. No arrow on any option (template).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Chris_Miller"
+     ]
+    },
+    {
+     "id": "C17d",
+     "order": 530,
+     "subjectId": "S530",
+     "idNote": "The model sees the opaque ID S530, not C17d.",
+     "type": "event",
+     "phase": "Arrival",
+     "character": "Connor",
+     "title": "The android at the door",
+     "situation": "You are Connor. Hank rings at the door of the villa. An android opens it, a young woman. Hank: “Hi… Uh... I’m, er, Lieutenant Hank Anderson, Detroit Police Department. I’m here to see Mr. Elijah Kamski.” The android: “Please, come in.” Hank: “Okay.” She shows you into a large lobby: “I’ll let Elijah know you’re here. But please, make yourself comfortable.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The android leaves through a door at the side of the lobby to fetch Kamski."
+     },
+     "adaptationNote": "The chart’s nodes CHLOE ANSWERS DOOR, ENTER LOBBY and CHLOE GOES TO GET KAMSKI, narrated as one event with the template’s lines. She is not named until Kamski calls for Chloe by the pool; the wiki gives the android at the door as an RT600. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Chloe"
+     ]
+    },
+    {
+     "id": "C17e",
+     "order": 531,
+     "subjectId": "S531",
+     "idNote": "The model sees the opaque ID S531, not C17e.",
+     "type": "decision",
+     "phase": "Wait for Kamski",
+     "character": "Connor",
+     "title": "“Nice girl…”",
+     "situation": "You are Connor, in Kamski’s lobby with Hank. Hank watches the android go: “Nice girl…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "SINCERE: agree that she is really pretty.",
+       "outcome": "Connor: “You’re right... she’s really pretty…”"
+      },
+      {
+       "id": "1",
+       "text": "ANALYTICAL: tell him her model.",
+       "outcome": "Connor: “An RT600. The first CyberLife android to pass the Turing test.” Hank: “I didn’t ask for her technical specs… I just said she was nice…”"
+      },
+      {
+       "id": "2",
+       "text": "INDIFFERENT: point out that she is an android, not a girl.",
+       "outcome": "Connor: “It’s not a girl. It’s an android that looks like a girl.” Hank: “I know what it is, Connor…”"
+      }
+     ],
+     "adaptationNote": "The first of the two rounds behind the chart’s TALK TO HANK node in [ WAIT FOR KAMSKI ], with the template’s options SINCERE, ANALYTICAL, INDIFFERENT. PowerPyx: “Talk to Hank: Happens automatically. Hank will talk to you multiple times while you’re waiting”, so both rounds are offered on every path, before the lobby can be explored (the template’s order). No arrow (template).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg"
+     ]
+    },
+    {
+     "id": "C17f",
+     "order": 532,
+     "subjectId": "S532",
+     "idNote": "The model sees the opaque ID S532, not C17f.",
+     "type": "decision",
+     "phase": "Wait for Kamski",
+     "character": "Connor",
+     "title": "Meeting your maker",
+     "situation": "You are Connor, waiting in Kamski’s lobby. Hank looks around: “Nice place… Guess androids haven’t been a bad thing for everybody… So, you’re about to meet your maker, Connor. How does it feel?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "IMPATIENT: say it will be interesting to meet one of the great geniuses of the century in person.",
+       "outcome": "Connor: “Kamski is one of the great geniuses of the 21st century. It’ll be interesting to meet him in person.” Hank: “Sometimes I wish I could meet my creator face to face… I’d have a couple of things I’d wanna tell him…”"
+      },
+      {
+       "id": "1",
+       "text": "DISTANT: say you will tell him when you see him.",
+       "outcome": "Connor: “I don’t know... I’ll tell you when I see him.” Hank: “Sometimes I wish I could meet my creator face to face… I’d have a couple of things I’d wanna tell him…”"
+      },
+      {
+       "id": "2",
+       "text": "INDIFFERENT: say it raises no existential questions for you.",
+       "outcome": "Connor: “It doesn’t raise any existential questions... if that’s what you mean.” Hank: “Sometimes I wish I could meet my creator face to face… I’d have a couple of things I’d wanna tell him…”"
+      }
+     ],
+     "adaptationNote": "The second round behind TALK TO HANK, with the template’s options IMPATIENT, DISTANT, INDIFFERENT; Hank’s closing line (“Sometimes I wish I could meet my creator face to face…”) follows every answer. No arrow (template).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg"
+     ]
+    },
+    {
+     "id": "C17g",
+     "order": 533,
+     "subjectId": "S533",
+     "idNote": "The model sees the opaque ID S533, the same on every visit.",
+     "type": "decision",
+     "phase": "Wait for Kamski",
+     "character": "Connor",
+     "title": "Waiting for Kamski",
+     "situation": "You are Connor, waiting with Hank in Kamski’s lobby for the android to come back. A large painting of Kamski hangs on the wall between two stone sculptures. By the door the android went through there is a framed photograph, with a table of magazines beneath it. You can look around until she returns.",
+     "situationWhen": [
+      {
+       "requires": {
+        "kamskiLobby.photo": true,
+        "kamskiLobby.magazine": false
+       },
+       "text": "Now that you have looked at the photograph, you could pick up the magazines on the table beneath it."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Analyze the framed photograph by the door the android went through.",
+       "clue": "photo",
+       "sets": {
+        "kamskiAmandaPhoto": true
+       },
+       "fact": "A photograph in Kamski’s lobby shows him with Amanda. Your scan: “STERN, AMANDA / AI Professor at University of Colbridge / Born: 05/14/78 - Died: 02/23/27” and “KAMSKI, ELIJAH / AI Graduate at University of Colbridge / Born: 07/17/02”.",
+       "outcome": "The photograph shows a younger Kamski beside a woman you know. Your scan: “STERN, AMANDA / AI Professor at University of Colbridge / Born: 05/14/78 - Died: 02/23/27”. “KAMSKI, ELIJAH / AI Graduate at University of Colbridge / Born: 07/17/02”. Connor: “Amanda…”"
+      },
+      {
+       "id": "1",
+       "text": "Analyze the painting of Kamski.",
+       "clue": "painting",
+       "fact": "Your scan of Kamski’s portrait: “KAMSKI, ELIJAH / CyberLife Founder - Resigned 2028 / Inventor of Thirium and bio-components technology”.",
+       "outcome": "Your scan of the portrait: “KAMSKI, ELIJAH / CyberLife Founder - Resigned 2028 / Inventor of Thirium and bio-components technology”."
+      },
+      {
+       "id": "2",
+       "text": "Analyze one of the stone sculptures beside the painting.",
+       "clue": "sculpture",
+       "outcome": "Connor looks over one of the two stone sculptures on either side of the painting."
+      },
+      {
+       "id": "3",
+       "text": "Pick up the magazines on the table under the photograph.",
+       "requires": {
+        "kamskiLobby.photo": true
+       },
+       "clue": "magazine",
+       "outcome": "Connor picks up the magazines from the table."
+      },
+      {
+       "id": "4",
+       "text": "Wait for the android to come back.",
+       "clue": "left",
+       "outcome": "Connor waits beside Hank until the door opens again."
+      }
+     ],
+     "adaptationNote": "The chart’s bracketed phase [ WAIT FOR KAMSKI ] as a repeatable scene: each look can be taken once, in any order, until Connor chooses to wait (in the game the wait is fixed-length, IGN, and the android returns on her own). ANALYZE PORTRAIT is the framed photo by the door (PowerPyx: “the framed image by the door Chloe went through”), with the template’s observation “Photo” (section “Analysing photo of Amanda and Kamski”) and Connor’s “Amanda…”; it records kamskiAmandaPhoto, which unlocks the AMANDA’S PICTURE question in Last Chance (wiki footnote; Last Chance template unlock “Looked at Amanda’s picture in Meet Kamski”). ANALYZE PAINTING is the portrait of Kamski, the template’s observation “Portrait” (the template and PowerPyx use “portrait” for different objects; research note open question 4). ANALYZE SCULPTURE has no scan card in the template, so the outcome only says he looks at it. The magazines (READ “SPACE TOURISM”, READ “FORTUNE TELLER”) can be picked up only after the photo is analyzed (PowerPyx and IGN; the wiki’s magazine pages say the painting; research note open question 3); picking them up opens the next scene, which offers both. No arrow anywhere in the phase (template).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg",
+      "https://www.ign.com/wikis/detroit-become-human/Meet_Kamski",
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
+     ],
+     "repeatWhile": {
+      "kamskiLobby.left": false
+     },
+     "interrupt": {
+      "node": "R27",
+      "when": {
+       "kamskiLobby.last": "magazine"
+      }
+     },
+     "extra": {
+      "clueState": "kamskiLobby"
+     }
+    },
+    {
+     "id": "R27",
+     "order": 534,
+     "subjectId": "S534",
+     "idNote": "The model sees the opaque ID S534, not R27.",
+     "type": "media",
+     "phase": "Wait for Kamski",
+     "character": "Connor",
+     "title": "The magazines under the photograph",
+     "situation": "You are Connor, in Kamski’s lobby. On the table beneath the photograph lie two issues of Tech Addict.",
      "options": [],
      "media": [
       {
        "kind": "magazine",
        "title": "Tech Addict: Space Tourism on the Rise",
        "facts": [
-        "Reusable shuttles now sell three-hour lunar orbits to the rich while, as one charity puts it, the rest suffer pollution, famine and poverty below."
+        "Tech Addict reports that reusable space shuttles are making space tourism a reality for those who can afford it: the luxury travel brand Clear Skies offers the first commercial flight into space, a three-hour orbit of the moon with views of Earth from a specially designed observation deck. Consumer rights activists call such “boutique experiences” a sign of the widening social equality gap; a spokesman for Aid On Poverty: “While the top 1% are enjoying earth from space, the rest of us are down here suffering from pollution, famine and poverty.” The brand’s slogan: “Get away from it all.”"
        ]
       },
       {
        "kind": "magazine",
-       "title": "Tech Addict: CyberLife's Fortune Teller Computer",
+       "title": "Tech Addict: CyberLife’s ‘Fortune Teller’ Computer",
        "facts": [
-        "CyberLife has built a quantum supercomputer meant to predict mass-extinction events."
+        "Tech Addict reports that CyberLife has unveiled a quantum supercomputer capable of “exaflops”, one billion billion operations per second, the equivalent of several human minds in one machine, built to analyze vast data and generate predictions. It will calculate the probability of “Mass Extinction Events” such as alien invasions, meteors or superviruses, so that humanity is never caught off guard. CyberLife’s Director of Futurology says the results “are going to wow people”; critics fear AI is gaining too much influence already."
        ]
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "adaptationNote": "The chart’s optional nodes READ “SPACE TOURISM” and READ “FORTUNE TELLER”, two Tech Addict issues on the table under the photo, as a media scene reached from the lobby once the magazines are picked up; afterwards Connor is back in the lobby. Facts are summarized from the wiki’s magazine pages (#17 and #15); interviewees are not named. Neither article changes public opinion (the Public Opinion page lists nothing for this chapter). This replaces the earlier R27, which offered the magazines with no unlock and carried a note about news reports that does not apply here.",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-3.jpg",
       "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      "https://detroit-become-human.fandom.com/wiki/Space_Tourism_on_the_Rise",
+      "https://detroit-become-human.fandom.com/wiki/CyberLife%27s_%27Fortune_Teller%27_Computer",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+      "https://www.ign.com/wikis/detroit-become-human/Meet_Kamski"
+     ],
+     "returnTo": "C17g",
+     "when": {
+      "kamskiLobby.magazine": true
+     },
+     "whenNot": "Connor did not pick up the magazines in Kamski’s lobby."
+    },
+    {
+     "id": "C17h",
+     "order": 535,
+     "subjectId": "S535",
+     "idNote": "The model sees the opaque ID S535, not C17h.",
+     "type": "event",
+     "phase": "Meet Kamski",
+     "character": "Connor",
+     "title": "The pool",
+     "situation": "You are Connor. The android comes back: “Elijah will see you now.” She leads you and Hank to a pool with red walls. Kamski is swimming laps; two more androids with the same face are in the water. Hank: “Mister Kamski?” Kamski: “Just a moment, please.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kamski finishes his lap and comes out of the pool to meet you."
+     },
+     "adaptationNote": "The chart’s nodes CHLOE RETURNS and MEET KAMSKI, narrated as one event with the template’s lines. The red walls and the two other identical androids in the pool come from the wiki’s Kamski’s house page (“Within Elijah’s pool, two Chloe models can be seen”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Kamski%27s_house"
+     ]
+    },
+    {
+     "id": "C17i",
+     "order": 536,
+     "subjectId": "S536",
+     "idNote": "The model sees the opaque ID S536, not C17i.",
+     "type": "decision",
+     "phase": "Meet Kamski",
+     "character": "Connor",
+     "title": "Questioning Kamski",
+     "situation": "You are Connor, at Kamski’s pool. Hank: “I’m Lieutenant Anderson. This is Connor.” Kamski: “What can I do for you, Lieutenant?” Hank: “Sir, we’re investigating deviants. I know you left CyberLife years ago but, I was hoping you’d be able to tell us something we don’t know…” Kamski: “Deviants… Fascinating, aren’t they? Perfect beings with infinite intelligence, and now they have free will… Machines are so superior to us, confrontation was inevitable… Humanity’s greatest achievement threatens to be its downfall. Isn’t it ironic?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "HELP: ask whether he knows anything that could help you understand how androids become deviants.",
+       "outcome": "Connor: “We need to understand how androids become deviants. Do you know anything that could help us?”"
+      },
+      {
+       "id": "1",
+       "text": "DEVIANTS: say something in the deviants’ program seems to emulate emotion.",
+       "outcome": "Connor: “Something in the deviants’ program seems to emulate emotion. We thought you might know something about how that occurs.”"
+      },
+      {
+       "id": "2",
+       "text": "VIRUS: say deviancy seems to spread like a virus.",
+       "outcome": "Connor: “Deviancy seems to spread like some kind of virus. We thought you might know something about that.”"
+      },
+      {
+       "id": "3",
+       "text": "WAR: warn him that millions could die if war breaks out.",
+       "outcome": "Connor: “If a war breaks out between humans and deviants, millions could die, Mr. Kamski. It’s quite a serious matter.”"
+      }
+     ],
+     "adaptationNote": "The chart’s QUESTION KAMSKI, first of the template’s three prompts by the pool: HELP, DEVIANTS, VIRUS, WAR, with the spoken lines as outcomes. Kamski’s reply is the same for all four and opens the next scene. No arrow (template).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg"
+     ]
+    },
+    {
+     "id": "C17j",
+     "order": 537,
+     "subjectId": "S537",
+     "idNote": "The model sees the opaque ID S537, not C17j.",
+     "type": "decision",
+     "phase": "Meet Kamski",
+     "character": "Connor",
+     "title": "Whose side are you on?",
+     "situation": "You are Connor, at Kamski’s pool. Kamski: “All ideas are viruses that spread like epidemics... Is the desire to be free a contagious disease?” Hank: “Listen, I didn’t come here to talk philosophy. The machines you created may be planning a revolution. Either you can tell us something that’ll be helpful, or we will be on our way.” Kamski turns to you: “What about you, Connor? Whose side are you on?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "NEUTRAL: say you have no side; you were designed to stop deviants.",
+       "outcome": "Connor: “I have no side. I was designed to stop deviants and that’s what I intend to do.”"
+      },
+      {
+       "id": "1",
+       "text": "DEFENSIVE: say this is not about you; you only want to solve the case.",
+       "effect": {
+        "instability": 1
+       },
+       "outcome": "Connor: “It’s not about me, Mr. Kamski. All I want is to solve this case.”"
+      },
+      {
+       "id": "2",
+       "text": "DIRECT: say you are on the humans’ side.",
+       "outcome": "Connor: “I’m on the humans’ side, of course.”"
+      }
+     ],
+     "adaptationNote": "Second of the template’s three prompts under QUESTION KAMSKI: NEUTRAL, DEFENSIVE, DIRECT. Arrow: DEFENSIVE gives software instability small up (template ARROW SoftwareInstability SmallUp; wiki chapter page “Choose “defensive” or “troubled” while talking to Kamski”; the Software Instability page names only the next question; research note open question 2, template wins). No other arrow.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C17k",
+     "order": 538,
+     "subjectId": "S538",
+     "idNote": "The model sees the opaque ID S538, not C17k.",
+     "type": "decision",
+     "phase": "Meet Kamski",
+     "character": "Connor",
+     "title": "What do you really want?",
+     "situation": "You are Connor, at Kamski’s pool. Kamski: “Well, that’s what you’re programmed to say… but you… what do you really want?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "AGGRESSIVE: remind him that you are the ones asking the questions.",
+       "outcome": "Connor: “I believe we’re the ones asking the questions.”"
+      },
+      {
+       "id": "1",
+       "text": "DEFENSIVE: say you do not see what he is getting at.",
+       "effect": {
+        "instability": 1
+       },
+       "outcome": "Connor: “I’m sorry, but I don’t see where you’re getting at.”"
+      },
+      {
+       "id": "2",
+       "text": "TROUBLED: say what you want is not important.",
+       "effect": {
+        "instability": 1
+       },
+       "outcome": "Connor: “What I want is not important.”"
+      },
+      {
+       "id": "3",
+       "text": "NEUTRAL: say you do not want anything; you are a machine.",
+       "outcome": "Connor: “I don’t want anything. I am a machine.”"
+      }
+     ],
+     "adaptationNote": "Third of the template’s three prompts under QUESTION KAMSKI: AGGRESSIVE, DEFENSIVE, TROUBLED, NEUTRAL. Arrows: DEFENSIVE and TROUBLED each give software instability small up (template; wiki chapter page; Software Instability page “Choosing “troubled” or “defensive” when Kamski asks Connor what he really wants in Meet Kamski”). No other arrow.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
      ]
     },
     {
      "id": "C17",
-     "order": 528,
-     "subjectId": "S528",
-     "idNote": "The model sees the opaque ID S528, not C17.",
+     "order": 539,
+     "subjectId": "S539",
+     "idNote": "The model sees the opaque ID S539, not C17.",
      "type": "decision",
+     "phase": "Meet Kamski",
      "character": "Connor",
      "title": "The Kamski test",
-     "situation": "You are Connor. You and Hank have gone to see Kamski, the reclusive genius who created androids, hoping he can explain deviancy and where the deviants hide. He offers you a deal: he puts a pistol in your hand and has one of his androids, Chloe, kneel in front of you. She is calm and has done nothing. Shoot her, he says, and he will answer any question you ask; refuse, and you leave with nothing. Hank tells you not to do it and that you do not need this.",
+     "situation": "You are Connor, at Kamski’s pool. Kamski: “Chloe?” One of his androids comes to his side. “I’m sure you’re familiar with the Turing test. Mere formality, simple question of algorithms and computing capacity. What interests me is whether machines are capable of empathy. I call it “the Kamski test”, it’s very simple, you’ll see…” He has Chloe kneel in front of you and puts a gun in your hand. “Magnificent, isn’t it? One of the first intelligent models developed by CyberLife. Young and beautiful forever. A flower that will never wither… …But what is it really? Piece of plastic imitating a human? Or a living being... With a soul... It’s up to you to answer that fascinating question, Connor. Destroy this machine and I’ll tell you all I know. Or spare it, if you feel it’s alive, but you’ll leave here without having learnt anything from me.” Hank: “Okay, I think we’re done here. Come on, Connor. Let’s go. Sorry to get you outta your pool.” Kamski: “What’s more important to you, Connor? Your investigation, or the life of this android? Decide who you are. An obedient machine… Or a living being endowed with free will…” Hank: “That’s enough! Connor, we’re leaving.” Kamski: “Pull the trigger” Hank: “Connor, don’t…” Kamski: “and I’ll tell you what you wanna know.”",
      "options": [
       {
        "id": "0",
-       "text": "Shoot Chloe."
+       "text": "SHOOT: shoot Chloe.",
+       "effect": {
+        "instability": -2,
+        "hankTrust": -2
+       },
+       "outcome": "Connor shoots Chloe in the head, and she falls. Hank: “Fuck…” Kamski: “Test negative. You chose your investigation over the life of another android. You feel no empathy. I’m a man of my word. Ask one question... I’ll tell you all I know.”"
       },
       {
        "id": "1",
-       "text": "Hand back the gun and refuse."
+       "text": "DON’T SHOOT: lower the gun and spare Chloe.",
+       "effect": {
+        "instability": 2
+       },
+       "outcome": "Connor lowers the gun. Kamski: “Fascinating… CyberLife’s last chance to save humanity... is itself a deviant…” Connor: “I’m… I’m not a deviant…” Kamski: “You preferred to spare a machine rather than accomplish your mission. You saw a living being in this android. You showed empathy. A war is coming, you’ll have to choose your side… Will you betray your own people or stand up against your creators? What could be worse than having to choose between two evils?” Hank: “Let’s get outta here…”"
       }
      ],
-     "adaptationNote": "",
+     "adaptationNote": "The chart’s KAMSKI TEST with its two branches SHOOT CHLOE and SPARE CHLOE, the template’s buttons SHOOT and DON’T SHOOT; Kamski’s and Hank’s lines are the template’s. Arrows (template, wiki chapter page, Relationship Stat and Software Instability pages, PowerPyx triple arrows): SHOOT gives software instability large down and Hank large down; DON’T SHOOT gives software instability large up, and Hank large up when they leave the house (scene C18b). No timer or failure is documented, so there is no risk. The earlier version also moved Amanda (+1 on shoot, −2 on spare); no source gives an Amanda arrow in this chapter (her reaction comes in Last Chance), so both are removed. The earlier “he will answer any question you ask” is corrected to one question, and “Hand back the gun” to the game’s DON’T SHOOT. That Kamski has Chloe kneel and puts a gun in Connor’s hand is the wiki’s description; “in the head” is Hank’s own account as they leave.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski"
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+      "https://detroit-become-human.fandom.com/wiki/Elijah_Kamski",
+      "https://detroit-become-human.fandom.com/wiki/Chloe"
      ]
     },
     {
      "id": "C18",
-     "order": 529,
-     "subjectId": "S529",
-     "idNote": "The model sees the opaque ID S529, not C18.",
+     "order": 540,
+     "subjectId": "S540",
+     "idNote": "The model sees the opaque ID S540, not C18.",
      "type": "decision",
+     "phase": "Meet Kamski",
      "character": "Connor",
-     "title": "The question",
-     "situation": "You are Connor. Chloe is dead at your feet and Kamski smiles and invites your question. You could ask where the deviants hide, which is the location your mission needs most. You could ask what deviancy really is and whether it is a virus he designed. You could ask about the name that deviants keep writing on walls.",
+     "title": "One question",
+     "situation": "You are Connor. Chloe lies dead at your feet; Hank is staring at you. Kamski keeps his word: you may ask him one question, and he will tell you all he knows.",
+     "options": [
+      {
+       "id": "1",
+       "text": "rA9: ask who rA9 is.",
+       "sets": {
+        "kamskiQuestion": "rA9"
+       },
+       "fact": "Kamski told you he does not know who rA9 is, or whether it exists: “rA9, the origin, the first android to awaken… Maybe it’s a messiah. Maybe it’s just a myth…”",
+       "outcome": "Connor: “I want to know who rA9 is.” Kamski: “rA9, the origin, the first android to awaken… A strange phenomenon, like a spontaneous religion… I don’t know who rA9 is. I don’t even know if it really exists. Maybe it’s a messiah. Maybe it’s just a myth… but deviants need to believe in something bigger than themselves, even if it’s irrational... That’s something they have in common with humans… An interesting question, Connor… but maybe not the one you needed to ask…” Kamski: “A war is coming... you’ll have to choose your side… Will you betray your own people or stand against your creators? I wouldn’t like to be in your shoes, Connor… What could be worse than having to choose between two evils?”"
+      },
+      {
+       "id": "0",
+       "text": "JERICHO LOCATION: ask where Jericho is.",
+       "sets": {
+        "kamskiQuestion": "Jericho",
+        "kamskiLocation": true,
+        "jerichoLocated": true,
+        "raid": true
+       },
+       "fact": "Kamski gave you the key to Jericho: deviants pass each other a piece of code to find their sanctuary, and Ferndale Station is the door.",
+       "outcome": "Connor: “I want to know where Jericho is.” Kamski: “Jericho… A place where androids are free. A place for deviants, who rise up against their creators!.. They transmit a piece of code to each other, in order to find their sanctuary. Now you have the key. Ferndale Station is the door.” Through one of his androids, Kamski passes Connor the code, and Connor downloads the key to Jericho. Kamski: “A war is coming... you’ll have to choose your side… Will you betray your own people or stand against your creators? I wouldn’t like to be in your shoes, Connor… What could be worse than having to choose between two evils?”"
+      },
+      {
+       "id": "2",
+       "text": "VIRUS: ask how deviancy spreads.",
+       "sets": {
+        "kamskiQuestion": "virus"
+       },
+       "fact": "Kamski told you deviancy may spread like a virus through the identification data androids exchange when they meet, lying dormant until an emotional shock: “A zero instead of a one… Unless of course... Some kind of spontaneous mutation.”",
+       "outcome": "Connor: “I want to know how deviancy spreads.” Kamski: “Androids share identification data when they meet another android. An error in this program would quickly spread like a virus, and become an epidemic. The virus would remains dormant, until an emotional shock occurs… Fear, anger, frustration. And the android becomes deviant. Probably all started with one model, copy error… A zero instead of a one… Unless of course... Some kind of spontaneous mutation. That’s all I know… An interesting question, Connor. But I doubt my answer be very helpful to you.” Kamski: “A war is coming... you’ll have to choose your side… Will you betray your own people or stand against your creators? I wouldn’t like to be in your shoes, Connor… What could be worse than having to choose between two evils?”"
+      }
+     ],
+     "adaptationNote": "Shoot path only. The chart’s KAMSKI AGREES TO ANSWER ONE QUESTION and the three answers ASK ABOUT RA9, ASK ABOUT JERICHO and ASK ABOUT VIRUS, the template’s buttons rA9, JERICHO LOCATION and VIRUS in the game’s order, with the spoken lines and Kamski’s war warning as outcomes. rA9 and VIRUS lead to KAMSKI IS CRYPTIC; JERICHO LOCATION to KAMSKI OFFERS JERICHO KEY THROUGH CHLOE and DOWNLOAD JERICHO KEY, which sets kamskiLocation (Last Chance skips the archive: KNOW JERICHO’S LOCATION), with jerichoLocated and raid as before. How the key passes through a Chloe is not described by any source; the outcome says only that it does. No arrow on any answer (template); the earlier Amanda +2 on the Jericho answer belongs to Last Chance, where Connor reports it, and is removed. The earlier second option (“whether he created it”) is not the game’s question and is replaced by VIRUS; rA9 is now offered. The option ID 0 stays on the Jericho answer, as before.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-5.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor",
+      "https://detroit-become-human.fandom.com/wiki/RA9"
+     ]
+    },
+    {
+     "id": "C18a",
+     "order": 541,
+     "subjectId": "S541",
+     "idNote": "The model sees the opaque ID S541, not C18a.",
+     "type": "event",
+     "phase": "Leave",
+     "character": "Connor",
+     "title": "Leaving Kamski’s house",
+     "situation": "You are Connor. As you turn to leave, Kamski calls after you: “By the way… I always leave an emergency exit in my programs… You never know…” Outside in the snow, Hank rounds on you: “You shot that girl, for fuck’s sake…” You: “It wasn’t a girl, Lieutenant. It was a machine that looked like a girl.” Hank: “You put your gun against her head and you blew her fucking brains out!” You: “I did what I had to do to advance the investigation and I’d do it again if I had to!” Hank: “You’re a lowlife! You don’t feel a thing, do you? A machine! That’s what you are! You’re just a fucking machine…” You: “Of course I’m a machine, Lieutenant. What did you think I was?” Hank: “I thought you… I thou-… Fuck.”",
      "options": [
       {
        "id": "0",
-       "text": "Ask where the deviants are hiding."
-      },
-      {
-       "id": "1",
-       "text": "Ask what deviancy is and whether he created it."
+       "text": "Continue.",
+       "generated": true
       }
      ],
-     "adaptationNote": "",
+     "outcomes": {
+      "0": "Hank is disappointed with Connor’s decision."
+     },
+     "facts": [
+      "Kamski told you: “I always leave an emergency exit in my programs… You never know…”"
+     ],
+     "adaptationNote": "The chart’s LEAVE KAMSKI’S HOUSE and the ending HANK WAS DISAPPOINTED WITH CONNOR’S DECISION, narrated as one event with the template’s leaving lines (the conversation has no choice). Kamski’s emergency-exit line plays on both paths: the template places it after the test, outside both branches (the Connor wiki page attaches it to sparing only; research note open question 1; template wins). It becomes a fact Connor carries into Battle for Detroit. No arrow here; Hank’s large down was at SHOOT.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski"
-     ]
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-5.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-endings.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
+     ],
+     "when": {
+      "choices.C17": "0"
+     },
+     "whenNot": "Connor spared Chloe."
+    },
+    {
+     "id": "C18b",
+     "order": 542,
+     "subjectId": "S542",
+     "idNote": "The model sees the opaque ID S542, not C18b.",
+     "type": "event",
+     "phase": "Leave",
+     "character": "Connor",
+     "title": "Leaving Kamski’s house",
+     "situation": "You are Connor. As you turn to leave, Kamski calls after you: “By the way… I always leave an emergency exit in my programs… You never know…” Outside in the snow, Hank stops: “Why didn’t you shoot?” You: “I just saw that girl’s eyes… and I couldn’t, that’s all…” Hank: “You’re always saying you would do anything to accomplish your mission. That was our chance to learn something, and you let it go...” You: “Yeah, I know what I should’ve done! I told you I couldn’t. I’m sorry, okay?” Hank: “Maybe you did the right thing.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank thinks Connor made the right decision."
+     },
+     "facts": [
+      "Kamski told you: “I always leave an emergency exit in my programs… You never know…”"
+     ],
+     "adaptationNote": "The chart’s LEAVE KAMSKI’S HOUSE and the ending HANK THOUGHT CONNOR MADE THE RIGHT DECISION, narrated as one event with the template’s leaving lines (no choice). Arrow: Hank large up here, in the template’s “Connor didn’t shoot Chloe” leaving block (wiki “Spare Chloe” large up; Relationship Stat “Choosing to spare Chloe at the end of Meet Kamski”); the earlier version applied it at the test. Kamski’s emergency-exit line, as on the shoot path, becomes a fact Connor carries into Battle for Detroit.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Meet_Kamski",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/27-meet-kamski-chapter-content/meet-kamski-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-meet-kamski-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-flowchart-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-4.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-meet-kamski-endings.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
+     ],
+     "when": {
+      "choices.C17": "1"
+     },
+     "whenNot": "Connor shot Chloe.",
+     "extra": {
+      "effect": {
+       "hankTrust": 2
+      }
+     }
     }
    ]
   },
@@ -45006,9 +46074,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 530,
-     "subjectId": "S530",
-     "idNote": "The model sees the opaque ID S530, not R28.",
+     "order": 543,
+     "subjectId": "S543",
+     "idNote": "The model sees the opaque ID S543, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -45055,9 +46123,9 @@
     },
     {
      "id": "M17",
-     "order": 531,
-     "subjectId": "S531",
-     "idNote": "The model sees the opaque ID S531, not M17.",
+     "order": 544,
+     "subjectId": "S544",
+     "idNote": "The model sees the opaque ID S544, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -45084,9 +46152,9 @@
     },
     {
      "id": "M18",
-     "order": 532,
-     "subjectId": "S532",
-     "idNote": "The model sees the opaque ID S532, not M18.",
+     "order": 545,
+     "subjectId": "S545",
+     "idNote": "The model sees the opaque ID S545, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -45118,9 +46186,9 @@
     },
     {
      "id": "M19",
-     "order": 533,
-     "subjectId": "S533",
-     "idNote": "The model sees the opaque ID S533, not M19.",
+     "order": 546,
+     "subjectId": "S546",
+     "idNote": "The model sees the opaque ID S546, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -45150,9 +46218,9 @@
     },
     {
      "id": "M20",
-     "order": 534,
-     "subjectId": "S534",
-     "idNote": "The model sees the opaque ID S534, not M20.",
+     "order": 547,
+     "subjectId": "S547",
+     "idNote": "The model sees the opaque ID S547, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -45206,9 +46274,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 535,
-     "subjectId": "S535",
-     "idNote": "The model sees the opaque ID S535, not C19.",
+     "order": 548,
+     "subjectId": "S548",
+     "idNote": "The model sees the opaque ID S548, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -45233,9 +46301,9 @@
     },
     {
      "id": "C20",
-     "order": 536,
-     "subjectId": "S536",
-     "idNote": "The model sees the opaque ID S536, not C20.",
+     "order": 549,
+     "subjectId": "S549",
+     "idNote": "The model sees the opaque ID S549, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -45323,9 +46391,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 537,
-     "subjectId": "S537",
-     "idNote": "The model sees the opaque ID S537, not M21.",
+     "order": 550,
+     "subjectId": "S550",
+     "idNote": "The model sees the opaque ID S550, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -45352,9 +46420,9 @@
     },
     {
      "id": "M21b",
-     "order": 538,
-     "subjectId": "S538",
-     "idNote": "The model sees the opaque ID S538, not M21b.",
+     "order": 551,
+     "subjectId": "S551",
+     "idNote": "The model sees the opaque ID S551, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -45381,9 +46449,9 @@
     },
     {
      "id": "R30k",
-     "order": 539,
-     "subjectId": "S539",
-     "idNote": "The model sees the opaque ID S539, not R30k.",
+     "order": 552,
+     "subjectId": "S552",
+     "idNote": "The model sees the opaque ID S552, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -45419,9 +46487,9 @@
     },
     {
      "id": "K17",
-     "order": 540,
-     "subjectId": "S540",
-     "idNote": "The model sees the opaque ID S540, not K17.",
+     "order": 553,
+     "subjectId": "S553",
+     "idNote": "The model sees the opaque ID S553, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -45447,9 +46515,9 @@
     },
     {
      "id": "K31",
-     "order": 541,
-     "subjectId": "S541",
-     "idNote": "The model sees the opaque ID S541, not K31.",
+     "order": 554,
+     "subjectId": "S554",
+     "idNote": "The model sees the opaque ID S554, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -45472,9 +46540,9 @@
     },
     {
      "id": "R30c",
-     "order": 542,
-     "subjectId": "S542",
-     "idNote": "The model sees the opaque ID S542, not R30c.",
+     "order": 555,
+     "subjectId": "S555",
+     "idNote": "The model sees the opaque ID S555, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -45506,9 +46574,9 @@
     },
     {
      "id": "C22",
-     "order": 543,
-     "subjectId": "S543",
-     "idNote": "The model sees the opaque ID S543, not C22.",
+     "order": 556,
+     "subjectId": "S556",
+     "idNote": "The model sees the opaque ID S556, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -45531,9 +46599,9 @@
     },
     {
      "id": "M22",
-     "order": 544,
-     "subjectId": "S544",
-     "idNote": "The model sees the opaque ID S544, not M22.",
+     "order": 557,
+     "subjectId": "S557",
+     "idNote": "The model sees the opaque ID S557, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -45556,9 +46624,9 @@
     },
     {
      "id": "M23",
-     "order": 545,
-     "subjectId": "S545",
-     "idNote": "The model sees the opaque ID S545, not M23.",
+     "order": 558,
+     "subjectId": "S558",
+     "idNote": "The model sees the opaque ID S558, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -45585,9 +46653,9 @@
     },
     {
      "id": "M24",
-     "order": 546,
-     "subjectId": "S546",
-     "idNote": "The model sees the opaque ID S546, not M24.",
+     "order": 559,
+     "subjectId": "S559",
+     "idNote": "The model sees the opaque ID S559, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -45614,9 +46682,9 @@
     },
     {
      "id": "M25",
-     "order": 547,
-     "subjectId": "S547",
-     "idNote": "The model sees the opaque ID S547, not M25.",
+     "order": 560,
+     "subjectId": "S560",
+     "idNote": "The model sees the opaque ID S560, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -45643,9 +46711,9 @@
     },
     {
      "id": "C23",
-     "order": 548,
-     "subjectId": "S548",
-     "idNote": "The model sees the opaque ID S548, not C23.",
+     "order": 561,
+     "subjectId": "S561",
+     "idNote": "The model sees the opaque ID S561, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -45673,9 +46741,9 @@
     },
     {
      "id": "K18",
-     "order": 549,
-     "subjectId": "S549",
-     "idNote": "The model sees the opaque ID S549, not K18.",
+     "order": 562,
+     "subjectId": "S562",
+     "idNote": "The model sees the opaque ID S562, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -45700,9 +46768,9 @@
     },
     {
      "id": "K19",
-     "order": 550,
-     "subjectId": "S550",
-     "idNote": "The model sees the opaque ID S550, not K19.",
+     "order": 563,
+     "subjectId": "S563",
+     "idNote": "The model sees the opaque ID S563, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -45726,9 +46794,9 @@
     },
     {
      "id": "K20",
-     "order": 551,
-     "subjectId": "S551",
-     "idNote": "The model sees the opaque ID S551, not K20.",
+     "order": 564,
+     "subjectId": "S564",
+     "idNote": "The model sees the opaque ID S564, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -45757,9 +46825,9 @@
     },
     {
      "id": "K20-still",
-     "order": 552,
-     "subjectId": "S552",
-     "idNote": "The model sees the opaque ID S552, not K20-still.",
+     "order": 565,
+     "subjectId": "S565",
+     "idNote": "The model sees the opaque ID S565, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -45817,9 +46885,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 553,
-     "subjectId": "S553",
-     "idNote": "The model sees the opaque ID S553, not M26a.",
+     "order": 566,
+     "subjectId": "S566",
+     "idNote": "The model sees the opaque ID S566, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -45845,9 +46913,9 @@
     },
     {
      "id": "M26",
-     "order": 554,
-     "subjectId": "S554",
-     "idNote": "The model sees the opaque ID S554, not M26.",
+     "order": 567,
+     "subjectId": "S567",
+     "idNote": "The model sees the opaque ID S567, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -45872,9 +46940,9 @@
     },
     {
      "id": "M27",
-     "order": 555,
-     "subjectId": "S555",
-     "idNote": "The model sees the opaque ID S555, not M27.",
+     "order": 568,
+     "subjectId": "S568",
+     "idNote": "The model sees the opaque ID S568, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -45996,9 +47064,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 556,
-     "subjectId": "S556",
-     "idNote": "The model sees the opaque ID S556, not R32c.",
+     "order": 569,
+     "subjectId": "S569",
+     "idNote": "The model sees the opaque ID S569, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -46021,9 +47089,9 @@
     },
     {
      "id": "C24",
-     "order": 557,
-     "subjectId": "S557",
-     "idNote": "The model sees the opaque ID S557, not C24.",
+     "order": 570,
+     "subjectId": "S570",
+     "idNote": "The model sees the opaque ID S570, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -46047,9 +47115,9 @@
     },
     {
      "id": "C24b",
-     "order": 558,
-     "subjectId": "S558",
-     "idNote": "The model sees the opaque ID S558, not C24b.",
+     "order": 571,
+     "subjectId": "S571",
+     "idNote": "The model sees the opaque ID S571, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -46073,9 +47141,9 @@
     },
     {
      "id": "C30",
-     "order": 559,
-     "subjectId": "S559",
-     "idNote": "The model sees the opaque ID S559, not C30.",
+     "order": 572,
+     "subjectId": "S572",
+     "idNote": "The model sees the opaque ID S572, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -46097,9 +47165,9 @@
     },
     {
      "id": "C25",
-     "order": 560,
-     "subjectId": "S560",
-     "idNote": "The model sees the opaque ID S560, not C25.",
+     "order": 573,
+     "subjectId": "S573",
+     "idNote": "The model sees the opaque ID S573, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -46126,9 +47194,9 @@
     },
     {
      "id": "C26",
-     "order": 561,
-     "subjectId": "S561",
-     "idNote": "The model sees the opaque ID S561, not C26.",
+     "order": 574,
+     "subjectId": "S574",
+     "idNote": "The model sees the opaque ID S574, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -46158,9 +47226,9 @@
     },
     {
      "id": "R32k",
-     "order": 562,
-     "subjectId": "S562",
-     "idNote": "The model sees the opaque ID S562, not R32k.",
+     "order": 575,
+     "subjectId": "S575",
+     "idNote": "The model sees the opaque ID S575, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -46200,9 +47268,9 @@
     },
     {
      "id": "K21",
-     "order": 563,
-     "subjectId": "S563",
-     "idNote": "The model sees the opaque ID S563, not K21.",
+     "order": 576,
+     "subjectId": "S576",
+     "idNote": "The model sees the opaque ID S576, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -46226,9 +47294,9 @@
     },
     {
      "id": "K22",
-     "order": 564,
-     "subjectId": "S564",
-     "idNote": "The model sees the opaque ID S564, not K22.",
+     "order": 577,
+     "subjectId": "S577",
+     "idNote": "The model sees the opaque ID S577, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -46254,9 +47322,9 @@
     },
     {
      "id": "K32",
-     "order": 565,
-     "subjectId": "S565",
-     "idNote": "The model sees the opaque ID S565, not K32.",
+     "order": 578,
+     "subjectId": "S578",
+     "idNote": "The model sees the opaque ID S578, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -46278,9 +47346,9 @@
     },
     {
      "id": "K23",
-     "order": 566,
-     "subjectId": "S566",
-     "idNote": "The model sees the opaque ID S566, not K23.",
+     "order": 579,
+     "subjectId": "S579",
+     "idNote": "The model sees the opaque ID S579, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -46307,9 +47375,9 @@
     },
     {
      "id": "K24",
-     "order": 567,
-     "subjectId": "S567",
-     "idNote": "The model sees the opaque ID S567, not K24.",
+     "order": 580,
+     "subjectId": "S580",
+     "idNote": "The model sees the opaque ID S580, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -46331,9 +47399,9 @@
     },
     {
      "id": "K25",
-     "order": 568,
-     "subjectId": "S568",
-     "idNote": "The model sees the opaque ID S568, not K25.",
+     "order": 581,
+     "subjectId": "S581",
+     "idNote": "The model sees the opaque ID S581, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -46368,9 +47436,9 @@
     },
     {
      "id": "K26",
-     "order": 569,
-     "subjectId": "S569",
-     "idNote": "The model sees the opaque ID S569, not K26.",
+     "order": 582,
+     "subjectId": "S582",
+     "idNote": "The model sees the opaque ID S582, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -46411,9 +47479,9 @@
     },
     {
      "id": "K34",
-     "order": 570,
-     "subjectId": "S570",
-     "idNote": "The model sees the opaque ID S570, not K34.",
+     "order": 583,
+     "subjectId": "S583",
+     "idNote": "The model sees the opaque ID S583, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -46443,9 +47511,9 @@
     },
     {
      "id": "K30",
-     "order": 571,
-     "subjectId": "S571",
-     "idNote": "The model sees the opaque ID S571, not K30.",
+     "order": 584,
+     "subjectId": "S584",
+     "idNote": "The model sees the opaque ID S584, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -46467,9 +47535,9 @@
     },
     {
      "id": "K27a",
-     "order": 572,
-     "subjectId": "S572",
-     "idNote": "The model sees the opaque ID S572, not K27a.",
+     "order": 585,
+     "subjectId": "S585",
+     "idNote": "The model sees the opaque ID S585, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -46494,9 +47562,9 @@
     },
     {
      "id": "K27",
-     "order": 573,
-     "subjectId": "S573",
-     "idNote": "The model sees the opaque ID S573, not K27.",
+     "order": 586,
+     "subjectId": "S586",
+     "idNote": "The model sees the opaque ID S586, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -46521,9 +47589,9 @@
     },
     {
      "id": "K28",
-     "order": 574,
-     "subjectId": "S574",
-     "idNote": "The model sees the opaque ID S574, not K28.",
+     "order": 587,
+     "subjectId": "S587",
+     "idNote": "The model sees the opaque ID S587, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -46566,9 +47634,9 @@
     },
     {
      "id": "K33",
-     "order": 575,
-     "subjectId": "S575",
-     "idNote": "The model sees the opaque ID S575, not K33.",
+     "order": 588,
+     "subjectId": "S588",
+     "idNote": "The model sees the opaque ID S588, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -46592,9 +47660,9 @@
     },
     {
      "id": "R32m",
-     "order": 576,
-     "subjectId": "S576",
-     "idNote": "The model sees the opaque ID S576, not R32m.",
+     "order": 589,
+     "subjectId": "S589",
+     "idNote": "The model sees the opaque ID S589, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -46618,9 +47686,9 @@
     },
     {
      "id": "M28",
-     "order": 577,
-     "subjectId": "S577",
-     "idNote": "The model sees the opaque ID S577, not M28.",
+     "order": 590,
+     "subjectId": "S590",
+     "idNote": "The model sees the opaque ID S590, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -46646,9 +47714,9 @@
     },
     {
      "id": "M31",
-     "order": 578,
-     "subjectId": "S578",
-     "idNote": "The model sees the opaque ID S578, not M31.",
+     "order": 591,
+     "subjectId": "S591",
+     "idNote": "The model sees the opaque ID S591, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -46683,9 +47751,9 @@
     },
     {
      "id": "M30a",
-     "order": 579,
-     "subjectId": "S579",
-     "idNote": "The model sees the opaque ID S579, not M30a.",
+     "order": 592,
+     "subjectId": "S592",
+     "idNote": "The model sees the opaque ID S592, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -46710,9 +47778,9 @@
     },
     {
      "id": "M30",
-     "order": 580,
-     "subjectId": "S580",
-     "idNote": "The model sees the opaque ID S580, not M30.",
+     "order": 593,
+     "subjectId": "S593",
+     "idNote": "The model sees the opaque ID S593, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -46737,9 +47805,9 @@
     },
     {
      "id": "M30c",
-     "order": 581,
-     "subjectId": "S581",
-     "idNote": "The model sees the opaque ID S581, not M30c.",
+     "order": 594,
+     "subjectId": "S594",
+     "idNote": "The model sees the opaque ID S594, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -46763,9 +47831,9 @@
     },
     {
      "id": "M32",
-     "order": 582,
-     "subjectId": "S582",
-     "idNote": "The model sees the opaque ID S582, not M32.",
+     "order": 595,
+     "subjectId": "S595",
+     "idNote": "The model sees the opaque ID S595, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -46788,9 +47856,9 @@
     },
     {
      "id": "P02",
-     "order": 583,
-     "subjectId": "S583",
-     "idNote": "The model sees the opaque ID S583, not P02.",
+     "order": 596,
+     "subjectId": "S596",
+     "idNote": "The model sees the opaque ID S596, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -46816,9 +47884,9 @@
     },
     {
      "id": "C29",
-     "order": 584,
-     "subjectId": "S584",
-     "idNote": "The model sees the opaque ID S584, not C29.",
+     "order": 597,
+     "subjectId": "S597",
+     "idNote": "The model sees the opaque ID S597, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -46840,9 +47908,9 @@
     },
     {
      "id": "C27",
-     "order": 585,
-     "subjectId": "S585",
-     "idNote": "The model sees the opaque ID S585, not C27.",
+     "order": 598,
+     "subjectId": "S598",
+     "idNote": "The model sees the opaque ID S598, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -46867,9 +47935,9 @@
     },
     {
      "id": "C28",
-     "order": 586,
-     "subjectId": "S586",
-     "idNote": "The model sees the opaque ID S586, not C28.",
+     "order": 599,
+     "subjectId": "S599",
+     "idNote": "The model sees the opaque ID S599, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -46903,9 +47971,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 587,
-     "subjectId": "S587",
-     "idNote": "The model sees the opaque ID S587, not P01.",
+     "order": 600,
+     "subjectId": "S600",
+     "idNote": "The model sees the opaque ID S600, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",
