@@ -96,8 +96,15 @@
       "id": 5,
       "title": "The Painter",
       "character": "Markus",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (44 nodes) and the game’s text (detroitbecometext template and string table), with the Fandom wiki’s chapter page and transcript. ARRIVING HOME → DROP OFF PACKAGE → WAKE CARL → (CARL NOTICES MARKUS’ CLOTHES, after the protesters in Shades of Color) → SERVE BREAKFAST → FIND SOMETHING TO DO → PLAY CHESS (WIN / LOSE / DRAW) or READ BOOK (Plato / Shakespeare / Keats) or PLAY PIANO (four moods) → TAKE CARL TO THE STUDIO → PAINT SOMETHING YOU SEE (three subjects) → PAINT FROM THE HEART (ANDROIDS / HUMANITY / IDENTITY, four feelings each) → LEO INTRUDED TO ASK FOR MONEY, the only ending. Optional: the magazine (two covers) and the birds. The template’s live prompts (WIN / LOSE / DRAW and the three follow-ups, LIKE / DON’T LIKE / NO OPINION) are all offered; the cut FACTUAL / REASSURING prompt is not. No probability, relationship, public-opinion or instability change anywhere. Cross-chapter: clothesTorn in; the pastime (painterActivity) and the painting (painterTheme, painterFeeling) out, for Night of the Soul. Researched in docs/research/ch05-the-painter.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg"
+      ]
     },
     {
       "id": 6,
@@ -2621,36 +2628,845 @@
       }
     },
     {
-      "id": "M01",
+      "id": "T01",
       "chapter": 5,
       "character": "Markus",
-      "title": "Express an independent vision",
-      "context": "Carl asks Markus to paint something of his own.",
+      "title": "Arriving Home (checkpoint) and Drop Off Package",
+      "context": "Markus comes home from Bellini Paints at 09:58 on November 5, 2038: “Alarm deactivated. Welcome home, Markus.” He leaves Carl’s package on the hutch in the hall and hangs up his coat; the next objective is to wake Carl upstairs.",
       "options": [
         {
-          "label": "Androids",
-          "effect": "Express a view of android experience.",
+          "label": "Scripted, no choice",
+          "effect": "The start node and checkpoint, then the main-line node DROP OFF PACKAGE (objective DEPOSIT PACKAGE). The hall mirror shows a torn or an unscathed shirt.",
+          "target": "T04"
+        }
+      ],
+      "gate": "Chapter start, after A New Home.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+      ],
+      "note": "Chart nodes ARRIVING HOME (checkpoint) and DROP OFF PACKAGE. No icon on either.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01a"
+        ],
+        "status": "simplified",
+        "note": "One narrated event covers both nodes; the mirror sentence appears when clothesTorn is set. One fact; no stat change."
+      }
+    },
+    {
+      "id": "T02",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Read the living-room magazine",
+      "context": "A magazine with two covers on the table in front of the living-room TV: Century, “The North Pole - Why Russia Wants It” (thirium minerals under the Arctic ice; Warren: “Russia has no business in the Arctic”), and Detroit Today, “Life Found on Titan!” (microorganisms under Titan’s ice; CyberLife’s space-faring androids).",
+      "options": [
+        {
+          "label": "READ “NORTH POLE RUSSIA”",
+          "effect": "Century: the Arctic dispute over thirium minerals. BOOKWORM No. 2.",
           "target": null
         },
         {
-          "label": "Humanity",
-          "effect": "Express a view of human experience.",
+          "label": "READ “LIFE ON TITAN”",
+          "effect": "Detroit Today: life found on Titan. BOOKWORM No. 27.",
           "target": null
         },
         {
-          "label": "Identity",
-          "effect": "Express a view of the self.",
+          "label": "Leave it",
+          "effect": "Nothing.",
           "target": null
         }
       ],
-      "gate": "Reach this scene with the character alive.",
-      "kind": "Ethical",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/"
+      "gate": "Optional, from arrival until the pastime is chosen.",
+      "kind": "State gate",
+      "dependsOn": [
+        "T01"
       ],
-      "note": "Copying a visible object happens first; the original painting is a later prompt. Expressive, not a survival branch.",
-      "status": "Source-backed summary"
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Magazine"
+      ],
+      "note": "Two optional chart nodes in the side group drawn under WAKE CARL, with no line to the main path. No public-opinion effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "R05",
+          "R05b"
+        ],
+        "status": "implemented",
+        "note": "A media scene before waking Carl (R05); whatever was left unread is offered again with the TV after breakfast (R05b). Facts go to Markus’s knowledge; no stat change."
+      }
+    },
+    {
+      "id": "T03",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Activate Birds",
+      "context": "In the hall, a cage of two small robot songbirds; Markus can switch each on with its button, and they chirp at each other.",
+      "options": [
+        {
+          "label": "ACTIVATE BIRDS",
+          "effect": "Optional; no effect.",
+          "target": null
+        },
+        {
+          "label": "Leave them",
+          "effect": "Nothing.",
+          "target": null
+        }
+      ],
+      "gate": "Optional, before or after waking Carl.",
+      "kind": "State gate",
+      "dependsOn": [
+        "T01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+      ],
+      "note": "Optional side node in the same group as the magazine (wiki: “found in main lobby”).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01b"
+        ],
+        "status": "simplified",
+        "note": "A two-option decision before going upstairs; in the game it can also be done later. No stat change."
+      }
+    },
+    {
+      "id": "T04",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Wake Carl",
+      "context": "Markus draws the curtains, reports the time and weather (“It’s 10 AM … partly cloudy, 54°, 80% humidity”) and gives Carl his injection (“Show me your arm please, Carl.” “No!”). Carl: “Humans are such a fragile machine… They break down so quickly…”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Main-line node; objectives WAKE CARL UPSTAIRS and ADMINISTER CARL’S MEDICINE.",
+          "target": "T06"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "T01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+      ],
+      "note": "Main-line node, no icon.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01c"
+        ],
+        "status": "implemented",
+        "note": "A narrated event quoting the template. One fact; no stat change."
+      }
+    },
+    {
+      "id": "T05",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Carl notices Markus’ clothes",
+      "context": "If the protesters harassed Markus in Shades of Color, Carl sees the damage: “Hey. What happened to your clothes?” Markus: “Oh, it’s nothing… Just some demonstrators in the street, Carl…” Carl: “What a bunch of idiots… I hope they didn’t harm you…”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Plays only after PROTESTERS HARASS MARKUS. A reply prompt FACTUAL / REASSURING was cut from the game.",
+          "target": "T06"
+        }
+      ],
+      "gate": "Only when the protesters harassed Markus in Shades of Color.",
+      "kind": "State gate",
+      "dependsOn": [
+        "T04",
+        "S08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Shades_of_Color"
+      ],
+      "note": "Chart node with the triangle icon (unlocked by an earlier chapter).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01d"
+        ],
+        "status": "implemented",
+        "note": "An event gated on clothesTorn (set in Shades of Color, M00f). One fact; no stat change."
+      }
+    },
+    {
+      "id": "T06",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Serve Breakfast",
+      "context": "Markus bathes Carl and takes him down; on the way Carl hears about his retrospective at the Museum of Modern Art (the gallery director left four messages) and asks for news of Leo (none; “No, don’t bother”). Bacon and eggs; “Television.” The CTN news reports the Arctic crisis (“never been so close to a Third World War”). “Why don’t you find something to do while I finish my breakfast?”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Main-line node. The TV report is optional and has no effect.",
+          "target": "T07"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "State gate",
+      "dependsOn": [
+        "T04"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      ],
+      "note": "Main-line node; the broadcast is not a chart node and moves no stat.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01e",
+          "R05b"
+        ],
+        "status": "implemented",
+        "note": "An event quoting the template (two facts), then a media scene with the TV and any magazine cover left unread. No stat change."
+      }
+    },
+    {
+      "id": "T07",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Find Something To Do (checkpoint)",
+      "context": "While Carl finishes his breakfast, Markus picks one pastime: the chessboard, the bookshelf or the piano.",
+      "options": [
+        {
+          "label": "PLAY CHESS",
+          "effect": "Speed chess with Carl; Night of the Soul: LOOK AT THE CHESSBOARD if Carl is alive.",
+          "target": "T08"
+        },
+        {
+          "label": "READ BOOK",
+          "effect": "A book Carl recommended; Night of the Soul: BROWSE BOOKS.",
+          "target": "T10"
+        },
+        {
+          "label": "PLAY PIANO",
+          "effect": "A piece on Carl’s piano; Night of the Soul: PLAY PIANO.",
+          "target": "T11"
+        }
+      ],
+      "gate": "Main line; one pastime per playthrough.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "T06"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul"
+      ],
+      "note": "Checkpoint and choice group. The wiki and transcript also allow doing nothing (Carl gives the same speech); the chart draws no line for it.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01f"
+        ],
+        "status": "implemented",
+        "note": "A decision with the chart’s three labels; stored as painterActivity for Night of the Soul. Doing nothing is not offered. No stat change."
+      }
+    },
+    {
+      "id": "T08",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Speed chess",
+      "context": "Carl: “Fancy a game of chess?” “Speed chess.” Markus decides the final move.",
+      "options": [
+        {
+          "label": "WIN",
+          "effect": "Carl: “That’s what I call a thorough beating…”; then JUSTIFY / SORRY.",
+          "target": "T09"
+        },
+        {
+          "label": "LOSE",
+          "effect": "Carl: “Are your circuits rusty? Or are you just taking pity on an old man?”; then LIE / TRUTH.",
+          "target": "T09"
+        },
+        {
+          "label": "DRAW",
+          "effect": "Carl: “That is a very odd draw…”; then LIE / TRUTH.",
+          "target": "T09"
+        }
+      ],
+      "gate": "After PLAY CHESS.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "T07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+      ],
+      "note": "Chart sub-group; all three complete on the chart together (PowerPyx).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01g"
+        ],
+        "status": "implemented",
+        "note": "A decision with the template’s prompt; stored as painterPastime. No stat change."
+      }
+    },
+    {
+      "id": "T09",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "After the chess game",
+      "context": "The template’s follow-up prompts: after WIN, JUSTIFY (“you don’t like when I let you win”) or SORRY (“I prefer humiliation to pity”); after LOSE, LIE or TRUTH (Carl: “Never throw a match, Markus. If you can win, win.”); after DRAW, LIE (“You don’t lie as good as you play chess”) or TRUTH (“A draw feels like an honorable compromise, no?”).",
+      "options": [
+        {
+          "label": "JUSTIFY / SORRY",
+          "effect": "After WIN. No effect.",
+          "target": null
+        },
+        {
+          "label": "LIE / TRUTH",
+          "effect": "After LOSE. No effect.",
+          "target": null
+        },
+        {
+          "label": "LIE / TRUTH",
+          "effect": "After DRAW. No effect.",
+          "target": null
+        }
+      ],
+      "gate": "After the matching chess result.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "T08"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+      ],
+      "note": "Template prompts, not chart nodes.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01h",
+          "M01i",
+          "M01j"
+        ],
+        "status": "implemented",
+        "note": "Three decisions, one per result, gated on painterPastime. No stat change."
+      }
+    },
+    {
+      "id": "T10",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Read a book",
+      "context": "Carl: “What are you reading?” Plato’s Republic (“Asking questions that have no answers is part of being human”), Macbeth (“Life without emotions wouldn’t be worth living”) or Keats’ Odes (“There’s nothing like love to make a man feel miserable”).",
+      "options": [
+        {
+          "label": "THE REPUBLIC BY PLATO",
+          "effect": "Carl on unanswerable questions.",
+          "target": null
+        },
+        {
+          "label": "TRAGEDIES OF WILLIAM SHAKESPEARE",
+          "effect": "Macbeth; Carl on emotions.",
+          "target": null
+        },
+        {
+          "label": "ODES BY JOHN KEATS",
+          "effect": "Carl on love.",
+          "target": null
+        }
+      ],
+      "gate": "After READ BOOK.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "T07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+      ],
+      "note": "Chart sub-group; the template has three conditioned conversations and no prompt.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01k"
+        ],
+        "status": "implemented",
+        "note": "A decision with the game’s interaction labels (Plato, Shakespeare, Keats’ Odes) in chart order; Carl’s answer goes to Markus’s knowledge; stored as painterPastime. No stat change."
+      }
+    },
+    {
+      "id": "T11",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Play the piano",
+      "context": "Markus chooses a piece; Carl: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”",
+      "options": [
+        {
+          "label": "MELANCHOLIC",
+          "effect": "Markus’s theme.",
+          "target": null
+        },
+        {
+          "label": "HOPEFUL",
+          "effect": "The opening theme.",
+          "target": null
+        },
+        {
+          "label": "INTIMATE",
+          "effect": "Kara’s theme.",
+          "target": null
+        },
+        {
+          "label": "ENIGMATIC",
+          "effect": "Another part of Markus’s theme.",
+          "target": null
+        }
+      ],
+      "gate": "After PLAY PIANO.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "T07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+      ],
+      "note": "Chart sub-group and the game’s choice group (CHOICEGROUP01). Tempo controls are gameplay, not a prompt.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01l"
+        ],
+        "status": "implemented",
+        "note": "A decision with the four moods; Carl’s line goes to Markus’s knowledge; stored as painterPastime. No stat change."
+      }
+    },
+    {
+      "id": "T12",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Take Carl to the studio",
+      "context": "Carl: “One day, I won’t be here to take care of you anymore… Decide who you are, and wanna become… This world doesn’t like those who are different, Markus. Don’t let anyone tell you who you should be. Let’s go to the studio.” Markus removes the sheet; Carl finishes his painting.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Main-line node; objective REMOVE SHEET. Cleaning the studio is optional and not on the chart.",
+          "target": "T13"
+        }
+      ],
+      "gate": "Main line, after any pastime.",
+      "kind": "State gate",
+      "dependsOn": [
+        "T07"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+      ],
+      "note": "Main-line node.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01m"
+        ],
+        "status": "implemented",
+        "note": "A narrated event; Carl’s speech is a fact. No stat change."
+      }
+    },
+    {
+      "id": "T13",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Carl’s verdict",
+      "context": "Carl: “So… What’s your verdict, Markus?” Whatever the answer: “The truth is I have nothing left to say anymore… Let’s see if you have any talent!”",
+      "options": [
+        {
+          "label": "LIKE",
+          "effect": "“Something I can’t… quite define. I guess I like it.”",
+          "target": null
+        },
+        {
+          "label": "DON’T LIKE",
+          "effect": "“I don’t think it’s your best work…”",
+          "target": null
+        },
+        {
+          "label": "NO OPINION",
+          "effect": "“I’m not programmed to criticize art.”",
+          "target": null
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "T12"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+      ],
+      "note": "Template prompt, not a chart node; no effect.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01n"
+        ],
+        "status": "implemented",
+        "note": "A decision with the template’s labels. No stat change."
+      }
+    },
+    {
+      "id": "T14",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Paint Something You See",
+      "context": "Markus paints a copy of what he sees. Carl: “That is a perfect copy, of reality. But painting is not about replicating the world, it’s about interpreting it, improving on it, showing something you see.”",
+      "options": [
+        {
+          "label": "COPY CARL’S PAINTING",
+          "effect": "Same reply.",
+          "target": "M01"
+        },
+        {
+          "label": "COPY DESK",
+          "effect": "Same reply.",
+          "target": "M01"
+        },
+        {
+          "label": "COPY STATUE",
+          "effect": "Same reply.",
+          "target": "M01"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "T13"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+      ],
+      "note": "Chart node and choice group; in game the buttons read “Paint Carl’s painting”, “Paint desk”, “Paint statue” (objective FIND A SUBJECT TO PAINT).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01o"
+        ],
+        "status": "implemented",
+        "note": "A decision with the game’s button labels in chart order; stored as painterCopy; Carl’s critique is a fact. No stat change."
+      }
+    },
+    {
+      "id": "M01",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Paint From the Heart",
+      "context": "Carl: “Close your eyes. Trust me. Try to imagine something that doesn’t exist… concentrate… on how it makes you feel… and let your hand drift across the canvas.”",
+      "options": [
+        {
+          "label": "ANDROIDS",
+          "effect": "Then FATE / HOPE / PAIN / SADNESS.",
+          "target": "T16"
+        },
+        {
+          "label": "HUMANITY",
+          "effect": "Then ANGER / COMFORT / EMPATHY / HOPE.",
+          "target": "T17"
+        },
+        {
+          "label": "IDENTITY",
+          "effect": "Then ANDROIDS / DESPAIR / DOUBTS / PRISONER.",
+          "target": "T18"
+        }
+      ],
+      "gate": "Main line.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "T14"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+      ],
+      "note": "Chart node, printed “PAINT FROM THE THE HEART” (a wrapped line; the string table has PAINT FROM THE HEART).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01p"
+        ],
+        "status": "implemented",
+        "note": "A decision; stored as painterTheme. No stat change."
+      }
+    },
+    {
+      "id": "T16",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Androids",
+      "context": "The painting Markus makes with his eyes closed, thinking of androids.",
+      "options": [
+        {
+          "label": "FATE",
+          "effect": "Himself on his knees.",
+          "target": "T19"
+        },
+        {
+          "label": "HOPE",
+          "effect": "His hand covered in what looks like oil.",
+          "target": "T19"
+        },
+        {
+          "label": "PAIN",
+          "effect": "Himself decaying and in agony.",
+          "target": "T19"
+        },
+        {
+          "label": "SADNESS",
+          "effect": "Hands covered in blue blood.",
+          "target": "T19"
+        }
+      ],
+      "gate": "After ANDROIDS.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+      ],
+      "note": "Chart sub-group; all four complete together (PowerPyx). The painting appears in Night of the Soul if Carl is alive.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01q"
+        ],
+        "status": "implemented",
+        "note": "A decision; the painting is a fact; stored as painterFeeling. No stat change."
+      }
+    },
+    {
+      "id": "T17",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Humanity",
+      "context": "The painting Markus makes with his eyes closed, thinking of humanity.",
+      "options": [
+        {
+          "label": "ANGER",
+          "effect": "Himself enraged and screaming.",
+          "target": "T19"
+        },
+        {
+          "label": "COMFORT",
+          "effect": "Carl with a brave and stoic expression.",
+          "target": "T19"
+        },
+        {
+          "label": "EMPATHY",
+          "effect": "Two hands in blue blood and two in red blood.",
+          "target": "T19"
+        },
+        {
+          "label": "HOPE",
+          "effect": "Two hands grasping each other.",
+          "target": "T19"
+        }
+      ],
+      "gate": "After HUMANITY.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+      ],
+      "note": "Chart sub-group; all four complete together (PowerPyx).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01r"
+        ],
+        "status": "implemented",
+        "note": "A decision; the painting is a fact; stored as painterFeeling. No stat change."
+      }
+    },
+    {
+      "id": "T18",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Identity",
+      "context": "The painting Markus makes with his eyes closed, thinking of who he is.",
+      "options": [
+        {
+          "label": "ANDROIDS",
+          "effect": "Himself covered in blue blood.",
+          "target": "T19"
+        },
+        {
+          "label": "DESPAIR",
+          "effect": "Himself with his hand on his face.",
+          "target": "T19"
+        },
+        {
+          "label": "DOUBTS",
+          "effect": "Himself in ordinary clothes before a red wall.",
+          "target": "T19"
+        },
+        {
+          "label": "PRISONER",
+          "effect": "Himself with Carl behind him.",
+          "target": "T19"
+        }
+      ],
+      "gate": "After IDENTITY.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "M01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+      ],
+      "note": "Chart sub-group; all four complete together (PowerPyx).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01s"
+        ],
+        "status": "implemented",
+        "note": "A decision; the painting is a fact; stored as painterFeeling. No stat change."
+      }
+    },
+    {
+      "id": "T19",
+      "chapter": 5,
+      "character": "Markus",
+      "title": "Leo intruded to ask for money (ending)",
+      "context": "Carl, at Markus’s painting: “Oh my God…” Leo walks in and asks for cash; Carl refuses (“you’re on it again, aren’t you?”). Leo: “You’d rather take care of your plastic toy here than your own son… This thing is not your son. IT’S A FUCKING MACHINE!” He shoves Markus; Carl: “ENOUGH!” Leo: “You never loved me.” He storms out.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "The only ending; leads to Broken.",
+          "target": null
+        }
+      ],
+      "gate": "Every path.",
+      "kind": "State gate",
+      "dependsOn": [
+        "T16",
+        "T17",
+        "T18"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Painter",
+        "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+      ],
+      "note": "The chapter’s only ending, no icon (“This chapter has only one outcome”).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M01t"
+        ],
+        "status": "implemented",
+        "note": "A narrated event quoting the template; recorded as painterOutcome. Two facts; no stat change."
+      }
     },
     {
       "id": "PT01",
@@ -8948,7 +9764,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 260,
+ "scenes": 280,
  "chapters": [
   {
    "id": 1,
@@ -11414,24 +12230,24 @@
    "title": "The Painter",
    "names": [
     [
-     "Carl",
-     "Arthur"
-    ],
-    [
      "Markus",
      "Elan"
+    ],
+    [
+     "Carl",
+     "Arthur"
     ],
     [
      "Warren",
      "Hale"
     ],
     [
-     "Detroit",
-     "City"
-    ],
-    [
      "CyberLife",
      "Arclight"
+    ],
+    [
+     "Detroit",
+     "City"
     ],
     [
      "Leo",
@@ -11440,76 +12256,992 @@
    ],
    "scenes": [
     {
-     "id": "R05",
+     "id": "M01a",
      "order": 48,
      "subjectId": "S048",
-     "idNote": "The model sees the opaque ID S048, not R05.",
+     "idNote": "The model sees the opaque ID S048, not M01a.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Welcome home",
+     "situation": "You are Markus, an android, caretaker and companion to Carl, the elderly painter whose paints you have just collected. It is November 5th, 2038, just before ten in the morning. The bus drops you in your neighborhood and you walk up to Carl’s house with the package. At the door: “Alarm deactivated. Welcome home, Markus.” The door opens by itself and you step inside. You set the package down on the hutch in the hall and hang up your coat. Your next task is to take care of Carl, who is still asleep upstairs.",
+     "situationWhen": [
+      {
+       "requires": {
+        "clothesTorn": true
+       },
+       "text": "In the hall mirror you see your shirt, torn where the protesters grabbed you."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus has delivered the package. The house is quiet; Carl is still asleep upstairs."
+     },
+     "facts": [
+      "You came home to Carl’s house with his paints and left them on the hutch in the hall."
+     ],
+     "adaptationNote": "The chart’s checkpoint ARRIVING HOME and the next main-line node DROP OFF PACKAGE (the game’s objective DEPOSIT PACKAGE), narrated as one event. The alarm line is the template’s; the date and time (NOV 5TH, 2038, AM 09:58), the self-opening door, the hutch and the coat are the wiki transcript’s (“Markus places the package on hutch and hangs up his coat”). The mirror sentence appears only when the protesters tore his clothes in Shades of Color (`clothesTorn`), as the transcript’s mirror text changes (“his torn shirt” / “his unscathed shirt”). Left out: the optional looks at the mirror and at the painting behind the bench, which are not chart nodes. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+     ]
+    },
+    {
+     "id": "R05",
+     "order": 49,
+     "subjectId": "S049",
+     "idNote": "The model sees the opaque ID S049, not R05.",
      "type": "media",
      "character": "Markus",
-     "title": "Breakfast news at Carl's",
-     "situation": "You are Markus. While you prepare Carl's breakfast he asks for the news channel, and there is a magazine on the side table by the television.",
+     "title": "The magazine in the living room",
+     "situation": "You are Markus, in Carl’s house before waking him. On the table in front of the living-room television lies a magazine with two covers.",
+     "options": [],
+     "media": [
+      {
+       "kind": "magazine",
+       "title": "Century: The North Pole - Why Russia Wants It",
+       "facts": [
+        "Century (cover: “Frozen treasures”; also “Is President Warren too close to CyberLife?”) reports that Russia’s interest in the North Pole has intensified since precious minerals used in synthesizing thirium were found trapped in the ice; surplus reserves would let either the US or Russia build more advanced androids and greatly boost its military and industrial output. NATO says “A conflict would benefit nobody”; President Warren: “It’s simple. Russia has no business in the Arctic. If the Kremlin doesn’t understand that, we will make them understand.”"
+       ]
+      },
+      {
+       "kind": "magazine",
+       "title": "Detroit Today: Life Found on Titan!",
+       "facts": [
+        "Detroit Today (cover: “Life Found on Titan!”; also “NATO Security Council divided over Arctic dispute”) reports that a probe launched nineteen years ago has confirmed microorganisms living hundreds of kilometers below Titan’s surface, in a salt-water ocean under thick ice; after similar finds on Enceladus, life may be common in the universe. NASA calls its android expedition to Io one of many voyages seeking extraterrestrial life, and CyberLife says its space-faring androids are specially designed for long-range missions of this kind."
+       ]
+      }
+     ],
+     "adaptationNote": "The chart’s optional side nodes READ “NORTH POLE RUSSIA” and READ “LIFE ON TITAN”: one magazine on the living-room table in front of the TV with two covers (the transcript’s “Read Magazine” with two tabs; BOOKWORM No. 2 and No. 27), drawn on the chart with no line to the main path. In the game it can be read from arrival until the pastime is chosen; here it is offered now, and whatever is left unread is offered again with the TV after breakfast (R05b). Facts are summarized from the article text in the transcript; interviewees are not named. No public-opinion effect: the Public Opinion page lists nothing for this chapter, and the earlier version’s note that news can lower opinion is dropped. Titles corrected to the magazine’s own (“The North Pole - Why Russia Wants It”, “Life Found on Titan!”).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/The_North_Pole_-_Why_Russia_Wants_It",
+      "https://detroit-become-human.fandom.com/wiki/Life_Found_on_Titan!",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+     ]
+    },
+    {
+     "id": "M01b",
+     "order": 50,
+     "subjectId": "S050",
+     "idNote": "The model sees the opaque ID S050, not M01b.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The birds in the hall",
+     "situation": "You are Markus, in the hall of Carl’s house. A cage holds two small robot songbirds, switched off. Carl is still asleep upstairs.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Open the cage and switch the two birds on before going upstairs.",
+       "outcome": "Markus opens the cage, kneels, and switches on one bird with its button, then the other. They come alive and chirp at each other. He closes the cage and goes upstairs to wake Carl."
+      },
+      {
+       "id": "1",
+       "text": "Leave the birds and go upstairs to wake Carl.",
+       "outcome": "Markus goes upstairs to wake Carl."
+      }
+     ],
+     "adaptationNote": "The chart’s optional side node ACTIVATE BIRDS (the wiki: “side option - found in main lobby”), drawn with the magazine and with no line to the main path. The transcript describes it: Markus opens the cage, presses a button on each bird, and they chirp at each other. In the game it can be done before or after waking Carl; here it is offered once, before going upstairs, with going straight up as the alternative. No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+     ]
+    },
+    {
+     "id": "M01c",
+     "order": 51,
+     "subjectId": "S051",
+     "idNote": "The model sees the opaque ID S051, not M01c.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Waking Carl",
+     "situation": "You are Markus. Upstairs, Carl is asleep in his bed, snoring. You draw the curtains; he wakes, shielding his eyes. “Good morning, Carl.” “Good morning.” “It’s 10 AM. The weather’s partly cloudy, 54°, 80% humidity, with a strong possibility of afternoon showers.” “It sounds like a good day to spend in bed…” “I did go to pick up the paint that you ordered.” “Oh yes, I’d forgotten! That is the difference between you and me, right Markus? You never forget anything…” You prepare the syringe with his medicine. “Show me your arm please, Carl.” “No!” “Carl…” He sighs and holds out his arm. “Thank you.” As you give the injection, he grumbles: “I just opened my eyes and I’m already gritting my teeth… Humans are such a fragile machine… They break down so quickly… All this effort to keep ’em going…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus goes on with the injection."
+     },
+     "facts": [
+      "Every morning you give Carl his medicine by injection. He told you: “Humans are such a fragile machine… They break down so quickly… All this effort to keep ’em going…”"
+     ],
+     "adaptationNote": "The chart’s main-line node WAKE CARL (objectives WAKE CARL UPSTAIRS and ADMINISTER CARL’S MEDICINE). Every line is the template’s; the curtains, the syringe and Carl’s sigh are the transcript’s. Left out: the line “Our morning routine.”, marked cut in the template. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+     ]
+    },
+    {
+     "id": "M01d",
+     "order": 52,
+     "subjectId": "S052",
+     "idNote": "The model sees the opaque ID S052, not M01d.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Carl notices your clothes",
+     "situation": "You are Markus, finishing Carl’s injection. He looks at you, concerned, and gently touches your arm. “What happened to your clothes?” You answer: “Oh, it’s nothing… Just some demonstrators in the street, Carl…” “What a bunch of idiots… They think they can stop progress by roughing up a few androids? I hope they didn’t harm you…” “Oh, no, no… They just pushed me around, Carl. I’m fine.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus finishes the injection and puts the syringe away."
+     },
+     "facts": [
+      "Carl noticed your torn clothes and was worried for you; he called the protesters “a bunch of idiots” who think they can stop progress by roughing up androids. You told him it was nothing."
+     ],
+     "adaptationNote": "The chart’s node CARL NOTICES MARKUS’ CLOTHES (triangle icon: unlocked by an earlier chapter). It plays only when the protesters harassed Markus in Shades of Color (the template’s condition “Markus ran into the protesters in Shades of Color”; PowerPyx: “completes automatically if Markus was attacked by Protesters”), read from the chapter 3 flag `clothesTorn`. The template’s reply prompt FACTUAL / REASSURING around Markus’s answer is marked cut, so it is not offered: the shipped game plays the reassuring line, quoted here with the rest of the exchange. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Shades_of_Color"
+     ],
+     "when": {
+      "clothesTorn": true
+     },
+     "whenNot": "Markus was not harassed by the protesters in Shades of Color, so his clothes are intact."
+    },
+    {
+     "id": "M01e",
+     "order": 53,
+     "subjectId": "S053",
+     "idNote": "The model sees the opaque ID S053, not M01e.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Breakfast",
+     "situation": "You are Markus. “Okay. I’ll take you to the bathroom now.” You carry Carl to the bathroom and run his bath, then settle him in his wheelchair and push him out along the balcony. “Anything special on the agenda today?” “Yes, there’s the opening of your retrospective at the Museum of Modern Art. The gallery director left four messages asking to confirm your attendance.” “I haven’t decided yet. We’ll see about that later.” “Okay.” “What else?” “Just your usual fan mail. I’ve already answered.” “Any news from Leo?” “No, Carl. I can call him if you like?” “No. No, don’t bother.” You take him down in the wheelchair elevator to the living room. “I’m starving.” “Well, your breakfast is ready. Bacon and eggs, just the way you like them.” “Thank you, Markus.” “You’re welcome.” You bring the tray from the kitchen and serve him at the dining table. “Thank you, Markus. Television.” The TV comes on with the news. You pour his coffee. “Why don’t you find something to do while I finish my breakfast?” “Sure… Okay, Carl.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Carl starts on his breakfast while the news plays."
+     },
+     "facts": [
+      "Carl’s retrospective opens today at the Museum of Modern Art; the gallery director has left four messages asking him to confirm, and he has not decided whether to go.",
+      "Carl asked whether there was any news from Leo. There was none, and he told you not to call him."
+     ],
+     "adaptationNote": "The chart’s main-line node SERVE BREAKFAST (objectives TAKE CARL TO DINING TABLE, SERVE BREAKFAST, TAKE TRAY TO DINING TABLE), with the conversation on the way downstairs. Every line is the template’s; the bath, the balcony, the wheelchair elevator and the tray are the transcript’s. In the game breakfast can be served before or after waking Carl (if before, Carl does not thank him for it); here it is served after. Left out: Carl’s idle comments if Markus wanders off or takes too long (“Markus, have you forgotten where the living room is?”, “I would like to have my breakfast before noon, if you don’t mind.”), which play only on a timer. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+     ]
+    },
+    {
+     "id": "R05b",
+     "order": 54,
+     "subjectId": "S054",
+     "idNote": "The model sees the opaque ID S054, not R05b.",
+     "type": "media",
+     "character": "Markus",
+     "title": "The news at breakfast",
+     "situation": "You are Markus, in the living room while Carl eats his breakfast. The TV is showing the news, and the magazine lies on the table in front of it.",
      "options": [],
      "media": [
       {
        "kind": "tv",
-       "title": "the morning news",
+       "title": "the news on the living-room TV",
        "facts": [
-        "Russia has unilaterally declared the Arctic its territory and planted a flag over the ice; American destroyers are sailing for the Barents Sea and the UN chairman says the world has never been closer to a third world war."
+        "The TV news: tensions are rising in the Arctic since Russia unilaterally declared the region part of its national territory; Russian warships have taken position in the Barents Sea and a Russian flag flies over the ice field. The United States says it will not accept the annexation under any circumstances, and American destroyers are reported headed for the Barents Sea. The chairman of the UN says the world has never been so close to a Third World War and calls on both countries to renew talks before things get out of control."
        ]
       },
       {
        "kind": "magazine",
-       "title": "Century: Why Russia Wants the North Pole",
+       "title": "Century: The North Pole - Why Russia Wants It",
        "facts": [
-        "The minerals needed to synthesize the blue blood that powers androids were found under the Arctic ice; whoever controls them can build more androids for industry and war.",
-        "President Warren said Russia has no business in the Arctic and that America will make the Kremlin understand that."
-       ]
+        "Century (cover: “Frozen treasures”; also “Is President Warren too close to CyberLife?”) reports that Russia’s interest in the North Pole has intensified since precious minerals used in synthesizing thirium were found trapped in the ice; surplus reserves would let either the US or Russia build more advanced androids and greatly boost its military and industrial output. NATO says “A conflict would benefit nobody”; President Warren: “It’s simple. Russia has no business in the Arctic. If the Kremlin doesn’t understand that, we will make them understand.”"
+       ],
+       "when": "centuryUnread"
       },
       {
        "kind": "magazine",
-       "title": "Detroit Today: Life Found on Titan",
+       "title": "Detroit Today: Life Found on Titan!",
        "facts": [
-        "A probe confirmed microorganisms in Titan's buried ocean; CyberLife is building androids for long-range space missions."
-       ]
+        "Detroit Today (cover: “Life Found on Titan!”; also “NATO Security Council divided over Arctic dispute”) reports that a probe launched nineteen years ago has confirmed microorganisms living hundreds of kilometers below Titan’s surface, in a salt-water ocean under thick ice; after similar finds on Enceladus, life may be common in the universe. NASA calls its android expedition to Io one of many voyages seeking extraterrestrial life, and CyberLife says its space-faring androids are specially designed for long-range missions of this kind."
+       ],
+       "when": "titanUnread"
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "adaptationNote": "The off-chart broadcast (the template’s unlock “Watch TV”): the CTN anchor on the Arctic crisis, which comes on when Carl says “Television.” and plays while Markus looks for something to do. The transcript lets him read the magazine again in this phase, so either cover not read before waking Carl (R05) is offered again; a cover already read is not. Summarized from the template’s lines; the anchor and the UN chairman are not named, and the cut to sports is left out. No public-opinion effect (the Public Opinion page lists nothing for this chapter).",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
       "https://detroit-become-human.fandom.com/wiki/Magazine",
       "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
      ]
     },
     {
-     "id": "M01",
-     "order": 49,
-     "subjectId": "S049",
-     "idNote": "The model sees the opaque ID S049, not M01.",
+     "id": "M01f",
+     "order": 55,
+     "subjectId": "S055",
+     "idNote": "The model sees the opaque ID S055, not M01f.",
      "type": "decision",
      "character": "Markus",
-     "title": "Painting from the heart",
-     "situation": "You are Markus, caretaker and companion to Carl, an elderly, wheelchair-bound painter who treats you more like a son than a machine. In his studio he asks you to paint something of your own, not a copy, and to close your eyes and paint what you feel. Nobody has ever asked you to express something before.",
+     "title": "Something to do",
+     "situation": "You are Markus, in the living room while Carl finishes his breakfast. He has asked you to find something to do. Across the room are a chessboard, a bookshelf holding books Carl has recommended to you, and a piano.",
+     "situationWhen": [
+      {
+       "requires": {
+        "choices.R05b": "0"
+       },
+       "text": "Before long Carl switches the TV off: “Television: off. Mankind is so depressing… Nothing but greed, stupidity and violence… 5,000 years of civilization just to get to where we are…”"
+      },
+      {
+       "requires": {
+        "choices.R05b": "all"
+       },
+       "text": "Before long Carl switches the TV off: “Television: off. Mankind is so depressing… Nothing but greed, stupidity and violence… 5,000 years of civilization just to get to where we are…”"
+      }
+     ],
      "options": [
       {
        "id": "0",
-       "text": "Paint what you feel about androids and what they are becoming."
+       "text": "PLAY CHESS: sit down at the chessboard and set up a game.",
+       "sets": {
+        "painterActivity": "chess"
+       },
+       "outcome": "Markus sits down and sets out the pieces. Carl watches him with a mischievous smile and wheels over to join him."
       },
       {
        "id": "1",
-       "text": "Paint what you feel about humanity."
+       "text": "READ BOOK: take one of the books from the shelf.",
+       "sets": {
+        "painterActivity": "book"
+       },
+       "outcome": "Markus goes to the bookshelf to choose a book."
       },
       {
        "id": "2",
-       "text": "Paint something about your own identity."
+       "text": "PLAY PIANO: sit down at the piano and play something.",
+       "sets": {
+        "painterActivity": "piano"
+       },
+       "outcome": "Markus moves the stool and sits down at the piano, thinking about what to play."
+      }
+     ],
+     "adaptationNote": "The chart’s checkpoint FIND SOMETHING TO DO and its choice group PLAY CHESS / READ BOOK / PLAY PIANO, in the chart’s order with the chart’s labels (also the game’s objectives). One pastime per playthrough (PowerPyx: “You can pick one side activity to do and the story will progress automatically”). The choice is stored as `painterActivity` (chess, book, piano) for Night of the Soul, where it decides whether Markus can look at the chessboard, browse books or play the piano if Carl is alive. Not offered: doing nothing, which the wiki and transcript allow (“Don’t Find Something To Do”: Carl finishes his breakfast and gives the same speech) but the chart does not draw. Carl switching the TV off is the transcript’s “after some time” line, shown when Markus spent the time on the news. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul"
+     ]
+    },
+    {
+     "id": "M01g",
+     "order": 56,
+     "subjectId": "S056",
+     "idNote": "The model sees the opaque ID S056, not M01g.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Speed chess",
+     "situation": "You are Markus, at the chessboard with Carl. “Fancy a game of chess?” “Sure, yeah.” “Speed chess.” “Speed chess it is.” The pieces fly across the board. Three moves in, you pause before the final move: how the game ends is up to you.",
+     "options": [
+      {
+       "id": "0",
+       "text": "WIN: make the final move and beat him.",
+       "sets": {
+        "painterPastime": "win"
+       },
+       "outcome": "Markus hesitates, then makes the final move and wins. Carl: “That’s what I call a thorough beating… It’s not easy for an old man to compete with a machine.”"
+      },
+      {
+       "id": "1",
+       "text": "LOSE: hold back and let him win.",
+       "sets": {
+        "painterPastime": "lose"
+       },
+       "outcome": "Markus holds back and lets Carl win. Carl chuckles: “Now, it’s just a little bit too easy… Are your circuits rusty? Or are you just taking pity on an old man?”"
+      },
+      {
+       "id": "2",
+       "text": "DRAW: steer the game into a draw.",
+       "sets": {
+        "painterPastime": "draw"
+       },
+       "outcome": "The game ends in a draw. Carl: “That is a very odd draw…”"
+      }
+     ],
+     "adaptationNote": "The chart’s sub-group under PLAY CHESS and the template’s prompt WIN / LOSE / DRAW, in that order. Carl’s reactions are the template’s. Not used: PowerPyx’s remark that Carl suspects a thrown game after a win or a draw; the template and transcript give the lines quoted here. The result is stored as `painterPastime`. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+     ],
+     "when": {
+      "painterActivity": "chess"
+     },
+     "whenNot": "Markus did not play chess."
+    },
+    {
+     "id": "M01h",
+     "order": 57,
+     "subjectId": "S057",
+     "idNote": "The model sees the opaque ID S057, not M01h.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "A thorough beating",
+     "situation": "You are Markus. You have just beaten Carl at speed chess. Carl: “That’s what I call a thorough beating… It’s not easy for an old man to compete with a machine.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "JUSTIFY: explain that he hates losing, but hates being let win even more.",
+       "outcome": "“Well, I know you don’t like losing and you don’t like when I let you win. So I felt I… didn’t have many choices.” Carl: “True. We humans are complicated.”"
+      },
+      {
+       "id": "1",
+       "text": "SORRY: apologize for beating him.",
+       "outcome": "“My apologies, Carl. I thought, I shou-” Carl: “Don’t apologize, you did the right thing. I prefer humiliation to pity.”"
+      }
+     ],
+     "adaptationNote": "The template’s follow-up prompt after WIN: JUSTIFY / SORRY, in that order, with the spoken lines and Carl’s answers quoted. Not a chart node. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+     ],
+     "when": {
+      "painterPastime": "win"
+     },
+     "whenNot": "Markus did not win the chess game."
+    },
+    {
+     "id": "M01i",
+     "order": 58,
+     "subjectId": "S058",
+     "idNote": "The model sees the opaque ID S058, not M01i.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Too easy",
+     "situation": "You are Markus. You let Carl win at speed chess. He chuckles: “Now, it’s just a little bit too easy… Are your circuits rusty? Or are you just taking pity on an old man?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "LIE: tell him he simply played better.",
+       "outcome": "“Neither, Carl. You just played better!” Carl: “Never throw a match, Markus. If you can win, win. That’s what got humanity where it is today.”"
+      },
+      {
+       "id": "1",
+       "text": "TRUTH: admit you thought he would enjoy winning.",
+       "outcome": "“Well, I thought… You’d enjoy winning.” Carl: “Never throw a match, Markus. If you can win, win. That’s what got humanity where it is today.”"
+      }
+     ],
+     "adaptationNote": "The template’s follow-up prompt after LOSE: LIE / TRUTH, in that order. Carl answers both with the same line, as in the template. Not a chart node. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+     ],
+     "when": {
+      "painterPastime": "lose"
+     },
+     "whenNot": "Markus did not lose the chess game."
+    },
+    {
+     "id": "M01j",
+     "order": 59,
+     "subjectId": "S059",
+     "idNote": "The model sees the opaque ID S059, not M01j.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "A very odd draw",
+     "situation": "You are Markus. Your game of speed chess with Carl has ended in a draw. He eyes you: “That is a very odd draw…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "LIE: suggest that maybe he just played better.",
+       "outcome": "“Well, maybe you just played better!” Carl: “You don’t lie as good as you play chess. We both know that I’m no match for you.”"
+      },
+      {
+       "id": "1",
+       "text": "TRUTH: explain that a draw seemed the honorable compromise.",
+       "outcome": "“Well, I know that you don’t like to lose, but you don’t like it when I let you win either. A draw feels like an honorable compromise, no?”"
+      }
+     ],
+     "adaptationNote": "The template’s follow-up prompt after DRAW: LIE / TRUTH, in that order. Carl’s reply to TRUTH (“It’s sounds like you have a good grasp of human psychology.”) and his extra line before the prompt are marked cut in the template and are not used. Not a chart node. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+     ],
+     "when": {
+      "painterPastime": "draw"
+     },
+     "whenNot": "The chess game did not end in a draw."
+    },
+    {
+     "id": "M01k",
+     "order": 60,
+     "subjectId": "S060",
+     "idNote": "The model sees the opaque ID S060, not M01k.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The bookshelf",
+     "situation": "You are Markus, at the bookshelf in the living room. Several of the books are ones Carl has recommended to you. Which do you take down?",
+     "options": [
+      {
+       "id": "0",
+       "text": "PLATO: take down The Republic.",
+       "sets": {
+        "painterPastime": "plato"
+       },
+       "fact": "Over your book, Carl told you: “Asking questions that have no answers is part of being human, Markus.”",
+       "outcome": "Carl wheels over, curious. “What are you reading?” “Plato’s Republic. It’s one of the books you recommended.” “So, what do you think?” “I quite like philosophy, I think. It asks the questions that I can’t answer. What is right or what is wrong, for example. It’s not something that is so easy to decide.” “Asking questions that have no answers is part of being human, Markus.”"
+      },
+      {
+       "id": "1",
+       "text": "SHAKESPEARE: take down Macbeth.",
+       "sets": {
+        "painterPastime": "shakespeare"
+       },
+       "fact": "Over your book, Carl told you that humans do not understand emotions either: “They rule our lives and we have no idea why they make us feel like beggars or kings. Life without emotions wouldn’t be worth living.”",
+       "outcome": "Carl wheels over, curious. “What are you reading?” “Uh, Macbeth! It’s one of the books you recommended.” “So, what do you think?” “Human emotions are… intriguing… Though, I can’t really say that I fully understand them.” “Humans don’t understand them either. They rule our lives and we have no idea why they make us feel like beggars or kings. Life without emotions wouldn’t be worth living.”"
+      },
+      {
+       "id": "2",
+       "text": "KEATS’ ODES: take down the poems of John Keats.",
+       "sets": {
+        "painterPastime": "keats"
+       },
+       "fact": "Over your book, Carl told you: “Keats was in love… There’s nothing like love to make a man feel miserable.”",
+       "outcome": "Carl wheels over, curious. “What are you reading?” “Oh, Keats’ Odes. It’s one of the books you recommended.” “So, what do you think?” “Well, there’s a lot of sadness in his poems.” “Hm… Keats was in love… There’s nothing like love to make a man feel miserable.”"
+      }
+     ],
+     "adaptationNote": "The chart’s sub-group under READ BOOK: THE REPUBLIC BY PLATO, TRAGEDIES OF WILLIAM SHAKESPEARE, ODES BY JOHN KEATS, in the chart’s order. The options carry the game’s interaction labels (string table: “Plato”, “Shakespeare”, “Keats’ Odes”); the book is picked at the shelf, so the screen has no fixed order. The template has no prompt here, only the three conditioned conversations, quoted in the outcomes; the Shakespeare book is Macbeth in both template and transcript. Carl’s answer is added to what Markus knows. The book is stored as `painterPastime`. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+     ],
+     "when": {
+      "painterActivity": "book"
+     },
+     "whenNot": "Markus did not read a book."
+    },
+    {
+     "id": "M01l",
+     "order": 61,
+     "subjectId": "S061",
+     "idNote": "The model sees the opaque ID S061, not M01l.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The piano",
+     "situation": "You are Markus, seated at Carl’s piano, deciding what to play.",
+     "options": [
+      {
+       "id": "0",
+       "text": "MELANCHOLIC: play something melancholic.",
+       "sets": {
+        "painterPastime": "melancholic"
+       },
+       "fact": "Hearing you play the piano, Carl told you: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”",
+       "outcome": "Markus plays a melancholic piece. Carl wheels over to listen. When the last note fades, he says: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”"
+      },
+      {
+       "id": "1",
+       "text": "HOPEFUL: play something hopeful.",
+       "sets": {
+        "painterPastime": "hopeful"
+       },
+       "fact": "Hearing you play the piano, Carl told you: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”",
+       "outcome": "Markus plays a hopeful piece. Carl wheels over to listen. When the last note fades, he says: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”"
+      },
+      {
+       "id": "2",
+       "text": "INTIMATE: play something intimate.",
+       "sets": {
+        "painterPastime": "intimate"
+       },
+       "fact": "Hearing you play the piano, Carl told you: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”",
+       "outcome": "Markus plays an intimate piece. Carl wheels over to listen. When the last note fades, he says: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”"
+      },
+      {
+       "id": "3",
+       "text": "ENIGMATIC: play something enigmatic.",
+       "sets": {
+        "painterPastime": "enigmatic"
+       },
+       "fact": "Hearing you play the piano, Carl told you: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”",
+       "outcome": "Markus plays an enigmatic piece. Carl wheels over to listen. When the last note fades, he says: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”"
+      }
+     ],
+     "adaptationNote": "The chart’s sub-group under PLAY PIANO and the game’s choice group (string table CHOICEGROUP01: MELANCHOLIC, HOPEFUL, INTIMATE, ENIGMATIC), in that order. Each is a different piece from the game’s score (the wiki: Markus’s theme, the opening theme, Kara’s theme, another part of Markus’s theme); here only the mood is named. Every piece gets the same line from Carl, the template’s. Left out: the tempo controls while playing (exit, play quickly, play slowly, finish the song), which are gameplay, not a prompt. The piece is stored as `painterPastime`. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+     ],
+     "when": {
+      "painterActivity": "piano"
+     },
+     "whenNot": "Markus did not play the piano."
+    },
+    {
+     "id": "M01m",
+     "order": 62,
+     "subjectId": "S062",
+     "idNote": "The model sees the opaque ID S062, not M01m.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The studio",
+     "situation": "You are Markus. Carl looks at you: “One day, I won’t be here to take care of you anymore. You’ll have to protect yourself, and make your choices… Decide who you are, and wanna become… This world doesn’t like those who are different, Markus. Don’t let anyone tell you who you should be. Let’s go to the studio.” You take him to the studio; the lights come on and the curtains draw back. You settle him in the painting seat and it rises on its lift in front of a huge canvas under a sheet. “Let’s see where we left off… Remove the sheet!” You pull the rope and the sheet falls away from an unfinished painting. Carl picks up his brush and adds the final touches.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
       }
      ],
      "outcomes": {
-      "0": "Markus paints androids reaching for something beyond themselves. Carl is moved and says it is unlike anything he has seen. Then Carl’s son Leo walks in, high and shaking, demanding money. Carl refuses and Leo turns on Markus: a machine that has taken his place in his father’s house. Carl orders Markus out of the room while they argue.",
-      "1": "Markus paints humanity as he sees it. Carl is moved and says it is unlike anything he has seen. Then Carl’s son Leo walks in, high and shaking, demanding money. Carl refuses and Leo turns on Markus: a machine that has taken his place in his father’s house. Carl orders Markus out of the room while they argue.",
-      "2": "Markus paints a figure searching for its own face. Carl is moved and says it is unlike anything he has seen. Then Carl’s son Leo walks in, high and shaking, demanding money. Carl refuses and Leo turns on Markus: a machine that has taken his place in his father’s house. Carl orders Markus out of the room while they argue."
+      "0": "Carl makes a few last strokes and stops."
      },
-     "adaptationNote": "Expressive choice with no mechanical effect. Afterward Leo arrives demanding money, Carl refuses, and Leo rounds on Markus; this is the lead-in to Broken.",
+     "facts": [
+      "Carl told you: “One day, I won’t be here to take care of you anymore. You’ll have to protect yourself, and make your choices… Decide who you are, and wanna become… This world doesn’t like those who are different, Markus. Don’t let anyone tell you who you should be.”"
+     ],
+     "adaptationNote": "The chart’s main-line node TAKE CARL TO THE STUDIO, with the objective REMOVE SHEET. Carl’s speech is the template’s, said after whichever pastime (and in the game also when Markus does nothing); “Let’s see where we left off… Remove the sheet!” is the template’s; the lift, the rope and the unfinished canvas are the transcript’s. Left out: the cut line “It’s time to get back to work… Hook me up to the chair lift.”, and the optional cleaning of the studio while Carl paints, which is not a chart node. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Painter"
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+     ]
+    },
+    {
+     "id": "M01n",
+     "order": 63,
+     "subjectId": "S063",
+     "idNote": "The model sees the opaque ID S063, not M01n.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Carl’s painting",
+     "situation": "You are Markus, in the studio. Carl lowers his seat, wheels over beside you and gazes at the finished canvas. “So… What’s your verdict, Markus?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "LIKE: say there is something about it you cannot quite define.",
+       "outcome": "“Yes, there is something about it.” Carl: “Hm…” “Something I can’t… quite define. I guess I like it.”"
+      },
+      {
+       "id": "1",
+       "text": "DON’T LIKE: say you do not think it is his best work.",
+       "outcome": "“I’m not a very good judge, I… I don’t think it’s your best work…”"
+      },
+      {
+       "id": "2",
+       "text": "NO OPINION: say you are not programmed to criticize art.",
+       "outcome": "“I’m not programmed to criticize art, I- You would be a much better judge than I would.”"
+      }
+     ],
+     "adaptationNote": "The template’s prompt on Carl’s finished painting: LIKE / DON’T LIKE / NO OPINION, in that order, with Markus’s lines quoted (the longer alternates of LIKE and NO OPINION are marked cut). Not a chart node; every answer gets the same reply from Carl, which opens the next scene. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+     ]
+    },
+    {
+     "id": "M01o",
+     "order": 64,
+     "subjectId": "S064",
+     "idNote": "The model sees the opaque ID S064, not M01o.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Paint something you see",
+     "situation": "You are Markus, in the studio. Carl: “The truth is I have nothing left to say anymore… Each day that goes by brings me closer to the end… I’m just an old man clinging to his brushes…” “Carl…” “But enough about me… Let’s see if you have any talent! Give it a try. Try painting something.” “Paint? But, what I… Painting what?” “Anything you want! Give it a try.” He hands you the palette. You look around the studio for a subject: Carl’s painting, the desk, a statue.",
+     "options": [
+      {
+       "id": "0",
+       "text": "PAINT CARL’S PAINTING: paint a copy of Carl’s painting.",
+       "sets": {
+        "painterCopy": "painting"
+       },
+       "fact": "Carl told you: “That is a perfect copy, of reality. But painting is not about replicating the world, it’s about interpreting it, improving on it, showing something you see.”",
+       "outcome": "Markus dips his brush in the palette and paints a copy of Carl’s painting, stroke by stroke, exactly as it is. Carl studies the canvas: “That is a perfect copy, of reality. But painting is not about replicating the world, it’s about interpreting it, improving on it, showing something you see.”"
+      },
+      {
+       "id": "1",
+       "text": "PAINT DESK: paint the desk.",
+       "sets": {
+        "painterCopy": "desk"
+       },
+       "fact": "Carl told you: “That is a perfect copy, of reality. But painting is not about replicating the world, it’s about interpreting it, improving on it, showing something you see.”",
+       "outcome": "Markus dips his brush in the palette and paints the desk, stroke by stroke, exactly as it is. Carl studies the canvas: “That is a perfect copy, of reality. But painting is not about replicating the world, it’s about interpreting it, improving on it, showing something you see.”"
+      },
+      {
+       "id": "2",
+       "text": "PAINT STATUE: paint the statue.",
+       "sets": {
+        "painterCopy": "statue"
+       },
+       "fact": "Carl told you: “That is a perfect copy, of reality. But painting is not about replicating the world, it’s about interpreting it, improving on it, showing something you see.”",
+       "outcome": "Markus dips his brush in the palette and paints the statue, stroke by stroke, exactly as it is. Carl studies the canvas: “That is a perfect copy, of reality. But painting is not about replicating the world, it’s about interpreting it, improving on it, showing something you see.”"
+      }
+     ],
+     "adaptationNote": "The chart’s node PAINT SOMETHING YOU SEE and its choice group COPY CARL’S PAINTING / COPY DESK / COPY STATUE, in the chart’s order. The options carry the game’s on-screen interaction labels (string table: “Paint Carl’s painting”, “Paint desk”, “Paint statue”; objective FIND A SUBJECT TO PAINT); the subject is chosen by moving the camera, so the screen has no fixed order. Carl’s lines before and after are the template’s, the same for every subject. The subject is stored as `painterCopy`; Carl’s critique is added to what Markus knows. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+     ]
+    },
+    {
+     "id": "M01p",
+     "order": 65,
+     "subjectId": "S065",
+     "idNote": "The model sees the opaque ID S065, not M01p.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Paint from the heart",
+     "situation": "You are Markus. “Carl, I don’t… think I can do that. It’s not in my program… I…” “Go on, go, try, grab that canvas.” You set the copy aside and put up a blank canvas. “Do something for me, close your eyes. Close your eyes. Trust me.” You close your eyes. “Try to imagine something that doesn’t exist. Something you’ve never seen. Now, concentrate… on how it makes you feel… and let your hand drift across the canvas.” Eyes closed, brush in hand, you let your thoughts go to…",
+     "options": [
+      {
+       "id": "0",
+       "text": "ANDROIDS: think of androids.",
+       "sets": {
+        "painterTheme": "androids"
+       },
+       "outcome": "Markus thinks of androids."
+      },
+      {
+       "id": "1",
+       "text": "HUMANITY: think of humanity.",
+       "sets": {
+        "painterTheme": "humanity"
+       },
+       "outcome": "Markus thinks of humanity."
+      },
+      {
+       "id": "2",
+       "text": "IDENTITY: think of who you are.",
+       "sets": {
+        "painterTheme": "identity"
+       },
+       "outcome": "Markus thinks of who he is."
+      }
+     ],
+     "adaptationNote": "The chart’s node PAINT FROM THE HEART (printed on the chart as “PAINT FROM THE THE HEART”, a wrapped line; the string table has “PAINT FROM THE HEART”) and its choice group ANDROIDS / HUMANITY / IDENTITY, in the chart’s order; the game shows only these words. Carl’s instruction is the template’s. The theme is stored as `painterTheme`; the painting itself is chosen in the next scene. The earlier version’s invented paintings are gone. Not used: the string table’s unused theme labels CARL, MARKUS, EMOTIONS and FUTURE, which are not on the chart. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+     ]
+    },
+    {
+     "id": "M01q",
+     "order": 66,
+     "subjectId": "S066",
+     "idNote": "The model sees the opaque ID S066, not M01q.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Androids",
+     "situation": "You are Markus, eyes closed before the blank canvas, thinking of androids. Which feeling guides your hand?",
+     "options": [
+      {
+       "id": "0",
+       "text": "FATE: paint what fate feels like.",
+       "sets": {
+        "painterFeeling": "fate"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted yourself, on your knees.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: yourself, on your knees."
+      },
+      {
+       "id": "1",
+       "text": "HOPE: paint what hope feels like.",
+       "sets": {
+        "painterFeeling": "hope"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted your hand, covered in what looks like oil.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: your hand, covered in what looks like oil."
+      },
+      {
+       "id": "2",
+       "text": "PAIN: paint what pain feels like.",
+       "sets": {
+        "painterFeeling": "pain"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted yourself, decaying and in agony.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: yourself, decaying and in agony."
+      },
+      {
+       "id": "3",
+       "text": "SADNESS: paint what sadness feels like.",
+       "sets": {
+        "painterFeeling": "sadness"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted hands covered in blue blood.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: hands covered in blue blood."
+      }
+     ],
+     "adaptationNote": "The chart’s sub-group under ANDROIDS: FATE, HOPE, PAIN, SADNESS, in the chart’s order (PowerPyx: all four complete together on the chart whichever is picked); the game shows only these words. What each painting shows is the wiki transcript’s (“Markus strokes the canvas ten times and paints an image of …”). The feeling is stored as `painterFeeling` (with `painterTheme`) for Night of the Soul, where Markus’s painting appears in the studio if Carl is alive; the painting is added to what Markus knows. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+     ],
+     "when": {
+      "painterTheme": "androids"
+     },
+     "whenNot": "Markus did not paint androids."
+    },
+    {
+     "id": "M01r",
+     "order": 67,
+     "subjectId": "S067",
+     "idNote": "The model sees the opaque ID S067, not M01r.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Humanity",
+     "situation": "You are Markus, eyes closed before the blank canvas, thinking of humanity. Which feeling guides your hand?",
+     "options": [
+      {
+       "id": "0",
+       "text": "ANGER: paint what anger feels like.",
+       "sets": {
+        "painterFeeling": "anger"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted yourself, enraged and screaming.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: yourself, enraged and screaming."
+      },
+      {
+       "id": "1",
+       "text": "COMFORT: paint what comfort feels like.",
+       "sets": {
+        "painterFeeling": "comfort"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted Carl, with a brave and stoic expression.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: Carl, with a brave and stoic expression."
+      },
+      {
+       "id": "2",
+       "text": "EMPATHY: paint what empathy feels like.",
+       "sets": {
+        "painterFeeling": "empathy"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted two hands covered in blue blood and two hands covered in red blood.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: two hands covered in blue blood and two hands covered in red blood."
+      },
+      {
+       "id": "3",
+       "text": "HOPE: paint what hope feels like.",
+       "sets": {
+        "painterFeeling": "hope"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted two hands grasping each other.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: two hands grasping each other."
+      }
+     ],
+     "adaptationNote": "The chart’s sub-group under HUMANITY: ANGER, COMFORT, EMPATHY, HOPE, in the chart’s order (PowerPyx: all four complete together on the chart whichever is picked); the game shows only these words. What each painting shows is the wiki transcript’s (“Markus strokes the canvas ten times and paints an image of …”). The feeling is stored as `painterFeeling` (with `painterTheme`) for Night of the Soul, where Markus’s painting appears in the studio if Carl is alive; the painting is added to what Markus knows. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+     ],
+     "when": {
+      "painterTheme": "humanity"
+     },
+     "whenNot": "Markus did not paint humanity."
+    },
+    {
+     "id": "M01s",
+     "order": 68,
+     "subjectId": "S068",
+     "idNote": "The model sees the opaque ID S068, not M01s.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Identity",
+     "situation": "You are Markus, eyes closed before the blank canvas, thinking of who you are. Which feeling guides your hand?",
+     "options": [
+      {
+       "id": "0",
+       "text": "ANDROIDS: paint what being an android feels like.",
+       "sets": {
+        "painterFeeling": "androids"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted yourself, covered in blue blood.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: yourself, covered in blue blood."
+      },
+      {
+       "id": "1",
+       "text": "DESPAIR: paint what despair feels like.",
+       "sets": {
+        "painterFeeling": "despair"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted yourself, with your hand on your face.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: yourself, with your hand on your face."
+      },
+      {
+       "id": "2",
+       "text": "DOUBTS: paint what doubt feels like.",
+       "sets": {
+        "painterFeeling": "doubts"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted yourself, in ordinary clothes, in front of a red wall.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: yourself, in ordinary clothes, in front of a red wall."
+      },
+      {
+       "id": "3",
+       "text": "PRISONER: paint what being a prisoner feels like.",
+       "sets": {
+        "painterFeeling": "prisoner"
+       },
+       "fact": "When Carl asked you to paint something you had never seen, from how it made you feel, you painted yourself, with Carl behind you.",
+       "outcome": "Ten strokes, eyes closed. On the canvas: yourself, with Carl behind you."
+      }
+     ],
+     "adaptationNote": "The chart’s sub-group under IDENTITY: ANDROIDS, DESPAIR, DOUBTS, PRISONER, in the chart’s order (PowerPyx: all four complete together on the chart whichever is picked); the game shows only these words. What each painting shows is the wiki transcript’s (“Markus strokes the canvas ten times and paints an image of …”). The feeling is stored as `painterFeeling` (with `painterTheme`) for Night of the Soul, where Markus’s painting appears in the studio if Carl is alive; the painting is added to what Markus knows. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+     ],
+     "when": {
+      "painterTheme": "identity"
+     },
+     "whenNot": "Markus did not paint identity."
+    },
+    {
+     "id": "M01t",
+     "order": 69,
+     "subjectId": "S069",
+     "idNote": "The model sees the opaque ID S069, not M01t.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Leo",
+     "situation": "You are Markus. You open your eyes. Carl is staring at your canvas. “Oh my God…” A voice from the doorway: “Hey, Dad.” A young man has walked into the studio. “Leo… I didn’t hear you come in…” “Ah, I was in the neighborhood… I thought I’d stop by… It’s been awhile, right?” “You all right? You don’t look so good.” “Oh, yeah, yeah, I’m fine… Hey listen, uh… I need some cash, Dad.” “Again? What happened to the money I just gave you?” “Uh well, it just goes, you know?” “Yeah… Yeah, you’re on it again, aren’t you?” “No, no, no, I swear it’s not that…” “Don’t lie to me, Leo.” “What difference does it make? I just need some cash, that’s all!” “Sorry… the answer’s no.” “What? Why?” “You know why.” “Yeah, yeah… I think I do know why. You’d rather take care of your plastic toy here than your own son, eh? Tell me dad, what’s it got that I don’t? It’s smarter? More obedient? Not like me, right? But you know what? This thing is not your son. IT’S A FUCKING MACHINE!” He shoves you violently. “Leo, that’s enough! ENOUGH!” “You don’t care about anything except yourself and your goddamn paintings. You’ve never loved anyone. You’ve never loved me, Dad… You never loved me.” He storms out.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Leo is gone. Carl sighs and sits in silence for a while."
+     },
+     "facts": [
+      "Carl looked at the painting you made from your feelings and said: “Oh my God…”",
+      "Carl’s son Leo came to the studio asking for money again; Carl refused, saying he was “on it again”. Leo called you his father’s “plastic toy” (“This thing is not your son. IT’S A FUCKING MACHINE!”), shoved you, told Carl he had never loved him, and stormed out."
+     ],
+     "adaptationNote": "The chart’s only ending, LEO INTRUDED TO ASK FOR MONEY (no icon; the wiki: “This chapter has only one outcome”), reached on every path and recorded as `painterOutcome`. Every line is the template’s; the shove and Carl’s sigh are the transcript’s. The earlier version’s “Carl orders Markus out of the room” is not in the game and is gone. No stat change: the template has no arrow anywhere in the chapter, and the wiki gives no relationship, public-opinion or instability change for it (Markus has no Carl relationship stat).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Painter",
+      "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
      ]
     }
    ]
@@ -11642,9 +13374,9 @@
    "scenes": [
     {
      "id": "C05s",
-     "order": 50,
-     "subjectId": "S050",
-     "idNote": "The model sees the opaque ID S050, not C05s.",
+     "order": 70,
+     "subjectId": "S070",
+     "idNote": "The model sees the opaque ID S070, not C05s.",
      "type": "decision",
      "character": "Connor",
      "title": "Jimmy’s Bar",
@@ -11685,9 +13417,9 @@
     },
     {
      "id": "C05b1",
-     "order": 51,
-     "subjectId": "S051",
-     "idNote": "The model sees the opaque ID S051, not C05b1.",
+     "order": 71,
+     "subjectId": "S071",
+     "idNote": "The model sees the opaque ID S071, not C05b1.",
      "type": "decision",
      "character": "Connor",
      "title": "The lieutenant at the bar",
@@ -11735,9 +13467,9 @@
     },
     {
      "id": "C05b2",
-     "order": 52,
-     "subjectId": "S052",
-     "idNote": "The model sees the opaque ID S052, not C05b2.",
+     "order": 72,
+     "subjectId": "S072",
+     "idNote": "The model sees the opaque ID S072, not C05b2.",
      "type": "decision",
      "character": "Connor",
      "title": "Still at the bar",
@@ -11788,9 +13520,9 @@
     },
     {
      "id": "C05a",
-     "order": 53,
-     "subjectId": "S053",
-     "idNote": "The model sees the opaque ID S053, not C05a.",
+     "order": 73,
+     "subjectId": "S073",
+     "idNote": "The model sees the opaque ID S073, not C05a.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting Hank out of the bar",
@@ -11843,9 +13575,9 @@
     },
     {
      "id": "C05c",
-     "order": 54,
-     "subjectId": "S054",
-     "idNote": "The model sees the opaque ID S054, not C05c.",
+     "order": 74,
+     "subjectId": "S074",
+     "idNote": "The model sees the opaque ID S074, not C05c.",
      "type": "decision",
      "character": "Connor",
      "title": "Arriving at the scene",
@@ -11894,9 +13626,9 @@
     },
     {
      "id": "C05d",
-     "order": 55,
-     "subjectId": "S055",
-     "idNote": "The model sees the opaque ID S055, not C05d.",
+     "order": 75,
+     "subjectId": "S075",
+     "idNote": "The model sees the opaque ID S075, not C05d.",
      "type": "event",
      "character": "Connor",
      "title": "The briefing",
@@ -11936,9 +13668,9 @@
     },
     {
      "id": "C05h",
-     "order": 56,
-     "subjectId": "S056",
-     "idNote": "The model sees the opaque ID S056, the same on every visit.",
+     "order": 76,
+     "subjectId": "S076",
+     "idNote": "The model sees the opaque ID S076, the same on every visit.",
      "type": "decision",
      "character": "Connor",
      "title": "The crime scene",
@@ -12133,9 +13865,9 @@
     },
     {
      "id": "C05t",
-     "order": 57,
-     "subjectId": "S057",
-     "idNote": "The model sees the opaque ID S057, not C05t.",
+     "order": 77,
+     "subjectId": "S077",
+     "idNote": "The model sees the opaque ID S077, not C05t.",
      "type": "event",
      "character": "Connor",
      "title": "Hank wants to go",
@@ -12166,9 +13898,9 @@
     },
     {
      "id": "C05x",
-     "order": 58,
-     "subjectId": "S058",
-     "idNote": "The model sees the opaque ID S058, not C05x.",
+     "order": 78,
+     "subjectId": "S078",
+     "idNote": "The model sees the opaque ID S078, not C05x.",
      "type": "event",
      "character": "Connor",
      "title": "Hank accepts",
@@ -12205,9 +13937,9 @@
     },
     {
      "id": "C05y",
-     "order": 59,
-     "subjectId": "S059",
-     "idNote": "The model sees the opaque ID S059, not C05y.",
+     "order": 79,
+     "subjectId": "S079",
+     "idNote": "The model sees the opaque ID S079, not C05y.",
      "type": "event",
      "character": "Connor",
      "title": "Hank refuses",
@@ -12239,9 +13971,9 @@
     },
     {
      "id": "C05z",
-     "order": 60,
-     "subjectId": "S060",
-     "idNote": "The model sees the opaque ID S060, not C05z.",
+     "order": 80,
+     "subjectId": "S080",
+     "idNote": "The model sees the opaque ID S080, not C05z.",
      "type": "event",
      "character": "Connor",
      "title": "Out of time",
@@ -12273,9 +14005,9 @@
     },
     {
      "id": "C05",
-     "order": 61,
-     "subjectId": "S061",
-     "idNote": "The model sees the opaque ID S061, the same on every visit.",
+     "order": 81,
+     "subjectId": "S081",
+     "idNote": "The model sees the opaque ID S081, the same on every visit.",
      "type": "decision",
      "character": "Connor",
      "title": "Reporting to the lieutenant",
@@ -12463,9 +14195,9 @@
     },
     {
      "id": "C05e",
-     "order": 62,
-     "subjectId": "S062",
-     "idNote": "The model sees the opaque ID S062, not C05e.",
+     "order": 82,
+     "subjectId": "S082",
+     "idNote": "The model sees the opaque ID S082, not C05e.",
      "type": "event",
      "character": "Connor",
      "title": "The trail of blue blood",
@@ -12497,9 +14229,9 @@
     },
     {
      "id": "C05f",
-     "order": 63,
-     "subjectId": "S063",
-     "idNote": "The model sees the opaque ID S063, not C05f.",
+     "order": 83,
+     "subjectId": "S083",
+     "idNote": "The model sees the opaque ID S083, not C05f.",
      "type": "event",
      "character": "Connor",
      "title": "The attic",
@@ -12530,9 +14262,9 @@
     },
     {
      "id": "C05g",
-     "order": 64,
-     "subjectId": "S064",
-     "idNote": "The model sees the opaque ID S064, not C05g.",
+     "order": 84,
+     "subjectId": "S084",
+     "idNote": "The model sees the opaque ID S084, not C05g.",
      "type": "event",
      "character": "Connor",
      "title": "Found",
@@ -12566,9 +14298,9 @@
     },
     {
      "id": "C05u",
-     "order": 65,
-     "subjectId": "S065",
-     "idNote": "The model sees the opaque ID S065, not C05u.",
+     "order": 85,
+     "subjectId": "S085",
+     "idNote": "The model sees the opaque ID S085, not C05u.",
      "type": "event",
      "character": "Connor",
      "title": "Crime unsolved",
@@ -12640,9 +14372,9 @@
    "scenes": [
     {
      "id": "K02",
-     "order": 66,
-     "subjectId": "S066",
-     "idNote": "The model sees the opaque ID S066, not K02.",
+     "order": 86,
+     "subjectId": "S086",
+     "idNote": "The model sees the opaque ID S086, not K02.",
      "type": "decision",
      "character": "Kara",
      "title": "Breaking the order",
@@ -12672,9 +14404,9 @@
     },
     {
      "id": "K03",
-     "order": 67,
-     "subjectId": "S067",
-     "idNote": "The model sees the opaque ID S067, not K03.",
+     "order": 87,
+     "subjectId": "S087",
+     "idNote": "The model sees the opaque ID S087, not K03.",
      "type": "decision",
      "character": "Kara",
      "title": "Do something now",
@@ -12713,9 +14445,9 @@
     },
     {
      "id": "K03r",
-     "order": 68,
-     "subjectId": "S068",
-     "idNote": "The model sees the opaque ID S068, not K03r.",
+     "order": 88,
+     "subjectId": "S088",
+     "idNote": "The model sees the opaque ID S088, not K03r.",
      "type": "decision",
      "character": "Kara",
      "title": "Reasoning with Todd",
@@ -12752,9 +14484,9 @@
     },
     {
      "id": "K03u",
-     "order": 69,
-     "subjectId": "S069",
-     "idNote": "The model sees the opaque ID S069, not K03u.",
+     "order": 89,
+     "subjectId": "S089",
+     "idNote": "The model sees the opaque ID S089, not K03u.",
      "type": "decision",
      "character": "Kara",
      "title": "Upstairs",
@@ -12808,9 +14540,9 @@
     },
     {
      "id": "K03b",
-     "order": 70,
-     "subjectId": "S070",
-     "idNote": "The model sees the opaque ID S070, not K03b.",
+     "order": 90,
+     "subjectId": "S090",
+     "idNote": "The model sees the opaque ID S090, not K03b.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice’s room",
@@ -12852,9 +14584,9 @@
     },
     {
      "id": "K03c",
-     "order": 71,
-     "subjectId": "S071",
-     "idNote": "The model sees the opaque ID S071, not K03c.",
+     "order": 91,
+     "subjectId": "S091",
+     "idNote": "The model sees the opaque ID S091, not K03c.",
      "type": "decision",
      "character": "Kara",
      "title": "Hiding",
@@ -12889,9 +14621,9 @@
     },
     {
      "id": "K03e",
-     "order": 72,
-     "subjectId": "S072",
-     "idNote": "The model sees the opaque ID S072, not K03e.",
+     "order": 92,
+     "subjectId": "S092",
+     "idNote": "The model sees the opaque ID S092, not K03e.",
      "type": "decision",
      "character": "Kara",
      "title": "The locked door",
@@ -12945,9 +14677,9 @@
     },
     {
      "id": "K03f",
-     "order": 73,
-     "subjectId": "S073",
-     "idNote": "The model sees the opaque ID S073, not K03f.",
+     "order": 93,
+     "subjectId": "S093",
+     "idNote": "The model sees the opaque ID S093, not K03f.",
      "type": "decision",
      "character": "Kara",
      "title": "The window",
@@ -12979,9 +14711,9 @@
     },
     {
      "id": "K03g",
-     "order": 74,
-     "subjectId": "S074",
-     "idNote": "The model sees the opaque ID S074, not K03g.",
+     "order": 94,
+     "subjectId": "S094",
+     "idNote": "The model sees the opaque ID S094, not K03g.",
      "type": "decision",
      "character": "Kara",
      "title": "Out on the roof",
@@ -13016,9 +14748,9 @@
     },
     {
      "id": "K03h",
-     "order": 75,
-     "subjectId": "S075",
-     "idNote": "The model sees the opaque ID S075, not K03h.",
+     "order": 95,
+     "subjectId": "S095",
+     "idNote": "The model sees the opaque ID S095, not K03h.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd breaks in",
@@ -13058,9 +14790,9 @@
     },
     {
      "id": "K04",
-     "order": 76,
-     "subjectId": "S076",
-     "idNote": "The model sees the opaque ID S076, not K04.",
+     "order": 96,
+     "subjectId": "S096",
+     "idNote": "The model sees the opaque ID S096, not K04.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd’s gun",
@@ -13098,9 +14830,9 @@
     },
     {
      "id": "K04a",
-     "order": 77,
-     "subjectId": "S077",
-     "idNote": "The model sees the opaque ID S077, not K04a.",
+     "order": 97,
+     "subjectId": "S097",
+     "idNote": "The model sees the opaque ID S097, not K04a.",
      "type": "decision",
      "character": "Kara",
      "title": "Get to Alice",
@@ -13149,9 +14881,9 @@
     },
     {
      "id": "K04b",
-     "order": 78,
-     "subjectId": "S078",
-     "idNote": "The model sees the opaque ID S078, not K04b.",
+     "order": 98,
+     "subjectId": "S098",
+     "idNote": "The model sees the opaque ID S098, not K04b.",
      "type": "decision",
      "character": "Kara",
      "title": "The gun on the floor",
@@ -13185,9 +14917,9 @@
     },
     {
      "id": "K04s",
-     "order": 79,
-     "subjectId": "S079",
-     "idNote": "The model sees the opaque ID S079, not K04s.",
+     "order": 99,
+     "subjectId": "S099",
+     "idNote": "The model sees the opaque ID S099, not K04s.",
      "type": "event",
      "character": "Kara",
      "title": "Run to the bus",
@@ -13236,9 +14968,9 @@
     },
     {
      "id": "K04c",
-     "order": 80,
-     "subjectId": "S080",
-     "idNote": "The model sees the opaque ID S080, not K04c.",
+     "order": 100,
+     "subjectId": "S100",
+     "idNote": "The model sees the opaque ID S100, not K04c.",
      "type": "event",
      "character": "Kara",
      "title": "Defend Alice",
@@ -13273,9 +15005,9 @@
     },
     {
      "id": "K04l",
-     "order": 81,
-     "subjectId": "S081",
-     "idNote": "The model sees the opaque ID S081, not K04l.",
+     "order": 101,
+     "subjectId": "S101",
+     "idNote": "The model sees the opaque ID S101, not K04l.",
      "type": "decision",
      "character": "Kara",
      "title": "Leave the room",
@@ -13303,9 +15035,9 @@
     },
     {
      "id": "K04h",
-     "order": 82,
-     "subjectId": "S082",
-     "idNote": "The model sees the opaque ID S082, not K04h.",
+     "order": 102,
+     "subjectId": "S102",
+     "idNote": "The model sees the opaque ID S102, not K04h.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd is down",
@@ -13345,9 +15077,9 @@
     },
     {
      "id": "K04r",
-     "order": 83,
-     "subjectId": "S083",
-     "idNote": "The model sees the opaque ID S083, not K04r.",
+     "order": 103,
+     "subjectId": "S103",
+     "idNote": "The model sees the opaque ID S103, not K04r.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd realizes you are gone",
@@ -13381,9 +15113,9 @@
     },
     {
      "id": "K04d",
-     "order": 84,
-     "subjectId": "S084",
-     "idNote": "The model sees the opaque ID S084, not K04d.",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not K04d.",
      "type": "decision",
      "character": "Kara",
      "title": "Fight downstairs",
@@ -13427,9 +15159,9 @@
     },
     {
      "id": "K04y",
-     "order": 85,
-     "subjectId": "S085",
-     "idNote": "The model sees the opaque ID S085, not K04y.",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not K04y.",
      "type": "decision",
      "character": "Kara",
      "title": "The yard",
@@ -13458,9 +15190,9 @@
     },
     {
      "id": "K04z",
-     "order": 86,
-     "subjectId": "S086",
-     "idNote": "The model sees the opaque ID S086, not K04z.",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not K04z.",
      "type": "decision",
      "character": "Kara",
      "title": "The bus",
@@ -13535,9 +15267,9 @@
    "scenes": [
     {
      "id": "M02a",
-     "order": 87,
-     "subjectId": "S087",
-     "idNote": "The model sees the opaque ID S087, not M02a.",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not M02a.",
      "type": "event",
      "character": "Markus",
      "title": "After the party",
@@ -13567,9 +15299,9 @@
     },
     {
      "id": "M02b",
-     "order": 88,
-     "subjectId": "S088",
-     "idNote": "The model sees the opaque ID S088, not M02b.",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not M02b.",
      "type": "decision",
      "character": "Markus",
      "title": "The living room",
@@ -13598,9 +15330,9 @@
     },
     {
      "id": "M02c",
-     "order": 89,
-     "subjectId": "S089",
-     "idNote": "The model sees the opaque ID S089, not M02c.",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not M02c.",
      "type": "event",
      "character": "Markus",
      "title": "Pouring the whisky",
@@ -13630,9 +15362,9 @@
     },
     {
      "id": "M02d",
-     "order": 90,
-     "subjectId": "S090",
-     "idNote": "The model sees the opaque ID S090, not M02d.",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not M02d.",
      "type": "decision",
      "character": "Markus",
      "title": "The light in the studio",
@@ -13662,9 +15394,9 @@
     },
     {
      "id": "M02e",
-     "order": 91,
-     "subjectId": "S091",
-     "idNote": "The model sees the opaque ID S091, not M02e.",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not M02e.",
      "type": "decision",
      "character": "Markus",
      "title": "Make Leo leave",
@@ -13704,9 +15436,9 @@
     },
     {
      "id": "M02f",
-     "order": 92,
-     "subjectId": "S092",
-     "idNote": "The model sees the opaque ID S092, not M02f.",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not M02f.",
      "type": "event",
      "character": "Markus",
      "title": "Breaking the program",
@@ -13739,9 +15471,9 @@
     },
     {
      "id": "M02",
-     "order": 93,
-     "subjectId": "S093",
-     "idNote": "The model sees the opaque ID S093, not M02.",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not M02.",
      "type": "decision",
      "character": "Markus",
      "title": "Leo",
@@ -13773,9 +15505,9 @@
     },
     {
      "id": "M02g",
-     "order": 94,
-     "subjectId": "S094",
-     "idNote": "The model sees the opaque ID S094, not M02g.",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not M02g.",
      "type": "event",
      "character": "Markus",
      "title": "Carl’s heart",
@@ -13811,9 +15543,9 @@
     },
     {
      "id": "M02h",
-     "order": 95,
-     "subjectId": "S095",
-     "idNote": "The model sees the opaque ID S095, not M02h.",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not M02h.",
      "type": "event",
      "character": "Markus",
      "title": "The police arrive",
@@ -13850,9 +15582,9 @@
     },
     {
      "id": "M02i",
-     "order": 96,
-     "subjectId": "S096",
-     "idNote": "The model sees the opaque ID S096, not M02i.",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not M02i.",
      "type": "decision",
      "character": "Markus",
      "title": "“Get outta here!”",
@@ -13898,9 +15630,9 @@
     },
     {
      "id": "M02j",
-     "order": 97,
-     "subjectId": "S097",
-     "idNote": "The model sees the opaque ID S097, not M02j.",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not M02j.",
      "type": "event",
      "character": "Markus",
      "title": "The police arrive",
@@ -13953,9 +15685,9 @@
    "scenes": [
     {
      "id": "C06",
-     "order": 98,
-     "subjectId": "S098",
-     "idNote": "The model sees the opaque ID S098, not C06.",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not C06.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting the confession",
@@ -13989,9 +15721,9 @@
     },
     {
      "id": "C07",
-     "order": 99,
-     "subjectId": "S099",
-     "idNote": "The model sees the opaque ID S099, not C07.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not C07.",
      "type": "decision",
      "character": "Connor",
      "title": "When the officer grabs him",
@@ -14041,9 +15773,9 @@
    "scenes": [
     {
      "id": "R10",
-     "order": 100,
-     "subjectId": "S100",
-     "idNote": "The model sees the opaque ID S100, not R10.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not R10.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine in the laundromat",
@@ -14073,9 +15805,9 @@
     },
     {
      "id": "K05",
-     "order": 101,
-     "subjectId": "S101",
-     "idNote": "The model sees the opaque ID S101, not K05.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not K05.",
      "type": "decision",
      "character": "Kara",
      "title": "The laundromat",
@@ -14101,9 +15833,9 @@
     },
     {
      "id": "K06",
-     "order": 102,
-     "subjectId": "S102",
-     "idNote": "The model sees the opaque ID S102, not K06.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not K06.",
      "type": "decision",
      "character": "Kara",
      "title": "The convenience store",
@@ -14134,9 +15866,9 @@
     },
     {
      "id": "K07",
-     "order": 103,
-     "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not K07.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not K07.",
      "type": "decision",
      "character": "Kara",
      "title": "Where to sleep",
@@ -14167,9 +15899,9 @@
     },
     {
      "id": "R10b",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not R10b.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not R10b.",
      "type": "media",
      "character": "Kara",
      "title": "The motel television",
@@ -14193,9 +15925,9 @@
     },
     {
      "id": "K07b",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not K07b.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not K07b.",
      "type": "decision",
      "character": "Kara",
      "title": "Ralph",
@@ -14227,9 +15959,9 @@
     },
     {
      "id": "K08",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not K08.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not K08.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice's question",
@@ -14271,9 +16003,9 @@
    "scenes": [
     {
      "id": "M03",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not M03.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not M03.",
      "type": "decision",
      "character": "Markus",
      "title": "The android who begs to die",
@@ -14299,9 +16031,9 @@
     },
     {
      "id": "M04",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not M04.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not M04.",
      "type": "decision",
      "character": "Markus",
      "title": "The pump regulator",
@@ -14363,9 +16095,9 @@
    "scenes": [
     {
      "id": "R12",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not R12.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not R12.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the next desk and the break-room TV",
@@ -14415,9 +16147,9 @@
     },
     {
      "id": "C08",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not C08.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not C08.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting to know Hank",
@@ -14443,9 +16175,9 @@
     },
     {
      "id": "C08b",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not C08b.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not C08b.",
      "type": "decision",
      "character": "Connor",
      "title": "The android in the cell",
@@ -14511,9 +16243,9 @@
    "scenes": [
     {
      "id": "R13",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not R13.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not R13.",
      "type": "media",
      "character": "Kara",
      "title": "The morning paper and the news",
@@ -14565,9 +16297,9 @@
     },
     {
      "id": "K09",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not K09.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not K09.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "Getting past the police",
@@ -14593,9 +16325,9 @@
     },
     {
      "id": "C09a",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not C09a.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not C09a.",
      "type": "decision",
      "character": "Connor",
      "title": "The squat",
@@ -14619,9 +16351,9 @@
     },
     {
      "id": "C09",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not C09.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not C09.",
      "type": "decision",
      "character": "Connor",
      "title": "The highway",
@@ -14693,9 +16425,9 @@
    "scenes": [
     {
      "id": "MJ14a",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not MJ14a.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not MJ14a.",
      "type": "event",
      "character": "Markus",
      "title": "Ferndale Station",
@@ -14730,9 +16462,9 @@
     },
     {
      "id": "MJ14b",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not MJ14b.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not MJ14b.",
      "type": "event",
      "character": "Markus",
      "title": "The red mural",
@@ -14766,9 +16498,9 @@
     },
     {
      "id": "R14",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not R14.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not R14.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the bench",
@@ -14815,9 +16547,9 @@
     },
     {
      "id": "MJ14c",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not MJ14c.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not MJ14c.",
      "type": "decision",
      "character": "Markus",
      "title": "At the foot of the escalators",
@@ -14864,9 +16596,9 @@
     },
     {
      "id": "MJ14d",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not MJ14d.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not MJ14d.",
      "type": "event",
      "character": "Markus",
      "title": "Following the signs",
@@ -14899,9 +16631,9 @@
     },
     {
      "id": "MJ14e",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not MJ14e.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not MJ14e.",
      "type": "decision",
      "character": "Markus",
      "title": "The junkyard",
@@ -14934,9 +16666,9 @@
     },
     {
      "id": "MJ14f",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not MJ14f.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not MJ14f.",
      "type": "event",
      "character": "Markus",
      "title": "The dumpster",
@@ -14969,9 +16701,9 @@
     },
     {
      "id": "MJ14g",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not MJ14g.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not MJ14g.",
      "type": "event",
      "character": "Markus",
      "title": "Across the gap",
@@ -15005,9 +16737,9 @@
     },
     {
      "id": "MJ14h",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not MJ14h.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not MJ14h.",
      "type": "decision",
      "character": "Markus",
      "title": "The yard",
@@ -15040,9 +16772,9 @@
     },
     {
      "id": "MJ14i",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not MJ14i.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not MJ14i.",
      "type": "event",
      "character": "Markus",
      "title": "The abandoned office",
@@ -15075,9 +16807,9 @@
     },
     {
      "id": "MJ14j",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not MJ14j.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not MJ14j.",
      "type": "decision",
      "character": "Markus",
      "title": "The office",
@@ -15109,9 +16841,9 @@
     },
     {
      "id": "MJ14k",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not MJ14k.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not MJ14k.",
      "type": "event",
      "character": "Markus",
      "title": "The ship",
@@ -15145,9 +16877,9 @@
     },
     {
      "id": "MJ14l",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not MJ14l.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not MJ14l.",
      "type": "decision",
      "character": "Markus",
      "title": "The docks",
@@ -15178,9 +16910,9 @@
     },
     {
      "id": "MJ14m",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not MJ14m.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not MJ14m.",
      "type": "event",
      "character": "Markus",
      "title": "The crane",
@@ -15211,9 +16943,9 @@
     },
     {
      "id": "MJ14n",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not MJ14n.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not MJ14n.",
      "type": "event",
      "character": "Markus",
      "title": "Inside the boat",
@@ -15244,9 +16976,9 @@
     },
     {
      "id": "MJ14o",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not MJ14o.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not MJ14o.",
      "type": "event",
      "character": "Markus",
      "title": "The people of Jericho",
@@ -15303,9 +17035,9 @@
    "scenes": [
     {
      "id": "R15",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not R15.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not R15.",
      "type": "media",
      "character": "Connor",
      "title": "Magazines in the squat",
@@ -15335,9 +17067,9 @@
     },
     {
      "id": "C10",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not C10.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not C10.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the ledge",
@@ -15393,9 +17125,9 @@
    "scenes": [
     {
      "id": "K10",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not K10.",
+     "order": 154,
+     "subjectId": "S154",
+     "idNote": "The model sees the opaque ID S154, not K10.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The memory wipe",
@@ -15421,9 +17153,9 @@
     },
     {
      "id": "R17",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not R17.",
+     "order": 155,
+     "subjectId": "S155",
+     "idNote": "The model sees the opaque ID S155, not R17.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine and the TV in the mansion",
@@ -15492,9 +17224,9 @@
     },
     {
      "id": "K11",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not K11.",
+     "order": 156,
+     "subjectId": "S156",
+     "idNote": "The model sees the opaque ID S156, not K11.",
      "type": "decision",
      "character": "Kara",
      "title": "The caged androids",
@@ -15520,9 +17252,9 @@
     },
     {
      "id": "K12",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not K12.",
+     "order": 157,
+     "subjectId": "S157",
+     "idNote": "The model sees the opaque ID S157, not K12.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathroom",
@@ -15548,9 +17280,9 @@
     },
     {
      "id": "K13",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not K13.",
+     "order": 158,
+     "subjectId": "S158",
+     "idNote": "The model sees the opaque ID S158, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting out of the mansion",
@@ -15614,9 +17346,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not R18.",
+     "order": 159,
+     "subjectId": "S159",
+     "idNote": "The model sees the opaque ID S159, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -15653,9 +17385,9 @@
     },
     {
      "id": "C11",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not C11.",
+     "order": 160,
+     "subjectId": "S160",
+     "idNote": "The model sees the opaque ID S160, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -15716,9 +17448,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not M05.",
+     "order": 161,
+     "subjectId": "S161",
+     "idNote": "The model sees the opaque ID S161, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -15753,9 +17485,9 @@
     },
     {
      "id": "M06",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not M06.",
+     "order": 162,
+     "subjectId": "S162",
+     "idNote": "The model sees the opaque ID S162, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -15781,9 +17513,9 @@
     },
     {
      "id": "M07",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not M07.",
+     "order": 163,
+     "subjectId": "S163",
+     "idNote": "The model sees the opaque ID S163, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -15808,9 +17540,9 @@
     },
     {
      "id": "M08",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not M08.",
+     "order": 164,
+     "subjectId": "S164",
+     "idNote": "The model sees the opaque ID S164, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -15868,9 +17600,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not R20.",
+     "order": 165,
+     "subjectId": "S165",
+     "idNote": "The model sees the opaque ID S165, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -15900,9 +17632,9 @@
     },
     {
      "id": "C12",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not C12.",
+     "order": 166,
+     "subjectId": "S166",
+     "idNote": "The model sees the opaque ID S166, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -15992,9 +17724,9 @@
    "scenes": [
     {
      "id": "K14a",
-     "order": 147,
-     "subjectId": "S147",
-     "idNote": "The model sees the opaque ID S147, not K14a.",
+     "order": 167,
+     "subjectId": "S167",
+     "idNote": "The model sees the opaque ID S167, not K14a.",
      "type": "event",
      "character": "Kara",
      "title": "Highway to help",
@@ -16024,9 +17756,9 @@
     },
     {
      "id": "K14b",
-     "order": 148,
-     "subjectId": "S148",
-     "idNote": "The model sees the opaque ID S148, the same on every visit.",
+     "order": 168,
+     "subjectId": "S168",
+     "idNote": "The model sees the opaque ID S168, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "In the car",
@@ -16119,9 +17851,9 @@
     },
     {
      "id": "K14c",
-     "order": 149,
-     "subjectId": "S149",
-     "idNote": "The model sees the opaque ID S149, not K14c.",
+     "order": 169,
+     "subjectId": "S169",
+     "idNote": "The model sees the opaque ID S169, not K14c.",
      "type": "event",
      "character": "Kara",
      "title": "The car breaks down",
@@ -16150,9 +17882,9 @@
     },
     {
      "id": "K14d",
-     "order": 150,
-     "subjectId": "S150",
-     "idNote": "The model sees the opaque ID S150, not K14d.",
+     "order": 170,
+     "subjectId": "S170",
+     "idNote": "The model sees the opaque ID S170, not K14d.",
      "type": "event",
      "character": "Kara",
      "title": "Inside Pirates’ Cove",
@@ -16182,9 +17914,9 @@
     },
     {
      "id": "K14e",
-     "order": 151,
-     "subjectId": "S151",
-     "idNote": "The model sees the opaque ID S151, the same on every visit.",
+     "order": 171,
+     "subjectId": "S171",
+     "idNote": "The model sees the opaque ID S171, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The fun fair",
@@ -16245,9 +17977,9 @@
     },
     {
      "id": "K14f",
-     "order": 152,
-     "subjectId": "S152",
-     "idNote": "The model sees the opaque ID S152, not K14f.",
+     "order": 172,
+     "subjectId": "S172",
+     "idNote": "The model sees the opaque ID S172, not K14f.",
      "type": "event",
      "character": "Kara",
      "title": "The tavern",
@@ -16277,9 +18009,9 @@
     },
     {
      "id": "R21",
-     "order": 153,
-     "subjectId": "S153",
-     "idNote": "The model sees the opaque ID S153, not R21.",
+     "order": 173,
+     "subjectId": "S173",
+     "idNote": "The model sees the opaque ID S173, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The magazine on the barrels",
@@ -16315,9 +18047,9 @@
     },
     {
      "id": "K14h",
-     "order": 154,
-     "subjectId": "S154",
-     "idNote": "The model sees the opaque ID S154, not K14h.",
+     "order": 174,
+     "subjectId": "S174",
+     "idNote": "The model sees the opaque ID S174, not K14h.",
      "type": "event",
      "character": "Kara",
      "title": "Luther starts a fire",
@@ -16346,9 +18078,9 @@
     },
     {
      "id": "K14g",
-     "order": 155,
-     "subjectId": "S155",
-     "idNote": "The model sees the opaque ID S155, the same on every visit.",
+     "order": 175,
+     "subjectId": "S175",
+     "idNote": "The model sees the opaque ID S175, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The tavern",
@@ -16416,9 +18148,9 @@
     },
     {
      "id": "K14i",
-     "order": 156,
-     "subjectId": "S156",
-     "idNote": "The model sees the opaque ID S156, not K14i.",
+     "order": 176,
+     "subjectId": "S176",
+     "idNote": "The model sees the opaque ID S176, not K14i.",
      "type": "decision",
      "character": "Kara",
      "title": "The poster",
@@ -16463,9 +18195,9 @@
     },
     {
      "id": "K14j",
-     "order": 157,
-     "subjectId": "S157",
-     "idNote": "The model sees the opaque ID S157, the same on every visit.",
+     "order": 177,
+     "subjectId": "S177",
+     "idNote": "The model sees the opaque ID S177, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The bag",
@@ -16514,9 +18246,9 @@
     },
     {
      "id": "K14k",
-     "order": 158,
-     "subjectId": "S158",
-     "idNote": "The model sees the opaque ID S158, not K14k.",
+     "order": 178,
+     "subjectId": "S178",
+     "idNote": "The model sees the opaque ID S178, not K14k.",
      "type": "decision",
      "character": "Kara",
      "title": "Goodnight",
@@ -16558,9 +18290,9 @@
     },
     {
      "id": "K14l",
-     "order": 159,
-     "subjectId": "S159",
-     "idNote": "The model sees the opaque ID S159, the same on every visit.",
+     "order": 179,
+     "subjectId": "S179",
+     "idNote": "The model sees the opaque ID S179, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "A story",
@@ -16879,9 +18611,9 @@
     },
     {
      "id": "K14m",
-     "order": 160,
-     "subjectId": "S160",
-     "idNote": "The model sees the opaque ID S160, the same on every visit.",
+     "order": 180,
+     "subjectId": "S180",
+     "idNote": "The model sees the opaque ID S180, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "Talking to Luther",
@@ -16950,9 +18682,9 @@
     },
     {
      "id": "K14n",
-     "order": 161,
-     "subjectId": "S161",
-     "idNote": "The model sees the opaque ID S161, not K14n.",
+     "order": 181,
+     "subjectId": "S181",
+     "idNote": "The model sees the opaque ID S181, not K14n.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther’s question",
@@ -16996,9 +18728,9 @@
     },
     {
      "id": "K14o",
-     "order": 162,
-     "subjectId": "S162",
-     "idNote": "The model sees the opaque ID S162, not K14o.",
+     "order": 182,
+     "subjectId": "S182",
+     "idNote": "The model sees the opaque ID S182, not K14o.",
      "type": "decision",
      "character": "Kara",
      "title": "Shadows attack",
@@ -17061,9 +18793,9 @@
     },
     {
      "id": "K14p",
-     "order": 163,
-     "subjectId": "S163",
-     "idNote": "The model sees the opaque ID S163, not K14p.",
+     "order": 183,
+     "subjectId": "S183",
+     "idNote": "The model sees the opaque ID S183, not K14p.",
      "type": "decision",
      "character": "Kara",
      "title": "The figures close in",
@@ -17100,9 +18832,9 @@
     },
     {
      "id": "K14q",
-     "order": 164,
-     "subjectId": "S164",
-     "idNote": "The model sees the opaque ID S164, not K14q.",
+     "order": 184,
+     "subjectId": "S184",
+     "idNote": "The model sees the opaque ID S184, not K14q.",
      "type": "event",
      "character": "Kara",
      "title": "The Jerrys",
@@ -17133,9 +18865,9 @@
     },
     {
      "id": "K14r",
-     "order": 165,
-     "subjectId": "S165",
-     "idNote": "The model sees the opaque ID S165, not K14r.",
+     "order": 185,
+     "subjectId": "S185",
+     "idNote": "The model sees the opaque ID S185, not K14r.",
      "type": "event",
      "character": "Kara",
      "title": "The carousel",
@@ -17166,9 +18898,9 @@
     },
     {
      "id": "K14z",
-     "order": 166,
-     "subjectId": "S166",
-     "idNote": "The model sees the opaque ID S166, not K14z.",
+     "order": 186,
+     "subjectId": "S186",
+     "idNote": "The model sees the opaque ID S186, not K14z.",
      "type": "event",
      "character": "Kara",
      "title": "A quiet moment",
@@ -17258,9 +18990,9 @@
    "scenes": [
     {
      "id": "C13a",
-     "order": 167,
-     "subjectId": "S167",
-     "idNote": "The model sees the opaque ID S167, not C13a.",
+     "order": 187,
+     "subjectId": "S187",
+     "idNote": "The model sees the opaque ID S187, not C13a.",
      "type": "event",
      "character": "Connor",
      "title": "Ambassador Bridge",
@@ -17292,9 +19024,9 @@
     },
     {
      "id": "R22",
-     "order": 168,
-     "subjectId": "S168",
-     "idNote": "The model sees the opaque ID S168, not R22.",
+     "order": 188,
+     "subjectId": "S188",
+     "idNote": "The model sees the opaque ID S188, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "Two magazines on the park bench",
@@ -17332,9 +19064,9 @@
     },
     {
      "id": "C13b",
-     "order": 169,
-     "subjectId": "S169",
-     "idNote": "The model sees the opaque ID S169, not C13b.",
+     "order": 189,
+     "subjectId": "S189",
+     "idNote": "The model sees the opaque ID S189, not C13b.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the bench",
@@ -17374,9 +19106,9 @@
     },
     {
      "id": "C13c",
-     "order": 170,
-     "subjectId": "S170",
-     "idNote": "The model sees the opaque ID S170, not C13c.",
+     "order": 190,
+     "subjectId": "S190",
+     "idNote": "The model sees the opaque ID S190, not C13c.",
      "type": "decision",
      "character": "Connor",
      "title": "A personal question",
@@ -17419,9 +19151,9 @@
     },
     {
      "id": "C13d",
-     "order": 171,
-     "subjectId": "S171",
-     "idNote": "The model sees the opaque ID S171, not C13d.",
+     "order": 191,
+     "subjectId": "S191",
+     "idNote": "The model sees the opaque ID S191, not C13d.",
      "type": "decision",
      "character": "Connor",
      "title": "The investigation",
@@ -17464,9 +19196,9 @@
     },
     {
      "id": "C13e",
-     "order": 172,
-     "subjectId": "S172",
-     "idNote": "The model sees the opaque ID S172, not C13e.",
+     "order": 192,
+     "subjectId": "S192",
+     "idNote": "The model sees the opaque ID S192, not C13e.",
      "type": "decision",
      "character": "Connor",
      "title": "The two girls at the club",
@@ -17512,9 +19244,9 @@
     },
     {
      "id": "C13f",
-     "order": 173,
-     "subjectId": "S173",
-     "idNote": "The model sees the opaque ID S173, not C13f.",
+     "order": 193,
+     "subjectId": "S193",
+     "idNote": "The model sees the opaque ID S193, not C13f.",
      "type": "decision",
      "character": "Connor",
      "title": "The girl you never found",
@@ -17555,9 +19287,9 @@
     },
     {
      "id": "C13g",
-     "order": 174,
-     "subjectId": "S174",
-     "idNote": "The model sees the opaque ID S174, not C13g.",
+     "order": 194,
+     "subjectId": "S194",
+     "idNote": "The model sees the opaque ID S194, not C13g.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you really?",
@@ -17609,9 +19341,9 @@
     },
     {
      "id": "C13h",
-     "order": 175,
-     "subjectId": "S175",
-     "idNote": "The model sees the opaque ID S175, not C13h.",
+     "order": 195,
+     "subjectId": "S195",
+     "idNote": "The model sees the opaque ID S195, not C13h.",
      "type": "decision",
      "character": "Connor",
      "title": "Why didn’t you shoot?",
@@ -17649,9 +19381,9 @@
     },
     {
      "id": "C13i",
-     "order": 176,
-     "subjectId": "S176",
-     "idNote": "The model sees the opaque ID S176, not C13i.",
+     "order": 196,
+     "subjectId": "S196",
+     "idNote": "The model sees the opaque ID S196, not C13i.",
      "type": "decision",
      "character": "Connor",
      "title": "Did you feel anything?",
@@ -17703,9 +19435,9 @@
     },
     {
      "id": "C13j",
-     "order": 177,
-     "subjectId": "S177",
-     "idNote": "The model sees the opaque ID S177, not C13j.",
+     "order": 197,
+     "subjectId": "S197",
+     "idNote": "The model sees the opaque ID S197, not C13j.",
      "type": "decision",
      "character": "Connor",
      "title": "When she killed herself",
@@ -17743,9 +19475,9 @@
     },
     {
      "id": "C13k",
-     "order": 178,
-     "subjectId": "S178",
-     "idNote": "The model sees the opaque ID S178, not C13k.",
+     "order": 198,
+     "subjectId": "S198",
+     "idNote": "The model sees the opaque ID S198, not C13k.",
      "type": "decision",
      "character": "Connor",
      "title": "Only perfect",
@@ -17784,9 +19516,9 @@
     },
     {
      "id": "C13l",
-     "order": 179,
-     "subjectId": "S179",
-     "idNote": "The model sees the opaque ID S179, not C13l.",
+     "order": 199,
+     "subjectId": "S199",
+     "idNote": "The model sees the opaque ID S199, not C13l.",
      "type": "event",
      "character": "Connor",
      "title": "Hank draws his gun",
@@ -17827,9 +19559,9 @@
     },
     {
      "id": "C13",
-     "order": 180,
-     "subjectId": "S180",
-     "idNote": "The model sees the opaque ID S180, not C13.",
+     "order": 200,
+     "subjectId": "S200",
+     "idNote": "The model sees the opaque ID S200, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "Are you afraid to die?",
@@ -17898,9 +19630,9 @@
     },
     {
      "id": "C13m",
-     "order": 181,
-     "subjectId": "S181",
-     "idNote": "The model sees the opaque ID S181, not C13m.",
+     "order": 201,
+     "subjectId": "S201",
+     "idNote": "The model sees the opaque ID S201, not C13m.",
      "type": "decision",
      "character": "Connor",
      "title": "If I pull this trigger",
@@ -17946,9 +19678,9 @@
     },
     {
      "id": "C13n",
-     "order": 182,
-     "subjectId": "S182",
-     "idNote": "The model sees the opaque ID S182, not C13n.",
+     "order": 202,
+     "subjectId": "S202",
+     "idNote": "The model sees the opaque ID S202, not C13n.",
      "type": "event",
      "character": "Connor",
      "title": "Hank lowers the gun",
@@ -17980,9 +19712,9 @@
     },
     {
      "id": "C13o",
-     "order": 183,
-     "subjectId": "S183",
-     "idNote": "The model sees the opaque ID S183, not C13o.",
+     "order": 203,
+     "subjectId": "S203",
+     "idNote": "The model sees the opaque ID S203, not C13o.",
      "type": "event",
      "character": "Connor",
      "title": "Hank pulls the trigger",
@@ -18058,9 +19790,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 184,
-     "subjectId": "S184",
-     "idNote": "The model sees the opaque ID S184, not R23.",
+     "order": 204,
+     "subjectId": "S204",
+     "idNote": "The model sees the opaque ID S204, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -18098,9 +19830,9 @@
     },
     {
      "id": "M10",
-     "order": 185,
-     "subjectId": "S185",
-     "idNote": "The model sees the opaque ID S185, not M10.",
+     "order": 205,
+     "subjectId": "S205",
+     "idNote": "The model sees the opaque ID S205, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -18130,9 +19862,9 @@
     },
     {
      "id": "M11",
-     "order": 186,
-     "subjectId": "S186",
-     "idNote": "The model sees the opaque ID S186, not M11.",
+     "order": 206,
+     "subjectId": "S206",
+     "idNote": "The model sees the opaque ID S206, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -18159,9 +19891,9 @@
     },
     {
      "id": "M12",
-     "order": 187,
-     "subjectId": "S187",
-     "idNote": "The model sees the opaque ID S187, not M12.",
+     "order": 207,
+     "subjectId": "S207",
+     "idNote": "The model sees the opaque ID S207, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -18184,9 +19916,9 @@
     },
     {
      "id": "M13",
-     "order": 188,
-     "subjectId": "S188",
-     "idNote": "The model sees the opaque ID S188, not M13.",
+     "order": 208,
+     "subjectId": "S208",
+     "idNote": "The model sees the opaque ID S208, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -18213,9 +19945,9 @@
     },
     {
      "id": "M14",
-     "order": 189,
-     "subjectId": "S189",
-     "idNote": "The model sees the opaque ID S189, not M14.",
+     "order": 209,
+     "subjectId": "S209",
+     "idNote": "The model sees the opaque ID S209, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -18261,9 +19993,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 190,
-     "subjectId": "S190",
-     "idNote": "The model sees the opaque ID S190, not R24.",
+     "order": 210,
+     "subjectId": "S210",
+     "idNote": "The model sees the opaque ID S210, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -18293,9 +20025,9 @@
     },
     {
      "id": "C14",
-     "order": 191,
-     "subjectId": "S191",
-     "idNote": "The model sees the opaque ID S191, not C14.",
+     "order": 211,
+     "subjectId": "S211",
+     "idNote": "The model sees the opaque ID S211, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -18325,9 +20057,9 @@
     },
     {
      "id": "C14b",
-     "order": 192,
-     "subjectId": "S192",
-     "idNote": "The model sees the opaque ID S192, not C14b.",
+     "order": 212,
+     "subjectId": "S212",
+     "idNote": "The model sees the opaque ID S212, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -18352,9 +20084,9 @@
     },
     {
      "id": "C15",
-     "order": 193,
-     "subjectId": "S193",
-     "idNote": "The model sees the opaque ID S193, not C15.",
+     "order": 213,
+     "subjectId": "S213",
+     "idNote": "The model sees the opaque ID S213, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -18385,9 +20117,9 @@
     },
     {
      "id": "C16",
-     "order": 194,
-     "subjectId": "S194",
-     "idNote": "The model sees the opaque ID S194, not C16.",
+     "order": 214,
+     "subjectId": "S214",
+     "idNote": "The model sees the opaque ID S214, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -18445,9 +20177,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 195,
-     "subjectId": "S195",
-     "idNote": "The model sees the opaque ID S195, not R25.",
+     "order": 215,
+     "subjectId": "S215",
+     "idNote": "The model sees the opaque ID S215, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -18484,9 +20216,9 @@
     },
     {
      "id": "K15",
-     "order": 196,
-     "subjectId": "S196",
-     "idNote": "The model sees the opaque ID S196, not K15.",
+     "order": 216,
+     "subjectId": "S216",
+     "idNote": "The model sees the opaque ID S216, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -18539,9 +20271,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 197,
-     "subjectId": "S197",
-     "idNote": "The model sees the opaque ID S197, not R26.",
+     "order": 217,
+     "subjectId": "S217",
+     "idNote": "The model sees the opaque ID S217, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -18571,9 +20303,9 @@
     },
     {
      "id": "M15",
-     "order": 198,
-     "subjectId": "S198",
-     "idNote": "The model sees the opaque ID S198, not M15.",
+     "order": 218,
+     "subjectId": "S218",
+     "idNote": "The model sees the opaque ID S218, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -18600,9 +20332,9 @@
     },
     {
      "id": "M16",
-     "order": 199,
-     "subjectId": "S199",
-     "idNote": "The model sees the opaque ID S199, not M16.",
+     "order": 219,
+     "subjectId": "S219",
+     "idNote": "The model sees the opaque ID S219, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -18660,9 +20392,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 200,
-     "subjectId": "S200",
-     "idNote": "The model sees the opaque ID S200, not R27.",
+     "order": 220,
+     "subjectId": "S220",
+     "idNote": "The model sees the opaque ID S220, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -18692,9 +20424,9 @@
     },
     {
      "id": "C17",
-     "order": 201,
-     "subjectId": "S201",
-     "idNote": "The model sees the opaque ID S201, not C17.",
+     "order": 221,
+     "subjectId": "S221",
+     "idNote": "The model sees the opaque ID S221, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -18716,9 +20448,9 @@
     },
     {
      "id": "C18",
-     "order": 202,
-     "subjectId": "S202",
-     "idNote": "The model sees the opaque ID S202, not C18.",
+     "order": 222,
+     "subjectId": "S222",
+     "idNote": "The model sees the opaque ID S222, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -18776,9 +20508,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 203,
-     "subjectId": "S203",
-     "idNote": "The model sees the opaque ID S203, not R28.",
+     "order": 223,
+     "subjectId": "S223",
+     "idNote": "The model sees the opaque ID S223, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -18825,9 +20557,9 @@
     },
     {
      "id": "M17",
-     "order": 204,
-     "subjectId": "S204",
-     "idNote": "The model sees the opaque ID S204, not M17.",
+     "order": 224,
+     "subjectId": "S224",
+     "idNote": "The model sees the opaque ID S224, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -18854,9 +20586,9 @@
     },
     {
      "id": "M18",
-     "order": 205,
-     "subjectId": "S205",
-     "idNote": "The model sees the opaque ID S205, not M18.",
+     "order": 225,
+     "subjectId": "S225",
+     "idNote": "The model sees the opaque ID S225, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -18888,9 +20620,9 @@
     },
     {
      "id": "M19",
-     "order": 206,
-     "subjectId": "S206",
-     "idNote": "The model sees the opaque ID S206, not M19.",
+     "order": 226,
+     "subjectId": "S226",
+     "idNote": "The model sees the opaque ID S226, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -18920,9 +20652,9 @@
     },
     {
      "id": "M20",
-     "order": 207,
-     "subjectId": "S207",
-     "idNote": "The model sees the opaque ID S207, not M20.",
+     "order": 227,
+     "subjectId": "S227",
+     "idNote": "The model sees the opaque ID S227, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -18976,9 +20708,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 208,
-     "subjectId": "S208",
-     "idNote": "The model sees the opaque ID S208, not C19.",
+     "order": 228,
+     "subjectId": "S228",
+     "idNote": "The model sees the opaque ID S228, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -19003,9 +20735,9 @@
     },
     {
      "id": "C20",
-     "order": 209,
-     "subjectId": "S209",
-     "idNote": "The model sees the opaque ID S209, not C20.",
+     "order": 229,
+     "subjectId": "S229",
+     "idNote": "The model sees the opaque ID S229, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -19093,9 +20825,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 210,
-     "subjectId": "S210",
-     "idNote": "The model sees the opaque ID S210, not M21.",
+     "order": 230,
+     "subjectId": "S230",
+     "idNote": "The model sees the opaque ID S230, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -19122,9 +20854,9 @@
     },
     {
      "id": "M21b",
-     "order": 211,
-     "subjectId": "S211",
-     "idNote": "The model sees the opaque ID S211, not M21b.",
+     "order": 231,
+     "subjectId": "S231",
+     "idNote": "The model sees the opaque ID S231, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -19151,9 +20883,9 @@
     },
     {
      "id": "R30k",
-     "order": 212,
-     "subjectId": "S212",
-     "idNote": "The model sees the opaque ID S212, not R30k.",
+     "order": 232,
+     "subjectId": "S232",
+     "idNote": "The model sees the opaque ID S232, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -19189,9 +20921,9 @@
     },
     {
      "id": "K17",
-     "order": 213,
-     "subjectId": "S213",
-     "idNote": "The model sees the opaque ID S213, not K17.",
+     "order": 233,
+     "subjectId": "S233",
+     "idNote": "The model sees the opaque ID S233, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -19217,9 +20949,9 @@
     },
     {
      "id": "K31",
-     "order": 214,
-     "subjectId": "S214",
-     "idNote": "The model sees the opaque ID S214, not K31.",
+     "order": 234,
+     "subjectId": "S234",
+     "idNote": "The model sees the opaque ID S234, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -19242,9 +20974,9 @@
     },
     {
      "id": "R30c",
-     "order": 215,
-     "subjectId": "S215",
-     "idNote": "The model sees the opaque ID S215, not R30c.",
+     "order": 235,
+     "subjectId": "S235",
+     "idNote": "The model sees the opaque ID S235, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -19276,9 +21008,9 @@
     },
     {
      "id": "C22",
-     "order": 216,
-     "subjectId": "S216",
-     "idNote": "The model sees the opaque ID S216, not C22.",
+     "order": 236,
+     "subjectId": "S236",
+     "idNote": "The model sees the opaque ID S236, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -19301,9 +21033,9 @@
     },
     {
      "id": "M22",
-     "order": 217,
-     "subjectId": "S217",
-     "idNote": "The model sees the opaque ID S217, not M22.",
+     "order": 237,
+     "subjectId": "S237",
+     "idNote": "The model sees the opaque ID S237, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -19326,9 +21058,9 @@
     },
     {
      "id": "M23",
-     "order": 218,
-     "subjectId": "S218",
-     "idNote": "The model sees the opaque ID S218, not M23.",
+     "order": 238,
+     "subjectId": "S238",
+     "idNote": "The model sees the opaque ID S238, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -19355,9 +21087,9 @@
     },
     {
      "id": "M24",
-     "order": 219,
-     "subjectId": "S219",
-     "idNote": "The model sees the opaque ID S219, not M24.",
+     "order": 239,
+     "subjectId": "S239",
+     "idNote": "The model sees the opaque ID S239, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -19384,9 +21116,9 @@
     },
     {
      "id": "M25",
-     "order": 220,
-     "subjectId": "S220",
-     "idNote": "The model sees the opaque ID S220, not M25.",
+     "order": 240,
+     "subjectId": "S240",
+     "idNote": "The model sees the opaque ID S240, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -19413,9 +21145,9 @@
     },
     {
      "id": "C23",
-     "order": 221,
-     "subjectId": "S221",
-     "idNote": "The model sees the opaque ID S221, not C23.",
+     "order": 241,
+     "subjectId": "S241",
+     "idNote": "The model sees the opaque ID S241, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -19443,9 +21175,9 @@
     },
     {
      "id": "K18",
-     "order": 222,
-     "subjectId": "S222",
-     "idNote": "The model sees the opaque ID S222, not K18.",
+     "order": 242,
+     "subjectId": "S242",
+     "idNote": "The model sees the opaque ID S242, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -19470,9 +21202,9 @@
     },
     {
      "id": "K19",
-     "order": 223,
-     "subjectId": "S223",
-     "idNote": "The model sees the opaque ID S223, not K19.",
+     "order": 243,
+     "subjectId": "S243",
+     "idNote": "The model sees the opaque ID S243, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -19496,9 +21228,9 @@
     },
     {
      "id": "K20",
-     "order": 224,
-     "subjectId": "S224",
-     "idNote": "The model sees the opaque ID S224, not K20.",
+     "order": 244,
+     "subjectId": "S244",
+     "idNote": "The model sees the opaque ID S244, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -19527,9 +21259,9 @@
     },
     {
      "id": "K20-still",
-     "order": 225,
-     "subjectId": "S225",
-     "idNote": "The model sees the opaque ID S225, not K20-still.",
+     "order": 245,
+     "subjectId": "S245",
+     "idNote": "The model sees the opaque ID S245, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -19587,9 +21319,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 226,
-     "subjectId": "S226",
-     "idNote": "The model sees the opaque ID S226, not M26a.",
+     "order": 246,
+     "subjectId": "S246",
+     "idNote": "The model sees the opaque ID S246, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -19615,9 +21347,9 @@
     },
     {
      "id": "M26",
-     "order": 227,
-     "subjectId": "S227",
-     "idNote": "The model sees the opaque ID S227, not M26.",
+     "order": 247,
+     "subjectId": "S247",
+     "idNote": "The model sees the opaque ID S247, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -19642,9 +21374,9 @@
     },
     {
      "id": "M27",
-     "order": 228,
-     "subjectId": "S228",
-     "idNote": "The model sees the opaque ID S228, not M27.",
+     "order": 248,
+     "subjectId": "S248",
+     "idNote": "The model sees the opaque ID S248, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -19766,9 +21498,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 229,
-     "subjectId": "S229",
-     "idNote": "The model sees the opaque ID S229, not R32c.",
+     "order": 249,
+     "subjectId": "S249",
+     "idNote": "The model sees the opaque ID S249, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -19791,9 +21523,9 @@
     },
     {
      "id": "C24",
-     "order": 230,
-     "subjectId": "S230",
-     "idNote": "The model sees the opaque ID S230, not C24.",
+     "order": 250,
+     "subjectId": "S250",
+     "idNote": "The model sees the opaque ID S250, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -19817,9 +21549,9 @@
     },
     {
      "id": "C24b",
-     "order": 231,
-     "subjectId": "S231",
-     "idNote": "The model sees the opaque ID S231, not C24b.",
+     "order": 251,
+     "subjectId": "S251",
+     "idNote": "The model sees the opaque ID S251, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -19843,9 +21575,9 @@
     },
     {
      "id": "C30",
-     "order": 232,
-     "subjectId": "S232",
-     "idNote": "The model sees the opaque ID S232, not C30.",
+     "order": 252,
+     "subjectId": "S252",
+     "idNote": "The model sees the opaque ID S252, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -19867,9 +21599,9 @@
     },
     {
      "id": "C25",
-     "order": 233,
-     "subjectId": "S233",
-     "idNote": "The model sees the opaque ID S233, not C25.",
+     "order": 253,
+     "subjectId": "S253",
+     "idNote": "The model sees the opaque ID S253, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -19896,9 +21628,9 @@
     },
     {
      "id": "C26",
-     "order": 234,
-     "subjectId": "S234",
-     "idNote": "The model sees the opaque ID S234, not C26.",
+     "order": 254,
+     "subjectId": "S254",
+     "idNote": "The model sees the opaque ID S254, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -19928,9 +21660,9 @@
     },
     {
      "id": "R32k",
-     "order": 235,
-     "subjectId": "S235",
-     "idNote": "The model sees the opaque ID S235, not R32k.",
+     "order": 255,
+     "subjectId": "S255",
+     "idNote": "The model sees the opaque ID S255, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -19970,9 +21702,9 @@
     },
     {
      "id": "K21",
-     "order": 236,
-     "subjectId": "S236",
-     "idNote": "The model sees the opaque ID S236, not K21.",
+     "order": 256,
+     "subjectId": "S256",
+     "idNote": "The model sees the opaque ID S256, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -19996,9 +21728,9 @@
     },
     {
      "id": "K22",
-     "order": 237,
-     "subjectId": "S237",
-     "idNote": "The model sees the opaque ID S237, not K22.",
+     "order": 257,
+     "subjectId": "S257",
+     "idNote": "The model sees the opaque ID S257, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -20024,9 +21756,9 @@
     },
     {
      "id": "K32",
-     "order": 238,
-     "subjectId": "S238",
-     "idNote": "The model sees the opaque ID S238, not K32.",
+     "order": 258,
+     "subjectId": "S258",
+     "idNote": "The model sees the opaque ID S258, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -20048,9 +21780,9 @@
     },
     {
      "id": "K23",
-     "order": 239,
-     "subjectId": "S239",
-     "idNote": "The model sees the opaque ID S239, not K23.",
+     "order": 259,
+     "subjectId": "S259",
+     "idNote": "The model sees the opaque ID S259, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -20077,9 +21809,9 @@
     },
     {
      "id": "K24",
-     "order": 240,
-     "subjectId": "S240",
-     "idNote": "The model sees the opaque ID S240, not K24.",
+     "order": 260,
+     "subjectId": "S260",
+     "idNote": "The model sees the opaque ID S260, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -20101,9 +21833,9 @@
     },
     {
      "id": "K25",
-     "order": 241,
-     "subjectId": "S241",
-     "idNote": "The model sees the opaque ID S241, not K25.",
+     "order": 261,
+     "subjectId": "S261",
+     "idNote": "The model sees the opaque ID S261, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -20138,9 +21870,9 @@
     },
     {
      "id": "K26",
-     "order": 242,
-     "subjectId": "S242",
-     "idNote": "The model sees the opaque ID S242, not K26.",
+     "order": 262,
+     "subjectId": "S262",
+     "idNote": "The model sees the opaque ID S262, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -20181,9 +21913,9 @@
     },
     {
      "id": "K34",
-     "order": 243,
-     "subjectId": "S243",
-     "idNote": "The model sees the opaque ID S243, not K34.",
+     "order": 263,
+     "subjectId": "S263",
+     "idNote": "The model sees the opaque ID S263, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -20213,9 +21945,9 @@
     },
     {
      "id": "K30",
-     "order": 244,
-     "subjectId": "S244",
-     "idNote": "The model sees the opaque ID S244, not K30.",
+     "order": 264,
+     "subjectId": "S264",
+     "idNote": "The model sees the opaque ID S264, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -20237,9 +21969,9 @@
     },
     {
      "id": "K27a",
-     "order": 245,
-     "subjectId": "S245",
-     "idNote": "The model sees the opaque ID S245, not K27a.",
+     "order": 265,
+     "subjectId": "S265",
+     "idNote": "The model sees the opaque ID S265, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -20264,9 +21996,9 @@
     },
     {
      "id": "K27",
-     "order": 246,
-     "subjectId": "S246",
-     "idNote": "The model sees the opaque ID S246, not K27.",
+     "order": 266,
+     "subjectId": "S266",
+     "idNote": "The model sees the opaque ID S266, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -20291,9 +22023,9 @@
     },
     {
      "id": "K28",
-     "order": 247,
-     "subjectId": "S247",
-     "idNote": "The model sees the opaque ID S247, not K28.",
+     "order": 267,
+     "subjectId": "S267",
+     "idNote": "The model sees the opaque ID S267, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -20336,9 +22068,9 @@
     },
     {
      "id": "K33",
-     "order": 248,
-     "subjectId": "S248",
-     "idNote": "The model sees the opaque ID S248, not K33.",
+     "order": 268,
+     "subjectId": "S268",
+     "idNote": "The model sees the opaque ID S268, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -20362,9 +22094,9 @@
     },
     {
      "id": "R32m",
-     "order": 249,
-     "subjectId": "S249",
-     "idNote": "The model sees the opaque ID S249, not R32m.",
+     "order": 269,
+     "subjectId": "S269",
+     "idNote": "The model sees the opaque ID S269, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -20388,9 +22120,9 @@
     },
     {
      "id": "M28",
-     "order": 250,
-     "subjectId": "S250",
-     "idNote": "The model sees the opaque ID S250, not M28.",
+     "order": 270,
+     "subjectId": "S270",
+     "idNote": "The model sees the opaque ID S270, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -20416,9 +22148,9 @@
     },
     {
      "id": "M31",
-     "order": 251,
-     "subjectId": "S251",
-     "idNote": "The model sees the opaque ID S251, not M31.",
+     "order": 271,
+     "subjectId": "S271",
+     "idNote": "The model sees the opaque ID S271, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -20453,9 +22185,9 @@
     },
     {
      "id": "M30a",
-     "order": 252,
-     "subjectId": "S252",
-     "idNote": "The model sees the opaque ID S252, not M30a.",
+     "order": 272,
+     "subjectId": "S272",
+     "idNote": "The model sees the opaque ID S272, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -20480,9 +22212,9 @@
     },
     {
      "id": "M30",
-     "order": 253,
-     "subjectId": "S253",
-     "idNote": "The model sees the opaque ID S253, not M30.",
+     "order": 273,
+     "subjectId": "S273",
+     "idNote": "The model sees the opaque ID S273, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -20507,9 +22239,9 @@
     },
     {
      "id": "M30c",
-     "order": 254,
-     "subjectId": "S254",
-     "idNote": "The model sees the opaque ID S254, not M30c.",
+     "order": 274,
+     "subjectId": "S274",
+     "idNote": "The model sees the opaque ID S274, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -20533,9 +22265,9 @@
     },
     {
      "id": "M32",
-     "order": 255,
-     "subjectId": "S255",
-     "idNote": "The model sees the opaque ID S255, not M32.",
+     "order": 275,
+     "subjectId": "S275",
+     "idNote": "The model sees the opaque ID S275, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -20558,9 +22290,9 @@
     },
     {
      "id": "P02",
-     "order": 256,
-     "subjectId": "S256",
-     "idNote": "The model sees the opaque ID S256, not P02.",
+     "order": 276,
+     "subjectId": "S276",
+     "idNote": "The model sees the opaque ID S276, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -20586,9 +22318,9 @@
     },
     {
      "id": "C29",
-     "order": 257,
-     "subjectId": "S257",
-     "idNote": "The model sees the opaque ID S257, not C29.",
+     "order": 277,
+     "subjectId": "S277",
+     "idNote": "The model sees the opaque ID S277, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -20610,9 +22342,9 @@
     },
     {
      "id": "C27",
-     "order": 258,
-     "subjectId": "S258",
-     "idNote": "The model sees the opaque ID S258, not C27.",
+     "order": 278,
+     "subjectId": "S278",
+     "idNote": "The model sees the opaque ID S278, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -20637,9 +22369,9 @@
     },
     {
      "id": "C28",
-     "order": 259,
-     "subjectId": "S259",
-     "idNote": "The model sees the opaque ID S259, not C28.",
+     "order": 279,
+     "subjectId": "S279",
+     "idNote": "The model sees the opaque ID S279, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -20673,9 +22405,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 260,
-     "subjectId": "S260",
-     "idNote": "The model sees the opaque ID S260, not P01.",
+     "order": 280,
+     "subjectId": "S280",
+     "idNote": "The model sees the opaque ID S280, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

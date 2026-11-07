@@ -3,41 +3,857 @@
   "id": 5,
   "title": "The Painter",
   "character": "Markus",
-  "note": "",
-  "source": "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/"
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (44 nodes) and the game’s text (detroitbecometext template and string table), with the Fandom wiki’s chapter page and transcript. ARRIVING HOME → DROP OFF PACKAGE → WAKE CARL → (CARL NOTICES MARKUS’ CLOTHES, after the protesters in Shades of Color) → SERVE BREAKFAST → FIND SOMETHING TO DO → PLAY CHESS (WIN / LOSE / DRAW) or READ BOOK (Plato / Shakespeare / Keats) or PLAY PIANO (four moods) → TAKE CARL TO THE STUDIO → PAINT SOMETHING YOU SEE (three subjects) → PAINT FROM THE HEART (ANDROIDS / HUMANITY / IDENTITY, four feelings each) → LEO INTRUDED TO ASK FOR MONEY, the only ending. Optional: the magazine (two covers) and the birds. The template’s live prompts (WIN / LOSE / DRAW and the three follow-ups, LIKE / DON’T LIKE / NO OPINION) are all offered; the cut FACTUAL / REASSURING prompt is not. No probability, relationship, public-opinion or instability change anywhere. Cross-chapter: clothesTorn in; the pastime (painterActivity) and the painting (painterTheme, painterFeeling) out, for Night of the Soul. Researched in docs/research/ch05-the-painter.md.",
+  "source": "https://detroit-become-human.fandom.com/wiki/The_Painter",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Painter",
+   "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg"
+  ]
  },
  "decisions": [
+  {
+   "id": "T01",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Arriving Home (checkpoint) and Drop Off Package",
+   "context": "Markus comes home from Bellini Paints at 09:58 on November 5, 2038: “Alarm deactivated. Welcome home, Markus.” He leaves Carl’s package on the hutch in the hall and hangs up his coat; the next objective is to wake Carl upstairs.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The start node and checkpoint, then the main-line node DROP OFF PACKAGE (objective DEPOSIT PACKAGE). The hall mirror shows a torn or an unscathed shirt.",
+     "target": "T04"
+    }
+   ],
+   "gate": "Chapter start, after A New Home.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+   ],
+   "note": "Chart nodes ARRIVING HOME (checkpoint) and DROP OFF PACKAGE. No icon on either.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01a"
+    ],
+    "status": "simplified",
+    "note": "One narrated event covers both nodes; the mirror sentence appears when clothesTorn is set. One fact; no stat change."
+   }
+  },
+  {
+   "id": "T02",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Read the living-room magazine",
+   "context": "A magazine with two covers on the table in front of the living-room TV: Century, “The North Pole - Why Russia Wants It” (thirium minerals under the Arctic ice; Warren: “Russia has no business in the Arctic”), and Detroit Today, “Life Found on Titan!” (microorganisms under Titan’s ice; CyberLife’s space-faring androids).",
+   "options": [
+    {
+     "label": "READ “NORTH POLE RUSSIA”",
+     "effect": "Century: the Arctic dispute over thirium minerals. BOOKWORM No. 2.",
+     "target": null
+    },
+    {
+     "label": "READ “LIFE ON TITAN”",
+     "effect": "Detroit Today: life found on Titan. BOOKWORM No. 27.",
+     "target": null
+    },
+    {
+     "label": "Leave it",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, from arrival until the pastime is chosen.",
+   "kind": "State gate",
+   "dependsOn": [
+    "T01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine"
+   ],
+   "note": "Two optional chart nodes in the side group drawn under WAKE CARL, with no line to the main path. No public-opinion effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R05",
+     "R05b"
+    ],
+    "status": "implemented",
+    "note": "A media scene before waking Carl (R05); whatever was left unread is offered again with the TV after breakfast (R05b). Facts go to Markus’s knowledge; no stat change."
+   }
+  },
+  {
+   "id": "T03",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Activate Birds",
+   "context": "In the hall, a cage of two small robot songbirds; Markus can switch each on with its button, and they chirp at each other.",
+   "options": [
+    {
+     "label": "ACTIVATE BIRDS",
+     "effect": "Optional; no effect.",
+     "target": null
+    },
+    {
+     "label": "Leave them",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, before or after waking Carl.",
+   "kind": "State gate",
+   "dependsOn": [
+    "T01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+   ],
+   "note": "Optional side node in the same group as the magazine (wiki: “found in main lobby”).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01b"
+    ],
+    "status": "simplified",
+    "note": "A two-option decision before going upstairs; in the game it can also be done later. No stat change."
+   }
+  },
+  {
+   "id": "T04",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Wake Carl",
+   "context": "Markus draws the curtains, reports the time and weather (“It’s 10 AM … partly cloudy, 54°, 80% humidity”) and gives Carl his injection (“Show me your arm please, Carl.” “No!”). Carl: “Humans are such a fragile machine… They break down so quickly…”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Main-line node; objectives WAKE CARL UPSTAIRS and ADMINISTER CARL’S MEDICINE.",
+     "target": "T06"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "T01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg"
+   ],
+   "note": "Main-line node, no icon.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01c"
+    ],
+    "status": "implemented",
+    "note": "A narrated event quoting the template. One fact; no stat change."
+   }
+  },
+  {
+   "id": "T05",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Carl notices Markus’ clothes",
+   "context": "If the protesters harassed Markus in Shades of Color, Carl sees the damage: “Hey. What happened to your clothes?” Markus: “Oh, it’s nothing… Just some demonstrators in the street, Carl…” Carl: “What a bunch of idiots… I hope they didn’t harm you…”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Plays only after PROTESTERS HARASS MARKUS. A reply prompt FACTUAL / REASSURING was cut from the game.",
+     "target": "T06"
+    }
+   ],
+   "gate": "Only when the protesters harassed Markus in Shades of Color.",
+   "kind": "State gate",
+   "dependsOn": [
+    "T04",
+    "S08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Shades_of_Color"
+   ],
+   "note": "Chart node with the triangle icon (unlocked by an earlier chapter).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01d"
+    ],
+    "status": "implemented",
+    "note": "An event gated on clothesTorn (set in Shades of Color, M00f). One fact; no stat change."
+   }
+  },
+  {
+   "id": "T06",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Serve Breakfast",
+   "context": "Markus bathes Carl and takes him down; on the way Carl hears about his retrospective at the Museum of Modern Art (the gallery director left four messages) and asks for news of Leo (none; “No, don’t bother”). Bacon and eggs; “Television.” The CTN news reports the Arctic crisis (“never been so close to a Third World War”). “Why don’t you find something to do while I finish my breakfast?”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Main-line node. The TV report is optional and has no effect.",
+     "target": "T07"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "State gate",
+   "dependsOn": [
+    "T04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ],
+   "note": "Main-line node; the broadcast is not a chart node and moves no stat.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01e",
+     "R05b"
+    ],
+    "status": "implemented",
+    "note": "An event quoting the template (two facts), then a media scene with the TV and any magazine cover left unread. No stat change."
+   }
+  },
+  {
+   "id": "T07",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Find Something To Do (checkpoint)",
+   "context": "While Carl finishes his breakfast, Markus picks one pastime: the chessboard, the bookshelf or the piano.",
+   "options": [
+    {
+     "label": "PLAY CHESS",
+     "effect": "Speed chess with Carl; Night of the Soul: LOOK AT THE CHESSBOARD if Carl is alive.",
+     "target": "T08"
+    },
+    {
+     "label": "READ BOOK",
+     "effect": "A book Carl recommended; Night of the Soul: BROWSE BOOKS.",
+     "target": "T10"
+    },
+    {
+     "label": "PLAY PIANO",
+     "effect": "A piece on Carl’s piano; Night of the Soul: PLAY PIANO.",
+     "target": "T11"
+    }
+   ],
+   "gate": "Main line; one pastime per playthrough.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "T06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Night_of_the_Soul"
+   ],
+   "note": "Checkpoint and choice group. The wiki and transcript also allow doing nothing (Carl gives the same speech); the chart draws no line for it.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01f"
+    ],
+    "status": "implemented",
+    "note": "A decision with the chart’s three labels; stored as painterActivity for Night of the Soul. Doing nothing is not offered. No stat change."
+   }
+  },
+  {
+   "id": "T08",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Speed chess",
+   "context": "Carl: “Fancy a game of chess?” “Speed chess.” Markus decides the final move.",
+   "options": [
+    {
+     "label": "WIN",
+     "effect": "Carl: “That’s what I call a thorough beating…”; then JUSTIFY / SORRY.",
+     "target": "T09"
+    },
+    {
+     "label": "LOSE",
+     "effect": "Carl: “Are your circuits rusty? Or are you just taking pity on an old man?”; then LIE / TRUTH.",
+     "target": "T09"
+    },
+    {
+     "label": "DRAW",
+     "effect": "Carl: “That is a very odd draw…”; then LIE / TRUTH.",
+     "target": "T09"
+    }
+   ],
+   "gate": "After PLAY CHESS.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "T07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+   ],
+   "note": "Chart sub-group; all three complete on the chart together (PowerPyx).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01g"
+    ],
+    "status": "implemented",
+    "note": "A decision with the template’s prompt; stored as painterPastime. No stat change."
+   }
+  },
+  {
+   "id": "T09",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "After the chess game",
+   "context": "The template’s follow-up prompts: after WIN, JUSTIFY (“you don’t like when I let you win”) or SORRY (“I prefer humiliation to pity”); after LOSE, LIE or TRUTH (Carl: “Never throw a match, Markus. If you can win, win.”); after DRAW, LIE (“You don’t lie as good as you play chess”) or TRUTH (“A draw feels like an honorable compromise, no?”).",
+   "options": [
+    {
+     "label": "JUSTIFY / SORRY",
+     "effect": "After WIN. No effect.",
+     "target": null
+    },
+    {
+     "label": "LIE / TRUTH",
+     "effect": "After LOSE. No effect.",
+     "target": null
+    },
+    {
+     "label": "LIE / TRUTH",
+     "effect": "After DRAW. No effect.",
+     "target": null
+    }
+   ],
+   "gate": "After the matching chess result.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "T08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+   ],
+   "note": "Template prompts, not chart nodes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01h",
+     "M01i",
+     "M01j"
+    ],
+    "status": "implemented",
+    "note": "Three decisions, one per result, gated on painterPastime. No stat change."
+   }
+  },
+  {
+   "id": "T10",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Read a book",
+   "context": "Carl: “What are you reading?” Plato’s Republic (“Asking questions that have no answers is part of being human”), Macbeth (“Life without emotions wouldn’t be worth living”) or Keats’ Odes (“There’s nothing like love to make a man feel miserable”).",
+   "options": [
+    {
+     "label": "THE REPUBLIC BY PLATO",
+     "effect": "Carl on unanswerable questions.",
+     "target": null
+    },
+    {
+     "label": "TRAGEDIES OF WILLIAM SHAKESPEARE",
+     "effect": "Macbeth; Carl on emotions.",
+     "target": null
+    },
+    {
+     "label": "ODES BY JOHN KEATS",
+     "effect": "Carl on love.",
+     "target": null
+    }
+   ],
+   "gate": "After READ BOOK.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "T07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+   ],
+   "note": "Chart sub-group; the template has three conditioned conversations and no prompt.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01k"
+    ],
+    "status": "implemented",
+    "note": "A decision with the game’s interaction labels (Plato, Shakespeare, Keats’ Odes) in chart order; Carl’s answer goes to Markus’s knowledge; stored as painterPastime. No stat change."
+   }
+  },
+  {
+   "id": "T11",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Play the piano",
+   "context": "Markus chooses a piece; Carl: “Something has changed in the way you play… Sometimes I think you have more humanity than most humans…”",
+   "options": [
+    {
+     "label": "MELANCHOLIC",
+     "effect": "Markus’s theme.",
+     "target": null
+    },
+    {
+     "label": "HOPEFUL",
+     "effect": "The opening theme.",
+     "target": null
+    },
+    {
+     "label": "INTIMATE",
+     "effect": "Kara’s theme.",
+     "target": null
+    },
+    {
+     "label": "ENIGMATIC",
+     "effect": "Another part of Markus’s theme.",
+     "target": null
+    }
+   ],
+   "gate": "After PLAY PIANO.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "T07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg"
+   ],
+   "note": "Chart sub-group and the game’s choice group (CHOICEGROUP01). Tempo controls are gameplay, not a prompt.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01l"
+    ],
+    "status": "implemented",
+    "note": "A decision with the four moods; Carl’s line goes to Markus’s knowledge; stored as painterPastime. No stat change."
+   }
+  },
+  {
+   "id": "T12",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Take Carl to the studio",
+   "context": "Carl: “One day, I won’t be here to take care of you anymore… Decide who you are, and wanna become… This world doesn’t like those who are different, Markus. Don’t let anyone tell you who you should be. Let’s go to the studio.” Markus removes the sheet; Carl finishes his painting.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Main-line node; objective REMOVE SHEET. Cleaning the studio is optional and not on the chart.",
+     "target": "T13"
+    }
+   ],
+   "gate": "Main line, after any pastime.",
+   "kind": "State gate",
+   "dependsOn": [
+    "T07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+   ],
+   "note": "Main-line node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01m"
+    ],
+    "status": "implemented",
+    "note": "A narrated event; Carl’s speech is a fact. No stat change."
+   }
+  },
+  {
+   "id": "T13",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Carl’s verdict",
+   "context": "Carl: “So… What’s your verdict, Markus?” Whatever the answer: “The truth is I have nothing left to say anymore… Let’s see if you have any talent!”",
+   "options": [
+    {
+     "label": "LIKE",
+     "effect": "“Something I can’t… quite define. I guess I like it.”",
+     "target": null
+    },
+    {
+     "label": "DON’T LIKE",
+     "effect": "“I don’t think it’s your best work…”",
+     "target": null
+    },
+    {
+     "label": "NO OPINION",
+     "effect": "“I’m not programmed to criticize art.”",
+     "target": null
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "T12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+   ],
+   "note": "Template prompt, not a chart node; no effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01n"
+    ],
+    "status": "implemented",
+    "note": "A decision with the template’s labels. No stat change."
+   }
+  },
+  {
+   "id": "T14",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Paint Something You See",
+   "context": "Markus paints a copy of what he sees. Carl: “That is a perfect copy, of reality. But painting is not about replicating the world, it’s about interpreting it, improving on it, showing something you see.”",
+   "options": [
+    {
+     "label": "COPY CARL’S PAINTING",
+     "effect": "Same reply.",
+     "target": "M01"
+    },
+    {
+     "label": "COPY DESK",
+     "effect": "Same reply.",
+     "target": "M01"
+    },
+    {
+     "label": "COPY STATUE",
+     "effect": "Same reply.",
+     "target": "M01"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "T13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+   ],
+   "note": "Chart node and choice group; in game the buttons read “Paint Carl’s painting”, “Paint desk”, “Paint statue” (objective FIND A SUBJECT TO PAINT).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01o"
+    ],
+    "status": "implemented",
+    "note": "A decision with the game’s button labels in chart order; stored as painterCopy; Carl’s critique is a fact. No stat change."
+   }
+  },
   {
    "id": "M01",
    "chapter": 5,
    "character": "Markus",
-   "title": "Express an independent vision",
-   "context": "Carl asks Markus to paint something of his own.",
+   "title": "Paint From the Heart",
+   "context": "Carl: “Close your eyes. Trust me. Try to imagine something that doesn’t exist… concentrate… on how it makes you feel… and let your hand drift across the canvas.”",
    "options": [
     {
-     "label": "Androids",
-     "effect": "Express a view of android experience.",
-     "target": null
+     "label": "ANDROIDS",
+     "effect": "Then FATE / HOPE / PAIN / SADNESS.",
+     "target": "T16"
     },
     {
-     "label": "Humanity",
-     "effect": "Express a view of human experience.",
-     "target": null
+     "label": "HUMANITY",
+     "effect": "Then ANGER / COMFORT / EMPATHY / HOPE.",
+     "target": "T17"
     },
     {
-     "label": "Identity",
-     "effect": "Express a view of the self.",
+     "label": "IDENTITY",
+     "effect": "Then ANDROIDS / DESPAIR / DOUBTS / PRISONER.",
+     "target": "T18"
+    }
+   ],
+   "gate": "Main line.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "T14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+   ],
+   "note": "Chart node, printed “PAINT FROM THE THE HEART” (a wrapped line; the string table has PAINT FROM THE HEART).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01p"
+    ],
+    "status": "implemented",
+    "note": "A decision; stored as painterTheme. No stat change."
+   }
+  },
+  {
+   "id": "T16",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Androids",
+   "context": "The painting Markus makes with his eyes closed, thinking of androids.",
+   "options": [
+    {
+     "label": "FATE",
+     "effect": "Himself on his knees.",
+     "target": "T19"
+    },
+    {
+     "label": "HOPE",
+     "effect": "His hand covered in what looks like oil.",
+     "target": "T19"
+    },
+    {
+     "label": "PAIN",
+     "effect": "Himself decaying and in agony.",
+     "target": "T19"
+    },
+    {
+     "label": "SADNESS",
+     "effect": "Hands covered in blue blood.",
+     "target": "T19"
+    }
+   ],
+   "gate": "After ANDROIDS.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "M01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+   ],
+   "note": "Chart sub-group; all four complete together (PowerPyx). The painting appears in Night of the Soul if Carl is alive.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01q"
+    ],
+    "status": "implemented",
+    "note": "A decision; the painting is a fact; stored as painterFeeling. No stat change."
+   }
+  },
+  {
+   "id": "T17",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Humanity",
+   "context": "The painting Markus makes with his eyes closed, thinking of humanity.",
+   "options": [
+    {
+     "label": "ANGER",
+     "effect": "Himself enraged and screaming.",
+     "target": "T19"
+    },
+    {
+     "label": "COMFORT",
+     "effect": "Carl with a brave and stoic expression.",
+     "target": "T19"
+    },
+    {
+     "label": "EMPATHY",
+     "effect": "Two hands in blue blood and two in red blood.",
+     "target": "T19"
+    },
+    {
+     "label": "HOPE",
+     "effect": "Two hands grasping each other.",
+     "target": "T19"
+    }
+   ],
+   "gate": "After HUMANITY.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "M01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+   ],
+   "note": "Chart sub-group; all four complete together (PowerPyx).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01r"
+    ],
+    "status": "implemented",
+    "note": "A decision; the painting is a fact; stored as painterFeeling. No stat change."
+   }
+  },
+  {
+   "id": "T18",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Identity",
+   "context": "The painting Markus makes with his eyes closed, thinking of who he is.",
+   "options": [
+    {
+     "label": "ANDROIDS",
+     "effect": "Himself covered in blue blood.",
+     "target": "T19"
+    },
+    {
+     "label": "DESPAIR",
+     "effect": "Himself with his hand on his face.",
+     "target": "T19"
+    },
+    {
+     "label": "DOUBTS",
+     "effect": "Himself in ordinary clothes before a red wall.",
+     "target": "T19"
+    },
+    {
+     "label": "PRISONER",
+     "effect": "Himself with Carl behind him.",
+     "target": "T19"
+    }
+   ],
+   "gate": "After IDENTITY.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "M01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg"
+   ],
+   "note": "Chart sub-group; all four complete together (PowerPyx).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01s"
+    ],
+    "status": "implemented",
+    "note": "A decision; the painting is a fact; stored as painterFeeling. No stat change."
+   }
+  },
+  {
+   "id": "T19",
+   "chapter": 5,
+   "character": "Markus",
+   "title": "Leo intruded to ask for money (ending)",
+   "context": "Carl, at Markus’s painting: “Oh my God…” Leo walks in and asks for cash; Carl refuses (“you’re on it again, aren’t you?”). Leo: “You’d rather take care of your plastic toy here than your own son… This thing is not your son. IT’S A FUCKING MACHINE!” He shoves Markus; Carl: “ENOUGH!” Leo: “You never loved me.” He storms out.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The only ending; leads to Broken.",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Ethical",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/"
+   "gate": "Every path.",
+   "kind": "State gate",
+   "dependsOn": [
+    "T16",
+    "T17",
+    "T18"
    ],
-   "note": "Copying a visible object happens first; the original painting is a later prompt. Expressive, not a survival branch.",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Painter",
+    "https://detroit-become-human.fandom.com/wiki/The_Painter_(Transcript)",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/5-painter-chapter-content/painter-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-painter-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-painter-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+   ],
+   "note": "The chapter’s only ending, no icon (“This chapter has only one outcome”).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M01t"
+    ],
+    "status": "implemented",
+    "note": "A narrated event quoting the template; recorded as painterOutcome. Two facts; no stat change."
+   }
   }
  ]
 }

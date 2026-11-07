@@ -323,7 +323,7 @@ const ALL_UP={K01a:['1','2','3','7','0','8'],K01y1:'0',K01y2:'1',K01d:['0','5','
 const NONE={K01a:['0','8'],K01d:['0','5','10'],K01e:'0',K01f:'2',K01g:'4'};
 test('A New Home: the game’s chart as fourteen Kara scenes between Shades of Color and The Painter, with no risk anywhere',()=>{
  const ch4=story.nodes.filter(n=>n.chapter===4),ids=story.nodes.map(n=>n.id);assert.deepEqual(ch4.map(n=>n.id),CH4);
- assert.deepEqual(ids.slice(ids.indexOf('M00h'),ids.indexOf('M00h')+16),['M00h',...CH4,'R05']);
+ assert.deepEqual(ids.slice(ids.indexOf('M00h'),ids.indexOf('M00h')+16),['M00h',...CH4,'M01a']);
  assert.deepEqual(ch4.map(n=>n.type),['event','media','decision','decision','decision','event','decision','decision','decision','decision','event','decision','media','event']);
  assert.deepEqual(ch4.map(n=>n.phase??null),[null,'Clean first floor','Clean first floor','Clean first floor','Clean first floor',null,'Clean second floor',null,null,null,null,null,null,null]);
  for(const n of ch4){assert.equal(n.character,'Kara');assert.equal(n.chapterTitle,'A New Home');assert.ok(n.adaptationNote,n.id);for(const u of [ANH,ANH_T,ANH_PP,ANH_IMG])assert.ok(n.sources.includes(u),n.id+' cites '+u);
