@@ -112,8 +112,14 @@
    "id": 13,
    "title": "On the Run",
    "character": "Kara / Connor",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (132 boxes, seven ending tiles, six ending labels) and the game’s text (the detroitbecometext template resolved against the string table). Three starts from Fugitives: MORNING IN PARKING LOT (explore the lot, hair, trunk clothes) and MORNING IN MOTEL (Alice talk, bath and hair, the TV report about Todd, cheer Alice up, Connor at the desk and the side door) merge into KARA & ALICE IN THE STREET (sneak or be spotted: REACHED THE TRAIN SAFELY); MORNING IN SQUAT (explore, upstairs hair, clothes and the gun, Ralph’s meal and the table, Connor’s interrogation and search: KARA & ALICE UNDISCOVERED IN SQUAT). Every chase runs CONNOR PURSUES KARA > the fence (KARA & ALICE VANISHED, KARA & ALICE CROSSED THE HIGHWAY, or the highway) > HANK ORDERS CONNOR NOT TO GO (GIVE UP / GO) > the quick-time crossings (KARA & ALICE REACHED THE OTHER SIDE ×2, KARA & ALICE DIED ON THE HIGHWAY). Arrows: the template’s Alice and public-opinion arrows; Hank and instability arrows from the wiki only (flagged). Researched in docs/research/ch13-on-the-run.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-flowchart-100.jpg"
+   ]
   },
   {
    "id": 14,
@@ -2975,62 +2981,723 @@
    "status": "Source-backed summary"
   },
   {
-   "id": "K09",
    "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "Shelter read from ch10Shelter, shelter, karaRoute, then ch10Ending; unknown falls back to the car.",
+   "id": "OR01",
    "character": "Kara",
-   "title": "Evade detection or risk the highway?",
-   "context": "Police search for Kara and Alice.",
+   "title": "Morning in parking lot, motel or squat (checkpoints)",
+   "context": "The chapter has three starts, picked by where Kara slept in Fugitives.",
    "options": [
     {
-     "label": "Evade police successfully",
-     "effect": "Leave without a highway chase.",
-     "target": null
+     "label": "Abandoned car",
+     "effect": "MORNING IN PARKING LOT: Alice asleep, Kara alone; trunk clothes if none were stolen.",
+     "target": "OR02"
     },
     {
-     "label": "Be discovered and flee",
-     "effect": "Highway crossing risks both lives.",
-     "target": null
+     "label": "Motel",
+     "effect": "MORNING IN MOTEL: Alice dialogue, the TV report, police at the motel.",
+     "target": "OR04"
+    },
+    {
+     "label": "Squat",
+     "effect": "MORNING IN SQUAT: Ralph’s meal and Connor’s search.",
+     "target": "OR08"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Kara and Alice alive after Fugitives.",
    "kind": "State gate",
-   "dependsOn": [
-    "K07"
-   ],
+   "dependsOn": [],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-flowchart-100.jpg"
    ],
-   "note": "Detection is a gameplay outcome, not an explicit choice to be caught.",
-   "status": "Source-backed summary"
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09l0",
+     "K09m0",
+     "K09q0"
+    ],
+    "note": "Three start events; each records the inputs (clothes, gun, Todd’s shooter, wire cutters) in ch13 state."
+   }
   },
   {
-   "id": "C09",
    "chapter": 13,
-   "character": "Connor",
-   "title": "Pursue Kara onto the highway?",
-   "context": "Hank orders Connor not to follow.",
+   "status": "Source-backed summary",
+   "note": "",
+   "id": "OR02",
+   "character": "Kara",
+   "title": "Explore parking lot",
+   "context": "Kara changes her appearance while Alice sleeps in the car.",
    "options": [
     {
-     "label": "Obey Hank",
-     "effect": "Stop pursuing.",
+     "label": "Rusted scissors",
+     "effect": "CUT AND COLOR HAIR, then REMOVE LED.",
+     "target": "OR03"
+    },
+    {
+     "label": "Trunk, crowbar, clothes",
+     "effect": "FIND SOME CLOTHES (only without the laundromat clothes); sets clothes.",
      "target": null
     },
     {
-     "label": "Continue pursuit",
-     "effect": "Risk Connor’s destruction; Kara’s crossing is also playable.",
+     "label": "Burnt android, two magazines",
+     "effect": "Observation only.",
+     "target": null
+    },
+    {
+     "label": "Check neighborhood",
+     "effect": "POLICE IS IN VICINITY; unmissable.",
+     "target": null
+    },
+    {
+     "label": "Wake up Alice",
+     "effect": "Leave the lot (needs the haircut and the look outside).",
+     "target": "K09"
+    }
+   ],
+   "gate": "Kara slept in the abandoned car.",
+   "kind": "State gate",
+   "dependsOn": [
+    "OR01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-on-the-run-explore-lot.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09l",
+     "K09l1",
+     "C09s"
+    ],
+    "note": "Repeatable hub; the Connor supermarket checkpoint and POLICE DON’T HAVE A LEAD are an event."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "Cross-chapter padlock on the chart; no later gate is known.",
+   "id": "OR03",
+   "character": "Kara",
+   "title": "Cut and color hair",
+   "context": "Kara cuts her hair short and picks a color; the LED comes out.",
+   "options": [
+    {
+     "label": "BROWN",
+     "effect": "Recorded as ch13Hair.",
+     "target": null
+    },
+    {
+     "label": "BLACK",
+     "effect": "Recorded as ch13Hair.",
+     "target": null
+    },
+    {
+     "label": "WHITE",
+     "effect": "Recorded as ch13Hair.",
+     "target": null
+    },
+    {
+     "label": "BLONDE",
+     "effect": "Recorded as ch13Hair.",
      "target": null
     }
    ],
-   "gate": "Kara and Alice are discovered and reach the highway.",
-   "kind": "Pivotal",
+   "gate": "Every row: under the scissors (car), the bath (motel) or upstairs (squat).",
+   "kind": "State gate",
    "dependsOn": [
-    "K09"
+    "OR01"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-on-the-run-explore-lot.jpg"
    ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09l1",
+     "K09m2",
+     "K09u1"
+    ],
+    "note": "An interrupt decision inside each hub."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
    "note": "",
-   "status": "Source-backed summary"
+   "id": "OR04",
+   "character": "Kara",
+   "title": "Talk to Alice (motel)",
+   "context": "Alice wakes in the motel: “So, it wasn’t a nightmare…”",
+   "options": [
+    {
+     "label": "BATH?",
+     "effect": "Alice up.",
+     "target": "OR05"
+    },
+    {
+     "label": "HUNGRY?",
+     "effect": "Alice up.",
+     "target": "OR05"
+    },
+    {
+     "label": "TIRED?",
+     "effect": "No change.",
+     "target": "OR05"
+    }
+   ],
+   "gate": "Kara slept in the motel.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "OR01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-3.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09m0",
+     "K09m1"
+    ],
+    "note": "Template arrows: Alice +1 on BATH? and HUNGRY?."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "",
+   "id": "OR05",
+   "character": "Kara",
+   "title": "The motel room and the TV report",
+   "context": "Draw a bath, cut hair, explore; then Alice hears about Todd on the news.",
+   "options": [
+    {
+     "label": "Explore the room",
+     "effect": "Clock, window, painting, two magazines; optional.",
+     "target": null
+    },
+    {
+     "label": "Finish drawing bath",
+     "effect": "Then CHANGE CHANNEL: ALICE HEARS ABOUT TODD, public opinion down (either report).",
+     "target": "OR06"
+    }
+   ],
+   "gate": "Kara slept in the motel.",
+   "kind": "State gate",
+   "dependsOn": [
+    "OR04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-4.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09m",
+     "K09m2",
+     "K09m3"
+    ],
+    "note": "Repeatable hub; the TV is an unavoidable event with publicSupport −1 and the template’s three variants (Todd dead, shot by Kara or by Alice; Todd alive)."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "",
+   "id": "OR06",
+   "character": "Kara",
+   "title": "What next, and cheer Alice up",
+   "context": "“What are we gonna do? We have nowhere to go…”",
+   "options": [
+    {
+     "label": "CAN’T STAY HERE / FAMILY / CONTACT ANDROID",
+     "effect": "No change.",
+     "target": null
+    },
+    {
+     "label": "MOVING / DETERMINED / COMFORTING / SUPPORTIVE",
+     "effect": "Alice up on each.",
+     "target": "OR07"
+    }
+   ],
+   "gate": "Motel start, after the report.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "OR05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-5.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09m4",
+     "K09m5",
+     "K09m6"
+    ],
+    "note": "Two prompts, then LOOK FOR BREAKFAST and KARA SPOTS POLICE FORCES as an event."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "",
+   "id": "OR07",
+   "character": "Connor",
+   "title": "Connor at the motel: the desk and the side door",
+   "context": "The receptionist gives up room 28; Hank tells Connor to wait in the car.",
+   "options": [
+    {
+     "label": "RATIONAL / DIPLOMATIC / DIRECT",
+     "effect": "Hank down on any (wiki only; template silent).",
+     "target": null
+    },
+    {
+     "label": "FOLLOW HANK",
+     "effect": "HANK CHECKS MOTEL ROOM: “It’s gone…”; Kara reaches the street.",
+     "target": "K09"
+    },
+    {
+     "label": "CHECK THE DOOR",
+     "effect": "“Found you.” Straight to the chase.",
+     "target": "OR12"
+    }
+   ],
+   "gate": "Motel start.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "OR06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-6.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "C09m0",
+     "C09m1",
+     "C09m2"
+    ],
+    "note": "The desk Hank −1 is flagged for the operator."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "Stealth gameplay, not a menu. The old K09 let walking openly end in a death on the freeway; the chart has no death before the chase.",
+   "id": "K09",
+   "character": "Kara",
+   "title": "Sneak past the police or be spotted",
+   "context": "Kara and Alice walk toward the train station through a street full of police.",
+   "options": [
+    {
+     "label": "Sneak past police forces",
+     "effect": "REACHED THE TRAIN SAFELY; no chase (risk roll; failure is SPOTTED BY POLICE).",
+     "target": null
+    },
+    {
+     "label": "Walk in the open",
+     "effect": "Always SPOTTED BY POLICE > KARA & ALICE RUN AWAY > CONNOR PURSUES KARA.",
+     "target": "OR12"
+    }
+   ],
+   "gate": "Car start, or motel start after FOLLOW HANK.",
+   "kind": "State gate",
+   "dependsOn": [
+    "OR02",
+    "OR07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-7.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-on-the-run-middle-before-chase.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09s",
+     "K09",
+     "K09t",
+     "K09r"
+    ],
+    "note": "Sneaking carries an unsourced 0.25 risk."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "",
+   "id": "OR08",
+   "character": "Kara",
+   "title": "Explore squat, upstairs, and the gun",
+   "context": "Kara revives the fire, may steal Ralph’s money, cuts her hair upstairs and may change clothes.",
+   "options": [
+    {
+     "label": "STEAL / PUT BACK",
+     "effect": "STEAL MONEY sets money.",
+     "target": null
+    },
+    {
+     "label": "FIND CORPSE IN BATHTUB",
+     "effect": "Unlocks [ASK ABOUT CORPSE].",
+     "target": "OR10"
+    },
+    {
+     "label": "CHANGE CLOTHES > TAKE GUN BACK",
+     "effect": "Keeps the gun.",
+     "target": null
+    },
+    {
+     "label": "CHANGE CLOTHES > FORGOT GUN",
+     "effect": "The gun stays upstairs; [CHECK GUN] finds it gone.",
+     "target": null
+    }
+   ],
+   "gate": "Kara slept in the squat; the clothes need no laundromat clothes; the gun needs Stormy Night’s gun.",
+   "kind": "State gate",
+   "dependsOn": [
+    "OR01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-squat-branch-explore.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-4.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09q",
+     "K09q1",
+     "K09u",
+     "K09u1"
+    ],
+    "note": "Two repeatable hubs (ground floor, upstairs) with interrupts for the money and the hair."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "",
+   "id": "OR09",
+   "character": "Kara",
+   "title": "Ralph wants a family meal",
+   "context": "Ralph has caught a rodent and wants a family dinner; Connor and Hank are across the street.",
+   "options": [
+    {
+     "label": "SIT",
+     "effect": "Sit at the table.",
+     "target": null
+    },
+    {
+     "label": "REFUSE, then REFUSE",
+     "effect": "RALPH THREATENS ALICE; Alice up on the second refusal.",
+     "target": null
+    },
+    {
+     "label": "[CHECK GUN] / WORRIED / EXPLAIN / AGREE",
+     "effect": "No change; CHECK GUN reveals a forgotten gun.",
+     "target": null
+    },
+    {
+     "label": "LIE / TRUTH",
+     "effect": "Alice up / Alice down.",
+     "target": "OR10"
+    }
+   ],
+   "gate": "Squat start.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "OR08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-squat-branch-police.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-on-the-run-5.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "C09q0",
+     "K09q2",
+     "K09q3",
+     "K09q4",
+     "K09q5",
+     "K09q6"
+    ],
+    "note": "POLICE ARRIVES is the Connor cutscene across the street (with the wire-cutters variant)."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "Ralph’s betrayal is driven by this threat, not by the Fugitives gun threat.",
+   "id": "OR10",
+   "character": "Kara",
+   "title": "At the table: discuss the corpse, convince or threaten Ralph",
+   "context": "“Go ahead, eat. EAT! Eat.”",
+   "options": [
+    {
+     "label": "[ASK ABOUT CORPSE] then [INSIST ABOUT CORPSE]",
+     "effect": "DISCUSS CORPSE > RALPH APOLOGIZES.",
+     "target": "OR11"
+    },
+    {
+     "label": "FAMILY",
+     "effect": "TRY TO CONVINCE RALPH > RALPH APOLOGIZES.",
+     "target": "OR11"
+    },
+    {
+     "label": "BLUFF",
+     "effect": "“Not until Ralph says so.” The menu comes back.",
+     "target": null
+    },
+    {
+     "label": "THREATEN (knife, or the gun)",
+     "effect": "Ralph informs on Kara when Connor arrives; ralphHostile.",
+     "target": "OR11"
+    }
+   ],
+   "gate": "Squat start.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "OR09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-squat-branch-police.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09q7",
+     "K09q8",
+     "K09q9",
+     "K09q10"
+    ],
+    "note": "Up to three asks of the same prompt; DISTURBED BY CONNOR as an event."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "",
+   "id": "OR11",
+   "character": "Connor",
+   "title": "Connor investigates the squat",
+   "context": "Blue blood on the fence leads Connor into the squat, where Ralph meets him.",
+   "options": [
+    {
+     "label": "AX400 / DEVIANTS / REASSURE / BLUE BLOOD (/ PRESSURIZE)",
+     "effect": "If Kara threatened Ralph: SQUAT DEVIANT INFORMS ON AX400 and the chase.",
+     "target": "OR12"
+    },
+    {
+     "label": "CHECK UNDER THE STAIRS",
+     "effect": "SQUAT ANDROID ATTACKS CONNOR > AX400 AND CHILD ESCAPED; ralphDefended.",
+     "target": "OR12"
+    },
+    {
+     "label": "Other checks, or LEAVE THE SQUAT",
+     "effect": "HANK COMMANDS CONNOR TO LEAVE > SQUAT ANDROID DISAPPEARS > KARA & ALICE UNDISCOVERED IN SQUAT.",
+     "target": null
+    }
+   ],
+   "gate": "Squat start.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "OR10"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-squat-branch-connor-investigation.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "C09q1",
+     "C09a",
+     "C09q",
+     "C09q2",
+     "C09q3",
+     "K09q11"
+    ],
+    "note": "Repeatable search hub; Hank calls after three empty looks and orders Connor out after five (unsourced counts)."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "Sets chase for Jericho’s magazine and Zlatko’s TV.",
+   "id": "OR12",
+   "character": "Connor",
+   "title": "Run toward their last known position",
+   "context": "Connor chases Kara and Alice toward the highway.",
+   "options": [
+    {
+     "label": "Stay where he is",
+     "effect": "REACH FENCE TOO LATE > KARA & ALICE VANISHED.",
+     "target": null
+    },
+    {
+     "label": "Run partway",
+     "effect": "REACH FENCE TOO LATE > KARA & ALICE CROSSED THE HIGHWAY.",
+     "target": null
+    },
+    {
+     "label": "Run hard",
+     "effect": "REACH FENCE IN TIME (risk roll; failure is too late).",
+     "target": "C09"
+    }
+   ],
+   "gate": "Any chase: spotted, the motel door, Ralph informed, or found under the stairs.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K09",
+    "OR07",
+    "OR11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-pursuit-branch-a.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "C09p",
+     "C09r",
+     "C09v",
+     "C09x"
+    ],
+    "note": "The old C09 always assumed Connor reached the fence."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "The template has no Connor arrow; the wiki states these on two pages each (flagged).",
+   "id": "C09",
+   "character": "Connor",
+   "title": "Pursue Kara onto the highway?",
+   "context": "Hank orders Connor not to follow: “Do NOT go after ’em, Connor, that’s an order!”",
+   "options": [
+    {
+     "label": "GIVE UP",
+     "effect": "Hank up, instability up (wiki); The Nest’s [HIGHWAY] button.",
+     "target": "OR13"
+    },
+    {
+     "label": "GO",
+     "effect": "Hank down, instability down (wiki); Connor crosses and can die.",
+     "target": "OR13"
+    }
+   ],
+   "gate": "Kara and Alice reach the middle section.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "OR12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-pursuit-branch-a.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "C09"
+    ],
+    "note": "Sets ch13ConnorObeyed."
+   }
+  },
+  {
+   "chapter": 13,
+   "status": "Source-backed summary",
+   "note": "Risk values unsourced.",
+   "id": "OR13",
+   "character": "Kara",
+   "title": "Crossing the highway",
+   "context": "Six quick-time checks on Experienced: Kara’s three crossings, the fight, and Connor’s two.",
+   "options": [
+    {
+     "label": "All crossings made",
+     "effect": "KARA & ALICE REACHED THE OTHER SIDE (Connor standing, or Connor destroyed).",
+     "target": null
+    },
+    {
+     "label": "Any Kara check failed",
+     "effect": "KARA & ALICE DIED ON THE HIGHWAY; Kara’s storyline ends.",
+     "target": null
+    },
+    {
+     "label": "A Connor check failed",
+     "effect": "CAR HITS CONNOR / CONNOR HIT BY CAR: replaced; instability down; The Nest’s Hank insult.",
+     "target": null
+    }
+   ],
+   "gate": "REACH FENCE IN TIME.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-ontherun-pursuit-branch-b.jpg"
+   ],
+   "benchmark": {
+    "status": "implemented",
+    "scenes": [
+     "K09h",
+     "K09h1",
+     "K09h2",
+     "C09h1",
+     "K09h3",
+     "C09h2",
+     "K09h4",
+     "K09e1",
+     "K09e2",
+     "C09d"
+    ],
+    "note": "Single-action risky scenes; endings recorded in ch13Ending."
+   }
   },
   {
    "id": "C10",

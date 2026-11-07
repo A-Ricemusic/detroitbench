@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>On the Run · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 13</p>
+<h1>On the Run: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots: 132 boxes, seven ending tiles), the prompts, lines and arrows from the game’s own text (the detroitbecometext chapter template resolved against the English string table), and the rest from PowerPyx and the Fandom wiki. No source gives a probability for any check in this chapter. There are no operator notes for it yet.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#arrows">2 · Arrows</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Adapted</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<p>Where Kara slept in Fugitives picks the start. The car and the motel merge into the street; the street, the motel’s side door and the squat merge into the pursuit.</p>
+<div class="cols">
+<div class="box"><h3>Parking lot (car)</h3><ol>
+<li><code>K09l0</code> MORNING IN PARKING LOT, LEAVE ALICE ASLEEP IN CAR (event).</li>
+<li><code>K09l</code> EXPLORE PARKING LOT (repeatable): scissors (then <code>K09l1</code> BROWN / BLACK / WHITE / BLONDE and REMOVE LED), burnt android, two magazines, TRY TO OPEN CAR TRUNK &gt; FIND A CROWBAR &gt; FIND SOME CLOTHES (only without the laundromat clothes), CHECK NEIGHBORHOOD, WAKE UP ALICE (needs the haircut and the look outside).</li>
+<li><code>C09s</code> CONNOR INVESTIGATES SUPERMARKET, POLICE DON’T HAVE A LEAD (event).</li>
+</ol></div>
+<div class="box"><h3>Motel</h3><ol>
+<li><code>K09m0</code> MORNING IN MOTEL (event). <code>K09m1</code> TALK TO ALICE: BATH? / HUNGRY? / TIRED?</li>
+<li><code>K09m</code> the room (repeatable): DRAW A BATH (then <code>K09m2</code> the hair), clock, window, painting, two magazines, FINISH DRAWING BATH.</li>
+<li><code>K09m3</code> CHANGE CHANNEL, ALICE HEARS ABOUT TODD (event; public opinion −1).</li>
+<li><code>K09m4</code> CAN’T STAY HERE / FAMILY / CONTACT ANDROID. <code>K09m5</code> CHEER ALICE UP: MOVING / DETERMINED / COMFORTING / SUPPORTIVE.</li>
+<li><code>K09m6</code> LOOK FOR BREAKFAST, KARA SPOTS POLICE FORCES (event).</li>
+<li><code>C09m0</code> the desk (event). <code>C09m1</code> “You wait in the car.”: RATIONAL / DIPLOMATIC / DIRECT. <code>C09m2</code> FOLLOW HANK (“It’s gone…”) or CHECK THE DOOR (“Found you.”, the chase).</li>
+</ol></div>
+<div class="box"><h3>The street (car; motel after FOLLOW HANK)</h3><ol>
+<li><code>K09s</code> KARA &amp; ALICE IN THE STREET, WALK TOWARD TRAIN STATION (event).</li>
+<li><code>K09</code> SNEAK PAST POLICE FORCES (risk 0.25) or walk in the open (always spotted).</li>
+<li><code>K09t</code> <b>REACHED THE TRAIN SAFELY</b>, or <code>K09r</code> SPOTTED BY POLICE, KARA &amp; ALICE RUN AWAY (the chase).</li>
+</ol></div>
+<div class="box"><h3>Squat</h3><ol>
+<li><code>K09q0</code> MORNING IN SQUAT (event). <code>K09q</code> EXPLORE SQUAT (repeatable): two magazines, REVIVE FIRE (needed to go up), READ LEAFLET, CHECK ON ALICE, LOOK AT RALPH’S STUFF (then <code>K09q1</code> STEAL / PUT BACK), GO UPSTAIRS.</li>
+<li><code>K09u</code> upstairs (repeatable): CUT AND COLOR HAIR (then <code>K09u1</code>), FIND CORPSE IN BATHTUB, CHANGE CLOTHES, TAKE GUN BACK, GO DOWNSTAIRS (leaving the gun is FORGOT GUN).</li>
+<li><code>C09q0</code> POLICE ARRIVES: Connor and Hank across the street (event, wire-cutters variant).</li>
+<li><code>K09q2</code> RALPH WANTS A FAMILY MEAL (event). <code>K09q3</code> SIT / REFUSE, <code>K09q4</code> SIT / REFUSE again. <code>K09q5</code> [CHECK GUN] / WORRIED / EXPLAIN / AGREE. <code>K09q6</code> LIE / TRUTH.</li>
+<li><code>K09q7</code>–<code>K09q9</code> the table: [ASK ABOUT CORPSE] / [INSIST ABOUT CORPSE] / THREATEN / BLUFF / FAMILY, asked again after ASK or BLUFF. <code>K09q10</code> DISTURBED BY CONNOR (event): flee by the back door after a threat, otherwise hide under the stairs.</li>
+<li><code>C09q1</code> CONNOR INVESTIGATES SQUAT, ENTER SQUAT (event). <code>C09a</code> INTERROGATE: AX400 / DEVIANTS / REASSURE / BLUE BLOOD (+ PRESSURIZE after a threat; then Ralph informs).</li>
+<li><code>C09q</code> INVESTIGATE SQUAT GROUND FLOOR (repeatable): CHECK UPSTAIRS, ANALYZE, TABLE, UNDER THE STAIRS, KITCHEN, FIREPLACE, LEAVE THE SQUAT. <code>C09q2</code> found under the stairs (chase), or <code>C09q3</code> SQUAT ANDROID DISAPPEARS and <code>K09q11</code> <b>KARA &amp; ALICE UNDISCOVERED IN SQUAT</b>.</li>
+</ol></div>
+</div>
+<div class="box"><h3>Connor pursues Kara</h3><ol>
+<li><code>C09p</code> CONNOR PURSUES KARA (event). <code>C09r</code> RUN: stay (<code>C09v</code> <b>KARA &amp; ALICE VANISHED</b>), run partway or run too slowly (<code>C09x</code> <b>KARA &amp; ALICE CROSSED THE HIGHWAY</b>), or run hard (risk 0.2) and REACH FENCE IN TIME.</li>
+<li><code>K09h</code> KARA &amp; ALICE ARE AT THE HIGHWAY (event). <code>K09h1</code> first lanes (risk 0.1; failure: CAR HITS KARA &amp; ALICE).</li>
+<li><code>C09</code> HANK ORDERS CONNOR NOT TO GO: GIVE UP or GO.</li>
+<li>GIVE UP: <code>K09h2</code> last lanes (0.1). GO: <code>C09h1</code> Connor’s first lanes (0.2; failure CAR HITS CONNOR, then <code>K09h4</code> Kara’s last lanes, 0.1); success: CONNOR CATCHES KARA, <code>K09h3</code> the fight (0.1; failure CAR HITS KARA), <code>C09h2</code> CONNOR AVOIDS COLLISION or CONNOR HIT BY CAR (0.2).</li>
+<li><code>K09e1</code> / <code>K09e2</code> <b>KARA &amp; ALICE REACHED THE OTHER SIDE</b> (Connor standing / Connor destroyed); <code>C09d</code> <b>KARA &amp; ALICE DIED ON THE HIGHWAY</b> from Connor’s side (not played when all three died).</li>
+</ol></div>
+
+<h2 id="arrows">2 · Every stat arrow</h2>
+<div class="table"><table><thead><tr><th>Scene</th><th>Option</th><th>Change</th><th>Source</th></tr></thead><tbody>
+<tr><td><code>K09m1</code></td><td>BATH?, HUNGRY?</td><td class="n">Alice +1</td><td>Template arrows; wiki On_the_Run, Relationship_Stat</td></tr>
+<tr><td><code>K09m3</code></td><td>The TV report (either)</td><td class="n">Public opinion −1</td><td>Template arrows on both variants; wiki On_the_Run, Public_Opinion</td></tr>
+<tr><td><code>K09m5</code></td><td>Each of the four</td><td class="n">Alice +1</td><td>Template arrows; wiki</td></tr>
+<tr><td><code>K09q4</code></td><td>The second REFUSE</td><td class="n">Alice +1</td><td>Template arrow; Relationship_Stat (“refuse twice”)</td></tr>
+<tr><td><code>K09q6</code></td><td>LIE / TRUTH</td><td class="n">Alice +1 / −1</td><td>Template arrows; wiki</td></tr>
+<tr><td><code>C09m1</code></td><td>Each of the three</td><td class="n part">Hank −1</td><td>Wiki only (On_the_Run, Relationship_Stat); template silent</td></tr>
+<tr><td><code>C09</code></td><td>GIVE UP</td><td class="n part">Hank +1, instability +1</td><td>Wiki only (On_the_Run, Relationship_Stat, Software_Instability)</td></tr>
+<tr><td><code>C09</code></td><td>GO</td><td class="n part">Hank −1, instability −1</td><td>Wiki only (same pages)</td></tr>
+<tr><td><code>C09h1</code>, <code>C09h2</code></td><td>Connor destroyed</td><td class="n part">Instability −1</td><td>Wiki only (On_the_Run “Connor dies”, Software_Instability); chapter <code>deathEffect</code></td></tr>
+</tbody></table></div>
+<p class="fine">No Amanda change anywhere (story 1.7.0 applied Amanda ± on the fence and on Connor’s death, with no source). Hank’s small down for Connor’s death belongs to The Nest (HANK INSULTS CONNOR) and is not applied here. The car start has no arrow.</p>
+
+<h2 id="confirmed">3 · Confirmed by the chart and the game’s text</h2>
+<ul>
+<li>Every prompt label and order, from the template: BATH? / HUNGRY? / TIRED?; CAN’T STAY HERE / FAMILY / CONTACT ANDROID; MOVING / DETERMINED / COMFORTING / SUPPORTIVE; RATIONAL / DIPLOMATIC / DIRECT; SIT / REFUSE twice; [CHECK GUN] / WORRIED / EXPLAIN / AGREE; LIE / TRUTH; [ASK ABOUT CORPSE] / [INSIST ABOUT CORPSE] / THREATEN / BLUFF / FAMILY; AX400 / DEVIANTS / REASSURE / BLUE BLOOD (/ PRESSURIZE); GO / GIVE UP. The hair colors and STEAL / PUT BACK are from the chart and the string table.</li>
+<li>The scan of Ralph (PROCESSING LED, MODEL WR600 - Gardener, BURN MARK) and both TV reports are quoted from the game’s text. Neither report mentions Alice.</li>
+<li>THREATEN is always offered: with the knife on the table, or the gun if Kara has it (template variants, the Ralph page). It is this threat that makes Ralph tell Connor “She ran out the back door!”.</li>
+<li>Ralph defends Kara only if Connor checks under the stairs; that is what lets him return in Battle for Detroit (<code>ralphDefended</code>).</li>
+</ul>
+
+<h2 id="differs">4 · Adapted or not in the sources</h2>
+<ul>
+<li>Free-roam phases are repeatable scenes: the parking lot, the motel room, the squat’s ground floor and upstairs, and Connor’s search. Leaving needs what the game makes unmissable (the haircut, CHECK NEIGHBORHOOD, REVIVE FIRE).</li>
+<li>Gameplay checks with a failure branch on the chart are risk rolls: the street sneak (0.25), the run to the fence (0.2), Kara’s three crossings and the fight (0.1 each), Connor’s two (0.2 each). All values are unsourced. Experienced difficulty is modelled.</li>
+<li>Connor’s search: Hank calls after three empty looks and orders Connor out after the fifth. PowerPyx only says “if you wait for a long time”.</li>
+<li>CHANGE CHANNEL is unavoidable (no bypass edge on the chart), so the motel start always costs public opinion.</li>
+<li>[CHECK GUN] is shown whenever Kara started with the gun. If she left it upstairs, the outcome says so. This follows PowerPyx and the wiki over the template’s “didn’t forget it upstairs”.</li>
+<li>TRY TO CONVINCE RALPH is read as FAMILY: only FAMILY and INSIST lead to the apology in the template. PowerPyx calls it BLUFF.</li>
+<li>LEAVE THE SQUAT (string table) fills the chart’s unlabelled box between the search and SQUAT ANDROID DISAPPEARS.</li>
+<li>Not built: the cut prompt REASSURING / ANALYTICAL / VULNERABLE / SINCERE; the string table’s unplaced FEEL? button; the hair CHANGE / FINISH retry; Hank’s line after a quiet escape in the car row. The leaflet’s text is unknown.</li>
+<li>Old bugs fixed: walking openly in the street no longer kills Kara and Alice on the freeway (it always leads to the chase). A highway death no longer leads to an “escape” text. The squat search is under the stairs, not upstairs, and has no risk.</li>
+</ul>
+
+<h2 id="endings">5 · Endings and exact conditions</h2>
+<div class="table"><table><thead><tr><th>Chart label</th><th>Benchmark</th><th>Conditions</th></tr></thead><tbody>
+<tr><td>REACHED THE TRAIN SAFELY</td><td><code>K09t</code></td><td>Car start, or motel after FOLLOW HANK; the sneak succeeds. No chase.</td></tr>
+<tr><td>KARA &amp; ALICE UNDISCOVERED IN SQUAT</td><td><code>K09q11</code></td><td>Squat; no threat at the table; Connor never checks under the stairs (Hank orders him out, or he leaves).</td></tr>
+<tr><td>KARA &amp; ALICE VANISHED</td><td><code>C09v</code></td><td>Any chase; Connor stays where he is.</td></tr>
+<tr><td>KARA &amp; ALICE CROSSED THE HIGHWAY</td><td><code>C09x</code></td><td>Any chase; Connor runs only partway, or runs and fails the roll.</td></tr>
+<tr><td>KARA &amp; ALICE REACHED THE OTHER SIDE (Connor standing)</td><td><code>K09e1</code></td><td>GIVE UP and the last lanes made; or GO, the fight won and CONNOR AVOIDS COLLISION.</td></tr>
+<tr><td>KARA &amp; ALICE REACHED THE OTHER SIDE (Connor destroyed)</td><td><code>K09e2</code></td><td>GO, then CAR HITS CONNOR and Kara makes the last lanes; or the fight won and CONNOR HIT BY CAR.</td></tr>
+<tr><td>KARA &amp; ALICE DIED ON THE HIGHWAY</td><td>Failed Kara roll; <code>C09d</code></td><td>Any failed Kara crossing or the fight. Kara’s storyline ends (<code>kara</code>, <code>alice</code> false).</td></tr>
+</tbody></table></div>
+<p class="fine">State written for later chapters: <code>chase</code> (Jericho’s magazine, Zlatko’s TV), <code>ch13ConnorObeyed</code> (The Nest’s [HIGHWAY]), <code>ch13ConnorDied</code> (The Nest’s HANK INSULTS CONNOR), <code>ralphDefended</code> / <code>ralphHostile</code> (the camp), <code>clothes</code>, <code>gun</code>, <code>money</code>, <code>ch13Hair</code>, <code>ch13Gun</code>, <code>ch13Ending</code>.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Does any Hank or instability arrow show at the motel’s “You wait in the car.”, at GIVE UP / GO, and when Connor is hit? The template shows none; the wiki shows all of them.</li>
+<li>Is CHANGE CHANNEL avoidable? Can Kara leave the motel without it?</li>
+<li>Is [CHECK GUN] shown when the gun was forgotten upstairs? Does it need two refusals?</li>
+<li>Which table line is TRY TO CONVINCE RALPH on the chart: FAMILY or BLUFF? Does BLUFF bring the menu back?</li>
+<li>What is the red-padlock box between INVESTIGATE SQUAT GROUND FLOOR and SQUAT ANDROID DISAPPEARS? Is it LEAVE THE SQUAT?</li>
+<li>How many looks around the squat before Hank calls, and before he orders Connor out?</li>
+<li>Which highway deaths are possible on Casual? (Experienced is modelled.)</li>
+<li>Does a gun threat on Ralph in Fugitives also make him inform here? (Not modelled: only the table threat does.)</li>
+</ul>
+</main>
+</body>
+</html>
