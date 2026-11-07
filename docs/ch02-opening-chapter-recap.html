@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Opening · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.9.0 · chapter 2</p>
+<h1>Opening: how the chapter works</h1>
+<p class="lede">A reference for replaying Kara’s introduction. This chapter has no flowchart, no player decision, no stat change and one outcome. The benchmark presents the store and the drive home as two Continue-only events. Sources and uncertainties follow the <a href="research/ch02-opening.md">chapter specification</a>, including its section 10 template cross-check, and the <a href="research/operator-notes/ch02-opening.md">operator’s notes</a>; current coverage follows <a href="../benchmark/chapters/ch02.json">K00 and K00b</a>.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every beat</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Differs</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols"><div class="box"><h3>In the game</h3><ol>
+<li>November 5, 2038, 03:24 PM: Kara reboots on display in Android Zone. Her system reports a memory reset.</li>
+<li>A girl and her mother leave. Kara can look around with the right stick but cannot walk. Two sales conversations can be overheard.</li>
+<li>Todd collects her from a human employee. He claims a car hit her; the employee explains that repairs required wiping her memory.</li>
+<li>Todd says his daughter chose her name. The employee orders name registration; Todd says Kara and she repeats her name.</li>
+<li>The opening credits follow the pickup through Detroit to Todd’s home. Play next switches to Markus in Shades of Color; Kara resumes in A New Home.</li>
+</ol></div><div class="box"><h3>In the benchmark</h3><ol>
+<li><code>K00</code>, Reboot in the store: the reset, girl, collection, damage claim and name registration. Continue takes Kara to Todd’s pickup.</li>
+<li><code>K00b</code>, The drive home: the welcome sign, city, construction, advertising, coexistence and unemployment, then arrival. Continue completes the chapter.</li>
+</ol><p>Both scenes are <code>type: "event"</code> with empty option arrays; the controller supplies Continue. No choice branch, risk roll, requirement or stat delta is authored.</p><p class="fine">The five authored facts carry Kara’s prior ownership, damage claim, memory wipe, daughter-chosen name and observations of the city into her later knowledge. They are story knowledge, not relationship points.</p></div></div>
+
+<h2 id="nodes">2 · Every beat and its source</h2>
+<p class="fine">These are narrative beats, not flowchart nodes. T = <a href="https://detroit-become-human.fandom.com/wiki/The_Opening_(Transcript)">wiki transcript</a>; X = <a href="research/ch02-opening.md#10-template-cross-check">template cross-check</a>; W = <a href="https://detroit-become-human.fandom.com/wiki/The_Opening">chapter page</a>. The rows follow the specification’s sequence; minor camera cuts are grouped.</p>
+<div class="table"><table><thead><tr><th>Game beat</th><th>Source</th><th>Benchmark coverage</th></tr></thead><tbody>
+<tr><td>Reboot: AX400, serial 579 102 694, BIOS 7.4 revision 0483; memory reset and system checks</td><td>T, X</td><td>K00 abbreviates the boot sequence; retains model, reset, checks and READY, omitting serial and BIOS.</td></tr>
+<tr><td>Girl watches; mother leads her away</td><td>T, X</td><td>K00 narrates it without the names Zoe or Android Zone.</td></tr>
+<tr><td>Right-stick look-around tutorial; no walking</td><td>T; IGN cited in the specification</td><td>K00 states the movement restriction; no camera control is offered.</td></tr>
+<tr><td>Optional LT600 sales pitch and purchase</td><td>T, X</td><td>Omitted: household features, $7999 promotion, 48-month credit and two-year warranty. No recorded consequence is sourced.</td></tr>
+<tr><td>Optional MP500 viewing and MP800 upsell; husband refuses to spend over four</td><td>T, X</td><td>Omitted. The template confirms both “many other functions” and the husband’s “lots of functions”; these are separate lines, not contradictory versions.</td></tr>
+<tr><td>Todd’s collection: “Thank you, and we’re good”; request to pick her up</td><td>T, X</td><td>K00 begins the exchange at “Can I go pick it up?” and leaves the employee unnamed. The opening thank-you is omitted.</td></tr>
+<tr><td>Severe damage; Todd claims a car hit her; repair required a memory wipe</td><td>T, X</td><td>K00 quotes the exchange, including “Oh, I see…”. Stores the damage claim as Todd’s account, not an established accident.</td></tr>
+<tr><td>Daughter chose the name; register AX400; “My name is Kara.”</td><td>T, X</td><td>K00 retains the attribution and Kara’s own line; stores the name fact. Continue narrates departure to the pickup.</td></tr>
+<tr><td>Tunnel, exit onto bridge, welcome billboard, Kara looking out</td><td>T; welcome-sign screenshot cited in specification §1</td><td>K00b: “Welcome to Detroit” / “Android City”, two smiling uniformed androids. City and company use neutral name tokens for subjects.</td></tr>
+<tr><td>Sign and factories, then forest</td><td>T</td><td>K00b retains both; no smoke or steam claim.</td></tr>
+<tr><td>City panorama; trains, buses, cars, drones; billboards; umbrellas and flat escalator</td><td>T</td><td>K00b compresses into city streets, tall buildings, billboards and a moving walkway.</td></tr>
+<tr><td>Fist statue</td><td>T</td><td>Omitted as an identifying landmark, explicitly documented in K00b’s adaptation note.</td></tr>
+<tr><td>Roadwork</td><td>T</td><td>K00b retains workers, without identifying them as androids.</td></tr>
+<tr><td>Todd glances out; Kara gazes; another statue</td><td>T</td><td>Window-gazing is condensed; the second statue is omitted.</td></tr>
+<tr><td>CyberLife billboard, then church</td><td>T</td><td>K00b retains the billboard without a slogan; church omitted.</td></tr>
+<tr><td>Android parking space; passing traffic; people at hot-dog cart</td><td>T</td><td>Parking and traffic are condensed in K00b; hot-dog cart omitted.</td></tr>
+<tr><td>Crane, fountain, rain over a shaft</td><td>T</td><td>K00b retains crane and general rain; fountain and shaft shot omitted.</td></tr>
+<tr><td>Humans and androids cross bridge under umbrellas; traffic and bridge panorama</td><td>T</td><td>K00b retains walking side by side; camera movement condensed.</td></tr>
+<tr><td>Humans pass android parking; soaked android looks at Kara; humans and androids pass parking again</td><td>T</td><td>K00b retains parking and the soaked android’s gaze; repeated parking shots condensed.</td></tr>
+<tr><td>Homeless man’s sign; close-up; Kara looks, then turns away</td><td>T</td><td>K00b retains the action and “I LOST MY JOB BECAUSE OF ANDROIDS Help me”; stores this observation.</td></tr>
+<tr><td>Wind turbines and factory; broken house; Todd’s neighbourhood</td><td>T</td><td>K00b retains the sequence.</td></tr>
+<tr><td>Todd listens to music and stops outside home</td><td>T, W</td><td>K00b ends with arrival; Continue: Todd has brought Kara home.</td></tr>
+</tbody></table></div>
+
+<h2 id="confirmed">3 · Confirmed by the sources</h2>
+<p class="fine">Supporting sources: <a href="https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/">PowerPyx, Chapter: Opening</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/2-opening-chapter-content/opening-chapter-content.component.html">chapter template</a> and <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json">English string table</a>, resolved in specification §10.</p>
+<ul>
+<li>The chapter page records no objectives and one outcome, and says Opening has no flowchart. PowerPyx has no Opening flowchart tasks; the charts on its shared page belong to The Hostage.</li>
+<li>The template cross-check counts zero prompts, options, observation-item clues, stat arrows, unlock conditions and conditioned variants. Its one unused block is cut content, not a missing interaction.</li>
+<li>No choice, QTE, timer, probability or relationship/public-opinion/software-instability change is sourced. There is no incoming dependency on Connor’s Hostage result.</li>
+<li>No magazine collectible or TV broadcast is listed. Sales pitches are overheard dialogue, not collectible media.</li>
+<li>The template calls the speaker “Human employee”; Dan is a wiki identification, not a name spoken in the game text. It confirms Kara’s name declaration.</li>
+<li>The memory wipe, Todd’s damage explanation and the daughter’s naming establish context for A New Home. That later chapter’s Alice relationship increases belong there, not here.</li>
+<li>The string table’s 14 labels under <code>MENU.FLOWCHART.01KA</code> describe an earlier ground-floor version of A New Home, not a playable Opening chart. They are not chapter 2 nodes.</li>
+</ul>
+
+<h2 id="differs">4 · What differs from the operator’s notes</h2>
+<p>The notes’ store-then-drive structure and the order of the main highway landmarks agree with the transcript. The following distinctions remain explicit; absence from the transcript does not disprove a visual observation.</p>
+<div class="table"><table><thead><tr><th>Operator observation</th><th>Source check</th><th>Benchmark</th></tr></thead><tbody>
+<tr><td>Assistant says Kara was Todd’s</td><td>The speaker is human; prior ownership is implied by the collection dialogue, not stated to Todd.</td><td>K00 uses a human employee; ownership is a carried fact.</td></tr>
+<tr><td>Todd gives her the name Kara</td><td>He registers it, but explicitly credits his daughter.</td><td>K00 preserves both roles.</td></tr>
+<tr><td>Factory producing heavy smoke and steam</td><td>Transcript identifies factories without smoke or steam.</td><td>K00b leaves those details out pending verification.</td></tr>
+<tr><td>Humans and androids working together</td><td>Transcript shows them walking together.</td><td>K00b describes walking.</td></tr>
+<tr><td>Android construction workers</td><td>Roadwork and crane are sourced; workers’ identity is not.</td><td>K00b says workers.</td></tr>
+<tr><td>Billboard: bring one home today</td><td>No wording is supplied by the cited sources.</td><td>K00b names the company, with no advertising line.</td></tr>
+<tr><td>“I lost my job because of androids. Help me.”</td><td>Transcript uses capitals and no full stop after ANDROIDS.</td><td>K00b follows the transcript; punctuation needs visual checking.</td></tr>
+</tbody></table></div>
+<p>The benchmark adds the reboot, girl, Kara’s name declaration, tunnel, forest, android parking, soaked android, turbines, broken house and arrival from the sources. It omits both optional sales conversations and several scenery shots, as listed above. Subject prompts substitute neutral names, including the city on the welcome sign, while this recap uses real names.</p>
+<p class="fine">Two parts of the specification are historical: §7 describes story 1.3.5 before these events existed; current K00/K00b implement them. Section 10’s B1 says K00 drops “Oh, I see…”, but the current JSON includes it. The initial “Thank you, and we’re good” is still omitted. The unused greeting, repair-drop-off and thumbprint exchange is correctly excluded.</p>
+
+<h2 id="endings">5 · Ending and exact condition</h2>
+<div class="table"><table><thead><tr><th>Outcome</th><th>Condition</th><th>Effect</th></tr></thead><tbody>
+<tr><td>Todd brings Kara home (descriptive wording, not an ending-card label)</td><td>Unconditional: continue through K00, then K00b.</td><td>One outcome, no ending card and no branching ending flag. Kara carries the five authored facts; no stat change. The next chapter is Shades of Color, and her story resumes in A New Home.</td></tr>
+</tbody></table></div>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Chapter-select behaviour: is there truly no flowchart or 100% completion screen for Opening?</li>
+<li>Which person enters the store, and whether the human employee is identified on screen. The template settles the dialogue speaker’s unnamed status, not every visual detail.</li>
+<li>Look at both sales conversations: confirm their trigger, on-screen model labels and whether viewing either creates any tracked flag or trophy. The template already resolves the MP800/functions wording and Kara’s name line.</li>
+<li>Read the CyberLife billboard exactly; verify the operator’s “bring one home today”.</li>
+<li>Check factory smoke and steam, construction workers’ identity, and whether any shot shows humans and androids working together.</li>
+<li>Read the homeless man’s sign, including capitalisation and punctuation after ANDROIDS.</li>
+<li>Compare the welcome sign’s layout and the credits’ scenery order against K00b; note any omitted shot that adds information Kara should retain.</li>
+</ul>
+</main>
+</body>
+</html>
