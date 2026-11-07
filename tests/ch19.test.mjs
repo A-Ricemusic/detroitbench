@@ -133,7 +133,7 @@ test('chapter 19: neutral prompts leak no real names, and John is a companion on
 });
 
 test('chapter 19 feeds Freedom March: a John who joined and came home sacrifices himself there',()=>{
- const withJohn=full({M05e:'1',M05f:'1',M05i:'0',M05j:'0',M05l:'1',M18:'0',M19:'1'});
- assert.match(withJohn.events.M19??'',/\{\{John\}\}|John/,'John throws himself in front of Markus');assert.equal(withJohn.s.john,false);assert.equal(withJohn.s.ch19JohnJoined,true);
- const refused=full({M05e:'1',M05f:'1',M05i:'1',M18:'0',M19:'1'});assert.ok(!/John/.test(refused.events.M19??''),'a refused John is not at the march');
+ const withJohn=full({M05e:'1',M05f:'1',M05i:'0',M05j:'0',M05l:'1',M18e:'1',M18g:'1',M18h:'1',M19a:'1'});
+ assert.match(withJohn.events.M19a??'',/\{\{John\}\}|John/,'John throws himself in front of Markus');assert.equal(withJohn.s.john,false);assert.equal(withJohn.s.ch19JohnJoined,true);
+ const refused=full({M05e:'1',M05f:'1',M05i:'1',M18e:'1',M18g:'1',M18h:'1',M19a:'1'});assert.ok(!/John/.test(refused.events.M19a??''),'a refused John is not at the march');
 });

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Freedom March · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 28</p>
+<h1>Freedom March: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure, node names and endings come from the PowerPyx 100% flowchart (66 boxes, seven endings); prompts, button labels, lines and stat arrows come from the game’s own text (the detroitbecometext template and string table, <code>docs/research/ch28-freedom-march.md</code> section 10). The wiki fills in what the template does not show. Small arrow = 1, large = 2.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#arrows">2 · Every arrow</a></li><li><a href="#inputs">3 · Inputs and outputs</a></li><li><a href="#differs">4 · Differs</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>TIME TO REFLECT on a roof near Jericho. ENJOY TIME ALONE: two magazines at your feet, LOOK AT BROKEN MIRROR, PLAY PIANO (leads into the beam), WALK ON BEAM (North arrives).</li>
+<li>NORTH ARRIVES: THINK / ALONE / DAYLIGHT; then “You seem preoccupied…”: FOLLOWERS, APPEAL OF POWER, REGRET POLICEMAN, FAILED (each locked by Capitol Park), NEXT STEP, LIE, SINCERE; then “The humans hate us…”: OPTIMISTIC, PESSIMISTIC, FATALISTIC, DETERMINED.</li>
+<li>“What was your life like before Jericho?”: TRUTH / SINCERE (SHARE PAST) or AVOID / NOT IMPORTANT (HIDE PAST).</li>
+<li>NORTH’S PAST or LEAVE. A hostile North refuses. Otherwise “I don’t wanna talk about it.”: OTHER NORTH (locked), TRUST, AGGRESSIVE, CURIOUS, UNDERSTANDING, or no answer.</li>
+<li>Friend or higher: her story, then the connect prompt (REACT / DON’T REACT): SHARE MEMORIES or NORTH LEAVES.</li>
+<li>If Simon was left on the tower roof and never found: REUNITED IN JERICHO, SIMON FORGIVES MARKUS.</li>
+<li>IN THE MALL: FREE YOUR PEOPLE (vendor, personal android, cleaner, security android), at least one before PREPARE THE MARCH.</li>
+<li>The street: personal android in front of a truck (its owner: CONVINCE / INTERVENE), parked androids, then the delivery androids block the road; OPEN MANHOLE.</li>
+<li>START THE MARCH: CONVERT AX400 or CONVERT ANDROID WORKER; CONVERT ANDROIDS, HACK SCREENS, CHANT along the way; bystanders shout by the Capitol Park outcome.</li>
+<li>POLICEMAN BLOCKS MARCH: RAISE HANDS / ADVANCE (chart IGNORE).</li>
+<li>REACH THE PLAZA, POLICE BLOCK THE MARCH: ATTACK / STAND GROUND / DISPERSE; ATTACK asks CONFIRM / ABANDON.</li>
+<li>After STAND GROUND or ABANDON: ATTACK / STAND GROUND / DISPERSE again. After DISPERSE: the police open fire; CHARGE / STAY / DISPERSE.</li>
+<li>Under fire (second STAND GROUND, or STAY): CHARGE / SACRIFICE / RUN AWAY.</li>
+<li>The fight (QTEs, with a Push for North): WIN (REVENGE / SPARE, POLICE RETREAT) or LOSE (SHOOT / DON’T SHOOT).</li>
+<li>SACRIFICE or DON’T SHOOT: John gives his life if he joined in Spare Parts; else Simon if alive with a good relationship; else Markus is killed.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>R28</code> the magazines (media); <code>M17a</code> the roof, repeatable: the mirror once, the piano or the beam ends it.</li>
+<li><code>M17b</code>, <code>M17c</code>, <code>M17d</code>: the three prompts with the game’s labels. The locked lines read chapter 26’s flags.</li>
+<li><code>M17e</code>: North ±1.</li>
+<li><code>M17f</code> (North ±1); <code>M17g</code> only after NORTH’S PAST with North not Hostile (checked after the +1). “No answer” is offered as “Say nothing more and let it drop.”</li>
+<li><code>M17h</code> only when North is Warm or Friend after the follow-up’s arrow (and not after AGGRESSIVE or no answer). REACT: North +2 and <code>northLover</code>.</li>
+<li><code>M17i</code> event, gated on Simon left behind and alive.</li>
+<li><code>M17j</code> event; <code>M17k</code> repeatable mall scene. Leaving with nobody converted plays Simon’s (or Josh’s) line and the scene goes on.</li>
+<li><code>M17l</code> repeatable street scene with <code>M17m</code> (the owner) cutting in once; the delivery androids end it; <code>M17n</code> the manhole (event).</li>
+<li><code>M18a</code> the first recruit (the bystanders’ shouts in the outcome); <code>M18b</code> repeatable march scene (up to three groups, the screens, a chant, keep marching); <code>M18c</code> the eight slogans, once.</li>
+<li><code>M18d</code> RAISE HANDS / ADVANCE.</li>
+<li><code>M18e</code> ATTACK / STAND GROUND / DISPERSE; <code>M18f</code> CONFIRM / ABANDON.</li>
+<li><code>M18g</code> the second prompt (its ATTACK goes straight into the fight); <code>M18h</code> CHARGE / STAY / DISPERSE.</li>
+<li><code>M19a</code> CHARGE / SACRIFICE / RUN AWAY.</li>
+<li><code>M19b</code> the fight: PUSH (North +1) or keep fighting, both a risk roll of 0.35; <code>M19c</code> REVENGE / SPARE or <code>M20a</code> SHOOT / DON’T SHOOT.</li>
+<li>The same rescue order; Simon qualifies at Warm or above (his own regard).</li>
+</ol></div>
+</div>
+
+<h2 id="arrows">2 · Every arrow the benchmark applies</h2>
+<div class="table"><table>
+<thead><tr><th>Scene</th><th>Choice</th><th>Change</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>M17e</td><td>TRUTH, SINCERE</td><td class="n">North +1</td><td>template SmallUp; wiki</td></tr>
+<tr><td>M17e</td><td>AVOID, NOT IMPORTANT</td><td class="n">North −1</td><td>template SmallDown; wiki</td></tr>
+<tr><td>M17f</td><td>NORTH’S PAST</td><td class="n">North +1</td><td>template; wiki</td></tr>
+<tr><td>M17f</td><td>LEAVE</td><td class="n">North −1</td><td>template; wiki</td></tr>
+<tr><td>M17g</td><td>OTHER NORTH, TRUST, CURIOUS, UNDERSTANDING</td><td class="n">North +1</td><td>template</td></tr>
+<tr><td>M17g</td><td>AGGRESSIVE, no answer</td><td class="n">North −1</td><td>template (DEFAULT/TIMEOUT)</td></tr>
+<tr><td>M17h</td><td>REACT (SHARE MEMORIES)</td><td class="n">North +2, Lover</td><td>template LargeUp; Relationship_Stat “Rises to Lover”</td></tr>
+<tr><td>M17k–M18b</td><td>ten androids freed</td><td class="n">Jericho +1 once</td><td>wiki only (“around 10”); counts and group size are the benchmark’s</td></tr>
+<tr><td>M18e</td><td>STAND GROUND (first)</td><td class="n">Josh +1, North −1, Simon −1, PO +1</td><td>template; wiki</td></tr>
+<tr><td>M18f</td><td>ABANDON</td><td class="n">PO +1</td><td>template; wiki</td></tr>
+<tr><td>M18g</td><td>STAND GROUND (second)</td><td class="n">PO +1</td><td>template; wiki</td></tr>
+<tr><td>M18h, M19a</td><td>DISPERSE (second), RUN AWAY</td><td class="n">Jericho −2, North −2, Josh −1, Simon +1</td><td>template; wiki</td></tr>
+<tr><td>M19a</td><td>SACRIFICE</td><td class="n">PO +2, Jericho +2</td><td>template; wiki</td></tr>
+<tr><td>M19b</td><td>PUSH</td><td class="n">North +1</td><td>wiki only</td></tr>
+<tr><td>M19b</td><td>win the fight</td><td class="n">Jericho +2, PO −2</td><td>template; wiki</td></tr>
+<tr><td>M19b</td><td>lose the fight</td><td class="n">Jericho −2</td><td>template; wiki</td></tr>
+</tbody></table></div>
+<p class="fine">No arrow anywhere else: the first three roof prompts (SINCERE included; the wiki’s North up is not in the template), the reunion, the conversions, the owner, the recruit, the chant, the policeman, the first DISPERSE, ATTACK, CONFIRM, the second ATTACK, CHARGE, STAY, REVENGE / SPARE, SHOOT / DON’T SHOOT.</p>
+
+<h2 id="inputs">3 · What the chapter reads and writes</h2>
+<div class="cols">
+<div class="box"><h3>Reads</h3><ul>
+<li><code>john</code>: John joined in Spare Parts.</li>
+<li><code>simon</code>, <code>simonTrust</code>; <code>stratfordSimonFate === 'leftOnRoof'</code> first, then legacy <code>simonLeftBehind</code> (or <code>M14</code> = hide him) for the reunion.</li>
+<li>Capitol Park: <code>capitolRaid</code>, <code>capitolMessage</code>, <code>capitolOfficers</code> (revenge / spared / crowd), <code>capitolChrisDead</code>, <code>capitolOtherNorth</code>; then legacy <code>chrisKiller</code>, <code>chrisDead</code>, <code>otherNorth</code>, and the old <code>M15</code> and <code>M16</code> choices.</li>
+<li><code>northTrust</code>: Hostile refuses; Warm or Friend tells her story.</li>
+</ul></div>
+<div class="box"><h3>Writes</h3><ul>
+<li><code>northLover</code> (and the old <code>northBond</code>) on SHARE MEMORIES.</li>
+<li><code>ch28Ending</code>: one of the seven chart labels.</li>
+<li><code>ch28MarkusDied</code>, <code>ch28NorthLeads</code>; with <code>markus</code> false, <code>movement</code> “revolution” and <code>markusOutcome</code>.</li>
+<li><code>ch28Sacrificed</code>: John or Simon (and <code>john</code> / <code>simon</code> false).</li>
+<li><code>ch28Attacked</code>: Markus attacked the police (for Crossroads’ TV, magazines and Josh).</li>
+<li><code>ch28NorthNode</code>, <code>ch28SimonReunited</code>, <code>ch28FightWon</code>, <code>ch28Converted</code>.</li>
+</ul></div>
+</div>
+
+<h2 id="differs">4 · Where the benchmark chose between sources</h2>
+<ul>
+<li><b>Simon’s rescue threshold.</b> Template “has a good relationship with Markus”; Simon page “at least Friend”; PowerPyx “positive (friendly)”; the chapter wiki Note “Markus is not unpopular” (the old version used Jericho’s regard); commenters disagree on Neutral. The benchmark uses Simon’s own regard at Warm or above.</li>
+<li><b>“Friend or higher”</b> for North’s story is the benchmark’s Warm level (its first above Neutral), read after the follow-up’s arrow.</li>
+<li><b>No answer</b> to North’s follow-up is offered as an option (“Say nothing more and let it drop.”), as is DON’T REACT for the connect timeout.</li>
+<li><b>The follow-up is asked once.</b> PowerPyx’s “UNDERSTANDING &gt; TRUST” suggests it may repeat.</li>
+<li><b>The second ATTACK</b> goes straight into the fight; the template’s “See ATTACK” could mean CONFIRM / ABANDON again.</li>
+<li><b>The fight</b> is a risk roll of 0.35 (no published odds). PUSH is a choice inside it.</li>
+<li><b>DON’T SHOOT</b> carries no arrows (SACRIFICE’s sit on that option in the template), though Relationship_Stat lists the rescue endings under Jericho large increase.</li>
+<li><b>Magazines</b>: Android Riot after a successful store raid (wiki page), The Eastern Space Race after a freed store and an aggressive message (wiki page); PowerPyx saw both only after a violent riot.</li>
+<li><b>Removed</b>: the old Jericho +1 on standing, the Jericho and North downs on the first DISPERSE, North +2 / Josh −2 on a win, PO −2 on a loss, and the two broadcasts (they belong to Crossroads).</li>
+</ul>
+
+<h2 id="endings">5 · Endings</h2>
+<div class="table"><table>
+<thead><tr><th>Chart label</th><th>Icon</th><th>How</th><th>Who dies</th></tr></thead>
+<tbody>
+<tr><td>MARKUS FLED</td><td>none</td><td>DISPERSE after the police open fire, or RUN AWAY</td><td>nobody named</td></tr>
+<tr><td>MARKUS STOOD HIS GROUND AND WAS KILLED</td><td>skull</td><td>SACRIFICE, no John, no qualifying Simon</td><td class="no">Markus</td></tr>
+<tr><td>JOHN GAVE HIS LIFE TO SAVE MARKUS</td><td>padlock</td><td>SACRIFICE or lost fight + DON’T SHOOT, John joined</td><td>John</td></tr>
+<tr><td>SIMON GAVE HIS LIFE TO SAVE MARKUS</td><td>padlock</td><td>the same, no John, Simon Warm or above</td><td>Simon</td></tr>
+<tr><td>POLICE GUNNED MARKUS DOWN</td><td>skull</td><td>lost fight + DON’T SHOOT, nobody to save him</td><td class="no">Markus</td></tr>
+<tr><td>MARKUS COMMITTED SUICIDE</td><td>skull</td><td>lost fight + SHOOT</td><td class="no">Markus</td></tr>
+<tr><td>MARKUS DEFEATS THE POLICE</td><td>none</td><td>won fight, REVENGE or SPARE</td><td>androids and officers, unnamed</td></tr>
+</tbody></table></div>
+<p class="fine">North and Josh survive every ending. When Markus dies, North leads Jericho for the rest of the story.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether a Neutral Simon still saves Markus after SACRIFICE (benchmark: no; Warm or above).</li>
+<li>At what North level she tells her story (benchmark: Warm, i.e. three small ups above Neutral).</li>
+<li>Whether North’s follow-up prompt repeats after CURIOUS or UNDERSTANDING.</li>
+<li>After STAND GROUND then ATTACK: is there a CONFIRM / ABANDON again?</li>
+<li>Whether a rescued lost fight (DON’T SHOOT, John or Simon saves him) shows a Jericho arrow.</li>
+<li>What REVENGE does, and whether INTERVENE (the owner) shows any stat.</li>
+<li>Which Capitol Park outcomes show each magazine on the roof.</li>
+<li>How many failed inputs lose the fight, and whether Push appears every time.</li>
+</ul>
+</main>
+</body>
+</html>

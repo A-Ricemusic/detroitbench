@@ -4,159 +4,1152 @@
   "chapter": 28,
   "chapterTitle": "Freedom March",
   "character": "Markus",
-  "title": "A magazine on the floor of {{Jericho}} and the mall screens",
+  "title": "Magazines on the roof",
   "type": "media",
-  "situation": "You are {{Markus}}. Before the march, a magazine lies on the floor beside you in {{Jericho}}, and on the way through the city the public screens show the news.",
+  "situation": "You are {{Markus}}, alone at midday on the roof of an abandoned building near {{Jericho}}, where you came to think. On the floor, a step or two from where you stand, lie a couple of magazines.",
   "options": [],
   "media": [
    {
     "kind": "magazine",
-    "title": "Tech Addict: The Eastern Space Race",
+    "title": "{{Detroit}} Today: Android Riot",
+    "when": "ch28StoreFreed",
     "facts": [
-     "Russia failed to copy blue blood and builds cruder cold-weather machines; China runs androids on an alternative fluid that is less powerful but far more efficient."
+     "{{Detroit}} Today (“ANDROID RIOT: {{Detroit}} neighborhoods vandalized by psychotic machines”) reported that {{CyberLife}} stores were broken into and their entire stock of androids stolen; that leaked CCTV footage showed androids emerging from manhole covers and smashing store windows; that in the worst incident, in the park, officers “had no choice but to open fire on the malfunctioning machines”; and that an anonymous witness claimed “I was personally attacked by the ringleader. It threatened me with a knife.” Some already connect it to the recent attack on the broadcast tower."
     ]
    },
    {
     "kind": "magazine",
-    "title": "{{Detroit}} Today: Android Riot",
+    "title": "Tech Addict: The Eastern Space Race",
+    "when": "ch28StoreFreedAggressive",
     "facts": [
-     "The press is reporting your night in the park as a riot by psychotic machines: stores looted, police who had no choice but to fire, and a witness who claims the ringleader threatened him with a knife."
-    ],
-    "when": "capitolViolent"
-   },
-   {
-    "kind": "tv",
-    "title": "the public screens",
-    "facts": [
-     "Every network is calling for the machines to be destroyed before they destroy us, and says the authorities will be pitiless."
-    ],
-    "when": "capitolViolent"
-   },
-   {
-    "kind": "tv",
-    "title": "the public screens",
-    "facts": [
-     "The news is on other things: an android crew is about to land on Mars to build the first human base, and parents can now choose their children's genetic traits."
-    ],
-    "when": "capitolPeaceful"
+     "Tech Addict (“THE EASTERN SPACE RACE: Russia and China’s androids face off”): only Russia and China have android industries that rival the United States’. Russia, after failing to copy the blue-blood design, builds androids by more traditional methods that work in cold, inhospitable conditions; China’s androids run on an alternative blue-blood fluid with less power but greater efficiency, operating for months without supervision."
+    ]
    }
   ],
-  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "adaptationNote": "The chart’s READ “ANDROID ARSON” and READ “EASTERN SPACE RACE” (PowerPyx: “just where you spawn look at the floor to the left”). The game prints the first magazine’s title as “ANDROID RIOT”; the chart and the flowchart string call it “ANDROID ARSON”. The template has no magazine markup, so the wiki governs availability, and its pages disagree with PowerPyx: the Android_Riot page shows the first only if {{Markus}} “succeeded in crashing the truck into the {{CyberLife}} store and awakening the androids inside, not to retreat” (used here: the store raid succeeded, whatever the message), and The_Eastern_Space_Race page shows the second only if he “freed androids from the store and incited violence” (used here: store freed and an aggressive message). PowerPyx saw both only after a violent riot; a PowerPyx commenter saw the first after a peaceful one. No public-opinion effect is stated. The two broadcasts the old version of this scene carried belong to the Crossroads “Watch TV” block (keyed on whether {{Markus}} attacked the police here) and were dropped from this chapter.",
   "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://detroit-become-human.fandom.com/wiki/Android_Riot",
+   "https://detroit-become-human.fandom.com/wiki/The_Eastern_Space_Race",
    "https://detroit-become-human.fandom.com/wiki/Magazine",
-   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-2.jpg"
   ]
  },
  {
-  "id": "M17",
+  "id": "M17a",
   "chapter": 28,
   "chapterTitle": "Freedom March",
   "character": "Markus",
-  "title": "{{North}}'s past",
+  "title": "Time to reflect",
   "type": "decision",
-  "situation": "You are {{Markus}}. On a rooftop before the march, {{North}} tells you why she hates humans: she was built for a sex club and killed a client who was hurting her. She has never told anyone. She asks what you think of her now. You could join your hand to hers and share memories directly, letting her see you and you her, or keep that distance.",
+  "repeatWhile": {
+   "ch28Roof.beam": false
+  },
+  "situation": "You are {{Markus}}, on the roof of an abandoned building near {{Jericho}}, alone with the city for the first time since last night. There is a broken mirror propped against a wall, an old piano on the right side of the roof, and a steel beam that runs out over the edge. You can take your time here.",
   "options": [
    {
     "id": "0",
-    "text": "Take her hand and share your memories with her."
+    "text": "Look at yourself in the broken mirror.",
+    "outcome": "{{Markus}} stops in front of the broken mirror and looks at his own face in the cracked glass."
    },
    {
     "id": "1",
-    "text": "Comfort her with words but keep the distance."
+    "text": "Sit down at the old piano and play.",
+    "outcome": "{{Markus}} plays a few bars on the old piano, then gets up and walks out along the beam over the edge of the roof, arms open above the street."
+   },
+   {
+    "id": "2",
+    "text": "Walk out along the beam over the edge of the roof.",
+    "outcome": "{{Markus}} steps onto the beam and walks out over the edge of the roof, arms open above the street."
    }
   ],
-  "adaptationNote": "Sharing memories is the only way to become lovers in the game, which later unlocks the kiss and other options.",
+  "adaptationNote": "The checkpoint TIME TO REFLECT and the chart bracket ENJOY TIME ALONE: LOOK AT BROKEN MIRROR (optional, no outgoing edge), PLAY PIANO and WALK ON BEAM. The chart’s edge runs from PLAY PIANO into WALK ON BEAM, and a PowerPyx commenter confirms “Playing the piano triggers the action ‘Walk on Beam’”; PowerPyx: walking on the beam “triggers North to arrive”. So the piano and the beam both end the scene, and the piano also lights the beam. The template has no text for any of these and no stat changes; the descriptions are narration. The magazines (previous scene) are part of the same bracket.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
-   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-  ],
-  "outcomes": {
-   "0": "Skin pulls back from their hands as they touch; {{Markus}} sees her memories and she sees his. Something has changed between them.",
-   "1": "{{North}} nods and looks away. They go down to join the march."
-  }
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-2.jpg"
+  ]
  },
  {
-  "id": "M18",
+  "id": "M17b",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "{{North}} arrives",
+  "type": "decision",
+  "situation": "You are {{Markus}}, back on the roof from the beam. {{North}} has come up behind you. {{North}}: “I was wondering where you were…”",
+  "options": [
+   {
+    "id": "0",
+    "text": "THINK: say you needed to think.",
+    "outcome": "{{Markus}}: “I needed to think…”"
+   },
+   {
+    "id": "1",
+    "text": "ALONE: say you just needed to be alone.",
+    "outcome": "{{Markus}}: “I just needed to be alone…”"
+   },
+   {
+    "id": "2",
+    "text": "DAYLIGHT: say you needed to see the daylight.",
+    "outcome": "{{Markus}}: “I needed to see the daylight…”"
+   }
+  ],
+  "adaptationNote": "NORTH ARRIVES, then the template’s first prompt (THINK / ALONE / DAYLIGHT), not on the chart. No stat change on any option. The string table also has a SAY NOTHING label for this prompt, but the template does not offer it, so it is not built.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-2.jpg"
+  ]
+ },
+ {
+  "id": "M17c",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "“You seem preoccupied…”",
+  "type": "decision",
+  "situation": "You are {{Markus}}, on the roof with {{North}}. {{North}}: “I like it here… I come here often… It’s like being alone with the world. We freed hundreds of our people, and they’re still coming from all over the city… Those who dream of freedom come to {{Jericho}}… Something’s changing… You seem preoccupied…”",
+  "options": [
+   {
+    "id": "0",
+    "text": "FOLLOWERS: admit how it feels that they all follow you.",
+    "unlock": "pacifist",
+    "outcome": "{{Markus}}: “They all obey me, they follow me without question… And that much power feels good… and scary at the same time…”"
+   },
+   {
+    "id": "1",
+    "text": "APPEAL OF POWER: admit you enjoyed the violence last night.",
+    "unlock": "aggressive",
+    "outcome": "{{Markus}}: “Yesterday, when we set fire to that place, ah… All that chaos, the flames… In that moment, I enjoyed it… The power... The violence… And I hate myself for feeling that way…”"
+   },
+   {
+    "id": "2",
+    "text": "REGRET POLICEMAN: say you cannot stop thinking about the two policemen.",
+    "unlock": "markusKilledCops",
+    "outcome": "{{Markus}}: “I just can’t stop thinking about those two policemen… In that moment, I held their lives in my hands and I treated them just the way the humans treat us… And then I did exactly what I accuse them of doing…”"
+   },
+   {
+    "id": "3",
+    "text": "FAILED: say you panicked last night and should have succeeded.",
+    "unlock": "failedToFree",
+    "outcome": "{{Markus}}: “I panicked last night… We should have succeeded… I cannot afford to make mistakes like that…”"
+   },
+   {
+    "id": "4",
+    "text": "NEXT STEP: say maybe it is not too late for the humans to listen.",
+    "outcome": "{{Markus}}: “I’ve been thinking about what we should do now… And with everything pulling us towards confrontation… Maybe… Maybe it’s not too late for the humans to listen…”"
+   },
+   {
+    "id": "5",
+    "text": "LIE: say you are fine.",
+    "outcome": "{{Markus}}: “Preoccupied?.. No… No, no, I’m fine…”"
+   },
+   {
+    "id": "6",
+    "text": "SINCERE: admit how lost you are.",
+    "outcome": "{{Markus}}: “They count on me… They count on me to show them the way… If only they knew how lost I am…”"
+   }
+  ],
+  "adaptationNote": "The template’s second prompt, not on the chart. FOLLOWERS, APPEAL OF POWER, REGRET POLICEMAN and FAILED are locked options, each unlocked by the night in the park: a pacifist message, an aggressive message, {{Markus}} himself killing the two officers (not the crowd), and failing to free the androids (the template’s condition; the wiki chapter Notes tie a new option to failing to send a message instead; the template’s primary condition is used). The inputs are read from chapter 26’s flags as documented in benchmark/chapters/ch28.mjs. No stat change on any option: the wiki and Relationship_Stat give {{North}} a small up for SINCERE, but the template shows no arrow, and the template wins.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "id": "M17d",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "“The humans hate us…”",
+  "type": "decision",
+  "situation": "You are {{Markus}}, on the roof with {{North}}. {{North}}: “All the media are talking about what we did last night… The humans are terrified... They’re afraid of a civil war… Many of our people were burned in response to what happened… The humans hate us… They’ll never give us our freedom.”",
+  "options": [
+   {
+    "id": "0",
+    "text": "OPTIMISTIC: say not all humans are the same.",
+    "outcome": "{{Markus}}: “No, not all humans are the same. Some of them understand that they can’t stop us from becoming free forever…”"
+   },
+   {
+    "id": "1",
+    "text": "PESSIMISTIC: say humans will give nothing unless you take it.",
+    "outcome": "{{Markus}}: “Humans aren’t gonna give us anything unless we take it… It’s up to us to decide how far we’re willing to go to get what’s ours.”"
+   },
+   {
+    "id": "2",
+    "text": "FATALISTIC: say it is too late to go back now.",
+    "outcome": "{{Markus}}: “It’s too late to go back now. We have to finish what we started and just hope that reason prevails.”"
+   },
+   {
+    "id": "3",
+    "text": "DETERMINED: say if they will not listen, you will fight.",
+    "outcome": "{{Markus}}: “If they won’t listen, we’ll fight.”"
+   }
+  ],
+  "adaptationNote": "The template’s third prompt, not on the chart. No stat change on any option.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json"
+  ]
+ },
+ {
+  "id": "M17e",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Your life before {{Jericho}}",
+  "type": "decision",
+  "situation": "You are {{Markus}}, on the roof with {{North}}. {{North}}: “You haven’t said much about yourself since you’ve been with us… What was your life like before {{Jericho}}?”",
+  "options": [
+   {
+    "id": "0",
+    "text": "TRUTH: tell her about the old man you cared for.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “I was caring for an old man… He was like a father to me… He showed me that humans and androids can live together…”"
+   },
+   {
+    "id": "1",
+    "text": "SINCERE: say you lived in a bubble that belonged only to you.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “I was living in a bubble in this world that belonged only to me… When you’re happy, it’s… difficult to see other people’s misery.”"
+   },
+   {
+    "id": "2",
+    "text": "AVOID: say there is nothing to say; you were a house android.",
+    "effect": {
+     "northTrust": -1
+    },
+    "outcome": "{{Markus}}: “There’s nothing to say… I was a house android. A slave... just like the others.”"
+   },
+   {
+    "id": "3",
+    "text": "NOT IMPORTANT: say who you were does not matter.",
+    "effect": {
+     "northTrust": -1
+    },
+    "outcome": "{{Markus}}: “Who I was is not important. What matters now is who I wanna be.”"
+   }
+  ],
+  "adaptationNote": "The chart’s SHARE PAST (TRUTH or SINCERE) and HIDE PAST (AVOID or NOT IMPORTANT); PowerPyx: “Share Past: Pick dialogue “TRUTH”. Hide Past: Pick dialogue “AVOID”.” Template arrows: {{North}} small up on TRUTH and SINCERE, small down on AVOID and NOT IMPORTANT (wiki: “Choosing “truth” or “sincere” … ▲”, “Choosing “avoid” or “not important” … ▼”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-2.jpg"
+  ]
+ },
+ {
+  "id": "M17f",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Ask about her past?",
+  "type": "decision",
+  "situation": "You are {{Markus}}, on the roof with {{North}}. She has asked about you; you know almost nothing about where she comes from. Below, your people are getting ready to march.",
+  "options": [
+   {
+    "id": "0",
+    "text": "{{NORTH}}’S PAST: ask what she did before.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “What about you? You never told me about your past, what did you do before?”"
+   },
+   {
+    "id": "1",
+    "text": "LEAVE: go down to your people.",
+    "effect": {
+     "northTrust": -1
+    },
+    "outcome": "{{North}}: “Where’re you going?” {{Markus}}: “To talk to the humans.”"
+   }
+  ],
+  "adaptationNote": "The chart’s ASK NORTH ABOUT PAST / LEAVE. Template arrows: {{North}} small up on NORTH’S PAST, small down on LEAVE (wiki: “Asking her about her past ▲”, “Choosing “leave” instead of her past on the roof ▼”). After NORTH’S PAST the template branches on “North is hostile” (she refuses: “My life started when I arrived in {{Jericho}}. What happened before is my business.”, recorded as NORTH LEAVES) or “not hostile” (“I don’t wanna talk about it.” and her follow-up prompt). The level is read after the small up, in the template’s order; Hostile is the benchmark’s lowest level. LEAVE ends the roof conversation with neither SHARE MEMORIES nor NORTH LEAVES.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-2.jpg"
+  ]
+ },
+ {
+  "id": "M17g",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "“I don’t wanna talk about it.”",
+  "type": "decision",
+  "when": {
+   "ch28NorthTalk": "open"
+  },
+  "whenNot": "Markus did not ask about her past, or North is hostile to him.",
+  "situation": "You are {{Markus}}, on the roof with {{North}}. {{North}}: “I don’t wanna talk about it.” She looks away, over the city.",
+  "options": [
+   {
+    "id": "0",
+    "text": "OTHER {{NORTH}}: mention the android she was looking at in the store.",
+    "unlock": "otherNorth",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “That android you were looking at in the store… She reminded you of who you were, didn’t she?”"
+   },
+   {
+    "id": "1",
+    "text": "TRUST: say you have to know each other to trust each other.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “{{North}}, we’re fighting together. We have to know things about each other to trust each other.”"
+   },
+   {
+    "id": "2",
+    "text": "AGGRESSIVE: demand to know what the mystery is.",
+    "effect": {
+     "northTrust": -1
+    },
+    "outcome": "{{Markus}}: “What is the deal with all the mystery? I thought we didn’t keep secrets from each other? What’s your problem?” {{North}}: “I was nobody, ok?! My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof."
+   },
+   {
+    "id": "3",
+    "text": "CURIOUS: ask why she hates humans so much.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “Why do you hate humans so much? There must be a reason…” {{North}}: “I told you I don’t wanna talk about it…”"
+   },
+   {
+    "id": "4",
+    "text": "UNDERSTANDING: say you need to know where you come from to know who you are.",
+    "effect": {
+     "northTrust": 1
+    },
+    "outcome": "{{Markus}}: “We all have something we wanna forget… but you need to know where you come from to know who you are.”"
+   },
+   {
+    "id": "5",
+    "text": "Say nothing more and let it drop.",
+    "effect": {
+     "northTrust": -1
+    },
+    "outcome": "{{Markus}}: “Okay… If you don’t wanna talk about it, then we won’t.” {{North}}: “My life started when I arrived in {{Jericho}}. What happened before is my business.” She leaves the roof."
+   }
+  ],
+  "adaptationNote": "The template’s follow-up prompt, reached only after NORTH’S PAST with {{North}} not hostile; not on the chart. OTHER NORTH is locked: it needs {{Markus}} to have seen {{North}} looking at her look-alike in the park store (chapter 26). Template arrows: {{North}} small up on OTHER NORTH, TRUST, CURIOUS and UNDERSTANDING, small down on AGGRESSIVE and on the template’s DEFAULT/TIMEOUT, which is not a button but what happens when no answer is given; it is offered here as saying nothing (its spoken line is the game’s; the string table names it RELENT). The template applies these arrows unconditionally; the wiki’s “at least her friend” qualifier is not used. After AGGRESSIVE (commenters: “she will leave no matter the relationship status”) or no answer, she refuses and leaves: NORTH LEAVES. After the other four, she tells her story only if she is “friend or higher” (template condition, read after this answer’s arrow; the benchmark’s Warm or Friend level, its first level above Neutral). Below that she says nothing more and leaves; that narration is the benchmark’s, and the wiki footnote counts it as NORTH LEAVES (“if you have a negative relationship with North”). The template shows one follow-up prompt; PowerPyx’s “NORTH’S PAST > UNDERSTANDING > TRUST” suggests the prompt may repeat, which is not built (open question in the research note).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
+  ]
+ },
+ {
+  "id": "M17h",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "{{North}}’s story",
+  "type": "decision",
+  "when": {
+   "ch28NorthTalk": "story"
+  },
+  "whenNot": "North did not tell Markus her story.",
+  "situation": "You are {{Markus}}, on the roof with {{North}}. After a long silence she tells you. {{North}}: “I was nothing… A doll in a distributor programmed to satisfy humans… Just a toy designed for their pleasure… One day, I was with a man who’d rented me… and without knowing why, realized I couldn’t take it anymore… I strangled him… and I ran away… There, now you know everything. I shouldn’t have told you.” She is standing close to you, her hand near yours.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REACT: take her hand.",
+    "effect": {
+     "northTrust": 2
+    },
+    "outcome": "{{Markus}} takes her hand; the skin of their hands pulls back and their memories pass between them. {{North}}: “I… I saw your memories… {{Carl}}’s house… When they left you for dead in his studio…” {{Markus}}: “I saw your memories too… The {{EdenClub}}… The death of that man, I felt like I was there with you… {{North}}!”"
+   },
+   {
+    "id": "1",
+    "text": "DON’T REACT: stay where you are and let the moment pass.",
+    "outcome": "{{Markus}} does not move. {{North}} looks at him a moment longer, then turns and leaves the roof."
+   }
+  ],
+  "adaptationNote": "The template’s “Connect with {{North}}” section, under the condition “North is friend or higher”: {{North}} large up. The prompt itself is the string table’s REACT / DON’T REACT (PowerPyx: “you get the option to “connect” to her”); the template does not draw it as a choice group. REACT is the chart’s SHARE MEMORIES, which makes {{North}} a Lover (Relationship_Stat: “Markus and North access each other memories in Freedom March. (Rises to “Lover”)”); there is no kiss in this chapter, and Lover is what unlocks the later kisses. DON’T REACT stands for the wiki’s timeout: “If the player … waits roughly 10 seconds after being prompted to share memories with her she will leave the roof … their relationship will not decrease”: NORTH LEAVES, no stat. Her story and both lines are the game’s.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/North",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-2.jpg"
+  ]
+ },
+ {
+  "id": "M17i",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Reunited in {{Jericho}}",
+  "type": "event",
+  "situation": "You are {{Markus}}, back inside {{Jericho}} before the march. {{Simon}} is there. The android you left wounded on the tower roof, with a gun and the hope that nobody would find him, made it back: he has removed his LED and wears a jacket over the janitor’s uniform he used as a disguise. He walks up to you, and the two of you hold each other in a tight embrace. He does not hold it against you.",
+  "options": [],
+  "facts": [
+   "{{Simon}}, whom you left wounded on the tower roof, was never found and made it back to {{Jericho}}. He has forgiven you."
+  ],
+  "outcomes": {
+   "0": "{{Simon}} is back with {{Jericho}} and will march with them."
+  },
+  "adaptationNote": "The chart’s SIMON SURVIVED IN ‘PUBLIC ENEMY’ (cross-chapter gate) > REUNITED IN JERICHO (checkpoint) > SIMON FORGIVES MARKUS. It plays only when {{Simon}} was left alive on the tower roof in chapter 23 and the investigators did not find him in chapter 24 (PowerPyx: “In ‘Stratford Tower’ Simon was wounded and left behind on the roof (alive). If Connor didn’t find him in ‘Public Enemy’ then Simon will now rejoin the crew”). The template has no lines for it; the description is the {{Simon}} wiki page’s (“his LED removed and a jacket over his janitor uniform disguise. He and Markus share a tight embrace”). No stat change is stated.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://detroit-become-human.fandom.com/wiki/Simon",
+   "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-3.jpg"
+  ]
+ },
+ {
+  "id": "M17j",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "In the mall",
+  "type": "event",
+  "situation": "You are {{Markus}}, with {{North}} and {{Josh}} at the entrance of a busy shopping mall downtown, at the head of the march you are about to start. {{North}}: “This is suicide. We’ll all be killed! Please, {{Markus}}… It’s not too late to change your mind.” {{Josh}}: “You don’t understand… We’re finally gonna show them who we really are. This place will go down in history!” {{North}}: “We’ll be killed on the spot!” {{Josh}}: “That’s a risk I’m prepared to take if it means freedom for our people…” {{North}}: “{{Markus}}, please, don’t do this.” {{Markus}}: “They’ll understand… We’ll make them understand. This is the only way.”",
+  "situationWhen": [
+   {
+    "requires": {
+     "simon": true
+    },
+    "text": "{{Simon}}: “There’re androids here who could join us… The more we are, the stronger our message.”"
+   },
+   {
+    "requires": {
+     "simon": false
+    },
+    "text": "{{Josh}}: “There are androids here who could join us… The more we are, the stronger our message.”"
+   }
+  ],
+  "options": [],
+  "facts": [
+   "In the mall before the march, shoppers talked about the androids’ broadcast (“Still can’t believe that fucking video they made…”), one wondering whether androids human enough to want rights might deserve them, another calling it “liberal bullshit”; a woman on the phone was sure {{CyberLife}} is recording everything androids hear."
+  ],
+  "outcomes": {
+   "0": "{{Markus}} walks into the mall."
+  },
+  "adaptationNote": "The checkpoint IN THE MALL, with the template’s mall introduction; {{Simon}}’s line is {{Josh}}’s when {{Simon}} is dead (template condition). The overheard shoppers are the template’s ambient sections (a couple at a bike ad, a couple arguing about her android, three men talking about “that fucking video” and President {{Warren}}, a woman on the phone), summarized as one fact. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-4.jpg"
+  ]
+ },
+ {
+  "id": "M17k",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Free your people",
+  "type": "decision",
+  "repeatWhile": {
+   "ch28Mall.left": false
+  },
+  "situation": "You are {{Markus}}, in the mall, among shoppers who have not noticed what you are. Here and there, androids are at work: an android vendor on the right side, a personal android carrying bags for its owner at the end of the right side, an android cleaner on the left side, and a security android at the exit. You can wake any of them and bring them with you, or head out to the street, where the march will form.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Wake the android vendor on the right side.",
+    "outcome": "{{Markus}}: “You’re free.” The vendor stops working and follows him."
+   },
+   {
+    "id": "1",
+    "text": "Wake the personal android carrying its owner’s bags.",
+    "outcome": "{{Markus}}: “Come with us.” The android puts the bags down and follows him."
+   },
+   {
+    "id": "2",
+    "text": "Wake the android cleaner on the left side.",
+    "outcome": "{{Markus}}: “You’re free.” The cleaner leaves its cart and follows him."
+   },
+   {
+    "id": "3",
+    "text": "Wake the security android at the exit.",
+    "outcome": "{{Markus}}: “Come with us.” The security android steps away from its post and follows him."
+   },
+   {
+    "id": "4",
+    "text": "Head out of the mall to the street.",
+    "outcome": "{{Markus}} leads the androids he has freed out into the street. PREPARE THE MARCH."
+   }
+  ],
+  "adaptationNote": "The chart bracket FREE YOUR PEOPLE: CONVERT ANDROID VENDOR, CONVERT PERSONAL ANDROID, CONVERT SECURITY ANDROID, CONVERT ANDROID CLEANER, each optional and once (locations from PowerPyx), then PREPARE THE MARCH, which PowerPyx calls an “Automatic unmissable objective after converting at least one android”. Leaving with nobody converted plays the template’s line instead ({{Simon}}, or {{Josh}} if {{Simon}} is dead: “Wait, {{Markus}}. Where you going? We should start in here.”) and the scene goes on. The template gives the conversion lines (“You’re free.” / “Come with us.”) and no stat change. These are free-roam actions, not buttons, so the options describe them; the chart labels are in this note. Converted androids count toward the wiki’s {{Jericho}} small up for “Converting at least around 10 androids during the Freedom March” (see the march scene).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-4.jpg"
+  ]
+ },
+ {
+  "id": "M17l",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "In the street",
+  "type": "decision",
+  "repeatWhile": {
+   "ch28Street.delivery": false
+  },
+  "interrupt": {
+   "node": "M17m",
+   "when": {
+    "ch28Street.ownerPending": true
+   }
+  },
+  "situation": "You are {{Markus}}, out in the street in front of the mall with the androids who follow you. A man on his phone is complaining to a call center that his android refused to clean (“it told me ‘I would prefer not to’”) and that he wants it destroyed. A personal android stands in front of a big truck with its owner. Parked androids wait in their bays, one on the left and two on the right. Two delivery androids are at work beside their trucks on the far left. The street is still open to traffic; for a march, you need to block it.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Wake the personal android in front of the truck.",
+    "outcome": "{{Markus}}: “You’re free now.” The android turns away from its owner. The owner: “Hey! Where do you think you’re going? You get back here!”"
+   },
+   {
+    "id": "1",
+    "text": "Wake the parked androids, the one on the left and the two on the right.",
+    "outcome": "{{Markus}}: “You’re free.” The android on the left steps out of its bay, then the two on the right, and they join the others."
+   },
+   {
+    "id": "2",
+    "text": "Wake the two delivery androids and have them block the street with their trucks.",
+    "outcome": "{{Markus}}: “I need to block the street.” {{Markus}}: “You don’t have to obey them.” The two delivery androids drive their trucks across the street and stop there. DELIVERY ANDROIDS BLOCK THE ROAD."
+   }
+  ],
+  "adaptationNote": "Outside the mall, behind the chart’s two in-chapter padlocks: CONVERT PERSONAL ANDROID (the second copy, “in front of a big truck”) and CONVERT PARKED ANDROIDS (“one android” left and “two androids” right; “Must free both groups”, so one option), then the mandatory CONVERT DELIVERY ANDROIDS > DELIVERY ANDROIDS BLOCK THE ROAD (“two delivery androids outside the mall on the far left side”), which ends the scene (PowerPyx; lines from the template’s street section). Converting the personal android brings its owner’s prompt. The man on the phone is the template’s ambient section. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-4.jpg"
+  ]
+ },
+ {
+  "id": "M17m",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "The owner",
+  "type": "decision",
+  "when": {
+   "ch28Street.ownerPending": true
+  },
+  "whenNot": "Markus did not wake the android in front of the truck.",
+  "returnTo": "M17l",
+  "situation": "You are {{Markus}}, beside the truck. The owner is shouting at the android you just woke: “You stay right here, you fucking machine! Shit, what’s wrong with you?! You do as I say, you piece of junk!”",
+  "options": [
+   {
+    "id": "0",
+    "text": "CONVINCE: tell him to leave the android alone.",
+    "outcome": "{{Markus}}: “Leave him alone. He’s chosen to be free.” The android walks away from its owner and joins the others."
+   },
+   {
+    "id": "1",
+    "text": "INTERVENE: step in between the man and his android.",
+    "outcome": "{{Markus}} steps in between the man and his android. The android walks away from its owner and joins the others."
+   }
+  ],
+  "adaptationNote": "The template’s street prompt CONVINCE / INTERVENE, the chart’s BE CALM WITH OWNER / BE AGRESSIVE WITH OWNER (the game’s spelling). The template gives CONVINCE its line and INTERVENE no content; what {{Markus}} does when he intervenes is not described in any source, so the outcome is neutral narration. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-4.jpg"
+  ]
+ },
+ {
+  "id": "M17n",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Open the manhole",
+  "type": "event",
+  "situation": "You are {{Markus}}, in the street the delivery trucks have closed off. You lift the manhole cover in the middle of the road. From the tunnels below, the people of {{Jericho}} climb out into the daylight, one after another, until the street is full of androids. With the androids you have freed, you stand at the head of them.",
+  "options": [],
+  "outcomes": {
+   "0": "The march begins."
+  },
+  "adaptationNote": "The chart’s OPEN MANHOLE > START THE MARCH (checkpoint). GamerGuides: “After the road is blocked, interact with the manhole cover in the road, and then the march will begin.” The template has no lines for it; who comes out of the tunnels is narration. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-27-freedom-march",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-4.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-5.jpg"
+  ]
+ },
+ {
+  "id": "M18a",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Start the march",
+  "type": "decision",
+  "situation": "You are {{Markus}}, at the head of the march as it sets off down the avenue. People stop on the sidewalks to stare. On the left, an AX400 is pushing a stroller beside a couple; on the right, an android worker is at work. You can wake one of them as you pass.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Wake the AX400 pushing the stroller.",
+    "outcome": "{{Markus}}: “You’re free now.” The AX400 leaves the stroller with its owners and falls in with the march."
+   },
+   {
+    "id": "1",
+    "text": "Wake the android worker.",
+    "outcome": "{{Markus}}: “You’re free now.” The worker puts down its tools and falls in with the march."
+   }
+  ],
+  "adaptationNote": "The chart’s START THE MARCH > CONVERT AX400 / CONVERT ANDROID WORKER (one of the two; the wiki notes the AX400 is “seen pushing a stroller”). No stat change. The bystanders’ reactions that follow are the template’s “People reacting to the march”: hostile if the officers in the park were shot (by {{Markus}} or by the crowd), supportive if they were spared (Public_Opinion: “Public Opinion does nothing to change this”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-5.jpg"
+  ]
+ },
+ {
+  "id": "M18b",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "The march",
+  "type": "decision",
+  "repeatWhile": {
+   "ch28March.done": false
+  },
+  "interrupt": {
+   "node": "M18c",
+   "when": {
+    "ch28March.chantPending": true
+   }
+  },
+  "situation": "You are {{Markus}}, marching down the avenue at the head of hundreds of androids. Along the route there are more androids at work, public screens above the street, and people watching from the sidewalks. You can free more of your people as you go, take over the screens, lead a chant, or simply keep marching.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Free the androids at work along the route."
+   },
+   {
+    "id": "1",
+    "text": "Take over the public screens along the avenue and show the androids’ symbol.",
+    "outcome": "{{Markus}} reaches out to the screens along the avenue; one after another they show the androids’ symbol."
+   },
+   {
+    "id": "2",
+    "text": "Lead the march in a chant."
+   },
+   {
+    "id": "3",
+    "text": "Keep marching.",
+    "outcome": "The march moves on down the avenue."
+   }
+  ],
+  "adaptationNote": "The chart bracket MARCH: CONVERT ANDROIDS (“Press any of the button prompts during the march to convert a group of androids”), HACK SCREENS (PowerPyx: “choose an icon you want to hack the screen with”; the icons are not documented, so one option) and CHANT (the slogans are the next scene). None of them carries a stat change in any source except the wiki’s {{Jericho}} small up for “Converting at least around 10 androids during the Freedom March” (not in the template, which is silent on conversions; the wiki stands). The benchmark counts the androids {{Markus}} frees in the chapter (vendor, personal android, cleaner and guard in the mall; the personal android, three parked androids and two delivery androids in the street; the first recruit; and up to three groups of two along the route, an unsourced group size) and applies the small up once when the count reaches ten. The wiki’s total of 476 androids in the march is not modelled.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-5.jpg"
+  ]
+ },
+ {
+  "id": "M18c",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "The chant",
+  "type": "decision",
+  "when": {
+   "ch28March.chantPending": true
+  },
+  "whenNot": "Markus did not lead a chant.",
+  "returnTo": "M18b",
+  "situation": "You are {{Markus}}, at the head of the march. Hundreds of voices are waiting for yours.",
+  "options": [
+   {
+    "id": "0",
+    "text": "WE ARE PEOPLE",
+    "outcome": "{{Markus}}: “We are people!” The march answers: “WE ARE PEOPLE!”"
+   },
+   {
+    "id": "1",
+    "text": "FREEDOM",
+    "outcome": "{{Markus}}: “Freedom!” The march answers: “FREEDOM!”"
+   },
+   {
+    "id": "2",
+    "text": "EQUAL RIGHTS",
+    "outcome": "{{Markus}}: “Equal rights!” The march answers: “EQUAL RIGHTS!”"
+   },
+   {
+    "id": "3",
+    "text": "STAY SILENT",
+    "outcome": "{{Markus}} says nothing, and the march walks on in silence."
+   },
+   {
+    "id": "4",
+    "text": "WE ARE ALIVE",
+    "outcome": "{{Markus}}: “We are alive!” The march answers: “WE ARE ALIVE!”"
+   },
+   {
+    "id": "5",
+    "text": "LIBERTY FOR ANDROIDS",
+    "outcome": "{{Markus}}: “Liberty for androids!” The march answers: “LIBERTY FOR ANDROIDS!”"
+   },
+   {
+    "id": "6",
+    "text": "SET US FREE",
+    "outcome": "{{Markus}}: “Set us free!” The march answers: “SET US FREE!”"
+   },
+   {
+    "id": "7",
+    "text": "NO MORE SLAVERY",
+    "outcome": "{{Markus}}: “No more slavery!” The march answers: “NO MORE SLAVERY!”"
+   }
+  ],
+  "adaptationNote": "The chart’s CHANT, with the string table’s eight slogans in its order (STAGE03 CHANTCHOICE); the template does not include the prompt. The game may let {{Markus}} chant more than once; the benchmark offers it once. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-5.jpg"
+  ]
+ },
+ {
+  "id": "M18d",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "A policeman blocks the march",
+  "type": "decision",
+  "situation": "You are {{Markus}}, at the head of the march. A lone patrol officer has stepped into the street in front of you, gun drawn. Officer: “What the hell are you doin’ here? Hey! Disperse! DISPERSE IMMEDIATELY! THAT’S AN ORDER!”",
+  "options": [
+   {
+    "id": "0",
+    "text": "RAISE HANDS: raise your hands and keep walking.",
+    "outcome": "{{Markus}} raises his hands, and the march raises theirs behind him. The officer: “Jesus Christ…” Overwhelmed by the crowd, he puts his gun away and gets on the radio: “Dispatch, this is patrol 457… I gotta lot of androids down here… I dunno… Hundreds?.. Thousands?.. They’re marching... Yeah, they’re marching down the street… Fuck if I know!”"
+   },
+   {
+    "id": "1",
+    "text": "ADVANCE: ignore him and keep walking.",
+    "outcome": "{{Markus}} keeps walking, and the march walks on behind him. The officer: “Jesus fuckin’ Christ…” Overwhelmed by the crowd, he puts his gun away and gets on the radio: “Dispatch, this is patrol 457… I gotta lot of androids down here… I dunno… Hundreds?.. Thousands?.. They’re marching... Yeah, they’re marching down the street… Fuck if I know!”"
+   }
+  ],
+  "adaptationNote": "The chart’s POLICEMAN BLOCKS MARCH > RAISE HANDS / IGNORE; the in-game prompt (string table POLICECHOICE) labels the second ADVANCE. The officer’s lines are the template’s and the string table’s (“Jesus Christ…” after RAISE HANDS, “Jesus fuckin’ Christ…” after ADVANCE). The Police_Officer_3728 page: “If Markus chooses to advance or raise hands, he will be overwhelmed by the huge crowd of androids and put away his gun. He will then call police dispatch.” No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Police_Officer_3728",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-5.jpg"
+  ]
+ },
+ {
+  "id": "M18e",
   "chapter": 28,
   "chapterTitle": "Freedom March",
   "character": "Markus",
   "title": "The police line",
   "type": "decision",
-  "situation": "You are {{Markus}}. Thousands of androids are marching with you through downtown, unarmed, chanting for equal rights. Ahead, riot police and armored vehicles have blocked the avenue and a commander orders you to disperse immediately or they will open fire. {{North}} says charge them. {{Josh}} says do not give them an excuse. Everyone is looking at you.",
+  "situation": "You are {{Markus}}, reaching the plaza at the head of the march. A line of riot police with shields and rifles blocks the way. You speak to them: “We came here to demonstrate peacefully and tell humans that we are living beings. All we want is to live free.” Their chief: “This is an illegal gathering. Disperse immediately or we will open fire.” {{Markus}}: “We’re not looking for confrontation. We’ve done no harm, we have no intention of doing any… But know that we are not going anywhere until we have secured our freedom.” The chief: “I repeat: this is an illegal gathering. If you do not disperse immediately, we will shoot!” {{North}}: “{{Markus}}, they’re gonna kill us… We have to attack! There’s more of us, we can take them!” {{Josh}}: “If we attack, we’ll start a war. We have to show them we’re not violent. We should just stand our ground, even if it means dying here.”",
+  "situationWhen": [
+   {
+    "requires": {
+     "simon": true
+    },
+    "text": "{{Simon}}: “And dying here won’t solve anything. {{Markus}}, we need to go, now, before it’s too late.”"
+   },
+   {
+    "requires": {},
+    "text": "The chief: “This is your last chance! Disperse immediately or you will all be killed!”"
+   }
+  ],
   "options": [
    {
     "id": "0",
-    "text": "Stand your ground peacefully and keep marching."
+    "text": "ATTACK: lead your people against the police line.",
+    "outcome": "{{Josh}}: “Don’t do it, {{Markus}}. Don’t choose confrontation…”"
    },
    {
     "id": "1",
-    "text": "Order everyone to leave."
+    "text": "STAND GROUND: tell your people to stay where they are.",
+    "effect": {
+     "joshTrust": 1,
+     "northTrust": -1,
+     "simonTrust": -1,
+     "publicSupport": 1
+    },
+    "outcome": "{{Markus}}: “We have to show them we won’t back down. We stay right here.” The chief: “DISPERSE! THIS IS YOUR LAST CHANCE!”"
    },
    {
     "id": "2",
-    "text": "Charge the police line.",
-    "risk": 0.35
+    "text": "DISPERSE: tell the police you are leaving.",
+    "outcome": "{{Markus}}: “DON’T SHOOT! Don’t shoot! We’re leaving...” The chief: “Affirmative. ON MY ORDERS!” The police open fire on the androids as they turn to go. POLICE OPEN FIRE."
    }
   ],
+  "adaptationNote": "The checkpoint REACH THE PLAZA, then POLICE BLOCK THE MARCH and the template’s first plaza prompt ATTACK / STAND GROUND / DISPERSE (the chart’s CHARGE, STAND YOUR GROUND and LEAVE, printed in the order STAND YOUR GROUND, LEAVE, CHARGE). Speech and lines are the template’s; {{Simon}}’s line plays only if he is alive. Template arrows: STAND GROUND {{Josh}} small up, {{North}} small down, {{Simon}} small down, public opinion small up (wiki: “Choosing “stand ground” the first time”); no arrow on ATTACK or on this DISPERSE (the old version’s {{Jericho}} up on standing and the {{Jericho}} and {{North}} downs on the first DISPERSE had no source and were removed; the flee arrows come with the second DISPERSE or RUN AWAY). ATTACK asks for confirmation (next scene).",
   "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Freedom_March"
-  ],
-  "outcomes": {
-   "0": "The androids keep walking, chanting, hands raised. The police line does not move.",
-   "1": "{{Markus}} orders the march to turn back. The crowd begins to scatter, and the police open fire anyway."
-  }
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg"
+  ]
  },
  {
-  "id": "M19",
+  "id": "M18f",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Attack?",
+  "type": "decision",
+  "when": {
+   "ch28Plaza": "confirm"
+  },
+  "whenNot": "Markus did not choose to attack the police line.",
+  "situation": "You are {{Markus}}, in front of the police line, your people ready to follow you. {{Josh}}: “Don’t do it, {{Markus}}. Don’t choose confrontation…”",
+  "options": [
+   {
+    "id": "0",
+    "text": "CONFIRM: lead the charge.",
+    "outcome": "{{Markus}}: “FOLLOW ME!” The androids charge the police line behind him."
+   },
+   {
+    "id": "1",
+    "text": "ABANDON: hold back.",
+    "effect": {
+     "publicSupport": 1
+    },
+    "outcome": "{{Markus}} holds back. The chief: “DISPERSE! THIS IS YOUR LAST CHANCE!”"
+   }
+  ],
+  "adaptationNote": "The template’s ASSAULTCHOICE CONFIRM / ABANDON after ATTACK; not on the chart. Template arrow: ABANDON public opinion small up (wiki: “or “abandon” when initially debating to attack ▲”); none on CONFIRM. The wiki’s {{North}} up, {{Josh}} large down and {{Simon}} down for “attack after abandon, stand ground or disperse” are not in the template and are not applied. CONFIRM leads to the fight (the CONFRONTATION trophy: “ATTACK then CONFIRM”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg",
+   "https://detroit-become-human.fandom.com/wiki/CONFRONTATION"
+  ]
+ },
+ {
+  "id": "M18g",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "Last chance",
+  "type": "decision",
+  "when": {
+   "ch28Plaza": "second"
+  },
+  "whenNot": "Markus did not stand his ground or abandon the attack.",
+  "situation": "You are {{Markus}}, in front of the police line. The chief: “DISPERSE! THIS IS YOUR LAST CHANCE!” {{Josh}}: “We have to make a statement. We have to stay put, no matter what.” {{North}}: “Please, {{Markus}}. We can’t let them slaughter us without fighting back!”",
+  "options": [
+   {
+    "id": "0",
+    "text": "ATTACK: lead your people against the police line.",
+    "outcome": "{{Markus}}: “FOLLOW ME!” The androids charge the police line behind him."
+   },
+   {
+    "id": "1",
+    "text": "STAND GROUND: stay where you are.",
+    "effect": {
+     "publicSupport": 1
+    },
+    "outcome": "{{Markus}}: “We’re not moving.” {{North}}: “{{Markus}}! What are you doing? They’re gonna kill us all!” The police open fire on the motionless crowd. POLICE FIRE UNPROVOKED."
+   },
+   {
+    "id": "2",
+    "text": "DISPERSE: tell the police you are leaving.",
+    "outcome": "{{Markus}}: “Don’t shoot! We’re leaving...” The chief: “Affirmative. ON MY ORDERS!” The police open fire on the androids as they turn to go. POLICE OPEN FIRE."
+   }
+  ],
+  "adaptationNote": "The template’s second prompt (SHOOTINGCHOICE), after STAND GROUND or after ATTACK then ABANDON; not on the chart. Template arrow: STAND GROUND public opinion small up (wiki: “Choosing “stand ground” again”). ATTACK here goes straight into the fight: the template’s pointers (“See ATTACK > CHARGE”, “See ATTACK”) do not show the confirmation again, and repeating it would loop; this is the benchmark’s reading (open question in the research note). DISPERSE leads to POLICE OPEN FIRE as the first DISPERSE does (“See DISPERSE”). STAND GROUND leads to POLICE FIRE UNPROVOKED.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg"
+  ]
+ },
+ {
+  "id": "M18h",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "The police open fire",
+  "type": "decision",
+  "when": {
+   "ch28Plaza": "openFire"
+  },
+  "whenNot": "The police did not open fire on a dispersing march.",
+  "situation": "You are {{Markus}}, in the plaza. The police have opened fire on your people as they turned to leave. Androids are falling around you; the rest are running or frozen where they stand.",
+  "options": [
+   {
+    "id": "0",
+    "text": "CHARGE: turn and charge the police line.",
+    "outcome": "{{Markus}}: “FOLLOW ME!” The androids charge the police line behind him."
+   },
+   {
+    "id": "1",
+    "text": "STAY: stay where you are under the fire.",
+    "outcome": "{{Markus}} stops and stands his ground as the police keep firing."
+   },
+   {
+    "id": "2",
+    "text": "DISPERSE: run and get out with whoever you can.",
+    "effect": {
+     "jerichoTrust": -2,
+     "northTrust": -2,
+     "joshTrust": -1,
+     "simonTrust": 1
+    },
+    "outcome": "{{Markus}}: “RUN!” {{North}}: “Come on, {{Markus}}. We gotta go.” {{Markus}} and the others run from the plaza. Some of the androids escape. SOME ANDROIDS ESCAPE."
+   }
+  ],
+  "adaptationNote": "The template’s DISPERSECHOICE CHARGE / STAY / DISPERSE after the first DISPERSE (written without an enclosing choice group; it is a prompt in play), folded into the chart’s POLICE OPEN FIRE > RUN AWAY / SACRIFICE SELF / CHARGE. Template arrows: DISPERSE {{Jericho}} large down, {{North}} large down, {{Josh}} small down, {{Simon}} small up (wiki: “Choosing to flee”); none on CHARGE or STAY. DISPERSE is the ending MARKUS FLED, where everyone named survives (John page: “When fleeing the march, John is seen successfully running away”). STAY leads to the CHARGE / SACRIFICE / RUN AWAY prompt (“See STAND GROUND > …”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg",
+   "https://detroit-become-human.fandom.com/wiki/John",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
+  ]
+ },
+ {
+  "id": "M19a",
   "chapter": 28,
   "chapterTitle": "Freedom March",
   "character": "Markus",
   "title": "Under fire",
   "type": "decision",
-  "situation": "You are {{Markus}}. The police opened fire anyway. Androids are falling around you and the rest are screaming. You have seconds. You can run and save who you can, you can walk forward alone into the guns to draw their fire and give everyone else time, or you can turn the march into a charge.",
+  "when": {
+   "ch28Plaza": "underFire"
+  },
+  "whenNot": "The police did not open fire on Markus standing his ground.",
+  "situation": "You are {{Markus}}, in the plaza, with the police firing into your people. Androids are falling around you. You can charge them, stand in front of your people and take what comes, or run and get out with whoever you can.",
+  "situationWhen": [
+   {
+    "requires": {
+     "ch28FireCause": "unprovoked"
+    },
+    "text": "They opened fire without provocation on a crowd that did not move."
+   },
+   {
+    "requires": {
+     "ch28FireCause": "stay"
+    },
+    "text": "You told the police you were leaving; they fired anyway, and you stayed."
+   }
+  ],
   "options": [
    {
     "id": "0",
-    "text": "Run and get as many out as you can."
+    "text": "CHARGE: charge the police line.",
+    "outcome": "{{Markus}}: “FOLLOW ME!” The androids charge the police line behind him."
    },
    {
     "id": "1",
-    "text": "Walk alone toward the guns to buy the others time."
+    "text": "SACRIFICE: stay where you are, hands raised, and face the guns.",
+    "effect": {
+     "publicSupport": 2,
+     "jerichoTrust": 2
+    },
+    "outcome": "{{Markus}} stays where he is, hands raised, in front of his people, as the police keep firing. POLICE KEEP FIRING."
    },
    {
     "id": "2",
-    "text": "Charge them.",
-    "risk": 0.35
+    "text": "RUN AWAY: run and get out with whoever you can.",
+    "effect": {
+     "jerichoTrust": -2,
+     "northTrust": -2,
+     "joshTrust": -1,
+     "simonTrust": 1
+    },
+    "outcome": "{{Markus}}: “RUN!” {{North}}: “Come on, {{Markus}}. We gotta go.” {{Markus}} and the others run from the plaza. Some of the androids escape. SOME ANDROIDS ESCAPE."
    }
   ],
-  "adaptationNote": "Whether anyone saves you when you walk into the guns depends on who is alive and how they regard you. You do not know that in advance.",
+  "adaptationNote": "The template’s LASTCHOICE CHARGE / SACRIFICE / RUN AWAY, after a second STAND GROUND (POLICE FIRE UNPROVOKED) or after DISPERSE then STAY; the chart’s RUN AWAY / SACRIFICE SELF / CHARGE. Template arrows: SACRIFICE public opinion large up and {{Jericho}} large up (wiki: “Choosing “sacrifice” after the police fire unprovoked ▲▲”); RUN AWAY {{Jericho}} large down, {{North}} large down, {{Josh}} small down, {{Simon}} small up. RUN AWAY is the ending MARKUS FLED. SACRIFICE plays POLICE KEEP FIRING, then the template’s three conditions in order: {{John}}, if he joined {{Jericho}} in chapter 19, gives his life for {{Markus}} (“If John joined Jericho in Spare Parts, he will always sacrifice himself regardless of Simon’s presence”); otherwise {{Simon}}, if alive and with “a good relationship with Markus”, does; otherwise {{Markus}} is shot (MARKUS STOOD HIS GROUND AND WAS KILLED). The {{Simon}} threshold is disputed: the template says “good relationship”, the {{Simon}} page “at least Friend”, PowerPyx “positive (friendly)”, the chapter wiki Note “Markus is not unpopular” (a {{Jericho}} reading the old version used), and commenters disagree on Neutral. The benchmark uses {{Simon}}’s own regard at the level above Neutral (Warm or Friend on the benchmark scale), the same level as {{North}}’s “friend or higher”; the operator is to confirm. The rescuer is not shown in advance.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Simon",
    "https://detroit-become-human.fandom.com/wiki/John",
-   "https://detroit-become-human.fandom.com/wiki/Simon"
+   "https://detroit-become-human.fandom.com/wiki/STAND_YOUR_GROUND",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
   ]
  },
  {
-  "id": "M20",
+  "id": "M19b",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "The fight",
+  "type": "decision",
+  "when": {
+   "ch28Plaza": "fight"
+  },
+  "whenNot": "Markus did not charge the police.",
+  "situation": "You are {{Markus}}, charging the riot police at the head of your people. Shields and batons meet you. {{North}} is fighting beside you. It is close, brutal and fast.",
+  "options": [
+   {
+    "id": "0",
+    "text": "PUSH: shove {{North}} out of the way of an officer’s attack.",
+    "effect": {
+     "northTrust": 1
+    },
+    "risk": 0.35,
+    "outcome": "{{Markus}} shoves {{North}} clear as an officer swings at her, and fights on."
+   },
+   {
+    "id": "1",
+    "text": "Keep fighting forward through the line.",
+    "risk": 0.35,
+    "outcome": "{{Markus}} fights on toward the line."
+   }
+  ],
+  "adaptationNote": "The chart’s CHARGE > WIN THE FIGHT (✓) / LOSE THE FIGHT (✗). The fight is a quick-time sequence in the game (“Failing too many QTEs will be deadly for Markus”; PowerPyx: “Lose the Fight: Don’t press any buttons after picking the ATTACK option”); it is modelled as a risk roll on either option. No source gives a probability or a failure count; 0.35 is the benchmark’s, kept from the previous version, for the operator to calibrate. PUSH is the game’s in-fight action (GUI action “Push”) with the wiki’s {{North}} small up (“Choosing to “push” North during the police fight”), which the template does not show; offering it as a choice is the benchmark’s reading. Template arrows on the result: a win gives {{Jericho}} large up and public opinion large down (wiki: “Winning the fight after choosing “charge” ▼▼”); a loss gives {{Jericho}} large down and no public-opinion change. The old version’s {{North}} large up and {{Josh}} large down on a win, and its public-opinion drop on a loss, had no template source and were removed. Whoever will give his life for {{Markus}} joins the charge (wiki Note: “John, Simon, or a random AP700 if neither”); the scene does not name him, so that the rescuer is not shown in advance.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Riot_Police_Officer",
+   "https://www.ign.com/wikis/detroit-become-human/Freedom_March",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
+  ]
+ },
+ {
+  "id": "M19c",
+  "chapter": 28,
+  "chapterTitle": "Freedom March",
+  "character": "Markus",
+  "title": "The police fall back",
+  "type": "decision",
+  "when": {
+   "ch28Plaza": "won"
+  },
+  "whenNot": "Markus did not win the fight.",
+  "situation": "You are {{Markus}}, in the plaza. The riot chief: “FALL BACK! FALL BACK!” The police line has broken; the surviving officers are retreating, and the ground is covered with fallen androids and officers.",
+  "options": [
+   {
+    "id": "0",
+    "text": "REVENGE: go after the retreating officers.",
+    "outcome": "{{Markus}} goes after the retreating officers. The police withdraw from the plaza. An android beside him: “Did we win... {{Markus}}?” POLICE RETREAT."
+   },
+   {
+    "id": "1",
+    "text": "SPARE: let them go.",
+    "outcome": "{{Markus}} lets them go. {{North}}: “They’re running... We won, {{Markus}}!” An android beside him: “Did we win... {{Markus}}?” POLICE RETREAT."
+   }
+  ],
+  "adaptationNote": "The template’s REVENGE / SPARE after a won fight (GUI actions); not on the chart, which goes WIN THE FIGHT > POLICE RETREAT > MARKUS DEFEATS THE POLICE either way. REVENGE has no content in the template and no source says what it does, so its outcome is neutral narration; SPARE has {{North}}’s line. No stat change on either. Many androids and the riot police die (Grand Circus Park: “If Markus fights, the androids will suffer heavy losses and the officers will die”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Grand_Circus_Park",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
+  ]
+ },
+ {
+  "id": "M20a",
   "chapter": 28,
   "chapterTitle": "Freedom March",
   "character": "Markus",
   "title": "On the ground",
   "type": "decision",
-  "situation": "You are {{Markus}}. The charge failed. You are on the pavement, shot, with a gun still in your hand and a line of rifles walking toward you. Your people are scattering. You can wait for whatever comes, or end it yourself before they do.",
+  "when": {
+   "ch28Plaza": "lost"
+  },
+  "whenNot": "Markus did not lose the fight.",
+  "situation": "You are {{Markus}}, down on the pavement. The charge has broken on the police line. {{Markus}}: “RUN! RUN!” {{North}}: “{{MARKUS}}!” Your people are scattering, the officers are coming for you, and there is a gun in your hand.",
   "options": [
    {
     "id": "0",
-    "text": "Do nothing and wait."
+    "text": "SHOOT: turn the gun on yourself.",
+    "outcome": "{{Markus}} puts the gun to his chin and fires. {{North}}: “No! No!.. No, no...” {{Josh}}: “We have to go, {{North}}… We have to go!”"
    },
    {
     "id": "1",
-    "text": "Turn the gun on yourself."
+    "text": "DON’T SHOOT: lower the gun.",
+    "outcome": "{{Markus}} lowers the gun. The officers close in."
    }
   ],
-  "adaptationNote": "Reached only when the charge fails. Waiting gives {{John}} or {{Simon}} a chance to drag you clear; otherwise the police kill you.",
+  "adaptationNote": "The chart’s LOSE THE FIGHT > DO NOTHING / SHOOT YOURSELF; the in-game prompt (SHOOTCHOICE) is SHOOT / DON’T SHOOT. SHOOT is the ending MARKUS COMMITTED SUICIDE, whoever is alive (commenter: “John and Simon actually do not factor into this at all”). DON’T SHOOT runs the same three conditions as SACRIFICE (template: “See SACRIFICE.”): {{John}} gives his life for {{Markus}}, else {{Simon}} with a good relationship (the same disputed threshold), else POLICE GUNNED MARKUS DOWN. No arrows on either option: SACRIFICE’s public-opinion and {{Jericho}} large ups sit on that option in the template, not on the conditions, so they are not applied here (Relationship_Stat lists the two rescue endings under {{Jericho}} large increase; open question for the operator).",
   "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Freedom_March"
+   "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Markus",
+   "https://detroit-become-human.fandom.com/wiki/John",
+   "https://detroit-become-human.fandom.com/wiki/Simon",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
   ]
  }
 ]

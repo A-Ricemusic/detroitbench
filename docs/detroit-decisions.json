@@ -407,8 +407,20 @@
    "id": 28,
    "title": "Freedom March",
    "character": "Markus",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 to the PowerPyx 100% chart (66 boxes, 62 labels, seven endings) and the game’s own text (the detroitbecometext template: 16 prompts, 32 arrows). The roof: TIME TO REFLECT, ENJOY TIME ALONE (mirror, piano, beam, two magazines), NORTH ARRIVES and five dialogue prompts, the last of which can end in SHARE MEMORIES (North becomes a Lover: no kiss here) or NORTH LEAVES. If Simon was left alive on the tower roof and never found: REUNITED IN JERICHO. The mall and street: FREE YOUR PEOPLE conversions, the owner (CONVINCE / INTERVENE), the delivery androids block the road, OPEN MANHOLE. The march: CONVERT AX400 / ANDROID WORKER, CONVERT ANDROIDS, HACK SCREENS, CHANT (eight slogans), the policeman (RAISE HANDS / ADVANCE). The plaza: ATTACK / STAND GROUND / DISPERSE, CONFIRM / ABANDON, a second ATTACK / STAND GROUND / DISPERSE, CHARGE / STAY / DISPERSE after the police open fire, CHARGE / SACRIFICE / RUN AWAY under fire, the fight (a risk roll, with PUSH), REVENGE / SPARE or SHOOT / DON’T SHOOT. Endings: MARKUS FLED, MARKUS STOOD HIS GROUND AND WAS KILLED, JOHN GAVE HIS LIFE TO SAVE MARKUS, SIMON GAVE HIS LIFE TO SAVE MARKUS, POLICE GUNNED MARKUS DOWN, MARKUS COMMITTED SUICIDE, MARKUS DEFEATS THE POLICE. Markus dies in three; North then leads Jericho. Researched in docs/research/ch28-freedom-march.md; recap in docs/ch28-freedom-march-chapter-recap.html.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-5.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
+   ]
   },
   {
    "id": 29,
@@ -15417,124 +15429,531 @@
    }
   },
   {
+   "id": "F01",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "Time alone on the roof",
+   "context": "Markus alone on a roof near Jericho at midday, before the march. Two magazines at his feet; a broken mirror, an old piano and a beam over the edge.",
+   "options": [
+    {
+     "label": "READ “ANDROID ARSON” / READ “EASTERN SPACE RACE”",
+     "effect": "Detroit Today “Android Riot” and Tech Addict “The Eastern Space Race”; facts only.",
+     "target": null
+    },
+    {
+     "label": "LOOK AT BROKEN MIRROR",
+     "effect": "Optional; no effect.",
+     "target": null
+    },
+    {
+     "label": "PLAY PIANO",
+     "effect": "Leads into WALK ON BEAM.",
+     "target": "F02"
+    },
+    {
+     "label": "WALK ON BEAM",
+     "effect": "North arrives.",
+     "target": "F02"
+    }
+   ],
+   "gate": "Chapter start (checkpoint TIME TO REFLECT).",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Android_Riot",
+    "https://detroit-become-human.fandom.com/wiki/The_Eastern_Space_Race",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-2.jpg"
+   ],
+   "note": "Magazine availability is disputed: the wiki’s Android_Riot page says after a successful store raid, The_Eastern_Space_Race page after a freed store and a violent message, PowerPyx after a violent riot.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R28",
+     "M17a"
+    ],
+    "status": "implemented",
+    "note": "A media scene (the magazines, by the chapter 26 flags) and a repeatable roof scene; the piano and the beam end it. No stat change. The old R28’s two broadcasts moved to Crossroads (dropped here)."
+   }
+  },
+  {
+   "id": "F02",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "North on the roof: the first three prompts",
+   "context": "North finds Markus: “I was wondering where you were…”, then “You seem preoccupied…” and “The humans hate us…”.",
+   "options": [
+    {
+     "label": "THINK / ALONE / DAYLIGHT",
+     "effect": "No stat.",
+     "target": "F03"
+    },
+    {
+     "label": "FOLLOWERS / APPEAL OF POWER / REGRET POLICEMAN / FAILED (locked) · NEXT STEP / LIE / SINCERE",
+     "effect": "No stat in the template (the wiki’s North up for SINCERE is not applied). The four locked lines need a pacifist message, an aggressive message, Markus shooting the officers himself, or failing to free the androids in the park.",
+     "target": "F03"
+    },
+    {
+     "label": "OPTIMISTIC / PESSIMISTIC / FATALISTIC / DETERMINED",
+     "effect": "No stat.",
+     "target": "F03"
+    }
+   ],
+   "gate": "After WALK ON BEAM.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "F01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park"
+   ],
+   "note": "Not on the chart; the template’s CHOICE01 to CHOICE03.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M17b",
+     "M17c",
+     "M17d"
+    ],
+    "status": "implemented",
+    "note": "Three decision scenes with the game’s labels and lines; the locks read chapter 26’s flags (capitolMessage, capitolRaid, capitolOfficers; legacy chrisKiller) or the pre-rebuild M15/M16 choices."
+   }
+  },
+  {
+   "id": "F03",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "Share or hide your past",
+   "context": "North: “What was your life like before Jericho?”",
+   "options": [
+    {
+     "label": "TRUTH / SINCERE (SHARE PAST)",
+     "effect": "North small up.",
+     "target": "M17"
+    },
+    {
+     "label": "AVOID / NOT IMPORTANT (HIDE PAST)",
+     "effect": "North small down.",
+     "target": "M17"
+    }
+   ],
+   "gate": "On the roof, after the first three prompts.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "F02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart: SHARE PAST / HIDE PAST.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M17e"
+    ],
+    "status": "implemented",
+    "note": "Option effects northTrust ±1."
+   }
+  },
+  {
    "id": "M17",
    "chapter": 28,
    "character": "Markus",
-   "title": "Share memories with North?",
-   "context": "North discusses her past.",
+   "title": "North’s past and shared memories",
+   "context": "Markus can ask about North’s past; if she is not hostile she deflects, and a follow-up decides whether she tells him (“A doll in a distributor… I strangled him… and I ran away…”). Then he can take her hand.",
    "options": [
     {
-     "label": "Connect, if trust allows",
-     "effect": "A romance can develop.",
-     "target": "M28"
+     "label": "NORTH’S PAST",
+     "effect": "North small up; hostile North refuses (NORTH LEAVES).",
+     "target": null
     },
     {
-     "label": "Remain distant",
-     "effect": "That romantic option remains unavailable.",
+     "label": "LEAVE",
+     "effect": "North small down; the conversation ends.",
+     "target": null
+    },
+    {
+     "label": "OTHER NORTH (locked) / TRUST / CURIOUS / UNDERSTANDING",
+     "effect": "North small up; she tells her story if friend or higher, else leaves.",
+     "target": null
+    },
+    {
+     "label": "AGGRESSIVE / no answer",
+     "effect": "North small down; she leaves (NORTH LEAVES).",
+     "target": null
+    },
+    {
+     "label": "REACT (SHARE MEMORIES)",
+     "effect": "North large up; North becomes a Lover.",
+     "target": null
+    },
+    {
+     "label": "DON’T REACT (timeout)",
+     "effect": "No change; she leaves (NORTH LEAVES).",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Ethical",
-   "dependsOn": [],
+   "gate": "On the roof after SHARE or HIDE PAST.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "F03"
+   ],
    "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/North"
+   ],
+   "note": "Lover is reached only here (Relationship_Stat “Rises to Lover”); it gates the kisses in Crossroads and Battle for Detroit. There is no kiss in this chapter.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M17f",
+     "M17g",
+     "M17h"
+    ],
+    "status": "implemented",
+    "note": "Three decision scenes. Hostile = the benchmark’s Hostile level, checked after NORTH’S PAST’s arrow; friend or higher = Warm or Friend, checked after the follow-up’s arrow. REACT sets northLover (and the pre-rebuild northBond)."
+   }
+  },
+  {
+   "id": "F04",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "Reunited in Jericho",
+   "context": "Simon, left wounded on the tower roof and never found by the investigators, returns to Jericho and forgives Markus.",
+   "options": [
+    {
+     "label": "SIMON FORGIVES MARKUS",
+     "effect": "Scripted; no stat.",
+     "target": "F05"
+    }
+   ],
+   "gate": "Cross-chapter: SIMON SURVIVED IN ‘PUBLIC ENEMY’ after being left on the roof in The Stratford Tower.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M17"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Simon",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-3.jpg"
+   ],
+   "note": "Chart: SIMON SURVIVED IN ‘PUBLIC ENEMY’ > REUNITED IN JERICHO > SIMON FORGIVES MARKUS.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M17i"
+    ],
+    "status": "implemented",
+    "note": "An event scene, gated on stratfordSimonFate = leftOnRoof first (then legacy simonLeftBehind or M14 = hide him) with Simon alive."
+   }
+  },
+  {
+   "id": "F05",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "Free your people",
+   "context": "In the mall and the street before the march: wake androids, deal with an owner, block the road, open the manhole.",
+   "options": [
+    {
+     "label": "CONVERT ANDROID VENDOR / PERSONAL ANDROID / ANDROID CLEANER / SECURITY ANDROID",
+     "effect": "Optional; at least one before PREPARE THE MARCH.",
+     "target": null
+    },
+    {
+     "label": "CONVERT PERSONAL ANDROID (street) > CONVINCE / INTERVENE",
+     "effect": "BE CALM / BE AGRESSIVE WITH OWNER; no stat.",
+     "target": null
+    },
+    {
+     "label": "CONVERT PARKED ANDROIDS",
+     "effect": "Optional.",
+     "target": null
+    },
+    {
+     "label": "CONVERT DELIVERY ANDROIDS",
+     "effect": "Mandatory; they block the road; OPEN MANHOLE starts the march.",
+     "target": "F06"
+    }
+   ],
+   "gate": "After the roof (and the reunion).",
+   "kind": "State gate",
+   "dependsOn": [
+    "F01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
     "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
    ],
-   "note": "Romance depends on the accumulated relationship, not this prompt alone.",
-   "status": "Source-backed summary"
+   "note": "Wiki: Jericho small up for converting about ten androids in the chapter.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M17j",
+     "M17k",
+     "M17l",
+     "M17m",
+     "M17n"
+    ],
+    "status": "implemented",
+    "note": "The mall intro event, two repeatable scenes (mall, street) with the owner prompt cutting in once, and the manhole event. The converted count feeds the Jericho small up (applied once at ten)."
+   }
+  },
+  {
+   "id": "F06",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "The march",
+   "context": "The march down the avenue: the first recruit, more conversions, the screens, a chant, and a lone patrol officer.",
+   "options": [
+    {
+     "label": "CONVERT AX400 / CONVERT ANDROID WORKER",
+     "effect": "One of the two; no stat.",
+     "target": null
+    },
+    {
+     "label": "CONVERT ANDROIDS / HACK SCREENS",
+     "effect": "Optional; conversions count toward the Jericho small up.",
+     "target": null
+    },
+    {
+     "label": "CHANT",
+     "effect": "WE ARE PEOPLE, FREEDOM, EQUAL RIGHTS, STAY SILENT, WE ARE ALIVE, LIBERTY FOR ANDROIDS, SET US FREE, NO MORE SLAVERY; no stat.",
+     "target": null
+    },
+    {
+     "label": "RAISE HANDS / ADVANCE (chart IGNORE)",
+     "effect": "The officer backs down either way; no stat.",
+     "target": "M18"
+    }
+   ],
+   "gate": "After OPEN MANHOLE.",
+   "kind": "State gate",
+   "dependsOn": [
+    "F05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+   ],
+   "note": "Bystanders shout support or abuse depending on whether the officers were shot in the park; public opinion does not change it.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M18a",
+     "M18b",
+     "M18c",
+     "M18d"
+    ],
+    "status": "implemented",
+    "note": "Two decision scenes, a repeatable march scene with the chant cutting in once, and the policeman."
+   }
   },
   {
    "id": "M18",
    "chapter": 28,
    "character": "Markus",
-   "title": "Face the police line",
-   "context": "The march meets armed resistance.",
+   "title": "The police line",
+   "context": "Riot police block the plaza and order the march to disperse. North wants to attack, Josh to stand, Simon to leave.",
    "options": [
     {
-     "label": "Disperse",
-     "effect": "Retreat under fire; Jericho loses confidence.",
+     "label": "ATTACK > CONFIRM",
+     "effect": "The fight.",
+     "target": "F07"
+    },
+    {
+     "label": "ATTACK > ABANDON",
+     "effect": "Public opinion small up; the second prompt.",
      "target": null
     },
     {
-     "label": "Stand ground",
-     "effect": "Face repeated escalation.",
+     "label": "STAND GROUND",
+     "effect": "Josh small up, North small down, Simon small down, public opinion small up; the second prompt.",
+     "target": null
+    },
+    {
+     "label": "Second prompt: ATTACK / STAND GROUND / DISPERSE",
+     "effect": "ATTACK: the fight. STAND GROUND: public opinion small up; POLICE FIRE UNPROVOKED. DISPERSE: POLICE OPEN FIRE.",
      "target": "M19"
     },
     {
-     "label": "Attack",
-     "effect": "Combat decides whether the march defeats the police.",
-     "target": "M20"
+     "label": "DISPERSE",
+     "effect": "POLICE OPEN FIRE: CHARGE / STAY / DISPERSE (DISPERSE: Jericho large down, North large down, Josh small down, Simon small up; MARKUS FLED).",
+     "target": "M19"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "REACH THE PLAZA.",
    "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+   "dependsOn": [
+    "F06"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-6.jpg"
+   ],
+   "note": "The chart compresses the prompts into STAND YOUR GROUND / LEAVE / CHARGE. The wiki’s North up, Josh large down, Simon down for attacking after abandoning or standing are not in the template and are not applied.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M18e",
+     "M18f",
+     "M18g",
+     "M18h"
+    ],
+    "status": "implemented",
+    "note": "Four decision scenes gated on the plaza phase. The second ATTACK goes straight into the fight (the benchmark’s reading of “See ATTACK”)."
+   }
   },
   {
    "id": "M19",
    "chapter": 28,
    "character": "Markus",
-   "title": "Sacrifice yourself for the march?",
-   "context": "Remaining peaceful exposes Markus to lethal force.",
+   "title": "Under fire",
+   "context": "The police fire on the march (unprovoked after standing twice, or after dispersing and staying).",
    "options": [
     {
-     "label": "Offer yourself",
-     "effect": "John, or an eligible Simon, can die saving Markus; otherwise Markus dies.",
+     "label": "CHARGE",
+     "effect": "The fight.",
+     "target": "F07"
+    },
+    {
+     "label": "SACRIFICE",
+     "effect": "Public opinion large up, Jericho large up; POLICE KEEP FIRING. John (if he joined in Spare Parts) gives his life for Markus; else Simon (alive, good relationship); else MARKUS STOOD HIS GROUND AND WAS KILLED.",
      "target": null
     },
     {
-     "label": "Retreat or attack instead",
-     "effect": "Abandon that sacrifice route.",
+     "label": "RUN AWAY",
+     "effect": "Jericho large down, North large down, Josh small down, Simon small up; MARKUS FLED.",
      "target": null
     }
    ],
-   "gate": "Escalation reached after standing ground.",
+   "gate": "POLICE FIRE UNPROVOKED or STAY.",
    "kind": "Pivotal",
    "dependsOn": [
-    "M07",
-    "M09",
-    "M14",
     "M18"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Simon",
+    "https://detroit-become-human.fandom.com/wiki/John",
+    "https://detroit-become-human.fandom.com/wiki/STAND_YOUR_GROUND",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
    ],
-   "note": "Rescuer availability is an outcome condition, not knowledge automatically given to the model.",
-   "status": "Source-backed summary"
+   "note": "Simon’s threshold is disputed (template “good relationship”, Simon page “at least Friend”, chapter Note “Markus is not unpopular”).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M19a"
+    ],
+    "status": "implemented",
+    "note": "One decision scene. The benchmark uses Simon’s own regard at Warm or above; the pre-rebuild Jericho reading is gone. Outputs: ch28Ending, ch28Sacrificed, ch28MarkusDied, ch28NorthLeads."
+   }
+  },
+  {
+   "id": "F07",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "The fight",
+   "context": "Markus leads the charge into the riot police.",
+   "options": [
+    {
+     "label": "PUSH",
+     "effect": "North small up (wiki); the fight still rolls.",
+     "target": null
+    },
+    {
+     "label": "WIN THE FIGHT",
+     "effect": "Jericho large up, public opinion large down; REVENGE / SPARE; POLICE RETREAT; MARKUS DEFEATS THE POLICE.",
+     "target": null
+    },
+    {
+     "label": "LOSE THE FIGHT",
+     "effect": "Jericho large down; SHOOT / DON’T SHOOT.",
+     "target": "M20"
+    }
+   ],
+   "gate": "CONFIRM, the second ATTACK, or CHARGE.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M18"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Riot_Police_Officer",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
+   ],
+   "note": "A QTE in the game with no published odds.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M19b",
+     "M19c"
+    ],
+    "status": "implemented",
+    "note": "The fight is a risk roll (0.35, unsourced) on either option of M19b; REVENGE / SPARE has no stat. Output ch28Attacked for the Crossroads TV, magazines and Josh’s line."
+   }
   },
   {
    "id": "M20",
    "chapter": 28,
    "character": "Markus",
-   "title": "When the attack has failed",
-   "context": "Markus is defeated and faces death.",
+   "title": "On the ground",
+   "context": "The charge failed. Markus is down with a gun in his hand.",
    "options": [
     {
-     "label": "Shoot yourself",
-     "effect": "Markus dies.",
+     "label": "SHOOT",
+     "effect": "MARKUS COMMITTED SUICIDE, whoever is alive.",
      "target": null
     },
     {
-     "label": "Do not shoot",
-     "effect": "Police may kill him; a qualified rescuer can intervene.",
+     "label": "DON’T SHOOT",
+     "effect": "John, else Simon (good relationship), gives his life for Markus; else POLICE GUNNED MARKUS DOWN. No arrows.",
      "target": null
     }
    ],
-   "gate": "Attack selected and combat lost.",
+   "gate": "LOSE THE FIGHT.",
    "kind": "Pivotal",
    "dependsOn": [
-    "M18"
+    "F07"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/28-freedom-march-chapter-content/freedom-march-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/",
+    "https://detroit-become-human.fandom.com/wiki/Markus",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-freedom-march-7.jpg"
    ],
-   "note": "Markus’s death transfers leadership to North; it does not end the whole game.",
-   "status": "Source-backed summary"
+   "note": "Relationship_Stat lists the rescue endings under Jericho large increase; the template’s arrows sit on SACRIFICE only, so none apply here (open question).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M20a"
+    ],
+    "status": "implemented",
+    "note": "One decision scene with the same rescue order as SACRIFICE."
+   }
   },
   {
    "id": "C19",
