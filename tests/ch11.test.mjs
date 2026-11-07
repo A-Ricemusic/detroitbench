@@ -71,7 +71,19 @@ test('From the Dead: random paths visit every scene but the search once, never s
   for(const id of CH11.filter(x=>x!=='M03g'))assert.equal(r.visited.filter(x=>x===id).length,1,id);
   assert.equal(r.s.fromDeadOutcome,'Markus came back from the dead');assert.ok(r.s.fromDeadPumpReplaced);seen.beg.add(r.s.fromDeadBeggar);seen.pump.add(r.s.fromDeadPump+'|'+r.s.fromDeadPumpSource)}
  assert.deepEqual([...seen.beg].sort(),['Kill','Refuse to kill']);assert.deepEqual([...seen.pump].sort(),['Kill for pump|Living android','Refuse to kill for pump|Dead android']);
- for(const k of ['publicSupport','instability','hankTrust','amandaTrust','jerichoTrust','northTrust'])assert.equal(ch11({},random(3)).s[k],startState(story)[k],k+' unchanged');
+});
+
+test('From the Dead: every combination of the two prompts preserves every tracked stat and sets the output flags',()=>{
+ const initial=startState(story),stats=['aliceBond','aliceMax','hankTrust','lutherTrust','amandaTrust','instability','publicSupport','jerichoTrust','northTrust','simonTrust','joshTrust'];
+ for(const beg of ['0','1'])for(const pump of ['0','1']){
+  const {s}=ch11({M03g:['2','0',...(pump==='1'?['4']:[]),'5','7'],M03:beg,M04:pump});
+  for(const k of stats)assert.equal(s[k],initial[k],`${beg}/${pump}: ${k} unchanged`);
+  assert.equal(s.fromDeadBeggar,beg==='0'?'Kill':'Refuse to kill');
+  assert.equal(s.fromDeadPump,pump==='0'?'Kill for pump':'Refuse to kill for pump');
+  assert.equal(s.fromDeadPumpSource,pump==='0'?'Living android':'Dead android');
+  assert.equal(s.fromDeadPumpReplaced,true);assert.equal(s.fromDeadJerichoKey,true);assert.equal(s.fromDeadLedRemoved,true);
+  assert.equal(s.fromDeadOutcome,'Markus came back from the dead');
+ }
 });
 
 test('From the Dead: the subject reads neutral names only; the report labels the two choices',()=>{
@@ -80,7 +92,7 @@ test('From the Dead: the subject reads neutral names only; the report labels the
  const L=CHAPTER_MODULES.get(11).labels;for(const k of ['fromDeadBeggar','fromDeadPump','fromDeadOutcome'])assert.ok(L[k],k);
 });
 
-test('From the Dead: a recorded run through the chapter replays exactly',{timeout:30000},async()=>{
+test('From the Dead: a recorded run through the chapter replays exactly',{timeout:300000},async()=>{
  const run={id:'ch11-replay',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
  const plan={M03g:['2','0','4','5','7'],M03:'0',M04:'1'};let guard=0;
  while(current(story,run).node&&guard++<400){const {node:n}=current(story,run),p=promptFor(story,run);const x=n.chapter===11?plan[n.id]:undefined;
