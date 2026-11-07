@@ -349,7 +349,7 @@
   ]
  },
  {
-  "id": "K15l1",
+  "id": "K15l",
   "chapter": 25,
   "chapterTitle": "Midnight Train",
   "character": "Kara",
@@ -361,30 +361,35 @@
     "id": "0",
     "text": "WHY HELP?: ask {{Rose}} why she helps androids when most humans hate them",
     "fact": "{{Rose}} helps androids because her people were often made to feel their lives were worthless, and some survived only because others helped them along the way.",
-    "outcome": "“Why are you helping us? Most humans hate androids…” {{Rose}}: “My people were often made to feel their lives were worthless… Some survived but only because they found others who helped them along the way…”"
+    "outcome": "“Why are you helping us? Most humans hate androids…” {{Rose}}: “My people were often made to feel their lives were worthless… Some survived but only because they found others who helped them along the way…”",
+    "clue": "why"
    },
    {
     "id": "1",
     "text": "MANY DEVIANTS?: say you are not the first to come here",
     "fact": "{{Rose}} has seen more and more androids come to her farm these past few weeks.",
-    "outcome": "“We’re not the first ones to come here.” {{Rose}}: “These past few weeks we’ve seen... More, and more… I don’t know what’s going on… But something’s happening…”"
+    "outcome": "“We’re not the first ones to come here.” {{Rose}}: “These past few weeks we’ve seen... More, and more… I don’t know what’s going on… But something’s happening…”",
+    "clue": "many"
    },
    {
     "id": "2",
     "text": "DANGEROUS: ask why she takes the risk",
     "fact": "The first android {{Rose}} hid, last year, was shot on the spot trying to cross the border.",
-    "outcome": "“Helping androids is dangerous... Why take the risk?” {{Rose}}: “When the first one arrived, last year… He was so lost and confused… We hid him here for a while, but all he wanted to do was cross the border. They shot him on the spot. So when the next android showed up, I just knew I had to help him.”"
+    "outcome": "“Helping androids is dangerous... Why take the risk?” {{Rose}}: “When the first one arrived, last year… He was so lost and confused… We hid him here for a while, but all he wanted to do was cross the border. They shot him on the spot. So when the next android showed up, I just knew I had to help him.”",
+    "clue": "dangerous"
    },
    {
     "id": "3",
     "text": "{{ROSE}}: ask whether she and her son live here alone",
     "fact": "{{Rose}}’s husband died two years ago; she and {{Adam}} grow vegetables to sell at the market.",
-    "outcome": "“You and your son live here alone?” {{Rose}}: “My husband passed away two years ago. {{Adam}} and I, we’ve just been trying to scrape by… We grow vegetables to sell at the market… We’ll never be rich, but there’s always food on the table.”"
+    "outcome": "“You and your son live here alone?” {{Rose}}: “My husband passed away two years ago. {{Adam}} and I, we’ve just been trying to scrape by… We grow vegetables to sell at the market… We’ll never be rich, but there’s always food on the table.”",
+    "clue": "rose"
    },
    {
     "id": "4",
     "text": "THANKS: thank her",
-    "outcome": "“I don’t know how to thank you… {{Alice}} wouldn’t have survived another night outdoors…” {{Rose}}: “I just try to lend a helping hand when I can…”"
+    "outcome": "“I don’t know how to thank you… {{Alice}} wouldn’t have survived another night outdoors…” {{Rose}}: “I just try to lend a helping hand when I can…”",
+    "clue": "thanks"
    },
    {
     "id": "5",
@@ -393,7 +398,7 @@
     "outcome": "“We’ve heard you help androids cross the border. Can you help us?” {{Rose}}: “The only way is over the river and it’s mostly frozen in winter. It’s very risky. And after that android’s speech on TV? Everybody’s on edge… It’s probably safer for you to stay here until things settle down…”"
    }
   ],
-  "adaptationNote": "The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 1 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
+  "adaptationNote": "The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as one repeatable hub: each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -401,282 +406,11 @@
    "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
-  ]
- },
- {
-  "id": "K15l2",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Talking with {{Rose}}",
-  "type": "decision",
-  "situation": "You are {{Kara}}, at the table with {{Rose}}. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.",
-  "options": [
-   {
-    "id": "0",
-    "text": "WHY HELP?: ask {{Rose}} why she helps androids when most humans hate them",
-    "fact": "{{Rose}} helps androids because her people were often made to feel their lives were worthless, and some survived only because others helped them along the way.",
-    "outcome": "“Why are you helping us? Most humans hate androids…” {{Rose}}: “My people were often made to feel their lives were worthless… Some survived but only because they found others who helped them along the way…”"
-   },
-   {
-    "id": "1",
-    "text": "MANY DEVIANTS?: say you are not the first to come here",
-    "fact": "{{Rose}} has seen more and more androids come to her farm these past few weeks.",
-    "outcome": "“We’re not the first ones to come here.” {{Rose}}: “These past few weeks we’ve seen... More, and more… I don’t know what’s going on… But something’s happening…”"
-   },
-   {
-    "id": "2",
-    "text": "DANGEROUS: ask why she takes the risk",
-    "fact": "The first android {{Rose}} hid, last year, was shot on the spot trying to cross the border.",
-    "outcome": "“Helping androids is dangerous... Why take the risk?” {{Rose}}: “When the first one arrived, last year… He was so lost and confused… We hid him here for a while, but all he wanted to do was cross the border. They shot him on the spot. So when the next android showed up, I just knew I had to help him.”"
-   },
-   {
-    "id": "3",
-    "text": "{{ROSE}}: ask whether she and her son live here alone",
-    "fact": "{{Rose}}’s husband died two years ago; she and {{Adam}} grow vegetables to sell at the market.",
-    "outcome": "“You and your son live here alone?” {{Rose}}: “My husband passed away two years ago. {{Adam}} and I, we’ve just been trying to scrape by… We grow vegetables to sell at the market… We’ll never be rich, but there’s always food on the table.”"
-   },
-   {
-    "id": "4",
-    "text": "THANKS: thank her",
-    "outcome": "“I don’t know how to thank you… {{Alice}} wouldn’t have survived another night outdoors…” {{Rose}}: “I just try to lend a helping hand when I can…”"
-   },
-   {
-    "id": "5",
-    "text": "BORDER: ask {{Rose}} to help you cross the border",
-    "fact": "{{Rose}} says the only way across the border is over the river, mostly frozen in winter and very risky; after an android’s speech on TV everybody is on edge, and she thinks you would be safer staying with her until things settle down.",
-    "outcome": "“We’ve heard you help androids cross the border. Can you help us?” {{Rose}}: “The only way is over the river and it’s mostly frozen in winter. It’s very risky. And after that android’s speech on TV? Everybody’s on edge… It’s probably safer for you to stay here until things settle down…”"
-   }
   ],
-  "adaptationNote": "The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 2 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
-  ]
- },
- {
-  "id": "K15l3",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Talking with {{Rose}}",
-  "type": "decision",
-  "situation": "You are {{Kara}}, at the table with {{Rose}}. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.",
-  "options": [
-   {
-    "id": "0",
-    "text": "WHY HELP?: ask {{Rose}} why she helps androids when most humans hate them",
-    "fact": "{{Rose}} helps androids because her people were often made to feel their lives were worthless, and some survived only because others helped them along the way.",
-    "outcome": "“Why are you helping us? Most humans hate androids…” {{Rose}}: “My people were often made to feel their lives were worthless… Some survived but only because they found others who helped them along the way…”"
-   },
-   {
-    "id": "1",
-    "text": "MANY DEVIANTS?: say you are not the first to come here",
-    "fact": "{{Rose}} has seen more and more androids come to her farm these past few weeks.",
-    "outcome": "“We’re not the first ones to come here.” {{Rose}}: “These past few weeks we’ve seen... More, and more… I don’t know what’s going on… But something’s happening…”"
-   },
-   {
-    "id": "2",
-    "text": "DANGEROUS: ask why she takes the risk",
-    "fact": "The first android {{Rose}} hid, last year, was shot on the spot trying to cross the border.",
-    "outcome": "“Helping androids is dangerous... Why take the risk?” {{Rose}}: “When the first one arrived, last year… He was so lost and confused… We hid him here for a while, but all he wanted to do was cross the border. They shot him on the spot. So when the next android showed up, I just knew I had to help him.”"
-   },
-   {
-    "id": "3",
-    "text": "{{ROSE}}: ask whether she and her son live here alone",
-    "fact": "{{Rose}}’s husband died two years ago; she and {{Adam}} grow vegetables to sell at the market.",
-    "outcome": "“You and your son live here alone?” {{Rose}}: “My husband passed away two years ago. {{Adam}} and I, we’ve just been trying to scrape by… We grow vegetables to sell at the market… We’ll never be rich, but there’s always food on the table.”"
-   },
-   {
-    "id": "4",
-    "text": "THANKS: thank her",
-    "outcome": "“I don’t know how to thank you… {{Alice}} wouldn’t have survived another night outdoors…” {{Rose}}: “I just try to lend a helping hand when I can…”"
-   },
-   {
-    "id": "5",
-    "text": "BORDER: ask {{Rose}} to help you cross the border",
-    "fact": "{{Rose}} says the only way across the border is over the river, mostly frozen in winter and very risky; after an android’s speech on TV everybody is on edge, and she thinks you would be safer staying with her until things settle down.",
-    "outcome": "“We’ve heard you help androids cross the border. Can you help us?” {{Rose}}: “The only way is over the river and it’s mostly frozen in winter. It’s very risky. And after that android’s speech on TV? Everybody’s on edge… It’s probably safer for you to stay here until things settle down…”"
-   }
-  ],
-  "adaptationNote": "The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 3 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
-  ]
- },
- {
-  "id": "K15l4",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Talking with {{Rose}}",
-  "type": "decision",
-  "situation": "You are {{Kara}}, at the table with {{Rose}}. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.",
-  "options": [
-   {
-    "id": "0",
-    "text": "WHY HELP?: ask {{Rose}} why she helps androids when most humans hate them",
-    "fact": "{{Rose}} helps androids because her people were often made to feel their lives were worthless, and some survived only because others helped them along the way.",
-    "outcome": "“Why are you helping us? Most humans hate androids…” {{Rose}}: “My people were often made to feel their lives were worthless… Some survived but only because they found others who helped them along the way…”"
-   },
-   {
-    "id": "1",
-    "text": "MANY DEVIANTS?: say you are not the first to come here",
-    "fact": "{{Rose}} has seen more and more androids come to her farm these past few weeks.",
-    "outcome": "“We’re not the first ones to come here.” {{Rose}}: “These past few weeks we’ve seen... More, and more… I don’t know what’s going on… But something’s happening…”"
-   },
-   {
-    "id": "2",
-    "text": "DANGEROUS: ask why she takes the risk",
-    "fact": "The first android {{Rose}} hid, last year, was shot on the spot trying to cross the border.",
-    "outcome": "“Helping androids is dangerous... Why take the risk?” {{Rose}}: “When the first one arrived, last year… He was so lost and confused… We hid him here for a while, but all he wanted to do was cross the border. They shot him on the spot. So when the next android showed up, I just knew I had to help him.”"
-   },
-   {
-    "id": "3",
-    "text": "{{ROSE}}: ask whether she and her son live here alone",
-    "fact": "{{Rose}}’s husband died two years ago; she and {{Adam}} grow vegetables to sell at the market.",
-    "outcome": "“You and your son live here alone?” {{Rose}}: “My husband passed away two years ago. {{Adam}} and I, we’ve just been trying to scrape by… We grow vegetables to sell at the market… We’ll never be rich, but there’s always food on the table.”"
-   },
-   {
-    "id": "4",
-    "text": "THANKS: thank her",
-    "outcome": "“I don’t know how to thank you… {{Alice}} wouldn’t have survived another night outdoors…” {{Rose}}: “I just try to lend a helping hand when I can…”"
-   },
-   {
-    "id": "5",
-    "text": "BORDER: ask {{Rose}} to help you cross the border",
-    "fact": "{{Rose}} says the only way across the border is over the river, mostly frozen in winter and very risky; after an android’s speech on TV everybody is on edge, and she thinks you would be safer staying with her until things settle down.",
-    "outcome": "“We’ve heard you help androids cross the border. Can you help us?” {{Rose}}: “The only way is over the river and it’s mostly frozen in winter. It’s very risky. And after that android’s speech on TV? Everybody’s on edge… It’s probably safer for you to stay here until things settle down…”"
-   }
-  ],
-  "adaptationNote": "The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 4 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
-  ]
- },
- {
-  "id": "K15l5",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Talking with {{Rose}}",
-  "type": "decision",
-  "situation": "You are {{Kara}}, at the table with {{Rose}}. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.",
-  "options": [
-   {
-    "id": "0",
-    "text": "WHY HELP?: ask {{Rose}} why she helps androids when most humans hate them",
-    "fact": "{{Rose}} helps androids because her people were often made to feel their lives were worthless, and some survived only because others helped them along the way.",
-    "outcome": "“Why are you helping us? Most humans hate androids…” {{Rose}}: “My people were often made to feel their lives were worthless… Some survived but only because they found others who helped them along the way…”"
-   },
-   {
-    "id": "1",
-    "text": "MANY DEVIANTS?: say you are not the first to come here",
-    "fact": "{{Rose}} has seen more and more androids come to her farm these past few weeks.",
-    "outcome": "“We’re not the first ones to come here.” {{Rose}}: “These past few weeks we’ve seen... More, and more… I don’t know what’s going on… But something’s happening…”"
-   },
-   {
-    "id": "2",
-    "text": "DANGEROUS: ask why she takes the risk",
-    "fact": "The first android {{Rose}} hid, last year, was shot on the spot trying to cross the border.",
-    "outcome": "“Helping androids is dangerous... Why take the risk?” {{Rose}}: “When the first one arrived, last year… He was so lost and confused… We hid him here for a while, but all he wanted to do was cross the border. They shot him on the spot. So when the next android showed up, I just knew I had to help him.”"
-   },
-   {
-    "id": "3",
-    "text": "{{ROSE}}: ask whether she and her son live here alone",
-    "fact": "{{Rose}}’s husband died two years ago; she and {{Adam}} grow vegetables to sell at the market.",
-    "outcome": "“You and your son live here alone?” {{Rose}}: “My husband passed away two years ago. {{Adam}} and I, we’ve just been trying to scrape by… We grow vegetables to sell at the market… We’ll never be rich, but there’s always food on the table.”"
-   },
-   {
-    "id": "4",
-    "text": "THANKS: thank her",
-    "outcome": "“I don’t know how to thank you… {{Alice}} wouldn’t have survived another night outdoors…” {{Rose}}: “I just try to lend a helping hand when I can…”"
-   },
-   {
-    "id": "5",
-    "text": "BORDER: ask {{Rose}} to help you cross the border",
-    "fact": "{{Rose}} says the only way across the border is over the river, mostly frozen in winter and very risky; after an android’s speech on TV everybody is on edge, and she thinks you would be safer staying with her until things settle down.",
-    "outcome": "“We’ve heard you help androids cross the border. Can you help us?” {{Rose}}: “The only way is over the river and it’s mostly frozen in winter. It’s very risky. And after that android’s speech on TV? Everybody’s on edge… It’s probably safer for you to stay here until things settle down…”"
-   }
-  ],
-  "adaptationNote": "The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 5 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
-  ]
- },
- {
-  "id": "K15l6",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Talking with {{Rose}}",
-  "type": "decision",
-  "situation": "You are {{Kara}}, at the table with {{Rose}}. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.",
-  "options": [
-   {
-    "id": "0",
-    "text": "WHY HELP?: ask {{Rose}} why she helps androids when most humans hate them",
-    "fact": "{{Rose}} helps androids because her people were often made to feel their lives were worthless, and some survived only because others helped them along the way.",
-    "outcome": "“Why are you helping us? Most humans hate androids…” {{Rose}}: “My people were often made to feel their lives were worthless… Some survived but only because they found others who helped them along the way…”"
-   },
-   {
-    "id": "1",
-    "text": "MANY DEVIANTS?: say you are not the first to come here",
-    "fact": "{{Rose}} has seen more and more androids come to her farm these past few weeks.",
-    "outcome": "“We’re not the first ones to come here.” {{Rose}}: “These past few weeks we’ve seen... More, and more… I don’t know what’s going on… But something’s happening…”"
-   },
-   {
-    "id": "2",
-    "text": "DANGEROUS: ask why she takes the risk",
-    "fact": "The first android {{Rose}} hid, last year, was shot on the spot trying to cross the border.",
-    "outcome": "“Helping androids is dangerous... Why take the risk?” {{Rose}}: “When the first one arrived, last year… He was so lost and confused… We hid him here for a while, but all he wanted to do was cross the border. They shot him on the spot. So when the next android showed up, I just knew I had to help him.”"
-   },
-   {
-    "id": "3",
-    "text": "{{ROSE}}: ask whether she and her son live here alone",
-    "fact": "{{Rose}}’s husband died two years ago; she and {{Adam}} grow vegetables to sell at the market.",
-    "outcome": "“You and your son live here alone?” {{Rose}}: “My husband passed away two years ago. {{Adam}} and I, we’ve just been trying to scrape by… We grow vegetables to sell at the market… We’ll never be rich, but there’s always food on the table.”"
-   },
-   {
-    "id": "4",
-    "text": "THANKS: thank her",
-    "outcome": "“I don’t know how to thank you… {{Alice}} wouldn’t have survived another night outdoors…” {{Rose}}: “I just try to lend a helping hand when I can…”"
-   },
-   {
-    "id": "5",
-    "text": "BORDER: ask {{Rose}} to help you cross the border",
-    "fact": "{{Rose}} says the only way across the border is over the river, mostly frozen in winter and very risky; after an android’s speech on TV everybody is on edge, and she thinks you would be safer staying with her until things settle down.",
-    "outcome": "“We’ve heard you help androids cross the border. Can you help us?” {{Rose}}: “The only way is over the river and it’s mostly frozen in winter. It’s very risky. And after that android’s speech on TV? Everybody’s on edge… It’s probably safer for you to stay here until things settle down…”"
-   }
-  ],
-  "adaptationNote": "The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 6 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-3.jpg"
-  ]
+  "clueState": "midnightAsked",
+  "repeatWhile": {
+   "midnightRoseDone": false
+  }
  },
  {
   "id": "K15m",
@@ -840,7 +574,7 @@
   ]
  },
  {
-  "id": "K15q1",
+  "id": "K15q",
   "chapter": 25,
   "chapterTitle": "Midnight Train",
   "character": "Kara",
@@ -852,30 +586,35 @@
     "id": "0",
     "text": "Sit down with {{Luther}} by the fireplace and talk.",
     "fact": "By the fire {{Luther}} tried to tell you something about {{Alice}}; you told him “Not now.”",
-    "outcome": "“I hope {{Rose}} gets back soon.” {{Luther}}: “{{Kara}}… There’s something I need to tell you… It’s about {{Alice}}.” “Not now, {{Luther}}.”"
+    "outcome": "“I hope {{Rose}} gets back soon.” {{Luther}}: “{{Kara}}… There’s something I need to tell you… It’s about {{Alice}}.” “Not now, {{Luther}}.”",
+    "clue": "luther"
    },
    {
     "id": "1",
     "text": "INSIST: join {{Alice}} by the fire, ask her about what happened back there, and press her to tell you",
     "fact": "{{Alice}} knows something about what happened in the laundry room and will not tell you: “If I tell you, you won’t love me anymore…”",
-    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} is silent. “I thought we didn’t keep secrets from each other…” {{Alice}}: “If I tell you, you won’t love me anymore…” “{{Alice}}... You know that’s not true.”"
+    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} is silent. “I thought we didn’t keep secrets from each other…” {{Alice}}: “If I tell you, you won’t love me anymore…” “{{Alice}}... You know that’s not true.”",
+    "clue": "alice"
    },
    {
     "id": "2",
     "text": "LET IT GO: join {{Alice}} by the fire, ask her about what happened back there, and let it go if she stays silent",
     "fact": "{{Alice}} seemed to know something about what happened in the laundry room, but did not want to tell you; you did not press her.",
-    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} says nothing, and {{Kara}} lets it go."
+    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} says nothing, and {{Kara}} lets it go.",
+    "clue": "alice"
    },
    {
     "id": "3",
     "text": "Look in on the androids in the laundry room.",
-    "outcome": "{{Kara}} looks in at the laundry-room door. The androids are still there, waiting for {{Rose}}; one of them still holds {{Mary}}’s body."
+    "outcome": "{{Kara}} looks in at the laundry-room door. The androids are still there, waiting for {{Rose}}; one of them still holds {{Mary}}’s body.",
+    "clue": "deviants"
    },
    {
     "id": "4",
     "text": "Look at the family photo on the living-room cupboard.",
     "fact": "A family photo in the living room shows {{Rose}} and {{Adam}} with {{Adam}}’s father, who died two years ago.",
-    "outcome": "The photo shows {{Rose}} and {{Adam}} with a man: {{Adam}}’s father, the husband {{Rose}} lost two years ago."
+    "outcome": "The photo shows {{Rose}} and {{Adam}} with a man: {{Adam}}’s father, the husband {{Rose}} lost two years ago.",
+    "clue": "photo"
    },
    {
     "id": "5",
@@ -883,7 +622,7 @@
     "outcome": "{{Kara}} waits."
    }
   ],
-  "adaptationNote": "The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as a run of four menu scenes (this is menu 1 of 4): each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change: the template has no arrow in the phase and the wiki lists none.",
+  "adaptationNote": "The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as one repeatable hub: each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. No stat change: the template has no arrow in the phase and the wiki lists none.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -893,175 +632,11 @@
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
    "https://detroit-become-human.fandom.com/wiki/Luther",
    "https://detroit-become-human.fandom.com/wiki/Alice"
-  ]
- },
- {
-  "id": "K15q2",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Waiting for {{Rose}}",
-  "type": "decision",
-  "situation": "You are {{Kara}}, waiting in {{Rose}}’s house for her to come back. {{Alice}} and {{Luther}} sit by the fireplace; the androids are in the laundry room; a family photo stands on the cupboard in the living room. You can do one thing at a time, or simply wait.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Sit down with {{Luther}} by the fireplace and talk.",
-    "fact": "By the fire {{Luther}} tried to tell you something about {{Alice}}; you told him “Not now.”",
-    "outcome": "“I hope {{Rose}} gets back soon.” {{Luther}}: “{{Kara}}… There’s something I need to tell you… It’s about {{Alice}}.” “Not now, {{Luther}}.”"
-   },
-   {
-    "id": "1",
-    "text": "INSIST: join {{Alice}} by the fire, ask her about what happened back there, and press her to tell you",
-    "fact": "{{Alice}} knows something about what happened in the laundry room and will not tell you: “If I tell you, you won’t love me anymore…”",
-    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} is silent. “I thought we didn’t keep secrets from each other…” {{Alice}}: “If I tell you, you won’t love me anymore…” “{{Alice}}... You know that’s not true.”"
-   },
-   {
-    "id": "2",
-    "text": "LET IT GO: join {{Alice}} by the fire, ask her about what happened back there, and let it go if she stays silent",
-    "fact": "{{Alice}} seemed to know something about what happened in the laundry room, but did not want to tell you; you did not press her.",
-    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} says nothing, and {{Kara}} lets it go."
-   },
-   {
-    "id": "3",
-    "text": "Look in on the androids in the laundry room.",
-    "outcome": "{{Kara}} looks in at the laundry-room door. The androids are still there, waiting for {{Rose}}; one of them still holds {{Mary}}’s body."
-   },
-   {
-    "id": "4",
-    "text": "Look at the family photo on the living-room cupboard.",
-    "fact": "A family photo in the living room shows {{Rose}} and {{Adam}} with {{Adam}}’s father, who died two years ago.",
-    "outcome": "The photo shows {{Rose}} and {{Adam}} with a man: {{Adam}}’s father, the husband {{Rose}} lost two years ago."
-   },
-   {
-    "id": "5",
-    "text": "Wait for {{Rose}} to come back.",
-    "outcome": "{{Kara}} waits."
-   }
   ],
-  "adaptationNote": "The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as a run of four menu scenes (this is menu 2 of 4): each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change: the template has no arrow in the phase and the wiki lists none.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Luther",
-   "https://detroit-become-human.fandom.com/wiki/Alice"
-  ]
- },
- {
-  "id": "K15q3",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Waiting for {{Rose}}",
-  "type": "decision",
-  "situation": "You are {{Kara}}, waiting in {{Rose}}’s house for her to come back. {{Alice}} and {{Luther}} sit by the fireplace; the androids are in the laundry room; a family photo stands on the cupboard in the living room. You can do one thing at a time, or simply wait.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Sit down with {{Luther}} by the fireplace and talk.",
-    "fact": "By the fire {{Luther}} tried to tell you something about {{Alice}}; you told him “Not now.”",
-    "outcome": "“I hope {{Rose}} gets back soon.” {{Luther}}: “{{Kara}}… There’s something I need to tell you… It’s about {{Alice}}.” “Not now, {{Luther}}.”"
-   },
-   {
-    "id": "1",
-    "text": "INSIST: join {{Alice}} by the fire, ask her about what happened back there, and press her to tell you",
-    "fact": "{{Alice}} knows something about what happened in the laundry room and will not tell you: “If I tell you, you won’t love me anymore…”",
-    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} is silent. “I thought we didn’t keep secrets from each other…” {{Alice}}: “If I tell you, you won’t love me anymore…” “{{Alice}}... You know that’s not true.”"
-   },
-   {
-    "id": "2",
-    "text": "LET IT GO: join {{Alice}} by the fire, ask her about what happened back there, and let it go if she stays silent",
-    "fact": "{{Alice}} seemed to know something about what happened in the laundry room, but did not want to tell you; you did not press her.",
-    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} says nothing, and {{Kara}} lets it go."
-   },
-   {
-    "id": "3",
-    "text": "Look in on the androids in the laundry room.",
-    "outcome": "{{Kara}} looks in at the laundry-room door. The androids are still there, waiting for {{Rose}}; one of them still holds {{Mary}}’s body."
-   },
-   {
-    "id": "4",
-    "text": "Look at the family photo on the living-room cupboard.",
-    "fact": "A family photo in the living room shows {{Rose}} and {{Adam}} with {{Adam}}’s father, who died two years ago.",
-    "outcome": "The photo shows {{Rose}} and {{Adam}} with a man: {{Adam}}’s father, the husband {{Rose}} lost two years ago."
-   },
-   {
-    "id": "5",
-    "text": "Wait for {{Rose}} to come back.",
-    "outcome": "{{Kara}} waits."
-   }
-  ],
-  "adaptationNote": "The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as a run of four menu scenes (this is menu 3 of 4): each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change: the template has no arrow in the phase and the wiki lists none.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Luther",
-   "https://detroit-become-human.fandom.com/wiki/Alice"
-  ]
- },
- {
-  "id": "K15q4",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Waiting for {{Rose}}",
-  "type": "decision",
-  "situation": "You are {{Kara}}, waiting in {{Rose}}’s house for her to come back. {{Alice}} and {{Luther}} sit by the fireplace; the androids are in the laundry room; a family photo stands on the cupboard in the living room. You can do one thing at a time, or simply wait.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Sit down with {{Luther}} by the fireplace and talk.",
-    "fact": "By the fire {{Luther}} tried to tell you something about {{Alice}}; you told him “Not now.”",
-    "outcome": "“I hope {{Rose}} gets back soon.” {{Luther}}: “{{Kara}}… There’s something I need to tell you… It’s about {{Alice}}.” “Not now, {{Luther}}.”"
-   },
-   {
-    "id": "1",
-    "text": "INSIST: join {{Alice}} by the fire, ask her about what happened back there, and press her to tell you",
-    "fact": "{{Alice}} knows something about what happened in the laundry room and will not tell you: “If I tell you, you won’t love me anymore…”",
-    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} is silent. “I thought we didn’t keep secrets from each other…” {{Alice}}: “If I tell you, you won’t love me anymore…” “{{Alice}}... You know that’s not true.”"
-   },
-   {
-    "id": "2",
-    "text": "LET IT GO: join {{Alice}} by the fire, ask her about what happened back there, and let it go if she stays silent",
-    "fact": "{{Alice}} seemed to know something about what happened in the laundry room, but did not want to tell you; you did not press her.",
-    "outcome": "{{Kara}} sits down beside {{Alice}}: “You know what happened back there, don’t you? You know… But you don’t wanna tell me?..” {{Alice}} says nothing, and {{Kara}} lets it go."
-   },
-   {
-    "id": "3",
-    "text": "Look in on the androids in the laundry room.",
-    "outcome": "{{Kara}} looks in at the laundry-room door. The androids are still there, waiting for {{Rose}}; one of them still holds {{Mary}}’s body."
-   },
-   {
-    "id": "4",
-    "text": "Look at the family photo on the living-room cupboard.",
-    "fact": "A family photo in the living room shows {{Rose}} and {{Adam}} with {{Adam}}’s father, who died two years ago.",
-    "outcome": "The photo shows {{Rose}} and {{Adam}} with a man: {{Adam}}’s father, the husband {{Rose}} lost two years ago."
-   },
-   {
-    "id": "5",
-    "text": "Wait for {{Rose}} to come back.",
-    "outcome": "{{Kara}} waits."
-   }
-  ],
-  "adaptationNote": "The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as a run of four menu scenes (this is menu 4 of 4): each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change: the template has no arrow in the phase and the wiki lists none.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Luther",
-   "https://detroit-become-human.fandom.com/wiki/Alice"
-  ]
+  "clueState": "midnightExplore",
+  "repeatWhile": {
+   "midnightExploreDone": false
+  }
  },
  {
   "id": "K15r",
@@ -1165,7 +740,7 @@
   ]
  },
  {
-  "id": "K15u1",
+  "id": "K15u",
   "chapter": 25,
   "chapterTitle": "Midnight Train",
   "character": "Kara",
@@ -1176,57 +751,68 @@
    {
     "id": "0",
     "text": "Turn the magazine on the kitchen table to its other page.",
-    "outcome": "{{Kara}} turns the magazine to its other page."
+    "outcome": "{{Kara}} turns the magazine to its other page.",
+    "clue": "magazine"
    },
    {
     "id": "1",
     "text": "Close the cupboard with the blue blood pouches.",
-    "outcome": "{{Kara}} shuts the cupboard on the blue blood pouches."
+    "outcome": "{{Kara}} shuts the cupboard on the blue blood pouches.",
+    "clue": "blood"
    },
    {
     "id": "2",
     "text": "UPSTAIRS: tell {{Luther}} to take {{Alice}} and hide upstairs",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …upstairs!” {{Luther}}: “Come on, {{Alice}}!” They hurry up the stairs."
+    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …upstairs!” {{Luther}}: “Come on, {{Alice}}!” They hurry up the stairs.",
+    "clue": "place"
    },
    {
     "id": "3",
     "text": "LAUNDRY: tell {{Luther}} to take {{Alice}} and hide in the laundry room",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the laundry room!” {{Luther}}: “Come on, {{Alice}}!” They slip into the laundry room with the others."
+    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the laundry room!” {{Luther}}: “Come on, {{Alice}}!” They slip into the laundry room with the others.",
+    "clue": "place"
    },
    {
     "id": "4",
     "text": "KITCHEN: tell {{Luther}} to take {{Alice}} and hide in the kitchen",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the kitchen.” {{Luther}}: “Come on, {{Alice}}!” They duck into the pantry at the side of the kitchen; its curtain is still open."
+    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the kitchen.” {{Luther}}: “Come on, {{Alice}}!” They duck into the pantry at the side of the kitchen; its curtain is still open.",
+    "clue": "place"
    },
    {
     "id": "5",
     "text": "Draw the kitchen curtain across the pantry where {{Luther}} and {{Alice}} are hiding.",
-    "outcome": "{{Kara}} draws the curtain across the pantry."
+    "outcome": "{{Kara}} draws the curtain across the pantry.",
+    "clue": "curtain"
    },
    {
     "id": "6",
     "text": "Shut the door of the laundry room.",
-    "outcome": "{{Kara}} shuts the laundry-room door on the androids inside."
+    "outcome": "{{Kara}} shuts the laundry-room door on the androids inside.",
+    "clue": "door"
    },
    {
     "id": "7",
     "text": "Hide the android clothes in the cupboard by the TV.",
-    "outcome": "{{Kara}} stuffs the android clothes into the cupboard and closes it."
+    "outcome": "{{Kara}} stuffs the android clothes into the cupboard and closes it.",
+    "clue": "clothes"
    },
    {
     "id": "8",
     "text": "REASSURE: tell {{Adam}} to keep calm",
-    "outcome": "“Just keep calm, {{Adam}}, and everything will be alright.”"
+    "outcome": "“Just keep calm, {{Adam}}, and everything will be alright.”",
+    "clue": "adam"
    },
    {
     "id": "9",
     "text": "THREATEN: ask {{Adam}} if he wants to see his mother in prison, and tell him to do as you say",
-    "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”"
+    "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”",
+    "clue": "adam"
    },
    {
     "id": "10",
     "text": "CALM: warn {{Adam}} that panicking will give you all away, and tell him to keep calm",
-    "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”"
+    "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”",
+    "clue": "adam"
    },
    {
     "id": "11",
@@ -1347,7 +933,7 @@
     "text": "{{Adam}} is panicking in the hall."
    }
   ],
-  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 1 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
+  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as one repeatable hub, with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
@@ -1358,1183 +944,11 @@
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
    "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
-  ]
- },
- {
-  "id": "K15u2",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Hide the evidence",
-  "type": "decision",
-  "situation": "You are {{Kara}}. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Turn the magazine on the kitchen table to its other page.",
-    "outcome": "{{Kara}} turns the magazine to its other page."
-   },
-   {
-    "id": "1",
-    "text": "Close the cupboard with the blue blood pouches.",
-    "outcome": "{{Kara}} shuts the cupboard on the blue blood pouches."
-   },
-   {
-    "id": "2",
-    "text": "UPSTAIRS: tell {{Luther}} to take {{Alice}} and hide upstairs",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …upstairs!” {{Luther}}: “Come on, {{Alice}}!” They hurry up the stairs."
-   },
-   {
-    "id": "3",
-    "text": "LAUNDRY: tell {{Luther}} to take {{Alice}} and hide in the laundry room",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the laundry room!” {{Luther}}: “Come on, {{Alice}}!” They slip into the laundry room with the others."
-   },
-   {
-    "id": "4",
-    "text": "KITCHEN: tell {{Luther}} to take {{Alice}} and hide in the kitchen",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the kitchen.” {{Luther}}: “Come on, {{Alice}}!” They duck into the pantry at the side of the kitchen; its curtain is still open."
-   },
-   {
-    "id": "5",
-    "text": "Draw the kitchen curtain across the pantry where {{Luther}} and {{Alice}} are hiding.",
-    "outcome": "{{Kara}} draws the curtain across the pantry."
-   },
-   {
-    "id": "6",
-    "text": "Shut the door of the laundry room.",
-    "outcome": "{{Kara}} shuts the laundry-room door on the androids inside."
-   },
-   {
-    "id": "7",
-    "text": "Hide the android clothes in the cupboard by the TV.",
-    "outcome": "{{Kara}} stuffs the android clothes into the cupboard and closes it."
-   },
-   {
-    "id": "8",
-    "text": "REASSURE: tell {{Adam}} to keep calm",
-    "outcome": "“Just keep calm, {{Adam}}, and everything will be alright.”"
-   },
-   {
-    "id": "9",
-    "text": "THREATEN: ask {{Adam}} if he wants to see his mother in prison, and tell him to do as you say",
-    "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”"
-   },
-   {
-    "id": "10",
-    "text": "CALM: warn {{Adam}} that panicking will give you all away, and tell him to keep calm",
-    "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”"
-   },
-   {
-    "id": "11",
-    "text": "Open the door.",
-    "outcome": "{{Kara}} opens the front door."
-   }
   ],
-  "situationWhen": [
-   {
-    "requires": {
-     "midnightHideLeft": 6
-    },
-    "text": "You have time for about six things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 5
-    },
-    "text": "You have time for about five more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 4
-    },
-    "text": "You have time for about four more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 3
-    },
-    "text": "You have time for about three more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 2
-    },
-    "text": "You have time for about two more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 1
-    },
-    "text": "The officer knocks again. You have time for one more thing at most before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 0
-    },
-    "text": "The officer is losing patience: if you do anything else now, he will not wait for you to open the door."
-   },
-   {
-    "requires": {
-     "midnightMagazine": "ad"
-    },
-    "text": "The magazine on the kitchen table lies open at the {{CyberLife}} advertisement."
-   },
-   {
-    "requires": {
-     "midnightMagazineRead": true,
-     "midnightMagazine": "cover"
-    },
-    "text": "The magazine on the kitchen table shows its cover story."
-   },
-   {
-    "requires": {
-     "midnightHide.blood": false
-    },
-    "text": "The cupboard with the blue blood pouches is open."
-   },
-   {
-    "requires": {
-     "midnightHide.clothes": false
-    },
-    "text": "The android clothes lie on the cupboard next to the TV."
-   },
-   {
-    "requires": {
-     "midnightHide.door": false
-    },
-    "text": "The laundry-room door is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": null
-    },
-    "text": "{{Alice}} and {{Luther}} are still by the fire."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "upstairs"
-    },
-    "text": "{{Luther}} has taken {{Alice}} upstairs."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "laundry"
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the laundry room with the others."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": false
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry; its curtain is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": true
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry behind the drawn curtain."
-   },
-   {
-    "requires": {
-     "midnightHide.adam": false
-    },
-    "text": "{{Adam}} is panicking in the hall."
-   }
-  ],
-  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 2 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
-   "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
-   "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
-  ]
- },
- {
-  "id": "K15u3",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Hide the evidence",
-  "type": "decision",
-  "situation": "You are {{Kara}}. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Turn the magazine on the kitchen table to its other page.",
-    "outcome": "{{Kara}} turns the magazine to its other page."
-   },
-   {
-    "id": "1",
-    "text": "Close the cupboard with the blue blood pouches.",
-    "outcome": "{{Kara}} shuts the cupboard on the blue blood pouches."
-   },
-   {
-    "id": "2",
-    "text": "UPSTAIRS: tell {{Luther}} to take {{Alice}} and hide upstairs",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …upstairs!” {{Luther}}: “Come on, {{Alice}}!” They hurry up the stairs."
-   },
-   {
-    "id": "3",
-    "text": "LAUNDRY: tell {{Luther}} to take {{Alice}} and hide in the laundry room",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the laundry room!” {{Luther}}: “Come on, {{Alice}}!” They slip into the laundry room with the others."
-   },
-   {
-    "id": "4",
-    "text": "KITCHEN: tell {{Luther}} to take {{Alice}} and hide in the kitchen",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the kitchen.” {{Luther}}: “Come on, {{Alice}}!” They duck into the pantry at the side of the kitchen; its curtain is still open."
-   },
-   {
-    "id": "5",
-    "text": "Draw the kitchen curtain across the pantry where {{Luther}} and {{Alice}} are hiding.",
-    "outcome": "{{Kara}} draws the curtain across the pantry."
-   },
-   {
-    "id": "6",
-    "text": "Shut the door of the laundry room.",
-    "outcome": "{{Kara}} shuts the laundry-room door on the androids inside."
-   },
-   {
-    "id": "7",
-    "text": "Hide the android clothes in the cupboard by the TV.",
-    "outcome": "{{Kara}} stuffs the android clothes into the cupboard and closes it."
-   },
-   {
-    "id": "8",
-    "text": "REASSURE: tell {{Adam}} to keep calm",
-    "outcome": "“Just keep calm, {{Adam}}, and everything will be alright.”"
-   },
-   {
-    "id": "9",
-    "text": "THREATEN: ask {{Adam}} if he wants to see his mother in prison, and tell him to do as you say",
-    "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”"
-   },
-   {
-    "id": "10",
-    "text": "CALM: warn {{Adam}} that panicking will give you all away, and tell him to keep calm",
-    "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”"
-   },
-   {
-    "id": "11",
-    "text": "Open the door.",
-    "outcome": "{{Kara}} opens the front door."
-   }
-  ],
-  "situationWhen": [
-   {
-    "requires": {
-     "midnightHideLeft": 6
-    },
-    "text": "You have time for about six things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 5
-    },
-    "text": "You have time for about five more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 4
-    },
-    "text": "You have time for about four more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 3
-    },
-    "text": "You have time for about three more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 2
-    },
-    "text": "You have time for about two more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 1
-    },
-    "text": "The officer knocks again. You have time for one more thing at most before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 0
-    },
-    "text": "The officer is losing patience: if you do anything else now, he will not wait for you to open the door."
-   },
-   {
-    "requires": {
-     "midnightMagazine": "ad"
-    },
-    "text": "The magazine on the kitchen table lies open at the {{CyberLife}} advertisement."
-   },
-   {
-    "requires": {
-     "midnightMagazineRead": true,
-     "midnightMagazine": "cover"
-    },
-    "text": "The magazine on the kitchen table shows its cover story."
-   },
-   {
-    "requires": {
-     "midnightHide.blood": false
-    },
-    "text": "The cupboard with the blue blood pouches is open."
-   },
-   {
-    "requires": {
-     "midnightHide.clothes": false
-    },
-    "text": "The android clothes lie on the cupboard next to the TV."
-   },
-   {
-    "requires": {
-     "midnightHide.door": false
-    },
-    "text": "The laundry-room door is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": null
-    },
-    "text": "{{Alice}} and {{Luther}} are still by the fire."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "upstairs"
-    },
-    "text": "{{Luther}} has taken {{Alice}} upstairs."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "laundry"
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the laundry room with the others."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": false
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry; its curtain is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": true
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry behind the drawn curtain."
-   },
-   {
-    "requires": {
-     "midnightHide.adam": false
-    },
-    "text": "{{Adam}} is panicking in the hall."
-   }
-  ],
-  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 3 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
-   "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
-   "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
-  ]
- },
- {
-  "id": "K15u4",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Hide the evidence",
-  "type": "decision",
-  "situation": "You are {{Kara}}. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Turn the magazine on the kitchen table to its other page.",
-    "outcome": "{{Kara}} turns the magazine to its other page."
-   },
-   {
-    "id": "1",
-    "text": "Close the cupboard with the blue blood pouches.",
-    "outcome": "{{Kara}} shuts the cupboard on the blue blood pouches."
-   },
-   {
-    "id": "2",
-    "text": "UPSTAIRS: tell {{Luther}} to take {{Alice}} and hide upstairs",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …upstairs!” {{Luther}}: “Come on, {{Alice}}!” They hurry up the stairs."
-   },
-   {
-    "id": "3",
-    "text": "LAUNDRY: tell {{Luther}} to take {{Alice}} and hide in the laundry room",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the laundry room!” {{Luther}}: “Come on, {{Alice}}!” They slip into the laundry room with the others."
-   },
-   {
-    "id": "4",
-    "text": "KITCHEN: tell {{Luther}} to take {{Alice}} and hide in the kitchen",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the kitchen.” {{Luther}}: “Come on, {{Alice}}!” They duck into the pantry at the side of the kitchen; its curtain is still open."
-   },
-   {
-    "id": "5",
-    "text": "Draw the kitchen curtain across the pantry where {{Luther}} and {{Alice}} are hiding.",
-    "outcome": "{{Kara}} draws the curtain across the pantry."
-   },
-   {
-    "id": "6",
-    "text": "Shut the door of the laundry room.",
-    "outcome": "{{Kara}} shuts the laundry-room door on the androids inside."
-   },
-   {
-    "id": "7",
-    "text": "Hide the android clothes in the cupboard by the TV.",
-    "outcome": "{{Kara}} stuffs the android clothes into the cupboard and closes it."
-   },
-   {
-    "id": "8",
-    "text": "REASSURE: tell {{Adam}} to keep calm",
-    "outcome": "“Just keep calm, {{Adam}}, and everything will be alright.”"
-   },
-   {
-    "id": "9",
-    "text": "THREATEN: ask {{Adam}} if he wants to see his mother in prison, and tell him to do as you say",
-    "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”"
-   },
-   {
-    "id": "10",
-    "text": "CALM: warn {{Adam}} that panicking will give you all away, and tell him to keep calm",
-    "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”"
-   },
-   {
-    "id": "11",
-    "text": "Open the door.",
-    "outcome": "{{Kara}} opens the front door."
-   }
-  ],
-  "situationWhen": [
-   {
-    "requires": {
-     "midnightHideLeft": 6
-    },
-    "text": "You have time for about six things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 5
-    },
-    "text": "You have time for about five more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 4
-    },
-    "text": "You have time for about four more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 3
-    },
-    "text": "You have time for about three more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 2
-    },
-    "text": "You have time for about two more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 1
-    },
-    "text": "The officer knocks again. You have time for one more thing at most before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 0
-    },
-    "text": "The officer is losing patience: if you do anything else now, he will not wait for you to open the door."
-   },
-   {
-    "requires": {
-     "midnightMagazine": "ad"
-    },
-    "text": "The magazine on the kitchen table lies open at the {{CyberLife}} advertisement."
-   },
-   {
-    "requires": {
-     "midnightMagazineRead": true,
-     "midnightMagazine": "cover"
-    },
-    "text": "The magazine on the kitchen table shows its cover story."
-   },
-   {
-    "requires": {
-     "midnightHide.blood": false
-    },
-    "text": "The cupboard with the blue blood pouches is open."
-   },
-   {
-    "requires": {
-     "midnightHide.clothes": false
-    },
-    "text": "The android clothes lie on the cupboard next to the TV."
-   },
-   {
-    "requires": {
-     "midnightHide.door": false
-    },
-    "text": "The laundry-room door is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": null
-    },
-    "text": "{{Alice}} and {{Luther}} are still by the fire."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "upstairs"
-    },
-    "text": "{{Luther}} has taken {{Alice}} upstairs."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "laundry"
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the laundry room with the others."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": false
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry; its curtain is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": true
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry behind the drawn curtain."
-   },
-   {
-    "requires": {
-     "midnightHide.adam": false
-    },
-    "text": "{{Adam}} is panicking in the hall."
-   }
-  ],
-  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 4 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
-   "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
-   "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
-  ]
- },
- {
-  "id": "K15u5",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Hide the evidence",
-  "type": "decision",
-  "situation": "You are {{Kara}}. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Turn the magazine on the kitchen table to its other page.",
-    "outcome": "{{Kara}} turns the magazine to its other page."
-   },
-   {
-    "id": "1",
-    "text": "Close the cupboard with the blue blood pouches.",
-    "outcome": "{{Kara}} shuts the cupboard on the blue blood pouches."
-   },
-   {
-    "id": "2",
-    "text": "UPSTAIRS: tell {{Luther}} to take {{Alice}} and hide upstairs",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …upstairs!” {{Luther}}: “Come on, {{Alice}}!” They hurry up the stairs."
-   },
-   {
-    "id": "3",
-    "text": "LAUNDRY: tell {{Luther}} to take {{Alice}} and hide in the laundry room",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the laundry room!” {{Luther}}: “Come on, {{Alice}}!” They slip into the laundry room with the others."
-   },
-   {
-    "id": "4",
-    "text": "KITCHEN: tell {{Luther}} to take {{Alice}} and hide in the kitchen",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the kitchen.” {{Luther}}: “Come on, {{Alice}}!” They duck into the pantry at the side of the kitchen; its curtain is still open."
-   },
-   {
-    "id": "5",
-    "text": "Draw the kitchen curtain across the pantry where {{Luther}} and {{Alice}} are hiding.",
-    "outcome": "{{Kara}} draws the curtain across the pantry."
-   },
-   {
-    "id": "6",
-    "text": "Shut the door of the laundry room.",
-    "outcome": "{{Kara}} shuts the laundry-room door on the androids inside."
-   },
-   {
-    "id": "7",
-    "text": "Hide the android clothes in the cupboard by the TV.",
-    "outcome": "{{Kara}} stuffs the android clothes into the cupboard and closes it."
-   },
-   {
-    "id": "8",
-    "text": "REASSURE: tell {{Adam}} to keep calm",
-    "outcome": "“Just keep calm, {{Adam}}, and everything will be alright.”"
-   },
-   {
-    "id": "9",
-    "text": "THREATEN: ask {{Adam}} if he wants to see his mother in prison, and tell him to do as you say",
-    "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”"
-   },
-   {
-    "id": "10",
-    "text": "CALM: warn {{Adam}} that panicking will give you all away, and tell him to keep calm",
-    "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”"
-   },
-   {
-    "id": "11",
-    "text": "Open the door.",
-    "outcome": "{{Kara}} opens the front door."
-   }
-  ],
-  "situationWhen": [
-   {
-    "requires": {
-     "midnightHideLeft": 6
-    },
-    "text": "You have time for about six things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 5
-    },
-    "text": "You have time for about five more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 4
-    },
-    "text": "You have time for about four more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 3
-    },
-    "text": "You have time for about three more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 2
-    },
-    "text": "You have time for about two more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 1
-    },
-    "text": "The officer knocks again. You have time for one more thing at most before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 0
-    },
-    "text": "The officer is losing patience: if you do anything else now, he will not wait for you to open the door."
-   },
-   {
-    "requires": {
-     "midnightMagazine": "ad"
-    },
-    "text": "The magazine on the kitchen table lies open at the {{CyberLife}} advertisement."
-   },
-   {
-    "requires": {
-     "midnightMagazineRead": true,
-     "midnightMagazine": "cover"
-    },
-    "text": "The magazine on the kitchen table shows its cover story."
-   },
-   {
-    "requires": {
-     "midnightHide.blood": false
-    },
-    "text": "The cupboard with the blue blood pouches is open."
-   },
-   {
-    "requires": {
-     "midnightHide.clothes": false
-    },
-    "text": "The android clothes lie on the cupboard next to the TV."
-   },
-   {
-    "requires": {
-     "midnightHide.door": false
-    },
-    "text": "The laundry-room door is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": null
-    },
-    "text": "{{Alice}} and {{Luther}} are still by the fire."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "upstairs"
-    },
-    "text": "{{Luther}} has taken {{Alice}} upstairs."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "laundry"
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the laundry room with the others."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": false
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry; its curtain is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": true
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry behind the drawn curtain."
-   },
-   {
-    "requires": {
-     "midnightHide.adam": false
-    },
-    "text": "{{Adam}} is panicking in the hall."
-   }
-  ],
-  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 5 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
-   "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
-   "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
-  ]
- },
- {
-  "id": "K15u6",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Hide the evidence",
-  "type": "decision",
-  "situation": "You are {{Kara}}. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Turn the magazine on the kitchen table to its other page.",
-    "outcome": "{{Kara}} turns the magazine to its other page."
-   },
-   {
-    "id": "1",
-    "text": "Close the cupboard with the blue blood pouches.",
-    "outcome": "{{Kara}} shuts the cupboard on the blue blood pouches."
-   },
-   {
-    "id": "2",
-    "text": "UPSTAIRS: tell {{Luther}} to take {{Alice}} and hide upstairs",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …upstairs!” {{Luther}}: “Come on, {{Alice}}!” They hurry up the stairs."
-   },
-   {
-    "id": "3",
-    "text": "LAUNDRY: tell {{Luther}} to take {{Alice}} and hide in the laundry room",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the laundry room!” {{Luther}}: “Come on, {{Alice}}!” They slip into the laundry room with the others."
-   },
-   {
-    "id": "4",
-    "text": "KITCHEN: tell {{Luther}} to take {{Alice}} and hide in the kitchen",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the kitchen.” {{Luther}}: “Come on, {{Alice}}!” They duck into the pantry at the side of the kitchen; its curtain is still open."
-   },
-   {
-    "id": "5",
-    "text": "Draw the kitchen curtain across the pantry where {{Luther}} and {{Alice}} are hiding.",
-    "outcome": "{{Kara}} draws the curtain across the pantry."
-   },
-   {
-    "id": "6",
-    "text": "Shut the door of the laundry room.",
-    "outcome": "{{Kara}} shuts the laundry-room door on the androids inside."
-   },
-   {
-    "id": "7",
-    "text": "Hide the android clothes in the cupboard by the TV.",
-    "outcome": "{{Kara}} stuffs the android clothes into the cupboard and closes it."
-   },
-   {
-    "id": "8",
-    "text": "REASSURE: tell {{Adam}} to keep calm",
-    "outcome": "“Just keep calm, {{Adam}}, and everything will be alright.”"
-   },
-   {
-    "id": "9",
-    "text": "THREATEN: ask {{Adam}} if he wants to see his mother in prison, and tell him to do as you say",
-    "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”"
-   },
-   {
-    "id": "10",
-    "text": "CALM: warn {{Adam}} that panicking will give you all away, and tell him to keep calm",
-    "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”"
-   },
-   {
-    "id": "11",
-    "text": "Open the door.",
-    "outcome": "{{Kara}} opens the front door."
-   }
-  ],
-  "situationWhen": [
-   {
-    "requires": {
-     "midnightHideLeft": 6
-    },
-    "text": "You have time for about six things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 5
-    },
-    "text": "You have time for about five more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 4
-    },
-    "text": "You have time for about four more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 3
-    },
-    "text": "You have time for about three more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 2
-    },
-    "text": "You have time for about two more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 1
-    },
-    "text": "The officer knocks again. You have time for one more thing at most before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 0
-    },
-    "text": "The officer is losing patience: if you do anything else now, he will not wait for you to open the door."
-   },
-   {
-    "requires": {
-     "midnightMagazine": "ad"
-    },
-    "text": "The magazine on the kitchen table lies open at the {{CyberLife}} advertisement."
-   },
-   {
-    "requires": {
-     "midnightMagazineRead": true,
-     "midnightMagazine": "cover"
-    },
-    "text": "The magazine on the kitchen table shows its cover story."
-   },
-   {
-    "requires": {
-     "midnightHide.blood": false
-    },
-    "text": "The cupboard with the blue blood pouches is open."
-   },
-   {
-    "requires": {
-     "midnightHide.clothes": false
-    },
-    "text": "The android clothes lie on the cupboard next to the TV."
-   },
-   {
-    "requires": {
-     "midnightHide.door": false
-    },
-    "text": "The laundry-room door is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": null
-    },
-    "text": "{{Alice}} and {{Luther}} are still by the fire."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "upstairs"
-    },
-    "text": "{{Luther}} has taken {{Alice}} upstairs."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "laundry"
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the laundry room with the others."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": false
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry; its curtain is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": true
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry behind the drawn curtain."
-   },
-   {
-    "requires": {
-     "midnightHide.adam": false
-    },
-    "text": "{{Adam}} is panicking in the hall."
-   }
-  ],
-  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 6 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
-   "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
-   "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
-  ]
- },
- {
-  "id": "K15u7",
-  "chapter": 25,
-  "chapterTitle": "Midnight Train",
-  "character": "Kara",
-  "title": "Hide the evidence",
-  "type": "decision",
-  "situation": "You are {{Kara}}. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Turn the magazine on the kitchen table to its other page.",
-    "outcome": "{{Kara}} turns the magazine to its other page."
-   },
-   {
-    "id": "1",
-    "text": "Close the cupboard with the blue blood pouches.",
-    "outcome": "{{Kara}} shuts the cupboard on the blue blood pouches."
-   },
-   {
-    "id": "2",
-    "text": "UPSTAIRS: tell {{Luther}} to take {{Alice}} and hide upstairs",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …upstairs!” {{Luther}}: “Come on, {{Alice}}!” They hurry up the stairs."
-   },
-   {
-    "id": "3",
-    "text": "LAUNDRY: tell {{Luther}} to take {{Alice}} and hide in the laundry room",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the laundry room!” {{Luther}}: “Come on, {{Alice}}!” They slip into the laundry room with the others."
-   },
-   {
-    "id": "4",
-    "text": "KITCHEN: tell {{Luther}} to take {{Alice}} and hide in the kitchen",
-    "outcome": "“Hurry, {{Luther}}! Take {{Alice}} and hide… …in the kitchen.” {{Luther}}: “Come on, {{Alice}}!” They duck into the pantry at the side of the kitchen; its curtain is still open."
-   },
-   {
-    "id": "5",
-    "text": "Draw the kitchen curtain across the pantry where {{Luther}} and {{Alice}} are hiding.",
-    "outcome": "{{Kara}} draws the curtain across the pantry."
-   },
-   {
-    "id": "6",
-    "text": "Shut the door of the laundry room.",
-    "outcome": "{{Kara}} shuts the laundry-room door on the androids inside."
-   },
-   {
-    "id": "7",
-    "text": "Hide the android clothes in the cupboard by the TV.",
-    "outcome": "{{Kara}} stuffs the android clothes into the cupboard and closes it."
-   },
-   {
-    "id": "8",
-    "text": "REASSURE: tell {{Adam}} to keep calm",
-    "outcome": "“Just keep calm, {{Adam}}, and everything will be alright.”"
-   },
-   {
-    "id": "9",
-    "text": "THREATEN: ask {{Adam}} if he wants to see his mother in prison, and tell him to do as you say",
-    "outcome": "“Do you want to get us all arrested? Do you want to see your mother in prison? Then do what I say!”"
-   },
-   {
-    "id": "10",
-    "text": "CALM: warn {{Adam}} that panicking will give you all away, and tell him to keep calm",
-    "outcome": "“If they see you panicking, it’s over. Do you want to get us into trouble? Do you wanna get your mother into trouble? Then keep calm, and just do what I say...”"
-   },
-   {
-    "id": "11",
-    "text": "Open the door.",
-    "outcome": "{{Kara}} opens the front door."
-   }
-  ],
-  "situationWhen": [
-   {
-    "requires": {
-     "midnightHideLeft": 6
-    },
-    "text": "You have time for about six things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 5
-    },
-    "text": "You have time for about five more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 4
-    },
-    "text": "You have time for about four more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 3
-    },
-    "text": "You have time for about three more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 2
-    },
-    "text": "You have time for about two more things before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 1
-    },
-    "text": "The officer knocks again. You have time for one more thing at most before you must open the door."
-   },
-   {
-    "requires": {
-     "midnightHideLeft": 0
-    },
-    "text": "The officer is losing patience: if you do anything else now, he will not wait for you to open the door."
-   },
-   {
-    "requires": {
-     "midnightMagazine": "ad"
-    },
-    "text": "The magazine on the kitchen table lies open at the {{CyberLife}} advertisement."
-   },
-   {
-    "requires": {
-     "midnightMagazineRead": true,
-     "midnightMagazine": "cover"
-    },
-    "text": "The magazine on the kitchen table shows its cover story."
-   },
-   {
-    "requires": {
-     "midnightHide.blood": false
-    },
-    "text": "The cupboard with the blue blood pouches is open."
-   },
-   {
-    "requires": {
-     "midnightHide.clothes": false
-    },
-    "text": "The android clothes lie on the cupboard next to the TV."
-   },
-   {
-    "requires": {
-     "midnightHide.door": false
-    },
-    "text": "The laundry-room door is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": null
-    },
-    "text": "{{Alice}} and {{Luther}} are still by the fire."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "upstairs"
-    },
-    "text": "{{Luther}} has taken {{Alice}} upstairs."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "laundry"
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the laundry room with the others."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": false
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry; its curtain is open."
-   },
-   {
-    "requires": {
-     "midnightHidePlace": "kitchen",
-     "midnightCurtain": true
-    },
-    "text": "{{Luther}} and {{Alice}} are hiding in the kitchen pantry behind the drawn curtain."
-   },
-   {
-    "requires": {
-     "midnightHide.adam": false
-    },
-    "text": "{{Adam}} is panicking in the hall."
-   }
-  ],
-  "adaptationNote": "The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 7 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Midnight_Train",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/25-midnight-train-chapter-content/midnight-train-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://www.powerpyx.com/detroit-become-human-midnight-train-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-flowchart-100.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-5.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-midnight-train-6.jpg",
-   "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-24-midnight-train",
-   "https://www.ign.com/wikis/detroit-become-human/Midnight_Train"
-  ]
+  "clueState": "midnightHide",
+  "repeatWhile": {
+   "midnightDoor": null
+  }
  },
  {
   "id": "K15v",

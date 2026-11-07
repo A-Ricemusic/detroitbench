@@ -6,10 +6,10 @@
 //  POLICEMAN FOOLED (K15y)         Alice +1, Luther +1   consequence below
 // Nothing else in the chapter moves a stat. No probability and no risk roll anywhere.
 //
-// Three free-roam phases are runs of menu scenes (not one repeatable scene, so every path visits each scene at most once):
-//  the topics with Rose (K15l1-6), EXPLORE THE HOUSE (K15q1-4) and the timed FIND AND HIDE EVIDENCE OF DEVIANTS (K15u1-7,
-//  the "roughly 50 seconds" as six actions before the door; a seventh means POLICEMAN INSISTS). Each menu offers what is
-//  left (`available`), and a closed phase skips its remaining menus (`gate`).
+// Three free-roam phases are repeatable clue hubs (K15l, K15q, K15u). `available` derives
+// option sets from the current state; apply() commits them before the generic clue hub records the action.
+// Hiding permits six actions and the door; a seventh action forces the door and adds suspicion.
+// No mutation happens while rendering available options.
 //
 // The officer's suspicion is a hidden counter (midnightSuspicion). The game shows a meter but no source gives its values,
 // and the sources disagree on what decides the noise question (see rules.suspicion and the note on K15w10).
@@ -28,9 +28,9 @@
 //  midnightSawMary       LET ALICE SEE MARY (true) or PREVENT ALICE SEEING MARY (false).
 export const HIDE_BUDGET=7; // menus in the hide phase: six actions and the door; a seventh action is too late
 
-export const ROSE_SLOTS=['K15l1','K15l2','K15l3','K15l4','K15l5','K15l6'];
-export const EXPLORE_SLOTS=['K15q1','K15q2','K15q3','K15q4'];
-export const HIDE_SLOTS=['K15u1','K15u2','K15u3','K15u4','K15u5','K15u6','K15u7'];
+export const ROSE_SLOTS=['K15l'];
+export const EXPLORE_SLOTS=['K15q'];
+export const HIDE_SLOTS=['K15u'];
 const OFFICER=['K15w1','K15w2','K15w3','K15w4','K15w5','K15w6','K15w7','K15w8','K15w9','K15w10'];
 export const SCENES=['K15a','K15b','K15c','K15d','K15e','K15f','K15g','K15h','K15i','K15j','K15k',...ROSE_SLOTS,'K15m','K15n','K15o','K15p','R25',
  ...EXPLORE_SLOTS,'K15r','K15s','K15t',...HIDE_SLOTS,'K15v',...OFFICER,'K15x','K15y'];
@@ -90,12 +90,8 @@ export const rules={
 
 const needLuther=s=>s.lutherWith||s.midnightOutcome!==null||'Luther is not with Kara. Every released path into this chapter has him (Zlatko’s ending LUTHER JOINS KARA & ALICE); the game’s versions without him are cut content.';
 const officerHere=s=>s.midnightOutcome===null||'The officer is dead: the chapter ended in the kitchen.';
-const slotGate=(slots,open,why)=>Object.fromEntries(slots.slice(1).map(id=>[id,[needLuther,s=>open(s)||why]]));
 export const gate={
  ...Object.fromEntries(SCENES.map(id=>[id,needLuther])),
- ...slotGate(ROSE_SLOTS,s=>!s.midnightRoseDone,'Kara has already asked Rose about the border.'),
- ...slotGate(EXPLORE_SLOTS,s=>!s.midnightExploreDone,'Kara stopped looking around and waited for Rose.'),
- ...slotGate(HIDE_SLOTS,s=>s.midnightDoor===null,'The front door is already open.'),
  K15w3:[needLuther,s=>!s.midnightHide.blood||'Kara closed the cupboard; the officer never sees the blue blood.'],
  K15w4:[needLuther,s=>pantryOpen(s)||'The officer never looks behind the kitchen curtain: Luther and Alice are not hiding there in plain sight.'],
  K15w5:[needLuther,officerHere],
@@ -107,28 +103,36 @@ export const gate={
  K15y:[needLuther,s=>s.midnightVerdict==='fooled'||(s.midnightVerdict==='suspicious'?'The officer did not believe Kara.':'The officer is dead: the chapter ended in the kitchen.')],
 };
 
+// clueState hubs bypass consequence(), so return data-driven sets on a copy of each option.
 export function available(n,s,opts){
- if(ROSE_SLOTS.includes(n.id))return opts.filter(o=>o.id===BORDER||(!s.midnightAsked[TOPIC[o.id]]&&(o.id!=='2'||s.midnightAsked.many)));
- if(EXPLORE_SLOTS.includes(n.id))return opts.filter(o=>exploreOpen(s,o.id));
- if(HIDE_SLOTS.includes(n.id))return opts.filter(o=>hideOpen(s,o.id));
+ if(n.id==='K15l')return opts.filter(o=>o.id===BORDER||(!s.midnightAsked[TOPIC[o.id]]&&(o.id!=='2'||s.midnightAsked.many)))
+  .map(o=>({...o,...(o.id===BORDER?{sets:{midnightRoseDone:true}}:{})}));
+ if(n.id==='K15q')return opts.filter(o=>exploreOpen(s,o.id)).map(o=>{
+  const after={...s,midnightExplore:{...s.midnightExplore,[EXPLORE[o.id]]:true}};
+  return {...o,sets:{midnightExploreDone:o.id===WAIT||!exploreLeft(after)}};
+ });
+ if(n.id==='K15u')return opts.filter(o=>hideOpen(s,o.id)).map(o=>{
+  if(o.id===DOOR)return {...o,sets:{midnightDoor:'opened'}};
+  const sets={midnightHideActions:s.midnightHideActions+1,midnightHideLeft:Math.max(0,HIDE_BUDGET-2-s.midnightHideActions)};
+  let outcome=o.outcome;
+  if(PLACE[o.id])sets.midnightHidePlace=PLACE[o.id];
+  if(o.id==='5')sets.midnightCurtain=true;
+  if(o.id==='0'){
+   sets.midnightMagazine=s.midnightMagazine==='ad'?'cover':'ad';
+   outcome=sets.midnightMagazine==='ad'?'{{Kara}} turns the magazine to the {{CyberLife}} advertisement.':'{{Kara}} turns the magazine back to its cover story about a war in the Arctic.';
+  }
+  if(sets.midnightHideActions>=HIDE_BUDGET){
+   sets.midnightDoor='insisted';sets.midnightSuspicion=s.midnightSuspicion+1;
+   outcome+=' Before she can do anything more, the officer pounds on the door: he will not wait any longer.';
+  }
+  return {...o,sets,outcome};
+ });
 }
 
 const lutherDies=(s,outcome)=>{s.luther=false;s.lutherWith=false;s.lutherHidden=false;s.midnightOfficerDead=true;s.midnightOutcome=outcome};
 
 export function consequence(n,s,opt,choice,fail,h){
  const id=n.id;
- if(ROSE_SLOTS.includes(id)){if(choice===BORDER)s.midnightRoseDone=true;else s.midnightAsked[TOPIC[choice]]=true;return ''}
- if(EXPLORE_SLOTS.includes(id)){if(choice===WAIT)s.midnightExploreDone=true;else{s.midnightExplore[EXPLORE[choice]]=true;if(!exploreLeft(s))s.midnightExploreDone=true}return ''}
- if(HIDE_SLOTS.includes(id)){
-  if(choice===DOOR){s.midnightDoor='opened';return ''}
-  let t=opt.outcome;
-  if(PLACE[choice])s.midnightHidePlace=PLACE[choice];
-  else if(choice==='5')s.midnightCurtain=true;
-  else{s.midnightHide[HIDE[choice]]=true;
-   if(choice==='0'){s.midnightMagazine=s.midnightMagazine==='ad'?'cover':'ad';t=s.midnightMagazine==='ad'?'{{Kara}} turns the magazine to the {{CyberLife}} advertisement.':'{{Kara}} turns the magazine back to its cover story about a war in the Arctic.'}}
-  s.midnightHideActions++;s.midnightHideLeft=Math.max(0,HIDE_BUDGET-1-s.midnightHideActions);
-  if(s.midnightHideActions>=HIDE_BUDGET){s.midnightDoor='insisted';s.midnightSuspicion++;return t+' Before she can do anything more, the officer pounds on the door: he will not wait any longer.'}
-  return t}
  switch(id){
   case 'K15n':s.midnightSawMary=choice==='0';return '';
   // COP AT THE DOOR: the page the magazine was left at. Reading the advertisement (or everything) leaves it open there.

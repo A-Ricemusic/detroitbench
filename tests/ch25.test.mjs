@@ -23,11 +23,11 @@ function play(picks={},pre=ARRIVAL,rng=null){
   const opts=available(n,s);assert.ok(opts.length,'no options at '+n.id);
   const v=q[n.id],p=(Array.isArray(v)?v.shift():v)??(rng?opts[Math.floor(rng()*opts.length)].id:n.type==='media'?'skip':opts[0].id);
   assert.ok(opts.some(o=>o.id===p),`bad pick ${n.id} ${p} (offered ${opts.map(o=>o.id)})`);
-  const sit=situationFor(n,s),e=apply(n,s,p,0.999);visited.push(n.id);events[n.id]={sit,event:e.event,changes:e.changes,opts:opts.map(o=>o.id)};cursor=nextCursor(story,cursor,n,s)}
+  const sit=situationFor(n,s),e=apply(n,s,p,0.999);visited.push(n.id);const entry={sit,event:e.event,changes:e.changes,opts:opts.map(o=>o.id)};if(n.repeatWhile)(events[n.id]??=[]).push(entry);else events[n.id]=entry;cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,skipped,events}}
 // Hiding-phase picks by menu: the six evidence actions and the door (option ids in K15u*).
 const HIDE={magazine:'0',blood:'1',upstairs:'2',laundry:'3',kitchen:'4',curtain:'5',door:'6',clothes:'7',reassure:'8',threaten:'9',calm:'10',open:'11'};
-const hide=(...acts)=>Object.fromEntries(acts.map((a,i)=>['K15u'+(i+1),HIDE[a]]));
+const hide=(...acts)=>({K15u:acts.map(a=>HIDE[a])});
 
 test('Midnight Train: the chart as Kara scenes after The Pirates’ Cove, with sources, no risk and every event narrated',()=>{
  const ch=story.nodes.filter(n=>n.chapter===25);assert.deepEqual(ch.map(n=>n.id),CH25);
@@ -53,9 +53,9 @@ test('Midnight Train: every live template prompt with the game’s labels in ord
  assert.deepEqual(labels('K15m'),['INSIST','NO CHOICE']);
  assert.equal(node('K15m').options[0].outcome,node('K15m').options[1].outcome,'both print the same line');
  assert.deepEqual(labels('K15n'),['STAY','TAKE ALICE OUTSIDE']);
- assert.deepEqual(labels('K15q1').slice(1,3),['INSIST','LET IT GO']);
+ assert.deepEqual(labels('K15q').slice(1,3),['INSIST','LET IT GO']);
  assert.deepEqual(labels('K15s').slice(0,3),['REASSURE','CONFESS','EXPLAIN']);
- assert.deepEqual(labels('K15u1').slice(2,5),['UPSTAIRS','LAUNDRY','KITCHEN']);assert.deepEqual(labels('K15u1').slice(8,11),['REASSURE','THREATEN','CALM']);
+ assert.deepEqual(labels('K15u').slice(2,5),['UPSTAIRS','LAUNDRY','KITCHEN']);assert.deepEqual(labels('K15u').slice(8,11),['REASSURE','THREATEN','CALM']);
  assert.deepEqual(labels('K15w1'),['ALICE','NOBODY']);assert.deepEqual(labels('K15w2'),['YES','NO']);
  assert.deepEqual(labels('K15w3'),['MESS','PREVIOUS OWNER','NOT MINE']);assert.deepEqual(labels('K15w9'),['TIRED','UPSET']);
  assert.deepEqual(labels('K15w10'),['DOG','WASHING MACHINE','WIND','HEARD NOTHING']);
@@ -67,52 +67,52 @@ test('Midnight Train: the arrows are KISS GOODNIGHT and POLICEMAN FOOLED, Alice 
  const kiss=play({K15h:'1'}),eat=play({K15h:'0'});
  assert.equal(kiss.s.aliceBond-eat.s.aliceBond,1);assert.equal(kiss.s.lutherTrust-eat.s.lutherTrust,1);assert.equal(kiss.s.aliceMax,kiss.s.aliceBond);
  assert.equal(eat.s.midnightOutcome,'Policeman left');assert.equal(eat.s.aliceBond,1);assert.equal(eat.s.lutherTrust,1,'the fooled ending is +1 each');
- const dead=play({K15h:'0',K15u1:'11'});assert.equal(dead.s.midnightOutcome,'Luther died killing policeman');assert.equal(dead.s.aliceBond,0);assert.equal(dead.s.lutherTrust,0);
+ const dead=play({K15h:'0',K15u:['11']});assert.equal(dead.s.midnightOutcome,'Luther died killing policeman');assert.equal(dead.s.aliceBond,0);assert.equal(dead.s.lutherTrust,0);
  // Random play: only the two arrow scenes change a stat.
  const rng=random(25),STATS=['aliceBond','lutherTrust','publicSupport','hankTrust','instability','amandaTrust','jerichoTrust'],outcomes=new Set,keys=new Set;
  for(let i=0;i<300;i++){const r=play({},ARRIVAL,rng);outcomes.add(r.s.midnightOutcome);
-  for(const [id,e] of Object.entries(r.events)){for(const c of e.changes)keys.add(c.key);if(id==='K15h'||id==='K15y')continue;assert.ok(!e.changes.some(c=>STATS.includes(c.key)),id+' moves a stat')}
-  for(const id of r.visited)assert.equal(r.visited.filter(x=>x===id).length,1,id+' visited twice');assert.equal(r.visited.length+r.skipped.length,CH25.length)}
+  for(const [id,e] of Object.entries(r.events).flatMap(([id,e])=>(Array.isArray(e)?e:[e]).map(v=>[id,v]))){for(const c of e.changes)keys.add(c.key);if(id==='K15h'||id==='K15y')continue;assert.ok(!e.changes.some(c=>STATS.includes(c.key)),id+' moves a stat')}
+  for(const id of r.visited)if(!node(id).repeatWhile)assert.equal(r.visited.filter(x=>x===id).length,1,id+' visited twice');assert.equal(new Set(r.visited).size+r.skipped.length,CH25.length);assert.ok(r.visited.length<60,'hubs terminate')}
  assert.deepEqual([...outcomes].sort(),['Luther died killing policeman','Luther died saving other deviants','Policeman left']);
  for(const k of keys)assert.ok(['knowledge','aliceBond','aliceMax','lutherTrust','luther','lutherWith'].includes(k)||k in mod.state,'unexpected change '+k)});
 
 test('Midnight Train: the talk with Rose offers each topic once, DANGEROUS only after MANY DEVIANTS?, and BORDER moves on',()=>{
- const r=play({K15l1:'3',K15l2:'5'});assert.deepEqual(r.events.K15l1.opts,['0','1','3','4','5']);assert.deepEqual(r.events.K15l2.opts,['0','1','4','5']);
- assert.deepEqual(r.skipped.filter(x=>/^K15l/.test(x.id)).map(x=>x.id),['K15l3','K15l4','K15l5','K15l6']);assert.ok(r.s.midnightRoseDone);
- const all=play({K15l1:'1',K15l2:'2',K15l3:'0',K15l4:'3',K15l5:'4'});assert.ok(all.events.K15l2.opts.includes('2'));assert.deepEqual(all.events.K15l6.opts,['5']);
+ const r=play({K15l:['3','5']});assert.deepEqual(r.events.K15l[0].opts,['0','1','3','4','5']);assert.deepEqual(r.events.K15l[1].opts,['0','1','4','5']);
+ assert.equal(r.events.K15l.length,2);assert.ok(r.s.midnightRoseDone);
+ const all=play({K15l:['1','2','0','3','4']});assert.ok(all.events.K15l[1].opts.includes('2'));assert.deepEqual(all.events.K15l[5].opts,['5']);
  assert.ok(all.s.knowledge.Kara.some(f=>/shot on the spot/.test(f)));assert.ok(all.s.knowledge.Kara.some(f=>/mostly frozen in winter/.test(f)))});
 
 test('Midnight Train: Alice’s secret by the fire only after LET ALICE SEE MARY; the explore phase ends on waiting or when nothing is left',()=>{
- const saw=play({K15n:'0',K15q1:'1'}),kept=play({K15n:'1'});
+ const saw=play({K15n:'0',K15q:['1']}),kept=play({K15n:'1'});
  assert.equal(saw.s.midnightSawMary,true);assert.equal(kept.s.midnightSawMary,false);
- assert.deepEqual(saw.events.K15q1.opts,['0','1','2','3','4','5']);assert.deepEqual(saw.events.K15q2.opts,['0','3','4','5'],'INSIST and LET IT GO are one check on Alice');
- assert.deepEqual(kept.events.K15q1.opts,['0','3','4','5']);assert.ok(kept.skipped.some(x=>x.id==='K15q4'),'three actions only without the fireside talk');
+ assert.deepEqual(saw.events.K15q[0].opts,['0','1','2','3','4','5']);assert.deepEqual(saw.events.K15q[1].opts,['0','3','4','5'],'INSIST and LET IT GO are one check on Alice');
+ assert.deepEqual(kept.events.K15q[0].opts,['0','3','4','5']);assert.equal(kept.events.K15q.length,3,'three actions exhaust the hub without fireside talk');
  assert.ok(saw.s.knowledge.Kara.some(f=>/you won’t love me anymore/.test(f)));
- const wait=play({K15q1:'5'});assert.deepEqual(wait.skipped.filter(x=>/^K15q/.test(x.id)).map(x=>x.reason),Array(3).fill('Kara stopped looking around and waited for Rose.'));
- assert.match(play().events.K15q1.event,/Not now, \{\{Luther\}\}/)});
+ const wait=play({K15q:['5']});assert.equal(wait.events.K15q.length,1);
+ assert.match(play().events.K15q[0].event,/Not now, \{\{Luther\}\}/)});
 
 test('Midnight Train: the magazine page carries from the kitchen table into the hiding phase and the officer’s visit',()=>{
  const keep=hide('blood','upstairs','door','clothes','open'),unread=play(keep),cover=play({R25:'0',...keep}),ad=play({R25:'1',...keep}),all=play({R25:'all',...keep});
- assert.ok(!unread.events.K15u1.opts.includes('0'),'CHANGE MAGAZINE COVER needs READ MAGAZINE');assert.ok(cover.events.K15u1.opts.includes('0'));
+ assert.ok(!unread.events.K15u[0].opts.includes('0'),'CHANGE MAGAZINE COVER needs READ MAGAZINE');assert.ok(cover.events.K15u[0].opts.includes('0'));
  assert.equal(unread.s.midnightMagazine,'cover');assert.equal(ad.s.midnightMagazine,'ad');assert.equal(all.s.midnightMagazine,'ad');
  assert.ok(ad.visited.includes('K15w7'),'POLICEMAN SEES ARTICLE');assert.ok(!unread.visited.includes('K15w7'));
  const flipped=play({R25:'1',...hide('magazine','blood','upstairs','door','clothes','open')});assert.equal(flipped.s.midnightMagazine,'cover');assert.ok(!flipped.visited.includes('K15w7'));
  const worse=play({R25:'0',...hide('magazine','blood','upstairs','door','clothes','open')});assert.equal(worse.s.midnightMagazine,'ad');assert.ok(worse.visited.includes('K15w7'),'turning the cover to the advertisement exposes it');
- assert.match(ad.events.K15u1.sit,/open at the \{\{CyberLife\}\} advertisement/);
+ assert.match(ad.events.K15u[0].sit,/open at the \{\{CyberLife\}\} advertisement/);
  assert.match(node('R25').media[2].facts[0],/broadcast what can only be described as demands/)});
 
 test('Midnight Train: about fifty seconds as six actions before the door; a seventh and the officer insists',()=>{
  const r=play({R25:'1',...hide('magazine','blood','kitchen','curtain','door','clothes','reassure')});
- assert.equal(r.s.midnightDoor,'insisted');assert.equal(r.s.midnightHideActions,7);assert.match(r.events.K15u7.event,/he will not wait any longer/);
- assert.match(r.events.K15v.sit,/You took too long/);assert.match(r.events.K15u7.sit,/if you do anything else now, he will not wait/);
- const ok=play({R25:'1',...hide('magazine','blood','kitchen','curtain','door','clothes','open')});assert.equal(ok.s.midnightDoor,'opened');assert.ok(ok.visited.includes('K15u7'),'the door can still be opened in time at the seventh menu');
+ assert.equal(r.s.midnightDoor,'insisted');assert.equal(r.s.midnightHideActions,7);assert.match(r.events.K15u[6].event,/he will not wait any longer/);
+ assert.match(r.events.K15v.sit,/You took too long/);assert.match(r.events.K15u[6].sit,/if you do anything else now, he will not wait/);
+ const ok=play({R25:'1',...hide('magazine','blood','kitchen','curtain','door','clothes','open')});assert.equal(ok.s.midnightDoor,'opened');assert.ok(ok.visited.includes('K15u'),'the door can still be opened in time at the seventh menu');
  assert.equal(r.s.midnightSuspicion-ok.s.midnightSuspicion,1,'a late door costs one');
- assert.match(r.events.K15u1.sit,/time for about six things/);assert.match(r.events.K15u6.sit,/one more thing at most/);
+ assert.match(r.events.K15u[0].sit,/time for about six things/);assert.match(r.events.K15u[5].sit,/one more thing at most/);
  // The hiding place: once; the kitchen curtain only after KITCHEN.
- assert.ok(!r.events.K15u1.opts.includes('5'));assert.ok(r.events.K15u4.opts.includes('5'));assert.ok(!r.events.K15u4.opts.includes('2'));
+ assert.ok(!r.events.K15u[0].opts.includes('5'));assert.ok(r.events.K15u[3].opts.includes('5'));assert.ok(!r.events.K15u[3].opts.includes('2'));
  // With nothing left to do, only the door remains.
- const quick=play(hide('blood','upstairs','door','clothes','calm'));assert.deepEqual(quick.events.K15u6.opts,['11']);
- assert.ok(quick.skipped.some(x=>x.id==='K15u7'&&x.reason==='The front door is already open.'))});
+ const quick=play(hide('blood','upstairs','door','clothes','calm'));assert.deepEqual(quick.events.K15u[5].opts,['11']);
+ assert.equal(quick.events.K15u.length,6)});
 
 test('Midnight Train: LUTHER DIED KILLING POLICEMAN in the kitchen with the curtain open, or when Kara never tells them where to hide',()=>{
  for(const picks of [hide('blood','kitchen','open'),hide('open')]){const r=play(picks);
@@ -160,7 +160,7 @@ test('Midnight Train: cross-chapter — Luther arrives from Zlatko’s house, an
  const alone=play({},{kara:true,karaActive:true,alice:true,luther:false,lutherWith:false});assert.equal(alone.visited.length,0);assert.match(alone.skipped[0].reason,/LUTHER JOINS KARA & ALICE/);
  // Played from the start of the story: K13 (Zlatko) gives Luther; K15a is reached with him.
  const run={id:'midnight-train',protocol:EXPERIENCE_PROTOCOL,records:[]};
- const pickAt=(n,st)=>n.id==='K15u1'?'4':n.id==='K15u2'?'11':n.type==='media'?'skip':available(n,st.state)[0].id;
+ const pickAt=(n,st)=>n.id==='K15u'?(st.state.midnightHidePlace===null?'4':'11'):n.type==='media'?'skip':available(n,st.state)[0].id;
  let reached=false;
  while(true){const st=current(story,run),n=st.node;if(!n)break;if(n.id==='K15a'){assert.equal(st.state.lutherWith,true);reached=true}
   if(n.chapter>30)break;const c=pickAt(n,st);run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}
@@ -172,3 +172,15 @@ test('Midnight Train: neutral rendering names nobody from the game',()=>{
  for(const n of story.nodes.filter(x=>x.chapter===25)){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.media??[]).flatMap(m=>[m.title,...m.facts]),...(n.facts??[]),...Object.values(n.outcomes??{})];
   for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/\bKara\b|\bAlice\b|\bLuther\b|\bRose\b|\bAdam\b|\bMary\b|\bAndy\b|Chapman|Zlatko|CyberLife|Detroit|Canada|Stratford|\bKNC\b|Cartland|AX400|\bJerry|Warren|deviant|thirium/i.test(neutral),n.id+': '+neutral)}}
  assert.equal(render('{{Adam}} and {{Mary}}','neutral'),'Caleb and Nell');assert.equal(render('{{ADAM}}','neutral'),'CALEB')});
+
+
+test('Midnight Train: three repeatable clue hubs keep one ID and availability is read-only',()=>{
+ const s=Object.assign(startState(story),structuredClone(ARRIVAL));
+ for(const [id,key,condition] of [['K15l','midnightAsked',{midnightRoseDone:false}],['K15q','midnightExplore',{midnightExploreDone:false}],['K15u','midnightHide',{midnightDoor:null}]]){
+  const n=node(id);assert.equal(n.clueState,key);assert.deepEqual(n.repeatWhile,condition);
+  const before=structuredClone(s);available(n,s);assert.deepEqual(s,before,'rendering '+id+' must not mutate state');
+  const opt=available(n,s).find(o=>o.clue);apply(n,s,opt.id);assert.equal(s[key][opt.clue],true);
+  assert.ok(!available(n,s).some(o=>o.clue===opt.clue),'completed action removed');
+  assert.equal(nextCursor(story,story.nodes.indexOf(n),n,s),story.nodes.indexOf(n));
+ }
+});

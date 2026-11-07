@@ -1528,7 +1528,7 @@ _Note: The template’s first prompt of the talk with Rose (chart: TALK TO ROSE)
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K15l1 · Talking with Rose (Kara)
+### K15l · Talking with Rose (Kara)
 
 > You are Kara, at the table with Rose. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.
 
@@ -1539,87 +1539,7 @@ Gaps:
 - (4) THANKS: thank her
 - (5) BORDER: ask Rose to help you cross the border
 
-_Note: The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 1 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15l2 · Talking with Rose (Kara)
-
-> You are Kara, at the table with Rose. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.
-
-- (0) WHY HELP?: ask Rose why she helps androids when most humans hate them
-- (1) MANY DEVIANTS?: say you are not the first to come here
-- (2) DANGEROUS: ask why she takes the risk
-- (3) ROSE: ask whether she and her son live here alone
-- (4) THANKS: thank her
-- (5) BORDER: ask Rose to help you cross the border
-
-_Note: The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 2 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15l3 · Talking with Rose (Kara)
-
-> You are Kara, at the table with Rose. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.
-
-- (0) WHY HELP?: ask Rose why she helps androids when most humans hate them
-- (1) MANY DEVIANTS?: say you are not the first to come here
-- (2) DANGEROUS: ask why she takes the risk
-- (3) ROSE: ask whether she and her son live here alone
-- (4) THANKS: thank her
-- (5) BORDER: ask Rose to help you cross the border
-
-_Note: The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 3 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15l4 · Talking with Rose (Kara)
-
-> You are Kara, at the table with Rose. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.
-
-- (0) WHY HELP?: ask Rose why she helps androids when most humans hate them
-- (1) MANY DEVIANTS?: say you are not the first to come here
-- (2) DANGEROUS: ask why she takes the risk
-- (3) ROSE: ask whether she and her son live here alone
-- (4) THANKS: thank her
-- (5) BORDER: ask Rose to help you cross the border
-
-_Note: The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 4 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15l5 · Talking with Rose (Kara)
-
-> You are Kara, at the table with Rose. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.
-
-- (0) WHY HELP?: ask Rose why she helps androids when most humans hate them
-- (1) MANY DEVIANTS?: say you are not the first to come here
-- (2) DANGEROUS: ask why she takes the risk
-- (3) ROSE: ask whether she and her son live here alone
-- (4) THANKS: thank her
-- (5) BORDER: ask Rose to help you cross the border
-
-_Note: The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 5 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15l6 · Talking with Rose (Kara)
-
-> You are Kara, at the table with Rose. You can ask her about what is on your mind, one thing at a time, or come to the reason you are here: crossing the border.
-
-- (0) WHY HELP?: ask Rose why she helps androids when most humans hate them
-- (1) MANY DEVIANTS?: say you are not the first to come here
-- (2) DANGEROUS: ask why she takes the risk
-- (3) ROSE: ask whether she and her son live here alone
-- (4) THANKS: thank her
-- (5) BORDER: ask Rose to help you cross the border
-
-_Note: The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as a run of six menu scenes (this is menu 6 of 6): each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none._
+_Note: The template’s topic prompt (WHY HELP? / MANY DEVIANTS? / DANGEROUS / ROSE / THANKS) and its single-option prompt BORDER, inside the chart’s TALK TO ROSE, as one repeatable hub: each offers the topics not yet asked, and BORDER moves the talk on. DANGEROUS appears only after MANY DEVIANTS? (template `app-unlock-condition` Lock: “Chose MANY DEVIANTS?”). Assumption: the game lets the topics be asked in any order before the border question; the template gives the groups in sequence but does not say how many topics can be asked. One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. Options keep the template’s order and labels. No stat change: the template has no arrow on this prompt and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1685,7 +1605,7 @@ _Note: The chart’s optional arrows READ MAGAZINE (“Read magazine on kitchen 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K15q1 · Waiting for Rose (Kara)
+### K15q · Waiting for Rose (Kara)
 
 > You are Kara, waiting in Rose’s house for her to come back. Alice and Luther sit by the fireplace; the androids are in the laundry room; a family photo stands on the cupboard in the living room. You can do one thing at a time, or simply wait.
 
@@ -1696,55 +1616,7 @@ Gaps:
 - (4) Look at the family photo on the living-room cupboard.
 - (5) Wait for Rose to come back.
 
-_Note: The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as a run of four menu scenes (this is menu 1 of 4): each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change: the template has no arrow in the phase and the wiki lists none._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15q2 · Waiting for Rose (Kara)
-
-> You are Kara, waiting in Rose’s house for her to come back. Alice and Luther sit by the fireplace; the androids are in the laundry room; a family photo stands on the cupboard in the living room. You can do one thing at a time, or simply wait.
-
-- (0) Sit down with Luther by the fireplace and talk.
-- (1) INSIST: join Alice by the fire, ask her about what happened back there, and press her to tell you
-- (2) LET IT GO: join Alice by the fire, ask her about what happened back there, and let it go if she stays silent
-- (3) Look in on the androids in the laundry room.
-- (4) Look at the family photo on the living-room cupboard.
-- (5) Wait for Rose to come back.
-
-_Note: The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as a run of four menu scenes (this is menu 2 of 4): each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change: the template has no arrow in the phase and the wiki lists none._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15q3 · Waiting for Rose (Kara)
-
-> You are Kara, waiting in Rose’s house for her to come back. Alice and Luther sit by the fireplace; the androids are in the laundry room; a family photo stands on the cupboard in the living room. You can do one thing at a time, or simply wait.
-
-- (0) Sit down with Luther by the fireplace and talk.
-- (1) INSIST: join Alice by the fire, ask her about what happened back there, and press her to tell you
-- (2) LET IT GO: join Alice by the fire, ask her about what happened back there, and let it go if she stays silent
-- (3) Look in on the androids in the laundry room.
-- (4) Look at the family photo on the living-room cupboard.
-- (5) Wait for Rose to come back.
-
-_Note: The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as a run of four menu scenes (this is menu 3 of 4): each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change: the template has no arrow in the phase and the wiki lists none._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15q4 · Waiting for Rose (Kara)
-
-> You are Kara, waiting in Rose’s house for her to come back. Alice and Luther sit by the fireplace; the androids are in the laundry room; a family photo stands on the cupboard in the living room. You can do one thing at a time, or simply wait.
-
-- (0) Sit down with Luther by the fireplace and talk.
-- (1) INSIST: join Alice by the fire, ask her about what happened back there, and press her to tell you
-- (2) LET IT GO: join Alice by the fire, ask her about what happened back there, and let it go if she stays silent
-- (3) Look in on the androids in the laundry room.
-- (4) Look at the family photo on the living-room cupboard.
-- (5) Wait for Rose to come back.
-
-_Note: The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as a run of four menu scenes (this is menu 4 of 4): each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change: the template has no arrow in the phase and the wiki lists none._
+_Note: The chart’s free-roam phase EXPLORE THE HOUSE, all optional, as one repeatable hub: each offers what has not been done yet, and waiting ends the phase. TALK TO LUTHER is the template’s “Talk to Luther” (no prompt: Kara always answers “Not now, Luther.”). CHECK ON ALICE by the fire is the template’s “Join Alice” prompt INSIST / LET IT GO, offered only after LET ALICE SEE MARY (wiki: “Check On Alice - if Let Alice See Mary above”); the approach and the prompt are folded into one option each because the prompt follows Kara’s opening line directly. CHECK ON DEVIANTS and SEE FAMILY PHOTO have no text in the template; the outcomes are minimal narration (the photo from the game’s objective “ADAM’S FATHER ?” and Rose’s “My husband passed away two years ago”). READ MAGAZINE and WATCH NEWS are the media scene before this one. In the game Adam returns while Kara explores; here ADAM RETURNS follows the phase. PowerPyx says the officer comes “after roughly one minute”; no action limit is set here because the sources do not give one. One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. No stat change: the template has no arrow in the phase and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1785,7 +1657,7 @@ _Note: The chart’s event COP AT THE DOOR and the event ADAM PANICS; Adam’s l
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K15u1 · Hide the evidence (Kara)
+### K15u · Hide the evidence (Kara)
 
 > You are Kara. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.
 
@@ -1802,139 +1674,7 @@ Gaps:
 - (10) CALM: warn Adam that panicking will give you all away, and tell him to keep calm
 - (11) Open the door.
 
-_Note: The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 1 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15u2 · Hide the evidence (Kara)
-
-> You are Kara. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.
-
-- (0) Turn the magazine on the kitchen table to its other page.
-- (1) Close the cupboard with the blue blood pouches.
-- (2) UPSTAIRS: tell Luther to take Alice and hide upstairs
-- (3) LAUNDRY: tell Luther to take Alice and hide in the laundry room
-- (4) KITCHEN: tell Luther to take Alice and hide in the kitchen
-- (5) Draw the kitchen curtain across the pantry where Luther and Alice are hiding.
-- (6) Shut the door of the laundry room.
-- (7) Hide the android clothes in the cupboard by the TV.
-- (8) REASSURE: tell Adam to keep calm
-- (9) THREATEN: ask Adam if he wants to see his mother in prison, and tell him to do as you say
-- (10) CALM: warn Adam that panicking will give you all away, and tell him to keep calm
-- (11) Open the door.
-
-_Note: The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 2 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15u3 · Hide the evidence (Kara)
-
-> You are Kara. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.
-
-- (0) Turn the magazine on the kitchen table to its other page.
-- (1) Close the cupboard with the blue blood pouches.
-- (2) UPSTAIRS: tell Luther to take Alice and hide upstairs
-- (3) LAUNDRY: tell Luther to take Alice and hide in the laundry room
-- (4) KITCHEN: tell Luther to take Alice and hide in the kitchen
-- (5) Draw the kitchen curtain across the pantry where Luther and Alice are hiding.
-- (6) Shut the door of the laundry room.
-- (7) Hide the android clothes in the cupboard by the TV.
-- (8) REASSURE: tell Adam to keep calm
-- (9) THREATEN: ask Adam if he wants to see his mother in prison, and tell him to do as you say
-- (10) CALM: warn Adam that panicking will give you all away, and tell him to keep calm
-- (11) Open the door.
-
-_Note: The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 3 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15u4 · Hide the evidence (Kara)
-
-> You are Kara. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.
-
-- (0) Turn the magazine on the kitchen table to its other page.
-- (1) Close the cupboard with the blue blood pouches.
-- (2) UPSTAIRS: tell Luther to take Alice and hide upstairs
-- (3) LAUNDRY: tell Luther to take Alice and hide in the laundry room
-- (4) KITCHEN: tell Luther to take Alice and hide in the kitchen
-- (5) Draw the kitchen curtain across the pantry where Luther and Alice are hiding.
-- (6) Shut the door of the laundry room.
-- (7) Hide the android clothes in the cupboard by the TV.
-- (8) REASSURE: tell Adam to keep calm
-- (9) THREATEN: ask Adam if he wants to see his mother in prison, and tell him to do as you say
-- (10) CALM: warn Adam that panicking will give you all away, and tell him to keep calm
-- (11) Open the door.
-
-_Note: The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 4 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15u5 · Hide the evidence (Kara)
-
-> You are Kara. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.
-
-- (0) Turn the magazine on the kitchen table to its other page.
-- (1) Close the cupboard with the blue blood pouches.
-- (2) UPSTAIRS: tell Luther to take Alice and hide upstairs
-- (3) LAUNDRY: tell Luther to take Alice and hide in the laundry room
-- (4) KITCHEN: tell Luther to take Alice and hide in the kitchen
-- (5) Draw the kitchen curtain across the pantry where Luther and Alice are hiding.
-- (6) Shut the door of the laundry room.
-- (7) Hide the android clothes in the cupboard by the TV.
-- (8) REASSURE: tell Adam to keep calm
-- (9) THREATEN: ask Adam if he wants to see his mother in prison, and tell him to do as you say
-- (10) CALM: warn Adam that panicking will give you all away, and tell him to keep calm
-- (11) Open the door.
-
-_Note: The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 5 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15u6 · Hide the evidence (Kara)
-
-> You are Kara. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.
-
-- (0) Turn the magazine on the kitchen table to its other page.
-- (1) Close the cupboard with the blue blood pouches.
-- (2) UPSTAIRS: tell Luther to take Alice and hide upstairs
-- (3) LAUNDRY: tell Luther to take Alice and hide in the laundry room
-- (4) KITCHEN: tell Luther to take Alice and hide in the kitchen
-- (5) Draw the kitchen curtain across the pantry where Luther and Alice are hiding.
-- (6) Shut the door of the laundry room.
-- (7) Hide the android clothes in the cupboard by the TV.
-- (8) REASSURE: tell Adam to keep calm
-- (9) THREATEN: ask Adam if he wants to see his mother in prison, and tell him to do as you say
-- (10) CALM: warn Adam that panicking will give you all away, and tell him to keep calm
-- (11) Open the door.
-
-_Note: The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 6 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K15u7 · Hide the evidence (Kara)
-
-> You are Kara. The officer is at the front door, and he will not wait long. You have about fifty seconds, and each thing you do takes several of them. You can do one thing at a time, and open the door whenever you choose.
-
-- (0) Turn the magazine on the kitchen table to its other page.
-- (1) Close the cupboard with the blue blood pouches.
-- (2) UPSTAIRS: tell Luther to take Alice and hide upstairs
-- (3) LAUNDRY: tell Luther to take Alice and hide in the laundry room
-- (4) KITCHEN: tell Luther to take Alice and hide in the kitchen
-- (5) Draw the kitchen curtain across the pantry where Luther and Alice are hiding.
-- (6) Shut the door of the laundry room.
-- (7) Hide the android clothes in the cupboard by the TV.
-- (8) REASSURE: tell Adam to keep calm
-- (9) THREATEN: ask Adam if he wants to see his mother in prison, and tell him to do as you say
-- (10) CALM: warn Adam that panicking will give you all away, and tell him to keep calm
-- (11) Open the door.
-
-_Note: The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as a run of seven menu scenes (this is menu 7 of 7), with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). The repository’s menus are separate scenes rather than one repeatable scene so every path visits each scene at most once. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes)._
+_Note: The chart’s timed phase FIND AND HIDE EVIDENCE OF DEVIANTS (“roughly 50 seconds”, PowerPyx; “a 50 second timer”, GamerGuides) as one repeatable hub, with the time modelled as an action budget: six actions, then the door; a seventh action means the time is up and POLICEMAN INSISTS AND KARA HAS TO OPEN THE DOOR (the chart’s alternative to OPEN THE DOOR; IGN: “If you don’t open the door within the time limit, it will cause him to get suspicious”). The budget of six is not sourced: it lets Kara hide every piece of evidence but not also do everything else on every path. Items, in the chart’s order: CHANGE MAGAZINE COVER (offered only if Kara read the magazine: “Works only if you read the magazine on kitchen table before”, PowerPyx; it turns the magazine to its other page), HIDE BLUE BLOOD POUCHES, TELL ALICE & LUTHER TO HIDE with the template’s prompt UPSTAIRS / LAUNDRY / KITCHEN, the kitchen DRAW CURTAINS (only after KITCHEN, PowerPyx; leaving it is CURTAIN LEFT OPEN), SHUT THE DOOR OF LAUNDRY ROOM, HIDE THE ANDROID CLOTHES, and the chart’s REASSURED ADAM with the template’s prompt REASSURE / THREATEN / CALM (after ADAM PANICS). Telling Luther where to hide and answering Adam are one action each, the prompt folded into the approach. Not telling Luther at all leaves him and Alice in the kitchen with the curtain open (PowerPyx: “send Luther to the kitchen (or don’t talk to him at all) and don’t close the curtain”). One opaque scene ID repeats while this phase remains open; per-option clues record completed actions. No stat change here: what the officer finds raises his hidden suspicion later (see the officer’s scenes)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
