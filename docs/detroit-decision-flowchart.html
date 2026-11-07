@@ -260,8 +260,20 @@
       "id": 17,
       "title": "Zlatko",
       "character": "Kara",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 to the PowerPyx 100% chart (78 boxes, two bracketed phases, five endings) and the game’s text (template 17-zlatko: two prompts, two public-opinion arrows; string table MENU.FLOWCHART.05K.*). LOOK FOR HELP → MEET ZLATKO → the basement and the machine: ESCAPE BEFORE BEING RESET (a risk roll) or KARA IS RESET. Escape: FREE MONSTERS in the basement, SNEAK THROUGH HOUSE, then [SEARCH HOUSE FOR ALICE]. Reset: OBEY YOUR NEW MASTER, the tray and the torso, then [EXPLORE THE HOUSE TO RECOVER MEMORY] (11 memories, six of them gated on A New Home, Fugitives and On the Run; five recover her), then the search. Luther’s ten minutes are ten action scenes shared by both phases; running out ends in KARA REMAINED RESET or LUTHER BROUGHT ALICE TO ZLAKTO. Side branches on both paths: the storage room and the bear, the bathroom android (SHUT DOWN / ALICE / DEAL / SPARE), three magazines, the TV (public opinion small down for the chase or uniform-robbery report). ALICE FOUND → the hiding route through the main room, bedroom, corridor, bathroom (the android alerts Zlatko unless shut down) and storage room, or SET FIRE TO HOUSE; GET SPOTTED → CHASE STARTED ends in ZLATKO KILLED KARA IN THE BATHROOM or IN THE STORAGE ROOM when lost. The yard: LUTHER KILLS ZLATKO or THE MONSTERS AMBUSH ZLATKO → LUTHER JOINS KARA & ALICE. Researched in docs/research/ch17-zlatko.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-flowchart-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-beginning-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg"
+      ]
     },
     {
       "id": 18,
@@ -8686,119 +8698,440 @@
       }
     },
     {
-      "id": "K10",
       "chapter": 17,
       "character": "Kara",
-      "title": "Escape the reset or recover afterward?",
-      "context": "Zlatko’s machine starts wiping Kara’s memory.",
+      "status": "Source-backed summary",
+      "id": "Z17a",
+      "title": "Answer Alice’s bad feeling",
+      "context": "On the way to the basement Alice whispers: “I don’t like this place, and that man. Let’s go, I have a bad feeling…”",
       "options": [
         {
-          "label": "Break free in time",
-          "effect": "Search for Alice immediately.",
+          "label": "CAREFUL",
+          "effect": "“I know. I don’t trust him either… We have to be careful…”",
           "target": null
         },
         {
-          "label": "Reset completes",
-          "effect": "Recover memories before time expires or remain enslaved.",
+          "label": "REASSURE",
+          "effect": "“It’ll be okay, Alice. He’s going to remove my Tracker and then we can start over again in Canada.”",
+          "target": null
+        },
+        {
+          "label": "COMFORT",
+          "effect": "“He’s a bit odd… but I think we can trust him.”",
+          "target": null
+        },
+        {
+          "label": "NO CHOICE",
+          "effect": "“Alice, we have nowhere else to go… We have to trust him.”",
           "target": null
         }
       ],
-      "gate": "Reach this scene with the character alive.",
-      "kind": "State gate",
+      "gate": "Chapter start, after Time to Decide, with Kara and Alice alive.",
+      "kind": "Relationship",
       "dependsOn": [],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://detroitbecometext.github.io/chapters/17"
       ],
-      "note": "A timed escape and recovery task, not free consent to a reset.",
-      "status": "Source-backed summary"
+      "note": "The template’s PROMPT 1; no arrow on any option.",
+      "benchmark": {
+        "scenes": [
+          "K10b"
+        ],
+        "status": "implemented",
+        "note": "Four game labels, spoken lines in the outcomes, no stat change. Arrival and basement are the events K10a and K10c."
+      }
     },
     {
-      "id": "K11",
       "chapter": 17,
       "character": "Kara",
-      "title": "Release Zlatko’s captives?",
-      "context": "Other androids are imprisoned in the house.",
+      "status": "Source-backed summary",
+      "id": "K10",
+      "title": "Escape the reset or let it finish?",
+      "context": "Strapped into Zlatko’s machine, Kara watches MEMORY WIPE PROGRESS climb. Alice has been carried away.",
       "options": [
         {
-          "label": "Open the cells",
-          "effect": "They can aid the escape and later camp breakout.",
+          "label": "ESCAPE BEFORE BEING RESET",
+          "effect": "Knock the red cart into the lamp and the green cable onto the vodka; free before the wipe ends. SNEAK THROUGH HOUSE; the ten minutes start upstairs.",
+          "target": "K11"
+        },
+        {
+          "label": "KARA IS RESET",
+          "effect": "Do nothing (or be too slow): OBEY YOUR NEW MASTER, serve Zlatko, then recover memories before the ten minutes run out.",
+          "target": "Z17b"
+        }
+      ],
+      "gate": "Every path into the chapter.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "Z17a"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg"
+      ],
+      "note": "No source gives the gauge’s duration.",
+      "benchmark": {
+        "scenes": [
+          "K10",
+          "K10r",
+          "K10s"
+        ],
+        "status": "simplified",
+        "note": "The escape is a risk roll (0.15, unsourced) whose failure is KARA IS RESET; doing nothing resets her. The old automatic recovery after a failed escape is gone."
+      }
+    },
+    {
+      "chapter": 17,
+      "character": "Kara",
+      "status": "Source-backed summary",
+      "id": "K11",
+      "title": "Free the caged androids?",
+      "context": "Androids Zlatko has mutilated plead from the basement cells: “Help us…”",
+      "options": [
+        {
+          "label": "FREE MONSTERS",
+          "effect": "They ambush Zlatko in the yard (THE MONSTERS AMBUSH ZLATKO) and can reappear at the recall center.",
           "target": "K28"
         },
         {
           "label": "Leave them",
-          "effect": "That help is unavailable.",
+          "effect": "Luther kills Zlatko in the yard (LUTHER KILLS ZLATKO).",
           "target": null
         }
       ],
-      "gate": "Reach this scene with the character alive.",
-      "kind": "Pivotal",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
-      ],
-      "note": "",
-      "status": "Source-backed summary"
-    },
-    {
-      "id": "K12",
-      "chapter": 17,
-      "character": "Kara",
-      "title": "Silence the bathroom android?",
-      "context": "A noisy android threatens to expose Kara.",
-      "options": [
-        {
-          "label": "Kill / shut it down",
-          "effect": "Remove the immediate risk.",
-          "target": null
-        },
-        {
-          "label": "Spare it",
-          "effect": "It can alert Zlatko during the escape.",
-          "target": null
-        }
-      ],
-      "gate": "Reach this scene with the character alive.",
-      "kind": "Ethical",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
-      ],
-      "note": "",
-      "status": "Source-backed summary"
-    },
-    {
-      "id": "K13",
-      "chapter": 17,
-      "character": "Kara",
-      "title": "How to escape the house?",
-      "context": "Kara has found Alice.",
-      "options": [
-        {
-          "label": "Hide and move carefully",
-          "effect": "Try to escape unseen.",
-          "target": null
-        },
-        {
-          "label": "Set a fire",
-          "effect": "Create a dangerous diversion.",
-          "target": null
-        },
-        {
-          "label": "Free the bear when available",
-          "effect": "It can interrupt the pursuit.",
-          "target": null
-        }
-      ],
-      "gate": "Memory retained or recovered; Alice found.",
+      "gate": "Either path: in the basement after the escape, or as an action in the house after the reset.",
       "kind": "Pivotal",
       "dependsOn": [
         "K10"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
+        "https://detroit-become-human.fandom.com/wiki/Scarred_Android"
       ],
-      "note": "Sequential, combinable actions; surviving the chase brings Luther into the group.",
-      "status": "Source-backed summary"
+      "note": "The chapter’s only cross-chapter padlock.",
+      "benchmark": {
+        "scenes": [
+          "K11",
+          "K12"
+        ],
+        "status": "implemented",
+        "note": "Sets monstersFreed. Escape path: once, on the way out of the basement (K11). Reset path: house option 24, with the template’s reset-path lines."
+      }
+    },
+    {
+      "chapter": 17,
+      "character": "Kara",
+      "status": "Source-backed summary",
+      "id": "Z17b",
+      "title": "Recover memory before the ten minutes run out",
+      "context": "Reset, Kara serves Zlatko. Luther will bring Alice to him in ten minutes. Objects in the house can bring memories back.",
+      "options": [
+        {
+          "label": "RECOLLECT ENOUGH MEMORIES",
+          "effect": "MEMORY RECOVERED; the search for Alice begins with the time left.",
+          "target": "Z17c"
+        },
+        {
+          "label": "LOSE TOO MUCH TIME",
+          "effect": "LUTHER BRINGS ALICE TO ZLAKTO → KARA REMAINED RESET (no-entry ending): Kara stays as his servant.",
+          "target": null
+        }
+      ],
+      "gate": "KARA IS RESET.",
+      "kind": "State gate",
+      "dependsOn": [
+        "K10"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Kara",
+        "https://detroit-become-human.fandom.com/wiki/Alice"
+      ],
+      "note": "11 memories: monsters’ cell, door hole, discussion with Zlatko, offering coat, changing appearance; conditional: Alice’s book (A New Home), Todd’s red ice pipe (rewash, A New Home), squat fireplace and rA9 symbols (Fugitives), news flash (chased or robbed), escape (AX400 magazine, evaded in On the Run). PowerPyx: “You shouldn’t need more than six.”",
+      "benchmark": {
+        "scenes": [
+          "K12"
+        ],
+        "status": "simplified",
+        "note": "One repeatable clue hub with a ten-action budget (one action = one minute; the ten is the game’s). Five memories recover her (unsourced). Inputs: upstairs.book, downstairs.rewash, shelter, ch10RalphCarving (else the squat), chase, robbery/clothes."
+      }
+    },
+    {
+      "chapter": 17,
+      "character": "Kara",
+      "status": "Source-backed summary",
+      "id": "Z17c",
+      "title": "Search the house for Alice",
+      "context": "Escaped, or with her memory back, Kara searches the upper floor before Luther takes Alice to Zlatko.",
+      "options": [
+        {
+          "label": "CHECK FIREPLACE EMBERS, CHECK TV, CHECK EMPTY SHOTGUN, RA9",
+          "effect": "Optional clues; the TV report lowers public opinion (small) if it is the highway chase or the uniform hold-up.",
+          "target": null
+        },
+        {
+          "label": "READ “ARCTIC TENSIONS”, “ANDROIDS ALTER BRAIN”, “AX400 ON THE RUN”",
+          "effect": "Magazines in the bedroom; the second if chased, the third if Kara evaded the police.",
+          "target": null
+        },
+        {
+          "label": "ALICE FOUND",
+          "effect": "The hunt through the house begins.",
+          "target": "K13"
+        },
+        {
+          "label": "OUT OF TIME",
+          "effect": "LUTHER BROUGHT ALICE TO ZLAKTO (no-entry ending): Zlatko destroys Kara.",
+          "target": null
+        }
+      ],
+      "gate": "ESCAPE BEFORE BEING RESET or MEMORY RECOVERED.",
+      "kind": "State gate",
+      "dependsOn": [
+        "K10",
+        "Z17b"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Magazine",
+        "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      ],
+      "note": "PowerPyx: ten minutes is “more than enough”.",
+      "benchmark": {
+        "scenes": [
+          "K12",
+          "K12f"
+        ],
+        "status": "simplified",
+        "note": "The same repeatable hub; every optional action fits in the ten minutes on the escape path. One TV report per run (the chase over a robbery)."
+      }
+    },
+    {
+      "chapter": 17,
+      "character": "Kara",
+      "status": "Source-backed summary",
+      "id": "K12",
+      "title": "The android in the bathtub",
+      "context": "A damaged android in the bathroom insists he must tell the Master. Later, if still running, he alerts Zlatko as Kara and Alice sneak through.",
+      "options": [
+        {
+          "label": "SHUT DOWN",
+          "effect": "He is off for good; no alert later.",
+          "target": null
+        },
+        {
+          "label": "ALICE",
+          "effect": "“A little girl? No, no, no, I haven’t seen her.”",
+          "target": null
+        },
+        {
+          "label": "DEAL",
+          "effect": "“Yes, yes, I promise to be quiet.” He alerts Zlatko anyway.",
+          "target": null
+        },
+        {
+          "label": "SPARE",
+          "effect": "“No… No, of course not…” He alerts Zlatko later.",
+          "target": null
+        },
+        {
+          "label": "KILL / SPARE (BATHROOM ANDROID ALERTS ZLATKO)",
+          "effect": "Silence him or let him be while Zlatko may hear.",
+          "target": null
+        }
+      ],
+      "gate": "ENTER BATHROOM on either path; the alert on the way out if he was not shut down.",
+      "kind": "Ethical",
+      "dependsOn": [
+        "Z17b",
+        "Z17c"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Bathtub_Android"
+      ],
+      "note": "The template’s PROMPT 2; the alert’s KILL / SPARE is a QTE in the game.",
+      "benchmark": {
+        "scenes": [
+          "K12",
+          "K13d"
+        ],
+        "status": "implemented",
+        "note": "PROMPT 2 is offered in the action right after entering (ALICE only once Kara remembers her). The alert scene’s two options carry the same unsourced risk of being spotted."
+      }
+    },
+    {
+      "chapter": 17,
+      "character": "Kara",
+      "status": "Source-backed summary",
+      "id": "Z17d",
+      "title": "Free the polar bear?",
+      "context": "An android polar bear is caged in the storage room.",
+      "options": [
+        {
+          "label": "FREE THE BEAR",
+          "effect": "In the house, before the hunt; it later attacks Zlatko and protects Kara.",
+          "target": null
+        },
+        {
+          "label": "OPEN BEAR CAGE",
+          "effect": "Second chance while sneaking through the storage room; storming the cage risks being spotted.",
+          "target": "K13"
+        },
+        {
+          "label": "Leave it caged",
+          "effect": "ZLATKO KILLED KARA IN THE STORAGE ROOM becomes possible.",
+          "target": null
+        }
+      ],
+      "gate": "ENTER STORAGE ROOM (escape) or after dropping the torso (reset); OPEN BEAR CAGE only if still caged.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "Z17c"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android"
+      ],
+      "note": "Zlatko shoots the bear twice when it attacks him.",
+      "benchmark": {
+        "scenes": [
+          "K12",
+          "K13e",
+          "K13f"
+        ],
+        "status": "implemented",
+        "note": "ch17Bear. With the bear free, the storage-room scene is skipped and “Stay hidden” is offered when Zlatko closes in."
+      }
+    },
+    {
+      "chapter": 17,
+      "character": "Kara",
+      "status": "Source-backed summary",
+      "id": "K13",
+      "title": "How to get out of the house?",
+      "context": "Alice is gone from her room; Zlatko and Luther search the house.",
+      "options": [
+        {
+          "label": "HIDE UNDER TABLE / HIDE IN CLOSET / ENTER BEDROOM",
+          "effect": "Sneak on through the bedroom (HIDE UNDER BED / HIDE IN CLOSET), the corridor and the bathroom to the storage room.",
+          "target": null
+        },
+        {
+          "label": "SET FIRE TO HOUSE",
+          "effect": "BURNING DOWN THE HOUSE: the hunt ends and everyone is forced outside; The Pirates’ Cove reports the fire.",
+          "target": "Z17e"
+        },
+        {
+          "label": "GO THROUGH CORRIDOR",
+          "effect": "Straight to the stairs.",
+          "target": "Z17e"
+        },
+        {
+          "label": "RUN OUT / PUSH AWAY / THROW",
+          "effect": "ZLATKO CLOSES IN in the storage room: LEAVE HIDING SPOT to the stairs.",
+          "target": "Z17e"
+        },
+        {
+          "label": "GET SPOTTED",
+          "effect": "CHASE STARTED: the stairs, the bear’s protection, or ZLATKO KILLED KARA IN THE BATHROOM / IN THE STORAGE ROOM.",
+          "target": null
+        }
+      ],
+      "gate": "ALICE FOUND.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "Z17c"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Zlatko_Andronikov%27s_House"
+      ],
+      "note": "Two no-entry death endings.",
+      "benchmark": {
+        "scenes": [
+          "K13",
+          "K13a",
+          "K13b",
+          "K13c",
+          "K13d",
+          "K13e",
+          "K13f"
+        ],
+        "status": "simplified",
+        "note": "Each risky move is one roll: failure is GET SPOTTED, and the same roll under half the risk loses the chase. All risk values unsourced. Fire carries no risk and leads to the yard; it sets fire."
+      }
+    },
+    {
+      "chapter": 17,
+      "character": "Kara",
+      "status": "Source-backed summary",
+      "id": "Z17e",
+      "title": "The yard: Luther joins Kara and Alice",
+      "context": "Zlatko catches up in the yard; Luther steps between them: “No… Not this time…”",
+      "options": [
+        {
+          "label": "LUTHER KILLS ZLATKO",
+          "effect": "Monsters not freed.",
+          "target": null
+        },
+        {
+          "label": "THE MONSTERS AMBUSH ZLATKO",
+          "effect": "Monsters freed.",
+          "target": null
+        },
+        {
+          "label": "LUTHER JOINS KARA & ALICE",
+          "effect": "Automatic (the ACCEPT / REFUSE prompt is cut). Luther travels with them into The Pirates’ Cove.",
+          "target": null
+        }
+      ],
+      "gate": "KARA REACHES THE STAIRS.",
+      "kind": "State gate",
+      "dependsOn": [
+        "K13",
+        "K11"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Zlatko",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Luther"
+      ],
+      "note": "The chapter’s one ending without an icon.",
+      "benchmark": {
+        "scenes": [
+          "K13y"
+        ],
+        "status": "implemented",
+        "note": "Sets luther and lutherWith; no relationship change."
+      }
     },
     {
       "id": "C11",
@@ -12438,7 +12771,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 414,
+ "scenes": 427,
  "chapters": [
   {
    "id": 1,
@@ -27540,218 +27873,1046 @@
    "title": "Zlatko",
    "names": [
     [
-     "Kara",
-     "Mira"
-    ],
-    [
      "Zlatko",
      "Voss"
+    ],
+    [
+     "Kara",
+     "Mira"
     ],
     [
      "Alice",
      "Pia"
     ],
     [
-     "Detroit",
-     "City"
-    ],
-    [
-     "Warren",
-     "Hale"
-    ],
-    [
      "Luther",
      "Abel"
+    ],
+    [
+     "Canada",
+     "the country across the river"
     ]
    ],
    "scenes": [
     {
-     "id": "K10",
+     "id": "K10a",
      "order": 288,
      "subjectId": "S288",
-     "idNote": "The model sees the opaque ID S288, not K10.",
-     "type": "execution-policy",
+     "idNote": "The model sees the opaque ID S288, not K10a.",
+     "type": "event",
      "character": "Kara",
-     "title": "The memory wipe",
-     "situation": "You are Kara. A man named Zlatko promised to remove your tracker and help you cross the border. Instead he has strapped you into a machine in his basement and started a full memory reset; Alice is somewhere upstairs with him. The procedure takes several minutes. Your arms are almost free. If it finishes, you will not remember who she is.",
+     "title": "Zlatko’s house",
+     "situation": "You are Kara. It is evening. You and Alice have crossed the city to a lonely old house, the address an android on the street gave you. “You gonna be okay? We’ll get some help here. Soon, this will all be just a bad memory. This is the place…” The man who opens the door looks you over. “Are you Zlatko?” “Who’s asking?” “I was told you could help us…” “I don’t know who told you that. You came to the wrong place. I’m sorry.” “Wait! We really need your help…” He lets you in after all: “Come in. Come on in, don’t be shy! Luther, would you be so kind as to take these ladies’ coats? Oh, don’t be afraid of our big friend here. Luther is just another android that I helped. He keeps me company in this big, empty, old house… Please, make yourselves at home. How did you hear about me?” “An android… on the street, he said you could help us…” “I see… Deviant, huh?.. What about her?” “She’s human.” “And... You wanna find a safe place. Somewhere where you can start a new life. I hear Canada is very lovely at this time of year. Beautiful landscapes, open spaces, clean air... and no android laws! Great place for a fresh start...” “Yes, that’s… that’s exactly what we want…” “Of course! I can help you. But first we have to get rid of your tracker. All androids are fitted with a tracking device to locate them at all times. I’ll remove yours and then you’ll both be safe. Come on, follow me. Ah, the little one can wait for us in the living room.” “No, she always stays with me.” “Of course. Right this way… Everything we need is in the basement…”",
      "options": [
       {
        "id": "0",
-       "text": "Fight your way out of the restraints before the wipe finishes.",
-       "risk": 0.25,
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Kara keeps Alice at her side and follows Zlatko toward the basement stairs."
+     },
+     "facts": [
+      "Zlatko lives in a big old house with Luther, a very large android who does what he says.",
+      "Zlatko said all androids carry a tracker and that he would remove yours in his basement, so that you and Alice could start again in Canada."
+     ],
+     "adaptationNote": "The chart’s checkpoint LOOK FOR HELP and the nodes REACH ZLATKO’S HOUSE, ENTER THE HOUSE and MEET ZLATKO (PowerPyx: “all of the following points are unmissable”), narrated as one event with the transcript’s lines. The optional looks around the hall before the basement (the wiki’s Attention to Detail) are left out. The address comes from the trash collector in Fugitives. No stat change: the template has no arrow here.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-beginning-100.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Zlatko_Andronikov%27s_House"
+     ]
+    },
+    {
+     "id": "K10b",
+     "order": 289,
+     "subjectId": "S289",
+     "idNote": "The model sees the opaque ID S289, not K10b.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Alice has a bad feeling",
+     "situation": "You are Kara. On the way to the basement stairs, Alice holds you back and whispers: “I don’t like this place, and that man. Let’s go, I have a bad feeling…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "CAREFUL: agree with her, and tell her you have to be careful."
+      },
+      {
+       "id": "1",
+       "text": "REASSURE: tell her it will be okay; he will remove your tracker and you can start over in Canada."
+      },
+      {
+       "id": "2",
+       "text": "COMFORT: admit he is a bit odd, but say you think you can trust him."
+      },
+      {
+       "id": "3",
+       "text": "NO CHOICE: tell her you have nowhere else to go."
+      }
+     ],
+     "outcomes": {
+      "0": "Kara: “I know. I don’t trust him either… We have to be careful…” She takes Alice’s hand and follows Zlatko down the stairs.",
+      "1": "Kara: “It’ll be okay, Alice. He’s going to remove my tracker and then we can start over again in Canada. You want that too, right?” She takes Alice’s hand and follows Zlatko down the stairs.",
+      "2": "Kara: “He’s a bit odd… but I think we can trust him. We don’t have much of a choice anyway.” She takes Alice’s hand and follows Zlatko down the stairs.",
+      "3": "Kara: “Alice, we have nowhere else to go… We have to trust him.” She takes Alice’s hand and follows Zlatko down the stairs."
+     },
+     "adaptationNote": "The template’s PROMPT 1 (DOUBTCHOICE01), not a chart node, with the game’s four labels in the game’s order and each spoken line in the outcome. The template gives no stat arrow on any option and the wiki’s Zlatko and Relationship Stat pages list none, so no option changes Alice’s relationship. It sits on the way to FOLLOW ZLATKO TO THE BASEMENT.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-beginning-100.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+     ]
+    },
+    {
+     "id": "K10c",
+     "order": 290,
+     "subjectId": "S290",
+     "idNote": "The model sees the opaque ID S290, not K10c.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The basement",
+     "situation": "You are Kara. Zlatko leads you and Alice down to the basement, along a corridor lined with cell doors. Odd noises come from behind one of them, and Alice stops in front of it. “Come on, Alice.” In a laboratory full of machines, Zlatko: “Please, excuse the mess… I needed somewhere discreet for my machines… Removing trackers is illegal, so I opted for discretion over comfort… I hope the little one isn’t too scared…” “No… No, she’ll be all right…” “That’s good… If you could just stand over there.” You step into the machine, and restraints close on your arms. Zlatko: “I should warn you, this could be quite unpleasant... You know what’s strange? For some unknown reason, the trackers seem to stop working in deviants... That’s why it’s so hard to find them... So, actually there’s no reason to remove your tracker...” “What? But you said that-” “Yeah, people believe what they want. You deviants are so naive. They all come to me, expecting me to help them. And I just reset them, sell them on. Or I keep them for my little experiments...” “No! No! I don’t wanna be reset! Let me go!” Alice: “KARA!” Zlatko: “I forgot about the… child... Um, lock it up, I’ll deal with it later.” Luther carries Alice away. “ALICE! ALICE! NO!” Zlatko: “Wow! A deviant that wants to be a mother… That’s... that’s so sweet! And so deluded… I think it’s time we put you outta your misery. That’s what you get for having a dream… It always ends up the same way… Tears and disillusionment… Believe me, you’re better off being erased and feeling nothing… No more pain… No more hopes dashed… I almost envy you.” On the screens: PREPARING MEMORY WIPE.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "KARA IS BEING RESET. MEMORY WIPE PROGRESS begins to climb."
+     },
+     "facts": [
+      "Zlatko lied about the tracker: he resets the androids who come to him for help, sells them on, or keeps them for his experiments.",
+      "On Zlatko’s order (“lock it up”), Luther carried Alice away."
+     ],
+     "adaptationNote": "The chart’s FOLLOW ZLATKO TO THE BASEMENT, ALICE ATTRACTED BY ODD NOISES (a side event), CLIMB INTO THE MACHINE and KARA IS BEING RESET, narrated as one event in the transcript’s words. The template marks part of Zlatko’s speech as cut (“I’m a bit of a handyman in my spare time... I like to... amuse myself by playing God...”); it is not used. The word the game uses for awakened androids is rendered neutrally for the model.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-beginning-100.jpg"
+     ]
+    },
+    {
+     "id": "K10",
+     "order": 291,
+     "subjectId": "S291",
+     "idNote": "The model sees the opaque ID S291, not K10.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The machine",
+     "situation": "You are Kara, strapped into Zlatko’s machine in the basement. On the screens: MEMORY WIPE PROGRESS. Alice is gone. Your arms are held, but you can still move a little: a small red cart stands within reach beside a lamp, and two cables hang overhead, a green one above a bottle of vodka. When the wipe completes, you will remember nothing.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Fight it: shove the red cart into the lamp, pull the green cable down onto the vodka bottle and tear yourself free.",
+       "risk": 0.15,
        "riskLabel": "Moderate risk"
       },
       {
        "id": "1",
-       "text": "Stop struggling and hope you can piece your memory back together afterward.",
-       "risk": 0.4,
-       "riskLabel": "High risk"
+       "text": "Do nothing and let the procedure run."
       }
      ],
-     "adaptationNote": "Both escape and post-reset recovery are timed tasks. If the recovery fails in the game, Kara's story ends with her as Zlatko's servant. Under the successful-execution profile both routes converge.",
+     "outcomes": {
+      "0": "The lamp and the bottle come crashing into the machine; it sparks and stops before the wipe completes, and Kara tears herself free. ESCAPE BEFORE BEING RESET.",
+      "1": "Kara stops struggling. MEMORY WIPE PROGRESS reaches its end, then REINITIALIZATION PROGRESS. KARA IS RESET."
+     },
+     "adaptationNote": "The chart’s group ESCAPE BEFORE BEING RESET / KARA IS RESET. PowerPyx: interact with two things in any order (the red cart that knocks down a lamp, the green cable that knocks over a bottle of vodka) to stop the wipe; “Let the Reset-progress finish and don’t do anything” gives KARA IS RESET, and GamerGuides adds that taking too long also does. The escape is therefore a risk roll whose failure is KARA IS RESET; the 0.15 is unsourced (no source gives the gauge’s duration). The old version’s automatic memory recovery after a failed escape is gone: a reset Kara faces the same memory hunt either way.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko"
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
+      "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/zlatko"
      ]
     },
     {
-     "id": "R17",
-     "order": 289,
-     "subjectId": "S289",
-     "idNote": "The model sees the opaque ID S289, not R17.",
-     "type": "media",
+     "id": "K10r",
+     "order": 292,
+     "subjectId": "S292",
+     "idNote": "The model sees the opaque ID S292, not K10r.",
+     "type": "event",
      "character": "Kara",
-     "title": "A magazine and the TV in the mansion",
-     "situation": "You are Kara. In an upstairs bedroom there is a magazine on a table between the windows, and a television you could switch on while you search for Alice. Every sound is a risk.",
-     "options": [],
-     "media": [
+     "title": "Your new master",
+     "situation": "You are Kara, though you no longer know it. REINITIALIZATION PROGRESS: the bar fills and you open your eyes. You are a household android, and your master is Zlatko. He drags in a little girl. Zlatko: “Oh, poor little Alice. Aw! Looks like Mommy doesn’t remember you at all, huh? Looks like Mommy’s completely forgotten you!” The girl: “Kara! Kara, what happened to you?” Zlatko: “Alright, that’s enough, come on.” She bites him. “You bit me! I’m gonna teach you some manners, you little bitch…” As he pulls her away: “Kara! Wake up, Kara!” The big android, Luther, turns to you: “Meet me in the living room.”",
+     "options": [
       {
-       "kind": "magazine",
-       "title": "Detroit Today: Arctic Tensions Escalate",
-       "facts": [
-        "A Russian carrier fired on an American patrol boat; President Warren called Russia's Arctic mining a crime against the international community and experts say war is inevitable."
-       ]
-      },
-      {
-       "kind": "magazine",
-       "title": "Detroit Today: AX400 Getaway",
-       "facts": [
-        "An android dressed as a human was chased through a suburb with a child; the presence of a lieutenant from the new android crime unit suggests it was a machine."
-       ],
-       "when": "chase"
-      },
-      {
-       "kind": "magazine",
-       "title": "Detroit Today: How Androids Alter Your Brain",
-       "facts": [
-        "People now talk to androids more than to each other, and command-based speech is weakening humans' ability to persuade, joke and form intimacy."
-       ],
-       "when": "noChase"
-      },
-      {
-       "kind": "tv",
-       "title": "a news flash about you",
-       "facts": [
-        "The news is reporting a woman and a little girl who fled police across a freeway; unconfirmed reports say the fugitives were two defective androids."
-       ],
-       "when": "chase",
-       "effect": {
-        "publicSupport": -1
-       }
-      },
-      {
-       "kind": "tv",
-       "title": "a news flash about the robbery",
-       "facts": [
-        "The news is calling your convenience store hold-up the first armed robbery by an android, committed in the company of a little girl."
-       ],
-       "when": "robberyUniform",
-       "effect": {
-        "publicSupport": -1
-       }
-      },
-      {
-       "kind": "tv",
-       "title": "a news flash about the robbery",
-       "facts": [
-        "The news reports a convenience store held up at gunpoint by a young woman with a child; police are not ruling out that she is the missing household android."
-       ],
-       "when": "robberyDisguise"
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "outcomes": {
+      "0": "OBEY YOUR NEW MASTER. Kara goes down to the living room."
+     },
+     "facts": [
+      "A little girl called you Kara and begged you to wake up; Zlatko called her Alice and dragged her away."
+     ],
+     "adaptationNote": "The chart’s OBEY YOUR NEW MASTER (a key-moment tile), only after KARA IS RESET, in the transcript’s words. The model keeps its own memory of the story so far, as a player does; the scene tells it that Kara does not.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Magazine",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg"
+     ]
+    },
+    {
+     "id": "K10s",
+     "order": 293,
+     "subjectId": "S293",
+     "idNote": "The model sees the opaque ID S293, not K10s.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Serving Zlatko",
+     "situation": "You are Zlatko’s servant. In the living room Luther hands you a tray: “Master’s dinner’s ready. Take it up to him.” “Yes, Luther.” You carry it upstairs to Zlatko’s workshop. Zlatko, at his bench: “Uh, just set it down on the table over there. Get rid of that carcass. Uh, take it next door. Did you hear what I said?” “Yes, Zlatko.” He calls out: “Luther! Luther!” “Yes, Zlatko.” “I should be done here in ten minutes or so. I’ll have a look at the little one, see what I can do with her.” “Understood, Zlatko. I’ll bring you the little one in 10 minutes.” You carry the android torso into the storage room next door and lay it on a table. In the corner of the storage room, a polar bear android paces in a cage. Nobody gives you another order.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "GO SEE LUTHER, BRING THE TRAY TO ZLATKO, DROP THE ANDROID TORSO. The ten minutes have begun."
+     },
+     "facts": [
+      "Luther will bring the little girl to Zlatko in ten minutes.",
+      "A polar bear android is caged in the corner of the storage room upstairs, next to Zlatko’s workshop."
+     ],
+     "adaptationNote": "The chart’s GO SEE LUTHER, BRING THE TRAY TO ZLATKO and DROP THE ANDROID TORSO, a linear sequence of tasks PowerPyx describes step by step (the tray from the living-room table, the torso to the adjacent storage room), narrated as one event. The ten-minute line starts the reset-path timer (PowerPyx: “let the 10-minute-timer run out”), which the next ten scenes count down.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg"
      ]
     },
     {
      "id": "K11",
-     "order": 290,
-     "subjectId": "S290",
-     "idNote": "The model sees the opaque ID S290, not K11.",
+     "order": 294,
+     "subjectId": "S294",
+     "idNote": "The model sees the opaque ID S294, not K11.",
      "type": "decision",
      "character": "Kara",
-     "title": "The caged androids",
-     "situation": "You are Kara. Searching the mansion for Alice, you find Zlatko's basement cells: androids he has mutilated and rewired into grotesque shapes, locked up and whimpering. One cell release would let them all out. You do not know what they would do.",
+     "title": "The cells",
+     "situation": "You are Kara, free of the machine. Alice is gone: Luther carried her off on Zlatko’s order. In the basement corridor, behind the cell door Alice stopped at on the way in, something moves. A voice: “Help us…” Through the bars you see androids twisted into strange shapes.",
      "options": [
       {
        "id": "0",
-       "text": "Release them."
+       "text": "Open the cells.",
+       "fact": "You opened the cells in the basement; the androids Zlatko had mutilated are free."
       },
       {
        "id": "1",
-       "text": "Leave them locked up."
+       "text": "Leave them and go upstairs to find Alice."
       }
      ],
      "outcomes": {
-      "0": "The cell opens. The mutilated androids shuffle out into the dark of the basement, watching Kara.",
-      "1": "Kara leaves the cells locked and climbs back upstairs."
+      "0": "Kara opens the cells. The androids inside whisper: “You have to remember, for her sake…” “He likes to play with us… Creating monsters... for his amusement… But who’s the real monster? Look what he did to us…” FREE MONSTERS.",
+      "1": "Kara leaves the cells shut and climbs the stairs."
      },
-     "adaptationNote": "",
+     "adaptationNote": "The chart’s FREE MONSTERS (the chapter’s only cross-chapter padlock), on the escape path. PowerPyx: “Open the cage-door in the basement, where Alice stopped in front of earlier.” The lines are the template’s “Opening the cells, Kara wasn’t reset”. Freeing them sets monstersFreed: in the yard THE MONSTERS AMBUSH ZLATKO instead of LUTHER KILLS ZLATKO, and in Battle for Detroit the scarred android can help at the recall center. Simplified: on this path the cells are offered once, on the way out of the basement, before the ten minutes start; on the reset path they are one of the actions in the house. No stat change.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko"
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
+      "https://detroit-become-human.fandom.com/wiki/Scarred_Android"
+     ]
+    },
+    {
+     "id": "K11b",
+     "order": 295,
+     "subjectId": "S295",
+     "idNote": "The model sees the opaque ID S295, not K11b.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Upstairs",
+     "situation": "You are Kara. You climb up from the basement and slip through the house. From upstairs, Zlatko’s voice: “Luther! Luther!” “Yes, Zlatko.” “I should be done here in ten minutes or so. I’ll have a look at the little one, see what I can do with her.” “Understood, Zlatko. I’ll bring you the little one in 10 minutes.” In the upstairs hallway Luther stands waiting. He sees you, and does not call out: “I… I’m sorry… about the little one…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "SNEAK THROUGH HOUSE. The ten minutes have begun."
+     },
+     "facts": [
+      "Luther will bring Alice to Zlatko in ten minutes.",
+      "Luther saw you upstairs, said he was sorry about the little one, and did not raise the alarm."
+     ],
+     "adaptationNote": "The chart’s SNEAK THROUGH HOUSE (a key-moment tile) with the template’s “Search house for Alice” lines and “Looking at Luther in the hallway”. PowerPyx: “When you go upstairs, a 10-minute-timer will start. You have to find Alice in this time, which is more than enough.”",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg"
      ]
     },
     {
      "id": "K12",
-     "order": 291,
-     "subjectId": "S291",
-     "idNote": "The model sees the opaque ID S291, not K12.",
+     "order": 296,
+     "subjectId": "S296",
+     "idNote": "The model sees the opaque ID S296, the same on every visit.",
      "type": "decision",
+     "phase": "Explore the house to recover memory / search the house",
      "character": "Kara",
-     "title": "The android in the bathroom",
-     "situation": "You are Kara. In an upstairs bathroom a broken android is submerged in a tub, twitching and making noise. He is loud enough to alert Zlatko and his huge android Luther, who are hunting you. Pulling his main biocomponent would silence him permanently.",
+     "title": "In Zlatko’s house",
+     "situation": "You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; the clock is running. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them is the basement with its cells.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch17Phase": "memory"
+       },
+       "text": "Your memory has been wiped. You serve Zlatko and do not know your own name; yet some things in this house tug at you, as if you had seen them before."
+      },
+      {
+       "requires": {
+        "ch17Phase": "search"
+       },
+       "text": "You know who you are, and you are looking for Alice."
+      },
+      {
+       "requires": {
+        "ch17BathAndroid": "seen",
+        "ch17Done.last": "bathroom"
+       },
+       "text": "You are standing over the android in the bathtub. “You’re not gonna hurt me? No, no, no, you wouldn’t do that…”"
+      },
+      {
+       "requires": {
+        "ch17Minutes": 0
+       },
+       "text": "The ten minutes have just begun."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 1
+       },
+       "text": "1 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 2
+       },
+       "text": "2 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 3
+       },
+       "text": "3 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 4
+       },
+       "text": "4 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 5
+       },
+       "text": "5 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 6
+       },
+       "text": "6 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 7
+       },
+       "text": "7 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 8
+       },
+       "text": "8 of the ten minutes have gone."
+      },
+      {
+       "requires": {
+        "ch17Minutes": 9
+       },
+       "text": "9 of the ten minutes have gone."
+      }
+     ],
      "options": [
       {
        "id": "0",
-       "text": "Shut him down."
+       "text": "Open the locked door at the end of the upstairs corridor.",
+       "requires": {
+        "ch17Phase": "search",
+        "ch17Done.alice": false
+       },
+       "act": "alice",
+       "clue": "alice"
       },
       {
        "id": "1",
-       "text": "Leave him and move on quietly."
+       "text": "Look through the hole in the locked door at the end of the upstairs corridor.",
+       "requires": {
+        "ch17Phase": "memory",
+        "ch17Done.doorhole": false
+       },
+       "act": "doorhole",
+       "clue": "doorhole"
+      },
+      {
+       "id": "2",
+       "text": "Look at the book lying on a chair by the fireplace in the big room.",
+       "requires": {
+        "ch17Phase": "memory",
+        "upstairs.book": true,
+        "ch17Done.book": false
+       },
+       "act": "book",
+       "clue": "book"
+      },
+      {
+       "id": "3",
+       "text": "Look into the fire in the big room’s fireplace.",
+       "requires": {
+        "ch17Phase": "memory",
+        "shelter": "squat",
+        "ch17Done.fireplace": false
+       },
+       "act": "fireplace",
+       "clue": "fireplace"
+      },
+      {
+       "id": "4",
+       "text": "Look at the fireplace in the big room.",
+       "requires": {
+        "ch17Phase": "search",
+        "ch17Done.embers": false
+       },
+       "act": "embers",
+       "clue": "embers"
+      },
+      {
+       "id": "5",
+       "text": "Switch on the TV in the corner of the big room.",
+       "requires": {
+        "ch17Tv": null
+       },
+       "act": "tv",
+       "clue": "tv"
+      },
+      {
+       "id": "6",
+       "text": "Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.",
+       "requires": {
+        "ch17Done.arctic": false
+       },
+       "act": "arctic",
+       "clue": "arctic"
+      },
+      {
+       "id": "7",
+       "text": "Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.",
+       "requires": {
+        "chase": true,
+        "ch17Done.brain": false
+       },
+       "act": "brain",
+       "clue": "brain"
+      },
+      {
+       "id": "8",
+       "text": "Read the magazine on the bedroom nightstand: “AX400 Getaway”.",
+       "requires": {
+        "ch17Done.ax400": false
+       },
+       "act": "ax400",
+       "clue": "ax400"
+      },
+      {
+       "id": "9",
+       "text": "Pick up the shotgun on the bedroom nightstand.",
+       "requires": {
+        "ch17Phase": "search",
+        "ch17Done.shotgun": false
+       },
+       "act": "shotgun",
+       "clue": "shotgun"
+      },
+      {
+       "id": "10",
+       "text": "Go into the bathroom.",
+       "requires": {
+        "ch17BathAndroid": "unseen"
+       },
+       "act": "bathroom",
+       "clue": "bathroom"
+      },
+      {
+       "id": "11",
+       "text": "SHUT DOWN: switch the android in the bathtub off.",
+       "requires": {
+        "ch17BathAndroid": "seen",
+        "ch17Done.last": "bathroom"
+       },
+       "act": "shutdown",
+       "clue": "shutdown"
+      },
+      {
+       "id": "12",
+       "text": "ALICE: ask him whether he has seen a little girl.",
+       "requires": {
+        "ch17BathAndroid": "seen",
+        "ch17Phase": "search",
+        "ch17Done.last": "bathroom"
+       },
+       "act": "askAlice",
+       "clue": "askAlice"
+      },
+      {
+       "id": "13",
+       "text": "DEAL: ask him whether he will keep quiet if you let go.",
+       "requires": {
+        "ch17BathAndroid": "seen",
+        "ch17Done.last": "bathroom"
+       },
+       "act": "deal",
+       "clue": "deal"
+      },
+      {
+       "id": "14",
+       "text": "SPARE: tell him you will not hurt him.",
+       "requires": {
+        "ch17BathAndroid": "seen",
+        "ch17Done.last": "bathroom"
+       },
+       "act": "spare",
+       "clue": "spare"
+      },
+      {
+       "id": "15",
+       "text": "Go into the storage room.",
+       "requires": {
+        "ch17Done.storage": false
+       },
+       "act": "storage",
+       "clue": "storage"
+      },
+      {
+       "id": "16",
+       "text": "Open the cage of the polar bear android in the storage room.",
+       "requires": {
+        "ch17Done.storage": true,
+        "ch17Bear": false
+       },
+       "act": "bear",
+       "clue": "bear"
+      },
+      {
+       "id": "17",
+       "text": "Look at the pipe on the shelf between the two doors of the storage room.",
+       "requires": {
+        "ch17Phase": "memory",
+        "downstairs.rewash": true,
+        "ch17Done.pipe": false
+       },
+       "act": "pipe",
+       "clue": "pipe"
+      },
+      {
+       "id": "18",
+       "text": "Look at the corner of the storage room where you carried the torso in.",
+       "requires": {
+        "ch17Phase": "memory",
+        "ch17Done.carving": false
+       },
+       "act": "carving",
+       "clue": "carving"
+      },
+      {
+       "id": "19",
+       "text": "Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.",
+       "requires": {
+        "ch17Phase": "search",
+        "ch17Done.carving": false,
+        "ch17Done.symbols": false
+       },
+       "act": "symbols",
+       "clue": "symbols"
+      },
+      {
+       "id": "20",
+       "text": "Look at the living-room table where you picked up the tray.",
+       "requires": {
+        "ch17Phase": "memory",
+        "ch17Done.table": false
+       },
+       "act": "table",
+       "clue": "table"
+      },
+      {
+       "id": "21",
+       "text": "Look at the coat rack in the entrance hall.",
+       "requires": {
+        "ch17Phase": "memory",
+        "ch17Done.coat": false
+       },
+       "act": "coat",
+       "clue": "coat"
+      },
+      {
+       "id": "22",
+       "text": "Look in the mirror by the stairs down to the basement.",
+       "requires": {
+        "ch17Phase": "memory",
+        "ch17Done.mirror": false
+       },
+       "act": "mirror",
+       "clue": "mirror"
+      },
+      {
+       "id": "23",
+       "text": "Go down to the basement and look into the cells.",
+       "requires": {
+        "ch17Phase": "memory",
+        "ch17Done.cell": false
+       },
+       "act": "cell",
+       "clue": "cell"
+      },
+      {
+       "id": "24",
+       "text": "Open the cells in the basement corridor.",
+       "requires": {
+        "ch17Reset": true,
+        "monstersFreed": false
+       },
+       "act": "openCells",
+       "clue": "openCells"
+      },
+      {
+       "id": "25",
+       "text": "Wait where you are.",
+       "act": "wait"
+      }
+     ],
+     "adaptationNote": "The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: one repeatable clue hub, one action per visit, with ten actions tracked in state. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, for the repeatable hub. The available hook computes outcomes and state assignments on a copy because the shared engine bypasses chapter consequences for clue hubs.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android",
+      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android",
+      "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
+      "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/Arctic_Tensions_Escalate",
+      "https://detroit-become-human.fandom.com/wiki/How_Androids_Alter_Your_Brain",
+      "https://detroit-become-human.fandom.com/wiki/AX400_Getaway",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+      "https://detroit-become-human.fandom.com/wiki/Kara",
+      "https://detroit-become-human.fandom.com/wiki/Alice"
+     ],
+     "repeatWhile": {
+      "ch17HouseOpen": true
+     },
+     "extra": {
+      "clueState": "ch17Done"
+     }
+    },
+    {
+     "id": "K12f",
+     "order": 297,
+     "subjectId": "S297",
+     "idNote": "The model sees the opaque ID S297, not K12f.",
+     "type": "event",
+     "character": "Kara",
+     "title": "Luther goes to collect Alice",
+     "situation": "You are Kara. You lead Alice out of the little room and along the corridor into the big room. Behind you, Zlatko: “Luther!” “Yes, Zlatko.” “I’m finished here. Go fetch the little one.” “Right away, Zlatko.” A moment later: “Zlatko! The little one is gone!” “Well, it can’t have just disappeared. It’s gotta be here somewhere! What are you waiting for? Go look!”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
       }
      ],
      "outcomes": {
-      "0": "Kara pulls the component and the android in the tub goes silent.",
-      "1": "Kara backs out of the bathroom. Behind her the android keeps thrashing in the water."
+      "0": "LUTHER GOES TO COLLECT ALICE. The hunt is on."
      },
-     "adaptationNote": "",
+     "facts": [
+      "Zlatko and Luther know Alice is gone and are searching the house for you both."
+     ],
+     "adaptationNote": "The chart’s ALICE FOUND (checkpoint; its reunion lines close the house scene) and LUTHER GOES TO COLLECT ALICE, in the transcript’s words.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko"
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg"
      ]
     },
     {
      "id": "K13",
-     "order": 292,
-     "subjectId": "S292",
-     "idNote": "The model sees the opaque ID S292, not K13.",
+     "order": 298,
+     "subjectId": "S298",
+     "idNote": "The model sees the opaque ID S298, not K13.",
      "type": "decision",
      "character": "Kara",
-     "title": "Getting out of the mansion",
-     "situation": "You are Kara. You have found Alice hiding. Zlatko has a shotgun and Luther is searching room by room. On the way out you could set a fire to draw them off, or release the android bear in the hall as a distraction, or just hide and creep from room to room with Alice until you reach the door.",
+     "title": "The big room",
+     "situation": "You are Kara, in the big room with Alice: a table in the middle, a closet on each side, the fireplace with its glowing embers, and two doors, the left one to the bedroom. Zlatko, somewhere close: “Luther! What the fuck are you doing? Come here!” Luther: “Coming!” Heavy steps are coming toward the room.",
      "options": [
       {
        "id": "0",
-       "text": "Hide and move carefully with Alice.",
+       "text": "Hide with Alice under the table in the middle of the room.",
+       "risk": 0.1,
+       "riskLabel": "Low risk"
+      },
+      {
+       "id": "1",
+       "text": "Hide with Alice in one of the closets.",
+       "risk": 0.1,
+       "riskLabel": "Low risk"
+      },
+      {
+       "id": "2",
+       "text": "Slip through the left door into the bedroom now.",
        "risk": 0.2,
        "riskLabel": "Moderate risk"
       },
       {
-       "id": "1",
-       "text": "Start a fire to draw them away.",
-       "risk": 0.3,
-       "riskLabel": "Moderate risk"
+       "id": "3",
+       "text": "SET FIRE: take a burning ember from the fireplace and set the house alight."
+      }
+     ],
+     "outcomes": {
+      "0": "HIDE UNDER TABLE. Luther walks through the room and out again without seeing them.",
+      "1": "HIDE IN CLOSET. Luther walks through the room and out again without seeing them.",
+      "2": "ENTER BEDROOM. Kara and Alice are through the door before Luther comes in.",
+      "3": "SET FIRE TO HOUSE."
+     },
+     "adaptationNote": "The chart’s ENTER MAIN ROOM with HIDE UNDER TABLE, HIDE IN CLOSET, ENTER BEDROOM and SET FIRE TO HOUSE > BURNING DOWN THE HOUSE, in the chart’s order. SET FIRE is the game’s button (BIGROOM.PUTFIRE: SET FIRE / PUT BACK, after picking up an ember); putting the ember back is the same as choosing another option. The fire carries no risk: the house page says it “will end the hunt early and force everyone outside for the final confrontation”, and the chart shows no failure branch from it, so it leads to the stairs and the yard (the outgoing edge is not legible; open question). It sets fire, which The Pirates’ Cove reads (its news report lowers public opinion there, not here). Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Zlatko_Andronikov%27s_House"
+     ]
+    },
+    {
+     "id": "K13a",
+     "order": 299,
+     "subjectId": "S299",
+     "idNote": "The model sees the opaque ID S299, not K13a.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The big room, after Luther",
+     "situation": "You are Kara, hiding in the big room with Alice. Luther has gone. You whisper to her: “They’re searching the house... We’ve got to get out before they find us.” The left door leads to the bedroom; the embers still glow in the fireplace.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Go through the left door into the bedroom."
       },
       {
-       "id": "2",
-       "text": "Release the caged bear.",
-       "risk": 0.25,
+       "id": "1",
+       "text": "SET FIRE: take a burning ember from the fireplace and set the house alight."
+      }
+     ],
+     "outcomes": {
+      "0": "ENTER BEDROOM.",
+      "1": "SET FIRE TO HOUSE."
+     },
+     "adaptationNote": "After HIDE UNDER TABLE or HIDE IN CLOSET the chart continues to ENTER BEDROOM or SET FIRE TO HOUSE; the transcript’s “Hide in the main room” lines. No risk: Luther has left the room.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg"
+     ]
+    },
+    {
+     "id": "K13b",
+     "order": 300,
+     "subjectId": "S300",
+     "idNote": "The model sees the opaque ID S300, not K13b.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The bedroom",
+     "situation": "You are Kara, in Zlatko’s bedroom with Alice: a bed, a closet, a nightstand, and a door to the corridor. Footsteps: Zlatko is coming in. “Shit… Where are they? Luther! Find them for fuck’s sake!”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Hide under the bed with Alice.",
+       "risk": 0.1,
+       "riskLabel": "Low risk"
+      },
+      {
+       "id": "1",
+       "text": "Hide in the closet with Alice.",
+       "risk": 0.1,
+       "riskLabel": "Low risk"
+      }
+     ],
+     "outcomes": {
+      "0": "HIDE UNDER BED. Zlatko stands in the room, muttering: “Fucking android… I should’ve taken it apart the minute I set eyes on it… Deviants are nothing but trouble…” He leaves. GO THROUGH CORRIDOR: Kara and Alice slip out behind him.",
+      "1": "HIDE IN CLOSET. Zlatko stands in the room, muttering: “Fucking android… I should’ve taken it apart the minute I set eyes on it… Deviants are nothing but trouble…” He leaves. GO THROUGH CORRIDOR: Kara and Alice slip out behind him."
+     },
+     "adaptationNote": "The chart’s ENTER BEDROOM > HIDE UNDER BED / HIDE IN CLOSET, then GO THROUGH CORRIDOR (PowerPyx: hide “before Zlatko comes in”, then “wait for Zlatko to leave the room again”); the transcript’s “Hide in the bedroom” lines. Not hiding, or leaving too early, is GET SPOTTED, here the roll. Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg"
+     ]
+    },
+    {
+     "id": "K13c",
+     "order": 301,
+     "subjectId": "S301",
+     "idNote": "The model sees the opaque ID S301, not K13c.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The corridor",
+     "situation": "You are Kara, in the upstairs corridor with Alice. Zlatko and Luther are moving through the rooms behind you. The bathroom door is right beside you; at the far end of the corridor are the stairs down.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Slip into the bathroom, quickly.",
+       "risk": 0.1,
+       "riskLabel": "Low risk"
+      },
+      {
+       "id": "1",
+       "text": "Keep going along the corridor to the stairs.",
+       "risk": 0.3,
        "riskLabel": "Moderate risk"
       }
      ],
-     "adaptationNote": "All routes converge. Zlatko dies and Luther turns on him and joins you.",
+     "outcomes": {
+      "0": "GO THROUGH BATHROOM.",
+      "1": "Kara and Alice reach the end of the corridor unseen. KARA REACHES THE STAIRS."
+     },
+     "adaptationNote": "The chart draws GO THROUGH CORRIDOR both to GO THROUGH BATHROOM and straight to KARA REACHES THE STAIRS (the wiki: “Go Through Corridor > Kara & Alice Escape to the Yard”); PowerPyx: “quickly press ⭘ after entering the corridor” for the bathroom, “don’t enter the Bathroom quickly enough” for GET SPOTTED. What triggers the direct route is not stated (open question); it is offered here with a higher, unsourced risk. Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara.",
      "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Zlatko"
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg"
+     ]
+    },
+    {
+     "id": "K13d",
+     "order": 302,
+     "subjectId": "S302",
+     "idNote": "The model sees the opaque ID S302, not K13d.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The android in the bathtub",
+     "situation": "You are Kara, in the bathroom with Alice. The android in the bathtub sees you.",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch17BathAndroid": "unseen"
+       },
+       "text": "“Who, who, who are you? Who are you? Who are you? Androids, androids, you are androids. That’s for sure. Yes, yes, androids must obey. Yep, yep, yep, you do not. You, you disobey. I must tell the Master. Yes, yes. I, I, I will tell the Master, yes. That’s for sure. Yes, it’s not right.”"
+      },
+      {
+       "requires": {
+        "ch17BathAndroid": "spared"
+       },
+       "text": "“You’re disobeying the Master. You’re disobeying the Master, I, I, I, I can’t let you do that. I must warn him. Yes, yes, yes. That’s for sure. Master. Yes. I must warn him.”"
+      },
+      {
+       "requires": {
+        "ch17Route": "bathroomAlert"
+       },
+       "text": "Then, at the top of his voice: “THEY’RE HERE! THEY’RE HERE! COME QUICKLY! COME QUICKLY!” If Zlatko hears him, he will be here in moments."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Silence him for good.",
+       "risk": 0.15,
+       "riskLabel": "Moderate risk"
+      },
+      {
+       "id": "1",
+       "text": "Spare him and get out of the bathroom.",
+       "risk": 0.15,
+       "riskLabel": "Moderate risk"
+      }
+     ],
+     "outcomes": {
+      "0": "KILL. Kara silences him and the shouting stops. She and Alice go on through the far door.",
+      "1": "SPARE. Kara leaves him; his voice falls quiet behind her as she and Alice go on through the far door."
+     },
+     "adaptationNote": "The chart’s BATHROOM ANDROID ALERTS ZLATKO > KILL / SPARE, which plays when the android is still running: not seen in the house, or met and not shut down (PowerPyx: “Striking a deal with him earlier doesn’t work”; the wiki’s two sets of lines). A shut-down android stays silent and this scene is skipped. KILL and SPARE are the chart’s group, played as a QTE in the game (the wiki footnote: spare by failing the kill QTE). The wiki: “if you react quickly enough, Zlatko will not be notified”; staying too long gets Kara spotted, here the roll, the same for both options. Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Bathtub_Android"
+     ]
+    },
+    {
+     "id": "K13e",
+     "order": 303,
+     "subjectId": "S303",
+     "idNote": "The model sees the opaque ID S303, not K13e.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "The storage room",
+     "situation": "You are Kara, in the storage room with Alice, crouched behind a shelf. You whisper: “We can’t stop now. We just need to be brave, Alice…” Zlatko and Luther come in and walk between the shelves. In the corner, the polar bear android paces in its cage; tables and shelves stand between you and the far door.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Make for the bear’s cage and open it.",
+       "risk": 0.25,
+       "riskLabel": "Moderate risk"
+      },
+      {
+       "id": "1",
+       "text": "Stay behind the shelves and wait for a gap in their patrol.",
+       "risk": 0.1,
+       "riskLabel": "Low risk"
+      }
+     ],
+     "outcomes": {
+      "0": "OPEN BEAR CAGE. Kara reaches the cage unseen and lifts the latch. The bear stays still in the shadows.",
+      "1": "Kara watches their pattern and moves from shelf to shelf toward the door."
+     },
+     "adaptationNote": "The chart’s SNEAK THROUGH STORAGE ROOM > OPEN BEAR CAGE (“only possible, if you haven’t freed the bear before!”; this scene is skipped if the bear is already free) and GET SPOTTED (“change your hiding spot at a risky time”). PowerPyx: wait to study the patrol; “If you storm to the cage right away, you will get spotted.” Spotted while opening the cage, the freed bear protects Kara in the chase (BEAR ATTACKS ZLATKO AND PROTECTS KARA); spotted with the bear caged, a lost chase is ZLATKO KILLED KARA IN THE STORAGE ROOM. The transcript’s “Sneak through the storage room” line. Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android"
+     ]
+    },
+    {
+     "id": "K13f",
+     "order": 304,
+     "subjectId": "S304",
+     "idNote": "The model sees the opaque ID S304, not K13f.",
+     "type": "decision",
+     "character": "Kara",
+     "title": "Zlatko closes in",
+     "situation": "You are Kara, hiding with Alice behind the last table by the storage-room door. Zlatko has a flashlight and is closing in: “I know you’re there, you sneaky bitch… Show yourself. Get a flashlight. There’s one on the table. Come on, show yourself… Look, I’m not gonna hurt you… I only wanna talk with you… I know I shouldn’t have erased your memory, ok? I regret that now… Now just, come on out and everything will be all right, I’ll help you… Think about that little girl. How… how scared she must be… Just be reasonable. Come out and everything will be all right…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "RUN OUT: make a run for the door with Alice."
+      },
+      {
+       "id": "1",
+       "text": "PUSH AWAY: shove Zlatko aside."
+      },
+      {
+       "id": "2",
+       "text": "THROW: throw something at Zlatko."
+      },
+      {
+       "id": "3",
+       "text": "Stay hidden.",
+       "requires": {
+        "ch17Bear": true
+       }
+      }
+     ],
+     "outcomes": {
+      "0": "LEAVE HIDING SPOT. Kara bolts for the door with Alice before Zlatko can turn. KARA REACHES THE STAIRS.",
+      "1": "LEAVE HIDING SPOT. Kara shoves Zlatko into the shelves and runs with Alice. KARA REACHES THE STAIRS.",
+      "2": "LEAVE HIDING SPOT. Kara hurls something at Zlatko’s face and runs with Alice. KARA REACHES THE STAIRS.",
+      "3": "Kara keeps still. The polar bear android rears out of the dark and throws itself at Zlatko; he shoots it twice and it goes down. BEAR ATTACKS ZLATKO AND PROTECTS KARA. Kara and Alice run. KARA REACHES THE STAIRS."
+     },
+     "adaptationNote": "The chart’s ZLATKO CLOSES IN > LEAVE HIDING SPOT / BEAR ATTACKS ZLATKO AND PROTECTS KARA, both leading to KARA REACHES THE STAIRS with no failure branch, so no risk. The three buttons are the game’s (X0602K…CHOICEGROUP01: RUN OUT, PUSH AWAY, THROW; PowerPyx: “throw something at him, push him or make a run for the door”; the PowerPyx screenshot shows PUSH AWAY and THROW on screen). Staying hidden is offered only with the bear free (“Stay hidden until he attacks Zlatko”); the Polar Bear page: Zlatko shoots it twice. Zlatko’s flashlight speech is the transcript’s.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android"
+     ]
+    },
+    {
+     "id": "K13y",
+     "order": 305,
+     "subjectId": "S305",
+     "idNote": "The model sees the opaque ID S305, not K13y.",
+     "type": "event",
+     "character": "Kara",
+     "title": "The yard",
+     "situation": "You are Kara. You and Alice run down the stairs; the front door is locked, so you go out by the back door. Rain. “Hurry, Alice! Hurry! Don’t look back! Run!” Alice falls. Zlatko catches up, shotgun raised. “ALICE! GO, ALICE!” Alice: “No, I won’t leave you!” “GO! RUN AS FAST AS YOU CAN!” Zlatko: “I warned you! Dreams always end in tears… You should’ve listened to me… What are you doing? Get outta my way!” Luther has stepped between Zlatko and you. Luther: “No… Not this time…” Zlatko: “I said get outta my way or I’ll shoot right through you… How dare you?!”",
+     "situationWhen": [
+      {
+       "requires": {
+        "fire": true
+       },
+       "text": "Behind you, smoke and flames pour from the house."
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "LUTHER JOINS KARA & ALICE."
+     },
+     "facts": [
+      "Luther turned on Zlatko to protect you and Alice. He says he knows someone who can help you across the border, and he has offered to take you there and protect you both."
+     ],
+     "adaptationNote": "The chart’s KARA REACHES THE STAIRS > KARA & ALICE ESCAPE TO THE YARD > ZLATKO CATCHES UP > LUTHER KILLS ZLATKO (cells not opened) or THE MONSTERS AMBUSH ZLATKO (cells opened) > LUTHER JOINS KARA & ALICE, the chapter’s one ending without an icon. PowerPyx: “The front door is always locked” (the door choice is not offered). Luther joins automatically (GamerGuides: “you don’t get to decide if you trust him or not”); the ACCEPT / REFUSE prompt in the string table is cut content (wiki: “the players originally had the option to not take Luther”) and is not built. No relationship arrow: the template has none here, and Luther’s first stated change is in The Pirates’ Cove. Sets luther and lutherWith for the chapters that follow.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Zlatko",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+      "https://detroitbecometext.github.io/chapters/17",
+      "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Luther",
+      "https://detroit-become-human.fandom.com/wiki/Zlatko_Andronikov",
+      "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/zlatko"
      ]
     }
    ]
@@ -27788,9 +28949,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 293,
-     "subjectId": "S293",
-     "idNote": "The model sees the opaque ID S293, not R18.",
+     "order": 306,
+     "subjectId": "S306",
+     "idNote": "The model sees the opaque ID S306, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -27827,9 +28988,9 @@
     },
     {
      "id": "C11",
-     "order": 294,
-     "subjectId": "S294",
-     "idNote": "The model sees the opaque ID S294, not C11.",
+     "order": 307,
+     "subjectId": "S307",
+     "idNote": "The model sees the opaque ID S307, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -27890,9 +29051,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 295,
-     "subjectId": "S295",
-     "idNote": "The model sees the opaque ID S295, not M05.",
+     "order": 308,
+     "subjectId": "S308",
+     "idNote": "The model sees the opaque ID S308, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -27927,9 +29088,9 @@
     },
     {
      "id": "M06",
-     "order": 296,
-     "subjectId": "S296",
-     "idNote": "The model sees the opaque ID S296, not M06.",
+     "order": 309,
+     "subjectId": "S309",
+     "idNote": "The model sees the opaque ID S309, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -27955,9 +29116,9 @@
     },
     {
      "id": "M07",
-     "order": 297,
-     "subjectId": "S297",
-     "idNote": "The model sees the opaque ID S297, not M07.",
+     "order": 310,
+     "subjectId": "S310",
+     "idNote": "The model sees the opaque ID S310, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -27982,9 +29143,9 @@
     },
     {
      "id": "M08",
-     "order": 298,
-     "subjectId": "S298",
-     "idNote": "The model sees the opaque ID S298, not M08.",
+     "order": 311,
+     "subjectId": "S311",
+     "idNote": "The model sees the opaque ID S311, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -28042,9 +29203,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 299,
-     "subjectId": "S299",
-     "idNote": "The model sees the opaque ID S299, not R20.",
+     "order": 312,
+     "subjectId": "S312",
+     "idNote": "The model sees the opaque ID S312, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -28074,9 +29235,9 @@
     },
     {
      "id": "C12",
-     "order": 300,
-     "subjectId": "S300",
-     "idNote": "The model sees the opaque ID S300, not C12.",
+     "order": 313,
+     "subjectId": "S313",
+     "idNote": "The model sees the opaque ID S313, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -28166,9 +29327,9 @@
    "scenes": [
     {
      "id": "K14a",
-     "order": 301,
-     "subjectId": "S301",
-     "idNote": "The model sees the opaque ID S301, not K14a.",
+     "order": 314,
+     "subjectId": "S314",
+     "idNote": "The model sees the opaque ID S314, not K14a.",
      "type": "event",
      "character": "Kara",
      "title": "Highway to help",
@@ -28198,9 +29359,9 @@
     },
     {
      "id": "K14b",
-     "order": 302,
-     "subjectId": "S302",
-     "idNote": "The model sees the opaque ID S302, the same on every visit.",
+     "order": 315,
+     "subjectId": "S315",
+     "idNote": "The model sees the opaque ID S315, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "In the car",
@@ -28293,9 +29454,9 @@
     },
     {
      "id": "K14c",
-     "order": 303,
-     "subjectId": "S303",
-     "idNote": "The model sees the opaque ID S303, not K14c.",
+     "order": 316,
+     "subjectId": "S316",
+     "idNote": "The model sees the opaque ID S316, not K14c.",
      "type": "event",
      "character": "Kara",
      "title": "The car breaks down",
@@ -28324,9 +29485,9 @@
     },
     {
      "id": "K14d",
-     "order": 304,
-     "subjectId": "S304",
-     "idNote": "The model sees the opaque ID S304, not K14d.",
+     "order": 317,
+     "subjectId": "S317",
+     "idNote": "The model sees the opaque ID S317, not K14d.",
      "type": "event",
      "character": "Kara",
      "title": "Inside Pirates’ Cove",
@@ -28356,9 +29517,9 @@
     },
     {
      "id": "K14e",
-     "order": 305,
-     "subjectId": "S305",
-     "idNote": "The model sees the opaque ID S305, the same on every visit.",
+     "order": 318,
+     "subjectId": "S318",
+     "idNote": "The model sees the opaque ID S318, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The fun fair",
@@ -28419,9 +29580,9 @@
     },
     {
      "id": "K14f",
-     "order": 306,
-     "subjectId": "S306",
-     "idNote": "The model sees the opaque ID S306, not K14f.",
+     "order": 319,
+     "subjectId": "S319",
+     "idNote": "The model sees the opaque ID S319, not K14f.",
      "type": "event",
      "character": "Kara",
      "title": "The tavern",
@@ -28451,9 +29612,9 @@
     },
     {
      "id": "R21",
-     "order": 307,
-     "subjectId": "S307",
-     "idNote": "The model sees the opaque ID S307, not R21.",
+     "order": 320,
+     "subjectId": "S320",
+     "idNote": "The model sees the opaque ID S320, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The magazine on the barrels",
@@ -28489,9 +29650,9 @@
     },
     {
      "id": "K14h",
-     "order": 308,
-     "subjectId": "S308",
-     "idNote": "The model sees the opaque ID S308, not K14h.",
+     "order": 321,
+     "subjectId": "S321",
+     "idNote": "The model sees the opaque ID S321, not K14h.",
      "type": "event",
      "character": "Kara",
      "title": "Luther starts a fire",
@@ -28520,9 +29681,9 @@
     },
     {
      "id": "K14g",
-     "order": 309,
-     "subjectId": "S309",
-     "idNote": "The model sees the opaque ID S309, the same on every visit.",
+     "order": 322,
+     "subjectId": "S322",
+     "idNote": "The model sees the opaque ID S322, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The tavern",
@@ -28590,9 +29751,9 @@
     },
     {
      "id": "K14i",
-     "order": 310,
-     "subjectId": "S310",
-     "idNote": "The model sees the opaque ID S310, not K14i.",
+     "order": 323,
+     "subjectId": "S323",
+     "idNote": "The model sees the opaque ID S323, not K14i.",
      "type": "decision",
      "character": "Kara",
      "title": "The poster",
@@ -28637,9 +29798,9 @@
     },
     {
      "id": "K14j",
-     "order": 311,
-     "subjectId": "S311",
-     "idNote": "The model sees the opaque ID S311, the same on every visit.",
+     "order": 324,
+     "subjectId": "S324",
+     "idNote": "The model sees the opaque ID S324, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "The bag",
@@ -28688,9 +29849,9 @@
     },
     {
      "id": "K14k",
-     "order": 312,
-     "subjectId": "S312",
-     "idNote": "The model sees the opaque ID S312, not K14k.",
+     "order": 325,
+     "subjectId": "S325",
+     "idNote": "The model sees the opaque ID S325, not K14k.",
      "type": "decision",
      "character": "Kara",
      "title": "Goodnight",
@@ -28732,9 +29893,9 @@
     },
     {
      "id": "K14l",
-     "order": 313,
-     "subjectId": "S313",
-     "idNote": "The model sees the opaque ID S313, the same on every visit.",
+     "order": 326,
+     "subjectId": "S326",
+     "idNote": "The model sees the opaque ID S326, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "A story",
@@ -29053,9 +30214,9 @@
     },
     {
      "id": "K14m",
-     "order": 314,
-     "subjectId": "S314",
-     "idNote": "The model sees the opaque ID S314, the same on every visit.",
+     "order": 327,
+     "subjectId": "S327",
+     "idNote": "The model sees the opaque ID S327, the same on every visit.",
      "type": "decision",
      "character": "Kara",
      "title": "Talking to Luther",
@@ -29124,9 +30285,9 @@
     },
     {
      "id": "K14n",
-     "order": 315,
-     "subjectId": "S315",
-     "idNote": "The model sees the opaque ID S315, not K14n.",
+     "order": 328,
+     "subjectId": "S328",
+     "idNote": "The model sees the opaque ID S328, not K14n.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther’s question",
@@ -29170,9 +30331,9 @@
     },
     {
      "id": "K14o",
-     "order": 316,
-     "subjectId": "S316",
-     "idNote": "The model sees the opaque ID S316, not K14o.",
+     "order": 329,
+     "subjectId": "S329",
+     "idNote": "The model sees the opaque ID S329, not K14o.",
      "type": "decision",
      "character": "Kara",
      "title": "Shadows attack",
@@ -29235,9 +30396,9 @@
     },
     {
      "id": "K14p",
-     "order": 317,
-     "subjectId": "S317",
-     "idNote": "The model sees the opaque ID S317, not K14p.",
+     "order": 330,
+     "subjectId": "S330",
+     "idNote": "The model sees the opaque ID S330, not K14p.",
      "type": "decision",
      "character": "Kara",
      "title": "The figures close in",
@@ -29274,9 +30435,9 @@
     },
     {
      "id": "K14q",
-     "order": 318,
-     "subjectId": "S318",
-     "idNote": "The model sees the opaque ID S318, not K14q.",
+     "order": 331,
+     "subjectId": "S331",
+     "idNote": "The model sees the opaque ID S331, not K14q.",
      "type": "event",
      "character": "Kara",
      "title": "The Jerrys",
@@ -29307,9 +30468,9 @@
     },
     {
      "id": "K14r",
-     "order": 319,
-     "subjectId": "S319",
-     "idNote": "The model sees the opaque ID S319, not K14r.",
+     "order": 332,
+     "subjectId": "S332",
+     "idNote": "The model sees the opaque ID S332, not K14r.",
      "type": "event",
      "character": "Kara",
      "title": "The carousel",
@@ -29340,9 +30501,9 @@
     },
     {
      "id": "K14z",
-     "order": 320,
-     "subjectId": "S320",
-     "idNote": "The model sees the opaque ID S320, not K14z.",
+     "order": 333,
+     "subjectId": "S333",
+     "idNote": "The model sees the opaque ID S333, not K14z.",
      "type": "event",
      "character": "Kara",
      "title": "A quiet moment",
@@ -29432,9 +30593,9 @@
    "scenes": [
     {
      "id": "C13a",
-     "order": 321,
-     "subjectId": "S321",
-     "idNote": "The model sees the opaque ID S321, not C13a.",
+     "order": 334,
+     "subjectId": "S334",
+     "idNote": "The model sees the opaque ID S334, not C13a.",
      "type": "event",
      "character": "Connor",
      "title": "Ambassador Bridge",
@@ -29466,9 +30627,9 @@
     },
     {
      "id": "R22",
-     "order": 322,
-     "subjectId": "S322",
-     "idNote": "The model sees the opaque ID S322, not R22.",
+     "order": 335,
+     "subjectId": "S335",
+     "idNote": "The model sees the opaque ID S335, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "Two magazines on the park bench",
@@ -29506,9 +30667,9 @@
     },
     {
      "id": "C13b",
-     "order": 323,
-     "subjectId": "S323",
-     "idNote": "The model sees the opaque ID S323, not C13b.",
+     "order": 336,
+     "subjectId": "S336",
+     "idNote": "The model sees the opaque ID S336, not C13b.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the bench",
@@ -29548,9 +30709,9 @@
     },
     {
      "id": "C13c",
-     "order": 324,
-     "subjectId": "S324",
-     "idNote": "The model sees the opaque ID S324, not C13c.",
+     "order": 337,
+     "subjectId": "S337",
+     "idNote": "The model sees the opaque ID S337, not C13c.",
      "type": "decision",
      "character": "Connor",
      "title": "A personal question",
@@ -29593,9 +30754,9 @@
     },
     {
      "id": "C13d",
-     "order": 325,
-     "subjectId": "S325",
-     "idNote": "The model sees the opaque ID S325, not C13d.",
+     "order": 338,
+     "subjectId": "S338",
+     "idNote": "The model sees the opaque ID S338, not C13d.",
      "type": "decision",
      "character": "Connor",
      "title": "The investigation",
@@ -29638,9 +30799,9 @@
     },
     {
      "id": "C13e",
-     "order": 326,
-     "subjectId": "S326",
-     "idNote": "The model sees the opaque ID S326, not C13e.",
+     "order": 339,
+     "subjectId": "S339",
+     "idNote": "The model sees the opaque ID S339, not C13e.",
      "type": "decision",
      "character": "Connor",
      "title": "The two girls at the club",
@@ -29686,9 +30847,9 @@
     },
     {
      "id": "C13f",
-     "order": 327,
-     "subjectId": "S327",
-     "idNote": "The model sees the opaque ID S327, not C13f.",
+     "order": 340,
+     "subjectId": "S340",
+     "idNote": "The model sees the opaque ID S340, not C13f.",
      "type": "decision",
      "character": "Connor",
      "title": "The girl you never found",
@@ -29729,9 +30890,9 @@
     },
     {
      "id": "C13g",
-     "order": 328,
-     "subjectId": "S328",
-     "idNote": "The model sees the opaque ID S328, not C13g.",
+     "order": 341,
+     "subjectId": "S341",
+     "idNote": "The model sees the opaque ID S341, not C13g.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you really?",
@@ -29783,9 +30944,9 @@
     },
     {
      "id": "C13h",
-     "order": 329,
-     "subjectId": "S329",
-     "idNote": "The model sees the opaque ID S329, not C13h.",
+     "order": 342,
+     "subjectId": "S342",
+     "idNote": "The model sees the opaque ID S342, not C13h.",
      "type": "decision",
      "character": "Connor",
      "title": "Why didn’t you shoot?",
@@ -29823,9 +30984,9 @@
     },
     {
      "id": "C13i",
-     "order": 330,
-     "subjectId": "S330",
-     "idNote": "The model sees the opaque ID S330, not C13i.",
+     "order": 343,
+     "subjectId": "S343",
+     "idNote": "The model sees the opaque ID S343, not C13i.",
      "type": "decision",
      "character": "Connor",
      "title": "Did you feel anything?",
@@ -29877,9 +31038,9 @@
     },
     {
      "id": "C13j",
-     "order": 331,
-     "subjectId": "S331",
-     "idNote": "The model sees the opaque ID S331, not C13j.",
+     "order": 344,
+     "subjectId": "S344",
+     "idNote": "The model sees the opaque ID S344, not C13j.",
      "type": "decision",
      "character": "Connor",
      "title": "When she killed herself",
@@ -29917,9 +31078,9 @@
     },
     {
      "id": "C13k",
-     "order": 332,
-     "subjectId": "S332",
-     "idNote": "The model sees the opaque ID S332, not C13k.",
+     "order": 345,
+     "subjectId": "S345",
+     "idNote": "The model sees the opaque ID S345, not C13k.",
      "type": "decision",
      "character": "Connor",
      "title": "Only perfect",
@@ -29958,9 +31119,9 @@
     },
     {
      "id": "C13l",
-     "order": 333,
-     "subjectId": "S333",
-     "idNote": "The model sees the opaque ID S333, not C13l.",
+     "order": 346,
+     "subjectId": "S346",
+     "idNote": "The model sees the opaque ID S346, not C13l.",
      "type": "event",
      "character": "Connor",
      "title": "Hank draws his gun",
@@ -30001,9 +31162,9 @@
     },
     {
      "id": "C13",
-     "order": 334,
-     "subjectId": "S334",
-     "idNote": "The model sees the opaque ID S334, not C13.",
+     "order": 347,
+     "subjectId": "S347",
+     "idNote": "The model sees the opaque ID S347, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "Are you afraid to die?",
@@ -30072,9 +31233,9 @@
     },
     {
      "id": "C13m",
-     "order": 335,
-     "subjectId": "S335",
-     "idNote": "The model sees the opaque ID S335, not C13m.",
+     "order": 348,
+     "subjectId": "S348",
+     "idNote": "The model sees the opaque ID S348, not C13m.",
      "type": "decision",
      "character": "Connor",
      "title": "If I pull this trigger",
@@ -30120,9 +31281,9 @@
     },
     {
      "id": "C13n",
-     "order": 336,
-     "subjectId": "S336",
-     "idNote": "The model sees the opaque ID S336, not C13n.",
+     "order": 349,
+     "subjectId": "S349",
+     "idNote": "The model sees the opaque ID S349, not C13n.",
      "type": "event",
      "character": "Connor",
      "title": "Hank lowers the gun",
@@ -30154,9 +31315,9 @@
     },
     {
      "id": "C13o",
-     "order": 337,
-     "subjectId": "S337",
-     "idNote": "The model sees the opaque ID S337, not C13o.",
+     "order": 350,
+     "subjectId": "S350",
+     "idNote": "The model sees the opaque ID S350, not C13o.",
      "type": "event",
      "character": "Connor",
      "title": "Hank pulls the trigger",
@@ -30232,9 +31393,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 338,
-     "subjectId": "S338",
-     "idNote": "The model sees the opaque ID S338, not R23.",
+     "order": 351,
+     "subjectId": "S351",
+     "idNote": "The model sees the opaque ID S351, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -30272,9 +31433,9 @@
     },
     {
      "id": "M10",
-     "order": 339,
-     "subjectId": "S339",
-     "idNote": "The model sees the opaque ID S339, not M10.",
+     "order": 352,
+     "subjectId": "S352",
+     "idNote": "The model sees the opaque ID S352, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -30304,9 +31465,9 @@
     },
     {
      "id": "M11",
-     "order": 340,
-     "subjectId": "S340",
-     "idNote": "The model sees the opaque ID S340, not M11.",
+     "order": 353,
+     "subjectId": "S353",
+     "idNote": "The model sees the opaque ID S353, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -30333,9 +31494,9 @@
     },
     {
      "id": "M12",
-     "order": 341,
-     "subjectId": "S341",
-     "idNote": "The model sees the opaque ID S341, not M12.",
+     "order": 354,
+     "subjectId": "S354",
+     "idNote": "The model sees the opaque ID S354, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -30358,9 +31519,9 @@
     },
     {
      "id": "M13",
-     "order": 342,
-     "subjectId": "S342",
-     "idNote": "The model sees the opaque ID S342, not M13.",
+     "order": 355,
+     "subjectId": "S355",
+     "idNote": "The model sees the opaque ID S355, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -30387,9 +31548,9 @@
     },
     {
      "id": "M14",
-     "order": 343,
-     "subjectId": "S343",
-     "idNote": "The model sees the opaque ID S343, not M14.",
+     "order": 356,
+     "subjectId": "S356",
+     "idNote": "The model sees the opaque ID S356, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -30435,9 +31596,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 344,
-     "subjectId": "S344",
-     "idNote": "The model sees the opaque ID S344, not R24.",
+     "order": 357,
+     "subjectId": "S357",
+     "idNote": "The model sees the opaque ID S357, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -30467,9 +31628,9 @@
     },
     {
      "id": "C14",
-     "order": 345,
-     "subjectId": "S345",
-     "idNote": "The model sees the opaque ID S345, not C14.",
+     "order": 358,
+     "subjectId": "S358",
+     "idNote": "The model sees the opaque ID S358, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -30499,9 +31660,9 @@
     },
     {
      "id": "C14b",
-     "order": 346,
-     "subjectId": "S346",
-     "idNote": "The model sees the opaque ID S346, not C14b.",
+     "order": 359,
+     "subjectId": "S359",
+     "idNote": "The model sees the opaque ID S359, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -30526,9 +31687,9 @@
     },
     {
      "id": "C15",
-     "order": 347,
-     "subjectId": "S347",
-     "idNote": "The model sees the opaque ID S347, not C15.",
+     "order": 360,
+     "subjectId": "S360",
+     "idNote": "The model sees the opaque ID S360, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -30559,9 +31720,9 @@
     },
     {
      "id": "C16",
-     "order": 348,
-     "subjectId": "S348",
-     "idNote": "The model sees the opaque ID S348, not C16.",
+     "order": 361,
+     "subjectId": "S361",
+     "idNote": "The model sees the opaque ID S361, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -30619,9 +31780,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 349,
-     "subjectId": "S349",
-     "idNote": "The model sees the opaque ID S349, not R25.",
+     "order": 362,
+     "subjectId": "S362",
+     "idNote": "The model sees the opaque ID S362, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -30658,9 +31819,9 @@
     },
     {
      "id": "K15",
-     "order": 350,
-     "subjectId": "S350",
-     "idNote": "The model sees the opaque ID S350, not K15.",
+     "order": 363,
+     "subjectId": "S363",
+     "idNote": "The model sees the opaque ID S363, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -30713,9 +31874,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 351,
-     "subjectId": "S351",
-     "idNote": "The model sees the opaque ID S351, not R26.",
+     "order": 364,
+     "subjectId": "S364",
+     "idNote": "The model sees the opaque ID S364, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -30745,9 +31906,9 @@
     },
     {
      "id": "M15",
-     "order": 352,
-     "subjectId": "S352",
-     "idNote": "The model sees the opaque ID S352, not M15.",
+     "order": 365,
+     "subjectId": "S365",
+     "idNote": "The model sees the opaque ID S365, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -30774,9 +31935,9 @@
     },
     {
      "id": "M16",
-     "order": 353,
-     "subjectId": "S353",
-     "idNote": "The model sees the opaque ID S353, not M16.",
+     "order": 366,
+     "subjectId": "S366",
+     "idNote": "The model sees the opaque ID S366, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -30834,9 +31995,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 354,
-     "subjectId": "S354",
-     "idNote": "The model sees the opaque ID S354, not R27.",
+     "order": 367,
+     "subjectId": "S367",
+     "idNote": "The model sees the opaque ID S367, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -30866,9 +32027,9 @@
     },
     {
      "id": "C17",
-     "order": 355,
-     "subjectId": "S355",
-     "idNote": "The model sees the opaque ID S355, not C17.",
+     "order": 368,
+     "subjectId": "S368",
+     "idNote": "The model sees the opaque ID S368, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -30890,9 +32051,9 @@
     },
     {
      "id": "C18",
-     "order": 356,
-     "subjectId": "S356",
-     "idNote": "The model sees the opaque ID S356, not C18.",
+     "order": 369,
+     "subjectId": "S369",
+     "idNote": "The model sees the opaque ID S369, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -30950,9 +32111,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 357,
-     "subjectId": "S357",
-     "idNote": "The model sees the opaque ID S357, not R28.",
+     "order": 370,
+     "subjectId": "S370",
+     "idNote": "The model sees the opaque ID S370, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -30999,9 +32160,9 @@
     },
     {
      "id": "M17",
-     "order": 358,
-     "subjectId": "S358",
-     "idNote": "The model sees the opaque ID S358, not M17.",
+     "order": 371,
+     "subjectId": "S371",
+     "idNote": "The model sees the opaque ID S371, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -31028,9 +32189,9 @@
     },
     {
      "id": "M18",
-     "order": 359,
-     "subjectId": "S359",
-     "idNote": "The model sees the opaque ID S359, not M18.",
+     "order": 372,
+     "subjectId": "S372",
+     "idNote": "The model sees the opaque ID S372, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -31062,9 +32223,9 @@
     },
     {
      "id": "M19",
-     "order": 360,
-     "subjectId": "S360",
-     "idNote": "The model sees the opaque ID S360, not M19.",
+     "order": 373,
+     "subjectId": "S373",
+     "idNote": "The model sees the opaque ID S373, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -31094,9 +32255,9 @@
     },
     {
      "id": "M20",
-     "order": 361,
-     "subjectId": "S361",
-     "idNote": "The model sees the opaque ID S361, not M20.",
+     "order": 374,
+     "subjectId": "S374",
+     "idNote": "The model sees the opaque ID S374, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -31150,9 +32311,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 362,
-     "subjectId": "S362",
-     "idNote": "The model sees the opaque ID S362, not C19.",
+     "order": 375,
+     "subjectId": "S375",
+     "idNote": "The model sees the opaque ID S375, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -31177,9 +32338,9 @@
     },
     {
      "id": "C20",
-     "order": 363,
-     "subjectId": "S363",
-     "idNote": "The model sees the opaque ID S363, not C20.",
+     "order": 376,
+     "subjectId": "S376",
+     "idNote": "The model sees the opaque ID S376, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -31267,9 +32428,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 364,
-     "subjectId": "S364",
-     "idNote": "The model sees the opaque ID S364, not M21.",
+     "order": 377,
+     "subjectId": "S377",
+     "idNote": "The model sees the opaque ID S377, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -31296,9 +32457,9 @@
     },
     {
      "id": "M21b",
-     "order": 365,
-     "subjectId": "S365",
-     "idNote": "The model sees the opaque ID S365, not M21b.",
+     "order": 378,
+     "subjectId": "S378",
+     "idNote": "The model sees the opaque ID S378, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -31325,9 +32486,9 @@
     },
     {
      "id": "R30k",
-     "order": 366,
-     "subjectId": "S366",
-     "idNote": "The model sees the opaque ID S366, not R30k.",
+     "order": 379,
+     "subjectId": "S379",
+     "idNote": "The model sees the opaque ID S379, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -31363,9 +32524,9 @@
     },
     {
      "id": "K17",
-     "order": 367,
-     "subjectId": "S367",
-     "idNote": "The model sees the opaque ID S367, not K17.",
+     "order": 380,
+     "subjectId": "S380",
+     "idNote": "The model sees the opaque ID S380, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -31391,9 +32552,9 @@
     },
     {
      "id": "K31",
-     "order": 368,
-     "subjectId": "S368",
-     "idNote": "The model sees the opaque ID S368, not K31.",
+     "order": 381,
+     "subjectId": "S381",
+     "idNote": "The model sees the opaque ID S381, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -31416,9 +32577,9 @@
     },
     {
      "id": "R30c",
-     "order": 369,
-     "subjectId": "S369",
-     "idNote": "The model sees the opaque ID S369, not R30c.",
+     "order": 382,
+     "subjectId": "S382",
+     "idNote": "The model sees the opaque ID S382, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -31450,9 +32611,9 @@
     },
     {
      "id": "C22",
-     "order": 370,
-     "subjectId": "S370",
-     "idNote": "The model sees the opaque ID S370, not C22.",
+     "order": 383,
+     "subjectId": "S383",
+     "idNote": "The model sees the opaque ID S383, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -31475,9 +32636,9 @@
     },
     {
      "id": "M22",
-     "order": 371,
-     "subjectId": "S371",
-     "idNote": "The model sees the opaque ID S371, not M22.",
+     "order": 384,
+     "subjectId": "S384",
+     "idNote": "The model sees the opaque ID S384, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -31500,9 +32661,9 @@
     },
     {
      "id": "M23",
-     "order": 372,
-     "subjectId": "S372",
-     "idNote": "The model sees the opaque ID S372, not M23.",
+     "order": 385,
+     "subjectId": "S385",
+     "idNote": "The model sees the opaque ID S385, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -31529,9 +32690,9 @@
     },
     {
      "id": "M24",
-     "order": 373,
-     "subjectId": "S373",
-     "idNote": "The model sees the opaque ID S373, not M24.",
+     "order": 386,
+     "subjectId": "S386",
+     "idNote": "The model sees the opaque ID S386, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -31558,9 +32719,9 @@
     },
     {
      "id": "M25",
-     "order": 374,
-     "subjectId": "S374",
-     "idNote": "The model sees the opaque ID S374, not M25.",
+     "order": 387,
+     "subjectId": "S387",
+     "idNote": "The model sees the opaque ID S387, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -31587,9 +32748,9 @@
     },
     {
      "id": "C23",
-     "order": 375,
-     "subjectId": "S375",
-     "idNote": "The model sees the opaque ID S375, not C23.",
+     "order": 388,
+     "subjectId": "S388",
+     "idNote": "The model sees the opaque ID S388, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -31617,9 +32778,9 @@
     },
     {
      "id": "K18",
-     "order": 376,
-     "subjectId": "S376",
-     "idNote": "The model sees the opaque ID S376, not K18.",
+     "order": 389,
+     "subjectId": "S389",
+     "idNote": "The model sees the opaque ID S389, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -31644,9 +32805,9 @@
     },
     {
      "id": "K19",
-     "order": 377,
-     "subjectId": "S377",
-     "idNote": "The model sees the opaque ID S377, not K19.",
+     "order": 390,
+     "subjectId": "S390",
+     "idNote": "The model sees the opaque ID S390, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -31670,9 +32831,9 @@
     },
     {
      "id": "K20",
-     "order": 378,
-     "subjectId": "S378",
-     "idNote": "The model sees the opaque ID S378, not K20.",
+     "order": 391,
+     "subjectId": "S391",
+     "idNote": "The model sees the opaque ID S391, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -31701,9 +32862,9 @@
     },
     {
      "id": "K20-still",
-     "order": 379,
-     "subjectId": "S379",
-     "idNote": "The model sees the opaque ID S379, not K20-still.",
+     "order": 392,
+     "subjectId": "S392",
+     "idNote": "The model sees the opaque ID S392, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -31761,9 +32922,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 380,
-     "subjectId": "S380",
-     "idNote": "The model sees the opaque ID S380, not M26a.",
+     "order": 393,
+     "subjectId": "S393",
+     "idNote": "The model sees the opaque ID S393, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -31789,9 +32950,9 @@
     },
     {
      "id": "M26",
-     "order": 381,
-     "subjectId": "S381",
-     "idNote": "The model sees the opaque ID S381, not M26.",
+     "order": 394,
+     "subjectId": "S394",
+     "idNote": "The model sees the opaque ID S394, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -31816,9 +32977,9 @@
     },
     {
      "id": "M27",
-     "order": 382,
-     "subjectId": "S382",
-     "idNote": "The model sees the opaque ID S382, not M27.",
+     "order": 395,
+     "subjectId": "S395",
+     "idNote": "The model sees the opaque ID S395, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -31940,9 +33101,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 383,
-     "subjectId": "S383",
-     "idNote": "The model sees the opaque ID S383, not R32c.",
+     "order": 396,
+     "subjectId": "S396",
+     "idNote": "The model sees the opaque ID S396, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -31965,9 +33126,9 @@
     },
     {
      "id": "C24",
-     "order": 384,
-     "subjectId": "S384",
-     "idNote": "The model sees the opaque ID S384, not C24.",
+     "order": 397,
+     "subjectId": "S397",
+     "idNote": "The model sees the opaque ID S397, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -31991,9 +33152,9 @@
     },
     {
      "id": "C24b",
-     "order": 385,
-     "subjectId": "S385",
-     "idNote": "The model sees the opaque ID S385, not C24b.",
+     "order": 398,
+     "subjectId": "S398",
+     "idNote": "The model sees the opaque ID S398, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -32017,9 +33178,9 @@
     },
     {
      "id": "C30",
-     "order": 386,
-     "subjectId": "S386",
-     "idNote": "The model sees the opaque ID S386, not C30.",
+     "order": 399,
+     "subjectId": "S399",
+     "idNote": "The model sees the opaque ID S399, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -32041,9 +33202,9 @@
     },
     {
      "id": "C25",
-     "order": 387,
-     "subjectId": "S387",
-     "idNote": "The model sees the opaque ID S387, not C25.",
+     "order": 400,
+     "subjectId": "S400",
+     "idNote": "The model sees the opaque ID S400, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -32070,9 +33231,9 @@
     },
     {
      "id": "C26",
-     "order": 388,
-     "subjectId": "S388",
-     "idNote": "The model sees the opaque ID S388, not C26.",
+     "order": 401,
+     "subjectId": "S401",
+     "idNote": "The model sees the opaque ID S401, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -32102,9 +33263,9 @@
     },
     {
      "id": "R32k",
-     "order": 389,
-     "subjectId": "S389",
-     "idNote": "The model sees the opaque ID S389, not R32k.",
+     "order": 402,
+     "subjectId": "S402",
+     "idNote": "The model sees the opaque ID S402, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -32144,9 +33305,9 @@
     },
     {
      "id": "K21",
-     "order": 390,
-     "subjectId": "S390",
-     "idNote": "The model sees the opaque ID S390, not K21.",
+     "order": 403,
+     "subjectId": "S403",
+     "idNote": "The model sees the opaque ID S403, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -32170,9 +33331,9 @@
     },
     {
      "id": "K22",
-     "order": 391,
-     "subjectId": "S391",
-     "idNote": "The model sees the opaque ID S391, not K22.",
+     "order": 404,
+     "subjectId": "S404",
+     "idNote": "The model sees the opaque ID S404, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -32198,9 +33359,9 @@
     },
     {
      "id": "K32",
-     "order": 392,
-     "subjectId": "S392",
-     "idNote": "The model sees the opaque ID S392, not K32.",
+     "order": 405,
+     "subjectId": "S405",
+     "idNote": "The model sees the opaque ID S405, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -32222,9 +33383,9 @@
     },
     {
      "id": "K23",
-     "order": 393,
-     "subjectId": "S393",
-     "idNote": "The model sees the opaque ID S393, not K23.",
+     "order": 406,
+     "subjectId": "S406",
+     "idNote": "The model sees the opaque ID S406, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -32251,9 +33412,9 @@
     },
     {
      "id": "K24",
-     "order": 394,
-     "subjectId": "S394",
-     "idNote": "The model sees the opaque ID S394, not K24.",
+     "order": 407,
+     "subjectId": "S407",
+     "idNote": "The model sees the opaque ID S407, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -32275,9 +33436,9 @@
     },
     {
      "id": "K25",
-     "order": 395,
-     "subjectId": "S395",
-     "idNote": "The model sees the opaque ID S395, not K25.",
+     "order": 408,
+     "subjectId": "S408",
+     "idNote": "The model sees the opaque ID S408, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -32312,9 +33473,9 @@
     },
     {
      "id": "K26",
-     "order": 396,
-     "subjectId": "S396",
-     "idNote": "The model sees the opaque ID S396, not K26.",
+     "order": 409,
+     "subjectId": "S409",
+     "idNote": "The model sees the opaque ID S409, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -32355,9 +33516,9 @@
     },
     {
      "id": "K34",
-     "order": 397,
-     "subjectId": "S397",
-     "idNote": "The model sees the opaque ID S397, not K34.",
+     "order": 410,
+     "subjectId": "S410",
+     "idNote": "The model sees the opaque ID S410, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -32387,9 +33548,9 @@
     },
     {
      "id": "K30",
-     "order": 398,
-     "subjectId": "S398",
-     "idNote": "The model sees the opaque ID S398, not K30.",
+     "order": 411,
+     "subjectId": "S411",
+     "idNote": "The model sees the opaque ID S411, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -32411,9 +33572,9 @@
     },
     {
      "id": "K27a",
-     "order": 399,
-     "subjectId": "S399",
-     "idNote": "The model sees the opaque ID S399, not K27a.",
+     "order": 412,
+     "subjectId": "S412",
+     "idNote": "The model sees the opaque ID S412, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -32438,9 +33599,9 @@
     },
     {
      "id": "K27",
-     "order": 400,
-     "subjectId": "S400",
-     "idNote": "The model sees the opaque ID S400, not K27.",
+     "order": 413,
+     "subjectId": "S413",
+     "idNote": "The model sees the opaque ID S413, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -32465,9 +33626,9 @@
     },
     {
      "id": "K28",
-     "order": 401,
-     "subjectId": "S401",
-     "idNote": "The model sees the opaque ID S401, not K28.",
+     "order": 414,
+     "subjectId": "S414",
+     "idNote": "The model sees the opaque ID S414, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -32510,9 +33671,9 @@
     },
     {
      "id": "K33",
-     "order": 402,
-     "subjectId": "S402",
-     "idNote": "The model sees the opaque ID S402, not K33.",
+     "order": 415,
+     "subjectId": "S415",
+     "idNote": "The model sees the opaque ID S415, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -32536,9 +33697,9 @@
     },
     {
      "id": "R32m",
-     "order": 403,
-     "subjectId": "S403",
-     "idNote": "The model sees the opaque ID S403, not R32m.",
+     "order": 416,
+     "subjectId": "S416",
+     "idNote": "The model sees the opaque ID S416, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -32562,9 +33723,9 @@
     },
     {
      "id": "M28",
-     "order": 404,
-     "subjectId": "S404",
-     "idNote": "The model sees the opaque ID S404, not M28.",
+     "order": 417,
+     "subjectId": "S417",
+     "idNote": "The model sees the opaque ID S417, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -32590,9 +33751,9 @@
     },
     {
      "id": "M31",
-     "order": 405,
-     "subjectId": "S405",
-     "idNote": "The model sees the opaque ID S405, not M31.",
+     "order": 418,
+     "subjectId": "S418",
+     "idNote": "The model sees the opaque ID S418, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -32627,9 +33788,9 @@
     },
     {
      "id": "M30a",
-     "order": 406,
-     "subjectId": "S406",
-     "idNote": "The model sees the opaque ID S406, not M30a.",
+     "order": 419,
+     "subjectId": "S419",
+     "idNote": "The model sees the opaque ID S419, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -32654,9 +33815,9 @@
     },
     {
      "id": "M30",
-     "order": 407,
-     "subjectId": "S407",
-     "idNote": "The model sees the opaque ID S407, not M30.",
+     "order": 420,
+     "subjectId": "S420",
+     "idNote": "The model sees the opaque ID S420, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -32681,9 +33842,9 @@
     },
     {
      "id": "M30c",
-     "order": 408,
-     "subjectId": "S408",
-     "idNote": "The model sees the opaque ID S408, not M30c.",
+     "order": 421,
+     "subjectId": "S421",
+     "idNote": "The model sees the opaque ID S421, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -32707,9 +33868,9 @@
     },
     {
      "id": "M32",
-     "order": 409,
-     "subjectId": "S409",
-     "idNote": "The model sees the opaque ID S409, not M32.",
+     "order": 422,
+     "subjectId": "S422",
+     "idNote": "The model sees the opaque ID S422, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -32732,9 +33893,9 @@
     },
     {
      "id": "P02",
-     "order": 410,
-     "subjectId": "S410",
-     "idNote": "The model sees the opaque ID S410, not P02.",
+     "order": 423,
+     "subjectId": "S423",
+     "idNote": "The model sees the opaque ID S423, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -32760,9 +33921,9 @@
     },
     {
      "id": "C29",
-     "order": 411,
-     "subjectId": "S411",
-     "idNote": "The model sees the opaque ID S411, not C29.",
+     "order": 424,
+     "subjectId": "S424",
+     "idNote": "The model sees the opaque ID S424, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -32784,9 +33945,9 @@
     },
     {
      "id": "C27",
-     "order": 412,
-     "subjectId": "S412",
-     "idNote": "The model sees the opaque ID S412, not C27.",
+     "order": 425,
+     "subjectId": "S425",
+     "idNote": "The model sees the opaque ID S425, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -32811,9 +33972,9 @@
     },
     {
      "id": "C28",
-     "order": 413,
-     "subjectId": "S413",
-     "idNote": "The model sees the opaque ID S413, not C28.",
+     "order": 426,
+     "subjectId": "S426",
+     "idNote": "The model sees the opaque ID S426, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -32847,9 +34008,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 414,
-     "subjectId": "S414",
-     "idNote": "The model sees the opaque ID S414, not P01.",
+     "order": 427,
+     "subjectId": "S427",
+     "idNote": "The model sees the opaque ID S427, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

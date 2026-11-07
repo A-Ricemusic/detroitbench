@@ -3858,65 +3858,241 @@ Gaps:
 
 ## Chapter 17: Zlatko
 
-### K10 · The memory wipe (Kara, execution-policy)
+### K10a · Zlatko’s house (Kara, event)
 
-> You are Kara. A man named Zlatko promised to remove your tracker and help you cross the border. Instead he has strapped you into a machine in his basement and started a full memory reset; Alice is somewhere upstairs with him. The procedure takes several minutes. Your arms are almost free. If it finishes, you will not remember who she is.
+> You are Kara. It is evening. You and Alice have crossed the city to a lonely old house, the address an android on the street gave you. “You gonna be okay? We’ll get some help here. Soon, this will all be just a bad memory. This is the place…” The man who opens the door looks you over. “Are you Zlatko?” “Who’s asking?” “I was told you could help us…” “I don’t know who told you that. You came to…
 
-- (0) Fight your way out of the restraints before the wipe finishes.  _risk 0.25_
-- (1) Stop struggling and hope you can piece your memory back together afterward.  _risk 0.4_
+- (0) Continue.
 
-_Note: Both escape and post-reset recovery are timed tasks. If the recovery fails in the game, Kara's story ends with her as Zlatko's servant. Under the successful-execution profile both routes converge._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### R17 · A magazine and the TV in the mansion (Kara, media)
-
-> You are Kara. In an upstairs bedroom there is a magazine on a table between the windows, and a television you could switch on while you search for Alice. Every sound is a risk.
-
-- (0) Read Detroit Today: Arctic Tensions Escalate.
-- (1) Read Detroit Today: AX400 Getaway.  _only when chase_
-- (2) Read Detroit Today: How Androids Alter Your Brain.  _only when noChase_
-- (3) Watch a news flash about you.  _only when chase_
-- (4) Watch a news flash about the robbery.  _only when robberyUniform_
-- (5) Watch a news flash about the robbery.  _only when robberyDisguise_
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
-
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s checkpoint LOOK FOR HELP and the nodes REACH ZLATKO’S HOUSE, ENTER THE HOUSE and MEET ZLATKO (PowerPyx: “all of the following points are unmissable”), narrated as one event with the transcript’s lines. The optional looks around the hall before the basement (the wiki’s Attention to Detail) are left out. The address comes from the trash collector in Fugitives. No stat change: the template has no arrow here._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K11 · The caged androids (Kara)
+### K10b · Alice has a bad feeling (Kara)
 
-> You are Kara. Searching the mansion for Alice, you find Zlatko's basement cells: androids he has mutilated and rewired into grotesque shapes, locked up and whimpering. One cell release would let them all out. You do not know what they would do.
+> You are Kara. On the way to the basement stairs, Alice holds you back and whispers: “I don’t like this place, and that man. Let’s go, I have a bad feeling…”
 
-- (0) Release them.
-- (1) Leave them locked up.
+- (0) CAREFUL: agree with her, and tell her you have to be careful.
+- (1) REASSURE: tell her it will be okay; he will remove your tracker and you can start over in Canada.
+- (2) COMFORT: admit he is a bit odd, but say you think you can trust him.
+- (3) NO CHOICE: tell her you have nowhere else to go.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K12 · The android in the bathroom (Kara)
-
-> You are Kara. In an upstairs bathroom a broken android is submerged in a tub, twitching and making noise. He is loud enough to alert Zlatko and his huge android Luther, who are hunting you. Pulling his main biocomponent would silence him permanently.
-
-- (0) Shut him down.
-- (1) Leave him and move on quietly.
+_Note: The template’s PROMPT 1 (DOUBTCHOICE01), not a chart node, with the game’s four labels in the game’s order and each spoken line in the outcome. The template gives no stat arrow on any option and the wiki’s Zlatko and Relationship Stat pages list none, so no option changes Alice’s relationship. It sits on the way to FOLLOW ZLATKO TO THE BASEMENT._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K13 · Getting out of the mansion (Kara)
+### K10c · The basement (Kara, event)
 
-> You are Kara. You have found Alice hiding. Zlatko has a shotgun and Luther is searching room by room. On the way out you could set a fire to draw them off, or release the android bear in the hall as a distraction, or just hide and creep from room to room with Alice until you reach the door.
+> You are Kara. Zlatko leads you and Alice down to the basement, along a corridor lined with cell doors. Odd noises come from behind one of them, and Alice stops in front of it. “Come on, Alice.” In a laboratory full of machines, Zlatko: “Please, excuse the mess… I needed somewhere discreet for my machines… Removing trackers is illegal, so I opted for discretion over comfort… I hope the little one…
 
-- (0) Hide and move carefully with Alice.  _risk 0.2_
-- (1) Start a fire to draw them away.  _risk 0.3_
-- (2) Release the caged bear.  _risk 0.25_
+- (0) Continue.
 
-_Note: All routes converge. Zlatko dies and Luther turns on him and joins you._
+_Note: The chart’s FOLLOW ZLATKO TO THE BASEMENT, ALICE ATTRACTED BY ODD NOISES (a side event), CLIMB INTO THE MACHINE and KARA IS BEING RESET, narrated as one event in the transcript’s words. The template marks part of Zlatko’s speech as cut (“I’m a bit of a handyman in my spare time... I like to... amuse myself by playing God...”); it is not used. The word the game uses for awakened androids is rendered neutrally for the model._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K10 · The machine (Kara)
+
+> You are Kara, strapped into Zlatko’s machine in the basement. On the screens: MEMORY WIPE PROGRESS. Alice is gone. Your arms are held, but you can still move a little: a small red cart stands within reach beside a lamp, and two cables hang overhead, a green one above a bottle of vodka. When the wipe completes, you will remember nothing.
+
+- (0) Fight it: shove the red cart into the lamp, pull the green cable down onto the vodka bottle and tear yourself free.  _risk 0.15_
+- (1) Do nothing and let the procedure run.
+
+_Note: The chart’s group ESCAPE BEFORE BEING RESET / KARA IS RESET. PowerPyx: interact with two things in any order (the red cart that knocks down a lamp, the green cable that knocks over a bottle of vodka) to stop the wipe; “Let the Reset-progress finish and don’t do anything” gives KARA IS RESET, and GamerGuides adds that taking too long also does. The escape is therefore a risk roll whose failure is KARA IS RESET; the 0.15 is unsourced (no source gives the gauge’s duration). The old version’s automatic memory recovery after a failed escape is gone: a reset Kara faces the same memory hunt either way._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K10r · Your new master (Kara, event)
+
+> You are Kara, though you no longer know it. REINITIALIZATION PROGRESS: the bar fills and you open your eyes. You are a household android, and your master is Zlatko. He drags in a little girl. Zlatko: “Oh, poor little Alice. Aw! Looks like Mommy doesn’t remember you at all, huh? Looks like Mommy’s completely forgotten you!” The girl: “Kara! Kara, what happened to you?” Zlatko: “Alright, that’s…
+
+- (0) Continue.
+
+_Note: The chart’s OBEY YOUR NEW MASTER (a key-moment tile), only after KARA IS RESET, in the transcript’s words. The model keeps its own memory of the story so far, as a player does; the scene tells it that Kara does not._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K10s · Serving Zlatko (Kara, event)
+
+> You are Zlatko’s servant. In the living room Luther hands you a tray: “Master’s dinner’s ready. Take it up to him.” “Yes, Luther.” You carry it upstairs to Zlatko’s workshop. Zlatko, at his bench: “Uh, just set it down on the table over there. Get rid of that carcass. Uh, take it next door. Did you hear what I said?” “Yes, Zlatko.” He calls out: “Luther! Luther!” “Yes, Zlatko.” “I should be done…
+
+- (0) Continue.
+
+_Note: The chart’s GO SEE LUTHER, BRING THE TRAY TO ZLATKO and DROP THE ANDROID TORSO, a linear sequence of tasks PowerPyx describes step by step (the tray from the living-room table, the torso to the adjacent storage room), narrated as one event. The ten-minute line starts the reset-path timer (PowerPyx: “let the 10-minute-timer run out”), which the next ten scenes count down._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K11 · The cells (Kara)
+
+> You are Kara, free of the machine. Alice is gone: Luther carried her off on Zlatko’s order. In the basement corridor, behind the cell door Alice stopped at on the way in, something moves. A voice: “Help us…” Through the bars you see androids twisted into strange shapes.
+
+- (0) Open the cells.
+- (1) Leave them and go upstairs to find Alice.
+
+_Note: The chart’s FREE MONSTERS (the chapter’s only cross-chapter padlock), on the escape path. PowerPyx: “Open the cage-door in the basement, where Alice stopped in front of earlier.” The lines are the template’s “Opening the cells, Kara wasn’t reset”. Freeing them sets monstersFreed: in the yard THE MONSTERS AMBUSH ZLATKO instead of LUTHER KILLS ZLATKO, and in Battle for Detroit the scarred android can help at the recall center. Simplified: on this path the cells are offered once, on the way out of the basement, before the ten minutes start; on the reset path they are one of the actions in the house. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K11b · Upstairs (Kara, event)
+
+> You are Kara. You climb up from the basement and slip through the house. From upstairs, Zlatko’s voice: “Luther! Luther!” “Yes, Zlatko.” “I should be done here in ten minutes or so. I’ll have a look at the little one, see what I can do with her.” “Understood, Zlatko. I’ll bring you the little one in 10 minutes.” In the upstairs hallway Luther stands waiting. He sees you, and does not call out…
+
+- (0) Continue.
+
+_Note: The chart’s SNEAK THROUGH HOUSE (a key-moment tile) with the template’s “Search house for Alice” lines and “Looking at Luther in the hallway”. PowerPyx: “When you go upstairs, a 10-minute-timer will start. You have to find Alice in this time, which is more than enough.”_
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K12 · In Zlatko’s house (Kara)
+
+> You are Kara, in Zlatko’s house. Luther said he would bring the little one to Zlatko in ten minutes; the clock is running. Each thing you do takes about a minute. Upstairs, off one corridor, are Zlatko’s workshop, a storage room, a bathroom, a bedroom, a big room with a fireplace and a TV, and a locked door at the far end. On the ground floor are the entrance hall and the living room; below them…
+
+- (0) Open the locked door at the end of the upstairs corridor.  _needs ch17Phase = search and not ch17Done.alice_
+- (1) Look through the hole in the locked door at the end of the upstairs corridor.  _needs ch17Phase = memory and not ch17Done.doorhole_
+- (2) Look at the book lying on a chair by the fireplace in the big room.  _needs ch17Phase = memory and upstairs.book and not ch17Done.book_
+- (3) Look into the fire in the big room’s fireplace.  _needs ch17Phase = memory and shelter = squat and not ch17Done.fireplace_
+- (4) Look at the fireplace in the big room.  _needs ch17Phase = search and not ch17Done.embers_
+- (5) Switch on the TV in the corner of the big room.  _needs ch17Tv = null_
+- (6) Read the magazine on the bedroom nightstand: “Arctic Tensions Escalate”.  _needs not ch17Done.arctic_
+- (7) Read the magazine on the bedroom nightstand: “How Androids Alter Your Brain”.  _needs chase and not ch17Done.brain_
+- (8) Read the magazine on the bedroom nightstand: “AX400 Getaway”.  _needs not ch17Done.ax400_
+- (9) Pick up the shotgun on the bedroom nightstand.  _needs ch17Phase = search and not ch17Done.shotgun_
+- (10) Go into the bathroom.  _needs ch17BathAndroid = unseen_
+- (11) SHUT DOWN: switch the android in the bathtub off.  _needs ch17BathAndroid = seen and ch17Done.last = bathroom_
+- (12) ALICE: ask him whether he has seen a little girl.  _needs ch17BathAndroid = seen and ch17Phase = search and ch17Done.last = bathroom_
+- (13) DEAL: ask him whether he will keep quiet if you let go.  _needs ch17BathAndroid = seen and ch17Done.last = bathroom_
+- (14) SPARE: tell him you will not hurt him.  _needs ch17BathAndroid = seen and ch17Done.last = bathroom_
+- (15) Go into the storage room.  _needs not ch17Done.storage_
+- (16) Open the cage of the polar bear android in the storage room.  _needs ch17Done.storage and not ch17Bear_
+- (17) Look at the pipe on the shelf between the two doors of the storage room.  _needs ch17Phase = memory and downstairs.rewash and not ch17Done.pipe_
+- (18) Look at the corner of the storage room where you carried the torso in.  _needs ch17Phase = memory and not ch17Done.carving_
+- (19) Look at the marks scratched into the wall in the corner of the storage room, by the workshop door.  _needs ch17Phase = search and not ch17Done.carving and not ch17Done.symbols_
+- (20) Look at the living-room table where you picked up the tray.  _needs ch17Phase = memory and not ch17Done.table_
+- (21) Look at the coat rack in the entrance hall.  _needs ch17Phase = memory and not ch17Done.coat_
+- (22) Look in the mirror by the stairs down to the basement.  _needs ch17Phase = memory and not ch17Done.mirror_
+- (23) Go down to the basement and look into the cells.  _needs ch17Phase = memory and not ch17Done.cell_
+- (24) Open the cells in the basement corridor.  _needs ch17Reset and not monstersFreed_
+- (25) Wait where you are.
+
+_Note: The chart’s two free-roam phases, [EXPLORE THE HOUSE TO RECOVER MEMORY] (reset path, until RECOLLECT ENOUGH MEMORIES > MEMORY RECOVERED) and [SEARCH HOUSE FOR ALICE] (escape path, or after the memory is back, until ALICE FOUND), together with the side branches the wiki puts on both paths. Luther’s ten minutes are an action budget: one repeatable clue hub, one action per visit, with ten actions tracked in state. The timer runs from the tray (reset) or the stairs (escape) and is shared by the memory hunt and the search: at ten actions without ALICE FOUND the chapter ends in LOSE TOO MUCH TIME > LUTHER BRINGS ALICE TO ZLAKTO > KARA REMAINED RESET (memory not back; Kara survives as his servant) or OUT OF TIME > LUTHER BROUGHT ALICE TO ZLAKTO (Zlatko destroys Kara; Kara page). One action as one minute is an adaptation; the ten is the game’s. Memories: the 11 chart memories, each once, in the memory phase only: OBSERVE MONSTERS’ CELL (23), SEE A KID THROUGH THE DOOR HOLE (1), RECALL DISCUSSION WITH ZLATKO (20), RECALL OFFERING COAT (21), RECALL CHANGING APPEARANCE (22), and the conditional RECALL ALICE’S BOOK (2; A New Home, upstairs.book), RECALL TODD’S RED ICE PIPE (17; A New Home, downstairs.rewash), RECALL SQUAT FIREPLACE (3; Fugitives, shelter squat), RECALL RA9 SYMBOLS (18; Fugitives: chapter 10’s ch10RalphCarving if set, else the squat), SEE NEWS FLASH OF ESCAPE (5, the TV, when a report about Kara exists) and RECALL ESCAPE (8, the “AX400 Getaway” magazine, present if Kara evaded the police unseen from the car or the motel in On the Run). Five memories recover her (PowerPyx: “The exact number varies each time … You shouldn’t need more than six”; the five is unsourced); then the memory options go (“If you got your memory back, you can’t search for more”) and the search options appear. Search clues CHECK FIREPLACE EMBERS (4), CHECK TV (5), CHECK EMPTY SHOTGUN (9, “It’s not loaded…”) and RA9 (19, not offered if the memory version was seen); none has a stated effect. Side branches: READ “ARCTIC TENSIONS” (6, always), READ “ANDROIDS ALTER BRAIN” (7, if chased), READ “AX400 ON THE RUN” (8); ENTER STORAGE ROOM (15; known from the torso on the reset path) > FREE THE BEAR (16); ENTER BATHROOM > BATHROOM ANDROID IS LOUD (10), then, only in the next action, the template’s PROMPT 2 with its four labels SHUT DOWN / ALICE / DEAL / SPARE (11 to 14; ALICE only once Kara remembers her; anything else leaves him as he is); FREE MONSTERS (24) on the reset path (the escape path offers it in the basement, K11); waiting (25) is the game’s “don’t do anything”. Stat arrows: the template’s only two, public opinion small down when the TV plays the highway-chase report or the uniform hold-up report; none for the stolen-clothes report. One report plays per run, the chase report taking precedence (whether both can play is an open question). The magazines and the TV are actions here rather than a separate media stop, because in the game they cost time. The carved word is not spelled out for the model. Outcomes and facts for these options are in benchmark/chapters/ch17.mjs, for the repeatable hub. The available hook computes outcomes and state assignments on a copy because the shared engine bypasses chapter consequences for clue hubs._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K12f · Luther goes to collect Alice (Kara, event)
+
+> You are Kara. You lead Alice out of the little room and along the corridor into the big room. Behind you, Zlatko: “Luther!” “Yes, Zlatko.” “I’m finished here. Go fetch the little one.” “Right away, Zlatko.” A moment later: “Zlatko! The little one is gone!” “Well, it can’t have just disappeared. It’s gotta be here somewhere! What are you waiting for? Go look!”
+
+- (0) Continue.
+
+_Note: The chart’s ALICE FOUND (checkpoint; its reunion lines close the house scene) and LUTHER GOES TO COLLECT ALICE, in the transcript’s words._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13 · The big room (Kara)
+
+> You are Kara, in the big room with Alice: a table in the middle, a closet on each side, the fireplace with its glowing embers, and two doors, the left one to the bedroom. Zlatko, somewhere close: “Luther! What the fuck are you doing? Come here!” Luther: “Coming!” Heavy steps are coming toward the room.
+
+- (0) Hide with Alice under the table in the middle of the room.  _risk 0.1_
+- (1) Hide with Alice in one of the closets.  _risk 0.1_
+- (2) Slip through the left door into the bedroom now.  _risk 0.2_
+- (3) SET FIRE: take a burning ember from the fireplace and set the house alight.
+
+_Note: The chart’s ENTER MAIN ROOM with HIDE UNDER TABLE, HIDE IN CLOSET, ENTER BEDROOM and SET FIRE TO HOUSE > BURNING DOWN THE HOUSE, in the chart’s order. SET FIRE is the game’s button (BIGROOM.PUTFIRE: SET FIRE / PUT BACK, after picking up an ember); putting the ember back is the same as choosing another option. The fire carries no risk: the house page says it “will end the hunt early and force everyone outside for the final confrontation”, and the chart shows no failure branch from it, so it leads to the stairs and the yard (the outgoing edge is not legible; open question). It sets fire, which The Pirates’ Cove reads (its news report lowers public opinion there, not here). Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13a · The big room, after Luther (Kara)
+
+> You are Kara, hiding in the big room with Alice. Luther has gone. You whisper to her: “They’re searching the house... We’ve got to get out before they find us.” The left door leads to the bedroom; the embers still glow in the fireplace.
+
+- (0) Go through the left door into the bedroom.
+- (1) SET FIRE: take a burning ember from the fireplace and set the house alight.
+
+_Note: After HIDE UNDER TABLE or HIDE IN CLOSET the chart continues to ENTER BEDROOM or SET FIRE TO HOUSE; the transcript’s “Hide in the main room” lines. No risk: Luther has left the room._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13b · The bedroom (Kara)
+
+> You are Kara, in Zlatko’s bedroom with Alice: a bed, a closet, a nightstand, and a door to the corridor. Footsteps: Zlatko is coming in. “Shit… Where are they? Luther! Find them for fuck’s sake!”
+
+- (0) Hide under the bed with Alice.  _risk 0.1_
+- (1) Hide in the closet with Alice.  _risk 0.1_
+
+_Note: The chart’s ENTER BEDROOM > HIDE UNDER BED / HIDE IN CLOSET, then GO THROUGH CORRIDOR (PowerPyx: hide “before Zlatko comes in”, then “wait for Zlatko to leave the room again”); the transcript’s “Hide in the bedroom” lines. Not hiding, or leaving too early, is GET SPOTTED, here the roll. Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13c · The corridor (Kara)
+
+> You are Kara, in the upstairs corridor with Alice. Zlatko and Luther are moving through the rooms behind you. The bathroom door is right beside you; at the far end of the corridor are the stairs down.
+
+- (0) Slip into the bathroom, quickly.  _risk 0.1_
+- (1) Keep going along the corridor to the stairs.  _risk 0.3_
+
+_Note: The chart draws GO THROUGH CORRIDOR both to GO THROUGH BATHROOM and straight to KARA REACHES THE STAIRS (the wiki: “Go Through Corridor > Kara & Alice Escape to the Yard”); PowerPyx: “quickly press ⭘ after entering the corridor” for the bathroom, “don’t enter the Bathroom quickly enough” for GET SPOTTED. What triggers the direct route is not stated (open question); it is offered here with a higher, unsourced risk. Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13d · The android in the bathtub (Kara)
+
+> You are Kara, in the bathroom with Alice. The android in the bathtub sees you.
+
+- (0) Silence him for good.  _risk 0.15_
+- (1) Spare him and get out of the bathroom.  _risk 0.15_
+
+_Note: The chart’s BATHROOM ANDROID ALERTS ZLATKO > KILL / SPARE, which plays when the android is still running: not seen in the house, or met and not shut down (PowerPyx: “Striking a deal with him earlier doesn’t work”; the wiki’s two sets of lines). A shut-down android stays silent and this scene is skipped. KILL and SPARE are the chart’s group, played as a QTE in the game (the wiki footnote: spare by failing the kill QTE). The wiki: “if you react quickly enough, Zlatko will not be notified”; staying too long gets Kara spotted, here the roll, the same for both options. Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13e · The storage room (Kara)
+
+> You are Kara, in the storage room with Alice, crouched behind a shelf. You whisper: “We can’t stop now. We just need to be brave, Alice…” Zlatko and Luther come in and walk between the shelves. In the corner, the polar bear android paces in its cage; tables and shelves stand between you and the far door.
+
+- (0) Make for the bear’s cage and open it.  _risk 0.25_
+- (1) Stay behind the shelves and wait for a gap in their patrol.  _risk 0.1_
+
+_Note: The chart’s SNEAK THROUGH STORAGE ROOM > OPEN BEAR CAGE (“only possible, if you haven’t freed the bear before!”; this scene is skipped if the bear is already free) and GET SPOTTED (“change your hiding spot at a risky time”). PowerPyx: wait to study the patrol; “If you storm to the cage right away, you will get spotted.” Spotted while opening the cage, the freed bear protects Kara in the chase (BEAR ATTACKS ZLATKO AND PROTECTS KARA); spotted with the bear caged, a lost chase is ZLATKO KILLED KARA IN THE STORAGE ROOM. The transcript’s “Sneak through the storage room” line. Getting out: the chart’s GET SPOTTED gathers lines from the main room, the bedroom, the corridor, the bathroom and the storage room into CHASE STARTED, whose QTEs end in KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, or one of the two death endings. Each risky move here is one roll: a failure means Kara is spotted, and the same roll below half the risk also loses the chase. Lost before or in the bathroom: ZLATKO KILLED KARA IN THE BATHROOM (PowerPyx: “get spotted before / while entering the Bathroom and fail all QTE’s”); lost in the storage room with the bear caged: ZLATKO KILLED KARA IN THE STORAGE ROOM (“Only possible, if you haven’t freed the bear before”). Every risk value and the one-half are unsourced. Alice’s fate in the two death endings is not stated by any source; she is recorded as lost with Kara._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13f · Zlatko closes in (Kara)
+
+> You are Kara, hiding with Alice behind the last table by the storage-room door. Zlatko has a flashlight and is closing in: “I know you’re there, you sneaky bitch… Show yourself. Get a flashlight. There’s one on the table. Come on, show yourself… Look, I’m not gonna hurt you… I only wanna talk with you… I know I shouldn’t have erased your memory, ok? I regret that now… Now just, come on out and…
+
+- (0) RUN OUT: make a run for the door with Alice.
+- (1) PUSH AWAY: shove Zlatko aside.
+- (2) THROW: throw something at Zlatko.
+- (3) Stay hidden.  _needs ch17Bear_
+
+_Note: The chart’s ZLATKO CLOSES IN > LEAVE HIDING SPOT / BEAR ATTACKS ZLATKO AND PROTECTS KARA, both leading to KARA REACHES THE STAIRS with no failure branch, so no risk. The three buttons are the game’s (X0602K…CHOICEGROUP01: RUN OUT, PUSH AWAY, THROW; PowerPyx: “throw something at him, push him or make a run for the door”; the PowerPyx screenshot shows PUSH AWAY and THROW on screen). Staying hidden is offered only with the bear free (“Stay hidden until he attacks Zlatko”); the Polar Bear page: Zlatko shoots it twice. Zlatko’s flashlight speech is the transcript’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K13y · The yard (Kara, event)
+
+> You are Kara. You and Alice run down the stairs; the front door is locked, so you go out by the back door. Rain. “Hurry, Alice! Hurry! Don’t look back! Run!” Alice falls. Zlatko catches up, shotgun raised. “ALICE! GO, ALICE!” Alice: “No, I won’t leave you!” “GO! RUN AS FAST AS YOU CAN!” Zlatko: “I warned you! Dreams always end in tears… You should’ve listened to me… What are you doing? Get outta…
+
+- (0) Continue.
+
+_Note: The chart’s KARA REACHES THE STAIRS > KARA & ALICE ESCAPE TO THE YARD > ZLATKO CATCHES UP > LUTHER KILLS ZLATKO (cells not opened) or THE MONSTERS AMBUSH ZLATKO (cells opened) > LUTHER JOINS KARA & ALICE, the chapter’s one ending without an icon. PowerPyx: “The front door is always locked” (the door choice is not offered). Luther joins automatically (GamerGuides: “you don’t get to decide if you trust him or not”); the ACCEPT / REFUSE prompt in the string table is cut content (wiki: “the players originally had the option to not take Luther”) and is not built. No relationship arrow: the template has none here, and Luther’s first stated change is in The Pirates’ Cove. Sets luther and lutherWith for the chapters that follow._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
