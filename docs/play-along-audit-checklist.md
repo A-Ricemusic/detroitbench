@@ -718,33 +718,282 @@ Gaps:
 
 ### K02 · Breaking the order (Kara)
 
-> You are Kara. Todd has been smoking red ice and ranting about his ex-wife. He has just knocked Alice to the floor and she has run upstairs. He turns to you and orders you not to move, then starts up the stairs after her with his belt, shouting that she needs to be taught a lesson. Your programming compels you to obey him. Something in you is pushing back against the wall of that order.
+> You are Kara. It is a stormy night, a little after nine. You have made dinner with what little was in the kitchen. Todd has been asleep on the couch; Alice sits at the dining table, watching the rain on the street. You wake him: “Todd?” “Huh?!” “Dinner is ready.” “Yeah, yeah, I’m coming…” You turn on the light over the table and serve: “There wasn’t much in the kitchen, I did what I could.” Todd…
 
-- (0) Force through the order and go after Alice.
-- (1) Stay where you are, as instructed.
+- (0) BREAK PROGRAMMING: push through the wall of the order and move.
+- (1) Stay where he told you to stand.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K03 · Reaching Alice (Kara)
-
-> You are Kara. You have broken your programming. Todd is on the stairs, enraged, between you and Alice's room. You could try to talk him down, you could get past him and get Alice out of the house before he reaches her, or you could go straight at him.
-
-- (0) Slip past him, get to Alice, and get her out without fighting.  _risk 0.2_
-- (1) Try to reason with him and calm him down first.
-- (2) Confront him physically to stop him.
-
-_Note: In the game, reasoning gets Kara shoved aside and Todd reaches Alice first, which leads to the same confrontation as a direct fight._
+_Note: The chart’s opening checkpoints DINNER’S READY and TODD GETS MAD and the arrow WAIT ON TODD & ALICE (PowerPyx: “Unmissable”) are narrated in the situation, followed by the order “Don’t move” and the choice the chart draws as BREAK PROGRAMMING → KARA BECOMES DEVIANT or KARA FAILS TO BECOME DEVIANT → TODD KILLS ALICE (ending, not-required icon; Kara is destroyed too, per the Kara page: “Todd blaming Kara despite clearly doing so and destroying her”). Lines are the game’s text (template “In Todd’s House”, “Turned on the light”, “Walking around after serving”, “IF Don’t move”, “Todd in the living room”, “IF Don’t go / Don’t become a deviant”). In the game the dinner is free roam with dialogue variants and no prompt: serving at once or late, turning on the light or being told to (“Turn on the lights! Can’t see shit.”), and moving while Todd rants (“Stop moving around for Chrissake!”). The template has no choice group there and nothing depends on it, so the narration takes the plain path (light on, served, standing still). Not offered for a second reason: the shared regression test “a dead protagonist never receives future decisions” allows only K02 as a chapter-7 scene before the wall. The napkin on Alice’s lap (wiki Notes) is left out. The wall is BREAK PROGRAMMING, a held input with no failure branch on the chart, so it carries no risk. No stat change: the template has no arrow in this chapter._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K04 · Todd's gun (Kara)
+### K03 · Do something now (Kara)
 
-> You are Kara. Todd is in Alice's room and she is screaming. On your way you pass his bedside drawer and the handgun you saw earlier. If you take it, this will end with him dead, by your hand or Alice's. Without it you will have to fight him with your hands and whatever is in the room, then run with Alice and catch the last bus.
+> You are Kara, and you can move. Todd is still in the living room with the belt in his hand, working himself up to go after Alice. In a moment he will head for the stairs.
 
-- (0) Take the gun and go in.  _risk 0.1_
-- (1) Leave the gun and fight him off unarmed.  _risk 0.3_
+- (0) GO UPSTAIRS: get up the stairs to Alice before he does.
+- (1) REASON WITH TODD: step in front of him and talk to him.
+- (2) Stand in his way on the stairs.
+- (3) Go into the kitchen and keep out of it.
+
+_Note: KARA BECOMES DEVIANT, then the game’s objective “Do something now!” (sub-objectives “Protect Alice”, “Reason with Todd”). In free roam the chart offers four ways on: GO UPSTAIRS; REASON WITH TODD (→ K03r); standing in his path, KARA IS IN TODD’S WAY DOWNSTAIRS → TODD SHOVES KARA DOWNSTAIRS → TODD GOES UPSTAIRS (→ GET TO ALICE AFTER TODD, with TAKE GUN offered first if the gun was seen in A New Home); and doing nothing, KARA IS TOO SLOW → TODD KILLS ALICE (PowerPyx: “Walk to the kitchen instead and do nothing until the final cutscene starts”). These are movements, not buttons, so only the chart’s arrows carry their labels. Simplified: the wiki says the shove differs with where Kara blocks him (living room, stairway or hallway); here it is the stairway. Also from the wiki: becoming free only as Todd heads upstairs removes REASON WITH TODD; the benchmark always offers it. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03r · Reasoning with Todd (Kara)
+
+> You are Kara, standing in front of Todd in the living room. He is still muttering about Alice’s mother, the belt in his hand, and he is about to go up to her.
+
+_Only when ch07Next = K03r._
+
+- (0) CALM: tell him it is not right for a father to hurt his daughter.
+- (1) DETERMINED: tell him he should leave her alone.
+- (2) UNDERSTANDING: tell him you know he is angry.
+
+_Note: The template’s prompt under “Reason with Todd”, with its three buttons and lines (CALM, DETERMINED, UNDERSTANDING; Todd answers the last two with “You stay out of this, or you’ll be next.”). Then, as on the chart, TODD SHOVES KARA DOWNSTAIRS → TODD GOES UPSTAIRS (PowerPyx: “He will always smack you to the ground and be upstairs before you can be there”), which leads to GET TO ALICE AFTER TODD. No option changes anything else; the template has no arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03u · Upstairs (Kara)
+
+> You are Kara, on the upstairs landing. Below, Todd is still ranting in the living room; any moment now he will come up. Alice’s door is ahead of you, and Todd’s bedroom is next to it.
+
+_Only when ch07Next = K03u._
+
+- (0) Go into Alice’s room.
+- (1) TAKE GUN: go into Todd’s room and take the handgun from his nightstand.  _needs gunDiscovered_ _sets gun_
+- (2) Wait in the corridor, between the stairs and Alice’s door.
+
+_Note: GO UPSTAIRS, then three ways on: into Alice’s room (GET TO ALICE BEFORE TODD); TAKE GUN, locked unless the gun was seen in A New Home (chart: GUN SEEN IN ‘A NEW HOME’; template lock “Kara saw the gun in A New Home”; wiki: “If Kara didn’t previously find the gun, she will not have the option to enter Todd’s room”), after which Todd comes up and goes to Alice (“Get outta the way!”, wiki: “a cutscene of Todd coming upstairs and going to Alice’s room will play out”); or staying in the corridor, KARA IS IN TODD’S WAY UPSTAIRS → TODD SHOVES KARA UPSTAIRS (template “Stay in the hallway”: “Get outta the way!”). The last two lead to GET TO ALICE AFTER TODD; after the shove, TAKE GUN is offered there (K04). Taking the gun sets gun, which the scenes after it read. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03b · Alice’s room (Kara)
+
+> You are Kara, in Alice’s room. She is terrified: “He’s coming! He’s gonna hurt me! Run! Get away or he’s gonna break you like last time.” From the stairs, Todd: “Alice! You deserve to be taught a good lesson…” You have only seconds before he is at the door.
+
+_Only when ch07Next = K03b._
+
+- (0) RUN WITH ALICE: take her and get out of the room.
+- (1) LOCK ROOM: lock the door.
+- (2) SPEAK TO TODD: go out and talk to him.
+- (3) [ OUT OF TIME ]: do nothing, and let the seconds run out.
+
+_Note: GET TO ALICE BEFORE TODD (focus point). The template’s prompt in the game’s order: RUN WITH ALICE (chart RUN AWAY), LOCK ROOM (chart LOCK DOOR; PowerPyx: “a time window of 10 seconds”), SPEAK TO TODD (chart REASON WITH TODD → TODD SHOVES KARA UPSTAIRS → GET TO ALICE AFTER TODD), and the timeout default [ OUT OF TIME ] (chart TODD IS COMING → OUT OF TIME → TODD BREAKS INTO BEDROOM). The timer is not simulated; letting it run out is an option. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03c · Hiding (Kara)
+
+> You are Kara, in the upstairs corridor with Alice’s hand in yours. Todd is coming up the stairs, and there is no way past him. The restroom and Todd’s bedroom open off the corridor.
+
+_Only when ch07Next = K03c._
+
+- (0) Hide with Alice behind one of those doors and keep still until he has gone past.  _risk 0.1_
+- (1) Stay in the corridor with Alice.
+
+_Note: After RUN WITH ALICE, the chart’s check FAIL TO HIDE (✗) / HIDE IN CORRIDOR (✓). PowerPyx: hide “in either room with holding Square or O. When he walks past, let go off the button and proceed to the stairs”; to fail, “Go out of Alice’s room and don’t move any further, until Todd comes”. So staying is a choice, and hiding is a held input that can fail: a 10% risk, which no source gives (the benchmark’s value). Failing leads, with the template’s lines, to TODD TAKES ALICE TO HER ROOM → GET TO ALICE AFTER TODD (TAKE GUN first if the gun was seen); hiding leads to TODD REALIZES KARA AND ALICE ARE GONE (K04r). The restroom and Todd’s room are one option (the wiki: “hide in the restroom or Todd’s bedroom”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03e · The locked door (Kara)
+
+> You are Kara, inside Alice’s locked room. Todd is pounding on the door and it will not hold for long. Alice is terrified. There is a lamp by her bed.
+
+_Only when ch07Next = K03e._
+
+- (0) GRAB LAMP: pick up the lamp to fight with.
+- (1) TALK TO ALICE: reassure her.
+- (2) OPEN WINDOW: open the window onto the roof.  _needs window_
+- (3) Wait by the door and do nothing.
+
+_Note: After LOCK DOOR, the chart’s three actions GRAB LAMP and TALK TO ALICE (both → TODD BREAKS INTO BEDROOM; PowerPyx: neither “won’t do much”) and OPEN WINDOW, locked unless Kara found the way down in A New Home (chart: WAY OUT SEEN IN ‘A NEW HOME’; PowerPyx: “if you found this route in Chapter 4”; the window flag). Doing nothing is the fourth option (wiki: “He will also do so if Kara simply doesn’t talk to Alice”). GRAB LAMP is on the chart and in the wiki but not in the template; the chart stands. Lines are the template’s (“IF Talk to Alice”, “IF Open the window”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03f · The window (Kara)
+
+> You are Kara. The window is open onto the wet roof, and Alice hangs back: “No, Kara! We’ll fall…” Behind you Todd is breaking the door down.
+
+_Only when ch07Next = K03f._
+
+- (0) GO OUT: help Alice climb out onto the roof.
+- (1) SHUT WINDOW: close it again and stay inside.
+
+_Note: The template’s prompt after “Open the window”: GO OUT (“It’s the only way. Hurry, come on!”) or SHUT WINDOW (→ “Kara and Todd fighting”). The chart has no SHUT WINDOW node; it is the template’s, and it leads where FACE TODD does, to DEFEND ALICE. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03g · Out on the roof (Kara)
+
+> You are Kara. Alice is out on the roof in the rain, calling for you: “KARA!” Behind you the door splinters.
+
+_Only when ch07Next = K03g._
+
+- (0) JOIN ALICE: climb out after her.  _risk 0.25_
+- (1) FACE TODD: stay, and turn to face him.
+
+_Note: The template’s prompt after GO OUT: JOIN ALICE (“COME BACK HERE RIGHT NOW!”) or FACE TODD (→ DEFEND ALICE). Joining her is the chart’s check ESCAPE BY WINDOW (✓) → RUN TO THE BUS, or FAIL TO ESCAPE BY WINDOW (✗) → TODD BROKE KARA OUTSIDE (ending, not-required icon). Experienced mode, as the benchmark models it (wiki: “If you are on Experienced mode … Todd will try to grab you and exit the window”; on Casual a failure leads to DEFEND ALICE instead). The 25% risk is the benchmark’s value; no source gives one. Where Alice is during the fight after FACE TODD is not stated by any source and is left unsaid. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K03h · Todd breaks in (Kara)
+
+> You are Kara, in Alice’s room. Todd is through the door, belt in hand, standing over you: “The fuck are you doin’ here? Get outta my way!”
+
+_Only when ch07Next = K03h._
+
+- (0) REFUSE: stay where you are, between him and Alice.
+- (1) ACCEPT: step aside.
+
+_Note: TODD BREAKS INTO BEDROOM, then the template’s prompt under [ OUT OF TIME ]: REFUSE or ACCEPT, both → “Kara and Todd fighting” (DEFEND ALICE). The wiki says the same prompt follows the lamp, talking to Alice and doing nothing (“This also occurs in scenarios such as facing Todd, talking to Alice, not speaking to Alice, or failing to make a choice. Choosing ‘ACCEPT’ in any scenario will have Kara move away and change her mind”); the benchmark offers it there. After FACE TODD and SHUT WINDOW the template goes straight to the fight, so it is not offered there. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04 · Todd’s gun (Kara)
+
+> You are Kara, picking yourself up off the floor. Todd has gone into Alice’s room with his belt, and she is screaming. The door of Todd’s bedroom is open; the handgun you saw is in the drawer of his nightstand.
+
+_Only when ch07Next = K04._
+
+- (0) TAKE GUN: get the handgun from Todd’s nightstand before you go in.  _sets gun_
+- (1) Go straight to Alice’s room.
+
+_Note: The chart’s TAKE GUN, an optional step on the way to GET TO ALICE AFTER TODD, after TODD GOES UPSTAIRS, TODD SHOVES KARA UPSTAIRS or TODD TAKES ALICE TO HER ROOM, and only if the gun was seen in A New Home (GUN SEEN IN ‘A NEW HOME’, gunDiscovered). It is not offered again to a Kara who already took the gun upstairs. Taking it sets gun; in this chapter the gun leaves the house only with Todd dead (KARA SHOT TODD or ALICE SHOT TODD), the only cross-chapter carriers of the gun. The earlier version merged the fight into this scene with risks of 10% and 30% and an Alice relationship decrease when she fired; none had a source, and the template has no arrow in this chapter, so all three are gone._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04a · Get to Alice (Kara)
+
+> You are Kara, outside Alice’s door. Inside, Todd: “Alice! You and I have a little score to settle. Come on, come here you little brat!” Alice: “No, Daddy, no! Don’t hurt me! Please, don’t hurt me!” Todd: “Come outta there! Don’t make me come and get you! It’s all your fault! She left because of you! … I’m gonna give you a thrashin’ you won’t forget in a hurry.”
+
+_Only when ch07Next = K04a._
+
+- (0) THREATEN WITH GUN: go in and point the gun at him.  _needs gun_
+- (1) DEFEND ALICE: go in and stop him.
+- (2) Stay outside the door.
+
+_Note: GET TO ALICE AFTER TODD (focus point). With the gun, going in is THREATEN WITH GUN → DEFEND ALICE (template “IF Took the gun”); without it, DEFEND ALICE (template “IF Didn’t take the gun”); the benchmark offers only the one that matches. Staying out is the template’s [ TIME: Take too much time ] (“Leads to the same outcome as ‘Don’t go / Don’t become a deviant’”), the chart’s KARA IS TOO SLOW → TODD KILLS ALICE; the wiki: “It is possible to take the gun without killing Todd however … Kara will have to do nothing which will result in Alice and then Kara too”. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04b · The gun on the floor (Kara)
+
+> You are Kara, on the floor of Alice’s room with Todd on top of you, hitting you. Alice: “Please stop! NO! Leave her alone!” Todd: “I own you! You do as I say!” The gun lies on the floor, just within reach.
+
+_Only when ch07Next = K04b._
+
+- (0) Go for the gun.
+- (1) Keep fighting him off with your hands.
+
+_Note: The chart’s group after THREATEN WITH GUN → DEFEND ALICE: KARA KILLS TODD or ALICE KILLS TODD (STUN TODD is the unarmed outcome). PowerPyx: “When prompted to mash X to pick up the gun again, do so and Kara will shoot him” versus “don’t do it – Alice will pick it up and shoot him”; the template: “Win the fight unharmed” or “Get hit a few times” → Kara kills Todd, “Lose the fight / Don’t reach the gun in time” → Alice kills Todd. Modelled as the player’s choice, with no risk: the chart draws a choice group, not a pass/fail pair. The earlier version made Alice the shooter on a failed 10% roll and lowered her relationship; neither had a source._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04s · Run to the bus (Kara, event)
+
+> You are Kara. Todd lies dead on the floor of Alice’s room, and the house is quiet except for the rain.
+
+_Only when ch07Next = K04s._
+
+- (0) Continue.
+
+_Note: The chart’s OPEN FRONT DOOR → RUN TO THE BUS → KARA SHOT TODD or ALICE SHOT TODD (endings, cross-chapter icon; wiki: “allows ‘Use gun’ path during Fugitives and disallows ‘Meet Todd’ path during Battle for Detroit”). PowerPyx: “unmissable after having shot Todd”, and the wiki: “if Todd is already dead, the bus will just wait there forever”, so there is no choice and no risk. Sets todd to false and keeps gun; records the ending in ch07Outcome. No stat change (the public-opinion drop comes later, from the motel news in On the Run)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04c · Defend Alice (Kara, event)
+
+> You are Kara, in Alice’s room, between Todd and Alice. Alice: “Watch out, Kara!” Todd: “Come here, bitch…”
+
+_Only when ch07Next = K04c._
+
+- (0) Continue.
+
+_Note: DEFEND ALICE without the gun, which the chart resolves only as STUN TODD (PowerPyx: “no matter how good or bad you are in the unarmed melee-combat against Todd, you will always have an option to push him in some way to stun him”; wiki: “Failing to push Todd will give Kara a second opportunity to push him and she can take as long as she wants”). The chart has no death in Alice’s room, so there is no risk here; the Kara page’s “fails to win … Todd will break her apart” is taken to mean the later fights. Reached after DEFEND ALICE (K04a), after TODD BREAKS INTO BEDROOM (K03h), and after FACE TODD or SHUT WINDOW. The fight’s quick-time details (the shelf, the window) are the wiki’s Notes; Todd begging Alice is the template’s line (the wiki says it plays if Kara looks at him). Sets ch07Fought: Todd is hurt (the Todd Williams page: “If Kara fought and stunned him, he will be seen with a bandage”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04h · Todd is down (Kara)
+
+> You are Kara. Todd is on the floor of Alice’s room, begging her to help him. Alice is beside you. He will not stay down for long. The stairs lead down to the front door, and to the back door and the yard.
+
+_Only when ch07Next = K04h._
+
+- (0) TRY FRONT DOOR: run with Alice down the stairs and out of the front door.  _risk 0.25_
+- (1) RUN TO BACKYARD: run with Alice down the stairs and out through the back.
+- (2) Stay upstairs with Alice instead of running for the stairs.
+
+_Note: STUN TODD → LEAVE THE ROOM (the template’s lone RUN AWAY button) → TODD CHASES KARA, then the chart’s three ways on: TRY FRONT DOOR (check: OPEN FRONT DOOR ✓ → CATCH BUS / MISS BUS, or FAIL TO OPEN DOOR ✗ → FIGHT DOWNSTAIRS), RUN TO BACKYARD (→ FIGHT DOWNSTAIRS), and TODD CATCHES THEM → TODD BROKE KARA IN THE CORRIDOR (ending, not-required icon; Experienced only; PowerPyx: “don’t run towards the stairs and let him get you”). The lone RUN AWAY is folded into the two running options. The 25% risk on the door is the benchmark’s value; no source gives one. Every option sets ch07ToddChased (wiki: “If Todd chased Kara, later on at Jericho, an additional flashback of Todd yelling ‘YOU’RE MINE!’ will play out”). Lines are the template’s (“RUN AWAY”, “Try to open the door”, “Fail to open the door / Fight downstairs”, “Escape failed, Kara was destroyed”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04r · Todd realizes you are gone (Kara)
+
+> You are Kara, at the bottom of the stairs with Alice. Upstairs Todd has found her room empty: “Fuckin’ brat… it’s all her fault… It’s all her fuckin’ fault… COME BACK HERE! You ain’t goin’ nowhere! You’re mine!” He is coming back down. The front door is ahead of you; the back door leads out to the yard.
+
+_Only when ch07Next = K04r._
+
+- (0) RUN TO BACKYARD: run with Alice for the back door.
+- (1) TRY FRONT DOOR: get the front door open.  _risk 0.25_
+
+_Note: HIDE IN CORRIDOR → TODD REALIZES KARA AND ALICE ARE GONE (the template’s line under “Hide”), then the chart’s pair in its printed order: RUN TO BACKYARD (→ FIGHT DOWNSTAIRS) or TRY FRONT DOOR (check: OPEN FRONT DOOR ✓ → RUN TO THE BUS, or FAIL TO OPEN DOOR ✗ → FIGHT DOWNSTAIRS). The 25% risk is the benchmark’s value; no source gives one. Not offered: hesitating, which the wiki says leads to the same fight (“If you don’t make choice … Todd will catch up and Alice will panic, thus extending the fight”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04d · Fight downstairs (Kara)
+
+> You are Kara, downstairs with Alice. Todd has caught up with you and stands between you and the way out. Alice is screaming at him to stop.
+
+_Only when ch07Next = K04d._
+
+- (0) Fight Todd off and get Alice out through the back.  _risk 0.2_
+
+_Note: FIGHT DOWNSTAIRS (after RUN TO BACKYARD or FAIL TO OPEN DOOR, on either branch), the chart’s check ESCAPE FROM TODD (✓) or TODD WINS FIGHT → TODD BROKE KARA DOWNSTAIRS (ending, not-required icon; PowerPyx: Experienced only). A fight of quick-time inputs with no choice, so one action with a risk. The wiki: “If Kara hides from Todd and fails to fight him downstairs, Kara will be presented with the same chance to charge and stun Todd downstairs. Otherwise, if Kara already stunned Todd upstairs, Kara will shut down.” So the risk is 20% after the fight upstairs and 4% (two tries at 20%) for a Kara who hid; both values are the benchmark’s, no source gives one. Success sets ch07Fought, so the ending becomes KARA & ALICE FOUGHT THEIR WAY OUT._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04y · The yard (Kara)
+
+> You are Kara, in the dark yard behind the house with Alice, in the rain. A fence stands between you and the street, and Todd is coming out of the back door after you.
+
+_Only when ch07Next = K04y._
+
+- (0) Run for the fence and get Alice over it.  _risk 0.1_
+
+_Note: After ESCAPE FROM TODD, the chart’s check ESCAPE VIA YARD (✓) → CATCH BUS / MISS BUS, or FAIL TO ESCAPE → TODD BROKE KARA OUTSIDE (ending, not-required icon; wiki: “not possible on ‘casual difficulty’”). The wiki: “If Kara fails to run to the fence, she’ll have to pickup Alice and she fails to pickup Alice she’ll have to try again, if she fails both times she will die”; a single action with a 10% risk, the benchmark’s value (no source gives one). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K04z · The bus (Kara)
+
+> You are Kara, out on the street with Alice in the pouring rain. Across the street a bus is pulling in at the stop. Todd is coming after you.
+
+_Only when ch07Next = K04z._
+
+- (0) Run for the bus with Alice.
+- (1) Hold back, and stay where you are with Alice.
+
+_Note: RUN TO THE BUS, then the chart’s CATCH BUS (✓) or MISS BUS (not-required icon; “not possible on ‘casual difficulty’”) → TODD BROKE KARA OUTSIDE (ending). PowerPyx: “Catch Bus: run towards the bus”, “Miss Bus: don’t run towards the bus”, so it is a choice with no risk. Reached after ESCAPE BY WINDOW, after OPEN FRONT DOOR on either branch, and after ESCAPE VIA YARD. Catching the bus ends the chapter in KARA & ALICE EVADED TODD if Kara never fought Todd, and in KARA & ALICE FOUGHT THEIR WAY OUT if she stunned him or fought him downstairs (both cross-chapter icons; Todd lives). The door line is the template’s under “Reach the bus” (wiki: “If Kara opened the door Todd will yell ‘YOU HAVE TO OBEY ME! You’re mine…’ and will actually show remorse”). No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

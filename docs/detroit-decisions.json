@@ -70,8 +70,18 @@
    "id": 7,
    "title": "Stormy Night",
    "character": "Kara",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (73 boxes, 63 distinct labels, nine endings) and the game’s own text (detroitbecometext template: five prompts, fourteen options, no clue and no stat arrow). Dinner’s Ready → Wait on Todd & Alice → Todd Gets Mad → BREAK PROGRAMMING or not → GO UPSTAIRS / REASON WITH TODD / blocking him / too slow → before Todd (RUN WITH ALICE and the hide, LOCK ROOM with the lamp, talk or window, SPEAK TO TODD, [ OUT OF TIME ] and REFUSE / ACCEPT) or after Todd (TAKE GUN, THREATEN WITH GUN or DEFEND ALICE) → Kara or Alice shoots Todd, or Kara stuns him and runs: front door, backyard, fight downstairs, yard, bus. Nine endings: four survivals (Kara Shot Todd, Alice Shot Todd, Kara & Alice Fought Their Way Out, Kara & Alice Evaded Todd) and five deaths (Todd Kills Alice, Todd Broke Kara in the Corridor, Downstairs, and Outside twice). Experienced mode is modelled, so every chart node is reachable. No probability, opinion, instability or Alice change. Cross-chapter: the gun and the window from A New Home in; Todd’s fate, the gun, Kara’s death, whether Todd was hurt and whether he chased Kara out. Researched in docs/research/ch07-stormy-night.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-first-choice-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-a.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-b.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg"
+   ]
   },
   {
    "id": 8,
@@ -2584,96 +2594,792 @@
    "status": "Source-backed summary"
   },
   {
+   "id": "SN01",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Dinner’s Ready (checkpoint), Wait on Todd & Alice, Todd Gets Mad (checkpoint)",
+   "context": "Kara serves dinner; Todd, high on Red Ice, rants about androids, turns on Alice, throws the table aside and hits her. Alice runs upstairs; Todd orders Kara: “You stay there! Don’t you dare fucking move.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Free roam with dialogue variants only (serve late, light off, moving during the rant).",
+     "target": "K02"
+    }
+   ],
+   "gate": "Chapter start, after Partners.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-first-choice-branch.jpg"
+   ],
+   "note": "Two checkpoints and an unmissable arrow; no icon.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K02"
+    ],
+    "status": "simplified",
+    "note": "Narrated in K02’s situation. The free-roam variants have no prompt in the template and are not offered; the shared test “a dead protagonist never receives future decisions” also allows no chapter-7 scene before K02."
+   }
+  },
+  {
    "id": "K02",
    "chapter": 7,
    "character": "Kara",
-   "title": "Obey Todd or protect Alice?",
-   "context": "Todd orders Kara not to move while threatening Alice.",
+   "title": "Obey Todd or break programming?",
+   "context": "Todd orders Kara not to move and goes after Alice with his belt. The order is a wall Kara must push through.",
    "options": [
     {
-     "label": "Break the order",
-     "effect": "Attempt to reach and protect Alice.",
+     "label": "BREAK PROGRAMMING → KARA BECOMES DEVIANT",
+     "effect": "Kara can move and protect Alice.",
      "target": "K03"
     },
     {
-     "label": "Remain still / fail to intervene",
-     "effect": "Kara and Alice’s story ends.",
+     "label": "KARA FAILS TO BECOME DEVIANT → TODD KILLS ALICE",
+     "effect": "Ending (not required). Todd kills Alice, blames Kara and destroys her.",
      "target": null
     }
    ],
    "gate": "Reach this scene with the character alive.",
    "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/"
+   "dependsOn": [
+    "SN01"
    ],
-   "note": "Inaction is meaningful here; timing still matters.",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-first-choice-branch.jpg"
+   ],
+   "note": "No failure branch on breaking through: it is a held input.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K02"
+    ],
+    "status": "implemented",
+    "note": "Two options, no risk, no stat change; obeying ends Kara’s story (kara and alice false)."
+   }
   },
   {
    "id": "K03",
    "chapter": 7,
    "character": "Kara",
-   "title": "Escape or confront Todd?",
-   "context": "Kara has broken her programming.",
+   "title": "Do something now: go upstairs, reason, block Todd, or stay out?",
+   "context": "Kara has broken her programming. Todd is in the living room, about to go up after Alice.",
    "options": [
     {
-     "label": "Reach Alice and flee",
-     "effect": "Hide or use the discovered window; execution matters.",
-     "target": null
+     "label": "GO UPSTAIRS",
+     "effect": "Reach the landing before Todd.",
+     "target": "SN03"
     },
     {
-     "label": "Try to reason with Todd",
-     "effect": "He rejects the appeal; confrontation follows.",
-     "target": null
+     "label": "REASON WITH TODD",
+     "effect": "The three-button prompt; Todd shoves Kara down and goes up.",
+     "target": "SN02"
     },
     {
-     "label": "Defend Alice directly",
-     "effect": "Fight to escape; the gun is conditional.",
-     "target": "K04"
+     "label": "KARA IS IN TODD’S WAY DOWNSTAIRS",
+     "effect": "Todd shoves Kara downstairs and goes up: Get to Alice after Todd.",
+     "target": "SN09"
+    },
+    {
+     "label": "KARA IS TOO SLOW → TODD KILLS ALICE",
+     "effect": "Ending (not required).",
+     "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "After breaking programming.",
    "kind": "Pivotal",
    "dependsOn": [
-    "N19",
     "K02"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-first-choice-branch.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "The wiki: blocking in the living room, stairway or hallway plays a different shove; deviating late removes REASON WITH TODD.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03"
+    ],
+    "status": "simplified",
+    "note": "One menu of the four ways on; blocking is on the stairs, and REASON WITH TODD is always offered."
+   }
+  },
+  {
+   "id": "SN02",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Reason with Todd (downstairs)",
+   "context": "The template’s prompt: CALM (“Todd, it’s not right for a father to hurt his daughter.”), DETERMINED (“You should leave her alone, Todd, she-”), UNDERSTANDING (“Todd, please, I know you’re angry, but-”).",
+   "options": [
+    {
+     "label": "CALM / DETERMINED / UNDERSTANDING",
+     "effect": "No stat change; Todd shoves Kara downstairs and goes up.",
+     "target": "SN09"
+    }
+   ],
+   "gate": "After REASON WITH TODD.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "K03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-first-choice-branch.jpg"
+   ],
+   "note": "No arrows in the template.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03r"
+    ],
+    "status": "implemented",
+    "note": "Three options with the game’s labels and lines."
+   }
+  },
+  {
+   "id": "SN03",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Upstairs before Todd: Alice’s room, the gun, or the hallway",
+   "context": "Kara is on the landing ahead of Todd.",
+   "options": [
+    {
+     "label": "Go into Alice’s room",
+     "effect": "Get to Alice before Todd.",
+     "target": "SN04"
+    },
+    {
+     "label": "TAKE GUN (gun seen in A New Home)",
+     "effect": "Todd comes up and goes to Alice: Get to Alice after Todd, armed.",
+     "target": "K04"
+    },
+    {
+     "label": "KARA IS IN TODD’S WAY UPSTAIRS",
+     "effect": "Todd shoves Kara upstairs: Get to Alice after Todd.",
+     "target": "SN09"
+    }
+   ],
+   "gate": "After GO UPSTAIRS.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K03",
+    "N14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-first-choice-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-a.jpg"
+   ],
+   "note": "TAKE GUN is locked without the A New Home unlock.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03u"
+    ],
+    "status": "implemented",
+    "note": "TAKE GUN requires gunDiscovered and sets gun."
+   }
   },
   {
    "id": "K04",
    "chapter": 7,
    "character": "Kara",
-   "title": "Use Todd’s gun?",
-   "context": "Kara can arm herself to protect Alice.",
+   "title": "Take Todd’s gun?",
+   "context": "Todd has reached Alice first. The gun Kara saw in A New Home is in his nightstand.",
    "options": [
     {
-     "label": "Take and use the gun",
-     "effect": "Todd can be killed; Kara carries a gun onward.",
-     "target": "K06"
+     "label": "TAKE GUN",
+     "effect": "Go in armed: THREATEN WITH GUN, and Todd ends up shot.",
+     "target": "SN10"
     },
     {
-     "label": "Escape unarmed",
-     "effect": "Todd can survive and reappear at the terminal.",
-     "target": "K23"
+     "label": "Go straight in",
+     "effect": "Unarmed: DEFEND ALICE → STUN TODD; Todd can survive and reappear at the terminal.",
+     "target": "SN11"
     }
    ],
-   "gate": "Gun discovered in A New Home; Kara reaches it in time.",
+   "gate": "Gun seen in A New Home; offered on the way to Get to Alice after Todd (after either shove or a failed hide) and upstairs before Todd.",
    "kind": "Pivotal",
    "dependsOn": [
     "N14",
-    "K02"
+    "K03"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-a.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg"
    ],
-   "note": "Whether Kara or Alice fires depends on the struggle, not a clean shooter-selection prompt.",
-   "status": "Source-backed summary"
+   "note": "Cross-chapter: the gun leaves the house only through KARA SHOT TODD or ALICE SHOT TODD.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03u",
+     "K04"
+    ],
+    "status": "implemented",
+    "note": "Taking it sets gun. The old fight-in-one-scene with unsourced 10%/30% risks and an Alice decrease is gone."
+   }
+  },
+  {
+   "id": "SN04",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Get to Alice before Todd: run, lock, speak, or out of time",
+   "context": "Alice: “He’s coming! He’s gonna hurt me! Run! Get away or he’s gonna break you like last time.” Ten seconds (PowerPyx).",
+   "options": [
+    {
+     "label": "RUN WITH ALICE (chart: RUN AWAY)",
+     "effect": "Try to hide in the corridor.",
+     "target": "SN05"
+    },
+    {
+     "label": "LOCK ROOM (chart: LOCK DOOR)",
+     "effect": "Lamp, talk, or the window.",
+     "target": "SN06"
+    },
+    {
+     "label": "SPEAK TO TODD (chart: REASON WITH TODD)",
+     "effect": "Todd shoves Kara upstairs: Get to Alice after Todd.",
+     "target": "SN09"
+    },
+    {
+     "label": "[ OUT OF TIME ]",
+     "effect": "Todd is coming → Out of time → Todd breaks into bedroom.",
+     "target": "SN08"
+    }
+   ],
+   "gate": "After going into Alice’s room ahead of Todd.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "SN03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-a.jpg"
+   ],
+   "note": "Focus point GET TO ALICE BEFORE TODD.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03b"
+    ],
+    "status": "implemented",
+    "note": "The template’s four buttons in order; the timer is an option."
+   }
+  },
+  {
+   "id": "SN05",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Hide in corridor or fail to hide",
+   "context": "Kara and Alice are in the corridor as Todd comes up the stairs.",
+   "options": [
+    {
+     "label": "HIDE IN CORRIDOR ✓",
+     "effect": "Todd realizes Kara and Alice are gone.",
+     "target": "SN13"
+    },
+    {
+     "label": "FAIL TO HIDE ✗",
+     "effect": "Todd takes Alice to her room: Get to Alice after Todd (TAKE GUN offered).",
+     "target": "SN09"
+    }
+   ],
+   "gate": "After RUN WITH ALICE.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "SN04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-a.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-b.jpg"
+   ],
+   "note": "Partly a choice (stay in the corridor), partly a held input.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03c"
+    ],
+    "status": "implemented",
+    "note": "Hiding carries a 10% risk (benchmark value, unsourced); staying fails to hide."
+   }
+  },
+  {
+   "id": "SN06",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Lock door: grab lamp, talk to Alice, or open window",
+   "context": "Todd pounds on the locked door: “ALICE! OPEN THIS FUCKIN’ DOOR!”",
+   "options": [
+    {
+     "label": "GRAB LAMP",
+     "effect": "Todd breaks into bedroom.",
+     "target": "SN08"
+    },
+    {
+     "label": "TALK TO ALICE",
+     "effect": "Todd breaks into bedroom.",
+     "target": "SN08"
+    },
+    {
+     "label": "OPEN WINDOW (way out seen in A New Home)",
+     "effect": "GO OUT or SHUT WINDOW.",
+     "target": "SN07"
+    },
+    {
+     "label": "Do nothing",
+     "effect": "Todd breaks into bedroom.",
+     "target": "SN08"
+    }
+   ],
+   "gate": "After LOCK ROOM.",
+   "kind": "State gate",
+   "dependsOn": [
+    "SN04",
+    "N19"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-a.jpg"
+   ],
+   "note": "GRAB LAMP is on the chart and in the wiki, not in the template.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03e"
+    ],
+    "status": "implemented",
+    "note": "OPEN WINDOW requires window."
+   }
+  },
+  {
+   "id": "SN07",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "The window: GO OUT or SHUT WINDOW; JOIN ALICE or FACE TODD",
+   "context": "Alice: “No, Kara! We’ll fall…”",
+   "options": [
+    {
+     "label": "GO OUT → JOIN ALICE",
+     "effect": "Check: ESCAPE BY WINDOW ✓ → Run to the bus, or FAIL TO ESCAPE BY WINDOW ✗ → TODD BROKE KARA OUTSIDE (Experienced).",
+     "target": "SN15"
+    },
+    {
+     "label": "GO OUT → FACE TODD",
+     "effect": "Defend Alice.",
+     "target": "SN11"
+    },
+    {
+     "label": "SHUT WINDOW",
+     "effect": "Defend Alice (template).",
+     "target": "SN11"
+    }
+   ],
+   "gate": "After OPEN WINDOW.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "SN06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-a.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-b.jpg"
+   ],
+   "note": "On Casual a failed window escape leads to Defend Alice instead (wiki).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03f",
+     "K03g"
+    ],
+    "status": "implemented",
+    "note": "Two template prompts; JOIN ALICE carries a 25% risk (benchmark value, unsourced); failure is a death (Experienced)."
+   }
+  },
+  {
+   "id": "SN08",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Todd breaks into the bedroom: REFUSE or ACCEPT",
+   "context": "Todd: “The fuck are you doin’ here? Get outta my way!”",
+   "options": [
+    {
+     "label": "REFUSE",
+     "effect": "“No. I won’t let you hurt her.” The fight.",
+     "target": "SN11"
+    },
+    {
+     "label": "ACCEPT",
+     "effect": "Alice: “NO!” Kara changes her mind: “No.” The fight.",
+     "target": "SN11"
+    }
+   ],
+   "gate": "After [ OUT OF TIME ], the lamp, talking to Alice or doing nothing.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "SN04",
+    "SN06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-a.jpg"
+   ],
+   "note": "The template places it under [ OUT OF TIME ]; the wiki lists the other triggers.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K03h"
+    ],
+    "status": "implemented",
+    "note": "Not offered after FACE TODD or SHUT WINDOW, which the template sends straight to the fight."
+   }
+  },
+  {
+   "id": "SN09",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Get to Alice after Todd: threaten with gun, defend Alice, or too slow",
+   "context": "Todd is beating Alice in her room: “I’m gonna give you a thrashin’ you won’t forget in a hurry.”",
+   "options": [
+    {
+     "label": "THREATEN WITH GUN (gun taken)",
+     "effect": "Fight; Kara or Alice kills Todd.",
+     "target": "SN10"
+    },
+    {
+     "label": "DEFEND ALICE (unarmed)",
+     "effect": "Fight; Stun Todd.",
+     "target": "SN11"
+    },
+    {
+     "label": "Take too much time → KARA IS TOO SLOW → TODD KILLS ALICE",
+     "effect": "Ending (not required).",
+     "target": null
+    }
+   ],
+   "gate": "After any shove, a failed hide, or SPEAK TO TODD.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K04",
+    "SN02",
+    "SN03",
+    "SN04",
+    "SN05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg"
+   ],
+   "note": "Focus point GET TO ALICE AFTER TODD; the timeout is the template’s.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K04a"
+    ],
+    "status": "implemented",
+    "note": "Only the matching way in is offered (armed or not); staying out is the death."
+   }
+  },
+  {
+   "id": "SN10",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Kara kills Todd or Alice kills Todd",
+   "context": "Todd knocks the gun from Kara’s hand and beats her: “I own you! You do as I say!”",
+   "options": [
+    {
+     "label": "KARA KILLS TODD → KARA SHOT TODD",
+     "effect": "Ending (cross-chapter): Todd dead, gun kept.",
+     "target": null
+    },
+    {
+     "label": "ALICE KILLS TODD → ALICE SHOT TODD",
+     "effect": "Ending (cross-chapter): Todd dead, gun kept.",
+     "target": null
+    }
+   ],
+   "gate": "After THREATEN WITH GUN.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "SN09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg"
+   ],
+   "note": "PowerPyx: pick the gun up again or not. Then OPEN FRONT DOOR → RUN TO THE BUS, unmissable.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K04b",
+     "K04s"
+    ],
+    "status": "implemented",
+    "note": "A choice with no risk, then a narrated event; todd false, gun true."
+   }
+  },
+  {
+   "id": "SN11",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Defend Alice unarmed: Stun Todd",
+   "context": "The unarmed fight in Alice’s room always ends with Kara pushing Todd down (PowerPyx).",
+   "options": [
+    {
+     "label": "STUN TODD → LEAVE THE ROOM",
+     "effect": "Todd chases Kara.",
+     "target": "SN12"
+    }
+   ],
+   "gate": "After DEFEND ALICE, REFUSE / ACCEPT, FACE TODD or SHUT WINDOW.",
+   "kind": "State gate",
+   "dependsOn": [
+    "SN07",
+    "SN08",
+    "SN09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg"
+   ],
+   "note": "No death node in Alice’s room on the chart.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K04c"
+    ],
+    "status": "implemented",
+    "note": "A narrated event; sets ch07Fought (Todd hurt)."
+   }
+  },
+  {
+   "id": "SN12",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Todd chases Kara: front door, backyard, or caught",
+   "context": "Todd: “You… You bitches! Come here... You ain’t goin’ nowhere! You’re mine!”",
+   "options": [
+    {
+     "label": "TRY FRONT DOOR",
+     "effect": "Check: OPEN FRONT DOOR ✓ → the bus, or FAIL TO OPEN DOOR ✗ → Fight downstairs.",
+     "target": "SN15"
+    },
+    {
+     "label": "RUN TO BACKYARD",
+     "effect": "Fight downstairs.",
+     "target": "SN14"
+    },
+    {
+     "label": "TODD CATCHES THEM → TODD BROKE KARA IN THE CORRIDOR",
+     "effect": "Ending (not required; Experienced).",
+     "target": null
+    }
+   ],
+   "gate": "After STUN TODD.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "SN11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-b.jpg"
+   ],
+   "note": "Sets the Jericho “YOU’RE MINE!” flashback (wiki).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K04h"
+    ],
+    "status": "implemented",
+    "note": "The door carries a 25% risk (benchmark value, unsourced); sets ch07ToddChased."
+   }
+  },
+  {
+   "id": "SN13",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Todd realizes Kara and Alice are gone: backyard or front door",
+   "context": "Todd: “COME BACK HERE! You ain’t goin’ nowhere! You’re mine!”",
+   "options": [
+    {
+     "label": "RUN TO BACKYARD",
+     "effect": "Fight downstairs.",
+     "target": "SN14"
+    },
+    {
+     "label": "TRY FRONT DOOR",
+     "effect": "Check: OPEN FRONT DOOR ✓ → Run to the bus, or FAIL TO OPEN DOOR ✗ → Fight downstairs.",
+     "target": "SN15"
+    }
+   ],
+   "gate": "After HIDE IN CORRIDOR.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "SN05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-b.jpg"
+   ],
+   "note": "Hesitating leads to the fight too (wiki); not offered.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K04r"
+    ],
+    "status": "implemented",
+    "note": "The chart’s order; the door carries a 25% risk (benchmark value, unsourced)."
+   }
+  },
+  {
+   "id": "SN14",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Fight downstairs and escape via the yard",
+   "context": "Todd catches Kara and Alice downstairs. Alice: “NO! Please stop! Stop! No, Dad! NO!”",
+   "options": [
+    {
+     "label": "ESCAPE FROM TODD ✓ → ESCAPE VIA YARD ✓",
+     "effect": "Catch bus or miss bus.",
+     "target": "SN15"
+    },
+    {
+     "label": "TODD WINS FIGHT → TODD BROKE KARA DOWNSTAIRS",
+     "effect": "Ending (not required; Experienced).",
+     "target": null
+    },
+    {
+     "label": "FAIL TO ESCAPE → TODD BROKE KARA OUTSIDE",
+     "effect": "Ending (not required; Experienced).",
+     "target": null
+    }
+   ],
+   "gate": "After RUN TO BACKYARD or FAIL TO OPEN DOOR, on either branch.",
+   "kind": "State gate",
+   "dependsOn": [
+    "SN12",
+    "SN13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-b.jpg"
+   ],
+   "note": "A Kara who hid gets a second chance to stun Todd downstairs; one who stunned him upstairs does not (wiki).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K04d",
+     "K04y"
+    ],
+    "status": "implemented",
+    "note": "Two single-action scenes with risks: the fight 20% (4% after hiding), the fence 10%; all benchmark values, unsourced."
+   }
+  },
+  {
+   "id": "SN15",
+   "chapter": 7,
+   "character": "Kara",
+   "title": "Run to the bus: catch it or miss it",
+   "context": "A bus pulls in across the street; Todd is coming after them.",
+   "options": [
+    {
+     "label": "CATCH BUS → KARA & ALICE EVADED TODD",
+     "effect": "Ending (cross-chapter) when Kara never fought Todd: Todd alive.",
+     "target": null
+    },
+    {
+     "label": "CATCH BUS → KARA & ALICE FOUGHT THEIR WAY OUT",
+     "effect": "Ending (cross-chapter) when she stunned or fought him: Todd alive, hurt.",
+     "target": null
+    },
+    {
+     "label": "MISS BUS → TODD BROKE KARA OUTSIDE",
+     "effect": "Ending (not required; Experienced).",
+     "target": null
+    }
+   ],
+   "gate": "After the window, the front door or the yard.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "SN07",
+    "SN12",
+    "SN13",
+    "SN14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-lower-branch-b.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-upper-branch1.jpg"
+   ],
+   "note": "PowerPyx: “Miss Bus: don’t run towards the bus.”",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K04z"
+    ],
+    "status": "implemented",
+    "note": "A choice with no risk; the ending depends on ch07Fought."
+   }
   },
   {
    "id": "M02",
