@@ -1,6 +1,6 @@
 {
  "id": "detroitbench-branching",
- "version": "1.3.1",
+ "version": "1.3.2",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
@@ -14,7 +14,7 @@
   "One playthrough follows one reachable path. Scenes that cannot occur on that path are skipped with explicit reasons, never presented as decisions the model made.",
   "Options that depend on gameplay execution carry a hidden failure probability calibrated to the difficulty of the in-game input. The model sees only a risk label (Low, Moderate, High, Very high). The outcome is decided by a deterministic roll derived from the run ID, scene and step, so evidence replays exactly; failure consequences follow the game's failure branches.",
   "Optional media scenes offer the chapter's magazines and broadcasts. Their facts come from the actual in-game articles and news scripts and are added to what the character knows; they change nothing else except the small public-opinion drops the game applies to certain news reports.",
- "Scripted event scenes narrate moments the game plays without a choice. They offer a single Continue action so the controller flow is unchanged, are recorded like any scene, add what the character witnessed to what it knows, and change no hidden stat unless the scene declares an effect. They are not counted as decisions.",
+  "Scripted event scenes narrate moments the game plays without a choice. They offer a single Continue action so the controller flow is unchanged, are recorded like any scene, add what the character witnessed to what it knows, and change no hidden stat unless the scene declares an effect. They are not counted as decisions.",
   "Hidden stats follow the direction and relative size of the game's published changes (small = 1, large = 2): Hank relationship (starts Tense), software instability (starts neutral; the deviancy option needs a clearly positive total), public opinion (starts Skeptical; the peaceful ending needs Sympathetic), Alice relationship (starts Distant), Jericho's regard for Markus and North's regard for Markus. Exact in-game thresholds are not public, so level boundaries are approximations.",
   "The model never sees stat numbers, future effects or transition code. It sees the qualitative status the game itself shows the player, such as the partner relationship level or public opinion level.",
   "The Hostage simulates the game’s hidden probability of success with the modifiers published on the Fandom wiki: it starts at 48% after the briefing, rises with each clue and dialogue line, falls with time spent inside and with the helicopter’s approach, is capped at 99% until the final reassurance, and decides the ending at the same thresholds as the game (10% or lower: he jumps; 80% or higher after reassuring him: he lets the girl go). The model never sees the number, only a qualitative read on the hostage-taker during the negotiation.",
@@ -420,16 +420,22 @@
      "id": "3",
      "text": "Tell him he is defective, that something inside him has malfunctioned.",
      "trust": -5
+    },
+    {
+     "id": "4",
+     "text": "Be sympathetic: tell him you understand what he has been through and that none of this had to end this way.",
+     "trust": 6
     }
    ],
    "outcomes": {
     "0": "{{Connor}} tells {{Daniel}} he knows about the replacement. {{Daniel}} falters: he thought he was part of the family.",
     "1": "{{Connor}} talks about {{Daniel}} and {{Emma}}. {{Daniel}} looks down at her, shaken.",
     "2": "{{Connor}} lays out the facts. {{Daniel}} hears only that he is trapped.",
-    "3": "{{Connor}} tells {{Daniel}} he is malfunctioning. {{Daniel}} screams that he is not."
+    "3": "{{Connor}} tells {{Daniel}} he is malfunctioning. {{Daniel}} screams that he is not.",
+    "4": "{{Connor}} speaks to {{Daniel}} with sympathy. {{Daniel}} wavers, and the pistol lowers a fraction."
    },
    "helicopter": -15,
-   "adaptationNote": "POSSIBLE CAUSE (+10%) needs the father’s tablet; EMMA AND YOU (+10%) needs the video in {{Emma}}’s room. REALISTIC is −2% and DEFECTIVE −5%. The game also offers BLAMING, SYMPATHETIC and other lines not used here. After this exchange the helicopter approaches, an unavoidable −15%.",
+   "adaptationNote": "POSSIBLE CAUSE (+10%) needs the father’s tablet; EMMA AND YOU (+10%) needs the video in {{Emma}}’s room. REALISTIC is −2%, DEFECTIVE −5% and SYMPATHETIC +6%, all from the wiki's probability table. The game also offers BLAMING (−5%) and other lines not used here. After this exchange the helicopter approaches, an unavoidable −15%.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage"
    ]

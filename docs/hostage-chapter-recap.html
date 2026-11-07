@@ -29,7 +29,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </head>
 <body>
 <main>
-<p class="fine">DetroitBench · story 1.3.1 · chapter 1</p>
+<p class="fine">DetroitBench · story 1.3.2 · chapter 1</p>
 <h1>The Hostage: how the chapter works</h1>
 <p class="lede">A reference for replaying the chapter. Numbers come from the Fandom wiki’s probability table; where your notes differ, section 4 says so and what the benchmark chose.</p>
 <nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#table">2 · Every modifier</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Differs</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
@@ -93,7 +93,8 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>POSSIBLE CAUSE</td><td class="n">+10</td><td class="yes">+10</td><td>needs the father’s tablet</td></tr>
 <tr><td>REALISTIC</td><td class="n">−2</td><td class="yes">−2</td><td>—</td></tr>
 <tr><td>DEFECTIVE</td><td class="n">−5</td><td class="yes">−5</td><td>—</td></tr>
-<tr><td>BLAMING / SYMPATHETIC</td><td class="n">−5 / +6</td><td class="no">not offered</td><td>—</td></tr>
+<tr><td>SYMPATHETIC</td><td class="n">+6</td><td class="yes">+6</td><td>—</td></tr>
+<tr><td>BLAMING</td><td class="n">−5</td><td class="no">not offered</td><td>—</td></tr>
 <tr><td>Dismiss / keep the helicopter</td><td class="n">+10 / 0</td><td class="yes">+10 / 0</td><td>—</td></tr>
 <tr><td>LAST CHANCE / TRUST / RATIONAL</td><td class="n">−8 / +6 / −8</td><td class="no">not offered</td><td>—</td></tr>
 <tr><td>BLUFF → MOVE CLOSER / GIVE UP</td><td class="n">MOVE CLOSER fails</td><td class="no">not offered</td><td>—</td></tr>
@@ -138,11 +139,11 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>Use gun</td><td>shoots Daniel</td><td>EXECUTE shoots him; INTIMIDATE then persuade gets Connor shot (“Deviant shot Connor”)</td><td>always shoots Daniel</td></tr>
 <tr><td>Sacrifice self / use gun</td><td>always offered</td><td>need “get close enough”</td><td>closeness assumed</td></tr>
 <tr><td>Leap for Emma</td><td>a risky leap</td><td>timed prompt; Casual auto-rescues; “at zero, Emma will ultimately die”</td><td>30% risk even at 0%; “Stay back” is a benchmark addition</td></tr>
-<tr><td>Topic lines</td><td>four lines</td><td>also BLAMING, SYMPATHETIC, TRUST, LAST CHANCE, RATIONAL, BLUFF</td><td>your four only; without clues only the two negative lines remain</td></tr>
+<tr><td>Topic lines</td><td>four lines</td><td>also BLAMING, SYMPATHETIC, TRUST, LAST CHANCE, RATIONAL, BLUFF</td><td>your four plus SYMPATHETIC (+6), so a model with no clues still has one positive line</td></tr>
 <tr><td>Drop at the start of negotiation</td><td>—</td><td>“always slightly drop”, no value</td><td>not modelled</td></tr>
 <tr><td>Leaving with no clue</td><td>—</td><td>Go out / Keep investigating prompt</td><td>no confirmation</td></tr>
 </tbody></table></div>
-<p class="fine">A possible reason for your larger numbers: the wiki notes that when the on-screen anchor is out of view, the display is delayed and shows the net of several modifiers at once (for example +7 +3 +3 = +13).</p>
+<p class="fine">Resolved 2026-11-06: the operator chose to trust the wiki’s values over these readings. A likely reason for the larger numbers: the wiki notes that when the on-screen anchor is out of view, the display is delayed and shows the net of several modifiers at once (for example +7 +3 +3 = +13).</p>
 
 <h2 id="endings">5 · Endings and exact conditions</h2>
 <div class="table"><table>
@@ -163,7 +164,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>The meter reads 48% right after Allen.</li>
 <li>Each clue’s step on the meter, with the camera on the anchor so it is not merged (gun case +3? video +7?).</li>
 <li>Whether the father’s body and his tablet show as two steps (+3 then +7).</li>
-<li>Whether POSSIBLE CAUSE appears without picking up the tablet.</li>
+<li>Confirmed 2026-11-06: POSSIBLE CAUSE and EMMA AND YOU only appear after the tablet and the video, as the benchmark gates them.</li>
 <li>Confirmed 2026-11-06: the window officer is shot after the second action, as the benchmark does.</li>
 <li>What happens at 5 minutes: Allen’s order, or Daniel jumping.</li>
 <li>Where Daniel’s first shot hits Connor.</li>

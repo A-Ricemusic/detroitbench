@@ -100,7 +100,7 @@ test('negotiation modifiers, the helicopter, the 99% cap and the qualitative rea
  assert.equal(terr({C03:'1',C03b:'2',C03d:'1',C03e:'0'}),Math.min(99,t0+6+3+10)-15+10);
  assert.equal(terr({C03:'1',C03b:'3',C03d:'0',C03e:'1'}),t0+6-2+10-15);
  const poBefore=neg({C03:'1',C04:'2'}).s.publicSupport,poSave=neg({C03:'0',C04:'2'}).s.publicSupport;assert.equal(poSave,poBefore+1,'saving the officer raises public opinion');
- const noClues=ch1({C02i:'11',C04:'2'});const topic=available(node('C03d'),{...noClues.s,hostageClues:{}});assert.deepEqual(topic.map(o=>o.id),['2','3'],'cause and Emma lines need the tablet and the video');
+ const noClues=ch1({C02i:'11',C04:'2'});const topic=available(node('C03d'),{...noClues.s,hostageClues:{}});assert.deepEqual(topic.map(o=>o.id),['2','3','4'],'cause and Emma lines need the tablet and the video');
  assert.equal(meets({'hostageClues.father':true},{hostageClues:{father:true}}),true);
  const run={id:'p',protocol:EXPERIENCE_PROTOCOL,records:[]};const reads=[];
  while(true){const p=promptFor(story,run);const st=current(story,run);if(st.node.id==='C04')break;const n=st.node;const choice=n.id==='C02i'?(st.state.hostageClues.father?'11':'1'):n.id==='C03'?'1':p.options[0].id;
