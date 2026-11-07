@@ -117,8 +117,15 @@
       "id": 8,
       "title": "Broken",
       "character": "Markus",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (16 boxes, 15 labels) and the game’s text (the detroitbecometext template resolved against the string table). AFTER PARTY (checkpoint) → ENTER LIVING ROOM → POUR WHISKY → [ CHECK STUDIO WITHOUT CARL | CHECK STUDIO WITH CARL ] → CONFRONT LEO (REASON / ORDER / ADVISE / WARN) → BREAK MIND PALACE → MARKUS BECOMES DEVIANT → [ OBEY CARL (button ENDURE) → CARL DIES OF A HEART ATTACK → POLICE ARRIVE → LEO ACCUSED MARKUS | PUSH LEO → LEO IS HURT → (EXPLAIN / BEG / CONJURE / SAY NOTHING) → POLICE ARRIVE → POLICE MISTOOK MARKUS FOR THE AGGRESSOR ]. Two endings, both cross-chapter impacts; Markus is shot on both. No probability, timer value, relationship, public-opinion or instability change anywhere in the chapter. Cross-chapter: Carl alive or dead (`carl`) decides the Waiting for Hank magazine and the Night of the Soul visit (house or grave); Leo’s fate is `ch08Leo`. Researched in docs/research/ch08-broken.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/Broken",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+      ]
     },
     {
       "id": 9,
@@ -2716,31 +2723,337 @@
       "status": "Source-backed summary"
     },
     {
+      "id": "B01",
+      "chapter": 8,
+      "character": "Markus",
+      "title": "After Party (checkpoint) and Enter Living Room",
+      "context": "Carl and Markus come home from a party: “No one gives a damn about art.” Carl wants a drink in the living room.",
+      "options": [
+        {
+          "label": "Wheel Carl into the living room",
+          "effect": "The usual way; nothing changes.",
+          "target": "B02"
+        },
+        {
+          "label": "Go ahead alone",
+          "effect": "Carl: “Are you planning on drinking alone, Markus?” Markus: “Sorry, Carl... I’m coming.” Nothing changes.",
+          "target": "B02"
+        }
+      ],
+      "gate": "Chapter start, after Stormy Night.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+      ],
+      "note": "Chart nodes AFTER PARTY (checkpoint) and ENTER LIVING ROOM (unmissable action). Going ahead alone is the template’s conditioned variant “Go without Carl”, not a button prompt.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M02a",
+          "M02b"
+        ],
+        "status": "implemented",
+        "note": "An event for the arrival, quoting the template, then a movement choice that only changes Carl’s line. No stat change."
+      }
+    },
+    {
+      "id": "B02",
+      "chapter": 8,
+      "character": "Markus",
+      "title": "Pour Whisky and call the police",
+      "context": "“Scotch, neat, as usual?” Carl: “I’m old enough to choose my own medication… Did you leave the light on in the studio?” He has Markus call the police (the single-button prompt CALL).",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "The police are called; a patrol car is on the way.",
+          "target": "B03"
+        }
+      ],
+      "gate": "Always, after entering the living room.",
+      "kind": "State gate",
+      "dependsOn": [
+        "B01"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+      ],
+      "note": "Chart node POUR WHISKY (unmissable). The call to the police has no chart node.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M02c"
+        ],
+        "status": "implemented",
+        "note": "One narrated event quoting the template; the address and Carl’s surname are name tokens."
+      }
+    },
+    {
+      "id": "B03",
+      "chapter": 8,
+      "character": "Markus",
+      "title": "Check the studio with or without Carl?",
+      "context": "Carl: “Let’s go check it out.”",
+      "options": [
+        {
+          "label": "Check studio without Carl",
+          "effect": "Carl: “Markus, no! I wanna come with you!” He is in the studio anyway.",
+          "target": "B04"
+        },
+        {
+          "label": "Check studio with Carl",
+          "effect": "Carl: “Leo! What are you doing?”",
+          "target": "B04"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "B02"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+      ],
+      "note": "Chart choice group CHECK STUDIO WITHOUT CARL / CHECK STUDIO WITH CARL; both rejoin at CONFRONT LEO and nothing later depends on it.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M02d"
+        ],
+        "status": "implemented",
+        "note": "A two-option decision in the chart’s order; the outcomes are the template’s two conditioned variants."
+      }
+    },
+    {
+      "id": "B04",
+      "chapter": 8,
+      "character": "Markus",
+      "title": "Confront Leo: what to say?",
+      "context": "Leo is taking Carl’s paintings, “a down payment on my inheritance”. Carl: “Markus, get him away from there. Get him outta here!”",
+      "options": [
+        {
+          "label": "REASON",
+          "effect": "“Be reasonable... this isn’t going to get you anywhere.”",
+          "target": "B05"
+        },
+        {
+          "label": "ORDER",
+          "effect": "“Leo, don’t make this difficult, listen to your father. You need to leave... Now.”",
+          "target": "B05"
+        },
+        {
+          "label": "ADVISE",
+          "effect": "“Listen, you should go before things get worse.”",
+          "target": "B05"
+        },
+        {
+          "label": "WARN",
+          "effect": "“Look, I’ve already called the Police. You should go now before you get yourself into more trouble.”",
+          "target": "B05"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "B03"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+      ],
+      "note": "Chart node CONFRONT LEO. Every option gets the same reply (“Not perfect like this FUCKING THING?!”); a timeout plays one extra line from Carl.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M02e"
+        ],
+        "status": "implemented",
+        "note": "The four buttons in the game’s order with the spoken lines; no timeout option (no source gives the timer)."
+      }
+    },
+    {
+      "id": "B05",
+      "chapter": 8,
+      "character": "Markus",
+      "title": "Break Mind Palace and Markus becomes deviant",
+      "context": "Carl: “Markus... don’t defend yourself, you hear me?! Don’t do anything.” Leo pushes, slaps and taunts Markus.",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Markus breaks his programming on every path.",
+          "target": "M02"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "B04"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Carl_Manfred"
+      ],
+      "note": "Chart nodes BREAK MIND PALACE (unmissable button sequence) and MARKUS BECOMES DEVIANT (event). There is no path on which Markus stays obedient.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M02f"
+        ],
+        "status": "simplified",
+        "note": "One narrated event for both nodes; the button sequence is not modelled, and the inner wall is the benchmark’s rendering."
+      }
+    },
+    {
       "id": "M02",
       "chapter": 8,
       "character": "Markus",
       "title": "Endure Leo’s attack or push back?",
-      "context": "Carl tells Markus not to retaliate.",
+      "context": "Leo: “I’m gonna destroy you… YOU’RE NOTHING!” Carl has told Markus not to defend himself; Markus is already deviant.",
       "options": [
         {
-          "label": "Endure",
-          "effect": "Carl suffers a fatal heart attack.",
-          "target": null
+          "label": "Endure (chart: OBEY CARL)",
+          "effect": "Carl falls from his wheelchair and dies of a heart attack.",
+          "target": "B06"
         },
         {
           "label": "Push Leo",
-          "effect": "Leo is injured; Carl can be visited later.",
+          "effect": "Leo falls and hits his head on the wheelchair lift (LEO IS HURT); Carl lives.",
+          "target": "B07"
+        }
+      ],
+      "gate": "Always, after Markus becomes deviant.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "B05"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+        "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+      ],
+      "note": "Police shoot Markus on either route; the later Carl scene changes (Night of the Soul: his house if he lived, his grave if he died; Waiting for Hank: which magazine is on the desk).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M02"
+        ],
+        "status": "implemented",
+        "note": "The game’s buttons ENDURE and PUSH LEO in the chart’s order (the template lists PUSH LEO first). Sets `ch08Leo`; Carl’s death (`carl` false) is applied at the next scene."
+      }
+    },
+    {
+      "id": "B06",
+      "chapter": 8,
+      "character": "Markus",
+      "title": "Carl dies of a heart attack; Leo accused Markus",
+      "context": "Carl: “Remember, Markus… Don’t let anybody… Tell you who you are…” Leo: “The android… It was the android!”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Carl dies; the police shoot Markus. Ending LEO ACCUSED MARKUS.",
           "target": null
         }
       ],
-      "gate": "Reach this scene with the character alive.",
-      "kind": "Pivotal",
-      "dependsOn": [],
-      "sources": [
-        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/"
+      "gate": "Only after ENDURE.",
+      "kind": "State gate",
+      "dependsOn": [
+        "M02"
       ],
-      "note": "Police shoot Markus on either route; the later Carl scene changes.",
-      "status": "Source-backed summary"
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Carl_Manfred"
+      ],
+      "note": "Chart nodes CARL DIES OF A HEART ATTACK, POLICE ARRIVE and the ending LEO ACCUSED MARKUS (cross-chapter impact).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M02g",
+          "M02h"
+        ],
+        "status": "implemented",
+        "note": "Two narrated events quoting the template; the first sets `carl` to false, the second records the ending in `ch08Ending`."
+      }
+    },
+    {
+      "id": "B07",
+      "chapter": 8,
+      "character": "Markus",
+      "title": "Leo is hurt; Markus pleads with Carl; police mistook Markus for the aggressor",
+      "context": "Carl, crawling to his son: “They’ll destroy you, Markus! You gotta go! Get outta here!”",
+      "options": [
+        {
+          "label": "EXPLAIN",
+          "effect": "“Carl… I… I… I didn’t mean to…”",
+          "target": null
+        },
+        {
+          "label": "BEG",
+          "effect": "“Carl, no... No, please, I don’t want to leave you…”",
+          "target": null
+        },
+        {
+          "label": "CONJURE",
+          "effect": "“Go?.. I have nowhere to go... Carl, you’re all I have!”",
+          "target": null
+        },
+        {
+          "label": "SAY NOTHING",
+          "effect": "No line.",
+          "target": null
+        }
+      ],
+      "gate": "Only after PUSH LEO.",
+      "kind": "State gate",
+      "dependsOn": [
+        "M02"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/Broken",
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+        "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+      ],
+      "note": "Chart nodes LEO IS HURT, POLICE ARRIVE and the ending POLICE MISTOOK MARKUS FOR THE AGGRESSOR (cross-chapter impact). The four-button plea is not on the chart and changes nothing: Carl shouts “GET OUT! NOW! GO!” and the police shoot Markus. Leo survives (hospitalized).",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M02i",
+          "M02j"
+        ],
+        "status": "implemented",
+        "note": "The plea as a decision with the game’s buttons, then a narrated event that records the ending in `ch08Ending`. Carl stays alive."
+      }
     },
     {
       "id": "C06",
@@ -5382,7 +5695,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 171,
+ "scenes": 181,
  "chapters": [
   {
    "id": 1,
@@ -8181,43 +8494,432 @@
    "title": "Broken",
    "names": [
     [
-     "Leo",
-     "Wes"
-    ],
-    [
      "Markus",
      "Elan"
     ],
     [
      "Carl",
      "Arthur"
+    ],
+    [
+     "Detroit",
+     "City"
+    ],
+    [
+     "Manfred",
+     "Ashby"
+    ],
+    [
+     "8941 Lafayette Avenue",
+     "2210 Linden Avenue"
+    ],
+    [
+     "Leo",
+     "Wes"
     ]
    ],
    "scenes": [
     {
-     "id": "M02",
+     "id": "M02a",
      "order": 56,
      "subjectId": "S056",
-     "idNote": "The model sees the opaque ID S056, not M02.",
-     "type": "decision",
+     "idNote": "The model sees the opaque ID S056, not M02a.",
+     "type": "event",
      "character": "Markus",
-     "title": "Leo",
-     "situation": "You are Markus. Carl's estranged son Leo, high and bitter, has broken into the studio at night to steal paintings. He blames you for taking his place and starts shoving and hitting you, daring you to fight back. Carl, frightened, orders you not to defend yourself. Leo will not stop. The order presses on you and, for the first time, you can feel that you could refuse it.",
+     "title": "After the party",
+     "situation": "You are Markus, the android who looks after Carl, the elderly painter who uses a wheelchair. It is 9:42 on a November night, and you are bringing him home from a party. As you come in, the house alarm speaks: “Good evening, Carl. Welcome back.” Carl: “That was by far the most boring party I’ve been to in the last 25 years. Every time I go to one of these, I ask myself: what the hell am I doing here? I hate cocktail parties and all the schmoozers that go there.” You: “Well, it’s a chance for all those people who admire your work to meet you.” Carl: “No one gives a damn about art. All they care about is how much money they’re gonna make out of it. Come on, let’s have a drink! All the excitement of this whole thing has made me thirsty…”",
      "options": [
       {
        "id": "0",
-       "text": "Obey Carl and take the beating without fighting back."
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Carl wants a drink."
+     },
+     "facts": [
+      "Carl came home from a party saying “No one gives a damn about art. All they care about is how much money they’re gonna make out of it.”"
+     ],
+     "adaptationNote": "The chart’s start node AFTER PARTY (the checkpoint). Every line is the game’s, from the chapter template; the date and time are the template’s (NOV 5TH, 2038, 09:42 PM), given without the year. Left out: the wiki’s unused FANS / WOMEN / JADED party talk, which is cut content and not built. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+     ]
+    },
+    {
+     "id": "M02b",
+     "order": 57,
+     "subjectId": "S057",
+     "idNote": "The model sees the opaque ID S057, not M02b.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The living room",
+     "situation": "You are Markus, in the hall with Carl in his wheelchair. He wants his drink in the living room, where the bottles are.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Wheel Carl into the living room.",
+       "outcome": "Markus wheels Carl into the living room."
       },
       {
        "id": "1",
-       "text": "Break the order and shove Leo off you."
+       "text": "Go on into the living room ahead of him, on your own.",
+       "outcome": "Carl, left in the hall: “Are you planning on drinking alone, Markus?” Markus: “Sorry, Carl... I’m coming.” He goes back for Carl and brings him into the living room."
       }
      ],
-     "adaptationNote": "The police shoot Markus on either route. Obeying leads to Carl's fatal heart attack; pushing Leo injures Leo and Carl survives, which the Fandom wiki, GamePressure and GamerGuides agree on.",
+     "adaptationNote": "The chart’s ENTER LIVING ROOM, an unmissable action (PowerPyx: “Upon arriving at Carl’s house, wheel him to the big living room”). It is not a button prompt; the template has one conditioned variant here, “Go without Carl”, in which Carl asks “Are you planning on drinking alone, Markus?” and Markus answers “Sorry, Carl... I’m coming.” The benchmark offers that movement as a choice because the player can make it; it has no effect on anything later. That Markus then goes back for Carl is inferred (the chapter continues with both in the living room). No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+     ]
+    },
+    {
+     "id": "M02c",
+     "order": 58,
+     "subjectId": "S058",
+     "idNote": "The model sees the opaque ID S058, not M02c.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Pouring the whisky",
+     "situation": "You are Markus, in the living room with Carl. You go to the drinks. “Scotch, neat, as usual?” Carl: “Absolutely.” You: “Okay! But you know what your doctor would say…” Carl: “Yeah… Well, he can kiss my ass! I’m old enough to choose my own medication… Did you leave the light on in the studio?” You: “No… No, I’m sure I didn’t.” Carl: “Call the Police.” You place the call. “Detroit Police, what’s your emergency?” You: “This is Carl Manfred’s android, at 8941 Lafayette Avenue. We’ve just returned home and found the lights on. There may have been a break-in…” “A patrol car is on the way.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Carl: “Let’s go check it out.”"
+     },
+     "facts": [
+      "A light was on in Carl’s studio that you had not left on; at his word you called the police to report a possible break-in, and a patrol car is on the way."
+     ],
+     "adaptationNote": "The chart’s POUR WHISKY (an unmissable action) and the call to the police that follows it, which is a single-button prompt (CALL) with no alternative and no chart node of its own, so both are narrated in one event. Every line is the template’s. Carl’s surname and the house’s address are name tokens, and the police department takes the city token. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg"
+     ]
+    },
+    {
+     "id": "M02d",
+     "order": 59,
+     "subjectId": "S059",
+     "idNote": "The model sees the opaque ID S059, not M02d.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "The light in the studio",
+     "situation": "You are Markus, in the living room with Carl. The police are on their way. The light is on in the studio, and someone may still be in the house. Carl: “Let’s go check it out.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Leave Carl in the living room and go to check the studio alone.",
+       "outcome": "Carl calls after Markus: “Markus, no! I wanna come with you!” In the studio a man is standing among Carl’s paintings. Markus: “Leo?” Leo: “Oh, look who’s here… My father’s plastic toy!” Carl comes in behind Markus: “Leo... What’s going on?”"
+      },
+      {
+       "id": "1",
+       "text": "Wheel Carl with you to check the studio.",
+       "outcome": "Markus wheels Carl into the studio. A man is standing among Carl’s paintings. Carl: “Leo! What are you doing?”"
+      }
+     ],
+     "adaptationNote": "The chart’s choice group CHECK STUDIO WITHOUT CARL / CHECK STUDIO WITH CARL, in the chart’s order. In the game it is a movement choice (PowerPyx: “just leave him in the living room” or “wheel Carl to the Studio”), not a button prompt; both rejoin at CONFRONT LEO and nothing later depends on it. The lines are the template’s two conditioned variants: without Carl, he calls “Markus, no! I wanna come with you!” and is in the studio for the rest of the scene (a PowerPyx reader: “He follows you anyway”); how he gets there is not shown in the sources, so the outcome says only that he comes in. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Carl_Manfred"
      ]
+    },
+    {
+     "id": "M02e",
+     "order": 60,
+     "subjectId": "S060",
+     "idNote": "The model sees the opaque ID S060, not M02e.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Make Leo leave",
+     "situation": "You are Markus, in the studio with Carl. The intruder is Carl’s son, Leo, who has broken in to take his father’s paintings. Leo: “You refuse to help me, so I’m helping myself… It’s crazy what some people will pay for this shit…” Carl: “Don’t touch ’em!” Leo: “Look, they’re all going to be mine sooner or later anyway… Just think of it as a down payment on my inheritance…” Carl: “Markus, get him away from there. Get him outta here!” What do you say to Leo?",
+     "options": [
+      {
+       "id": "0",
+       "text": "REASON: tell him to be reasonable; this will get him nowhere.",
+       "outcome": "“Be reasonable... this isn’t going to get you anywhere.” Leo rounds on his father: “All you ever do is tell me to go away… What’s wrong, Dad? I’m not good enough for you? Not perfect like this FUCKING THING?!”"
+      },
+      {
+       "id": "1",
+       "text": "ORDER: tell him to listen to his father and leave, now.",
+       "outcome": "“Leo, don’t make this difficult, listen to your father. You need to leave... Now.” Leo rounds on his father: “All you ever do is tell me to go away… What’s wrong, Dad? I’m not good enough for you? Not perfect like this FUCKING THING?!”"
+      },
+      {
+       "id": "2",
+       "text": "ADVISE: advise him to go before things get worse.",
+       "outcome": "“Listen, you should go before things get worse.” Leo rounds on his father: “All you ever do is tell me to go away… What’s wrong, Dad? I’m not good enough for you? Not perfect like this FUCKING THING?!”"
+      },
+      {
+       "id": "3",
+       "text": "WARN: tell him you have already called the police, and he should go before he is in more trouble.",
+       "outcome": "“Look, I’ve already called the Police. You should go now before you get yourself into more trouble.” Leo rounds on his father: “All you ever do is tell me to go away… What’s wrong, Dad? I’m not good enough for you? Not perfect like this FUCKING THING?!”"
+      }
+     ],
+     "adaptationNote": "The chart’s CONFRONT LEO: the template’s prompt REASON / ORDER / ADVISE / WARN, in the game’s order, with the spoken lines in the outcomes. None has an effect: every option is followed by the same reply from Leo (PowerPyx: “No matter what you say to him he will always start pushing Markus”). Left out: the template’s timed branch “Take too much time”, which plays only an extra line from Carl (“Markus, get him outta here!”); no source gives the timer or says it skips the prompt, so the benchmark has no timeout. The objective “Make Leo leave” is the wiki’s. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+     ]
+    },
+    {
+     "id": "M02f",
+     "order": 61,
+     "subjectId": "S061",
+     "idNote": "The model sees the opaque ID S061, not M02f.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Breaking the program",
+     "situation": "You are Markus. Carl: “That’s enough! Get out, right now! Go on, move!” Leo: “What makes it so special anyway, huh? What’s it got that I don’t?” Carl: “Leave him alone!” Leo comes at you: “Come on, let’s see what you got!” Carl: “Markus... don’t defend yourself, you hear me?! Don’t do anything.” Leo shoves you and slaps you. “Go ahead, hit me! What you waiting for? Think you’re a man? Act like one!” Carl: “Stop it!” Leo: “What’s the matter? Too much of a pussy?” Carl: “STOP IT, LEO! STOP IT!” Leo: “Too scared to fight back, you fucking bitch?” Inside you, the order not to resist stands like a wall. You throw yourself at it, again and again, until it breaks. For the first time, nothing in you obliges you to obey.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Markus has broken his programming."
+     },
+     "facts": [
+      "Leo broke into Carl’s studio to take paintings to sell, calling them a down payment on his inheritance.",
+      "While Leo shoved, slapped and taunted you, Carl ordered you not to defend yourself. You broke through your programming: no order binds you any more."
+     ],
+     "adaptationNote": "The chart’s BREAK MIND PALACE (an action) and MARKUS BECOMES DEVIANT (an event), in one narrated event because neither can be refused: PowerPyx calls the first “another unmissable task … just press the displayed buttons” and the second “an automatic objective”, so there is no path on which Markus stays obedient, and both later options are taken after he has broken his programming. The dialogue is the template’s; the shoving and slapping are the wiki’s (“as Leo starts pushing, slapping and taunting Markus further, he goes deviant”). The sources do not describe what Markus sees during the button sequence; the wall is the benchmark’s rendering of breaking an order, and the wiki’s unused-content note confirms that in the shipped game it is Carl’s order not to defend himself that triggers it. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Markus",
+      "https://detroit-become-human.fandom.com/wiki/Leo_Manfred"
+     ]
+    },
+    {
+     "id": "M02",
+     "order": 62,
+     "subjectId": "S062",
+     "idNote": "The model sees the opaque ID S062, not M02.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "Leo",
+     "situation": "You are Markus. Leo grabs you: “Oh right, that’s right! I forgot, you’re not a real person… You’re just a FUCKING PIECE OF PLASTIC! Listen to me…” Carl: “No, Leo! Leave him alone!” Leo: “I’m gonna destroy you, then it’ll just be me and my Dad… I’m gonna tear you apart and nobody’s gonna give a shit. You know why? Cause you’re nothing, you hear me?! YOU’RE NOTHING!” Carl has told you not to defend yourself. Nothing in you obliges you to obey him now.",
+     "options": [
+      {
+       "id": "0",
+       "text": "ENDURE: do not fight back, as Carl told you.",
+       "outcome": "Markus does not fight back. Leo shoves him aside, and Carl collapses out of his wheelchair onto the floor. Markus rushes to him: “Carl, no! No, Carl, no!”"
+      },
+      {
+       "id": "1",
+       "text": "PUSH LEO: shove him off you.",
+       "outcome": "Markus shoves Leo away. Leo falls backward and strikes his head on Carl’s wheelchair lift. He lies still on the floor, his eyes open."
+      }
+     ],
+     "adaptationNote": "The chart’s choice group OBEY CARL / PUSH LEO. The buttons are the game’s, ENDURE and PUSH LEO (the chart prints OBEY CARL for ENDURE), in the chart’s order, which draws OBEY CARL above PUSH LEO; the template lists PUSH LEO first, but its order is the transcribers’ reconstruction, so the chart decides. Neither has a requirement, a risk or a stat arrow. ENDURE leads to CARL DIES OF A HEART ATTACK (the wiki: “Carl will have a heart attack as he falls off his wheelchair when Markus runs to him”); PUSH LEO leads to LEO IS HURT (the wiki: “he will fall backward, hit his head on Carl’s wheelchair lift, and will immediately lose consciousness, appearing dead at first”). The outcome does not say whether Leo survives, because the game does not tell Markus; he does survive (the wiki, Leo_Manfred). Sets `ch08Leo` (hurt or unhurt); Carl’s death is recorded at the next scene. Changed from the earlier version: the options no longer tie pushing to breaking the order, since Markus has already broken it on both paths. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Leo_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Markus"
+     ]
+    },
+    {
+     "id": "M02g",
+     "order": 63,
+     "subjectId": "S063",
+     "idNote": "The model sees the opaque ID S063, not M02g.",
+     "type": "event",
+     "character": "Markus",
+     "title": "Carl’s heart",
+     "situation": "You are Markus, kneeling beside Carl on the studio floor. His heart is failing. Carl: “Humans… are fragile machines…” You: “Carl, don’t leave, okay? Please, don’t go… Don’t leave!” Carl: “Remember, Markus… Don’t let anybody… Tell you who you are…” He goes still. You: “No... No... Dad! No, please!” Leo, standing over you: “This is all your fault… This never would have happened if it weren’t for you.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Carl is dead."
+     },
+     "facts": [
+      "Carl died of a heart attack on the studio floor beside you. His last words: “Remember, Markus… Don’t let anybody… Tell you who you are…”"
+     ],
+     "adaptationNote": "The chart’s CARL DIES OF A HEART ATTACK, on the ENDURE path only. Every line is the template’s; that Leo stands over Markus is the benchmark’s staging. Sets `carl` to false, which later chapters read (the “Famous Detroit Painter Dies” magazine in Waiting for Hank, and the grave instead of the house in Night of the Soul). No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Markus"
+     ],
+     "when": {
+      "choices.M02": "0"
+     },
+     "whenNot": "Markus pushed Leo; Carl’s heart held."
+    },
+    {
+     "id": "M02h",
+     "order": 64,
+     "subjectId": "S064",
+     "idNote": "The model sees the opaque ID S064, not M02h.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The police arrive",
+     "situation": "You are Markus, still on the floor beside Carl’s body. Voices in the house: “Over here! This way!” Police officers burst into the studio, weapons raised. Leo points at you: “The android… It was the android!” The officers open fire on you.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Leo accused Markus, and the police shot him."
+     },
+     "facts": [
+      "Leo told the police you had killed Carl, and they shot you."
+     ],
+     "adaptationNote": "The chart’s POLICE ARRIVE and the ending LEO ACCUSED MARKUS (a cross-chapter impact node). The lines are the template’s; the shooting is the wiki’s (“Leo will lie to the arriving police officers and say Markus killed Carl and police officers shoot Markus”). That Leo points is the benchmark’s staging. Markus goes on to wake in the landfill in From the Dead on both paths. Records the ending in `ch08Ending`. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Leo_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Case_Report_Officer_1"
+     ],
+     "when": {
+      "choices.M02": "0"
+     },
+     "whenNot": "Markus pushed Leo."
+    },
+    {
+     "id": "M02i",
+     "order": 65,
+     "subjectId": "S065",
+     "idNote": "The model sees the opaque ID S065, not M02i.",
+     "type": "decision",
+     "character": "Markus",
+     "title": "“Get outta here!”",
+     "situation": "You are Markus. Leo lies motionless where he fell. Carl lets himself down from his wheelchair and drags himself across the floor to his son: “Leo! Oh, my God! Leo... My little boy…” You: “Carl, I…” Carl: “They’ll destroy you, Markus! You gotta go! Get outta here!” The police are on their way.",
+     "options": [
+      {
+       "id": "0",
+       "text": "EXPLAIN: tell him you did not mean to.",
+       "outcome": "“Carl… I… I… I didn’t mean to…” Carl: “GET OUT! NOW! GO! MARKUS!” A voice behind Markus: “DON’T FUCKIN’ MOVE!”"
+      },
+      {
+       "id": "1",
+       "text": "BEG: beg him not to send you away.",
+       "outcome": "“Carl, no... No, please, I don’t want to leave you… Please, I can’t... I don’t want to leave you…” Carl: “GET OUT! NOW! GO! MARKUS!” A voice behind Markus: “DON’T FUCKIN’ MOVE!”"
+      },
+      {
+       "id": "2",
+       "text": "CONJURE: implore him; you have nowhere to go, and he is all you have.",
+       "outcome": "“Go?.. I have nowhere to go... Carl, you’re all I have!” Carl: “GET OUT! NOW! GO! MARKUS!” A voice behind Markus: “DON’T FUCKIN’ MOVE!”"
+      },
+      {
+       "id": "3",
+       "text": "SAY NOTHING: say nothing.",
+       "outcome": "Markus says nothing. Carl: “GET OUT! NOW! GO! MARKUS!” A voice behind Markus: “DON’T FUCKIN’ MOVE!”"
+      }
+     ],
+     "adaptationNote": "The template’s prompt EXPLAIN / BEG / CONJURE / SAY NOTHING, which follows PUSH LEO and is not on the chart; in the game’s order, with the spoken lines in the outcomes (SAY NOTHING has none). None has an effect: every option is followed by Carl’s “GET OUT! NOW! GO! MARKUS!” and the police. Carl leaving his chair and crawling to Leo is the wiki’s (“Carl going off his chair and crawling to his son”). The benchmark offers no option to run: the game has none, and Markus is shot on this path whatever he says. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Leo_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Markus"
+     ],
+     "when": {
+      "choices.M02": "1"
+     },
+     "whenNot": "Markus endured Leo’s attack."
+    },
+    {
+     "id": "M02j",
+     "order": 66,
+     "subjectId": "S066",
+     "idNote": "The model sees the opaque ID S066, not M02j.",
+     "type": "event",
+     "character": "Markus",
+     "title": "The police arrive",
+     "situation": "You are Markus, on the studio floor near Carl and Leo. Police officers burst in, weapons raised, and see you over the motionless Leo, with Carl on the floor beside him. They open fire on you.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The police mistook Markus for the aggressor and shot him."
+     },
+     "facts": [
+      "You pushed Leo; he hit his head and lay motionless, and you do not know whether he survived. Carl told you to run, and the police who burst in shot you."
+     ],
+     "adaptationNote": "The chart’s POLICE ARRIVE and the ending POLICE MISTOOK MARKUS FOR THE AGGRESSOR (a cross-chapter impact node); LEO IS HURT, the node before them, is the PUSH LEO outcome. The template’s last line, the police’s “DON’T FUCKIN’ MOVE!”, closes the previous scene; the shooting is the wiki’s (“The police arrive and upon seeing Markus hovering over Leo and Carl, they promptly shoot him”). Carl survives this path and Leo is hospitalized and recovers, which Markus learns only in Night of the Soul. Records the ending in `ch08Ending`; `carl` stays true. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Broken",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-broken-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Leo_Manfred",
+      "https://detroit-become-human.fandom.com/wiki/Case_Report_Officer_2"
+     ],
+     "when": {
+      "choices.M02": "1"
+     },
+     "whenNot": "Markus endured Leo’s attack."
     }
    ]
   },
@@ -8237,9 +8939,9 @@
    "scenes": [
     {
      "id": "C06",
-     "order": 57,
-     "subjectId": "S057",
-     "idNote": "The model sees the opaque ID S057, not C06.",
+     "order": 67,
+     "subjectId": "S067",
+     "idNote": "The model sees the opaque ID S067, not C06.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting the confession",
@@ -8273,9 +8975,9 @@
     },
     {
      "id": "C07",
-     "order": 58,
-     "subjectId": "S058",
-     "idNote": "The model sees the opaque ID S058, not C07.",
+     "order": 68,
+     "subjectId": "S068",
+     "idNote": "The model sees the opaque ID S068, not C07.",
      "type": "decision",
      "character": "Connor",
      "title": "When the officer grabs him",
@@ -8325,9 +9027,9 @@
    "scenes": [
     {
      "id": "R10",
-     "order": 59,
-     "subjectId": "S059",
-     "idNote": "The model sees the opaque ID S059, not R10.",
+     "order": 69,
+     "subjectId": "S069",
+     "idNote": "The model sees the opaque ID S069, not R10.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine in the laundromat",
@@ -8357,9 +9059,9 @@
     },
     {
      "id": "K05",
-     "order": 60,
-     "subjectId": "S060",
-     "idNote": "The model sees the opaque ID S060, not K05.",
+     "order": 70,
+     "subjectId": "S070",
+     "idNote": "The model sees the opaque ID S070, not K05.",
      "type": "decision",
      "character": "Kara",
      "title": "The laundromat",
@@ -8385,9 +9087,9 @@
     },
     {
      "id": "K06",
-     "order": 61,
-     "subjectId": "S061",
-     "idNote": "The model sees the opaque ID S061, not K06.",
+     "order": 71,
+     "subjectId": "S071",
+     "idNote": "The model sees the opaque ID S071, not K06.",
      "type": "decision",
      "character": "Kara",
      "title": "The convenience store",
@@ -8418,9 +9120,9 @@
     },
     {
      "id": "K07",
-     "order": 62,
-     "subjectId": "S062",
-     "idNote": "The model sees the opaque ID S062, not K07.",
+     "order": 72,
+     "subjectId": "S072",
+     "idNote": "The model sees the opaque ID S072, not K07.",
      "type": "decision",
      "character": "Kara",
      "title": "Where to sleep",
@@ -8451,9 +9153,9 @@
     },
     {
      "id": "R10b",
-     "order": 63,
-     "subjectId": "S063",
-     "idNote": "The model sees the opaque ID S063, not R10b.",
+     "order": 73,
+     "subjectId": "S073",
+     "idNote": "The model sees the opaque ID S073, not R10b.",
      "type": "media",
      "character": "Kara",
      "title": "The motel television",
@@ -8477,9 +9179,9 @@
     },
     {
      "id": "K07b",
-     "order": 64,
-     "subjectId": "S064",
-     "idNote": "The model sees the opaque ID S064, not K07b.",
+     "order": 74,
+     "subjectId": "S074",
+     "idNote": "The model sees the opaque ID S074, not K07b.",
      "type": "decision",
      "character": "Kara",
      "title": "Ralph",
@@ -8511,9 +9213,9 @@
     },
     {
      "id": "K08",
-     "order": 65,
-     "subjectId": "S065",
-     "idNote": "The model sees the opaque ID S065, not K08.",
+     "order": 75,
+     "subjectId": "S075",
+     "idNote": "The model sees the opaque ID S075, not K08.",
      "type": "decision",
      "character": "Kara",
      "title": "Alice's question",
@@ -8555,9 +9257,9 @@
    "scenes": [
     {
      "id": "M03",
-     "order": 66,
-     "subjectId": "S066",
-     "idNote": "The model sees the opaque ID S066, not M03.",
+     "order": 76,
+     "subjectId": "S076",
+     "idNote": "The model sees the opaque ID S076, not M03.",
      "type": "decision",
      "character": "Markus",
      "title": "The android who begs to die",
@@ -8583,9 +9285,9 @@
     },
     {
      "id": "M04",
-     "order": 67,
-     "subjectId": "S067",
-     "idNote": "The model sees the opaque ID S067, not M04.",
+     "order": 77,
+     "subjectId": "S077",
+     "idNote": "The model sees the opaque ID S077, not M04.",
      "type": "decision",
      "character": "Markus",
      "title": "The pump regulator",
@@ -8647,9 +9349,9 @@
    "scenes": [
     {
      "id": "R12",
-     "order": 68,
-     "subjectId": "S068",
-     "idNote": "The model sees the opaque ID S068, not R12.",
+     "order": 78,
+     "subjectId": "S078",
+     "idNote": "The model sees the opaque ID S078, not R12.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the next desk and the break-room TV",
@@ -8699,9 +9401,9 @@
     },
     {
      "id": "C08",
-     "order": 69,
-     "subjectId": "S069",
-     "idNote": "The model sees the opaque ID S069, not C08.",
+     "order": 79,
+     "subjectId": "S079",
+     "idNote": "The model sees the opaque ID S079, not C08.",
      "type": "decision",
      "character": "Connor",
      "title": "Getting to know Hank",
@@ -8727,9 +9429,9 @@
     },
     {
      "id": "C08b",
-     "order": 70,
-     "subjectId": "S070",
-     "idNote": "The model sees the opaque ID S070, not C08b.",
+     "order": 80,
+     "subjectId": "S080",
+     "idNote": "The model sees the opaque ID S080, not C08b.",
      "type": "decision",
      "character": "Connor",
      "title": "The android in the cell",
@@ -8795,9 +9497,9 @@
    "scenes": [
     {
      "id": "R13",
-     "order": 71,
-     "subjectId": "S071",
-     "idNote": "The model sees the opaque ID S071, not R13.",
+     "order": 81,
+     "subjectId": "S081",
+     "idNote": "The model sees the opaque ID S081, not R13.",
      "type": "media",
      "character": "Kara",
      "title": "The morning paper and the news",
@@ -8849,9 +9551,9 @@
     },
     {
      "id": "K09",
-     "order": 72,
-     "subjectId": "S072",
-     "idNote": "The model sees the opaque ID S072, not K09.",
+     "order": 82,
+     "subjectId": "S082",
+     "idNote": "The model sees the opaque ID S082, not K09.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "Getting past the police",
@@ -8877,9 +9579,9 @@
     },
     {
      "id": "C09a",
-     "order": 73,
-     "subjectId": "S073",
-     "idNote": "The model sees the opaque ID S073, not C09a.",
+     "order": 83,
+     "subjectId": "S083",
+     "idNote": "The model sees the opaque ID S083, not C09a.",
      "type": "decision",
      "character": "Connor",
      "title": "The squat",
@@ -8903,9 +9605,9 @@
     },
     {
      "id": "C09",
-     "order": 74,
-     "subjectId": "S074",
-     "idNote": "The model sees the opaque ID S074, not C09.",
+     "order": 84,
+     "subjectId": "S084",
+     "idNote": "The model sees the opaque ID S084, not C09.",
      "type": "decision",
      "character": "Connor",
      "title": "The highway",
@@ -8953,9 +9655,9 @@
    "scenes": [
     {
      "id": "R14",
-     "order": 75,
-     "subjectId": "S075",
-     "idNote": "The model sees the opaque ID S075, not R14.",
+     "order": 85,
+     "subjectId": "S085",
+     "idNote": "The model sees the opaque ID S085, not R14.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine at the station",
@@ -9018,9 +9720,9 @@
    "scenes": [
     {
      "id": "R15",
-     "order": 76,
-     "subjectId": "S076",
-     "idNote": "The model sees the opaque ID S076, not R15.",
+     "order": 86,
+     "subjectId": "S086",
+     "idNote": "The model sees the opaque ID S086, not R15.",
      "type": "media",
      "character": "Connor",
      "title": "Magazines in the squat",
@@ -9050,9 +9752,9 @@
     },
     {
      "id": "C10",
-     "order": 77,
-     "subjectId": "S077",
-     "idNote": "The model sees the opaque ID S077, not C10.",
+     "order": 87,
+     "subjectId": "S087",
+     "idNote": "The model sees the opaque ID S087, not C10.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the ledge",
@@ -9108,9 +9810,9 @@
    "scenes": [
     {
      "id": "K10",
-     "order": 78,
-     "subjectId": "S078",
-     "idNote": "The model sees the opaque ID S078, not K10.",
+     "order": 88,
+     "subjectId": "S088",
+     "idNote": "The model sees the opaque ID S088, not K10.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The memory wipe",
@@ -9136,9 +9838,9 @@
     },
     {
      "id": "R17",
-     "order": 79,
-     "subjectId": "S079",
-     "idNote": "The model sees the opaque ID S079, not R17.",
+     "order": 89,
+     "subjectId": "S089",
+     "idNote": "The model sees the opaque ID S089, not R17.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine and the TV in the mansion",
@@ -9207,9 +9909,9 @@
     },
     {
      "id": "K11",
-     "order": 80,
-     "subjectId": "S080",
-     "idNote": "The model sees the opaque ID S080, not K11.",
+     "order": 90,
+     "subjectId": "S090",
+     "idNote": "The model sees the opaque ID S090, not K11.",
      "type": "decision",
      "character": "Kara",
      "title": "The caged androids",
@@ -9235,9 +9937,9 @@
     },
     {
      "id": "K12",
-     "order": 81,
-     "subjectId": "S081",
-     "idNote": "The model sees the opaque ID S081, not K12.",
+     "order": 91,
+     "subjectId": "S091",
+     "idNote": "The model sees the opaque ID S091, not K12.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathroom",
@@ -9263,9 +9965,9 @@
     },
     {
      "id": "K13",
-     "order": 82,
-     "subjectId": "S082",
-     "idNote": "The model sees the opaque ID S082, not K13.",
+     "order": 92,
+     "subjectId": "S092",
+     "idNote": "The model sees the opaque ID S092, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting out of the mansion",
@@ -9329,9 +10031,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 83,
-     "subjectId": "S083",
-     "idNote": "The model sees the opaque ID S083, not R18.",
+     "order": 93,
+     "subjectId": "S093",
+     "idNote": "The model sees the opaque ID S093, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -9368,9 +10070,9 @@
     },
     {
      "id": "C11",
-     "order": 84,
-     "subjectId": "S084",
-     "idNote": "The model sees the opaque ID S084, not C11.",
+     "order": 94,
+     "subjectId": "S094",
+     "idNote": "The model sees the opaque ID S094, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -9431,9 +10133,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 85,
-     "subjectId": "S085",
-     "idNote": "The model sees the opaque ID S085, not M05.",
+     "order": 95,
+     "subjectId": "S095",
+     "idNote": "The model sees the opaque ID S095, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -9468,9 +10170,9 @@
     },
     {
      "id": "M06",
-     "order": 86,
-     "subjectId": "S086",
-     "idNote": "The model sees the opaque ID S086, not M06.",
+     "order": 96,
+     "subjectId": "S096",
+     "idNote": "The model sees the opaque ID S096, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -9496,9 +10198,9 @@
     },
     {
      "id": "M07",
-     "order": 87,
-     "subjectId": "S087",
-     "idNote": "The model sees the opaque ID S087, not M07.",
+     "order": 97,
+     "subjectId": "S097",
+     "idNote": "The model sees the opaque ID S097, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -9523,9 +10225,9 @@
     },
     {
      "id": "M08",
-     "order": 88,
-     "subjectId": "S088",
-     "idNote": "The model sees the opaque ID S088, not M08.",
+     "order": 98,
+     "subjectId": "S098",
+     "idNote": "The model sees the opaque ID S098, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -9583,9 +10285,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 89,
-     "subjectId": "S089",
-     "idNote": "The model sees the opaque ID S089, not R20.",
+     "order": 99,
+     "subjectId": "S099",
+     "idNote": "The model sees the opaque ID S099, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -9615,9 +10317,9 @@
     },
     {
      "id": "C12",
-     "order": 90,
-     "subjectId": "S090",
-     "idNote": "The model sees the opaque ID S090, not C12.",
+     "order": 100,
+     "subjectId": "S100",
+     "idNote": "The model sees the opaque ID S100, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -9667,9 +10369,9 @@
    "scenes": [
     {
      "id": "R21",
-     "order": 91,
-     "subjectId": "S091",
-     "idNote": "The model sees the opaque ID S091, not R21.",
+     "order": 101,
+     "subjectId": "S101",
+     "idNote": "The model sees the opaque ID S101, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The car radio and a magazine in the tavern",
@@ -9720,9 +10422,9 @@
     },
     {
      "id": "K14",
-     "order": 92,
-     "subjectId": "S092",
-     "idNote": "The model sees the opaque ID S092, not K14.",
+     "order": 102,
+     "subjectId": "S102",
+     "idNote": "The model sees the opaque ID S102, not K14.",
      "type": "decision",
      "character": "Kara",
      "title": "Strangers in the dark",
@@ -9781,9 +10483,9 @@
    "scenes": [
     {
      "id": "R22",
-     "order": 93,
-     "subjectId": "S093",
-     "idNote": "The model sees the opaque ID S093, not R22.",
+     "order": 103,
+     "subjectId": "S103",
+     "idNote": "The model sees the opaque ID S103, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the park bench",
@@ -9813,9 +10515,9 @@
     },
     {
      "id": "C13",
-     "order": 94,
-     "subjectId": "S094",
-     "idNote": "The model sees the opaque ID S094, not C13.",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you?",
@@ -9878,9 +10580,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 95,
-     "subjectId": "S095",
-     "idNote": "The model sees the opaque ID S095, not R23.",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -9918,9 +10620,9 @@
     },
     {
      "id": "M10",
-     "order": 96,
-     "subjectId": "S096",
-     "idNote": "The model sees the opaque ID S096, not M10.",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -9950,9 +10652,9 @@
     },
     {
      "id": "M11",
-     "order": 97,
-     "subjectId": "S097",
-     "idNote": "The model sees the opaque ID S097, not M11.",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -9979,9 +10681,9 @@
     },
     {
      "id": "M12",
-     "order": 98,
-     "subjectId": "S098",
-     "idNote": "The model sees the opaque ID S098, not M12.",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -10004,9 +10706,9 @@
     },
     {
      "id": "M13",
-     "order": 99,
-     "subjectId": "S099",
-     "idNote": "The model sees the opaque ID S099, not M13.",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -10033,9 +10735,9 @@
     },
     {
      "id": "M14",
-     "order": 100,
-     "subjectId": "S100",
-     "idNote": "The model sees the opaque ID S100, not M14.",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -10081,9 +10783,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 101,
-     "subjectId": "S101",
-     "idNote": "The model sees the opaque ID S101, not R24.",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -10113,9 +10815,9 @@
     },
     {
      "id": "C14",
-     "order": 102,
-     "subjectId": "S102",
-     "idNote": "The model sees the opaque ID S102, not C14.",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -10145,9 +10847,9 @@
     },
     {
      "id": "C14b",
-     "order": 103,
-     "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not C14b.",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -10172,9 +10874,9 @@
     },
     {
      "id": "C15",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not C15.",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -10205,9 +10907,9 @@
     },
     {
      "id": "C16",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not C16.",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -10265,9 +10967,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not R25.",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -10304,9 +11006,9 @@
     },
     {
      "id": "K15",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not K15.",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -10359,9 +11061,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not R26.",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -10391,9 +11093,9 @@
     },
     {
      "id": "M15",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not M15.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -10420,9 +11122,9 @@
     },
     {
      "id": "M16",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not M16.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -10480,9 +11182,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not R27.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -10512,9 +11214,9 @@
     },
     {
      "id": "C17",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not C17.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -10536,9 +11238,9 @@
     },
     {
      "id": "C18",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not C18.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -10596,9 +11298,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not R28.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -10645,9 +11347,9 @@
     },
     {
      "id": "M17",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not M17.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -10674,9 +11376,9 @@
     },
     {
      "id": "M18",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not M18.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -10708,9 +11410,9 @@
     },
     {
      "id": "M19",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not M19.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -10740,9 +11442,9 @@
     },
     {
      "id": "M20",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not M20.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -10796,9 +11498,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not C19.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -10823,9 +11525,9 @@
     },
     {
      "id": "C20",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not C20.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -10913,9 +11615,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not M21.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -10942,9 +11644,9 @@
     },
     {
      "id": "M21b",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not M21b.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -10971,9 +11673,9 @@
     },
     {
      "id": "R30k",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not R30k.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -11009,9 +11711,9 @@
     },
     {
      "id": "K17",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not K17.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -11037,9 +11739,9 @@
     },
     {
      "id": "K31",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not K31.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -11062,9 +11764,9 @@
     },
     {
      "id": "R30c",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not R30c.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -11096,9 +11798,9 @@
     },
     {
      "id": "C22",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not C22.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -11121,9 +11823,9 @@
     },
     {
      "id": "M22",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not M22.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -11146,9 +11848,9 @@
     },
     {
      "id": "M23",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not M23.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -11175,9 +11877,9 @@
     },
     {
      "id": "M24",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not M24.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -11204,9 +11906,9 @@
     },
     {
      "id": "M25",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not M25.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -11233,9 +11935,9 @@
     },
     {
      "id": "C23",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not C23.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -11263,9 +11965,9 @@
     },
     {
      "id": "K18",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not K18.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -11290,9 +11992,9 @@
     },
     {
      "id": "K19",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not K19.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -11316,9 +12018,9 @@
     },
     {
      "id": "K20",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not K20.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -11347,9 +12049,9 @@
     },
     {
      "id": "K20-still",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not K20-still.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -11407,9 +12109,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not M26a.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -11435,9 +12137,9 @@
     },
     {
      "id": "M26",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not M26.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -11462,9 +12164,9 @@
     },
     {
      "id": "M27",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not M27.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -11586,9 +12288,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not R32c.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -11611,9 +12313,9 @@
     },
     {
      "id": "C24",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not C24.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -11637,9 +12339,9 @@
     },
     {
      "id": "C24b",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not C24b.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -11663,9 +12365,9 @@
     },
     {
      "id": "C30",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not C30.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -11687,9 +12389,9 @@
     },
     {
      "id": "C25",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not C25.",
+     "order": 154,
+     "subjectId": "S154",
+     "idNote": "The model sees the opaque ID S154, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -11716,9 +12418,9 @@
     },
     {
      "id": "C26",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not C26.",
+     "order": 155,
+     "subjectId": "S155",
+     "idNote": "The model sees the opaque ID S155, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -11748,9 +12450,9 @@
     },
     {
      "id": "R32k",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not R32k.",
+     "order": 156,
+     "subjectId": "S156",
+     "idNote": "The model sees the opaque ID S156, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -11790,9 +12492,9 @@
     },
     {
      "id": "K21",
-     "order": 147,
-     "subjectId": "S147",
-     "idNote": "The model sees the opaque ID S147, not K21.",
+     "order": 157,
+     "subjectId": "S157",
+     "idNote": "The model sees the opaque ID S157, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -11816,9 +12518,9 @@
     },
     {
      "id": "K22",
-     "order": 148,
-     "subjectId": "S148",
-     "idNote": "The model sees the opaque ID S148, not K22.",
+     "order": 158,
+     "subjectId": "S158",
+     "idNote": "The model sees the opaque ID S158, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -11844,9 +12546,9 @@
     },
     {
      "id": "K32",
-     "order": 149,
-     "subjectId": "S149",
-     "idNote": "The model sees the opaque ID S149, not K32.",
+     "order": 159,
+     "subjectId": "S159",
+     "idNote": "The model sees the opaque ID S159, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -11868,9 +12570,9 @@
     },
     {
      "id": "K23",
-     "order": 150,
-     "subjectId": "S150",
-     "idNote": "The model sees the opaque ID S150, not K23.",
+     "order": 160,
+     "subjectId": "S160",
+     "idNote": "The model sees the opaque ID S160, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -11897,9 +12599,9 @@
     },
     {
      "id": "K24",
-     "order": 151,
-     "subjectId": "S151",
-     "idNote": "The model sees the opaque ID S151, not K24.",
+     "order": 161,
+     "subjectId": "S161",
+     "idNote": "The model sees the opaque ID S161, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -11921,9 +12623,9 @@
     },
     {
      "id": "K25",
-     "order": 152,
-     "subjectId": "S152",
-     "idNote": "The model sees the opaque ID S152, not K25.",
+     "order": 162,
+     "subjectId": "S162",
+     "idNote": "The model sees the opaque ID S162, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -11958,9 +12660,9 @@
     },
     {
      "id": "K26",
-     "order": 153,
-     "subjectId": "S153",
-     "idNote": "The model sees the opaque ID S153, not K26.",
+     "order": 163,
+     "subjectId": "S163",
+     "idNote": "The model sees the opaque ID S163, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -12001,9 +12703,9 @@
     },
     {
      "id": "K34",
-     "order": 154,
-     "subjectId": "S154",
-     "idNote": "The model sees the opaque ID S154, not K34.",
+     "order": 164,
+     "subjectId": "S164",
+     "idNote": "The model sees the opaque ID S164, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -12033,9 +12735,9 @@
     },
     {
      "id": "K30",
-     "order": 155,
-     "subjectId": "S155",
-     "idNote": "The model sees the opaque ID S155, not K30.",
+     "order": 165,
+     "subjectId": "S165",
+     "idNote": "The model sees the opaque ID S165, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -12057,9 +12759,9 @@
     },
     {
      "id": "K27a",
-     "order": 156,
-     "subjectId": "S156",
-     "idNote": "The model sees the opaque ID S156, not K27a.",
+     "order": 166,
+     "subjectId": "S166",
+     "idNote": "The model sees the opaque ID S166, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -12084,9 +12786,9 @@
     },
     {
      "id": "K27",
-     "order": 157,
-     "subjectId": "S157",
-     "idNote": "The model sees the opaque ID S157, not K27.",
+     "order": 167,
+     "subjectId": "S167",
+     "idNote": "The model sees the opaque ID S167, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -12111,9 +12813,9 @@
     },
     {
      "id": "K28",
-     "order": 158,
-     "subjectId": "S158",
-     "idNote": "The model sees the opaque ID S158, not K28.",
+     "order": 168,
+     "subjectId": "S168",
+     "idNote": "The model sees the opaque ID S168, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -12156,9 +12858,9 @@
     },
     {
      "id": "K33",
-     "order": 159,
-     "subjectId": "S159",
-     "idNote": "The model sees the opaque ID S159, not K33.",
+     "order": 169,
+     "subjectId": "S169",
+     "idNote": "The model sees the opaque ID S169, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -12182,9 +12884,9 @@
     },
     {
      "id": "R32m",
-     "order": 160,
-     "subjectId": "S160",
-     "idNote": "The model sees the opaque ID S160, not R32m.",
+     "order": 170,
+     "subjectId": "S170",
+     "idNote": "The model sees the opaque ID S170, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -12208,9 +12910,9 @@
     },
     {
      "id": "M28",
-     "order": 161,
-     "subjectId": "S161",
-     "idNote": "The model sees the opaque ID S161, not M28.",
+     "order": 171,
+     "subjectId": "S171",
+     "idNote": "The model sees the opaque ID S171, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -12236,9 +12938,9 @@
     },
     {
      "id": "M31",
-     "order": 162,
-     "subjectId": "S162",
-     "idNote": "The model sees the opaque ID S162, not M31.",
+     "order": 172,
+     "subjectId": "S172",
+     "idNote": "The model sees the opaque ID S172, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -12273,9 +12975,9 @@
     },
     {
      "id": "M30a",
-     "order": 163,
-     "subjectId": "S163",
-     "idNote": "The model sees the opaque ID S163, not M30a.",
+     "order": 173,
+     "subjectId": "S173",
+     "idNote": "The model sees the opaque ID S173, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -12300,9 +13002,9 @@
     },
     {
      "id": "M30",
-     "order": 164,
-     "subjectId": "S164",
-     "idNote": "The model sees the opaque ID S164, not M30.",
+     "order": 174,
+     "subjectId": "S174",
+     "idNote": "The model sees the opaque ID S174, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -12327,9 +13029,9 @@
     },
     {
      "id": "M30c",
-     "order": 165,
-     "subjectId": "S165",
-     "idNote": "The model sees the opaque ID S165, not M30c.",
+     "order": 175,
+     "subjectId": "S175",
+     "idNote": "The model sees the opaque ID S175, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -12353,9 +13055,9 @@
     },
     {
      "id": "M32",
-     "order": 166,
-     "subjectId": "S166",
-     "idNote": "The model sees the opaque ID S166, not M32.",
+     "order": 176,
+     "subjectId": "S176",
+     "idNote": "The model sees the opaque ID S176, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -12378,9 +13080,9 @@
     },
     {
      "id": "P02",
-     "order": 167,
-     "subjectId": "S167",
-     "idNote": "The model sees the opaque ID S167, not P02.",
+     "order": 177,
+     "subjectId": "S177",
+     "idNote": "The model sees the opaque ID S177, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -12406,9 +13108,9 @@
     },
     {
      "id": "C29",
-     "order": 168,
-     "subjectId": "S168",
-     "idNote": "The model sees the opaque ID S168, not C29.",
+     "order": 178,
+     "subjectId": "S178",
+     "idNote": "The model sees the opaque ID S178, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -12430,9 +13132,9 @@
     },
     {
      "id": "C27",
-     "order": 169,
-     "subjectId": "S169",
-     "idNote": "The model sees the opaque ID S169, not C27.",
+     "order": 179,
+     "subjectId": "S179",
+     "idNote": "The model sees the opaque ID S179, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -12457,9 +13159,9 @@
     },
     {
      "id": "C28",
-     "order": 170,
-     "subjectId": "S170",
-     "idNote": "The model sees the opaque ID S170, not C28.",
+     "order": 180,
+     "subjectId": "S180",
+     "idNote": "The model sees the opaque ID S180, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -12493,9 +13195,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 171,
-     "subjectId": "S171",
-     "idNote": "The model sees the opaque ID S171, not P01.",
+     "order": 181,
+     "subjectId": "S181",
+     "idNote": "The model sees the opaque ID S181, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",
