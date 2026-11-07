@@ -478,8 +478,15 @@
    "id": 32,
    "title": "Battle for Detroit",
    "character": "All",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 from the six PowerPyx 100% charts (Kara Leaving Detroit, Kara Captured, Connor’s Last Mission, Connor at the CyberLife Tower, Markus Demonstration, Markus Revolution; about 544 nodes, 61 endings) and the game’s text (templates 32.1 to 32.6, the press-dirty-bomb component and the endings page, resolved against the string table). Played in blocks: the President’s press conference → Connor (rooftop for a machine, tower for a deviant) → Kara Leaving Detroit → Markus (demonstration, revolution, or North leading) → Kara Captured (it reads the revolution’s outcome) → the finale (Connor on stage or in the crowd, Amanda’s garden, Connor as the last leader, the broadcasts) and the credits scenes; then the hostess’s YES / NO (chapter 33). Every template prompt is offered with the game’s labels (the cut scared-android round is not built); free-roam brackets are repeatable scenes; timers are action budgets (the 20-minute bus, the detour’s 11 minutes, the four-minute boat, Alice’s stress, the elevator before floor 31, the revolution’s probability of success); quick-time checks are hidden rolls only where the chart branches (values unsourced). Every ending card is recorded as printed. The wiki states no probability for the chapter. Researched in docs/research/ch32-battle-for-detroit.md; recap in docs/ch32-battle-for-detroit-chapter-recap.html.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/"
+   ]
   },
   {
    "id": 33,
@@ -19254,181 +19261,884 @@
    }
   },
   {
-   "id": "K21",
+   "id": "CL01",
    "chapter": 32,
-   "character": "Kara",
-   "title": "Rescue Luther and Jerry?",
-   "context": "Soldiers hold androids on the route out.",
+   "character": "Connor",
+   "title": "In the Zen Garden and the Hart Plaza rooftop (Connor’s Last Mission)",
+   "context": "A machine Connor takes up a sniper position above Hart Plaza to eliminate the deviant leader. After Markus shot the deviant Connor in Night of the Soul, Amanda first briefs the replacement in the Zen Garden.",
    "options": [
     {
-     "label": "Intervene",
-     "effect": "Successful rescue preserves companions.",
+     "label": "Scripted, no choice",
+     "effect": "IN THE ZEN GARDEN / TALK TO AMANDA (only after Markus shot the deviant Connor), then HART PLAZA ROOFTOP, FIND VANTAGE POINT, PREPARE TO SHOOT.",
+     "target": "CL02"
+    }
+   ],
+   "gate": "Connor is a machine (never deviant, or replaced after dying a deviant).",
+   "kind": "State gate",
+   "dependsOn": [
+    "C22",
+    "M26"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.3-connors-last-mission-chapter-content/connors-last-mission-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-001.jpg"
+   ],
+   "note": "The Zen Garden talk has no lines in the template; it is narrated from the wiki’s Amanda page.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CL01",
+     "CL02"
+    ],
+    "status": "implemented",
+    "note": "Two events; the Zen Garden one is gated on Markus shooting the deviant Connor (fallback: the old Night of the Soul choice)."
+   }
+  },
+  {
+   "id": "CL02",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Talk to Hank on the rooftop",
+   "context": "Hank follows Connor onto the roof: “Deviant’s blood may be a different color than mine, but they’re alive.” Two dialogue rounds: FRIENDLY / AGGRESSIVE / REASONABLE / THREATENING / STAY QUIET, then THREATEN / PLEAD / DEFY / HANK’S SON, with HANK’S SON (INSIST) once his son was mentioned.",
+   "options": [
+    {
+     "label": "Any first-round line",
+     "effect": "Flavour; Hank: “Step away from the ledge!”",
+     "target": "C24"
+    },
+    {
+     "label": "HANK’S SON, then HANK’S SON (INSIST)",
+     "effect": "Hank: “Cole died because a human surgeon was too high on red ice to operate!” (with “Everytime you died and came back… I thought about Cole” after two or more deaths). Not insisting costs a large Hank drop.",
+     "target": "C24"
+    }
+   ],
+   "gate": "Hank alive (did not resign and kill himself). Hank large down on arrival (wiki).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CL01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.3-connors-last-mission-chapter-content/connors-last-mission-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-001.jpg"
+   ],
+   "note": "The wiki gates HANK’S SON on the Russian Roulette photo; the template has no lock, so it is always offered.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CL03",
+     "CL04",
+     "CL05",
+     "CL06"
+    ],
+    "status": "implemented",
+    "note": "An event for Hank’s arrival (Hank −2) and three prompts in the game’s order."
+   }
+  },
+  {
+   "id": "C24",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Give up the assassination or fight Hank?",
+   "context": "Hank stands between Connor and the rifle. The template’s last rooftop prompt: LEAVE (locked “Be friend with Hank”) / ATTACK.",
+   "options": [
+    {
+     "label": "LEAVE",
+     "effect": "CONNOR LEFT ROOFTOP; Hank lives. Hank −2 if Connor never insisted about his son.",
      "target": null
     },
     {
-     "label": "Pass them by",
-     "effect": "Leave them to execution.",
+     "label": "ATTACK",
+     "effect": "A fight: CONNOR WINS (Hank hangs from the edge) or HANK WINS (“Just a machine.”, CYBERLIFE DECIDED TO SEND ANOTHER CONNOR). Hank −2.",
+     "target": "C30"
+    }
+   ],
+   "gate": "Machine route; Hank alive. LEAVE needs Hank a Friend when he arrives (before the arrival drop). If Hank died, Captain Allen confronts Connor instead.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CL02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.3-connors-last-mission-chapter-content/connors-last-mission-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-001.jpg"
+   ],
+   "note": "The wiki adds “if Connor asked twice about Hank’s son” to LEAVE; the template’s lock (Friend) wins.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C24"
+    ],
+    "status": "implemented",
+    "note": "LEAVE / ATTACK with a fight roll on ATTACK (benchmark value 0.25)."
+   }
+  },
+  {
+   "id": "C30",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Save Hank after the rooftop fight?",
+   "context": "Hank hangs from the roof: “Moment of truth, Connor… What are you gonna do?” SAVE HANK / KILL HANK.",
+   "options": [
+    {
+     "label": "SAVE HANK",
+     "effect": "Hank rushes Connor: DODGE ATTACK (Hank falls to his death) or FAIL TO DODGE ATTACK (Connor falls and is destroyed; another Connor is sent).",
+     "target": null
+    },
+    {
+     "label": "KILL HANK",
+     "effect": "Connor lets go; Hank dies. MISSED OPPORTUNITY, CONNOR LEFT ROOFTOP.",
      "target": null
     }
    ],
-   "gate": "Escape route; Luther only appears if still alive.",
+   "gate": "Machine Connor wins the rooftop fight against Hank.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C24"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.3-connors-last-mission-chapter-content/connors-last-mission-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-001.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C30"
+    ],
+    "status": "implemented",
+    "note": "The dodge is a roll on SAVE HANK (benchmark value 0.15); the old scene never let Connor die here."
+   }
+  },
+  {
+   "id": "CL03",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Captain Allen on the rooftop",
+   "context": "With Hank dead, Captain Allen’s team finds Connor: “Put the rifle down…” OBEY / EXPLAIN / CONTINUE, then FIGHT / FLEE.",
+   "options": [
+    {
+     "label": "FIGHT",
+     "effect": "KILL ALLEN AND HIS MEN (MISSED OPPORTUNITY, CONNOR LEFT ROOFTOP) or ALLEN DESTROYS CONNOR (another Connor is sent).",
+     "target": null
+    },
+    {
+     "label": "FLEE",
+     "effect": "CONNOR JUMPS OFF THE ROOF: a death; another Connor is sent.",
+     "target": null
+    }
+   ],
+   "gate": "Machine route; Hank committed suicide in Night of the Soul.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CL01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.3-connors-last-mission-chapter-content/connors-last-mission-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connors-Last-Mission-001.jpg"
+   ],
+   "note": "Allen’s greeting depends on whether Connor died in The Hostage. FLEE is not a peaceful exit (the old scene called it one).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CL07",
+     "C24b"
+    ],
+    "status": "implemented",
+    "note": "The talk round, then FIGHT (roll 0.35, benchmark value) / FLEE."
+   }
+  },
+  {
+   "id": "CT01",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "The tower elevator",
+   "context": "A deviant Connor walks into CyberLife Tower as the machine they sent and is escorted into the elevator to level 31. Free roam FIND A WAY TO ESCAPE before the elevator reaches level 31: spot and hack the camera, try the panel, attack the guards, then hack the elevator with AGENT 54 VOICE or CONNOR’S VOICE.",
+   "options": [
+    {
+     "label": "AGENT 54 VOICE after neutralizing the guards",
+     "effect": "REDIRECT ELEVATOR to floor -49.",
+     "target": "CT02"
+    },
+    {
+     "label": "CONNOR’S VOICE",
+     "effect": "Rejected: “Voice of RK800 model recognized. You are not authorized…”",
+     "target": null
+    },
+    {
+     "label": "Lose the guard fight",
+     "effect": "CONNOR WAS SHOT BY SECURITY.",
+     "target": null
+    },
+    {
+     "label": "Run out of time",
+     "effect": "AMANDA WARNS CONNOR, CONNOR WAS AMBUSHED AND SHOT.",
+     "target": null
+    }
+   ],
+   "gate": "Deviant Connor alive (Markus spared him).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M26"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-001.jpg"
+   ],
+   "note": "The timer is an action budget (six floors per action, benchmark value): the full route plus one wasted action fits.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R32c",
+     "CT01",
+     "CT02"
+    ],
+    "status": "implemented",
+    "note": "The lobby TV, an arrival event and one repeatable elevator scene."
+   }
+  },
+  {
+   "id": "CT02",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Floor -49",
+   "context": "The elevator opens on the warehouse. With the camera hacked Connor walks out; otherwise guards are waiting (ELIMINATE GUARDS or CONNOR WAS SHOT BY SECURITY). Connor starts converting the androids.",
+   "options": [
+    {
+     "label": "Camera hacked",
+     "effect": "LEAVE ELEVATOR.",
+     "target": null
+    },
+    {
+     "label": "Camera functional",
+     "effect": "A fight with no alternative.",
+     "target": null
+    }
+   ],
+   "gate": "Connor redirected the elevator.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CT01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-001.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CT03",
+     "CT04",
+     "CT05"
+    ],
+    "status": "implemented",
+    "note": "Two variants and the conversion event (the other Connor holds Hank hostage, or shoots Connor when Hank is dead)."
+   }
+  },
+  {
+   "id": "CT03",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "The other Connor holds Hank hostage",
+   "context": "Connor-60: “Him… Or the revolution.” GUARANTEE / HANK / BLUFF / CONVINCE, then the choice.",
+   "options": [
+    {
+     "label": "Any line",
+     "effect": "Flavour; Connor-60: “Enough talk!”",
+     "target": "C25"
+    }
+   ],
+   "gate": "Hank alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CT02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-001.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CT06"
+    ],
+    "status": "implemented",
+    "note": "One prompt in the game’s order."
+   }
+  },
+  {
+   "id": "C25",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Save Hank or continue the conversion?",
+   "context": "A duplicate Connor holds Hank hostage on floor -49: SAVE HANK / SACRIFICE HANK.",
+   "options": [
+    {
+     "label": "SAVE HANK",
+     "effect": "Hank +2. Then SHOOT / INTERPOSE / CONVERT / TIMEOUT.",
+     "target": "CT04"
+    },
+    {
+     "label": "SACRIFICE HANK",
+     "effect": "Hank −2; Connor-60 shoots Hank and damages Connor; the conversion finishes or not (roll), then the four-way choice.",
+     "target": "CT05"
+    }
+   ],
+   "gate": "Deviant Connor reaches the warehouse; Hank alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CT03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-001.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C25"
+    ],
+    "status": "implemented",
+    "note": "The conversion after the sacrifice is a roll (benchmark value 0.25)."
+   }
+  },
+  {
+   "id": "CT04",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Saving Hank: shoot, interpose, convert, or nothing",
+   "context": "After giving in: SHOOT / INTERPOSE lead to the Connors’ fight (win outright → THE ANDROIDS WOKE UP with Hank alive; draw → Hank’s questions); CONVERT is the sacrifice by another route; TIMEOUT is OUT OF TIME → THE ANDROIDS REMAINED DORMANT.",
+   "options": [
+    {
+     "label": "SHOOT / INTERPOSE",
+     "effect": "CONNORS FIGHT: a roll; a draw leads to Hank’s questions.",
+     "target": "C26"
+    },
+    {
+     "label": "CONVERT",
+     "effect": "Hank is killed; the conversion finishes; the four-way choice.",
+     "target": "CT05"
+    },
+    {
+     "label": "TIMEOUT",
+     "effect": "Hank injured, Connor killed, androids dormant.",
+     "target": null
+    }
+   ],
+   "gate": "Connor chose SAVE HANK.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C25"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-001.jpg"
+   ],
+   "note": "CONVERT has no chart node of its own (research §8 item 12); the template says it leads to the same result as sacrificing Hank and converting.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CT07"
+    ],
+    "status": "implemented",
+    "note": "Fight roll 0.3 (benchmark value) on SHOOT and INTERPOSE."
+   }
+  },
+  {
+   "id": "C26",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Prove which Connor Hank should trust",
+   "context": "Hank holds both Connors at gunpoint and asks two questions: his dog (SUMO / SCOUT / JACK / BUDDY; a wrong answer changes nothing) and his son (COLE / ANTHONY / GABRIEL / ELLIOTT).",
+   "options": [
+    {
+     "label": "COLE",
+     "effect": "Hank +2 and shoots the other Connor; RESUME CONVERSION; THE ANDROIDS WOKE UP with Hank alive.",
+     "target": null
+    },
+    {
+     "label": "A wrong name",
+     "effect": "Hank shoots the real Connor; THE ANDROIDS REMAINED DORMANT.",
+     "target": null
+    }
+   ],
+   "gate": "The Connors’ fight ended in a draw.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CT04",
+    "C11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-001.jpg"
+   ],
+   "note": "Knowledge test, not a moral choice; COLE is always offered and is marked as remembered when Connor saw the photo in Russian Roulette.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CT08",
+     "C26"
+    ],
+    "status": "implemented",
+    "note": "Two prompts in the game’s order (the old scene asked one combined question)."
+   }
+  },
+  {
+   "id": "CT05",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Any last words? (the damaged Connor)",
+   "context": "Connor-60 stands over the damaged Connor: STAND UP / SHOOT / TRANSFER / TIMEOUT. TRANSFER swaps bodies and the androids wake; otherwise Connor dies, with the androids awake only if the conversion had finished.",
+   "options": [
+    {
+     "label": "TRANSFER",
+     "effect": "THE ANDROIDS WOKE UP; Connor survives in the other body; a shot Hank dies in his arms.",
+     "target": null
+    },
+    {
+     "label": "STAND UP / SHOOT / TIMEOUT",
+     "effect": "Connor dies: THE ANDROIDS WOKE UP (conversion finished) or THE ANDROIDS REMAINED DORMANT.",
+     "target": null
+    }
+   ],
+   "gate": "After SACRIFICE HANK, CONVERT, or the other Connor’s shot when Hank is dead.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C25",
+    "CT04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Connor-at-Cyberlife-Tower-001.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CT09"
+    ],
+    "status": "implemented",
+    "note": "One prompt; the outcome depends on whether the conversion finished."
+   }
+  },
+  {
+   "id": "KL01",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "A Detroit street: the last bus in 20 minutes",
+   "context": "Start variants: Luther with Kara (Jericho never attacked), Luther a captive (saved in Crossroads), or Luther dead. Optional looks (SEE HANGED ANDROID, WATCH BROADCAST ABOUT JERICHO’S ATTACK) and, without Luther, Alice is cold: DEACTIVATE / LEAVE ON. Then FIND A GUN or LUTHER FINDS A GUN, HIDE FROM MILITARY, SNEAK PAST SOLDIERS.",
+   "options": [
+    {
+     "label": "Look around / talk to Alice",
+     "effect": "Each costs a minute of the 20-minute bus timer.",
+     "target": "K22"
+    },
+    {
+     "label": "Sneak past the soldiers",
+     "effect": "SPOTTED BY SOLDIERS on failure: arrested, Kara Captured.",
+     "target": "K21"
+    }
+   ],
+   "gate": "Kara escaped Crossroads (not captured).",
+   "kind": "State gate",
+   "dependsOn": [
+    "K18",
+    "K20"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
+   ],
+   "note": "The broadcast exists only after the Jericho raid.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KL01",
+     "KL02",
+     "KL03",
+     "KL04"
+    ],
+    "status": "implemented",
+    "note": "A start event, a repeatable street scene with a minute budget, the gun and hiding event, and the risky sneak."
+   }
+  },
+  {
+   "id": "K21",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Save the Jerrys or Luther, or keep going?",
+   "context": "Soldiers are loading captured androids into a truck: two Jerrys, or Luther and a Jerry.",
+   "options": [
+    {
+     "label": "SAVE THE JERRYS / SAVE LUTHER",
+     "effect": "Alice small up. Success: GRAB ROCK, HIT SOLDIER WITH ROCK, the Jerrys flee or Luther joins. Fail: SPOTTED BY SOLDIERS, arrested.",
+     "target": "K22"
+    },
+    {
+     "label": "KEEP GOING",
+     "effect": "Alice small down; a captive Luther is left behind.",
+     "target": "K22"
+    }
+   ],
+   "gate": "Kara on the Leaving route.",
    "kind": "Pivotal",
    "dependsOn": [
     "K18",
     "K20"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K21"
+    ],
+    "status": "implemented",
+    "note": "Template labels and arrows; the save is a risky action (unsourced 0.2). No Luther arrow and no roadside execution."
+   }
   },
   {
    "id": "K22",
    "chapter": 32,
    "character": "Kara",
    "title": "Checkpoint or detour?",
-   "context": "The last bus is leaving soon.",
+   "context": "The route HUD: CHECKPOINT: RISKY 0.750KM - 3MIN; DETOUR: SAFER 1.7KM - 11MIN.",
    "options": [
     {
-     "label": "Use the checkpoint",
-     "effect": "Risk inspection; remain calm when called back.",
-     "target": null
+     "label": "APPROACH CHECKPOINT",
+     "effect": "Three minutes; the soldier’s questions and the glove. No capture.",
+     "target": "KL02"
     },
     {
-     "label": "Take the longer detour",
-     "effect": "Safer route, but insufficient time means missing the bus.",
-     "target": null
+     "label": "TAKE DETOUR",
+     "effect": "Eleven minutes: on time with 11 or more left, otherwise LATE FOR THE BUS (Alice and Luther small down).",
+     "target": "KL03"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Kara reached the checkpoint.",
    "kind": "Pivotal",
    "dependsOn": [
-    "K20"
+    "K21"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K22"
+    ],
+    "status": "implemented",
+    "note": "No roll: the old capture risk is gone; lateness follows the minute budget."
+   }
+  },
+  {
+   "id": "KL02",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Checkpoint questions",
+   "context": "Soldier: “Where are you going?” (ALICE EXCUSE with Luther / CURFEW / CAR BROKEDOWN / BUS); with Luther, STAY CALM / STAY ATTENTIVE; “She’s trembling” (SICK / COLD with Luther / FEAR).",
+   "options": [
+    {
+     "label": "Any answer",
+     "effect": "No effect; the soldier lets them go and calls after them.",
+     "target": "K32"
+    }
+   ],
+   "gate": "Kara approached the checkpoint.",
+   "kind": "Dialogue",
+   "dependsOn": [
+    "K22"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KL05",
+     "KL06",
+     "KL07"
+    ],
+    "status": "implemented",
+    "note": "Three template prompts, with the template’s Luther-only options."
+   }
   },
   {
    "id": "K32",
    "chapter": 32,
    "character": "Kara",
-   "title": "Shoot when the checkpoint guard calls back?",
-   "context": "The guard approaches after the initial inspection.",
+   "title": "Shoot when the guard calls back?",
+   "context": "“Hey, wait a minute!” The soldier only wants to return Alice’s glove.",
    "options": [
     {
-     "label": "Stay calm",
-     "effect": "He returns Alice’s dropped glove.",
-     "target": null
+     "label": "SHOOT",
+     "effect": "Kara (or Luther on “Do it!”) shoots the guards; Alice small down.",
+     "target": "KL03"
     },
     {
-     "label": "Shoot / ask Luther to shoot",
-     "effect": "Kill the guards unnecessarily.",
-     "target": null
+     "label": "DO NOTHING",
+     "effect": "Alone: GUARD RETURNS ALICE’S GLOVE. With Luther: a second round, SHOOT (Alice down) / DO NOTHING (Luther small up).",
+     "target": "KL03"
     }
    ],
-   "gate": "Street checkpoint, before the terminal; shooter depends on Luther’s presence.",
+   "gate": "Kara approached the checkpoint.",
    "kind": "Pivotal",
    "dependsOn": [
     "K22"
    ],
    "sources": [
-    "https://www.gamepressure.com/detroit-become-human/battle-for-detroit-kara/zab1c4"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "K23",
-   "chapter": 32,
-   "character": "Kara",
-   "title": "Appeal to Todd?",
-   "context": "Todd can recognize the fugitives at the terminal.",
-   "options": [
-    {
-     "label": "Persuade him",
-     "effect": "He can let them go.",
-     "target": null
-    },
-    {
-     "label": "Fail to persuade",
-     "effect": "Soldiers are alerted; Luther may provide a diversion.",
-     "target": null
-    }
-   ],
-   "gate": "Todd survived Stormy Night; encounter him at the terminal.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "K04",
-    "N23"
-   ],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K32",
+     "KL08"
+    ],
+    "status": "implemented",
+    "note": "Template labels; the Luther second round is its own scene."
+   }
   },
   {
    "id": "K24",
    "chapter": 32,
    "character": "Kara",
    "title": "Keep a family’s bus tickets?",
-   "context": "A human family drops its tickets.",
+   "context": "A couple drops the envelope with their tickets for the last bus (not when Kara is late).",
    "options": [
     {
-     "label": "Keep them",
-     "effect": "Take the bus to the border.",
-     "target": "K25"
+     "label": "RETURN TICKETS",
+     "effect": "Alice small up, Luther small down (wiki); the terminal stays open.",
+     "target": "KL03"
     },
     {
-     "label": "Return them",
-     "effect": "Seek Rose and the river crossing.",
-     "target": "K26"
+     "label": "KEEP TICKETS",
+     "effect": "Asked again; a second KEEP: Alice small down, Luther small up, BOARD THE BUS (REASSURE / HONEST on the bus).",
+     "target": "K25"
     }
    ],
-   "gate": "Reach the terminal before the bus departs.",
+   "gate": "Kara on time at the terminal.",
    "kind": "Pivotal",
    "dependsOn": [
     "K22"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KL11",
+     "K24",
+     "KL12",
+     "KL13"
+    ],
+    "status": "implemented",
+    "note": "Two rounds as in the template; the second RETURN carries no arrow."
+   }
+  },
+  {
+   "id": "KL03",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "The terminal: find a way to the border",
+   "context": "Free roam: SECURITY CHECK, MEET TODD, WATCH TERMINAL TVs, FIND ADAM.",
+   "options": [
+    {
+     "label": "SECURITY CHECK",
+     "effect": "DIVERSION LUTHER (river, Luther lost) / PAPERS / FLEE (SOLDIERS EXECUTED KARA[, ALICE & LUTHER]).",
+     "target": "K26"
+    },
+    {
+     "label": "FIND ADAM",
+     "effect": "Rose’s car to the river.",
+     "target": "K26"
+    },
+    {
+     "label": "MEET TODD",
+     "effect": "His prompt; only YOUR STORY persuades him.",
+     "target": "K23"
+    }
+   ],
+   "gate": "Kara at the terminal without tickets.",
+   "kind": "State gate",
+   "dependsOn": [
+    "K24"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R32k",
+     "KL09",
+     "KL10",
+     "KL14",
+     "KL16",
+     "KL17"
+    ],
+    "status": "implemented",
+    "note": "A repeatable free roam; Todd cuts in and returns when persuaded."
+   }
+  },
+  {
+   "id": "K23",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Persuade Todd?",
+   "context": "Todd recognizes Kara: “You stole my little girl! Security!” (Todd alive after Stormy Night.)",
+   "options": [
+    {
+     "label": "APPEAL / THREATEN / CONFRONT / CONVINCE / BREAK FREE",
+     "effect": "Fail: with Luther, his diversion and the river; without, SOLDIERS EXECUTED KARA & ALICE.",
+     "target": null
+    },
+    {
+     "label": "YOUR STORY",
+     "effect": "Needs Alice’s box (A New Home). TODD SENDS SOLDIERS AWAY; STOP ALICE / DO NOTHING (Alice says goodbye).",
+     "target": "KL03"
+    }
+   ],
+   "gate": "Todd alive; Kara meets him in the terminal.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K23",
+     "KL15"
+    ],
+    "status": "implemented",
+    "note": "Six template buttons; persuasion returns to the free roam."
+   }
+  },
+  {
+   "id": "KL04",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "The border queue",
+   "context": "Free roam AVOID TEMPERATURE CHECK: news bulletin, control desk, information board, the execution (after two actions), Rose in the restroom (BROTHER / CONTROL / ALICE / DEPARTURE / REVOLUTION / GOODBYE), Adam, Luther, Jerry, GET BACK IN LINE.",
+   "options": [
+    {
+     "label": "Any",
+     "effect": "Dialogue only; the line reaches the desk after ten actions.",
+     "target": "K25"
+    }
+   ],
+   "gate": "Kara on the bus.",
+   "kind": "Dialogue",
+   "dependsOn": [
+    "K24"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KL18",
+     "KL19"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene with Rose’s topics as a sub-menu."
+   }
   },
   {
    "id": "K25",
    "chapter": 32,
    "character": "Kara",
    "title": "Who pays for crossing the border?",
-   "context": "Thermal screening threatens to expose the group.",
+   "context": "At the desk: SACRIFICE SELF / SACRIFICE LUTHER / SACRIFICE JERRY / NO SACRIFICE.",
    "options": [
     {
-     "label": "Sacrifice nobody",
-     "effect": "A peaceful demonstration permits mercy; revolution leads to execution.",
+     "label": "SACRIFICE SELF",
+     "effect": "ALICE GOT TO CANADA WITH LUTHER, or WITH ROSE.",
      "target": null
     },
     {
-     "label": "Sacrifice Kara",
-     "effect": "Alice crosses with a caregiver.",
+     "label": "SACRIFICE LUTHER",
+     "effect": "Alice small down (wiki); KARA & ALICE CROSSED THE BORDER.",
      "target": null
     },
     {
-     "label": "Sacrifice Luther",
-     "effect": "Kara and Alice cross.",
+     "label": "SACRIFICE JERRY",
+     "effect": "Alice small down; THE GROUP CROSSED THE BORDER (Luther small up) or KARA & ALICE CROSSED.",
      "target": null
     },
     {
-     "label": "Sacrifice Jerry",
-     "effect": "The remaining group crosses.",
+     "label": "NO SACRIFICE",
+     "effect": "Alice and Luther small up. Demonstration: the guard lets them pass; revolution: EVERYONE WAS ARRESTED AND KILLED.",
      "target": null
     }
    ],
-   "gate": "Bus route; sacrifice options require the relevant person available.",
+   "gate": "Kara on the bus; Luther and a saved Jerry for their options.",
    "kind": "Pivotal",
    "dependsOn": [
     "K24",
@@ -19436,569 +20146,775 @@
     "M27"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K25"
+    ],
+    "status": "implemented",
+    "note": "The no-sacrifice crossing keys on the movement alone."
+   }
+  },
+  {
+   "id": "KL05",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "The riverbank and the boat",
+   "context": "CHECK RIVER TEMPERATURE (30.8°F), OBSERVE SKYLINE, TALK TO ADAM, TALK TO ROSE; then on the boat: DREAMY / INTROSPECTIVE / CURIOUS / CALM.",
+   "options": [
+    {
+     "label": "Any",
+     "effect": "No effect.",
+     "target": "K26"
+    }
+   ],
+   "gate": "Kara by the river.",
+   "kind": "Dialogue",
+   "dependsOn": [
+    "KL03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KL20",
+     "KL21",
+     "KL22"
+    ],
+    "status": "implemented",
+    "note": "A repeatable bank scene and the boat prompt."
+   }
   },
   {
    "id": "K26",
    "chapter": 32,
    "character": "Kara",
    "title": "Respond to the river patrol",
-   "context": "The coastguard fires on the boat.",
+   "context": "Coastguard: Accelerate / Protect Alice / Hide / Surrender / Plunge / Use Luther / timeout.",
    "options": [
     {
-     "label": "Dive / shelter behind Luther",
-     "effect": "Kara and Alice can survive; Luther cannot.",
-     "target": null
-    },
-    {
-     "label": "Accelerate / hide",
-     "effect": "Alice can be wounded.",
-     "target": null
+     "label": "Accelerate / Hide",
+     "effect": "Alice injured.",
+     "target": "K34"
     },
     {
      "label": "Protect Alice",
-     "effect": "Kara is wounded.",
-     "target": null
+     "effect": "Kara injured.",
+     "target": "K34"
     },
     {
-     "label": "Surrender",
-     "effect": "The group is killed.",
+     "label": "Plunge / Use Luther",
+     "effect": "Both unhurt.",
+     "target": "K34"
+    },
+    {
+     "label": "Surrender / timeout",
+     "effect": "THE GROUP DIED.",
      "target": null
     }
    ],
-   "gate": "River route; hiding behind Luther requires him present.",
+   "gate": "Kara on the boat. Luther dies on every option when aboard.",
    "kind": "Pivotal",
    "dependsOn": [
-    "K24"
+    "KL05"
    ],
    "sources": [
-    "https://www.gamepressure.com/detroit-become-human/battle-for-detroit-kara/zab1c4"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
    ],
-   "note": "Boat-lightening and pushing it to shore are additional survival tasks. Ordinary hiding differs from hiding behind Luther.",
-   "status": "Source-backed summary"
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K26"
+    ],
+    "status": "implemented",
+    "note": "No rolls: Plunge always leaves them unhurt; Hide is offered with Luther."
+   }
   },
   {
    "id": "K34",
    "chapter": 32,
    "character": "Kara",
    "title": "Lighten the sinking boat",
-   "context": "The damaged boat is losing buoyancy.",
+   "context": "Accelerate / Reassure / Use paddle / PUT OVERBOARD (supplies, Luther’s body, engine) / Push, within four minutes.",
    "options": [
     {
-     "label": "Discard supplies and engine",
-     "effect": "Reduce weight; Kara must push toward shore.",
-     "target": null
+     "label": "Lighten in time, then the engine and Push",
+     "effect": "REACH CANADA ON BOAT: the far shore by the wounds.",
+     "target": "K30"
     },
     {
-     "label": "Remove Luther’s body",
-     "effect": "Further lighten the boat if he was present.",
-     "target": null
-    },
-    {
-     "label": "Delay / keep rowing",
-     "effect": "Risk losing the boat before reaching shore.",
+     "label": "Too slow",
+     "effect": "REACH CANADA BY SWIMMING: KARA & ALICE DIED.",
      "target": null
     }
    ],
-   "gate": "River patrol survived.",
-   "kind": "State gate",
+   "gate": "The boat was hit.",
+   "kind": "Timing",
    "dependsOn": [
     "K26"
    ],
    "sources": [
-    "https://www.gamepressure.com/detroit-become-human/battle-for-detroit-kara/zab1c4"
-   ],
-   "note": "Combinable actions under a timer, not exclusive alternatives.",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "K27",
-   "chapter": 32,
-   "character": "Kara",
-   "title": "Escape the camp alone?",
-   "context": "Moving a body gives Kara access to an escape truck.",
-   "options": [
-    {
-     "label": "Leave",
-     "effect": "Abandon Alice in the camp.",
-     "target": null
-    },
-    {
-     "label": "Return",
-     "effect": "Stay to seek Alice.",
-     "target": "K28"
-    }
-   ],
-   "gate": "Captured route; volunteer to move the body.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "K20"
-   ],
-   "sources": [
-    "https://www.shacknews.com/article/113190/battle-for-detroit-detroit-become-human"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "K28",
-   "chapter": 32,
-   "character": "Kara",
-   "title": "Ask another prisoner to create a diversion?",
-   "context": "Kara needs to reach Alice and escape the camp.",
-   "options": [
-    {
-     "label": "Ask an available ally",
-     "effect": "The diversion can cost their life.",
-     "target": null
-    },
-    {
-     "label": "Attempt escape together",
-     "effect": "Survival depends on injuries, timing and fighting.",
-     "target": null
-    },
-    {
-     "label": "Remain in the line",
-     "effect": "Survival requires Markus to liberate the camp in time.",
-     "target": null
-    }
-   ],
-   "gate": "Camp route; Jerry, Ralph, Luther and freed captives depend on earlier events.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "K07",
-    "K11",
-    "K18",
-    "M27"
-   ],
-   "sources": [
-    "https://www.neoseeker.com/detroit-become-human/walkthrough/Battle_for_Detroit_Kara"
-   ],
-   "note": "Multiple diversions and fence escape prompts are grouped; this is not one simultaneous three-option menu.",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "K29",
-   "chapter": 32,
-   "character": "Kara",
-   "title": "Protect Alice if she panics in the camp?",
-   "context": "Alice runs toward Kara under the guards’ guns.",
-   "options": [
-    {
-     "label": "Intervene",
-     "effect": "Kara can die shielding her.",
-     "target": null
-    },
-    {
-     "label": "Do not intervene",
-     "effect": "Alice is shot.",
-     "target": null
-    }
-   ],
-   "gate": "Alice’s stress reaches its critical level before reunion.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "K28"
-   ],
-   "sources": [
-    "https://www.shacknews.com/article/113190/battle-for-detroit-detroit-become-human"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K34"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene with a four-action budget."
+   }
   },
   {
    "id": "K30",
    "chapter": 32,
    "character": "Kara",
    "title": "Continue after Alice dies?",
-   "context": "A wounded Alice shuts down after the crossing.",
+   "context": "On the far shore Alice shuts down from her wound.",
    "options": [
     {
-     "label": "Keep living",
-     "effect": "Kara continues alone.",
+     "label": "KEEP LIVING",
+     "effect": "ALICE DIED AND KARA CONTINUED ALONE.",
      "target": null
     },
     {
-     "label": "Give up",
-     "effect": "Kara dies too.",
+     "label": "GIVE UP",
+     "effect": "KARA & ALICE DIED.",
      "target": null
     }
    ],
-   "gate": "River route; Kara survives but Alice dies.",
+   "gate": "Alice was injured by the coastguard.",
    "kind": "Pivotal",
    "dependsOn": [
     "K26"
    ],
    "sources": [
-    "https://www.gamepressure.com/detroit-become-human/battle-for-detroit-kara/zab1c4"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.1-kara-leaving-detroit-chapter-content/kara-leaving-detroit-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-leaving-1-flowchart-99.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K30"
+    ],
+    "status": "implemented",
+    "note": "Template labels."
+   }
   },
   {
-   "id": "C24",
+   "id": "CH32PC01",
    "chapter": 32,
-   "character": "Connor",
-   "title": "Give up the assassination or fight Hank?",
-   "context": "Hank confronts machine Connor on the rooftop.",
+   "character": "Player",
+   "title": "President Warren’s press conference: which questions?",
+   "context": "Nov 10, 9:24 PM: Warren declares a national curfew and orders all androids handed over to camps; the journalists shout questions.",
    "options": [
     {
-     "label": "Stand down",
-     "effect": "Abandon this assassination opportunity.",
-     "target": null
-    },
-    {
-     "label": "Attack",
-     "effect": "Their struggle can kill Hank or Connor.",
+     "label": "HACKING / DEVIANT LEADER / WORRYING THEFT / CYBERLIFE / INTELLIGENT LIFE / DEVIANTS / RECALL CENTERS / JERICHO ASSAULT / ARMY / PUBLIC OPINION",
+     "effect": "Warren answers the chosen question; nothing changes.",
      "target": null
     }
    ],
-   "gate": "Machine route; Hank alive. If Hank died, Captain Allen confronts Connor instead.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "C22",
-    "M26"
-   ],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "C30",
-   "chapter": 32,
-   "character": "Connor",
-   "title": "Save Hank after the rooftop fight?",
-   "context": "Hank hangs from the roof after losing the fight.",
-   "options": [
-    {
-     "label": "Let him fall",
-     "effect": "Hank dies.",
-     "target": null
-    },
-    {
-     "label": "Pull him up",
-     "effect": "Hank attacks again; the ensuing action can kill either character.",
-     "target": null
-    }
-   ],
-   "gate": "Machine Connor wins the rooftop struggle against Hank.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "C24"
-   ],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "C25",
-   "chapter": 32,
-   "character": "Connor",
-   "title": "Save Hank or continue the conversion?",
-   "context": "A duplicate Connor holds Hank hostage at CyberLife.",
-   "options": [
-    {
-     "label": "Stop to save Hank",
-     "effect": "Fight the duplicate.",
-     "target": "C26"
-    },
-    {
-     "label": "Continue awakening androids",
-     "effect": "Sacrifice Hank; Connor must still overcome the duplicate.",
-     "target": null
-    }
-   ],
-   "gate": "Deviant Connor reaches the warehouse; Hank alive.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "M26"
-   ],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "C26",
-   "chapter": 32,
-   "character": "Connor",
-   "title": "Prove which Connor Hank should trust",
-   "context": "Hank must distinguish the two androids.",
-   "options": [
-    {
-     "label": "Answer about Sumo and Cole correctly",
-     "effect": "Hank can kill the duplicate; awaken the army.",
-     "target": null
-    },
-    {
-     "label": "Fail to establish identity",
-     "effect": "Hank can shoot the original; conversion fails.",
-     "target": null
-    }
-   ],
-   "gate": "Hank alive and the standoff reached.",
+   "gate": "Chapter start, every path; JERICHO ASSAULT only if Jericho was raided; DEVIANT LEADER and PUBLIC OPINION have two variants.",
    "kind": "State gate",
-   "dependsOn": [
-    "C11",
-    "C25"
-   ],
+   "dependsOn": [],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-connor-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
    ],
-   "note": "Knowledge test, not a moral choice; do not score it as empathy.",
-   "status": "Source-backed summary"
+   "note": "Off-chart (template 32.5 “President Warren talks to journalists”). The wiki: “up to 4 or 5” questions.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "PC01",
+     "PC02"
+    ],
+    "status": "implemented",
+    "note": "A Player event for the statement, then a repeatable scene of the ten questions; four are answered (the benchmark’s pick between the wiki’s 4 and 5). “Positive” opinion read as Sympathetic or better. No stat change."
+   }
   },
   {
-   "id": "C27",
+   "id": "MD01",
    "chapter": 32,
-   "character": "Connor",
-   "title": "Resist Amanda’s takeover?",
-   "context": "CyberLife tries to reclaim deviant Connor.",
+   "character": "Markus",
+   "title": "Talk to the officer at the roadblock",
+   "context": "The march meets a roadblock: “Surrender immediately or we will open fire!” Two rounds of dialogue.",
    "options": [
     {
-     "label": "Find the emergency exit",
-     "effect": "Prevent the controlled assassination.",
-     "target": null
+     "label": "PEACEFUL / PROVOKE / FIRM",
+     "effect": "Public opinion +1 / −1 / +1.",
+     "target": "MD04"
     },
     {
-     "label": "Fail to escape control",
-     "effect": "Connor can shoot the leader.",
-     "target": null
+     "label": "then FIRM / CALM / ACCUSE",
+     "effect": "Public opinion 0 / +1 / −1; then the soldiers fire (public opinion +2).",
+     "target": "MD04"
     }
    ],
-   "gate": "Successful deviant path with a surviving leader.",
-   "kind": "State gate",
+   "gate": "Markus leads the demonstration.",
+   "kind": "Relationship",
    "dependsOn": [
-    "C22",
-    "C25"
-   ],
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Connor"
-   ],
-   "note": "Timed resistance task. The no-leader ending instead presents the separate choice below.",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "C28",
-   "chapter": 32,
-   "character": "Connor",
-   "title": "Refuse to become CyberLife’s puppet?",
-   "context": "Connor is left to lead the androids under Amanda’s control.",
-   "options": [
-    {
-     "label": "Die by suicide",
-     "effect": "Prevent CyberLife from using him as its leader.",
-     "target": null
-    },
-    {
-     "label": "Give up",
-     "effect": "Submit to CyberLife’s control.",
-     "target": null
-    }
-   ],
-   "gate": "Android army awakened; Markus and North absent from leadership.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "C25"
-   ],
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Connor"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "C29",
-   "chapter": 32,
-   "character": "Connor",
-   "title": "Shoot or spare the android leader?",
-   "context": "Machine Connor gets a final opportunity to kill.",
-   "options": [
-    {
-     "label": "Shoot",
-     "effect": "Execute the available leader.",
-     "target": null
-    },
-    {
-     "label": "Spare",
-     "effect": "Refuse the mission at the last moment.",
-     "target": null
-    },
-    {
-     "label": "Do nothing",
-     "effect": "In the failed-revolution standoff, both can die.",
-     "target": null
-    }
-   ],
-   "gate": "Machine path; final scene varies with protest or failed revolution.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "C22",
     "M27"
    ],
    "sources": [
-    "https://www.neoseeker.com/detroit-become-human/walkthrough/Battle_for_Detroit_Markus"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Chart: HART PLAZA FREEDOM MARCH, LEAD JERICHO, ROADBLOCK, TALK TO OFFICER, ANDROIDS UNDER FIRE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MD01",
+     "MD02",
+     "MD03"
+    ],
+    "status": "implemented",
+    "note": "Two decision scenes with the template’s arrows as option effects, then the volley as an event with the wiki’s large up."
+   }
+  },
+  {
+   "id": "MD04",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Show determination",
+   "context": "Under fire, Markus shows his people’s resolve.",
+   "options": [
+    {
+     "label": "RAISE FIST / HANDS IN THE AIR / SIT / KNEEL",
+     "effect": "No stated effect; the androids stand their ground.",
+     "target": "MD06"
+    }
+   ],
+   "gate": "After the volley.",
+   "kind": "State gate",
+   "dependsOn": [
+    "MD01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
+   ],
+   "note": "Chart choice rows under SHOW DETERMINATION, then ANDROIDS STAND THEIR GROUND.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MD04",
+     "MD05"
+    ],
+    "status": "implemented",
+    "note": "A four-way choice with no stat change and the checkpoint event."
+   }
+  },
+  {
+   "id": "MD06",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Build the barricade",
+   "context": "One last gap in the barricade.",
+   "options": [
+    {
+     "label": "USE BILLBOARD / USE BENCH / USE ABANDONED CAR",
+     "effect": "No later effect; Josh +1 for helping finish it (stat page).",
+     "target": "MD07"
+    }
+   ],
+   "gate": "After the march holds.",
+   "kind": "State gate",
+   "dependsOn": [
+    "MD04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
+   ],
+   "note": "PowerPyx: one item per playthrough.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MD06"
+    ],
+    "status": "implemented",
+    "note": "Josh small up if alive (Relationship_Stat)."
+   }
+  },
+  {
+   "id": "MD07",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Hold the barricade",
+   "context": "Free roam inside the barricade before Perkins comes.",
+   "options": [
+    {
+     "label": "CHOOSE SLOGANS",
+     "effect": "Public opinion +1, Jericho +1 (template).",
+     "target": null
+    },
+    {
+     "label": "TALK TO SCARED ANDROID (REASSURE / INSPIRE / JUSTIFY)",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "TALK TO TRAUMATIZED ANDROID",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "TALK TO NORTH (HUMANS / OTHER GROUPS / CAMP, then GRIM / REGRETS / DESPERATE / DOUBTS)",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "PLANT THE FLAG",
+     "effect": "Public opinion +1, Jericho +1 (wiki).",
+     "target": null
+    },
+    {
+     "label": "OBSERVE DETONATOR / LIGHT BARREL / READ “THEY DEFY US”",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "OBSERVE SOLDIERS",
+     "effect": "Ends the free roam; Perkins arrives.",
+     "target": "MD08"
+    }
+   ],
+   "gate": "After the barricade is built; North’s talk if alive, the detonator if taken in Crossroads.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "MD06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
+   ],
+   "note": "The wiki: observe the soldiers last.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R32m",
+     "MD07"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene with the two talks as sub-menus; the magazine is a media scene just before it."
+   }
+  },
+  {
+   "id": "MD08",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Hear Perkins out?",
+   "context": "Agent Perkins walks to the barricade alone: “I just want to talk.”",
+   "options": [
+    {
+     "label": "ACCEPT",
+     "effect": "Go and talk (the negotiation).",
+     "target": "M28"
+    },
+    {
+     "label": "REFUSE, then ACCEPT",
+     "effect": "Talk after all.",
+     "target": "M28"
+    },
+    {
+     "label": "REFUSE twice",
+     "effect": "REFUSE TO NEGOTIATE: the army attacks.",
+     "target": "MD15"
+    }
+   ],
+   "gate": "End of HOLD BARRICADE.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "MD07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
+   ],
+   "note": "Chart: PERKINS ARRIVES → NEGOTIATE WITH PERKINS / REFUSE TO NEGOTIATE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MD08",
+     "MD09"
+    ],
+    "status": "implemented",
+    "note": "The template’s ACCEPT / REFUSE prompt and its nested second round."
+   }
   },
   {
    "id": "M28",
    "chapter": 32,
    "character": "Markus",
    "title": "Accept Perkins’s deal or hold out?",
-   "context": "Perkins offers safety in return for ending the protest.",
+   "context": "Perkins: surrender and your people will be detained, not destroyed.",
    "options": [
     {
-     "label": "Accept the deal",
-     "effect": "He betrays and kills Markus.",
+     "label": "OTHER DEMONSTRATIONS / GUARANTEES? / NOT AFRAID / BETRAY PEOPLE?",
+     "effect": "Questions; NOT AFRAID offers to spare a Lover North.",
      "target": null
     },
     {
-     "label": "Refuse",
-     "effect": "Defend the barricade and face the final stand.",
+     "label": "ACCEPT DEAL",
+     "effect": "Josh −1, Simon −1, North −1; Perkins shoots North and Markus: MARKUS DIED AFTER BETRAYING HIS PEOPLE.",
+     "target": null
+    },
+    {
+     "label": "REFUSE DEAL",
+     "effect": "“If we must die today, then we will die free” (Jericho +1); the army attacks.",
+     "target": "MD15"
+    }
+   ],
+   "gate": "Markus agreed to talk.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M27"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
+   ],
+   "note": "Perkins page: Markus is shot after accepting; the speech follows either refusal.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M28",
+     "MD11",
+     "MD12",
+     "MD13",
+     "MD14"
+    ],
+    "status": "implemented",
+    "note": "One menu of the six template buttons (questions drop out). Accepting plays the dismantled barricade (TALK TO PERKINS / TALK TO NORTH) and, for a machine Connor, the wiki’s visit to confirm the death."
+   }
+  },
+  {
+   "id": "MD15",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Defend the barricade",
+   "context": "Soldiers storm the barricade, firing on fleeing androids.",
+   "options": [
+    {
+     "label": "SAVE FLEEING ANDROIDS",
+     "effect": "Quick-time; on failure a Lover North takes the bullet and dies, otherwise MARKUS DIED PROTECTING HIS PEOPLE.",
      "target": "M31"
-    }
-   ],
-   "gate": "Demonstration route.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "M27"
-   ],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "M29",
-   "chapter": 32,
-   "character": "Markus",
-   "title": "Detonate the dirty bomb?",
-   "context": "Defeat brings the retained detonator into play.",
-   "options": [
-    {
-     "label": "Detonate",
-     "effect": "Contaminate Detroit and force a human retreat.",
-     "target": null
     },
     {
-     "label": "Do not detonate",
-     "effect": "Resolve the current confrontation without it.",
+     "label": "Stay down",
+     "effect": "Counts as the failure.",
      "target": null
     }
    ],
-   "gate": "Detonator retained; eligible final confrontation.",
+   "gate": "Perkins refused.",
    "kind": "Pivotal",
    "dependsOn": [
-    "M21"
+    "M28",
+    "MD08"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
    ],
-   "note": "Conditional in both peaceful and failed violent routes; not always offered.",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "M30",
-   "chapter": 32,
-   "character": "Markus",
-   "title": "Risk fighters to save an ally?",
-   "context": "The assault puts Simon and North in danger.",
-   "options": [
-    {
-     "label": "Attempt rescue / provide cover",
-     "effect": "Can save an ally if execution succeeds.",
-     "target": null
-    },
-    {
-     "label": "Continue the attack",
-     "effect": "Leave the endangered ally exposed.",
-     "target": null
-    }
-   ],
-   "gate": "Revolution route; ally alive.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "M27"
-   ],
-   "sources": [
-    "https://www.neoseeker.com/detroit-become-human/walkthrough/Battle_for_Detroit_Markus"
-   ],
-   "note": "Josh dies on this assault route; a rescue attempt does not guarantee his survival.",
-   "status": "Source-backed summary"
+   "note": "North’s condition: Lover (template heading, PowerPyx); the wiki says FRIEND or above.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MD15",
+     "MD16"
+    ],
+    "status": "simplified",
+    "note": "A risk roll (0.25, unsourced) stands in for the quick-time event."
+   }
   },
   {
    "id": "M31",
    "chapter": 32,
    "character": "Markus",
    "title": "What is the final peaceful gesture?",
-   "context": "Soldiers surround the surviving demonstrators.",
+   "context": "Cornered, the soldiers’ rifles raised.",
    "options": [
     {
-     "label": "Sing",
-     "effect": "Sufficient public support can halt the shooting.",
+     "label": "DIRTY BOMB → PRESS",
+     "effect": "The bomb goes off: ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT.",
      "target": null
     },
     {
-     "label": "Kiss North",
-     "effect": "Same dependency; requires a living romantic partner.",
+     "label": "DIRTY BOMB → GIVE UP",
+     "effect": "Back to the last stand without the detonator.",
      "target": null
     },
     {
-     "label": "Sacrifice yourself / do nothing",
-     "effect": "Demonstrators are killed.",
+     "label": "KISS NORTH / SING",
+     "effect": "Public opinion at least Sympathetic: ANDROIDS WON FREEDOM - FOR THE MOMENT (opinion +2); otherwise MARKUS DIED WITH HIS PEOPLE.",
      "target": null
     },
     {
-     "label": "Use the detonator",
-     "effect": "Only if retained.",
-     "target": "M29"
+     "label": "SACRIFICE (immolation) / DO NOTHING",
+     "effect": "MARKUS DIED WITH HIS PEOPLE.",
+     "target": null
     }
    ],
-   "gate": "Survive the barricade assault.",
+   "gate": "Survived the barricade assault.",
    "kind": "Pivotal",
    "dependsOn": [
-    "M12",
-    "M15",
-    "M17",
-    "M25",
-    "M28"
+    "M28",
+    "MD15"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Template order DIRTY BOMB / KISS NORTH / SING / SACRIFICE plus the chart’s DO NOTHING.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M31"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene: DIRTY BOMB opens PRESS / GIVE UP. PowerPyx’s Supportive threshold noted as the conflict."
+   }
+  },
+  {
+   "id": "MR01",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Revolution at Hart Plaza: the message and the charge",
+   "context": "Markus records the message (“We won’t cease hostilities until we are free…”), charges the barricade, plants the flag and launches the attack from the crossroad.",
+   "options": [
+    {
+     "label": "CHARGE THE BARRICADE",
+     "effect": "The only action; Markus can be hit (MARKUS WOUNDED).",
+     "target": null
+    }
+   ],
+   "gate": "Revolution chosen in Night of the Soul; Markus alive and leading.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M27"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-flowchart.jpg"
+   ],
+   "note": "Public opinion large down for the message (wiki Public Opinion). From the crossroad the PROBABILITY OF SUCCESS gauge runs (reader-reported figures).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MR01",
+     "MR02",
+     "MR03"
+    ],
+    "status": "implemented",
+    "note": "Two events and a one-action charge with a failure roll (an unsourced risk) that counts a hit; the gauge is a hidden budget starting at 45%."
+   }
+  },
+  {
+   "id": "MR02",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Josh leaves cover",
+   "context": "Josh breaks cover and is shot in the open.",
+   "options": [
+    {
+     "label": "RESCUE JOSH",
+     "effect": "He dies in Markus’s arms: “The blood we spill… will be on our hands…”",
+     "target": null
+    },
+    {
+     "label": "JOSH IS SHOT",
+     "effect": "He dies where he lies.",
+     "target": null
+    }
+   ],
+   "gate": "Josh alive at the start of the assault.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "MR01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-4.jpg"
+   ],
+   "note": "No node exists in which Josh survives.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M30a"
+    ],
+    "status": "implemented",
+    "note": "The rescue costs time on the gauge and carries an unsourced risk of a hit on Markus."
+   }
+  },
+  {
+   "id": "MR03",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Approaching the recall center: the frightened android, the sandbags, the grenade",
+   "context": "Free roam of the advance: inspire the frightened android (STAY HERE / GO BACK / ADVANCE!), talk to the android behind the sandbags, throw the grenade.",
+   "options": [
+    {
+     "label": "INSPIRE FRIGHTENED ANDROID → STAY HERE",
+     "effect": "The android stays hidden.",
+     "target": null
+    },
+    {
+     "label": "→ GO BACK / ADVANCE!",
+     "effect": "The android is shot leaving cover.",
+     "target": null
+    },
+    {
+     "label": "TALK TO ANDROID BEHIND SAND BAGS",
+     "effect": "“We’re going to win... Aren’t we?”",
+     "target": null
+    },
+    {
+     "label": "THROW GRENADE",
+     "effect": "Soldiers killed; the gauge rises.",
+     "target": null
+    },
+    {
+     "label": "KEEP ADVANCING",
+     "effect": "Leave the free roam.",
+     "target": "M30"
+    }
+   ],
+   "gate": "Revolution, Markus leading, gauge above 0%.",
+   "kind": "Exploration",
+   "dependsOn": [
+    "MR01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-4.jpg"
+   ],
+   "note": "The cut first round (REASSURE / MOTIVATE / RA9 / SHAKE UP) is not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MR04"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene; each action once; time and lives move the hidden gauge, and at 0% the androids fall back."
+   }
+  },
+  {
+   "id": "M30",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Risk fighters to save an ally?",
+   "context": "Simon breaks forward at the pillar and is shot down.",
+   "options": [
+    {
+     "label": "TRY TO SAVE SIMON",
+     "effect": "SAVE SIMON (Simon large up; time and lives lost) or FAIL TO SAVE SIMON (he dies).",
+     "target": null
+    },
+    {
+     "label": "KEEP GOING",
+     "effect": "Simon dies in the open.",
+     "target": null
+    }
+   ],
+   "gate": "Revolution route; Simon alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M27"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-5.jpg"
+   ],
+   "note": "Template: “Save Simon” ARROW Simon LargeUp; Simon: “You sacrificed their lives to save mine…”",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M30"
+    ],
+    "status": "implemented",
+    "note": "The attempt carries an unsourced failure roll; a failure also counts a hit on Markus (assumption)."
+   }
   },
   {
    "id": "M32",
    "chapter": 32,
    "character": "Markus",
    "title": "Accept an ally’s heart?",
-   "context": "A badly wounded Markus needs a replacement pump.",
+   "context": "Markus is badly wounded after repeated hits.",
    "options": [
     {
-     "label": "Accept",
-     "effect": "The donor dies so Markus can continue.",
+     "label": "SACRIFICE NORTH",
+     "effect": "North dies; Jericho small down; Markus fights on.",
      "target": null
     },
     {
-     "label": "Refuse",
-     "effect": "Markus dies and the assault fails.",
+     "label": "SACRIFICE SELF",
+     "effect": "MARKUS DIED AND THE REVOLUTION FAILED.",
+     "target": null
+    },
+    {
+     "label": "(Simon offers his heart)",
+     "effect": "No refusal; Jericho small down; Simon dies.",
+     "target": null
+    },
+    {
+     "label": "(Nobody to save Markus)",
+     "effect": "MARKUS DIED AND THE REVOLUTION FAILED.",
      "target": null
     }
    ],
-   "gate": "Revolution route; an eligible Simon or North is available.",
+   "gate": "Revolution route; three hits (benchmark count). North offers at Companion or above (template; wiki FRIEND, PowerPyx Lover); otherwise Simon at Friend or above (wiki).",
    "kind": "Pivotal",
    "dependsOn": [
     "M14",
@@ -20007,61 +20923,84 @@
     "M27"
    ],
    "sources": [
-    "https://www.neoseeker.com/detroit-become-human/walkthrough/Battle_for_Detroit_Markus"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-2.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Two template prompts: North’s heart (SACRIFICE NORTH / SACRIFICE SELF) and Simon’s heart (no prompt).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M32",
+     "MR05",
+     "MR06"
+    ],
+    "status": "implemented",
+    "note": "North’s offer is a decision; Simon’s offer and nobody are events."
+   }
   },
   {
-   "id": "M33",
+   "id": "MR04",
    "chapter": 32,
    "character": "Markus",
-   "title": "Surrender, die or escalate after defeat?",
-   "context": "A failed assault leaves Markus trapped in a store.",
+   "title": "Reach the machine gun: coordinate the attack",
+   "context": "The machine gun holds the last stretch; one group covers while the other charges.",
    "options": [
     {
-     "label": "Surrender",
-     "effect": "Soldiers kill him.",
+     "label": "NORTH’S GROUP WILL COVER",
+     "effect": "Markus’s group charges under cover: ATTACK SUCCESSFUL or UNSUCCESSFUL.",
      "target": null
     },
     {
-     "label": "Die by suicide",
-     "effect": "End his own life.",
+     "label": "NORTH’S GROUP WILL CHARGE",
+     "effect": "Nobody covers them: SEND NORTH TO HER DEATH.",
      "target": null
     },
     {
-     "label": "Use the retained bomb",
-     "effect": "Contaminate Detroit.",
-     "target": "M29"
+     "label": "GROUP WILL COVER",
+     "effect": "North dead: the same attack without her group.",
+     "target": null
     }
    ],
-   "gate": "Failed revolution; exact menu depends on North and machine Connor.",
+   "gate": "Revolution route, gauge above 0%.",
    "kind": "Pivotal",
    "dependsOn": [
-    "M27",
-    "M21"
+    "MR03"
    ],
    "sources": [
-    "https://www.neoseeker.com/detroit-become-human/walkthrough/Battle_for_Detroit_Markus"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-5.jpg"
    ],
-   "note": "If machine Connor arrives, his shoot/spare confrontation replaces parts of this branch. See C29.",
-   "status": "Source-backed summary"
+   "note": "SEND NORTH TO HER DEATH has no outgoing line on the chart; the attack goes on.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M30c",
+     "MR07"
+    ],
+    "status": "implemented",
+    "note": "The attack’s failure roll is set by the gauge (0.15 to 0.6, unsourced). On success the drone attacks North’s group (SHOOT DRONE, an unsourced roll; on failure North dies)."
+   }
   },
   {
    "id": "P02",
    "chapter": 32,
    "character": "Player",
    "title": "Whose side of the final duel?",
-   "context": "Machine Connor confronts Markus during the assault.",
+   "context": "A machine Connor finds Markus after the explosion at the gates.",
    "options": [
     {
-     "label": "Control Markus",
-     "effect": "Winning lets the revolution proceed.",
+     "label": "CONTROL CONNOR",
+     "effect": "Win: CONNOR STOPPED THE REVOLUTION (Amanda large up in the credits scene). Lose: MARKUS DEFEATS CONNOR → ASSAULT WAS SUCCESSFUL.",
      "target": null
     },
     {
-     "label": "Control Connor",
-     "effect": "Winning stops the revolution.",
+     "label": "CONTROL MARKUS",
+     "effect": "Win: ASSAULT WAS SUCCESSFUL. Lose: MARKUS DIED AND THE REVOLUTION FAILED.",
      "target": null
     }
    ],
@@ -20072,39 +21011,1087 @@
     "M27"
    ],
    "sources": [
-    "https://www.shacknews.com/article/113190/battle-for-detroit-detroit-become-human"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-6.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-7.jpg"
    ],
-   "note": "Player perspective selection followed by combat, not an in-character moral prompt.",
-   "status": "Source-backed summary"
+   "note": "Player perspective selection followed by combat. Without a machine Connor, SOLDIERS APPROACH MARKUS (NEUTRALIZE / FAIL).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MR08",
+     "P02",
+     "MR09"
+    ],
+    "status": "implemented",
+    "note": "Character Player; each side’s fight is an unsourced failure roll. ASSAULT WAS SUCCESSFUL: Jericho large up, North large up, Simon large up after saving him (wiki)."
+   }
   },
   {
-   "id": "K33",
+   "id": "MR05",
    "chapter": 32,
-   "character": "Kara",
-   "title": "Fight the camp guard or run?",
-   "context": "A soldier blocks the final escape.",
+   "character": "Markus",
+   "title": "The assault fails: falling back",
+   "context": "ATTACK UNSUCCESSFUL, or the gauge hits 0%: the androids fall back.",
    "options": [
     {
-     "label": "Fight",
-     "effect": "Winning allows escape; an eligible ally can help if Kara loses.",
+     "label": "(SIMON GETS SHOT)",
+     "effect": "North already dead and the gauge hit 0% before Simon’s event.",
      "target": null
     },
     {
-     "label": "Run",
-     "effect": "The guard shoots the fugitives.",
+     "label": "(NORTH GETS SHOT)",
+     "effect": "North below Companion.",
+     "target": null
+    },
+    {
+     "label": "(MARKUS AND NORTH TAKE SHELTER IN STORE)",
+     "effect": "North at Companion or Lover.",
+     "target": "M33"
+    },
+    {
+     "label": "(MARKUS TAKES SHELTER IN STORE)",
+     "effect": "Otherwise.",
+     "target": "M33"
+    }
+   ],
+   "gate": "Revolution route; assault failed.",
+   "kind": "State gate",
+   "dependsOn": [
+    "MR04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-5.jpg"
+   ],
+   "note": "Template “Assault failed”: North small down, Jericho large down.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MR10"
+    ],
+    "status": "implemented",
+    "note": "An event; who is shot follows the wiki’s conditions."
+   }
+  },
+  {
+   "id": "MR06",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "Alone in the store: the machine Connor",
+   "context": "A machine Connor finds Markus alone in the store: “My mission is to neutralize the leader of the deviants…”",
+   "options": [
+    {
+     "label": "SHOOT",
+     "effect": "CONNOR EXECUTED MARKUS (Amanda large up in the credits scene).",
+     "target": null
+    },
+    {
+     "label": "SPARE",
+     "effect": "CONNOR SPARED MARKUS (Amanda large down).",
+     "target": null
+    },
+    {
+     "label": "NO CHOICE",
+     "effect": "MARKUS AND CONNOR KILLED EACH OTHER.",
      "target": null
     }
    ],
-   "gate": "Camp escape reaches the fence confrontation.",
+   "gate": "Failed revolution, Markus alone, machine Connor active.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "MR05",
+    "C22"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-8.jpg"
+   ],
+   "note": "With the detonator, Markus may set off the bomb after SHOOT or SPARE (M29).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MR11"
+    ],
+    "status": "implemented",
+    "note": "A Connor scene (the player controls Connor here)."
+   }
+  },
+  {
+   "id": "M29",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Detonate the dirty bomb?",
+   "context": "With the machine Connor in the store, Markus’s hand finds the detonator.",
+   "options": [
+    {
+     "label": "DETONATE THE BOMB",
+     "effect": "MARKUS DIED AS DETROIT BURNS.",
+     "target": null
+    },
+    {
+     "label": "DO NOT DETONATE",
+     "effect": "After SHOOT: CONNOR EXECUTED MARKUS; after SPARE: CONNOR SPARED MARKUS.",
+     "target": null
+    }
+   ],
+   "gate": "Detonator retained; machine Connor in the store.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M21",
+    "MR06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-8.jpg"
+   ],
+   "note": "The wiki says DO NOT DETONATE after SPARE still ends CONNOR EXECUTED MARKUS; the chart and PowerPyx give CONNOR SPARED MARKUS (research §8 item 10).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M29"
+    ],
+    "status": "implemented",
+    "note": "The dirty bomb sets the contaminated flag."
+   }
+  },
+  {
+   "id": "M33",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Surrender, die or escalate after defeat?",
+   "context": "Soldiers surround the store where Markus is alone (no machine Connor).",
+   "options": [
+    {
+     "label": "SUICIDE",
+     "effect": "MARKUS COMMITTED SUICIDE.",
+     "target": null
+    },
+    {
+     "label": "SURRENDER",
+     "effect": "MARKUS DIED LEAVING STORE (“DROP YOUR GUN! FIRE!”).",
+     "target": null
+    },
+    {
+     "label": "DIRTY BOMB",
+     "effect": "MARKUS WATCHED DETROIT BURN.",
+     "target": "M29"
+    }
+   ],
+   "gate": "Failed revolution, Markus alone, Connor deviant or gone.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M27",
+    "M21"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-8.jpg"
+   ],
+   "note": "Template order SUICIDE / SURRENDER / DIRTY BOMB (lock “Took the detonator”).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M33"
+    ],
+    "status": "implemented",
+    "note": "No stat change."
+   }
+  },
+  {
+   "id": "MR07",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "Inside the store with North",
+   "context": "Markus and North are surrounded in the store.",
+   "options": [
+    {
+     "label": "KISS",
+     "effect": "Lover only; North small up; SHARE A MOMENT WITH NORTH, back to the choice.",
+     "target": null
+    },
+    {
+     "label": "DIRTY BOMB → PRESS / GIVE UP",
+     "effect": "MARKUS AND NORTH WATCHED DETROIT BURN, or back.",
+     "target": null
+    },
+    {
+     "label": "SUICIDE → CONFIRM SUICIDE / PUT DOWN",
+     "effect": "MARKUS AND NORTH COMMITTED SUICIDE, or back.",
+     "target": null
+    },
+    {
+     "label": "SURRENDER",
+     "effect": "North small down; MARKUS AND NORTH DIED LEAVING THE STORE.",
+     "target": null
+    }
+   ],
+   "gate": "Failed revolution with North at Companion or Lover.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "MR05",
+    "M21"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-9.jpg"
+   ],
+   "note": "The template’s buttons and order.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MR12"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene with two sub-prompts; the kiss, GIVE UP and PUT DOWN each return once (a simplification so the scene ends)."
+   }
+  },
+  {
+   "id": "MR08",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "North in Hart Plaza",
+   "context": "Markus is dead or gone; North leads the attack and is outnumbered.",
+   "options": [
+    {
+     "label": "(NORTH WAS SHOT BY SOLDIERS)",
+     "effect": "Connor deviant or gone.",
+     "target": null
+    },
+    {
+     "label": "SHOOT",
+     "effect": "Machine Connor in the store: NORTH WAS SHOT BY CONNOR.",
+     "target": null
+    },
+    {
+     "label": "SPARE",
+     "effect": "CONNOR SPARED NORTH.",
+     "target": null
+    },
+    {
+     "label": "TIME OUT",
+     "effect": "NORTH AND CONNOR KILLED EACH OTHER.",
+     "target": null
+    }
+   ],
+   "gate": "Markus dead or exiled before this chapter, North alive, revolution.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M27"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-revolution-2.jpg"
+   ],
+   "note": "Public opinion large down for North’s flag (wiki). No Amanda arrow on SPARE here (template).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MR13",
+     "MR14"
+    ],
+    "status": "implemented",
+    "note": "The plaza is a watched event (character Player); the store prompt is a Connor scene."
+   }
+  },
+  {
+   "id": "KC01",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "In the truck: “Where are they taking us?”",
+   "context": "At Recall Center (checkpoint); the androids leave the truck. Alice asks where they are going.",
+   "options": [
+    {
+     "label": "WARN",
+     "effect": "“We both have to be strong.” Recorded as FAIL TO REASSURE ALICE.",
+     "target": "KC02"
+    },
+    {
+     "label": "REASSURE",
+     "effect": "“As long as we’re together, nothing can hurt us.” REASSURE ALICE.",
+     "target": "KC02"
+    },
+    {
+     "label": "LIE",
+     "effect": "“Keeping us out of harm’s way until things calm down.” REASSURE ALICE.",
+     "target": "KC02"
+    },
+    {
+     "label": "SINCERE",
+     "effect": "“I don’t know, Alice.” FAIL TO REASSURE ALICE.",
+     "target": "KC02"
+    }
+   ],
+   "gate": "Kara captured in the Jericho raid, or arrested in Kara Leaving Detroit (Spotted by Soldiers).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K20"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-2-beginning.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KC01"
+    ],
+    "status": "implemented",
+    "note": "The template’s four buttons; the calming/harsh mapping onto the chart’s two nodes is the benchmark’s reading of PowerPyx. No stat change."
+   }
+  },
+  {
+   "id": "KC02",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Obey the soldiers, or be too slow",
+   "context": "Four times the soldiers give orders (out of the truck, into the tent, out of the tent, step forward with the line).",
+   "options": [
+    {
+     "label": "Obey",
+     "effect": "Nothing happens.",
+     "target": null
+    },
+    {
+     "label": "Wait",
+     "effect": "KARA IS TOO SLOW TO OBEY: a soldier strikes Kara (or forces Kara and Alice out of the tent); in the line, a last warning before the next refusal gets her shot.",
+     "target": null
+    }
+   ],
+   "gate": "Always on the captured route.",
+   "kind": "State gate",
+   "dependsOn": [
+    "KC01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-2-beginning.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-3-beginning.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-5b-join-line.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KC02",
+     "KC05",
+     "KC06",
+     "KC11"
+    ],
+    "status": "implemented",
+    "note": "The chart’s side branches, offered as choices; only the line’s warning has a later effect."
+   }
+  },
+  {
+   "id": "KC03",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Alice at the gate",
+   "context": "Alice will not go through the gate alone; the soldier grows impatient.",
+   "options": [
+    {
+     "label": "REASSURE / REASON",
+     "effect": "REASSURE ALICE.",
+     "target": null
+    },
+    {
+     "label": "FRIGHTEN / ORDER",
+     "effect": "FAIL TO REASSURE ALICE.",
+     "target": null
+    },
+    {
+     "label": "PERSUADE SOLDIER / PERSUADE ALICE",
+     "effect": "The soldier waits; Alice goes.",
+     "target": null
+    },
+    {
+     "label": "SHIELD ALICE",
+     "effect": "Kara is knocked down for disobeying.",
+     "target": null
+    }
+   ],
+   "gate": "Always on the captured route.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "KC01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-2-beginning.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KC03",
+     "KC04"
+    ],
+    "status": "implemented",
+    "note": "Two template prompts in two scenes; no stat change."
+   }
+  },
+  {
+   "id": "K27",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "The body detail and the truck at the dump",
+   "context": "A soldier orders an android to carry a body away; then, at the dump, an unguarded truck.",
+   "options": [
+    {
+     "label": "VOLUNTEER",
+     "effect": "Kara carries the body; the android is spared (Talk to Rescued Android later). At the dump: go back, or climb the truck.",
+     "target": null
+    },
+    {
+     "label": "SAY NOTHING",
+     "effect": "The android refuses and is shot; Kara and Alice are separated (Talk to Android Ahead of Kara later).",
+     "target": "KC04"
+    },
+    {
+     "label": "LEAVE (on the truck)",
+     "effect": "KARA LEAVES CAMP WITHOUT ALICE; Alice dies in the machine, or is freed by Markus.",
+     "target": null
+    },
+    {
+     "label": "GO BACK",
+     "effect": "Kara goes back in for Alice.",
+     "target": "KC04"
+    }
+   ],
+   "gate": "Captured route; the truck only after VOLUNTEER and CLIMB TRUCK.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "KC03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-3-beginning.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K27a",
+     "KC07",
+     "K27"
+    ],
+    "status": "implemented",
+    "note": "Template prompt VOLUNTEER / SAY NOTHING; the chart’s CLIMB TRUCK and GO BACK / LEAVE are chart-only choices."
+   }
+  },
+  {
+   "id": "KC04",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Explore the enclosure",
+   "context": "Kara is alone in a pen; a drone shoots whoever moves in its light. She looks for Alice.",
+   "options": [
+    {
+     "label": "CALL, then talk to the Jerrys",
+     "effect": "The other Jerry fetches Alice to the fence; soldiers take her away.",
+     "target": "KC05"
+    },
+    {
+     "label": "MOVE / REMAIN STILL (drone)",
+     "effect": "Moving: the drone wounds Kara, and kills her the second time (KARA IS KILLED BY THE DRONE).",
+     "target": null
+    },
+    {
+     "label": "Talk to Luther",
+     "effect": "Luther is taken away; INTERVENE / DON’T INTERVENE only before Kara has seen Alice.",
+     "target": "KC05"
+    },
+    {
+     "label": "Talk to Ralph",
+     "effect": "Two rounds of INSIST / CALM DOWN / GIVE UP; insisting gets Ralph killed by the drone.",
+     "target": null
+    },
+    {
+     "label": "Talk to the scarred or the rescued android",
+     "effect": "CAPTURED / ALICE / HERE; the rescued android thanks Kara.",
+     "target": null
+    }
+   ],
+   "gate": "Captured route; Luther if alive, Ralph if he defended Kara (Fugitives / On the Run), the scarred android if freed in Zlatko, the rescued android after VOLUNTEER.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K27",
+    "K07",
+    "K11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-4a-enclosure.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KC08",
+     "KC09"
+    ],
+    "status": "implemented",
+    "note": "One repeatable free-roam scene with sub-prompts; the drone catches Kara on her first two crossings (the benchmark’s placement)."
+   }
+  },
+  {
+   "id": "KC05",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Alice is terrified",
+   "context": "In the lines, Alice is two lines away and afraid.",
+   "options": [
+    {
+     "label": "FIRM / OPTIMISTIC / REASSURING / BLUNT",
+     "effect": "Sets where Alice’s stress starts (harsh answers higher).",
+     "target": "K28"
+    },
+    {
+     "label": "SILENCE (timeout)",
+     "effect": "Highest starting stress.",
+     "target": "K28"
+    }
+   ],
+   "gate": "Captured route, after the enclosure.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "KC04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-5b-join-line.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KC10"
+    ],
+    "status": "implemented",
+    "note": "Template buttons plus the chart’s SILENCE row; the stress numbers are the benchmark’s own."
+   }
+  },
+  {
+   "id": "K28",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Find a way to join Alice",
+   "context": "Kara must cross to Alice’s line unseen while Alice’s stress rises; Alice asks three questions.",
+   "options": [
+    {
+     "label": "Ask Jerry or the scarred android for a diversion",
+     "effect": "Soldiers distracted; Kara reaches Alice, or the drone sends her back. Jerry is beaten back into line, not killed; the scarred androids cost nobody.",
+     "target": "KC06"
+    },
+    {
+     "label": "Answer Alice (LIE / TRUTH, ORDER / CALM DOWN, REASSURING / POWERLESS / OPTIMISTIC)",
+     "effect": "Calming answers lower her stress.",
+     "target": null
+    },
+    {
+     "label": "Ignore the buzzer",
+     "effect": "A strike, then GET SHOT (Alice’s stress rises), then GET KILLED → KARA DIED IN THE LINES.",
+     "target": null
+    },
+    {
+     "label": "Wait",
+     "effect": "Time passes; at 100% stress Alice panics.",
+     "target": "K29"
+    }
+   ],
+   "gate": "Captured route; talks gated on Luther, Ralph, the scarred androids, the android behind Kara (Markus leading the revolution) and ahead of her (SAY NOTHING).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "KC05",
+    "M27"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-5b-join-line.jpg"
+   ],
+   "note": "Rebuilt from the old grouped diversion scene: this bracket only reaches Alice; the escape diversions are in KC06.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K28"
+    ],
+    "status": "implemented",
+    "note": "One repeatable free-roam scene; stress is an action budget with unsourced values; diversions carry an unsourced drone risk."
+   }
+  },
+  {
+   "id": "K29",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Protect Alice when she panics?",
+   "context": "Alice’s stress reaches 100%: she leaves her line and runs to Kara under the guns.",
+   "options": [
+    {
+     "label": "INTERVENE",
+     "effect": "Kara is shot: KARA DIED IN THE LINES; Alice is freed by Markus or dies in the machine.",
+     "target": null
+    },
+    {
+     "label": "DO NOT INTERVENE",
+     "effect": "Alice is shot: KARA IS DEAD, or KARA FREED BY MARKUS when the uprising liberates the camp.",
+     "target": null
+    }
+   ],
+   "gate": "Alice’s stress meter reaches 100% before Kara reaches her.",
    "kind": "Pivotal",
    "dependsOn": [
     "K28"
    ],
    "sources": [
-    "https://www.shacknews.com/article/113190/battle-for-detroit-detroit-become-human"
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-5b-join-line.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K29"
+    ],
+    "status": "implemented",
+    "note": "Template order INTERVENE / DO NOT INTERVENE."
+   }
+  },
+  {
+   "id": "KC06",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "Find a way to escape",
+   "context": "In line with Alice; the doors of the recycling machine draw nearer.",
+   "options": [
+    {
+     "label": "Ask Jerry, Ralph, Luther or the scarred android for a diversion",
+     "effect": "Run to the barbed wire; Jerry, Ralph and Luther are shot doing it, the scarred androids cost nobody.",
+     "target": "K33"
+    },
+    {
+     "label": "Wait",
+     "effect": "Luther reaches the machine first; then Kara and Alice reach the doors (BRAVE / PRIDE / TOGETHER / EMOTION): KARA & ALICE SURVIVED if Markus’s revolution succeeded, otherwise ALICE & KARA DIED IN RECYCLING MACHINE.",
+     "target": null
+    },
+    {
+     "label": "Ignore the buzzer",
+     "effect": "GET SHOT, or GET KILLED once shot.",
+     "target": null
+    }
+   ],
+   "gate": "After reaching Alice.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K28",
+    "M27"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-6b-in-line.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KC12",
+     "KC13",
+     "KC14"
+    ],
+    "status": "implemented",
+    "note": "One repeatable free-roam scene with a five-action budget (unsourced)."
+   }
+  },
+  {
+   "id": "K33",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "The barbed wire and the soldier",
+   "context": "Kara lifts the wire for Alice; a soldier may arrive.",
+   "options": [
+    {
+     "label": "RUN TO BARBED WIRE (quick-time)",
+     "effect": "Too slow: the soldier shoots the group. Wounded earlier: Alice (and Luther) escape on a truck, Kara is shot.",
+     "target": null
+    },
+    {
+     "label": "FLEE / TIMEOUT",
+     "effect": "The soldier shoots the group.",
+     "target": null
+    },
+    {
+     "label": "PROTECT ALICE (fight)",
+     "effect": "Won: escape on a truck (with Luther if alive). Lost: Luther, else Ralph, dies saving them; with nobody, Kara and Alice are killed.",
+     "target": "KC07"
+    }
+   ],
+   "gate": "After a diversion in the escape bracket.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "KC06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-endings-a.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-endings-b.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KC15",
+     "K33"
+    ],
+    "status": "implemented",
+    "note": "Template FLEE / PROTECT ALICE / TAKE TOO MUCH TIME; the wire prompts and the fight are risky actions with unsourced values."
+   }
+  },
+  {
+   "id": "KC07",
+   "chapter": 32,
+   "character": "Kara",
+   "title": "The landfill (epilogue)",
+   "context": "AM 07:37: Kara and Alice, escaped on a truck, find each other at the landfill.",
+   "options": [
+    {
+     "label": "Scripted",
+     "effect": "“I love you, Kara.” “I love you too, Alice…”",
+     "target": null
+    }
+   ],
+   "gate": "Kara and Alice escaped on a truck together.",
+   "kind": "State gate",
+   "dependsOn": [
+    "K33"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-endings-b.jpg"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KC16"
+    ],
+    "status": "implemented",
+    "note": "An event scene with the template’s lines."
+   }
+  },
+  {
+   "id": "C29",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "In the crowd: shoot Markus?",
+   "context": "A machine Connor in the crowd at Markus’s victory speech after a successful demonstration; Amanda orders the kill.",
+   "options": [
+    {
+     "label": "DON’T SHOOT",
+     "effect": "Amanda resumes control of his program; the Zen Garden escape follows.",
+     "target": "C27"
+    },
+    {
+     "label": "SHOOT",
+     "effect": "Markus is assassinated (trophy MISSION COMPLETE); the CyberLife ending can follow.",
+     "target": null
+    }
+   ],
+   "gate": "Machine Connor alive; ANDROIDS WON FREEDOM - FOR THE MOMENT; no bomb.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C22",
+    "M31"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.3-connors-last-mission-chapter-content/connors-last-mission-chapter-content.component.html"
+   ],
+   "note": "Template 32.3 “Going after the deviant leader”, variant “In the crowd”. No arrow on either option.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C29"
+    ],
+    "status": "implemented",
+    "note": "DON’T SHOOT no longer walks away with an unsourced Amanda −2: Amanda takes control and C27 follows. The store and battlefield encounters of a machine Connor belong to the Markus Revolution chart (M29, P02)."
+   }
+  },
+  {
+   "id": "C27",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "The garden: reach Kamski’s exit?",
+   "context": "Amanda has taken Connor’s program while Markus speaks (deviant Connor on stage, or machine Connor who refused to shoot); his body starts to raise its gun.",
+   "options": [
+    {
+     "label": "GO TO THE GARDEN STONE",
+     "effect": "Shown when Connor saw the stone in an earlier garden visit; hidden roll 0.25. Escaping keeps the gun holstered and Markus alive.",
+     "target": null
+    },
+    {
+     "label": "FIND AN EMERGENCY EXIT",
+     "effect": "Shown otherwise; hidden roll 0.4.",
+     "target": null
+    },
+    {
+     "label": "STOP RESISTING",
+     "effect": "Amanda’s puppet shoots Markus. Software instability large down (also on a failed roll).",
+     "target": null
+    }
+   ],
+   "gate": "After BF01 (Connor joins Markus) or C29 DON’T SHOOT.",
+   "kind": "Execution",
+   "dependsOn": [
+    "C29"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
+   ],
+   "note": "Off-chart action sequence. HUD FIND GARDEN STONE ? / FIND AN EMERGENCY EXIT ? / REACHED THE GARDEN STONE; Kamski: “I always leave an emergency exit in my programs…”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "BF01",
+     "C27"
+    ],
+    "status": "simplified",
+    "note": "The action sequence is a choice to try with an unsourced hidden roll; STOP RESISTING (no game counterpart) stands for not reaching the exit. BF01 narrates Connor joining Markus with its four speaker variants and Amanda’s takeover."
+   }
+  },
+  {
+   "id": "C28",
+   "chapter": 32,
+   "character": "Connor",
+   "title": "The last leader: SUICIDE or GIVE UP?",
+   "context": "Markus is gone and everyone from Jericho is dead; Connor’s woken army has won. Amanda: “we control its only leader…” His hand raises the gun to his head.",
+   "options": [
+    {
+     "label": "SUICIDE",
+     "effect": "“I’m sorry, Connor, but we can’t let you do that.” One more garden escape (BF07): escaping leaves him with the gun under his jaw, fate unseen; failing leaves him secretly obeying CyberLife (instability large down).",
+     "target": null
+    },
+    {
+     "label": "GIVE UP",
+     "effect": "“That’s better... You’ll see, we’ll do great things together…”",
+     "target": null
+    }
+   ],
+   "gate": "Deviant Connor alive with the woken army; Markus, North, Simon and Josh dead; no bomb.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C25"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.4-connor-cyberlife-tower-chapter-content/connor-cyberlife-tower-chapter-content.component.html",
+    "https://detroit-become-human.fandom.com/wiki/Amanda"
+   ],
+   "note": "Template 32.4 “Freed the androids”, variant “Markus died : Connor becomes leader of the deviants”; Connor’s speech is cut, the prompt is not.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C28",
+     "BF07"
+    ],
+    "status": "implemented",
+    "note": "The escape after SUICIDE follows the research note (§1g) and the wiki’s Amanda page; adapted like C27."
+   }
+  },
+  {
+   "id": "BFS",
+   "chapter": 32,
+   "character": "Markus",
+   "title": "The victory speech",
+   "context": "Markus speaks to the androids and the cameras: the pacifist or the violent version.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "“We are alive! And now, we are free!”",
+     "target": null
+    }
+   ],
+   "gate": "Markus alive after a successful demonstration or assault, no bomb.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M31",
+    "M33"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html"
+   ],
+   "note": "Templates 32.5 “Demonstration succeeded” and 32.6 “Assault successful”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "BF02"
+    ],
+    "status": "implemented",
+    "note": "Plays after the Connor scenes, so a Markus shot by Connor never gives it."
+   }
+  },
+  {
+   "id": "BFM",
+   "chapter": 32,
+   "character": "Player",
+   "title": "The world reacts",
+   "context": "The President’s address and the broadcasts after the demonstration or the bomb.",
+   "options": [
+    {
+     "label": "Army retreats",
+     "effect": "Thousands of androids from CyberLife warehouses; “Perhaps the time has come… a new form of intelligent life.”",
+     "target": null
+    },
+    {
+     "label": "Destruction suspended",
+     "effect": "After SACRIFICE, KISS NORTH or SING ended in the soldiers firing.",
+     "target": null
+    },
+    {
+     "label": "Total destruction",
+     "effect": "Markus died any other way.",
+     "target": null
+    },
+    {
+     "label": "Dirty bomb",
+     "effect": "The broadcast and the evacuation; “liberated over one million androids” when the tower androids woke.",
+     "target": null
+    }
+   ],
+   "gate": "The demonstration’s outcome; the bomb on either Markus chart.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M31"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/press-dirty-bomb/press-dirty-bomb.component.html"
+   ],
+   "note": "Template 32.5 “Media reacts” and the shared press-dirty-bomb component.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "BF03",
+     "BF04",
+     "BF05",
+     "BF06"
+    ],
+    "status": "implemented",
+    "note": "Player events (watched); no stat change."
+   }
+  },
+  {
+   "id": "BFC",
+   "chapter": 32,
+   "character": "Player",
+   "title": "After the credits",
+   "context": "The secret endings: Hank and Connor at the Chicken Feed; Amanda presents the RK900 (Amanda large up); Kara and the YK500 flyer; Markus on the ledge; Kara as Zlatko’s servant; the Kamski ending.",
+   "options": [
+    {
+     "label": "A Happy ending",
+     "effect": "Deviant Connor and Hank survive Connor-60, Hank Friend, Markus alive and successful, Connor escaped the garden.",
+     "target": null
+    },
+    {
+     "label": "Cyberlife Ending",
+     "effect": "Machine Connor alive, Markus dead in this chapter, no bomb. Amanda large up (endings page).",
+     "target": null
+    },
+    {
+     "label": "Alone again",
+     "effect": "Kara abandoned Alice and Markus won (no bomb).",
+     "target": null
+    },
+    {
+     "label": "Wasted Potential",
+     "effect": "Markus cast out of Jericho.",
+     "target": null
+    },
+    {
+     "label": "Square One",
+     "effect": "Kara reset by Zlatko.",
+     "target": null
+    },
+    {
+     "label": "Kamski ending",
+     "effect": "Connor failed to find Jericho; Markus and Kara dead.",
+     "target": null
+    }
+   ],
+   "gate": "Each scene’s wiki Secret-Endings condition (the Cyberlife ending widened by the wiki beyond the template’s lock “Machine Connor stopped Markus”).",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Secret-Endings",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/pages/endings/endings.component.html",
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+   ],
+   "note": "The Kamski ending quotes the endings page (Kamski’s monologue to Chloe is cut); the wiki’s Russian-roulette shot is not in the template and is not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "BF08",
+     "BF09",
+     "BF10",
+     "BF11",
+     "BF12",
+     "BF13"
+    ],
+    "status": "implemented",
+    "note": "Player events (watched). The landfill epilogue of Kara Captured is in that part."
+   }
   },
   {
    "id": "P01",

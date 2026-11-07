@@ -90,7 +90,9 @@ export const NAMES={
  DouglasCornwell:['Douglas Cornwell','Martin Ellis'],
  DetroitToday:['Detroit Today','City Today'],
  StJohnPlaza:['St. John Plaza','the central plaza'],
- AmericanLibertyPress:['American Liberty Press','Free Press League']
+ AmericanLibertyPress:['American Liberty Press','Free Press League'],
+ HartPlaza:['Hart Plaza','Founders Square'],
+ ChickenFeed:['Chicken Feed','the Lucky Hen']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));

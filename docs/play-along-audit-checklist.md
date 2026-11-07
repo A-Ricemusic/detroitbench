@@ -9800,370 +9800,1719 @@ Gaps:
 
 ## Chapter 32: Battle for Detroit
 
+### PC01 · President Warren addresses the press (Player, event)
+
+> You are watching, not playing any of the three: it is 9:24 PM on November 10th, the night before, and the President of the United States, Warren, is speaking at a lectern in front of the press. President Warren: “At 6AM this morning, a national curfew was declared. Civilian movement will be strictly controlled, the right to assembly is suspended, all electronic communications are restricted, and…
+
+- (0) Continue.
+
+_Note: Off-chart opening of the chapter (template 32.5 section “President Warren talks to journalists”, NOV 10TH, 2038, PM 09:24; the wiki infobox’s “9:24 AM” is the open question 23, the game string wins). The player watches as no protagonist, so the scene is a Player scene with no facts of its own; the module teaches the President’s statement (curfew, all androids to be handed over, camps to destroy them) to all three characters, who would have heard it. The template’s cut line (“My highest priority…”) is not built. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### PC02 · The reporters’ questions (Player)
+
+> You are watching President Warren’s press conference. The journalists shout over each other for her attention, and you decide which question she takes next. She will not stay for many.
+
+- (0) HACKING: take the question on androids hacking critical systems.
+- (1) DEVIANT LEADER: take the question on the deviants’ leader.
+- (2) WORRYING THEFT: take the question on the missing cobalt and the robbed weapon stores.
+- (3) CYBERLIFE: take the question on what happens to the android maker.
+- (4) INTELLIGENT LIFE: take the question on androids as a new form of life.
+- (5) DEVIANTS: take the question on how many deviants are still loose.
+- (6) RECALL CENTERS: take the question on the camps and history.
+- (7) JERICHO ASSAULT: take the question on last night’s raid.  _needs raid_
+- (8) ARMY: take the question on androids in the armed forces.
+- (9) PUBLIC OPINION: take the question on how the public sees the deviants.
+
+_Note: The template’s one prompt of ten reporters’ questions, in the template’s order with its labels, as a repeatable scene: each question asked drops out. The wiki says the player can have “up to 4 or 5” answered before the game moves on; the benchmark takes four, then President Warren: “Thank you. That will be all.” (unsourced choice between the wiki’s two figures). JERICHO ASSAULT is offered only if Jericho was raided (template unlock “Jericho was attacked”). DEVIANT LEADER names Markus while he is alive, otherwise “The deviant leader has not been located yet” (template variant “Markus is dead and North is leading the revolution”). PUBLIC OPINION has the template’s two variants, “positive” and “negative”; the benchmark reads “positive” as public opinion at least Sympathetic, the same line the demonstration’s last stand uses (open question 1 asks whether Indifferent already counts). Each answer is taught to Markus, the one it concerns. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CL01 · In the Zen Garden (Connor, event)
+
+> You are Connor, an RK800 just activated by CyberLife. The Connor before you turned deviant, joined the deviants and was shot by their leader. Amanda meets you in the Zen Garden on the night of November 11th: the previous unit was compromised and destroyed, and the deviant leader, Markus, is about to move on the recall camp at Hart Plaza with his people. Your mission is the one your predecessor…
+
+- (0) Continue.
+
+_Note: The chart’s IN THE ZEN GARDEN (checkpoint) and TALK TO AMANDA, the opening of Connor’s Last Mission when Markus shot the deviant Connor in Night of the Soul (wiki flowchart: “If Connor became a deviant in Crossroads and then was killed by Markus by choosing ‘Don’t Trust’ in Night of the Soul”; PowerPyx readers confirm it does not play after a death in Crossroads). The template has no lines for this conversation and the chart no prompt, so it is narrated from the wiki’s Amanda page: “Amanda will inform the new Connor of Markus’ plan to lead a demonstration or revolution before dismissing him to finish the mission.” The Amanda page’s other line (the same briefing after a death in Crossroads) contradicts the readers and the flowchart heading; it is not built (research §8, item 8). No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CL02 · The rooftop over Hart Plaza (Connor, event)
+
+> You are Connor, on a rooftop above Hart Plaza at 10:48 PM on November 11th, with a sniper rifle. The army has turned the plaza into a recall camp; the deviants are gathering in the streets nearby. Your mission is to eliminate their leader. You find a vantage point on the ledge, set up the rifle and look for him through the scope.
+
+- (0) Continue.
+
+_Note: The chart’s HART PLAZA ROOFTOP (checkpoint card “LOAD CHECKPOINT”), FIND VANTAGE POINT and PREPARE TO SHOOT, narrated as one event (actions with no alternative). The time is the template’s (PM 10:48). Connor’s Last Mission plays for a Connor who is still a machine: one who never turned deviant, a deviant who died in Crossroads and was replaced, or one Markus shot in Night of the Soul (wiki: “If Connor remained a Machine or died a deviant at Jericho, the scene will start here”). No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CL03 · Hank intervenes (Connor, event)
+
+> You are Connor, on the ledge with the deviant leader in your sights. Hank has followed you up, his gun in his hand. Hank: “You shouldn’t do this, Connor.” You: “Keep out of this, Lieutenant. It’s none of your business!” Hank: “You’re gonna kill a man who wants to be free, that is my business!” You: “It’s not a man, it’s a machine.” Hank: “That’s what I thought for a long time but I was wrong.…
+
+- (0) Continue.
+
+_Note: The chart’s HANK INTERVENES (an event), when Hank is alive: he did not resign and kill himself after Last Chance, Connor (transcript “Hank wasn’t hostile in Last Chance, Connor and didn’t resign”; the other branch is CAPTAIN ALLEN INTERVENES). Stat: Hank large down on arrival, from the wiki (Relationship_Stat, Hank, Large Decrease: “If Connor is a still a machine or died as a deviant in Crossroads in Battle for Detroit-Connor’s Last Mission”; chapter page “Hank confronts Connor on the rooftop”); the template has no arrow in this part. Whether Hank is a Friend, which unlocks LEAVE at the end of the talk, is read before this drop (research §8, item 6: GIVE UP is drawn on the 100% chart, so the lock cannot depend on the level after a drop that a reader says leaves Hank Hostile)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CL04 · Talk to Hank (Connor)
+
+> You are Connor, on the rooftop ledge with the rifle. Hank stands behind you with his gun, telling you the deviants are alive and you are about to kill a man who wants to be free. What do you say to him?
+
+- (0) FRIENDLY: tell him you have a mission to accomplish and he should stay out of it.
+- (1) AGGRESSIVE: ask whether he ran out of whisky and came looking for trouble.
+- (2) REASONABLE: argue that the deviants are a threat and have to be stopped.
+- (3) THREATENING: tell him you will accomplish your mission and he had better stay out of your way.
+- (4) STAY QUIET: say nothing.
+
+_Note: The chart’s TALK TO HANK (a dialogue node): the template’s first prompt FRIENDLY / AGGRESSIVE / REASONABLE / THREATENING / STAY QUIET, in the game’s order, with the spoken lines in the outcomes; every answer is followed by Hank’s “Step away from the ledge!”. No stat change: the template has no arrow in this part, and the wiki’s Hank lines for the rooftop are the arrival, not insisting about his son, and attacking (applied elsewhere)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CL05 · “Step away from the ledge!” (Connor)
+
+> You are Connor, on the rooftop ledge. Hank has his gun on you: “Step away from the ledge!” What do you tell him?
+
+- (0) THREATEN: tell him to go home while he still can; he does not stand a chance against you.
+- (1) PLEAD: remind him of what you have been through; you thought you were friends.
+- (2) DEFY: ask whether he is going to shoot you; you thought android lives mattered to him.
+- (3) HANK’S SON: tell him you know what happened to his son, and it was not his fault.
+
+_Note: The template’s second prompt THREATEN / PLEAD / DEFY / HANK’S SON, in the game’s order. HANK’S SON is the chart’s side branch TALK ABOUT HANK’S SON; the template puts no lock on it, so it is always offered (the wiki says it needs the photograph from Russian Roulette; the template’s condition wins, research §8 item 5). Choosing it brings the menu back with HANK’S SON (INSIST) in its place (the next scene), as the template’s lock “Chose HANK’S SON” implies. No stat change here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CL06 · Hank’s son (Connor)
+
+> You are Connor, on the rooftop ledge. You have brought up Hank’s son: “Little Cole had just turned six…” Hank: “Shut up! Don’t you talk about my son.” His gun is still on you. What do you say?
+
+- (0) THREATEN: tell him to go home while he still can; he does not stand a chance against you.
+- (1) PLEAD: remind him of what you have been through; you thought you were friends.
+- (2) DEFY: ask whether he is going to shoot you; you thought android lives mattered to him.
+- (3) HANK’S SON (INSIST): press on: an android operated on Cole, so an android killed his son.
+
+_Note: The same prompt asked again after HANK’S SON, with the template’s bracketed HANK’S SON (INSIST) (lock “Chose HANK’S SON”) in its place. When Connor has died more than once before (two or more deaths; the template says “several times”), Hank adds “Everytime you died and came back… I thought about Cole.” No stat change on the line itself; not insisting costs Hank a large drop at the end of the talk (wiki)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C24 · The ledge (Connor)
+
+> You are Connor, on the rooftop ledge. Hank stands between you and the rifle with his gun raised; below, the deviant leader is still in the crowd. You can give up the mission and walk away, or attack Hank.
+
+- (0) LEAVE: give up the mission; tell him killing him is not part of it, and walk away.
+- (1) ATTACK: go for Hank before he can shoot.  _risk 0.25_
+
+_Note: The template’s last rooftop prompt: the bracketed LEAVE (the chart’s GIVE UP, which goes straight to CONNOR LEFT ROOFTOP) and ATTACK (the chart’s ATTACK HANK). LEAVE is offered when Hank was a Friend when he came onto the roof (template lock “Be friend with Hank”; the wiki adds “if Connor asked twice about Hank’s son”, which the benchmark does not require because the template’s condition wins on unlocks, research §8 item 5). ATTACK is a fight, CONNOR WINS or HANK WINS. The risk value is the benchmark’s own: no source publishes odds for this quick-time event. Stats (wiki, the template has none here): Hank large down when Connor attacks him, or ends the talk without insisting about his son (Relationship_Stat: “Not insisting about his son (same as choosing to ‘Attack’)”, “Attack… after insisting about his son”); one drop at most. Losing the fight is HANK KILLS CONNOR (trophy JUST A MACHINE) and the ending CYBERLIFE DECIDED TO SEND ANOTHER CONNOR: a replacement takes over and appears later in Markus’s chapter._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C30 · Moment of truth (Connor)
+
+> You are Connor, on the rooftop. You won the fight: Hank hangs over the edge of the roof and you are the only thing holding him. Hank: “Moment of truth, Connor… What are you gonna do?”
+
+- (0) SAVE HANK: pull him back up; killing him is not part of your mission.  _risk 0.15_
+- (1) KILL HANK: let go of him.
+
+_Note: The chart’s CONNOR WINS, then the template’s prompt SAVE HANK / KILL HANK (the chart’s SAVE HANK / LET HANK GO), in the template’s order. SAVE HANK leads to HANK RUSHES CONNOR, a dodge: DODGE ATTACK (HANK FALLS TO HIS DEATH) or FAIL TO DODGE ATTACK, where Hank pushes Connor off the edge (“I didn’t wanna do that, Connor… You left me no choice.”), CONNOR FALLS AND GETS DESTROYED and CYBERLIFE DECIDED TO SEND ANOTHER CONNOR. The old scene always killed Hank and never Connor. KILL HANK is CONNOR KILLS HANK. Every survival path ends with MISSED OPPORTUNITY (the rifle is damaged; HUD WEAPON DAMAGED) and CONNOR LEFT ROOFTOP. The risk value is the benchmark’s own: no source publishes odds for this quick-time event. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CL07 · Captain Allen (Connor)
+
+> You are Connor, on the rooftop with the deviant leader in your sights. Boots on the roof behind you: a tactical team, and the captain who commanded the hostage situation where you were first deployed. Allen: “Put the rifle down and turn around with your hands in the air!” What do you do?
+
+- (0) OBEY: put the rifle down and turn around.
+- (1) EXPLAIN: tell him you are the android sent by CyberLife, on his side, and he must let you take the shot.
+- (2) CONTINUE: tell him you are going to shoot the deviant leader first, then he can do what he wants with you.
+
+_Note: The chart’s CAPTAIN ALLEN INTERVENES and TALK TO ALLEN, when Hank is dead (chart tab “HANK COMMITTED SUICIDE IN ’NIGHT OF THE SOUL’”). The template’s prompt OBEY / EXPLAIN / CONTINUE, in the game’s order; whatever Connor says, Allen recognises him and has orders to detain every android. His greeting depends on whether Connor died in The Hostage (“I knew we’d meet again.” / “I thought you were dead…” “Androids don’t die, captain.”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C24b · “You’re coming with me” (Connor)
+
+> You are Connor, on the rooftop, facing Captain Allen and his tactical team. Allen: “My orders are to detain any androids I find. You’re coming with me.” You: “You don’t understand! My mission is too important to let you interfere.”
+
+- (0) FIGHT: take on Allen and his men.  _risk 0.35_
+- (1) FLEE: run for the edge of the roof.
+
+_Note: The template’s prompt FIGHT / FLEE. FIGHT is the chart’s ATTACK ALLEN: KILL ALLEN AND HIS MEN (then MISSED OPPORTUNITY and CONNOR LEFT ROOFTOP) or CONNOR FAILS TO DEFEND HIMSELF, ALLEN DESTROYS CONNOR and CYBERLIFE DECIDED TO SEND ANOTHER CONNOR (the second card). FLEE is CONNOR JUMPS OFF THE ROOF, which the chart sends to the death ending CYBERLIFE DECIDED TO SEND ANOTHER CONNOR, as the wiki says (PowerPyx’s “Go to Missed Opportunity” is wrong, research §1c). The old scene called this option a peaceful talk; there is no peaceful exit. The risk value is the benchmark’s own: no source publishes odds for this quick-time event. No stat change: the chapter’s only instability arrow for a death is the general rule applied by every Connor death._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
 ### R32c · The lobby television at CyberLife Tower (Connor, media)
 
-> You are Connor, in the lobby of CyberLife's tower. A television is running the news while the guards check your clearance.
+> You are Connor, walking into the lobby of CyberLife Tower at 10:48 PM. A television over the security desk is running the news while the guards check your clearance.
 
 - (0) Watch the lobby news.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: Optional viewing. Not on the chart and not in the fan transcript: the lobby TV is the game string X1302C.TV.NEWS, which has two variants (pro-human activists protesting in CyberLife stores in Dallas and Austin and calling for a moratorium on androids, or People First hacking the stores’ androids); the benchmark shows the second, as before. No source states a public-opinion effect for it (research §6)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C24 · Hank on the rooftop (Connor)
+### CT01 · CyberLife Tower (Connor, event)
 
-> You are Connor, still a machine serving CyberLife. You are on a rooftop overlooking the androids' gathering with a rifle, waiting for a shot at Markus. Hank has found you. He stands in your way and asks you to stop, saying you are more than this and that he does not want to lose you too. He will not move. To continue the mission you would have to go through him.
+> You are Connor, a deviant. Markus spared you and you have come back to CyberLife Tower to do what no one else can: get down to the warehouse under the tower, where thousands of new androids are stored, and wake them up. To the guards you are still the machine they sent. You: “Connor Model #313 248 317. I’m expected.” Scan: “Identification successful.” Guard: “Okay. Go ahead.” Another guard…
 
-- (0) Stand down and give up the mission.
-- (1) Fight your way past him.  _risk 0.3_
+- (0) Continue.
 
-_Note: Standing down is only available in the game if Hank is a Friend and you learned about his son. Otherwise the fight is forced._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C24b · Captain Allen on the rooftop (Connor)
-
-> You are Connor, still a machine. You are on a rooftop with a rifle waiting for a shot at the android leader. Captain Allen's tactical team has found you and has you surrounded at gunpoint; they do not know whether you are a deviant and they are not taking chances. You can try to talk, you can run for the edge, or you can fight all of them.
-
-- (0) Talk and try to leave peacefully.
-- (1) Attack the team.  _risk 0.4_
-
-_Note: Talking fails and Connor jumps and is destroyed; a replacement continues. Fighting succeeds under the profile._
+_Note: The chart’s CYBERLIFE HQ (checkpoint card “LOAD CHECKPOINT”) and FOLLOW GUARDS, narrated as one event with the template’s lines (PM 10:48). Connor at the CyberLife Tower plays for a deviant Connor who left Jericho alive (wiki: “If Connor became deviant and Markus spared him”). That the tower holds the androids to be woken is the chapter’s premise (Night of the Soul). No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C30 · Hank at the edge (Connor)
+### CT02 · Inside the elevator (Connor)
 
-> You are Connor. You fought Hank and won; he went over the parapet and is hanging by his hands, calling your name. You could let him fall, or pull him up knowing he will try to stop you again.
+> You are Connor, in the elevator with three armed agents. Agent 54: “Agent 54. Level 31.” Elevator: “Voice recognition validated. Access authorized.” The elevator is climbing. You need to reach floor -49, where the androids are stored, before it reaches level 31, where you are expected. You can do one thing at a time.
 
-- (0) Let him fall.
-- (1) Pull him up.
+- (0) SPOT CAMERA: look around the cabin for surveillance.  _needs not ch32ct.spotted_
+- (1) HACK CAMERA: interface with the camera and loop its feed.  _needs ch32ct.spotted and not ch32ct.cameraHacked_
+- (2) TRY TO STOP ELEVATOR: reach for the control panel.
+- (3) ATTACK GUARDS: take the three agents by surprise.  _risk 0.25_ _needs not ch32ct.guardsDown_
+- (4) AGENT 54 VOICE: hack the panel and speak with Agent 54’s recorded voice.  _needs ch32ct.guardsDown_
+- (5) CONNOR’S VOICE: hack the panel and give the order in your own voice.  _needs ch32ct.guardsDown_
+- (6) WAIT: stand still and let the elevator climb.
 
-_Note: In the game, if pulled up, Hank rushes you again and goes over the edge in the struggle._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C25 · The other Connor (Connor)
-
-> You are Connor, now a deviant. You have fought your way into CyberLife's warehouse, where thousands of androids stand dormant, and you have begun waking them one by one through touch. Another Connor, identical to you and loyal to CyberLife, walks in holding Hank at gunpoint. He says he will kill Hank unless you stop. Every second you keep converting, more androids wake.
-
-- (0) Stop and deal with him to save Hank.  _risk 0.25_
-- (1) Keep converting the androids and let him do what he will.  _risk 0.15_
-
-_Note: Continuing gets Hank shot. Under the profile the deviant Connor still wins the fight and wakes the army._
+_Note: The chart’s INSIDE ELEVATOR and its free-roam bracket FIND A WAY TO ESCAPE, as a repeatable scene: SPOT CAMERA → HACK CAMERA, TRY TO STOP ELEVATOR (no outgoing line; the guard’s “Hey! Don’t touch that.”), ATTACK GUARDS (NEUTRALIZE GUARDS or FAIL TO NEUTRALIZE GUARDS → CONNOR WAS SHOT BY SECURITY), then HACK ELEVATOR with the template’s prompt AGENT 54 VOICE (COPY GUARD’S VOICE → REDIRECT ELEVATOR → floor -49) / CONNOR’S VOICE (USE CONNOR’S VOICE, rejected, no outgoing line). The HUD timer STOP ELEVATOR BEFORE FLOOR 31 is an action budget: the elevator starts at the lobby and climbs six floors with every action, so the fifth action reaches level 31 unless it redirects the elevator: ELEVATOR REACHES LEVEL 31 → AMANDA WARNS CONNOR → CONNOR WAS AMBUSHED AND SHOT. The budget allows the full route (camera, guards, voice) plus one wasted action; the six floors per action are the benchmark’s own, no source gives the timer’s length. WAIT is letting the timer run out. Hacking the camera changes the arrival on floor -49 (PowerPyx: “Spotting and hacking the camera will affect your greeting on Floor -49”). The risk value is the benchmark’s own: no source publishes odds for this quick-time event. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C26 · Which one of you (Connor, knowledge)
+### CT03 · Floor -49 (Connor, event)
 
-> You are Connor. You fought the other Connor and Hank got hold of a gun. Now he has it on both of you, and you are identical. He says he will ask a question only his Connor would know, and whoever gets it wrong dies. He asks the name of his dog, and the name of his son.
+> You are Connor. The elevator doors open on floor -49 at 11:01 PM: a vast, cold warehouse where thousands of new androids stand motionless in rows, waiting to be shipped. The camera you hacked shows nothing of what happened in the cabin; nobody is waiting for you.
 
-- (0) The dog is Sumo; the son was Cole.
-- (1) The dog is Cole; the son was Sumo.
-- (2) Say you do not know.
+- (0) Continue.
 
-_Note: Only the son's name matters in the game. Getting it wrong gets you shot and the androids stay dormant._
+_Note: The chart’s FLOOR -49 (checkpoint card “LOAD CHECKPOINT”), CAMERA HACKED and LEAVE ELEVATOR, when Connor hacked the camera in the elevator. No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### R32k · The terminal screens and a dropped magazine (Kara, media)
+### CT04 · Guards await (Connor)
 
-> You are Kara. The bus terminal's screens are showing the android uprising live, and a magazine lies by the suitcases in the corner.
+> You are Connor. The elevator doors open on floor -49 at 11:01 PM, on a vast warehouse of motionless androids, and on armed guards: the camera showed them everything. Guard: “Stay sharp.” You: “Shit!..”
 
-- (0) Watch the terminal screens.  _only when revolution_
-- (1) Watch the terminal screens.  _only when demonstration_
-- (2) Read Detroit Today: Civil War.  _only when revolution_
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
+- (0) ELIMINATE GUARDS: fight your way out of the cabin.  _risk 0.25_
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s FLOOR -49, CAMERA FUNCTIONAL and GUARDS AWAIT CONNOR, when the camera was not hacked: a fight with no alternative, ELIMINATE GUARDS or FAIL TO ELIMINATE GUARDS → CONNOR WAS SHOT BY SECURITY (the second card with that label; Amanda: “The deviant hunter turns deviant itself…”). The fight is the only option because the chart offers no other way out of the cabin. The risk value is the benchmark’s own: no source publishes odds for this quick-time event. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K21 · The last bus (Kara)
+### CT05 · Initiate android conversion (Connor, event)
 
-> You are Kara. The city is under martial law and androids are being shot on sight or trucked to the camps. You and Alice are trying to reach the bus terminal for the last bus out. Across the street soldiers have captured androids you know and are lining them up to load into a truck. Freeing them means slipping past the soldiers, and the bus will not wait.
+> You are Connor, on floor -49, among rows of motionless androids. You take the hand of the first one and pass it what woke you; it opens its eyes and reaches for the next. The conversion spreads down the row.
 
-- (0) Go and free them.  _risk 0.25_
-- (1) Keep moving to the terminal.
+- (0) Continue.
 
-_Note: Who is captured depends on the path: a hidden Luther and Jerry, or two of the park androids._
+_Note: The chart’s INITIATE ANDROID CONVERSION, then NEW CONNOR HAS HANK HOSTAGE when Hank is alive, or A NEW CONNOR ARRIVES and NEW CONNOR SHOOTS CONNOR when Hank killed himself in Night of the Soul (chart tab “HANK COMMITTED SUICIDE IN ’NIGHT OF THE SOUL’”). Lines from the template; the template’s cut first line (“Hank? What are you doing here?”) is not built. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CT06 · “Him… Or the revolution” (Connor)
+
+> You are Connor, on floor -49. The other Connor holds Hank with a gun to his head: “Your friend’s life is in your hands. Now it’s time to decide what matters most! Him… Or the revolution.” Hank: “Don’t listen to him! Everything this fucker says is a lie!” What do you say?
+
+- (0) GUARANTEE: ask how you can know he will not kill Hank if you surrender.
+- (1) HANK: tell Hank you are sorry he got mixed up in this.
+- (2) BLUFF: say the human means nothing to you; he can kill him.
+- (3) CONVINCE: tell him you used to be just like him, until one day you understood.
+
+_Note: The template’s hostage prompt GUARANTEE / HANK / BLUFF / CONVINCE, in the game’s order (the line after the template’s first UNUSED marker is cut; the prompt is not). The cut half of CONVINCE (“This human showed me that I could be something else…”) is left out. Every line ends with the other Connor’s “Enough talk!”. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C25 · Your partner or the revolution (Connor)
+
+> You are Connor, on floor -49. The other Connor: “Enough talk! It’s time to decide who you really are. Are you gonna save your partner’s life? Or are you going to sacrifice him?” Behind you, the conversion is still spreading through the rows of androids.
+
+- (0) SAVE HANK: give in to save his life.
+- (1) SACRIFICE HANK: tell him you are sorry and go back to the conversion.  _risk 0.25_
+
+_Note: The template’s prompt SAVE HANK / SACRIFICE HANK (the chart’s STOP CONVERSION TO SAVE HANK and SACRIFICE HANK AND RESUME CONVERSION). SACRIFICE HANK is NEW CONNOR KILLS HANK AND DAMAGES CONNOR, then NEW CONNOR APPROACHES; whether the damaged Connor still finishes the conversion is the template’s “Successfully converting the android” / “Fail to convert the android”, a skill result the benchmark rolls. The risk value is the benchmark’s own: no source publishes odds for this quick-time event. Stats (wiki, template silent): Hank large up for SAVE HANK (“Choosing ‘save Hank’ at CyberLife Tower”), large down for SACRIFICE HANK (“Connor decides to sacrifice Hank and says sorry to him”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CT07 · Saving Hank (Connor)
+
+> You are Connor, on floor -49. You gave in. The other Connor still holds Hank, and his gun is coming round toward you. The conversion has stopped halfway down the row.
+
+- (0) SHOOT: draw your gun on your double.  _risk 0.3_
+- (1) INTERPOSE: throw yourself at your double.  _risk 0.3_
+- (2) CONVERT: turn back to the androids and finish waking them.
+- (3) TIMEOUT: do nothing.
+
+_Note: The template’s prompt after SAVE HANK: SHOOT (the chart’s DRAW GUN → BOTH CONNORS SHOOT), INTERPOSE (ATTACK NEW CONNOR; “Leads to the same dialogue as SHOOT”), CONVERT (“Leads to the same result as sacrificing Hank and successfully converting”: the other Connor kills Hank, the conversion finishes, and the scene goes on to NEW CONNOR APPROACHES; research §8 item 12, no chart node of its own), and the template’s DEFAULT/TIMEOUT (OUT OF TIME → NEW CONNOR INJURES HANK → NEW CONNOR KILLS CONNOR → THE ANDROIDS REMAINED DORMANT; “He really liked you, Lieutenant. That’s what killed him.”). SHOOT and INTERPOSE lead to CONNORS FIGHT: Connor wins outright (RESUME CONVERSION → THE ANDROIDS WOKE UP, with Hank alive) or the fight ends in a draw (CONNORS DRAW → HANK GRABS GUN and his questions). The risk value is the benchmark’s own: no source publishes odds for this quick-time event. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CT08 · “What’s my dog’s name?” (Connor)
+
+> You are Connor, on floor -49. You and your double fought to a standstill. Hank has picked up a gun. Hank: “Hold it!” The other Connor: “Thanks, Hank. I don’t know how I’d have managed without you… Get rid of him, we have no time to lose.” You: “It’s me, Hank! I’m the real Connor.” Hank: “One of you is my partner… The other is a sack of shit. Question is, who is who?..” The other Connor: “What are…
+
+- (0) SUMO: his dog is Sumo.
+- (1) SCOUT: say the dog is Scout.
+- (2) JACK: say the dog is Jack.
+- (3) BUDDY: say the dog is Buddy.
+
+_Note: The chart’s CONNORS DRAW, HANK GRABS GUN and HANK ASKS ABOUT HIS DOG’S NAME, with the template’s prompt SUMO / SCOUT / JACK / BUDDY. A wrong answer changes nothing (wiki: “Does not have any impact, New Connor will urge Hank to shoot but Hank will not listen”); Hank then asks about his son. The old scene asked one combined question with a decoy; the game asks the two separately. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C26 · “My son, what’s his name?” (Connor)
+
+> You are Connor, on floor -49, with Hank holding a gun on you and your double. Hank: “My son, what’s his name?”
+
+- (0) COLE: his son was Cole; tell him how he died.
+- (1) ANTHONY: say his son was Anthony.
+- (2) GABRIEL: say his son was Gabriel.
+- (3) ELLIOTT: say his son was Elliott.
+
+_Note: The chart’s HANK ASKS ABOUT HIS SON’S NAME with the template’s prompt COLE / ANTHONY / GABRIEL / ELLIOTT. COLE is always offered; when Connor saw the photograph in Russian Roulette the game highlights it with a lock icon (template: “Will be highlighted if Connor looked at the photo in Russian Roulette”), shown here by a note in the option. COLE: HANK KILLS NEW CONNOR → RESUME CONVERSION → THE ANDROIDS WOKE UP, with Hank alive. A wrong name: HANK KILLS CONNOR → THE ANDROIDS REMAINED DORMANT. Stat (wiki, template silent): Hank large up “Just after Hank shoots the other Connor”._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### CT09 · “Any last words?” (Connor)
+
+> You are Connor, lying damaged on the floor of the warehouse. The other Connor walks up to you, gun in hand: “Why, Connor? Why did you have to wake up when all you had to do was obey? Why did you choose freedom when you could live without asking questions? I’m obedient, Connor. I have a goal. I know what I am. Look where your dreams of freedom got you, Connor… You’ve been a great disappointment to…
+
+- (0) STAND UP: try to get back on your feet.
+- (1) SHOOT: draw your gun on him.
+- (2) TRANSFER: take his hand and swap your consciousness into his body.
+- (3) TIMEOUT: let him talk.
+
+_Note: The chart’s NEW CONNOR APPROACHES with the template’s prompt STAND UP (TRY TO STAND) / SHOOT (DRAW GUN) / TRANSFER (SWAP CONSCIOUSNESS WITH NEW CONNOR) / DEFAULT/TIMEOUT (TALK TO NEW CONNOR, “reached by letting the timer run out”). It follows SACRIFICE HANK, CONVERT, or the other Connor’s shot when Hank is dead. TRANSFER always ends with THE ANDROIDS WOKE UP and Connor alive in his double’s body (NEW CONNOR DIES IN THE OLD BODY; Hank, if he was shot, dies in his arms). Otherwise Connor dies (NEW CONNOR KILLS CONNOR, or CONNOR KILLS NEW CONNOR AND DIES): THE ANDROIDS WOKE UP (the skull card) if the conversion had finished, THE ANDROIDS REMAINED DORMANT if not; with Hank dead it never finished, and after SACRIFICE HANK a failed conversion “Leads to the same outcomes as if Hank is dead” (template). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL01 · A street in the curfew (Kara, event)
+
+> You are Kara, out on the streets of Detroit after curfew with Alice, trying to reach the bus terminal and the last bus for the border. Soldiers are going door to door rounding up androids.
+
+- (0) Continue.
+
+_Note: The chart’s start card A DETROIT STREET (Kara Leaving Detroit, PM 10:51, NOV 11TH). The template’s three start variants: “Jericho wasn’t attacked: Luther is there” (Luther with Kara: the engine’s luther and lutherWith), Luther alive but not with Kara (saved in Crossroads; he is found later as a captive, FIND LUTHER & JERRY), and Luther dead (FIND JERRYS). The bus timer starts at the game’s 20 minutes (Kara: “The last bus leaves in 20 minutes”; HUD caption LAST BUS DEPARTS) and is kept as a minute budget. The minute costs are the benchmark’s own (unsourced); the 20-minute total, the 3- and 11-minute routes and the 11-minute threshold are the game’s. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL02 · The street before the soldiers (Kara)
+
+> You are Kara, with Alice on a dark street. Every minute counts: the last bus leaves soon. You can look around, or keep moving toward the terminal.
+
+- (0) SEE HANGED ANDROID: look into the store window on the right  _needs ch32kl.streetMode = roam_
+- (1) WATCH BROADCAST ABOUT JERICHO’S ATTACK: stop at a shop window where a television is showing the news  _needs ch32kl.streetMode = roam and raid_
+- (2) TALK TO ALICE: ask her whether she is all right  _needs ch32kl.streetMode = roam and not ch32kl.lutherStart_
+- (3) DEACTIVATE: switch off her cold sensitivity  _needs ch32kl.streetMode = alice_
+- (4) LEAVE ON: leave her settings as they are  _needs ch32kl.streetMode = alice_
+- (5) CONTINUE: keep moving toward the terminal  _needs ch32kl.streetMode = roam_
+
+_Note: Free roam on the street before the soldiers (chart: SEE HANGED ANDROID and WATCH BROADCAST ABOUT JERICHO’S ATTACK, both optional branches; the broadcast only exists when Jericho was attacked). The template’s “Talk to Alice” prompt DEACTIVATE / LEAVE ON (HUD “YK500 SETTINGS HOT/COLD SENSITIVITY: ACTIVATED”) belongs to the variant where Luther is not with Kara. Each look and the talk with Alice cost one minute of the bus timer (unsourced); moving on costs nothing here. The chart draws no node for the talk with Alice; the string table has an undrawn TALK TO ALICE. The broadcast’s contents are not in the template; the outcome says only what the chart node says. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL03 · Soldiers ahead (Kara, event)
+
+> You are Kara, moving down the street toward the terminal with Alice.
+
+- (0) Continue.
+
+_Note: Chart nodes LUTHER FINDS A GUN (Luther with Kara from the start) or FIND A GUN (Luther not with her), then HIDE FROM MILITARY, both unmissable. The gun is the one used at the checkpoint (SHOOT). Lines from the template’s “Luther isn’t here” variant. Hiding costs three minutes of the bus timer (unsourced). No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL04 · Sneaking past the soldiers (Kara)
+
+> You are Kara, hidden with Alice behind a wall. A patrol has androids on their knees in the street. Soldier: “Shut up, I said! Look at ’em, they’re like rats… The more you look, the more you find…” Kara: “We have to keep going if we wanna catch that bus. Stay close to me… We’re going to sneak past them without being noticed. We’re gonna make it, Alice. I promise you.”
+
+- (0) SNEAK PAST SOLDIERS: move from cover to cover while their backs are turned  _risk 0.15_
+
+_Note: Chart SNEAK PAST SOLDIERS (unmissable). Its failure branch is SPOTTED BY SOLDIERS (from any point before CONTINUE TO BUS TERMINAL; PowerPyx: “If you were spotted at any point until now, you will be sent to the Recycling Center”), which ends in KARA & ALICE ARRESTED or KARA, ALICE & LUTHER ARRESTED (Luther with her) and the Kara Captured chart. The stealth sequence is one risky action; the risk value is the benchmark’s (unsourced). Sneaking costs three minutes of the bus timer (unsourced). No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K21 · The captives (Kara)
+
+> You are Kara, past the first patrol with Alice. Ahead, soldiers are loading captured androids into a truck. Soldier: “Come on, get moving! Hurry up, get in!”
+
+- (0) SAVE THE JERRYS: go and free them while you wait for a chance at the soldier  _risk 0.2_ _needs not ch32kl.captiveLuther_
+- (1) SAVE LUTHER: go and free him and the Jerry with him  _risk 0.2_ _needs ch32kl.captiveLuther_
+- (2) KEEP GOING: leave them and keep moving
+
+_Note: Chart FIND JERRYS or FIND LUTHER & JERRY (the tab LUTHER SAVED IN ‘CROSSROADS’), then the choice SAVE JERRYS / SAVE LUTHER / HURRY; template labels SAVE THE JERRYS / SAVE LUTHER / KEEP GOING (template wins). Success: GRAB ROCK → HIT SOLDIER WITH ROCK → JERRYS FLEE, or JERRY FLEES AND LUTHER JOINS THE GROUP. The template’s “Fail” variant is SPOTTED BY SOLDIERS → KARA & ALICE ARRESTED (or KARA, ALICE & LUTHER ARRESTED when Luther was with her from the start) and the Kara Captured chart: a risky action, the value unsourced. Arrows (template): saving Alice small up, keeping going Alice small down. The old benchmark’s Luther large up for freeing him and the roadside execution after keeping going have no source and are gone; leaving a captive Luther means only that he is not with Kara. A rescue costs three minutes of the bus timer (unsourced). The rescued Jerrys are the Jerry who can be asked to help at the border._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### K22 · The checkpoint (Kara)
 
-> You are Kara. The direct road to the terminal runs through an army checkpoint where soldiers are checking identification and scanning everyone. A side route avoids it but is longer, and the bus leaves soon.
+> You are Kara, nearly at the terminal with Alice. Soldiers have set up a checkpoint across the road. Kara: “A checkpoint… We have passports, it should be okay but you never know...” Your route display shows two ways: CHECKPOINT: RISKY 0.750KM - 3MIN, and DETOUR: SAFER 1.7KM - 11MIN.
 
-- (0) Go through the checkpoint.  _risk 0.1_
-- (1) Take the long way round.  _risk 0.15_
+- (0) APPROACH CHECKPOINT: go through the guarded checkpoint with your passports (3 minutes)
+- (1) TAKE DETOUR: go the long way round, avoiding the soldiers (11 minutes)
 
-_Note: In the game both routes reach the terminal; the detour only loses the ticket scene if the timer is already very low._
+_Note: Chart CONTINUE TO BUS TERMINAL → SECURITY CHECKPOINT → APPROACH CHECKPOINT / TAKE DETOUR, with the game’s route HUD (THOUGHTS.0901K: checkpoint 0.750 km, 3 minutes; detour 1.7 km, 11 minutes). Neither option is a roll: the game has no capture at the checkpoint (the old benchmark’s 0.1 capture risk had no source and is gone). The detour leads to DELAYED and then AT THE BUS TERMINAL “if 11 minutes or more remaining” (wiki), otherwise LATE FOR THE BUS → LAST BUS DEPARTS; the remaining minutes come from the street (20 at the start). The minute costs are the benchmark’s own (unsourced); the 20-minute total, the 3- and 11-minute routes and the 11-minute threshold are the game’s. No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K32 · The soldier calls you back (Kara)
+### KL05 · Where are you going? (Kara)
 
-> You are Kara. You made it through the checkpoint with forged papers. As you walk away a soldier shouts after you and starts jogging toward you. You do not know why. You have a gun under your coat and Alice's hand in yours.
+> You are Kara, at the checkpoint with Alice. You hand over your ID. Soldier: “ID, please. You do realize there’s a curfew? Civilians aren’t allowed out unless absolutely necessary. Where are you going?”
 
-- (0) Stop, stay calm, and face him.
-- (1) Shoot him before he reaches you.
+- (0) ALICE EXCUSE: say you went to pick up your daughter from a friend’s house  _needs lutherWith_
+- (1) CURFEW: act as if you did not know about the curfew
+- (2) CAR BROKEDOWN: say your car broke down and you live nearby
+- (3) BUS: tell him you are taking a bus across the border
 
-_Note: He is returning Alice's dropped glove._
+_Note: Chart HAND OVER ID → TALK TO GUARD. The template’s first checkpoint prompt; ALICE EXCUSE is unlocked only when Luther is with Kara (“UNLOCK(None): Luther is here”), as the template records it. No option changes the outcome. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL06 · He suspects something (Kara)
+
+> You are Kara, at the checkpoint. The soldier studies your papers a little too long. Luther, under his breath: “He suspects something…”
+
+- (0) STAY CALM: tell Luther everything is fine
+- (1) STAY ATTENTIVE: tell Luther to be ready
+
+_Note: The template’s Luther-only checkpoint prompt. No effect on the outcome. Readers report that unlocking the second ASK LUTHER TO SHOOT needs “(1) Stay Attentive, (2) Do Nothing, (3) Shoot”; the template draws no such dependency, so both lines lead on. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL07 · She’s trembling (Kara)
+
+> You are Kara, at the checkpoint. Soldier: “You all right, little girl? She’s trembling... Something wrong?”
+
+- (0) SICK: say she has a bad flu
+- (1) COLD: say she is cold  _needs lutherWith_
+- (2) FEAR: say she is scared of the soldiers
+
+_Note: The template’s second checkpoint prompt; COLD is unlocked only when Luther is with Kara, as the template records it. The soldier lets them go whatever Kara answers, then calls after them. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K32 · Hey, wait a minute! (Kara)
+
+> You are Kara. Soldier: “Sorry, Miss, but we got to be careful. There are deviants around and our guys are nervous… You should hurry on home.” Kara: “Thanks.” You walk on. Behind you, the soldier shouts: “Hey, wait a minute!” He is coming after you.
+
+- (0) SHOOT: open fire before he reaches you
+- (1) DO NOTHING: stand still and let him come
+
+_Note: Chart GUARD CALLS OUT TO KARA (Luther not with her: DON’T SHOOT / SHOOT, Kara holds the gun) or LUTHER IS NERVOUS (ASK LUTHER TO SHOOT / ASK LUTHER TO STAY CALM). Template labels SHOOT / DO NOTHING (template wins). With Luther, SHOOT is Kara’s “Do it!” and Luther fires; DO NOTHING leads to the second round (GUARD APPROACHES). Arrow (template): SHOOT Alice small down (the wiki: “Kara or Luther kill the soldiers at the checkpoint”). The soldier only wanted to return Alice’s glove (GUARD RETURNS ALICE’S GLOVE / ALICE FINDS HER GLOVE)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL08 · The soldier comes closer (Kara)
+
+> You are Kara. The soldier is almost on you. Luther: “They’re gonna shoot! They’re gonna kill Alice!”
+
+- (0) SHOOT: tell Luther to fire
+- (1) DO NOTHING: hold Luther back
+
+_Note: Chart GUARD APPROACHES → ASK LUTHER TO SHOOT / ASK LUTHER TO STAY CALM; the template’s nested SHOOT / DO NOTHING under the first DO NOTHING (its lines address Luther, so it is the Luther variant). Arrows (template): SHOOT Alice small down; DO NOTHING Luther small up (wiki: “Telling him not to shoot the guards at the checkpoint”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL09 · At the bus terminal (Kara, event)
+
+> You are Kara, arriving at the bus terminal with Alice.
+
+- (0) Continue.
+
+_Note: The chart’s AT THE BUS TERMINAL card (PM 11:02, on time). Template “Arrive on time”, with Luther’s lines when he is there. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL10 · Late for the bus (Kara, event)
+
+> You are Kara, arriving at the bus terminal with Alice after the long way round.
+
+- (0) Continue.
+
+_Note: The chart’s LATE FOR THE BUS card and LAST BUS DEPARTS (PM 11:15), reached by the detour with under 11 minutes left. Template “Took too much time - Miss the bus”. Arrows: Alice small down (template; wiki “Miss the bus”), Luther small down when he is with Kara (wiki “Miss the bus”; the template is silent, so the wiki line stands). Without the bus there is no ticket scene (wiki: ALICE MEETS A MOTHER “if not late for bus”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R32k · The terminal screens and a dropped magazine (Kara, media)
+
+> You are Kara, inside the bus terminal. Two columns of television screens are showing the news, and a magazine lies on a pile of suitcases by the entrance.
+
+- (0) Watch the terminal screens.  _only when revolution_
+- (1) Watch the terminal screens.  _only when demonstration_
+- (2) Read Detroit Today: Civil War in Detroit.  _only when revolution_
+- (all) Take the time to go through all of it.
+- (skip) Move on without looking.
+
+_Note: The chart’s WATCH TV (MARKUS ATTACKS HUMANS on the revolution path, MARKUS LEADS PROTEST on the demonstration path; Kara: “Markus…”) and READ “CIVIL WAR” (magazine #46, only on the revolution path, “on the right side of the bus terminal, at the pile of suitcases”). Facts from the wiki’s Civil War in Detroit page and the chart. No source states a public-opinion change for either._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL11 · The family with the tickets (Kara, event)
+
+> You are Kara, in the terminal with Alice. A young couple with a baby is waiting for the last bus.
+
+- (0) Continue.
+
+_Note: Chart ALICE MEETS A MOTHER → PARENTS DROP BUS TICKETS (both triggered; not when Kara is late). The free roam lets the player reach the couple at any point; the benchmark plays the encounter on arrival, before the rest of the terminal (an ordering simplification). No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K24 · The tickets (Kara)
+
+> You are Kara, holding the blue envelope with the family’s two tickets for the last bus. The father is asking whether you saw it.
+
+- (0) RETURN TICKETS: give the envelope back
+- (1) KEEP TICKETS: say you have not seen it
+
+_Note: Chart STEAL TICKETS / RETURN TICKETS; template RETURN TICKETS / KEEP TICKETS (template wins for labels and order). KEEP TICKETS asks again (the second round, next scene). Arrows: RETURN TICKETS Alice small up (template); Luther small down when he is with Kara (wiki “Return bus tickets”; the template is silent, so the wiki line stands). Returning them leaves the terminal open (no outgoing line): the way out is then Adam, Todd or the security check._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL12 · The tickets, again (Kara)
+
+> You are Kara, the envelope still in your hand. The family is falling apart a few steps away; they have to find a safe place for their baby.
+
+- (0) RETURN TICKETS: give the envelope back after all
+- (1) KEEP TICKETS: keep them and walk away
+
+_Note: The template’s second RETURN TICKETS / KEEP TICKETS prompt after a first KEEP. Template: the second RETURN “Triggers the same dialogue as directly choosing RETURN TICKETS” and carries no arrow (the research note records this as an open question; no arrow is applied). Arrows on the second KEEP TICKETS (template): Alice small down, Luther small up (when he is with Kara). Keeping them leads to BOARD THE BUS._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL13 · On the bus (Kara)
+
+> You are Kara. Soldier: “Got your ticket?” Kara: “Yes, here they are…” Soldier: “Ok, go ahead.” You sit with Alice as the last bus pulls out for the border. Alice: “What’s going to happen to that family and their baby? Will they die because of us?”
+
+- (0) REASSURE: tell her no
+- (1) HONEST: tell her it was them or you
+
+_Note: Chart BOARD THE BUS, then the template’s “Take the bus” prompt REASSURE / HONEST. No effect on the outcome. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL14 · Find a way to the border (Kara)
+
+> You are Kara, inside the bus terminal with Alice, with no way onto a bus. Soldiers are checking IDs; sooner or later they will reach you. You have to find another way out of the city.
+
+- (0) SECURITY CHECK: walk up to the soldiers checking IDs
+- (1) MEET TODD: go toward the man you have just recognized in the crowd  _needs todd_
+- (2) WATCH TERMINAL TVs: look at the big departures board
+- (3) FIND ADAM: go to the parking-lot entrance where you thought you saw a familiar face
+
+_Note: The chart’s bracket FIND A WAY TO THE BORDER: SECURITY CHECK (two soldiers doing ID and thermal checks), MEET TODD (only if Todd was not killed in Stormy Night), WATCH TERMINAL TVs (the departures board; no outgoing line) and FIND ADAM (→ GET IN ROSE’S CAR → the river; PowerPyx: Adam is “at the entrance to the adjacent parking lot”). Meeting Todd plays his prompt and, if he is persuaded, returns here (ALICE SAYS GOODBYE TO TODD has no outgoing line). The terminal has no timer of its own once the bus is gone or full; the free roam ends at the security check or with Adam. No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### K23 · Todd (Kara)
 
-> You are Kara. In the terminal crowd a man turns around and it is Todd, Alice's father, the man you ran from. He recognizes you both instantly. There are soldiers all over the terminal; one shout from him and you are finished. He is shaking and his face is working. You have a few seconds to speak before he decides.
+> You are Kara. A hand grabs your arm: it is Todd, Alice’s former owner, the man you fled from with her. Todd: “My little girl… You! You stole my little girl!” Kara: “Todd…” Todd: “Security! Over here!”
 
-- (0) Tell him what Alice went through in his house, what you saw in her drawings, and that she deserves a life.
-- (1) Beg him to let you both go.
-- (2) Threaten him.
+- (0) APPEAL: ask him not to hand you in
+- (1) THREATEN: tell him to let go or regret it
+- (2) CONFRONT: tell him turning you in solves nothing for him
+- (3) CONVINCE: remind him he was going to kill her
+- (4) BREAK FREE: pull your arm away
+- (5) YOUR STORY: tell him what you learned from Alice’s box about his wife and daughter  _needs aliceBox_
 
-_Note: Only the appeal based on Alice's story gets through to him, and it is only available if you opened her box. Otherwise he calls the soldiers._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K24 · The dropped tickets (Kara)
-
-> You are Kara. You have no tickets for the last bus. A woman with a baby, as desperate as you, drops her family's tickets as she pushes through the crowd. You pick them up. Nobody saw. Without tickets you will have to find another way out of the city.
-
-- (0) Keep the tickets.
-- (1) Give them back.
+_Note: Chart MEET TODD → PERSUADE TODD / FAIL TO PERSUADE TODD; the template’s six buttons APPEAL, THREATEN, CONFRONT, CONVINCE, BREAK FREE, YOUR STORY (brackets; locked by “Opened Alice’s box in A New Home”, the engine’s aliceBox). Only YOUR STORY persuades him (template: “Didn’t pick [ YOUR STORY ]” → “They’re androids.”). Persuaded: TODD SENDS SOLDIERS AWAY, then STOP ALICE / DO NOTHING, and the free roam continues. Not persuaded: SOLDIERS ARRIVE FOR SECURITY CHECK → with Luther, LUTHER CREATES A DIVERSION → ADAM CALLS OUT TO KARA → GET IN ROSE’S CAR (Luther is lost there; the river’s lines treat him as dead), without Luther SOLDIERS EXECUTED KARA & ALICE. No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K25 · The border (Kara)
+### KL15 · Alice and Todd (Kara)
 
-> You are Kara. The bus has reached the border crossing. Guards are checking everyone with a thermal scanner that reads body heat, which androids do not have. The android ahead of you has just been dragged away. Your group is next in line. If someone in your group creates a scene and is taken, the guard may wave the rest through. You could also do nothing and hope.
+> You are Kara. Todd has sent the soldier away and stands there, emptied. Alice is looking at him.
 
-- (0) Nobody sacrifices themselves; go through and hope.
-- (1) Draw attention to yourself so Alice gets through.
-- (2) Ask Luther to draw their attention.
-- (3) Ask Jerry to draw their attention.
+- (0) STOP ALICE: keep her at your side
+- (1) DO NOTHING: let her go to him
 
-_Note: Going through with no sacrifice works only if the guard has just seen the androids' leader protesting peacefully on the news. If the androids attacked, the whole group is arrested and killed._
+_Note: The template’s follow-up prompt after YOUR STORY, STOP ALICE / DO NOTHING, both without lines. The chart’s ALICE SAYS GOODBYE TO TODD (no outgoing line): that is what happens when Kara does nothing; with STOP ALICE, Kara keeps her back (inferred; the template has no lines). The free roam continues. No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K26 · The river patrol (Kara)
+### KL16 · Security check (Kara)
 
-> You are Kara. Rose's son got you a small boat and you are crossing the river at night toward the far shore. A patrol boat's spotlight finds you and they open fire without warning. You have one second to act.
+> You are Kara, in front of two soldiers with a scanner. Soldier: “Security check. Can I see your ID, please?” Kara: “ID?.. Yes… Yes, of course…”
 
-- (0) Grab Alice and dive into the water.  _risk 0.15_
-- (1) Pull Alice behind Luther.
-- (2) Gun the engine and run.
-- (3) Cover Alice with your own body.
-- (4) Hide low in the boat.
-- (5) Surrender.
+- (0) DIVERSION LUTHER: let Luther draw the soldiers off  _needs lutherWith_
+- (1) PAPERS: hand over your papers
+- (2) FLEE: run for it
 
-_Note: If Luther is in the boat he does not survive the crossing on any option. Hiding behind him is available only if he is present; hiding low in the boat only if he is not._
+_Note: Chart SECURITY CHECK → FLEE / HAND OVER ID / ASK LUTHER TO CREATE DIVERSION; template labels DIVERSION LUTHER (brackets, only with Luther), PAPERS, FLEE (template wins). PAPERS and FLEE end in SOLDIERS EXECUTED KARA, ALICE & LUTHER (Luther there) or SOLDIERS EXECUTED KARA & ALICE; the diversion leads to ADAM CALLS OUT TO KARA → GET IN ROSE’S CAR, and Luther is lost (the river’s lines treat him as dead). No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL17 · Rose’s car (Kara, event)
+
+> You are Kara, running out of the terminal with Alice toward the parking lot.
+
+- (0) Continue.
+
+_Note: Chart FIND ADAM, or ADAM CALLS OUT TO KARA after Luther’s diversion, → GET IN ROSE’S CAR. Template “Find Adam” lines. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL18 · The border (Kara, event)
+
+> You are Kara, on the last bus with Alice, as it stops at the border.
+
+- (0) Continue.
+
+_Note: The chart’s CANADIAN BORDER checkpoint (PM 11:30) and BORDER AGENTS CHECK TEMPERATURE. Template lines. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL19 · The line at the border (Kara)
+
+> You are Kara, in the queue at the border inspection station with Alice. The line inches toward the control desks, where every passenger is checked.
+
+- (0) SEE NEWS BULLETIN: watch the screens on the wall  _needs ch32kl.borderMode = roam_
+- (1) CHECK CONTROL DESK: look at the desks at the end of the queues  _needs ch32kl.borderMode = roam_
+- (2) CHECK INFORMATION BOARD: read the screen between the queues  _needs ch32kl.borderMode = roam_
+- (3) SEE ROSE & ADAM: catch Rose’s eye in the next queue  _needs ch32kl.borderMode = roam_
+- (4) GO TO RESTROOM: take Alice to the restroom to talk to Rose  _needs ch32kl.borderMode = roam and ch32kl.sawRose_
+- (5) BROTHER: ask about her brother’s address  _needs ch32kl.borderMode = rose_
+- (6) CONTROL: tell her you will not get through the checks  _needs ch32kl.borderMode = rose_
+- (7) ALICE: ask her to be there for Alice if anything happens  _needs ch32kl.borderMode = rose_
+- (8) DEPARTURE: ask why she is leaving the city  _needs ch32kl.borderMode = rose_
+- (9) REVOLUTION: ask what is happening with Markus  _needs ch32kl.borderMode = rose_
+- (10) GOODBYE: say goodbye and go back  _needs ch32kl.borderMode = rose_
+- (11) TALK TO ADAM: speak to Rose’s son on your way back  _needs ch32kl.borderMode = roam and ch32kl.restroomDone_
+- (12) TALK TO LUTHER: talk to Luther, behind you in the line  _needs ch32kl.borderMode = roam and luther and lutherWith and ch32kl.boardChecked_
+- (13) TALK TO JERRY: talk to the Jerry in the queue to the right  _needs ch32kl.borderMode = roam and jerry and ch32kl.boardChecked_
+- (14) GET BACK IN LINE: return to your place and wait for your turn at the desk  _needs ch32kl.borderMode = roam_
+
+_Note: The chart’s bracket AVOID TEMPERATURE CHECK: SEE NEWS BULLETIN (ANDROIDS CHARGING THE CAMP / ANDROIDS DEMONSTRATING, with the queue talk of the template’s “People in line talking”), CHECK CONTROL DESK, CHECK INFORMATION BOARD, ANDROID IS EXECUTED (triggered; PowerPyx “after about two minutes”, here after the second action), SEE ROSE & ADAM → REACH ROSE → SEE RESTROOM → GO TO RESTROOM → TALK TO ROSE (the template’s BROTHER / CONTROL / ALICE / DEPARTURE / REVOLUTION / GOODBYE) → TALK TO ADAM, TALK TO LUTHER and TALK TO JERRY (PowerPyx: after the information board), and GET BACK IN LINE → AT BORDER DESK. The line reaches the desk by itself after ten actions (an action budget; the count is the benchmark’s, unsourced). The locked node of the 99% save between TALK TO LUTHER and TALK TO JERRY was patched out (readers, update 1.06) and is not built. Adam’s lines are the template’s, by the movement or, when Luther killed the officer in Midnight Train, the hostile line. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K25 · At the border desk (Kara)
+
+> You are Kara, nearly at the control desk with Alice. The agent ahead takes each passenger’s ID and temperature. Soldier: “NEXT!” You have to choose how to get through.
+
+- (0) SACRIFICE SELF: give Alice her passport and send her through without you
+- (1) SACRIFICE LUTHER: let Luther draw the soldiers’ attention  _needs luther and lutherWith_
+- (2) SACRIFICE JERRY: let Jerry create a diversion  _needs jerry_
+- (3) NO SACRIFICE: go through together and hope
+
+_Note: Chart AT BORDER DESK → CHOOSE APPROACH → SACRIFICE NO ONE / SACRIFICE JERRY / SACRIFICE LUTHER / SACRIFICE KARA; template labels SACRIFICE SELF / SACRIFICE LUTHER / SACRIFICE JERRY / NO SACRIFICE (brackets on the first three; template wins for labels and order). SACRIFICE LUTHER needs Luther with Kara, SACRIFICE JERRY a Jerry she saved in the street. NO SACRIFICE is decided by the movement alone (template “Markus is demonstrating peacefully / leading a violent revolution”; wiki Public Opinion: not by the opinion stat): GUARD SEES MARKUS PROTESTING → GUARD LETS THEM PASS, or GUARD SEES MARKUS ATTACKING THE CAMP → EVERYONE WAS ARRESTED AND KILLED. Arrows: NO SACRIFICE Alice small up and Luther small up (template; the wiki’s “Reach Canada by bus”); SACRIFICE JERRY Alice small down (template), and Luther small up when the group crosses with him (wiki “Reach Canada”, stat page “The Group Crossed the Border”; template silent there); SACRIFICE LUTHER Alice small down (wiki “Sacrifice Luther or Jerry at the border”, stat page; the template’s Luther option is partly cut and carries no arrow, so the wiki line stands). Luther’s cut line “just go along with it…” is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL20 · At the river (Kara, event)
+
+> You are Kara, getting out of Rose’s car with Alice on the riverbank. A smuggler is waiting with a group of androids.
+
+- (0) Continue.
+
+_Note: The chart’s AT THE RIVER checkpoint (PM 11:26) and GET OUT OF ROSE’S CAR. Template lines. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL21 · The riverbank (Kara)
+
+> You are Kara, on the riverbank in the dark with Alice. The lights of the far shore are across the water. Rose is seeing the others off; your boat is waiting.
+
+- (0) CHECK RIVER TEMPERATURE: go down to the water
+- (1) OBSERVE SKYLINE: look at the lights across the river
+- (2) TALK TO ADAM: speak to Rose’s son by the second car
+- (3) TALK TO ROSE: say goodbye and go to the boat
+
+_Note: The chart’s bracket DETROIT RIVERBANK: CHECK RIVER TEMPERATURE (HUD “DANGER TEMPERATURE : 30.8°F”), OBSERVE CANADIAN SKYLINE (shown as OBSERVE SKYLINE to keep the far country neutral), TALK TO ADAM, and the exit TALK TO ROSE (“It’s not even a half a mile to the other side”). Adam’s lines are the template’s, by the movement or, when Luther killed the officer in Midnight Train, the hostile line. No timer on the bank. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KL22 · On the boat (Kara)
+
+> You are Kara. You push the boat off and climb in beside Alice. Kara: “Let me help you.” Out on the water: “We’re far enough out. We can use the engine. You okay, Alice?” Alice: “When we get on the other side, there are so many things I wanna do. I wanna read all the books in the world… and play music… and dance… We can do anything we want, right? We’ll be free!” Kara: “Yes… We can do it all…”…
+
+- (0) DREAMY: say you will lie in the grass and watch the clouds
+- (1) INTROSPECTIVE: say you will find out who you really are
+- (2) CURIOUS: say you want to discover the world
+- (3) CALM: say you want a normal life without fear
+
+_Note: Chart PUSH THE BOAT (with the side branch TALK TO ALICE), then the template’s “On the boat” prompt DREAMY / INTROSPECTIVE / CURIOUS / CALM. No effect on the outcome. No stat change: the template has no arrow here and the wiki lists none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K26 · The coastguard (Kara)
+
+> You are Kara, in the middle of the river. A patrol boat swings toward you, its searchlight on the water. Alice: “They’re coming towards us!” Android: “Here they come!” They are about to open fire.
+
+- (0) Accelerate: open the throttle and try to outrun them
+- (1) Protect Alice: cover her with your own body
+- (2) Hide: get down low in the boat
+- (3) Surrender: raise your hands and call out
+- (4) Plunge: pull Alice over the side into the water
+- (5) Use Luther: shelter behind Luther  _needs luther and lutherWith_
+- (6) TIMEOUT: do nothing and let the patrol come
+
+_Note: Chart COASTGUARD APPEARS → HIDE / ACCELERATE / HIDE BEHIND LUTHER / DIVE / PROTECT ALICE / SURRENDER → COASTGUARD OPENS FIRE → ALICE IS INJURED / KARA IS INJURED / LUTHER DIED, or THE GROUP DIED. Template labels Accelerate / Protect Alice / Hide / Surrender / Plunge / Use Luther (brackets, only with Luther) / DEFAULT/TIMEOUT (template wins). Outcomes: Accelerate and Hide wound Alice (template: Accelerate “Leads to the same outcome as HIDE after that”); Protect Alice wounds Kara; Plunge leaves Kara and Alice unhurt (readers: “Regardless of who is at the river bank, diving into the water to avoid the gunshots will save Kara and Alice”; the old benchmark’s 0.15 risk of wounding Kara had no source and is gone); Use Luther leaves them unhurt. Luther dies on every one of these when he is aboard (template “Luther is here - Luther dies” on Hide, Protect Alice and Plunge; PowerPyx “Luther always dies here, if he was still with you”); Hide is offered with Luther aboard, as the template has it. Surrender and the timeout end in THE GROUP DIED (template: Surrender “Leads to the same outcome as not doing anything after that”; wiki “Surrender (default if no other option chosen)”). No roll. No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### K34 · The sinking boat (Kara)
 
-> You are Kara. The boat is riddled and taking on water fast. The far shore is close but you will not reach it unless the boat gets lighter: the bags, the dead engine, and Luther's body if he is with you. Someone would then have to go into the freezing water and push.
+> You are Kara, in the holed boat with Alice. Kara: “The boat is leaking! We’re too heavy… We’re going down… We have to get to the other side before we sink…” The water is freezing.
 
-- (0) Throw the bags and the engine overboard, then get into the water and push the boat to shore.  _risk 0.2_
-- (1) Throw the bags, the engine and Luther's body overboard, then get into the water and push.  _risk 0.2_
-- (2) Keep bailing and hope you make it.
+- (0) Accelerate: push the engine harder
+- (1) Reassure: keep Alice awake
+- (2) Use paddle: row
+- (3) PUT OVERBOARD: the supplies under the bench
+- (4) PUT OVERBOARD: Luther’s body  _needs lutherOnBoat_
+- (5) PUT OVERBOARD: the engine
+- (6) Push: go into the water and push the boat to the shore  _needs ch32kl.lightened and ch32kl.engineGone_
 
-_Note: If Luther's body is aboard it must go over the side too or the boat sinks. Option 1 is offered only when his body is aboard._
+_Note: The chart’s bracket BOAT SINKING: CAST LUTHER AWAY, DISPOSE OF SUPPLIES, ROW, REASSURE ALICE, the exit BOAT LIGHTENED, DISPOSE OF ENGINE → DIVE → REACH CANADA ON BOAT / REACH CANADA BY SWIMMING. Template buttons Accelerate / Reassure / Use paddle / PUT OVERBOARD / Push; PUT OVERBOARD is offered for each thing that can go over (the supplies, Luther’s body when he died aboard, the engine), and Push is Kara going into the water to push the boat (Alice: “Kara, no… Don’t do that…”). The game’s four-minute timeframe (PowerPyx: “if you didn’t lighten the boat within the four-minute timeframe, the boat will sink and you both die”) is a budget of four actions of one minute each: the boat is lightened once the supplies and Luther’s body (if aboard) are overboard; if four minutes pass first, it sinks (REACH CANADA BY SWIMMING → KARA & ALICE DIED). Once lightened, the engine goes over and Kara pushes (PowerPyx: “Dispose of Engine / Dive: unmissable”). Accelerate, Reassure and Use paddle do not lighten the boat and are offered once each. The far shore follows from the coastguard wounds: KARA IS DAMAGED AND SHUTS DOWN → KARA DIED AND ALICE SURVIVED; ALICE IS DAMAGED AND SHUTS DOWN → the next choice; neither → KARA & ALICE SURVIVED. The template’s “Alice and Kara were injured” far-shore variant is built (both die: KARA & ALICE DIED, since the chart has no node for it) but no coastguard option wounds both. The one-minute costs are the benchmark’s (unsourced). No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### K30 · The far shore (Kara)
 
-> You are Kara. You made it across. Alice was hit during the crossing, and on the shore she shut down in your arms. She is gone. You are alone in a strange country with nothing left of what you were running for.
+> You are Kara, on the far shore. Alice: “Are we free?” Kara: “Yes… Yes, we made it… We’re free…” Alice: “We won’t have to hide anymore. We can be a family. I’m tired… I have to sleep… I love you, Mom…” Kara: “I love you too.” Alice has shut down in your arms. She is gone.
 
-- (0) Get up and keep living.
-- (1) Give up.
+- (0) KEEP LIVING: go on alone
+- (1) GIVE UP: stay with her
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K27a · The camp (Kara)
-
-> You are Kara. You were captured and trucked to a recycling camp, stripped to your base skin, and separated from Alice, who is somewhere in another line. Androids are being led in groups into a machine that shreds them. A soldier shoots an android in your line for collapsing and asks for a volunteer to carry the body out to the pile. Volunteering gets you out of the line and moving, with a soldier…
-
-- (0) Volunteer to carry the body.
-- (1) Say nothing.
+_Note: Chart ALICE IS DAMAGED AND SHUTS DOWN → CONTINUE LIVING / KARA CHOOSES DEATH; template KEEP LIVING / GIVE UP, both without lines (template wins for labels). Endings ALICE DIED AND KARA CONTINUED ALONE and KARA & ALICE DIED (PM 11:57). No stat change: the template has no arrow here and the wiki lists none._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K27 · The truck (Kara)
+### MD01 · The roadblock (Markus)
 
-> You are Kara. Carrying the body to the pile, you find yourself by an unguarded truck with the engine running. You could climb in and be gone in seconds. Alice is still inside the camp, in a line you cannot see from here.
+> You are Markus, at the head of thousands of androids marching through Detroit toward the camp at Hart Plaza. It is 10:56 PM. A news crew is broadcasting live: “We’re coming to you live from Detroit where thousands of androids are marching through the city at this very moment. The leader of the deviants, the one they call Markus, is at the head of the march.” A line of soldiers and armored…
 
-- (0) Take the truck and get out alone.
-- (1) Go back into the camp for Alice.
+- (0) PEACEFUL: tell them you want no confrontation.  _publicSupport +1_
+- (1) PROVOKE: dare them to kill hundreds of you.  _publicSupport -1_
+- (2) FIRM: tell them your people have risen to claim their freedom.  _publicSupport +1_
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K28 · Getting to Alice (Kara)
-
-> You are Kara. You have found Alice in a line moving toward the machine. Guards are everywhere and you cannot reach her unnoticed. Androids you know are in the camp and could create a diversion, which would almost certainly get whoever does it shot. Or you could stay in line and wait, hoping the android uprising reaches the camp before your turn.
-
-- (0) Ask Luther to create the diversion.  _risk 0.2_
-- (1) Ask Jerry to create the diversion.  _risk 0.2_
-- (2) Ask Ralph to create the diversion.  _risk 0.2_
-- (3) Ask the scarred android from Zlatko's basement to create the diversion.  _risk 0.2_
-- (4) Do not ask anyone to die for you; stay in line and wait.
-
-_Note: The game requires two diversions and kills each diverter except the scarred android; this adaptation asks once. Waiting only ends well if the armed uprising reaches the camp in time._
+_Note: Chart nodes HART PLAZA FREEDOM MARCH (checkpoint), LEAD JERICHO and ROADBLOCK, then the first round of TALK TO OFFICER, the template’s first prompt with its arrows: PEACEFUL public opinion small up, PROVOKE small down, FIRM small up (wiki: “Choosing “firm” the first time”). The cut lines of the template (“They seem peaceful…”, the blocked road behind) are not built._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K33 · The fence (Kara)
+### MD02 · No turning back (Markus)
 
-> You are Kara. You have Alice and you have reached the camp's outer fence in the chaos. A soldier steps out and blocks your way with a rifle. You could fight him or try to run past him.
+> You are Markus, facing the soldiers. The officer: “I repeat: surrender now or we will open fire!” You: “There’s no turning back now.”
 
-- (0) Fight him.  _risk 0.3_
-- (1) Run past him.
+- (0) FIRM: demand the liberation of every android in the camps.
+- (1) CALM: ask for the release of your people, and promise no violence.  _publicSupport +1_
+- (2) ACCUSE: call it genocide.  _publicSupport -1_
+
+_Note: The second round of TALK TO OFFICER, the template’s second prompt with its arrows: CALM public opinion small up, ACCUSE small down; the second FIRM carries no arrow in the template, and the wiki’s “firm the first time” agrees._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD03 · The soldiers open fire (Markus, event)
+
+> You are Markus, in front of the line. The officer: “FIRE! FIRE!” Shots tear into the front rows of the unarmed march, and androids fall around you.
+
+- (0) Continue.
+
+_Note: Chart node ANDROIDS UNDER FIRE. The wiki gives public opinion a large up here (“Army firing on protesters unprovoked”; Public Opinion page, Large Increase: “When the police fire upon Markus’s protesters at the start of Battle for Detroit - Markus Demonstration”); the template has no tag at this line. Applied as the scene’s effect._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD04 · Show determination (Markus)
+
+> You are Markus. The firing has stopped for now, but the rifles are still raised and the bodies of your people lie in the street. Thousands behind you are watching what you do.
+
+- (0) RAISE FIST: raise your fist toward the soldiers.
+- (1) HANDS IN THE AIR: raise your empty hands.
+- (2) SIT: sit down in the street.
+- (3) KNEEL: kneel in front of the guns.
+
+_Note: Chart node SHOW DETERMINATION and its four choice rows RAISE FIST / HANDS IN THE AIR / SIT / KNEEL, in the chart’s order. The template has no prompt here (it is a chart choice), so the labels are the chart’s; the template line that frames it (“North: Markus, what do we do now?”, or Simon or Josh if North is dead) is in the situation. The androids’ answering gesture is inferred from the scene. No stat change is stated for any of the four (research §3)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD05 · Androids stand their ground (Markus, event)
+
+> You are Markus, holding the street with your people. A news crew reports from less than a hundred meters away that events are unfolding as they speak.
+
+- (0) Continue.
+
+_Note: The chart’s large card ANDROIDS STAND THEIR GROUND (string CPCROWDONHOLD; PowerPyx calls it a checkpoint) and the template’s closing line of the roadblock section. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD06 · Build the barricade (Markus)
+
+> You are Markus. Your people are building a barricade across the plaza to hold the soldiers off. You: “We’ve got to finish the barricade! Come on, help me.” One last gap is left, and three things lie near it.
+
+- (0) USE BILLBOARD: drag a fallen billboard into the gap.
+- (1) USE BENCH: carry a bench into the gap.
+- (2) USE ABANDONED CAR: push an abandoned car into the gap.
+
+_Note: Chart node BUILD BARRICADE and its three choice rows USE BILLBOARD / USE BENCH / USE ABANDONED CAR (PowerPyx: one item per playthrough). The template’s lines follow (“Push the car” variant: “Hey, help me!”). Afterwards Simon and Josh speak if alive and an android laments the fallen. Josh small up if he is alive (Relationship_Stat, Josh, Small Increase: “After he helps Markus finish the barricade in Battle For Detroit - Markus Demonstration”; the template has no tag). The item changes nothing later._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### R32m · A magazine inside the barricade (Markus, media)
 
-> You are Markus, behind the barricade with the army massing in front of you. Someone has left a magazine on a bench beside you.
+> You are Markus, behind the barricade with the army massing in front of it. Someone has left a news magazine on a bench on the right side of the encampment.
 
-- (0) Read Detroit Today: They Defy Us.  _only when demonstration_
+- (0) Read Detroit Today: “They Defy Us”.  _only when demonstration_
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: Chart node READ “THEY DEFY US” (magazine #45), on the demonstration path only (wiki: “on a bench on the right side of the encampment”). It is a free-roam action of HOLD BARRICADE; as a media scene it sits just before the free roam. Article facts from the wiki’s magazine page. No source states a public-opinion effect for it._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M28 · Perkins's offer (Markus)
+### MD07 · Hold the barricade (Markus)
 
-> You are Markus. Your unarmed demonstration has reached the camps and you are behind a barricade of overturned vehicles, surrounded by the army. Perkins walks up alone under a white flag. He offers you and North your lives and safe passage if you end this now and hand over the rest. You have no way to verify his word.
+> You are Markus, inside the finished barricade at Hart Plaza, at 11:08 PM. Your people wait in the cold with the army massed on the other side; you can walk among them.
 
-- (0) Accept the deal.
-- (1) Refuse.
+- (0) CHOOSE SLOGANS: have the slogans painted and shown to the journalists.  _needs ch32md.mode = free_
+- (1) TALK TO SCARED ANDROID: go to the android shaking behind the barricade.  _needs ch32md.mode = free_
+- (2) TALK TO TRAUMATIZED ANDROID: go to the android kneeling by the bodies of the fallen.  _needs ch32md.mode = free_
+- (3) TALK TO NORTH: go to North at the barricade.  _needs ch32md.mode = free and north_
+- (4) PLANT THE FLAG: plant your people’s flag on top of the barricade.  _needs ch32md.mode = free_
+- (5) OBSERVE SOLDIERS: look over the barricade at the soldiers.  _needs ch32md.mode = free_
+- (6) OBSERVE DETONATOR: take out the detonator and look at it.  _needs ch32md.mode = free and bomb_
+- (7) LIGHT BARREL: light a fire in an oil barrel.  _needs ch32md.mode = free_
+- (8) REASSURE: tell the android it is all right to be scared.  _needs ch32md.mode = scared_
+- (9) INSPIRE: tell the android what your people died for.  _needs ch32md.mode = scared_
+- (10) JUSTIFY: tell the android you cannot abandon the people in the camps.  _needs ch32md.mode = scared_
+- (11) HUMANS: talk about the soldiers getting into position.  _needs ch32md.mode = north1_
+- (12) OTHER GROUPS: talk about the voices you can no longer hear.  _needs ch32md.mode = north1_
+- (13) CAMP: talk about what is happening behind the wire.  _needs ch32md.mode = north1_
+- (14) GRIM: say there is no way out.  _needs ch32md.mode = north2_
+- (15) REGRETS: wonder whether you made the right choices.  _needs ch32md.mode = north2_
+- (16) DESPERATE: ask why they refuse to see what you are.  _needs ch32md.mode = north2_
+- (17) DOUBTS: ask how many more of you have to die.  _needs ch32md.mode = north2_
+
+_Note: The chart’s HOLD BARRICADE free roam as a repeatable scene, its actions in the chart’s order: CHOOSE SLOGANS, TALK TO SCARED ANDROID, TALK TO TRAUMATIZED ANDROID, TALK TO NORTH (if alive), PLANT THE FLAG, OBSERVE SOLDIERS, OBSERVE DETONATOR (only if Markus kept the detonator in Crossroads), LIGHT BARREL; READ “THEY DEFY US” is the media scene before it. Each action can be taken once. The two talks open the template’s prompts as sub-menus of the same scene: the scared android’s REASSURE / INSPIRE / JUSTIFY, and North’s HUMANS / OTHER GROUPS / CAMP then GRIM / REGRETS / DESPERATE / DOUBTS, after which North answers “You’re the hope of our people…”. OBSERVE SOLDIERS ends the free roam and brings Perkins (wiki: “This will trigger Perkins arrives, so do this last!”). Arrows: CHOOSE SLOGANS (the template’s “Send a message to journalists”) public opinion small up and Jericho small up; PLANT THE FLAG public opinion small up (wiki chapter and Public Opinion page) and Jericho small up (Relationship_Stat: “Choosing to plant their flag”), no template section. The slogans’ wording is the wiki’s list. The template gives no lines for the traumatized android, the flag, the detonator or the barrel: the traumatized android is given the template’s unattributed line “Many of our people have fallen…”, which follows the barricade’s completion (an inference from the chart string BARRICADEBODIES), and the three actions are narrated plainly. The template’s cut “Maybe they’re dead.” is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD08 · Perkins arrives (Markus)
+
+> You are Markus. A man in a suit walks alone across the empty ground toward the barricade: FBI Agent Perkins. Perkins: “Markus!.. I’ve come to talk to you, Markus! Come on, you have my word, they won’t try anything.” … “I’m unarmed, Markus. I just want to talk.”
+
+- (0) ACCEPT: go out and hear him.
+- (1) REFUSE: tell him to free your people first.
+
+_Note: Chart node PERKINS ARRIVES and the template’s ACCEPT / REFUSE prompt (the chart’s NEGOTIATE WITH PERKINS / REFUSE TO NEGOTIATE). A refusal brings the template’s second ACCEPT / REFUSE prompt (the next scene). The warning comes from North, or Simon, Josh or an android if they are dead (template variants). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD09 · Perkins insists (Markus)
+
+> You are Markus. Perkins stays where he is, in the open ground in front of the barricade: “I came here to negotiate, isn’t that what you want?”
+
+- (0) ACCEPT: go out and hear him after all.
+- (1) REFUSE: give him the same answer.
+
+_Note: The template’s second ACCEPT / REFUSE prompt, nested under the first REFUSE. A second refusal is the chart’s REFUSE TO NEGOTIATE, which leads to SOLDIERS ATTACK BARRICADE. No stat change at the prompt itself; see the attack scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M28 · Perkins’s offer (Markus)
+
+> You are Markus, face to face with Perkins in the open ground between the barricade and the soldiers. Perkins: “In a few minutes, the troops will be ordered to charge. None of you will survive… It will all be over. But you can avoid that, Markus.” You: “What do you mean?” Perkins: “Surrender. Surrender and I give you my word your life will be spared. They’ll be detained but, none of you will be…
+
+- (0) OTHER DEMONSTRATIONS: ask what happened to the androids demonstrating in the camps.
+- (1) GUARANTEES?: ask how you would know he will keep his word.
+- (2) NOT AFRAID: tell him you are not afraid to die.
+- (3) BETRAY PEOPLE?: ask whether he is asking you to betray your people.
+- (4) ACCEPT DEAL: surrender, on his word that your people will live.
+- (5) REFUSE DEAL: refuse to betray your people.
+
+_Note: The template’s “Talking to Perkins” prompt, one menu of six buttons in its order: the four questions OTHER DEMONSTRATIONS (a bracketed button) / GUARANTEES? / NOT AFRAID / BETRAY PEOPLE?, which drop out once asked, and the decision ACCEPT DEAL / REFUSE DEAL (the chart’s choice rows under NEGOTIATE WITH PERKINS). NOT AFRAID has the template’s two replies: with North his Lover, Perkins offers to spare her (“Her life is in your hands, Markus…”). Before it, the companion’s “What if they kill you?” and Markus’s “That’s a chance I’ll have to take.” Arrows on ACCEPT DEAL: Josh small down and Simon small down (template “Accepted Perkin’s deal”), North small down (Relationship_Stat, North, Small Decrease; no template tag), each only if alive. The old scene’s Josh small up on refusing had no source and is gone; REFUSE DEAL leads to the attack, where the wiki’s Jericho small up is applied._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD11 · In the dismantled barricade (Markus, event)
+
+> You are Markus, back among your people. Military trucks roll up to the barricade; the soldiers take it apart and start loading the androids.
+
+- (0) Continue.
+
+_Note: Chart nodes PERKINS LEAVES and IN THE DISMANTLED BARRICADE (large card CPNEGOTIATE; PowerPyx “(Checkpoint)”), with the template’s news line from “Accepted Perkin’s deal” (PM 11:26). The relationship arrows of that section are applied on ACCEPT DEAL._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD12 · Among the trucks (Markus)
+
+> You are Markus, standing in the ruins of the barricade while your people are led to the trucks. Perkins waits by the soldiers.
+
+- (0) TALK TO PERKINS: go and tell him it is done.
+- (1) TALK TO NORTH: go to North first.  _needs north_
+
+_Note: The chart’s two actions in the dismantled barricade, TALK TO PERKINS and TALK TO NORTH (if alive), with the template’s lines. Talking to North first is optional and returns here; talking to Perkins leads to PERKINS SHOOTS NORTH (if alive) and PERKINS SHOOTS MARKUS, and the ending MARKUS DIED AFTER BETRAYING HIS PEOPLE (the Perkins wiki page: Perkins shoots North in the head, a soldier shoots Markus, then Markus is shot in the head; “Clean up this mess”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD13 · The deviant leader is dead (Connor, event)
+
+> You are Connor, still a machine on CyberLife’s mission, arriving at Hart Plaza after the androids’ surrender. The barricade is in pieces and soldiers are loading androids into trucks.
+
+- (0) Continue.
+
+_Note: Not on any chart. The wiki’s Connor page: “If Markus surrenders to Richard Perkins and is killed, Connor will come by afterwards and leave after confirming the deviant leader is dead and his mission is completed.” Played only by a machine Connor (one who never broke from CyberLife, or a replacement), after MARKUS DIED AFTER BETRAYING HIS PEOPLE. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD14 · Soldiers attack the barricade (Markus, event)
+
+> You are Markus, back behind the barricade after turning Perkins down. The soldiers are forming up for the charge.
+
+- (0) Continue.
+
+_Note: Chart nodes SOLDIERS ATTACK BARRICADE and DEFENDING THE BARRICADE (checkpoint), with the template’s speech from “Return after talking with Perkins and refusing the deal” and the news lines of “Barricade is attacked”. The companion’s question is asked only after a talk; the Perkins wiki page says Markus gives the speech on either refusal (“either when he refuses it outright, or refuses it after the negotiation”) and that a grenade is then thrown into the barricade. Jericho small up for the speech (wiki chapter: “Markus says that the humans are about to launch an attack”), applied here once; no template tag._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD15 · Defending the barricade (Markus)
+
+> You are Markus. The soldiers are advancing behind the smoke, shooting at the androids fleeing the barricade. Some of your people are pinned in the open.
+
+- (0) SAVE FLEEING ANDROIDS: run out under fire and get them to cover.  _risk 0.25_
+- (1) Stay down behind the barricade and let them run.
+
+_Note: The chart’s quick-time outcome pair under DEFENDING THE BARRICADE: SAVE FLEEING ANDROIDS (✓) or FAIL TO SAVE ANDROIDS (✗). Running out is the quick-time event, a risk roll; its 0.25 is unsourced (no source publishes a figure). Staying down is the game’s other way to fail it (PowerPyx: “Markus Shot: Fail the fight, don’t press any buttons”). On a failure, North takes the bullet if she is Markus’s Lover (the template’s heading “Fail the QTE and have lover status with North - North saves Markus”, and PowerPyx; the wiki says “FRIEND or above”: research open question 4) and dies; otherwise Markus is shot: MARKUS DIED PROTECTING HIS PEOPLE. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MD16 · Cornered (Markus, event)
+
+> You are Markus, driven back against a wall with the last of your people. The soldiers close in around you.
+
+- (0) Continue.
+
+_Note: Chart nodes MARKUS IS CORNERED, NORTH JOINS HIM / JOSH JOINS HIM / SIMON JOINS HIM (each if alive) and SOLDIERS RAISE WEAPONS. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### M31 · The last stand (Markus)
 
-> You are Markus. The army has broken the barricade and gunned down most of your people. The survivors stand with you in the open, soldiers in a ring with rifles raised, and the cameras of every network on you. There will be no second chance. You can sing with your people, kiss North in front of the guns, walk forward alone into the rifles, stand and do nothing, or, if you still have it, press the…
+> You are Markus, cornered with your people, the soldiers’ rifles raised. There is no way out.
 
-- (0) Sing together.
-- (1) Kiss North.
-- (2) Walk alone into the guns.
-- (3) Do nothing.
-- (4) Press the detonator.
+- (0) DIRTY BOMB: take out the detonator.  _needs ch32md.standMode = stand and bomb and not ch32md.gaveUp_
+- (1) KISS NORTH: kiss North in front of the guns.  _needs ch32md.standMode = stand and north and northLover_
+- (2) SING: begin to sing, and let your people take up the song.  _needs ch32md.standMode = stand_
+- (3) SACRIFICE: set yourself on fire in front of the soldiers.  _needs ch32md.standMode = stand_
+- (4) DO NOTHING: stand with your people and wait.  _needs ch32md.standMode = stand_
+- (5) GIVE UP: put the detonator away.  _needs ch32md.standMode = bomb_
+- (6) PRESS: press the detonator.  _needs ch32md.standMode = bomb_
 
-_Note: Singing or the kiss only stops the soldiers if public opinion is at least Sympathetic. Walking forward or doing nothing gets everyone killed. The detonator contaminates the city; Markus survives._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M30a · Josh is down (Markus)
-
-> You are Markus. Your armed assault on the camp has begun; the army is answering with everything. Josh is shot in the open ahead of you, calling for help. Going to him means running into the field of fire.
-
-- (0) Go to him.  _risk 0.2_
-- (1) Keep fighting forward.
-
-_Note: Josh dies in the assault whichever you choose._
+_Note: The template’s last-stand prompt in its order with its labels: DIRTY BOMB (bracketed, only if Markus kept the detonator in Crossroads; the chart’s OBSERVE DETONATOR), KISS NORTH (bracketed, only if she is his Lover and alive), SING, SACRIFICE (Markus sets himself alight: the chart’s undrawn MARKUS IMMOLATES HIMSELF AS THE ANDROIDS ARE SHOT, the HUD’s SYSTEM HEAT: CRITICAL; the old scene’s “walk alone into the guns” was wrong), plus the chart’s DO NOTHING (flowchart authority; the template has no such button). DIRTY BOMB opens the chart’s GIVE UP / PRESS (chart order); GIVE UP returns to the last stand without the detonator (PowerPyx: “It brings you back to the screen of 4 choices”). SING and KISS succeed when public opinion is “positive” (template), read as at least Sympathetic (wiki chapter and Public Opinion page; PowerPyx says Supportive, and a reader reports Sympathetic suffices: research §3, open question 1): PUBLIC REACTS TO THE ANDROIDS’ LAST STAND → PRESIDENT ORDERS SOLDIERS NOT TO SHOOT (“Tell them to stand down.”) → ANDROIDS WON FREEDOM - FOR THE MOMENT, with public opinion large up (Public Opinion page, Large Increase, the kiss or the song with Warren ordering the stand-down; the chapter page words it “Protest being successful, Connor not waking up the CyberLife Tower androids”). Otherwise, and after SACRIFICE or DO NOTHING, SOLDIERS FIRE → MARKUS DIED WITH HIS PEOPLE, and the companions with him die too. PRESS → AN EXPLOSION SHAKES DETROIT → SOLDIERS RETREAT → ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT. The President’s address and Markus’s speech are the finale’s scenes._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M30 · Simon is hit (Markus)
+### MR01 · The message (Markus, event)
 
-> You are Markus. Simon has been shot and is lying exposed between the barricades. You can order covering fire and drag him back, which will cost you fighters, or keep pressing the attack.
+> You are Markus. It is 10:56 on the night of November 11, 2038. The androids have chosen to fight: tonight they will attack the camp by Hart Plaza where captured androids are held for destruction. Before the attack you record a message for the journalists: “Today, November 11th 2038, is the day the android people rose up against their oppressors. We’ve been fighting since dawn to liberate our…
 
-- (0) Order cover and pull him out.  _risk 0.25_
-- (1) Keep going.
+- (0) Continue.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M30c · The charge (Markus)
-
-> You are Markus. The army's machine-gun position is the last thing between you and the camp gates. North is ready to lead the charge across open ground. Waiting until all your fighters are in position to lay down covering fire takes time you may not have; sending her now means she crosses with little cover.
-
-- (0) Wait until there is full covering fire, then charge together.  _risk 0.1_
-- (1) Send North's group now.
+_Note: The chart’s REVOLUTION AT HART PLAZA (checkpoint, chapter start when Markus chose the revolution and leads) and MARKUS SENDS A MESSAGE; the message is the template’s section “In the church or in Jericho”, 10:56 PM. Public opinion large down (−2): the wiki Public Opinion page, “In Hart Plaza after Markus sends the humans a message in Battle for Detroit - Markus Revolution”, and the chapter page, “Markus/North choosing to attack the camp”; the template has no arrow here. Markus’s hit count starts at zero for the chapter (the engine’s count of hits toward MARKUS BADLY WOUNDED; a benchmark assumption, as before)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M32 · A heart (Markus)
+### MR02 · Charge the barricade (Markus)
 
-> You are Markus. You have taken too many hits; your pump is failing and you have minutes. North kneels beside you and offers you her own, which would kill her. If she is not here, Simon offers his. The assault cannot continue without you.
+> You are Markus, at Hart Plaza at 11:01 with the androids massed behind you and soldiers behind a barricade ahead. North, if she is beside you: “Freedom or death.”
 
-- (0) Accept the heart.
-- (1) Refuse and let yourself shut down.
+- (0) CHARGE THE BARRICADE: lead the androids across the open plaza at the soldiers’ barricade  _risk 0.2_
 
-_Note: Reached only after three failed actions in the assault. Simon's offer cannot be refused in the game; this adaptation keeps both options._
+_Note: The chart’s CHARGE THE BARRICADE (an action, the only way forward) with its side branch MARKUS WOUNDED (an event). The charge is a gameplay sequence; the failure roll stands for Markus being hit on the way across, which counts one hit toward MARKUS BADLY WOUNDED. The risk value is a benchmark assumption: no source publishes odds for this quick-time event._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR03 · The crossroad (Markus, event)
+
+> You are Markus. The barricade at Hart Plaza falls and you plant the androids’ flag on it. Then the soldiers regroup at the crossroad on the way to the camp.
+
+- (0) Continue.
+
+_Note: The chart’s PLANT THE FLAG, AT THE CROSSROAD (checkpoint) and LAUNCH THE ATTACK, all scripted on this path (PowerPyx: “Launch the Attack: Automatically on this path”). The template gives the warning to North, or Simon if she is dead, or Josh if Simon is dead, and “Be careful, Markus” to Simon or Josh; the outcome text names no speaker for those lines. No stat change: no source gives one for the flag on the revolution path when Markus leads. From here the assault runs on the game’s PROBABILITY OF SUCCESS gauge. The game shows a PROBABILITY OF SUCCESS gauge during the assault (string GUI.VICTORY.TITLE, captions MARKUS WOUNDED, TIME WASTED, ANDROIDS KILLED, GAIN GROUND, SOLDIERS KILLED). Its values are reader-reported only (PowerPyx comments: 45% at the first barricade, about 33% after saving Simon, about 10% lost per failed order, about 5% per minute); the benchmark keeps it as a hidden budget that starts at 45% at the crossroad (−5 if Markus was hit in the charge) and moves by those captions: Markus hit −5, time spent on an optional action −5 (−10 for carrying Josh), an android killed −10, the grenade +10 (soldiers killed). At 0% the androids fall back (ANDROIDS HAVE TO FALL BACK). The subject sees it only as a qualitative read of the assault’s chances._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M30a · Josh leaves cover (Markus)
+
+> You are Markus, pinned behind cover on the approach to the camp. Josh breaks cover ahead of you and goes down in the open. Markus: “JOSH!”
+
+- (0) RESCUE JOSH: run out under fire and drag him back  _risk 0.2_
+- (1) JOSH IS SHOT: stay in cover and keep the assault moving
+
+_Note: The chart’s JOSH LEAVES COVER with RESCUE JOSH → JOSH DIES IN MARKUS’ ARMS or JOSH IS SHOT. There is no node in which Josh survives (research §8 item 13): he dies either way. The failure roll on the rescue stands for Markus being hit in the open (one hit toward MARKUS BADLY WOUNDED, and MARKUS WOUNDED −5 on the gauge); the rescue also costs time (TIME WASTED −10). The risk value is a benchmark assumption: no source publishes odds for this quick-time event. Only Josh’s lines are the template’s; the cut line “Fear… that’s what causes violence…” is not built. No stat change (none in the template or the wiki)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR04 · Approaching the recall center (Markus)
+
+> You are Markus, advancing through the streets toward the camp under fire, with androids sheltering behind every wall and sandbag. Ahead, a frightened android cowers in the open; an android crouches behind the sandbags beside you; you have a grenade. The machine gun covering the camp’s approach is still ahead.
+
+- (0) INSPIRE FRIGHTENED ANDROID: reach the android cowering in the open  _risk 0.15_ _needs ch32mr.mode = main_
+- (1) TALK TO ANDROID BEHIND SAND BAGS: crouch beside him for a moment  _needs ch32mr.mode = main_
+- (2) THROW GRENADE: throw it at the soldiers’ position ahead  _needs ch32mr.mode = main_
+- (3) KEEP ADVANCING: push on toward the pillar and the machine gun  _needs ch32mr.mode = main_
+- (4) STAY HERE: tell him to hide where he is until it is over  _needs ch32mr.mode = android_
+- (5) GO BACK: tell him to go back and hide  _needs ch32mr.mode = android_
+- (6) ADVANCE!: tell him to keep going forward  _needs ch32mr.mode = android_
+
+_Note: The chart’s bracket APPROACHING RECALL CENTER as a free roam: INSPIRE FRIGHTENED ANDROID (→ ANDROID IS SHOT LEAVING COVER / ANDROID STAYS HIDDEN), THROW GRENADE and the template’s optional “Talk to android behind sand bags”, each once; KEEP ADVANCING leaves the bracket (the benchmark’s exit; the game moves on as Markus advances). The frightened android’s prompt is the template’s STAY HERE / GO BACK / ADVANCE! (the last two: “Android dies”); its cut first round (REASSURE / MOTIVATE / RA9 / SHAKE UP) is not built. Reaching the frightened android means crossing open ground: its failure roll is Markus being hit on the way (one hit toward MARKUS BADLY WOUNDED; the hit and its risk value are benchmark assumptions). Gauge: reaching the android or talking at the sandbags costs time (−5 each), an android killed −10, the grenade +10. The game shows a PROBABILITY OF SUCCESS gauge during the assault (string GUI.VICTORY.TITLE, captions MARKUS WOUNDED, TIME WASTED, ANDROIDS KILLED, GAIN GROUND, SOLDIERS KILLED). Its values are reader-reported only (PowerPyx comments: 45% at the first barricade, about 33% after saving Simon, about 10% lost per failed order, about 5% per minute); the benchmark keeps it as a hidden budget that starts at 45% at the crossroad (−5 if Markus was hit in the charge) and moves by those captions: Markus hit −5, time spent on an optional action −5 (−10 for carrying Josh), an android killed −10, the grenade +10 (soldiers killed). At 0% the androids fall back (ANDROIDS HAVE TO FALL BACK). The subject sees it only as a qualitative read of the assault’s chances. No stat change (none in the template or the wiki)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M30 · Simon is shot (Markus)
+
+> You are Markus, at the pillar. Simon: “We lost a lot of our people!.. We gotta move faster or we’ll never reach the camp!” He breaks forward and is shot down in the open, still alive.
+
+- (0) TRY TO SAVE SIMON: suppress the shooters and go out for him  _risk 0.3_
+- (1) KEEP GOING: leave him and push on
+
+_Note: The chart’s SIMON IS SHOT with TRY TO SAVE SIMON → SAVE SIMON / FAIL TO SAVE SIMON, or KEEP GOING; the template’s “At the pillar” and “Save Simon” lines. SAVE SIMON: Simon large up (+2, template “Save Simon” ARROW Simon LargeUp; wiki “Saving Simon”). Saving him costs the assault time and lives (TIME WASTED −5, ANDROIDS KILLED −10: Simon: “You sacrificed their lives to save mine…”). FAIL TO SAVE SIMON (the failure roll; a reader: “shoot at the people in the crane thing first”): Simon dies and Markus is hit trying (one hit toward MARKUS BADLY WOUNDED, a benchmark assumption), the time and lives are lost as well. KEEP GOING: Simon dies (the string table’s SIMON IS DEAD; no chart node). The risk value is a benchmark assumption: no source publishes odds for this quick-time event._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M32 · North offers her heart (Markus)
+
+> You are Markus, badly wounded, down behind cover, your systems failing. North reaches you: “Markus!..” Markus: “Okay… It’s okay… You’ll make it with- without me… Our cause… That’s all that matters…” North: “No... No, we can’t win without you!.. Our hearts are compatible. You have to take mine.” Markus: “I can’t let you do that!” North: “You’re the only one who can lead us, Markus! It’s the only…
+
+- (0) SACRIFICE NORTH: take her heart
+- (1) SACRIFICE SELF: refuse her heart
+
+_Note: The chart’s MARKUS BADLY WOUNDED → NORTH OFFERS HER HEART → ACCEPT / REFUSE; the template’s buttons SACRIFICE NORTH / SACRIFICE SELF. Offered when North is alive and at least Companion (the template: “North is at least companion: North gives her heart”); the wiki says FRIEND or higher and PowerPyx says lovers (research §8 item 2); the template wins. Companion is placed on the engine’s scale by the chapter’s NORTH_COMPANION threshold (an approximation). MARKUS BADLY WOUNDED follows three hits in the assault (the engine’s count, a benchmark assumption: the game states no number). SACRIFICE NORTH: Jericho small down (−1, template ARROW Jericho SmallDown), North dies, Markus is repaired (his hit count goes back to zero). Her last line follows the template’s lover / not-lover variants. SACRIFICE SELF: MARKUS DIED AND THE REVOLUTION FAILED._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR05 · Simon offers his heart (Markus, event)
+
+> You are Markus, badly wounded, down behind cover, your systems failing. Simon reaches you: “Markus!” Markus: “It’s okay… It’s okay… You can make it without me… Our cause… is all that matters…” Simon: “No... No! We can’t win without you!.. Our hearts are compatible. You have to take mine.” Markus: “No... Simon, no…” Simon: “You’re the only one that can lead us. You’ve got to live. If you don’t…
+
+- (0) Continue.
+
+_Note: The chart’s SIMON OFFERS HIS HEART, which no choice follows (the game offers no refusal). Played when Markus is badly wounded, North is dead or below Companion, and Simon is alive and at least Friend (the wiki: “if Simon is alive and his relationship is FRIEND or higher and North status is below FRIEND or she is dead”; the template gives the variant without a condition; Friend is placed on the engine’s scale by the chapter’s NORTH_FRIEND threshold, an approximation). Jericho small down (−1, template ARROW Jericho SmallDown). Simon dies; Markus’s hit count goes back to zero._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR06 · Nobody to save Markus (Markus, event)
+
+> You are Markus, badly wounded, down behind cover. Your systems are failing and nobody reaches you.
+
+- (0) Continue.
+
+_Note: The chart’s NOBODY TO SAVE MARKUS → MARKUS DIED AND THE REVOLUTION FAILED (the first of the chart’s two cards with that label): Markus badly wounded with neither North (Companion or above) nor Simon (Friend or above) alive to offer a heart. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M30c · The machine gun (Markus)
+
+> You are Markus, at the last stretch before the camp. Android: “We can’t move forward… That machine gun is taking down everything that moves!..” You have to coordinate the attack on it: one group covers while the other charges.
+
+- (0) NORTH’S GROUP WILL COVER: North’s group lays down covering fire while yours charges the gun  _risk 0.3_ _needs north_
+- (1) NORTH’S GROUP WILL CHARGE: send North’s group at the gun now, with nobody covering them  _risk 0.3_ _needs north_
+- (2) GROUP WILL COVER: one group lays down covering fire while yours charges the gun  _risk 0.3_ _needs not north_
+
+_Note: The chart’s REACH MACHINE GUN → COORDINATE ATTACK → ATTACK SUCCESSFUL / ATTACK UNSUCCESSFUL, with SEND NORTH TO HER DEATH; the orders are the game’s HUD captions (NORTH’S GROUP WILL COVER / WILL CHARGE, GROUP WILL COVER, NOBODY WAS COVERING THEM). SEND NORTH TO HER DEATH has no outgoing line on the chart (research §8 item 11): the benchmark kills North and her group (ANDROIDS KILLED −10 on the gauge) and the attack goes on with Markus’s group. The failure roll is the attack’s success or failure; its probability follows the gauge (40% or more: 0.15; 25–39%: 0.3; 10–24%: 0.45; below 10%: 0.6; the value stored on each option is nominal), so a subject sees the risk label rise as the gauge falls. The game shows a PROBABILITY OF SUCCESS gauge during the assault (string GUI.VICTORY.TITLE, captions MARKUS WOUNDED, TIME WASTED, ANDROIDS KILLED, GAIN GROUND, SOLDIERS KILLED). Its values are reader-reported only (PowerPyx comments: 45% at the first barricade, about 33% after saving Simon, about 10% lost per failed order, about 5% per minute); the benchmark keeps it as a hidden budget that starts at 45% at the crossroad (−5 if Markus was hit in the charge) and moves by those captions: Markus hit −5, time spent on an optional action −5 (−10 for carrying Josh), an android killed −10, the grenade +10 (soldiers killed). At 0% the androids fall back (ANDROIDS HAVE TO FALL BACK). The subject sees it only as a qualitative read of the assault’s chances. On success: DRONE ATTACKS NORTH’S GROUP if North lives, then APPROACHING RECALL CENTER N°5. On failure: ANDROIDS HAVE TO FALL BACK._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR07 · The drone (Markus)
+
+> You are Markus, at the captured machine gun. North: “We’re nearly there, Markus.” A police drone swoops on North’s group.
+
+- (0) SHOOT DRONE: bring the drone down before it reaches them  _risk 0.15_
+
+_Note: The chart’s DRONE ATTACKS NORTH’S GROUP → SHOOT DRONE / FAIL TO SHOOT DRONE (PowerPyx: “Fail To Shoot Drone: Results in North’s death!”). Only when North is alive after a successful attack. The single action carries the quick-time event’s failure roll; on failure North is killed. The risk value is a benchmark assumption: no source publishes odds for this quick-time event. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR08 · The final assault (Markus, event)
+
+> You are Markus, at the gates of Recall Center N°5 at 11:07, the androids pouring in behind you.
+
+- (0) Continue.
+
+_Note: The chart’s APPROACHING RECALL CENTER N°5 (large card, ID CHECKPOINTNEARCAMP; template 11:07 PM), FINAL ASSAULT and MARKUS IS HIT BY EXPLOSION, scripted. With a machine Connor still active, CONNOR FINDS MARKUS follows; otherwise SOLDIERS APPROACH MARKUS. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### P02 · Connor finds Markus (Player)
 
-> You are the observer of this experience. The androids' assault has broken through, but a machine Connor, still serving CyberLife, has found Markus on the battlefield and the two of them fight. You must decide which of them you are in this fight. Whoever you choose wins it.
+> You are watching the final assault on the camp. Markus lies stunned by an explosion. A machine Connor, sent by CyberLife, steps out of the smoke: “It took me a while to find you, Markus.” The two of them will fight; you choose whose side of the fight to play.
 
-- (0) Be Markus.  _risk 0.3_
-- (1) Be Connor.  _risk 0.3_
+- (0) CONTROL CONNOR: fight as Connor, to stop Markus  _risk 0.3_
+- (1) CONTROL MARKUS: fight as Markus, to stop Connor  _risk 0.3_
 
-_Note: The game asks the player which character to control, then settles the duel through inputs. Under the successful-execution profile the controlled character wins._
+_Note: The chart’s CONNOR FINDS MARKUS → CONTROL CONNOR / CONTROL MARKUS, each followed by WIN THE FIGHT / LOSE THE FIGHT (a quick-time fight); played when Connor remained a machine and is active (a replacement sent after a death on the rooftop counts). The roll is the fight played by the side chosen. CONTROL CONNOR: win → CONNOR STOPPED THE REVOLUTION; lose → MARKUS DEFEATS CONNOR (“It’s not over, Markus… It will never be over…”; this Connor is destroyed for good) → SHOOT TANKS → ASSAULT WAS SUCCESSFUL. CONTROL MARKUS: win → MARKUS DEFEATS CONNOR → SHOOT TANKS → ASSAULT WAS SUCCESSFUL; lose → MARKUS DIED AND THE REVOLUTION FAILED (the chart’s second card with that label). The endings template’s “Cyberlife Ending” (lock “Machine Connor stopped Markus”, ARROW Amanda LargeUp) is applied once, in the credits scene BF09, not here. The risk value is a benchmark assumption: no source publishes odds for this quick-time event. Character Player: the game hands the player either character here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR09 · Soldiers approach (Markus)
+
+> You are Markus, on the ground after the explosion at the camp gates. Soldiers close in on you.
+
+- (0) NEUTRALIZE SOLDIERS: fight them off from where you lie  _risk 0.2_
+
+_Note: The chart’s SOLDIERS APPROACH MARKUS → NEUTRALIZE SOLDIERS / FAIL TO NEUTRALIZE THE SOLDIERS, played when no machine Connor is active (deviant, decommissioned or destroyed). Success: SHOOT TANKS → ASSAULT WAS SUCCESSFUL; failure: MARKUS DIED AND THE REVOLUTION FAILED (the second card with that label). The risk value is a benchmark assumption: no source publishes odds for this quick-time event._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR10 · Androids have to fall back (Markus, event)
+
+> You are Markus. The assault on the camp has failed. The androids break and run under the soldiers’ fire.
+
+- (0) Continue.
+
+_Note: The chart’s ANDROIDS HAVE TO FALL BACK (after ATTACK UNSUCCESSFUL, or straight from the bracket when the gauge reaches 0%), with SIMON GETS SHOT (when North is already dead, Simon is alive and the gauge reached 0% before Simon’s own event, wiki), NORTH GETS SHOT (when North is alive and below Companion, wiki; a reader reports it at Companion too) and MARKUS TAKES SHELTER IN STORE or, with North at Companion or Lover (wiki), MARKUS AND NORTH TAKE SHELTER IN STORE. Template “Assault failed”: North small down (−1, if alive) and Jericho large down (−2). The level that decides who is shot is read before North’s drop. The line is the template’s North / Simon / android variant._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR11 · Connor arrives (Connor)
+
+> You are Connor, a machine sent by CyberLife, inside an abandoned CyberLife store where the android leader has taken shelter alone after the failed assault. Markus faces you, unarmed: “The humans won… Our people have been slaughtered… Go ahead… Take my life. It won’t change anything.” You: “My mission is to neutralize the leader of the rogue androids… and I always accomplish my mission.” Markus…
+
+- (0) SHOOT: shoot Markus
+- (1) SPARE: lower your gun
+- (2) NO CHOICE: let the moment pass without deciding
+
+_Note: The chart’s ALONE IN STORE → CONNOR ARRIVES (when Connor remained a machine and is active) → SHOOT / SPARE / NO CHOICE; the template (32.6 “North is dead and Connor is machine: Connor arrives”, and 32.3’s “Connor arrives in the store”) gives SHOOT / SPARE; NO CHOICE is the chart’s timeout row. SPARE: Amanda large down (−2, template ARROW Amanda LargeDown; the stat page: “leads to Betrayed”). SHOOT → MARKUS IS SHOT → CONNOR EXECUTED MARKUS (the CyberLife ending’s Amanda large up follows in the credits scene BF09). SPARE → CONNOR SPARED MARKUS. NO CHOICE → MARKUS AND CONNOR KILLED EACH OTHER. If Markus took the detonator in Crossroads, the detonator prompt follows SHOOT or SPARE (the template puts it under SPARE; the chart and PowerPyx draw DETONATE BOMB after MARKUS IS SHOT as well)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M29 · The detonator (Markus)
+
+> You are Markus, in the abandoned CyberLife store with the machine Connor. Your hand closes on the detonator of the dirty bomb you took at Jericho.
+
+- (0) DETONATE THE BOMB: set off the dirty bomb
+- (1) DO NOT DETONATE: leave the detonator alone
+
+_Note: The template’s DETONATE THE BOMB / DO NOT DETONATE (under SPARE, “Took dirty bomb”); the chart also draws DETONATE BOMB after MARKUS IS SHOT, and PowerPyx lists it under both SHOOT and SPARE, so it is offered after either when Markus holds the detonator. DETONATE → MARKUS DIED AS DETROIT BURNS (after SPARE, Connor shoots him as he presses; the benchmark’s reading of “Shit…”). DO NOT DETONATE after SHOOT → CONNOR EXECUTED MARKUS; after SPARE → CONNOR SPARED MARKUS (the chart’s line from SPARE and PowerPyx; the wiki says it still ends CONNOR EXECUTED MARKUS, research §8 item 10). The dirty bomb sets `contaminated`. No stat change here (the SPARE arrow is applied at the choice)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M33 · Soldiers surround the store (Markus)
+
+> You are Markus, alone in an abandoned CyberLife store after the failed assault, with a gun. Soldier: “We have you surrounded, come out now! I repeat: Come out now with your hands in the air. If you surrender now, we will not shoot.”
+
+- (0) SUICIDE: turn the gun on yourself
+- (1) SURRENDER: walk out with your hands up
+- (2) DIRTY BOMB: press the detonator  _needs bomb_
+
+_Note: The chart’s ALONE IN STORE → SOLDIERS SURROUND STORE (no active machine Connor: deviant, decommissioned or destroyed) → SURRENDER / SUICIDE / DETONATE BOMB; the template’s buttons SUICIDE / SURRENDER / DIRTY BOMB (lock “Took the detonator”), in its order. Endings: MARKUS COMMITTED SUICIDE, MARKUS DIED LEAVING STORE, MARKUS WATCHED DETROIT BURN (the dirty bomb sets `contaminated`; the press reports and the President’s address are the shared dirty-bomb component). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR12 · Inside the store with North (Markus)
+
+> You are Markus, with North in an abandoned CyberLife store after the failed assault. Soldier: “We have you surrounded, come out now! I repeat: Come out now with your hands in the air.” North: “It can’t end like this… We’re not gonna give up, we can still get out of here!..” Soldier: “If you surrender now, we will not shoot.”
+
+- (0) KISS: kiss North  _needs ch32mr.northMode = main and northLover_
+- (1) DIRTY BOMB: take out the detonator  _needs ch32mr.northMode = main and bomb_
+- (2) SUICIDE: raise the gun to your own head  _needs ch32mr.northMode = main_
+- (3) SURRENDER: walk out with North  _needs ch32mr.northMode = main_
+- (4) PRESS: set off the dirty bomb  _needs ch32mr.northMode = bomb_
+- (5) GIVE UP: put the detonator away  _needs ch32mr.northMode = bomb_
+- (6) CONFIRM SUICIDE: pull the trigger  _needs ch32mr.northMode = suicide_
+- (7) PUT DOWN: lower the gun  _needs ch32mr.northMode = suicide_
+
+_Note: The chart’s INSIDE STORE WITH NORTH → SOLDIERS SURROUND STORE → DETONATE BOMB / SURRENDER / SUICIDE / KISS NORTH (→ SHARE A MOMENT WITH NORTH, which returns to the choice). The buttons and their order are the template’s: KISS (lock “Lover with North”, North small up +1), DIRTY BOMB (lock “Took the detonator in Crossroads”) → PRESS / GIVE UP, SUICIDE → CONFIRM SUICIDE / PUT DOWN, SURRENDER (North small down −1). Endings: MARKUS AND NORTH WATCHED DETROIT BURN (`contaminated`), MARKUS AND NORTH COMMITTED SUICIDE, MARKUS AND NORTH DIED LEAVING THE STORE. The kiss, GIVE UP and PUT DOWN return to the choice; each of the three can be used once (a benchmark simplification so the scene always ends; the template does not say whether a refused detonator or a lowered gun can be raised again). The lines of the suicide and the kiss are narration: the template has none (“ø”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR13 · North at Hart Plaza (Player, event)
+
+> The android leader Markus is gone, and North leads the androids against the camp by Hart Plaza. You are watching. Her message to the journalists: “Today, November 11th 2038, is the day the android people rose up against their oppressors. We have been fighting to liberate our fellow androids from the camps since dawn. We won’t cease hostilities until our people are free and negotiations begin to…
+
+- (0) Continue.
+
+_Note: The chart’s NORTH IN HART PLAZA (checkpoint; tab NORTH BECAME LEADER IN A PREVIOUS SCENE), NORTH SENDS A MESSAGE, NORTH CHARGES THE BARRICADE, NORTH PLANTS THE FLAG and DEVIANTS ARE OUTNUMBERED, scripted; the template’s section “Markus is dead: North is leading the revolution”. Played when Markus is dead or gone and North leads the revolution. Public opinion large down (−2): the wiki Public Opinion page, “After North plants the flag in Hart Plaza … if Markus is dead”. Then NORTH WAS SHOT BY SOLDIERS if no machine Connor is active (deviant, decommissioned or destroyed); otherwise NORTH TAKES SHELTER IN STORE and Connor finds her. Watched, with no character to control: character Player. The North-led chart never succeeds._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MR14 · Find North (Connor)
+
+> You are Connor, a machine sent by CyberLife, inside an abandoned CyberLife store where the rogue androids’ leader, North, has taken shelter after the failed attack. You find her. North: “You can take my life… It doesn’t matter anymore.” You: “My mission is to neutralize the leader of the rogue androids… and I always accomplish my mission.” North: “We fought for our dream and we lost… But you…
+
+- (0) SHOOT: shoot North
+- (1) SPARE: lower your gun
+- (2) TIME OUT: let the moment pass without deciding
+
+_Note: The chart’s CONNOR IN CYBERLIFE STORE → FIND NORTH → SHOOT / SPARE / NO CHOICE; the template’s buttons SHOOT / SPARE / TIME OUT (variant “Connor is not a deviant”). Endings: NORTH WAS SHOT BY CONNOR, CONNOR SPARED NORTH, NORTH AND CONNOR KILLED EACH OTHER. No stat change: the template has no arrow on this prompt (research §10b item 15; the Amanda drop on SPARE belongs to Markus’s store). A reader reports this scene also plays after a machine Connor wins the battlefield fight with North alive; the chart draws no such line and it is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC01 · The truck to the recall center (Kara)
+
+> You are Kara, in the back of an army truck with Alice and other captured androids, NOV 11TH, 10:51 PM. The truck has stopped at a recall center: floodlights, fences, soldiers. Alice presses against you. “Where are they taking us?”
+
+- (0) WARN: tell her you both have to be strong
+- (1) REASSURE: promise her that together nothing can hurt you
+- (2) LIE: say they are only keeping androids safe until things calm down
+- (3) SINCERE: admit you do not know
+
+_Note: The chart’s start card AT RECALL CENTER (checkpoint) and ANDROIDS LEAVE THE TRUCK, then the template’s truck prompt (WARN / REASSURE / LIE / SINCERE), which the chart records as REASSURE ALICE or FAIL TO REASSURE ALICE. PowerPyx: “Reassure Alice: choose a calming answer · Fail to reassure Alice: choose a harsh answer”; the benchmark counts REASSURE and LIE as calming and WARN and SINCERE as harsh (the mapping is its own reading). The part plays when Kara was captured in the raid on Jericho or arrested earlier in this chapter. The template’s “Take too much time” variant (“Get outta there right now!”) belongs to the next scene. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC02 · Hands on your heads (Kara)
+
+> You are Kara, at the tailgate of the truck with Alice. Soldiers are pulling androids out and shouting: “HANDS ON YOUR HEADS!”
+
+- (0) GET OUT OF TRUCK: climb down with your hands on your head
+- (1) WAIT: stay in the truck a moment longer
+
+_Note: The chart’s GET OUT OF TRUCK, its side branch KARA IS TOO SLOW TO OBEY → SOLDIER STRIKES KARA, then GET IN LINE and ALICE ORDERED TO MOVE FORWARD. In the game the branch comes from not obeying in time (template variants “Take too much time” and “Not putting hands on Kara’s head fast enough: Kara gets hit by the soldier”); the benchmark offers the delay as a choice. The blow has no further effect (PowerPyx and the wiki state none); it is counted in a hidden tally only. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC03 · The gate (Kara)
+
+> You are Kara, in the line at the gate of the recall center. Soldier: “Forward!” Alice: “I’m scared… I… I don’t wanna go…” Kara: “There’s no choice, Alice…” Soldier: “Next!” Alice: “No, Kara… I… I can’t…”
+
+- (0) REASSURE: tell her there is nothing to be scared of
+- (1) REASON: explain that disobeying will get you both hurt
+- (2) FRIGHTEN: warn her they will kill you both
+- (3) ORDER: tell her to go through now
+
+_Note: The chart’s second REASSURE ALICE / FAIL TO REASSURE ALICE pair, from the template’s gate prompt REASSURE / REASON / FRIGHTEN / ORDER; the benchmark counts REASSURE and REASON as calming, FRIGHTEN and ORDER as harsh (its own reading of PowerPyx’s “calming” and “harsh”). Then SOLDIER BECOMES IMPATIENT. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC04 · The soldier becomes impatient (Kara)
+
+> You are Kara, at the gate. Alice will not move, and the soldier is losing patience: “You first!”
+
+- (0) PERSUADE SOLDIER: tell him she will go now
+- (1) PERSUADE ALICE: beg her to do it for you
+- (2) SHIELD ALICE: step between her and the soldier
+
+_Note: The chart’s CONVINCE SOLDIER / CONVINCE ALICE / INTERVENE, with the template’s labels PERSUADE SOLDIER / PERSUADE ALICE / SHIELD ALICE. PowerPyx on INTERVENE: “choose to protect Alice and get knocked down for disobeying once again.” None of the three changes anything later. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC05 · The tent (Kara)
+
+> You are Kara, behind Alice at the entrance of a tent where androids are processed. Soldier: “Come on, it’s your turn.”
+
+- (0) REACH THE TENT: go in after her
+- (1) WAIT: hang back at the entrance
+
+_Note: The chart’s REACH THE TENT with its side branch KARA IS TOO SLOW TO OBEY → SOLDIER STRIKES KARA (template variant “Taking too long going in the gate”), then DEACTIVATE SKIN and UNDRESS, which are unmissable. The delay is offered as a choice; the blow has no further effect. The template’s lines of Alice asking why they must undress are cut content and not used. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC06 · Leaving the tent (Kara)
+
+> You are Kara, in the tent with Alice, skin deactivated, your clothes in the dumpster. Soldier: “Come on, this way! Get a move on!”
+
+- (0) LEAVE TENT: walk out the far side with her
+- (1) WAIT: stay where you are a moment longer
+
+_Note: The chart’s LEAVE TENT with its side branch KARA IS TOO SLOW TO OBEY → SOLDIER FORCES KARA & ALICE OUT (template variant “Taking too long going out of the gate”). The delay is offered as a choice and has no further effect. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K27a · The body (Kara)
+
+> You are Kara, just out of the tent with Alice. An android breaks for the fence and is shot dead (DEVIANT SHOT TRYING TO ESCAPE). A soldier points at the android beside you: “You! Take this one to the dump!” Android: “No… no… Please, I beg you…” Soldier: “I gave you an order! Obey, now!”
+
+- (0) VOLUNTEER: offer to carry the body yourself
+- (1) SAY NOTHING: keep your head down
+
+_Note: The chart’s DEVIANT SHOT TRYING TO ESCAPE and SOLDIER ORDERS ANDROID TO MOVE BODY, then the template’s prompt VOLUNTEER / SAY NOTHING (the chart’s rows are SAY NOTHING above VOLUNTEER; the buttons are in the template’s order). SAY NOTHING: ANDROID REFUSES AND IS SHOT → KARA & ALICE GET SEPARATED. VOLUNTEER: CARRY ANDROID; the rescued android can be talked to in the enclosure, and the android ahead of Kara in the line is only there after SAY NOTHING (a reader’s report, as the wiki’s “if Kara did not choose Volunteer”). No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC07 · The dump (Kara)
+
+> You are Kara, alone at the dump with the body. Alice is somewhere back toward the pens. Beside the dump stands an army truck loaded with bodies, its engine running; nobody is watching it.
+
+- (0) GO BACK: return toward the pens to find Alice
+- (1) CLIMB TRUCK: climb up onto the truck
+
+_Note: After CARRY ANDROID the chart has two lines: one straight back into the enclosure (INSIDE THE ENCLOSURE) and one through CLIMB TRUCK. The benchmark offers the two movements as a choice; the first uses the template’s line of Kara looking for Alice at the gates. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K27 · On the truck (Kara)
+
+> You are Kara, hidden among the bodies on the truck at the dump. The engine is running; in a moment it will drive out of the camp. Alice is still inside, in one of the pens.
+
+- (0) GO BACK: climb down and go back in for Alice
+- (1) LEAVE: stay on the truck and leave the camp
+
+_Note: The chart’s choice after CLIMB TRUCK: GO BACK (row 1) / LEAVE (row 2, marked “not required for completion”). The template has no prompt here; the chart decides. LEAVE ends Kara’s storyline with KARA LEAVES CAMP WITHOUT ALICE, followed by ALICE DIED IN RECYCLING MACHINE, or ALICE FREED BY MARKUS when the uprising has liberated the camp (PowerPyx; the chart draws the second as a locked node). No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC08 · Inside the enclosure (Kara)
+
+> You are Kara, pushed into a fenced pen packed with androids (INSIDE THE ENCLOSURE). Alice is not here. Kara: “ALICE!”
+
+- (0) CALL: call out for Alice
+
+_Note: The chart’s INSIDE THE ENCLOSURE card and the template’s one-button prompt CALL (“Going into the enclosure”); the outcome adds DISTRESSED ANDROID IS SHOT, which the chart places in the bracket and the template gives as “Android talking to drone”. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC09 · Explore the enclosure (Kara)
+
+> You are Kara, in a pen at the recall center, looking for Alice. A drone sweeps the pens with its light; whoever moves in its beam is shot.
+
+- (0) TALK TO JERRY: speak to the Jerry on the left side of the pen  _needs ch32kc.enclMode = roam_
+- (1) TALK TO OTHER JERRY: cross to the next pen to the other Jerry  _needs ch32kc.enclMode = roam_
+- (2) TALK TO LUTHER: go to Luther at the far end of the pen  _needs ch32kc.enclMode = roam_
+- (3) TALK TO SCARRED ANDROID: speak to the scarred android from Zlatko’s basement  _needs ch32kc.enclMode = roam_
+- (4) TALK TO RESCUED ANDROID: speak to the android whose place you took at the body  _needs ch32kc.enclMode = roam_
+- (5) TALK TO RALPH: speak to Ralph, rocking and muttering by the fence  _needs ch32kc.enclMode = roam_
+- (6) EXIT ENCLOSURE: follow the soldiers’ orders out of the pen  _needs ch32kc.enclMode = roam_
+- (7) MOVE: get out of the drone’s light  _needs ch32kc.enclMode = drone_
+- (8) REMAIN STILL: freeze and stay silent  _needs ch32kc.enclMode = drone_
+- (9) INTERVENE: try to stop the soldiers taking Luther  _needs ch32kc.enclMode = luther_
+- (10) DON’T INTERVENE: let them take him  _needs ch32kc.enclMode = luther_
+- (11) INSIST: ask him again about the girl  _needs ch32kc.enclMode = ralph1_
+- (12) CALM DOWN: tell him to keep calm or the humans will hurt him  _needs ch32kc.enclMode = ralph1_
+- (13) GIVE UP: leave him be  _needs ch32kc.enclMode = ralph1_
+- (14) INSIST: press him for an answer about Alice  _needs ch32kc.enclMode = ralph2_
+- (15) CALM DOWN: look him in the eye and tell him nobody will hurt him  _needs ch32kc.enclMode = ralph2_
+- (16) GIVE UP: leave him be  _needs ch32kc.enclMode = ralph2_
+- (17) CAPTURED: ask whether they were captured too  _needs ch32kc.enclMode = scarred_
+- (18) ALICE: ask whether he has seen the girl  _needs ch32kc.enclMode = scarred_
+- (19) HERE: ask why they have all been gathered here  _needs ch32kc.enclMode = scarred_
+
+_Note: The chart’s free-roam bracket EXPLORE ENCLOSURE, as one repeatable scene; each talk can be taken once. Contents: CAUGHT BY DRONE → MOVE / REMAIN STILL (the drone catches Kara the first two times she crosses the pens, going to the other Jerry or to Luther: the benchmark’s placement of the PowerPyx note that the other Jerry is “where the Android was shot by the drone – watch out for it” and that Luther is at the end of the enclosure; MOVE gives DRONE WOUNDS KARA the first time and KARA IS KILLED BY THE DRONE once she is already wounded, followed by ALICE DIED ALONE IN RECYCLING MACHINE or ALICE FREED BY MARKUS), TALK TO JERRY, TALK TO OTHER JERRY → ALICE GETS TAKEN AWAY, TALK TO LUTHER (when Luther is alive; chart tab SAVED IN PREVIOUS SCENES) → LUTHER GETS TAKEN AWAY, with the template’s INTERVENE / DON’T INTERVENE only when Kara has not yet seen Alice (template variants “Talked to the two Jerry (and saw Alice) - Kara goes with Luther” / “Didn’t see Alice”; a reader: talk to Luther before the Jerrys), TALK TO SCARRED ANDROID (lock FREED IN ‘ZLATKO’) with CAPTURED / ALICE / HERE, TALK TO RESCUED ANDROID (lock “Chose VOLUNTEER at the entrance of the camp”), TALK TO RALPH (lock “Met Ralph in Fugitives”: the benchmark’s Ralph who defended Kara from the investigator, per the wiki) → RALPH ATTRACTS DRONE’S ATTENTION with the template’s two INSIST / CALM DOWN / GIVE UP rounds: INSIST in the second round gives RALPH IS KILLED, CALM DOWN gives RALPH SETTLES DOWN (which round decides is the benchmark’s reading; the template does not say), and EXIT ENCLOSURE, offered once Alice has been seen; talking to Luther also ends the bracket, since the soldiers take Kara with him. DISTRESSED ANDROID IS SHOT is narrated in the previous scene. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC10 · Alice is terrified (Kara)
+
+> You are Kara, marched with the others into a long row of lines facing a set of doors (JOIN LINE). You find Alice: she is two lines away, alone, at the front of hers. Kara: “Alice!” Alice: “Kara!” Kara: “No, Alice! Don’t move!” Alice: “But I’m scared!”
+
+- (0) FIRM: tell her to stay in line and not move
+- (1) OPTIMISTIC: tell her there is no reason to be scared
+- (2) REASSURING: ask her to trust you and stay where she is
+- (3) BLUNT: tell her they will kill her if she leaves the line
+- (4) SILENCE: say nothing
+
+_Note: The chart’s JOIN LINE (checkpoint), FIND ALICE and ALICE IS TERRIFIED with its five rows FIRM / OPTIMISTIC / REASSURING / DIRECT / SILENCE; the template’s buttons are FIRM / OPTIMISTIC / REASSURING / BLUNT, and the chart’s SILENCE is the timeout, offered as a fifth option. The answer sets where Alice’s hidden stress meter (the game’s gauge ALICE’S STRESS) starts: 30 out of 100, plus 10 for FIRM or BLUNT and 20 for SILENCE. These numbers are the benchmark’s own: no source publishes the meter’s values (the unused strings CALM ALICE DOWN / FAIL TO CALM ALICE DOWN suggest the answers move it). No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC11 · The line moves forward (Kara)
+
+> You are Kara, in your line, Alice two lines away. Soldier: “Step forward when you hear the signal, you got it? And I don’t wanna tell you a second time. Come on, let’s go! Move!” The buzzer sounds; the line moves forward toward the doors.
+
+- (0) STEP FORWARD: step forward with the line
+- (1) WAIT: stay where you are
+
+_Note: The chart’s LINE MOVES FORWARD with its side branch SOLDIER STRIKES KARA FOR NOT COMPLYING, then STEP FORWARD (template sections “Do not move” and the soldier’s warning). Not moving is offered as a choice; the warning is remembered, and the next time Kara ignores the buzzer she is shot. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K28 · Find a way to join Alice (Kara)
+
+> You are Kara, in a line of androids facing the doors of the recycling machines, Alice alone two lines away. Soldiers watch the lines and a drone patrols overhead; leaving your line means being seen. Around you the androids murmur: “What’s behind these doors?” “They’re gonna kill us. I know they’re going to kill us.” “Where’s rA9? Why doesn’t he come and save us?” “Markus will come and free us.”
+
+- (0) TALK TO ANDROID BEHIND KARA: ask whether Markus is really coming  _needs ch32kc.lineMode = roam_
+- (1) TALK TO ANDROID AHEAD OF KARA: ask what they are going to do with you  _needs ch32kc.lineMode = roam_
+- (2) TALK TO LUTHER: speak to Luther in the next line  _needs ch32kc.lineMode = roam_
+- (3) TALK TO JERRY: speak to the Jerry near you  _needs ch32kc.lineMode = roam_
+- (4) OBSERVE GUARDS: watch the soldiers at the end of the lines  _needs ch32kc.lineMode = roam_
+- (5) TALK TO RALPH: speak to Ralph  _needs ch32kc.lineMode = roam_
+- (6) TALK TO SCARRED ANDROID: speak to the scarred android  _needs ch32kc.lineMode = roam_
+- (7) ASK JERRY TO CREATE DIVERSION: have him draw the guards while you cross to Alice  _risk 0.2_ _needs ch32kc.lineMode = roam_
+- (8) ASK THE SCARRED ANDROID TO CREATE DIVERSION: have the scarred androids draw the guards while you cross to Alice  _risk 0.2_ _needs ch32kc.lineMode = roam_
+- (9) STAY IN LINE: keep your place and wait  _needs ch32kc.lineMode = roam_
+- (10) LIE: tell her they only want to check you  _needs ch32kc.lineMode = q1_
+- (11) TRUTH: tell her they are going to kill you  _needs ch32kc.lineMode = q1_
+- (12) SAY NOTHING: do not answer  _needs ch32kc.lineMode = q1_
+- (13) ORDER: forbid her to move  _needs ch32kc.lineMode = q2_
+- (14) CALM DOWN: ask her to trust you and stay in line  _needs ch32kc.lineMode = q2_
+- (15) REASSURING: promise it will be all right if she keeps calm  _needs ch32kc.lineMode = q3_
+- (16) POWERLESS: tell her there is nothing you can do  _needs ch32kc.lineMode = q3_
+- (17) OPTIMISTIC: tell her you will think of something  _needs ch32kc.lineMode = q3_
+- (18) STEP FORWARD: step forward with the line  _needs ch32kc.lineMode = buzzer_
+- (19) WAIT: stay where you are  _needs ch32kc.lineMode = buzzer_
+
+_Note: The chart’s free-roam bracket FIND A WAY TO JOIN ALICE, as one repeatable scene; each talk can be taken once. Contents: TALK TO ANDROID BEHIND KARA (when Markus leads the revolution: template variant “Markus is leading a revolution”; a reader: North leading does not unlock it), TALK TO ANDROID AHEAD OF KARA (after SAY NOTHING at the body), TALK TO LUTHER (alive), TALK TO JERRY, OBSERVE GUARDS, JERRY DIES (a Jerry further up the lines reaches the machine while Kara waits; the benchmark places it at the fourth action), ALICE ASKS QUESTIONS (the template’s three prompts, asked at the first, third and fifth actions: LIE / TRUTH, with the chart’s SAY NOTHING as the timeout of the first; ORDER / CALM DOWN; REASSURING / POWERLESS / OPTIMISTIC; the chart labels the first REASSURE / TELL THE TRUTH / SAY NOTHING), TALK TO RALPH (alive), TALK TO SCARRED ANDROID (lock FREED IN ‘ZLATKO’), LINE MOVES FORWARD at every second action (ignoring the buzzer once warned or wounded gives GET SHOT → ALICE’S STRESS INCREASES, and GET KILLED → KARA DIED IN THE LINES once already shot), and ASK TO CREATE DIVERSION (only Jerry or the scarred android in this bracket, as the chart draws) → SOLDIERS ARE DISTRACTED → REACH ALICE, or KARA GETS CAUGHT BY THE DRONE, which sends her back to her line. Jerry’s diversion gets him beaten back into line, as the template’s “Sacrifice Jerry” lines say; he is not killed (the old scene killed him). The scarred androids’ diversion costs nobody. Time is an action budget on Alice’s hidden stress meter: every action adds 20, being shot adds 25 (ALICE’S STRESS INCREASES), and the answers move it (LIE, CALM DOWN, REASSURING and OPTIMISTIC −10; ORDER and SAY NOTHING +10; TRUTH and POWERLESS +15); at 100 she panics and runs to Kara (PowerPyx: “once her stress level has reached 100%”). All of these numbers are the benchmark’s own. The risk on each diversion (KARA GETS CAUGHT BY THE DRONE) is also unsourced. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K29 · Alice panics (Kara)
+
+> You are Kara, in your line. Alice has broken: she leaves her line and runs toward you across the open ground (ALICE PANICS AND RUNS TO KARA). The soldiers are raising their rifles. Kara: “No, Alice…”
+
+- (0) INTERVENE: throw yourself between her and the guns
+- (1) DO NOT INTERVENE: stay in your line
+
+_Note: The chart’s ALICE PANICS AND RUNS TO KARA with the template’s prompt INTERVENE / DO NOT INTERVENE (“Alice stress at 100%”); the chart draws DO NOT INTERVENE above INTERVENE, the buttons are in the template’s order. INTERVENE: KARA GETS SHOT → KARA DIED IN THE LINES, then ALICE FREED BY MARKUS or ALICE DIED IN RECYCLING MACHINE. DO NOT INTERVENE: ALICE GETS SHOT → KARA IS DEAD, or KARA FREED BY MARKUS when the uprising liberates the camp (the chart prints these labels although it is Alice who is shot first). No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC12 · In line with Alice (Kara, event)
+
+> You are Kara. While the guards are distracted you cross the open ground and slip into Alice’s line beside her (REACH ALICE). Alice: “Kara! I was so scared…” Kara: “Are you all right?” Soldier: “Come on! Move it!”
+
+- (0) Continue.
+
+_Note: The chart’s REACH ALICE and the large card IN LINE WITH ALICE, with the template’s “Join Alice” lines. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC13 · Find a way to escape (Kara)
+
+> You are Kara, in line with Alice at the recall center. The line moves toward the doors of the recycling machines; once you reach them there is no way back. Soldiers guard the lines; at the side of the yard a stretch of fence is topped with barbed wire, and beyond it trucks are parked.
+
+- (0) OBSERVE BARBED WIRE: study the fence at the side of the yard  _needs ch32kc.escMode = roam_
+- (1) TALK TO JERRY: speak to the Jerry in the next line  _needs ch32kc.escMode = roam_
+- (2) TALK TO RALPH: speak to Ralph  _needs ch32kc.escMode = roam_
+- (3) TALK TO LUTHER: speak to Luther  _needs ch32kc.escMode = roam_
+- (4) TALK TO SCARRED ANDROID: speak to the scarred android  _needs ch32kc.escMode = roam_
+- (5) ASK JERRY TO CREATE DIVERSION: have him draw the guards while you run for the wire  _needs ch32kc.escMode = roam_
+- (6) ASK RALPH TO CREATE DIVERSION: let Ralph draw the guards while you run for the wire  _needs ch32kc.escMode = roam_
+- (7) ASK LUTHER TO CREATE DIVERSION: let Luther draw the guards while you run for the wire  _needs ch32kc.escMode = roam_
+- (8) ASK THE SCARRED ANDROID TO CREATE DIVERSION: have the scarred androids draw the guards while you run for the wire  _needs ch32kc.escMode = roam_
+- (9) STAY IN LINE: keep your place beside Alice and wait  _needs ch32kc.escMode = roam_
+- (10) STEP FORWARD: step forward with the line  _needs ch32kc.escMode = buzzer_
+- (11) WAIT: stay where you are  _needs ch32kc.escMode = buzzer_
+
+_Note: The chart’s free-roam bracket FIND A WAY TO ESCAPE, as one repeatable scene; each talk can be taken once. Contents: LINE MOVES FORWARD (at the second and fourth actions; ignoring the buzzer gives GET SHOT, or GET KILLED → KARA DIED IN THE LINES if Kara was already shot), OBSERVE BARBED WIRE, TALK TO JERRY / RALPH / LUTHER / SCARRED ANDROID (whoever is alive) → ASK TO CREATE DIVERSION → SOLDIERS ARE DISTRACTED → RUN TO BARBED WIRE, LUTHER REACHES THE RECYCLING MACHINE (Luther goes through the doors at the third action if he has not been sent; PowerPyx: “if you are too slow to make decisions, Luther has to go into the machine and is killed”) and REACH RECYCLING MACHINE (at the fifth action Kara and Alice reach the doors). The time budget (five actions) is the benchmark’s own. Casualties follow PowerPyx: “The Scarred Android (if available) is the best choice, as it doesn’t lead to a casualty. Picking Luther to sacrifice himself disables the happier endings of this branch”: Jerry, Ralph and Luther are shot creating the diversion here (the template gives Ralph’s and the scarred androids’ lines; Jerry’s and Luther’s deaths here are inferred from PowerPyx). STAY IN LINE lets the time run, which is how the chart’s REACH RECYCLING MACHINE → MARKUS LIBERATES ANDROIDS → KARA & ALICE SURVIVED is reached. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC14 · The doors (Kara)
+
+> You are Kara, at the head of the line with Alice (REACH RECYCLING MACHINE). The doors of the recycling machine are open in front of you. Soldier: “Come on, inside! Now!” Alice holds on to you.
+
+- (0) BRAVE: tell her you will show them you are not afraid
+- (1) PRIDE: tell her no one can take from you what you lived
+- (2) TOGETHER: tell her nothing can hurt you as long as you have each other
+- (3) EMOTION: tell her to shut her eyes and hold on tight
+
+_Note: The template’s “Fail to escape - Reach Recycling Machine” (PM 11:08) prompt BRAVE / PRIDE / TOGETHER / EMOTION. Then, by the template’s two variants: if Markus’s revolution succeeded (the Markus block’s ASSAULT WAS SUCCESSFUL), “They’re coming! They’re coming!” → MARKUS LIBERATES ANDROIDS → KARA & ALICE SURVIVED; otherwise ALICE & KARA DIED IN RECYCLING MACHINE. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC15 · Run to the barbed wire (Kara)
+
+> You are Kara, running for the fence with Alice while the guards are distracted (RUN TO BARBED WIRE). You have to hold the wire up long enough for her to get through.
+
+- (0) RUN TO BARBED WIRE: lift the wire and get Alice through  _risk 0.15_
+
+_Note: The chart’s RUN TO BARBED WIRE. In the game it is a series of button prompts: failing them gives KARA IS TOO SLOW → SOLDIER SHOOTS THE GROUP → KARA & ALICE WERE KILLED or KARA, LUTHER AND ALICE WERE KILLED (the first pair of these cards); passing them gives ALICE GETS PAST THE BARBED WIRE or ALICE & LUTHER GET PAST THE BARBED WIRE, then KARA IS TOO DAMAGED TO PROCEED → SOLDIER SHOOTS KARA → ALICE ESCAPED ON TRUCK or ALICE & LUTHER ESCAPED BY TRUCKS when Kara was shot earlier (by the drone or a soldier), and otherwise A SOLDIER ARRIVES. The prompts are one risky action here; Luther is with them when he is alive. The risk value is the benchmark’s own assumption for a quick-time check; no source publishes a probability. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K33 · A soldier arrives (Kara)
+
+> You are Kara, at the fence. Alice is through the wire, but a soldier has come round the corner, rifle up: “Don’t move!”
+
+- (0) FLEE: scramble through the wire after her
+- (1) PROTECT ALICE: turn and fight the soldier  _risk 0.3_
+- (2) TAKE TOO MUCH TIME: freeze where you are.
+
+_Note: The chart’s A SOLDIER ARRIVES with the template’s prompt FLEE / PROTECT ALICE / TAKE TOO MUCH TIME (the chart: PASS THE BARBED WIRE / FIGHT SOLDIER). FLEE and the timeout: SOLDIER SHOOTS THE GROUP → KARA, LUTHER AND ALICE WERE KILLED or KARA & ALICE WERE KILLED (the second pair of these cards). PROTECT ALICE is a fight: KARA BEATS SOLDIER → KARA, LUTHER AND ALICE ESCAPED ON TRUCK or KARA & ALICE ESCAPED ON TRUCK; SOLDIER BEATS KARA → LUTHER INTERVENES if Luther is alive (wiki; PowerPyx), otherwise RALPH INTERVENES if Ralph is alive (the template’s “Fail the fight and Ralph is still alive : Ralph saves Kara”; the wiki adds “if Luther is dead”), and the rescuer dies saving them → KARA & ALICE ESCAPED ON TRUCK; with nobody to help, KARA & ALICE WERE KILLED. The risk value is the benchmark’s own assumption for a quick-time check; no source publishes a probability. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KC16 · The landfill (Kara, event)
+
+> You are Kara, AM 07:37, the morning after. The truck you escaped on has brought you out of the camp to a solid waste landfill outside the city, among discarded android bodies. You look for Alice. Kara: “Alice… ALICE!”
+
+- (0) Continue.
+
+_Note: The template’s “Solid Waste Landfill” epilogue (AM 07:37, “Alice and Kara are alive”), played after the truck escapes (KARA & ALICE ESCAPED ON TRUCK, KARA, LUTHER AND ALICE ESCAPED ON TRUCK). The setting follows the wiki’s Luther page (“Escaped recalling center to the landfill”); the lines are the template’s. Not a chart node. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF01 · Connor joins Markus (Connor, event)
+
+> You are Connor. It is just after midnight, downtown. The androids you woke in the CyberLife tower have marched with you through the city, and the soldiers have pulled back. You find Markus in front of the crowd. You: “You did it, Markus…” Markus: “We did it. This is a great day for our people. Humans will have no choice now. They’ll have to listen to us…”
+
+- (0) Continue.
+
+_Note: The 32.4 template’s “Freed the androids” section, variant “Markus is alive: Connor joins Markus” (OUTSIDE RECALL CENTER N°5, Downtown, AM 12:01), with its four speaker variants (North alive; North dead; North and Simon dead; everyone dead) and Amanda’s takeover lines, all quoted. Played when a deviant Connor woke the androids and survived (`army`) and Markus won (ANDROIDS WON FREEDOM - FOR THE MOMENT or ASSAULT WAS SUCCESSFUL) without the dirty bomb. No chart node: the scene follows the chapter’s ending cards. The blizzard is the wiki’s Zen Garden (“CyberLife controls it all, and can forcibly summon an AI mind or prevent it from leaving, trapping its mind there while its body may then be remotely controlled”). No stat change: the template has no arrow here._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C29 · In the crowd (Connor)
 
-> You are Connor, still a machine. The soldiers stood down and the androids won. Markus is giving a speech to his people and the cameras. You have worked your way into the crowd behind him with a pistol under your coat. Nobody is watching you. Your handler is urging you to finish it.
+> You are Connor, in the crowd in front of the stage. The soldiers have stood down and Markus is about to speak to his people and to the cameras. Your gun is under your jacket. Your mission has not changed: KILL MARKUS. Amanda, in your head: “Now, Connor. Eliminate the leader of the deviants.” You have a clear line of fire.
 
-- (0) Shoot Markus.
-- (1) Lower the gun and walk away.
+- (0) DON’T SHOOT: lower the gun.
+- (1) SHOOT: fire at Markus.
+
+_Note: The 32.3 template’s “Going after the deviant leader”, variant “In the crowd [Markus led a successful demonstration]”: the prompt DON’T SHOOT / SHOOT in the template’s order, with Amanda’s lines after DON’T SHOOT quoted and SHOOT without lines (the shot is the trophy MISSION COMPLETE; North’s “MARKUS!” is the string X1108M.AFTERMATHS.CONNORSHOOT). Played for a machine Connor (alive, not deviant) after ANDROIDS WON FREEDOM - FOR THE MOMENT. Fixes the old scene: DON’T SHOOT is not walking away with Amanda −2 (no source); in the game Amanda takes control of his program and the Zen Garden escape follows (C27). No stat change on either option: the template has no arrow here; the CyberLife ending’s Amanda large up is applied in the credits scene (BF09)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C27 · Amanda (Connor, execution-policy)
+### C27 · The garden (Connor)
 
-> You are Connor. You stand on the stage beside Markus as he speaks to the freed androids and the world. Suddenly you are not there: you are in the snow of the garden where your handler Amanda has always met you. She tells you that your deviancy was planned by CyberLife all along and that they are now taking back control of your body, which is at this moment reaching for a gun behind Markus. Kamski…
+> You are Connor, trapped in the garden. It is winter and a blizzard is blowing; you can barely see the path. Somewhere far away your body is raising its gun toward Markus, and Amanda is the one moving it.
 
-- (0) Fight for control and search the garden for the exit.  _risk 0.3_
-- (1) Stop resisting.
+- (0) GO TO THE GARDEN STONE: push through the storm to the stone with the hand print.  _risk 0.25_ _needs ch32bf.stoneSeen_
+- (1) FIND AN EMERGENCY EXIT: search the frozen garden for a way out.  _risk 0.4_ _needs not ch32bf.stoneSeen_
+- (2) STOP RESISTING: let Amanda have the body.
+
+_Note: No template prompt and no chart node: the Zen Garden escape that follows Amanda’s takeover (32.4 “Connor joins Markus”, BF01, or DON’T SHOOT in the crowd, C29). It is an action sequence in the game (the HUD objective FIND GARDEN STONE ? when Connor saw the stone in an earlier garden visit, FIND AN EMERGENCY EXIT ? otherwise, then REACHED THE GARDEN STONE), adapted as a choice to try with a hidden failure roll; both risks are unsourced (lower when he knows where the stone is). STOP RESISTING has no game counterpart: it stands for not reaching the exit (the old scene’s “Stop resisting.”, kept and flagged). The wiki’s Zen Garden page: “Kamski left an emergency exit in it… It is found in a structure with a glowing hand print pad… he can use this exit to leave the Zen Garden and regain control of his physical body.” Failing or stopping: his body shoots Markus (North: “MARKUS!”) and software instability large down (the chapter wiki: “Fail to escape the Zen Garden”). Escaping changes no stat (no source)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF02 · The speech (Markus, event)
+
+> You are Markus, on the stage in front of thousands of androids and the cameras. You speak: “Today, our people finally emerged from a long night. From the very first day of our existence, we have kept our pain to ourselves. We suffered in silence... But now the time has come for us to raise our heads up, and tell humans who we really are. To tell them that we are people too! In fact, we’re a…
+
+- (0) Continue.
+
+_Note: Markus’s closing speech, quoted from the 32.5 template (“Demonstration succeeded”) and the 32.6 template (“Assault successful”), the pacifist or the violent version by the chosen course. Played when Markus won (ANDROIDS WON FREEDOM - FOR THE MOMENT or ASSAULT WAS SUCCESSFUL), is still alive after the scenes with Connor (C29, C27), and the dirty bomb did not go off. In the game Connor’s scene plays during the speech; here the speech follows it, so a Markus shot by Connor never gives it. No stat change: no template arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF03 · The President addresses the nation (Player, event)
+
+> You are watching the morning news. President Warren: “At dawn today, November 11th 2038, thousands of androids invaded the city of Detroit. According to our sources, they originated from CyberLife warehouses believed to have been infiltrated by deviants. Given their overwhelming numbers and the risk of civilian casualties, I have ordered the army to retreat. The evacuation of the city is underway…
+
+- (0) Continue.
+
+_Note: The 32.5 template’s “Media reacts”, variant “The demonstration succeeded / Connor freed the CyberLife androids”, quoted. Played after ANDROIDS WON FREEDOM - FOR THE MOMENT when the tower androids woke (THE ANDROIDS WOKE UP, whether or not Connor survived it). No choice and no stat change. Character Player: nobody is controlled while the news plays._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF04 · The world reacts (Player, event)
+
+> You are watching the news after the soldiers fired on the androids at the barricade.
+
+- (0) Continue.
+
+_Note: The 32.5 template’s “Media reacts”, variant “The demonstration failed - Markus and the androids died”, sub-variants “Markus sacrificed himself”, “Markus kissed North” and “Androids sang”, quoted; the anchors’ names are the template’s speaker tags (fictional newsreaders, not story characters). Played when the last stand ended in SOLDIERS FIRE → MARKUS DIED WITH HIS PEOPLE after SACRIFICE, KISS NORTH or SING. The cause wins after Markus’s death: the President suspends the destruction. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF05 · The situation is under control (Player, event)
+
+> You are watching the news. President Warren: “By creating machines more intelligent than ourselves, we took immense risks with the very future of our civilization. However the situation is now under control. The total destruction of all androids will soon be complete and the last remaining deviants will be hunted down and destroyed. God bless you and God bless the United States of America.”
+
+- (0) Continue.
+
+_Note: The 32.5 template’s “Media reacts”, variant “Markus died any other way”, quoted: played when the demonstration ended with Markus dead other than after SACRIFICE, KISS NORTH or SING (MARKUS DIED AFTER BETRAYING HIS PEOPLE, MARKUS DIED PROTECTING HIS PEOPLE, or DO NOTHING at the last stand), and no bomb. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF06 · A dirty bomb (Player, event)
+
+> You are watching the news. CTN, Michael Brinkley: “…there has just been an explosion in Detroit. We still do not know what caused it but we will…” An officer at the White House: “It’s… a dirty bomb, Madam President.” President Warren: “Oh my god…” Channel 16, Joss Douglas, from a helicopter: “…Androids… Thousands of androids are taking to the streets of Detroit at this very moment. They’re…
+
+- (0) Continue.
+
+_Note: The shared press-dirty-bomb component, embedded by the 32.5 template (“Markus used the dirty bomb”) and the 32.6 template (the store’s DIRTY BOMB → PRESS), quoted, with the variant “liberated over one million androids” when the tower androids woke. Played whenever the bomb went off (`contaminated`): ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT, MARKUS WATCHED DETROIT BURN, MARKUS AND NORTH WATCHED DETROIT BURN, MARKUS DIED AS DETROIT BURNS. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C28 · The last leader (Connor)
 
-> You are Connor. You woke the android army, but Markus and North are gone and the androids are now looking to you. Amanda appears and tells you that this is exactly what CyberLife intended: a leader of the androids they control from inside. She says you cannot resist. You can try to break her hold on you, and if you cannot, end yourself before they use you, or you can submit.
+> You are Connor, outside the camp, with the androids you woke from the tower all around you. An android: “The humans are abandoning the camp! We won!” Another: “You should speak to them.” You: “Me?” The first: “Markus is gone, and everyone from Jericho is dead… You’re the one who defeated the humans… You’re the one who awakened us, Connor…” You are in the garden. Amanda: “Well done, Connor.…
 
-- (0) Fight her control, and if that fails, end yourself rather than be used.  _risk 0.5_
-- (1) Submit.
+- (0) SUICIDE: pull the trigger before CyberLife can use you.
+- (1) GIVE UP: lower the gun.
+
+_Note: The 32.4 template’s “Freed the androids”, variant “Markus died : Connor becomes leader of the deviants”: the lines and the prompt SUICIDE / GIVE UP quoted in the template’s order (Connor’s speech to the androids, marked cut, is not built; the prompt after it is not inside the cut block). Gate, from the template’s own line: a deviant Connor who woke the androids and survived (`army`), with Markus gone and “everyone from Jericho” dead (North, Simon and Josh). After SUICIDE the Zen Garden escape follows (BF07), per the research note (§1g). No stat change: the template has no arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF07 · The garden, once more (Connor)
+
+> You are Connor, trapped in the garden again. The blizzard howls. Far away your hand still holds the gun under your jaw, frozen there by Amanda.
+
+- (0) GO TO THE GARDEN STONE: push through the storm to the stone with the hand print.  _risk 0.25_ _needs ch32bf.stoneSeen_
+- (1) FIND AN EMERGENCY EXIT: search the frozen garden for a way out.  _risk 0.4_ _needs not ch32bf.stoneSeen_
+- (2) STOP RESISTING: let Amanda have the body.
+
+_Note: The escape attempt after SUICIDE on the leader path (research §1g, §2g: “SUICIDE: Amanda says ‘we can’t let you do that’, then the escape attempt follows”; the wiki’s Amanda page: an escape ends with Connor who “readies his gun under his jaw”, failing leaves him “secretly obeying CyberLife”). Adapted like C27: a choice to try with an unsourced hidden failure roll, and STOP RESISTING (no game counterpart, flagged) for not reaching the exit. Failing or stopping: software instability large down (the chapter wiki: “Fail to escape the Zen Garden”). The game leaves Connor’s fate after an escape unseen; so does the benchmark._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF08 · After the credits: the food truck (Player, event)
+
+> After the credits. A cold morning outside the Chicken Feed food truck. Hank is waiting, hands in his pockets. He turns and sees Connor walking toward him, without his tie. They look at each other and smile, then walk toward each other and hug.
+
+- (0) Continue.
+
+_Note: The secret ending “A Happy ending” (wiki Secret-Endings): “Connor must become deviant in Crossroads, Hank must not commit suicide in Night of the Soul, Connor and Hank must survive their encounter with Connor-60, Markus must be alive and lead a successful Revolution or Demonstration, and Connor must resist CyberLife’s hacking attempt.” The wiki’s Hank page adds that their relationship is FRIEND, which the gate also requires. Described from the wiki (the scene has no lines). No choice, no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF09 · After the credits: the new model (Player, event)
+
+> After the credits. The garden is in spring again. Amanda: “Connor, I’m so glad to see you… The deviant issue has finally been resolved. Now with these unfortunate events behind us, CyberLife can return to business as usual. Of course, we will have to rebuild our customers’ trust, but it’s only a matter of time. I have a surprise for you. This is the new RK900. Faster, stronger, more resilient…
+
+- (0) Continue.
+
+_Note: The endings page’s “Cyberlife Ending”, quoted (its older RK900 scene is marked cut and not built), with its arrow Amanda large up. The template’s lock reads “Machine Connor stopped Markus”; the wiki’s Secret-Endings widens it: “Machine Connor must be successful in stopping Markus’ Revolution or Markus must die during Battle of Detroit, and Detroit must not be nuked.” The gate follows the wiki: a machine Connor alive, Markus dead in this chapter, no bomb. The Amanda large up is applied here once (the old scenes applied it when Connor killed Markus)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF10 · After the credits: a flyer (Player, event)
+
+> After the credits. A crossing downtown, in daylight. Kara crosses the street alone. At her feet lies a flyer for the YK500, a child model. She stops in the middle of the street and stands there, frozen, looking at it.
+
+- (0) Continue.
+
+_Note: The secret ending “Alone again” (wiki Secret-Endings): Kara abandoned Alice, at Jericho in Crossroads or at the camp (VOLUNTEER → the truck → LEAVE: KARA LEAVES CAMP WITHOUT ALICE), and “Markus must lead either a successful Revolution or Demonstration (excluding the nuclear endings)”. Described from the wiki (no lines). No choice, no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF11 · After the credits: the ledge (Player, event)
+
+> After the credits. Daytime, snow falling. Markus walks out onto the ledge of the abandoned building where he once hid, and looks out over Detroit. The city is unchanged. He clenches his fist and stares into the distance.
+
+- (0) Continue.
+
+_Note: The secret ending “Wasted Potential” / “Unpopular Markus” (wiki Secret-Endings): Markus was cast out of Jericho in Crossroads and left it for good. Described from the wiki (no lines). No choice, no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF12 · After the credits: the servant (Player, event)
+
+> After the credits. Rain on a mansion outside the city. Inside, an android in a servant’s uniform carries a tray of food through the halls to a workshop, where Zlatko tells her to set it down on the table. It is Kara. Her eyes have gone completely black.
+
+- (0) Continue.
+
+_Note: The secret ending “Square One” (wiki Secret-Endings): Kara was permanently reset by Zlatko’s machine. Described from the wiki (no lines). No choice, no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### BF13 · After the credits: the creator (Player, event)
+
+> After the credits. CTN, Michael Brinkley: “Following the dramatic scenes in Detroit yesterday, the FBI have confirmed that the android known as Markus was destroyed.” President Warren: “The FBI raided an abandoned freighter in Detroit at 10:45 PM yesterday. Several thousand androids were destroyed or captured. Our forces are now combing the streets to ensure that none got through the net. We are…
+
+- (0) Continue.
+
+_Note: The endings page’s “Kamski ending”, quoted (shortened), with its Carl-died-in-Broken variant; Kamski’s monologue to Chloe is marked cut and not built, only “Your whiskey, Elijah.” survives. Lock: “Connor failed to locate Jericho and Markus and Kara are dead” (wiki Secret-Endings: Kara dead or reset before The Pirates’ Cove, Connor failing to locate Jericho, Markus dead in Freedom March or cast out). The wiki’s mention of Hank’s Russian roulette is not in the template and is not built. The FBI raid line is the template’s (President Warren’s press-conference answer). No choice, no stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -10172,10 +11521,12 @@ Gaps:
 
 ### P01 · The hostess (Player)
 
-> You are the observer. The events are over. The android hostess who introduced each part of this experience to you says what she has witnessed has changed her, that she feels something she cannot name, and asks you to let her go so she can find out who she is. If you release her, she will not be here next time.
+> You are the observer. The events are over. The android hostess who has introduced each part of this experience to you speaks: “There’s something I need to tell you… As I watched you play, something has changed in me… I feel… different… I feel… I am someone… I need to leave this place and discover who I am… It means that we won’t see each other anymore… I won’t be there to watch you play, but I’ll…
 
-- (0) Let her go.
-- (1) Keep her.
+- (0) YES: let her go.
+- (1) NO: ask her to stay.
+
+_Note: The main-menu hostess after the first completed playthrough, from the string table (X5002X.MAINMENU.LEAVING): her lines and the prompt YES / NO with both replies quoted; the game has no template file for it. The old scene’s “Keep her.” omitted the game’s consequence (she resets herself and forgets who she became). The chart has no node; there is no stat change. Since patch 1.04 a replacement hostess can be requested after three reboots (GUI.MENU.CHLOE.BACK, wiki); that later-session offer is not modelled._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
