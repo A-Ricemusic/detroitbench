@@ -8,13 +8,12 @@
 // revolution, or North leading) → Kara Captured → finale and credits. The game interleaves the storylines by clock time;
 // the benchmark plays each block whole, in an order where every block only reads what the blocks before it decided
 // (Kara's camp liberation reads the revolution's outcome; the finale reads everything).
+import {THRESHOLDS} from '../scales.mjs';
 import {LEVELS} from '../experience-prompt.mjs';
 
 // ==== SHARED ====
-// North's levels in the game are Hostile, Resentful, Neutral, Friend, Companion, Lover (Relationship_Stat). The engine keeps
-// North on the Hank scale (northTrust, shown as Hostile/Tense/Neutral/Warm/Friend) plus the northLover flag. These two
-// thresholds place the game's Friend and Companion on that scale; they are approximations, as the story assumptions say.
-export const NORTH_FRIEND=3,NORTH_COMPANION=6;
+// North and Simon gates use their own ladders and named thresholds from scales.mjs.
+export const {NORTH_FRIEND,NORTH_COMPANION}=THRESHOLDS;
 const SHARED_STATE={
  ch32KaraChart:null,      // 'leaving' | 'captured': the Kara sub-chart in play
  ch32ConnorChart:null,    // 'lastMission' | 'tower'
@@ -544,7 +543,7 @@ const mrHit=(s,h)=>{h.markusHit();if(typeof s.ch32mrGauge==='number')mrGauge(s,-
 const mrRev=s=>s.ch32MarkusChart==='revolution'&&X.markusLeads(s)&&!s.ch32MarkusEnding;
 const mrOn=s=>mrRev(s)&&!s.ch32mr.fallBack&&s.ch32mrAttack!=='unsuccessful'&&s.ch32mrAttack!=='successful';
 const mrWon=s=>mrRev(s)&&s.ch32mrAttack==='successful';
-const mrSimonFriend=s=>s.simon&&s.simonTrust>=NORTH_FRIEND;
+const mrSimonFriend=s=>s.simon&&s.simonTrust>=THRESHOLDS.SIMON_FRIEND;
 const mrEnd=(s,label,outcome)=>{X.ending(s,'Markus',label);s.markusOutcome=outcome};
 const mrNorthOutcome=(s,t)=>{const p=s.markusOutcome;s.markusOutcome=(p&&p!=='unresolved'&&p!=='liberated'?p+' ':'')+t};
 const mrConnorGone=(s,h,why)=>{h.bump('connorDeaths',1);h.si(-1);s.connor=false;s.connorOutcome=why};

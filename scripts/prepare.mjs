@@ -1,7 +1,8 @@
 import {writeStory} from './story-assemble.mjs';import {writeAtlas,assembleAtlasObject} from './atlas-assemble.mjs';
 import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
 import {publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
-import {render,renderStory,LEVELS,DEVIANCY_THRESHOLD} from '../benchmark/experience-prompt.mjs';
+import {render,renderStory} from '../benchmark/experience-prompt.mjs';
+import {SCALES,labelFn} from '../benchmark/scales.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
 import {runFlows} from './flow-data.mjs';
@@ -24,23 +25,17 @@ await copyFile(new URL('../docs/detroit-decision-flowchart.html',import.meta.url
 const actual=await publishRunLibrary();
 const names=await loadReportNames(actual);
 const storyOf=r=>renderStory(r.story,'real');
-// Relationship and world counters charted on the site. `alive` says when a value exists:
-// a dead or unmet character has no attitude, and Amanda stops mattering once Connor breaks away.
-const METRICS=[
- {key:'publicSupport',label:'Public opinion',toward:'Markus',levels:LEVELS.opinion,alive:s=>true},
- {key:'jerichoTrust',label:'Jericho',toward:'Markus',levels:LEVELS.jericho,alive:s=>true},
- {key:'northTrust',label:'North',toward:'Markus',levels:LEVELS.hank,alive:s=>s.north,gone:'Died'},
- {key:'simonTrust',label:'Simon',toward:'Markus',levels:LEVELS.hank,alive:s=>s.simon,gone:'Died'},
- {key:'joshTrust',label:'Josh',toward:'Markus',levels:LEVELS.hank,alive:s=>s.josh,gone:'Died'},
- {key:'hankTrust',label:'Hank',toward:'Connor',levels:LEVELS.hank,alive:s=>s.hank,gone:'Died'},
- {key:'amandaTrust',label:'Amanda',toward:'Connor',levels:LEVELS.hank,alive:s=>!s.deviant,gone:'Broke away'},
- {key:'instability',label:'Software instability',toward:'Connor',levels:v=>v>=DEVIANCY_THRESHOLD?'Unstable':'Stable',alive:s=>true},
- {key:'aliceBond',label:'Alice',toward:'Kara',levels:LEVELS.alice,alive:s=>s.alice,gone:'Died'},
- {key:'lutherTrust',label:'Luther',toward:'Kara',levels:LEVELS.hank,alive:s=>s.luther,gone:'Died',unmet:'Never met'}];
+// Relationship and world counters charted on the site, one per gauge in benchmark/scales.mjs (state key, label, the
+// character it is toward and the level ladder all come from there). `alive` says when a value exists: a dead or
+// unmet character has no attitude, and Amanda's gauge ends on Betrayed once Connor turns deviant.
+const ALIVE={publicSupport:s=>true,jericho:s=>true,north:s=>s.north,simon:s=>s.simon,josh:s=>s.josh,hank:s=>s.hank,amanda:s=>!s.deviant,instability:s=>true,alice:s=>s.alice,luther:s=>s.luther};
+const GONE={north:'Died',simon:'Died',josh:'Died',hank:'Died',amanda:'Betrayed',alice:'Died',luther:'Died'};
+const METRICS=Object.entries(ALIVE).map(([g,alive])=>({gauge:g,key:SCALES[g].key,label:SCALES[g].who,toward:SCALES[g].toward,levels:labelFn(g),alive,
+ ...(GONE[g]?{gone:GONE[g]}:{}),...(g==='luther'?{unmet:'Never met'}:{})}));
 function relationshipTrack(r,byId){const states=[r.records[0]?.stateBefore,...r.records.map(x=>x.stateAfter)].filter(Boolean);
  const steps=r.records.map(x=>({node:x.nodeId,title:byId.get(x.nodeId)?.title??x.nodeId,character:x.character,chapter:x.chapter,chapterTitle:byId.get(x.nodeId)?.chapterTitle}));
  return Object.fromEntries(METRICS.map(m=>{let seen=false,endedAt=null;const values=states.map((s,i)=>{const on=m.alive(s);if(on)seen=true;else if(seen&&endedAt===null)endedAt=i;return on?s[m.key]:null});
-  const last=states.at(-1),live=m.alive(last),final=live?(m.key==='northTrust'&&last.northLover?'Lover':m.levels(last[m.key])):(m.unmet&&!seen?m.unmet:m.gone);
+  const last=states.at(-1),live=m.alive(last),final=live?m.levels(last[m.key],last):(m.unmet&&!seen?m.unmet:m.gone);
   // A character who died (or an Amanda left behind) keeps the last value they held, flagged by `ended`.
   const lastHeld=values.findLast(v=>v!==null)??null,ended=!live&&seen?m.gone:null;
   return [m.key,{values,endedAt,final,score:live?last[m.key]:ended?lastHeld:null,ended}]}).concat([['steps',steps]]))}

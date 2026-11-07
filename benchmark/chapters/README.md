@@ -36,11 +36,11 @@ Helpers passed to `consequence`:
 - `markusHit()`: counts a hit on Markus and returns true on the third. `raidDeath()`: Markus dies in the raid; returns the outcome text.
 - `learn(fact, who = n.character)`: add a fact to what a character knows, once.
 - `c(sceneId)`: the choice made at a scene, or undefined. `v`: `Number(choice)`. `before`: a copy of the state before this choice.
-- `meets(requires, s)`, `evidenceRoutes(s)`, `armyAwakened(s)`, and `constants` (`HANK_FRIEND`, `HANK_HOSTILE`, `OPINION_SYMPATHETIC`, `JERICHO_UNPOPULAR`, `DEVIANCY_THRESHOLD`, `ALICE_KEY`).
+- `meets(requires, s)`, `evidenceRoutes(s)`, `armyAwakened(s)`, and `constants` (`HANK_FRIEND`, `HANK_HOSTILE`, `OPINION_SYMPATHETIC`, `JERICHO_UNPOPULAR`, `DEVIANCY_THRESHOLD`, `ALICE_KEY`, `PROGRAMMING_SETTLED`; the values are `THRESHOLDS` from `benchmark/scales.mjs`).
 
 Helpers passed to `gate` functions: `n`, `c`, `meets`, `evidenceRoutes`, `armyAwakened`, `constants`. Helpers passed to `available`: `c`, `meets`, `without(...optionIds)` (the current list minus those IDs), `evidenceRoutes`, `armyAwakened`, `constants`.
 
-A module must not import `benchmark/story-engine.mjs`: `index.mjs` loads modules with a top-level await that the engine is itself waiting on, so that import would never resolve. Use the helpers instead. Importing `benchmark/experience-prompt.mjs` (for `LEVELS`, say) is fine.
+A module must not import `benchmark/story-engine.mjs`: `index.mjs` loads modules with a top-level await that the engine is itself waiting on, so that import would never resolve. Use the helpers instead. Importing `benchmark/experience-prompt.mjs` (for `LEVELS`, say) or `benchmark/scales.mjs` (level names, `level`, `atLeast`, `atMost`, `THRESHOLDS`) is fine; compare a gauge against a level or a named threshold from there, never a bare number (`tests/scales.test.mjs` checks).
 
 Moving a chapter's logic out of the engine: copy its `case` lines from the switch into `consequence`, its gate-table entries into `gate`, and its `remove(...)` lines into `available`, then delete them from the engine in the same change. Behaviour is unchanged as long as the module reproduces the same state changes in the same order; the evidence replay in `bun run check` and the tests confirm it.
 

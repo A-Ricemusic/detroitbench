@@ -1,3 +1,4 @@
+import {THRESHOLDS} from '../scales.mjs';
 // Public Enemy (chapter 24, Connor). Scenes in ch24.json; research in docs/research/ch24-public-enemy.md (section 10 is
 // the template cross-check this module follows).
 //
@@ -79,7 +80,7 @@ export const deathEffect=DEATH_EFFECT;
 export const rules={ENDINGS,ENDING_SCENES,DEVIANT,DEATH_EFFECT,risks:{charge:0.3,knife:0.2,call:0.35,chase:0.1},hankSurvivalReadout:'40%'};
 
 // The chapter's inputs, read once at the start (C14z) and kept in `ch24In` so scene conditions can name them.
-export function readInputs(s,hankHostile=-4){
+export function readInputs(s,hankHostile=THRESHOLDS.HANK_HOSTILE){
  const c=id=>s.choices?.[id];
  const enumValue=(map,...values)=>values.map(v=>Object.hasOwn(map,v)?map[v]:undefined).find(v=>v!==undefined);
  const bool=(...values)=>values.find(v=>typeof v==='boolean');

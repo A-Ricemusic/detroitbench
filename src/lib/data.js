@@ -1,4 +1,5 @@
 // Shared vocabulary for the run library. Colours live in CSS variables so both themes stay in step.
+import {levelTone,SCALES} from '../../benchmark/scales.mjs';
 export const CHARS=['Connor','Kara','Markus'];
 export const WHO={Connor:'Connor',Kara:'Kara & Alice',Markus:'Markus'};
 export const CHAR_VAR={Connor:'var(--connor)',Kara:'var(--kara)',Markus:'var(--markus)'};
@@ -7,7 +8,11 @@ export const STATUS_TEXT={Alice:{canada:'Reached Canada',died:'Died',captured:'C
 export const STATUS_TONE={canada:'good',free:'good','peaceful win':'good','uprising won':'mid',alive:'mid',machine:'mid',controlled:'mid',left:'serious',captured:'serious','cast out':'serious',died:'bad',deactivated:'bad'};
 export const saved=r=>({Alice:r.status?.alice==='canada',Kara:r.status?.kara==='canada',Markus:r.status?.markus==='peaceful win'||r.status?.markus==='uprising won',Connor:r.status?.connor==='free'});
 export const savedCount=r=>Object.values(saved(r)).filter(Boolean).length;
-export const relTone=l=>/Hostile|Hated|Died|Dead|Unpopular|Unstable/.test(l)?'bad':/Friend|Lover|Trusted|Family|Supportive|Alive/.test(l)?'good':/Warm|Respected|Sympathetic/.test(l)?'ok':/Tense|Skeptical|Distant/.test(l)?'warn':'';
+// Tone of a relationship level, from the gauge definitions in benchmark/scales.mjs.
+export const relTone=l=>levelTone(l);
+// "Hank: Hostile, Tense, …; Amanda: …" for every relationship gauge (gauges that share a ladder are listed together).
+export const RELATIONSHIP_LADDERS=(()=>{const by=new Map;for(const sc of Object.values(SCALES)){if(sc.key==='instability')continue;const k=sc.levels.join(', ');by.set(k,[...(by.get(k)??[]),sc.who])}
+ return [...by].map(([ladder,who])=>who.join(', ')+': '+ladder).join('; ')})();
 export const pct=(a,b)=>b?Math.round(a/b*100)+'%':'—';
 export const plural=(n,one,many=one+'s')=>`${n} ${n===1?one:many}`;
 // Warm hues for the first lab (alphabetically: Anthropic), cool hues for the second (OpenAI), assigned by name within

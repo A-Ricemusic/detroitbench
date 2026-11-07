@@ -15,7 +15,7 @@
 //    Legacy aliases: `chrisKiller` ('markus' | 'crowd'), `chrisDead`, `otherNorth`.
 //    Fallbacks: the store was freed whenever M15 was played; M15 '0' pacifist, '1' aggressive; M16 '1' Markus shot the
 //    officers, '2' the crowd did; no fallback for otherNorth (the pre-rebuild scenes never recorded it).
-//  - North's level: `northTrust` through LEVELS.hank (Hostile at the bottom; "friend or higher" = Warm or Friend).
+//  - North's level: `northTrust` through LEVELS.north (Hostile at the bottom; Friend or higher).
 //
 // Outputs for later chapters:
 //  - `northLover` (built-in) and `northBond` (the pre-rebuild flag Crossroads' kiss gate reads) on SHARE MEMORIES.
@@ -26,15 +26,15 @@
 //  - `ch28Attacked`: Markus attacked the police (CONFIRM, the second ATTACK or a CHARGE), win or lose: the Crossroads
 //    TV and magazines ("Markus attacked the police in Freedom March") and Josh's cabin line read it.
 //  - `ch28NorthNode` ('SHARE MEMORIES' | 'NORTH LEAVES' | null), `ch28SimonReunited`, `ch28FightWon`, `ch28Converted`.
+import {THRESHOLDS} from '../scales.mjs';
 import {LEVELS} from '../experience-prompt.mjs';
 
-const lowest=names=>{let v=-20;while(!names.includes(LEVELS.hank(v)))v++;return v};
 export const rules={
  // "North is friend or higher" (template), and Simon's "good relationship with Markus": the benchmark's first level above
  // Neutral (Warm), the game's Friend. Simon's threshold is disputed (template "good relationship", Simon page "at least
  // Friend", PowerPyx "positive (friendly)", chapter wiki Note "Markus is not unpopular"); the operator is to confirm.
- friend:lowest(['Warm','Friend']),
- hostile:s=>LEVELS.hank(s.northTrust)==='Hostile',
+ friend:THRESHOLDS.NORTH_FRIEND,
+ hostile:s=>LEVELS.north(s.northTrust)==='Hostile',
  // Wiki: "Converting at least around 10 androids during the Freedom March" Jericho small up. Android counts per action
  // (PowerPyx locations; the march group size of two is unsourced).
  convertThreshold:10,
@@ -51,7 +51,7 @@ const message=s=>s.capitolMessage!==undefined?s.capitolMessage:({0:'pacifist',1:
 export const inputs={
  johnJoined:s=>!!s.john,
  simonReturned:s=>!!s.simon&&(s.stratfordSimonFate!==undefined?s.stratfordSimonFate==='leftOnRoof':(s.simonLeftBehind??s.choices.M14==='0')),
- simonGood:s=>!!s.simon&&s.simonTrust>=rules.friend,
+ simonGood:s=>!!s.simon&&s.simonTrust>=THRESHOLDS.SIMON_FRIEND,
  storeFreed:freed,
  message,
  markusKilledCops:s=>s.capitolOfficers!==undefined?s.capitolOfficers==='revenge':s.chrisKiller!==undefined?s.chrisKiller==='markus':s.choices.M16==='1',

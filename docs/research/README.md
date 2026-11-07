@@ -38,3 +38,7 @@ Images are not committed to the repository (they are PowerPyx's screenshots of t
 ## Source inventory
 
 `SOURCES.md` (maintained by a source-hunting agent) lists every source found for the game, with what each is good for and how to read it.
+
+## Scales
+
+Every relationship and world gauge (Hank, Amanda, Alice, Luther, Jericho, North, Simon, Josh, public opinion, software instability) is defined once in `benchmark/scales.mjs`: the game's ordered level names from the string table (`GUI.GAUGE.*`), the start level and value, the band width in small steps, the small and large step sizes, and the named thresholds the engine and chapter modules gate on (`THRESHOLDS`, each defined by a level, e.g. `HANK_HOSTILE` is the top of Hostile). The prompt builder, the engine, the site and the run reports all read their labels from it. Its header lists which numbers are measured in game (the A New Home Alice readings), which are hypotheses (H1 to H10), and the in-game reading that would falsify each. When a chapter note records an operator reading of a level, check it against those hypotheses and log the result in the Reliability log in `SOURCES.md`; a chapter that needs a level check imports `level`, `atLeast` or `atMost` from `scales.mjs` instead of comparing raw numbers.

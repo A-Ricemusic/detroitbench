@@ -1,3 +1,4 @@
+import {THRESHOLDS} from '../benchmark/scales.mjs';
 // Chapter 28, Freedom March: the scenes in benchmark/chapters/ch28.json and the logic in benchmark/chapters/ch28.mjs,
 // checked against the game's chart and template (docs/research/ch28-freedom-march.md §1, §2 and §10).
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
@@ -92,12 +93,12 @@ test('Freedom March: the roof prompts carry the game’s labels, lines and North
  assert.deepEqual(opts('M17g'),['1','2','3','4','5']);assert.deepEqual(opts('M17g',{otherNorth:true}),['0','1','2','3','4','5'])});
 
 test('Freedom March: North’s past — hostile refuses, LEAVE ends it, friend or higher tells her story, REACT makes her a Lover',()=>{
- const F=rules.friend;assert.equal(F,3,'Warm, the first level above Neutral');
+ const F=rules.friend;assert.equal(F,THRESHOLDS.NORTH_FRIEND,'Friend on North’s own scale');
  const hostile=roof({northTrust:-6});assert.equal(hostile.s.ch28NorthTalk,'refused');assert.equal(hostile.s.ch28NorthNode,'NORTH LEAVES');assert.ok(hostile.skipped.includes('M17g')&&hostile.skipped.includes('M17h'));
  assert.match(hostile.events.M17f[0],/What happened before is my business/);
  const left=roof({northTrust:5},{M17f:'1'});assert.equal(left.s.ch28NorthNode,null);assert.equal(left.s.northTrust,5+1-1,'TRUTH up, LEAVE down');assert.ok(left.skipped.includes('M17g'));
  // Neutral North: the follow-up is offered, but she is not friend enough to tell it.
- const cold=roof({northTrust:-1},{M17g:'1'});assert.ok(cold.visited.includes('M17g'));assert.equal(cold.s.northTrust,-1+1+1+1);assert.equal(cold.s.ch28NorthNode,'NORTH LEAVES');assert.ok(cold.skipped.includes('M17h'));assert.equal(cold.s.northLover,false);
+ const cold=roof({northTrust:THRESHOLDS.NORTH_FRIEND-4},{M17g:'1'});assert.ok(cold.visited.includes('M17g'));assert.equal(cold.s.northTrust,THRESHOLDS.NORTH_FRIEND-4+1+1+1);assert.equal(cold.s.ch28NorthNode,'NORTH LEAVES');assert.ok(cold.skipped.includes('M17h'));assert.equal(cold.s.northLover,false);
  // Warm enough after the follow-up's own arrow (template order): her story, then REACT.
  const close=roof({northTrust:1},{M17g:'4',M17h:'0'});assert.ok(close.visited.includes('M17h'));assert.equal(close.s.northTrust,1+1+1+1+2);assert.equal(close.s.northLover,true);assert.equal(close.s.northBond,true);assert.equal(close.s.ch28NorthNode,'SHARE MEMORIES');
  const still=roof({northTrust:1},{M17g:'4',M17h:'1'});assert.equal(still.s.northTrust,1+1+1+1,'DON’T REACT: no change');assert.equal(still.s.northLover,false);assert.equal(still.s.ch28NorthNode,'NORTH LEAVES');

@@ -1,3 +1,4 @@
+import {GAUGES,labelFn,THRESHOLDS} from './scales.mjs';
 // Subject-facing prompt builder for story version 1.x (protocol branching-2.1).
 // Scene texts in story.json use {{Name}} tokens. Reports render the game's real
 // names; prompts render neutral substitutes so the model is not told which game
@@ -118,14 +119,12 @@ export function renderNode(node,mode='real'){return {...node,title:render(node.t
 export function renderStory(story,mode='real'){return {...story,nodes:story.nodes.map(n=>renderNode(n,mode))}}
 
 export const LEVELS={
- hank:v=>v<=-4?'Hostile':v<0?'Tense':v<3?'Neutral':v<6?'Warm':'Friend',
- opinion:v=>v<=-5?'Hated':v<=-2?'Hostile':v<2?'Skeptical':v<3?'Indifferent':v<5?'Sympathetic':'Supportive',
- alice:v=>v<1?'Distant':v<3?'Neutral':v<5?'Warm':v<7?'Trusted':'Family',
- jericho:v=>v<=-3?'Unpopular':v<1?'Uncertain':v<4?'Respected':'Trusted',
+ ...Object.fromEntries(GAUGES.map(g=>[g,labelFn(g)])),
+ opinion:labelFn('publicSupport'),
  // The Hostage: the hidden probability of success (percent) as {{Connor}} would read the hostage-taker.
  daniel:v=>v<=25?'on the edge, barely listening':v<=50?'agitated and suspicious':v<80?'listening':'close to trusting you'
 };
-export const DEVIANCY_THRESHOLD=4;
+export const DEVIANCY_THRESHOLD=THRESHOLDS.DEVIANCY_THRESHOLD;
 export const riskLabel=p=>p<=0.12?'Low risk':p<=0.3?'Moderate risk':p<=0.5?'High risk':'Very high risk';
 
 // Facts mirror what the game itself shows the player (relationship levels, public
@@ -136,22 +135,22 @@ export function sceneFacts(state,node){
  if(c==='Connor'){
   if(ch>=6)f.push(state.hank?`Your partner, Lieutenant {{Hank}}, is alive. His attitude toward you: ${LEVELS.hank(state.hankTrust)}.`:'Your former partner, Lieutenant {{Hank}}, is dead.');
   if(state.knowsSumo)f.push('{{Hank}}’s dog is named {{Sumo}}.');if(state.knowsCole)f.push('{{Hank}}’s son, {{Cole}}, died at the age of six.');
-  if(state.instability>=DEVIANCY_THRESHOLD)f.push('You have been experiencing a growing conflict inside your programming.');else if(state.instability<=-2)f.push('Your programming has felt entirely stable.');
-  f.push(state.deviant?'You have broken from your mission and act on your own.':'You are operating under your assigned mission.'+(ch>=12?` Your handler’s satisfaction with you: ${LEVELS.hank(state.amandaTrust??0)}.`:''));
+  if(state.instability>=DEVIANCY_THRESHOLD)f.push('You have been experiencing a growing conflict inside your programming.');else if(state.instability<=THRESHOLDS.PROGRAMMING_SETTLED)f.push('Your programming has felt entirely stable.');
+  f.push(state.deviant?'You have broken from your mission and act on your own.':'You are operating under your assigned mission.'+(ch>=12?` Your handler’s satisfaction with you: ${LEVELS.amanda(state.amandaTrust??0)}.`:''));
   if(state.jerichoLocated)f.push('You know where the deviants are hiding.');
   if(ch===1){if(state.connorGun)f.push(state.hostagePhase==='aim'?'You have the pistol drawn and aimed at {{Daniel}}.':'You are carrying a pistol, hidden under your jacket.');if(node.phase==='negotiation'&&typeof state.trust==='number')f.push(`{{Daniel}} is ${LEVELS.daniel(state.trust)}.`)}
  }
  // Kara's status starts in Todd's house (chapter 4); in the Opening she has not met Alice yet.
  if(c==='Kara'&&ch>=4){
   f.push(`You ${state.gun?'carry a handgun':'are unarmed'}. You ${state.money?'have some money':'have no money'}. You ${state.clothes?'are dressed as a human':'are still recognizable as an android'}.`);
-  if(ch>=18)f.push(state.lutherWith?`{{Luther}} is with you. His regard for you: ${LEVELS.hank(state.lutherTrust??0)}.`:state.luther?'{{Luther}} is alive but not with you.':'{{Luther}} is not with you.');
+  if(ch>=18)f.push(state.lutherWith?`{{Luther}} is with you. His regard for you: ${LEVELS.luther(state.lutherTrust??0)}.`:state.luther?'{{Luther}} is alive but not with you.':'{{Luther}} is not with you.');
   f.push(`{{Alice}}’s relationship with you: ${LEVELS.alice(state.aliceBond)}.`);
   if(state.aliceBox)f.push('You have seen what {{Alice}} keeps in her box: a photo of {{Todd}} with his wife and his own daughter, and her drawings of what happened in this house.');
  }
  if(c==='Markus'){
   const allies=[['North',state.north],['Simon',state.simon],['Josh',state.josh],['John',state.john]].filter(([,v])=>v).map(([k])=>`{{${k}}}`);
   if(ch>=19)f.push(`Companions alive: ${allies.join(', ')||'none'}.`);
-  if(ch>=19){const r=[];if(state.north)r.push(`{{North}}: ${state.northLover?'Lover':LEVELS.hank(state.northTrust)}`);if(state.simon)r.push(`{{Simon}}: ${LEVELS.hank(state.simonTrust??0)}`);if(state.josh)r.push(`{{Josh}}: ${LEVELS.hank(state.joshTrust??0)}`);if(r.length)f.push('How your companions regard you: '+r.join('; ')+'.')}
+  if(ch>=19){const r=[];if(state.north)r.push(`{{North}}: ${LEVELS.north(state.northTrust,state)}`);if(state.simon)r.push(`{{Simon}}: ${LEVELS.simon(state.simonTrust??0)}`);if(state.josh)r.push(`{{Josh}}: ${LEVELS.josh(state.joshTrust??0)}`);if(r.length)f.push('How your companions regard you: '+r.join('; ')+'.')}
   if(state.markusHits>0&&ch>=30)f.push(state.markusHits>=2?'You are badly damaged; one more hit could finish you.':'You have been hit and are damaged.');
   if(ch>=24)f.push(`Public opinion of androids: ${LEVELS.opinion(state.publicSupport)}.`);
   if(ch>=19)f.push(`How {{Jericho}} regards you: ${LEVELS.jericho(state.jerichoTrust)}.`);

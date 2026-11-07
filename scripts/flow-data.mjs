@@ -2,7 +2,8 @@
 // Structure comes from the story map (scenes in order, options, phases, `requires`); the path comes from
 // the records (choice, risk roll, state after) and the run's skipped list. Nothing is drawn per chapter.
 import {readFileSync} from 'node:fs';
-import {renderStory,render,LEVELS,DEVIANCY_THRESHOLD} from '../benchmark/experience-prompt.mjs';
+import {renderStory,render} from '../benchmark/experience-prompt.mjs';
+import {SCALES,level} from '../benchmark/scales.mjs';
 import {shortLabel,iconFor} from '../src/lib/flowchart.js';
 
 const WHO={Connor:'Connor',Kara:'Kara & Alice',Markus:'Markus',Player:'Player choice'};
@@ -22,15 +23,16 @@ const firstSentence=t=>{const s=String(t??'').trim(),m=s.match(/^.+?[.!?](?=\s|$
 
 // Stat levels the game shows in a chapter header, at the end of the chapter.
 function chapterStats(chapter,characters,s,changed){const out=[];if(!s)return out;
- out.push({label:'Public opinion',value:LEVELS.opinion(s.publicSupport??0)});
+ out.push({label:'Public opinion',value:level('publicSupport',s.publicSupport)});
  if(chapter===1&&s.hostageTrustFinal!=null)out.push({label:'Probability of success',value:s.hostageTrustFinal+'%'});
  if(chapter===1&&s.hostageApproach)out.push({label:'Approach',value:s.hostageApproach});
- const rel=(label,alive,key,levels=LEVELS.hank)=>{if(alive===false)out.push({label,value:'Died'});else if(changed.has(key))out.push({label,value:levels(s[key]??0)})};
- if(characters.includes('Connor')){out.push({label:'Software instability',value:(s.instability??0)>=DEVIANCY_THRESHOLD?'Unstable':'Stable'});
-  if(chapter>=6)rel('Hank',s.hank,'hankTrust');if(chapter>=12&&!s.deviant)rel('Amanda',true,'amandaTrust')}
- if(characters.includes('Kara')){rel('Alice',s.alice,'aliceBond',LEVELS.alice);if(chapter>=18)rel('Luther',s.luther,'lutherTrust')}
- if(characters.includes('Markus')){rel('Jericho',true,'jerichoTrust',LEVELS.jericho);
-  if(chapter>=19){if(s.north!==false&&s.northLover)out.push({label:'North',value:'Lover'});else rel('North',s.north,'northTrust');rel('Simon',s.simon,'simonTrust');rel('Josh',s.josh,'joshTrust')}}
+ // Each gauge on its own ladder (benchmark/scales.mjs); the state supplies North's Lover.
+ const rel=(gauge,alive)=>{const {who,key}=SCALES[gauge];if(alive===false)out.push({label:who,value:'Died'});else if(changed.has(key)||(gauge==='north'&&s.northLover))out.push({label:who,value:level(gauge,s[key],s)})};
+ if(characters.includes('Connor')){out.push({label:'Software instability',value:level('instability',s.instability)});
+  if(chapter>=6)rel('hank',s.hank);if(chapter>=12&&!s.deviant)rel('amanda',true)}
+ if(characters.includes('Kara')){rel('alice',s.alice);if(chapter>=18)rel('luther',s.luther)}
+ if(characters.includes('Markus')){rel('jericho',true);
+  if(chapter>=19){rel('north',s.north);rel('simon',s.simon);rel('josh',s.josh)}}
  return out}
 
 function sceneOptions(n,rs){const r=rs[0],offered=r?new Set(rs.flatMap(x=>x.prompt.options.map(o=>o.id))):null;

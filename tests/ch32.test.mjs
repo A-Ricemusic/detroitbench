@@ -1,3 +1,4 @@
+import {THRESHOLDS} from '../benchmark/scales.mjs';
 // Battle for Detroit (chapter 32) and the post-credits hostess (chapter 33).
 // The tests start from a crafted state at the first chapter-32 scene (every earlier-chapter flag set explicitly), so they
 // do not depend on how earlier chapters route; `play32` follows the engine's routing exactly as a run does.
@@ -522,9 +523,9 @@ test('Markus Revolution: three hits make Markus badly wounded; North (Companion)
  const refuse=play32({...REV,northTrust:6,northLover:true},{M32:'1'},hits);assert.equal(refuse.s.markus,false);assert.equal(refuse.s.ch32MarkusEnding,'MARKUS DIED AND THE REVOLUTION FAILED');assert.equal(refuse.s.ch32mr.endingCard,27);assert.match(ev(refuse,'M32'),/I love you/);
  assert.ok(!refuse.visited.includes('M30c'));
  // Below Companion North does not offer; a Friend Simon does (he must survive, so the third hit is the frightened android).
- const simon=play32({...REV,northTrust:3,simonTrust:3},{},['MR02','M30a','MR04']);assert.ok(!simon.visited.includes('M32'));assert.ok(simon.visited.includes('MR05'));
+ const simon=play32({...REV,northTrust:THRESHOLDS.NORTH_FRIEND-1,simonTrust:THRESHOLDS.SIMON_FRIEND},{},['MR02','M30a','MR04']);assert.ok(!simon.visited.includes('M32'));assert.ok(simon.visited.includes('MR05'));
  assert.equal(simon.s.simon,false);assert.equal(simon.s.markus,true);assert.equal(simon.s.ch32mrHeart,'simon');
- const nobody=play32({...REV,northTrust:3,simonTrust:0},{},['MR02','M30a','MR04']);assert.ok(nobody.visited.includes('MR06'));assert.equal(nobody.s.markus,false);assert.equal(nobody.s.ch32MarkusEnding,'MARKUS DIED AND THE REVOLUTION FAILED');assert.equal(nobody.s.jerichoTrust,0);
+ const nobody=play32({...REV,northTrust:THRESHOLDS.NORTH_FRIEND-1,simonTrust:THRESHOLDS.SIMON_FRIEND-3},{},['MR02','M30a','MR04']);assert.ok(nobody.visited.includes('MR06'));assert.equal(nobody.s.markus,false);assert.equal(nobody.s.ch32MarkusEnding,'MARKUS DIED AND THE REVOLUTION FAILED');assert.equal(nobody.s.jerichoTrust,0);
  assert.ok(nobody.skipped.some(x=>x.id==='M32'&&/North/.test(x.reason)));
 });
 

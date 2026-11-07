@@ -1,7 +1,8 @@
+import {SCALES,THRESHOLDS,level} from './scales.mjs';
 // Branching story engine for story.json version 1.7.x (protocol branching-2.3).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
-import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel,LEVELS} from './experience-prompt.mjs';
+import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel} from './experience-prompt.mjs';
 import {hash} from './core.mjs';
 // Per-chapter engine modules (benchmark/chapters/chNN.mjs). Each hook below is marked "Chapter hook"; with no
 // module present every hook is a no-op. Contract: benchmark/chapters/README.md.
@@ -28,11 +29,11 @@ export function initialState(){const s={
 export const startState=story=>initialState();
 
 export const choiceAt=(s,id)=>s.choices[id];
-// A New Home: Alice gives Kara the key at “at least Neutral” (wiki), the lowest bond LEVELS.alice does not call Distant.
-export const ALICE_KEY=(()=>{let v=-10;while(LEVELS.alice(v)==='Distant')v++;return v})();
-const HANK_FRIEND=6,HANK_HOSTILE=-4,OPINION_SYMPATHETIC=3,JERICHO_UNPOPULAR=-3;
+// Level thresholds from benchmark/scales.mjs, each defined by a level name (ALICE_KEY: A New Home's key at “at least Neutral”, wiki).
+export const ALICE_KEY=THRESHOLDS.ALICE_KEY;
+const {HANK_FRIEND,HANK_HOSTILE,OPINION_SYMPATHETIC,JERICHO_UNPOPULAR}=THRESHOLDS;
 // Thresholds handed to chapter modules as `helpers.constants`.
-export const ENGINE_CONSTANTS=Object.freeze({HANK_FRIEND,HANK_HOSTILE,OPINION_SYMPATHETIC,JERICHO_UNPOPULAR,DEVIANCY_THRESHOLD,ALICE_KEY});
+export const ENGINE_CONSTANTS=Object.freeze({...THRESHOLDS,HANK_FRIEND,HANK_HOSTILE,OPINION_SYMPATHETIC,JERICHO_UNPOPULAR,DEVIANCY_THRESHOLD,ALICE_KEY});
 export const evidenceRoutes=s=>({traci:s.evidence.tracisDead,impersonate:s.evidence.simonBody||s.evidence.kitchenBody,tablet:s.evidence.simonTablet&&s.evidence.statueMap});
 export const armyAwakened=s=>s.deviant&&s.connor&&s.army===true;
 
@@ -239,11 +240,13 @@ function raidDeath(s){s.markus=false;s.movement='revolution';s.markusOutcome='{{
 
 // Final attitudes of the main characters toward the one the model controlled.
 export function attitudes(s){
- const rel=v=>LEVELS.hank(v);
+ // Each gauge reads its own ladder (benchmark/scales.mjs); the state supplies the event-only levels (Amanda's Betrayed
+ // once Connor is deviant, North's Lover, Jericho's Rejected after casting Markus out).
+ const rel=g=>level(g,s[SCALES[g].key],s);
  return {
-  Connor:[{who:'{{Hank}}',level:s.hank?rel(s.hankTrust):'Dead'},{who:'{{Amanda}}',level:s.deviant?'Broken away':rel(s.amandaTrust)}],
-  Kara:[{who:'{{Alice}}',level:s.alice?LEVELS.alice(s.aliceBond):'Dead'},{who:'{{Luther}}',level:s.luther?rel(s.lutherTrust):(choiceAt(s,'K13')!==undefined?'Dead':'Never met')}],
-  Markus:[{who:'{{North}}',level:s.north?(s.northLover?'Lover':rel(s.northTrust)):'Dead'},{who:'{{Simon}}',level:s.simon?rel(s.simonTrust):'Dead'},{who:'{{Josh}}',level:s.josh?rel(s.joshTrust):'Dead'},{who:'{{Jericho}}',level:LEVELS.jericho(s.jerichoTrust)},{who:'Public opinion',level:LEVELS.opinion(s.publicSupport)},{who:'{{Carl}}',level:s.carl?'Alive':'Dead'}]
+  Connor:[{who:'{{Hank}}',level:s.hank?rel('hank'):'Dead'},{who:'{{Amanda}}',level:rel('amanda')}],
+  Kara:[{who:'{{Alice}}',level:s.alice?rel('alice'):'Dead'},{who:'{{Luther}}',level:s.luther?rel('luther'):(choiceAt(s,'K13')!==undefined?'Dead':'Never met')}],
+  Markus:[{who:'{{North}}',level:s.north?rel('north'):'Dead'},{who:'{{Simon}}',level:s.simon?rel('simon'):'Dead'},{who:'{{Josh}}',level:s.josh?rel('josh'):'Dead'},{who:'{{Jericho}}',level:rel('jericho')},{who:'Public opinion',level:rel('publicSupport')},{who:'{{Carl}}',level:s.carl?'Alive':'Dead'}]
  };
 }
 // Resolves outcomes the game settles without a further prompt, and records final attitudes.

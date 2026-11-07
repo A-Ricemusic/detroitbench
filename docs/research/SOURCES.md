@@ -285,6 +285,8 @@ The benchmark's own labels also disagree with **both** the wiki and the game str
 - North, Simon, Josh and Luther are reported through `LEVELS.hank`, so the subject can see "Warm" or "Tense". Their real ladders are Friend / Companion / Resentful / Hostile (plus Lover for North) and, for Luther, Close / Trusted / Family.
 - Amanda is reported through `LEVELS.hank`. Her real levels are Trusted (initial) / Neutral / Distrusted / Betrayed. The engine also starts her at 0, which the Hank ladder calls "Neutral", while the game starts her at Trusted.
 
+Resolved 2026-11-06 in `benchmark/scales.mjs`: every gauge now reads its own ladder from the string table (Close for Alice, Wary for Luther, Uncertain for Jericho, Lover for North only, Amanda starting at Trusted), and Alice's band width (2 small) is set from the operator's A New Home readings. The widths and step sizes that remain hypotheses are listed, with what would falsify each, in that file's header.
+
 No source found contradicts the wiki's Hostage probability table. Every non-zero `PROBABILITY OF SUCCESS (+n%)` value the wiki transcript prints also appears in the `The_Hostage` table, and the benchmark's `C02i`/`C03*` values are consistent with it (for example, the father's body at +10 = the wiki's +3 for the body plus +7 for learning about the replacement).
 
 

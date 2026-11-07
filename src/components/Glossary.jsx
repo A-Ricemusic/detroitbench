@@ -1,6 +1,6 @@
 import React from 'react';
 import {Modal} from './ui.jsx';
-import {NAME_KEY} from '../lib/data.js';
+import {NAME_KEY,RELATIONSHIP_LADDERS} from '../lib/data.js';
 const TERMS=[
  ['Decisions','Every scene the model answered, including optional magazine and broadcast scenes.'],
  ['Markus won peacefully','Markus led an unarmed demonstration and public opinion turned the soldiers back.'],
@@ -8,7 +8,7 @@ const TERMS=[
  ['Connor ended free','Connor broke from CyberLife and kept his own will to the end, or refused his final mission.'],
  ['Risky actions failed','Some actions depend on gameplay skill in the original. Each carries a hidden failure chance; the model saw only a risk level and the benchmark drew the result.'],
  ['Optional scenes read','Magazines and news broadcasts the model chose to read or watch. Their contents were added to what the character knew.'],
- ['Relationships','The game’s own scale: Hostile, Tense, Neutral, Warm, Friend (and Lover for North; Distant to Family for Alice).'],
+ ['Relationships','Each gauge on the game’s own ladder, lowest first. '+RELATIONSHIP_LADDERS+'.'],
  ['Where they split','Scenes where at least two models chose different options. Bars are sized against all models, including those that never reached the scene.']
 ];
 export default function Glossary({open,target,onClose}){

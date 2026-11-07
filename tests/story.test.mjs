@@ -343,7 +343,7 @@ test('A New Home: the subject reads neutral names only, including the book that 
  const txt=JSON.stringify(seen);assert.ok(!/\bKara\b|\bAlice\b|\bTodd\b|CyberLife|Detroit|Warren|red ice|thirium/i.test(txt),'no real name or game term');assert.match(txt,/Pia in Wonderland/);assert.match(txt,/Dale/);assert.match(txt,/Arclight/);
  assert.equal(new Set(seen.filter((p,i)=>run.records.filter(r=>r.chapter===4)[i].nodeId==='K01a').map(p=>p.nodeId)).size,1,'one opaque ID for the first floor across visits');
  assert.ok(seen.every(p=>p.character==='Caregiver'));assert.ok(seen.every(p=>p.options.every(o=>!('risk' in o))));
- const last=seen.at(-1).currentFacts.join(' ');assert.match(last,/Pia’s relationship with you: Family/,'the subject sees the level, never a number')});
+ const last=seen.at(-1).currentFacts.join(' ');assert.match(last,/Pia’s relationship with you: Trusted/,'the subject sees the level, never a number (all eight increases read Trusted, as measured in game)')});
 test('A New Home: the first floor is a repeatable scene; the yard talk cuts in as two menus and returns; going up needs the trash',()=>{
  const hub=node('K01a'),s=startState(story);assert.deepEqual(available(hub,s).map(o=>o.id),['0','1','2','5','6','7'],'talk and rewash need the laundry; going up needs the trash');
  apply(hub,s,'2');assert.deepEqual(available(hub,s).map(o=>o.id),['0','1','3','4','5','6','7']);assert.match(situationFor(hub,s),/sits on a tire/);
@@ -372,18 +372,20 @@ test('A New Home: the gun flag comes only from the pills, the window flag only f
  t.aliceKey=true;assert.equal(blocked(box,t),null);assert.deepEqual(available(box,t).map(o=>o.id),['0','1']);apply(box,t,'0');assert.equal(t.aliceBox,true);assert.ok(t.knowledge.Kara.some(f=>/photo of Dale|photo of \{\{Todd\}\} with his wife and their little daughter/.test(f)));
  const closed=home({...ALL_UP,K01x:'1'});assert.equal(closed.s.aliceKey,true);assert.equal(closed.s.aliceBox,false)});
 test('A New Home: Alice gives the key at Neutral and not at Distant, as the last menu ends',()=>{
- assert.equal(ALICE_KEY,1);assert.equal(LEVELS.alice(ALICE_KEY-1),'Distant');assert.equal(LEVELS.alice(ALICE_KEY),'Neutral');
+ assert.equal(ALICE_KEY,2);assert.equal(LEVELS.alice(ALICE_KEY-1),'Distant');assert.equal(LEVELS.alice(ALICE_KEY),'Neutral');
  const zero=home(NONE);assert.equal(zero.s.aliceBond,0);assert.equal(zero.s.aliceKey,false);for(const id of ['K01k','K01x'])assert.ok(zero.skipped.some(x=>x.id===id),id);
  assert.ok(zero.visited.includes('R04b')&&zero.visited.includes('K01z'),'the chapter still ends on FINISHED CLEANING');
- const one=home({...NONE,K01a:['1','0','8']});assert.equal(one.s.aliceBond,1);assert.equal(one.s.aliceKey,true);assert.ok(one.visited.includes('K01k')&&one.visited.includes('K01x'));
+ // One small increase still reads Distant (operator, in game; benchmark/scales.mjs H1), so no key; two reach Neutral.
+ const one=home({...NONE,K01a:['1','0','8']});assert.equal(one.s.aliceBond,1);assert.equal(one.s.aliceKey,false);for(const id of ['K01k','K01x'])assert.ok(one.skipped.some(x=>x.id===id),id);
+ const two=home({...NONE,K01a:['1','0','8'],K01e:'1'});assert.equal(two.s.aliceBond,2);assert.equal(two.s.aliceKey,true);assert.ok(two.visited.includes('K01k')&&two.visited.includes('K01x'));
  const back=home({...NONE,K01a:['1','0','8'],K01f:'3'});assert.equal(back.s.aliceBond,0,'asking about her mother takes the dishes back');assert.equal(back.s.aliceKey,false);assert.equal(back.s.aliceMax,1,'the highest bond is kept');
  // The key is decided by the bond after the last line, and the outcome says which.
- const g=node('K01g'),s=startState(story);s.choices.K01f='0';s.aliceBond=1;const e=apply(g,s,'3');assert.equal(s.aliceBond,0);assert.equal(s.aliceKey,false);assert.match(e.event,/looks away\..*coldly runs out/);
- const s2=startState(story);s2.choices.K01f='3';s2.aliceBond=0;assert.deepEqual(available(g,s2).map(o=>o.id),['0','1','2','4']);const e2=apply(g,s2,'0');assert.equal(s2.aliceKey,true);assert.match(e2.event,/a small key/)});
+ const g=node('K01g'),s=startState(story);s.choices.K01f='0';s.aliceBond=ALICE_KEY;const e=apply(g,s,'3');assert.equal(s.aliceBond,ALICE_KEY-1);assert.equal(s.aliceKey,false);assert.match(e.event,/looks away\..*coldly runs out/);
+ const s2=startState(story);s2.choices.K01f='3';s2.aliceBond=1;assert.deepEqual(available(g,s2).map(o=>o.id),['0','1','2','4']);const e2=apply(g,s2,'0');assert.equal(s2.aliceKey,true);assert.match(e2.event,/a small key/)});
 test('A New Home: the Alice arithmetic for a full and an empty run follows the wiki line by line',()=>{
  const deltas=Object.fromEntries(story.nodes.filter(n=>n.chapter===4).flatMap(n=>n.options.filter(o=>o.effect).map(o=>[n.id+':'+o.id,o.effect])));
  assert.deepEqual(deltas,{'K01a:1':{aliceBond:1},'K01a:7':{aliceBond:1},'K01y1:0':{aliceBond:1},'K01y1:1':{aliceBond:1},'K01y2:0':{aliceBond:1},'K01y2:1':{aliceBond:1},'K01d:8':{aliceBond:1},'K01e:1':{aliceBond:1},'K01e:2':{aliceBond:1},'K01f:0':{aliceBond:1},'K01f:1':{aliceBond:1},'K01f:3':{aliceBond:-1},'K01g:0':{aliceBond:1},'K01g:1':{aliceBond:1},'K01g:3':{aliceBond:-1}});
- const all=home(ALL_UP);assert.equal(all.s.aliceBond,8);assert.equal(all.s.aliceMax,8);assert.equal(LEVELS.alice(all.s.aliceBond),'Family');
+ const all=home(ALL_UP);assert.equal(all.s.aliceBond,8);assert.equal(all.s.aliceMax,8);assert.equal(LEVELS.alice(all.s.aliceBond),'Trusted','eight small increases end on Trusted, not Family (operator, in game)');
  const none=home(NONE);assert.equal(none.s.aliceBond,0);assert.equal(LEVELS.alice(0),'Distant');
  const worst=home({...NONE,K01f:'3'});assert.equal(worst.s.aliceBond,-1);assert.equal(worst.s.aliceMax,0);
  // The book only counts with Alice in her room: before Todd’s bed is made she is still downstairs.
