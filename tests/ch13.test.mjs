@@ -87,6 +87,7 @@ test('On the Run, motel: Alice and public-opinion arrows, both TV reports, the d
  const r=play({...START.motel,todd:false});
  assert.equal(r.s.aliceBond,2,'BATH? and MOVING');assert.equal(r.s.publicSupport,-1);assert.equal(r.s.hankTrust,-2,'any answer to “You wait in the car.”');
  assert.ok(r.saw('K09s')&&r.saw('K09')&&r.s.ch13Ending===ENDINGS.train);assert.match(r.events.C09m2[0],/It’s gone…/);
+ const bypass=play(START.motel,{K09m:['1','7']});assert.ok(bypass.saw('K09m3')&&!bypass.saw('K09m2'));assert.equal(bypass.s.ch13Hair,null);assert.equal(bypass.s.publicSupport,-1);
  const tired=play(START.motel,{K09m1:'2'});assert.equal(tired.s.aliceBond,1);
  const tv=n=>situationFor(node('K09m3'),n);
  const dead=startState(story);Object.assign(dead,{todd:false,ch13ToddShooter:'Kara'});assert.match(render(tv(dead),'real'),/shot by his android.*You had no choice/);assert.ok(!/child/.test(tv(dead)));
@@ -175,7 +176,7 @@ test('On the Run: random play from each start terminates, accounts for every sce
 test('On the Run: the subject reads neutral names only',()=>{
  for(const n of ch13){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.outcome,o.fact].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.facts??[]),...Object.values(n.outcomes??{})];
   for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/\{\{/.test(neutral),n.id);
-   assert.ok(!/Connor|Kara|KARA|Alice|Hank|Ralph|Todd|Anderson|\bBen\b|Joss|Douglas|Williams|Corktown|Michael|Channel 16|CyberLife|Detroit|deviant|DEVIANT|Canad|Ferndale|Camden/.test(neutral),n.id+': '+neutral)}}
+   assert.ok(!/\b(?:Connor|Kara|Alice|Hank|Ralph|Todd|Anderson|Ben|Joss|Douglas|Williams|Corktown|Michael|Channel 16|CyberLife|Detroit|deviants?|Canad\w*|Ferndale|Camden)\b/i.test(neutral),n.id+': '+neutral)}}
  assert.match(render(node('C09m0').situation,'real'),/Lieutenant Anderson, Detroit Police/);assert.match(render(node('C09m0').situation,'neutral'),/Lieutenant Reyes, City Police/);
  assert.match(render(node('C09q2').situation,'neutral'),/RUN! QUICK! MIRA!/);
 });

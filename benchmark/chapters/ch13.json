@@ -92,7 +92,7 @@
    },
    {
     "id": "3",
-    "text": "READ “ANDROID AND CANADA”: the other side of it.",
+    "text": "READ “ANDROID AND {{CANADA}}”: the other side of it.",
     "once": "mag2",
     "fact": "A travel advertisement for {{Canada}}: “where the air is clean and the welcome is always warm.” Although the United States voted in its Android Act in 2028, the parliament there has again put off deciding whether to permit androids: they are not sold there and have no official status, while in the United States they fuel record growth and record unemployment.",
     "outcome": "{{Kara}} reads the advertisement: across the border, androids are still not allowed."
@@ -133,7 +133,7 @@
     "id": "7"
    },
    {
-    "text": "WAKE UP ALICE: go back to the car and wake her.",
+    "text": "WAKE UP {{ALICE}}: go back to the car and wake her.",
     "once": "left",
     "exit": true,
     "requires": {
@@ -153,7 +153,7 @@
     "ch13Lot.last": "scissors"
    }
   },
-  "adaptationNote": "The chart’s [ EXPLORE PARKING LOT ] hub and the line out of it, as one repeatable scene: each visit offers what has not been done yet. Chart nodes, in the chart’s order: FIND SOME RUSTED SCISSORS (then the hair, next scene), FIND BURNT ANDROID, READ “CYBER-WILDLIFE”, READ “ANDROID AND CANADA”, TRY TO OPEN CAR TRUNK > FIND A CROWBAR > FIND SOME CLOTHES (cross-chapter padlock; sets `clothes`), CHECK NEIGHBORHOOD with POLICE IS IN VICINITY (one option; PowerPyx: unmissable), then WAKE UP ALICE and LEAVE THE PARKING LOT (one option, with the template’s wake-up dialogue). The trunk needs Kara not to have taken the laundromat clothes in Fugitives (wiki: “only available if didn’t obtain clothes”). Leaving needs the haircut and the look at the street (the objective “Change appearance”; PowerPyx marks CHECK NEIGHBORHOOD unmissable). The two magazines are chart nodes inside the hub, so they are hub options here rather than a media scene; their facts are the wiki’s article text, without the interviewee’s name. The burnt android’s details are the wiki’s Notes (AX420, “DEATH TO ANDROIDS”). The car start has no Alice prompt and no stat arrow anywhere (template, wiki). No stat change: the template has no arrow here and no wiki stat page lists one.",
+  "adaptationNote": "The chart’s [ EXPLORE PARKING LOT ] hub and the line out of it, as one repeatable scene: each visit offers what has not been done yet. Chart nodes, in the chart’s order: FIND SOME RUSTED SCISSORS (then the hair, next scene), FIND BURNT ANDROID, READ “CYBER-WILDLIFE”, READ “ANDROID AND {{CANADA}}”, TRY TO OPEN CAR TRUNK > FIND A CROWBAR > FIND SOME CLOTHES (cross-chapter padlock; sets `clothes`), CHECK NEIGHBORHOOD with POLICE IS IN VICINITY (one option; PowerPyx: unmissable), then WAKE UP ALICE and LEAVE THE PARKING LOT (one option, with the template’s wake-up dialogue). The trunk needs Kara not to have taken the laundromat clothes in Fugitives (wiki: “only available if didn’t obtain clothes”). Leaving needs the haircut and the look at the street (the objective “Change appearance”; PowerPyx marks CHECK NEIGHBORHOOD unmissable). The two magazines are chart nodes inside the hub, so they are hub options here rather than a media scene; their facts are the wiki’s article text, without the interviewee’s name. The burnt android’s details are the wiki’s Notes (AX420, “DEATH TO ANDROIDS”). The car start has no Alice prompt and no stat arrow anywhere (template, wiki). No stat change: the template has no arrow here and no wiki stat page lists one.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
@@ -337,7 +337,7 @@
   ],
   "options": [
    {
-    "text": "DRAW A BATH FOR ALICE: go into the bathroom and start the water.",
+    "text": "DRAW A BATH FOR {{ALICE}}: go into the bathroom and start the water.",
     "once": "bath",
     "outcome": "{{Kara}} turns on the bath taps. While the tub fills she looks at her face in the mirror over the sink: the face of the runaway AX400.",
     "id": "0"
@@ -363,7 +363,7 @@
    },
    {
     "id": "4",
-    "text": "READ “ANDROID AND CANADA”: the other side of it.",
+    "text": "READ “ANDROID AND {{CANADA}}”: the other side of it.",
     "once": "mag2",
     "fact": "A travel advertisement for {{Canada}}: “where the air is clean and the welcome is always warm.” Although the United States voted in its Android Act in 2028, the parliament there has again put off deciding whether to permit androids: they are not sold there and have no official status, while in the United States they fuel record growth and record unemployment.",
     "outcome": "{{Kara}} reads the advertisement: across the border, androids are still not allowed."
@@ -383,6 +383,16 @@
     },
     "outcome": "{{Kara}} turns off the water and comes back into the room. {{Alice}} looks at her: “You’re pretty like that. You really look like a human now.” {{Kara}}: “Your bath’s ready.”",
     "id": "6"
+   },
+   {
+    "id": "7",
+    "text": "CHANGE CHANNEL: watch the news with {{Alice}} without running the bath.",
+    "requires": {
+     "ch13Room.bath": false
+    },
+    "once": "left",
+    "exit": true,
+    "outcome": "{{Kara}} stays in the room with {{Alice}} and turns to the television."
    }
   ],
   "repeatWhile": {
@@ -394,7 +404,7 @@
     "ch13Room.last": "bath"
    }
   },
-  "adaptationNote": "The chart’s DRAW A BATH FOR ALICE (then the hair, next scene), [ EXPLORE MOTEL ROOM ] with LOOK AT THE CLOCK, LOOK OUTSIDE, READ “CYBER-WILDLIFE”, READ “ANDROID AND CANADA” and LOOK AT THE PAINTING, and FINISH DRAWING BATH, as one repeatable scene. The chart lets Kara explore before the bath (TALK TO ALICE has an edge straight to the hub) or after REMOVE LED, and FINISH DRAWING BATH bypasses the hub, so here the room can be explored any time before the bath is finished, which ends the phase and needs the haircut (Alice’s compliment follows it in the template). The sources give nothing about the clock, the window or the painting, so their outcomes say only what Kara looks at. The magazines are chart nodes inside the hub; their facts are the wiki’s article text. Outcome lines are the template’s (“You’re pretty like that…”, “Your bath’s ready.”). No stat change: the template has no arrow here and no wiki stat page lists one.",
+  "adaptationNote": "The chart’s DRAW A BATH FOR ALICE (then the hair, next scene), [ EXPLORE MOTEL ROOM ] with LOOK AT THE CLOCK, LOOK OUTSIDE, READ “CYBER-WILDLIFE”, READ “ANDROID AND {{CANADA}}” and LOOK AT THE PAINTING, and FINISH DRAWING BATH, as one repeatable scene. The chart lets Kara explore before the bath (TALK TO ALICE has an edge straight to the hub) or after REMOVE LED, and FINISH DRAWING BATH bypasses the hub, so here the room can be explored any time before the bath is finished, which ends the phase and needs the haircut (Alice’s compliment follows it in the template). The sources give nothing about the clock, the window or the painting, so their outcomes say only what Kara looks at. The magazines are chart nodes inside the hub; their facts are the wiki’s article text. Outcome lines are the template’s (“You’re pretty like that…”, “Your bath’s ready.”). No stat change: the template has no arrow here and no wiki stat page lists one. The direct TALK TO ALICE > EXPLORE MOTEL ROOM > CHANGE CHANNEL edge is also available without starting the bath or haircut. This follows the chart; whether the game forces a haircut elsewhere on that edge remains an operator check (research §8.5).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",
@@ -722,7 +732,7 @@
   "options": [
    {
     "id": "0",
-    "text": "FOLLOW HANK: go up to room 28 with him.",
+    "text": "FOLLOW {{HANK}}: go up to room 28 with him.",
     "outcome": "{{Hank}} opens room 28. It is empty. {{Hank}}: “It’s gone…”"
    },
    {
@@ -935,7 +945,7 @@
    },
    {
     "id": "1",
-    "text": "READ “ANDROID AND CANADA”: the other side of it.",
+    "text": "READ “ANDROID AND {{CANADA}}”: the other side of it.",
     "once": "mag2",
     "fact": "A travel advertisement for {{Canada}}: “where the air is clean and the welcome is always warm.” Although the United States voted in its Android Act in 2028, the parliament there has again put off deciding whether to permit androids: they are not sold there and have no official status, while in the United States they fuel record growth and record unemployment.",
     "outcome": "{{Kara}} reads the advertisement: across the border, androids are still not allowed."
@@ -953,13 +963,13 @@
     "id": "3"
    },
    {
-    "text": "CHECK ON ALICE: bend down over her while she sleeps.",
+    "text": "CHECK ON {{ALICE}}: bend down over her while she sleeps.",
     "once": "alice",
     "outcome": "{{Kara}} bends down over {{Alice}}. She is fast asleep.",
     "id": "4"
    },
    {
-    "text": "LOOK AT RALPH’S STUFF: look at the belongings laid out by the kitchen.",
+    "text": "LOOK AT {{RALPH}}’S STUFF: look at the belongings laid out by the kitchen.",
     "once": "stuff",
     "outcome": "{{Ralph}}’s few belongings are laid out to the right of the kitchen. There is some money among them.",
     "id": "5"
@@ -984,7 +994,7 @@
     "ch13Squat.last": "stuff"
    }
   },
-  "adaptationNote": "The chart’s [ EXPLORE SQUAT ] hub and GO UPSTAIRS, as one repeatable scene. Chart nodes in the chart’s order: READ “CYBER-WILDLIFE”, READ “ANDROID AND CANADA”, REVIVE FIRE (PowerPyx: “Unmissable in order to continue”, so going upstairs needs it), READ LEAFLET, CHECK ON ALICE, LOOK AT RALPH’S STUFF (then STEAL MONEY, next scene). Locations are PowerPyx’s. No source gives the leaflet’s text, so its outcome says only that Kara reads it, and it adds no fact. The magazines are chart nodes inside the hub; their facts are the wiki’s article text. No stat change: the template has no arrow here and no wiki stat page lists one.",
+  "adaptationNote": "The chart’s [ EXPLORE SQUAT ] hub and GO UPSTAIRS, as one repeatable scene. Chart nodes in the chart’s order: READ “CYBER-WILDLIFE”, READ “ANDROID AND {{CANADA}}”, REVIVE FIRE (PowerPyx: “Unmissable in order to continue”, so going upstairs needs it), READ LEAFLET, CHECK ON ALICE, LOOK AT RALPH’S STUFF (then STEAL MONEY, next scene). Locations are PowerPyx’s. No source gives the leaflet’s text, so its outcome says only that Kara reads it, and it adds no fact. The magazines are chart nodes inside the hub; their facts are the wiki’s article text. No stat change: the template has no arrow here and no wiki stat page lists one.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/On_the_Run",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html",

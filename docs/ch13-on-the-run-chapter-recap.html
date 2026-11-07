@@ -35,7 +35,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#arrows">2 · Arrows</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Adapted</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
 
 <h2 id="flow">1 · How the chapter flows</h2>
-<p>Where Kara slept in Fugitives picks the start. The car and the motel merge into the street; the street, the motel’s side door and the squat merge into the pursuit.</p>
+<p>Where Kara slept in Fugitives picks the start. While chapter 10 is being rebuilt, the module reads the first recognized car/motel/squat value from <code>ch10Shelter</code>, <code>shelter</code>, then <code>karaRoute</code>; next it checks <code>ch10Ending</code>, and unknown inputs fall back to the car. The car and the motel merge into the street; the street, the motel’s side door and the squat merge into the pursuit.</p>
 <div class="cols">
 <div class="box"><h3>Parking lot (car)</h3><ol>
 <li><code>K09l0</code> MORNING IN PARKING LOT, LEAVE ALICE ASLEEP IN CAR (event).</li>
@@ -44,7 +44,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </ol></div>
 <div class="box"><h3>Motel</h3><ol>
 <li><code>K09m0</code> MORNING IN MOTEL (event). <code>K09m1</code> TALK TO ALICE: BATH? / HUNGRY? / TIRED?</li>
-<li><code>K09m</code> the room (repeatable): DRAW A BATH (then <code>K09m2</code> the hair), clock, window, painting, two magazines, FINISH DRAWING BATH.</li>
+<li><code>K09m</code> the room (repeatable): DRAW A BATH (then <code>K09m2</code> the hair), clock, window, painting, two magazines, FINISH DRAWING BATH; or CHANGE CHANNEL without starting the bath, following the chart’s direct room edge.</li>
 <li><code>K09m3</code> CHANGE CHANNEL, ALICE HEARS ABOUT TODD (event; public opinion −1).</li>
 <li><code>K09m4</code> CAN’T STAY HERE / FAMILY / CONTACT ANDROID. <code>K09m5</code> CHEER ALICE UP: MOVING / DETERMINED / COMFORTING / SUPPORTIVE.</li>
 <li><code>K09m6</code> LOOK FOR BREAKFAST, KARA SPOTS POLICE FORCES (event).</li>
@@ -97,7 +97,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="differs">4 · Adapted or not in the sources</h2>
 <ul>
-<li>Free-roam phases are repeatable scenes: the parking lot, the motel room, the squat’s ground floor and upstairs, and Connor’s search. Leaving needs what the game makes unmissable (the haircut, CHECK NEIGHBORHOOD, REVIVE FIRE).</li>
+<li>Free-roam phases are repeatable scenes: the parking lot, the motel room, the squat’s ground floor and upstairs, and Connor’s search. Leaving needs the parking-lot and squat haircut, CHECK NEIGHBORHOOD, or REVIVE FIRE as appropriate; the motel also has the chart’s direct room-to-TV bypass.</li>
 <li>Gameplay checks with a failure branch on the chart are risk rolls: the street sneak (0.25), the run to the fence (0.2), Kara’s three crossings and the fight (0.1 each), Connor’s two (0.2 each). All values are unsourced. Experienced difficulty is modelled.</li>
 <li>Connor’s search: Hank calls after three empty looks and orders Connor out after the fifth. PowerPyx only says “if you wait for a long time”.</li>
 <li>CHANGE CHANNEL is unavoidable (no bypass edge on the chart), so the motel start always costs public opinion.</li>
@@ -123,6 +123,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <h2 id="check">6 · What to check when you replay</h2>
 <ul class="check">
 <li>Does any Hank or instability arrow show at the motel’s “You wait in the car.”, at GIVE UP / GO, and when Connor is hit? The template shows none; the wiki shows all of them.</li>
+<li>Does the direct TALK TO ALICE → EXPLORE MOTEL ROOM → CHANGE CHANNEL route allow leaving without the bath and haircut? The benchmark permits it from the chart; check whether the game forces the haircut elsewhere.</li>
 <li>Is CHANGE CHANNEL avoidable? Can Kara leave the motel without it?</li>
 <li>Is [CHECK GUN] shown when the gun was forgotten upstairs? Does it need two refusals?</li>
 <li>Which table line is TRY TO CONVINCE RALPH on the chart: FAMILY or BLUFF? Does BLUFF bring the menu back?</li>
