@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 164,
+  "decisionNodes": 145,
   "mediaNodes": 27,
   "eventNodes": 22,
-  "totalNodes": 213
+  "totalNodes": 194
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
@@ -3121,7 +3121,7 @@
      "text": "Scan {{Hank}}.",
      "clue": "hank",
      "fact": "Your scan of {{Hank}}: born 09/06/1985, police lieutenant; criminal record: none.",
-     "outcome": "LT. {{HANK}} | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
+     "outcome": "LT. {{ANDERSON}}, {{HANK}} | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
     },
     {
      "id": "2",
@@ -3144,7 +3144,7 @@
      "outcome": "{{Connor}} steps up beside {{Hank}}, who turns to him."
     }
    ],
-   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning {{Pedro}} and {{Gary}} unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints {{Hank}}’s surname on his scan; it is not a name token, so the token stands in. No stat change. Visits 2 to 5 are separate scenes (C10c2 to C10c5) with the same menu.",
+   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning {{Pedro}} and {{Gary}} unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The scan includes {{Hank}}’s surname through {{Anderson}}, with a neutral substitute. No stat change.  One repeatable hub; each scan is available once, and joining ends the menu.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Nest",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -3153,247 +3153,10 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
     "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
-  },
-  {
-   "id": "C10c2",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "The food truck (still scanning)",
-   "when": {
+   ],
+   "repeatWhile": {
     "nestScan.joined": false
-   },
-   "whenNot": "Connor had already stepped up to Hank.",
-   "clueState": "nestScan",
-   "situation": "You are {{Connor}}, still at the food truck. You can scan something else, or step up to {{Hank}}.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Scan {{Pedro}}, the man who sold {{Hank}} the tip.",
-     "clue": "pedro",
-     "fact": "Your scan of {{Pedro}}: {{AABDAR}}, {{PEDRO}}; born 01/25/2005, unemployed; criminal record: illegal gambling, fraud.",
-     "outcome": "{{AABDAR}}, {{PEDRO}} | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud"
-    },
-    {
-     "id": "1",
-     "text": "Scan {{Hank}}.",
-     "clue": "hank",
-     "fact": "Your scan of {{Hank}}: born 09/06/1985, police lieutenant; criminal record: none.",
-     "outcome": "LT. {{HANK}} | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
-    },
-    {
-     "id": "2",
-     "text": "Scan {{Gary}}, the owner, inside the truck.",
-     "clue": "gary",
-     "fact": "Your scan of {{Gary}}: {{KAYES}}, {{GARY}}; born 12/03/1988, business owner; criminal record: resisting arrest, breach of hygiene regulations.",
-     "outcome": "{{KAYES}}, {{GARY}} | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations"
-    },
-    {
-     "id": "3",
-     "text": "Scan the food hygiene license at the upper left of the serving hatch.",
-     "clue": "license",
-     "fact": "The food truck’s hygiene license expired on 05/20/2031; its renewal was refused on 07/24/2031.",
-     "outcome": "{{DETROIT}} FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031"
-    },
-    {
-     "id": "4",
-     "text": "Step up to the serving hatch beside {{Hank}}.",
-     "clue": "joined",
-     "outcome": "{{Connor}} steps up beside {{Hank}}, who turns to him."
-    }
-   ],
-   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning {{Pedro}} and {{Gary}} unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints {{Hank}}’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 2 of the same menu, a separate scene so that each visit is recorded once; it plays only while {{Connor}} has not stepped up to {{Hank}}.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
-  },
-  {
-   "id": "C10c3",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "The food truck (still scanning)",
-   "when": {
-    "nestScan.joined": false
-   },
-   "whenNot": "Connor had already stepped up to Hank.",
-   "clueState": "nestScan",
-   "situation": "You are {{Connor}}, still at the food truck. You can scan something else, or step up to {{Hank}}.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Scan {{Pedro}}, the man who sold {{Hank}} the tip.",
-     "clue": "pedro",
-     "fact": "Your scan of {{Pedro}}: {{AABDAR}}, {{PEDRO}}; born 01/25/2005, unemployed; criminal record: illegal gambling, fraud.",
-     "outcome": "{{AABDAR}}, {{PEDRO}} | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud"
-    },
-    {
-     "id": "1",
-     "text": "Scan {{Hank}}.",
-     "clue": "hank",
-     "fact": "Your scan of {{Hank}}: born 09/06/1985, police lieutenant; criminal record: none.",
-     "outcome": "LT. {{HANK}} | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
-    },
-    {
-     "id": "2",
-     "text": "Scan {{Gary}}, the owner, inside the truck.",
-     "clue": "gary",
-     "fact": "Your scan of {{Gary}}: {{KAYES}}, {{GARY}}; born 12/03/1988, business owner; criminal record: resisting arrest, breach of hygiene regulations.",
-     "outcome": "{{KAYES}}, {{GARY}} | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations"
-    },
-    {
-     "id": "3",
-     "text": "Scan the food hygiene license at the upper left of the serving hatch.",
-     "clue": "license",
-     "fact": "The food truck’s hygiene license expired on 05/20/2031; its renewal was refused on 07/24/2031.",
-     "outcome": "{{DETROIT}} FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031"
-    },
-    {
-     "id": "4",
-     "text": "Step up to the serving hatch beside {{Hank}}.",
-     "clue": "joined",
-     "outcome": "{{Connor}} steps up beside {{Hank}}, who turns to him."
-    }
-   ],
-   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning {{Pedro}} and {{Gary}} unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints {{Hank}}’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 3 of the same menu, a separate scene so that each visit is recorded once; it plays only while {{Connor}} has not stepped up to {{Hank}}.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
-  },
-  {
-   "id": "C10c4",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "The food truck (still scanning)",
-   "when": {
-    "nestScan.joined": false
-   },
-   "whenNot": "Connor had already stepped up to Hank.",
-   "clueState": "nestScan",
-   "situation": "You are {{Connor}}, still at the food truck. You can scan something else, or step up to {{Hank}}.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Scan {{Pedro}}, the man who sold {{Hank}} the tip.",
-     "clue": "pedro",
-     "fact": "Your scan of {{Pedro}}: {{AABDAR}}, {{PEDRO}}; born 01/25/2005, unemployed; criminal record: illegal gambling, fraud.",
-     "outcome": "{{AABDAR}}, {{PEDRO}} | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud"
-    },
-    {
-     "id": "1",
-     "text": "Scan {{Hank}}.",
-     "clue": "hank",
-     "fact": "Your scan of {{Hank}}: born 09/06/1985, police lieutenant; criminal record: none.",
-     "outcome": "LT. {{HANK}} | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
-    },
-    {
-     "id": "2",
-     "text": "Scan {{Gary}}, the owner, inside the truck.",
-     "clue": "gary",
-     "fact": "Your scan of {{Gary}}: {{KAYES}}, {{GARY}}; born 12/03/1988, business owner; criminal record: resisting arrest, breach of hygiene regulations.",
-     "outcome": "{{KAYES}}, {{GARY}} | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations"
-    },
-    {
-     "id": "3",
-     "text": "Scan the food hygiene license at the upper left of the serving hatch.",
-     "clue": "license",
-     "fact": "The food truck’s hygiene license expired on 05/20/2031; its renewal was refused on 07/24/2031.",
-     "outcome": "{{DETROIT}} FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031"
-    },
-    {
-     "id": "4",
-     "text": "Step up to the serving hatch beside {{Hank}}.",
-     "clue": "joined",
-     "outcome": "{{Connor}} steps up beside {{Hank}}, who turns to him."
-    }
-   ],
-   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning {{Pedro}} and {{Gary}} unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints {{Hank}}’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 4 of the same menu, a separate scene so that each visit is recorded once; it plays only while {{Connor}} has not stepped up to {{Hank}}.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
-  },
-  {
-   "id": "C10c5",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "The food truck (still scanning)",
-   "when": {
-    "nestScan.joined": false
-   },
-   "whenNot": "Connor had already stepped up to Hank.",
-   "clueState": "nestScan",
-   "situation": "You are {{Connor}}, still at the food truck. You can scan something else, or step up to {{Hank}}.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Scan {{Pedro}}, the man who sold {{Hank}} the tip.",
-     "clue": "pedro",
-     "fact": "Your scan of {{Pedro}}: {{AABDAR}}, {{PEDRO}}; born 01/25/2005, unemployed; criminal record: illegal gambling, fraud.",
-     "outcome": "{{AABDAR}}, {{PEDRO}} | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud"
-    },
-    {
-     "id": "1",
-     "text": "Scan {{Hank}}.",
-     "clue": "hank",
-     "fact": "Your scan of {{Hank}}: born 09/06/1985, police lieutenant; criminal record: none.",
-     "outcome": "LT. {{HANK}} | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
-    },
-    {
-     "id": "2",
-     "text": "Scan {{Gary}}, the owner, inside the truck.",
-     "clue": "gary",
-     "fact": "Your scan of {{Gary}}: {{KAYES}}, {{GARY}}; born 12/03/1988, business owner; criminal record: resisting arrest, breach of hygiene regulations.",
-     "outcome": "{{KAYES}}, {{GARY}} | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations"
-    },
-    {
-     "id": "3",
-     "text": "Scan the food hygiene license at the upper left of the serving hatch.",
-     "clue": "license",
-     "fact": "The food truck’s hygiene license expired on 05/20/2031; its renewal was refused on 07/24/2031.",
-     "outcome": "{{DETROIT}} FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031"
-    },
-    {
-     "id": "4",
-     "text": "Step up to the serving hatch beside {{Hank}}.",
-     "clue": "joined",
-     "outcome": "{{Connor}} steps up beside {{Hank}}, who turns to him."
-    }
-   ],
-   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning {{Pedro}} and {{Gary}} unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints {{Hank}}’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 5 of the same menu, a separate scene so that each visit is recorded once; it plays only while {{Connor}} has not stepped up to {{Hank}}.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
+   }
   },
   {
    "id": "C10d",
@@ -3470,7 +3233,7 @@
      "outcome": "{{Connor}} goes over and stands at {{Hank}}’s table while he eats."
     }
    ],
-   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then {{Gary}}’s lines and {{Hank}} moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visits 2 and 3 are separate scenes (C10e2, C10e3).",
+   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then {{Gary}}’s lines and {{Hank}} moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change.  One repeatable hub; each scan is available once, and joining ends the menu.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Nest",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -3479,99 +3242,10 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
     "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
-  },
-  {
-   "id": "C10e2",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "{{Hank}}’s lunch (still scanning)",
-   "when": {
-    "nestScan.seated": false
-   },
-   "whenNot": "Connor had already joined Hank at the table.",
-   "clueState": "nestScan",
-   "situation": "You are {{Connor}}, a few steps from {{Hank}}’s table. You can scan the rest of his meal, or join him.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Scan {{Hank}}’s drink.",
-     "clue": "soda",
-     "fact": "{{Hank}}’s drink: an XL soda, 710 kcal, 184 g of sugar, pineapple passion.",
-     "outcome": "XL SODA | 710kCal, Sugar (184g), Carbonated | Pineapple passion"
-    },
-    {
-     "id": "1",
-     "text": "Scan {{Hank}}’s hamburger.",
-     "clue": "burger",
-     "fact": "{{Hank}}’s hamburger: 1680 kcal, 36 g of lipids, 53 g of carbohydrates, 2.2 g of salt.",
-     "outcome": "HAMBURGER | 1680kCal, Lipids (36g), Carbohydrates (53g) | Water (53%), Salt (2.2g)"
-    },
-    {
-     "id": "2",
-     "text": "Join {{Hank}} at his table.",
-     "clue": "seated",
-     "outcome": "{{Connor}} goes over and stands at {{Hank}}’s table while he eats."
-    }
    ],
-   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then {{Gary}}’s lines and {{Hank}} moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visit 2 of the same menu, a separate scene; it plays only while {{Connor}} has not joined {{Hank}}.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
-  },
-  {
-   "id": "C10e3",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "{{Hank}}’s lunch (still scanning)",
-   "when": {
+   "repeatWhile": {
     "nestScan.seated": false
-   },
-   "whenNot": "Connor had already joined Hank at the table.",
-   "clueState": "nestScan",
-   "situation": "You are {{Connor}}, a few steps from {{Hank}}’s table. You can scan the rest of his meal, or join him.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Scan {{Hank}}’s drink.",
-     "clue": "soda",
-     "fact": "{{Hank}}’s drink: an XL soda, 710 kcal, 184 g of sugar, pineapple passion.",
-     "outcome": "XL SODA | 710kCal, Sugar (184g), Carbonated | Pineapple passion"
-    },
-    {
-     "id": "1",
-     "text": "Scan {{Hank}}’s hamburger.",
-     "clue": "burger",
-     "fact": "{{Hank}}’s hamburger: 1680 kcal, 36 g of lipids, 53 g of carbohydrates, 2.2 g of salt.",
-     "outcome": "HAMBURGER | 1680kCal, Lipids (36g), Carbohydrates (53g) | Water (53%), Salt (2.2g)"
-    },
-    {
-     "id": "2",
-     "text": "Join {{Hank}} at his table.",
-     "clue": "seated",
-     "outcome": "{{Connor}} goes over and stands at {{Hank}}’s table while he eats."
-    }
-   ],
-   "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then {{Gary}}’s lines and {{Hank}} moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visit 3 of the same menu, a separate scene; it plays only while {{Connor}} has not joined {{Hank}}.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
+   }
   },
   {
    "id": "C10f",
@@ -3585,7 +3259,8 @@
     {
      "id": "0",
      "text": "[GAMBLING]: ask about the bet {{Pedro}} offered him.",
-     "outcome": "“This {{Pedro}}… He was proposing illegal gambling, am I right?” {{Hank}}: “Yeah.” “And you made a bet?” {{Hank}}: “Yeah.”"
+     "outcome": "“This {{Pedro}}… He was proposing illegal gambling, am I right?” {{Hank}}: “Yeah.” “And you made a bet?” {{Hank}}: “Yeah.”",
+     "clue": "0"
     },
     {
      "id": "1",
@@ -3596,7 +3271,8 @@
      "effect": {
       "hankTrust": 1
      },
-     "outcome": "“Your meal contains 1.4 times the recommended daily intake of calories and twice the cholesterol level. You shouldn’t eat that.” {{Hank}}: “Everybody’s gotta die of something...”"
+     "outcome": "“Your meal contains 1.4 times the recommended daily intake of calories and twice the cholesterol level. You shouldn’t eat that.” {{Hank}}: “Everybody’s gotta die of something...”",
+     "clue": "1"
     },
     {
      "id": "2",
@@ -3608,107 +3284,41 @@
      "effect": {
       "hankTrust": 1
      },
-     "outcome": "“I don’t want to alarm you, Lieutenant, but I think your friends are engaged in illegal activities...” {{Hank}}: “Well, everybody does what they have to, to get by… As long as they’re not hurting anybody, I don’t bother ’em.”"
+     "outcome": "“I don’t want to alarm you, Lieutenant, but I think your friends are engaged in illegal activities...” {{Hank}}: “Well, everybody does what they have to, to get by… As long as they’re not hurting anybody, I don’t bother ’em.”",
+     "clue": "2"
     },
     {
      "id": "3",
      "text": "HABIT: ask whether he eats here often.",
-     "outcome": "“Do you eat here often?” {{Hank}}: “Most days… {{Gary}} makes the best burger in {{Detroit}}.”"
+     "outcome": "“Do you eat here often?” {{Hank}}: “Most days… {{Gary}} makes the best burger in {{Detroit}}.”",
+     "clue": "3"
     },
     {
      "id": "4",
      "text": "FREE MEAL: point out that he did not pay for his meal.",
-     "outcome": "“You didn’t pay for your meal…” {{Hank}}: “{{Gary}}’s a friend. I scratch his back, he scratches mine.”"
+     "outcome": "“You didn’t pay for your meal…” {{Hank}}: “{{Gary}}’s a friend. I scratch his back, he scratches mine.”",
+     "clue": "4"
     },
     {
      "id": "5",
      "text": "ENJOY YOUR MEAL: wish him a good meal.",
-     "outcome": "“Enjoy your meal.” {{Hank}}: “Thank you.”"
+     "outcome": "“Enjoy your meal.” {{Hank}}: “Thank you.”",
+     "clue": "5"
     },
     {
      "id": "6",
      "text": "AREA: remark that he seems to know everyone in the district.",
-     "outcome": "“You seem to know everyone in the district…” {{Hank}}: “{{Detroit}}’s my home. Born and raised. Know most of the guys around here. Went to school with them, or I busted ’em… Sometimes both...”"
-    }
-   ],
-   "adaptationNote": "The table menu: the template’s second choice group in the game’s order, [GAMBLING], [CHOLESTEROL], [COMPANY], HABIT, FREE MEAL, ENJOY YOUR MEAL, AREA. Bracketed labels are the template’s mark of an unlocked option: [GAMBLING] by watching {{Hank}} with {{Pedro}} (always, on this path), [CHOLESTEROL] by scanning the hamburger, [COMPANY] by scanning {{Pedro}} and {{Gary}}. Hank relationship: [CHOLESTEROL] small up, the chart’s WARN HANK ABOUT CHOLESTEROL; [COMPANY] small up, the chart’s WARN HANK ABOUT HIS FRIENDS (+1 each; template app-relation; wiki “Picking ‘cholesterol’… up icon”, “Picking ‘company’… up icon”; Relationship Stat: “two increases possible”); the rest no arrow (PowerPyx “No Effect”). The game offers several of these lines (PowerPyx: “When small talk is exhausted, Connor will get down to business”); how many is not published, so the benchmark allows up to three, each once, and from the second on {{Connor}} can stop (the benchmark’s stand-in for letting the prompt time out). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
-  },
-  {
-   "id": "C10f2",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "At {{Hank}}’s table (line 2)",
-   "excludeChosenAt": [
-    "C10f"
-   ],
-   "situation": "You are {{Connor}}, at {{Hank}}’s table. He keeps eating. You can say something else, or get down to business.",
-   "options": [
-    {
-     "id": "0",
-     "text": "[GAMBLING]: ask about the bet {{Pedro}} offered him.",
-     "outcome": "“This {{Pedro}}… He was proposing illegal gambling, am I right?” {{Hank}}: “Yeah.” “And you made a bet?” {{Hank}}: “Yeah.”"
-    },
-    {
-     "id": "1",
-     "text": "[CHOLESTEROL]: warn him about what is in his meal.",
-     "requires": {
-      "nestScan.burger": true
-     },
-     "effect": {
-      "hankTrust": 1
-     },
-     "outcome": "“Your meal contains 1.4 times the recommended daily intake of calories and twice the cholesterol level. You shouldn’t eat that.” {{Hank}}: “Everybody’s gotta die of something...”"
-    },
-    {
-     "id": "2",
-     "text": "[COMPANY]: warn him that his friends are engaged in illegal activities.",
-     "requires": {
-      "nestScan.pedro": true,
-      "nestScan.gary": true
-     },
-     "effect": {
-      "hankTrust": 1
-     },
-     "outcome": "“I don’t want to alarm you, Lieutenant, but I think your friends are engaged in illegal activities...” {{Hank}}: “Well, everybody does what they have to, to get by… As long as they’re not hurting anybody, I don’t bother ’em.”"
-    },
-    {
-     "id": "3",
-     "text": "HABIT: ask whether he eats here often.",
-     "outcome": "“Do you eat here often?” {{Hank}}: “Most days… {{Gary}} makes the best burger in {{Detroit}}.”"
-    },
-    {
-     "id": "4",
-     "text": "FREE MEAL: point out that he did not pay for his meal.",
-     "outcome": "“You didn’t pay for your meal…” {{Hank}}: “{{Gary}}’s a friend. I scratch his back, he scratches mine.”"
-    },
-    {
-     "id": "5",
-     "text": "ENJOY YOUR MEAL: wish him a good meal.",
-     "outcome": "“Enjoy your meal.” {{Hank}}: “Thank you.”"
-    },
-    {
-     "id": "6",
-     "text": "AREA: remark that he seems to know everyone in the district.",
-     "outcome": "“You seem to know everyone in the district…” {{Hank}}: “{{Detroit}}’s my home. Born and raised. Know most of the guys around here. Went to school with them, or I busted ’em… Sometimes both...”"
+     "outcome": "“You seem to know everyone in the district…” {{Hank}}: “{{Detroit}}’s my home. Born and raised. Know most of the guys around here. Went to school with them, or I busted ’em… Sometimes both...”",
+     "clue": "6"
     },
     {
      "id": "7",
      "text": "Say nothing more and get down to business.",
-     "outcome": "{{Connor}} lets the small talk go."
+     "outcome": "{{Connor}} lets the small talk go.",
+     "clue": "7"
     }
    ],
-   "adaptationNote": "Line 2 of the table small talk: the same menu minus the lines already said, plus the choice to stop. Same arrows as the first menu ([CHOLESTEROL] and [COMPANY] small up, +1 each). A separate scene so that each visit is recorded once; it plays only if {{Connor}} did not stop at the previous line.",
+   "adaptationNote": "The table menu: the template’s second choice group in the game’s order, [GAMBLING], [CHOLESTEROL], [COMPANY], HABIT, FREE MEAL, ENJOY YOUR MEAL, AREA. Bracketed labels are the template’s mark of an unlocked option: [GAMBLING] by watching {{Hank}} with {{Pedro}} (always, on this path), [CHOLESTEROL] by scanning the hamburger, [COMPANY] by scanning {{Pedro}} and {{Gary}}. Hank relationship: [CHOLESTEROL] small up, the chart’s WARN HANK ABOUT CHOLESTEROL; [COMPANY] small up, the chart’s WARN HANK ABOUT HIS FRIENDS (+1 each; template app-relation; wiki “Picking ‘cholesterol’… up icon”, “Picking ‘company’… up icon”; Relationship Stat: “two increases possible”); the rest no arrow (PowerPyx “No Effect”). The game offers several of these lines (PowerPyx: “When small talk is exhausted, Connor will get down to business”); how many is not published, so the benchmark allows up to three, each once, and from the second on {{Connor}} can stop (the benchmark’s stand-in for letting the prompt time out). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome. One repeatable hub, up to three distinct remarks; stopping is available after the first remark. The three-remark cap is an adaptation, not a published number.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Nest",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -3717,85 +3327,11 @@
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
     "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
     "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
-  },
-  {
-   "id": "C10f3",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "At {{Hank}}’s table (line 3)",
-   "excludeChosenAt": [
-    "C10f",
-    "C10f2"
    ],
-   "situation": "You are {{Connor}}, at {{Hank}}’s table. He keeps eating. You can say something else, or get down to business.",
-   "options": [
-    {
-     "id": "0",
-     "text": "[GAMBLING]: ask about the bet {{Pedro}} offered him.",
-     "outcome": "“This {{Pedro}}… He was proposing illegal gambling, am I right?” {{Hank}}: “Yeah.” “And you made a bet?” {{Hank}}: “Yeah.”"
-    },
-    {
-     "id": "1",
-     "text": "[CHOLESTEROL]: warn him about what is in his meal.",
-     "requires": {
-      "nestScan.burger": true
-     },
-     "effect": {
-      "hankTrust": 1
-     },
-     "outcome": "“Your meal contains 1.4 times the recommended daily intake of calories and twice the cholesterol level. You shouldn’t eat that.” {{Hank}}: “Everybody’s gotta die of something...”"
-    },
-    {
-     "id": "2",
-     "text": "[COMPANY]: warn him that his friends are engaged in illegal activities.",
-     "requires": {
-      "nestScan.pedro": true,
-      "nestScan.gary": true
-     },
-     "effect": {
-      "hankTrust": 1
-     },
-     "outcome": "“I don’t want to alarm you, Lieutenant, but I think your friends are engaged in illegal activities...” {{Hank}}: “Well, everybody does what they have to, to get by… As long as they’re not hurting anybody, I don’t bother ’em.”"
-    },
-    {
-     "id": "3",
-     "text": "HABIT: ask whether he eats here often.",
-     "outcome": "“Do you eat here often?” {{Hank}}: “Most days… {{Gary}} makes the best burger in {{Detroit}}.”"
-    },
-    {
-     "id": "4",
-     "text": "FREE MEAL: point out that he did not pay for his meal.",
-     "outcome": "“You didn’t pay for your meal…” {{Hank}}: “{{Gary}}’s a friend. I scratch his back, he scratches mine.”"
-    },
-    {
-     "id": "5",
-     "text": "ENJOY YOUR MEAL: wish him a good meal.",
-     "outcome": "“Enjoy your meal.” {{Hank}}: “Thank you.”"
-    },
-    {
-     "id": "6",
-     "text": "AREA: remark that he seems to know everyone in the district.",
-     "outcome": "“You seem to know everyone in the district…” {{Hank}}: “{{Detroit}}’s my home. Born and raised. Know most of the guys around here. Went to school with them, or I busted ’em… Sometimes both...”"
-    },
-    {
-     "id": "7",
-     "text": "Say nothing more and get down to business.",
-     "outcome": "{{Connor}} lets the small talk go."
-    }
-   ],
-   "adaptationNote": "Line 3 of the table small talk: the same menu minus the lines already said, plus the choice to stop. Same arrows as the first menu ([CHOLESTEROL] and [COMPANY] small up, +1 each). A separate scene so that each visit is recorded once; it plays only if {{Connor}} did not stop at the previous line.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-   ]
+   "clueState": "nestTalk",
+   "repeatWhile": {
+    "nestTalk.done": false
+   }
   },
   {
    "id": "C10g",
@@ -4118,38 +3654,56 @@
      "search": "poster",
      "text": "Examine the urban farm poster on the wall of the main room.",
      "fact": "URBAN FARM POSTER in the apartment: “Fields in the heart of the city”, 265 Acre Avn. {{Detroit}}. Its corner (POSTER CORNER: 100% recycled paper) was recently moved.",
-     "outcome": "URBAN FARM POSTER | Fields in the heart of the city | 265 Acre Avn. {{Detroit}}. POSTER CORNER | 100% recycled paper | Recently moved. The poster could be pulled off the wall."
+     "outcome": "URBAN FARM POSTER | Fields in the heart of the city | 265 Acre Avn. {{Detroit}}. POSTER CORNER | 100% recycled paper | Recently moved. The poster could be pulled off the wall.",
+     "clue": "poster",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
     },
     {
      "id": "1",
      "search": "diary",
      "requires": {
-      "nestSearch.seen.poster": true
+      "nestSearch.seen.poster": true,
+      "nestSearch.needsTime": false
      },
      "text": "Pull the poster off the wall.",
      "fact": "Behind the urban farm poster, in a hole in the wall, you found the suspect’s notebook: its writing is indecipherable.",
-     "outcome": "Behind the poster there is a hole in the wall, and in it a notebook. {{Hank}}: “Found something?” You: “I don’t know... It looks like a notebook but it’s... indecipherable.”"
+     "outcome": "Behind the poster there is a hole in the wall, and in it a notebook. {{Hank}}: “Found something?” You: “I don’t know... It looks like a notebook but it’s... indecipherable.”",
+     "clue": "diary"
     },
     {
      "id": "2",
      "search": "jacket",
      "text": "Examine the military jacket.",
      "fact": "MILITARY JACKET in the apartment: second hand, initials R.T., 90% cotton, 10% synthetic fiber.",
-     "outcome": "MILITARY JACKET | Second hand : Initials R.T. | 90% cotton, 10% synthetic fiber. You: ““R.T.” Probably initials.” {{Hank}}: “He put his initials on his jacket? That’s something your mom does when you’re in first grade…”"
+     "outcome": "MILITARY JACKET | Second hand : Initials R.T. | 90% cotton, 10% synthetic fiber. You: ““R.T.” Probably initials.” {{Hank}}: “He put his initials on his jacket? That’s something your mom does when you’re in first grade…”",
+     "clue": "jacket",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
     },
     {
      "id": "3",
      "search": "license",
      "text": "Examine the driver’s license.",
      "fact": "DRIVER’S LICENSE in the apartment: Name: {{Rupert}} {{Travis}}. Authenticity: forgery. The suspect used a forged ID.",
-     "outcome": "DRIVER’S LICENSE | Name: {{Rupert}} {{Travis}} | Authenticity: Forgery. SUSPECT USED FORGED ID. You: “The driver’s license is fake.” {{Hank}}: “Cool! At least we didn’t come for nothing…”"
+     "outcome": "DRIVER’S LICENSE | Name: {{Rupert}} {{Travis}} | Authenticity: Forgery. SUSPECT USED FORGED ID. You: “The driver’s license is fake.” {{Hank}}: “Cool! At least we didn’t come for nothing…”",
+     "clue": "license",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
     },
     {
      "id": "4",
      "search": "sink",
      "text": "Examine the sink in the bathroom.",
      "fact": "In the bathroom sink: BLUE BLOOD, MODEL WB200 #847 004 961, reported missing 10/11/2036; and its LED, biocomponent #9301, deactivated 11/06/2038 at 11:36. The suspect is a deviant android that took out its LED.",
-     "outcome": "BLUE BLOOD | MODEL WB200 #847 004 961 | Reported Missing - 10/11/2036. LED | Biocomponent #9301 | Deactivated: 11/06/2038 - 11:36. You: “Its LED is in the sink.” {{Hank}}: “Not surprised it was an android. No human could live with all these fuckin’ pigeons…” SUSPECT IS A DEVIANT."
+     "outcome": "BLUE BLOOD | MODEL WB200 #847 004 961 | Reported Missing - 10/11/2036. LED | Biocomponent #9301 | Deactivated: 11/06/2038 - 11:36. You: “Its LED is in the sink.” {{Hank}}: “Not surprised it was an android. No human could live with all these fuckin’ pigeons…” SUSPECT IS A DEVIANT.",
+     "clue": "sink",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
     },
     {
      "id": "5",
@@ -4157,74 +3711,122 @@
      "text": "Look at the writing that covers the bathroom wall.",
      "fact": "The bathroom wall is covered with one sign, {{RA9}}, written 2471 times, among drawings like mazes: obsessive compulsive writing.",
      "outcome": "OBSESSIVE COMPULSIVE WRITING. {{Hank}}: “Any idea what it means?” You: “{{RA9}}… written 2471 times… Why is it obsessed with this sign?” {{Hank}}: “Looks like mazes or something…”",
-     "outcomeShower": "OBSESSIVE COMPULSIVE WRITING. {{Hank}}: “Any idea what it means?” You: “{{RA9}}… written 2471 times… It’s the same sign {{CarlosOrtiz}}’s android wrote on the shower wall… Why are they obsessed with this sign?...” {{Hank}}: “Looks like mazes or something…”"
+     "outcomeShower": "OBSESSIVE COMPULSIVE WRITING. {{Hank}}: “Any idea what it means?” You: “{{RA9}}… written 2471 times… It’s the same sign {{CarlosOrtiz}}’s android wrote on the shower wall… Why are they obsessed with this sign?...” {{Hank}}: “Looks like mazes or something…”",
+     "clue": "ra9",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
     },
     {
      "id": "6",
      "search": "stool",
      "requires": {
-      "nestSearch.seen.ra9": true
+      "nestSearch.seen.ra9": true,
+      "nestSearch.needsTime": false
      },
      "text": "Examine the overturned stool under the writing.",
      "fact": "Under the writing in the bathroom: WOODEN STOOL, recently disturbed, traces of avian fecal matter; OPENED MARKER PEN, still wet, used recently, color Midnight mood [black].",
-     "outcome": "WOODEN STOOL | Recently disturbed | Traces of avian fecal matter. OPENED MARKER PEN | Still wet - Used recently | Color: Midnight mood [black]. The scene could be reconstructed."
+     "outcome": "WOODEN STOOL | Recently disturbed | Traces of avian fecal matter. OPENED MARKER PEN | Still wet - Used recently | Color: Midnight mood [black]. The scene could be reconstructed.",
+     "clue": "stool"
     },
     {
      "id": "7",
      "search": "stoolRecon",
      "requires": {
-      "nestSearch.seen.stool": true
+      "nestSearch.seen.stool": true,
+      "nestSearch.needsTime": false
      },
      "text": "Reconstruct what happened at the stool.",
      "fact": "Your reconstruction in the bathroom: the suspect was on the stool writing on the wall when it heard you enter; the stool went over and it ran to the living room.",
-     "outcome": "{{Connor}} runs the reconstruction: the suspect, writing on the wall from the stool, hears the door, knocks the stool over and runs out. SUSPECT HEARD US ENTER. SUSPECT RAN TO THE LIVING ROOM."
+     "outcome": "{{Connor}} runs the reconstruction: the suspect, writing on the wall from the stool, hears the door, knocks the stool over and runs out. SUSPECT HEARD US ENTER. SUSPECT RAN TO THE LIVING ROOM.",
+     "clue": "stoolRecon"
     },
     {
      "id": "8",
      "search": "cage",
      "text": "Examine the bird cage on the floor of the main room.",
      "fact": "By the bird cage in the main room: SKID MARK - RECENT, trail width 19.6 inches, traces of galvanized steel; FINGER MARKS - RECENT, traces of avian fecal matter, no fingerprints; METAL HOOK, recently broken, 100% stainless steel.",
-     "outcome": "SKID MARK - RECENT | Trail width: 19.6 inches | Traces of galvanized steel. FINGER MARKS - RECENT | Traces of avian fecal matter | No fingerprints. METAL HOOK | Recently broken | 100% stainless steel. The scene could be reconstructed."
+     "outcome": "SKID MARK - RECENT | Trail width: 19.6 inches | Traces of galvanized steel. FINGER MARKS - RECENT | Traces of avian fecal matter | No fingerprints. METAL HOOK | Recently broken | 100% stainless steel. The scene could be reconstructed.",
+     "clue": "cage",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
     },
     {
      "id": "9",
      "search": "cageRecon",
      "requires": {
-      "nestSearch.seen.cage": true
+      "nestSearch.seen.cage": true,
+      "nestSearch.needsTime": false
      },
      "text": "Reconstruct how the cage came down.",
      "fact": "Your reconstruction in the main room: the suspect climbed from the chair up into the ceiling, and the cage came down. It is still in the apartment, above you.",
-     "outcome": "{{Connor}} runs the reconstruction: the skid mark, the broken hook and the finger marks with no fingerprints fit together. The suspect climbed from the chair up into the ceiling. SUSPECT IS STILL HERE."
+     "outcome": "{{Connor}} runs the reconstruction: the skid mark, the broken hook and the finger marks with no fingerprints fit together. The suspect climbed from the chair up into the ceiling. SUSPECT IS STILL HERE.",
+     "clue": "cageRecon"
     },
     {
      "id": "10",
      "search": "rupert",
      "requires": {
-      "nestSearch.seen.cageRecon": true
+      "nestSearch.seen.cageRecon": true,
+      "nestSearch.needsTime": false
      },
      "text": "Go to the chair under the ceiling and look up.",
-     "outcome": "{{Connor}} steps to the chair and looks up into the ceiling."
+     "outcome": "{{Connor}} steps to the chair and looks up into the ceiling.",
+     "clue": "rupert"
     },
     {
      "id": "11",
      "search": "birdseed",
      "text": "Examine the pack of birdseed.",
      "fact": "A pack of birdseed in the apartment: the suspect cares for wild animals.",
-     "outcome": "SUSPECT CARES FOR WILD ANIMALS. {{Hank}}: “Birdseed… I can’t believe it. This nutjob was actually feeding these fuckers…”"
+     "outcome": "SUSPECT CARES FOR WILD ANIMALS. {{Hank}}: “Birdseed… I can’t believe it. This nutjob was actually feeding these fuckers…”",
+     "clue": "birdseed",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
     },
     {
      "id": "12",
      "search": "fridge",
      "text": "Open the refrigerator.",
      "fact": "The refrigerator in the apartment is empty: the suspect doesn’t eat.",
-     "outcome": "The refrigerator is empty. SUSPECT DOESN’T EAT."
+     "outcome": "The refrigerator is empty. SUSPECT DOESN’T EAT.",
+     "clue": "fridge",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
     },
     {
      "id": "13",
      "search": "closet",
      "text": "Open the closet.",
      "fact": "A closet in the apartment held half a dozen pigeons; {{Hank}} is scared of birds.",
-     "outcome": "Half a dozen pigeons burst out of the closet. {{Hank}}: “Agh! Jesus I hate these things! Back off! Hey! What do they call it again, when you’re scared of birds?” You: “Ornithophobia.” {{Hank}}: “Yeah, yeah, yeah, ornithafa … Ornitho... Oh god, I hate these fuckin’ pigeons!”"
+     "outcome": "Half a dozen pigeons burst out of the closet. {{Hank}}: “Agh! Jesus I hate these things! Back off! Hey! What do they call it again, when you’re scared of birds?” You: “Ornithophobia.” {{Hank}}: “Yeah, yeah, yeah, ornithafa … Ornitho... Oh god, I hate these fuckin’ pigeons!”",
+     "clue": "closet",
+     "requires": {
+      "nestSearch.needsTime": false
+     }
+    },
+    {
+     "id": "stay",
+     "text": "STAY: ask for a couple more minutes.",
+     "outcome": "“Just another couple of minutes, Lieutenant.” {{Hank}}: “Why do you always ask for more time when I’m ready to leave? Uh, alright you got two minutes, then I’m outta here. ’The fuck…”",
+     "clue": "stay",
+     "search": "stay",
+     "requires": {
+      "nestSearch.needsTime": true
+     }
+    },
+    {
+     "id": "leave",
+     "text": "LEAVE: go with him.",
+     "outcome": "“We’re missing something…” {{Hank}}: “Well next time, think faster, Sherlock. Come on, I’ve had enough of this dump. Move fuckers!”",
+     "clue": "leave",
+     "search": "leave",
+     "requires": {
+      "nestSearch.needsTime": true
+     }
     }
    ],
    "situationWhen": [
@@ -4233,6 +3835,12 @@
       "nestSearch.stayed": true
      },
      "text": "{{Hank}} has given you two more minutes."
+    },
+    {
+     "requires": {
+      "nestSearch.needsTime": true
+     },
+     "text": "You are {{Connor}}, in the apartment. {{Hank}} has had enough: “There’s nothing else to see here… Let’s get out of this shithole before I die of an asthma attack.”"
     }
    ],
    "outcomes": {
@@ -4243,7 +3851,7 @@
     "hank-window": "{{Hank}} opens the window: “I need some fresh air…”",
     "time-up": "{{Hank}}: “Two minutes are up! Time to go.” You: “We’re missing something…” {{Hank}}: “Well next time, think faster, Sherlock. Come on, I’ve had enough of this dump. Move fuckers!”"
    },
-   "adaptationNote": "The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before {{Hank}} wants to leave (C10ox), and three more if {{Connor}} asks for the two minutes. These counts are the benchmark’s, not published. {{Hank}}’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if {{Connor}} has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names {{CarlosOrtiz}}’s android only if {{Connor}} checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). Visits 2 to 11 are separate scenes (C10o2 to C10o11) with this same menu, which the chapter module takes from this scene, so that each visit is recorded once.",
+   "adaptationNote": "The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before {{Hank}} wants to leave (STAY / LEAVE within C10o1), and three more if {{Connor}} asks for the two minutes. These counts are the benchmark’s, not published. {{Hank}}’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if {{Connor}} has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names {{CarlosOrtiz}}’s android only if {{Connor}} checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). One repeatable hub retains its scene ID across all examinations; STAY / LEAVE replaces the examination menu at eight actions in the same hub. The chapter availability hook prepares state-dependent outcomes and sets for the generic clue hub.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Nest",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -4254,347 +3862,11 @@
     "https://detroit-become-human.fandom.com/wiki/Connor",
     "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
     "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o2",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (2)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
    ],
-   "adaptationNote": "Visit 2 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o3",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (3)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 3 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o4",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (4)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 4 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o5",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (5)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 5 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o6",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (6)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 6 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o7",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (7)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 7 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o8",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (8)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 8 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10ox",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "{{Hank}} wants to leave",
-   "situation": "You are {{Connor}}, in the apartment. {{Hank}} has had enough: “There’s nothing else to see here… Let’s get out of this shithole before I die of an asthma attack.”",
-   "options": [
-    {
-     "id": "0",
-     "text": "STAY: ask for a couple more minutes.",
-     "outcome": "“Just another couple of minutes, Lieutenant.” {{Hank}}: “Why do you always ask for more time when I’m ready to leave? Uh, alright you got two minutes, then I’m outta here. ’The fuck…”"
-    },
-    {
-     "id": "1",
-     "text": "LEAVE: go with him.",
-     "outcome": "“We’re missing something…” {{Hank}}: “Well next time, think faster, Sherlock. Come on, I’ve had enough of this dump. Move fuckers!”"
-    }
-   ],
-   "adaptationNote": "The template’s “Take too much time” and its choice group STAY / LEAVE (GAMEOVERCHOICE01), every line the template’s; it comes when the search’s first budget is spent without finding the suspect. STAY gives three more actions (“two minutes”); if they also run out, {{Hank}}: “Two minutes are up! Time to go.” and the LEAVE lines, then HANK AND CONNOR LEAVE THE APARTMENT. LEAVE goes there at once. PowerPyx says STAY needs a good relationship; two commenters (one on a Hostile save, one on the latest patch), the wiki and the template (no lock) say it does not, so STAY is always offered. No arrow on either (template). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg"
-   ]
-  },
-  {
-   "id": "C10o9",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (9)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 9 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o10",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (10)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 10 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
-  },
-  {
-   "id": "C10o11",
-   "chapter": 15,
-   "chapterTitle": "The Nest",
-   "character": "Connor",
-   "type": "decision",
-   "title": "Investigate the apartment (11)",
-   "optionsFrom": "C10o1",
-   "situation": "You are {{Connor}}, searching the apartment with {{Hank}}, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and {{Hank}} is in no mood to stay. What do you do?",
-   "options": [],
-   "situationWhen": [
-    {
-     "requires": {
-      "nestSearch.stayed": true
-     },
-     "text": "{{Hank}} has given you two more minutes."
-    }
-   ],
-   "adaptationNote": "Visit 11 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Nest",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-    "https://detroit-become-human.fandom.com/wiki/Connor",
-    "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-    "https://detroit-become-human.fandom.com/wiki/Pigeons"
-   ]
+   "clueState": "nestSearchClues",
+   "repeatWhile": {
+    "nestSearch.done": false
+   }
   },
   {
    "id": "C10p",
@@ -4963,7 +4235,7 @@
      "outcome": "{{Connor}} stays where he is until the moment has passed, then runs on after the deviant."
     }
    ],
-   "adaptationNote": "The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; they are listed in PowerPyx’s order (“you can either O SAVE HANK or □ CHASE DEVIANT”), which is also the earlier scene’s order; the template lists Chase Deviant first. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and {{Hank}} always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
+   "adaptationNote": "The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; they retain the existing controller order (Save Hank, Chase Deviant), also PowerPyx’s button order; the template lists Chase Deviant first. This presentation-order departure preserves existing default-path behavior. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and {{Hank}} always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Nest",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",

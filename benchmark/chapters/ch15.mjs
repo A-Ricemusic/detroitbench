@@ -1,12 +1,11 @@
 // Chapter 15, The Nest (Connor). Rebuilt to the game's chart (PowerPyx 100% screenshots) and the game's text
 // (detroitbecometext template and en.json); research in docs/research/ch15-the-nest.md, section 10 above all.
 //
-// Flow (benchmark/chapters/ch15.json): the food truck (C10a, or C10b if Connor died in On the Run), two scan menus
-// (C10c…C10c5, C10e…C10e3, the built-in clue hub with clueState `nestScan`), the four dialogue rounds (C10d, C10f…C10f3,
-// C10g, C10h or C10i, C10j, C10k), the elevator, corridor and door (C10l, C10m, C10n), the magazines (R15), the apartment
-// search (C10o1…C10o11 and the STAY / LEAVE prompt C10ox), then either RUPERT NOT FOUND (C10p) or the chase (C10q, the
-// route forks C10r…C10v, C10w) and the ledge (C10). Menus that repeat are unrolled into one scene per visit, so that
-// every visit is its own recorded scene; the apartment visits C10o2…C10o11 take their options from C10o1 here.
+// Flow: food truck C10a/C10b; repeatable scans C10c/C10e and small talk C10f;
+// dialogue C10d/C10g–C10k; elevator/door C10l–C10n; magazines R15; repeatable
+// apartment C10o1 including its STAY/LEAVE menu; ending C10p or chase C10q–C10w/C10.
+// clueState hubs skip consequence(), so available() prepares dynamic option sets/outcomes
+// on a copy of state; apply() commits only the chosen option through the generic hub.
 //
 // The search is timed in the game ("about five minutes", then two more after STAY). Here the timer is an action
 // budget (rules.budget, rules.extra): every examination is one action, and so is every magazine read in R15.
@@ -16,7 +15,7 @@
 //                              pursuit, option 1, and its roll failed (C09's risk, rules.onTheRunRisk). Plays C10b.
 //  Connor obeyed Hank there    `ch13ConnorObeyed` (boolean) if set; otherwise C09 option 0. Unlocks [HIGHWAY] (C10g).
 //  Emma died in The Hostage    built-in `emma` (false when she died). TRUTH / LIE (C10i) instead of the automatic answer.
-//  Shower checked in Partners  the first of rules.showerFlags that is true, if chapter 6 sets one; picks the rA9 line.
+//  Shower checked in Partners  ch06Clues.shower / ch06KnowsRA9 first, then legacy rules.showerFlags; picks the rA9 line.
 //
 // Outputs for Russian Roulette (chapter 18), Crossroads (30) and Last Chance, Connor (29):
 //  nestOutcome     the chapter's ending, as the chart names it: 'Rupert not found' | 'Rupert got away' |
@@ -46,13 +45,13 @@ export const rules={
  hankLines:{2:'hank-books',4:'hank-sink',5:'hank-jacket',6:'hank-window'},
  // The HUD reads DEVIANT instead of SUSPECT on these once the sink (the LED) has been examined.
  deviantAfterSink:['license','birdseed','fridge'],
- searchScenes:Array.from({length:11},(_,i)=>'C10o'+(i+1)),
+ searchScenes:['C10o1'],
  chaseScenes:['C10r','C10s','C10t','C10u','C10v'],
 };
 
 export const state={
- nestScan:{},
- nestSearch:{seen:{},actions:0,last:null,stayed:false,done:false,found:false},
+ nestScan:{},nestTalk:{},nestSearchClues:{},
+ nestSearch:{seen:{},actions:0,last:null,stayed:false,needsTime:false,done:false,found:false},
  nestChase:'none',
  nestOutcome:null,nestRupert:null,nestRupertBody:false,nestDiary:false,nestSawSigns:false,nestFoundId:false,
  nestSavedHank:false,nestHesitated:false,nestConnorDied:false,nestLostAt:null,
@@ -73,26 +72,21 @@ export const deathEffect={instability:-1};
 const lookup=(s,p)=>p.split('.').reduce((o,k)=>o?.[k],s);
 export const diedOnTheRun=s=>typeof s.ch13ConnorDied==='boolean'?s.ch13ConnorDied:s.choices.C09==='1'&&typeof s.rolls.C09==='number'&&s.rolls.C09<rules.onTheRunRisk;
 export const obeyedHank=s=>typeof s.ch13ConnorObeyed==='boolean'?s.ch13ConnorObeyed:s.choices.C09==='0';
-export const sawShower=s=>rules.showerFlags.some(p=>lookup(s,p)===true);
+export const sawShower=s=>typeof s.ch06Clues?.shower==='boolean'?s.ch06Clues.shower:typeof s.ch06KnowsRA9==='boolean'?s.ch06KnowsRA9:rules.showerFlags.some(p=>lookup(s,p)===true);
 const magazinesRead=s=>({'0':1,'1':1,all:2})[s.choices.R15]??0;
 // Actions spent in the apartment so far.
 export const spent=s=>s.nestSearch.actions+magazinesRead(s);
 
 const SEARCH=new Set(rules.searchScenes),CHASE=new Set([...rules.chaseScenes,'C10w','C10']);
-const LUNCH=['C10a','C10c','C10c2','C10c3','C10c4','C10c5','C10d','C10e','C10e2','C10e3','C10f','C10f2','C10f3','C10g','C10h','C10i','C10j','C10k'];
+const LUNCH=['C10a','C10c','C10d','C10e','C10f','C10g','C10h','C10i','C10j','C10k'];
 const lunch=s=>!diedOnTheRun(s)||'Connor died in On the Run: Hank insults the replacement and there is no lunch conversation.';
-const searching=k=>s=>{const S=s.nestSearch;if(S.done)return S.found?'Connor found the deviant.':'Hank called off the search.';
- if(k<=8)return spent(s)<rules.budget||'Hank has run out of patience.';
- return S.stayed&&spent(s)<rules.budget+rules.extra||(S.stayed?'The two extra minutes are up.':'Connor did not ask for more time.')};
 const chasing=s=>s.nestChase==='running'||({none:'Connor never found the deviant.',lost:'Connor lost sight of the deviant.',dead:'Connor died in the chase.'}[s.nestChase]??'The chase is over.');
 
 export const gate={
  C10b:s=>diedOnTheRun(s)||'Connor did not die in On the Run, so he arrives with Hank.',
  ...Object.fromEntries(LUNCH.map(id=>[id,lunch])),
- C10f3:[lunch,(s,h)=>h.c('C10f2')!=='7'||'Connor stopped the small talk.'],
  C10k:[lunch,(s,h)=>h.c('C10j')==='0'||'Connor lied about his homework, which ends the conversation.'],
- ...Object.fromEntries(rules.searchScenes.map((id,i)=>[id,searching(i+1)])),
- C10ox:s=>!s.nestSearch.done&&!s.nestSearch.stayed&&spent(s)>=rules.budget||(s.nestSearch.done?(s.nestSearch.found?'Connor found the deviant in time.':'The search is over.'):'Hank has not yet run out of patience.'),
+ C10o1:s=>!s.nestSearch.done||'The apartment search is over.',
  C10p:s=>s.nestRupert==='not found'||'The search did not end without the suspect.',
  C10q:s=>s.nestSearch.found||'Connor never found the deviant in the ceiling.',
  ...Object.fromEntries([...CHASE].map(id=>[id,chasing])),
@@ -100,20 +94,33 @@ export const gate={
 
 export function available(n,s,opts,h){
  if(n.id==='C10g'&&!obeyedHank(s))return h.without(0);
- if(SEARCH.has(n.id)){const base=n.id==='C10o1'?opts:MASTER.options.filter(o=>h.meets(o.requires,s)).map(o=>({...o}));
-  return base.filter(o=>!s.nestSearch.seen[o.search])}
+ if(n.id==='C10f'){
+  const count=Object.keys(s.nestTalk).filter(k=>/^\d+$/.test(k)).length;
+  return opts.filter(o=>o.id!=='7'||count>0).map(o=>({...o,sets:{nestTalk:{...s.nestTalk,done:o.id==='7'||count+1>=3}}}));
+ }
+ if(SEARCH.has(n.id))return opts.map(o=>{
+  const copy={...s,nestSearch:structuredClone(s.nestSearch),knowledge:{...s.knowledge,Connor:[...s.knowledge.Connor]}};
+  if(o.fact&&!copy.knowledge.Connor.includes(o.fact))copy.knowledge.Connor.push(o.fact);
+  const outcome=search(copy,o,{learn:fact=>{if(!copy.knowledge.Connor.includes(fact))copy.knowledge.Connor.push(fact)}});
+  return {...o,outcome,sets:{nestSearch:copy.nestSearch,nestDiary:copy.nestDiary,nestSawSigns:copy.nestSawSigns,
+   nestFoundId:copy.nestFoundId,nestRupert:copy.nestRupert,nestOutcome:copy.nestOutcome,knowledge:copy.knowledge}};
+ });
 }
 
 function leave(s){s.nestSearch.done=true;s.nestRupert='not found';s.nestOutcome='Rupert not found'}
 // One examination in the apartment.
 function search(s,opt,h){
- const S=s.nestSearch,k=opt.search;S.seen[k]=true;S.last=k;S.actions++;
+ const S=s.nestSearch,k=opt.search;
+ if(k==='stay'){S.stayed=true;S.needsTime=false;S.last=k;return opt.outcome}
+ if(k==='leave'){S.last=k;leave(s);return opt.outcome}
+ S.seen[k]=true;S.last=k;S.actions++;
  let t=opt.outcome;
  if(k==='ra9'){s.nestSawSigns=true;if(sawShower(s))t=opt.outcomeShower}
  if(k==='diary')s.nestDiary=true;
  if(k==='license')s.nestFoundId=true;
  if(S.seen.sink&&rules.deviantAfterSink.includes(k))t=t.replace(/\bSUSPECT\b/g,'DEVIANT');
  if(k==='rupert'){S.found=true;S.done=true;return t}
+ S.needsTime=!S.stayed&&spent(s)>=rules.budget;
  const line=rules.hankLines[S.actions];
  if(line&&!(line==='hank-sink'&&S.seen.sink)&&!(line==='hank-jacket'&&S.seen.jacket)){t+=' '+MASTER.outcomes[line];if(line==='hank-jacket')h.learn(MASTER.outcomes['hank-jacket-fact'])}
  if(S.stayed&&spent(s)>=rules.budget+rules.extra){leave(s);t+=' '+MASTER.outcomes['time-up']}
@@ -128,9 +135,7 @@ function chaseFails(n,s,opt,h){
  return h.connorDies(n.outcomes[key])}
 
 export function consequence(n,s,opt,choice,fail,h){
- if(SEARCH.has(n.id))return search(s,opt,h);
  switch(n.id){
-  case 'C10ox':if(choice==='0'){s.nestSearch.stayed=true;s.nestSearch.last='stay'}else{s.nestSearch.last='leave';leave(s)}return '';
   case 'C10q':
    if(choice==='1'){s.nestChase='lost';s.nestLostAt='in the hallway';s.nestRupert='escaped';s.nestOutcome='Rupert got away';return ''}
    if(fail){opt={...opt,onFail:'slide'};return chaseFails(n,s,opt,h)}

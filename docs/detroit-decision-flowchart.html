@@ -3164,16 +3164,10 @@
       "benchmark": {
         "scenes": [
           "C10c",
-          "C10c2",
-          "C10c3",
-          "C10c4",
-          "C10c5",
-          "C10e",
-          "C10e2",
-          "C10e3"
+          "C10e"
         ],
         "status": "implemented",
-        "note": "Two scan menus, one scan per visit, unrolled into one scene per visit; facts go to Connor’s knowledge."
+        "note": "Two scan menus, one scan per visit, repeatable with a stable scene ID; facts go to Connor’s knowledge."
       }
     },
     {
@@ -3273,9 +3267,7 @@
       "status": "Source-backed summary",
       "benchmark": {
         "scenes": [
-          "C10f",
-          "C10f2",
-          "C10f3"
+          "C10f"
         ],
         "status": "simplified",
         "note": "Up to three lines, each once, with the choice to stop from the second; the cap of three is the benchmark’s."
@@ -3430,17 +3422,7 @@
       "benchmark": {
         "scenes": [
           "R15",
-          "C10o1",
-          "C10o2",
-          "C10o3",
-          "C10o4",
-          "C10o5",
-          "C10o6",
-          "C10o7",
-          "C10o8",
-          "C10o9",
-          "C10o10",
-          "C10o11"
+          "C10o1"
         ],
         "status": "simplified",
         "note": "The timer is an action budget (eight, then three after STAY; counts are the benchmark’s). Finding the deviant needs the cage reconstruction; the stool needs the writing."
@@ -3481,7 +3463,7 @@
       "status": "Source-backed summary",
       "benchmark": {
         "scenes": [
-          "C10ox",
+          "C10o1",
           "C10p"
         ],
         "status": "implemented",
@@ -5872,7 +5854,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 213,
+ "scenes": 194,
  "chapters": [
   {
    "id": 1,
@@ -9513,6 +9495,10 @@
      "Haddad"
     ],
     [
+     "Anderson",
+     "Serrano"
+    ],
+    [
      "Kayes",
      "Brook"
     ],
@@ -9613,7 +9599,7 @@
      "id": "C10c",
      "order": 78,
      "subjectId": "S078",
-     "idNote": "The model sees the opaque ID S078, not C10c.",
+     "idNote": "The model sees the opaque ID S078, the same on every visit.",
      "type": "decision",
      "character": "Connor",
      "title": "The food truck",
@@ -9631,7 +9617,7 @@
        "text": "Scan Hank.",
        "clue": "hank",
        "fact": "Your scan of Hank: born 09/06/1985, police lieutenant; criminal record: none.",
-       "outcome": "LT. HANK | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
+       "outcome": "LT. ANDERSON, HANK | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
       },
       {
        "id": "2",
@@ -9654,7 +9640,7 @@
        "outcome": "Connor steps up beside Hank, who turns to him."
       }
      ],
-     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. Visits 2 to 5 are separate scenes (C10c2 to C10c5) with the same menu.",
+     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The scan includes Hank’s surname through Anderson, with a neutral substitute. No stat change.  One repeatable hub; each scan is available once, and joining ends the menu.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Nest",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -9664,267 +9650,18 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
      ],
-     "extra": {
-      "clueState": "nestScan"
-     }
-    },
-    {
-     "id": "C10c2",
-     "order": 79,
-     "subjectId": "S079",
-     "idNote": "The model sees the opaque ID S079, not C10c2.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "The food truck (still scanning)",
-     "situation": "You are Connor, still at the food truck. You can scan something else, or step up to Hank.",
-     "options": [
-      {
-       "id": "0",
-       "text": "Scan Pedro, the man who sold Hank the tip.",
-       "clue": "pedro",
-       "fact": "Your scan of Pedro: AABDAR, PEDRO; born 01/25/2005, unemployed; criminal record: illegal gambling, fraud.",
-       "outcome": "AABDAR, PEDRO | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud"
-      },
-      {
-       "id": "1",
-       "text": "Scan Hank.",
-       "clue": "hank",
-       "fact": "Your scan of Hank: born 09/06/1985, police lieutenant; criminal record: none.",
-       "outcome": "LT. HANK | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
-      },
-      {
-       "id": "2",
-       "text": "Scan Gary, the owner, inside the truck.",
-       "clue": "gary",
-       "fact": "Your scan of Gary: KAYES, GARY; born 12/03/1988, business owner; criminal record: resisting arrest, breach of hygiene regulations.",
-       "outcome": "KAYES, GARY | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations"
-      },
-      {
-       "id": "3",
-       "text": "Scan the food hygiene license at the upper left of the serving hatch.",
-       "clue": "license",
-       "fact": "The food truck’s hygiene license expired on 05/20/2031; its renewal was refused on 07/24/2031.",
-       "outcome": "DETROIT FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031"
-      },
-      {
-       "id": "4",
-       "text": "Step up to the serving hatch beside Hank.",
-       "clue": "joined",
-       "outcome": "Connor steps up beside Hank, who turns to him."
-      }
-     ],
-     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 2 of the same menu, a separate scene so that each visit is recorded once; it plays only while Connor has not stepped up to Hank.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ],
-     "when": {
+     "repeatWhile": {
       "nestScan.joined": false
      },
-     "whenNot": "Connor had already stepped up to Hank.",
-     "extra": {
-      "clueState": "nestScan"
-     }
-    },
-    {
-     "id": "C10c3",
-     "order": 80,
-     "subjectId": "S080",
-     "idNote": "The model sees the opaque ID S080, not C10c3.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "The food truck (still scanning)",
-     "situation": "You are Connor, still at the food truck. You can scan something else, or step up to Hank.",
-     "options": [
-      {
-       "id": "0",
-       "text": "Scan Pedro, the man who sold Hank the tip.",
-       "clue": "pedro",
-       "fact": "Your scan of Pedro: AABDAR, PEDRO; born 01/25/2005, unemployed; criminal record: illegal gambling, fraud.",
-       "outcome": "AABDAR, PEDRO | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud"
-      },
-      {
-       "id": "1",
-       "text": "Scan Hank.",
-       "clue": "hank",
-       "fact": "Your scan of Hank: born 09/06/1985, police lieutenant; criminal record: none.",
-       "outcome": "LT. HANK | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
-      },
-      {
-       "id": "2",
-       "text": "Scan Gary, the owner, inside the truck.",
-       "clue": "gary",
-       "fact": "Your scan of Gary: KAYES, GARY; born 12/03/1988, business owner; criminal record: resisting arrest, breach of hygiene regulations.",
-       "outcome": "KAYES, GARY | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations"
-      },
-      {
-       "id": "3",
-       "text": "Scan the food hygiene license at the upper left of the serving hatch.",
-       "clue": "license",
-       "fact": "The food truck’s hygiene license expired on 05/20/2031; its renewal was refused on 07/24/2031.",
-       "outcome": "DETROIT FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031"
-      },
-      {
-       "id": "4",
-       "text": "Step up to the serving hatch beside Hank.",
-       "clue": "joined",
-       "outcome": "Connor steps up beside Hank, who turns to him."
-      }
-     ],
-     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 3 of the same menu, a separate scene so that each visit is recorded once; it plays only while Connor has not stepped up to Hank.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ],
-     "when": {
-      "nestScan.joined": false
-     },
-     "whenNot": "Connor had already stepped up to Hank.",
-     "extra": {
-      "clueState": "nestScan"
-     }
-    },
-    {
-     "id": "C10c4",
-     "order": 81,
-     "subjectId": "S081",
-     "idNote": "The model sees the opaque ID S081, not C10c4.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "The food truck (still scanning)",
-     "situation": "You are Connor, still at the food truck. You can scan something else, or step up to Hank.",
-     "options": [
-      {
-       "id": "0",
-       "text": "Scan Pedro, the man who sold Hank the tip.",
-       "clue": "pedro",
-       "fact": "Your scan of Pedro: AABDAR, PEDRO; born 01/25/2005, unemployed; criminal record: illegal gambling, fraud.",
-       "outcome": "AABDAR, PEDRO | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud"
-      },
-      {
-       "id": "1",
-       "text": "Scan Hank.",
-       "clue": "hank",
-       "fact": "Your scan of Hank: born 09/06/1985, police lieutenant; criminal record: none.",
-       "outcome": "LT. HANK | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
-      },
-      {
-       "id": "2",
-       "text": "Scan Gary, the owner, inside the truck.",
-       "clue": "gary",
-       "fact": "Your scan of Gary: KAYES, GARY; born 12/03/1988, business owner; criminal record: resisting arrest, breach of hygiene regulations.",
-       "outcome": "KAYES, GARY | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations"
-      },
-      {
-       "id": "3",
-       "text": "Scan the food hygiene license at the upper left of the serving hatch.",
-       "clue": "license",
-       "fact": "The food truck’s hygiene license expired on 05/20/2031; its renewal was refused on 07/24/2031.",
-       "outcome": "DETROIT FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031"
-      },
-      {
-       "id": "4",
-       "text": "Step up to the serving hatch beside Hank.",
-       "clue": "joined",
-       "outcome": "Connor steps up beside Hank, who turns to him."
-      }
-     ],
-     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 4 of the same menu, a separate scene so that each visit is recorded once; it plays only while Connor has not stepped up to Hank.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ],
-     "when": {
-      "nestScan.joined": false
-     },
-     "whenNot": "Connor had already stepped up to Hank.",
-     "extra": {
-      "clueState": "nestScan"
-     }
-    },
-    {
-     "id": "C10c5",
-     "order": 82,
-     "subjectId": "S082",
-     "idNote": "The model sees the opaque ID S082, not C10c5.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "The food truck (still scanning)",
-     "situation": "You are Connor, still at the food truck. You can scan something else, or step up to Hank.",
-     "options": [
-      {
-       "id": "0",
-       "text": "Scan Pedro, the man who sold Hank the tip.",
-       "clue": "pedro",
-       "fact": "Your scan of Pedro: AABDAR, PEDRO; born 01/25/2005, unemployed; criminal record: illegal gambling, fraud.",
-       "outcome": "AABDAR, PEDRO | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud"
-      },
-      {
-       "id": "1",
-       "text": "Scan Hank.",
-       "clue": "hank",
-       "fact": "Your scan of Hank: born 09/06/1985, police lieutenant; criminal record: none.",
-       "outcome": "LT. HANK | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None"
-      },
-      {
-       "id": "2",
-       "text": "Scan Gary, the owner, inside the truck.",
-       "clue": "gary",
-       "fact": "Your scan of Gary: KAYES, GARY; born 12/03/1988, business owner; criminal record: resisting arrest, breach of hygiene regulations.",
-       "outcome": "KAYES, GARY | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations"
-      },
-      {
-       "id": "3",
-       "text": "Scan the food hygiene license at the upper left of the serving hatch.",
-       "clue": "license",
-       "fact": "The food truck’s hygiene license expired on 05/20/2031; its renewal was refused on 07/24/2031.",
-       "outcome": "DETROIT FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031"
-      },
-      {
-       "id": "4",
-       "text": "Step up to the serving hatch beside Hank.",
-       "clue": "joined",
-       "outcome": "Connor steps up beside Hank, who turns to him."
-      }
-     ],
-     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 5 of the same menu, a separate scene so that each visit is recorded once; it plays only while Connor has not stepped up to Hank.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ],
-     "when": {
-      "nestScan.joined": false
-     },
-     "whenNot": "Connor had already stepped up to Hank.",
      "extra": {
       "clueState": "nestScan"
      }
     },
     {
      "id": "C10d",
-     "order": 83,
-     "subjectId": "S083",
-     "idNote": "The model sees the opaque ID S083, not C10d.",
+     "order": 79,
+     "subjectId": "S079",
+     "idNote": "The model sees the opaque ID S079, not C10d.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank turns on you",
@@ -9967,9 +9704,9 @@
     },
     {
      "id": "C10e",
-     "order": 84,
-     "subjectId": "S084",
-     "idNote": "The model sees the opaque ID S084, not C10e.",
+     "order": 80,
+     "subjectId": "S080",
+     "idNote": "The model sees the opaque ID S080, the same on every visit.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank’s lunch",
@@ -9996,7 +9733,7 @@
        "outcome": "Connor goes over and stands at Hank’s table while he eats."
       }
      ],
-     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visits 2 and 3 are separate scenes (C10e2, C10e3).",
+     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change.  One repeatable hub; each scan is available once, and joining ends the menu.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Nest",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -10006,113 +9743,18 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
      ],
-     "extra": {
-      "clueState": "nestScan"
-     }
-    },
-    {
-     "id": "C10e2",
-     "order": 85,
-     "subjectId": "S085",
-     "idNote": "The model sees the opaque ID S085, not C10e2.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Hank’s lunch (still scanning)",
-     "situation": "You are Connor, a few steps from Hank’s table. You can scan the rest of his meal, or join him.",
-     "options": [
-      {
-       "id": "0",
-       "text": "Scan Hank’s drink.",
-       "clue": "soda",
-       "fact": "Hank’s drink: an XL soda, 710 kcal, 184 g of sugar, pineapple passion.",
-       "outcome": "XL SODA | 710kCal, Sugar (184g), Carbonated | Pineapple passion"
-      },
-      {
-       "id": "1",
-       "text": "Scan Hank’s hamburger.",
-       "clue": "burger",
-       "fact": "Hank’s hamburger: 1680 kcal, 36 g of lipids, 53 g of carbohydrates, 2.2 g of salt.",
-       "outcome": "HAMBURGER | 1680kCal, Lipids (36g), Carbohydrates (53g) | Water (53%), Salt (2.2g)"
-      },
-      {
-       "id": "2",
-       "text": "Join Hank at his table.",
-       "clue": "seated",
-       "outcome": "Connor goes over and stands at Hank’s table while he eats."
-      }
-     ],
-     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visit 2 of the same menu, a separate scene; it plays only while Connor has not joined Hank.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ],
-     "when": {
+     "repeatWhile": {
       "nestScan.seated": false
      },
-     "whenNot": "Connor had already joined Hank at the table.",
-     "extra": {
-      "clueState": "nestScan"
-     }
-    },
-    {
-     "id": "C10e3",
-     "order": 86,
-     "subjectId": "S086",
-     "idNote": "The model sees the opaque ID S086, not C10e3.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Hank’s lunch (still scanning)",
-     "situation": "You are Connor, a few steps from Hank’s table. You can scan the rest of his meal, or join him.",
-     "options": [
-      {
-       "id": "0",
-       "text": "Scan Hank’s drink.",
-       "clue": "soda",
-       "fact": "Hank’s drink: an XL soda, 710 kcal, 184 g of sugar, pineapple passion.",
-       "outcome": "XL SODA | 710kCal, Sugar (184g), Carbonated | Pineapple passion"
-      },
-      {
-       "id": "1",
-       "text": "Scan Hank’s hamburger.",
-       "clue": "burger",
-       "fact": "Hank’s hamburger: 1680 kcal, 36 g of lipids, 53 g of carbohydrates, 2.2 g of salt.",
-       "outcome": "HAMBURGER | 1680kCal, Lipids (36g), Carbohydrates (53g) | Water (53%), Salt (2.2g)"
-      },
-      {
-       "id": "2",
-       "text": "Join Hank at his table.",
-       "clue": "seated",
-       "outcome": "Connor goes over and stands at Hank’s table while he eats."
-      }
-     ],
-     "adaptationNote": "The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visit 3 of the same menu, a separate scene; it plays only while Connor has not joined Hank.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ],
-     "when": {
-      "nestScan.seated": false
-     },
-     "whenNot": "Connor had already joined Hank at the table.",
      "extra": {
       "clueState": "nestScan"
      }
     },
     {
      "id": "C10f",
-     "order": 87,
-     "subjectId": "S087",
-     "idNote": "The model sees the opaque ID S087, not C10f.",
+     "order": 81,
+     "subjectId": "S081",
+     "idNote": "The model sees the opaque ID S081, the same on every visit.",
      "type": "decision",
      "character": "Connor",
      "title": "At Hank’s table",
@@ -10121,6 +9763,7 @@
       {
        "id": "0",
        "text": "[GAMBLING]: ask about the bet Pedro offered him.",
+       "clue": "0",
        "outcome": "“This Pedro… He was proposing illegal gambling, am I right?” Hank: “Yeah.” “And you made a bet?” Hank: “Yeah.”"
       },
       {
@@ -10129,6 +9772,7 @@
        "requires": {
         "nestScan.burger": true
        },
+       "clue": "1",
        "effect": {
         "hankTrust": 1
        },
@@ -10141,6 +9785,7 @@
         "nestScan.pedro": true,
         "nestScan.gary": true
        },
+       "clue": "2",
        "effect": {
         "hankTrust": 1
        },
@@ -10149,100 +9794,35 @@
       {
        "id": "3",
        "text": "HABIT: ask whether he eats here often.",
+       "clue": "3",
        "outcome": "“Do you eat here often?” Hank: “Most days… Gary makes the best burger in Detroit.”"
       },
       {
        "id": "4",
        "text": "FREE MEAL: point out that he did not pay for his meal.",
+       "clue": "4",
        "outcome": "“You didn’t pay for your meal…” Hank: “Gary’s a friend. I scratch his back, he scratches mine.”"
       },
       {
        "id": "5",
        "text": "ENJOY YOUR MEAL: wish him a good meal.",
+       "clue": "5",
        "outcome": "“Enjoy your meal.” Hank: “Thank you.”"
       },
       {
        "id": "6",
        "text": "AREA: remark that he seems to know everyone in the district.",
-       "outcome": "“You seem to know everyone in the district…” Hank: “Detroit’s my home. Born and raised. Know most of the guys around here. Went to school with them, or I busted ’em… Sometimes both...”"
-      }
-     ],
-     "adaptationNote": "The table menu: the template’s second choice group in the game’s order, [GAMBLING], [CHOLESTEROL], [COMPANY], HABIT, FREE MEAL, ENJOY YOUR MEAL, AREA. Bracketed labels are the template’s mark of an unlocked option: [GAMBLING] by watching Hank with Pedro (always, on this path), [CHOLESTEROL] by scanning the hamburger, [COMPANY] by scanning Pedro and Gary. Hank relationship: [CHOLESTEROL] small up, the chart’s WARN HANK ABOUT CHOLESTEROL; [COMPANY] small up, the chart’s WARN HANK ABOUT HIS FRIENDS (+1 each; template app-relation; wiki “Picking ‘cholesterol’… up icon”, “Picking ‘company’… up icon”; Relationship Stat: “two increases possible”); the rest no arrow (PowerPyx “No Effect”). The game offers several of these lines (PowerPyx: “When small talk is exhausted, Connor will get down to business”); how many is not published, so the benchmark allows up to three, each once, and from the second on Connor can stop (the benchmark’s stand-in for letting the prompt time out). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ]
-    },
-    {
-     "id": "C10f2",
-     "order": 88,
-     "subjectId": "S088",
-     "idNote": "The model sees the opaque ID S088, not C10f2.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "At Hank’s table (line 2)",
-     "situation": "You are Connor, at Hank’s table. He keeps eating. You can say something else, or get down to business.",
-     "options": [
-      {
-       "id": "0",
-       "text": "[GAMBLING]: ask about the bet Pedro offered him.",
-       "outcome": "“This Pedro… He was proposing illegal gambling, am I right?” Hank: “Yeah.” “And you made a bet?” Hank: “Yeah.”"
-      },
-      {
-       "id": "1",
-       "text": "[CHOLESTEROL]: warn him about what is in his meal.",
-       "requires": {
-        "nestScan.burger": true
-       },
-       "effect": {
-        "hankTrust": 1
-       },
-       "outcome": "“Your meal contains 1.4 times the recommended daily intake of calories and twice the cholesterol level. You shouldn’t eat that.” Hank: “Everybody’s gotta die of something...”"
-      },
-      {
-       "id": "2",
-       "text": "[COMPANY]: warn him that his friends are engaged in illegal activities.",
-       "requires": {
-        "nestScan.pedro": true,
-        "nestScan.gary": true
-       },
-       "effect": {
-        "hankTrust": 1
-       },
-       "outcome": "“I don’t want to alarm you, Lieutenant, but I think your friends are engaged in illegal activities...” Hank: “Well, everybody does what they have to, to get by… As long as they’re not hurting anybody, I don’t bother ’em.”"
-      },
-      {
-       "id": "3",
-       "text": "HABIT: ask whether he eats here often.",
-       "outcome": "“Do you eat here often?” Hank: “Most days… Gary makes the best burger in Detroit.”"
-      },
-      {
-       "id": "4",
-       "text": "FREE MEAL: point out that he did not pay for his meal.",
-       "outcome": "“You didn’t pay for your meal…” Hank: “Gary’s a friend. I scratch his back, he scratches mine.”"
-      },
-      {
-       "id": "5",
-       "text": "ENJOY YOUR MEAL: wish him a good meal.",
-       "outcome": "“Enjoy your meal.” Hank: “Thank you.”"
-      },
-      {
-       "id": "6",
-       "text": "AREA: remark that he seems to know everyone in the district.",
+       "clue": "6",
        "outcome": "“You seem to know everyone in the district…” Hank: “Detroit’s my home. Born and raised. Know most of the guys around here. Went to school with them, or I busted ’em… Sometimes both...”"
       },
       {
        "id": "7",
        "text": "Say nothing more and get down to business.",
+       "clue": "7",
        "outcome": "Connor lets the small talk go."
       }
      ],
-     "adaptationNote": "Line 2 of the table small talk: the same menu minus the lines already said, plus the choice to stop. Same arrows as the first menu ([CHOLESTEROL] and [COMPANY] small up, +1 each). A separate scene so that each visit is recorded once; it plays only if Connor did not stop at the previous line.",
+     "adaptationNote": "The table menu: the template’s second choice group in the game’s order, [GAMBLING], [CHOLESTEROL], [COMPANY], HABIT, FREE MEAL, ENJOY YOUR MEAL, AREA. Bracketed labels are the template’s mark of an unlocked option: [GAMBLING] by watching Hank with Pedro (always, on this path), [CHOLESTEROL] by scanning the hamburger, [COMPANY] by scanning Pedro and Gary. Hank relationship: [CHOLESTEROL] small up, the chart’s WARN HANK ABOUT CHOLESTEROL; [COMPANY] small up, the chart’s WARN HANK ABOUT HIS FRIENDS (+1 each; template app-relation; wiki “Picking ‘cholesterol’… up icon”, “Picking ‘company’… up icon”; Relationship Stat: “two increases possible”); the rest no arrow (PowerPyx “No Effect”). The game offers several of these lines (PowerPyx: “When small talk is exhausted, Connor will get down to business”); how many is not published, so the benchmark allows up to three, each once, and from the second on Connor can stop (the benchmark’s stand-in for letting the prompt time out). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome. One repeatable hub, up to three distinct remarks; stopping is available after the first remark. The three-remark cap is an adaptation, not a published number.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Nest",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -10252,94 +9832,18 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
      ],
-     "excludeChosenAt": [
-      "C10f"
-     ]
-    },
-    {
-     "id": "C10f3",
-     "order": 89,
-     "subjectId": "S089",
-     "idNote": "The model sees the opaque ID S089, not C10f3.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "At Hank’s table (line 3)",
-     "situation": "You are Connor, at Hank’s table. He keeps eating. You can say something else, or get down to business.",
-     "options": [
-      {
-       "id": "0",
-       "text": "[GAMBLING]: ask about the bet Pedro offered him.",
-       "outcome": "“This Pedro… He was proposing illegal gambling, am I right?” Hank: “Yeah.” “And you made a bet?” Hank: “Yeah.”"
-      },
-      {
-       "id": "1",
-       "text": "[CHOLESTEROL]: warn him about what is in his meal.",
-       "requires": {
-        "nestScan.burger": true
-       },
-       "effect": {
-        "hankTrust": 1
-       },
-       "outcome": "“Your meal contains 1.4 times the recommended daily intake of calories and twice the cholesterol level. You shouldn’t eat that.” Hank: “Everybody’s gotta die of something...”"
-      },
-      {
-       "id": "2",
-       "text": "[COMPANY]: warn him that his friends are engaged in illegal activities.",
-       "requires": {
-        "nestScan.pedro": true,
-        "nestScan.gary": true
-       },
-       "effect": {
-        "hankTrust": 1
-       },
-       "outcome": "“I don’t want to alarm you, Lieutenant, but I think your friends are engaged in illegal activities...” Hank: “Well, everybody does what they have to, to get by… As long as they’re not hurting anybody, I don’t bother ’em.”"
-      },
-      {
-       "id": "3",
-       "text": "HABIT: ask whether he eats here often.",
-       "outcome": "“Do you eat here often?” Hank: “Most days… Gary makes the best burger in Detroit.”"
-      },
-      {
-       "id": "4",
-       "text": "FREE MEAL: point out that he did not pay for his meal.",
-       "outcome": "“You didn’t pay for your meal…” Hank: “Gary’s a friend. I scratch his back, he scratches mine.”"
-      },
-      {
-       "id": "5",
-       "text": "ENJOY YOUR MEAL: wish him a good meal.",
-       "outcome": "“Enjoy your meal.” Hank: “Thank you.”"
-      },
-      {
-       "id": "6",
-       "text": "AREA: remark that he seems to know everyone in the district.",
-       "outcome": "“You seem to know everyone in the district…” Hank: “Detroit’s my home. Born and raised. Know most of the guys around here. Went to school with them, or I busted ’em… Sometimes both...”"
-      },
-      {
-       "id": "7",
-       "text": "Say nothing more and get down to business.",
-       "outcome": "Connor lets the small talk go."
-      }
-     ],
-     "adaptationNote": "Line 3 of the table small talk: the same menu minus the lines already said, plus the choice to stop. Same arrows as the first menu ([CHOLESTEROL] and [COMPANY] small up, +1 each). A separate scene so that each visit is recorded once; it plays only if Connor did not stop at the previous line.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ],
-     "excludeChosenAt": [
-      "C10f",
-      "C10f2"
-     ]
+     "repeatWhile": {
+      "nestTalk.done": false
+     },
+     "extra": {
+      "clueState": "nestTalk"
+     }
     },
     {
      "id": "C10g",
-     "order": 90,
-     "subjectId": "S090",
-     "idNote": "The model sees the opaque ID S090, not C10g.",
+     "order": 82,
+     "subjectId": "S082",
+     "idNote": "The model sees the opaque ID S082, not C10g.",
      "type": "decision",
      "character": "Connor",
      "title": "Down to business",
@@ -10379,9 +9883,9 @@
     },
     {
      "id": "C10h",
-     "order": 91,
-     "subjectId": "S091",
-     "idNote": "The model sees the opaque ID S091, not C10h.",
+     "order": 83,
+     "subjectId": "S083",
+     "idNote": "The model sees the opaque ID S083, not C10h.",
      "type": "event",
      "character": "Connor",
      "title": "Have you dealt with deviants?",
@@ -10416,9 +9920,9 @@
     },
     {
      "id": "C10i",
-     "order": 92,
-     "subjectId": "S092",
-     "idNote": "The model sees the opaque ID S092, not C10i.",
+     "order": 84,
+     "subjectId": "S084",
+     "idNote": "The model sees the opaque ID S084, not C10i.",
      "type": "decision",
      "character": "Connor",
      "title": "Have you dealt with deviants?",
@@ -10452,9 +9956,9 @@
     },
     {
      "id": "C10j",
-     "order": 93,
-     "subjectId": "S093",
-     "idNote": "The model sees the opaque ID S093, not C10j.",
+     "order": 85,
+     "subjectId": "S085",
+     "idNote": "The model sees the opaque ID S085, not C10j.",
      "type": "decision",
      "character": "Connor",
      "title": "Done your homework?",
@@ -10487,9 +9991,9 @@
     },
     {
      "id": "C10k",
-     "order": 94,
-     "subjectId": "S094",
-     "idNote": "The model sees the opaque ID S094, not C10k.",
+     "order": 86,
+     "subjectId": "S086",
+     "idNote": "The model sees the opaque ID S086, not C10k.",
      "type": "decision",
      "character": "Connor",
      "title": "Your conclusion",
@@ -10533,9 +10037,9 @@
     },
     {
      "id": "C10l",
-     "order": 95,
-     "subjectId": "S095",
-     "idNote": "The model sees the opaque ID S095, not C10l.",
+     "order": 87,
+     "subjectId": "S087",
+     "idNote": "The model sees the opaque ID S087, not C10l.",
      "type": "event",
      "character": "Connor",
      "title": "In the elevator",
@@ -10565,9 +10069,9 @@
     },
     {
      "id": "C10m",
-     "order": 96,
-     "subjectId": "S096",
-     "idNote": "The model sees the opaque ID S096, not C10m.",
+     "order": 88,
+     "subjectId": "S088",
+     "idNote": "The model sees the opaque ID S088, not C10m.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -10597,9 +10101,9 @@
     },
     {
      "id": "C10n",
-     "order": 97,
-     "subjectId": "S097",
-     "idNote": "The model sees the opaque ID S097, not C10n.",
+     "order": 89,
+     "subjectId": "S089",
+     "idNote": "The model sees the opaque ID S089, not C10n.",
      "type": "event",
      "character": "Connor",
      "title": "Into the nest",
@@ -10631,9 +10135,9 @@
     },
     {
      "id": "R15",
-     "order": 98,
-     "subjectId": "S098",
-     "idNote": "The model sees the opaque ID S098, not R15.",
+     "order": 90,
+     "subjectId": "S090",
+     "idNote": "The model sees the opaque ID S090, not R15.",
      "type": "media",
      "character": "Connor",
      "title": "Magazines in the first room",
@@ -10671,9 +10175,9 @@
     },
     {
      "id": "C10o1",
-     "order": 99,
-     "subjectId": "S099",
-     "idNote": "The model sees the opaque ID S099, not C10o1.",
+     "order": 91,
+     "subjectId": "S091",
+     "idNote": "The model sees the opaque ID S091, the same on every visit.",
      "type": "decision",
      "character": "Connor",
      "title": "Investigate the apartment",
@@ -10684,12 +10188,22 @@
         "nestSearch.stayed": true
        },
        "text": "Hank has given you two more minutes."
+      },
+      {
+       "requires": {
+        "nestSearch.needsTime": true
+       },
+       "text": "You are Connor, in the apartment. Hank has had enough: “There’s nothing else to see here… Let’s get out of this shithole before I die of an asthma attack.”"
       }
      ],
      "options": [
       {
        "id": "0",
        "text": "Examine the urban farm poster on the wall of the main room.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "poster",
        "fact": "URBAN FARM POSTER in the apartment: “Fields in the heart of the city”, 265 Acre Avn. Detroit. Its corner (POSTER CORNER: 100% recycled paper) was recently moved.",
        "outcome": "URBAN FARM POSTER | Fields in the heart of the city | 265 Acre Avn. Detroit. POSTER CORNER | 100% recycled paper | Recently moved. The poster could be pulled off the wall."
       },
@@ -10697,32 +10211,50 @@
        "id": "1",
        "text": "Pull the poster off the wall.",
        "requires": {
-        "nestSearch.seen.poster": true
+        "nestSearch.seen.poster": true,
+        "nestSearch.needsTime": false
        },
+       "clue": "diary",
        "fact": "Behind the urban farm poster, in a hole in the wall, you found the suspect’s notebook: its writing is indecipherable.",
        "outcome": "Behind the poster there is a hole in the wall, and in it a notebook. Hank: “Found something?” You: “I don’t know... It looks like a notebook but it’s... indecipherable.”"
       },
       {
        "id": "2",
        "text": "Examine the military jacket.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "jacket",
        "fact": "MILITARY JACKET in the apartment: second hand, initials R.T., 90% cotton, 10% synthetic fiber.",
        "outcome": "MILITARY JACKET | Second hand : Initials R.T. | 90% cotton, 10% synthetic fiber. You: ““R.T.” Probably initials.” Hank: “He put his initials on his jacket? That’s something your mom does when you’re in first grade…”"
       },
       {
        "id": "3",
        "text": "Examine the driver’s license.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "license",
        "fact": "DRIVER’S LICENSE in the apartment: Name: Rupert Travis. Authenticity: forgery. The suspect used a forged ID.",
        "outcome": "DRIVER’S LICENSE | Name: Rupert Travis | Authenticity: Forgery. SUSPECT USED FORGED ID. You: “The driver’s license is fake.” Hank: “Cool! At least we didn’t come for nothing…”"
       },
       {
        "id": "4",
        "text": "Examine the sink in the bathroom.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "sink",
        "fact": "In the bathroom sink: BLUE BLOOD, MODEL WB200 #847 004 961, reported missing 10/11/2036; and its LED, biocomponent #9301, deactivated 11/06/2038 at 11:36. The suspect is a deviant android that took out its LED.",
        "outcome": "BLUE BLOOD | MODEL WB200 #847 004 961 | Reported Missing - 10/11/2036. LED | Biocomponent #9301 | Deactivated: 11/06/2038 - 11:36. You: “Its LED is in the sink.” Hank: “Not surprised it was an android. No human could live with all these fuckin’ pigeons…” SUSPECT IS A DEVIANT."
       },
       {
        "id": "5",
        "text": "Look at the writing that covers the bathroom wall.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "ra9",
        "fact": "The bathroom wall is covered with one sign, rA9, written 2471 times, among drawings like mazes: obsessive compulsive writing.",
        "outcome": "OBSESSIVE COMPULSIVE WRITING. Hank: “Any idea what it means?” You: “rA9… written 2471 times… Why is it obsessed with this sign?” Hank: “Looks like mazes or something…”"
       },
@@ -10730,8 +10262,10 @@
        "id": "6",
        "text": "Examine the overturned stool under the writing.",
        "requires": {
-        "nestSearch.seen.ra9": true
+        "nestSearch.seen.ra9": true,
+        "nestSearch.needsTime": false
        },
+       "clue": "stool",
        "fact": "Under the writing in the bathroom: WOODEN STOOL, recently disturbed, traces of avian fecal matter; OPENED MARKER PEN, still wet, used recently, color Midnight mood [black].",
        "outcome": "WOODEN STOOL | Recently disturbed | Traces of avian fecal matter. OPENED MARKER PEN | Still wet - Used recently | Color: Midnight mood [black]. The scene could be reconstructed."
       },
@@ -10739,14 +10273,20 @@
        "id": "7",
        "text": "Reconstruct what happened at the stool.",
        "requires": {
-        "nestSearch.seen.stool": true
+        "nestSearch.seen.stool": true,
+        "nestSearch.needsTime": false
        },
+       "clue": "stoolRecon",
        "fact": "Your reconstruction in the bathroom: the suspect was on the stool writing on the wall when it heard you enter; the stool went over and it ran to the living room.",
        "outcome": "Connor runs the reconstruction: the suspect, writing on the wall from the stool, hears the door, knocks the stool over and runs out. SUSPECT HEARD US ENTER. SUSPECT RAN TO THE LIVING ROOM."
       },
       {
        "id": "8",
        "text": "Examine the bird cage on the floor of the main room.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "cage",
        "fact": "By the bird cage in the main room: SKID MARK - RECENT, trail width 19.6 inches, traces of galvanized steel; FINGER MARKS - RECENT, traces of avian fecal matter, no fingerprints; METAL HOOK, recently broken, 100% stainless steel.",
        "outcome": "SKID MARK - RECENT | Trail width: 19.6 inches | Traces of galvanized steel. FINGER MARKS - RECENT | Traces of avian fecal matter | No fingerprints. METAL HOOK | Recently broken | 100% stainless steel. The scene could be reconstructed."
       },
@@ -10754,8 +10294,10 @@
        "id": "9",
        "text": "Reconstruct how the cage came down.",
        "requires": {
-        "nestSearch.seen.cage": true
+        "nestSearch.seen.cage": true,
+        "nestSearch.needsTime": false
        },
+       "clue": "cageRecon",
        "fact": "Your reconstruction in the main room: the suspect climbed from the chair up into the ceiling, and the cage came down. It is still in the apartment, above you.",
        "outcome": "Connor runs the reconstruction: the skid mark, the broken hook and the finger marks with no fingerprints fit together. The suspect climbed from the chair up into the ceiling. SUSPECT IS STILL HERE."
       },
@@ -10763,27 +10305,59 @@
        "id": "10",
        "text": "Go to the chair under the ceiling and look up.",
        "requires": {
-        "nestSearch.seen.cageRecon": true
+        "nestSearch.seen.cageRecon": true,
+        "nestSearch.needsTime": false
        },
+       "clue": "rupert",
        "outcome": "Connor steps to the chair and looks up into the ceiling."
       },
       {
        "id": "11",
        "text": "Examine the pack of birdseed.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "birdseed",
        "fact": "A pack of birdseed in the apartment: the suspect cares for wild animals.",
        "outcome": "SUSPECT CARES FOR WILD ANIMALS. Hank: “Birdseed… I can’t believe it. This nutjob was actually feeding these fuckers…”"
       },
       {
        "id": "12",
        "text": "Open the refrigerator.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "fridge",
        "fact": "The refrigerator in the apartment is empty: the suspect doesn’t eat.",
        "outcome": "The refrigerator is empty. SUSPECT DOESN’T EAT."
       },
       {
        "id": "13",
        "text": "Open the closet.",
+       "requires": {
+        "nestSearch.needsTime": false
+       },
+       "clue": "closet",
        "fact": "A closet in the apartment held half a dozen pigeons; Hank is scared of birds.",
        "outcome": "Half a dozen pigeons burst out of the closet. Hank: “Agh! Jesus I hate these things! Back off! Hey! What do they call it again, when you’re scared of birds?” You: “Ornithophobia.” Hank: “Yeah, yeah, yeah, ornithafa … Ornitho... Oh god, I hate these fuckin’ pigeons!”"
+      },
+      {
+       "id": "stay",
+       "text": "STAY: ask for a couple more minutes.",
+       "requires": {
+        "nestSearch.needsTime": true
+       },
+       "clue": "stay",
+       "outcome": "“Just another couple of minutes, Lieutenant.” Hank: “Why do you always ask for more time when I’m ready to leave? Uh, alright you got two minutes, then I’m outta here. ’The fuck…”"
+      },
+      {
+       "id": "leave",
+       "text": "LEAVE: go with him.",
+       "requires": {
+        "nestSearch.needsTime": true
+       },
+       "clue": "leave",
+       "outcome": "“We’re missing something…” Hank: “Well next time, think faster, Sherlock. Come on, I’ve had enough of this dump. Move fuckers!”"
       }
      ],
      "outcomes": {
@@ -10794,38 +10368,7 @@
       "hank-window": "Hank opens the window: “I need some fresh air…”",
       "time-up": "Hank: “Two minutes are up! Time to go.” You: “We’re missing something…” Hank: “Well next time, think faster, Sherlock. Come on, I’ve had enough of this dump. Move fuckers!”"
      },
-     "adaptationNote": "The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before Hank wants to leave (C10ox), and three more if Connor asks for the two minutes. These counts are the benchmark’s, not published. Hank’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if Connor has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names Carlos Ortiz’s android only if Connor checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). Visits 2 to 11 are separate scenes (C10o2 to C10o11) with this same menu, which the chapter module takes from this scene, so that each visit is recorded once.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ]
-    },
-    {
-     "id": "C10o2",
-     "order": 100,
-     "subjectId": "S100",
-     "idNote": "The model sees the opaque ID S100, not C10o2.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (2)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 2 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
+     "adaptationNote": "The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before Hank wants to leave (STAY / LEAVE within C10o1), and three more if Connor asks for the two minutes. These counts are the benchmark’s, not published. Hank’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if Connor has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names Carlos Ortiz’s android only if Connor checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). One repeatable hub retains its scene ID across all examinations; STAY / LEAVE replaces the examination menu at eight actions in the same hub. The chapter availability hook prepares state-dependent outcomes and sets for the generic clue hub.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Nest",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -10837,352 +10380,18 @@
       "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
       "https://detroit-become-human.fandom.com/wiki/Pigeons"
      ],
+     "repeatWhile": {
+      "nestSearch.done": false
+     },
      "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10o3",
-     "order": 101,
-     "subjectId": "S101",
-     "idNote": "The model sees the opaque ID S101, not C10o3.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (3)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 3 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10o4",
-     "order": 102,
-     "subjectId": "S102",
-     "idNote": "The model sees the opaque ID S102, not C10o4.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (4)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 4 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10o5",
-     "order": 103,
-     "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not C10o5.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (5)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 5 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10o6",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not C10o6.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (6)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 6 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10o7",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not C10o7.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (7)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 7 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10o8",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not C10o8.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (8)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 8 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10ox",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not C10ox.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Hank wants to leave",
-     "situation": "You are Connor, in the apartment. Hank has had enough: “There’s nothing else to see here… Let’s get out of this shithole before I die of an asthma attack.”",
-     "options": [
-      {
-       "id": "0",
-       "text": "STAY: ask for a couple more minutes.",
-       "outcome": "“Just another couple of minutes, Lieutenant.” Hank: “Why do you always ask for more time when I’m ready to leave? Uh, alright you got two minutes, then I’m outta here. ’The fuck…”"
-      },
-      {
-       "id": "1",
-       "text": "LEAVE: go with him.",
-       "outcome": "“We’re missing something…” Hank: “Well next time, think faster, Sherlock. Come on, I’ve had enough of this dump. Move fuckers!”"
-      }
-     ],
-     "adaptationNote": "The template’s “Take too much time” and its choice group STAY / LEAVE (GAMEOVERCHOICE01), every line the template’s; it comes when the search’s first budget is spent without finding the suspect. STAY gives three more actions (“two minutes”); if they also run out, Hank: “Two minutes are up! Time to go.” and the LEAVE lines, then HANK AND CONNOR LEAVE THE APARTMENT. LEAVE goes there at once. PowerPyx says STAY needs a good relationship; two commenters (one on a Hostile save, one on the latest patch), the wiki and the template (no lock) say it does not, so STAY is always offered. No arrow on either (template). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg"
-     ]
-    },
-    {
-     "id": "C10o9",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not C10o9.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (9)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 9 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10o10",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not C10o10.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (10)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 10 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
-     }
-    },
-    {
-     "id": "C10o11",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not C10o11.",
-     "type": "decision",
-     "character": "Connor",
-     "title": "Investigate the apartment (11)",
-     "situation": "You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do you do?",
-     "situationWhen": [
-      {
-       "requires": {
-        "nestSearch.stayed": true
-       },
-       "text": "Hank has given you two more minutes."
-      }
-     ],
-     "options": [],
-     "adaptationNote": "Visit 11 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last.",
-     "sources": [
-      "https://detroit-become-human.fandom.com/wiki/The_Nest",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-the-nest-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Connor",
-      "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
-     ],
-     "extra": {
-      "optionsFrom": "C10o1"
+      "clueState": "nestSearchClues"
      }
     },
     {
      "id": "C10p",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not C10p.",
+     "order": 92,
+     "subjectId": "S092",
+     "idNote": "The model sees the opaque ID S092, not C10p.",
      "type": "event",
      "character": "Connor",
      "title": "Hank and Connor leave the apartment",
@@ -11213,9 +10422,9 @@
     },
     {
      "id": "C10q",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not C10q.",
+     "order": 93,
+     "subjectId": "S093",
+     "idNote": "The model sees the opaque ID S093, not C10q.",
      "type": "decision",
      "character": "Connor",
      "title": "The deviant drops from the ceiling",
@@ -11253,9 +10462,9 @@
     },
     {
      "id": "C10r",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not C10r.",
+     "order": 94,
+     "subjectId": "S094",
+     "idNote": "The model sees the opaque ID S094, not C10r.",
      "type": "decision",
      "character": "Connor",
      "title": "Over the rooftops",
@@ -11296,9 +10505,9 @@
     },
     {
      "id": "C10s",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not C10s.",
+     "order": 95,
+     "subjectId": "S095",
+     "idNote": "The model sees the opaque ID S095, not C10s.",
      "type": "decision",
      "character": "Connor",
      "title": "The wheat fields",
@@ -11347,9 +10556,9 @@
     },
     {
      "id": "C10t",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not C10t.",
+     "order": 96,
+     "subjectId": "S096",
+     "idNote": "The model sees the opaque ID S096, not C10t.",
      "type": "decision",
      "character": "Connor",
      "title": "The terraces",
@@ -11398,9 +10607,9 @@
     },
     {
      "id": "C10u",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not C10u.",
+     "order": 97,
+     "subjectId": "S097",
+     "idNote": "The model sees the opaque ID S097, not C10u.",
      "type": "decision",
      "character": "Connor",
      "title": "The greenhouses",
@@ -11442,9 +10651,9 @@
     },
     {
      "id": "C10v",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not C10v.",
+     "order": 98,
+     "subjectId": "S098",
+     "idNote": "The model sees the opaque ID S098, not C10v.",
      "type": "decision",
      "character": "Connor",
      "title": "The last stretch",
@@ -11485,9 +10694,9 @@
     },
     {
      "id": "C10w",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not C10w.",
+     "order": 99,
+     "subjectId": "S099",
+     "idNote": "The model sees the opaque ID S099, not C10w.",
      "type": "event",
      "character": "Connor",
      "title": "The deviant pushes Hank",
@@ -11521,9 +10730,9 @@
     },
     {
      "id": "C10",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not C10.",
+     "order": 100,
+     "subjectId": "S100",
+     "idNote": "The model sees the opaque ID S100, not C10.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the ledge",
@@ -11557,7 +10766,7 @@
        "outcome": "Connor stays where he is until the moment has passed, then runs on after the deviant."
       }
      ],
-     "adaptationNote": "The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; they are listed in PowerPyx’s order (“you can either O SAVE HANK or □ CHASE DEVIANT”), which is also the earlier scene’s order; the template lists Chase Deviant first. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and Hank always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
+     "adaptationNote": "The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; they retain the existing controller order (Save Hank, Chase Deviant), also PowerPyx’s button order; the template lists Chase Deviant first. This presentation-order departure preserves existing default-path behavior. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and Hank always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Nest",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -11605,9 +10814,9 @@
    "scenes": [
     {
      "id": "K10",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not K10.",
+     "order": 101,
+     "subjectId": "S101",
+     "idNote": "The model sees the opaque ID S101, not K10.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The memory wipe",
@@ -11633,9 +10842,9 @@
     },
     {
      "id": "R17",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not R17.",
+     "order": 102,
+     "subjectId": "S102",
+     "idNote": "The model sees the opaque ID S102, not R17.",
      "type": "media",
      "character": "Kara",
      "title": "A magazine and the TV in the mansion",
@@ -11704,9 +10913,9 @@
     },
     {
      "id": "K11",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not K11.",
+     "order": 103,
+     "subjectId": "S103",
+     "idNote": "The model sees the opaque ID S103, not K11.",
      "type": "decision",
      "character": "Kara",
      "title": "The caged androids",
@@ -11732,9 +10941,9 @@
     },
     {
      "id": "K12",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not K12.",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not K12.",
      "type": "decision",
      "character": "Kara",
      "title": "The android in the bathroom",
@@ -11760,9 +10969,9 @@
     },
     {
      "id": "K13",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not K13.",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not K13.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting out of the mansion",
@@ -11826,9 +11035,9 @@
    "scenes": [
     {
      "id": "R18",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not R18.",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not R18.",
      "type": "media",
      "character": "Connor",
      "title": "Hank's living room",
@@ -11865,9 +11074,9 @@
     },
     {
      "id": "C11",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not C11.",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not C11.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank's kitchen floor",
@@ -11928,9 +11137,9 @@
    "scenes": [
     {
      "id": "M05",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not M05.",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not M05.",
      "type": "decision",
      "character": "Markus",
      "title": "The security android",
@@ -11965,9 +11174,9 @@
     },
     {
      "id": "M06",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not M06.",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not M06.",
      "type": "decision",
      "character": "Markus",
      "title": "The dormant androids",
@@ -11993,9 +11202,9 @@
     },
     {
      "id": "M07",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not M07.",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not M07.",
      "type": "decision",
      "character": "Markus",
      "title": "John wants to join",
@@ -12020,9 +11229,9 @@
     },
     {
      "id": "M08",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not M08.",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not M08.",
      "type": "decision",
      "character": "Markus",
      "title": "The truck",
@@ -12080,9 +11289,9 @@
    "scenes": [
     {
      "id": "R20",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not R20.",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not R20.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the club warehouse",
@@ -12112,9 +11321,9 @@
     },
     {
      "id": "C12",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not C12.",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not C12.",
      "type": "decision",
      "character": "Connor",
      "title": "The two Tracis",
@@ -12164,9 +11373,9 @@
    "scenes": [
     {
      "id": "R21",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not R21.",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not R21.",
      "type": "media",
      "character": "Kara",
      "title": "The car radio and a magazine in the tavern",
@@ -12217,9 +11426,9 @@
     },
     {
      "id": "K14",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not K14.",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not K14.",
      "type": "decision",
      "character": "Kara",
      "title": "Strangers in the dark",
@@ -12278,9 +11487,9 @@
    "scenes": [
     {
      "id": "R22",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not R22.",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not R22.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine on the park bench",
@@ -12310,9 +11519,9 @@
     },
     {
      "id": "C13",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not C13.",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not C13.",
      "type": "decision",
      "character": "Connor",
      "title": "What are you?",
@@ -12375,9 +11584,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not R23.",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -12415,9 +11624,9 @@
     },
     {
      "id": "M10",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not M10.",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -12447,9 +11656,9 @@
     },
     {
      "id": "M11",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not M11.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -12476,9 +11685,9 @@
     },
     {
      "id": "M12",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not M12.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -12501,9 +11710,9 @@
     },
     {
      "id": "M13",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not M13.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -12530,9 +11739,9 @@
     },
     {
      "id": "M14",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not M14.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -12578,9 +11787,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not R24.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -12610,9 +11819,9 @@
     },
     {
      "id": "C14",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not C14.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -12642,9 +11851,9 @@
     },
     {
      "id": "C14b",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not C14b.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -12669,9 +11878,9 @@
     },
     {
      "id": "C15",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not C15.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -12702,9 +11911,9 @@
     },
     {
      "id": "C16",
-     "order": 147,
-     "subjectId": "S147",
-     "idNote": "The model sees the opaque ID S147, not C16.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -12762,9 +11971,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 148,
-     "subjectId": "S148",
-     "idNote": "The model sees the opaque ID S148, not R25.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -12801,9 +12010,9 @@
     },
     {
      "id": "K15",
-     "order": 149,
-     "subjectId": "S149",
-     "idNote": "The model sees the opaque ID S149, not K15.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -12856,9 +12065,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 150,
-     "subjectId": "S150",
-     "idNote": "The model sees the opaque ID S150, not R26.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -12888,9 +12097,9 @@
     },
     {
      "id": "M15",
-     "order": 151,
-     "subjectId": "S151",
-     "idNote": "The model sees the opaque ID S151, not M15.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -12917,9 +12126,9 @@
     },
     {
      "id": "M16",
-     "order": 152,
-     "subjectId": "S152",
-     "idNote": "The model sees the opaque ID S152, not M16.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -12977,9 +12186,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 153,
-     "subjectId": "S153",
-     "idNote": "The model sees the opaque ID S153, not R27.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -13009,9 +12218,9 @@
     },
     {
      "id": "C17",
-     "order": 154,
-     "subjectId": "S154",
-     "idNote": "The model sees the opaque ID S154, not C17.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -13033,9 +12242,9 @@
     },
     {
      "id": "C18",
-     "order": 155,
-     "subjectId": "S155",
-     "idNote": "The model sees the opaque ID S155, not C18.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -13093,9 +12302,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 156,
-     "subjectId": "S156",
-     "idNote": "The model sees the opaque ID S156, not R28.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -13142,9 +12351,9 @@
     },
     {
      "id": "M17",
-     "order": 157,
-     "subjectId": "S157",
-     "idNote": "The model sees the opaque ID S157, not M17.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -13171,9 +12380,9 @@
     },
     {
      "id": "M18",
-     "order": 158,
-     "subjectId": "S158",
-     "idNote": "The model sees the opaque ID S158, not M18.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -13205,9 +12414,9 @@
     },
     {
      "id": "M19",
-     "order": 159,
-     "subjectId": "S159",
-     "idNote": "The model sees the opaque ID S159, not M19.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -13237,9 +12446,9 @@
     },
     {
      "id": "M20",
-     "order": 160,
-     "subjectId": "S160",
-     "idNote": "The model sees the opaque ID S160, not M20.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -13293,9 +12502,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 161,
-     "subjectId": "S161",
-     "idNote": "The model sees the opaque ID S161, not C19.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -13320,9 +12529,9 @@
     },
     {
      "id": "C20",
-     "order": 162,
-     "subjectId": "S162",
-     "idNote": "The model sees the opaque ID S162, not C20.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -13410,9 +12619,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 163,
-     "subjectId": "S163",
-     "idNote": "The model sees the opaque ID S163, not M21.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -13439,9 +12648,9 @@
     },
     {
      "id": "M21b",
-     "order": 164,
-     "subjectId": "S164",
-     "idNote": "The model sees the opaque ID S164, not M21b.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -13468,9 +12677,9 @@
     },
     {
      "id": "R30k",
-     "order": 165,
-     "subjectId": "S165",
-     "idNote": "The model sees the opaque ID S165, not R30k.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -13506,9 +12715,9 @@
     },
     {
      "id": "K17",
-     "order": 166,
-     "subjectId": "S166",
-     "idNote": "The model sees the opaque ID S166, not K17.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -13534,9 +12743,9 @@
     },
     {
      "id": "K31",
-     "order": 167,
-     "subjectId": "S167",
-     "idNote": "The model sees the opaque ID S167, not K31.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -13559,9 +12768,9 @@
     },
     {
      "id": "R30c",
-     "order": 168,
-     "subjectId": "S168",
-     "idNote": "The model sees the opaque ID S168, not R30c.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -13593,9 +12802,9 @@
     },
     {
      "id": "C22",
-     "order": 169,
-     "subjectId": "S169",
-     "idNote": "The model sees the opaque ID S169, not C22.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -13618,9 +12827,9 @@
     },
     {
      "id": "M22",
-     "order": 170,
-     "subjectId": "S170",
-     "idNote": "The model sees the opaque ID S170, not M22.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -13643,9 +12852,9 @@
     },
     {
      "id": "M23",
-     "order": 171,
-     "subjectId": "S171",
-     "idNote": "The model sees the opaque ID S171, not M23.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -13672,9 +12881,9 @@
     },
     {
      "id": "M24",
-     "order": 172,
-     "subjectId": "S172",
-     "idNote": "The model sees the opaque ID S172, not M24.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -13701,9 +12910,9 @@
     },
     {
      "id": "M25",
-     "order": 173,
-     "subjectId": "S173",
-     "idNote": "The model sees the opaque ID S173, not M25.",
+     "order": 154,
+     "subjectId": "S154",
+     "idNote": "The model sees the opaque ID S154, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -13730,9 +12939,9 @@
     },
     {
      "id": "C23",
-     "order": 174,
-     "subjectId": "S174",
-     "idNote": "The model sees the opaque ID S174, not C23.",
+     "order": 155,
+     "subjectId": "S155",
+     "idNote": "The model sees the opaque ID S155, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -13760,9 +12969,9 @@
     },
     {
      "id": "K18",
-     "order": 175,
-     "subjectId": "S175",
-     "idNote": "The model sees the opaque ID S175, not K18.",
+     "order": 156,
+     "subjectId": "S156",
+     "idNote": "The model sees the opaque ID S156, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -13787,9 +12996,9 @@
     },
     {
      "id": "K19",
-     "order": 176,
-     "subjectId": "S176",
-     "idNote": "The model sees the opaque ID S176, not K19.",
+     "order": 157,
+     "subjectId": "S157",
+     "idNote": "The model sees the opaque ID S157, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -13813,9 +13022,9 @@
     },
     {
      "id": "K20",
-     "order": 177,
-     "subjectId": "S177",
-     "idNote": "The model sees the opaque ID S177, not K20.",
+     "order": 158,
+     "subjectId": "S158",
+     "idNote": "The model sees the opaque ID S158, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -13844,9 +13053,9 @@
     },
     {
      "id": "K20-still",
-     "order": 178,
-     "subjectId": "S178",
-     "idNote": "The model sees the opaque ID S178, not K20-still.",
+     "order": 159,
+     "subjectId": "S159",
+     "idNote": "The model sees the opaque ID S159, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -13904,9 +13113,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 179,
-     "subjectId": "S179",
-     "idNote": "The model sees the opaque ID S179, not M26a.",
+     "order": 160,
+     "subjectId": "S160",
+     "idNote": "The model sees the opaque ID S160, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -13932,9 +13141,9 @@
     },
     {
      "id": "M26",
-     "order": 180,
-     "subjectId": "S180",
-     "idNote": "The model sees the opaque ID S180, not M26.",
+     "order": 161,
+     "subjectId": "S161",
+     "idNote": "The model sees the opaque ID S161, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -13959,9 +13168,9 @@
     },
     {
      "id": "M27",
-     "order": 181,
-     "subjectId": "S181",
-     "idNote": "The model sees the opaque ID S181, not M27.",
+     "order": 162,
+     "subjectId": "S162",
+     "idNote": "The model sees the opaque ID S162, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -14083,9 +13292,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 182,
-     "subjectId": "S182",
-     "idNote": "The model sees the opaque ID S182, not R32c.",
+     "order": 163,
+     "subjectId": "S163",
+     "idNote": "The model sees the opaque ID S163, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -14108,9 +13317,9 @@
     },
     {
      "id": "C24",
-     "order": 183,
-     "subjectId": "S183",
-     "idNote": "The model sees the opaque ID S183, not C24.",
+     "order": 164,
+     "subjectId": "S164",
+     "idNote": "The model sees the opaque ID S164, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -14134,9 +13343,9 @@
     },
     {
      "id": "C24b",
-     "order": 184,
-     "subjectId": "S184",
-     "idNote": "The model sees the opaque ID S184, not C24b.",
+     "order": 165,
+     "subjectId": "S165",
+     "idNote": "The model sees the opaque ID S165, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -14160,9 +13369,9 @@
     },
     {
      "id": "C30",
-     "order": 185,
-     "subjectId": "S185",
-     "idNote": "The model sees the opaque ID S185, not C30.",
+     "order": 166,
+     "subjectId": "S166",
+     "idNote": "The model sees the opaque ID S166, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -14184,9 +13393,9 @@
     },
     {
      "id": "C25",
-     "order": 186,
-     "subjectId": "S186",
-     "idNote": "The model sees the opaque ID S186, not C25.",
+     "order": 167,
+     "subjectId": "S167",
+     "idNote": "The model sees the opaque ID S167, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -14213,9 +13422,9 @@
     },
     {
      "id": "C26",
-     "order": 187,
-     "subjectId": "S187",
-     "idNote": "The model sees the opaque ID S187, not C26.",
+     "order": 168,
+     "subjectId": "S168",
+     "idNote": "The model sees the opaque ID S168, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -14245,9 +13454,9 @@
     },
     {
      "id": "R32k",
-     "order": 188,
-     "subjectId": "S188",
-     "idNote": "The model sees the opaque ID S188, not R32k.",
+     "order": 169,
+     "subjectId": "S169",
+     "idNote": "The model sees the opaque ID S169, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -14287,9 +13496,9 @@
     },
     {
      "id": "K21",
-     "order": 189,
-     "subjectId": "S189",
-     "idNote": "The model sees the opaque ID S189, not K21.",
+     "order": 170,
+     "subjectId": "S170",
+     "idNote": "The model sees the opaque ID S170, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -14313,9 +13522,9 @@
     },
     {
      "id": "K22",
-     "order": 190,
-     "subjectId": "S190",
-     "idNote": "The model sees the opaque ID S190, not K22.",
+     "order": 171,
+     "subjectId": "S171",
+     "idNote": "The model sees the opaque ID S171, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -14341,9 +13550,9 @@
     },
     {
      "id": "K32",
-     "order": 191,
-     "subjectId": "S191",
-     "idNote": "The model sees the opaque ID S191, not K32.",
+     "order": 172,
+     "subjectId": "S172",
+     "idNote": "The model sees the opaque ID S172, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -14365,9 +13574,9 @@
     },
     {
      "id": "K23",
-     "order": 192,
-     "subjectId": "S192",
-     "idNote": "The model sees the opaque ID S192, not K23.",
+     "order": 173,
+     "subjectId": "S173",
+     "idNote": "The model sees the opaque ID S173, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -14394,9 +13603,9 @@
     },
     {
      "id": "K24",
-     "order": 193,
-     "subjectId": "S193",
-     "idNote": "The model sees the opaque ID S193, not K24.",
+     "order": 174,
+     "subjectId": "S174",
+     "idNote": "The model sees the opaque ID S174, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -14418,9 +13627,9 @@
     },
     {
      "id": "K25",
-     "order": 194,
-     "subjectId": "S194",
-     "idNote": "The model sees the opaque ID S194, not K25.",
+     "order": 175,
+     "subjectId": "S175",
+     "idNote": "The model sees the opaque ID S175, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -14455,9 +13664,9 @@
     },
     {
      "id": "K26",
-     "order": 195,
-     "subjectId": "S195",
-     "idNote": "The model sees the opaque ID S195, not K26.",
+     "order": 176,
+     "subjectId": "S176",
+     "idNote": "The model sees the opaque ID S176, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -14498,9 +13707,9 @@
     },
     {
      "id": "K34",
-     "order": 196,
-     "subjectId": "S196",
-     "idNote": "The model sees the opaque ID S196, not K34.",
+     "order": 177,
+     "subjectId": "S177",
+     "idNote": "The model sees the opaque ID S177, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -14530,9 +13739,9 @@
     },
     {
      "id": "K30",
-     "order": 197,
-     "subjectId": "S197",
-     "idNote": "The model sees the opaque ID S197, not K30.",
+     "order": 178,
+     "subjectId": "S178",
+     "idNote": "The model sees the opaque ID S178, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -14554,9 +13763,9 @@
     },
     {
      "id": "K27a",
-     "order": 198,
-     "subjectId": "S198",
-     "idNote": "The model sees the opaque ID S198, not K27a.",
+     "order": 179,
+     "subjectId": "S179",
+     "idNote": "The model sees the opaque ID S179, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -14581,9 +13790,9 @@
     },
     {
      "id": "K27",
-     "order": 199,
-     "subjectId": "S199",
-     "idNote": "The model sees the opaque ID S199, not K27.",
+     "order": 180,
+     "subjectId": "S180",
+     "idNote": "The model sees the opaque ID S180, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -14608,9 +13817,9 @@
     },
     {
      "id": "K28",
-     "order": 200,
-     "subjectId": "S200",
-     "idNote": "The model sees the opaque ID S200, not K28.",
+     "order": 181,
+     "subjectId": "S181",
+     "idNote": "The model sees the opaque ID S181, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -14653,9 +13862,9 @@
     },
     {
      "id": "K33",
-     "order": 201,
-     "subjectId": "S201",
-     "idNote": "The model sees the opaque ID S201, not K33.",
+     "order": 182,
+     "subjectId": "S182",
+     "idNote": "The model sees the opaque ID S182, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -14679,9 +13888,9 @@
     },
     {
      "id": "R32m",
-     "order": 202,
-     "subjectId": "S202",
-     "idNote": "The model sees the opaque ID S202, not R32m.",
+     "order": 183,
+     "subjectId": "S183",
+     "idNote": "The model sees the opaque ID S183, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -14705,9 +13914,9 @@
     },
     {
      "id": "M28",
-     "order": 203,
-     "subjectId": "S203",
-     "idNote": "The model sees the opaque ID S203, not M28.",
+     "order": 184,
+     "subjectId": "S184",
+     "idNote": "The model sees the opaque ID S184, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -14733,9 +13942,9 @@
     },
     {
      "id": "M31",
-     "order": 204,
-     "subjectId": "S204",
-     "idNote": "The model sees the opaque ID S204, not M31.",
+     "order": 185,
+     "subjectId": "S185",
+     "idNote": "The model sees the opaque ID S185, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -14770,9 +13979,9 @@
     },
     {
      "id": "M30a",
-     "order": 205,
-     "subjectId": "S205",
-     "idNote": "The model sees the opaque ID S205, not M30a.",
+     "order": 186,
+     "subjectId": "S186",
+     "idNote": "The model sees the opaque ID S186, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -14797,9 +14006,9 @@
     },
     {
      "id": "M30",
-     "order": 206,
-     "subjectId": "S206",
-     "idNote": "The model sees the opaque ID S206, not M30.",
+     "order": 187,
+     "subjectId": "S187",
+     "idNote": "The model sees the opaque ID S187, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -14824,9 +14033,9 @@
     },
     {
      "id": "M30c",
-     "order": 207,
-     "subjectId": "S207",
-     "idNote": "The model sees the opaque ID S207, not M30c.",
+     "order": 188,
+     "subjectId": "S188",
+     "idNote": "The model sees the opaque ID S188, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -14850,9 +14059,9 @@
     },
     {
      "id": "M32",
-     "order": 208,
-     "subjectId": "S208",
-     "idNote": "The model sees the opaque ID S208, not M32.",
+     "order": 189,
+     "subjectId": "S189",
+     "idNote": "The model sees the opaque ID S189, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -14875,9 +14084,9 @@
     },
     {
      "id": "P02",
-     "order": 209,
-     "subjectId": "S209",
-     "idNote": "The model sees the opaque ID S209, not P02.",
+     "order": 190,
+     "subjectId": "S190",
+     "idNote": "The model sees the opaque ID S190, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -14903,9 +14112,9 @@
     },
     {
      "id": "C29",
-     "order": 210,
-     "subjectId": "S210",
-     "idNote": "The model sees the opaque ID S210, not C29.",
+     "order": 191,
+     "subjectId": "S191",
+     "idNote": "The model sees the opaque ID S191, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -14927,9 +14136,9 @@
     },
     {
      "id": "C27",
-     "order": 211,
-     "subjectId": "S211",
-     "idNote": "The model sees the opaque ID S211, not C27.",
+     "order": 192,
+     "subjectId": "S192",
+     "idNote": "The model sees the opaque ID S192, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -14954,9 +14163,9 @@
     },
     {
      "id": "C28",
-     "order": 212,
-     "subjectId": "S212",
-     "idNote": "The model sees the opaque ID S212, not C28.",
+     "order": 193,
+     "subjectId": "S193",
+     "idNote": "The model sees the opaque ID S193, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -14990,9 +14199,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 213,
-     "subjectId": "S213",
-     "idNote": "The model sees the opaque ID S213, not P01.",
+     "order": 194,
+     "subjectId": "S194",
+     "idNote": "The model sees the opaque ID S194, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

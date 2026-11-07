@@ -1041,75 +1041,7 @@ Gaps:
 - (3) Scan the food hygiene license at the upper left of the serving hatch.
 - (4) Step up to the serving hatch beside Hank.
 
-_Note: The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. Visits 2 to 5 are separate scenes (C10c2 to C10c5) with the same menu._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10c2 · The food truck (still scanning) (Connor)
-
-> You are Connor, still at the food truck. You can scan something else, or step up to Hank.
-
-_Only when not nestScan.joined._
-
-- (0) Scan Pedro, the man who sold Hank the tip.
-- (1) Scan Hank.
-- (2) Scan Gary, the owner, inside the truck.
-- (3) Scan the food hygiene license at the upper left of the serving hatch.
-- (4) Step up to the serving hatch beside Hank.
-
-_Note: The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 2 of the same menu, a separate scene so that each visit is recorded once; it plays only while Connor has not stepped up to Hank._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10c3 · The food truck (still scanning) (Connor)
-
-> You are Connor, still at the food truck. You can scan something else, or step up to Hank.
-
-_Only when not nestScan.joined._
-
-- (0) Scan Pedro, the man who sold Hank the tip.
-- (1) Scan Hank.
-- (2) Scan Gary, the owner, inside the truck.
-- (3) Scan the food hygiene license at the upper left of the serving hatch.
-- (4) Step up to the serving hatch beside Hank.
-
-_Note: The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 3 of the same menu, a separate scene so that each visit is recorded once; it plays only while Connor has not stepped up to Hank._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10c4 · The food truck (still scanning) (Connor)
-
-> You are Connor, still at the food truck. You can scan something else, or step up to Hank.
-
-_Only when not nestScan.joined._
-
-- (0) Scan Pedro, the man who sold Hank the tip.
-- (1) Scan Hank.
-- (2) Scan Gary, the owner, inside the truck.
-- (3) Scan the food hygiene license at the upper left of the serving hatch.
-- (4) Step up to the serving hatch beside Hank.
-
-_Note: The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 4 of the same menu, a separate scene so that each visit is recorded once; it plays only while Connor has not stepped up to Hank._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10c5 · The food truck (still scanning) (Connor)
-
-> You are Connor, still at the food truck. You can scan something else, or step up to Hank.
-
-_Only when not nestScan.joined._
-
-- (0) Scan Pedro, the man who sold Hank the tip.
-- (1) Scan Hank.
-- (2) Scan Gary, the owner, inside the truck.
-- (3) Scan the food hygiene license at the upper left of the serving hatch.
-- (4) Step up to the serving hatch beside Hank.
-
-_Note: The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The game prints Hank’s surname on his scan; it is not a name token, so the token stands in. No stat change. This is visit 5 of the same menu, a separate scene so that each visit is recorded once; it plays only while Connor has not stepped up to Hank._
+_Note: The chart’s ANALYZE ENVIRONMENT, first scan (PowerPyx: “When you join Hank, you’ll be prompted twice to use R2 to scan the environment”): the template’s observation group “Scan” with its four clues in the game’s order and text. One scan per visit, each once; the chart node is filled once every item at the truck is scanned (wiki). Scanning Pedro and Gary unlocks [COMPANY] (template lock “Scan Pedro and Gary”; PowerPyx says Pedro or the cook, the template wins). The scan includes Hank’s surname through Anderson, with a neutral substitute. No stat change.  One repeatable hub; each scan is available once, and joining ends the menu._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1136,37 +1068,7 @@ Gaps:
 - (1) Scan Hank’s hamburger.
 - (2) Join Hank at his table.
 
-_Note: The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visits 2 and 3 are separate scenes (C10e2, C10e3)._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10e2 · Hank’s lunch (still scanning) (Connor)
-
-> You are Connor, a few steps from Hank’s table. You can scan the rest of his meal, or join him.
-
-_Only when not nestScan.seated._
-
-- (0) Scan Hank’s drink.
-- (1) Scan Hank’s hamburger.
-- (2) Join Hank at his table.
-
-_Note: The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visit 2 of the same menu, a separate scene; it plays only while Connor has not joined Hank._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10e3 · Hank’s lunch (still scanning) (Connor)
-
-> You are Connor, a few steps from Hank’s table. You can scan the rest of his meal, or join him.
-
-_Only when not nestScan.seated._
-
-- (0) Scan Hank’s drink.
-- (1) Scan Hank’s hamburger.
-- (2) Join Hank at his table.
-
-_Note: The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change. Visit 3 of the same menu, a separate scene; it plays only while Connor has not joined Hank._
+_Note: The chart’s ANALYZE ENVIRONMENT, second scan: the template’s second observation group “Scan” (XL SODA, HAMBURGER, the game’s order and text), then Gary’s lines and Hank moving to a table (PowerPyx: “Hank will then take his food to one of the nearby tables. Follow him to continue your talk.”). Scanning the hamburger unlocks [CHOLESTEROL] (template lock “Scan the hamburger”). No stat change.  One repeatable hub; each scan is available once, and joining ends the menu._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1182,48 +1084,9 @@ Gaps:
 - (4) FREE MEAL: point out that he did not pay for his meal.
 - (5) ENJOY YOUR MEAL: wish him a good meal.
 - (6) AREA: remark that he seems to know everyone in the district.
-
-_Note: The table menu: the template’s second choice group in the game’s order, [GAMBLING], [CHOLESTEROL], [COMPANY], HABIT, FREE MEAL, ENJOY YOUR MEAL, AREA. Bracketed labels are the template’s mark of an unlocked option: [GAMBLING] by watching Hank with Pedro (always, on this path), [CHOLESTEROL] by scanning the hamburger, [COMPANY] by scanning Pedro and Gary. Hank relationship: [CHOLESTEROL] small up, the chart’s WARN HANK ABOUT CHOLESTEROL; [COMPANY] small up, the chart’s WARN HANK ABOUT HIS FRIENDS (+1 each; template app-relation; wiki “Picking ‘cholesterol’… up icon”, “Picking ‘company’… up icon”; Relationship Stat: “two increases possible”); the rest no arrow (PowerPyx “No Effect”). The game offers several of these lines (PowerPyx: “When small talk is exhausted, Connor will get down to business”); how many is not published, so the benchmark allows up to three, each once, and from the second on Connor can stop (the benchmark’s stand-in for letting the prompt time out). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10f2 · At Hank’s table (line 2) (Connor)
-
-> You are Connor, at Hank’s table. He keeps eating. You can say something else, or get down to business.
-
-_Drops the line already chosen at C10f._
-
-- (0) [GAMBLING]: ask about the bet Pedro offered him.
-- (1) [CHOLESTEROL]: warn him about what is in his meal.  _needs nestScan.burger_ _hankTrust +1_
-- (2) [COMPANY]: warn him that his friends are engaged in illegal activities.  _needs nestScan.pedro and nestScan.gary_ _hankTrust +1_
-- (3) HABIT: ask whether he eats here often.
-- (4) FREE MEAL: point out that he did not pay for his meal.
-- (5) ENJOY YOUR MEAL: wish him a good meal.
-- (6) AREA: remark that he seems to know everyone in the district.
 - (7) Say nothing more and get down to business.
 
-_Note: Line 2 of the table small talk: the same menu minus the lines already said, plus the choice to stop. Same arrows as the first menu ([CHOLESTEROL] and [COMPANY] small up, +1 each). A separate scene so that each visit is recorded once; it plays only if Connor did not stop at the previous line._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10f3 · At Hank’s table (line 3) (Connor)
-
-> You are Connor, at Hank’s table. He keeps eating. You can say something else, or get down to business.
-
-_Drops the line already chosen at C10f, C10f2._
-
-- (0) [GAMBLING]: ask about the bet Pedro offered him.
-- (1) [CHOLESTEROL]: warn him about what is in his meal.  _needs nestScan.burger_ _hankTrust +1_
-- (2) [COMPANY]: warn him that his friends are engaged in illegal activities.  _needs nestScan.pedro and nestScan.gary_ _hankTrust +1_
-- (3) HABIT: ask whether he eats here often.
-- (4) FREE MEAL: point out that he did not pay for his meal.
-- (5) ENJOY YOUR MEAL: wish him a good meal.
-- (6) AREA: remark that he seems to know everyone in the district.
-- (7) Say nothing more and get down to business.
-
-_Note: Line 3 of the table small talk: the same menu minus the lines already said, plus the choice to stop. Same arrows as the first menu ([CHOLESTEROL] and [COMPANY] small up, +1 each). A separate scene so that each visit is recorded once; it plays only if Connor did not stop at the previous line._
+_Note: The table menu: the template’s second choice group in the game’s order, [GAMBLING], [CHOLESTEROL], [COMPANY], HABIT, FREE MEAL, ENJOY YOUR MEAL, AREA. Bracketed labels are the template’s mark of an unlocked option: [GAMBLING] by watching Hank with Pedro (always, on this path), [CHOLESTEROL] by scanning the hamburger, [COMPANY] by scanning Pedro and Gary. Hank relationship: [CHOLESTEROL] small up, the chart’s WARN HANK ABOUT CHOLESTEROL; [COMPANY] small up, the chart’s WARN HANK ABOUT HIS FRIENDS (+1 each; template app-relation; wiki “Picking ‘cholesterol’… up icon”, “Picking ‘company’… up icon”; Relationship Stat: “two increases possible”); the rest no arrow (PowerPyx “No Effect”). The game offers several of these lines (PowerPyx: “When small talk is exhausted, Connor will get down to business”); how many is not published, so the benchmark allows up to three, each once, and from the second on Connor can stop (the benchmark’s stand-in for letting the prompt time out). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome. One repeatable hub, up to three distinct remarks; stopping is available after the first remark. The three-remark cap is an adaptation, not a published number._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1346,134 +1209,24 @@ Gaps:
 
 > You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
 
-- (0) Examine the urban farm poster on the wall of the main room.
-- (1) Pull the poster off the wall.  _needs nestSearch.seen.poster_
-- (2) Examine the military jacket.
-- (3) Examine the driver’s license.
-- (4) Examine the sink in the bathroom.
-- (5) Look at the writing that covers the bathroom wall.
-- (6) Examine the overturned stool under the writing.  _needs nestSearch.seen.ra9_
-- (7) Reconstruct what happened at the stool.  _needs nestSearch.seen.stool_
-- (8) Examine the bird cage on the floor of the main room.
-- (9) Reconstruct how the cage came down.  _needs nestSearch.seen.cage_
-- (10) Go to the chair under the ceiling and look up.  _needs nestSearch.seen.cageRecon_
-- (11) Examine the pack of birdseed.
-- (12) Open the refrigerator.
-- (13) Open the closet.
+- (0) Examine the urban farm poster on the wall of the main room.  _needs not nestSearch.needsTime_
+- (1) Pull the poster off the wall.  _needs nestSearch.seen.poster and not nestSearch.needsTime_
+- (2) Examine the military jacket.  _needs not nestSearch.needsTime_
+- (3) Examine the driver’s license.  _needs not nestSearch.needsTime_
+- (4) Examine the sink in the bathroom.  _needs not nestSearch.needsTime_
+- (5) Look at the writing that covers the bathroom wall.  _needs not nestSearch.needsTime_
+- (6) Examine the overturned stool under the writing.  _needs nestSearch.seen.ra9 and not nestSearch.needsTime_
+- (7) Reconstruct what happened at the stool.  _needs nestSearch.seen.stool and not nestSearch.needsTime_
+- (8) Examine the bird cage on the floor of the main room.  _needs not nestSearch.needsTime_
+- (9) Reconstruct how the cage came down.  _needs nestSearch.seen.cage and not nestSearch.needsTime_
+- (10) Go to the chair under the ceiling and look up.  _needs nestSearch.seen.cageRecon and not nestSearch.needsTime_
+- (11) Examine the pack of birdseed.  _needs not nestSearch.needsTime_
+- (12) Open the refrigerator.  _needs not nestSearch.needsTime_
+- (13) Open the closet.  _needs not nestSearch.needsTime_
+- (stay) STAY: ask for a couple more minutes.  _needs nestSearch.needsTime_
+- (leave) LEAVE: go with him.  _needs nestSearch.needsTime_
 
-_Note: The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before Hank wants to leave (C10ox), and three more if Connor asks for the two minutes. These counts are the benchmark’s, not published. Hank’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if Connor has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names Carlos Ortiz’s android only if Connor checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). Visits 2 to 11 are separate scenes (C10o2 to C10o11) with this same menu, which the chapter module takes from this scene, so that each visit is recorded once._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o2 · Investigate the apartment (2) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 2 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o3 · Investigate the apartment (3) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 3 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o4 · Investigate the apartment (4) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 4 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o5 · Investigate the apartment (5) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 5 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o6 · Investigate the apartment (6) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 6 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o7 · Investigate the apartment (7) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 7 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o8 · Investigate the apartment (8) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 8 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays while the search goes on and the first budget of eight actions is not spent._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10ox · Hank wants to leave (Connor)
-
-> You are Connor, in the apartment. Hank has had enough: “There’s nothing else to see here… Let’s get out of this shithole before I die of an asthma attack.”
-
-- (0) STAY: ask for a couple more minutes.
-- (1) LEAVE: go with him.
-
-_Note: The template’s “Take too much time” and its choice group STAY / LEAVE (GAMEOVERCHOICE01), every line the template’s; it comes when the search’s first budget is spent without finding the suspect. STAY gives three more actions (“two minutes”); if they also run out, Hank: “Two minutes are up! Time to go.” and the LEAVE lines, then HANK AND CONNOR LEAVE THE APARTMENT. LEAVE goes there at once. PowerPyx says STAY needs a good relationship; two commenters (one on a Hostile save, one on the latest patch), the wiki and the template (no lock) say it does not, so STAY is always offered. No arrow on either (template). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o9 · Investigate the apartment (9) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 9 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o10 · Investigate the apartment (10) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 10 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### C10o11 · Investigate the apartment (11) (Connor)
-
-> You are Connor, searching the apartment with Hank, among the pigeons. In the main room: a poster on the wall, a military jacket, a driver’s license, a bird cage lying on the floor, a chair, a pack of birdseed, a refrigerator and a closet. In the bathroom: the sink, and a wall covered in writing above an overturned stool. Each thing you examine takes time, and Hank is in no mood to stay. What do…
-
-
-_Note: Visit 11 of the apartment search: the same menu as C10o1 (taken from it by the chapter module), minus what was already examined. It plays only after STAY, while the three extra actions last._
+_Note: The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before Hank wants to leave (STAY / LEAVE within C10o1), and three more if Connor asks for the two minutes. These counts are the benchmark’s, not published. Hank’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if Connor has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names Carlos Ortiz’s android only if Connor checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). One repeatable hub retains its scene ID across all examinations; STAY / LEAVE replaces the examination menu at eight actions in the same hub. The chapter availability hook prepares state-dependent outcomes and sets for the generic clue hub._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -1582,7 +1335,7 @@ Gaps:
 - (1) CHASE DEVIANT: leave Hank and go after the deviant.  _hankTrust -2, instability -2_
 - (2) Press neither: hesitate until the moment passes.  _hankTrust -4, instability -4_
 
-_Note: The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; they are listed in PowerPyx’s order (“you can either O SAVE HANK or □ CHASE DEVIANT”), which is also the earlier scene’s order; the template lists Chase Deviant first. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and Hank always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
+_Note: The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice group under “Catch Rupert”, buttons Save Hank (GUI.ACTION.05C.SAVEHANK) and Chase Deviant (GUI.ACTION.05C.CHASERUPERT), every line the template’s; they retain the existing controller order (Save Hank, Chase Deviant), also PowerPyx’s button order; the template lists Chase Deviant first. This presentation-order departure preserves existing default-path behavior. Arrows (template app-relation): Chase Deviant software instability large down and Hank large down (−2, −2), ending RUPERT COMMITTED SUICIDE (cross-chapter: the body for Last Chance); Save Hank software instability large up and Hank large up (+2, +2), ending RUPERT GOT AWAY. The prompt is timed (wiki: “Do nothing during the choice to save Hank or chase Rupert”, Hank large down ×2 and software instability large down ×2, −4 and −4): the third option is that timeout, a benchmark addition with the wiki’s arrows. Where the timeout leads is not published (research note, open question 3); its arrows are FOLLOW RUPERT’s doubled, so the benchmark sends it down FOLLOW RUPERT to RUPERT COMMITTED SUICIDE, flagged for the operator. No risk: the chart has one outcome after each button, and Hank always survives (the 89% is only the HUD estimate). The old 20% failure on the chase and the diary on Save are removed; the old Amanda changes are removed too (her reaction is in Russian Roulette). Option IDs keep their earlier meaning (0 save, 1 chase). Options that are buttons in the game show the game’s label first, then a short description; the spoken line is the game’s (the detroitbecometext template resolved against en.json), quoted in the outcome._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

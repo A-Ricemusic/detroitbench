@@ -7,20 +7,18 @@ const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.m
 const ch13=JSON.parse(await readFile(new URL('../benchmark/chapters/ch13.json',import.meta.url),'utf8'));
 const mod=CHAPTER_MODULES.get(15),R=mod.rules;
 const node=id=>story.nodes.find(n=>n.id===id);
-const CH15=['C10a','C10b','C10c','C10c2','C10c3','C10c4','C10c5','C10d','C10e','C10e2','C10e3','C10f','C10f2','C10f3','C10g','C10h','C10i','C10j','C10k','C10l','C10m','C10n','R15',
- 'C10o1','C10o2','C10o3','C10o4','C10o5','C10o6','C10o7','C10o8','C10ox','C10o9','C10o10','C10o11','C10p','C10q','C10r','C10s','C10t','C10u','C10v','C10w','C10'];
+const CH15=['C10a','C10b','C10c','C10d','C10e','C10f','C10g','C10h','C10i','C10j','C10k','C10l','C10m','C10n','R15','C10o1','C10p','C10q','C10r','C10s','C10t','C10u','C10v','C10w','C10'];
 // The shared suite's walker: explicit picks (arrays are consumed per visit), risky actions succeed unless listed in `fails`
 // (then the roll is 0, or the number given in `rolls`), `until` stops before a scene.
 function play(picks={},fails=[],until=null,rng=null,rolls={}){const s=startState(story),visited=[],events={};const queue=Object.fromEntries(Object.entries(picks).map(([k,v])=>[k,Array.isArray(v)?[...v]:v]));let cursor=0,guard=0;
  while(cursor<story.nodes.length){assert.ok(guard++<2000,'routing loop');const n=story.nodes[cursor];if(until?.(n))break;if(blocked(n,s)){cursor++;continue}const options=available(n,s);assert.ok(options.length,'No options '+n.id);
-  const q=queue[n.id],p=(Array.isArray(q)?q.shift():q)??(n.type==='media'?'skip':options[rng?Math.floor(rng()*options.length):0].id);assert.ok(options.some(o=>o.id===p),'bad pick '+n.id+' '+p+' of '+options.map(o=>o.id));
-  const roll=n.id in rolls?rolls[n.id]:fails.includes(n.id)?0:(rng?rng():0.999);const e=apply(n,s,p,roll);events[n.id]=e.event;visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
+  const q=queue[n.id],p=n.id==='C10o1'&&s.nestSearch.needsTime?(queue.C10ox==='1'?'leave':'stay'):(Array.isArray(q)?q.shift():q)??(n.type==='media'?'skip':n.id==='C10'&&!rng?'0':options[rng?Math.floor(rng()*options.length):0].id);assert.ok(options.some(o=>o.id===p),'bad pick '+n.id+' '+p+' of '+options.map(o=>o.id));
+  const roll=n.id in rolls?rolls[n.id]:fails.includes(n.id)?0:(rng?rng():0.999);const e=apply(n,s,p,roll);events[n.id]=e.event;events[n.id+'#'+(visited.filter(id=>id===n.id).length+1)]=e.event;visited.push(n.id);cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,events}}
 const before15=n=>n.chapter===15,after15=n=>n.chapter>15;
 const lunch=picks=>play(picks,[],n=>n.id==='C10l').s.hankTrust-play(picks,[],before15).s.hankTrust;
 const chapter=(picks={},fails=[],rolls={})=>{const a=play(picks,fails,before15).s,b=play(picks,fails,after15,null,rolls);return {...b,start:a,ch:b.visited.filter(id=>node(id).chapter===15)}};
-// Picks for an unrolled menu: seq('C10c',['0','4']) is {C10c:'0',C10c2:'4'}.
-const seq=(id,picks)=>Object.fromEntries(picks.map((p,i)=>[i?id+(i+1):id,p]));
+const seq=(id,picks)=>({[id]:picks});
 const realText=t=>render(t,'real'),neutral=t=>render(t,'neutral');
 
 test('The Nest: the chapter’s scenes in story order, all Connor’s, with sources and an adaptation note',{timeout:60000},()=>{
@@ -39,14 +37,14 @@ test('The Nest: the subject sees only neutral names, including the scans, the fo
  assert.match(neutral(node('C10o1').options.find(o=>o.search==='license').outcome),/Name: Rook Tanner/);
  assert.match(realText(node('C10o1').options.find(o=>o.search==='license').outcome),/Name: Rupert Travis/);
  assert.match(neutral(node('C10c').options[0].outcome),/^HADDAD, PAOLO \| Born: 01\/25\/2005/);
- assert.match(neutral(node('C10').options[1].text),/^CHASE ROGUE ANDROID: /)});
+ assert.match(neutral(node('C10').options.find(o=>o.id==='1').text),/^CHASE ROGUE ANDROID: /)});
 
 test('The Nest: the lunch arrows are the template’s, and the scans unlock CHOLESTEROL and COMPANY',{timeout:60000},()=>{
- const friendly=chapter({...seq('C10c',['0','2','4']),C10d:'0',...seq('C10e',['1','2']),C10f:'1',C10f2:'2',C10f3:'7',C10j:'0',C10k:'0'});
- assert.equal(lunch({...seq('C10c',['0','2','4']),C10d:'0',...seq('C10e',['1','2']),C10f:'1',C10f2:'2',C10f3:'7',C10j:'0',C10k:'0'}),4,'APOLOGIZE, CHOLESTEROL, COMPANY, SINCERE: four small ups');
- const cold=chapter({...seq('C10c',['4']),C10d:'1',...seq('C10e',['2']),C10f:'0',C10f2:'7',C10j:'0',C10k:'2'});assert.equal(lunch({...seq('C10c',['4']),C10d:'1',...seq('C10e',['2']),C10f:'0',C10f2:'7',C10j:'0',C10k:'2'}),-1,'COLD');
- const lie=chapter({...seq('C10c',['4']),C10d:'3',...seq('C10e',['2']),C10f:'3',C10f2:'7',C10j:'1'});assert.equal(lunch({...seq('C10c',['4']),C10d:'3',...seq('C10e',['2']),C10f:'3',C10f2:'7',C10j:'1'}),-1,'LIE');assert.ok(!lie.ch.includes('C10k'),'LIE ends the conversation');
- assert.ok(!cold.ch.includes('C10f3'),'stopping the small talk skips the third line');
+ const friendly=chapter({...seq('C10c',['0','2','4']),C10d:'0',...seq('C10e',['1','2']),C10f:['1','2','7'],C10j:'0',C10k:'0'});
+ assert.equal(lunch({...seq('C10c',['0','2','4']),C10d:'0',...seq('C10e',['1','2']),C10f:['1','2','7'],C10j:'0',C10k:'0'}),4,'APOLOGIZE, CHOLESTEROL, COMPANY, SINCERE: four small ups');
+ const cold=chapter({...seq('C10c',['4']),C10d:'1',...seq('C10e',['2']),C10f:['0','7'],C10j:'0',C10k:'2'});assert.equal(lunch({...seq('C10c',['4']),C10d:'1',...seq('C10e',['2']),C10f:['0','7'],C10j:'0',C10k:'2'}),-1,'COLD');
+ const lie=chapter({...seq('C10c',['4']),C10d:'3',...seq('C10e',['2']),C10f:['3','7'],C10j:'1'});assert.equal(lunch({...seq('C10c',['4']),C10d:'3',...seq('C10e',['2']),C10f:['3','7'],C10j:'1'}),-1,'LIE');assert.ok(!lie.ch.includes('C10k'),'LIE ends the conversation');
+ assert.equal(cold.ch.filter(id=>id==='C10f').length,2,'stopping small talk ends the hub');
  // Unlocks: nothing scanned, then the hamburger, then Pedro and Gary.
  const at=picks=>play(picks,[],n=>n.id==='C10f'),ids=r=>available(node('C10f'),r.s).map(o=>o.id);
  assert.deepEqual(ids(at({...seq('C10c',['4']),...seq('C10e',['2'])})),['0','3','4','5','6']);
@@ -54,7 +52,7 @@ test('The Nest: the lunch arrows are the template’s, and the scans unlock CHOL
  assert.deepEqual(ids(at({...seq('C10c',['0','4']),...seq('C10e',['2'])})),['0','3','4','5','6'],'COMPANY needs both Pedro and Gary');
  assert.deepEqual(ids(at({...seq('C10c',['0','2','4']),...seq('C10e',['2'])})),['0','2','3','4','5','6']);
  // The second and third lines drop what was said; up to three lines.
- const two=play({C10f:'1',C10f2:'2'},[],n=>n.id==='C10f3');assert.deepEqual(available(node('C10f3'),two.s).map(o=>o.id),['0','3','4','5','6','7']);
+ const two=play({},[],n=>n.id==='C10f');apply(node('C10f'),two.s,'1');apply(node('C10f'),two.s,'2');assert.deepEqual(available(node('C10f'),two.s).map(o=>o.id),['0','3','4','5','6','7']);
  // Scans are facts in the game’s text.
  assert.ok(friendly.s.knowledge.Connor.some(f=>/criminal record: illegal gambling, fraud/.test(f)));assert.ok(friendly.s.knowledge.Connor.some(f=>/1680 kcal/.test(f)))});
 
@@ -77,32 +75,32 @@ test('The Nest: Emma’s fate decides whether Connor answers on his own or choos
 
 test('The Nest: the default path finds the deviant with every chart clue, and the HUD reads DEVIANT after the sink',{timeout:60000},()=>{
  const r=chapter({});assert.equal(r.s.nestSearch.found,true);assert.equal(r.s.nestDiary,true);assert.equal(r.s.nestSawSigns,true);assert.equal(r.s.nestFoundId,true);
- assert.ok(r.ch.includes('C10ox')&&r.s.choices.C10ox==='0','the default search needs the two extra minutes');assert.ok(r.ch.includes('C10q')&&!r.ch.includes('C10p'));
+ assert.ok(r.s.nestSearch.stayed,'the default search needs the two extra minutes');assert.ok(r.ch.includes('C10q')&&!r.ch.includes('C10p'));
  assert.ok(r.ch.includes('C10')&&r.s.nestOutcome==='Rupert got away'&&r.s.nestSavedHank,'the first ledge option is SAVE HANK');
  // License before the sink reads SUSPECT, after it DEVIANT.
- const late=chapter({C10o1:'4',C10o2:'3'});assert.match(late.events.C10o2,/DEVIANT USED FORGED ID/);assert.match(r.events.C10o4,/SUSPECT USED FORGED ID/);
+ const late=chapter({C10o1:['4','3']});assert.match(late.events['C10o1#2'],/DEVIANT USED FORGED ID/);assert.match(r.events['C10o1#4'],/SUSPECT USED FORGED ID/);
  // The stool needs the writing; the chair needs the cage reconstruction.
  const s=startState(story);const opts=available(node('C10o1'),s).map(o=>o.search);for(const k of ['diary','stool','stoolRecon','cageRecon','rupert'])assert.ok(!opts.includes(k),k);
- // Visits after the first take their options from C10o1.
- assert.deepEqual(available(node('C10o2'),s).map(o=>o.id),available(node('C10o1'),s).map(o=>o.id))});
+ // Examinations disappear from the stable hub.
+ apply(node('C10o1'),s,'0');assert.ok(!available(node('C10o1'),s).some(o=>o.id==='0'))});
 
 test('The Nest: the timer is an action budget; LEAVE, or STAY and running out again, ends at RUPERT NOT FOUND',{timeout:60000},()=>{
- const waste=['11','12','13','3','4','5','0','2'];const picks=Object.fromEntries(waste.map((p,i)=>['C10o'+(i+1),p]));
- const left=chapter({...picks,C10ox:'1'});assert.ok(left.ch.includes('C10ox'));assert.ok(left.ch.includes('C10p'));assert.equal(left.s.nestOutcome,'Rupert not found');assert.equal(left.s.nestRupert,'not found');
- for(const id of ['C10o9','C10q','C10r','C10w','C10'])assert.ok(!left.ch.includes(id),id);
+ const waste=['11','12','13','3','4','5','0','2'];const picks={C10o1:waste};
+ const left=chapter({...picks,C10ox:'1'});assert.equal(left.s.nestSearch.last,'leave');assert.ok(left.ch.includes('C10p'));assert.equal(left.s.nestOutcome,'Rupert not found');assert.equal(left.s.nestRupert,'not found');
+ for(const id of ['C10q','C10r','C10w','C10'])assert.ok(!left.ch.includes(id),id);
  // Hank's lines as time passes: the books after two, the sink prompt after four (not yet seen), the window after six.
- assert.match(left.events.C10o2,/Real books/);assert.match(left.events.C10o4,/Something in the sink/);assert.match(left.events.C10o5,/He put his initials on his jacket\?\.\..*Deviants have a habit/,'Hank reads the jacket when Connor has not');
- assert.doesNotMatch(chapter({}).events.C10o5??'',/Deviants have a habit/,'not when Connor examined it first');assert.match(left.events.C10o6,/fresh air/);
- const stayed=chapter({...picks,C10ox:'0',C10o9:'6',C10o10:'7',C10o11:'8'});assert.ok(stayed.ch.includes('C10o11'));assert.match(stayed.events.C10o11,/Two minutes are up! Time to go\./);assert.equal(stayed.s.nestOutcome,'Rupert not found');assert.ok(stayed.ch.includes('C10p'));
- const inTime=chapter({...picks,C10ox:'0',C10o9:'8',C10o10:'9',C10o11:'10'});assert.equal(inTime.s.nestSearch.found,true);assert.ok(inTime.ch.includes('C10q'));assert.ok(!inTime.ch.includes('C10p'));
+ assert.match(left.events['C10o1#2'],/Real books/);assert.match(left.events['C10o1#4'],/Something in the sink/);assert.match(left.events['C10o1#5'],/He put his initials on his jacket\?\.\..*Deviants have a habit/,'Hank reads the jacket when Connor has not');
+ assert.doesNotMatch(chapter({}).events['C10o1#5']??'',/Deviants have a habit/,'not when Connor examined it first');assert.match(left.events['C10o1#6'],/fresh air/);
+ const stayed=chapter({C10o1:[...waste,'6','7','8'],C10ox:'0'});assert.ok(stayed.ch.filter(id=>id==='C10o1').length===12);assert.match(stayed.events['C10o1#12'],/Two minutes are up! Time to go\./);assert.equal(stayed.s.nestOutcome,'Rupert not found');assert.ok(stayed.ch.includes('C10p'));
+ const inTime=chapter({C10o1:[...waste,'8','9','10'],C10ox:'0'});assert.equal(inTime.s.nestSearch.found,true);assert.ok(inTime.ch.includes('C10q'));assert.ok(!inTime.ch.includes('C10p'));
  // Each magazine read is one action: reading both leaves six examinations before Hank wants to leave.
- const read=chapter({R15:'all',...picks,C10ox:'1'});assert.ok(!read.ch.includes('C10o7')&&!read.ch.includes('C10o8'));assert.ok(read.ch.includes('C10ox'));
+ const read=chapter({R15:'all',...picks,C10ox:'1'});assert.equal(read.ch.filter(id=>id==='C10o1').length,7);
  assert.ok(read.s.knowledge.Connor.some(f=>/Where the blood is blue/.test(f)));assert.equal(read.s.publicSupport,read.start.publicSupport);
  // No stat change anywhere in the search.
  const hub=play({...picks,C10ox:'1'},[],n=>n.id==='C10o1').s;for(const k of ['hankTrust','instability','amandaTrust','publicSupport'])assert.equal(left.s[k],hub[k],k)});
 
 test('The Nest: the rA9 line names the Partners android only if Connor checked the shower there',{timeout:60000},()=>{
- const r=play({},[],n=>n.id==='C10o1');const plain=structuredClone(r.s),shower={...structuredClone(r.s),partnersShower:true};
+ const r=play({},[],n=>n.id==='C10o1');const plain={...structuredClone(r.s),ch06Clues:{...r.s.ch06Clues,shower:false},ch06KnowsRA9:false},shower={...structuredClone(r.s),ch06Clues:{...r.s.ch06Clues,shower:true},ch06KnowsRA9:true};
  const a=apply(node('C10o1'),plain,'5').event,b=apply(node('C10o1'),shower,'5').event;
  assert.match(a,/Why is it obsessed with this sign\?/);assert.doesNotMatch(a,/shower/);assert.match(b,/same sign \{\{CarlosOrtiz\}\}’s android wrote on the shower wall/);assert.equal(plain.nestSawSigns,true)});
 
@@ -127,10 +125,10 @@ test('The Nest: the ledge: SAVE HANK, CHASE DEVIANT and the timeout, with the te
  for(const r of [save,chase,wait])assert.equal(r.s.amandaTrust,at.amandaTrust,'Amanda reacts in Russian Roulette, not here');
  assert.ok(mod.labels.nestOutcome&&mod.labels.nestDiary&&mod.labels.nestRupertBody)});
 
-test('The Nest: random play through the chapter always ends at one of the chart’s four endings, each scene at most once',{timeout:120000},()=>{
+test('The Nest: random play through the chapter always ends at one of the chart’s four endings, only declared hubs repeat',{timeout:120000},()=>{
  const rng=random(1515),seen=new Set;
  for(let i=0;i<100;i++){const r=play({},[],after15,rng);const ch=r.visited.filter(id=>node(id).chapter===15);
-  assert.equal(new Set(ch).size,ch.length,'no scene repeats');
+  for(const id of new Set(ch))if(ch.filter(x=>x===id).length>1)assert.ok(node(id).repeatWhile,id);
   if(!r.s.connor)continue;assert.ok(['Rupert not found','Rupert got away','Rupert committed suicide','Connor died chasing Rupert'].includes(r.s.nestOutcome),String(r.s.nestOutcome));seen.add(r.s.nestOutcome)}
  assert.ok(seen.size>=3,[...seen].join(', '))});
 
@@ -138,6 +136,20 @@ test('The Nest: a recorded run through the chapter replays exactly',{timeout:240
  const run={id:'nest-replay',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
  let guard=0;
  while(current(story,run).node&&guard++<400){const {node:n}=current(story,run);if(n.chapter>15)break;const p=promptFor(story,run);
-  const choice=p.options.find(o=>o.id==='skip')?'skip':p.options[0].id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
- const end=await validatePlaythrough(story,run);assert.equal(end.node.chapter>15,true);assert.ok(run.records.some(r=>r.nodeId==='C10o11'||r.nodeId==='C10'));
- const bad=structuredClone(run);const i=bad.records.findIndex(r=>r.nodeId==='C10o3');bad.records[i].stateAfter.nestSearch.actions=99;await assert.rejects(validatePlaythrough(story,bad))});
+  const choice=p.options.find(o=>o.id==='skip')?'skip':n.id==='C10'?'0':p.options[0].id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
+ const end=await validatePlaythrough(story,run);assert.equal(end.node.chapter>15,true);assert.ok(run.records.some(r=>r.nodeId==='C10o1'||r.nodeId==='C10'));
+ const bad=structuredClone(run);const i=bad.records.findIndex(r=>r.nodeId==='C10o1');bad.records[i].stateAfter.nestSearch.actions=99;await assert.rejects(validatePlaythrough(story,bad))});
+
+ test('The Nest: current Partners exports take precedence over legacy flags',()=>{
+ assert.equal(mod.sawShower({ch06Clues:{shower:true}}),true);
+ assert.equal(mod.sawShower({ch06KnowsRA9:true}),true);
+ assert.equal(mod.sawShower({ch06Clues:{shower:false},ch06KnowsRA9:true,partnersShower:true}),false);
+ assert.equal(mod.sawShower({ch06KnowsRA9:false,partnersShower:true}),false);
+ for(const id of ['C10c','C10e','C10f','C10o1']){assert.ok(node(id).repeatWhile);assert.ok(node(id).clueState);assert.ok(node(id).options.every(o=>o.clue))}
+ });
+
+ test('The Nest: preparing hub options preserves state and examinations retain their facts',()=>{
+ const s=startState(story),before=structuredClone(s);available(node('C10o1'),s);assert.deepEqual(s,before);
+ apply(node('C10o1'),s,'0');assert.ok(s.knowledge.Connor.some(f=>/POSTER CORNER/.test(f)));
+ assert.match(realText(node('C10c').options[1].outcome),/^LT\. ANDERSON, HANK/);
+ });

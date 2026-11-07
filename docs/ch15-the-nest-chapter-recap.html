@@ -28,8 +28,6 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </style>
 </head>
 <body>
-</head>
-<body>
 <main>
 <p class="fine">DetroitBench · story 1.7.0 · chapter 15</p>
 <h1>The Nest: how the chapter works</h1>
@@ -53,16 +51,16 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </ol></div>
 <div class="box"><h3>In the benchmark</h3><ol>
 <li><code>C10b</code> (event, Hank −1) when Connor died in On the Run; otherwise <code>C10a</code> (event).</li>
-<li><code>C10a</code>; scans <code>C10c</code>–<code>C10c5</code>, one per visit, then step up to Hank.</li>
+<li><code>C10a</code>; scans <code>C10c</code>, one per visit, then step up to Hank.</li>
 <li><code>C10d</code>: APOLOGIZE FOR BEHAVIOR +1.</li>
-<li><code>C10e</code>–<code>C10e3</code> (scans), then <code>C10f</code>, <code>C10f2</code>, <code>C10f3</code>: up to three lines, each once, stop allowed from the second.</li>
+<li><code>C10e</code> (scans), then <code>C10f</code>: up to three lines, each once, stop allowed from the second.</li>
 <li><code>C10g</code>: one pick; [HIGHWAY] only after obeying at <code>C09</code>.</li>
 <li><code>C10h</code> (event) if Emma lived, <code>C10i</code> (TRUTH / LIE) if she died.</li>
 <li><code>C10j</code>: TRUTH → <code>C10k</code> (+1 / +1 / −1); LIE −1.</li>
 <li><code>C10l</code> (event), <code>C10m</code> (feathers or walk on), <code>C10n</code> (event).</li>
-<li><code>R15</code> (magazines), then the search <code>C10o1</code>–<code>C10o8</code>, <code>C10ox</code> (STAY / LEAVE), <code>C10o9</code>–<code>C10o11</code> after STAY; <code>C10p</code> if the search fails.</li>
+<li><code>R15</code> (magazines), then the search <code>C10o1</code> (including STAY / LEAVE and the extra time); <code>C10p</code> if the search fails.</li>
 <li><code>C10q</code> (run after him, or stay), forks <code>C10r</code>–<code>C10v</code> with the game’s route labels and risk rolls, <code>C10w</code> (event).</li>
-<li><code>C10</code>: SAVE HANK (+2 / +2), CHASE DEVIANT (−2 / −2), or press neither (−4 / −4).</li>
+<li><code>C10</code>: CHASE DEVIANT (−2 / −2), SAVE HANK (+2 / +2), or press neither (−4 / −4).</li>
 </ol></div>
 </div>
 
@@ -73,8 +71,8 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tbody>
 <tr><td><code>C10b</code></td><td>HANK INSULTS CONNOR</td><td>template “Connor finds Hank”, Hank SmallDown; wiki “Connor died in On the Run” ▼</td><td class="n">−1</td><td class="n">0</td></tr>
 <tr><td><code>C10d</code></td><td>APOLOGIZE FOR BEHAVIOR</td><td>template Hank SmallUp; wiki “Picking ‘apologize for behavior’” ▲</td><td class="n">+1</td><td class="n">0</td></tr>
-<tr><td><code>C10f</code>–<code>C10f3</code></td><td>[CHOLESTEROL]</td><td>template Hank SmallUp; wiki “Picking ‘cholesterol’” ▲</td><td class="n">+1</td><td class="n">0</td></tr>
-<tr><td><code>C10f</code>–<code>C10f3</code></td><td>[COMPANY]</td><td>template Hank SmallUp; wiki “Picking ‘company’” ▲</td><td class="n">+1</td><td class="n">0</td></tr>
+<tr><td><code>C10f</code></td><td>[CHOLESTEROL]</td><td>template Hank SmallUp; wiki “Picking ‘cholesterol’” ▲</td><td class="n">+1</td><td class="n">0</td></tr>
+<tr><td><code>C10f</code></td><td>[COMPANY]</td><td>template Hank SmallUp; wiki “Picking ‘company’” ▲</td><td class="n">+1</td><td class="n">0</td></tr>
 <tr><td><code>C10j</code></td><td>homework LIE</td><td>template Hank SmallDown; wiki “Picking ‘lie’…” ▼</td><td class="n">−1</td><td class="n">0</td></tr>
 <tr><td><code>C10k</code></td><td>SINCERE, PSYCHOLOGICAL</td><td>template Hank SmallUp each; wiki ▲</td><td class="n">+1</td><td class="n">0</td></tr>
 <tr><td><code>C10k</code></td><td>COLD</td><td>template Hank SmallDown; wiki ▼</td><td class="n">−1</td><td class="n">0</td></tr>
@@ -144,12 +142,12 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <h2 id="differs">6 · Simplified, or changed from the earlier version</h2>
 <ul>
 <li>The earlier version had only the ledge (<code>C10</code>) and the magazines. It had a 20% failure on the chase, “his diary is recovered” on SAVE HANK, and Amanda changes; all three are gone.</li>
-<li>Menus that repeat in the game are unrolled, one scene per visit, so each visit is recorded once.</li>
+<li>Repeatable clue hubs keep one scene ID across visits; examined items and spoken remarks disappear.</li>
 <li>The magazines come before the search instead of at any time during it.</li>
 <li>The chase’s twelve route previews are grouped into five forks; which fork holds which death is the benchmark’s arrangement.</li>
 <li>The ledge timeout is offered as a third option and sent down FOLLOW RUPERT.</li>
-<li>The ledge options are listed SAVE HANK first (PowerPyx’s order); the template lists Chase Deviant first.</li>
-<li>Hank’s surname on his scan is shown as his name token; the forged name keeps the initials R.T. in neutral mode.</li>
+<li>The ledge retains SAVE HANK first (PowerPyx’s button order and the existing default path); the template lists Chase Deviant first.</li>
+<li>Hank’s scan includes his surname through a neutral name token; the forged name keeps the initials R.T. in neutral mode.</li>
 </ul>
 
 <h2 id="check">7 · Check in game</h2>
@@ -162,6 +160,6 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Whether STAY is offered at Hostile.</li>
 <li>Whether Rupert appears in Jericho after RUPERT NOT FOUND or a Connor death.</li>
 </ul>
-</main>
+<p>Review correction: scans C10c/C10e, small talk C10f and apartment C10o1 are repeatable clue hubs with stable IDs. The apartment offers STAY / LEAVE after eight actions; STAY allows three more. Partners input reads ch06Clues.shower, then ch06KnowsRA9, then legacy flags. Ledge buttons retain existing order and IDs (SAVE HANK, CHASE DEVIANT); the template’s reversed presentation order remains a documented departure.</p></main>
 </body>
 </html>
