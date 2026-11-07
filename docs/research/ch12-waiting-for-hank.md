@@ -477,3 +477,365 @@ Side note: the experience prompt shows Amanda's satisfaction from chapter 12 on 
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Zen_Garden&prop=wikitext&format=json | graveyard of killed Connor models |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Jericho&prop=wikitext&format=json | checked for the metro news opinion drop claimed by a PowerPyx commenter; nothing found |
 | https://detroit-become-human.fandom.com/api.php?action=query&list=allpages&apprefix=Waiting&format=json | confirms there is no Flowchart or Transcript subpage for this chapter |
+
+
+---
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html (one file).
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json. All keys resolved.
+- Rendered with `/tmp/dbt/render916.py` (outline `/tmp/dbt/ch12.txt`, with dialogue `/tmp/dbt/ch12-dialogue.txt`; NOTE lines split at chapter links are merged in this copy).
+- Counts:
+  - **15 prompts** (choice groups) with **60 options**. That includes `[THANKS]` and `HANK'S SON`, whose content is unused; 58 are playable.
+  - **18 clues**: 12 observation items and 6 case files.
+  - **15 arrows**.
+  - **19 unlock-condition tags**: 10 Death and 9 Lock.
+  - **7 cut blocks**.
+
+### Rendered outline
+
+Option labels in brackets (`[DOG]`) are the template's `[brackets]="true"` marker for options unlocked by a clue or an earlier chapter. The en.json label itself has no brackets. `ø` means the option has no line. The cut blocks hold dialogue only, so the dialogue-free outline shows them empty. Their contents, in order:
+
+1. Amanda: "We hope they’ll accept our request before the deviant tries to destroy itself again…" (confession branch).
+2. The tail of SIMULATION: "as a human would under extreme stress."
+3. Gavin's working-girls anecdote at the break-room entrance.
+4. Gavin: "Think I’ll have myself another…".
+5. Fowler: "And bring that plastic thing with ya!".
+6. `[THANKS]` ("I wanna thank you for last night, Lieutenant. Without your intervention, I probably would have been destroyed." / "I'm already regretting it.", marked "(This option seems to always be locked.)").
+7. `HANK'S SON` ("I know what happened to your son, and I want you to know-" / "You never talk about my son! You got that? Never!").
+
+```text
+# In the Zen Garden
+NOTE: NOV 6TH, 2038
+NOTE: AM 09:56
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Connor didn't find the deviant in Partners
+    ARROW: Amanda LargeDown
+  VARIANT:
+    NOTE: Connor found the deviant in Partners
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Got a confession, without dying
+        ARROW: Amanda LargeUp
+        CUT/UNUSED CONTENT:
+      VARIANT:
+        CONDITION (Death): Connor died during The Interrogation
+        ARROW: Amanda SmallDown
+      VARIANT:
+        NOTE: Connor found the deviant but didn't get a confession in The Interrogation
+        ARROW: Amanda SmallDown
+    PROMPT (choice group):
+      OPTION "TRAUMATIZED"
+      OPTION "DEVIANCY"
+      OPTION "INTERVENTION"
+        CONDITION (Lock): Intervened and saved the deviant in The Interrogation
+        CONDITION GROUP:
+          VARIANT:
+            NOTE: Got a confession
+      OPTION "REGRETS"
+        CONDITION (Death): Connor died in The Interrogation
+      OPTION "SIMULATION"
+        CUT/UNUSED CONTENT:
+PROMPT (choice group):
+  OPTION "UNPLEASANT"
+  OPTION "DYSFUNCTIONAL"
+  OPTION "INTRIGUING"
+  OPTION "UNSURE"
+PROMPT (choice group):
+  OPTION "FRIENDLY"
+    ARROW: Amanda SmallDown
+  OPTION "ADAPT"
+    ARROW: Amanda SmallDown
+  OPTION "INDIFFERENT"
+    ARROW: Amanda SmallUp
+  OPTION "DON’T KNOW"
+CONDITION GROUP:
+  VARIANT:
+    CONDITION (Death): Connor died in The Interrogation
+  VARIANT:
+    NOTE: Connor failed to find the deviant in Partners
+# In the Police Station
+## Couple at the reception
+## Couple next to the TV
+## Watch TV
+## Try to enter without authorization
+## Talking to the android at the reception
+## In the station
+CONDITION GROUP:
+  VARIANT:
+    CONDITION (Death): Deviant shot Connor during The Interrogation
+### Asking police android about the desk
+## Looking at guy in cell
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Talking with Carlos Ortiz's android
+    CONDITION (Lock): Deviant didn't die in The Interrogation
+    PROMPT (choice group):
+      OPTION "SINCERE"
+      OPTION "COLD"
+      OPTION "COMPASSIONATE"
+        ARROW: Software instability SmallUp
+      OPTION "INDIFFERENT"
+    PROMPT (choice group):
+      OPTION "[STATUETTE]"
+        CONDITION (Lock): Looked at the statuette in Partners
+      OPTION "SECRET"
+      OPTION "rA9"
+      OPTION "DEVIANTS"
+## Going into the break room
+CUT/UNUSED CONTENT:
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Connor found the deviant in Partners
+    CONDITION GROUP:
+      VARIANT:
+        CONDITION (Death): Connor died in The Interrogation
+      VARIANT:
+        NOTE: Connor didn't die in The Interrogation
+        CONDITION GROUP:
+          VARIANT:
+            NOTE: Didn't get a confession in The Interrogation
+  VARIANT:
+    NOTE: Connor didn't find the deviant in Partners
+PROMPT (choice group):
+  OPTION "GREET"
+  OPTION "INTRODUCE"
+  OPTION "IGNORE"
+    NOTE: ø
+PROMPT (choice group):
+  OPTION "ANSWER"
+  OPTION "REFUSE"
+  OPTION "IGNORE"
+CUT/UNUSED CONTENT:
+PROMPT (choice group):
+  OPTION "ACCEPT"
+  OPTION "REFUSE"
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Connor intervened during The Interrogation
+      VARIANT:
+        NOTE: Connor didn't intervene in The Interrogation
+  OPTION "IGNORE"
+    NOTE: The same dialogue as REFUSE will continue after that.
+### Watch TV
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Connor found Ortiz's android in Partners
+    ARROW: Public opinion SmallDown
+  VARIANT:
+    NOTE: Connor didn't find Ortiz's android in Partners
+    ARROW: Public opinion SmallDown
+## Background dialogues
+NOTE: Hey, you take a look at these samples yet?
+NOTE: Lab report says they cut it with something.
+NOTE: Maybe they’re trying out a new form of red ice?
+NOTE: We really need the forensics.
+NOTE: All right… I’ll chase it up.
+NOTE: You and you – come with me.
+NOTE: Hey, can you check something for me?
+NOTE: Sure.
+NOTE: I need the stats on those drug seizures.
+NOTE: Got it. I just sent them to you.
+NOTE: Great! I gotta get back - thanks!
+## Finding Hank's desk
+## Calling Hank
+PROMPT (choice group):
+  OPTION "LEAVE A MESSAGE"
+  OPTION "HANG UP"
+    NOTE: ø
+## Analyze Hank's desk
+OBSERVATION GROUP "Listen to music":
+  CLUE: KNIGHTS OF THE BLACK DEATH | Dark Heavy Metal | Release date - 2021
+OBSERVATION GROUP "Look at the desk":
+  CLUE: COFFEE CUP | Cold coffee | Traces of caffeine
+  CLUE: JAPANESE MAPLE | Asian | Shishigashira Shohin
+  CLUE: DONUTS | Calories: 452, Saturated fatty acids: 13g | Cholesterol: 19mg, Carbohydrates: 51g
+  CLUE: DETROIT BASKETBALL CAP | Cotton: 90% | Polyester: 10%
+  CLUE: ANTI-ANDROID SLOGANS | Use your brain not your android | Android-free space
+  CLUE: MATCHES | Origin: JIMMY'S BAR | Wood, Phosphorus
+  CLUE: HAIRS | Canine hairs | Saint Bernard Dog
+  CLUE: RED ICE TASK FORCE 2027 | Multi-department unit | Responsible for the RED ICE network dismantle of 2028
+OBSERVATION GROUP "Research LT. Anderson":
+  CLUE: DETROIT POLICE DISMANTLE A NETWORK OF RED ICE DEALERS | FEBRUARY, 3rd 2028 | More than 50 arrests throughout the country. Detroit’s finest has dealt a massive blow to the city’s growing red ice epidemic, with a number of high-profile dealers and suppliers now behind bars and narcotics seized with a street value of $500,000. Detective Hank Anderson, a young but hugely talented Detective, is said to have been instrumental in the operation, which took months of planning. The DA described the work of Detective Anderson and his colleagues as “model investigative police work”.
+  CLUE: DETECTIVE ANDERSON PROMOTED TO THE RANK OF LIEUTENANT | AUGUST, 22nd 2029 | Becoming the youngest lieutenant on the Detroit police force. Lieutenant Hank Anderson was among the most decorated Detectives in DPD’s recent history, securing a number of high-profile arrests and serving as an integral member of the force. Captain Fowler said the promotion was “long over-due”, describing Anderson as “among the most talented police I’ve ever worked with”. The new Lieutenant is expected to rise quickly through the ranks of the department and is already being tipped as a future Commissioner.
+  CLUE: NEW RECORD SEIZURE OF RED ICE IN DETROIT! | NOVEMBER, 23rd 2031 | Nearly a ton of red ice discovered in the hold of a boat after a long investigation conducted by Lieutenant Anderson of the Detroit police force.
+## Talking to Chris Miller
+CONDITION GROUP:
+  VARIANT:
+    CONDITION (Death): Connor died in The Interrogation
+  VARIANT:
+    NOTE: Connor didn't die in The Interrogation
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Connor intervened in The Interrogation
+## Wilson is on the phone
+## Hank arrives at his desk
+CONDITION GROUP:
+  VARIANT:
+    CONDITION (Death): Connor died in The Interrogation
+    ARROW: Hank SmallDown
+  VARIANT:
+    NOTE: Connor didn't die in The Interrogation
+CUT/UNUSED CONTENT:
+## Entering and listening
+PROMPT (choice group):
+  OPTION "ANDERSON"
+  OPTION "POSITIVE"
+  OPTION "FILE"
+  OPTION "LEAVE"
+## Checking on Hank
+PROMPT (choice group):
+  OPTION "[NEW CONNOR]"
+    CONDITION (Death): Connor died in The Interrogation
+  OPTION "[LAST NIGHT]"
+    CONDITION (Lock): Spilled Hank's drink in Partners
+  OPTION "UNDERSTANDING"
+  OPTION "PRAGMATIC"
+  OPTION "CONSTRUCTIVE"
+PROMPT (choice group):
+  OPTION "PARTNERS"
+  OPTION "POSITIVE"
+  OPTION "DESK"
+  OPTION "[THANKS]"
+    CUT/UNUSED CONTENT:
+      CONDITION (Lock): Hank intervened during The Interrogation
+      NOTE: (This option seems to always be locked.)
+PROMPT (choice group):
+  OPTION "[DOG]"
+    CONDITION (Lock): Analyzed the dog hairs on the chair
+    ARROW: Hank SmallUp
+  OPTION "[BASKETBALL]"
+    CONDITION (Lock): Analyzed the basketball cap
+    ARROW: Hank SmallDown
+  OPTION "[MUSIC]"
+    CONDITION (Lock): Listened to Hank's music
+    ARROW: Hank SmallUp
+  OPTION "[ANTI-ANDROIDS]"
+    CONDITION (Lock): Looked at the anti-androids stickers
+    ARROW: Hank SmallDown
+  OPTION "FOWLER"
+  OPTION "HOURS"
+  OPTION "START WORKING"
+    OBSERVATION GROUP "Case 1":
+      CASE FILE 01:
+        NOTE: The plaintiff reports that he left his android at home as usual when he went to work. When he returned, the android was nowhere to be found. No trace of a break-in in the apartment. The android may have left the home without being ordered to.
+    OBSERVATION GROUP "Case 2":
+      CASE FILE 02:
+        NOTE: The plaintiff claims to have been attacked by a AV500 #234 777 821 model android working as a waiter in the FAST CONEY DOGS restaurant chain situated at 842 Chamberlain Avenue. The plaintiff claims the android “lunged” at him unexpectedly and attempted to strangle the man, before leaving the scene. The android remains at large.
+    OBSERVATION GROUP "Case 3":
+      CASE FILE 03:
+        NOTE: The plaintiff claims to have been attacked by her android, an AP700 #480 913 802 model. The android also trashed several rooms in the house before taking flight.
+    OBSERVATION GROUP "Case 4":
+      CASE FILE 04:
+        NOTE: The plaintiff, the manager of the EDEN CLUB, reported the unexplained disappearance of a "Sex android", model WR400 #641 790 831. The android disappeared after accompanying a customer to his home and never returned to the club.
+    OBSERVATION GROUP "Case 5":
+      CASE FILE 05:
+        CONDITION GROUP:
+          VARIANT:
+            NOTE: Carl didn't die in Broken
+            NOTE: Leo MANFRED was found unconscious in the home of his father, Carl MANFRED. The latter’s witness statement attests to an altercation between his son and the house android. The android is thought to be a prototype (unknown model and serial number) and was destroyed at the scene by attending officers.
+          VARIANT:
+            NOTE: Carl died in Broken
+            NOTE: Famous painter Carl MANFRED was found dead in his home following an altercation between his android and his son. The latter’s witness statement attests to the android behaving violently. The android is thought to be a prototype (unknown model and serial number) and was destroyed at the scene by attending officers.
+    OBSERVATION GROUP "Case 6":
+      CASE FILE 06:
+        CONDITION GROUP:
+          VARIANT:
+            NOTE: Kara didn't kill Todd in Stormy Night
+            NOTE: The plaintiff claims he was violently attacked by his domestic android, an AX400 model. The android had just returned from being repaired the previous day and had shown signs of aggression in the past.
+          VARIANT:
+            NOTE: Kara killed Todd in Stormy Night
+            NOTE: The victim's body was found by a friend who came by to say hello. He immediately called the emergency service at 8:42, who recorded death by gunshot wound. The murder weapon may have belonged to the victim. His android, an AX400, was not found on the scene and is the main suspect.
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Kara didn't kill Todd in Stormy Night
+      VARIANT:
+        NOTE: Kara killed Todd in Stormy Night
+      VARIANT:
+        CONDITION (Death): Kara died in Stormy Night
+  OPTION "HANK'S SON"
+    CUT/UNUSED CONTENT:
+PROMPT (choice group):
+  OPTION "DIRECT"
+  OPTION "AGGRESSIVE"
+  OPTION "PROFESSIONAL"
+  OPTION "UNDERSTANDING"
+PROMPT (choice group):
+  OPTION "DETERMINED"
+  OPTION "RESIGN THE MISSION"
+  OPTION "THREATEN"
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Kara didn't die in Stormy Night
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Kara didn't kill Todd in Stormy Night
+      VARIANT:
+        NOTE: Kara killed Todd in Stormy Night
+  VARIANT:
+    CONDITION (Death): Kara died in Stormy Night
+```
+
+### Discrepancies with sections 1 to 3
+
+1. **Amanda question 1 is only asked if the deviant was found.** §2a presents "What did you think of the deviant?" (TRAUMATIZED / DEVIANCY / INTERVENTION / REGRETS / SIMULATION) with no condition. The template nests that prompt inside the "Connor found the deviant in Partners" variant. On the not-found path Amanda goes from her disappointed reaction straight to question 2 ("What do you make of him?"). Template wins (prompt structure). This settles §8 question 2.
+2. **`LAST NIGHT` unlock.** §2f and §4 add the wiki's condition "and failed to find the HK400 in Partners". The template's lock is only "Spilled Hank's drink in Partners". Template wins for the unlock condition. This settles half of §8 question 5. The template also puts `[LAST NIGHT]` in the first Talk-to-Hank round, as §2f has it, not among the follow-ups.
+3. **`THANKS` is cut, not bugged.** §2f describes `THANKS` as "permanently locked" (wiki: bug). The template wraps its condition and lines in `app-unused-content`. Treat it as cut and do not build it.
+4. **HANK IS MAD has no arrow in the template.** §3 (Hank) gives an unavoidable small down on the round-2 answer (wiki, Relationship Stat, PowerPyx), and §3 already says the transcript shows no icon. The template has no `app-relation` on DETERMINED / RESIGN THE MISSION / THREATEN or on the collar grab that follows. Here the template is silent rather than contrary. Under the README the wiki number stands, but it is the only arrow in this chapter that the template does not confirm. Keep §8 question 7 open.
+5. **Desk clue set.** §2b's table and §8 question 6 mention the nameplate (`LT. HANK ANDERSON`), `TISSUE` and `POLICE CASES` from the string table. The template's desk has exactly 8 items under "Look at the desk" (COFFEE CUP, JAPANESE MAPLE, DONUTS, DETROIT BASKETBALL CAP, ANTI-ANDROID SLOGANS, MATCHES, HAIRS, RED ICE TASK FORCE 2027). It also has 1 under "Listen to music" (KNIGHTS OF THE BLACK DEATH) and 3 under "Research LT. Anderson" (the articles). The nameplate, tissue and police-cases strings are not placed. Template wins: build these 12 and not the other three. The 8 desk items match PowerPyx's "8 clues", which settles §8 question 6.
+6. **Ending speaker.** §5 and §8 question 11 note the transcript speaker key `HARVEY` against the wiki's Chris Miller. The template's dialogue-line name for the Ravendale lead is `Chris`. That agrees with the wiki and settles the question for the benchmark text.
+7. **Kara-dead files.** §8 question 12 asks which Todd file appears if Kara died. The template's Case 6 varies only on "Kara killed Todd in Stormy Night". Connor's conclusion has three variants: Todd not killed, Todd killed, and Kara died in Stormy Night (the "We could follow up on one of these cases" line). So on the Kara-dead path the file is the non-homicide one, unless Todd was killed, and Connor says the generic line. Template wins.
+8. **Cut lines not recorded in §2.** §2 does not mention the five cut lines listed above (items 1 to 5) or that SIMULATION's line is truncated in the shipping game. No conflict, but they must not be built.
+9. **Labels, arrows, other conditions.** These all agree with the template:
+   - every other option label in §2a to §2i;
+   - the Amanda arrows (LargeDown not found, LargeUp "Got a confession, without dying", SmallDown "Connor died during The Interrogation", SmallDown "found the deviant but didn't get a confession", FRIENDLY SmallDown, ADAPT SmallDown, INDIFFERENT SmallUp);
+   - the Hank arrows (SmallDown on arrival after an Interrogation death, [DOG] SmallUp, [BASKETBALL] SmallDown, [MUSIC] SmallUp, [ANTI-ANDROIDS] SmallDown);
+   - COMPASSIONATE software instability SmallUp, and the break-room TV public opinion SmallDown on both Partners variants;
+   - the cell gate "Deviant didn't die in The Interrogation", INTERVENTION "Intervened and saved the deviant in The Interrogation", REGRETS and NEW CONNOR (Death: Connor died in The Interrogation), and STATUETTE "Looked at the statuette in Partners";
+   - the four clue unlocks for the desk topics.
+
+   One addition the note lacks: a Ben line in "In the station" plays only if "Deviant shot Connor during The Interrogation" (flavour, no choice).
+
+### Discrepancies with the benchmark
+
+The scenes are R12, C08 and C08b (`benchmark/story.json` 1.6.0). The engine has `C08` and `C08b` cases (`story-engine.mjs` lines 217 and 218), the gate at line 88, and the `connorDies` helper at line 186.
+
+1. **Amanda question 1 missing** (5 options, including `INTERVENTION` locked on saving the deviant and `REGRETS` on Connor's death in The Interrogation, and asked only if the deviant was found). No scene.
+2. **Amanda question 2 missing** (UNPLEASANT / DYSFUNCTIONAL / INTRIGUING / UNSURE). No scene.
+3. **Amanda question 3 and its arrows missing.** FRIENDLY (Amanda SmallDown), ADAPT (SmallDown), INDIFFERENT (SmallUp) and DON’T KNOW are absent. No scene.
+4. **Amanda's opening arrows are not applied, and different ones are.** The template's four reactions are LargeDown (deviant not found in Partners), LargeUp (confession, survived), SmallDown (died in The Interrogation) and SmallDown (found, no confession). The engine applies none of them here. Instead it applies:
+   - `amanda(1)` at C05 option 0 (Partners, deviant found; not in this chapter's template, so the ch06 cross-check decides it);
+   - `amanda(1)` at C06 options 0 and 1 (a confession is +1 where the template gives LargeUp, +2);
+   - `amanda(1)` at C06 option 2 (forced probe and self-destruct, which the template treats as no confession, SmallDown);
+   - nothing at C06 option 3 (no confession; the template gives SmallDown);
+   - nothing at C05 option 1 (not found; the template gives LargeDown);
+   - `amanda(-1)` inside `connorDies` for *every* Connor death. The template's SmallDown is for a death in The Interrogation only. A death in The Hostage is not an input to this chapter's Amanda reaction.
+5. **Hank arrival arrow mis-scoped.** The template's Hank SmallDown at "Hank arrives" is conditioned on "Connor died in The Interrogation". The engine's `hank(-1)` inside `connorDies` fires on any Connor death, including The Hostage, before Connor has met Hank. `connorDies` also applies `si(-1)`, which this chapter's template does not have (the death-instability rule is from the wiki's Software_Instability page, not from this template).
+6. **Phone prompt missing** (LEAVE A MESSAGE / HANG UP).
+7. **Desk and terminal clues missing.** None of the 12 observation items appears as a clue. C08's situation paraphrases some of them. "heavy-metal albums" should be the headset clue KNIGHTS OF THE BLACK DEATH ("Dark Heavy Metal", "Release date - 2021"). "a file on his past as a decorated officer" stands for the three "Research LT. Anderson" articles, whose titles and dates are not given. The coffee, maple, donuts, matches and RED ICE TASK FORCE items are not given at all. Because the clues are not modelled, the four desk-topic unlocks cannot be modelled either.
+8. **Cell prompt 1 mislabelled and reduced.** The template has SINCERE / COLD / COMPASSIONATE (software instability SmallUp) / INDIFFERENT. C08b offers "Talk to him with compassion." (`si(1)`, matching COMPASSIONATE) and "Ignore him." The latter is not a game label; it stands for three distinct answers plus skipping the visit.
+9. **Cell prompt 2 missing.** `[STATUETTE]` (Lock: "Looked at the statuette in Partners"), SECRET, rA9 and DEVIANTS are absent.
+10. **Self-destruct on skip.** In the template the self-destruct ("I'm going to die…", Ben: "Open the cell, quick!") follows the conversation. C08b's "Ignore him." still sets `suspectAlive=false` and `evidence.ortizBody=true`, and the adaptationNote says "either way". The template has no self-destruct without the talk.
+11. **C08b gate.** `s.suspectAlive` corresponds to the template's "Deviant didn't die in The Interrogation". It is consistent with the C06/C07 cases. No discrepancy.
+12. **Gavin's three prompts missing** (GREET / INTRODUCE / IGNORE; ANSWER / REFUSE / IGNORE; ACCEPT / REFUSE / IGNORE), with no arrows. Also missing: the opener variants (found / died / not found) and the REFUSE follow-up variant on "Connor intervened during The Interrogation".
+13. **Break-room TV.** The template's Public opinion SmallDown sits on the break-room "Watch TV" after Gavin, once per Partners variant. R12's tv item has `publicSupport: -1`, so the arrow is present, but the item is wrong in three ways:
+    - its first fact is the Arctic report, which the template places on the reception TV with no arrow;
+    - it carries only the "found" variant, so on a not-found path the Carlos Ortiz body report should play instead;
+    - it omits the VOLTAIRE book report.
+14. **Fowler's prompt missing** (ANDERSON / POSITIVE / FILE / LEAVE), along with the Fowler-office dialogue that assigns Hank the android cases and Connor as his partner.
+15. **Talk to Hank round 1 missing.** `[NEW CONNOR]` (Death: Connor died in The Interrogation), `[LAST NIGHT]` (Lock: spilled Hank's drink in Partners), UNDERSTANDING, PRAGMATIC and CONSTRUCTIVE are absent. No arrows. No spill flag exists to gate `[LAST NIGHT]`.
+16. **Talk to Hank round 2 missing** (PARTNERS / POSITIVE / DESK). `[THANKS]` is cut and correctly absent.
+17. **Desk-topic hub mismodelled.** The template has one prompt with `[DOG]` (Hank SmallUp), `[BASKETBALL]` (SmallDown), `[MUSIC]` (SmallUp) and `[ANTI-ANDROIDS]` (SmallDown), each locked on its clue, plus FOWLER, HOURS and START WORKING. C08 has two options with non-game labels:
+    - "Ask about him: his dog, his music, his life." gives `hank(1)` and sets `knowsSumo`. DOG and MUSIC are two separate SmallUps in the template.
+    - "Keep it strictly about the case and brief him coldly." gives `hank(-1)`, an arrow the template does not have. Its game counterpart, START WORKING, has no arrow.
+
+    The BASKETBALL and ANTI-ANDROIDS downs cannot be reached. C08's outcome 0 "he does not want to talk about why he transferred" has no template line. The nearest is the cut `HANK'S SON`, which must not be built.
+18. **Case files missing.** None of the 6 case files is presented: disappearance, Fast Coney Dogs AV500, AP700, Eden Club WR400, the Manfred file with its Carl alive/dead variants, and the Williams file with its Todd killed/not-killed variants. Connor's three-variant conclusion ("243 files…") is also missing.
+19. **Case-talk prompt missing** (DIRECT / AGGRESSIVE / PROFESSIONAL / UNDERSTANDING). No arrows.
+20. **HANK IS MAD prompt missing** (DETERMINED / RESIGN THE MISSION / THREATEN). The template has no arrow. The wiki's unavoidable Hank small down is not applied by the engine either.
+21. **Endings not conditioned.** The template's close varies on "Kara didn't die in Stormy Night": the Chris lead to Ravendale, worded "attacked" or "killed" by Todd's fate. If Kara died, Hank leaves for lunch. Both C08 outcomes say "The two of them are sent to look at a new case." regardless of `s.kara`.
+22. **Magazines.** The template has no magazine markup for this chapter. R12's three magazines rest on the wiki and the chart, so there is no template discrepancy, and the template cannot confirm them.

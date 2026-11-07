@@ -412,3 +412,91 @@ What exists that touches this chapter:
 - https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/HEAD/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html (confirms chapter 14 ends on "Welcome to Jericho.")
 - https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/HEAD/src/app/shared/enums/relation-name.enum.ts (transcript has a Jericho relation it does not use in this chapter)
 - https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/HEAD/public/i18n/en.json (English game strings for every line and option label quoted above)
+
+---
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html (local copy `/tmp/dbt/tpl916/ch16.html`).
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json (local `/tmp/dbt/en.json`). Every key resolved.
+- Renderer: `/tmp/dbt/render916.py`. Outline at `/tmp/dbt/ch16.txt`, with dialogue at `/tmp/dbt/ch16-dialogue.txt`.
+- Counts:
+  - **3 choice groups (prompts)** with **14 options**: T1 has 5, T2 has 4 and T3 has 5.
+  - **0 clues** (no observation items or case files).
+  - **5 stat arrows**: Josh SmallUp; North SmallUp; North SmallDown on `YOU`; North SmallUp and Simon SmallUp at the Simon scene.
+  - **0 unlock conditions**, **0 condition groups**, **2 cut/unused blocks** (both lines of Lucy's).
+- String prefixes: T1 and T2 and the encounter dialogue use `X0503M.JERICHO.ENCOUNTER.*` (25 keys). North's T3 and the rest of the chapter use `X0601M.INTRO.*` (43 keys). This confirms section 1's observation.
+- The template has no section for `LET THERE BE LIGHT` or `CHECK EMPTY CRATE` (no dialogue), and no magazine or TV markup.
+
+### Rendered outline
+
+```text
+# In Jericho
+NOTE: NOV 6TH, 2038
+NOTE: PM 05:13
+PROMPT (choice group):
+  OPTION "TRAIL"
+  OPTION "ANDROID"
+  OPTION "JERICHO"
+  OPTION "REFUGE"
+  OPTION "FREE?"
+PROMPT (choice group):
+  OPTION "LOST"
+  OPTION "SOMBER"
+  OPTION "LUCID"
+  OPTION "DIRECT"
+# Explore Jericho
+## Talk with Josh
+ARROW: Josh SmallUp
+## Talk with North
+ARROW: North SmallUp
+PROMPT (choice group):
+  OPTION "TIME HERE?"
+  OPTION "WOUNDED"
+  OPTION "JERICHO"
+  OPTION "YOU"
+    ARROW: North SmallDown
+  OPTION "SPARE PARTS"
+## Talk with Lucy
+CUT/UNUSED CONTENT:
+CUT/UNUSED CONTENT:
+## Talk with damaged android (sitting)
+## Talk with damaged android (near fire)
+## Finished exploring - Talk with Simon
+ARROW: North SmallUp
+ARROW: Simon SmallUp
+```
+
+The cut blocks under "Talk with Lucy" are Lucy: "You've lost a lot of blood…" and Lucy: "It's left over from one of our own." (shown in `/tmp/dbt/ch16-dialogue.txt`). The template's heading "Talk with damaged android (sitting)" is the wiki's Damaged Android ("They tied me to the back of a car..."). "Talk with damaged android (near fire)" is the Dying Android ("I was glad to meet you, Markus."). Section 1 maps them the same way.
+
+### Discrepancies with sections 1 to 3
+
+1. **Jericho +1 at `TALK TO SIMON` (summary bullets, section 3 table and net-range table).** The note lists "Jericho +1 at the Simon scene (wiki only)" from the wiki chapter page and Relationship_Stat. The template's Simon scene ends with exactly two arrows, `North SmallUp` and `Simon SmallUp`, and no `RelationName.Jericho`, although the enum has one and other chapters use it. The template is not silent here: it lists the scene's arrows and leaves Jericho out. Per the README, **the template wins**, so the Jericho +1 should not be built unless the operator sees the gauge move in game (open question 1). If it is dropped, the net-range row for Jericho becomes 0 / 0.
+2. **Section order versus chart order (information, no correction).** The template orders the sections Josh, North, Lucy, damaged android (sitting), damaged android (near fire), Simon. The chart has Dying Android, Josh, North, Damaged Android and Let There Be Light in the bracket, then Lucy and the crate, then Simon. Per the README the flowchart image wins for node order, and section 1 already follows the chart.
+
+Everything else agrees with the note:
+- the T1, T2 and T3 labels exactly (`TRAIL`, `ANDROID`, `JERICHO`, `REFUGE`, `FREE?`; `LOST`, `SOMBER`, `LUCID`, `DIRECT`; `TIME HERE?`, `WOUNDED`, `JERICHO`, `YOU`, `SPARE PARTS`);
+- no arrows in T1 and T2;
+- Josh SmallUp at the start of his talk;
+- North SmallUp at the start of hers and SmallDown on `YOU`;
+- North and Simon SmallUp at the end of the Simon scene;
+- the two unused Lucy lines;
+- no timer or death branch.
+
+**2 discrepancies: 1 substantive (Jericho arrow), 1 order note.**
+
+### Discrepancies with the benchmark
+
+Confirmed: `benchmark/story.json` (1.6.0) has no scene with `chapter: 16`, none titled Time to Decide, and no scene mentions Lucy. In file order, `R14` (chapter 14) and `R15`/`C10` (chapter 15) are followed by `K10` (chapter 17). The only Markus scenes after `R14` are `M05` to `M08` (Spare Parts, chapter 19). `story-engine.mjs` applies no North/Josh/Simon/Jericho change before `case 'M05'`, and `experience-prompt.mjs` shows the companion and Jericho levels only from `ch>=19`.
+
+1. **Missing prompt T1** (`TRAIL` / `ANDROID` / `JERICHO` / `REFUGE` / `FREE?`), no arrows.
+2. **Missing prompt T2** (`LOST` / `SOMBER` / `LUCID` / `DIRECT`), no arrows.
+3. **Missing prompt T3** (`TIME HERE?` / `WOUNDED` / `JERICHO` / `YOU` / `SPARE PARTS`). The `YOU` arrow (North SmallDown) is not applied.
+4. **Missing arrow: Josh SmallUp** for talking to Josh (an optional visit; no scene offers it).
+5. **Missing arrow: North SmallUp** for talking to North (optional; no scene).
+6. **Missing arrows: North SmallUp and Simon SmallUp** at the Simon scene (unavoidable). `M05`'s situation folds the proposal into exposition ("You have led {{North}}, {{Simon}} and {{Josh}} on a night raid") and applies neither arrow, so every run enters Spare Parts with North and Simon one small step lower than the game allows.
+7. **When the chapter is built, do not add a Jericho +1** at the Simon scene (see discrepancy 1 with the note), and do not build the two cut Lucy lines.
+
+**7 benchmark items: 3 missing prompts, 5 missing arrows (items 3 to 6), 0 missing clues, and 1 build instruction.** Nothing the benchmark applies contradicts the template, because the benchmark applies nothing for this chapter. The template wins for all labels and arrows above. The flowchart image (section 1) governs the order of the visits.

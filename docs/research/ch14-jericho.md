@@ -301,3 +301,94 @@ None of these sets state. If the arrival conversation is judged to belong to ch1
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=RK200&prop=wikitext&format=json (Markus's preconstruction ability)
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=THREE_AT_JERICHO&prop=wikitext&format=json and https://detroit-become-human.fandom.com/api.php?action=parse&page=A_GLIMPSE_OF_JERICHO&prop=wikitext&format=json (related trophies; neither earned here)
 - https://detroitbecometext.github.io/chapters/14 and https://detroitbecometext.github.io/i18n/en.json (fan transcript linked from the wiki. The page is a JavaScript app; its English strings were read from the translation file, and the page order and condition labels from the site's compiled chapter template. It gave the 29 flowchart strings, every ambient line, the Carl-dead/alive variants, "Do you know where Jericho is?", "Welcome to Jericho." and the ch16 arrival conversation.)
+
+---
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/14-jericho-chapter-content/jericho-chapter-content.component.html (downloaded to `/tmp/dbt/tpl916/ch14.html`).
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json (`/tmp/dbt/en.json`). All keys resolved.
+- Renderer: `/tmp/dbt/render916.py`. The outline is at `/tmp/dbt/ch14.txt`; `/tmp/dbt/ch14-dialogue.txt` is the same outline with every dialogue line.
+- Counts:
+  - 0 prompts (choice groups) and 0 options.
+  - 0 clues (no observation items and no case files).
+  - 0 arrows.
+  - 0 unlock conditions.
+  - 1 condition group (2 variants, Carl dead or alive).
+  - 0 cut blocks.
+- Verification that nothing was missed:
+  - A tag census of the raw file finds only `app-dialogue-line` (24), one `app-condition-group` with two `app-conditioned-content`, and plain `section`/`h1`/`h2`/`p`/`ul`/`li`/`div`. There is no `app-choice-group`, `app-choice-item`, `app-relation`, `app-observation`, `app-unlock-condition` or `app-unused-content`, and the file has no HTML comments.
+  - The dialogue variant shows every line, and it ends with Simon's "Welcome to Jericho." (`X0503M.JERICHO.ENCOUNTER`, the only `X0503M` key in the file).
+  - `en.json` has no `MENU.OBSERVATION.05M` strings, so the graffiti symbols have no scan text anywhere in the game's string table. The only chapter prompts are `GUI.ACTION.05M` "Crouch" / "Remove" / "Stand".
+
+### Rendered outline
+
+```text
+# At Ferndale station
+NOTE: NOV 6TH, 2038
+NOTE: PM 04:30
+## Man on the phone
+## Homeless man
+## Two people talking
+## Run into someone down the escalator
+## Mother and child talking on a bench
+## Talking to parked android
+## Two people talking on the street
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Carl died in
+    NOTE: Broken
+  VARIANT:
+    NOTE: Carl is alive
+## Homeless man on the street
+NOTE: I need a dollar, I haven’t eaten all day!
+NOTE: Spare some change?
+NOTE: Sorry to bother you, I-I just really need some money.
+NOTE: Please, I’m so hungry. If I could just get some food…
+## Children playing
+NOTE: Tag! You're it!
+NOTE: I'm gonna catch you!
+NOTE: Come on, pass it!
+NOTE: Hey, over here!
+NOTE: Go long!
+NOTE: Catch this!
+## Finding Jericho
+```
+
+The flowchart strings `MENU.FLOWCHART.05M.*` (29 labels, from `START` "ARRIVE AT FERNDALE" to `SCENEEND` "MET PEOPLE OF JERICHO", plus `MAGAZINE1ST`/`2ND`/`3RD`) agree word for word with §1, as the note already states.
+
+### Discrepancies with sections 1 to 3
+
+Rule (README): the template wins for labels, prompts, arrows and clue text, the flowchart image wins for node order, and the wiki counts only where the template is silent.
+
+There is no conflict on prompts, clues or arrows. The template confirms the note's 0 decisions, no stat changes and no clue text. Points of detail:
+
+1. **Train announcements (§1 "Ambient lines").** The note lists "Customers are reminded that all androids must ride in the designated area." / "We are now approaching Ferndale Station." / "Please take care…" as transcript lines of the ch14 page. The current template does not contain them. The strings exist in `en.json` as `X0501M.MONORAIL.VOICE.VO.X05MMONORAIL.ANNOUNCE01`/`02`, so the text is the game's own, but the template's play order does not place them. Usable as narration; there is nothing to correct beyond the attribution.
+2. **The arrival conversation (§4, §8 Q1).** The template agrees with the note:
+   - ch14 stops at "Welcome to Jericho."
+   - The `X0503M.JERICHO.ENCOUNTER` prompts appear in the ch16 template ("In Jericho", after "PM 05:13"): `TRAIL` / `ANDROID` / `JERICHO` / `REFUGE` / `FREE?`, then `LOST` / `SOMBER` / `LUCID` / `DIRECT`.
+   - The ch16 template has **no** `TIME OUT` option and no timer marking on the second prompt, unlike the note's §4 list, which includes "Or TIME OUT".
+   - This belongs to the ch16 cross-check. It is noted here because §4 quotes it.
+
+Agreements worth recording:
+- Ask android: Markus's "Do you know where Jericho is?" with no reply (§2 O2, §8 Q5).
+- The two Carl variants, word for word.
+- Simon's closing line.
+- The template has no line for the "news about a detective android" (§8 Q7 stays open).
+
+### Discrepancies with the benchmark
+
+The only ch14 scene is R14 (media), and the engine applies no ch14 effects.
+
+The template has no prompt, clue or arrow, so the benchmark lacks none, and the engine applies no arrow the template lacks. Magazines are outside the template (the site's `magazine.service.ts`), so R14's three issues are not checked here.
+
+1. **R14 says "at night".** R14's situation reads "following the trail … through a rail station at night". The template's timestamp is `GUI.MENU.TIME.05M` "PM 04:30". **Template wins.** This repeats §7's finding.
+2. **Unused narration (not required by the README's "must include", which covers prompts, clues and arrows).** No scene carries the template's ambient material:
+   - the Carl-dead or Carl-alive street conversation (which could use `situationWhen` on `carl`);
+   - Markus asking the parked android;
+   - Simon's "Welcome to Jericho.".
+   On Markus's path the subject goes from R14 straight to M05.
+
+Totals: 2 discrepancies with sections 1 to 3 (neither on a prompt, clue or arrow), and 2 with the benchmark (neither a missing prompt, clue or arrow).

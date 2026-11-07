@@ -416,3 +416,192 @@ Effects the wiki states that are absent or misplaced in the engine:
 | https://detroitbecometext.github.io/chapters/9 | community transcript: section structure, unlock conditions, relation icons per branch ("Put deviant under stress and failed to get a confession", "Used the CONVINCE approach to get a confession") |
 | https://detroitbecometext.github.io/i18n/en.json | game string table: exact button labels, flowchart node strings (incl. unused CONNOR DIES / ANDROID REVEALS CLUE / CLUE FOUND / ANDROID DETAINED), analysis clue texts, stress gauge bands, all quoted dialogue |
 | https://detroitbecometext.github.io/chunk-JCLJBPDO.js | transcript template for chapter 9 (where the unlock conditions and Hank/SI icons are attached) |
+
+---
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt/render916.py` (resolves every `t()` and `translateObject()` key against `en.json`; `--dialogue` also prints the lines). Outline saved to `/tmp/dbt/ch09.txt`, with dialogue to `/tmp/dbt/ch09-dialogue.txt`. All keys resolved.
+- Counts: 13 prompts (choice groups), 43 options, 5 clues (observation items), 0 case files, 7 stat arrows (Hank 3, software instability 4), 12 unlock conditions, 0 cut/unused blocks.
+
+In the outline, `[LABEL]` marks an option the template draws with brackets (an unlockable option). `CONDITION (Lock)` is an unlock condition; `CONDITION (None)` is a plain note. `VARIANT` is one branch of a conditioned group. `NOTE` is the transcribers' own text.
+
+### Rendered outline
+
+```text
+# In the observation room
+NOTE: NOV 6TH, 2038
+NOTE: AM 12:41
+## Hank enters the observation room
+# Inside the interrogation room
+## Looking at the reflection
+## Analyze the deviant
+OBSERVATION GROUP "Deviant":
+  CLUE: PROCESSING LED | Signs of software instability | Probability of self-destruction: Low
+  CLUE: MODEL HK400 - Housekeeper | Manufacture date: 05/29/2030 | Property of: Carlos Ortiz
+  CLUE: BURN MARKS | Repeated marking over 16 months | Caused by cigarettes
+  CLUE: HIT MARKS | Non-critical damage Level 2 | Caused by baseball bat
+  CLUE: DRIED BLOOD | DNA Analysis: ORTIZ CARLOS | Sample date: > 19 days
+## Interrogate the deviant
+PROMPT (choice group):
+  OPTION "[FEAR]"
+    CONDITION (Lock): Analyzed the deviant
+  OPTION "[SHOW PHOTOS]"
+    CONDITION (Lock): Looked at the files
+  OPTION "[WOUNDS]"
+    CONDITION (Lock): Analyzed the deviant
+  OPTION "NAME"
+PROMPT (choice group):
+  OPTION "COMFORT"
+  OPTION "REASSURE"
+  OPTION "THREATEN"
+  OPTION "BLAME"
+PROMPT (choice group):
+  OPTION "SYMPATHIZE"
+  OPTION "THREATEN"
+  OPTION "PROBE MEMORY"
+  OPTION "TRUST"
+PROMPT (choice group):
+  OPTION "LIE"
+  OPTION "TRUTH"
+PROMPT (choice group):
+  OPTION "LIE"
+  OPTION "TRUTH"
+### Choose approach
+PROMPT (choice group):
+  OPTION "PRESSURE IT"
+    OPTION "GIVE UP"
+      NOTE: This dialogue will also trigger if "Pressure it" fails
+  OPTION "PROBE ITS MEMORY"
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Probe succeeded
+        ARROW: Software instability SmallUp
+        CONDITION GROUP:
+          VARIANT:
+            NOTE: Talk to deviant after probing
+            PROMPT (choice group):
+              OPTION "APOLOGETIC"
+              OPTION "COLD"
+        NOTE: Goes to 'Deviant self-destructs' ending
+      VARIANT:
+        NOTE: Probe failed
+  OPTION "CONVINCE IT"
+    PROMPT (choice group):
+      OPTION "UNDERSTANDING"
+      OPTION "THREATEN"
+      OPTION "ORDER"
+    PROMPT (choice group):
+      OPTION "SYMPATHIZE"
+      OPTION "INDIFFERENT"
+      OPTION "COMFORT"
+    PROMPT (choice group):
+      OPTION "PROTECT"
+      OPTION "TERRIFY"
+      OPTION "WARN"
+  OPTION "GIVE UP"
+    CONDITION (None): Will also automatically happen if the chosen approach failed twice
+## Deviant confesses
+ARROW: Hank SmallUp
+PROMPT (choice group):
+  OPTION "[WRITING]"
+    CONDITION (Lock): Looked at the writing on the wall in Partners
+  OPTION "[STATUETTE]"
+    CONDITION (Lock): Looked at the statuette in Partners
+  OPTION "[OFFERING]"
+    CONDITION (Lock): Asked about the statuette
+  OPTION "[rA9]"
+    CONDITION (Lock): Looked at the rA9 writings in Partners
+  OPTION "[INSIST rA9]"
+    CONDITION (Lock): Asked about rA9
+  OPTION "ATTIC"
+  OPTION "TRIGGER?"
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Deviant self-destructs
+    CONDITION (Lock): Stress level at 100%
+    PROMPT (choice group):
+      OPTION "INTERVENE"
+        ARROW: Software instability SmallDown
+        ### Deviant shoots Connor and itself
+      OPTION "GIVE UP"
+        ### Deviant destroys itself
+  VARIANT:
+    NOTE: Deviant is taken back to its cell
+    PROMPT (choice group):
+      OPTION "GIVE UP"
+        CONDITION GROUP:
+          VARIANT:
+            NOTE: Deviant shoots itself
+          VARIANT:
+            NOTE: Deviant shoots Connor and itself
+            CONDITION (Lock): Put deviant under stress and failed to get a confession
+            ARROW: Software instability SmallDown
+            ARROW: Hank SmallDown
+      OPTION "INTERVENE"
+        NOTE: Intervene again
+        NOTE: Intervene again
+        ARROW: Hank SmallUp
+        CONDITION GROUP:
+          VARIANT:
+            CONDITION (Lock): Used the CONVINCE approach to get a confession
+        ARROW: Software instability SmallUp
+```
+
+### Discrepancies with sections 1 to 3
+
+Agreements first, so they need not be re-checked: the five clue titles and sublines in 2a match the template exactly (the template does not list the string table's extra `BURN MARKS` rope or `RAZOR CUTS` items, so they are not built); round 1, round 2, both `LIE`/`TRUTH` rounds, the three convince sets, `APOLOGETIC`/`COLD` and the seven follow-up questions with their five unlock conditions match the note's labels; all seven arrows in the template appear in section 3 with the same character and size (probe succeeded SI small up; confession Hank small up; self-destruct `INTERVENE` SI small down; Chris `GIVE UP` and shot SI small down and Hank small down; third `INTERVENE` Hank small up; sent back to cell SI small up). The template has no Amanda arrow in this chapter, consistent with the note placing Amanda's changes in Waiting for Hank....
+
+1. **Approach button order.** Note 2c lists `PROBE ITS MEMORY`, `CONVINCE IT`, `PRESSURE IT`, `GIVE UP` (chart order). The template's choice group is `PRESSURE IT`, `PROBE ITS MEMORY`, `CONVINCE IT`, `GIVE UP`. Template wins for the prompt's option order; the chart keeps its own node order.
+2. **Round 3 order.** Note 2b: `SYMPATHIZE`, `THREATEN`, `TRUST`, `PROBE MEMORY`. Template: `SYMPATHIZE`, `THREATEN`, `PROBE MEMORY`, `TRUST`. Template wins.
+3. **Pressure escalation prompts.** Note 2c: up to four `PRESSURE` / `GIVE UP` prompts (`CHOICEPUSH01` to `04`). The template prints the four escalation lines as one continuous Connor speech under `PRESSURE IT`, with a single nested `GIVE UP` option ("This dialogue will also trigger if "Pressure it" fails") and no `PRESSURE` button. The string table does contain `CHOICEPUSH01` to `04` with `PRESSURE` / `GIVE UP`, and the wiki's "chose 'PRESSURE' all 4 times" agrees. The template is silent here (it collapses the prompts), so the note stands: four `PRESSURE` / `GIVE UP` prompts with the game's labels.
+4. **Three intervene prompts.** Note 2f: `INTERVENE` / `GIVE UP` at each of the three prompts (`INSISTCHOICE.RESIST` / `CEDE`). The template prints only "Intervene again" notes between the three Connor lines and no second or third choice group. The labels exist in the string table, so the note stands; the template is silent on what `GIVE UP` at the second or third prompt does (open question 12 stays open).
+5. **Hank arrow on the self-destruct death.** Section 3 (Hank table, via the wiki line "Connor is killed and fails to get the confession {{Icon|down}}") could be read as a Hank small down on any Connor death here, and open question 8 asks whether the self-destruct `INTERVENE` death also lowers Hank. The template gives that branch only `SI SmallDown`; its single Hank `SmallDown` sits on the Chris `GIVE UP` variant "Deviant shoots Connor and itself". Template wins: no Hank arrow on the self-destruct `INTERVENE` death in this chapter. Open question 8 is answered.
+6. **Hank up "each time".** Relationship Stat: "Choosing 'intervene' each time after Chris intervenes". The template has one Hank `SmallUp`, placed before the third `INTERVENE` line ("I can't let you do that!"). Section 3 already says one small up at the third; the template confirms it, so open question 7's first half is answered (one arrow, not three).
+7. **Shoot-Connor condition.** Wiki flowchart: "Android shoots Connor (if Connor pressured him and/or failed to probe his memory)". Template unlock condition: "Put deviant under stress and failed to get a confession". The note quotes both. Template wins for the condition text: the shot needs stress plus no confession; a pressured confession followed by `GIVE UP` is not the template's shoot-Connor case. Open question 5 remains for the exact mechanism (flag vs stress value).
+8. **`GIVE UP` on the first approach.** Note and wiki: `GIVE UP` appears after a first failure ("loop back to the same choices but now with an option to give up"). The template draws `GIVE UP` as a normal, unbracketed option in the first approach group, with the note "Will also automatically happen if the chosen approach failed twice" (`UnlockType.None`, not a lock). The template does not mark it locked, but it also does not model the loop, so it is silent on first-pass availability; the wiki governs. Leave for the operator to confirm in game.
+9. **No arrow on `EXPRESS REGRET`.** Open question 11 asks whether `APOLOGETIC` or `COLD` has a stat effect. The template attaches no arrow to either (the probe's SI small up comes before the prompt). Template wins: no effect.
+
+### Discrepancies with the benchmark
+
+Scenes: `C06` "Getting the confession" and `C07` "When the officer grabs him" (`story.json` 1.6.0); engine `story-engine.mjs` lines 86-87 (gates), 210-211 (effects), 186 (`connorDies`: `si(-1)`, `hank(-1)`, `amanda(-1)`).
+
+Missing prompts, clues and options:
+
+1. **Clues.** The observation group "Deviant" (five clues: `PROCESSING LED`, `MODEL HK400 - Housekeeper`, `BURN MARKS`, `HIT MARKS`, `DRIED BLOOD`, with their sublines) has no hub, option or fact in `C06`. The `C06` situation paraphrases ("covered in his owner's dried blood"); no clue text is shown.
+2. **Case file unlock.** The `Looked at the files` condition (reviewing the photos, which unlocks `[SHOW PHOTOS]`) has no action in the benchmark.
+3. **Round 1 prompt** `[FEAR]` / `[SHOW PHOTOS]` / `[WOUNDS]` / `NAME`, with its three unlock conditions ("Analyzed the deviant" twice, "Looked at the files"), is missing.
+4. **Round 2 prompt** `COMFORT` / `REASSURE` / `THREATEN` / `BLAME` is missing.
+5. **Round 3 prompt** `SYMPATHIZE` / `THREATEN` / `PROBE MEMORY` / `TRUST` is missing.
+6. **Round 4 prompt** `LIE` / `TRUTH` ("What are they gonna do to me?") is missing.
+7. **Round 5 prompt** `LIE` / `TRUTH` ("Why did you tell them you found me?") is missing.
+8. **Approach labels and order.** `C06` offers paraphrases in the order convince (0), pressure (1), probe (2), give up (3). The template's labels are `PRESSURE IT`, `PROBE ITS MEMORY`, `CONVINCE IT`, `GIVE UP`, in that order. Every `C06` label differs.
+9. **Approach loop.** The template's "Probe failed" variant ("It resisted. I couldn't see anything...") and the automatic `GIVE UP` "if the chosen approach failed twice" imply a retry. `C06` is one-shot; option 2 always succeeds and options 0 and 1 always confess.
+10. **Pressure sub-prompt.** The nested `GIVE UP` inside `PRESSURE IT` (and the string table's four `PRESSURE` / `GIVE UP` prompts, see discrepancy 3 with the note) is missing.
+11. **Convince sub-prompts.** The three convince choice groups (`UNDERSTANDING` / `THREATEN` / `ORDER`; `SYMPATHIZE` / `INDIFFERENT` / `COMFORT`; `PROTECT` / `TERRIFY` / `WARN`) are missing; `C06` option 0 stands in for all of them.
+12. **Post-probe prompt** `APOLOGETIC` / `COLD` ("Talk to deviant after probing") is missing.
+13. **Confession follow-up prompt.** `[WRITING]`, `[STATUETTE]`, `[OFFERING]`, `[rA9]`, `[INSIST rA9]`, `ATTIC`, `TRIGGER?` and their five lock conditions (three on Partners clues, two on earlier questions) are missing. `C06` outcome 0 instead gives a writing explanation ("because something told him to") that is not the game's `WRITING` answer.
+14. **Self-destruct prompt.** The variant "Deviant self-destructs" (condition "Stress level at 100%") with `INTERVENE` (Connor shot, then the android; SI small down) and `GIVE UP` ("Deviant destroys itself") is missing. The engine ends the probe route at `C06` option 2 with a fixed self-destruction and no decision.
+15. **Repeated intervene.** The template has three `INTERVENE` lines; `C07` asks once.
+16. **`C07` labels and order.** Template: `GIVE UP`, `INTERVENE`. `C07`: option 0 "Step in and tell the officers to stop handling him.", option 1 "Stand back and let the police do their job." Both labels differ, and the order is reversed.
+
+Arrows:
+
+17. **Confession Hank small up missing.** The template puts Hank `SmallUp` on "Deviant confesses". `C06` options 0 and 1 apply no Hank change.
+18. **Chris `GIVE UP` and shot arrows missing.** The template's "Deviant shoots Connor and itself" variant under `GIVE UP` (condition "Put deviant under stress and failed to get a confession") carries SI `SmallDown` and Hank `SmallDown`. `C07` option 1 always has the android shoot only itself, with no arrows.
+19. **Extra arrows on `C07` option 0 after pressure.** The engine calls `connorDies` (SI -1, Hank -1, Amanda -1) when Connor intervenes after a pressured confession. In the template `INTERVENE` never kills Connor; its arrows are Hank `SmallUp` and SI `SmallUp`. All three engine arrows here are unsupported, and the template's two are absent on this path.
+20. **Amanda arrows.** The engine applies `amanda(1)` at `C06` options 0, 1 and 2 and `amanda(-1)` inside `connorDies`. The chapter 9 template has no Amanda arrow. (The wiki places Amanda's reaction at the start of Waiting for Hank...; check against the chapter 12 template.)
+21. **Probe SI small up (matches, not a discrepancy).** `C06` option 2 applies `si(1)`. This matches the template's "Probe succeeded" SI `SmallUp`.
+22. **Sent back to cell (partial match).** `C07` option 0 without pressure applies `si(1)` and `hank(1)`. This matches the template's SI `SmallUp` (sent back) and Hank `SmallUp` (third intervene). It holds only on the unpressured path, while the template applies both on every three-intervene route.
+
+Gates and conditions:
+
+23. **"The truth is inside" over-granted.** The template gates the android's "The truth is inside." on "Used the CONVINCE approach to get a confession". The engine sets `suspectTrusts` on `C07` option 0 whenever `pressured` is false, which includes `C06` option 3 (give up, no confession).
+24. **`C07` situation.** It always says "The android has confessed". The template's Chris section ("Deviant is taken back to its cell") follows the confession only when stress is not at 100%, and `C07` is also reached after `C06` option 3. The text is wrong on that path.
+25. **Pressured confession routing.** The engine sends every pressured confession to `C07`. The template sends a confession at stress 100% to the self-destruct prompt (item 14) instead of the Chris section.
+
+Source priority: template for labels, prompts, arrows and clue text (items 1-22); the wiki only where the template is silent (stress numbers, the 70% Chris cut-off, the four `PRESSURE` presses).

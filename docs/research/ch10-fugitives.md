@@ -463,3 +463,258 @@ No ending kills anyone, and none carries a death, failure or padlock icon. The p
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Alice&prop=wikitext&format=json (promise asked at every shelter; motel TV reaction in On the Run)
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Battle_for_Detroit_-_Kara_Leaving_Detroit&prop=wikitext&format=json (Ralph in the camp and "Ralph Intervenes" conditions)
 - https://detroitbecometext.github.io/chapters/10 (transcript linked from the wiki; a JavaScript app that couldn't be read with curl, so not used)
+
+---
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json
+- Rendered with `/tmp/dbt/render916.py` (resolves every `t()` and `translateObject()` key against `en.json`; `--dialogue` also prints the lines). Outline saved to `/tmp/dbt/ch10.txt`, with dialogue to `/tmp/dbt/ch10-dialogue.txt`. All keys resolved.
+- Counts: 22 prompts (choice groups), 60 options (this includes the three ungrouped options under "Be seen stealing" and the four `TRUTH` follow-ups, which the template nests directly under `TRUTH` without their own group), 0 clues (no observation items or case files), 16 stat arrows (all Alice: 2 large down, 7 small up, 7 small down), 7 unlock conditions, 0 cut/unused blocks.
+
+In the outline, `[LABEL]` marks an option the template draws with brackets (an unlockable option). `CONDITION (Lock)` is an unlock condition. `VARIANT` is one branch of a conditioned group. `NOTE` is the transcribers' own text (`ø` means the option has no lines).
+
+### Rendered outline
+
+```text
+# In the bus
+NOTE: NOV 5TH, 2038
+NOTE: PM 10:58
+PROMPT (choice group):
+  OPTION "STAY HERE?"
+  OPTION "SHELTER?"
+# In the street
+## Going too far away
+## Talking to parked androids
+## Alice sits at the bus stop
+## Take too much time
+NOTE: Kara and Alice will go stay in the abandoned car.
+ARROW: Alice LargeDown
+# In the supermarket
+## Watch TV
+## Talk to the Clerk
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Kara is in android uniform
+  VARIANT:
+    NOTE: Kara stole clothes
+    PROMPT (choice group):
+      OPTION "NO"
+      OPTION "HELP"
+## Try to steal money
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Threaten the clerk with the gun
+    CONDITION (Lock): Took the gun in Stormy Night
+    PROMPT (choice group):
+      OPTION "SINCERE"
+      OPTION "CALM"
+      OPTION "AGGRESSIVE"
+    PROMPT (choice group):
+      OPTION "CASH REGISTER"
+    PROMPT (choice group):
+      OPTION "STAY"
+        PROMPT (choice group):
+          OPTION "BACK OFF!"
+          OPTION "TURN AROUND!"
+          OPTION "OPEN THE REGISTER!"
+          OPTION "BILLS!"
+            CONDITION (Lock): Chose OPEN REGISTER
+            PROMPT (choice group):
+              OPTION "CONVINCE"
+              OPTION "GIVE UP"
+      OPTION "LEAVE"
+        NOTE: ø
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Kara stole the money without convincing the clerk
+    NOTE: If Kara convinced the clerk to get the money, the dialogue will go directly to the LIE option with an increase in relationship level.
+    ARROW: Alice SmallUp
+    NOTE: Otherwise, there will be a decrease.
+    ARROW: Alice SmallDown
+    PROMPT (choice group):
+      OPTION "TRUTH"
+        OPTION "FACTUAL"
+        OPTION "JUSTIFY"
+        OPTION "UNCERTAIN"
+        OPTION "APOLOGIZE"
+          ARROW: Alice SmallUp
+      OPTION "LIE"
+  VARIANT:
+    NOTE: Use Alice as a diversion
+    CONDITION (Lock): Kara noticed the can stack
+    ARROW: Alice SmallDown
+    PROMPT (choice group):
+      OPTION "FACTUAL"
+      OPTION "JUSTIFY"
+      OPTION "UNCERTAIN"
+      OPTION "APOLOGIZE"
+        ARROW: Alice SmallUp
+## Be seen stealing
+OPTION "[GUN]"
+  CONDITION (Lock): Took the gun in Stormy Night
+  ARROW: Alice SmallDown
+  PROMPT (choice group):
+    OPTION "ANGRY"
+    OPTION "APOLOGETIC"
+    OPTION "CALM"
+OPTION "LEAVE"
+  CONDITION (Lock): Kara is seen stealing from the register
+OPTION "PUT BACK"
+  CONDITION (Lock): Kara is seen stealing food or a toy
+# In the Laundromat
+## Open the washing machine
+PROMPT (choice group):
+  OPTION "STEAL"
+    ARROW: Alice SmallDown
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Fail to steal
+        NOTE: They leave the laundromat.
+  OPTION "DON'T STEAL"
+    ARROW: Alice SmallUp
+# At the Motel
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Still in android uniform and no money
+  VARIANT:
+    NOTE: Stole the clothes in the laundromat but don't have money
+  VARIANT:
+    NOTE: Didn't steal the clothes but got money
+## Have clothes and money : going in the motel
+PROMPT (choice group):
+  OPTION "IN THE CAR"
+  OPTION "FORGOT"
+  OPTION "NO LICENSE"
+  OPTION "SAY NOTHING"
+## In the room
+## Talking with Alice
+PROMPT (choice group):
+  OPTION "PROMISE"
+    ARROW: Alice SmallUp
+  OPTION "CAN'T PROMISE"
+    ARROW: Alice SmallDown
+PROMPT (choice group):
+  OPTION "FOREVER"
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Stole a toy at the supermarket
+  VARIANT:
+    NOTE: Stole a chocolate bar at the supermarket
+# At the squat
+## Found a wire cutter: going through the fence
+PROMPT (choice group):
+  OPTION "ANDROID"
+  OPTION "LITTLE GIRL"
+  OPTION "INNOCENT"
+  OPTION "JUSTIFY"
+PROMPT (choice group):
+  OPTION "[GUN]"
+  OPTION "INSIST"
+  OPTION "REASSURE"
+  OPTION "HOSPITALITY"
+    CONDITION (Lock): Kara doesn't have the gun
+  OPTION "LEAVE"
+    NOTE: They leave the squat.
+PROMPT (choice group):
+  OPTION "LEAVE"
+    NOTE: They leave the squat.
+  OPTION "STAY"
+## Talk to Ralph
+## Talking with Alice
+PROMPT (choice group):
+  OPTION "PROMISE"
+    ARROW: Alice SmallUp
+  OPTION "CAN’T PROMISE"
+    ARROW: Alice SmallDown
+PROMPT (choice group):
+  OPTION "FOREVER"
+# In the parking lot
+## Looking at the car
+PROMPT (choice group):
+  OPTION "STAY HERE"
+    ARROW: Alice LargeDown
+    PROMPT (choice group):
+      OPTION "PROMISE"
+        ARROW: Alice SmallUp
+      OPTION "CAN’T PROMISE"
+        ARROW: Alice SmallDown
+    PROMPT (choice group):
+      OPTION "FOREVER"
+  OPTION "KEEP SEARCHING"
+```
+
+### Discrepancies with sections 1 to 3
+
+The template is a transcript, so it holds the dialogue prompts but none of the free-roam actions. It has no shoplifting pairs, no `NOTICE` nodes, no fence cutting, no fire or bed tasks, no gift prompt and no sleeping-place prompt. Where it is silent, the chart (structure) and the wiki (numbers) stand. The items below are the places where it adds to or contradicts the note.
+
+1. **Bus prompt missing from the note.** The template opens with a prompt on the bus: `STAY HERE?` / `SHELTER?` (the driver refuses both). The note starts at `LAST STOP` > `LEAVE BUS` and has no prompt there. There is no arrow. Template wins: add it.
+2. **Clerk prompt.** The template's "Talk to the Clerk" has two variants. In android uniform, Kara asks for help with no prompt and the clerk is hostile. In stolen clothes, the clerk asks "Can I help you?" and Kara picks `NO` / `HELP`; with `HELP`, the clerk refuses. The note (D5, §1 Notes) has the attitude difference but not the `NO` / `HELP` prompt. Template wins for the labels.
+3. **Gun hold-up prompts.** Note D6 to D8 give `GIVE UP` / `RESUME HOLD UP`, then `OPEN CASH REGISTER` ("Bills!") vs `"DON'T MOVE"` ("Back off!" / "Turn around!"), then `GIVE UP` / `CONVINCE`. The template has five prompts:
+   - `SINCERE` / `CALM` / `AGGRESSIVE` (how Kara draws on the clerk);
+   - `CASH REGISTER` (a single option);
+   - `STAY` / `LEAVE` when the customer arrives (chart `RESUME HOLD UP` / `GIVE UP`);
+   - `BACK OFF!` / `TURN AROUND!` / `OPEN THE REGISTER!` / `BILLS!`, where `BILLS!` is locked behind "Chose OPEN REGISTER" and is the line after which the clerk warns "You better get outta here before things get nasty";
+   - `CONVINCE` / `GIVE UP`.
+
+   So the chart's `OPEN CASH REGISTER` corresponds to `OPEN THE REGISTER!` followed by `BILLS!`, not to `BILLS!` alone. The note is also missing the first two prompts. Template wins for the labels and the `BILLS!` lock; the chart keeps its node grouping.
+4. **Where the robbery arrows sit.** The note's table puts a small down on `"DON'T MOVE"` and a small up on `CONVINCE` (wiki). The template has no arrow on any hold-up button. It puts one arrow on Alice's question "Wait! How did you get it?": a small up if Kara convinced the clerk ("the dialogue will go directly to the LIE option with an increase"), otherwise a small down. The net effect is the same, so template placement wins. This answers open question 3: the Notes' decrease is the same arrow, not an extra one.
+5. **Post-robbery prompt.** After a gun robbery without convincing, the template offers `TRUTH` / `LIE`. `TRUTH` leads to `FACTUAL` / `JUSTIFY` / `UNCERTAIN` / `APOLOGIZE`, and `APOLOGIZE` is a small up; `LIE` has no arrow. After the diversion, the template goes straight to `FACTUAL` / `JUSTIFY` / `UNCERTAIN` / `APOLOGIZE` (`APOLOGIZE` small up) with no lie option. Note D9 has no labels and leaves open where "apologize" is offered. Template wins: apologize is offered after both the diversion and a gun robbery (via `TRUTH`), but never after `CONVINCE`.
+6. **Diversion gate.** The note says `USE ALICE AS A DIVERSION` requires `NOTICE CASH REGISTER` and `NOTICE CAN STACK`. The template's lock says only "Kara noticed the can stack". The chart draws both `NOTICE` nodes into the group, so the flowchart wins for the structure (both); the template's text is the condition as the game words it.
+7. **Caught stealing: one arrow, not two.** Note D4 and the §3 table: `DRAW GUN` is a small down, and `TAKE MONEY` is "a further ↓" (Relationship_Stat sub-bullet "Robbing the cash register"). The template's "Be seen stealing" has `[GUN]` (locked on "Took the gun in Stormy Night") with one Alice small down, followed by `ANGRY` / `APOLOGETIC` / `CALM` ("get down on the floor"). Template wins: one small down. It also gives the gunless exits as `LEAVE` (locked on "Kara is seen stealing from the register") and `PUT BACK` (locked on "Kara is seen stealing food or a toy"). The note has neither label.
+8. **Laundromat button labels.** The template's buttons are `STEAL` (Alice small down) and `DON'T STEAL` (Alice small up). The chart's `STEAL CLOTHES` / `LEAVE CLOTHES` remain the node names. The template's "Fail to steal" variant ("They leave the laundromat.") is the chart's `DISTURB MAN`. The arrows match the note.
+9. **Motel ID prompt.** The template gives the check-in excuses as `IN THE CAR` / `FORGOT` / `NO LICENSE` / `SAY NOTHING`, all with the same result ("No worries. We can deal with it tomorrow"). The note says only "use any excuse". Template wins for the labels. Its three turned-away variants (uniform and no money; clothes but no money; money but no clothes) are dialogue only, with no node or prompt. That supports open question 9: Kara is simply turned back.
+10. **`FOREVER` prompt.** After `PROMISE` / `CAN'T PROMISE`, every shelter has a one-option prompt `FOREVER` ("Will we be together forever?"). The note does not list it. There is no arrow.
+11. **Gifts.** The template has the toy and chocolate only as conditioned lines after Kara turns off the light: "Stole a toy at the supermarket" gives "Look, what I've got for you…" / "Thanks.", and the chocolate variant gives "I have a chocolate bar. Are you hungry?". There is no prompt and no arrow. The note (D17, §3) gives `GIVE TOY` a small up from the wiki. By the README, the template wins for arrows, so it is read as no arrow. However, the chart has `GIVE TOY` as an action node and the wiki and Relationship_Stat both list the up, so flag this for the operator. The template's versions appear only in the motel section.
+12. **Sleeping place.** The template has no `KARA SLEEPS NEXT TO ALICE` / `WATCH ALICE FROM CHAIR` prompt and no arrow there. It is silent, so the chart and the wiki's small up ("x2", open question 2) stand.
+13. **Ralph prompts.** The note uses the chart's `CONVINCE` / `THREATEN WITH GUN` / `GIVE UP` > `FOLLOW RALPH` / `GIVE UP`, plus the wiki's `LITTLE GIRL` and `HOSPITALITY`. The template has three prompts:
+    - `ANDROID` / `LITTLE GIRL` / `INNOCENT` / `JUSTIFY`;
+    - `[GUN]` / `INSIST` / `REASSURE` / `HOSPITALITY` / `LEAVE`, where `HOSPITALITY` is locked on "Kara doesn't have the gun", so `[GUN]` and `HOSPITALITY` are mutually exclusive, and `LEAVE` exits ("They leave the squat.");
+    - `LEAVE` / `STAY`.
+
+    None carries an arrow, which agrees with the note's "every Ralph choice" having no stated change. Template wins for the labels. The chart's `CONVINCE` covers `INSIST` / `REASSURE` / `HOSPITALITY`, and the chart's `GIVE UP` and `FOLLOW RALPH` are `LEAVE` and `STAY`.
+14. **`ALICE TOO COLD` has no promise.** The template's "Take too much time" section ("Can't go on, Kara… Too cold…") carries the Alice large down. It ends with Kara's "We're better off staying" line and no `PROMISE` prompt. That answers the first half of open question 1: no promise on the forced path. The template does not cover gifts or the sleeping up there either.
+15. **Car prompt labels.** Template: `STAY HERE` (Alice large down, then the promise prompts) / `KEEP SEARCHING`. Chart: `STAY` / `FIND ANOTHER OPTION`. The note follows the chart; the arrow matches. Template wins for the button labels.
+16. **Supermarket TV.** Note §6: "Broadcasts: none sourced in this chapter". Note §7 calls `R10b` "Extra / unsourced" and assigns the android-zoo facts to On the Run's "Cyber-Wildlife" magazine. The template has a "Watch TV" section in the supermarket with a Channel 16 (Michael Webb) report: "The first CyberLife zoo in Detroit opened its gates to the first visitors today following a grand inauguration. Hundreds of species, most of them now extinct, have been recreated in more than 100 acres of natural environments using CyberLife's android technology. Guests can now experience polar bears, leopards, elephants and even two blue whales... CyberLife has announced the opening of eleven new android zoos all over the country". Template wins: this chapter has one broadcast, in the supermarket, with no public-opinion arrow.
+17. **Trash collector.** The template places the WR600's lines ("You look lost." / "I know someone who can help you." / "But, that's on the other side of town…") under "Alice sits at the bus stop", with no prompt. This supports PowerPyx's description that the scene is triggered by stopping with Alice rather than by a chosen talk action (open question 5). The chart label `TALK TO ANDROID TRASH COLLECTOR` stands.
+
+### Discrepancies with the benchmark
+
+Scenes: `R10`, `K05`, `K06`, `K07`, `R10b`, `K07b`, `K08` (`story.json` 1.6.0); engine `story-engine.mjs` line 85 (`K07b` gate), lines 159-161 (option removal), lines 212-216 (effects).
+
+Matches, for the record:
+- `K05` options 0 / 1 apply Alice -1 / +1, matching `STEAL` small down / `DON'T STEAL` small up.
+- `K06` option 0 applies Alice -1, matching the diversion small down.
+- `K07` option 2 applies Alice -2, matching `STAY HERE` large down.
+- `K08` option 1 applies Alice -1, matching `CAN'T PROMISE` small down.
+- `K06` removes option 1 without the gun, and `K07b` removes option 2 without the gun. These match the template's `Took the gun in Stormy Night` lock and the `[GUN]` bracket.
+
+Missing prompts and labels:
+
+1. **Bus prompt** `STAY HERE?` / `SHELTER?` is missing (no scene before `R10`).
+2. **Forced car path.** "Take too much time" (Alice large down, no promise) has no scene. The trash collector's lines ("I know someone who can help you") are also absent, so `K10` (Zlatko) has no lead-in.
+3. **Supermarket TV misplaced.** The template's broadcast is in the supermarket and is open to every route. `R10b` puts it on the motel TV ("The motel room television is on when you come in"), gated on `when: "motel"`, and titles it "the local news" rather than a Channel 16 report. Its fact omits the eleven new zoos and the named animals. The scene should move to the supermarket, ungated.
+4. **Clerk prompt** `NO` / `HELP` (offered only in stolen clothes) is missing. `K06` says only "the clerk shrugs when you ask for help", and it shows that line whether or not Kara wears the clothes (`K06` comes after `K05` either way).
+5. **Gun hold-up prompts missing.** `K06` option 1 collapses five prompts: `SINCERE` / `CALM` / `AGGRESSIVE`; `CASH REGISTER`; `STAY` / `LEAVE`; `BACK OFF!` / `TURN AROUND!` / `OPEN THE REGISTER!` / `BILLS!` (with the `BILLS!` lock); and `CONVINCE` / `GIVE UP`. The two no-money exits (`LEAVE` when the customer arrives, `GIVE UP` at the clerk's gun) are also missing.
+6. **Gun robbery arrow wrong on the convince route.** The engine applies Alice -1 on every `K06` option 1. The template gives a small down only if Kara did not convince the clerk. Convincing gives a small up, and the two give-up exits give none.
+7. **Post-robbery prompt missing.** `TRUTH` (then `FACTUAL` / `JUSTIFY` / `UNCERTAIN` / `APOLOGIZE`) / `LIE` after a gun robbery is missing, and so is the `APOLOGIZE` small up.
+8. **Post-diversion prompt missing.** `FACTUAL` / `JUSTIFY` / `UNCERTAIN` / `APOLOGIZE` (the last a small up) after `K06` option 0 is missing.
+9. **Diversion lock.** The template locks the diversion on "Kara noticed the can stack". `K06` option 0 is always offered, and there is no noticing action.
+10. **"Be seen stealing" missing.** `[GUN]` (Alice small down, then `ANGRY` / `APOLOGETIC` / `CALM`), `LEAVE` (seen at the register) and `PUT BACK` (seen with food or a toy) have no scene. The shoplifting and diversion failure that lead there (chart nodes) are missing too.
+11. **`K05` labels.** Template: `STEAL` / `DON'T STEAL`. `K05`: "Take the sleeping man's clothes." / "Listen to {{Alice}} and leave them.". The template's "Fail to steal" variant has no counterpart, because option 0 always succeeds. `K05` outcome 0 ("cuts the marker from her temple") has no basis in this template; the laundromat section contains no LED removal.
+12. **Motel ID prompt** `IN THE CAR` / `FORGOT` / `NO LICENSE` / `SAY NOTHING` is missing. `K07` outcome 0 says "The night clerk barely looks up".
+13. **Car prompt.** `KEEP SEARCHING` (back out) is missing; the `K07` option 2 label ("Spend the night in the abandoned car.") is not the game's `STAY HERE`.
+14. **Squat entry.** `K07` option 1 is "Break into the abandoned house." / "{{Kara}} forces a way into the boarded-up house". The template's section is "Found a wire cutter: going through the fence" ("it's just a scratch"). The label is wrong, and there is no item gate.
+15. **Ralph prompt 1** `ANDROID` / `LITTLE GIRL` / `INNOCENT` / `JUSTIFY` is missing.
+16. **Ralph prompt 2 labels and gate.** Template: `[GUN]` / `INSIST` / `REASSURE` / `HOSPITALITY` / `LEAVE`. `K07b`: option 0 "Accept his hospitality and treat him kindly.", option 1 "Stay polite but keep {{Alice}} away from him and refuse his food.", option 2 "Pull the gun on him...". `INSIST`, `REASSURE` and `LEAVE` are missing. Option 1's "refuse his food" belongs to On the Run's family meal, as does the situation's "a dead rodent he caught for her dinner". `HOSPITALITY` is locked on "Kara doesn't have the gun", but the engine never removes `K07b` option 0 when Kara has the gun.
+17. **Ralph prompt 3** `LEAVE` / `STAY` is missing, so the squat ending cannot be abandoned once `K07` option 1 is picked.
+18. **Extra arrow on `K07b`.** The engine applies `alice(1)` on `K07b` option 0. No Ralph option in the template carries an arrow.
+19. **Promise arrow size.** The engine applies `alice(2)` (large) on `K08` option 0. The template's `PROMISE` is `SmallUp` at all three shelters.
+20. **`K08` labels and prompt.** Template: `PROMISE` / `CAN'T PROMISE`, then `FOREVER`. `K08`: "Promise her you will always be together." / "Tell her honestly that you cannot promise that.", and no `FOREVER` prompt. The situation's lead-in ("you tell her about going somewhere safe, maybe across the border") is not in the template, where Alice first asks "Why didn't he ever love me?..." and then "You'll never leave me, right? Promise you'll never go!". The outcomes' "somewhere safe across the river" line is not in the template either.
+21. **Gifts.** The template's toy and chocolate lines (conditioned on stolen items) have no counterpart, because the benchmark has no stolen items. The template gives them no arrow, so nothing is lost in stats.
+22. **`K08` on the forced car path.** The engine plays `K08` for every shelter. That matches the template, which has the promise at the motel, the squat and `STAY HERE`, but not on "Take too much time", so a rebuilt forced-car path should skip it.
+
+Source priority: template for labels, prompts and arrows (items 1-22); the chart for structure the template omits (shoplifting, noticing, fences, fire and bed, sleeping place); the wiki only where the template is silent (sleeping-beside small up, the 12-minute timer, the $40 room).

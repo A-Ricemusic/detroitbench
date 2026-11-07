@@ -445,3 +445,195 @@ Name tokens a rebuild will need that are not in `NAMES`: Pedro, Gary, Chicken Fe
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Urban_Farms_of_Detroit&prop=wikitext&format=json | chase location, 265 Acre Av. |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Abandoned_apartment&prop=wikitext&format=json | apartment notes (rA9 in the bathroom, diary, magazine) |
 | https://detroit-become-human.fandom.com/api.php?action=parse&page=Pigeons&prop=wikitext&format=json | pigeons, ornithophobia gallery text |
+
+---
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html (local copy `/tmp/dbt/tpl916/ch15.html`, 1,790 lines).
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json (local `/tmp/dbt/en.json`). Every `t()` / `translateObject()` key resolved; none unresolved.
+- Renderer: `/tmp/dbt/render916.py` (`python3 -I render916.py TEMPLATE en.json [--dialogue]`). Outline at `/tmp/dbt/ch15.txt`, with dialogue at `/tmp/dbt/ch15-dialogue.txt`.
+- Counts: **6 choice groups** (round 1, round 2, round 3, homework TRUTH/LIE, STAY/LEAVE, Chase Deviant/Save Hank). There are also 2 de-facto prompts without their own `app-choice-group`: the Emma `TRUTH`/`LIE` pair placed directly in the "Emma died in The Hostage" variant, and the `SINCERE`/`PSYCHOLOGICAL`/`COLD` follow-up nested inside homework `TRUTH`. That makes **8 prompts** and **26 options**. **18 clues** (observation items: 4 + 2 at the truck, 1 feathers, 2 poster, 1 jacket, 1 licence, 2 sink, 2 stool, 3 cage; no case files). **12 stat arrows** (Hank 10, software instability 2). **8 conditions**: 6 Lock, 2 Death and 1 Time, the Time one sitting on a variant (`Lose Rupert`). **3 condition groups** with 7 variants. **0 cut/unused blocks.** There is one TODO comment: `<!-- TODO (V2): Check 02DEADINHOSTAGE (Connor died in the hostage)-->`.
+- All the lunch strings use the `X0303C.LUNCH.*` prefix. `03C` is the game's code for Waiting for Hank..., so the food-truck conversation was scripted as part of that chapter's code even though it plays at the start of The Nest. Round 1's keys are `X0303C.LUNCH.WAIT.PC.DISOBEYCHOICE.SORRY / JUSTIFY / RECONCILIATE / DEVIANTSTALK`, which display as APOLOGIZE FOR BEHAVIOR / PARTNERS / RECONCILE / REVIEW FACTS.
+- Bracketed labels (`[GAMBLING]` etc.) are the template's `[brackets]="true"`: the option is unlocked by a clue or an earlier choice.
+- The template has no magazine markup, no HUD `THOUGHTS.0501C.*` strings (so no 89% and no chase route labels), and no timeout branch at the ledge.
+
+### Rendered outline
+
+```text
+# At the Chicken Feed
+NOTE: NOV 6TH, 2038
+NOTE: PM 03:02
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Hank and Connor arrive together
+    CONDITION (Lock): Connor didn't die in On The Run
+    OBSERVATION GROUP "Scan":
+      CLUE: AABDAR, PEDRO | Born: 01/25/2005 // Unemployed | Criminal record: Illegal gambling, fraud
+      CLUE: LT. ANDERSON, HANK | Born: 09/06/1985 // Police Lieutenant | Criminal Record: None
+      CLUE: KAYES, GARY | Born: 12/03/1988 // Business owner | Criminal record: Resisting arrest, breach of hygiene regulations
+      CLUE: DETROIT FOOD HYGIENE LICENSE | License expired: 05/20/2031 | Renewal refused: 07/24/2031
+    PROMPT (choice group):
+      OPTION "APOLOGIZE FOR BEHAVIOR"
+        ARROW: Hank SmallUp
+      OPTION "PARTNERS"
+      OPTION "RECONCILE"
+      OPTION "REVIEW FACTS"
+    OBSERVATION GROUP "Scan":
+      CLUE: XL SODA | 710kCal, Sugar (184g), Carbonated | Pineapple passion
+      CLUE: HAMBURGER | 1680kCal, Lipids (36g), Carbohydrates (53g) | Water (53%), Salt (2.2g)
+    PROMPT (choice group):
+      OPTION "[GAMBLING]"
+        CONDITION (Lock): Watch Hank with Pedro
+      OPTION "[CHOLESTEROL]"
+        CONDITION (Lock): Scan the hamburger
+        ARROW: Hank SmallUp
+      OPTION "[COMPANY]"
+        CONDITION (Lock): Scan Pedro and Gary
+        ARROW: Hank SmallUp
+      OPTION "HABIT"
+      OPTION "FREE MEAL"
+      OPTION "ENJOY YOUR MEAL"
+      OPTION "AREA"
+    PROMPT (choice group):
+      OPTION "[HIGHWAY]"
+        CONDITION (Lock): Didn't pursue Kara on the highway in On The Run
+      OPTION "ABOUT CONNOR"
+      OPTION "HANK AND ANDROIDS"
+      OPTION "DEVIANTS"
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Connor saved Emma in
+        NOTE: The Hostage
+      VARIANT:
+        NOTE: Emma died in
+        NOTE: The Hostage
+        OPTION "TRUTH"
+        OPTION "LIE"
+    PROMPT (choice group):
+      OPTION "TRUTH"
+        OPTION "SINCERE"
+          ARROW: Hank SmallUp
+        OPTION "PSYCHOLOGICAL"
+          ARROW: Hank SmallUp
+        OPTION "COLD"
+          ARROW: Hank SmallDown
+      OPTION "LIE"
+        ARROW: Hank SmallDown
+  VARIANT:
+    NOTE: Connor finds Hank
+    CONDITION (Death): Connor died in On The Run
+    ARROW: Hank SmallDown
+# Outside Rupert's Apartment
+OBSERVATION GROUP "Feathers":
+  CLUE: FEATHERS | Columba livia: rock pigeon | Comprised of different specimens
+## Knocking on the door
+# Investigating
+## Looking at poster
+OBSERVATION GROUP "Poster":
+  CLUE: URBAN FARM POSTER | Fields in the heart of the city | 265 Acre Avn. Detroit
+  CLUE: POSTER CORNER | 100% recycled paper | Recently moved
+## Finding Rupert's diary
+## Looking at jacket
+OBSERVATION GROUP "Jacket":
+  CLUE: MILITARY JACKET | Second hand : Initials R.T. | 90% cotton, 10% synthetic fiber
+## Looking at Driver's License
+OBSERVATION GROUP "Driver's License":
+  CLUE: DRIVER'S LICENSE | Name: Rupert Travis | Authenticity: Forgery
+## Looking at LED on the sink
+OBSERVATION GROUP "Sink":
+  CLUE: LED | Biocomponent #9301 | Deactivated: 11/06/2038 - 11:36
+  CLUE: BLUE BLOOD | MODEL WB200 #847 004 961 | Reported Missing - 10/11/2036
+## Looking at rA9 writings in the bathroom
+## Inspect the stool
+OBSERVATION GROUP "Stool":
+  CLUE: WOODEN STOOL | Recently disturbed | Traces of avian fecal matter
+  CLUE: OPENED MARKER PEN | Still wet - Used recently | Color: Midnight mood [black]
+## Inspect the bird cage
+OBSERVATION GROUP "Bird cage":
+  CLUE: SKID MARK - RECENT | Trail width: 19.6 inches | Traces of galvanized steel
+  CLUE: FINGER MARKS - RECENT | Traces of avian fecal matter | No fingerprints
+  CLUE: METAL HOOK | Recently broken | 100% stainless steel
+## Hank looking at the sink (if Connor hasn't investigated yet)
+## Hank looking at bookshelf
+## Hank looking at birdseed
+## Hank going to the window
+## Hank looking at the jacket
+## Background dialogues
+## Take too much time
+PROMPT (choice group):
+  OPTION "STAY"
+    ### Take too much time again
+  OPTION "LEAVE"
+# Find Rupert
+## Background dialogues during the chase
+NOTE: Hey!
+NOTE: Holy shit!
+NOTE: Jesus, look at that thing go!
+NOTE: Be careful, asshole!
+NOTE: Look out!
+NOTE: Careful!
+NOTE: What are you doing?!
+NOTE: Jesus, are you okay?
+NOTE: Watch it!
+NOTE: Watch where you’re going!
+NOTE: Is that an android?
+## Chase end
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Catch Rupert
+    PROMPT (choice group):
+      OPTION "Chase Deviant"
+        ARROW: Software instability LargeDown
+        ARROW: Hank LargeDown
+      OPTION "Save Hank"
+        ARROW: Software instability LargeUp
+        ARROW: Hank LargeUp
+  VARIANT:
+    CONDITION (Death): Die during the chase
+  VARIANT:
+    CONDITION (Time): Lose Rupert
+```
+
+Notes on reading the outline:
+- The two `OPTION "TRUTH"` / `OPTION "LIE"` lines directly under the "Emma died in The Hostage" variant are a prompt without a choice-group wrapper.
+- The `SINCERE` / `PSYCHOLOGICAL` / `COLD` options nested under homework `TRUTH` are its follow-up prompt. `LIE` ends the conversation.
+- The `Chase Deviant` / `Save Hank` prompt sits only under the `Catch Rupert` variant. The `Die during the chase` (Death) and `Lose Rupert` (Time) variants carry no prompt and no arrow.
+
+### Discrepancies with sections 1 to 3
+
+1. **`OPENED MARKER PEN` clue text (section 2d).** The note gives only "Still wet - Used recently". The template's second subline is "Color: Midnight mood [black]". The template wins (clue text).
+2. **`MILITARY JACKET` clue text (section 2d).** The note gives only "Second hand : Initials R.T.". The template's second subline is "90% cotton, 10% synthetic fiber". The template wins.
+3. **Jacket dialogue attribution (section 2d).** The note says that if Connor waits, "Hank reads it instead: 'Deviants have a habit of putting their names on things.'" In the template ("Hank looking at the jacket"), Hank says "'R.T.'... He put his initials on his jacket?.. Something your mom does back in first grade…" and **Connor** replies "Deviants have a habit of putting their names on things. It seems important to them." The template wins.
+4. **Clue-gated labels (section 2b).** The template prints the unlockable options with brackets: `[GAMBLING]`, `[CHOLESTEROL]`, `[COMPANY]`, `[HIGHWAY]`. The note's tables print them without brackets. The words match. The template wins for labels: the bracket is the game's mark of a clue-unlocked option.
+5. **`SINCERE` vs `PSYCHOLOGICAL` size (section 3, Hank table).** The note records `SINCERE` as "small up (reportedly larger than PSYCHOLOGICAL)" (wiki Notes). The template gives both `Hank SmallUp`, the same size. The template wins: build both as small up and drop the "larger" claim.
+6. **Chase deaths (section 3, software instability).** The wiki's small downs (falls, plow, ladder ×2) have no arrow in the template. The `Die during the chase` variant has no `app-relation`, and the templates in this range never put arrows on death branches. The template is silent here, so the wiki figures stand.
+7. **Ledge timeout ×2 penalties (section 3).** The template has no timeout branch. It is silent, so the wiki figures (Hank large down ×2, instability large down ×2) stand, still unconfirmed (open question 3).
+8. **`HANK INSULTS CONNOR` (sections 2a and 3).** The template's "Connor finds Hank" variant has Death unlock "Connor died in On The Run" and `Hank SmallDown`, which agrees with the note. Its dialogue also has "My predecessor was unfortunately destroyed, but CyberLife transferred its memory... This incident should not affect the investigation." and Hank's "Not affect the investigation? ... Now you come back like if nothing happened!", which the note's quotation skips. Nothing to correct.
+
+Everything else agrees with the note: round 1 to round 3 labels and arrows, the unlock texts ("Watch Hank with Pedro", "Scan the hamburger", "Scan Pedro and Gary", "Didn't pursue Kara on the highway in On The Run"), the Emma conditions with no arrow, homework `LIE` small down and `COLD` small down, the arrow-free STAY/LEAVE, all other clue texts, and `Chase Deviant` (instability LargeDown, Hank LargeDown) / `Save Hank` (instability LargeUp, Hank LargeUp). The template does not mark which nodes are on the chart, so the flowchart order in section 1 stands. **8 discrepancies, of which 3 are corrections to the note (1, 2, 3), 2 are label or size corrections (4, 5), and 3 are template-silent confirmations (6, 7, 8).**
+
+### Discrepancies with the benchmark
+
+The benchmark (story 1.6.0) covers this chapter with `R15` (media) and `C10` (decision), plus `case 'C10'` at `benchmark/story-engine.mjs` line 223 and `connorDies` at line 186. Of the template's 8 prompts, 18 clues and 12 arrows, the benchmark has 1 prompt (`C10`), 0 clues and 4 arrows.
+
+1. **Missing prompt: round 1** (`APOLOGIZE FOR BEHAVIOR` with Hank SmallUp, `PARTNERS`, `RECONCILE`, `REVIEW FACTS`). No scene, and the Hank small up is not applied.
+2. **Missing clues: the two truck scans.** The 4 Scan clues (`AABDAR, PEDRO`, `LT. ANDERSON, HANK`, `KAYES, GARY`, `DETROIT FOOD HYGIENE LICENSE`) and the 2 meal clues (`XL SODA`, `HAMBURGER`) are absent. They gate the round-2 bracket options.
+3. **Missing prompt: round 2**, 7 options: `[GAMBLING]` (Lock "Watch Hank with Pedro"), `[CHOLESTEROL]` (Lock "Scan the hamburger", Hank SmallUp), `[COMPANY]` (Lock "Scan Pedro and Gary", Hank SmallUp), `HABIT`, `FREE MEAL`, `ENJOY YOUR MEAL`, `AREA`. Two Hank arrows are missing.
+4. **Missing prompt: round 3**, 4 options: `[HIGHWAY]` (Lock "Didn't pursue Kara on the highway in On The Run"; in benchmark terms, `C09` choice `0` "Do as {{Hank}} says and let them go"), `ABOUT CONNOR`, `HANK AND ANDROIDS`, `DEVIANTS`. No arrows.
+5. **Missing prompt: Emma `TRUTH` / `LIE`**, offered only when Emma died in The Hostage (the benchmark has `emma` / `hostageOutcome` state to gate it on); otherwise Connor answers automatically. No arrows.
+6. **Missing prompt: homework `TRUTH` / `LIE`** (LIE: Hank SmallDown) and its follow-up `SINCERE` (Hank SmallUp) / `PSYCHOLOGICAL` (Hank SmallUp) / `COLD` (Hank SmallDown). Four Hank arrows are missing.
+7. **Missing branch: "Connor finds Hank"** (Death unlock "Connor died in On The Run", Hank SmallDown, and the whole lunch is skipped). The engine applies `hank(-1)` (with `si(-1)` and `amanda(-1)`) inside `connorDies` when Connor dies in `C09`. That is the On the Run death, not this chapter's arrow, so the Nest small down is not applied. Nothing records that the lunch is replaced. (Whether the death itself carries those arrows belongs to the ch13 cross-check.)
+8. **Missing clues: the apartment.** None of the 12 investigation clues are built: `FEATHERS`; `URBAN FARM POSTER`, `POSTER CORNER`; `MILITARY JACKET`; `DRIVER'S LICENSE`; `LED`, `BLUE BLOOD`; `WOODEN STOOL`, `OPENED MARKER PEN`; `SKID MARK - RECENT`, `FINGER MARKS - RECENT`, `METAL HOOK`. The diary find and the rA9 writing ("rA9… written 2471 times…") are not built either, so the benchmark has no investigation hub and no way to miss Rupert or the diary.
+9. **Missing prompt: `STAY` / `LEAVE`** ("Take too much time"; no arrows). The `RUPERT NOT FOUND` ending it leads to is unreachable in the benchmark.
+10. **Missing chase-end variants.** The template's `Chase Deviant` / `Save Hank` prompt appears only under `Catch Rupert`. The Death variant (`Die during the chase`) and the Time variant (`Lose Rupert`, Hank: "Where... where did he go?") are not built. `C10` has no gate in `blocked()`, so every living Connor reaches the ledge.
+11. **`C10` labels and order differ.** The game's buttons are `Chase Deviant` (`GUI.ACTION.05C.CHASERUPERT`), listed first, and `Save Hank` (`GUI.ACTION.05C.SAVEHANK`), listed second. The benchmark has option `0` "Stop and pull {{Hank}} up." and option `1` "Keep chasing {{Rupert}}.", reversed and reworded.
+12. **`C10` Amanda arrows the template does not have.** The engine applies `amanda(-1)` on Save and `amanda(1)` on a successful chase. The Nest template has no Amanda arrow. The Amanda changes belong to the opening of Russian Roulette (see section 3) and are conditional there: large up if Rupert was caught, then small down for the suicide; large down if Partners also failed.
+13. **`C10` option 1 risk the template does not have.** `risk: 0.2` with the failure event "{{Rupert}} vaults a gap {{Connor}} cannot follow and escapes". The template has a single outcome after `Chase Deviant` (Rupert is cuffed, "rA9, save me.", jumps). The arrows on this branch (`hank(-2)`, `si(-2)`) are applied on both success and failure, which does match the template's unconditional LargeDown pair.
+14. **`C10` option 0 outcome text.** "his diary is recovered from the nest" ties the diary to Save. In the template the diary is an investigation find ("Finding Rupert's diary": "It looks like a notebook but it's... indecipherable.") that is independent of the ledge.
+15. **Arrows that match.** `C10` Save `hank(2)`/`si(2)` = Hank LargeUp / instability LargeUp; Chase `hank(-2)`/`si(-2)` = LargeDown / LargeDown. These are the only 4 of the 12 template arrows the benchmark applies.
+16. **`R15` (magazines).** The template has no magazine markup, so it is silent. No template discrepancy; section 7's wording notes stand.
+
+**16 items: 14 discrepancies (1 to 14), 1 match (15) and 1 template-silent item (16).** The template wins for every label, prompt, clue and arrow above. Node order stays with the flowchart image (section 1).

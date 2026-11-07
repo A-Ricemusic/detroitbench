@@ -254,3 +254,101 @@ Suggested shape for the rebuild (for the implementer, not a requirement): one ev
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Extras&prop=wikitext&format=json (gallery unlocks)
 - https://detroit-become-human.fandom.com/api.php?action=query&list=search&srsearch=%22From+the+Dead%22&srlimit=100&format=json (search used to find the junkyard android pages)
 - https://detroitbecometext.github.io/chapters/11 and https://detroitbecometext.github.io/i18n/en.json (fan transcript linked from the wiki; the page is a JavaScript app, so the English strings were read from its translation file: diagnosis readouts, part numbers, every line of dialogue, KILL/SPARE prompt labels)
+
+
+---
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html (one file; no Kara/Connor parts).
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json. Every `t(...)` and `translateObject(...)` key resolved; none unresolved.
+- Rendered with `/tmp/dbt/render916.py` (outline at `/tmp/dbt/ch11.txt`, with dialogue at `/tmp/dbt/ch11-dialogue.txt`; split NOTE lines merged for this copy).
+- Counts: **2 prompts** (choice groups), **4 options**, **13 clues** (observation items; no case files), **0 arrows**, **0 unlock conditions**, **1 cut block**.
+
+### Rendered outline
+
+Section headings are the transcribers'; `CLUE:` lines are title | sublines as the game prints them; `NOTE:` is transcriber text or unsubtitled background speech. The one cut block holds the line `Markus: "Markus."` (`X0302M.LANDFILL.FINALWORDS.PC.X03MMARKUS.NAME.1`); the spoken line after it is `"My name is Markus."` (`...NAME.2`). The `ø` note means the KILL option in the pump prompt has no line.
+
+```text
+# At the solid waste landfill
+NOTE: NOV 6TH, 2038
+NOTE: AM 03:34
+OBSERVATION GROUP "Diagnose":
+  CLUE: OPTICAL UNIT | Impaired vision | CORRUPTED MIND PALACE
+  CLUE: AUDIO PROCESSOR | Corrupted audio data | DAMAGED
+  CLUE: THIRIUM PUMP REGULATOR | All systems in LOW POWER MODE | DEFECTIVE
+  CLUE: LEFT AND RIGHT LEG COMPONENTS | MISSING | Unable to stand
+OBSERVATION GROUP "Compatible right leg":
+  CLUE: RIGHT LEG COMPONENT | #6847j | Status: FUNCTIONAL | COMPATIBLE
+OBSERVATION GROUP "Incompatible right leg":
+  CLUE: RIGHT LEG COMPONENT | #6321t | Status: DAMAGED | INCOMPATIBLE
+OBSERVATION GROUP "Left leg":
+  CLUE: LEFT LEG COMPONENT | #8427g | Status: FUNCTIONAL | COMPATIBLE
+## Android grabs Markus
+## Other android grabs Markus
+OBSERVATION GROUP "Search for components":
+  CLUE: THIRIUM PUMP REGULATOR | #9474 | Status: LOW ENERGY | INCOMPATIBLE
+  CLUE: THIRIUM PUMP REGULATOR | #2886 | Status: FUNCTIONAL | COMPATIBLE
+  CLUE: OPTICAL UNIT | #9754h | Status: FUNCTIONAL | INCOMPATIBLE
+  CLUE: OPTICAL UNIT | #8087q - BLUE IRIS | Status: FUNCTIONAL | COMPATIBLE
+  CLUE: AUDIO PROCESSOR | #4807 | Status: FUNCTIONAL | INCOMPATIBLE
+  CLUE: AUDIO PROCESSOR | #4903 | Status: FUNCTIONAL | COMPATIBLE
+## Android begs to die
+PROMPT (choice group):
+  OPTION "KILL"
+  OPTION "SPARE"
+## Try to take pump regulator from android
+PROMPT (choice group):
+  OPTION "KILL"
+    NOTE: ø
+  OPTION "SPARE"
+## Take head
+### Remove optical unit
+## Background dialogues
+NOTE: (There are no subtitles shown in game, but some dialogues can be heard.)
+NOTE: An unexpected error has occurred.I apologize for any inconvenience this may cause.
+NOTE: Don't forget your dental appointment next Friday at 8 AM.
+NOTE: In a right angle triangle, the length of the hypotenuse is equal to the square root of the sum of the squares of the other two sides.
+NOTE: Andrew sent a message saying he loves you and he misses you already.
+NOTE: Good morning!My pleasure.Your mother called today.Laura's gonna be late.
+NOTE: Hello!I hope you're well.Thank you!Have a nice evening!
+NOTE: Would you like another glass of red wine, Madam?
+NOTE: Malfunction detected.
+NOTE: Something unexpected has happened. Please forgive me for any inconvenience.
+NOTE: Hello!I hope you're feeling well.Thank you!Have a nice evening.
+NOTE: I am a TL400 android and I am dedicated to your sexual satisfaction.What fantasy would you like me to fulfill today?
+NOTE: I am a TL400 android dedicated to providing sexual satisfaction.What fantasy would you like to act out today?
+NOTE: I have to get to Jericho... Androids live in freedom there… I got to get to Jericho... No other choice…
+## Climb the slope
+CUT/UNUSED CONTENT:
+```
+
+Dialogue that settles what the options lead to (from `/tmp/dbt/ch11-dialogue.txt`): begs-to-die android before the prompt "I’m begging you, please… End it… I don’t wanna live anymore…"; KILL "Make it quick…"; SPARE "No, please… Don't leave me!.. Don't leave me!". Pump android before the prompt "Wait! Please! Please, don’t do that! I wanna live…"; KILL no line; SPARE "Thank you…". "Android grabs Markus" (speaker Phileas) and "Other android grabs Markus" carry the HEAR ABOUT JERICHO and PASSAGE OF LIMBS lines; "Take head" / "Remove optical unit" carry the AK700 lines.
+
+### Discrepancies with sections 1 to 3
+
+1. **Left leg readout.** §1 (Interactions) gives "LEFT LEG COMPONENT #8427g Status: FUNCTIONAL". The template has a third subline: `LEFT LEG COMPONENT | #8427g | Status: FUNCTIONAL | COMPATIBLE`. Template wins (clue text).
+2. **Incompatible right leg number.** §1 and §3 give both #6321t (transcript) and #6312t (wiki). The template prints `#6321t`. Template wins; drop #6312t.
+3. **Incompatible eye number.** §1 and §3 give #9754h (transcript) and #A754h / #9745h (wiki). The template prints `#9754h`. Template wins.
+4. **ANALYZE SELF spots.** §1 cites PowerPyx's four spots (LED, audio processor, pump regulator, broken leg). The template's `Diagnose` group is OPTICAL UNIT, AUDIO PROCESSOR, THIRIUM PUMP REGULATOR, LEFT AND RIGHT LEG COMPONENTS. Template wins for clue text. This settles §8 question 9.
+5. **Final words.** §1 quotes "Markus." / "My name is Markus." as the closing lines. The template marks the first, "Markus.", as unused content. Only "My name is Markus." is spoken. Template wins.
+6. **`MUSTGO` Jericho line.** §1 says "I have to get to Jericho... Androids live in freedom there…" "may be unused" (citing the wiki's Unused Content on Phileas). The template lists it as an audible background line, not inside `app-unused-content`. Template wins: treat it as heard in the shipping game, from an unnamed background android, not from Phileas. This partly settles §8 question 8.
+7. **Prompt labels.** §2 gives KILL / SPARE for both prompts. The template agrees. No discrepancy.
+8. **Arrows.** §3 says no relationship, opinion or instability change. The template has no `app-relation` in this chapter. Agreement.
+9. **Order.** The template runs Diagnose, legs, Phileas, the passage, the part scans, ANDROID BEGS TO DIE, then the pump android, then the AK700 head, then the slope. The chart prints the pump branch above the begs-to-die branch. The flowchart wins for order, but since the parts can be found in any order this changes nothing. The template has no CRANE DUMPS BODIES or DIG YOURSELF OUT section, and its only eye source is the AK700 head ("Take head", then "Remove optical unit"). It is silent on §8 question 4, so the chart's two nodes stand.
+
+### Discrepancies with the benchmark
+
+The scenes are M03 and M04 (`benchmark/story.json`, version 1.6.0). Neither has a `case` in `story-engine.mjs`, which matches the template's zero arrows.
+
+1. **Diagnose clues missing.** None of the 4 `Diagnose` clues is presented. The M03 situation says Markus is "missing a leg, an eye and your audio processor". The template says both legs are MISSING ("Unable to stand"), the optical unit is impaired ("CORRUPTED MIND PALACE"), not missing, the audio processor is DAMAGED, and the pump regulator is DEFECTIVE ("All systems in LOW POWER MODE"). M03 also has him "crawling" in the junkyard after the legs are already repaired in the template's order.
+2. **Leg clues missing.** None of the 3 leg clues (compatible right #6847j, incompatible right #6321t, left #8427g) appears, and the leg repair is not presented. M04's outcomes have him take "a pair of legs ... from the dead" after the pump, which is the wrong point in the template's order.
+3. **Part-search clues missing.** None of the 6 `Search for components` clues appears (pump #9474 incompatible and #2886 compatible, optical #9754h incompatible and #8087q BLUE IRIS compatible, audio #4807 incompatible and #4903 compatible). The audio processor is never mentioned in M04.
+4. **M03 labels.** The game's labels are KILL / SPARE. M03 has "Pull out her biocomponent and let her shut down." / "Refuse and leave her." M03 outcome 0 has the android "say thank you". In the template, KILL gets "Make it quick…" and "Thank you…" belongs to SPARE in the *pump* prompt. The begging line ("I’m begging you, please… End it… I don’t wanna live anymore…") is not quoted.
+5. **M04 labels.** The game's labels are KILL / SPARE. M04 has "Take his regulator." / "Leave him and keep searching the bodies." The template's plea "Wait! Please! Please, don’t do that! I wanna live…" and SPARE's "Thank you…" are absent. M04's "without a replacement you have minutes" / "running out of time" has no support. The chapter template has no `UnlockType.Time` condition and no timer text.
+6. **Phileas misplaced and misquoted.** The template puts Phileas ("Android grabs Markus") before the junkyard. M04 puts him after the pump, as "a dying android who whispers a single word, {{Jericho}}, and shows him a symbol". Phileas's template line is "There’s a place where we can be free! Find Jericho! Find Jericho!..". Nothing in the template has him show a symbol.
+7. **Passage and AK700 head missing.** The "Other android grabs Markus" passage and the "Take head" / "Remove optical unit" AK700 exchange are absent. M04 has "an eye from the dead".
+8. **Closing missing.** The spoken "My name is Markus." is absent from M04. The cut "Markus." is correctly not built.
+9. **Arrows.** The template has none and the engine applies none for M03/M04. Agreement; no extra Amanda or other arrows.

@@ -558,3 +558,305 @@ On Casual, the first-lane death is impossible (wiki and PowerPyx). Per PowerPyx,
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Waiting_for_Hank...&prop=wikitext&format=json (chapter order)
 - https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-13-on-the-run and https://www.gamepressure.com/detroitbecomehuman/on-the-run/z8d6e3 (tried in order to name Q46; one returned 404 and the other was a stub, so neither was used)
 - https://detroitbecometext.github.io/chapters/13 (transcript linked from the wiki; a JavaScript app, not used)
+
+---
+
+## 10. Template cross-check
+
+### Source
+
+- Template: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/13-on-the-run-chapter-content/on-the-run-chapter-content.component.html (downloaded to `/tmp/dbt/tpl916/ch13.html`).
+- Strings: https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json (`/tmp/dbt/en.json`). Every `t()` / `translateObject()` key in the template resolved; none was missing.
+- Renderer: `/tmp/dbt/render916.py` (outline at `/tmp/dbt/ch13.txt`; the same outline with every dialogue line is `/tmp/dbt/ch13-dialogue.txt`).
+- **One template covers both characters.** There is only one ch13 file in the repository tree. It has five top-level sections: "Kara stayed at the Parking lot", "Kara stayed at the Squat" (Kara's meal and Connor's search), "Kara stayed at the Motel" (Kara's morning and Connor at the desk), "Kara and Alice in the street" and "Connor pursues Kara".
+- Counts:
+  - 13 prompts (choice groups). One of them is inside a cut block, so 12 are live.
+  - 43 options, 39 of them live.
+  - 3 clues (observation items), 0 case files.
+  - 11 arrows: 9 Alice, 2 Public opinion. There are no Hank, Software instability or Amanda arrows anywhere in the template.
+  - 3 unlock conditions, all `Lock`.
+  - 7 condition groups (14 variants).
+  - 2 cut blocks.
+- `ø` in the outline is the template's own marker for an option with no line of dialogue.
+
+### Rendered outline
+
+```text
+# Kara stayed at the Parking lot
+NOTE: NOV 6TH, 2038
+NOTE: AM 10:25
+## The police are outside the supermarket
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Kara and Alice reach the train station unnoticed
+# Kara stayed at the Squat
+## The police are outside the supermarket
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Kara stole wire cutters from the supermarket in
+    NOTE: Fugitives
+  VARIANT:
+    NOTE: Kara didn't steal the wire cutters
+## In the squat with Ralph
+PROMPT (choice group):
+  OPTION "SIT"
+    NOTE: ø
+  OPTION "REFUSE"
+    PROMPT (choice group):
+      OPTION "SIT"
+        NOTE: ø
+      OPTION "REFUSE"
+        ARROW: Alice SmallUp
+PROMPT (choice group):
+  OPTION "[CHECK GUN]"
+    CONDITION (Lock): Took the gun in Stormy Night and didn't forget it upstairs
+    NOTE: ø
+  OPTION "WORRIED"
+  OPTION "EXPLAIN"
+  OPTION "AGREE"
+PROMPT (choice group):
+  OPTION "LIE"
+    ARROW: Alice SmallUp
+  OPTION "TRUTH"
+    ARROW: Alice SmallDown
+PROMPT (choice group):
+  OPTION "[ASK ABOUT CORPSE]"
+    CONDITION (Lock): Saw the body in the bathroom
+  OPTION "[INSIST ABOUT CORPSE]"
+    CONDITION (Lock): Asked about corpse
+  OPTION "THREATEN"
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: No gun : Kara takes a knife
+      VARIANT:
+        NOTE: Kara has a gun : Kara threatens Ralph with the gun
+  OPTION "BLUFF"
+  OPTION "FAMILY"
+## Connor investigates the squat
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Kara was nice with Ralph
+    OBSERVATION GROUP "Scan Ralph":
+      CLUE: PROCESSING LED | Signs of software instability | Probability of self-destruction: Moderate
+      CLUE: MODEL WR600 - Gardener | Serial#: 021 753 034 | Status: REPORTED MISSING
+      CLUE: BURN MARK | Irreversible skin damage | Probable cause: Extreme heat
+    PROMPT (choice group):
+      OPTION "AX400"
+      OPTION "DEVIANTS"
+      OPTION "REASSURE"
+      OPTION "BLUE BLOOD"
+    ### Connor finds Kara
+    NOTE: Leads to
+    NOTE: Connor pursues Kara
+    NOTE: .
+  VARIANT:
+    NOTE: Kara threatened Ralph
+    PROMPT (choice group):
+      OPTION "AX400"
+      OPTION "DEVIANTS"
+      OPTION "REASSURE"
+      OPTION "BLUE BLOOD"
+      OPTION "PRESSURIZE"
+    NOTE: Leads to
+    NOTE: Connor pursues Kara
+    NOTE: .
+### Go upstairs
+CUT/UNUSED CONTENT:
+### Take too much time
+### Taking too much time again
+# Kara stayed at the Motel
+PROMPT (choice group):
+  OPTION "BATH?"
+    ARROW: Alice SmallUp
+  OPTION "HUNGRY?"
+    ARROW: Alice SmallUp
+  OPTION "TIRED?"
+## Watch TV
+CONDITION GROUP:
+  VARIANT:
+    NOTE: Todd was killed in
+    NOTE: Stormy Night
+    ARROW: Public opinion SmallDown
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Kara shot Todd
+      VARIANT:
+        NOTE: Alice shot Todd
+  VARIANT:
+    NOTE: Todd is alive
+    ARROW: Public opinion SmallDown
+CUT/UNUSED CONTENT:
+  PROMPT (choice group):
+    OPTION "REASSURING"
+    OPTION "ANALYTICAL"
+    OPTION "VULNERABLE"
+    OPTION "SINCERE"
+PROMPT (choice group):
+  OPTION "CAN'T STAY HERE"
+  OPTION "FAMILY"
+  OPTION "CONTACT ANDROID"
+PROMPT (choice group):
+  OPTION "MOVING"
+    ARROW: Alice SmallUp
+  OPTION "DETERMINED"
+    ARROW: Alice SmallUp
+  OPTION "COMFORTING"
+    ARROW: Alice SmallUp
+  OPTION "SUPPORTIVE"
+    ARROW: Alice SmallUp
+## Police is at the motel
+PROMPT (choice group):
+  OPTION "RATIONAL"
+  OPTION "DIPLOMATIC"
+  OPTION "DIRECT"
+### Go into the room
+# Kara and Alice in the street
+## Spotted by Police
+# Connor pursues Kara
+## Take too much time
+## Reach the fence
+PROMPT (choice group):
+  OPTION "GO"
+    CONDITION GROUP:
+      VARIANT:
+        NOTE: Connor dies on the highway
+      VARIANT:
+        NOTE: Kara gets hit by a car
+      VARIANT:
+        NOTE: Kara escapes and Connor survives
+  OPTION "GIVE UP"
+    NOTE: ø
+```
+
+Flowchart strings for this chapter (`MENU.FLOWCHART.04K.*`, the game's labels). They agree with the §1 labels, with these points to note:
+
+- Both `CONNOR INVESTIGATES THE SQUAT` (`SQUAT.C.INVESTIGATE01`) and `CONNOR INVESTIGATES SQUAT` (`CONNOR.SQUAT`) exist.
+- `POLICE DON’T HAVE A LEAD` and `CONNOR OBEYS HANK’S ORDER` use a typographic apostrophe.
+- Strings that are not on the §1 chart (candidates for hidden nodes, or for nodes that were cut):
+  - `KARA CHANGED HAIR COLOR` and `KARA CHANGED CLOTHES`.
+  - `FIND CORPSE`.
+  - **`LEAVE THE SQUAT` (`SQUAT.C.LEAVE`)**.
+  - Nine street sneak steps: `AVOID COPS IN FRONT OF THE SQUAT`, `CROSS THE STREET TO THE MOTEL`, `AVOID COPS IN FRONT OF THE MOTEL`, `CROSS THE STREET TO THE COFFEE SHOP`, `HIDE FROM COPS NEAR LAUNDROMAT`, `CROSS THE STREET TO GO NEAR THE BANK`, `HIDE USING AN UMBRELLA`, `HIDE IN THE PAWN SHOP`, plus `SNEAK PAST POLICE FORCES`.
+  - `KARA & ALICE CROSS FIRST SECTION OF HIGHWAY` and `CONNOR STARTS TO CLIMB THE FENCE`.
+  - `CAR APPROACHES CONNOR`, `CONNOR IS DEAD` and `KARA IS DEAD`.
+
+`en.json` also has two Connor scan strings that the template does not place: `MENU.OBSERVATION.04K.MP.STRESS` (STRESS | Emotion Engine: Activated | Status: Abnormal variations) and `MP.KARABLOOD` (MODEL UNDETERMINED | Serial#: Unknown (corrupted data) | Status: Wounded).
+
+### Discrepancies with sections 1 to 3
+
+Rule (README): the template wins for labels, prompts, arrows and clue text, the flowchart image for node order, and the wiki only where the template is silent. Where the template has a prompt but no arrow and the wiki states one, the rule gives the template. These cases are marked **(arrow conflict)** and should be checked in game, because a transcriber omission cannot be ruled out.
+
+1. **Motel wake-up prompt (§1 "Interactions", §3 Alice).**
+   - Note: two options, "bath?" and "hungry?", both Alice ↑.
+   - Template: three options, `BATH?` (Alice SmallUp), `HUNGRY?` (Alice SmallUp) and `TIRED?` (no arrow; Alice: "I'm not tired anymore").
+   - The note misses `TIRED?`. **Template wins.**
+2. **Motel "what are we gonna do" prompt.**
+   - Note: absent.
+   - Template: a live prompt `CAN'T STAY HERE` / `FAMILY` / `CONTACT ANDROID`, with no arrows. It comes after the TV report and before CHEER ALICE UP.
+   - **Template wins.** Add the prompt.
+3. **CHEER ALICE UP.**
+   - Note and template agree: `MOVING` / `DETERMINED` / `COMFORTING` / `SUPPORTIVE`, each Alice SmallUp.
+   - Note and template also agree that `REASSURING` / `ANALYTICAL` / `VULNERABLE` / `SINCERE` is cut.
+   - No conflict.
+4. **Motel TV, public opinion (§3, §8 Q4).** The template puts `Public opinion SmallDown` on **both** variants ("Todd was killed in Stormy Night" and "Todd is alive"). This agrees with On_the_Run and the Kara page, and settles Q4's second half against the Todd_Williams wording. Inside the Todd-killed variant, the template gives Alice two different reactions: one if Kara shot Todd, one if Alice did. The note mentions only one reaction for the killed case. **Template wins.**
+5. **Connor at the motel desk (§1, §2 D10, §3 Hank) (arrow conflict).**
+   - Labels agree: `RATIONAL` / `DIPLOMATIC` / `DIRECT`.
+   - The wiki and Relationship_Stat give Hank ↓ for any of the three. The template has **no arrow** on any of them.
+   - By the rule the template wins, so no Hank change. Flag it for an in-game check.
+6. **Fence prompt (§2 D12, §3 Hank and Software instability) (arrow conflict).**
+   - Labels: the template has `GO` and `GIVE UP`, which agrees with PowerPyx.
+   - The wiki gives `GIVE UP` Hank ↑ and Software instability ↑, and `GO` Hank ↓ and Software instability ↓. The template has **no arrow** on either option.
+   - The wiki's "Connor dies" Software instability ↓ also has no arrow in the template.
+   - By the rule the template wins. These three wiki entries are corroborated by two wiki pages each (On_the_Run plus Relationship_Stat or Software_Instability), so this is the most important arrow to check in game.
+7. **Ralph's meal, SIT/REFUSE (§2 D6, §3 Alice).**
+   - Template: a first prompt `SIT` / `REFUSE`. `REFUSE` opens a second `SIT` / `REFUSE`, and only the **second** `REFUSE` carries Alice SmallUp ("No, Ralph. We're leaving now.", then Ralph: "The little girl's going nowhere.").
+   - This matches Relationship_Stat ("refuse twice"). The On_the_Run wording "initially refuses" is wrong. **Template wins.**
+8. **Prompt missing from the note: `[CHECK GUN]` / `WORRIED` / `EXPLAIN` / `AGREE`.**
+   - The template gives this prompt after the sit prompt, as a sibling, not nested under `REFUSE`. It has no arrows.
+   - `[CHECK GUN]` has the lock "Took the gun in Stormy Night and didn't forget it upstairs", and `ø` dialogue.
+   - This **conflicts** with §1/§2 D3 (wiki: "Kara must refuse both times ... option to Check Gun"; PowerPyx: Check Gun is how FORGOT GUN is revealed). The template's lock says the option needs the gun **on her**.
+   - The template wins for the prompt and its labels. The lock text is the transcribers' wording and contradicts two guides, so leave it as an open question for the operator: is CHECK GUN shown when the gun was forgotten, or only when it was taken?
+   - The template also does not support the wiki's claim that the button needs two refusals.
+9. **LIE / TRUTH (§3 Alice, §8 Q11).**
+   - Arrows agree: `LIE` Alice SmallUp, `TRUTH` Alice SmallDown.
+   - The template answers Q11. The prompt comes after `[CHECK GUN]`/`WORRIED`/`EXPLAIN`/`AGREE` and Alice's "Please, Kara. I don't wanna eat that!", and before the table prompt.
+10. **Table prompt (§1 Q28–Q30, §2 D7, §8 Q3).**
+    - Template labels: `[ASK ABOUT CORPSE]` (lock "Saw the body in the bathroom"), `[INSIST ABOUT CORPSE]` (lock "Asked about corpse"), `THREATEN`, `BLUFF`, `FAMILY`. No arrows.
+    - The note names only the chart groups. It equates TRY TO CONVINCE RALPH with `BLUFF` (from PowerPyx) and has no `FAMILY` and no `INSIST`.
+    - The template's dialogue suggests a different mapping:
+      - `BLUFF` gets "No… you're not going to leave. Not until Ralph says so." That is not an apology.
+      - `FAMILY` and `[INSIST ABOUT CORPSE]` both end with Ralph apologising, and "Then let us go."
+      - So TRY TO CONVINCE RALPH is more likely `FAMILY` (and `BLUFF` a non-resolving line).
+    - **Template wins for labels.** The chart-node mapping is an operator check.
+    - `THREATEN` has two variants: "No gun: Kara takes a knife" and "Kara has a gun: Kara threatens Ralph with the gun". This answers Q3: THREATEN is always offered. It agrees with the Ralph page and corrects PowerPyx's "If you have your gun on you".
+11. **Connor's interrogation of Ralph (§1 Q35–Q37, §2 D8).**
+    - The template conditions it on Kara's conduct: variant "Kara was nice with Ralph" versus "Kara threatened Ralph". The second variant presumably means this chapter's table threat. The template doesn't say whether a Fugitives threat counts (§8 Q2 stays open).
+    - "Nice" variant:
+      - Observation group "Scan Ralph" with three clues: `PROCESSING LED` | Signs of software instability | Probability of self-destruction: Moderate; `MODEL WR600 - Gardener` | Serial#: 021 753 034 | Status: REPORTED MISSING; `BURN MARK` | Irreversible skin damage | Probable cause: Extreme heat.
+      - Prompt `AX400` / `DEVIANTS` / `REASSURE` / `BLUE BLOOD`.
+    - "Threatened" variant: the same prompt with a fifth option, `PRESSURIZE`, and no scan. Ralph: "She ran out the back door!"
+    - The note has ANALYZE SQUAT ANDROID only as a chart clue node, with no scan text and no interrogation labels. **Template wins.** Add the scan text and the prompt.
+12. **The search hub (§1 Q38–Q46).**
+    - The template gives no observation items for CHECK TABLE / KITCHEN / FIREPLACE / UNDER THE STAIRS. It is silent there, so the chart stands.
+    - "Go upstairs" plays "Is anyone upstairs?" / "No. Nobody.", which agrees with PowerPyx's dead-end CHECK UPSTAIRS. A cut line follows it: "I'm taking you into custody." / "With you?! No! Ralph doesn't wanna go anywhere."
+    - "Take too much time" and "Taking too much time again" are Hank's two calls. The second ends the search ("C'mon, let's get outta here"), with Ralph "Protect the little girl… The humans must not find her." This is HANK COMMANDS CONNOR TO LEAVE.
+    - For the unlabelled Q46, the string table offers `LEAVE THE SQUAT` (`MENU.FLOWCHART.04K.SQUAT.C.LEAVE`), which is not on the note's chart. It is a candidate label, not a proof.
+13. **Squat start, wire cutters (§4, not in the note).** The squat's Connor/Hank opening has a variant "Kara stole wire cutters from the supermarket in Fugitives", in which Connor deduces she is hiding nearby. The note's §4 does not list this dependency. It changes dialogue only.
+14. **Parking-lot start (§1 P21–P22, labels marked "inferred").** The string table confirms `CONNOR INVESTIGATES SUPERMARKET` and `POLICE DON’T HAVE A LEAD`. The template's parking-lot section has the Connor/Hank supermarket dialogue, then a variant "Kara and Alice reach the train station unnoticed". The template has no Kara exploration prompts for the car, and none for hair in any row. It is silent there, so the chart stands.
+15. **Pursuit (§1 H2–H28, §2 D11).**
+    - The template has "Take too much time" ("We lost it." / "Game over, Connor."), which is KARA & ALICE VANISHED.
+    - It has nothing for the partial-run CROSSED THE HIGHWAY, so it is silent there.
+    - `GO` lists three outcome variants: "Connor dies on the highway", "Kara gets hit by a car" (Alice: "Watch out, Kara! NO!") and "Kara escapes and Connor survives".
+    - `GIVE UP` is `ø`. The template doesn't list the obey-path second-lane death, so it is silent there and the chart (H15) stands.
+16. **Ambient lines not in the note.** "Spotted by Police" has four cop lines. Connor asks "Which way did it go?" and a cop answers "That way - they're headed for the train station!". Narration only.
+
+### Discrepancies with the benchmark
+
+These are checked against `benchmark/story.json` 1.6.0 and `benchmark/story-engine.mjs`: option removal at lines 159–161, the `connorDies` helper at line 186, consequences at lines 214–222. The chapter-13 scenes are R13, K09, C09a and C09. K07b is a Fugitives scene, but it carries this chapter's meal and threat. Cut content is not counted.
+
+1. **Missing prompt: motel wake-up.** `BATH?` (Alice SmallUp) / `HUNGRY?` (Alice SmallUp) / `TIRED?` has no scene. The two Alice SmallUp arrows are never applied, and the engine has no Alice change in ch13.
+2. **Missing prompt: motel plans.** `CAN'T STAY HERE` / `FAMILY` / `CONTACT ANDROID` has no scene.
+3. **Missing prompt: CHEER ALICE UP.** `MOVING` / `DETERMINED` / `COMFORTING` / `SUPPORTIVE`, each Alice SmallUp, has no scene, so the arrow is missing.
+4. **R13 motel TV.**
+   - The `publicSupport: -1` on both TV items matches the template's two Public opinion SmallDown arrows.
+   - The template has no "skip" for the broadcast, while R13 offers one through its generic media options. The chart's CHANGE CHANNEL is an action, so this may be acceptable; see §8 Q4.
+   - The Todd-dead fact says "a police search now under way for the android and a child". The broadcast text is "The android fled the scene and a police search is now in progress". There is no child in it. **Template wins.**
+   - Alice's reaction lines (she shot Todd, Kara shot Todd, or Todd is lying) are not used.
+5. **Missing prompt: Connor at the motel desk.** `RATIONAL` / `DIPLOMATIC` / `DIRECT` has no scene. It has no arrow in the template, so leaving out the Hank ↓ agrees with the template (see §10 discrepancy 5 above). The prompt itself is still missing. The motel route has no Connor scene at all: no FOLLOW HANK or CHECK THE DOOR, and the template's "Go into the room: It's gone…" is not narrated.
+6. **Missing prompts in the squat meal.** The benchmark has none of these:
+   - the nested `SIT` / `REFUSE` → `SIT` / `REFUSE` (second `REFUSE` Alice SmallUp);
+   - `[CHECK GUN]` / `WORRIED` / `EXPLAIN` / `AGREE`;
+   - `LIE` (Alice SmallUp) / `TRUTH` (Alice SmallDown);
+   - `[ASK ABOUT CORPSE]` / `[INSIST ABOUT CORPSE]` / `THREATEN` / `BLUFF` / `FAMILY`.
+   That is four live prompts and three Alice arrows missing.
+7. **K07b stands in for the meal, with the wrong arrow and gate.** K07b (Fugitives) folds the meal into one Fugitives scene. Its situation has "a dead rodent he caught for her dinner", and its option 1 is "refuse his food".
+   - The engine applies `alice(+1)` for option 0, "Accept his hospitality and treat him kindly" (line 215). The template's meal arrow is the opposite: Alice SmallUp for **refusing** twice. Whether ch10's template has an Alice arrow for kindness to Ralph is for the ch10 cross-check.
+   - K07b option 2, "Pull the gun on him", sets `ralphHostile`, and `remove(2)` drops it without the gun (line 161). The template's threat is this chapter's table `THREATEN`, which is offered **with or without** the gun (the knife variant). The gate differs.
+8. **Missing unlock: the corpse.** `[ASK ABOUT CORPSE]` needs "Saw the body in the bathroom". The benchmark has no squat-morning scene, no corpse clue and no corpse state.
+9. **Missing clues: Connor's scan of Ralph.** The three observation items (`PROCESSING LED` … Moderate; `MODEL WR600 - Gardener` … REPORTED MISSING; `BURN MARK` … Extreme heat) are absent. C09a has no clue options.
+10. **Missing prompt: Connor's interrogation.** `AX400` / `DEVIANTS` / `REASSURE` / `BLUE BLOOD`, plus `PRESSURIZE` when Kara threatened Ralph. C09a offers instead "Push past him and search upstairs." (risk 0.2) and "Take {{Hank}}'s word for it and leave.". Neither is a template label.
+    - The template's upstairs check is a dead end ("Is anyone upstairs?" / "No. Nobody.").
+    - The template has no failure branch for finding Kara ("Connor finds Kara": Ralph shouts "RUN! QUICK! KARA!").
+    - So C09a's `risk: 0.2`, its failure text ("slashes {{Connor}} and throws him down the stairs") and the failure's `amanda(-1)` (line 221) have no template basis.
+11. **C09a on the threatened path.**
+    - The engine event is "{{Ralph}} tells {{Connor}} they are upstairs". The template line is "She ran out the back door!". **Label differs; template wins.**
+    - The template's threatened variant still contains the five-option prompt. Ralph informs after it, so the informing comes out of the prompt rather than replacing it, and C09a's decision should be the interrogation prompt rather than a removed scene.
+12. **C09 labels.** The game's buttons are `GO` and `GIVE UP`. C09 offers "Do as {{Hank}} says and let them go." and "Go after them across the traffic.". The meaning matches; the labels differ.
+13. **C09 arrows the template does not have.**
+    - Option 0 applies `hank(1)`, `si(1)`, `amanda(-1)`.
+    - Option 1 applies `hank(-1)`, `si(-1)`, `amanda(1)`.
+    - On failure, `connorDies` also applies `si(-1)`, `hank(-1)`, `amanda(-1)`.
+    - The template carries **no** arrow on either button or on Connor's death.
+    - Hank and Software instability are backed by the wiki (§10 discrepancy 6 above, arrow conflict). The Amanda changes are backed by no source at all.
+14. **C09 outcomes.**
+    - The template lists three outcomes for `GO`: Connor dies; Kara gets hit by a car; Kara escapes and Connor survives.
+    - C09 option 1 has only Connor-dies (risk 0.35, with no number in any source) or escape. "Kara gets hit by a car" is missing.
+    - The template's "Take too much time" → KARA & ALICE VANISHED pursuit outcome is also missing: C09 always assumes Connor reached the fence.
+15. **K09.**
+    - The template's street section is a scripted event, "Spotted by Police", followed by "Connor pursues Kara". It has no prompt, and no death outside the highway.
+    - K09 option 1's failure branch ("ran into freeway traffic and were killed", line 220) has no template basis.
+    - K09's situation "{{Todd}} has reported you and the news is calling you a kidnapper" contradicts both broadcasts. Neither mentions a child or a kidnapping, and in the Todd-dead variant there is no Todd to report.
+16. **Wire-cutters variant.** The squat opening depends on whether Kara stole wire cutters in Fugitives. The benchmark has no wire-cutters state. This changes dialogue only, so it is low priority.
+17. **Amanda arrows overall.** The template has no Amanda arrow in ch13. The engine applies Amanda changes in three places: C09a failure, both C09 options, and every `connorDies`.
+
+Totals: 16 discrepancies with sections 1 to 3, and 17 with the benchmark.
