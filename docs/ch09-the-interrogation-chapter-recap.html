@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>The Interrogation · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 9</p>
+<h1>The Interrogation: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Prompts, button labels, lines, clue text and stat arrows come from the game’s own text (the detroitbecometext template and string table, <code>docs/research/ch09-the-interrogation.md</code> section 10); the stress numbers come from the wiki’s and PowerPyx’s stress table. Where the sources are silent or disagree, section 4 says what the benchmark chose.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#table">2 · Every stress step</a></li><li><a href="#arrows">3 · Stat arrows</a></li><li><a href="#differs">4 · Choices made</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>Only if Connor found the android in the attic in Partners (chart tag SUSPECT FOUND IN ‘PARTNERS’).</li>
+<li>OBSERVATION ROOM: Hank gets nothing; Gavin suggests roughing it up; Connor warns that deviants self-destruct under stress and takes over. <b>Stress starts at 35%.</b></li>
+<li>In the room: REVIEW PHOTOS (the case file), the mirror, then sit and ANALYZE (five scans: PROCESSING LED, MODEL HK400, BURN MARKS, HIT MARKS, DRIED BLOOD) or INTERROGATE. The LED scan shows the stress gauge.</li>
+<li>Round 1, two picks: FEAR, SHOW PHOTOS, WOUNDS, NAME. Round 2: COMFORT, REASSURE, THREATEN, BLAME. Round 3, two picks (or one if PROBE MEMORY): SYMPATHIZE, THREATEN, PROBE MEMORY, TRUST.</li>
+<li>“They’re gonna destroy me, aren’t they?” LIE / TRUTH. “Why couldn’t you just have left me there?” LIE / TRUTH. “I don’t wanna die.”</li>
+<li>CHOOSE APPROACH: PRESSURE IT, PROBE ITS MEMORY, CONVINCE IT. After a failure, another approach or GIVE UP; a second failure is an automatic give up.</li>
+<li>PRESSURE IT, then up to four PRESSURE / GIVE UP prompts. All four: he confesses, then self-destructs.</li>
+<li>PROBE ITS MEMORY: a button-mash QTE. Success: Carlos’s voice, “I know what happened”, optional APOLOGETIC / COLD, then self-destruction. Failure: RESIST TO PROBE.</li>
+<li>CONVINCE IT: three sets of three lines; confession only between 50% and 70%.</li>
+<li>ANDROID CONFESSES (Hank up), then questions: WRITING, STATUETTE, OFFERING, rA9, INSIST rA9 (the first three need Partners clues), ATTIC, TRIGGER?.</li>
+<li>Leaving the room: below 70% Chris grabs him (CHRIS INTERVENES); at 100% (probe, too high a confession, four PRESSUREs) he slams his head on the table (ANDROID STARTS SELF-DESTRUCTING).</li>
+<li>Self-destruction: INTERVENE (he shoots Connor and himself) or GIVE UP (he smashes his head).</li>
+<li>Chris’s grab: GIVE UP (he shoots himself, or Connor first) or INTERVENE three times (Gavin draws on Connor, Hank draws on Gavin, he goes back to his cell; “The truth is inside.” after a convinced confession).</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li>Every scene is gated on <code>suspect</code>.</li>
+<li><code>C06o</code> The observation room (event). Hidden <code>ch09Stress</code> = 35.</li>
+<li><code>C06a1</code>…<code>C06a8</code> Inside the interrogation room: one look per visit, one scene id per visit, until INTERROGATE. Scans become facts.</li>
+<li><code>C06b</code>, <code>C06c</code> round 1 (the second without the first line; skipped if only NAME was there). <code>C06d</code> round 2, one pick. <code>C06e</code>, <code>C06f</code> round 3 (<code>C06f</code> skipped after PROBE MEMORY).</li>
+<li><code>C06g</code>, <code>C06h</code> LIE / TRUTH.</li>
+<li><code>C06</code> Choose approach (no GIVE UP). <code>C06r</code> Choose another approach (failed approach removed, GIVE UP added). PROBE ITS MEMORY carries a 10% risk roll.</li>
+<li><code>C06p1</code>…<code>C06p4</code> and <code>C06rp1</code>…<code>C06rp4</code>: the four PRESSURE prompts, per approach round.</li>
+<li><code>C06qs</code> Carlos’s memory (event), <code>C06qr</code> APOLOGETIC / COLD / say nothing.</li>
+<li><code>C06v1</code>…<code>C06v3</code> and <code>C06rv1</code>…<code>C06rv3</code>: the convince sets, per approach round.</li>
+<li><code>C06k</code> The confession (event, Hank +1); <code>C06m1</code>…<code>C06m7</code> one question per scene until none is left, then “I’m done.”</li>
+<li>Above 70% or after four PRESSUREs: <code>C06sd</code> (event) then <code>C06s</code>. Otherwise <code>C07a</code> (event) then <code>C07</code>, <code>C07b</code>, <code>C07c</code>.</li>
+<li>The subject never sees the number; after the LED scan each scene states the gauge band, and each line’s outcome says whether his stress rose or fell.</li>
+</ol></div>
+</div>
+
+<h2 id="table">2 · Every stress step</h2>
+<p class="fine">Wiki and PowerPyx agree except where marked. Values are percentage points; the meter is kept between 0 and 100.</p>
+<div class="table"><table>
+<thead><tr><th>Choice</th><th>Sources</th><th>Benchmark</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Start</td><td class="n">35</td><td class="yes">35</td><td>—</td></tr>
+<tr><td>FEAR</td><td class="n">0</td><td class="yes">0</td><td>needs the LED scan</td></tr>
+<tr><td>SHOW PHOTOS</td><td class="n">+4</td><td class="yes">+4</td><td>needs REVIEW PHOTOS</td></tr>
+<tr><td>WOUNDS</td><td class="n">+4</td><td class="yes">+4</td><td>needs BURN MARKS or HIT MARKS</td></tr>
+<tr><td>NAME</td><td class="n">−4</td><td class="yes">−4</td><td>no response</td></tr>
+<tr><td>COMFORT, REASSURE</td><td class="n">−4</td><td class="yes">−4</td><td>—</td></tr>
+<tr><td>THREATEN, BLAME (round 2)</td><td class="n">+4</td><td class="yes">+4</td><td>—</td></tr>
+<tr><td>SYMPATHIZE, TRUST</td><td class="n">−4</td><td class="yes">−4</td><td>—</td></tr>
+<tr><td>THREATEN (round 3)</td><td class="n">+4</td><td class="yes">+4</td><td>—</td></tr>
+<tr><td>PROBE MEMORY (the threat)</td><td class="n">+8</td><td class="yes">+8</td><td>ends round 3</td></tr>
+<tr><td>LIE / TRUTH (twice)</td><td class="n">−4 / +4</td><td class="yes">−4 / +4</td><td>—</td></tr>
+<tr><td>PRESSURE IT, each PRESSURE</td><td class="n">+10, at most +50</td><td class="yes">+10 each, four PRESSUREs</td><td>all four: confess, then self-destruct</td></tr>
+<tr><td>GIVE UP (pressure)</td><td class="n">wiki −20, PowerPyx −5</td><td class="part">−20</td><td>open conflict</td></tr>
+<tr><td>UNDERSTANDING, SYMPATHIZE, COMFORT, PROTECT</td><td class="n">−7</td><td class="yes">−7</td><td>convince</td></tr>
+<tr><td>THREATEN, ORDER, INDIFFERENT, TERRIFY, WARN</td><td class="n">+7</td><td class="yes">+7</td><td>convince</td></tr>
+<tr><td>Convince succeeds</td><td class="n">50–70</td><td class="yes">50 ≤ stress ≤ 70</td><td>after the third set</td></tr>
+<tr><td>PROBE ITS MEMORY, success</td><td class="n">to 100</td><td class="yes">100</td><td>QTE; 10% failure is the benchmark’s</td></tr>
+<tr><td>Chris grabs him</td><td class="n">rises, “can vary”</td><td class="part">+5</td><td>nothing depends on it</td></tr>
+<tr><td>INTERVENE (first, second)</td><td class="n">about +5, “doesn’t seem to matter”</td><td class="yes">+5</td><td>nothing depends on it</td></tr>
+<tr><td>After the confession</td><td class="n">below 70: Chris; else self-destruct</td><td class="yes">above 70, or four PRESSUREs: self-destruct</td><td>—</td></tr>
+<tr><td>Gauge bands shown to the subject</td><td class="n">TOO LOW, OPTIMAL, TOO HIGH, CRITICAL</td><td class="part">&lt;50, 50–70, 71–89, 90–100</td><td>the 90 boundary is the benchmark’s</td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Stat arrows</h2>
+<div class="table"><table>
+<thead><tr><th>Moment</th><th>Template</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Probe succeeded</td><td>software instability small up</td><td class="yes">instability +1</td></tr>
+<tr><td>Deviant confesses</td><td>Hank small up</td><td class="yes">Hank +1 (<code>C06k</code>)</td></tr>
+<tr><td>Self-destruct, INTERVENE (Connor shot)</td><td>software instability small down</td><td class="yes">instability −1; no Hank or Amanda change</td></tr>
+<tr><td>Chris, GIVE UP, he shoots Connor (stress, no confession)</td><td>software instability small down, Hank small down</td><td class="yes">instability −1, Hank −1</td></tr>
+<tr><td>Third INTERVENE</td><td>Hank small up</td><td class="yes">Hank +1</td></tr>
+<tr><td>Sent back to his cell</td><td>software instability small up</td><td class="yes">instability +1</td></tr>
+<tr><td>Amanda, public opinion</td><td>none in this chapter</td><td class="yes">none (Amanda reacts in Waiting for Hank…)</td></tr>
+</tbody></table></div>
+
+<h2 id="differs">4 · Choices the benchmark made</h2>
+<ul>
+<li><b>GIVE UP in the pressure branch:</b> the wiki’s −20%; PowerPyx says −5%. It only matters if a later convince lands near the band edges.</li>
+<li><b>Round 2 is one pick.</b> No source says how many.</li>
+<li><b>The pressure confession comes only after the fourth PRESSURE</b>, which always ends in self-destruction (wiki: “all 4 times … will confess and then self-destruct”; PowerPyx readers: a pressured confession always self-destructs).</li>
+<li><b>Shoot-Connor rule:</b> GIVE UP on Chris’s grab kills Connor if he chose PRESSURE IT or failed the probe and got no confession (template: “Put deviant under stress and failed to get a confession”; wiki: “pressured him and/or failed to probe his memory”). A reader at 16% stress who chose an approach and gave up was shot, consistent with the flag rather than a stress value.</li>
+<li><b>GIVE UP at the second or third Chris prompt</b> behaves like the first.</li>
+<li><b>Locks:</b> FEAR needs the LED scan, WOUNDS the burn or hit marks (the template locks both on “Analyzed the deviant”).</li>
+<li><b>Partners clues</b> (writing, statuette, rA9 writings) are read from Partners’ state, which does not record them yet; until it does, WRITING, STATUETTE and rA9 are not offered.</li>
+<li><b>“The truth is inside”</b> sets <code>suspectTrusts</code>, and with the statuette examined in Partners also <code>evidence.statueMap</code> (the statue route in Last Chance, Connor).</li>
+<li>No timer is modelled on the self-destruct or Chris prompts; none is published.</li>
+</ul>
+
+<h2 id="endings">5 · Endings</h2>
+<div class="table"><table>
+<thead><tr><th>Chart label</th><th>How</th><th>Carried forward</th></tr></thead>
+<tbody>
+<tr><td>ANDROID SMASHED HIS HEAD</td><td>self-destruction, GIVE UP</td><td>body as evidence (<code>evidence.ortizBody</code>)</td></tr>
+<tr><td>ANDROID SHOT CONNOR AND ITSELF</td><td>self-destruction, INTERVENE; or Chris, GIVE UP after stress without a confession</td><td>Connor replaced (<code>ch09ConnorDied</code>), body as evidence</td></tr>
+<tr><td>ANDROID SHOT ITSELF</td><td>Chris, GIVE UP otherwise</td><td>body as evidence</td></tr>
+<tr><td>ANDROID WAS SENT BACK TO ITS CELL</td><td>Chris, INTERVENE three times</td><td><code>suspectAlive</code>; <code>suspectTrusts</code> after a convinced confession; <code>ch09HankProtected</code></td></tr>
+</tbody></table></div>
+<p>The outcome is stored as <code>ch09Outcome</code>; the confession as <code>ch09Confession</code> and <code>ch09ConfessedVia</code>.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>GIVE UP after PRESSURE: does the gauge drop 20% or 5%?</li>
+<li>How many picks round 2 (COMFORT, REASSURE, THREATEN, BLAME) takes.</li>
+<li>Whether a pressured confession can come before the fourth PRESSURE, for example when stress is already high.</li>
+<li>Whether GIVE UP is offered at the first CHOOSE APPROACH.</li>
+<li>Failed probe, then a successful CONVINCE, then GIVE UP on Chris’s grab: does he shoot Connor (benchmark: no, there was a confession)?</li>
+<li>INTERVENE once, then GIVE UP: who does he shoot?</li>
+<li>Where the gauge turns from TOO HIGH to CRITICAL.</li>
+<li>Whether FEAR and WOUNDS need particular scans or any analysis.</li>
+</ul>
+</main>
+</body>
+</html>

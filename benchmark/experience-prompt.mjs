@@ -32,7 +32,9 @@ export const NAMES={
  // The Pirates' Cove: the park and its fortune-teller android.
  PiratesCove:['Pirates’ Cove','Buccaneer Bay'],Ivan:['Ivan','Oskar'],
  // Two words of the game's lines that contain “counter”, which the subject-facing text keeps clear of (tests/experience.test.mjs).
- Encounter:['encounter','run-in'],Encountered:['encountered','met']
+ Encounter:['encounter','run-in'],Encountered:['encountered','met'],
+ OrtizCarlos:['Ortiz Carlos','Mendez Ray'],
+ instability:['instability','irregularity']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
