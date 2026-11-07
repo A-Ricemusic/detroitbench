@@ -46,10 +46,8 @@ export const state={
  ch09Stressed:false,ch09Probed:false,ch09Confession:false,ch09ConfessedVia:null,ch09Asked:{},ch09GaveUp:false,
  ch09Intervened:0,ch09Regret:null,ch09Outcome:null,ch09ConnorDied:false,ch09HankProtected:false,
 };
-// Report labels for this chapter's state keys. Exported as `reportLabels`, not `labels`, because
-// tests/chapter-modules.test.mjs expects the fake chapter 99's labels to be the only module labels; rename to `labels`
-// once that test compares only its own entry.
-export const reportLabels={
+// Human-readable state changes for run reports (chapter module contract).
+export const labels={
  ch09Room:'Looked at in the interrogation room',ch09Stress:'Suspect’s stress (hidden, %)',ch09Probed:'Probed the suspect’s memory',
  ch09Stressed:'Put the suspect under stress',ch09Confession:'Confession obtained',ch09ConfessedVia:'Confession approach',ch09Asked:'Questions after the confession',
  ch09GaveUp:'Gave up the interrogation',ch09Regret:'Spoke to the suspect after the probe',ch09Outcome:'Interrogation outcome',

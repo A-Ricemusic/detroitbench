@@ -3,7 +3,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,current,promptFor} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';import {random} from '../benchmark/core.mjs';
-import {RULES,OUTCOMES,questionsLeft,bandOf,reportLabels,deathEffect} from '../benchmark/chapters/ch09.mjs';
+import {RULES,OUTCOMES,questionsLeft,bandOf,labels,deathEffect,state as chapterState,consequence as chapterConsequence} from '../benchmark/chapters/ch09.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 const CH9=story.nodes.filter(n=>n.chapter===9),node=id=>story.nodes.find(n=>n.id===id);
 
@@ -33,6 +33,7 @@ test('every chapter 9 scene has sources, a note, the game’s labels and renders
   const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.outcome,o.fact].filter(Boolean)),...(n.facts??[]),...Object.values(n.outcomes??{}),...(n.situationWhen??[]).map(w=>w.text)];
   for(const t of texts)assert.ok(!LEAK.test(render(t,'neutral')),n.id+': '+render(t,'neutral').match(LEAK))}
  const labels=id=>node(id).options.map(o=>o.text.split(':')[0]);
+ for(const id of ['C06b','C06c'])assert.match(node(id).options[1].outcome,/It’s \{\{CarlosOrtiz\}\}\. Stabbed, 28 times\./,'SHOW PHOTOS follows the template transcript');
  assert.deepEqual(labels('C06b'),['FEAR','SHOW PHOTOS','WOUNDS','NAME']);assert.deepEqual(labels('C06d'),['COMFORT','REASSURE','THREATEN','BLAME']);
  assert.deepEqual(labels('C06e'),['SYMPATHIZE','THREATEN','PROBE MEMORY','TRUST']);assert.deepEqual(labels('C06g'),['LIE','TRUTH']);assert.deepEqual(labels('C06h'),['LIE','TRUTH']);
  assert.deepEqual(labels('C06'),['PRESSURE IT','PROBE ITS MEMORY','CONVINCE IT']);assert.deepEqual(labels('C06r'),['PRESSURE IT','PROBE ITS MEMORY','CONVINCE IT','GIVE UP']);
@@ -96,9 +97,10 @@ test('Chris’s grab: GIVE UP without stress or with a confession, the android s
  const later=play({...HIGH,...CONVINCE_OK,C07:'1',C07b:'0'});assert.equal(later.s.ch09Outcome,OUTCOMES.shotSelf,'GIVE UP at the second prompt behaves like the first');
  // Convince fails, then GIVE UP at the second menu: nothing stressful was done, so he shoots only himself (PowerPyx reader report).
  const calm=play({...ROOM,C06:'2',C06r:'3',C07:'0'});assert.match(calm.events.C06v3,/CONVINCE FAILED/);assert.equal(calm.s.ch09GaveUp,true);assert.equal(calm.s.ch09Outcome,OUTCOMES.shotSelf);
- // Pressure abandoned, then a failed probe: an automatic give up, and GIVE UP on the grab kills Connor (the wiki screenshot run).
- const shot=play({...HIGH,C06:'0',C06p1:'1',C06r:'1',C07:'0'},{fails:['C06r']}),b=shot.at9;
- assert.match(shot.events.C06r,/It resisted/);assert.match(shot.events.C06r,/I give up/);assert.equal(shot.s.ch09GaveUp,true);assert.equal(shot.s.ch09Confession,false);
+ // Wiki screenshot order: failed probe, then abandoned pressure, automatic give up, then GIVE UP on the grab.
+ const shot=play({...HIGH,C06:'1',C06r:'0',C06rp1:'1',C07:'0'},{fails:['C06']}),b=shot.at9;
+ assert.deepEqual(['C06h','C06','C06r','C06rp1','C07a','C07'].map(id=>shot.stressAt[id]),[63,63,73,53,58,100]);
+ assert.match(shot.events.C06,/It resisted/);assert.match(shot.events.C06rp1,/I give up/);assert.equal(shot.s.ch09GaveUp,true);assert.equal(shot.s.ch09Confession,false);
  assert.equal(shot.s.ch09Outcome,OUTCOMES.shotBoth);assert.equal(shot.s.ch09ConnorDied,true);assert.equal(shot.s.connorDeaths,b.connorDeaths+1);
  assert.equal(shot.s.instability,b.instability-1);assert.equal(shot.s.hankTrust,b.hankTrust-1);assert.equal(shot.s.amandaTrust,b.amandaTrust);assert.equal(shot.s.connor,true,'a replacement Connor carries on');
  // Three INTERVENEs save him whatever came before, but only a convinced confession earns “The truth is inside”.
@@ -128,7 +130,25 @@ test('randomized chapter 9 paths are forward-only: no scene twice, every scene v
  const rng=random(9),seen=new Set,endings=new Set;
  for(let i=0;i<300;i++){const r=play({C05:'0'},{rng,setup:i%2?ALL_CLUES:{},fails:rng()<0.3?['C06','C06r']:[]});const ids=v9(r);assert.equal(new Set(ids).size,ids.length,'a chapter 9 scene repeated');
   for(const id of ids)seen.add(id);endings.add(r.s.ch09Outcome);assert.ok(Object.values(OUTCOMES).includes(r.s.ch09Outcome),'every path ends: '+r.s.ch09Outcome);
-  assert.ok(r.s.ch09Stress>=0&&r.s.ch09Stress<=100)}
+  assert.ok(r.s.ch09Stress>=0&&r.s.ch09Stress<=100);assert.equal(r.s.amandaTrust,r.at9.amandaTrust,'no Amanda arrow on any route');assert.equal(r.s.publicSupport,r.at9.publicSupport,'no public opinion arrow on any route')}
  for(const n of CH9)assert.ok(seen.has(n.id),'never reached '+n.id);assert.equal(endings.size,4)});
 
-test('report labels exist for the chapter’s state keys',()=>{for(const k of ['ch09Stress','ch09Outcome','ch09Confession','ch09ConnorDied'])assert.ok(reportLabels[k],k)});
+test('report labels exist for the chapter’s state keys',()=>{for(const k of ['ch09Stress','ch09Outcome','ch09Confession','ch09ConnorDied'])assert.ok(labels[k],k)});
+
+// Independent module-level replay of the wiki stress table; assert every running value, not just the ending.
+test('wiki stress sequences and exact confession/self-destruct boundaries',()=>{
+ const h={si:()=>{},hank:()=>{}};
+ const sequence=(steps,expected)=>{const s={...structuredClone(chapterState),evidence:{},ch09Room:{led:true}},values=[];
+  for(const [id,c] of steps){const n=node(id);chapterConsequence(n,s,n.options.find(o=>o.id===c),c,false,h);values.push(s.ch09Stress)}
+  assert.deepEqual(values,expected);return s};
+ const high=[['C06b','2'],['C06c','1'],['C06d','2'],['C06e','1'],['C06f','2'],['C06g','1'],['C06h','1']];
+ sequence([...high,['C06','2'],['C06v1','0'],['C06v2','0'],['C06v3','0']],[39,43,47,51,59,63,67,67,60,53,46]);
+ sequence([...high,['C06','0'],['C06p1','0'],['C06p2','1']],[39,43,47,51,59,63,67,77,87,67]);
+ const low=[['C06b','3'],['C06c','0'],['C06d','0'],['C06e','0'],['C06f','3'],['C06g','0'],['C06h','0']];
+ const s=sequence([...low,['C06','0'],...Array.from({length:4},(_,i)=>['C06p'+(i+1),'0'])],[31,31,27,23,19,15,11,21,31,41,51,61]);
+ assert.equal(s.ch09Confession,true);assert.equal(sequence([['C06','1']],[100]).ch09Probed,true);
+ for(const stress of [49,50,70,71]){const s={...structuredClone(chapterState),ch09Stress:stress-7,ch09ConvinceStep:2};
+  chapterConsequence(node('C06v3'),s,node('C06v3').options[1],'1',false,h);assert.equal(s.ch09Confession,stress>=50&&stress<=70)}
+ for(const stress of [70,71,100]){const s={...structuredClone(chapterState),ch09Stress:stress,ch09Asked:{'5':true}};
+  chapterConsequence(node('C06m2'),s,node('C06m2').options[6],'6',false,h);assert.equal(s.ch09Phase,stress>70?'selfDestruct':'chris')}
+});
