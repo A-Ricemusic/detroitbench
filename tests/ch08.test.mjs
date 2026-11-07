@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor} from '../benchmark/story-engine.mjs';
 import {render} from '../benchmark/experience-prompt.mjs';
-import {ENDINGS,PUSH,ENDURE} from '../benchmark/chapters/ch08.mjs';
+import {ENDINGS,PUSH,ENDURE,labels} from '../benchmark/chapters/ch08.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 const ch8=story.nodes.filter(n=>n.chapter===8);
 // Plays from the start with the first option everywhere unless picked, and stops after chapter 8.
@@ -54,6 +54,10 @@ test('Broken: PUSH LEO hurts Leo, asks the follow-up, and ends with POLICE MISTO
   assert.equal(r.s.carl,true);assert.equal(r.s.ch08Leo,'hurt');assert.equal(r.s.ch08Ending,ENDINGS.push);assert.equal(r.s.ch08Ending,'Police mistook Markus for the aggressor');
   assert.equal(r.s.markus,true);
  }
+});
+
+test('Broken: the module labels its two state keys for run reports',()=>{
+ assert.deepEqual(labels,{ch08Leo:'Leo after Broken',ch08Ending:'Broken ending'});
 });
 
 test('Broken: the earlier choices change only the lines, never the state',()=>{

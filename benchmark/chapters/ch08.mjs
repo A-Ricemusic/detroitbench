@@ -20,9 +20,8 @@ export const ENDURE='0',PUSH='1';   // the chart's order: OBEY CARL (button ENDU
 export const ENDINGS={endure:'Leo accused Markus',push:'Police mistook Markus for the aggressor'};
 
 export const state={ch08Leo:null,ch08Ending:null};
-// No `labels` export yet: tests/chapter-modules.test.mjs asserts that the fake chapter 99's labels are the only chapter
-// labels, so any real chapter's labels fail it. Once that test is relaxed, add
-// labels={ch08Leo:'Leo after Broken',ch08Ending:'Broken ending'} so reports list these keys among the state changes.
+// Report labels for the two keys, so a run report lists them among the state changes (`carl` is labelled by the engine).
+export const labels={ch08Leo:'Leo after Broken',ch08Ending:'Broken ending'};
 export const rules={PUSH,ENDURE,ENDINGS};
 
 export function consequence(n,s,opt,choice,fail,h){
