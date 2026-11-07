@@ -3,39 +3,592 @@
   "id": 22,
   "title": "The Bridge",
   "character": "Connor",
-  "note": "",
-  "source": "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/"
+  "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (17 nodes), the detroitbecometext template and string table (12 prompts, 41 options, 29 arrows) and the Fandom wiki (chapter page, Relationship Stat, Software Instability, Hank and Connor pages). AMBASSADOR BRIDGE → LEAVE CAR → two magazines → TALK TO HANK (with DISCUSS PHOTO / DISCUSS RUSSIAN ROULETTE / DISCUSS RA9) → the Traci rounds in the variant the Eden Club outcome selects → HANK DRAWS GUN → SHOW FEAR / SHOW NO FEAR / REMAIN LOGICAL / BE COLD → the trigger round → HANK IS PLACATED → HANK LEFT CONNOR ALONE, or HANK IS HOSTILE → HANK SHOT CONNOR when Hank is Hostile after the last answer. No probability, timer or public-opinion change. Researched in docs/research/ch22-the-bridge.md.",
+  "source": "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+   "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-4.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+   "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+  ]
  },
  "decisions": [
+  {
+   "id": "C13a",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "Ambassador Bridge (checkpoint) and Leave Car",
+   "context": "November 7, 2038, 01:19AM, Riverside Park. Hank drives Connor to the river after the Eden Club and sits on a bench facing the Ambassador Bridge, drinking.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The start node and the first action.",
+     "target": "R22"
+    }
+   ],
+   "gate": "Chapter start, after The Pirates’ Cove.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Riverside_Park"
+   ],
+   "note": "Chart nodes AMBASSADOR BRIDGE (checkpoint) and LEAVE CAR.",
+   "benchmark": {
+    "scenes": [
+     "C13a"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with one fact; no stat change."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "R22",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "Read the bench magazines",
+   "context": "Two magazines on the bench straight ahead of the car, readable only before talking to Hank.",
+   "options": [
+    {
+     "label": "READ “MYSTERIOUS KAMSKI”",
+     "effect": "Century: Kamski, Man of the Century in 2028, blue blood and biocomponents, left CyberLife over strategy, lives by the water with androids.",
+     "target": null
+    },
+    {
+     "label": "READ “MARKETS PREDICT WAR”",
+     "effect": "Detroit Today: stocks fall 10% on fear of an Arctic war; military stocks and CyberLife up on defense contracts.",
+     "target": null
+    },
+    {
+     "label": "Leave them",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, before TALK TO HANK (“no way back after that”).",
+   "kind": "State gate",
+   "dependsOn": [
+    "C13a"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine"
+   ],
+   "note": "No public opinion or stat effect.",
+   "benchmark": {
+    "scenes": [
+     "R22"
+    ],
+    "status": "implemented",
+    "note": "A media scene with both magazines; facts from the game’s article text."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13b",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "Talk to Hank",
+   "context": "Hank: “Nice view, huh?... I used to come here a lot before…”",
+   "options": [
+    {
+     "label": "PERSONAL QUESTION",
+     "effect": "With Cole’s photo seen in Russian Roulette, opens PHOTO / SUICIDE; without it, Connor asks the SUICIDE question at once (DISCUSS RUSSIAN ROULETTE).",
+     "target": "C13c"
+    },
+    {
+     "label": "STOP DRINKING",
+     "effect": "“That’s the idea.” No effect.",
+     "target": null
+    },
+    {
+     "label": "BEFORE",
+     "effect": "“Before… Before nothin’…” No effect.",
+     "target": null
+    },
+    {
+     "label": "GO BACK",
+     "effect": "“I’m not tired… Guess neither are you.” No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Always.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "R22"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg"
+   ],
+   "note": "Chart node TALK TO HANK. No arrows.",
+   "benchmark": {
+    "scenes": [
+     "C13b"
+    ],
+    "status": "implemented",
+    "note": "Game labels and lines; the no-photo SUICIDE exchange plays in the outcome."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13c",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "Discuss Photo or Discuss Russian Roulette",
+   "context": "Hank: “Do all androids ask so many personal questions or is it just you?”",
+   "options": [
+    {
+     "label": "PHOTO",
+     "effect": "“His name was Cole.” Hank small down. DISCUSS PHOTO.",
+     "target": null
+    },
+    {
+     "label": "SUICIDE",
+     "effect": "Hank explains he kills himself “a little every day”. No arrow. DISCUSS RUSSIAN ROULETTE.",
+     "target": null
+    }
+   ],
+   "gate": "PERSONAL QUESTION, and the photo seen in Russian Roulette (chart tab PHOTO SEEN IN ‘RUSSIAN ROULETTE’; knowsCole).",
+   "kind": "Relationship",
+   "dependsOn": [
+    "C13b"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart nodes DISCUSS PHOTO and DISCUSS RUSSIAN ROULETTE.",
+   "benchmark": {
+    "scenes": [
+     "C13c"
+    ],
+    "status": "implemented",
+    "note": "PHOTO requires knowsCole; Hank −1."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13d",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "Discuss rA9 (the investigation)",
+   "context": "Connor: “The deviants have nothing in common.” Hank: “Well, there must be some link.”",
+   "options": [
+    {
+     "label": "rA9",
+     "effect": "“Androids believing in God…” DISCUSS RA9. Locked: “Looked at rA9 clues in previous chapters”.",
+     "target": null
+    },
+    {
+     "label": "SHOCK",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "SYSTEMS",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "SOFTWARE",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Always; rA9 only after earlier rA9 clues.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C13b"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/RA9"
+   ],
+   "note": "No source says which clues unlock rA9.",
+   "benchmark": {
+    "scenes": [
+     "C13d"
+    ],
+    "status": "simplified",
+    "note": "rA9 is offered when Connor’s knowledge or a state flag names rA9 (defensive read; no earlier chapter records the clues yet)."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13e",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "The Tracis (Hank is preoccupied)",
+   "context": "Connor: “Is it something to do with what happened back at the Eden Club?” Found: “They really seemed in love…” Not found: “Maybe she was just defending herself…”",
+   "options": [
+    {
+     "label": "RATIONAL",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "DEVIANTS",
+     "effect": "No effect (found variant only).",
+     "target": null
+    },
+    {
+     "label": "IRONIC",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "COLD",
+     "effect": "Hank small down, instability small down (both variants).",
+     "target": null
+    }
+   ],
+   "gate": "Variant by the Eden Club outcome: found (any Traci ending) or MISSION FAILED.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "C13d"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club"
+   ],
+   "note": "The template gives the not-found COLD an instability arrow that the wiki Notes deny; the template wins.",
+   "benchmark": {
+    "scenes": [
+     "C13e",
+     "C13f"
+    ],
+    "status": "implemented",
+    "note": "Two scenes, one per variant."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13g",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "What are you really?",
+   "context": "Hank: “You look human, you sound human, but what are you really?”",
+   "options": [
+    {
+     "label": "COLD",
+     "effect": "Hank small down, instability small down.",
+     "target": null
+    },
+    {
+     "label": "AGGRESSIVE",
+     "effect": "Hank small down, instability small down.",
+     "target": null
+    },
+    {
+     "label": "DEFENSIVE",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "NEUTRAL",
+     "effect": "Hank small up.",
+     "target": null
+    }
+   ],
+   "gate": "Always.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "C13e"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ],
+   "note": "",
+   "benchmark": {
+    "scenes": [
+     "C13g"
+    ],
+    "status": "implemented",
+    "note": "Template arrows as option effects."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13h",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "Hank asks about the Tracis’ fate",
+   "context": "Four variants by the Eden Club outcome.",
+   "options": [
+    {
+     "label": "Spared: LIE / TRUTH",
+     "effect": "LIE Hank small down; TRUTH Hank small up and instability small up (once, not the wiki’s x2).",
+     "target": null
+    },
+    {
+     "label": "Shot in the back: COLD / DEFENSIVE / AGGRESSIVE / NEUTRAL",
+     "effect": "COLD and NEUTRAL Hank and instability small down; AGGRESSIVE Hank small down.",
+     "target": null
+    },
+    {
+     "label": "Shot one: DISTURBED / COLD",
+     "effect": "DISTURBED instability small up; COLD Hank and instability small down.",
+     "target": null
+    },
+    {
+     "label": "Not found: DEFENSIVE / CYNICAL / UNDERSTANDING / NEUTRAL",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Eden Club: DEVIANTS ESCAPED, CONNOR SHOT DEVIANTS, DEVIANTS DIED or MISSION FAILED.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "C13g"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ],
+   "note": "Replaces the old static “why you let those two go”.",
+   "benchmark": {
+    "scenes": [
+     "C13h",
+     "C13i",
+     "C13j",
+     "C13k"
+    ],
+    "status": "implemented",
+    "note": "One scene per variant; the Eden Club outcome is read defensively (edenOutcome chart label first, then edenTracis escaped/dead/notFound, then older chart-label flags or the legacy C12 choice)."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13l",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "Hank Draws Gun",
+   "context": "Hank points his gun at Connor’s head; if Connor died before: “I could kill you... And you would just come back as if nothing happened.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Always happens.",
+     "target": "C13"
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C13h"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+   ],
+   "note": "Chart node HANK DRAWS GUN.",
+   "benchmark": {
+    "scenes": [
+     "C13l"
+    ],
+    "status": "implemented",
+    "note": "The death line reads connorDeaths ≥ 1."
+   },
+   "status": "Source-backed summary"
+  },
   {
    "id": "C13",
    "chapter": 22,
    "character": "Connor",
-   "title": "What is Connor to Hank?",
-   "context": "Hank challenges Connor about life, fear and earlier killings.",
+   "title": "Are you afraid to die?",
+   "context": "Hank: “But are you afraid to die, Connor?”",
    "options": [
     {
-     "label": "Respond with vulnerability or doubt",
-     "effect": "Can strengthen their relationship.",
+     "label": "YES (SHOW FEAR)",
+     "effect": "Instability small up.",
      "target": null
     },
     {
-     "label": "Insist on a purely machine identity",
-     "effect": "Can deepen hostility.",
+     "label": "NO (SHOW NO FEAR)",
+     "effect": "Hank and instability small down.",
+     "target": null
+    },
+    {
+     "label": "NOT ALIVE (BE COLD?)",
+     "effect": "Hank and instability small down.",
+     "target": null
+    },
+    {
+     "label": "LOGICAL (REMAIN LOGICAL?)",
+     "effect": "Hank and instability small down.",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Ethical",
+   "gate": "Always.",
+   "kind": "Pivotal",
    "dependsOn": [
-    "C08",
-    "C10",
-    "C12"
+    "C13l"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg"
    ],
-   "note": "If cumulative hostility is high, Hank can shoot Connor. No single reply universally determines this result.",
+   "note": "The mapping of NOT ALIVE and LOGICAL to REMAIN LOGICAL and BE COLD is unsettled; only the label differs.",
+   "benchmark": {
+    "scenes": [
+     "C13"
+    ],
+    "status": "implemented",
+    "note": "Four game answers; the old Hank +1 on the fearful answer is removed."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13m",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "What will happen if I pull this trigger?",
+   "context": "Hank: “Nothing? Oblivion? Android heaven?”",
+   "options": [
+    {
+     "label": "DEFY",
+     "effect": "Hank small down.",
+     "target": null
+    },
+    {
+     "label": "HANK’S ANGER",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "IRONIC",
+     "effect": "No effect.",
+     "target": null
+    },
+    {
+     "label": "NOTHING",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Always.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "C13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ],
+   "note": "Off the chart.",
+   "benchmark": {
+    "scenes": [
+     "C13m"
+    ],
+    "status": "implemented",
+    "note": "Hank’s level is read after this answer."
+   },
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C13n",
+   "chapter": 22,
+   "character": "Connor",
+   "title": "Hank Left Connor Alone or Hank Shot Connor",
+   "context": "Decided by Hank’s cumulative relationship at the end of the conversation, not by any one answer.",
+   "options": [
+    {
+     "label": "HANK IS PLACATED → HANK LEFT CONNOR ALONE",
+     "effect": "Hank not Hostile: “To get drunker. I need to think.” Public Enemy: Hank confiscates the coin.",
+     "target": null
+    },
+    {
+     "label": "HANK IS HOSTILE → HANK SHOT CONNOR",
+     "effect": "Hank Hostile: he shoots Connor in the head; Connor is replaced; Hank small down. Public Enemy: “Why did you shoot me last night?”",
+     "target": null
+    }
+   ],
+   "gate": "Hank’s level after the last answer (Hostile or not).",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C13m"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson",
+    "https://detroit-become-human.fandom.com/wiki/I%27LL_BE_BACK"
+   ],
+   "note": "The death has no listed instability change and no Amanda change.",
+   "benchmark": {
+    "scenes": [
+     "C13n",
+     "C13o"
+    ],
+    "status": "implemented",
+    "note": "Event scenes gated on LEVELS.hank; the death goes through connorDies with this chapter’s death effect (Hank −1 only). Outputs bridgeOutcome and bridgeHankShot."
+   },
    "status": "Source-backed summary"
   }
  ]

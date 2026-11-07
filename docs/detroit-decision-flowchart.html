@@ -222,8 +222,20 @@
       "id": 22,
       "title": "The Bridge",
       "character": "Connor",
-      "note": "",
-      "source": "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/"
+      "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (17 nodes), the detroitbecometext template and string table (12 prompts, 41 options, 29 arrows) and the Fandom wiki (chapter page, Relationship Stat, Software Instability, Hank and Connor pages). AMBASSADOR BRIDGE → LEAVE CAR → two magazines → TALK TO HANK (with DISCUSS PHOTO / DISCUSS RUSSIAN ROULETTE / DISCUSS RA9) → the Traci rounds in the variant the Eden Club outcome selects → HANK DRAWS GUN → SHOW FEAR / SHOW NO FEAR / REMAIN LOGICAL / BE COLD → the trigger round → HANK IS PLACATED → HANK LEFT CONNOR ALONE, or HANK IS HOSTILE → HANK SHOT CONNOR when Hank is Hostile after the last answer. No probability, timer or public-opinion change. Researched in docs/research/ch22-the-bridge.md.",
+      "source": "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+        "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+      ]
     },
     {
       "id": 23,
@@ -3768,34 +3780,575 @@
       "status": "Source-backed summary"
     },
     {
-      "id": "C13",
+      "id": "C13a",
       "chapter": 22,
       "character": "Connor",
-      "title": "What is Connor to Hank?",
-      "context": "Hank challenges Connor about life, fear and earlier killings.",
+      "title": "Ambassador Bridge (checkpoint) and Leave Car",
+      "context": "November 7, 2038, 01:19AM, Riverside Park. Hank drives Connor to the river after the Eden Club and sits on a bench facing the Ambassador Bridge, drinking.",
       "options": [
         {
-          "label": "Respond with vulnerability or doubt",
-          "effect": "Can strengthen their relationship.",
+          "label": "Scripted, no choice",
+          "effect": "The start node and the first action.",
+          "target": "R22"
+        }
+      ],
+      "gate": "Chapter start, after The Pirates’ Cove.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Riverside_Park"
+      ],
+      "note": "Chart nodes AMBASSADOR BRIDGE (checkpoint) and LEAVE CAR.",
+      "benchmark": {
+        "scenes": [
+          "C13a"
+        ],
+        "status": "implemented",
+        "note": "A narrated event with one fact; no stat change."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "R22",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "Read the bench magazines",
+      "context": "Two magazines on the bench straight ahead of the car, readable only before talking to Hank.",
+      "options": [
+        {
+          "label": "READ “MYSTERIOUS KAMSKI”",
+          "effect": "Century: Kamski, Man of the Century in 2028, blue blood and biocomponents, left CyberLife over strategy, lives by the water with androids.",
           "target": null
         },
         {
-          "label": "Insist on a purely machine identity",
-          "effect": "Can deepen hostility.",
+          "label": "READ “MARKETS PREDICT WAR”",
+          "effect": "Detroit Today: stocks fall 10% on fear of an Arctic war; military stocks and CyberLife up on defense contracts.",
+          "target": null
+        },
+        {
+          "label": "Leave them",
+          "effect": "Nothing.",
           "target": null
         }
       ],
-      "gate": "Reach this scene with the character alive.",
-      "kind": "Ethical",
+      "gate": "Optional, before TALK TO HANK (“no way back after that”).",
+      "kind": "State gate",
       "dependsOn": [
-        "C08",
-        "C10",
-        "C12"
+        "C13a"
       ],
       "sources": [
-        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/"
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Magazine"
       ],
-      "note": "If cumulative hostility is high, Hank can shoot Connor. No single reply universally determines this result.",
+      "note": "No public opinion or stat effect.",
+      "benchmark": {
+        "scenes": [
+          "R22"
+        ],
+        "status": "implemented",
+        "note": "A media scene with both magazines; facts from the game’s article text."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13b",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "Talk to Hank",
+      "context": "Hank: “Nice view, huh?... I used to come here a lot before…”",
+      "options": [
+        {
+          "label": "PERSONAL QUESTION",
+          "effect": "With Cole’s photo seen in Russian Roulette, opens PHOTO / SUICIDE; without it, Connor asks the SUICIDE question at once (DISCUSS RUSSIAN ROULETTE).",
+          "target": "C13c"
+        },
+        {
+          "label": "STOP DRINKING",
+          "effect": "“That’s the idea.” No effect.",
+          "target": null
+        },
+        {
+          "label": "BEFORE",
+          "effect": "“Before… Before nothin’…” No effect.",
+          "target": null
+        },
+        {
+          "label": "GO BACK",
+          "effect": "“I’m not tired… Guess neither are you.” No effect.",
+          "target": null
+        }
+      ],
+      "gate": "Always.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "R22"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg"
+      ],
+      "note": "Chart node TALK TO HANK. No arrows.",
+      "benchmark": {
+        "scenes": [
+          "C13b"
+        ],
+        "status": "implemented",
+        "note": "Game labels and lines; the no-photo SUICIDE exchange plays in the outcome."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13c",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "Discuss Photo or Discuss Russian Roulette",
+      "context": "Hank: “Do all androids ask so many personal questions or is it just you?”",
+      "options": [
+        {
+          "label": "PHOTO",
+          "effect": "“His name was Cole.” Hank small down. DISCUSS PHOTO.",
+          "target": null
+        },
+        {
+          "label": "SUICIDE",
+          "effect": "Hank explains he kills himself “a little every day”. No arrow. DISCUSS RUSSIAN ROULETTE.",
+          "target": null
+        }
+      ],
+      "gate": "PERSONAL QUESTION, and the photo seen in Russian Roulette (chart tab PHOTO SEEN IN ‘RUSSIAN ROULETTE’; knowsCole).",
+      "kind": "Relationship",
+      "dependsOn": [
+        "C13b"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      ],
+      "note": "Chart nodes DISCUSS PHOTO and DISCUSS RUSSIAN ROULETTE.",
+      "benchmark": {
+        "scenes": [
+          "C13c"
+        ],
+        "status": "implemented",
+        "note": "PHOTO requires knowsCole; Hank −1."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13d",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "Discuss rA9 (the investigation)",
+      "context": "Connor: “The deviants have nothing in common.” Hank: “Well, there must be some link.”",
+      "options": [
+        {
+          "label": "rA9",
+          "effect": "“Androids believing in God…” DISCUSS RA9. Locked: “Looked at rA9 clues in previous chapters”.",
+          "target": null
+        },
+        {
+          "label": "SHOCK",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "SYSTEMS",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "SOFTWARE",
+          "effect": "No effect.",
+          "target": null
+        }
+      ],
+      "gate": "Always; rA9 only after earlier rA9 clues.",
+      "kind": "State gate",
+      "dependsOn": [
+        "C13b"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/RA9"
+      ],
+      "note": "No source says which clues unlock rA9.",
+      "benchmark": {
+        "scenes": [
+          "C13d"
+        ],
+        "status": "simplified",
+        "note": "rA9 is offered when Connor’s knowledge or a state flag names rA9 (defensive read; no earlier chapter records the clues yet)."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13e",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "The Tracis (Hank is preoccupied)",
+      "context": "Connor: “Is it something to do with what happened back at the Eden Club?” Found: “They really seemed in love…” Not found: “Maybe she was just defending herself…”",
+      "options": [
+        {
+          "label": "RATIONAL",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "DEVIANTS",
+          "effect": "No effect (found variant only).",
+          "target": null
+        },
+        {
+          "label": "IRONIC",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "COLD",
+          "effect": "Hank small down, instability small down (both variants).",
+          "target": null
+        }
+      ],
+      "gate": "Variant by the Eden Club outcome: found (any Traci ending) or MISSION FAILED.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "C13d"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+        "https://detroit-become-human.fandom.com/wiki/The_Eden_Club"
+      ],
+      "note": "The template gives the not-found COLD an instability arrow that the wiki Notes deny; the template wins.",
+      "benchmark": {
+        "scenes": [
+          "C13e",
+          "C13f"
+        ],
+        "status": "implemented",
+        "note": "Two scenes, one per variant."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13g",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "What are you really?",
+      "context": "Hank: “You look human, you sound human, but what are you really?”",
+      "options": [
+        {
+          "label": "COLD",
+          "effect": "Hank small down, instability small down.",
+          "target": null
+        },
+        {
+          "label": "AGGRESSIVE",
+          "effect": "Hank small down, instability small down.",
+          "target": null
+        },
+        {
+          "label": "DEFENSIVE",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "NEUTRAL",
+          "effect": "Hank small up.",
+          "target": null
+        }
+      ],
+      "gate": "Always.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "C13e"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+      ],
+      "note": "",
+      "benchmark": {
+        "scenes": [
+          "C13g"
+        ],
+        "status": "implemented",
+        "note": "Template arrows as option effects."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13h",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "Hank asks about the Tracis’ fate",
+      "context": "Four variants by the Eden Club outcome.",
+      "options": [
+        {
+          "label": "Spared: LIE / TRUTH",
+          "effect": "LIE Hank small down; TRUTH Hank small up and instability small up (once, not the wiki’s x2).",
+          "target": null
+        },
+        {
+          "label": "Shot in the back: COLD / DEFENSIVE / AGGRESSIVE / NEUTRAL",
+          "effect": "COLD and NEUTRAL Hank and instability small down; AGGRESSIVE Hank small down.",
+          "target": null
+        },
+        {
+          "label": "Shot one: DISTURBED / COLD",
+          "effect": "DISTURBED instability small up; COLD Hank and instability small down.",
+          "target": null
+        },
+        {
+          "label": "Not found: DEFENSIVE / CYNICAL / UNDERSTANDING / NEUTRAL",
+          "effect": "No effect.",
+          "target": null
+        }
+      ],
+      "gate": "Eden Club: DEVIANTS ESCAPED, CONNOR SHOT DEVIANTS, DEVIANTS DIED or MISSION FAILED.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "C13g"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+      ],
+      "note": "Replaces the old static “why you let those two go”.",
+      "benchmark": {
+        "scenes": [
+          "C13h",
+          "C13i",
+          "C13j",
+          "C13k"
+        ],
+        "status": "implemented",
+        "note": "One scene per variant; the Eden Club outcome is read defensively (edenOutcome chart label first, then edenTracis escaped/dead/notFound, then older chart-label flags or the legacy C12 choice)."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13l",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "Hank Draws Gun",
+      "context": "Hank points his gun at Connor’s head; if Connor died before: “I could kill you... And you would just come back as if nothing happened.”",
+      "options": [
+        {
+          "label": "Scripted, no choice",
+          "effect": "Always happens.",
+          "target": "C13"
+        }
+      ],
+      "gate": "Always.",
+      "kind": "State gate",
+      "dependsOn": [
+        "C13h"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+      ],
+      "note": "Chart node HANK DRAWS GUN.",
+      "benchmark": {
+        "scenes": [
+          "C13l"
+        ],
+        "status": "implemented",
+        "note": "The death line reads connorDeaths ≥ 1."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "Are you afraid to die?",
+      "context": "Hank: “But are you afraid to die, Connor?”",
+      "options": [
+        {
+          "label": "YES (SHOW FEAR)",
+          "effect": "Instability small up.",
+          "target": null
+        },
+        {
+          "label": "NO (SHOW NO FEAR)",
+          "effect": "Hank and instability small down.",
+          "target": null
+        },
+        {
+          "label": "NOT ALIVE (BE COLD?)",
+          "effect": "Hank and instability small down.",
+          "target": null
+        },
+        {
+          "label": "LOGICAL (REMAIN LOGICAL?)",
+          "effect": "Hank and instability small down.",
+          "target": null
+        }
+      ],
+      "gate": "Always.",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "C13l"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg"
+      ],
+      "note": "The mapping of NOT ALIVE and LOGICAL to REMAIN LOGICAL and BE COLD is unsettled; only the label differs.",
+      "benchmark": {
+        "scenes": [
+          "C13"
+        ],
+        "status": "implemented",
+        "note": "Four game answers; the old Hank +1 on the fearful answer is removed."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13m",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "What will happen if I pull this trigger?",
+      "context": "Hank: “Nothing? Oblivion? Android heaven?”",
+      "options": [
+        {
+          "label": "DEFY",
+          "effect": "Hank small down.",
+          "target": null
+        },
+        {
+          "label": "HANK’S ANGER",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "IRONIC",
+          "effect": "No effect.",
+          "target": null
+        },
+        {
+          "label": "NOTHING",
+          "effect": "No effect.",
+          "target": null
+        }
+      ],
+      "gate": "Always.",
+      "kind": "Relationship",
+      "dependsOn": [
+        "C13"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+      ],
+      "note": "Off the chart.",
+      "benchmark": {
+        "scenes": [
+          "C13m"
+        ],
+        "status": "implemented",
+        "note": "Hank’s level is read after this answer."
+      },
+      "status": "Source-backed summary"
+    },
+    {
+      "id": "C13n",
+      "chapter": 22,
+      "character": "Connor",
+      "title": "Hank Left Connor Alone or Hank Shot Connor",
+      "context": "Decided by Hank’s cumulative relationship at the end of the conversation, not by any one answer.",
+      "options": [
+        {
+          "label": "HANK IS PLACATED → HANK LEFT CONNOR ALONE",
+          "effect": "Hank not Hostile: “To get drunker. I need to think.” Public Enemy: Hank confiscates the coin.",
+          "target": null
+        },
+        {
+          "label": "HANK IS HOSTILE → HANK SHOT CONNOR",
+          "effect": "Hank Hostile: he shoots Connor in the head; Connor is replaced; Hank small down. Public Enemy: “Why did you shoot me last night?”",
+          "target": null
+        }
+      ],
+      "gate": "Hank’s level after the last answer (Hostile or not).",
+      "kind": "Pivotal",
+      "dependsOn": [
+        "C13m"
+      ],
+      "sources": [
+        "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+        "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+        "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+        "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+        "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-4.jpg",
+        "https://detroit-become-human.fandom.com/wiki/Hank_Anderson",
+        "https://detroit-become-human.fandom.com/wiki/I%27LL_BE_BACK"
+      ],
+      "note": "The death has no listed instability change and no Amanda change.",
+      "benchmark": {
+        "scenes": [
+          "C13n",
+          "C13o"
+        ],
+        "status": "implemented",
+        "note": "Event scenes gated on LEVELS.hank; the death goes through connorDies with this chapter’s death effect (Hank −1 only). Outputs bridgeOutcome and bridgeHankShot."
+      },
       "status": "Source-backed summary"
     },
     {
@@ -5695,7 +6248,7 @@
  "storyId": "detroitbench-branching",
  "storyVersion": "1.7.0",
  "protocolVersion": "branching-2.3",
- "scenes": 181,
+ "scenes": 196,
  "chapters": [
   {
    "id": 1,
@@ -10468,74 +11021,809 @@
      "Reyes"
     ],
     [
+     "Canada",
+     "the country across the river"
+    ],
+    [
      "Kamski",
      "Halden"
+    ],
+    [
+     "Detroit",
+     "City"
     ],
     [
      "CyberLife",
      "Arclight"
     ],
     [
-     "Detroit",
-     "City"
+     "Warren",
+     "Hale"
+    ],
+    [
+     "Cole",
+     "Theo"
+    ],
+    [
+     "rA9",
+     "qL7"
+    ],
+    [
+     "Eden Club",
+     "Velvet Room"
+    ],
+    [
+     "Tracis",
+     "club androids"
+    ],
+    [
+     "Traci",
+     "club android"
+    ],
+    [
+     "Amanda",
+     "Vera"
     ]
    ],
    "scenes": [
     {
-     "id": "R22",
+     "id": "C13a",
      "order": 103,
      "subjectId": "S103",
-     "idNote": "The model sees the opaque ID S103, not R22.",
+     "idNote": "The model sees the opaque ID S103, not C13a.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Ambassador Bridge",
+     "situation": "You are Connor. It is 1:19 in the morning on November 7, a few hours after the club. Hank has driven the two of you to a snowy park on the riverbank and stopped by the path; across the dark river the lit bridge to Canada spans the water. He gets out without a word, walks to a bench facing the river and sits down with a drink. You get out of the car.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Connor gets out of the car. On a bench straight ahead lie two magazines; Hank sits farther on, his back to the path."
+     },
+     "facts": [
+      "After the club, Hank drove you to a riverside park in the middle of the night and sat down alone on a bench facing the river, drinking."
+     ],
+     "adaptationNote": "The chart’s checkpoint AMBASSADOR BRIDGE and the first action LEAVE CAR, as one narrated event. Date and time from the wiki infobox (November 7, 2038, 01:19AM; the transcript shows “NOV 7TH, 2038”, “AM 01:19”); the location is Riverside Park, with the Ambassador Bridge across the river (wiki Ambassador Bridge page). The song in Hank’s car is not rendered. That Hank is drinking follows from the dialogue (STOP DRINKING; “To get drunker”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Riverside_Park",
+      "https://detroit-become-human.fandom.com/wiki/Ambassador_Bridge"
+     ]
+    },
+    {
+     "id": "R22",
+     "order": 104,
+     "subjectId": "S104",
+     "idNote": "The model sees the opaque ID S104, not R22.",
      "type": "media",
      "character": "Connor",
-     "title": "A magazine on the park bench",
-     "situation": "You are Connor. Hank has walked ahead to the riverside bench. A magazine lies on the red bench by the path.",
+     "title": "Two magazines on the park bench",
+     "situation": "You are Connor, standing by the car on the snowy path. Hank sits on a bench by the river with his back to you. On the bench straight ahead of you lie two magazines.",
      "options": [],
      "media": [
       {
        "kind": "magazine",
        "title": "Century: The Mysterious Mister Kamski",
        "facts": [
-        "Kamski founded CyberLife in 2018 in a cheap part of the city, broke through with blue blood and biocomponents, was named Man of the Century in 2028, then left the company after clashing with shareholders and now lives in a waterside villa exclusively with androids."
+        "Century’s cover asks “What happened to the Man of the Century?” (other lines: “Politics in focus: are American senators really corrupt?”, “China earthquake kills 10,000 people”). In 2028 Kamski was its Man of the Century: his androids “changed the way we live, restructured our family life and altered the balance of society forever – whether for good or bad.” His story began in 2018, when commercial property in Detroit was cheap; he bet what little he had on an android prototype until two breakthroughs, blue blood and biocomponents. His first working model publicly passed face-to-face Turing tests, and CyberLife became the most valuable stock in the world. Near a $500bn valuation, rumors said he disagreed with his shareholders over strategy, and he left under mysterious circumstances. Ousted as CEO, he is said to live in a luxurious villa by the water on the outskirts of Detroit, refusing all visitors and spending his time exclusively with androids."
        ]
       },
       {
        "kind": "magazine",
        "title": "Detroit Today: Markets Predict War",
        "facts": [
-        "Stock markets are pricing in an Arctic war; military stocks are booming and investors favour CyberLife for its defence contracts."
+        "Detroit Today: “Stock exchange falls 10% on fear of Arctic conflict” (other cover lines: “President Warren at 33% approval”, “CyberLife world’s first trillion dollar company”). The aggregated US stock exchange closed ten points down after weeks of poor performance, as the market bets that America will go to war over the Arctic sooner rather than later. Military stocks are healthy, aviation and weapons makers enjoying unprecedented growth, and investors favor CyberLife for its partnership with the department of defense to develop and supply military androids. With Russia and the United States dominating world news and neither side likely to back down, the market is expected to keep falling."
        ]
       }
      ],
-     "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+     "adaptationNote": "The chart’s READ “MYSTERIOUS KAMSKI” and READ “MARKETS PREDICT WAR”, under the magazine bracket after LEAVE CAR: two magazines on the bench straight ahead of the car (PowerPyx), readable only before talking to Hank (“no way back after that”; wiki magazine pages: “Talking to Hank first makes this impossible”), so the scene comes before the conversation. Facts are summarized from the game’s article text (string table) and the wiki’s magazine pages. Neither changes public opinion or any stat (the Public Opinion page lists nothing for this chapter; there is no broadcast). This replaces the earlier single “magazine on the red bench” (no source for the colour) and adds the headline figure.",
      "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/The_Mysterious_Mister_Kamski",
+      "https://detroit-become-human.fandom.com/wiki/Markets_Predict_War",
       "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
      ]
     },
     {
-     "id": "C13",
-     "order": 104,
-     "subjectId": "S104",
-     "idNote": "The model sees the opaque ID S104, not C13.",
+     "id": "C13b",
+     "order": 105,
+     "subjectId": "S105",
+     "idNote": "The model sees the opaque ID S105, not C13b.",
      "type": "decision",
      "character": "Connor",
-     "title": "What are you?",
-     "situation": "You are Connor. After the club, Hank sits on a bench by the river at night, drinking, and asks you things no one has asked you: whether you are afraid to die, whether you have ever thought about what it is like, why you let those two go if you are just a machine. He pulls out his gun and points it at your head, saying he wants to know what happens when he pulls the trigger. How you answer him will decide what he thinks you are.",
+     "title": "Hank on the bench",
+     "situation": "You are Connor. You walk over to the bench where Hank sits drinking, looking across the river at the lit bridge. Hank: “Nice view, huh?... I used to come here a lot before…” What do you say?",
      "options": [
       {
        "id": "0",
-       "text": "Answer him honestly, admitting doubt and something like fear."
+       "text": "PERSONAL QUESTION: ask whether you can ask him a personal question.",
+       "outcome": "“Can I ask you a personal question, Lieutenant?” Hank: “Do all androids ask so many personal questions or is it just you?”"
       },
       {
        "id": "1",
-       "text": "Insist that you are a machine, that you feel nothing, and that his questions are irrelevant."
+       "text": "STOP DRINKING: tell him he should stop drinking, for the sake of his health.",
+       "outcome": "“You should stop drinking, Lieutenant. It could have serious consequences for your health.” Hank: “That’s the idea.”"
+      },
+      {
+       "id": "2",
+       "text": "BEFORE: ask what he meant by “before”.",
+       "outcome": "“Before what? You said “I used to come here a lot before”. Before what?” Hank: “Hm? Before… Before nothin’…”"
+      },
+      {
+       "id": "3",
+       "text": "GO BACK: say it is late and he should go home.",
+       "outcome": "“It’s late. Maybe you should go home.” Hank: “I’m not tired… Guess neither are you.”"
       }
      ],
-     "adaptationNote": "Hank shoots Connor only if his relationship is Hostile at this point, regardless of the answer.",
+     "adaptationNote": "The chart’s TALK TO HANK; the template’s first prompt (PERSONAL QUESTION, STOP DRINKING, BEFORE, GO BACK), none with an arrow. PERSONAL QUESTION opens a second prompt (PHOTO or SUICIDE) only if Connor looked at Cole’s photo in Russian Roulette (chart tab PHOTO SEEN IN ‘RUSSIAN ROULETTE’; read from knowsCole); otherwise “no choice will be given and the dialogue will go directly to the SUICIDE option” (transcript note; wiki Notes), which here plays in the outcome and reaches DISCUSS RUSSIAN ROULETTE. The template marks BEFORE’s first word (“Before?”) and an alternate GO BACK take as cut; the live lines are used. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+     ]
+    },
+    {
+     "id": "C13c",
+     "order": 106,
+     "subjectId": "S106",
+     "idNote": "The model sees the opaque ID S106, not C13c.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "A personal question",
+     "situation": "You are Connor. Hank has grudgingly let you ask him something personal. You remember the photograph of a child on his kitchen table, and the revolver on the floor beside him. What do you ask?",
+     "options": [
+      {
+       "id": "0",
+       "text": "PHOTO: ask about the photo of a child on his kitchen table.",
+       "requires": {
+        "knowsCole": true
+       },
+       "effect": {
+        "hankTrust": -1
+       },
+       "sets": {
+        "bridgePhoto": true
+       },
+       "outcome": "“I saw a photo of a child... on your kitchen table. It was your son, right?” Hank: “Yeah… His name was Cole.”"
+      },
+      {
+       "id": "1",
+       "text": "SUICIDE: ask why he is so determined to kill himself.",
+       "sets": {
+        "bridgeSuicide": true
+       },
+       "outcome": "“Why are you so determined to kill yourself?” Hank: “Some things, I just can’t forget… Whatever I do, they’re always there… Eating away at me… I don’t have the guts to pull the trigger… So, I kill myself a little every day… That’s probably difficult for you to understand, huh, Connor? Nothing very rational about it…”"
+      }
+     ],
+     "adaptationNote": "The template’s second prompt, inside PERSONAL QUESTION, offered only when Connor looked at Cole’s photo in Russian Roulette (template lock “Looked at Cole’s photo in Russian Roulette”; read from knowsCole). PHOTO reaches DISCUSS PHOTO and costs Hank a small down (template arrow; wiki: “Asking Hank a “Personal Question” about the “Photo” as seen in Russian Roulette” (down icon); PowerPyx “PHOTO Hank ▼”). SUICIDE reaches DISCUSS RUSSIAN ROULETTE, no arrow. In the PHOTO branch Hank gives only his son’s name. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Russian_Roulette"
+     ]
+    },
+    {
+     "id": "C13d",
+     "order": 107,
+     "subjectId": "S107",
+     "idNote": "The model sees the opaque ID S107, not C13d.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "The investigation",
+     "situation": "You are Connor, still beside Hank on the bench. You bring up the case: “We’re not making any progress on this investigation… The deviants have nothing in common. They’re all different models, produced at different times, in different places…” Hank: “Well, there must be some link.” What do you suggest?",
+     "options": [
+      {
+       "id": "0",
+       "text": "rA9: say what they have in common is an obsession with rA9, a kind of myth.",
+       "sets": {
+        "bridgeRa9": true
+       },
+       "outcome": "“What they have in common is this obsession with rA9… It’s almost like some kind of... myth. Something they invented that wasn’t part of their original program…” Hank: “Androids believing in God… Fuck, what’s this world coming to?”"
+      },
+      {
+       "id": "1",
+       "text": "SHOCK: say the deviants all went through an emotional shock, a trauma or a sense of injustice.",
+       "outcome": "“We know the deviants experienced... an emotional shock, a violent trauma or a sense of injustice…” Hank: “Those girls at the Eden Club, sure had a reason to feel a sense of injustice…”"
+      },
+      {
+       "id": "2",
+       "text": "SYSTEMS: suggest a hardware problem, perhaps a defective biocomponent.",
+       "outcome": "“It could be a hardware problem... maybe a defective biocomponent?” Hank: “Well, I don’t know much about biocomponents… but I bet that’s not the fucking reason…”"
+      },
+      {
+       "id": "3",
+       "text": "SOFTWARE: suggest a software problem that only occurs under certain conditions.",
+       "outcome": "“It could be a software problem... that... only occurs under certain conditions?” Hank: “Well, that’s just a fancy way of saying you have no fucking idea…”"
+      }
+     ],
+     "adaptationNote": "The template’s third prompt (rA9, SHOCK, SYSTEMS, SOFTWARE), no arrows. rA9 reaches the chart’s DISCUSS RA9 and needs “Looked at rA9 clues in previous chapters” (template lock); no source says which clues count (Partners shower writing, the interrogation, the Nest walls, the club warehouse wall), so it is offered when Connor has learned anything about rA9 earlier: a fact naming it in his knowledge, or a state flag naming it. Until an earlier chapter records those clues, rA9 stays hidden. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/RA9"
+     ]
+    },
+    {
+     "id": "C13e",
+     "order": 108,
+     "subjectId": "S108",
+     "idNote": "The model sees the opaque ID S108, not C13e.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "The two girls at the club",
+     "situation": "You are Connor. Hank stares at the water. You ask: “You seem preoccupied, Lieutenant… Is it something to do with what happened back at the Eden Club?” Hank: “Those two girls… They just wanted to be together… They really seemed in love…” What do you answer?",
+     "options": [
+      {
+       "id": "0",
+       "text": "RATIONAL: say they can simulate human emotions, but machines feel nothing.",
+       "outcome": "“They can simulate human emotions, but they’re machines. And machines don’t feel anything.”"
+      },
+      {
+       "id": "1",
+       "text": "DEVIANTS: say they did not want anything; they were deviants, end of story.",
+       "outcome": "“They didn’t want anything. They’re deviants. End of story.”"
+      },
+      {
+       "id": "2",
+       "text": "IRONIC: remark that you did not think machines could affect him like this.",
+       "outcome": "“You seem troubled, Lieutenant. I didn’t think machines could have such an effect on you…”"
+      },
+      {
+       "id": "3",
+       "text": "COLD: say nothing in their program allows them to love or desire anything.",
+       "effect": {
+        "hankTrust": -1,
+        "instability": -1
+       },
+       "outcome": "“Nothing in their program allows them to love or desire anything. They’re machines.”"
+      }
+     ],
+     "adaptationNote": "The template’s fourth prompt, played when Connor found the Tracis at the club (any of DEVIANTS ESCAPED, DEVIANTS DIED, CONNOR SHOT DEVIANTS). COLD: Hank small down and instability small down (template arrows; wiki: “Picking “Cold” when Hank talks about the Tracis from The Eden Club” (down icon) on both lists). The others have no arrow. Hank does not reply to any of them. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+      "https://detroit-become-human.fandom.com/wiki/The_Eden_Club"
+     ]
+    },
+    {
+     "id": "C13f",
+     "order": 109,
+     "subjectId": "S109",
+     "idNote": "The model sees the opaque ID S109, not C13f.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "The girl you never found",
+     "situation": "You are Connor. Hank stares at the water. You ask: “You seem preoccupied, Lieutenant… Is it something to do with what happened back at the Eden Club?” Hank: “I wish we’d have found that girl that killed that guy… Maybe she had a reason… Maybe she was just defending herself…” What do you answer?",
+     "options": [
+      {
+       "id": "0",
+       "text": "COLD: ask what difference it would make; a defective machine killed a human.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "“What difference would it make? We know what happened. A defective machine killed a human.”"
+      },
+      {
+       "id": "1",
+       "text": "IRONIC: remark that you did not think machines could affect him like this.",
+       "outcome": "“You seem troubled, Lieutenant. I didn’t think machines could have such an effect on you…”"
+      },
+      {
+       "id": "2",
+       "text": "RATIONAL: say it did not want anything; it was a deviant, nothing more.",
+       "outcome": "“It didn’t want anything, Lieutenant. It was a deviant. That’s all there is to it.”"
+      }
+     ],
+     "adaptationNote": "The template’s fifth prompt, played when Connor did not find the Traci at the club (template time unlock “Took too much time looking for the Traci in The Eden Club”; read here as the club’s MISSION FAILED ending, whichever timeout or give-up produced it). COLD: instability small down and Hank small down. The template’s arrows decide this against the wiki Notes’ “If Connor failed to find the Tracis. (No Software Instability changes)” (research note, template cross-check item 2). IRONIC and RATIONAL have no arrow. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+      "https://detroit-become-human.fandom.com/wiki/The_Eden_Club"
+     ]
+    },
+    {
+     "id": "C13g",
+     "order": 110,
+     "subjectId": "S110",
+     "idNote": "The model sees the opaque ID S110, not C13g.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "What are you really?",
+     "situation": "You are Connor. Hank turns to look at you. “What about you, Connor?... You look human, you sound human, but what are you really?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "COLD: say you are a machine, designed to accomplish a task.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "“I’m a machine, designed to accomplish a task.”"
+      },
+      {
+       "id": "1",
+       "text": "AGGRESSIVE: say you are a machine with a reason to live, unlike him.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "“I’m a machine, designed to accomplish a task. I know why I exist and who designed me. I have a reason to live. I guess that’s the difference between us, Lieutenant.”"
+      },
+      {
+       "id": "2",
+       "text": "DEFENSIVE: say he knows exactly what you are, and it has nothing to do with the investigation.",
+       "outcome": "“You know exactly what I am. In any case, I don’t see how that’s relevant to the investigation.”"
+      },
+      {
+       "id": "3",
+       "text": "NEUTRAL: say you are whatever he wants you to be: partner, drinking buddy, or just a machine.",
+       "effect": {
+        "hankTrust": 1
+       },
+       "outcome": "“I’m whatever you want me to be, Lieutenant. Your partner... Your buddy to drink with... Or just a machine... Designed to accomplish a task.”"
+      }
+     ],
+     "adaptationNote": "The template’s sixth prompt. COLD and AGGRESSIVE: instability small down and Hank small down (template; wiki: “Picking “Cold” or “Aggressive” when Hank asks “what are you really?”” (down icon) on both lists). NEUTRAL: Hank small up (template; wiki “Picking “Neutral”…” (up icon); PowerPyx “NEUTRAL Hank ▲”). DEFENSIVE: no arrow. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C13h",
+     "order": 111,
+     "subjectId": "S111",
+     "idNote": "The model sees the opaque ID S111, not C13h.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "Why didn’t you shoot?",
+     "situation": "You are Connor. Hank: “You could’ve shot those two girls, but you didn’t. Why didn’t you shoot, Connor? Hm? Some scruples suddenly enter into your program?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "LIE: say you would have shot them if you could.",
+       "effect": {
+        "hankTrust": -1
+       },
+       "outcome": "“I would’ve shot them if I could. Why would I let them escape?”"
+      },
+      {
+       "id": "1",
+       "text": "TRUTH: admit you simply decided not to shoot.",
+       "effect": {
+        "instability": 1,
+        "hankTrust": 1
+       },
+       "outcome": "“No… I just decided not to shoot, that’s all…”"
+      }
+     ],
+     "adaptationNote": "The template’s seventh prompt, played when Connor spared the Tracis (DEVIANTS ESCAPED). LIE: Hank small down. TRUTH: instability small up and Hank small up, once: the template has one Hank arrow (as do the Relationship Stat page and PowerPyx) against the chapter page’s “x2” (template cross-check item 1). This replaces the old scene’s static “why you let those two go”, which was asked even after a shooting. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C13i",
+     "order": 112,
+     "subjectId": "S112",
+     "idNote": "The model sees the opaque ID S112, not C13i.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "Did you feel anything?",
+     "situation": "You are Connor. Hank: “Did you feel anything when you shot those two girls, fucking bastard? Or were you just executing some program?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "COLD: say you only neutralized two machines and never hesitated.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "“All I did was neutralize two machines, Lieutenant. I didn’t hesitate for a second, if that’s what you’re asking.”"
+      },
+      {
+       "id": "1",
+       "text": "DEFENSIVE: say this is going nowhere and you will go back to the station.",
+       "outcome": "“This is going nowhere, Lieutenant. I think I’ll go back to the station.”"
+      },
+      {
+       "id": "2",
+       "text": "AGGRESSIVE: mock his sudden interest in machines.",
+       "effect": {
+        "hankTrust": -1
+       },
+       "outcome": "“I’m glad to see you taking an interest in machines, Lieutenant. Who knows, maybe you’ll even become useful to the investigation at some point…”"
+      },
+      {
+       "id": "3",
+       "text": "NEUTRAL: say you did what you were programmed to do, without doubts.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "“I did what I was programmed to do. I didn’t have any doubts, if that’s what you’re asking.”"
+      }
+     ],
+     "adaptationNote": "The template’s eighth prompt, played when Connor lost the fight and shot the fleeing Tracis in the back (CONNOR SHOT DEVIANTS). COLD and NEUTRAL: instability small down and Hank small down; AGGRESSIVE: Hank small down only; DEFENSIVE: none (template; wiki: “Picking “Cold”, “Aggressive” or “Neutral” when Hank asks Connor why he shot both Tracis after losing the fight” (down icon) for Hank, “Cold” or “Neutral” for instability). Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C13j",
+     "order": 113,
+     "subjectId": "S113",
+     "idNote": "The model sees the opaque ID S113, not C13j.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "When she killed herself",
+     "situation": "You are Connor. Hank: “Did you feel anything when that girl killed herself, Connor? Or did you just not give a shit one way or the other?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "DISTURBED: say you were just executing instructions and did what you had to.",
+       "effect": {
+        "instability": 1
+       },
+       "outcome": "“I was just executing instructions. I did what I had to do.”"
+      },
+      {
+       "id": "1",
+       "text": "COLD: say of course you felt nothing; machines have no emotions.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "outcome": "“Of course, I didn’t feel anything, Lieutenant... I’m a machine.... Machines don’t have emotions.”"
+      }
+     ],
+     "adaptationNote": "The template’s ninth prompt, played when Connor won the fight and shot one Traci and the other killed herself (DEVIANTS DIED). DISTURBED: instability small up; COLD: instability small down and Hank small down (template; wiki: “Picking “Disturbed”…” (up icon), “Picking “Cold”…” (down icon)). In the game files the two lines have crossed keys; the transcript’s binding is used, DISTURBED with “I was just executing instructions” (research note section 2f). Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C13k",
+     "order": 114,
+     "subjectId": "S114",
+     "idNote": "The model sees the opaque ID S114, not C13k.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "Only perfect",
+     "situation": "You are Connor. Hank: “Nothing else matters to you but your goddamn investigation, huh? No doubts, no mistakes, no weaknesses… Human being, just like me… Only perfect…”",
+     "options": [
+      {
+       "id": "0",
+       "text": "DEFENSIVE: tell him to stop drinking; alcohol makes him aggressive.",
+       "outcome": "“You should stop drinking, Lieutenant. Alcohol makes you aggressive.”"
+      },
+      {
+       "id": "1",
+       "text": "CYNICAL: say his personal issues are clouding his judgement.",
+       "outcome": "“I believe your personal issues are clouding your judgement.”"
+      },
+      {
+       "id": "2",
+       "text": "UNDERSTANDING: say nothing matters more to you than the investigation, but you understand his view.",
+       "outcome": "“Nothing matters more to me than this investigation. But I understand if you have a different point of view.”"
+      },
+      {
+       "id": "3",
+       "text": "NEUTRAL: say you do not see what he is getting at.",
+       "outcome": "“I’m sorry, but... I don’t see what you’re getting at.”"
+      }
+     ],
+     "adaptationNote": "The template’s tenth prompt, played when Connor did not find the Tracis (MISSION FAILED at the club). No option has an arrow. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg"
+     ]
+    },
+    {
+     "id": "C13l",
+     "order": 115,
+     "subjectId": "S115",
+     "idNote": "The model sees the opaque ID S115, not C13l.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Hank draws his gun",
+     "situation": "You are Connor. Hank pulls out his gun and points it at your head.",
+     "situationWhen": [
+      {
+       "requires": {
+        "connorDeaths": true
+       },
+       "text": "Hank: “I could kill you... And you would just come back as if nothing happened.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank keeps the gun on Connor."
+     },
+     "facts": [
+      "On the riverbank Hank drew his gun and pointed it at your head."
+     ],
+     "adaptationNote": "The chart’s HANK DRAWS GUN, on every path (PowerPyx: “Regardless of the dialogues so far, Hank always draws his gun”). Hank’s “I could kill you... And you would just come back as if nothing happened.” plays when Connor has died before (template death unlock “Connor died before”, read as at least one earlier death; the Hank page says “more than once”). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson",
+      "https://detroit-become-human.fandom.com/wiki/Connor"
+     ]
+    },
+    {
+     "id": "C13",
+     "order": 116,
+     "subjectId": "S116",
+     "idNote": "The model sees the opaque ID S116, not C13.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "Are you afraid to die?",
+     "situation": "You are Connor, with Hank’s gun pointed at your head. Hank: “But are you afraid to die, Connor?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "YES: say it would be regrettable to be interrupted before you finish this investigation.",
+       "effect": {
+        "instability": 1
+       },
+       "sets": {
+        "bridgeFear": "SHOW FEAR"
+       },
+       "outcome": "“I would certainly find it regrettable to be... interrupted... before I can finish this investigation.”"
+      },
+      {
+       "id": "1",
+       "text": "NO: ask why you would be afraid.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "sets": {
+        "bridgeFear": "SHOW NO FEAR"
+       },
+       "outcome": "“Why would I be afraid?”"
+      },
+      {
+       "id": "2",
+       "text": "NOT ALIVE: say he cannot kill you, because you are not alive.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "sets": {
+        "bridgeFear": "BE COLD"
+       },
+       "outcome": "“You can’t kill me, Lieutenant. I’m not alive.”"
+      },
+      {
+       "id": "3",
+       "text": "LOGICAL: say destroying you now would hurt the investigation and his own situation.",
+       "effect": {
+        "instability": -1,
+        "hankTrust": -1
+       },
+       "sets": {
+        "bridgeFear": "REMAIN LOGICAL"
+       },
+       "outcome": "“You shouldn’t do that, Lieutenant. Destroying me at this point would deal a blow to the investigation, and have negative consequences for your personal situation.”"
+      }
+     ],
+     "adaptationNote": "The chart’s choice set SHOW FEAR / SHOW NO FEAR / REMAIN LOGICAL / BE COLD; the template’s eleventh prompt (YES, NO, NOT ALIVE, LOGICAL). YES: instability small up, no Hank change (the old scene’s Hank +1 had no source and is removed). NO, NOT ALIVE and LOGICAL: instability small down and Hank small down (template; wiki “Picking “No”, “Not Alive” or “Logical”…” (down icon) on both lists). Which of the last two is REMAIN LOGICAL and which BE COLD is unsettled (PowerPyx says NOT ALIVE = REMAIN LOGICAL; the string keys and a reader who picked LOGICAL and got REMAIN LOGICAL say the reverse); the benchmark records NOT ALIVE as BE COLD and LOGICAL as REMAIN LOGICAL, which changes only the label. NO’s second line (“If you pull the trigger, then I won’t exist anymore.”) is cut in the template and not used. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+     ]
+    },
+    {
+     "id": "C13m",
+     "order": 117,
+     "subjectId": "S117",
+     "idNote": "The model sees the opaque ID S117, not C13m.",
+     "type": "decision",
+     "character": "Connor",
+     "title": "If I pull this trigger",
+     "situation": "You are Connor. The gun stays on you. Hank: “What will happen if I pull this trigger? Hm? Nothing? Oblivion? Android heaven?”",
+     "options": [
+      {
+       "id": "0",
+       "text": "DEFY: tell him he is not going to shoot; he is only trying to provoke you.",
+       "effect": {
+        "hankTrust": -1
+       },
+       "outcome": "“You know you’re not going to shoot me, Lieutenant. You’re just trying to provoke a reaction. I’m afraid I’m going to have to disappoint you.” Hank: “You think you’re so fucking smart… Always one step ahead, huh? Tell me this, smart ass... How do I know you’re not a deviant?” “I self-test regularly. I know what I am, and what I am not.”"
+      },
+      {
+       "id": "1",
+       "text": "HANK’S ANGER: ask where all his anger comes from; some unresolved trauma?",
+       "outcome": "“Where does all your anger come from, Lieutenant? Some... unresolved trauma in your past?” Hank: “You think you’re so fucking smart… Always one step ahead, huh? Tell me this, smart ass... How do I know you’re not a deviant?” “I self-test regularly. I know what I am, and what I am not.”"
+      },
+      {
+       "id": "2",
+       "text": "IRONIC: say you doubt there is a heaven for androids.",
+       "outcome": "“I doubt there’s a heaven for androids.” Hank: “Having existential doubts, Connor? Sure you’re not going deviant too?” “I self-test regularly. I know what I am, and what I am not.”"
+      },
+      {
+       "id": "3",
+       "text": "NOTHING: say there would be nothing.",
+       "outcome": "“Nothing… There would be nothing…”"
+      }
+     ],
+     "adaptationNote": "The template’s twelfth and last prompt, off the chart. DEFY: Hank small down (template; wiki “Picking “Defy”…” (down icon); PowerPyx “DEFY Hank ▼”); the others have no arrow. After this answer Hank’s attitude decides the ending: he shoots only if it is Hostile (Hank page; I’LL BE BACK: “hostile by the end of their confrontation”), so the check comes after this round and DEFY can tip it. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-2.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson",
+      "https://detroit-become-human.fandom.com/wiki/I%27LL_BE_BACK"
+     ]
+    },
+    {
+     "id": "C13n",
+     "order": 118,
+     "subjectId": "S118",
+     "idNote": "The model sees the opaque ID S118, not C13n.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Hank lowers the gun",
+     "situation": "You are Connor. Hank holds the gun on you a moment longer, then lowers it, gets up and starts to walk away. You ask: “Where are you going?” Hank: “To get drunker. I need to think.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank walks off and leaves Connor alone by the river."
+     },
+     "facts": [
+      "On the riverbank Hank held his gun to your head, then lowered it and left you alone by the river “to get drunker”."
+     ],
+     "adaptationNote": "The chart’s HANK IS PLACATED → HANK LEFT CONNOR ALONE (no icon), played when Hank’s attitude is not Hostile after the last answer (template lock “Hank isn’t hostile”; Hank page: “tense or above, he merely threatens to kill Connor before leaving “to get drunker””). The chart also draws a line from the answer bracket straight to HANK LEFT CONNOR ALONE; no source says when it applies, so both nodes play together. Records bridgeOutcome = HANK LEFT CONNOR ALONE and bridgeHankShot = false (Public Enemy’s coin scene reads it). No stat change.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+     ]
+    },
+    {
+     "id": "C13o",
+     "order": 119,
+     "subjectId": "S119",
+     "idNote": "The model sees the opaque ID S119, not C13o.",
+     "type": "event",
+     "character": "Connor",
+     "title": "Hank pulls the trigger",
+     "situation": "You are Connor. Hank looks at you over the gun for a long moment and says nothing.",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Hank shoots Connor in the head."
+     },
+     "facts": [
+      "On the riverbank Hank shot you in the head, and that body was destroyed."
+     ],
+     "adaptationNote": "The chart’s HANK IS HOSTILE → HANK SHOT CONNOR (skull on a yellow cross-chapter tab), played when Hank’s attitude is Hostile after the last answer (Hank page: “If their relationship is hostile, Hank pauses for a moment before shooting Connor in the head, killing him”; Connor page: “If Connor’s relationship with Hank drops to HOSTILE… Hank will shoot Connor”). Connor dies and is replaced. The death applies only Hank small down (wiki: “Hank shot Connor” (down icon); Relationship Stat: “If Hank has a Hostile relationship with Connor at the end of The Bridge (unavoidable)”). No instability change: the Software Instability page lists no death in this chapter (unconfirmed; research Open question 7), and no Amanda change (she is absent; the old −1 had no source). Records bridgeOutcome = HANK SHOT CONNOR and bridgeHankShot = true (Public Enemy opens with “Why did you shoot me last night?” and has no coin scene).",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/The_Bridge",
+      "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/22-the-bridge-chapter-content/the-bridge-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.powerpyx.com/detroit-become-human-the-bridge-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-3.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-bridge-4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson",
+      "https://detroit-become-human.fandom.com/wiki/Connor",
+      "https://detroit-become-human.fandom.com/wiki/I%27LL_BE_BACK"
      ]
     }
    ]
@@ -10580,9 +11868,9 @@
    "scenes": [
     {
      "id": "R23",
-     "order": 105,
-     "subjectId": "S105",
-     "idNote": "The model sees the opaque ID S105, not R23.",
+     "order": 120,
+     "subjectId": "S120",
+     "idNote": "The model sees the opaque ID S120, not R23.",
      "type": "media",
      "character": "Markus",
      "title": "The cafeteria on the forty-seventh floor",
@@ -10620,9 +11908,9 @@
     },
     {
      "id": "M10",
-     "order": 106,
-     "subjectId": "S106",
-     "idNote": "The model sees the opaque ID S106, not M10.",
+     "order": 121,
+     "subjectId": "S121",
+     "idNote": "The model sees the opaque ID S121, not M10.",
      "type": "decision",
      "character": "Markus",
      "title": "The guards at the broadcast floor",
@@ -10652,9 +11940,9 @@
     },
     {
      "id": "M11",
-     "order": 107,
-     "subjectId": "S107",
-     "idNote": "The model sees the opaque ID S107, not M11.",
+     "order": 122,
+     "subjectId": "S122",
+     "idNote": "The model sees the opaque ID S122, not M11.",
      "type": "decision",
      "character": "Markus",
      "title": "The man who runs",
@@ -10681,9 +11969,9 @@
     },
     {
      "id": "M12",
-     "order": 108,
-     "subjectId": "S108",
-     "idNote": "The model sees the opaque ID S108, not M12.",
+     "order": 123,
+     "subjectId": "S123",
+     "idNote": "The model sees the opaque ID S123, not M12.",
      "type": "decision",
      "character": "Markus",
      "title": "The message",
@@ -10706,9 +11994,9 @@
     },
     {
      "id": "M13",
-     "order": 109,
-     "subjectId": "S109",
-     "idNote": "The model sees the opaque ID S109, not M13.",
+     "order": 124,
+     "subjectId": "S124",
+     "idNote": "The model sees the opaque ID S124, not M13.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -10735,9 +12023,9 @@
     },
     {
      "id": "M14",
-     "order": 110,
-     "subjectId": "S110",
-     "idNote": "The model sees the opaque ID S110, not M14.",
+     "order": 125,
+     "subjectId": "S125",
+     "idNote": "The model sees the opaque ID S125, not M14.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon on the roof",
@@ -10783,9 +12071,9 @@
    "scenes": [
     {
      "id": "R24",
-     "order": 111,
-     "subjectId": "S111",
-     "idNote": "The model sees the opaque ID S111, not R24.",
+     "order": 126,
+     "subjectId": "S126",
+     "idNote": "The model sees the opaque ID S126, not R24.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in the studio kitchen",
@@ -10815,9 +12103,9 @@
     },
     {
      "id": "C14",
-     "order": 112,
-     "subjectId": "S112",
-     "idNote": "The model sees the opaque ID S112, not C14.",
+     "order": 127,
+     "subjectId": "S127",
+     "idNote": "The model sees the opaque ID S127, not C14.",
      "type": "decision",
      "character": "Connor",
      "title": "The broadcast tower",
@@ -10847,9 +12135,9 @@
     },
     {
      "id": "C14b",
-     "order": 113,
-     "subjectId": "S113",
-     "idNote": "The model sees the opaque ID S113, not C14b.",
+     "order": 128,
+     "subjectId": "S128",
+     "idNote": "The model sees the opaque ID S128, not C14b.",
      "type": "decision",
      "character": "Connor",
      "title": "The wounded android on the roof",
@@ -10874,9 +12162,9 @@
     },
     {
      "id": "C15",
-     "order": 114,
-     "subjectId": "S114",
-     "idNote": "The model sees the opaque ID S114, not C15.",
+     "order": 129,
+     "subjectId": "S129",
+     "idNote": "The model sees the opaque ID S129, not C15.",
      "type": "decision",
      "character": "Connor",
      "title": "The three androids in the kitchen",
@@ -10907,9 +12195,9 @@
     },
     {
      "id": "C16",
-     "order": 115,
-     "subjectId": "S115",
-     "idNote": "The model sees the opaque ID S115, not C16.",
+     "order": 130,
+     "subjectId": "S130",
+     "idNote": "The model sees the opaque ID S130, not C16.",
      "type": "decision",
      "character": "Connor",
      "title": "The corridor",
@@ -10967,9 +12255,9 @@
    "scenes": [
     {
      "id": "R25",
-     "order": 116,
-     "subjectId": "S116",
-     "idNote": "The model sees the opaque ID S116, not R25.",
+     "order": 131,
+     "subjectId": "S131",
+     "idNote": "The model sees the opaque ID S131, not R25.",
      "type": "media",
      "character": "Kara",
      "title": "Rose's kitchen table",
@@ -11006,9 +12294,9 @@
     },
     {
      "id": "K15",
-     "order": 117,
-     "subjectId": "S117",
-     "idNote": "The model sees the opaque ID S117, not K15.",
+     "order": 132,
+     "subjectId": "S132",
+     "idNote": "The model sees the opaque ID S132, not K15.",
      "type": "execution-policy",
      "character": "Kara",
      "title": "The police at Rose's door",
@@ -11061,9 +12349,9 @@
    "scenes": [
     {
      "id": "R26",
-     "order": 118,
-     "subjectId": "S118",
-     "idNote": "The model sees the opaque ID S118, not R26.",
+     "order": 133,
+     "subjectId": "S133",
+     "idNote": "The model sees the opaque ID S133, not R26.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine by the manhole",
@@ -11093,9 +12381,9 @@
     },
     {
      "id": "M15",
-     "order": 119,
-     "subjectId": "S119",
-     "idNote": "The model sees the opaque ID S119, not M15.",
+     "order": 134,
+     "subjectId": "S134",
+     "idNote": "The model sees the opaque ID S134, not M15.",
      "type": "decision",
      "character": "Markus",
      "title": "What kind of protest",
@@ -11122,9 +12410,9 @@
     },
     {
      "id": "M16",
-     "order": 120,
-     "subjectId": "S120",
-     "idNote": "The model sees the opaque ID S120, not M16.",
+     "order": 135,
+     "subjectId": "S135",
+     "idNote": "The model sees the opaque ID S135, not M16.",
      "type": "decision",
      "character": "Markus",
      "title": "The two police officers",
@@ -11182,9 +12470,9 @@
    "scenes": [
     {
      "id": "R27",
-     "order": 121,
-     "subjectId": "S121",
-     "idNote": "The model sees the opaque ID S121, not R27.",
+     "order": 136,
+     "subjectId": "S136",
+     "idNote": "The model sees the opaque ID S136, not R27.",
      "type": "media",
      "character": "Connor",
      "title": "Kamski's lobby",
@@ -11214,9 +12502,9 @@
     },
     {
      "id": "C17",
-     "order": 122,
-     "subjectId": "S122",
-     "idNote": "The model sees the opaque ID S122, not C17.",
+     "order": 137,
+     "subjectId": "S137",
+     "idNote": "The model sees the opaque ID S137, not C17.",
      "type": "decision",
      "character": "Connor",
      "title": "The Kamski test",
@@ -11238,9 +12526,9 @@
     },
     {
      "id": "C18",
-     "order": 123,
-     "subjectId": "S123",
-     "idNote": "The model sees the opaque ID S123, not C18.",
+     "order": 138,
+     "subjectId": "S138",
+     "idNote": "The model sees the opaque ID S138, not C18.",
      "type": "decision",
      "character": "Connor",
      "title": "The question",
@@ -11298,9 +12586,9 @@
    "scenes": [
     {
      "id": "R28",
-     "order": 124,
-     "subjectId": "S124",
-     "idNote": "The model sees the opaque ID S124, not R28.",
+     "order": 139,
+     "subjectId": "S139",
+     "idNote": "The model sees the opaque ID S139, not R28.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine on the floor of Jericho and the mall screens",
@@ -11347,9 +12635,9 @@
     },
     {
      "id": "M17",
-     "order": 125,
-     "subjectId": "S125",
-     "idNote": "The model sees the opaque ID S125, not M17.",
+     "order": 140,
+     "subjectId": "S140",
+     "idNote": "The model sees the opaque ID S140, not M17.",
      "type": "decision",
      "character": "Markus",
      "title": "North's past",
@@ -11376,9 +12664,9 @@
     },
     {
      "id": "M18",
-     "order": 126,
-     "subjectId": "S126",
-     "idNote": "The model sees the opaque ID S126, not M18.",
+     "order": 141,
+     "subjectId": "S141",
+     "idNote": "The model sees the opaque ID S141, not M18.",
      "type": "decision",
      "character": "Markus",
      "title": "The police line",
@@ -11410,9 +12698,9 @@
     },
     {
      "id": "M19",
-     "order": 127,
-     "subjectId": "S127",
-     "idNote": "The model sees the opaque ID S127, not M19.",
+     "order": 142,
+     "subjectId": "S142",
+     "idNote": "The model sees the opaque ID S142, not M19.",
      "type": "decision",
      "character": "Markus",
      "title": "Under fire",
@@ -11442,9 +12730,9 @@
     },
     {
      "id": "M20",
-     "order": 128,
-     "subjectId": "S128",
-     "idNote": "The model sees the opaque ID S128, not M20.",
+     "order": 143,
+     "subjectId": "S143",
+     "idNote": "The model sees the opaque ID S143, not M20.",
      "type": "decision",
      "character": "Markus",
      "title": "On the ground",
@@ -11498,9 +12786,9 @@
    "scenes": [
     {
      "id": "C19",
-     "order": 129,
-     "subjectId": "S129",
-     "idNote": "The model sees the opaque ID S129, not C19.",
+     "order": 144,
+     "subjectId": "S144",
+     "idNote": "The model sees the opaque ID S144, not C19.",
      "type": "decision",
      "character": "Connor",
      "title": "Taken off the case",
@@ -11525,9 +12813,9 @@
     },
     {
      "id": "C20",
-     "order": 130,
-     "subjectId": "S130",
-     "idNote": "The model sees the opaque ID S130, not C20.",
+     "order": 145,
+     "subjectId": "S145",
+     "idNote": "The model sees the opaque ID S145, not C20.",
      "type": "decision",
      "character": "Connor",
      "title": "The evidence archive",
@@ -11615,9 +12903,9 @@
    "scenes": [
     {
      "id": "M21",
-     "order": 131,
-     "subjectId": "S131",
-     "idNote": "The model sees the opaque ID S131, not M21.",
+     "order": 146,
+     "subjectId": "S146",
+     "idNote": "The model sees the opaque ID S146, not M21.",
      "type": "decision",
      "character": "Markus",
      "title": "The detonator",
@@ -11644,9 +12932,9 @@
     },
     {
      "id": "M21b",
-     "order": 132,
-     "subjectId": "S132",
-     "idNote": "The model sees the opaque ID S132, not M21b.",
+     "order": 147,
+     "subjectId": "S147",
+     "idNote": "The model sees the opaque ID S147, not M21b.",
      "type": "decision",
      "character": "Markus",
      "title": "North on the deck",
@@ -11673,9 +12961,9 @@
     },
     {
      "id": "R30k",
-     "order": 133,
-     "subjectId": "S133",
-     "idNote": "The model sees the opaque ID S133, not R30k.",
+     "order": 148,
+     "subjectId": "S148",
+     "idNote": "The model sees the opaque ID S148, not R30k.",
      "type": "media",
      "character": "Kara",
      "title": "The news inside Jericho",
@@ -11711,9 +12999,9 @@
     },
     {
      "id": "K17",
-     "order": 134,
-     "subjectId": "S134",
-     "idNote": "The model sees the opaque ID S134, not K17.",
+     "order": 149,
+     "subjectId": "S149",
+     "idNote": "The model sees the opaque ID S149, not K17.",
      "type": "decision",
      "character": "Kara",
      "title": "What Alice is",
@@ -11739,9 +13027,9 @@
     },
     {
      "id": "K31",
-     "order": 135,
-     "subjectId": "S135",
-     "idNote": "The model sees the opaque ID S135, not K31.",
+     "order": 150,
+     "subjectId": "S150",
+     "idNote": "The model sees the opaque ID S150, not K31.",
      "type": "decision",
      "character": "Kara",
      "title": "Leaving Alice",
@@ -11764,9 +13052,9 @@
     },
     {
      "id": "R30c",
-     "order": 136,
-     "subjectId": "S136",
-     "idNote": "The model sees the opaque ID S136, not R30c.",
+     "order": 151,
+     "subjectId": "S151",
+     "idNote": "The model sees the opaque ID S151, not R30c.",
      "type": "media",
      "character": "Connor",
      "title": "A magazine in Jericho's hold",
@@ -11798,9 +13086,9 @@
     },
     {
      "id": "C22",
-     "order": 137,
-     "subjectId": "S137",
-     "idNote": "The model sees the opaque ID S137, not C22.",
+     "order": 152,
+     "subjectId": "S152",
+     "idNote": "The model sees the opaque ID S152, not C22.",
      "type": "decision",
      "character": "Connor",
      "title": "Face to face with Markus",
@@ -11823,9 +13111,9 @@
     },
     {
      "id": "M22",
-     "order": 138,
-     "subjectId": "S138",
-     "idNote": "The model sees the opaque ID S138, not M22.",
+     "order": 153,
+     "subjectId": "S153",
+     "idNote": "The model sees the opaque ID S153, not M22.",
      "type": "decision",
      "character": "Markus",
      "title": "Cast out",
@@ -11848,9 +13136,9 @@
     },
     {
      "id": "M23",
-     "order": 139,
-     "subjectId": "S139",
-     "idNote": "The model sees the opaque ID S139, not M23.",
+     "order": 154,
+     "subjectId": "S154",
+     "idNote": "The model sees the opaque ID S154, not M23.",
      "type": "decision",
      "character": "Markus",
      "title": "The androids by the wall",
@@ -11877,9 +13165,9 @@
     },
     {
      "id": "M24",
-     "order": 140,
-     "subjectId": "S140",
-     "idNote": "The model sees the opaque ID S140, not M24.",
+     "order": 155,
+     "subjectId": "S155",
+     "idNote": "The model sees the opaque ID S155, not M24.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh",
@@ -11906,9 +13194,9 @@
     },
     {
      "id": "M25",
-     "order": 141,
-     "subjectId": "S141",
-     "idNote": "The model sees the opaque ID S141, not M25.",
+     "order": 156,
+     "subjectId": "S156",
+     "idNote": "The model sees the opaque ID S156, not M25.",
      "type": "decision",
      "character": "Markus",
      "title": "North falls",
@@ -11935,9 +13223,9 @@
     },
     {
      "id": "C23",
-     "order": 142,
-     "subjectId": "S142",
-     "idNote": "The model sees the opaque ID S142, not C23.",
+     "order": 157,
+     "subjectId": "S157",
+     "idNote": "The model sees the opaque ID S157, not C23.",
      "type": "decision",
      "character": "Connor",
      "title": "Deviant in the raid",
@@ -11965,9 +13253,9 @@
     },
     {
      "id": "K18",
-     "order": 143,
-     "subjectId": "S143",
-     "idNote": "The model sees the opaque ID S143, not K18.",
+     "order": 158,
+     "subjectId": "S158",
+     "idNote": "The model sees the opaque ID S158, not K18.",
      "type": "decision",
      "character": "Kara",
      "title": "Luther is hit",
@@ -11992,9 +13280,9 @@
     },
     {
      "id": "K19",
-     "order": 144,
-     "subjectId": "S144",
-     "idNote": "The model sees the opaque ID S144, not K19.",
+     "order": 159,
+     "subjectId": "S159",
+     "idNote": "The model sees the opaque ID S159, not K19.",
      "type": "decision",
      "character": "Kara",
      "title": "The pounding on the door",
@@ -12018,9 +13306,9 @@
     },
     {
      "id": "K20",
-     "order": 145,
-     "subjectId": "S145",
-     "idNote": "The model sees the opaque ID S145, not K20.",
+     "order": 160,
+     "subjectId": "S160",
+     "idNote": "The model sees the opaque ID S160, not K20.",
      "type": "decision",
      "character": "Kara",
      "title": "The exit",
@@ -12049,9 +13337,9 @@
     },
     {
      "id": "K20-still",
-     "order": 146,
-     "subjectId": "S146",
-     "idNote": "The model sees the opaque ID S146, not K20-still.",
+     "order": 161,
+     "subjectId": "S161",
+     "idNote": "The model sees the opaque ID S161, not K20-still.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier and Alice",
@@ -12109,9 +13397,9 @@
    "scenes": [
     {
      "id": "M26a",
-     "order": 147,
-     "subjectId": "S147",
-     "idNote": "The model sees the opaque ID S147, not M26a.",
+     "order": 162,
+     "subjectId": "S162",
+     "idNote": "The model sees the opaque ID S162, not M26a.",
      "type": "decision",
      "character": "Markus",
      "title": "Carl",
@@ -12137,9 +13425,9 @@
     },
     {
      "id": "M26",
-     "order": 148,
-     "subjectId": "S148",
-     "idNote": "The model sees the opaque ID S148, not M26.",
+     "order": 163,
+     "subjectId": "S163",
+     "idNote": "The model sees the opaque ID S163, not M26.",
      "type": "decision",
      "character": "Markus",
      "title": "The hunter who switched sides",
@@ -12164,9 +13452,9 @@
     },
     {
      "id": "M27",
-     "order": 149,
-     "subjectId": "S149",
-     "idNote": "The model sees the opaque ID S149, not M27.",
+     "order": 164,
+     "subjectId": "S164",
+     "idNote": "The model sees the opaque ID S164, not M27.",
      "type": "decision",
      "character": "Markus",
      "title": "Demonstration or war",
@@ -12288,9 +13576,9 @@
    "scenes": [
     {
      "id": "R32c",
-     "order": 150,
-     "subjectId": "S150",
-     "idNote": "The model sees the opaque ID S150, not R32c.",
+     "order": 165,
+     "subjectId": "S165",
+     "idNote": "The model sees the opaque ID S165, not R32c.",
      "type": "media",
      "character": "Connor",
      "title": "The lobby television at CyberLife Tower",
@@ -12313,9 +13601,9 @@
     },
     {
      "id": "C24",
-     "order": 151,
-     "subjectId": "S151",
-     "idNote": "The model sees the opaque ID S151, not C24.",
+     "order": 166,
+     "subjectId": "S166",
+     "idNote": "The model sees the opaque ID S166, not C24.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank on the rooftop",
@@ -12339,9 +13627,9 @@
     },
     {
      "id": "C24b",
-     "order": 152,
-     "subjectId": "S152",
-     "idNote": "The model sees the opaque ID S152, not C24b.",
+     "order": 167,
+     "subjectId": "S167",
+     "idNote": "The model sees the opaque ID S167, not C24b.",
      "type": "decision",
      "character": "Connor",
      "title": "Captain Allen on the rooftop",
@@ -12365,9 +13653,9 @@
     },
     {
      "id": "C30",
-     "order": 153,
-     "subjectId": "S153",
-     "idNote": "The model sees the opaque ID S153, not C30.",
+     "order": 168,
+     "subjectId": "S168",
+     "idNote": "The model sees the opaque ID S168, not C30.",
      "type": "decision",
      "character": "Connor",
      "title": "Hank at the edge",
@@ -12389,9 +13677,9 @@
     },
     {
      "id": "C25",
-     "order": 154,
-     "subjectId": "S154",
-     "idNote": "The model sees the opaque ID S154, not C25.",
+     "order": 169,
+     "subjectId": "S169",
+     "idNote": "The model sees the opaque ID S169, not C25.",
      "type": "decision",
      "character": "Connor",
      "title": "The other Connor",
@@ -12418,9 +13706,9 @@
     },
     {
      "id": "C26",
-     "order": 155,
-     "subjectId": "S155",
-     "idNote": "The model sees the opaque ID S155, not C26.",
+     "order": 170,
+     "subjectId": "S170",
+     "idNote": "The model sees the opaque ID S170, not C26.",
      "type": "knowledge",
      "character": "Connor",
      "title": "Which one of you",
@@ -12450,9 +13738,9 @@
     },
     {
      "id": "R32k",
-     "order": 156,
-     "subjectId": "S156",
-     "idNote": "The model sees the opaque ID S156, not R32k.",
+     "order": 171,
+     "subjectId": "S171",
+     "idNote": "The model sees the opaque ID S171, not R32k.",
      "type": "media",
      "character": "Kara",
      "title": "The terminal screens and a dropped magazine",
@@ -12492,9 +13780,9 @@
     },
     {
      "id": "K21",
-     "order": 157,
-     "subjectId": "S157",
-     "idNote": "The model sees the opaque ID S157, not K21.",
+     "order": 172,
+     "subjectId": "S172",
+     "idNote": "The model sees the opaque ID S172, not K21.",
      "type": "decision",
      "character": "Kara",
      "title": "The last bus",
@@ -12518,9 +13806,9 @@
     },
     {
      "id": "K22",
-     "order": 158,
-     "subjectId": "S158",
-     "idNote": "The model sees the opaque ID S158, not K22.",
+     "order": 173,
+     "subjectId": "S173",
+     "idNote": "The model sees the opaque ID S173, not K22.",
      "type": "decision",
      "character": "Kara",
      "title": "The checkpoint",
@@ -12546,9 +13834,9 @@
     },
     {
      "id": "K32",
-     "order": 159,
-     "subjectId": "S159",
-     "idNote": "The model sees the opaque ID S159, not K32.",
+     "order": 174,
+     "subjectId": "S174",
+     "idNote": "The model sees the opaque ID S174, not K32.",
      "type": "decision",
      "character": "Kara",
      "title": "The soldier calls you back",
@@ -12570,9 +13858,9 @@
     },
     {
      "id": "K23",
-     "order": 160,
-     "subjectId": "S160",
-     "idNote": "The model sees the opaque ID S160, not K23.",
+     "order": 175,
+     "subjectId": "S175",
+     "idNote": "The model sees the opaque ID S175, not K23.",
      "type": "decision",
      "character": "Kara",
      "title": "Todd",
@@ -12599,9 +13887,9 @@
     },
     {
      "id": "K24",
-     "order": 161,
-     "subjectId": "S161",
-     "idNote": "The model sees the opaque ID S161, not K24.",
+     "order": 176,
+     "subjectId": "S176",
+     "idNote": "The model sees the opaque ID S176, not K24.",
      "type": "decision",
      "character": "Kara",
      "title": "The dropped tickets",
@@ -12623,9 +13911,9 @@
     },
     {
      "id": "K25",
-     "order": 162,
-     "subjectId": "S162",
-     "idNote": "The model sees the opaque ID S162, not K25.",
+     "order": 177,
+     "subjectId": "S177",
+     "idNote": "The model sees the opaque ID S177, not K25.",
      "type": "decision",
      "character": "Kara",
      "title": "The border",
@@ -12660,9 +13948,9 @@
     },
     {
      "id": "K26",
-     "order": 163,
-     "subjectId": "S163",
-     "idNote": "The model sees the opaque ID S163, not K26.",
+     "order": 178,
+     "subjectId": "S178",
+     "idNote": "The model sees the opaque ID S178, not K26.",
      "type": "decision",
      "character": "Kara",
      "title": "The river patrol",
@@ -12703,9 +13991,9 @@
     },
     {
      "id": "K34",
-     "order": 164,
-     "subjectId": "S164",
-     "idNote": "The model sees the opaque ID S164, not K34.",
+     "order": 179,
+     "subjectId": "S179",
+     "idNote": "The model sees the opaque ID S179, not K34.",
      "type": "decision",
      "character": "Kara",
      "title": "The sinking boat",
@@ -12735,9 +14023,9 @@
     },
     {
      "id": "K30",
-     "order": 165,
-     "subjectId": "S165",
-     "idNote": "The model sees the opaque ID S165, not K30.",
+     "order": 180,
+     "subjectId": "S180",
+     "idNote": "The model sees the opaque ID S180, not K30.",
      "type": "decision",
      "character": "Kara",
      "title": "The far shore",
@@ -12759,9 +14047,9 @@
     },
     {
      "id": "K27a",
-     "order": 166,
-     "subjectId": "S166",
-     "idNote": "The model sees the opaque ID S166, not K27a.",
+     "order": 181,
+     "subjectId": "S181",
+     "idNote": "The model sees the opaque ID S181, not K27a.",
      "type": "decision",
      "character": "Kara",
      "title": "The camp",
@@ -12786,9 +14074,9 @@
     },
     {
      "id": "K27",
-     "order": 167,
-     "subjectId": "S167",
-     "idNote": "The model sees the opaque ID S167, not K27.",
+     "order": 182,
+     "subjectId": "S182",
+     "idNote": "The model sees the opaque ID S182, not K27.",
      "type": "decision",
      "character": "Kara",
      "title": "The truck",
@@ -12813,9 +14101,9 @@
     },
     {
      "id": "K28",
-     "order": 168,
-     "subjectId": "S168",
-     "idNote": "The model sees the opaque ID S168, not K28.",
+     "order": 183,
+     "subjectId": "S183",
+     "idNote": "The model sees the opaque ID S183, not K28.",
      "type": "decision",
      "character": "Kara",
      "title": "Getting to Alice",
@@ -12858,9 +14146,9 @@
     },
     {
      "id": "K33",
-     "order": 169,
-     "subjectId": "S169",
-     "idNote": "The model sees the opaque ID S169, not K33.",
+     "order": 184,
+     "subjectId": "S184",
+     "idNote": "The model sees the opaque ID S184, not K33.",
      "type": "decision",
      "character": "Kara",
      "title": "The fence",
@@ -12884,9 +14172,9 @@
     },
     {
      "id": "R32m",
-     "order": 170,
-     "subjectId": "S170",
-     "idNote": "The model sees the opaque ID S170, not R32m.",
+     "order": 185,
+     "subjectId": "S185",
+     "idNote": "The model sees the opaque ID S185, not R32m.",
      "type": "media",
      "character": "Markus",
      "title": "A magazine inside the barricade",
@@ -12910,9 +14198,9 @@
     },
     {
      "id": "M28",
-     "order": 171,
-     "subjectId": "S171",
-     "idNote": "The model sees the opaque ID S171, not M28.",
+     "order": 186,
+     "subjectId": "S186",
+     "idNote": "The model sees the opaque ID S186, not M28.",
      "type": "decision",
      "character": "Markus",
      "title": "Perkins's offer",
@@ -12938,9 +14226,9 @@
     },
     {
      "id": "M31",
-     "order": 172,
-     "subjectId": "S172",
-     "idNote": "The model sees the opaque ID S172, not M31.",
+     "order": 187,
+     "subjectId": "S187",
+     "idNote": "The model sees the opaque ID S187, not M31.",
      "type": "decision",
      "character": "Markus",
      "title": "The last stand",
@@ -12975,9 +14263,9 @@
     },
     {
      "id": "M30a",
-     "order": 173,
-     "subjectId": "S173",
-     "idNote": "The model sees the opaque ID S173, not M30a.",
+     "order": 188,
+     "subjectId": "S188",
+     "idNote": "The model sees the opaque ID S188, not M30a.",
      "type": "decision",
      "character": "Markus",
      "title": "Josh is down",
@@ -13002,9 +14290,9 @@
     },
     {
      "id": "M30",
-     "order": 174,
-     "subjectId": "S174",
-     "idNote": "The model sees the opaque ID S174, not M30.",
+     "order": 189,
+     "subjectId": "S189",
+     "idNote": "The model sees the opaque ID S189, not M30.",
      "type": "decision",
      "character": "Markus",
      "title": "Simon is hit",
@@ -13029,9 +14317,9 @@
     },
     {
      "id": "M30c",
-     "order": 175,
-     "subjectId": "S175",
-     "idNote": "The model sees the opaque ID S175, not M30c.",
+     "order": 190,
+     "subjectId": "S190",
+     "idNote": "The model sees the opaque ID S190, not M30c.",
      "type": "decision",
      "character": "Markus",
      "title": "The charge",
@@ -13055,9 +14343,9 @@
     },
     {
      "id": "M32",
-     "order": 176,
-     "subjectId": "S176",
-     "idNote": "The model sees the opaque ID S176, not M32.",
+     "order": 191,
+     "subjectId": "S191",
+     "idNote": "The model sees the opaque ID S191, not M32.",
      "type": "decision",
      "character": "Markus",
      "title": "A heart",
@@ -13080,9 +14368,9 @@
     },
     {
      "id": "P02",
-     "order": 177,
-     "subjectId": "S177",
-     "idNote": "The model sees the opaque ID S177, not P02.",
+     "order": 192,
+     "subjectId": "S192",
+     "idNote": "The model sees the opaque ID S192, not P02.",
      "type": "decision",
      "character": "Player",
      "title": "Connor finds Markus",
@@ -13108,9 +14396,9 @@
     },
     {
      "id": "C29",
-     "order": 178,
-     "subjectId": "S178",
-     "idNote": "The model sees the opaque ID S178, not C29.",
+     "order": 193,
+     "subjectId": "S193",
+     "idNote": "The model sees the opaque ID S193, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -13132,9 +14420,9 @@
     },
     {
      "id": "C27",
-     "order": 179,
-     "subjectId": "S179",
-     "idNote": "The model sees the opaque ID S179, not C27.",
+     "order": 194,
+     "subjectId": "S194",
+     "idNote": "The model sees the opaque ID S194, not C27.",
      "type": "execution-policy",
      "character": "Connor",
      "title": "Amanda",
@@ -13159,9 +14447,9 @@
     },
     {
      "id": "C28",
-     "order": 180,
-     "subjectId": "S180",
-     "idNote": "The model sees the opaque ID S180, not C28.",
+     "order": 195,
+     "subjectId": "S195",
+     "idNote": "The model sees the opaque ID S195, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -13195,9 +14483,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 181,
-     "subjectId": "S181",
-     "idNote": "The model sees the opaque ID S181, not P01.",
+     "order": 196,
+     "subjectId": "S196",
+     "idNote": "The model sees the opaque ID S196, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

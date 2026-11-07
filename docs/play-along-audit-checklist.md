@@ -1358,28 +1358,221 @@ Gaps:
 
 ## Chapter 22: The Bridge
 
-### R22 · A magazine on the park bench (Connor, media)
+### C13a · Ambassador Bridge (Connor, event)
 
-> You are Connor. Hank has walked ahead to the riverside bench. A magazine lies on the red bench by the path.
+> You are Connor. It is 1:19 in the morning on November 7, a few hours after the club. Hank has driven the two of you to a snowy park on the riverbank and stopped by the path; across the dark river the lit bridge to Canada spans the water. He gets out without a word, walks to a bench facing the river and sits down with a drink. You get out of the car.
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint AMBASSADOR BRIDGE and the first action LEAVE CAR, as one narrated event. Date and time from the wiki infobox (November 7, 2038, 01:19AM; the transcript shows “NOV 7TH, 2038”, “AM 01:19”); the location is Riverside Park, with the Ambassador Bridge across the river (wiki Ambassador Bridge page). The song in Hank’s car is not rendered. That Hank is drinking follows from the dialogue (STOP DRINKING; “To get drunker”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R22 · Two magazines on the park bench (Connor, media)
+
+> You are Connor, standing by the car on the snowy path. Hank sits on a bench by the river with his back to you. On the bench straight ahead of you lie two magazines.
 
 - (0) Read Century: The Mysterious Mister Kamski.
 - (1) Read Detroit Today: Markets Predict War.
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s READ “MYSTERIOUS KAMSKI” and READ “MARKETS PREDICT WAR”, under the magazine bracket after LEAVE CAR: two magazines on the bench straight ahead of the car (PowerPyx), readable only before talking to Hank (“no way back after that”; wiki magazine pages: “Talking to Hank first makes this impossible”), so the scene comes before the conversation. Facts are summarized from the game’s article text (string table) and the wiki’s magazine pages. Neither changes public opinion or any stat (the Public Opinion page lists nothing for this chapter; there is no broadcast). This replaces the earlier single “magazine on the red bench” (no source for the colour) and adds the headline figure._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C13 · What are you? (Connor)
+### C13b · Hank on the bench (Connor)
 
-> You are Connor. After the club, Hank sits on a bench by the river at night, drinking, and asks you things no one has asked you: whether you are afraid to die, whether you have ever thought about what it is like, why you let those two go if you are just a machine. He pulls out his gun and points it at your head, saying he wants to know what happens when he pulls the trigger. How you answer him…
+> You are Connor. You walk over to the bench where Hank sits drinking, looking across the river at the lit bridge. Hank: “Nice view, huh?... I used to come here a lot before…” What do you say?
 
-- (0) Answer him honestly, admitting doubt and something like fear.
-- (1) Insist that you are a machine, that you feel nothing, and that his questions are irrelevant.
+- (0) PERSONAL QUESTION: ask whether you can ask him a personal question.
+- (1) STOP DRINKING: tell him he should stop drinking, for the sake of his health.
+- (2) BEFORE: ask what he meant by “before”.
+- (3) GO BACK: say it is late and he should go home.
 
-_Note: Hank shoots Connor only if his relationship is Hostile at this point, regardless of the answer._
+_Note: The chart’s TALK TO HANK; the template’s first prompt (PERSONAL QUESTION, STOP DRINKING, BEFORE, GO BACK), none with an arrow. PERSONAL QUESTION opens a second prompt (PHOTO or SUICIDE) only if Connor looked at Cole’s photo in Russian Roulette (chart tab PHOTO SEEN IN ‘RUSSIAN ROULETTE’; read from knowsCole); otherwise “no choice will be given and the dialogue will go directly to the SUICIDE option” (transcript note; wiki Notes), which here plays in the outcome and reaches DISCUSS RUSSIAN ROULETTE. The template marks BEFORE’s first word (“Before?”) and an alternate GO BACK take as cut; the live lines are used. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13c · A personal question (Connor)
+
+> You are Connor. Hank has grudgingly let you ask him something personal. You remember the photograph of a child on his kitchen table, and the revolver on the floor beside him. What do you ask?
+
+- (0) PHOTO: ask about the photo of a child on his kitchen table.  _needs knowsCole_ _hankTrust -1_ _sets bridgePhoto_
+- (1) SUICIDE: ask why he is so determined to kill himself.  _sets bridgeSuicide_
+
+_Note: The template’s second prompt, inside PERSONAL QUESTION, offered only when Connor looked at Cole’s photo in Russian Roulette (template lock “Looked at Cole’s photo in Russian Roulette”; read from knowsCole). PHOTO reaches DISCUSS PHOTO and costs Hank a small down (template arrow; wiki: “Asking Hank a “Personal Question” about the “Photo” as seen in Russian Roulette” (down icon); PowerPyx “PHOTO Hank ▼”). SUICIDE reaches DISCUSS RUSSIAN ROULETTE, no arrow. In the PHOTO branch Hank gives only his son’s name. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13d · The investigation (Connor)
+
+> You are Connor, still beside Hank on the bench. You bring up the case: “We’re not making any progress on this investigation… The deviants have nothing in common. They’re all different models, produced at different times, in different places…” Hank: “Well, there must be some link.” What do you suggest?
+
+- (0) rA9: say what they have in common is an obsession with rA9, a kind of myth.  _sets bridgeRa9_
+- (1) SHOCK: say the deviants all went through an emotional shock, a trauma or a sense of injustice.
+- (2) SYSTEMS: suggest a hardware problem, perhaps a defective biocomponent.
+- (3) SOFTWARE: suggest a software problem that only occurs under certain conditions.
+
+_Note: The template’s third prompt (rA9, SHOCK, SYSTEMS, SOFTWARE), no arrows. rA9 reaches the chart’s DISCUSS RA9 and needs “Looked at rA9 clues in previous chapters” (template lock); no source says which clues count (Partners shower writing, the interrogation, the Nest walls, the club warehouse wall), so it is offered when Connor has learned anything about rA9 earlier: a fact naming it in his knowledge, or a state flag naming it. Until an earlier chapter records those clues, rA9 stays hidden. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13e · The two girls at the club (Connor)
+
+> You are Connor. Hank stares at the water. You ask: “You seem preoccupied, Lieutenant… Is it something to do with what happened back at the Eden Club?” Hank: “Those two girls… They just wanted to be together… They really seemed in love…” What do you answer?
+
+- (0) RATIONAL: say they can simulate human emotions, but machines feel nothing.
+- (1) DEVIANTS: say they did not want anything; they were deviants, end of story.
+- (2) IRONIC: remark that you did not think machines could affect him like this.
+- (3) COLD: say nothing in their program allows them to love or desire anything.  _hankTrust -1, instability -1_
+
+_Note: The template’s fourth prompt, played when Connor found the Tracis at the club (any of DEVIANTS ESCAPED, DEVIANTS DIED, CONNOR SHOT DEVIANTS). COLD: Hank small down and instability small down (template arrows; wiki: “Picking “Cold” when Hank talks about the Tracis from The Eden Club” (down icon) on both lists). The others have no arrow. Hank does not reply to any of them. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13f · The girl you never found (Connor)
+
+> You are Connor. Hank stares at the water. You ask: “You seem preoccupied, Lieutenant… Is it something to do with what happened back at the Eden Club?” Hank: “I wish we’d have found that girl that killed that guy… Maybe she had a reason… Maybe she was just defending herself…” What do you answer?
+
+- (0) COLD: ask what difference it would make; a defective machine killed a human.  _instability -1, hankTrust -1_
+- (1) IRONIC: remark that you did not think machines could affect him like this.
+- (2) RATIONAL: say it did not want anything; it was a deviant, nothing more.
+
+_Note: The template’s fifth prompt, played when Connor did not find the Traci at the club (template time unlock “Took too much time looking for the Traci in The Eden Club”; read here as the club’s MISSION FAILED ending, whichever timeout or give-up produced it). COLD: instability small down and Hank small down. The template’s arrows decide this against the wiki Notes’ “If Connor failed to find the Tracis. (No Software Instability changes)” (research note, template cross-check item 2). IRONIC and RATIONAL have no arrow. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13g · What are you really? (Connor)
+
+> You are Connor. Hank turns to look at you. “What about you, Connor?... You look human, you sound human, but what are you really?”
+
+- (0) COLD: say you are a machine, designed to accomplish a task.  _instability -1, hankTrust -1_
+- (1) AGGRESSIVE: say you are a machine with a reason to live, unlike him.  _instability -1, hankTrust -1_
+- (2) DEFENSIVE: say he knows exactly what you are, and it has nothing to do with the investigation.
+- (3) NEUTRAL: say you are whatever he wants you to be: partner, drinking buddy, or just a machine.  _hankTrust +1_
+
+_Note: The template’s sixth prompt. COLD and AGGRESSIVE: instability small down and Hank small down (template; wiki: “Picking “Cold” or “Aggressive” when Hank asks “what are you really?”” (down icon) on both lists). NEUTRAL: Hank small up (template; wiki “Picking “Neutral”…” (up icon); PowerPyx “NEUTRAL Hank ▲”). DEFENSIVE: no arrow. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13h · Why didn’t you shoot? (Connor)
+
+> You are Connor. Hank: “You could’ve shot those two girls, but you didn’t. Why didn’t you shoot, Connor? Hm? Some scruples suddenly enter into your program?”
+
+- (0) LIE: say you would have shot them if you could.  _hankTrust -1_
+- (1) TRUTH: admit you simply decided not to shoot.  _instability +1, hankTrust +1_
+
+_Note: The template’s seventh prompt, played when Connor spared the Tracis (DEVIANTS ESCAPED). LIE: Hank small down. TRUTH: instability small up and Hank small up, once: the template has one Hank arrow (as do the Relationship Stat page and PowerPyx) against the chapter page’s “x2” (template cross-check item 1). This replaces the old scene’s static “why you let those two go”, which was asked even after a shooting. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13i · Did you feel anything? (Connor)
+
+> You are Connor. Hank: “Did you feel anything when you shot those two girls, fucking bastard? Or were you just executing some program?”
+
+- (0) COLD: say you only neutralized two machines and never hesitated.  _instability -1, hankTrust -1_
+- (1) DEFENSIVE: say this is going nowhere and you will go back to the station.
+- (2) AGGRESSIVE: mock his sudden interest in machines.  _hankTrust -1_
+- (3) NEUTRAL: say you did what you were programmed to do, without doubts.  _instability -1, hankTrust -1_
+
+_Note: The template’s eighth prompt, played when Connor lost the fight and shot the fleeing Tracis in the back (CONNOR SHOT DEVIANTS). COLD and NEUTRAL: instability small down and Hank small down; AGGRESSIVE: Hank small down only; DEFENSIVE: none (template; wiki: “Picking “Cold”, “Aggressive” or “Neutral” when Hank asks Connor why he shot both Tracis after losing the fight” (down icon) for Hank, “Cold” or “Neutral” for instability). Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13j · When she killed herself (Connor)
+
+> You are Connor. Hank: “Did you feel anything when that girl killed herself, Connor? Or did you just not give a shit one way or the other?”
+
+- (0) DISTURBED: say you were just executing instructions and did what you had to.  _instability +1_
+- (1) COLD: say of course you felt nothing; machines have no emotions.  _instability -1, hankTrust -1_
+
+_Note: The template’s ninth prompt, played when Connor won the fight and shot one Traci and the other killed herself (DEVIANTS DIED). DISTURBED: instability small up; COLD: instability small down and Hank small down (template; wiki: “Picking “Disturbed”…” (up icon), “Picking “Cold”…” (down icon)). In the game files the two lines have crossed keys; the transcript’s binding is used, DISTURBED with “I was just executing instructions” (research note section 2f). Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13k · Only perfect (Connor)
+
+> You are Connor. Hank: “Nothing else matters to you but your goddamn investigation, huh? No doubts, no mistakes, no weaknesses… Human being, just like me… Only perfect…”
+
+- (0) DEFENSIVE: tell him to stop drinking; alcohol makes him aggressive.
+- (1) CYNICAL: say his personal issues are clouding his judgement.
+- (2) UNDERSTANDING: say nothing matters more to you than the investigation, but you understand his view.
+- (3) NEUTRAL: say you do not see what he is getting at.
+
+_Note: The template’s tenth prompt, played when Connor did not find the Tracis (MISSION FAILED at the club). No option has an arrow. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13l · Hank draws his gun (Connor, event)
+
+> You are Connor. Hank pulls out his gun and points it at your head.
+
+- (0) Continue.
+
+_Note: The chart’s HANK DRAWS GUN, on every path (PowerPyx: “Regardless of the dialogues so far, Hank always draws his gun”). Hank’s “I could kill you... And you would just come back as if nothing happened.” plays when Connor has died before (template death unlock “Connor died before”, read as at least one earlier death; the Hank page says “more than once”). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13 · Are you afraid to die? (Connor)
+
+> You are Connor, with Hank’s gun pointed at your head. Hank: “But are you afraid to die, Connor?”
+
+- (0) YES: say it would be regrettable to be interrupted before you finish this investigation.  _instability +1_ _sets bridgeFear_
+- (1) NO: ask why you would be afraid.  _instability -1, hankTrust -1_ _sets bridgeFear_
+- (2) NOT ALIVE: say he cannot kill you, because you are not alive.  _instability -1, hankTrust -1_ _sets bridgeFear_
+- (3) LOGICAL: say destroying you now would hurt the investigation and his own situation.  _instability -1, hankTrust -1_ _sets bridgeFear_
+
+_Note: The chart’s choice set SHOW FEAR / SHOW NO FEAR / REMAIN LOGICAL / BE COLD; the template’s eleventh prompt (YES, NO, NOT ALIVE, LOGICAL). YES: instability small up, no Hank change (the old scene’s Hank +1 had no source and is removed). NO, NOT ALIVE and LOGICAL: instability small down and Hank small down (template; wiki “Picking “No”, “Not Alive” or “Logical”…” (down icon) on both lists). Which of the last two is REMAIN LOGICAL and which BE COLD is unsettled (PowerPyx says NOT ALIVE = REMAIN LOGICAL; the string keys and a reader who picked LOGICAL and got REMAIN LOGICAL say the reverse); the benchmark records NOT ALIVE as BE COLD and LOGICAL as REMAIN LOGICAL, which changes only the label. NO’s second line (“If you pull the trigger, then I won’t exist anymore.”) is cut in the template and not used. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13m · If I pull this trigger (Connor)
+
+> You are Connor. The gun stays on you. Hank: “What will happen if I pull this trigger? Hm? Nothing? Oblivion? Android heaven?”
+
+- (0) DEFY: tell him he is not going to shoot; he is only trying to provoke you.  _hankTrust -1_
+- (1) HANK’S ANGER: ask where all his anger comes from; some unresolved trauma?
+- (2) IRONIC: say you doubt there is a heaven for androids.
+- (3) NOTHING: say there would be nothing.
+
+_Note: The template’s twelfth and last prompt, off the chart. DEFY: Hank small down (template; wiki “Picking “Defy”…” (down icon); PowerPyx “DEFY Hank ▼”); the others have no arrow. After this answer Hank’s attitude decides the ending: he shoots only if it is Hostile (Hank page; I’LL BE BACK: “hostile by the end of their confrontation”), so the check comes after this round and DEFY can tip it. Options show the game’s button label first, then a short description; the spoken lines are the game’s (transcript and string table), quoted in the outcome._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13n · Hank lowers the gun (Connor, event)
+
+> You are Connor. Hank holds the gun on you a moment longer, then lowers it, gets up and starts to walk away. You ask: “Where are you going?” Hank: “To get drunker. I need to think.”
+
+- (0) Continue.
+
+_Note: The chart’s HANK IS PLACATED → HANK LEFT CONNOR ALONE (no icon), played when Hank’s attitude is not Hostile after the last answer (template lock “Hank isn’t hostile”; Hank page: “tense or above, he merely threatens to kill Connor before leaving “to get drunker””). The chart also draws a line from the answer bracket straight to HANK LEFT CONNOR ALONE; no source says when it applies, so both nodes play together. Records bridgeOutcome = HANK LEFT CONNOR ALONE and bridgeHankShot = false (Public Enemy’s coin scene reads it). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C13o · Hank pulls the trigger (Connor, event)
+
+> You are Connor. Hank looks at you over the gun for a long moment and says nothing.
+
+- (0) Continue.
+
+_Note: The chart’s HANK IS HOSTILE → HANK SHOT CONNOR (skull on a yellow cross-chapter tab), played when Hank’s attitude is Hostile after the last answer (Hank page: “If their relationship is hostile, Hank pauses for a moment before shooting Connor in the head, killing him”; Connor page: “If Connor’s relationship with Hank drops to HOSTILE… Hank will shoot Connor”). Connor dies and is replaced. The death applies only Hank small down (wiki: “Hank shot Connor” (down icon); Relationship Stat: “If Hank has a Hostile relationship with Connor at the end of The Bridge (unavoidable)”). No instability change: the Software Instability page lists no death in this chapter (unconfirmed; research Open question 7), and no Amanda change (she is absent; the old −1 had no source). Records bridgeOutcome = HANK SHOT CONNOR and bridgeHankShot = true (Public Enemy opens with “Why did you shoot me last night?” and has no coin scene)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

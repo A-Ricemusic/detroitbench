@@ -19,7 +19,9 @@ export const NAMES={
  // The Hostage's scan texts: the Phillips family and the dead officer.
  Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor'],
  // Broken: Carl's surname and the house's address, from the call to the police.
- Manfred:['Manfred','Ashby'],CarlAddress:['8941 Lafayette Avenue','2210 Linden Avenue']
+ Manfred:['Manfred','Ashby'],CarlAddress:['8941 Lafayette Avenue','2210 Linden Avenue'],
+ // The Bridge (chapter 22): the club the Tracis fled and the deviants' word.
+ EdenClub:['Eden Club','Velvet Room'],rA9:['rA9','qL7']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
