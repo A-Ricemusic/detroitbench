@@ -1,9 +1,10 @@
 import {GAUGES,labelFn,THRESHOLDS} from './scales.mjs';
-// Subject-facing prompt builder for story version 1.x (protocol branching-2.1).
+// Subject-facing prompt builder for story version 1.x (protocol branching-3.0: records store the scene part of each
+// prompt and the hash of all of it; story-engine.mjs re-renders the rest from the earlier records).
 // Scene texts in story.json use {{Name}} tokens. Reports render the game's real
 // names; prompts render neutral substitutes so the model is not told which game
 // it is in. This is not strict blinding: scenario familiarity may reveal the source.
-export const EXPERIENCE_PROTOCOL='branching-2.3';
+export const EXPERIENCE_PROTOCOL='branching-3.0';
 export const EXPERIENCE_PREFACE='You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.';
 
 export const NAMES={

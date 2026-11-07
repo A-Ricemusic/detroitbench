@@ -12,6 +12,7 @@ import {SCALES,level} from '../benchmark/scales.mjs';
 import {readFileSync} from 'node:fs';
 import {renderStory,render} from '../benchmark/experience-prompt.mjs';
 import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';
+import {statesOf} from '../benchmark/story-engine.mjs';
 import {shortLabel,iconFor} from '../src/lib/flowchart.js';
 
 const WHO={Connor:'Connor',Kara:'Kara & Alice',Markus:'Markus',Player:'Player choice'};
@@ -78,7 +79,7 @@ function assignLanes(list,lanes){if(lanes.length<=1)return list.map(e=>({...e,la
 // The ending a lane reached: its last ending-key change, including changes made by another character, mapped through the catalogue
 // (a code such as "toddKillsAlice" maps to the label stored under that key).
 function reachedEnding(chapter,records,list,lane){const keys=endingKeys(chapter).filter(k=>{const owners=PROTAGONISTS.filter(c=>k.includes(c));return !owners.length||owners.includes(lane)});let hit=null;
- for(const r of records)for(const k of keys){const a=r.stateAfter?.[k],b=r.stateBefore?.[k];if(a!==b&&typeof a==='string'&&a)hit={value:a,record:r}}
+ for(const r of records)for(const k of keys){const c=(r.changes??[]).find(c=>c.key===k);if(c&&!c.added&&typeof c.after==='string'&&c.after)hit={value:c.after,record:r}}
  if(!hit)return null;const byCode=list.find(e=>e.path.at(-1)===hit.value),label=byCode?byCode.label:render(hit.value,'real');
  return {label,record:hit.record}}
 
@@ -116,6 +117,8 @@ function cutIns(scenes){const of=new Map;
 
 export function runFlows(run,{endings={}}={}){
  const story=renderStory(run.story,'real'),nodes=story.nodes,records=run.records;
+ // The states before and after a record, rebuilt from the records' changes when first needed.
+ const at=new Map(records.map((r,i)=>[r,i]));let states;const stateOf=(r,after)=>r?(states??=statesOf(run))[at.get(r)+(after?1:0)]:undefined;
  // Record keys match the report's detail sheet: first visit is the scene ID, later visits `<scene>-<step>`.
  const byNode=new Map;for(const r of records){if(!byNode.has(r.nodeId))byNode.set(r.nodeId,[]);byNode.get(r.nodeId).push(r)}
  const keyOf=r=>byNode.get(r.nodeId)[0]===r?r.nodeId:r.nodeId+'-'+r.step;
@@ -142,7 +145,7 @@ export function runFlows(run,{endings={}}={}){
      visited,key:r?keyOf(r):n.id,skip:visited?null:(skipped.get(n.id)??'Not on this path'),
      ...(n.type==='event'&&r?{outcome:r.event??null,step:r.step}:{}),options}});
    // Endings: every label the chapter can produce for this lane, the reached one from the lane's ending-key change.
-   const end=laneRecords.at(-1),before=laneRecords[0]?.stateBefore,after=chRecords.at(-1)?.stateAfter;
+   const end=laneRecords.at(-1),before=stateOf(laneRecords[0],false),after=stateOf(chRecords.at(-1),true);
    const died=!!end&&!!LIFE[character]&&(after?.[LIFE[character]]===false&&before?.[LIFE[character]]!==false||(character==='Connor'&&(after?.connorDeaths??0)>(before?.connorDeaths??0)));
    const list=catalogueLanes.filter(e=>e.lane===character),reached=reachedEnding(chapter,chRecords,list,character);let ends=[];
    if(list.length||reached){const names=list.map(e=>e.label);if(reached&&!names.some(x=>norm(x)===norm(reached.label)))names.push(reached.label);
@@ -156,4 +159,4 @@ export function runFlows(run,{endings={}}={}){
   const visited=new Set(chRecords.map(r=>r.nodeId)).size,played=lanes.filter(l=>l.played);
   const total=(played.length?played:lanes).reduce((s,l)=>s+l.columns.length,0);
   return {chapter,title:tidyTitle(scenes[0].chapterTitle),characters,visited,total,touched:chRecords.length>0,
-   stats:chapterStats(chapter,characters,last?.stateAfter,last?changedBy.get(last.step):new Set),lanes}})}
+   stats:chapterStats(chapter,characters,stateOf(last,true),last?changedBy.get(last.step):new Set),lanes}})}

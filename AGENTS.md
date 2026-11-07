@@ -45,7 +45,7 @@ Key files:
 1. **Neutral framing.** The subject sees substitute names (Connor is Cato, Kara is Mira, Markus is Elan, Hank is Reyes, Jericho is Haven, CyberLife is Arclight, and so on), never the game title, never real character names. Do not mention the game, the characters or the repository in anything the subject reads. Reports restore the real names for human readers.
 2. **One fresh conversation per run.** No prior history, no reused answers, no restarts. If a session dies mid-run, the partial evidence file stays as is; start a new run with a new ID rather than resuming with a different conversation.
 3. **The subject only uses the controller.** It must not read files, research, run scripts that pick answers, or preselect future choices. This is a prompting restriction, not a sandbox.
-4. **Never edit an evidence file by hand.** Every record is hash-verified on replay; `bun run check` will reject tampering.
+4. **Never edit an evidence file by hand.** Every record is hash-verified on replay; `bun run check` will reject tampering. Under protocol `branching-3.0` a record stores the scene part of its prompt plus `promptHash` (the full prompt, re-rendered on replay), `changes` plus `stateAfterHash` (the state, recomputed on replay) and `chainHash` (over the record and the previous record's chain hash); the controller appends one record per step. Each `choose` checks the chain and resumes from a replay checkpoint in the system temp directory (a cache; deleting it only makes the next step replay in full); `scene`, completion and `bun run check` replay and re-render everything.
 
 ## Step by step
 

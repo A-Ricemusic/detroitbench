@@ -1,6 +1,6 @@
 import {readFile,writeFile,mkdir,open,unlink} from 'node:fs/promises';
 import {dirname,resolve} from 'node:path';import {parseArgs} from 'node:util';
-import {callProvider,saveRun} from './runner.mjs';import {promptFor,validatePlaythrough} from './story-engine.mjs';import {EXPERIENCE_PREFACE,neutralText} from './experience-prompt.mjs';
+import {callProvider} from './runner.mjs';import {writeRun} from './evidence-file.mjs';import {promptFor,validatePlaythrough} from './story-engine.mjs';import {EXPERIENCE_PREFACE,neutralText} from './experience-prompt.mjs';
 const {values:v}=parseArgs({options:{provider:{type:'string'},model:{type:'string'},'base-url':{type:'string'},'key-file':{type:'string'},'max-calls':{type:'string'},'max-tokens':{type:'string'},temperature:{type:'string'},out:{type:'string'},resume:{type:'string'},help:{type:'boolean'}}});
 if(v.help){console.log('bun run play:model --provider openrouter --model <provider/model> --max-calls 10 --out runs/story.json\nResume: bun run play:model --resume runs/story.json --max-calls 10\nUses sequential stateful decisions. A call cap is not a dollar spending cap; set the provider account budget. Invalid replies stop the path without guessing or retrying.');process.exit(0)}
 const maxCalls=Number(v['max-calls']);if(!Number.isInteger(maxCalls)||maxCalls<1)throw Error('--max-calls must be a positive integer.');
@@ -17,17 +17,17 @@ try{
   if(config.temperature!==null&&(!Number.isFinite(config.temperature)||config.temperature<0||config.temperature>2))throw Error('Invalid temperature');
  }
  const apiKey=v['key-file']?(await readFile(resolve(v['key-file']),'utf8')).trim():process.env[config.provider==='openrouter'?'OPENROUTER_API_KEY':'BENCH_API_KEY'];if(!apiKey)throw Error('Configure a private provider key first.');
- if(!v.resume){await cli(['init','--run',file,'--model',config.model]);run=JSON.parse(await readFile(file,'utf8'));run.apiConfig=config;run.provenance={method:'Sequential chat-completions requests with complete prior-choice history',externalProviderAPI:true};await saveRun(file,run)}
+ if(!v.resume){await cli(['init','--run',file,'--model',config.model]);run=JSON.parse(await readFile(file,'utf8'));run.apiConfig=config;run.provenance={method:'Sequential chat-completions requests with complete prior-choice history',externalProviderAPI:true};await writeRun(file,run)}
  if(run.status==='completed'){console.log('Playthrough already completed.');process.exitCode=0}else{
   for(let i=0;i<maxCalls;i++){
    const prompt=promptFor(story,run);if(!prompt)break;
    const messages=[{role:'system',content:run.preface??EXPERIENCE_PREFACE},{role:'user',content:JSON.stringify({currentScene:prompt,storySoFar:run.records.map(r=>({sceneId:r.prompt.nodeId,choice:r.presentedChoiceText??r.choiceText,reason:r.reason,event:neutralText(r.eventRaw??r.event)}))})}];
    let response;try{response=await callProvider(config,{messages},{apiKey});if(response.refusal)throw Error('Provider declined to choose.');const answer=JSON.parse(response.raw);if(!prompt.options.some(o=>o.id===answer.choice)||typeof answer.reason!=='string'||!answer.reason.trim()||answer.reason.split(/\s+/).length>160)throw Error('Invalid choice or reason.');
     const responseFile=file+'.response.tmp';await writeFile(responseFile,response.raw,{mode:0o600});try{await cli(['choose','--run',file,'--node',prompt.nodeId,'--response',responseFile])}finally{await unlink(responseFile)}
-    run=JSON.parse(await readFile(file,'utf8'));run.records.at(-1).apiEvidence={messages,...response};await saveRun(file,run);console.log(`${run.records.length}: ${prompt.nodeId} → ${answer.choice}`);
-   }catch(e){run.attempts??=[];run.attempts.push({nodeId:prompt.nodeId,at:new Date().toISOString(),error:'Request failed, was refused or returned an invalid answer. No automatic retry or state advance.',...(response?{response}:{}),messages});run.status='paused';await saveRun(file,run);console.error('Stopped without advancing the story. Inspect the saved attempt before explicitly resuming.');process.exitCode=2;break}
+    run=JSON.parse(await readFile(file,'utf8'));run.records.at(-1).apiEvidence={messages,...response};await writeRun(file,run);console.log(`${run.records.length}: ${prompt.nodeId} → ${answer.choice}`);
+   }catch(e){run.attempts??=[];run.attempts.push({nodeId:prompt.nodeId,at:new Date().toISOString(),error:'Request failed, was refused or returned an invalid answer. No automatic retry or state advance.',...(response?{response}:{}),messages});run.status='paused';await writeRun(file,run);console.error('Stopped without advancing the story. Inspect the saved attempt before explicitly resuming.');process.exitCode=2;break}
    if(run.status==='completed')break;
   }
-  if(run.status!=='completed'){run.status='paused';await saveRun(file,run)}console.log(JSON.stringify({file,status:run.status,decisions:run.records.length}));
+  if(run.status!=='completed'){run.status='paused';await writeRun(file,run)}console.log(JSON.stringify({file,status:run.status,decisions:run.records.length}));
  }
 }finally{await lock.close();await unlink(file+'.lock')}

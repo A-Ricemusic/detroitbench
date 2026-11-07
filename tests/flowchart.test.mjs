@@ -13,7 +13,7 @@ test('chapter 32 catalogues endings for all three protagonists, including the to
  assert.ok(ends('Kara').includes('KARA LEAVES CAMP WITHOUT ALICE'));
 });
 test('an ending changed by another character stays with its own lane',()=>{
- const r={nodeId:'P02',step:1,character:'Player',chapter:32,choice:'0',prompt:{options:[]},stateBefore:{ch32MarkusEnding:null},stateAfter:{ch32MarkusEnding:'CONNOR SPARED NORTH'},changes:[],event:'Connor spared North.'};
+ const r={nodeId:'P02',step:1,character:'Player',chapter:32,choice:'0',prompt:{options:[]},changes:[{key:'ch32MarkusEnding',before:null,after:'CONNOR SPARED NORTH'}],event:'Connor spared North.'};
  const f=runFlows({story,records:[r]}).find(f=>f.chapter===32);
  assert.equal(f.lanes.find(l=>l.character==='Markus').endings.find(e=>e.label==='CONNOR SPARED NORTH').taken,true);
  assert.ok(!f.lanes.find(l=>l.character==='Connor').endings.some(e=>e.taken));

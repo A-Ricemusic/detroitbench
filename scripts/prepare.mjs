@@ -6,6 +6,7 @@ import {SCALES,labelFn} from '../benchmark/scales.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
 import {runFlows} from './flow-data.mjs';
+import {statesOf} from '../benchmark/story-engine.mjs';
 // First, assemble benchmark/story.json and docs/detroit-decisions.json from their per-chapter files (none of the
 // modules imported above reads either file at load).
 writeStory();writeAtlas();
@@ -32,7 +33,7 @@ const ALIVE={publicSupport:s=>true,jericho:s=>true,north:s=>s.north,simon:s=>s.s
 const GONE={north:'Died',simon:'Died',josh:'Died',hank:'Died',amanda:'Betrayed',alice:'Died',luther:'Died'};
 const METRICS=Object.entries(ALIVE).map(([g,alive])=>({gauge:g,key:SCALES[g].key,label:SCALES[g].who,toward:SCALES[g].toward,levels:labelFn(g),alive,
  ...(GONE[g]?{gone:GONE[g]}:{}),...(g==='luther'?{unmet:'Never met'}:{})}));
-function relationshipTrack(r,byId){const states=[r.records[0]?.stateBefore,...r.records.map(x=>x.stateAfter)].filter(Boolean);
+function relationshipTrack(r,byId){const states=r.records.length?statesOf(r):[];
  const steps=r.records.map(x=>({node:x.nodeId,title:byId.get(x.nodeId)?.title??x.nodeId,character:x.character,chapter:x.chapter,chapterTitle:byId.get(x.nodeId)?.chapterTitle}));
  return Object.fromEntries(METRICS.map(m=>{let seen=false,endedAt=null;const values=states.map((s,i)=>{const on=m.alive(s);if(on)seen=true;else if(seen&&endedAt===null)endedAt=i;return on?s[m.key]:null});
   const last=states.at(-1),live=m.alive(last),final=live?m.levels(last[m.key],last):(m.unmet&&!seen?m.unmet:m.gone);

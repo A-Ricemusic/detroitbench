@@ -6,7 +6,7 @@ Shape of a manifest (`<cohort-name>.json`):
 
 ```json
 {
-  "protocol": "branching-2.3",
+  "protocol": "branching-3.0",
   "storyVersion": "<story.json version>",
   "freshStart": true,
   "createdAt": "YYYY-MM-DD",

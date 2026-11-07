@@ -1,3 +1,4 @@
+import {forgeState} from './helpers/evidence.mjs';
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,current,promptFor,validatePlaythrough,recordChoice,rollFor,nextCursor,meets,situationFor,failed,DEVIANCY_THRESHOLD,HOSTAGE_RULES,ALICE_KEY,CONNOR_DEATH_EFFECT} from '../benchmark/story-engine.mjs';import {hash,random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL,riskLabel,LEVELS,NAMES} from '../benchmark/experience-prompt.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
@@ -96,7 +97,7 @@ test('randomized paths all terminate with valid options and account for every no
 test('recorded evidence replays exactly, including risk rolls and final attitudes, and rejects tampering',{timeout:900000},async()=>{const run={id:'replay-test',protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',storyHash:await hash(story),status:'running',records:[]};
  while(current(story,run).node){const p=promptFor(story,run);const choice=p.options.find(o=>o.id==='skip')?'skip':p.options[0].id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
  const end=await validatePlaythrough(story,run);assert.ok(end.state.attitudes?.Kara?.length);assert.ok(run.records.some(r=>r.risk),'at least one risky action recorded');
- for(const mutate of [r=>r.records[1].choice='1',r=>r.records[1].prompt.situation='changed',r=>r.records[1].stateAfter.kara=false,r=>{const x=r.records.find(x=>x.risk);x.risk.outcome=x.risk.outcome==='failure'?'success':'failure'}]){const bad=structuredClone(run);mutate(bad);await assert.rejects(validatePlaythrough(story,bad))}});
+ for(const mutate of [r=>r.records[1].choice='1',r=>r.records[1].prompt.situation='changed',r=>forgeState(r,1,s=>{s.kara=false}),r=>{r.records[1].changes=[]},r=>{const x=r.records.find(x=>x.risk);x.risk.outcome=x.risk.outcome==='failure'?'success':'failure'}]){const bad=structuredClone(run);mutate(bad);await assert.rejects(validatePlaythrough(story,bad))}});
 
 // ---- The Hostage: investigation hub and hidden probability of success -------------------------
 // Plays chapter 1 only (stops when chapter 2 begins).
@@ -257,7 +258,7 @@ test('repeated hub visits replay deterministically and tampering with a visit is
  assert.deepEqual(run.records.map(r=>r.nodeId),['C01','C01p','C01b','C02','C02b','C02i','C02i','C02e','C02i','C02i','C03a']);assert.equal(new Set(run.records.filter(r=>r.nodeId==='C02i').map(r=>r.prompt.nodeId)).size,1,'the hub keeps one opaque scene ID');
  assert.ok(run.records.filter(r=>r.nodeId==='C02i').every(r=>!r.risk),'investigation has no hidden roll');await validatePlaythrough(story,run);
  const bad=structuredClone(run);bad.records[8].choice='0';await assert.rejects(validatePlaythrough(story,bad));
- const bad2=structuredClone(run);bad2.records[6].stateAfter.trust+=1;await assert.rejects(validatePlaythrough(story,bad2))});
+ const bad2=forgeState(structuredClone(run),6,s=>{s.trust+=1});await assert.rejects(validatePlaythrough(story,bad2))});
 
 // ---- Shades of Color: the walk to the paint shop and back ------------------------------------------
 const CH4=['K01','R04','K01a','K01y1','K01y2','K01c','K01d','K01e','K01f','K01g','K01k','K01x','R04b','K01z'];
