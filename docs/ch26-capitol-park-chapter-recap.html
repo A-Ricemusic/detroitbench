@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Capitol Park · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 26</p>
+<h1>Capitol Park: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx screenshots, 70 boxes, six endings); prompts, clues and stat arrows from the game’s own text (the detroitbecometext template for the chapter, resolved against en.json); numbers and gaps from PowerPyx and the Fandom wiki. No source gives a probability or a timer length for the protest; the benchmark’s choices are marked. Research note: <code>docs/research/ch26-capitol-park.md</code>.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#meter">4 · The meter</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#flags">6 · Carried forward</a></li><li><a href="#differs">7 · Choices the sources leave open</a></li><li><a href="#check">8 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>In Jericho (not on the chart): the broadcast, North, Josh and (if he escaped the tower unhurt) Simon argue; Markus’s plan: five teams, five CyberLife stores, 2 AM, no violence.</li>
+<li>MISSION START (checkpoint); two magazines on a box.</li>
+<li>A patrol car: AVOID POLICE CAR or NORTH SAVES YOU.</li>
+<li>REACH STORE (checkpoint): ten minutes until the teams strike.</li>
+<li>[SECURE THE PLACE], any order: JUMP ON DRONE (DESTROY / FALL FROM DRONE), DEACTIVATE ALARM (if the drone still flies: HIDE / GET SPOTTED BY DRONE), BLOCK ROAD. A drone failure: NORTH DESTROYS DRONE → POLICE CAR ARRIVES → RUN AWAY / HIDE AND HACK RADIO / FEIGN KISS.</li>
+<li>FIND TRUCK → RAM STORE → POLICE NOT ALERTED, or POLICE ALERTED → HAD TO FLEE. Time out: OUT OF TIME → RETREAT.</li>
+<li>INSIDE THE STORE (checkpoint; optional: look at North’s look-alike) → CONVERT ANDROIDS AND MAKE A STATEMENT → MAKE A STATEMENT (checkpoint).</li>
+<li>[SPREAD YOUR MESSAGE]: nine tag-or-destroy pairs, banner, shop windows, electric system, tag cars, North’s Molotov, five burns. An on-screen peaceful/violent meter.</li>
+<li>FAIL TO SEND A MESSAGE or SEND A STRONG MESSAGE → AGGRESSIVE / PACIFIST MESSAGE → the three message endings.</li>
+<li>POLICE PATROL ARRIVES → KILL / SPARE / LET CROWD DECIDE → TEAM RETURN TO JERICHO, then the news.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>CP01</code> In Jericho (event), the template’s three condition groups as variants.</li>
+<li><code>CP02</code> Mission start (event), <code>R26</code> the magazines (media).</li>
+<li><code>CP03</code> The first police car (decision: run for cover, risk 0.1, or stay put).</li>
+<li><code>CP04</code> Reach the store (event).</li>
+<li><code>CP05</code> The plaza, repeatable: the objectives, the HIDE prompt and the police-car prompt as option sets on the next visit, the timer as an action budget.</li>
+<li>Same scene: the truck and the ram; the flee endings recorded there.</li>
+<li><code>CP06</code> Mission failed (event, flee endings only). <code>CP07</code> Inside the store (decision), <code>CP08</code> the speech (event).</li>
+<li><code>CP09</code> Send a message, repeatable, with the Molotov prompt as an option set.</li>
+<li>Same scene: the message is decided when its time runs out.</li>
+<li><code>CP10</code> Police patrol arrives (event), <code>M16</code> the officers (decision), <code>CP11</code> back in Jericho with the news (event).</li>
+</ol></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">The chart’s 70 boxes in reading order, grouped as the chart groups them. Rows in italics are template interactions with no chart node.</p>
+<div class="table"><table>
+<thead><tr><th>Chart nodes</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td><i>In Jericho</i></td><td>Prologue; Simon or Josh; the broadcast’s tone; the plan</td><td class="yes"><code>CP01</code>, every line quoted</td></tr>
+<tr><td>MISSION START</td><td>Checkpoint</td><td class="yes"><code>CP02</code></td></tr>
+<tr><td>READ “WHO IS IT?”, READ “ANDROID PRESIDENT?”</td><td>Magazines on a box at the start; no stat</td><td class="yes"><code>R26</code></td></tr>
+<tr><td>NORTH SAVES YOU / AVOID POLICE CAR</td><td>Get into cover in time</td><td class="part"><code>CP03</code>: run (risk 0.1, unsourced) or stay (always saved)</td></tr>
+<tr><td>REACH STORE</td><td>Checkpoint; ten minutes</td><td class="yes"><code>CP04</code></td></tr>
+<tr><td><i>Look at the statue, look inside stores, convert androids</i></td><td>Ambient, one line each</td><td class="yes"><code>CP05</code> options 0, 1, 2</td></tr>
+<tr><td>JUMP ON DRONE → DESTROY DRONE / FALL FROM DRONE</td><td>Scan, reconstruct its route, climb the scaffold, mash to destroy</td><td class="part"><code>CP05</code> options 5 (scan) and 6 (jump, risk 0.2, unsourced)</td></tr>
+<tr><td>DEACTIVATE ALARM → GET SPOTTED BY DRONE / HIDE</td><td>Analyse the store (window, androids, cameras), follow the network, convert the two technicians; the drone comes if alive</td><td class="yes"><code>CP05</code> options 3, 4, then 13 HIDE (risk 0.1) or 14 stay; the template’s eight clues as facts</td></tr>
+<tr><td>BLOCK ROAD</td><td>Convert the two road workers, move the sign</td><td class="yes"><code>CP05</code> option 7</td></tr>
+<tr><td>NORTH DESTROYS DRONE → POLICE CAR ARRIVES</td><td>After either drone failure</td><td class="yes">Narrated in the failure’s outcome; the car’s buttons on the next visit</td></tr>
+<tr><td>RUN AWAY / HIDE AND HACK RADIO / FEIGN KISS</td><td>Buttons Abandon Mission, HIDE, Act Natural</td><td class="yes"><code>CP05</code> options 15, 17, 16 (template order: Abandon Mission, Act Natural, HIDE); the four Cops clues as facts under HIDE</td></tr>
+<tr><td>DECIDED TO FLEE</td><td>Ending</td><td class="yes">Recorded at Abandon Mission; <code>CP06</code></td></tr>
+<tr><td>FIND TRUCK → RAM STORE</td><td>Gap in the fence; jump it, the tool (or North takes it), the truck</td><td class="yes"><code>CP05</code> options 8, 9 or 10, 11</td></tr>
+<tr><td>POLICE NOT ALERTED / POLICE ALERTED → HAD TO FLEE</td><td>Alarm, drone and road must all be done (template)</td><td class="yes">Derived at the ram; North’s line names the first thing missing</td></tr>
+<tr><td>OUT OF TIME → RETREAT</td><td>Ten minutes pass</td><td class="part">Ten minutes of actions (one each, waiting two)</td></tr>
+<tr><td>INSIDE THE STORE</td><td>Checkpoint; optional look at the look-alike (“North… Are you okay?”)</td><td class="yes"><code>CP07</code></td></tr>
+<tr><td>CONVERT ANDROIDS AND MAKE A STATEMENT, MAKE A STATEMENT</td><td>Unmissable speech</td><td class="yes"><code>CP08</code></td></tr>
+<tr><td>DESTROY / TAG STATUE, HACK / DESTROY BUS STOP, TAG / OVERTURN BENCHES, HACK / TURN OFF BILLBOARDS, HACK / DESTROY ANDROID PARKING, HACK / TURN OFF STREET LIGHTS</td><td>Pairs; the game’s buttons PUSH, TAG, HACK, DESTROY, KNOCK, MARKUS MESSAGE, ANDROID SYMBOL, TURN OFF</td><td class="yes"><code>CP09</code> options 0 to 12</td></tr>
+<tr><td>DEPLOY BANNER, FREE ANDROIDS IN SHOP WINDOWS, OVERLOAD ELECTRIC SYSTEM</td><td>Singles; overload impossible after pushing a car (a commenter)</td><td class="yes"><code>CP09</code> options 13, 14, 15</td></tr>
+<tr><td>PUSH CAR → TAG CARS / OVERTURN CAR; DESTROY / TAG WINDOWS</td><td>CREATE BARRICADE / DESTROY; overturning or smashing can bring the Molotov</td><td class="yes"><code>CP09</code> options 16, 18, 17, 19, 20</td></tr>
+<tr><td>REFUSE MOLOTOV / ACCEPT MOLOTOV</td><td>North’s prompt REFUSE / TAKE</td><td class="yes"><code>CP09</code> options 30, 31 on the visit after the offer</td></tr>
+<tr><td>PLANT FLAG / MAKE A PYRE</td><td>The pavilion: first thing, North always offers the Molotov; TAKE makes the pyre, REFUSE plants the flag</td><td class="yes"><code>CP09</code> option 21 (go there), or 22 / 23 with a Molotov in hand</td></tr>
+<tr><td>BURN COFFEE SHOP, BURN DUMPSTERS, BURN CARS, BURN HOTEL, BURN CYBERLIFE</td><td>After the junction (Molotov or pyre); the followers copy you at the other dumpster</td><td class="yes"><code>CP09</code> options 24 to 28; one dumpster location per run</td></tr>
+<tr><td>FAIL TO SEND A MESSAGE / SEND A STRONG MESSAGE; AGGRESSIVE / PACIFIST MESSAGE</td><td>Derived from the meter</td><td class="part">Derived when the phase’s time runs out (section 4)</td></tr>
+<tr><td>The three message endings</td><td>Each continues to the police</td><td class="yes">Recorded in <code>capitolEnding</code></td></tr>
+<tr><td>POLICE PATROL ARRIVES</td><td>Radio (Simon or Josh), North’s reaction to the message, the slaughter</td><td class="yes"><code>CP10</code></td></tr>
+<tr><td>KILL / SPARE / LET CROWD DECIDE</td><td>REVENGE / SPARE / DON’T DECIDE (padlocks)</td><td class="yes"><code>M16</code>, the template’s order</td></tr>
+<tr><td>TEAM RETURN TO JERICHO</td><td>End of chart; the news montage</td><td class="yes"><code>CP11</code></td></tr>
+<tr><td><i>Tagging sub-prompts, smoke bomb</i></td><td>Symbol or slogan (cosmetic); not in the template</td><td class="no">Not built</td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Every stat arrow</h2>
+<p class="fine">Small = 1, large = 2. “Template” is the game’s text; “wiki” is used only where the template is silent. No Josh or Simon arrow exists in the chapter.</p>
+<div class="table"><table>
+<thead><tr><th>Trigger</th><th>Change</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>NORTH SAVES YOU</td><td>North −1, Jericho −1</td><td>template</td></tr>
+<tr><td>DESTROY DRONE</td><td>North +1</td><td>template</td></tr>
+<tr><td>FALL FROM DRONE</td><td>Jericho −1, North −1</td><td>template</td></tr>
+<tr><td>HIDE (drone)</td><td>North +1</td><td>template</td></tr>
+<tr><td>GET SPOTTED BY DRONE</td><td>North −1</td><td>template (the wiki’s Jericho −1 is not applied)</td></tr>
+<tr><td>DEACTIVATE ALARM with the drone already destroyed</td><td>North +1</td><td class="part">wiki, Relationship Stat</td></tr>
+<tr><td>Abandon Mission</td><td>Jericho −2, North −1</td><td>template</td></tr>
+<tr><td>Act Natural</td><td>North −2</td><td>template</td></tr>
+<tr><td>HIDE (police car)</td><td>North +1</td><td>template</td></tr>
+<tr><td>RETREAT, HAD TO FLEE</td><td>Jericho −2, North −1</td><td class="part">wiki (“fails to invade the CyberLife warehouse”), Relationship Stat, PowerPyx; template silent</td></tr>
+<tr><td>Talk to androids (the speech)</td><td>North +2, Jericho +2</td><td>template</td></tr>
+<tr><td>DESTROY STATUE</td><td>North +1</td><td>template</td></tr>
+<tr><td>OVERTURN BENCHES, OVERTURN CAR, DESTROY ANDROID PARKING</td><td>North +1 each</td><td class="part">wiki (one line; read as one per act)</td></tr>
+<tr><td>FREE ANDROIDS IN SHOP WINDOWS</td><td>North +1, Jericho +1</td><td class="part">wiki</td></tr>
+<tr><td>REFUSE / TAKE the Molotov</td><td>North −1 / +1</td><td>template</td></tr>
+<tr><td>Take too much time again (FAIL TO SEND A MESSAGE)</td><td>North −1</td><td>template</td></tr>
+<tr><td>Aggressive message (at the police arrival)</td><td>North +1</td><td>template</td></tr>
+<tr><td>REVENGE</td><td>North +1</td><td>template</td></tr>
+<tr><td>News: pacifist message</td><td>Public opinion +2</td><td>template</td></tr>
+<tr><td>News: aggressive message</td><td>Public opinion −2</td><td>template</td></tr>
+<tr><td>News: officers killed (REVENGE or DON’T DECIDE)</td><td>Public opinion −2</td><td>template</td></tr>
+<tr><td>News: failed message</td><td>Public opinion +2</td><td class="part">wiki chapter page and Public Opinion page; template silent</td></tr>
+</tbody></table></div>
+<p class="fine">Removed from the earlier scenes for lack of a source: every Josh change, North −1 for sparing the officers.</p>
+
+<h2 id="meter">4 · The timers and the protest meter</h2>
+<ul>
+<li><b>Store timer.</b> Ten minutes from REACH STORE. Every plaza action takes a minute, waiting two, the HIDE and police-car prompts none. North warns at five left. Reaching ten without ramming: OUT OF TIME, RETREAT.</li>
+<li><b>Protest time.</b> Twelve units: an action one, waiting four, the Molotov prompt none (no source gives a length; a full peaceful run of all eleven peaceful acts fits, as PowerPyx reports doing). Waiting twice before any action is the template’s “Take too much time” and “again”: FAIL TO SEND A MESSAGE.</li>
+<li><b>Sides</b> (from the SEND A MESSAGE and BURN THE PLACE trophy pages). Peaceful: tag statue, benches, windows, car; hack bus stop, parking, street lights; turn off the billboards; the banner; push a car; plant the flag. Violent: destroy statue, bus stop, parking, windows; overturn benches; black out the lights; hijack the billboards; free the shop-window androids; overturn a car; the Molotov; the pyre; the burns; overload the electric system (side unsourced).</li>
+<li><b>Outcome.</b> No action: failed. Molotov taken: aggressive (PowerPyx commenters). At least 60% peaceful: pacifist. Anything else, including the 40–60% band the wiki leaves open: aggressive. Each outcome reports the meter as the game shows it on screen (peaceful, violent or balanced).</li>
+<li><b>The Molotov offer.</b> The first time Markus goes to the pavilion, overturns a car or smashes the windows, unless the protest already reads at least 60% peaceful (the wiki’s “enough peaceful actions”, no number given).</li>
+</ul>
+
+<h2 id="endings">5 · The six endings</h2>
+<div class="table"><table>
+<thead><tr><th>Ending (chart label)</th><th>How</th><th>Then</th></tr></thead>
+<tbody>
+<tr><td>RETREAT</td><td>The store timer runs out</td><td><code>CP06</code>; chapter over</td></tr>
+<tr><td>DECIDED TO FLEE</td><td>A drone failure, then Abandon Mission</td><td><code>CP06</code>; chapter over</td></tr>
+<tr><td>HAD TO FLEE</td><td>RAM STORE with the alarm on, the drone flying or the road open</td><td><code>CP06</code>; chapter over</td></tr>
+<tr><td>MARKUS FAILED TO DELIVER HIS MESSAGE</td><td>No protest action at all</td><td>Police, officers, news</td></tr>
+<tr><td>MARKUS LED A VIOLENT RIOT</td><td>Molotov taken, or under 60% peaceful</td><td>Police, officers, news</td></tr>
+<tr><td>MARKUS LED A PEACEFUL PROTEST</td><td>At least 60% peaceful, no Molotov</td><td>Police, officers, news</td></tr>
+</tbody></table></div>
+<p class="fine">Markus and North survive every ending.</p>
+
+<h2 id="flags">6 · What the chapter carries forward</h2>
+<div class="table"><table>
+<thead><tr><th>State</th><th>Values</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>capitolRaid</code></td><td><code>succeeded</code> / <code>fled</code></td><td>Freedom March: the Android Riot magazine (raid succeeded, peaceful or violent); the FAILED roof line (per its template)</td></tr>
+<tr><td><code>capitolEnding</code></td><td>the six chart labels</td><td>reports</td></tr>
+<tr><td><code>capitolMessage</code></td><td><code>pacifist</code> / <code>aggressive</code> / <code>failed</code></td><td>Freedom March roof: FOLLOWERS, APPEAL OF POWER, FAILED (per the wiki)</td></tr>
+<tr><td><code>capitolOfficers</code>, <code>capitolChrisDead</code></td><td><code>revenge</code> / <code>spared</code> / <code>crowd</code>; true / false</td><td>Meet Kamski (Hank on Chris); Freedom March REGRET POLICEMAN and the crowd on the route</td></tr>
+<tr><td><code>capitolOtherNorth</code></td><td>true / false</td><td>Freedom March OTHER NORTH (North small up)</td></tr>
+</tbody></table></div>
+<p class="fine">Until Freedom March is rebuilt, its media scene still reads the old <code>M15</code> choice, which no longer exists, so its riot magazine and broadcast do not appear; that chapter should read <code>capitolRaid</code> and <code>capitolMessage</code> instead.</p>
+
+<h2 id="differs">7 · Choices the sources leave open</h2>
+<ul>
+<li>Whether the truck can be taken before the area is secure (a commenter says it would not start). The benchmark allows the ram at any time so HAD TO FLEE is reachable.</li>
+<li>Arrows on RETREAT and HAD TO FLEE: the template has none; the wiki, Relationship Stat and PowerPyx give Jericho large down, North small down. Applied, flagged.</li>
+<li>Jericho down on GET SPOTTED BY DRONE (wiki only): not applied.</li>
+<li>North up for overturning benches or a car, destroying parking, freeing the shop-window androids: one line on the wiki; applied once per act.</li>
+<li>The failed message’s public opinion (wiki large up; the template’s news has no failed variant): applied.</li>
+<li>The meter between 40% and 60%, the Molotov “enough peaceful actions” threshold, the protest’s length and OVERLOAD ELECTRIC SYSTEM’s side: benchmark rules above.</li>
+<li>Simon “here”: read as alive and never hit in the tower.</li>
+<li>All risks (first car 0.1, drone jump 0.2, drone hide 0.1) are estimates with no source.</li>
+</ul>
+
+<h2 id="check">8 · Check in game</h2>
+<ul class="check">
+<li>Ram the store with only the road left open: HAD TO FLEE, and North’s “He saw us…”?</li>
+<li>After RETREAT or HAD TO FLEE: do Jericho and North drop?</li>
+<li>After FAIL TO SEND A MESSAGE: does public opinion rise, and which news plays?</li>
+<li>Take the Molotov, then do only peaceful acts: still a violent riot?</li>
+<li>Tag one thing, then go to the pavilion: does North still offer the Molotov?</li>
+<li>Overturn a bench and a car: one North increase or two?</li>
+<li>Get spotted by the drone at the alarm: does Jericho drop?</li>
+<li>Does the officers’ prompt have a timer, and what happens when it runs out?</li>
+</ul>
+</main>
+</body>
+</html>

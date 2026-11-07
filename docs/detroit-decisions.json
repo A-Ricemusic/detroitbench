@@ -203,8 +203,21 @@
    "id": 26,
    "title": "Capitol Park",
    "character": "Markus",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 to the PowerPyx chart (70 boxes, six endings, no skull or trophy icon) and the detroitbecometext template (3 prompts, 8 options, 13 clues, 22 arrows), resolved against en.json. In Jericho Markus sets the plan (five teams, five CyberLife stores, 2 AM, no violence). MISSION START → (magazines) → AVOID POLICE CAR / NORTH SAVES YOU → REACH STORE (ten-minute timer) → [SECURE THE PLACE]: JUMP ON DRONE (DESTROY / FALL FROM DRONE), DEACTIVATE ALARM (HIDE / GET SPOTTED BY DRONE), BLOCK ROAD; a drone failure plays NORTH DESTROYS DRONE → POLICE CAR ARRIVES → RUN AWAY (DECIDED TO FLEE) / HIDE AND HACK RADIO / FEIGN KISS → FIND TRUCK → RAM STORE → POLICE NOT ALERTED (alarm, drone and road done) or POLICE ALERTED → HAD TO FLEE; or OUT OF TIME → RETREAT. Inside: INSIDE THE STORE (the other North) → CONVERT ANDROIDS AND MAKE A STATEMENT (North and Jericho large up) → MAKE A STATEMENT → [SPREAD YOUR MESSAGE]: nine tag-or-destroy pairs, three singles, TAG CARS, the Molotov (REFUSE / ACCEPT) and five burns, feeding a peaceful/violent meter → FAIL TO SEND A MESSAGE / SEND A STRONG MESSAGE → AGGRESSIVE or PACIFIST MESSAGE → the three message endings → POLICE PATROL ARRIVES → KILL / SPARE / LET CROWD DECIDE → TEAM RETURN TO JERICHO and the news, which carries every public-opinion arrow. Markus and North cannot die. Cross-chapter: Chris’s fate (Meet Kamski, Freedom March), the message (Freedom March roof), the raid’s success (the Android Riot magazine), the other North (Freedom March). Researched in docs/research/ch26-capitol-park.md; recap in docs/ch26-capitol-park-chapter-recap.html.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-5.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
   },
   {
    "id": 27,
@@ -3739,63 +3752,603 @@
    "status": "Source-backed summary"
   },
   {
+   "id": "CP01",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "In Jericho (prologue)",
+   "context": "The morning after the broadcast, North, Josh and (if he escaped the tower unhurt) Simon argue; Markus lays out the plan: five teams, the five CyberLife stores, 2 AM, no violence.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The lines depend on Simon’s status and the broadcast’s tone in The Stratford Tower.",
+     "target": "CP02"
+    }
+   ],
+   "gate": "Chapter start.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/"
+   ],
+   "note": "Not a chart node; the template’s “In Jericho” section.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP01"
+    ],
+    "status": "implemented",
+    "note": "Event; the template’s three condition groups as situationWhen variants (Simon here: alive and never hit in the tower)."
+   }
+  },
+  {
+   "id": "CP02",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "Mission start and the magazines",
+   "context": "MISSION START (checkpoint), with two magazines on a box: Detroit Today “Who Is It?” and Century “An Android for President?”.",
+   "options": [
+    {
+     "label": "READ “WHO IS IT?”",
+     "effect": "Magazine; no stat change.",
+     "target": null
+    },
+    {
+     "label": "READ “ANDROID PRESIDENT?”",
+     "effect": "Magazine; no stat change.",
+     "target": null
+    },
+    {
+     "label": "Move on",
+     "effect": "Nothing.",
+     "target": "CP03"
+    }
+   ],
+   "gate": "Chapter start.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CP01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine"
+   ],
+   "note": "The book branch off MISSION START.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP02",
+     "R26"
+    ],
+    "status": "implemented",
+    "note": "An event for the checkpoint, then the media scene."
+   }
+  },
+  {
+   "id": "CP03",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "The first police car",
+   "context": "North: “MARKUS! THIS WAY! QUICK!” A patrol car comes down the street.",
+   "options": [
+    {
+     "label": "AVOID POLICE CAR",
+     "effect": "No change.",
+     "target": "CP04"
+    },
+    {
+     "label": "NORTH SAVES YOU",
+     "effect": "North small down, Jericho small down (template).",
+     "target": "CP04"
+    }
+   ],
+   "gate": "Crossing the park.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "CP02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Execution check; both lead to REACH STORE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP03"
+    ],
+    "status": "implemented",
+    "note": "Decision: run for cover (low risk, 0.1, unsourced) or stay put (always NORTH SAVES YOU)."
+   }
+  },
+  {
+   "id": "CP04",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "Reach the store and the ten-minute timer",
+   "context": "REACH STORE (checkpoint). “There's ten minutes until all our teams attack.” If the store is not rammed in time: OUT OF TIME → RETREAT.",
+   "options": [
+    {
+     "label": "Ram in time",
+     "effect": "The raid goes on.",
+     "target": "CP07"
+    },
+    {
+     "label": "OUT OF TIME → RETREAT",
+     "effect": "Ending. Jericho large down, North small down (wiki, Relationship Stat, PowerPyx; the template has no arrow here).",
+     "target": "CP12"
+    }
+   ],
+   "gate": "Arrival at the plaza.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CP03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "The timer starts at the store (a PowerPyx commenter).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP04",
+     "CP05"
+    ],
+    "status": "simplified",
+    "note": "The timer is an action budget in the plaza scene: one minute per action, two per wait; North warns at five left."
+   }
+  },
+  {
+   "id": "CP05",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "Secure the place: the drone, the alarm, the road",
+   "context": "Three objectives in any order: JUMP ON DRONE (DESTROY DRONE ✓ / FALL FROM DRONE ✗), DEACTIVATE ALARM (if the drone is still flying: HIDE ✓ / GET SPOTTED BY DRONE ✗), BLOCK ROAD.",
+   "options": [
+    {
+     "label": "DESTROY DRONE",
+     "effect": "North small up.",
+     "target": null
+    },
+    {
+     "label": "FALL FROM DRONE",
+     "effect": "Jericho and North small down; NORTH DESTROYS DRONE → POLICE CAR ARRIVES.",
+     "target": "CP06"
+    },
+    {
+     "label": "HIDE",
+     "effect": "North small up.",
+     "target": null
+    },
+    {
+     "label": "GET SPOTTED BY DRONE",
+     "effect": "North small down (template; the wiki adds Jericho down); NORTH DESTROYS DRONE → POLICE CAR ARRIVES.",
+     "target": "CP06"
+    },
+    {
+     "label": "BLOCK ROAD",
+     "effect": "No change.",
+     "target": null
+    }
+   ],
+   "gate": "After REACH STORE.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "CP04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Drones"
+   ],
+   "note": "Deactivating the alarm with the drone already destroyed: North small up (wiki and Relationship Stat; not in the template).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP05"
+    ],
+    "status": "implemented",
+    "note": "Repeatable scene; the drone jump carries a 0.2 risk, the hide 0.1 (both unsourced). The store and drone scans give the template’s clue texts."
+   }
+  },
+  {
+   "id": "CP06",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "Police car arrives",
+   "context": "After a drone failure North destroys it, but a patrol car comes. The template’s buttons: Abandon Mission (RUN AWAY), Act Natural (FEIGN KISS), HIDE (HIDE AND HACK RADIO).",
+   "options": [
+    {
+     "label": "Abandon Mission",
+     "effect": "Jericho large down, North small down → DECIDED TO FLEE (ending).",
+     "target": "CP12"
+    },
+    {
+     "label": "Act Natural",
+     "effect": "North large down; the patrol drives past.",
+     "target": null
+    },
+    {
+     "label": "HIDE",
+     "effect": "North small up; Markus scans the car and sends it away on a fake dispatch call.",
+     "target": null
+    }
+   ],
+   "gate": "Only after FALL FROM DRONE or GET SPOTTED BY DRONE.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "CP05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Tina_Chen"
+   ],
+   "note": "The template lists Abandon Mission as a prompt option (a PowerPyx commenter says it is the timeout).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP05"
+    ],
+    "status": "implemented",
+    "note": "An option set inside the plaza scene, offered on the visit after the failure; the drone then counts as destroyed."
+   }
+  },
+  {
+   "id": "CP07",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "Find the truck and ram the store",
+   "context": "FIND TRUCK through the gap in the fence, take the truck, RAM STORE. POLICE NOT ALERTED needs the alarm off, the drone destroyed and the road blocked (the template’s three conditions); otherwise POLICE ALERTED → HAD TO FLEE.",
+   "options": [
+    {
+     "label": "POLICE NOT ALERTED",
+     "effect": "INSIDE THE STORE.",
+     "target": "CP08"
+    },
+    {
+     "label": "POLICE ALERTED → HAD TO FLEE",
+     "effect": "Ending. Jericho large down, North small down (wiki, Relationship Stat; not in the template).",
+     "target": "CP12"
+    }
+   ],
+   "gate": "Any time in the plaza once the truck is out.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CP05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "PowerPyx names only the alarm and the drone; the template adds the road. Whether the truck starts before the area is secure is an open question.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP05"
+    ],
+    "status": "implemented",
+    "note": "Ramming is allowed at any time so that HAD TO FLEE is reachable."
+   }
+  },
+  {
+   "id": "CP08",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "Inside the store and the other North",
+   "context": "INSIDE THE STORE (checkpoint): North stares at an android with her face (optional). CONVERT ANDROIDS AND MAKE A STATEMENT is unmissable; MAKE A STATEMENT (checkpoint).",
+   "options": [
+    {
+     "label": "Look at the other North",
+     "effect": "No arrow; unlocks OTHER NORTH in Freedom March.",
+     "target": null
+    },
+    {
+     "label": "Convert the androids and speak",
+     "effect": "North large up, Jericho large up (template).",
+     "target": "M15"
+    }
+   ],
+   "gate": "Only after POLICE NOT ALERTED.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "CP07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/BL100",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "The speech is scripted.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP07",
+     "CP08"
+    ],
+    "status": "implemented",
+    "note": "A decision (look at her or start converting) and an event with the speech and its arrows."
+   }
+  },
+  {
    "id": "M15",
    "chapter": 26,
    "character": "Markus",
-   "title": "Peaceful statement or destruction?",
-   "context": "Freed androids occupy Capitol Park.",
+   "title": "Spread your message",
+   "context": "A free-roam phase with nine pairs (statue, bus stop, benches, billboards, android parking, street lights, car, windows, kiosk), three singles (banner, shop windows, electric system) and TAG CARS, each moving a peaceful/violent meter.",
    "options": [
     {
-     "label": "Symbols, messages and a flag",
-     "effect": "Build a peaceful protest.",
-     "target": "M28"
+     "label": "Peaceful actions",
+     "effect": "Tag, hack, turn off the screens, the banner, the barricade car, the flag.",
+     "target": "CP10"
     },
     {
-     "label": "Smash, burn and destroy",
-     "effect": "Present a violent uprising.",
-     "target": "M28"
+     "label": "Violent actions",
+     "effect": "Destroy, knock over, hijack the screens, black out, free the shop-window androids, overturn a car, the pyre, the burns. North small up for the statue (template) and for benches, car, parking and shop windows (wiki; the shop windows also Jericho up).",
+     "target": "CP10"
+    },
+    {
+     "label": "Do nothing",
+     "effect": "FAIL TO SEND A MESSAGE: North small down.",
+     "target": "CP10"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "After MAKE A STATEMENT.",
    "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/"
+   "dependsOn": [
+    "CP08"
    ],
-   "note": "A series of actions determines the protest’s character.",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/SEND_A_MESSAGE",
+    "https://detroit-become-human.fandom.com/wiki/BURN_THE_PLACE",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Valences from the two trophy pages; OVERLOAD ELECTRIC SYSTEM’s side is unsourced (counted violent). The tagging sub-prompts and the smoke bomb are not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP09"
+    ],
+    "status": "implemented",
+    "note": "Repeatable scene with a twelve-unit time budget (an action one, a wait four); the meter is reported in each outcome as the game shows it on screen."
+   }
+  },
+  {
+   "id": "CP09",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "North’s Molotov",
+   "context": "North: “Markus! Violence is the only language humans understand...” Offered the first time Markus goes to the pavilion, overturns a car or smashes the windows, unless the protest already reads as peaceful.",
+   "options": [
+    {
+     "label": "REFUSE",
+     "effect": "North small down; at the pavilion Markus plants the flag.",
+     "target": null
+    },
+    {
+     "label": "TAKE",
+     "effect": "North small up; at the pavilion MAKE A PYRE; unlocks the five burns; forces the riot (PowerPyx commenters).",
+     "target": null
+    }
+   ],
+   "gate": "Inside SPREAD YOUR MESSAGE.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "M15"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "The template’s prompt and arrows.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP09"
+    ],
+    "status": "implemented",
+    "note": "An option set inside the protest scene. “Peaceful enough” uses the 60% rule (the wiki gives no number)."
+   }
+  },
+  {
+   "id": "CP10",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "The message the night sends",
+   "context": "FAIL TO SEND A MESSAGE (nothing done) or SEND A STRONG MESSAGE → AGGRESSIVE MESSAGE → MARKUS LED A VIOLENT RIOT, or PACIFIST MESSAGE → MARKUS LED A PEACEFUL PROTEST. All three continue to the police.",
+   "options": [
+    {
+     "label": "MARKUS FAILED TO DELIVER HIS MESSAGE",
+     "effect": "Ending. Public opinion large up (wiki; template silent).",
+     "target": "M16"
+    },
+    {
+     "label": "MARKUS LED A VIOLENT RIOT",
+     "effect": "Ending. North small up (at the police arrival); public opinion large down.",
+     "target": "M16"
+    },
+    {
+     "label": "MARKUS LED A PEACEFUL PROTEST",
+     "effect": "Ending. Public opinion large up.",
+     "target": "M16"
+    }
+   ],
+   "gate": "End of SPREAD YOUR MESSAGE.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M15",
+    "CP09"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ],
+   "note": "Wiki: at least 60% on either side. The benchmark: peaceful at 60% or more peaceful actions and no Molotov taken, otherwise violent (the 40–60% band is unsourced).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP09",
+     "CP10"
+    ],
+    "status": "implemented",
+    "note": "Recorded as capitolMessage and capitolEnding."
+   }
   },
   {
    "id": "M16",
    "chapter": 26,
    "character": "Markus",
    "title": "Spare the captured police?",
-   "context": "Androids present two officers after the shooting.",
+   "context": "Two officers (Chris Miller and his partner) gunned down fleeing androids and were overpowered; the androids demand justice. The template’s buttons: REVENGE, SPARE, DON'T DECIDE.",
    "options": [
     {
-     "label": "Spare",
-     "effect": "Refuse retaliation.",
-     "target": null
+     "label": "REVENGE (KILL)",
+     "effect": "North small up; public opinion large down in the news; Chris dies.",
+     "target": "CP11"
     },
     {
-     "label": "Execute",
-     "effect": "Take revenge.",
-     "target": null
+     "label": "SPARE",
+     "effect": "No arrow; Chris lives.",
+     "target": "CP11"
     },
     {
-     "label": "Leave the decision to the crowd",
-     "effect": "Abdicate the choice; the officers are killed.",
+     "label": "DON'T DECIDE (LET CROWD DECIDE)",
+     "effect": "The crowd always kills them; public opinion large down in the news.",
+     "target": "CP11"
+    }
+   ],
+   "gate": "After POLICE PATROL ARRIVES, on every path that entered the store.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "CP10"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Chris_Miller",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ],
+   "note": "Cross-chapter padlocks on all three. Josh is not present (radio only); nobody argues for mercy.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP10",
+     "M16"
+    ],
+    "status": "implemented",
+    "note": "Recorded as capitolOfficers and capitolChrisDead for Meet Kamski and Freedom March."
+   }
+  },
+  {
+   "id": "CP11",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "Team return to Jericho and the news",
+   "context": "TEAM RETURN TO JERICHO, then the news montage: the raids, the graffiti or the fires, the officers executed or found in shock.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Every public-opinion arrow of the chapter: pacifist large up, aggressive large down, officers killed large down; a failed message large up (wiki).",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/"
+   "gate": "After the officers.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M16"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ],
+   "note": "The template’s news block.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP11"
+    ],
+    "status": "implemented",
+    "note": "Event."
+   }
+  },
+  {
+   "id": "CP12",
+   "chapter": 26,
+   "character": "Markus",
+   "title": "Mission failed",
+   "context": "The three flee endings (RETREAT, DECIDED TO FLEE, HAD TO FLEE) end the chapter with the template’s “Mission failed” exchange: no store, no protest, no officers, no news.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The arrows are applied at the ending itself.",
+     "target": null
+    }
+   ],
+   "gate": "After any flee ending.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CP04",
+    "CP06",
+    "CP07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Capitol_Park",
+    "https://github.com/detroitbecometext/detroitbecometext.github.io/blob/master/src/app/chapters/components/chapter-contents/26-capitol-park-chapter-content/capitol-park-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-capitol-park-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-capitol-park-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Recorded as capitolRaid fled, read by Freedom March (FAILED).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "CP06"
+    ],
+    "status": "implemented",
+    "note": "Event."
+   }
   },
   {
    "id": "C17",
