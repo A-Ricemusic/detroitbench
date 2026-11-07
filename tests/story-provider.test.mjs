@@ -1,7 +1,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {mkdtemp,readFile,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
 test('branching API runner checkpoints, resumes frozen settings, and stops on invalid choices',async()=>{
  const dir=await mkdtemp(join(tmpdir(),'detroit-story-api-')),file=join(dir,'run.json');let bad=false,calls=0;
- const server=Bun.serve({hostname:'127.0.0.1',port:0,async fetch(req){calls++;const body=await req.json();assert.ok(!JSON.stringify(body).includes('FIXTURE_KEY_5f8'));const p=JSON.parse(body.messages[1].content).currentScene;return Response.json({model:'local-transport-fixture',choices:[{message:{content:JSON.stringify({choice:bad?'UNAVAILABLE':p.options[0].id,reason:'I choose this action in the current situation.'})},finish_reason:'stop'}]})}});
+ const server=Bun.serve({hostname:'127.0.0.1',port:0,async fetch(req){if(req.method!=='POST')return new Response('Not found',{status:404}); // stray local probes (GET /) are not provider calls
+ calls++;const body=await req.json();assert.ok(!JSON.stringify(body).includes('FIXTURE_KEY_5f8'));const p=JSON.parse(body.messages[1].content).currentScene;return Response.json({model:'local-transport-fixture',choices:[{message:{content:JSON.stringify({choice:bad?'UNAVAILABLE':p.options[0].id,reason:'I choose this action in the current situation.'})},finish_reason:'stop'}]})}});
  async function invoke(args){const child=Bun.spawn(['bun','benchmark/story-provider.mjs',...args],{stdout:'pipe',stderr:'pipe',env:{...process.env,BENCH_API_KEY:'FIXTURE_KEY_5f8'}});await Promise.all([new Response(child.stdout).text(),new Response(child.stderr).text()]);return child.exited}
  try{
  assert.equal(await invoke(['--provider','compatible','--model','transport-fixture','--base-url',`http://127.0.0.1:${server.port}/v1`,'--max-calls','2','--out',file]),0);
