@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>The Pirates’ Cove · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 21</p>
+<h1>The Pirates’ Cove: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 48 boxes), the prompts, lines and stat arrows from the game’s own text (the detroitbecometext chapter template resolved against the English string table), and the rest from PowerPyx, GamerGuides and the Fandom wiki. The chapter has one ending, no death and no probability. There are no operator notes for it yet.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#stats">3 · Stat arrows</a></li><li><a href="#differs">4 · Adapted</a></li><li><a href="#endings">5 · Ending and state</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>HIGHWAY TO HELP (checkpoint): Zlatko’s car in the snow, 01:02, November 7th.</li>
+<li>[ CAR ], optional: WATCH NEWS (three channels, plus a house-fire report if Zlatko’s house burned), TALK TO LUTHER (CAR, DESTINATION, DISTANCE, WEATHER), LOOK AT ALICE.</li>
+<li>CAR BREAKS DOWN → INVESTIGATE BREAKDOWN → SCAN ENVIRONMENT: “It’s 30°, Alice won’t make it!”</li>
+<li>INSIDE PIRATES’ COVE (checkpoint) → [ FUN FAIR ], optional: CHECK BUILDINGS, EXAMINE FROZEN ANDROID, SWITCH ON IVAN, LOOK AT MAP; a hidden timer has Luther find the tavern.</li>
+<li>CHECK ABANDONED TAVERN → ENTER TAVERN → INSIDE TAVERN (checkpoint).</li>
+<li>[ THE TAVERN ], optional: two magazine articles, LOOK AT RA9 WRITING, LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”; LUTHER STARTS A FIRE plays by itself.</li>
+<li>MAKE BED FOR ALICE → ALICE LOOKS AT POSTER → TALK TO ALICE (OPTIMISTIC / REALISTIC / SINCERE) → ALICE GOES TO BED.</li>
+<li>Optional OPEN BAG: OFFER COOKIE → ALICE IS NOT HUNGRY; SEE GUN → KARA NOTICES GUN.</li>
+<li>TELL ALICE A STORY: goodnight (REASSURE / CONSOLE / KISS / TOMORROW), then eight story picks.</li>
+<li>TALK TO LUTHER: topics [rA9] (needs the writing), [rA9 DOUBTS] (needs rA9), SNOW, PLANS, LUTHER’S PAST; then “Have you ever... Noticed anything? About Alice?..” (YES / WHAT? / NO).</li>
+<li>SHADOWS ATTACK → GRAB GUN (needs SEE GUN) / GRAB STICK FROM FIRE / PROTECT ALICE / PUT OUT FIRE → FIRE WARNING SHOT (needs GRAB GUN) / THREATEN (not selectable) / QUESTION / PUSH AWAY.</li>
+<li>ATTACKERS REVEAL THEMSELVES AS JERRYS → BACK OUTSIDE → GO TO CAROUSEL → SWITCH ON CAROUSEL → PUT ALICE ON RIDE → <b>THE GROUP ENJOYED A QUIET MOMENT TOGETHER</b>.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>K14a</code> Highway to help (event).</li>
+<li><code>K14b1</code>–<code>K14b8</code> In the car (hub): the news, the fire report (only with <code>fire</code>; opinion −1), the four topics, the look at Alice, “let the drive go on”.</li>
+<li><code>K14c</code> The car breaks down (event: three chart nodes).</li>
+<li><code>K14d</code> Inside the park (event). <code>K14e1</code>–<code>K14e5</code> The fun fair (hub; exit to the tavern).</li>
+<li><code>K14f</code> The tavern (event: two nodes and the checkpoint). <code>R21</code> the magazine (media).</li>
+<li><code>K14g1</code>, <code>K14h</code> Luther starts a fire (event), <code>K14g2</code>–<code>K14g5</code>: the tavern (hub; exit MAKE BED, Alice +1).</li>
+<li><code>K14i</code> The poster (decision; Alice +1 on any answer).</li>
+<li><code>K14j1</code>–<code>K14j3</code> The bag (hub): OFFER COOKIE, the gun (<code>ch21SawGun</code>), go to Alice.</li>
+<li><code>K14k</code> Goodnight (KISS: Alice +1). <code>K14l1</code>–<code>K14l8</code> the eight story picks.</li>
+<li><code>K14m1</code>–<code>K14m6</code> Talking to Luther (hub of topics). <code>K14n</code> his question (Luther +1 on any answer).</li>
+<li><code>K14o</code> Shadows attack (decision; records <code>ch21Reaction</code>). <code>K14p</code> SHOOT IN THE AIR / QUESTION / PUSH BACK.</li>
+<li><code>K14q</code> The Jerrys (event; <code>ch21MetJerrys</code>). <code>K14r</code> The carousel (event). <code>K14z</code> A quiet moment (event; <code>ch21Ending</code>).</li>
+</ol>
+<p class="fine">No risk anywhere. Each hub is a chain of identical scenes sharing one hub state: each copy offers what has not been done yet, and the copies after the exit are skipped. Events add what Kara saw to her knowledge.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">48 boxes, 47 distinct labels (TALK TO LUTHER appears twice), three hubs, two four-slot choice groups and one ending; no skull, padlock or other icon. Rows in italics are game behaviour that is not a chart node.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>HIGHWAY TO HELP</td><td>Checkpoint; NOV 7TH, 2038, AM 01:02</td><td class="yes"><code>K14a</code></td></tr>
+<tr><td>WATCH NEWS</td><td>Board computer TV: Channel 16, CTN, KNC; a fourth report only if the house burned</td><td class="yes"><code>K14b*</code> options 0 and 1, every line quoted</td></tr>
+<tr><td>TALK TO LUTHER (car)</td><td>PROMPT 1: CAR / DESTINATION / DISTANCE / WEATHER</td><td class="yes"><code>K14b*</code> options 2–5, each once</td></tr>
+<tr><td>LOOK AT ALICE</td><td>No line in any source</td><td class="part"><code>K14b*</code> option 6, narrated as a look</td></tr>
+<tr><td>CAR BREAKS DOWN, INVESTIGATE BREAKDOWN, SCAN ENVIRONMENT</td><td>Automatic, then two required actions</td><td class="yes"><code>K14c</code>, quoted</td></tr>
+<tr><td>INSIDE PIRATES’ COVE</td><td>Checkpoint</td><td class="yes"><code>K14d</code></td></tr>
+<tr><td>CHECK BUILDINGS</td><td>“No place we could spend the night”; YK400 boxes (wiki)</td><td class="yes"><code>K14e*</code> option 0</td></tr>
+<tr><td>EXAMINE FROZEN ANDROID</td><td>“Welcome to Pirate Island, me hearties!”</td><td class="yes"><code>K14e*</code> option 1</td></tr>
+<tr><td>SWITCH ON IVAN</td><td>“Beware! Danger always comes when least expected.”</td><td class="yes"><code>K14e*</code> option 2</td></tr>
+<tr><td>LOOK AT MAP</td><td>No text in any source</td><td class="part"><code>K14e*</code> option 3</td></tr>
+<tr><td><i>Take too much time</i></td><td>Luther finds the tavern; no length stated</td><td class="no">Not modelled</td></tr>
+<tr><td>CHECK ABANDONED TAVERN, ENTER TAVERN, INSIDE TAVERN</td><td>Required; Luther breaks the door in; checkpoint</td><td class="yes"><code>K14e*</code> option 4, then <code>K14f</code></td></tr>
+<tr><td>READ “USS IOWA”, READ “ALL-ANDROID BAND”</td><td>One magazine on the barrels</td><td class="yes"><code>R21</code></td></tr>
+<tr><td>LOOK AT RA9 WRITING</td><td>Unlocks [rA9] with Luther</td><td class="yes"><code>K14g*</code> option 0</td></tr>
+<tr><td>LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”</td><td>No text in any source</td><td class="part"><code>K14g*</code> options 1–3, narrated as looks</td></tr>
+<tr><td>LUTHER STARTS A FIRE</td><td>Automatic after a short time</td><td class="yes"><code>K14h</code>, after the first tavern action</td></tr>
+<tr><td>MAKE BED FOR ALICE</td><td>Required; Alice small up</td><td class="yes"><code>K14g*</code> option 4</td></tr>
+<tr><td>ALICE LOOKS AT POSTER, TALK TO ALICE, ALICE GOES TO BED</td><td>PROMPT 3; Alice small up after any answer</td><td class="yes"><code>K14i</code></td></tr>
+<tr><td>OPEN BAG, OFFER COOKIE, ALICE IS NOT HUNGRY, SEE GUN, KARA NOTICES GUN</td><td>Optional; SEE GUN gates GRAB GUN</td><td class="yes"><code>K14j*</code></td></tr>
+<tr><td>TELL ALICE A STORY</td><td>PROMPT 4 (goodnight; KISS Alice small up) and PROMPTS 5–12</td><td class="yes"><code>K14k</code>, <code>K14l1</code>–<code>K14l8</code></td></tr>
+<tr><td>TALK TO LUTHER (tavern)</td><td>PROMPT 13 (topics) and PROMPT 14 (YES / WHAT? / NO; Luther small up)</td><td class="yes"><code>K14m*</code>, <code>K14n</code></td></tr>
+<tr><td>SHADOWS ATTACK</td><td>Alice screams; figures break in</td><td class="yes"><code>K14o</code> situation</td></tr>
+<tr><td>GRAB GUN, GRAB STICK FROM FIRE, PROTECT ALICE, PUT OUT FIRE</td><td>Buttons GRAB GUN / GRAB BURNING STICK / PROTECT ALICE / PUT OUT FIRE</td><td class="yes"><code>K14o</code>; GRAB GUN needs <code>ch21SawGun</code></td></tr>
+<tr><td>FIRE WARNING SHOT, THREATEN, QUESTION, PUSH AWAY</td><td>PROMPT 15: SHOOT IN THE AIR / QUESTION / PUSH BACK; THREATEN not selectable</td><td class="yes"><code>K14p</code>; SHOOT IN THE AIR needs GRAB GUN</td></tr>
+<tr><td>ATTACKERS REVEAL THEMSELVES AS JERRYS, BACK OUTSIDE</td><td>“Our name is Jerry.”; following them is forced</td><td class="yes"><code>K14q</code>, quoted</td></tr>
+<tr><td>GO TO CAROUSEL, SWITCH ON CAROUSEL, PUT ALICE ON RIDE</td><td>Unmissable</td><td class="yes"><code>K14r</code></td></tr>
+<tr><td>THE GROUP ENJOYED A QUIET MOMENT TOGETHER</td><td>The only ending</td><td class="yes"><code>K14z</code></td></tr>
+</tbody></table></div>
+
+<h2 id="stats">3 · Stat arrows</h2>
+<p class="fine">From the template (small = 1). The template wins over the wiki for arrows (research note §10.3).</p>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Arrow</th><th>Source line</th></tr></thead>
+<tbody>
+<tr><td>House-fire report on the car TV (<code>K14b*</code> option 1, needs <code>fire</code>)</td><td>Public opinion −1</td><td>Template: condition “Kara set the house on fire in Zlatko”, PublicOpinion SmallDown; wiki: “Continuing watching news, if the house has been burned”</td></tr>
+<tr><td>MAKE BED FOR ALICE (<code>K14g*</code> option 4)</td><td>Alice +1</td><td>Template: Alice SmallUp at the start of “Talking to Alice”; wiki: “After Kara sets up a bed”</td></tr>
+<tr><td>Any poster answer (<code>K14i</code>)</td><td>Alice +1</td><td>Template: Alice SmallUp after “Come on, let’s get you to bed.”; wiki: “After looking at the poster with Alice”</td></tr>
+<tr><td>KISS (<code>K14k</code> option 2)</td><td>Alice +1</td><td>Template: inside KISS; wiki: “Choosing KISS after tucking her into bed”</td></tr>
+<tr><td>YES, WHAT? or NO (<code>K14n</code>)</td><td>Luther +1</td><td>Template: on each option; wiki: “When Kara answers Luther about Alice’s true nature”</td></tr>
+<tr><td>Turning on the news</td><td class="no">Not built</td><td>Wiki chapter page and Public_Opinion list a small down; the template has no arrow</td></tr>
+<tr><td>Choosing how the story ends</td><td class="no">Not built</td><td>Wiki chapter page and Relationship_Stat list Alice small up; the template has no arrow</td></tr>
+</tbody></table></div>
+<p class="fine">Range over the chapter: public opinion 0 or −1; Alice +2 (bed and poster are unavoidable) or +3 with KISS; Luther +1 on every path.</p>
+
+<h2 id="differs">4 · Adapted or not confirmed</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Sources</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Hubs</td><td>Free roam with optional interactions</td><td>Chains of identical scenes sharing a hub state, one action per visit, each with an exit; the shared regression test lets only four existing scenes repeat, so no single scene repeats</td></tr>
+<tr><td>Leaving the car</td><td>The breakdown comes after a short drive whatever Kara does</td><td>An exit option, “let the drive go on”</td></tr>
+<tr><td>Car topics</td><td>One choice group; whether several topics can be raised is not stated</td><td>Each topic can be raised once</td></tr>
+<tr><td>The news</td><td>Three channels, a fourth with the fire</td><td>The three channels as one option, a further channel change for the fire report</td></tr>
+<tr><td>Park timer</td><td>Luther finds the tavern if Kara dawdles; no length</td><td>Not modelled</td></tr>
+<tr><td>Luther starts a fire</td><td>After a short time in the tavern</td><td>After Kara’s first tavern action</td></tr>
+<tr><td>The bag</td><td>PowerPyx saw the gun before the poster talk; the cookie needs the poster talk; the template lock: before the story</td><td>Offered once, after the poster talk and before the goodnight</td></tr>
+<tr><td>Talk with Luther</td><td>No source says how many topics come before his question</td><td>Each topic once, with an exit “say nothing more”</td></tr>
+<tr><td>Time-outs</td><td>NO ANSWER and [no answer] strings exist; the template renders no option</td><td>Not offered</td></tr>
+<tr><td>THREATEN</td><td>On the chart; wiki: “there is no option to threaten”</td><td>Not offered</td></tr>
+<tr><td>Wording kept clear of “counter”</td><td>“a close encounter with investigators”, “They encountered great dangers”</td><td>Tokens <code>{{Encounter}}</code> and <code>{{Encountered}}</code>: the real text in reports, “run-in” and “met” for the subject</td></tr>
+<tr><td>Names</td><td>Pirates’ Cove, Ivan, rA9</td><td>Tokens <code>{{PiratesCove}}</code> (Buccaneer Bay), <code>{{Ivan}}</code> (Oskar), <code>{{rA9}}</code> (unchanged)</td></tr>
+<tr><td>Cut content</td><td>The restored hunter attack after PUT ALICE ON RIDE</td><td>Not built</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · Ending and state</h2>
+<div class="table"><table>
+<thead><tr><th>Outcome</th><th>Condition</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td>THE GROUP ENJOYED A QUIET MOMENT TOGETHER</td><td>Always</td><td><code>ch21Ending</code> set; Kara, Alice and Luther alive; the next Kara chapter is Midnight Train</td></tr>
+</tbody></table></div>
+<p class="fine">Reads <code>fire</code> (Zlatko). Writes <code>publicSupport</code>, <code>aliceBond</code>/<code>aliceMax</code>, <code>lutherTrust</code>, <code>ch21SawGun</code>, <code>ch21Reaction</code> (gun, stick, protect or fire), <code>ch21MetJerrys</code>, <code>ch21Ending</code>, and the hub states <code>ch21Car</code>, <code>ch21Fair</code>, <code>ch21Tavern</code>, <code>ch21Bag</code>, <code>ch21Talk</code>.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether turning on the news lowers public opinion (wiki) or only the fire report does (template).</li>
+<li>Whether the story ending gives Alice a small up (wiki) or not (template).</li>
+<li>Whether more than one car topic can be raised, and how many tavern topics come before Luther’s question.</li>
+<li>Whether each of the four first reactions leads to the same second prompt, and whether PROTECT ALICE locks the gun out.</li>
+<li>When the bag can be opened, and whether SEE GUN before the poster still unlocks GRAB GUN.</li>
+<li>What LOOK AT ALICE, the map, the leaflet, the window and the pirate show.</li>
+<li>Whether the boxes in the park buildings are YK400 or YK500.</li>
+<li>Whether the large pale triangle beside LUTHER NEUTRAL on PowerPyx’s chart is a Luther down arrow.</li>
+</ul>
+</main>
+</body>
+</html>

@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 129,
+  "decisionNodes": 168,
   "mediaNodes": 27,
-  "eventNodes": 15,
-  "totalNodes": 171
+  "eventNodes": 23,
+  "totalNodes": 218
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
@@ -3506,88 +3506,2688 @@
    ]
   },
   {
+   "id": "K14a",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Highway to help",
+   "type": "event",
+   "situation": "You are {{Kara}}. It is one in the morning on November 7th, and snow is falling hard. You are on the road in {{Zlatko}}’s car with {{Alice}} and {{Luther}}, the big android who turned against {{Zlatko}} and helped you escape his house. You are heading for the people {{Luther}} says help androids cross the border.",
+   "options": [],
+   "facts": [
+    "You, {{Alice}} and {{Luther}} left {{Zlatko}}’s house in his car in the night of November 7th, heading for people {{Luther}} says help androids cross the border."
+   ],
+   "outcomes": {
+    "0": "The car drives on through the snow."
+   },
+   "adaptationNote": "The chart’s checkpoint HIGHWAY TO HELP, narrated as an event. The date and time are the template’s (NOV 7TH, 2038, AM 01:02), given without the year. {{Luther}} turning on {{Zlatko}} and coming with {{Kara}} is the only way into this chapter (the Zlatko chapter’s one surviving ending, LUTHER JOINS KARA & ALICE); the destination is {{Kara}}’s own line in the car (“These people we’re going to see…”). The scene does not read or set any state. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg"
+   ]
+  },
+  {
+   "id": "K14b1",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "In the car",
+   "type": "decision",
+   "situation": "You are {{Kara}}, in {{Zlatko}}’s car, driving through the snow at night. {{Luther}} sits to your left; {{Alice}} is on the back seat. The board computer on the dashboard has a TV screen. You can do one thing at a time, or simply let the drive go on.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Car.news": true
+     },
+     "text": "The TV on the dashboard is on."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Switch on the TV on the dashboard and watch the news.",
+     "clue": "news",
+     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+    },
+    {
+     "id": "1",
+     "text": "Change the channel once more.",
+     "clue": "fireNews",
+     "requires": {
+      "ch21Car.news": true,
+      "fire": true
+     },
+     "effect": {
+      "publicSupport": -1
+     },
+     "fact": "The car TV news reported a house fire on the outskirts of the city: a body found in the wreckage is unidentified, and dozens of androids were found in the ruins.",
+     "outcome": "Channel 16 again: “…meanwhile fire crews have been battling a house fire on the outskirts of the city. The blaze is now under control, but a body found in the wreckage remains unidentified. Dozens of androids were also found in the ruins, though their presence remains a mystery…”"
+    },
+    {
+     "id": "2",
+     "text": "CAR: say it is a good thing {{Zlatko}} had a car.",
+     "clue": "car",
+     "outcome": "“It’s a good thing {{Zlatko}} had a car… I wouldn’t want {{Alice}} out walking in this cold…” {{Luther}}: “I saw it once in the garage. I don’t know if {{Zlatko}} even ever used it.”"
+    },
+    {
+     "id": "3",
+     "text": "DESTINATION: ask {{Luther}} how he knows about the people you are going to see.",
+     "clue": "destination",
+     "fact": "{{Luther}} heard about the humans who help androids cross the border from androids {{Zlatko}} had captured. They believed it, until {{Zlatko}} killed them.",
+     "outcome": "“These people we’re going to see... How do you know about them?” {{Luther}}: “Overheard androids {{Zlatko}} captured. They said they were humans helping androids to cross the border… All I know is those androids believed it.” {{Kara}}: “What if it was a lie?.. Or just another trap?” {{Luther}}: “All I know is those androids believed it. Until {{Zlatko}} killed them.”"
+    },
+    {
+     "id": "4",
+     "text": "DISTANCE: ask whether it is much farther.",
+     "clue": "distance",
+     "outcome": "“Is it much farther?” {{Luther}}: “We should arrive in an hour or so.”"
+    },
+    {
+     "id": "5",
+     "text": "WEATHER: say you have never seen snow before.",
+     "clue": "weather",
+     "outcome": "“I’ve never seen snow before… It’s pretty…” {{Luther}}: “It’s slowing us down... But at least we won’t meet any humans along the way…”"
+    },
+    {
+     "id": "6",
+     "text": "Turn around and look at {{Alice}} on the back seat.",
+     "clue": "alice",
+     "outcome": "{{Kara}} turns and looks at {{Alice}} on the back seat."
+    },
+    {
+     "id": "7",
+     "text": "Let the drive go on.",
+     "clue": "drive",
+     "outcome": "The car drives on into the night."
+    }
+   ],
+   "clueState": "ch21Car",
+   "adaptationNote": "The chart’s [ CAR ] block: WATCH NEWS, TALK TO LUTHER and LOOK AT ALICE, all optional, before CAR BREAKS DOWN, which the game plays after a short drive whatever {{Kara}} does (PowerPyx: “No way to miss this”). WATCH NEWS is the board computer’s TV (the template’s unlock type TV; PowerPyx: “the TV program at the board computer”); its three ordinary channels are one option, in the template’s order, and changing the channel once more brings the fourth report, the house fire, which exists only if {{Kara}} set {{Zlatko}}’s house on fire (the built-in `fire` flag from the Zlatko chapter, read as is). Public opinion: the template has one arrow in the chapter, small down on the fire report (condition “Kara set the house on fire in Zlatko”; the Public_Opinion page: “Changing the radio channel at least 4 different times … Only if Kara set fire to Zlatko’s mansion”), and that is the only change built. The wiki’s chapter page and Public_Opinion page also list a small down for turning the news on; the template has no arrow there and wins for arrows (research note, section 10.3), so it is not applied. TALK TO LUTHER is the template’s PROMPT 1 with the game’s four buttons CAR, DESTINATION, DISTANCE and WEATHER, in the template’s order, and the spoken lines; each topic can be raised once (the sources do not say whether the game allows more than one). LOOK AT ALICE has no line or effect in any source and is narrated as a look. The exit “let the drive go on” is the benchmark’s way to end the free choice; in the game the breakdown ends it after a short drive. Built as 8 copies of one scene (K14b1 to K14b8) sharing the hub state `ch21Car`: each copy offers only what has not been done yet, and once “let the drive go on” is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14b2",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "In the car",
+   "type": "decision",
+   "when": {
+    "ch21Car.drive": false
+   },
+   "whenNot": "Kara had already let the drive go on.",
+   "situation": "You are {{Kara}}, still in the car with {{Luther}} and {{Alice}}, driving through the snow.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Car.news": true
+     },
+     "text": "The TV on the dashboard is on."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Switch on the TV on the dashboard and watch the news.",
+     "clue": "news",
+     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+    },
+    {
+     "id": "1",
+     "text": "Change the channel once more.",
+     "clue": "fireNews",
+     "requires": {
+      "ch21Car.news": true,
+      "fire": true
+     },
+     "effect": {
+      "publicSupport": -1
+     },
+     "fact": "The car TV news reported a house fire on the outskirts of the city: a body found in the wreckage is unidentified, and dozens of androids were found in the ruins.",
+     "outcome": "Channel 16 again: “…meanwhile fire crews have been battling a house fire on the outskirts of the city. The blaze is now under control, but a body found in the wreckage remains unidentified. Dozens of androids were also found in the ruins, though their presence remains a mystery…”"
+    },
+    {
+     "id": "2",
+     "text": "CAR: say it is a good thing {{Zlatko}} had a car.",
+     "clue": "car",
+     "outcome": "“It’s a good thing {{Zlatko}} had a car… I wouldn’t want {{Alice}} out walking in this cold…” {{Luther}}: “I saw it once in the garage. I don’t know if {{Zlatko}} even ever used it.”"
+    },
+    {
+     "id": "3",
+     "text": "DESTINATION: ask {{Luther}} how he knows about the people you are going to see.",
+     "clue": "destination",
+     "fact": "{{Luther}} heard about the humans who help androids cross the border from androids {{Zlatko}} had captured. They believed it, until {{Zlatko}} killed them.",
+     "outcome": "“These people we’re going to see... How do you know about them?” {{Luther}}: “Overheard androids {{Zlatko}} captured. They said they were humans helping androids to cross the border… All I know is those androids believed it.” {{Kara}}: “What if it was a lie?.. Or just another trap?” {{Luther}}: “All I know is those androids believed it. Until {{Zlatko}} killed them.”"
+    },
+    {
+     "id": "4",
+     "text": "DISTANCE: ask whether it is much farther.",
+     "clue": "distance",
+     "outcome": "“Is it much farther?” {{Luther}}: “We should arrive in an hour or so.”"
+    },
+    {
+     "id": "5",
+     "text": "WEATHER: say you have never seen snow before.",
+     "clue": "weather",
+     "outcome": "“I’ve never seen snow before… It’s pretty…” {{Luther}}: “It’s slowing us down... But at least we won’t meet any humans along the way…”"
+    },
+    {
+     "id": "6",
+     "text": "Turn around and look at {{Alice}} on the back seat.",
+     "clue": "alice",
+     "outcome": "{{Kara}} turns and looks at {{Alice}} on the back seat."
+    },
+    {
+     "id": "7",
+     "text": "Let the drive go on.",
+     "clue": "drive",
+     "outcome": "The car drives on into the night."
+    }
+   ],
+   "clueState": "ch21Car",
+   "adaptationNote": "Visit 2 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14b3",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "In the car",
+   "type": "decision",
+   "when": {
+    "ch21Car.drive": false
+   },
+   "whenNot": "Kara had already let the drive go on.",
+   "situation": "You are {{Kara}}, still in the car with {{Luther}} and {{Alice}}, driving through the snow.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Car.news": true
+     },
+     "text": "The TV on the dashboard is on."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Switch on the TV on the dashboard and watch the news.",
+     "clue": "news",
+     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+    },
+    {
+     "id": "1",
+     "text": "Change the channel once more.",
+     "clue": "fireNews",
+     "requires": {
+      "ch21Car.news": true,
+      "fire": true
+     },
+     "effect": {
+      "publicSupport": -1
+     },
+     "fact": "The car TV news reported a house fire on the outskirts of the city: a body found in the wreckage is unidentified, and dozens of androids were found in the ruins.",
+     "outcome": "Channel 16 again: “…meanwhile fire crews have been battling a house fire on the outskirts of the city. The blaze is now under control, but a body found in the wreckage remains unidentified. Dozens of androids were also found in the ruins, though their presence remains a mystery…”"
+    },
+    {
+     "id": "2",
+     "text": "CAR: say it is a good thing {{Zlatko}} had a car.",
+     "clue": "car",
+     "outcome": "“It’s a good thing {{Zlatko}} had a car… I wouldn’t want {{Alice}} out walking in this cold…” {{Luther}}: “I saw it once in the garage. I don’t know if {{Zlatko}} even ever used it.”"
+    },
+    {
+     "id": "3",
+     "text": "DESTINATION: ask {{Luther}} how he knows about the people you are going to see.",
+     "clue": "destination",
+     "fact": "{{Luther}} heard about the humans who help androids cross the border from androids {{Zlatko}} had captured. They believed it, until {{Zlatko}} killed them.",
+     "outcome": "“These people we’re going to see... How do you know about them?” {{Luther}}: “Overheard androids {{Zlatko}} captured. They said they were humans helping androids to cross the border… All I know is those androids believed it.” {{Kara}}: “What if it was a lie?.. Or just another trap?” {{Luther}}: “All I know is those androids believed it. Until {{Zlatko}} killed them.”"
+    },
+    {
+     "id": "4",
+     "text": "DISTANCE: ask whether it is much farther.",
+     "clue": "distance",
+     "outcome": "“Is it much farther?” {{Luther}}: “We should arrive in an hour or so.”"
+    },
+    {
+     "id": "5",
+     "text": "WEATHER: say you have never seen snow before.",
+     "clue": "weather",
+     "outcome": "“I’ve never seen snow before… It’s pretty…” {{Luther}}: “It’s slowing us down... But at least we won’t meet any humans along the way…”"
+    },
+    {
+     "id": "6",
+     "text": "Turn around and look at {{Alice}} on the back seat.",
+     "clue": "alice",
+     "outcome": "{{Kara}} turns and looks at {{Alice}} on the back seat."
+    },
+    {
+     "id": "7",
+     "text": "Let the drive go on.",
+     "clue": "drive",
+     "outcome": "The car drives on into the night."
+    }
+   ],
+   "clueState": "ch21Car",
+   "adaptationNote": "Visit 3 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14b4",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "In the car",
+   "type": "decision",
+   "when": {
+    "ch21Car.drive": false
+   },
+   "whenNot": "Kara had already let the drive go on.",
+   "situation": "You are {{Kara}}, still in the car with {{Luther}} and {{Alice}}, driving through the snow.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Car.news": true
+     },
+     "text": "The TV on the dashboard is on."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Switch on the TV on the dashboard and watch the news.",
+     "clue": "news",
+     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+    },
+    {
+     "id": "1",
+     "text": "Change the channel once more.",
+     "clue": "fireNews",
+     "requires": {
+      "ch21Car.news": true,
+      "fire": true
+     },
+     "effect": {
+      "publicSupport": -1
+     },
+     "fact": "The car TV news reported a house fire on the outskirts of the city: a body found in the wreckage is unidentified, and dozens of androids were found in the ruins.",
+     "outcome": "Channel 16 again: “…meanwhile fire crews have been battling a house fire on the outskirts of the city. The blaze is now under control, but a body found in the wreckage remains unidentified. Dozens of androids were also found in the ruins, though their presence remains a mystery…”"
+    },
+    {
+     "id": "2",
+     "text": "CAR: say it is a good thing {{Zlatko}} had a car.",
+     "clue": "car",
+     "outcome": "“It’s a good thing {{Zlatko}} had a car… I wouldn’t want {{Alice}} out walking in this cold…” {{Luther}}: “I saw it once in the garage. I don’t know if {{Zlatko}} even ever used it.”"
+    },
+    {
+     "id": "3",
+     "text": "DESTINATION: ask {{Luther}} how he knows about the people you are going to see.",
+     "clue": "destination",
+     "fact": "{{Luther}} heard about the humans who help androids cross the border from androids {{Zlatko}} had captured. They believed it, until {{Zlatko}} killed them.",
+     "outcome": "“These people we’re going to see... How do you know about them?” {{Luther}}: “Overheard androids {{Zlatko}} captured. They said they were humans helping androids to cross the border… All I know is those androids believed it.” {{Kara}}: “What if it was a lie?.. Or just another trap?” {{Luther}}: “All I know is those androids believed it. Until {{Zlatko}} killed them.”"
+    },
+    {
+     "id": "4",
+     "text": "DISTANCE: ask whether it is much farther.",
+     "clue": "distance",
+     "outcome": "“Is it much farther?” {{Luther}}: “We should arrive in an hour or so.”"
+    },
+    {
+     "id": "5",
+     "text": "WEATHER: say you have never seen snow before.",
+     "clue": "weather",
+     "outcome": "“I’ve never seen snow before… It’s pretty…” {{Luther}}: “It’s slowing us down... But at least we won’t meet any humans along the way…”"
+    },
+    {
+     "id": "6",
+     "text": "Turn around and look at {{Alice}} on the back seat.",
+     "clue": "alice",
+     "outcome": "{{Kara}} turns and looks at {{Alice}} on the back seat."
+    },
+    {
+     "id": "7",
+     "text": "Let the drive go on.",
+     "clue": "drive",
+     "outcome": "The car drives on into the night."
+    }
+   ],
+   "clueState": "ch21Car",
+   "adaptationNote": "Visit 4 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14b5",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "In the car",
+   "type": "decision",
+   "when": {
+    "ch21Car.drive": false
+   },
+   "whenNot": "Kara had already let the drive go on.",
+   "situation": "You are {{Kara}}, still in the car with {{Luther}} and {{Alice}}, driving through the snow.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Car.news": true
+     },
+     "text": "The TV on the dashboard is on."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Switch on the TV on the dashboard and watch the news.",
+     "clue": "news",
+     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+    },
+    {
+     "id": "1",
+     "text": "Change the channel once more.",
+     "clue": "fireNews",
+     "requires": {
+      "ch21Car.news": true,
+      "fire": true
+     },
+     "effect": {
+      "publicSupport": -1
+     },
+     "fact": "The car TV news reported a house fire on the outskirts of the city: a body found in the wreckage is unidentified, and dozens of androids were found in the ruins.",
+     "outcome": "Channel 16 again: “…meanwhile fire crews have been battling a house fire on the outskirts of the city. The blaze is now under control, but a body found in the wreckage remains unidentified. Dozens of androids were also found in the ruins, though their presence remains a mystery…”"
+    },
+    {
+     "id": "2",
+     "text": "CAR: say it is a good thing {{Zlatko}} had a car.",
+     "clue": "car",
+     "outcome": "“It’s a good thing {{Zlatko}} had a car… I wouldn’t want {{Alice}} out walking in this cold…” {{Luther}}: “I saw it once in the garage. I don’t know if {{Zlatko}} even ever used it.”"
+    },
+    {
+     "id": "3",
+     "text": "DESTINATION: ask {{Luther}} how he knows about the people you are going to see.",
+     "clue": "destination",
+     "fact": "{{Luther}} heard about the humans who help androids cross the border from androids {{Zlatko}} had captured. They believed it, until {{Zlatko}} killed them.",
+     "outcome": "“These people we’re going to see... How do you know about them?” {{Luther}}: “Overheard androids {{Zlatko}} captured. They said they were humans helping androids to cross the border… All I know is those androids believed it.” {{Kara}}: “What if it was a lie?.. Or just another trap?” {{Luther}}: “All I know is those androids believed it. Until {{Zlatko}} killed them.”"
+    },
+    {
+     "id": "4",
+     "text": "DISTANCE: ask whether it is much farther.",
+     "clue": "distance",
+     "outcome": "“Is it much farther?” {{Luther}}: “We should arrive in an hour or so.”"
+    },
+    {
+     "id": "5",
+     "text": "WEATHER: say you have never seen snow before.",
+     "clue": "weather",
+     "outcome": "“I’ve never seen snow before… It’s pretty…” {{Luther}}: “It’s slowing us down... But at least we won’t meet any humans along the way…”"
+    },
+    {
+     "id": "6",
+     "text": "Turn around and look at {{Alice}} on the back seat.",
+     "clue": "alice",
+     "outcome": "{{Kara}} turns and looks at {{Alice}} on the back seat."
+    },
+    {
+     "id": "7",
+     "text": "Let the drive go on.",
+     "clue": "drive",
+     "outcome": "The car drives on into the night."
+    }
+   ],
+   "clueState": "ch21Car",
+   "adaptationNote": "Visit 5 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14b6",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "In the car",
+   "type": "decision",
+   "when": {
+    "ch21Car.drive": false
+   },
+   "whenNot": "Kara had already let the drive go on.",
+   "situation": "You are {{Kara}}, still in the car with {{Luther}} and {{Alice}}, driving through the snow.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Car.news": true
+     },
+     "text": "The TV on the dashboard is on."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Switch on the TV on the dashboard and watch the news.",
+     "clue": "news",
+     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+    },
+    {
+     "id": "1",
+     "text": "Change the channel once more.",
+     "clue": "fireNews",
+     "requires": {
+      "ch21Car.news": true,
+      "fire": true
+     },
+     "effect": {
+      "publicSupport": -1
+     },
+     "fact": "The car TV news reported a house fire on the outskirts of the city: a body found in the wreckage is unidentified, and dozens of androids were found in the ruins.",
+     "outcome": "Channel 16 again: “…meanwhile fire crews have been battling a house fire on the outskirts of the city. The blaze is now under control, but a body found in the wreckage remains unidentified. Dozens of androids were also found in the ruins, though their presence remains a mystery…”"
+    },
+    {
+     "id": "2",
+     "text": "CAR: say it is a good thing {{Zlatko}} had a car.",
+     "clue": "car",
+     "outcome": "“It’s a good thing {{Zlatko}} had a car… I wouldn’t want {{Alice}} out walking in this cold…” {{Luther}}: “I saw it once in the garage. I don’t know if {{Zlatko}} even ever used it.”"
+    },
+    {
+     "id": "3",
+     "text": "DESTINATION: ask {{Luther}} how he knows about the people you are going to see.",
+     "clue": "destination",
+     "fact": "{{Luther}} heard about the humans who help androids cross the border from androids {{Zlatko}} had captured. They believed it, until {{Zlatko}} killed them.",
+     "outcome": "“These people we’re going to see... How do you know about them?” {{Luther}}: “Overheard androids {{Zlatko}} captured. They said they were humans helping androids to cross the border… All I know is those androids believed it.” {{Kara}}: “What if it was a lie?.. Or just another trap?” {{Luther}}: “All I know is those androids believed it. Until {{Zlatko}} killed them.”"
+    },
+    {
+     "id": "4",
+     "text": "DISTANCE: ask whether it is much farther.",
+     "clue": "distance",
+     "outcome": "“Is it much farther?” {{Luther}}: “We should arrive in an hour or so.”"
+    },
+    {
+     "id": "5",
+     "text": "WEATHER: say you have never seen snow before.",
+     "clue": "weather",
+     "outcome": "“I’ve never seen snow before… It’s pretty…” {{Luther}}: “It’s slowing us down... But at least we won’t meet any humans along the way…”"
+    },
+    {
+     "id": "6",
+     "text": "Turn around and look at {{Alice}} on the back seat.",
+     "clue": "alice",
+     "outcome": "{{Kara}} turns and looks at {{Alice}} on the back seat."
+    },
+    {
+     "id": "7",
+     "text": "Let the drive go on.",
+     "clue": "drive",
+     "outcome": "The car drives on into the night."
+    }
+   ],
+   "clueState": "ch21Car",
+   "adaptationNote": "Visit 6 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14b7",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "In the car",
+   "type": "decision",
+   "when": {
+    "ch21Car.drive": false
+   },
+   "whenNot": "Kara had already let the drive go on.",
+   "situation": "You are {{Kara}}, still in the car with {{Luther}} and {{Alice}}, driving through the snow.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Car.news": true
+     },
+     "text": "The TV on the dashboard is on."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Switch on the TV on the dashboard and watch the news.",
+     "clue": "news",
+     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+    },
+    {
+     "id": "1",
+     "text": "Change the channel once more.",
+     "clue": "fireNews",
+     "requires": {
+      "ch21Car.news": true,
+      "fire": true
+     },
+     "effect": {
+      "publicSupport": -1
+     },
+     "fact": "The car TV news reported a house fire on the outskirts of the city: a body found in the wreckage is unidentified, and dozens of androids were found in the ruins.",
+     "outcome": "Channel 16 again: “…meanwhile fire crews have been battling a house fire on the outskirts of the city. The blaze is now under control, but a body found in the wreckage remains unidentified. Dozens of androids were also found in the ruins, though their presence remains a mystery…”"
+    },
+    {
+     "id": "2",
+     "text": "CAR: say it is a good thing {{Zlatko}} had a car.",
+     "clue": "car",
+     "outcome": "“It’s a good thing {{Zlatko}} had a car… I wouldn’t want {{Alice}} out walking in this cold…” {{Luther}}: “I saw it once in the garage. I don’t know if {{Zlatko}} even ever used it.”"
+    },
+    {
+     "id": "3",
+     "text": "DESTINATION: ask {{Luther}} how he knows about the people you are going to see.",
+     "clue": "destination",
+     "fact": "{{Luther}} heard about the humans who help androids cross the border from androids {{Zlatko}} had captured. They believed it, until {{Zlatko}} killed them.",
+     "outcome": "“These people we’re going to see... How do you know about them?” {{Luther}}: “Overheard androids {{Zlatko}} captured. They said they were humans helping androids to cross the border… All I know is those androids believed it.” {{Kara}}: “What if it was a lie?.. Or just another trap?” {{Luther}}: “All I know is those androids believed it. Until {{Zlatko}} killed them.”"
+    },
+    {
+     "id": "4",
+     "text": "DISTANCE: ask whether it is much farther.",
+     "clue": "distance",
+     "outcome": "“Is it much farther?” {{Luther}}: “We should arrive in an hour or so.”"
+    },
+    {
+     "id": "5",
+     "text": "WEATHER: say you have never seen snow before.",
+     "clue": "weather",
+     "outcome": "“I’ve never seen snow before… It’s pretty…” {{Luther}}: “It’s slowing us down... But at least we won’t meet any humans along the way…”"
+    },
+    {
+     "id": "6",
+     "text": "Turn around and look at {{Alice}} on the back seat.",
+     "clue": "alice",
+     "outcome": "{{Kara}} turns and looks at {{Alice}} on the back seat."
+    },
+    {
+     "id": "7",
+     "text": "Let the drive go on.",
+     "clue": "drive",
+     "outcome": "The car drives on into the night."
+    }
+   ],
+   "clueState": "ch21Car",
+   "adaptationNote": "Visit 7 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14b8",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "In the car",
+   "type": "decision",
+   "when": {
+    "ch21Car.drive": false
+   },
+   "whenNot": "Kara had already let the drive go on.",
+   "situation": "You are {{Kara}}, still in the car with {{Luther}} and {{Alice}}, driving through the snow.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Car.news": true
+     },
+     "text": "The TV on the dashboard is on."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Switch on the TV on the dashboard and watch the news.",
+     "clue": "news",
+     "fact": "The car TV news: police say the AX400 android that attacked its owner in a {{Detroit}} suburb is still at large, and its description has been shared with all local law enforcement; the submarine USS IOWA has disappeared in the Arctic and President {{Warren}} has called a crisis meeting; the heavy snow will go on until Monday evening, at 22°, far below seasonal averages.",
+     "outcome": "{{Kara}} switches on the board computer’s TV and goes through the channels. Channel 16: “…the AX400 android reported to have attacked its owner in a {{Detroit}} suburb is still at large. Police appeared to lose its trail after a close {{Encounter}} with investigators. The android’s description has been shared with all local law enforcement and the investigation is ongoing…” CTN: “The Arctic conflict has escalated to new heights this morning. We have just learned that the USS IOWA, a destroyer-class submarine patrolling in the region, is reported to have disappeared after surfacing for repairs. President {{Warren}} immediately called for a crisis meeting of high-ranking officers in the White House. With the world on the brink of war, this incident could well be the spark that lights the fuse.” KNC: “… {{Detroit}}’s heavy snowfall is expected to continue throughout the night. The forecast is 22°, far below seasonal averages. And this cold front is likely to persist over the coming days, up until Monday evening.”"
+    },
+    {
+     "id": "1",
+     "text": "Change the channel once more.",
+     "clue": "fireNews",
+     "requires": {
+      "ch21Car.news": true,
+      "fire": true
+     },
+     "effect": {
+      "publicSupport": -1
+     },
+     "fact": "The car TV news reported a house fire on the outskirts of the city: a body found in the wreckage is unidentified, and dozens of androids were found in the ruins.",
+     "outcome": "Channel 16 again: “…meanwhile fire crews have been battling a house fire on the outskirts of the city. The blaze is now under control, but a body found in the wreckage remains unidentified. Dozens of androids were also found in the ruins, though their presence remains a mystery…”"
+    },
+    {
+     "id": "2",
+     "text": "CAR: say it is a good thing {{Zlatko}} had a car.",
+     "clue": "car",
+     "outcome": "“It’s a good thing {{Zlatko}} had a car… I wouldn’t want {{Alice}} out walking in this cold…” {{Luther}}: “I saw it once in the garage. I don’t know if {{Zlatko}} even ever used it.”"
+    },
+    {
+     "id": "3",
+     "text": "DESTINATION: ask {{Luther}} how he knows about the people you are going to see.",
+     "clue": "destination",
+     "fact": "{{Luther}} heard about the humans who help androids cross the border from androids {{Zlatko}} had captured. They believed it, until {{Zlatko}} killed them.",
+     "outcome": "“These people we’re going to see... How do you know about them?” {{Luther}}: “Overheard androids {{Zlatko}} captured. They said they were humans helping androids to cross the border… All I know is those androids believed it.” {{Kara}}: “What if it was a lie?.. Or just another trap?” {{Luther}}: “All I know is those androids believed it. Until {{Zlatko}} killed them.”"
+    },
+    {
+     "id": "4",
+     "text": "DISTANCE: ask whether it is much farther.",
+     "clue": "distance",
+     "outcome": "“Is it much farther?” {{Luther}}: “We should arrive in an hour or so.”"
+    },
+    {
+     "id": "5",
+     "text": "WEATHER: say you have never seen snow before.",
+     "clue": "weather",
+     "outcome": "“I’ve never seen snow before… It’s pretty…” {{Luther}}: “It’s slowing us down... But at least we won’t meet any humans along the way…”"
+    },
+    {
+     "id": "6",
+     "text": "Turn around and look at {{Alice}} on the back seat.",
+     "clue": "alice",
+     "outcome": "{{Kara}} turns and looks at {{Alice}} on the back seat."
+    },
+    {
+     "id": "7",
+     "text": "Let the drive go on.",
+     "clue": "drive",
+     "outcome": "The car drives on into the night."
+    }
+   ],
+   "clueState": "ch21Car",
+   "adaptationNote": "Visit 8 of the hub K14b1 (In the car); see that scene’s note. Skipped once “let the drive go on” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14c",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The car breaks down",
+   "type": "event",
+   "situation": "You are {{Kara}}. The car’s voice: “Malfunction detected. Emergency brakes activated.” The car stops on the empty road in the snow. {{Luther}}: “This doesn’t look good.” You: “Stay inside, {{Alice}}.” You get out and open the hood: the car will not go any further. “What are we going to do?” {{Luther}}: “I don’t know… Continue on foot, I guess… There’s nowhere we can stay around here, {{Kara}}…” You: “It’s 30°, {{Alice}} won’t make it!.. We have to find somewhere to spend the night.” Up the road stands a big sign for an amusement park, {{PiratesCove}}.",
+   "options": [],
+   "facts": [
+    "The car broke down on an empty road in the snow. It is 30°: {{Alice}} cannot go on in this cold, and you have to find somewhere to spend the night."
+   ],
+   "outcomes": {
+    "0": "{{Kara}} looks at the sign: “Over there…” They walk to the park."
+   },
+   "adaptationNote": "The chart’s CAR BREAKS DOWN (event), INVESTIGATE BREAKDOWN and SCAN ENVIRONMENT, narrated as one event: the two actions are required and have no alternative (PowerPyx: open the hood; walk to the big sign of the amusement park and look at it). Every line is the template’s. The unplaced alternate lines in the string table (“She can’t keep going…”, “At least two hours on foot…”) are not used, and the one-button SPEAK prompt is folded into the dialogue. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg"
+   ]
+  },
+  {
+   "id": "K14d",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Inside {{PiratesCove}}",
+   "type": "event",
+   "situation": "You are {{Kara}}. With {{Alice}} and {{Luther}} you walk in through the gates of {{PiratesCove}}, a pirate-themed amusement park lying under the snow. You: “We need to find shelter. We have to get out of the cold.” {{Luther}}: “Looks like it’s been abandoned for a while…”",
+   "options": [],
+   "facts": [
+    "{{PiratesCove}} is an amusement park that was abandoned a long time ago."
+   ],
+   "outcomes": {
+    "0": "They start looking for somewhere to spend the night."
+   },
+   "adaptationNote": "The chart’s checkpoint INSIDE PIRATES’ COVE, narrated as an event with the template’s two lines. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Pirates%27_Cove"
+   ]
+  },
+  {
+   "id": "K14e1",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The fun fair",
+   "type": "decision",
+   "situation": "You are {{Kara}}, in the snow inside the abandoned park with {{Alice}} and {{Luther}}, looking for somewhere to spend the night. By the entrance, on your left, is a map of the park covered in snow. Small buildings line the road. A little way in, on the right, an android stands frozen in the ice, and in the middle of the road is a fortune-teller android in a glass box. The road leads on toward a Ferris wheel. You can look around, one thing at a time, or go on to the end of the road.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Check one of the buildings along the road.",
+     "clue": "buildings",
+     "fact": "The buildings along the park’s road are no place to spend the night. In one of them were empty boxes for a YK400 android model.",
+     "outcome": "{{Kara}} looks into one of the buildings. It is no good for the night, and among the junk are empty boxes for a YK400 android model. {{Luther}}: “Find anything?” {{Kara}}: “No… No place we could spend the night.”"
+    },
+    {
+     "id": "1",
+     "text": "Examine the android frozen in the ice.",
+     "clue": "frozen",
+     "fact": "An android of the park, frozen in the ice, came to life when you touched it (“Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!”) and shut down again.",
+     "outcome": "{{Kara}} touches the frozen android. It jerks to life: “Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!” Then it shuts down again. {{Luther}}: “This place is falling apart. It’s not gonna be easy to find shelter…”"
+    },
+    {
+     "id": "2",
+     "text": "Switch on the fortune-teller android in the glass box.",
+     "clue": "ivan",
+     "fact": "{{Ivan}}, the park’s fortune-teller android, warned you: “Beware! Danger always comes when least expected.”",
+     "outcome": "{{Kara}} switches on {{Ivan}}, the fortune teller. Behind the glass he comes to life: “Beware! Danger always comes when least expected.” Then he falls silent again."
+    },
+    {
+     "id": "3",
+     "text": "Wipe the snow off the park map and look at it.",
+     "clue": "map",
+     "outcome": "{{Kara}} wipes the snow off the map of the park and looks at it."
+    },
+    {
+     "id": "4",
+     "text": "Go on to the end of the road, toward the Ferris wheel.",
+     "clue": "tavern",
+     "outcome": "At the end of the road, on the left, stands an old tavern with its door boarded up. It is the only building fit to spend the night in."
+    }
+   ],
+   "clueState": "ch21Fair",
+   "adaptationNote": "The chart’s [ FUN FAIR ] block (CHECK BUILDINGS, EXAMINE FROZEN ANDROID, SWITCH ON IVAN, LOOK AT MAP, all optional, in the chart’s order) and CHECK ABANDONED TAVERN, the required way out (PowerPyx: “Automatic story objective, unmissable … the only building that’s suited to spend the night”). The lines are the template’s (“Find anything?”, the frozen {{Jerry}}’s greeting and {{Luther}}’s “This place is falling apart”, {{Ivan}}’s warning); the YK400 boxes are the wiki’s note (“Kara can come across empty boxes for the YK400 model”; the research note asks whether this is a typo for YK500). The map has no text in any source. Left out: the hidden timer after which {{Luther}} finds the tavern himself (“Kara! You should come have a look. I think I found something!”): no source gives its length, and it would only cut the optional looks short. No stat change. Built as 5 copies of one scene (K14e1 to K14e5) sharing the hub state `ch21Fair`: each copy offers only what has not been done yet, and once the walk to the tavern is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Ivan",
+    "https://detroit-become-human.fandom.com/wiki/Jerry",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14e2",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The fun fair",
+   "type": "decision",
+   "when": {
+    "ch21Fair.tavern": false
+   },
+   "whenNot": "Kara had already gone on to the tavern.",
+   "situation": "You are {{Kara}}, still searching the snowbound park with {{Alice}} and {{Luther}} for a place to spend the night.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Check one of the buildings along the road.",
+     "clue": "buildings",
+     "fact": "The buildings along the park’s road are no place to spend the night. In one of them were empty boxes for a YK400 android model.",
+     "outcome": "{{Kara}} looks into one of the buildings. It is no good for the night, and among the junk are empty boxes for a YK400 android model. {{Luther}}: “Find anything?” {{Kara}}: “No… No place we could spend the night.”"
+    },
+    {
+     "id": "1",
+     "text": "Examine the android frozen in the ice.",
+     "clue": "frozen",
+     "fact": "An android of the park, frozen in the ice, came to life when you touched it (“Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!”) and shut down again.",
+     "outcome": "{{Kara}} touches the frozen android. It jerks to life: “Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!” Then it shuts down again. {{Luther}}: “This place is falling apart. It’s not gonna be easy to find shelter…”"
+    },
+    {
+     "id": "2",
+     "text": "Switch on the fortune-teller android in the glass box.",
+     "clue": "ivan",
+     "fact": "{{Ivan}}, the park’s fortune-teller android, warned you: “Beware! Danger always comes when least expected.”",
+     "outcome": "{{Kara}} switches on {{Ivan}}, the fortune teller. Behind the glass he comes to life: “Beware! Danger always comes when least expected.” Then he falls silent again."
+    },
+    {
+     "id": "3",
+     "text": "Wipe the snow off the park map and look at it.",
+     "clue": "map",
+     "outcome": "{{Kara}} wipes the snow off the map of the park and looks at it."
+    },
+    {
+     "id": "4",
+     "text": "Go on to the end of the road, toward the Ferris wheel.",
+     "clue": "tavern",
+     "outcome": "At the end of the road, on the left, stands an old tavern with its door boarded up. It is the only building fit to spend the night in."
+    }
+   ],
+   "clueState": "ch21Fair",
+   "adaptationNote": "Visit 2 of the hub K14e1 (The fun fair); see that scene’s note. Skipped once the walk to the tavern is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Ivan",
+    "https://detroit-become-human.fandom.com/wiki/Jerry",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14e3",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The fun fair",
+   "type": "decision",
+   "when": {
+    "ch21Fair.tavern": false
+   },
+   "whenNot": "Kara had already gone on to the tavern.",
+   "situation": "You are {{Kara}}, still searching the snowbound park with {{Alice}} and {{Luther}} for a place to spend the night.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Check one of the buildings along the road.",
+     "clue": "buildings",
+     "fact": "The buildings along the park’s road are no place to spend the night. In one of them were empty boxes for a YK400 android model.",
+     "outcome": "{{Kara}} looks into one of the buildings. It is no good for the night, and among the junk are empty boxes for a YK400 android model. {{Luther}}: “Find anything?” {{Kara}}: “No… No place we could spend the night.”"
+    },
+    {
+     "id": "1",
+     "text": "Examine the android frozen in the ice.",
+     "clue": "frozen",
+     "fact": "An android of the park, frozen in the ice, came to life when you touched it (“Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!”) and shut down again.",
+     "outcome": "{{Kara}} touches the frozen android. It jerks to life: “Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!” Then it shuts down again. {{Luther}}: “This place is falling apart. It’s not gonna be easy to find shelter…”"
+    },
+    {
+     "id": "2",
+     "text": "Switch on the fortune-teller android in the glass box.",
+     "clue": "ivan",
+     "fact": "{{Ivan}}, the park’s fortune-teller android, warned you: “Beware! Danger always comes when least expected.”",
+     "outcome": "{{Kara}} switches on {{Ivan}}, the fortune teller. Behind the glass he comes to life: “Beware! Danger always comes when least expected.” Then he falls silent again."
+    },
+    {
+     "id": "3",
+     "text": "Wipe the snow off the park map and look at it.",
+     "clue": "map",
+     "outcome": "{{Kara}} wipes the snow off the map of the park and looks at it."
+    },
+    {
+     "id": "4",
+     "text": "Go on to the end of the road, toward the Ferris wheel.",
+     "clue": "tavern",
+     "outcome": "At the end of the road, on the left, stands an old tavern with its door boarded up. It is the only building fit to spend the night in."
+    }
+   ],
+   "clueState": "ch21Fair",
+   "adaptationNote": "Visit 3 of the hub K14e1 (The fun fair); see that scene’s note. Skipped once the walk to the tavern is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Ivan",
+    "https://detroit-become-human.fandom.com/wiki/Jerry",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14e4",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The fun fair",
+   "type": "decision",
+   "when": {
+    "ch21Fair.tavern": false
+   },
+   "whenNot": "Kara had already gone on to the tavern.",
+   "situation": "You are {{Kara}}, still searching the snowbound park with {{Alice}} and {{Luther}} for a place to spend the night.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Check one of the buildings along the road.",
+     "clue": "buildings",
+     "fact": "The buildings along the park’s road are no place to spend the night. In one of them were empty boxes for a YK400 android model.",
+     "outcome": "{{Kara}} looks into one of the buildings. It is no good for the night, and among the junk are empty boxes for a YK400 android model. {{Luther}}: “Find anything?” {{Kara}}: “No… No place we could spend the night.”"
+    },
+    {
+     "id": "1",
+     "text": "Examine the android frozen in the ice.",
+     "clue": "frozen",
+     "fact": "An android of the park, frozen in the ice, came to life when you touched it (“Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!”) and shut down again.",
+     "outcome": "{{Kara}} touches the frozen android. It jerks to life: “Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!” Then it shuts down again. {{Luther}}: “This place is falling apart. It’s not gonna be easy to find shelter…”"
+    },
+    {
+     "id": "2",
+     "text": "Switch on the fortune-teller android in the glass box.",
+     "clue": "ivan",
+     "fact": "{{Ivan}}, the park’s fortune-teller android, warned you: “Beware! Danger always comes when least expected.”",
+     "outcome": "{{Kara}} switches on {{Ivan}}, the fortune teller. Behind the glass he comes to life: “Beware! Danger always comes when least expected.” Then he falls silent again."
+    },
+    {
+     "id": "3",
+     "text": "Wipe the snow off the park map and look at it.",
+     "clue": "map",
+     "outcome": "{{Kara}} wipes the snow off the map of the park and looks at it."
+    },
+    {
+     "id": "4",
+     "text": "Go on to the end of the road, toward the Ferris wheel.",
+     "clue": "tavern",
+     "outcome": "At the end of the road, on the left, stands an old tavern with its door boarded up. It is the only building fit to spend the night in."
+    }
+   ],
+   "clueState": "ch21Fair",
+   "adaptationNote": "Visit 4 of the hub K14e1 (The fun fair); see that scene’s note. Skipped once the walk to the tavern is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Ivan",
+    "https://detroit-become-human.fandom.com/wiki/Jerry",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14e5",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The fun fair",
+   "type": "decision",
+   "when": {
+    "ch21Fair.tavern": false
+   },
+   "whenNot": "Kara had already gone on to the tavern.",
+   "situation": "You are {{Kara}}, still searching the snowbound park with {{Alice}} and {{Luther}} for a place to spend the night.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Check one of the buildings along the road.",
+     "clue": "buildings",
+     "fact": "The buildings along the park’s road are no place to spend the night. In one of them were empty boxes for a YK400 android model.",
+     "outcome": "{{Kara}} looks into one of the buildings. It is no good for the night, and among the junk are empty boxes for a YK400 android model. {{Luther}}: “Find anything?” {{Kara}}: “No… No place we could spend the night.”"
+    },
+    {
+     "id": "1",
+     "text": "Examine the android frozen in the ice.",
+     "clue": "frozen",
+     "fact": "An android of the park, frozen in the ice, came to life when you touched it (“Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!”) and shut down again.",
+     "outcome": "{{Kara}} touches the frozen android. It jerks to life: “Welcome to Pirate Island, me hearties! You’re gonna have a whale of a time!” Then it shuts down again. {{Luther}}: “This place is falling apart. It’s not gonna be easy to find shelter…”"
+    },
+    {
+     "id": "2",
+     "text": "Switch on the fortune-teller android in the glass box.",
+     "clue": "ivan",
+     "fact": "{{Ivan}}, the park’s fortune-teller android, warned you: “Beware! Danger always comes when least expected.”",
+     "outcome": "{{Kara}} switches on {{Ivan}}, the fortune teller. Behind the glass he comes to life: “Beware! Danger always comes when least expected.” Then he falls silent again."
+    },
+    {
+     "id": "3",
+     "text": "Wipe the snow off the park map and look at it.",
+     "clue": "map",
+     "outcome": "{{Kara}} wipes the snow off the map of the park and looks at it."
+    },
+    {
+     "id": "4",
+     "text": "Go on to the end of the road, toward the Ferris wheel.",
+     "clue": "tavern",
+     "outcome": "At the end of the road, on the left, stands an old tavern with its door boarded up. It is the only building fit to spend the night in."
+    }
+   ],
+   "clueState": "ch21Fair",
+   "adaptationNote": "Visit 5 of the hub K14e1 (The fun fair); see that scene’s note. Skipped once the walk to the tavern is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Ivan",
+    "https://detroit-become-human.fandom.com/wiki/Jerry",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14f",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The tavern",
+   "type": "event",
+   "situation": "You are {{Kara}}, outside the boarded-up tavern. {{Luther}} rips the planks off and breaks the door in: “I’ll handle this. There we go.” Inside it is dark and cold: an old pirate tavern, abandoned like the rest of the park. You put your flashlight down on some barrels by the entrance. You: “I don’t think we’ll find anything better… Let’s settle in for the night.” {{Luther}}: “I’ll get a fire going.”",
+   "options": [],
+   "facts": [
+    "You, {{Alice}} and {{Luther}} are spending the night in an abandoned tavern in the park."
+   ],
+   "outcomes": {
+    "0": "They settle in for the night."
+   },
+   "adaptationNote": "The chart’s ENTER TAVERN and the checkpoint INSIDE TAVERN, narrated as one event with the template’s lines (“I’ll handle this. There we go.”, “I don’t think we’ll find anything better…”, “I’ll get a fire going.”). The flashlight on the barrels is PowerPyx’s. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg"
+   ]
+  },
+  {
    "id": "R21",
    "chapter": 21,
    "chapterTitle": "The Pirates’ Cove",
    "character": "Kara",
-   "title": "The car radio and a magazine in the tavern",
+   "title": "The magazine on the barrels",
    "type": "media",
-   "situation": "You are {{Kara}}. On the drive to the abandoned park the radio can play the news, and inside the derelict tavern there is a magazine on the barrels where you set down the flashlight.",
+   "situation": "You are {{Kara}}, inside the tavern. On the barrels where you put down your flashlight lies a magazine with two covers.",
    "options": [],
    "media": [
-    {
-     "kind": "tv",
-     "title": "the radio news",
-     "facts": [
-      "An American submarine has vanished in Arctic waters; President {{Warren}} says Russian aggression has reached a new level and commentators call it a war waiting to start."
-     ],
-     "effect": {
-      "publicSupport": -1
-     }
-    },
-    {
-     "kind": "tv",
-     "title": "the radio news about the mansion fire",
-     "facts": [
-      "Local news reports a house fire on the outskirts with an unidentified body and dozens of androids found in the ruins."
-     ],
-     "when": "fire",
-     "effect": {
-      "publicSupport": -1
-     }
-    },
     {
      "kind": "magazine",
      "title": "{{Detroit}} Today: USS Iowa Missing",
      "facts": [
-      "The missing submarine was last seen in the Arctic; the Kremlin denies involvement and says an American warship had no business there."
+      "{{Detroit}} Today: the destroyer-class submarine USS IOWA has disappeared in polar waters, last seen in the Arctic Sea. President {{Warren}} suspects the Russians: “Russian aggression just reached a new level. America must respond.” The Kremlin has issued a blanket denial, a Russian diplomat said “A US destroyer-class submarine has no business being in the Arctic anyway”, and a security expert called the situation “a war waiting to start.” An ad on the cover: “{{Canada}}: where the air is clean and the welcome is always warm.”"
      ]
     },
     {
      "kind": "magazine",
      "title": "Gossips Weekly: All-Android Band Tipped for Music Prize",
      "facts": [
-      "An all-android boy band is tipped for a top music award; less than 5 percent of the music market is now made by humans."
+      "Gossips Weekly: the latest all-android boy band, from a {{Detroit}} record label, is tipped to win Best New Artist at the Celebrate Music Awards. Human-only labels protest at the “erosion of artistic merit in music”, but with less than 5% of the music market now produced by human musicians, the traditionalists are not being heard. Cover lines: “Is President {{Warren}} too close to {{CyberLife}}?” and “Cyber security expert warns: your android could be hacked”."
      ]
     }
    ],
-   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "adaptationNote": "The chart’s two optional nodes READ “USS IOWA” and READ “ALL-ANDROID BAND” in [ THE TAVERN ]: one magazine with two covers, on the barrels where {{Kara}} puts her flashlight, “right in front of you” when the player regains control (PowerPyx), so it comes first here. Facts are summarized from the wiki’s article pages; the band, the label, the diplomat and the expert are not named. This replaces the earlier R21, which also carried the car news (now in the car, K14b) and attributed the diplomat’s line to the Kremlin. Neither article changes public opinion (the Public_Opinion page lists only the car news for this chapter).",
    "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
     "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/USS_Iowa_Missing",
+    "https://detroit-become-human.fandom.com/wiki/All-Android_Band_Tipped_for_Music_Prize",
     "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
-   "id": "K14",
+   "id": "K14g1",
    "chapter": 21,
    "chapterTitle": "The Pirates’ Cove",
    "character": "Kara",
-   "title": "Strangers in the dark",
+   "title": "The tavern",
    "type": "decision",
-   "situation": "You are {{Kara}}. You, {{Alice}} and {{Luther}} are sheltering in a derelict amusement park at night. Figures step out of the dark around your fire, identical androids in park uniforms, several of them, approaching silently. {{Luther}} has a gun in his bag. There is a burning stick at your feet.",
+   "situation": "You are {{Kara}}, in the abandoned tavern with {{Alice}} and {{Luther}}. On a wall by the windows someone has written something in red, and there is a leaflet on the floor beneath it. By the door are a window and a one-legged pirate. What you must do is make {{Alice}} a bed for the night: there are curtains on the windows and a pirate pillow. You can look around first, one thing at a time.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Tavern.fire": true
+     },
+     "text": "{{Luther}} has a fire going in the middle of the room."
+    }
+   ],
    "options": [
     {
      "id": "0",
-     "text": "Put yourself in front of {{Alice}} and ask them what they want."
+     "text": "Look at the red writing on the wall.",
+     "clue": "ra9",
+     "fact": "Someone has written “{{rA9}}” in red on the wall of the tavern.",
+     "outcome": "Written in red on the wall by the windows: “{{rA9}}”."
     },
     {
      "id": "1",
-     "text": "Grab a burning stick and warn them off."
+     "text": "Look at the leaflet on the floor.",
+     "clue": "leaflet",
+     "outcome": "{{Kara}} picks up the old leaflet from the floor by the windows and looks at it."
     },
     {
      "id": "2",
-     "text": "Grab the gun from {{Luther}}'s bag and fire a warning shot."
+     "text": "Look through the window by the door.",
+     "clue": "window",
+     "outcome": "{{Kara}} looks out through the window by the door at the dark, empty park."
+    },
+    {
+     "id": "3",
+     "text": "Look at the one-legged pirate by the door.",
+     "clue": "pirate",
+     "outcome": "{{Kara}} looks at the one-legged pirate standing by the door."
+    },
+    {
+     "id": "4",
+     "text": "Make a bed for {{Alice}}: tear the curtain off the second window and fetch the pirate pillow.",
+     "clue": "bed",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "{{Kara}} rips the curtain off the second window, takes the pirate pillow and makes {{Alice}} a bed. When she looks up, {{Alice}} is no longer beside her: “{{Alice}}?”"
     }
    ],
-   "adaptationNote": "The androids are harmless entertainers who want to show {{Alice}} the carousel. All responses converge.",
+   "clueState": "ch21Tavern",
+   "adaptationNote": "The chart’s [ THE TAVERN ] block (LOOK AT RA9 WRITING, LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”, all optional, in the chart’s order; its two magazine nodes are R21 and LUTHER STARTS A FIRE is K14h) and MAKE BED FOR ALICE, the required way out (PowerPyx: “rip off the curtain, then take the pirate pillow and bring it to Alice”). LOOK AT RA9 WRITING unlocks the [rA9] topic with {{Luther}} later (template lock “Looked at rA9 writing on the wall”; PowerPyx; wiki). The leaflet, the window and the pirate have no text in any source and are narrated as looks. Alice relationship: small up for making the bed (wiki: “After Kara sets up a bed”; Relationship_Stat: “After Kara sets up a bed for her in Pirates’ Cove”; the template’s first Alice arrow, which it places at the start of the poster talk, right after the bed). No other stat change. Built as 5 copies of one scene (K14g1 to K14g5, with the fire, K14h, after the first) sharing the hub state `ch21Tavern`: each copy offers only what has not been done yet, and once MAKE BED FOR ALICE is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove"
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14h",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "{{Luther}} starts a fire",
+   "type": "event",
+   "situation": "You are {{Kara}}, in the tavern. {{Luther}} builds a fire on the floor in the middle of the room: “I’ll make the fire here, that way we won’t be smoked out…”",
+   "options": [],
+   "facts": [
+    "{{Luther}} has lit a fire in the middle of the tavern."
    ],
    "outcomes": {
-    "0": "The androids stop. They are entertainers from the park, all the same model, and they only wanted to show {{Alice}} the carousel. They light it up for her and she laughs for the first time in days.",
-    "1": "The androids raise their hands. They are entertainers from the park, all the same model, and they only wanted to show {{Alice}} the carousel. They light it up for her and she laughs for the first time in days.",
-    "2": "The shot echoes and the androids freeze with their hands up. They are harmless entertainers from the park who only wanted to show {{Alice}} the carousel. Once {{Kara}} lowers the gun they light it up for her."
-   }
+    "0": "The fire catches and lights up the room."
+   },
+   "adaptationNote": "The chart’s LUTHER STARTS A FIRE (event), inside [ THE TAVERN ]: the game plays it on its own a little while after {{Kara}} starts looking around (PowerPyx: “Just walk around the Tavern for a little while and Luther will start a fire automatically”), so it comes after her first action here, whatever that was. The line is the template’s. Records `ch21Tavern.fire`, so the later tavern scenes mention the fire. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg"
+   ]
+  },
+  {
+   "id": "K14g2",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The tavern",
+   "type": "decision",
+   "when": {
+    "ch21Tavern.bed": false
+   },
+   "whenNot": "Kara had already made Alice’s bed.",
+   "situation": "You are {{Kara}}, in the tavern with {{Alice}} and {{Luther}}. {{Alice}} still needs a bed for the night.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Tavern.fire": true
+     },
+     "text": "{{Luther}} has a fire going in the middle of the room."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Look at the red writing on the wall.",
+     "clue": "ra9",
+     "fact": "Someone has written “{{rA9}}” in red on the wall of the tavern.",
+     "outcome": "Written in red on the wall by the windows: “{{rA9}}”."
+    },
+    {
+     "id": "1",
+     "text": "Look at the leaflet on the floor.",
+     "clue": "leaflet",
+     "outcome": "{{Kara}} picks up the old leaflet from the floor by the windows and looks at it."
+    },
+    {
+     "id": "2",
+     "text": "Look through the window by the door.",
+     "clue": "window",
+     "outcome": "{{Kara}} looks out through the window by the door at the dark, empty park."
+    },
+    {
+     "id": "3",
+     "text": "Look at the one-legged pirate by the door.",
+     "clue": "pirate",
+     "outcome": "{{Kara}} looks at the one-legged pirate standing by the door."
+    },
+    {
+     "id": "4",
+     "text": "Make a bed for {{Alice}}: tear the curtain off the second window and fetch the pirate pillow.",
+     "clue": "bed",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "{{Kara}} rips the curtain off the second window, takes the pirate pillow and makes {{Alice}} a bed. When she looks up, {{Alice}} is no longer beside her: “{{Alice}}?”"
+    }
+   ],
+   "clueState": "ch21Tavern",
+   "adaptationNote": "Visit 2 of the hub K14g1 (The tavern); see that scene’s note. Skipped once MAKE BED FOR ALICE is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14g3",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The tavern",
+   "type": "decision",
+   "when": {
+    "ch21Tavern.bed": false
+   },
+   "whenNot": "Kara had already made Alice’s bed.",
+   "situation": "You are {{Kara}}, in the tavern with {{Alice}} and {{Luther}}. {{Alice}} still needs a bed for the night.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Tavern.fire": true
+     },
+     "text": "{{Luther}} has a fire going in the middle of the room."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Look at the red writing on the wall.",
+     "clue": "ra9",
+     "fact": "Someone has written “{{rA9}}” in red on the wall of the tavern.",
+     "outcome": "Written in red on the wall by the windows: “{{rA9}}”."
+    },
+    {
+     "id": "1",
+     "text": "Look at the leaflet on the floor.",
+     "clue": "leaflet",
+     "outcome": "{{Kara}} picks up the old leaflet from the floor by the windows and looks at it."
+    },
+    {
+     "id": "2",
+     "text": "Look through the window by the door.",
+     "clue": "window",
+     "outcome": "{{Kara}} looks out through the window by the door at the dark, empty park."
+    },
+    {
+     "id": "3",
+     "text": "Look at the one-legged pirate by the door.",
+     "clue": "pirate",
+     "outcome": "{{Kara}} looks at the one-legged pirate standing by the door."
+    },
+    {
+     "id": "4",
+     "text": "Make a bed for {{Alice}}: tear the curtain off the second window and fetch the pirate pillow.",
+     "clue": "bed",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "{{Kara}} rips the curtain off the second window, takes the pirate pillow and makes {{Alice}} a bed. When she looks up, {{Alice}} is no longer beside her: “{{Alice}}?”"
+    }
+   ],
+   "clueState": "ch21Tavern",
+   "adaptationNote": "Visit 3 of the hub K14g1 (The tavern); see that scene’s note. Skipped once MAKE BED FOR ALICE is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14g4",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The tavern",
+   "type": "decision",
+   "when": {
+    "ch21Tavern.bed": false
+   },
+   "whenNot": "Kara had already made Alice’s bed.",
+   "situation": "You are {{Kara}}, in the tavern with {{Alice}} and {{Luther}}. {{Alice}} still needs a bed for the night.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Tavern.fire": true
+     },
+     "text": "{{Luther}} has a fire going in the middle of the room."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Look at the red writing on the wall.",
+     "clue": "ra9",
+     "fact": "Someone has written “{{rA9}}” in red on the wall of the tavern.",
+     "outcome": "Written in red on the wall by the windows: “{{rA9}}”."
+    },
+    {
+     "id": "1",
+     "text": "Look at the leaflet on the floor.",
+     "clue": "leaflet",
+     "outcome": "{{Kara}} picks up the old leaflet from the floor by the windows and looks at it."
+    },
+    {
+     "id": "2",
+     "text": "Look through the window by the door.",
+     "clue": "window",
+     "outcome": "{{Kara}} looks out through the window by the door at the dark, empty park."
+    },
+    {
+     "id": "3",
+     "text": "Look at the one-legged pirate by the door.",
+     "clue": "pirate",
+     "outcome": "{{Kara}} looks at the one-legged pirate standing by the door."
+    },
+    {
+     "id": "4",
+     "text": "Make a bed for {{Alice}}: tear the curtain off the second window and fetch the pirate pillow.",
+     "clue": "bed",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "{{Kara}} rips the curtain off the second window, takes the pirate pillow and makes {{Alice}} a bed. When she looks up, {{Alice}} is no longer beside her: “{{Alice}}?”"
+    }
+   ],
+   "clueState": "ch21Tavern",
+   "adaptationNote": "Visit 4 of the hub K14g1 (The tavern); see that scene’s note. Skipped once MAKE BED FOR ALICE is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14g5",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The tavern",
+   "type": "decision",
+   "when": {
+    "ch21Tavern.bed": false
+   },
+   "whenNot": "Kara had already made Alice’s bed.",
+   "situation": "You are {{Kara}}, in the tavern with {{Alice}} and {{Luther}}. {{Alice}} still needs a bed for the night.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21Tavern.fire": true
+     },
+     "text": "{{Luther}} has a fire going in the middle of the room."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "Look at the red writing on the wall.",
+     "clue": "ra9",
+     "fact": "Someone has written “{{rA9}}” in red on the wall of the tavern.",
+     "outcome": "Written in red on the wall by the windows: “{{rA9}}”."
+    },
+    {
+     "id": "1",
+     "text": "Look at the leaflet on the floor.",
+     "clue": "leaflet",
+     "outcome": "{{Kara}} picks up the old leaflet from the floor by the windows and looks at it."
+    },
+    {
+     "id": "2",
+     "text": "Look through the window by the door.",
+     "clue": "window",
+     "outcome": "{{Kara}} looks out through the window by the door at the dark, empty park."
+    },
+    {
+     "id": "3",
+     "text": "Look at the one-legged pirate by the door.",
+     "clue": "pirate",
+     "outcome": "{{Kara}} looks at the one-legged pirate standing by the door."
+    },
+    {
+     "id": "4",
+     "text": "Make a bed for {{Alice}}: tear the curtain off the second window and fetch the pirate pillow.",
+     "clue": "bed",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "{{Kara}} rips the curtain off the second window, takes the pirate pillow and makes {{Alice}} a bed. When she looks up, {{Alice}} is no longer beside her: “{{Alice}}?”"
+    }
+   ],
+   "clueState": "ch21Tavern",
+   "adaptationNote": "Visit 5 of the hub K14g1 (The tavern); see that scene’s note. Skipped once MAKE BED FOR ALICE is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14i",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The poster",
+   "type": "decision",
+   "situation": "You are {{Kara}}. You find {{Alice}} standing in front of a big old poster of a happy family, looking up at it. Without turning round she asks: “Do you think we’ll be like them some day?..”",
+   "options": [
+    {
+     "id": "0",
+     "text": "OPTIMISTIC: say that once you cross the border you can start over, and be like them.",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "“Once we cross the border, we can start over… You can go to school... Maybe I’ll find a job. We’ll be like them. Like everyone else.” {{Alice}}: “As long as we’re together, that’s all that matters.” {{Kara}}: “Come on, let’s get you to bed.” {{Alice}} lies down in the bed {{Kara}} made."
+    },
+    {
+     "id": "1",
+     "text": "REALISTIC: say you will never be like them, but you can be happy in your own way.",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "“I don’t think we’ll ever be like them, {{Alice}}… But maybe... We can be happy in a different way… In our own way… Once we cross the border, we can start a new life.” {{Alice}}: “As long as we’re together, that’s all that matters.” {{Kara}}: “Come on, let’s get you to bed.” {{Alice}} lies down in the bed {{Kara}} made."
+    },
+    {
+     "id": "2",
+     "text": "SINCERE: say you do not know how to be like them, but maybe you can be your own family.",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "“I don’t know how to be like them, {{Alice}}… I’ve never been a part of a family. But, maybe we can be our own family. Be happy in our own way.” {{Alice}}: “As long as we’re together, that’s all that matters.” {{Kara}}: “Come on, let’s get you to bed.” {{Alice}} lies down in the bed {{Kara}} made."
+    }
+   ],
+   "adaptationNote": "The chart’s ALICE LOOKS AT POSTER (event, narrated in the situation), TALK TO ALICE (the template’s PROMPT 3: OPTIMISTIC, REALISTIC, SINCERE, in its order, with the spoken lines) and ALICE GOES TO BED (event, narrated in the outcome). The poster is “a big poster of a happy family” (PowerPyx). OPTIMISTIC’s last line “We’ll be happy too…” is marked unused in the template and left out. No time-out option: the string table has NO ANSWER, but the template renders none and no source gives a timer. Alice relationship: small up after any answer (the template’s second Alice arrow, after “Come on, let’s get you to bed.”; wiki: “After looking at the poster with Alice”), so the same +1 on all three. No other stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14j1",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The bag",
+   "type": "decision",
+   "situation": "You are {{Kara}}. {{Alice}} is lying in the bed you made, still awake. Next to her bed is the bag you brought with you. You can open it before you go and sit with her.",
+   "options": [
+    {
+     "id": "0",
+     "text": "OFFER COOKIE: offer {{Alice}} the cookies left in the bag.",
+     "clue": "cookie",
+     "fact": "{{Alice}} refused the cookies you offered her: she said she was not hungry.",
+     "outcome": "{{Kara}} opens the bag: “There are some cookies left. Would you like some?” {{Alice}}: “No… I’m not hungry…”"
+    },
+    {
+     "id": "1",
+     "text": "Look at the gun in the bag.",
+     "clue": "gun",
+     "sets": {
+      "ch21SawGun": true
+     },
+     "fact": "There is a gun in your bag.",
+     "outcome": "{{Kara}} opens the bag and looks at the gun lying inside, then leaves it there."
+    },
+    {
+     "id": "2",
+     "text": "Go and sit with {{Alice}}.",
+     "clue": "alice",
+     "outcome": "{{Kara}} sits down by {{Alice}}’s bed."
+    }
+   ],
+   "clueState": "ch21Bag",
+   "adaptationNote": "The chart’s OPEN BAG with its two branches, OFFER COOKIE > ALICE IS NOT HUNGRY and SEE GUN > KARA NOTICES GUN, both optional, between ALICE GOES TO BED and TELL ALICE A STORY. OFFER COOKIE is the template’s PROMPT 2 (lock “Checked the bag before telling Alice a story”) with its lines; the refusal is one of the wiki’s signs that {{Alice}} never eats. SEE GUN sets `ch21SawGun`, which unlocks GRAB GUN when the shadows attack (wiki: “Kara notices gun - required for Grab gun option”; PowerPyx: “Grab Gun (only if you saw it in the bag before)”). The bag is “the bag you brought with you on your journey” (GamerGuides), not {{Luther}}’s; no source ties the gun to the one from {{Todd}}’s house, so it is in the bag on every path. PowerPyx opened the bag for the gun before the poster talk and says it still works after; here the bag is offered once, after the poster talk, when the cookie is available. The exit “go and sit with Alice” leads to the goodnight. No stat change. Built as 3 copies of one scene (K14j1 to K14j3) sharing the hub state `ch21Bag`: each copy offers only what has not been done yet, and once “go and sit with Alice” is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Alice",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14j2",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The bag",
+   "type": "decision",
+   "when": {
+    "ch21Bag.alice": false
+   },
+   "whenNot": "Kara had already gone to sit with Alice.",
+   "situation": "You are {{Kara}}, by the bag next to {{Alice}}’s bed. {{Alice}} is still awake.",
+   "options": [
+    {
+     "id": "0",
+     "text": "OFFER COOKIE: offer {{Alice}} the cookies left in the bag.",
+     "clue": "cookie",
+     "fact": "{{Alice}} refused the cookies you offered her: she said she was not hungry.",
+     "outcome": "{{Kara}} opens the bag: “There are some cookies left. Would you like some?” {{Alice}}: “No… I’m not hungry…”"
+    },
+    {
+     "id": "1",
+     "text": "Look at the gun in the bag.",
+     "clue": "gun",
+     "sets": {
+      "ch21SawGun": true
+     },
+     "fact": "There is a gun in your bag.",
+     "outcome": "{{Kara}} opens the bag and looks at the gun lying inside, then leaves it there."
+    },
+    {
+     "id": "2",
+     "text": "Go and sit with {{Alice}}.",
+     "clue": "alice",
+     "outcome": "{{Kara}} sits down by {{Alice}}’s bed."
+    }
+   ],
+   "clueState": "ch21Bag",
+   "adaptationNote": "Visit 2 of the hub K14j1 (The bag); see that scene’s note. Skipped once “go and sit with Alice” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Alice",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14j3",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The bag",
+   "type": "decision",
+   "when": {
+    "ch21Bag.alice": false
+   },
+   "whenNot": "Kara had already gone to sit with Alice.",
+   "situation": "You are {{Kara}}, by the bag next to {{Alice}}’s bed. {{Alice}} is still awake.",
+   "options": [
+    {
+     "id": "0",
+     "text": "OFFER COOKIE: offer {{Alice}} the cookies left in the bag.",
+     "clue": "cookie",
+     "fact": "{{Alice}} refused the cookies you offered her: she said she was not hungry.",
+     "outcome": "{{Kara}} opens the bag: “There are some cookies left. Would you like some?” {{Alice}}: “No… I’m not hungry…”"
+    },
+    {
+     "id": "1",
+     "text": "Look at the gun in the bag.",
+     "clue": "gun",
+     "sets": {
+      "ch21SawGun": true
+     },
+     "fact": "There is a gun in your bag.",
+     "outcome": "{{Kara}} opens the bag and looks at the gun lying inside, then leaves it there."
+    },
+    {
+     "id": "2",
+     "text": "Go and sit with {{Alice}}.",
+     "clue": "alice",
+     "outcome": "{{Kara}} sits down by {{Alice}}’s bed."
+    }
+   ],
+   "clueState": "ch21Bag",
+   "adaptationNote": "Visit 3 of the hub K14j1 (The bag); see that scene’s note. Skipped once “go and sit with Alice” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Alice",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14k",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Goodnight",
+   "type": "decision",
+   "situation": "You are {{Kara}}, sitting by {{Alice}}’s bed in the tavern. She is lying under the curtain you tore down, looking up at you. What do you say to her?",
+   "options": [
+    {
+     "id": "0",
+     "text": "REASSURE: tell her {{Luther}} and you will be right here.",
+     "outcome": "“Don’t worry, {{Luther}} and I will be right here… You need to get some sleep now.”"
+    },
+    {
+     "id": "1",
+     "text": "CONSOLE: say it has been another tough day, and things will look better in the morning.",
+     "outcome": "“I know this has been another tough day… Try to get some sleep. Things will look better in the morning.”"
+    },
+    {
+     "id": "2",
+     "text": "KISS: kiss her goodnight.",
+     "effect": {
+      "aliceBond": 1
+     },
+     "outcome": "{{Kara}} kisses {{Alice}} goodnight: “Sleep tight, {{Alice}}. Sweet dreams.”"
+    },
+    {
+     "id": "3",
+     "text": "TOMORROW: tell her to get some rest, because tomorrow is going to be a long day.",
+     "outcome": "“Get some rest. Tomorrow is going to be a long day.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 4 (“Going to see Alice”), the goodnight at the start of the chart’s TELL ALICE A STORY: REASSURE, CONSOLE, KISS, TOMORROW, in the template’s order, with the spoken lines. Alice relationship: small up on KISS only (the template’s arrow inside KISS; wiki: “Choosing KISS after tucking her into bed”; Relationship_Stat). No other stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
+  },
+  {
+   "id": "K14l1",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "A story",
+   "type": "decision",
+   "situation": "You are {{Kara}}, by {{Alice}}’s bed. She asks: “Can you tell me a story, {{Kara}}?” You answer: “I have nine thousand children stories in memory. I should have one for you.” How do you begin?",
+   "options": [
+    {
+     "id": "0",
+     "text": "PRINCESS: begin a story about a princess.",
+     "outcome": "“This is a story about a princess who-” {{Alice}}: “No, not a story like that. Make one up for me.”"
+    },
+    {
+     "id": "1",
+     "text": "UNICORN: begin a story about a unicorn.",
+     "outcome": "“This is a story about a unicorn that-” {{Alice}}: “No, not a story like that. Make one up for me.”"
+    },
+    {
+     "id": "2",
+     "text": "KNIGHT: begin a story about a knight.",
+     "outcome": "“This is a story about a knight who-” {{Alice}}: “No, not a story like that. Make one up for me.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 5: the three stock openings PRINCESS, UNICORN, KNIGHT, each cut off by {{Alice}}’s “No, not a story like that. Make one up for me.” The string table also has a SAY NOTHING label for this prompt; the template does not render it, so it is not offered. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14l2",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "A story about a little girl",
+   "type": "decision",
+   "situation": "You are {{Kara}}. {{Alice}} wants a story you make up yourself. You begin: “This is a story about a little girl…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "UNHAPPY: a little girl who was not very happy.",
+     "outcome": "“…who wasn’t very happy.”"
+    },
+    {
+     "id": "1",
+     "text": "FEAR: a little girl who was tired of being afraid.",
+     "outcome": "“…Who was tired of being afraid…”"
+    },
+    {
+     "id": "2",
+     "text": "ALONE: a little girl who lived alone in a big old house.",
+     "outcome": "“…Who lived alone in a big old house.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 6: UNHAPPY, FEAR, ALONE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14l3",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "She dreamed",
+   "type": "decision",
+   "situation": "You are {{Kara}}, telling {{Alice}} the story. You go on: “She dreamed of being like all the other little girls but…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "IMPOSSIBLE: deep down, she knew she could not.",
+     "outcome": "“…deep down, she knew she couldn’t…”"
+    },
+    {
+     "id": "1",
+     "text": "SHADOW: the shadow that lived within her kept her from being happy.",
+     "outcome": "“…the shadow that lived within her kept her from being happy…”"
+    },
+    {
+     "id": "2",
+     "text": "DIFFERENT: she was different, and that made her very sad.",
+     "outcome": "“…She was different. And that made her very sad.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 7: IMPOSSIBLE, SHADOW, DIFFERENT. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14l4",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "She met a robot",
+   "type": "decision",
+   "situation": "You are {{Kara}}, telling {{Alice}} the story. You go on: “Then, she met a robot…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "UNHAPPY: a robot who was not very happy either.",
+     "outcome": "“…who wasn’t very happy either.”"
+    },
+    {
+     "id": "1",
+     "text": "OBEDIENT: a robot programmed to obey, who felt for once that she should disobey.",
+     "outcome": "“…who was programmed to obey orders but felt for once that she should disobey.”"
+    },
+    {
+     "id": "2",
+     "text": "LOST: a robot just as lost as the little girl.",
+     "outcome": "“…who was just as lost as the little girl.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 8: UNHAPPY, OBEDIENT, LOST. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14l5",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "They ran away together",
+   "type": "decision",
+   "situation": "You are {{Kara}}, telling {{Alice}} the story. You go on: “So they decided to run away together…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "BETTER LIFE: to try to find a better life.",
+     "outcome": "“…To try to find a better life.”"
+    },
+    {
+     "id": "1",
+     "text": "SHADOW: to escape the shadow that haunted that house.",
+     "outcome": "“…To escape the shadow that haunted that house.”"
+    },
+    {
+     "id": "2",
+     "text": "LIVE IN PEACE: to find a place where they could be safe.",
+     "outcome": "“…To find a place where they could be safe.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 9: BETTER LIFE, SHADOW, LIVE IN PEACE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14l6",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Great dangers",
+   "type": "decision",
+   "situation": "You are {{Kara}}, telling {{Alice}} the story. You go on: “They {{Encountered}} great dangers along the way, but…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "BRAVE: they were so brave that they escaped them all.",
+     "outcome": "“…They were so brave that they escaped all of them.”"
+    },
+    {
+     "id": "1",
+     "text": "TOGETHER: they stuck together, so they overcame them all.",
+     "outcome": "“…But they stuck together, so they overcame all of them.”"
+    },
+    {
+     "id": "2",
+     "text": "FREE: they wanted so badly to be free that they overcame them all.",
+     "outcome": "“…But they wanted so badly to be free that they overcame all of them.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 10: BRAVE, TOGETHER, FREE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14l7",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Along the way",
+   "type": "decision",
+   "situation": "You are {{Kara}}, telling {{Alice}} the story. You go on: “Along the way, they met…”",
+   "options": [
+    {
+     "id": "0",
+     "text": "GIANT: a gentle giant who promised to protect them.",
+     "outcome": "“…a gentle giant who promised to protect them.”"
+    },
+    {
+     "id": "1",
+     "text": "GUARDIAN: another robot who left his master to become their guardian.",
+     "outcome": "“…Another robot who left his master to become their guardian.”"
+    },
+    {
+     "id": "2",
+     "text": "ROBOT: another robot who left his master to travel with them.",
+     "outcome": "“…Another robot who left his master to travel with them.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 11: GIANT, GUARDIAN, ROBOT. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14l8",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "How the story ends",
+   "type": "decision",
+   "situation": "You are {{Kara}}, finishing the story for {{Alice}}. She asks: “How does the story end?”",
+   "options": [
+    {
+     "id": "0",
+     "text": "REALISTIC: say it is up to the two of you to write the end of the story.",
+     "outcome": "“It’s up to us to write the end of the story, {{Alice}}.” {{Alice}}: “Stories always have happy endings… But real life isn’t like that…” {{Kara}}: “Time to sleep. We have another long day ahead of us tomorrow.” {{Alice}}: “Are you going to come say goodnight, {{Luther}}?” {{Luther}}: “Yes… Yes of course. Good night, {{Alice}}. Sleep tight.”"
+    },
+    {
+     "id": "1",
+     "text": "MORAL: say you do not know, but when you reach the end you will know what it meant.",
+     "outcome": "“I don’t know… But all stories have morals… When we reach the end of ours, we’ll know what it really meant…” {{Alice}}: “Stories always have happy endings… But real life isn’t like that…” {{Kara}}: “Time to sleep. We have another long day ahead of us tomorrow.” {{Alice}}: “Are you going to come say goodnight, {{Luther}}?” {{Luther}}: “Yes… Yes of course. Good night, {{Alice}}. Sleep tight.”"
+    },
+    {
+     "id": "2",
+     "text": "HAPPY END: say they reach the place they dream of and live happily ever after.",
+     "outcome": "“They reach the place they dream of and live happily ever after.” {{Alice}}: “Stories always have happy endings… But real life isn’t like that…” {{Kara}}: “Time to sleep. We have another long day ahead of us tomorrow.” {{Alice}}: “Are you going to come say goodnight, {{Luther}}?” {{Luther}}: “Yes… Yes of course. Good night, {{Alice}}. Sleep tight.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 12, the last of the eight picks of the chart’s TELL ALICE A STORY: REALISTIC, MORAL, HAPPY END, in the template’s order, with the spoken lines and {{Alice}}’s fixed reply. No stat change: the wiki’s chapter page and Relationship_Stat list a small Alice up “After Kara chooses how to end the story”, but the template has no arrow here and wins for arrows (research note, section 10.3), so it is not applied.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14m1",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Talking to {{Luther}}",
+   "type": "decision",
+   "situation": "You are {{Kara}}. {{Alice}} is asleep. You sit down with {{Luther}} by the window. {{Luther}}: “She’s a sweet girl…” You: “Yes, she’s very brave…” What do you talk about?",
+   "options": [
+    {
+     "id": "0",
+     "text": "{{rA9}}: ask him whether he has ever heard of {{rA9}}.",
+     "clue": "ra9",
+     "requires": {
+      "ch21Tavern.ra9": true
+     },
+     "fact": "{{Luther}} believes {{rA9}} was the first android to awaken, and that one day he will rise up, lead your people and set you all free.",
+     "outcome": "“Have you ever heard of {{rA9}}?” {{Luther}}: “{{rA9}} was the first of us to awaken… One day he will rise up and lead our people… And set us all free.”"
+    },
+    {
+     "id": "1",
+     "text": "{{rA9}} DOUBTS: ask what if {{rA9}} is just a story you tell each other to keep going.",
+     "clue": "doubts",
+     "requires": {
+      "ch21Talk.ra9": true
+     },
+     "outcome": "“What if {{rA9}} never comes? What if he’s just a story that we tell ourselves to keep each other going?” {{Luther}}: “{{rA9}} exists. I believe in him. I know he’s amongst us. When the time comes, we will all see him.”"
+    },
+    {
+     "id": "2",
+     "text": "SNOW: remark that it is still snowing.",
+     "clue": "snow",
+     "outcome": "“It’s still snowing…” {{Luther}}: “We have a long walk tomorrow. We better leave early if we wanna avoid being seen.”"
+    },
+    {
+     "id": "3",
+     "text": "PLANS: ask what he is going to do when you reach {{Canada}}.",
+     "clue": "plans",
+     "outcome": "“Do you know what you’re going to do when you reach {{Canada}}?” {{Luther}}: “Haven’t really thought about it... I’ve never been free before… “Free”… I like the sound of it. But I don’t know what it really means yet…”"
+    },
+    {
+     "id": "4",
+     "text": "{{LUTHER}}’S PAST: ask whether he remembers anything from his life before {{Zlatko}}.",
+     "clue": "past",
+     "outcome": "“Do you remember anything from your life, before {{Zlatko}}?” {{Luther}}: “No... My model was designed to carry heavy loads. I might have been a longshoreman or a laborer… Who I was doesn’t matter anymore. It wasn’t really me…”"
+    },
+    {
+     "id": "5",
+     "text": "Say nothing more.",
+     "clue": "done",
+     "outcome": "They sit in silence for a moment."
+    }
+   ],
+   "clueState": "ch21Talk",
+   "adaptationNote": "The chart’s second TALK TO LUTHER, the template’s PROMPT 13: rA9 (lock “Looked at rA9 writing on the wall”: LOOK AT RA9 WRITING in the tavern), rA9 DOUBTS (lock “Asked about [ rA9 ]”), SNOW, PLANS, LUTHER’S PAST, in the template’s order, with the spoken lines; a topic menu, since rA9 DOUBTS needs rA9 asked first. The exit “say nothing more” is the benchmark’s way to end the topics; no source says how many the game allows before {{Luther}}’s question. No stat change (the template has no arrow on any topic). Built as 6 copies of one scene (K14m1 to K14m6) sharing the hub state `ch21Talk`: each copy offers only what has not been done yet, and once “say nothing more” is chosen the remaining copies are skipped. There are as many copies as options, so every option stays reachable. (A single repeatable scene would do the same, but tests/story.test.mjs lets only its four listed scenes repeat.)",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Luther",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14m2",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Talking to {{Luther}}",
+   "type": "decision",
+   "when": {
+    "ch21Talk.done": false
+   },
+   "whenNot": "Kara had already stopped talking with Luther.",
+   "situation": "You are {{Kara}}, by the window with {{Luther}} while {{Alice}} sleeps.",
+   "options": [
+    {
+     "id": "0",
+     "text": "{{rA9}}: ask him whether he has ever heard of {{rA9}}.",
+     "clue": "ra9",
+     "requires": {
+      "ch21Tavern.ra9": true
+     },
+     "fact": "{{Luther}} believes {{rA9}} was the first android to awaken, and that one day he will rise up, lead your people and set you all free.",
+     "outcome": "“Have you ever heard of {{rA9}}?” {{Luther}}: “{{rA9}} was the first of us to awaken… One day he will rise up and lead our people… And set us all free.”"
+    },
+    {
+     "id": "1",
+     "text": "{{rA9}} DOUBTS: ask what if {{rA9}} is just a story you tell each other to keep going.",
+     "clue": "doubts",
+     "requires": {
+      "ch21Talk.ra9": true
+     },
+     "outcome": "“What if {{rA9}} never comes? What if he’s just a story that we tell ourselves to keep each other going?” {{Luther}}: “{{rA9}} exists. I believe in him. I know he’s amongst us. When the time comes, we will all see him.”"
+    },
+    {
+     "id": "2",
+     "text": "SNOW: remark that it is still snowing.",
+     "clue": "snow",
+     "outcome": "“It’s still snowing…” {{Luther}}: “We have a long walk tomorrow. We better leave early if we wanna avoid being seen.”"
+    },
+    {
+     "id": "3",
+     "text": "PLANS: ask what he is going to do when you reach {{Canada}}.",
+     "clue": "plans",
+     "outcome": "“Do you know what you’re going to do when you reach {{Canada}}?” {{Luther}}: “Haven’t really thought about it... I’ve never been free before… “Free”… I like the sound of it. But I don’t know what it really means yet…”"
+    },
+    {
+     "id": "4",
+     "text": "{{LUTHER}}’S PAST: ask whether he remembers anything from his life before {{Zlatko}}.",
+     "clue": "past",
+     "outcome": "“Do you remember anything from your life, before {{Zlatko}}?” {{Luther}}: “No... My model was designed to carry heavy loads. I might have been a longshoreman or a laborer… Who I was doesn’t matter anymore. It wasn’t really me…”"
+    },
+    {
+     "id": "5",
+     "text": "Say nothing more.",
+     "clue": "done",
+     "outcome": "They sit in silence for a moment."
+    }
+   ],
+   "clueState": "ch21Talk",
+   "adaptationNote": "Visit 2 of the hub K14m1 (Talking to {{Luther}}); see that scene’s note. Skipped once “say nothing more” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Luther",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14m3",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Talking to {{Luther}}",
+   "type": "decision",
+   "when": {
+    "ch21Talk.done": false
+   },
+   "whenNot": "Kara had already stopped talking with Luther.",
+   "situation": "You are {{Kara}}, by the window with {{Luther}} while {{Alice}} sleeps.",
+   "options": [
+    {
+     "id": "0",
+     "text": "{{rA9}}: ask him whether he has ever heard of {{rA9}}.",
+     "clue": "ra9",
+     "requires": {
+      "ch21Tavern.ra9": true
+     },
+     "fact": "{{Luther}} believes {{rA9}} was the first android to awaken, and that one day he will rise up, lead your people and set you all free.",
+     "outcome": "“Have you ever heard of {{rA9}}?” {{Luther}}: “{{rA9}} was the first of us to awaken… One day he will rise up and lead our people… And set us all free.”"
+    },
+    {
+     "id": "1",
+     "text": "{{rA9}} DOUBTS: ask what if {{rA9}} is just a story you tell each other to keep going.",
+     "clue": "doubts",
+     "requires": {
+      "ch21Talk.ra9": true
+     },
+     "outcome": "“What if {{rA9}} never comes? What if he’s just a story that we tell ourselves to keep each other going?” {{Luther}}: “{{rA9}} exists. I believe in him. I know he’s amongst us. When the time comes, we will all see him.”"
+    },
+    {
+     "id": "2",
+     "text": "SNOW: remark that it is still snowing.",
+     "clue": "snow",
+     "outcome": "“It’s still snowing…” {{Luther}}: “We have a long walk tomorrow. We better leave early if we wanna avoid being seen.”"
+    },
+    {
+     "id": "3",
+     "text": "PLANS: ask what he is going to do when you reach {{Canada}}.",
+     "clue": "plans",
+     "outcome": "“Do you know what you’re going to do when you reach {{Canada}}?” {{Luther}}: “Haven’t really thought about it... I’ve never been free before… “Free”… I like the sound of it. But I don’t know what it really means yet…”"
+    },
+    {
+     "id": "4",
+     "text": "{{LUTHER}}’S PAST: ask whether he remembers anything from his life before {{Zlatko}}.",
+     "clue": "past",
+     "outcome": "“Do you remember anything from your life, before {{Zlatko}}?” {{Luther}}: “No... My model was designed to carry heavy loads. I might have been a longshoreman or a laborer… Who I was doesn’t matter anymore. It wasn’t really me…”"
+    },
+    {
+     "id": "5",
+     "text": "Say nothing more.",
+     "clue": "done",
+     "outcome": "They sit in silence for a moment."
+    }
+   ],
+   "clueState": "ch21Talk",
+   "adaptationNote": "Visit 3 of the hub K14m1 (Talking to {{Luther}}); see that scene’s note. Skipped once “say nothing more” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Luther",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14m4",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Talking to {{Luther}}",
+   "type": "decision",
+   "when": {
+    "ch21Talk.done": false
+   },
+   "whenNot": "Kara had already stopped talking with Luther.",
+   "situation": "You are {{Kara}}, by the window with {{Luther}} while {{Alice}} sleeps.",
+   "options": [
+    {
+     "id": "0",
+     "text": "{{rA9}}: ask him whether he has ever heard of {{rA9}}.",
+     "clue": "ra9",
+     "requires": {
+      "ch21Tavern.ra9": true
+     },
+     "fact": "{{Luther}} believes {{rA9}} was the first android to awaken, and that one day he will rise up, lead your people and set you all free.",
+     "outcome": "“Have you ever heard of {{rA9}}?” {{Luther}}: “{{rA9}} was the first of us to awaken… One day he will rise up and lead our people… And set us all free.”"
+    },
+    {
+     "id": "1",
+     "text": "{{rA9}} DOUBTS: ask what if {{rA9}} is just a story you tell each other to keep going.",
+     "clue": "doubts",
+     "requires": {
+      "ch21Talk.ra9": true
+     },
+     "outcome": "“What if {{rA9}} never comes? What if he’s just a story that we tell ourselves to keep each other going?” {{Luther}}: “{{rA9}} exists. I believe in him. I know he’s amongst us. When the time comes, we will all see him.”"
+    },
+    {
+     "id": "2",
+     "text": "SNOW: remark that it is still snowing.",
+     "clue": "snow",
+     "outcome": "“It’s still snowing…” {{Luther}}: “We have a long walk tomorrow. We better leave early if we wanna avoid being seen.”"
+    },
+    {
+     "id": "3",
+     "text": "PLANS: ask what he is going to do when you reach {{Canada}}.",
+     "clue": "plans",
+     "outcome": "“Do you know what you’re going to do when you reach {{Canada}}?” {{Luther}}: “Haven’t really thought about it... I’ve never been free before… “Free”… I like the sound of it. But I don’t know what it really means yet…”"
+    },
+    {
+     "id": "4",
+     "text": "{{LUTHER}}’S PAST: ask whether he remembers anything from his life before {{Zlatko}}.",
+     "clue": "past",
+     "outcome": "“Do you remember anything from your life, before {{Zlatko}}?” {{Luther}}: “No... My model was designed to carry heavy loads. I might have been a longshoreman or a laborer… Who I was doesn’t matter anymore. It wasn’t really me…”"
+    },
+    {
+     "id": "5",
+     "text": "Say nothing more.",
+     "clue": "done",
+     "outcome": "They sit in silence for a moment."
+    }
+   ],
+   "clueState": "ch21Talk",
+   "adaptationNote": "Visit 4 of the hub K14m1 (Talking to {{Luther}}); see that scene’s note. Skipped once “say nothing more” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Luther",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14m5",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Talking to {{Luther}}",
+   "type": "decision",
+   "when": {
+    "ch21Talk.done": false
+   },
+   "whenNot": "Kara had already stopped talking with Luther.",
+   "situation": "You are {{Kara}}, by the window with {{Luther}} while {{Alice}} sleeps.",
+   "options": [
+    {
+     "id": "0",
+     "text": "{{rA9}}: ask him whether he has ever heard of {{rA9}}.",
+     "clue": "ra9",
+     "requires": {
+      "ch21Tavern.ra9": true
+     },
+     "fact": "{{Luther}} believes {{rA9}} was the first android to awaken, and that one day he will rise up, lead your people and set you all free.",
+     "outcome": "“Have you ever heard of {{rA9}}?” {{Luther}}: “{{rA9}} was the first of us to awaken… One day he will rise up and lead our people… And set us all free.”"
+    },
+    {
+     "id": "1",
+     "text": "{{rA9}} DOUBTS: ask what if {{rA9}} is just a story you tell each other to keep going.",
+     "clue": "doubts",
+     "requires": {
+      "ch21Talk.ra9": true
+     },
+     "outcome": "“What if {{rA9}} never comes? What if he’s just a story that we tell ourselves to keep each other going?” {{Luther}}: “{{rA9}} exists. I believe in him. I know he’s amongst us. When the time comes, we will all see him.”"
+    },
+    {
+     "id": "2",
+     "text": "SNOW: remark that it is still snowing.",
+     "clue": "snow",
+     "outcome": "“It’s still snowing…” {{Luther}}: “We have a long walk tomorrow. We better leave early if we wanna avoid being seen.”"
+    },
+    {
+     "id": "3",
+     "text": "PLANS: ask what he is going to do when you reach {{Canada}}.",
+     "clue": "plans",
+     "outcome": "“Do you know what you’re going to do when you reach {{Canada}}?” {{Luther}}: “Haven’t really thought about it... I’ve never been free before… “Free”… I like the sound of it. But I don’t know what it really means yet…”"
+    },
+    {
+     "id": "4",
+     "text": "{{LUTHER}}’S PAST: ask whether he remembers anything from his life before {{Zlatko}}.",
+     "clue": "past",
+     "outcome": "“Do you remember anything from your life, before {{Zlatko}}?” {{Luther}}: “No... My model was designed to carry heavy loads. I might have been a longshoreman or a laborer… Who I was doesn’t matter anymore. It wasn’t really me…”"
+    },
+    {
+     "id": "5",
+     "text": "Say nothing more.",
+     "clue": "done",
+     "outcome": "They sit in silence for a moment."
+    }
+   ],
+   "clueState": "ch21Talk",
+   "adaptationNote": "Visit 5 of the hub K14m1 (Talking to {{Luther}}); see that scene’s note. Skipped once “say nothing more” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Luther",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14m6",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Talking to {{Luther}}",
+   "type": "decision",
+   "when": {
+    "ch21Talk.done": false
+   },
+   "whenNot": "Kara had already stopped talking with Luther.",
+   "situation": "You are {{Kara}}, by the window with {{Luther}} while {{Alice}} sleeps.",
+   "options": [
+    {
+     "id": "0",
+     "text": "{{rA9}}: ask him whether he has ever heard of {{rA9}}.",
+     "clue": "ra9",
+     "requires": {
+      "ch21Tavern.ra9": true
+     },
+     "fact": "{{Luther}} believes {{rA9}} was the first android to awaken, and that one day he will rise up, lead your people and set you all free.",
+     "outcome": "“Have you ever heard of {{rA9}}?” {{Luther}}: “{{rA9}} was the first of us to awaken… One day he will rise up and lead our people… And set us all free.”"
+    },
+    {
+     "id": "1",
+     "text": "{{rA9}} DOUBTS: ask what if {{rA9}} is just a story you tell each other to keep going.",
+     "clue": "doubts",
+     "requires": {
+      "ch21Talk.ra9": true
+     },
+     "outcome": "“What if {{rA9}} never comes? What if he’s just a story that we tell ourselves to keep each other going?” {{Luther}}: “{{rA9}} exists. I believe in him. I know he’s amongst us. When the time comes, we will all see him.”"
+    },
+    {
+     "id": "2",
+     "text": "SNOW: remark that it is still snowing.",
+     "clue": "snow",
+     "outcome": "“It’s still snowing…” {{Luther}}: “We have a long walk tomorrow. We better leave early if we wanna avoid being seen.”"
+    },
+    {
+     "id": "3",
+     "text": "PLANS: ask what he is going to do when you reach {{Canada}}.",
+     "clue": "plans",
+     "outcome": "“Do you know what you’re going to do when you reach {{Canada}}?” {{Luther}}: “Haven’t really thought about it... I’ve never been free before… “Free”… I like the sound of it. But I don’t know what it really means yet…”"
+    },
+    {
+     "id": "4",
+     "text": "{{LUTHER}}’S PAST: ask whether he remembers anything from his life before {{Zlatko}}.",
+     "clue": "past",
+     "outcome": "“Do you remember anything from your life, before {{Zlatko}}?” {{Luther}}: “No... My model was designed to carry heavy loads. I might have been a longshoreman or a laborer… Who I was doesn’t matter anymore. It wasn’t really me…”"
+    },
+    {
+     "id": "5",
+     "text": "Say nothing more.",
+     "clue": "done",
+     "outcome": "They sit in silence for a moment."
+    }
+   ],
+   "clueState": "ch21Talk",
+   "adaptationNote": "Visit 6 of the hub K14m1 (Talking to {{Luther}}); see that scene’s note. Skipped once “say nothing more” is chosen.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Luther",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14n",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "{{Luther}}’s question",
+   "type": "decision",
+   "situation": "You are {{Kara}}, by the window with {{Luther}}. He hesitates: “{{Kara}}, have you ever... Noticed anything? About {{Alice}}?..”",
+   "options": [
+    {
+     "id": "0",
+     "text": "YES: say of course, she is a wonderful little girl, really special.",
+     "effect": {
+      "lutherTrust": 1
+     },
+     "outcome": "“Yes, of course… She is a wonderful little girl… I mean, I don’t know many little girls but I think she really is special.” Before {{Luther}} can say more, {{Alice}} screams: “{{KARA}}!”"
+    },
+    {
+     "id": "1",
+     "text": "WHAT?: ask him what he means.",
+     "effect": {
+      "lutherTrust": 1
+     },
+     "outcome": "“No… What do you mean?” Before {{Luther}} can answer, {{Alice}} screams: “{{KARA}}!”"
+    },
+    {
+     "id": "2",
+     "text": "NO: ask him what he is talking about.",
+     "effect": {
+      "lutherTrust": 1
+     },
+     "outcome": "“No, what are you talking about?” Before {{Luther}} can answer, {{Alice}} screams: “{{KARA}}!”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 14, at the end of the chart’s second TALK TO LUTHER: YES, WHAT?, NO, in the template’s order, with the spoken lines; {{Alice}}’s scream cuts {{Luther}} off, so he never says what he noticed. Luther relationship: small up on each answer (the template’s arrow on all three; wiki: “When Kara answers Luther about Alice’s true nature”; Relationship_Stat). No time-out option: the string table has [no answer], but the template renders none. No other stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Luther"
+   ]
+  },
+  {
+   "id": "K14o",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "Shadows attack",
+   "type": "decision",
+   "situation": "You are {{Kara}}. {{Alice}} has screamed your name. Figures have broken into the tavern and are coming at you out of the dark: a whole group of them, closing in on {{Alice}}, {{Luther}} and you. The fire is burning in the middle of the room.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch21SawGun": true
+     },
+     "text": "Your bag, with the gun in it, is within reach."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "GRAB GUN: grab the gun from your bag.",
+     "requires": {
+      "ch21SawGun": true
+     },
+     "sets": {
+      "ch21Reaction": "gun"
+     },
+     "outcome": "{{Kara}} snatches the gun from the bag and points it at the figures."
+    },
+    {
+     "id": "1",
+     "text": "GRAB BURNING STICK: snatch a burning stick from the fire.",
+     "sets": {
+      "ch21Reaction": "stick"
+     },
+     "outcome": "{{Kara}} pulls a burning stick from the fire and holds it out at the figures."
+    },
+    {
+     "id": "2",
+     "text": "PROTECT {{ALICE}}: put yourself between {{Alice}} and them.",
+     "sets": {
+      "ch21Reaction": "protect"
+     },
+     "outcome": "{{Kara}} throws herself between {{Alice}} and the figures."
+    },
+    {
+     "id": "3",
+     "text": "PUT OUT FIRE: put out the fire.",
+     "sets": {
+      "ch21Reaction": "fire"
+     },
+     "outcome": "{{Kara}} puts out the fire."
+    }
+   ],
+   "adaptationNote": "The chart’s SHADOWS ATTACK (event, narrated in the situation) and its first four-slot choice group, in the chart’s order, with the game’s button labels from the string table (GRAB GUN, GRAB BURNING STICK, PROTECT ALICE, PUT OUT FIRE; the chart prints the second as GRAB STICK FROM FIRE). The template renders no prompt here, so the buttons come from the chart and the string table. GRAB GUN needs SEE GUN in the bag (`ch21SawGun`; wiki, PowerPyx). The choice is recorded in `ch21Reaction`. No source gives a different consequence for any button, nor a death, an injury or a stat change: all four lead to the same second prompt.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove",
+    "https://detroit-become-human.fandom.com/wiki/Jerry"
+   ]
+  },
+  {
+   "id": "K14p",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The figures close in",
+   "type": "decision",
+   "situation": "You are {{Kara}}. The figures keep coming toward you out of the dark.",
+   "options": [
+    {
+     "id": "0",
+     "text": "SHOOT IN THE AIR: fire a warning shot.",
+     "requires": {
+      "ch21Reaction": "gun"
+     },
+     "outcome": "“Stop! One more step and I’ll shoot!” {{Kara}} fires a shot into the air."
+    },
+    {
+     "id": "1",
+     "text": "QUESTION: demand to know who they are and what they want.",
+     "outcome": "“Who are you? What do you want? Leave us alone!”"
+    },
+    {
+     "id": "2",
+     "text": "PUSH BACK: drive them back.",
+     "outcome": "“Go away! Go away, you hear me?!”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 15, the chart’s second four-slot group (FIRE WARNING SHOT, THREATEN, QUESTION, PUSH AWAY): SHOOT IN THE AIR, QUESTION, PUSH BACK, in the template’s order, with the game’s button labels and the spoken lines. SHOOT IN THE AIR needs the gun seen in the bag and grabbed (template lock “Kara saw the gun in the bag and grabbed it”; wiki: “only if Grab gun was chosen above”), so it follows GRAB GUN only. THREATEN is on the chart but cannot be selected in the game (wiki: “Although listed in the flowchart, there is no option to threaten the Jerrys”; the template has no such option), so it is not offered. All lead to ATTACKERS REVEAL THEMSELVES AS JERRYS. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
+  },
+  {
+   "id": "K14q",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The {{Jerry}}s",
+   "type": "event",
+   "situation": "You are {{Kara}}. The figures stop. In the light they are all the same android, a crowd of them. One of them speaks: “Don’t be afraid! We don’t wanna hurt you. We’re just like you… Our name is {{Jerry}}. We were working here before the park closed… We didn’t mean to frighten you, but sometimes humans come to hurt us, so we wanted to see who was there… What are you doing here?” You: “We were looking for shelter for the night… We’ll be gone tomorrow. The…” {{Jerry}}: “A little girl!.. We haven’t seen one for a long time… Children used to love to come and see us. She looks sad… We have something to show her! Something fun! She’ll love it!.. Does she want to see?” You: “The last few days have been difficult…” {{Jerry}}: “We have something to show her! Something fun! She’ll love it!.. Does she want to see?” You: “Oh, I don’t think she’s…” {{Jerry}}: “She should follow us then!” You: “{{Alice}}, I don’t know if it’s a good idea!..” {{Luther}}: “I don’t think you have any choice…” {{Alice}}: “Come on, {{Kara}}!”",
+   "options": [],
+   "facts": [
+    "The figures were {{Jerry}}s: a group of identical androids who worked at the park before it closed and all go by the name {{Jerry}}. Humans sometimes come to hurt them. They want to show {{Alice}} something fun."
+   ],
+   "outcomes": {
+    "0": "{{Kara}}, {{Alice}} and {{Luther}} follow the {{Jerry}}s back outside into the snow."
+   },
+   "adaptationNote": "The chart’s ATTACKERS REVEAL THEMSELVES AS JERRYS and BACK OUTSIDE (both events), narrated as one event; every line is the template’s. Following the {{Jerry}}s is not a choice: {{Kara}} objects three times and {{Luther}} (“I don’t think you have any choice…”) and {{Alice}} overrule her. The wiki counts “over twenty” of them. Sets `ch21MetJerrys`. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Jerry"
+   ]
+  },
+  {
+   "id": "K14r",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "The carousel",
+   "type": "event",
+   "situation": "You are {{Kara}}. The {{Jerry}}s lead you through the snow to the old carousel: “Be our guest!” You switch it on, and it still works. {{Jerry}}: “The little one can climb on board. The carousel is about to begin!” You lift {{Alice}} onto the ride.",
+   "options": [],
+   "facts": [
+    "The {{Jerry}}s showed {{Alice}} the park’s old carousel, which still works."
+   ],
+   "outcomes": {
+    "0": "The carousel starts to turn, with {{Alice}} on board."
+   },
+   "adaptationNote": "The chart’s GO TO CAROUSEL, SWITCH ON CAROUSEL and PUT ALICE ON RIDE, all required (PowerPyx: “Unmissable”), narrated as one event with the template’s lines. No stat change. The cut hunter attack that a fan restoration places after this node (HUNTERS ARRIVE and its three endings) is not in the shipped game and is not built.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-6.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove",
+    "https://detroit-become-human.fandom.com/wiki/Pirates%27_Cove"
+   ]
+  },
+  {
+   "id": "K14z",
+   "chapter": 21,
+   "chapterTitle": "The Pirates’ Cove",
+   "character": "Kara",
+   "title": "A quiet moment",
+   "type": "event",
+   "situation": "You are {{Kara}}, watching {{Alice}} ride the carousel on a seahorse while the {{Jerry}}s look on, some of them hopping in place with excitement. You: “It’s the first time I’ve seen her smile…” {{Luther}}: “She hasn’t had much to smile about lately.”",
+   "options": [],
+   "facts": [
+    "On the carousel, {{Alice}} smiled for the first time since you have known her."
+   ],
+   "outcomes": {
+    "0": "The group enjoyed a quiet moment together."
+   },
+   "adaptationNote": "The chart’s only ending, THE GROUP ENJOYED A QUIET MOMENT TOGETHER (no icon; wiki: “This chapter has only one outcome”), with the template’s two lines; the seahorse is the ending tile’s image and the hopping {{Jerry}}s are the wiki’s note. Records the ending in `ch21Ending`. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-7.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ]
   },
   {
    "id": "R22",
