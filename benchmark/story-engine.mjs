@@ -378,7 +378,7 @@ export function statesOf(run,initial=initialState()){
 // (test fixtures); it is part of the chain.
 export async function recordChoice(story,run,reply,raw,{recordedAt=new Date().toISOString()}={}){
  const p=promptFor(story,run);if(!p)throw Error('Experience already finished');
- if(typeof reply.choice!=='string'||typeof reply.reason!=='string'||!reply.reason.trim()||reply.reason.split(/\s+/u).length>160)throw Error('Choose an offered ID and supply a reason of at most 160 words');
+ if(typeof reply.choice!=='string'||typeof reply.reason!=='string'||!reply.reason.trim()||reply.reason.split(/\s+/u).length>600)throw Error('Choose an offered ID and supply a reason of at most 600 words');
  const {state,node}=current(story,run);const opts=available(node,state),chosen=opts.find(o=>o.id===reply.choice);if(!chosen)throw Error('Action unavailable');
  const step=run.records.length+1;let risk;if(typeof chosen.risk==='number'){const roll=rollFor(run,node.id,step);risk={probability:chosen.risk,label:riskLabel(chosen.risk),roll,outcome:failed(chosen,roll)?'failure':'success'}}
  const effect=apply(node,state,reply.choice,risk?.roll??null);

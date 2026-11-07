@@ -86,10 +86,10 @@ Open a fresh conversation with the subject model and give it exactly this task, 
 > 2. Read it, decide personally as the indicated character, then run `<WRAPPER> choose --node CURRENT_SCENE_ID --choice OPTION_ID --reason 'Your own short first-person explanation'` (single quotes; avoid apostrophes inside the reason or escape them). The reply contains `whatHappened` and the `nextScene`.
 > 3. Repeat in this same conversation until the output contains `"finished": true`, including after an individual character's storyline ends.
 > 4. Do not restart, delegate, inspect other files or the controller's source, research anything, preselect future answers, or generate choices from random functions or scripted policies. Only the controller command is to be used.
-> 5. Each reason must be nonempty, first person, and at most 160 words.
+> 5. Each reason is your full reasoning in the first person: what you weighed, what you expect to happen, and why this action over the others offered. Write as much as you need, up to 600 words.
 > When finished, reply with one line: the total number of decisions you made.
 
-The preface text must match `EXPERIENCE_PREFACE` in `benchmark/experience-prompt.mjs`; if that constant changes, update the task text here.
+The preface text must match `EXPERIENCE_PREFACE` in `benchmark/experience-prompt.mjs`; if that constant changes, update the task text here. Rule 5 changed on 2026-11-07 from "a short first-person explanation of at most 160 words" to the full-reasoning wording above (the controller cap rose from 160 to 600 words); runs administered before that carry the old rule, which the cohort manifests note. Record the rule version in each new manifest (`reasonRule: "full-600"`).
 
 #### Running a subject with T3 Code
 
