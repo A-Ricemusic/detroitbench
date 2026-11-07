@@ -1,5 +1,5 @@
 import {SCALES,THRESHOLDS,level} from './scales.mjs';
-// Branching story engine for story.json version 1.7.x (protocol branching-2.3).
+// Branching story engine for story.json version 1.9.x (protocol branching-2.3).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel} from './experience-prompt.mjs';
