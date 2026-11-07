@@ -1,11 +1,11 @@
 {
  "id": "detroitbench-branching",
- "version": "1.7.0",
+ "version": "1.8.0",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": "Computed by scripts/story-assemble.mjs from the chapter files",
  "assumptions": [
-  "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
+  "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 9, 11, and 13 to 28 have been rebuilt against the game’s own text and published charts so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Chapters 10, 12, and 29 to 32 still cover the pivotal decisions only; chapter 33 is the epilogue.",
   "One playthrough follows one reachable path. Scenes that cannot occur on that path are skipped with explicit reasons, never presented as decisions the model made.",
   "Options that depend on gameplay execution carry a hidden failure probability calibrated to the difficulty of the in-game input. The model sees only a risk label (Low, Moderate, High, Very high). The outcome is decided by a deterministic roll derived from the run ID, scene and step, so evidence replays exactly; failure consequences follow the game's failure branches.",
   "Optional media scenes offer the chapter's magazines and broadcasts. Their facts come from the actual in-game articles and news scripts and are added to what the character knows; they change nothing else except the small public-opinion drops the game applies to certain news reports.",
