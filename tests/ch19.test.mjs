@@ -124,7 +124,7 @@ test('chapter 19: the ending event applies exactly one Jericho block and records
 });
 
 test('chapter 19: neutral prompts leak no real names, and John is a companion only once he has joined',()=>{
- const LEAK=/\bMike\b|\bJohn\b|\bNorth\b|\bSimon\b|\bJosh\b|\bDerek\b|\bAl Dante\b|deviant|DEVIANT|CyberLife|Jericho|Markus|Detroit/;
+ const LEAK=/\bMike\b|\bJohn\b|\bNorth\b|\bSimon\b|\bJosh\b|\bDerek\b|\bAl\b|deviant|DEVIANT|CyberLife|Jericho|Markus|Detroit/;
  for(const n of story.nodes.filter(n=>n.chapter===19)){const texts=[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.facts??[]),...Object.values(n.outcomes??{})];
   for(const t of texts)assert.ok(!LEAK.test(render(t,'neutral')),n.id+': '+render(t,'neutral'))}
  assert.match(render('Is {{Mike}} still in Zone 4?','neutral'),/Gus/);
