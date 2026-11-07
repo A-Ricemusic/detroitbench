@@ -878,22 +878,125 @@ Gaps:
 
 ## Chapter 11: From the Dead
 
-### M03 · The android who begs to die (Markus)
+### M03a · Back to life (Markus, event)
 
-> You are Markus. You were shot by police and dumped in a landfill of android bodies. You have woken half-destroyed, missing a leg, an eye and your audio processor, and you are crawling through mud and dismembered androids in the rain. One of them, still conscious, grabs your arm and begs you to end it: she cannot move and cannot die on her own.
+> NOV 6TH, 2038. AM 03:34. You are Markus. The last thing you remember is the police shooting you in Carl’s studio. Now your systems reboot. You are lying on your back in the rain, in a pit of broken androids: bodies, arms, heads and torn-out parts piled in the mud as far as you can see. Everything you see is red and broken by interference, and every sound reaches you muffled.
 
-- (0) Pull out her biocomponent and let her shut down.
-- (1) Refuse and leave her.
+- (0) Continue.
+
+_Note: The chart’s start node and checkpoint BACK TO LIFE. The date and time are the chapter’s own (“NOV 6TH, 2038”, “AM 03:34”). Both Broken endings end with the police shooting Markus (the engine’s Broken outcome), and the wiki and PowerPyx say this chapter plays the same either way, so nothing here depends on the earlier choice. The red filter with interference and the muffled sound are the wiki’s Notes on the damaged eye and audio processor. No stat change; the chapter has none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M03b · Analyze self (Markus, event)
+
+> You are Markus, lying in the mud of the landfill. You run a diagnosis on yourself, part by part. OPTICAL UNIT: Impaired vision. CORRUPTED MIND PALACE. AUDIO PROCESSOR: Corrupted audio data. DAMAGED. PUMP REGULATOR: All systems in LOW POWER MODE. DEFECTIVE. LEFT AND RIGHT LEG COMPONENTS: MISSING. Unable to stand.
+
+- (0) Continue.
+
+_Note: The chart’s ANALYZE SELF: the template’s observation group “Diagnose”, its four readouts quoted in the game’s order and wording. In the game the player has to find the four spots on Markus’s body (PowerPyx; on Experienced they are not marked), all of them, in any order and with nothing to get wrong, so this is a narrated event rather than a choice of order. PowerPyx names the spots LED, audio processor, pump regulator and leg; the template’s readouts (optical unit, audio processor, pump regulator, legs) win (research note §10, discrepancy 4).. The game titles the regulator readout THIRIUM PUMP REGULATOR; the word thirium identifies the source and is dropped from subject text (the neutral renderer removes it), so the readout reads PUMP REGULATOR. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M03c · Repair legs (Markus, event)
+
+> You are Markus, pulling yourself through the pit on your arms between the bodies. Legs lie torn off in the mud around you, and you examine them. RIGHT LEG COMPONENT #6847j. Status: FUNCTIONAL. COMPATIBLE. RIGHT LEG COMPONENT #6321t. Status: DAMAGED. INCOMPATIBLE. LEFT LEG COMPONENT #8427g. Status: FUNCTIONAL. COMPATIBLE.
+
+- (0) Continue.
+
+_Note: The chart’s REPAIR LEGS, with the template’s three leg readouts (observation groups “Compatible right leg”, “Incompatible right leg”, “Left leg”) in the game’s order and wording; the template’s #6321t is used, not the wiki’s #6312t. PowerPyx: “Follow the button prompts to repair the legs, nothing you can do wrong here”, so this is a narrated event with no risk. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M03d · Hear about Jericho (Markus, event)
+
+> You are Markus, on your new legs, making your way through the pit. As you pass, an android stuck in the wall of bodies, so old and broken that you cannot tell what he was made for, grabs your arm and stares at you: “There’s a place where we can be free! Find Jericho! Find Jericho!..” As he holds you, something passes from him into your memory: a copy of the key he carried, the way to find…
+
+- (0) Continue.
+
+_Note: The chart’s event HEAR ABOUT JERICHO (the template’s section “Android grabs Markus”, speaker Phileas, whose line is quoted). The key: the Phileas page (“He carried a key to locate Jericho, which is copied to Markus and the latter uses it to find the freighter”) and the Jericho location page (“Phileas gave Markus a copy of his key to locate Jericho before permanently shutting down”); how it passes is not described, so it is narrated plainly. Markus does not learn the android’s name, so none is given. Sets fromDeadJerichoKey for Jericho (chapter 14). The old scene’s “single word” and “symbol” had no source and are gone. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M03e · Passage of limbs (Markus, event)
+
+> You are Markus. The only way out of the pit is a tight chasm between two walls of android bodies, and you squeeze into it. Hands of dying androids reach out of the walls, grab your arms and your legs and try to hold you down. A voice beside your head: “Where are you going?”
+
+- (0) Continue.
+
+_Note: The chart’s PASSAGE OF LIMBS, with the template’s line (“Other android grabs Markus”: “Where are you going?”). PowerPyx: “a tight chasm Markus needs to squeeze through. There are hands of dying androids sticking out the side trying to hold Markus down. Press the button prompts here.” Neither the chart nor any source shows a failure branch, so there is no risk roll. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M03f · Junkyard (Markus, event)
+
+> You are Markus. You come out into the open junkyard: a plain of broken androids under the rain and the floodlights, a crane swinging over the piles on the far left, a yellow neon sign reading VETA, and at the far end a slippery slope of bodies, the only way out. Many of the bodies still move. Some repeat the phrases they were made for, muffled in your damaged hearing: “An unexpected error has…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint JUNKYARD (its image shows the crane and the yellow VETA sign; the wiki notes the sign in the final cutscene). The background lines are the template’s “Background dialogues”, which it lists as audible though not subtitled; four of them are quoted, plus the Jericho line, which the template keeps as audible (research note §10, discrepancy 6). The two TL400 lines and the others are left out. The objective is the wiki’s “Replace damaged parts” and PowerPyx’s “With all parts found (Optical Unit, Pump, Audio Processor) you can now climb the slippery slope”. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M03g · Search for parts (Markus)
+
+> You are Markus, in the open junkyard under the rain. To get out you must replace your damaged optical unit, audio processor and thirium pump regulator with compatible parts taken from the androids around you, then climb the slippery slope at the far end. You can search in any order, one thing at a time.
+
+- (0) Pull out the android head sticking out of the wall of bodies on the far left, under the crane.
+- (1) Examine the optical unit of an android lying in the pile.
+- (2) Go to the android lying motionless in the middle of the junkyard.
+- (3) Examine the thirium pump regulator of an android lying in the pile.
+- (4) Take the pump regulator from the dead android near the slope.  _needs fromDeadPump = Refuse to kill for pump and not fromDeadPumpReplaced and fromDeadSearch.head_ _sets fromDeadPumpReplaced, fromDeadPumpSource_
+- (5) Search the head lying on the right side of the junkyard.
+- (6) Examine the audio processor of an android lying in the pile.
+- (7) Climb the slippery slope at the far end of the junkyard.  _needs fromDeadSearch.head and fromDeadSearch.audio and fromDeadPumpReplaced_
+
+_Note: The chart’s bracket [ SEARCH FOR PARTS ] as a repeatable scene: each visit offers what has not been done yet, in any order (PowerPyx: the parts can be found in any order; the chart draws no edge between its branches). Chart nodes here: FIND OPTICAL UNIT with CRANE DUMPS BODIES and DIG YOURSELF OUT as one option, because they always happen together (PowerPyx: interacting with the head “brings a lot of dead androids falling down from a crane”; digging out “gets you the Optical Unit”); the eye comes from the talking AK700 head, as in the template (“Take head”, “Remove optical unit”, with its two lines), and is #8087q with a blue iris; FIND AUDIO PROCESSOR (#4903; PowerPyx “in a head on the right side of the area”, while the wiki’s Biocomponent 4903 page has it in an android’s hand); FIND PUMP REGULATOR IN DEAD ANDROID (#2886, only after sparing the android in the middle, and only once the new eye can scan: PowerPyx “You can scan the area and find another one near the slope”); and CLIMB SLOPE, which ends the scene and needs all three parts. Going to the middle of the junkyard plays ANDROID BEGS TO DIE and FIND PUMP REGULATOR IN ANDROID, the next two scenes, which then come back here. The three incompatible readouts of the template’s “Search for components” group (#9754h, #9474, #4807) are optional looks (PUMP REGULATOR without the word thirium, as in the earlier scenes); the model names the wiki gives for their androids are not in the game’s text and are left out. Departures: in the game Markus can miss the crawling android and can take the dead android’s regulator without ever finding the living one (PowerPyx “or you never found it in the first place”); here both encounters happen together on the way to the middle, in the template’s order, and the dead android’s regulator is offered only after sparing her, so both choices are always presented (as in the previous version). The wiki’s note that the begging android must be met “before replacing Markus’ damaged parts” is not applied: PowerPyx’s own route meets him right after finding the optical unit (research note §8, question 3). Left out (not in the template, not on the chart): the singing android and the grappling android. No risk, no stat change: the chapter has no failure node and no arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M03 · Android begs to die (Markus)
+
+> You are Markus, crossing toward the middle of the junkyard. An android is crawling through the mud at your feet, too broken to get up. As you step past him he grabs your leg and holds on: “I’m begging you, please… End it… I don’t wanna live anymore…”
+
+_Only when fromDeadSearch.middle._
+
+- (0) KILL: reach into his chest and pull out his thirium pump.
+- (1) SPARE: pull your leg free and leave him.
+
+_Note: The chart’s ANDROID BEGS TO DIE and its choice group REFUSE TO KILL / KILL. The prompt and its two buttons are the template’s (“Android begs to die”: KILL, SPARE), in the game’s order, each shown with its label first; the plea and the two replies are the template’s lines. The android is male (the wiki’s Sorrowful Android: “the android grabs Markus on the leg”; KILL: “Markus takes out the android’s heart”; SPARE: “he will beg Markus not to leave him though alas he is left alive”). In the game he is optional and easy to miss (PowerPyx); here he is always met on the way to the middle of the junkyard (see the previous scene’s note). Neither option gives Markus a part. Records fromDeadBeggar (Kill or Refuse to kill). No stat change: the template has no arrow here and the wiki gives no cross-chapter effect._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### M04 · The pump regulator (Markus)
 
-> You are Markus. Your thirium pump regulator is failing; without a replacement you have minutes. You find a compatible one in an android lying in the mud, but when you reach for it he wakes up and pleads with you not to take it, because it will kill him. There may be other bodies further on, but you are running out of time.
+> You are Markus, in the middle of the junkyard, a few steps from the crawling android. An android lies motionless in the mud with her chest open, and you examine her regulator: PUMP REGULATOR #2886. Status: FUNCTIONAL. COMPATIBLE. You reach in to take it. She wakes, and her hand closes on your arm: “Wait! Please! Please, don’t do that! I wanna live…”
 
-- (0) Take his regulator.
-- (1) Leave him and keep searching the bodies.
+_Only when fromDeadSearch.middle._
+
+- (0) KILL: pull out her pump regulator and take it.
+- (1) SPARE: leave her the regulator and look for another one.
+
+_Note: The chart’s FIND PUMP REGULATOR IN ANDROID and its choice group REFUSE TO KILL FOR PUMP / KILL FOR PUMP. The prompt and its two buttons are the template’s (“Try to take pump regulator from android”: KILL, SPARE), in the game’s order, each shown with its label first; her plea and “Thank you…” are the template’s lines, and KILL has none (the template’s ø). The game titles the regulator readout THIRIUM PUMP REGULATOR; the word thirium identifies the source and is dropped from subject text (the neutral renderer removes it), so the readout reads PUMP REGULATOR. The compatible readout #2886 is the template’s (it does not say which android carries it, so the dead android near the slope shows the same part number). She is female (the wiki’s Begging Android; the Markus page: “He gets a choice to kill or spare her”). The old scene’s “you have minutes” is gone: no source gives a timer. After SPARE, the dead android’s regulator near the slope is the way (PowerPyx), back in the search. Records fromDeadPump (Kill for pump or Refuse to kill for pump), and after KILL fromDeadPumpSource (Living android). No stat change: the template has no arrow here and the wiki gives no cross-chapter effect._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M04c · Markus came back from the dead (Markus, event)
+
+> You are Markus. You haul yourself over the top of the slope and stand. Behind you the landfill stretches away under the rain, the floodlights and the yellow VETA sign; ahead are the lights of the city. You raise a hand to your temple and pull out your LED, the light that marks you as an android. Without it, nobody will know what you are. You think of the dying android’s words: there is a place…
+
+- (0) Continue.
+
+_Note: The chart’s ending MARKUS CAME BACK FROM THE DEAD, the chapter’s only outcome (wiki: “This chapter has only one outcome”), reached on every path. PowerPyx: “After Markus reaches the top of the slope he must still remove his LED (to appear like a human). Then he walks away”; the Markus page: “his right eye has been exchanged for a blue eye (#8087q)”. The closing line is the template’s spoken “My name is Markus.”; the line before it, “Markus.”, is marked unused in the template and is not built. The jacket the Markus page says he steals on the way to the city is not in this chapter’s text and is left to Jericho. Records fromDeadOutcome (Markus came back from the dead) and fromDeadLedRemoved. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
