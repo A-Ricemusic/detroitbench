@@ -992,17 +992,187 @@ Gaps:
 
 ## Chapter 14: Jericho
 
-### R14 · A magazine at the station (Markus, media)
+### MJ14a · Ferndale Station (Markus, event)
 
-> You are Markus, following the trail to Jericho through a rail station at night. A magazine lies on a bench by the bins.
+> You are Markus, standing among the human passengers of a crowded train in the afternoon. Since the landfill you have worn a coat taken from a human and no longer have the light at your temple, so nobody gives you a second look. Overhead, the announcements play: “Customers are reminded that all androids must ride in the designated area.” “We are now approaching Ferndale Station.” “Please take care…
 
-- (0) Read Tech Addict: Android Astronauts to Explore Io.
-- (1) Read Detroit Today: Android on the Run.  _only when chase_
-- (2) Read Tech Addict: CyberLife's Fortune Teller Computer.  _only when noChase_
+- (0) Continue.
+
+_Note: The chart’s first two nodes, ARRIVE AT FERNDALE (checkpoint) and FLASHBACK OF ANOTHER DEVIANT (PowerPyx: “when Markus gets off the train he will automatically have a memory flashback of another android he met in ‘From the Dead’. Cannot be missed.”), as one narrated event. The announcements are the game’s strings (X0501M.MONORAIL ANNOUNCE01, 02 and 04); the template does not place them, so their order is assumed. The flashback’s words are the landfill android’s line in From the Dead; the key he copied to Markus is from the wiki’s Jericho (location) and Phileas pages (“Phileas gave Markus a copy of his key to locate Jericho”), which the game shows rather than says. The coat and the removed LED are From the Dead’s ending (PowerPyx, Markus page). Left out: the wiki’s “news about a detective android”, which has no line in the template. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14b · The red mural (Markus, event)
+
+> You are Markus, on the platform. A man walks past on his phone: “Hey. Yeah, I’m good. How about you? … I know! It’s crazy, right? Sure, I’ll talk to you later.” A homeless man stops you: “Hey, mister, can you spare some change?..” Two passengers are talking: “I heard that android boyband is going to win some music prize.” “God, they are so creepy.” “My kids don’t listen to anything else.” To your…
+
+- (0) Continue.
+
+_Note: ANALYZE STATION GRAFFITI. PowerPyx: “After exiting the train turn to your left immediately. There you see a big red graffiti covering a wall. Scan the one clue on it”. The mark is described from PowerPyx’s graffiti screenshots (counter 1/1; its text says two marks, its screenshot one). The game prints no text for the marks (no MENU.OBSERVATION.05M strings); the preview of the next sign is the game’s “NEXT GRAFFITI” view. The platform lines are the template’s (man on the phone, abridged; homeless man; two people talking); the band’s name in “You mean Here4u? God, they are so creepy.” is cut because it would identify the source. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R14 · A magazine on the bench (Markus, media)
+
+> You are Markus, on the platform at Ferndale Station, before the escalators down to the street. Someone has left a digital magazine on a bench; you can swipe from one cover story to the next.
+
+- (0) Read Detroit Today: Android on the Run!.  _only when ch14Pursued_
+- (1) Read Tech Addict: CyberLife’s ‘Fortune Teller’ Computer.  _only when ch14NotPursued_
+- (2) Read Tech Addict: Android Astronauts to Explore Io.
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s three magazine nodes, READ “ON THE RUN”, READ “FORTUNE TELLER” and READ “ANDROID ASTRONAUTS”: covers of one magazine on a bench on the platform (wiki: “on a bench right after Markus gets off the train”; PowerPyx: “before going down the escalator”, “Swipe right to change cover topics”). Android Astronauts to Explore Io (Tech Addict #13) is always there. Android on the Run! (Detroit Today #32) appears only if Kara and Alice were pursued by Connor in On the Run (wiki); CyberLife’s ‘Fortune Teller’ Computer (Tech Addict #15) appears otherwise. The pursuit is read from On the Run’s flag (`chase`), set whenever the highway chase began, including when it ended with Kara and Alice dead on the highway; a PowerPyx reader’s unconfirmed list puts that case and KARA & ALICE VANISHED under Fortune Teller, but the wiki’s condition is the pursuit itself. Article facts are condensed from the wiki’s magazine pages; NASA’s director, CyberLife’s Director of Futurology and the suburb (Camden) are left unnamed. Corrected from the earlier version of this scene: the article mentions no child, the “extremely rare malfunction” is not a CyberLife statement (no spokesperson was available), and the chapter is in daylight (04:30 PM), not at night. No public-opinion effect: no source gives one._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14c · At the foot of the escalators (Markus)
+
+> You are Markus. You ride the escalator down toward the street exit. At the bottom a man hurrying round the corner bumps into you: “Oh, sorry… excuse me…” On a bench a girl asks her mother: “Are we really going to get rid of Mandy?” “Grandma says it leaves her with nothing to do, sweetie.” “But she’s so cool!” “I know, honey.” Outside, to the left, an android stands waiting in a marked bay at the…
+
+- (0) Ask the android at the bus stop the way to Jericho.
+- (1) Leave the android be and follow the signs.
+
+_Note: EXIT THE STATION and the chart’s fork below it: FOLLOW THE SIGNS, the main line, and ASK ANDROID THE WAY TO JERICHO, an optional dialogue node with no line out of it (the wiki’s accurate chart gives it no continuation). Asking does not replace the trail: whichever option is taken, the next scene follows the signs. Markus’s question is the template’s line; the template has no reply, so the android gives none (PowerPyx: “At the bottom of the escalator, talk to the android on the left side waiting at the bus stop”; the game’s key calls it the parked android). The man bumping into Markus and the mother and child are the template’s. The two people talking about Carl are the template’s condition group (Carl died in Broken, or Carl is alive), chosen from `carl`; what they say is added to what Markus knows. Carl’s surname is a name token. No risk and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14d · Following the signs (Markus, event)
+
+> You are Markus, following the trail through the streets. The lion-and-boxer mural holds two marks; you scan both, and the preview leads you on. Across the street, past two crosswalks, a building wall is painted with a colorful rainbow, and two more marks are hidden in it. A homeless man calls to the passers-by: “I need a dollar, I haven’t eaten all day! … Spare some change?” Children are playing…
+
+- (0) Continue.
+
+_Note: FOLLOW THE SIGNS: graffiti #2 (lion and boxer, after the escalators, 2 marks), #3 (rainbow, across the street, 2 marks) and the two visible marks of #4 (robot, behind the fence), from PowerPyx’s graffiti guide and its screenshot counters. The homeless man and the children are the template’s ambient lines, abridged. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14e · The junkyard (Markus)
+
+> You are Markus. Once you have scanned the two marks you can see, you crouch and crawl under the fence, stand, and move the wooden plank away from the wall. The robot mural’s third mark was behind it; you scan it. The streets are behind you now: you come out into a junkyard of wrecked cars and scrap. On the wall to the left is a large white mural of a head, the next sign. To the left of where you…
+
+- (0) Look behind the white car to the left of where you came in.
+- (1) Go straight to the white mural.
+
+_Note: LEAVE THE STREETS (PowerPyx: the crawl prompt appears once the two visible marks are scanned; “remove the wooden plank leaning against the wall that blocks the 4th Graffiti”; the game’s Crouch, Remove and Stand prompts) and the optional SEE ANDROID BODY beside it (PowerPyx: “Check on the left side from where you entered. There’s a dead android hidden behind a white car, easy to miss this one”; wiki: “to the left when entering the parking lot”). The body is an option; either way the next scene goes on with CONTINUE ON THE JERICHO TRAIL. No source describes the body further or gives it an effect. Casual mode’s “Obstrued symbol” hint is not modelled (the benchmark plays Experienced). No risk and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14f · The dumpster (Markus, event)
+
+> You are Markus, at the white mural of a head. From the ground you can scan only one of its marks; the others are out of sight from here. A dumpster stands nearby. You pull it over to the wall beside the mural, climb onto it and pull yourself up onto the roof.
+
+- (0) Continue.
+
+_Note: CONTINUE ON THE JERICHO TRAIL and USE THE DUMPSTER TO CLIMB UP, linear and unmissable (PowerPyx: “After scanning the first clue on the 5th Graffiti in the Junkyard (the white-colored one that looks like a person’s head), you will have to pull a dumpster to a wall to climb up.”). No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14g · Across the gap (Markus, event)
+
+> You are Markus, on the roof. From up here you can see the white mural’s other two marks: a black one on the far left of the head, and a white one on its forehead just above the eye, almost invisible against the white paint. You scan both. Across the roof, the building ends at a gap over a drop, and the trail goes on beyond it. You preconstruct the way across, running each move in your mind before…
+
+- (0) Continue.
+
+_Note: REACH THE ROOF (checkpoint) and CROSS THE GAP. The rooftop marks of graffiti #5 are PowerPyx’s (“a white shape just above the head’s eye, on the forehead”; “a black “X” shape on the far left side of the head”). PowerPyx: “Preconstruct the path to take. Do a wall jump to cross over to the other side.” The wall jump is scripted traversal: no source describes Markus falling or failing, the chart has no failure node, and Markus cannot die before Freedom March (Markus page), so it carries no risk. Preconstruction is Markus’s ability to preview a route (RK200 page). The chart’s optional SEE ANDROID BODY drawn beside REACH THE ROOF is found after the jump (PowerPyx: “Drop down into the next yard”; the wiki lists it under Cross the Gap), so it is offered in the next scene. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14h · The yard (Markus)
+
+> You are Markus, in a yard of containers below a tall brick building. High on its wall is a faded red advertisement for spark plugs, and the preview tells you the next sign is in it. A climbing route leads up the building toward a door. The far left side of the yard, by a container, is still unexplored.
+
+- (0) Look around the far left side of the yard, by the container.
+- (1) Go straight to the building.
+
+_Note: The chart’s optional SEE ANDROID BODY beside REACH THE ROOF and CROSS THE GAP (wiki: “next to a container”; PowerPyx: “There’s another android body here, relatively easy to see on the far left side of the area (in area with 6th Graffiti). Just be sure to look at it before climbing up to the next building.”). The advertisement is described from PowerPyx’s screenshot of graffiti #6. Either way the next scene goes on with REACH THE DOOR. No effect is sourced. No risk and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14i · The abandoned office (Markus, event)
+
+> You are Markus, below the tall building. You scan the three marks in the faded advertisement. Then you preconstruct a way up: keep to the left wall, jump for the ladder, pull yourself up. You climb it the way you saw it, reach the door at the top and go in. Inside is an abandoned office, dim and empty, with pillars across the room and a broken wall at one side.
+
+- (0) Continue.
+
+_Note: Graffiti #6 (3 marks; PowerPyx: “looks like an advertisement on the tall building overlooking the yard”), REACH THE DOOR (PowerPyx: “you can Preconstruct another climbing path that leads up to the building. Stick to the left wall and jump on the ladder to pull yourself up.”) and EXPLORE ABANDONED OFFICE (“Completes automatically when you’ve climbed into the building”). The climb has no failure branch and carries no risk. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14j · The office (Markus)
+
+> You are Markus, in the abandoned office. The preview of the last sign matches no single surface: part of it is painted on a pillar and part on the wall behind, and it will only come together from the right spot. Straight ahead of the door, a pillar hides part of the room from view.
+
+- (0) Look behind the pillar straight ahead.
+- (1) Look for the spot where the last sign comes together.
+
+_Note: The optional SEE ANDROID BODY in the office (PowerPyx: “When you enter the room it’s straight ahead, hidden behind a pillar”; wiki: “propped up against a pillar”). Either way the next scene is FIND THE RIGHT EXIT. No effect is sourced. No risk and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14k · The ship (Markus, event)
+
+> You are Markus, moving around the office until a pillar lines up with the wall behind it and the two halves of the last mark become one. You scan it. It points you to the rubble behind the broken wall at the side of the room. You climb through and come out into the open, above the old docks. Below lies a huge, rusted freighter, its blue hull lettered in big white capitals: JERICHO.
+
+- (0) Continue.
+
+_Note: FIND THE RIGHT EXIT (PowerPyx: “Scan the 7th and final Graffiti by lining up a pillar with part of the wall … interact with the rubble behind the broken wall on the side of the room. It leads outside to the next area.”) and LOCATE JERICHO (checkpoint; PowerPyx: “You see a short cutscene when you go outside”; the chart’s picture tile shows the rusted blue hull lettered JERICHO; the wiki calls the ship an abandoned freighter). The lining-up is a puzzle that cannot fail. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14l · The docks (Markus)
+
+> You are Markus, on the docks by the ship. Straight ahead, an old rusted bridge leads out toward it. At the end of the area, past a metal railing and a stairway, a crane stands over the ship with its arm reaching out above the hull.
+
+- (0) Walk out onto the bridge straight ahead.
+- (1) Head for the crane at the end of the area.
+
+_Note: LOCATE JERICHO has two lines out: the optional detour WALK BRIDGE → BRIDGE COLLAPSES, which rejoins the main line at CLIMB CRANE AND JUMP, and a line straight to the crane. PowerPyx: “walk on the bridge straight ahead of you”; “When you walk the bridge for long enough it collapses. No worries, it won’t kill you. Backtrack to where you came from.” The collapse is scripted, not a failure, so it has no risk; how far Markus gets before it goes is not described. Either way the next scene is the crane. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14m · The crane (Markus, event)
+
+> You are Markus. You climb the metal railing at the end of the area, go up the stairs and climb the ladder onto the crane. You walk out along its arm to the very end, high above the ship, with dark water below. You jump.
+
+- (0) Continue.
+
+_Note: CLIMB CRANE AND JUMP (PowerPyx: “climb up a metallic railing at the end of the area. Then go upstairs and climb the ladder. Once on top walk to the end of the crane and jump down into the water. The screen fades to black for a moment.”). A deliberate, scripted jump that always lands safely (“You will have landed safely in water inside the Jericho ship”), so it carries no risk. Readers say Markus loses his coat in the water; not modelled. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14n · Inside the boat (Markus, event)
+
+> You are Markus, surfacing in water inside the ship. It is almost completely dark. You pull yourself up a ladder to a heavy door and work its handle slowly until it opens. In a metal case on the wall beyond, you find a flashlight and take it. Its beam shows a long corridor lined with yellow hatches; the ones that open lead only to empty rooms, and the rest are locked. At the end of the corridor…
+
+- (0) Continue.
+
+_Note: INSIDE THE BOAT (checkpoint), FIND A FLASHLIGHT and ENTER THE MACHINE ROOM, linear (PowerPyx: the ladder; the door that on Experienced is opened by turning the controller “very very slowly”; “you must pick up a flashlight, it’s in a metallic case on a wall”; yellow hatches that “are either locked or just have empty rooms behind them”; the one that matters is “at the end of the corridor after going under some rubble … on the left”; the game’s prompt “Take Flashlight”). The door control is an input hurdle with no failure branch, so no risk. The three side rooms the wiki lists as unused are not included. No choice, no risk and no stat change: the chapter’s template has no prompt, clue or arrow, and the wiki lists no probability, relationship, public-opinion or instability change for it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MJ14o · The people of Jericho (Markus, event)
+
+> You are Markus, in the machine room. You go down the metal stairs and out across a catwalk. It collapses under you and you fall. When you look up, you are not alone: androids stand around you in the dark, staring at you. One of them steps forward. “Welcome to Jericho.”
+
+- (0) Continue.
+
+_Note: FALL OFF CATWALK (PowerPyx: “Simply continue down the metallic stairs and across the catwalk. It will collapse and Markus falls down.”) and the chapter’s one ending, MET PEOPLE OF JERICHO (PowerPyx: “After Markus falls down he sees other androids staring at him. This is the only outcome to this linear level.”; template: Simon’s “Welcome to Jericho.”, the chapter’s last line). The ending is recorded in state as `ch14Ending`. The androids stay unnamed here: the introductions (“Who are you?”) open the next Markus chapter in the template (Time to Decide, In Jericho). No stat change: the first changes in how Jericho, North, Simon and Josh regard Markus come in Time to Decide._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

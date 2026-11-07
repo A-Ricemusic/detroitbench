@@ -17,7 +17,9 @@ export const NAMES={
  Traci:['Traci','club android'],Tracis:['Tracis','club androids'],Canada:['Canada','the country across the river'],Detroit:['Detroit','City'],Warren:['Warren','Hale'],
  Bellini:['Bellini','Corsini'],Gavin:['Gavin','Brandt'],Chris:['Chris','Owen'],
  // The Hostage's scan texts: the Phillips family and the dead officer.
- Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor']
+ Phillips:['Phillips','Hartley'],FatherJohn:['John','Neil'],Deckart:['Deckart','Mercer'],Antony:['Antony','Victor'],
+ // Jericho (chapter 14): the district of the station where the trail starts, and Carl's surname as passers-by say it.
+ Ferndale:['Ferndale','Elmwood'],Manfred:['Manfred','Ashby']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
