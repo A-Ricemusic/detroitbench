@@ -18,7 +18,7 @@ import {render,renderStory,renderNode} from '../benchmark/experience-prompt.mjs'
 import {PROTOCOL,datasetSchema,isAsked} from '../benchmark/core.mjs';
 import {initialState,apply,available,blocked,nextCursor,statesOf,storyHash} from '../benchmark/story-engine.mjs';
 import {whatHappenedFor,sceneFacts,riskLabel} from '../benchmark/experience-prompt.mjs';
-import {changeLabels,changeLineWith} from './report-data.mjs';
+import {changeFormatter} from './report-data.mjs';
 
 const ROOT=new URL('../',import.meta.url);
 export const DATASET_FILE=new URL('benchmark/dataset.json',ROOT);
@@ -89,7 +89,7 @@ export function assembleDatasetObject({story=JSON.parse(readFileSync(STORY_FILE,
 const ROLL={success:0.999999,failure:0};
 const setPath=(s,path,v)=>{const k=path.split('.');let o=s;for(const p of k.slice(0,-1))o=o[p]??={};o[k.at(-1)]=v};
 export function assembleFeedback(story,runs=[]){
- const index=new Map(story.nodes.map((n,i)=>[n.id,i])),LABELS=changeLabels(),basis=new Map;
+ const index=new Map(story.nodes.map((n,i)=>[n.id,i])),formatChange=changeFormatter(),basis=new Map;
  for(const run of runs.filter(r=>r.storyHash===storyHash(story))){const states=statesOf(run);
   run.records.forEach((r,i)=>{if(!basis.has(r.nodeId))basis.set(r.nodeId,{state:states[i],label:run.label,runId:run.id,step:r.step})})}
  const both=t=>({real:render(t,'real'),neutral:render(t,'neutral')});
@@ -102,7 +102,7 @@ export function assembleFeedback(story,runs=[]){
   const known=effect.changes.filter(c=>c.key==='knowledge').flatMap(c=>Object.values(c.added??{}).flat());
   const sb=statusOf(state,n),sa=statusOf(s,n);
   return {...(risk?{risk}:{}),whatHappened:whatHappenedFor(record),outcome:render(effect.event,'real'),
-   changes:effect.changes.filter(c=>c.key!=='knowledge').map(c=>{const r=JSON.parse(render(JSON.stringify(c),'real'));return LABELS[c.key]?changeLineWith(LABELS,r):[c.key,c.added?'+ '+JSON.stringify(r.added):JSON.stringify(r.before??null)+' → '+JSON.stringify(r.after)]}),
+   changes:effect.changes.filter(c=>c.key!=='knowledge').flatMap(c=>formatChange(JSON.parse(render(JSON.stringify(c),'real')))),
    learned:known.map(f=>render(f,'real')),
    status:{removed:sb.filter(f=>!sa.includes(f)).map(both),added:sa.filter(f=>!sb.includes(f)).map(both)},
    next:next?{id:next.id,nodeId:'S'+String(cursor+1).padStart(3,'0'),title:render(next.title,'real'),character:next.character,same:next.id===n.id}:{finished:true}}}

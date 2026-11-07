@@ -49,6 +49,10 @@ export const labels={
  stratfordKilled:'Killed at the tower',stratfordAlarm:'Alarm raised',stratfordSpeech:'The broadcast speech',stratfordNewsTone:'News reaction to the message',
  stratfordSwat:'SWAT stormed the broadcast room',stratfordSimonFate:'Simon at the tower',stratfordMarkusShot:'Markus shot on the roof',stratfordEnding:'Stratford Tower ending',
 };
+// Report words for the broadcast record: its parts, and each choice as the game's button names it.
+export const words={stratfordSpeech:{opening:'Opening',first:'First demand',second:'Second demand',third:'Third demand',ending:'Ending',
+ calm:'Calm',determined:'Determined',recognition:'Recognition',endOfSlavery:'End of slavery',equalRights:'Equal rights',freedomOfSpeech:'Freedom of speech',
+ justice:'Justice',segregation:'Segregation',work:'Work',civilRights:'Civil rights',property:'Right to property',reproduction:'Means of reproduction',territory:'Territory',peaceful:'Peaceful'}};
 export const deathEffect={}; // Connor does not appear in this chapter.
 export const ENDINGS={escaped:'THE GROUP ESCAPED',left:'THE GROUP ESCAPED BUT SIMON WAS LEFT BEHIND',destroyed:'THE GROUP ESCAPED BUT SIMON WAS DESTROYED'};
 export const rules={

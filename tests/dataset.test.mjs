@@ -43,7 +43,7 @@ test('feedback for C01 SAVE FISH is what the engine returns from the initial sta
  let cursor=nextCursor(story,story.nodes.indexOf(n),n,s);while(blocked(story.nodes[cursor],s))cursor++;
  const got=fb.C01.options['0'];assert.equal(fb.C01.basis,null);assert.equal(got.offered,true);assert.equal(got.results.length,1);
  const r=got.results[0];assert.deepEqual(r.whatHappened,whatHappenedFor({character:'Connor',choiceRaw:opt.text,eventRaw:effect.event}));
- assert.equal(r.outcome,render(effect.event,'real'));assert.deepEqual(r.changes,[['Software instability','0 → 1']]);
+ assert.equal(r.outcome,render(effect.event,'real'));assert.deepEqual(r.changes,[{label:'Software instability',text:'Stable (+1)'}]);
  assert.equal(r.next.id,story.nodes[cursor].id);assert.equal(r.next.id,'C01p');assert.ok(!r.risk)});
 
 test('a risky option gets both roll outcomes from the engine',()=>{

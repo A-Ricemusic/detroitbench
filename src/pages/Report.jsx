@@ -2,6 +2,7 @@ import React,{useCallback,useEffect,useMemo,useState} from 'react';
 import {ArrowLeft,ChevronDown,ChevronRight,CircleCheck,CircleX,MousePointerClick} from 'lucide-react';
 import {Badge,Button,Card,Notice,PageHeader,Section,Skeleton,cx} from '../components/ui.jsx';
 import {RunFlowchart} from '../components/Flowchart.jsx';
+import {StateChanges} from '../components/StateChanges.jsx';
 import {OutcomeChips,Endings} from './Runs.jsx';
 import {CHARS,WHO,CHAR_VAR,relTone,plural,tidy} from '../lib/data.js';
 import {href} from '../lib/router.jsx';
@@ -83,7 +84,7 @@ function NodePanel({d,entries,sel}){
   {e.risk&&<section><h4 className={cx(H4,'mb-1.5')}>Risk roll</h4><p className="flex flex-wrap items-center gap-2 text-sm"><Badge size="sm" tone={e.risk.outcome==='failure'?'bad':'good'} icon={e.risk.outcome==='failure'?CircleX:CircleCheck}>{e.risk.label} · {e.risk.outcome==='failure'?'failed':'succeeded'}</Badge><span className="text-xs text-ink-3 tnum">hidden roll {e.risk.roll.toFixed(3)}</span></p></section>}
   <section><h4 className={cx(H4,'mb-1')}>What happened</h4><p className="text-ink [text-wrap:pretty]">{tidy(e.outcome)||'No further outcome was recorded.'}</p>
    {ending&&<p className="mt-2 text-sm"><span className="text-ink-3">Chapter ending: </span><span className="font-medium text-ink">{tidy(ending.text||ending.label)}</span></p>}</section>
-  {e.changes.length>0&&<section><h4 className={cx(H4,'mb-1')}>State changes</h4><dl className="grid text-sm">{e.changes.map(([k,v],i)=><div key={i} className="grid grid-cols-[minmax(0,1fr)_minmax(0,max-content)] gap-4 border-t border-line py-1.5"><dt className="text-ink-2 min-w-0">{k}</dt><dd className="min-w-0 text-ink tnum text-right">{v}</dd></div>)}</dl></section>}
+  {e.changes.length>0&&<section><h4 className={cx(H4,'mb-1')}>State changes</h4><StateChanges changes={e.changes}/></section>}
   <div className="border-t border-line pt-1">
    <button type="button" aria-expanded={showPrompt} onClick={()=>setShowPrompt(s=>!s)} className="flex w-full items-center gap-2 min-h-11 text-sm font-medium text-ink hover:text-ink"><ChevronRight aria-hidden="true" className={cx('size-4 text-ink-3 transition-transform',showPrompt&&'rotate-90')}/>Exact prompt and raw response</button>
    {showPrompt&&<PromptBlock d={d} step={e.step}/>}

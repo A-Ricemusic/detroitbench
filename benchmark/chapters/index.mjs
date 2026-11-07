@@ -18,3 +18,6 @@ export function chapterState(){const out={},owner={};
  return out}
 // Every module's `labels` (state key -> report label), merged in chapter order.
 export const chapterLabels=()=>Object.assign({},...[...CHAPTER_MODULES.values()].map(m=>m.labels??{}));
+// Every module's `words` ({stateKey: {subKeyOrValue: 'Words'}}): human words for the parts of an object-valued state key
+// and for its coded values, used when a report describes a change to that key. Merged per key in chapter order.
+export function chapterWords(){const out={};for(const m of CHAPTER_MODULES.values())for(const [k,w] of Object.entries(m.words??{}))out[k]={...out[k],...w};return out}

@@ -1,7 +1,7 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {X} from 'lucide-react';
 import {cx,Dot,Select,useMediaQuery} from './ui.jsx';
-import {ABBR,BROKE,DIM,FinalStrip,NumberLegend,chapterSeries,groupBy,levelOf,useWidth} from './Charts.jsx';
+import {ABBR,BROKE,DIM,FinalStrip,chapterSeries,groupBy,levelOf,useWidth} from './Charts.jsx';
 import {EndingCard,CARDS} from './EndingCharts.jsx';
 import {CHAR_VAR,compareRuns,runLabel,tidy} from '../lib/data.js';
 import {useModelFocus} from '../lib/modelFocus.jsx';
@@ -27,7 +27,9 @@ function changeIn(r,key,c){const st=r.track.steps,vals=r.track[key].values,seen=
 function LevelChart({scale,runs,colors,nums,titles,compact}){
  const focus=useModelFocus(),[ref,W]=useWidth(),[hot,setHot]=useState(null),[pin,setPin]=useState(null),svg=useRef(null);
  const H=compact?Math.max(360,Math.round(W*1.2)):Math.max(440,Math.min(680,(typeof innerHeight==='number'?innerHeight:900)-250));
- const x0=compact?70:112,x1=compact?W-14:W-235,top=30,y0=compact?H-46:H-60;
+ // Before the first measurement (and before the phone media query settles) the width can be too small for the desktop
+ // margins; the plot never gets a negative width.
+ const x0=compact?70:112,x1=Math.max(x0,compact?W-14:W-235),top=30,y0=compact?H-46:H-60;
  const series=useMemo(()=>[...runs].sort(compareRuns).map(r=>({r,pts:chapterSeries(r,scale.key),ended:r.track[scale.key].endedAt!==null})),[runs,scale.key]);
  const chs=useMemo(()=>[...new Set(series.flatMap(s=>s.pts.map(p=>p.c)))].sort((a,b)=>a-b),[series]),xMax=Math.max(1,...chs);
  const x=c=>x0+c/xMax*(x1-x0),span=scale.max-scale.min+1,y=v=>top+(scale.max+0.5-v)/span*(y0-top);
@@ -61,7 +63,7 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
  return <div>
   <div ref={ref} className="relative">
    <svg ref={svg} width={W} height={H} role="group" aria-label={`${scale.label} toward ${scale.toward} at the end of each chapter, on the game’s level bands`} className="block max-w-full select-none" onPointerDown={compact?tap:undefined}>
-    {scale.bands.map((b,i)=>{const ya=y(b.to+0.5),yb=y(b.from-0.5);return <g key={b.level}>{i%2===1&&<rect x={x0} y={ya} width={x1-x0} height={yb-ya} className="band-b"/>}
+    {scale.bands.map((b,i)=>{const ya=y(b.to+0.5),yb=y(b.from-0.5);return <g key={b.level}>{i%2===1&&<rect x={x0} y={ya} width={Math.max(0,x1-x0)} height={yb-ya} className="band-b"/>}
      <line x1={x0} x2={x1} y1={yb} y2={yb} className="dot-grid"/>{i===scale.bands.length-1&&<line x1={x0} x2={x1} y1={ya} y2={ya} className="dot-grid"/>}
      {yb-ya>=12&&<text x={x0-12} y={(ya+yb)/2} textAnchor="end" dominantBaseline="central" className="band-label">{compact?ABBR[b.level]??b.level:b.level}</text>}</g>})}
     <text x={x0} y={18} className="axis-label" style={{fontSize:compact?10:11}}>{scale.label} toward {scale.toward}</text>
@@ -84,14 +86,13 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
      return <a key={s.r.id} href={href('runs/'+s.r.id+'/report')} aria-label={`${s.r.displayName}: open the full report`} className="cursor-pointer outline-none [&:hover_.lbl-name]:underline [&:focus-visible_.lbl-name]:underline" style={{opacity:active&&!active.has(s.r.id)?0.4:1}}
       onPointerEnter={()=>focus.setHover(s.r.id)} onPointerLeave={()=>focus.setHover(null)} onFocus={()=>focus.setHover(s.r.id)} onBlur={()=>focus.setHover(null)}>
       <path d={`M${l.ax+6},${l.ay}L${x1+18},${l.ly}L${x1+20},${l.ly}`} fill="none" stroke={col} strokeWidth=".75" opacity=".22" pointerEvents="none"/>
-      <rect x={x1+20} y={l.ly-12} width={W-x1-20} height="24" fill="transparent"/>
+      <rect x={x1+20} y={l.ly-12} width={Math.max(0,W-x1-20)} height="24" fill="transparent"/>
       <circle cx={x1+31} cy={l.ly} r="8" className="num-badge" style={{stroke:col}}/><text x={x1+31} y={l.ly} textAnchor="middle" dominantBaseline="central" className="num-text">{n}</text>
       <text x={x1+46} y={l.ly} dominantBaseline="central" className="lbl-name" style={{fill:'var(--ink)',fontSize:13,fontWeight:pinned?700:550}}>{name(s.r)}</text>
      </a>})}
    </svg>
    {!compact&&card&&<div className="pointer-events-none absolute right-2 bottom-[72px] z-20">{card}</div>}
   </div>
-  {compact&&<Legend runs={series.map(s=>s.r)} colors={colors} nums={nums} name={name}/>}
   {compact&&card&&<div className="sticky bottom-[calc(4rem+env(safe-area-inset-bottom))] z-20 mt-3">{card}</div>}
  </div>}
 
@@ -114,11 +115,6 @@ function Card({p,pinned,scale,colors,nums,name,titles,onClose,compact}){
   </dl>
   {pinned?<a href={href('runs/'+p.s.r.id+'/report')} className="mt-2.5 inline-block text-[11.5px] text-ink underline underline-offset-2">Open report</a>:<p className="mt-2.5 text-[11.5px] text-ink-3">Click to open the full report</p>}
  </div>}
-
-// Phones: the legend under the chart, two columns of toggles that keep a highlight on.
-function Legend({runs,colors,nums,name}){const focus=useModelFocus();
- return <ul className="mt-3 grid grid-cols-2 gap-x-3" aria-label="Models">{runs.map(r=>{const on=focus.pins.has(r.id);return <li key={r.id}><button type="button" aria-pressed={on} onClick={()=>focus.togglePin(r.id)} className={cx('flex min-h-11 w-full items-center gap-2 text-left text-[13px] font-semibold text-ink',focus.pins.size>0&&!on&&'opacity-35')}>
-  <span className="font-mono text-[10.5px] font-normal text-ink-3">{nums[r.displayName]}</span><Dot color={colors[r.displayName]} className="size-2.5"/><span className="truncate">{name(r)}</span></button></li>})}</ul>}
 
 // The chart feed on the results page: the three ending-row cards, then one section per relationship gauge, then
 // "Where they ended", each a section reached by the sticky tabs, with the section in view kept in `?chart=`.
@@ -160,7 +156,6 @@ export function ChartFeed({runs,shown,scales,colors,nums,empty}){
   </section>}))}
   <section id={'chart-'+FINAL} aria-labelledby={'chart-'+FINAL+'-h'} className="scroll-mt-[calc(var(--header-h)+64px)] md:scroll-mt-[calc(var(--header-h)+96px)] py-6 md:py-8">
    {head(FINAL,'Where they ended',null,'Final level per run · ♥ North as lover')}
-   {empty||<div className="plot-grid grid grid-cols-[minmax(0,1fr)] gap-10 rounded-2xl border border-line px-4 py-5 md:px-8 md:py-8">{groups.map(g=><div key={g.c} className="min-w-0"><h3 className="cap !text-[11px] text-ink-2 flex items-center gap-2 mb-4"><Dot color={CHAR_VAR[g.c]} className="size-2"/>Around {g.c}</h3><div className="grid gap-6">{g.scales.map(s=><div key={s.key}><div className="flex items-baseline justify-between gap-3 mb-2"><b className="text-sm font-semibold">{s.label}</b>{s.key==='instability'&&<span className="text-xs text-ink-3">Unstable = deviancy 4+</span>}</div><FinalStrip scale={s} runs={shown} colors={colors} nums={nums}/></div>)}</div></div>)}
-    <div className="border-t border-[var(--plot-rule-2)] pt-5"><NumberLegend runs={shown} colors={colors} nums={nums} linked label="Models shown"/></div></div>}
+   {empty||<div className="plot-grid grid grid-cols-[minmax(0,1fr)] gap-10 rounded-2xl border border-line px-4 py-5 md:px-8 md:py-8">{groups.map(g=><div key={g.c} className="min-w-0"><h3 className="cap !text-[11px] text-ink-2 flex items-center gap-2 mb-4"><Dot color={CHAR_VAR[g.c]} className="size-2"/>Around {g.c}</h3><div className="grid gap-6">{g.scales.map(s=><div key={s.key}><div className="flex items-baseline justify-between gap-3 mb-2"><b className="text-sm font-semibold">{s.label}</b>{s.key==='instability'&&<span className="text-xs text-ink-3">Unstable = deviancy 4+</span>}</div><FinalStrip scale={s} runs={shown} colors={colors} nums={nums}/></div>)}</div></div>)}</div>}
   </section>
  </div>}

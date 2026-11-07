@@ -1,8 +1,9 @@
 import React from 'react';
-import {Sun,Moon,Monitor,Rows3,FlaskConical,BookOpen,Wrench} from 'lucide-react';
+import {Sun,Moon,Monitor,Rows3,FlaskConical,BookOpen,Wrench,SlidersHorizontal} from 'lucide-react';
 import {cx,DropdownMenu,IconButton} from './ui.jsx';
 import {href} from '../lib/router.jsx';
 import {useTheme} from '../lib/theme.jsx';
+import {modelsPanel,useModelsPanel,MODELS_TAB_ID} from '../lib/modelsPanel.js';
 
 const NAV=[
  {key:'runs',label:'Runs',short:'Runs',icon:Rows3,path:'runs'},
@@ -40,9 +41,15 @@ export function Header({section}){
   </div>
  </header>}
 
+// Phones: the four pages, plus a fifth "Models" tab on a page that has the model panel (the results page), which opens
+// that panel (src/lib/modelsPanel.js) and reads as pressed while it is open.
 export function TabBar({section}){
+ const models=useModelsPanel();
  return <nav aria-label="Main" className="md:hidden fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/92 backdrop-blur-md pb-[env(safe-area-inset-bottom)]">
-  <ul className="grid grid-cols-4">{NAV.map(n=><li key={n.key}><a href={href(n.path)} aria-current={section===n.key?'page':undefined} className={cx('flex flex-col items-center justify-center gap-1 h-14 text-[10.5px] tracking-tight font-medium',section===n.key?'text-ink':'text-ink-3')}><n.icon aria-hidden="true" className="size-5"/>{n.short}</a></li>)}</ul>
+  <ul className={cx('grid',models.available?'grid-cols-5':'grid-cols-4')}>{NAV.map(n=><li key={n.key}><a href={href(n.path)} aria-current={section===n.key?'page':undefined} className={cx('flex flex-col items-center justify-center gap-1 h-14 text-[10.5px] tracking-tight font-medium',section===n.key?'text-ink':'text-ink-3')}><n.icon aria-hidden="true" className="size-5"/>{n.short}</a></li>)}
+   {models.available&&<li><button id={MODELS_TAB_ID} type="button" aria-haspopup="dialog" aria-pressed={models.open} aria-label={`Models, ${models.count} selected`} onClick={()=>modelsPanel.set({open:!models.open})} className={cx('flex h-14 w-full flex-col items-center justify-center gap-1 text-[10.5px] font-medium tracking-tight',models.open?'text-ink':'text-ink-3')}>
+    <span className="relative"><SlidersHorizontal aria-hidden="true" className="size-5"/><span aria-hidden="true" className="absolute -right-3 -top-1.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-ink px-1 font-mono text-[9.5px] font-semibold leading-none text-bg tnum">{models.count}</span></span>Models</button></li>}
+  </ul>
  </nav>}
 
 export function Footer(){

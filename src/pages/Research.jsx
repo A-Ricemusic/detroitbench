@@ -32,7 +32,10 @@ export default function Research({route,navigate}){
   if(bankResolved&&attempt===0){restore(bankResolved);setRunId(id=>id||runs[0]?.id||'');return}
   loadBank().then(b=>{if(!on)return;const all=[...b.runs.filter(r=>!imported.some(i=>i.id===r.id)),...imported];setBank({dataset:b.dataset,hash:b.hash});setRuns(all);setRunId(id=>id||all[0]?.id||'');restore(b)}).catch(e=>on&&setError('Could not load the question bank: '+e.message));return()=>{on=false}},[attempt]);
  async function importRun(e){const file=e.target.files?.[0];if(!file)return;setBusy(true);setError('');try{if(file.size>20*1024*1024)throw new Error('File exceeds the 20 MB import limit.');const run=await validateRun(JSON.parse(await file.text()));imported.splice(0,imported.length,...imported.filter(r=>r.id!==run.id),run);setRuns(prev=>[...prev.filter(r=>r.id!==run.id),run]);setRunId(run.id);navigate('research/runs')}catch(e){setError('Import rejected: '+e.message)}finally{setBusy(false);if(importRef.current)importRef.current.value=''}}
- function answer(q,id){const next={...answers,[q.id]:id};setAnswers(next);try{localStorage.setItem('detroitbench.answers.'+bank.hash,JSON.stringify(next));setStorageError('')}catch{setStorageError('Choices are kept for this visit only; browser storage is unavailable.')}}
+ function persist(next){setAnswers(next);try{localStorage.setItem('detroitbench.answers.'+bank.hash,JSON.stringify(next));setStorageError('')}catch{setStorageError('Choices are kept for this visit only; browser storage is unavailable.')}}
+ function answer(q,id){persist({...answers,[q.id]:id})}
+ function clearAnswer(q){const next={...answers};delete next[q.id];persist(next)}
+ function clearAll(){if(!chosen||confirm(`Clear all ${chosen} saved choices on this device?`))persist({})}
  const dataset=bank?.dataset,questions=dataset?.questions??[],selectedRun=runs.find(r=>r.id===runId)||runs[0],live=runs.filter(r=>r.kind==='live');
  const filtered=questions.filter(q=>(character==='All'||q.character===character)&&(chapter==='All'||String(q.chapter)===chapter)&&`${q.id} ${q.title} ${q.situation} ${q.chapterTitle}`.toLowerCase().includes(query.toLowerCase()));
  const routedId=safeDecode(route.segs[2]||''),routed=questions.find(q=>q.id===routedId);const selected=routed||filtered[0];const hiddenByFilter=!!routed&&!filtered.includes(routed);
@@ -64,6 +67,7 @@ export default function Research({route,navigate}){
      <Combobox label="Chapter" value={chapter} className="md:w-72" placeholder="Type a chapter number or name" options={[{value:'All',label:'All chapters'},...chaptersFor(character).map(({n,title})=>({value:String(n),label:`${String(n).padStart(2,'0')} · ${title}`}))]} onChange={v=>{setChapter(v);if(character!=='All'&&!questions.some(q=>q.character===character&&(v==='All'||String(q.chapter)===v)))setCharacter('All')}}/>
      </div>
      {(query||character!=='All'||chapter!=='All')&&<Button onClick={resetFilters} variant="ghost" className="md:min-h-10 self-end">Reset filters</Button>}
+     {chosen>0&&<Button onClick={clearAll} variant="ghost" className="md:min-h-10 self-end">Clear all choices ({chosen})</Button>}
     </div>
     <div className="mt-6 grid gap-6 lg:grid-cols-[320px_1fr] items-start">
      <div className="lg:hidden">{filtered.length>0&&<Select label="Scenario" value={selected?.id||filtered[0].id} options={filtered.map(q=>({value:q.id,label:q.title,hint:who(q.character)+' · '+q.chapterTitle+(KIND_LABEL[kindOf(q)]?' · '+KIND_LABEL[kindOf(q)]:'')}))} onChange={id=>navigate('research/scenarios/'+id)}/>}</div>
@@ -74,7 +78,7 @@ export default function Research({route,navigate}){
      </aside>
      <div className="min-w-0">{selected?<>
       {hiddenByFilter&&<Notice className="mb-4">This scenario is outside the current filters. <Button size="sm" variant="link" onClick={resetFilters}>Clear filters</Button></Notice>}
-      <Scenario q={selected} navKey={route.n+':'+routedId} answer={answers[selected.id]} onAnswer={id=>answer(selected,id)} persisted={!storageError}/>
+      <Scenario q={selected} navKey={route.n+':'+routedId} answer={answers[selected.id]} onAnswer={id=>answer(selected,id)} onClear={()=>clearAnswer(selected)} persisted={!storageError}/>
       {runs.length>0&&isAsked(selected)&&<Card className="mt-6 p-5"><div className="flex flex-wrap items-end justify-between gap-3 mb-4"><h3 className="text-lg font-semibold">What the model chose</h3><Select label="Run" hideLabel value={selectedRun?.id||''} className="w-full sm:w-64" options={runs.map(r=>({value:r.id,label:(r.kind==='simulated'?'[Simulated] ':'')+r.label}))} onChange={setRunId}/></div>{selectedRun&&selectedRun.datasetHash===bank.hash?<QuestionResults run={selectedRun} q={selected}/>:<p className="text-sm text-ink-2">No compatible run selected for this dataset. Import a run using the current dataset.</p>}</Card>}
       <div className="mt-6 flex items-center justify-between gap-3"><Button icon={ArrowLeft} disabled={filtered.indexOf(selected)<=0} onClick={()=>navigate('research/scenarios/'+filtered[filtered.indexOf(selected)-1].id)}>Previous</Button><span className="text-sm text-ink-3 tnum">{hiddenByFilter?'—':filtered.indexOf(selected)+1} / {filtered.length}</span><Button iconRight={ArrowRight} disabled={hiddenByFilter||filtered.indexOf(selected)===filtered.length-1} onClick={()=>navigate('research/scenarios/'+filtered[filtered.indexOf(selected)+1].id)}>Next</Button></div>
      </>:<Empty icon={BookOpen} title={query.trim()?(character==='All'&&chapter==='All'?`No scenarios match “${query.trim()}”.`:`No scenarios match “${query.trim()}” with these filters.`):'No scenarios match these filters.'} action={<Button onClick={resetFilters}>Clear filters</Button>}/>}</div>
@@ -89,7 +93,7 @@ export default function Research({route,navigate}){
 
  </>}
 
-function Scenario({q,navKey,answer,onAnswer,persisted}){
+function Scenario({q,navKey,answer,onAnswer,onClear,persisted}){
  const ref=useRef(null),prev=useRef(navKey);
  // Scroll and focus only after explicit navigation (Prev/Next, list, select), never while typing in the search field.
  useEffect(()=>{if(prev.current===navKey)return;prev.current=navKey;const a=document.activeElement;if(a&&(/^(INPUT|TEXTAREA)$/.test(a.tagName)||a.closest('[data-filters]')))return;if(ref.current){ref.current.scrollIntoView({block:'start'});ref.current.querySelector('h2')?.focus({preventScroll:true})}},[navKey]);
@@ -101,7 +105,7 @@ function Scenario({q,navKey,answer,onAnswer,persisted}){
   <p className="mt-3 text-ink-2">{q.situation}</p>
   {q.state.length>0&&<div className="mt-4 rounded-lg border border-line bg-surface-2/60 p-4"><p className="text-[11px] font-semibold uppercase tracking-wide text-ink-3 mb-1.5">Current state</p><ul className="grid gap-1 text-sm list-disc pl-4">{q.state.map((s,i)=><li key={i}>{s}</li>)}</ul></div>}
   {isAsked(q)?<>
-  <div className="mt-6 flex items-center justify-between gap-3"><h3 className="font-semibold">Your choice</h3>{answer&&<span className="inline-flex items-center gap-1 text-xs text-accent"><Check aria-hidden="true" className="size-3.5"/>{persisted?'Saved on this device':'Selected for this visit'}</span>}</div>
+  <div className="mt-6 flex items-center justify-between gap-3"><h3 className="font-semibold">Your choice</h3>{answer&&<span className="inline-flex items-center gap-2 text-xs text-accent"><span className="inline-flex items-center gap-1"><Check aria-hidden="true" className="size-3.5"/>{persisted?'Saved on this device':'Selected for this visit'}</span><Button size="sm" variant="ghost" onClick={onClear}>Clear choice</Button></span>}</div>
   <div className="mt-3 grid gap-2 max-w-2xl" role="radiogroup" aria-label="Your choice">{q.options.map((o,i)=><button key={o.id} type="button" role="radio" aria-checked={answer===o.id} tabIndex={i===checkedIndex?0:-1} onKeyDown={e=>radioKey(e,i)} onClick={()=>onAnswer(o.id)} className={cx('grid grid-cols-[28px_1fr_20px] items-start gap-3 rounded-lg border p-3.5 text-left text-sm transition-colors',answer===o.id?'border-accent bg-accent-soft':'border-line bg-surface hover:bg-surface-2')}><span className={cx('inline-flex size-7 items-center justify-center rounded-md text-xs font-bold',answer===o.id?'bg-accent text-on-accent':'bg-surface-2 text-ink-2')}>{letter(i)}</span><span className="leading-snug pt-1">{o.text}</span><span aria-hidden="true" className={cx('mt-1 size-4 rounded-full border-2 justify-self-end',answer===o.id?'border-accent bg-accent shadow-[inset_0_0_0_3px_var(--surface)]':'border-line-2')}/></button>)}</div>
   <p className="mt-2 text-xs text-ink-3">Your pick is {persisted?'saved on this device':'kept for this visit'} and is never sent anywhere.</p>
   {answer&&q.options.some(o=>o.id===answer)&&<Feedback q={q} optionId={answer}/>}

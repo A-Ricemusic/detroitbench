@@ -6,6 +6,7 @@ import {announce} from '../lib/announce.jsx';
 import {compareRuns,runLabel} from '../lib/data.js';
 import {EFFORTS} from '../lib/modelSelection.js';
 import {useModelFocus} from '../lib/modelFocus.jsx';
+import {modelsPanel,useModelsPanel,MODELS_TAB_ID} from '../lib/modelsPanel.js';
 
 // The models sidebar, after Slopalytics (docs/design/slopalytics-reference.md §3); on the results page it drives the
 // runs table and every chart. A row is one run; its model's registry entry (modelInfo, from data/models.json via scripts/prepare.mjs) gives
@@ -75,19 +76,26 @@ function Panel({runs,colors,nums,sel,onReset,sheet=false,searchRef,onDone}){
   {sheet&&<div className="border-t border-line pt-4"><button type="button" onClick={reset} className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink"><RotateCcw aria-hidden="true" className="size-4"/>Reset selection</button></div>}
  </div>}
 
-// The sidebar for a page: a sticky aside on wide screens, a "Models n" button and full-screen panel at 900 px or less.
-// Place it as a grid sibling of the charts; it orders itself first on narrow screens.
+// The sidebar for a page: a sticky aside on wide screens and a full-screen panel at 900 px or less. On phones (below
+// 768 px) the panel opens from the "Models" tab of the bottom tab bar (src/components/Shell.jsx, through
+// src/lib/modelsPanel.js); between 768 and 900 px, where there is no tab bar, a "Models n" button above the page opens it.
+// Place it as a grid sibling of the charts; on narrow screens the button orders itself first.
 export function ModelPicker({runs,colors,nums,sel,onReset,className}){
- const narrow=useMediaQuery('(max-width: 900px)'),[open,setOpen]=useState(false),search=useRef(null),trigger=useRef(null);
+ const narrow=useMediaQuery('(max-width: 900px)'),phone=useMediaQuery('(max-width: 767px)'),{open}=useModelsPanel(),search=useRef(null),trigger=useRef(null);
+ const setOpen=o=>modelsPanel.set({open:o});
+ // The tab bar shows the Models tab, with the selected count, while this page is mounted at phone width.
+ useEffect(()=>{modelsPanel.set({available:narrow&&phone,count:sel.selected.size});if(!narrow)modelsPanel.set({open:false})},[narrow,phone,sel.selected.size]);
+ useEffect(()=>()=>modelsPanel.set({available:false,open:false}),[]);
  // "/" opens the panel on phones and focuses the search, unless the visitor is already typing.
  useEffect(()=>{const f=e=>{if(e.key!=='/'||e.metaKey||e.ctrlKey||e.altKey)return;if(e.target?.closest?.('input,textarea,select,[contenteditable=true]'))return;e.preventDefault();if(narrow){setOpen(true);setTimeout(()=>search.current?.focus(),60)}else search.current?.focus()};addEventListener('keydown',f);return()=>removeEventListener('keydown',f)},[narrow]);
  const panel=p=><Panel runs={runs} colors={colors} nums={nums} sel={sel} onReset={onReset} searchRef={search} {...p}/>;
  if(!narrow)return <aside aria-label="Models" className={cx('sticky top-[calc(var(--header-h)+16px)] max-h-[calc(100dvh-var(--header-h)-32px)] overflow-y-auto [scrollbar-width:thin] rounded-2xl border border-line bg-surface px-[18px] py-4 shadow-sm',className)}>{panel({})}</aside>;
- return <div className={cx('order-first',className)}>
+ const opener=()=>phone?document.getElementById(MODELS_TAB_ID):trigger.current;
+ return <>
+  {!phone&&<div className={cx('order-first',className)}><button ref={trigger} type="button" aria-haspopup="dialog" aria-expanded={open} onClick={()=>setOpen(true)} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-line bg-surface px-3.5 text-sm font-medium text-ink shadow-sm hover:bg-surface-2"><SlidersHorizontal aria-hidden="true" className="size-4"/>Models<span className="font-mono text-xs font-normal text-ink-3 tnum">{sel.selected.size}</span></button></div>}
   <Dialog.Root open={open} onOpenChange={setOpen}>
-   <Dialog.Trigger asChild><button ref={trigger} type="button" className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-line bg-surface px-3.5 text-sm font-medium text-ink shadow-sm hover:bg-surface-2"><SlidersHorizontal aria-hidden="true" className="size-4"/>Models<span className="font-mono text-xs font-normal text-ink-3 tnum">{sel.selected.size}</span></button></Dialog.Trigger>
    <Dialog.Portal>
-    <Dialog.Content aria-describedby={undefined} onOpenAutoFocus={e=>{if(document.activeElement===trigger.current)return;e.preventDefault()}} className="fixed inset-0 z-50 flex h-dvh flex-col overflow-y-auto overscroll-contain bg-bg text-ink anim-fade-in">
+    <Dialog.Content aria-describedby={undefined} onOpenAutoFocus={e=>{if(document.activeElement&&document.activeElement===opener())return;e.preventDefault()}} onCloseAutoFocus={e=>{const el=opener();if(el){e.preventDefault();el.focus()}}} className="fixed inset-0 z-50 flex h-dvh flex-col overflow-y-auto overscroll-contain bg-bg text-ink anim-fade-in">
      <div className="sticky top-0 z-10 flex h-14 shrink-0 items-center justify-between border-b border-line bg-bg px-4 pt-[env(safe-area-inset-top)]">
       <Dialog.Title className="text-[17px] font-medium">Models<span className="ml-1.5 font-mono text-xs font-normal text-ink-3 tnum">{sel.selected.size}</span></Dialog.Title>
       <Dialog.Close asChild><button type="button" className="min-h-11 px-2 text-[15px] font-semibold text-ink">Done</button></Dialog.Close>
@@ -96,4 +104,4 @@ export function ModelPicker({runs,colors,nums,sel,onReset,className}){
     </Dialog.Content>
    </Dialog.Portal>
   </Dialog.Root>
- </div>}
+ </>}

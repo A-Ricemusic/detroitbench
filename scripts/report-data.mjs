@@ -5,25 +5,19 @@
 import {render,renderStory,NAMES} from '../benchmark/experience-prompt.mjs';
 import {statesOf} from '../benchmark/story-engine.mjs';
 import {chapterLabels} from '../benchmark/chapters/index.mjs';
-import {CHANGE_LABELS,CLUE_WORDS,PLAZA_WORDS,HOME_WORDS,PHASE_WORDS,LIFE_KEYS,characterSummary,behaviorEvidence,endings,hostageSummary,statusChips,packedPrompts,decisionCount} from './run-report.mjs';
+import {makeFormatter} from './change-format.mjs';
+import {CHANGE_LABELS,characterSummary,behaviorEvidence,endings,hostageSummary,statusChips,packedPrompts,decisionCount} from './run-report.mjs';
 
 const WHO={Connor:'Connor',Kara:'Kara & Alice',Markus:'Markus',Player:'Player choice'};
 const tidy=t=>String(t).replace(/([?!])\.$/,'$1');
 const joinList=a=>a.length<=1?a.join(''):a.slice(0,-1).join(', ')+' and '+a[a.length-1];
 const chapterName=t=>String(t).replace(/ · menu Chloe$/,'');
-const fmt=v=>v!==null&&typeof v==='object'?JSON.stringify(v):String(v);
-function word(k,v){if(v===null||v===undefined)return '—';if(k==='trust'||k==='hostageTrustFinal')return v+'%';if(k==='hostageWaited')return '−'+v+'%';if(k==='hostagePhase')return PHASE_WORDS[v]??v;if(k==='hostageApproach')return v+' approach';
- const listed=(words,skip)=>{const l=Object.keys(v).filter(x=>!skip.includes(x)&&v[x]).map(x=>words[x]??x);return l};
- if(k==='downstairs'||k==='upstairs'){const l=listed(HOME_WORDS,['last','left','talk']);return l.length?l.join(', '):'nothing'}
- if(k==='plaza'){const l=listed(PLAZA_WORDS,['last','left']);return l.length?l.join(', '):'nothing'}
- if(k==='hostageClues'){const l=listed(CLUE_WORDS,[]);return l.length?l.join(', '):'none'}
- if(typeof v==='boolean')return LIFE_KEYS[k]?(v?'Alive':'Died'):(v?'Yes':'No');return fmt(v)}
 const meets=(req,s)=>!req||Object.entries(req).every(([k,v])=>{const x=k.split('.').reduce((o,p)=>o?.[p],s);return v===true?!!x:v===false?!x:x===v});
 
-// One state change as the report shows it: [label, 'before → after'] (clues: '+ new clues'). Shared with the question
-// bank's feedback panel (scripts/dataset-assemble.mjs), so both describe a change the same way.
+// State changes in prose (scripts/change-format.mjs), shared with the question bank's feedback panel
+// (scripts/dataset-assemble.mjs), so both describe a change the same way.
 export const changeLabels=()=>({...CHANGE_LABELS,...chapterLabels()});
-export const changeLineWith=(LABELS,c)=>[LIFE_KEYS[c.key]&&typeof c.after==='boolean'?LABELS[c.key].replace(/ alive$/,''):LABELS[c.key],c.key==='hostageClues'?'+ '+Object.keys(c.after).filter(x=>c.after[x]&&!(c.before||{})[x]).map(x=>CLUE_WORDS[x]??x).join(', '):word(c.key,c.before)+' → '+word(c.key,c.after)];
+export const changeFormatter=()=>makeFormatter(changeLabels());
 export function reportData(run,name,summary){
  const story=renderStory(run.story,'real'),nodes=new Map(story.nodes.map(n=>[n.id,n])),skips=new Map(run.skipped.map(s=>[s.id,s.reason]));
  const LABELS={...CHANGE_LABELS,...chapterLabels()},states=statesOf(run),out=endings(run);
@@ -34,7 +28,7 @@ export function reportData(run,name,summary){
   const reads=items.filter(m=>m.kind!=='tv').map(m=>m.title),watches=items.filter(m=>m.kind==='tv'&&!isRadio(m)).map(m=>m.title),listens=items.filter(m=>m.kind==='tv'&&isRadio(m)).map(m=>m.title),parts=[];
   if(reads.length)parts.push('reads '+joinList(reads));if(watches.length)parts.push('watches '+joinList(watches));if(listens.length)parts.push('listens to '+joinList(listens));return WHO[n.character].replace(' & Alice','')+' '+parts.join(', and ')+'.'};
  const outcomeOf=(r,n,changes)=>{const m=mediaSentence(r,n);if(m)return tidy(m);if(r.event&&r.event!==r.choiceText)return tidy(r.event);const o=changes.find(c=>['connorOutcome','karaOutcome','markusOutcome'].includes(c.key)&&c.after&&c.after!=='unresolved'&&c.after!=='liberated');return o?o.after:''};
- const changeLine=c=>changeLineWith(LABELS,c);
+ const formatChange=makeFormatter(LABELS);
  // One timeline entry per record and per scene never reached, in the standalone page's order: chronological, each
  // unreached scene at its position in the story. A repeatable scene's first visit keeps the scene ID as its key.
  const byNode=new Map;for(const r of run.records){if(!byNode.has(r.nodeId))byNode.set(r.nodeId,[]);byNode.get(r.nodeId).push(r)}
@@ -44,7 +38,7 @@ export function reportData(run,name,summary){
   const seen=r.prompt.situation+' '+r.prompt.options.map(o=>o.text).join(' ')+' '+r.reason,used=names.flatMap((x,j)=>new RegExp('(^|[^A-Za-z])'+x.neutral+'(?![A-Za-z])').test(seen)?[j]:[]);
   const options=n.type==='event'?[]:[...r.prompt.options].sort((a,b)=>all?(a.id==='all'?-1:b.id==='all'?1:a.id==='skip'?1:b.id==='skip'?-1:0):0).map(o=>({label:optionText(n,o),...(o.risk?{risk:o.risk}:{}),...(o.id===r.choice?{chosen:true}:all&&o.id!=='skip'?{included:true}:{})}));
   const e={step:r.step,node:r.nodeId,title:n.title,character:n.character,type:n.type,situation,options,reason:r.reason,
-   changes:changes.filter(c=>LABELS[c.key]).map(changeLine),outcome:outcomeOf(r,n,changes)},chosen=tidy(r.choiceText);
+   changes:changes.filter(c=>LABELS[c.key]||c.key==='knowledge').flatMap(formatChange),outcome:outcomeOf(r,n,changes)},chosen=tidy(r.choiceText);
   // `key` and `chosen` are written only when they differ from the scene ID and the chosen option's label.
   if(keyOf(r)!==r.nodeId)e.key=keyOf(r);if(n.type!=='event'&&chosen!==options.find(o=>o.chosen)?.label)e.chosen=chosen;if(visitOf(r))e.visit=visitOf(r);if(r.risk)e.risk={label:r.risk.label,roll:r.risk.roll,outcome:r.risk.outcome};if(used.length)e.namesSeen=used;return e}; // namesSeen: indexes into report.names
  const pos=new Map(story.nodes.map((n,i)=>[n.id,i])),missing=story.nodes.filter(n=>!byNode.has(n.id)),entries=[];let mi=0;

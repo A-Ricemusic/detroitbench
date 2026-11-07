@@ -26,6 +26,7 @@ After editing a chapter: `bun run story:assemble`, `bun run atlas:assemble`, `bu
 | `deathEffect` | `{statKey: delta}` | The chapter's entry in `CONNOR_DEATH_EFFECT`: the stat changes applied whenever Connor dies in this chapter (`{}` for none). Without it the default (instability −1, Hank −1, Amanda −1) applies. |
 | `mediaWhen` | `{name: s => boolean}` | Media item `when` names for the chapter's media scenes, consulted before the built-in table. |
 | `labels` | `{stateKey: 'Label'}` | Human labels for state changes in run reports, merged into the report's label map. Only labelled keys are listed in a report's state changes. |
+| `words` | `{stateKey: {subKeyOrValue: 'Words'}}` | Human words for the parts of an object-valued state key and for its coded values, used when a report or the question bank describes a change to that key (`scripts/change-format.mjs`). Without an entry, codes are split into words (`endOfSlavery` → "End of slavery"). |
 | `rules` | any object | Constants the chapter's recap or tests want (thresholds, tables). Not read by the engine; reach it as `CHAPTER_MODULES.get(NN).rules` or import it from the module. |
 
 Helpers passed to `consequence`:

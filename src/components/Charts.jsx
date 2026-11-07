@@ -1,7 +1,6 @@
 import React,{useLayoutEffect,useRef,useState} from 'react';
 import {cx,Dot} from './ui.jsx';
 import {useModelFocus} from '../lib/modelFocus.jsx';
-import {href} from '../lib/router.jsx';
 // Series colours come from CSS variables (--series-1…8), stepped separately for light and dark surfaces
 // and validated with the dataviz palette checker. Assigned by model name, never by rank.
 export const DIM='var(--chart-dim)';
@@ -19,19 +18,10 @@ export function useWidth(){const ref=useRef(null),[w,setW]=useState(320);useLayo
 export const levelOf=(scale,v)=>scale.bands.find(b=>v>=b.from&&v<=b.to)?.level??'';
 export const groupBy=(xs,f)=>xs.reduce((m,x)=>{const k=f(x);(m[k]??=[]).push(x);return m},{});
 
-/* ---------- Model legend: highlight one model across every chart ---------- */
-const byNumber=(runs,nums)=>[...runs].sort((a,b)=>(nums[a.displayName]??99)-(nums[b.displayName]??99)||a.displayName.localeCompare(b.displayName));
+/* ---------- Model number chip ---------- */
 // A model's number on a disc of its colour, for legends and table rows. The digit wears a text token on a
 // plot-coloured centre so it stays legible on every series hue.
 export function NumChip({n,color,className}){return <span aria-hidden="true" className={cx('inline-flex size-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-semibold leading-none text-ink',className)} style={{background:`radial-gradient(circle,var(--plot-bg) 52%,${color} 56%)`}}>{n}</span>}
-// The numbered model key printed under a plot, SkateBench style: number, colour, name, model ID. With `linked`, each
-// entry opens that run's full report.
-export function NumberLegend({runs,colors,nums,linked=false,label='Models',className}){
- const focus=useModelFocus(),set=id=>focus.setHover(id==='all'?null:id);
- return <ol aria-label={label} className={cx('grid gap-x-6 gap-y-0 grid-cols-[minmax(0,1fr)] sm:grid-cols-[repeat(auto-fill,minmax(15.5rem,1fr))]',className)}>
-  {byNumber(runs,nums).map(r=>{const dim=focus.dim(r.id),inner=<><span className="font-mono text-[11px] text-ink-3 w-4 text-right tnum shrink-0">{nums[r.displayName]}</span><Dot color={colors[r.displayName]} className="size-2.5"/><span className="font-mono text-[12px] text-ink-2 truncate" title={`${r.displayName} · ${r.model}`}>{r.displayName}</span></>;
-   return <li key={r.id} className={cx('min-w-0 transition-opacity',dim&&'opacity-40')}>{linked?<a href={href('runs/'+r.id+'/report')} aria-label={`${nums[r.displayName]}. ${r.displayName}: open the full report`} onPointerEnter={()=>set(r.id)} onPointerLeave={()=>set('all')} onFocus={()=>set(r.id)} onBlur={()=>set('all')} className="flex w-full min-w-0 items-center gap-2.5 rounded-md px-1.5 min-h-10 md:min-h-8 text-left hover:bg-surface-2">{inner}</a>:<div className="flex min-w-0 items-center gap-2.5 px-1.5 min-h-8">{inner}</div>}</li>})}
- </ol>}
 
 /* ---------- Final value of one relationship: one dot per model on the game's level bands ---------- */
 // A dot whose character is gone sits at the last value held: ✕ for a death, a hollow ring for a break.

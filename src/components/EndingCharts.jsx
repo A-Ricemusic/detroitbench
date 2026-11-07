@@ -1,6 +1,6 @@
 import React,{useMemo,useRef,useState} from 'react';
 import {cx,Dot,TONE_ICON} from './ui.jsx';
-import {OUTCOMES,NumberLegend,useWidth} from './Charts.jsx';
+import {OUTCOMES,useWidth} from './Charts.jsx';
 import {CHAR_VAR,tidy} from '../lib/data.js';
 import {useModelFocus} from '../lib/modelFocus.jsx';
 import {href} from '../lib/router.jsx';
@@ -49,12 +49,12 @@ function ToneIcon({tone,className}){const I=TONE_ICON[tone]??TONE_ICON.mid;retur
 function Marker({r,n,color,row,named,dim,onTip}){
  return <a href={href('runs/'+r.id+'/report')} aria-label={`${n}. ${r.displayName}: ${row.full}. Open the full report`}
   onPointerEnter={e=>onTip(r,row,e.currentTarget)} onPointerLeave={()=>onTip(null)} onFocus={e=>onTip(r,row,e.currentTarget)} onBlur={()=>onTip(null)}
-  className={cx('group relative flex min-h-10 shrink-0 items-center gap-2.5 rounded-full pl-1 pr-2 transition-opacity duration-200 focus-visible:outline-2 outline-accent',dim&&'opacity-15')}>
-  <span className="relative flex size-8 items-center justify-center">
+  className={cx('group relative flex min-h-10 min-w-0 max-w-full shrink-0 items-center gap-2.5 rounded-full pl-1 pr-2 transition-opacity duration-200 focus-visible:outline-2 outline-accent',dim&&'opacity-15')}>
+  <span className="relative flex size-8 shrink-0 items-center justify-center">
    <span aria-hidden="true" className="anim-pop block size-[18px] rounded-full ring-2 ring-[var(--plot-bg)] transition-transform duration-200 group-hover:scale-125 group-focus-visible:scale-125" style={{background:color,boxShadow:`0 0 0 6px color-mix(in oklab, ${color} 18%, transparent)`}}/>
    <span aria-hidden="true" className="absolute left-[calc(50%+6px)] -top-1 inline-flex h-4 min-w-4 items-center justify-center whitespace-nowrap rounded-full border border-[var(--plot-rule-2)] bg-[var(--plot-bg)] px-1 font-mono text-[9.5px] font-semibold leading-none text-ink-2 tnum">{n}</span>
   </span>
-  {named&&<span aria-hidden="true" className="whitespace-nowrap font-mono text-[12px] text-ink-2 group-hover:text-ink">{r.displayName}</span>}
+  {named&&<span aria-hidden="true" className="min-w-0 [overflow-wrap:break-word] font-mono leading-tight text-[12px] text-ink-2 group-hover:text-ink">{r.displayName}</span>}
  </a>}
 
 // Endings as rows, best at the top and worst at the bottom; each row holds the models that reached that ending, side by
@@ -96,25 +96,21 @@ function EndingKey({name,showName,cols:split=true}){const o=OUTCOMES[name],cols=
    <dt className="inline-flex items-center gap-1.5 font-semibold text-ink"><ToneIcon tone={tone} className="self-center"/>{SHORT[label]??label}</dt><dd className="text-ink-2">{ENDING_DEFS[o.field][k]}</dd></div>)}</dl>
  </div>}
 
-function headline(name,runs){const o=OUTCOMES[name],[k]=o.list[0];return {n:runs.filter(r=>r.status?.[o.field]===k).length,phrase:o.phrase}}
-
 export function EndingCard({title,names,runs,nums,colors}){
- const id='ending-'+names[0].toLowerCase(),single=names.length===1,h=headline(names[0],runs);
+ const id='ending-'+names[0].toLowerCase(),single=names.length===1;
  return <article aria-labelledby={id} className="plot-grid anim-fade-up rounded-2xl border border-line px-4 py-5 shadow-sm md:px-8 md:py-8">
   <header className="mb-6 flex items-start justify-between gap-4 md:mb-8">
    <div className="min-w-0">
     <h3 id={id} className="text-2xl font-bold uppercase tracking-tight md:text-[32px] md:leading-none">{title}</h3>
     <p className="cap mt-2 flex items-start gap-2"><Dot color={CHAR_VAR[OUTCOMES[names[0]].owner]} className="size-2 mt-[3px]"/><span>{single?'Ending':'Endings'} by model · best at the top</span></p>
    </div>
-   {single&&<p className="text-right shrink-0"><span className="block text-3xl font-semibold leading-none tracking-tight md:text-5xl">{h.n}<span className="text-ink-3 text-xl md:text-3xl">/{runs.length}</span></span><span className="cap mt-1.5 block">{h.phrase}</span></p>}
   </header>
   {runs.length?<div className="grid grid-cols-[minmax(0,1fr)] gap-10">
-   {names.map(n=>{const hh=headline(n,runs);return <figure key={n} className="m-0 min-w-0">
-    {!single&&<figcaption className="mb-4 flex items-baseline justify-between gap-3"><span className="cap !text-[12px] !text-ink">{n}</span><span className="text-sm text-ink-2"><strong className="font-semibold text-ink tnum">{hh.n}</strong> of {runs.length} {hh.phrase}</span></figcaption>}
+   {names.map(n=><figure key={n} className="m-0 min-w-0">
+    {!single&&<figcaption className="mb-4"><span className="cap !text-[12px] !text-ink">{n}</span></figcaption>}
     <EndingRows name={n} runs={runs} nums={nums} colors={colors} tall={single}/>
-   </figure>})}
+   </figure>)}
   </div>:<p className="rounded-lg border border-dashed border-line-2 px-4 py-10 text-center text-sm text-ink-2">No models selected. Turn one on in the model list.</p>}
-  {runs.length>0&&<div className="mt-8 border-t border-[var(--plot-rule-2)] pt-5"><NumberLegend runs={runs} colors={colors} nums={nums} linked label={`Models in the ${title} chart`}/></div>}
   <div className={cx('mt-5 grid gap-5 border-t border-[var(--plot-rule-2)] pt-5',!single&&'xl:grid-cols-2 xl:gap-10')}>{names.map(n=><EndingKey key={n} name={n} showName={!single} cols={single}/>)}</div>
  </article>}
 
