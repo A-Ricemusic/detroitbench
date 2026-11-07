@@ -201,3 +201,10 @@ test('Fugitives: any policy at all leaves the street scene within the bound',{ti
  const rng=random(2020);let longest=0;
  for(let i=0;i<600;i++){const r=drive(opts=>opts[Math.floor(rng()*opts.length)].id,{gun:rng()<0.5,rng});assert.ok(r.hub<=rules.maxHubVisits);assert.ok(Object.values(ENDINGS).includes(r.s.ch10Ending));longest=Math.max(longest,r.hub)}
  assert.ok(longest>rules.idleBound,'random play does use the longer dialogue runs')});
+
+test('Fugitives: the car is broken into only by a labelled choice, or as ALICE TOO COLD’s scripted moment stated before its Continue',()=>{
+ // Every street option whose outcome breaks into the car says so in its label.
+ for(const o of HUB.options)if(/breaks the window|breaks into/i.test(o.outcome??''))assert.match(o.text,/^BREAK INTO CAR: smash the window/,o.text);
+ // The forced night: the subject reads the break-in in the situation, not first in the outcome of its Continue.
+ const cold=node('KF03');assert.equal(cold.type,'event');assert.match(cold.situation,/you break into it to get her out of the rain\.$/);
+ assert.match(cold.outcomes['0'],/breaks into the old car/)});

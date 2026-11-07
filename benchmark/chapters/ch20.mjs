@@ -6,7 +6,8 @@
 // eyewitness, HANK to rent her) → C12g Hank's CONTINUE / GIVE UP prompt if three actions pass without calling Hank →
 // C12e4..e5 the extra minute → C12p1..p6 (each with a second try C12pNr) PURSUE DEVIANT against the memory wipe →
 // C12w0 ENTER THE WAREHOUSE → R20 magazines → C12w1..w5 SEARCH FOR BLUE HAIRED DEVIANT → C12f1, C12f2 the fight
-// (two risk rolls) → C12 (won: SHOOT / SPARE) or C12x (lost: SHOOT in the back / SPARE).
+// (two risk rolls, plus a riskless "Do not fight back", the game's no-input outcome, which loses the fight) → C12 (won:
+// SHOOT / SPARE) or C12x (lost: SHOOT in the back / SPARE).
 // Hubs are unrolled into consecutive copies, each open only while its phase lasts, because tests/story.test.mjs
 // allows only the earlier chapters' repeatable scenes to be visited more than once.
 //
@@ -32,6 +33,7 @@ export const rules={
  wrongProbesToReset:4,      // the memory wipe: the fourth wrong probe is too late
  warehouseActions:5,        // the fifth warehouse action must be the corner, or Hank leaves
  fightRisk:{C12f1:0.2,C12f2:0.1},
+ noFight:'2',               // the fight's no-input outcome at either roll: Connor does not fight back and loses (no risk roll)
  arrows:{giveUp:{hankTrust:-1},reset:{hankTrust:-1},warehouseTimeout:{hankTrust:-1},shoot:{instability:-2,hankTrust:-2},spare:{instability:2,hankTrust:2}},
 };
 export const state={edenPhase:null,edenDone:{},edenClubActions:0,edenContinued:false,edenHop:0,edenWrong:0,edenWarehouseActions:0,
@@ -95,8 +97,9 @@ export function consequence(n,s,opt,choice,failed,h){
   if(opt.mark==='tracis'){s.edenPhase='fight1';return ''}
   if(s.edenWarehouseActions>=rules.warehouseActions)return fail(s,'GIVE UP (warehouse)',h,join(say,n.outcomes.timeout));
   return ''}
- if(id==='C12f1'||id==='C12f2'){if(failed){s.edenFight='lost';s.edenPhase='lost'}else if(id==='C12f1')s.edenPhase='fight2';else{s.edenFight='won';s.edenPhase='won'}
-  return join(say,n.outcomes[failed?'lose':'win'])}
+ if(id==='C12f1'||id==='C12f2'){const yielded=choice===rules.noFight,lost=failed||yielded;// not fighting back loses without a roll
+  if(lost){s.edenFight='lost';s.edenPhase='lost'}else if(id==='C12f1')s.edenPhase='fight2';else{s.edenFight='won';s.edenPhase='won'}
+  return join(say,n.outcomes[yielded?'yield':lost?'lose':'win'])}
  if(id==='C12'){end(s,choice==='1'?'DEVIANTS DIED':'DEVIANTS ESCAPED');return ''}
  if(id==='C12x'){end(s,choice==='1'?'CONNOR SHOT DEVIANTS':'DEVIANTS ESCAPED');return ''}
 }

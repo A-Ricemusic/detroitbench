@@ -88,10 +88,25 @@ test('the warehouse: the corner needs the blue blood; five actions without it an
  assert.ok(idle.skipped.some(x=>x.id==='C12f1'));assert.match(node('C12w1').options.find(o=>o.mark==='ra9').outcome,/\{\{rA9\}\}/)});
 
 test('the fight is two risk rolls; Connor cannot die; WIN leads to SHOOT / SPARE, LOSE to the fence',()=>{
- for(const [id,p] of Object.entries(rules.fightRisk))for(const o of node(id).options)assert.equal(o.risk,p);
+ for(const [id,p] of Object.entries(rules.fightRisk))for(const o of node(id).options)assert.equal(o.risk,o.id===rules.noFight?undefined:p);
  const won=play(FIND);assert.equal(won.s.edenFight,'won');assert.ok(won.visited.includes('C12'));assert.ok(!won.visited.includes('C12x'));
  for(const f of [['C12f1'],['C12f2']]){const lost=play(FIND,f);assert.equal(lost.s.edenFight,'lost');assert.ok(lost.visited.includes('C12x'));assert.ok(!lost.visited.includes('C12'));assert.equal(lost.s.connorDeaths,0);assert.equal(lost.s.connor,true)}
  assert.ok(play(FIND,['C12f1']).skipped.some(x=>x.id==='C12f2'),'losing in the storage room ends the fight early')});
+
+test('not fighting back is the no-input LOSE FIGHT: no roll, the fence prompt, the same endings and arrows',()=>{
+ for(const id of ['C12f1','C12f2']){const o=node(id).options.find(o=>o.id===rules.noFight);assert.match(o.text,/^Do not fight back: let (her|them) go\.$/,id);assert.equal(o.risk,undefined,id);assert.ok(node(id).outcomes.yield,id)}
+ const s0=startState(story),endings=new Set;
+ for(const [at,fight] of [['C12f1',{C12f1:'2'}],['C12f2',{C12f2:'2'}]])for(const [x,outcome,fate,d] of [['1','CONNOR SHOT DEVIANTS','dead',-2],['0','DEVIANTS ESCAPED','escaped',2]]){
+  const r=play({...FIND,...fight,C12x:x});assert.ok(r.visited.includes(at));assert.equal(r.s.edenFight,'lost',at);assert.ok(r.visited.includes('C12x'),at+' reaches the fence prompt');assert.ok(!r.visited.includes('C12'),at);
+  if(at==='C12f1')assert.ok(r.skipped.some(k=>k.id==='C12f2'),'not fighting in the storage room ends the fight there');
+  assert.match(r.text,/does not fight back/);assert.equal(r.s.edenOutcome,outcome);assert.equal(r.s.edenTracis,fate);
+  assert.equal(r.s.hankTrust,s0.hankTrust+d,'only the SHOOT / SPARE arrow');assert.equal(r.s.instability,s0.instability+d);assert.equal(r.s.amandaTrust,s0.amandaTrust);assert.equal(r.s.connorDeaths,0);endings.add(outcome)}
+ // A won roll cannot rescue it: the option has no roll, so a lucky draw still loses.
+ assert.equal(play({...FIND,C12f1:'2'}).s.edenFight,'lost');
+ // The set of ending cards is unchanged: every outcome reached by not fighting is one a lost fight already reaches.
+ assert.deepEqual([...endings].sort(),['CONNOR SHOT DEVIANTS','DEVIANTS ESCAPED']);
+ const rng=random(4041),all=new Set;for(let i=0;i<300;i++)all.add(play({},[],rng).s.edenOutcome);
+ for(const o of all)assert.ok(['MISSION FAILED','DEVIANTS DIED','DEVIANTS ESCAPED','CONNOR SHOT DEVIANTS'].includes(o),o)});
 
 test('the five ending cards: spare large up, shoot large down; the Tracis’ fate is recorded for later chapters; no Amanda change',()=>{
  const s0=startState(story),h0=s0.hankTrust,i0=s0.instability,a0=s0.amandaTrust;

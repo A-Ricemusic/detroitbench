@@ -52,7 +52,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li><code>C12l</code>: the checkpoint, narrated. <code>C12e1</code>…<code>C12e3</code>: the club floor hub; <code>C12g</code>: Hank’s CONTINUE / GIVE UP, if he has not been called within three actions; <code>C12e4</code>, <code>C12e5</code>: the extra minute.</li>
 <li><code>C12p1</code>…<code>C12p6</code>, each with a second try <code>C12pNr</code>: six hops of “which android next”; the fourth wrong probe is the reset.</li>
 <li><code>C12w0</code>: the checkpoint, narrated; <code>R20</code>: the magazine; <code>C12w1</code>…<code>C12w5</code>: the warehouse hub, five actions.</li>
-<li><code>C12f1</code> (storage room) and <code>C12f2</code> (alley): two risk rolls. Losing either is LOSE FIGHT.</li>
+<li><code>C12f1</code> (storage room) and <code>C12f2</code> (alley): two risk rolls. Losing either is LOSE FIGHT. Each also offers “Do not fight back”, the game’s no-input outcome, which is LOSE FIGHT without a roll (then <code>C12x</code>, SHOOT or SPARE, as after any lost fight).</li>
 <li><code>C12</code> (won) and <code>C12x</code> (lost): SHOOT or SPARE.</li>
 </ol></div>
 </div>
@@ -73,7 +73,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>ANALYZE BLUE BLOOD, INVESTIGATE ANDROID STOCK, FIND RA9 SYMBOL</td><td>arrows</td><td><code>C12w*</code> options 1, 0, 2</td></tr>
 <tr><td>GIVE UP → MISSION FAILED (second card)</td><td>triangle; ending</td><td>the fifth <code>C12w*</code> action if it is not the corner</td></tr>
 <tr><td>INVESTIGATE BLUE HAIRED DEVIANT → DEVIANTS ATTACK</td><td>arrow, triangle</td><td><code>C12w*</code> option 4 (needs the blue blood) → <code>C12f1</code></td></tr>
-<tr><td>WIN FIGHT / LOSE FIGHT</td><td>check / cross</td><td>the rolls at <code>C12f1</code>, <code>C12f2</code>; <code>edenFight</code></td></tr>
+<tr><td>WIN FIGHT / LOSE FIGHT</td><td>check / cross</td><td>the rolls at <code>C12f1</code>, <code>C12f2</code>, or “Do not fight back” (option 2, LOSE FIGHT); <code>edenFight</code></td></tr>
 <tr><td>SHOOT DEVIANT → DEVIANT KILLS HERSELF WITH CONNOR’S GUN → DEVIANTS DIED</td><td>choice, triangle, lock</td><td><code>C12</code> SHOOT</td></tr>
 <tr><td>SPARE DEVIANT / LET DEVIANTS GO → DEVIANTS ESCAPED</td><td>choice, lock</td><td><code>C12</code> SPARE / <code>C12x</code> SPARE</td></tr>
 <tr><td>SHOOT DEVIANTS IN THE BACK → CONNOR SHOT DEVIANTS</td><td>choice, lock</td><td><code>C12x</code> SHOOT</td></tr>
@@ -108,7 +108,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>The approach node: AGGRESSIVE if DIRECT, MURDERER or PRESSURE was used; EXPLAIN counts as calm (unconfirmed).</li>
 <li>The memory chain’s route is one reader’s working sequence; each hop’s direction is the game’s HUD conclusion; the two wrong androids offered at each hop are invented.</li>
 <li>The warehouse corner needs the blue blood first (PowerPyx, GamerGuides); one reader says it does not. The second blood serial (#354 411 057) is placed in the warehouse by inference.</li>
-<li>The fight’s two branching prompts (shelves; chair or throw a Traci) are the options at the two rolls; where each falls in the fight is inferred.</li>
+<li>The fight’s two branching prompts (shelves; chair or throw a Traci) are the options at the two rolls; where each falls in the fight is inferred. A third option at each, “Do not fight back”, stands for pressing nothing: in the game the fight is then lost and the Tracis get past Connor and Hank. It has no button label and no stat change of its own.</li>
 <li>The magazines come before the warehouse search, so reading costs no time.</li>
 <li>SHOOT is listed before SPARE on both prompts, in the template’s order; option IDs retain their earlier meanings.</li>
 <li>The timed prompts’ no-input outcomes are not offered.</li>

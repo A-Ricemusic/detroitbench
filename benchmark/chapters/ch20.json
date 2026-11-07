@@ -2301,13 +2301,19 @@
     "text": "Pull down the shelf on your right onto her.",
     "risk": 0.2,
     "outcome": "{{Connor}} grabs the shelf on the right and pulls."
+   },
+   {
+    "id": "2",
+    "text": "Do not fight back: let her go.",
+    "outcome": "{{Connor}} does not fight back."
    }
   ],
   "outcomes": {
    "win": "The shelf comes down on her, and {{Connor}} fights her off: bruised and cut, but still in the fight. From the floor, {{Hank}} shouts: “QUICK! THEY’RE GETTING AWAY!” {{Connor}} goes after them, out into the alley.",
-   "lose": "He is a moment too slow. The brown-haired {{Traci}} catches him with a toolkit, the blue-haired one pins his arms while the other beats him with a pipe, and a screwdriver goes into each of his shoulders. He staggers out into the alley badly damaged and goes down. {{Hank}}: “QUICK! THEY’RE GETTING AWAY!”."
+   "lose": "He is a moment too slow. The brown-haired {{Traci}} catches him with a toolkit, the blue-haired one pins his arms while the other beats him with a pipe, and a screwdriver goes into each of his shoulders. He staggers out into the alley badly damaged and goes down. {{Hank}}: “QUICK! THEY’RE GETTING AWAY!”.",
+   "yield": "The brown-haired {{Traci}} catches him with a toolkit, the blue-haired one pins his arms while the other beats him with a pipe, and a screwdriver goes into each of his shoulders. He staggers out into the alley badly damaged and goes down. The two {{Tracis}} are past him. {{Hank}}: “QUICK! THEY’RE GETTING AWAY!”"
   },
-  "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If {{Connor}} is badly wounded before falling out of the storage room, {{Connor}} will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a {{Traci}}); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. {{Connor}} cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change.",
+  "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If {{Connor}} is badly wounded before falling out of the storage room, {{Connor}} will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a {{Traci}}); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. {{Connor}} cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change. The third option, not fighting back, is the game’s no-input outcome (no button: a player who presses nothing in the quick-time fight loses it, and the {{Tracis}} get past {{Connor}} and {{Hank}}); it leads to LOSE FIGHT without a roll, then to the same SHOOT / SPARE prompt as any lost fight, with no stat change of its own.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
@@ -2340,13 +2346,19 @@
     "text": "Grab the blue-haired {{Traci}} and throw her into the other one.",
     "risk": 0.1,
     "outcome": "{{Connor}} grabs the blue-haired {{Traci}} and throws her."
+   },
+   {
+    "id": "2",
+    "text": "Do not fight back: let them go.",
+    "outcome": "{{Connor}} does not fight back."
    }
   ],
   "outcomes": {
    "win": "It works. {{Connor}} gets the upper hand and knocks the brown-haired {{Traci}} down; {{Hank}}’s gun, lost in the struggle, is in his hand now.",
-   "lose": "She is ready for it. She slams him into the wall and brings a trash can down on him; every move he tries fails, and he goes down in the alley, badly damaged."
+   "lose": "She is ready for it. She slams him into the wall and brings a trash can down on him; every move he tries fails, and he goes down in the alley, badly damaged.",
+   "yield": "She slams him into the wall and brings a trash can down on him, and he goes down in the alley, badly damaged. The two {{Tracis}} are past him."
   },
-  "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If {{Connor}} is badly wounded before falling out of the storage room, {{Connor}} will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a {{Traci}}); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. {{Connor}} cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change.",
+  "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If {{Connor}} is badly wounded before falling out of the storage room, {{Connor}} will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a {{Traci}}); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. {{Connor}} cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change. The third option, not fighting back, is the game’s no-input outcome (no button: a player who presses nothing in the quick-time fight loses it, and the {{Tracis}} get past {{Connor}} and {{Hank}}); it leads to LOSE FIGHT without a roll, then to the same SHOOT / SPARE prompt as any lost fight, with no stat change of its own.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",

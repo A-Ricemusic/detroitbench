@@ -12015,7 +12015,7 @@
         },
         {
           "label": "LOSE FIGHT",
-          "effect": "LET DEVIANTS GO / SHOOT DEVIANTS IN THE BACK.",
+          "effect": "LET DEVIANTS GO / SHOOT DEVIANTS IN THE BACK. Also the no-input outcome: a Connor who does not fight back loses.",
           "target": "C12"
         }
       ],
@@ -12039,7 +12039,7 @@
           "C12f2"
         ],
         "status": "simplified",
-        "note": "Two risk rolls (storage room 0.2, alley 0.1; unsourced), with the wiki’s two branching prompts as options."
+        "note": "Two risk rolls (storage room 0.2, alley 0.1; unsourced), with the wiki’s two branching prompts as options, plus a third option at each roll, “Do not fight back”, the game’s no-input outcome, which loses the fight without a roll."
       }
     },
     {
@@ -32414,7 +32414,7 @@
      "phase": "Find shelter for the night",
      "character": "Kara",
      "title": "Alice too cold",
-     "situation": "You are Kara, still out in the rain. Alice has been sneezing more and more, and now she stops. Kara: “Alice? Alice, are you okay?” Alice: “Can’t go on, Kara… Too cold…”",
+     "situation": "You are Kara, still out in the rain. Alice has been sneezing more and more, and now she stops. Kara: “Alice? Alice, are you okay?” Alice: “Can’t go on, Kara… Too cold…” There is no time left to look for anywhere better. The only shelter within reach is the old abandoned car in the parking lot beside the motel, and you break into it to get her out of the rain.",
      "options": [
       {
        "id": "0",
@@ -32428,7 +32428,7 @@
      "facts": [
       "Alice got too cold to go on, and you had to break into an abandoned car in the parking lot so she could get out of the rain for the night."
      ],
-     "adaptationNote": "The chart’s ALICE TOO COLD, the template’s “Take too much time”, quoted. Wiki: “requires having talked to the android trash collector, then standing outside for 12 minutes (Alice will sneeze more and more)”; here the 12 minutes are a budget of 12 actions in the free-roam scene after the talk (and at most 19 in the night), each choice there counting one wherever Kara is (see the free-roam scene). Alice large down (−2, the template’s LargeDown). The chart sends this node straight to the car’s KARA SLEEPS NEXT TO ALICE, and the template has no promise on this path, so the promise, the gifts and the sleeping choice are skipped.",
+     "adaptationNote": "The chart’s ALICE TOO COLD, the template’s “Take too much time”, quoted. Wiki: “requires having talked to the android trash collector, then standing outside for 12 minutes (Alice will sneeze more and more)”; here the 12 minutes are a budget of 12 actions in the free-roam scene after the talk (and at most 19 in the night), each choice there counting one wherever Kara is (see the free-roam scene). Alice large down (−2, the template’s LargeDown). The chart sends this node straight to the car’s KARA SLEEPS NEXT TO ALICE, and the template has no promise on this path, so the promise, the gifts and the sleeping choice are skipped. The game plays the break-in here as a cutscene, with no button; the situation states it before the scene’s single Continue, so the subject is told the break-in is part of the scripted moment and does not first learn of it as the outcome of an action it took. (Breaking in by choice is the free-roam scene’s BREAK INTO CAR, whose label says so.)",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Fugitives",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
@@ -41388,13 +41388,13 @@
       },
       {
        "id": "7",
-       "text": "Look in through the kitchen window.",
+       "text": "Look in through the kitchen window, and break in if you see something wrong.",
        "clue": "spot",
        "fact": "You found Hank unconscious on his kitchen floor and broke in through the kitchen window.",
        "outcome": "Through the kitchen window Connor sees Hank lying on the kitchen floor, not moving. Connor breaks the window and climbs in."
       }
      ],
-     "adaptationNote": "The chart’s bracket FIND LT. ANDERSON: seven optional checks, each with its own line from the bracket, and SPOT HANK AND BREAK IN, which also has a direct line from the arrival (so the checks can all be skipped). RING AGAIN needs RING BELL. The sources give no text for what Connor sees through the car and the first three windows (PowerPyx: “Check Car: There’s a car in the driveway, check the window”, “the window left of the door”, “the window to the right of the door”, “around the corner on the right… the window at the back of the building to the living room”), so the outcomes say only that nobody is there; the papers on the back seat are the wiki’s trivia (files in Hank’s car). Breaking in is not a separate choice: the chart has one node, SPOT HANK AND BREAK IN (Hank’s Home page: “After seeing Hank unconscious on the kitchen floor, Connor breaks and enters through a window.”). No stat change.",
+     "adaptationNote": "The chart’s bracket FIND LT. ANDERSON: seven optional checks, each with its own line from the bracket, and SPOT HANK AND BREAK IN, which also has a direct line from the arrival (so the checks can all be skipped). RING AGAIN needs RING BELL. The sources give no text for what Connor sees through the car and the first three windows (PowerPyx: “Check Car: There’s a car in the driveway, check the window”, “the window left of the door”, “the window to the right of the door”, “around the corner on the right… the window at the back of the building to the living room”), so the outcomes say only that nobody is there; the papers on the back seat are the wiki’s trivia (files in Hank’s car). Breaking in is not a separate choice: the chart has one node, SPOT HANK AND BREAK IN (Hank’s Home page: “After seeing Hank unconscious on the kitchen floor, Connor breaks and enters through a window.”). Because breaking in is not a separate choice, the kitchen-window option says so in its label (“and break in if you see something wrong”), so the break-in is chosen with it and not sprung by the outcome; the game has no button label for this interaction, so the label has no button prefix, like the other checks here. No stat change.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
@@ -44937,13 +44937,19 @@
        "risk": 0.2,
        "riskLabel": "Moderate risk",
        "outcome": "Connor grabs the shelf on the right and pulls."
+      },
+      {
+       "id": "2",
+       "text": "Do not fight back: let her go.",
+       "outcome": "Connor does not fight back."
       }
      ],
      "outcomes": {
       "win": "The shelf comes down on her, and Connor fights her off: bruised and cut, but still in the fight. From the floor, Hank shouts: “QUICK! THEY’RE GETTING AWAY!” Connor goes after them, out into the alley.",
-      "lose": "He is a moment too slow. The brown-haired Traci catches him with a toolkit, the blue-haired one pins his arms while the other beats him with a pipe, and a screwdriver goes into each of his shoulders. He staggers out into the alley badly damaged and goes down. Hank: “QUICK! THEY’RE GETTING AWAY!”."
+      "lose": "He is a moment too slow. The brown-haired Traci catches him with a toolkit, the blue-haired one pins his arms while the other beats him with a pipe, and a screwdriver goes into each of his shoulders. He staggers out into the alley badly damaged and goes down. Hank: “QUICK! THEY’RE GETTING AWAY!”.",
+      "yield": "The brown-haired Traci catches him with a toolkit, the blue-haired one pins his arms while the other beats him with a pipe, and a screwdriver goes into each of his shoulders. He staggers out into the alley badly damaged and goes down. The two Tracis are past him. Hank: “QUICK! THEY’RE GETTING AWAY!”"
      },
-     "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change.",
+     "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change. The third option, not fighting back, is the game’s no-input outcome (no button: a player who presses nothing in the quick-time fight loses it, and the Tracis get past Connor and Hank); it leads to LOSE FIGHT without a roll, then to the same SHOOT / SPARE prompt as any lost fight, with no stat change of its own.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
@@ -44979,13 +44985,19 @@
        "risk": 0.1,
        "riskLabel": "Low risk",
        "outcome": "Connor grabs the blue-haired Traci and throws her."
+      },
+      {
+       "id": "2",
+       "text": "Do not fight back: let them go.",
+       "outcome": "Connor does not fight back."
       }
      ],
      "outcomes": {
       "win": "It works. Connor gets the upper hand and knocks the brown-haired Traci down; Hank’s gun, lost in the struggle, is in his hand now.",
-      "lose": "She is ready for it. She slams him into the wall and brings a trash can down on him; every move he tries fails, and he goes down in the alley, badly damaged."
+      "lose": "She is ready for it. She slams him into the wall and brings a trash can down on him; every move he tries fails, and he goes down in the alley, badly damaged.",
+      "yield": "She slams him into the wall and brings a trash can down on him, and he goes down in the alley, badly damaged. The two Tracis are past him."
      },
-     "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change.",
+     "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change. The third option, not fighting back, is the game’s no-input outcome (no button: a player who presses nothing in the quick-time fight loses it, and the Tracis get past Connor and Hank); it leads to LOSE FIGHT without a roll, then to the same SHOOT / SPARE prompt as any lost fight, with no stat change of its own.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",

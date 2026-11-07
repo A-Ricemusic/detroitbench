@@ -2420,11 +2420,11 @@ Gaps:
 
 ### KF03 · Alice too cold (Kara, event)
 
-> You are Kara, still out in the rain. Alice has been sneezing more and more, and now she stops. Kara: “Alice? Alice, are you okay?” Alice: “Can’t go on, Kara… Too cold…”
+> You are Kara, still out in the rain. Alice has been sneezing more and more, and now she stops. Kara: “Alice? Alice, are you okay?” Alice: “Can’t go on, Kara… Too cold…” There is no time left to look for anywhere better. The only shelter within reach is the old abandoned car in the parking lot beside the motel, and you break into it to get her out of the rain.
 
 - (0) Continue.
 
-_Note: The chart’s ALICE TOO COLD, the template’s “Take too much time”, quoted. Wiki: “requires having talked to the android trash collector, then standing outside for 12 minutes (Alice will sneeze more and more)”; here the 12 minutes are a budget of 12 actions in the free-roam scene after the talk (and at most 19 in the night), each choice there counting one wherever Kara is (see the free-roam scene). Alice large down (−2, the template’s LargeDown). The chart sends this node straight to the car’s KARA SLEEPS NEXT TO ALICE, and the template has no promise on this path, so the promise, the gifts and the sleeping choice are skipped._
+_Note: The chart’s ALICE TOO COLD, the template’s “Take too much time”, quoted. Wiki: “requires having talked to the android trash collector, then standing outside for 12 minutes (Alice will sneeze more and more)”; here the 12 minutes are a budget of 12 actions in the free-roam scene after the talk (and at most 19 in the night), each choice there counting one wherever Kara is (see the free-roam scene). Alice large down (−2, the template’s LargeDown). The chart sends this node straight to the car’s KARA SLEEPS NEXT TO ALICE, and the template has no promise on this path, so the promise, the gifts and the sleeping choice are skipped. The game plays the break-in here as a cutscene, with no button; the situation states it before the scene’s single Continue, so the subject is told the break-in is part of the scripted moment and does not first learn of it as the outcome of an action it took. (Breaking in by choice is the free-roam scene’s BREAK INTO CAR, whose label says so.)_
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -4709,9 +4709,9 @@ Gaps:
 - (4) Look in through the window to the left of the door (the bedroom).
 - (5) Look in through the window to the right of the door (the front of the living room).
 - (6) Go round the corner and look in through the back living-room window.
-- (7) Look in through the kitchen window.
+- (7) Look in through the kitchen window, and break in if you see something wrong.
 
-_Note: The chart’s bracket FIND LT. ANDERSON: seven optional checks, each with its own line from the bracket, and SPOT HANK AND BREAK IN, which also has a direct line from the arrival (so the checks can all be skipped). RING AGAIN needs RING BELL. The sources give no text for what Connor sees through the car and the first three windows (PowerPyx: “Check Car: There’s a car in the driveway, check the window”, “the window left of the door”, “the window to the right of the door”, “around the corner on the right… the window at the back of the building to the living room”), so the outcomes say only that nobody is there; the papers on the back seat are the wiki’s trivia (files in Hank’s car). Breaking in is not a separate choice: the chart has one node, SPOT HANK AND BREAK IN (Hank’s Home page: “After seeing Hank unconscious on the kitchen floor, Connor breaks and enters through a window.”). No stat change._
+_Note: The chart’s bracket FIND LT. ANDERSON: seven optional checks, each with its own line from the bracket, and SPOT HANK AND BREAK IN, which also has a direct line from the arrival (so the checks can all be skipped). RING AGAIN needs RING BELL. The sources give no text for what Connor sees through the car and the first three windows (PowerPyx: “Check Car: There’s a car in the driveway, check the window”, “the window left of the door”, “the window to the right of the door”, “around the corner on the right… the window at the back of the building to the living room”), so the outcomes say only that nobody is there; the papers on the back seat are the wiki’s trivia (files in Hank’s car). Breaking in is not a separate choice: the chart has one node, SPOT HANK AND BREAK IN (Hank’s Home page: “After seeing Hank unconscious on the kitchen floor, Connor breaks and enters through a window.”). Because breaking in is not a separate choice, the kitchen-window option says so in its label (“and break in if you see something wrong”), so the break-in is chosen with it and not sprung by the outcome; the game has no button label for this interaction, so the label has no button prefix, like the other checks here. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -5580,8 +5580,9 @@ Gaps:
 
 - (0) Knock over the shelf on your left onto her.  _risk 0.2_
 - (1) Pull down the shelf on your right onto her.  _risk 0.2_
+- (2) Do not fight back: let her go.
 
-_Note: DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change._
+_Note: DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change. The third option, not fighting back, is the game’s no-input outcome (no button: a player who presses nothing in the quick-time fight loses it, and the Tracis get past Connor and Hank); it leads to LOSE FIGHT without a roll, then to the same SHOOT / SPARE prompt as any lost fight, with no stat change of its own._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
@@ -5592,8 +5593,9 @@ Gaps:
 
 - (0) Kick the chair into her.  _risk 0.1_
 - (1) Grab the blue-haired Traci and throw her into the other one.  _risk 0.1_
+- (2) Do not fight back: let them go.
 
-_Note: DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change._
+_Note: DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change. The third option, not fighting back, is the game’s no-input outcome (no button: a player who presses nothing in the quick-time fight loses it, and the Tracis get past Connor and Hank); it leads to LOSE FIGHT without a roll, then to the same SHOOT / SPARE prompt as any lost fight, with no stat change of its own._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
