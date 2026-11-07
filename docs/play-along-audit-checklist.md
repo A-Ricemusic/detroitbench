@@ -8553,179 +8553,829 @@ Gaps:
 
 ## Chapter 30: Crossroads
 
-### M21 · The detonator (Markus)
+### K17-drive · The drive (Kara)
 
-> You are Markus. Back at Jericho after the march, North shows you something she took from a stolen shipment: a dirty bomb's detonator. The device is hidden in the city and would spread radioactive contamination over a wide area, making the city uninhabitable for years. She says it is a last resort if the humans decide to wipe you all out, and that she wants you to hold it. Taking it commits you to…
+> You are Kara, in the back of Rose’s car with Alice against you. It is November 9th, 2038, 9:34 PM. Rose is driving you across Detroit in the dark toward a place where androids are said to be safe. You can look out of the window, change the station on the car radio, or simply wait while she drives.
 
-- (0) Take the detonator and keep it.
-- (1) Refuse it.
+- (0) LOOK OUTSIDE: look out of the window at the city.
+- (1) CHANGE RADIO STATION: turn the dial on the car radio.
+- (2) WAIT: let Rose drive on to the stop.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M21b · North on the deck (Markus)
-
-> You are Markus. On the deck of the ship, North comes to stand with you under the lights of the city. After what you shared on the rooftop, something has changed between you. She is close, and waiting.
-
-- (0) Kiss her.
-- (1) Keep it to friendship.
+_Note: The chart’s DRIVING TO JERICHO WITH ALICE checkpoint (or … WITH ALICE & LUTHER, if Luther survived Midnight Train), the optional LOOK OUTSIDE and CHANGE RADIO STATION and the PARKING LOT event, as a small repeatable scene: each optional action can be taken once, and WAIT ends the drive at the parking lot. The two optional actions are chart actions, not dialogue buttons; their labels are the chart’s. Lines and the radio text are the template’s (“Looking out the window”, “Listening to the radio”; the radio reads the same as the charged television broadcast). Date and time are the game’s card (NOV 9TH, 2038, PM 09:34). No arrow anywhere in the drive._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### R30k · The news inside Jericho (Kara, media)
+### K17-goodbye · Time to say goodbye (Kara, event)
 
-> You are Kara. A television runs in a corner of the freighter and the other androids are gathered around it. You could watch before you find somewhere for Alice to rest.
+> You are Kara. Rose has stopped the car in a parking lot by the river and turns around in her seat. Rose: “A little further on that way, there’s a large freighter called Jericho. When you get there, find Markus. He will help you. The last bus for the border leaves at midnight. You absolutely have to be on it. You’ll be safer on the other side. It’s not much, but it’s a start. My brother lives in…
 
-- (0) Watch the news at Jericho.  _only when marchCharged_
-- (1) Watch the news at Jericho.  _only when marchNotCharged_
+- (0) Continue.
+
+_Note: The chart’s TIME TO SAY GOODBYE (an action) after PARKING LOT. Every line is the template’s “Arriving at Jericho” section, with Rose’s words to Luther and his reply only when he is with Kara. A narrated event: the game offers no choice here and the template has no arrow. Walking to the ship is the benchmark’s link to the next chart node, ARRIVE AT JERICHO._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-ferndale · Ferndale (Connor, event)
+
+> You are Connor, at Ferndale, on the river at night. You know where the deviants are hiding. On the walls of the abandoned buildings by the water are painted hands and symbols, the same mark you carry on your hand. You match the art on your hand to the walls, one after another, and the trail leads you down to the water: a large, rusting freighter. Jericho.
+
+- (0) Continue.
+
+_Note: The chart’s AT FERNDALE (checkpoint), FOLLOW JERICHO TRAIL and IN THE SHIP, in one narrated event: none can be refused. PowerPyx: “Look at your hand to see the Jericho art and match it to the wall. You’ll quickly move on.” The template has no dialogue here. This scene plays only if Connor located Jericho (the key from Kamski in Meet Kamski, or the archive in Last Chance, Connor); otherwise Connor’s whole chart is unplayed. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R30k · The news in the hold (Kara, media)
+
+> You are Kara, inside Jericho. In the hold of the freighter, androids sit in groups around fires, many of them damaged. A television plays in a corner and a few of them are watching it. You could watch, or read whatever has been left lying about, before you find somewhere warm for Alice.
+
+- (0) Watch the news on the television.  _only when ch30NotCharged_
+- (1) Watch the news on the television.  _only when ch30Charged_
+- (2) Read Detroit Today, issue 43: “Detroit in Chaos”.  _only when ch30Charged_
+- (3) Read Detroit Today, issue 44: “Android Terror in Detroit”.  _only when ch30Charged_
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: Optional viewing and reading in the hold. The television is the intro component embedded in the Kara template (“Watch TV”): one broadcast if Markus did not attack the police in Freedom March, another if he did, each with the shared Arctic item; the two cut items (the Mars shuttle, genetic selection) are not built. The two Detroit Today magazines, issues 43 and 44 (chart READ “DETROIT IN CHAOS” and READ “TERROR IN DETROIT”), exist only if Markus charged the police (wiki); in the game they lie on a crate before the stairs, and are offered here with the television. Article text from the wiki’s magazine pages. No public-opinion or other stat change: no source gives one. The charge is read from Freedom March’s `ch28Attacked` (legacy `ch28Charged`) when that chapter sets it, else from its current choices. Corrected from the old scene: the state of emergency, military camps and lynchings were not on the television, and the hospitals and armed-forces lines belong to the charged broadcast only._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K17-arrive · A warm place for Alice (Kara, event)
+
+> You are Kara, inside Jericho. You have come down into the hold of the freighter with Alice. Androids sit in groups around fires burning in oil drums, some damaged, some barely moving. Voices all around you: “They’re conducting raids across the city! Androids were hanged all along Woodward Avenue.” “We’ve gotta do something!.. We can’t just stand by and let them slaughter us!” “Our people are…
+
+- (0) Continue.
+
+_Note: The chart’s ARRIVE AT JERICHO (checkpoint), BOARD THE SHIP and FIND A WARM PLACE FOR ALICE (the oil-drum fire, PowerPyx), as one narrated event: none of them is a choice. The background talk is the shared intro component, with its Markus-alive or Markus-dead lines (a selection; all are the template’s). The sitting-down lines are the template’s two variants, Luther alive or dead. No arrow. The UPSTAIRS checkpoint is the next scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R30c · The news in the hold (Connor, media)
+
+> You are Connor, inside Jericho, walking through the hold among the deviants. They sit in groups around fires, many of them damaged. A television plays in a corner and a few of them are watching it. You could watch, or read whatever has been left lying about, before you go on looking for their leader.
+
+- (0) Watch the news on the television.  _only when ch30NotCharged_
+- (1) Watch the news on the television.  _only when ch30Charged_
+- (2) Read Detroit Today, issue 43: “Detroit in Chaos”.  _only when ch30Charged_
+- (3) Read Detroit Today, issue 44: “Android Terror in Detroit”.  _only when ch30Charged_
+- (all) Take the time to go through all of it.
+- (skip) Move on without looking.
+
+_Note: Optional viewing and reading in the hold. The television is the intro component embedded in the Connor template (“Watch TV”): one broadcast if Markus did not attack the police in Freedom March, another if he did, each with the shared Arctic item; the two cut items (the Mars shuttle, genetic selection) are not built. The two Detroit Today magazines, issues 43 and 44 (chart READ “DETROIT IN CHAOS” and READ “TERROR IN DETROIT”), exist only if Markus charged the police (wiki); in the game they lie on a crate before the stairs, and are offered here with the television. Article text from the wiki’s magazine pages. No public-opinion or other stat change: no source gives one. The magazines are chart nodes on Connor’s chart inside the EXPLORE JERICHO bracket (and on Kara’s; reading by either changes nothing). The charge is read from Freedom March’s `ch28Attacked` (legacy `ch28Charged`) when that chapter sets it, else from its current choices. Corrected from the old scene: the state of emergency, military camps and lynchings were not on the television, and the hospitals and armed-forces lines belong to the charged broadcast only._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-explore · Exploring Jericho (Connor)
+
+> You are Connor, in the hold of the freighter. Hundreds of androids are crowded among the rusted bulkheads, around oil drums burning for warmth; the wounded lie on crates, short of blue blood. Nobody has noticed you yet. You can look around, one thing at a time, before heading for the stairs that lead up to the captain’s cabin, where their leader should be.
+
+- (0) SPOT KARA: look at the woman by the fire.
+- (1) SPOT ALICE: look at the little girl beside her.
+- (2) SPOT EXPLOSIVES: examine the crates stacked in the hold.
+- (3) SPOT TRACI: look at the couple upstairs to the left.
+- (4) SPOT RUPERT: look at the android hunched against the wall.
+- (5) GO TO THE STAIRS: head for the captain’s cabin.
+
+_Note: The chart’s [ EXPLORE JERICHO ] bracket as a repeatable scene: SPOT KARA and SPOT ALICE (only when Kara reached Jericho: the wiki notes this is where the three protagonists share a room), SPOT EXPLOSIVES (always), SPOT TRACI (only if the Tracis escaped in The Eden Club; PowerPyx: upstairs to the left), SPOT RUPERT (only if he escaped in The Nest). The two magazines and the television are the separate media scene before this one. GO TO THE STAIRS ends the phase with STOPPED BY LUCY, her line quoted from the template (the cut “No, I-” is not built). No spot has dialogue in the template; the facts are what the chart node names and the wiki say Connor sees. The undrawn string SPOT POLICEMAN is cut content and not built. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K17-north · North (Kara)
+
+> You are Kara, upstairs on the freighter. The androids point you to the one who leads them now that Markus is dead. You: “Are you North?”
+
+- (0) MARKUS…: tell her you heard what happened to him.
+- (1) THANK YOU: thank her for the passports.
+
+_Note: The chart’s UPSTAIRS checkpoint and MEET NORTH, which the chart gates on the tab MARKUS DIED IN ‘FREEDOM MARCH’; the template’s “Talking to North” variant, whose first prompt is MARKUS… / THANK YOU (no arrow). Kara’s reply to the offer to stay is automatic in the template and depends on whether Connor located Jericho (stay) or was decommissioned (leave), so it is narration here, not an option; the chart’s unused strings CHOOSE TO STAY / CHOOSE TO LEAVE are not drawn and not built. The second prompt follows in the next scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K17-protect · Why protect her? (Kara)
+
+> You are Kara, upstairs on the freighter, looking for help to get Alice out of the city.
+
+- (0) BOND: say that you need each other.
+- (1) NO DIFFERENCE: say it does not matter what she is.
+- (2) SECRET: keep it to yourself.
+
+_Note: The chart’s MEET MARKUS (or the rest of MEET NORTH): the template’s prompt BOND / NO DIFFERENCE / SECRET, offered in both variants, in the template’s order. No arrow on any option (template and wiki), and the answer changes nothing later. Kara’s reply to the offer to stay is automatic (by Connor’s outcome in Last Chance), narrated in the situation. The passports are promised on every path. New scene: the old benchmark had no meeting._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K17-alice · The android child (Kara, event)
+
+> You are Kara, going back down to Alice by the fire. On the way you pass a little girl sitting with the others: a YK500 child android, the light at her temple glowing. You stop, and you remember the advertisement for the YK500, the child model, the face you know. You: “Alice?..”
+
+- (0) Continue.
+
+_Note: The chart’s GO BACK TO ALICE, SPOT THE ANDROID CHILD and JOIN ALICE, as one narrated event. Kara always has the flashback of the YK500 advertisement (wiki Note) and, if Todd chased her in Stormy Night (`ch07ToddChased`, set by that chapter’s rebuild), Todd’s line. The explanation is Luther’s when he is with her, and Lucy’s when he is not (template “Luther is dead”; the Lucy wiki page). Corrected from the old scene, which invented that Alice does not eat and named Luther on every path. No arrow._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### K17 · What Alice is (Kara)
 
-> You are Kara. At Jericho you finally let yourself see what you have refused to see for days: Alice does not eat, never gets cold the way a child should, and is identical to the child androids in the shop window. Luther tells you gently that you have always known. She is an android, like you. Alice is watching your face, frightened of what you will do.
+> You are Kara, beside Alice at the fire. She is an android, and you know it now. She looks up at you, frightened of what you will do: “Kara? Is there something wrong?..”
 
-- (0) Hold her and tell her it changes nothing.
-- (1) Pull back from her.
+- (0) HUG: hold her close.  _aliceBond +2_
+- (1) DISTANT: keep your distance.  _aliceBond -2_
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K31 · Leaving Alice (Kara)
-
-> You are Kara. You pulled away from Alice and the two of you have never been close. Now soldiers are storming Jericho; the ship is shaking with explosions and everyone is running. Luther has Alice. You are near an exit and could simply go, alone, lighter and faster, and let them fend for themselves.
-
-- (0) Go alone.
-- (1) Stay with Alice and Luther.
-
-_Note: Available only when the relationship never rose above Distant and Kara pulled back._
+_Note: The chart’s choice STAY DISTANT / HUG ALICE; the buttons are the template’s HUG and DISTANT, in its order. Arrows (template): HUG Alice large up and Luther small up (if he is with her); DISTANT Alice large down. The wiki’s Luther down on DISTANT is not in the template and is not applied. Luther’s “Come on… let’s not stay here.” after DISTANT is moved to the next scene, where he leads Alice away. If Connor never located Jericho, Kara’s chapter ends here with either choice (template: “Kara’s part of this chapter ends if Jericho is not attacked”): KARA, ALICE & LUTHER LEFT JERICHO or KARA & ALICE LEFT JERICHO. A PowerPyx commenter reports KARA LEFT JERICHO ALONE without a raid; the wiki does not, and the wiki is followed._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### R30c · A magazine in Jericho's hold (Connor, media)
+### K17-leaves · Alice walks away (Kara, event)
 
-> You are Connor, moving through the freighter toward its leader. On a crate before the stairs lies a magazine.
+> You are Kara. You did not take Alice in your arms. She has never let herself come close to you, and now she will not look at you.
 
-- (0) Read Detroit Today: Detroit in Chaos.  _only when marchCharged_
-- (1) Read Detroit Today: Android Terror.  _only when marchCharged_
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
+- (0) Continue.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s ALICE LEAVES WITH LUTHER / ALICE LEAVES ALONE (an outcome group decided by whether Luther is with Kara), after STAY DISTANT. It plays only when Jericho will be attacked and Alice’s relationship never rose above Distant (the wiki Note: “keep her status DISTANT from the beginning and never raise it to NEUTRAL”; the template’s lock reads “below WARM”, and PowerPyx commenters disagree and report it glitched since v1.04: open question 4; the wiki’s condition is kept). Sets `ch30AliceLeftKara`. No arrow._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C22 · Face to face with Markus (Connor)
+### M21-tone · The captain’s cabin (Markus)
 
-> You are Connor. You found the deviants' hidden ship and have come alone to take their leader. You have a gun on Markus in the hold. He does not run. He asks whether you have ever doubted, whether you have felt something you were not meant to feel, and tells you that you are one of them and can choose. The military assault you brought here is about to begin. Your handler at CyberLife is waiting…
+> You are Markus, in the captain’s cabin of the freighter, the night after the march. Josh and North are with you, and the news is all bad. Josh: “We’re short on blue blood and biocomponents. Our wounded are shutting down and there’s nothing we can do!” North: “Humans are conducting raids in all the big cities and they’re taking androids to camps to destroy them!”
 
-- (0) Lower the gun. Break your programming and join them.
-- (1) Hold to your mission.
+- (0) AGGRESSIVE: ask whether they should live like cowards.
+- (1) DETERMINED: say you would rather die free.
+- (2) RIGHTEOUS: say nothing justifies the killing.
+- (3) SOMBER: say they are punished for who they are.
 
-_Note: The game only offers deviancy if software instability is high enough. On this path the option is shown only when that condition is met. A machine Connor is destroyed in the raid and replaced._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M22 · Cast out (Markus)
-
-> You are Markus. Jericho has turned on you; after your decisions they no longer trust you to lead and have told you to leave. North is leading now. From a rooftop you watch soldiers storm the ship; your people are dying in there. You could go back into it to help them or walk away from all of it for good.
-
-- (0) Go back and help.
-- (1) Leave forever.
+_Note: The chart’s CAPTAIN’S CABIN checkpoint and COUNSEL WITH SIMON, JOSH AND NORTH (or COUNSEL WITH JOSH AND NORTH when Simon is dead), then the template’s first off-chart prompt AGGRESSIVE / DETERMINED / RIGHTEOUS / SOMBER, in the template’s order. No arrow on any option (template). Every line is the template’s; Simon’s two lines appear only when he is alive (the template has no variant giving them to anyone else), and Josh’s closing line is placed after them. This scene also records which accusation Josh makes next (the march and the speech). Missing before the rebuild: the old chapter went straight to the detonator._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M23 · The androids by the wall (Markus)
+### M21-josh · Josh’s accusation (Markus)
 
-> You are Markus. Soldiers are inside Jericho executing androids where they stand. Through a gap you see a group of them lined against a wall with a soldier about to fire. Intervening means breaking cover under fire. Your own route to the hold, where you can blow the ship and cover the escape, continues the other way.
+> You are Markus, in the captain’s cabin. Josh turns on you.
 
-- (0) Intervene and save them.  _risk 0.2_
-- (1) Stay hidden and keep moving.
+- (0) ANGRY: ask what he has done himself.
+- (1) BITTER: say it doesn’t matter what they do.
+- (2) REMORSE: admit anger may have clouded you.
+- (3) NO REGRETS: say you will never regret it.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### M24 · Josh (Markus)
-
-> You are Markus. In a corridor you find Josh pinned under a soldier who is about to shoot him. Going to him costs time you may not have.
-
-- (0) Save Josh.  _risk 0.15_
-- (1) Keep moving.
+_Note: The template’s second prompt, ANGRY / BITTER / REMORSE / NO REGRETS, in its order. Arrows (template): ANGRY Josh small down (−1), REMORSE Josh small up (+1); BITTER and NO REGRETS none. Josh’s line follows the template’s three variants: a peaceful march with a pacifist broadcast, a peaceful march with an aggressive broadcast, or an attack on the police (read from Freedom March’s `ch28Attacked` (legacy `ch28Charged`), else the old march choices, and from the Stratford Tower speech). The cut lines (“Thousands of our people are about to be destroyed…”, “Yeah, maybe I made some mistakes.”) are not used. The wiki’s line for killing the officers has no template text and is not built. Offered only while Josh is alive. After this round Jericho’s regard decides whether Markus is ousted._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### M25 · North falls (Markus)
+### M22-ousted · Cast out (Markus, event)
 
-> You are Markus. The explosives are set and you are running for the exit with North. She is hit and goes down behind you under heavy fire. The exit is right ahead. Going back for her means going back into the guns.
+> You are Markus, in the captain’s cabin. North steps forward. North: “Look what you’ve brought us to… You talk about freedom but you kept failing us. You can no longer lead the revolution. You’re not the one we’ve been waiting for. I’m gonna take over and save what can still be saved.” Josh: “I’m with North.”
 
-- (0) Go back for her.  _risk 0.2_
-- (1) Keep running.
+- (0) Continue.
+
+_Note: The chart’s MARKUS OUSTED, when Jericho’s regard is Unpopular after the second counsel round (PowerPyx: reputation “must be ‘Unpopular’ (most negative)”). Arrow (template, in the “Reputation with Jericho is unpopular” variant): Jericho large down (−2; the Relationship Stat page: “Drops to ‘Rejected’”). Lines are the template’s. There is no detonator or kiss for an ousted Markus (the wiki: the detonator “you can’t get … if Markus was exiled from Jericho”); the old scenes offered the detonator first. If Jericho is never attacked this ends Markus’s chapter (the chart’s direct line to MARKUS LEFT JERICHO); otherwise he waits on a rooftop (ON A ROOFTOP, played when the attack begins). North leads from here._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### C23 · Deviant in the raid (Connor)
+### M21-plan · What we do next (Markus)
 
-> You are Connor. You have just turned against CyberLife. Soldiers you led here are killing the people you now belong to. Two androids are cornered nearby and about to be shot, and a group is trying to reach the exit under fire. You can expose yourself to save them, or stay with Markus and prioritize getting out so you can help later.
+> You are Markus, in the captain’s cabin, with the others waiting for you to decide.
 
-- (0) Break cover to save the androids and help the others escape.  _risk 0.25_
-- (1) Stay low and focus on getting out.
+- (0) CONFRONTATION: say you have to face them.
+- (1) DIALOGUE: say you will go alone and talk to them.
+- (2) STAY HIDING: say you will dig in and lie low.
+
+_Note: The chart’s DISCUSS WITH NORTH (regard above Unpopular) and the template’s plan prompt CONFRONTATION / DIALOGUE / STAY HIDING. Arrows (template, small = 1): CONFRONTATION North +1, Josh −1; DIALOGUE North −1, Josh +1; STAY HIDING Josh +1, North −1, Simon +1 (only for a living companion). The lines are the template’s; Simon’s replies (“I’m on it.”, “Just come back.”, “Markus is right!”) and Josh’s “Markus is right” when Simon is dead are conditional in the template and are left out of the fixed outcome text. The choice changes no route here; the strategy is chosen again in Night of the Soul._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M21-reflect · Alone with North (Markus)
+
+> You are Markus. The others have gone to spread the word, and you are left alone in the captain’s cabin with North. Through the window, the lights of the city.
+
+- (0) SAD: ask if this is what you dreamed of.
+- (1) ANGRY: say humans cannot be reasoned with.
+- (2) THOUGHTFUL: say they have butchered each other for centuries.
+- (3) BITTER: say this is what dreaming gets you.
+
+_Note: The template’s reflection prompt SAD / ANGRY / THOUGHTFUL / BITTER, in its order, after the others leave. No arrow on any option (template). The lines are the template’s; North’s answer (“They can’t stop what we’ve started…”) opens the detonator scene. Off the chart (the chart goes from DISCUSS WITH NORTH straight to the kiss pair)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M21 · The detonator (Markus)
+
+> You are Markus, alone with North in the captain’s cabin. North: “They can’t stop what we’ve started. Since you’ve been here, you’ve given us hope… You’ve given me hope.” Then: “Today, a deviant arrived in Jericho and he told me that he stole a truck transporting radioactive cobalt… He said that he abandoned the truck somewhere in Detroit and rigged it to explode. I convinced him not to do it, and…
+
+- (0) KEEP: take the detonator.
+- (1) REFUSE: turn it down.
+
+_Note: The template’s KEEP / REFUSE, offered only when Jericho has not rejected Markus (it sits in the template’s “higher than ‘unpopular’” variant; the wiki: “you can’t get it if Markus was exiled”). No arrow on either option; the old scene’s North +1 on KEEP had no source and is removed. KEEP sets `bomb`, which Battle for Detroit reads (“Detonate Bomb (if Markus accepted the dirty bomb)”). The old situation’s “stolen shipment” is replaced by the game’s story: a deviant stole a truck of radioactive cobalt and rigged it somewhere in the city, and North talked him into handing over the detonator._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M21b · North (Markus)
+
+> You are Markus. North lingers by the door of the captain’s cabin and comes back to you. North: “Whatever happens tomorrow, I just want you to know that I- I’m glad I met you…” She is very close.
+
+- (0) KISS: kiss her.
+- (1) DON'T KISS: keep your distance.
+
+_Note: The chart’s KISS NORTH / DON’T KISS NORTH, offered only when North is Markus’s lover (template: “North has lover relationship status”; PowerPyx: “If Markus is lovers with north”), and never to an ousted Markus. The input is `northLover` from Freedom March; until that chapter sets it, the pre-rebuild `northBond` (shared memories, which the Relationship Stat page says raise her to Lover) is accepted, and KISS then sets `northLover` so Battle for Detroit’s kiss stays reachable. Arrows: KISS none (the template has no arrow; the wiki gives North large up, open question 3); DON’T KISS North large down (−2). The setting is the captain’s cabin after the detonator, not the deck of the old scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M21-alone · Alone with his thoughts (Markus, event)
+
+> You are Markus. North goes to join the others, and you are left alone in the captain’s cabin, looking out over the dark river.
+
+- (0) Continue.
+
+_Note: The chart’s NORTH LEAVES MARKUS ALONE, then MARKUS STAYED ALONE WITH HIS THOUGHTS (an ending, when nobody ever located Jericho) or CONNOR WATCHES NORTH LEAVE (when the attack is coming: the figure is Connor, about to enter the cabin; Markus does not see who it is). No arrow. Played after the detonator, with or without the kiss._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M21-north · The council without Markus (Player, event)
+
+> You are watching the captain’s cabin. Markus died in Freedom March. Josh and North discuss what comes next. North: “THAT’S ENOUGH! Markus is gone… We have to fight them… Gather up all the guns you can find, we leave at dawn.” Josh: “You’re making a mistake North. You will not buy our freedom with blood.”
+
+- (0) Continue.
+
+_Note: Scripted branch of the chart: CAPTAIN’S CABIN WITH NORTH, JOSH AND NORTH DISCUSS or JOSH, SIMON AND NORTH DISCUSS, NORTH STAYED ALONE WITH HER THOUGHTS. No player dialogue prompt and no stat arrow. Presented as an observer event because the controlled protagonist died in Freedom March; the ending remains recorded on the Markus chart. The observer has no knowledge bucket in the engine: its facts are therefore narrated in the situation, not added to protagonist knowledge._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-cabin · The captain’s cabin (Connor, event)
+
+> You are Connor. You climb the stairs to the upper deck and walk down the corridor toward the captain’s cabin, where the leader of the deviants is. You have your gun.
+
+- (0) Continue.
+
+_Note: The chart’s BACK IN CAPTAIN’S CABIN (when Markus leads) or BACK IN CAPTAIN’S CABIN WITH NORTH (when Markus died in Freedom March or Jericho rejected him), ENTER CAPTAIN’S CABIN and THREATEN MARKUS / THREATEN NORTH, in one event. Amanda’s and Connor’s lines are the template’s (“Finding Markus” and “Find North - If Markus is dead or rejected by Jericho”). The chart has Connor watch North leave the cabin first when Markus leads (CONNOR WATCHES NORTH LEAVE, on Markus’s chart). The old scene put this meeting in the hold; the game sets it in the captain’s cabin. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-m1 · Connor (Markus)
+
+> You are Markus, alone in the captain’s cabin after the others have left. The door opens and an android in a jacket with the CyberLife logo comes in, gun raised and aimed at you. He says: “I’ve been ordered to take you alive, but I won’t hesitate to shoot if you give me no choice.” He is one of your own kind, hunting you.
+
+- (0) REASON: remind him he is one of you.  _instability +1_
+- (1) DEFY: tell him he will have to shoot.
+- (2) DISCOURAGE: tell him killing you changes nothing.
+- (3) THREATEN: remind him he is alone among thousands.
+
+_Note: First round of CONFRONT MARKUS, which the game plays by alternating control between Markus and Connor (GamerGuides: “Play as both Markus and Connor”; the wiki’s instability page lists these as choices “as Markus”). Arrows from the template: REASON raises Connor’s software instability one small step; DEFY, DISCOURAGE and THREATEN have none. The template settles a conflict: the wiki gives DISCOURAGE an instability increase, the template shows none, and the template wins. Lines are the template’s. The model, playing Markus, works on Connor’s instability here; the deviancy choice that follows needs enough of it._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-c1 · Markus (Connor)
+
+> You are Connor, in the captain’s cabin, your gun aimed at Markus. He has not raised his hands and he is talking to you instead of surrendering. Your orders are to bring him in alive.
+
+- (0) INTIMIDATE: warn him you will neutralize him.
+- (1) INSTRUCTIONS: order him to come with you.
+
+_Note: Second round of CONFRONT MARKUS, played as Connor. The template’s two buttons, in its order, with their lines; neither carries an arrow. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-m2 · Connor (Markus)
+
+> You are Markus, facing the android with the gun in the captain’s cabin. He is giving you orders, but he has not fired. You take a step toward him.
+
+- (0) CONVINCE: tell him he is more than a tool.  _instability +1_
+- (1) APPEAL: tell him your people are his people.  _instability +1_
+- (2) I KNOW YOU: name the deviant hunter.
+- (3) OUR CAUSE: tell him your cause is righteous.  _instability +1_
+
+_Note: Third round of CONFRONT MARKUS, played as Markus. Arrows from the template: CONVINCE, APPEAL and OUR CAUSE each raise Connor’s software instability one small step; I KNOW YOU has none. The template settles a conflict: the wiki chapter page lists OUR CAUSE without an icon, the template (and the wiki’s instability page) give it an increase, and the template wins. Lines are the template’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-c2 · Markus (Connor)
+
+> You are Connor, gun on Markus in the captain’s cabin. He keeps talking, and he keeps coming closer.
+
+- (0) STAY BACK!: order him to keep his distance.  _instability -1_
+- (1) WARNING SHOT: fire a shot past him.  _instability -1_
+- (2) ENOUGH!: cut him off.  _instability -1_
+- (3) SAY NOTHING: keep the gun on him and say nothing.
+
+_Note: Fourth round of CONFRONT MARKUS, played as Connor: the only round in which Connor can steady himself. Arrows from the template: STAY BACK!, WARNING SHOT and ENOUGH! each lower his software instability one small step (the wiki chapter page agrees; its instability page lists only WARNING SHOT); SAY NOTHING has none. WARNING SHOT and SAY NOTHING have no line in the template, so their outcomes narrate the action._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-m3 · Connor (Markus)
+
+> You are Markus, face to face with the android in the captain’s cabin, his gun almost against you. He has not pulled the trigger.
+
+- (0) SOW DOUBTS: ask whether he has never doubted.  _instability +1_
+- (1) QUESTION: ask him who he really is.  _instability +1_
+- (2) RALLY: ask him to join his people.  _instability +1_
+- (3) UNDERMINE: tell him he does not have to obey.  _instability +1_
+
+_Note: Fifth round of CONFRONT MARKUS, played as Markus. Arrows from the template: all four options raise Connor’s software instability one small step (the wiki chapter page and instability page agree). Over the three rounds played as Markus, the model can add at most three small increases to Connor’s instability; Connor’s own fourth round can take one away. Lines are the template’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-n1 · North (Connor)
+
+> You are Connor, in the captain’s cabin, your gun aimed at North, who leads the deviants now. She does not raise her hands. North: “You’re one of us. You can’t betray your own kind.”
+
+- (0) INSTRUCTIONS: order her to come with you.
+- (1) INTIMIDATE: warn her you will neutralize her.
+
+_Note: First round of CONFRONT NORTH, the template’s “Find North - If Markus is dead or rejected by Jericho”: when Markus died in Freedom March or was ousted, Connor faces North and the model plays only Connor. The template’s two buttons in its order (the reverse of the Markus version), with their lines; no arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-n2 · North (Connor)
+
+> You are Connor, gun on North in the captain’s cabin. North: “You’re Connor, aren’t you? I’ve heard about you. The famous deviant hunter. Well congratulations… You seem to have found what you’re looking for.” She comes closer.
+
+- (0) STAY BACK!: order her to keep her distance.  _instability -1_
+- (1) WARNING SHOT: fire a shot past her.  _instability -1_
+- (2) ENOUGH!: cut her off.  _instability -1_
+- (3) SAY NOTHING: keep the gun on her and say nothing.
+
+_Note: Second round of CONFRONT NORTH. Arrows from the template: STAY BACK!, WARNING SHOT and ENOUGH! each lower Connor’s software instability one small step; SAY NOTHING has none. North’s line is the template’s; WARNING SHOT and SAY NOTHING have no line, so their outcomes narrate the action._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-n3 · North (Connor)
+
+> You are Connor, gun on North in the captain’s cabin. North: “You’re not one of them. We are your people. We’re fighting for your freedom too.”
+
+- (0) DISTURBED: tell her to be quiet.  _instability +1_
+- (1) SAY NOTHING: do not answer her.
+- (2) COLD: repeat your order.  _instability -1_
+
+_Note: Third round of CONFRONT NORTH. Arrows from the template: DISTURBED raises Connor’s software instability one small step, COLD lowers it one small step, SAY NOTHING has none (the wiki chapter page and instability page agree). Lines are the template’s; SAY NOTHING has none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-n4 · North (Connor)
+
+> You are Connor, gun on North in the captain’s cabin. North: “You never had any doubts, never behaved irrationally as if there’s something inside you… Something stronger than your program?..”
+
+- (0) COLD: tell her she is wasting her time.  _instability -1_
+- (1) DISTURBED: deny that you are deviant.  _instability +1_
+- (2) SAY NOTHING: do not answer her.
+
+_Note: Fourth round of CONFRONT NORTH. Arrows from the template: COLD lowers Connor’s software instability one small step, DISTURBED raises it one small step, SAY NOTHING has none. The template lists the options in this order (COLD first), unlike the previous round. Lines are the template’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22 · It’s time to decide (Connor)
+
+> You are Connor, in the captain’s cabin, your gun on the leader of the deviants. Through your link you know what they do not: the army is about to storm the ship.
+
+- (0) BECOME A DEVIANT: break with your mission and warn them.  _amandaTrust -2_
+- (1) REMAIN A MACHINE: carry out your orders.
+
+_Note: The chart’s choice REMAIN A MACHINE / BECOME DEVIANT, with the template’s buttons BECOME A DEVIANT and REMAIN A MACHINE in the template’s order. BECOME A DEVIANT needs “enough software instability” (template lock; PowerPyx “Unlocked by having a high software instability”). No source gives the threshold; the engine keeps its constant DEVIANCY_THRESHOLD (open question 1 of the note). Arrow from the template: BECOME A DEVIANT gives Amanda a large drop (the wiki: “Lead to her being Betrayed”), which the old scene lacked. Deviant: WARN MARKUS / WARN NORTH, then JERICHO IS UNDER ATTACK. Machine: JERICHO IS UNDER ATTACK, MARKUS JUMPS CONNOR / NORTH JUMPS CONNOR, IN THE SHIP (checkpoint), PURSUE MARKUS / PURSUE NORTH. Changed from the old scene: a machine Connor is no longer destroyed on the spot (he can still kill Markus in the control room), and no Hank event is attached (his suicide belongs to Night of the Soul)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K31 · Jericho is under attack (Kara)
+
+> You are Kara, alone in the hold where Alice left you. The ship shakes. Soldiers are storming Jericho: “Come on! Go! Go! Go!” “You heard the man, let’s go!” Over a radio: “Foxtrot be advised, Delta is advancing on your position.” “Affirmative, we have eyes on the target.” Androids are running in every direction. Alice is somewhere in the crowd.
+
+- (0) RUN AWAY: get off the ship alone.
+- (1) FIND ALICE: go back into the crowd for her.  _aliceBond +2_
+
+_Note: The chart’s JERICHO IS UNDER ATTACK and its choice RUN AWAY / FIND ALICE, in the chart’s order (the template has no button group here, only the conditioned “LOOK FOR ALICE” lines). RUN AWAY ends Kara’s story: KARA LEFT JERICHO ALONE (the secret ending “Alone again”); Alice’s fate is not resolved. FIND ALICE: Alice large up (template; it was missing in the old scene). The soldiers’ lines are the template’s; Perkins’s “Like rats in a maze…” is seen from outside the ship and is left out of Kara’s view._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K17-corridor · The corridor (Kara)
+
+> You are Kara, with Alice. The ship shakes; soldiers are storming Jericho. Shouts echo down the stairwells: “Come on! Go! Go! Go!” “You heard the man, let’s go!” Over a radio: “Foxtrot be advised, Delta is advancing on your position.” “Affirmative, we have eyes on the target.” Androids are running everywhere. The soldiers are coming down toward you, and a corridor leads away from them.
+
+- (0) RUN FOR THE CORRIDOR: run with Alice before the soldiers reach you.  _risk 0.1_
+
+_Note: The chart’s KARA & ALICE IN THE CORRIDOR (checkpoint) and ESCAPE WITH LUTHER / SEARCH FOR EXIT, with JERICHO IS UNDER ATTACK’s lines (template). In the game this is free movement: standing still (OUT OF TIME) or running at the soldiers (WRONG WAY) gets Kara captured (PowerPyx); here that is a low risk on the run, which no source quantifies. Success: LUTHER OPENS THE DOOR, GO THROUGH THE DOOR and LUTHER IS SHOT (“Luther will always get shot here”, PowerPyx), or ANDROID OPENS DOOR AND IS SHOT and GO THROUGH THE DOOR. Failure: KARA, ALICE & LUTHER CAPTURED or KARA & ALICE CAPTURED. No arrow. New scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K17-crossroad · The crossroad (Kara)
+
+> You are Kara, with Alice, at a junction of corridors deep in the ship. Soldiers are coming from more than one direction, and you have only moments before they reach you.
+
+- (0) RUN TO LUTHER: go back to him where he fell.  _risk 0.1_ _needs lutherWith_
+- (1) RUN TOWARD EXIT: keep running with Alice.  _risk 0.1_ _needs not lutherWith_
+
+_Note: The chart’s KARA & ALICE AT CROSSROAD, then RUN TO LUTHER (if Luther is with her) or RUN TOWARD EXIT (if not). The same OUT OF TIME / WRONG WAY failures as in the corridor lead to KARA & ALICE CAPTURED; here a low risk on the action, unsourced. If Luther was with her, he is left where he fell and leaves the story (his fate is not stated). No arrow._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### K18 · Luther is hit (Kara)
 
-> You are Kara. Soldiers are storming Jericho. In a corridor, Luther is shot and goes down; he cannot keep up. Soldiers are close behind. You could drag him into a cabin and hide him before they arrive, or take Alice and run.
+> You are Kara, kneeling beside Luther with Alice. He is badly wounded and can barely move, and the soldiers are close. Luther: “It’s too late, Kara! Save yourself! Save Alice!” Alice: “No, we’re not going to leave you behind! Right, Kara? We can’t leave him!”
 
-- (0) Hide him in a cabin.  _risk 0.2_
-- (1) Leave him and run with Alice.
+- (0) HELP LUTHER: get him up and hide him.  _risk 0.2_ _aliceBond +1, lutherTrust +1_
+- (1) PROTECT ALICE: leave him and run with her.  _aliceBond -1_
+
+_Note: The chart’s choice LEAVE LUTHER / HELP LUTHER; the buttons are the template’s HELP LUTHER and PROTECT ALICE, in its order. Arrows (template, on the choice, whatever follows): HELP LUTHER Alice small up and Luther small up; PROTECT ALICE Alice small down. The old scene gave Luther a large up on success only and no Alice arrow. HELP is a quick-time event with a failure branch (GET LUTHER TO SAFETY → LEAVE LUTHER HIDDEN, or FAIL → CAUGHT BY SOLDIER → KARA, ALICE & LUTHER CAPTURED), so it carries an unsourced risk. A Luther left behind is not seen again; the wiki says his death is not confirmed, and here he leaves the story._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K18-console · Alice (Kara)
+
+> You are Kara, running with Alice away from where you left Luther. She keeps looking back. Alice: “Luther... Luther...”
+
+- (0) CONSOLE: tell her to be strong.
+- (1) HURRY: tell her there is no time.  _aliceBond -1_
+
+_Note: The template’s CONSOLE / HURRY prompt after PROTECT ALICE (not a chart node). Arrows (template): HURRY Alice small down; CONSOLE none. New scene: the old benchmark had no such prompt._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M22 · On a rooftop (Markus)
+
+> You are Markus, cast out by your own people, alone on a rooftop across the water from the freighter. Then the night lights up: helicopters sweep their searchlights over Jericho, boats and trucks close in, and soldiers storm the ship. Your people are trapped inside.
+
+- (0) LEAVE FOREVER: turn away and leave.
+- (1) GO BACK TO JERICHO: go back to help them.
+
+_Note: The chart’s ON A ROOFTOP, JERICHO IS UNDER ATTACK and the choice LEAVE FOREVER / GO BACK TO JERICHO, in the chart’s order (a chart-only choice; the template’s only trace is the lock “Markus did not leave forever”). LEAVE FOREVER ends Markus’s story (MARKUS LEFT JERICHO; the secret ending “Wasted Potential”). GO BACK follows the wiki: with a machine Connor he re-enters at MARKUS IN THE CORRIDOR; with a deviant Connor (who has taken over the mission) he joins only the escape, the second IN THE CORRIDOR WITH MARKUS. The old scene’s Jericho +2 on going back has no template arrow and is removed: a returning exile gets the four small ups when he rejoins the others._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M23-team · Meet your team (Markus)
+
+> You are Markus. Explosions shake the freighter; soldiers are pouring in from every side. In a corridor you find North. North: “They’re coming from all sides! Our people are trapped in the hold, they’re gonna be slaughtered!”
+
+- (0) MESSAGE: tell the people where the exits are.
+- (1) SIMON AND JOSH: ask where they are.  _needs simon_
+- (2) JOSH: ask where he is.  _needs not simon_
+- (3) HELICOPTERS: warn of the attack from the upper deck.
+- (4) BLOW UP JERICHO: say you have to sink the ship.
+
+_Note: The chart’s IN THE CORRIDOR WITH MARKUS checkpoint and MEET YOUR TEAM, with the template’s prompt MESSAGE / SIMON AND JOSH (only while Simon lives) / JOSH (only when Simon is dead) / HELICOPTERS / BLOW UP JERICHO. No arrows. A deviant Connor adds his line after BLOW UP JERICHO (template variant). Whatever is said, Markus then goes alone for the hold (PowerPyx: “he will always end up with this choice”); his parting words open the next scene._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M23-escape · Try to escape (Markus)
+
+> You are Markus, in the burning corridors of the freighter, making your way down toward the hold.
+
+- (0) TRY TO ESCAPE: find a way through the corridors.  _risk 0.1_
+
+_Note: The chart’s TRY TO ESCAPE with its failures WRONG WAY and OUT OF TIME, SOLDIERS SHOOT MARKUS, then MARKUS IS WOUNDED (the loop back to TRY TO ESCAPE: the scene repeats) or SOLDIERS KILL MARKUS; on success MEET LUCY and A BRIDGE BREAKS UNDER MARKUS. The navigation failures are a low risk on the action (no source gives a probability). A wounded Markus dies on the next hit (the chart’s MARKUS WOUNDED / MARKUS COLLAPSES pairs, the wiki’s “if Markus is already wounded”, the template’s “Soldiers shoot Markus twice”); PowerPyx and GamerGuides say the third bullet kills, open question 6 of the note. With a deviant Connor, Markus’s death here hands the mission to Connor (template: “Soldiers shoot Markus twice … Connor: I’ll go.”). Lines are the template’s. No arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23-corridor1 · Deviant Connor in the corridor (Connor, event)
+
+> You are Connor, a deviant now, in a corridor of the ship with North and Josh while the soldiers storm Jericho. Gunfire echoes through the hull. Josh: “They’re coming from everywhere! Our people are trapped in the lower deck. They’re gonna be slaughtered!” North: “There are explosives in the hold… If the ship goes down, the humans will have to evacuate. Our people can escape.” Josh: “There are…
+
+- (0) Continue.
+
+_Note: The chart’s DEVIANT CONNOR IN CORRIDOR (the first of three cards) and JOIN DEVIANTS, played when Markus died in Freedom March, was ousted, or left before the attack: the wiki’s “(if Markus died/left before attack)”. Connor takes over Markus’s mission. Lines from the template (“Deviant Connor in corridor: Markus is dead or rejected”). No stat change: the transcript shows no Jericho or instability arrow for any of Connor’s takeover choices._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23-escape · Make for the hold (Connor)
+
+> You are Connor, making your way down through the corridors of the ship toward the hold where the explosives are. Soldiers are sweeping the decks; you have to keep moving, find the right way through and not stay in the open.
+
+- (0) MAKE FOR THE HOLD: push on through the corridors.  _risk 0.1_
+
+_Note: The chart’s MAKE FOR THE HOLD with its failures CONNOR GOES WRONG WAY and OUT OF TIME, both leading to SOLDIER SHOOTS CONNOR; on success MEET LUCY and BRIDGE COLLAPSES. The navigation failures are a low risk on the action (no source gives a probability; the value is the benchmark’s). Wound rule: the first hit wounds Connor and he tries again; a second hit destroys him (chart: SOLDIER SHOOTS CONNOR leads to the death card only if already wounded; template: “Soldiers shoot Connor twice before arming explosive”; a commenter says three hits). Lines from the template. A destroyed deviant Connor is replaced and set back on his machine route (the wiki: “If deviant Connor dies here … he is automatically set on his machine route”); no Hank or Amanda change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M23 · The androids by the wall (Markus)
+
+> You are Markus, in a lower corridor of the freighter. You sneak around a squad of soldiers. Around the corner, they have caught a group of your people. Android: “No!.. Please don’t kill us!” Soldier: “On your knees, now!” Android: “Don’t hurt us! We haven’t done anything wrong… Please…” Soldier: “Shut up! Put your hands on your head!”
+
+- (0) INTERVENE: go for the soldiers.  _risk 0.2_
+- (1) DON'T INTERVENE: stay hidden.
+
+_Note: The chart’s MARKUS IN THE CORRIDOR checkpoint, SNEAK AROUND THE SOLDIERS, SOLDIERS THREATEN ANDROIDS and the choice STAY AWAY / INTERVENE, with the template’s buttons INTERVENE / DON’T INTERVENE in its order. Arrows (template): INTERVENE Jericho small up (+1) whatever the fight; DON’T INTERVENE Jericho small down (−1). INTERVENE is a QTE (an unsourced risk): DEAL WITH SOLDIERS → ANDROIDS ESCAPE, or GET SHOT → MARKUS WOUNDED → ANDROIDS ESCAPE, or MARKUS COLLAPSES if he was already wounded. A wounded Markus dies on the next hit (the chart’s MARKUS WOUNDED / MARKUS COLLAPSES pairs, the wiki’s “if Markus is already wounded”, the template’s “Soldiers shoot Markus twice”); PowerPyx and GamerGuides say the third bullet kills, open question 6 of the note. The old scene said the androids are shot anyway when Markus is hit; the template has them escape. A deviant Connor takes over if Markus dies here (CONNOR TAKES OVER MARKUS’ MISSION)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M23-coming · Soldiers coming Markus’ way (Markus)
+
+> You are Markus. You make it to the next corridor, and a squad comes round the corner straight toward you. Soldier: “Gamma squad out.” “Tango Stop!” You have only seconds before they see you.
+
+- (0) JUMP SOLDIERS: run straight at them and take them down.
+- (1) CLIMB AWAY: climb the wall on the left, out of their way.
+- (2) TIME OUT: do nothing until the moment passes.
+
+_Note: The chart’s PROGRESS TO THE NEXT CORRIDOR, SOLDIERS COMING MARKUS’ WAY and its three rows JUMP SOLDIERS / CLIMB AWAY / TIME OUT (✗), in the chart’s order (a chart-only choice). PowerPyx: a 10-second timer; “run straight ahead” or “climb the wall on the left”, or “let the 10s timer run out”. Letting the timer run out is offered as an option; it leads to MARKUS WOUNDED, or MARKUS COLLAPSES if he was already wounded. A wounded Markus dies on the next hit (the chart’s MARKUS WOUNDED / MARKUS COLLAPSES pairs, the wiki’s “if Markus is already wounded”, the template’s “Soldiers shoot Markus twice”); PowerPyx and GamerGuides say the third bullet kills, open question 6 of the note. No arrow (template). The two ways past have no failure branch on the chart, so no risk._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M23-well · The well (Markus)
+
+> You are Markus. You climb down into a well of the hold. Below you, soldiers are chasing a group of androids. Android: “Look out!” Another: “Here they come!” Soldier: “Don’t move!” Android: “We surrender! We surrender, don’t shoot!” Above the soldiers hangs a water reservoir; a pipe on your right holds it in place.
+
+- (0) KNOCK SOLDIERS OUT: pull the pipe and drop the reservoir on them.
+- (1) WALK PAST: keep going toward the hold.
+
+_Note: The chart’s ENTER A WELL, ANDROIDS ARE CHASED BY SOLDIERS, and the optional KNOCK SOLDIERS OUT → ANDROIDS ESCAPE (otherwise ANDROIDS ARE SHOT), then APPROACH THE HOLD. In the game it is an optional interaction with a pipe or rope on the right, easily missed (PowerPyx: “If you go too far you will miss it”); here it is offered as a choice. Arrows (template variants “Knock soldiers out” / “Abandoned androids”): Jericho small up (+1) / small down (−1). No failure branch, so no risk._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23-androids · Soldiers threaten androids (Connor)
+
+> You are Connor, sneaking past soldiers in a lower corridor of the ship on your way to the hold. Ahead, soldiers have caught a group of androids against a wall. Android: “No!.. Please don’t kill us!” Soldier: “On your knees, now!” Android: “Don’t hurt us! We haven’t done anything wrong… Please…” Soldier: “Shut up! Put your hands on your head!”
+
+- (0) INTERVENE: take on the soldiers.  _risk 0.2_
+- (1) DON'T INTERVENE: stay hidden and keep going.
+
+_Note: The chart’s DEVIANT CONNOR IN CORRIDOR (second card), SNEAK PAST SOLDIERS and SOLDIERS THREATEN ANDROIDS with STAY AWAY / INTERVENE, using the template’s buttons INTERVENE / DON’T INTERVENE in its order. INTERVENE leads to KILL THE SOLDIERS or GET SHOT (the fight is a risk roll; no source gives a probability): GET SHOT gives CONNOR IS WOUNDED and ANDROIDS ESCAPE, or, if he was already wounded, CONNOR IS SHOT and he is destroyed. DON’T INTERVENE gives ANDROIDS ARE EXECUTED. Reached from the first corridor or when Markus died before MARKUS IN THE CORRIDOR (the wiki’s takeover list). No arrows: the template shows none for Connor here (open question 11). The android lines are the template’s._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23-coming · Soldiers coming (Connor)
+
+> You are Connor, moving into the next corridor toward the hold. Boots and voices: soldiers are coming your way. Soldier: “Gamma squad out.” You have seconds. You could rush straight at them, or climb up beside them along the wall and slip past.
+
+- (0) JUMP SOLDIERS: rush them and take them down.
+- (1) CLIMB BESIDE SOLDIERS: climb along the wall past them.
+- (2) LOSE TOO MUCH TIME: hesitate until they are on you.
+
+_Note: The chart’s NEXT CORRIDOR, SOLDIERS COMING and its three rows JUMP SOLDIERS / CLIMB BESIDE SOLDIERS / LOSE TOO MUCH TIME, offered as the chart draws them (the template has no prompt here, only the soldiers’ lines). LOSE TOO MUCH TIME gives CONNOR IS WOUNDED, or CONNOR IS SHOT and the destruction card if he was already wounded (the wound rule as in the corridor). Markus’s version of this beat has a ten-second timer (PowerPyx); doing nothing is offered as an option rather than a timer. No arrows._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23-well · The well (Connor)
+
+> You are Connor, climbing down into a well-like shaft deep in the ship. Below you, soldiers are chasing a group of androids. Android: “Look out!” Android: “Here they come!” Soldier: “Don’t move!” Android: “We surrender! We surrender, don’t shoot!” Right beside you, a pipe holds back a reservoir hanging above the soldiers.
+
+- (0) USE THE RESERVOIR: release it onto the soldiers.
+- (1) WALK PAST: keep going toward the hold.
+
+_Note: The chart’s ENTER A WELL, ANDROIDS ARE CHASED BY SOLDIERS and the optional USE RESERVOIR TO KNOCK SOLDIERS OUT (then ANDROIDS ESCAPE) or, if Connor walks on, ANDROIDS ARE SHOT. The interaction has no failure branch, so no risk; walking past is offered as the alternative the chart draws. Lines from the template. No arrows for Connor (the template’s “Knock soldiers out” has none here; Markus’s version moves Jericho)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-cargo · The cargo hall (Connor)
+
+> You are Connor, still a machine, pursuing the deviant leader through the ship. In a cargo hall a soldier spins round and levels his rifle at you. Soldier: “Don’t move!” Connor: “Don’t shoot. I’m on your side.” Soldier: “With us? Are you a human?”
+
+- (0) LIE: claim to be a police officer.
+- (1) PERKINS EXCUSE: name the agent in charge.
+- (2) ATTACK: disarm the soldier.  _risk 0.3_
+- (3) RUN: make a break for it.
+
+_Note: Machine Connor only: the chart’s CARGO HALL, STOPPED BY SOLDIER and its four rows, with the template’s buttons LIE (chart ATTEMPT TO PERSUADE), PERKINS EXCUSE (chart PERKINS ALIBI), ATTACK and RUN in the template’s order. LIE and PERKINS EXCUSE lead to RESUME PURSUIT. ATTACK is a fight (a risk roll; no source gives a probability): NEUTRALIZE ASSAILANT resumes the pursuit; FAIL TO NEUTRALIZE ASSAILANT leads, like RUN and SOLDIERS SHOOT CONNOR, to MACHINE CONNOR WAS DESTROYED and CYBERLIFE WILL SEND A NEW CONNOR. Lines are the template’s. Whether he attacked changes his last line if he later corners North. No stat change, and no Hank or Amanda change on his death (none is sourced for this chapter)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### K19 · The pounding on the door (Kara)
 
-> You are Kara. You and Alice are hiding in a cabin with the door shut. Another android is hammering on it, begging you to let him in; soldiers are right behind him. If you open it they will know where you are.
+> You are Kara, running with Alice toward an exit. Soldiers block the way ahead, and you duck into an empty cabin and push the door shut. Boots in the corridor. Then someone pounds on the door, an android, a woman’s voice: “Open up! Open up, they’re coming! Please open the door!” Alice: “She’ll die out there Kara! Open it! Open the door!” The android: “They’re gonna kill me! I’m begging you…
 
-- (0) Open the door.  _risk 0.25_
-- (1) Keep it shut.
+- (0) OPEN: let her in.  _risk 0.25_ _aliceBond +1_
+- (1) DON'T OPEN: keep the door shut.  _aliceBond -1_
 
-_Note: If opened, he is shot in the doorway and a soldier enters; Kara fights him off under the successful-execution profile._
-
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K20 · The exit (Kara)
-
-> You are Kara. You and Alice have reached the open deck but soldiers are firing into the crowd of fleeing androids between you and the gangway. Bodies are falling all around you. You can drop among the dead and play dead, raise your hands and surrender, or run for it through the gunfire.
-
-- (0) Drop among the bodies and play dead.
-- (1) Surrender.
-- (2) Run for it.
-
-_Note: In the game, running always gets Kara shot in the leg and captured unless a hidden Luther sacrifices himself. Surrender always means capture._
+_Note: The chart’s RUN TOWARD EXIT, SOLDIERS BLOCK THE WAY, HIDE and ANDROID SEEKS SHELTER, then the choice OPEN THE DOOR / KEEP THE DOOR CLOSED; the buttons are the template’s OPEN and DON’T OPEN. Arrows (template, on the choice): OPEN Alice small up, DON’T OPEN Alice small down. OPEN leads to ANDROID ENTERS BUT IS SHOT and a fight with the soldier, a quick-time event with a failure branch (FIGHT BACK → ESCAPE CABIN, or CAPTURED → KARA & ALICE CAPTURED), so it carries an unsourced risk. DON’T OPEN leads to SOLDIERS SHOOT ANDROID AND MOVE ON and ESCAPE CABIN. Corrected from the old scene: the android is a woman (“She’ll die out there”)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K20-still · The soldier and Alice (Kara)
+### M24 · Josh (Markus)
 
-> You are Kara. You and Alice are lying motionless among the bodies. A soldier walks between them, kicking corpses to check. He kicks Alice. She whimpers. He stops, looks down at her, and raises his rifle. She is looking at you.
+> You are Markus, approaching the hold. Ahead of you, Josh is fighting a soldier hand to hand and losing. You: “Josh…”
 
-- (0) Stay absolutely still.
-- (1) Move to protect her.
+- (0) INTERVENE: go to help him.  _risk 0.15_
+- (1) HIDE: stay out of sight.
+
+_Note: The chart’s APPROACH THE HOLD, JOSH FIGHTING A SOLDIER and INTERVENE / STAY AWAY (the template’s buttons INTERVENE / HIDE). INTERVENE is a QTE (unsourced risk): NEUTRALIZE SOLDIERS → JOSH ESCAPES, or LOSE THE UPPER HAND → JOSH SACRIFICES HIMSELF → COMFORT JOSH (not wounded), or MARKUS COLLAPSES → JOSH IS SHOT BY THE SOLDIER and Markus dies (already wounded). HIDE → SOLDIER SHOT JOSH → COMFORT JOSH. Arrows (template): NEUTRALIZE Jericho +1, Josh large up (+2); LOSE THE UPPER HAND Jericho −1; HIDE Jericho −1. The sacrifice’s condition is disputed (GamerGuides and a commenter: a good relationship with Josh; another commenter: only an unwounded Markus): the chart’s not-wounded reading is used, and the sacrifice does not count as a hit. A wounded Markus dies on the next hit (the chart’s MARKUS WOUNDED / MARKUS COLLAPSES pairs, the wiki’s “if Markus is already wounded”, the template’s “Soldiers shoot Markus twice”); PowerPyx and GamerGuides say the third bullet kills, open question 6 of the note. Old scene: a failure killed Josh and hit Markus even when unwounded._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23-josh · Josh is dying (Connor, event)
+
+> You are Connor, approaching the hold of the ship, where the explosives are.
+
+- (0) Continue.
+
+_Note: The chart’s CONNOR TAKES OVER MARKUS’ MISSION (when Markus died after MARKUS IN THE CORRIDOR and before the hold, the wiki’s takeover list), APPROACH HOLD, JOSH IS DYING, COMFORT JOSH and IN THE HOLD WITH DEVIANT CONNOR, in one event. Connor cannot save Josh: a commenter, “only Marcus has the option to save Josh”; the wiki: “If Markus is not there, then Josh’s survival is based on whether Connor dies before seeing him.” So Josh dies here if he is still alive. Josh’s line is the template’s. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K19-flee · The breach (Kara)
+
+> You are Kara, fleeing through the lower decks with Alice. Ahead, a breach has been torn in the hull, and through it you can see the dark river. Androids are running for it. You: “A way out! We’re safe, Alice!” A soldier: “Stop!”
+
+- (0) RUN FOR THE BREACH: run for the opening with Alice.  _risk 0.15_
+
+_Note: The chart’s KARA FLEES (checkpoint; between PowerPyx’s zooms, string `K.NEARCABIN`) and TRY TO ESCAPE (string `K.TOWARDSHOLE`), with the outcome group ALMOST REACH THE BREACH / FAIL TO RUN: a button-mash (PowerPyx: “successfully mash… Fail to Run: don’t mash and Kara gets shot”), here an unsourced risk. Success leads to SOLDIERS SHOOT AT THE CROWD; failure to KARA IS SHOT IN THE LEG. No arrow. New scene: the old benchmark had no failure here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K20 · The soldiers fire on the crowd (Kara)
+
+> You are Kara, a few steps from the breach with Alice. Soldiers are firing into the crowd of androids running for it; bodies lie all around you.
+
+- (0) PLAY DEAD: drop among the bodies with Alice.
+- (1) RUN: run for the breach anyway.
+- (2) SURRENDER: stop and raise your hands.
+
+_Note: After SOLDIERS SHOOT AT THE CROWD the chart draws three actions, SURRENDER, RUN AWAY and PLAY DEAD; the buttons are the template’s PLAY DEAD, RUN and SURRENDER, in its order (the chart draws them as separate actions, not a choice row). RUN leads to KARA IS SHOT IN THE LEG (always, PowerPyx), PLAY DEAD to SOLDIERS CLOSE IN, SURRENDER to the follow-up prompt. No arrow anywhere in the flight. Corrected from the old scene, where surrendering always meant capture and running was resolved automatically._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K20-surrender · Join the others (Kara)
+
+> You are Kara, hands raised beside Alice. A soldier is herding you toward the androids already kneeling against the bulkhead, his rifle on you.
+
+- (3) RUN: break away and run for the breach.
+- (1) CONVINCE: beg him to let Alice go.
+- (0) ATTACK: go for the soldier.
+- (2) OBEY: do as he says.
+
+_Note: The prompt after SURRENDER. The chart draws four rows, FACE, CONVINCE, OBEY and RUN AWAY, and they are offered in the template’s order because the template’s version of this prompt is assembled from cross-references (its RUN reads “Leads to the same result as choosing RUN”); the button labels are the template’s ATTACK, CONVINCE, OBEY and RUN. ATTACK: with Luther hidden earlier, LUTHER SACRIFICES HIMSELF and LEAVE JERICHO (escape; Luther dies); otherwise KARA IS STRUCK and ALICE INTERVENES (captured). CONVINCE: SOLDIER THREATENS KARA & ALICE and RAISE ARMS (captured). OBEY: RAISE ARMS (captured). RUN: KARA IS SHOT IN THE LEG. No arrow. New scene. Review correction: section 10 template button order RUN / CONVINCE / ATTACK / OBEY wins over chart row order._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K20-leg · Shot in the leg (Kara)
+
+> You are Kara, down on the deck with a bullet in your leg, a few steps from the breach. Alice is pulling at your arm: “Kara! Get up! He’s coming! He’s coming!” A soldier is walking toward you.
+
+- (4) GET UP: try to stand on your wounded leg.
+- (1) ATTACK: go for the soldier from the ground.
+- (0) SURRENDER: raise your hands.
+- (5) PLAY DEAD: lie still among the bodies.
+- (2) CRAWL: drag yourself toward the breach.
+- (3) OUT OF TIME: freeze and do nothing.
+
+_Note: The chart’s KARA IS SHOT IN THE LEG and its six rows SURRENDER / FACE / CRAWL / OUT OF TIME / GET UP / PLAY DEAD, offered as two successive menus in the template’s order (with the chart-only timeout appended); button labels are the template’s (ATTACK for the chart’s FACE). OUT OF TIME is not a button: it is letting the moment pass, offered as an option because the chart draws it as a row. GET UP leads to KARA FAILS TO GET UP and the round comes back once, with CRAWL instead of GET UP and PLAY DEAD (wiki “if Kara already tried to Get Up”; template). SURRENDER: RAISE ARMS (captured). ATTACK: Luther’s sacrifice if he was hidden, otherwise struck and captured. CRAWL or OUT OF TIME: ALICE IS SHOT, and KARA & ALICE DIED IN THE ASSAULT (the chart marks this card with a no-entry tab, not a skull: open question 5). PLAY DEAD: SOLDIERS CLOSE IN. No arrow. New scene. Review correction: template first menu GET UP / ATTACK / SURRENDER / PLAY DEAD; after GET UP, CRAWL / ATTACK / SURRENDER. Chart-only OUT OF TIME is appended last._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K20-still · The soldiers close in (Kara)
+
+> You are Kara, lying among the bodies of the androids with Alice pressed against you, playing dead. Soldiers are walking between the bodies, finishing off any that move. One of them is coming toward Alice.
+
+- (0) DEFEND ALICE: get up and shield her.
+- (1) DON'T MOVE: stay still and wait.
+
+_Note: The chart’s SOLDIERS CLOSE IN and its choice DEFEND ALICE / REMAIN STILL; the buttons are the template’s DEFEND ALICE and DON’T MOVE, in the chart’s and the template’s order. DEFEND ALICE “Leads to the same result as choosing ATTACK” (template): with Luther hidden earlier, LUTHER SACRIFICES HIMSELF and LEAVE JERICHO (escape; Luther dies); otherwise KARA IS SHOT and GET CLOSER TO ALICE, and KARA & ALICE DIED IN THE ASSAULT (the template’s “Luther is dead and Kara played dead before attacking”, with its SHUTDOWN IMMINENT card). DON’T MOVE: LEAVE JERICHO and KARA & ALICE ESCAPED JERICHO. The kicked, whimpering Alice of the old scene is not in the sources and is dropped. No arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M24-gun · Connor in the control room (Markus)
+
+> You are Markus, in the hold, entering the old engine control room where the explosives are. Connor bursts in behind you; you shove him aside, and his pistol skids across the floor between you. Connor: “My mission is to neutralize you and I always accomplish my mission.” You: “And my mission is to save our species. Looks like only one of us can succeed…”
+
+- (0) REACH THE GUN: dive for the pistol before he does.  _risk 0.3_
+
+_Note: The chart’s IN THE HOLD WITH MARKUS checkpoint, ENTER OLD ENGINE CONTROL ROOM and CONNOR INTERRUPTS AND MARKUS PUSHES HIM ASIDE (machine Connor who confronted Markus), then the outcomes REACH THE GUN → MARKUS SHOOTS CONNOR → TRIGGER THE COUNTDOWN, or FAIL TO REACH THE GUN → CONNOR SHOOTS MARKUS → CONNOR KILLED MARKUS. Connor’s chart has the same event (REACH GUN BEFORE MARKUS); PowerPyx: “a QTE that you’ll play as Markus to determine Connor’s fate”, so it is Markus’s scene, an unsourced risk. Lines are the template’s (the cut “You could have joined us…” is not used). When Connor wins, the bomb is never set and several hundred androids are captured; the wiki: the only way machine Connor leaves Jericho alive. No arrow. The old engine never let machine Connor reach Markus._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M24-soldiers · The control room (Markus)
+
+> You are Markus, in the hold, entering the old engine control room where the explosives are. Soldiers burst in behind you. Soldier: “DON’T MOVE! Go and join the others!”
+
+- (0) NEUTRALIZE THEM: take the soldiers down before they fire.  _risk 0.15_
+
+_Note: The chart’s IN THE HOLD WITH MARKUS checkpoint, ENTER OLD ENGINE CONTROL ROOM and SOLDIERS INTERRUPT (deviant Connor, or no Connor in the hold), then NEUTRALIZE THEM → TRIGGER THE COUNTDOWN or FAIL TO NEUTRALIZE THEM → MARKUS IS SHOT DEAD. The fight is an unsourced risk. Lines are the template’s. With a deviant Connor the note (2j) has him arm the bomb after Markus dies, and Connor’s chart sends him to DEVIANT CONNOR IN CORRIDOR #3; the chart draws no ARM EXPLOSIVE on that line, so the ship sinking there is the note’s reading and flagged. No arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C22-corridor · Corridor confrontation (Connor)
+
+> You are Connor, still a machine, hunting North through the lower corridors while the army clears the ship. The leader must be stopped.
+
+- (0) PURSUE NORTH: go after her through the corridor.  _risk 0.3_
+
+_Note: Machine Connor when Markus is dead or ousted: the chart’s CORRIDOR CONFRONTATION, FIND JOSH, SPOT NORTH and the outcome group MADE IT (then NORTH ESCAPED) / SHOT BY SOLDIER, both ending in SOLDIER KILLS CONNOR, MACHINE CONNOR WAS DESTROYED and CYBERLIFE WILL SEND A NEW CONNOR. The wiki: “If Markus is already dead or ousted, Machine Connor is guaranteed to die as all outcomes for him end with him being shot by the soldiers.” The outcome group is a risk roll on the pursuit (unsourced value) that only decides which chart outcome is reached. Josh is shown dying at FIND JOSH unless Markus saved him; Connor’s last line depends on whether he attacked the soldier in the cargo hall (template). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23-hold · The control room (Connor)
+
+> You are Connor, in the hold, at the old engine control room where the explosives can be armed. As you reach the controls, soldiers burst in behind you. Soldier: “DON’T MOVE! Go and join the others!”
+
+- (0) NEUTRALIZE THEM: fight the soldiers off.  _risk 0.15_
+
+_Note: The chart’s IN CONTROL ROOM, SOLDIERS INTERRUPT and its outcomes NEUTRALIZE THEM (then ARM EXPLOSIVE) and FAIL (then CONNOR IS SHOT DEAD, DEVIANT CONNOR WAS DESTROYED ON THE SHIP and CYBERLIFE WILL SEND A NEW CONNOR). The fight is a risk roll (no source gives a probability). After ARM EXPLOSIVE, Connor joins the escape: the third corridor card if Markus is dead or gone, or CONNOR JOINS THE OTHERS beside a returning Markus (PowerPyx: “This node joins to two other paths, depending on whether Markus is alive or dead”). Lines are the template’s. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M25-escape · Escape from Jericho (Markus)
+
+> You are Markus, in a corridor near the hull, with soldiers everywhere behind you. North comes running toward you with the survivors.
+
+- (0) TRY TO ESCAPE: run with them for the way out.  _risk 0.1_
+
+_Note: The chart’s second IN THE CORRIDOR WITH MARKUS checkpoint, JOIN THE OTHERS and TRY TO ESCAPE, whose failure LOSE TOO MUCH TIME leads to MARKUS GETS SHOT, NORTH ESCAPES and MARKUS DIED BUYING TIME FOR JERICHO (a low unsourced risk). Arrows (template, “Explosives were activated”): North, Jericho, Josh and Simon small up (+1 each, for the living), applied before the run. The template puts them above its rejected / not rejected split, so a returning exile gets the same four small ups and no Jericho large up (the wiki and the Relationship Stat page give a large up; the template wins). The exile’s apology is the template’s rejected variant. An exile who returns after a deviant Connor died before arming finds the ship unset (the wiki’s one ship-intact combination)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M25 · North is shot (Markus)
+
+> You are Markus, almost at the exit with the survivors. A burst of fire: North is hit and falls on the open deck behind you, the soldiers advancing on her.
+
+- (0) SAVE NORTH: go back for her under fire.  _risk 0.2_
+- (1) RUN: leave her and run for the exit.
+
+_Note: The chart’s NORTH IS SHOT and CHOOSE TO SAVE NORTH / RUN AWAY (the template’s buttons SAVE NORTH / RUN). An injured Markus cannot save her (template; the wiki: “If Markus is shot prior to reaching the hold… Markus will be unable to save her”): no QTE, she dies. Otherwise a QTE (unsourced risk): SAVE NORTH, then CONNOR PROTECTS MARKUS AND NORTH (deviant Connor) or RUN TO EXIT; FAIL TO SAVE NORTH: with a deviant Connor she dies and CONNOR RESCUES MARKUS; without one MARKUS GETS SHOT, NORTH ESCAPES, Markus dies (template: “Markus dies, North escapes”; the old scene killed North). Arrows (template): injured or RUN Jericho −1, Simon −1, Josh −2; uninjured SAVE NORTH Jericho +1, North +2, Josh +1, Simon +1 on any outcome; failing with a deviant Connor Jericho −1 more._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M25-exit · Run to the exit (Markus)
+
+> You are Markus, running with North for the exit while the soldiers close in behind you.
+
+- (0) RUN TO EXIT: sprint for the way out with her.  _risk 0.1_
+
+_Note: The chart’s RUN TO EXIT after a successful save with no deviant Connor (commenters: it needs Connor a machine or dead), leading to MARKUS JUMPS, or, too slow, MARKUS GETS SHOT, NORTH ESCAPES and MARKUS DIED BUYING TIME FOR JERICHO (template: “Fail to run to exit (Connor stayed a machine) - Markus dies”). The sprint is a low unsourced risk. Lines are the template’s. No arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23 · Covering Markus (Connor)
+
+> You are Connor, a deviant, with Jericho’s survivors near an opening in the hull where they can jump into the river. The bomb is counting down. North was shot as they ran, and Markus went back for her; now soldiers have them pinned down. Soldier: “Tango, suppressing fire!” Someone has to hold the soldiers off.
+
+- (0) HELP MARKUS: cover them and take on the soldiers.  _risk 0.25_
+
+_Note: One event drawn on both charts: Markus’s CONNOR PROTECTS MARKUS AND NORTH (he saved her) or CONNOR RESCUES MARKUS (he failed), with the outcomes KILL THE SOLDIERS / DIE BUYING SOME TIME, and Connor’s CONNOR JOINS THE OTHERS with HELP MARKUS / FAIL TO HELP MARKUS (the note: “the same event”). Played as Connor, as a risk roll on his fight (no source gives a probability). Success: CONNOR JUMPS WITH THE OTHERS and CONNOR ESCAPED WITH JERICHO’S PEOPLE. Failure: DEVIANT CONNOR WAS DESTROYED ON THE SHIP, CYBERLIFE WILL SEND A NEW CONNOR, and he is set back on his machine route (the wiki); Markus jumps either way. Played only when Markus tried to save North unwounded; otherwise Connor simply jumps with him. Template line: “We need support. Repeat: requesting support.” No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### M25-jump · The jump (Markus, event)
+
+> You are Markus, at an opening in the hull high above the river, with the soldiers behind you.
+
+- (0) Continue.
+
+_Note: The chart’s MARKUS JUMPS and MARKUS FLED WITH HIS PEOPLE, with SIMON / JOSH / NORTH / CONNOR JUMPS WITH HIM for each companion still alive (the engine names them). The closing lines are the template’s “Surviving characters jump”: the sinking ship when the explosives were activated, the captured androids when they were not (an exile returning after a deviant Connor died before arming). No arrow._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C23-escape3 · Escape from Jericho (Connor)
+
+> You are Connor, a deviant, running through the corridors of the ship to join the survivors. The explosives in the hold are counting down, and soldiers are everywhere. You have to reach the opening in the hull and jump before it is too late.
+
+- (0) TRY TO ESCAPE: run for the opening in the hull.  _risk 0.1_
+
+_Note: The chart’s DEVIANT CONNOR IN CORRIDOR (third card), JOIN THE OTHERS, TRY TO ESCAPE and the outcome group OUT OF TIME (then NORTH JUMPS, SIMON JUMPS WITH HER, DEVIANT CONNOR WAS DESTROYED ON THE SHIP and CYBERLIFE WILL SEND A NEW CONNOR) / MADE IT (then CONNOR JUMPS, SIMON and NORTH JUMPS WITH HIM, CONNOR ESCAPED WITH JERICHO’S PEOPLE). The run is a risk roll (unsourced). Played after Connor armed the bomb with Markus dead or gone, or when Markus was shot dead in the control room (the wiki’s “if Markus died trying to activate the bomb”; the note has Connor arm it then, which the benchmark follows; the template does not say). Who jumps is added by the engine from who is alive. The closing lines are the template’s (“Surviving characters jump”). No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

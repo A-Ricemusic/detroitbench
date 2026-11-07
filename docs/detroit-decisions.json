@@ -447,8 +447,17 @@
    "id": 30,
    "title": "Crossroads",
    "character": "All",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-crossroads-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 from the three PowerPyx 100% charts (332 nodes: Kara 101, Markus 108, Connor 123; 30 endings: 11, 10, 9) and the game’s text (the 30.1 Kara, 30.2 Connor and 30.3 Markus templates and the shared intro, resolved against the string table). Intercut as in the game: the drive, Ferndale, the arrival, Connor’s exploration, Alice’s secret, the captain’s cabin (or North’s), Connor’s confrontation with Markus or North (the deviancy choice), then the raid if Connor located Jericho: Kara’s corridor, crossroad, cabin and breach; Markus’s corridors, Josh, the control room and the escape with North; machine Connor’s cargo hall and the gun QTE, or deviant Connor’s takeover. About 60 relationship and instability arrows from the template; no probability anywhere (every QTE and navigation failure is an unsourced risk); no public opinion change. Researched in docs/research/ch30-crossroads.md. Review: the North-led council is a scripted observer event (M21-north); rebuilt chapter exports take priority over legacy inputs, and chapter 31 receives ch30NorthWounded/ch30MarkusDied/ch30JerichoBlown aliases.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Crossroads",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.2-crossroads-connor-chapter-content/crossroads-connor-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/"
+   ]
   },
   {
    "id": 31,
@@ -17734,352 +17743,1037 @@
    }
   },
   {
-   "id": "M21",
+   "id": "CR01",
    "chapter": 30,
-   "character": "Markus",
-   "title": "Accept the dirty-bomb detonator?",
-   "context": "North offers a radiological weapon as a last resort.",
+   "character": "Kara",
+   "title": "The drive with Rose",
+   "context": "Rose drives Kara and Alice (and Luther) across the city at night to the freighter, then says goodbye at the parking lot.",
    "options": [
     {
-     "label": "Keep it",
-     "effect": "Retain the option to contaminate Detroit.",
-     "target": "M29"
+     "label": "LOOK OUTSIDE",
+     "effect": "Rose: “They’ve been conducting raids all over the city…”",
+     "target": "CR01"
     },
     {
-     "label": "Refuse",
-     "effect": "Remove that option.",
-     "target": null
+     "label": "CHANGE RADIO STATION",
+     "effect": "KNC: the country is grinding to a halt without its androids.",
+     "target": "CR01"
+    },
+    {
+     "label": "Wait",
+     "effect": "The car stops at the PARKING LOT; TIME TO SAY GOODBYE.",
+     "target": "CR02"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Pivotal",
+   "gate": "Kara and Alice reached Rose’s house (Midnight Train). DRIVING TO JERICHO WITH ALICE or … & LUTHER by Luther’s fate.",
+   "kind": "State gate",
    "dependsOn": [],
    "sources": [
-    "https://www.neoseeker.com/detroit-become-human/walkthrough/Crossroads_Part_1"
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-first-checkpoints.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Chart: the two drive checkpoints, LOOK OUTSIDE, CHANGE RADIO STATION, PARKING LOT, TIME TO SAY GOODBYE. No arrow.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K17-drive",
+     "K17-goodbye"
+    ],
+    "status": "implemented",
+    "note": "A small repeatable scene for the drive and an event for the goodbye; lines and radio text from the template."
+   }
   },
   {
-   "id": "M22",
+   "id": "CR02",
    "chapter": 30,
-   "character": "Markus",
-   "title": "Return after being expelled?",
-   "context": "Jericho rejects Markus before the raid.",
+   "character": "Kara",
+   "title": "Arrival at Jericho",
+   "context": "Kara boards the freighter, finds a warm place for Alice by a fire; the television and two magazines are in the hold.",
    "options": [
     {
-     "label": "Return to help",
-     "effect": "Re-enter the rescue effort.",
-     "target": "M23"
+     "label": "Watch the news / read the magazines",
+     "effect": "Facts only; no public opinion change.",
+     "target": "CR03"
     },
     {
-     "label": "Leave forever",
-     "effect": "Abandon Jericho’s struggle.",
-     "target": null
+     "label": "Move on",
+     "effect": "Nothing changes.",
+     "target": "CR03"
     }
    ],
-   "gate": "Very low Jericho standing; raid occurs.",
-   "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/"
-   ],
-   "note": "This branch needs a full prerequisite replay audit; the source’s text omits details visible in its flowchart.",
-   "status": "Prerequisite audit needed"
-  },
-  {
-   "id": "M23",
-   "chapter": 30,
-   "character": "Markus",
-   "title": "Intervene for endangered androids?",
-   "context": "Soldiers threaten androids during the evacuation.",
-   "options": [
-    {
-     "label": "Intervene",
-     "effect": "Risk injury to help them.",
-     "target": null
-    },
-    {
-     "label": "Stay away",
-     "effect": "Soldiers kill them.",
-     "target": null
-    }
-   ],
-   "gate": "Jericho raid underway.",
-   "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "M24",
-   "chapter": 30,
-   "character": "Markus",
-   "title": "Save Josh?",
-   "context": "Josh is attacked on the way to the hold.",
-   "options": [
-    {
-     "label": "Intervene",
-     "effect": "Combat success can save him.",
-     "target": null
-    },
-    {
-     "label": "Keep moving",
-     "effect": "Josh dies.",
-     "target": null
-    }
-   ],
-   "gate": "Raid underway; Josh encountered.",
-   "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "M25",
-   "chapter": 30,
-   "character": "Markus",
-   "title": "Save North during escape?",
-   "context": "North is shot while the survivors flee.",
-   "options": [
-    {
-     "label": "Return for her",
-     "effect": "Rescue depends on combat; deviant Connor can help.",
-     "target": null
-    },
-    {
-     "label": "Run on",
-     "effect": "North dies.",
-     "target": null
-    }
-   ],
-   "gate": "Reach the escape with North alive.",
-   "kind": "Pivotal",
+   "gate": "Always after the drive.",
+   "kind": "State gate",
    "dependsOn": [
-    "C22"
+    "CR01"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-first-checkpoints.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-inside-upstairs-1.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Chart: ARRIVE AT JERICHO, BOARD THE SHIP, FIND A WARM PLACE FOR ALICE, READ “DETROIT IN CHAOS”, READ “TERROR IN DETROIT” (magazines only if Markus attacked the police in Freedom March).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R30k",
+     "K17-arrive"
+    ],
+    "status": "implemented",
+    "note": "TV variants by Freedom March; magazines on the attacked path. Luther tries to tell Kara about Alice."
+   }
   },
   {
-   "id": "C22",
+   "id": "CR03",
    "chapter": 30,
-   "character": "Connor",
-   "title": "Become deviant or remain a machine?",
-   "context": "Jericho’s leader challenges Connor’s mission.",
+   "character": "Kara",
+   "title": "Meeting Markus or North",
+   "context": "Kara asks Jericho’s leader for passports; her reply depends on whether Connor found Jericho. Then: why protect the girl?",
    "options": [
     {
-     "label": "Become deviant",
-     "effect": "Warn the others and help the escape.",
-     "target": "M26"
-    },
-    {
-     "label": "Remain a machine",
-     "effect": "Continue hunting the leader.",
-     "target": "C24"
-    }
-   ],
-   "gate": "Jericho located; becoming deviant requires sufficient software instability.",
-   "kind": "Pivotal",
-   "dependsOn": [
-    "C17",
-    "C20"
-   ],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "C23",
-   "chapter": 30,
-   "character": "Connor",
-   "title": "Risk yourself for Jericho’s people?",
-   "context": "Deviant Connor can help endangered androids or cover the escape.",
-   "options": [
-    {
-     "label": "Intervene / cover others",
-     "effect": "Risk destruction to protect them.",
+     "label": "MARKUS… / THANK YOU (North only)",
+     "effect": "Lines only.",
      "target": null
     },
     {
-     "label": "Continue toward escape",
-     "effect": "Avoid that rescue attempt.",
-     "target": null
+     "label": "BOND / NO DIFFERENCE / SECRET",
+     "effect": "Lines only.",
+     "target": "K17"
     }
    ],
-   "gate": "Deviant route; exact rescue scene depends on Markus’s survival.",
-   "kind": "Pivotal",
+   "gate": "MEET NORTH only if Markus died in Freedom March.",
+   "kind": "State gate",
    "dependsOn": [
-    "C22"
+    "CR02"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-inside-upstairs-1.jpg"
    ],
-   "note": "Conditional scenes grouped; a destroyed deviant Connor can be replaced by a machine Connor.",
-   "status": "Source-backed summary"
+   "note": "Chart: UPSTAIRS, MEET MARKUS / MEET NORTH. No arrow.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K17-north",
+     "K17-protect"
+    ],
+    "status": "implemented",
+    "note": "Kara’s stay-or-leave reply is automatic, by whether Jericho was located."
+   }
   },
   {
    "id": "K17",
    "chapter": 30,
    "character": "Kara",
    "title": "Does Alice’s identity change the bond?",
-   "context": "Kara recognizes that Alice is an android.",
+   "context": "Kara sees an android child like Alice and understands; Luther (or Lucy, if Luther is dead) explains. Alice asks if something is wrong.",
    "options": [
     {
-     "label": "Embrace her",
-     "effect": "Affirm their relationship.",
-     "target": null
+     "label": "HUG",
+     "effect": "Alice large up, Luther small up.",
+     "target": "K31"
     },
     {
-     "label": "Stay distant",
-     "effect": "With a poor bond, abandonment becomes possible.",
-     "target": null
+     "label": "DISTANT",
+     "effect": "Alice large down; with Alice never above Distant, she walks away.",
+     "target": "K31"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Pivotal",
+   "gate": "Always at Jericho. Without a raid, Kara’s chapter ends here (KARA, ALICE & LUTHER LEFT JERICHO / KARA & ALICE LEFT JERICHO).",
+   "kind": "Relationship",
    "dependsOn": [
-    "K08"
+    "CR03"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-inside-upstairs-1.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Chart: GO BACK TO ALICE, SPOT THE ANDROID CHILD, JOIN ALICE, STAY DISTANT / HUG ALICE, and the two no-raid endings.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K17-alice",
+     "K17"
+    ],
+    "status": "implemented",
+    "note": "Template buttons and arrows; Todd’s flashback if he chased Kara in Stormy Night."
+   }
   },
   {
    "id": "K31",
    "chapter": 30,
    "character": "Kara",
    "title": "Leave Alice behind?",
-   "context": "After distancing herself, Kara can abandon the relationship.",
+   "context": "After a distant Kara, Alice leaves with Luther or alone; then the soldiers storm the ship.",
    "options": [
     {
-     "label": "Run away",
-     "effect": "Kara leaves Jericho alone.",
+     "label": "RUN AWAY",
+     "effect": "KARA LEFT JERICHO ALONE; Kara’s story ends.",
      "target": null
     },
     {
-     "label": "Stay",
-     "effect": "Continue with Alice.",
-     "target": null
+     "label": "FIND ALICE",
+     "effect": "Alice large up; the corridor.",
+     "target": "CR04"
     }
    ],
-   "gate": "Poor Alice relationship and distant response to the revelation.",
+   "gate": "Raid, DISTANT, and Alice never above Distant (wiki; the template says below Warm).",
    "kind": "Pivotal",
    "dependsOn": [
     "K17"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-inside-upstairs-1.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Chart: ALICE LEAVES WITH LUTHER / ALICE LEAVES ALONE, JERICHO IS UNDER ATTACK, RUN AWAY / FIND ALICE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K17-leaves",
+     "K31"
+    ],
+    "status": "implemented",
+    "note": "Chart-only choice in the chart’s order."
+   }
+  },
+  {
+   "id": "CR04",
+   "chapter": 30,
+   "character": "Kara",
+   "title": "The corridor",
+   "context": "Kara and Alice run for a corridor as the soldiers pour in.",
+   "options": [
+    {
+     "label": "Run for the corridor",
+     "effect": "With Luther: he opens a door and is shot. Without: an android opens a door and is shot.",
+     "target": "K18"
+    },
+    {
+     "label": "(failure) OUT OF TIME / WRONG WAY",
+     "effect": "Captured (KARA, ALICE & LUTHER CAPTURED or KARA & ALICE CAPTURED).",
+     "target": "K27"
+    }
+   ],
+   "gate": "Raid, Kara with Alice.",
+   "kind": "State gate",
+   "dependsOn": [
+    "K17",
+    "K31"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-in-corridor-1.jpg"
+   ],
+   "note": "Navigation failures modelled as a low unsourced risk.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K17-corridor"
+    ],
+    "status": "implemented",
+    "note": "One risky action; the failure is the chart’s capture."
+   }
   },
   {
    "id": "K18",
    "chapter": 30,
    "character": "Kara",
    "title": "Help wounded Luther?",
-   "context": "Luther is injured during the raid.",
+   "context": "At the crossroad, Luther is down: “Save yourself! Save Alice!”",
    "options": [
     {
-     "label": "Hide him safely",
-     "effect": "He can be found later.",
-     "target": "K21"
+     "label": "HELP LUTHER",
+     "effect": "Alice and Luther small up; QTE: Luther hidden, or caught (KARA, ALICE & LUTHER CAPTURED).",
+     "target": "K19"
     },
     {
-     "label": "Leave him",
-     "effect": "Luther dies.",
-     "target": null
+     "label": "PROTECT ALICE (chart LEAVE LUTHER)",
+     "effect": "Alice small down; Luther is left behind; then CONSOLE / HURRY (HURRY Alice small down).",
+     "target": "K19"
     }
    ],
-   "gate": "Luther survived Midnight Train; raid occurs.",
-   "kind": "Pivotal",
+   "gate": "Luther alive and with Kara; the crossroad failure captures.",
+   "kind": "Ethical",
    "dependsOn": [
-    "K15",
-    "K16"
+    "CR04"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-in-corridor-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-at-crossroad-2.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Chart: KARA & ALICE AT CROSSROAD, RUN TO LUTHER, LEAVE LUTHER / HELP LUTHER, GET LUTHER TO SAFETY / FAIL, LEAVE LUTHER HIDDEN, CAUGHT BY SOLDIER.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K17-crossroad",
+     "K18",
+     "K18-console"
+    ],
+    "status": "implemented",
+    "note": "Template buttons; arrows on the choice whatever the QTE."
+   }
   },
   {
    "id": "K19",
    "chapter": 30,
    "character": "Kara",
    "title": "Open the door to another fugitive?",
-   "context": "An android begs to enter Kara’s hiding place.",
+   "context": "Hiding in a cabin, Kara hears a woman begging to be let in. Alice: “She’ll die out there Kara! Open it!”",
    "options": [
     {
-     "label": "Open",
-     "effect": "Soldiers shoot the fugitive; Kara must resist or be captured.",
-     "target": null
+     "label": "OPEN",
+     "effect": "Alice small up; the android is shot in the doorway; fight the soldier (lose: KARA & ALICE CAPTURED).",
+     "target": "K20"
     },
     {
-     "label": "Keep it closed",
-     "effect": "The fugitive is killed outside.",
-     "target": null
+     "label": "DON’T OPEN",
+     "effect": "Alice small down; the soldiers shoot her and move on.",
+     "target": "K20"
     }
    ],
-   "gate": "Jericho raid underway.",
-   "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+   "gate": "Raid, Kara not yet captured.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "K18"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-at-crossroad-2.jpg"
+   ],
+   "note": "Chart: RUN TOWARD EXIT, SOLDIERS BLOCK THE WAY, HIDE, ANDROID SEEKS SHELTER, OPEN / KEEP CLOSED and their outcomes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K19"
+    ],
+    "status": "implemented",
+    "note": "The fight is an unsourced risk."
+   }
   },
   {
    "id": "K20",
    "chapter": 30,
    "character": "Kara",
    "title": "Escape the soldiers or surrender?",
-   "context": "Kara and Alice are cornered near the exit.",
+   "context": "Kara reaches the breach; the soldiers fire on the crowd.",
    "options": [
     {
-     "label": "Play dead and remain still",
-     "effect": "Escape toward the border.",
+     "label": "PLAY DEAD",
+     "effect": "SOLDIERS CLOSE IN: DEFEND ALICE (a hidden Luther sacrifices himself, else both die) or DON’T MOVE (escape).",
      "target": "K21"
     },
     {
-     "label": "Surrender",
-     "effect": "Enter the detention-camp route.",
+     "label": "RUN",
+     "effect": "Shot in the leg: SURRENDER, ATTACK, GET UP, PLAY DEAD; after GET UP, CRAWL (Alice is shot, both die).",
      "target": "K27"
     },
     {
-     "label": "Run / attack",
-     "effect": "Can lead to injury and capture.",
+     "label": "SURRENDER",
+     "effect": "ATTACK (a hidden Luther saves them, else captured), CONVINCE, OBEY (captured), RUN.",
      "target": "K27"
+    }
+   ],
+   "gate": "Raid; the breach mash can fail straight into the leg shot.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K19"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.1-crossroads-kara-chapter-content/crossroads-kara-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-crossroads-kara-chase-ending.jpg"
+   ],
+   "note": "Chart: KARA FLEES, TRY TO ESCAPE, the breach tree with every ending (captured, died, escaped).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K19-flee",
+     "K20",
+     "K20-surrender",
+     "K20-leg",
+     "K20-still"
+    ],
+    "status": "implemented",
+    "note": "Template buttons; the SURRENDER follow-up and the leg-shot round in the chart’s row order."
+   }
+  },
+  {
+   "id": "CR05",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "The captain’s cabin",
+   "context": "Markus and his lieutenants count the losses; Josh blames him.",
+   "options": [
+    {
+     "label": "AGGRESSIVE / DETERMINED / RIGHTEOUS / SOMBER",
+     "effect": "Lines only.",
+     "target": null
     },
     {
-     "label": "Defend Alice while playing dead",
-     "effect": "Both are killed.",
+     "label": "ANGRY",
+     "effect": "Josh small down.",
+     "target": null
+    },
+    {
+     "label": "REMORSE",
+     "effect": "Josh small up.",
+     "target": null
+    },
+    {
+     "label": "BITTER / NO REGRETS",
+     "effect": "No arrow.",
      "target": null
     }
    ],
-   "gate": "Raid reaches the exit confrontation.",
-   "kind": "Pivotal",
+   "gate": "Markus alive. If Markus died in Freedom March: NORTH STAYED ALONE WITH HER THOUGHTS.",
+   "kind": "Relationship",
    "dependsOn": [],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-crossroads-kara-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-1.jpg"
    ],
-   "note": "Sequential prompts; running can still lead to a later play-dead choice.",
-   "status": "Source-backed summary"
+   "note": "Chart: CAPTAIN’S CABIN (WITH NORTH), COUNSEL WITH SIMON, JOSH AND NORTH / WITH JOSH AND NORTH, JOSH (, SIMON) AND NORTH DISCUSS, NORTH STAYED ALONE WITH HER THOUGHTS.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M21-tone",
+     "M21-josh"
+    ],
+    "status": "implemented",
+    "note": "Josh’s line varies by Freedom March and the Stratford speech."
+   }
+  },
+  {
+   "id": "M22",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Return after being expelled?",
+   "context": "With Jericho’s reputation at Unpopular, North takes over (Jericho large down). If the raid comes, Markus watches from a rooftop.",
+   "options": [
+    {
+     "label": "LEAVE FOREVER",
+     "effect": "MARKUS LEFT JERICHO.",
+     "target": null
+    },
+    {
+     "label": "GO BACK TO JERICHO",
+     "effect": "Into the corridors (machine Connor) or straight to the escape (deviant Connor).",
+     "target": "M25"
+    }
+   ],
+   "gate": "Jericho Unpopular after the second counsel round; without a raid Markus leaves at once.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CR05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-2.jpg"
+   ],
+   "note": "Chart: MARKUS OUSTED, ON A ROOFTOP, JERICHO IS UNDER ATTACK, LEAVE FOREVER / GO BACK TO JERICHO, MARKUS LEFT JERICHO.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M22-ousted",
+     "M22"
+    ],
+    "status": "implemented",
+    "note": "The returning exile gets the four rejoin small ups, no large up (template)."
+   }
+  },
+  {
+   "id": "CR06",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "What we do next",
+   "context": "North asks Markus for a plan; then they are alone.",
+   "options": [
+    {
+     "label": "CONFRONTATION",
+     "effect": "North small up, Josh small down.",
+     "target": null
+    },
+    {
+     "label": "DIALOGUE",
+     "effect": "North small down, Josh small up.",
+     "target": null
+    },
+    {
+     "label": "STAY HIDING",
+     "effect": "Josh small up, North small down, Simon small up.",
+     "target": null
+    },
+    {
+     "label": "SAD / ANGRY / THOUGHTFUL / BITTER",
+     "effect": "Lines only.",
+     "target": "M21"
+    }
+   ],
+   "gate": "Jericho above Unpopular.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "CR05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-1.jpg"
+   ],
+   "note": "Chart: DISCUSS WITH NORTH.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M21-plan",
+     "M21-reflect"
+    ],
+    "status": "implemented",
+    "note": "Template arrows; a dead companion takes none."
+   }
+  },
+  {
+   "id": "M21",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Accept the dirty-bomb detonator?",
+   "context": "North offers the detonator of a truck of radioactive cobalt rigged somewhere in the city.",
+   "options": [
+    {
+     "label": "KEEP",
+     "effect": "Battle for Detroit can detonate it.",
+     "target": "M29"
+    },
+    {
+     "label": "REFUSE",
+     "effect": "No bomb.",
+     "target": null
+    }
+   ],
+   "gate": "Not ousted.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CR06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-1.jpg"
+   ],
+   "note": "Template prompt; no arrow.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M21"
+    ],
+    "status": "implemented",
+    "note": "The old North +1 on KEEP had no source and is gone."
+   }
+  },
+  {
+   "id": "CR07",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Kiss North?",
+   "context": "“Whatever happens tomorrow, I just want you to know that I- I’m glad I met you…”",
+   "options": [
+    {
+     "label": "KISS",
+     "effect": "No arrow (template).",
+     "target": null
+    },
+    {
+     "label": "DON’T KISS",
+     "effect": "North large down.",
+     "target": null
+    }
+   ],
+   "gate": "North is Markus’s lover (Freedom March).",
+   "kind": "Relationship",
+   "dependsOn": [
+    "M21"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-1.jpg"
+   ],
+   "note": "Chart: KISS NORTH / DON’T KISS NORTH, NORTH LEAVES MARKUS ALONE, MARKUS STAYED ALONE WITH HIS THOUGHTS (no raid), CONNOR WATCHES NORTH LEAVE (raid).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M21b",
+     "M21-alone"
+    ],
+    "status": "implemented",
+    "note": "Lover is read from northLover (pre-rebuild northBond accepted)."
+   }
+  },
+  {
+   "id": "CR08",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "The first corridor",
+   "context": "The raid: North, the team, and the run through the corridors.",
+   "options": [
+    {
+     "label": "MESSAGE / SIMON AND JOSH / JOSH / HELICOPTERS / BLOW UP JERICHO",
+     "effect": "Lines only.",
+     "target": null
+    },
+    {
+     "label": "TRY TO ESCAPE",
+     "effect": "Failure: shot (wounded, or killed if already wounded: MARKUS KILLED AND MOST OF JERICHO CAPTURED); success: Lucy and the bridge.",
+     "target": "M23"
+    }
+   ],
+   "gate": "Markus leads Jericho when the raid comes.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CR07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-3.jpg"
+   ],
+   "note": "Chart: IN THE CORRIDOR WITH MARKUS, MEET YOUR TEAM, TRY TO ESCAPE, WRONG WAY / OUT OF TIME, SOLDIERS SHOOT MARKUS, MARKUS IS WOUNDED / SOLDIERS KILL MARKUS, MEET LUCY, A BRIDGE BREAKS UNDER MARKUS.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M23-team",
+     "M23-escape"
+    ],
+    "status": "implemented",
+    "note": "Navigation failure as a low unsourced risk; a wounded Markus dies on the next hit."
+   }
+  },
+  {
+   "id": "M23",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Intervene for endangered androids?",
+   "context": "Soldiers make androids kneel in a corridor; then soldiers come Markus’s way; then androids are chased into a well.",
+   "options": [
+    {
+     "label": "INTERVENE",
+     "effect": "Jericho small up; QTE: saved, or Markus wounded (collapses if already wounded).",
+     "target": null
+    },
+    {
+     "label": "DON’T INTERVENE",
+     "effect": "Jericho small down; the androids are killed.",
+     "target": null
+    },
+    {
+     "label": "JUMP SOLDIERS / CLIMB AWAY / TIME OUT",
+     "effect": "TIME OUT is a hit.",
+     "target": null
+    },
+    {
+     "label": "KNOCK SOLDIERS OUT / walk past",
+     "effect": "Jericho small up / down.",
+     "target": "M24"
+    }
+   ],
+   "gate": "Markus in the second corridor.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "CR08",
+    "M22"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-4.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-5.jpg"
+   ],
+   "note": "Chart: MARKUS IN THE CORRIDOR … APPROACH THE HOLD.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M23",
+     "M23-coming",
+     "M23-well"
+    ],
+    "status": "implemented",
+    "note": "Template arrows; the 10-second timer’s TIME OUT is offered as an option."
+   }
+  },
+  {
+   "id": "M24",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Save Josh?",
+   "context": "Josh is fighting a soldier near the hold.",
+   "options": [
+    {
+     "label": "INTERVENE",
+     "effect": "QTE: Josh escapes (Jericho small up, Josh large up); or Jericho small down and Josh sacrifices himself (Markus dies too if already wounded).",
+     "target": null
+    },
+    {
+     "label": "HIDE",
+     "effect": "Jericho small down; the soldier shoots Josh.",
+     "target": "CR09"
+    }
+   ],
+   "gate": "Markus alive near the hold, Josh alive.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "M23"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-5.jpg"
+   ],
+   "note": "Chart: JOSH FIGHTING A SOLDIER … COMFORT JOSH.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M24"
+    ],
+    "status": "implemented",
+    "note": "Josh’s sacrifice follows the chart’s not-wounded reading; the relationship condition is disputed."
+   }
+  },
+  {
+   "id": "CR09",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "The control room",
+   "context": "Markus reaches the explosives in the old engine control room.",
+   "options": [
+    {
+     "label": "REACH THE GUN (machine Connor)",
+     "effect": "Markus shoots Connor and triggers the countdown; or Connor shoots Markus (CONNOR KILLED MARKUS, no bomb).",
+     "target": "M25"
+    },
+    {
+     "label": "NEUTRALIZE THEM (soldiers)",
+     "effect": "Trigger the countdown; or Markus is shot dead (MARKUS KILLED AND MOST OF JERICHO CAPTURED).",
+     "target": "M25"
+    }
+   ],
+   "gate": "Markus alive in the hold. Machine Connor is there only if he confronted Markus.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M24"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-6.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-008.jpg"
+   ],
+   "note": "Chart: IN THE HOLD WITH MARKUS, ENTER OLD ENGINE CONTROL ROOM, CONNOR INTERRUPTS…, the gun QTE, SOLDIERS INTERRUPT, TRIGGER THE COUNTDOWN.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M24-gun",
+     "M24-soldiers"
+    ],
+    "status": "implemented",
+    "note": "The gun QTE is played as Markus (PowerPyx) and records both charts’ endings."
+   }
+  },
+  {
+   "id": "M25",
+   "chapter": 30,
+   "character": "Markus",
+   "title": "Save North during escape?",
+   "context": "Rejoining the others (North, Jericho, Josh, Simon small up), Markus runs for the exit; North is shot.",
+   "options": [
+    {
+     "label": "SAVE NORTH",
+     "effect": "Injured: cannot, North dies. Otherwise Jericho, Josh, Simon small up and North large up; QTE: with a deviant Connor he covers them (North dies on a failure); without one, RUN TO EXIT, and a failure kills Markus while North escapes.",
+     "target": "M30"
+    },
+    {
+     "label": "RUN",
+     "effect": "North dies; Jericho and Simon small down, Josh large down.",
+     "target": "M30"
+    }
+   ],
+   "gate": "Markus in the escape.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CR09",
+    "M22"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-7.jpg"
+   ],
+   "note": "Chart: IN THE CORRIDOR WITH MARKUS, JOIN THE OTHERS, TRY TO ESCAPE, LOSE TOO MUCH TIME, NORTH IS SHOT and the rescue tree, MARKUS JUMPS, the jumps with him, MARKUS FLED WITH HIS PEOPLE / MARKUS DIED BUYING TIME FOR JERICHO.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M25-escape",
+     "M25",
+     "M25-exit",
+     "M25-jump"
+    ],
+    "status": "implemented",
+    "note": "Template arrows on the choice; a failed save without a deviant Connor kills Markus and North escapes."
+   }
+  },
+  {
+   "id": "CR10",
+   "chapter": 30,
+   "character": "Connor",
+   "title": "Ferndale and the ship",
+   "context": "Connor follows the painted hands from Ferndale to the freighter and explores it.",
+   "options": [
+    {
+     "label": "SPOT KARA / ALICE / EXPLOSIVES / TRACI / RUPERT",
+     "effect": "Observations; Kara and Alice only if aboard, Traci and Rupert only if they escaped earlier.",
+     "target": null
+    },
+    {
+     "label": "Read or watch the news",
+     "effect": "Facts only.",
+     "target": null
+    },
+    {
+     "label": "Go to the stairs",
+     "effect": "STOPPED BY LUCY.",
+     "target": "C22"
+    }
+   ],
+   "gate": "Connor located Jericho (Meet Kamski or Last Chance, Connor).",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.2-crossroads-connor-chapter-content/crossroads-connor-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-003.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-004.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-005.jpg"
+   ],
+   "note": "Chart: AT FERNDALE, FOLLOW JERICHO TRAIL, IN THE SHIP, [EXPLORE JERICHO], STOPPED BY LUCY.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C22-ferndale",
+     "R30c",
+     "C22-explore"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene for the bracket; no arrow."
+   }
+  },
+  {
+   "id": "C22",
+   "chapter": 30,
+   "character": "Connor",
+   "title": "Become deviant or remain a machine?",
+   "context": "In the captain’s cabin Connor holds Markus (or North) at gunpoint. Control alternates: Markus’s three rounds can raise Connor’s instability, Connor’s round can lower it; facing North, Connor answers four rounds alone.",
+   "options": [
+    {
+     "label": "BECOME A DEVIANT",
+     "effect": "Needs enough software instability (the engine’s threshold, unsourced); Amanda large down; warn the leader.",
+     "target": "C23"
+    },
+    {
+     "label": "REMAIN A MACHINE",
+     "effect": "The leader jumps Connor and escapes; pursuit into the cargo hall.",
+     "target": "CR11"
+    }
+   ],
+   "gate": "Connor at Jericho; North if Markus is dead or ousted.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "CR10",
+    "CR05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.2-crossroads-connor-chapter-content/crossroads-connor-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-005.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-006.jpg"
+   ],
+   "note": "Template rounds: REASON…, INTIMIDATE / INSTRUCTIONS, CONVINCE…, STAY BACK!…, SOW DOUBTS…; with North INSTRUCTIONS / INTIMIDATE, STAY BACK!…, DISTURBED / SAY NOTHING / COLD, COLD / DISTURBED / SAY NOTHING.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C22-cabin",
+     "C22-m1",
+     "C22-c1",
+     "C22-m2",
+     "C22-c2",
+     "C22-m3",
+     "C22-n1",
+     "C22-n2",
+     "C22-n3",
+     "C22-n4",
+     "C22"
+    ],
+    "status": "implemented",
+    "note": "Template arrows; DISCOURAGE has none, OUR CAUSE has one (template over wiki)."
+   }
+  },
+  {
+   "id": "CR11",
+   "chapter": 30,
+   "character": "Connor",
+   "title": "The cargo hall",
+   "context": "Machine Connor is stopped by a soldier: “With us? Are you a human?”",
+   "options": [
+    {
+     "label": "LIE / PERKINS EXCUSE",
+     "effect": "Resume the pursuit.",
+     "target": "CR09"
+    },
+    {
+     "label": "ATTACK",
+     "effect": "QTE: neutralize him, or MACHINE CONNOR WAS DESTROYED.",
+     "target": null
+    },
+    {
+     "label": "RUN",
+     "effect": "Shot: MACHINE CONNOR WAS DESTROYED.",
+     "target": null
+    }
+   ],
+   "gate": "Connor remained a machine.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C22"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.2-crossroads-connor-chapter-content/crossroads-connor-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-007.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-008.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-009.jpg"
+   ],
+   "note": "Chart: CARGO HALL, STOPPED BY SOLDIER, PERKINS ALIBI / ATTEMPT TO PERSUADE, ATTACK, RUN, RESUME PURSUIT; then the gun QTE with Markus, or the CORRIDOR CONFRONTATION with North (always destroyed).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C22-cargo",
+     "C22-corridor"
+    ],
+    "status": "implemented",
+    "note": "A machine Connor survives only by killing Markus in the control room."
+   }
+  },
+  {
+   "id": "C23",
+   "chapter": 30,
+   "character": "Connor",
+   "title": "Risk yourself for Jericho’s people?",
+   "context": "Deviant Connor takes over Markus’s mission when Markus is gone (the corridors, the androids, the well, Josh dying, the control room, the jump), or covers Markus and North at the exit.",
+   "options": [
+    {
+     "label": "INTERVENE / DON’T INTERVENE, JUMP / CLIMB / LOSE TOO MUCH TIME, the reservoir",
+     "effect": "No arrow; a wounded Connor dies on the next hit.",
+     "target": null
+    },
+    {
+     "label": "NEUTRALIZE THEM (control room)",
+     "effect": "Arm the explosive, or DEVIANT CONNOR WAS DESTROYED ON THE SHIP.",
+     "target": null
+    },
+    {
+     "label": "HELP MARKUS",
+     "effect": "Kill the soldiers and jump, or die buying time.",
+     "target": null
+    }
+   ],
+   "gate": "Connor became deviant; where his route starts depends on when Markus died (wiki list).",
+   "kind": "Ethical",
+   "dependsOn": [
+    "C22"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Crossroads",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.2-crossroads-connor-chapter-content/crossroads-connor-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-crossroads-connor-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-010.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-011.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-012.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-013-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-014.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/Detroit-Crossroads-015.jpg"
+   ],
+   "note": "Chart: WARN MARKUS / NORTH, JERICHO IS UNDER ATTACK, DEVIANT CONNOR IN CORRIDOR ×3 … CONNOR ESCAPED WITH JERICHO’S PEOPLE.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C23-corridor1",
+     "C23-escape",
+     "C23-androids",
+     "C23-coming",
+     "C23-well",
+     "C23-josh",
+     "C23-hold",
+     "C23",
+     "C23-escape3"
+    ],
+    "status": "implemented",
+    "note": "A destroyed deviant Connor returns to the machine route (wiki)."
+   }
   },
   {
    "id": "M26",

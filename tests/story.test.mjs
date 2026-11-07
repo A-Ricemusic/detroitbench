@@ -66,7 +66,7 @@ test('revolution is resolved in Battle for Detroit and a machine Connor can stop
 test('peaceful ending needs sympathetic public opinion; the bomb leaves Markus alive',()=>{
  const good=play({C12:byLabel('SPARE'),C06:'2',C06g:'1',C06h:'1',C06v1:'1',C06v2:'1',C06v3:'1',C07:'1',C07b:'1',C07c:'1',M11:byLabel('SPARE:'),M12:byLabel('PEACEFUL:'),M15:byLabel('Graffiti,'),M16:byLabel('Spare them'),M18e:byLabel('STAND GROUND'),M18g:byLabel('STAND GROUND'),M18h:byLabel('STAY:'),M19a:byLabel('SACRIFICE'),M27:byLabel('Lead an unarmed demonstration'),M28:byLabel('Refuse.'),M31:byLabel('Sing together.'),C29:byLabel('Lower the gun and walk away.')});assert.ok(good.visited.includes('M31'));assert.ok(good.s.publicSupport>=3);assert.equal(good.s.markusOutcome,'liberated');
  const bad=play({M10:'1',M11:'0',M12:'1',M15:'1',M16:'1',M18e:'0',M18f:'0',M27:'0',M28:'1',M31:'0'});assert.equal(bad.s.markus,false);
- const bomb=play({M21:byLabel('Take the detonator'),M27:byLabel('Lead an unarmed demonstration'),M28:byLabel('Refuse.'),M31:byLabel('Press the detonator.')});assert.equal(bomb.s.markus,true);assert.equal(bomb.s.contaminated,true)});
+ const bomb=play({M21:byLabel('KEEP:'),M27:byLabel('Lead an unarmed demonstration'),M28:byLabel('Refuse.'),M31:byLabel('Press the detonator.')});assert.equal(bomb.s.markus,true);assert.equal(bomb.s.contaminated,true)});
 test('risk: failures follow the game’s failure branches and are labelled, not exposed',()=>{
  const zlatko=play({},null,['K13']);assert.equal(zlatko.s.kara,false);assert.match(render(zlatko.s.karaOutcome,'real'),/Zlatko/);
  const march=play({M18e:'0',M18f:'0',M20a:'1'},null,['M19b']);assert.ok(march.visited.includes('M20a'),'failed charge reaches the ground scene');
@@ -79,15 +79,15 @@ test('Kara: detour still reaches the terminal, Todd needs the box, border depend
  const noBox=play({K01x:'1',K04:'1',C17:'1',C19:'1',K22:'0'});const k23=story.nodes.find(n=>n.id==='K23');assert.ok(noBox.visited.includes('K23'));assert.ok(!available(k23,{...noBox.s,choices:{}}).some(o=>o.id==='0'));
  const violent=play({K04:'1',C17:'1',C19:'1',K22:'1',K24:'0',K25:'0',M27:'1'});assert.equal(violent.s.kara,false)});
 test('Kara: running from the exit is captured unless a hidden Luther intervenes; play dead escapes',()=>{
- const run=play({C17:'0',C18:'0',K18:'1',K20:'2'});assert.equal(run.s.karaRoute,'camp');
- const luther=play({C17:'0',C18:'0',K18:'0',K20:'2'});assert.ok(luther.visited.includes('K21'));assert.equal(luther.s.luther,false);
- const still=play({C17:'0',C18:'0',K20:'0','K20-still':'0'});assert.ok(still.visited.includes('K21'));assert.ok(!still.visited.includes('K27a'))});
+ const run=play({C17:'0',C18:'0',K18:byLabel('PROTECT'),K20:byLabel('RUN:'),'K20-leg':byLabel('ATTACK:')});assert.equal(run.s.karaRoute,'camp');
+ const luther=play({C17:'0',C18:'0',K18:byLabel('HELP'),K20:byLabel('RUN:'),'K20-leg':byLabel('ATTACK:')});assert.ok(luther.visited.includes('K21'));assert.equal(luther.s.luther,false);
+ const still=play({C17:'0',C18:'0',K20:byLabel('PLAY DEAD:'),'K20-still':byLabel("DON'T MOVE:")});assert.ok(still.visited.includes('K21'));assert.ok(!still.visited.includes('K27a'))});
 test('Kara: river options depend on Luther, and the sinking boat needs his body gone',()=>{
  const r=play({C17:'1',C19:'1',K24:'1'});assert.ok(r.visited.includes('K26'));assert.ok(r.visited.includes('K34'));
  const withLuther=play({C17:'1',C19:'1',K24:'1',K26:'0',K34:'0'});assert.equal(withLuther.s.kara,false);
  const ok=play({C17:'1',C19:'1',K24:'1',K26:'0',K34:'1'});assert.equal(ok.s.border,true);
  const grief=play({C17:'1',C19:'1',K24:'1',K26:'2',K34:'1',K30:'0'});assert.ok(grief.visited.includes('K30'));assert.equal(grief.s.alice,false)});
-test('camp: waiting is only rescued by a successful uprising',()=>{const dead=play({C17:'0',C18:'0',K20:'1',K27a:'1',K28:'4',M27:'0'});assert.equal(dead.s.kara,false);const freed=play({...kind,C17:'0',C18:'0',K20:'1',K27a:'1',K28:'4',M27:'1',C22:'0',C25:'0',C26:'0'});assert.equal(freed.s.kara,true)});
+test('camp: waiting is only rescued by a successful uprising',()=>{const dead=play({C17:'0',C18:'0',K20:byLabel('SURRENDER:'),'K20-surrender':byLabel('OBEY:'),K27a:'1',K28:'4',M27:'0'});assert.equal(dead.s.kara,false);const freed=play({...kind,C17:'0',C18:'0',K20:byLabel('SURRENDER:'),'K20-surrender':byLabel('OBEY:'),K27a:'1',K28:'4',M27:'1',C22:'0',C25:'0',C26:'0'});assert.equal(freed.s.kara,true)});
 test('a dead protagonist never receives future decisions',()=>{const r=play({K02:'1'});assert.ok(!r.visited.some(id=>id.startsWith('K')&&!['K00','K00b',...CH4,'K02','R10'].includes(id)));assert.equal(r.s.alice,false)});
 test('randomized paths all terminate with valid options and account for every node exactly once',{timeout:120000},()=>{const rng=random(17),outcomes=new Set();for(let i=0;i<400;i++){const r=play({},rng);const seen=new Set(r.visited),skipped=new Set(r.skipped.map(x=>x.id));assert.equal(seen.size+skipped.size,story.nodes.length);assert.equal(r.skipped.length,skipped.size);for(const id of seen)assert.ok(!skipped.has(id),id+' both visited and skipped');for(const [id,count] of Object.entries(Object.groupBy(r.visited,x=>x)))if(!story.nodes.filter(n=>n.repeatWhile).map(n=>n.id).includes(id))assert.equal(count.length,1,id+' repeated');assert.ok(r.visited.includes('P01'));assert.ok(r.s.hostageOutcome,'the hostage chapter always resolves');outcomes.add(r.s.hostageOutcome)}assert.ok(outcomes.size>=5,'random play reaches most standoff endings: '+[...outcomes])});
 // Rebuilt chapters lengthen full-prefix replay; retain every integrity/tampering assertion.

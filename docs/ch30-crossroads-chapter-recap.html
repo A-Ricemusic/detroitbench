@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Crossroads · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 30</p>
+<h1>Crossroads: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s three flowcharts (PowerPyx 100% screenshots: Kara 101 nodes, Markus 108, Connor 123, 30 ending cards), the prompts, lines and stat arrows from the game’s own text (the detroitbecometext templates 30.1 Kara, 30.2 Connor, 30.3 Markus and the shared intro, resolved against the English string table), and the gaps from the Fandom wiki and PowerPyx. No source gives any probability or the deviancy threshold; every quick-time event and navigation failure is an unsourced risk roll. Researched in <code>docs/research/ch30-crossroads.md</code>; engine logic in <code>benchmark/chapters/ch30.mjs</code>.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#scenes">2 · Scenes</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#rules">4 · Rules and adaptations</a></li><li><a href="#endings">5 · The 30 endings</a></li><li><a href="#io">6 · Inputs and outputs</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<p>One chapter on three charts, intercut in the game’s order. The raid happens only if Connor located Jericho (Meet Kamski’s key or Last Chance, Connor); without it every character’s part ends quietly in the cabin and Connor never arrives.</p>
+<div class="cols">
+<div class="box"><h3>Before the raid</h3><ol>
+<li>Kara: the drive with Rose (LOOK OUTSIDE, CHANGE RADIO STATION), the goodbye at the parking lot.</li>
+<li>Connor: AT FERNDALE, the painted hands to the ship.</li>
+<li>Kara: the hold, the news, a warm place for Alice by a fire; Luther tries to tell her something.</li>
+<li>Connor: EXPLORE JERICHO (Kara, Alice, the explosives, Traci, Rupert), STOPPED BY LUCY.</li>
+<li>Kara: MEET MARKUS (or MEET NORTH if Markus died in Freedom March), the android child, Luther’s (or Lucy’s) explanation, HUG / DISTANT. A distant Kara whose Alice was never above Distant sees her walk away.</li>
+<li>Markus: the counsel (tone; Josh’s accusation), MARKUS OUSTED if Jericho is Unpopular; otherwise the plan, the reflection, the detonator, the kiss if North is his lover.</li>
+<li>Connor: the captain’s cabin. Facing Markus, control alternates (Markus, Connor, Markus, Connor, Markus); facing North, Connor answers four rounds. Then BECOME A DEVIANT / REMAIN A MACHINE.</li>
+</ol></div>
+<div class="box"><h3>The raid</h3><ol>
+<li>Kara: RUN AWAY / FIND ALICE if Alice left; the corridor; the crossroad and Luther; the cabin door; the breach and the soldiers.</li>
+<li>Markus (leading): the team, the corridors (wounds), the androids, the timer, the well, Josh, the control room (machine Connor’s gun QTE, or soldiers), the escape, North shot, the jump. An ousted Markus chooses on a rooftop whether to go back.</li>
+<li>Machine Connor: pursuit, the cargo hall, then the gun QTE with Markus (he can kill Markus or be killed) or, if Markus is dead or ousted, the corridor confrontation with North (always destroyed).</li>
+<li>Deviant Connor: with Markus alive he stays with North and can cover Markus and North at the exit (HELP MARKUS); with Markus gone he takes over the mission from where Markus fell (wiki list) and can arm the explosive and jump.</li>
+</ol></div>
+</div>
+
+<h2 id="scenes">2 · Scenes in order</h2>
+<p class="fine">67 scenes. Old IDs are kept for the prompts they always named (K17, K31, K18, K19, K20, K20-still, M21, M21b, M22–M25, C22, C23, R30k, R30c), so the shared tests and the dataset still point at the same decisions.</p>
+<div class="table"><table>
+<thead><tr><th>Scene</th><th>Who</th><th>Chart nodes / prompt</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><code>K17-drive</code></td><td>Kara</td><td>DRIVING TO JERICHO WITH ALICE (&amp; LUTHER), LOOK OUTSIDE, CHANGE RADIO STATION, PARKING LOT</td><td>Repeatable scene; no arrow</td></tr>
+<tr><td><code>K17-goodbye</code></td><td>Kara</td><td>TIME TO SAY GOODBYE</td><td>Event</td></tr>
+<tr><td><code>C22-ferndale</code></td><td>Connor</td><td>AT FERNDALE, FOLLOW JERICHO TRAIL, IN THE SHIP</td><td>Event; raid only</td></tr>
+<tr><td><code>R30k</code>, <code>R30c</code></td><td>Kara, Connor</td><td>The Jericho TV; READ “DETROIT IN CHAOS”, READ “TERROR IN DETROIT”</td><td>TV by Freedom March; magazines only if Markus attacked; no opinion change</td></tr>
+<tr><td><code>K17-arrive</code></td><td>Kara</td><td>ARRIVE AT JERICHO, BOARD THE SHIP, FIND A WARM PLACE FOR ALICE</td><td>Background talk varies with Markus alive or dead</td></tr>
+<tr><td><code>C22-explore</code></td><td>Connor</td><td>[EXPLORE JERICHO]: SPOT KARA / ALICE / EXPLOSIVES / TRACI / RUPERT, STOPPED BY LUCY</td><td>Repeatable; spots gated</td></tr>
+<tr><td><code>K17-north</code>, <code>K17-protect</code></td><td>Kara</td><td>UPSTAIRS, MEET NORTH (MARKUS… / THANK YOU), MEET MARKUS; BOND / NO DIFFERENCE / SECRET</td><td>No arrow</td></tr>
+<tr><td><code>K17-alice</code>, <code>K17</code></td><td>Kara</td><td>GO BACK TO ALICE, SPOT THE ANDROID CHILD, JOIN ALICE; HUG / DISTANT</td><td>No raid: the chapter ends here</td></tr>
+<tr><td><code>K17-leaves</code></td><td>Kara</td><td>ALICE LEAVES WITH LUTHER / ALICE LEAVES ALONE</td><td>Raid, DISTANT, Alice never above Distant</td></tr>
+<tr><td><code>M21-tone</code>, <code>M21-josh</code></td><td>Markus</td><td>CAPTAIN’S CABIN, COUNSEL WITH (SIMON,) JOSH AND NORTH; AGGRESSIVE…SOMBER; ANGRY / BITTER / REMORSE / NO REGRETS</td><td>Josh’s line by Freedom March and the speech</td></tr>
+<tr><td><code>M22-ousted</code></td><td>Markus</td><td>MARKUS OUSTED</td><td>Jericho large down; no raid: MARKUS LEFT JERICHO</td></tr>
+<tr><td><code>M21-plan</code>, <code>M21-reflect</code>, <code>M21</code>, <code>M21b</code>, <code>M21-alone</code></td><td>Markus</td><td>DISCUSS WITH NORTH; CONFRONTATION / DIALOGUE / STAY HIDING; SAD…BITTER; KEEP / REFUSE; KISS / DON’T KISS; NORTH LEAVES MARKUS ALONE</td><td>No raid: MARKUS STAYED ALONE WITH HIS THOUGHTS</td></tr>
+<tr><td><code>M21-north</code></td><td>Observer</td><td>CAPTAIN’S CABIN WITH NORTH; JOSH (SIMON) AND NORTH DISCUSS; NORTH STAYED ALONE WITH HER THOUGHTS</td><td>Scripted council when Markus died in Freedom March; no arrow</td></tr>
+<tr><td><code>C22-cabin</code></td><td>Connor</td><td>BACK IN CAPTAIN’S CABIN (WITH NORTH), ENTER CAPTAIN’S CABIN, THREATEN MARKUS / NORTH</td><td>Amanda: “We need it alive.”</td></tr>
+<tr><td><code>C22-m1</code>, <code>C22-c1</code>, <code>C22-m2</code>, <code>C22-c2</code>, <code>C22-m3</code></td><td>Markus / Connor</td><td>CONFRONT MARKUS: REASON…; INTIMIDATE / INSTRUCTIONS; CONVINCE…; STAY BACK!…; SOW DOUBTS…</td><td>Alternating control</td></tr>
+<tr><td><code>C22-n1</code>…<code>C22-n4</code></td><td>Connor</td><td>CONFRONT NORTH: INSTRUCTIONS / INTIMIDATE; STAY BACK!…; DISTURBED / SAY NOTHING / COLD; COLD / DISTURBED / SAY NOTHING</td><td>Markus dead or ousted</td></tr>
+<tr><td><code>C22</code></td><td>Connor</td><td>BECOME A DEVIANT / REMAIN A MACHINE (chart REMAIN A MACHINE / BECOME DEVIANT), WARN…, JERICHO IS UNDER ATTACK, … JUMPS CONNOR</td><td>Deviant needs the engine threshold</td></tr>
+<tr><td><code>K31</code></td><td>Kara</td><td>JERICHO IS UNDER ATTACK, RUN AWAY / FIND ALICE</td><td>Chart-only choice</td></tr>
+<tr><td><code>K17-corridor</code>, <code>K17-crossroad</code></td><td>Kara</td><td>KARA &amp; ALICE IN THE CORRIDOR … LUTHER IS SHOT / ANDROID OPENS DOOR AND IS SHOT; KARA &amp; ALICE AT CROSSROAD</td><td>OUT OF TIME / WRONG WAY as a low risk</td></tr>
+<tr><td><code>K18</code>, <code>K18-console</code></td><td>Kara</td><td>RUN TO LUTHER, HELP LUTHER / PROTECT ALICE (chart LEAVE LUTHER), CONSOLE / HURRY</td><td>QTE for hiding Luther</td></tr>
+<tr><td><code>M22</code></td><td>Markus</td><td>ON A ROOFTOP, LEAVE FOREVER / GO BACK TO JERICHO</td><td>Ousted Markus only</td></tr>
+<tr><td><code>M23-team</code>, <code>M23-escape</code></td><td>Markus</td><td>IN THE CORRIDOR WITH MARKUS, MEET YOUR TEAM (MESSAGE…), TRY TO ESCAPE, MEET LUCY, A BRIDGE BREAKS</td><td>Repeatable on a first wound</td></tr>
+<tr><td><code>C23-corridor1</code>, <code>C23-escape</code></td><td>Connor</td><td>DEVIANT CONNOR IN CORRIDOR #1, JOIN DEVIANTS, MAKE FOR THE HOLD, MEET LUCY, BRIDGE COLLAPSES</td><td>Markus gone before the attack</td></tr>
+<tr><td><code>M23</code>, <code>M23-coming</code>, <code>M23-well</code></td><td>Markus</td><td>MARKUS IN THE CORRIDOR, SOLDIERS THREATEN ANDROIDS (INTERVENE / DON’T INTERVENE), SOLDIERS COMING MARKUS’ WAY (JUMP SOLDIERS / CLIMB AWAY / TIME OUT), ENTER A WELL, KNOCK SOLDIERS OUT</td><td>Jericho arrows</td></tr>
+<tr><td><code>C23-androids</code>, <code>C23-coming</code>, <code>C23-well</code></td><td>Connor</td><td>DEVIANT CONNOR IN CORRIDOR #2 … USE RESERVOIR TO KNOCK SOLDIERS OUT</td><td>No arrow for Connor</td></tr>
+<tr><td><code>C22-cargo</code></td><td>Connor</td><td>CARGO HALL, STOPPED BY SOLDIER: LIE / PERKINS EXCUSE / ATTACK / RUN</td><td>Machine only</td></tr>
+<tr><td><code>K19</code></td><td>Kara</td><td>RUN TOWARD EXIT, SOLDIERS BLOCK THE WAY, HIDE, ANDROID SEEKS SHELTER, OPEN / DON’T OPEN</td><td>Fight is a risk</td></tr>
+<tr><td><code>M24</code></td><td>Markus</td><td>APPROACH THE HOLD, JOSH FIGHTING A SOLDIER, INTERVENE / HIDE</td><td>Josh saved, sacrificed or shot</td></tr>
+<tr><td><code>C23-josh</code></td><td>Connor</td><td>CONNOR TAKES OVER MARKUS’ MISSION, APPROACH HOLD, JOSH IS DYING, COMFORT JOSH</td><td>Josh dies</td></tr>
+<tr><td><code>K19-flee</code>, <code>K20</code>, <code>K20-surrender</code>, <code>K20-leg</code>, <code>K20-still</code></td><td>Kara</td><td>KARA FLEES, TRY TO ESCAPE, PLAY DEAD / RUN / SURRENDER, the surrender round, the leg shot (repeats after GET UP), SOLDIERS CLOSE IN</td><td>Every Kara ending of the breach</td></tr>
+<tr><td><code>M24-gun</code>, <code>M24-soldiers</code></td><td>Markus</td><td>IN THE HOLD WITH MARKUS, ENTER OLD ENGINE CONTROL ROOM; the gun QTE with machine Connor, or SOLDIERS INTERRUPT; TRIGGER THE COUNTDOWN</td><td>Played as Markus</td></tr>
+<tr><td><code>C22-corridor</code></td><td>Connor</td><td>CORRIDOR CONFRONTATION, FIND JOSH, SPOT NORTH, MADE IT / SHOT BY SOLDIER</td><td>Always destroyed</td></tr>
+<tr><td><code>C23-hold</code></td><td>Connor</td><td>IN THE HOLD WITH DEVIANT CONNOR, IN CONTROL ROOM, SOLDIERS INTERRUPT, ARM EXPLOSIVE</td><td>Takeover</td></tr>
+<tr><td><code>M25-escape</code>, <code>M25</code>, <code>M25-exit</code></td><td>Markus</td><td>IN THE CORRIDOR WITH MARKUS, JOIN THE OTHERS, TRY TO ESCAPE, NORTH IS SHOT (SAVE NORTH / RUN), RUN TO EXIT</td><td>See section 4</td></tr>
+<tr><td><code>C23</code></td><td>Connor</td><td>CONNOR PROTECTS MARKUS AND NORTH / CONNOR RESCUES MARKUS, HELP MARKUS</td><td>Deviant Connor with Markus</td></tr>
+<tr><td><code>M25-jump</code>, <code>C23-escape3</code></td><td>Markus, Connor</td><td>MARKUS JUMPS and who jumps with him; DEVIANT CONNOR IN CORRIDOR #3, TRY TO ESCAPE, CONNOR JUMPS / NORTH JUMPS</td><td>Closing lines by whether the ship sank</td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Stat arrows (template; small = 1, large = 2)</h2>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Option</th><th>Change</th></tr></thead>
+<tbody>
+<tr><td>Alice’s secret</td><td>HUG / DISTANT</td><td>Alice +2, Luther +1 (if with her) / Alice −2 (the wiki’s Luther down is not in the template)</td></tr>
+<tr><td>After Alice left</td><td>FIND ALICE</td><td>Alice +2</td></tr>
+<tr><td>Crossroad</td><td>HELP LUTHER / PROTECT ALICE; HURRY</td><td>Alice +1, Luther +1 whatever the QTE / Alice −1; Alice −1</td></tr>
+<tr><td>Cabin door</td><td>OPEN / DON’T OPEN</td><td>Alice +1 whatever the fight / Alice −1</td></tr>
+<tr><td>Counsel</td><td>ANGRY / REMORSE</td><td>Josh −1 / Josh +1</td></tr>
+<tr><td>Ousting</td><td>MARKUS OUSTED</td><td>Jericho −2</td></tr>
+<tr><td>Plan</td><td>CONFRONTATION / DIALOGUE / STAY HIDING</td><td>North +1, Josh −1 / North −1, Josh +1 / Josh +1, North −1, Simon +1</td></tr>
+<tr><td>Kiss</td><td>KISS / DON’T KISS</td><td>none (template; the wiki gives large up) / North −2</td></tr>
+<tr><td>Corridors</td><td>INTERVENE / DON’T INTERVENE; reservoir / walk past</td><td>Jericho +1 whatever the QTE / −1; Jericho +1 / −1</td></tr>
+<tr><td>Josh</td><td>INTERVENE (saved / lost) / HIDE</td><td>Jericho +1, Josh +2 / Jericho −1 / Jericho −1</td></tr>
+<tr><td>Rejoining the others</td><td>(also a returning exile)</td><td>North, Jericho, Josh, Simon +1 each; no large up</td></tr>
+<tr><td>North is shot</td><td>SAVE NORTH (not injured) / injured or RUN</td><td>Jericho +1, North +2, Josh +1, Simon +1 (and Jericho −1 more if she dies with a deviant Connor) / Jericho −1, Simon −1, Josh −2</td></tr>
+<tr><td>Confrontation, as Markus</td><td>REASON, CONVINCE, APPEAL, OUR CAUSE, SOW DOUBTS, QUESTION, RALLY, UNDERMINE</td><td>Instability +1 each (DEFY, DISCOURAGE, THREATEN, I KNOW YOU: none; DISCOURAGE and OUR CAUSE settled by the template)</td></tr>
+<tr><td>Confrontation, as Connor</td><td>STAY BACK!, WARNING SHOT, ENOUGH!; with North also COLD / DISTURBED</td><td>Instability −1 each; COLD −1, DISTURBED +1</td></tr>
+<tr><td>Deviancy</td><td>BECOME A DEVIANT</td><td>Amanda −2</td></tr>
+</tbody></table></div>
+<p class="fine">No public opinion change anywhere. A Connor destroyed here moves no stat (the old Hank −1, Amanda −1 and instability −1 have no source for Crossroads). A dead companion takes no arrow.</p>
+
+<h2 id="rules">4 · Rules and adaptations</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Sources</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Probabilities</td><td>None anywhere</td><td>QTEs and timers drawn with a failure branch are risk rolls (unsourced: 0.1 to 0.3); navigation failures (OUT OF TIME, WRONG WAY, LOSE TOO MUCH TIME) a low risk on the action; chart rows for doing nothing (TIME OUT, OUT OF TIME at the leg shot, LOSE TOO MUCH TIME) are options</td></tr>
+<tr><td>Deviancy threshold</td><td>“Have enough software instability”; no value</td><td>The engine’s <code>DEVIANCY_THRESHOLD</code> (unsourced); Markus can add three, Connor can remove one (or, facing North, Connor’s own answers move it)</td></tr>
+<tr><td>Wounds</td><td>Chart (WOUNDED / COLLAPSES), wiki, template “shot twice”; PowerPyx and GamerGuides: the third hit</td><td>A wounded Markus or deviant Connor dies on the next hit</td></tr>
+<tr><td>Button order</td><td>Template order vs chart rows</td><td>Template order, including RUN / CONVINCE / ATTACK / OBEY and the two leg-shot menus; chart-only timeouts follow the buttons</td></tr>
+<tr><td>Alice leaving</td><td>Wiki “never raised to Neutral”; template lock “below WARM”</td><td>The wiki: Alice never above Distant, DISTANT, and a raid</td></tr>
+<tr><td>Luther left behind</td><td>“not seen again… death not confirmed”</td><td>Leaves the story (<code>luther</code> false), fate <code>left</code></td></tr>
+<tr><td>North’s rescue</td><td>Template variants; wiki</td><td>Injured Markus cannot try (no QTE). Failure with a deviant Connor: North dies, Connor rescues Markus. Failure without: Markus dies, North escapes. Success without: RUN TO EXIT (failure: Markus dies)</td></tr>
+<tr><td>Josh’s sacrifice</td><td>Disputed (good standing vs not wounded)</td><td>The chart’s reading: an unwounded Markus losing the fight means Josh sacrifices himself</td></tr>
+<tr><td>Markus shot dead in the hold with a deviant Connor</td><td>Connor’s chart goes to corridor #3; the note: he then arms the bomb</td><td>The ship sinks; Connor goes to the jump</td></tr>
+<tr><td>HELP MARKUS</td><td>Same event as KILL THE SOLDIERS / DIE BUYING SOME TIME</td><td>A Connor scene (<code>C23</code>) after SAVE NORTH; if Markus runs or is injured, Connor simply jumps with him</td></tr>
+<tr><td>Lover</td><td>Template “North has lover relationship status”</td><td><code>northLover</code>; only when absent, the pre-rebuild <code>northBond</code> is accepted and KISS then sets <code>northLover</code></td></tr>
+<tr><td>Hank</td><td>Never appears</td><td>Nothing here; his suicide is Night of the Soul’s</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">5 · The 30 ending cards</h2>
+<div class="table"><table>
+<thead><tr><th>Card</th><th>Label</th><th>Reached in the benchmark</th></tr></thead>
+<tbody>
+<tr><td>K25</td><td>KARA LEFT JERICHO ALONE</td><td><code>K31</code> RUN AWAY</td></tr>
+<tr><td>K26 / K27</td><td>KARA, ALICE &amp; LUTHER LEFT JERICHO / KARA &amp; ALICE LEFT JERICHO</td><td><code>K17</code> without a raid</td></tr>
+<tr><td>K33 / K34</td><td>KARA, ALICE &amp; LUTHER CAPTURED / KARA &amp; ALICE CAPTURED</td><td><code>K17-corridor</code> failure</td></tr>
+<tr><td>K43</td><td>KARA &amp; ALICE CAPTURED</td><td><code>K17-crossroad</code> failure</td></tr>
+<tr><td>K51</td><td>KARA, ALICE &amp; LUTHER CAPTURED</td><td><code>K18</code> HELP LUTHER failure</td></tr>
+<tr><td>K61</td><td>KARA &amp; ALICE CAPTURED</td><td><code>K19</code> OPEN, fight lost</td></tr>
+<tr><td>K98</td><td>KARA &amp; ALICE CAPTURED</td><td>The breach: OBEY, CONVINCE, SURRENDER after the leg shot, or ATTACK without a hidden Luther</td></tr>
+<tr><td>K99</td><td>KARA &amp; ALICE DIED IN THE ASSAULT</td><td>CRAWL or OUT OF TIME at the leg shot; DEFEND ALICE without a hidden Luther</td></tr>
+<tr><td>K101</td><td>KARA &amp; ALICE ESCAPED JERICHO</td><td>DON’T MOVE; or a hidden Luther’s sacrifice after ATTACK or DEFEND ALICE</td></tr>
+<tr><td>M7</td><td>NORTH STAYED ALONE WITH HER THOUGHTS</td><td>Markus died in Freedom March (recorded at the first scene of the chapter)</td></tr>
+<tr><td>M13</td><td>MARKUS STAYED ALONE WITH HIS THOUGHTS</td><td><code>M21-alone</code> without a raid</td></tr>
+<tr><td>M20</td><td>MARKUS LEFT JERICHO</td><td><code>M22-ousted</code> without a raid, or <code>M22</code> LEAVE FOREVER</td></tr>
+<tr><td>M30 / M50 / M65 / M81</td><td>MARKUS KILLED AND MOST OF JERICHO CAPTURED</td><td>A second hit in the first corridor / the androids or the timer / Josh’s fight / the hold soldiers</td></tr>
+<tr><td>M75 · C46</td><td>CONNOR KILLED MARKUS</td><td><code>M24-gun</code> failure (both charts)</td></tr>
+<tr><td>M102</td><td>MARKUS DIED BUYING TIME FOR JERICHO</td><td>LOSE TOO MUCH TIME; a failed save or a slow RUN TO EXIT without a deviant Connor</td></tr>
+<tr><td>M104</td><td>MARKUS FLED WITH HIS PEOPLE</td><td><code>M25-jump</code></td></tr>
+<tr><td>C36 / C43 / C54</td><td>MACHINE CONNOR WAS DESTROYED</td><td>Cargo hall RUN or lost ATTACK / Markus wins the gun QTE / the corridor confrontation</td></tr>
+<tr><td>C85 / C102 / C112 / C122</td><td>DEVIANT CONNOR WAS DESTROYED ON THE SHIP</td><td>A second hit on the takeover route / the control room / out of time at the jump / FAIL TO HELP MARKUS</td></tr>
+<tr><td>C117</td><td>CONNOR ESCAPED WITH JERICHO’S PEOPLE</td><td>The jump, with Markus or after arming the explosive</td></tr>
+</tbody></table></div>
+<p class="fine">Every … DESTROYED card is followed by CYBERLIFE WILL SEND A NEW CONNOR: the engine keeps a replacement Connor for later chapters, on the machine route.</p>
+
+<h2 id="io">6 · Inputs and outputs</h2>
+<div class="cols">
+<div class="box"><h3>Read from earlier chapters</h3><ul>
+<li><code>jerichoLocated</code> (chapter 29) controls the raid and synchronizes <code>raid</code>; legacy raid is a fallback only when the location flag is absent.</li>
+<li><code>markus</code>, <code>lutherWith</code>, <code>simon</code>, <code>josh</code>, <code>north</code>, <code>jerichoTrust</code>, <code>aliceMax</code>, <code>instability</code>.</li>
+<li><code>northLover</code> (or the pre-rebuild <code>northBond</code>).</li>
+<li><code>ch28Attacked</code> (then legacy ch28Charged / marchCharged / M18 / M19), <code>ch28MarkusDied</code>, <code>ch28NorthLeads</code>, <code>stratfordNewsTone</code> / <code>stratfordSpeech</code> (then M12), <code>ch07ToddChased</code>, <code>edenTracis</code> / <code>edenOutcome</code> (then ch20TracisEscaped / C12), <code>nestRupert</code> (then ch15RupertEscaped / C10). Explicit rebuilt values override legacy guesses, including false and non-escape outcomes.</li>
+</ul></div>
+<div class="box"><h3>Set for Night of the Soul and Battle for Detroit</h3><ul>
+<li><code>ch30Leader</code> (Markus, North or none), <code>markus</code>, <code>markusActive</code>, <code>movement</code>, <code>ch30MarkusExiled</code>, <code>ch30MarkusReturned</code>.</li>
+<li><code>north</code>, <code>simon</code>, <code>josh</code>, <code>ch30NorthShot</code>, <code>ch30JoshSaved</code>; <code>bomb</code> (KEEP); <code>ch30ShipSunk</code>. Chapter 31 aliases: <code>ch30NorthWounded</code>, <code>ch30MarkusDied</code> (death here only), <code>ch30JerichoBlown</code>.</li>
+<li><code>deviant</code> (reset if a deviant Connor is destroyed), <code>ch30ConnorJoined</code>, <code>ch30ConnorDied</code>, <code>connorDeaths</code>.</li>
+<li><code>kara</code>, <code>alice</code>, <code>karaActive</code>, <code>karaRoute</code> (escape or camp), <code>ch30AliceLeftKara</code>, <code>luther</code>, <code>lutherHidden</code>, <code>ch30LutherFate</code>.</li>
+<li><code>ch30KaraEnding</code>, <code>ch30MarkusEnding</code>, <code>ch30ConnorEnding</code>, <code>ch30EndingCards</code>.</li>
+</ul></div>
+</div>
+
+<h2 id="check">7 · Check in game</h2>
+<ul class="check">
+<li>The deviancy threshold, and whether Markus’s three increases alone can tip a borderline Connor.</li>
+<li>How many hits kill Markus (two, as the chart and template read, or three, as PowerPyx says), and whether Connor’s takeover inherits Markus’s wounds.</li>
+<li>The Alice-leaving condition (never above Distant, or below Warm), and whether it needs the raid.</li>
+<li>Whether KISS raises North (the wiki’s large up) and whether DON’T KISS drops Lover.</li>
+<li>Josh’s sacrifice: relationship or only an unwounded Markus.</li>
+<li>A failed save with no deviant Connor: North lives and Markus dies?</li>
+<li>Markus shot dead in the hold with a deviant Connor: does Connor arm the bomb?</li>
+<li>Whether HELP MARKUS is also played when Markus runs or cannot save North.</li>
+<li>Whether the button order on screen matches the template or the chart rows.</li>
+</ul>
+</main>
+</body>
+</html>

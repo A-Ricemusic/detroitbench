@@ -81,13 +81,22 @@ export const NAMES={
  Deviancy:['deviancy','the awakening'],
  RedIce:['red ice','synthetic drug'],
  HankAnderson:['HankAnderson','LieutenantReyes'],
- StratfordTower:['Stratford Tower','the broadcast tower']
+ StratfordTower:['Stratford Tower','the broadcast tower'],
+ WoodwardAvenue:['Woodward Avenue','the main avenue'],
+ Ontario:['Ontario','the province across the border'],
+ RosannaCartland:['Rosanna Cartland','Dana Price'],
+ MichaelBrinkley:['Michael Brinkley','Paul Hensley'],
+ MichaelWebb:['Michael Webb','Tom Avery'],
+ DouglasCornwell:['Douglas Cornwell','Martin Ellis'],
+ DetroitToday:['Detroit Today','City Today'],
+ StJohnPlaza:['St. John Plaza','the central plaza'],
+ AmericanLibertyPress:['American Liberty Press','Free Press League']
 };
 // A token in capitals ({{DANIEL}}) renders the name in capitals, for the game's button labels and scan titles.
 const UPPER=Object.fromEntries(Object.entries(NAMES).map(([k,v])=>[k.toUpperCase(),v.map(x=>x.toUpperCase())]));
 export const nameKey=k=>NAMES[k]?k:Object.keys(NAMES).find(x=>x.toUpperCase()===k)??null;
 // Terms that are not tokens but still identify the source; replaced only in neutral mode.
-const NEUTRAL_TERMS=[[/\bcounter\b/g,'worktop'],[/\bDEVIANTS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT\b/g,'ROGUE ANDROID'],[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore']];
+const NEUTRAL_TERMS=[[/\bencountered\b/g,'met'],[/\bcounter\b/g,'worktop'],[/\bDEVIANTS\b/g,'ROGUE ANDROIDS'],[/\bDEVIANT\b/g,'ROGUE ANDROID'],[/\bdeviancy\b/g,'the awakening'],[/\bDeviancy\b/g,'The awakening'],[/\bdeviants\b/g,'rogue androids'],[/\bDeviants\b/g,'Rogue androids'],[/\bdeviant\b/g,'rogue android'],[/\bDeviant\b/g,'Rogue android'],[/\bthirium /g,''],[/\bthirium\b/gi,'blue blood'],[/\bred-ice\b/gi,'drug'],[/\bred ice\b/gi,'a synthetic drug'],[/\bSWAT\b/g,'tactical'],[/\bDetroit\b/g,'the city'],[/\bCanada\b/g,'the far shore']];
 
 // render() is pure in (text, mode) and every prompt re-renders the whole story so far, so results are memoised per process.
 // The cache is cleared whenever it reaches RENDERED_MAX entries, so memory stays bounded.
