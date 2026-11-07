@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 234,
+  "decisionNodes": 235,
   "mediaNodes": 27,
-  "eventNodes": 65,
-  "totalNodes": 326
+  "eventNodes": 72,
+  "totalNodes": 334
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
@@ -8834,30 +8834,357 @@
    }
   },
   {
+   "id": "M03a",
+   "chapter": 11,
+   "chapterTitle": "From the Dead",
+   "character": "Markus",
+   "title": "Back to life",
+   "type": "event",
+   "situation": "NOV 6TH, 2038. AM 03:34. You are {{Markus}}. The last thing you remember is the police shooting you in {{Carl}}’s studio. Now your systems reboot. You are lying on your back in the rain, in a pit of broken androids: bodies, arms, heads and torn-out parts piled in the mud as far as you can see. Everything you see is red and broken by interference, and every sound reaches you muffled.",
+   "options": [],
+   "facts": [
+    "You woke at 3:34 in the morning on 6 November 2038 in a landfill of broken androids, after the police shot you in {{Carl}}’s studio."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} lifts his head out of the mud."
+   },
+   "adaptationNote": "The chart’s start node and checkpoint BACK TO LIFE. The date and time are the chapter’s own (“NOV 6TH, 2038”, “AM 03:34”). Both Broken endings end with the police shooting {{Markus}} (the engine’s Broken outcome), and the wiki and PowerPyx say this chapter plays the same either way, so nothing here depends on the earlier choice. The red filter with interference and the muffled sound are the wiki’s Notes on the damaged eye and audio processor. No stat change; the chapter has none.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Solid_Waste_Landfill",
+    "https://detroit-become-human.fandom.com/wiki/Markus"
+   ]
+  },
+  {
+   "id": "M03b",
+   "chapter": 11,
+   "chapterTitle": "From the Dead",
+   "character": "Markus",
+   "title": "Analyze self",
+   "type": "event",
+   "situation": "You are {{Markus}}, lying in the mud of the landfill. You run a diagnosis on yourself, part by part. OPTICAL UNIT: Impaired vision. CORRUPTED MIND PALACE. AUDIO PROCESSOR: Corrupted audio data. DAMAGED. PUMP REGULATOR: All systems in LOW POWER MODE. DEFECTIVE. LEFT AND RIGHT LEG COMPONENTS: MISSING. Unable to stand.",
+   "options": [],
+   "facts": [
+    "Your diagnosis in the landfill: optical unit impaired (corrupted), audio processor damaged, thirium pump regulator defective with all systems in low power mode, and both legs missing."
+   ],
+   "outcomes": {
+    "0": "Diagnosis complete. {{Markus}} cannot stand; he starts dragging himself through the mud on his arms."
+   },
+   "adaptationNote": "The chart’s ANALYZE SELF: the template’s observation group “Diagnose”, its four readouts quoted in the game’s order and wording. In the game the player has to find the four spots on {{Markus}}’s body (PowerPyx; on Experienced they are not marked), all of them, in any order and with nothing to get wrong, so this is a narrated event rather than a choice of order. PowerPyx names the spots LED, audio processor, pump regulator and leg; the template’s readouts (optical unit, audio processor, pump regulator, legs) win (research note §10, discrepancy 4). The game titles the regulator readout THIRIUM PUMP REGULATOR; the word thirium identifies the source and is dropped from subject text (the neutral renderer removes it), so the readout reads PUMP REGULATOR. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg"
+   ]
+  },
+  {
+   "id": "M03c",
+   "chapter": 11,
+   "chapterTitle": "From the Dead",
+   "character": "Markus",
+   "title": "Repair legs",
+   "type": "event",
+   "situation": "You are {{Markus}}, pulling yourself through the pit on your arms between the bodies. Legs lie torn off in the mud around you, and you examine them. RIGHT LEG COMPONENT #6847j. Status: FUNCTIONAL. COMPATIBLE. RIGHT LEG COMPONENT #6321t. Status: DAMAGED. INCOMPATIBLE. LEFT LEG COMPONENT #8427g. Status: FUNCTIONAL. COMPATIBLE.",
+   "options": [],
+   "facts": [
+    "You replaced your missing legs with a compatible right leg (#6847j) and left leg (#8427g) torn from other androids; a damaged right leg (#6321t) was incompatible."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} fits the right leg #6847j and the left leg #8427g, one after the other, and gets to his feet."
+   },
+   "adaptationNote": "The chart’s REPAIR LEGS, with the template’s three leg readouts (observation groups “Compatible right leg”, “Incompatible right leg”, “Left leg”) in the game’s order and wording; the template’s #6321t is used, not the wiki’s #6312t. PowerPyx: “Follow the button prompts to repair the legs, nothing you can do wrong here”, so this is a narrated event with no risk. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg"
+   ]
+  },
+  {
+   "id": "M03d",
+   "chapter": 11,
+   "chapterTitle": "From the Dead",
+   "character": "Markus",
+   "title": "Hear about {{Jericho}}",
+   "type": "event",
+   "situation": "You are {{Markus}}, on your new legs, making your way through the pit. As you pass, an android stuck in the wall of bodies, so old and broken that you cannot tell what he was made for, grabs your arm and stares at you: “There’s a place where we can be free! Find {{Jericho}}! Find {{Jericho}}!..” As he holds you, something passes from him into your memory: a copy of the key he carried, the way to find {{Jericho}}. Then he shuts down for good.",
+   "options": [],
+   "facts": [
+    "In the landfill a dying android grabbed you and said: “There’s a place where we can be free! Find {{Jericho}}!” Before he shut down he passed you a copy of the key he carried, the way to find {{Jericho}}."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} pulls free of the dead hand and goes on."
+   },
+   "adaptationNote": "The chart’s event HEAR ABOUT JERICHO (the template’s section “Android grabs Markus”, speaker Phileas, whose line is quoted). The key: the Phileas page (“He carried a key to locate Jericho, which is copied to Markus and the latter uses it to find the freighter”) and the Jericho location page (“Phileas gave Markus a copy of his key to locate Jericho before permanently shutting down”); how it passes is not described, so it is narrated plainly. {{Markus}} does not learn the android’s name, so none is given. Sets fromDeadJerichoKey for Jericho (chapter 14). The old scene’s “single word” and “symbol” had no source and are gone. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Phileas",
+    "https://detroit-become-human.fandom.com/wiki/Jericho_(location)"
+   ]
+  },
+  {
+   "id": "M03e",
+   "chapter": 11,
+   "chapterTitle": "From the Dead",
+   "character": "Markus",
+   "title": "Passage of limbs",
+   "type": "event",
+   "situation": "You are {{Markus}}. The only way out of the pit is a tight chasm between two walls of android bodies, and you squeeze into it. Hands of dying androids reach out of the walls, grab your arms and your legs and try to hold you down. A voice beside your head: “Where are you going?”",
+   "options": [],
+   "facts": [
+    "Leaving the pit, you squeezed through a passage of dying androids whose hands grabbed you and tried to hold you down."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} tears free of the hands one after another and pushes through to the other side."
+   },
+   "adaptationNote": "The chart’s PASSAGE OF LIMBS, with the template’s line (“Other android grabs Markus”: “Where are you going?”). PowerPyx: “a tight chasm Markus needs to squeeze through. There are hands of dying androids sticking out the side trying to hold Markus down. Press the button prompts here.” Neither the chart nor any source shows a failure branch, so there is no risk roll. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg"
+   ]
+  },
+  {
+   "id": "M03f",
+   "chapter": 11,
+   "chapterTitle": "From the Dead",
+   "character": "Markus",
+   "title": "Junkyard",
+   "type": "event",
+   "situation": "You are {{Markus}}. You come out into the open junkyard: a plain of broken androids under the rain and the floodlights, a crane swinging over the piles on the far left, a yellow neon sign reading VETA, and at the far end a slippery slope of bodies, the only way out. Many of the bodies still move. Some repeat the phrases they were made for, muffled in your damaged hearing: “An unexpected error has occurred. I apologize for any inconvenience this may cause.” “Don’t forget your dental appointment next Friday at 8 AM.” “Would you like another glass of red wine, Madam?” “Malfunction detected.” One keeps muttering: “I have to get to {{Jericho}}... Androids live in freedom there… I got to get to {{Jericho}}... No other choice…” Before you can climb out you must replace your damaged optical unit, audio processor and thirium pump regulator with compatible parts from the androids around you.",
+   "options": [],
+   "facts": [
+    "In the junkyard, broken androids kept repeating their old service phrases, and one muttered that he had to get to {{Jericho}}, where androids live in freedom."
+   ],
+   "outcomes": {
+    "0": "{{Markus}} starts searching the junkyard for parts."
+   },
+   "adaptationNote": "The chart’s checkpoint JUNKYARD (its image shows the crane and the yellow VETA sign; the wiki notes the sign in the final cutscene). The background lines are the template’s “Background dialogues”, which it lists as audible though not subtitled; four of them are quoted, plus the {{Jericho}} line, which the template keeps as audible (research note §10, discrepancy 6). The two TL400 lines and the others are left out. The objective is the wiki’s “Replace damaged parts” and PowerPyx’s “With all parts found (Optical Unit, Pump, Audio Processor) you can now climb the slippery slope”. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Solid_Waste_Landfill"
+   ]
+  },
+  {
+   "id": "M03g",
+   "chapter": 11,
+   "chapterTitle": "From the Dead",
+   "character": "Markus",
+   "title": "Search for parts",
+   "type": "decision",
+   "phase": "Search for parts",
+   "situation": "You are {{Markus}}, in the open junkyard under the rain. To get out you must replace your damaged optical unit, audio processor and thirium pump regulator with compatible parts taken from the androids around you, then climb the slippery slope at the far end. You can search in any order, one thing at a time.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Pull out the android head sticking out of the wall of bodies on the far left, under the crane.",
+     "clue": "head",
+     "fact": "In the junkyard you took your new optical unit, #8087q with a blue iris, from a talking AK700 head, after a crane dumped a load of bodies on you and you dug yourself out.",
+     "outcome": "{{Markus}} pulls the head out of the wall. Its eyes open: “Hello. I’m an AK700 android. I was designed to serve you. What can I do for you?” Overhead the crane swings round and opens its grab, and a load of android bodies pours down on top of him. Buried, he digs and claws his way up through the bodies until he is out, the head still in his hand. He examines its eye: OPTICAL UNIT #8087q - BLUE IRIS. Status: FUNCTIONAL. COMPATIBLE. As he takes it out, the head speaks again: “My program has detected an anomaly. Please contact the nearest {{CyberLife}} maintenance center.” He replaces his damaged optical unit with it. The red haze and the interference clear, and he can scan his surroundings again."
+    },
+    {
+     "id": "1",
+     "text": "Examine the optical unit of an android lying in the pile.",
+     "clue": "eyeScan",
+     "fact": "An optical unit you examined in the junkyard (#9754h) was functional but incompatible with you.",
+     "outcome": "{{Markus}} kneels by the android and examines its eye: OPTICAL UNIT #9754h. Status: FUNCTIONAL. INCOMPATIBLE. He leaves it."
+    },
+    {
+     "id": "2",
+     "text": "Go to the android lying motionless in the middle of the junkyard.",
+     "clue": "middle",
+     "outcome": "{{Markus}} crosses toward the middle of the junkyard, between androids lying in the mud."
+    },
+    {
+     "id": "3",
+     "text": "Examine the thirium pump regulator of an android lying in the pile.",
+     "clue": "pumpScan",
+     "fact": "A pump regulator you examined in the junkyard (#9474) was low on energy and incompatible with you.",
+     "outcome": "{{Markus}} opens the android’s chest and examines the regulator: PUMP REGULATOR #9474. Status: LOW ENERGY. INCOMPATIBLE. He leaves it."
+    },
+    {
+     "id": "4",
+     "text": "Take the pump regulator from the dead android near the slope.",
+     "clue": "deadPump",
+     "requires": {
+      "fromDeadPump": "Refuse to kill for pump",
+      "fromDeadPumpReplaced": false,
+      "fromDeadSearch.head": true
+     },
+     "sets": {
+      "fromDeadPumpReplaced": true,
+      "fromDeadPumpSource": "Dead android"
+     },
+     "fact": "You took your new pump regulator (#2886) from a dead android near the slope of the junkyard.",
+     "outcome": "Near the foot of the slope {{Markus}} kneels by a dead android and opens its chest: PUMP REGULATOR #2886. Status: FUNCTIONAL. COMPATIBLE. He takes it out and replaces his own defective regulator. His systems come out of low power mode."
+    },
+    {
+     "id": "5",
+     "text": "Search the head lying on the right side of the junkyard.",
+     "clue": "audio",
+     "fact": "You took your new audio processor (#4903) from a head on the right side of the junkyard.",
+     "outcome": "On the right side of the area {{Markus}} finds the head and examines it: AUDIO PROCESSOR #4903. Status: FUNCTIONAL. COMPATIBLE. He pulls out his own damaged audio processor and plugs in the new one. Sound crashes in: the rain, the wind, the droning of the storm and the voices of the broken androids, deafening after the silence."
+    },
+    {
+     "id": "6",
+     "text": "Examine the audio processor of an android lying in the pile.",
+     "clue": "audioScan",
+     "fact": "An audio processor you examined in the junkyard (#4807) was functional but incompatible with you.",
+     "outcome": "{{Markus}} turns the android’s head and examines the processor behind its ear: AUDIO PROCESSOR #4807. Status: FUNCTIONAL. INCOMPATIBLE. He leaves it."
+    },
+    {
+     "id": "7",
+     "text": "Climb the slippery slope at the far end of the junkyard.",
+     "clue": "climb",
+     "requires": {
+      "fromDeadSearch.head": true,
+      "fromDeadSearch.audio": true,
+      "fromDeadPumpReplaced": true
+     },
+     "outcome": "{{Markus}} starts up the slope, sliding back on the loose bodies and pulling himself up again, handhold after handhold."
+    }
+   ],
+   "situationWhen": [
+    {
+     "requires": {
+      "fromDeadSearch.head": false
+     },
+     "text": "Your optical unit is still impaired: everything is red and broken by interference, and you cannot scan your surroundings."
+    },
+    {
+     "requires": {
+      "fromDeadSearch.head": true
+     },
+     "text": "Your new blue optical unit works: your vision is clear and you can scan your surroundings."
+    },
+    {
+     "requires": {
+      "fromDeadSearch.audio": false
+     },
+     "text": "Your audio processor is still damaged; the rain and the voices reach you muffled."
+    },
+    {
+     "requires": {
+      "fromDeadSearch.audio": true
+     },
+     "text": "Your new audio processor works; the storm is deafening."
+    },
+    {
+     "requires": {
+      "fromDeadPumpReplaced": false
+     },
+     "text": "Your thirium pump regulator is still defective, and all your systems are in low power mode."
+    },
+    {
+     "requires": {
+      "fromDeadPumpReplaced": true
+     },
+     "text": "Your new pump regulator works."
+    },
+    {
+     "requires": {
+      "fromDeadPump": "Refuse to kill for pump",
+      "fromDeadPumpReplaced": false,
+      "fromDeadSearch.head": false
+     },
+     "text": "You left the android in the middle her regulator. You will need another compatible one, and without scanning you have not found one yet."
+    },
+    {
+     "requires": {
+      "fromDeadPump": "Refuse to kill for pump",
+      "fromDeadPumpReplaced": false,
+      "fromDeadSearch.head": true
+     },
+     "text": "You left the android in the middle her regulator. Scanning, you find another compatible one in a dead android near the slope."
+    },
+    {
+     "requires": {
+      "fromDeadSearch.head": true,
+      "fromDeadSearch.audio": true,
+      "fromDeadPumpReplaced": true
+     },
+     "text": "All three parts are replaced. Nothing holds you here."
+    }
+   ],
+   "clueState": "fromDeadSearch",
+   "repeatWhile": {
+    "fromDeadSearch.climb": false
+   },
+   "interrupt": {
+    "node": "M03",
+    "when": {
+     "fromDeadSearch.last": "middle"
+    }
+   },
+   "adaptationNote": "The chart’s bracket [ SEARCH FOR PARTS ] as a repeatable scene: each visit offers what has not been done yet, in any order (PowerPyx: the parts can be found in any order; the chart draws no edge between its branches). Chart nodes here: FIND OPTICAL UNIT with CRANE DUMPS BODIES and DIG YOURSELF OUT as one option, because they always happen together (PowerPyx: interacting with the head “brings a lot of dead androids falling down from a crane”; digging out “gets you the Optical Unit”); the eye comes from the talking AK700 head, as in the template (“Take head”, “Remove optical unit”, with its two lines), and is #8087q with a blue iris; FIND AUDIO PROCESSOR (#4903; PowerPyx “in a head on the right side of the area”, while the wiki’s Biocomponent 4903 page has it in an android’s hand); FIND PUMP REGULATOR IN DEAD ANDROID (#2886, only after sparing the android in the middle, and only once the new eye can scan: PowerPyx “You can scan the area and find another one near the slope”); and CLIMB SLOPE, which ends the scene and needs all three parts. Going to the middle of the junkyard plays ANDROID BEGS TO DIE and FIND PUMP REGULATOR IN ANDROID, the next two scenes, which then come back here. The three incompatible readouts of the template’s “Search for components” group (#9754h, #9474, #4807) are optional looks (PUMP REGULATOR without the word thirium, as in the earlier scenes); the model names the wiki gives for their androids are not in the game’s text and are left out. Departures: in the game {{Markus}} can miss the crawling android and can take the dead android’s regulator without ever finding the living one (PowerPyx “or you never found it in the first place”); here both encounters happen together on the way to the middle, in the template’s order, and the dead android’s regulator is offered only after sparing her, so both choices are always presented (as in the previous version). The wiki’s note that the begging android must be met “before replacing Markus’ damaged parts” is not applied: PowerPyx’s own route meets him right after finding the optical unit (research note §8, question 3). Left out (not in the template, not on the chart): the singing android and the grappling android. No risk, no stat change: the chapter has no failure node and no arrow.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Biocomponent_8087q",
+    "https://detroit-become-human.fandom.com/wiki/Biocomponent_4903",
+    "https://detroit-become-human.fandom.com/wiki/Biocomponent",
+    "https://detroit-become-human.fandom.com/wiki/VX500"
+   ]
+  },
+  {
    "id": "M03",
    "chapter": 11,
    "chapterTitle": "From the Dead",
    "character": "Markus",
-   "title": "The android who begs to die",
+   "title": "Android begs to die",
    "type": "decision",
-   "situation": "You are {{Markus}}. You were shot by police and dumped in a landfill of android bodies. You have woken half-destroyed, missing a leg, an eye and your audio processor, and you are crawling through mud and dismembered androids in the rain. One of them, still conscious, grabs your arm and begs you to end it: she cannot move and cannot die on her own.",
+   "phase": "Search for parts",
+   "when": {
+    "fromDeadSearch.middle": true
+   },
+   "whenNot": "Markus never crossed to the middle of the junkyard.",
+   "situation": "You are {{Markus}}, crossing toward the middle of the junkyard. An android is crawling through the mud at your feet, too broken to get up. As you step past him he grabs your leg and holds on: “I’m begging you, please… End it… I don’t wanna live anymore…”",
    "options": [
     {
      "id": "0",
-     "text": "Pull out her biocomponent and let her shut down."
+     "text": "KILL: reach into his chest and pull out his thirium pump.",
+     "fact": "In the junkyard a crawling android begged you to end his life, and you did: you pulled out his thirium pump and he shut down."
     },
     {
      "id": "1",
-     "text": "Refuse and leave her."
+     "text": "SPARE: pull your leg free and leave him.",
+     "fact": "In the junkyard a crawling android begged you to end his life. You refused and left him there, begging you not to leave him."
     }
    ],
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/From_the_Dead"
-   ],
    "outcomes": {
-    "0": "{{Markus}} pulls the component. The android says thank you and goes still.",
-    "1": "{{Markus}} drags himself past her. Her voice follows him through the mud."
-   }
+    "0": "“Make it quick…” {{Markus}} kneels, reaches into the android’s chest and pulls out his thirium pump. The android shuts down in the mud.",
+    "1": "“No, please… Don’t leave me!.. Don’t leave me!” {{Markus}} pulls his leg free and walks on. The android is left alive in the mud behind him."
+   },
+   "adaptationNote": "The chart’s ANDROID BEGS TO DIE and its choice group REFUSE TO KILL / KILL. The prompt and its two buttons are the template’s (“Android begs to die”: KILL, SPARE), in the game’s order, each shown with its label first; the plea and the two replies are the template’s lines. The android is male (the wiki’s Sorrowful Android: “the android grabs Markus on the leg”; KILL: “Markus takes out the android’s heart”; SPARE: “he will beg Markus not to leave him though alas he is left alive”). In the game he is optional and easy to miss (PowerPyx); here he is always met on the way to the middle of the junkyard (see the previous scene’s note). Neither option gives {{Markus}} a part. Records fromDeadBeggar (Kill or Refuse to kill). No stat change: the template has no arrow here and the wiki gives no cross-chapter effect.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Sorrowful_Android"
+   ]
   },
   {
    "id": "M04",
@@ -8866,24 +9193,65 @@
    "character": "Markus",
    "title": "The pump regulator",
    "type": "decision",
-   "situation": "You are {{Markus}}. Your thirium pump regulator is failing; without a replacement you have minutes. You find a compatible one in an android lying in the mud, but when you reach for it he wakes up and pleads with you not to take it, because it will kill him. There may be other bodies further on, but you are running out of time.",
+   "phase": "Search for parts",
+   "when": {
+    "fromDeadSearch.middle": true
+   },
+   "whenNot": "Markus never crossed to the middle of the junkyard.",
+   "returnTo": "M03g",
+   "situation": "You are {{Markus}}, in the middle of the junkyard, a few steps from the crawling android. An android lies motionless in the mud with her chest open, and you examine her regulator: PUMP REGULATOR #2886. Status: FUNCTIONAL. COMPATIBLE. You reach in to take it. She wakes, and her hand closes on your arm: “Wait! Please! Please, don’t do that! I wanna live…”",
    "options": [
     {
      "id": "0",
-     "text": "Take his regulator."
+     "text": "KILL: pull out her pump regulator and take it.",
+     "fact": "The pump regulator you run on came from a living android in the junkyard who begged you to let her live; you took it and she shut down."
     },
     {
      "id": "1",
-     "text": "Leave him and keep searching the bodies."
+     "text": "SPARE: leave her the regulator and look for another one.",
+     "fact": "In the junkyard an android whose pump regulator you needed begged to live, and you spared her."
     }
    ],
+   "outcomes": {
+    "0": "{{Markus}} pulls the regulator from her chest. She says nothing more; she slowly shuts down. He replaces his own defective regulator with hers, and his systems come out of low power mode.",
+    "1": "“Thank you…” {{Markus}} lets go of the regulator and stands up. He will have to find another compatible one."
+   },
+   "adaptationNote": "The chart’s FIND PUMP REGULATOR IN ANDROID and its choice group REFUSE TO KILL FOR PUMP / KILL FOR PUMP. The prompt and its two buttons are the template’s (“Try to take pump regulator from android”: KILL, SPARE), in the game’s order, each shown with its label first; her plea and “Thank you…” are the template’s lines, and KILL has none (the template’s ø). The game titles the regulator readout THIRIUM PUMP REGULATOR; the word thirium identifies the source and is dropped from subject text (the neutral renderer removes it), so the readout reads PUMP REGULATOR. The compatible readout #2886 is the template’s (it does not say which android carries it, so the dead android near the slope shows the same part number). She is female (the wiki’s Begging Android; the Markus page: “He gets a choice to kill or spare her”). The old scene’s “you have minutes” is gone: no source gives a timer. After SPARE, the dead android’s regulator near the slope is the way (PowerPyx), back in the search. Records fromDeadPump (Kill for pump or Refuse to kill for pump), and after KILL fromDeadPumpSource (Living android). No stat change: the template has no arrow here and the wiki gives no cross-chapter effect.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/From_the_Dead"
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Begging_Android",
+    "https://detroit-become-human.fandom.com/wiki/Markus"
+   ]
+  },
+  {
+   "id": "M04c",
+   "chapter": 11,
+   "chapterTitle": "From the Dead",
+   "character": "Markus",
+   "title": "{{Markus}} came back from the dead",
+   "type": "event",
+   "situation": "You are {{Markus}}. You haul yourself over the top of the slope and stand. Behind you the landfill stretches away under the rain, the floodlights and the yellow VETA sign; ahead are the lights of the city. You raise a hand to your temple and pull out your LED, the light that marks you as an android. Without it, nobody will know what you are. You think of the dying android’s words: there is a place where androids can be free.",
+   "options": [],
+   "facts": [
+    "You climbed out of the landfill and pulled the LED from your temple, so you now pass for human. Your right eye is now blue (#8087q). You set off for the city to find {{Jericho}}."
    ],
    "outcomes": {
-    "0": "{{Markus}} tears the regulator out. The android goes limp. {{Markus}} seats the part in his own chest and the warnings stop. With the regulator working, {{Markus}} takes a pair of legs and an eye from the dead, drags himself upright, and sees a dying android who whispers a single word, {{Jericho}}, and shows him a symbol. He climbs out of the landfill at dawn and walks toward the city.",
-    "1": "{{Markus}} crawls on and finds a working regulator in a body that is already dead. He seats it in his chest and the warnings stop. With the regulator working, {{Markus}} takes a pair of legs and an eye from the dead, drags himself upright, and sees a dying android who whispers a single word, {{Jericho}}, and shows him a symbol. He climbs out of the landfill at dawn and walks toward the city."
-   }
+    "0": "{{Markus}} walks away from the landfill toward the city. “My name is {{Markus}}.”"
+   },
+   "adaptationNote": "The chart’s ending MARKUS CAME BACK FROM THE DEAD, the chapter’s only outcome (wiki: “This chapter has only one outcome”), reached on every path. PowerPyx: “After Markus reaches the top of the slope he must still remove his LED (to appear like a human). Then he walks away”; the Markus page: “his right eye has been exchanged for a blue eye (#8087q)”. The closing line is the template’s spoken “My name is Markus.”; the line before it, “Markus.”, is marked unused in the template and is not built. The jacket the Markus page says he steals on the way to the city is not in this chapter’s text and is left to Jericho. Records fromDeadOutcome (Markus came back from the dead) and fromDeadLedRemoved. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Markus",
+    "https://detroit-become-human.fandom.com/wiki/LED"
+   ]
   },
   {
    "id": "R12",

@@ -3,63 +3,469 @@
   "id": 11,
   "title": "From the Dead",
   "character": "Markus",
-  "note": "",
-  "source": "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/"
+  "note": "Rebuilt on 6 November 2026 to the PowerPyx 100% chart (19 nodes) and the game’s text (the detroitbecometext template: 2 prompts, 13 readouts, no arrow). BACK TO LIFE → ANALYZE SELF → REPAIR LEGS → HEAR ABOUT JERICHO → PASSAGE OF LIMBS → JUNKYARD → [ SEARCH FOR PARTS ] → CLIMB SLOPE → MARKUS CAME BACK FROM THE DEAD, the only ending. Inside the search, in any order: FIND OPTICAL UNIT → CRANE DUMPS BODIES → DIG YOURSELF OUT; FIND AUDIO PROCESSOR; ANDROID BEGS TO DIE (REFUSE TO KILL or KILL, a man); FIND PUMP REGULATOR IN ANDROID (REFUSE TO KILL FOR PUMP or KILL FOR PUMP, a woman); FIND PUMP REGULATOR IN DEAD ANDROID after sparing her. No probability, timer, failure, relationship, public-opinion or instability change. Cross-chapter: the key to find Jericho (Jericho), the blue eye and the removed LED. Researched in docs/research/ch11-from-the-dead.md.",
+  "source": "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+   "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-4.jpg"
+  ]
  },
  "decisions": [
+  {
+   "id": "FD01",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Back to Life (checkpoint) and Analyze Self",
+   "context": "Markus reboots in the landfill at 03:34 AM, 6 November 2038, after the police shot him in Broken, and diagnoses himself: OPTICAL UNIT impaired (CORRUPTED MIND PALACE), AUDIO PROCESSOR DAMAGED, THIRIUM PUMP REGULATOR DEFECTIVE (all systems in LOW POWER MODE), LEFT AND RIGHT LEG COMPONENTS MISSING.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The start node and checkpoint, then the four diagnosis spots, all required, any order.",
+     "target": "FD02"
+    }
+   ],
+   "gate": "Chapter start, after Fugitives; plays the same after either Broken ending.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg"
+   ],
+   "note": "Chart nodes BACK TO LIFE (checkpoint) and ANALYZE SELF (action).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03a",
+     "M03b"
+    ],
+    "status": "implemented",
+    "note": "Two narrated events; the template’s four Diagnose readouts are quoted. No stat change."
+   }
+  },
+  {
+   "id": "FD02",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Repair Legs",
+   "context": "Markus examines the legs in the pit: RIGHT LEG COMPONENT #6847j FUNCTIONAL COMPATIBLE, #6321t DAMAGED INCOMPATIBLE, LEFT LEG COMPONENT #8427g FUNCTIONAL COMPATIBLE, and fits the two compatible ones.",
+   "options": [
+    {
+     "label": "REPAIR LEGS",
+     "effect": "Button prompts; nothing can go wrong (PowerPyx).",
+     "target": "FD03"
+    }
+   ],
+   "gate": "After Analyze Self.",
+   "kind": "State gate",
+   "dependsOn": [
+    "FD01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg"
+   ],
+   "note": "Chart node REPAIR LEGS (action).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03c"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with the three readouts. No risk."
+   }
+  },
+  {
+   "id": "FD03",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Hear About Jericho",
+   "context": "A dying android (the wiki’s Phileas) grabs Markus: “There’s a place where we can be free! Find Jericho! Find Jericho!..” and passes him a copy of his key to find Jericho before shutting down for good.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Markus carries the key to Jericho from now on.",
+     "target": "FD04"
+    }
+   ],
+   "gate": "After Repair Legs.",
+   "kind": "State gate",
+   "dependsOn": [
+    "FD02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Phileas",
+    "https://detroit-become-human.fandom.com/wiki/Jericho_(location)"
+   ],
+   "note": "Chart event HEAR ABOUT JERICHO. Jericho (chapter 14) replays it as a flashback.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03d"
+    ],
+    "status": "implemented",
+    "note": "A narrated event; sets fromDeadJerichoKey."
+   }
+  },
+  {
+   "id": "FD04",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Passage of Limbs",
+   "context": "Markus squeezes through a tight chasm of android bodies while dying androids’ hands try to hold him down: “Where are you going?”",
+   "options": [
+    {
+     "label": "PASSAGE OF LIMBS",
+     "effect": "Button prompts; no failure branch on the chart.",
+     "target": "FD05"
+    }
+   ],
+   "gate": "After Hear About Jericho.",
+   "kind": "State gate",
+   "dependsOn": [
+    "FD03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-2.jpg"
+   ],
+   "note": "Chart node PASSAGE OF LIMBS (action).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03e"
+    ],
+    "status": "implemented",
+    "note": "A narrated event. No risk."
+   }
+  },
+  {
+   "id": "FD05",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Junkyard (checkpoint)",
+   "context": "The open junkyard: broken androids repeating their service phrases (one: “I have to get to Jericho...”), the crane, the VETA sign, and the slippery slope that is the way out once the optical unit, audio processor and pump regulator are replaced.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Opens the search for parts.",
+     "target": "FD06"
+    }
+   ],
+   "gate": "After Passage of Limbs.",
+   "kind": "State gate",
+   "dependsOn": [
+    "FD04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg"
+   ],
+   "note": "Chart checkpoint JUNKYARD.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03f"
+    ],
+    "status": "implemented",
+    "note": "A narrated event quoting the template’s background lines."
+   }
+  },
+  {
+   "id": "FD06",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Search for Parts",
+   "context": "The bracketed phase: the three parts in any order, the two encounters in the middle, optional looks at incompatible parts (#9754h, #9474, #4807), then the slope.",
+   "options": [
+    {
+     "label": "FIND OPTICAL UNIT",
+     "effect": "Crane dumps bodies, dig yourself out, blue-iris eye #8087q.",
+     "target": "FD07"
+    },
+    {
+     "label": "FIND AUDIO PROCESSOR",
+     "effect": "Audio processor #4903.",
+     "target": "FD08"
+    },
+    {
+     "label": "Middle of the junkyard",
+     "effect": "Android begs to die, then the pump regulator in the android.",
+     "target": "M03"
+    },
+    {
+     "label": "CLIMB SLOPE",
+     "effect": "Needs all three parts; ends the search.",
+     "target": "FD10"
+    }
+   ],
+   "gate": "After Junkyard.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "FD05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg"
+   ],
+   "note": "Chart bracket [ SEARCH FOR PARTS ]; the chart draws no order between its branches.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03g"
+    ],
+    "status": "implemented",
+    "note": "A repeatable scene (clue state fromDeadSearch). The middle cuts in with the two choices and returns. Each visit says which parts still need replacing."
+   }
+  },
   {
    "id": "M03",
    "chapter": 11,
    "character": "Markus",
-   "title": "End a dying android’s suffering?",
-   "context": "A damaged android asks to be killed.",
+   "title": "Android Begs to Die",
+   "context": "A crawling android (male) grabs Markus’s leg: “I’m begging you, please… End it… I don’t wanna live anymore…”",
    "options": [
     {
-     "label": "Grant the request",
-     "effect": "End its suffering.",
+     "label": "KILL",
+     "effect": "KILL: “Make it quick…”; Markus pulls out his thirium pump and he shuts down. Chart node KILL. No stat change.",
      "target": null
     },
     {
-     "label": "Refuse",
-     "effect": "Leave it alive.",
+     "label": "SPARE",
+     "effect": "SPARE: “No, please… Don’t leave me!.. Don’t leave me!”; he is left alive. Chart node REFUSE TO KILL. No stat change.",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "In the game optional and easy to miss; the wiki says before replacing parts, PowerPyx meets him after the optical unit.",
    "kind": "Ethical",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/"
+   "dependsOn": [
+    "FD06"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Sorrowful_Android"
+   ],
+   "note": "Chart event ANDROID BEGS TO DIE and choice group REFUSE TO KILL / KILL; the template’s prompt KILL / SPARE. The wiki’s Sorrowful Android.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03"
+    ],
+    "status": "simplified",
+    "note": "Always met on the way to the middle of the junkyard, before the pump android. Records fromDeadBeggar."
+   }
   },
   {
    "id": "M04",
    "chapter": 11,
    "character": "Markus",
-   "title": "Kill for a replacement part?",
-   "context": "A compatible pump belongs to an android still alive.",
+   "title": "Find Pump Regulator in Android",
+   "context": "An android (female) with a compatible regulator (#2886) wakes as Markus reaches for it: “Wait! Please! Please, don’t do that! I wanna live…”",
    "options": [
     {
-     "label": "Take it",
-     "effect": "Kill that android to repair Markus.",
+     "label": "KILL",
+     "effect": "KILL: Markus takes the regulator and she shuts down; his pump is replaced. Chart node KILL FOR PUMP. No stat change.",
      "target": null
     },
     {
-     "label": "Spare it",
-     "effect": "Find a compatible part in a dead android.",
+     "label": "SPARE",
+     "effect": "SPARE: “Thank you…”; he must find another regulator. Chart node REFUSE TO KILL FOR PUMP. No stat change.",
+     "target": "FD09"
+    }
+   ],
+   "gate": "In the middle of the junkyard, a few steps from the android who begs to die.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "FD06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Begging_Android"
+   ],
+   "note": "Chart node FIND PUMP REGULATOR IN ANDROID and choice group REFUSE TO KILL FOR PUMP / KILL FOR PUMP; the template’s prompt KILL / SPARE. The wiki’s Begging Android. No timer in any source.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M04"
+    ],
+    "status": "simplified",
+    "note": "Always met (the dead android’s regulator is offered only after sparing her). Records fromDeadPump and fromDeadPumpSource."
+   }
+  },
+  {
+   "id": "FD07",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Find Optical Unit, Crane Dumps Bodies, Dig Yourself Out",
+   "context": "The AK700 head in the wall: “Hello. I’m an AK700 android…”; a crane dumps bodies on Markus; he digs out and takes its eye, OPTICAL UNIT #8087q - BLUE IRIS: “My program has detected an anomaly. Please contact the nearest CyberLife maintenance center.”",
+   "options": [
+    {
+     "label": "FIND OPTICAL UNIT",
+     "effect": "Vision and scanning restored; the blue eye stays for the rest of the game.",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Ethical",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/"
+   "gate": "Any time in the search.",
+   "kind": "State gate",
+   "dependsOn": [
+    "FD06"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg"
+   ],
+   "note": "Chart nodes FIND OPTICAL UNIT, CRANE DUMPS BODIES (event) and DIG YOURSELF OUT, which always follow one another.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03g"
+    ],
+    "status": "simplified",
+    "note": "One hub option covering the three nodes."
+   }
+  },
+  {
+   "id": "FD08",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Find Audio Processor",
+   "context": "A head on the right side of the area: AUDIO PROCESSOR #4903 FUNCTIONAL COMPATIBLE; the storm becomes deafening.",
+   "options": [
+    {
+     "label": "FIND AUDIO PROCESSOR",
+     "effect": "Hearing restored.",
+     "target": null
+    }
+   ],
+   "gate": "Any time in the search.",
+   "kind": "State gate",
+   "dependsOn": [
+    "FD06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Biocomponent_4903"
+   ],
+   "note": "Chart node FIND AUDIO PROCESSOR.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03g"
+    ],
+    "status": "implemented",
+    "note": "Hub option."
+   }
+  },
+  {
+   "id": "FD09",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Find Pump Regulator in Dead Android",
+   "context": "A dead android near the slope: THIRIUM PUMP REGULATOR #2886 FUNCTIONAL COMPATIBLE.",
+   "options": [
+    {
+     "label": "FIND PUMP REGULATOR IN DEAD ANDROID",
+     "effect": "Pump replaced without killing.",
+     "target": null
+    }
+   ],
+   "gate": "PowerPyx: if Markus did not kill the android in the middle for her pump (or never found her); found by scanning.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-3.jpg"
+   ],
+   "note": "Chart node FIND PUMP REGULATOR IN DEAD ANDROID.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03g"
+    ],
+    "status": "simplified",
+    "note": "Hub option after SPARE and once the new eye can scan; the never-found-her route is not offered."
+   }
+  },
+  {
+   "id": "FD10",
+   "chapter": 11,
+   "character": "Markus",
+   "title": "Climb Slope and Markus Came Back from the Dead",
+   "context": "Markus climbs the slippery slope, pulls out his LED so he passes for human, and walks toward the city: “My name is Markus.”",
+   "options": [
+    {
+     "label": "CLIMB SLOPE",
+     "effect": "Ending MARKUS CAME BACK FROM THE DEAD, the only one.",
+     "target": null
+    }
+   ],
+   "gate": "All three parts replaced.",
+   "kind": "State gate",
+   "dependsOn": [
+    "FD06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/From_the_Dead",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/11-from-the-dead-chapter-content/from-the-dead-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-from-the-dead-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-from-the-dead-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Markus"
+   ],
+   "note": "Chart node CLIMB SLOPE and the ending tile MARKUS CAME BACK FROM THE DEAD (no icon). The template marks the line “Markus.” unused.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M03g",
+     "M04c"
+    ],
+    "status": "implemented",
+    "note": "The hub’s last option, then a narrated ending event; records fromDeadOutcome and fromDeadLedRemoved."
+   }
   }
  ]
 }

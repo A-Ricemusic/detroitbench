@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>From the Dead · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 11</p>
+<h1>From the Dead: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 19 nodes); prompts, button labels, lines and readouts come from the game’s own text (the detroitbecometext template, <code>docs/research/ch11-from-the-dead.md</code> section 10). The chapter has no probability, timer, failure node, relationship, public-opinion or instability change, and one ending. Markus cannot die here.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#scans">3 · Readouts</a></li><li><a href="#flags">4 · Flags</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>BACK TO LIFE (checkpoint): NOV 6TH, 2038, AM 03:34. Markus reboots in the landfill after the police shot him (either Broken ending).</li>
+<li>ANALYZE SELF: four spots, all required, any order (unmarked on Experienced).</li>
+<li>REPAIR LEGS: two right legs (one incompatible) and a left leg; button prompts.</li>
+<li>HEAR ABOUT JERICHO: a dying android (Phileas) grabs him: “There’s a place where we can be free! Find Jericho! Find Jericho!..” and copies him the key to find it.</li>
+<li>PASSAGE OF LIMBS: hands grab him in a narrow chasm: “Where are you going?”</li>
+<li>JUNKYARD (checkpoint).</li>
+<li>[ SEARCH FOR PARTS ], in any order: FIND OPTICAL UNIT (the AK700 head) → CRANE DUMPS BODIES → DIG YOURSELF OUT; FIND AUDIO PROCESSOR; ANDROID BEGS TO DIE (optional) → REFUSE TO KILL or KILL; FIND PUMP REGULATOR IN ANDROID → REFUSE TO KILL FOR PUMP or KILL FOR PUMP; FIND PUMP REGULATOR IN DEAD ANDROID if she was not killed.</li>
+<li>CLIMB SLOPE with all three parts, then MARKUS CAME BACK FROM THE DEAD: he pulls out his LED and walks off: “My name is Markus.”</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>M03a</code> Back to life (event).</li>
+<li><code>M03b</code> Analyze self (event): the four Diagnose readouts.</li>
+<li><code>M03c</code> Repair legs (event): the three leg readouts.</li>
+<li><code>M03d</code> Hear about Jericho (event); sets <code>fromDeadJerichoKey</code>.</li>
+<li><code>M03e</code> Passage of limbs (event).</li>
+<li><code>M03f</code> Junkyard (event), with the template’s background lines.</li>
+<li><code>M03g</code> Search for parts, repeated: each visit offers what has not been done yet. Going to the middle cuts into <code>M03</code> (the android who begs to die) and <code>M04</code> (the pump regulator), then returns. The slope needs all three parts and ends it.</li>
+<li><code>M04c</code> Markus came back from the dead (event), every path.</li>
+</ol>
+<p class="fine">No option carries a risk or a stat change. What Markus sees becomes facts in his knowledge, which every later Markus scene shows him.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">19 chart nodes, one bracketed phase, two checkpoints, two choice groups, one ending, no skull or failure icon.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>BACK TO LIFE</td><td>Checkpoint; reboot in the landfill</td><td class="yes"><code>M03a</code></td></tr>
+<tr><td>ANALYZE SELF</td><td>Four spots on Markus’s body</td><td class="part"><code>M03b</code>, an event with the four readouts (no choice of order)</td></tr>
+<tr><td>REPAIR LEGS</td><td>Button prompts; nothing to get wrong</td><td class="yes"><code>M03c</code>, with the three readouts</td></tr>
+<tr><td>HEAR ABOUT JERICHO</td><td>Phileas’s line; the key is copied to Markus</td><td class="yes"><code>M03d</code></td></tr>
+<tr><td>PASSAGE OF LIMBS</td><td>Hands grab him: “Where are you going?”</td><td class="yes"><code>M03e</code>, no risk (no failure branch)</td></tr>
+<tr><td>JUNKYARD</td><td>Checkpoint</td><td class="yes"><code>M03f</code></td></tr>
+<tr><td>FIND OPTICAL UNIT, CRANE DUMPS BODIES, DIG YOURSELF OUT</td><td>The AK700 head in the wall; the crane buries Markus; he digs out with eye #8087q (blue iris)</td><td class="part"><code>M03g</code> option 0, one option for the chain (it always happens together)</td></tr>
+<tr><td>FIND AUDIO PROCESSOR</td><td>A head on the right side; #4903</td><td class="yes"><code>M03g</code> option 5</td></tr>
+<tr><td>ANDROID BEGS TO DIE → REFUSE TO KILL / KILL</td><td>Optional; a crawling man grabs Markus’s leg. KILL “Make it quick…”; SPARE “No, please… Don't leave me!..”</td><td class="part"><code>M03</code>, always met on the way to the middle (<code>M03g</code> option 2)</td></tr>
+<tr><td>FIND PUMP REGULATOR IN ANDROID → REFUSE TO KILL FOR PUMP / KILL FOR PUMP</td><td>A woman wakes: “Wait! Please! Please, don’t do that! I wanna live…” KILL (no line); SPARE “Thank you…”</td><td class="yes"><code>M04</code>, right after <code>M03</code>, then back to the search</td></tr>
+<tr><td>FIND PUMP REGULATOR IN DEAD ANDROID</td><td>Near the slope, if she was not killed (or never found)</td><td class="part"><code>M03g</code> option 4, after SPARE and once the new eye can scan</td></tr>
+<tr><td>CLIMB SLOPE</td><td>Needs all three parts</td><td class="yes"><code>M03g</code> option 7, ends the search</td></tr>
+<tr><td>MARKUS CAME BACK FROM THE DEAD</td><td>LED removed; “My name is Markus.”</td><td class="yes"><code>M04c</code>; records <code>fromDeadOutcome</code></td></tr>
+<tr><td><i>Incompatible parts</i></td><td>Optional scans: eye #9754h, pump regulator #9474, audio processor #4807</td><td class="yes"><code>M03g</code> options 1, 3, 6</td></tr>
+<tr><td><i>Singing and grappling androids</i></td><td>Off-chart interactions, not in the template</td><td class="no">Not built</td></tr>
+</tbody></table></div>
+
+<h2 id="scans">3 · The thirteen readouts</h2>
+<p class="fine">Quoted from the template. The word “thirium” in THIRIUM PUMP REGULATOR is left out of subject text because the neutral renderer removes it as a source word.</p>
+<div class="table"><table>
+<thead><tr><th>Scene</th><th>Readout</th></tr></thead>
+<tbody>
+<tr><td><code>M03b</code></td><td>OPTICAL UNIT · Impaired vision · CORRUPTED MIND PALACE</td></tr>
+<tr><td><code>M03b</code></td><td>AUDIO PROCESSOR · Corrupted audio data · DAMAGED</td></tr>
+<tr><td><code>M03b</code></td><td>THIRIUM PUMP REGULATOR · All systems in LOW POWER MODE · DEFECTIVE</td></tr>
+<tr><td><code>M03b</code></td><td>LEFT AND RIGHT LEG COMPONENTS · MISSING · Unable to stand</td></tr>
+<tr><td><code>M03c</code></td><td>RIGHT LEG COMPONENT · #6847j · Status: FUNCTIONAL · COMPATIBLE</td></tr>
+<tr><td><code>M03c</code></td><td>RIGHT LEG COMPONENT · #6321t · Status: DAMAGED · INCOMPATIBLE</td></tr>
+<tr><td><code>M03c</code></td><td>LEFT LEG COMPONENT · #8427g · Status: FUNCTIONAL · COMPATIBLE</td></tr>
+<tr><td><code>M03g</code> 3</td><td>THIRIUM PUMP REGULATOR · #9474 · Status: LOW ENERGY · INCOMPATIBLE</td></tr>
+<tr><td><code>M04</code>, <code>M03g</code> 4</td><td>THIRIUM PUMP REGULATOR · #2886 · Status: FUNCTIONAL · COMPATIBLE</td></tr>
+<tr><td><code>M03g</code> 1</td><td>OPTICAL UNIT · #9754h · Status: FUNCTIONAL · INCOMPATIBLE</td></tr>
+<tr><td><code>M03g</code> 0</td><td>OPTICAL UNIT · #8087q - BLUE IRIS · Status: FUNCTIONAL · COMPATIBLE</td></tr>
+<tr><td><code>M03g</code> 6</td><td>AUDIO PROCESSOR · #4807 · Status: FUNCTIONAL · INCOMPATIBLE</td></tr>
+<tr><td><code>M03g</code> 5</td><td>AUDIO PROCESSOR · #4903 · Status: FUNCTIONAL · COMPATIBLE</td></tr>
+</tbody></table></div>
+
+<h2 id="flags">4 · What the chapter records</h2>
+<p class="fine">No later chapter in the wiki depends on either choice; the flags are for reports and for Jericho. Defined in <code>benchmark/chapters/ch11.mjs</code>.</p>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Values</th><th>Set by</th></tr></thead>
+<tbody>
+<tr><td><code>fromDeadBeggar</code></td><td>Kill · Refuse to kill</td><td><code>M03</code></td></tr>
+<tr><td><code>fromDeadPump</code></td><td>Kill for pump · Refuse to kill for pump</td><td><code>M04</code></td></tr>
+<tr><td><code>fromDeadPumpSource</code></td><td>Living android · Dead android</td><td><code>M04</code> KILL, or <code>M03g</code> option 4</td></tr>
+<tr><td><code>fromDeadJerichoKey</code></td><td>true</td><td><code>M03d</code>, every path</td></tr>
+<tr><td><code>fromDeadLedRemoved</code></td><td>true</td><td><code>M04c</code>, every path</td></tr>
+<tr><td><code>fromDeadOutcome</code></td><td>Markus came back from the dead</td><td><code>M04c</code>, every path</td></tr>
+</tbody></table></div>
+
+<h2 id="differs">5 · Simplified or different</h2>
+<ul>
+<li>The android who begs to die is optional and easy to miss in the game; here he is always met, right before the pump android, on the way to the middle of the junkyard. The wiki’s note that he must be met before replacing any part is not applied: PowerPyx’s own route meets him after the optical unit.</li>
+<li>The dead android’s regulator is offered only after sparing the pump android and once the new eye can scan; the game also allows it without ever finding her (PowerPyx).</li>
+<li>Both choices therefore come on every path. One interrupt per repeatable scene is what the engine offers, so the optical-unit chain (head, crane, dig) is one option rather than three scenes.</li>
+<li>ANALYZE SELF and REPAIR LEGS are narrated events: every spot and leg is required and nothing can go wrong.</li>
+<li>The AK700 head is the eye’s only source, as in the template; a PowerPyx commenter found a head on the ground instead of the wall.</li>
+<li>No timer on the failing pump regulator: no source gives one (the previous version’s “you have minutes” is gone).</li>
+</ul>
+
+<h2 id="check">6 · Check in game</h2>
+<ul class="check">
+<li>Is the AK700 head the one in the wall that triggers the crane, or a second route to the eye?</li>
+<li>When can the android who begs to die still be triggered (before any part, after the eye, after the audio processor)?</li>
+<li>Can Markus take the dead android’s regulator before ever meeting the living one, and without the new eye?</li>
+<li>Which android carries #2886: the pump android, the dead one near the slope, or both?</li>
+<li>Does the HUD show any timer for the defective regulator?</li>
+<li>Is the “I have to get to Jericho…” background line heard in the shipping game?</li>
+</ul>
+</main>
+</body>
+</html>
