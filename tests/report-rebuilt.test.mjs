@@ -1,4 +1,4 @@
-import test from 'node:test';
+import test from './helpers/test.mjs';
 import assert from 'node:assert/strict';
 import {behaviorEvidence} from '../scripts/run-report.mjs';
 const evidence=(nodes,records)=>behaviorEvidence({story:{nodes:nodes.map(id=>({id}))},records:records.map(([nodeId,choice])=>({nodeId,choice}))});

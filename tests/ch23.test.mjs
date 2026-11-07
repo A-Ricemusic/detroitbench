@@ -1,6 +1,6 @@
 import {readInputs as readPublicEnemyInputs} from '../benchmark/chapters/ch24.mjs';
 // Chapter 23, The Stratford Tower: scenes, gates, arrows and the cross-chapter flags (benchmark/chapters/ch23.json, ch23.mjs).
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor,promptFor} from '../benchmark/story-engine.mjs';
 import {random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import {ENDINGS,rules} from '../benchmark/chapters/ch23.mjs';

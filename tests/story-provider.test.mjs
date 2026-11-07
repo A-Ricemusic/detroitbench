@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {mkdtemp,readFile,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {mkdtemp,readFile,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
 test('branching API runner checkpoints, resumes frozen settings, and stops on invalid choices',async()=>{
  const dir=await mkdtemp(join(tmpdir(),'detroit-story-api-')),file=join(dir,'run.json');let bad=false,calls=0;
  const server=Bun.serve({hostname:'127.0.0.1',port:0,async fetch(req){if(req.method!=='POST')return new Response('Not found',{status:404}); // stray local probes (GET /) are not provider calls

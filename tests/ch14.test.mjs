@@ -1,6 +1,6 @@
 // Chapter 14, Jericho (Markus): the chart's 29 nodes as events, five optional side branches, the bench magazine,
 // no risk and no stat change. Spec: docs/research/ch14-jericho.md.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor,mediaFor} from '../benchmark/story-engine.mjs';
 import {render,experiencePrompt} from '../benchmark/experience-prompt.mjs';
 import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';

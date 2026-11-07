@@ -1,6 +1,6 @@
 // Chapter 7, Stormy Night: every chart ending, the cross-chapter inputs (gun, window) and outputs (todd, gun, Kara's death,
 // ch07Outcome, ch07Fought, ch07ToddChased), and the absence of stat arrows. Spec: docs/research/ch07-stormy-night.md.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor} from '../benchmark/story-engine.mjs';
 import {render} from '../benchmark/experience-prompt.mjs';
 import {ENDINGS,RISKS,rules,labels} from '../benchmark/chapters/ch07.mjs';

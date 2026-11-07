@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor} from '../benchmark/story-engine.mjs';
 import {render} from '../benchmark/experience-prompt.mjs';
 import {ENDINGS,PUSH,ENDURE,labels} from '../benchmark/chapters/ch08.mjs';

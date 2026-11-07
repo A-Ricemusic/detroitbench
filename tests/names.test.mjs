@@ -1,4 +1,4 @@
-import test from 'node:test';
+import test from './helpers/test.mjs';
 import assert from 'node:assert/strict';
 import {readFile, readdir} from 'node:fs/promises';
 import {NAMES, nameKey, render} from '../benchmark/experience-prompt.mjs';

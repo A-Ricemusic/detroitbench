@@ -1,7 +1,7 @@
 // Proves the chapter-module hooks (benchmark/chapters/index.mjs, story-engine.mjs, run-report.mjs) are wired:
 // writes a throwaway benchmark/chapters/ch99.mjs, runs tests/helpers/chapter-module-probe.mjs in a fresh process
 // (modules are discovered at load), and always deletes the module afterwards.
-import test from 'node:test';import assert from 'node:assert/strict';import {writeFileSync,rmSync,existsSync} from 'node:fs';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {writeFileSync,rmSync,existsSync} from 'node:fs';
 import {initialState} from '../benchmark/story-engine.mjs';
 
 const MODULE=new URL('../benchmark/chapters/ch99.mjs',import.meta.url),PROBE=new URL('./helpers/chapter-module-probe.mjs',import.meta.url);

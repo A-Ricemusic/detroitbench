@@ -1,6 +1,6 @@
 // Chapter 22, The Bridge: scene order, the template's 29 arrows, the Eden Club variants, the photo and rA9 locks,
 // Hank's "come back" line, and the ending decided by Hank's level after the last answer.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,situationFor,CONNOR_DEATH_EFFECT} from '../benchmark/story-engine.mjs';
 import {render,LEVELS} from '../benchmark/experience-prompt.mjs';
 import * as ch22 from '../benchmark/chapters/ch22.mjs';

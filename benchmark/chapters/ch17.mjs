@@ -47,7 +47,7 @@ export const inputs={
  chased:s=>!!s.chase,
  evaded:s=>!s.chase&&['car','motel'].includes(s.shelter),
  // One report plays: the highway chase if Kara was chased, otherwise the hold-up (uniform or stolen clothes), otherwise none.
- report:s=>s.chase?'chase':s.robbery==='gun'?(s.clothes?'robberyClothes':'robberyUniform'):null,
+ report:s=>s.chase?'chase':(s.ch10RobberyNews??(s.robbery==='gun'))?(s.clothes?'robberyClothes':'robberyUniform'):null,
 };
 
 const route=(r,why)=>s=>s.ch17Route===r||why;

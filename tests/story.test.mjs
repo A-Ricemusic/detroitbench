@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,current,promptFor,validatePlaythrough,recordChoice,rollFor,nextCursor,meets,situationFor,failed,DEVIANCY_THRESHOLD,HOSTAGE_RULES,ALICE_KEY,CONNOR_DEATH_EFFECT} from '../benchmark/story-engine.mjs';import {hash,random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL,riskLabel,LEVELS,NAMES} from '../benchmark/experience-prompt.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 // Plays the map with explicit picks, following the engine's routing (repeatable scenes, interrupts).
@@ -19,7 +19,7 @@ test('story has unique ids and every text token renders in both modes without le
 test('media scenes offer only the magazines and broadcasts that exist on the path and add facts to knowledge',()=>{
  const r=play({M02:byLabel('ENDURE:'),R12:'all'}),base=play({M02:byLabel('ENDURE:')});assert.ok(r.s.knowledge.Connor.some(f=>/Manfred has died|Famous \{\{Detroit\}\} Painter Dies/.test(f)),'Carl-dead magazine appears');assert.ok(!r.s.knowledge.Connor.some(f=>/child androids/.test(f)));assert.equal(r.s.publicSupport,base.s.publicSupport-1,'break-room news lowers opinion');
  const r2=play({M02:byLabel('PUSH {{LEO}}:'),R12:'2'});assert.ok(r2.s.knowledge.Connor.some(f=>/child androids/.test(f)));
- const motel=play({K05:'0',K06:'0',K07:'0',R10b:'0'});assert.ok(motel.visited.includes('R10b'));const car=play({K07:'2'});assert.ok(!car.visited.includes('R10b'));
+ const motel=play({KF02:['0','10','12','7','14','26','15','16','23','45','2'],R10:['skip','2']});assert.ok(motel.visited.includes('KF04')&&motel.visited.includes('KF08'));const car=play({KF02:['7','25','3','54','59'],R10:'2'});assert.ok(car.visited.includes('KF09'));
  const r12=story.nodes.find(n=>n.id==='R12');assert.ok(available(r12,startState(story)).some(o=>o.id==='skip'))});
 test('the hostage opening reveals the situation gradually and the mother scene is a narrated event',()=>{
  const ids=story.nodes.map(n=>n.id);assert.deepEqual(ids.slice(0,22),CH1);
@@ -52,7 +52,7 @@ test('the Opening: two narrated Kara events between the hostage chapter and chap
  const k01=seen.K01.currentFacts.join(' ');for(const re of [/belonged to Dale before/,/a car hit you/,/wiped your memory/,/daughter\. She chose your name/,/Android City/,/I LOST MY JOB BECAUSE OF ANDROIDS Help me/])assert.match(k01,re);
  assert.ok(seen.K01.currentFacts.some(f=>/Pia’s relationship with you/.test(f)),'status lines resume in A New Home');
  assert.equal(seen.K01.yourStorySoFar.length,2);assert.match(seen.K01.yourStorySoFar[0],/Continue\. → Mira follows Dale out of the store/)});
-test('weapons, interrogation and squat prerequisites gate scenes',()=>{const r=play({C02i:'11',C05:'1',K01d:NO_GUN,K03:'2',K06:'2',K07:'1'});assert.ok(!r.visited.includes('K04'));assert.ok(!r.visited.includes('C06'));assert.ok(!r.visited.includes('C07'));assert.ok(!r.visited.includes('C08b'));assert.ok(r.visited.includes('K07b'));assert.ok(r.visited.includes('C09a'));assert.ok(!r.visited.includes('K09'));assert.equal(r.s.gun,false)});
+test('weapons, interrogation and squat prerequisites gate scenes',()=>{const r=play({C02i:'11',C05:'1',K01d:NO_GUN,K03:'2',KF02:['3','56','57','61','67','71','72','73','75']});assert.ok(!r.visited.includes('K04'));assert.ok(!r.visited.includes('C06'));assert.ok(!r.visited.includes('C07'));assert.ok(!r.visited.includes('C08b'));assert.ok(r.visited.includes('KF10'));assert.equal(r.s.shelter,'squat');assert.ok(r.visited.includes('C09a'));assert.ok(!r.visited.includes('K09'));assert.equal(r.s.gun,false)});
 test('a ruthless Connor cannot become deviant; an empathetic one can',()=>{
  const cruel=play({C01:'1',C03:'1',C06:'2',C09:'1',C10:'1',C12:'1',C13:'1',C17:'0',C18:'0'});assert.ok(cruel.s.instability<DEVIANCY_THRESHOLD);assert.ok(cruel.visited.includes('C22'));const c22=story.nodes.find(n=>n.id==='C22');assert.deepEqual(available(c22,{...cruel.s,choices:{}}).map(o=>o.id),['1']);
  const gentle=play({...kind,C17:'0',C18:'0'});assert.ok(gentle.s.instability>=DEVIANCY_THRESHOLD,'instability '+gentle.s.instability);assert.ok(gentle.visited.includes('C22'))});

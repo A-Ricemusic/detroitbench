@@ -1,6 +1,6 @@
 // benchmark/story.json is generated: edit benchmark/chapters/chNN.json (or benchmark/story-meta.json) and run
 // `bun run story:assemble`. This fails when story.json differs from the assembled output, e.g. after a hand edit.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
 import {assembleStory,assembleStoryObject,chapterFiles,countNodes,STORY_FILE,META_FILE} from '../scripts/story-assemble.mjs';
 const hint=' Edit benchmark/chapters/chNN.json, not story.json, then run `bun run story:assemble`.';
 

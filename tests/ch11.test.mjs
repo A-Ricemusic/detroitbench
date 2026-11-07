@@ -1,5 +1,5 @@
 // Chapter 11, From the Dead (Markus): the game's chart and text (docs/research/ch11-from-the-dead.md, section 10).
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor,current,promptFor,recordChoice,validatePlaythrough} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';import {hash,random} from '../benchmark/core.mjs';
 import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';

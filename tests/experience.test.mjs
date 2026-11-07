@@ -1,5 +1,5 @@
 import {fixture} from './helpers/experience-fixture.mjs';
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile,mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile,mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
 import {hash} from '../benchmark/core.mjs';import {current,promptFor,apply,validatePlaythrough} from '../benchmark/story-engine.mjs';import {EXPERIENCE_PROTOCOL,EXPERIENCE_PREFACE} from '../benchmark/experience-prompt.mjs';import {runHTML,characterSummary} from '../scripts/run-report.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 

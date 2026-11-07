@@ -103,7 +103,6 @@ export function blocked(n,s){
   C04d:()=>s.hostagePhase==='gun'||'Connor never went for the pistol.',
   C04e:()=>s.hostagePhase==='aim'||(s.hostagePhase==='over'&&c('C04d')==='1'?'Connor shot Daniel without holding him at gunpoint first.':'Connor never held Daniel at gunpoint.'),
   C04c:()=>s.hostagePhase==='jumped'||(s.hostageOutcome==='Deviant shot Connor'?'Daniel shot Connor before going over the edge with Emma.':'Daniel never went over the edge with Emma.'),
-  K07b:()=>s.shelter==='squat'||'Kara did not shelter in the abandoned house where Ralph lives.',
   C08b:()=>s.suspectAlive||'The suspect did not survive the interrogation.',
   C19:()=>!s.kamskiLocation||'Kamski already gave Connor the deviants’ location.',
   C20:()=>!s.kamskiLocation&&c('C19')==='0'||'Connor did not enter the archive.',
@@ -163,9 +162,6 @@ export function available(n,s){
  const remove=(...ids)=>{opts=opts.filter(o=>!ids.map(String).includes(o.id))};
  // A follow-up dialogue menu (`excludeChosenAt`) drops the line already said in an earlier menu.
  for(const k of n.excludeChosenAt??[])if(s.choices[k]!==undefined)remove(s.choices[k]);
- if(id==='K06'&&!s.gun)remove(1);
- if(id==='K07'&&!(s.clothes&&s.money))remove(0);
- if(id==='K07b'&&!s.gun)remove(2);
  if(id==='C20'){const r=evidenceRoutes(s);if(!r.traci)remove(0);if(!r.impersonate)remove(1);if(!r.tablet)remove(2)}
  if(id==='C22'&&s.instability<DEVIANCY_THRESHOLD)remove(0);
  if(id==='C24'&&!(s.hankTrust>=HANK_FRIEND&&s.knowsCole))remove(0);
@@ -224,11 +220,6 @@ export function apply(n,s,choice,roll=null){
   case 'M00f':event=protesters(n,s,opt,v,fail);break;
   // A New Home, the last menu of the talk in Alice’s room: she leaves, and gives Kara the key if she is at least Neutral.
   case 'K01g':s.aliceKey=s.aliceBond>=ALICE_KEY;event=(opt.outcome??'')+' '+n.outcomes[s.aliceKey?'key':'distant'];break;
-  case 'K05':if(v===0){s.clothes=true;alice(-1)}else alice(1);break;
-  case 'K06':if(v!==2){s.money=true;alice(-1);s.robbery=v===1?'gun':'theft'}break;
-  case 'K07':s.shelter=['motel','squat','car'][v];if(v===1)s.ralph=true;if(v===2)alice(-2);break;
-  case 'K07b':if(v===2)s.ralphHostile=true;if(v===0)alice(1);break;
-  case 'K08':alice(v===0?2:-1);break;
   case 'C08':if(v===0){hank(1);s.knowsSumo=true}else hank(-1);break;
   case 'C08b':if(v===0)si(1);s.suspectAlive=false;s.evidence.ortizBody=true;event='Later that night the android self-destructs in his cell. His body goes to the evidence archive.';break;
   case 'C19':{if(s.hankTrust>=HANK_FRIEND)event='{{Hank}} punches {{Perkins}} in the face to buy {{Connor}} time.';else if(s.hankTrust<=HANK_HOSTILE){s.hankResigned=true;event='{{Hank}} refuses to help, throws down his badge, and walks out of the precinct.'}else event='{{Hank}} refuses to get involved; {{Connor}} creates his own diversion.';

@@ -1,5 +1,5 @@
 import {fixture} from './helpers/experience-fixture.mjs';
-import test from 'node:test';import assert from 'node:assert/strict';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';
 import {assignReportNames,modelDisplayName,reportFileName,runHTML} from '../scripts/run-report.mjs';
 const stub=(id,label,model,createdAt)=>({id,label,model,createdAt});
 

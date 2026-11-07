@@ -1,6 +1,6 @@
 // Chapter 27, Meet Kamski (Connor): the scenes, the game's buttons, the template's arrows, the two starts,
 // the lobby clues and magazines, the test, the one question and the two endings.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor} from '../benchmark/story-engine.mjs';
 import {render} from '../benchmark/experience-prompt.mjs';
 import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';

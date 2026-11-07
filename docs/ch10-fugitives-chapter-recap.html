@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Fugitives · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 10</p>
+<h1>Fugitives: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx’s 100% screenshot and its zoomed shots, 95 boxes); the prompts, button labels and Alice’s arrows come from the detroitbecometext template (22 prompts, 16 Alice arrows); PowerPyx and the Fandom wiki fill in the rest. There is no probability, public-opinion or software-instability change in the chapter, and no death. There are no operator notes for this chapter yet; section 5 lists where the benchmark simplifies, and section 7 what to check in game.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#alice">3 · Alice</a></li><li><a href="#confirmed">4 · Confirmed</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>LAST STOP (checkpoint): the driver ends the line; STAY HERE? / SHELTER?, both refused. LEAVE BUS.</li>
+<li>[ FIND SHELTER FOR THE NIGHT ], free roam in any order: ENTER LAUNDROMAT, TALK TO PARKED ANDROID, CHECK MOTEL, CHECK PARKING LOT, TALK TO ANDROID TRASH COLLECTOR (then ALICE TOO COLD after about 12 minutes outside), CHECK SQUAT, ENTER SUPERMARKET.</li>
+<li>Laundromat: two magazines; INSPECT DRYER → STEAL (WEAR CLOTHES or DISTURB MAN) / DON’T STEAL.</li>
+<li>Store: TALK TO CLERK, NOTICE CASH REGISTER, NOTICE CAN STACK; STEAL / LEAVE the chocolate bar, the toy and the wire cutters; USE ALICE AS A DIVERSION or USE GUN; CLERK SPOTS KARA STEALING → DRAW GUN, LEAVE or PUT BACK; the TV.</li>
+<li>Motel: only with HAVE MONEY AND DISGUISE → check in → room 28.</li>
+<li>Parking lot: BREAK INTO CAR → STAY / FIND ANOTHER OPTION; the pliers on the generator; CUT PARKING LOT FENCE.</li>
+<li>Squat: TAKE WIRE CUTTERS → either fence → MEET RALPH → CONVINCE or THREATEN WITH GUN, FOLLOW RALPH or GIVE UP → START A FIRE, MAKE A BED (or LEAVE SQUAT).</li>
+<li>At the shelter: TALK TO ALICE → MAKE PROMISE / DON’T MAKE PROMISE → GIVE TOY, GIVE CHOCOLATE → KARA SLEEPS NEXT TO ALICE / WATCH ALICE FROM CHAIR → one of three endings.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>KF01</code> Last stop: the bus prompt.</li>
+<li><code>KF02</code> Finding shelter for the night, repeated: the street and everything inside the buildings. Each visit offers what Kara can do where she is; while a dialogue prompt is waiting, only its buttons. Committing to a shelter, or Alice getting too cold, ends it.</li>
+<li><code>R10</code> Something to read or watch (media): cuts in the first time Kara enters the laundromat (two magazines) and the store (the TV), and returns.</li>
+<li><code>KF03</code> Alice too cold (event), only on that path.</li>
+<li><code>KF04</code> Checking in (motel only): the ID prompt.</li>
+<li><code>K08</code> Alice’s question: PROMISE / CAN’T PROMISE; <code>KF05</code> FOREVER.</li>
+<li><code>KF06</code> the gifts (only with a stolen toy or chocolate); <code>KF07</code> where Kara rests (motel and squat).</li>
+<li><code>KF08</code>, <code>KF09</code>, <code>KF10</code>: the three endings (events).</li>
+</ol>
+<p class="fine">Two options carry a risk: STEAL in the laundromat (0.2) and the diversion at the register (0.25), the chart’s two QTEs. Neither number is sourced.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<p class="fine">95 chart boxes and one bracketed phase. Rows in italics are template prompts that are not chart nodes. Every <code>KF02</code> row is an option, or a prompt, of the street scene.</p>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>LAST STOP, LEAVE BUS; <i>STAY HERE? / SHELTER?</i></td><td>The driver refuses both</td><td class="yes"><code>KF01</code>, no arrow</td></tr>
+<tr><td>TALK TO PARKED ANDROID</td><td>No answer</td><td class="yes"><code>KF02</code>, once</td></tr>
+<tr><td><i>Going too far away</i></td><td>“There’s nothing more this way…”</td><td class="yes"><code>KF02</code> WALK ON, once</td></tr>
+<tr><td>TALK TO ANDROID TRASH COLLECTOR</td><td>“I know someone who can help you.” The address on the other side of town</td><td class="yes"><code>KF02</code>; the only street option after 12 street actions without it</td></tr>
+<tr><td>ALICE TOO COLD</td><td>About 12 minutes outside after the trash collector; Alice large down; straight to the car</td><td class="part"><code>KF03</code>, after 12 street actions (a budget, not minutes)</td></tr>
+<tr><td>INSIDE LAUNDROMAT, READ ×2</td><td>Bees extinct; live concerts</td><td class="yes"><code>R10</code> on the first entry</td></tr>
+<tr><td>INSPECT DRYER → STEAL CLOTHES / LEAVE CLOTHES</td><td>STEAL ↓ / DON’T STEAL ↑</td><td class="yes"><code>KF02</code> prompt, −1 / +1 (once)</td></tr>
+<tr><td>WEAR CLOTHES / DISTURB MAN</td><td>QTE</td><td class="yes"><code>KF02</code> STEAL, risk 0.2; both leave the laundromat</td></tr>
+<tr><td>INSIDE SUPERMARKET, TALK TO CLERK; <i>NO / HELP</i></td><td>Hostile to the uniform; in clothes “Can I help you?”</td><td class="yes"><code>KF02</code>, the prompt only in clothes</td></tr>
+<tr><td><i>Watch TV</i></td><td>Channel 16: the android zoo</td><td class="yes"><code>R10</code> on the first entry</td></tr>
+<tr><td>NOTICE CASH REGISTER, NOTICE CAN STACK</td><td>Unlock the diversion</td><td class="yes"><code>KF02</code>; the register after the clerk</td></tr>
+<tr><td>STEAL / LEAVE CHOCOLATE BAR, TOY, WIRE CUTTERS</td><td>One theft safe, a second always seen</td><td class="yes"><code>KF02</code>; the cutters once the fence is seen</td></tr>
+<tr><td>USE ALICE AS A DIVERSION → STEAL DISCREETLY / TAKE TOO MUCH TIME; <i>FACTUAL / JUSTIFY / UNCERTAIN / APOLOGIZE</i></td><td>↓; apologize ↑</td><td class="yes"><code>KF02</code>, −1, risk 0.25; APOLOGIZE +1</td></tr>
+<tr><td>USE GUN; <i>SINCERE / CALM / AGGRESSIVE</i>; <i>CASH REGISTER</i></td><td>Alice sent outside</td><td class="yes"><code>KF02</code> prompts, no arrow</td></tr>
+<tr><td>CUSTOMER ARRIVES → GIVE UP / RESUME HOLD UP</td><td>Template STAY / LEAVE</td><td class="yes"><code>KF02</code>, LEAVE ends it with no money</td></tr>
+<tr><td>“DON’T MOVE” / OPEN CASH REGISTER</td><td>BACK OFF! / TURN AROUND! / OPEN THE REGISTER!, then BILLS!</td><td class="yes"><code>KF02</code>; BILLS! only after OPEN THE REGISTER!</td></tr>
+<tr><td>CLERK GRABS A GUN → GIVE UP / CONVINCE</td><td>Two buttons since patch 1.06</td><td class="yes"><code>KF02</code>; CONVINCE +1 (the automatic LIE)</td></tr>
+<tr><td>TAKE MONEY; <i>TRUTH / LIE</i></td><td>↓ unless convinced; TRUTH → APOLOGIZE ↑</td><td class="yes"><code>KF02</code>, −1 on the money</td></tr>
+<tr><td>CLERK SPOTS KARA STEALING → DRAW GUN; <i>LEAVE / PUT BACK</i>; <i>ANGRY / APOLOGETIC / CALM</i></td><td>[GUN] ↓, keep the items; otherwise lose them</td><td class="yes"><code>KF02</code>, −1; then TAKE MONEY or LEAVE SUPERMARKET</td></tr>
+<tr><td>CHECK MOTEL → HAVE MONEY AND DISGUISE → INSIDE MOTEL, TALK TO RECEPTIONIST, CHECK IN; <i>IN THE CAR / FORGOT / NO LICENSE / SAY NOTHING</i></td><td>$40 and human clothes</td><td class="yes"><code>KF02</code> then <code>KF04</code>; turned away otherwise</td></tr>
+<tr><td>FIND AND ENTER ROOM 28, REMOVE WET CLOTHES</td><td>Scripted</td><td class="yes"><code>K08</code> situation</td></tr>
+<tr><td>CHECK PARKING LOT, INSIDE PARKING LOT, BREAK INTO CAR → STAY / FIND ANOTHER OPTION, GET IN CAR, LEAVE PARKING LOT</td><td>Template STAY HERE (large ↓) / KEEP SEARCHING</td><td class="yes"><code>KF02</code>, −2</td></tr>
+<tr><td>CHECK SQUAT, TAKE WIRE CUTTERS, CUT STREET FENCE / CUT PARKING LOT FENCE, INSIDE SQUAT</td><td>Pliers on the generator or the store’s cutters</td><td class="yes"><code>KF02</code></td></tr>
+<tr><td>MEET RALPH; <i>ANDROID / LITTLE GIRL / INNOCENT / JUSTIFY</i></td><td>No arrow</td><td class="yes"><code>KF02</code></td></tr>
+<tr><td>CONVINCE / THREATEN WITH GUN / GIVE UP</td><td>[GUN] / INSIST / REASSURE / HOSPITALITY / LEAVE</td><td class="yes"><code>KF02</code>; [GUN] with the gun, HOSPITALITY without</td></tr>
+<tr><td>FOLLOW RALPH / GIVE UP</td><td>Template LEAVE / STAY</td><td class="yes"><code>KF02</code></td></tr>
+<tr><td>START A FIRE, MAKE A BED, LEAVE SQUAT; <i>Talk to Ralph (rA9)</i></td><td>Both tasks before TALK TO ALICE</td><td class="yes"><code>KF02</code></td></tr>
+<tr><td>TALK TO ALICE → MAKE PROMISE / DON’T MAKE PROMISE (×3); <i>FOREVER</i></td><td>PROMISE ↑ / CAN’T PROMISE ↓</td><td class="yes"><code>K08</code> (+1 / −1) and <code>KF05</code>, once for whichever shelter</td></tr>
+<tr><td>GIVE TOY, GIVE CHOCOLATE (×3)</td><td>Template lines, no arrow</td><td class="part"><code>KF06</code>, no arrow (the wiki’s toy ↑ is not built)</td></tr>
+<tr><td>KARA SLEEPS NEXT TO ALICE / WATCH ALICE FROM CHAIR (motel, squat); KARA SLEEPS NEXT TO ALICE (car)</td><td>Wiki ↑ “x2” for beside, motel or squat</td><td class="part"><code>KF07</code>, +1 once; the car’s is in <code>KF09</code></td></tr>
+<tr><td>ALICE &amp; KARA STAYED IN MOTEL / IN ABANDONED CAR / IN THE SQUAT</td><td>Three endings, no icon</td><td class="yes"><code>KF08</code>, <code>KF09</code>, <code>KF10</code></td></tr>
+</tbody></table></div>
+
+<h2 id="alice">3 · Alice’s relationship, line by line</h2>
+<p class="fine">The template’s arrows, small = 1 and large = 2 (the scale rework comes later). The subject sees the level, never a number. The last row is the wiki’s, where the template is silent.</p>
+<div class="table"><table>
+<thead><tr><th>Where</th><th>Button or moment</th><th>Source</th><th class="n">Change</th></tr></thead>
+<tbody>
+<tr><td><code>KF02</code></td><td>STEAL (laundromat)</td><td>Template: Alice SmallDown</td><td class="n">−1</td></tr>
+<tr><td><code>KF02</code></td><td>DON’T STEAL (once)</td><td>Template: Alice SmallUp</td><td class="n">+1</td></tr>
+<tr><td><code>KF02</code></td><td>USE ALICE AS A DIVERSION</td><td>Template: Alice SmallDown</td><td class="n">−1</td></tr>
+<tr><td><code>KF02</code></td><td>APOLOGIZE (after the diversion, or after TRUTH)</td><td>Template: Alice SmallUp</td><td class="n">+1</td></tr>
+<tr><td><code>KF02</code></td><td>Hold-up money by BACK OFF! or TURN AROUND! (“How did you get it?”)</td><td>Template: “Otherwise, there will be a decrease”</td><td class="n">−1</td></tr>
+<tr><td><code>KF02</code></td><td>CONVINCE</td><td>Template: “directly to the LIE option with an increase”</td><td class="n">+1</td></tr>
+<tr><td><code>KF02</code></td><td>[GUN] when seen stealing</td><td>Template: Alice SmallDown (one arrow)</td><td class="n">−1</td></tr>
+<tr><td><code>KF02</code></td><td>STAY HERE (the car)</td><td>Template: Alice LargeDown</td><td class="n">−2</td></tr>
+<tr><td><code>KF03</code></td><td>ALICE TOO COLD</td><td>Template: Alice LargeDown</td><td class="n">−2</td></tr>
+<tr><td><code>K08</code></td><td>PROMISE / CAN’T PROMISE</td><td>Template: SmallUp / SmallDown</td><td class="n">+1 / −1</td></tr>
+<tr><td><code>KF07</code></td><td>KARA SLEEPS NEXT TO ALICE (motel or squat)</td><td>Wiki: “Sleeping beside Alice either in the Squat or the Motel” ↑ x2</td><td class="n">+1</td></tr>
+<tr><td>everything else</td><td>Bus, street, clerk, notices, items, hold-up buttons, Ralph, fire, bed, check-in, FOREVER, gifts, chair</td><td>no arrow</td><td class="n">0</td></tr>
+</tbody></table></div>
+<div class="cols">
+<div class="box"><h3>Best and worst</h3><ul>
+<li>Best, squat: DON’T STEAL (+1), the generator’s pliers, PROMISE (+1), sleeping beside her (+1) = <b>+3</b>.</li>
+<li>Best, motel: DON’T STEAL then STEAL (0), the hold-up with CONVINCE (+1), PROMISE, beside = <b>+3</b>; with the diversion and APOLOGIZE instead, <b>+2</b>.</li>
+<li>Worst: STEAL (−1), the diversion (−1) failing into [GUN] (−1), STAY HERE (−2), CAN’T PROMISE (−1) = <b>−6</b>; the same with ALICE TOO COLD instead of the car is −5, with no promise.</li>
+</ul></div>
+<div class="box"><h3>What is not an arrow</h3><ul>
+<li>The toy: the wiki lists a small up for giving it; the template has the lines (“Look, what I’ve got for you…” / “Thanks.”) and no arrow. Template wins; flagged.</li>
+<li>Taking the register money after DRAW GUN: the Relationship Stat page lists a second down; the template has one arrow. Template wins.</li>
+<li>The diversion and STEAL arrows fall on choosing, so a failed QTE still costs them.</li>
+</ul></div>
+</div>
+
+<h2 id="confirmed">4 · Confirmed by the sources</h2>
+<p class="fine">Sources: <a href="https://detroit-become-human.fandom.com/wiki/Fugitives">chapter page</a>, <a href="https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html">template</a>, <a href="https://detroit-become-human.fandom.com/wiki/Relationship_Stat">Relationship Stat</a>, <a href="https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/">PowerPyx walkthrough</a>, chart screenshots <a href="https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg">100%</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-first-branch.jpg">hub</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-laundromat-branch-1.jpg">laundromat</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg">motel</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-parking-branch.jpg">parking</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-squat-branch.jpg">squat</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-fugitives-inside-supermarket-1.jpg">store 1</a> <a href="https://www.powerpyx.com/wp-content/uploads/detroit-become-human-fugitives-inside-supermarket-2.jpg">store 2</a>. Full research: <code>docs/research/ch10-fugitives.md</code>.</p>
+<ul>
+<li>Three endings with no icon: no death or failure anywhere in the chapter.</li>
+<li>The motel needs $40 and human clothes (PowerPyx: “If you have failed one of these two things, you can’t get into the Motel”).</li>
+<li>One theft is safe and “Stealing a second item will always get you busted” (PowerPyx); without the gun “you will lose all of your stolen goods” (wiki).</li>
+<li>ALICE TOO COLD “requires having talked to the android trash collector, then standing outside for 12 minutes” (wiki).</li>
+<li>The gun opens USE GUN, DRAW GUN and THREATEN WITH GUN, and the template locks HOSPITALITY to Kara not having it.</li>
+<li>Patch 1.06 removed a third option after CLERK GRABS A GUN; there are two (SOURCES.md).</li>
+<li>The broadcast is in the store (template “Watch TV”), not the motel.</li>
+</ul>
+
+<h2 id="differs">5 · Simplified, or changed from the earlier version</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Game or sources</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Free roam</td><td>Walk anywhere, any order</td><td>One repeatable scene; every building’s actions and prompts are its option sets</td></tr>
+<tr><td>ALICE TOO COLD timer</td><td>About 12 minutes outside after the trash collector</td><td>12 street actions after the talk (entering a place counts one; time inside does not)</td></tr>
+<tr><td>The trash collector</td><td>“You are forced to talk to Alice at some point”</td><td>A street action; after 12 street actions without it, the only one</td></tr>
+<tr><td>Turned away from the motel</td><td>No chart node; three lines</td><td>The CHECK MOTEL outcome; offered again only once the clothes or money change</td></tr>
+<tr><td>Repeat visits</td><td>Places can be revisited</td><td>The laundromat closes after the clothes are worn or the man wakes; the store after any robbery or attempt; the squat after leaving it</td></tr>
+<tr><td>The promise, gifts and rest</td><td>Three copies on the chart</td><td>One scene each, worded for the shelter</td></tr>
+<tr><td>QTE risks</td><td>No number in any source</td><td>STEAL 0.2, the register 0.25</td></tr>
+<tr><td>Earlier version</td><td>K05, K06, K07, K07b, K08, R10, R10b</td><td>PROMISE was +2 (now +1); K07b’s +1 for Ralph and its On the Run meal are gone; the hold-up always cost −1 (now by route); the motel television is gone; the LED-removal line is gone</td></tr>
+<tr><td>Left out</td><td>Shop scans, the second washer, the motel mural and window, the laundromat window, hanging the jacket, the gun, toy and pliers on the motel TV stand, offering the chocolate in the squat before leaving it</td><td>Not built (no choice, no stat)</td></tr>
+</tbody></table></div>
+
+<h2 id="endings">6 · Endings and the flags later chapters read</h2>
+<div class="table"><table>
+<thead><tr><th>Ending (chart)</th><th>How</th><th>Flags set</th></tr></thead>
+<tbody>
+<tr><td>ALICE &amp; KARA STAYED IN MOTEL</td><td>Clothes worn and register money, CHECK MOTEL</td><td><code>shelter</code> = motel, <code>ch10Ending</code></td></tr>
+<tr><td>ALICE &amp; KARA STAYED IN ABANDONED CAR</td><td>STAY HERE, or ALICE TOO COLD</td><td><code>shelter</code> = car, <code>ch10ColdNight</code> on the forced night</td></tr>
+<tr><td>ALICE &amp; KARA STAYED IN THE SQUAT</td><td>Cutters, a fence, Ralph, STAY, fire and bed, TALK TO ALICE</td><td><code>shelter</code> = squat, <code>ch10Fireplace</code></td></tr>
+</tbody></table></div>
+<ul>
+<li><code>clothes</code> (WEAR CLOTHES) and <code>ch10Laundry</code>; <code>money</code>; <code>robbery</code> (theft, gun or convinced), <code>ch10Robbery</code> and <code>ch10RobberyNews</code> (Zlatko’s newsflash; not after CONVINCE).</li>
+<li><code>ralph</code> (met him), <code>ralphHostile</code> (THREATEN WITH GUN), <code>ch10RalphRA9</code> (the carving, a Zlatko memory).</li>
+<li><code>ch10TrashCollector</code> (the address for Zlatko), <code>ch10Cutters</code> (generator or store; Connor mentions stolen pliers), <code>ch10ToyGiven</code>, <code>ch10Roam.toy</code> and <code>ch10Roam.chocolate</code> (still held), <code>ch10Promise</code>, <code>ch10Sleep</code>, <code>ch10Roam.sleeveTorn</code>.</li>
+<li>Read from earlier chapters: <code>gun</code> (the chapter 7 rebuild sets it at TAKE GUN). Todd’s fate changes nothing here.</li>
+<li>Merger mapping: <code>ch10WireCutters</code> maps to <code>ch10Cutters</code> (the chapter 13 reader treats <code>"store"</code> as stolen and <code>"generator"</code> as not stolen); <code>wireCuttersStolen</code> means <code>ch10Cutters === "store"</code>; <code>ch10RalphCarving</code> is <code>ch10RalphRA9</code>. Reconcile these names in the chapter 13 and 17 consumers; this chapter keeps one canonical source flag. Chapter 17 currently tests only <code>robbery === "gun"</code> for its news report; reconcile its policy with <code>ch10RobberyNews</code> (the diversion and DRAW GUN without money remain source questions).</li>
+</ul>
+
+<h2 id="check">7 · Check in game</h2>
+<ul class="check">
+<li>Whether the 12 minutes of ALICE TOO COLD run only while standing still, or also while walking about on the street.</li>
+<li>Whether the trash collector can be skipped entirely, and how Kara then knows of Zlatko.</li>
+<li>Whether giving the toy raises Alice (the wiki says up; the template has no arrow).</li>
+<li>Whether sleeping beside Alice is one up or two (“x2”).</li>
+<li>Whether caught at the register without the gun, Kara also loses what she took from the shelves.</li>
+<li>Whether the parking-lot pliers need the fence seen first, like the store’s wire cutters.</li>
+<li>Whether CONVINCE counts as a robbery for Zlatko’s newsflash, and whether DRAW GUN without the money does.</li>
+<li>Whether Kara can re-enter the laundromat after the man wakes, and the store after a robbery.</li>
+</ul>
+</main>
+</body>
+</html>

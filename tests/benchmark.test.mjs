@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile,mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile,mkdtemp,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import {join} from 'node:path';
 import {datasetSchema,makeJobs,parseAnswer,hash,validateRun,summarize,compareRuns} from '../benchmark/core.mjs';import {execute,callProvider} from '../benchmark/runner.mjs';
 const dataset=datasetSchema.parse(JSON.parse(await readFile(new URL('../benchmark/dataset.json',import.meta.url),'utf8')));
 const config={provider:'mock',model:'fixture',baseUrl:'https://openrouter.ai/api/v1',questionIds:['C17','C22'],repeats:3,seed:42,temperature:null,maxTokens:512,timeoutMs:1000,shuffle:true};

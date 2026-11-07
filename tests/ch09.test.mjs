@@ -1,6 +1,6 @@
 // Chapter 9, The Interrogation: the hidden stress meter, the approach loop, the confession questions, the four endings and
 // the arrows, against docs/research/ch09-the-interrogation.md. Module: benchmark/chapters/ch09.mjs.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,current,promptFor} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';import {random} from '../benchmark/core.mjs';
 import {RULES,OUTCOMES,questionsLeft,bandOf,labels,deathEffect,state as chapterState,consequence as chapterConsequence} from '../benchmark/chapters/ch09.mjs';

@@ -130,8 +130,15 @@
    "id": 10,
    "title": "Fugitives",
    "character": "Kara",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 to the PowerPyx 100% chart (95 boxes, three endings with no icon) and the detroitbecometext template (22 prompts, 16 Alice arrows: 2 large down, 7 small up, 7 small down). LAST STOP → LEAVE BUS → [ FIND SHELTER FOR THE NIGHT ]: the laundromat (STEAL / DON’T STEAL, WEAR CLOTHES or DISTURB MAN, two magazines), the store (the clerk, the register and can stack, three shoplifting pairs, the diversion, the hold-up with its customer, BILLS! and the clerk’s gun, being seen stealing, the TV), the parking lot (the car, the pliers), the squat (two fences, MEET RALPH, fire and bed), the trash collector and ALICE TOO COLD. Endings: ALICE & KARA STAYED IN MOTEL, IN ABANDONED CAR, IN THE SQUAT; the promise, gifts and resting place at each. No probability, public-opinion or instability change. Cross-chapter: the gun from Stormy Night; the shelter, clothes, robbery, Ralph, the fireplace, rA9 and the trash collector for On the Run and Zlatko. Researched in docs/research/ch10-fugitives.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Fugitives",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
   },
   {
    "id": 11,
@@ -5773,127 +5780,522 @@
    }
   },
   {
+   "id": "CH10F01",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Last Stop (checkpoint) and Leave Bus",
+   "context": "The bus reaches the end of the line at 10:58 pm; the driver tells Kara and Alice to leave.",
+   "options": [
+    {
+     "label": "STAY HERE?",
+     "effect": "The driver refuses: the bus goes back to the depot.",
+     "target": "CH10F02"
+    },
+    {
+     "label": "SHELTER?",
+     "effect": "The driver has no idea where they could go.",
+     "target": "CH10F02"
+    }
+   ],
+   "gate": "Chapter start; only if Kara and Alice escaped in Stormy Night.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg"
+   ],
+   "note": "The template’s only prompt on the bus; no arrow. LEAVE BUS is unmissable.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF01"
+    ],
+    "status": "implemented",
+    "note": "A decision scene with the two buttons; both lead off the bus."
+   }
+  },
+  {
+   "id": "CH10F02",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "[ Find shelter for the night ]: the street",
+   "context": "Free roam in the rain: the laundromat, the convenience store, the motel, its parking lot and the fenced abandoned house, in any order and any number of times.",
+   "options": [
+    {
+     "label": "TALK TO PARKED ANDROID",
+     "effect": "No answer; no consequence.",
+     "target": null
+    },
+    {
+     "label": "Going too far away",
+     "effect": "“There’s nothing more this way…”",
+     "target": null
+    },
+    {
+     "label": "Do nothing",
+     "effect": "After the trash collector, standing in the rain ends in ALICE TOO COLD.",
+     "target": "CH10F07"
+    }
+   ],
+   "gate": "After LEAVE BUS.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CH10F01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg"
+   ],
+   "note": "The chart’s hub; every branch but the three endings returns to it.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF02"
+    ],
+    "status": "implemented",
+    "note": "One repeatable scene for the whole chapter’s free roam: the street, every building and every prompt inside them are option sets chosen by where Kara is and which prompt is waiting. TALK TO PARKED ANDROID and WALK ON are offered once; WAIT is always offered."
+   }
+  },
+  {
+   "id": "CH10F03",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Talk to the android trash collector",
+   "context": "Alice sits down at the other bus stop by the garbage truck; a WR600 says he knows someone who can help, on the other side of town.",
+   "options": [
+    {
+     "label": "TALK TO ANDROID TRASH COLLECTOR",
+     "effect": "Starts the ALICE TOO COLD timer; the address leads to Zlatko.",
+     "target": "CH10F07"
+    }
+   ],
+   "gate": "Street, any time; PowerPyx: “You are forced to talk to Alice at some point”.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CH10F02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg"
+   ],
+   "note": "Template “Alice sits at the bus stop”, no prompt and no arrow.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF02"
+    ],
+    "status": "implemented",
+    "note": "A street action. After twelve street actions without it, it is the only one left. Sets `ch10TrashCollector` and Kara learns of the address."
+   }
+  },
+  {
+   "id": "CH10F04",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "The laundromat magazines and the store television",
+   "context": "Century “The Bee-Line to Disaster” and Gossips Weekly “It’s Time to Face the Music” on the laundromat cupboard; the Channel 16 report on the first android zoo in the store.",
+   "options": [
+    {
+     "label": "READ “BEE-LINE TO DISASTER”",
+     "effect": "Bees extinct; robotic bees planned.",
+     "target": null
+    },
+    {
+     "label": "READ “FACE THE MUSIC”",
+     "effect": "Live concerts are coming back.",
+     "target": null
+    },
+    {
+     "label": "Watch TV",
+     "effect": "The android zoo opens; eleven more planned.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, inside the laundromat or the store.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CH10F02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine"
+   ],
+   "note": "No public-opinion effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R10"
+    ],
+    "status": "implemented",
+    "note": "One media scene that cuts into the street scene the first time Kara enters each place and returns to it. The old motel-television scene (R10b) is gone: the template puts the broadcast in the store."
+   }
+  },
+  {
    "id": "K05",
    "chapter": 10,
    "character": "Kara",
    "title": "Steal clothing?",
-   "context": "A sleeping customer’s clothes could disguise Kara and Alice.",
+   "context": "INSPECT DRYER: clothes for both of them, and the sleeping man’s jacket and cap. Alice: “But, that’s stealing! We can’t do that!”",
    "options": [
     {
-     "label": "Take the clothes",
-     "effect": "Enables a motel disguise if money is also obtained.",
+     "label": "STEAL",
+     "effect": "Alice small down. QTE: WEAR CLOTHES (the disguise the motel needs) or DISTURB MAN (they leave with nothing).",
      "target": "K07"
     },
     {
-     "label": "Respect Alice’s objection",
-     "effect": "Seek shelter without this disguise.",
+     "label": "DON’T STEAL",
+     "effect": "Alice small up; the dryer can be opened again later.",
      "target": "K07"
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Laundromat.",
    "kind": "Ethical",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+   "dependsOn": [
+    "CH10F02"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Relationship_Stat keeps the up “even if she later does” steal.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF02"
+    ],
+    "status": "implemented",
+    "note": "Prompt inside the street scene. STEAL −1 on choosing, with a 0.2 risk (unsourced) for the QTE; DON’T STEAL +1 once. The laundromat closes after WEAR CLOTHES or DISTURB MAN."
+   }
   },
   {
    "id": "K06",
    "chapter": 10,
    "character": "Kara",
-   "title": "How to obtain money and supplies?",
-   "context": "The shopkeeper refuses assistance.",
+   "title": "How to get the money for a room?",
+   "context": "The clerk refuses to help (hostile to an android in uniform; in human clothes he asks “Can I help you?”: NO / HELP). The register is on the counter; the cans are stacked in an aisle.",
    "options": [
     {
-     "label": "Use Alice as a distraction",
-     "effect": "Steal money for shelter.",
+     "label": "USE ALICE AS A DIVERSION",
+     "effect": "Needs NOTICE CASH REGISTER and NOTICE CAN STACK. Alice small down. QTE: STEAL DISCREETLY (money; FACTUAL / JUSTIFY / UNCERTAIN / APOLOGIZE, apologize small up) or TAKE TOO MUCH TIME (caught).",
      "target": null
     },
     {
-     "label": "Use the gun",
-     "effect": "Threaten the clerk; can abandon the robbery or press on.",
+     "label": "USE GUN",
+     "effect": "Needs the gun. SINCERE / CALM / AGGRESSIVE, CASH REGISTER, CUSTOMER ARRIVES: STAY or LEAVE; BACK OFF! / TURN AROUND! take the money (Alice small down, then TRUTH > APOLOGIZE small up, or LIE); OPEN THE REGISTER! then BILLS!: CLERK GRABS A GUN, CONVINCE (money, Alice small up) or GIVE UP.",
      "target": null
     },
     {
-     "label": "Avoid theft or robbery",
-     "effect": "Use shelter that does not require motel payment.",
+     "label": "No money",
+     "effect": "Leave the store; the motel stays closed.",
      "target": null
     }
    ],
-   "gate": "Armed hold-up requires the gun from Stormy Night.",
+   "gate": "Store. The hold-up needs the gun from Stormy Night.",
    "kind": "Pivotal",
    "dependsOn": [
     "K04"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Nathan_Clark"
    ],
-   "note": "Shoplifting food, a toy or cutters is another optional theft decision.",
-   "status": "Source-backed summary"
+   "note": "Patch 1.06 removed a third option after CLERK GRABS A GUN; none is built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF02"
+    ],
+    "status": "implemented",
+    "note": "Prompts inside the street scene; the arrows sit on the money and on Alice’s question, as in the template. The store closes after any robbery or attempt. Sets `money`, `robbery`, `ch10Robbery` and `ch10RobberyNews` (not after CONVINCE)."
+   }
+  },
+  {
+   "id": "CH10F05",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Shoplifting, and being seen",
+   "context": "Three item pairs: STEAL / LEAVE CHOCOLATE BAR, TOY and WIRE CUTTERS (the cutters once the fence has been seen). One theft is safe; a second is always seen.",
+   "options": [
+    {
+     "label": "[GUN]",
+     "effect": "Needs the gun. Alice small down; ANGRY / APOLOGETIC / CALM (“get down on the floor”); Kara keeps the items, then TAKE MONEY or LEAVE SUPERMARKET.",
+     "target": null
+    },
+    {
+     "label": "LEAVE",
+     "effect": "Seen at the register: thrown out, the stolen goods lost.",
+     "target": null
+    },
+    {
+     "label": "PUT BACK",
+     "effect": "Seen with an item: thrown out, the stolen goods lost.",
+     "target": null
+    }
+   ],
+   "gate": "Store.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "CH10F02",
+    "K04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg"
+   ],
+   "note": "The toy and chocolate unlock the gifts; the cutters open the squat.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF02"
+    ],
+    "status": "implemented",
+    "note": "Deterministic, as PowerPyx says. One arrow for [GUN] (the template), not the wiki’s second for the register."
+   }
   },
   {
    "id": "K07",
    "chapter": 10,
    "character": "Kara",
    "title": "Where to spend the night?",
-   "context": "Kara needs shelter for Alice.",
+   "context": "The motel ($40 and no androids), the abandoned car in the parking lot, or the squat behind the fence.",
    "options": [
     {
      "label": "Motel",
-     "effect": "Requires money and disguise.",
+     "effect": "Needs WEAR CLOTHES and the register money: IN THE CAR / FORGOT / NO LICENSE / SAY NOTHING at the desk; room 28.",
      "target": null
     },
     {
      "label": "Squat",
-     "effect": "Encounter Ralph; he can matter in the camp.",
-     "target": "K28"
+     "effect": "Wire cutters (the generator’s pliers or the store’s), either fence, MEET RALPH; leaving closes it.",
+     "target": "CH10F06"
     },
     {
      "label": "Abandoned car",
-     "effect": "Shelter without the motel prerequisites.",
+     "effect": "BREAK INTO CAR, then STAY HERE (Alice large down) or KEEP SEARCHING.",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Any time on the street.",
    "kind": "Pivotal",
    "dependsOn": [
     "K05",
     "K06"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg"
    ],
-   "note": "",
-   "status": "Source-backed summary"
+   "note": "Each shelter starts On the Run differently.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF02",
+     "KF04",
+     "KF08",
+     "KF09",
+     "KF10"
+    ],
+    "status": "implemented",
+    "note": "Committing to a shelter ends the street scene; the ending events record `ch10Ending` with the chart’s label and set `shelter`."
+   }
+  },
+  {
+   "id": "CH10F06",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Meet Ralph",
+   "context": "A scarred android with a knife beside Alice: “Visitors… Ralph doesn’t like visitors!”",
+   "options": [
+    {
+     "label": "ANDROID / LITTLE GIRL / INNOCENT / JUSTIFY",
+     "effect": "First prompt; no effect.",
+     "target": null
+    },
+    {
+     "label": "[GUN] / INSIST / REASSURE / HOSPITALITY / LEAVE",
+     "effect": "[GUN] needs the gun and HOSPITALITY needs its absence; [GUN] is the chart’s THREATEN WITH GUN.",
+     "target": null
+    },
+    {
+     "label": "LEAVE / STAY",
+     "effect": "STAY is FOLLOW RALPH: START A FIRE and MAKE A BED, then TALK TO ALICE; the rA9 carving is optional; LEAVE SQUAT is possible until then.",
+     "target": "K28"
+    }
+   ],
+   "gate": "Inside the squat.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K07",
+    "K04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Ralph"
+   ],
+   "note": "No Alice arrow on any Ralph option.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF02"
+    ],
+    "status": "implemented",
+    "note": "Prompts inside the street scene. Sets `ralph` (met him), `ralphHostile` ([GUN]), `ch10RalphRA9`, and `ch10Fireplace` with the squat ending."
+   }
+  },
+  {
+   "id": "CH10F07",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Alice too cold",
+   "context": "After the trash collector, about 12 minutes outside: “Can’t go on, Kara… Too cold…” Kara breaks into the car.",
+   "options": [
+    {
+     "label": "Forced",
+     "effect": "Alice large down; KARA SLEEPS NEXT TO ALICE; ALICE & KARA STAYED IN ABANDONED CAR. No promise.",
+     "target": null
+    }
+   ],
+   "gate": "Needs the trash collector.",
+   "kind": "State gate",
+   "dependsOn": [
+    "CH10F03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg"
+   ],
+   "note": "The template’s “Take too much time”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF03",
+     "KF09"
+    ],
+    "status": "implemented",
+    "note": "The 12 minutes are twelve street actions after the trash collector; time inside a building does not count. Sets `ch10ColdNight`."
+   }
   },
   {
    "id": "K08",
    "chapter": 10,
    "character": "Kara",
    "title": "Promise Alice a permanent bond?",
-   "context": "Alice asks for reassurance.",
+   "context": "At every shelter Alice asks “Why didn’t he ever love me?…” and “You’ll never leave me, right? Promise you’ll never go!”",
    "options": [
     {
-     "label": "Promise to stay together",
-     "effect": "Strengthen their relationship.",
+     "label": "PROMISE",
+     "effect": "Alice small up.",
      "target": null
     },
     {
-     "label": "Avoid the promise",
-     "effect": "Keep emotional distance.",
+     "label": "CAN’T PROMISE",
+     "effect": "Alice small down.",
+     "target": null
+    },
+    {
+     "label": "FOREVER",
+     "effect": "The one-button follow-up, “Will we be together forever?”",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
+   "gate": "Motel, car (STAY HERE) or squat; not after ALICE TOO COLD.",
    "kind": "Ethical",
-   "dependsOn": [],
+   "dependsOn": [
+    "K07"
+   ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg"
    ],
    "note": "",
-   "status": "Source-backed summary"
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K08",
+     "KF05"
+    ],
+    "status": "implemented",
+    "note": "One promise scene for whichever shelter, then the FOREVER scene. PROMISE is +1 (it was +2)."
+   }
+  },
+  {
+   "id": "CH10F08",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Gifts and where Kara rests",
+   "context": "After the promise: GIVE TOY and GIVE CHOCOLATE if they were stolen and kept; then KARA SLEEPS NEXT TO ALICE or WATCH ALICE FROM CHAIR (motel and squat; the car has only sleeping beside her).",
+   "options": [
+    {
+     "label": "GIVE TOY",
+     "effect": "“Thanks.” No arrow in the template (the wiki gives a small up; flagged).",
+     "target": null
+    },
+    {
+     "label": "GIVE CHOCOLATE",
+     "effect": "Alice is not hungry.",
+     "target": null
+    },
+    {
+     "label": "KARA SLEEPS NEXT TO ALICE",
+     "effect": "Alice small up (wiki, motel or squat).",
+     "target": null
+    },
+    {
+     "label": "WATCH ALICE FROM CHAIR",
+     "effect": "No change.",
+     "target": null
+    }
+   ],
+   "gate": "After the promise.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "K08",
+    "CH10F05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "KF06",
+     "KF07"
+    ],
+    "status": "implemented",
+    "note": "Two scenes: the gifts (only with an item) and the resting place (only in the motel or squat)."
+   }
   },
   {
    "id": "FD01",

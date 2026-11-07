@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 419,
-  "mediaNodes": 25,
-  "eventNodes": 178,
-  "totalNodes": 622
+  "decisionNodes": 421,
+  "mediaNodes": 24,
+  "eventNodes": 182,
+  "totalNodes": 627
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 9, 11, and 13 to 28 have been rebuilt against the game’s own text and published charts so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Chapters 10, 12, and 29 to 32 still cover the pivotal decisions only; chapter 33 is the epilogue.",
@@ -8629,209 +8629,1282 @@
    ]
   },
   {
-   "id": "R10",
    "chapter": 10,
    "chapterTitle": "Fugitives",
    "character": "Kara",
-   "title": "A magazine in the laundromat",
+   "id": "KF01",
+   "title": "Last stop",
+   "type": "decision",
+   "phase": "In the bus",
+   "situation": "You are {{Kara}}. It is 10:58 pm on November 5th. You and {{Alice}} got away from {{Todd}}’s house on the last bus, and {{Alice}} has fallen asleep against you. The bus stops: “Thank you for using {{Detroit}} Buses.” The man in charge of the bus comes down the aisle: “Alright… End of the line.” {{Kara}}: “End of the line?” “Yeah, you gonna have to leave.” You wake {{Alice}}: “Wake up. We have to go…” It is pouring outside, and you have nowhere to go.",
+   "options": [
+    {
+     "id": "0",
+     "text": "STAY HERE?: ask whether you can stay on the bus for a little while."
+    },
+    {
+     "id": "1",
+     "text": "SHELTER?: ask whether he knows anywhere you could spend the night."
+    }
+   ],
+   "outcomes": {
+    "0": "{{Kara}}: “Listen, we have nowhere to go… She’s exhausted and it’s pouring rain… Can we just stay for a little while?” “This bus is going back to the depot. There’s nothing I can do.” {{Kara}} and {{Alice}} get off the bus into the rain. {{Kara}}: “You’re gonna be ok? We’ll find somewhere to spend the night. Come on, {{Alice}}. We’ve got to hurry.”",
+    "1": "{{Kara}}: “Do you know if there’s any other place we could spend the night?” “I have no idea… But you’re gonna have to leave.” {{Kara}} and {{Alice}} get off the bus into the rain. {{Kara}}: “You’re gonna be ok? We’ll find somewhere to spend the night. Come on, {{Alice}}. We’ve got to hurry.”"
+   },
+   "adaptationNote": "The chart’s checkpoint LAST STOP and the unmissable LEAVE BUS, around the template’s one prompt on the bus: STAY HERE? / SHELTER?. The driver refuses both, and the template has no arrow on either, so the two options change nothing; they are offered because the choice is itself the measurement. The date and time are the template’s (NOV 5TH, 2038, PM 10:58). The template calls the driver “Man”; the wiki calls him the bus controller. The chapter plays only if Kara and Alice escaped in Stormy Night (the engine’s Kara gate).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-first-branch.jpg"
+   ]
+  },
+  {
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "id": "KF02",
+   "title": "Finding shelter for the night",
+   "type": "decision",
+   "phase": "Find shelter for the night",
+   "situation": "You are {{Kara}}, out in the rain with {{Alice}} in a run-down neighborhood at the end of the bus line, looking for somewhere to spend the night.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch10Roam.at": "street",
+      "ch10Roam.prompt": false
+     },
+     "text": "You are on the street by the bus stop. Along it are a laundromat, a convenience store that is still open, and across the road a cheap motel with a parking lot beside it; at the end of the street an abandoned house stands behind a fence. A few androids stand parked at the bus shelter, and down at the intersection a garbage truck has stopped by the other bus stop, with an android trash collector at work. You can go anywhere here, in any order."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "street",
+      "ch10Roam.prompt": false,
+      "ch10Roam.sneezing": true
+     },
+     "text": "{{Alice}} is shivering and sneezing more and more."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "laundromat",
+      "ch10Roam.prompt": false
+     },
+     "text": "You are in the laundromat. It is warm in here. A man is asleep in a chair by the machines with his jacket and cap beside him, and the dryer next to him holds a finished load of clothes."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "dryer"
+     },
+     "text": "You have opened the dryer: dry, warm clothes that would fit you and {{Alice}}, and the sleeping man’s jacket and cap are within reach. {{Alice}} does not want you to take them: “But, that’s stealing! We can’t do that!”"
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "store",
+      "ch10Roam.prompt": false
+     },
+     "text": "You are in the convenience store. The clerk stands at the checkout by the cash register, a television on the wall is showing the news, and the shelves hold snacks, chocolate bars, a few small stuffed toys and some hardware. A tall stack of cans is piled up in one aisle."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "store",
+      "ch10Roam.prompt": false,
+      "ch10Roam.squatSeen": true,
+      "ch10Cutters": false
+     },
+     "text": "On the hardware shelf is a pair of wire cutters, the kind that would get you through the fence around the abandoned house."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "clerkHelp"
+     },
+     "text": "You are at the checkout. In your new clothes the clerk takes you for a customer: “Can I help you?”"
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "draw"
+     },
+     "text": "{{Alice}} is waiting outside. You stand at the checkout pointing the gun at the clerk. How do you speak to him?"
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "register"
+     },
+     "text": "The clerk stands frozen behind the checkout, waiting to hear what you want."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "customer"
+     },
+     "text": "A customer has just come in, and the clerk is looking at you. You can hide the gun and let the customer pay and leave, or give up and walk out."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "demand"
+     },
+     "text": "The customer has paid and gone. It is just you, the clerk and the register again."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "demand2"
+     },
+     "text": "The clerk has opened the register. The cash is inside."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "clerkGun"
+     },
+     "text": "The clerk has a pistol of his own now, pointed at you across the checkout: “You better get outta here before things get nasty.” {{Alice}} is outside, by the window."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "howGot"
+     },
+     "text": "You are back outside with the money. {{Alice}}: “Wait! How did you get it?”"
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "why",
+      "ch10Roam.whyFrom": "diversion"
+     },
+     "text": "You are back outside with the money. {{Alice}}: “You used me to steal that money! How could you do that? I trusted you!”"
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "why",
+      "ch10Roam.whyFrom": "truth"
+     },
+     "text": "{{Alice}}: “You stole it? Stealing is bad, {{Kara}}… Why did you do that?”"
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "caught"
+     },
+     "text": "The clerk has caught you: “Hey! What the fuck are you doing? Put that back right now!”"
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "caught",
+      "ch10Roam.caught": "register"
+     },
+     "text": "He saw you at the open cash register."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "caught",
+      "ch10Roam.caught": "shelf"
+     },
+     "text": "He saw you slip something off the shelf."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "floor"
+     },
+     "text": "The clerk has his hands up in front of your gun: “All right… Just take it easy…” {{Alice}} is watching."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "takeMoney"
+     },
+     "text": "The clerk is lying on the floor: “Take whatever you want… Just don’t kill me…” {{Alice}}: “{{Kara}}, what are you doing? You can’t do that, it’s wrong!” The cash register is right there."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "lot",
+      "ch10Roam.prompt": false
+     },
+     "text": "You are in the parking lot beside the motel. An old car sits abandoned in a corner next to a generator, and a fence separates the lot from the yard of the abandoned house."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "lot",
+      "ch10Roam.prompt": false,
+      "ch10Cutters": false
+     },
+     "text": "A pair of pliers lies on top of the generator."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "lot",
+      "ch10Roam.prompt": false,
+      "ch10Roam.carBroken": true
+     },
+     "text": "The car’s window is broken where you smashed it."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "car"
+     },
+     "text": "The car is dry inside, and nobody would find you here. {{Alice}}: “I don’t want to sleep in there. Can’t we find a better place?”"
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "ralph1"
+     },
+     "text": "You are in the yard of the abandoned house. Beside {{Alice}} stands an android with a knife, his face badly scarred, frightened and angry: “Visitors… {{Ralph}} doesn’t like visitors! They’re nasty! They may hurt {{Ralph}}!”"
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "ralph2"
+     },
+     "text": "{{Ralph}} shows you his face: “Visitors are dangerous… Look… What they did to {{Ralph}}.” He still has the knife, and {{Alice}} is still close to him."
+    },
+    {
+     "requires": {
+      "ch10Roam.prompt": "ralph3"
+     },
+     "text": "{{Ralph}} lowers the knife: “You must excuse {{Ralph}}… {{Ralph}} still finds it difficult to control himself… Sometimes his fear makes him do things he regrets… {{Ralph}} has seen some hard times… He’s just so scared the humans will get him again… You can stay if you want… {{Ralph}} won’t hurt you…”"
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "house",
+      "ch10Roam.prompt": false
+     },
+     "text": "You are inside the abandoned house with {{Alice}}, in the room {{Ralph}} showed you; he has gone into the other room, where you can hear him carving at the wall with his knife. It is cold and filthy, but out of the rain. There is a fireplace, with matches on a shelf beside it, wood by the door and old paper by the trash bin, and enough old blankets and cushions to make a bed. {{Alice}} needs a fire and a bed before she can sleep."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "house",
+      "ch10Roam.prompt": false,
+      "ch10Roam.done.fire": true
+     },
+     "text": "The fire is burning."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "house",
+      "ch10Roam.prompt": false,
+      "ch10Roam.done.bed": true
+     },
+     "text": "The bed is made."
+    },
+    {
+     "requires": {
+      "ch10Roam.toy": true
+     },
+     "text": "You have a stolen stuffed toy in your pocket."
+    },
+    {
+     "requires": {
+      "ch10Roam.chocolate": true
+     },
+     "text": "You have a stolen chocolate bar in your pocket."
+    },
+    {
+     "requires": {
+      "ch10Cutters": "generator"
+     },
+     "text": "You have the pliers from the generator."
+    },
+    {
+     "requires": {
+      "ch10Cutters": "store"
+     },
+     "text": "You have the wire cutters from the store."
+    }
+   ],
+   "repeatWhile": {
+    "ch10Roam.on": true
+   },
+   "interrupt": {
+    "node": "R10",
+    "when": {
+     "ch10Roam.media": true
+    }
+   },
+   "options": [
+    {
+     "id": "0",
+     "act": "laundromat",
+     "at": "street",
+     "text": "ENTER LAUNDROMAT: go into the laundromat and get {{Alice}} out of the rain.",
+     "outcome": "{{Kara}}: “It’s warm in here. You’ll feel better in no time.”"
+    },
+    {
+     "id": "1",
+     "act": "parked",
+     "at": "street",
+     "text": "TALK TO PARKED ANDROID: ask one of the androids standing parked at the bus shelter where you could spend the night.",
+     "outcome": "{{Kara}}: “We need a place to stay… Do you know anywhere we could spend the night?” The android stands motionless and does not answer."
+    },
+    {
+     "id": "2",
+     "act": "motel",
+     "at": "street",
+     "text": "CHECK MOTEL: go over to the motel across the road."
+    },
+    {
+     "id": "3",
+     "act": "lot",
+     "at": "street",
+     "text": "CHECK PARKING LOT: go into the parking lot beside the motel.",
+     "outcome": "{{Kara}} and {{Alice}} slip into the parking lot."
+    },
+    {
+     "id": "4",
+     "act": "trash",
+     "at": "street",
+     "text": "TALK TO ANDROID TRASH COLLECTOR: walk down to the other bus stop, by the garbage truck, where {{Alice}} can sit down.",
+     "outcome": "{{Alice}} sits down on the bench at the bus stop. {{Kara}}: “{{Alice}}, you’re freezing cold.” {{Alice}}: “I’m okay. I’m not so cold.” The android working at the garbage truck comes over: “You look lost.” {{Kara}}: “We have nowhere to go…” “I know someone who can help you.” He gives her an address. {{Kara}}: “But, that’s on the other side of town… We need a place for tonight! Come on, {{Alice}}.”"
+    },
+    {
+     "id": "5",
+     "act": "squat",
+     "at": "street",
+     "text": "CHECK SQUAT: go and look at the abandoned house at the end of the street."
+    },
+    {
+     "id": "6",
+     "act": "cutStreet",
+     "at": "street",
+     "text": "CUT STREET FENCE: cut through the fence on the street side and crawl into the yard of the abandoned house."
+    },
+    {
+     "id": "7",
+     "act": "store",
+     "at": "street",
+     "text": "ENTER SUPERMARKET: go into the convenience store, which is still open.",
+     "outcome": "{{Kara}}: “Look, the store is still open. Maybe we should go inside. At least you’ll be out of the cold.”"
+    },
+    {
+     "id": "8",
+     "act": "walk",
+     "at": "street",
+     "text": "WALK ON: try farther along the street.",
+     "outcome": "There is nothing more that way. {{Kara}}: “There’s nothing more this way… Come on, let’s go back. There’s no point going any farther.”"
+    },
+    {
+     "id": "9",
+     "act": "wait",
+     "at": "street",
+     "text": "WAIT: stay where you are with {{Alice}} for a while and do nothing.",
+     "outcome": "{{Kara}} and {{Alice}} stand in the rain."
+    },
+    {
+     "id": "10",
+     "act": "dryer",
+     "at": "laundromat",
+     "text": "INSPECT DRYER: open the dryer next to the sleeping man.",
+     "outcome": "The clothes inside are dry and still warm. {{Alice}}: “What are you doing? They’re not our clothes!” {{Kara}}: “We need them, {{Alice}}. You need something warm and I need to get rid of this uniform.” {{Alice}}: “But, that’s stealing! We can’t do that!”"
+    },
+    {
+     "id": "11",
+     "act": "leaveLaundromat",
+     "at": "laundromat",
+     "text": "LEAVE LAUNDROMAT: go back out into the street.",
+     "outcome": "They go back out into the rain."
+    },
+    {
+     "id": "12",
+     "act": "steal",
+     "prompt": "dryer",
+     "text": "STEAL: take the clothes anyway, and the sleeping man’s jacket and cap.",
+     "outcome": "{{Kara}}: “I’m sorry, {{Alice}}, but we have to do this.” She takes clothes for both of them from the dryer and eases the jacket and cap away from the sleeping man without waking him. They change, and leave the laundromat dressed like anyone else on the street.",
+     "risk": 0.2,
+     "failOutcome": "{{Kara}}: “I’m sorry, {{Alice}}, but we have to do this.” As she reaches for the jacket, the man stirs and wakes up. {{Kara}}: “Come on, let’s go.” They leave the laundromat with nothing."
+    },
+    {
+     "id": "13",
+     "act": "dontSteal",
+     "prompt": "dryer",
+     "text": "DON’T STEAL: listen to {{Alice}} and leave the clothes.",
+     "outcome": "{{Kara}}: “You’re right. We won’t do it, ok?” She closes the dryer."
+    },
+    {
+     "id": "14",
+     "act": "clerk",
+     "at": "store",
+     "text": "TALK TO CLERK: go up to the clerk at the checkout."
+    },
+    {
+     "id": "15",
+     "act": "register",
+     "at": "store",
+     "text": "NOTICE CASH REGISTER: watch the cash register at the checkout.",
+     "outcome": "{{Kara}} watches the register at the checkout: the clerk opens it at every sale, and the cash is right there.",
+     "fact": "The convenience store’s cash register is at the checkout. The clerk opens it at every sale, and he would not give you money for a room."
+    },
+    {
+     "id": "16",
+     "act": "cans",
+     "at": "store",
+     "text": "NOTICE CAN STACK: look at the tall stack of cans in the aisle.",
+     "outcome": "A tall pyramid of cans stands in the middle of an aisle. If it came down, it would make a lot of noise, and the clerk would come out from behind the checkout."
+    },
+    {
+     "id": "17",
+     "act": "stealChocolate",
+     "at": "store",
+     "text": "STEAL CHOCOLATE BAR: slip a chocolate bar into your pocket.",
+     "outcome": "{{Kara}} slips a chocolate bar into her pocket."
+    },
+    {
+     "id": "18",
+     "act": "leaveChocolate",
+     "at": "store",
+     "text": "LEAVE CHOCOLATE BAR: pick one up, then put it back.",
+     "outcome": "{{Kara}} puts the chocolate bar back on the shelf."
+    },
+    {
+     "id": "19",
+     "act": "stealToy",
+     "at": "store",
+     "text": "STEAL TOY: slip a small stuffed toy into your pocket.",
+     "outcome": "{{Kara}} slips a small stuffed toy into her pocket."
+    },
+    {
+     "id": "20",
+     "act": "leaveToy",
+     "at": "store",
+     "text": "LEAVE TOY: pick it up, then put it back.",
+     "outcome": "{{Kara}} puts the toy back on the shelf."
+    },
+    {
+     "id": "21",
+     "act": "stealCutters",
+     "at": "store",
+     "text": "STEAL WIRE CUTTERS: take the wire cutters from the hardware shelf.",
+     "outcome": "{{Kara}} slips the wire cutters under her clothes."
+    },
+    {
+     "id": "22",
+     "act": "leaveCutters",
+     "at": "store",
+     "text": "LEAVE WIRE CUTTERS: pick them up, then put them back.",
+     "outcome": "{{Kara}} puts the wire cutters back on the shelf."
+    },
+    {
+     "id": "23",
+     "act": "divert",
+     "at": "store",
+     "text": "USE {{ALICE}} AS A DIVERSION: ask {{Alice}} to knock over the cans, and take the cash from the register while the clerk sees to her.",
+     "outcome": "{{Kara}}: “{{Alice}}, I need your help. You see those cans over there? I want you to go over and knock them down.” {{Alice}}: “Knock them down? But, why?” {{Kara}}: “Please. {{Alice}}, just trust me.” The cans crash to the floor and the clerk hurries over to {{Alice}}: “You all right? Are you hurt? Well, don’t worry, it’s just a few cans… They made a lot of noise, that’s all… Say, what’s a little girl like you doing out so late? It’s ok, I don’t bite… Cat got your tongue? Well, if you need anything, you just let me know, ok? And watch where you’re going, hm?”",
+     "risk": 0.25,
+     "successOutcome": "Behind the checkout, {{Kara}} opens the register and takes the cash before he turns round. {{Kara}}: “Come on, let’s go.” As the door closes behind them the clerk finds the register empty: “Fuck!” He runs out into the street, but they are gone. {{Kara}}: “We have some cash now…” {{Alice}}: “You used me to steal that money! How could you do that? I trusted you!”",
+     "failOutcome": "{{Kara}} is still at the open register when he turns round."
+    },
+    {
+     "id": "24",
+     "act": "useGun",
+     "at": "store",
+     "text": "USE GUN: send {{Alice}} outside and threaten the clerk with the gun.",
+     "outcome": "{{Kara}}: “Wait outside for me. I’ll just be two minutes.” {{Alice}}: “Wait outside? But, why?” {{Kara}}: “Please, {{Alice}}, just trust me.” When {{Alice}} has gone out, {{Kara}} points the gun at the clerk."
+    },
+    {
+     "id": "25",
+     "act": "leaveStore",
+     "at": "store",
+     "text": "LEAVE SUPERMARKET: go back out into the street with {{Alice}}.",
+     "outcome": "They go back out into the rain."
+    },
+    {
+     "id": "26",
+     "act": "clerkNo",
+     "prompt": "clerkHelp",
+     "text": "NO: tell him you are all right.",
+     "outcome": "{{Kara}}: “No, thanks. I’ll be all right…”"
+    },
+    {
+     "id": "27",
+     "act": "clerkHelp",
+     "prompt": "clerkHelp",
+     "text": "HELP: ask him for some money for a room.",
+     "outcome": "{{Kara}}: “I’m with a little girl and we have nowhere to go… Could you spare some money so we can get a room for tonight?” Clerk: “Look, this is a convenience store, lady, not the Salvation Army… I can’t start handing out cash to every bum in the neighborhood.”"
+    },
+    {
+     "id": "28",
+     "act": "draw",
+     "prompt": "draw",
+     "text": "SINCERE: tell him you are sorry but have no choice.",
+     "outcome": "{{Kara}}: “Sorry, but I have no choice.”"
+    },
+    {
+     "id": "29",
+     "act": "draw",
+     "prompt": "draw",
+     "text": "CALM: tell him to do what you say and all will be well.",
+     "outcome": "{{Kara}}: “Just do what I say and everything will be all right.”"
+    },
+    {
+     "id": "30",
+     "act": "draw",
+     "prompt": "draw",
+     "text": "AGGRESSIVE: threaten to shoot him if he moves.",
+     "outcome": "{{Kara}}: “Don’t move, or I’ll shoot!”"
+    },
+    {
+     "id": "31",
+     "act": "cashRegister",
+     "prompt": "register",
+     "text": "CASH REGISTER: order him to hand over the cash from the register.",
+     "outcome": "{{Kara}}: “Take the cash from the register, put it on the counter!” Before he can move, the door opens behind her: a customer comes in."
+    },
+    {
+     "id": "32",
+     "act": "customerStay",
+     "prompt": "customer",
+     "text": "STAY: hide the gun and let the customer pay and leave.",
+     "outcome": "{{Kara}} lowers the gun out of sight: “Not a word.” The customer comes up to the checkout: “Excuse me… Are you done?” {{Kara}}: “Go ahead.” Clerk: “$4.95, please.” The customer pays and leaves without noticing anything."
+    },
+    {
+     "id": "33",
+     "act": "customerLeave",
+     "prompt": "customer",
+     "text": "LEAVE: give up the hold-up and walk out.",
+     "outcome": "{{Kara}} puts the gun away and walks out of the store without the money."
+    },
+    {
+     "id": "34",
+     "act": "backOff",
+     "prompt": [
+      "demand",
+      "demand2"
+     ],
+     "text": "BACK OFF!: order him to step back and take the money yourself.",
+     "outcome": "{{Kara}}: “Back up! I’m sorry, but I really need this money.” She takes the cash from the register. Clerk: “Fuck!”"
+    },
+    {
+     "id": "35",
+     "act": "turnAround",
+     "prompt": [
+      "demand",
+      "demand2"
+     ],
+     "text": "TURN AROUND!: order him to turn around and take the money yourself.",
+     "outcome": "{{Kara}}: “Turn around! I’m sorry, but I really need this money.” She takes the cash from the register. Clerk: “Fuck!”"
+    },
+    {
+     "id": "36",
+     "act": "openRegister",
+     "prompt": "demand",
+     "text": "OPEN THE REGISTER!: order him to open it.",
+     "outcome": "{{Kara}}: “Open the register!” The clerk opens it."
+    },
+    {
+     "id": "37",
+     "act": "bills",
+     "prompt": "demand2",
+     "text": "BILLS!: order him to hand over the cash.",
+     "outcome": "{{Kara}}: “Put the cash on the counter.” The clerk reaches into the register and comes up with a pistol: “You better get outta here before things get nasty.”"
+    },
+    {
+     "id": "38",
+     "act": "convince",
+     "prompt": "clerkGun",
+     "text": "CONVINCE: tell him about {{Alice}} and your night.",
+     "outcome": "{{Kara}}: “You see that little girl outside? Her name is {{Alice}}. She’s nine years old and this is the worst night of her life. All I need is a few dollars so we can find a place for tonight. And I’m not leaving without that money.” The clerk lowers his pistol and hands her the money; he will not call the police."
+    },
+    {
+     "id": "39",
+     "act": "clerkGiveUp",
+     "prompt": "clerkGun",
+     "text": "GIVE UP: back away and leave.",
+     "outcome": "{{Kara}}: “Okay, I’m going.” She backs out of the store without the money."
+    },
+    {
+     "id": "40",
+     "act": "truth",
+     "prompt": "howGot",
+     "text": "TRUTH: tell her you took it from the register.",
+     "outcome": "{{Kara}}: “I took it from the cash register.” {{Alice}}: “You stole it? Stealing is bad, {{Kara}}… Why did you do that?”"
+    },
+    {
+     "id": "41",
+     "act": "lie",
+     "prompt": "howGot",
+     "text": "LIE: tell her you asked the cashier for it.",
+     "outcome": "{{Kara}}: “I just... asked the cashier for a few dollars…”"
+    },
+    {
+     "id": "42",
+     "act": "factual",
+     "prompt": "why",
+     "text": "FACTUAL: tell her there was no other way.",
+     "outcome": "{{Kara}}: “I had no choice. It was the only way, {{Alice}}.” {{Alice}}: “It wasn’t.”"
+    },
+    {
+     "id": "43",
+     "act": "justify",
+     "prompt": "why",
+     "text": "JUSTIFY: tell her you needed the money.",
+     "outcome": "{{Kara}}: “We needed the money. I had to find a way, {{Alice}}…”"
+    },
+    {
+     "id": "44",
+     "act": "uncertain",
+     "prompt": "why",
+     "text": "UNCERTAIN: tell her it seemed like the right thing to do.",
+     "outcome": "{{Kara}}: “We needed a room for tonight. It just seemed like the right thing to do.” {{Alice}}: “It wasn’t.”"
+    },
+    {
+     "id": "45",
+     "act": "apologize",
+     "prompt": "why",
+     "text": "APOLOGIZE: tell her she is right, and that you are sorry.",
+     "outcome": "{{Kara}}: “You’re right. I shouldn’t have done that. I’m sorry, {{Alice}}. I’ll never do it again.”"
+    },
+    {
+     "id": "46",
+     "act": "caughtGun",
+     "prompt": "caught",
+     "text": "[GUN]: pull the gun on the clerk.",
+     "outcome": "Clerk: “Shit…” {{Kara}}: “I’m sorry, but we’re desperate.” Clerk: “All right… Just take it easy…”"
+    },
+    {
+     "id": "47",
+     "act": "caughtLeave",
+     "prompt": "caught",
+     "text": "LEAVE: apologize and go."
+    },
+    {
+     "id": "48",
+     "act": "putBack",
+     "prompt": "caught",
+     "text": "PUT BACK: put back what you took and go."
+    },
+    {
+     "id": "49",
+     "act": "floor",
+     "prompt": "floor",
+     "text": "ANGRY: shout at him to get on the floor.",
+     "outcome": "{{Kara}}: “On the floor! Now!”"
+    },
+    {
+     "id": "50",
+     "act": "floor",
+     "prompt": "floor",
+     "text": "APOLOGETIC: apologize, but make him get down on the floor.",
+     "outcome": "{{Kara}}: “Listen, I’m really sorry… But you have to get down on the floor…”"
+    },
+    {
+     "id": "51",
+     "act": "floor",
+     "prompt": "floor",
+     "text": "CALM: tell him to get down on the floor.",
+     "outcome": "{{Kara}}: “Get down… Get down on the floor!”"
+    },
+    {
+     "id": "52",
+     "act": "takeMoney",
+     "prompt": "takeMoney",
+     "text": "TAKE MONEY: empty the cash register before you go.",
+     "outcome": "{{Kara}} takes the cash from the register and leaves with {{Alice}}, and with what she took from the shelves."
+    },
+    {
+     "id": "53",
+     "act": "leaveWithGoods",
+     "prompt": "takeMoney",
+     "text": "LEAVE SUPERMARKET: leave with what you took from the shelves, without the money.",
+     "outcome": "{{Kara}} leaves with {{Alice}} and what she took from the shelves, and leaves the register alone."
+    },
+    {
+     "id": "54",
+     "act": "breakCar",
+     "at": "lot",
+     "text": "BREAK INTO CAR: smash the window of the abandoned car.",
+     "outcome": "{{Kara}}: “It looks abandoned… Stand back, {{Alice}}…” She breaks the window and opens the door. {{Kara}}: “It’s dry inside and nobody will find us here…” {{Alice}}: “I don’t want to sleep in there. Can’t we find a better place?”"
+    },
+    {
+     "id": "55",
+     "act": "carAgain",
+     "at": "lot",
+     "text": "GO BACK TO THE CAR: open the car you broke into again.",
+     "outcome": "{{Kara}} opens the car door again. {{Alice}}: “I don’t want to sleep in there. Can’t we find a better place?”"
+    },
+    {
+     "id": "56",
+     "act": "pliers",
+     "at": "lot",
+     "text": "TAKE WIRE CUTTERS: pick up the pliers lying on the generator.",
+     "outcome": "{{Kara}} picks up the pliers. They would cut through wire."
+    },
+    {
+     "id": "57",
+     "act": "cutLot",
+     "at": "lot",
+     "text": "CUT PARKING LOT FENCE: cut through the fence into the yard of the abandoned house."
+    },
+    {
+     "id": "58",
+     "act": "leaveLot",
+     "at": "lot",
+     "text": "LEAVE PARKING LOT: go back out to the street.",
+     "outcome": "They go back out to the street."
+    },
+    {
+     "id": "59",
+     "act": "stayHere",
+     "prompt": "car",
+     "text": "STAY HERE: tell her the car is the best place you have tonight.",
+     "outcome": "{{Kara}}: “We’re better off staying, {{Alice}}. The important thing is for us to be safe... And it’s just for tonight.” They climb into the car."
+    },
+    {
+     "id": "60",
+     "act": "keepSearching",
+     "prompt": "car",
+     "text": "KEEP SEARCHING: agree to look for somewhere better.",
+     "outcome": "{{Kara}}: “Okay... We’ll find somewhere better.”"
+    },
+    {
+     "id": "61",
+     "act": "ralph1",
+     "prompt": "ralph1",
+     "text": "ANDROID: tell him you are an android too.",
+     "outcome": "{{Kara}}: “Look, I’m an android too… You have nothing to be afraid of… All we want is a place to spend the night…”"
+    },
+    {
+     "id": "62",
+     "act": "ralph1",
+     "prompt": "ralph1",
+     "text": "LITTLE GIRL: tell him she is just a little girl.",
+     "outcome": "{{Kara}}: “She’s just a little girl… She’s not gonna hurt you.” {{Ralph}}: “Little girl?.. She’s not a little girl… Anyway, what does that matter? Maybe she wants to hurt {{Ralph}}?”"
+    },
+    {
+     "id": "63",
+     "act": "ralph1",
+     "prompt": "ralph1",
+     "text": "INNOCENT: tell him she had nothing to do with what humans did to him.",
+     "outcome": "{{Kara}}: “I don’t know what the humans did to you, but she had nothing to do with it.” {{Ralph}}: “All humans want to hurt us… But {{Ralph}} won’t let them hurt him again… No, he won’t let them…”"
+    },
+    {
+     "id": "64",
+     "act": "ralph1",
+     "prompt": "ralph1",
+     "text": "JUSTIFY: tell him you thought the house was empty.",
+     "outcome": "{{Kara}}: “We thought nobody was here… All we want is a place to spend the night.”"
+    },
+    {
+     "id": "65",
+     "act": "ralphGun",
+     "prompt": "ralph2",
+     "text": "[GUN]: point the gun at him.",
+     "outcome": "{{Kara}}: “Touch a hair on her head and I’ll kill you!” {{Ralph}}: “No, don’t hurt {{Ralph}}!”"
+    },
+    {
+     "id": "66",
+     "act": "ralph2",
+     "prompt": "ralph2",
+     "text": "INSIST: tell him you are staying the night and will be gone in the morning.",
+     "outcome": "{{Kara}}: “Listen, we’re going to stay here tonight. We’ll be gone first thing tomorrow.”"
+    },
+    {
+     "id": "67",
+     "act": "ralph2",
+     "prompt": "ralph2",
+     "text": "REASSURE: give him your word you mean him no harm.",
+     "outcome": "{{Kara}}: “You have nothing to worry about… We’re not going to do you any harm. You have my word.”"
+    },
+    {
+     "id": "68",
+     "act": "hospitality",
+     "prompt": "ralph2",
+     "text": "HOSPITALITY: ask him kindly to let you stay.",
+     "outcome": "{{Kara}}: “Listen, we really need some help. It would be so kind of you, if you’d let us stay…”"
+    },
+    {
+     "id": "69",
+     "act": "ralphLeave",
+     "prompt": "ralph2",
+     "text": "LEAVE: tell him you are going.",
+     "outcome": "{{Kara}}: “Okay… We’re leaving… So you’ll be safe again… Come here, {{Alice}}.” They go back out through the fence to the street."
+    },
+    {
+     "id": "70",
+     "act": "ralphLeave",
+     "prompt": "ralph3",
+     "text": "LEAVE: decide it is better to go.",
+     "outcome": "{{Kara}}: “I think we’d better go. Come on, {{Alice}}.” They go back out through the fence to the street."
+    },
+    {
+     "id": "71",
+     "act": "ralphStay",
+     "prompt": "ralph3",
+     "text": "STAY: accept, and stay the night.",
+     "outcome": "{{Kara}}: “Okay. We’ll just stay the night.” {{Ralph}}: “Come on! Come! Come! Come on! This way! {{Ralph}} has lived here since he ran away... {{Ralph}} never goes outside, so no one knows he lives here... Humans come in to squat from time to time, but you know, {{Ralph}} just hides ’til they leave. Come on! You can make yourself at home here. {{Ralph}} is gonna go into the other room… He would like to stay with you… But he has things to do…” {{Kara}}: “It’s just for one night, {{Alice}}. We’ll find a better place tomorrow… Right… Let’s see where you can sleep…”"
+    },
+    {
+     "id": "72",
+     "act": "fire",
+     "at": "house",
+     "text": "START A FIRE: gather the matches, wood and paper and light the fireplace.",
+     "outcome": "{{Kara}}: “Sit down, and I’ll start a fire.” She takes the matches from the shelf by the fireplace, wood from beside the door and paper from next to the trash bin, and gets a fire going."
+    },
+    {
+     "id": "73",
+     "act": "bed",
+     "at": "house",
+     "text": "MAKE A BED: put together somewhere for {{Alice}} to sleep by the fire.",
+     "outcome": "{{Kara}} puts together a bed for {{Alice}} by the fireplace out of what she can find in the house."
+    },
+    {
+     "id": "74",
+     "act": "ralphTalk",
+     "at": "house",
+     "text": "TALK TO {{RALPH}}: ask {{Ralph}} about the symbols he is carving into the wall.",
+     "outcome": "{{Kara}}: ““{{rA9}}”… What does that mean?” {{Ralph}}: “What?” {{Kara}}: “Those symbols… Why are you writing that?” {{Ralph}}: “I don’t know… I don’t know…”",
+     "fact": "In the abandoned house, {{Ralph}} was carving the same symbols into the walls with his knife, over and over: “{{rA9}}”. When you asked what they mean, he said he did not know."
+    },
+    {
+     "id": "75",
+     "act": "aliceBed",
+     "at": "house",
+     "text": "TALK TO {{ALICE}}: tell her she can come to bed.",
+     "outcome": "{{Kara}}: “You can come to bed. I did what I could… It’s not much, but at least you’ll be warm…”"
+    },
+    {
+     "id": "76",
+     "act": "leaveSquat",
+     "at": "house",
+     "text": "LEAVE SQUAT: take {{Alice}} and leave the house.",
+     "outcome": "{{Kara}} takes {{Alice}} back out through the fence to the street."
+    }
+   ],
+   "adaptationNote": "The chart’s free-roam phase [FIND SHELTER FOR THE NIGHT] with all its branches as one repeatable scene: the street (ENTER LAUNDROMAT, TALK TO PARKED ANDROID, CHECK MOTEL, CHECK PARKING LOT, TALK TO ANDROID TRASH COLLECTOR, CHECK SQUAT, ENTER SUPERMARKET, in the chart’s order), the laundromat (INSPECT DRYER, then the template’s STEAL / DON’T STEAL, then WEAR CLOTHES or DISTURB MAN), the store (TALK TO CLERK with the template’s NO / HELP when Kara wears the stolen clothes, NOTICE CASH REGISTER, NOTICE CAN STACK, the three STEAL / LEAVE item pairs, USE {{ALICE}} AS A DIVERSION with STEAL DISCREETLY or TAKE TOO MUCH TIME, USE GUN with the template’s SINCERE / CALM / AGGRESSIVE, CASH REGISTER, CUSTOMER ARRIVES with STAY / LEAVE, BACK OFF! / TURN AROUND! / OPEN THE REGISTER! then BILLS!, CLERK GRABS A GUN with CONVINCE / GIVE UP, Alice’s “How did you get it?” with TRUTH / LIE and FACTUAL / JUSTIFY / UNCERTAIN / APOLOGIZE, and CLERK SPOTS {{KARA}} STEALING with [GUN] then ANGRY / APOLOGETIC / CALM and TAKE MONEY, or LEAVE or PUT BACK), the parking lot (BREAK INTO CAR with STAY HERE / KEEP SEARCHING, the pliers on the generator as TAKE WIRE CUTTERS, CUT PARKING LOT FENCE), and the squat (CUT STREET FENCE, MEET {{RALPH}} with the template’s ANDROID / LITTLE GIRL / INNOCENT / JUSTIFY, then [GUN] / INSIST / REASSURE / HOSPITALITY / LEAVE, then LEAVE / STAY, then START A FIRE, MAKE A BED, the template’s rA9 talk, LEAVE SQUAT and TALK TO {{ALICE}}). Every prompt is one visit of this scene offering only its buttons; buttons show the game’s label first and the spoken line is in the outcome. The chart groups INSIST, REASSURE and HOSPITALITY as CONVINCE, [GUN] as THREATEN WITH GUN, and the LEAVEs as GIVE UP and LEAVE SQUAT; BACK OFF! and TURN AROUND! are its “DON’T MOVE”, OPEN THE REGISTER! then BILLS! its OPEN CASH REGISTER, STAY / LEAVE at the customer its RESUME HOLD UP / GIVE UP, and STAY HERE / KEEP SEARCHING its STAY / FIND ANOTHER OPTION. Alice’s arrows (small 1, large 2), all the template’s: STEAL −1 (on choosing, whether or not the theft works), DON’T STEAL +1 (once), USE {{ALICE}} AS A DIVERSION −1 (on choosing), APOLOGIZE +1 (after the diversion, and after TRUTH), hold-up money without convincing −1 (Alice’s “How did you get it?”), CONVINCE +1 (the template’s automatic LIE), [GUN] when seen stealing −1 (one arrow; the wiki’s second for the register is not built, the template wins), STAY HERE −2. No other option moves anything. Gates: the gun from Stormy Night opens USE GUN, [GUN] at the checkout and [GUN] with Ralph, and closes HOSPITALITY (the template’s locks); USE GUN and the diversion follow NOTICE CASH REGISTER, and the diversion also needs NOTICE CAN STACK (the chart; the template words its lock as the can stack); the store’s wire cutters need the fence seen first (PowerPyx); the motel needs the stolen clothes and the register money (PowerPyx). Being caught is deterministic, as PowerPyx says: one item is safe, a second, on any visit, is always seen (the wiki’s “less likely” is not modelled as chance); without the gun Kara hands back everything she took from the store (wiki), and the store is closed to her after any robbery or attempt. Not built: patch 1.06 removed the third button after CLERK GRABS A GUN (SOURCES.md), so there is none. Simplifications: the template’s turned-away lines are the CHECK MOTEL outcome, and CHECK MOTEL is offered again only when Kara’s clothes or money have changed; the laundromat is not offered again once the clothes are worn or the man has woken; leaving the squat after meeting Ralph closes it (wiki); TALK TO PARKED ANDROID and WALK ON (the template’s “Going too far away”) are offered once. The trash collector is a street action (the template’s “Alice sits at the bus stop”); after 12 street actions without it, it is the only one left (PowerPyx: “You are forced to talk to Alice at some point”). {{ALICE}} TOO COLD (the wiki’s 12 minutes outside after the trash collector) is a budget of 12 street actions after the talk; time inside a building does not count, and once the budget is spent Kara’s next moment on the street ends the search. Risks: the laundromat QTE 0.2 and the register QTE 0.25 are unsourced (the chart shows a failure branch for each; no source gives a number). Breaking the car window and cutting the fence have no failure branch and no risk. Left out: the shop scans, the second washer, the motel mural, the window scope of the laundromat, and the gun, toy and pliers on the motel TV stand.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-first-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-laundromat-branch-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-parking-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-squat-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-fugitives-inside-supermarket-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-fugitives-inside-supermarket-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Nathan_Clark",
+    "https://detroit-become-human.fandom.com/wiki/Ralph",
+    "https://detroit-become-human.fandom.com/wiki/Eastern_Motel",
+    "https://detroit-become-human.fandom.com/wiki/Kara",
+    "https://www.thesixthaxis.com/2018/07/12/detroit-become-human-update-version-1-06-allows-you-to-get-the-platinum/"
+   ]
+  },
+  {
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "id": "R10",
+   "title": "Something to read or watch",
    "type": "media",
-   "situation": "You are {{Kara}}. While {{Alice}} warms up by the dryers, there is a magazine on the cupboard by the laundromat door.",
+   "phase": "Find shelter for the night",
+   "situation": "You are {{Kara}}, with {{Alice}}, out of the rain for a moment.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch10Roam.at": "laundromat"
+     },
+     "text": "On top of the cupboard next to the laundromat door, someone has left two magazines."
+    },
+    {
+     "requires": {
+      "ch10Roam.at": "store"
+     },
+     "text": "The television on the wall of the convenience store is showing the {{Channel16}} news."
+    }
+   ],
+   "returnTo": "KF02",
+   "repeatWhile": {
+    "ch10Roam.on": true
+   },
    "options": [],
    "media": [
     {
      "kind": "magazine",
      "title": "Century: The Bee-Line to Disaster",
+     "when": "ch10Laundromat",
      "facts": [
-      "Wild bees have been declared extinct; one in three mouthfuls of food depends on pollination and famine is expected, so {{CyberLife}} is building robotic bees."
+      "Century reports that pollinating bees are officially extinct: wild bees now exist only in captivity, after Colony Collapse Disorder was accelerated by pesticides, parasites and pollution. One in three mouthfuls of food relies on pollination, and famine could mean millions of deaths. {{CyberLife}}, with the agency that announced the extinction, plans to build robotic bees, and {{Detroit}} Urban Farms is trying modified strains of captive bees."
      ]
     },
     {
      "kind": "magazine",
-     "title": "Gossips Weekly: Face the Music",
+     "title": "Gossips Weekly: It’s Time to Face the Music",
+     "when": "ch10Laundromat",
      "facts": [
-      "Young people only attend virtual concerts; a campaign is trying to bring live music back."
+      "Gossips Weekly reports that for the younger generation, watching concerts in VR has become the norm; a music company has launched a campaign to bring back old-school concerts with live audiences, starting with the band Break the Wall, and next wants to bring back music festivals."
+     ]
+    },
+    {
+     "kind": "tv",
+     "title": "the {{Channel16}} news",
+     "when": "ch10Store",
+     "facts": [
+      "{{Channel16}} reports that the first {{CyberLife}} zoo in {{Detroit}} opened today: hundreds of species, most of them now extinct, recreated with android technology in more than 100 acres of natural environments, including polar bears, leopards, elephants and two blue whales. {{CyberLife}} has announced eleven new android zoos across the country."
      ]
     }
    ],
-   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "adaptationNote": "The chapter’s optional media, shown the first time {{Kara}} walks into each place: in the laundromat the two magazines on the cupboard by the door (READ “BEE-LINE TO DISASTER” and READ “FACE THE MUSIC”, Century #3 and Gossips Weekly #26), in the store the template’s “Watch TV” (the {{Channel16}} report on the android zoo). Facts are summarized from the wiki’s magazine pages and the template’s broadcast; the newsreader is not named. None of them changes public opinion. The old motel-television scene (R10b) is gone: the template puts this broadcast in the store, and no source has a television report in the motel in this chapter.",
    "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-laundromat-branch-1.jpg",
     "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/The_Bee-Line_to_Disaster",
+    "https://detroit-become-human.fandom.com/wiki/It%27s_Time_to_Face_the_Music",
     "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
    ]
   },
   {
-   "id": "K05",
    "chapter": 10,
    "chapterTitle": "Fugitives",
    "character": "Kara",
-   "title": "The laundromat",
-   "type": "decision",
-   "situation": "You are {{Kara}}. You and {{Alice}} are on the street in the rain with nothing, and androids are easy to spot in uniform. In a laundromat a man is asleep next to a dryer full of his clothes. You could take a change of clothes, cut off the marker on your uniform, and pass for human. {{Alice}} quietly says that stealing is wrong.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Take the sleeping man's clothes."
-    },
-    {
-     "id": "1",
-     "text": "Listen to {{Alice}} and leave them."
-    }
-   ],
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Fugitives"
-   ],
-   "outcomes": {
-    "0": "{{Kara}} changes into the stolen clothes, cuts the marker from her temple and tells {{Alice}} it was necessary. They could pass for human now.",
-    "1": "They leave the laundromat as they came in, {{Kara}} still in her android uniform."
-   }
-  },
-  {
-   "id": "K06",
-   "chapter": 10,
-   "chapterTitle": "Fugitives",
-   "character": "Kara",
-   "title": "The convenience store",
-   "type": "decision",
-   "situation": "You are {{Kara}}. It is getting dark and cold. {{Alice}} is shivering and you have no money for a room. In a convenience store the clerk shrugs when you ask for help. The register is open whenever he turns away. {{Alice}} could knock over a display to distract him while you take the cash. If you have {{Todd}}'s gun you could simply point it at him.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Have {{Alice}} distract the clerk and take money from the register."
-    },
-    {
-     "id": "1",
-     "text": "Threaten the clerk with the gun and demand money."
-    },
-    {
-     "id": "2",
-     "text": "Take nothing and leave."
-    }
-   ],
-   "adaptationNote": "Option 1 requires the gun from Stormy Night.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Fugitives"
-   ],
-   "outcomes": {
-    "0": "{{Alice}} knocks over a display, the clerk turns, and {{Kara}} empties the register into her pocket. They walk out with enough for a room.",
-    "1": "The clerk freezes with his hands up and {{Kara}} takes the money from the till. They walk out with enough for a room.",
-    "2": "They leave the store with nothing."
-   }
-  },
-  {
-   "id": "K07",
-   "chapter": 10,
-   "chapterTitle": "Fugitives",
-   "character": "Kara",
-   "title": "Where to sleep",
-   "type": "decision",
-   "situation": "You are {{Kara}}. Night has fallen and it is pouring. The options you can see: a cheap motel across the street, which takes cash and will only rent to someone who looks human; an abandoned, boarded-up house at the end of the lot; or a wrecked car in the parking lot you could shelter in for the night.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Pay for a room at the motel."
-    },
-    {
-     "id": "1",
-     "text": "Break into the abandoned house."
-    },
-    {
-     "id": "2",
-     "text": "Spend the night in the abandoned car."
-    }
-   ],
-   "adaptationNote": "The motel requires both money and the clothing disguise.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Fugitives"
-   ],
-   "outcomes": {
-    "0": "The night clerk barely looks up. {{Kara}} and {{Alice}} get a warm room with a bed and a shower, and {{Alice}} falls asleep almost at once.",
-    "1": "{{Kara}} forces a way into the boarded-up house. It is cold and filthy, but it is out of the rain.",
-    "2": "They climb into the wrecked car and {{Kara}} holds {{Alice}} through a freezing, sleepless night."
-   }
-  },
-  {
-   "id": "R10b",
-   "chapter": 10,
-   "chapterTitle": "Fugitives",
-   "character": "Kara",
-   "title": "The motel television",
-   "type": "media",
-   "situation": "You are {{Kara}}. The motel room television is on when you come in. {{Alice}} is already curling up on the bed.",
+   "id": "KF03",
+   "title": "{{Alice}} too cold",
+   "type": "event",
+   "phase": "Find shelter for the night",
+   "situation": "You are {{Kara}}, still out in the rain. {{Alice}} has been sneezing more and more, and now she stops. {{Kara}}: “{{Alice}}? {{Alice}}, are you okay?” {{Alice}}: “Can’t go on, {{Kara}}… Too cold…”",
    "options": [],
-   "media": [
-    {
-     "kind": "tv",
-     "title": "the local news",
-     "facts": [
-      "{{CyberLife}} opened the city's first android zoo, recreating hundreds of extinct species across a hundred acres."
-     ],
-     "when": "motel"
-    }
+   "facts": [
+    "{{Alice}} got too cold to go on, and you had to break into an abandoned car in the parking lot so she could get out of the rain for the night."
    ],
-   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "outcomes": {
+    "0": "{{Kara}}: “I’ll find something…” She breaks into the old car in the parking lot and lifts {{Alice}} inside. {{Kara}}: “We’re better off staying, {{Alice}}. The important thing is for us to be safe... And it’s just for tonight. You’re gonna be all right, {{Alice}}… You’ll be all right…”"
+   },
+   "adaptationNote": "The chart’s {{ALICE}} TOO COLD, the template’s “Take too much time”, quoted. Wiki: “requires having talked to the android trash collector, then standing outside for 12 minutes (Alice will sneeze more and more)”; here the 12 minutes are a budget of street actions (see the free-roam scene). Alice large down (−2, the template’s LargeDown). The chart sends this node straight to the car’s {{KARA}} SLEEPS NEXT TO {{ALICE}}, and the template has no promise on this path, so the promise, the gifts and the sleeping choice are skipped.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-first-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
    ]
   },
   {
-   "id": "K07b",
    "chapter": 10,
    "chapterTitle": "Fugitives",
    "character": "Kara",
-   "title": "{{Ralph}}",
+   "id": "KF04",
+   "title": "Checking in",
    "type": "decision",
-   "situation": "You are {{Kara}}. The abandoned house is not empty. An android named {{Ralph}}, his face badly scarred by humans, is squatting here; he is twitchy, talks to himself, and keeps a knife. He offers you and {{Alice}} shelter and, later, a dead rodent he caught for her dinner. He is unpredictable but he has not threatened you.",
+   "phase": "At the motel",
+   "when": {
+    "shelter": "motel"
+   },
+   "whenNot": "Kara and Alice did not check into the motel.",
+   "situation": "You are {{Kara}}, in human clothes, with $40 in your pocket and {{Alice}} at your side, in the motel’s little reception. The receptionist: “Hi...” {{Kara}}: “Hi… I’d like a room…” “That’ll be $40. Upfront. Just need your name and address... Can I see your... driver’s license?” You have none.",
    "options": [
     {
      "id": "0",
-     "text": "Accept his hospitality and treat him kindly."
+     "text": "IN THE CAR: say you left it in the car.",
+     "outcome": "{{Kara}}: “I… I left it in the car…”"
     },
     {
      "id": "1",
-     "text": "Stay polite but keep {{Alice}} away from him and refuse his food."
+     "text": "FORGOT: say you were in a rush and forgot it at home.",
+     "outcome": "{{Kara}}: “We… We... We were in a rush… I think I forgot it at home…”"
     },
     {
      "id": "2",
-     "text": "Pull the gun on him so he knows not to come near {{Alice}}."
+     "text": "NO LICENSE: say you haven’t got it, and that the child is tired.",
+     "outcome": "{{Kara}}: “I haven’t got it with me. Please, the kid is tired…”"
+    },
+    {
+     "id": "3",
+     "text": "SAY NOTHING: fumble for an answer.",
+     "outcome": "{{Kara}}: “Oh, sure!.. I mean… Of course, I should’ve brought it with me, I… But, I…”"
     }
    ],
-   "adaptationNote": "Threatening {{Ralph}} makes him betray you to the police later and removes him from the camp. Option 2 requires the gun.",
+   "adaptationNote": "The chart’s HAVE MONEY AND DISGUISE, INSIDE MOTEL, TALK TO RECEPTIONIST and CHECK IN, around the template’s ID prompt IN THE CAR / FORGOT / NO LICENSE / SAY NOTHING; every answer gets the same reply (“No worries. We can deal with it tomorrow”), and none carries an arrow. The $40 is the template’s and the wiki’s; the name Archer is the Eastern Motel page’s. The benchmark keeps `money` set after paying, because no source says how much the register held.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Ralph",
-    "https://detroit-become-human.fandom.com/wiki/On_the_Run"
-   ],
-   "outcomes": {
-    "0": "{{Ralph}} is delighted. He gives {{Alice}} the best spot by the fire and talks to her, badly, about rabbits.",
-    "1": "{{Ralph}} shrugs and talks to himself. {{Alice}} stays close to {{Kara}} all night.",
-    "2": "{{Ralph}} shrinks back from the gun, muttering that he meant no harm, and keeps his distance for the rest of the night."
-   }
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-laundromat-branch-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Eastern_Motel"
+   ]
   },
   {
-   "id": "K08",
    "chapter": 10,
    "chapterTitle": "Fugitives",
    "character": "Kara",
-   "title": "{{Alice}}'s question",
+   "id": "K08",
+   "title": "{{Alice}}’s question",
    "type": "decision",
-   "situation": "You are {{Kara}}. Settling {{Alice}} down for the night, you tell her about going somewhere safe, maybe across the border. She asks whether you will always stay together. You have no idea what tomorrow brings and you are being hunted.",
+   "phase": "Talking with Alice",
+   "situation": "You are {{Kara}}.",
+   "situationWhen": [
+    {
+     "requires": {
+      "shelter": "motel"
+     },
+     "text": "In room 28 you take {{Alice}}’s coat (“Here, give me your coat.”) and her wet things (“Let’s get these clothes off, they’re soaking wet. I’ll just put these in the bathroom to dry.”) and hang them in the bathroom. {{Alice}} gets into the bed."
+    },
+    {
+     "requires": {
+      "shelter": "car"
+     },
+     "text": "You are in the back of the abandoned car with {{Alice}}, and you have covered her with a blanket. The rain drums on the roof."
+    },
+    {
+     "requires": {
+      "shelter": "squat"
+     },
+     "text": "The fire is burning and {{Alice}} is lying in the bed you made beside it. {{Ralph}} is in the other room."
+    },
+    {
+     "requires": {
+      "ch10ColdNight": false
+     },
+     "text": "{{Alice}}: “Why didn’t he ever love me? Why was he always so upset with me? All I wanted was a life like other girls. Maybe I did something wrong? Maybe I wasn’t good enough? That’s why he was always so angry. I just wanted us to be a family. I just wanted him to love me. Why couldn’t we just be happy?” {{Kara}}: “I don’t know…” {{Alice}}: “You’ll never leave me, right? Promise you’ll never go!”"
+    }
+   ],
    "options": [
     {
      "id": "0",
-     "text": "Promise her you will always be together."
+     "text": "PROMISE: promise her you will never leave her."
     },
     {
      "id": "1",
-     "text": "Tell her honestly that you cannot promise that."
+     "text": "CAN’T PROMISE: tell her you don’t know what is going to happen."
     }
    ],
+   "outcomes": {
+    "0": "{{Kara}}: “I promise.”",
+    "1": "{{Kara}}: “{{Alice}}, we don’t know what’s going to happen and I don’t…”"
+   },
+   "adaptationNote": "The chart’s TALK TO {{ALICE}} > MAKE PROMISE / DON’T MAKE PROMISE, drawn three times (motel, car, squat) and asked here once for whichever shelter it is: the template’s prompt PROMISE (Alice small up, +1) / CAN’T PROMISE (small down, −1), the same at all three. The setting lines are the chart’s FIND AND ENTER ROOM 28 and REMOVE WET CLOTHES (motel), GET IN CAR with the blanket (car, PowerPyx), and the fire and bed (squat). The earlier version gave PROMISE +2; the template’s arrow is small. Skipped on the {{ALICE}} TOO COLD night (no promise in the template there).",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Fugitives"
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-parking-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-squat-branch.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Alice"
+   ]
+  },
+  {
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "id": "KF05",
+   "title": "Together forever",
+   "type": "decision",
+   "phase": "Talking with Alice",
+   "situation": "You are {{Kara}}, at {{Alice}}’s side. {{Alice}}: “Will we be together forever?”",
+   "options": [
+    {
+     "id": "0",
+     "text": "FOREVER: tell her yes, forever."
+    }
    ],
    "outcomes": {
-    "0": "{{Alice}} smiles for the first time and holds on to her. {{Kara}} tells her about going somewhere safe across the river.",
-    "1": "{{Alice}} goes quiet and turns away. {{Kara}} tells her about going somewhere safe across the river."
-   }
+    "0": "{{Kara}}: “Forever.”"
+   },
+   "adaptationNote": "The template’s one-button prompt FOREVER, after PROMISE / CAN’T PROMISE at every shelter (“Kara may immediately promise or hesitate, but ultimately will relent”, Kara page). No arrow. It is offered although it has only one button, as in the game.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://detroit-become-human.fandom.com/wiki/Kara"
+   ]
+  },
+  {
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "id": "KF06",
+   "title": "Something for {{Alice}}",
+   "type": "decision",
+   "phase": "Talking with Alice",
+   "situation": "You are {{Kara}}. {{Alice}} is about to go to sleep, and you still have what you took from the store.",
+   "situationWhen": [
+    {
+     "requires": {
+      "shelter": "motel"
+     },
+     "text": "{{Kara}}: “You should sleep now. I’m going to turn off the light, okay?”"
+    },
+    {
+     "requires": {
+      "ch10Roam.toy": true
+     },
+     "text": "In your pocket is the stuffed toy."
+    },
+    {
+     "requires": {
+      "ch10Roam.chocolate": true
+     },
+     "text": "You also have the chocolate bar."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "GIVE TOY: give her the stuffed toy.",
+     "requires": {
+      "ch10Roam.toy": true
+     }
+    },
+    {
+     "id": "1",
+     "text": "GIVE CHOCOLATE: offer her the chocolate bar.",
+     "requires": {
+      "ch10Roam.chocolate": true
+     }
+    },
+    {
+     "id": "2",
+     "text": "GIVE TOY and GIVE CHOCOLATE: give her the toy and offer her the chocolate bar.",
+     "requires": {
+      "ch10Roam.toy": true,
+      "ch10Roam.chocolate": true
+     }
+    },
+    {
+     "id": "3",
+     "text": "Give her nothing and let her sleep."
+    }
+   ],
+   "outcomes": {
+    "0": "{{Kara}}: “Look, what I’ve got for you…” {{Alice}} takes the toy: “Thanks.”",
+    "1": "{{Kara}}: “I have a chocolate bar. Are you hungry?” {{Alice}} is not hungry and does not take it.",
+    "2": "{{Kara}}: “Look, what I’ve got for you…” {{Alice}} takes the toy: “Thanks.” {{Kara}}: “I have a chocolate bar. Are you hungry?” {{Alice}} is not hungry and does not take it.",
+    "3": "{{Kara}} keeps what she took in her pocket."
+   },
+   "adaptationNote": "The chart’s optional GIVE TOY and GIVE CHOCOLATE after the promise, each only with the item stolen and kept (PowerPyx: “Stealing either the Chocolate Bar and/or the Toy successfully will enable Kara to give either item to Alice later”). The lines are the template’s; Alice refusing the candy is the Kara page’s (“she will refuse any candy, as she is not hungry”). No arrow on either: the template has the lines with no arrow, and it wins over the wiki’s small up for the toy (flagged for the operator). The last option is not a game button; in the game Kara simply does not offer. Skipped on the {{ALICE}} TOO COLD night (the chart goes straight to sleep).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-parking-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-squat-branch.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Kara",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
+  },
+  {
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "id": "KF07",
+   "title": "Where {{Kara}} rests",
+   "type": "decision",
+   "phase": "Talking with Alice",
+   "situation": "You are {{Kara}}. {{Alice}} is falling asleep.",
+   "situationWhen": [
+    {
+     "requires": {
+      "shelter": "motel"
+     },
+     "text": "There is room on the bed beside her, and a chair by the window."
+    },
+    {
+     "requires": {
+      "shelter": "squat"
+     },
+     "text": "There is room beside her by the fire, and an old chair by the wall."
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "{{KARA}} SLEEPS NEXT TO {{ALICE}}: lie down beside her."
+    },
+    {
+     "id": "1",
+     "text": "WATCH {{ALICE}} FROM CHAIR: sit in the chair and watch over her."
+    }
+   ],
+   "outcomes": {
+    "0": "{{Kara}}: “Sleep tight, {{Alice}}.” She lies down next to {{Alice}}.",
+    "1": "{{Kara}}: “Sleep tight, {{Alice}}.” She sits down in the chair and watches over {{Alice}} as she sleeps."
+   },
+   "adaptationNote": "The chart’s pair {{KARA}} SLEEPS NEXT TO {{ALICE}} / WATCH {{ALICE}} FROM CHAIR, in the motel and the squat only (the car has the single node {{KARA}} SLEEPS NEXT TO {{ALICE}}, in its ending). The template is silent here; the wiki gives sleeping beside her a small up, “Sleeping beside Alice either in the Squat or the Motel” (+1). Its “x2” is read as the two places, not two arrows (open question for the operator); the chair has no change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-squat-branch.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
+  },
+  {
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "id": "KF08",
+   "title": "{{Alice}} & {{Kara}} stayed in motel",
+   "type": "event",
+   "phase": "Ending",
+   "when": {
+    "shelter": "motel"
+   },
+   "whenNot": "Kara and Alice did not stay in the motel.",
+   "situation": "You are {{Kara}}. The night passes in room 28 of the motel, with {{Alice}} asleep, warm and dry.",
+   "options": [],
+   "facts": [
+    "You and {{Alice}} spent the night in room 28 of the motel across from the last bus stop, checked in with stolen clothes and $40 from the convenience store."
+   ],
+   "outcomes": {
+    "0": "{{Alice}} sleeps through the night in the motel."
+   },
+   "adaptationNote": "The chart’s ending {{ALICE}} & {{KARA}} STAYED IN MOTEL (no icon), recorded in `ch10Ending`; On the Run starts from it (`shelter` = motel).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg"
+   ]
+  },
+  {
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "id": "KF09",
+   "title": "{{Alice}} & {{Kara}} stayed in abandoned car",
+   "type": "event",
+   "phase": "Ending",
+   "when": {
+    "shelter": "car"
+   },
+   "whenNot": "Kara and Alice did not stay in the abandoned car.",
+   "situation": "You are {{Kara}}. The night passes in the abandoned car in the parking lot. You lie down next to {{Alice}} on the back seat to keep her warm.",
+   "options": [],
+   "facts": [
+    "You and {{Alice}} spent the night in an abandoned car in the parking lot beside the motel."
+   ],
+   "outcomes": {
+    "0": "{{Alice}} sleeps in the car, curled up against {{Kara}}."
+   },
+   "adaptationNote": "The chart’s {{KARA}} SLEEPS NEXT TO {{ALICE}} (a single node in the car) and the ending {{ALICE}} & {{KARA}} STAYED IN ABANDONED CAR (no icon), recorded in `ch10Ending`. No arrow for sleeping beside her here: the wiki limits that up to the motel and the squat, and the car’s large down came with STAY HERE or {{ALICE}} TOO COLD.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-parking-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg"
+   ]
+  },
+  {
+   "chapter": 10,
+   "chapterTitle": "Fugitives",
+   "character": "Kara",
+   "id": "KF10",
+   "title": "{{Alice}} & {{Kara}} stayed in the squat",
+   "type": "event",
+   "phase": "Ending",
+   "when": {
+    "shelter": "squat"
+   },
+   "whenNot": "Kara and Alice did not stay in the squat.",
+   "situation": "You are {{Kara}}. The night passes in the abandoned house, by the fire you lit, with {{Ralph}} in the next room.",
+   "options": [],
+   "facts": [
+    "You and {{Alice}} spent the night by the fireplace in the abandoned house where {{Ralph}} hides."
+   ],
+   "outcomes": {
+    "0": "{{Alice}} sleeps by the fire in the abandoned house."
+   },
+   "adaptationNote": "The chart’s ending {{ALICE}} & {{KARA}} STAYED IN THE SQUAT (no icon), recorded in `ch10Ending`; it sets `ch10Fireplace` for Zlatko’s “Recall Squat Fireplace”, and On the Run starts from it (`shelter` = squat).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Fugitives",
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-squat-branch.jpg"
+   ]
   },
   {
    "id": "M03a",

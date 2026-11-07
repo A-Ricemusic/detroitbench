@@ -1,6 +1,6 @@
 // Chapter 5, The Painter: the game's chart node for node, the template's prompts, no stat change, the clothes from
 // Shades of Color, and the flags saved for Night of the Soul.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,current,nextCursor,situationFor,mediaFor} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';

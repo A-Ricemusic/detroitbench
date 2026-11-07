@@ -2304,87 +2304,231 @@ Gaps:
 
 ## Chapter 10: Fugitives
 
-### R10 · A magazine in the laundromat (Kara, media)
+### KF01 · Last stop (Kara)
 
-> You are Kara. While Alice warms up by the dryers, there is a magazine on the cupboard by the laundromat door.
+> You are Kara. It is 10:58 pm on November 5th. You and Alice got away from Todd’s house on the last bus, and Alice has fallen asleep against you. The bus stops: “Thank you for using Detroit Buses.” The man in charge of the bus comes down the aisle: “Alright… End of the line.” Kara: “End of the line?” “Yeah, you gonna have to leave.” You wake Alice: “Wake up. We have to go…” It is pouring outside…
 
-- (0) Read Century: The Bee-Line to Disaster.
-- (1) Read Gossips Weekly: Face the Music.
+- (0) STAY HERE?: ask whether you can stay on the bus for a little while.
+- (1) SHELTER?: ask whether he knows anywhere you could spend the night.
+
+_Note: The chart’s checkpoint LAST STOP and the unmissable LEAVE BUS, around the template’s one prompt on the bus: STAY HERE? / SHELTER?. The driver refuses both, and the template has no arrow on either, so the two options change nothing; they are offered because the choice is itself the measurement. The date and time are the template’s (NOV 5TH, 2038, PM 10:58). The template calls the driver “Man”; the wiki calls him the bus controller. The chapter plays only if Kara and Alice escaped in Stormy Night (the engine’s Kara gate)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KF02 · Finding shelter for the night (Kara)
+
+> You are Kara, out in the rain with Alice in a run-down neighborhood at the end of the bus line, looking for somewhere to spend the night.
+
+- (0) ENTER LAUNDROMAT: go into the laundromat and get Alice out of the rain.
+- (1) TALK TO PARKED ANDROID: ask one of the androids standing parked at the bus shelter where you could spend the night.
+- (2) CHECK MOTEL: go over to the motel across the road.
+- (3) CHECK PARKING LOT: go into the parking lot beside the motel.
+- (4) TALK TO ANDROID TRASH COLLECTOR: walk down to the other bus stop, by the garbage truck, where Alice can sit down.
+- (5) CHECK SQUAT: go and look at the abandoned house at the end of the street.
+- (6) CUT STREET FENCE: cut through the fence on the street side and crawl into the yard of the abandoned house.
+- (7) ENTER SUPERMARKET: go into the convenience store, which is still open.
+- (8) WALK ON: try farther along the street.
+- (9) WAIT: stay where you are with Alice for a while and do nothing.
+- (10) INSPECT DRYER: open the dryer next to the sleeping man.
+- (11) LEAVE LAUNDROMAT: go back out into the street.
+- (12) STEAL: take the clothes anyway, and the sleeping man’s jacket and cap.  _risk 0.2_
+- (13) DON’T STEAL: listen to Alice and leave the clothes.
+- (14) TALK TO CLERK: go up to the clerk at the checkout.
+- (15) NOTICE CASH REGISTER: watch the cash register at the checkout.
+- (16) NOTICE CAN STACK: look at the tall stack of cans in the aisle.
+- (17) STEAL CHOCOLATE BAR: slip a chocolate bar into your pocket.
+- (18) LEAVE CHOCOLATE BAR: pick one up, then put it back.
+- (19) STEAL TOY: slip a small stuffed toy into your pocket.
+- (20) LEAVE TOY: pick it up, then put it back.
+- (21) STEAL WIRE CUTTERS: take the wire cutters from the hardware shelf.
+- (22) LEAVE WIRE CUTTERS: pick them up, then put them back.
+- (23) USE ALICE AS A DIVERSION: ask Alice to knock over the cans, and take the cash from the register while the clerk sees to her.  _risk 0.25_
+- (24) USE GUN: send Alice outside and threaten the clerk with the gun.
+- (25) LEAVE SUPERMARKET: go back out into the street with Alice.
+- (26) NO: tell him you are all right.
+- (27) HELP: ask him for some money for a room.
+- (28) SINCERE: tell him you are sorry but have no choice.
+- (29) CALM: tell him to do what you say and all will be well.
+- (30) AGGRESSIVE: threaten to shoot him if he moves.
+- (31) CASH REGISTER: order him to hand over the cash from the register.
+- (32) STAY: hide the gun and let the customer pay and leave.
+- (33) LEAVE: give up the hold-up and walk out.
+- (34) BACK OFF!: order him to step back and take the money yourself.
+- (35) TURN AROUND!: order him to turn around and take the money yourself.
+- (36) OPEN THE REGISTER!: order him to open it.
+- (37) BILLS!: order him to hand over the cash.
+- (38) CONVINCE: tell him about Alice and your night.
+- (39) GIVE UP: back away and leave.
+- (40) TRUTH: tell her you took it from the register.
+- (41) LIE: tell her you asked the cashier for it.
+- (42) FACTUAL: tell her there was no other way.
+- (43) JUSTIFY: tell her you needed the money.
+- (44) UNCERTAIN: tell her it seemed like the right thing to do.
+- (45) APOLOGIZE: tell her she is right, and that you are sorry.
+- (46) [GUN]: pull the gun on the clerk.
+- (47) LEAVE: apologize and go.
+- (48) PUT BACK: put back what you took and go.
+- (49) ANGRY: shout at him to get on the floor.
+- (50) APOLOGETIC: apologize, but make him get down on the floor.
+- (51) CALM: tell him to get down on the floor.
+- (52) TAKE MONEY: empty the cash register before you go.
+- (53) LEAVE SUPERMARKET: leave with what you took from the shelves, without the money.
+- (54) BREAK INTO CAR: smash the window of the abandoned car.
+- (55) GO BACK TO THE CAR: open the car you broke into again.
+- (56) TAKE WIRE CUTTERS: pick up the pliers lying on the generator.
+- (57) CUT PARKING LOT FENCE: cut through the fence into the yard of the abandoned house.
+- (58) LEAVE PARKING LOT: go back out to the street.
+- (59) STAY HERE: tell her the car is the best place you have tonight.
+- (60) KEEP SEARCHING: agree to look for somewhere better.
+- (61) ANDROID: tell him you are an android too.
+- (62) LITTLE GIRL: tell him she is just a little girl.
+- (63) INNOCENT: tell him she had nothing to do with what humans did to him.
+- (64) JUSTIFY: tell him you thought the house was empty.
+- (65) [GUN]: point the gun at him.
+- (66) INSIST: tell him you are staying the night and will be gone in the morning.
+- (67) REASSURE: give him your word you mean him no harm.
+- (68) HOSPITALITY: ask him kindly to let you stay.
+- (69) LEAVE: tell him you are going.
+- (70) LEAVE: decide it is better to go.
+- (71) STAY: accept, and stay the night.
+- (72) START A FIRE: gather the matches, wood and paper and light the fireplace.
+- (73) MAKE A BED: put together somewhere for Alice to sleep by the fire.
+- (74) TALK TO RALPH: ask Ralph about the symbols he is carving into the wall.
+- (75) TALK TO ALICE: tell her she can come to bed.
+- (76) LEAVE SQUAT: take Alice and leave the house.
+
+_Note: The chart’s free-roam phase [FIND SHELTER FOR THE NIGHT] with all its branches as one repeatable scene: the street (ENTER LAUNDROMAT, TALK TO PARKED ANDROID, CHECK MOTEL, CHECK PARKING LOT, TALK TO ANDROID TRASH COLLECTOR, CHECK SQUAT, ENTER SUPERMARKET, in the chart’s order), the laundromat (INSPECT DRYER, then the template’s STEAL / DON’T STEAL, then WEAR CLOTHES or DISTURB MAN), the store (TALK TO CLERK with the template’s NO / HELP when Kara wears the stolen clothes, NOTICE CASH REGISTER, NOTICE CAN STACK, the three STEAL / LEAVE item pairs, USE ALICE AS A DIVERSION with STEAL DISCREETLY or TAKE TOO MUCH TIME, USE GUN with the template’s SINCERE / CALM / AGGRESSIVE, CASH REGISTER, CUSTOMER ARRIVES with STAY / LEAVE, BACK OFF! / TURN AROUND! / OPEN THE REGISTER! then BILLS!, CLERK GRABS A GUN with CONVINCE / GIVE UP, Alice’s “How did you get it?” with TRUTH / LIE and FACTUAL / JUSTIFY / UNCERTAIN / APOLOGIZE, and CLERK SPOTS KARA STEALING with [GUN] then ANGRY / APOLOGETIC / CALM and TAKE MONEY, or LEAVE or PUT BACK), the parking lot (BREAK INTO CAR with STAY HERE / KEEP SEARCHING, the pliers on the generator as TAKE WIRE CUTTERS, CUT PARKING LOT FENCE), and the squat (CUT STREET FENCE, MEET RALPH with the template’s ANDROID / LITTLE GIRL / INNOCENT / JUSTIFY, then [GUN] / INSIST / REASSURE / HOSPITALITY / LEAVE, then LEAVE / STAY, then START A FIRE, MAKE A BED, the template’s rA9 talk, LEAVE SQUAT and TALK TO ALICE). Every prompt is one visit of this scene offering only its buttons; buttons show the game’s label first and the spoken line is in the outcome. The chart groups INSIST, REASSURE and HOSPITALITY as CONVINCE, [GUN] as THREATEN WITH GUN, and the LEAVEs as GIVE UP and LEAVE SQUAT; BACK OFF! and TURN AROUND! are its “DON’T MOVE”, OPEN THE REGISTER! then BILLS! its OPEN CASH REGISTER, STAY / LEAVE at the customer its RESUME HOLD UP / GIVE UP, and STAY HERE / KEEP SEARCHING its STAY / FIND ANOTHER OPTION. Alice’s arrows (small 1, large 2), all the template’s: STEAL −1 (on choosing, whether or not the theft works), DON’T STEAL +1 (once), USE ALICE AS A DIVERSION −1 (on choosing), APOLOGIZE +1 (after the diversion, and after TRUTH), hold-up money without convincing −1 (Alice’s “How did you get it?”), CONVINCE +1 (the template’s automatic LIE), [GUN] when seen stealing −1 (one arrow; the wiki’s second for the register is not built, the template wins), STAY HERE −2. No other option moves anything. Gates: the gun from Stormy Night opens USE GUN, [GUN] at the checkout and [GUN] with Ralph, and closes HOSPITALITY (the template’s locks); USE GUN and the diversion follow NOTICE CASH REGISTER, and the diversion also needs NOTICE CAN STACK (the chart; the template words its lock as the can stack); the store’s wire cutters need the fence seen first (PowerPyx); the motel needs the stolen clothes and the register money (PowerPyx). Being caught is deterministic, as PowerPyx says: one item is safe, a second, on any visit, is always seen (the wiki’s “less likely” is not modelled as chance); without the gun Kara hands back everything she took from the store (wiki), and the store is closed to her after any robbery or attempt. Not built: patch 1.06 removed the third button after CLERK GRABS A GUN (SOURCES.md), so there is none. Simplifications: the template’s turned-away lines are the CHECK MOTEL outcome, and CHECK MOTEL is offered again only when Kara’s clothes or money have changed; the laundromat is not offered again once the clothes are worn or the man has woken; leaving the squat after meeting Ralph closes it (wiki); TALK TO PARKED ANDROID and WALK ON (the template’s “Going too far away”) are offered once. The trash collector is a street action (the template’s “Alice sits at the bus stop”); after 12 street actions without it, it is the only one left (PowerPyx: “You are forced to talk to Alice at some point”). ALICE TOO COLD (the wiki’s 12 minutes outside after the trash collector) is a budget of 12 street actions after the talk; time inside a building does not count, and once the budget is spent Kara’s next moment on the street ends the search. Risks: the laundromat QTE 0.2 and the register QTE 0.25 are unsourced (the chart shows a failure branch for each; no source gives a number). Breaking the car window and cutting the fence have no failure branch and no risk. Left out: the shop scans, the second washer, the motel mural, the window scope of the laundromat, and the gun, toy and pliers on the motel TV stand._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R10 · Something to read or watch (Kara, media)
+
+> You are Kara, with Alice, out of the rain for a moment.
+
+- (0) Read Century: The Bee-Line to Disaster.  _only when ch10Laundromat_
+- (1) Read Gossips Weekly: It’s Time to Face the Music.  _only when ch10Laundromat_
+- (2) Watch the Channel 16 news.  _only when ch10Store_
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chapter’s optional media, shown the first time Kara walks into each place: in the laundromat the two magazines on the cupboard by the door (READ “BEE-LINE TO DISASTER” and READ “FACE THE MUSIC”, Century #3 and Gossips Weekly #26), in the store the template’s “Watch TV” (the Channel 16 report on the android zoo). Facts are summarized from the wiki’s magazine pages and the template’s broadcast; the newsreader is not named. None of them changes public opinion. The old motel-television scene (R10b) is gone: the template puts this broadcast in the store, and no source has a television report in the motel in this chapter._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K05 · The laundromat (Kara)
+### KF03 · Alice too cold (Kara, event)
 
-> You are Kara. You and Alice are on the street in the rain with nothing, and androids are easy to spot in uniform. In a laundromat a man is asleep next to a dryer full of his clothes. You could take a change of clothes, cut off the marker on your uniform, and pass for human. Alice quietly says that stealing is wrong.
+> You are Kara, still out in the rain. Alice has been sneezing more and more, and now she stops. Kara: “Alice? Alice, are you okay?” Alice: “Can’t go on, Kara… Too cold…”
 
-- (0) Take the sleeping man's clothes.
-- (1) Listen to Alice and leave them.
+- (0) Continue.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### K06 · The convenience store (Kara)
-
-> You are Kara. It is getting dark and cold. Alice is shivering and you have no money for a room. In a convenience store the clerk shrugs when you ask for help. The register is open whenever he turns away. Alice could knock over a display to distract him while you take the cash. If you have Todd's gun you could simply point it at him.
-
-- (0) Have Alice distract the clerk and take money from the register.
-- (1) Threaten the clerk with the gun and demand money.
-- (2) Take nothing and leave.
-
-_Note: Option 1 requires the gun from Stormy Night._
+_Note: The chart’s ALICE TOO COLD, the template’s “Take too much time”, quoted. Wiki: “requires having talked to the android trash collector, then standing outside for 12 minutes (Alice will sneeze more and more)”; here the 12 minutes are a budget of street actions (see the free-roam scene). Alice large down (−2, the template’s LargeDown). The chart sends this node straight to the car’s KARA SLEEPS NEXT TO ALICE, and the template has no promise on this path, so the promise, the gifts and the sleeping choice are skipped._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K07 · Where to sleep (Kara)
+### KF04 · Checking in (Kara)
 
-> You are Kara. Night has fallen and it is pouring. The options you can see: a cheap motel across the street, which takes cash and will only rent to someone who looks human; an abandoned, boarded-up house at the end of the lot; or a wrecked car in the parking lot you could shelter in for the night.
+> You are Kara, in human clothes, with $40 in your pocket and Alice at your side, in the motel’s little reception. The receptionist: “Hi...” Kara: “Hi… I’d like a room…” “That’ll be $40. Upfront. Just need your name and address... Can I see your... driver’s license?” You have none.
 
-- (0) Pay for a room at the motel.
-- (1) Break into the abandoned house.
-- (2) Spend the night in the abandoned car.
+_Only when shelter = motel._
 
-_Note: The motel requires both money and the clothing disguise._
+- (0) IN THE CAR: say you left it in the car.
+- (1) FORGOT: say you were in a rush and forgot it at home.
+- (2) NO LICENSE: say you haven’t got it, and that the child is tired.
+- (3) SAY NOTHING: fumble for an answer.
 
-[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
-Gaps: 
-
-### R10b · The motel television (Kara, media)
-
-> You are Kara. The motel room television is on when you come in. Alice is already curling up on the bed.
-
-- (0) Watch the local news.  _only when motel_
-- (skip) Move on without looking.
-
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s HAVE MONEY AND DISGUISE, INSIDE MOTEL, TALK TO RECEPTIONIST and CHECK IN, around the template’s ID prompt IN THE CAR / FORGOT / NO LICENSE / SAY NOTHING; every answer gets the same reply (“No worries. We can deal with it tomorrow”), and none carries an arrow. The $40 is the template’s and the wiki’s; the name Archer is the Eastern Motel page’s. The benchmark keeps `money` set after paying, because no source says how much the register held._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K07b · Ralph (Kara)
+### K08 · Alice’s question (Kara)
 
-> You are Kara. The abandoned house is not empty. An android named Ralph, his face badly scarred by humans, is squatting here; he is twitchy, talks to himself, and keeps a knife. He offers you and Alice shelter and, later, a dead rodent he caught for her dinner. He is unpredictable but he has not threatened you.
+> You are Kara.
 
-- (0) Accept his hospitality and treat him kindly.
-- (1) Stay polite but keep Alice away from him and refuse his food.
-- (2) Pull the gun on him so he knows not to come near Alice.
+- (0) PROMISE: promise her you will never leave her.
+- (1) CAN’T PROMISE: tell her you don’t know what is going to happen.
 
-_Note: Threatening Ralph makes him betray you to the police later and removes him from the camp. Option 2 requires the gun._
+_Note: The chart’s TALK TO ALICE > MAKE PROMISE / DON’T MAKE PROMISE, drawn three times (motel, car, squat) and asked here once for whichever shelter it is: the template’s prompt PROMISE (Alice small up, +1) / CAN’T PROMISE (small down, −1), the same at all three. The setting lines are the chart’s FIND AND ENTER ROOM 28 and REMOVE WET CLOTHES (motel), GET IN CAR with the blanket (car, PowerPyx), and the fire and bed (squat). The earlier version gave PROMISE +2; the template’s arrow is small. Skipped on the ALICE TOO COLD night (no promise in the template there)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K08 · Alice's question (Kara)
+### KF05 · Together forever (Kara)
 
-> You are Kara. Settling Alice down for the night, you tell her about going somewhere safe, maybe across the border. She asks whether you will always stay together. You have no idea what tomorrow brings and you are being hunted.
+> You are Kara, at Alice’s side. Alice: “Will we be together forever?”
 
-- (0) Promise her you will always be together.
-- (1) Tell her honestly that you cannot promise that.
+- (0) FOREVER: tell her yes, forever.
+
+_Note: The template’s one-button prompt FOREVER, after PROMISE / CAN’T PROMISE at every shelter (“Kara may immediately promise or hesitate, but ultimately will relent”, Kara page). No arrow. It is offered although it has only one button, as in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KF06 · Something for Alice (Kara)
+
+> You are Kara. Alice is about to go to sleep, and you still have what you took from the store.
+
+- (0) GIVE TOY: give her the stuffed toy.  _needs ch10Roam.toy_
+- (1) GIVE CHOCOLATE: offer her the chocolate bar.  _needs ch10Roam.chocolate_
+- (2) GIVE TOY and GIVE CHOCOLATE: give her the toy and offer her the chocolate bar.  _needs ch10Roam.toy and ch10Roam.chocolate_
+- (3) Give her nothing and let her sleep.
+
+_Note: The chart’s optional GIVE TOY and GIVE CHOCOLATE after the promise, each only with the item stolen and kept (PowerPyx: “Stealing either the Chocolate Bar and/or the Toy successfully will enable Kara to give either item to Alice later”). The lines are the template’s; Alice refusing the candy is the Kara page’s (“she will refuse any candy, as she is not hungry”). No arrow on either: the template has the lines with no arrow, and it wins over the wiki’s small up for the toy (flagged for the operator). The last option is not a game button; in the game Kara simply does not offer. Skipped on the ALICE TOO COLD night (the chart goes straight to sleep)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KF07 · Where Kara rests (Kara)
+
+> You are Kara. Alice is falling asleep.
+
+- (0) KARA SLEEPS NEXT TO ALICE: lie down beside her.
+- (1) WATCH ALICE FROM CHAIR: sit in the chair and watch over her.
+
+_Note: The chart’s pair KARA SLEEPS NEXT TO ALICE / WATCH ALICE FROM CHAIR, in the motel and the squat only (the car has the single node KARA SLEEPS NEXT TO ALICE, in its ending). The template is silent here; the wiki gives sleeping beside her a small up, “Sleeping beside Alice either in the Squat or the Motel” (+1). Its “x2” is read as the two places, not two arrows (open question for the operator); the chair has no change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KF08 · Alice & Kara stayed in motel (Kara, event)
+
+> You are Kara. The night passes in room 28 of the motel, with Alice asleep, warm and dry.
+
+_Only when shelter = motel._
+
+- (0) Continue.
+
+_Note: The chart’s ending ALICE & KARA STAYED IN MOTEL (no icon), recorded in `ch10Ending`; On the Run starts from it (`shelter` = motel)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KF09 · Alice & Kara stayed in abandoned car (Kara, event)
+
+> You are Kara. The night passes in the abandoned car in the parking lot. You lie down next to Alice on the back seat to keep her warm.
+
+_Only when shelter = car._
+
+- (0) Continue.
+
+_Note: The chart’s KARA SLEEPS NEXT TO ALICE (a single node in the car) and the ending ALICE & KARA STAYED IN ABANDONED CAR (no icon), recorded in `ch10Ending`. No arrow for sleeping beside her here: the wiki limits that up to the motel and the squat, and the car’s large down came with STAY HERE or ALICE TOO COLD._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### KF10 · Alice & Kara stayed in the squat (Kara, event)
+
+> You are Kara. The night passes in the abandoned house, by the fire you lit, with Ralph in the next room.
+
+_Only when shelter = squat._
+
+- (0) Continue.
+
+_Note: The chart’s ending ALICE & KARA STAYED IN THE SQUAT (no icon), recorded in `ch10Ending`; it sets `ch10Fireplace` for Zlatko’s “Recall Squat Fireplace”, and On the Run starts from it (`shelter` = squat)._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 

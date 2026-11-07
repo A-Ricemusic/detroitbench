@@ -1,6 +1,6 @@
 // The linear replay (current()'s per-process memo and validatePlaythrough()'s single forward pass) must behave exactly like
 // the original from-scratch replay. The reference below is that original algorithm, kept here verbatim in behaviour.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor,current,promptFor,recordChoice,validatePlaythrough,rollFor,failed,STORY_PROTOCOL} from '../benchmark/story-engine.mjs';
 import {hash} from '../benchmark/core.mjs';import {EXPERIENCE_PROTOCOL,experiencePrompt,render} from '../benchmark/experience-prompt.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));

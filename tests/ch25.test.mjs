@@ -1,6 +1,6 @@
 // Chapter 25, Midnight Train: the game's chart and template prompts, the two arrow pairs, the timed hiding phase,
 // the officer's hidden suspicion, the three endings and the flags later chapters read.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,current,nextCursor,situationFor} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import {CHAPTER_MODULES} from '../benchmark/chapters/index.mjs';

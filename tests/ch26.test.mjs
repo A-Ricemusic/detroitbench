@@ -1,6 +1,6 @@
 // Chapter 26, Capitol Park (Markus): the chart's securing phase, the three flee endings, the store, the protest meter,
 // the Molotov, the officers and the news. Specification: docs/research/ch26-capitol-park.md.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor} from '../benchmark/story-engine.mjs';import {random} from '../benchmark/core.mjs';
 import {render} from '../benchmark/experience-prompt.mjs';import {rules,message} from '../benchmark/chapters/ch26.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));

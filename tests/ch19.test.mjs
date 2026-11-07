@@ -1,6 +1,6 @@
 // Chapter 19, Spare Parts (Markus): scenes, labels, arrows, risk rolls, endings and the John flag for Freedom March.
 // Specification: docs/research/ch19-spare-parts.md. Path totals are the note's §3 checks (template arrows, small = 1, large = 2).
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor,promptFor} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import {random} from '../benchmark/core.mjs';

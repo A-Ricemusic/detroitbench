@@ -1,6 +1,6 @@
 // Chapter 17, Zlatko (Kara): the machine, the ten-minute house, the escape and the five endings.
 // Plays chapter 17 alone from a prepared state, so the inputs from chapters 4, 10 and 13 can be set directly.
-import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
+import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor,current,promptFor,recordChoice,validatePlaythrough} from '../benchmark/story-engine.mjs';
 import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';
 import * as ch17 from '../benchmark/chapters/ch17.mjs';
@@ -45,9 +45,9 @@ test('no stat arrow except the template’s two public-opinion drops on the TV',
  const alice=play17({picks:{K10b:'1'}});assert.equal(alice.s.aliceBond,0);assert.equal(alice.s.publicSupport,0);assert.equal(alice.s.lutherTrust,0);
  const tv=(prep,house=['tv','alice'])=>play17({prep,house}).s;
  assert.equal(tv(s=>{s.chase=true}).publicSupport,-1);assert.equal(tv(s=>{s.chase=true}).ch17Tv,'chase');
- assert.equal(tv(s=>{s.robbery='gun'}).publicSupport,-1);assert.equal(tv(s=>{s.robbery='gun'}).ch17Tv,'robberyUniform');
- assert.equal(tv(s=>{s.robbery='gun';s.clothes=true}).publicSupport,0);assert.equal(tv(s=>{s.robbery='gun';s.clothes=true}).ch17Tv,'robberyClothes');
- assert.equal(tv(s=>{s.robbery='gun';s.chase=true}).publicSupport,-1,'one report plays: the chase report');
+ assert.equal(tv(s=>{s.robbery='gun';s.ch10RobberyNews=true}).publicSupport,-1);assert.equal(tv(s=>{s.robbery='gun';s.ch10RobberyNews=true}).ch17Tv,'robberyUniform');
+ assert.equal(tv(s=>{s.robbery='gun';s.ch10RobberyNews=true;s.clothes=true}).publicSupport,0);assert.equal(tv(s=>{s.robbery='gun';s.ch10RobberyNews=true;s.clothes=true}).ch17Tv,'robberyClothes');
+ assert.equal(tv(s=>{s.robbery='gun';s.ch10RobberyNews=true;s.chase=true}).publicSupport,-1,'one report plays: the chase report');
  assert.equal(tv(()=>{}).publicSupport,0);assert.equal(tv(()=>{}).ch17Tv,'none');
  // Watching on the reset path is the SEE NEWS FLASH OF ESCAPE memory and costs the same drop.
  const r=play17({...reset,prep:s=>{s.chase=true},house:['tv',...MEM5.slice(0,4),'alice']}).s;assert.equal(r.publicSupport,-1);assert.equal(r.ch17Phase,'over');assert.equal(r.ch17Outcome,'LUTHER JOINS KARA & ALICE')});
@@ -89,10 +89,10 @@ test('the conditional memories follow A New Home, Fugitives and On the Run',()=>
  const at=prep=>{const s=startState(story);prep(s);s.ch17Phase='memory';s.ch17Reset=true;return acts('K12',s)};
  const none=at(()=>{});for(const a of ['book','pipe','fireplace','carving','ax400','brain'])assert.ok(!none.includes(a),a);
  assert.ok(at(s=>{s.upstairs.book=true}).includes('book'));assert.ok(at(s=>{s.downstairs.rewash=true}).includes('pipe'));
- const squat=at(s=>{s.shelter='squat'});assert.ok(squat.includes('fireplace')&&squat.includes('carving'));
- assert.ok(!at(s=>{s.shelter='squat';s.ch10RalphCarving=false}).includes('carving'),'chapter 10’s carving flag wins when set');
+ const squat=at(s=>{s.shelter='squat';s.ch10RalphCarving=true});assert.ok(squat.includes('fireplace')&&squat.includes('carving'));
+ assert.ok(!at(s=>{s.shelter='squat';s.ch10RalphCarving=true;s.ch10RalphCarving=false}).includes('carving'),'chapter 10’s carving flag wins when set');
  assert.ok(at(s=>{s.shelter='motel';s.ch10RalphCarving=true}).includes('carving'));
- assert.ok(at(s=>{s.shelter='car'}).includes('ax400'));assert.ok(!at(s=>{s.shelter='car';s.chase=true}).includes('ax400'));assert.ok(!at(s=>{s.shelter='squat'}).includes('ax400'));
+ assert.ok(at(s=>{s.shelter='car'}).includes('ax400'));assert.ok(!at(s=>{s.shelter='car';s.chase=true}).includes('ax400'));assert.ok(!at(s=>{s.shelter='squat';s.ch10RalphCarving=true}).includes('ax400'));
  assert.ok(at(s=>{s.chase=true}).includes('brain'));
  // The AX400 magazine counts as RECALL ESCAPE only in the memory phase.
  const r=play17({...reset,prep:s=>{s.shelter='motel'},house:['ax400','doorhole','table','coat','mirror','alice']});assert.equal(r.s.ch17Memories,5);assert.match(r.events['K12#1'],/A memory surfaces/);
@@ -129,7 +129,7 @@ test('getting out: fire, the corridor, the bear, and the two death endings',()=>
 
 test('every chapter 17 text, including the module’s house outcomes, renders without leaking names',()=>{
  const leak=/Connor|Kara|KARA|Markus|Hank|Jericho|CyberLife|deviant|DEVIANT|Detroit|Warren|\bTodd\b|\bAlice\b|ALICE|\bRalph\b|Zlatko|ZLATKO|ZLAKTO|\bLuther\b|LUTHER|Canada|rA9|RA9|Webb|Ferndale|Camden/;
- const runs=[play17(),play17({...reset,prep:s=>{s.chase=true;s.shelter='squat';s.upstairs.book=true;s.downstairs.rewash=true},house:['tv','book','pipe','fireplace','carving','openCells','bathroom','spare','alice']}),play17({...reset,house:Array(10).fill('wait')}),play17({fails:['K13']}),play17({house:Array(10).fill('wait')})];
+ const runs=[play17(),play17({...reset,prep:s=>{s.chase=true;s.shelter='squat';s.ch10RalphCarving=true;s.upstairs.book=true;s.downstairs.rewash=true},house:['tv','book','pipe','fireplace','carving','openCells','bathroom','spare','alice']}),play17({...reset,house:Array(10).fill('wait')}),play17({fails:['K13']}),play17({house:Array(10).fill('wait')})];
  const texts=[...story.nodes.filter(n=>n.chapter===17).flatMap(n=>[n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.facts??[]),...Object.values(n.outcomes??{})]),
   ...runs.flatMap(r=>[...Object.values(r.raw),r.s.karaOutcome,...r.s.knowledge.Kara])];
  for(const t of texts){const neutral=render(t,'neutral');assert.ok(!/\{\{/.test(neutral));assert.ok(!leak.test(neutral),neutral)}});
