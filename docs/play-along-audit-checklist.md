@@ -3768,6 +3768,94 @@ _Note: The chart’s choice FOLLOW RUPERT / SAVE HANK: the template’s choice g
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
+## Chapter 16: Time to Decide
+
+### MTD1 · Inside Jericho (Markus, event)
+
+> November 6th, 2038, 5:13 pm. You are Markus. You have found Jericho: the dark hold of an old ship, where androids who ran from their owners hide. Some huddle by fires; many are damaged. You are wounded in the abdomen and losing blue blood. Three androids stand in front of you, and one of them has just said: “Welcome to Jericho.” You ask: “Who are you?” “Fugitives… just like you... My name is…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint INSIDE JERICHO (no choice), with the template’s opening lines of the section “In Jericho” (date and time NOV 6TH, 2038, PM 05:13; “Who are you?”; the three introductions). The template continues from the previous chapter’s last line, Simon’s “Welcome to Jericho.”, which is quoted here without naming the speaker. The abdominal wound is the one Lucy treats later (the wiki: “Markus’ injury on his abdomen”; PowerPyx: “She will heal Markus’s wounds”); how he got it belongs to the previous chapter and is not narrated. The two prompts that follow use the game’s Jericho script prefix (X0503M) but the template places them here, at the start of this chapter. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MTD2 · Who they are (Markus)
+
+> You are Markus, in the hold of Jericho with Josh, Simon and North, who have just told you their names. What do you say to them?
+
+- (0) TRAIL: say that they knew only an android could follow the trail.
+- (1) ANDROID: ask how many of them there are.
+- (2) JERICHO: ask whether this is Jericho.
+- (3) REFUGE: say you thought Jericho was a place where androids lived in freedom.
+- (4) FREE?: ask whether hiding just to stay alive is their idea of freedom.
+
+_Note: The template’s first prompt of the arrival (choice group X0503M.JERICHO.ENCOUNTER.PC.CHOICE01), not a chart node: the game’s five buttons in the game’s order (TRAIL, ANDROID, JERICHO, REFUGE, FREE?), each shown as its label then a short description, with the spoken line and the replies, all the template’s, in the outcome. One pick, as the template has a single choice group followed by one common line. No arrow on any option (the template shows none). Phileas’s wiki page says he “may appear in a flashback if Markus mentions the trail”; that flashback is not in the template and is not narrated (research note, open question 5)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MTD3 · More freedom than you ever had (Markus)
+
+> You are Markus, in the hold of Jericho. Josh: “I understand how you feel... but we have more freedom here than you ever did.” How do you answer?
+
+- (0) LOST: say you came looking for hope and will not find any here.
+- (1) SOMBER: say that maybe you were never really free, and now need to decide who you are.
+- (2) LUCID: say that fear has only become their new master.
+- (3) DIRECT: say that waiting in the dark is not how you see freedom.
+
+_Note: The template’s second prompt of the arrival (CHOICE02), not a chart node: the game’s four buttons in the game’s order (LOST, SOMBER, LUCID, DIRECT), label first, with the spoken line in the outcome. Josh’s line before it and the closing lines of Simon, Josh and North after it are the template’s, the same on every branch. No arrow on any option (the template shows none). North’s pointer to Lucy is added to what Markus knows._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MTD4 · The hold (Markus)
+
+> You are Markus, free to walk around the hold of Jericho. Your objectives: settle in, and explore Jericho. Damaged androids sit or stand in the gloom. Josh is by the wall, watching over a small boy android. North sits on a box, bouncing a ball against a wall. A damaged android sits on the floor. Crates are stacked by the wall. Simon stands in the middle of the room. You can do one thing at a time…
+
+- (0) Go over to the female android standing near the fire at the side of the hold.
+- (1) Go over to Josh and the boy he is watching over.  _joshTrust +1_
+- (2) Go over to North and talk to her.  _northTrust +1_
+- (3) Talk to the damaged android sitting on the floor.
+- (4) Light the four oil drums in the hold.
+- (5) Go and see Lucy, behind the white plastic sheet.
+- (6) Check the crates by the wall.
+- (7) Go to Simon in the middle of the room.  _needs ch16Hold.lucy and ch16Hold.crate_
+
+_Note: The chart’s [ EXPLORE JERICHO ] bracket and the line out of it, as a repeatable scene: each visit offers what has not been done yet. Chart nodes, in the chart’s order: TALK TO DYING ANDROID (the template’s “Talk with damaged android (near fire)”), TALK TO JOSH, TALK TO NORTH (her topics are the next scene), TALK TO DAMAGED ANDROID (“Talk with damaged android (sitting)”), LET THERE BE LIGHT (the wiki: “four oil drums”), then the two forks of the exit, TALK TO LUCY and CHECK EMPTY CRATE, and TALK TO SIMON, which needs both and ends the phase. The five bracket nodes are optional and independent (the chart links none of them); Lucy and the crate are required (PowerPyx: Lucy is “marked as a main objective”; the crate “completes the main objective “Explore Jericho””). Simplifications: Lucy and the crate can be done in either order, as the chart draws them in parallel, and the optional nodes stay open until Markus goes to Simon (the sources do not say whether they close earlier; research note, open question 4). The objectives line is the wiki infobox’s (“Settle in”, “Explore Jericho”). Every line is the template’s; Lucy’s two cut lines (“You’ve lost a lot of blood…”, “It’s left over from one of our own.”) are not used. The crate has no dialogue in the template; what Markus learns from it is the wiki’s “secures a route to a local Cyberlife warehouse” and the warehouse named in his own line to Simon (“The CyberLife warehouses in Detroit Harbor”); that it is a CyberLife shipping crate is inferred. Lucy’s humming is the wiki’s Note (“She doesn’t stop until Markus goes to see her”). Arrows, each small (1): TALK TO JOSH, Josh +1 (template “{REL Josh SmallUp}” at the start of the talk; wiki “Talking to him”); TALK TO NORTH, North +1 (template “{REL North SmallUp}”; wiki “Talking to her”). Nothing else here moves a stat; no risk (the chart has no failure branch)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MTD5 · North (Markus)
+
+> You are Markus, with North in the hold of Jericho. She sits on a box and keeps bouncing a ball against the wall. What do you ask her?
+
+_Only when ch16Hold.north._
+
+- (0) TIME HERE?: ask how long she has been here.
+- (1) WOUNDED: say that a lot of the androids here are in bad shape.
+- (2) JERICHO: ask who found this place.
+- (3) YOU: ask what her function was before she came here.  _northTrust -1_
+- (4) SPARE PARTS: ask why nobody has gone to get spare parts and blue blood.
+
+_Note: The template’s prompt in “Talk with North”, behind the chart’s TALK TO NORTH: the game’s five buttons in the game’s order (TIME HERE?, WOUNDED, JERICHO, YOU, SPARE PARTS), label first, with the spoken line and her reply in the outcome, then her closing line (the template’s, the same on every branch). One topic per talk, as the template has a single choice group followed by one closing line (research note, open question 3). Arrow: YOU, North −1 (small; template “{REL North SmallDown}”; wiki “Picking “you” while talking to her”; PowerPyx: “She doesn’t want to talk about her past and it will decrease reputation with her”). It comes after the +1 for starting the talk (previous scene), so the talk nets 0 with YOU. The wiki’s Relationship_Stat line “Rises to “Neutral” if asked North about “You”” implies North is below Neutral after YOU; that would need different step sizes, which the template does not show, so its icons are taken at face value (open question 2). Then the hold continues._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### MTD6 · Markus hatched a plan (Markus, event)
+
+> You are Markus, in the middle of the hold of Jericho. “Simon! I know where we can find spare parts... The CyberLife warehouses in Detroit Harbor, they have everything we need.” Simon: “The docks are guarded. We can’t just walk in there and take what we want... Humans will never let us…” “Which is why we won’t ask permission.” Josh: “We don’t have any weapons… and even if we did, none of us knows…
+
+- (0) Continue.
+
+_Note: The chart’s TALK TO SIMON cutscene (the template’s “Finished exploring - Talk with Simon”) and the chapter’s only ending, MARKUS HATCHED A PLAN (no icon; the wiki: “This chapter has only one outcome”), recorded in state. A fixed exchange with no prompt: every line is the template’s; Simon looking at Josh is the wiki’s Simon page. Arrows, each small (1), at the end of the scene as the template places them: North +1 (“{REL North SmallUp}”; wiki “Talking to Simon”) and Simon +1 (“{REL Simon SmallUp}”; wiki “Talking to him”). Not applied: the wiki’s Jericho +1 for “Talking to Simon”, because the template lists this scene’s arrows and Jericho is not among them (the template wins; research note §10, open question 1). No risk._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
 ## Chapter 17: Zlatko
 
 ### K10 · The memory wipe (Kara, execution-policy)

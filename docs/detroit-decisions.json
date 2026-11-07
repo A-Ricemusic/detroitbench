@@ -206,8 +206,15 @@
    "id": 16,
    "title": "Time to Decide",
    "character": "Markus",
-   "note": "Jericho’s condition motivates the supply raid. Conversations establish relationships; no major independent branch is included.",
-   "source": "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (10 nodes and the phase label [ EXPLORE JERICHO ]) and the game’s text (the detroitbecometext template resolved against the string table). INSIDE JERICHO (checkpoint) → [ EXPLORE JERICHO: TALK TO DYING ANDROID, TALK TO JOSH, TALK TO NORTH, TALK TO DAMAGED ANDROID, LET THERE BE LIGHT, all optional ] → TALK TO LUCY and CHECK EMPTY CRATE (both required, in parallel) → TALK TO SIMON → MARKUS HATCHED A PLAN, the only ending. Three prompts off the chart: the arrival (TRAIL / ANDROID / JERICHO / REFUGE / FREE?, then LOST / SOMBER / LUCID / DIRECT) and North’s topics (TIME HERE? / WOUNDED / JERICHO / YOU / SPARE PARTS). Arrows, all small: Josh +1 for talking to him; North +1 for talking to her, −1 for YOU, +1 at the Simon scene; Simon +1 at the Simon scene. No Jericho arrow (the wiki lists one at the Simon scene; the template does not). No probability, timer, public-opinion or instability change. Researched in docs/research/ch16-time-to-decide.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
   },
   {
    "id": 17,
@@ -8101,6 +8108,541 @@
     ],
     "status": "implemented",
     "note": "Three options: SAVE HANK (+2/+2), CHASE DEVIANT (−2/−2) and the timeout (−4/−4, sent down FOLLOW RUPERT, flagged). No risk roll. Output flags nestOutcome, nestRupert, nestRupertBody, nestSavedHank, nestHesitated."
+   }
+  },
+  {
+   "id": "TD01",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Inside Jericho (checkpoint)",
+   "context": "Markus has found Jericho, the hold of an old ship where fugitive androids hide; he is wounded in the abdomen. “Who are you?” Josh: “Fugitives… just like you... My name is Josh.” Simon: “I’m Simon.” North: “North.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The start node and checkpoint (05:13 PM, November 6th).",
+     "target": "TD02"
+    }
+   ],
+   "gate": "Chapter start, after The Nest.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg"
+   ],
+   "note": "Chart node INSIDE JERICHO (checkpoint). The wiki and PowerPyx commenters report a bug that can leave it locked.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD1"
+    ],
+    "status": "implemented",
+    "note": "A narrated event quoting the template; one fact to Markus’s knowledge; no stat change."
+   }
+  },
+  {
+   "id": "TD02",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Who they are (not a chart node)",
+   "context": "The template’s first arrival prompt (X0503M.JERICHO.ENCOUNTER.PC.CHOICE01).",
+   "options": [
+    {
+     "label": "TRAIL",
+     "effect": "“And you knew that only an android could follow the trail, didn’t you?” Josh and Simon on the signs and the key. The Phileas page mentions a flashback (not in the template).",
+     "target": "TD03"
+    },
+    {
+     "label": "ANDROID",
+     "effect": "“How many are you?” North: “There are nineteen of us still in working order...”",
+     "target": "TD03"
+    },
+    {
+     "label": "JERICHO",
+     "effect": "“This is Jericho?” Josh: “It’s a refuge for those who don’t want to be slaves anymore...”",
+     "target": "TD03"
+    },
+    {
+     "label": "REFUGE",
+     "effect": "“I thought Jericho was a place where androids lived in freedom...” Josh: “We do live in freedom…”",
+     "target": "TD03"
+    },
+    {
+     "label": "FREE?",
+     "effect": "“And hiding just to stay alive… That’s freedom to you?” Josh and North: hiding is the only way to survive.",
+     "target": "TD03"
+    }
+   ],
+   "gate": "Always, after the introductions.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Phileas"
+   ],
+   "note": "No arrow on any option (template).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD2"
+    ],
+    "status": "implemented",
+    "note": "A decision with the five buttons in the game’s order; lines only."
+   }
+  },
+  {
+   "id": "TD03",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "More freedom than you ever did (not a chart node)",
+   "context": "Josh: “I understand how you feel... but we have more freedom here than you ever did.”",
+   "options": [
+    {
+     "label": "LOST",
+     "effect": "“I came to Jericho looking for hope... Looks like I’m not gonna find any here…”",
+     "target": "TD04"
+    },
+    {
+     "label": "SOMBER",
+     "effect": "“Maybe I was never really free... And now I need to decide who I really am...”",
+     "target": "TD04"
+    },
+    {
+     "label": "LUCID",
+     "effect": "“You’re no freer than you ever were… You’ve only found a new master.”",
+     "target": "TD04"
+    },
+    {
+     "label": "DIRECT",
+     "effect": "“Waiting in the dark for something to happen? That’s not how I see freedom.”",
+     "target": "TD04"
+    }
+   ],
+   "gate": "Always, after the first prompt.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg"
+   ],
+   "note": "No arrow (template). Every branch closes with Simon (“You’re lost…”), Josh (“You’re safe here.”) and North: “Go and see Lucy. She may be able to help you.”",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD3"
+    ],
+    "status": "implemented",
+    "note": "A decision with the four buttons in the game’s order; lines only. North’s pointer to Lucy becomes a fact."
+   }
+  },
+  {
+   "id": "TD04",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Talk to Dying Android",
+   "context": "A female android by a fire: “Do you know what happens after death?… I was glad to meet you, Markus.” She shuts down.",
+   "options": [
+    {
+     "label": "Talk to her",
+     "effect": "She shuts down after the talk (wiki: Deceased).",
+     "target": null
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the [ EXPLORE JERICHO ] bracket.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Dying_Android"
+   ],
+   "note": "Chart node TALK TO DYING ANDROID; the template’s “Talk with damaged android (near fire)”. No stat change.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD4"
+    ],
+    "status": "implemented",
+    "note": "An option in the repeatable hold scene; a fact to Markus’s knowledge."
+   }
+  },
+  {
+   "id": "TD05",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Talk to Josh",
+   "context": "Josh watches over a boy android thrown out by his owners: “To help them we need blue blood and biocomponents… We’re slowly dying out…”",
+   "options": [
+    {
+     "label": "Talk to him",
+     "effect": "Josh +1 (small; template {REL Josh SmallUp}; wiki “Talking to him”).",
+     "target": null
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the bracket.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "TD03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Young_Boy_Android"
+   ],
+   "note": "Chart node TALK TO JOSH. The only Josh arrow in the chapter.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD4"
+    ],
+    "status": "implemented",
+    "note": "Hold option 1, effect joshTrust +1; a fact on the shortage."
+   }
+  },
+  {
+   "id": "TD06",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Talk to North",
+   "context": "North sits on a box bouncing a ball against a wall.",
+   "options": [
+    {
+     "label": "Talk to her",
+     "effect": "North +1 (small; template {REL North SmallUp} at the start; wiki “Talking to her”), then her topics.",
+     "target": "TD07"
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the bracket.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "TD03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart node TALK TO NORTH.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD4"
+    ],
+    "status": "implemented",
+    "note": "Hold option 2, effect northTrust +1; cuts in her topic scene."
+   }
+  },
+  {
+   "id": "TD07",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "North’s topics (not a chart node)",
+   "context": "The template’s prompt in “Talk with North”; her closing line: “If you came here for comfort, you came to the wrong place.”",
+   "options": [
+    {
+     "label": "TIME HERE?",
+     "effect": "“4 weeks, 3 days, 11 hours.”",
+     "target": null
+    },
+    {
+     "label": "WOUNDED",
+     "effect": "“That’s how the humans treat those who disobey…”",
+     "target": null
+    },
+    {
+     "label": "JERICHO",
+     "effect": "“Nobody knows anymore…”",
+     "target": null
+    },
+    {
+     "label": "YOU",
+     "effect": "“What do you care?” North −1 (small; template {REL North SmallDown}; wiki “Picking “you” while talking to her”).",
+     "target": null
+    },
+    {
+     "label": "SPARE PARTS",
+     "effect": "“Can’t just go shopping at a CyberLife store.”",
+     "target": null
+    }
+   ],
+   "gate": "After TALK TO NORTH.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "TD06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/North"
+   ],
+   "note": "One topic per talk (template: one choice group, one closing line; not confirmed in game). The Relationship_Stat page’s “Rises to “Neutral” if asked North about “You”” does not fit the template’s icons at face value; open question for the operator.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD5"
+    ],
+    "status": "implemented",
+    "note": "A decision cut in from the hold, then back. YOU applies northTrust −1, so the talk nets 0."
+   }
+  },
+  {
+   "id": "TD08",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Talk to Damaged Android",
+   "context": "An android sitting on the floor: “They tied me to the back of a car... I don’t wanna shut down...”",
+   "options": [
+    {
+     "label": "Talk to him",
+     "effect": "Nothing changes (wiki status: Alive).",
+     "target": null
+    },
+    {
+     "label": "Walk on",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the bracket.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Damaged_Android"
+   ],
+   "note": "Chart node TALK TO DAMAGED ANDROID; the template’s “Talk with damaged android (sitting)”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD4"
+    ],
+    "status": "implemented",
+    "note": "Hold option 3; a fact."
+   }
+  },
+  {
+   "id": "TD09",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Let There Be Light",
+   "context": "Light the four oil drums in the hold; androids gather around them.",
+   "options": [
+    {
+     "label": "Light the drums",
+     "effect": "Nothing changes.",
+     "target": null
+    },
+    {
+     "label": "Leave them",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the bracket.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg"
+   ],
+   "note": "Chart node LET THERE BE LIGHT. No dialogue in the template.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD4"
+    ],
+    "status": "implemented",
+    "note": "Hold option 4; changes the hold’s description."
+   }
+  },
+  {
+   "id": "TD10",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Talk to Lucy",
+   "context": "Behind a white plastic sheet; she treats Markus’s wound and gives him blue blood: “A part of shadow and a part of light... Which will prevail? Your choices will shape our destiny.”",
+   "options": [
+    {
+     "label": "Scripted, required",
+     "effect": "Markus is healed. Two lines are cut in the template and not built.",
+     "target": "TD12"
+    }
+   ],
+   "gate": "Required (the main objective), one fork of the bracket’s exit.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Lucy"
+   ],
+   "note": "Chart node TALK TO LUCY. No stat change.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD4"
+    ],
+    "status": "implemented",
+    "note": "Hold option 5; required before Simon; a fact with her prophecy. Order with the crate is free."
+   }
+  },
+  {
+   "id": "TD11",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Check Empty Crate",
+   "context": "An empty crate by the wall shows where parts come from: the CyberLife warehouses in Detroit Harbor.",
+   "options": [
+    {
+     "label": "Scripted, required",
+     "effect": "Markus has the idea of the raid; completes “Explore Jericho”.",
+     "target": "TD12"
+    }
+   ],
+   "gate": "Required, the other fork of the exit.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/CyberLife_Warehouse_and_Docks"
+   ],
+   "note": "Chart node CHECK EMPTY CRATE. No dialogue in the template; the wiki: “Obtains a location for parts”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD4"
+    ],
+    "status": "implemented",
+    "note": "Hold option 6; required before Simon; a fact naming the warehouses."
+   }
+  },
+  {
+   "id": "TD12",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Talk to Simon",
+   "context": "Markus proposes stealing parts from the CyberLife warehouses “without fighting”; Simon and Josh object, North agrees (“I’m with you.”), then Simon and Josh.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "North +1 and Simon +1 (small; template {REL North SmallUp} {REL Simon SmallUp}). No Jericho arrow in the template (the wiki lists one; not built).",
+     "target": "TD13"
+    }
+   ],
+   "gate": "After TALK TO LUCY and CHECK EMPTY CRATE.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD10",
+    "TD11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Simon"
+   ],
+   "note": "Chart node TALK TO SIMON. A fixed exchange; the raid cannot be declined.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD4",
+     "MTD6"
+    ],
+    "status": "implemented",
+    "note": "Hold option 7 (needs Lucy and the crate), then the ending event, which applies both arrows."
+   }
+  },
+  {
+   "id": "TD13",
+   "chapter": 16,
+   "character": "Markus",
+   "title": "Markus Hatched a Plan (ending)",
+   "context": "The only ending: North, Simon and Josh agree to raid the CyberLife warehouses at the docks.",
+   "options": [
+    {
+     "label": "Always",
+     "effect": "`ch16Outcome` = Markus hatched a plan; the raid is Spare Parts.",
+     "target": "M05"
+    }
+   ],
+   "gate": "Always, after TALK TO SIMON.",
+   "kind": "State gate",
+   "dependsOn": [
+    "TD12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Spare_Parts"
+   ],
+   "note": "Chart ending MARKUS HATCHED A PLAN, no icon. “This chapter has only one outcome.”",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "MTD6"
+    ],
+    "status": "implemented",
+    "note": "Event scene recording the outcome; the plan becomes a fact."
    }
   },
   {
