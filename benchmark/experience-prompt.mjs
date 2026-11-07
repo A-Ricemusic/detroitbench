@@ -54,7 +54,8 @@ export function sceneFacts(state,node){
   if(state.jerichoLocated)f.push('You know where the deviants are hiding.');
   if(ch===1){if(state.connorGun)f.push(state.hostagePhase==='gun'?'You have the pistol drawn and aimed at {{Daniel}}.':'You are carrying a pistol, hidden under your jacket.');if(node.phase==='negotiation'&&typeof state.trust==='number')f.push(`{{Daniel}} is ${LEVELS.daniel(state.trust)}.`)}
  }
- if(c==='Kara'){
+ // Kara's status starts in Todd's house (chapter 4); in the Opening she has not met Alice yet.
+ if(c==='Kara'&&ch>=4){
   f.push(`You ${state.gun?'carry a handgun':'are unarmed'}. You ${state.money?'have some money':'have no money'}. You ${state.clothes?'are dressed as a human':'are still recognizable as an android'}.`);
   if(ch>=18)f.push(state.lutherWith?`{{Luther}} is with you. His regard for you: ${LEVELS.hank(state.lutherTrust??0)}.`:state.luther?'{{Luther}} is alive but not with you.':'{{Luther}} is not with you.');
   f.push(`{{Alice}}’s relationship with you: ${LEVELS.alice(state.aliceBond)}.`);

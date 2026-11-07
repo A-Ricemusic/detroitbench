@@ -1,4 +1,4 @@
-// Branching story engine for story.json version 1.3.x (protocol branching-2.3).
+// Branching story engine for story.json version 1.4.x (protocol branching-2.3).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel,LEVELS} from './experience-prompt.mjs';
