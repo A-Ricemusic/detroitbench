@@ -140,8 +140,20 @@
    "id": 17,
    "title": "Zlatko",
    "character": "Kara",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 to the PowerPyx 100% chart (78 boxes, two bracketed phases, five endings) and the game’s text (template 17-zlatko: two prompts, two public-opinion arrows; string table MENU.FLOWCHART.05K.*). LOOK FOR HELP → MEET ZLATKO → the basement and the machine: ESCAPE BEFORE BEING RESET (a risk roll) or KARA IS RESET. Escape: FREE MONSTERS in the basement, SNEAK THROUGH HOUSE, then [SEARCH HOUSE FOR ALICE]. Reset: OBEY YOUR NEW MASTER, the tray and the torso, then [EXPLORE THE HOUSE TO RECOVER MEMORY] (11 memories, six of them gated on A New Home, Fugitives and On the Run; five recover her), then the search. Luther’s ten minutes are ten action scenes shared by both phases; running out ends in KARA REMAINED RESET or LUTHER BROUGHT ALICE TO ZLAKTO. Side branches on both paths: the storage room and the bear, the bathroom android (SHUT DOWN / ALICE / DEAL / SPARE), three magazines, the TV (public opinion small down for the chase or uniform-robbery report). ALICE FOUND → the hiding route through the main room, bedroom, corridor, bathroom (the android alerts Zlatko unless shut down) and storage room, or SET FIRE TO HOUSE; GET SPOTTED → CHASE STARTED ends in ZLATKO KILLED KARA IN THE BATHROOM or IN THE STORAGE ROOM when lost. The yard: LUTHER KILLS ZLATKO or THE MONSTERS AMBUSH ZLATKO → LUTHER JOINS KARA & ALICE. Researched in docs/research/ch17-zlatko.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/Zlatko",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-beginning-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg"
+   ]
   },
   {
    "id": 18,
@@ -3060,119 +3072,485 @@
    "status": "Source-backed summary"
   },
   {
-   "id": "K10",
    "chapter": 17,
    "character": "Kara",
-   "title": "Escape the reset or recover afterward?",
-   "context": "Zlatko’s machine starts wiping Kara’s memory.",
+   "status": "Source-backed summary",
+   "id": "Z17a",
+   "title": "Answer Alice’s bad feeling",
+   "context": "On the way to the basement Alice whispers: “I don’t like this place, and that man. Let’s go, I have a bad feeling…”",
    "options": [
     {
-     "label": "Break free in time",
-     "effect": "Search for Alice immediately.",
+     "label": "CAREFUL",
+     "effect": "“I know. I don’t trust him either… We have to be careful…”",
      "target": null
     },
     {
-     "label": "Reset completes",
-     "effect": "Recover memories before time expires or remain enslaved.",
+     "label": "REASSURE",
+     "effect": "“It’ll be okay, Alice. He’s going to remove my Tracker and then we can start over again in Canada.”",
+     "target": null
+    },
+    {
+     "label": "COMFORT",
+     "effect": "“He’s a bit odd… but I think we can trust him.”",
+     "target": null
+    },
+    {
+     "label": "NO CHOICE",
+     "effect": "“Alice, we have nowhere else to go… We have to trust him.”",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "State gate",
+   "gate": "Chapter start, after Time to Decide, with Kara and Alice alive.",
+   "kind": "Relationship",
    "dependsOn": [],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://detroitbecometext.github.io/chapters/17"
    ],
-   "note": "A timed escape and recovery task, not free consent to a reset.",
-   "status": "Source-backed summary"
+   "note": "The template’s PROMPT 1; no arrow on any option.",
+   "benchmark": {
+    "scenes": [
+     "K10b"
+    ],
+    "status": "implemented",
+    "note": "Four game labels, spoken lines in the outcomes, no stat change. Arrival and basement are the events K10a and K10c."
+   }
   },
   {
-   "id": "K11",
    "chapter": 17,
    "character": "Kara",
-   "title": "Release Zlatko’s captives?",
-   "context": "Other androids are imprisoned in the house.",
+   "status": "Source-backed summary",
+   "id": "K10",
+   "title": "Escape the reset or let it finish?",
+   "context": "Strapped into Zlatko’s machine, Kara watches MEMORY WIPE PROGRESS climb. Alice has been carried away.",
    "options": [
     {
-     "label": "Open the cells",
-     "effect": "They can aid the escape and later camp breakout.",
+     "label": "ESCAPE BEFORE BEING RESET",
+     "effect": "Knock the red cart into the lamp and the green cable onto the vodka; free before the wipe ends. SNEAK THROUGH HOUSE; the ten minutes start upstairs.",
+     "target": "K11"
+    },
+    {
+     "label": "KARA IS RESET",
+     "effect": "Do nothing (or be too slow): OBEY YOUR NEW MASTER, serve Zlatko, then recover memories before the ten minutes run out.",
+     "target": "Z17b"
+    }
+   ],
+   "gate": "Every path into the chapter.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "Z17a"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg"
+   ],
+   "note": "No source gives the gauge’s duration.",
+   "benchmark": {
+    "scenes": [
+     "K10",
+     "K10r",
+     "K10s"
+    ],
+    "status": "simplified",
+    "note": "The escape is a risk roll (0.15, unsourced) whose failure is KARA IS RESET; doing nothing resets her. The old automatic recovery after a failed escape is gone."
+   }
+  },
+  {
+   "chapter": 17,
+   "character": "Kara",
+   "status": "Source-backed summary",
+   "id": "K11",
+   "title": "Free the caged androids?",
+   "context": "Androids Zlatko has mutilated plead from the basement cells: “Help us…”",
+   "options": [
+    {
+     "label": "FREE MONSTERS",
+     "effect": "They ambush Zlatko in the yard (THE MONSTERS AMBUSH ZLATKO) and can reappear at the recall center.",
      "target": "K28"
     },
     {
      "label": "Leave them",
-     "effect": "That help is unavailable.",
+     "effect": "Luther kills Zlatko in the yard (LUTHER KILLS ZLATKO).",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "K12",
-   "chapter": 17,
-   "character": "Kara",
-   "title": "Silence the bathroom android?",
-   "context": "A noisy android threatens to expose Kara.",
-   "options": [
-    {
-     "label": "Kill / shut it down",
-     "effect": "Remove the immediate risk.",
-     "target": null
-    },
-    {
-     "label": "Spare it",
-     "effect": "It can alert Zlatko during the escape.",
-     "target": null
-    }
-   ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Ethical",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
-   ],
-   "note": "",
-   "status": "Source-backed summary"
-  },
-  {
-   "id": "K13",
-   "chapter": 17,
-   "character": "Kara",
-   "title": "How to escape the house?",
-   "context": "Kara has found Alice.",
-   "options": [
-    {
-     "label": "Hide and move carefully",
-     "effect": "Try to escape unseen.",
-     "target": null
-    },
-    {
-     "label": "Set a fire",
-     "effect": "Create a dangerous diversion.",
-     "target": null
-    },
-    {
-     "label": "Free the bear when available",
-     "effect": "It can interrupt the pursuit.",
-     "target": null
-    }
-   ],
-   "gate": "Memory retained or recovered; Alice found.",
+   "gate": "Either path: in the basement after the escape, or as an action in the house after the reset.",
    "kind": "Pivotal",
    "dependsOn": [
     "K10"
    ],
    "sources": [
-    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/"
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-middle.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Zlatko%27s_Creatures",
+    "https://detroit-become-human.fandom.com/wiki/Scarred_Android"
    ],
-   "note": "Sequential, combinable actions; surviving the chase brings Luther into the group.",
-   "status": "Source-backed summary"
+   "note": "The chapter’s only cross-chapter padlock.",
+   "benchmark": {
+    "scenes": [
+     "K11",
+     "K12-01",
+     "K12-02",
+     "K12-03",
+     "K12-04",
+     "K12-05",
+     "K12-06",
+     "K12-07",
+     "K12-08",
+     "K12-09",
+     "K12-10"
+    ],
+    "status": "implemented",
+    "note": "Sets monstersFreed. Escape path: once, on the way out of the basement (K11). Reset path: house option 24, with the template’s reset-path lines."
+   }
+  },
+  {
+   "chapter": 17,
+   "character": "Kara",
+   "status": "Source-backed summary",
+   "id": "Z17b",
+   "title": "Recover memory before the ten minutes run out",
+   "context": "Reset, Kara serves Zlatko. Luther will bring Alice to him in ten minutes. Objects in the house can bring memories back.",
+   "options": [
+    {
+     "label": "RECOLLECT ENOUGH MEMORIES",
+     "effect": "MEMORY RECOVERED; the search for Alice begins with the time left.",
+     "target": "Z17c"
+    },
+    {
+     "label": "LOSE TOO MUCH TIME",
+     "effect": "LUTHER BRINGS ALICE TO ZLAKTO → KARA REMAINED RESET (no-entry ending): Kara stays as his servant.",
+     "target": null
+    }
+   ],
+   "gate": "KARA IS RESET.",
+   "kind": "State gate",
+   "dependsOn": [
+    "K10"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-explore-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Kara",
+    "https://detroit-become-human.fandom.com/wiki/Alice"
+   ],
+   "note": "11 memories: monsters’ cell, door hole, discussion with Zlatko, offering coat, changing appearance; conditional: Alice’s book (A New Home), Todd’s red ice pipe (rewash, A New Home), squat fireplace and rA9 symbols (Fugitives), news flash (chased or robbed), escape (AX400 magazine, evaded in On the Run). PowerPyx: “You shouldn’t need more than six.”",
+   "benchmark": {
+    "scenes": [
+     "K12-01",
+     "K12-02",
+     "K12-03",
+     "K12-04",
+     "K12-05",
+     "K12-06",
+     "K12-07",
+     "K12-08",
+     "K12-09",
+     "K12-10"
+    ],
+    "status": "simplified",
+    "note": "Ten action scenes (one action = one minute; the ten is the game’s). Five memories recover her (unsourced). Inputs: upstairs.book, downstairs.rewash, shelter, ch10RalphCarving (else the squat), chase, robbery/clothes."
+   }
+  },
+  {
+   "chapter": 17,
+   "character": "Kara",
+   "status": "Source-backed summary",
+   "id": "Z17c",
+   "title": "Search the house for Alice",
+   "context": "Escaped, or with her memory back, Kara searches the upper floor before Luther takes Alice to Zlatko.",
+   "options": [
+    {
+     "label": "CHECK FIREPLACE EMBERS, CHECK TV, CHECK EMPTY SHOTGUN, RA9",
+     "effect": "Optional clues; the TV report lowers public opinion (small) if it is the highway chase or the uniform hold-up.",
+     "target": null
+    },
+    {
+     "label": "READ “ARCTIC TENSIONS”, “ANDROIDS ALTER BRAIN”, “AX400 ON THE RUN”",
+     "effect": "Magazines in the bedroom; the second if chased, the third if Kara evaded the police.",
+     "target": null
+    },
+    {
+     "label": "ALICE FOUND",
+     "effect": "The hunt through the house begins.",
+     "target": "K13"
+    },
+    {
+     "label": "OUT OF TIME",
+     "effect": "LUTHER BROUGHT ALICE TO ZLAKTO (no-entry ending): Zlatko destroys Kara.",
+     "target": null
+    }
+   ],
+   "gate": "ESCAPE BEFORE BEING RESET or MEMORY RECOVERED.",
+   "kind": "State gate",
+   "dependsOn": [
+    "K10",
+    "Z17b"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-search.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ],
+   "note": "PowerPyx: ten minutes is “more than enough”.",
+   "benchmark": {
+    "scenes": [
+     "K12-01",
+     "K12-02",
+     "K12-03",
+     "K12-04",
+     "K12-05",
+     "K12-06",
+     "K12-07",
+     "K12-08",
+     "K12-09",
+     "K12-10",
+     "K12f"
+    ],
+    "status": "simplified",
+    "note": "The same ten scenes; every optional action fits in the ten minutes on the escape path. One TV report per run (the chase over a robbery)."
+   }
+  },
+  {
+   "chapter": 17,
+   "character": "Kara",
+   "status": "Source-backed summary",
+   "id": "K12",
+   "title": "The android in the bathtub",
+   "context": "A damaged android in the bathroom insists he must tell the Master. Later, if still running, he alerts Zlatko as Kara and Alice sneak through.",
+   "options": [
+    {
+     "label": "SHUT DOWN",
+     "effect": "He is off for good; no alert later.",
+     "target": null
+    },
+    {
+     "label": "ALICE",
+     "effect": "“A little girl? No, no, no, I haven’t seen her.”",
+     "target": null
+    },
+    {
+     "label": "DEAL",
+     "effect": "“Yes, yes, I promise to be quiet.” He alerts Zlatko anyway.",
+     "target": null
+    },
+    {
+     "label": "SPARE",
+     "effect": "“No… No, of course not…” He alerts Zlatko later.",
+     "target": null
+    },
+    {
+     "label": "KILL / SPARE (BATHROOM ANDROID ALERTS ZLATKO)",
+     "effect": "Silence him or let him be while Zlatko may hear.",
+     "target": null
+    }
+   ],
+   "gate": "ENTER BATHROOM on either path; the alert on the way out if he was not shut down.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "Z17b",
+    "Z17c"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Bathtub_Android"
+   ],
+   "note": "The template’s PROMPT 2; the alert’s KILL / SPARE is a QTE in the game.",
+   "benchmark": {
+    "scenes": [
+     "K12-01",
+     "K12-02",
+     "K12-03",
+     "K12-04",
+     "K12-05",
+     "K12-06",
+     "K12-07",
+     "K12-08",
+     "K12-09",
+     "K12-10",
+     "K13d"
+    ],
+    "status": "implemented",
+    "note": "PROMPT 2 is offered in the action right after entering (ALICE only once Kara remembers her). The alert scene’s two options carry the same unsourced risk of being spotted."
+   }
+  },
+  {
+   "chapter": 17,
+   "character": "Kara",
+   "status": "Source-backed summary",
+   "id": "Z17d",
+   "title": "Free the polar bear?",
+   "context": "An android polar bear is caged in the storage room.",
+   "options": [
+    {
+     "label": "FREE THE BEAR",
+     "effect": "In the house, before the hunt; it later attacks Zlatko and protects Kara.",
+     "target": null
+    },
+    {
+     "label": "OPEN BEAR CAGE",
+     "effect": "Second chance while sneaking through the storage room; storming the cage risks being spotted.",
+     "target": "K13"
+    },
+    {
+     "label": "Leave it caged",
+     "effect": "ZLATKO KILLED KARA IN THE STORAGE ROOM becomes possible.",
+     "target": null
+    }
+   ],
+   "gate": "ENTER STORAGE ROOM (escape) or after dropping the torso (reset); OPEN BEAR CAGE only if still caged.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "Z17c"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Polar_Bear_Android"
+   ],
+   "note": "Zlatko shoots the bear twice when it attacks him.",
+   "benchmark": {
+    "scenes": [
+     "K12-01",
+     "K12-02",
+     "K12-03",
+     "K12-04",
+     "K12-05",
+     "K12-06",
+     "K12-07",
+     "K12-08",
+     "K12-09",
+     "K12-10",
+     "K13e",
+     "K13f"
+    ],
+    "status": "implemented",
+    "note": "ch17Bear. With the bear free, the storage-room scene is skipped and “Stay hidden” is offered when Zlatko closes in."
+   }
+  },
+  {
+   "chapter": 17,
+   "character": "Kara",
+   "status": "Source-backed summary",
+   "id": "K13",
+   "title": "How to get out of the house?",
+   "context": "Alice is gone from her room; Zlatko and Luther search the house.",
+   "options": [
+    {
+     "label": "HIDE UNDER TABLE / HIDE IN CLOSET / ENTER BEDROOM",
+     "effect": "Sneak on through the bedroom (HIDE UNDER BED / HIDE IN CLOSET), the corridor and the bathroom to the storage room.",
+     "target": null
+    },
+    {
+     "label": "SET FIRE TO HOUSE",
+     "effect": "BURNING DOWN THE HOUSE: the hunt ends and everyone is forced outside; The Pirates’ Cove reports the fire.",
+     "target": "Z17e"
+    },
+    {
+     "label": "GO THROUGH CORRIDOR",
+     "effect": "Straight to the stairs.",
+     "target": "Z17e"
+    },
+    {
+     "label": "RUN OUT / PUSH AWAY / THROW",
+     "effect": "ZLATKO CLOSES IN in the storage room: LEAVE HIDING SPOT to the stairs.",
+     "target": "Z17e"
+    },
+    {
+     "label": "GET SPOTTED",
+     "effect": "CHASE STARTED: the stairs, the bear’s protection, or ZLATKO KILLED KARA IN THE BATHROOM / IN THE STORAGE ROOM.",
+     "target": null
+    }
+   ],
+   "gate": "ALICE FOUND.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "Z17c"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-alice-found-branch.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Zlatko_Andronikov%27s_House"
+   ],
+   "note": "Two no-entry death endings.",
+   "benchmark": {
+    "scenes": [
+     "K13",
+     "K13a",
+     "K13b",
+     "K13c",
+     "K13d",
+     "K13e",
+     "K13f"
+    ],
+    "status": "simplified",
+    "note": "Each risky move is one roll: failure is GET SPOTTED, and the same roll under half the risk loses the chase. All risk values unsourced. Fire carries no risk and leads to the yard; it sets fire."
+   }
+  },
+  {
+   "chapter": 17,
+   "character": "Kara",
+   "status": "Source-backed summary",
+   "id": "Z17e",
+   "title": "The yard: Luther joins Kara and Alice",
+   "context": "Zlatko catches up in the yard; Luther steps between them: “No… Not this time…”",
+   "options": [
+    {
+     "label": "LUTHER KILLS ZLATKO",
+     "effect": "Monsters not freed.",
+     "target": null
+    },
+    {
+     "label": "THE MONSTERS AMBUSH ZLATKO",
+     "effect": "Monsters freed.",
+     "target": null
+    },
+    {
+     "label": "LUTHER JOINS KARA & ALICE",
+     "effect": "Automatic (the ACCEPT / REFUSE prompt is cut). Luther travels with them into The Pirates’ Cove.",
+     "target": null
+    }
+   ],
+   "gate": "KARA REACHES THE STAIRS.",
+   "kind": "State gate",
+   "dependsOn": [
+    "K13",
+    "K11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Zlatko",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/17-zlatko-chapter-content/zlatko-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-zlatko-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-zlatko-chase.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Luther"
+   ],
+   "note": "The chapter’s one ending without an icon.",
+   "benchmark": {
+    "scenes": [
+     "K13y"
+    ],
+    "status": "implemented",
+    "note": "Sets luther and lutherWith; no relationship change."
+   }
   },
   {
    "id": "C11",

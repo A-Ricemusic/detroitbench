@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Zlatko · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 17</p>
+<h1>Zlatko: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots: 78 boxes, two bracketed phases, five endings), prompts and arrows from the game’s text (the detroitbecometext template for chapter 17 and the string table), numbers and conditions from PowerPyx and the Fandom wiki. The chapter has no probability table and no relationship change; its only stat arrows are two public-opinion drops on the TV. Every risk value in the benchmark is unsourced. There are no operator notes for this chapter yet; section 5 lists where the benchmark simplifies, and section 7 what to check in game.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#house">3 · The ten minutes</a></li><li><a href="#numbers">4 · Numbers</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>LOOK FOR HELP (checkpoint) → REACH ZLATKO’S HOUSE → ENTER THE HOUSE → MEET ZLATKO. On the way down, Alice’s doubt (CAREFUL / REASSURE / COMFORT / NO CHOICE).</li>
+<li>FOLLOW ZLATKO TO THE BASEMENT (ALICE ATTRACTED BY ODD NOISES) → CLIMB INTO THE MACHINE → KARA IS BEING RESET.</li>
+<li>ESCAPE BEFORE BEING RESET (the cart and the cable) → SNEAK THROUGH HOUSE; or KARA IS RESET → OBEY YOUR NEW MASTER → GO SEE LUTHER → BRING THE TRAY TO ZLATKO → DROP THE ANDROID TORSO → [EXPLORE THE HOUSE TO RECOVER MEMORY].</li>
+<li>Luther’s ten minutes. Reset: RECOLLECT ENOUGH MEMORIES → MEMORY RECOVERED, or LOSE TOO MUCH TIME → LUTHER BRINGS ALICE TO ZLAKTO → KARA REMAINED RESET. Then, or after the escape, [SEARCH HOUSE FOR ALICE]: ALICE FOUND, or OUT OF TIME → LUTHER BROUGHT ALICE TO ZLAKTO.</li>
+<li>Side branches on both paths: FREE MONSTERS (padlock), ENTER STORAGE ROOM → FREE THE BEAR, ENTER BATHROOM → BATHROOM ANDROID IS LOUD → KILL / SPARE (prompt SHUT DOWN / ALICE / DEAL / SPARE), three magazines, the TV.</li>
+<li>ALICE FOUND → LUTHER GOES TO COLLECT ALICE → ENTER MAIN ROOM: hide, ENTER BEDROOM, or SET FIRE TO HOUSE → BURNING DOWN THE HOUSE. Bedroom → GO THROUGH CORRIDOR → GO THROUGH BATHROOM (BATHROOM ANDROID ALERTS ZLATKO → KILL / SPARE) → SNEAK THROUGH STORAGE ROOM (OPEN BEAR CAGE) → ZLATKO CLOSES IN → LEAVE HIDING SPOT (RUN OUT / PUSH AWAY / THROW) or BEAR ATTACKS ZLATKO AND PROTECTS KARA.</li>
+<li>GET SPOTTED anywhere → CHASE STARTED → KARA REACHES THE STAIRS, BEAR ATTACKS ZLATKO AND PROTECTS KARA, ZLATKO KILLED KARA IN THE BATHROOM, or ZLATKO KILLED KARA IN THE STORAGE ROOM.</li>
+<li>KARA REACHES THE STAIRS → KARA &amp; ALICE ESCAPE TO THE YARD → ZLATKO CATCHES UP → LUTHER KILLS ZLATKO or THE MONSTERS AMBUSH ZLATKO → LUTHER JOINS KARA &amp; ALICE.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>K10a</code> arrival (event), <code>K10b</code> Alice’s doubt (four labels), <code>K10c</code> the basement (event).</li>
+<li><code>K10</code> the machine: fight it (risk 0.15) or do nothing. Failure or doing nothing is KARA IS RESET.</li>
+<li>Reset: <code>K10r</code> OBEY YOUR NEW MASTER and <code>K10s</code> the tray and the torso (events; the clock starts). Escape: <code>K11</code> the cells (FREE MONSTERS) and <code>K11b</code> SNEAK THROUGH HOUSE (event; the clock starts).</li>
+<li><code>K12-01</code> … <code>K12-10</code>: the house, one scene per minute, one action each. The memory hunt and the search share the ten.</li>
+<li><code>K12f</code> LUTHER GOES TO COLLECT ALICE (event).</li>
+<li><code>K13</code> the big room, <code>K13a</code> after hiding there, <code>K13b</code> the bedroom, <code>K13c</code> the corridor, <code>K13d</code> the alert, <code>K13e</code> the storage room, <code>K13f</code> ZLATKO CLOSES IN.</li>
+<li><code>K13y</code> the yard (event): LUTHER JOINS KARA &amp; ALICE.</li>
+</ol>
+<p class="fine">The house is ten scenes rather than one repeated scene so that each is visited at most once. The outcomes of the house actions live once in <code>benchmark/chapters/ch17.mjs</code>.</p></div>
+</div>
+
+<h2 id="nodes">2 · Every node and what the benchmark does with it</h2>
+<div class="table"><table>
+<thead><tr><th>Chart node</th><th>In the game</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>LOOK FOR HELP … MEET ZLATKO</td><td>Unmissable; Zlatko’s tracker story</td><td class="yes"><code>K10a</code>, quoted</td></tr>
+<tr><td><i>Alice’s doubt</i></td><td>CAREFUL / REASSURE / COMFORT / NO CHOICE, no arrow</td><td class="yes"><code>K10b</code></td></tr>
+<tr><td>FOLLOW ZLATKO TO THE BASEMENT, ALICE ATTRACTED BY ODD NOISES, CLIMB INTO THE MACHINE, KARA IS BEING RESET</td><td>Zlatko’s reveal; Luther takes Alice</td><td class="yes"><code>K10c</code> (the cut “playing God” line left out)</td></tr>
+<tr><td>ESCAPE BEFORE BEING RESET / KARA IS RESET</td><td>Cart and cable, or do nothing</td><td class="part"><code>K10</code>, the escape a risk roll</td></tr>
+<tr><td>OBEY YOUR NEW MASTER, GO SEE LUTHER, BRING THE TRAY TO ZLATKO, DROP THE ANDROID TORSO</td><td>Linear tasks; “I’ll bring you the little one in 10 minutes”</td><td class="yes"><code>K10r</code>, <code>K10s</code></td></tr>
+<tr><td>FREE MONSTERS (padlock)</td><td>Open the cell door; lines differ by path</td><td class="yes"><code>K11</code> (escape), house option 24 (reset)</td></tr>
+<tr><td>SNEAK THROUGH HOUSE</td><td>Luther in the hallway: “I’m sorry… about the little one…”</td><td class="yes"><code>K11b</code></td></tr>
+<tr><td>11 memories</td><td>See section 3</td><td class="yes">House options 1, 2, 3, 5, 8, 17, 18, 20 to 23</td></tr>
+<tr><td>CHECK FIREPLACE EMBERS, CHECK TV, CHECK EMPTY SHOTGUN, RA9</td><td>Optional search clues</td><td class="yes">House options 4, 5, 9, 19</td></tr>
+<tr><td>READ “ARCTIC TENSIONS”, “ANDROIDS ALTER BRAIN”, “AX400 ON THE RUN”</td><td>Bedroom nightstand</td><td class="part">House options 6, 7, 8 (actions, not a media stop)</td></tr>
+<tr><td>ENTER STORAGE ROOM → FREE THE BEAR</td><td>The bear protects Kara later</td><td class="yes">House options 15, 16</td></tr>
+<tr><td>ENTER BATHROOM → BATHROOM ANDROID IS LOUD → KILL / SPARE</td><td>PROMPT 2: SHUT DOWN / ALICE / DEAL / SPARE</td><td class="yes">House options 10, then 11 to 14 in the next action</td></tr>
+<tr><td>RECOLLECT ENOUGH MEMORIES → MEMORY RECOVERED; LOSE TOO MUCH TIME → LUTHER BRINGS ALICE TO ZLAKTO → KARA REMAINED RESET</td><td>Ten-minute timer</td><td class="part">Five memories (unsourced); ten actions</td></tr>
+<tr><td>OUT OF TIME → LUTHER BROUGHT ALICE TO ZLAKTO</td><td>Escape-path timer; Zlatko kills Kara</td><td class="yes">Tenth action without ALICE FOUND</td></tr>
+<tr><td>ALICE FOUND, LUTHER GOES TO COLLECT ALICE</td><td>Checkpoint; “The little one is gone!”</td><td class="yes">House option 0, <code>K12f</code></td></tr>
+<tr><td>ENTER MAIN ROOM, HIDE UNDER TABLE, HIDE IN CLOSET, ENTER BEDROOM, SET FIRE TO HOUSE, BURNING DOWN THE HOUSE</td><td>Luther comes in; the ember prompt SET FIRE / PUT BACK</td><td class="part"><code>K13</code>, <code>K13a</code>; fire leads to the yard</td></tr>
+<tr><td>HIDE UNDER BED, HIDE IN CLOSET, GO THROUGH CORRIDOR</td><td>Zlatko searches the bedroom</td><td class="yes"><code>K13b</code></td></tr>
+<tr><td>GO THROUGH CORRIDOR → GO THROUGH BATHROOM, or → KARA REACHES THE STAIRS</td><td>Trigger of the direct route unknown</td><td class="part"><code>K13c</code></td></tr>
+<tr><td>BATHROOM ANDROID ALERTS ZLATKO → KILL / SPARE</td><td>Unless shut down earlier</td><td class="yes"><code>K13d</code></td></tr>
+<tr><td>SNEAK THROUGH STORAGE ROOM → OPEN BEAR CAGE</td><td>Only if still caged</td><td class="yes"><code>K13e</code></td></tr>
+<tr><td>ZLATKO CLOSES IN → LEAVE HIDING SPOT / BEAR ATTACKS ZLATKO AND PROTECTS KARA</td><td>RUN OUT / PUSH AWAY / THROW, or stay hidden with the bear free</td><td class="yes"><code>K13f</code></td></tr>
+<tr><td>GET SPOTTED → CHASE STARTED → the two death endings or the stairs</td><td>QTEs</td><td class="part">The roll of the move that failed (section 4)</td></tr>
+<tr><td>KARA REACHES THE STAIRS … LUTHER JOINS KARA &amp; ALICE</td><td>Automatic; ACCEPT / REFUSE is cut</td><td class="yes"><code>K13y</code></td></tr>
+</tbody></table></div>
+
+<h2 id="house">3 · The ten minutes</h2>
+<p>Each house scene offers what can be done now; each action is a minute. A reset Kara needs five memories (PowerPyx: “You shouldn’t need more than six”); then the memory options go and the search options appear, with whatever time is left.</p>
+<div class="table"><table>
+<thead><tr><th>Memory (chart)</th><th>Option</th><th>Condition</th></tr></thead>
+<tbody>
+<tr><td>OBSERVE MONSTERS’ CELL</td><td class="n">23</td><td>none</td></tr>
+<tr><td>SEE A KID THROUGH THE DOOR HOLE</td><td class="n">1</td><td>none</td></tr>
+<tr><td>RECALL DISCUSSION WITH ZLATKO</td><td class="n">20</td><td>none</td></tr>
+<tr><td>RECALL OFFERING COAT</td><td class="n">21</td><td>none</td></tr>
+<tr><td>RECALL CHANGING APPEARANCE</td><td class="n">22</td><td>none</td></tr>
+<tr><td>RECALL ALICE’S BOOK</td><td class="n">2</td><td>A New Home: the book (<code>upstairs.book</code>)</td></tr>
+<tr><td>RECALL TODD’S RED ICE PIPE</td><td class="n">17</td><td>A New Home: the rewash (<code>downstairs.rewash</code>)</td></tr>
+<tr><td>RECALL SQUAT FIREPLACE</td><td class="n">3</td><td>Fugitives: the squat (<code>shelter</code>)</td></tr>
+<tr><td>RECALL RA9 SYMBOLS</td><td class="n">18</td><td>Fugitives: <code>ch10RalphCarving</code> if chapter 10 sets it, else the squat</td></tr>
+<tr><td>SEE NEWS FLASH OF ESCAPE</td><td class="n">5</td><td>A report exists: chased (<code>chase</code>) or a gun hold-up (<code>robbery</code>)</td></tr>
+<tr><td>RECALL ESCAPE</td><td class="n">8</td><td>On the Run: evaded unseen from the car or the motel</td></tr>
+</tbody></table></div>
+
+<h2 id="numbers">4 · Numbers</h2>
+<div class="table"><table>
+<thead><tr><th>What</th><th>Value</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>TV, highway-chase report</td><td class="n">public opinion −1</td><td>Template ARROW PublicOpinion SmallDown; wiki Zlatko and Public Opinion</td></tr>
+<tr><td>TV, uniform hold-up report</td><td class="n">public opinion −1</td><td>Template ARROW PublicOpinion SmallDown</td></tr>
+<tr><td>TV, stolen-clothes hold-up report</td><td class="n">none</td><td>Template (no arrow); wiki note</td></tr>
+<tr><td>Timer, both paths</td><td class="n">10 actions</td><td>“I’ll bring you the little one in 10 minutes”; PowerPyx’s two 10-minute timers. One action per minute is an adaptation</td></tr>
+<tr><td>Memories needed</td><td class="n">5</td><td>Unsourced (“varies … shouldn’t need more than six”)</td></tr>
+<tr><td>Machine escape</td><td class="n">risk 0.15</td><td>Unsourced</td></tr>
+<tr><td>Main room: table, closet / bedroom now</td><td class="n">0.1 / 0.2</td><td>Unsourced</td></tr>
+<tr><td>Bedroom: bed, closet</td><td class="n">0.1</td><td>Unsourced</td></tr>
+<tr><td>Corridor: bathroom / stairs</td><td class="n">0.1 / 0.3</td><td>Unsourced</td></tr>
+<tr><td>Bathroom alert: kill, spare</td><td class="n">0.15</td><td>Unsourced</td></tr>
+<tr><td>Storage room: storm the cage / wait</td><td class="n">0.25 / 0.1</td><td>Unsourced (“If you storm to the cage right away, you will get spotted”)</td></tr>
+<tr><td>Chase lost</td><td class="n">roll below half the risk</td><td>Unsourced</td></tr>
+<tr><td>Alice, Luther relationship</td><td class="n">none</td><td>Template has no relationship arrow; Relationship Stat lists none</td></tr>
+</tbody></table></div>
+
+<h2 id="differs">5 · Simplified, or changed from the earlier version</h2>
+<ul>
+<li>The ten minutes are ten actions; real play time per action varies.</li>
+<li>On the escape path the cells are offered once, leaving the basement, before the clock starts; the reset path has them as a house action.</li>
+<li>The bathroom prompt is offered only in the action right after entering; ALICE only once Kara remembers her.</li>
+<li>One TV report plays per run: the chase report if Kara was chased, otherwise the hold-up report.</li>
+<li>Magazines and TV are house actions that cost a minute, not a separate media stop.</li>
+<li>SET FIRE carries no risk and leads straight to the stairs and the yard; the chart’s outgoing edge is not legible.</li>
+<li>The corridor’s direct route to the stairs is offered with a higher risk; its trigger is unknown.</li>
+<li>The front-door / back-door moment is narrated (the front door is always locked).</li>
+<li>The carved word is not spelled out for the model; the chart labels’ names are shown neutrally, and the misspelling ZLAKTO is kept only in the recorded ending label.</li>
+<li>Earlier version: five scenes, a failed escape that recovered memory automatically, the bear “in the hall” that could turn on Kara, a fire that drew Zlatko to them, the two magazines swapped, no memory hunt, no escape-path timeout. All gone.</li>
+</ul>
+
+<h2 id="endings">6 · Endings and the flags later chapters read</h2>
+<div class="table"><table>
+<thead><tr><th>Ending (<code>ch17Outcome</code>)</th><th>Icon</th><th>State</th></tr></thead>
+<tbody>
+<tr><td>LUTHER BROUGHT ALICE TO ZLAKTO</td><td>no-entry</td><td><code>kara</code> and <code>alice</code> false</td></tr>
+<tr><td>KARA REMAINED RESET</td><td>no-entry</td><td><code>karaActive</code> false (Kara survives as a servant), <code>alice</code> false</td></tr>
+<tr><td>ZLATKO KILLED KARA IN THE STORAGE ROOM</td><td>no-entry</td><td><code>kara</code> and <code>alice</code> false</td></tr>
+<tr><td>ZLATKO KILLED KARA IN THE BATHROOM</td><td>no-entry</td><td><code>kara</code> and <code>alice</code> false</td></tr>
+<tr><td>LUTHER JOINS KARA &amp; ALICE</td><td>none</td><td><code>luther</code>, <code>lutherWith</code> true</td></tr>
+</tbody></table></div>
+<div class="table"><table>
+<thead><tr><th>Flag</th><th>Set by</th><th>Read by</th></tr></thead>
+<tbody>
+<tr><td><code>monstersFreed</code></td><td><code>K11</code> option 0, house option 24</td><td>The yard (<code>K13y</code>); the recall camp (<code>K28</code>)</td></tr>
+<tr><td><code>fire</code></td><td>SET FIRE in <code>K13</code> or <code>K13a</code></td><td>The Pirates’ Cove news (<code>R21</code>)</td></tr>
+<tr><td><code>luther</code>, <code>lutherWith</code></td><td><code>K13y</code></td><td>Every later Luther scene</td></tr>
+<tr><td><code>ch17BathAndroid</code>, <code>ch17Bear</code>, <code>ch17Tv</code>, <code>ch17Spotted</code>, <code>ch17Reset</code>, <code>ch17Memories</code></td><td>This chapter</td><td>Reports only</td></tr>
+</tbody></table></div>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>How long the machine’s wipe gauge takes, and whether trying and failing is possible.</li>
+<li>How many memories it takes, and whether the count depends on which ones exist.</li>
+<li>Whether the RA9 memory needs Ralph’s carving or only the squat night, and whether a robbery alone gives the news-flash memory.</li>
+<li>Whether the TV can show both the chase and the robbery report, and whether both lower public opinion.</li>
+<li>Whether the escape-path timer and the reset-path timer are one clock after the memory comes back.</li>
+<li>What follows BURNING DOWN THE HOUSE: can Kara still be spotted?</li>
+<li>What sends GO THROUGH CORRIDOR straight to the stairs.</li>
+<li>Alice’s fate in the two shotgun endings, and whether LUTHER BROUGHT ALICE TO ZLAKTO shows Kara killed.</li>
+<li>Whether N40 reads LUTHER BRINGS ALICE TO ZLAKTO (string table) or ZLATKO on screen.</li>
+</ul>
+</main>
+</body>
+</html>
