@@ -1,0 +1,108 @@
+{
+ "chapter": {
+  "id": 24,
+  "title": "Public Enemy",
+  "character": "Connor",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "C14",
+   "chapter": 24,
+   "character": "Connor",
+   "title": "Investigate Simon or the kitchen androids?",
+   "context": "The tower contains different evidence routes.",
+   "options": [
+    {
+     "label": "Find hidden Simon",
+     "effect": "Exposure ends in Simon’s death.",
+     "target": null
+    },
+    {
+     "label": "Investigate the kitchen",
+     "effect": "Hidden Simon can survive; pursue another suspect.",
+     "target": "C15"
+    },
+    {
+     "label": "Leave without resolving the lead",
+     "effect": "Lose evidence opportunities.",
+     "target": null
+    }
+   ],
+   "gate": "Living Simon on the roof requires Markus to have left him there.",
+   "kind": "State gate",
+   "dependsOn": [
+    "M14"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C15",
+   "chapter": 24,
+   "character": "Connor",
+   "title": "How to expose the kitchen deviant?",
+   "context": "Three androids face questioning.",
+   "options": [
+    {
+     "label": "Bluff",
+     "effect": "Attempt to expose the suspect without physical coercion.",
+     "target": null
+    },
+    {
+     "label": "Torture / violence / memory probe",
+     "effect": "Use coercion; the identified deviant attacks.",
+     "target": "C16"
+    }
+   ],
+   "gate": "Kitchen investigation pursued.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "C14"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C16",
+   "chapter": 24,
+   "character": "Connor",
+   "title": "Protect Hank or stop the shooter?",
+   "context": "After recovering his component, Connor faces an armed deviant.",
+   "options": [
+    {
+     "label": "Shield Hank",
+     "effect": "Connor sacrifices himself.",
+     "target": null
+    },
+    {
+     "label": "Take a gun and shoot",
+     "effect": "Stop the deviant before the massacre.",
+     "target": null
+    },
+    {
+     "label": "Rush the deviant",
+     "effect": "Other officers can die.",
+     "target": null
+    }
+   ],
+   "gate": "Recover the component and reach the corridor in time.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C15"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-public-enemy-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  }
+ ]
+}

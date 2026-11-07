@@ -1,0 +1,134 @@
+{
+ "chapter": {
+  "id": 10,
+  "title": "Fugitives",
+  "character": "Kara",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "K05",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Steal clothing?",
+   "context": "A sleeping customer’s clothes could disguise Kara and Alice.",
+   "options": [
+    {
+     "label": "Take the clothes",
+     "effect": "Enables a motel disguise if money is also obtained.",
+     "target": "K07"
+    },
+    {
+     "label": "Respect Alice’s objection",
+     "effect": "Seek shelter without this disguise.",
+     "target": "K07"
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Ethical",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K06",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "How to obtain money and supplies?",
+   "context": "The shopkeeper refuses assistance.",
+   "options": [
+    {
+     "label": "Use Alice as a distraction",
+     "effect": "Steal money for shelter.",
+     "target": null
+    },
+    {
+     "label": "Use the gun",
+     "effect": "Threaten the clerk; can abandon the robbery or press on.",
+     "target": null
+    },
+    {
+     "label": "Avoid theft or robbery",
+     "effect": "Use shelter that does not require motel payment.",
+     "target": null
+    }
+   ],
+   "gate": "Armed hold-up requires the gun from Stormy Night.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K04"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+   ],
+   "note": "Shoplifting food, a toy or cutters is another optional theft decision.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K07",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Where to spend the night?",
+   "context": "Kara needs shelter for Alice.",
+   "options": [
+    {
+     "label": "Motel",
+     "effect": "Requires money and disguise.",
+     "target": null
+    },
+    {
+     "label": "Squat",
+     "effect": "Encounter Ralph; he can matter in the camp.",
+     "target": "K28"
+    },
+    {
+     "label": "Abandoned car",
+     "effect": "Shelter without the motel prerequisites.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K05",
+    "K06"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "K08",
+   "chapter": 10,
+   "character": "Kara",
+   "title": "Promise Alice a permanent bond?",
+   "context": "Alice asks for reassurance.",
+   "options": [
+    {
+     "label": "Promise to stay together",
+     "effect": "Strengthen their relationship.",
+     "target": null
+    },
+    {
+     "label": "Avoid the promise",
+     "effect": "Keep emotional distance.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Ethical",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  }
+ ]
+}

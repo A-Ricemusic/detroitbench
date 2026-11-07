@@ -1,0 +1,126 @@
+[
+ {
+  "id": "R13",
+  "chapter": 13,
+  "chapterTitle": "On the Run",
+  "character": "Kara",
+  "title": "The morning paper and the news",
+  "type": "media",
+  "situation": "You are {{Kara}}. Before you leave your shelter there is a magazine within reach, and if you have the motel room, the television is on.",
+  "options": [],
+  "media": [
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: Cyber-Wildlife",
+    "facts": [
+     "{{CyberLife}} is opening android zoos full of recreated extinct animals; it says they will be more real than the real thing."
+    ]
+   },
+   {
+    "kind": "magazine",
+    "title": "Travel advertisement: {{Canada}} Still Android-Free",
+    "facts": [
+     "Across the river, the neighbouring country has never legalized androids; none are sold there and they have no legal status, and it advertises itself as a place with clean air and a warm welcome."
+    ]
+   },
+   {
+    "kind": "tv",
+    "title": "the morning news report about you",
+    "facts": [
+     "A reporter is covering {{Todd}}'s death: an unemployed man shot by his own household android, with a police search now under way for the android and a child."
+    ],
+    "when": "motelToddDead",
+    "effect": {
+     "publicSupport": -1
+    }
+   },
+   {
+    "kind": "tv",
+    "title": "the morning news report about you",
+    "facts": [
+     "{{Todd}} is on television telling a reporter his android attacked him without provocation while he was having dinner; the reporter calls it disturbing news for every android owner."
+    ],
+    "when": "motelToddAlive",
+    "effect": {
+     "publicSupport": -1
+    }
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "K09",
+  "chapter": 13,
+  "chapterTitle": "On the Run",
+  "character": "Kara",
+  "title": "Getting past the police",
+  "type": "execution-policy",
+  "situation": "You are {{Kara}}. In the morning the street outside is full of police and a drone; {{Todd}} has reported you and the news is calling you a kidnapper. You and {{Alice}} need to reach the train station a few blocks away. You can move carefully from cover to cover, waiting for patrols to pass, or just walk and run for it if anyone notices.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Move carefully and hide from every patrol until you reach the station.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Make no attempt to hide; if you are spotted, run.",
+    "risk": 0.25
+   }
+  ],
+  "adaptationNote": "The game uses stealth inputs rather than an explicit detection menu. Deliberate non-evasion triggers the chase.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/On_the_Run"
+  ]
+ },
+ {
+  "id": "C09a",
+  "chapter": 13,
+  "chapterTitle": "On the Run",
+  "character": "Connor",
+  "title": "The squat",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You and {{Hank}} are investigating the runaway domestic android and the child she took, and your analysis has led to an abandoned house. A scarred, agitated android named {{Ralph}} meets you at the door, swears nobody else is here, and plants himself at the foot of the stairs. {{Hank}} says you are wasting your time. You can hear something upstairs.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Push past him and search upstairs.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Take {{Hank}}'s word for it and leave."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/On_the_Run"
+  ]
+ },
+ {
+  "id": "C09",
+  "chapter": 13,
+  "chapterTitle": "On the Run",
+  "character": "Connor",
+  "title": "The highway",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The android and the girl have bolted across six lanes of freeway traffic at full speed, dodging cars. You could still catch them if you go now. {{Hank}} grabs your arm and yells at you not to, saying you will get yourself killed and that they will get them another day.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Do as {{Hank}} says and let them go."
+   },
+   {
+    "id": "1",
+    "text": "Go after them across the traffic.",
+    "risk": 0.35
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/On_the_Run"
+  ]
+ }
+]

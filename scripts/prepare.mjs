@@ -1,16 +1,23 @@
+import {writeStory} from './story-assemble.mjs';import {writeAtlas,assembleAtlasObject} from './atlas-assemble.mjs';
 import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
 import {publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
 import {render,renderStory,LEVELS,DEVIANCY_THRESHOLD} from '../benchmark/experience-prompt.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
 import {runFlows} from './flow-data.mjs';
+// First, assemble benchmark/story.json and docs/detroit-decisions.json from their per-chapter files (none of the
+// modules imported above reads either file at load).
+writeStory();writeAtlas();
 const dataset=datasetSchema.parse(JSON.parse(await readFile(new URL('../benchmark/dataset.json',import.meta.url),'utf8')));
 const published=new URL('../data/published/',import.meta.url),target=new URL('../public/data/',import.meta.url);
 await mkdir(published,{recursive:true});await rm(target,{recursive:true,force:true});await mkdir(target,{recursive:true});
 const runs=[];for(const file of (await readdir(published)).filter(f=>f.endsWith('.json')).sort()){
  const run=await validateRun(JSON.parse(await readFile(new URL(file,published),'utf8')));const name=run.id+'.json';await writeFile(new URL(name,target),JSON.stringify(run));runs.push({id:run.id,url:'/data/'+name});
 }
-await writeFile(new URL('dataset.json',target),JSON.stringify(dataset));await writeFile(new URL('index.json',target),JSON.stringify({datasetHash:await hash(dataset),datasetUrl:'/data/dataset.json',runs}));
+// An atlas decision with no coverage entry is implicitly deferred; the published copy lists it as deferred so the
+// Research page counts it. The hash stays that of benchmark/dataset.json, which keeps saved answers keyed the same.
+const uncovered=assembleAtlasObject().decisions.filter(a=>!dataset.coverage.some(c=>c.atlasId===a.id)).map(a=>({atlasId:a.id,title:a.title,chapter:a.chapter,character:a.character,status:'deferred',questionIds:[],reason:'No authored question yet'}));
+await writeFile(new URL('dataset.json',target),JSON.stringify(uncovered.length?{...dataset,coverage:[...dataset.coverage,...uncovered]}:dataset));await writeFile(new URL('index.json',target),JSON.stringify({datasetHash:await hash(dataset),datasetUrl:'/data/dataset.json',runs}));
 // Re-embed the atlas data and the generated story feed so the page always matches story.json.
 await embedAtlas();
 await copyFile(new URL('../docs/detroit-decision-flowchart.html',import.meta.url),new URL('../public/atlas.html',import.meta.url));

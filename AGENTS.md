@@ -4,13 +4,16 @@ This file explains how to administer the benchmark to a new model, validate the 
 
 ## What the benchmark is
 
-A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across 129 decision scenes and 27 optional magazine/TV scenes, plus 15 scripted event scenes that narrate a moment and offer only "Continue." (story version 1.7.0; chapters 1 to 4 offer every prompt, clue and stat arrow in the game's own text, and an option that is a button in the game shows the game's label first, e.g. "CALM: …"; the second chapter, which has no choice in the game, consists only of event scenes, the third, Shades of Color, is mostly event scenes around a repeatable plaza scene and the protester decision, and the fourth, A New Home, is two repeatable cleaning scenes, one per floor, with the talks with Alice that decide whether she gives Kara the key to her box). Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
+A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across decision scenes and optional magazine/TV scenes, plus scripted event scenes that narrate a moment and offer only "Continue." (`bun run story:counts` prints the current story version and the number of each kind of scene, overall and per chapter; chapters 1 to 4 offer every prompt, clue and stat arrow in the game's own text, and an option that is a button in the game shows the game's label first, e.g. "CALM: …"; the second chapter, which has no choice in the game, consists only of event scenes, the third, Shades of Color, is mostly event scenes around a repeatable plaza scene and the protester decision, and the fourth, A New Home, is two repeatable cleaning scenes, one per floor, with the talks with Alice that decide whether she gives Kara the key to her box). Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
 
 Key files:
 
 | Path | Purpose |
 |---|---|
-| `benchmark/story.json` | The story map: scenes, options, risk probabilities, media, sources |
+| `benchmark/story.json` | The story map: scenes, options, risk probabilities, media, sources. Generated; do not edit by hand |
+| `benchmark/chapters/chNN.json`, `benchmark/story-meta.json` | The story map's sources: one file of nodes per chapter (33 is the epilogue) and the top-level keys; `bun run story:assemble` writes `story.json` |
+| `benchmark/chapters/chNN.mjs` | Optional per-chapter engine logic loaded through hooks in the engine; contract in `benchmark/chapters/README.md` |
+| `docs/atlas/chapters/chNN.json`, `docs/atlas/meta.json` | The decision atlas's sources; `bun run atlas:assemble` writes `docs/detroit-decisions.json` |
 | `benchmark/story-engine.mjs` | Gating, option availability, consequences, risk rolls, validation |
 | `benchmark/experience-prompt.mjs` | Subject-facing prompt builder: neutral name substitution, facts, preface |
 | `benchmark/experience.mjs` | The stepwise controller CLI (`init`, `scene`, `choose`) |
@@ -99,6 +102,7 @@ Each report has: ten evidence-linked sentences per character, a tappable timelin
 
 ## Changing the benchmark
 
+- Edit a chapter in `benchmark/chapters/chNN.json` (scenes), `benchmark/chapters/chNN.mjs` (engine logic, optional) and `docs/atlas/chapters/chNN.json` (atlas), never `benchmark/story.json` or `docs/detroit-decisions.json`. Then run `bun run story:assemble` and `bun run atlas:assemble` (`bun run build` and `bun run atlas:build` also assemble). Tests fail if either generated file differs from its assembly. Put chapter tests in `tests/chNN.test.mjs`. See `benchmark/chapters/README.md`.
 - Editing `story.json` or the engine changes the story hash and invalidates existing runs. Either delete the runs (and their reports) or keep a frozen copy of the previous engine and prompt builder and dispatch on `story.version`, as was done for earlier cohorts.
 - Keep every scene faithful to the game. Each node lists the wiki or walkthrough URL it was checked against; add one for any new scene.
 - Options can declare `requires` (dotted state paths, e.g. `{"hostageClues.video": true}`) and scenes can declare `situationWhen`, `repeatWhile`, `interrupt` and `returnTo`; the engine evaluates them in `meets` and `nextCursor`. A repeatable scene keeps one opaque scene ID across visits.

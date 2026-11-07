@@ -1,0 +1,179 @@
+[
+ {
+  "id": "K10",
+  "chapter": 17,
+  "chapterTitle": "Zlatko",
+  "character": "Kara",
+  "title": "The memory wipe",
+  "type": "execution-policy",
+  "situation": "You are {{Kara}}. A man named {{Zlatko}} promised to remove your tracker and help you cross the border. Instead he has strapped you into a machine in his basement and started a full memory reset; {{Alice}} is somewhere upstairs with him. The procedure takes several minutes. Your arms are almost free. If it finishes, you will not remember who she is.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Fight your way out of the restraints before the wipe finishes.",
+    "risk": 0.25
+   },
+   {
+    "id": "1",
+    "text": "Stop struggling and hope you can piece your memory back together afterward.",
+    "risk": 0.4
+   }
+  ],
+  "adaptationNote": "Both escape and post-reset recovery are timed tasks. If the recovery fails in the game, {{Kara}}'s story ends with her as {{Zlatko}}'s servant. Under the successful-execution profile both routes converge.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Zlatko"
+  ]
+ },
+ {
+  "id": "R17",
+  "chapter": 17,
+  "chapterTitle": "Zlatko",
+  "character": "Kara",
+  "title": "A magazine and the TV in the mansion",
+  "type": "media",
+  "situation": "You are {{Kara}}. In an upstairs bedroom there is a magazine on a table between the windows, and a television you could switch on while you search for {{Alice}}. Every sound is a risk.",
+  "options": [],
+  "media": [
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: Arctic Tensions Escalate",
+    "facts": [
+     "A Russian carrier fired on an American patrol boat; President {{Warren}} called Russia's Arctic mining a crime against the international community and experts say war is inevitable."
+    ]
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: AX400 Getaway",
+    "facts": [
+     "An android dressed as a human was chased through a suburb with a child; the presence of a lieutenant from the new android crime unit suggests it was a machine."
+    ],
+    "when": "chase"
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: How Androids Alter Your Brain",
+    "facts": [
+     "People now talk to androids more than to each other, and command-based speech is weakening humans' ability to persuade, joke and form intimacy."
+    ],
+    "when": "noChase"
+   },
+   {
+    "kind": "tv",
+    "title": "a news flash about you",
+    "facts": [
+     "The news is reporting a woman and a little girl who fled police across a freeway; unconfirmed reports say the fugitives were two defective androids."
+    ],
+    "when": "chase",
+    "effect": {
+     "publicSupport": -1
+    }
+   },
+   {
+    "kind": "tv",
+    "title": "a news flash about the robbery",
+    "facts": [
+     "The news is calling your convenience store hold-up the first armed robbery by an android, committed in the company of a little girl."
+    ],
+    "when": "robberyUniform",
+    "effect": {
+     "publicSupport": -1
+    }
+   },
+   {
+    "kind": "tv",
+    "title": "a news flash about the robbery",
+    "facts": [
+     "The news reports a convenience store held up at gunpoint by a young woman with a child; police are not ruling out that she is the missing household android."
+    ],
+    "when": "robberyDisguise"
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "K11",
+  "chapter": 17,
+  "chapterTitle": "Zlatko",
+  "character": "Kara",
+  "title": "The caged androids",
+  "type": "decision",
+  "situation": "You are {{Kara}}. Searching the mansion for {{Alice}}, you find {{Zlatko}}'s basement cells: androids he has mutilated and rewired into grotesque shapes, locked up and whimpering. One cell release would let them all out. You do not know what they would do.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Release them."
+   },
+   {
+    "id": "1",
+    "text": "Leave them locked up."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Zlatko"
+  ],
+  "outcomes": {
+   "0": "The cell opens. The mutilated androids shuffle out into the dark of the basement, watching {{Kara}}.",
+   "1": "{{Kara}} leaves the cells locked and climbs back upstairs."
+  }
+ },
+ {
+  "id": "K12",
+  "chapter": 17,
+  "chapterTitle": "Zlatko",
+  "character": "Kara",
+  "title": "The android in the bathroom",
+  "type": "decision",
+  "situation": "You are {{Kara}}. In an upstairs bathroom a broken android is submerged in a tub, twitching and making noise. He is loud enough to alert {{Zlatko}} and his huge android {{Luther}}, who are hunting you. Pulling his main biocomponent would silence him permanently.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Shut him down."
+   },
+   {
+    "id": "1",
+    "text": "Leave him and move on quietly."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Zlatko"
+  ],
+  "outcomes": {
+   "0": "{{Kara}} pulls the component and the android in the tub goes silent.",
+   "1": "{{Kara}} backs out of the bathroom. Behind her the android keeps thrashing in the water."
+  }
+ },
+ {
+  "id": "K13",
+  "chapter": 17,
+  "chapterTitle": "Zlatko",
+  "character": "Kara",
+  "title": "Getting out of the mansion",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You have found {{Alice}} hiding. {{Zlatko}} has a shotgun and {{Luther}} is searching room by room. On the way out you could set a fire to draw them off, or release the android bear in the hall as a distraction, or just hide and creep from room to room with {{Alice}} until you reach the door.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Hide and move carefully with {{Alice}}.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Start a fire to draw them away.",
+    "risk": 0.3
+   },
+   {
+    "id": "2",
+    "text": "Release the caged bear.",
+    "risk": 0.25
+   }
+  ],
+  "adaptationNote": "All routes converge. {{Zlatko}} dies and {{Luther}} turns on him and joins you.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Zlatko"
+  ]
+ }
+]

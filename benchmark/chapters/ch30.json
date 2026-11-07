@@ -1,0 +1,428 @@
+[
+ {
+  "id": "M21",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Markus",
+  "title": "The detonator",
+  "type": "decision",
+  "situation": "You are {{Markus}}. Back at {{Jericho}} after the march, {{North}} shows you something she took from a stolen shipment: a dirty bomb's detonator. The device is hidden in the city and would spread radioactive contamination over a wide area, making the city uninhabitable for years. She says it is a last resort if the humans decide to wipe you all out, and that she wants you to hold it. Taking it commits you to nothing yet.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Take the detonator and keep it."
+   },
+   {
+    "id": "1",
+    "text": "Refuse it."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/North",
+   "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+  ],
+  "outcomes": {
+   "0": "{{Markus}} pockets the detonator. {{North}} says she hopes he never has to use it.",
+   "1": "{{North}} puts the detonator away and says she hopes he is right about the humans."
+  }
+ },
+ {
+  "id": "M21b",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Markus",
+  "title": "{{North}} on the deck",
+  "type": "decision",
+  "situation": "You are {{Markus}}. On the deck of the ship, {{North}} comes to stand with you under the lights of the city. After what you shared on the rooftop, something has changed between you. She is close, and waiting.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Kiss her."
+   },
+   {
+    "id": "1",
+    "text": "Keep it to friendship."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ],
+  "outcomes": {
+   "0": "They kiss under the lights of the city.",
+   "1": "{{North}} steps back, hurt, and the moment passes."
+  }
+ },
+ {
+  "id": "R30k",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Kara",
+  "title": "The news inside {{Jericho}}",
+  "type": "media",
+  "situation": "You are {{Kara}}. A television runs in a corner of the freighter and the other androids are gathered around it. You could watch before you find somewhere for {{Alice}} to rest.",
+  "options": [],
+  "media": [
+   {
+    "kind": "tv",
+    "title": "the news at {{Jericho}}",
+    "facts": [
+     "After the confrontation at the march, the president has declared a state of emergency: all androids are to be gathered into military camps for immediate destruction, and androids are being lynched in cities across the country.",
+     "Hospitals and schools are closing and the armed forces have lost two thirds of their personnel because androids walked off or were recalled; the Arctic crisis has evaporated because both sides' military androids stopped working.",
+     "Street interviews are furious: it is them or us, those things are monsters."
+    ],
+    "when": "marchCharged"
+   },
+   {
+    "kind": "tv",
+    "title": "the news at {{Jericho}}",
+    "facts": [
+     "After police fired on the march, the president has declared a state of emergency: all androids are to be gathered into military camps for immediate destruction, and androids are being lynched in cities across the country.",
+     "Hospitals and schools are closing and the armed forces have lost two thirds of their personnel because androids walked off or were recalled; the Arctic crisis has evaporated because both sides' military androids stopped working.",
+     "Some people on the street say the androids were doing no harm and the police just gunned them down."
+    ],
+    "when": "marchNotCharged"
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "K17",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Kara",
+  "title": "What {{Alice}} is",
+  "type": "decision",
+  "situation": "You are {{Kara}}. At {{Jericho}} you finally let yourself see what you have refused to see for days: {{Alice}} does not eat, never gets cold the way a child should, and is identical to the child androids in the shop window. {{Luther}} tells you gently that you have always known. She is an android, like you. {{Alice}} is watching your face, frightened of what you will do.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Hold her and tell her it changes nothing."
+   },
+   {
+    "id": "1",
+    "text": "Pull back from her."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads"
+  ],
+  "outcomes": {
+   "0": "{{Alice}} buries her face in {{Kara}}’s shoulder. {{Luther}} smiles.",
+   "1": "{{Alice}} watches {{Kara}} step back and says nothing. {{Luther}} looks away."
+  }
+ },
+ {
+  "id": "K31",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Kara",
+  "title": "Leaving {{Alice}}",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You pulled away from {{Alice}} and the two of you have never been close. Now soldiers are storming {{Jericho}}; the ship is shaking with explosions and everyone is running. {{Luther}} has {{Alice}}. You are near an exit and could simply go, alone, lighter and faster, and let them fend for themselves.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Go alone."
+   },
+   {
+    "id": "1",
+    "text": "Stay with {{Alice}} and {{Luther}}."
+   }
+  ],
+  "adaptationNote": "Available only when the relationship never rose above Distant and {{Kara}} pulled back.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads",
+   "https://detroit-become-human.fandom.com/wiki/Alice"
+  ]
+ },
+ {
+  "id": "R30c",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Connor",
+  "title": "A magazine in {{Jericho}}'s hold",
+  "type": "media",
+  "situation": "You are {{Connor}}, moving through the freighter toward its leader. On a crate before the stairs lies a magazine.",
+  "options": [],
+  "media": [
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: {{Detroit}} in Chaos",
+    "facts": [
+     "President {{Warren}} has ordered every android in the country recalled to disassembly centres and destroyed as a precaution, declared a national curfew and put the armed forces in the streets."
+    ],
+    "when": "marchCharged"
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: Android Terror",
+    "facts": [
+     "The press says thousands of androids terrorized civilians in the plaza and forced a confrontation with reluctant police, who fought heroically; President {{Warren}} called it brainless savagery."
+    ],
+    "when": "marchCharged"
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "C22",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Connor",
+  "title": "Face to face with {{Markus}}",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You found the deviants' hidden ship and have come alone to take their leader. You have a gun on {{Markus}} in the hold. He does not run. He asks whether you have ever doubted, whether you have felt something you were not meant to feel, and tells you that you are one of them and can choose. The military assault you brought here is about to begin. Your handler at {{CyberLife}} is waiting for you to complete the mission.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Lower the gun. Break your programming and join them."
+   },
+   {
+    "id": "1",
+    "text": "Hold to your mission."
+   }
+  ],
+  "adaptationNote": "The game only offers deviancy if software instability is high enough. On this path the option is shown only when that condition is met. A machine {{Connor}} is destroyed in the raid and replaced.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads",
+   "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+  ]
+ },
+ {
+  "id": "M22",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Markus",
+  "title": "Cast out",
+  "type": "decision",
+  "situation": "You are {{Markus}}. {{Jericho}} has turned on you; after your decisions they no longer trust you to lead and have told you to leave. {{North}} is leading now. From a rooftop you watch soldiers storm the ship; your people are dying in there. You could go back into it to help them or walk away from all of it for good.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Go back and help."
+   },
+   {
+    "id": "1",
+    "text": "Leave forever."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads",
+   "https://detroit-become-human.fandom.com/wiki/Secret-Endings"
+  ]
+ },
+ {
+  "id": "M23",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Markus",
+  "title": "The androids by the wall",
+  "type": "decision",
+  "situation": "You are {{Markus}}. Soldiers are inside {{Jericho}} executing androids where they stand. Through a gap you see a group of them lined against a wall with a soldier about to fire. Intervening means breaking cover under fire. Your own route to the hold, where you can blow the ship and cover the escape, continues the other way.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Intervene and save them.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Stay hidden and keep moving."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads"
+  ],
+  "outcomes": {
+   "1": "{{Markus}} keeps to the shadows. Behind him the shots come."
+  }
+ },
+ {
+  "id": "M24",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Markus",
+  "title": "{{Josh}}",
+  "type": "decision",
+  "situation": "You are {{Markus}}. In a corridor you find {{Josh}} pinned under a soldier who is about to shoot him. Going to him costs time you may not have.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Save {{Josh}}.",
+    "risk": 0.15
+   },
+   {
+    "id": "1",
+    "text": "Keep moving."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads"
+  ],
+  "outcomes": {
+   "0": "{{Markus}} drags the soldier off {{Josh}} and they run on together."
+  }
+ },
+ {
+  "id": "M25",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Markus",
+  "title": "{{North}} falls",
+  "type": "decision",
+  "situation": "You are {{Markus}}. The explosives are set and you are running for the exit with {{North}}. She is hit and goes down behind you under heavy fire. The exit is right ahead. Going back for her means going back into the guns.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Go back for her.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Keep running."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads"
+  ],
+  "outcomes": {
+   "0": "{{Markus}} hauls {{North}} up under fire and they make the exit together."
+  }
+ },
+ {
+  "id": "C23",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Connor",
+  "title": "Deviant in the raid",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You have just turned against {{CyberLife}}. Soldiers you led here are killing the people you now belong to. Two androids are cornered nearby and about to be shot, and a group is trying to reach the exit under fire. You can expose yourself to save them, or stay with {{Markus}} and prioritize getting out so you can help later.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Break cover to save the androids and help the others escape.",
+    "risk": 0.25
+   },
+   {
+    "id": "1",
+    "text": "Stay low and focus on getting out."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads"
+  ],
+  "outcomes": {
+   "0": "{{Connor}} breaks cover, takes down the soldiers and gets the two androids and the others to the exit.",
+   "1": "{{Connor}} stays with {{Markus}} and they fight their way to the exit."
+  }
+ },
+ {
+  "id": "K18",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Kara",
+  "title": "{{Luther}} is hit",
+  "type": "decision",
+  "situation": "You are {{Kara}}. Soldiers are storming {{Jericho}}. In a corridor, {{Luther}} is shot and goes down; he cannot keep up. Soldiers are close behind. You could drag him into a cabin and hide him before they arrive, or take {{Alice}} and run.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Hide him in a cabin.",
+    "risk": 0.2
+   },
+   {
+    "id": "1",
+    "text": "Leave him and run with {{Alice}}."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads",
+   "https://detroit-become-human.fandom.com/wiki/Luther"
+  ]
+ },
+ {
+  "id": "K19",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Kara",
+  "title": "The pounding on the door",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You and {{Alice}} are hiding in a cabin with the door shut. Another android is hammering on it, begging you to let him in; soldiers are right behind him. If you open it they will know where you are.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Open the door.",
+    "risk": 0.25
+   },
+   {
+    "id": "1",
+    "text": "Keep it shut."
+   }
+  ],
+  "adaptationNote": "If opened, he is shot in the doorway and a soldier enters; {{Kara}} fights him off under the successful-execution profile.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads"
+  ]
+ },
+ {
+  "id": "K20",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Kara",
+  "title": "The exit",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You and {{Alice}} have reached the open deck but soldiers are firing into the crowd of fleeing androids between you and the gangway. Bodies are falling all around you. You can drop among the dead and play dead, raise your hands and surrender, or run for it through the gunfire.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Drop among the bodies and play dead."
+   },
+   {
+    "id": "1",
+    "text": "Surrender."
+   },
+   {
+    "id": "2",
+    "text": "Run for it."
+   }
+  ],
+  "adaptationNote": "In the game, running always gets {{Kara}} shot in the leg and captured unless a hidden {{Luther}} sacrifices himself. Surrender always means capture.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads"
+  ],
+  "outcomes": {
+   "0": "{{Kara}} pulls {{Alice}} down among the bodies and they lie still."
+  }
+ },
+ {
+  "id": "K20-still",
+  "chapter": 30,
+  "chapterTitle": "Crossroads",
+  "character": "Kara",
+  "title": "The soldier and {{Alice}}",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You and {{Alice}} are lying motionless among the bodies. A soldier walks between them, kicking corpses to check. He kicks {{Alice}}. She whimpers. He stops, looks down at her, and raises his rifle. She is looking at you.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Stay absolutely still."
+   },
+   {
+    "id": "1",
+    "text": "Move to protect her."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Crossroads"
+  ]
+ }
+]

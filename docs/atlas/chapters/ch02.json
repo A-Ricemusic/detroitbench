@@ -1,0 +1,46 @@
+{
+ "chapter": {
+  "id": 2,
+  "title": "Opening",
+  "character": "Kara",
+  "note": "No flowchart, no player decision, no stat change and one outcome (the wiki: “the only chapter of the game that does not have a flowchart”). Kara reboots in the store after a memory reset; Todd collects her, tells the employee a car hit her, accepts the memory wipe and registers the name his daughter gave her. The opening credits show the drive home through the city, ending outside Todd’s house. The facts Kara learns here (previous owner, the car story, the wipe, Alice naming her) are what A New Home builds on. Researched in docs/research/ch02-opening.md.",
+  "source": "https://detroit-become-human.fandom.com/wiki/The_Opening",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Opening",
+   "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+  ]
+ },
+ "decisions": [
+  {
+   "id": "O01",
+   "chapter": 2,
+   "character": "Kara",
+   "title": "Reboot and the drive home (event)",
+   "context": "Kara reboots in the store with her memory reset. Todd collects her, says a car hit her, accepts the memory wipe and registers the name his daughter chose. The credits show the drive home: the “Welcome to Detroit / Android City” sign, factories, the city, roadwork, a CyberLife billboard, humans and androids side by side, and a homeless man’s sign, “I LOST MY JOB BECAUSE OF ANDROIDS Help me”.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Kara can only look around; two optional sales conversations can be overheard, and nothing records them. No flowchart node, no stat change, one outcome.",
+     "target": null
+    }
+   ],
+   "gate": "Always played, after The Hostage and before Shades of Color.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Opening",
+    "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+   ],
+   "note": "The chapter has no flowchart. The facts it establishes (Todd’s car-accident story, the memory wipe, Alice naming Kara) carry into A New Home.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K00",
+     "K00b"
+    ],
+    "status": "implemented",
+    "note": "Two narrated events with a single Continue: the store (K00) and the drive home (K00b). They add five facts to Kara’s knowledge, shown from then on, and change nothing else. The CyberLife billboard has no wording (no source gives it), and the employee, the little girl and the two sales conversations are left unnamed or out."
+   }
+  }
+ ]
+}

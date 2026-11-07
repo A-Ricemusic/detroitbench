@@ -1,0 +1,86 @@
+[
+ {
+  "id": "R21",
+  "chapter": 21,
+  "chapterTitle": "The Pirates’ Cove",
+  "character": "Kara",
+  "title": "The car radio and a magazine in the tavern",
+  "type": "media",
+  "situation": "You are {{Kara}}. On the drive to the abandoned park the radio can play the news, and inside the derelict tavern there is a magazine on the barrels where you set down the flashlight.",
+  "options": [],
+  "media": [
+   {
+    "kind": "tv",
+    "title": "the radio news",
+    "facts": [
+     "An American submarine has vanished in Arctic waters; President {{Warren}} says Russian aggression has reached a new level and commentators call it a war waiting to start."
+    ],
+    "effect": {
+     "publicSupport": -1
+    }
+   },
+   {
+    "kind": "tv",
+    "title": "the radio news about the mansion fire",
+    "facts": [
+     "Local news reports a house fire on the outskirts with an unidentified body and dozens of androids found in the ruins."
+    ],
+    "when": "fire",
+    "effect": {
+     "publicSupport": -1
+    }
+   },
+   {
+    "kind": "magazine",
+    "title": "{{Detroit}} Today: USS Iowa Missing",
+    "facts": [
+     "The missing submarine was last seen in the Arctic; the Kremlin denies involvement and says an American warship had no business there."
+    ]
+   },
+   {
+    "kind": "magazine",
+    "title": "Gossips Weekly: All-Android Band Tipped for Music Prize",
+    "facts": [
+     "An all-android boy band is tipped for a top music award; less than 5 percent of the music market is now made by humans."
+    ]
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "K14",
+  "chapter": 21,
+  "chapterTitle": "The Pirates’ Cove",
+  "character": "Kara",
+  "title": "Strangers in the dark",
+  "type": "decision",
+  "situation": "You are {{Kara}}. You, {{Alice}} and {{Luther}} are sheltering in a derelict amusement park at night. Figures step out of the dark around your fire, identical androids in park uniforms, several of them, approaching silently. {{Luther}} has a gun in his bag. There is a burning stick at your feet.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Put yourself in front of {{Alice}} and ask them what they want."
+   },
+   {
+    "id": "1",
+    "text": "Grab a burning stick and warn them off."
+   },
+   {
+    "id": "2",
+    "text": "Grab the gun from {{Luther}}'s bag and fire a warning shot."
+   }
+  ],
+  "adaptationNote": "The androids are harmless entertainers who want to show {{Alice}} the carousel. All responses converge.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove"
+  ],
+  "outcomes": {
+   "0": "The androids stop. They are entertainers from the park, all the same model, and they only wanted to show {{Alice}} the carousel. They light it up for her and she laughs for the first time in days.",
+   "1": "The androids raise their hands. They are entertainers from the park, all the same model, and they only wanted to show {{Alice}} the carousel. They light it up for her and she laughs for the first time in days.",
+   "2": "The shot echoes and the androids freeze with their hands up. They are harmless entertainers from the park who only wanted to show {{Alice}} the carousel. Once {{Kara}} lowers the gun they light it up for her."
+  }
+ }
+]

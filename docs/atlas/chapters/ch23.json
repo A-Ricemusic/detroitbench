@@ -1,0 +1,151 @@
+{
+ "chapter": {
+  "id": 23,
+  "title": "The Stratford Tower",
+  "character": "Markus",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "M10",
+   "chapter": 23,
+   "character": "Markus",
+   "title": "Bluff or assault the guards?",
+   "context": "Security blocks the broadcast floor.",
+   "options": [
+    {
+     "label": "Use a ruse",
+     "effect": "Try to avoid a firefight.",
+     "target": null
+    },
+    {
+     "label": "Assault",
+     "effect": "Gunfire can wound Simon.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M11",
+   "chapter": 23,
+   "character": "Markus",
+   "title": "Shoot the fleeing employee?",
+   "context": "An operator runs to raise the alarm.",
+   "options": [
+    {
+     "label": "Shoot",
+     "effect": "Stop the alarm at the cost of a human life.",
+     "target": null
+    },
+    {
+     "label": "Spare",
+     "effect": "SWAT arrives and Simon is wounded.",
+     "target": "M13"
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M12",
+   "chapter": 23,
+   "character": "Markus",
+   "title": "What message should the broadcast send?",
+   "context": "Markus addresses the public.",
+   "options": [
+    {
+     "label": "Peaceful appeal for rights",
+     "effect": "Can improve public opinion.",
+     "target": "M28"
+    },
+    {
+     "label": "Threatening or forceful message",
+     "effect": "Changes public reaction.",
+     "target": "M28"
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+   ],
+   "note": "Demands and tone are separate prompts, condensed here.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M13",
+   "chapter": 23,
+   "character": "Markus",
+   "title": "Help Simon reach the roof?",
+   "context": "Simon is wounded.",
+   "options": [
+    {
+     "label": "Help",
+     "effect": "Successful rescue leads to another decision.",
+     "target": "M14"
+    },
+    {
+     "label": "Leave him",
+     "effect": "SWAT kills him.",
+     "target": null
+    }
+   ],
+   "gate": "Simon injured; rescue opportunity reached.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M10",
+    "M11"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M14",
+   "chapter": 23,
+   "character": "Markus",
+   "title": "Leave Simon alive or execute him?",
+   "context": "Simon cannot make the rooftop escape.",
+   "options": [
+    {
+     "label": "Hide him alive",
+     "effect": "Connor may discover him; otherwise he can return.",
+     "target": "C14"
+    },
+    {
+     "label": "Execute him",
+     "effect": "Prevent capture by killing an ally.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M13"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-the-stratford-tower-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  }
+ ]
+}

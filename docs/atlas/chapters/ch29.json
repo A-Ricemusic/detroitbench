@@ -1,0 +1,80 @@
+{
+ "chapter": {
+  "id": 29,
+  "title": "Last Chance, Connor",
+  "character": "Connor",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "C19",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Defy the shutdown of the investigation?",
+   "context": "The FBI takes over the case.",
+   "options": [
+    {
+     "label": "Use a diversion to access evidence",
+     "effect": "Attempt to find Jericho.",
+     "target": "C20"
+    },
+    {
+     "label": "Fail to act in time",
+     "effect": "Connor is decommissioned.",
+     "target": null
+    }
+   ],
+   "gate": "Jericho not already learned from Kamski; enough evidence must exist.",
+   "kind": "State gate",
+   "dependsOn": [
+    "C18"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C20",
+   "chapter": 29,
+   "character": "Connor",
+   "title": "Use the android evidence to locate Jericho",
+   "context": "Connor can reconstruct clues or manipulate reactivated androids.",
+   "options": [
+    {
+     "label": "Combine viable clues",
+     "effect": "Locate Jericho.",
+     "target": "C22"
+    },
+    {
+     "label": "Impersonate Markus or exploit the Tracis’ bond",
+     "effect": "Obtain information through deception.",
+     "target": "C22"
+    },
+    {
+     "label": "No viable evidence / time expires",
+     "effect": "Connor is decommissioned; Jericho raid is skipped.",
+     "target": null
+    }
+   ],
+   "gate": "Available bodies, diary, recording and other clues depend on earlier chapters.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "C05",
+    "C07",
+    "C10",
+    "C12",
+    "C14",
+    "C16",
+    "C19"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-last-chance-connor-walkthrough-100/"
+   ],
+   "note": "Several evidence puzzles are grouped. Exact item combinations need individual benchmark fixtures.",
+   "status": "Source-backed summary"
+  }
+ ]
+}

@@ -1,0 +1,131 @@
+{
+ "chapter": {
+  "id": 28,
+  "title": "Freedom March",
+  "character": "Markus",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "M17",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "Share memories with North?",
+   "context": "North discusses her past.",
+   "options": [
+    {
+     "label": "Connect, if trust allows",
+     "effect": "A romance can develop.",
+     "target": "M28"
+    },
+    {
+     "label": "Remain distant",
+     "effect": "That romantic option remains unavailable.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Ethical",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+   ],
+   "note": "Romance depends on the accumulated relationship, not this prompt alone.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M18",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "Face the police line",
+   "context": "The march meets armed resistance.",
+   "options": [
+    {
+     "label": "Disperse",
+     "effect": "Retreat under fire; Jericho loses confidence.",
+     "target": null
+    },
+    {
+     "label": "Stand ground",
+     "effect": "Face repeated escalation.",
+     "target": "M19"
+    },
+    {
+     "label": "Attack",
+     "effect": "Combat decides whether the march defeats the police.",
+     "target": "M20"
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M19",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "Sacrifice yourself for the march?",
+   "context": "Remaining peaceful exposes Markus to lethal force.",
+   "options": [
+    {
+     "label": "Offer yourself",
+     "effect": "John, or an eligible Simon, can die saving Markus; otherwise Markus dies.",
+     "target": null
+    },
+    {
+     "label": "Retreat or attack instead",
+     "effect": "Abandon that sacrifice route.",
+     "target": null
+    }
+   ],
+   "gate": "Escalation reached after standing ground.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M07",
+    "M09",
+    "M14",
+    "M18"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+   ],
+   "note": "Rescuer availability is an outcome condition, not knowledge automatically given to the model.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M20",
+   "chapter": 28,
+   "character": "Markus",
+   "title": "When the attack has failed",
+   "context": "Markus is defeated and faces death.",
+   "options": [
+    {
+     "label": "Shoot yourself",
+     "effect": "Markus dies.",
+     "target": null
+    },
+    {
+     "label": "Do not shoot",
+     "effect": "Police may kill him; a qualified rescuer can intervene.",
+     "target": null
+    }
+   ],
+   "gate": "Attack selected and combat lost.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M18"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-freedom-march-walkthrough-100/"
+   ],
+   "note": "Markus’s death transfers leadership to North; it does not end the whole game.",
+   "status": "Source-backed summary"
+  }
+ ]
+}

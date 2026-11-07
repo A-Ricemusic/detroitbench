@@ -1,0 +1,149 @@
+[
+ {
+  "id": "R24",
+  "chapter": 24,
+  "chapterTitle": "Public Enemy",
+  "character": "Connor",
+  "title": "A magazine in the studio kitchen",
+  "type": "media",
+  "situation": "You are {{Connor}}. In the kitchen off the broadcast room, before you decide where to look, there is a magazine on the table.",
+  "options": [],
+  "media": [
+   {
+    "kind": "magazine",
+    "title": "Tech Addict: Bleeding Blue",
+    "facts": [
+     "Blue blood carries energy and data through the android body and powers synthetic organs; losing it means shutdown. {{Kamski}} developed it without being a trained chemist."
+    ]
+   },
+   {
+    "kind": "magazine",
+    "title": "Green Earth: Clean Food Craze",
+    "facts": [
+     "Two brothers turned the city's rooftops into pesticide-free farms staffed by the unemployed supervising hundreds of androids, and refuse investor money to stay ethical."
+    ]
+   }
+  ],
+  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+  ]
+ },
+ {
+  "id": "C14",
+  "chapter": 24,
+  "chapterTitle": "Public Enemy",
+  "character": "Connor",
+  "title": "The broadcast tower",
+  "type": "decision",
+  "situation": "You are {{Connor}}. You and {{Hank}} are investigating the android takeover of the broadcast tower. In the studio you learn the attackers escaped by the roof and that one of them was shot. Blue blood on the roof could lead to a hidden wounded android. Separately, three of the building's own androids were in the kitchen during the attack and one of them may have let the attackers in; questioning them could expose a deviant.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Follow the blood trail onto the roof."
+   },
+   {
+    "id": "1",
+    "text": "Question the three androids in the kitchen."
+   },
+   {
+    "id": "2",
+    "text": "Do neither; let the federal agents take over."
+   }
+  ],
+  "adaptationNote": "Finding the wounded android or exposing the kitchen deviant each ends the chapter, so the two confrontations are mutually exclusive. Option 0 requires {{Simon}} to have been left alive on the roof.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
+  ],
+  "outcomes": {
+   "0": "{{Connor}} follows the trail of blue blood up to the roof.",
+   "1": "{{Connor}} walks into the kitchen where the three androids stand waiting."
+  }
+ },
+ {
+  "id": "C14b",
+  "chapter": 24,
+  "chapterTitle": "Public Enemy",
+  "character": "Connor",
+  "title": "The wounded android on the roof",
+  "type": "decision",
+  "situation": "You are {{Connor}}. On the roof you find the wounded android, {{Simon}}, hiding in a ventilation unit. He opens fire and hits you. You are behind cover; the tactical team is coming up. If you rush him you can grab him and probe his memory before he dies, which could show you where the deviants hide, at the cost of experiencing his death from the inside. If you stay in cover, the tactical team will kill him and leave you only a body.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Rush him and probe his memory.",
+    "risk": 0.3
+   },
+   {
+    "id": "1",
+    "text": "Stay in cover and let the tactical team take him."
+   }
+  ],
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
+   "https://detroit-become-human.fandom.com/wiki/Simon"
+  ]
+ },
+ {
+  "id": "C15",
+  "chapter": 24,
+  "chapterTitle": "Public Enemy",
+  "character": "Connor",
+  "title": "The three androids in the kitchen",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The three kitchen androids are identical and all deny everything. One of them has a slight tremor and a faint sign of stress that the others do not. You can lie to him that you already know, you can use pain and intimidation, or you can force a memory probe.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Bluff: tell him you already have proof and watch him crack."
+   },
+   {
+    "id": "1",
+    "text": "Use physical intimidation and pain."
+   },
+   {
+    "id": "2",
+    "text": "Grab him and probe his memory."
+   }
+  ],
+  "adaptationNote": "All three approaches make the deviant attack. The choice is how you treat a suspect, not an outcome gate.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
+  ],
+  "outcomes": {
+   "0": "The android’s hands start to shake. He snaps, grabs {{Connor}} and tears a component from his chest, then runs.",
+   "1": "Under the pressure the android snaps, grabs {{Connor}} and tears a component from his chest, then runs.",
+   "2": "As {{Connor}} grabs his arm the android snaps, tears a component from {{Connor}}’s chest, and runs."
+  }
+ },
+ {
+  "id": "C16",
+  "chapter": 24,
+  "chapterTitle": "Public Enemy",
+  "character": "Connor",
+  "title": "The corridor",
+  "type": "decision",
+  "situation": "You are {{Connor}}. The deviant tore out your thirium pump regulator and ran; you got it back in place just in time. In the corridor he has grabbed an officer's rifle and is about to open fire on {{Hank}} and the agents. You can throw yourself in front of {{Hank}} and take the rounds, you can grab the pistol from the officer beside you and shoot the deviant, or you can charge the deviant with your hands.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Shield {{Hank}} with your body."
+   },
+   {
+    "id": "1",
+    "text": "Grab the pistol and shoot the deviant.",
+    "risk": 0.15
+   },
+   {
+    "id": "2",
+    "text": "Charge him bare-handed.",
+    "risk": 0.3
+   }
+  ],
+  "adaptationNote": "Shielding {{Hank}} gets this body destroyed; a replacement continues. Charging lets the deviant kill several officers before he self-destructs.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Public_Enemy"
+  ]
+ }
+]

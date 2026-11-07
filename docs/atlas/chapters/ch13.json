@@ -1,0 +1,69 @@
+{
+ "chapter": {
+  "id": 13,
+  "title": "On the Run",
+  "character": "Kara / Connor",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "K09",
+   "chapter": 13,
+   "character": "Kara",
+   "title": "Evade detection or risk the highway?",
+   "context": "Police search for Kara and Alice.",
+   "options": [
+    {
+     "label": "Evade police successfully",
+     "effect": "Leave without a highway chase.",
+     "target": null
+    },
+    {
+     "label": "Be discovered and flee",
+     "effect": "Highway crossing risks both lives.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "State gate",
+   "dependsOn": [
+    "K07"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/"
+   ],
+   "note": "Detection is a gameplay outcome, not an explicit choice to be caught.",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "C09",
+   "chapter": 13,
+   "character": "Connor",
+   "title": "Pursue Kara onto the highway?",
+   "context": "Hank orders Connor not to follow.",
+   "options": [
+    {
+     "label": "Obey Hank",
+     "effect": "Stop pursuing.",
+     "target": null
+    },
+    {
+     "label": "Continue pursuit",
+     "effect": "Risk Connor’s destruction; Kara’s crossing is also playable.",
+     "target": null
+    }
+   ],
+   "gate": "Kara and Alice are discovered and reach the highway.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "K09"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-on-the-run-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  }
+ ]
+}

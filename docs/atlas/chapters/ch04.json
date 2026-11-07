@@ -1,0 +1,970 @@
+{
+ "chapter": {
+  "id": 4,
+  "title": "A New Home",
+  "character": "Kara",
+  "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (30 nodes) and the Fandom wiki (chapter page, transcript, Relationship Stat). WELCOME HOME → JOIN TODD → [ CLEAN FIRST FLOOR ] → TAKE OUT TRASH → ASK TO GO UPSTAIRS → GO UPSTAIRS → [ CLEAN SECOND FLOOR ] → TALK WITH ALICE → FINISHED CLEANING, the only ending. Every other node is optional: two magazines (four covers), the dishes, the backyard and its talk, the rewash that finds Red Ice and enrages Todd, the vacuum, disturbing Todd, the toilet, the bathroom, the pills that reveal the gun (unlock), Alice’s window and its way down (unlock), the key at least at Neutral, and Alice’s box. No probability, public-opinion or instability change; Alice starts Distant and has nine small increases and one decrease (asking about her mother). Cross-chapter: the gun (Stormy Night, Fugitives), the window (Stormy Night), the box and its family photo (Battle for Detroit), the book and the Red Ice (Zlatko). Researched in docs/research/ch04-a-new-home.md. Story 1.7.0: the dialogue options show the game’s button labels (GAME, BACKYARD, WEATHER, SCHOOL, TOY, FACTUAL, FRIENDLY, DIPLOMATIC, NAME KARA, INTERESTS?, SEEM QUIET, MOTHER?, LEAVE ALONE), with the spoken line in the outcome.",
+  "source": "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+   "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+   "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ "decisions": [
+  {
+   "id": "N01",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Welcome Home (checkpoint) and Join Todd",
+   "context": "Todd brings Kara home: “You’ve been gone for two weeks and the place is a mess.” Her duties are housework, washing, meals and looking after Alice (“Homework, bath, all that crap”). Alice appears on the stairs with a toy. “Get started down here, then you do upstairs.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "The start node and checkpoint. Optional looks at the bridge and the excavator are not on the chart.",
+     "target": "N03"
+    }
+   ],
+   "gate": "Chapter start, after Shades of Color.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-2.jpg"
+   ],
+   "note": "Chart nodes WELCOME HOME (checkpoint) and JOIN TODD. No icon on either.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue, quoting the transcript. Two facts go to Kara’s knowledge; no stat change. Alice’s age is no longer given."
+   }
+  },
+  {
+   "id": "N02",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Read the dining-table magazine",
+   "context": "A magazine with two covers on the dining table, among the dirty dishes.",
+   "options": [
+    {
+     "label": "READ “ANDROID POWER!”",
+     "effect": "All Sports: an android pitcher breaks 120 mph; androids dominate baseball; fans disenchanted.",
+     "target": null
+    },
+    {
+     "label": "READ “CONNECTING THE DOTS”",
+     "effect": "Century: the SubTube runs New York to Los Angeles in under two hours; California prices up 64%; “First Detroit takes our jobs, then New York takes our homes?”",
+     "target": null
+    },
+    {
+     "label": "Leave it",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, any time on the first floor, also after reporting to Todd.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine",
+    "https://detroit-become-human.fandom.com/wiki/Android_Power!",
+    "https://detroit-become-human.fandom.com/wiki/Connecting_the_Dots"
+   ],
+   "note": "Two optional chart nodes from one branch origin. No public-opinion effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R04"
+    ],
+    "status": "implemented",
+    "note": "A media scene before the chores: read either, both or neither. Facts go to Kara’s knowledge; no stat change."
+   }
+  },
+  {
+   "id": "N03",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Take out trash",
+   "context": "The only urgent first-floor task: collect the trash in the kitchen, on the counter and on the coffee table and carry the bags out. Todd takes a phone call (“Yeah, yeah I’ll bring it tomorrow. Yes, same place”); back inside he tears the shelf apart for his Red Ice and smokes it on the couch.",
+   "options": [
+    {
+     "label": "TAKE OUT TRASH",
+     "effect": "Mandatory (transcript: “Trash is mandatory”).",
+     "target": "N11"
+    }
+   ],
+   "gate": "Always, on the first floor.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+   ],
+   "note": "Chart node on the line leaving [ CLEAN FIRST FLOOR ]. Todd’s hunt for Red Ice always follows; the phone call “happens by performing a task”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a"
+    ],
+    "status": "implemented",
+    "note": "An option of the repeatable first-floor scene; going upstairs requires it. Kara learns the phone call and the Red Ice hunt."
+   }
+  },
+  {
+   "id": "N04",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Wash dishes",
+   "context": "The dishwasher is broken (missing component #573BV; Kara orders it). Kara washes by hand; Alice comes in and watches her. Todd then demands a cold beer.",
+   "options": [
+    {
+     "label": "WASH DISHES",
+     "effect": "Alice relationship up (“Washing the dishes ↑”). BRING TODD A BEER follows (mandatory, not a chart node).",
+     "target": null
+    },
+    {
+     "label": "Leave them",
+     "effect": "The dishes and the magazine are still on the table at the end.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, first floor.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "N01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Small increase in the wiki’s Relationship Changes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a"
+    ],
+    "status": "implemented",
+    "note": "Hub option, Alice +1; the beer is part of the outcome. The ending notes whether the table is clear."
+   }
+  },
+  {
+   "id": "N05",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Check backyard",
+   "context": "Kara goes out the back door and takes the laundry off the line; Alice follows and sits on a tire.",
+   "options": [
+    {
+     "label": "CHECK BACKYARD",
+     "effect": "Enables the backyard talk and REWASH CLOTHES.",
+     "target": "N06"
+    }
+   ],
+   "gate": "Optional, first floor.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+   ],
+   "note": "Chart node; objective TAKE DOWN LAUNDRY.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a"
+    ],
+    "status": "implemented",
+    "note": "Hub option; the yard talk is offered right after it, the rewash any time after it."
+   }
+  },
+  {
+   "id": "N06",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Talk with Alice (backyard)",
+   "context": "Two menus, each GAME, BACKYARD, WEATHER, SCHOOL, minus the line already said. Alice stays silent.",
+   "options": [
+    {
+     "label": "GAME",
+     "effect": "Alice up: “Offering to play a game with Alice when talking to her in the backyard ↑”.",
+     "target": null
+    },
+    {
+     "label": "BACKYARD",
+     "effect": "Alice up: “Asking Alice about the garden when talking to her in the backyard ↑”.",
+     "target": null
+    },
+    {
+     "label": "WEATHER",
+     "effect": "No change.",
+     "target": null
+    },
+    {
+     "label": "SCHOOL",
+     "effect": "No change.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, right after taking down the laundry.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "N05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart node TALK WITH ALICE (speech bubble, first floor). Whether the indoor TOY talk also lights it is unclear.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a",
+     "K01y1",
+     "K01y2"
+    ],
+    "status": "implemented",
+    "note": "A hub option that cuts into two dialogue scenes (the second drops the first pick) and returns to the first floor. At most +2. Options show the game’s labels GAME, BACKYARD, WEATHER, SCHOOL."
+   }
+  },
+  {
+   "id": "N07",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Rewash clothes, find Red Ice, enrage Todd",
+   "context": "Kara rewashes the laundry, finds Red Ice hidden in the Blue Splash detergent and scans it; Todd pins her to the wall: “You shouldn’t mess around with my stuff! It makes me nervous!” Alice watches.",
+   "options": [
+    {
+     "label": "REWASH CLOTHES",
+     "effect": "Always followed by FIND RED ICE and ENRAGE TODD (triangle events). Zlatko: “Recall Todd’s Red Ice Pipe (If Kara washed Todd’s clothes in A New Home)”.",
+     "target": null
+    },
+    {
+     "label": "Leave the laundry",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, after CHECK BACKYARD.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Red_Ice",
+    "https://detroit-become-human.fandom.com/wiki/Zlatko"
+   ],
+   "note": "Three chart nodes in a chain; no relationship change in the transcript.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a"
+    ],
+    "status": "implemented",
+    "note": "One hub option for the chain; the fact is kept for Zlatko (downstairs.rewash)."
+   }
+  },
+  {
+   "id": "N08",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Activate vacuum",
+   "context": "The vacuum robot left of the TV; Alice plays with it and Todd shouts at her (“Why is she always pushin’ me?”).",
+   "options": [
+    {
+     "label": "ACTIVATE VACUUM",
+     "effect": "No stat effect.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, first floor.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+   ],
+   "note": "Chart node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a"
+    ],
+    "status": "implemented",
+    "note": "Hub option, no stat change."
+   }
+  },
+  {
+   "id": "N09",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Disturb Todd",
+   "context": "Kara stands in front of the TV while Todd watches hockey: “Outta the way for fuck sake!”",
+   "options": [
+    {
+     "label": "DISTURB TODD",
+     "effect": "No stat effect; needed for 100%.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, first floor.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+   ],
+   "note": "Chart node, drawn grey/white on the photographed chart (unexplained).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a"
+    ],
+    "status": "implemented",
+    "note": "Hub option, no stat change."
+   }
+  },
+  {
+   "id": "N10",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Compliment Alice’s toy (not a chart node)",
+   "context": "Kara kneels by Alice: “That’s a pretty toy! What’s it’s name?”",
+   "options": [
+    {
+     "label": "TOY",
+     "effect": "Alice up: “Complimenting her teddy after cleaning the first floor of the house ↑”.",
+     "target": null
+    }
+   ],
+   "gate": "Optional; the transcript and wiki Notes allow it at any time on the first floor.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "N01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Not on the chart; listed for its relationship change.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a"
+    ],
+    "status": "implemented",
+    "note": "Hub option, Alice +1, offered at any time on the first floor. Shown as the game’s label, TOY."
+   }
+  },
+  {
+   "id": "N11",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Ask to go upstairs",
+   "context": "“I’ve made a good start down here. I’ll head upstairs!” Todd: “Do what you have to do, but stop bothering me!”",
+   "options": [
+    {
+     "label": "ASK TO GO UPSTAIRS",
+     "effect": "Ends the first floor.",
+     "target": "N12"
+    }
+   ],
+   "gate": "After TAKE OUT TRASH.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-3.jpg"
+   ],
+   "note": "Chart node on the line leaving the bracket.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01a"
+    ],
+    "status": "implemented",
+    "note": "The hub’s exit option; requires the trash."
+   }
+  },
+  {
+   "id": "N12",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Go Upstairs (checkpoint)",
+   "context": "Kara goes up. Urgent: tidy Todd’s room, tidy Alice’s room. Optional: clean bathroom, clean restroom.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Checkpoint.",
+     "target": "N13"
+    }
+   ],
+   "gate": "After ASK TO GO UPSTAIRS.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N11"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+   ],
+   "note": "Chart checkpoint.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01c"
+    ],
+    "status": "implemented",
+    "note": "A narrated event with a single Continue."
+   }
+  },
+  {
+   "id": "N13",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Clean Todd’s room; Alice goes to her room",
+   "context": "Make the bed, clear the mess, open his window. While Kara makes the bed, Alice goes to her room (triangle event). An ad for a child android model falls out of his bills. Leaving, Todd shoves Kara out of the restroom: “Watch it!”",
+   "options": [
+    {
+     "label": "CLEAN TODD’S ROOM",
+     "effect": "Mandatory. Todd’s window unlocks nothing.",
+     "target": "N14"
+    },
+    {
+     "label": "ALICE GOES TO HER ROOM",
+     "effect": "Triggered while making the bed.",
+     "target": null
+    }
+   ],
+   "gate": "Second floor.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+   ],
+   "note": "Two chart nodes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01d"
+    ],
+    "status": "implemented",
+    "note": "Hub option; Alice is in her room from then on (the book’s increase and the talk need her there)."
+   }
+  },
+  {
+   "id": "N14",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Tidy pills; Kara sees gun",
+   "context": "Antidepressants on the nightstand (“Contains Tianeptine / Risk of behavioral disorders”); putting them in the drawer reveals a gun.",
+   "options": [
+    {
+     "label": "TIDY PILLS → KARA SEES GUN",
+     "effect": "Unlock: “Gun accessible in Stormy Night and Fugitives”.",
+     "target": "K04"
+    },
+    {
+     "label": "Leave the pills",
+     "effect": "The gun is never seen.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in Todd’s room.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
+    "https://detroit-become-human.fandom.com/wiki/Fugitives"
+   ],
+   "note": "Yellow unlock node (open padlock).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01d"
+    ],
+    "status": "implemented",
+    "note": "Hub option after Todd’s room; the only thing that sets gunDiscovered."
+   }
+  },
+  {
+   "id": "N15",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Clean toilet",
+   "context": "The restroom across from Todd’s room, after Todd leaves it.",
+   "options": [
+    {
+     "label": "CLEAN TOILET",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, second floor.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+   ],
+   "note": "Chart node (objective CLEAN RESTROOM).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01d"
+    ],
+    "status": "simplified",
+    "note": "Hub option after Todd’s room (the transcript’s order; the wiki says after either bedroom)."
+   }
+  },
+  {
+   "id": "N16",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Clean bathroom",
+   "context": "Arrange bottles, store dirty clothes, mop the floor.",
+   "options": [
+    {
+     "label": "CLEAN BATHROOM",
+     "effect": "No effect.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, second floor.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+   ],
+   "note": "Chart node. PowerPyx says it is needed before the Alice talk; the transcript marks it optional.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01d"
+    ],
+    "status": "implemented",
+    "note": "Hub option, not required for the talk."
+   }
+  },
+  {
+   "id": "N17",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Read the magazine in Todd’s room",
+   "context": "A magazine with two covers on the cupboard by Todd’s door; the bedroom TV plays sports, job losses and President Warren’s 200,000 android combat units.",
+   "options": [
+    {
+     "label": "READ “ANDROID QB”",
+     "effect": "All Sports: CyberLife’s QB1000 quarterback demo.",
+     "target": null
+    },
+    {
+     "label": "READ “PUTTING A PRICE”",
+     "effect": "Tech Addict, “The Price of Life”: driverless cars assign victims a value.",
+     "target": null
+    },
+    {
+     "label": "Watch TV (not a chart node)",
+     "effect": "Sports, 225,000 jobs lost and 37.3% unemployment, the President’s android army order.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in Todd’s room, also after the talk.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Android_QB",
+    "https://detroit-become-human.fandom.com/wiki/The_Price_of_Life"
+   ],
+   "note": "Two optional chart nodes; the TV is not on the chart. No public-opinion effect.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R04b"
+    ],
+    "status": "implemented",
+    "note": "A media scene after the talk (“Back In Hallway”), with the TV as a third item."
+   }
+  },
+  {
+   "id": "N18",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Clean Alice’s room",
+   "context": "Make Alice’s bed (“I only need two minutes. Is that okay, Alice?” if she is there).",
+   "options": [
+    {
+     "label": "CLEAN ALICE’S ROOM",
+     "effect": "Mandatory.",
+     "target": "N19"
+    }
+   ],
+   "gate": "Second floor.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg"
+   ],
+   "note": "Chart node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01d"
+    ],
+    "status": "implemented",
+    "note": "Hub option; its text depends on whether Alice is already in her room."
+   }
+  },
+  {
+   "id": "N19",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Ventilate room; Kara discovers a way down",
+   "context": "Kara opens Alice’s window and finds a roof edge.",
+   "options": [
+    {
+     "label": "VENTILATE ROOM → KARA DISCOVERS A WAY DOWN",
+     "effect": "Unlock: “Window accessible in Stormy Night”.",
+     "target": "K03"
+    },
+    {
+     "label": "Leave the window shut",
+     "effect": "No way down is known.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in Alice’s room.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N18"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Stormy_Night"
+   ],
+   "note": "Yellow unlock node (open padlock). Whether the room can be finished with the window shut is an open question.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01d"
+    ],
+    "status": "implemented",
+    "note": "Hub option after Alice’s room; the only thing that sets the new window flag. Stormy Night does not read it yet."
+   }
+  },
+  {
+   "id": "N20",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "The Alice in Wonderland book (not a chart node)",
+   "context": "The book on Alice’s floor. “Alice In Wonderland… Of course.” Alice smiles.",
+   "options": [
+    {
+     "label": "Look at it with Alice there",
+     "effect": "Alice up: “Looking at the Alice in Wonderland book in her room ↑”. Zlatko: “Recall Alice’s Book”.",
+     "target": null
+    },
+    {
+     "label": "Look at it without Alice",
+     "effect": "No change (wiki Notes); still seen for Zlatko.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in Alice’s room.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "N18"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Zlatko"
+   ],
+   "note": "Not on the chart; a cross-chapter impact in the wiki’s list.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01d"
+    ],
+    "status": "implemented",
+    "note": "Two variants of one hub option; +1 only once Alice is in her room. The title is rendered with the girl’s name token."
+   }
+  },
+  {
+   "id": "N21",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Talk with Alice (her room)",
+   "context": "Three menus: FACTUAL / FRIENDLY / DIPLOMATIC; then two of NAME KARA / INTERESTS? / SEEM QUIET / MOTHER?, the last adding LEAVE ALONE.",
+   "options": [
+    {
+     "label": "FRIENDLY, DIPLOMATIC",
+     "effect": "Alice up each.",
+     "target": null
+    },
+    {
+     "label": "NAME KARA, INTERESTS?",
+     "effect": "Alice up each.",
+     "target": null
+    },
+    {
+     "label": "MOTHER",
+     "effect": "Alice down: the chapter’s only decrease.",
+     "target": null
+    },
+    {
+     "label": "FACTUAL, SEEM QUIET, LEAVE ALONE",
+     "effect": "No change.",
+     "target": null
+    }
+   ],
+   "gate": "After both bedrooms are tidied.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "N13",
+    "N18"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Chart node TALK WITH ALICE (speech bubble), leaving the bracket.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01d",
+     "K01e",
+     "K01f",
+     "K01g"
+    ],
+    "status": "implemented",
+    "note": "The second-floor hub’s exit, then three dialogue scenes. Options show the game’s labels (FACTUAL, FRIENDLY, DIPLOMATIC; NAME KARA, INTERESTS?, SEEM QUIET, MOTHER?, LEAVE ALONE); SEEM QUIET has no arrow in the game’s text."
+   }
+  },
+  {
+   "id": "N22",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Alice gives Kara a key",
+   "context": "Alice leaves; she gives Kara a key “if Alice has at least Neutral status”, otherwise “Alice coldly runs off”.",
+   "options": [
+    {
+     "label": "At least Neutral",
+     "effect": "Key given.",
+     "target": "N23"
+    },
+    {
+     "label": "Distant",
+     "effect": "No key.",
+     "target": null
+    }
+   ],
+   "gate": "End of the room talk.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "N21"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Alice"
+   ],
+   "note": "Triangle event node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01g",
+     "K01k"
+    ],
+    "status": "implemented",
+    "note": "Automatic at the end of the last menu: the key at the lowest bond the Alice scale calls Neutral; an event scene when given."
+   }
+  },
+  {
+   "id": "N23",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Open Alice’s box",
+   "context": "A clover, a photo of Todd, his wife and his biological daughter, and Alice’s drawings: the mother, Todd and his wife, Kara examined, Kara broken.",
+   "options": [
+    {
+     "label": "OPEN ALICE’S BOX",
+     "effect": "“Allows you to persuade Todd if he’s alive in Battle for Detroit”; the Todd page says the family photo is what matters.",
+     "target": "K23"
+    },
+    {
+     "label": "Leave it",
+     "effect": "Todd cannot be persuaded later.",
+     "target": null
+    }
+   ],
+   "gate": "Needs the key.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N22"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Todd_Williams",
+    "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+   ],
+   "note": "Drawn blue with no padlock, although the wiki lists it as a cross-chapter impact.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01x"
+    ],
+    "status": "implemented",
+    "note": "A decision scene offered only with the key; opening it sets aliceBox."
+   }
+  },
+  {
+   "id": "N24",
+   "chapter": 4,
+   "character": "Kara",
+   "title": "Finished Cleaning (ending)",
+   "context": "Downstairs, Todd rages at Alice (“SAY IT! YOU HATE ME!”), grabs her, then breaks down and apologizes.",
+   "options": [
+    {
+     "label": "FINISHED CLEANING",
+     "effect": "The chapter’s only ending, on every path.",
+     "target": null
+    }
+   ],
+   "gate": "Always, after the room talk.",
+   "kind": "State gate",
+   "dependsOn": [
+    "N21"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home",
+    "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
+    "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-5.jpg"
+   ],
+   "note": "Ending card, no icon.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K01z"
+    ],
+    "status": "implemented",
+    "note": "A narrated event; the table is clear or not depending on the dishes."
+   }
+  }
+ ]
+}

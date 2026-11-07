@@ -1,0 +1,160 @@
+{
+ "chapter": {
+  "id": 19,
+  "title": "Spare Parts",
+  "character": "Markus",
+  "note": "",
+  "source": "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+ },
+ "decisions": [
+  {
+   "id": "M05",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Handle the security encounter",
+   "context": "A human guard approaches John and the raiders.",
+   "options": [
+    {
+     "label": "Hide with John / release him",
+     "effect": "John can cover for the group.",
+     "target": null
+    },
+    {
+     "label": "Attack",
+     "effect": "Human bloodshed is possible.",
+     "target": null
+    },
+    {
+     "label": "Flee",
+     "effect": "Abandon the raid early.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M06",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Free the stored androids?",
+   "context": "A cargo container holds inactive androids.",
+   "options": [
+    {
+     "label": "Awaken them",
+     "effect": "Recruit more androids.",
+     "target": null
+    },
+    {
+     "label": "Leave them",
+     "effect": "Continue with supplies only.",
+     "target": null
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Ethical",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M07",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Trust John?",
+   "context": "The security android asks to join.",
+   "options": [
+    {
+     "label": "Accept",
+     "effect": "Learn about a supply truck; John may later save Markus.",
+     "target": "M19"
+    },
+    {
+     "label": "Refuse",
+     "effect": "Lose John’s help.",
+     "target": "M19"
+    }
+   ],
+   "gate": "Reach this scene with the character alive.",
+   "kind": "Pivotal",
+   "dependsOn": [],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M08",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Risk taking the supply truck?",
+   "context": "John offers a larger haul.",
+   "options": [
+    {
+     "label": "Get the key by distraction or blackout",
+     "effect": "Avoid direct confrontation.",
+     "target": null
+    },
+    {
+     "label": "Threaten the guards",
+     "effect": "Risk a fight and deaths.",
+     "target": null
+    },
+    {
+     "label": "Leave with current supplies",
+     "effect": "Avoid the additional raid.",
+     "target": null
+    }
+   ],
+   "gate": "John accepted.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M07"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  },
+  {
+   "id": "M09",
+   "chapter": 19,
+   "character": "Markus",
+   "title": "Return for John during an alarm?",
+   "context": "Guard dogs catch John during the retreat.",
+   "options": [
+    {
+     "label": "Help him",
+     "effect": "Attempt to keep him alive.",
+     "target": "M19"
+    },
+    {
+     "label": "Keep running",
+     "effect": "John dies.",
+     "target": "M19"
+    }
+   ],
+   "gate": "Alarm raised; John joined.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "M07"
+   ],
+   "sources": [
+    "https://www.powerpyx.com/detroit-become-human-spare-parts-walkthrough-100/"
+   ],
+   "note": "",
+   "status": "Source-backed summary"
+  }
+ ]
+}
