@@ -37,7 +37,7 @@ test('chapter modules: a fake chapter 99 state key, gate, options, consequence, 
   assert.equal(r.event1,'Do the built-in thing.','an unhandled choice falls through to the built-in switch and default outcome');
   assert.match(r.event2,/^Connor falls\. This body is destroyed/);assert.equal(r.connorDeaths,1);assert.equal(r.hankAfterDeath,-1-3,'the chapter death effect applies');
   assert.equal(r.eventScene,'Fake event narration.');assert.ok(r.eventFact,'event facts still apply');
-  assert.equal(r.labels,'Object.assign(LABELS,{"ch99Flag":"Chapter 99 flag"});');
+  assert.ok(r.labels.startsWith('Object.assign(LABELS,{')&&r.labels.includes('"ch99Flag":"Chapter 99 flag"'),'chapter 99 label is merged alongside any real chapter labels');
  }finally{rmSync(MODULE,{force:true})}
  assert.ok(!existsSync(MODULE),'throwaway module removed');
  assert.ok(!('ch99Flag' in initialState()),'this process never loaded the throwaway module');
