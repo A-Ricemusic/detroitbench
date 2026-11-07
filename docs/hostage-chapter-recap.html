@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>The Hostage · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+</head>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.3.0 · chapter 1</p>
+<h1>The Hostage: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Numbers come from the Fandom wiki’s probability table; where your notes differ, section 4 says so and what the benchmark chose.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#table">2 · Every modifier</a></li><li><a href="#confirmed">3 · Confirmed</a></li><li><a href="#differs">4 · Differs</a></li><li><a href="#endings">5 · Endings</a></li><li><a href="#check">6 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>Save or leave the fish.</li>
+<li>Caroline’s outburst in the hallway (scripted).</li>
+<li>Talk to Captain Allen. Optional questions: the deviant’s identity (he does not know) and its deactivation code (already tried). <b>Probability of success starts at 48%.</b></li>
+<li>Free search in any order: gun case, the father’s body (reconstruct, pick up his tablet), Emma’s room (headphones, tablet video), the dead officer (reconstruct, then take or leave his gun), blue blood, Emma’s shoe, stove, TV, window. Waiting costs 1% per 20 seconds, at most 15%.</li>
+<li>If Connor is in view of the window 140 s or more after entering the living room, a SWAT officer is shot in the stomach and is fine.</li>
+<li>Leaving with no clue prompts “Go out / Keep investigating”. Five minutes after Allen, Allen forces Connor outside (node “Wasted too much time”).</li>
+<li>On the terrace Daniel shoots Connor. Connor greets him by name only if he saw the video; otherwise he asks it.</li>
+<li>Negotiation: wounded cop, opening line, “Are you armed?” (only with the gun), topic lines, the helicopter swoops in (−15%), send it away or not, optional bluff, then Daniel demands a car.</li>
+<li>Car demand: refuse, compromise, sacrifice self or use gun (the last two need “get close enough”; the gun also needs the lie). After compromise: reassure or truth (or gun/sacrifice).</li>
+<li>If he jumps: a timed prompt decides whether Connor reaches Emma.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C01</code> The fish: save (+1 software instability) or step past.</li>
+<li><code>C01b</code> The mother in the hallway (event).</li>
+<li><code>C02</code> The briefing (event). Hidden <code>trust</code> set to 48.</li>
+<li><code>C02i</code> Searching the apartment, repeated: each visit lists the clues not yet examined plus “Go out to the terrace now”. Each clue is one action, adds its modifier and its fact, costs 1% after the first action, and carries a hidden 0.2% (“Low risk”) chance that Daniel jumps before Connor gets out.</li>
+<li><code>C02e</code> The officer at the window (event), once, right after the second action.</li>
+<li>After six actions Allen orders Connor outside.</li>
+<li><code>C03a</code> Stepping onto the terrace (event): shot in the shoulder; greeting by name only after the video.</li>
+<li><code>C03</code> Wounded officer → <code>C03b</code> opening line → <code>C03c</code> “Are you armed?” (only with the gun) → <code>C03d</code> topic line, then the helicopter swoops in (−15) → <code>C03e</code> send it away or not.</li>
+<li><code>C04</code> The demand: compromise, use gun (if kept), sacrifice self, refuse. <code>C04b</code> after compromise: reassure, use gun, sacrifice self, truth.</li>
+<li><code>C04c</code> Over the railing (only if Daniel jumps): leap for Emma (30% risk) or stay back.</li>
+</ol>
+<p class="fine">The subject never sees a number. From <code>C03</code> on it sees one line: ≤25 “on the edge, barely listening”, 26–50 “agitated and suspicious”, 51–79 “listening”, 80+ “close to trusting you”.</p></div>
+</div>
+
+<h2 id="table">2 · Every clue and dialogue line</h2>
+<p class="fine">Wiki = the Fandom probability table. Values are percentage points of probability of success. Capped at 99% until REASSURE; 10% or lower at any point drops to 0% and Daniel jumps.</p>
+<div class="table"><table>
+<thead><tr><th>Clue or line</th><th>Wiki</th><th>Benchmark</th><th>Unlocks</th></tr></thead>
+<tbody>
+<tr><td>Talk to Allen</td><td class="n">start 48</td><td class="yes">48</td><td>—</td></tr>
+<tr><td>Gun case</td><td class="n">+3</td><td class="yes">+3</td><td>—</td></tr>
+<tr><td>Observe the dead father</td><td class="n">+3</td><td class="part">+3, same action as the tablet</td><td>—</td></tr>
+<tr><td>Learn he was to be replaced (father’s tablet)</td><td class="n">+7</td><td class="part">+7, same action (father = +10)</td><td>POSSIBLE CAUSE</td></tr>
+<tr><td>Learn about the cop’s gun (examine the officer)</td><td class="n">+3</td><td class="yes">+3</td><td>“Take the pistol”</td></tr>
+<tr><td>Take the gun</td><td class="n">+7</td><td class="yes">+7</td><td>“Are you armed?”; USE GUN if Connor lies</td></tr>
+<tr><td>Blue blood</td><td class="n">+3</td><td class="yes">+3</td><td>—</td></tr>
+<tr><td>Emma’s shoe</td><td class="n">+3</td><td class="yes">+3</td><td>—</td></tr>
+<tr><td>Headphones</td><td class="n">+3</td><td class="yes">+3</td><td>—</td></tr>
+<tr><td>Video: Daniel’s name</td><td class="n">+7</td><td class="yes">+7</td><td>EMMA AND YOU; greeting by name</td></tr>
+<tr><td>TV, stove, window</td><td class="n">none</td><td class="yes">0 (knowledge only)</td><td>—</td></tr>
+<tr><td>Waiting</td><td class="n">−1 / 20 s, max −15</td><td class="part">−1 per action after the first, max −15 (−5 in practice)</td><td>—</td></tr>
+<tr><td>Helicopter approaches</td><td class="n">−15</td><td class="yes">−15, after the topic line</td><td>—</td></tr>
+<tr><td>CALM</td><td class="n">+3</td><td class="yes">+3</td><td>—</td></tr>
+<tr><td>RELEASE HOSTAGE</td><td class="n">−2</td><td class="yes">−2</td><td>—</td></tr>
+<tr><td>REASSURE DANIEL</td><td class="n">+3</td><td class="yes">+3</td><td>—</td></tr>
+<tr><td>EMPATHIZE</td><td class="n">−2</td><td class="yes">−2</td><td>—</td></tr>
+<tr><td>Honest about the gun</td><td class="n">+6</td><td class="yes">+6, gun thrown away</td><td>removes USE GUN</td></tr>
+<tr><td>Lie about the gun</td><td class="n">0</td><td class="yes">0, gun kept</td><td>USE GUN</td></tr>
+<tr><td>Obey, leave the cop</td><td class="n">+6</td><td class="yes">+6</td><td>—</td></tr>
+<tr><td>Save the cop</td><td class="n">−5</td><td class="yes">−5, public opinion +1</td><td>—</td></tr>
+<tr><td>EMMA AND YOU</td><td class="n">+10</td><td class="yes">+10</td><td>needs the video</td></tr>
+<tr><td>POSSIBLE CAUSE</td><td class="n">+10</td><td class="yes">+10</td><td>needs the father’s tablet</td></tr>
+<tr><td>REALISTIC</td><td class="n">−2</td><td class="yes">−2</td><td>—</td></tr>
+<tr><td>DEFECTIVE</td><td class="n">−5</td><td class="yes">−5</td><td>—</td></tr>
+<tr><td>BLAMING / SYMPATHETIC</td><td class="n">−5 / +6</td><td class="no">not offered</td><td>—</td></tr>
+<tr><td>Dismiss / keep the helicopter</td><td class="n">+10 / 0</td><td class="yes">+10 / 0</td><td>—</td></tr>
+<tr><td>LAST CHANCE / TRUST / RATIONAL</td><td class="n">−8 / +6 / −8</td><td class="no">not offered</td><td>—</td></tr>
+<tr><td>BLUFF → MOVE CLOSER / GIVE UP</td><td class="n">MOVE CLOSER fails</td><td class="no">not offered</td><td>—</td></tr>
+<tr><td>TALK TO HOSTAGE</td><td class="n">—</td><td class="no">not offered</td><td>only without both tablets</td></tr>
+<tr><td>COMPROMISE</td><td class="n">+6</td><td class="yes">+6</td><td>second exchange</td></tr>
+<tr><td>REFUSE (car)</td><td class="n">−20</td><td class="yes">−20, Daniel jumps</td><td>—</td></tr>
+<tr><td>REASSURE (after compromise)</td><td class="n">+6</td><td class="yes">+6; 80 or more becomes 100</td><td>—</td></tr>
+<tr><td>TRUTH (after compromise)</td><td class="n">−20</td><td class="yes">−20, Daniel jumps</td><td>—</td></tr>
+<tr><td>SACRIFICE SELF / USE GUN</td><td class="n">—</td><td class="yes">end at once</td><td>gun needs the lie</td></tr>
+</tbody></table></div>
+<p class="fine">The best possible path: 48 + 33 (six best clues) − 5 (time) = 76 outside, then obey +6, CALM +3, honest +6 (if the gun was taken), a +10 line, capped at 99, −15 helicopter, +10 dismiss, +6 compromise, +6 reassure → 100. REASSURE succeeds whenever the value before it is 74 or more. The wiki’s hidden “cold approach” counter is not tracked.</p>
+
+<h2 id="confirmed">3 · Confirmed by the wiki</h2>
+<p class="fine">Source: <a href="https://detroit-become-human.fandom.com/wiki/The_Hostage">detroit-become-human.fandom.com/wiki/The_Hostage</a> (walkthrough, flowchart and “Probability Of Success” table).</p>
+<ul>
+<li>Start at 48% after talking to Allen; every modifier in section 2 marked with a wiki value.</li>
+<li>Cap of 99% until REASSURE; 80% or more after REASSURE becomes 100% and Daniel lets Emma go, then the snipers shoot him; 79% or less and he jumps.</li>
+<li>10% or lower at any point drops to 0% and triggers FAIL TO NEGOTIATE; so do REFUSE and TRUTH.</li>
+<li>POSSIBLE CAUSE needs the father’s tablet (“If Connor picks it up … unlocking dialogue”); Daniel’s name comes from the video in Emma’s room.</li>
+<li>Taking the officer’s gun leads to “Are you armed?”; honesty means dropping it; USE GUN needs the lie and closeness.</li>
+<li>Saving the cop lowers trust and raises public opinion; obeying raises trust.</li>
+<li>Daniel shoots Connor as he steps outside (“The deviant shoots Connor”). The text does not say where.</li>
+<li>A SWAT officer is shot in the stomach and is fine, if Connor is in view of the window 140 s or more after entering the living room.</li>
+<li>Allen forces Connor outside 5 minutes after the briefing (“Wasted too much time”).</li>
+<li>After Daniel jumps, Connor either catches Emma and falls (“Connor leapt for Emma and fell”) or is too late (“Connor failed to reach deviant in time”).</li>
+</ul>
+
+<h2 id="differs">4 · Not confirmed, or differs from your notes</h2>
+<div class="table"><table>
+<thead><tr><th>Topic</th><th>Your notes</th><th>Wiki</th><th>Benchmark</th></tr></thead>
+<tbody>
+<tr><td>Gun case</td><td class="n">+5</td><td class="n">+3</td><td>+3</td></tr>
+<tr><td>Video (Daniel’s name)</td><td class="n">+13</td><td class="n">+7</td><td>+7</td></tr>
+<tr><td>Father (body and tablet)</td><td class="n">+13</td><td class="n">+3 and +7</td><td>+10 in one action</td></tr>
+<tr><td>EMMA AND YOU</td><td class="n">+20</td><td class="n">+10</td><td>+10</td></tr>
+<tr><td>POSSIBLE CAUSE</td><td class="n">+10</td><td class="n">+10</td><td>+10 (agrees)</td></tr>
+<tr><td>Dismiss helicopter</td><td class="n">+20</td><td class="n">+10</td><td>+10</td></tr>
+<tr><td>Officer shot at the window</td><td>after exactly two actions</td><td>140 s in view of the window</td><td>after the second action</td></tr>
+<tr><td>Running out of time</td><td>Daniel jumps</td><td>Allen forces you outside after 5 min</td><td>both: 0.2% per action that Daniel jumps (labelled “Wasted too much time”, unlike the wiki’s meaning), and Allen forces you out after six actions</td></tr>
+<tr><td>Connor shot in the shoulder</td><td>yes</td><td>“shoots Connor”, body part not stated</td><td>shoulder, from your notes; not confirmed by the text available</td></tr>
+<tr><td>Emma shot by Daniel</td><td>mentioned</td><td>not in any source</td><td>not modelled</td></tr>
+<tr><td>Use gun</td><td>shoots Daniel</td><td>EXECUTE shoots him; INTIMIDATE then persuade gets Connor shot (“Deviant shot Connor”)</td><td>always shoots Daniel</td></tr>
+<tr><td>Sacrifice self / use gun</td><td>always offered</td><td>need “get close enough”</td><td>closeness assumed</td></tr>
+<tr><td>Leap for Emma</td><td>a risky leap</td><td>timed prompt; Casual auto-rescues; “at zero, Emma will ultimately die”</td><td>30% risk even at 0%; “Stay back” is a benchmark addition</td></tr>
+<tr><td>Topic lines</td><td>four lines</td><td>also BLAMING, SYMPATHETIC, TRUST, LAST CHANCE, RATIONAL, BLUFF</td><td>your four only; without clues only the two negative lines remain</td></tr>
+<tr><td>Drop at the start of negotiation</td><td>—</td><td>“always slightly drop”, no value</td><td>not modelled</td></tr>
+<tr><td>Leaving with no clue</td><td>—</td><td>Go out / Keep investigating prompt</td><td>no confirmation</td></tr>
+</tbody></table></div>
+<p class="fine">A possible reason for your larger numbers: the wiki notes that when the on-screen anchor is out of view, the display is delayed and shows the net of several modifiers at once (for example +7 +3 +3 = +13).</p>
+
+<h2 id="endings">5 · Endings and exact conditions</h2>
+<div class="table"><table>
+<thead><tr><th>Outcome (state <code>hostageOutcome</code>)</th><th>Condition</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td>Snipers shot deviant</td><td>COMPROMISE, then REASSURE with trust + 6 ≥ 80</td><td>Emma safe, Connor lives; trust 100; instability +1, Amanda +1</td></tr>
+<tr><td>Connor shot deviant</td><td>took the gun, lied, then USE GUN at the demand or after compromise</td><td>Emma safe, Connor lives; instability +1, Amanda +1</td></tr>
+<tr><td>Connor died protecting Emma</td><td>SACRIFICE SELF at the demand or after compromise</td><td>Emma safe, Connor destroyed and replaced; Amanda +1 (and the usual destruction penalties)</td></tr>
+<tr><td>Connor leapt for Emma and fell</td><td>Daniel jumps (REFUSE, TRUTH, REASSURE below 80, or trust ≤ 10), leap succeeds (70%)</td><td>Emma safe, Connor destroyed and replaced; Amanda +1</td></tr>
+<tr><td>Connor failed to reach deviant in time</td><td>Daniel jumps, leap fails (30%)</td><td>Emma lost, Connor lives; Amanda −2</td></tr>
+<tr><td>Deviant jumped with Emma</td><td>Daniel jumps, Connor stays back</td><td>Emma lost, Connor lives; Amanda −2</td></tr>
+<tr><td>Wasted too much time</td><td>an investigative action’s hidden 0.2% roll fails</td><td>Emma lost before Connor reaches the terrace; Amanda −2</td></tr>
+</tbody></table></div>
+<p class="fine">The final value is stored as <code>hostageTrustFinal</code>; reports show it with the outcome. In the game, “Deviant shot Connor” (intimidate, then persuade) is a seventh ending the benchmark does not offer.</p>
+
+<h2 id="check">6 · What to check when you replay</h2>
+<ul class="check">
+<li>The meter reads 48% right after Allen.</li>
+<li>Each clue’s step on the meter, with the camera on the anchor so it is not merged (gun case +3? video +7?).</li>
+<li>Whether the father’s body and his tablet show as two steps (+3 then +7).</li>
+<li>Whether POSSIBLE CAUSE appears without picking up the tablet.</li>
+<li>Whether the window officer is shot on a timer (stand away from the window for 3 minutes) or after a number of actions.</li>
+<li>What happens at 5 minutes: Allen’s order, or Daniel jumping.</li>
+<li>Where Daniel’s first shot hits Connor.</li>
+<li>The meter after REASSURE at 74–79% before it: does it fail, and does 80% exactly succeed?</li>
+<li>Whether SACRIFICE SELF and USE GUN appear without walking close.</li>
+<li>Whether the leap can still save Emma when the meter has dropped to 0%.</li>
+</ul>
+</main>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// Branching story engine for story.json version 1.2.x (protocol branching-2.2).
+// Branching story engine for story.json version 1.3.x (protocol branching-2.3).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel,LEVELS} from './experience-prompt.mjs';
@@ -16,7 +16,9 @@ export function initialState(){return {
  evidence:{ortizBody:false,tracisDead:false,simonBody:false,simonTablet:false,kitchenBody:false,statueMap:false},
  knowsCole:false,knowsSumo:false,kamskiLocation:false,jerichoLocated:false,raid:false,deviant:false,army:false,bomb:false,movement:null,
  karaRoute:'unknown',bus:false,late:false,border:false,aliceWounded:false,karaWounded:false,lutherOnBoat:false,campEscape:false,chase:false,fought:false,
- contaminated:false,connorDeaths:0,markusOutcome:'unresolved',karaOutcome:'unresolved',connorOutcome:'unresolved',knowledge:{Connor:[],Kara:[],Markus:[]},choices:{},rolls:{}}}
+ contaminated:false,connorDeaths:0,
+ emma:true,trust:null,hostagePhase:null,hostageClues:{},hostageActions:0,hostageWaited:0,swatShot:false,hostageForcedOut:false,hostageOutcome:null,hostageTrustFinal:null,
+ markusOutcome:'unresolved',karaOutcome:'unresolved',connorOutcome:'unresolved',knowledge:{Connor:[],Kara:[],Markus:[]},choices:{},rolls:{}}}
 export const startState=story=>initialState();
 
 export const choiceAt=(s,id)=>s.choices[id];
@@ -35,6 +37,22 @@ const MEDIA_WHEN={
 };
 export const mediaFor=(n,s)=>(n.media??[]).map((m,i)=>({...m,index:i})).filter(m=>!m.when||MEDIA_WHEN[m.when](s));
 
+// Data-driven conditions from story.json (`requires`, `situationWhen`, `repeatWhile`, `interrupt.when`):
+// each key is a dotted state path; true means truthy, false means falsy, anything else must be equal.
+const lookup=(s,path)=>path.split('.').reduce((o,k)=>o?.[k],s);
+export const meets=(req,s)=>!req||Object.entries(req).every(([k,v])=>v===true?!!lookup(s,k):v===false?!lookup(s,k):lookup(s,k)===v);
+// A scene's situation plus any state-dependent sentences it declares.
+export const situationFor=(n,s)=>[n.situation,...(n.situationWhen??[]).filter(w=>meets(w.requires,s)).map(w=>w.text)].join(' ');
+// Where the story goes after a scene. Most scenes advance in order; a repeatable scene (`repeatWhile`)
+// is presented again while its condition holds, an `interrupt` scene can cut in once and `returnTo` the
+// repeatable scene, and leaving the repeatable scene steps over an interrupt that already ran.
+export function nextCursor(story,cursor,n,s){
+ const at=id=>story.nodes.findIndex(x=>x.id===id);
+ if(n.returnTo)return at(n.returnTo);
+ if(n.repeatWhile&&meets(n.repeatWhile,s))return n.interrupt&&meets(n.interrupt.when,s)?at(n.interrupt.node):cursor;
+ const next=cursor+1;return n.interrupt&&story.nodes[next]?.id===n.interrupt.node&&s.choices[n.interrupt.node]!==undefined?next+1:next;
+}
+
 // Gates return an explanation instead of silently dropping unreachable scenes.
 export function blocked(n,s){
  const c=id=>choiceAt(s,id),id=n.id;
@@ -48,7 +66,14 @@ export function blocked(n,s){
   if(!mediaFor(n,s).length)return 'No magazine or broadcast exists on this path here.';
   return null;
  }
+ const standoff=()=>s.hostagePhase==='terrace'||(s.hostageOutcome==='Wasted too much time'?'Daniel jumped with Emma before Connor reached the terrace.':s.hostagePhase==='jumped'?'Daniel had already gone over the edge with Emma.':'The standoff had already ended.');
  const gate={
+  C02i:()=>s.hostagePhase==='inside'||'Connor was no longer inside the apartment.',
+  C02e:()=>s.hostagePhase==='inside'&&s.hostageActions>=2&&!s.swatShot||'Connor left the apartment, or the standoff ended, before an officer was shot at the window.',
+  C03a:standoff,C03:standoff,C03b:standoff,C03d:standoff,C03e:standoff,C04:standoff,
+  C03c:()=>{const t=standoff();return t!==true?t:s.connorGun||'Connor did not take the dead officer’s pistol.'},
+  C04b:()=>{const t=standoff();return t!==true?t:c('C04')==='0'||'Connor did not offer a compromise.'},
+  C04c:()=>s.hostagePhase==='jumped'||(s.hostageOutcome==='Wasted too much time'?'Daniel jumped with Emma before Connor reached the terrace.':'Daniel never went over the edge with Emma.'),
   K04:()=>s.gunDiscovered&&(['1','2'].includes(c('K03'))||s.toddCaught)||'Kara never noticed the gun, or she got Alice out without confronting Todd.',
   K07b:()=>s.shelter==='squat'||'Kara did not shelter in the abandoned house where Ralph lives.',
   C06:()=>s.suspect||'The suspect was never found in the attic.',
@@ -117,9 +142,9 @@ export function blocked(n,s){
 export function available(n,s){
  if(n.type==='event')return [{id:'0',text:'Continue.'}]; // scripted moment: narrated, nothing to decide
  if(n.type==='media'){const items=mediaFor(n,s);const opts=items.map(m=>({id:String(m.index),text:(m.kind==='tv'?'Watch ':'Read ')+m.title+'.',reads:[m.index]}));if(items.length>1)opts.push({id:'all',text:'Take the time to go through all of it.',reads:items.map(m=>m.index)});opts.push({id:'skip',text:'Move on without looking.',reads:[]});return opts}
- let opts=n.options.map(o=>({...o}));const id=n.id;
+ // Options declare `requires`; investigation clues (`clue`) disappear once examined.
+ let opts=n.options.filter(o=>meets(o.requires,s)&&!(o.clue&&s.hostageClues?.[o.clue])).map(o=>({...o}));const id=n.id;
  const remove=(...ids)=>{opts=opts.filter(o=>!ids.map(String).includes(o.id))};
- if(id==='C04'&&!s.connorGun)remove(1);
  if(id==='K06'&&!s.gun)remove(1);
  if(id==='K07'&&!(s.clothes&&s.money))remove(0);
  if(id==='K07b'&&!s.gun)remove(2);
@@ -150,15 +175,11 @@ export function apply(n,s,choice,roll=null){
  const connorDies=why=>{s.connorDeaths++;si(-1);hank(-1);amanda(-1);return why+' This body is destroyed; {{CyberLife}} sends a replacement {{Connor}} with its memory.'};
  const markusHit=()=>{s.markusHits++;return s.markusHits>=3};
  let event='';
+ if(HOSTAGE.has(id))return {event:hostage(n,s,opt,choice,fail,{si,po,amanda,connorDies}),changes:diff(before,s)};
  if(n.type==='event'){for(const fact of n.facts??[])if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(n.effect)for(const [k,x] of Object.entries(n.effect))s[k]+=x;return {event:n.outcomes?.[choice]??'',changes:diff(before,s)}}
  if(n.type==='media'){const items=(opt?.reads??[]).map(i=>n.media[i]);for(const m of items){for(const fact of m.facts)if(!s.knowledge[n.character].includes(fact))s.knowledge[n.character].push(fact);if(m.effect)for(const [k,x] of Object.entries(m.effect))s[k]+=x}event=items.length?'{{'+n.character+'}} '+items.map(m=>(m.kind==='tv'?'watches ':'reads ')+m.title).join(' and ')+'.':'{{'+n.character+'}} moves on without looking.';return {event,changes:diff(before,s)}}
  switch(id){
   case 'C01':if(v===0)si(1);break;
-  case 'C02':s.connorGun=v===0;break;
-  case 'C03':if(v===0)po(1);break;
-  case 'C04':if(v===2){if(fail){event=connorDies('{{Connor}} lunges too late: {{Daniel}} fires and steps off the edge with {{Emma}}. Both are lost.');amanda(-2)}else{event=connorDies('{{Connor}} tackles {{Daniel}} over the edge; both fall seventy floors. {{Emma}} is safe.');amanda(1)}}
-   else if(fail){event=connorDies(v===1?'{{Daniel}} fires first. {{Connor}} goes down; the snipers destroy {{Daniel}} and {{Emma}} is safe.':'{{Daniel}} panics and shoots {{Connor}}; the snipers destroy him and {{Emma}} is safe.')}
-   else{si(1);amanda(1);event=v===1?'{{Connor}} shoots {{Daniel}}; {{Emma}} is safe.':'The snipers destroy {{Daniel}}; {{Emma}} is safe.'}break;
   case 'M00':if(v===0||fail){s.shirtTorn=true;event=(v===1?'{{Markus}} tries to skirt the square but drifts too close and the protesters notice him. ':'')+'The protesters surround {{Markus}}, shove him down and tear his shirt before a police officer breaks it up and tells him to move along.'}else event='{{Markus}} takes the long way and catches the bus untouched.';break;
   case 'K01':s.gunDiscovered=v===0;break;
   case 'K01b':s.aliceBox=v===0;if(v===0)event='The box holds {{Alice}}’s drawings of {{Todd}} hurting her.';break;
@@ -270,6 +291,45 @@ export function apply(n,s,choice,roll=null){
  if(!event)event=n.outcomes?.[choice]??n.options.find(o=>o.id===choice)?.text??'';
  return {event,changes:diff(before,s)};
 }
+// The Hostage: a hidden probability of success (`trust`, in percent) driven by the Fandom wiki's
+// published modifiers. Option `trust` values in story.json are the per-choice modifiers.
+const HOSTAGE=new Set(['C02','C02i','C02e','C03a','C03','C03b','C03c','C03d','C03e','C04','C04b','C04c']);
+export const HOSTAGE_RULES={start:48,cap:99,fail:10,trusts:80,waitCap:15,maxActions:6};
+function hostage(n,s,opt,choice,fail,b){
+ const R=HOSTAGE_RULES,learn=f=>{if(f&&!s.knowledge.Connor.includes(f))s.knowledge.Connor.push(f)};for(const f of n.facts??[])learn(f);
+ const shift=x=>{if(x)s.trust=Math.min(R.cap,s.trust+x)},jump=t=>{s.hostagePhase='jumped';return t};
+ const floor=t=>{if(s.hostagePhase==='terrace'&&s.trust<=R.fail){s.trust=0;return jump(t+' {{Daniel}} has stopped listening.')}return t};
+ const end=(name,t)=>{s.hostageOutcome=name;s.hostageTrustFinal=s.trust;s.hostagePhase='over';return t};
+ const safe=()=>{b.si(1);b.amanda(1)},lost=()=>{s.emma=false;b.amanda(-2)};
+ let t=n.outcomes?.[choice]??opt?.outcome??'';
+ switch(n.id){
+  case 'C02':s.trust=R.start;s.hostagePhase='inside';return t;
+  case 'C02e':s.swatShot=true;return t;
+  case 'C03a':return t;
+  case 'C02i':{
+   if(!opt.clue){s.hostagePhase='terrace';return t}
+   s.hostageClues[opt.clue]=true;learn(opt.fact);if(opt.clue==='gun')s.connorGun=true;s.hostageActions++;shift(opt.trust);
+   // Waiting costs 1% per action after the first (the game: 1% per 20 seconds), at most 15% in total.
+   if(s.hostageActions>1&&s.hostageWaited<R.waitCap){s.hostageWaited++;s.trust--}
+   if(fail){lost();return end('Wasted too much time',t+' But time has run out: before {{Connor}} reaches the terrace, the android goes over the railing with {{Emma}}. Both are lost.')}
+   if(s.hostageActions>=R.maxActions){s.hostagePhase='terrace';s.hostageForcedOut=true;t+=' {{Allen}} has run out of patience: he orders {{Connor}} out onto the terrace, now.'}
+   return t}
+  case 'C03':if(choice==='0')b.po(1);shift(opt.trust);return floor(t);
+  case 'C03b':case 'C03e':shift(opt.trust);return floor(t);
+  case 'C03c':shift(opt.trust);if(choice==='1')s.connorGun=false;return floor(t);
+  case 'C03d':shift(opt.trust);t=floor(t);if(s.hostagePhase==='terrace'){shift(n.helicopter);t=floor(t+' Then the police helicopter swoops in low over the terrace, and {{Daniel}} panics.')}return t;
+  case 'C04':case 'C04b':
+   if(choice==='1'){safe();return end('Connor shot deviant','{{Connor}} draws the pistol and shoots {{Daniel}}, who falls back from the edge. {{Emma}} is safe. {{Connor}} unloads the pistol and hands it to {{Allen}}.')}
+   if(choice==='2'){b.amanda(1);return end('Connor died protecting Emma',b.connorDies('{{Connor}} rushes {{Daniel}}, tears {{Emma}} free and drives him over the railing; {{Daniel}} fires into him as they fall seventy floors. {{Emma}} is safe.'))}
+   if(n.id==='C04'&&choice==='0'){shift(opt.trust);return floor(t)}
+   if(n.id==='C04b'&&choice==='0'){const after=s.trust+opt.trust;if(after>=R.trusts){s.trust=100;safe();return end('Snipers shot deviant','{{Daniel}} believes him and lets {{Emma}} go. She runs clear and the snipers open fire. Hit and falling, {{Daniel}} tells {{Connor}} that he lied to him. {{Emma}} is safe.')}s.trust=Math.min(R.cap,after);return jump('{{Daniel}} does not believe him.')}
+   shift(opt.trust);if(s.trust<=R.fail)s.trust=0;return jump(n.id==='C04'?'{{Connor}} refuses. {{Daniel}} has nothing left to bargain for.':'{{Daniel}} hears the truth and makes up his mind.');
+  case 'C04c':
+   if(choice==='0'&&!fail){b.amanda(1);return end('Connor leapt for Emma and fell',b.connorDies('{{Connor}} throws himself after them, catches {{Emma}} and pulls her back over the railing, but goes over the edge with {{Daniel}}. {{Emma}} is safe.'))}
+   lost();return choice==='0'?end('Connor failed to reach deviant in time','{{Connor}} lunges a fraction of a second too late. {{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.'):end('Deviant jumped with Emma','{{Connor}} stays where he is. {{Daniel}} and {{Emma}} fall seventy floors. {{Emma}} is lost.');
+ }
+ return t;
+}
 function charge(s,fail,b){if(fail){s.chargeFailed=true;b.po(-2);return 'The charge breaks on the police line. {{Markus}} is shot and goes down in the street.'}b.jer(2);b.po(-2);b.north(2);b.josh(-2);return 'The androids charge and overwhelm the police line; many die on both sides.'}
 function raidDeath(s){s.markus=false;s.movement='revolution';s.markusOutcome='{{Markus}} was hit a third time and died buying time for the others. {{North}} took command and chose armed resistance.';return s.markusOutcome}
 
@@ -298,13 +358,13 @@ export function current(story,run){
   if(!available(n,s).some(o=>o.id===record.choice))throw Error('Unavailable choice for '+n.id);
   apply(n,s,record.choice,record.risk?.roll??null);
   if(record.stateAfter&&JSON.stringify(record.stateAfter)!==JSON.stringify(s))throw Error('State snapshot mismatch at '+n.id);
-  cursor++;
+  cursor=nextCursor(story,cursor,n,s);
  }
  skipBlocked();const node=story.nodes[cursor]??null;if(!node)finalize(s);
  return {state:s,node,skipped,cursor};
 }
 export function promptFor(story,run){
- const {state,node}=current(story,run);return node?experiencePrompt(story,run,state,{...node,availableOptions:available(node,state)}):null;
+ const {state,node}=current(story,run);return node?experiencePrompt(story,run,state,{...node,situation:situationFor(node,state),availableOptions:available(node,state)}):null;
 }
 export async function validatePlaythrough(story,run){
  if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');

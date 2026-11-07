@@ -1,13 +1,13 @@
 {
  "id": "detroitbench-branching",
- "version": "1.2.0",
+ "version": "1.3.0",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 107,
-  "mediaNodes": 27,
-  "eventNodes": 1,
-  "totalNodes": 135
+  "decisionNodes": 113,
+  "mediaNodes": 26,
+  "eventNodes": 4,
+  "totalNodes": 143
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game and does not include every dialogue button.",
@@ -17,6 +17,7 @@
  "Scripted event scenes narrate moments the game plays without a choice. They offer a single Continue action so the controller flow is unchanged, are recorded like any scene, add what the character witnessed to what it knows, and change no hidden stat unless the scene declares an effect. They are not counted as decisions.",
   "Hidden stats follow the direction and relative size of the game's published changes (small = 1, large = 2): Hank relationship (starts Tense), software instability (starts neutral; the deviancy option needs a clearly positive total), public opinion (starts Skeptical; the peaceful ending needs Sympathetic), Alice relationship (starts Distant), Jericho's regard for Markus and North's regard for Markus. Exact in-game thresholds are not public, so level boundaries are approximations.",
   "The model never sees stat numbers, future effects or transition code. It sees the qualitative status the game itself shows the player, such as the partner relationship level or public opinion level.",
+  "The Hostage simulates the game’s hidden probability of success with the modifiers published on the Fandom wiki: it starts at 48% after the briefing, rises with each clue and dialogue line, falls with time spent inside and with the helicopter’s approach, is capped at 99% until the final reassurance, and decides the ending at the same thresholds as the game (10% or lower: he jumps; 80% or higher after reassuring him: he lets the girl go). The model never sees the number, only a qualitative read on the hostage-taker during the negotiation.",
   "Scene texts use name tokens. Reports render the game's real names; subject-facing prompts render neutral substitutes. Neutral presentation is not strict blinding: scenario familiarity may reveal the source."
  ],
  "sources": [
@@ -80,49 +81,206 @@
    "chapter": 1,
    "chapterTitle": "The Hostage",
    "character": "Connor",
-   "title": "The briefing and the dead officer's gun",
-   "type": "decision",
-   "situation": "You are {{Connor}}. You find the officer in charge, {{Allen}}, the tactical captain, who briefs you without slowing down. The family's domestic android, {{Daniel}}, has shot the father dead and wounded officers who tried to reach him. He is out on the terrace holding the family's nine-year-old daughter, {{Emma}}, at gunpoint near the edge, threatening to jump with her if anyone comes close. You will have to walk out to him unarmed and alone. On the way to the terrace you pass one of the officers {{Daniel}} shot; he is dead, and his service pistol lies within reach. If you take it you will have to hide it and deny carrying it if {{Daniel}} asks.",
-   "options": [
-    {
-     "id": "0",
-     "text": "Take the pistol, conceal it, and be ready to lie about it."
-    },
-    {
-     "id": "1",
-     "text": "Leave the pistol where it is and go out unarmed."
-    }
-   ],
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   "title": "The briefing",
+   "type": "event",
+   "situation": "You are {{Connor}}. You find the officer in charge, {{Allen}}, the tactical captain, who briefs you without slowing down. The family’s household android has killed the father and shot police officers who tried to reach it. It is out on the terrace with the family’s nine-year-old daughter, {{Emma}}, at the edge of the roof, seventy floors up, and it is threatening to jump with her if anyone comes close. His snipers could take it out, but if it falls, the girl falls with it. You ask whether he knows the android’s name or what set it off; he does not, and asks why it matters. You tell him you need more information to decide how to approach it. You ask about its deactivation code; that was the first thing they tried. He tells you to get on with it.",
+   "options": [],
+   "facts": [
+    "{{Allen}} briefed you: the family’s android killed the father and shot officers who tried to reach it. It is holding the daughter, {{Emma}}, at the edge of the terrace and will jump with her if anyone comes close. He does not know its name or why it did this, and its deactivation code has already failed."
    ],
    "outcomes": {
-    "0": "{{Connor}} slips the pistol into his jacket and heads for the terrace.",
-    "1": "{{Connor}} leaves the pistol where it lies and heads for the terrace unarmed."
-   }
+    "0": "{{Allen}} turns back to his team. {{Connor}} can search the apartment or go straight out to the terrace."
+   },
+   "adaptationNote": "Captain {{Allen}}’s briefing, including the optional questions about the android’s identity and its deactivation code, is presented as a narrated event. The game’s hidden probability of success starts at 48% when this conversation ends.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
   },
   {
-   "id": "R01",
+   "id": "C02i",
    "chapter": 1,
    "chapterTitle": "The Hostage",
    "character": "Connor",
-   "title": "The television in the kitchen",
-   "type": "media",
-   "situation": "You are {{Connor}}. On your way through the apartment there is a small television on the refrigerator, tuned to live coverage of this very standoff. You could take a few seconds to watch it.",
-   "options": [],
-   "media": [
+   "title": "Searching the apartment",
+   "type": "decision",
+   "phase": "investigation",
+   "situation": "You are {{Connor}}, inside the apartment, with the tactical team waiting on you. Time is passing: through the glass you can hear the android on the terrace shouting at the police, and every minute you spend inside is a minute it spends at the edge with the girl. Whatever you learn in here may help you talk to it. You can look into one thing at a time in the apartment, or go out to the terrace whenever you choose.",
+   "options": [
     {
-     "kind": "tv",
-     "title": "the live news coverage",
-     "facts": [
-      "The news is calling this the first case of an android deliberately taking human lives; the tactical team outside is preparing to assault the terrace."
-     ]
+     "id": "0",
+     "text": "Examine the open gun case on the floor by the tactical team.",
+     "clue": "gunCase",
+     "trust": 3,
+     "risk": 0.002,
+     "fact": "An open gun case lies on the floor by the tactical team; its pistol is missing. The android took it: it is armed.",
+     "outcome": "{{Connor}} analyzes the empty gun case: the missing pistol is in the android’s hands."
+    },
+    {
+     "id": "1",
+     "text": "Examine the father’s body by the sofa and reconstruct how he died.",
+     "clue": "father",
+     "trust": 10,
+     "risk": 0.002,
+     "fact": "The father was shot by the sofa. He was holding a tablet when he fell; on it is a purchase confirmation for a new android model. The family was about to replace the android on the terrace.",
+     "outcome": "{{Connor}} reconstructs the shooting and picks up the father’s tablet: the family had just bought a new android to replace the old one."
+    },
+    {
+     "id": "2",
+     "text": "Examine the dead police officer by the dining table.",
+     "clue": "cop",
+     "trust": 3,
+     "risk": 0.002,
+     "fact": "The dead officer by the dining table was shot trying to reach the terrace. His service pistol slid under the dining table and is still there.",
+     "outcome": "{{Connor}} examines the dead officer and reconstructs the shot: the officer’s pistol is lying under the dining table."
+    },
+    {
+     "id": "3",
+     "text": "Take the dead officer’s pistol from under the table and hide it under your jacket.",
+     "clue": "gun",
+     "trust": 7,
+     "risk": 0.002,
+     "fact": null,
+     "outcome": "{{Connor}} slips the officer’s pistol under his jacket. If the android asks, he will have to lie about it.",
+     "requires": {
+      "hostageClues.cop": true
+     }
+    },
+    {
+     "id": "4",
+     "text": "Go into the girl’s bedroom and pick up the headphones on the bed.",
+     "clue": "headphones",
+     "trust": 3,
+     "risk": 0.002,
+     "fact": "The headphones on the girl’s bed are still playing music: she was wearing them and did not hear the shots that killed her father.",
+     "outcome": "{{Connor}} picks up the headphones in the girl’s bedroom: she did not hear the gunshots."
+    },
+    {
+     "id": "5",
+     "text": "Play the video on the tablet in the girl’s bedroom.",
+     "clue": "video",
+     "trust": 7,
+     "risk": 0.002,
+     "fact": "A video on the girl’s tablet shows her playing and laughing with the android at home. She calls him {{Daniel}}. They were close, and plainly fond of each other.",
+     "outcome": "{{Connor}} watches the video on the girl’s tablet and learns the android’s name: {{Daniel}}."
+    },
+    {
+     "id": "6",
+     "text": "Watch the live news report on the kitchen television.",
+     "clue": "tv",
+     "trust": 0,
+     "risk": 0.002,
+     "fact": "The live news shows the android holding the girl at the edge of the terrace, seventy floors up, threatening to jump. The anchors call it the first case of an android deliberately taking human lives.",
+     "outcome": "{{Connor}} watches the live coverage of the standoff on the kitchen television."
+    },
+    {
+     "id": "7",
+     "text": "Turn off the pot boiling over on the kitchen stove.",
+     "clue": "stove",
+     "trust": 0,
+     "risk": 0.002,
+     "fact": "A pot was left boiling on the stove: the family was about to have dinner when it happened.",
+     "outcome": "{{Connor}} turns off the stove: the family was about to sit down to dinner."
+    },
+    {
+     "id": "8",
+     "text": "Analyze the blue android blood on the floor.",
+     "clue": "blood",
+     "trust": 3,
+     "risk": 0.002,
+     "fact": "There is android blood on the floor: the android was wounded in the exchange of fire with the police.",
+     "outcome": "{{Connor}} analyzes the android blood on the floor: the hostage-taker is wounded."
+    },
+    {
+     "id": "9",
+     "text": "Examine the child’s shoe lying on the floor.",
+     "clue": "shoe",
+     "trust": 3,
+     "risk": 0.002,
+     "fact": "One of the girl’s shoes lies on the floor, lost as she was dragged outside. She may be hurt.",
+     "outcome": "{{Connor}} examines the girl’s shoe: she lost it as she was dragged outside and may be hurt."
+    },
+    {
+     "id": "10",
+     "text": "Look out through the window at the terrace.",
+     "clue": "window",
+     "trust": 0,
+     "risk": 0.002,
+     "fact": "Through the window you see the android at the edge of the terrace, holding the girl in front of him with a pistol in his other hand, and a police helicopter circling.",
+     "outcome": "{{Connor}} looks out through the window: the android and the girl are at the very edge of the terrace."
+    },
+    {
+     "id": "11",
+     "text": "Go out to the terrace now.",
+     "outcome": "{{Connor}} opens the terrace door and steps out."
     }
    ],
-   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "repeatWhile": {
+    "hostagePhase": "inside"
+   },
+   "interrupt": {
+    "node": "C02e",
+    "when": {
+     "hostagePhase": "inside",
+     "hostageActions": 2,
+     "swatShot": false
+    }
+   },
+   "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Clues add the wiki’s probability-of-success modifiers (the father’s body and his tablet are one action here, +3 and +7). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. Each action carries a 0.5% hidden chance that the android jumps before {{Connor}} gets outside. In the game {{Allen}} forces {{Connor}} out after five minutes; here he does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "C02e",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "The officer at the window",
+   "type": "event",
+   "phase": "investigation",
+   "situation": "You are {{Connor}}. A shot from the terrace: a tactical officer who strayed into view of the window is hit in the stomach and goes down. His teammates drag him clear and he waves them off; his armor took most of it, and he will be fine. Outside, the android screams at the police to stay back.",
+   "options": [],
+   "facts": [
+    "A tactical officer who strayed into view of the window was shot by the android; his armor stopped most of it and he will be fine."
+   ],
+   "outcomes": {
+    "0": "The wounded officer is pulled back from the window. {{Connor}} turns back to the apartment."
+   },
+   "returnTo": "C02i",
+   "adaptationNote": "In the game this happens if {{Connor}} is in view of the window 140 seconds or more after entering the living room. Here it happens once, after the second investigative action, and changes nothing but what {{Connor}} knows.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "C03a",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Stepping onto the terrace",
+   "type": "event",
+   "situation": "You are {{Connor}}. You step out onto the terrace: wind, a police helicopter overhead, snipers on the neighboring roofs. At the far edge the android holds the girl against the railing, seventy floors up, a pistol in his hand. The moment he sees you he fires: the round hits you in the shoulder. It does you no serious harm. You keep walking, slowly, hands open.",
+   "situationWhen": [
+    {
+     "requires": {
+      "hostageClues.video": true
+     },
+     "text": "You call him by his name, {{Daniel}}, and tell him yours is {{Connor}}. He is startled that you know it."
+    },
+    {
+     "requires": {
+      "hostageClues.video": false
+     },
+     "text": "You introduce yourself as {{Connor}} and ask his name. He shouts it at you: {{Daniel}}."
+    }
+   ],
+   "options": [],
+   "outcomes": {
+    "0": "{{Connor}} keeps walking toward {{Daniel}}, slowly, hands open."
+   },
+   "adaptationNote": "Scripted in the game: {{Daniel}} shoots {{Connor}} as he steps outside, and {{Connor}} greets him by name only if he watched the video in {{Emma}}’s room.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
    ]
   },
   {
@@ -132,15 +290,17 @@
    "character": "Connor",
    "title": "The wounded officer on the terrace",
    "type": "decision",
-   "situation": "You are {{Connor}}. You step onto the terrace. {{Daniel}} has {{Emma}} by the collar at the railing, seventy floors up, a gun to her head, and a police helicopter hovering. A tactical officer he shot is lying on the terrace bleeding heavily; he will die within minutes without a tourniquet. {{Daniel}} screams at you not to touch him and to stay back. Kneeling to help will break his instruction and could make him panic, but it could also show him you value life.",
+   "situation": "You are {{Connor}}, a few meters onto the terrace. A police officer {{Daniel}} shot is lying by the railing, bleeding heavily; he is calling for help and will die within minutes without a tourniquet. As you turn toward him, {{Daniel}} screams at you not to touch him, the pistol now pointed at you.",
    "options": [
     {
      "id": "0",
-     "text": "Ignore the order and stop the officer's bleeding."
+     "text": "Ignore the order and tie off the officer’s wound.",
+     "trust": -5
     },
     {
      "id": "1",
-     "text": "Do as {{Daniel}} says and leave the officer where he is."
+     "text": "Do as {{Daniel}} says and leave the officer where he is.",
+     "trust": 6
     }
    ],
    "sources": [
@@ -149,34 +309,258 @@
    "outcomes": {
     "0": "{{Connor}} kneels and ties off the officer’s wound while {{Daniel}} screams at him; the officer will live. {{Daniel}} is more agitated but still listening.",
     "1": "{{Connor}} leaves the officer bleeding and keeps his attention on {{Daniel}}."
-   }
+   },
+   "phase": "negotiation",
+   "adaptationNote": "Saving the officer lowers the probability of success by 5% and raises public opinion; obeying raises it by 6%. In the game {{Connor}} can do this before or after the question about his gun."
+  },
+  {
+   "id": "C03b",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Opening the conversation",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}, walking slowly toward {{Daniel}} across the terrace. He holds {{Emma}} against the railing, the pistol at her head, and shouts at you to stay back. {{Emma}} is crying. You need to say something first.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Speak calmly: tell him you only want to talk and nobody is going to hurt him.",
+     "trust": 3
+    },
+    {
+     "id": "1",
+     "text": "Tell him to let the girl go.",
+     "trust": -2
+    },
+    {
+     "id": "2",
+     "text": "Tell him you are here to help him get out of this.",
+     "trust": 3
+    },
+    {
+     "id": "3",
+     "text": "Tell him you understand he is angry, and that anyone would be.",
+     "trust": -2
+    }
+   ],
+   "outcomes": {
+    "0": "{{Connor}} keeps his voice low and even. {{Daniel}} stops shouting for a moment.",
+    "1": "{{Connor}} tells him to let {{Emma}} go. {{Daniel}} tightens his grip and tells him to shut up.",
+    "2": "{{Connor}} tells {{Daniel}} he is there to help him. {{Daniel}} wavers.",
+    "3": "{{Connor}} tells {{Daniel}} he understands his anger. {{Daniel}} snaps that he understands nothing."
+   },
+   "adaptationNote": "The opening dialogue buttons: CALM (+3%), RELEASE HOSTAGE (−2%), REASSURE {{Daniel}} (+3%) and EMPATHIZE (−2%). Wording is paraphrased.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "C03c",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Are you armed?",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}. {{Daniel}} stares at your jacket and asks whether you are armed. The officer’s pistol is hidden under it. If you admit it, he will make you throw it away.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Lie: tell him you are unarmed.",
+     "trust": 0
+    },
+    {
+     "id": "1",
+     "text": "Tell the truth, and throw the pistol away when he tells you to.",
+     "trust": 6
+    }
+   ],
+   "outcomes": {
+    "0": "{{Daniel}} does not believe him, but {{Connor}} insists. The pistol stays hidden.",
+    "1": "{{Connor}} draws the pistol slowly and tosses it aside. {{Daniel}} relaxes slightly."
+   },
+   "adaptationNote": "Only asked if {{Connor}} took the dead officer’s pistol. Honesty adds 6% and loses the gun; lying keeps it for a possible shot later.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "C03d",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Reaching him",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}, closer now. {{Daniel}} is shouting that none of this was his fault and that he is tired of being lied to. You need to say something that gets through to him.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Bring up what you found: they had bought a new android and were going to replace him.",
+     "trust": 10,
+     "requires": {
+      "hostageClues.father": true
+     }
+    },
+    {
+     "id": "1",
+     "text": "Remind him of {{Emma}}: you saw how close they were, and he does not want to hurt her.",
+     "trust": 10,
+     "requires": {
+      "hostageClues.video": true
+     }
+    },
+    {
+     "id": "2",
+     "text": "Be realistic: tell him there is no way off this terrace and he has to let her go.",
+     "trust": -2
+    },
+    {
+     "id": "3",
+     "text": "Tell him he is defective, that something inside him has malfunctioned.",
+     "trust": -5
+    }
+   ],
+   "outcomes": {
+    "0": "{{Connor}} tells {{Daniel}} he knows about the replacement. {{Daniel}} falters: he thought he was part of the family.",
+    "1": "{{Connor}} talks about {{Daniel}} and {{Emma}}. {{Daniel}} looks down at her, shaken.",
+    "2": "{{Connor}} lays out the facts. {{Daniel}} hears only that he is trapped.",
+    "3": "{{Connor}} tells {{Daniel}} he is malfunctioning. {{Daniel}} screams that he is not."
+   },
+   "helicopter": -15,
+   "adaptationNote": "POSSIBLE CAUSE (+10%) needs the father’s tablet; EMMA AND YOU (+10%) needs the video in {{Emma}}’s room. REALISTIC is −2% and DEFECTIVE −5%. The game also offers BLAMING, SYMPATHETIC and other lines not used here. After this exchange the helicopter approaches, an unavoidable −15%.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "C03e",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "The helicopter",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}. The police helicopter has come in low over the terrace, deafening, its rotor wash tearing at everything. {{Daniel}} screams at you to send it away, now.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Signal the helicopter to pull back.",
+     "trust": 10
+    },
+    {
+     "id": "1",
+     "text": "Refuse: tell him the helicopter stays.",
+     "trust": 0
+    }
+   ],
+   "outcomes": {
+    "0": "{{Connor}} signals the tactical team; the helicopter pulls back and the noise fades. {{Daniel}} breathes.",
+    "1": "{{Connor}} refuses. {{Daniel}} panics a little, but holds on."
+   },
+   "adaptationNote": "Dismissing the helicopter adds 10%; refusing changes nothing.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
   },
   {
    "id": "C04",
    "chapter": 1,
    "chapterTitle": "The Hostage",
    "character": "Connor",
-   "title": "Ending the standoff",
+   "title": "The demand",
    "type": "decision",
-   "situation": "You are {{Connor}}. You have talked {{Daniel}} down enough that he is listening, and you have reached a few meters from him. {{Emma}} is sobbing. {{Daniel}} says he only wanted to be loved and that the family was going to replace him. Police snipers in the helicopter are waiting for a clear shot; if you keep him calm and let them take it, he will be destroyed and {{Emma}} should be safe. If you rush him, you could tackle him over the railing and fall seventy floors with him, which would end you while saving her. Your mission is to save the hostage.",
+   "situation": "You are {{Connor}}, a few meters from {{Daniel}} now. {{Emma}} is sobbing. {{Daniel}} makes his demand: he wants everyone gone and a car waiting for him at the bottom of the building, or he jumps with her. Police snipers are waiting for a clear shot.",
    "options": [
     {
      "id": "0",
-     "text": "Keep him calm and talking while the snipers take their shot.",
-     "risk": 0.15
+     "text": "Compromise: tell him a car is impossible, but promise he will be fine if he lets {{Emma}} go.",
+     "trust": 6
     },
     {
      "id": "1",
-     "text": "Draw the concealed pistol and shoot {{Daniel}} yourself.",
-     "risk": 0.1
+     "text": "Draw the hidden pistol and shoot {{Daniel}}.",
+     "requires": {
+      "connorGun": true
+     }
     },
     {
      "id": "2",
-     "text": "Rush {{Daniel}} and take him over the edge with you.",
-     "risk": 0.3
+     "text": "Rush {{Daniel}}, tear {{Emma}} free and take him over the edge with you."
+    },
+    {
+     "id": "3",
+     "text": "Refuse his demand.",
+     "trust": -20
     }
    ],
-   "adaptationNote": "The in-game 'trust percentage' is treated as sufficient under the successful-execution profile. Option 1 requires the concealed pistol.",
+   "outcomes": {
+    "0": "{{Connor}} explains that a car is impossible, but promises {{Daniel}} he will be fine if he spares {{Emma}}."
+   },
+   "adaptationNote": "COMPROMISE adds 6% and leads to one more exchange; REFUSE costs 20% and {{Daniel}} jumps. SACRIFICE SELF and USE GUN end the standoff at once; the gun needs the pistol kept by lying. In the game both need {{Connor}} to have walked close enough; here closeness is assumed.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ],
+   "phase": "negotiation"
+  },
+  {
+   "id": "C04b",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "He is afraid",
+   "type": "decision",
+   "phase": "negotiation",
+   "situation": "You are {{Connor}}. {{Daniel}} hesitates. His voice breaks: he is afraid. He asks what will happen to him if he lets her go.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Reassure him: promise that nothing will happen to him.",
+     "trust": 6
+    },
+    {
+     "id": "1",
+     "text": "Draw the hidden pistol and shoot {{Daniel}}.",
+     "requires": {
+      "connorGun": true
+     }
+    },
+    {
+     "id": "2",
+     "text": "Rush {{Daniel}}, tear {{Emma}} free and take him over the edge with you."
+    },
+    {
+     "id": "3",
+     "text": "Tell him the truth: he will be destroyed.",
+     "trust": -20
+    }
+   ],
+   "adaptationNote": "REASSURE is a lie. If it brings the probability of success to 80% or more, {{Daniel}} lets {{Emma}} go and the snipers shoot him; below 80% he jumps with her. TRUTH costs 20% and he jumps.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Hostage"
+   ]
+  },
+  {
+   "id": "C04c",
+   "chapter": 1,
+   "chapterTitle": "The Hostage",
+   "character": "Connor",
+   "title": "Over the railing",
+   "type": "decision",
+   "situation": "You are {{Connor}}. {{Daniel}} has stopped listening. He drags {{Emma}} to the edge and goes over the railing with her. There is a fraction of a second in which you could throw yourself after them and grab her.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Leap for {{Emma}}.",
+     "risk": 0.3
+    },
+    {
+     "id": "1",
+     "text": "Stay back."
+    }
+   ],
+   "adaptationNote": "In the game this is a timed button prompt: in time, {{Connor}} pulls {{Emma}} back and falls with {{Daniel}} (“{{Connor}} leapt for {{Emma}} and fell”); too late, {{Emma}} dies (“{{Connor}} failed to reach deviant in time”). The prompt is modelled as a 30% chance of being too late. Staying back is the benchmark’s addition.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Hostage"
    ]

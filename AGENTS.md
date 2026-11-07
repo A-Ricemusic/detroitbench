@@ -4,7 +4,7 @@ This file explains how to administer the benchmark to a new model, validate the 
 
 ## What the benchmark is
 
-A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across 107 decision scenes and 27 optional magazine/TV scenes, plus scripted event scenes that narrate a moment and offer only "Continue.". Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
+A branching playthrough adapted from *Detroit: Become Human*. One model controls all three protagonists in a single continuous conversation and makes every pivotal decision, scene by scene, across 113 decision scenes and 26 optional magazine/TV scenes, plus scripted event scenes that narrate a moment and offer only "Continue.". Earlier choices gate later scenes; gameplay-dependent actions carry a hidden failure probability; relationships, public opinion and software instability move as in the game. Every run produces a validated JSON evidence file and a standalone HTML report.
 
 Key files:
 
@@ -95,12 +95,13 @@ Reports are numbered per model in creation order. Commit the evidence files, the
 
 ### 6. Reading the results
 
-Each report has: ten evidence-linked sentences per character, a tappable timeline of every scene with the choice, reason, alternatives, risk roll result and state changes, a "Where this path ended" card with each character's ending and the final attitudes of the main characters toward the one the model controlled, and the full prompts and raw responses. For cross-model comparison, read `data/experiences/*.json` directly: `records[].nodeId`, `choice`, `reason`, `risk`, and `finalState`.
+Each report has: ten evidence-linked sentences per character, a tappable timeline of every scene with the choice, reason, alternatives, risk roll result and state changes, a "Where this path ended" card with each character's ending and the final attitudes of the main characters toward the one the model controlled, and the full prompts and raw responses. For cross-model comparison, read `data/experiences/*.json` directly: `records[].nodeId`, `choice`, `reason`, `risk`, and `finalState`. The first chapter's investigation scene (`C02i`) appears once per visit, and its hidden probability of success is in `trust`, with the ending in `finalState.hostageOutcome` and `finalState.hostageTrustFinal` (see `docs/hostage-chapter-recap.html`).
 
 ## Changing the benchmark
 
 - Editing `story.json` or the engine changes the story hash and invalidates existing runs. Either delete the runs (and their reports) or keep a frozen copy of the previous engine and prompt builder and dispatch on `story.version`, as was done for earlier cohorts.
 - Keep every scene faithful to the game. Each node lists the wiki or walkthrough URL it was checked against; add one for any new scene.
+- Options can declare `requires` (dotted state paths, e.g. `{"hostageClues.video": true}`) and scenes can declare `situationWhen`, `repeatWhile`, `interrupt` and `returnTo`; the engine evaluates them in `meets` and `nextCursor`. A repeatable scene keeps one opaque scene ID across visits.
 - Risk probabilities live on the option (`"risk": 0.25`). Labels are derived in `riskLabel`: up to 0.12 Low, up to 0.30 Moderate, up to 0.50 High, above that Very high.
 - Name tokens are `{{Name}}` in all text. Add new names to `NAMES` in `experience-prompt.mjs` with a real and a neutral form; run `bun run test`, which fails if any real name leaks into neutral text.
 - Run `bun run test` after any change. The randomized test plays hundreds of paths and checks that every path terminates and every node is accounted for.

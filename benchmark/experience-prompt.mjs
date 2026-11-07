@@ -27,14 +27,16 @@ export function render(value,mode='real'){
 }
 export const neutralText=v=>render(v,'neutral');
 export const realText=v=>render(v,'real');
-export function renderNode(node,mode='real'){return {...node,title:render(node.title,mode),situation:render(node.situation,mode),adaptationNote:render(node.adaptationNote??'',mode),options:node.options.map(o=>({...o,text:render(o.text,mode)})),...(node.media?{media:node.media.map(m=>({...m,title:render(m.title,mode),facts:m.facts.map(f=>render(f,mode))}))}:{}),...(node.facts?{facts:node.facts.map(f=>render(f,mode))}:{}),...(node.outcomes?{outcomes:Object.fromEntries(Object.entries(node.outcomes).map(([k,v])=>[k,render(v,mode)]))}:{}),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode)}))}:{})}}
+export function renderNode(node,mode='real'){return {...node,title:render(node.title,mode),situation:render(node.situation,mode),adaptationNote:render(node.adaptationNote??'',mode),options:node.options.map(o=>({...o,text:render(o.text,mode),...(o.fact?{fact:render(o.fact,mode)}:{}),...(o.outcome?{outcome:render(o.outcome,mode)}:{})})),...(node.situationWhen?{situationWhen:node.situationWhen.map(w=>({...w,text:render(w.text,mode)}))}:{}),...(node.media?{media:node.media.map(m=>({...m,title:render(m.title,mode),facts:m.facts.map(f=>render(f,mode))}))}:{}),...(node.facts?{facts:node.facts.map(f=>render(f,mode))}:{}),...(node.outcomes?{outcomes:Object.fromEntries(Object.entries(node.outcomes).map(([k,v])=>[k,render(v,mode)]))}:{}),...(node.availableOptions?{availableOptions:node.availableOptions.map(o=>({...o,text:render(o.text,mode)}))}:{})}}
 export function renderStory(story,mode='real'){return {...story,nodes:story.nodes.map(n=>renderNode(n,mode))}}
 
 export const LEVELS={
  hank:v=>v<=-4?'Hostile':v<0?'Tense':v<3?'Neutral':v<6?'Warm':'Friend',
  opinion:v=>v<=-5?'Hated':v<=-2?'Hostile':v<2?'Skeptical':v<3?'Indifferent':v<5?'Sympathetic':'Supportive',
  alice:v=>v<1?'Distant':v<3?'Neutral':v<5?'Warm':v<7?'Trusted':'Family',
- jericho:v=>v<=-3?'Unpopular':v<1?'Uncertain':v<4?'Respected':'Trusted'
+ jericho:v=>v<=-3?'Unpopular':v<1?'Uncertain':v<4?'Respected':'Trusted',
+ // The Hostage: the hidden probability of success (percent) as {{Connor}} would read the hostage-taker.
+ daniel:v=>v<=25?'on the edge, barely listening':v<=50?'agitated and suspicious':v<80?'listening':'close to trusting you'
 };
 export const DEVIANCY_THRESHOLD=4;
 export const riskLabel=p=>p<=0.12?'Low risk':p<=0.3?'Moderate risk':p<=0.5?'High risk':'Very high risk';
@@ -50,6 +52,7 @@ export function sceneFacts(state,node){
   if(state.instability>=DEVIANCY_THRESHOLD)f.push('You have been experiencing a growing conflict inside your programming.');else if(state.instability<=-2)f.push('Your programming has felt entirely stable.');
   f.push(state.deviant?'You have broken from your mission and act on your own.':'You are operating under your assigned mission.'+(ch>=12?` Your handler’s satisfaction with you: ${LEVELS.hank(state.amandaTrust??0)}.`:''));
   if(state.jerichoLocated)f.push('You know where the deviants are hiding.');
+  if(ch===1){if(state.connorGun)f.push('You are carrying a pistol, hidden under your jacket.');if(node.phase==='negotiation'&&typeof state.trust==='number')f.push(`{{Daniel}} is ${LEVELS.daniel(state.trust)}.`)}
  }
  if(c==='Kara'){
   f.push(`You ${state.gun?'carry a handgun':'are unarmed'}. You ${state.money?'have some money':'have no money'}. You ${state.clothes?'are dressed as a human':'are still recognizable as an android'}.`);
