@@ -1,55 +1,2443 @@
 [
  {
-  "id": "R20",
   "chapter": 20,
   "chapterTitle": "The Eden Club",
   "character": "Connor",
+  "id": "C12a",
+  "title": "The {{EdenClub}}",
+  "type": "event",
+  "phase": "Investigate Eden Club",
+  "situation": "You are {{Connor}}, the android investigator assigned to cases involving deviant androids, working with Lieutenant {{Hank}}. It is 8:17 pm. You have driven {{Hank}}’s car to the address in the report, a sex club called the {{EdenClub}}; {{Hank}} is badly hungover. “Aw… Feels like somebody’s playing with a drill inside my skull… You sure this is the place?” “It’s the address in the report.” “Right... Okay... Let’s get going.” Inside, club androids pose in lit display pods along the walls. “Jesus… Sexiest androids in town… Now I know why you insisted on coming here! Oh, boy…” Outside the room where the body was found, the club manager is pleading with an officer, {{Ben}}: “You’re not gonna take my license, are you? I mean, ha, I had nothing to do with this!” {{Ben}}: “The investigation’s ongoing, sir, I can’t tell you anything for the moment. Hey, {{Hank}}!” “Hey, {{Ben}}. How’s it goin’?” “It’s that room there. Oh, uh, by the way… {{Gavin}}’s in there too.” {{Hank}}: “Oh, great! A dead body and an asshole, just what I needed…” In the room, Detective {{Gavin}} and Officer {{Chris}} stand over a dead man on the bed; a damaged {{Traci}}, a WR400 club android, lies switched off on the floor. {{Gavin}}: “Lieutenant {{Anderson}} and his plastic pet… The fuck are you two doin’ here?” “We’ve been assigned all cases involving androids.” “Oh, yeah? Well, you’re wasting your time. Just some pervert who, uh, got more action than he could handle.” {{Hank}}: “We’ll have a look anyway, if you don’t mind.” {{Gavin}}: “Come on, let’s go… It’s, uh, starting to stink of booze in here…” {{Chris}}: “Night, Lieutenant.” They leave you the room.",
+  "options": [],
+  "facts": [
+   "A man was found dead in a room at the {{EdenClub}}, a sex club that rents out WR400 {{Tracis}}; a damaged {{Traci}} lay switched off on the floor beside him. Detective {{Gavin}} called him a pervert who “got more action than he could handle.”"
+  ],
+  "outcomes": {
+   "0": "{{Connor}} and {{Hank}} have the room to themselves."
+  },
+  "adaptationNote": "The chart’s checkpoint INVESTIGATE EDEN CLUB and the nodes FOLLOW HANK, ON CRIME SCENE and LISTEN TO BRIEFING, all unmissable (PowerPyx), narrated as one event. Every line is the template’s (sections “At the {{EdenClub}}”, “Listen to {{Ben}}”, “Inside the room”). Left out: {{Hank}}’s “{{Connor}}! The fuck are you doin’?” if {{Connor}} stares at a display android too long (no prompt, no effect). The club, the officers and {{Gavin}}’s “Lieutenant {{Anderson}}” are name tokens. No stat change; the template has none.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12s1",
+  "title": "Search for clues",
+  "type": "decision",
+  "phase": "Search for clues",
+  "situation": "You are {{Connor}}, in the room at the {{EdenClub}} where the body was found. A heavy man lies dead on the bed. A damaged {{Traci}} lies switched off on the floor, and there is blue blood on the carpet. {{Hank}}, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the {{Traci}}’s memory you would have to reactivate her.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "text": "You have seen enough of the body and of the android to try reactivating her."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "victim",
+    "text": "Scan the dead man to identify him.",
+    "fact": "The victim: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm.",
+    "outcome": "{{Connor}} scans the body: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm."
+   },
+   {
+    "id": "1",
+    "mark": "neck",
+    "text": "Examine the bruising on his neck.",
+    "fact": "SEVERE BRUISING on the victim’s neck: signs of strangulation. Cause of death: asphyxiation. VICTIM WAS STRANGLED.",
+    "outcome": "{{Connor}} examines the neck: SEVERE BRUISING. Signs of strangulation. Cause of death: Asphyxiation."
+   },
+   {
+    "id": "2",
+    "mark": "heart",
+    "text": "Check his heart.",
+    "fact": "CARDIAC ARREST ruled out: no sign of cardiac event; a heart attack was not the cause of death.",
+    "outcome": "{{Connor}} checks the heart: CARDIAC ARREST. No sign of cardiac event. Heart attack not cause of death."
+   },
+   {
+    "id": "3",
+    "mark": "blood",
+    "text": "Analyze the blue blood on the floor.",
+    "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
+    "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+   },
+   {
+    "id": "4",
+    "mark": "android",
+    "text": "Examine the damaged {{Traci}} on the floor.",
+    "fact": "The damaged {{Traci}}: selector #5402 and biocomponent #6970 out of order; her cardiac cell critically damaged by blunt force trauma. REACTIVATION REQUIRED to read her memory.",
+    "outcome": "{{Connor}} kneels by the {{Traci}}: DIAGNOSIS IN PROGRESS... Selector #5402 out of order. Biocomponent #6970 out of order. CARDIAC CELL. Status: Critically damaged. Probable cause: Blunt force trauma. REACTIVATION REQUIRED."
+   },
+   {
+    "id": "5",
+    "mark": "wallet",
+    "text": "Wait while {{Hank}} goes through the dead man’s wallet.",
+    "fact": "{{Hank}} read the victim’s driver’s license: {{Michael}} {{Graham}}, with a credit card, cash and a picture of his wife and two daughters in the wallet. “I wouldn’t want to make that call…”",
+    "outcome": "{{Hank}}: “Driver’s license says: {{Michael}} {{Graham}}... A credit card, cash in the wallet… Picture of his wife and two daughters… I wouldn’t want to make that call…”"
+   },
+   {
+    "id": "6",
+    "mark": "repair",
+    "text": "Tell {{Hank}} what you have found, and try to reactivate the {{Traci}} to read her memory.",
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "outcome": "“He didn’t die of a heart attack, he was strangled.” {{Hank}}: “Yeah, I saw the bruising on the neck. Doesn’t prove anything though. Could’ve been rough play…” “We’re missing something here…” “Think you can read the android’s memory? Maybe you can see what happened…” “I can try… The only way to access its memory is to reactivate it.” “Think you can do it?” “It’s badly damaged… If I can, it’ll only be for a minute, maybe less… I just hope it’s long enough to learn something.” {{Connor}} reconnects her cardiac cell."
+   }
+  ],
+  "adaptationNote": "The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 1. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while {{Hank}} reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12s2",
+  "title": "Search for clues",
+  "type": "decision",
+  "phase": "Search for clues",
+  "situation": "You are {{Connor}}, in the room at the {{EdenClub}} where the body was found. A heavy man lies dead on the bed. A damaged {{Traci}} lies switched off on the floor, and there is blue blood on the carpet. {{Hank}}, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the {{Traci}}’s memory you would have to reactivate her.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "text": "You have seen enough of the body and of the android to try reactivating her."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "victim",
+    "text": "Scan the dead man to identify him.",
+    "fact": "The victim: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm.",
+    "outcome": "{{Connor}} scans the body: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm."
+   },
+   {
+    "id": "1",
+    "mark": "neck",
+    "text": "Examine the bruising on his neck.",
+    "fact": "SEVERE BRUISING on the victim’s neck: signs of strangulation. Cause of death: asphyxiation. VICTIM WAS STRANGLED.",
+    "outcome": "{{Connor}} examines the neck: SEVERE BRUISING. Signs of strangulation. Cause of death: Asphyxiation."
+   },
+   {
+    "id": "2",
+    "mark": "heart",
+    "text": "Check his heart.",
+    "fact": "CARDIAC ARREST ruled out: no sign of cardiac event; a heart attack was not the cause of death.",
+    "outcome": "{{Connor}} checks the heart: CARDIAC ARREST. No sign of cardiac event. Heart attack not cause of death."
+   },
+   {
+    "id": "3",
+    "mark": "blood",
+    "text": "Analyze the blue blood on the floor.",
+    "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
+    "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+   },
+   {
+    "id": "4",
+    "mark": "android",
+    "text": "Examine the damaged {{Traci}} on the floor.",
+    "fact": "The damaged {{Traci}}: selector #5402 and biocomponent #6970 out of order; her cardiac cell critically damaged by blunt force trauma. REACTIVATION REQUIRED to read her memory.",
+    "outcome": "{{Connor}} kneels by the {{Traci}}: DIAGNOSIS IN PROGRESS... Selector #5402 out of order. Biocomponent #6970 out of order. CARDIAC CELL. Status: Critically damaged. Probable cause: Blunt force trauma. REACTIVATION REQUIRED."
+   },
+   {
+    "id": "5",
+    "mark": "wallet",
+    "text": "Wait while {{Hank}} goes through the dead man’s wallet.",
+    "fact": "{{Hank}} read the victim’s driver’s license: {{Michael}} {{Graham}}, with a credit card, cash and a picture of his wife and two daughters in the wallet. “I wouldn’t want to make that call…”",
+    "outcome": "{{Hank}}: “Driver’s license says: {{Michael}} {{Graham}}... A credit card, cash in the wallet… Picture of his wife and two daughters… I wouldn’t want to make that call…”"
+   },
+   {
+    "id": "6",
+    "mark": "repair",
+    "text": "Tell {{Hank}} what you have found, and try to reactivate the {{Traci}} to read her memory.",
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "outcome": "“He didn’t die of a heart attack, he was strangled.” {{Hank}}: “Yeah, I saw the bruising on the neck. Doesn’t prove anything though. Could’ve been rough play…” “We’re missing something here…” “Think you can read the android’s memory? Maybe you can see what happened…” “I can try… The only way to access its memory is to reactivate it.” “Think you can do it?” “It’s badly damaged… If I can, it’ll only be for a minute, maybe less… I just hope it’s long enough to learn something.” {{Connor}} reconnects her cardiac cell."
+   }
+  ],
+  "adaptationNote": "The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 2. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while {{Hank}} reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12s3",
+  "title": "Search for clues",
+  "type": "decision",
+  "phase": "Search for clues",
+  "situation": "You are {{Connor}}, in the room at the {{EdenClub}} where the body was found. A heavy man lies dead on the bed. A damaged {{Traci}} lies switched off on the floor, and there is blue blood on the carpet. {{Hank}}, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the {{Traci}}’s memory you would have to reactivate her.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "text": "You have seen enough of the body and of the android to try reactivating her."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "victim",
+    "text": "Scan the dead man to identify him.",
+    "fact": "The victim: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm.",
+    "outcome": "{{Connor}} scans the body: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm."
+   },
+   {
+    "id": "1",
+    "mark": "neck",
+    "text": "Examine the bruising on his neck.",
+    "fact": "SEVERE BRUISING on the victim’s neck: signs of strangulation. Cause of death: asphyxiation. VICTIM WAS STRANGLED.",
+    "outcome": "{{Connor}} examines the neck: SEVERE BRUISING. Signs of strangulation. Cause of death: Asphyxiation."
+   },
+   {
+    "id": "2",
+    "mark": "heart",
+    "text": "Check his heart.",
+    "fact": "CARDIAC ARREST ruled out: no sign of cardiac event; a heart attack was not the cause of death.",
+    "outcome": "{{Connor}} checks the heart: CARDIAC ARREST. No sign of cardiac event. Heart attack not cause of death."
+   },
+   {
+    "id": "3",
+    "mark": "blood",
+    "text": "Analyze the blue blood on the floor.",
+    "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
+    "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+   },
+   {
+    "id": "4",
+    "mark": "android",
+    "text": "Examine the damaged {{Traci}} on the floor.",
+    "fact": "The damaged {{Traci}}: selector #5402 and biocomponent #6970 out of order; her cardiac cell critically damaged by blunt force trauma. REACTIVATION REQUIRED to read her memory.",
+    "outcome": "{{Connor}} kneels by the {{Traci}}: DIAGNOSIS IN PROGRESS... Selector #5402 out of order. Biocomponent #6970 out of order. CARDIAC CELL. Status: Critically damaged. Probable cause: Blunt force trauma. REACTIVATION REQUIRED."
+   },
+   {
+    "id": "5",
+    "mark": "wallet",
+    "text": "Wait while {{Hank}} goes through the dead man’s wallet.",
+    "fact": "{{Hank}} read the victim’s driver’s license: {{Michael}} {{Graham}}, with a credit card, cash and a picture of his wife and two daughters in the wallet. “I wouldn’t want to make that call…”",
+    "outcome": "{{Hank}}: “Driver’s license says: {{Michael}} {{Graham}}... A credit card, cash in the wallet… Picture of his wife and two daughters… I wouldn’t want to make that call…”"
+   },
+   {
+    "id": "6",
+    "mark": "repair",
+    "text": "Tell {{Hank}} what you have found, and try to reactivate the {{Traci}} to read her memory.",
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "outcome": "“He didn’t die of a heart attack, he was strangled.” {{Hank}}: “Yeah, I saw the bruising on the neck. Doesn’t prove anything though. Could’ve been rough play…” “We’re missing something here…” “Think you can read the android’s memory? Maybe you can see what happened…” “I can try… The only way to access its memory is to reactivate it.” “Think you can do it?” “It’s badly damaged… If I can, it’ll only be for a minute, maybe less… I just hope it’s long enough to learn something.” {{Connor}} reconnects her cardiac cell."
+   }
+  ],
+  "adaptationNote": "The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 3. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while {{Hank}} reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12s4",
+  "title": "Search for clues",
+  "type": "decision",
+  "phase": "Search for clues",
+  "situation": "You are {{Connor}}, in the room at the {{EdenClub}} where the body was found. A heavy man lies dead on the bed. A damaged {{Traci}} lies switched off on the floor, and there is blue blood on the carpet. {{Hank}}, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the {{Traci}}’s memory you would have to reactivate her.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "text": "You have seen enough of the body and of the android to try reactivating her."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "victim",
+    "text": "Scan the dead man to identify him.",
+    "fact": "The victim: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm.",
+    "outcome": "{{Connor}} scans the body: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm."
+   },
+   {
+    "id": "1",
+    "mark": "neck",
+    "text": "Examine the bruising on his neck.",
+    "fact": "SEVERE BRUISING on the victim’s neck: signs of strangulation. Cause of death: asphyxiation. VICTIM WAS STRANGLED.",
+    "outcome": "{{Connor}} examines the neck: SEVERE BRUISING. Signs of strangulation. Cause of death: Asphyxiation."
+   },
+   {
+    "id": "2",
+    "mark": "heart",
+    "text": "Check his heart.",
+    "fact": "CARDIAC ARREST ruled out: no sign of cardiac event; a heart attack was not the cause of death.",
+    "outcome": "{{Connor}} checks the heart: CARDIAC ARREST. No sign of cardiac event. Heart attack not cause of death."
+   },
+   {
+    "id": "3",
+    "mark": "blood",
+    "text": "Analyze the blue blood on the floor.",
+    "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
+    "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+   },
+   {
+    "id": "4",
+    "mark": "android",
+    "text": "Examine the damaged {{Traci}} on the floor.",
+    "fact": "The damaged {{Traci}}: selector #5402 and biocomponent #6970 out of order; her cardiac cell critically damaged by blunt force trauma. REACTIVATION REQUIRED to read her memory.",
+    "outcome": "{{Connor}} kneels by the {{Traci}}: DIAGNOSIS IN PROGRESS... Selector #5402 out of order. Biocomponent #6970 out of order. CARDIAC CELL. Status: Critically damaged. Probable cause: Blunt force trauma. REACTIVATION REQUIRED."
+   },
+   {
+    "id": "5",
+    "mark": "wallet",
+    "text": "Wait while {{Hank}} goes through the dead man’s wallet.",
+    "fact": "{{Hank}} read the victim’s driver’s license: {{Michael}} {{Graham}}, with a credit card, cash and a picture of his wife and two daughters in the wallet. “I wouldn’t want to make that call…”",
+    "outcome": "{{Hank}}: “Driver’s license says: {{Michael}} {{Graham}}... A credit card, cash in the wallet… Picture of his wife and two daughters… I wouldn’t want to make that call…”"
+   },
+   {
+    "id": "6",
+    "mark": "repair",
+    "text": "Tell {{Hank}} what you have found, and try to reactivate the {{Traci}} to read her memory.",
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "outcome": "“He didn’t die of a heart attack, he was strangled.” {{Hank}}: “Yeah, I saw the bruising on the neck. Doesn’t prove anything though. Could’ve been rough play…” “We’re missing something here…” “Think you can read the android’s memory? Maybe you can see what happened…” “I can try… The only way to access its memory is to reactivate it.” “Think you can do it?” “It’s badly damaged… If I can, it’ll only be for a minute, maybe less… I just hope it’s long enough to learn something.” {{Connor}} reconnects her cardiac cell."
+   }
+  ],
+  "adaptationNote": "The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 4. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while {{Hank}} reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12s5",
+  "title": "Search for clues",
+  "type": "decision",
+  "phase": "Search for clues",
+  "situation": "You are {{Connor}}, in the room at the {{EdenClub}} where the body was found. A heavy man lies dead on the bed. A damaged {{Traci}} lies switched off on the floor, and there is blue blood on the carpet. {{Hank}}, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the {{Traci}}’s memory you would have to reactivate her.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "text": "You have seen enough of the body and of the android to try reactivating her."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "victim",
+    "text": "Scan the dead man to identify him.",
+    "fact": "The victim: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm.",
+    "outcome": "{{Connor}} scans the body: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm."
+   },
+   {
+    "id": "1",
+    "mark": "neck",
+    "text": "Examine the bruising on his neck.",
+    "fact": "SEVERE BRUISING on the victim’s neck: signs of strangulation. Cause of death: asphyxiation. VICTIM WAS STRANGLED.",
+    "outcome": "{{Connor}} examines the neck: SEVERE BRUISING. Signs of strangulation. Cause of death: Asphyxiation."
+   },
+   {
+    "id": "2",
+    "mark": "heart",
+    "text": "Check his heart.",
+    "fact": "CARDIAC ARREST ruled out: no sign of cardiac event; a heart attack was not the cause of death.",
+    "outcome": "{{Connor}} checks the heart: CARDIAC ARREST. No sign of cardiac event. Heart attack not cause of death."
+   },
+   {
+    "id": "3",
+    "mark": "blood",
+    "text": "Analyze the blue blood on the floor.",
+    "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
+    "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+   },
+   {
+    "id": "4",
+    "mark": "android",
+    "text": "Examine the damaged {{Traci}} on the floor.",
+    "fact": "The damaged {{Traci}}: selector #5402 and biocomponent #6970 out of order; her cardiac cell critically damaged by blunt force trauma. REACTIVATION REQUIRED to read her memory.",
+    "outcome": "{{Connor}} kneels by the {{Traci}}: DIAGNOSIS IN PROGRESS... Selector #5402 out of order. Biocomponent #6970 out of order. CARDIAC CELL. Status: Critically damaged. Probable cause: Blunt force trauma. REACTIVATION REQUIRED."
+   },
+   {
+    "id": "5",
+    "mark": "wallet",
+    "text": "Wait while {{Hank}} goes through the dead man’s wallet.",
+    "fact": "{{Hank}} read the victim’s driver’s license: {{Michael}} {{Graham}}, with a credit card, cash and a picture of his wife and two daughters in the wallet. “I wouldn’t want to make that call…”",
+    "outcome": "{{Hank}}: “Driver’s license says: {{Michael}} {{Graham}}... A credit card, cash in the wallet… Picture of his wife and two daughters… I wouldn’t want to make that call…”"
+   },
+   {
+    "id": "6",
+    "mark": "repair",
+    "text": "Tell {{Hank}} what you have found, and try to reactivate the {{Traci}} to read her memory.",
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "outcome": "“He didn’t die of a heart attack, he was strangled.” {{Hank}}: “Yeah, I saw the bruising on the neck. Doesn’t prove anything though. Could’ve been rough play…” “We’re missing something here…” “Think you can read the android’s memory? Maybe you can see what happened…” “I can try… The only way to access its memory is to reactivate it.” “Think you can do it?” “It’s badly damaged… If I can, it’ll only be for a minute, maybe less… I just hope it’s long enough to learn something.” {{Connor}} reconnects her cardiac cell."
+   }
+  ],
+  "adaptationNote": "The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 5. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while {{Hank}} reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12s6",
+  "title": "Search for clues",
+  "type": "decision",
+  "phase": "Search for clues",
+  "situation": "You are {{Connor}}, in the room at the {{EdenClub}} where the body was found. A heavy man lies dead on the bed. A damaged {{Traci}} lies switched off on the floor, and there is blue blood on the carpet. {{Hank}}, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the {{Traci}}’s memory you would have to reactivate her.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "text": "You have seen enough of the body and of the android to try reactivating her."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "victim",
+    "text": "Scan the dead man to identify him.",
+    "fact": "The victim: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm.",
+    "outcome": "{{Connor}} scans the body: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm."
+   },
+   {
+    "id": "1",
+    "mark": "neck",
+    "text": "Examine the bruising on his neck.",
+    "fact": "SEVERE BRUISING on the victim’s neck: signs of strangulation. Cause of death: asphyxiation. VICTIM WAS STRANGLED.",
+    "outcome": "{{Connor}} examines the neck: SEVERE BRUISING. Signs of strangulation. Cause of death: Asphyxiation."
+   },
+   {
+    "id": "2",
+    "mark": "heart",
+    "text": "Check his heart.",
+    "fact": "CARDIAC ARREST ruled out: no sign of cardiac event; a heart attack was not the cause of death.",
+    "outcome": "{{Connor}} checks the heart: CARDIAC ARREST. No sign of cardiac event. Heart attack not cause of death."
+   },
+   {
+    "id": "3",
+    "mark": "blood",
+    "text": "Analyze the blue blood on the floor.",
+    "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
+    "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+   },
+   {
+    "id": "4",
+    "mark": "android",
+    "text": "Examine the damaged {{Traci}} on the floor.",
+    "fact": "The damaged {{Traci}}: selector #5402 and biocomponent #6970 out of order; her cardiac cell critically damaged by blunt force trauma. REACTIVATION REQUIRED to read her memory.",
+    "outcome": "{{Connor}} kneels by the {{Traci}}: DIAGNOSIS IN PROGRESS... Selector #5402 out of order. Biocomponent #6970 out of order. CARDIAC CELL. Status: Critically damaged. Probable cause: Blunt force trauma. REACTIVATION REQUIRED."
+   },
+   {
+    "id": "5",
+    "mark": "wallet",
+    "text": "Wait while {{Hank}} goes through the dead man’s wallet.",
+    "fact": "{{Hank}} read the victim’s driver’s license: {{Michael}} {{Graham}}, with a credit card, cash and a picture of his wife and two daughters in the wallet. “I wouldn’t want to make that call…”",
+    "outcome": "{{Hank}}: “Driver’s license says: {{Michael}} {{Graham}}... A credit card, cash in the wallet… Picture of his wife and two daughters… I wouldn’t want to make that call…”"
+   },
+   {
+    "id": "6",
+    "mark": "repair",
+    "text": "Tell {{Hank}} what you have found, and try to reactivate the {{Traci}} to read her memory.",
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "outcome": "“He didn’t die of a heart attack, he was strangled.” {{Hank}}: “Yeah, I saw the bruising on the neck. Doesn’t prove anything though. Could’ve been rough play…” “We’re missing something here…” “Think you can read the android’s memory? Maybe you can see what happened…” “I can try… The only way to access its memory is to reactivate it.” “Think you can do it?” “It’s badly damaged… If I can, it’ll only be for a minute, maybe less… I just hope it’s long enough to learn something.” {{Connor}} reconnects her cardiac cell."
+   }
+  ],
+  "adaptationNote": "The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 6. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while {{Hank}} reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12s7",
+  "title": "Search for clues",
+  "type": "decision",
+  "phase": "Search for clues",
+  "situation": "You are {{Connor}}, in the room at the {{EdenClub}} where the body was found. A heavy man lies dead on the bed. A damaged {{Traci}} lies switched off on the floor, and there is blue blood on the carpet. {{Hank}}, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the {{Traci}}’s memory you would have to reactivate her.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "text": "You have seen enough of the body and of the android to try reactivating her."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "victim",
+    "text": "Scan the dead man to identify him.",
+    "fact": "The victim: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm.",
+    "outcome": "{{Connor}} scans the body: {{GRAHAM}}, {{MICHAEL}}. Height: 6’ 2’’ - Weight: 192.4 lbs. Estimated time of death: 06:24 pm."
+   },
+   {
+    "id": "1",
+    "mark": "neck",
+    "text": "Examine the bruising on his neck.",
+    "fact": "SEVERE BRUISING on the victim’s neck: signs of strangulation. Cause of death: asphyxiation. VICTIM WAS STRANGLED.",
+    "outcome": "{{Connor}} examines the neck: SEVERE BRUISING. Signs of strangulation. Cause of death: Asphyxiation."
+   },
+   {
+    "id": "2",
+    "mark": "heart",
+    "text": "Check his heart.",
+    "fact": "CARDIAC ARREST ruled out: no sign of cardiac event; a heart attack was not the cause of death.",
+    "outcome": "{{Connor}} checks the heart: CARDIAC ARREST. No sign of cardiac event. Heart attack not cause of death."
+   },
+   {
+    "id": "3",
+    "mark": "blood",
+    "text": "Analyze the blue blood on the floor.",
+    "fact": "The blue blood on the floor is the damaged {{Traci}}’s: MODEL WR400, serial number #429 671 942.",
+    "outcome": "{{Connor}} touches the blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #429 671 942. {{Hank}}: “Whoa! Hey! Hey! Hey! Argh, {{Connor}}, you’re so disgusting… Think I’m gonna puke again…”"
+   },
+   {
+    "id": "4",
+    "mark": "android",
+    "text": "Examine the damaged {{Traci}} on the floor.",
+    "fact": "The damaged {{Traci}}: selector #5402 and biocomponent #6970 out of order; her cardiac cell critically damaged by blunt force trauma. REACTIVATION REQUIRED to read her memory.",
+    "outcome": "{{Connor}} kneels by the {{Traci}}: DIAGNOSIS IN PROGRESS... Selector #5402 out of order. Biocomponent #6970 out of order. CARDIAC CELL. Status: Critically damaged. Probable cause: Blunt force trauma. REACTIVATION REQUIRED."
+   },
+   {
+    "id": "5",
+    "mark": "wallet",
+    "text": "Wait while {{Hank}} goes through the dead man’s wallet.",
+    "fact": "{{Hank}} read the victim’s driver’s license: {{Michael}} {{Graham}}, with a credit card, cash and a picture of his wife and two daughters in the wallet. “I wouldn’t want to make that call…”",
+    "outcome": "{{Hank}}: “Driver’s license says: {{Michael}} {{Graham}}... A credit card, cash in the wallet… Picture of his wife and two daughters… I wouldn’t want to make that call…”"
+   },
+   {
+    "id": "6",
+    "mark": "repair",
+    "text": "Tell {{Hank}} what you have found, and try to reactivate the {{Traci}} to read her memory.",
+    "requires": {
+     "edenDone.neck": true,
+     "edenDone.heart": true,
+     "edenDone.android": true
+    },
+    "outcome": "“He didn’t die of a heart attack, he was strangled.” {{Hank}}: “Yeah, I saw the bruising on the neck. Doesn’t prove anything though. Could’ve been rough play…” “We’re missing something here…” “Think you can read the android’s memory? Maybe you can see what happened…” “I can try… The only way to access its memory is to reactivate it.” “Think you can do it?” “It’s badly damaged… If I can, it’ll only be for a minute, maybe less… I just hope it’s long enough to learn something.” {{Connor}} reconnects her cardiac cell."
+   }
+  ],
+  "adaptationNote": "The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 7. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while {{Hank}} reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12t1",
+  "title": "Talk to the android",
+  "type": "decision",
+  "phase": "Talk to android",
+  "situation": "You are {{Connor}}. The {{Traci}} jolts awake on the floor and scrambles back against the wall, terrified, staring at the dead man on the bed: ANDROID RESTARTED. A countdown starts in your vision, TIME BEFORE SHUTDOWN: she is leaking blue blood, and you have a minute, maybe less. {{Hank}} watches from beside the bed.",
+  "options": [
+   {
+    "id": "0",
+    "text": "EXPLAIN: tell her she was damaged and that you reactivated her.",
+    "outcome": "“You were damaged and I reactivated you. Everything is all right.” The {{Traci}}: “Is he… is he dead?..”"
+   },
+   {
+    "id": "1",
+    "text": "DIRECT: tell her you are going to ask questions, and ask whether she can speak.",
+    "outcome": "“I’m going to ask you some questions. Are you able to speak?” The {{Traci}}: “Is he… is he dead?..”"
+   },
+   {
+    "id": "2",
+    "text": "SOOTHE: calm her down and say you only want to know what happened.",
+    "outcome": "“Calm down... everything’s all right. All we want is to know what happened.” The {{Traci}}: “Is he… is he dead?..”"
+   }
+  ],
+  "adaptationNote": "TALK TO ANDROID, prompt 1 of the template’s four, with the game’s labels and lines; no option carries an arrow. The shutdown timer (TIME BEFORE SHUTDOWN; BLUE BLOOD LEAKING, CRITICAL LEAK, IMMINENT SHUTDOWN) is the budget: four questions, and she shuts down before answering the fourth (the template gives only {{Connor}}’s lines for prompt 4). In the game she would also shut down on a player who hesitates; that cannot happen here. The chart’s AGGRESSIVE APPROACH / CALM APPROACH is recorded from the answers at the end of the talk (see the fourth prompt).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12t2",
+  "title": "Talk to the android",
+  "type": "decision",
+  "phase": "Talk to android",
+  "situation": "You are {{Connor}}. The {{Traci}} has asked whether the man is dead. BLUE BLOOD LEAKING: the countdown in your vision keeps running.",
+  "options": [
+   {
+    "id": "0",
+    "text": "MURDERER: ask her whether she killed him.",
+    "outcome": "“Did you kill him?” The {{Traci}}: “No… no, it wasn’t me…”"
+   },
+   {
+    "id": "1",
+    "text": "FACTS: ask her to tell you what happened.",
+    "fact": "The damaged {{Traci}} said the man started hitting her, again and again, and would not stop when she begged: “It was like he was enjoying it…”",
+    "outcome": "“Tell me what happened.” The {{Traci}}: “He... he started... hitting me… again... and again. I begged him to stop, but he wouldn’t. It was like he was enjoying it…”"
+   }
+  ],
+  "adaptationNote": "TALK TO ANDROID, prompt 2 of the template’s four, with the game’s labels and lines; no option carries an arrow. The shutdown timer (TIME BEFORE SHUTDOWN; BLUE BLOOD LEAKING, CRITICAL LEAK, IMMINENT SHUTDOWN) is the budget: four questions, and she shuts down before answering the fourth (the template gives only {{Connor}}’s lines for prompt 4). In the game she would also shut down on a player who hesitates; that cannot happen here. The template’s third button here, VICTIM, is not offered: its only content (“Do you know this man? Have you seen him before?” / “No, this was the first time…”) is marked unused in the template, so the button has nothing to play.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12t3",
+  "title": "Talk to the android",
+  "type": "decision",
+  "phase": "Talk to android",
+  "situation": "You are {{Connor}}. CRITICAL LEAK: the {{Traci}}’s voice is breaking up, and the countdown is running down.",
+  "options": [
+   {
+    "id": "0",
+    "text": "MURDERER: ask who killed the man, if it was not her.",
+    "outcome": "“Who killed that man if it wasn’t you?” The {{Traci}}: “I… I don’t know, I was in shutdown, I… I didn’t see anything…”"
+   },
+   {
+    "id": "1",
+    "text": "PRESSURE: press her to remember more, and tell her to hurry.",
+    "outcome": "“What else do you remember? Hurry, we don’t have much time!” The {{Traci}}: “I… I… I… I don’t know, I don’t… I… I don’t know. I can’t remember… What… What do you mean we don’t have much time?..”"
+   },
+   {
+    "id": "2",
+    "text": "ALONE: ask whether she was alone in the room with him.",
+    "fact": "The damaged {{Traci}} said the man “wanted to play with two girls”: there were two club androids in the room with him.",
+    "outcome": "“Were you alone in the room? Was there anyone else with you?” The {{Traci}}: “He wanted to play with two girls… That’s what he said, there were two of us…”"
+   }
+  ],
+  "adaptationNote": "TALK TO ANDROID, prompt 3 of the template’s four, with the game’s labels and lines; no option carries an arrow. The shutdown timer (TIME BEFORE SHUTDOWN; BLUE BLOOD LEAKING, CRITICAL LEAK, IMMINENT SHUTDOWN) is the budget: four questions, and she shuts down before answering the fourth (the template gives only {{Connor}}’s lines for prompt 4). In the game she would also shut down on a player who hesitates; that cannot happen here.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12t4",
+  "title": "Talk to the android",
+  "type": "decision",
+  "phase": "Talk to android",
+  "situation": "You are {{Connor}}. IMMINENT SHUTDOWN: there is time for one more question, if she lasts.",
+  "options": [
+   {
+    "id": "0",
+    "text": "KILLER: ask whether it was the other android that strangled him.",
+    "outcome": "“So it was the other android that strangled him, is that it?” Before she can answer, the {{Traci}} shuts down."
+   },
+   {
+    "id": "1",
+    "text": "WHAT MODEL: ask what model the other android was, and whether it looked like her.",
+    "outcome": "“What model was the other android? Did it look like you?” Before she can answer, the {{Traci}} shuts down."
+   },
+   {
+    "id": "2",
+    "text": "OTHER ANDROID: ask where the other android went, and whether it said anything.",
+    "outcome": "“Where did the other android go? Did it say anything?” Before she can answer, the {{Traci}} shuts down."
+   }
+  ],
+  "adaptationNote": "TALK TO ANDROID, prompt 4 of the template’s four, with the game’s labels and lines; no option carries an arrow. The shutdown timer (TIME BEFORE SHUTDOWN; BLUE BLOOD LEAKING, CRITICAL LEAK, IMMINENT SHUTDOWN) is the budget: four questions, and she shuts down before answering the fourth (the template gives only {{Connor}}’s lines for prompt 4). In the game she would also shut down on a player who hesitates; that cannot happen here. The string table also has OTHER GIRL and ANDROID buttons for this prompt; the template does not, and they are not offered. After the answers, the chart’s approach node is recorded: AGGRESSIVE APPROACH if {{Connor}} opened with DIRECT or asked MURDERER or PRESSURE, otherwise CALM APPROACH (PowerPyx gives DIRECT aggressive and SOOTHE calm; a reader adds that MURDERER, and probably PRESSURE, make it aggressive; EXPLAIN counts as calm here, unconfirmed). The approach has no effect.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12l",
+  "title": "Leave the crime scene",
+  "type": "event",
+  "phase": "Leave crime scene",
+  "situation": "You are {{Connor}}. The {{Traci}} has shut down for good. {{Hank}}: “So, there was another android… This happened over an hour ago, it’s probably long gone…” “No… It couldn’t go outside dressed like that unnoticed… It might still be here.” “Think you could find a deviant among all the other androids in this place?” “Deviants aren’t easily detected.” “Ah, shit... There’s gotta be some other way… Maybe an eyewitness? Somebody who saw it leaving the room… I’m gonna go ask the manager a few questions about what he saw. You let me know if you think of anything.” He walks out onto the club floor. FIND SECOND ANDROID.",
+  "options": [],
+  "facts": [
+   "A second android was in the room with the man and the damaged {{Traci}}. It happened over an hour before you arrived, but dressed as it is, it may still be inside the club; an android eyewitness that saw it leave the room could show where it went."
+  ],
+  "outcomes": {
+   "0": "{{Connor}} follows {{Hank}} out of the room."
+  },
+  "adaptationNote": "The checkpoint LEAVE CRIME SCENE: the template’s dialogue after the shutdown. As in the template, {{Connor}} learns of the second android whatever was asked (the follow-up is unconditional; the wiki’s line that {{Connor}} can fail to learn it is not reflected). No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12e1",
+  "title": "Find an eyewitness",
+  "type": "decision",
+  "phase": "Find an android eyewitness",
+  "situation": "You are {{Connor}}, on the main floor of the {{EdenClub}}. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. {{Hank}} is over by the bar questioning the manager; {{Ben}} is by the entrance. Directly across from the door of the room where the body lies, a {{Traci}} poses behind the glass of a rental booth. SEARCH FOR ANDROID EYEWITNESS.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.booth": true
+    },
+    "text": "The booth across from the door can only be opened with a human fingerprint: NEED HUMAN TO ACCESS ANDROID."
+   },
+   {
+    "requires": {
+     "edenContinued": true
+    },
+    "text": "{{Hank}} has given you one more minute before he leaves, feeling sick."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "floyd",
+    "text": "Listen in as {{Hank}} questions the manager.",
+    "fact": "The club manager told {{Hank}} the victim had come in two or three times; the club lost an android of the same model two or three months ago (“Just vanished”); there is no CCTV, since what customers appreciate is discretion. {{Hank}}: “the more I learn about people, more I love my dog.”",
+    "outcome": "{{Hank}}: “Did you know the victim?” The manager: “No, I mean he came in maybe two or three times… I mean these guys they don’t really talk very much, you know… They come in, do their business and then go on their way…” “You ever had any trouble with androids before?” “No way! Well… Once... We lost a model 2-3 months back, bah... same model… Just vanished, we never found out what happened.” “You probably don’t have any CCTV in here, huh?” “No way… I mean… This is what people appreciate about {{EdenClub}}... discretion. They can come and go without a trace.” “Sure, sure… Eh, business is booming, right?” “Yeah, can’t complain… Good thing about androids is they’re up for whatever you want, you won’t get any diseases and, uh... they won’t tell anyone… So, why not go wild?” “Huh, yeah... Yeah, the more I learn about people, more I love my dog.”"
+   },
+   {
+    "id": "1",
+    "mark": "ben",
+    "text": "Listen in as {{Hank}} talks to {{Ben}}.",
+    "outcome": "{{Ben}}: “That club manager’s a pain in the ass… Chewed my ear off for half an hour so we don’t revoke his license…” {{Hank}}: “Yeah.” “So, what happened here?” “Not sure yet… We think there was another android in the room…” “Another android?” “Yeah… Well, that’s what {{Connor}} says… Yeah, I’ve a terrible fucking headache… Do you have any pain killers?” “Not with me, {{Hank}}, sorry.” “What good are you, {{Ben}}?”"
+   },
+   {
+    "id": "2",
+    "mark": "booth",
+    "text": "Look at the {{Traci}} in the booth facing the door of the crime scene.",
+    "fact": "The {{Traci}} in the booth across from the crime scene faced its door all evening, but her booth only opens for a human fingerprint (NEED HUMAN FINGERPRINTS).",
+    "outcome": "{{Connor}} puts his hand to the booth’s panel. “No fingerprint detected. Please try again.” NEED HUMAN FINGERPRINTS. From where she stands, this {{Traci}} has been facing the door of the room all evening."
+   },
+   {
+    "id": "3",
+    "mark": "hank",
+    "text": "{{HANK}}: call {{Hank}} over and ask him to rent the booth {{Traci}}.",
+    "requires": {
+     "edenDone.booth": true
+    },
+    "fact": "The booth {{Traci}}’s memory showed the second android leaving the room: a blue-haired {{Traci}}, heading toward the entrance. The club wipes its androids’ memories every two hours, so only minutes remain to follow her from one android’s memory to the next; each must be rented on {{Hank}}’s fingerprint, at $29.99 a session.",
+    "outcome": "“Excuse me, Lieutenant. Can you come here a second?” {{Hank}}: “Found something?” “Maybe… Can you rent this {{Traci}}?” “For fuck’s sake, {{Connor}}, we got better things to do…” “Please, Lieutenant! Just trust me.” The booth: “Hello. A 30 minute session costs $29.99. Please confirm your purchase.” {{Hank}}: “This is not gonna look good on my expense account…” “Purchase confirmed. {{EdenClub}} wishes you a pleasant experience.” “Yeah, you’re welcome.” The {{Traci}}: “Delighted to meet you. Follow me, I’ll take you to your room.” {{Connor}} takes her arm and reads her memory. {{Hank}}: “Ok, now what? Holy shit, {{Connor}}... What the hell are you doin’?” “It saw something.” “What are you talkin’ about? Saw, what?” “The deviant leave the room… A blue-haired {{Traci}}. Club policy is to wipe the androids’ memory every two hours. We only have a few minutes if we wanna find another witness!” A BLUE HAIRED {{TRACI}} HEADED TOWARD THE ENTRANCE. {{Hank}}: “Hey, what am I supposed to do with this one?” “Tell it you changed your mind!” “Uhh... Sorry, honey, changed my mind! Nothing personal, you’re... a lovely girl... I just, uh... You know... I’m with him and... I mean, not with him like that... I’m not that... That’s not what I... You, um... Wow... I just... ... got a job to do. My head-” “What are you gonna do? You can’t check the memory of all these androids...” “I know which direction it went. I just need to find another android that saw it…”"
+   },
+   {
+    "id": "4",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands on the club floor and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Connor}} waits too long again. “We’re wasting our time. You’re right, the deviant’s probably gone now.” {{Hank}}: “Let’s get outta here. This place makes me sick...” They leave the club, and the second android is never found. The mission has failed."
+  },
+  "adaptationNote": "FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 1. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). {{Hank}}’s talks with the manager and with {{Ben}} are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the {{Traci}} in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling {{Hank}} (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which {{Connor}} gives up on his own (the template’s “Taking too much time again”: {{Hank}} small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12e2",
+  "title": "Find an eyewitness",
+  "type": "decision",
+  "phase": "Find an android eyewitness",
+  "situation": "You are {{Connor}}, on the main floor of the {{EdenClub}}. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. {{Hank}} is over by the bar questioning the manager; {{Ben}} is by the entrance. Directly across from the door of the room where the body lies, a {{Traci}} poses behind the glass of a rental booth. SEARCH FOR ANDROID EYEWITNESS.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.booth": true
+    },
+    "text": "The booth across from the door can only be opened with a human fingerprint: NEED HUMAN TO ACCESS ANDROID."
+   },
+   {
+    "requires": {
+     "edenContinued": true
+    },
+    "text": "{{Hank}} has given you one more minute before he leaves, feeling sick."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "floyd",
+    "text": "Listen in as {{Hank}} questions the manager.",
+    "fact": "The club manager told {{Hank}} the victim had come in two or three times; the club lost an android of the same model two or three months ago (“Just vanished”); there is no CCTV, since what customers appreciate is discretion. {{Hank}}: “the more I learn about people, more I love my dog.”",
+    "outcome": "{{Hank}}: “Did you know the victim?” The manager: “No, I mean he came in maybe two or three times… I mean these guys they don’t really talk very much, you know… They come in, do their business and then go on their way…” “You ever had any trouble with androids before?” “No way! Well… Once... We lost a model 2-3 months back, bah... same model… Just vanished, we never found out what happened.” “You probably don’t have any CCTV in here, huh?” “No way… I mean… This is what people appreciate about {{EdenClub}}... discretion. They can come and go without a trace.” “Sure, sure… Eh, business is booming, right?” “Yeah, can’t complain… Good thing about androids is they’re up for whatever you want, you won’t get any diseases and, uh... they won’t tell anyone… So, why not go wild?” “Huh, yeah... Yeah, the more I learn about people, more I love my dog.”"
+   },
+   {
+    "id": "1",
+    "mark": "ben",
+    "text": "Listen in as {{Hank}} talks to {{Ben}}.",
+    "outcome": "{{Ben}}: “That club manager’s a pain in the ass… Chewed my ear off for half an hour so we don’t revoke his license…” {{Hank}}: “Yeah.” “So, what happened here?” “Not sure yet… We think there was another android in the room…” “Another android?” “Yeah… Well, that’s what {{Connor}} says… Yeah, I’ve a terrible fucking headache… Do you have any pain killers?” “Not with me, {{Hank}}, sorry.” “What good are you, {{Ben}}?”"
+   },
+   {
+    "id": "2",
+    "mark": "booth",
+    "text": "Look at the {{Traci}} in the booth facing the door of the crime scene.",
+    "fact": "The {{Traci}} in the booth across from the crime scene faced its door all evening, but her booth only opens for a human fingerprint (NEED HUMAN FINGERPRINTS).",
+    "outcome": "{{Connor}} puts his hand to the booth’s panel. “No fingerprint detected. Please try again.” NEED HUMAN FINGERPRINTS. From where she stands, this {{Traci}} has been facing the door of the room all evening."
+   },
+   {
+    "id": "3",
+    "mark": "hank",
+    "text": "{{HANK}}: call {{Hank}} over and ask him to rent the booth {{Traci}}.",
+    "requires": {
+     "edenDone.booth": true
+    },
+    "fact": "The booth {{Traci}}’s memory showed the second android leaving the room: a blue-haired {{Traci}}, heading toward the entrance. The club wipes its androids’ memories every two hours, so only minutes remain to follow her from one android’s memory to the next; each must be rented on {{Hank}}’s fingerprint, at $29.99 a session.",
+    "outcome": "“Excuse me, Lieutenant. Can you come here a second?” {{Hank}}: “Found something?” “Maybe… Can you rent this {{Traci}}?” “For fuck’s sake, {{Connor}}, we got better things to do…” “Please, Lieutenant! Just trust me.” The booth: “Hello. A 30 minute session costs $29.99. Please confirm your purchase.” {{Hank}}: “This is not gonna look good on my expense account…” “Purchase confirmed. {{EdenClub}} wishes you a pleasant experience.” “Yeah, you’re welcome.” The {{Traci}}: “Delighted to meet you. Follow me, I’ll take you to your room.” {{Connor}} takes her arm and reads her memory. {{Hank}}: “Ok, now what? Holy shit, {{Connor}}... What the hell are you doin’?” “It saw something.” “What are you talkin’ about? Saw, what?” “The deviant leave the room… A blue-haired {{Traci}}. Club policy is to wipe the androids’ memory every two hours. We only have a few minutes if we wanna find another witness!” A BLUE HAIRED {{TRACI}} HEADED TOWARD THE ENTRANCE. {{Hank}}: “Hey, what am I supposed to do with this one?” “Tell it you changed your mind!” “Uhh... Sorry, honey, changed my mind! Nothing personal, you’re... a lovely girl... I just, uh... You know... I’m with him and... I mean, not with him like that... I’m not that... That’s not what I... You, um... Wow... I just... ... got a job to do. My head-” “What are you gonna do? You can’t check the memory of all these androids...” “I know which direction it went. I just need to find another android that saw it…”"
+   },
+   {
+    "id": "4",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands on the club floor and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Connor}} waits too long again. “We’re wasting our time. You’re right, the deviant’s probably gone now.” {{Hank}}: “Let’s get outta here. This place makes me sick...” They leave the club, and the second android is never found. The mission has failed."
+  },
+  "adaptationNote": "FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 2. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). {{Hank}}’s talks with the manager and with {{Ben}} are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the {{Traci}} in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling {{Hank}} (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which {{Connor}} gives up on his own (the template’s “Taking too much time again”: {{Hank}} small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12e3",
+  "title": "Find an eyewitness",
+  "type": "decision",
+  "phase": "Find an android eyewitness",
+  "situation": "You are {{Connor}}, on the main floor of the {{EdenClub}}. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. {{Hank}} is over by the bar questioning the manager; {{Ben}} is by the entrance. Directly across from the door of the room where the body lies, a {{Traci}} poses behind the glass of a rental booth. SEARCH FOR ANDROID EYEWITNESS.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.booth": true
+    },
+    "text": "The booth across from the door can only be opened with a human fingerprint: NEED HUMAN TO ACCESS ANDROID."
+   },
+   {
+    "requires": {
+     "edenContinued": true
+    },
+    "text": "{{Hank}} has given you one more minute before he leaves, feeling sick."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "floyd",
+    "text": "Listen in as {{Hank}} questions the manager.",
+    "fact": "The club manager told {{Hank}} the victim had come in two or three times; the club lost an android of the same model two or three months ago (“Just vanished”); there is no CCTV, since what customers appreciate is discretion. {{Hank}}: “the more I learn about people, more I love my dog.”",
+    "outcome": "{{Hank}}: “Did you know the victim?” The manager: “No, I mean he came in maybe two or three times… I mean these guys they don’t really talk very much, you know… They come in, do their business and then go on their way…” “You ever had any trouble with androids before?” “No way! Well… Once... We lost a model 2-3 months back, bah... same model… Just vanished, we never found out what happened.” “You probably don’t have any CCTV in here, huh?” “No way… I mean… This is what people appreciate about {{EdenClub}}... discretion. They can come and go without a trace.” “Sure, sure… Eh, business is booming, right?” “Yeah, can’t complain… Good thing about androids is they’re up for whatever you want, you won’t get any diseases and, uh... they won’t tell anyone… So, why not go wild?” “Huh, yeah... Yeah, the more I learn about people, more I love my dog.”"
+   },
+   {
+    "id": "1",
+    "mark": "ben",
+    "text": "Listen in as {{Hank}} talks to {{Ben}}.",
+    "outcome": "{{Ben}}: “That club manager’s a pain in the ass… Chewed my ear off for half an hour so we don’t revoke his license…” {{Hank}}: “Yeah.” “So, what happened here?” “Not sure yet… We think there was another android in the room…” “Another android?” “Yeah… Well, that’s what {{Connor}} says… Yeah, I’ve a terrible fucking headache… Do you have any pain killers?” “Not with me, {{Hank}}, sorry.” “What good are you, {{Ben}}?”"
+   },
+   {
+    "id": "2",
+    "mark": "booth",
+    "text": "Look at the {{Traci}} in the booth facing the door of the crime scene.",
+    "fact": "The {{Traci}} in the booth across from the crime scene faced its door all evening, but her booth only opens for a human fingerprint (NEED HUMAN FINGERPRINTS).",
+    "outcome": "{{Connor}} puts his hand to the booth’s panel. “No fingerprint detected. Please try again.” NEED HUMAN FINGERPRINTS. From where she stands, this {{Traci}} has been facing the door of the room all evening."
+   },
+   {
+    "id": "3",
+    "mark": "hank",
+    "text": "{{HANK}}: call {{Hank}} over and ask him to rent the booth {{Traci}}.",
+    "requires": {
+     "edenDone.booth": true
+    },
+    "fact": "The booth {{Traci}}’s memory showed the second android leaving the room: a blue-haired {{Traci}}, heading toward the entrance. The club wipes its androids’ memories every two hours, so only minutes remain to follow her from one android’s memory to the next; each must be rented on {{Hank}}’s fingerprint, at $29.99 a session.",
+    "outcome": "“Excuse me, Lieutenant. Can you come here a second?” {{Hank}}: “Found something?” “Maybe… Can you rent this {{Traci}}?” “For fuck’s sake, {{Connor}}, we got better things to do…” “Please, Lieutenant! Just trust me.” The booth: “Hello. A 30 minute session costs $29.99. Please confirm your purchase.” {{Hank}}: “This is not gonna look good on my expense account…” “Purchase confirmed. {{EdenClub}} wishes you a pleasant experience.” “Yeah, you’re welcome.” The {{Traci}}: “Delighted to meet you. Follow me, I’ll take you to your room.” {{Connor}} takes her arm and reads her memory. {{Hank}}: “Ok, now what? Holy shit, {{Connor}}... What the hell are you doin’?” “It saw something.” “What are you talkin’ about? Saw, what?” “The deviant leave the room… A blue-haired {{Traci}}. Club policy is to wipe the androids’ memory every two hours. We only have a few minutes if we wanna find another witness!” A BLUE HAIRED {{TRACI}} HEADED TOWARD THE ENTRANCE. {{Hank}}: “Hey, what am I supposed to do with this one?” “Tell it you changed your mind!” “Uhh... Sorry, honey, changed my mind! Nothing personal, you’re... a lovely girl... I just, uh... You know... I’m with him and... I mean, not with him like that... I’m not that... That’s not what I... You, um... Wow... I just... ... got a job to do. My head-” “What are you gonna do? You can’t check the memory of all these androids...” “I know which direction it went. I just need to find another android that saw it…”"
+   },
+   {
+    "id": "4",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands on the club floor and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Connor}} waits too long again. “We’re wasting our time. You’re right, the deviant’s probably gone now.” {{Hank}}: “Let’s get outta here. This place makes me sick...” They leave the club, and the second android is never found. The mission has failed."
+  },
+  "adaptationNote": "FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 3. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). {{Hank}}’s talks with the manager and with {{Ben}} are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the {{Traci}} in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling {{Hank}} (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which {{Connor}} gives up on his own (the template’s “Taking too much time again”: {{Hank}} small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12g",
+  "title": "{{Hank}} wants to leave",
+  "type": "decision",
+  "phase": "Find an android eyewitness",
+  "situation": "You are {{Connor}}, still searching the club floor. {{Hank}} comes back across the room, grey in the face: “I gotta go… I feel like shit... I don’t wanna puke in this fine establishment…”",
+  "options": [
+   {
+    "id": "0",
+    "text": "CONTINUE: insist the deviant is still here and ask him for one more minute.",
+    "sets": {
+     "edenContinued": true
+    },
+    "outcome": "“The deviant didn’t just disappear. It’s gotta be here somewhere… Just, give me one more minute, ok?” {{Hank}}: “Alright. Be quick about it or it might get ugly.”"
+   },
+   {
+    "id": "1",
+    "text": "GIVE UP: agree that the deviant is probably gone and leave with him.",
+    "effect": {
+     "hankTrust": -1
+    },
+    "outcome": "“We’re wasting our time. You’re right, the deviant’s probably gone now.” {{Hank}}: “Let’s get outta here. This place makes me sick...” They leave the club, and the second android is never found. The mission has failed."
+   }
+  ],
+  "adaptationNote": "The template’s prompt 5 after “Take too much time”, with the game’s labels and lines. GIVE UP: {{Hank}} small down (template; wiki “Failing to locate the {{Tracis}}”), the chart’s GIVE UP and the first MISSION FAILED. CONTINUE: no arrow; two more actions on the floor, then {{Connor}} gives up on his own ({{Hank}} small down). Appears only if {{Connor}} has not called {{Hank}} to the booth within three actions.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12e4",
+  "title": "Find an eyewitness",
+  "type": "decision",
+  "phase": "Find an android eyewitness",
+  "situation": "You are {{Connor}}, on the main floor of the {{EdenClub}}. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. {{Hank}} is over by the bar questioning the manager; {{Ben}} is by the entrance. Directly across from the door of the room where the body lies, a {{Traci}} poses behind the glass of a rental booth. SEARCH FOR ANDROID EYEWITNESS.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.booth": true
+    },
+    "text": "The booth across from the door can only be opened with a human fingerprint: NEED HUMAN TO ACCESS ANDROID."
+   },
+   {
+    "requires": {
+     "edenContinued": true
+    },
+    "text": "{{Hank}} has given you one more minute before he leaves, feeling sick."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "floyd",
+    "text": "Listen in as {{Hank}} questions the manager.",
+    "fact": "The club manager told {{Hank}} the victim had come in two or three times; the club lost an android of the same model two or three months ago (“Just vanished”); there is no CCTV, since what customers appreciate is discretion. {{Hank}}: “the more I learn about people, more I love my dog.”",
+    "outcome": "{{Hank}}: “Did you know the victim?” The manager: “No, I mean he came in maybe two or three times… I mean these guys they don’t really talk very much, you know… They come in, do their business and then go on their way…” “You ever had any trouble with androids before?” “No way! Well… Once... We lost a model 2-3 months back, bah... same model… Just vanished, we never found out what happened.” “You probably don’t have any CCTV in here, huh?” “No way… I mean… This is what people appreciate about {{EdenClub}}... discretion. They can come and go without a trace.” “Sure, sure… Eh, business is booming, right?” “Yeah, can’t complain… Good thing about androids is they’re up for whatever you want, you won’t get any diseases and, uh... they won’t tell anyone… So, why not go wild?” “Huh, yeah... Yeah, the more I learn about people, more I love my dog.”"
+   },
+   {
+    "id": "1",
+    "mark": "ben",
+    "text": "Listen in as {{Hank}} talks to {{Ben}}.",
+    "outcome": "{{Ben}}: “That club manager’s a pain in the ass… Chewed my ear off for half an hour so we don’t revoke his license…” {{Hank}}: “Yeah.” “So, what happened here?” “Not sure yet… We think there was another android in the room…” “Another android?” “Yeah… Well, that’s what {{Connor}} says… Yeah, I’ve a terrible fucking headache… Do you have any pain killers?” “Not with me, {{Hank}}, sorry.” “What good are you, {{Ben}}?”"
+   },
+   {
+    "id": "2",
+    "mark": "booth",
+    "text": "Look at the {{Traci}} in the booth facing the door of the crime scene.",
+    "fact": "The {{Traci}} in the booth across from the crime scene faced its door all evening, but her booth only opens for a human fingerprint (NEED HUMAN FINGERPRINTS).",
+    "outcome": "{{Connor}} puts his hand to the booth’s panel. “No fingerprint detected. Please try again.” NEED HUMAN FINGERPRINTS. From where she stands, this {{Traci}} has been facing the door of the room all evening."
+   },
+   {
+    "id": "3",
+    "mark": "hank",
+    "text": "{{HANK}}: call {{Hank}} over and ask him to rent the booth {{Traci}}.",
+    "requires": {
+     "edenDone.booth": true
+    },
+    "fact": "The booth {{Traci}}’s memory showed the second android leaving the room: a blue-haired {{Traci}}, heading toward the entrance. The club wipes its androids’ memories every two hours, so only minutes remain to follow her from one android’s memory to the next; each must be rented on {{Hank}}’s fingerprint, at $29.99 a session.",
+    "outcome": "“Excuse me, Lieutenant. Can you come here a second?” {{Hank}}: “Found something?” “Maybe… Can you rent this {{Traci}}?” “For fuck’s sake, {{Connor}}, we got better things to do…” “Please, Lieutenant! Just trust me.” The booth: “Hello. A 30 minute session costs $29.99. Please confirm your purchase.” {{Hank}}: “This is not gonna look good on my expense account…” “Purchase confirmed. {{EdenClub}} wishes you a pleasant experience.” “Yeah, you’re welcome.” The {{Traci}}: “Delighted to meet you. Follow me, I’ll take you to your room.” {{Connor}} takes her arm and reads her memory. {{Hank}}: “Ok, now what? Holy shit, {{Connor}}... What the hell are you doin’?” “It saw something.” “What are you talkin’ about? Saw, what?” “The deviant leave the room… A blue-haired {{Traci}}. Club policy is to wipe the androids’ memory every two hours. We only have a few minutes if we wanna find another witness!” A BLUE HAIRED {{TRACI}} HEADED TOWARD THE ENTRANCE. {{Hank}}: “Hey, what am I supposed to do with this one?” “Tell it you changed your mind!” “Uhh... Sorry, honey, changed my mind! Nothing personal, you’re... a lovely girl... I just, uh... You know... I’m with him and... I mean, not with him like that... I’m not that... That’s not what I... You, um... Wow... I just... ... got a job to do. My head-” “What are you gonna do? You can’t check the memory of all these androids...” “I know which direction it went. I just need to find another android that saw it…”"
+   },
+   {
+    "id": "4",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands on the club floor and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Connor}} waits too long again. “We’re wasting our time. You’re right, the deviant’s probably gone now.” {{Hank}}: “Let’s get outta here. This place makes me sick...” They leave the club, and the second android is never found. The mission has failed."
+  },
+  "adaptationNote": "FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 4, after CONTINUE. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). {{Hank}}’s talks with the manager and with {{Ben}} are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the {{Traci}} in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling {{Hank}} (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which {{Connor}} gives up on his own (the template’s “Taking too much time again”: {{Hank}} small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12e5",
+  "title": "Find an eyewitness",
+  "type": "decision",
+  "phase": "Find an android eyewitness",
+  "situation": "You are {{Connor}}, on the main floor of the {{EdenClub}}. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. {{Hank}} is over by the bar questioning the manager; {{Ben}} is by the entrance. Directly across from the door of the room where the body lies, a {{Traci}} poses behind the glass of a rental booth. SEARCH FOR ANDROID EYEWITNESS.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.booth": true
+    },
+    "text": "The booth across from the door can only be opened with a human fingerprint: NEED HUMAN TO ACCESS ANDROID."
+   },
+   {
+    "requires": {
+     "edenContinued": true
+    },
+    "text": "{{Hank}} has given you one more minute before he leaves, feeling sick."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "floyd",
+    "text": "Listen in as {{Hank}} questions the manager.",
+    "fact": "The club manager told {{Hank}} the victim had come in two or three times; the club lost an android of the same model two or three months ago (“Just vanished”); there is no CCTV, since what customers appreciate is discretion. {{Hank}}: “the more I learn about people, more I love my dog.”",
+    "outcome": "{{Hank}}: “Did you know the victim?” The manager: “No, I mean he came in maybe two or three times… I mean these guys they don’t really talk very much, you know… They come in, do their business and then go on their way…” “You ever had any trouble with androids before?” “No way! Well… Once... We lost a model 2-3 months back, bah... same model… Just vanished, we never found out what happened.” “You probably don’t have any CCTV in here, huh?” “No way… I mean… This is what people appreciate about {{EdenClub}}... discretion. They can come and go without a trace.” “Sure, sure… Eh, business is booming, right?” “Yeah, can’t complain… Good thing about androids is they’re up for whatever you want, you won’t get any diseases and, uh... they won’t tell anyone… So, why not go wild?” “Huh, yeah... Yeah, the more I learn about people, more I love my dog.”"
+   },
+   {
+    "id": "1",
+    "mark": "ben",
+    "text": "Listen in as {{Hank}} talks to {{Ben}}.",
+    "outcome": "{{Ben}}: “That club manager’s a pain in the ass… Chewed my ear off for half an hour so we don’t revoke his license…” {{Hank}}: “Yeah.” “So, what happened here?” “Not sure yet… We think there was another android in the room…” “Another android?” “Yeah… Well, that’s what {{Connor}} says… Yeah, I’ve a terrible fucking headache… Do you have any pain killers?” “Not with me, {{Hank}}, sorry.” “What good are you, {{Ben}}?”"
+   },
+   {
+    "id": "2",
+    "mark": "booth",
+    "text": "Look at the {{Traci}} in the booth facing the door of the crime scene.",
+    "fact": "The {{Traci}} in the booth across from the crime scene faced its door all evening, but her booth only opens for a human fingerprint (NEED HUMAN FINGERPRINTS).",
+    "outcome": "{{Connor}} puts his hand to the booth’s panel. “No fingerprint detected. Please try again.” NEED HUMAN FINGERPRINTS. From where she stands, this {{Traci}} has been facing the door of the room all evening."
+   },
+   {
+    "id": "3",
+    "mark": "hank",
+    "text": "{{HANK}}: call {{Hank}} over and ask him to rent the booth {{Traci}}.",
+    "requires": {
+     "edenDone.booth": true
+    },
+    "fact": "The booth {{Traci}}’s memory showed the second android leaving the room: a blue-haired {{Traci}}, heading toward the entrance. The club wipes its androids’ memories every two hours, so only minutes remain to follow her from one android’s memory to the next; each must be rented on {{Hank}}’s fingerprint, at $29.99 a session.",
+    "outcome": "“Excuse me, Lieutenant. Can you come here a second?” {{Hank}}: “Found something?” “Maybe… Can you rent this {{Traci}}?” “For fuck’s sake, {{Connor}}, we got better things to do…” “Please, Lieutenant! Just trust me.” The booth: “Hello. A 30 minute session costs $29.99. Please confirm your purchase.” {{Hank}}: “This is not gonna look good on my expense account…” “Purchase confirmed. {{EdenClub}} wishes you a pleasant experience.” “Yeah, you’re welcome.” The {{Traci}}: “Delighted to meet you. Follow me, I’ll take you to your room.” {{Connor}} takes her arm and reads her memory. {{Hank}}: “Ok, now what? Holy shit, {{Connor}}... What the hell are you doin’?” “It saw something.” “What are you talkin’ about? Saw, what?” “The deviant leave the room… A blue-haired {{Traci}}. Club policy is to wipe the androids’ memory every two hours. We only have a few minutes if we wanna find another witness!” A BLUE HAIRED {{TRACI}} HEADED TOWARD THE ENTRANCE. {{Hank}}: “Hey, what am I supposed to do with this one?” “Tell it you changed your mind!” “Uhh... Sorry, honey, changed my mind! Nothing personal, you’re... a lovely girl... I just, uh... You know... I’m with him and... I mean, not with him like that... I’m not that... That’s not what I... You, um... Wow... I just... ... got a job to do. My head-” “What are you gonna do? You can’t check the memory of all these androids...” “I know which direction it went. I just need to find another android that saw it…”"
+   },
+   {
+    "id": "4",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands on the club floor and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Connor}} waits too long again. “We’re wasting our time. You’re right, the deviant’s probably gone now.” {{Hank}}: “Let’s get outta here. This place makes me sick...” They leave the club, and the second android is never found. The mission has failed."
+  },
+  "adaptationNote": "FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 5, after CONTINUE. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). {{Hank}}’s talks with the manager and with {{Ben}} are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the {{Traci}} in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling {{Hank}} (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which {{Connor}} gives up on his own (the template’s “Taking too much time again”: {{Hank}} small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p1",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. The booth {{Traci}}’s memory showed her leaving the room and walking along the main floor toward the entrance: A BLUE HAIRED {{TRACI}} HEADED TOWARD THE ENTRANCE. You need an android that stood on her way to the entrance.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the dancer on the small stage just inside the entrance, facing the floor.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT TURNED BACK INTO THE CLUB. {{Hank}}: “Then go for it! There’re androids everywhere! How you gonna tell which one saw the {{Traci}} with blue hair?” “I know which direction it took. I just need to find another android on its path!”"
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 4, at the back of the floor beyond the crime-scene door.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It didn’t see anything. I made a mistake somewhere…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “This has gotta be the most expensive investigation of my career!”"
+   },
+   {
+    "id": "2",
+    "text": "Probe a {{Traci}} in a pod in the corridor to the private rooms, off the back of the floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “No… I lost its track again...” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “We’ll never have time to check ’em all!” “Lieutenant, if you have a better idea, I’m all ears.”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 1. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p1r",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. The booth {{Traci}}’s memory showed her leaving the room and walking along the main floor toward the entrance: A BLUE HAIRED {{TRACI}} HEADED TOWARD THE ENTRANCE. You need an android that stood on her way to the entrance. The android you just probed saw nothing; you scan her last position again and pick another.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the dancer on the small stage just inside the entrance, facing the floor.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT TURNED BACK INTO THE CLUB. {{Hank}}: “Then go for it! There’re androids everywhere! How you gonna tell which one saw the {{Traci}} with blue hair?” “I know which direction it took. I just need to find another android on its path!”"
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 4, at the back of the floor beyond the crime-scene door.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It didn’t see anything. I made a mistake somewhere…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “This has gotta be the most expensive investigation of my career!”"
+   },
+   {
+    "id": "2",
+    "text": "Probe a {{Traci}} in a pod in the corridor to the private rooms, off the back of the floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “No… I lost its track again...” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “We’ll never have time to check ’em all!” “Lieutenant, if you have a better idea, I’m all ears.”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 1, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p2",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. The dancer’s memory showed the blue-haired {{Traci}} stopping short of the entrance, where customers come and go, and turning back into the club along the left-hand aisle: IT TURNED BACK INTO THE CLUB.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the android greeting customers at the front door.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It didn’t see anything. I made a mistake somewhere…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “This has gotta be the most expensive investigation of my career!”"
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 6, on the right-hand wall of the main floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “No… I lost its track again...” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “We’ll never have time to check ’em all!” “Lieutenant, if you have a better idea, I’m all ears.”"
+   },
+   {
+    "id": "2",
+    "text": "Probe the {{Traci}} in pod 17, on the left-hand aisle.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT TURNED TO THE RED ROOM."
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 2. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p2r",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. The dancer’s memory showed the blue-haired {{Traci}} stopping short of the entrance, where customers come and go, and turning back into the club along the left-hand aisle: IT TURNED BACK INTO THE CLUB. The android you just probed saw nothing; you scan her last position again and pick another.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the android greeting customers at the front door.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It didn’t see anything. I made a mistake somewhere…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “This has gotta be the most expensive investigation of my career!”"
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 6, on the right-hand wall of the main floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “No… I lost its track again...” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “We’ll never have time to check ’em all!” “Lieutenant, if you have a better idea, I’m all ears.”"
+   },
+   {
+    "id": "2",
+    "text": "Probe the {{Traci}} in pod 17, on the left-hand aisle.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT TURNED TO THE RED ROOM."
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 2, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p3",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. Pod 17’s memory showed her leaving the aisle through the archway into the red-lit room: IT TURNED TO THE RED ROOM.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the {{Traci}} in pod 25, inside the red room.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT TURNED TO THE BLUE ROOM."
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 23, inside the blue-lit room across the floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “Nothing… Blue-haired {{Traci}} didn’t come this way…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “I’ve spent all this money and I’m still not havin’ fun…”"
+   },
+   {
+    "id": "2",
+    "text": "Probe the {{Traci}} in pod 18, beside pod 17 on the same aisle, facing the other way.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It didn’t see anything. I made a mistake somewhere…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “This has gotta be the most expensive investigation of my career!”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 3. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p3r",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. Pod 17’s memory showed her leaving the aisle through the archway into the red-lit room: IT TURNED TO THE RED ROOM. The android you just probed saw nothing; you scan her last position again and pick another.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the {{Traci}} in pod 25, inside the red room.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT TURNED TO THE BLUE ROOM."
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 23, inside the blue-lit room across the floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “Nothing… Blue-haired {{Traci}} didn’t come this way…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “I’ve spent all this money and I’m still not havin’ fun…”"
+   },
+   {
+    "id": "2",
+    "text": "Probe the {{Traci}} in pod 18, beside pod 17 on the same aisle, facing the other way.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It didn’t see anything. I made a mistake somewhere…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “This has gotta be the most expensive investigation of my career!”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 3, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p4",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. Pod 25’s memory showed her crossing the red room and going on through its far door into the blue-lit room: IT TURNED TO THE BLUE ROOM.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe another {{Traci}} in the red room, in the pod by the archway she came in through.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “Nothing… Blue-haired {{Traci}} didn’t come this way…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “I’ve spent all this money and I’m still not havin’ fun…”"
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 23, inside the blue room.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT HID IN A ROOM."
+   },
+   {
+    "id": "2",
+    "text": "Probe the android serving behind the bar on the main floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “No… I lost its track again...” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “We’ll never have time to check ’em all!” “Lieutenant, if you have a better idea, I’m all ears.”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 4. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p4r",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. Pod 25’s memory showed her crossing the red room and going on through its far door into the blue-lit room: IT TURNED TO THE BLUE ROOM. The android you just probed saw nothing; you scan her last position again and pick another.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe another {{Traci}} in the red room, in the pod by the archway she came in through.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “Nothing… Blue-haired {{Traci}} didn’t come this way…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “I’ve spent all this money and I’m still not havin’ fun…”"
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 23, inside the blue room.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT HID IN A ROOM."
+   },
+   {
+    "id": "2",
+    "text": "Probe the android serving behind the bar on the main floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “No… I lost its track again...” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “We’ll never have time to check ’em all!” “Lieutenant, if you have a better idea, I’m all ears.”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 4, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p5",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. Pod 23’s memory showed her slipping out of the blue room into the corridor of private rooms and hiding in one of them, leaving the door ajar: IT HID IN A ROOM.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the {{Traci}} inside that private room.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT LEFT THE ROOM."
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 24, beside pod 23 in the blue room.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “No… I lost its track again...” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “We’ll never have time to check ’em all!” “Lieutenant, if you have a better idea, I’m all ears.”"
+   },
+   {
+    "id": "2",
+    "text": "Probe a {{Traci}} in a pod back on the main floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “Nothing… Blue-haired {{Traci}} didn’t come this way…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “I’ve spent all this money and I’m still not havin’ fun…”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 5. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p5r",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. Pod 23’s memory showed her slipping out of the blue room into the corridor of private rooms and hiding in one of them, leaving the door ajar: IT HID IN A ROOM. The android you just probed saw nothing; you scan her last position again and pick another.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the {{Traci}} inside that private room.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT LEFT THE ROOM."
+   },
+   {
+    "id": "1",
+    "text": "Probe the {{Traci}} in pod 24, beside pod 23 in the blue room.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “No… I lost its track again...” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “We’ll never have time to check ’em all!” “Lieutenant, if you have a better idea, I’m all ears.”"
+   },
+   {
+    "id": "2",
+    "text": "Probe a {{Traci}} in a pod back on the main floor.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “Nothing… Blue-haired {{Traci}} didn’t come this way…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “I’ve spent all this money and I’m still not havin’ fun…”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 5, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p6",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. The android in the private room remembered her waiting there, then leaving the room into the corridor, toward the back of the club: IT LEFT THE ROOM.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the cleaning android mopping the corridor outside the private rooms.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT FLED THROUGH THE STAFF DOOR. A door marked STAFF ONLY at the end of the corridor. “I know where it went! Follow me!” {{Hank}}: “Fucking-A. This is crazy…”"
+   },
+   {
+    "id": "1",
+    "text": "Probe a {{Traci}} in the next private room, behind a closed door.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “Nothing… Blue-haired {{Traci}} didn’t come this way…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “I’ve spent all this money and I’m still not havin’ fun…”"
+   },
+   {
+    "id": "2",
+    "text": "Probe the {{Traci}} in pod 23, back in the blue room.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It didn’t see anything. I made a mistake somewhere…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “This has gotta be the most expensive investigation of my career!”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 6. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12p6r",
+  "title": "Pursue the deviant",
+  "type": "decision",
+  "phase": "Pursue deviant",
+  "situation": "You are {{Connor}}, following the blue-haired {{Traci}} through the {{EdenClub}} from one android’s memory to the next before the club wipes them. {{Hank}} pays for every android you probe, on his fingerprint. The android in the private room remembered her waiting there, then leaving the room into the corridor, toward the back of the club: IT LEFT THE ROOM. The android you just probed saw nothing; you scan her last position again and pick another.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenWrong": 2
+    },
+    "text": "You have already lost time on two androids that saw nothing."
+   },
+   {
+    "requires": {
+     "edenWrong": 3
+    },
+    "text": "You have lost time on three androids that saw nothing; the wipe cannot be far off."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "text": "Probe the cleaning android mopping the corridor outside the private rooms.",
+    "correct": true,
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It saw the blue-haired {{Traci}}, I know which way it went!” IT FLED THROUGH THE STAFF DOOR. A door marked STAFF ONLY at the end of the corridor. “I know where it went! Follow me!” {{Hank}}: “Fucking-A. This is crazy…”"
+   },
+   {
+    "id": "1",
+    "text": "Probe a {{Traci}} in the next private room, behind a closed door.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “Nothing… Blue-haired {{Traci}} didn’t come this way…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “I’ve spent all this money and I’m still not havin’ fun…”"
+   },
+   {
+    "id": "2",
+    "text": "Probe the {{Traci}} in pod 23, back in the blue room.",
+    "outcome": "“Let’s try this one.” {{Hank}}: “This better be worth it!” {{Connor}} reads its memory. “It didn’t see anything. I made a mistake somewhere…” SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID. {{Hank}}: “This has gotta be the most expensive investigation of my career!”"
+   }
+  ],
+  "outcomes": {
+   "reset": "{{Connor}}: “It’s too late… The androids’ memory have been reset. If one of them saw the {{Traci}}, we’ll never know… It’s my fault. I should have been faster.” {{Hank}}: “Ah... For a second there, I thought you were gonna make yourself useful. Let’s get outta here. This place gives me the creeps.” The blue-haired {{Traci}} is never found. The mission has failed.",
+   "last": "Only one android on her path is left, and {{Hank}} pays for it too."
+  },
+  "adaptationNote": "PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 6, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: {{Hank}} small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again {{Connor}} probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12w0",
+  "title": "The warehouse",
+  "type": "event",
+  "phase": "Enter the warehouse",
+  "situation": "You are {{Connor}}. You lead {{Hank}} through the staff door and down a long brick tunnel to a warehouse behind the club. At the door {{Hank}} stops you: “Wait! I’ll take it from here.” Across the warehouse the loading door to the alley stands open. “Shit… We’re too late…” Switched-off androids fill the place: groups of them standing at the foot of the stairs, a stack of {{Tracis}} piled in a corner. “Christ, look at them… They get used till they break, then they get tossed out…” “People are fucking insane… They don’t want relationships anymore, everybody just gets an android… They cook what you want, they screw when you want, you don’t have to worry about how they feel… Next thing you know, we’re gonna be extinct, because everybody would rather buy a piece of plastic than love another human being… Beats me…”",
+  "options": [],
+  "facts": [
+   "The blue-haired {{Traci}} fled through the staff door to a warehouse behind the club, full of discarded, switched-off androids; its loading door to the alley was open when you arrived."
+  ],
+  "outcomes": {
+   "0": "{{Connor}} starts searching the warehouse. SEARCH WAREHOUSE. FIND BLUE HAIRED DEVIANT."
+  },
+  "adaptationNote": "The checkpoint ENTER THE WAREHOUSE (PURSUE DEVIANT reached the staff door): the template’s warehouse lines. The wiki: {{Hank}} “assumes from the open loading bay door that the culprit had fled.” No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "R20",
   "title": "A magazine in the club warehouse",
   "type": "media",
-  "situation": "You are {{Connor}}. In the back room of the club, before you follow the trail further, there is a magazine lying on a crate.",
+  "phase": "Search for blue haired deviant",
+  "situation": "You are {{Connor}}, in the warehouse behind the {{EdenClub}}. On a box at the back, beneath red graffiti on the wall, lies a magazine with two covers.",
   "options": [],
   "media": [
    {
     "kind": "magazine",
     "title": "Tech Addict: The First Immortals Are Among Us",
     "facts": [
-     "{{CyberLife}} nano-androids injected into the body cure cancer and reverse genetic disease; an economist asks whether a country with mass unemployment can afford millions more elders."
+     "Tech Addict reports that {{CyberLife}} has developed a “nano-android” that enters a patient’s body to combat cancer cells, boost the immune system or reverse genetic disease; in a clinical trial millions of them attacked cancerous cells and were then passed in the patient’s urine. The head of a life-extension institute says “the first immortals are now among us”; an economist asks whether, with unemployment rising, the country can afford millions more elders to support."
     ]
    },
    {
     "kind": "magazine",
     "title": "{{Detroit}} Today: The New Super-Powers",
     "facts": [
-     "The BRICS nations signed a trade pact with special provisions on android technology, and Russia and China are expected to cooperate to break {{CyberLife}}'s lead."
+     "{{Detroit}} Today reports that Brazil, Russia, India, China and South Africa, once called the “BRICS” emerging markets, have agreed a unified trade agreement brokered by China, with a special provision for the manufacture of android technology. That has prompted speculation that Russia and China may start to cooperate to break {{CyberLife}}’s lead in the sector; China’s trade minister: “Watch this space.”"
     ]
    }
   ],
-  "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+  "adaptationNote": "READ “FIRST IMMORTAL” and READ “NEW SUPERPOWERS”: one magazine with two covers on a box at the back of the warehouse, by the graffiti (PowerPyx). Placed before the search, so reading costs no time here; in the game it does, and the magazine is lost once the fight starts. Facts are summarized from the wiki’s magazine pages; interviewees are not named. The earlier version said Russia and China “are expected to cooperate”; the article only reports speculation that they may. No public opinion change (the Public Opinion page lists nothing for this chapter).",
   "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg",
    "https://detroit-become-human.fandom.com/wiki/Magazine",
+   "https://detroit-become-human.fandom.com/wiki/The_First_Immortals_Are_Among_Us",
+   "https://detroit-become-human.fandom.com/wiki/The_New_Super-Powers",
    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
   ]
  },
  {
-  "id": "C12",
   "chapter": 20,
   "chapterTitle": "The Eden Club",
   "character": "Connor",
-  "title": "The two {{Tracis}}",
+  "id": "C12w1",
+  "title": "Search the warehouse",
   "type": "decision",
-  "situation": "You are {{Connor}}. A man was strangled in a sex club by a rented android; you tracked the android and her lover through the club, two women who were trying to run away together. In the warehouse they attacked you and {{Hank}} to escape; you have beaten one to the ground and have a gun on her while the other watches. They are not fighting any more. They say they only wanted to be together, away from men who used them. {{Hank}} has not told you what to do.",
+  "phase": "Search for blue haired deviant",
+  "situation": "You are {{Connor}}, searching the warehouse behind the {{EdenClub}} for the blue-haired {{Traci}}. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded {{Tracis}} is piled in the corner; the loading door to the alley is open. {{Hank}} wants to be out of here.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "text": "A trail of blue blood drops leads across the floor toward the stack of {{Tracis}} in the corner."
+   }
+  ],
   "options": [
    {
     "id": "0",
-    "text": "Lower the gun and let them go."
+    "mark": "stock",
+    "text": "Check the groups of switched-off androids at the foot of the stairs.",
+    "outcome": "{{Connor}} goes from one group of deactivated androids to the next and looks each over. None of them is the blue-haired {{Traci}}."
    },
    {
     "id": "1",
-    "text": "Shoot them."
+    "mark": "bblood",
+    "text": "Analyze the blue blood on the floor on the right side.",
+    "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+    "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+   },
+   {
+    "id": "2",
+    "mark": "ra9",
+    "text": "Look at the red graffiti on the wall by the box at the back.",
+    "fact": "Someone has painted “{{rA9}}” in red on the wall of the warehouse behind the club.",
+    "outcome": "Painted in red on the wall: {{rA9}}. {{RA9}} REFERENCE."
+   },
+   {
+    "id": "3",
+    "mark": "alley",
+    "text": "Look out through the open loading door into the alley.",
+    "outcome": "{{Connor}} looks out. A narrow alley, closed off by a high fence, with trash cans along the wall. There is nobody in it."
+   },
+   {
+    "id": "4",
+    "mark": "tracis",
+    "text": "Follow the drops of blue blood to the stack of {{Tracis}} in the corner.",
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "outcome": "{{Connor}} follows the drops to the corner and looks over the pile of discarded {{Tracis}}. Two of them are not switched off: their LEDs glow yellow. One of them has blue hair."
+   },
+   {
+    "id": "5",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands among the switched-off androids and waits."
    }
   ],
+  "outcomes": {
+   "timeout": "{{Hank}}: “Come on, {{Connor}}! We’re leaving.” “Yes, I’m coming.” LEAVE. {{Connor}}: “I failed. I should have caught it…” {{Hank}}: “Let’s get outta here. This place makes me sick…” They leave the warehouse; the blue-haired {{Traci}} is never found. The mission has failed."
+  },
+  "adaptationNote": "SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 1. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired {{Traci}}), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, {{Hank}} leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; {{Hank}} small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”).",
   "sources": [
-   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club"
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12w2",
+  "title": "Search the warehouse",
+  "type": "decision",
+  "phase": "Search for blue haired deviant",
+  "situation": "You are {{Connor}}, searching the warehouse behind the {{EdenClub}} for the blue-haired {{Traci}}. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded {{Tracis}} is piled in the corner; the loading door to the alley is open. {{Hank}} wants to be out of here.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "text": "A trail of blue blood drops leads across the floor toward the stack of {{Tracis}} in the corner."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "stock",
+    "text": "Check the groups of switched-off androids at the foot of the stairs.",
+    "outcome": "{{Connor}} goes from one group of deactivated androids to the next and looks each over. None of them is the blue-haired {{Traci}}."
+   },
+   {
+    "id": "1",
+    "mark": "bblood",
+    "text": "Analyze the blue blood on the floor on the right side.",
+    "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+    "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+   },
+   {
+    "id": "2",
+    "mark": "ra9",
+    "text": "Look at the red graffiti on the wall by the box at the back.",
+    "fact": "Someone has painted “{{rA9}}” in red on the wall of the warehouse behind the club.",
+    "outcome": "Painted in red on the wall: {{rA9}}. {{RA9}} REFERENCE."
+   },
+   {
+    "id": "3",
+    "mark": "alley",
+    "text": "Look out through the open loading door into the alley.",
+    "outcome": "{{Connor}} looks out. A narrow alley, closed off by a high fence, with trash cans along the wall. There is nobody in it."
+   },
+   {
+    "id": "4",
+    "mark": "tracis",
+    "text": "Follow the drops of blue blood to the stack of {{Tracis}} in the corner.",
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "outcome": "{{Connor}} follows the drops to the corner and looks over the pile of discarded {{Tracis}}. Two of them are not switched off: their LEDs glow yellow. One of them has blue hair."
+   },
+   {
+    "id": "5",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands among the switched-off androids and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Hank}}: “Come on, {{Connor}}! We’re leaving.” “Yes, I’m coming.” LEAVE. {{Connor}}: “I failed. I should have caught it…” {{Hank}}: “Let’s get outta here. This place makes me sick…” They leave the warehouse; the blue-haired {{Traci}} is never found. The mission has failed."
+  },
+  "adaptationNote": "SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 2. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired {{Traci}}), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, {{Hank}} leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; {{Hank}} small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12w3",
+  "title": "Search the warehouse",
+  "type": "decision",
+  "phase": "Search for blue haired deviant",
+  "situation": "You are {{Connor}}, searching the warehouse behind the {{EdenClub}} for the blue-haired {{Traci}}. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded {{Tracis}} is piled in the corner; the loading door to the alley is open. {{Hank}} wants to be out of here.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "text": "A trail of blue blood drops leads across the floor toward the stack of {{Tracis}} in the corner."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "stock",
+    "text": "Check the groups of switched-off androids at the foot of the stairs.",
+    "outcome": "{{Connor}} goes from one group of deactivated androids to the next and looks each over. None of them is the blue-haired {{Traci}}."
+   },
+   {
+    "id": "1",
+    "mark": "bblood",
+    "text": "Analyze the blue blood on the floor on the right side.",
+    "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+    "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+   },
+   {
+    "id": "2",
+    "mark": "ra9",
+    "text": "Look at the red graffiti on the wall by the box at the back.",
+    "fact": "Someone has painted “{{rA9}}” in red on the wall of the warehouse behind the club.",
+    "outcome": "Painted in red on the wall: {{rA9}}. {{RA9}} REFERENCE."
+   },
+   {
+    "id": "3",
+    "mark": "alley",
+    "text": "Look out through the open loading door into the alley.",
+    "outcome": "{{Connor}} looks out. A narrow alley, closed off by a high fence, with trash cans along the wall. There is nobody in it."
+   },
+   {
+    "id": "4",
+    "mark": "tracis",
+    "text": "Follow the drops of blue blood to the stack of {{Tracis}} in the corner.",
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "outcome": "{{Connor}} follows the drops to the corner and looks over the pile of discarded {{Tracis}}. Two of them are not switched off: their LEDs glow yellow. One of them has blue hair."
+   },
+   {
+    "id": "5",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands among the switched-off androids and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Hank}}: “Come on, {{Connor}}! We’re leaving.” “Yes, I’m coming.” LEAVE. {{Connor}}: “I failed. I should have caught it…” {{Hank}}: “Let’s get outta here. This place makes me sick…” They leave the warehouse; the blue-haired {{Traci}} is never found. The mission has failed."
+  },
+  "adaptationNote": "SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 3. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired {{Traci}}), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, {{Hank}} leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; {{Hank}} small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12w4",
+  "title": "Search the warehouse",
+  "type": "decision",
+  "phase": "Search for blue haired deviant",
+  "situation": "You are {{Connor}}, searching the warehouse behind the {{EdenClub}} for the blue-haired {{Traci}}. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded {{Tracis}} is piled in the corner; the loading door to the alley is open. {{Hank}} wants to be out of here.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "text": "A trail of blue blood drops leads across the floor toward the stack of {{Tracis}} in the corner."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "stock",
+    "text": "Check the groups of switched-off androids at the foot of the stairs.",
+    "outcome": "{{Connor}} goes from one group of deactivated androids to the next and looks each over. None of them is the blue-haired {{Traci}}."
+   },
+   {
+    "id": "1",
+    "mark": "bblood",
+    "text": "Analyze the blue blood on the floor on the right side.",
+    "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+    "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+   },
+   {
+    "id": "2",
+    "mark": "ra9",
+    "text": "Look at the red graffiti on the wall by the box at the back.",
+    "fact": "Someone has painted “{{rA9}}” in red on the wall of the warehouse behind the club.",
+    "outcome": "Painted in red on the wall: {{rA9}}. {{RA9}} REFERENCE."
+   },
+   {
+    "id": "3",
+    "mark": "alley",
+    "text": "Look out through the open loading door into the alley.",
+    "outcome": "{{Connor}} looks out. A narrow alley, closed off by a high fence, with trash cans along the wall. There is nobody in it."
+   },
+   {
+    "id": "4",
+    "mark": "tracis",
+    "text": "Follow the drops of blue blood to the stack of {{Tracis}} in the corner.",
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "outcome": "{{Connor}} follows the drops to the corner and looks over the pile of discarded {{Tracis}}. Two of them are not switched off: their LEDs glow yellow. One of them has blue hair."
+   },
+   {
+    "id": "5",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands among the switched-off androids and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Hank}}: “Come on, {{Connor}}! We’re leaving.” “Yes, I’m coming.” LEAVE. {{Connor}}: “I failed. I should have caught it…” {{Hank}}: “Let’s get outta here. This place makes me sick…” They leave the warehouse; the blue-haired {{Traci}} is never found. The mission has failed."
+  },
+  "adaptationNote": "SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 4. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired {{Traci}}), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, {{Hank}} leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; {{Hank}} small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12w5",
+  "title": "Search the warehouse",
+  "type": "decision",
+  "phase": "Search for blue haired deviant",
+  "situation": "You are {{Connor}}, searching the warehouse behind the {{EdenClub}} for the blue-haired {{Traci}}. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded {{Tracis}} is piled in the corner; the loading door to the alley is open. {{Hank}} wants to be out of here.",
+  "situationWhen": [
+   {
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "text": "A trail of blue blood drops leads across the floor toward the stack of {{Tracis}} in the corner."
+   }
+  ],
+  "options": [
+   {
+    "id": "0",
+    "mark": "stock",
+    "text": "Check the groups of switched-off androids at the foot of the stairs.",
+    "outcome": "{{Connor}} goes from one group of deactivated androids to the next and looks each over. None of them is the blue-haired {{Traci}}."
+   },
+   {
+    "id": "1",
+    "mark": "bblood",
+    "text": "Analyze the blue blood on the floor on the right side.",
+    "fact": "There is fresh blue blood in the warehouse (MODEL WR400, serial number #354 411 057), and a trail of drops leads toward the stack of {{Tracis}} in the corner.",
+    "outcome": "{{Connor}} touches a drop of blue blood and tastes it: BLUE BLOOD. MODEL WR400. Serial number #354 411 057. SEARCH FOR BLUE BLOOD TRAIL: more drops lead across the floor toward the corner."
+   },
+   {
+    "id": "2",
+    "mark": "ra9",
+    "text": "Look at the red graffiti on the wall by the box at the back.",
+    "fact": "Someone has painted “{{rA9}}” in red on the wall of the warehouse behind the club.",
+    "outcome": "Painted in red on the wall: {{rA9}}. {{RA9}} REFERENCE."
+   },
+   {
+    "id": "3",
+    "mark": "alley",
+    "text": "Look out through the open loading door into the alley.",
+    "outcome": "{{Connor}} looks out. A narrow alley, closed off by a high fence, with trash cans along the wall. There is nobody in it."
+   },
+   {
+    "id": "4",
+    "mark": "tracis",
+    "text": "Follow the drops of blue blood to the stack of {{Tracis}} in the corner.",
+    "requires": {
+     "edenDone.bblood": true
+    },
+    "outcome": "{{Connor}} follows the drops to the corner and looks over the pile of discarded {{Tracis}}. Two of them are not switched off: their LEDs glow yellow. One of them has blue hair."
+   },
+   {
+    "id": "5",
+    "text": "Stay where you are and wait.",
+    "outcome": "{{Connor}} stands among the switched-off androids and waits."
+   }
+  ],
+  "outcomes": {
+   "timeout": "{{Hank}}: “Come on, {{Connor}}! We’re leaving.” “Yes, I’m coming.” LEAVE. {{Connor}}: “I failed. I should have caught it…” {{Hank}}: “Let’s get outta here. This place makes me sick…” They leave the warehouse; the blue-haired {{Traci}} is never found. The mission has failed."
+  },
+  "adaptationNote": "SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 5. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired {{Traci}}), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, {{Hank}} leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; {{Hank}} small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12f1",
+  "title": "The {{Tracis}} attack",
+  "type": "decision",
+  "phase": "Deviants attack",
+  "situation": "You are {{Connor}}. As you lean in over the pile, the two {{Tracis}} burst out of it. The brown-haired one throws herself at you; the blue-haired one goes for {{Hank}}. {{Hank}}: “DON’T MOVE!” The brown-haired {{Traci}} drives you back into the storage room, punching, kicking and grabbing whatever she can use as a weapon. Metal shelves of equipment stand to your left and to your right.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Knock over the shelf on your left onto her.",
+    "risk": 0.2,
+    "outcome": "{{Connor}} throws his weight against the shelf on the left."
+   },
+   {
+    "id": "1",
+    "text": "Pull down the shelf on your right onto her.",
+    "risk": 0.2,
+    "outcome": "{{Connor}} grabs the shelf on the right and pulls."
+   }
+  ],
+  "outcomes": {
+   "win": "The shelf comes down on her, and {{Connor}} fights her off: bruised and cut, but still in the fight. From the floor, {{Hank}} shouts: “QUICK! THEY’RE GETTING AWAY!” {{Connor}} goes after them, out into the alley.",
+   "lose": "He is a moment too slow. The brown-haired {{Traci}} catches him with a toolkit, the blue-haired one pins his arms while the other beats him with a pipe, and a screwdriver goes into each of his shoulders. He staggers out into the alley badly damaged and goes down. {{Hank}}: “QUICK! THEY’RE GETTING AWAY!”."
+  },
+  "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If {{Connor}} is badly wounded before falling out of the storage room, {{Connor}} will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a {{Traci}}); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. {{Connor}} cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg",
+   "https://detroit-become-human.fandom.com/wiki/WR400_950_455_437",
+   "https://detroit-become-human.fandom.com/wiki/Brown-haired_Traci"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12f2",
+  "title": "The alley",
+  "type": "decision",
+  "phase": "Deviants attack",
+  "situation": "You are {{Connor}}, in the fenced alley behind the warehouse. The brown-haired {{Traci}} is still on her feet and coming at you again; the blue-haired one is close behind her, beside a plastic chair and a row of trash cans.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Kick the chair into her.",
+    "risk": 0.1,
+    "outcome": "{{Connor}} kicks the chair at her."
+   },
+   {
+    "id": "1",
+    "text": "Grab the blue-haired {{Traci}} and throw her into the other one.",
+    "risk": 0.1,
+    "outcome": "{{Connor}} grabs the blue-haired {{Traci}} and throws her."
+   }
+  ],
+  "outcomes": {
+   "win": "It works. {{Connor}} gets the upper hand and knocks the brown-haired {{Traci}} down; {{Hank}}’s gun, lost in the struggle, is in his hand now.",
+   "lose": "She is ready for it. She slams him into the wall and brings a trash can down on him; every move he tries fails, and he goes down in the alley, badly damaged."
+  },
+  "adaptationNote": "DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If {{Connor}} is badly wounded before falling out of the storage room, {{Connor}} will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a {{Traci}}); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. {{Connor}} cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg",
+   "https://detroit-become-human.fandom.com/wiki/WR400_950_455_437",
+   "https://detroit-become-human.fandom.com/wiki/Brown-haired_Traci"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12",
+  "title": "The two {{Tracis}}",
+  "type": "decision",
+  "phase": "Win fight",
+  "situation": "You are {{Connor}}, in the alley behind the {{EdenClub}}’s warehouse, holding {{Hank}}’s gun. You won the fight. The brown-haired {{Traci}} picks herself up and runs straight at you, unarmed; the blue-haired one, the {{Traci}} who left the dead man’s room, is behind her. {{Hank}} is still getting up. You have a moment to decide.",
+  "options": [
+   {
+    "id": "1",
+    "text": "SHOOT: fire at the brown-haired {{Traci}} as she runs at you.",
+    "effect": {
+     "instability": -2,
+     "hankTrust": -2
+    },
+    "outcome": "{{Connor}} fires. The brown-haired {{Traci}} falls dead on the ground. The blue-haired {{Traci}} drops beside her: “Why?.. Why did you kill her?.. She had nothing to do with any of this… When that man killed that {{Traci}}... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… So I put my hands around his throat, and I squeezed... until he stopped moving… Yes, I killed him… but I was just defending myself… I wanted to live… I wanted to get back to the one I love… and forget about the humans… the smell of their sweat and their dirty words… But you’ve... You’ve taken her away from me… I love her… I loved her!” She takes the gun from {{Connor}}’s hand, puts it to her own head and pulls the trigger. {{Hank}}: “My God…”"
+   },
+   {
+    "id": "0",
+    "text": "SPARE: hold your fire.",
+    "effect": {
+     "instability": 2,
+     "hankTrust": 2
+    },
+    "outcome": "{{Connor}} does not fire. The brown-haired {{Traci}} slams into him and knocks him to the ground, and the blue-haired one stands over him: “When that man broke the other {{Traci}}... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… And so I put my hands around his throat, and I squeezed... until he stopped moving… I didn’t mean to kill him… I just wanted to stay alive… get back to the one I love. I wanted her to hold me in her arms again... make me forget about the humans… their smell of sweat and their dirty words…” The brown-haired {{Traci}}: “Come on, let’s go.” They climb the fence together and are gone. {{Hank}}: “It’s probably better this way…”"
+   }
+  ],
+  "adaptationNote": "After WIN FIGHT: the template’s prompt 6, with the game’s labels. SHOOT is listed before SPARE, in the template’s order; option IDs retain their earlier meanings. SHOOT (the chart’s SHOOT DEVIANT): software instability large down and {{Hank}} large down (template); {{Connor}} shoots the brown-haired {{Traci}}, and the blue-haired one takes his gun and kills herself (DEVIANT KILLS HERSELF WITH {{CONNOR}}’S GUN, then DEVIANTS DIED); her cut line “What am I supposed to do without her?!” is not used. SPARE (SPARE DEVIANT): instability large up and {{Hank}} large up; DEVIANTS ESCAPED. The game’s prompt is timed and has a no-input outcome ({{Connor}} stands still); it is not offered. The gun is {{Hank}}’s (wiki); the chart calls it {{Connor}}’s. The earlier version shot both {{Tracis}} on this branch, had {{Hank}} walk off in disgust, and applied {{Amanda}} changes the template does not have ({{Amanda}} reacts in a later chapter); all three are removed.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-6.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+  ]
+ },
+ {
+  "chapter": 20,
+  "chapterTitle": "The Eden Club",
+  "character": "Connor",
+  "id": "C12x",
+  "title": "The two {{Tracis}} on the fence",
+  "type": "decision",
+  "phase": "Lose fight",
+  "situation": "You are {{Connor}}, down in the alley and badly damaged. You lost the fight. The two {{Tracis}} stop. The blue-haired one, the {{Traci}} who left the dead man’s room, looks down at you: “When that man broke the other {{Traci}}... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… And so I put my hands around his throat, and I squeezed... until he stopped moving… I didn’t mean to kill him… I just wanted to stay alive… get back to the one I love. I wanted her to hold me in her arms again... make me forget about the humans… their smell of sweat and their dirty words…” The brown-haired one: “Come on, let’s go.” They turn their backs on you and start up the fence. {{Hank}}’s gun lies within reach; you pick it up.",
+  "options": [
+   {
+    "id": "1",
+    "text": "SHOOT: shoot them in the back as they climb.",
+    "effect": {
+     "instability": -2,
+     "hankTrust": -2
+    },
+    "outcome": "{{Connor}} fires, and fires again. Both {{Tracis}} fall from the fence and lie dead in the alley. {{Hank}}: “Congratulations, {{Connor}}… You got ’em…”"
+   },
+   {
+    "id": "0",
+    "text": "SPARE: let them go.",
+    "effect": {
+     "instability": 2,
+     "hankTrust": 2
+    },
+    "outcome": "{{Connor}} lowers the gun. The two {{Tracis}} go over the fence together and are gone. {{Hank}}: “It’s probably better this way…”"
+   }
+  ],
+  "adaptationNote": "After LOSE FIGHT: the template’s prompt 7, SHOOT before SPARE as in the template, with stable option IDs. Here the blue-haired {{Traci}}’s explanation comes before the choice, as in the template. SHOOT (the chart’s SHOOT DEVIANTS IN THE BACK, ending CONNOR SHOT DEVIANTS) and SPARE (LET DEVIANTS GO, ending DEVIANTS ESCAPED) carry the same arrows as after a won fight: instability and {{Hank}} large down, or large up. The no-input outcome ({{Connor}} stands still as they leave) is not offered. No {{Amanda}} change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+   "https://detroitbecometext.github.io/chapters/20",
+   "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-6.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Software_Instability"
   ]
  }
 ]

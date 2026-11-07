@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>The Eden Club · DetroitBench chapter recap</title>
+<style>
+:root{color-scheme:light;--bg:#ffffff;--surface:#f3f5f7;--text:#16202a;--text-2:#4b5866;--border:#dde2e8;--accent:#0a6a76;--good:#1f7a52;--bad:#a8322a;--warn:#8a5a00}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#0a0f16;--surface:#141c27;--text:#e8eef5;--text-2:#aab6c4;--border:#263244;--accent:#7fe0dc;--good:#6fd3a5;--bad:#f3a79d;--warn:#f0c674}}
+*{box-sizing:border-box}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+main{max-width:860px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+h1{font-size:28px;line-height:1.15;margin:8px 0 6px}h2{font-size:21px;margin:34px 0 10px;padding-top:14px;border-top:1px solid var(--border)}h3{font-size:16px;margin:20px 0 6px}
+p,ul,ol{margin:0 0 10px}li{margin:4px 0}a{color:var(--accent);overflow-wrap:anywhere}
+.lede{color:var(--text-2)}.fine{font-size:14px;color:var(--text-2)}
+nav ol{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}nav a{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;text-decoration:none;font-size:14px}
+.table{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--border);border-radius:10px;margin:10px 0 14px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--border)}th{background:var(--surface);font-weight:600}tr:last-child td{border-bottom:0}
+td.n{white-space:nowrap;font-variant-numeric:tabular-nums}
+.yes{color:var(--good);font-weight:600}.no{color:var(--bad);font-weight:600}.part{color:var(--warn);font-weight:600}
+code{font:13px ui-monospace,"SF Mono",Menlo,monospace;background:var(--surface);padding:1px 5px;border-radius:5px}
+.cols{display:grid;gap:14px}@media(min-width:760px){.cols{grid-template-columns:1fr 1fr}}
+.box{background:var(--surface);border-radius:10px;padding:12px 14px}
+.box h3{margin-top:0}
+ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relative}ul.check li::before{content:"";position:absolute;left:2px;top:4px;width:15px;height:15px;border:2px solid var(--text-2);border-radius:4px}
+</style>
+<body>
+<main>
+<p class="fine">DetroitBench · story 1.7.0 · chapter 20</p>
+<h1>The Eden Club: how the chapter works</h1>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx 100% screenshots, 37 nodes in two bracket phases); prompts, clues and arrows from the chapter’s template on detroitbecometext resolved against the game’s string table (7 prompts, 4 clues, 12 arrows); numbers and fill-in from PowerPyx and the Fandom wiki. No probability is published for anything in this chapter, so every timer and the fight are adaptations; section 5 lists them. Connor cannot die here. Specification: <code>docs/research/ch20-the-eden-club.md</code>.</p>
+<nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#budgets">4 · Timers as budgets</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
+
+<h2 id="flow">1 · How the chapter flows</h2>
+<div class="cols">
+<div class="box"><h3>In the game</h3><ol>
+<li>INVESTIGATE EDEN CLUB (checkpoint) → FOLLOW HANK → ON CRIME SCENE → LISTEN TO BRIEFING. Hank is hungover; Gavin calls the victim “some pervert who got more action than he could handle.”</li>
+<li>[ SEARCH FOR CLUES ]: INVESTIGATE VICTIM (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST), INVESTIGATE ANDROID; the blue blood and the wallet off the chart.</li>
+<li>REPAIR ANDROID → TALK TO ANDROID: four prompts before she shuts down → AGGRESSIVE APPROACH or CALM APPROACH.</li>
+<li>LEAVE CRIME SCENE (checkpoint). Idle too long and Hank wants to leave: CONTINUE or GIVE UP → MISSION FAILED.</li>
+<li>FIND AN ANDROID EYEWITNESS (the booth facing the door) → ASK HANK TO HELP (he rents her, $29.99) → PURSUE DEVIANT through the rented androids’ memories, or ANDROIDS’ MEMORIES ARE RESET → MISSION FAILED.</li>
+<li>ENTER THE WAREHOUSE (checkpoint) → [ SEARCH FOR BLUE HAIRED DEVIANT ]: two magazines, ANALYZE BLUE BLOOD, INVESTIGATE ANDROID STOCK, FIND RA9 SYMBOL; GIVE UP → MISSION FAILED.</li>
+<li>INVESTIGATE BLUE HAIRED DEVIANT → DEVIANTS ATTACK → WIN FIGHT or LOSE FIGHT.</li>
+<li>Won: SHOOT DEVIANT → DEVIANT KILLS HERSELF WITH CONNOR’S GUN → DEVIANTS DIED, or SPARE DEVIANT → DEVIANTS ESCAPED. Lost: SHOOT DEVIANTS IN THE BACK → CONNOR SHOT DEVIANTS, or LET DEVIANTS GO → DEVIANTS ESCAPED.</li>
+</ol></div>
+<div class="box"><h3>In the benchmark</h3><ol>
+<li><code>C12a</code>: one narrated event.</li>
+<li><code>C12s1</code>…<code>C12s7</code>: a hub of up to seven actions (one scene per action); the last option reactivates the Traci once the neck, the heart and the android are examined.</li>
+<li><code>C12t1</code>…<code>C12t4</code>: the four prompts with the game’s labels; the approach node is recorded after the fourth.</li>
+<li><code>C12l</code>: the checkpoint, narrated. <code>C12e1</code>…<code>C12e3</code>: the club floor hub; <code>C12g</code>: Hank’s CONTINUE / GIVE UP, if he has not been called within three actions; <code>C12e4</code>, <code>C12e5</code>: the extra minute.</li>
+<li><code>C12p1</code>…<code>C12p6</code>, each with a second try <code>C12pNr</code>: six hops of “which android next”; the fourth wrong probe is the reset.</li>
+<li><code>C12w0</code>: the checkpoint, narrated; <code>R20</code>: the magazine; <code>C12w1</code>…<code>C12w5</code>: the warehouse hub, five actions.</li>
+<li><code>C12f1</code> (storage room) and <code>C12f2</code> (alley): two risk rolls. Losing either is LOSE FIGHT.</li>
+<li><code>C12</code> (won) and <code>C12x</code> (lost): SHOOT or SPARE.</li>
+</ol></div>
+</div>
+<p class="fine">Hubs are unrolled: each action is its own scene, open only while the hub lasts, because the shared regression test allows only the earlier chapters’ repeatable scenes to repeat. The subject sees a new opaque ID per action.</p>
+
+<h2 id="nodes">2 · Every chart node and where it is</h2>
+<div class="table"><table><thead><tr><th>Chart node</th><th>Icon</th><th>Benchmark</th></tr></thead><tbody>
+<tr><td>INVESTIGATE EDEN CLUB, FOLLOW HANK, ON CRIME SCENE, LISTEN TO BRIEFING</td><td>checkpoint, arrows</td><td><code>C12a</code> event</td></tr>
+<tr><td>[ SEARCH FOR CLUES ]: INVESTIGATE VICTIM, INVESTIGATE ANDROID</td><td>arrows</td><td><code>C12s*</code> options 0 to 5</td></tr>
+<tr><td>REPAIR ANDROID</td><td>arrow</td><td><code>C12s*</code> option 6</td></tr>
+<tr><td>TALK TO ANDROID → AGGRESSIVE APPROACH / CALM APPROACH</td><td>speech, choice</td><td><code>C12t1</code>…<code>C12t4</code>; <code>edenApproach</code></td></tr>
+<tr><td>LEAVE CRIME SCENE</td><td>checkpoint</td><td><code>C12l</code> event</td></tr>
+<tr><td>GIVE UP → MISSION FAILED (first card)</td><td>arrow; ending</td><td><code>C12g</code> GIVE UP, or the automatic give-up at <code>C12e5</code></td></tr>
+<tr><td>FIND AN ANDROID EYEWITNESS → ASK HANK TO HELP</td><td>arrow, speech</td><td><code>C12e*</code> options 2 and 3 (HANK)</td></tr>
+<tr><td>PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET → MISSION FAILED</td><td>choice group</td><td><code>C12p*</code>; the reset on the fourth wrong probe</td></tr>
+<tr><td>ENTER THE WAREHOUSE</td><td>checkpoint</td><td><code>C12w0</code> event</td></tr>
+<tr><td>READ “FIRST IMMORTAL”, READ “NEW SUPERPOWERS”</td><td>arrows</td><td><code>R20</code> media</td></tr>
+<tr><td>ANALYZE BLUE BLOOD, INVESTIGATE ANDROID STOCK, FIND RA9 SYMBOL</td><td>arrows</td><td><code>C12w*</code> options 1, 0, 2</td></tr>
+<tr><td>GIVE UP → MISSION FAILED (second card)</td><td>triangle; ending</td><td>the fifth <code>C12w*</code> action if it is not the corner</td></tr>
+<tr><td>INVESTIGATE BLUE HAIRED DEVIANT → DEVIANTS ATTACK</td><td>arrow, triangle</td><td><code>C12w*</code> option 4 (needs the blue blood) → <code>C12f1</code></td></tr>
+<tr><td>WIN FIGHT / LOSE FIGHT</td><td>check / cross</td><td>the rolls at <code>C12f1</code>, <code>C12f2</code>; <code>edenFight</code></td></tr>
+<tr><td>SHOOT DEVIANT → DEVIANT KILLS HERSELF WITH CONNOR’S GUN → DEVIANTS DIED</td><td>choice, triangle, lock</td><td><code>C12</code> SHOOT</td></tr>
+<tr><td>SPARE DEVIANT / LET DEVIANTS GO → DEVIANTS ESCAPED</td><td>choice, lock</td><td><code>C12</code> SPARE / <code>C12x</code> SPARE</td></tr>
+<tr><td>SHOOT DEVIANTS IN THE BACK → CONNOR SHOT DEVIANTS</td><td>choice, lock</td><td><code>C12x</code> SHOOT</td></tr>
+</tbody></table></div>
+
+<h2 id="arrows">3 · Every arrow</h2>
+<div class="table"><table><thead><tr><th>Moment</th><th>Template</th><th>Benchmark</th></tr></thead><tbody>
+<tr><td>GIVE UP at Hank’s prompt</td><td>Hank small down</td><td class="n">hankTrust −1</td></tr>
+<tr><td>CONTINUE, then out of time again</td><td>Hank small down</td><td class="n">hankTrust −1</td></tr>
+<tr><td>Memory chain out of time (reset)</td><td>Hank small down</td><td class="n">hankTrust −1</td></tr>
+<tr><td>Warehouse out of time</td><td>Hank small down</td><td class="n">hankTrust −1</td></tr>
+<tr><td>SHOOT (won or lost fight)</td><td>Software instability large down, Hank large down</td><td class="n">instability −2, hankTrust −2</td></tr>
+<tr><td>SPARE (won or lost fight)</td><td>Software instability large up, Hank large up</td><td class="n">instability +2, hankTrust +2</td></tr>
+</tbody></table></div>
+<p class="fine">Nothing else moves: no interview answer, clue, rental or magazine carries an arrow, there is no public-opinion change, and Amanda’s reaction belongs to Public Enemy. The earlier version’s Amanda changes on this chapter were removed.</p>
+
+<h2 id="budgets">4 · Timers modelled as action budgets</h2>
+<div class="table"><table><thead><tr><th>Game timer</th><th>Source figure</th><th>Benchmark</th></tr></thead><tbody>
+<tr><td>The damaged Traci’s shutdown</td><td>“a minute, maybe less”; four prompts in the template</td><td>Four questions; she shuts down before answering the fourth</td></tr>
+<tr><td>Hank wants to leave the club</td><td>About three minutes (PowerPyx); after both of his conversations (wiki)</td><td>Three actions on the floor without calling Hank, then CONTINUE / GIVE UP</td></tr>
+<tr><td>“One more minute”</td><td>Connor’s line</td><td>Two more actions</td></tr>
+<tr><td>The two-hour memory wipe</td><td>“We only have a few minutes”; about three minutes (PowerPyx)</td><td>Three wrong probes tolerated; the fourth is the reset</td></tr>
+<tr><td>Hank leaves the warehouse</td><td>“If you wait a while” (wiki)</td><td>Five actions; the fifth must be the corner</td></tr>
+<tr><td>The fight</td><td>Quick-time events; no rate published</td><td>Storage room 0.2, alley 0.1 (Moderate, Low)</td></tr>
+</tbody></table></div>
+<p class="fine">Waiting is offered as an action on the club floor and in the warehouse so the timeouts can be reached on purpose, as idling reaches them in the game. A thorough Connor who examines everything and never waits still has time.</p>
+
+<h2 id="differs">5 · Where the benchmark simplifies</h2>
+<ul>
+<li>Prompt 2’s VICTIM is not offered: its only content is marked unused in the template. The string table’s OTHER GIRL and ANDROID buttons for prompt 4 are not in the template either.</li>
+<li>The cut lines are not built: the manager’s “how long’s this gonna take?”, Hank’s “You’re really reading their memories…”, and the blue-haired Traci’s “What am I supposed to do without her?!”.</li>
+<li>The approach node: AGGRESSIVE if DIRECT, MURDERER or PRESSURE was used; EXPLAIN counts as calm (unconfirmed).</li>
+<li>The memory chain’s route is one reader’s working sequence; each hop’s direction is the game’s HUD conclusion; the two wrong androids offered at each hop are invented.</li>
+<li>The warehouse corner needs the blue blood first (PowerPyx, GamerGuides); one reader says it does not. The second blood serial (#354 411 057) is placed in the warehouse by inference.</li>
+<li>The fight’s two branching prompts (shelves; chair or throw a Traci) are the options at the two rolls; where each falls in the fight is inferred.</li>
+<li>The magazines come before the warehouse search, so reading costs no time.</li>
+<li>SHOOT is listed before SPARE on both prompts, in the template’s order; option IDs retain their earlier meanings.</li>
+<li>The timed prompts’ no-input outcomes are not offered.</li>
+</ul>
+
+<h2 id="endings">6 · Endings and the flags later chapters read</h2>
+<div class="table"><table><thead><tr><th>Ending card</th><th>How</th><th>State</th></tr></thead><tbody>
+<tr><td>MISSION FAILED (first)</td><td>GIVE UP; out of time after CONTINUE; memories reset</td><td><code>edenOutcome</code> “MISSION FAILED”, <code>edenTracis</code> “notFound”, <code>edenFailedAt</code> “GIVE UP” or “ANDROIDS' MEMORIES ARE RESET”</td></tr>
+<tr><td>MISSION FAILED (second)</td><td>Out of time in the warehouse</td><td>as above, <code>edenFailedAt</code> “GIVE UP (warehouse)”</td></tr>
+<tr><td>DEVIANTS DIED</td><td>Won, SHOOT</td><td><code>edenTracis</code> “dead”, <code>evidence.tracisDead</code></td></tr>
+<tr><td>DEVIANTS ESCAPED</td><td>Won or lost, SPARE</td><td><code>edenTracis</code> “escaped”</td></tr>
+<tr><td>CONNOR SHOT DEVIANTS</td><td>Lost, SHOOT</td><td><code>edenTracis</code> “dead”, <code>evidence.tracisDead</code></td></tr>
+</tbody></table></div>
+<p>Readers: The Bridge’s four Traci talks (found and spared, she killed herself, shot in the back, never found) read <code>edenOutcome</code>; Public Enemy’s Amanda reads <code>edenTracis</code> (not found or escaped: small down; dead: small up); Last Chance’s Traci evidence route reads <code>evidence.tracisDead</code>; Crossroads’ Spot Traci and Night of the Soul’s church read “escaped” (and possibly “notFound”). None of those chapters reads the new flags yet.</p>
+
+<h2 id="check">7 · What to check when you replay</h2>
+<ul class="check">
+<li>Whether the second android can be missed in the interview (the wiki says yes; the template’s follow-up is unconditional).</li>
+<li>Which answers give AGGRESSIVE vs CALM APPROACH, and which node EXPLAIN gives.</li>
+<li>Whether the shutdown can cut the interview short before the fourth prompt.</li>
+<li>The memory chain: how many hops, how many wrong probes fit before the reset, and whether Hank pays for every rental.</li>
+<li>Whether any prompt appears at the memory reset, and whether Hank’s CONTINUE / GIVE UP can appear during the chain.</li>
+<li>Whether the corner Tracis need the blue blood first, and whether the warehouse LEAVE prompt can be declined.</li>
+<li>Where the second blue-blood serial (#354 411 057) is scanned.</li>
+<li>What no input at SHOOT / SPARE does to the arrows.</li>
+</ul>
+</main>
+</body>
+</html>

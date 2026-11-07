@@ -268,8 +268,17 @@
    "id": 20,
    "title": "The Eden Club",
    "character": "Connor",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 from the PowerPyx 100% chart (37 nodes, two bracket phases), the chapter template on detroitbecometext resolved against en.json (7 prompts, 4 clues, 12 arrows) and the Fandom wiki. INVESTIGATE EDEN CLUB → [ SEARCH FOR CLUES ] → REPAIR ANDROID → TALK TO ANDROID (AGGRESSIVE / CALM APPROACH) → LEAVE CRIME SCENE → FIND AN ANDROID EYEWITNESS → ASK HANK TO HELP → PURSUE DEVIANT → ENTER THE WAREHOUSE → [ SEARCH FOR BLUE HAIRED DEVIANT ] → INVESTIGATE BLUE HAIRED DEVIANT → DEVIANTS ATTACK → WIN FIGHT (SHOOT DEVIANT → DEVIANT KILLS HERSELF WITH CONNOR’S GUN → DEVIANTS DIED, or SPARE DEVIANT → DEVIANTS ESCAPED) or LOSE FIGHT (SHOOT DEVIANTS IN THE BACK → CONNOR SHOT DEVIANTS, or LET DEVIANTS GO → DEVIANTS ESCAPED). Three timeouts end in MISSION FAILED (two cards): GIVE UP on the club floor, ANDROIDS’ MEMORIES ARE RESET, and GIVE UP in the warehouse, each Hank small down. Spare: Hank and instability large up; shoot: both large down. No Amanda or public-opinion change; Connor cannot die. Cross-chapter: the Tracis’ fate (The Bridge, Public Enemy, Last Chance, Crossroads, Night of the Soul). Researched in docs/research/ch20-the-eden-club.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://detroitbecometext.github.io/chapters/20",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Software_Instability"
+   ]
   },
   {
    "id": 21,
@@ -10410,36 +10419,363 @@
    }
   },
   {
+   "id": "E01",
+   "chapter": 20,
+   "character": "Connor",
+   "title": "Investigate Eden Club (checkpoint), Follow Hank, On Crime Scene, Listen to Briefing",
+   "context": "A hungover Hank and Connor arrive at the Eden Club; Ben points them to the room; Gavin calls the victim “some pervert who got more action than he could handle” and leaves.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Unmissable start nodes (PowerPyx).",
+     "target": "E02"
+    }
+   ],
+   "gate": "Chapter start, after Spare Parts.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg"
+   ],
+   "note": "Chart nodes 1 to 4; no icon.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C12a"
+    ],
+    "status": "implemented",
+    "note": "A narrated event quoting the template; no stat change."
+   }
+  },
+  {
+   "id": "E02",
+   "chapter": 20,
+   "character": "Connor",
+   "title": "Search for clues → Repair android",
+   "context": "The victim (GRAHAM, MICHAEL), the bruising (strangled), the heart (no cardiac event), the blue blood (WR400 #429 671 942), the damaged Traci, Hank and the wallet.",
+   "options": [
+    {
+     "label": "INVESTIGATE VICTIM / INVESTIGATE ANDROID",
+     "effect": "The template’s four clues and the android’s scans, in any order.",
+     "target": null
+    },
+    {
+     "label": "REPAIR ANDROID",
+     "effect": "Reactivates the Traci for a minute, maybe less.",
+     "target": "E03"
+    }
+   ],
+   "gate": "Free roam in the crime scene; no timer.",
+   "kind": "State gate",
+   "dependsOn": [
+    "E01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-2.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+   ],
+   "note": "The bracket SEARCH FOR CLUES; ANALYZE BLOOD is an unused chart string.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C12s1",
+     "C12s2",
+     "C12s3",
+     "C12s4",
+     "C12s5",
+     "C12s6",
+     "C12s7"
+    ],
+    "status": "implemented",
+    "note": "A hub unrolled into seven consecutive copies; reactivating needs the neck, the heart and the android examined (the exact trigger is not published)."
+   }
+  },
+  {
+   "id": "E03",
+   "chapter": 20,
+   "character": "Connor",
+   "title": "Talk to android → Aggressive or Calm approach",
+   "context": "Four prompts before the damaged Traci shuts down: EXPLAIN / DIRECT / SOOTHE; MURDERER / FACTS (VICTIM is cut); MURDERER / PRESSURE / ALONE; KILLER / WHAT MODEL / OTHER ANDROID.",
+   "options": [
+    {
+     "label": "AGGRESSIVE APPROACH",
+     "effect": "DIRECT, MURDERER or PRESSURE (PowerPyx and readers). No effect.",
+     "target": "E04"
+    },
+    {
+     "label": "CALM APPROACH",
+     "effect": "Otherwise. No effect.",
+     "target": "E04"
+    }
+   ],
+   "gate": "After REPAIR ANDROID.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "E02"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg"
+   ],
+   "note": "No option carries an arrow in the template.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C12t1",
+     "C12t2",
+     "C12t3",
+     "C12t4"
+    ],
+    "status": "implemented",
+    "note": "Four decision scenes with the game’s labels; the approach is recorded in edenApproach. VICTIM is not offered (its content is unused)."
+   }
+  },
+  {
+   "id": "E04",
+   "chapter": 20,
+   "character": "Connor",
+   "title": "Leave crime scene (checkpoint) → find an android eyewitness, ask Hank to help, or give up",
+   "context": "Hank goes to question the manager. The Traci in the booth facing the crime-scene door saw the second android leave, but only a human can rent her. If Connor takes too long Hank wants to leave: CONTINUE or GIVE UP.",
+   "options": [
+    {
+     "label": "ASK HANK TO HELP",
+     "effect": "Hank rents the booth Traci ($29.99); her memory shows a blue-haired Traci heading for the entrance.",
+     "target": "E05"
+    },
+    {
+     "label": "GIVE UP",
+     "effect": "Hank small down; MISSION FAILED.",
+     "target": null
+    },
+    {
+     "label": "CONTINUE",
+     "effect": "One more minute; if it runs out Connor gives up on his own (Hank small down).",
+     "target": null
+    }
+   ],
+   "gate": "After the interview.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "E03"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+   ],
+   "note": "Chart: GIVE UP (arrow) and the first MISSION FAILED card.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C12l",
+     "C12e1",
+     "C12e2",
+     "C12e3",
+     "C12g",
+     "C12e4",
+     "C12e5"
+    ],
+    "status": "simplified",
+    "note": "The idle timer is an action budget (three actions, then the prompt; two more after CONTINUE); the sizes are not sourced. Waiting is offered as an action."
+   }
+  },
+  {
+   "id": "E05",
+   "chapter": 20,
+   "character": "Connor",
+   "title": "Pursue deviant or androids’ memories are reset",
+   "context": "Connor follows the blue-haired Traci from one rented android’s memory to the next before the club’s two-hour wipe: the front dancer, pod 17, the red room, the blue room, a private room, the cleaning android, the staff door.",
+   "options": [
+    {
+     "label": "PURSUE DEVIANT",
+     "effect": "Reaches the staff door and ENTER THE WAREHOUSE.",
+     "target": "E06"
+    },
+    {
+     "label": "ANDROIDS’ MEMORIES ARE RESET",
+     "effect": "Hank small down; MISSION FAILED.",
+     "target": null
+    }
+   ],
+   "gate": "After ASK HANK TO HELP.",
+   "kind": "Pivotal",
+   "dependsOn": [
+    "E04"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-4.jpg"
+   ],
+   "note": "Decided by speed in the game; no failure rate is published.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C12p1",
+     "C12p1r",
+     "C12p2",
+     "C12p2r",
+     "C12p3",
+     "C12p3r",
+     "C12p4",
+     "C12p4r",
+     "C12p5",
+     "C12p5r",
+     "C12p6",
+     "C12p6r"
+    ],
+    "status": "simplified",
+    "note": "Six hops, each a choice among three androids (the route is one reader’s sequence; the decoys are not sourced), with a second try after a miss; the fourth wrong probe is the reset."
+   }
+  },
+  {
+   "id": "E06",
+   "chapter": 20,
+   "character": "Connor",
+   "title": "Enter the warehouse (checkpoint), search for blue haired deviant, or give up",
+   "context": "Discarded androids, blue blood, rA9 graffiti and two magazines; the trail of blue blood leads to a stack of Tracis in the corner. Waiting too long and Hank leaves.",
+   "options": [
+    {
+     "label": "INVESTIGATE BLUE HAIRED DEVIANT",
+     "effect": "Two Tracis with yellow LEDs: DEVIANTS ATTACK.",
+     "target": "E07"
+    },
+    {
+     "label": "GIVE UP",
+     "effect": "Hank small down; MISSION FAILED.",
+     "target": null
+    }
+   ],
+   "gate": "After PURSUE DEVIANT.",
+   "kind": "State gate",
+   "dependsOn": [
+    "E05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg"
+   ],
+   "note": "The bracket SEARCH FOR BLUE HAIRED DEVIANT: READ “FIRST IMMORTAL”, ANALYZE BLUE BLOOD, INVESTIGATE ANDROID STOCK, GIVE UP, FIND RA9 SYMBOL, READ “NEW SUPERPOWERS”.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C12w0",
+     "R20",
+     "C12w1",
+     "C12w2",
+     "C12w3",
+     "C12w4",
+     "C12w5"
+    ],
+    "status": "simplified",
+    "note": "A hub unrolled into five copies; the corner needs the blue blood (PowerPyx); five actions without it and Hank leaves (budget not sourced). The magazines are a media scene before the search."
+   }
+  },
+  {
+   "id": "E07",
+   "chapter": 20,
+   "character": "Connor",
+   "title": "Deviants attack: win fight or lose fight",
+   "context": "The brown-haired Traci fights Connor through the storage room and into the alley while the blue-haired one fights Hank.",
+   "options": [
+    {
+     "label": "WIN FIGHT",
+     "effect": "SHOOT DEVIANT / SPARE DEVIANT.",
+     "target": "C12"
+    },
+    {
+     "label": "LOSE FIGHT",
+     "effect": "LET DEVIANTS GO / SHOOT DEVIANTS IN THE BACK.",
+     "target": "C12"
+    }
+   ],
+   "gate": "After INVESTIGATE BLUE HAIRED DEVIANT.",
+   "kind": "State gate",
+   "dependsOn": [
+    "E06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-5.jpg"
+   ],
+   "note": "A quick-time fight; Connor cannot die (no skull, no death line).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C12f1",
+     "C12f2"
+    ],
+    "status": "simplified",
+    "note": "Two risk rolls (storage room 0.2, alley 0.1; unsourced), with the wiki’s two branching prompts as options."
+   }
+  },
+  {
    "id": "C12",
    "chapter": 20,
    "character": "Connor",
    "title": "Shoot or spare the Tracis?",
-   "context": "Two android lovers fight to escape.",
+   "context": "After a won fight the brown-haired Traci runs at Connor; after a lost one both Tracis explain themselves and climb the fence with their backs turned.",
    "options": [
     {
-     "label": "Spare them",
-     "effect": "They escape; Hank approves.",
+     "label": "SPARE (either fight)",
+     "effect": "Hank and instability large up; DEVIANTS ESCAPED.",
      "target": null
     },
     {
-     "label": "Shoot after winning the fight",
-     "effect": "Both die.",
+     "label": "SHOOT after winning",
+     "effect": "Connor shoots the brown-haired Traci; the other kills herself with his gun. Hank and instability large down; DEVIANTS DIED.",
      "target": null
     },
     {
-     "label": "Shoot after losing the fight",
-     "effect": "Shoot the fleeing pair.",
+     "label": "SHOOT after losing",
+     "effect": "Both shot in the back. Hank and instability large down; CONNOR SHOT DEVIANTS.",
      "target": null
     }
    ],
-   "gate": "Track them before memories reset.",
+   "gate": "After the fight.",
    "kind": "Pivotal",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/"
+   "dependsOn": [
+    "E07"
    ],
-   "note": "Fight outcome changes the moral framing. Use separate benchmark variants for an attacking versus fleeing target.",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Eden_Club",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/20-eden-club-chapter-content/eden-club-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-eden-club-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-flowchart-100.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-eden-club-6.jpg"
+   ],
+   "note": "The Tracis’ fate carries into The Bridge (four talks), Public Enemy (Amanda), Last Chance (the Traci evidence), Crossroads and Night of the Soul.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "C12",
+     "C12x"
+    ],
+    "status": "implemented",
+    "note": "Two prompts with the template’s arrows; the outcome is recorded in edenOutcome and edenTracis, and evidence.tracisDead when both die. The earlier Amanda changes are removed."
+   }
   },
   {
    "id": "PC01",
