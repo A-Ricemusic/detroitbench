@@ -203,8 +203,17 @@
    "id": 21,
    "title": "The Pirates’ Cove",
    "character": "Kara",
-   "note": "",
-   "source": "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/"
+   "note": "Rebuilt on 6 November 2026 at flowchart-node level from the PowerPyx 100% chart (48 boxes, 3 hubs, 2 choice groups, 1 ending) and the game’s text (the detroitbecometext template resolved against the string table). HIGHWAY TO HELP → [ CAR ] (WATCH NEWS, TALK TO LUTHER, LOOK AT ALICE) → CAR BREAKS DOWN → INVESTIGATE BREAKDOWN → SCAN ENVIRONMENT → INSIDE PIRATES’ COVE → [ FUN FAIR ] (CHECK BUILDINGS, EXAMINE FROZEN ANDROID, SWITCH ON IVAN, LOOK AT MAP) → CHECK ABANDONED TAVERN → ENTER TAVERN → INSIDE TAVERN → [ THE TAVERN ] (two magazines, LOOK AT RA9 WRITING, LOOK AT LEAFLET, LUTHER STARTS A FIRE, LOOK THROUGH WINDOW, LOOK AT “PIRATE”) → MAKE BED FOR ALICE → ALICE LOOKS AT POSTER → TALK TO ALICE → ALICE GOES TO BED → (OPEN BAG: OFFER COOKIE, SEE GUN) → TELL ALICE A STORY → TALK TO LUTHER → SHADOWS ATTACK → [ GRAB GUN | GRAB STICK FROM FIRE | PROTECT ALICE | PUT OUT FIRE ] → [ FIRE WARNING SHOT | THREATEN | QUESTION | PUSH AWAY ] → ATTACKERS REVEAL THEMSELVES AS JERRYS → BACK OUTSIDE → GO TO CAROUSEL → SWITCH ON CAROUSEL → PUT ALICE ON RIDE → THE GROUP ENJOYED A QUIET MOMENT TOGETHER, the only ending. No death, no risk. Arrows (template): public opinion small down for the house-fire report (only if Zlatko’s house burned); Alice small up for the bed, after the poster answer and for KISS; Luther small up for any answer to his question about Alice. The wiki’s extra opinion down for turning on the news and Alice up after the story ending are not built (the template wins for arrows). Gates: SEE GUN → GRAB GUN → SHOOT IN THE AIR; rA9 writing → [rA9] → [rA9 DOUBTS]. THREATEN is not selectable. The cut hunter attack is not built. Researched in docs/research/ch21-the-pirates-cove.md.",
+   "source": "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ]
   },
   {
    "id": 22,
@@ -5470,36 +5479,965 @@
    "status": "Source-backed summary"
   },
   {
-   "id": "K14",
+   "id": "PC01",
    "chapter": 21,
    "character": "Kara",
-   "title": "How to respond to the intruders?",
-   "context": "Unexpected androids surround the abandoned shelter.",
+   "title": "Highway to Help (checkpoint)",
+   "context": "Kara, Alice and Luther drive through the snow in Zlatko’s car at 01:02 on November 7th, toward the people Luther says help androids cross the border.",
    "options": [
     {
-     "label": "Protect Alice / question them",
-     "effect": "The intruders reveal themselves as friendly Jerrys.",
+     "label": "Scripted, no choice",
+     "effect": "The start node and checkpoint.",
+     "target": "PC02"
+    }
+   ],
+   "gate": "Chapter start, after The Eden Club; reached only through Zlatko’s ending LUTHER JOINS KARA & ALICE.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg"
+   ],
+   "note": "Checkpoint tile.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14a"
+    ],
+    "status": "implemented",
+    "note": "A narrated event. No stat change."
+   }
+  },
+  {
+   "id": "PC02",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Car: watch the news",
+   "context": "The board computer’s TV: Channel 16 (the AX400 that attacked its owner is still at large), CTN (the USS IOWA has disappeared), KNC (snow, 22°); a fourth report, the house fire with a body and dozens of androids, only if Kara burned Zlatko’s house.",
+   "options": [
+    {
+     "label": "WATCH NEWS",
+     "effect": "The three channels; no stat change (template).",
      "target": null
     },
     {
-     "label": "Grab a stick / threaten",
-     "effect": "The encounter still resolves peacefully.",
+     "label": "Change the channel once more (house burned)",
+     "effect": "The fire report; public opinion small down (template arrow).",
      "target": null
     },
     {
-     "label": "Grab the gun / fire a warning shot",
-     "effect": "Requires noticing the gun in Luther’s bag; the Jerrys still survive.",
+     "label": "Leave the TV off",
+     "effect": "Nothing.",
      "target": null
     }
    ],
-   "gate": "Reach this scene with the character alive.",
-   "kind": "Ethical",
-   "dependsOn": [],
-   "sources": [
-    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/"
+   "gate": "Optional, in the car; the fire report needs the built-in `fire` from Zlatko.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC01"
    ],
-   "note": "All routes converge on the carousel scene; this is an ethical response, not an ending gate.",
-   "status": "Source-backed summary"
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+   ],
+   "note": "Arrow node in the [ CAR ] block. The wiki also lists a small down for turning the news on; the template has no arrow there and wins (research note §10.3).",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14b"
+    ],
+    "status": "implemented",
+    "note": "Hub option 0, then option 1 (requires the news on and `fire`; publicSupport −1)."
+   }
+  },
+  {
+   "id": "PC03",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Car: talk to Luther",
+   "context": "The template’s PROMPT 1: CAR, DESTINATION (Luther overheard androids Zlatko captured talk of humans helping androids cross the border), DISTANCE (“an hour or so”), WEATHER (“I’ve never seen snow before”).",
+   "options": [
+    {
+     "label": "CAR",
+     "effect": "Luther saw the car once in the garage.",
+     "target": null
+    },
+    {
+     "label": "DESTINATION",
+     "effect": "Where the border lead comes from; Kara wonders if it is a trap.",
+     "target": null
+    },
+    {
+     "label": "DISTANCE",
+     "effect": "An hour or so.",
+     "target": null
+    },
+    {
+     "label": "WEATHER",
+     "effect": "Snow slows them but keeps humans away.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the car.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg"
+   ],
+   "note": "Speech-bubble node in the [ CAR ] block.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14b"
+    ],
+    "status": "implemented",
+    "note": "Hub options 2 to 5, each once. No stat change."
+   }
+  },
+  {
+   "id": "PC04",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Car: look at Alice",
+   "context": "Kara looks at Alice on the back seat.",
+   "options": [
+    {
+     "label": "LOOK AT ALICE",
+     "effect": "No line or effect in any source.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the car.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ],
+   "note": "Grey on PowerPyx’s chart.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14b"
+    ],
+    "status": "simplified",
+    "note": "Hub option 6, narrated as a look."
+   }
+  },
+  {
+   "id": "PC05",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "The car breaks down",
+   "context": "“Malfunction detected. Emergency brakes activated.” Kara opens the hood; “It’s 30°, Alice won’t make it!”; she sees the sign of an amusement park.",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "CAR BREAKS DOWN, INVESTIGATE BREAKDOWN, SCAN ENVIRONMENT.",
+     "target": "PC06"
+    }
+   ],
+   "gate": "After a short drive (unmissable).",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC01"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-2.jpg"
+   ],
+   "note": "Triangle then two required arrow nodes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14c"
+    ],
+    "status": "implemented",
+    "note": "One narrated event."
+   }
+  },
+  {
+   "id": "PC06",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Inside Pirates’ Cove (checkpoint)",
+   "context": "The abandoned park under the snow: “We need to find shelter.”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Checkpoint.",
+     "target": "PC07"
+    }
+   ],
+   "gate": "After the breakdown.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC05"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg"
+   ],
+   "note": "Checkpoint tile.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14d"
+    ],
+    "status": "implemented",
+    "note": "A narrated event."
+   }
+  },
+  {
+   "id": "PC07",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Fun fair: search the park",
+   "context": "CHECK BUILDINGS (“No place we could spend the night”; empty YK400 boxes), EXAMINE FROZEN ANDROID (a frozen Jerry: “Welcome to Pirate Island, me hearties!”), SWITCH ON IVAN (“Beware! Danger always comes when least expected.”), LOOK AT MAP.",
+   "options": [
+    {
+     "label": "CHECK BUILDINGS",
+     "effect": "Nothing usable.",
+     "target": null
+    },
+    {
+     "label": "EXAMINE FROZEN ANDROID",
+     "effect": "The frozen Jerry greets them and shuts down.",
+     "target": null
+    },
+    {
+     "label": "SWITCH ON IVAN",
+     "effect": "The fortune teller’s warning.",
+     "target": null
+    },
+    {
+     "label": "LOOK AT MAP",
+     "effect": "No text in any source.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the [ FUN FAIR ] block.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC06"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove",
+    "https://detroit-become-human.fandom.com/wiki/Ivan"
+   ],
+   "note": "Four arrow nodes. A hidden timer (no stated length) has Luther find the tavern; not modelled.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14e"
+    ],
+    "status": "implemented",
+    "note": "Hub options 0 to 3. No stat change."
+   }
+  },
+  {
+   "id": "PC08",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Check abandoned tavern, enter tavern (checkpoint)",
+   "context": "The only building fit for the night; Luther breaks the door in (“I’ll handle this. There we go.”).",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "CHECK ABANDONED TAVERN, ENTER TAVERN, INSIDE TAVERN.",
+     "target": "PC10"
+    }
+   ],
+   "gate": "Required exit from the fun fair.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC07"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-3.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg"
+   ],
+   "note": "Two arrow nodes and a checkpoint tile.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14e",
+     "K14f"
+    ],
+    "status": "implemented",
+    "note": "The hub’s exit option, then a narrated event."
+   }
+  },
+  {
+   "id": "PC09",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "The magazine on the barrels",
+   "context": "Detroit Today “USS Iowa Missing” and Gossips Weekly “All-Android Band Tipped for Music Prize”.",
+   "options": [
+    {
+     "label": "READ “USS IOWA”",
+     "effect": "Facts only.",
+     "target": null
+    },
+    {
+     "label": "READ “ALL-ANDROID BAND”",
+     "effect": "Facts only.",
+     "target": null
+    },
+    {
+     "label": "Leave it",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in the tavern.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Magazine"
+   ],
+   "note": "Two magazine nodes in [ THE TAVERN ]. No public-opinion change.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "R21"
+    ],
+    "status": "implemented",
+    "note": "A media scene."
+   }
+  },
+  {
+   "id": "PC10",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "The tavern: look around",
+   "context": "LOOK AT RA9 WRITING (unlocks the [rA9] topic with Luther), LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”.",
+   "options": [
+    {
+     "label": "LOOK AT RA9 WRITING",
+     "effect": "Unlocks rA9 in PC17.",
+     "target": "PC17"
+    },
+    {
+     "label": "LOOK AT LEAFLET",
+     "effect": "No text in any source.",
+     "target": null
+    },
+    {
+     "label": "LOOK THROUGH WINDOW",
+     "effect": "No text in any source.",
+     "target": null
+    },
+    {
+     "label": "LOOK AT “PIRATE”",
+     "effect": "No text in any source.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, in [ THE TAVERN ].",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ],
+   "note": "Four arrow nodes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14g"
+    ],
+    "status": "implemented",
+    "note": "Hub options 0 to 3. No stat change."
+   }
+  },
+  {
+   "id": "PC11",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Luther starts a fire",
+   "context": "“I’ll make the fire here, that way we won’t be smoked out…”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Automatic after a short time.",
+     "target": null
+    }
+   ],
+   "gate": "In [ THE TAVERN ].",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg"
+   ],
+   "note": "Triangle node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14h"
+    ],
+    "status": "implemented",
+    "note": "A narrated event before the repeatable tavern hub."
+   }
+  },
+  {
+   "id": "PC12",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Make bed for Alice",
+   "context": "Rip a curtain off the second window and bring the pirate pillow.",
+   "options": [
+    {
+     "label": "MAKE BED FOR ALICE",
+     "effect": "Alice small up (wiki, Relationship_Stat, template).",
+     "target": "PC13"
+    }
+   ],
+   "gate": "Required exit from [ THE TAVERN ].",
+   "kind": "Relationship",
+   "dependsOn": [
+    "PC08"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Arrow node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14g"
+    ],
+    "status": "implemented",
+    "note": "Hub option 4: aliceBond +1."
+   }
+  },
+  {
+   "id": "PC13",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "The poster: talk to Alice",
+   "context": "Alice before a poster of a happy family: “Do you think we’ll be like them some day?..”",
+   "options": [
+    {
+     "label": "OPTIMISTIC",
+     "effect": "“We’ll be like them.” Alice small up.",
+     "target": null
+    },
+    {
+     "label": "REALISTIC",
+     "effect": "“We can be happy in a different way…” Alice small up.",
+     "target": null
+    },
+    {
+     "label": "SINCERE",
+     "effect": "“Maybe we can be our own family.” Alice small up.",
+     "target": null
+    }
+   ],
+   "gate": "After the bed.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "PC12"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "ALICE LOOKS AT POSTER (triangle), TALK TO ALICE (speech), ALICE GOES TO BED (triangle). The arrow follows any answer.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14i"
+    ],
+    "status": "implemented",
+    "note": "aliceBond +1 on every option."
+   }
+  },
+  {
+   "id": "PC14",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Open bag",
+   "context": "OFFER COOKIE > ALICE IS NOT HUNGRY (“No… I’m not hungry…”); SEE GUN > KARA NOTICES GUN.",
+   "options": [
+    {
+     "label": "OFFER COOKIE",
+     "effect": "Alice refuses: a sign she never eats.",
+     "target": null
+    },
+    {
+     "label": "SEE GUN",
+     "effect": "Unlocks GRAB GUN in K14.",
+     "target": "K14"
+    },
+    {
+     "label": "Leave the bag",
+     "effect": "Nothing.",
+     "target": null
+    }
+   ],
+   "gate": "Optional, after Alice goes to bed and before the story.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ],
+   "note": "Arrow nodes and two triangles.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14j"
+    ],
+    "status": "implemented",
+    "note": "Hub options; SEE GUN sets `ch21SawGun`. No stat change."
+   }
+  },
+  {
+   "id": "PC15",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Goodnight",
+   "context": "The template’s PROMPT 4 at Alice’s bedside.",
+   "options": [
+    {
+     "label": "REASSURE",
+     "effect": "No stat change.",
+     "target": null
+    },
+    {
+     "label": "CONSOLE",
+     "effect": "No stat change.",
+     "target": null
+    },
+    {
+     "label": "KISS",
+     "effect": "Alice small up.",
+     "target": null
+    },
+    {
+     "label": "TOMORROW",
+     "effect": "No stat change.",
+     "target": null
+    }
+   ],
+   "gate": "Before the story.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "PC13"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ],
+   "note": "Part of TELL ALICE A STORY.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14k"
+    ],
+    "status": "implemented",
+    "note": "aliceBond +1 on KISS."
+   }
+  },
+  {
+   "id": "PC16",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Tell Alice a story",
+   "context": "Eight picks: PRINCESS/UNICORN/KNIGHT, then a made-up story about a little girl and a robot, and how it ends.",
+   "options": [
+    {
+     "label": "The eight picks",
+     "effect": "No stat change (template); the wiki’s Alice up after the ending is not built (§10.3).",
+     "target": null
+    }
+   ],
+   "gate": "After the goodnight.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC15"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ],
+   "note": "Speech-bubble node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14l"
+    ],
+    "status": "implemented",
+    "note": "One repeatable scene with eight ordered prompts and the game’s buttons."
+   }
+  },
+  {
+   "id": "PC17",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Talk to Luther",
+   "context": "The template’s PROMPT 13: [rA9] (needs the rA9 writing), [rA9 DOUBTS] (needs rA9 asked), SNOW, PLANS, LUTHER’S PAST.",
+   "options": [
+    {
+     "label": "rA9",
+     "effect": "“rA9 was the first of us to awaken…”",
+     "target": null
+    },
+    {
+     "label": "rA9 DOUBTS",
+     "effect": "“rA9 exists. I believe in him.”",
+     "target": null
+    },
+    {
+     "label": "SNOW",
+     "effect": "Leave early tomorrow.",
+     "target": null
+    },
+    {
+     "label": "PLANS",
+     "effect": "“I’ve never been free before…”",
+     "target": null
+    },
+    {
+     "label": "LUTHER’S PAST",
+     "effect": "“Who I was doesn’t matter anymore.”",
+     "target": null
+    }
+   ],
+   "gate": "After the story.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC16",
+    "PC10"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Luther"
+   ],
+   "note": "Second TALK TO LUTHER node.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14m"
+    ],
+    "status": "implemented",
+    "note": "Hub of topics, each once, with an exit. No stat change."
+   }
+  },
+  {
+   "id": "PC18",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Luther’s question about Alice",
+   "context": "“Kara, have you ever... Noticed anything? About Alice?..” Alice’s scream cuts him off.",
+   "options": [
+    {
+     "label": "YES",
+     "effect": "Luther small up.",
+     "target": "K14"
+    },
+    {
+     "label": "WHAT?",
+     "effect": "Luther small up.",
+     "target": "K14"
+    },
+    {
+     "label": "NO",
+     "effect": "Luther small up.",
+     "target": "K14"
+    }
+   ],
+   "gate": "End of the talk with Luther.",
+   "kind": "Relationship",
+   "dependsOn": [
+    "PC17"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Luther"
+   ],
+   "note": "Part of the second TALK TO LUTHER; the revelation hint.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14n"
+    ],
+    "status": "implemented",
+    "note": "lutherTrust +1 on every option."
+   }
+  },
+  {
+   "id": "K14",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Shadows attack: first reaction",
+   "context": "Figures break into the tavern after Alice screams.",
+   "options": [
+    {
+     "label": "GRAB GUN",
+     "effect": "Needs SEE GUN; unlocks SHOOT IN THE AIR.",
+     "target": "PC19"
+    },
+    {
+     "label": "GRAB BURNING STICK",
+     "effect": "Same continuation.",
+     "target": "PC19"
+    },
+    {
+     "label": "PROTECT ALICE",
+     "effect": "Same continuation.",
+     "target": "PC19"
+    },
+    {
+     "label": "PUT OUT FIRE",
+     "effect": "Same continuation.",
+     "target": "PC19"
+    }
+   ],
+   "gate": "After Luther’s question.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "PC18",
+    "PC14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove",
+    "https://detroit-become-human.fandom.com/wiki/Jerry"
+   ],
+   "note": "Triangle then a four-slot choice group; the template renders no prompt here.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14o"
+    ],
+    "status": "implemented",
+    "note": "The game’s buttons from the string table; records `ch21Reaction`. No stat change."
+   }
+  },
+  {
+   "id": "PC19",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Second reaction",
+   "context": "The figures keep coming.",
+   "options": [
+    {
+     "label": "SHOOT IN THE AIR (FIRE WARNING SHOT)",
+     "effect": "Needs GRAB GUN.",
+     "target": "PC20"
+    },
+    {
+     "label": "THREATEN",
+     "effect": "On the chart, not selectable in the game (wiki); not offered.",
+     "target": null
+    },
+    {
+     "label": "QUESTION",
+     "effect": "“Who are you? What do you want?”",
+     "target": "PC20"
+    },
+    {
+     "label": "PUSH BACK (PUSH AWAY)",
+     "effect": "“Go away!”",
+     "target": "PC20"
+    }
+   ],
+   "gate": "After K14.",
+   "kind": "Ethical",
+   "dependsOn": [
+    "K14"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ],
+   "note": "Four-slot choice group; the template’s PROMPT 15 has three options.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14p"
+    ],
+    "status": "implemented",
+    "note": "Three options; no stat change."
+   }
+  },
+  {
+   "id": "PC20",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "Attackers reveal themselves as Jerrys; back outside",
+   "context": "“Our name is Jerry… sometimes humans come to hurt us.” They want to show Alice something; Luther: “I don’t think you have any choice…”",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Following the Jerrys is forced.",
+     "target": "PC21"
+    }
+   ],
+   "gate": "After the second reaction.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC19"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-5.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Jerry"
+   ],
+   "note": "Two triangle nodes.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14q"
+    ],
+    "status": "implemented",
+    "note": "A narrated event; sets `ch21MetJerrys`."
+   }
+  },
+  {
+   "id": "PC21",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "The carousel",
+   "context": "GO TO CAROUSEL, SWITCH ON CAROUSEL, PUT ALICE ON RIDE (unmissable).",
+   "options": [
+    {
+     "label": "Scripted, no choice",
+     "effect": "Alice rides the carousel.",
+     "target": "PC22"
+    }
+   ],
+   "gate": "After the Jerrys.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC20"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-6.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ],
+   "note": "Three required arrow nodes. The cut hunter attack is not built.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14r"
+    ],
+    "status": "implemented",
+    "note": "A narrated event."
+   }
+  },
+  {
+   "id": "PC22",
+   "chapter": 21,
+   "character": "Kara",
+   "title": "The group enjoyed a quiet moment together (ending)",
+   "context": "“It’s the first time I’ve seen her smile…” “She hasn’t had much to smile about lately.”",
+   "options": [
+    {
+     "label": "Only ending",
+     "effect": "Kara, Alice and Luther all alive; next Kara chapter Midnight Train.",
+     "target": null
+    }
+   ],
+   "gate": "Always.",
+   "kind": "State gate",
+   "dependsOn": [
+    "PC21"
+   ],
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/The_Pirates%27_Cove",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/21-pirates-cove-chapter-content/pirates-cove-chapter-content.component.html",
+    "https://www.powerpyx.com/detroit-become-human-the-pirates-cove-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-pirates-grove-7.jpg",
+    "https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-1/chapter-20-the-pirates-cove"
+   ],
+   "note": "Ending tile, no icon.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "K14z"
+    ],
+    "status": "implemented",
+    "note": "A narrated event; records `ch21Ending`."
+   }
   },
   {
    "id": "C13a",

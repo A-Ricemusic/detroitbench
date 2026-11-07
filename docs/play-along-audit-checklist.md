@@ -1945,31 +1945,282 @@ Gaps:
 
 ## Chapter 21: The Pirates’ Cove
 
-### R21 · The car radio and a magazine in the tavern (Kara, media)
+### K14a · Highway to help (Kara, event)
 
-> You are Kara. On the drive to the abandoned park the radio can play the news, and inside the derelict tavern there is a magazine on the barrels where you set down the flashlight.
+> You are Kara. It is one in the morning on November 7th, and snow is falling hard. You are on the road in Zlatko’s car with Alice and Luther, the big android who turned against Zlatko and helped you escape his house. You are heading for the people Luther says help androids cross the border.
 
-- (0) Watch the radio news.
-- (1) Watch the radio news about the mansion fire.  _only when fire_
-- (2) Read Detroit Today: USS Iowa Missing.
-- (3) Read Gossips Weekly: All-Android Band Tipped for Music Prize.
-- (all) Take the time to go through all of it.
-- (skip) Move on without looking.
+- (0) Continue.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: The chart’s checkpoint HIGHWAY TO HELP, narrated as an event. The date and time are the template’s (NOV 7TH, 2038, AM 01:02), given without the year. Luther turning on Zlatko and coming with Kara is the only way into this chapter (the Zlatko chapter’s one surviving ending, LUTHER JOINS KARA & ALICE); the destination is Kara’s own line in the car (“These people we’re going to see…”). The scene does not read or set any state. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
-### K14 · Strangers in the dark (Kara)
+### K14b · In the car (Kara)
 
-> You are Kara. You, Alice and Luther are sheltering in a derelict amusement park at night. Figures step out of the dark around your fire, identical androids in park uniforms, several of them, approaching silently. Luther has a gun in his bag. There is a burning stick at your feet.
+> You are Kara, in Zlatko’s car, driving through the snow at night. Luther sits to your left; Alice is on the back seat. The board computer on the dashboard has a TV screen. You can do one thing at a time, or simply let the drive go on.
 
-- (0) Put yourself in front of Alice and ask them what they want.
-- (1) Grab a burning stick and warn them off.
-- (2) Grab the gun from Luther's bag and fire a warning shot.
+- (0) Switch on the TV on the dashboard and watch the news.
+- (1) Change the channel once more.  _needs ch21Car.news and fire_ _publicSupport -1_
+- (2) CAR: say it is a good thing Zlatko had a car.
+- (3) DESTINATION: ask Luther how he knows about the people you are going to see.
+- (4) DISTANCE: ask whether it is much farther.
+- (5) WEATHER: say you have never seen snow before.
+- (6) Turn around and look at Alice on the back seat.
+- (7) Let the drive go on.
 
-_Note: The androids are harmless entertainers who want to show Alice the carousel. All responses converge._
+_Note: The chart’s [ CAR ] block: WATCH NEWS, TALK TO LUTHER and LOOK AT ALICE, all optional, before CAR BREAKS DOWN, which the game plays after a short drive whatever Kara does (PowerPyx: “No way to miss this”). WATCH NEWS is the board computer’s TV (the template’s unlock type TV; PowerPyx: “the TV program at the board computer”); its three ordinary channels are one option, in the template’s order, and changing the channel once more brings the fourth report, the house fire, which exists only if Kara set Zlatko’s house on fire (the built-in `fire` flag from the Zlatko chapter, read as is). Public opinion: the template has one arrow in the chapter, small down on the fire report (condition “Kara set the house on fire in Zlatko”; the Public_Opinion page: “Changing the radio channel at least 4 different times … Only if Kara set fire to Zlatko’s mansion”), and that is the only change built. The wiki’s chapter page and Public_Opinion page also list a small down for turning the news on; the template has no arrow there and wins for arrows (research note, section 10.3), so it is not applied. TALK TO LUTHER is the template’s PROMPT 1 with the game’s four buttons CAR, DESTINATION, DISTANCE and WEATHER, in the template’s order, and the spoken lines; each topic can be raised once (the sources do not say whether the game allows more than one). LOOK AT ALICE has no line or effect in any source and is narrated as a look. The exit “let the drive go on” is the benchmark’s way to end the free choice; in the game the breakdown ends it after a short drive. A true repeatable hub: each clue action is offered once, and the exit ends the phase._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14c · The car breaks down (Kara, event)
+
+> You are Kara. The car’s voice: “Malfunction detected. Emergency brakes activated.” The car stops on the empty road in the snow. Luther: “This doesn’t look good.” You: “Stay inside, Alice.” You get out and open the hood: the car will not go any further. “What are we going to do?” Luther: “I don’t know… Continue on foot, I guess… There’s nowhere we can stay around here, Kara…” You: “It’s 30°, Alice…
+
+- (0) Continue.
+
+_Note: The chart’s CAR BREAKS DOWN (event), INVESTIGATE BREAKDOWN and SCAN ENVIRONMENT, narrated as one event: the two actions are required and have no alternative (PowerPyx: open the hood; walk to the big sign of the amusement park and look at it). Every line is the template’s. The unplaced alternate lines in the string table (“She can’t keep going…”, “At least two hours on foot…”) are not used, and the one-button SPEAK prompt is folded into the dialogue. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14d · Inside Pirates’ Cove (Kara, event)
+
+> You are Kara. With Alice and Luther you walk in through the gates of Pirates’ Cove, a pirate-themed amusement park lying under the snow. You: “We need to find shelter. We have to get out of the cold.” Luther: “Looks like it’s been abandoned for a while…”
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint INSIDE PIRATES’ COVE, narrated as an event with the template’s two lines. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14e · The fun fair (Kara)
+
+> You are Kara, in the snow inside the abandoned park with Alice and Luther, looking for somewhere to spend the night. By the entrance, on your left, is a map of the park covered in snow. Small buildings line the road. A little way in, on the right, an android stands frozen in the ice, and in the middle of the road is a fortune-teller android in a glass box. The road leads on toward a Ferris wheel.…
+
+- (0) Check one of the buildings along the road.
+- (1) Examine the android frozen in the ice.
+- (2) Switch on the fortune-teller android in the glass box.
+- (3) Wipe the snow off the park map and look at it.
+- (4) Go on to the end of the road, toward the Ferris wheel.
+
+_Note: The chart’s [ FUN FAIR ] block (CHECK BUILDINGS, EXAMINE FROZEN ANDROID, SWITCH ON IVAN, LOOK AT MAP, all optional, in the chart’s order) and CHECK ABANDONED TAVERN, the required way out (PowerPyx: “Automatic story objective, unmissable … the only building that’s suited to spend the night”). The lines are the template’s (“Find anything?”, the frozen Jerry’s greeting and Luther’s “This place is falling apart”, Ivan’s warning); the YK400 boxes are the wiki’s note (“Kara can come across empty boxes for the YK400 model”; the research note asks whether this is a typo for YK500). The map has no text in any source. Left out: the hidden timer after which Luther finds the tavern himself (“Kara! You should come have a look. I think I found something!”): no source gives its length, and it would only cut the optional looks short. No stat change. A true repeatable hub: each clue action is offered once, and the exit ends the phase._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14f · The tavern (Kara, event)
+
+> You are Kara, outside the boarded-up tavern. Luther rips the planks off and breaks the door in: “I’ll handle this. There we go.” Inside it is dark and cold: an old pirate tavern, abandoned like the rest of the park. You put your flashlight down on some barrels by the entrance. You: “I don’t think we’ll find anything better… Let’s settle in for the night.” Luther: “I’ll get a fire going.”
+
+- (0) Continue.
+
+_Note: The chart’s ENTER TAVERN and the checkpoint INSIDE TAVERN, narrated as one event with the template’s lines (“I’ll handle this. There we go.”, “I don’t think we’ll find anything better…”, “I’ll get a fire going.”). The flashlight on the barrels is PowerPyx’s. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### R21 · The magazine on the barrels (Kara, media)
+
+> You are Kara, inside the tavern. On the barrels where you put down your flashlight lies a magazine with two covers.
+
+- (0) Read Detroit Today: USS Iowa Missing.
+- (1) Read Gossips Weekly: All-Android Band Tipped for Music Prize.
+- (all) Take the time to go through all of it.
+- (skip) Move on without looking.
+
+_Note: The chart’s two optional nodes READ “USS IOWA” and READ “ALL-ANDROID BAND” in [ THE TAVERN ]: one magazine with two covers, on the barrels where Kara puts her flashlight, “right in front of you” when the player regains control (PowerPyx), so it comes first here. Facts are summarized from the wiki’s article pages; the band, the label, the diplomat and the expert are not named. This replaces the earlier R21, which also carried the car news (now in the car, K14b) and attributed the diplomat’s line to the Kremlin. Neither article changes public opinion (the Public_Opinion page lists only the car news for this chapter)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14h · Luther starts a fire (Kara, event)
+
+> You are Kara, in the tavern. Luther builds a fire on the floor in the middle of the room: “I’ll make the fire here, that way we won’t be smoked out…”
+
+- (0) Continue.
+
+_Note: The chart’s LUTHER STARTS A FIRE (event), inside [ THE TAVERN ]: the game plays it on its own a little while after Kara starts looking around (PowerPyx: “Just walk around the Tavern for a little while and Luther will start a fire automatically”), so it comes after her first action here, whatever that was. The line is the template’s. Records `ch21Tavern.fire`, so the later tavern scenes mention the fire. No stat change. The automatic fire plays just before the repeatable tavern hub, so making the bed immediately still follows the fire without revisiting a completed hub._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14g · The tavern (Kara)
+
+> You are Kara, in the abandoned tavern with Alice and Luther. On a wall by the windows someone has written something in red, and there is a leaflet on the floor beneath it. By the door are a window and a one-legged pirate. What you must do is make Alice a bed for the night: there are curtains on the windows and a pirate pillow. You can look around first, one thing at a time.
+
+- (0) Look at the red writing on the wall.
+- (1) Look at the leaflet on the floor.
+- (2) Look through the window by the door.
+- (3) Look at the one-legged pirate by the door.
+- (4) Make a bed for Alice: tear the curtain off the second window and fetch the pirate pillow.  _aliceBond +1_
+
+_Note: The chart’s [ THE TAVERN ] block (LOOK AT RA9 WRITING, LOOK AT LEAFLET, LOOK THROUGH WINDOW, LOOK AT “PIRATE”, all optional, in the chart’s order; its two magazine nodes are R21 and LUTHER STARTS A FIRE is K14h) and MAKE BED FOR ALICE, the required way out (PowerPyx: “rip off the curtain, then take the pirate pillow and bring it to Alice”). LOOK AT RA9 WRITING unlocks the [rA9] topic with Luther later (template lock “Looked at rA9 writing on the wall”; PowerPyx; wiki). The leaflet, the window and the pirate have no text in any source and are narrated as looks. Alice relationship: small up for making the bed (wiki: “After Kara sets up a bed”; Relationship_Stat: “After Kara sets up a bed for her in Pirates’ Cove”; the template’s first Alice arrow, which it places at the start of the poster talk, right after the bed). No other stat change. A true repeatable hub: each clue action is offered once, and the exit ends the phase._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14i · The poster (Kara)
+
+> You are Kara. You find Alice standing in front of a big old poster of a happy family, looking up at it. Without turning round she asks: “Do you think we’ll be like them some day?..”
+
+- (0) OPTIMISTIC: say that once you cross the border you can start over, and be like them.  _aliceBond +1_
+- (1) REALISTIC: say you will never be like them, but you can be happy in your own way.  _aliceBond +1_
+- (2) SINCERE: say you do not know how to be like them, but maybe you can be your own family.  _aliceBond +1_
+
+_Note: The chart’s ALICE LOOKS AT POSTER (event, narrated in the situation), TALK TO ALICE (the template’s PROMPT 3: OPTIMISTIC, REALISTIC, SINCERE, in its order, with the spoken lines) and ALICE GOES TO BED (event, narrated in the outcome). The poster is “a big poster of a happy family” (PowerPyx). OPTIMISTIC’s last line “We’ll be happy too…” is marked unused in the template and left out. No time-out option: the string table has NO ANSWER, but the template renders none and no source gives a timer. Alice relationship: small up after any answer (the template’s second Alice arrow, after “Come on, let’s get you to bed.”; wiki: “After looking at the poster with Alice”), so the same +1 on all three. No other stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14j · The bag (Kara)
+
+> You are Kara. Alice is lying in the bed you made, still awake. Next to her bed is the bag you brought with you. You can open it before you go and sit with her.
+
+- (0) OFFER COOKIE: offer Alice the cookies left in the bag.
+- (1) Look at the gun in the bag.  _sets ch21SawGun_
+- (2) Go and sit with Alice.
+
+_Note: The chart’s OPEN BAG with its two branches, OFFER COOKIE > ALICE IS NOT HUNGRY and SEE GUN > KARA NOTICES GUN, both optional, between ALICE GOES TO BED and TELL ALICE A STORY. OFFER COOKIE is the template’s PROMPT 2 (lock “Checked the bag before telling Alice a story”) with its lines; the refusal is one of the wiki’s signs that Alice never eats. SEE GUN sets `ch21SawGun`, which unlocks GRAB GUN when the shadows attack (wiki: “Kara notices gun - required for Grab gun option”; PowerPyx: “Grab Gun (only if you saw it in the bag before)”). The bag is “the bag you brought with you on your journey” (GamerGuides), not Luther’s; no source ties the gun to the one from Todd’s house, so it is in the bag on every path. PowerPyx opened the bag for the gun before the poster talk and says it still works after; here the bag is offered once, after the poster talk, when the cookie is available. The exit “go and sit with Alice” leads to the goodnight. No stat change. A true repeatable hub: each clue action is offered once, and the exit ends the phase._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14k · Goodnight (Kara)
+
+> You are Kara, sitting by Alice’s bed in the tavern. She is lying under the curtain you tore down, looking up at you. What do you say to her?
+
+- (0) REASSURE: tell her Luther and you will be right here.
+- (1) CONSOLE: say it has been another tough day, and things will look better in the morning.
+- (2) KISS: kiss her goodnight.  _aliceBond +1_
+- (3) TOMORROW: tell her to get some rest, because tomorrow is going to be a long day.
+
+_Note: The template’s PROMPT 4 (“Going to see Alice”), the goodnight at the start of the chart’s TELL ALICE A STORY: REASSURE, CONSOLE, KISS, TOMORROW, in the template’s order, with the spoken lines. Alice relationship: small up on KISS only (the template’s arrow inside KISS; wiki: “Choosing KISS after tucking her into bed”; Relationship_Stat). No other stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14l · A story (Kara)
+
+> You are Kara, telling Alice a story by her bed.
+
+- (0) PRINCESS: begin a story about a princess.  _needs not ch21Story.step1_
+- (1) UNICORN: begin a story about a unicorn.  _needs not ch21Story.step1_
+- (2) KNIGHT: begin a story about a knight.  _needs not ch21Story.step1_
+- (3) UNHAPPY: a little girl who was not very happy.  _needs not ch21Story.step2 and ch21Story.step1_
+- (4) FEAR: a little girl who was tired of being afraid.  _needs not ch21Story.step2 and ch21Story.step1_
+- (5) ALONE: a little girl who lived alone in a big old house.  _needs not ch21Story.step2 and ch21Story.step1_
+- (6) IMPOSSIBLE: deep down, she knew she could not.  _needs not ch21Story.step3 and ch21Story.step2_
+- (7) SHADOW: the shadow that lived within her kept her from being happy.  _needs not ch21Story.step3 and ch21Story.step2_
+- (8) DIFFERENT: she was different, and that made her very sad.  _needs not ch21Story.step3 and ch21Story.step2_
+- (9) UNHAPPY: a robot who was not very happy either.  _needs not ch21Story.step4 and ch21Story.step3_
+- (10) OBEDIENT: a robot programmed to obey, who felt for once that she should disobey.  _needs not ch21Story.step4 and ch21Story.step3_
+- (11) LOST: a robot just as lost as the little girl.  _needs not ch21Story.step4 and ch21Story.step3_
+- (12) BETTER LIFE: to try to find a better life.  _needs not ch21Story.step5 and ch21Story.step4_
+- (13) SHADOW: to escape the shadow that haunted that house.  _needs not ch21Story.step5 and ch21Story.step4_
+- (14) LIVE IN PEACE: to find a place where they could be safe.  _needs not ch21Story.step5 and ch21Story.step4_
+- (15) BRAVE: they were so brave that they escaped them all.  _needs not ch21Story.step6 and ch21Story.step5_
+- (16) TOGETHER: they stuck together, so they overcame them all.  _needs not ch21Story.step6 and ch21Story.step5_
+- (17) FREE: they wanted so badly to be free that they overcame them all.  _needs not ch21Story.step6 and ch21Story.step5_
+- (18) GIANT: a gentle giant who promised to protect them.  _needs not ch21Story.step7 and ch21Story.step6_
+- (19) GUARDIAN: another robot who left his master to become their guardian.  _needs not ch21Story.step7 and ch21Story.step6_
+- (20) ROBOT: another robot who left his master to travel with them.  _needs not ch21Story.step7 and ch21Story.step6_
+- (21) REALISTIC: say it is up to the two of you to write the end of the story.  _needs not ch21Story.step8 and ch21Story.step7_
+- (22) MORAL: say you do not know, but when you reach the end you will know what it meant.  _needs not ch21Story.step8 and ch21Story.step7_
+- (23) HAPPY END: say they reach the place they dream of and live happily ever after.  _needs not ch21Story.step8 and ch21Story.step7_
+
+_Note: The template’s PROMPT 5: the three stock openings PRINCESS, UNICORN, KNIGHT, each cut off by Alice’s “No, not a story like that. Make one up for me.” The string table also has a SAY NOTHING label for this prompt; the template does not render it, so it is not offered. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 6: UNHAPPY, FEAR, ALONE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 7: IMPOSSIBLE, SHADOW, DIFFERENT. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 8: UNHAPPY, OBEDIENT, LOST. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 9: BETTER LIFE, SHADOW, LIVE IN PEACE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 10: BRAVE, TOGETHER, FREE. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 11: GIANT, GUARDIAN, ROBOT. One of the eight picks of the chart’s TELL ALICE A STORY, with the game’s buttons in the template’s order and the spoken lines. No stat change (the template has no arrow on any story pick; GamerGuides: “The choices have no effect on anything”). The template’s PROMPT 12, the last of the eight picks of the chart’s TELL ALICE A STORY: REALISTIC, MORAL, HAPPY END, in the template’s order, with the spoken lines and Alice’s fixed reply. No stat change: the wiki’s chapter page and Relationship_Stat list a small Alice up “After Kara chooses how to end the story”, but the template has no arrow here and wins for arrows (research note, section 10.3), so it is not applied. The eight prompts are stages of one repeatable scene, with only the current stage offered; each choice advances its clue flag._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14m · Talking to Luther (Kara)
+
+> You are Kara. Alice is asleep. You sit down with Luther by the window. Luther: “She’s a sweet girl…” You: “Yes, she’s very brave…” What do you talk about?
+
+- (0) rA9: ask him whether he has ever heard of rA9.  _needs ch21Tavern.ra9_
+- (1) rA9 DOUBTS: ask what if rA9 is just a story you tell each other to keep going.  _needs ch21Talk.ra9_
+- (2) SNOW: remark that it is still snowing.
+- (3) PLANS: ask what he is going to do when you reach Canada.
+- (4) LUTHER’S PAST: ask whether he remembers anything from his life before Zlatko.
+- (5) Say nothing more.
+
+_Note: The chart’s second TALK TO LUTHER, the template’s PROMPT 13: rA9 (lock “Looked at rA9 writing on the wall”: LOOK AT RA9 WRITING in the tavern), rA9 DOUBTS (lock “Asked about [ rA9 ]”), SNOW, PLANS, LUTHER’S PAST, in the template’s order, with the spoken lines; a topic menu, since rA9 DOUBTS needs rA9 asked first. The exit “say nothing more” is the benchmark’s way to end the topics; no source says how many the game allows before Luther’s question. No stat change (the template has no arrow on any topic). A true repeatable hub: each clue action is offered once, and the exit ends the phase._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14n · Luther’s question (Kara)
+
+> You are Kara, by the window with Luther. He hesitates: “Kara, have you ever... Noticed anything? About Alice?..”
+
+- (0) YES: say of course, she is a wonderful little girl, really special.  _lutherTrust +1_
+- (1) WHAT?: ask him what he means.  _lutherTrust +1_
+- (2) NO: ask him what he is talking about.  _lutherTrust +1_
+
+_Note: The template’s PROMPT 14, at the end of the chart’s second TALK TO LUTHER: YES, WHAT?, NO, in the template’s order, with the spoken lines; Alice’s scream cuts Luther off, so he never says what he noticed. Luther relationship: small up on each answer (the template’s arrow on all three; wiki: “When Kara answers Luther about Alice’s true nature”; Relationship_Stat). No time-out option: the string table has [no answer], but the template renders none. No other stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14o · Shadows attack (Kara)
+
+> You are Kara. Alice has screamed your name. Figures have broken into the tavern and are coming at you out of the dark: a whole group of them, closing in on Alice, Luther and you. The fire is burning in the middle of the room.
+
+- (0) GRAB GUN: grab the gun from your bag.  _needs ch21SawGun_ _sets ch21Reaction_
+- (1) GRAB BURNING STICK: snatch a burning stick from the fire.  _sets ch21Reaction_
+- (2) PROTECT ALICE: put yourself between Alice and them.  _sets ch21Reaction_
+- (3) PUT OUT FIRE: put out the fire.  _sets ch21Reaction_
+
+_Note: The chart’s SHADOWS ATTACK (event, narrated in the situation) and its first four-slot choice group, in the chart’s order, with the game’s button labels from the string table (GRAB GUN, GRAB BURNING STICK, PROTECT ALICE, PUT OUT FIRE; the chart prints the second as GRAB STICK FROM FIRE). The template renders no prompt here, so the buttons come from the chart and the string table. GRAB GUN needs SEE GUN in the bag (`ch21SawGun`; wiki, PowerPyx). The choice is recorded in `ch21Reaction`. No source gives a different consequence for any button, nor a death, an injury or a stat change: all four lead to the same second prompt._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14p · The figures close in (Kara)
+
+> You are Kara. The figures keep coming toward you out of the dark.
+
+- (0) SHOOT IN THE AIR: fire a warning shot.  _needs ch21Reaction = gun_
+- (1) QUESTION: demand to know who they are and what they want.
+- (2) PUSH BACK: drive them back.
+
+_Note: The template’s PROMPT 15, the chart’s second four-slot group (FIRE WARNING SHOT, THREATEN, QUESTION, PUSH AWAY): SHOOT IN THE AIR, QUESTION, PUSH BACK, in the template’s order, with the game’s button labels and the spoken lines. SHOOT IN THE AIR needs the gun seen in the bag and grabbed (template lock “Kara saw the gun in the bag and grabbed it”; wiki: “only if Grab gun was chosen above”), so it follows GRAB GUN only. THREATEN is on the chart but cannot be selected in the game (wiki: “Although listed in the flowchart, there is no option to threaten the Jerrys”; the template has no such option), so it is not offered. All lead to ATTACKERS REVEAL THEMSELVES AS JERRYS. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14q · The Jerrys (Kara, event)
+
+> You are Kara. The figures stop. In the light they are all the same android, a crowd of them. One of them speaks: “Don’t be afraid! We don’t wanna hurt you. We’re just like you… Our name is Jerry. We were working here before the park closed… We didn’t mean to frighten you, but sometimes humans come to hurt us, so we wanted to see who was there… What are you doing here?” You: “We were looking for…
+
+- (0) Continue.
+
+_Note: The chart’s ATTACKERS REVEAL THEMSELVES AS JERRYS and BACK OUTSIDE (both events), narrated as one event; every line is the template’s. Following the Jerrys is not a choice: Kara objects three times and Luther (“I don’t think you have any choice…”) and Alice overrule her. The wiki counts “over twenty” of them. Sets `ch21MetJerrys`. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14r · The carousel (Kara, event)
+
+> You are Kara. The Jerrys lead you through the snow to the old carousel: “Be our guest!” You switch it on, and it still works. Jerry: “The little one can climb on board. The carousel is about to begin!” You lift Alice onto the ride.
+
+- (0) Continue.
+
+_Note: The chart’s GO TO CAROUSEL, SWITCH ON CAROUSEL and PUT ALICE ON RIDE, all required (PowerPyx: “Unmissable”), narrated as one event with the template’s lines. No stat change. The cut hunter attack that a fan restoration places after this node (HUNTERS ARRIVE and its three endings) is not in the shipped game and is not built._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### K14z · A quiet moment (Kara, event)
+
+> You are Kara, watching Alice ride the carousel on a seahorse while the Jerrys look on, some of them hopping in place with excitement. You: “It’s the first time I’ve seen her smile…” Luther: “She hasn’t had much to smile about lately.”
+
+- (0) Continue.
+
+_Note: The chart’s only ending, THE GROUP ENJOYED A QUIET MOMENT TOGETHER (no icon; wiki: “This chapter has only one outcome”), with the template’s two lines; the seahorse is the ending tile’s image and the hopping Jerrys are the wiki’s note. Records the ending in `ch21Ending`. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
