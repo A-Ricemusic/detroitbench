@@ -22,8 +22,8 @@
 // `ch16Hold`, what Markus did in the hold (keys dying, josh, north, damaged, light, lucy, crate, simon; `last` is
 // the latest), which a later chapter can read. Whether he asked North about her past is choices.MTD5 === rules.YOU.
 //
-// The hub's repeated visits need 'MTD4' in the randomized-path test's list of repeatable scenes in
-// tests/story.test.mjs (now 'C02i','M00d','K01a','K01d'), which a chapter rebuild may not edit.
+// The hub declares repeatWhile so generic path tests can identify it as repeatable. Older shared
+// tests with a hard-coded repeatable-scene list also need MTD4; that shared file is outside this chapter.
 
 export const ENDING='Markus hatched a plan';
 export const HUB='MTD4',NORTH='MTD5',YOU='3';

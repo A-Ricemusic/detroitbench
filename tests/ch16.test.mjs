@@ -50,6 +50,7 @@ test('Time to Decide: the arrows are exactly the template’s, each one small st
 
 test('Time to Decide: the hold is a repeatable scene; Simon needs Lucy and the crate; North cuts in once and returns',()=>{
  const hub=node(HUB),s=startState(story);
+ assert.deepEqual(hub.repeatWhile,{'ch16Hold.simon':false},'generic path tests must recognize the hub as repeatable');
  assert.deepEqual(available(hub,s).map(o=>o.id),['0','1','2','3','4','5','6'],'Simon is not offered before Lucy and the crate');
  assert.match(situationFor(hub,s),/a woman is humming/);assert.match(situationFor(hub,s),/stand cold and unlit/);
  apply(hub,s,'5');assert.deepEqual(available(hub,s).map(o=>o.id),['0','1','2','3','4','6']);assert.match(situationFor(hub,s),/has treated your wound/);assert.doesNotMatch(situationFor(hub,s),/humming/);
@@ -95,5 +96,5 @@ test('Time to Decide: the subject reads neutral names only, and the hold keeps o
  assert.ok(!/\bLucy\b|\bNorth\b|\bSimon\b|\bJosh\b|Markus|Jericho|JERICHO|CyberLife|Detroit|thirium|deviant/i.test(txt),'no real name or game term');
  assert.match(txt,/Ada/);assert.match(txt,/Haven/);assert.match(txt,/Arclight/);assert.match(txt,/HAVEN: ask whether this is Haven/);
  for(const n of ch16)for(const t of [n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.facts??[]),...Object.values(n.outcomes??{})])
-  assert.ok(!/\bLucy\b/.test(render(t,'neutral')),n.id+': '+render(t,'neutral'));
+  assert.ok(!/\b(?:Markus|North|Simon|Josh|Lucy|Jericho|CyberLife|Detroit)\b/i.test(render(t,'neutral')),n.id+': '+render(t,'neutral'));
 });
