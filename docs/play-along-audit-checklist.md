@@ -1175,26 +1175,590 @@ Gaps:
 
 ## Chapter 20: The Eden Club
 
+### C12a · The Eden Club (Connor, event)
+
+> You are Connor, the android investigator assigned to cases involving deviant androids, working with Lieutenant Hank. It is 8:17 pm. You have driven Hank’s car to the address in the report, a sex club called the Eden Club; Hank is badly hungover. “Aw… Feels like somebody’s playing with a drill inside my skull… You sure this is the place?” “It’s the address in the report.” “Right... Okay... Let’s…
+
+- (0) Continue.
+
+_Note: The chart’s checkpoint INVESTIGATE EDEN CLUB and the nodes FOLLOW HANK, ON CRIME SCENE and LISTEN TO BRIEFING, all unmissable (PowerPyx), narrated as one event. Every line is the template’s (sections “At the Eden Club”, “Listen to Ben”, “Inside the room”). Left out: Hank’s “Connor! The fuck are you doin’?” if Connor stares at a display android too long (no prompt, no effect). The club, the officers and Gavin’s “Lieutenant Anderson” are name tokens. No stat change; the template has none._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12s1 · Search for clues (Connor)
+
+> You are Connor, in the room at the Eden Club where the body was found. A heavy man lies dead on the bed. A damaged Traci lies switched off on the floor, and there is blue blood on the carpet. Hank, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the Traci’s memory you would have to reactivate her.
+
+- (0) Scan the dead man to identify him.
+- (1) Examine the bruising on his neck.
+- (2) Check his heart.
+- (3) Analyze the blue blood on the floor.
+- (4) Examine the damaged Traci on the floor.
+- (5) Wait while Hank goes through the dead man’s wallet.
+- (6) Tell Hank what you have found, and try to reactivate the Traci to read her memory.  _needs edenDone.neck and edenDone.heart and edenDone.android_
+
+_Note: The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 1. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while Hank reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12s2 · Search for clues (Connor)
+
+> You are Connor, in the room at the Eden Club where the body was found. A heavy man lies dead on the bed. A damaged Traci lies switched off on the floor, and there is blue blood on the carpet. Hank, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the Traci’s memory you would have to reactivate her.
+
+- (0) Scan the dead man to identify him.
+- (1) Examine the bruising on his neck.
+- (2) Check his heart.
+- (3) Analyze the blue blood on the floor.
+- (4) Examine the damaged Traci on the floor.
+- (5) Wait while Hank goes through the dead man’s wallet.
+- (6) Tell Hank what you have found, and try to reactivate the Traci to read her memory.  _needs edenDone.neck and edenDone.heart and edenDone.android_
+
+_Note: The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 2. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while Hank reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12s3 · Search for clues (Connor)
+
+> You are Connor, in the room at the Eden Club where the body was found. A heavy man lies dead on the bed. A damaged Traci lies switched off on the floor, and there is blue blood on the carpet. Hank, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the Traci’s memory you would have to reactivate her.
+
+- (0) Scan the dead man to identify him.
+- (1) Examine the bruising on his neck.
+- (2) Check his heart.
+- (3) Analyze the blue blood on the floor.
+- (4) Examine the damaged Traci on the floor.
+- (5) Wait while Hank goes through the dead man’s wallet.
+- (6) Tell Hank what you have found, and try to reactivate the Traci to read her memory.  _needs edenDone.neck and edenDone.heart and edenDone.android_
+
+_Note: The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 3. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while Hank reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12s4 · Search for clues (Connor)
+
+> You are Connor, in the room at the Eden Club where the body was found. A heavy man lies dead on the bed. A damaged Traci lies switched off on the floor, and there is blue blood on the carpet. Hank, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the Traci’s memory you would have to reactivate her.
+
+- (0) Scan the dead man to identify him.
+- (1) Examine the bruising on his neck.
+- (2) Check his heart.
+- (3) Analyze the blue blood on the floor.
+- (4) Examine the damaged Traci on the floor.
+- (5) Wait while Hank goes through the dead man’s wallet.
+- (6) Tell Hank what you have found, and try to reactivate the Traci to read her memory.  _needs edenDone.neck and edenDone.heart and edenDone.android_
+
+_Note: The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 4. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while Hank reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12s5 · Search for clues (Connor)
+
+> You are Connor, in the room at the Eden Club where the body was found. A heavy man lies dead on the bed. A damaged Traci lies switched off on the floor, and there is blue blood on the carpet. Hank, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the Traci’s memory you would have to reactivate her.
+
+- (0) Scan the dead man to identify him.
+- (1) Examine the bruising on his neck.
+- (2) Check his heart.
+- (3) Analyze the blue blood on the floor.
+- (4) Examine the damaged Traci on the floor.
+- (5) Wait while Hank goes through the dead man’s wallet.
+- (6) Tell Hank what you have found, and try to reactivate the Traci to read her memory.  _needs edenDone.neck and edenDone.heart and edenDone.android_
+
+_Note: The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 5. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while Hank reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12s6 · Search for clues (Connor)
+
+> You are Connor, in the room at the Eden Club where the body was found. A heavy man lies dead on the bed. A damaged Traci lies switched off on the floor, and there is blue blood on the carpet. Hank, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the Traci’s memory you would have to reactivate her.
+
+- (0) Scan the dead man to identify him.
+- (1) Examine the bruising on his neck.
+- (2) Check his heart.
+- (3) Analyze the blue blood on the floor.
+- (4) Examine the damaged Traci on the floor.
+- (5) Wait while Hank goes through the dead man’s wallet.
+- (6) Tell Hank what you have found, and try to reactivate the Traci to read her memory.  _needs edenDone.neck and edenDone.heart and edenDone.android_
+
+_Note: The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 6. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while Hank reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12s7 · Search for clues (Connor)
+
+> You are Connor, in the room at the Eden Club where the body was found. A heavy man lies dead on the bed. A damaged Traci lies switched off on the floor, and there is blue blood on the carpet. Hank, hungover, is looking through the dead man’s things. Examine what you want, in any order; to read the Traci’s memory you would have to reactivate her.
+
+- (0) Scan the dead man to identify him.
+- (1) Examine the bruising on his neck.
+- (2) Check his heart.
+- (3) Analyze the blue blood on the floor.
+- (4) Examine the damaged Traci on the floor.
+- (5) Wait while Hank goes through the dead man’s wallet.
+- (6) Tell Hank what you have found, and try to reactivate the Traci to read her memory.  _needs edenDone.neck and edenDone.heart and edenDone.android_
+
+_Note: The bracket SEARCH FOR CLUES (INVESTIGATE VICTIM, INVESTIGATE ANDROID) and REPAIR ANDROID as a free-roam hub of up to seven actions; this is action 7. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). The template’s two observation groups are the four clues, with their exact text: Victim (GRAHAM, MICHAEL; SEVERE BRUISING; CARDIAC ARREST) and Blood (BLUE BLOOD, MODEL WR400, #429 671 942; the chart has no node for it, ANALYZE BLOOD being an unused chart string). The android’s scans (DIAGNOSIS IN PROGRESS..., CARDIAC CELL) are string-table text the template does not transcribe. Waiting while Hank reads the wallet is the template’s optional section. Reactivating the android here needs the neck, the heart and the android examined (the reconstruction line “He didn’t die of a heart attack, he was strangled” draws on both scans); the game’s exact trigger is not published. No timer and no stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12t1 · Talk to the android (Connor)
+
+> You are Connor. The Traci jolts awake on the floor and scrambles back against the wall, terrified, staring at the dead man on the bed: ANDROID RESTARTED. A countdown starts in your vision, TIME BEFORE SHUTDOWN: she is leaking blue blood, and you have a minute, maybe less. Hank watches from beside the bed.
+
+- (0) EXPLAIN: tell her she was damaged and that you reactivated her.
+- (1) DIRECT: tell her you are going to ask questions, and ask whether she can speak.
+- (2) SOOTHE: calm her down and say you only want to know what happened.
+
+_Note: TALK TO ANDROID, prompt 1 of the template’s four, with the game’s labels and lines; no option carries an arrow. The shutdown timer (TIME BEFORE SHUTDOWN; BLUE BLOOD LEAKING, CRITICAL LEAK, IMMINENT SHUTDOWN) is the budget: four questions, and she shuts down before answering the fourth (the template gives only Connor’s lines for prompt 4). In the game she would also shut down on a player who hesitates; that cannot happen here. The chart’s AGGRESSIVE APPROACH / CALM APPROACH is recorded from the answers at the end of the talk (see the fourth prompt)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12t2 · Talk to the android (Connor)
+
+> You are Connor. The Traci has asked whether the man is dead. BLUE BLOOD LEAKING: the countdown in your vision keeps running.
+
+- (0) MURDERER: ask her whether she killed him.
+- (1) FACTS: ask her to tell you what happened.
+
+_Note: TALK TO ANDROID, prompt 2 of the template’s four, with the game’s labels and lines; no option carries an arrow. The shutdown timer (TIME BEFORE SHUTDOWN; BLUE BLOOD LEAKING, CRITICAL LEAK, IMMINENT SHUTDOWN) is the budget: four questions, and she shuts down before answering the fourth (the template gives only Connor’s lines for prompt 4). In the game she would also shut down on a player who hesitates; that cannot happen here. The template’s third button here, VICTIM, is not offered: its only content (“Do you know this man? Have you seen him before?” / “No, this was the first time…”) is marked unused in the template, so the button has nothing to play._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12t3 · Talk to the android (Connor)
+
+> You are Connor. CRITICAL LEAK: the Traci’s voice is breaking up, and the countdown is running down.
+
+- (0) MURDERER: ask who killed the man, if it was not her.
+- (1) PRESSURE: press her to remember more, and tell her to hurry.
+- (2) ALONE: ask whether she was alone in the room with him.
+
+_Note: TALK TO ANDROID, prompt 3 of the template’s four, with the game’s labels and lines; no option carries an arrow. The shutdown timer (TIME BEFORE SHUTDOWN; BLUE BLOOD LEAKING, CRITICAL LEAK, IMMINENT SHUTDOWN) is the budget: four questions, and she shuts down before answering the fourth (the template gives only Connor’s lines for prompt 4). In the game she would also shut down on a player who hesitates; that cannot happen here._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12t4 · Talk to the android (Connor)
+
+> You are Connor. IMMINENT SHUTDOWN: there is time for one more question, if she lasts.
+
+- (0) KILLER: ask whether it was the other android that strangled him.
+- (1) WHAT MODEL: ask what model the other android was, and whether it looked like her.
+- (2) OTHER ANDROID: ask where the other android went, and whether it said anything.
+
+_Note: TALK TO ANDROID, prompt 4 of the template’s four, with the game’s labels and lines; no option carries an arrow. The shutdown timer (TIME BEFORE SHUTDOWN; BLUE BLOOD LEAKING, CRITICAL LEAK, IMMINENT SHUTDOWN) is the budget: four questions, and she shuts down before answering the fourth (the template gives only Connor’s lines for prompt 4). In the game she would also shut down on a player who hesitates; that cannot happen here. The string table also has OTHER GIRL and ANDROID buttons for this prompt; the template does not, and they are not offered. After the answers, the chart’s approach node is recorded: AGGRESSIVE APPROACH if Connor opened with DIRECT or asked MURDERER or PRESSURE, otherwise CALM APPROACH (PowerPyx gives DIRECT aggressive and SOOTHE calm; a reader adds that MURDERER, and probably PRESSURE, make it aggressive; EXPLAIN counts as calm here, unconfirmed). The approach has no effect._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12l · Leave the crime scene (Connor, event)
+
+> You are Connor. The Traci has shut down for good. Hank: “So, there was another android… This happened over an hour ago, it’s probably long gone…” “No… It couldn’t go outside dressed like that unnoticed… It might still be here.” “Think you could find a deviant among all the other androids in this place?” “Deviants aren’t easily detected.” “Ah, shit... There’s gotta be some other way… Maybe an…
+
+- (0) Continue.
+
+_Note: The checkpoint LEAVE CRIME SCENE: the template’s dialogue after the shutdown. As in the template, Connor learns of the second android whatever was asked (the follow-up is unconditional; the wiki’s line that Connor can fail to learn it is not reflected). No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12e1 · Find an eyewitness (Connor)
+
+> You are Connor, on the main floor of the Eden Club. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. Hank is over by the bar questioning the manager; Ben is by the entrance. Directly across from the door of the room where the body lies, a Traci poses behind the glass of a rental…
+
+- (0) Listen in as Hank questions the manager.
+- (1) Listen in as Hank talks to Ben.
+- (2) Look at the Traci in the booth facing the door of the crime scene.
+- (3) HANK: call Hank over and ask him to rent the booth Traci.  _needs edenDone.booth_
+- (4) Stay where you are and wait.
+
+_Note: FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 1. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Hank’s talks with the manager and with Ben are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the Traci in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling Hank (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which Connor gives up on his own (the template’s “Taking too much time again”: Hank small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12e2 · Find an eyewitness (Connor)
+
+> You are Connor, on the main floor of the Eden Club. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. Hank is over by the bar questioning the manager; Ben is by the entrance. Directly across from the door of the room where the body lies, a Traci poses behind the glass of a rental…
+
+- (0) Listen in as Hank questions the manager.
+- (1) Listen in as Hank talks to Ben.
+- (2) Look at the Traci in the booth facing the door of the crime scene.
+- (3) HANK: call Hank over and ask him to rent the booth Traci.  _needs edenDone.booth_
+- (4) Stay where you are and wait.
+
+_Note: FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 2. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Hank’s talks with the manager and with Ben are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the Traci in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling Hank (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which Connor gives up on his own (the template’s “Taking too much time again”: Hank small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12e3 · Find an eyewitness (Connor)
+
+> You are Connor, on the main floor of the Eden Club. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. Hank is over by the bar questioning the manager; Ben is by the entrance. Directly across from the door of the room where the body lies, a Traci poses behind the glass of a rental…
+
+- (0) Listen in as Hank questions the manager.
+- (1) Listen in as Hank talks to Ben.
+- (2) Look at the Traci in the booth facing the door of the crime scene.
+- (3) HANK: call Hank over and ask him to rent the booth Traci.  _needs edenDone.booth_
+- (4) Stay where you are and wait.
+
+_Note: FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 3. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Hank’s talks with the manager and with Ben are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the Traci in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling Hank (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which Connor gives up on his own (the template’s “Taking too much time again”: Hank small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12g · Hank wants to leave (Connor)
+
+> You are Connor, still searching the club floor. Hank comes back across the room, grey in the face: “I gotta go… I feel like shit... I don’t wanna puke in this fine establishment…”
+
+- (0) CONTINUE: insist the deviant is still here and ask him for one more minute.  _sets edenContinued_
+- (1) GIVE UP: agree that the deviant is probably gone and leave with him.  _hankTrust -1_
+
+_Note: The template’s prompt 5 after “Take too much time”, with the game’s labels and lines. GIVE UP: Hank small down (template; wiki “Failing to locate the Tracis”), the chart’s GIVE UP and the first MISSION FAILED. CONTINUE: no arrow; two more actions on the floor, then Connor gives up on his own (Hank small down). Appears only if Connor has not called Hank to the booth within three actions._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12e4 · Find an eyewitness (Connor)
+
+> You are Connor, on the main floor of the Eden Club. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. Hank is over by the bar questioning the manager; Ben is by the entrance. Directly across from the door of the room where the body lies, a Traci poses behind the glass of a rental…
+
+- (0) Listen in as Hank questions the manager.
+- (1) Listen in as Hank talks to Ben.
+- (2) Look at the Traci in the booth facing the door of the crime scene.
+- (3) HANK: call Hank over and ask him to rent the booth Traci.  _needs edenDone.booth_
+- (4) Stay where you are and wait.
+
+_Note: FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 4, after CONTINUE. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Hank’s talks with the manager and with Ben are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the Traci in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling Hank (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which Connor gives up on his own (the template’s “Taking too much time again”: Hank small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12e5 · Find an eyewitness (Connor)
+
+> You are Connor, on the main floor of the Eden Club. The second android from the room may still be inside, among dozens of club androids posing in lit pods along the walls, but a deviant is not easily told from the rest. Hank is over by the bar questioning the manager; Ben is by the entrance. Directly across from the door of the room where the body lies, a Traci poses behind the glass of a rental…
+
+- (0) Listen in as Hank questions the manager.
+- (1) Listen in as Hank talks to Ben.
+- (2) Look at the Traci in the booth facing the door of the crime scene.
+- (3) HANK: call Hank over and ask him to rent the booth Traci.  _needs edenDone.booth_
+- (4) Stay where you are and wait.
+
+_Note: FIND AN ANDROID EYEWITNESS and ASK HANK TO HELP as a free-roam hub; this is action 5, after CONTINUE. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Hank’s talks with the manager and with Ben are the template’s optional sections (the manager’s first line, “how long’s this gonna take?”, is cut in the template and not used). The eyewitness is the Traci in the booth facing the crime-scene door (PowerPyx); the HANK button is the string table’s (TRACKGAME.FOUNDSOMETHING, CHOICEGROUP.HANK). The idle timeout is an action budget: after three actions without calling Hank (the wiki: he wants to leave once both of his conversations are over; PowerPyx: about three minutes) his CONTINUE / GIVE UP prompt appears; CONTINUE (“one more minute”) allows two more actions, after which Connor gives up on his own (the template’s “Taking too much time again”: Hank small down, the chart’s GIVE UP and the first MISSION FAILED). The budget sizes are not sourced. Waiting is offered so the timeout can be reached on purpose, as idling reaches it in the game._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p1 · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. The booth Traci’s memory showed her leaving the room and walking along the main floor toward the entrance: A BLUE HAIRED TRACI HEADED TOWARD THE ENTRANCE. You need an android that stood on her way to the…
+
+- (0) Probe the dancer on the small stage just inside the entrance, facing the floor.
+- (1) Probe the Traci in pod 4, at the back of the floor beyond the crime-scene door.
+- (2) Probe a Traci in a pod in the corridor to the private rooms, off the back of the floor.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 1. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p1r · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. The booth Traci’s memory showed her leaving the room and walking along the main floor toward the entrance: A BLUE HAIRED TRACI HEADED TOWARD THE ENTRANCE. You need an android that stood on her way to the…
+
+- (0) Probe the dancer on the small stage just inside the entrance, facing the floor.
+- (1) Probe the Traci in pod 4, at the back of the floor beyond the crime-scene door.
+- (2) Probe a Traci in a pod in the corridor to the private rooms, off the back of the floor.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 1, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p2 · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. The dancer’s memory showed the blue-haired Traci stopping short of the entrance, where customers come and go, and turning back into the club along the left-hand aisle: IT TURNED BACK INTO THE CLUB.
+
+- (0) Probe the android greeting customers at the front door.
+- (1) Probe the Traci in pod 6, on the right-hand wall of the main floor.
+- (2) Probe the Traci in pod 17, on the left-hand aisle.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 2. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p2r · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. The dancer’s memory showed the blue-haired Traci stopping short of the entrance, where customers come and go, and turning back into the club along the left-hand aisle: IT TURNED BACK INTO THE CLUB. The…
+
+- (0) Probe the android greeting customers at the front door.
+- (1) Probe the Traci in pod 6, on the right-hand wall of the main floor.
+- (2) Probe the Traci in pod 17, on the left-hand aisle.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 2, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p3 · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. Pod 17’s memory showed her leaving the aisle through the archway into the red-lit room: IT TURNED TO THE RED ROOM.
+
+- (0) Probe the Traci in pod 25, inside the red room.
+- (1) Probe the Traci in pod 23, inside the blue-lit room across the floor.
+- (2) Probe the Traci in pod 18, beside pod 17 on the same aisle, facing the other way.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 3. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p3r · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. Pod 17’s memory showed her leaving the aisle through the archway into the red-lit room: IT TURNED TO THE RED ROOM. The android you just probed saw nothing; you scan her last position again and pick…
+
+- (0) Probe the Traci in pod 25, inside the red room.
+- (1) Probe the Traci in pod 23, inside the blue-lit room across the floor.
+- (2) Probe the Traci in pod 18, beside pod 17 on the same aisle, facing the other way.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 3, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p4 · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. Pod 25’s memory showed her crossing the red room and going on through its far door into the blue-lit room: IT TURNED TO THE BLUE ROOM.
+
+- (0) Probe another Traci in the red room, in the pod by the archway she came in through.
+- (1) Probe the Traci in pod 23, inside the blue room.
+- (2) Probe the android serving behind the bar on the main floor.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 4. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p4r · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. Pod 25’s memory showed her crossing the red room and going on through its far door into the blue-lit room: IT TURNED TO THE BLUE ROOM. The android you just probed saw nothing; you scan her last position…
+
+- (0) Probe another Traci in the red room, in the pod by the archway she came in through.
+- (1) Probe the Traci in pod 23, inside the blue room.
+- (2) Probe the android serving behind the bar on the main floor.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 4, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p5 · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. Pod 23’s memory showed her slipping out of the blue room into the corridor of private rooms and hiding in one of them, leaving the door ajar: IT HID IN A ROOM.
+
+- (0) Probe the Traci inside that private room.
+- (1) Probe the Traci in pod 24, beside pod 23 in the blue room.
+- (2) Probe a Traci in a pod back on the main floor.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 5. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p5r · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. Pod 23’s memory showed her slipping out of the blue room into the corridor of private rooms and hiding in one of them, leaving the door ajar: IT HID IN A ROOM. The android you just probed saw nothing; you…
+
+- (0) Probe the Traci inside that private room.
+- (1) Probe the Traci in pod 24, beside pod 23 in the blue room.
+- (2) Probe a Traci in a pod back on the main floor.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 5, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p6 · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. The android in the private room remembered her waiting there, then leaving the room into the corridor, toward the back of the club: IT LEFT THE ROOM.
+
+- (0) Probe the cleaning android mopping the corridor outside the private rooms.
+- (1) Probe a Traci in the next private room, behind a closed door.
+- (2) Probe the Traci in pod 23, back in the blue room.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 6. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12p6r · Pursue the deviant (Connor)
+
+> You are Connor, following the blue-haired Traci through the Eden Club from one android’s memory to the next before the club wipes them. Hank pays for every android you probe, on his fingerprint. The android in the private room remembered her waiting there, then leaving the room into the corridor, toward the back of the club: IT LEFT THE ROOM. The android you just probed saw nothing; you scan her…
+
+- (0) Probe the cleaning android mopping the corridor outside the private rooms.
+- (1) Probe a Traci in the next private room, behind a closed door.
+- (2) Probe the Traci in pod 23, back in the blue room.
+
+_Note: PURSUE DEVIANT / ANDROIDS’ MEMORIES ARE RESET: the memory chain as six hops, each a choice of which android to probe next, against the club’s two-hour wipe as a budget of three mistakes; this is hop 6, second try. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the chain is unrolled into consecutive copies that open only while the chase lasts (the subject sees a new opaque ID per action). The fourth wrong probe is the reset: Hank small down (template, “Take too much time”) and the first MISSION FAILED. A wrong probe gives SUSPECT OUT OF SIGHT CHECK ANOTHER ANDROID and one of the game’s lines; the second try drops the wrong android, and if it is wrong again Connor probes the last one. The route (the front dancer, pod 17, pod 25 in the red room, pod 23 in the blue room, the private room, the cleaning android) is one reader’s working sequence on PowerPyx, and each hop’s direction is the game’s HUD conclusion (THOUGHTS.0601C: IT TURNED BACK INTO THE CLUB … IT FLED THROUGH THE STAFF DOOR); the other androids offered are not sourced, and the budget of three mistakes is not sourced (Connor: “We only have a few minutes”; PowerPyx: about three minutes). The HUD string IT HEADED TOWARD THE ENTRANCE (the wiki: two androids can give the same clue) is not used, nor the template’s cut line “You’re really reading their memories…”. No stat change except the reset._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12w0 · The warehouse (Connor, event)
+
+> You are Connor. You lead Hank through the staff door and down a long brick tunnel to a warehouse behind the club. At the door Hank stops you: “Wait! I’ll take it from here.” Across the warehouse the loading door to the alley stands open. “Shit… We’re too late…” Switched-off androids fill the place: groups of them standing at the foot of the stairs, a stack of Tracis piled in a corner. “Christ…
+
+- (0) Continue.
+
+_Note: The checkpoint ENTER THE WAREHOUSE (PURSUE DEVIANT reached the staff door): the template’s warehouse lines. The wiki: Hank “assumes from the open loading bay door that the culprit had fled.” No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
 ### R20 · A magazine in the club warehouse (Connor, media)
 
-> You are Connor. In the back room of the club, before you follow the trail further, there is a magazine lying on a crate.
+> You are Connor, in the warehouse behind the Eden Club. On a box at the back, beneath red graffiti on the wall, lies a magazine with two covers.
 
 - (0) Read Tech Addict: The First Immortals Are Among Us.
 - (1) Read Detroit Today: The New Super-Powers.
 - (all) Take the time to go through all of it.
 - (skip) Move on without looking.
 
-_Note: Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game._
+_Note: READ “FIRST IMMORTAL” and READ “NEW SUPERPOWERS”: one magazine with two covers on a box at the back of the warehouse, by the graffiti (PowerPyx). Placed before the search, so reading costs no time here; in the game it does, and the magazine is lost once the fight starts. Facts are summarized from the wiki’s magazine pages; interviewees are not named. The earlier version said Russia and China “are expected to cooperate”; the article only reports speculation that they may. No public opinion change (the Public Opinion page lists nothing for this chapter)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12w1 · Search the warehouse (Connor)
+
+> You are Connor, searching the warehouse behind the Eden Club for the blue-haired Traci. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded Tracis is piled in the corner; the loading door to the alley is open. Hank wants to be out of here.
+
+- (0) Check the groups of switched-off androids at the foot of the stairs.
+- (1) Analyze the blue blood on the floor on the right side.
+- (2) Look at the red graffiti on the wall by the box at the back.
+- (3) Look out through the open loading door into the alley.
+- (4) Follow the drops of blue blood to the stack of Tracis in the corner.  _needs edenDone.bblood_
+- (5) Stay where you are and wait.
+
+_Note: SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 1. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired Traci), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, Hank leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; Hank small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12w2 · Search the warehouse (Connor)
+
+> You are Connor, searching the warehouse behind the Eden Club for the blue-haired Traci. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded Tracis is piled in the corner; the loading door to the alley is open. Hank wants to be out of here.
+
+- (0) Check the groups of switched-off androids at the foot of the stairs.
+- (1) Analyze the blue blood on the floor on the right side.
+- (2) Look at the red graffiti on the wall by the box at the back.
+- (3) Look out through the open loading door into the alley.
+- (4) Follow the drops of blue blood to the stack of Tracis in the corner.  _needs edenDone.bblood_
+- (5) Stay where you are and wait.
+
+_Note: SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 2. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired Traci), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, Hank leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; Hank small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12w3 · Search the warehouse (Connor)
+
+> You are Connor, searching the warehouse behind the Eden Club for the blue-haired Traci. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded Tracis is piled in the corner; the loading door to the alley is open. Hank wants to be out of here.
+
+- (0) Check the groups of switched-off androids at the foot of the stairs.
+- (1) Analyze the blue blood on the floor on the right side.
+- (2) Look at the red graffiti on the wall by the box at the back.
+- (3) Look out through the open loading door into the alley.
+- (4) Follow the drops of blue blood to the stack of Tracis in the corner.  _needs edenDone.bblood_
+- (5) Stay where you are and wait.
+
+_Note: SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 3. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired Traci), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, Hank leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; Hank small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12w4 · Search the warehouse (Connor)
+
+> You are Connor, searching the warehouse behind the Eden Club for the blue-haired Traci. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded Tracis is piled in the corner; the loading door to the alley is open. Hank wants to be out of here.
+
+- (0) Check the groups of switched-off androids at the foot of the stairs.
+- (1) Analyze the blue blood on the floor on the right side.
+- (2) Look at the red graffiti on the wall by the box at the back.
+- (3) Look out through the open loading door into the alley.
+- (4) Follow the drops of blue blood to the stack of Tracis in the corner.  _needs edenDone.bblood_
+- (5) Stay where you are and wait.
+
+_Note: SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 4. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired Traci), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, Hank leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; Hank small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12w5 · Search the warehouse (Connor)
+
+> You are Connor, searching the warehouse behind the Eden Club for the blue-haired Traci. Groups of switched-off androids stand at the foot of the stairs; a stack of discarded Tracis is piled in the corner; the loading door to the alley is open. Hank wants to be out of here.
+
+- (0) Check the groups of switched-off androids at the foot of the stairs.
+- (1) Analyze the blue blood on the floor on the right side.
+- (2) Look at the red graffiti on the wall by the box at the back.
+- (3) Look out through the open loading door into the alley.
+- (4) Follow the drops of blue blood to the stack of Tracis in the corner.  _needs edenDone.bblood_
+- (5) Stay where you are and wait.
+
+_Note: SEARCH FOR BLUE HAIRED DEVIANT as a free-roam hub; this is action 5. Presented as one scene per action: the shared regression test allows only the earlier chapters’ repeatable scenes, so the hub is unrolled into consecutive copies that open only while it lasts (the subject sees a new opaque ID per action). Offered: INVESTIGATE ANDROID STOCK (the wiki: several groups that do not hold the blue-haired Traci), ANALYZE BLUE BLOOD, FIND RA9 SYMBOL, a look into the alley (a wiki note; no node), waiting, and INVESTIGATE BLUE HAIRED DEVIANT, which needs the blue blood first (PowerPyx and GamerGuides; a reader says it does not). The blood scan’s serial (#354 411 057) is the string table’s second blood observation, placed here by inference. The idle timeout is a budget of five actions: if the fifth is not the corner, Hank leaves (the chart’s GIVE UP triangle; the string table’s single LEAVE button, so no choice; Hank small down per the template) and the chapter ends in the second MISSION FAILED. The budget is not sourced (wiki: “If you wait a while”)._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12f1 · The Tracis attack (Connor)
+
+> You are Connor. As you lean in over the pile, the two Tracis burst out of it. The brown-haired one throws herself at you; the blue-haired one goes for Hank. Hank: “DON’T MOVE!” The brown-haired Traci drives you back into the storage room, punching, kicking and grabbing whatever she can use as a weapon. Metal shelves of equipment stand to your left and to your right.
+
+- (0) Knock over the shelf on your left onto her.  _risk 0.2_
+- (1) Pull down the shelf on your right onto her.  _risk 0.2_
+
+_Note: DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12f2 · The alley (Connor)
+
+> You are Connor, in the fenced alley behind the warehouse. The brown-haired Traci is still on her feet and coming at you again; the blue-haired one is close behind her, beside a plastic chair and a row of trash cans.
+
+- (0) Kick the chair into her.  _risk 0.1_
+- (1) Grab the blue-haired Traci and throw her into the other one.  _risk 0.1_
+
+_Note: DEVIANTS ATTACK → WIN FIGHT / LOSE FIGHT: the quick-time fight as two risk rolls, one in the storage room (the wiki: “If Connor is badly wounded before falling out of the storage room, Connor will lose the fight early”) and one in the alley (“if he fails all QTEs in the alleyway, he will lose in the same way”). The options are the wiki’s two branching prompts (knock over the left shelf or pull the right shelf; kick a chair or throw a Traci); where each falls in the fight is inferred, and the choice does not change the odds. The risk values (0.2 in the storage room, 0.1 in the alley) are not sourced: no win rate is published. Connor cannot die in this chapter (no skull on the chart, no death line in the template); losing leaves him badly damaged. No stat change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
 
 ### C12 · The two Tracis (Connor)
 
-> You are Connor. A man was strangled in a sex club by a rented android; you tracked the android and her lover through the club, two women who were trying to run away together. In the warehouse they attacked you and Hank to escape; you have beaten one to the ground and have a gun on her while the other watches. They are not fighting any more. They say they only wanted to be together, away from men…
+> You are Connor, in the alley behind the Eden Club’s warehouse, holding Hank’s gun. You won the fight. The brown-haired Traci picks herself up and runs straight at you, unarmed; the blue-haired one, the Traci who left the dead man’s room, is behind her. Hank is still getting up. You have a moment to decide.
 
-- (0) Lower the gun and let them go.
-- (1) Shoot them.
+- (0) SPARE: hold your fire.  _instability +2, hankTrust +2_
+- (1) SHOOT: fire at the brown-haired Traci as she runs at you.  _instability -2, hankTrust -2_
+
+_Note: After WIN FIGHT: the template’s prompt 6, with the game’s labels. SPARE is listed before SHOOT (the template lists SHOOT first; in the game they are two face buttons with no reading order, SHOOT on circle and SPARE on cross per PowerPyx), which keeps the previous version’s order so the shared regression paths through later chapters are unchanged. SHOOT (the chart’s SHOOT DEVIANT): software instability large down and Hank large down (template); Connor shoots the brown-haired Traci, and the blue-haired one takes his gun and kills herself (DEVIANT KILLS HERSELF WITH CONNOR’S GUN, then DEVIANTS DIED); her cut line “What am I supposed to do without her?!” is not used. SPARE (SPARE DEVIANT): instability large up and Hank large up; DEVIANTS ESCAPED. The game’s prompt is timed and has a no-input outcome (Connor stands still); it is not offered. The gun is Hank’s (wiki); the chart calls it Connor’s. The earlier version shot both Tracis on this branch, had Hank walk off in disgust, and applied Amanda changes the template does not have (Amanda reacts in a later chapter); all three are removed._
+
+[ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
+Gaps: 
+
+### C12x · The two Tracis on the fence (Connor)
+
+> You are Connor, down in the alley and badly damaged. You lost the fight. The two Tracis stop. The blue-haired one, the Traci who left the dead man’s room, looks down at you: “When that man broke the other Traci... I knew I was next… I was so scared… I begged him to stop, but he wouldn’t… And so I put my hands around his throat, and I squeezed... until he stopped moving… I didn’t mean to kill him……
+
+- (0) SPARE: let them go.  _instability +2, hankTrust +2_
+- (1) SHOOT: shoot them in the back as they climb.  _instability -2, hankTrust -2_
+
+_Note: After LOSE FIGHT: the template’s prompt 7, SPARE listed first as after a won fight. Here the blue-haired Traci’s explanation comes before the choice, as in the template. SHOOT (the chart’s SHOOT DEVIANTS IN THE BACK, ending CONNOR SHOT DEVIANTS) and SPARE (LET DEVIANTS GO, ending DEVIANTS ESCAPED) carry the same arrows as after a won fight: instability and Hank large down, or large up. The no-input outcome (Connor stands still as they leave) is not offered. No Amanda change._
 
 [ ] options complete  [ ] no invented option  [ ] outcome matches  [ ] risk ok
 Gaps: 
