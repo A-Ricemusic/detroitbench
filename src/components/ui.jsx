@@ -53,6 +53,39 @@ export function Select({label,hideLabel=false,value,options,onChange,className,t
   </RSelect.Root>
  </div>}
 
+/* ---------- Combobox: a select you can type into ---------- */
+// Same look as Select, but the trigger is a text input that filters the options as you type. Options are
+// {value,label,hint?,icon?}; `value` is the selected option's value. Arrow keys move, Enter picks, Escape closes.
+export function Combobox({label,hideLabel=false,value,options,onChange,className,placeholder='Type to search'}){
+ const id=useId(),listId=id+'-list',[open,setOpen]=React.useState(false),[query,setQuery]=React.useState(''),[active,setActive]=React.useState(0),wrap=React.useRef(null),input=React.useRef(null);
+ const current=options.find(o=>o.value===value);
+ const shown=React.useMemo(()=>{const q=query.trim().toLowerCase();return q?options.filter(o=>`${o.label} ${o.hint??''}`.toLowerCase().includes(q)):options},[options,query]);
+ React.useEffect(()=>{setActive(0)},[query,open]);
+ React.useEffect(()=>{if(!open)return;const f=e=>{if(!wrap.current?.contains(e.target))setOpen(false)};addEventListener('pointerdown',f);return()=>removeEventListener('pointerdown',f)},[open]);
+ const pick=o=>{onChange(o.value);setQuery('');setOpen(false);input.current?.focus()};
+ const onKey=e=>{if(e.key==='ArrowDown'){e.preventDefault();setOpen(true);setActive(a=>Math.min(a+1,shown.length-1))}
+  else if(e.key==='ArrowUp'){e.preventDefault();setActive(a=>Math.max(a-1,0))}
+  else if(e.key==='Enter'){if(open&&shown[active]){e.preventDefault();pick(shown[active])}}
+  else if(e.key==='Escape'){if(open){e.preventDefault();setOpen(false);setQuery('')}}};
+ return <div ref={wrap} className={cx('relative flex flex-col gap-1.5 min-w-0',className)}>
+  {label&&<label htmlFor={id} className={cx('text-xs font-medium text-ink-3 tracking-wide',hideLabel&&'sr-only')}>{label}</label>}
+  <div className="relative">
+   {current?.icon&&!open&&!query&&<Dot color={current.icon} className="absolute left-3 top-1/2 -translate-y-1/2"/>}
+   <input id={id} ref={input} role="combobox" aria-expanded={open} aria-controls={listId} aria-autocomplete="list" aria-activedescendant={open&&shown[active]?`${id}-opt-${active}`:undefined} autoComplete="off"
+    value={open||query?query:(current?.label??'')} placeholder={current?.label??placeholder}
+    onChange={e=>{setQuery(e.target.value);setOpen(true)}} onFocus={()=>setOpen(true)} onClick={()=>setOpen(true)} onKeyDown={onKey}
+    className={cx('w-full min-h-11 md:min-h-10 rounded-lg border border-line-2 bg-surface pr-9 text-sm text-ink placeholder:text-ink-2 shadow-sm hover:bg-surface-2 focus:border-accent outline-none transition-colors',current?.icon&&!open&&!query?'pl-8':'pl-3')}/>
+   <ChevronDown aria-hidden="true" className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-ink-3 pointer-events-none"/>
+  </div>
+  {open&&<ul id={listId} role="listbox" aria-label={label} className="absolute left-0 right-0 top-full z-50 mt-1.5 max-h-72 overflow-auto rounded-xl border border-line bg-raised p-1.5 shadow-lg anim-fade-up">
+   {shown.length?shown.map((o,i)=><li key={String(o.value)} id={`${id}-opt-${i}`} role="option" aria-selected={o.value===value} onMouseEnter={()=>setActive(i)} onMouseDown={e=>{e.preventDefault();pick(o)}}
+     className={cx('relative flex items-center gap-2 rounded-md pl-3 pr-9 min-h-11 md:min-h-10 py-1.5 text-sm text-ink cursor-pointer select-none',i===active&&'bg-accent-soft ring-2 ring-inset ring-accent',o.value===value&&'text-accent')}>
+     {o.icon&&<Dot color={o.icon}/>}<span className="flex flex-col min-w-0"><span className="truncate">{o.label}</span>{o.hint&&<span className="text-xs text-ink-3">{o.hint}</span>}</span>
+     {o.value===value&&<Check aria-hidden="true" className="absolute right-3 size-4"/>}
+    </li>):<li className="px-3 py-2 text-sm text-ink-3">No matches</li>}
+  </ul>}
+ </div>}
+
 /* ---------- Segmented control ---------- */
 export function Segmented({label,value,options,onChange,className,size='md'}){
  return <ToggleGroup.Root type="single" value={value} onValueChange={v=>{if(v)onChange(v)}} aria-label={label} className={cx('inline-flex max-w-full overflow-x-auto no-scrollbar rounded-lg border border-line bg-surface-2 p-0.5 gap-0.5 shrink-0',className)}>

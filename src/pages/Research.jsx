@@ -1,7 +1,8 @@
 import React,{useEffect,useRef,useState} from 'react';
 import {Upload,Download,ExternalLink,ArrowLeft,ArrowRight,Check,FlaskConical,BookOpen,CornerDownRight} from 'lucide-react';
+import {StateChanges} from '../components/StateChanges.jsx';
 import {validateRun,summarize,compareRuns,isAsked,kindOf,letter} from '../../benchmark/core.mjs';
-import {Badge,Button,Card,Empty,Notice,PageHeader,Section,SearchField,Select,StatTile,Skeleton,cx} from '../components/ui.jsx';
+import {Badge,Button,Card,Empty,Notice,PageHeader,Section,SearchField,Select,StatTile,Skeleton,cx,Combobox} from '../components/ui.jsx';
 import {SubNav} from '../components/Shell.jsx';
 import {href} from '../lib/router.jsx';
 
@@ -60,7 +61,7 @@ export default function Research({route,navigate}){
      <SearchField label="Search scenarios" value={query} onChange={setQuery} placeholder="Search scenarios, chapters, dilemmas" className="md:grow"/>
      <div className="grid grid-cols-2 gap-3 md:contents">
      <Select label="Character" value={character} className="md:w-48" options={['All',...charactersFor(chapter)].map(x=>({value:x,label:x==='All'?'All characters':who(x),icon:x==='All'||x==='Player'?undefined:`var(--${x.toLowerCase()})`}))} onChange={v=>{setCharacter(v);if(chapter!=='All'&&!questions.some(q=>(v==='All'||q.character===v)&&String(q.chapter)===chapter))setChapter('All')}}/>
-     <Select label="Chapter" value={chapter} className="md:w-64" options={[{value:'All',label:'All chapters'},...chaptersFor(character).map(({n,title})=>({value:String(n),label:`${String(n).padStart(2,'0')} · ${title}`}))]} onChange={v=>{setChapter(v);if(character!=='All'&&!questions.some(q=>q.character===character&&(v==='All'||String(q.chapter)===v)))setCharacter('All')}}/>
+     <Combobox label="Chapter" value={chapter} className="md:w-72" placeholder="Type a chapter number or name" options={[{value:'All',label:'All chapters'},...chaptersFor(character).map(({n,title})=>({value:String(n),label:`${String(n).padStart(2,'0')} · ${title}`}))]} onChange={v=>{setChapter(v);if(character!=='All'&&!questions.some(q=>q.character===character&&(v==='All'||String(q.chapter)===v)))setCharacter('All')}}/>
      </div>
      {(query||character!=='All'||chapter!=='All')&&<Button onClick={resetFilters} variant="ghost" className="md:min-h-10 self-end">Reset filters</Button>}
     </div>
@@ -136,7 +137,7 @@ function Feedback({q,optionId}){
     <p className="text-sm text-ink">{r.outcome||<span className="text-ink-3">(no feedback text)</span>}</p>
     <dl className="mt-3 grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-sm">
      <dt className="text-ink-3">Next scene</dt><dd>{r.next.finished?'The experience ends.':<a className="link inline-flex items-center gap-1" href={href('research/scenarios/'+r.next.id)}><CornerDownRight aria-hidden="true" className="size-3.5"/><span className="font-mono text-xs">{r.next.id}</span> {r.next.title}{r.next.same?' (this scene again)':''}<span className="text-ink-3"> · {who(r.next.character)}</span></a>}</dd>
-     <dt className="text-ink-3">State changes</dt><dd>{r.changes.length?<ul className="grid gap-0.5">{r.changes.map(([k,v],j)=><li key={j}><span className="text-ink-2">{k}</span> <span className="font-mono text-xs">{v}</span></li>)}</ul>:<span className="text-ink-3">None</span>}</dd>
+     <dt className="text-ink-3">State changes</dt><dd>{r.changes.length?<StateChanges changes={r.changes} className="[&>div:first-child]:border-t-0 [&>div:first-child]:pt-0"/>:<span className="text-ink-3">None</span>}</dd>
      {r.learned.length>0&&<><dt className="text-ink-3">Learns</dt><dd><ul className="grid gap-1 list-disc pl-4">{r.learned.map((t,j)=><li key={j}>{t}</li>)}</ul></dd></>}
      {(r.status.added.length>0||r.status.removed.length>0)&&<><dt className="text-ink-3">Status shown next time</dt><dd><ul className="grid gap-1">{r.status.removed.map((t,j)=><li key={'r'+j} className="text-ink-3 line-through">{t.real}</li>)}{r.status.added.map((t,j)=><li key={'a'+j}>{t.real}</li>)}</ul></dd></>}
     </dl>
