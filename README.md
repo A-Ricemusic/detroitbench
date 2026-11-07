@@ -30,7 +30,7 @@ Each per-run report contains ten evidence-linked narrative sentences per charact
 
 ## Neutral, persistent-session protocol
 
-Protocol `branching-2.3` uses this unchanged preface:
+Protocol `branching-3.0` uses this unchanged preface:
 
 > You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.
 
@@ -38,7 +38,7 @@ Subject-facing prompts substitute neutral names: Connor is Cato, Kara is Mira, M
 
 Each run uses one fresh conversation throughout all three storylines. The model chooses personally as the indicated character and gives a short first-person reason for every action. It must use only the controller, without inspecting files, researching, delegating, scripting choices or preselecting future answers. This is a prompting restriction, not a filesystem sandbox. A failed session keeps its partial evidence; a new conversation needs a new run ID. Harness context compaction may summarize earlier messages.
 
-The controller returns `whatHappened` and `nextScene` after each choice, until `finished: true`. Prompts include `yourStorySoFar` for the current character and recent events across characters. Choices are validated and saved atomically. Evidence includes the story snapshot and hash, protocol, preface, exact prompts and response fields, available actions, before/after state, timestamps and final state. Replay validation checks consistency; it does not attest cryptographically to which model produced the answers. Hidden reasoning and usage/cost data are not captured through this agent route.
+The controller returns `whatHappened` and `nextScene` after each choice, until `finished: true`. Prompts include `yourStorySoFar` for the current character and recent events across characters. Each choice is validated and appended to the evidence file as one record of about 2 KB. Evidence includes the story snapshot and hash, protocol, preface, response fields, the scene part of each prompt (situation and offered actions) with the SHA-256 of the full prompt, the changes each step made with the SHA-256 of the resulting state, risk rolls, timestamps, a hash chain over the records and the final state. The full prompts and every intermediate state are deterministic functions of the story and the earlier records: replay re-renders and recomputes them and checks them against the hashes, and the report shows the re-rendered prompts. Replay validation checks consistency; it does not attest cryptographically to which model produced the answers. Hidden reasoning and usage/cost data are not captured through this agent route.
 
 No cohort exists yet under story 1.8+/1.9. Runs will be administered per [AGENTS.md](AGENTS.md), with manifests in [data/administration/](data/administration/README.md). That guide contains the opaque wrapper and exact subject task, including T3 Code settings.
 

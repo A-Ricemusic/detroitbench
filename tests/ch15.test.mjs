@@ -1,3 +1,4 @@
+import {forgeState} from './helpers/evidence.mjs';
 // Chapter 15, The Nest: the game's chart and text (docs/research/ch15-the-nest.md, section 10).
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,current,promptFor,recordChoice,validatePlaythrough,CONNOR_DEATH_EFFECT} from '../benchmark/story-engine.mjs';
@@ -138,7 +139,7 @@ test('The Nest: a recorded run through the chapter replays exactly',{timeout:240
  while(current(story,run).node&&guard++<400){const {node:n}=current(story,run);if(n.chapter>15)break;const p=promptFor(story,run);
   const choice=p.options.find(o=>o.id==='skip')?'skip':n.id==='C10'?'0':p.options[0].id;run.records.push(await recordChoice(story,run,{choice,reason:'test'},JSON.stringify({choice,reason:'test'})))}
  const end=await validatePlaythrough(story,run);assert.equal(end.node.chapter>15,true);assert.ok(run.records.some(r=>r.nodeId==='C10o1'||r.nodeId==='C10'));
- const bad=structuredClone(run);const i=bad.records.findIndex(r=>r.nodeId==='C10o1');bad.records[i].stateAfter.nestSearch.actions=99;await assert.rejects(validatePlaythrough(story,bad))});
+ const i=run.records.findIndex(r=>r.nodeId==="C10o1");const bad=forgeState(structuredClone(run),i,s=>{s.nestSearch.actions=99});await assert.rejects(validatePlaythrough(story,bad))});
 
  test('The Nest: current Partners exports take precedence over legacy flags',()=>{
  assert.equal(mod.sawShower({ch06Clues:{shower:true}}),true);

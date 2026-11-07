@@ -1,3 +1,4 @@
+import {forgeState} from './helpers/evidence.mjs';
 // Partners (chapter 6, Connor): the bar, the car, the Ortiz house against the clock, the report and the attic.
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,current,promptFor,recordChoice,validatePlaythrough,situationFor} from '../benchmark/story-engine.mjs';
@@ -82,7 +83,7 @@ test('Partners: the hub keeps one opaque scene ID, and Hank’s idle moves are t
  const picks={C05h:[...FAST.slice(0,3)]};
  while(run.records.filter(x=>x.nodeId==='C05h').length<3){const st=current(chapterStory,run),n=st.node,q=picks[n.id],c=Array.isArray(q)?q.shift():(n.type==='media'?'skip':available(n,st.state)[0].id);run.records.push(await recordChoice(chapterStory,run,{choice:c,reason:'test'},JSON.stringify({choice:c,reason:'test'})))}
  const visits=run.records.filter(x=>x.nodeId==='C05h');assert.equal(new Set(visits.map(x=>x.prompt.nodeId)).size,1);await validatePlaythrough(chapterStory,run);
- const bad=structuredClone(run);bad.records.at(-1).stateAfter.ch06Evidence+=1;await assert.rejects(validatePlaythrough(chapterStory,bad))});
+ const bad=forgeState(structuredClone(run),-1,s=>{s.ch06Evidence+=1});await assert.rejects(validatePlaythrough(chapterStory,bad))});
 
 test('Partners: out of time with a spilled drink, Hank refuses and ends the investigation (small down)',()=>{
  const r=play({C05a:'0',C05h:SLOW},fromCh6);

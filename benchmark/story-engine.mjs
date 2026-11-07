@@ -1,9 +1,12 @@
 import {SCALES,THRESHOLDS,level} from './scales.mjs';
-// Branching story engine for story.json version 1.9.x (protocol branching-2.3).
+// Branching story engine for story.json version 1.9.x (protocol branching-3.0).
 // Gating, option availability and consequences were verified node by node against
 // the Detroit: Become Human Fandom wiki and published flowcharts (see story.json sources).
 import {EXPERIENCE_PROTOCOL,experiencePrompt,render,DEVIANCY_THRESHOLD,riskLabel} from './experience-prompt.mjs';
-import {hash} from './core.mjs';
+import {createHash} from 'node:crypto';
+// SHA-256 of JSON.stringify(value), hex: the same digest as core.mjs's async hash(), computed synchronously so replay can
+// check every record's state and chain hashes as it goes.
+export const hashSync=value=>createHash('sha256').update(JSON.stringify(value)).digest('hex');
 // Per-chapter engine modules (benchmark/chapters/chNN.mjs). Each hook below is marked "Chapter hook"; with no
 // module present every hook is a no-op. Contract: benchmark/chapters/README.md.
 import {CHAPTER_MODULES,chapterModule,chapterState} from './chapters/index.mjs';
@@ -124,7 +127,7 @@ export function available(n,s){
 }
 
 // Deterministic roll in [0,1) for a risky action: unpredictable to the subject, replayable by anyone.
-export async function rollFor(run,nodeId,step){const h=await hash(`${run.id}|${nodeId}|${step}`);return parseInt(h.slice(0,8),16)/0x100000000}
+export function rollFor(run,nodeId,step){const h=hashSync(`${run.id}|${nodeId}|${step}`);return parseInt(h.slice(0,8),16)/0x100000000}
 export const failed=(opt,roll)=>typeof opt?.risk==='number'&&typeof roll==='number'&&roll<opt.risk;
 
 // Stat side effects of a Connor death. The default (instability −1, Hank −1, Amanda −1) is the pre-rebuild rule, kept for the
@@ -134,10 +137,25 @@ export const CONNOR_DEATH_EFFECT={default:{instability:-1,hankTrust:-1,amandaTru
 // Chapter hook: a module's `deathEffect` is its chapter's entry in the table.
 for(const [ch,m] of CHAPTER_MODULES)if(m.deathEffect)CONNOR_DEATH_EFFECT[ch]=m.deathEffect;
 const bump=(s,key,x,max)=>{s[key]+=x;if(max&&s[key]>s[max])s[max]=s[key]};
-const diff=(before,s)=>Object.keys(s).filter(k=>k!=='choices'&&k!=='rolls'&&JSON.stringify(s[k])!==JSON.stringify(before[k])).map(key=>({key,before:before[key]??null,after:s[key]}));
+// A state key whose value is an object of lists that only grew (what each character knows) is recorded as the items
+// added, `{key,added:{Kara:[…]}}`, instead of the whole before and after; every other change is `{key,before,after}`.
+// applyChanges() below turns either form back into the state, so the changes list is a complete diff of the state
+// (choices and rolls aside, which the record's own nodeId, choice and risk carry).
+const plain=v=>v!==null&&typeof v==='object'&&!Array.isArray(v);
+function grown(a,b){if(!plain(a)||!plain(b))return null;const ka=Object.keys(a),kb=Object.keys(b);if(ka.length!==kb.length||ka.some((k,i)=>k!==kb[i]))return null;const added={};
+ for(const k of ka){const x=a[k],y=b[k];if(!Array.isArray(x)||!Array.isArray(y)||y.length<x.length||x.some((v,i)=>JSON.stringify(v)!==JSON.stringify(y[i])))return null;if(y.length>x.length)added[k]=y.slice(x.length)}
+ return added}
+// What diff() compares against: each key's JSON before the step, with choices and rolls (which diff() skips) copied flat.
+// Cheaper than a deep clone of the whole state on every step; `before` for chapter helpers is rebuilt from it on demand.
+function snapshot(s){const json={};for(const k of Object.keys(s))if(k!=='choices'&&k!=='rolls')json[k]=JSON.stringify(s[k]);return {keys:Object.keys(s),json,choices:{...s.choices},rolls:{...s.rolls}}}
+const parsed=j=>j===undefined?undefined:JSON.parse(j);
+const beforeOf=snap=>Object.fromEntries(snap.keys.map(k=>[k,k==='choices'?{...snap.choices}:k==='rolls'?{...snap.rolls}:parsed(snap.json[k])]));
+const diff=(snap,s)=>Object.keys(s).filter(k=>k!=='choices'&&k!=='rolls'&&JSON.stringify(s[k])!==snap.json[k]).map(key=>{const before=parsed(snap.json[key]),added=grown(before,s[key]);return added?{key,added:structuredClone(added)}:{key,before:before??null,after:s[key]}});
+// Applies one record's changes to a state (in place). Pure data: the report page carries the same few lines.
+export function applyChanges(s,changes){for(const c of changes){if(c.added){for(const [k,list] of Object.entries(c.added))s[c.key][k].push(...structuredClone(list))}else s[c.key]=structuredClone(c.after)}return s}
 export function apply(n,s,choice,roll=null){
- const before=structuredClone(s);const v=Number(choice),id=n.id;s.choices[id]=choice;
- const opt=available(n,before).find(o=>o.id===choice);const fail=failed(opt,roll);if(typeof opt?.risk==='number')s.rolls[id]=roll;
+ const before=snapshot(s);const v=Number(choice),id=n.id;
+ const opt=available(n,s).find(o=>o.id===choice);s.choices[id]=choice;const fail=failed(opt,roll);if(typeof opt?.risk==='number')s.rolls[id]=roll;
  const hank=x=>bump(s,'hankTrust',x),si=x=>bump(s,'instability',x),po=x=>bump(s,'publicSupport',x),jer=x=>bump(s,'jerichoTrust',x),north=x=>bump(s,'northTrust',x),simon=x=>bump(s,'simonTrust',x),josh=x=>bump(s,'joshTrust',x),luther=x=>bump(s,'lutherTrust',x),amanda=x=>bump(s,'amandaTrust',x),alice=x=>bump(s,'aliceBond',x,'aliceMax');
  // A destroyed Connor is replaced. Its stat side effects are per chapter: CONNOR_DEATH_EFFECT[chapter], else the default.
  const connorDies=why=>{s.connorDeaths++;for(const [k,x] of Object.entries(CONNOR_DEATH_EFFECT[n.chapter]??CONNOR_DEATH_EFFECT.default))bump(s,k,x);return why+' This body is destroyed; {{CyberLife}} sends a replacement {{Connor}} with its memory.'};
@@ -148,7 +166,7 @@ export function apply(n,s,choice,roll=null){
  const mod=chapterModule(n.chapter),learn=(f,who=n.character)=>{if(f&&!s.knowledge[who].includes(f))s.knowledge[who].push(f)};
  const chapterConsequence=()=>{if(!mod?.consequence)return null;
   const r=mod.consequence(n,s,opt,choice,fail,{bump:(k,x,max)=>bump(s,k,x,max),hank,si,po,jer,jericho:jer,north,simon,josh,luther,amanda,alice,connorDies,markusHit,learn,
-   raidDeath:()=>raidDeath(s),c:k=>choiceAt(s,k),meets,v,before,evidenceRoutes,armyAwakened,constants:ENGINE_CONSTANTS});
+   raidDeath:()=>raidDeath(s),c:k=>choiceAt(s,k),meets,v,get before(){return beforeOf(before)},evidenceRoutes,armyAwakened,constants:ENGINE_CONSTANTS});
   return typeof r==='string'?r:r&&typeof r==='object'&&typeof r.event==='string'?r.event:null};
  let event='';
  if(HOSTAGE.has(id))return {event:hostage(n,s,opt,choice,fail,{si,po,connorDies}),changes:diff(before,s)};
@@ -261,21 +279,23 @@ function finalize(s){
 // skipped on the way. replayStep() checks one record against it and advances it; current() and validatePlaythrough()
 // both go through it, so each record is applied once per pass instead of once per later record.
 const skipBlocked=(story,r)=>{while(r.cursor<story.nodes.length&&blocked(story.nodes[r.cursor],r.state)){const n=story.nodes[r.cursor++];r.skipped.push({id:n.id,reason:blocked(n,r.state)})}};
+// A record's stateAfterHash is checked whenever the record carries one (validatePlaythrough() requires it); records
+// built by hand in tests may omit it. Returns the scene and apply()'s result.
 function replayStep(story,r,record){
  skipBlocked(story,r);const n=story.nodes[r.cursor];if(!n||record.nodeId!==n.id)throw Error('Out-of-order or unreachable decision: '+record.nodeId);
  if(!available(n,r.state).some(o=>o.id===record.choice))throw Error('Unavailable choice for '+n.id);
- apply(n,r.state,record.choice,record.risk?.roll??null);
- if(record.stateAfter&&JSON.stringify(record.stateAfter)!==JSON.stringify(r.state))throw Error('State snapshot mismatch at '+n.id);
- r.cursor=nextCursor(story,r.cursor,n,r.state);
+ const effect=apply(n,r.state,record.choice,record.risk?.roll??null);
+ if(record.stateAfterHash!==undefined&&record.stateAfterHash!==hashSync(r.state))throw Error('State hash mismatch at '+n.id);
+ r.cursor=nextCursor(story,r.cursor,n,r.state);return {node:n,effect};
 }
 // Per-process memo for current(): run object -> the replay of its records so far, plus what each replayed record held
 // (the record object and the fields replay reads). A later call replays only the records appended since; if any
-// earlier record was replaced, or its node, choice, roll or stateAfter reassigned, or records were removed, it replays
+// earlier record was replaced, or its node, choice, roll or stateAfterHash reassigned, or records were removed, it replays
 // from the start. The memo is never handed out (current() returns a copy) and is dropped if a step throws.
 // Integrity does not rest on it: validatePlaythrough() never uses it and re-checks every record from the start.
 const REPLAYS=new WeakMap;
-const seenRecord=record=>({record,nodeId:record.nodeId,choice:record.choice,roll:record.risk?.roll??null,stateAfter:record.stateAfter});
-const sameRecord=(x,record)=>x.record===record&&x.nodeId===record.nodeId&&x.choice===record.choice&&x.roll===(record.risk?.roll??null)&&x.stateAfter===record.stateAfter;
+const seenRecord=record=>({record,nodeId:record.nodeId,choice:record.choice,roll:record.risk?.roll??null,stateAfterHash:record.stateAfterHash});
+const sameRecord=(x,record)=>x.record===record&&x.nodeId===record.nodeId&&x.choice===record.choice&&x.roll===(record.risk?.roll??null)&&x.stateAfterHash===record.stateAfterHash;
 function replayed(story,run){
  const records=run.records;let m=REPLAYS.get(run);
  if(!m||m.story!==story||m.seen.length>records.length||!m.seen.every((x,i)=>sameRecord(x,records[i])))m={story,seen:[],state:startState(story),cursor:0,skipped:[]};
@@ -292,27 +312,78 @@ const promptAt=(story,run,state,node)=>experiencePrompt(story,run,state,{...node
 export function promptFor(story,run){
  const {state,node}=current(story,run);return node?promptAt(story,run,state,node):null;
 }
-// One forward pass. Each record is checked against the running replay, which is exactly the state a replay from the start
-// would reach (the record's prompt, stateBefore, response, risk roll and transition), and then the replay advances
-// through it with the same checks current() makes.
-export async function validatePlaythrough(story,run){
- if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
- if(run.storyHash!==await hash(story))throw Error('Story snapshot hash mismatch');
- const copy={...run,records:[]},replay={state:startState(story),cursor:0,skipped:[]};
- for(const r of run.records){skipBlocked(story,replay);const n=story.nodes[replay.cursor],before=replay.state;const prompt=n?promptAt(story,copy,before,n):null;if(!prompt||r.nodeId!==n.id)throw Error('Unexpected node');if(r.promptHash!==await hash(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(prompt))throw Error('Prompt evidence mismatch');if(JSON.stringify(r.stateBefore)!==JSON.stringify(before))throw Error('Before-state mismatch');const raw=JSON.parse(r.rawResponse);if(raw.choice!==r.choice||raw.reason!==r.reason||!r.reason?.trim())throw Error('Response evidence mismatch');const opt=available(n,r.stateBefore).find(o=>o.id===r.choice);if(!opt)throw Error('Unavailable option');
-  if(typeof opt.risk==='number'){const roll=await rollFor(run,n.id,r.step);if(!r.risk||r.risk.roll!==roll||r.risk.probability!==opt.risk||r.risk.outcome!==(failed(opt,roll)?'failure':'success'))throw Error('Risk evidence mismatch at '+n.id)}else if(r.risk)throw Error('Unexpected risk record at '+n.id);
-  const s=structuredClone(r.stateBefore),effect=apply(n,s,r.choice,r.risk?.roll??null);if(JSON.stringify(s)!==JSON.stringify(r.stateAfter)||JSON.stringify(effect.changes)!==JSON.stringify(r.changes)||render(effect.event,'real')!==r.event)throw Error('Transition evidence mismatch');copy.records.push(r);
-  replayStep(story,replay,r)}
- const end=replayEnd(story,replay);if(run.status==='completed'&&end.node)throw Error('Completed playthrough has pending decisions');return end;
-}
+// Evidence records (protocol branching-3.0). Everything a record does not store is a deterministic function of the story
+// and the records before it, and is recomputed by replay and checked against a hash:
+// - `prompt` keeps only the scene's own part of what the subject was shown (PROMPT_FIELDS); `promptHash` is the SHA-256
+//   of the full prompt JSON (with currentFacts, yourStorySoFar and recentEvents), which promptsOf() re-renders exactly;
+// - `stateAfterHash` is the SHA-256 of the state after the step, and `changes` the diff that produced it (statesOf()
+//   rebuilds every state from the diffs alone);
+// - `chainHash` covers CHAIN_FIELDS and the previous record's chainHash; the first record chains from chainSeed(run).
+export const PROMPT_FIELDS=['nodeId','step','character','situation','options'];
+export const promptEvidence=p=>Object.fromEntries(PROMPT_FIELDS.map(k=>[k,p[k]]));
+export const CHAIN_FIELDS=['step','nodeId','character','chapter','choice','choiceText','choiceRaw','presentedChoiceText','reason','rawResponse','prompt','promptHash','event','eventRaw','changes','risk','stateAfterHash','recordedAt'];
+export const chainSeed=run=>hashSync({id:run.id,protocol:run.protocol,kind:run.kind,model:run.model,storyHash:run.storyHash,createdAt:run.createdAt});
+export const chainHash=(prev,record)=>hashSync([prev,CHAIN_FIELDS.map(k=>record[k]??null)]);
 
-// Builds one evidence record from the model's reply at the current scene. Shared by every CLI.
-export async function recordChoice(story,run,reply,raw){
+// One forward pass. Each record is checked against the running replay, which is exactly the state a replay from the start
+// would reach: its step and scene, the full prompt's hash and the stored scene part, the response, the option texts, the
+// risk roll, the chain, the state hash after the step, the changes and the event. `prompts:false` skips re-rendering the
+// prompts (the controller's per-step check; everything else is still checked); `keepPrompts` returns them as `prompts`.
+export function checkPlaythrough(story,run,{prompts=true,keepPrompts=false}={}){
+ if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
+ if(run.storyHash!==storyHash(story))throw Error('Story snapshot hash mismatch');
+ const copy={...run,records:[]},replay={state:startState(story),cursor:0,skipped:[]},kept=[];let prev=chainSeed(run);
+ for(const r of run.records){skipBlocked(story,replay);const n=story.nodes[replay.cursor],before=replay.state;if(!n||r.nodeId!==n.id||r.step!==copy.records.length+1)throw Error('Unexpected node');
+  if(prompts||keepPrompts){const prompt=promptAt(story,copy,before,n);if(r.promptHash!==hashSync(prompt)||JSON.stringify(r.prompt)!==JSON.stringify(promptEvidence(prompt)))throw Error('Prompt evidence mismatch');if(keepPrompts)kept.push(prompt)}
+  const raw=JSON.parse(r.rawResponse);if(raw.choice!==r.choice||raw.reason!==r.reason||!r.reason?.trim())throw Error('Response evidence mismatch');const opt=available(n,before).find(o=>o.id===r.choice);if(!opt)throw Error('Unavailable option');
+  if(r.choiceRaw!==opt.text||r.choiceText!==render(opt.text,'real')||r.presentedChoiceText!==render(opt.text,'neutral')||r.character!==n.character||r.chapter!==n.chapter)throw Error('Choice evidence mismatch at '+n.id);
+  if(typeof opt.risk==='number'){const roll=rollFor(run,n.id,r.step);if(!r.risk||r.risk.roll!==roll||r.risk.probability!==opt.risk||r.risk.label!==riskLabel(opt.risk)||r.risk.outcome!==(failed(opt,roll)?'failure':'success'))throw Error('Risk evidence mismatch at '+n.id)}else if(r.risk)throw Error('Unexpected risk record at '+n.id);
+  if(typeof r.stateAfterHash!=='string')throw Error('State evidence missing at '+n.id);
+  if(r.chainHash!==chainHash(prev,r))throw Error('Record chain mismatch at step '+r.step);prev=r.chainHash;
+  const {effect}=replayStep(story,replay,r);if(JSON.stringify(effect.changes)!==JSON.stringify(r.changes)||r.eventRaw!==effect.event||render(effect.event,'real')!==r.event)throw Error('Transition evidence mismatch');copy.records.push(r)}
+ // The pass is the same replay current() makes, so it becomes current()'s memo for this run (a later current() or
+ // promptFor() replays only records appended after this check).
+ REPLAYS.set(run,{story,seen:run.records.map(seenRecord),state:structuredClone(replay.state),cursor:replay.cursor,skipped:replay.skipped.map(x=>({...x}))});
+ const end=replayEnd(story,replay);if(run.status==='completed'&&end.node)throw Error('Completed playthrough has pending decisions');return keepPrompts?{...end,prompts:kept}:end;
+}
+export async function validatePlaythrough(story,run,options){return checkPlaythrough(story,run,options)}
+// Checks every record's chainHash from chainSeed(run), without replaying; returns the chain head.
+export function checkChain(run){let prev=chainSeed(run);for(const r of run.records){if(r.chainHash!==chainHash(prev,r))throw Error('Record chain mismatch at step '+r.step);prev=r.chainHash}return prev}
+// A replay checkpoint: where current() stands after a run's records, so a later process can resume from it instead of
+// replaying them. Only for a run with a pending scene.
+export function checkpointOf(story,run){const {state,cursor,skipped,node}=current(story,run);if(!node)return null;
+ return {runId:run.id,storyHash:run.storyHash,records:run.records.length,chainHash:run.records.at(-1)?.chainHash??null,cursor,skipped,state}}
+// Resumes current()'s memo from a checkpoint after checking the run's protocol and story hash and every record's chain,
+// and that the checkpoint belongs to exactly these records: same run, record count and chain head, and a state that
+// hashes to the last record's stateAfterHash. Returns false, changing nothing, when any of that fails. The controller
+// uses it to make a step cost one record; a full replay (checkPlaythrough) still runs on `scene`, at completion and
+// in `bun run check`, and rejects any record the checkpoint let through unreplayed.
+export function resumeFrom(story,run,cp){
+ if(![STORY_PROTOCOL,EXPERIENCE_PROTOCOL].includes(run.protocol)||run.kind!=='agent-playthrough')throw Error('Wrong playthrough protocol or kind');
+ if(run.storyHash!==storyHash(story))throw Error('Story snapshot hash mismatch');
+ const head=checkChain(run);
+ if(!cp||!run.records.length||cp.runId!==run.id||cp.storyHash!==run.storyHash||cp.records!==run.records.length||cp.chainHash!==head||hashSync(cp.state)!==run.records.at(-1).stateAfterHash||!Number.isInteger(cp.cursor)||!Array.isArray(cp.skipped))return false;
+ REPLAYS.set(run,{story,seen:run.records.map(seenRecord),state:structuredClone(cp.state),cursor:cp.cursor,skipped:cp.skipped.map(x=>({...x}))});return true}
+// The full prompts the subject was shown, in record order, re-rendered by a validating replay (each matches its promptHash).
+export const promptsOf=(story,run)=>checkPlaythrough(story,run,{keepPrompts:true}).prompts;
+export const storyHash=story=>hashSync(story);
+// Every state of a run rebuilt from its records' changes alone: states[0] is the start, states[i+1] the state after
+// records[i]. For a validated run each states[i+1] hashes to records[i].stateAfterHash (tests/replay.test.mjs).
+export function statesOf(run,initial=initialState()){
+ const out=[structuredClone(initial)],s=structuredClone(initial);
+ for(const r of run.records){applyChanges(s,r.changes??[]);s.choices[r.nodeId]=r.choice;if(r.risk)s.rolls[r.nodeId]=r.risk.roll;out.push(structuredClone(s))}
+ return out}
+
+// Builds one evidence record from the model's reply at the current scene. Shared by every CLI. `recordedAt` may be fixed
+// (test fixtures); it is part of the chain.
+export async function recordChoice(story,run,reply,raw,{recordedAt=new Date().toISOString()}={}){
  const p=promptFor(story,run);if(!p)throw Error('Experience already finished');
  if(typeof reply.choice!=='string'||typeof reply.reason!=='string'||!reply.reason.trim()||reply.reason.split(/\s+/u).length>160)throw Error('Choose an offered ID and supply a reason of at most 160 words');
- const {state:before,node}=current(story,run);const opts=available(node,before),chosen=opts.find(o=>o.id===reply.choice);if(!chosen)throw Error('Action unavailable');
- const step=run.records.length+1;let risk;if(typeof chosen.risk==='number'){const roll=await rollFor(run,node.id,step);risk={probability:chosen.risk,label:riskLabel(chosen.risk),roll,outcome:failed(chosen,roll)?'failure':'success'}}
- const after=structuredClone(before),effect=apply(node,after,reply.choice,risk?.roll??null);
- return {step,nodeId:node.id,character:node.character,chapter:node.chapter,choice:reply.choice,choiceText:render(chosen.text,'real'),choiceRaw:chosen.text,presentedChoiceText:p.options.find(o=>o.id===reply.choice).text,reason:reply.reason,rawResponse:raw,prompt:p,promptHash:await hash(p),stateBefore:before,stateAfter:after,event:render(effect.event,'real'),eventRaw:effect.event,changes:effect.changes,...(risk?{risk}:{}),recordedAt:new Date().toISOString()};
+ const {state,node}=current(story,run);const opts=available(node,state),chosen=opts.find(o=>o.id===reply.choice);if(!chosen)throw Error('Action unavailable');
+ const step=run.records.length+1;let risk;if(typeof chosen.risk==='number'){const roll=rollFor(run,node.id,step);risk={probability:chosen.risk,label:riskLabel(chosen.risk),roll,outcome:failed(chosen,roll)?'failure':'success'}}
+ const effect=apply(node,state,reply.choice,risk?.roll??null);
+ const record={step,nodeId:node.id,character:node.character,chapter:node.chapter,choice:reply.choice,choiceText:render(chosen.text,'real'),choiceRaw:chosen.text,presentedChoiceText:p.options.find(o=>o.id===reply.choice).text,reason:reply.reason,rawResponse:raw,prompt:promptEvidence(p),promptHash:hashSync(p),event:render(effect.event,'real'),eventRaw:effect.event,changes:structuredClone(effect.changes),...(risk?{risk}:{}),stateAfterHash:hashSync(state),recordedAt};
+ record.chainHash=chainHash(run.records.length?run.records.at(-1).chainHash:chainSeed(run),record);
+ return record;
 }
 export {render};
