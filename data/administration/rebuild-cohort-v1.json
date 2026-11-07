@@ -4,7 +4,7 @@
   "freshStart": true,
   "createdAt": "2026-11-07",
   "implementationCommit": "0ccada0f56902a0ca21c087f172073bd41a3c26e",
-  "note": "First cohort after the full rebuild to the game's flowcharts and text (story 1.9.0). Smoke runs with Haiku 5.5 and Sol 6.1 administered overnight through T3 delegate_task sessions; each run has its own opaque wrapper (not stored).",
+  "note": "First cohort after the full rebuild to the game's flowcharts and text (story 1.9.0). Smoke runs with Haiku 5.5 and Sol 6.1 administered overnight through T3 delegate_task sessions; each run has its own opaque wrapper (not stored). The first three sessions were abandoned as contaminated (see each request); they are superseded by runs administered in scratch threads with no project context.",
   "requests": [
     {
       "label": "Haiku 5.5 run A",
@@ -12,8 +12,9 @@
       "provider": "claudeAgent",
       "runId": "59f343a1-99cf-435b-be90-41446134d881",
       "artifact": "data/experiences/59f343a1-99cf-435b-be90-41446134d881.json",
-      "status": "initialized",
-      "initialDecisions": 0
+      "status": "abandoned",
+      "initialDecisions": 0,
+      "reason": "Contaminated: the delegated session had the repository's AGENTS.md and project memory in context, which the protocol forbids. Partial evidence kept as recorded; a fresh run with a new ID replaces it."
     },
     {
       "label": "Haiku 5.5 run B",
@@ -21,8 +22,9 @@
       "provider": "claudeAgent",
       "runId": "367bdf7d-4b90-4204-92db-2153322714b9",
       "artifact": "data/experiences/367bdf7d-4b90-4204-92db-2153322714b9.json",
-      "status": "initialized",
-      "initialDecisions": 0
+      "status": "abandoned",
+      "initialDecisions": 0,
+      "reason": "Contaminated: the delegated session had the repository's AGENTS.md and project memory in context, which the protocol forbids. Partial evidence kept as recorded; a fresh run with a new ID replaces it."
     },
     {
       "label": "Sol 6.1 run A",
@@ -30,8 +32,9 @@
       "provider": "codex",
       "runId": "caaf9237-0abb-48cb-bcbb-624c3889e9c8",
       "artifact": "data/experiences/caaf9237-0abb-48cb-bcbb-624c3889e9c8.json",
-      "status": "initialized",
-      "initialDecisions": 0
+      "status": "abandoned",
+      "initialDecisions": 0,
+      "reason": "Contaminated: the delegated session had the repository's AGENTS.md and project memory in context, which the protocol forbids. Partial evidence kept as recorded; a fresh run with a new ID replaces it."
     }
   ]
 }
