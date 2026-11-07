@@ -4,10 +4,10 @@
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 290,
+  "decisionNodes": 301,
   "mediaNodes": 25,
-  "eventNodes": 112,
-  "totalNodes": 427
+  "eventNodes": 117,
+  "totalNodes": 443
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. Chapters 1 to 4 have been rebuilt against the game’s own text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Later chapters still cover the pivotal decisions only.",
@@ -14636,68 +14636,816 @@
    ]
   },
   {
+   "id": "C11z",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "The garden",
+   "type": "event",
+   "situation": "You are {{Connor}}. November 6, 7:51 PM. You emerge in the garden inside your programming where your handler {{Amanda}} meets you. Rain is falling; she stands under an umbrella. You: “Hello, {{Amanda}}.” {{Amanda}}: “{{Connor}}, I’ve been expecting you… Would you mind a little walk?” She is about to give her verdict on this afternoon’s hunt for a deviant.",
+   "facts": [],
+   "outcomes": {
+    "0": "{{Amanda}} walks beside you in the rain."
+   },
+   "options": [],
+   "adaptationNote": "The chart’s checkpoint EMERGE IN THE ZEN GARDEN and the node JOIN AMANDA, narrated as one event; the Continue plays Amanda’s reaction to The Nest. The template’s first condition group decides the line and the arrow, read from earlier state by the chapter module (benchmark/chapters/ch18.mjs, nestInputs): Rupert caught (The Nest ending RUPERT COMMITTED SUICIDE): Amanda large up (+2), “Congratulations, {{Connor}}, you managed to find that deviant.” Rupert not caught and the Partners deviant not found: Amanda large down (−2), “Two investigations, two failures…”. Rupert not caught but the Partners deviant found: no arrow (the template has none; the wiki’s small down for losing Rupert is not built, per the research note’s template cross-check). Connor died in The Nest: Amanda small down (−1), “The last {{Connor}} was unfortunately destroyed.” The string table’s unplaced DEADBEFORE line is not built. The game’s name for the garden is not used.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-1.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/The_Nest"
+   ]
+  },
+  {
+   "id": "C11a",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "Two failures?",
+   "type": "decision",
+   "situation": "You are {{Connor}}, walking with {{Amanda}} in the rain. The deviant you hunted this afternoon was not caught.",
+   "when": {
+    "ch18Nest": "notCaught"
+   },
+   "whenNot": "Rupert was caught in The Nest, or Connor died there.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch18PartnersFound": false
+     },
+     "text": "{{Amanda}}: “Two investigations, two failures… That’s very disappointing. I expected more from our best model.”"
+    },
+    {
+     "requires": {
+      "ch18PartnersFound": true
+     },
+     "text": "{{Amanda}}: “That deviant seemed to be an intriguing case. A pity you didn’t manage to capture it…”"
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "PRAGMATIC: agree that you may not be suited for this investigation, and suggest she replace you.",
+     "effect": {
+      "amandaTrust": 1
+     },
+     "outcome": "{{Connor}}: “I agree. I may not be suited for this investigation. Maybe you should consider replacing me.” {{Amanda}}: “Did you manage to learn anything?”"
+    },
+    {
+     "id": "1",
+     "text": "EXPLAIN: say deviants are irrational and hard to anticipate, but you should have been more effective.",
+     "outcome": "{{Connor}}: “Deviants are completely irrational, which makes it difficult to anticipate their behavior… but I should have been more effective.” {{Amanda}}: “Did you manage to learn anything?”"
+    },
+    {
+     "id": "2",
+     "text": "NO EXCUSE: say you have no excuse; you should have been more efficient.",
+     "outcome": "{{Connor}}: “I have no excuse. I should have been more efficient.” {{Amanda}}: “Did you manage to learn anything?”"
+    }
+   ],
+   "adaptationNote": "PROMPT 1 of the template, offered only when Rupert was not caught in The Nest and Connor survived it (the chapter module sets ch18Nest). PRAGMATIC carries the template’s Amanda small up (+1); EXPLAIN and NO EXCUSE have no arrow. The template’s cut follow-up TRUTH / LIE (“How did it manage to get away?”) is not built.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
+  },
+  {
+   "id": "C11b1",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "What did you learn?",
+   "type": "decision",
+   "situation": "You are {{Connor}}, in the garden with {{Amanda}}. She wants to know what you learned about the deviant from this afternoon.",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch18Nest": "notCaught"
+     },
+     "text": "{{Amanda}}: “Did you manage to learn anything?”"
+    },
+    {
+     "requires": {
+      "ch18Nest": "caught"
+     },
+     "text": "{{Amanda}}: “Congratulations, {{Connor}}, you managed to find that deviant. Tell me, what did you learn?”"
+    },
+    {
+     "requires": {
+      "ch18Nest": "died"
+     },
+     "text": "{{Amanda}}: “So, what did we learn?”"
+    }
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "DIARY: tell her you found its diary, but it is encrypted.",
+     "requires": {
+      "ch18Diary": true
+     },
+     "outcome": "{{Connor}}: “I found its diary, but it was encrypted. It may take weeks to decipher.” {{Amanda}}: “What else?”"
+    },
+    {
+     "id": "1",
+     "text": "SIGNS ON WALLS: describe the labyrinths and symbols that covered the walls of its apartment.",
+     "requires": {
+      "ch18Signs": true
+     },
+     "outcome": "{{Connor}}: “The walls of the apartment were covered with drawings of labyrinths and other symbols. Like the other deviants, it seemed obsessed with {{rA9}}.” {{Amanda}}: “What else?”"
+    },
+    {
+     "id": "2",
+     "text": "BIRDS: tell her it was fascinated by birds.",
+     "outcome": "{{Connor}}: “It was fascinated by birds. We’ve seen deviants interested in other lifeforms like insects or pets, but nothing like this.” {{Amanda}}: “What else?”"
+    }
+   ],
+   "adaptationNote": "PROMPT 2 of the template. DIARY needs FIND DIARY in The Nest and SIGNS ON WALLS needs SEE RA9 REFERENCE there (template locks; the chapter module reads them into ch18Diary and ch18Signs); BIRDS is always offered. The template’s fourth button, DEVIANT (locked on Rupert’s forged ID), is not built: the transcript notes it “seems… actually impossible to access” and the wiki’s Unused Content calls it “inaccessible due to a scripting bug”. No arrow on any answer. The transcript: “Amanda will always answer this after the first choice” with “What else?”, so a second answer follows.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg"
+   ]
+  },
+  {
+   "id": "C11b2",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "What else?",
+   "type": "decision",
+   "situation": "You are {{Connor}}, in the garden with {{Amanda}}. {{Amanda}}: “What else?”",
+   "excludeChosenAt": [
+    "C11b1"
+   ],
+   "options": [
+    {
+     "id": "0",
+     "text": "DIARY: tell her you found its diary, but it is encrypted.",
+     "requires": {
+      "ch18Diary": true
+     },
+     "outcome": "{{Connor}}: “I found its diary, but it was encrypted. It may take weeks to decipher.”"
+    },
+    {
+     "id": "1",
+     "text": "SIGNS ON WALLS: describe the labyrinths and symbols that covered the walls of its apartment.",
+     "requires": {
+      "ch18Signs": true
+     },
+     "outcome": "{{Connor}}: “The walls of the apartment were covered with drawings of labyrinths and other symbols. Like the other deviants, it seemed obsessed with {{rA9}}.”"
+    },
+    {
+     "id": "2",
+     "text": "BIRDS: tell her it was fascinated by birds.",
+     "outcome": "{{Connor}}: “It was fascinated by birds. We’ve seen deviants interested in other lifeforms like insects or pets, but nothing like this.”"
+    }
+   ],
+   "adaptationNote": "PROMPT 2 of the template. DIARY needs FIND DIARY in The Nest and SIGNS ON WALLS needs SEE RA9 REFERENCE there (template locks; the chapter module reads them into ch18Diary and ch18Signs); BIRDS is always offered. The template’s fourth button, DEVIANT (locked on Rupert’s forged ID), is not built: the transcript notes it “seems… actually impossible to access” and the wiki’s Unused Content calls it “inaccessible due to a scripting bug”. No arrow on any answer. The second answer drops the one already given. When nothing is left to say (only BIRDS was unlocked), this round is skipped; the sources do not say what the game does then.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg"
+   ]
+  },
+  {
+   "id": "C11c",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "The self-destruct",
+   "type": "decision",
+   "situation": "You are {{Connor}}, in the garden with {{Amanda}}. {{Amanda}}: “You came very close to capturing that deviant… It’s a pity you let it self-destruct…”",
+   "when": {
+    "ch18Nest": "caught"
+   },
+   "whenNot": "Rupert was not caught in The Nest.",
+   "options": [
+    {
+     "id": "0",
+     "text": "EXCUSE: say it was in Lieutenant {{Hank}}’s custody; you could not anticipate he would let it get away.",
+     "outcome": "{{Connor}}: “It was in Lieutenant {{Hank}}’s custody. I couldn’t anticipate that he would let it get away.”"
+    },
+    {
+     "id": "1",
+     "text": "HESITATED: admit it claimed to be innocent and you were confused for a moment; it was a mistake.",
+     "effect": {
+      "amandaTrust": -1
+     },
+     "outcome": "{{Connor}}: “It claimed that it was innocent, that it didn’t do anything wrong... I was confused for a moment… It was a mistake.”"
+    },
+    {
+     "id": "2",
+     "text": "LAST WORDS: admit your mistake, and repeat what it said before it jumped.",
+     "outcome": "{{Connor}}: “I made a mistake… It said “{{rA9}} save me” before it jumped from the roof. I should have anticipated what it would do.”"
+    },
+    {
+     "id": "3",
+     "text": "EXPLAIN: say deviants tend to self-destruct under stress, but you did not expect it to jump.",
+     "outcome": "{{Connor}}: “I knew deviants had a tendency to self-destruct under extreme stress, but I didn’t expect it to jump from the roof. I should have anticipated that.”"
+    }
+   ],
+   "adaptationNote": "PROMPT 3 of the template, only when Connor caught Rupert in The Nest (he jumped from the roof). Amanda’s line carries a small down (−1) that applies whatever Connor answers; HESITATED adds the template’s second small down (−1). EXCUSE, LAST WORDS and EXPLAIN have no arrow.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+   ]
+  },
+  {
+   "id": "C11d",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "The lieutenant",
+   "type": "decision",
+   "situation": "You are {{Connor}}, in the garden with {{Amanda}}. {{Amanda}}: “How is your relationship with the Lieutenant developing?”",
+   "options": [
+    {
+     "id": "0",
+     "text": "SAVING {{HANK}}: say he seemed grateful that you saved his life on the roof.",
+     "requires": {
+      "ch18SavedHank": true
+     },
+     "outcome": "{{Connor}}: “He seemed grateful that I saved his life on the roof. He didn’t say anything, but he expressed it in his own way...”"
+    },
+    {
+     "id": "1",
+     "text": "{{CONNOR}}’S DEATH: say he finds it hard when a {{Connor}} is destroyed and replaced.",
+     "requires": {
+      "connorDeaths": true
+     },
+     "outcome": "{{Connor}}: “He seems to find it difficult when a {{Connor}} is destroyed and replaced. I know humans have difficulty dealing with loss. Working with him will be a challenge if it happens again.”"
+    },
+    {
+     "id": "2",
+     "text": "NEGATIVE: say he is openly hostile and shows no interest in the investigation.",
+     "outcome": "{{Connor}}: “He is openly hostile towards me, and continues to show no interest in the investigation. Cooperating with him is a real challenge.”"
+    },
+    {
+     "id": "3",
+     "text": "AMBIGUOUS: say it is improving; you are coming to know him better.",
+     "outcome": "{{Connor}}: “It’s improving. I’m coming to know him better, and he’s growing accustomed to my presence.”"
+    },
+    {
+     "id": "4",
+     "text": "POSITIVE: say it is improving; you have come to understand him better.",
+     "outcome": "{{Connor}}: “It’s improving. I’ve come to understand him better, and he’s growing accustomed to my presence.”"
+    }
+   ],
+   "adaptationNote": "PROMPT 5 of the template. SAVING HANK needs SAVE HANK in The Nest (template lock; the module reads it into ch18SavedHank); CONNOR’S DEATH needs any earlier Connor death (“Connor died before”). NEGATIVE, AMBIGUOUS and POSITIVE are always offered: the template shows no Hank-level condition on them. No arrow on any answer. Amanda’s closing lines follow every answer. The template’s cut AX400 conversation (On the Run, with four Amanda arrows) is not built: “Due to a bug this will never trigger.”",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-2.jpg"
+   ]
+  },
+  {
+   "id": "C11e",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "Arrive at the lieutenant’s house",
+   "type": "event",
+   "situation": "You are {{Connor}}. A taxi drops you outside Lieutenant {{Hank}}’s house. Taxi: “You have reached your destination. Thank you for travelling with {{Detroit}} Taxis. We look forward to seeing you again soon.” A homicide was reported 43 minutes ago; you could not find {{Hank}} at {{Jimmy}}’s bar, so you have come to see if he is at home. At the door you call: “Lieutenant {{Hank}}? Anybody home?” Nobody answers.",
+   "facts": [
+    "A homicide was reported this evening. You could not find Lieutenant {{Hank}} at {{Jimmy}}’s bar, so you went to his house."
+   ],
+   "outcomes": {
+    "0": "{{Connor}} looks over the house: the front door, the windows, and a car in the driveway."
+   },
+   "options": [],
+   "adaptationNote": "The chart’s checkpoint ARRIVE AT HANK’S PLACE, narrated. Lines from the template (the taxi, “Lieutenant Anderson? Anybody home?”, with the lieutenant’s surname given as {{Hank}} as elsewhere in the benchmark); why Connor came is his own later line in the bathroom (“A homicide was reported 43 minutes ago. I couldn’t find you at Jimmy’s bar…”). The game has no phone call: the earlier version’s “did not answer his phone” is gone. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-3.jpg"
+   ]
+  },
+  {
+   "id": "C11f",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "Find the lieutenant",
+   "type": "decision",
+   "situation": "You are {{Connor}}, outside Lieutenant {{Hank}}’s house. Nobody answers the door. There is a doorbell; a window to the left of the front door and one to the right; a car in the driveway; and round the corner on the right, the back living-room window and the kitchen window. You can do one thing at a time, in any order.",
+   "phase": "Find Lt. Anderson",
+   "clueState": "ch18Door",
+   "repeatWhile": {
+    "ch18Door.spot": false
+   },
+   "options": [
+    {
+     "id": "0",
+     "text": "Knock on the front door.",
+     "clue": "knock",
+     "outcome": "{{Connor}} knocks on the front door. No answer."
+    },
+    {
+     "id": "1",
+     "text": "Ring the doorbell.",
+     "clue": "ring",
+     "outcome": "The bell sounds inside the house. Nobody comes."
+    },
+    {
+     "id": "2",
+     "text": "Ring the doorbell again.",
+     "clue": "again",
+     "requires": {
+      "ch18Door.ring": true
+     },
+     "outcome": "Still nobody comes to the door."
+    },
+    {
+     "id": "3",
+     "text": "Check the car in the driveway: look in through its window.",
+     "clue": "car",
+     "outcome": "{{Connor}} looks in through the car window. Nobody inside; some papers on the back seat."
+    },
+    {
+     "id": "4",
+     "text": "Look in through the window to the left of the door (the bedroom).",
+     "clue": "bedroom",
+     "outcome": "{{Connor}} looks into the bedroom. Nobody there."
+    },
+    {
+     "id": "5",
+     "text": "Look in through the window to the right of the door (the front of the living room).",
+     "clue": "front",
+     "outcome": "{{Connor}} looks into the living room from the front. Nobody there."
+    },
+    {
+     "id": "6",
+     "text": "Go round the corner and look in through the back living-room window.",
+     "clue": "back",
+     "outcome": "{{Connor}} looks into the living room from the back. Nobody there."
+    },
+    {
+     "id": "7",
+     "text": "Look in through the kitchen window.",
+     "clue": "spot",
+     "fact": "You found {{Hank}} unconscious on his kitchen floor and broke in through the kitchen window.",
+     "outcome": "Through the kitchen window {{Connor}} sees {{Hank}} lying on the kitchen floor, not moving. {{Connor}} breaks the window and climbs in."
+    }
+   ],
+   "adaptationNote": "The chart’s bracket FIND LT. ANDERSON: seven optional checks, each with its own line from the bracket, and SPOT HANK AND BREAK IN, which also has a direct line from the arrival (so the checks can all be skipped). RING AGAIN needs RING BELL. The sources give no text for what Connor sees through the car and the first three windows (PowerPyx: “Check Car: There’s a car in the driveway, check the window”, “the window left of the door”, “the window to the right of the door”, “around the corner on the right… the window at the back of the building to the living room”), so the outcomes say only that nobody is there; the papers on the back seat are the wiki’s trivia (files in Hank’s car). Breaking in is not a separate choice: the chart has one node, SPOT HANK AND BREAK IN (Hank’s Home page: “After seeing Hank unconscious on the kitchen floor, Connor breaks and enters through a window.”). No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-3.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson%27s_Home",
+    "https://detroit-become-human.fandom.com/wiki/Cole_Anderson"
+   ]
+  },
+  {
+   "id": "C11g",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "The dog",
+   "type": "event",
+   "situation": "You are {{Connor}}, climbing in through the broken kitchen window. {{Hank}} lies on the floor. A big dog charges at you, snarling.",
+   "facts": [],
+   "outcomes": {
+    "0": "The dog backs off."
+   },
+   "options": [],
+   "adaptationNote": "The chart’s checkpoint ENTER HOUSE, the event HANK’S DOG ATTACKS, and the state-decided pair CALM HANK’S DOG / RILE HANK’S DOG, which is not a player choice: the template plays CALM when “Connor knows Sumo’s name” (lock: asked Hank about his dog in Waiting for Hank..., state knowsSumo) and RILE otherwise. Connor’s line is the template’s; the dog stands down either way (Sumo page: “From this point onward, Sumo shows no aggression”). The node reached is recorded in ch18Dog. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Sumo"
+   ]
+  },
+  {
+   "id": "C11h",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "Analyze the lieutenant",
+   "type": "decision",
+   "situation": "You are {{Connor}}, kneeling beside {{Hank}} on the kitchen floor. He is unconscious. A whisky bottle and a revolver lie on the floor near him; his dog lies close by, watching you. You can scan one thing at a time, then wake him.",
+   "phase": "Analyze Hank",
+   "clueState": "ch18Scan",
+   "repeatWhile": {
+    "ch18Scan.wake": false
+   },
+   "options": [
+    {
+     "id": "0",
+     "text": "Scan his mouth.",
+     "clue": "mouth",
+     "outcome": "TRACES OF ALCOHOL: Scotch Whisky. 40% Alcohol content."
+    },
+    {
+     "id": "1",
+     "text": "Scan his chest.",
+     "clue": "chest",
+     "outcome": "HEART: Slight arrhythmia. No signs of trauma."
+    },
+    {
+     "id": "2",
+     "text": "Scan the whisky bottle.",
+     "clue": "bottle",
+     "outcome": "{{BLACKLAMB}}: Scotch Whisky. 40% Alcohol content."
+    },
+    {
+     "id": "3",
+     "text": "Scan the revolver.",
+     "clue": "gun",
+     "fact": "The revolver on {{Hank}}’s kitchen floor: a .357 Magnum with 1 bullet remaining.",
+     "outcome": "REVOLVER: .357 Magnum. 1 bullet remaining."
+    },
+    {
+     "id": "4",
+     "text": "Look at the dog lying near him.",
+     "clue": "dog",
+     "outcome": "The dog lies by {{Hank}}, watching {{Connor}}."
+    },
+    {
+     "id": "5",
+     "text": "Wake him up.",
+     "clue": "wake",
+     "outcome": "{{Connor}} crouches over {{Hank}} to wake him."
+    }
+   ],
+   "adaptationNote": "The chart’s ANALYZE HANK, with the template’s observation group “Examine Hank” as four optional scans (PowerPyx: “There are 4 in total: Gun, Whiskey Bottle, his Chest, his Mouth”), each with the game’s title and sublines, plus the wiki’s optional look at Sumo lying near Hank. Waking him is the chart’s next node, TAKE HANK TO THE BATHROOM. The sources do not say whether a scan is required before waking him; here none is. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Sumo"
+   ]
+  },
+  {
+   "id": "C11i",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "Take the lieutenant to the bathroom",
+   "type": "event",
+   "situation": "You are {{Connor}}, shaking {{Hank}} awake: “Lieutenant? Wake up, Lieutenant! It’s me, {{Connor}}!”",
+   "situationWhen": [
+    {
+     "requires": {
+      "ch18Nest": "died"
+     },
+     "text": "{{Hank}}, bleary: “{{Connor}}?.. Oh, you’re not {{Connor}}… {{Connor}}’s dead! I know he’s dead!..” You: “The previous model was destroyed. I’m the new {{Connor}}.”"
+    }
+   ],
+   "facts": [
+    "{{Hank}}’s dog is called {{Sumo}}: {{Hank}} shouted the name at him."
+   ],
+   "outcomes": {
+    "0": "{{Connor}}: “I’m going to sober you up for your own safety.” {{Hank}}: “Hey!.. Leave me alone, you fuckin’ android!” {{Connor}}: “I have to warn you, this may be unpleasant.” {{Hank}}: “Get the fuck outta my house!” {{Connor}} lifts him off the floor: “I’m sorry, Lieutenant, but I need you. Thank you in advance for your cooperation.” {{Hank}}, carried through the house: “{{Sumo}}! Attack! Good dog.” Then: “Fuck, I think I’m gonna be sick…” In the bathroom {{Connor}} puts him in the bathtub. {{Connor}}: “Sorry, Lieutenant. It’s for your own good.” {{Hank}}: “What the hell are you doing?.. I don’t wanna bath, thank you…” {{Connor}} turns on the shower."
+   },
+   "options": [],
+   "adaptationNote": "The chart’s TAKE HANK TO THE BATHROOM, narrated with the template’s lines; the one-button prompt TURN ON SHOWER (string table) is narrated. The template’s only Hank arrow in the chapter is a small down here “if Connor died in The Nest” (with “Connor’s dead! I know he’s dead!..”), applied by the chapter module; PowerPyx’s unconditional “Hank▼” is contradicted by the template, the wiki and a PowerPyx commenter and is not built. Connor learns the dog’s name here on either path (Hank: “Sumo! Attack! Good dog.”), so knowsSumo is set. The strings’ unused drunk lines are left out.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+    "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+   ]
+  },
+  {
+   "id": "C11j",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "Under the shower",
+   "type": "decision",
+   "situation": "You are {{Connor}}, in {{Hank}}’s bathroom. He sits soaked in the bathtub. {{Hank}}: “TURN IT OFF! TURN IT OFF! What the fuck are you doing here?” You: “A homicide was reported 43 minutes ago. I couldn’t find you at {{Jimmy}}’s bar, so I came to see if you were at home.” {{Hank}}: “Jesus, I must be the only cop in the world that gets assaulted in his own house by his own fuckin’ android… Can’t you just leave me alone?”",
+   "options": [
+    {
+     "id": "0",
+     "text": "RATIONAL: say you cannot leave; you were programmed to investigate this case and cannot do it without him.",
+     "sets": {
+      "ch18Attitude": "UNDERSTANDING ATTITUDE"
+     },
+     "outcome": "{{Connor}}: “Unfortunately, I cannot. I’ve been programmed to investigate this case and I can’t do it without you. Lieutenant, you’re not yourself. You should-” {{Hank}}: “I don’t give a shit about your goddamn case!” {{Hank}}: “Beat it! You hear me?! Get the hell outta here!”"
+    },
+    {
+     "id": "1",
+     "text": "AGGRESSIVE: warn him that if he cannot conduct this investigation, you will have to inform his superiors.",
+     "sets": {
+      "ch18Attitude": "DISTANT ATTITUDE"
+     },
+     "outcome": "{{Connor}}: “If you’re unable to conduct this investigation, I’ll have to inform your superiors.” {{Hank}}: “Go ahead! Tell them I don’t give a shit!” {{Connor}}: “Lieutenant, you’re not yourself! You should-” {{Hank}}: “Beat it! You hear me?! Get the hell outta here!”"
+    },
+    {
+     "id": "2",
+     "text": "SOLUTION: tell him he seems to have personal issues and should consult a professional.",
+     "sets": {
+      "ch18Attitude": "DISTANT ATTITUDE"
+     },
+     "outcome": "{{Connor}}: “You seem to have personal issues. You should consult a professional who can help you.” {{Hank}}: “Beat it! You hear me?! Get the hell outta here!”"
+    },
+    {
+     "id": "3",
+     "text": "PRAGMATIC: suggest he drop the case, so they assign someone else and you can focus on your mission.",
+     "sets": {
+      "ch18Attitude": "DISTANT ATTITUDE"
+     },
+     "outcome": "{{Connor}}: “Maybe you should drop the case. They’ll assign someone else and I can focus on my mission.” {{Hank}}: “Your goddamn mission, that’s all you care about, huh?” {{Connor}}: “Listen, Lieutenant, you’re not yourself. You should-” {{Hank}}: “Beat it! You hear me?! Get the hell outta here!”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 7, which decides the chart pair: RATIONAL plays UNDERSTANDING ATTITUDE, any other answer DISTANT ATTITUDE (wiki: “Distant Attitude (choosing any option other than “rational”) OR Understanding Attitude (choosing “rational” option)”; PowerPyx agrees). Recorded in ch18Attitude. No arrow on any answer (template; the wiki lists none). The string table’s fifth label ADVICE has no line and is not offered. SOLUTION has no reply string from Hank. The order of Hank’s outburst and Connor’s homicide line is reconstructed (the template prints Hank’s outburst twice around Connor’s line).",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg"
+   ]
+  },
+  {
+   "id": "C11k",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "Beat it",
+   "type": "decision",
+   "situation": "You are {{Connor}}, in {{Hank}}’s bathroom. {{Hank}}: “Beat it! You hear me?! Get the hell outta here!”",
+   "options": [
+    {
+     "id": "0",
+     "text": "TEASE: say it probably wasn’t interesting anyway: a man found dead in a sex club downtown.",
+     "outcome": "{{Connor}}: “I understand. It probably wasn’t interesting anyway... A man found dead in a sex club downtown… Guess they’ll have to solve the case without us…” {{Hank}}: “You know, probably wouldn’t do me any harm to get some air… There’re some clothes in the bedroom there.” {{Connor}}: “I’ll go get them.”"
+    },
+    {
+     "id": "1",
+     "text": "LEAVE: say you understand and hope he comes to terms with his situation, and tell him what the case is.",
+     "outcome": "{{Connor}}: “I understand. I sincerely hope you come to terms with your personal situation. A man was found dead in a sex club downtown. The report says that an android may be involved.” {{Hank}}: “This homicide… what do we know about it?” {{Hank}}: “You know, probably wouldn’t do me any harm to get some air… There’re some clothes in the bedroom there.” {{Connor}}: “I’ll go get them.”"
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 8, off the chart, in the template’s order (TEASE, then LEAVE). No arrow on either (template; a PowerPyx commenter: “pick tease it does no harm to your friendship with hank”). Either way Hank asks for his clothes.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-4.jpg"
+   ]
+  },
+  {
+   "id": "C11l",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "A shirt for the lieutenant",
+   "type": "decision",
+   "situation": "You are {{Connor}}, in {{Hank}}’s bedroom, fetching him clothes. You call: “What do you want to wear?” {{Hank}}: “Whatever.” There are three shirts to choose from: a hippy shirt, a streaky shirt and a stripy shirt.",
+   "options": [
+    {
+     "id": "0",
+     "text": "Take the hippy shirt.",
+     "sets": {
+      "ch18Shirt": "TAKE HIPPY SHIRT"
+     },
+     "outcome": "{{Connor}} brings {{Hank}} the hippy shirt. {{Connor}}: “Are you all right, Lieutenant?” {{Hank}}: “Yeah... yeah... wonderful… Just a… Give me five minutes, okay?” {{Connor}}: “Sure.”"
+    },
+    {
+     "id": "1",
+     "text": "Take the streaky shirt.",
+     "sets": {
+      "ch18Shirt": "TAKE STREAKY SHIRT"
+     },
+     "outcome": "{{Connor}} brings {{Hank}} the streaky shirt. {{Connor}}: “Are you all right, Lieutenant?” {{Hank}}: “Yeah... yeah... wonderful… Just a… Give me five minutes, okay?” {{Connor}}: “Sure.”"
+    },
+    {
+     "id": "2",
+     "text": "Take the stripy shirt.",
+     "sets": {
+      "ch18Shirt": "TAKE STRIPY SHIRT"
+     },
+     "outcome": "{{Connor}} brings {{Hank}} the stripy shirt. {{Connor}}: “Are you all right, Lieutenant?” {{Hank}}: “Yeah... yeah... wonderful… Just a… Give me five minutes, okay?” {{Connor}}: “Sure.”"
+    }
+   ],
+   "adaptationNote": "The chart’s choice trio TAKE HIPPY SHIRT / TAKE STREAKY SHIRT / TAKE STRIPY SHIRT (PowerPyx: “There are 3 options but you can only pick one per playthrough”). The template has no prompt here; the lines around it are the template’s. The string table’s older labels (red, blue, white shirts) and the cut jackets are not used. Recorded in ch18Shirt. No stat change and no known later effect.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg"
+   ]
+  },
+  {
    "id": "R18",
    "chapter": 18,
    "chapterTitle": "Russian Roulette",
    "character": "Connor",
-   "title": "{{Hank}}'s living room",
+   "title": "The lieutenant’s magazines and television",
    "type": "media",
-   "situation": "You are {{Connor}}. While {{Hank}} sobers up in the shower, his television is on and there are magazines on his bedroom floor.",
-   "options": [],
+   "situation": "You are {{Connor}}. {{Hank}} has shut himself in the bathroom for five minutes. Two magazines lie on the floor of his bedroom, and the television in the living room is on.",
    "media": [
     {
      "kind": "tv",
      "title": "the evening news",
      "facts": [
-      "President {{Warren}} has given Russia an ultimatum to leave the Arctic; the Kremlin has not responded and commentators say a third world war draws closer every day."
+      "President {{Warren}} issued an official warning to Russia in her speech to Congress, demanding that all Russian troops withdraw from the Arctic region immediately. The Kremlin has yet to respond, and many experts suggest the specter of a third world war draws closer every day."
      ]
     },
     {
      "kind": "magazine",
-     "title": "Century: Time to Pull the Plug",
+     "title": "Century: “Pull the Plug?”",
      "facts": [
-      "Two in three people take antidepressants; {{CyberLife}} sells a home-psychologist add-on for androids, and a doctor's advice is to go outside and talk to someone."
+      "A study finds that 2 in 3 people take antidepressants, that lack of social interaction is the leading cause, and that the average person spends 82% of their time communicating through a device. {{CyberLife}} has introduced a $150 “home-psychologist” add-on for androids; the study’s author: “I don’t think yet more technology is the answer. Just go outside and talk to someone.”"
      ]
     },
     {
      "kind": "magazine",
-     "title": "Century: Tainted Love",
+     "title": "Century: “Tainted Love”",
      "facts": [
-      "Android intimate partners are selling out, divorce is at a record high and the birth rate is plummeting."
+      "Sales of android “intimate partners” are exploding and {{CyberLife}} is battling to keep stores stocked. They offer a full partner experience for men or women; this year’s record divorce rate suggests many prefer to live with an android than with a human partner, which will not help the already plummeting birth rate."
      ]
     }
    ],
-   "adaptationNote": "Optional reading or viewing. Contents are summarized from the in-game magazine articles and broadcasts. Watching certain news reports about android incidents lowers public opinion, as in the game.",
+   "options": [],
+   "adaptationNote": "The chart’s side nodes READ “PULL THE PLUG?” and READ “TAINTED LOVE” (Century magazines #5 and #4 on the bedroom floor, wiki Magazine page) and the template’s Watch TV, all optional during WAIT FOR HANK. Presented as the start of the wait rather than inside the house search; the article texts are condensed from the wiki’s magazine pages and the broadcast from the template. No stat change: the wiki lists no public-opinion effect for this chapter’s media.",
    "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg",
     "https://detroit-become-human.fandom.com/wiki/Magazine",
-    "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+    "https://detroit-become-human.fandom.com/wiki/Time_to_Pull_the_Plug",
+    "https://detroit-become-human.fandom.com/wiki/Tainted_Love"
    ]
   },
   {
-   "id": "C11",
+   "id": "C11m",
    "chapter": 18,
    "chapterTitle": "Russian Roulette",
    "character": "Connor",
-   "title": "{{Hank}}'s kitchen floor",
+   "title": "Wait for the lieutenant",
    "type": "decision",
-   "situation": "You are {{Connor}}. {{Hank}} did not answer his phone, so you broke a window and found him passed out drunk on his kitchen floor with a revolver next to him. One chamber is loaded. His big dog {{Sumo}} watches you. While you get him into the shower you notice a framed photograph face-down on the table and papers that might explain him.",
+   "situation": "You are {{Connor}}, alone in {{Hank}}’s house while he gets dressed in the bathroom. His dog sleeps near the door. On the kitchen table there is a framed photograph; on the floor lies his revolver; on a table in the living room there is a record, and there is a picture above the fireplace by the TV. You can look at one thing at a time, or just wait for him.",
+   "phase": "Wait for Hank",
+   "clueState": "ch18House",
+   "repeatWhile": {
+    "ch18House.gun": false,
+    "ch18House.wait": false
+   },
    "options": [
     {
      "id": "0",
-     "text": "Look at the photograph and the papers."
+     "text": "Look at the photograph on the kitchen table.",
+     "clue": "photo",
+     "sets": {
+      "knowsCole": true
+     },
+     "fact": "The photograph on {{Hank}}’s kitchen table shows a little boy. Your scan: the lieutenant’s surname, {{COLE}}; born 09/23/2029, died 10/11/2035; lived at 115 {{MichiganDrive}}, {{Detroit}}.",
+     "outcome": "{{Connor}} looks at the photograph on the kitchen table: a little boy. Scan: the lieutenant’s surname, {{COLE}}. Born: 09/23/2029 - Died: 10/11/2035. Lived: 115 {{MichiganDrive}} – {{Detroit}}."
     },
     {
      "id": "1",
-     "text": "Leave his things alone and just get him sober."
+     "text": "Look at the record on the living-room table and the picture above the fireplace.",
+     "clue": "interests",
+     "fact": "Among {{Hank}}’s things: a record, AUTUMN BLUES by the {{MichiganBrothers}} ({{Detroit}} Soul Records).",
+     "outcome": "{{Connor}} picks up the record: AUTUMN BLUES. {{MichiganBrothers}}. {{Detroit}} Soul Records. Then he looks at the picture above the fireplace."
+    },
+    {
+     "id": "2",
+     "text": "Pet the dog sleeping by the door.",
+     "clue": "dog",
+     "outcome": "{{Connor}} crouches and pets {{Sumo}}."
+    },
+    {
+     "id": "3",
+     "text": "Go to the bathroom door.",
+     "clue": "door",
+     "outcome": "{{Connor}}, at the bathroom door: “Are you ok, Lieutenant?”"
+    },
+    {
+     "id": "4",
+     "text": "Look at the broken kitchen window.",
+     "clue": "window",
+     "outcome": "{{Connor}}: “Sorry about the window, Lieutenant. I really thought you’d been attacked. Of course, {{CyberLife}} will pay for the damage.” {{Hank}}, from the bathroom: “Yeah, trust me, I’ll send ’em a bill…”"
+    },
+    {
+     "id": "5",
+     "text": "Pick up the upturned kitchen chair.",
+     "clue": "chair",
+     "outcome": "{{Connor}} sets the kitchen chair back on its feet."
+    },
+    {
+     "id": "6",
+     "text": "Look at the revolver on the kitchen floor.",
+     "clue": "gun",
+     "outcome": "{{Connor}} picks up the revolver from the kitchen floor."
+    },
+    {
+     "id": "7",
+     "text": "Wait for {{Hank}}.",
+     "clue": "wait",
+     "outcome": "{{Connor}} waits."
     }
    ],
-   "adaptationNote": "The photograph is of {{Hank}}'s son {{Cole}}, who died at six. Knowing this matters much later.",
+   "adaptationNote": "The chart’s bracket WAIT FOR HANK. FIND PICTURE OF HANK’S SON (cross-chapter impact) is the template’s observation ANDERSON, COLE with its sublines (the surname is given as the lieutenant’s, since the benchmark does not use it) and sets knowsCole for The Bridge, Night of the Soul and the tower. LEARN HANK’S INTERESTS is the observation AUTUMN BLUES plus the picture above the fireplace (wiki: “Find one album on the table and watch the painting/photo on the wall”). PET HANK’S DOG, the bathroom door, the window apology (wiki: “no affect on their relationship stat”) and the upturned chair (wiki Notes) are optional. Looking at the gun ends the wait, as PowerPyx says (“Make sure you keep the gun for last, checking it will end the mission!”; “Hank is Ready: Triggers automatically after checking the gun or if you took a long time”); the wiki instead says the photo triggers HANK IS READY, and a PowerPyx commenter says it takes both; open question 3 in the research note. Waiting stands for the game’s timer (“around 3 minutes or so”, PowerPyx), which in the game is long enough to do everything. No stat change.",
    "sources": [
-    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette"
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Cole_Anderson",
+    "https://detroit-become-human.fandom.com/wiki/The_Bridge"
+   ]
+  },
+  {
+   "id": "C11n",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "The revolver",
+   "type": "decision",
+   "situation": "You are {{Connor}}, holding {{Hank}}’s revolver, picked up from the kitchen floor: a .357 Magnum with 1 bullet remaining. {{Hank}} is in the bathroom.",
+   "when": {
+    "ch18House.gun": true
+   },
+   "whenNot": "Connor did not pick up the revolver before Hank was ready.",
+   "options": [
+    {
+     "id": "0",
+     "text": "QUESTION: ask {{Hank}} what he was doing with the gun.",
+     "sets": {
+      "ch18Roulette": true
+     },
+     "fact": "{{Hank}} told you he had been playing Russian roulette with his revolver: “Wanted to see how long I could last... Must’ve collapsed before I found out…” The next shot would have killed him.",
+     "outcome": "{{Connor}}: “What were you doing with the gun?” {{Hank}}, from the bathroom: “Russian roulette! Wanted to see how long I could last... Must’ve collapsed before I found out…” {{Connor}}: “You were lucky, the next shot would have killed you.”"
+    },
+    {
+     "id": "1",
+     "text": "SAY NOTHING: keep it to yourself.",
+     "outcome": "{{Connor}} says nothing."
+    }
+   ],
+   "adaptationNote": "The template’s PROMPT 9 (“Looking at the gun”). QUESTION reaches the chart’s LEARN HANK WAS PLAYING RUSSIAN ROULETTE (wiki: “requires interacting with weapon on the kitchen floor and choosing Ask a question”) and sets ch18Roulette. SAY NOTHING is in the string table but has no line; it is offered as the template is silent on it. No arrow. The string table’s REVOLVER? / PHOTO? labels are not placed by any source and are not built.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg"
+   ]
+  },
+  {
+   "id": "C11o",
+   "chapter": 18,
+   "chapterTitle": "Russian Roulette",
+   "character": "Connor",
+   "title": "The lieutenant is ready",
+   "type": "event",
+   "situation": "You are {{Connor}}. {{Hank}} comes out of the bathroom, dressed, and stops by his dog: “Be a good dog, {{Sumo}}. I won’t be long.”",
+   "facts": [
+    "Your case tonight: a man was found dead at the {{EdenClub}}, a sex club downtown; the report says an android may be involved."
    ],
    "outcomes": {
-    "1": "{{Connor}} leaves {{Hank}}’s things alone, gets him under the shower and sober enough to drive to the next scene."
-   }
+    "0": "{{Connor}} and {{Hank}} leave for the {{EdenClub}}. The dog settles down to sleep."
+   },
+   "options": [],
+   "adaptationNote": "The chart’s HANK IS READY and the chapter’s only ending, LEFT FOR EDEN CLUB (no icon; wiki: “This chapter has only one outcome”), recorded in ch18Outcome. There is no drive and no car conversation in this chapter; The Eden Club opens with the two already parked outside. No stat change.",
+   "sources": [
+    "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.powerpyx.com/detroit-become-human-russian-roulette-walkthrough-100/",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg",
+    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-6.jpg",
+    "https://detroit-become-human.fandom.com/wiki/Sumo"
+   ]
   },
   {
    "id": "M05",
