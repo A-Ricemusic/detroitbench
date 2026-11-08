@@ -4,7 +4,7 @@ import test from './helpers/test.mjs';import assert from 'node:assert/strict';im
 import {startState,blocked,available,apply,nextCursor,situationFor} from '../benchmark/story-engine.mjs';
 import {render,NAMES} from '../benchmark/experience-prompt.mjs';
 import {random} from '../benchmark/core.mjs';
-import {rules,ENDINGS,labels} from '../benchmark/chapters/ch10.mjs';
+import {rules,ENDINGS,labels,ROAM_RULES} from '../benchmark/chapters/ch10.mjs';
 const story=JSON.parse(await readFile(new URL('../benchmark/story.json',import.meta.url),'utf8'));
 const node=id=>story.nodes.find(n=>n.id===id),HUB=node('KF02'),START=story.nodes.findIndex(n=>n.id==='KF01');
 const CH10=['KF01','KF02','R10','KF03','KF04','K08','KF05','KF06','KF07','KF08','KF09','KF10'];
@@ -81,7 +81,7 @@ test('Fugitives: the diversion, −1 then APOLOGIZE +1; the register money opens
  assert.equal(r.s.shelter,'motel');assert.equal(r.s.ch10Ending,ENDINGS.motel);assert.ok(r.visited.includes('KF04')&&r.visited.includes('KF08'));assert.ok(!r.visited.includes('KF06'),'no gifts without stolen items');
  const noClothes=ch10([TRASH,...STORE,...NOTICE,['USE ALICE AS A DIVERSION','store'],['FACTUAL','why'],...MOTEL,['WAIT','street']]);
  assert.equal(noClothes.s.ch10Roam.at,'street','turned away without the clothes');assert.match(noClothes.events.at(-2),/They’ll never give a room to an android/);
- assert.ok(!noClothes.offered().includes('CHECK MOTEL'),'not offered again until clothes or money change');assert.ok(!noClothes.offered().includes('ENTER SUPERMARKET'),'the store is closed to her after a robbery');
+ assert.ok(noClothes.offered().includes('CHECK MOTEL'),'the motel door can be walked to again (story 1.9.4)');assert.ok(!noClothes.offered().includes('ENTER SUPERMARKET'),'the store is closed to her after a robbery');
  assert.ok(!labelsAt(ch10([...STORE]).s).includes('USE ALICE AS A DIVERSION'),'the diversion needs both NOTICE nodes');
  const failed=ch10([TRASH,...STORE,...NOTICE,['USE ALICE AS A DIVERSION','store'],['LEAVE','caught']],{fails:[6]});
  assert.equal(failed.s.money,false);assert.equal(failed.s.ch10Roam.caught,'register');assert.equal(failed.s.aliceBond,-1);assert.ok(failed.s.ch10Roam.storeClosed)});
@@ -208,3 +208,85 @@ test('Fugitives: the car is broken into only by a labelled choice, or as ALICE T
  // The forced night: the subject reads the break-in in the situation, not first in the outcome of its Continue.
  const cold=node('KF03');assert.equal(cold.type,'event');assert.match(cold.situation,/you break into it to get her out of the rain\.$/);
  assert.match(cold.outcomes['0'],/breaks into the old car/)});
+
+// Story 1.9.4 (`roamRules: 2`): the looks that the game lets Kara repeat, the street's memory of the search, and WAIT's
+// progression toward ALICE TOO COLD. Older snapshots (no `roamRules`) keep the 1.9.3 behaviour, so their evidence replays.
+const sit=s=>render(situationFor(HUB,s),'real');
+
+test('Fugitives: CHECK MOTEL, CHECK SQUAT and WALK ON can be repeated; a repeat restates what stands in the way',()=>{
+ assert.equal(HUB.roamRules,ROAM_RULES.current);
+ const r=ch10([['CHECK MOTEL','street'],['CHECK MOTEL','street'],['CHECK SQUAT','street'],['CHECK SQUAT','street'],['WALK ON','street'],['WALK ON','street']]);
+ assert.match(r.events[1],/We have to find \$40, and get rid of this uniform/,'the template’s line the first time');
+ assert.match(r.events[2],/go back to the motel door\. The motel still wants \$40 a night, paid up front, and it still will not give a room to an android\. Kara still has no money and is still in her uniform\./);
+ assert.match(r.events[3],/A fence runs all the way round the yard/);
+ assert.equal(r.events[4],'Kara and Alice go back to the abandoned house. The fence is still between them and the house; without something to cut the wire, there is no way in.');
+ assert.match(r.events[6],/There’s nothing more this way/);
+ assert.deepEqual(r.offered(),['ENTER LAUNDROMAT','TALK TO PARKED ANDROID','CHECK MOTEL','CHECK PARKING LOT','TALK TO ANDROID TRASH COLLECTOR','CHECK SQUAT','ENTER SUPERMARKET','WALK ON','WAIT'],'every look is still on offer');
+ assert.equal(r.s.knowledge.Kara.filter(f=>/wants \$40/.test(f)).length,1,'the motel fact is learned once');
+ // With the clothes but no money, the repeat says only what is missing.
+ const dressed=ch10([...CLOTHES,...MOTEL,...MOTEL]);assert.match(dressed.events.at(-2),/I don’t have any money/);assert.match(dressed.events.at(-1),/still wants \$40 a night, paid up front, and Kara still has no money\.$/);
+ // TALK TO PARKED ANDROID stays once (no source says the parked androids can be asked again).
+ assert.ok(!ch10([['TALK TO PARKED ANDROID','street']]).offered().includes('TALK TO PARKED ANDROID'))});
+
+test('Fugitives: with the wire cutters, the squat visit is the way in (CUT STREET FENCE), from the generator or the store',()=>{
+ const pliers=ch10([['CHECK SQUAT','street'],['CHECK PARKING LOT','street'],['TAKE WIRE CUTTERS','lot'],['LEAVE PARKING LOT','lot']]);
+ assert.ok(pliers.offered().includes('CUT STREET FENCE'));assert.ok(!pliers.offered().includes('CHECK SQUAT'),'CUT STREET FENCE takes its place');
+ assert.match(sit(pliers.s),/fenced off, and what you carry would cut the wire/);
+ const inside=ch10([['CHECK SQUAT','street'],['CHECK PARKING LOT','street'],['TAKE WIRE CUTTERS','lot'],['LEAVE PARKING LOT','lot'],['CUT STREET FENCE','street']]);
+ assert.equal(inside.s.ch10Roam.prompt,'ralph1');assert.match(inside.events.at(-1),/cuts the wire on the street side/);
+ // Pliers first, then the fence: the first look says so, and the way in follows.
+ const first=ch10([['CHECK PARKING LOT','street'],['TAKE WIRE CUTTERS','lot'],['LEAVE PARKING LOT','lot'],['CHECK SQUAT','street']]);
+ assert.match(first.events.at(-1),/The pliers in your pocket would cut it/);assert.ok(first.offered().includes('CUT STREET FENCE'));
+ const store=ch10([['CHECK SQUAT','street'],['CHECK SQUAT','street'],...STORE,['STEAL WIRE CUTTERS','store'],['LEAVE SUPERMARKET','store'],['CUT STREET FENCE','street']]);
+ assert.equal(store.s.ch10Cutters,'store');assert.equal(store.s.ch10Roam.prompt,'ralph1');
+ // After leaving Ralph the squat is closed, and the street says so.
+ const left=ch10([['CHECK SQUAT','street'],['CHECK PARKING LOT','street'],['TAKE WIRE CUTTERS','lot'],['CUT PARKING LOT FENCE','lot'],['ANDROID','ralph1'],['LEAVE','ralph2']]);
+ assert.ok(!left.offered().includes('CHECK SQUAT')&&!left.offered().includes('CUT STREET FENCE'));assert.match(sit(left.s),/left the abandoned house/)});
+
+test('Fugitives: the street’s situation carries what Kara has found so far',()=>{
+ const s0=ch10([]).s;for(const re of [/\$40 a night/,/fenced off/,/old car sits abandoned/,/pliers lies on the generator/,/would not give you money/])assert.doesNotMatch(sit(s0),re);
+ const r=ch10([...MOTEL,['CHECK SQUAT','street'],['CHECK PARKING LOT','street'],['LEAVE PARKING LOT','lot'],...STORE,['LEAVE SUPERMARKET','store'],['ENTER LAUNDROMAT','street'],['INSPECT DRYER','laundromat'],['DON’T STEAL','dryer'],['WALK ON','street'],TRASH]);
+ const t=sit(r.s);
+ for(const re of [/You have been to the motel across the road: it wants \$40 a night, paid up front, and you have no money\./,/The motel will not give a room to an android, and you are still in your android uniform\./,
+  /fenced off all the way round, and you have nothing to cut the wire with/,/an old car sits abandoned; you could break into it/,/A pair of pliers lies on the generator in the parking lot/,
+  /The clerk in the convenience store would not give you money for a room/,/dry clothes are still in the laundromat dryer/,/Farther along the street there is nothing/,/address the trash collector gave you/])assert.match(t,re);
+ // Taking the pliers and breaking into the car change what the street remembers.
+ const car=ch10([['CHECK PARKING LOT','street'],['TAKE WIRE CUTTERS','lot'],['BREAK INTO CAR','lot'],['KEEP SEARCHING','car']]);
+ assert.doesNotMatch(sit(car.s),/pliers lies/);assert.match(sit(car.s),/open where you broke the window/);assert.doesNotMatch(sit(car.s),/you could break into it/);
+ // Only on the street: inside a building the place's own description stands.
+ assert.doesNotMatch(sit(ch10([...MOTEL,['ENTER SUPERMARKET','street']]).s),/\$40 a night/)});
+
+test('Fugitives: WAIT says that time passes and Alice gets worse, and the last action before ALICE TOO COLD says so',()=>{
+ const waits=n=>Array(n).fill(['WAIT','street']);
+ const cold=ch10([TRASH,...waits(rules.coldAfter)]);const e=cold.events.slice(2,2+rules.coldAfter); // after KF01 and the talk
+ assert.match(e[0],/Time is passing, and Alice is getting colder\. Alice shivers\./);
+ assert.match(e[1],/a while longer\. Alice is shaking now\./);
+ assert.match(e[2],/Alice is shaking all over, and she gets worse the longer they stay out\./);
+ assert.equal(new Set(e).size>=4,true,'the outcomes do not repeat word for word all night');
+ assert.match(e[rules.sneezeAt-1],/sneezes, and sneezes again/);
+ for(const i of [rules.coldAfter-3,rules.coldAfter-2])assert.match(e[i-1],/cannot stay out in the rain much longer/,'wait '+i);
+ assert.match(e[rules.coldAfter-2],/unless Kara gets her in out of the rain now, she will be too cold to go any farther tonight/,'the warning comes on the action that leaves one');
+ assert.doesNotMatch(e[rules.coldAfter-3],/in out of the rain now/);
+ assert.match(e[rules.coldAfter-1],/stops in the rain, shaking/);assert.equal(cold.s.ch10ColdNight,true);assert.ok(cold.visited.includes('KF03'));
+ assert.equal(cold.s.ch10Roam.done.waits,rules.coldAfter);
+ // Any action can be the one that leaves one; the warning follows it, not WAIT alone.
+ const walk=ch10([TRASH,...waits(rules.coldAfter-2),['CHECK MOTEL','street']]);assert.match(walk.events.at(-1),/We have to find \$40.*unless Kara gets her in out of the rain now/);assert.equal(walk.s.ch10ColdNight,false);
+ // The night's total budget warns too: a late talk leaves fewer than twelve.
+ const late=ch10([...waits(rules.trashForcedAfter),TRASH,...waits(rules.nightLength-rules.trashForcedAfter-1)]);
+ const stop=late.events.findIndex(x=>/stops in the rain, shaking/.test(x));assert.ok(stop>0);assert.match(late.events[stop-1],/in out of the rain now/);assert.equal(late.s.ch10ColdNight,true);
+ // The warning is true wherever it falls: here on cutting the fence, with Ralph's dialogue still to come; once in the
+ // squat's house, out of the rain, the cold does not reach her and nothing more is said.
+ const yard=ch10([TRASH,...waits(rules.coldAfter-4),['CHECK PARKING LOT','street'],['TAKE WIRE CUTTERS','lot'],['CUT PARKING LOT FENCE','lot'],['ANDROID','ralph1'],['REASSURE','ralph2'],['STAY','ralph3'],['START A FIRE','house'],['MAKE A BED','house']]);
+ assert.match(yard.events.find(x=>/cuts the wire/.test(x)),/in out of the rain now/);assert.equal(yard.s.ch10ColdNight,false);assert.equal(yard.s.ch10Roam.at,'house');
+ assert.equal(yard.events.filter(x=>/in out of the rain now/.test(x)).length,1,'said once')});
+
+test('Fugitives: story 1.9.3 and older (no roamRules) keep the once-only looks and the fixed WAIT lines, so their evidence replays',()=>{
+ const legacy=structuredClone(HUB);delete legacy.roamRules;
+ const s=startState(story);apply(node('KF01'),s,'0');
+ const label=(o)=>render(o.text,'real').split(':')[0],offer=()=>available(legacy,s).map(label),go=(l)=>apply(legacy,s,legacy.options.find(o=>label(o)===l&&o.at===s.ch10Roam.at).id,0.999);
+ go('CHECK MOTEL');go('CHECK SQUAT');go('WALK ON');
+ for(const l of ['CHECK MOTEL','CHECK SQUAT','WALK ON'])assert.ok(!offer().includes(l),l+' once');
+ go('TALK TO ANDROID TRASH COLLECTOR');
+ const w1=render(go('WAIT').event,'real'),w2=render(go('WAIT').event,'real');
+ assert.equal(w1,'Kara and Alice stand in the rain. Alice shivers.');assert.equal(w2,w1,'the 1.9.3 line, word for word');
+ go('CHECK PARKING LOT');assert.equal(s.ch10Roam.done.lot,undefined);assert.equal(s.ch10Roam.done.waits,undefined,'rule 1 writes no new state')});

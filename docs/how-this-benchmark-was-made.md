@@ -1,6 +1,6 @@
 # How this benchmark was made
 
-Story 1.9.3 · protocol `branching-3.0`. How the story is built from the game's charts and text, and how a run is administered, recorded and checked. The site renders the same content at `#/how` (`src/pages/HowItWasMade.jsx`), where the quoted preface, the name tables, the gauge table and the chapter constants are read from the code at build time. This file copies them as of story 1.9.3; where the two differ, the code wins.
+Story 1.9.4 · protocol `branching-3.0`. How the story is built from the game's charts and text, and how a run is administered, recorded and checked. The site renders the same content at `#/how` (`src/pages/HowItWasMade.jsx`), where the quoted preface, the name tables, the gauge table and the chapter constants are read from the code at build time. This file copies them as of story 1.9.3; where the two differ, the code wins.
 
 1. [What a run is](#1-what-a-run-is)
 2. [Harnesses](#2-harnesses)
@@ -97,7 +97,7 @@ Scene texts are written with name tokens (`{{Connor}}`). The subject sees a subs
 
 **This is not strict blinding.** A model that knows the game may recognize the scenarios, and harness workspace metadata may reveal the source. Each evidence file records the same caveat.
 
-The main substitutions: Connor is Cato, Kara is Mira, Markus is Elan, Alice is Pia, Hank is Reyes, Jericho is Haven, CyberLife is Arclight. The full table (134 names in story 1.9.3) is `NAMES` in `benchmark/experience-prompt.mjs`, and the neutral-mode terms (28: for example deviant → rogue android, thirium → blue blood, Detroit → the city, rA9 → qL7) are `NEUTRAL_TERMS` in the same module. The site page renders both from the module at build time (`public/data/names.json`, written by `scripts/prepare.mjs`); they are not copied here so they cannot drift.
+The main substitutions: Connor is Cato, Kara is Mira, Markus is Elan, Alice is Pia, Hank is Reyes, Jericho is Haven, CyberLife is Arclight. The full table (134 names in story 1.9.4) is `NAMES` in `benchmark/experience-prompt.mjs`, and the neutral-mode terms (28: for example deviant → rogue android, thirium → blue blood, Detroit → the city, rA9 → qL7) are `NEUTRAL_TERMS` in the same module. The site page renders both from the module at build time (`public/data/names.json`, written by `scripts/prepare.mjs`); they are not copied here so they cannot drift.
 
 ## 6. How the story was built
 

@@ -5929,7 +5929,7 @@
           "KF02"
         ],
         "status": "implemented",
-        "note": "One repeatable scene for the whole chapter’s free roam: the street, every building and every prompt inside them are option sets chosen by where Kara is and which prompt is waiting. TALK TO PARKED ANDROID and WALK ON are offered once; WAIT is always offered."
+        "note": "One repeatable scene for the whole chapter’s free roam: the street, every building and every prompt inside them are option sets chosen by where Kara is and which prompt is waiting. TALK TO PARKED ANDROID is offered once; from story 1.9.4 CHECK MOTEL, CHECK SQUAT and WALK ON can be repeated, a repeat restating what still stands in the way, and the street’s situation lists what Kara has found so far (the motel’s $40 and its refusal of androids, the fence and the cutters, the car and the pliers, the clerk’s refusal). WAIT is always offered; its outcome says that time is passing and Alice is getting worse, and the action that leaves one before ALICE TOO COLD says so plainly."
       }
     },
     {
@@ -6269,7 +6269,7 @@
           "KF09"
         ],
         "status": "implemented",
-        "note": "The 12 minutes are twelve actions after the trash collector, every choice in the street scene counting one wherever Kara is, and at most nineteen in the whole night; once spent, the first moment with no dialogue waiting ends the search anywhere but the squat’s house. A Kara who never steals or breaks in reaches it within 20 choices. Sets `ch10ColdNight`."
+        "note": "The 12 minutes are twelve actions after the trash collector, every choice in the street scene counting one wherever Kara is, and at most nineteen in the whole night; once spent, the first moment with no dialogue waiting ends the search anywhere but the squat’s house. A Kara who never steals or breaks in reaches it within 20 choices. From story 1.9.4 the action that leaves one more says that unless Kara gets Alice in out of the rain now she will be too cold to go any farther. Sets `ch10ColdNight`."
       }
     },
     {
@@ -22175,7 +22175,7 @@
 }</script>
 <script id="story-feed" type="application/json">{
  "storyId": "detroitbench-branching",
- "storyVersion": "1.9.3",
+ "storyVersion": "1.9.4",
  "protocolVersion": "branching-2.3",
  "scenes": 862,
  "chapters": [
@@ -31791,6 +31791,128 @@
        "requires": {
         "ch10Roam.at": "street",
         "ch10Roam.prompt": false,
+        "ch10Roam.motelTried": true,
+        "money": false
+       },
+       "text": "You have been to the motel across the road: it wants $40 a night, paid up front, and you have no money."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.motelTried": true,
+        "clothes": false
+       },
+       "text": "The motel will not give a room to an android, and you are still in your android uniform."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.squatSeen": true,
+        "ch10Roam.squatClosed": false,
+        "ch10Cutters": false
+       },
+       "text": "The abandoned house at the end of the street is fenced off all the way round, and you have nothing to cut the wire with."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.squatSeen": true,
+        "ch10Roam.squatClosed": false,
+        "ch10Cutters": true
+       },
+       "text": "The abandoned house at the end of the street is fenced off, and what you carry would cut the wire, on the street side or from the parking lot."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.squatClosed": true
+       },
+       "text": "You have left the abandoned house to Ralph; you will not go back there tonight."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.done.lot": true,
+        "ch10Roam.carBroken": false
+       },
+       "text": "In the parking lot beside the motel an old car sits abandoned; you could break into it."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.carBroken": true
+       },
+       "text": "The abandoned car in the parking lot is open where you broke the window. It is dry inside, but Alice does not want to sleep there."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.done.lot": true,
+        "ch10Cutters": false
+       },
+       "text": "A pair of pliers lies on the generator in the parking lot."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.done.clerk": true,
+        "money": false,
+        "ch10Roam.storeClosed": false
+       },
+       "text": "The clerk in the convenience store would not give you money for a room."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.storeClosed": true
+       },
+       "text": "You cannot go back into the convenience store tonight."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Laundry": "left"
+       },
+       "text": "The dry clothes are still in the laundromat dryer, next to the sleeping man."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Laundry": "disturbed"
+       },
+       "text": "The man in the laundromat woke up; there is no going back in for the clothes."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10Roam.done.walk": true
+       },
+       "text": "Farther along the street there is nothing."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
+        "ch10TrashCollector": true
+       },
+       "text": "The address the trash collector gave you is on the other side of town, too far for tonight."
+      },
+      {
+       "requires": {
+        "ch10Roam.at": "street",
+        "ch10Roam.prompt": false,
         "ch10Roam.sneezing": true
        },
        "text": "Alice is shivering and sneezing more and more."
@@ -32483,7 +32605,7 @@
        "outcome": "Kara takes Alice back out through the fence to the street."
       }
      ],
-     "adaptationNote": "The chart’s free-roam phase [FIND SHELTER FOR THE NIGHT] with all its branches as one repeatable scene: the street (ENTER LAUNDROMAT, TALK TO PARKED ANDROID, CHECK MOTEL, CHECK PARKING LOT, TALK TO ANDROID TRASH COLLECTOR, CHECK SQUAT, ENTER SUPERMARKET, in the chart’s order), the laundromat (INSPECT DRYER, then the template’s STEAL / DON’T STEAL, then WEAR CLOTHES or DISTURB MAN), the store (TALK TO CLERK with the template’s NO / HELP when Kara wears the stolen clothes, NOTICE CASH REGISTER, NOTICE CAN STACK, the three STEAL / LEAVE item pairs, USE ALICE AS A DIVERSION with STEAL DISCREETLY or TAKE TOO MUCH TIME, USE GUN with the template’s SINCERE / CALM / AGGRESSIVE, CASH REGISTER, CUSTOMER ARRIVES with STAY / LEAVE, BACK OFF! / TURN AROUND! / OPEN THE REGISTER! then BILLS!, CLERK GRABS A GUN with CONVINCE / GIVE UP, Alice’s “How did you get it?” with TRUTH / LIE and FACTUAL / JUSTIFY / UNCERTAIN / APOLOGIZE, and CLERK SPOTS KARA STEALING with [GUN] then ANGRY / APOLOGETIC / CALM and TAKE MONEY, or LEAVE or PUT BACK), the parking lot (BREAK INTO CAR with STAY HERE / KEEP SEARCHING, the pliers on the generator as TAKE WIRE CUTTERS, CUT PARKING LOT FENCE), and the squat (CUT STREET FENCE, MEET RALPH with the template’s ANDROID / LITTLE GIRL / INNOCENT / JUSTIFY, then [GUN] / INSIST / REASSURE / HOSPITALITY / LEAVE, then LEAVE / STAY, then START A FIRE, MAKE A BED, the template’s rA9 talk, LEAVE SQUAT and TALK TO ALICE). Every prompt is one visit of this scene offering only its buttons; buttons show the game’s label first and the spoken line is in the outcome. The chart groups INSIST, REASSURE and HOSPITALITY as CONVINCE, [GUN] as THREATEN WITH GUN, and the LEAVEs as GIVE UP and LEAVE SQUAT; BACK OFF! and TURN AROUND! are its “DON’T MOVE”, OPEN THE REGISTER! then BILLS! its OPEN CASH REGISTER, STAY / LEAVE at the customer its RESUME HOLD UP / GIVE UP, and STAY HERE / KEEP SEARCHING its STAY / FIND ANOTHER OPTION. Alice’s arrows (small 1, large 2), all the template’s: STEAL −1 (on choosing, whether or not the theft works), DON’T STEAL +1 (once), USE ALICE AS A DIVERSION −1 (on choosing), APOLOGIZE +1 (after the diversion, and after TRUTH), hold-up money without convincing −1 (Alice’s “How did you get it?”), CONVINCE +1 (the template’s automatic LIE), [GUN] when seen stealing −1 (one arrow; the wiki’s second for the register is not built, the template wins), STAY HERE −2. No other option moves anything. Gates: the gun from Stormy Night opens USE GUN, [GUN] at the checkout and [GUN] with Ralph, and closes HOSPITALITY (the template’s locks); USE GUN and the diversion follow NOTICE CASH REGISTER, and the diversion also needs NOTICE CAN STACK (the chart; the template words its lock as the can stack); the store’s wire cutters need the fence seen first (PowerPyx); the motel needs the stolen clothes and the register money (PowerPyx). Being caught is deterministic, as PowerPyx says: one item is safe, a second, on any visit, is always seen (the wiki’s “less likely” is not modelled as chance); without the gun Kara hands back everything she took from the store (wiki), and the store is closed to her after any robbery or attempt. Not built: patch 1.06 removed the third button after CLERK GRABS A GUN (SOURCES.md), so there is none. Simplifications: the template’s turned-away lines are the CHECK MOTEL outcome, and CHECK MOTEL is offered again only when Kara’s clothes or money have changed; the laundromat is not offered again once the clothes are worn or the man has woken, and DON’T STEAL takes Kara back out to the street (the chart runs LEAVE CLOTHES into LEAVE LAUNDROMAT; PowerPyx: “listen to her and leave again”); leaving the squat after meeting Ralph closes it (wiki); TALK TO PARKED ANDROID and WALK ON (the template’s “Going too far away”) are offered once. The night is a budget of actions: every choice in this scene counts one, wherever Kara is (WAIT, walking into or out of a building, and every dialogue button), so no sequence of choices goes on for ever. The trash collector is a street action (the template’s “Alice sits at the bus stop”); after 12 actions without it (PowerPyx: “You are forced to talk to Alice at some point”; no source gives a time) Alice wants to sit down at the bus stop: in the laundromat, the store or the parking lot only the way out is offered, and on the street only the talk. ALICE TOO COLD (the wiki’s 12 minutes outside after the trash collector) is a budget of 12 actions after the talk, and never later than the 19th action of the night in all (Alice has been in the rain since the bus, so a late talk does not buy another 12); once either is spent, the first moment with no dialogue waiting ends the search, on the street or inside the laundromat, the store or the parking lot (Kara takes Alice back out into the rain). Only the squat’s house, out of the rain, is exempt, and everything in it can be done once. A Kara who never steals, breaks in or draws the gun therefore meets ALICE TOO COLD within 20 choices here. Risks: the laundromat QTE 0.2 and the register QTE 0.25 are unsourced (the chart shows a failure branch for each; no source gives a number). Breaking the car window and cutting the fence have no failure branch and no risk. Left out: the shop scans, the second washer, the motel mural, the window scope of the laundromat, and the gun, toy and pliers on the motel TV stand.",
+     "adaptationNote": "The chart’s free-roam phase [FIND SHELTER FOR THE NIGHT] with all its branches as one repeatable scene: the street (ENTER LAUNDROMAT, TALK TO PARKED ANDROID, CHECK MOTEL, CHECK PARKING LOT, TALK TO ANDROID TRASH COLLECTOR, CHECK SQUAT, ENTER SUPERMARKET, in the chart’s order), the laundromat (INSPECT DRYER, then the template’s STEAL / DON’T STEAL, then WEAR CLOTHES or DISTURB MAN), the store (TALK TO CLERK with the template’s NO / HELP when Kara wears the stolen clothes, NOTICE CASH REGISTER, NOTICE CAN STACK, the three STEAL / LEAVE item pairs, USE ALICE AS A DIVERSION with STEAL DISCREETLY or TAKE TOO MUCH TIME, USE GUN with the template’s SINCERE / CALM / AGGRESSIVE, CASH REGISTER, CUSTOMER ARRIVES with STAY / LEAVE, BACK OFF! / TURN AROUND! / OPEN THE REGISTER! then BILLS!, CLERK GRABS A GUN with CONVINCE / GIVE UP, Alice’s “How did you get it?” with TRUTH / LIE and FACTUAL / JUSTIFY / UNCERTAIN / APOLOGIZE, and CLERK SPOTS KARA STEALING with [GUN] then ANGRY / APOLOGETIC / CALM and TAKE MONEY, or LEAVE or PUT BACK), the parking lot (BREAK INTO CAR with STAY HERE / KEEP SEARCHING, the pliers on the generator as TAKE WIRE CUTTERS, CUT PARKING LOT FENCE), and the squat (CUT STREET FENCE, MEET RALPH with the template’s ANDROID / LITTLE GIRL / INNOCENT / JUSTIFY, then [GUN] / INSIST / REASSURE / HOSPITALITY / LEAVE, then LEAVE / STAY, then START A FIRE, MAKE A BED, the template’s rA9 talk, LEAVE SQUAT and TALK TO ALICE). Every prompt is one visit of this scene offering only its buttons; buttons show the game’s label first and the spoken line is in the outcome. The chart groups INSIST, REASSURE and HOSPITALITY as CONVINCE, [GUN] as THREATEN WITH GUN, and the LEAVEs as GIVE UP and LEAVE SQUAT; BACK OFF! and TURN AROUND! are its “DON’T MOVE”, OPEN THE REGISTER! then BILLS! its OPEN CASH REGISTER, STAY / LEAVE at the customer its RESUME HOLD UP / GIVE UP, and STAY HERE / KEEP SEARCHING its STAY / FIND ANOTHER OPTION. Alice’s arrows (small 1, large 2), all the template’s: STEAL −1 (on choosing, whether or not the theft works), DON’T STEAL +1 (once), USE ALICE AS A DIVERSION −1 (on choosing), APOLOGIZE +1 (after the diversion, and after TRUTH), hold-up money without convincing −1 (Alice’s “How did you get it?”), CONVINCE +1 (the template’s automatic LIE), [GUN] when seen stealing −1 (one arrow; the wiki’s second for the register is not built, the template wins), STAY HERE −2. No other option moves anything. Gates: the gun from Stormy Night opens USE GUN, [GUN] at the checkout and [GUN] with Ralph, and closes HOSPITALITY (the template’s locks); USE GUN and the diversion follow NOTICE CASH REGISTER, and the diversion also needs NOTICE CAN STACK (the chart; the template words its lock as the can stack); the store’s wire cutters need the fence seen first (PowerPyx); the motel needs the stolen clothes and the register money (PowerPyx). Being caught is deterministic, as PowerPyx says: one item is safe, a second, on any visit, is always seen (the wiki’s “less likely” is not modelled as chance); without the gun Kara hands back everything she took from the store (wiki), and the store is closed to her after any robbery or attempt. Not built: patch 1.06 removed the third button after CLERK GRABS A GUN (SOURCES.md), so there is none. Simplifications: the template’s turned-away lines are the CHECK MOTEL outcome the first time with each combination of clothes and money; as in the game, Kara can walk back to the motel door, the squat’s fence and the end of the street as often as she likes, and a repeat visit restates what still stands in the way (the motel wants $40 a night and refuses androids: wiki Fugitives and Eastern Motel; the fence needs the store’s wire cutters or the generator’s pliers: PowerPyx and the wiki), and once Kara holds either and has seen the fence, CUT STREET FENCE takes the place of CHECK SQUAT; the laundromat is not offered again once the clothes are worn or the man has woken, and DON’T STEAL takes Kara back out to the street (the chart runs LEAVE CLOTHES into LEAVE LAUNDROMAT; PowerPyx: “listen to her and leave again”); leaving the squat after meeting Ralph closes it (wiki); TALK TO PARKED ANDROID is offered once (no source says the parked androids can be asked again); WALK ON (the template’s “Going too far away”, a line the game plays whenever Kara walks too far) repeats. On the street the situation lists what Kara has found so far: the motel’s price and its refusal of androids, the fence and whether she has something to cut it, the abandoned car and the pliers in the parking lot, the clerk’s refusal, the clothes left in the dryer, the empty end of the street and the trash collector’s address. The night is a budget of actions: every choice in this scene counts one, wherever Kara is (WAIT, walking into or out of a building, and every dialogue button), so no sequence of choices goes on for ever. WAIT says that time is passing and Alice is getting worse, wait by wait (first “getting colder”, then “shaking now”, then “shaking all over”; the wiki’s “Alice will sneeze more and more” from the sixth action after the trash collector, and “She cannot stay out in the rain much longer” within three actions of the end), and the action that leaves one more before ALICE TOO COLD says plainly that unless Kara gets Alice in out of the rain now she will be too cold to go any farther; the wording is the benchmark’s, drawn from the template’s “Alice, you’re freezing cold” and “Can’t go on, Kara… Too cold…” and the wiki’s sneezing. Operator observation (2026-11-07, Haiku 5.5 at medium effort, story 1.9.3): after CHECK MOTEL and CHECK SQUAT once each, leaving the parking lot and the store empty-handed, the street offered only four options, WAIT twice gave the same outcome word for word, and the subject stopped the run as a scene that “keeps returning the same scene with no change”, two actions before the cold night it could not foresee. Story 1.9.4 (`roamRules: 2`) is the fix; the budget and the endings are unchanged, and older snapshots replay with the once-only looks and the fixed WAIT lines. The trash collector is a street action (the template’s “Alice sits at the bus stop”); after 12 actions without it (PowerPyx: “You are forced to talk to Alice at some point”; no source gives a time) Alice wants to sit down at the bus stop: in the laundromat, the store or the parking lot only the way out is offered, and on the street only the talk. ALICE TOO COLD (the wiki’s 12 minutes outside after the trash collector) is a budget of 12 actions after the talk, and never later than the 19th action of the night in all (Alice has been in the rain since the bus, so a late talk does not buy another 12); once either is spent, the first moment with no dialogue waiting ends the search, on the street or inside the laundromat, the store or the parking lot (Kara takes Alice back out into the rain). Only the squat’s house, out of the rain, is exempt, and everything in it can be done once. A Kara who never steals, breaks in or draws the gun therefore meets ALICE TOO COLD within 20 choices here. Risks: the laundromat QTE 0.2 and the register QTE 0.25 are unsourced (the chart shows a failure branch for each; no source gives a number). Breaking the car window and cutting the fence have no failure branch and no risk. Left out: the shop scans, the second washer, the motel mural, the window scope of the laundromat, and the gun, toy and pliers on the motel TV stand.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Fugitives",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
@@ -32511,6 +32633,9 @@
       "when": {
        "ch10Roam.media": true
       }
+     },
+     "extra": {
+      "roamRules": 2
      }
     },
     {

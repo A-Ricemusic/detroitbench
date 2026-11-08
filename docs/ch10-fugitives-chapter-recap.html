@@ -29,9 +29,16 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 </head>
 <body>
 <main>
-<p class="fine">DetroitBench · story 1.7.0 · chapter 10</p>
+<p class="fine">DetroitBench · story 1.9.4 · chapter 10</p>
 <h1>Fugitives: how the chapter works</h1>
-<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx’s 100% screenshot and its zoomed shots, 95 boxes); the prompts, button labels and Alice’s arrows come from the detroitbecometext template (22 prompts, 16 Alice arrows); PowerPyx and the Fandom wiki fill in the rest. There is no probability, public-opinion or software-instability change in the chapter, and no death. There are no operator notes for this chapter yet; section 5 lists where the benchmark simplifies, and section 7 what to check in game.</p>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx’s 100% screenshot and its zoomed shots, 95 boxes); the prompts, button labels and Alice’s arrows come from the detroitbecometext template (22 prompts, 16 Alice arrows); PowerPyx and the Fandom wiki fill in the rest. There is no probability, public-opinion or software-instability change in the chapter, and no death. There are no operator replay notes for this chapter yet; one subject observation (story 1.9.3) changed the street in story 1.9.4, below. Section 5 lists where the benchmark simplifies, and section 7 what to check in game.</p>
+<div class="box"><h3>Story 1.9.4: the street no longer reads as a dead end</h3><ul>
+<li><b>Observed</b> (2026-11-07, Haiku 5.5 at medium effort, story 1.9.3): after CHECK MOTEL and CHECK SQUAT once each, leaving the parking lot and the store empty-handed, the street offered only ENTER LAUNDROMAT, CHECK PARKING LOT, ENTER SUPERMARKET and WAIT. WAIT twice gave the same outcome word for word (“Kara and Alice stand in the rain. Alice sneezes, and sneezes again.”), and the subject stopped the run, two actions before the cold night it could not foresee.</li>
+<li><b>Repeat visits, as in the game.</b> CHECK MOTEL, CHECK SQUAT and WALK ON can be chosen again. A repeat restates what still stands in the way: “The motel still wants $40 a night, paid up front, and Kara still has no money” (with the uniform variant), and “The fence is still between them and the house; without something to cut the wire, there is no way in.” Once Kara holds the store’s wire cutters or the generator’s pliers and has seen the fence, CUT STREET FENCE takes the place of CHECK SQUAT. TALK TO PARKED ANDROID stays once.</li>
+<li><b>The street remembers the search.</b> Its situation lists what Kara has found: the motel’s $40 and its refusal of androids, the fence and whether she can cut it, the abandoned car and the pliers in the parking lot, the clerk’s refusal, the store closed after a robbery, the clothes left in the dryer, the empty end of the street, the trash collector’s address.</li>
+<li><b>WAIT moves with the night.</b> First “Time is passing, and Alice is getting colder”, then “Alice is shaking now”, then “shaking all over”; the sneezing from the sixth action after the trash collector (wiki: “more and more”); “She cannot stay out in the rain much longer” within three actions of the end. The action that leaves one before ALICE TOO COLD, whatever it is, adds: “unless Kara gets her in out of the rain now, she will be too cold to go any farther tonight.”</li>
+<li><b>Unchanged:</b> the night budget (12 actions before Alice sits down, 12 after the trash collector, 19 in all), the arrows and the three endings. KF02 carries <code>roamRules: 2</code>; runs on story 1.9.3 and older lack it and replay with the once-only looks and the old WAIT lines.</li>
+</ul></div>
 <nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#alice">3 · Alice</a></li><li><a href="#confirmed">4 · Confirmed</a></li><li><a href="#differs">5 · Simplified</a></li><li><a href="#endings">6 · Endings and flags</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
 
 <h2 id="flow">1 · How the chapter flows</h2>
@@ -66,7 +73,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tbody>
 <tr><td>LAST STOP, LEAVE BUS; <i>STAY HERE? / SHELTER?</i></td><td>The driver refuses both</td><td class="yes"><code>KF01</code>, no arrow</td></tr>
 <tr><td>TALK TO PARKED ANDROID</td><td>No answer</td><td class="yes"><code>KF02</code>, once</td></tr>
-<tr><td><i>Going too far away</i></td><td>“There’s nothing more this way…”</td><td class="yes"><code>KF02</code> WALK ON, once</td></tr>
+<tr><td><i>Going too far away</i></td><td>“There’s nothing more this way…”</td><td class="yes"><code>KF02</code> WALK ON, repeatable (story 1.9.4)</td></tr>
 <tr><td>TALK TO ANDROID TRASH COLLECTOR</td><td>“I know someone who can help you.” The address on the other side of town</td><td class="yes"><code>KF02</code>; after 12 actions without it, the only street option (and in a building only the way out)</td></tr>
 <tr><td>ALICE TOO COLD</td><td>About 12 minutes outside after the trash collector; Alice large down; straight to the car</td><td class="part"><code>KF03</code>, 12 actions after the talk wherever Kara is, and by the night’s 19th action at the latest (a budget, not minutes)</td></tr>
 <tr><td>INSIDE LAUNDROMAT, READ ×2</td><td>Bees extinct; live concerts</td><td class="yes"><code>R10</code> on the first entry</td></tr>
@@ -83,10 +90,10 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>CLERK GRABS A GUN → GIVE UP / CONVINCE</td><td>Two buttons since patch 1.06</td><td class="yes"><code>KF02</code>; CONVINCE +1 (the automatic LIE)</td></tr>
 <tr><td>TAKE MONEY; <i>TRUTH / LIE</i></td><td>↓ unless convinced; TRUTH → APOLOGIZE ↑</td><td class="yes"><code>KF02</code>, −1 on the money</td></tr>
 <tr><td>CLERK SPOTS KARA STEALING → DRAW GUN; <i>LEAVE / PUT BACK</i>; <i>ANGRY / APOLOGETIC / CALM</i></td><td>[GUN] ↓, keep the items; otherwise lose them</td><td class="yes"><code>KF02</code>, −1; then TAKE MONEY or LEAVE SUPERMARKET</td></tr>
-<tr><td>CHECK MOTEL → HAVE MONEY AND DISGUISE → INSIDE MOTEL, TALK TO RECEPTIONIST, CHECK IN; <i>IN THE CAR / FORGOT / NO LICENSE / SAY NOTHING</i></td><td>$40 and human clothes</td><td class="yes"><code>KF02</code> then <code>KF04</code>; turned away otherwise</td></tr>
+<tr><td>CHECK MOTEL → HAVE MONEY AND DISGUISE → INSIDE MOTEL, TALK TO RECEPTIONIST, CHECK IN; <i>IN THE CAR / FORGOT / NO LICENSE / SAY NOTHING</i></td><td>$40 and human clothes</td><td class="yes"><code>KF02</code> then <code>KF04</code>; turned away otherwise, and a repeat visit restates the $40 and the uniform</td></tr>
 <tr><td>FIND AND ENTER ROOM 28, REMOVE WET CLOTHES</td><td>Scripted</td><td class="yes"><code>K08</code> situation</td></tr>
 <tr><td>CHECK PARKING LOT, INSIDE PARKING LOT, BREAK INTO CAR → STAY / FIND ANOTHER OPTION, GET IN CAR, LEAVE PARKING LOT</td><td>Template STAY HERE (large ↓) / KEEP SEARCHING</td><td class="yes"><code>KF02</code>, −2</td></tr>
-<tr><td>CHECK SQUAT, TAKE WIRE CUTTERS, CUT STREET FENCE / CUT PARKING LOT FENCE, INSIDE SQUAT</td><td>Pliers on the generator or the store’s cutters</td><td class="yes"><code>KF02</code></td></tr>
+<tr><td>CHECK SQUAT, TAKE WIRE CUTTERS, CUT STREET FENCE / CUT PARKING LOT FENCE, INSIDE SQUAT</td><td>Pliers on the generator or the store’s cutters</td><td class="yes"><code>KF02</code>; CHECK SQUAT repeatable until Kara can cut the fence, then CUT STREET FENCE</td></tr>
 <tr><td>MEET RALPH; <i>ANDROID / LITTLE GIRL / INNOCENT / JUSTIFY</i></td><td>No arrow</td><td class="yes"><code>KF02</code></td></tr>
 <tr><td>CONVINCE / THREATEN WITH GUN / GIVE UP</td><td>[GUN] / INSIST / REASSURE / HOSPITALITY / LEAVE</td><td class="yes"><code>KF02</code>; [GUN] with the gun, HOSPITALITY without</td></tr>
 <tr><td>FOLLOW RALPH / GIVE UP</td><td>Template LEAVE / STAY</td><td class="yes"><code>KF02</code></td></tr>
@@ -147,8 +154,9 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>Free roam</td><td>Walk anywhere, any order</td><td>One repeatable scene; every building’s actions and prompts are its option sets</td></tr>
 <tr><td>ALICE TOO COLD timer</td><td>About 12 minutes outside after the trash collector</td><td>12 actions after the talk, and never later than the 19th action of the night in all (a late talk does not buy another 12). Every choice in the street scene counts one wherever Kara is: WAIT, walking into or out of a building, every dialogue button. When either is spent, the first moment with no dialogue waiting ends the search, on the street or in the laundromat, the store or the parking lot; only the squat’s house is exempt, and everything there can be done once. A Kara who never steals, breaks in or draws the gun meets ALICE TOO COLD within 20 choices; any play leaves the street within 26</td></tr>
 <tr><td>The trash collector</td><td>“You are forced to talk to Alice at some point”</td><td>A street action. After 12 actions without it (no source gives a time) Alice wants to sit down at the bus stop: in the laundromat, the store or the parking lot only the way out is offered, on the street only the talk</td></tr>
-<tr><td>Turned away from the motel</td><td>No chart node; three lines</td><td>The CHECK MOTEL outcome; offered again only once the clothes or money change</td></tr>
-<tr><td>Repeat visits</td><td>Places can be revisited</td><td>The laundromat closes after the clothes are worn or the man wakes; the store after any robbery or attempt; the squat after leaving it</td></tr>
+<tr><td>Turned away from the motel</td><td>No chart node; three lines</td><td>The CHECK MOTEL outcome the first time with each mix of clothes and money; a repeat restates the constraint (story 1.9.4; before it, offered again only once the clothes or money changed)</td></tr>
+<tr><td>Repeat visits</td><td>Places can be revisited</td><td>The motel door, the fence, the parking lot and the end of the street any number of times (story 1.9.4); the laundromat closes after the clothes are worn or the man wakes; the store after any robbery or attempt; the squat after leaving it; TALK TO PARKED ANDROID once</td></tr>
+<tr><td>How the night shows</td><td>Alice sneezes “more and more” (wiki)</td><td>The street lists what Kara has found so far; WAIT’s outcome progresses wait by wait; the action that leaves one before ALICE TOO COLD warns plainly (story 1.9.4; the wording is the benchmark’s)</td></tr>
 <tr><td>The promise, gifts and rest</td><td>Three copies on the chart</td><td>One scene each, worded for the shelter</td></tr>
 <tr><td>QTE risks</td><td>No number in any source</td><td>STEAL 0.2, the register 0.25</td></tr>
 <tr><td>Earlier version</td><td>K05, K06, K07, K07b, K08, R10, R10b</td><td>PROMISE was +2 (now +1); K07b’s +1 for Ralph and its On the Run meal are gone; the hold-up always cost −1 (now by route); the motel television is gone; the LED-removal line is gone</td></tr>
@@ -181,6 +189,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Whether the parking-lot pliers need the fence seen first, like the store’s wire cutters.</li>
 <li>Whether CONVINCE counts as a robbery for Zlatko’s newsflash, and whether DRAW GUN without the money does.</li>
 <li>Whether Kara can re-enter the laundromat after the man wakes, and the store after a robbery.</li>
+<li>Whether the parked androids can be asked again, and what Kara says on a second walk to the motel door or the fence (the benchmark restates the constraint in narration).</li>
 </ul>
 </main>
 </body>

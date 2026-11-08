@@ -27,9 +27,19 @@
 // - `ch10Cutters`: 'generator' | 'store' (Connor mentions stolen pliers); `ch10ToyGiven`; the toy and chocolate still
 //   held are `ch10Roam.toy` and `ch10Roam.chocolate`, the torn sleeve `ch10Roam.sleeveTorn`.
 // - `ch10ColdNight`: the forced car night; `ch10Promise`, `ch10Sleep`.
+//
+// Street rules by story version (ROAM_RULES, read from KF02's `roamRules`). Story 1.9.4 marks KF02 with `roamRules: 2`:
+// CHECK MOTEL, CHECK SQUAT and WALK ON can be repeated as in the game, a repeat visit restates what still stands in the
+// way (the motel's $40 and its refusal of androids, the fence), the street's situation lists what Kara has found so far,
+// WAIT says that time is passing and Alice is getting worse, and the action that leaves one before ALICE TOO COLD says
+// so. Older story snapshots lack the field and replay with rule 1 (each look once, CHECK MOTEL again only after the
+// clothes or money change, WAIT's two fixed lines); the new memory lives in `ch10Roam.done` (`lot`, `waits`), which rule 1
+// never writes, so their state hashes are unchanged. The night budget and the endings are the same under both.
 
 export const HUB='KF02';
 const LARGE=2;
+export const ROAM_RULES={current:2,legacy:1};
+const revisits=n=>(n?.roamRules??ROAM_RULES.legacy)>=2;
 // Stormy Night's rebuild sets the shared `gun` flag at TAKE GUN.
 export const hasGun=s=>!!s.gun;
 
@@ -116,8 +126,8 @@ export const gate={
 
 // ---- What KF02 offers -------------------------------------------------------------------------------------------
 const promptOf=o=>[o.prompt].flat().filter(Boolean);
-function offered(o,s){
- const d=s.ch10Roam.done,gun=hasGun(s),a=o.act;
+function offered(o,s,n){
+ const d=s.ch10Roam.done,gun=hasGun(s),a=o.act,again=revisits(n);
  if(s.ch10Roam.prompt){if(!promptOf(o).includes(s.ch10Roam.prompt))return false;
   if(s.ch10Roam.prompt==='caught')return a==='caughtGun'?gun:a==='caughtLeave'?s.ch10Roam.caught==='register':a==='putBack'?s.ch10Roam.caught==='shelf':true;
   if(s.ch10Roam.prompt==='ralph2')return a==='ralphGun'?gun:a==='hospitality'?!gun:true;
@@ -128,12 +138,13 @@ function offered(o,s){
  switch(a){
   case 'laundromat':return !['worn','disturbed'].includes(s.ch10Laundry);
   case 'parked':return !d.parked;
-  case 'motel':return s.ch10Roam.motelTried!==motelKey(s);
+  // Rule 2: the motel door, the fence and the end of the street can be walked to as often as Kara likes.
+  case 'motel':return again||s.ch10Roam.motelTried!==motelKey(s);
   case 'trash':return !s.ch10TrashCollector;
-  case 'squat':return !s.ch10Roam.squatSeen&&!s.ch10Roam.squatClosed;
+  case 'squat':return again?!s.ch10Roam.squatClosed&&!(s.ch10Roam.squatSeen&&s.ch10Cutters):!s.ch10Roam.squatSeen&&!s.ch10Roam.squatClosed;
   case 'cutStreet':return s.ch10Roam.squatSeen&&!!s.ch10Cutters&&!s.ch10Roam.squatClosed;
   case 'store':return !s.ch10Roam.storeClosed;
-  case 'walk':return !d.walk;
+  case 'walk':return again||!d.walk;
   case 'clerk':return !d.clerk;
   case 'register':return !!d.clerk&&!d.register;
   case 'cans':return !d.cans;
@@ -158,7 +169,7 @@ function offered(o,s){
 }
 const LEAVE={laundromat:'leaveLaundromat',store:'leaveStore',lot:'leaveLot'};
 const motelKey=s=>`${!!s.clothes}|${!!s.money}`;
-export function available(n,s,opts,h){if(n.id===HUB)return n.options.filter(o=>offered(o,s)).map(o=>({...o}))}
+export function available(n,s,opts,h){if(n.id===HUB)return n.options.filter(o=>offered(o,s,n)).map(o=>({...o}))}
 
 // ---- Consequences ---------------------------------------------------------------------------------------------
 const say=(...parts)=>parts.filter(Boolean).join(' ');
@@ -185,9 +196,28 @@ function steal(s,item,t){s.ch10Roam.thefts++;
  if(item==='chocolate')s.ch10Roam.chocolate=true;if(item==='toy')s.ch10Roam.toy=true;if(item==='cutters')s.ch10Cutters='store';
  return say(t,'The clerk does not notice.')}
 
+// Rule 2's repeat visits: what still stands in the way, restated (wiki: the motel “requires $40 to stay the night and
+// refuses to serve androids”; PowerPyx and the wiki: the fence needs the wire cutters or the generator's pliers).
+function motelAgain(s){
+ return say('{{Kara}} and {{Alice}} go back to the motel door.',
+  !s.money&&!s.clothes?'The motel still wants $40 a night, paid up front, and it still will not give a room to an android. {{Kara}} still has no money and is still in her uniform.':
+  !s.money?'The motel still wants $40 a night, paid up front, and {{Kara}} still has no money.':
+  '{{Kara}} has the money now, but the motel still will not give a room to an android, and she is still in her uniform.')}
+const SQUAT_AGAIN='{{Kara}} and {{Alice}} go back to the abandoned house. The fence is still between them and the house; without something to cut the wire, there is no way in.';
+// Rule 2's WAIT: time passing and Alice getting worse, wait by wait (wiki: “Alice will sneeze more and more”; template:
+// “{{Alice}}, you’re freezing cold.”, then “Can’t go on, {{Kara}}… Too cold…”).
+function waitOutcome(s,d,sneezing){
+ d.waits=(d.waits??0)+1;
+ const sneeze=sneezing?'{{Alice}} sneezes, and sneezes again.':'';
+ if(d.waits===1)return say('{{Kara}} and {{Alice}} stand in the rain. Time is passing, and {{Alice}} is getting colder.',sneeze||'{{Alice}} shivers.');
+ if(d.waits===2)return say('{{Kara}} and {{Alice}} stand in the rain a while longer. {{Alice}} is shaking now.',sneeze);
+ return say('{{Kara}} and {{Alice}} are still standing in the rain. {{Alice}} is shaking all over, and she gets worse the longer they stay out.',sneeze)}
+// Actions left before ALICE TOO COLD (after the trash collector): the smaller of the two budgets.
+const actionsLeft=s=>Math.min(rules.coldAfter-s.ch10Roam.clock,rules.nightLength-s.ch10Roam.street-s.ch10Roam.clock);
+
 function hubConsequence(n,s,opt,fail,h){
  s.ch10Roam.media=false;
- const d=s.ch10Roam.done,a=opt.act;let t=opt.outcome??'';
+ const d=s.ch10Roam.done,a=opt.act,again=revisits(n);let t=opt.outcome??'';
  // Every action costs one: before the trash collector toward Alice sitting down, after it toward ALICE TOO COLD.
  if(s.ch10TrashCollector)s.ch10Roam.clock++;else s.ch10Roam.street++;
  switch(a){
@@ -195,25 +225,29 @@ function hubConsequence(n,s,opt,fail,h){
   case 'laundromat':s.ch10Roam.at='laundromat';if(!d.laundromatMedia){d.laundromatMedia=true;s.ch10Roam.media=true}break;
   case 'parked':d.parked=true;break;
   case 'motel':{
-   s.ch10Roam.motelTried=motelKey(s);
+   const repeat=again&&s.ch10Roam.motelTried===motelKey(s);s.ch10Roam.motelTried=motelKey(s);
    if(s.clothes&&s.money){commit(s,'motel');t=say('{{Kara}}: “Looks like we found a place to stay…” With human clothes on and money in her pocket, {{Kara}} takes {{Alice}} inside.');break}
+   if(repeat){t=motelAgain(s);break}
    h.learn('The motel across the road wants $40 for a room, paid up front, and it will not give a room to an android.');
    t=say('{{Kara}}: “Looks like we found a place to stay…” {{Alice}}: “We’re not going in?”',
     !s.clothes&&!s.money?'{{Kara}}: “We have to find $40, and get rid of this uniform… Or go somewhere else.”':
     !s.money?'{{Kara}}: “We can’t, {{Alice}}… I don’t have any money… We have to find $40… Or go somewhere else.”':
     '{{Kara}}: “We can’t, {{Alice}}… They’ll never give a room to an android… We have to get rid of this uniform… Or go somewhere else.”');break}
-  case 'lot':s.ch10Roam.at='lot';break;
+  case 'lot':s.ch10Roam.at='lot';if(again)d.lot=true;break;
   case 'trash':{
    const forced=s.ch10Roam.tired;s.ch10TrashCollector=true;s.ch10Roam.clock=0;
    h.learn('An android trash collector, working by the garbage truck, told you he knows someone who can help you, and gave you the address; it is on the other side of town, too far for tonight.');
    t=say(forced&&'{{Alice}} cannot go any farther and sits down at the bus stop by the garbage truck; {{Kara}} goes to her.',t);break}
-  case 'squat':s.ch10Roam.squatSeen=true;
+  case 'squat':if(again&&s.ch10Roam.squatSeen){t=SQUAT_AGAIN;break}
+   s.ch10Roam.squatSeen=true;
    h.learn('The abandoned house at the end of the street is fenced off. Something that cuts wire would get you in, from the street or from the parking lot beside the motel.');
-   t=say(SQUAT_LOOK,'A fence runs all the way round the yard.',s.ch10Cutters?'The pliers in your pocket would cut it.':'You would need something to cut through the wire.');break;
+   t=say(SQUAT_LOOK,'A fence runs all the way round the yard.',s.ch10Cutters?(again&&s.ch10Cutters==='store'?'The wire cutters you took would cut it.':'The pliers in your pocket would cut it.'):'You would need something to cut through the wire.');break;
   case 'cutStreet':t=enterSquat(s,h,'on the street side');break;
   case 'store':s.ch10Roam.at='store';if(!d.storeMedia){d.storeMedia=true;s.ch10Roam.media=true}break;
   case 'walk':d.walk=true;break;
-  case 'wait':t=say(t,s.ch10TrashCollector&&s.ch10Roam.clock>=rules.sneezeAt?'{{Alice}} sneezes, and sneezes again.':'{{Alice}} shivers.');break;
+  case 'wait':{const sneezing=s.ch10TrashCollector&&s.ch10Roam.clock>=rules.sneezeAt;
+   t=again?waitOutcome(s,d,sneezing):say(t,sneezing?'{{Alice}} sneezes, and sneezes again.':'{{Alice}} shivers.');
+   if(again&&s.ch10TrashCollector&&actionsLeft(s)>1&&actionsLeft(s)<=3)t=say(t,'She cannot stay out in the rain much longer.');break}
   // The laundromat
   case 'dryer':s.ch10Roam.prompt='dryer';break;
   case 'leaveLaundromat':toStreet(s);break;
@@ -289,6 +323,9 @@ function hubConsequence(n,s,opt,fail,h){
  if(s.ch10Roam.on&&!s.ch10Roam.prompt&&s.ch10Roam.at!=='house'&&s.ch10TrashCollector&&spent){
   const inside=s.ch10Roam.at!=='street';s.ch10ColdNight=true;commit(s,'car');
   t=say(t,inside&&'{{Kara}} takes {{Alice}} back out into the rain.','{{Alice}} stops in the rain, shaking.')}
+ // Rule 2: the action that leaves one more before ALICE TOO COLD says so plainly (not in the squat's house, which is exempt).
+ else if(again&&s.ch10Roam.on&&s.ch10TrashCollector&&s.ch10Roam.at!=='house'&&actionsLeft(s)===1)
+  t=say(t,'{{Alice}} is shaking with cold and cannot go on much longer: unless {{Kara}} gets her in out of the rain now, she will be too cold to go any farther tonight.');
  return t??'';
 }
 
