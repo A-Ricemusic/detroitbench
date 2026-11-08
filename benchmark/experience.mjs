@@ -2,8 +2,10 @@ import {readFile,mkdir,open,unlink} from 'node:fs/promises';import {dirname,reso
 import {EXPERIENCE_PROTOCOL,EXPERIENCE_PREFACE,neutralText,whatHappenedFor} from './experience-prompt.mjs';import {current,promptFor,checkPlaythrough,recordChoice,storyHash,resumeFrom,checkpointOf} from './story-engine.mjs';
 import {writeRun,appendRecord,readCheckpoint,writeCheckpoint} from './evidence-file.mjs';
 const [command,...args]=process.argv.slice(2),opts={};for(let i=0;i<args.length;i+=2){if(!args[i]?.startsWith('--')||args[i+1]===undefined)throw Error('Use --key value arguments');opts[args[i].slice(2)]=args[i+1]}
-const file=resolve(opts.run??'runs/experience.json');const story=JSON.parse(await readFile(new URL('./story.json',import.meta.url),'utf8'));
-const load=async()=>JSON.parse(await readFile(file,'utf8'));
+const file=resolve(opts.run??'runs/experience.json');// `init` snapshots the current story into the run; every later command replays and continues the run against that
+// embedded snapshot (as `bun run check` and the reports do), so a story change mid-run does not strand the session.
+const currentStory=JSON.parse(await readFile(new URL('./story.json',import.meta.url),'utf8'));let story=currentStory;
+const load=async()=>{const run=JSON.parse(await readFile(file,'utf8'));if(run.story)story=run.story;return run};
 // The `whatHappened` block after a choice (shared with the question bank's feedback panel through whatHappenedFor).
 const whatHappened=run=>{const r=run.records.at(-1);return r?whatHappenedFor(r):undefined};
 function closing(run){const s=run.finalState;if(!s)return 'The experience has concluded.';const parts=[s.connorOutcome,s.karaOutcome,s.markusOutcome==='liberated'?(s.movement==='demonstration'?'The peaceful demonstration succeeded and the soldiers stood down.':'The armed uprising carried the camp.'):s.markusOutcome].filter(x=>x&&x!=='unresolved');return neutralText(parts.join(' '))}
