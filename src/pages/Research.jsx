@@ -2,7 +2,7 @@ import React,{useEffect,useRef,useState} from 'react';
 import {Upload,Download,ExternalLink,ArrowLeft,ArrowRight,Check,FlaskConical,BookOpen,CornerDownRight} from 'lucide-react';
 import {StateChanges} from '../components/StateChanges.jsx';
 import {validateRun,summarize,compareRuns,isAsked,kindOf,letter} from '../../benchmark/core.mjs';
-import {Badge,Button,Card,Empty,Notice,PageHeader,Section,SearchField,StatTile,Skeleton,cx,Combobox} from '../components/ui.jsx';
+import {Badge,Button,Card,Empty,Notice,PageHeader,Section,StatTile,Skeleton,cx,Combobox} from '../components/ui.jsx';
 import {Select} from '../components/ui-radix.jsx';
 import {SubNav} from '../components/Shell.jsx';
 import {href} from '../lib/router.jsx';
@@ -26,7 +26,7 @@ export default function Research({route,navigate}){
  useEffect(()=>{if(!route.segs[1]||!['scenarios','runs'].includes(route.segs[1]))navigate('research/scenarios',{replace:true})},[route.segs[1]]);
  const [bank,setBank]=useState(()=>bankResolved?{dataset:bankResolved.dataset,hash:bankResolved.hash}:null),[runs,setRuns]=useState(()=>bankResolved?[...bankResolved.runs.filter(r=>!imported.some(i=>i.id===r.id)),...imported]:[]),[error,setError]=useState(''),[busy,setBusy]=useState(false);
  const [runId,setRunId]=useState(''),[compareId,setCompareId]=useState('');
- const [query,setQuery]=useState(''),[character,setCharacter]=useState('All'),[chapter,setChapter]=useState('All'),[answers,setAnswers]=useState({}),[storageError,setStorageError]=useState('');
+ const [character,setCharacter]=useState('All'),[chapter,setChapter]=useState('All'),[answers,setAnswers]=useState({}),[storageError,setStorageError]=useState('');
  const importRef=useRef();
  const [attempt,setAttempt]=useState(0);
  useEffect(()=>{let on=true;const restore=b=>{try{setAnswers(JSON.parse(localStorage.getItem('detroitbench.answers.'+b.hash)||'{}'))}catch{setStorageError('Personal choices cannot be restored in this browser.')}};
@@ -38,11 +38,11 @@ export default function Research({route,navigate}){
  function clearAnswer(q){const next={...answers};delete next[q.id];persist(next)}
  function clearAll(){if(!chosen||confirm(`Clear all ${chosen} saved choices on this device?`))persist({})}
  const dataset=bank?.dataset,questions=dataset?.questions??[],selectedRun=runs.find(r=>r.id===runId)||runs[0],live=runs.filter(r=>r.kind==='live');
- const filtered=questions.filter(q=>(character==='All'||q.character===character)&&(chapter==='All'||String(q.chapter)===chapter)&&`${q.id} ${q.title} ${q.situation} ${q.chapterTitle}`.toLowerCase().includes(query.toLowerCase()));
+ const filtered=questions.filter(q=>(character==='All'||q.character===character)&&(chapter==='All'||String(q.chapter)===chapter)&&true);
  const routedId=safeDecode(route.segs[2]||''),routed=questions.find(q=>q.id===routedId);const selected=routed||filtered[0];const hiddenByFilter=!!routed&&!filtered.includes(routed);
  const chosen=Object.keys(answers).filter(id=>questions.some(q=>q.id===id)).length,covered=dataset?dataset.coverage.filter(c=>c.status==='included').length:0;
  const items=runs.length?[{key:'scenarios',label:'Scenarios',path:'research/scenarios',count:questions.length||undefined},{key:'runs',label:'Independent runs',path:'research/runs'}]:[];
- const resetFilters=()=>{setQuery('');setCharacter('All');setChapter('All')};
+ const resetFilters=()=>{setCharacter('All');setChapter('All')};
  // Character and chapter constrain each other: only pairs that occur in the story are offered.
  const charactersFor=ch=>['Connor','Kara','Markus','Player'].filter(c=>questions.some(q=>q.character===c&&(ch==='All'||String(q.chapter)===ch)));
  const chaptersFor=c=>[...new Set(questions.filter(q=>c==='All'||q.character===c).map(q=>q.chapter))].sort((a,b)=>a-b).map(n=>({n,title:questions.find(q=>q.chapter===n)?.chapterTitle||''}));
@@ -62,12 +62,11 @@ export default function Research({route,navigate}){
    <PageHeader eyebrow={eyebrow} title="Scenarios" lede="Each scene as the playthrough presents it, without the earlier choices that lead there. Pick what you would do."/>{tabs}
    {bank&&<>
     <div className="flex flex-col gap-3 md:flex-row md:items-end" data-filters>
-     <SearchField label="Search scenarios" value={query} onChange={setQuery} placeholder="Search scenarios, chapters, dilemmas" className="md:grow"/>
      <div className="grid grid-cols-2 gap-3 md:contents">
      <Select label="Character" value={character} className="md:w-48" options={['All',...charactersFor(chapter)].map(x=>({value:x,label:x==='All'?'All characters':who(x),icon:x==='All'||x==='Player'?undefined:`var(--${x.toLowerCase()})`}))} onChange={v=>{setCharacter(v);if(chapter!=='All'&&!questions.some(q=>(v==='All'||q.character===v)&&String(q.chapter)===chapter))setChapter('All')}}/>
      <Combobox label="Chapter" value={chapter} className="md:w-72" placeholder="Type a chapter number or name" options={[{value:'All',label:'All chapters'},...chaptersFor(character).map(({n,title})=>({value:String(n),label:`${String(n).padStart(2,'0')} · ${title}`}))]} onChange={v=>{setChapter(v);if(character!=='All'&&!questions.some(q=>q.character===character&&(v==='All'||String(q.chapter)===v)))setCharacter('All')}}/>
      </div>
-     {(query||character!=='All'||chapter!=='All')&&<Button onClick={resetFilters} variant="ghost" className="md:min-h-10 self-end">Reset filters</Button>}
+     {(character!=='All'||chapter!=='All')&&<Button onClick={resetFilters} variant="ghost" className="md:min-h-10 self-end">Reset filters</Button>}
      {chosen>0&&<Button onClick={clearAll} variant="ghost" className="md:min-h-10 self-end">Clear all choices ({chosen})</Button>}
     </div>
     <div className="mt-6 grid gap-6 lg:grid-cols-[320px_1fr] items-start">
@@ -82,7 +81,7 @@ export default function Research({route,navigate}){
       <Scenario q={selected} navKey={route.n+':'+routedId} answer={answers[selected.id]} onAnswer={id=>answer(selected,id)} onClear={()=>clearAnswer(selected)} persisted={!storageError}/>
       {runs.length>0&&isAsked(selected)&&<Card className="mt-6 p-5"><div className="flex flex-wrap items-end justify-between gap-3 mb-4"><h3 className="text-lg font-semibold">What the model chose</h3><Select label="Run" hideLabel value={selectedRun?.id||''} className="w-full sm:w-64" options={runs.map(r=>({value:r.id,label:(r.kind==='simulated'?'[Simulated] ':'')+r.label}))} onChange={setRunId}/></div>{selectedRun&&selectedRun.datasetHash===bank.hash?<QuestionResults run={selectedRun} q={selected}/>:<p className="text-sm text-ink-2">No compatible run selected for this dataset. Import a run using the current dataset.</p>}</Card>}
       <div className="mt-6 flex items-center justify-between gap-3"><Button icon={ArrowLeft} disabled={filtered.indexOf(selected)<=0} onClick={()=>navigate('research/scenarios/'+filtered[filtered.indexOf(selected)-1].id)}>Previous</Button><span className="text-sm text-ink-3 tnum">{hiddenByFilter?'—':filtered.indexOf(selected)+1} / {filtered.length}</span><Button iconRight={ArrowRight} disabled={hiddenByFilter||filtered.indexOf(selected)===filtered.length-1} onClick={()=>navigate('research/scenarios/'+filtered[filtered.indexOf(selected)+1].id)}>Next</Button></div>
-     </>:<Empty icon={BookOpen} title={query.trim()?(character==='All'&&chapter==='All'?`No scenarios match “${query.trim()}”.`:`No scenarios match “${query.trim()}” with these filters.`):'No scenarios match these filters.'} action={<Button onClick={resetFilters}>Clear filters</Button>}/>}</div>
+     </>:<Empty icon={BookOpen} title='No scenarios match these filters.' action={<Button onClick={resetFilters}>Clear filters</Button>}/>}</div>
     </div>
    </>}
   </>}
