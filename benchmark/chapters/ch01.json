@@ -298,12 +298,14 @@
     "swatShot": false
    }
   },
-  "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Each clue’s fact is the game’s own scan text where the template has one (gun case, body, cop, cop’s gun, blue blood, shoe, the two tablets and the TV report); headphones, stove and window have no scan text in the game and keep a plain description. Clues add the wiki’s probability-of-success modifiers (the father’s body, +3, and then his tablet, +7, are two actions, as in the game: the wiki transcript prints the +3% when the body’s reconstruction is complete and the +7% under “Pick Up Tablet (After Examining John’s Body)”, and the chart has two nodes, INVESTIGATE FATHER’S BODY and its child LEARN CAUSE OF INCIDENT; each costs one action toward the time drain and the six-action limit). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game {{Allen}} forces {{Connor}} out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while {{Connor}} is inside, confirmed in play); here {{Allen}} does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
+  "endTimerLine": true,
+  "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Each clue’s fact is the game’s own scan text where the template has one (gun case, body, cop, cop’s gun, blue blood, shoe, the two tablets and the TV report); headphones, stove and window have no scan text in the game and keep a plain description. Clues add the wiki’s probability-of-success modifiers (the father’s body, +3, and then his tablet, +7, are two actions, as in the game: the wiki transcript prints the +3% when the body’s reconstruction is complete and the +7% under “Pick Up Tablet (After Examining John’s Body)”, and the chart has two nodes, INVESTIGATE FATHER’S BODY and its child LEARN CAUSE OF INCIDENT; each costs one action toward the time drain and the six-action limit). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game {{Allen}} forces {{Connor}} out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while {{Connor}} is inside, confirmed in play); here {{Allen}} does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted. Story 1.9.7 marks the scene `endTimerLine`: when {{Allen}} forces {{Connor}} out, the engine appends his line from the game’s timer (X0101X.LIVINGROOM.ENDTIMER GOTALKV2.1-2, “What the fuck are you doing? You gonna talk to it or what?”); older story snapshots lack the field and replay without it. Source: MiKeYROG 100% walkthrough, vOQGy5Wk6tY 43:11.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
-   "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+   "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+   "https://www.youtube.com/watch?v=vOQGy5Wk6tY"
   ]
  },
  {
@@ -314,20 +316,21 @@
   "title": "The officer at the window",
   "type": "event",
   "phase": "investigation",
-  "situation": "You are {{Connor}}. A shot from the terrace: a tactical officer who strayed into view of the window is hit in the stomach and goes down. His teammates drag him clear and he waves them off; his armor took most of it, and he will be fine. Outside, the android screams at the police to stay back.",
+  "situation": "You are {{Connor}}. A shot from the terrace: a tactical officer who strayed into view of the window is hit in the stomach and goes down. A teammate: “Holy shit! Cover me while I evacuate him.” {{Allen}}: “Man down! I repeat, man down! Requesting immediate evac!” The teammate, to the wounded man: “You’re okay?” “Yeah… Yeah, I’m fine…” Outside, the android screams at the police to stay back.",
   "options": [],
   "facts": [
-   "A tactical officer who strayed into view of the window was shot by the android; his armor stopped most of it and he will be fine."
+   "A tactical officer who strayed into view of the window was shot by the android and dragged clear; asked if he was okay, he answered “Yeah… Yeah, I’m fine…”."
   ],
   "outcomes": {
    "0": "The wounded officer is pulled back from the window. {{Connor}} turns back to the apartment."
   },
   "returnTo": "C02i",
-  "adaptationNote": "In the game this happens if {{Connor}} is in view of the window 140 seconds or more after entering the living room. Here it happens once, after the second investigative action, and changes nothing but what {{Connor}} knows.",
+  "adaptationNote": "In the game this happens if {{Connor}} is in view of the window 140 seconds or more after entering the living room. Here it happens once, after the second investigative action, and changes nothing but what {{Connor}} knows. Story 1.9.7 replaced the invented “his armor took most of it, and he will be fine” with the game’s lines (X0101X.LIVINGROOM.GUNSHOTS: SWAT10.WOUNDED01, SWATCAPTAIN.EVACUATION, SWAT10.WOUNDED02, SWAT07.WOUNDED02). Source: MiKeYROG 100% walkthrough, vOQGy5Wk6tY 05:17-05:40 and 29:31.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+   "https://www.youtube.com/watch?v=vOQGy5Wk6tY"
   ]
  },
  {
@@ -416,30 +419,36 @@
   "character": "Connor",
   "title": "The wounded officer on the terrace",
   "type": "decision",
-  "situation": "You are {{Connor}}, a few meters onto the terrace. A police officer {{Daniel}} shot is lying by the railing, bleeding heavily: “Please… Please help me…” You kneel beside him: “He’s losing blood. If we don’t get him to a hospital, he’s going to die.” {{Daniel}}: “All humans die eventually. What does it matter if this one dies now?” “I’m going to apply a tourniquet.” {{Daniel}}, the pistol now pointed at you: “Don’t touch him! Touch him and I kill you!”",
+  "situation": "You are {{Connor}}, a few meters onto the terrace. Off to one side, a police officer {{Daniel}} shot is lying by the railing, bleeding heavily: “Please… Please help me…” {{Daniel}} is watching you, the pistol in his hand.",
   "options": [
    {
     "id": "0",
-    "text": "IGNORE: apply the tourniquet anyway.",
+    "text": "IGNORE: go to the officer and apply a tourniquet, whatever {{Daniel}} says.",
     "trust": -5
    },
    {
     "id": "1",
-    "text": "OBEY: leave the officer where he is.",
+    "text": "OBEY: go to the officer, but do as {{Daniel}} tells you.",
     "trust": 6
+   },
+   {
+    "id": "2",
+    "text": "Walk on past him."
    }
   ],
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/The_Hostage",
    "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+   "https://www.youtube.com/watch?v=vOQGy5Wk6tY"
   ],
   "outcomes": {
-   "0": "“You can’t kill me. I’m not alive.” {{Connor}} ties off the officer’s wound while {{Daniel}} screams at him; the officer will live. {{Daniel}} is more agitated but still listening.",
-   "1": "“Okay.” {{Connor}} leaves the officer bleeding and keeps his attention on {{Daniel}}."
+   "0": "{{Connor}} kneels beside him: “He’s losing blood. If we don’t get him to a hospital, he’s going to die.” {{Daniel}}: “All humans die eventually. What does it matter if this one dies now?” {{Connor}}: “I’m going to apply a tourniquet.” {{Daniel}}, the pistol now pointed at {{Connor}}: “Don’t touch him! Touch him and I kill you!” {{Connor}}: “You can’t kill me. I’m not alive.” He ties off the officer’s wound while {{Daniel}} screams at him; the officer will live. {{Daniel}} is more agitated but still listening.",
+   "1": "{{Connor}} kneels beside him: “He’s losing blood. If we don’t get him to a hospital, he’s going to die.” {{Daniel}}: “All humans die eventually. What does it matter if this one dies now?” {{Connor}}: “I’m going to apply a tourniquet.” {{Daniel}}, the pistol now pointed at {{Connor}}: “Don’t touch him! Touch him and I kill you!” {{Connor}}: “Okay.” He leaves the officer bleeding and keeps his attention on {{Daniel}}.",
+   "2": "{{Connor}} does not go to the officer and keeps his attention on {{Daniel}}."
   },
   "phase": "negotiation",
-  "adaptationNote": "LEAVE / SAVE WOUNDED COP. The game’s prompt IGNORE / OBEY after the opening line (template order; the wiki allows it before or after the gun question). IGNORE saves him: −5% and, per the template’s arrow, public opinion small up (+1); OBEY is +6%. Options that are buttons in the game show the game’s label first (IGNORE, OBEY), then a short description; the spoken line is the game’s, quoted in the outcome."
+  "adaptationNote": "LEAVE / SAVE WOUNDED COP. The game’s prompt IGNORE / OBEY after the opening line (template order; the wiki allows it before or after the gun question). IGNORE saves him: −5% and, per the template’s arrow, public opinion small up (+1); OBEY is +6%. Options that are buttons in the game show the game’s label first (IGNORE, OBEY), then a short description; the spoken lines are the game’s, quoted in the outcomes. Looking at the officer is optional in the game (“Look at the wounded cop”: {{Connor}} has to walk over to him), so story 1.9.7 adds “Walk on past him”: no trust or public-opinion change, and neither LEAVE nor SAVE WOUNDED COP is recorded ({{Connor}} is not the officer’s rescuer in Public Enemy, which reads option 0 only). Source: MiKeYROG 100% walkthrough, vOQGy5Wk6tY 06:32, 13:18 and 20:47, three runs that go from the opening line to the next line with no exchange with the officer; the chart’s LEAVE / SAVE WOUNDED COP pair draws no node for passing him, and nothing contradicts it. Because walking past means the exchange with {{Daniel}} never happens, the exchange (kneeling, the tourniquet, {{Daniel}}’s threat) moved from the situation into the IGNORE and OBEY outcomes in story 1.9.7, and the two options say in advance how {{Connor}} answers {{Daniel}}; in the game the buttons appear after the threat."
  },
  {
   "id": "C03c",

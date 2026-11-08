@@ -13,7 +13,7 @@ function play(picks={},{fails=[],setup={},rng=null}={}){const s=startState(story
  while(cur<story.nodes.length){assert.ok(guard++<2000,'routing loop');const n=story.nodes[cur];if(n.chapter>9)break;
   if(n.chapter===9&&!at9){at9=structuredClone(s);Object.assign(s,structuredClone(setup))}
   const b=blocked(n,s);if(b){skipped.push(n.id);cur++;continue}const opts=available(n,s);assert.ok(opts.length,'no options at '+n.id);
-  const p=n.id==='C05'?opts.find(o=>picks.C05==='1'?!o.correct:o.correct).id:(picks[n.id]??(n.type==='media'?'skip':opts[rng&&n.chapter===9?Math.floor(rng()*opts.length):0].id));assert.ok(opts.some(o=>o.id===p),`bad pick ${n.id} ${p}: ${opts.map(o=>o.id)}`);
+  const p=n.id==='C05'?(opts.find(o=>picks.C05==='1'?!o.correct:o.correct)??opts[0]).id:(picks[n.id]??(n.type==='media'?'skip':opts[rng&&n.chapter===9?Math.floor(rng()*opts.length):0].id));assert.ok(opts.some(o=>o.id===p),`bad pick ${n.id} ${p}: ${opts.map(o=>o.id)}`);
   const e=apply(n,s,p,fails.includes(n.id)?0:0.999);visited.push(n.id);events[n.id]=e.event;stressAt[n.id]=s.ch09Stress;cur=nextCursor(story,cur,n,s)}
  return {s,visited,skipped,events,at9,stressAt}}
 const v9=r=>r.visited.filter(id=>node(id).chapter===9);
@@ -52,9 +52,12 @@ test('stress: starts at 35% and moves by the wiki’s published steps',()=>{
  assert.deepEqual(['C06b','C06c','C06d','C06e','C06f','C06g','C06h'].map(id=>calm.stressAt[id]),[31,31,27,23,19,15,11],'NAME −4, FEAR 0, COMFORT −4, SYMPATHIZE −4, TRUST −4, LIE −4, LIE −4: the wiki’s lowest, 11%');
  assert.equal(calm.stressAt.C06v3,0,'three calming convince lines from 11% clamp at 0');assert.match(calm.events.C06v3,/CONVINCE FAILED/);
  for(const k of [1,2,3])for(const o of node('C06v'+k).options)assert.equal(Math.abs(o.stress),7);
- assert.equal(node('C06').options[0].stress,10);assert.equal(node('C06p1').options[0].stress,10);assert.equal(RULES.pressureGiveUp,-20);assert.equal(RULES.pressureGiveUpPowerPyx,-5);
+ assert.equal(node('C06').options[0].stress,10);assert.equal(node('C06p1').options[0].stress,10);assert.equal(RULES.pressureGiveUp,-20,'the legacy value, kept for older snapshots');assert.equal(RULES.pressureGiveUpPowerPyx,-5);assert.equal(RULES.pressureGiveUpFrames,-5);for(const id of ['C06p1','C06p2','C06p3','C06p4','C06rp1','C06rp2','C06rp3','C06rp4'])assert.equal(node(id).giveUpStress,-5,id);
  const gaveUp=play({...HIGH,C06:'0',C06p1:'0',C06p2:'1',C06r:'2',C06rv1:'0',C06rv2:'0',C06rv3:'0'});
- assert.deepEqual([gaveUp.stressAt.C06,gaveUp.stressAt.C06p1,gaveUp.stressAt.C06p2,gaveUp.stressAt.C06rv3],[73,83,63,42],'PRESSURE IT +10, PRESSURE +10, GIVE UP −20, then −21');
+ assert.deepEqual([gaveUp.stressAt.C06,gaveUp.stressAt.C06p1,gaveUp.stressAt.C06p2,gaveUp.stressAt.C06rv3],[73,83,78,57],'PRESSURE IT +10, PRESSURE +10, GIVE UP −5 (video frames, story 1.9.8), then −21');
+ // A story 1.9.7 snapshot has no giveUpStress on the pressure scenes and keeps the wiki’s −20.
+ const saved=Object.fromEntries(['C06p1','C06p2','C06p3','C06p4','C06rp1','C06rp2','C06rp3','C06rp4'].map(id=>[id,node(id).giveUpStress]));for(const id in saved)delete node(id).giveUpStress;
+ try{const old=play({...HIGH,C06:'0',C06p1:'0',C06p2:'1',C06r:'2',C06rv1:'0',C06rv2:'0',C06rv3:'0'});assert.deepEqual([old.stressAt.C06p2,old.stressAt.C06rv3],[63,42],'older snapshots keep GIVE UP at −20')}finally{for(const id in saved)node(id).giveUpStress=saved[id]}
  assert.equal(bandOf(49),'low');assert.equal(bandOf(50),'optimal');assert.equal(bandOf(70),'optimal');assert.equal(bandOf(71),'high');assert.equal(bandOf(90),'critical');assert.equal(bandOf(100),'critical')});
 
 test('the subject sees the stress gauge, band and percentage, only after analyzing the LED',()=>{
@@ -109,7 +112,7 @@ test('Chris’s grab: GIVE UP without stress or with a confession, the android s
  const calm=play({...ROOM,C06:'2',C06r:'3',C07:'0'});assert.match(calm.events.C06v3,/CONVINCE FAILED/);assert.equal(calm.s.ch09GaveUp,true);assert.equal(calm.s.ch09Outcome,OUTCOMES.shotSelf);
  // Wiki screenshot order: failed probe, then abandoned pressure, automatic give up, then GIVE UP on the grab.
  const shot=play({...HIGH,C06:'1',C06r:'0',C06rp1:'1',C07:'0'},{fails:['C06']}),b=shot.at9;
- assert.deepEqual(['C06h','C06','C06r','C06rp1','C07a','C07'].map(id=>shot.stressAt[id]),[63,63,73,53,58,100]);
+ assert.deepEqual(['C06h','C06','C06r','C06rp1','C07a','C07'].map(id=>shot.stressAt[id]),[63,63,73,68,73,100],'GIVE UP −5 (story 1.9.8), then the grab +5');
  assert.match(shot.events.C06,/It resisted/);assert.match(shot.events.C06rp1,/I give up/);assert.equal(shot.s.ch09GaveUp,true);assert.equal(shot.s.ch09Confession,false);
  assert.equal(shot.s.ch09Outcome,OUTCOMES.shotBoth);assert.equal(shot.s.ch09ConnorDied,true);assert.equal(shot.s.connorDeaths,b.connorDeaths+1);
  assert.equal(shot.s.instability,b.instability-1);assert.equal(shot.s.hankTrust,b.hankTrust-1);assert.equal(shot.s.amandaTrust,b.amandaTrust);assert.equal(shot.s.connor,true,'a replacement Connor carries on');
@@ -153,7 +156,7 @@ test('wiki stress sequences and exact confession/self-destruct boundaries',()=>{
   assert.deepEqual(values,expected);return s};
  const high=[['C06b','2'],['C06c','1'],['C06d','2'],['C06e','1'],['C06f','2'],['C06g','1'],['C06h','1']];
  sequence([...high,['C06','2'],['C06v1','0'],['C06v2','0'],['C06v3','0']],[39,43,47,51,59,63,67,67,60,53,46]);
- sequence([...high,['C06','0'],['C06p1','0'],['C06p2','1']],[39,43,47,51,59,63,67,77,87,67]);
+ sequence([...high,['C06','0'],['C06p1','0'],['C06p2','1']],[39,43,47,51,59,63,67,77,87,82]);
  const low=[['C06b','3'],['C06c','0'],['C06d','0'],['C06e','0'],['C06f','3'],['C06g','0'],['C06h','0']];
  const s=sequence([...low,['C06','0'],...Array.from({length:4},(_,i)=>['C06p'+(i+1),'0'])],[31,31,27,23,19,15,11,21,31,41,51,61]);
  assert.equal(s.ch09Confession,true);assert.equal(sequence([['C06','1']],[100]).ch09Probed,true);

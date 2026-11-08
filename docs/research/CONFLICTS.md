@@ -66,15 +66,15 @@ Not applied, each waiting on a question below: ch13 K09q5 after sitting at once,
 
 ## Settled since the triage
 
-- **ch06-13**: No: a wrong report answer is removed when the question repeats (video, MiKeYROG gZQ693-umPU; frame in video-evidence/ch06). Benchmark fix pending
+- **ch06-13**: No: a wrong report answer is removed when the question repeats (video, MiKeYROG gZQ693-umPU; frame in video-evidence/ch06). Fixed in story 1.9.8
 - **ch07-21**: No REFUSE / ACCEPT prompt before the fight after FACE TODD (video, MiKeYROG k5aILBAEewM 1:15:25). Benchmark already right
 - **ch09-03**: The COMFORT round is picked once (video, MiKeYROG OqQHtFfZvgk 16:13). Benchmark already right
-- **ch09-04**: About −5: GIVE UP after PRESSURE took stress 73% → 68% and 21% → 16% (video, OqQHtFfZvgk 27:44 and 33:13). PowerPyx right, wiki −20 wrong. Benchmark fix pending
-- **ch10-07**: Two small Alice ups for sleeping beside her at the motel, the second showing TRUSTED (video, DanaDuchy D-nrWXiEsVo 20:39 and 20:53). Benchmark fix pending
-- **ch10-13**: Yes, one small Alice up when she is given the toy (video, DanaDuchy D-nrWXiEsVo 20:13). Benchmark fix pending
+- **ch09-04**: About −5: GIVE UP after PRESSURE took stress 73% → 68% and 21% → 16% (video, OqQHtFfZvgk 27:44 and 33:13). PowerPyx right, wiki −20 wrong. Fixed in story 1.9.8
+- **ch10-07**: Two small Alice ups for sleeping beside her at the motel, the second showing TRUSTED (video, DanaDuchy D-nrWXiEsVo 20:39 and 20:53). Fixed in story 1.9.8
+- **ch10-13**: Yes, one small Alice up when she is given the toy (video, DanaDuchy D-nrWXiEsVo 20:13). Fixed in story 1.9.8
 - **ch13-09**: GO: instability down and Hank down; GIVE UP: instability up and Hank up, all small (video, MiKeYROG AH-zJSO_DNo 55:39). Benchmark already right
 - **ch13-13**: Yes, a small Hank down after the wait-in-the-car reply (video, ScorpionTank BBXCrNx-ocU). Benchmark already right
-- **ch16-05**: Yes, a small Jericho up when Markus proposes the raid to Simon, alongside North and Simon (video, ScorpionTank y50ZjZWX0gU 11:45). Benchmark fix pending
+- **ch16-05**: Yes, a small Jericho up when Markus proposes the raid to Simon, alongside North and Simon (video, ScorpionTank y50ZjZWX0gU 11:45). Fixed in story 1.9.8
 - **ch04-01**: No key after the dishes alone; Alice stays Distant (operator, 2026-11-07). The key needs two points, as the benchmark has it
 - **ch04-08**: The window cannot be skipped; ventilating is part of tidying the room (operator, 2026-11-07). Fixed in story 1.9.5
 - **ch03-02**: INDIFFERENT in the Shades of Color header after saving the wounded cop (operator, 2026-11-07); H9 holds for the first step

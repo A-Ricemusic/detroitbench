@@ -99,7 +99,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>FOLLOW RALPH / GIVE UP</td><td>Template LEAVE / STAY</td><td class="yes"><code>KF02</code></td></tr>
 <tr><td>START A FIRE, MAKE A BED, LEAVE SQUAT; <i>Talk to Ralph (rA9)</i></td><td>Both tasks before TALK TO ALICE</td><td class="yes"><code>KF02</code></td></tr>
 <tr><td>TALK TO ALICE → MAKE PROMISE / DON’T MAKE PROMISE (×3); <i>FOREVER</i></td><td>PROMISE ↑ / CAN’T PROMISE ↓</td><td class="yes"><code>K08</code> (+1 / −1) and <code>KF05</code>, once for whichever shelter</td></tr>
-<tr><td>GIVE TOY, GIVE CHOCOLATE (×3)</td><td>Template lines, no arrow</td><td class="part"><code>KF06</code>, no arrow (the wiki’s toy ↑ is not built)</td></tr>
+<tr><td>GIVE TOY, GIVE CHOCOLATE (×3)</td><td>Template lines, no arrow</td><td class="part"><code>KF06</code>: the toy is Alice +1 from story 1.9.8 (scene field <code>toyAliceUp</code>; video frame, D-nrWXiEsVo 20:13); the chocolate has no arrow</td></tr>
 <tr><td>KARA SLEEPS NEXT TO ALICE / WATCH ALICE FROM CHAIR (motel, squat); KARA SLEEPS NEXT TO ALICE (car)</td><td>Wiki ↑ “x2” for beside, motel or squat</td><td class="part"><code>KF07</code>, +1 once; the car’s is in <code>KF09</code></td></tr>
 <tr><td>ALICE &amp; KARA STAYED IN MOTEL / IN ABANDONED CAR / IN THE SQUAT</td><td>Three endings, no icon</td><td class="yes"><code>KF08</code>, <code>KF09</code>, <code>KF10</code></td></tr>
 </tbody></table></div>
@@ -119,17 +119,17 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td><code>KF02</code></td><td>STAY HERE (the car)</td><td>Template: Alice LargeDown</td><td class="n">−2</td></tr>
 <tr><td><code>KF03</code></td><td>ALICE TOO COLD</td><td>Template: Alice LargeDown</td><td class="n">−2</td></tr>
 <tr><td><code>K08</code></td><td>PROMISE / CAN’T PROMISE</td><td>Template: SmallUp / SmallDown</td><td class="n">+1 / −1</td></tr>
-<tr><td><code>KF07</code></td><td>KARA SLEEPS NEXT TO ALICE (motel or squat)</td><td>Wiki: “Sleeping beside Alice either in the Squat or the Motel” ↑ x2</td><td class="n">+1</td></tr>
+<tr><td><code>KF07</code></td><td>KARA SLEEPS NEXT TO ALICE (motel or squat)</td><td>Wiki: “Sleeping beside Alice either in the Squat or the Motel” ↑ x2</td><td class="n">+2 from story 1.9.8 (two small ups, the second with a TRUSTED badge; scene field <code>sleepAliceUp</code>; video frame, D-nrWXiEsVo 20:39); older snapshots +1</td></tr>
 <tr><td>everything else</td><td>Bus, street, clerk, notices, items, hold-up buttons, Ralph, fire, bed, check-in, FOREVER, gifts, chair</td><td>no arrow</td><td class="n">0</td></tr>
 </tbody></table></div>
 <div class="cols">
 <div class="box"><h3>Best and worst</h3><ul>
-<li>Best, squat: DON’T STEAL (+1), the generator’s pliers, PROMISE (+1), sleeping beside her (+1) = <b>+3</b>.</li>
-<li>Best, motel: DON’T STEAL then STEAL (0), the hold-up with CONVINCE (+1), PROMISE, beside = <b>+3</b>; with the diversion and APOLOGIZE instead, <b>+2</b>.</li>
+<li>Best, squat: DON’T STEAL (+1), the generator’s pliers, PROMISE (+1), sleeping beside her (+2) = <b>+4</b>.</li>
+<li>Best, motel: DON’T STEAL then STEAL (0), the hold-up with CONVINCE (+1), PROMISE (+1), beside (+2) = <b>+4</b>; with the diversion and APOLOGIZE instead, <b>+3</b>.</li>
 <li>Worst: STEAL (−1), the diversion (−1) failing into [GUN] (−1), STAY HERE (−2), CAN’T PROMISE (−1) = <b>−6</b>; the same with ALICE TOO COLD instead of the car is −5, with no promise.</li>
 </ul></div>
 <div class="box"><h3>What is not an arrow</h3><ul>
-<li>The toy: the wiki lists a small up for giving it; the template has the lines (“Look, what I’ve got for you…” / “Thanks.”) and no arrow. Template wins; flagged.</li>
+<li>The chocolate: no arrow was seen. (The toy is Alice +1 since story 1.9.8: the video shows the arrow, as the wiki says; the template has the lines and no arrow.)</li>
 <li>Taking the register money after DRAW GUN: the Relationship Stat page lists a second down; the template has one arrow. Template wins.</li>
 <li>The diversion and STEAL arrows fall on choosing, so a failed QTE still costs them.</li>
 </ul></div>
@@ -183,8 +183,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <ul class="check">
 <li>Whether the 12 minutes of ALICE TOO COLD run only while standing still, or also while walking about and inside the buildings (the benchmark counts every action, so that no run can stall), and how long Kara can roam before Alice sits down at the bus stop.</li>
 <li>Whether the trash collector can be skipped entirely, and how Kara then knows of Zlatko.</li>
-<li>Whether giving the toy raises Alice (the wiki says up; the template has no arrow).</li>
-<li>Whether sleeping beside Alice is one up or two (“x2”).</li>
+<li>Settled in story 1.9.8 from video frames (D-nrWXiEsVo): giving the toy raises Alice by one; sleeping beside her is two small ups (motel; the squat is assumed to match).</li>
 <li>Whether caught at the register without the gun, Kara also loses what she took from the shelves.</li>
 <li>Whether the parking-lot pliers need the fence seen first, like the store’s wire cutters.</li>
 <li>Whether CONVINCE counts as a robbery for Zlatko’s newsflash, and whether DRAW GUN without the money does.</li>

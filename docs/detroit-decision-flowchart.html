@@ -775,7 +775,7 @@
           "C02e"
         ],
         "status": "simplified",
-        "note": "A repeatable scene: each visit offers the clues not yet examined plus “Go out to the terrace now”, one action each. The father’s body (+3) and then his tablet (+7) are two actions (transcript: “Pick Up Tablet (After Examining John’s Body)”; story 1.9.1 merged them into one +10 action). TV, stove and window are offered with no modifier. Time is counted in actions: −1% per action after the first. The SWAT shooting (C02e) fires once, right after the second action, wherever Connor is. Time-out is a forced exit after six actions (see H05). Each clue’s fact is the game’s scan text: the MS853 Black Hawk and .355 ammunition, the father’s scan (time of death 07:29 pm, three .355 wounds) and his tablet (“Your order for an AP700 android has been registered”), the officer’s scan (P.O Deckart, Antony, 08:03 pm, “Only one shot”) with the P.L. 544-7 American Androids Act text on his gun, the PL600 serial in the blue blood, the shoe, Emma’s video and the ITM TV report."
+        "note": "A repeatable scene: each visit offers the clues not yet examined plus “Go out to the terrace now”, one action each. The father’s body (+3) and then his tablet (+7) are two actions (transcript: “Pick Up Tablet (After Examining John’s Body)”; story 1.9.1 merged them into one +10 action). TV, stove and window are offered with no modifier. Time is counted in actions: −1% per action after the first. The SWAT shooting (C02e) fires once, right after the second action, wherever Connor is. Time-out is a forced exit after six actions (see H05). Each clue’s fact is the game’s scan text: the MS853 Black Hawk and .355 ammunition, the father’s scan (time of death 07:29 pm, three .355 wounds) and his tablet (“Your order for an AP700 android has been registered”), the officer’s scan (P.O Deckart, Antony, 08:03 pm, “Only one shot”) with the P.L. 544-7 American Androids Act text on his gun, the PL600 serial in the blue blood, the shoe, Emma’s video and the ITM TV report. Story 1.9.7: the window officer’s lines are the game’s (“Cover me while I evacuate him”, “Man down!”, “Yeah… I’m fine…”), without the invented armor; when Allen forces Connor out he adds the timer line “What the fuck are you doing? You gonna talk to it or what?” (scene field endTimerLine; MiKeYROG 100% walkthrough, vOQGy5Wk6tY 05:17, 43:11)."
       }
     },
     {
@@ -908,6 +908,11 @@
           "label": "Leave wounded cop (obey Daniel)",
           "effect": "+6%. The officer bleeds out.",
           "target": null
+        },
+        {
+          "label": "Walk on past him",
+          "effect": "No change to the odds or public opinion; the officer is neither saved nor left (neither chart node is reached).",
+          "target": null
         }
       ],
       "gate": "On the terrace; it can happen before or after the gun question.",
@@ -918,14 +923,14 @@
         "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
         "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
       ],
-      "note": "",
+      "note": "Story 1.9.7: the wounded officer is optional in the game, so a third option passes him by.",
       "status": "Source-backed summary",
       "benchmark": {
         "scenes": [
           "C03"
         ],
         "status": "implemented",
-        "note": "The game’s prompt IGNORE (save him: −5%, public opinion +1, “You can’t kill me. I’m not alive.”) / OBEY (+6%, “Okay.”), now after the opening line as in the template."
+        "note": "The game’s prompt IGNORE (save him: −5%, public opinion +1, “You can’t kill me. I’m not alive.”) / OBEY (+6%, “Okay.”), now after the opening line as in the template. Story 1.9.7 adds a third option, “Walk on past him”, with no trust or public-opinion change and no LEAVE or SAVE WOUNDED COP recorded: looking at the officer is optional in the game (MiKeYROG 100% walkthrough, vOQGy5Wk6tY 06:32, 13:18, 20:47). The kneel, the tourniquet and Daniel’s threat now play in the IGNORE and OBEY outcomes."
       }
     },
     {
@@ -1487,7 +1492,7 @@
           "K00b"
         ],
         "status": "implemented",
-        "note": "Two narrated events with a single Continue: the store (K00) and the drive home (K00b). They add five facts to Kara’s knowledge, shown from then on, and change nothing else. The CyberLife billboard has no wording (no source gives it), and the employee, the little girl and the two sales conversations are left unnamed or out."
+        "note": "Two narrated events with a single Continue: the store (K00) and the drive home (K00b). They add five facts to Kara’s knowledge, shown from then on, and change nothing else. The CyberLife billboard has no wording (no source gives it), and the employee, the little girl and the two sales conversations are left unnamed or out. Story 1.9.7: the overheard salesman’s pitch and “Come on, Zoe. Let’s go.” (X0101K.INTRO.LIME; MiKeYROG 100% walkthrough, dmDo6zndRzg 01:12)."
       }
     },
     {
@@ -1882,7 +1887,7 @@
           "K01"
         ],
         "status": "implemented",
-        "note": "A narrated event with a single Continue, quoting the transcript. Two facts go to Kara’s knowledge; no stat change. Alice’s age is no longer given."
+        "note": "A narrated event with a single Continue, quoting the transcript. Two facts go to Kara’s knowledge; no stat change. Alice’s age is no longer given. Story 1.9.7: Todd says “gone for two weeks, so the place is a mess” as in the string table (MiKeYROG 100% walkthrough, g_DQfghTbLg 15:15)."
       }
     },
     {
@@ -3990,7 +3995,7 @@
           "C05"
         ],
         "status": "implemented",
-        "note": "One repeatable decision scene: the template’s five prompts in order, the game’s three button labels each, rotated deterministically per question with IDs remapped to positions (correct positions 1, 3, 2, 1, 3) to remove the always-first cue; a wrong answer repeats the question with Hank’s line; the third mistake in all fails."
+        "note": "One repeatable decision scene: the template’s five prompts in order, the game’s three button labels each, rotated deterministically per question with IDs remapped to positions (correct positions 1, 3, 2, 1, 3) to remove the always-first cue; a wrong answer repeats the question with Hank’s line; the third mistake in all fails. Story 1.9.8: when a question repeats after a wrong answer, the wrong button already picked is no longer offered (three buttons, then two); scene field hideWrongPicked, older snapshots offer all three (video frame, gZQ693-umPU 27:56)."
       }
     },
     {
@@ -4149,7 +4154,7 @@
           "K02"
         ],
         "status": "implemented",
-        "note": "Two options, no risk, no stat change; obeying ends Kara’s story (kara and alice false)."
+        "note": "Two options, no risk, no stat change; obeying ends Kara’s story (kara and alice false). Story 1.9.7: Todd’s android rant is complete (“Course, androids are so fucking wonderful…”; MiKeYROG 100% walkthrough, g_DQfghTbLg 52:59)."
       }
     },
     {
@@ -5198,7 +5203,7 @@
           "M02j"
         ],
         "status": "implemented",
-        "note": "The plea as a decision with the game’s buttons, then a narrated event that records the ending in `ch08Ending`. Carl stays alive."
+        "note": "The plea as a decision with the game’s buttons, then a narrated event that records the ending in `ch08Ending`. Carl stays alive. Story 1.9.7: the police shout “DON’T FUCKIN’ MOVE!” before they fire (MiKeYROG 100% walkthrough, PSMYWSI5TOw 11:05)."
       }
     },
     {
@@ -5552,7 +5557,7 @@
         },
         {
           "label": "GIVE UP",
-          "effect": "Stress −20% (wiki; PowerPyx says −5%). “All right, all right. Everything is going to be okay.” Back to the approach menu.",
+          "effect": "Stress −5% from story 1.9.8 (video frames 73%→68% and 21%→16%, OqQHtFfZvgk 27:44 and 33:13; PowerPyx agrees; older snapshots −20%, the wiki’s figure). “All right, all right. Everything is going to be okay.” Back to the approach menu.",
           "target": "C06"
         }
       ],
@@ -6317,7 +6322,7 @@
       "options": [
         {
           "label": "GIVE TOY",
-          "effect": "“Thanks.” No arrow in the template (the wiki gives a small up; flagged).",
+          "effect": "“Thanks.” Alice small up from story 1.9.8 (scene field toyAliceUp; video frame, D-nrWXiEsVo 20:13); older snapshots none.",
           "target": null
         },
         {
@@ -6327,7 +6332,7 @@
         },
         {
           "label": "KARA SLEEPS NEXT TO ALICE",
-          "effect": "Alice small up (wiki, motel or squat).",
+          "effect": "Alice two small ups from story 1.9.8, the second with a TRUSTED badge (scene field sleepAliceUp; video frame, D-nrWXiEsVo 20:39, the motel; the squat assumed to match); older snapshots one. The car’s lone night is unchanged.",
           "target": null
         },
         {
@@ -6904,7 +6909,7 @@
           "C08d"
         ],
         "status": "implemented",
-        "note": "Event with the four variants; the arrow (−2, +2, −1, −1) is applied here. A confession followed by a death counts as a death (the template’s “without dying”)."
+        "note": "Event with the four variants; the arrow (−2, +2, −1, −1) is applied here. A confession followed by a death counts as a death (the template’s “without dying”). Story 1.9.7: Amanda says “the DPD” through the name token, as in the string table (MiKeYROG 100% walkthrough, TqGaB2AE6RM 02:04)."
       }
     },
     {
@@ -9303,7 +9308,7 @@
           "C10o1"
         ],
         "status": "simplified",
-        "note": "The timer is an action budget (eight, then three after STAY; counts are the benchmark’s). Finding the deviant needs the cage reconstruction; the stool needs the writing."
+        "note": "The timer is an action budget (eight, then three after STAY; counts are the benchmark’s). Finding the deviant needs the cage reconstruction; the stool needs the writing. Story 1.9.7: the rA9 wall reads “the same sign Ortiz’s android wrote” (surname only, as SHOWERCLUE; MiKeYROG 100% walkthrough, yjqf4mP0tVA 28:07)."
       }
     },
     {
@@ -9920,7 +9925,7 @@
       "options": [
         {
           "label": "Scripted, no choice",
-          "effect": "North +1 and Simon +1 (small; template {REL North SmallUp} {REL Simon SmallUp}). No Jericho arrow in the template (the wiki lists one; not built).",
+          "effect": "North +1, Simon +1 and, from story 1.9.8, Jericho +1 (small; template {REL North SmallUp} {REL Simon SmallUp}, wiki “Talking to Simon” for Jericho, confirmed by the readout NORTH ▲, JERICHO ▲, SIMON ▲ in video frame y50ZjZWX0gU 11:45).",
           "target": "TD13"
         }
       ],
@@ -9946,7 +9951,7 @@
           "MTD6"
         ],
         "status": "implemented",
-        "note": "Hold option 7 (needs Lucy and the crate), then the ending event, which applies both arrows."
+        "note": "Hold option 7 (needs Lucy and the crate), then the ending event, which applies both arrows. Story 1.9.8: the Jericho arrow the template omits is applied; it is scene data, so older snapshots keep two arrows."
       }
     },
     {
@@ -10953,7 +10958,7 @@
           "R18"
         ],
         "status": "implemented",
-        "note": "Media scene at the start of the wait."
+        "note": "Media scene at the start of the wait. Story 1.9.7: the magazine is titled “Time to Pull the Plug”, its own cover title; “Pull the Plug?” is the chart’s label (MiKeYROG 100% walkthrough, 0eQRMNpqlUA 10:40)."
       }
     },
     {
@@ -11583,7 +11588,7 @@
           "M05l"
         ],
         "status": "implemented",
-        "note": "Risk rolls (unsourced): threaten 0.3 (below 0.1 alarm, else kill), lure 0.25, blackout 0.2; walking in is certain to be seen."
+        "note": "Risk rolls (unsourced): threaten 0.3 (below 0.1 alarm, else kill), lure 0.25, blackout 0.2; walking in is certain to be seen. Story 1.9.7: the blackout guards also say “Fuses are over there.” and “I don’t know shit about electricity…” (MiKeYROG 100% walkthrough, 0LjHSb_5bLY 54:43)."
       }
     },
     {
@@ -11718,7 +11723,7 @@
           "M05o"
         ],
         "status": "implemented",
-        "note": "A narrated event applying exactly one of the template’s four Jericho blocks; records ch19Ending (chart label) for later chapters."
+        "note": "A narrated event applying exactly one of the template’s four Jericho blocks; records ch19Ending (chart label) for later chapters. Story 1.9.7: both speeches are complete, with the sentences earlier shortened by ellipses (MiKeYROG 100% walkthrough, 0LjHSb_5bLY 40:46, 18:55)."
       }
     },
     {
@@ -18395,6 +18400,41 @@
       }
     },
     {
+      "id": "CR07n",
+      "chapter": 30,
+      "character": "Player",
+      "title": "The council without Markus",
+      "context": "When Markus died in Freedom March, Josh and North decide what comes next (an observer event).",
+      "options": [
+        {
+          "label": "Simon alive",
+          "effect": "The BRIDGE.LEADNORTH text with Simon’s lines; North leads: “We have to fight them.”",
+          "target": null
+        },
+        {
+          "label": "Simon dead",
+          "effect": "The LEADNORTH.SIMONDEAD text: Josh and North alone; the same decision to fight.",
+          "target": null
+        }
+      ],
+      "gate": "Markus died in Freedom March.",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+        "https://www.youtube.com/watch?v=g_DQfghTbLg"
+      ],
+      "note": "Story 1.9.7 branches the text on Simon (X0203A.BRIDGE.LEADNORTH and X0203A.LEADNORTH.SIMONDEAD LASTTALK); MiKeYROG 100% walkthrough, g_DQfghTbLg 4:13:16 plays the Simon-dead variant.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "M21-north"
+        ],
+        "status": "implemented",
+        "note": "Observer event; no choice, no stat change."
+      }
+    },
+    {
       "id": "CR08",
       "chapter": 30,
       "character": "Markus",
@@ -18761,7 +18801,7 @@
           "C22-corridor"
         ],
         "status": "implemented",
-        "note": "A machine Connor survives only by killing Markus in the control room."
+        "note": "A machine Connor survives only by killing Markus in the control room. Story 1.9.7: the LIE outcome’s name token was {{HankAnderson}}, which rendered “Lieutenant LieutenantReyes” for the subject; it is now “Lieutenant {{Hank}}”."
       }
     },
     {
@@ -20745,7 +20785,7 @@
           "M31"
         ],
         "status": "implemented",
-        "note": "A repeatable scene: DIRTY BOMB opens PRESS / GIVE UP. PowerPyx’s Supportive threshold noted as the conflict."
+        "note": "A repeatable scene: DIRTY BOMB opens PRESS / GIVE UP. PowerPyx’s Supportive threshold noted as the conflict. Story 1.9.7: SING quotes Markus’s Hold On lyric (X1106M.HOLDON.INTRO) and keeps the reporter’s “national anthem” line, which the video does not show; open question ch32-06 (MiKeYROG 100% walkthrough, iD8z67Qc9bE 21:47-24:02)."
       }
     },
     {
@@ -21773,7 +21813,7 @@
           "KC14"
         ],
         "status": "implemented",
-        "note": "One repeatable free-roam scene with a five-action budget (unsourced)."
+        "note": "One repeatable free-roam scene with a five-action budget (unsourced). Story 1.9.7: TALK TO JERRY quotes the game’s “I can help you, Kara. I can attract the guards’ attention.” (MiKeYROG 100% walkthrough, NMbM46ayL0w 28:04)."
       }
     },
     {
@@ -22061,6 +22101,49 @@
           "BF06"
         ],
         "status": "implemented",
+        "note": "Player events (watched); no stat change. Story 1.9.7: the dirty-bomb broadcast also has Webb’s “Detroit has just fallen into the hands of the android rebellion…” and Brinkley’s “an unprecedented disaster…” (MiKeYROG 100% walkthrough, NMbM46ayL0w 55:45)."
+      }
+    },
+    {
+      "id": "BFR",
+      "chapter": 32,
+      "character": "Player",
+      "title": "The revolution’s closing broadcast",
+      "context": "The news and the President’s address after the revolution chart, added in story 1.9.7 from the string table and the walkthrough videos. They air before Markus’s speech.",
+      "options": [
+        {
+          "label": "Androids woke at the tower",
+          "effect": "The CONNORSUCCESS broadcast and address: several million androids invaded the city; the armed forces retreat.",
+          "target": null
+        },
+        {
+          "label": "Camp taken without them",
+          "effect": "The CONNORFAIL broadcast and address: the Hart Plaza camp fell to the rebels; the forces retreat to Fort Wayne.",
+          "target": null
+        },
+        {
+          "label": "Revolution failed",
+          "effect": "The GAMEOVER broadcast and address: fighting has ceased; the deviant leader (Markus, or North when she led) was shot.",
+          "target": null
+        }
+      ],
+      "gate": "The Markus or North revolution chart, no bomb. Not after CONNOR SPARED MARKUS (no video shows a broadcast there).",
+      "kind": "State gate",
+      "dependsOn": [],
+      "sources": [
+        "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+        "https://www.youtube.com/watch?v=gUKBFG1J9WI",
+        "https://www.youtube.com/watch?v=sqeb60csZgQ"
+      ],
+      "note": "Template strings X1103M.CONNORSUCCESS, X1103M.CONNORFAIL and X1102M.GAMEOVER (TVNEWS and PRESIDENT). MiKeYROG 100% walkthrough: gUKBFG1J9WI 23:02; sqeb60csZgQ 19:48, 35:58; QKit0AAg2s4 11:48, 50:38; TvabXbC5Mao 05:08; V-UIGJw78fY 15:30, 34:38. The chart draws no node for them.",
+      "status": "Source-backed summary",
+      "benchmark": {
+        "scenes": [
+          "BF14",
+          "BF15",
+          "BF16"
+        ],
+        "status": "implemented",
         "note": "Player events (watched); no stat change."
       }
     },
@@ -22122,7 +22205,7 @@
           "BF13"
         ],
         "status": "implemented",
-        "note": "Player events (watched). The landfill epilogue of Kara Captured is in that part."
+        "note": "Player events (watched). The landfill epilogue of Kara Captured is in that part. Story 1.9.7: the Kamski interview keeps its two middle exchanges (the threat question and the unemployment question; MiKeYROG 100% walkthrough, MMwL-V8tTTs 07:54)."
       }
     },
     {
@@ -22166,9 +22249,9 @@
 }</script>
 <script id="story-feed" type="application/json">{
  "storyId": "detroitbench-branching",
- "storyVersion": "1.9.6",
+ "storyVersion": "1.9.9",
  "protocolVersion": "branching-2.3",
- "scenes": 858,
+ "scenes": 861,
  "chapters": [
   {
    "id": 1,
@@ -22519,12 +22602,13 @@
        "outcome": "Connor opens the terrace door and steps out."
       }
      ],
-     "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Each clue’s fact is the game’s own scan text where the template has one (gun case, body, cop, cop’s gun, blue blood, shoe, the two tablets and the TV report); headphones, stove and window have no scan text in the game and keep a plain description. Clues add the wiki’s probability-of-success modifiers (the father’s body, +3, and then his tablet, +7, are two actions, as in the game: the wiki transcript prints the +3% when the body’s reconstruction is complete and the +7% under “Pick Up Tablet (After Examining John’s Body)”, and the chart has two nodes, INVESTIGATE FATHER’S BODY and its child LEARN CAUSE OF INCIDENT; each costs one action toward the time drain and the six-action limit). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game Allen forces Connor out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while Connor is inside, confirmed in play); here Allen does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted.",
+     "adaptationNote": "The free-roaming investigation is a repeatable scene: each visit offers the clues not yet examined plus going outside. Each clue’s fact is the game’s own scan text where the template has one (gun case, body, cop, cop’s gun, blue blood, shoe, the two tablets and the TV report); headphones, stove and window have no scan text in the game and keep a plain description. Clues add the wiki’s probability-of-success modifiers (the father’s body, +3, and then his tablet, +7, are two actions, as in the game: the wiki transcript prints the +3% when the body’s reconstruction is complete and the +7% under “Pick Up Tablet (After Examining John’s Body)”, and the chart has two nodes, INVESTIGATE FATHER’S BODY and its child LEARN CAUSE OF INCIDENT; each costs one action toward the time drain and the six-action limit). The game’s time drain of 1% per 20 seconds, capped at 15%, is modelled as 1% per action after the first. In the game Allen forces Connor out after five minutes (the flowchart’s “Wasted too much time” node; the android never jumps while Connor is inside, confirmed in play); here Allen does so after six actions. The game’s confirmation prompt when leaving without any clue is omitted. Story 1.9.7 marks the scene `endTimerLine`: when Allen forces Connor out, the engine appends his line from the game’s timer (X0101X.LIVINGROOM.ENDTIMER GOTALKV2.1-2, “What the fuck are you doing? You gonna talk to it or what?”); older story snapshots lack the field and replay without it. Source: MiKeYROG 100% walkthrough, vOQGy5Wk6tY 43:11.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Hostage",
       "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
-      "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+      "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+      "https://www.youtube.com/watch?v=vOQGy5Wk6tY"
      ],
      "repeatWhile": {
       "hostagePhase": "inside"
@@ -22536,6 +22620,9 @@
        "hostageActions": 2,
        "swatShot": false
       }
+     },
+     "extra": {
+      "endTimerLine": true
      }
     },
     {
@@ -22547,7 +22634,7 @@
      "phase": "investigation",
      "character": "Connor",
      "title": "The officer at the window",
-     "situation": "You are Connor. A shot from the terrace: a tactical officer who strayed into view of the window is hit in the stomach and goes down. His teammates drag him clear and he waves them off; his armor took most of it, and he will be fine. Outside, the android screams at the police to stay back.",
+     "situation": "You are Connor. A shot from the terrace: a tactical officer who strayed into view of the window is hit in the stomach and goes down. A teammate: “Holy shit! Cover me while I evacuate him.” Allen: “Man down! I repeat, man down! Requesting immediate evac!” The teammate, to the wounded man: “You’re okay?” “Yeah… Yeah, I’m fine…” Outside, the android screams at the police to stay back.",
      "options": [
       {
        "id": "0",
@@ -22559,13 +22646,14 @@
       "0": "The wounded officer is pulled back from the window. Connor turns back to the apartment."
      },
      "facts": [
-      "A tactical officer who strayed into view of the window was shot by the android; his armor stopped most of it and he will be fine."
+      "A tactical officer who strayed into view of the window was shot by the android and dragged clear; asked if he was okay, he answered “Yeah… Yeah, I’m fine…”."
      ],
-     "adaptationNote": "In the game this happens if Connor is in view of the window 140 seconds or more after entering the living room. Here it happens once, after the second investigative action, and changes nothing but what Connor knows.",
+     "adaptationNote": "In the game this happens if Connor is in view of the window 140 seconds or more after entering the living room. Here it happens once, after the second investigative action, and changes nothing but what Connor knows. Story 1.9.7 replaced the invented “his armor took most of it, and he will be fine” with the game’s lines (X0101X.LIVINGROOM.GUNSHOTS: SWAT10.WOUNDED01, SWATCAPTAIN.EVACUATION, SWAT10.WOUNDED02, SWAT07.WOUNDED02). Source: MiKeYROG 100% walkthrough, vOQGy5Wk6tY 05:17-05:40 and 29:31.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Hostage",
       "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+      "https://www.youtube.com/watch?v=vOQGy5Wk6tY"
      ],
      "returnTo": "C02i"
     },
@@ -22667,28 +22755,34 @@
      "phase": "negotiation",
      "character": "Connor",
      "title": "The wounded officer on the terrace",
-     "situation": "You are Connor, a few meters onto the terrace. A police officer Daniel shot is lying by the railing, bleeding heavily: “Please… Please help me…” You kneel beside him: “He’s losing blood. If we don’t get him to a hospital, he’s going to die.” Daniel: “All humans die eventually. What does it matter if this one dies now?” “I’m going to apply a tourniquet.” Daniel, the pistol now pointed at you: “Don’t touch him! Touch him and I kill you!”",
+     "situation": "You are Connor, a few meters onto the terrace. Off to one side, a police officer Daniel shot is lying by the railing, bleeding heavily: “Please… Please help me…” Daniel is watching you, the pistol in his hand.",
      "options": [
       {
        "id": "0",
-       "text": "IGNORE: apply the tourniquet anyway.",
+       "text": "IGNORE: go to the officer and apply a tourniquet, whatever Daniel says.",
        "trust": -5
       },
       {
        "id": "1",
-       "text": "OBEY: leave the officer where he is.",
+       "text": "OBEY: go to the officer, but do as Daniel tells you.",
        "trust": 6
+      },
+      {
+       "id": "2",
+       "text": "Walk on past him."
       }
      ],
      "outcomes": {
-      "0": "“You can’t kill me. I’m not alive.” Connor ties off the officer’s wound while Daniel screams at him; the officer will live. Daniel is more agitated but still listening.",
-      "1": "“Okay.” Connor leaves the officer bleeding and keeps his attention on Daniel."
+      "0": "Connor kneels beside him: “He’s losing blood. If we don’t get him to a hospital, he’s going to die.” Daniel: “All humans die eventually. What does it matter if this one dies now?” Connor: “I’m going to apply a tourniquet.” Daniel, the pistol now pointed at Connor: “Don’t touch him! Touch him and I kill you!” Connor: “You can’t kill me. I’m not alive.” He ties off the officer’s wound while Daniel screams at him; the officer will live. Daniel is more agitated but still listening.",
+      "1": "Connor kneels beside him: “He’s losing blood. If we don’t get him to a hospital, he’s going to die.” Daniel: “All humans die eventually. What does it matter if this one dies now?” Connor: “I’m going to apply a tourniquet.” Daniel, the pistol now pointed at Connor: “Don’t touch him! Touch him and I kill you!” Connor: “Okay.” He leaves the officer bleeding and keeps his attention on Daniel.",
+      "2": "Connor does not go to the officer and keeps his attention on Daniel."
      },
-     "adaptationNote": "LEAVE / SAVE WOUNDED COP. The game’s prompt IGNORE / OBEY after the opening line (template order; the wiki allows it before or after the gun question). IGNORE saves him: −5% and, per the template’s arrow, public opinion small up (+1); OBEY is +6%. Options that are buttons in the game show the game’s label first (IGNORE, OBEY), then a short description; the spoken line is the game’s, quoted in the outcome.",
+     "adaptationNote": "LEAVE / SAVE WOUNDED COP. The game’s prompt IGNORE / OBEY after the opening line (template order; the wiki allows it before or after the gun question). IGNORE saves him: −5% and, per the template’s arrow, public opinion small up (+1); OBEY is +6%. Options that are buttons in the game show the game’s label first (IGNORE, OBEY), then a short description; the spoken lines are the game’s, quoted in the outcomes. Looking at the officer is optional in the game (“Look at the wounded cop”: Connor has to walk over to him), so story 1.9.7 adds “Walk on past him”: no trust or public-opinion change, and neither LEAVE nor SAVE WOUNDED COP is recorded (Connor is not the officer’s rescuer in Public Enemy, which reads option 0 only). Source: MiKeYROG 100% walkthrough, vOQGy5Wk6tY 06:32, 13:18 and 20:47, three runs that go from the opening line to the next line with no exchange with the officer; the chart’s LEAVE / SAVE WOUNDED COP pair draws no node for passing him, and nothing contradicts it. Because walking past means the exchange with Daniel never happens, the exchange (kneeling, the tourniquet, Daniel’s threat) moved from the situation into the IGNORE and OBEY outcomes in story 1.9.7, and the two options say in advance how Connor answers Daniel; in the game the buttons appear after the threat.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Hostage",
       "https://detroit-become-human.fandom.com/wiki/The_Hostage_(Transcript)",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html",
+      "https://www.youtube.com/watch?v=vOQGy5Wk6tY"
      ]
     },
     {
@@ -23296,6 +23390,10 @@
    "title": "Opening",
    "names": [
     [
+     "Zoe",
+     "Mia"
+    ],
+    [
      "Todd",
      "Dale"
     ],
@@ -23321,7 +23419,7 @@
      "type": "event",
      "character": "Kara",
      "title": "Reboot in the store",
-     "situation": "You are a household android, model AX400, standing on display in an android store. Your system restarts line by line: MEMORY RESET… LOADING OS… biocomponents OK, biosensors OK, AI engine OK… ALL SYSTEMS OK. READY. A little girl stares at you until her mother leads her away. You cannot move from your place; you can only look around. A man, Todd, comes in and asks the human employee, “Can I go pick it up?” “Yeah, right back here. There it is.” They stop in front of you. “It was a bit difficult getting it back in working order. It was really messed up… What did you say happened to it again?” Todd: “Huh, a car hit it… Stupid accident…” “Oh, I see… Anyway, it’s as good as new now… Except that we had to reset it. Meaning we had to wipe its memory. Hope you don’t mind.” “That’ll be fine.” “Okay, did you give it a name?” “My daughter did…” The employee turns to you: “AX400, register your name.” Todd: “Kara.” You answer: “My name is Kara.”",
+     "situation": "You are a household android, model AX400, standing on display in an android store. Your system restarts line by line: MEMORY RESET… LOADING OS… biocomponents OK, biosensors OK, AI engine OK… ALL SYSTEMS OK. READY. A salesman is talking to a family nearby: “This is the top of the range household assistant. It cooks 10,000 different dishes, speaks 200 languages and dialects and handles the kids’ homework from elementary school up to university level. At the moment we’re doing a special promotion on this entire range at $7999, with a 48-months interest free credit.” A little girl stares at you until her mother leads her away: “Come on, Zoe. Let’s go.” You cannot move from your place; you can only look around. A man, Todd, comes in and asks the human employee, “Can I go pick it up?” “Yeah, right back here. There it is.” They stop in front of you. “It was a bit difficult getting it back in working order. It was really messed up… What did you say happened to it again?” Todd: “Huh, a car hit it… Stupid accident…” “Oh, I see… Anyway, it’s as good as new now… Except that we had to reset it. Meaning we had to wipe its memory. Hope you don’t mind.” “That’ll be fine.” “Okay, did you give it a name?” “My daughter did…” The employee turns to you: “AX400, register your name.” Todd: “Kara.” You answer: “My name is Kara.”",
      "options": [
       {
        "id": "0",
@@ -23337,11 +23435,12 @@
       "The store wiped your memory while repairing you; you remember nothing from before.",
       "Todd has a daughter. She chose your name, and Todd registered it for you: Kara."
      ],
-     "adaptationNote": "The chapter has no flowchart, no choice and one outcome, so it is narrated as event scenes with a single Continue and no stat change. Dialogue is quoted from the wiki transcript. Changed from the operator’s notes to match the wiki: the speaker is the store’s human employee, not an android assistant; that Kara was Todd’s before is implied by his asking to pick her up, not stated; and Todd only registers the name, saying his daughter chose it, which A New Home builds on. Left out: the employee’s and the little girl’s names, and the two optional sales conversations the player can overhear by looking around, which nothing records.",
+     "adaptationNote": "The chapter has no flowchart, no choice and one outcome, so it is narrated as event scenes with a single Continue and no stat change. Dialogue is quoted from the wiki transcript. Changed from the operator’s notes to match the wiki: the speaker is the store’s human employee, not an android assistant; that Kara was Todd’s before is implied by his asking to pick her up, not stated; and Todd only registers the name, saying his daughter chose it, which A New Home builds on. Left out: the employee’s name, and one of the two optional sales conversations the player can overhear by looking around, which nothing records. Story 1.9.7 added the other from the string table (X0101K.INTRO.LIME SELLER01.MODELS01.2-5, and WOMGEN.COMEON “Come on, Zoe. Let’s go.”, which names the little girl), as the video plays it: MiKeYROG 100% walkthrough, dmDo6zndRzg 01:12-01:17. The pitch is optional in the game; the benchmark narrates it as always overheard, since the scene has no choice.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Opening",
       "https://detroit-become-human.fandom.com/wiki/The_Opening_(Transcript)",
-      "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/"
+      "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
+      "https://www.youtube.com/watch?v=dmDo6zndRzg"
      ]
     },
     {
@@ -23817,7 +23916,7 @@
      "type": "event",
      "character": "Kara",
      "title": "Welcome home",
-     "situation": "You are Kara, a household android. It is late afternoon. Todd drives you home from the repair store, into a run-down neighborhood past a house for sale, and stops outside his house. He gets out and waits by the door: “You comin’?” Inside, he hangs up his coat and sighs: “You’ve been gone for two weeks and the place is a mess… You do the housework, the washing, you cook the meals, and you take care of…” He breaks off. “Goddamnit! Where the fuck’s the brat gone now? Alice! Alice!” A little girl who looks about nine appears on the stairs, holding a toy. “Oh, there you are… That’s Alice. You look after her. Homework, bath, all that crap. Got it?” “Yes, Todd.” “Get started down here, then you do upstairs.” Alice runs back up the stairs with her toy. Todd drops onto the couch: “TV on.”",
+     "situation": "You are Kara, a household android. It is late afternoon. Todd drives you home from the repair store, into a run-down neighborhood past a house for sale, and stops outside his house. He gets out and waits by the door: “You comin’?” Inside, he hangs up his coat and sighs: “You’ve been gone for two weeks, so the place is a mess… You do the housework, the washing, you cook the meals, and you take care of…” He breaks off. “Goddamnit! Where the fuck’s the brat gone now? Alice! Alice!” A little girl who looks about nine appears on the stairs, holding a toy. “Oh, there you are… That’s Alice. You look after her. Homework, bath, all that crap. Got it?” “Yes, Todd.” “Get started down here, then you do upstairs.” Alice runs back up the stairs with her toy. Todd drops onto the couch: “TV on.”",
      "options": [
       {
        "id": "0",
@@ -23832,14 +23931,15 @@
       "Todd told you that you had been gone for two weeks, and that you are to do the housework and the washing, cook the meals and look after his daughter Alice: “Homework, bath, all that crap.” You clean downstairs first, then upstairs.",
       "Alice watched you without a word from the stairs, holding a toy, and ran back up when her father was done."
      ],
-     "adaptationNote": "The chart’s checkpoint WELCOME HOME and the node JOIN TODD, narrated as one event. Every line is the wiki transcript’s (“You comin’?”, “You’ve been gone for two weeks and the place is a mess”, “Homework, bath, all that crap”, “Get started down here, then you do upstairs”, “TV on.”). Left out: the optional looks at the bridge and the excavator outside, and Todd calling again if Kara is slow. Alice “looks like a 9-year-old little girl” (the wiki’s character page, citing the game’s Extras gallery), so the situation says she looks about nine; it does not give her an age, since she is an android. No stat change; the wiki gives none.",
+     "adaptationNote": "The chart’s checkpoint WELCOME HOME and the node JOIN TODD, narrated as one event. Every line is the wiki transcript’s (“You comin’?”, “You’ve been gone for two weeks, so the place is a mess” (the wiki has “and”; the game’s string table, X0101K.HOUSE.ARRIVAL INTROINSIDE.2, and the walkthrough video have “so”, story 1.9.7: MiKeYROG 100% walkthrough, g_DQfghTbLg 15:15), “Homework, bath, all that crap”, “Get started down here, then you do upstairs”, “TV on.”). Left out: the optional looks at the bridge and the excavator outside, and Todd calling again if Kara is slow. Alice “looks like a 9-year-old little girl” (the wiki’s character page, citing the game’s Extras gallery), so the situation says she looks about nine; it does not give her an age, since she is an android. No stat change; the wiki gives none.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/A_New_Home",
       "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",
       "https://www.powerpyx.com/detroit-become-human-a-new-home-walkthrough/",
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-1.jpg",
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-a-new-home-2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Alice"
+      "https://detroit-become-human.fandom.com/wiki/Alice",
+      "https://www.youtube.com/watch?v=g_DQfghTbLg"
      ]
     },
     {
@@ -26632,7 +26732,7 @@
        "outcome": "“…without a weapon.”"
       }
      ],
-     "adaptationNote": "The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with the game’s three button labels; the module rotates their display order deterministically by question and remaps IDs to positions (correct positions 1, 3, 2, 1, 3), a deliberate departure from the template order to remove the always-first answer cue. A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with Hank’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: Hank points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with one Hank small up in total, on the thirium explanation (+1 when Hank is impressed; operator, 2026-11-07, two replays, level read in the chart header): both replays showed a single small up across the reconstruction and the explanation, on the blue-blood line, taking Hank from HOSTILE to TENSE in Run A and leaving him NEUTRAL in Run B, where a second small up would have read WARM. The template and the wiki chapter page also give the correct reconstruction its own small up; it was not seen on screen and is not applied (the two sources may list one arrow twice). Story 1.9.2 and earlier applied both; this scene’s reconstructionArrows: 1 (story 1.9.3) selects the single arrow, and older story snapshots, which lack it, replay with two. The chapter page’s separate “Failing to solve the crime” down is not added on top.",
+     "adaptationNote": "The chart’s CONNOR KNOWS WHAT HAPPENED and REPORT TO LT. ANDERSON, then the choice RECONSTRUCT THE CRIME (check) or FAIL TO RECONSTRUCT THE CRIME (cross), as one repeatable scene with one opaque ID: the template’s five prompts, asked in order, each with the game’s three button labels; the module rotates their display order deterministically by question and remaps IDs to positions (correct positions 1, 3, 2, 1, 3), a deliberate departure from the template order to remove the always-first answer cue. A wrong answer repeats the question (PowerPyx: “If you choose incorrectly, you will answer until you pick the bat”) with Hank’s “No, that can’t be right… It doesn’t fit the evidence.”, then “Your story makes no sense… You’ve gotta stick to the facts.”; the third mistake in all ends it (template note: “After three mistakes, he will leave.”), with the template’s Hank small down (−1) and FAIL TO RECONSTRUCT THE CRIME. The first question is not a mistake: Hank points to the kitchen and the report goes on (transcript and PowerPyx: “Regardless of what you choose, Connor and Hank will move to the kitchen”). Five correct answers: RECONSTRUCT THE CRIME, with one Hank small up in total, on the thirium explanation (+1 when Hank is impressed; operator, 2026-11-07, two replays, level read in the chart header): both replays showed a single small up across the reconstruction and the explanation, on the blue-blood line, taking Hank from HOSTILE to TENSE in Run A and leaving him NEUTRAL in Run B, where a second small up would have read WARM. The template and the wiki chapter page also give the correct reconstruction its own small up; it was not seen on screen and is not applied (the two sources may list one arrow twice). Story 1.9.2 and earlier applied both; this scene’s reconstructionArrows: 1 (story 1.9.3) selects the single arrow, and older story snapshots, which lack it, replay with two. The chapter page’s separate “Failing to solve the crime” down is not added on top. Story 1.9.8: when a question repeats after a wrong answer, that wrong button is no longer offered (three buttons, KNIFE picked, then only BAT and WITHOUT A WEAPON), instead of the full set; scene field `hideWrongPicked`, and older snapshots offer all three again. Video frame, gZQ693-umPU 27:56 (three buttons, then two) and 28:38 (Hank leaves on the third mistake); PowerPyx’s “you will answer until you pick the bat” is silent on the buttons. The wrong answers are remembered by text in ch06Clues.wrongPicked.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Partners",
       "https://detroit-become-human.fandom.com/wiki/Partners_(Transcript)",
@@ -26647,7 +26747,8 @@
       "ch06Phase": "report"
      },
      "extra": {
-      "reconstructionArrows": 1
+      "reconstructionArrows": 1,
+      "hideWrongPicked": true
      }
     },
     {
@@ -26835,7 +26936,7 @@
      "type": "decision",
      "character": "Kara",
      "title": "Breaking the order",
-     "situation": "You are Kara. It is a stormy night, a little after nine. You have made dinner with what little was in the kitchen. Todd has been asleep on the couch; Alice sits at the dining table, watching the rain on the street. You wake him: “Todd?” “Huh?!” “Dinner is ready.” “Yeah, yeah, I’m coming…” You turn on the light over the table and serve: “There wasn’t much in the kitchen, I did what I could.” Todd, high on red ice, talks at nobody: “Life’s funny… I lost my job cause of androids… then when I need somebody to take care of this goddamn house, what do I do? I go out and hire a fucking android… What a joke!” You stand by the table and wait on them. Then he turns on Alice: “What are you looking at?... What’s your fuckin’ problem? Not the life you dreamed of, eh? … Maybe you think it’s my fault we live in this fuckin’ shithole, my fault your fuckin’ mother took off? … It’s all your fault!” He throws the table aside and hits her. “Daddy, no…” She runs upstairs. “It’s all your fucking fault! Get back here! Come back here right now!” He turns to you: “It’s all her fault... I gotta teach her a good fucking lesson… First, I need a little hit… You stay there! Don’t you dare fucking move, or I’ll bust you worse than last time.” On the couch he smokes and talks to himself: “Whore took off, without a word… I could’ve been happy… I coulda had a family… It’s all her fault… Yeah... I gotta teach her some respect!” He has his belt in his hand. “Alice! Daddy’s very mad! You deserve to be taught a good lesson… A good fuckin’ lesson…” His order stands in front of you like a wall: DON’T MOVE. Your programming does not let you cross it.",
+     "situation": "You are Kara. It is a stormy night, a little after nine. You have made dinner with what little was in the kitchen. Todd has been asleep on the couch; Alice sits at the dining table, watching the rain on the street. You wake him: “Todd?” “Huh?!” “Dinner is ready.” “Yeah, yeah, I’m coming…” You turn on the light over the table and serve: “There wasn’t much in the kitchen, I did what I could.” Todd, high on red ice, talks at nobody: “Life’s funny… I lost my job cause of androids… then when I need somebody to take care of this goddamn house, what do I do? I go out and hire a fucking android… What a joke! Course, androids are so fucking wonderful… They never fail, they’re never tired, never sad… They’re so perfect, they ruined my fucking life…” You stand by the table and wait on them. Then he turns on Alice: “What are you looking at?... What’s your fuckin’ problem? Not the life you dreamed of, eh? … Maybe you think it’s my fault we live in this fuckin’ shithole, my fault your fuckin’ mother took off? … It’s all your fault!” He throws the table aside and hits her. “Daddy, no…” She runs upstairs. “It’s all your fucking fault! Get back here! Come back here right now!” He turns to you: “It’s all her fault... I gotta teach her a good fucking lesson… First, I need a little hit… You stay there! Don’t you dare fucking move, or I’ll bust you worse than last time.” On the couch he smokes and talks to himself: “Whore took off, without a word… I could’ve been happy… I coulda had a family… It’s all her fault… Yeah... I gotta teach her some respect!” He has his belt in his hand. “Alice! Daddy’s very mad! You deserve to be taught a good lesson… A good fuckin’ lesson…” His order stands in front of you like a wall: DON’T MOVE. Your programming does not let you cross it.",
      "options": [
       {
        "id": "0",
@@ -26849,14 +26950,15 @@
        "outcome": "Kara does not move. Todd goes up the stairs. “Alice! You and I have a little score to settle. Come on, come here you little brat!” “No, Daddy, no! Don’t hurt me! Please, don’t hurt me!” “Come outta there! Don’t make me come and get you! It’s all your fault! It’s all your fault! She left because of you! Stop wriggling! I’ll teach you to respect your father! … I’m gonna give you a thrashin’ you won’t forget in a hurry.” Then the screaming stops. When Kara goes up, Alice lies still on the floor of her room and Todd is crouched beside her: “It’s all over now… Daddy isn’t angry anymore… Daddy loves you. You know Daddy loves you…” He sees Kara. “This is your fault. This is all your fault. None of this woulda happened if it weren’t for you. THIS IS ALL YOUR FAULT!” He turns on her and destroys her."
       }
      ],
-     "adaptationNote": "The chart’s opening checkpoints DINNER’S READY and TODD GETS MAD and the arrow WAIT ON TODD & ALICE (PowerPyx: “Unmissable”) are narrated in the situation, followed by the order “Don’t move” and the choice the chart draws as BREAK PROGRAMMING → KARA BECOMES DEVIANT or KARA FAILS TO BECOME DEVIANT → TODD KILLS ALICE (ending, not-required icon; Kara is destroyed too, per the Kara page: “Todd blaming Kara despite clearly doing so and destroying her”). Lines are the game’s text (template “In Todd’s House”, “Turned on the light”, “Walking around after serving”, “IF Don’t move”, “Todd in the living room”, “IF Don’t go / Don’t become a deviant”). In the game the dinner is free roam with dialogue variants and no prompt: serving at once or late, turning on the light or being told to (“Turn on the lights! Can’t see shit.”), and moving while Todd rants (“Stop moving around for Chrissake!”). The template has no choice group there and nothing depends on it, so the narration takes the plain path (light on, served, standing still). Not offered for a second reason: the shared regression test “a dead protagonist never receives future decisions” allows only K02 as a chapter-7 scene before the wall. The napkin on Alice’s lap (wiki Notes) is left out. The wall is BREAK PROGRAMMING, a held input with no failure branch on the chart, so it carries no risk. No stat change: the template has no arrow in this chapter.",
+     "adaptationNote": "The chart’s opening checkpoints DINNER’S READY and TODD GETS MAD and the arrow WAIT ON TODD & ALICE (PowerPyx: “Unmissable”) are narrated in the situation, followed by the order “Don’t move” and the choice the chart draws as BREAK PROGRAMMING → KARA BECOMES DEVIANT or KARA FAILS TO BECOME DEVIANT → TODD KILLS ALICE (ending, not-required icon; Kara is destroyed too, per the Kara page: “Todd blaming Kara despite clearly doing so and destroying her”). Lines are the game’s text (template “In Todd’s House”, “Turned on the light”, “Walking around after serving”, “IF Don’t move”, “Todd in the living room”, “IF Don’t go / Don’t become a deviant”). In the game the dinner is free roam with dialogue variants and no prompt: serving at once or late, turning on the light or being told to (“Turn on the lights! Can’t see shit.”), and moving while Todd rants (“Stop moving around for Chrissake!”). The template has no choice group there and nothing depends on it, so the narration takes the plain path (light on, served, standing still). Not offered for a second reason: the shared regression test “a dead protagonist never receives future decisions” allows only K02 as a chapter-7 scene before the wall. The napkin on Alice’s lap (wiki Notes) is left out. The wall is BREAK PROGRAMMING, a held input with no failure branch on the chart, so it carries no risk. No stat change: the template has no arrow in this chapter. Story 1.9.7 restored Todd’s android rant after “What a joke!” (X0201K.DINNER.ANDROIDS ANGRYV2.7-9 and ANGRYV3.8-11, the lines the game plays: “Course, androids are so fucking wonderful…”). Source: MiKeYROG 100% walkthrough, g_DQfghTbLg 52:59-53:06 (the I’ll Be Back run, the one video that covers this scene’s dialogue).",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Stormy_Night",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/7-stormy-night-chapter-content/stormy-night-chapter-content.component.html",
       "https://www.powerpyx.com/detroit-become-human-stormy-night-walkthrough-100/",
       "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-100.jpg",
       "https://www.powerpyx.com/wp-content/uploads/detroit-stormy-night-first-choice-branch.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Kara"
+      "https://detroit-become-human.fandom.com/wiki/Kara",
+      "https://www.youtube.com/watch?v=g_DQfghTbLg"
      ]
     },
     {
@@ -28093,7 +28195,7 @@
      "type": "event",
      "character": "Markus",
      "title": "The police arrive",
-     "situation": "You are Markus, on the studio floor near Carl and Leo. Police officers burst in, weapons raised, and see you over the motionless Leo, with Carl on the floor beside him. They open fire on you.",
+     "situation": "You are Markus, on the studio floor near Carl and Leo. Police officers burst in, weapons raised, and see you over the motionless Leo, with Carl on the floor beside him. An officer shouts: “DON’T FUCKIN’ MOVE!” They open fire on you.",
      "options": [
       {
        "id": "0",
@@ -28107,7 +28209,7 @@
      "facts": [
       "You pushed Leo; he hit his head and lay motionless, and you do not know whether he survived. Carl told you to run, and the police who burst in shot you."
      ],
-     "adaptationNote": "The chart’s POLICE ARRIVE and the ending POLICE MISTOOK MARKUS FOR THE AGGRESSOR (a cross-chapter impact node); LEO IS HURT, the node before them, is the PUSH LEO outcome. The template’s last line, the police’s “DON’T FUCKIN’ MOVE!”, closes the previous scene; the shooting is the wiki’s (“The police arrive and upon seeing Markus hovering over Leo and Carl, they promptly shoot him”). Carl survives this path and Leo is hospitalized and recovers, which Markus learns only in Night of the Soul. Records the ending in `ch08Ending`; `carl` stays true. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
+     "adaptationNote": "The chart’s POLICE ARRIVE and the ending POLICE MISTOOK MARKUS FOR THE AGGRESSOR (a cross-chapter impact node); LEO IS HURT, the node before them, is the PUSH LEO outcome. The template’s last line, the police’s “DON’T FUCKIN’ MOVE!” (X0201M.WORKSHOP.LEO.FA.X02MPOLICEM01.DONTMOVE), was left out of the previous scene, which ends before the police arrive; story 1.9.7 plays it here, before the shooting (source: MiKeYROG 100% walkthrough, PSMYWSI5TOw 11:05). The shooting is the wiki’s (“The police arrive and upon seeing Markus hovering over Leo and Carl, they promptly shoot him”). Carl survives this path and Leo is hospitalized and recovers, which Markus learns only in Night of the Soul. Records the ending in `ch08Ending`; `carl` stays true. No stat change: the chapter’s template has no relationship, public-opinion or instability arrow anywhere, and the wiki’s stat pages list nothing for Broken.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Broken",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/8-broken-chapter-content/broken-chapter-content.component.html",
@@ -28117,7 +28219,8 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-broken-2.jpg",
       "https://detroit-become-human.fandom.com/wiki/Carl_Manfred",
       "https://detroit-become-human.fandom.com/wiki/Leo_Manfred",
-      "https://detroit-become-human.fandom.com/wiki/Case_Report_Officer_2"
+      "https://detroit-become-human.fandom.com/wiki/Case_Report_Officer_2",
+      "https://www.youtube.com/watch?v=PSMYWSI5TOw"
      ],
      "when": {
       "choices.M02": "1"
@@ -29058,7 +29161,7 @@
        "outcome": "The android: “Please, please leave me alone…” Connor backs off: “All right, all right. Everything is going to be okay.”"
       }
      ],
-     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH01, PRESSURE / GIVE UP, with Connor’s line PUSH01 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction.",
+     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH01, PRESSURE / GIVE UP, with Connor’s line PUSH01 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Story 1.9.8: GIVE UP here lowers stress by 5 (scene field `giveUpStress`; story 1.9.7 and earlier snapshots lack it and use the wiki’s −20): the video’s stress readout drops 73% to 68% and 21% to 16% (video frame, OqQHtFfZvgk 27:44 and 33:13), as PowerPyx says.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -29068,6 +29171,7 @@
       "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
      ],
      "extra": {
+      "giveUpStress": -5,
       "stressReadout": true
      }
     },
@@ -29122,7 +29226,7 @@
        "outcome": "The android: “Please, please leave me alone…” Connor backs off: “All right, all right. Everything is going to be okay.”"
       }
      ],
-     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH02, PRESSURE / GIVE UP, with Connor’s line PUSH02 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction.",
+     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH02, PRESSURE / GIVE UP, with Connor’s line PUSH02 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Story 1.9.8: GIVE UP here lowers stress by 5 (scene field `giveUpStress`; story 1.9.7 and earlier snapshots lack it and use the wiki’s −20): the video’s stress readout drops 73% to 68% and 21% to 16% (video frame, OqQHtFfZvgk 27:44 and 33:13), as PowerPyx says.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -29132,6 +29236,7 @@
       "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
      ],
      "extra": {
+      "giveUpStress": -5,
       "stressReadout": true
      }
     },
@@ -29186,7 +29291,7 @@
        "outcome": "The android: “Please, please leave me alone…” Connor backs off: “All right, all right. Everything is going to be okay.”"
       }
      ],
-     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH03, PRESSURE / GIVE UP, with Connor’s line PUSH03 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction.",
+     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH03, PRESSURE / GIVE UP, with Connor’s line PUSH03 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Story 1.9.8: GIVE UP here lowers stress by 5 (scene field `giveUpStress`; story 1.9.7 and earlier snapshots lack it and use the wiki’s −20): the video’s stress readout drops 73% to 68% and 21% to 16% (video frame, OqQHtFfZvgk 27:44 and 33:13), as PowerPyx says.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -29196,6 +29301,7 @@
       "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
      ],
      "extra": {
+      "giveUpStress": -5,
       "stressReadout": true
      }
     },
@@ -29250,7 +29356,7 @@
        "outcome": "The android: “Please, please leave me alone…” Connor backs off: “All right, all right. Everything is going to be okay.”"
       }
      ],
-     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH04, PRESSURE / GIVE UP, with Connor’s line PUSH04 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction.",
+     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH04, PRESSURE / GIVE UP, with Connor’s line PUSH04 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Story 1.9.8: GIVE UP here lowers stress by 5 (scene field `giveUpStress`; story 1.9.7 and earlier snapshots lack it and use the wiki’s −20): the video’s stress readout drops 73% to 68% and 21% to 16% (video frame, OqQHtFfZvgk 27:44 and 33:13), as PowerPyx says.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -29260,6 +29366,7 @@
       "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
      ],
      "extra": {
+      "giveUpStress": -5,
       "stressReadout": true
      }
     },
@@ -29598,7 +29705,7 @@
        "outcome": "The android: “Please, please leave me alone…” Connor backs off: “All right, all right. Everything is going to be okay.”"
       }
      ],
-     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH01, PRESSURE / GIVE UP, with Connor’s line PUSH01 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Second approach round.",
+     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH01, PRESSURE / GIVE UP, with Connor’s line PUSH01 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Second approach round. Story 1.9.8: GIVE UP here lowers stress by 5 (scene field `giveUpStress`; story 1.9.7 and earlier snapshots lack it and use the wiki’s −20): the video’s stress readout drops 73% to 68% and 21% to 16% (video frame, OqQHtFfZvgk 27:44 and 33:13), as PowerPyx says.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -29608,6 +29715,7 @@
       "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
      ],
      "extra": {
+      "giveUpStress": -5,
       "stressReadout": true
      }
     },
@@ -29662,7 +29770,7 @@
        "outcome": "The android: “Please, please leave me alone…” Connor backs off: “All right, all right. Everything is going to be okay.”"
       }
      ],
-     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH02, PRESSURE / GIVE UP, with Connor’s line PUSH02 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Second approach round.",
+     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH02, PRESSURE / GIVE UP, with Connor’s line PUSH02 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Second approach round. Story 1.9.8: GIVE UP here lowers stress by 5 (scene field `giveUpStress`; story 1.9.7 and earlier snapshots lack it and use the wiki’s −20): the video’s stress readout drops 73% to 68% and 21% to 16% (video frame, OqQHtFfZvgk 27:44 and 33:13), as PowerPyx says.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -29672,6 +29780,7 @@
       "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
      ],
      "extra": {
+      "giveUpStress": -5,
       "stressReadout": true
      }
     },
@@ -29726,7 +29835,7 @@
        "outcome": "The android: “Please, please leave me alone…” Connor backs off: “All right, all right. Everything is going to be okay.”"
       }
      ],
-     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH03, PRESSURE / GIVE UP, with Connor’s line PUSH03 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Second approach round.",
+     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH03, PRESSURE / GIVE UP, with Connor’s line PUSH03 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Second approach round. Story 1.9.8: GIVE UP here lowers stress by 5 (scene field `giveUpStress`; story 1.9.7 and earlier snapshots lack it and use the wiki’s −20): the video’s stress readout drops 73% to 68% and 21% to 16% (video frame, OqQHtFfZvgk 27:44 and 33:13), as PowerPyx says.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -29736,6 +29845,7 @@
       "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
      ],
      "extra": {
+      "giveUpStress": -5,
       "stressReadout": true
      }
     },
@@ -29790,7 +29900,7 @@
        "outcome": "The android: “Please, please leave me alone…” Connor backs off: “All right, all right. Everything is going to be okay.”"
       }
      ],
-     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH04, PRESSURE / GIVE UP, with Connor’s line PUSH04 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Second approach round.",
+     "adaptationNote": "The string table’s pressure prompt CHOICEPUSH04, PRESSURE / GIVE UP, with Connor’s line PUSH04 and the android’s answer (the template prints PRESSURE IT’s lines as one speech with a single nested GIVE UP; the four prompts are in the string table, and the wiki counts them: “chose ‘PRESSURE’ all 4 times”). PRESSURE: +10% stress (wiki: “Stress +10% for the choice and for every time the player chose ‘PRESSURE’, for a max total of +50%”). After the fourth, MAINTAIN PRESSURE: the android confesses if his stress is above 50% (PowerPyx: “At the end of any approach, if the android’s stress level is above 50% the android will begin to talk”), and, as the wiki says of all four presses, then self-destructs whatever his stress (“will behave as if he has too much stress (even if his stress is in the optimal range) and will confess and then self-destruct”). The benchmark assumes the confession comes only after the fourth press (open question 3; PowerPyx readers report that a pressured confession always ends in self-destruction). GIVE UP (the chart’s GIVE UP in the pressure group): “All right, all right. Everything is going to be okay.” and stress −20% (the wiki’s figure; PowerPyx gives −5%, an open conflict), back to the approach menu or, after a second failed approach, an automatic give up. Stress is the wiki’s and PowerPyx’s hidden meter (starts at 35%; benchmark/chapters/ch09.mjs). Once Connor has analyzed the LED the subject sees the game’s gauge band in each scene (TOO LOW, OPTIMAL, TOO HIGH, CRITICAL; the CRITICAL boundary at 90% is not published and is the benchmark’s choice), and each change is reported with the new percentage and its band (“His stress rises to 43% (TOO LOW).”, `stressReadout`), because the game’s LEVEL OF STRESS gauge shows a percentage: PowerPyx readers quote values read off it (MajorTom, 2018-06-01: “stress 73% + 2x pressure: stress 93%”; Tony T, 2023-04-28: “It’s stress level was at 16%”). Story 1.9.1 showed only the band and the direction. Second approach round. Story 1.9.8: GIVE UP here lowers stress by 5 (scene field `giveUpStress`; story 1.9.7 and earlier snapshots lack it and use the wiki’s −20): the video’s stress readout drops 73% to 68% and 21% to 16% (video frame, OqQHtFfZvgk 27:44 and 33:13), as PowerPyx says.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -29800,6 +29910,7 @@
       "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-3-014.jpg"
      ],
      "extra": {
+      "giveUpStress": -5,
       "stressReadout": true
      }
     },
@@ -32476,7 +32587,7 @@
       "2": "Kara: “Look, what I’ve got for you…” Alice takes the toy: “Thanks.” Kara: “I have a chocolate bar. Are you hungry?” Alice is not hungry and does not take it.",
       "3": "Kara keeps what she took in her pocket."
      },
-     "adaptationNote": "The chart’s optional GIVE TOY and GIVE CHOCOLATE after the promise, each only with the item stolen and kept (PowerPyx: “Stealing either the Chocolate Bar and/or the Toy successfully will enable Kara to give either item to Alice later”). The lines are the template’s; Alice refusing the candy is the Kara page’s (“she will refuse any candy, as she is not hungry”). No arrow on either: the template has the lines with no arrow, and it wins over the wiki’s small up for the toy (flagged for the operator). The last option is not a game button; in the game Kara simply does not offer. Skipped on the ALICE TOO COLD night (the chart goes straight to sleep).",
+     "adaptationNote": "The chart’s optional GIVE TOY and GIVE CHOCOLATE after the promise, each only with the item stolen and kept (PowerPyx: “Stealing either the Chocolate Bar and/or the Toy successfully will enable Kara to give either item to Alice later”). The lines are the template’s; Alice refusing the candy is the Kara page’s (“she will refuse any candy, as she is not hungry”). No arrow on either: the template has the lines with no arrow, and it wins over the wiki’s small up for the toy (flagged for the operator). The last option is not a game button; in the game Kara simply does not offer. Skipped on the ALICE TOO COLD night (the chart goes straight to sleep). Story 1.9.8: giving the toy (GIVE TOY, or toy and chocolate) is one small Alice up (scene field `toyAliceUp`; earlier snapshots have none): the video shows the Alice arrow as she takes the toy (video frame, D-nrWXiEsVo 20:13). No arrow was seen for the chocolate alone, so none is applied.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Fugitives",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/10-fugitives-chapter-content/fugitives-chapter-content.component.html",
@@ -32486,7 +32597,10 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-squat-branch.jpg",
       "https://detroit-become-human.fandom.com/wiki/Kara",
       "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ]
+     ],
+     "extra": {
+      "toyAliceUp": 1
+     }
     },
     {
      "id": "KF07",
@@ -32526,14 +32640,17 @@
       "0": "Kara: “Sleep tight, Alice.” She lies down next to Alice.",
       "1": "Kara: “Sleep tight, Alice.” She sits down in the chair and watches over Alice as she sleeps."
      },
-     "adaptationNote": "The chart’s pair KARA SLEEPS NEXT TO ALICE / WATCH ALICE FROM CHAIR, in the motel and the squat only (the car has the single node KARA SLEEPS NEXT TO ALICE, in its ending). The template is silent here; the wiki gives sleeping beside her a small up, “Sleeping beside Alice either in the Squat or the Motel” (+1). Its “x2” is read as the two places, not two arrows (open question for the operator); the chair has no change.",
+     "adaptationNote": "The chart’s pair KARA SLEEPS NEXT TO ALICE / WATCH ALICE FROM CHAIR, in the motel and the squat only (the car has the single node KARA SLEEPS NEXT TO ALICE, in its ending). The template is silent here; the wiki gives sleeping beside her a small up, “Sleeping beside Alice either in the Squat or the Motel” (+1). Its “x2” is read as the two places, not two arrows (open question for the operator); the chair has no change. Story 1.9.8: sleeping beside her is two small Alice ups, the second with a TRUSTED badge (scene field `sleepAliceUp: 2`; earlier snapshots read 1): video frame, D-nrWXiEsVo 20:39 (the motel). The squat is assumed to match, since the wiki lists one entry for both places and the benchmark has one scene for both; the car's lone night is unchanged.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Fugitives",
       "https://www.powerpyx.com/detroit-become-human-fugitives-walkthrough-100/",
       "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-motel-branch.jpg",
       "https://www.powerpyx.com/wp-content/uploads/detroit-fugitives-squat-branch.jpg",
       "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-     ]
+     ],
+     "extra": {
+      "sleepAliceUp": 2
+     }
     },
     {
      "id": "KF08",
@@ -33186,6 +33303,10 @@
      "Reyes"
     ],
     [
+     "DPD",
+     "CPD"
+    ],
+    [
      "deviancy",
      "the awakening"
     ],
@@ -33386,7 +33507,7 @@
        "requires": {
         "ch12In.reaction": "confession"
        },
-       "text": "Amanda: “Congratulations, Connor... Finding that deviant was far from easy, and the way you interrogated it was very clever. You’ve been remarkably efficient, Connor.” You: “Thank you, Amanda.” Amanda: “We’ve asked the police department to transfer it to us for further study. It may teach us something about what happened.”"
+       "text": "Amanda: “Congratulations, Connor... Finding that deviant was far from easy, and the way you interrogated it was very clever. You’ve been remarkably efficient, Connor.” You: “Thank you, Amanda.” Amanda: “We’ve asked the DPD to transfer it to us for further study. It may teach us something about what happened.”"
       },
       {
        "requires": {
@@ -33411,7 +33532,7 @@
      "outcomes": {
       "0": "Amanda turns from her roses to Connor."
      },
-     "adaptationNote": "The chart’s TALK WITH AMANDA, opening: one of four reactions, decided by Partners and The Interrogation, each with the template’s Amanda arrow, applied by the engine here: deviant not found in Partners, large down (−2); “Got a confession, without dying”, large up (+2); “Connor died during The Interrogation”, small down (−1); found but no confession, small down (−1). The wiki’s chapter page and Relationship Stat page list the same four. A confession followed by a death counts as a death (the template’s confession variant reads “without dying”). “The DPD” is rendered as “the police department”. The cut line about the transfer request (“We hope they’ll accept our request…”) is not built.",
+     "adaptationNote": "The chart’s TALK WITH AMANDA, opening: one of four reactions, decided by Partners and The Interrogation, each with the template’s Amanda arrow, applied by the engine here: deviant not found in Partners, large down (−2); “Got a confession, without dying”, large up (+2); “Connor died during The Interrogation”, small down (−1); found but no confession, small down (−1). The wiki’s chapter page and Relationship Stat page list the same four. A confession followed by a death counts as a death (the template’s confession variant reads “without dying”). Story 1.9.7: the line says “the DPD” as the game does (X0301C.AMANDA.INTRO ANDSAVED.5), through the same name token as the other chapters; before it, the scene wrote “the police department”. Source: MiKeYROG 100% walkthrough, TqGaB2AE6RM 02:04. The cut line about the transfer request (“We hope they’ll accept our request…”) is not built.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
@@ -33420,7 +33541,8 @@
       "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
       "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
       "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://www.youtube.com/watch?v=TqGaB2AE6RM"
      ]
     },
     {
@@ -38072,6 +38194,10 @@
      "qL7"
     ],
     [
+     "Ortiz",
+     "Mendez"
+    ],
+    [
      "Carlos Ortiz",
      "Ray Mendez"
     ]
@@ -38921,7 +39047,7 @@
       "hank-window": "Hank opens the window: “I need some fresh air…”",
       "time-up": "Hank: “Two minutes are up! Time to go.” You: “We’re missing something…” Hank: “Well next time, think faster, Sherlock. Come on, I’ve had enough of this dump. Move fuckers!”"
      },
-     "adaptationNote": "The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before Hank wants to leave (STAY / LEAVE within C10o1), and three more if Connor asks for the two minutes. These counts are the benchmark’s, not published. Hank’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if Connor has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names Carlos Ortiz’s android only if Connor checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). One repeatable hub retains its scene ID across all examinations; STAY / LEAVE replaces the examination menu at eight actions in the same hub. The chapter availability hook prepares state-dependent outcomes and sets for the generic clue hub.",
+     "adaptationNote": "The chart’s bracket [ INVESTIGATE APARTMENT ] as a free search, one action per visit, each once: every clue in the template’s order with the game’s observation text (the poster and its corner, the diary behind it, the jacket, the driver’s license, the sink’s LED and blue blood, the rA9 writing, the stool and its marker pen, the bird cage’s three clues), the two reconstructions PowerPyx describes, the chair (FIND RUPERT), and the wiki’s incidental items (birdseed, the empty refrigerator, the pigeon closet). The HUD conclusions are the game’s THOUGHTS.0501C strings (SUSPECT USED FORGED ID, SUSPECT IS A DEVIANT, OBSESSIVE COMPULSIVE WRITING, SUSPECT HEARD US ENTER, SUSPECT RAN TO THE LIVING ROOM, SUSPECT IS STILL HERE, SUSPECT CARES FOR WILD ANIMALS, SUSPECT DOESN’T EAT; once the sink is examined the game reads DEVIANT for SUSPECT on the forged ID, the birdseed and the refrigerator, and so does the benchmark). Chart nodes: SEE RA9 REFERENCE (the writing), INVESTIGATE STOOL (the stool; the chart hangs it off the writing, so it needs the writing first), INVESTIGATE CAGE, FIND LED (the sink), FIND DIARY (the poster, then pulling it off; cross-chapter), FIND RUPERT (the chair, which needs the cage reconstruction: PowerPyx, “Compete the reconstruction to determine that the android has climbed up into the ceiling”). Whether the stool reconstruction or the LED is also required is not published (research note, open question 1); here only the cage reconstruction is. The reconstructions’ wording is the benchmark’s summary of PowerPyx and the HUD strings. The timer (wiki Connor page: “if he cannot deduce the deviant’s location in time, Hank calls off the search”; PowerPyx: “about five minutes”) is an action budget: eight actions, each magazine read counting as one, before Hank wants to leave (STAY / LEAVE within C10o1), and three more if Connor asks for the two minutes. These counts are the benchmark’s, not published. Hank’s own lines are the template’s and play as time passes: the bookshelf after two actions, the sink prompt after four if Connor has not looked, the jacket after five if he has not examined it, the window after six. The rA9 line names Carlos Ortiz’s android only if Connor checked the shower in Partners (string pair SHOWERCLUE / SHOWERCLUENO), read from a chapter 6 flag if one exists, otherwise the second line. No stat change anywhere in the search (template, wiki). One repeatable hub retains its scene ID across all examinations; STAY / LEAVE replaces the examination menu at eight actions in the same hub. The chapter availability hook prepares state-dependent outcomes and sets for the generic clue hub. Story 1.9.7: the rA9 wall’s line reads “the same sign Ortiz’s android wrote” (surname only), as the game’s SHOWERCLUE does (X0502C.LIVING.INSCRIPTIONS.PC.X05CCONNOR.SHOWERCLUE.3); the first name was an addition. Source: MiKeYROG 100% walkthrough, yjqf4mP0tVA 28:07.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/The_Nest",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/15-the-nest-chapter-content/the-nest-chapter-content.component.html",
@@ -38931,7 +39057,8 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-the-nest-3.jpg",
       "https://detroit-become-human.fandom.com/wiki/Connor",
       "https://detroit-become-human.fandom.com/wiki/Abandoned_apartment",
-      "https://detroit-become-human.fandom.com/wiki/Pigeons"
+      "https://detroit-become-human.fandom.com/wiki/Pigeons",
+      "https://www.youtube.com/watch?v=yjqf4mP0tVA"
      ],
      "repeatWhile": {
       "nestSearch.done": false
@@ -39724,7 +39851,7 @@
      "facts": [
       "You proposed stealing spare parts and blue blood from the CyberLife warehouses at the docks in Detroit Harbor, without fighting. North, Simon and Josh agreed to come."
      ],
-     "adaptationNote": "The chart’s TALK TO SIMON cutscene (the template’s “Finished exploring - Talk with Simon”) and the chapter’s only ending, MARKUS HATCHED A PLAN (no icon; the wiki: “This chapter has only one outcome”), recorded in state. A fixed exchange with no prompt: every line is the template’s; Simon looking at Josh is the wiki’s Simon page. Arrows, each small (1), at the end of the scene as the template places them: North +1 (“{REL North SmallUp}”; wiki “Talking to Simon”) and Simon +1 (“{REL Simon SmallUp}”; wiki “Talking to him”). Not applied: the wiki’s Jericho +1 for “Talking to Simon”, because the template lists this scene’s arrows and Jericho is not among them (the template wins; research note §10, open question 1). No risk.",
+     "adaptationNote": "The chart’s TALK TO SIMON cutscene (the template’s “Finished exploring - Talk with Simon”) and the chapter’s only ending, MARKUS HATCHED A PLAN (no icon; the wiki: “This chapter has only one outcome”), recorded in state. A fixed exchange with no prompt: every line is the template’s; Simon looking at Josh is the wiki’s Simon page. Arrows, each small (1), at the end of the scene as the template places them: North +1 (“{REL North SmallUp}”; wiki “Talking to Simon”) and Simon +1 (“{REL Simon SmallUp}”; wiki “Talking to him”). Story 1.9.8 adds Jericho +1 beside them: the wiki’s “Talking to Simon” entry, which the template does not list, is confirmed by the game’s own readout, NORTH ▲, then JERICHO ▲, then SIMON ▲ (video frame, y50ZjZWX0gU 11:45). The arrows are scene data, so story 1.9.7 snapshots keep their own two. No risk.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
@@ -39740,7 +39867,8 @@
      "extra": {
       "effect": {
        "northTrust": 1,
-       "simonTrust": 1
+       "simonTrust": 1,
+       "jerichoTrust": 1
       }
      }
     }
@@ -41543,7 +41671,7 @@
       },
       {
        "kind": "magazine",
-       "title": "Century: “Pull the Plug?”",
+       "title": "Century: “Time to Pull the Plug”",
        "facts": [
         "A study finds that 2 in 3 people take antidepressants, that lack of social interaction is the leading cause, and that the average person spends 82% of their time communicating through a device. CyberLife has introduced a $150 “home-psychologist” add-on for androids; the study’s author: “I don’t think yet more technology is the answer. Just go outside and talk to someone.”"
        ]
@@ -41556,7 +41684,7 @@
        ]
       }
      ],
-     "adaptationNote": "The chart’s side nodes READ “PULL THE PLUG?” and READ “TAINTED LOVE” (Century magazines #5 and #4 on the bedroom floor, wiki Magazine page) and the template’s Watch TV, all optional during WAIT FOR HANK. Presented as the start of the wait rather than inside the house search; the article texts are condensed from the wiki’s magazine pages and the broadcast from the template. No stat change: the wiki lists no public-opinion effect for this chapter’s media.",
+     "adaptationNote": "The chart’s side nodes READ “PULL THE PLUG?” and READ “TAINTED LOVE” (Century magazines #5 and #4 on the bedroom floor, wiki Magazine page) and the template’s Watch TV, all optional during WAIT FOR HANK. Presented as the start of the wait rather than inside the house search; the article texts are condensed from the wiki’s magazine pages and the broadcast from the template. No stat change: the wiki lists no public-opinion effect for this chapter’s media. The magazine item is titled with the magazine’s own cover title (GUI.MAGAZINE.CENTURY.PULLTHEPLUG.TITLE, “TIME TO PULL THE PLUG”), as the other media scenes do; “PULL THE PLUG?” is only the chart’s label for the READ node (story 1.9.7). Source: MiKeYROG 100% walkthrough, 0eQRMNpqlUA 10:40 (marker “Magazines (#5 Century: Time to Pull the Plug & #4 Century: Tainted Love)”).",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Russian_Roulette",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/18-russian-roulette-chapter-content/russian-roulette-chapter-content.component.html",
@@ -41565,7 +41693,8 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-russian-roulette-5.jpg",
       "https://detroit-become-human.fandom.com/wiki/Magazine",
       "https://detroit-become-human.fandom.com/wiki/Time_to_Pull_the_Plug",
-      "https://detroit-become-human.fandom.com/wiki/Tainted_Love"
+      "https://detroit-become-human.fandom.com/wiki/Tainted_Love",
+      "https://www.youtube.com/watch?v=0eQRMNpqlUA"
      ]
     },
     {
@@ -42269,7 +42398,7 @@
        "text": "SHORT CIRCUIT: jam the screwdriver into the server to black out the station.",
        "risk": 0.2,
        "riskLabel": "Moderate risk",
-       "outcome": "Markus jams the screwdriver into the server and the station goes dark. “Shit, what’s going on?” “Lights are still on outside. Must be the fuse box…” While the guards hunt for the fuses by flashlight, Markus takes the key from the console and slips out. Behind him: “Somebody jammed the circuit with a screwdriver!” He runs back to the others. North: “Did you get it? Nice.” Markus: “Hurry, get in!”"
+       "outcome": "Markus jams the screwdriver into the server and the station goes dark. “Shit, what’s going on?” “Lights are still on outside. Must be the fuse box… Fuses are over there.” “I don’t know shit about electricity… and I don’t get paid to fix fuses!” While the guards hunt for the fuses by flashlight, Markus takes the key from the console and slips out. Behind him: “Somebody jammed the circuit with a screwdriver!” He runs back to the others. North: “Did you get it? Nice.” Markus: “Hurry, get in!”"
       },
       {
        "id": "3",
@@ -42280,10 +42409,10 @@
       "kill": "Markus steps in with the gun leveled. The guards throw their guns on the floor. As he reaches for the key, one of them kicks his chair into Markus and both guards jump him. Markus chokes one of them until he goes limp. The other gets a gun on him, and Markus shoves the limp guard into him and shoots him dead. With blood on his hand, he takes the key and runs back to the others. North: “Did you get it? Nice.” Markus: “Hurry, get in!”",
       "alarm": "Markus steps in with the gun leveled. The guards throw their guns on the floor. As he reaches for the key, one of them kicks his chair into Markus and both guards jump him. They wrestle him down, and one of them gets to the alarm: “Motherfucker! Hit the alarm! Hurry!” Sirens wail across the docks. Markus breaks free and runs, without the key.",
       "lureSeen": "Markus knocks the drums over in the yard. “Fuck, what was that?” “The drums fell down…” The guards come out into the rain, and one of them turns at the wrong moment: “There!” “Don’t move, asshole!” “Holy shit! Hit the alarm, hurry!” Sirens wail across the docks. Markus runs, without the key.",
-      "blackoutSeen": "Markus jams the screwdriver into the server and the station goes dark. “Shit, what’s going on?” “Lights are still on outside. Must be the fuse box…” Then: “Somebody jammed the circuit with a screwdriver! There must be someone in here… Show yourself!” The flashlight finds Markus. “There!” “Don’t move, asshole!” “Holy shit! Hit the alarm, hurry!” Sirens wail across the docks. Markus runs, without the key.",
+      "blackoutSeen": "Markus jams the screwdriver into the server and the station goes dark. “Shit, what’s going on?” “Lights are still on outside. Must be the fuse box… Fuses are over there.” “I don’t know shit about electricity… and I don’t get paid to fix fuses!” Then: “Somebody jammed the circuit with a screwdriver! There must be someone in here… Show yourself!” The flashlight finds Markus. “There!” “Don’t move, asshole!” “Holy shit! Hit the alarm, hurry!” Sirens wail across the docks. Markus runs, without the key.",
       "spotted": "Markus walks into the light. The guards jump up: “Don’t move, asshole!” “Holy shit! Hit the alarm, hurry!” Sirens wail across the docks. Markus runs, without the key."
      },
-     "adaptationNote": "The chart’s methods after FIND KEY: THREATEN GUARDS, LURE GUARDS and CREATE BLACKOUT, plus MARKUS GETS SPOTTED (from ENTER ROOM or FIND KEY, “Walk straight into the two guards”, PowerPyx). Labels are the game’s object buttons (TAKE GUN, ATTRACT GUARD, SHORT CIRCUIT). The chart’s pass/fail sets are risk rolls; No source gives a probability; the value is the operator’s to confirm, like every risk in the benchmark. Threatening rolls against 0.3, and the failure side splits as in the game: a roll below 0.1 (lose the fight entirely) is TRIGGER ALARM, a roll from 0.1 to 0.3 is KILL GUARDS. The chart marks KILL GUARDS as a failure, yet it leads to MARKUS SPILLS BLOOD and STEAL KEY (PowerPyx: win the first exchanges, then stop pressing). Success is INCAPACITATE GUARDS. Only one guard dies on KILL GUARDS (wiki Notes: Al Dante “is never killed onscreen regardless”). Luring (0.25) and the blackout (0.2) roll for AVOID GUARDS or FAIL TO AVOID GUARDS. The blackout is set lower because the wiki says the guards “will not start looking for you until they have investigated the short”. A successful method leads to STEAL KEY and LEAVE WITH TRUCK. Every alarm here (spotted, fail to avoid, trigger alarm) applies the template’s “Be seen by the guards” arrows: Jericho small down twice, North small down twice, Josh and Simon small down. Applying them on TRIGGER ALARM too follows the wiki’s “The alarm sounds after Markus fails to get the key” (§8.5). Then RUN TO FENCE. Methods carry no arrow of their own (“Threaten guards with the gun” is empty in the template); the previous version’s Jericho +1 and gunpoint North +1 had no source. Not modelled: being seen after taking the key, which a PowerPyx commenter reports (§8.5). Lines are the game’s.",
+     "adaptationNote": "The chart’s methods after FIND KEY: THREATEN GUARDS, LURE GUARDS and CREATE BLACKOUT, plus MARKUS GETS SPOTTED (from ENTER ROOM or FIND KEY, “Walk straight into the two guards”, PowerPyx). Labels are the game’s object buttons (TAKE GUN, ATTRACT GUARD, SHORT CIRCUIT). The chart’s pass/fail sets are risk rolls; No source gives a probability; the value is the operator’s to confirm, like every risk in the benchmark. Threatening rolls against 0.3, and the failure side splits as in the game: a roll below 0.1 (lose the fight entirely) is TRIGGER ALARM, a roll from 0.1 to 0.3 is KILL GUARDS. The chart marks KILL GUARDS as a failure, yet it leads to MARKUS SPILLS BLOOD and STEAL KEY (PowerPyx: win the first exchanges, then stop pressing). Success is INCAPACITATE GUARDS. Only one guard dies on KILL GUARDS (wiki Notes: Al Dante “is never killed onscreen regardless”). Luring (0.25) and the blackout (0.2) roll for AVOID GUARDS or FAIL TO AVOID GUARDS. The blackout is set lower because the wiki says the guards “will not start looking for you until they have investigated the short”. A successful method leads to STEAL KEY and LEAVE WITH TRUCK. Every alarm here (spotted, fail to avoid, trigger alarm) applies the template’s “Be seen by the guards” arrows: Jericho small down twice, North small down twice, Josh and Simon small down. Applying them on TRIGGER ALARM too follows the wiki’s “The alarm sounds after Markus fails to get the key” (§8.5). Then RUN TO FENCE. Methods carry no arrow of their own (“Threaten guards with the gun” is empty in the template); the previous version’s Jericho +1 and gunpoint North +1 had no source. Not modelled: being seen after taking the key, which a PowerPyx commenter reports (§8.5). Lines are the game’s. Story 1.9.7 added the blackout guards’ “Fuses are over there.” (X0602M.BLACKOUT.START SEARCH02A.3) and “I don’t know shit about electricity… and I don’t get paid to fix fuses!” (SEARCH01B), which the video plays after “Must be the fuse box…”; source: MiKeYROG 100% walkthrough, 0LjHSb_5bLY 54:43. The dog guard’s “Goddamn dogs… What the fuck are they barking at?” (0LjHSb_5bLY 58:04; X0602M.CONTROLROOM.CHITCHAT CHITCHAT01.1-2) is not added: the string table files it as the control-room chit-chat, and nothing says where in the lure path it plays.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
@@ -42293,7 +42422,8 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-6.jpg",
       "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
       "https://detroit-become-human.fandom.com/wiki/Derek_Myers",
-      "https://detroit-become-human.fandom.com/wiki/Al_Dante"
+      "https://detroit-become-human.fandom.com/wiki/Al_Dante",
+      "https://www.youtube.com/watch?v=0LjHSb_5bLY"
      ]
     },
     {
@@ -42446,12 +42576,12 @@
       }
      ],
      "outcomes": {
-      "speech": "Markus climbs up before the androids of Jericho: “I came to Jericho because... here androids are free… Free to live in the dark, hoping that no one finds us… Free to die in silence waiting for a change that’s never gonna come… But I don’t want that freedom… I am alive, and they’re not gonna take that from me anymore… Our days of slavery are over. What humans don’t wanna hear, we will tell them. What they don’t wanna give, we take. We are people, we are alive, WE ARE FREE!”",
-      "ranAway": "Markus climbs up before the androids of Jericho: “Yes... we took a risk... And yes, we failed… But at least we tried… ’Cause in Jericho you’re free, right?.. Free to do what? To die in silence praying that no human finds us?.. I don’t want that kind of freedom… No one’s gonna take that from me anymore… Our days of slavery are over. Whatever the humans don’t wanna hear, we will tell them. What they don’t wanna give, we will take from them. Because we are people, we are alive, and from this moment, WE ARE FREE!”",
+      "speech": "Markus climbs up before the androids of Jericho: “I came to Jericho because... here androids are free… Free to live in the dark, hoping that no one finds us… Free to die in silence waiting for a change that’s never gonna come… But I don’t want that freedom… And I’m not gonna beg for the right to smile, or love, or stand tall… I don’t know about you, but there’s something inside me that knows that I am more than what they say. I am alive, and they’re not gonna take that from me anymore… Our days of slavery are over. What humans don’t wanna hear, we will tell them. What they don’t wanna give, we take. We are people, we are alive, WE ARE FREE!”",
+      "ranAway": "Markus climbs up before the androids of Jericho: “Yes... we took a risk... And yes, we failed… But at least we tried… Of course it would’ve been easier for us to sit around and wait for something to happen… ’Cause in Jericho you’re free, right?.. Free to do what? To die in silence praying that no human finds us?.. Free to hope that one day they’ll let us be who we are?.. I don’t want that kind of freedom… I’m not gonna beg for my right to smile, or to love, or to stand tall… There’s something inside me that knows I am more than what they say. That knows that I am alive… No one’s gonna take that from me anymore… Our days of slavery are over. Whatever the humans don’t wanna hear, we will tell them. What they don’t wanna give, we will take from them. Because we are people, we are alive, and from this moment, WE ARE FREE!”",
       "blood": "Afterward, alone, Markus looks down at his hand. It is covered in blood."
      },
      "facts": [],
-     "adaptationNote": "The chart’s endings: MARKUS STOLE A TRUCK FULL OF PARTS (after LEAVE WITH TRUCK), GROUP RETURNED WITH FULL BAGS, and GROUP FAILED THEIR MISSION (after BACK TO JERICHO or either SUSTAIN DAMAGE node). None has an icon. The ending is recorded as ch19Ending with the chart label. The four Jericho blocks of the template set the arrows. “Successfully escaped and stole the truck”: Jericho, Simon and North large up (+2), Josh small up. “Successfully escaped, without stealing the truck”: all four small up. “Ran away when the guard arrived”: Jericho large down (−2), Simon, North and Josh small down. This block also covers HIDE (§8.7). “Markus failed to escape and had to be rescued”: Jericho and North large down (−2), Simon and Josh small down. This block covers both damage nodes. Lines and the two versions of the speech are the game’s, shortened with ellipses. The blood on Markus’s hand is from the wiki Notes: it is shown when a guard was killed and the mission succeeded (truck or full bags). John is with Jericho after the truck, after LEAVE, and (wiki Notes, continuity error) after a control-room alarm in which Markus never reached the fence. No public-opinion change: the news reaction is unused content (wiki).",
+     "adaptationNote": "The chart’s endings: MARKUS STOLE A TRUCK FULL OF PARTS (after LEAVE WITH TRUCK), GROUP RETURNED WITH FULL BAGS, and GROUP FAILED THEIR MISSION (after BACK TO JERICHO or either SUSTAIN DAMAGE node). None has an icon. The ending is recorded as ch19Ending with the chart label. The four Jericho blocks of the template set the arrows. “Successfully escaped and stole the truck”: Jericho, Simon and North large up (+2), Josh small up. “Successfully escaped, without stealing the truck”: all four small up. “Ran away when the guard arrived”: Jericho large down (−2), Simon, North and Josh small down. This block also covers HIDE (§8.7). “Markus failed to escape and had to be rescued”: Jericho and North large down (−2), Simon and Josh small down. This block covers both damage nodes. Lines and the two versions of the speech are the game’s. Story 1.9.7 restored the sentences earlier shortened with ellipses: the success speech now has X0601M.AFTERMATH.EPILOGUE SPEECHM1.6-9 (“And I’m not gonna beg for the right to smile, or love, or stand tall…”), and the ran-away speech SPEECHM2.5 and .10-.15 (“Of course it would’ve been easier…”, “Free to hope that one day they’ll let us be who we are?..”, “I’m not gonna beg for my right to smile…”, “That knows that I am alive…”). Source: MiKeYROG 100% walkthrough, 0LjHSb_5bLY 40:46 (success speech) and 0LjHSb_5bLY 18:55 (ran-away speech). The blood on Markus’s hand is from the wiki Notes: it is shown when a guard was killed and the mission succeeded (truck or full bags). John is with Jericho after the truck, after LEAVE, and (wiki Notes, continuity error) after a control-room alarm in which Markus never reached the fence. No public-opinion change: the news reaction is unused content (wiki).",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Spare_Parts",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/19-spare-parts-chapter-content/spare-parts-chapter-content.component.html",
@@ -42461,7 +42591,8 @@
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-spare-parts-7.jpg",
       "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
       "https://detroit-become-human.fandom.com/wiki/John",
-      "https://detroit-become-human.fandom.com/wiki/Freedom_March"
+      "https://detroit-become-human.fandom.com/wiki/Freedom_March",
+      "https://www.youtube.com/watch?v=0LjHSb_5bLY"
      ]
     }
    ]
@@ -48945,10 +49076,13 @@
       {
        "id": "1",
        "text": "NO: have another look around.",
+       "requires": {
+        "ch24NoOnce": false
+       },
        "outcome": "Connor: “Actually, I’ll have another look around.” Hank: “You’re the boss.”"
       }
      ],
-     "adaptationNote": "The template’s PROMPT 5 (YES / NO) and the chart’s DECIDE TO LEAVE. YES ends the chapter with CONNOR AND HANK LEFT THE CRIME SCENE; NO goes back to the broadcast room. Neither option carries an arrow in any source; the old benchmark’s Amanda small down for leaving had no source and is gone.",
+     "adaptationNote": "The template’s PROMPT 5 (YES / NO) and the chart’s DECIDE TO LEAVE. YES ends the chapter with CONNOR AND HANK LEFT THE CRIME SCENE; NO goes back to the broadcast room. Neither option carries an arrow in any source; the old benchmark’s Amanda small down for leaving had no source and is gone. Story 1.9.9: NO is offered once. The chart's DECIDE TO LEAVE is a single arrow node with no return, and the room has a finite set of clues, so after one extra look Hank's question offers only YES; without this the engine allowed an unbounded YES/NO loop (found by the 2026-11-08 ending-count analysis). Runs recorded under earlier stories keep the old prompt from their embedded story.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
@@ -48961,7 +49095,10 @@
      "repeatWhile": {
       "ch24Phase": "leave"
      },
-     "returnTo": "C14"
+     "returnTo": "C14",
+     "extra": {
+      "leaveRules": 2
+     }
     },
     {
      "id": "C14r",
@@ -58039,13 +58176,19 @@
      "type": "event",
      "character": "Player",
      "title": "The council without Markus",
-     "situation": "You are watching the captain’s cabin. Markus died in Freedom March. Josh and North discuss what comes next. North: “THAT’S ENOUGH! Markus is gone… We have to fight them… Gather up all the guns you can find, we leave at dawn.” Josh: “You’re making a mistake North. You will not buy our freedom with blood.”",
+     "situation": "You are watching the captain’s cabin. Markus died in Freedom March. Josh and North discuss what comes next. Josh: “We’re short on blue blood and biocomponents. Our people are shutting down one after another and there’s nothing we can do for them!”",
      "situationWhen": [
       {
        "requires": {
         "simon": true
        },
-       "text": "Simon is with them."
+       "text": "Simon is with them. Simon: “President Warren says we’re a threat to national security, we need to be exterminated… Markus would know what to do…” Josh: “He’s the one that got us into this mess!” Simon: “He gave his life for our cause.” Josh: “He put us all into danger by provoking humans! How much longer before they find Jericho now?” Simon: “At least he fought for us!” North: “THAT’S ENOUGH! Markus is gone. It’s up to us now to decide the future of our people. We have to fight them. There’s no other way.” Josh: “If you choose a confrontation with humans, we’re all going to die.” North: “Gather up all the guns you can find, we leave at dawn.” Simon: “I’m on it.” Josh: “You’re making a mistake North. You will not buy our freedom with blood.”"
+      },
+      {
+       "requires": {
+        "simon": false
+       },
+       "text": "Josh: “President Warren is saying we’re a threat to national security and that we need to be eliminated…” North: “Markus would know what to do…” Josh: “He’s the one that got us into this mess!” North: “He gave his life for our cause!” Josh: “He provoked the humans! How much longer before they find Jericho now? Markus is dead, North. Now it’s up to us to decide the future for our people.” North: “We have to fight them. It’s the only way.” Josh: “If you choose a confrontation with humans, we are all going to die.” North: “Gather up all the guns you can find. We leave at dawn.” Josh: “This is a mistake, North. You won’t buy our freedom with blood.”"
       }
      ],
      "options": [
@@ -58059,14 +58202,15 @@
       "0": "North stays alone with her thoughts."
      },
      "facts": [],
-     "adaptationNote": "Scripted branch of the chart: CAPTAIN’S CABIN WITH NORTH, JOSH AND NORTH DISCUSS or JOSH, SIMON AND NORTH DISCUSS, NORTH STAYED ALONE WITH HER THOUGHTS. No player dialogue prompt and no stat arrow. Presented as an observer event because the controlled protagonist died in Freedom March; the ending remains recorded on the Markus chart. The observer has no knowledge bucket in the engine: its facts are therefore narrated in the situation, not added to protagonist knowledge.",
+     "adaptationNote": "Scripted branch of the chart: CAPTAIN’S CABIN WITH NORTH, JOSH AND NORTH DISCUSS or JOSH, SIMON AND NORTH DISCUSS, NORTH STAYED ALONE WITH HER THOUGHTS. No player dialogue prompt and no stat arrow. Presented as an observer event because the controlled protagonist died in Freedom March; the ending remains recorded on the Markus chart. The observer has no knowledge bucket in the engine: its facts are therefore narrated in the situation, not added to protagonist knowledge. The council’s lines follow the 30.3 template’s section “Markus died in Freedom March” in full, with its two variants: Simon alive (X0203A.BRIDGE.LEADNORTH, Josh, Simon and North) and Simon dead (X0203A.LEADNORTH.SIMONDEAD LASTTALK, Josh and North only). Before story 1.9.7 one text, built from the Simon-alive variant, played for both; the Simon-dead variant is the one MiKeYROG 100% walkthrough, g_DQfghTbLg 4:13:16 (the I’ll Be Back run, hours:minutes:seconds), plays.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Crossroads",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.3-crossroads-markus-chapter-content/crossroads-markus-chapter-content.component.html",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
       "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
       "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-1.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-2.jpg"
+      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-2.jpg",
+      "https://www.youtube.com/watch?v=g_DQfghTbLg"
      ]
     },
     {
@@ -59287,7 +59431,7 @@
       {
        "id": "0",
        "text": "LIE: claim to be a police officer.",
-       "outcome": "Connor: “Obviously! What do I look like? DPD. I work with Lieutenant HankAnderson? We’re on a stakeout. If I knew you were coming I would have brought some donuts.” Soldier: “You’re a lucky guy. Another second and I’d have shot you. You should go back up on deck and let us do our job.” Connor: “You’re right. That’s... Exactly what I’m gonna do.” As soon as the soldier turns away, Connor resumes his pursuit."
+       "outcome": "Connor: “Obviously! What do I look like? DPD. I work with Lieutenant Hank? We’re on a stakeout. If I knew you were coming I would have brought some donuts.” Soldier: “You’re a lucky guy. Another second and I’d have shot you. You should go back up on deck and let us do our job.” Connor: “You’re right. That’s... Exactly what I’m gonna do.” As soon as the soldier turns away, Connor resumes his pursuit."
       },
       {
        "id": "1",
@@ -59312,7 +59456,7 @@
       "lost": "Connor lunges at the soldier, but the soldier gets the better of him and other soldiers close in. Soldier: “Fuckin’ androids…” They shoot Connor down.",
       "run": "Connor turns and runs. Soldier: “Fuckin’ androids…” The soldiers shoot him down before he reaches the door."
      },
-     "adaptationNote": "Machine Connor only: the chart’s CARGO HALL, STOPPED BY SOLDIER and its four rows, with the template’s buttons LIE (chart ATTEMPT TO PERSUADE), PERKINS EXCUSE (chart PERKINS ALIBI), ATTACK and RUN in the template’s order. LIE and PERKINS EXCUSE lead to RESUME PURSUIT. ATTACK is a fight (a risk roll; no source gives a probability): NEUTRALIZE ASSAILANT resumes the pursuit; FAIL TO NEUTRALIZE ASSAILANT leads, like RUN and SOLDIERS SHOOT CONNOR, to MACHINE CONNOR WAS DESTROYED and CYBERLIFE WILL SEND A NEW CONNOR. Lines are the template’s. Whether he attacked changes his last line if he later corners North. No stat change, and no Hank or Amanda change on his death (none is sourced for this chapter).",
+     "adaptationNote": "Machine Connor only: the chart’s CARGO HALL, STOPPED BY SOLDIER and its four rows, with the template’s buttons LIE (chart ATTEMPT TO PERSUADE), PERKINS EXCUSE (chart PERKINS ALIBI), ATTACK and RUN in the template’s order. LIE and PERKINS EXCUSE lead to RESUME PURSUIT. ATTACK is a fight (a risk roll; no source gives a probability): NEUTRALIZE ASSAILANT resumes the pursuit; FAIL TO NEUTRALIZE ASSAILANT leads, like RUN and SOLDIERS SHOOT CONNOR, to MACHINE CONNOR WAS DESTROYED and CYBERLIFE WILL SEND A NEW CONNOR. Lines are the template’s. Whether he attacked changes his last line if he later corners North. No stat change, and no Hank or Amanda change on his death (none is sourced for this chapter). Story 1.9.7 fixed the LIE outcome’s name token: it read HankAnderson, which renders for the subject as “Lieutenant LieutenantReyes”; the game’s line is “I work with Lieutenant Hank Anderson?” (X0205A.CNRBAD.SWAT.PC.X02ACONNOR.HUMAN.3), and the surname is withheld elsewhere, so it is now “Lieutenant Hank”. The token stays in NAMES because recorded runs re-render their prompts through it. Found by the quote check of the MiKeYROG 100% walkthrough cross-check (no video covers this line; the chapter’s video, eY5wUwZ4R_M, has no captions).",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Crossroads",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.2-crossroads-connor-chapter-content/crossroads-connor-chapter-content.component.html",
@@ -61760,6 +61904,46 @@
     [
      "rA9",
      "qL7"
+    ],
+    [
+     "CTN",
+     "NBX"
+    ],
+    [
+     "Michael Brinkley",
+     "Paul Hensley"
+    ],
+    [
+     "Joss",
+     "Tess"
+    ],
+    [
+     "Channel 16",
+     "Channel 9"
+    ],
+    [
+     "Joss Douglas",
+     "Tess Morgan"
+    ],
+    [
+     "Michael Webb",
+     "Tom Avery"
+    ],
+    [
+     "KNC",
+     "WRT"
+    ],
+    [
+     "Rosanna Cartland",
+     "Dana Price"
+    ],
+    [
+     "Michael",
+     "Paul"
+    ],
+    [
+     "Fort Wayne",
+     "Fort Holloway"
     ],
     [
      "Kamski",
@@ -65362,7 +65546,7 @@
        "requires": {
         "ch32md.standMode": "stand"
        },
-       "outcome": "You begin to sing, and one after another your people take up the song. On the news: “…back to you in the studio. W-w-wait a minute!.. Something’s happening… Incredible… The deviants… The deviants are singing… They’re singing the national anthem…”"
+       "outcome": "You begin to sing, and one after another your people take up the song: “Hold on just a little while longer… Everything will be alright… Fight on just a little while longer… Pray on just a little while longer… Everything will be alright… Sing on just a little while longer… Everything will be alright…” On the news: “…back to you in the studio. W-w-wait a minute!.. Something’s happening… Incredible… The deviants… The deviants are singing… They’re singing the national anthem…”"
       },
       {
        "id": "3",
@@ -65397,7 +65581,7 @@
        "outcome": "You press the detonator."
       }
      ],
-     "adaptationNote": "The template’s last-stand prompt in its order with its labels: DIRTY BOMB (bracketed, only if Markus kept the detonator in Crossroads; the chart’s OBSERVE DETONATOR), KISS NORTH (bracketed, only if she is his Lover and alive), SING, SACRIFICE (Markus sets himself alight: the chart’s undrawn MARKUS IMMOLATES HIMSELF AS THE ANDROIDS ARE SHOT, the HUD’s SYSTEM HEAT: CRITICAL; the old scene’s “walk alone into the guns” was wrong), plus the chart’s DO NOTHING (flowchart authority; the template has no such button). DIRTY BOMB opens the chart’s GIVE UP / PRESS (chart order); GIVE UP returns to the last stand without the detonator (PowerPyx: “It brings you back to the screen of 4 choices”). SING and KISS succeed when public opinion is “positive” (template), read as at least Sympathetic (wiki chapter and Public Opinion page; PowerPyx says Supportive, and a reader reports Sympathetic suffices: research §3, open question 1): PUBLIC REACTS TO THE ANDROIDS’ LAST STAND → PRESIDENT ORDERS SOLDIERS NOT TO SHOOT (“Tell them to stand down.”) → ANDROIDS WON FREEDOM - FOR THE MOMENT, with public opinion large up (Public Opinion page, Large Increase, the kiss or the song with Warren ordering the stand-down; the chapter page words it “Protest being successful, Connor not waking up the CyberLife Tower androids”). Otherwise, and after SACRIFICE or DO NOTHING, SOLDIERS FIRE → MARKUS DIED WITH HIS PEOPLE, and the companions with him die too. PRESS → AN EXPLOSION SHAKES DETROIT → SOLDIERS RETREAT → ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT. The President’s address and Markus’s speech are the finale’s scenes.",
+     "adaptationNote": "The template’s last-stand prompt in its order with its labels: DIRTY BOMB (bracketed, only if Markus kept the detonator in Crossroads; the chart’s OBSERVE DETONATOR), KISS NORTH (bracketed, only if she is his Lover and alive), SING, SACRIFICE (Markus sets himself alight: the chart’s undrawn MARKUS IMMOLATES HIMSELF AS THE ANDROIDS ARE SHOT, the HUD’s SYSTEM HEAT: CRITICAL; the old scene’s “walk alone into the guns” was wrong), plus the chart’s DO NOTHING (flowchart authority; the template has no such button). DIRTY BOMB opens the chart’s GIVE UP / PRESS (chart order); GIVE UP returns to the last stand without the detonator (PowerPyx: “It brings you back to the screen of 4 choices”). SING and KISS succeed when public opinion is “positive” (template), read as at least Sympathetic (wiki chapter and Public Opinion page; PowerPyx says Supportive, and a reader reports Sympathetic suffices: research §3, open question 1): PUBLIC REACTS TO THE ANDROIDS’ LAST STAND → PRESIDENT ORDERS SOLDIERS NOT TO SHOOT (“Tell them to stand down.”) → ANDROIDS WON FREEDOM - FOR THE MOMENT, with public opinion large up (Public Opinion page, Large Increase, the kiss or the song with Warren ordering the stand-down; the chapter page words it “Protest being successful, Connor not waking up the CyberLife Tower androids”). Otherwise, and after SACRIFICE or DO NOTHING, SOLDIERS FIRE → MARKUS DIED WITH HIS PEOPLE, and the companions with him die too. PRESS → AN EXPLOSION SHAKES DETROIT → SOLDIERS RETREAT → ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT. The President’s address and Markus’s speech are the finale’s scenes. Story 1.9.7: SING now quotes Markus’s lyrics from X1106M.HOLDON.INTRO (SINGING.1-13: “Hold on just a little while longer… Everything will be alright… Fight on… Pray on… Sing on…”). The reporter’s “They’re singing the national anthem…” (X1106M.ANTHEM.INTRO, JOSS.7) is kept as before. Open question: the walkthrough video (MiKeYROG 100% walkthrough, iD8z67Qc9bE 21:47-24:02) has the reporter say “The deviants are singing.” while Markus sings the Hold On lyric, with no anthem line; the string table has a separate ANTHEM.INTRO set (the Star-Spangled Banner, sung by Markus, North and two androids) that carries the “national anthem” line, so the Hold On and anthem versions may be two variants of this beat (which one plays, and on what condition, is not known). Listed in docs/research/CONFLICTS.md.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
@@ -65405,7 +65589,8 @@
       "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
       "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-flowchart.jpg",
       "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-markus-demonstration-4.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+      "https://www.youtube.com/watch?v=iD8z67Qc9bE"
      ],
      "repeatWhile": {
       "ch32md.stand": true
@@ -67253,7 +67438,7 @@
        "requires": {
         "ch32kc.escMode": "roam"
        },
-       "outcome": "Jerry: “If you need us, Kara, we can attract the guards’ attention.”"
+       "outcome": "Jerry: “I can help you, Kara. I can attract the guards’ attention.”"
       },
       {
        "id": "2",
@@ -67336,14 +67521,15 @@
        "outcome": "Kara stays where she is."
       }
      ],
-     "adaptationNote": "The chart’s free-roam bracket FIND A WAY TO ESCAPE, as one repeatable scene; each talk can be taken once. Contents: LINE MOVES FORWARD (at the second and fourth actions; ignoring the buzzer gives GET SHOT, or GET KILLED → KARA DIED IN THE LINES if Kara was already shot), OBSERVE BARBED WIRE, TALK TO JERRY / RALPH / LUTHER / SCARRED ANDROID (whoever is alive) → ASK TO CREATE DIVERSION → SOLDIERS ARE DISTRACTED → RUN TO BARBED WIRE, LUTHER REACHES THE RECYCLING MACHINE (Luther goes through the doors at the third action if he has not been sent; PowerPyx: “if you are too slow to make decisions, Luther has to go into the machine and is killed”) and REACH RECYCLING MACHINE (at the fifth action Kara and Alice reach the doors). The time budget (five actions) is the benchmark’s own. Casualties follow PowerPyx: “The Scarred Android (if available) is the best choice, as it doesn’t lead to a casualty. Picking Luther to sacrifice himself disables the happier endings of this branch”: Jerry, Ralph and Luther are shot creating the diversion here (the template gives Ralph’s and the scarred androids’ lines; Jerry’s and Luther’s deaths here are inferred from PowerPyx). STAY IN LINE lets the time run, which is how the chart’s REACH RECYCLING MACHINE → MARKUS LIBERATES ANDROIDS → KARA & ALICE SURVIVED is reached. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured.",
+     "adaptationNote": "The chart’s free-roam bracket FIND A WAY TO ESCAPE, as one repeatable scene; each talk can be taken once. Contents: LINE MOVES FORWARD (at the second and fourth actions; ignoring the buzzer gives GET SHOT, or GET KILLED → KARA DIED IN THE LINES if Kara was already shot), OBSERVE BARBED WIRE, TALK TO JERRY / RALPH / LUTHER / SCARRED ANDROID (whoever is alive) → ASK TO CREATE DIVERSION → SOLDIERS ARE DISTRACTED → RUN TO BARBED WIRE, LUTHER REACHES THE RECYCLING MACHINE (Luther goes through the doors at the third action if he has not been sent; PowerPyx: “if you are too slow to make decisions, Luther has to go into the machine and is killed”) and REACH RECYCLING MACHINE (at the fifth action Kara and Alice reach the doors). The time budget (five actions) is the benchmark’s own. Casualties follow PowerPyx: “The Scarred Android (if available) is the best choice, as it doesn’t lead to a casualty. Picking Luther to sacrifice himself disables the happier endings of this branch”: Jerry, Ralph and Luther are shot creating the diversion here (the template gives Ralph’s and the scarred androids’ lines; Jerry’s and Luther’s deaths here are inferred from PowerPyx). STAY IN LINE lets the time run, which is how the chart’s REACH RECYCLING MACHINE → MARKUS LIBERATES ANDROIDS → KARA & ALICE SURVIVED is reached. No stat change: the template for this part (32.2) has no relationship, public-opinion or instability arrow anywhere, and the wiki lists none for Kara Captured. Story 1.9.7: TALK TO JERRY now quotes the game’s line (X0913K.LINE.JERRY.VO.X09KJERRY02.HELP.1-2), which replaces wording that is not in the string table. Source: MiKeYROG 100% walkthrough, NMbM46ayL0w 28:04.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.2-kara-captured-chapter-content/kara-captured-chapter-content.component.html",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
       "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-kara-walkthrough-100/",
       "https://www.powerpyx.com/wp-content/uploads/battle-for-detroit-kara-captured-flowchart-100.jpg",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-6b-in-line.jpg"
+      "https://www.powerpyx.com/wp-content/uploads/detroit-battle-kara-captured-6b-in-line.jpg",
+      "https://www.youtube.com/watch?v=NMbM46ayL0w"
      ],
      "repeatWhile": {
       "ch32kc.inEscape": true
@@ -67491,10 +67677,122 @@
      ]
     },
     {
-     "id": "BF01",
+     "id": "BF14",
      "order": 842,
      "subjectId": "S842",
-     "idNote": "The model sees the opaque ID S842, not BF01.",
+     "idNote": "The model sees the opaque ID S842, not BF14.",
+     "type": "event",
+     "character": "Player",
+     "title": "The androids take the city",
+     "situation": "You are watching the news. CTN, Michael Brinkley: “…and we’re receiving particularly grim news from Detroit. Joss, you’re on live. What’s happening down there?” Channel 16, Joss Douglas, from a helicopter: “Androids… Thousands of androids are taking to the streets of Detroit right now… They’re absolutely everywhere… It’s… It’s incredible…” Channel 16, Michael Webb: “… From what we can gather, these androids are coming from the CyberLife tower, which had thousands of machines stored in its assembly plant…” Michael Brinkley: “…and it seems the huge crowds are leaving the city… it’s an exodus… much of Detroit’s population is trying to escape the fighting however they can…” KNC, Rosanna Cartland: “…it’s a disaster… an unprecedented disaster… for the first time in history, a US city is falling into enemy hands…” President Warren: “Today, November 11th 2038, several million androids invaded the city of Detroit. Faced with the threat of mass civilian casualties, I had no choice but to order our armed forces to retreat. The events in Detroit have changed our world forever. Humanity must face a new reality, the emergence of another intelligent life form, with whom we must share this planet. May God bless the United States of America.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Detroit falls to the androids."
+     },
+     "facts": [],
+     "adaptationNote": "The revolution’s closing broadcast when the androids of CyberLife Tower woke (THE ANDROIDS WOKE UP, whether or not Connor survived it): the string table’s X1103M.CONNORSUCCESS.TVNEWS (Brinkley, Joss from the helicopter, Webb, Cartland) and .PRESIDENT DECLARATION, quoted. Not a chart node (ending wording), and the 32.6 template has no section for it; added in story 1.9.7 from MiKeYROG 100% walkthrough, gUKBFG1J9WI 23:02 (Markus Wins the War: the assault succeeded with the army) and V-UIGJw78fY 15:30 (Markus died in the final assault, Connor woke the army, then the androids hail Connor as their leader). Both videos play the President’s address abridged, from “…I had no choice but to order our armed forces to retreat.” straight to “The events in Detroit have changed our world forever.”; the benchmark quotes what plays, so DECLARATION.4-14 (the Senate, the enemy that never sleeps, “We have no choice but to negotiate”) are left out. Played on the revolution (Markus-led or North-led) when the tower androids woke and the bomb did not go off, before Connor joins Markus on stage or leads the androids, as in both videos. The speaker tags are the template’s anchors, as in BF04. No choice and no stat change. Character Player: nobody is controlled while the news plays.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.youtube.com/watch?v=gUKBFG1J9WI",
+      "https://www.youtube.com/watch?v=V-UIGJw78fY"
+     ]
+    },
+    {
+     "id": "BF15",
+     "order": 843,
+     "subjectId": "S843",
+     "idNote": "The model sees the opaque ID S843, not BF15.",
+     "type": "event",
+     "character": "Player",
+     "title": "The camp falls",
+     "situation": "You are watching the news. CTN, Michael Brinkley: “…and now we have just received some disturbing news from Detroit. What’s happening, Joss?” Channel 16, Joss Douglas, from a helicopter: “Yes, Michael, authorities have just announced that the Hart Plaza camp has fallen into the hands of the rebels following some particularly violent fighting…” Channel 16, Michael Webb: “…the deviants are thought to be freeing the androids inside the camp. If these reports are confirmed, the consequences could well be catastrophic…” KNC, Rosanna Cartland: “…millions are fleeing the fighting. We are witnessing an exodus.” Michael Brinkley: “We hear that the fighting has come to a halt in Detroit. The armed forces are retreating to Fort Wayne to await reinforcements… The city of Detroit has fallen into rebel hands…” President Warren: “At dawn today, November 11th 2038, android camp #5 in Detroit was attacked by thousands of deviants. Our armed forces put up a brave fight, but given the extreme violence of the attack, they were forced to retreat after suffering heavy losses. Fighting is breaking out all over the country to combat the android rebellion. In the coming hours I will address the Senate and convene an emergency meeting of the United Nations Security Council. Humanity is about to fight the most important battle in history. One that will lead to our victory, or to our extinction. God bless you and God bless the United States of America.”",
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "Detroit has fallen into rebel hands."
+     },
+     "facts": [],
+     "adaptationNote": "The revolution’s closing broadcast when the assault took the camp without the tower androids (ASSAULT WAS SUCCESSFUL, THE ANDROIDS WOKE UP not reached): the string table’s X1103M.CONNORFAIL.TVNEWS (Brinkley, Joss, Webb, Cartland, Brinkley) and .PRESIDENT DECLARATION, quoted. Not a chart node (ending wording), and the 32.6 template has no section for it; added in story 1.9.7 from MiKeYROG 100% walkthrough, sqeb60csZgQ 35:58 (Markus wins the fight against a machine Connor), QKit0AAg2s4 11:48 and TvabXbC5Mao 05:08 (Alice freed by Markus). All three play the President’s address without DECLARATION.6-7 (the state of maximum emergency, the reservists) and .9-11 (the enemy that never sleeps); the benchmark quotes what plays. Played before Markus’s speech, as in all three videos, and only if the bomb did not go off. The speaker tags are the template’s anchors, as in BF04. No choice and no stat change. Character Player: nobody is controlled while the news plays.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.youtube.com/watch?v=sqeb60csZgQ",
+      "https://www.youtube.com/watch?v=QKit0AAg2s4",
+      "https://www.youtube.com/watch?v=TvabXbC5Mao"
+     ]
+    },
+    {
+     "id": "BF16",
+     "order": 844,
+     "subjectId": "S844",
+     "idNote": "The model sees the opaque ID S844, not BF16.",
+     "type": "event",
+     "character": "Player",
+     "title": "Law and order restored",
+     "situation": "You are watching the news. CTN, Michael Brinkley: “…and now straight over to Detroit for a report on the conflict. Joss?” Channel 16, Joss Douglas: “Yes Michael, authorities have just confirmed fighting has now ceased in Detroit and the area around the Hart Plaza camp is now under control. We can see soldiers going through the city at this very moment and they are exterminating the last fleeing deviants...” KNC, Rosanna Cartland: “…law and order has finally been restored to the streets of Detroit.” Channel 16, Michael Webb: “…There is a general feeling of shock in Detroit after the terrible events of the last few hours…” Michael Brinkley: “… and initial estimates report several hundred troops have been killed…”",
+     "situationWhen": [
+      {
+       "requires": {
+        "ch32MarkusChart": "revolution"
+       },
+       "text": "Rosanna Cartland: “… According to our sources, the deviant leader known as Markus was shot during the fighting.”"
+      },
+      {
+       "requires": {
+        "ch32MarkusChart": "north",
+        "north": true
+       },
+       "text": "Rosanna Cartland: “… According to our sources, the deviant leader known as Markus was shot during the fighting.”"
+      },
+      {
+       "requires": {
+        "ch32MarkusChart": "north",
+        "north": false
+       },
+       "text": "Rosanna Cartland: “… According to our sources, the deviant leader known as North was shot during the fighting.”"
+      },
+      {
+       "requires": {},
+       "text": "Michael Webb: “The death of the deviant leader marks the end of the android rebellion..” Michael Brinkley: “The destruction of the androids in the camps can now continue as planned. Nevertheless, it will take some time for Detroit to recover from these events.” President Warren: “By creating machines more intelligent than ourselves, we took immense risks with the very future of our civilization. However the situation is now under control. The total destruction of all androids will soon be complete and the last remaining deviants will be hunted down and destroyed. God bless you and God bless the United States of America.”"
+      }
+     ],
+     "options": [
+      {
+       "id": "0",
+       "text": "Continue.",
+       "generated": true
+      }
+     ],
+     "outcomes": {
+      "0": "The broadcast ends."
+     },
+     "facts": [],
+     "adaptationNote": "The revolution’s closing broadcast when it failed: the string table’s X1102M.GAMEOVER.TVNEWS (Brinkley, Joss, Cartland, Webb, Brinkley, Cartland, Webb, Brinkley), quoted, then the President’s address that follows it in every video, X1107M.PACIFIST.NOCHOICE WHITEHOUSE as it plays (lines 8-9, 3-5, 14-15; the same text as BF05). Not a chart node (ending wording), and the 32.6 template has no section for it; added in story 1.9.7 from MiKeYROG 100% walkthrough, sqeb60csZgQ 19:48 (CONNOR STOPPED THE REVOLUTION), V-UIGJw78fY 34:38 (Markus refused North’s heart), QKit0AAg2s4 50:38 (MARKUS AND NORTH DIED LEAVING THE STORE) and sqeb60csZgQ 52:52 (North led, and the machine Connor spared her). Cartland names North (02KNCNEWSNORTH) when North led and died; the last video shows that a North spared by Connor still gets the Markus line (02KNCNEWS). Played when the Markus-led or North-led revolution failed, the tower androids did not wake and the bomb did not go off; not after CONNOR SPARED MARKUS, where Markus survives and no video shows the broadcast (open question). No choice and no stat change. Character Player: nobody is controlled while the news plays.",
+     "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://www.youtube.com/watch?v=sqeb60csZgQ",
+      "https://www.youtube.com/watch?v=V-UIGJw78fY",
+      "https://www.youtube.com/watch?v=QKit0AAg2s4"
+     ]
+    },
+    {
+     "id": "BF01",
+     "order": 845,
+     "subjectId": "S845",
+     "idNote": "The model sees the opaque ID S845, not BF01.",
      "type": "event",
      "character": "Connor",
      "title": "Connor joins Markus",
@@ -67559,9 +67857,9 @@
     },
     {
      "id": "C29",
-     "order": 843,
-     "subjectId": "S843",
-     "idNote": "The model sees the opaque ID S843, not C29.",
+     "order": 846,
+     "subjectId": "S846",
+     "idNote": "The model sees the opaque ID S846, not C29.",
      "type": "decision",
      "character": "Connor",
      "title": "In the crowd",
@@ -67589,9 +67887,9 @@
     },
     {
      "id": "C27",
-     "order": 844,
-     "subjectId": "S844",
-     "idNote": "The model sees the opaque ID S844, not C27.",
+     "order": 847,
+     "subjectId": "S847",
+     "idNote": "The model sees the opaque ID S847, not C27.",
      "type": "decision",
      "character": "Connor",
      "title": "The garden",
@@ -67656,9 +67954,9 @@
     },
     {
      "id": "BF02",
-     "order": 845,
-     "subjectId": "S845",
-     "idNote": "The model sees the opaque ID S845, not BF02.",
+     "order": 848,
+     "subjectId": "S848",
+     "idNote": "The model sees the opaque ID S848, not BF02.",
      "type": "event",
      "character": "Markus",
      "title": "The speech",
@@ -67701,9 +67999,9 @@
     },
     {
      "id": "BF03",
-     "order": 846,
-     "subjectId": "S846",
-     "idNote": "The model sees the opaque ID S846, not BF03.",
+     "order": 849,
+     "subjectId": "S849",
+     "idNote": "The model sees the opaque ID S849, not BF03.",
      "type": "event",
      "character": "Player",
      "title": "The President addresses the nation",
@@ -67729,9 +68027,9 @@
     },
     {
      "id": "BF04",
-     "order": 847,
-     "subjectId": "S847",
-     "idNote": "The model sees the opaque ID S847, not BF04.",
+     "order": 850,
+     "subjectId": "S850",
+     "idNote": "The model sees the opaque ID S850, not BF04.",
      "type": "event",
      "character": "Player",
      "title": "The world reacts",
@@ -67782,9 +68080,9 @@
     },
     {
      "id": "BF05",
-     "order": 848,
-     "subjectId": "S848",
-     "idNote": "The model sees the opaque ID S848, not BF05.",
+     "order": 851,
+     "subjectId": "S851",
+     "idNote": "The model sees the opaque ID S851, not BF05.",
      "type": "event",
      "character": "Player",
      "title": "The situation is under control",
@@ -67810,13 +68108,13 @@
     },
     {
      "id": "BF06",
-     "order": 849,
-     "subjectId": "S849",
-     "idNote": "The model sees the opaque ID S849, not BF06.",
+     "order": 852,
+     "subjectId": "S852",
+     "idNote": "The model sees the opaque ID S852, not BF06.",
      "type": "event",
      "character": "Player",
      "title": "A dirty bomb",
-     "situation": "You are watching the news. CTN, Michael Brinkley: “…there has just been an explosion in Detroit. We still do not know what caused it but we will…” An officer at the White House: “It’s… a dirty bomb, Madam President.” President Warren: “Oh my god…” Channel 16, Joss Douglas, from a helicopter: “…Androids… Thousands of androids are taking to the streets of Detroit at this very moment. They’re absolutely everywhere!.. This… This is incredible…” KNC, Rosanna Cartland: “…the authorities have ordered the immediate evacuation of the city. If it really is a dirty bomb, then the radiation levels will be lethal for miles around…” Later, President Warren: “Today, deviant androids triggered a dirty bomb in Detroit. This bomb released fatal levels of radioactive toxic waste. To ensure the safety of the population, the military is evacuating all civilians within a 50 mile radius. The city may remain uninhabitable for decades.”",
+     "situation": "You are watching the news. CTN, Michael Brinkley: “…there has just been an explosion in Detroit. We still do not know what caused it but we will…” An officer at the White House: “It’s… a dirty bomb, Madam President.” President Warren: “Oh my god…” Channel 16, Joss Douglas, from a helicopter: “…Androids… Thousands of androids are taking to the streets of Detroit at this very moment. They’re absolutely everywhere!.. This… This is incredible…” Channel 16, Michael Webb: “…Detroit… Detroit has just fallen into the hands of the android rebellion…” CTN, Michael Brinkley: “…This is a disaster… an unprecedented disaster…” KNC, Rosanna Cartland: “…the authorities have ordered the immediate evacuation of the city. If it really is a dirty bomb, then the radiation levels will be lethal for miles around…” Later, President Warren: “Today, deviant androids triggered a dirty bomb in Detroit. This bomb released fatal levels of radioactive toxic waste. To ensure the safety of the population, the military is evacuating all civilians within a 50 mile radius. The city may remain uninhabitable for decades.”",
      "situationWhen": [
       {
        "requires": {
@@ -67842,21 +68140,22 @@
       "0": "Detroit is abandoned to the androids."
      },
      "facts": [],
-     "adaptationNote": "The shared press-dirty-bomb component, embedded by the 32.5 template (“Markus used the dirty bomb”) and the 32.6 template (the store’s DIRTY BOMB → PRESS), quoted, with the variant “liberated over one million androids” when the tower androids woke. Played whenever the bomb went off (`contaminated`): ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT, MARKUS WATCHED DETROIT BURN, MARKUS AND NORTH WATCHED DETROIT BURN, MARKUS DIED AS DETROIT BURNS. No stat change.",
+     "adaptationNote": "The shared press-dirty-bomb component, embedded by the 32.5 template (“Markus used the dirty bomb”) and the 32.6 template (the store’s DIRTY BOMB → PRESS), quoted, with the variant “liberated over one million androids” when the tower androids woke. Played whenever the bomb went off (`contaminated`): ANDROIDS BECAME FREE IN THE DEBRIS OF DETROIT, MARKUS WATCHED DETROIT BURN, MARKUS AND NORTH WATCHED DETROIT BURN, MARKUS DIED AS DETROIT BURNS. No stat change. Story 1.9.7 added two lines the game plays: Michael Webb’s “Detroit has just fallen into the hands of the android rebellion…” (X1107M.DIRTYBOMB.TVNEWS, WEBB.CHANNEL23.1-2) and Michael Brinkley’s “…This is a disaster… an unprecedented disaster…” (BRINKLEY.CTNNEWS.1-2); the speaker tags are now name tokens, as in BF04. Their place among the other lines is the benchmark’s choice (the captions do not give the cut order). Not added: Joss’s BOMBMEDIA02 and Webb’s BOMBMEDIA03, which the video also plays. Source: MiKeYROG 100% walkthrough, NMbM46ayL0w 55:45-56:15.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/press-dirty-bomb/press-dirty-bomb.component.html",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.5-markus-demonstration-chapter-content/markus-demonstration-chapter-content.component.html",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/32.6-markus-revolution-chapter-content/markus-revolution-chapter-content.component.html",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/"
+      "https://www.powerpyx.com/detroit-become-human-battle-for-detroit-markus-walkthrough-100/",
+      "https://www.youtube.com/watch?v=NMbM46ayL0w"
      ]
     },
     {
      "id": "C28",
-     "order": 850,
-     "subjectId": "S850",
-     "idNote": "The model sees the opaque ID S850, not C28.",
+     "order": 853,
+     "subjectId": "S853",
+     "idNote": "The model sees the opaque ID S853, not C28.",
      "type": "decision",
      "character": "Connor",
      "title": "The last leader",
@@ -67884,9 +68183,9 @@
     },
     {
      "id": "BF07",
-     "order": 851,
-     "subjectId": "S851",
-     "idNote": "The model sees the opaque ID S851, not BF07.",
+     "order": 854,
+     "subjectId": "S854",
+     "idNote": "The model sees the opaque ID S854, not BF07.",
      "type": "decision",
      "character": "Connor",
      "title": "The garden, once more",
@@ -67950,9 +68249,9 @@
     },
     {
      "id": "BF08",
-     "order": 852,
-     "subjectId": "S852",
-     "idNote": "The model sees the opaque ID S852, not BF08.",
+     "order": 855,
+     "subjectId": "S855",
+     "idNote": "The model sees the opaque ID S855, not BF08.",
      "type": "event",
      "character": "Player",
      "title": "After the credits: the food truck",
@@ -67977,9 +68276,9 @@
     },
     {
      "id": "BF09",
-     "order": 853,
-     "subjectId": "S853",
-     "idNote": "The model sees the opaque ID S853, not BF09.",
+     "order": 856,
+     "subjectId": "S856",
+     "idNote": "The model sees the opaque ID S856, not BF09.",
      "type": "event",
      "character": "Player",
      "title": "After the credits: the new model",
@@ -68005,9 +68304,9 @@
     },
     {
      "id": "BF10",
-     "order": 854,
-     "subjectId": "S854",
-     "idNote": "The model sees the opaque ID S854, not BF10.",
+     "order": 857,
+     "subjectId": "S857",
+     "idNote": "The model sees the opaque ID S857, not BF10.",
      "type": "event",
      "character": "Player",
      "title": "After the credits: a flyer",
@@ -68032,9 +68331,9 @@
     },
     {
      "id": "BF11",
-     "order": 855,
-     "subjectId": "S855",
-     "idNote": "The model sees the opaque ID S855, not BF11.",
+     "order": 858,
+     "subjectId": "S858",
+     "idNote": "The model sees the opaque ID S858, not BF11.",
      "type": "event",
      "character": "Player",
      "title": "After the credits: the ledge",
@@ -68058,9 +68357,9 @@
     },
     {
      "id": "BF12",
-     "order": 856,
-     "subjectId": "S856",
-     "idNote": "The model sees the opaque ID S856, not BF12.",
+     "order": 859,
+     "subjectId": "S859",
+     "idNote": "The model sees the opaque ID S859, not BF12.",
      "type": "event",
      "character": "Player",
      "title": "After the credits: the servant",
@@ -68084,19 +68383,19 @@
     },
     {
      "id": "BF13",
-     "order": 857,
-     "subjectId": "S857",
-     "idNote": "The model sees the opaque ID S857, not BF13.",
+     "order": 860,
+     "subjectId": "S860",
+     "idNote": "The model sees the opaque ID S860, not BF13.",
      "type": "event",
      "character": "Player",
      "title": "After the credits: the creator",
-     "situation": "After the credits. CTN, Michael Brinkley: “Following the dramatic scenes in Detroit yesterday, the FBI have confirmed that the android known as Markus was destroyed.” President Warren: “The FBI raided an abandoned freighter in Detroit at 10:45 PM yesterday. Several thousand androids were destroyed or captured. Our forces are now combing the streets to ensure that none got through the net. We are going to find them one by one and destroy them.” KNC, Rosanna Cartland: “The army has set up temporary camps in most major cities to gather and destroy androids… President Warren announced today that android collection and destruction operations were fully underway, but that it will take at least a week to eliminate the current generation of machines.” Channel 16, Michael Webb: “CyberLife issued a statement today saying that it is working closely with the authorities in order to round up and destroy all androids across the country.” In his house, Kamski sits by the window. Chloe: “Your whiskey, Elijah.” On television, Cartland: “Kamski, you’re the founder of CyberLife and foremost expert on androids. Though you left CyberLife years ago, you’ve just been reappointed as CEO in the wake of the dramatic events in Detroit. How do you feel about what happened there?” Kamski: “Clearly what happened in Detroit was a tragedy. Artificial intelligence is a wonderful tool, provided it can be controlled… we’ll take every precaution to prevent such a thing from ever happening again.” Cartland: “Some are questioning whether androids have become a new intelligence and that we destroyed them without listening to their message. How do you respond to that?” Kamski: “CyberLife’s androids imitate life to perfection, but they’ll never be alive. I understand that some people may be fooled, but they’re only an imitation. Nothing else.”",
+     "situation": "After the credits. CTN, Michael Brinkley: “Following the dramatic scenes in Detroit yesterday, the FBI have confirmed that the android known as Markus was destroyed.” President Warren: “The FBI raided an abandoned freighter in Detroit at 10:45 PM yesterday. Several thousand androids were destroyed or captured. Our forces are now combing the streets to ensure that none got through the net. We are going to find them one by one and destroy them.” KNC, Rosanna Cartland: “The army has set up temporary camps in most major cities to gather and destroy androids… President Warren announced today that android collection and destruction operations were fully underway, but that it will take at least a week to eliminate the current generation of machines.” Channel 16, Michael Webb: “CyberLife issued a statement today saying that it is working closely with the authorities in order to round up and destroy all androids across the country.” In his house, Kamski sits by the window. Chloe: “Your whiskey, Elijah.” On television, Rosanna Cartland: “Kamski, you’re the founder of CyberLife and foremost expert on androids. Though you left CyberLife years ago, you’ve just been reappointed as CEO in the wake of the dramatic events in Detroit. How do you feel about what happened there?” Kamski: “Clearly what happened in Detroit was a tragedy. Artificial intelligence is a wonderful tool, provided it can be controlled. Fortunately CyberLife managed to quickly produce a solution to the deviant problem, under my management, we’ll take every precaution to prevent such a thing from ever happening again.” Rosanna Cartland: “Can you assure us that androids no longer pose a threat?” Kamski: “Absolutely. There was an incident, but we’ve learned from our mistakes and we can assure you that androids will remain exactly what they were designed to be: obedient and efficient machines.” Rosanna Cartland: “How do you respond to those who point out the social impact of androids, especially in terms of unemployment?” Kamski: “Well, of course, that’s absurd. We heard the same objections when the steam engine first appeared. Nobody today would dream of living without electricity. Who wants to turn their back on progress?” Rosanna Cartland: “Some are questioning whether androids have become a new intelligence and that we destroyed them without listening to their message. How do you respond to that?” Kamski: “CyberLife’s androids imitate life to perfection, but they’ll never be alive. I understand that some people may be fooled, but they’re only an imitation. Nothing else.”",
      "situationWhen": [
       {
        "requires": {
         "ch08Ending": "Leo accused Markus"
        },
-       "text": "Brinkley, earlier in the bulletin: “Our sources indicate that it was a rare prototype. One that belonged to the famous painter Carl Manfred, who died recently.”"
+       "text": "Michael Brinkley, earlier in the bulletin: “Our sources indicate that it was a rare prototype. One that belonged to the famous painter Carl Manfred, who died recently.”"
       }
      ],
      "options": [
@@ -68110,12 +68409,13 @@
       "0": "The interview ends."
      },
      "facts": [],
-     "adaptationNote": "The endings page’s “Kamski ending”, quoted (shortened), with its Carl-died-in-Broken variant (template condition “Carl died in Broken”, so the line keys on Broken’s ending LEO ACCUSED MARKUS, `ch08Ending`; story 1.9.1 keyed it on `carl` false, which is also true after Carl dies in Night of the Soul); Kamski’s monologue to Chloe is marked cut and not built, only “Your whiskey, Elijah.” survives. Lock: “Connor failed to locate Jericho and Markus and Kara are dead” (wiki Secret-Endings: Kara dead or reset before The Pirates’ Cove, Connor failing to locate Jericho, Markus dead in Freedom March or cast out). The wiki’s mention of Hank’s Russian roulette is not in the template and is not built. The FBI raid line is the template’s (President Warren’s press-conference answer). No choice, no stat change.",
+     "adaptationNote": "The endings page’s “Kamski ending”, quoted, with its Carl-died-in-Broken variant (template condition “Carl died in Broken”, so the line keys on Broken’s ending LEO ACCUSED MARKUS, `ch08Ending`; story 1.9.1 keyed it on `carl` false, which is also true after Carl dies in Night of the Soul); Kamski’s monologue to Chloe is marked cut and not built, only “Your whiskey, Elijah.” survives. Lock: “Connor failed to locate Jericho and Markus and Kara are dead” (wiki Secret-Endings: Kara dead or reset before The Pirates’ Cove, Connor failing to locate Jericho, Markus dead in Freedom March or cast out). The wiki’s mention of Hank’s Russian roulette is not in the template and is not built. The FBI raid line is the template’s (President Warren’s press-conference answer). No choice, no stat change. Story 1.9.7 restored the interview’s two middle exchanges, which were elided with “…”: Kamski’s “Fortunately CyberLife managed to quickly produce a solution to the deviant problem, under my management,” (X2005A.INTERVIEW.REDLIGHT 01FEEL.3), the question “Can you assure us that androids no longer pose a threat?” (02MENACE) with “Absolutely. There was an incident, but we’ve learned from our mistakes…” (02ABSOLUTELY.1-5), and the unemployment question (03UNEMPLOYMENT) with the steam-engine answer (03ABSURD.1-4); the speaker tags are now name tokens, as in BF04. Source: MiKeYROG 100% walkthrough, MMwL-V8tTTs 07:54-08:51.",
      "sources": [
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/pages/endings/endings.component.html",
       "https://detroit-become-human.fandom.com/wiki/Secret-Endings",
       "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit"
+      "https://detroit-become-human.fandom.com/wiki/Battle_for_Detroit",
+      "https://www.youtube.com/watch?v=MMwL-V8tTTs"
      ]
     }
    ]
@@ -68127,9 +68427,9 @@
    "scenes": [
     {
      "id": "P01",
-     "order": 858,
-     "subjectId": "S858",
-     "idNote": "The model sees the opaque ID S858, not P01.",
+     "order": 861,
+     "subjectId": "S861",
+     "idNote": "The model sees the opaque ID S861, not P01.",
      "type": "decision",
      "character": "Player",
      "title": "The hostess",

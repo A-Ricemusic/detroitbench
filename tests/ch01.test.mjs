@@ -49,3 +49,20 @@ test('Allen’s second round: he says nothing to NAME, BEHAVIOR and SHOCK (trans
  assert.match(b.outcomes['3'],/It’s the first thing we tried/);
  const s=startState(story);apply(node('C02'),s,'0');const n=s.knowledge.Connor.length;apply(b,s,'1');assert.equal(s.knowledge.Connor.length,n);
 });
+
+test('story 1.9.7 (MiKeYROG cross-check): the wounded officer can be walked past; Allen’s timer line; the SWAT lines',()=>{
+ const c=node('C03'),walk=c.options.find(o=>o.id==='2');
+ assert.deepEqual(c.options.map(o=>o.id),['0','1','2']);assert.equal(walk.trust,undefined,'walking past changes nothing');
+ const mk=()=>{const s=terrace(60);return s},before=mk(),after=mk();apply(c,after,'2',0.999);
+ assert.equal(after.trust,before.trust);assert.equal(after.publicSupport,before.publicSupport);assert.equal(after.choices.C03,'2');
+ assert.match(c.outcomes['2'],/does not go to the officer/);
+ assert.match(c.outcomes['0'],/Touch him and I kill you/,'the exchange is in the IGNORE outcome');assert.match(c.outcomes['1'],/Touch him and I kill you/);
+ assert.doesNotMatch(c.situation,/Touch him/,'the exchange only happens if Connor goes to the officer');
+ // The forced exit after six actions: the timer line only on stories that carry endTimerLine.
+ const hub=node('C02i'),LINE=/What the fuck are you doing\? You gonna talk to it or what\?/;assert.equal(hub.endTimerLine,true);
+ const run=n=>{const s=startState(story);apply(node('C02'),s,'0');apply(node('C02b'),s,'0');let ev;for(const id of ['0','1','12','2','3','4'])ev=apply(n,s,id,0.999);return {s,ev}};
+ const now=run(hub);assert.equal(now.s.hostageForcedOut,true);assert.match(now.ev.event,LINE);
+ const old=run({...hub,endTimerLine:undefined});assert.equal(old.s.hostageForcedOut,true);assert.doesNotMatch(old.ev.event,LINE,'older snapshots replay without the line');
+ // C02e: the game’s lines, no invented armor.
+ const e=node('C02e');assert.match(e.situation,/Cover me while I evacuate him/);assert.match(e.situation,/Requesting immediate evac/);assert.match(e.situation,/Yeah… Yeah, I’m fine/);assert.doesNotMatch(e.situation+JSON.stringify(e.facts),/armor/);
+});

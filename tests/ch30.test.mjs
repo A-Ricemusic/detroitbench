@@ -242,3 +242,13 @@ test('Crossroads: chapter 31 exact handoff aliases track only this chapter’s d
  const earlier=play(RAID,{setup:s=>{s.ch28MarkusDied=true}});assert.equal(earlier.s.ch30MarkusDied,false,'a Freedom March death is not a Crossroads death');
  const noHank=play({...RAID,C22:'1'},{setup:s=>{s.instability=0;s.hank=true;s.hankResigned=true}});assert.equal(noHank.s.hank,true);assert.ok(!/takes his own life/.test(noHank.events.C22.event));
 });
+
+test('story 1.9.7 (MiKeYROG cross-check): the council without Markus branches on Simon; the cargo-hall LIE names Hank by his token',()=>{
+ const n=node('M21-north'),at=simon=>{const s=startState(story);s.simon=simon;return render(situationFor(n,s),'real')};
+ const alive=at(true),dead=at(false);
+ assert.match(alive,/Simon is with them\./);assert.match(alive,/I’m on it\./,'Simon alive: the BRIDGE.LEADNORTH text with Simon’s lines');assert.match(alive,/THAT’S ENOUGH!/);
+ assert.doesNotMatch(dead,/Simon/);assert.match(dead,/Markus is dead, North\. Now it’s up to us to decide the future for our people\./);assert.match(dead,/He gave his life for our cause!/);assert.match(dead,/This is a mistake, North\. You won’t buy our freedom with blood\./);assert.doesNotMatch(dead,/THAT’S ENOUGH/,'the Simon-dead variant has no outburst');
+ assert.match(n.adaptationNote,/g_DQfghTbLg 4:13:16/);
+ const lie=node('C22-cargo').options.find(o=>o.id==='0').outcome;
+ assert.doesNotMatch(lie,/HankAnderson/);assert.match(lie,/Lieutenant \{\{Hank\}\}\?/);assert.match(render(lie,'neutral'),/Lieutenant Reyes\?/);assert.doesNotMatch(render(lie,'neutral'),/LieutenantReyes/);assert.match(render(lie,'real'),/Lieutenant Hank\?/);
+});

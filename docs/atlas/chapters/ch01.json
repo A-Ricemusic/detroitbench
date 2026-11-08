@@ -249,7 +249,7 @@
      "C02e"
     ],
     "status": "simplified",
-    "note": "A repeatable scene: each visit offers the clues not yet examined plus “Go out to the terrace now”, one action each. The father’s body (+3) and then his tablet (+7) are two actions (transcript: “Pick Up Tablet (After Examining John’s Body)”; story 1.9.1 merged them into one +10 action). TV, stove and window are offered with no modifier. Time is counted in actions: −1% per action after the first. The SWAT shooting (C02e) fires once, right after the second action, wherever Connor is. Time-out is a forced exit after six actions (see H05). Each clue’s fact is the game’s scan text: the MS853 Black Hawk and .355 ammunition, the father’s scan (time of death 07:29 pm, three .355 wounds) and his tablet (“Your order for an AP700 android has been registered”), the officer’s scan (P.O Deckart, Antony, 08:03 pm, “Only one shot”) with the P.L. 544-7 American Androids Act text on his gun, the PL600 serial in the blue blood, the shoe, Emma’s video and the ITM TV report."
+    "note": "A repeatable scene: each visit offers the clues not yet examined plus “Go out to the terrace now”, one action each. The father’s body (+3) and then his tablet (+7) are two actions (transcript: “Pick Up Tablet (After Examining John’s Body)”; story 1.9.1 merged them into one +10 action). TV, stove and window are offered with no modifier. Time is counted in actions: −1% per action after the first. The SWAT shooting (C02e) fires once, right after the second action, wherever Connor is. Time-out is a forced exit after six actions (see H05). Each clue’s fact is the game’s scan text: the MS853 Black Hawk and .355 ammunition, the father’s scan (time of death 07:29 pm, three .355 wounds) and his tablet (“Your order for an AP700 android has been registered”), the officer’s scan (P.O Deckart, Antony, 08:03 pm, “Only one shot”) with the P.L. 544-7 American Androids Act text on his gun, the PL600 serial in the blue blood, the shoe, Emma’s video and the ITM TV report. Story 1.9.7: the window officer’s lines are the game’s (“Cover me while I evacuate him”, “Man down!”, “Yeah… I’m fine…”), without the invented armor; when Allen forces Connor out he adds the timer line “What the fuck are you doing? You gonna talk to it or what?” (scene field endTimerLine; MiKeYROG 100% walkthrough, vOQGy5Wk6tY 05:17, 43:11)."
    }
   },
   {
@@ -382,6 +382,11 @@
      "label": "Leave wounded cop (obey Daniel)",
      "effect": "+6%. The officer bleeds out.",
      "target": null
+    },
+    {
+     "label": "Walk on past him",
+     "effect": "No change to the odds or public opinion; the officer is neither saved nor left (neither chart node is reached).",
+     "target": null
     }
    ],
    "gate": "On the terrace; it can happen before or after the gun question.",
@@ -392,14 +397,14 @@
     "https://www.powerpyx.com/detroit-become-human-the-hostage-opening-walkthrough-100/",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html"
    ],
-   "note": "",
+   "note": "Story 1.9.7: the wounded officer is optional in the game, so a third option passes him by.",
    "status": "Source-backed summary",
    "benchmark": {
     "scenes": [
      "C03"
     ],
     "status": "implemented",
-    "note": "The game’s prompt IGNORE (save him: −5%, public opinion +1, “You can’t kill me. I’m not alive.”) / OBEY (+6%, “Okay.”), now after the opening line as in the template."
+    "note": "The game’s prompt IGNORE (save him: −5%, public opinion +1, “You can’t kill me. I’m not alive.”) / OBEY (+6%, “Okay.”), now after the opening line as in the template. Story 1.9.7 adds a third option, “Walk on past him”, with no trust or public-opinion change and no LEAVE or SAVE WOUNDED COP recorded: looking at the officer is optional in the game (MiKeYROG 100% walkthrough, vOQGy5Wk6tY 06:32, 13:18, 20:47). The kneel, the tourniquet and Daniel’s threat now play in the IGNORE and OBEY outcomes."
    }
   },
   {

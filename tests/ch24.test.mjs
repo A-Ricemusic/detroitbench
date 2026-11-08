@@ -163,6 +163,8 @@ test('Public Enemy: leaving the roof without Simon keeps him alive; the roof wit
  assert.equal(no.events.C14r.at(-1).choice,'10','the only way off the roof is back down');assert.equal(no.s.ch24SimonSurvived,false);
  // NO goes back to the broadcast room.
  const stay=play({C14:['0','2','2'],C14r:['10'],C14y:['1','0']});assert.deepEqual(stay.visited.filter(id=>id==='C14y').length,2);assert.equal(stay.s.ch24Ending,ENDINGS.left);
+ // After one NO, Hank's question offers only YES (story 1.9.9): the engine's own availability drops option 1.
+ const afterNo=play({C14:['0','2','2'],C14r:['10'],C14y:['1','0']});assert.equal(afterNo.s.ch24NoOnce,true);assert.deepEqual(available(node('C14y'),{...afterNo.s,ch24Phase:'leave'}).map(o=>o.id),['0'],'NO is offered once');
 });
 
 test('Public Enemy: the kitchen needs the camera recording, and resumes at the accusation',()=>{

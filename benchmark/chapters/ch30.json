@@ -969,19 +969,26 @@
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
    "https://www.powerpyx.com/detroit-become-human-crossroads-markus-walkthrough-100/",
    "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-2.jpg"
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-crossroads-markus-2.jpg",
+   "https://www.youtube.com/watch?v=g_DQfghTbLg"
   ],
   "id": "M21-north",
   "character": "Player",
   "type": "event",
   "title": "The council without {{Markus}}",
-  "situation": "You are watching the captain’s cabin. {{Markus}} died in Freedom March. {{Josh}} and {{North}} discuss what comes next. {{North}}: “THAT’S ENOUGH! {{Markus}} is gone… We have to fight them… Gather up all the guns you can find, we leave at dawn.” {{Josh}}: “You’re making a mistake {{North}}. You will not buy our freedom with blood.”",
+  "situation": "You are watching the captain’s cabin. {{Markus}} died in Freedom March. {{Josh}} and {{North}} discuss what comes next. {{Josh}}: “We’re short on blue blood and biocomponents. Our people are shutting down one after another and there’s nothing we can do for them!”",
   "situationWhen": [
    {
     "requires": {
      "simon": true
     },
-    "text": "{{Simon}} is with them."
+    "text": "{{Simon}} is with them. {{Simon}}: “President {{Warren}} says we’re a threat to national security, we need to be exterminated… {{Markus}} would know what to do…” {{Josh}}: “He’s the one that got us into this mess!” {{Simon}}: “He gave his life for our cause.” {{Josh}}: “He put us all into danger by provoking humans! How much longer before they find {{Jericho}} now?” {{Simon}}: “At least he fought for us!” {{North}}: “THAT’S ENOUGH! {{Markus}} is gone. It’s up to us now to decide the future of our people. We have to fight them. There’s no other way.” {{Josh}}: “If you choose a confrontation with humans, we’re all going to die.” {{North}}: “Gather up all the guns you can find, we leave at dawn.” {{Simon}}: “I’m on it.” {{Josh}}: “You’re making a mistake {{North}}. You will not buy our freedom with blood.”"
+   },
+   {
+    "requires": {
+     "simon": false
+    },
+    "text": "{{Josh}}: “President {{Warren}} is saying we’re a threat to national security and that we need to be eliminated…” {{North}}: “{{Markus}} would know what to do…” {{Josh}}: “He’s the one that got us into this mess!” {{North}}: “He gave his life for our cause!” {{Josh}}: “He provoked the humans! How much longer before they find {{Jericho}} now? {{Markus}} is dead, {{North}}. Now it’s up to us to decide the future for our people.” {{North}}: “We have to fight them. It’s the only way.” {{Josh}}: “If you choose a confrontation with humans, we are all going to die.” {{North}}: “Gather up all the guns you can find. We leave at dawn.” {{Josh}}: “This is a mistake, {{North}}. You won’t buy our freedom with blood.”"
    }
   ],
   "facts": [],
@@ -995,7 +1002,7 @@
   "outcomes": {
    "0": "{{North}} stays alone with her thoughts."
   },
-  "adaptationNote": "Scripted branch of the chart: CAPTAIN’S CABIN WITH NORTH, JOSH AND NORTH DISCUSS or JOSH, SIMON AND NORTH DISCUSS, NORTH STAYED ALONE WITH HER THOUGHTS. No player dialogue prompt and no stat arrow. Presented as an observer event because the controlled protagonist died in Freedom March; the ending remains recorded on the Markus chart. The observer has no knowledge bucket in the engine: its facts are therefore narrated in the situation, not added to protagonist knowledge."
+  "adaptationNote": "Scripted branch of the chart: CAPTAIN’S CABIN WITH NORTH, JOSH AND NORTH DISCUSS or JOSH, SIMON AND NORTH DISCUSS, NORTH STAYED ALONE WITH HER THOUGHTS. No player dialogue prompt and no stat arrow. Presented as an observer event because the controlled protagonist died in Freedom March; the ending remains recorded on the Markus chart. The observer has no knowledge bucket in the engine: its facts are therefore narrated in the situation, not added to protagonist knowledge. The council’s lines follow the 30.3 template’s section “Markus died in Freedom March” in full, with its two variants: Simon alive (X0203A.BRIDGE.LEADNORTH, Josh, Simon and North) and Simon dead (X0203A.LEADNORTH.SIMONDEAD LASTTALK, Josh and North only). Before story 1.9.7 one text, built from the Simon-alive variant, played for both; the Simon-dead variant is the one MiKeYROG 100% walkthrough, g_DQfghTbLg 4:13:16 (the I’ll Be Back run, hours:minutes:seconds), plays."
  },
  {
   "id": "C22-cabin",
@@ -2167,7 +2174,7 @@
    {
     "id": "0",
     "text": "LIE: claim to be a police officer.",
-    "outcome": "{{Connor}}: “Obviously! What do I look like? {{DPD}}. I work with Lieutenant {{HankAnderson}}? We’re on a stakeout. If I knew you were coming I would have brought some donuts.” Soldier: “You’re a lucky guy. Another second and I’d have shot you. You should go back up on deck and let us do our job.” {{Connor}}: “You’re right. That’s... Exactly what I’m gonna do.” As soon as the soldier turns away, {{Connor}} resumes his pursuit."
+    "outcome": "{{Connor}}: “Obviously! What do I look like? {{DPD}}. I work with Lieutenant {{Hank}}? We’re on a stakeout. If I knew you were coming I would have brought some donuts.” Soldier: “You’re a lucky guy. Another second and I’d have shot you. You should go back up on deck and let us do our job.” {{Connor}}: “You’re right. That’s... Exactly what I’m gonna do.” As soon as the soldier turns away, {{Connor}} resumes his pursuit."
    },
    {
     "id": "1",
@@ -2191,7 +2198,7 @@
    "lost": "{{Connor}} lunges at the soldier, but the soldier gets the better of him and other soldiers close in. Soldier: “Fuckin’ androids…” They shoot {{Connor}} down.",
    "run": "{{Connor}} turns and runs. Soldier: “Fuckin’ androids…” The soldiers shoot him down before he reaches the door."
   },
-  "adaptationNote": "Machine {{Connor}} only: the chart’s CARGO HALL, STOPPED BY SOLDIER and its four rows, with the template’s buttons LIE (chart ATTEMPT TO PERSUADE), {{PERKINS}} EXCUSE (chart {{PERKINS}} ALIBI), ATTACK and RUN in the template’s order. LIE and {{PERKINS}} EXCUSE lead to RESUME PURSUIT. ATTACK is a fight (a risk roll; no source gives a probability): NEUTRALIZE ASSAILANT resumes the pursuit; FAIL TO NEUTRALIZE ASSAILANT leads, like RUN and SOLDIERS SHOOT {{CONNOR}}, to MACHINE {{CONNOR}} WAS DESTROYED and {{CYBERLIFE}} WILL SEND A NEW {{CONNOR}}. Lines are the template’s. Whether he attacked changes his last line if he later corners {{North}}. No stat change, and no {{Hank}} or {{Amanda}} change on his death (none is sourced for this chapter).",
+  "adaptationNote": "Machine {{Connor}} only: the chart’s CARGO HALL, STOPPED BY SOLDIER and its four rows, with the template’s buttons LIE (chart ATTEMPT TO PERSUADE), {{PERKINS}} EXCUSE (chart {{PERKINS}} ALIBI), ATTACK and RUN in the template’s order. LIE and {{PERKINS}} EXCUSE lead to RESUME PURSUIT. ATTACK is a fight (a risk roll; no source gives a probability): NEUTRALIZE ASSAILANT resumes the pursuit; FAIL TO NEUTRALIZE ASSAILANT leads, like RUN and SOLDIERS SHOOT {{CONNOR}}, to MACHINE {{CONNOR}} WAS DESTROYED and {{CYBERLIFE}} WILL SEND A NEW {{CONNOR}}. Lines are the template’s. Whether he attacked changes his last line if he later corners {{North}}. No stat change, and no {{Hank}} or {{Amanda}} change on his death (none is sourced for this chapter). Story 1.9.7 fixed the LIE outcome’s name token: it read {{HankAnderson}}, which renders for the subject as “Lieutenant LieutenantReyes”; the game’s line is “I work with Lieutenant Hank Anderson?” (X0205A.CNRBAD.SWAT.PC.X02ACONNOR.HUMAN.3), and the surname is withheld elsewhere, so it is now “Lieutenant {{Hank}}”. The token stays in NAMES because recorded runs re-render their prompts through it. Found by the quote check of the MiKeYROG 100% walkthrough cross-check (no video covers this line; the chapter’s video, eY5wUwZ4R_M, has no captions).",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Crossroads",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/30.2-crossroads-connor-chapter-content/crossroads-connor-chapter-content.component.html",

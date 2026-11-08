@@ -14,8 +14,9 @@
 //  - MTD4 option 1, TALK TO JOSH: joshTrust +1 ({REL Josh SmallUp}).
 //  - MTD4 option 2, TALK TO NORTH: northTrust +1 ({REL North SmallUp}).
 //  - MTD5 option 3, YOU: northTrust −1 ({REL North SmallDown}).
-//  - MTD6, the Simon scene: northTrust +1 and simonTrust +1 ({REL North SmallUp}, {REL Simon SmallUp}).
-// Not applied: the wiki's Jericho +1 for "Talking to Simon" (the template lists the scene's arrows without it).
+//  - MTD6, the Simon scene: northTrust +1 and simonTrust +1 ({REL North SmallUp}, {REL Simon SmallUp}), and from story 1.9.8
+//    jerichoTrust +1 (the wiki's "Talking to Simon"; the template does not list it, the game's readout shows it: video frame,
+//    y50ZjZWX0gU 11:45). The arrows are scene data, so older snapshots replay with two.
 //
 // Cross-chapter input: none (nothing earlier changes what the chapter offers).
 // Cross-chapter output: the built-in northTrust, simonTrust and joshTrust (first moved here); `ch16Outcome`; and
@@ -37,6 +38,7 @@ export const rules={ENDING,HUB,NORTH,YOU,
   {scene:'MTD5',option:'3',key:'northTrust',delta:-1,source:'template {REL North SmallDown}; wiki “Picking “you” while talking to her”'},
   {scene:'MTD6',option:'0',key:'northTrust',delta:1,source:'template {REL North SmallUp}; wiki “Talking to Simon”'},
   {scene:'MTD6',option:'0',key:'simonTrust',delta:1,source:'template {REL Simon SmallUp}; wiki “Talking to him”'},
+  {scene:'MTD6',option:'0',key:'jerichoTrust',delta:1,source:'wiki “Talking to Simon”; video frame, y50ZjZWX0gU 11:45 (story 1.9.8)'},
  ]};
 
 export function consequence(n,s){

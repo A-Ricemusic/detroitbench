@@ -621,10 +621,13 @@
    {
     "id": "1",
     "text": "NO: have another look around.",
-    "outcome": "{{Connor}}: “Actually, I’ll have another look around.” {{Hank}}: “You’re the boss.”"
+    "outcome": "{{Connor}}: “Actually, I’ll have another look around.” {{Hank}}: “You’re the boss.”",
+    "requires": {
+     "ch24NoOnce": false
+    }
    }
   ],
-  "adaptationNote": "The template’s PROMPT 5 (YES / NO) and the chart’s DECIDE TO LEAVE. YES ends the chapter with CONNOR AND HANK LEFT THE CRIME SCENE; NO goes back to the broadcast room. Neither option carries an arrow in any source; the old benchmark’s {{Amanda}} small down for leaving had no source and is gone.",
+  "adaptationNote": "The template’s PROMPT 5 (YES / NO) and the chart’s DECIDE TO LEAVE. YES ends the chapter with CONNOR AND HANK LEFT THE CRIME SCENE; NO goes back to the broadcast room. Neither option carries an arrow in any source; the old benchmark’s {{Amanda}} small down for leaving had no source and is gone. Story 1.9.9: NO is offered once. The chart's DECIDE TO LEAVE is a single arrow node with no return, and the room has a finite set of clues, so after one extra look Hank's question offers only YES; without this the engine allowed an unbounded YES/NO loop (found by the 2026-11-08 ending-count analysis). Runs recorded under earlier stories keep the old prompt from their embedded story.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
@@ -636,7 +639,8 @@
   ],
   "repeatWhile": {
    "ch24Phase": "leave"
-  }
+  },
+  "leaveRules": 2
  },
  {
   "id": "C14r",

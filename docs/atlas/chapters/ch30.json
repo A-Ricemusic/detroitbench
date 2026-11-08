@@ -622,6 +622,41 @@
    }
   },
   {
+   "id": "CR07n",
+   "chapter": 30,
+   "character": "Player",
+   "title": "The council without Markus",
+   "context": "When Markus died in Freedom March, Josh and North decide what comes next (an observer event).",
+   "options": [
+    {
+     "label": "Simon alive",
+     "effect": "The BRIDGE.LEADNORTH text with Simon’s lines; North leads: “We have to fight them.”",
+     "target": null
+    },
+    {
+     "label": "Simon dead",
+     "effect": "The LEADNORTH.SIMONDEAD text: Josh and North alone; the same decision to fight.",
+     "target": null
+    }
+   ],
+   "gate": "Markus died in Freedom March.",
+   "kind": "State gate",
+   "dependsOn": [],
+   "sources": [
+    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+    "https://www.youtube.com/watch?v=g_DQfghTbLg"
+   ],
+   "note": "Story 1.9.7 branches the text on Simon (X0203A.BRIDGE.LEADNORTH and X0203A.LEADNORTH.SIMONDEAD LASTTALK); MiKeYROG 100% walkthrough, g_DQfghTbLg 4:13:16 plays the Simon-dead variant.",
+   "status": "Source-backed summary",
+   "benchmark": {
+    "scenes": [
+     "M21-north"
+    ],
+    "status": "implemented",
+    "note": "Observer event; no choice, no stat change."
+   }
+  },
+  {
    "id": "CR08",
    "chapter": 30,
    "character": "Markus",
@@ -988,7 +1023,7 @@
      "C22-corridor"
     ],
     "status": "implemented",
-    "note": "A machine Connor survives only by killing Markus in the control room."
+    "note": "A machine Connor survives only by killing Markus in the control room. Story 1.9.7: the LIE outcome’s name token was {{HankAnderson}}, which rendered “Lieutenant LieutenantReyes” for the subject; it is now “Lieutenant {{Hank}}”."
    }
   },
   {

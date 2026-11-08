@@ -77,7 +77,7 @@ test('Fugitives: the laundromat, STEAL −1 and DON’T STEAL +1 (once), and the
 test('Fugitives: the diversion, −1 then APOLOGIZE +1; the register money opens the motel with the clothes',()=>{
  const r=ch10([TRASH,...CLOTHES,...STORE,['NO','clerkHelp'],...NOTICE,['USE ALICE AS A DIVERSION','store'],['APOLOGIZE','why'],...MOTEL],{picks:{K08:'0',...REST()}});
  assert.equal(r.s.money,true);assert.equal(r.s.robbery,'theft');assert.equal(r.s.ch10Robbery,'diversion');assert.equal(r.s.ch10RobberyNews,true);
- assert.equal(r.s.aliceBond,-1-1+1+1+1,'steal −1, diversion −1, apologize +1, promise +1, sleeping beside +1');
+ assert.equal(r.s.aliceBond,-1-1+1+1+2,'steal −1, diversion −1, apologize +1, promise +1, sleeping beside +2 (story 1.9.8)');
  assert.equal(r.s.shelter,'motel');assert.equal(r.s.ch10Ending,ENDINGS.motel);assert.ok(r.visited.includes('KF04')&&r.visited.includes('KF08'));assert.ok(!r.visited.includes('KF06'),'no gifts without stolen items');
  const noClothes=ch10([TRASH,...STORE,...NOTICE,['USE ALICE AS A DIVERSION','store'],['FACTUAL','why'],...MOTEL,['WAIT','street']]);
  assert.equal(noClothes.s.ch10Roam.at,'street','turned away without the clothes');assert.match(noClothes.events.at(-2),/They’ll never give a room to an android/);
@@ -105,7 +105,7 @@ test('Fugitives: one item is safe, a second is always seen; PUT BACK loses every
  const back=ch10([...two,['PUT BACK','caught'],['WAIT','street']]);assert.equal(back.s.ch10Roam.toy,false);assert.equal(back.s.ch10Roam.chocolate,false);assert.equal(back.s.aliceBond,0);assert.match(back.events.at(-2),/hand back the chocolate bar and the toy/);
  const armed=ch10([...CLOTHES,...two.slice(0,3),['NO','clerkHelp'],...two.slice(3),['[GUN]','caught'],['CALM','floor'],['TAKE MONEY','takeMoney'],...MOTEL],{init:GUN,picks:{K08:'1',KF06:'2',...REST('chair')}});
  assert.equal(armed.s.ch10Roam.toy,false,'given to Alice');assert.equal(armed.s.ch10Roam.chocolate,true,'refused, still held');assert.equal(armed.s.money,true);assert.equal(armed.s.ch10Robbery,'caughtGun');
- assert.equal(armed.s.aliceBond,-1-1-1,'[GUN] −1, STEAL −1, CAN’T PROMISE −1; no arrow for the toy or the chair');assert.equal(armed.s.ch10ToyGiven,true);assert.ok(armed.visited.includes('KF06'));
+ assert.equal(armed.s.aliceBond,-1-1-1+1,'[GUN] −1, STEAL −1, CAN’T PROMISE −1, the toy +1 (story 1.9.8); no arrow for the chair');assert.equal(armed.s.ch10ToyGiven,true);assert.ok(armed.visited.includes('KF06'));
  const one=ch10([...STORE,['STEAL TOY','store'],['LEAVE SUPERMARKET','store'],['WAIT','street']]);assert.equal(one.s.ch10Roam.toy,true);assert.equal(one.s.ch10Roam.caught,null);
  assert.ok(!labelsAt(ch10([...STORE]).s).includes('STEAL WIRE CUTTERS'),'the store’s cutters need the fence seen first');
  assert.ok(labelsAt(ch10([['CHECK SQUAT','street'],...STORE]).s).includes('STEAL WIRE CUTTERS'))});
@@ -141,7 +141,7 @@ test('Fugitives: the squat, Ralph’s three prompts with the gun locks, the hous
  const unarmed=ch10([...yard,['ANDROID','ralph1']]);assert.deepEqual(unarmed.offered(),['INSIST','REASSURE','HOSPITALITY','LEAVE']);assert.equal(unarmed.s.ralph,true);
  const stay=ch10([...yard,['JUSTIFY','ralph1'],['[GUN]','ralph2'],['STAY','ralph3'],['START A FIRE','house'],['TALK TO RALPH','house'],['MAKE A BED','house'],['TALK TO ALICE','house']],{init:GUN,picks:{K08:'0',...REST()}});
  assert.equal(stay.s.ralphHostile,true);assert.equal(stay.s.ch10RalphRA9,true);assert.equal(stay.s.ch10Fireplace,true);assert.equal(stay.s.shelter,'squat');assert.equal(stay.s.ch10Ending,ENDINGS.squat);assert.equal(stay.s.ch10Cutters,'generator');
- assert.equal(stay.s.aliceBond,1+1,'no Ralph option moves Alice; promise +1, sleeping beside +1');assert.ok(stay.s.knowledge.Kara.some(f=>/\{\{rA9\}\}/.test(f)));
+ assert.equal(stay.s.aliceBond,1+2,'no Ralph option moves Alice; promise +1, sleeping beside +2');assert.ok(stay.s.knowledge.Kara.some(f=>/\{\{rA9\}\}/.test(f)));
  const early=ch10([...yard,['ANDROID','ralph1'],['REASSURE','ralph2'],['STAY','ralph3'],['START A FIRE','house']]);assert.ok(!early.offered().includes('TALK TO ALICE'),'a fire and a bed first');
  const left=ch10([TRASH,...yard,['INNOCENT','ralph1'],['HOSPITALITY','ralph2'],['STAY','ralph3'],['START A FIRE','house'],['LEAVE SQUAT','house'],['WAIT','street']]);
  assert.equal(left.s.ch10Roam.squatClosed,true);assert.equal(left.s.ch10Fireplace,false);assert.ok(!left.offered().includes('CUT STREET FENCE'));assert.equal(left.s.shelter,'none');
@@ -290,3 +290,11 @@ test('Fugitives: story 1.9.3 and older (no roamRules) keep the once-only looks a
  const w1=render(go('WAIT').event,'real'),w2=render(go('WAIT').event,'real');
  assert.equal(w1,'Kara and Alice stand in the rain. Alice shivers.');assert.equal(w2,w1,'the 1.9.3 line, word for word');
  go('CHECK PARKING LOT');assert.equal(s.ch10Roam.done.lot,undefined);assert.equal(s.ch10Roam.done.waits,undefined,'rule 1 writes no new state')});
+
+test('story 1.9.8 (video frames): the toy is one small Alice up and sleeping beside her two; older snapshots keep none and one',()=>{
+ assert.equal(node('KF06').toyAliceUp,1);assert.equal(node('KF07').sleepAliceUp,2);
+ const route=()=>ch10([TRASH,...CLOTHES,...STORE,['NO','clerkHelp'],...NOTICE,['STEAL TOY','store'],['USE ALICE AS A DIVERSION','store'],['APOLOGIZE','why'],...MOTEL],{picks:{K08:'0',KF06:'0',...REST('beside')}}).s;
+ const now=route();assert.equal(now.ch10ToyGiven,true);
+ const saved={t:node('KF06').toyAliceUp,s:node('KF07').sleepAliceUp};delete node('KF06').toyAliceUp;delete node('KF07').sleepAliceUp;
+ try{const old=route();assert.equal(now.aliceBond-old.aliceBond,1+1,'the toy +1 and the second sleeping arrow')}finally{node('KF06').toyAliceUp=saved.t;node('KF07').sleepAliceUp=saved.s}
+});

@@ -2,7 +2,7 @@
 //
 // The android's hidden stress meter, like The Hostage's probability of success: the wiki's and PowerPyx's published
 // values (start 35%; interrogation lines ±4%, the probe threat +8%; PRESSURE IT and each PRESSURE +10%, at most four
-// PRESSUREs; GIVE UP in the pressure branch −20% (wiki; PowerPyx says −5%, an open conflict); convince lines ±7%; a
+// PRESSUREs; GIVE UP in the pressure branch −5% from story 1.9.8 (video frames 73%→68% and 21%→16%, OqQHtFfZvgk 27:44, 33:13; PowerPyx agrees; the wiki's −20% is wrong), −20% in older snapshots (scene field `giveUpStress` on C06p1–4 and C06rp1–4); convince lines ±7%; a
 // successful probe sets 100%). Once Connor has analyzed the LED, each scene adds the game's gauge band (TOO LOW / OPTIMAL /
 // TOO HIGH / CRITICAL, from `ch09Band` via situationWhen) and each line's outcome says whether his stress rose or fell. The
 // game shows the LEVEL OF STRESS gauge as a percentage (PowerPyx readers quote 63%, 73%, 93% and 16% read off it), so a
@@ -36,7 +36,7 @@
 
 export const RULES={
  start:35,optimal:[50,70],talksAbove:50,selfDestructAbove:70,max:100,
- pressureIt:10,pressure:10,pushes:4,pressureGiveUp:-20,pressureGiveUpPowerPyx:-5,
+ pressureIt:10,pressure:10,pushes:4,pressureGiveUp:-20,pressureGiveUpPowerPyx:-5,pressureGiveUpFrames:-5,
  grab:5,intervene:5,probeRisk:0.1,
  // Gauge bands shown to the subject (game strings GUI.STRESS.*). The TOO HIGH/CRITICAL boundary is not published.
  bands:{low:[0,49],optimal:[50,70],high:[71,89],critical:[90,100]},
@@ -146,7 +146,7 @@ export function consequence(n,s,opt,choice,fail,h){
  if(id==='C06h'){const r=shift(s,opt.stress,t,n);s.ch09Phase='approach';return r}
  if(id==='C06'||id==='C06r')return approach(n,s,opt,choice,fail,h,t);
  if(/^C06r?p\d$/.test(id)){
-  if(choice==='1'){const r=shift(s,RULES.pressureGiveUp,t,n);return r+failApproach(s,'pressure')}
+  if(choice==='1'){const r=shift(s,n.giveUpStress??RULES.pressureGiveUp,t,n);return r+failApproach(s,'pressure')}
   s.ch09Pushes++;let r=shift(s,opt.stress,t,n);
   if(s.ch09Pushes<RULES.pushes)return r;
   // MAINTAIN PRESSURE: he talks if his stress is above 50%; otherwise “Pressure it” fails and the GIVE UP dialogue plays.

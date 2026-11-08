@@ -1,0 +1,15 @@
+# Brief: how many endings, how many playthroughs
+
+Answer, from the benchmark as it is built today (story version in `benchmark/story-meta.json`; scenes in `benchmark/chapters/chNN.json`; gates, consequences and endings in `benchmark/chapters/chNN.mjs`; shared engine `benchmark/story-engine.mjs`), two questions:
+
+1. **How many unique, distinct endings does the benchmark have?** Give several defensible counts and say which you consider "the" answer:
+   - per-chapter ending nodes (the chart's ending labels the benchmark records in state, e.g. `hostageOutcome`, `ch07Outcome`, `ch09Outcome`), summed and per chapter;
+   - final-chapter endings per protagonist (what the site's ending charts call Connor / Kara / Alice / Markus endings), and the number of distinct combinations of those that a single run can reach;
+   - full story endings: distinct final states of the whole game (the epilogue scenes reached, including the after-credits scenes BF08 to BF13, and the finalState fields the report calls "Where this path ended").
+   Be exact about what counts as distinct (a different ending node, versus the same node with a different attitude level).
+
+2. **How many unique playthroughs exist?** A playthrough is one path from the first scene to `finished: true`. Count distinct sequences of (scene, choice) that the engine allows, respecting gates (`requires`, `gate`, `available`, `repeatWhile`, `excludeChosenAt`, `interrupt`/`returnTo`), the one-path rule (scenes blocked on a path are skipped), repeatable hubs (each visit is a choice; the hub repeats until its exit condition), media scenes (read/skip, or per-item), and risk rolls (a risky option has two outcomes; decide and state whether you count outcomes or choices). This number will be astronomically large; give it as an exact integer if you can compute it, otherwise as a tight lower and upper bound with the method, and give the order of magnitude in plain words. Also give the more useful number: distinct paths through the decision structure if hub action order is ignored (sets instead of sequences), and the number of distinct reachable end states.
+
+Method requirements: compute, do not estimate. Write a script (you may put it in `/tmp/<your-name>/`) that loads the assembled story through the engine's own functions (`startState`, `available`, `apply`/`current`, `skipBlocked`; read benchmark/story-engine.mjs for the exact exports) and enumerates or counts paths by dynamic programming over engine state, hashing state to dedupe. If full enumeration is infeasible, count per chapter and combine, stating every independence assumption. Report where the count is sensitive to a modelling choice (for example whether two hub visit orders count as different playthroughs). Do not edit anything under benchmark/, src/, data/ or docs/ except your own output file. Do not launch subagents. Do not commit.
+
+Output: write `docs/Anthony/analysis/endings-<your-name>.md` with your numbers, the method, the script path, the assumptions, and a per-chapter table of ending nodes and branch counts.

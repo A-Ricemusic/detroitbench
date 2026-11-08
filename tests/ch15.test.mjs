@@ -103,7 +103,7 @@ test('The Nest: the timer is an action budget; LEAVE, or STAY and running out ag
 test('The Nest: the rA9 line names the Partners android only if Connor checked the shower there',{timeout:60000},()=>{
  const r=play({},[],n=>n.id==='C10o1');const plain={...structuredClone(r.s),ch06Clues:{...r.s.ch06Clues,shower:false},ch06KnowsRA9:false},shower={...structuredClone(r.s),ch06Clues:{...r.s.ch06Clues,shower:true},ch06KnowsRA9:true};
  const a=apply(node('C10o1'),plain,'5').event,b=apply(node('C10o1'),shower,'5').event;
- assert.match(a,/Why is it obsessed with this sign\?/);assert.doesNotMatch(a,/shower/);assert.match(b,/same sign \{\{CarlosOrtiz\}\}’s android wrote on the shower wall/);assert.equal(plain.nestSawSigns,true)});
+ assert.match(a,/Why is it obsessed with this sign\?/);assert.doesNotMatch(a,/shower/);assert.match(b,/same sign \{\{Ortiz\}\}’s android wrote on the shower wall/);assert.equal(plain.nestSawSigns,true)});
 
 test('The Nest: the chase can lose the deviant or kill Connor; deaths move instability as the wiki has it',{timeout:60000},()=>{
  const hall=chapter({C10q:'1'});assert.equal(hall.s.nestOutcome,'Rupert got away');assert.equal(hall.s.nestLostAt,'in the hallway');assert.ok(!hall.ch.includes('C10r'));

@@ -41,10 +41,11 @@ test('Time to Decide: the three prompts carry the game’s button labels in the 
  assert.ok(!/lost a lot of blood|left over from one of our own/.test(JSON.stringify(ch16.map(({adaptationNote,...n})=>n))),'Lucy’s cut lines are not built');
 });
 
-test('Time to Decide: the arrows are exactly the template’s, each one small step, and no Jericho arrow',()=>{
+test('Time to Decide: the arrows are the template’s plus the Simon scene’s Jericho arrow (story 1.9.8), each one small step',()=>{
  const found=[];for(const n of ch16){if(n.effect)for(const [key,d] of Object.entries(n.effect))found.push({scene:n.id,option:'0',key,delta:d});for(const o of n.options)if(o.effect)for(const [key,d] of Object.entries(o.effect))found.push({scene:n.id,option:o.id,key,delta:d})}
  assert.deepEqual(found,rules.ARROWS.map(({source,...a})=>a));
- assert.ok(!found.some(a=>a.key==='jerichoTrust'),'the template has no Jericho arrow at the Simon scene');
+ assert.deepEqual(found.filter(a=>a.key==='jerichoTrust'),[{scene:'MTD6',option:'0',key:'jerichoTrust',delta:1}],'the game’s readout shows Jericho beside North and Simon (video frame, y50ZjZWX0gU 11:45)');
+ assert.match(ch16.find(n=>n.id==='MTD6').adaptationNote,/y50ZjZWX0gU 11:45/);
  assert.ok(found.every(a=>Math.abs(a.delta)===1));
 });
 
@@ -72,15 +73,15 @@ test('Time to Decide: the hold is a repeatable scene; Simon needs Lucy and the c
 
 test('Time to Decide: relationship arithmetic for an empty, a full and a YOU run follows the template',()=>{
  const none=play({MTD4:['5','6','7']});
- assert.deepEqual(['northTrust','simonTrust','joshTrust','jerichoTrust'].map(k=>delta(none,k)),[1,1,0,0],'only the Simon scene');
+ assert.deepEqual(['northTrust','simonTrust','joshTrust','jerichoTrust'].map(k=>delta(none,k)),[1,1,0,1],'only the Simon scene');
  const full=play({MTD4:['1','2','5','6','7'],MTD5:'0'});
- assert.deepEqual(['northTrust','simonTrust','joshTrust','jerichoTrust'].map(k=>delta(full,k)),[2,1,1,0]);
+ assert.deepEqual(['northTrust','simonTrust','joshTrust','jerichoTrust'].map(k=>delta(full,k)),[2,1,1,1]);
  const you=play({MTD4:['2','1','5','6','7'],MTD5:YOU});
- assert.deepEqual(['northTrust','simonTrust','joshTrust','jerichoTrust'].map(k=>delta(you,k)),[1,1,1,0],'YOU cancels the talk');
+ assert.deepEqual(['northTrust','simonTrust','joshTrust','jerichoTrust'].map(k=>delta(you,k)),[1,1,1,1],'YOU cancels the talk');
  const at=you.events.find(e=>e.id===NORTH);assert.deepEqual(at.changes.map(c=>c.key),['northTrust']);
  assert.equal(at.changes.find(c=>c.key==='northTrust').after-at.changes.find(c=>c.key==='northTrust').before,-1);
  for(const k of ['publicSupport','instability','hankTrust','aliceBond'])assert.equal(delta(full,k),0,k+' unchanged');
- const end=full.events.find(e=>e.id==='MTD6');assert.deepEqual(end.changes.map(c=>c.key).sort(),['ch16Outcome','knowledge','northTrust','simonTrust']);
+ const end=full.events.find(e=>e.id==='MTD6');assert.deepEqual(end.changes.map(c=>c.key).sort(),['ch16Outcome','jerichoTrust','knowledge','northTrust','simonTrust']);
  assert.equal(end.event,'{{Markus}} has a plan, and three androids ready to follow it.');
 });
 
@@ -97,4 +98,9 @@ test('Time to Decide: the subject reads neutral names only, and the hold keeps o
  assert.match(txt,/Ada/);assert.match(txt,/Haven/);assert.match(txt,/Arclight/);assert.match(txt,/HAVEN: ask whether this is Haven/);
  for(const n of ch16)for(const t of [n.title,n.situation,...n.options.flatMap(o=>[o.text,o.fact,o.outcome].filter(Boolean)),...(n.situationWhen??[]).map(w=>w.text),...(n.facts??[]),...Object.values(n.outcomes??{})])
   assert.ok(!/\b(?:Markus|North|Simon|Josh|Lucy|Jericho|CyberLife|Detroit)\b/i.test(render(t,'neutral')),n.id+': '+render(t,'neutral'));
+});
+
+test('story 1.9.8: a story 1.9.7 snapshot of the Simon scene (no Jericho arrow in its effect) replays with two arrows',()=>{
+ const n=node('MTD6'),saved=n.effect;n.effect={northTrust:1,simonTrust:1};
+ try{const r=play({MTD4:['5','6','7']});assert.deepEqual(['northTrust','simonTrust','joshTrust','jerichoTrust'].map(k=>delta(r,k)),[1,1,0,0])}finally{n.effect=saved}
 });

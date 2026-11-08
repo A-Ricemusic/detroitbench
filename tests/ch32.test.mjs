@@ -890,6 +890,35 @@ test('Finale: the broadcasts follow the demonstration’s outcome and the bomb',
  assert.match(situationOf('BF06',{ch32AndroidsWoke:true}),/liberated over one million androids/);assert.ok(!/liberated over one million/.test(situationOf('BF06',{ch32AndroidsWoke:false})));
 });
 
+test('Finale (story 1.9.7): the revolution ends with its own closing broadcast (MiKeYROG 100% walkthrough)',()=>{
+ const rev=over=>play32(over,{},[],{from:'BF14'}),news=r=>r.visited.filter(id=>['BF14','BF15','BF16'].includes(id));
+ // The tower androids woke: the CONNORSUCCESS broadcast, whether Connor lives or not.
+ assert.deepEqual(news(rev({...REV_WON,...TOWER_WON,...NOBODY_ELSE})),['BF14']);assert.deepEqual(news(rev({...REV_WON,...TOWER_WON,...NOBODY_ELSE,connor:false})),['BF14']);
+ const b14=render(node('BF14').situation,'real');assert.match(b14,/Today, November 11th 2038, several million androids invaded the city of Detroit/);assert.match(b14,/another intelligent life form, with whom we must share this planet/);
+ // The camp fell without them: the CONNORFAIL broadcast.
+ assert.deepEqual(news(rev({...REV_WON,...NOBODY_ELSE})),['BF15']);assert.match(render(node('BF15').situation,'real'),/Hart Plaza camp has fallen into the hands of the rebels/);assert.match(render(node('BF15').situation,'real'),/retreating to Fort Wayne/);
+ // The revolution failed: GAMEOVER, with Markus named, or North when she led.
+ const lost=rev({movement:'revolution',ch32MarkusChart:'revolution',markus:false,...NOBODY_ELSE});assert.deepEqual(news(lost),['BF16']);
+ const lostText=over=>render(node('BF16').situation+' '+node('BF16').situationWhen.filter(w=>Object.entries(w.requires).every(([k,v])=>({...base(over)})[k]===v)).map(w=>w.text).join(' '),'real');
+ assert.match(lostText({ch32MarkusChart:'revolution'}),/the deviant leader known as Markus was shot/);
+ assert.match(lostText({ch32MarkusChart:'north',north:false}),/the deviant leader known as North was shot/);assert.doesNotMatch(lostText({ch32MarkusChart:'north',north:false}),/known as Markus/);
+ assert.deepEqual(news(rev({movement:'revolution',ch32MarkusChart:'north',north:false,markus:false,...NOBODY_ELSE})),['BF16']);
+ // Not after a demonstration, the bomb, or a revolution whose leader survived (CONNOR SPARED MARKUS).
+ assert.deepEqual(news(rev({...DEMO_WON,...TOWER_WON,...NOBODY_ELSE})),[]);assert.deepEqual(news(rev({movement:'revolution',ch32MarkusChart:'revolution',markus:true,...NOBODY_ELSE})),[]);
+ assert.deepEqual(news(rev({...REV_WON,...TOWER_WON,...NOBODY_ELSE,contaminated:true})),[]);
+ for(const id of ['BF14','BF15','BF16']){const n=node(id);assert.equal(n.type,'event');assert.deepEqual(n.options,[]);assert.ok(n.sources.some(u=>/youtube\.com/.test(u)),id)}
+ assert.ok(story.nodes.indexOf(node('BF16'))<story.nodes.indexOf(node('BF01')),'the revolution broadcasts air before the speech');
+});
+
+test('Story 1.9.7 wording from the string table (MiKeYROG cross-check): Jerry, the song, the dirty bomb, the Kamski interview',()=>{
+ const jerry=render(node('KC13').options.find(o=>o.id==='1').outcome,'real');assert.match(jerry,/I can help you, Kara\. I can attract the guards’ attention\./);assert.doesNotMatch(jerry,/If you need us/);
+ const sing=render(node('M31').options.find(o=>o.id==='2').outcome,'real');assert.match(sing,/Hold on just a little while longer… Everything will be alright… Fight on just a little while longer… Pray on just a little while longer/);assert.match(sing,/Sing on just a little while longer/);assert.match(sing,/singing the national anthem/,'the reporter’s anthem line stays');
+ assert.match(node('M31').adaptationNote,/iD8z67Qc9bE 21:47/);assert.match(node('M31').adaptationNote,/Open question/);
+ const bomb=render(node('BF06').situation,'real');assert.match(bomb,/Detroit has just fallen into the hands of the android rebellion/);assert.match(bomb,/an unprecedented disaster/);
+ const k=render(node('BF13').situation,'real');assert.match(k,/Fortunately CyberLife managed to quickly produce a solution to the deviant problem/);assert.match(k,/Can you assure us that androids no longer pose a threat\?/);assert.match(k,/There was an incident, but we’ve learned from our mistakes/);assert.match(k,/social impact of androids, especially in terms of unemployment/);assert.match(k,/the steam engine first appeared/);
+ for(const id of ['BF06','BF13'])assert.doesNotMatch(node(id).situation,/Michael Brinkley|Rosanna Cartland|Michael Webb|Joss Douglas/,id+' speaker tags are name tokens');
+});
+
 test('Finale: the other credits scenes play on their wiki conditions',()=>{
  const flyer=fin({...REV_WON,kara:true,karaActive:false,alice:true,ch30AliceLeftKara:true,choices:{K31:'0'},connor:false},{});assert.ok(flyer.visited.includes('BF10'));
  const camp=fin({...REV_WON,kara:true,karaActive:false,ch32KaraEnding:'KARA LEAVES CAMP WITHOUT ALICE',connor:false},{});assert.ok(camp.visited.includes('BF10'));

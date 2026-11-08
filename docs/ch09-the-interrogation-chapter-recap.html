@@ -84,7 +84,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>PROBE MEMORY (the threat)</td><td class="n">+8</td><td class="yes">+8</td><td>ends round 3</td></tr>
 <tr><td>LIE / TRUTH (twice)</td><td class="n">−4 / +4</td><td class="yes">−4 / +4</td><td>—</td></tr>
 <tr><td>PRESSURE IT, each PRESSURE</td><td class="n">+10, at most +50</td><td class="yes">+10 each, four PRESSUREs</td><td>all four: confess, then self-destruct</td></tr>
-<tr><td>GIVE UP (pressure)</td><td class="n">wiki −20, PowerPyx −5</td><td class="part">−20</td><td>open conflict</td></tr>
+<tr><td>GIVE UP (pressure)</td><td class="n">wiki −20, PowerPyx −5</td><td class="yes">−5 (story 1.9.8; −20 in older snapshots)</td><td>settled by video frames: 73%→68% and 21%→16% (OqQHtFfZvgk 27:44, 33:13)</td></tr>
 <tr><td>UNDERSTANDING, SYMPATHIZE, COMFORT, PROTECT</td><td class="n">−7</td><td class="yes">−7</td><td>convince</td></tr>
 <tr><td>THREATEN, ORDER, INDIFFERENT, TERRIFY, WARN</td><td class="n">+7</td><td class="yes">+7</td><td>convince</td></tr>
 <tr><td>Convince succeeds</td><td class="n">50–70</td><td class="yes">50 ≤ stress ≤ 70</td><td>after the third set</td></tr>
@@ -110,7 +110,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="differs">4 · Choices the benchmark made</h2>
 <ul>
-<li><b>GIVE UP in the pressure branch:</b> the wiki’s −20%; PowerPyx says −5%. It only matters if a later convince lands near the band edges.</li>
+<li><b>GIVE UP in the pressure branch:</b> −5%, as PowerPyx says and the video’s stress readout shows (73%→68% and 21%→16%, OqQHtFfZvgk 27:44 and 33:13); the wiki’s −20% was wrong. Story 1.9.7 and earlier snapshots keep −20 (scene field <code>giveUpStress</code>). A pressure-then-give-up path now stays much higher for the next CONVINCE.</li>
 <li><b>Round 2 is one pick.</b> No source says how many.</li>
 <li><b>The pressure confession comes only after the fourth PRESSURE</b>, which always ends in self-destruction (wiki: “all 4 times … will confess and then self-destruct”; PowerPyx readers: a pressured confession always self-destructs).</li>
 <li><b>Shoot-Connor rule:</b> GIVE UP on Chris’s grab kills Connor if he chose PRESSURE IT or failed the probe and got no confession (template: “Put deviant under stress and failed to get a confession”; wiki: “pressured him and/or failed to probe his memory”). A reader at 16% stress who chose an approach and gave up was shot, consistent with the flag rather than a stress value.</li>

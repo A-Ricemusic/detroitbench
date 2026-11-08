@@ -71,7 +71,7 @@ export const state={
  ch24KitchenVisited:false,ch24KitchenPaused:false,ch24Target:null,
  ch24Ending:null,ch24Coin:false,ch24SimonFound:false,ch24SimonSurvived:false,ch24JerichoMemory:false,
  ch24ProtectedHank:false,ch24ConnorDied:false,ch24Wilson:null,ch24DeviantFound:null};
-export const labels={
+export const labels={ch24NoOnce:'Took a second look at the broadcast room',
  ch24Ending:'Public Enemy ending',ch24Coin:'Hank confiscated the coin',ch24SimonFound:'Connor found Simon on the roof',
  ch24SimonSurvived:'Simon survived on the roof',ch24JerichoMemory:'Connor saw Jericho in Simon’s memory',
  ch24ProtectedHank:'Connor protected Hank at the tower',ch24ConnorDied:'Connor died in Public Enemy',
@@ -160,7 +160,7 @@ export function consequence(n,s,opt,choice,fail,h){
    h.learn('Briefing on the 79th floor: four well-organized androids who knew the building; '+(I.guardsAttacked?'they knocked out one guard and shot the other':'they took down both guards')+'; '+(I.employeeShot?'they shot a fleeing employee in the back':'one employee got away')+'; they took the two employees hostage, broadcast their message live and escaped from the roof by parachute'+(I.simonDiedRoom?'; SWAT destroyed one of them':'')+(I.simonDiedRoof?'; an android’s body was found on the roof':'')+'.');
    return t.join(' ')}
   case 'C14h':s.ch24Phase='room';return '';
-  case 'C14y':if(choice==='0'){s.ch24Phase='over';s.ch24Ending=ENDINGS.left}else s.ch24Phase='room';return '';
+  case 'C14y':if(choice==='0'){s.ch24Phase='over';s.ch24Ending=ENDINGS.left}else{s.ch24Phase='room';if((n.leaveRules??1)>=2)s.ch24NoOnce=true}return '';
   case 'C14r2':s.ch24Phase='room';return '';
   case 'C14b':{s.ch24Phase='over';s.ch24SimonFound=true;s.simon=false;s.simonHidden=false;s.evidence.simonBody=true;
    if(choice==='1'){s.ch24Ending=ENDINGS.unscathed;return ''}

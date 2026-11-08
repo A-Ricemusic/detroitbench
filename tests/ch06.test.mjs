@@ -112,7 +112,8 @@ test('Partners: with the drink bought or not spilled Hank gives five more minute
  const saved=play({C05a:'2',C05h:items('closet','writing','sample','shower','statue','body','victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','bat','assault','report')},fromCh6);
  assert.ok(saved.visited.includes('C05x')&&saved.visited.includes('C05'));assert.equal(saved.s.ch06Clock,2,'finished on the third of the five extra actions');assert.equal(saved.s.ch06Outcome,'FOUND DEVIANT')});
 
-test('Partners: the report is five questions; the first is never a mistake, the third mistake ends it',()=>{
+test('Partners: the report is five questions; the first is never a mistake, the third mistake ends it (story 1.9.7 snapshot: wrong buttons stay)',()=>{
+ const keepHide=node('C05').hideWrongPicked;delete node('C05').hideWrongPicked;try{
  const pre=play({},n=>n.id==='C05').s.hankTrust;
  const good=play({},fromCh6);assert.deepEqual(good.visited.filter(x=>x==='C05').length,5);assert.equal(good.s.hankTrust,pre+1,'one small up for the reconstruction and the blue-blood line together');assert.match(good.events.C05[4],/You call it “Blue Blood”/);
  assert.deepEqual(good.visited.slice(-3),['C05e','C05f','C05g']);assert.equal(good.s.suspect,true);assert.equal(good.s.suspectAlive,true);assert.equal(good.s.ch06Outcome,'FOUND DEVIANT');
@@ -124,7 +125,27 @@ test('Partners: the report is five questions; the first is never a mistake, the 
  assert.match(bad.events.C05[3],/bullshit quota/);
  // A wrong answer stays on the same question with the same three buttons.
  const t=play({},n=>n.id==='C05').s;apply(node('C05'),t,'0',null);apply(node('C05'),t,'0',null);assert.equal(t.ch06QuizStep,2);
- assert.deepEqual(available(node('C05'),t).map(o=>o.step+o.id),['20','21','22']);assert.equal(t.ch06WrongLine,1)});
+ assert.deepEqual(available(node('C05'),t).map(o=>o.step+o.id),['20','21','22']);assert.equal(t.ch06WrongLine,1)}finally{node('C05').hideWrongPicked=keepHide}});
+
+test('Partners (story 1.9.8, video frames): a wrong answer already picked is gone when the question repeats',()=>{
+ const t=play({},n=>n.id==='C05').s,C=node('C05');assert.equal(C.hideWrongPicked,true);
+ apply(C,t,'0',null);assert.equal(t.ch06QuizStep,2);
+ const textsOf=()=>available(C,t).map(o=>o.text);
+ const all=textsOf();assert.equal(all.length,3);
+ const wrong=available(C,t).find(o=>!o.correct);apply(C,t,wrong.id,null);
+ assert.equal(t.ch06Mistakes,1);assert.equal(t.ch06QuizStep,2,'same question');
+ const two=available(C,t);assert.equal(two.length,2);assert.ok(!two.some(o=>o.text===wrong.text),'the picked wrong button is gone');assert.ok(two.some(o=>o.correct));assert.deepEqual(two.map(o=>o.id),['0','1'],'positions are renumbered');
+ const wrong2=two.find(o=>!o.correct);apply(C,t,wrong2.id,null);assert.equal(t.ch06Mistakes,2);
+ const one=available(C,t);assert.equal(one.length,1);assert.equal(one[0].correct,true,'only the right answer is left');
+ apply(C,t,one[0].id,null);assert.equal(t.ch06QuizStep,3);assert.equal(available(C,t).length,3,'the next question has its full set');
+ assert.deepEqual(t.ch06Clues.wrongPicked[2].sort(),[wrong.text,wrong2.text].sort());
+ // Three mistakes in all still end it; the hidden button never reappears on the same question.
+ const f=play({},n=>n.id==='C05').s;apply(C,f,'0',null);apply(C,f,available(C,f).find(o=>!o.correct).id,null);apply(C,f,available(C,f).find(o=>!o.correct).id,null);apply(C,f,available(C,f)[0].id,null);
+ assert.equal(f.ch06QuizStep,3);apply(C,f,available(C,f).find(o=>!o.correct).id,null);assert.equal(f.ch06Mistakes,3);assert.equal(f.ch06Phase,'failed');
+ // A story 1.9.7 snapshot has no field, writes no wrongPicked key and keeps the full set.
+ const keep=C.hideWrongPicked;delete C.hideWrongPicked;
+ try{const o=play({},n=>n.id==='C05').s;apply(C,o,'0',null);const w=available(C,o).find(x=>!x.correct);apply(C,o,w.id,null);assert.equal(available(C,o).length,3);assert.equal(o.ch06Clues.wrongPicked,undefined)}finally{C.hideWrongPicked=keep}
+});
 
 test('Partners: neutral prompts never show the game’s names or terms',()=>{
  const seen=[],events=[];const picks={C05s:'1',C05a:'1',C05h:items('shower','statue','magazineSex','magazineSpy','writing','sample','body','victim','knife','redIce','floorBlood','doorBlood','wallBlood','chair','missingKnife','bat','assault','flyer','backyard','report')};

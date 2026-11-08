@@ -216,7 +216,7 @@ function hostage(n,s,opt,choice,fail,b){
    s.hostageClues[opt.clue]=true;if(opt.clue==='gun')s.connorGun=true;s.hostageActions++;shift(opt.trust);
    // Waiting costs 1% per action after the first (the game: 1% per 20 seconds), at most 15% in total.
    if(s.hostageActions>1&&s.hostageWaited<R.waitCap){s.hostageWaited++;s.trust--}
-   if(s.hostageActions>=R.maxActions){s.hostagePhase='terrace';s.hostageForcedOut=true;t+=' {{Allen}} has run out of patience: he orders {{Connor}} out onto the terrace, now.'}
+   if(s.hostageActions>=R.maxActions){s.hostagePhase='terrace';s.hostageForcedOut=true;t+=' {{Allen}} has run out of patience: he orders {{Connor}} out onto the terrace, now.'+(n.endTimerLine?' {{Allen}}: “What the fuck are you doing? You gonna talk to it or what?”':'')}
    return t}
   case 'C03':if(choice==='0')b.po(1);shift(opt.trust);return floor(t);
   case 'C03b':case 'C03d':case 'C03e':case 'C03g':shift(opt.trust);return floor(t);

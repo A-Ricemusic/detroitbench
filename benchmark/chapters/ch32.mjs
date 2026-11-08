@@ -856,7 +856,8 @@ function kcEscape(s,v,out){const R=KC_RULES,d=s.ch32kc.done.esc,mode=s.ch32kc.es
 // ==== PART: finale ====
 // The finale: what follows the six charts' endings. Connor joins a victorious Markus (BF01) or watches him from the crowd
 // as a machine (C29); Amanda takes his program and he must reach Kamski's exit in the garden (C27); Markus's speech (BF02);
-// the President's address and the other broadcasts (BF03–BF06); Connor as the androids' last leader (C28, BF07); the
+// the President's address and the other broadcasts (BF03–BF06, and the revolution's BF14–BF16, which open the finale as
+// they air before the speech); Connor as the androids' last leader (C28, BF07); the
 // credits scenes (BF08–BF13). None of these is a chart node; sources are the templates (32.3, 32.4, 32.5, 32.6, the
 // press-dirty-bomb component, the endings page) and the wiki's Secret-Endings and Zen Garden pages.
 // Flags read: everything the parts before set (ch32DemoSucceeded, ch32AssaultSucceeded, ch32LastStand, ch32AndroidsWoke,
@@ -873,11 +874,21 @@ const FIN_KAMSKI=s=>s.kamskiExitHeard??(s.choices?.C17!==undefined||Object.entri
 const FIN_ABANDONED=s=>s.ch32KaraEnding==='KARA LEAVES CAMP WITHOUT ALICE'||(s.ch30AliceLeftKara??(s.choices?.K31==='0'||Object.entries(s).some(([k,v])=>/^ch30\w*abandon/i.test(k)&&v===true)));
 const FIN_LAST_STAND_MOVED=['sacrifice','kiss','sing'];
 const FIN_ESCAPE=(choice,fail)=>(choice==='0'||choice==='1')&&!fail;
-const FINALE={ids:['BF01','C29','C27','BF02','BF03','BF04','BF05','BF06','C28','BF07','BF08','BF09','BF10','BF11','BF12','BF13'],
+// The revolution's closing broadcasts (story 1.9.7, from the string table and the MiKeYROG walkthrough videos): the
+// tower androids woke (X1103M.CONNORSUCCESS), the camp fell without them (X1103M.CONNORFAIL), or the revolution failed
+// (X1102M.GAMEOVER). A revolution with no Markus chart at all (Markus and North dead before the battle) still airs the
+// first when the androids woke. CONNOR SPARED MARKUS leaves Markus alive after the failed assault: no broadcast (none
+// seen, and GAMEOVER says he was shot).
+const FIN_REV=s=>s.ch32MarkusChart==='revolution'||s.ch32MarkusChart==='north'||(s.ch32MarkusChart==null&&s.movement==='revolution');
+const FIN_REV_FAILED=s=>(s.ch32MarkusChart==='revolution'&&!s.ch32AssaultSucceeded&&!s.markus)||s.ch32MarkusChart==='north';
+const FINALE={ids:['BF14','BF15','BF16','BF01','C29','C27','BF02','BF03','BF04','BF05','BF06','C28','BF07','BF08','BF09','BF10','BF11','BF12','BF13'],
  state:{"ch32bfEscaped":false,"ch32bfAssassinated":false,"ch32bf":{"takeover":null,"stoneSeen":false,"kamskiHint":false}},
  labels:{ch32bfEscaped:'Connor escaped Amanda’s garden',ch32bfAssassinated:'Connor shot Markus from the crowd'},
  rules:{FINALE_RISK:{stone:0.25,searching:0.4}},
  gate:{
+  BF14:s=>FIN_REV(s)&&s.ch32AndroidsWoke&&!s.contaminated||'The tower androids did not wake during a revolution.',
+  BF15:s=>s.ch32MarkusChart==='revolution'&&s.ch32AssaultSucceeded&&!s.ch32AndroidsWoke&&!s.contaminated||'The revolution did not take the camp without the tower androids.',
+  BF16:s=>FIN_REV_FAILED(s)&&!s.ch32AndroidsWoke&&!s.contaminated||'The revolution did not fail, or its leader survived it.',
   BF01:s=>X.deviantConnor(s)&&s.army&&X.markusLeads(s)&&FIN_SUCCESS(s)&&!s.contaminated||'No deviant {{Connor}} with a woken army beside a victorious {{Markus}}.',
   C29:s=>X.machineConnor(s)&&X.markusLeads(s)&&s.ch32DemoSucceeded&&!s.contaminated||'No machine {{Connor}} in the crowd after a successful demonstration.',
   C27:s=>s.connor&&X.markusLeads(s)&&(s.ch32bf.takeover==='stage'||s.ch32bf.takeover==='crowd')||'{{Amanda}} never took control of {{Connor}} during the speech.',

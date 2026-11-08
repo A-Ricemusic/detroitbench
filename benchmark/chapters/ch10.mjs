@@ -81,7 +81,8 @@ export const rules={
   ['CAN’T PROMISE',-1,'template: CAN’T PROMISE, Alice SmallDown (all three shelters)'],
   ['STAY HERE (the car)',-LARGE,'template: STAY HERE, Alice LargeDown'],
   ['ALICE TOO COLD',-LARGE,'template: Take too much time, Alice LargeDown'],
-  ['KARA SLEEPS NEXT TO ALICE (motel or squat)',1,'wiki: “Sleeping beside Alice either in the Squat or the Motel” (up; the “x2” is read as the two places)'],
+  ['KARA SLEEPS NEXT TO ALICE (motel or squat)',1,'wiki: “Sleeping beside Alice either in the Squat or the Motel” (up; the “x2” is read as the two places). Story 1.9.8 plays two small ups (scene field sleepAliceUp: video frame, D-nrWXiEsVo 20:39); older snapshots one'],
+  ['GIVE TOY (KF06)',1,'Story 1.9.8: one small up (scene field toyAliceUp: video frame, D-nrWXiEsVo 20:13); older snapshots none'],
  ],
 };
 
@@ -337,8 +338,8 @@ export function consequence(n,s,opt,choice,fail,h){
   case 'KF04':return say(opt.outcome,CHECKED_IN);
   case 'K08':s.ch10Promise=choice==='0'?'promise':'cantPromise';h.alice(choice==='0'?1:-1);return '';
   case 'KF05':return '';
-  case 'KF06':if(['0','2'].includes(choice)){s.ch10ToyGiven=true;s.ch10Roam.toy=false}return '';
-  case 'KF07':s.ch10Sleep=choice==='0'?'beside':'chair';if(choice==='0')h.alice(1);return '';
+  case 'KF06':if(['0','2'].includes(choice)){s.ch10ToyGiven=true;s.ch10Roam.toy=false;if(n.toyAliceUp)h.alice(n.toyAliceUp)}return '';
+  case 'KF07':s.ch10Sleep=choice==='0'?'beside':'chair';if(choice==='0')h.alice(n.sleepAliceUp??1);return '';
   case 'KF08':case 'KF09':case 'KF10':{const where={KF08:'motel',KF09:'car',KF10:'squat'}[n.id];s.ch10Ending=ENDINGS[where];if(where==='car')s.ch10Sleep='beside';if(where==='squat')s.ch10Fireplace=true;return ''}
  }
 }

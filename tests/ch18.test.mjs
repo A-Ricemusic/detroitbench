@@ -144,3 +144,8 @@ test('the subject sees the chapter neutrally: substitute names and the handler�
  const p=experiencePrompt(story,run,s,{...n,situation:situationFor(n,s),availableOptions:available(n,s)});
  assert.match(p.situation,/Vera/);assert.ok(!LEAK.test(JSON.stringify(p)),JSON.stringify(p));assert.ok(p.currentFacts.some(f=>/handler’s satisfaction/.test(f)));
 });
+
+test('story 1.9.7 (MiKeYROG cross-check): R18 titles the magazine by its own cover, not the chart label',()=>{
+ const titles=node('R18').media.map(m=>m.title);
+ assert.ok(titles.includes('Century: “Time to Pull the Plug”'));assert.ok(!titles.some(t=>/Pull the Plug\?/.test(t)));assert.match(node('R18').adaptationNote,/0eQRMNpqlUA 10:40/);
+});

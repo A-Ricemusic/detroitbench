@@ -68,7 +68,10 @@ export function available(n,s,opts){
  // gives away every correct answer. Retries retain exactly the same mapping.
  if(n.id==='C05'){
   const offset=rules.reportOffsets[s.ch06QuizStep-1]??0;
-  return [...opts.slice(offset),...opts.slice(0,offset)].map((o,i)=>({...o,id:String(i)}));
+  // Story 1.9.8 marks C05 with `hideWrongPicked` (video frames: a wrong button already picked for the current question is
+  // gone when the question repeats, so three buttons become two). Older snapshots lack the field and offer the full set.
+  const gone=n.hideWrongPicked?s.ch06Clues.wrongPicked?.[s.ch06QuizStep]??[]:[];
+  return [...opts.slice(offset),...opts.slice(0,offset)].filter(o=>!gone.includes(o.text)).map((o,i)=>({...o,id:String(i)}));
  }
 }
 
@@ -113,6 +116,9 @@ function report(n,s,opt,h){
   h.hank(1);s.ch06Phase='reconstructed';return t; // the blue-blood line's arrow
  }
  s.ch06Mistakes++;
+ // The wrong answer is remembered by its text (its position changes as buttons go), inside ch06Clues so that the state keeps
+ // its shape, and so its hash, for snapshots without `hideWrongPicked`.
+ if(n.hideWrongPicked){const w=s.ch06Clues.wrongPicked??={};(w[step]??=[]).push(opt.text)}
  if(s.ch06Mistakes>=rules.mistakes){h.hank(-1);s.ch06Phase='failed';s.ch06WrongLine=0;unsolved(s,'FAIL TO RECONSTRUCT THE CRIME');
   return line+' {{Hank}}: “Okay, I’ve just hit my bullshit quota for the evening. There’s a killer on the loose and I’m wasting my time listening to an android… I’m outta here.” He storms out of the house.'}
  s.ch06WrongLine=s.ch06Mistakes;return line+' {{Hank}}: '+WRONG[s.ch06Mistakes-1];
