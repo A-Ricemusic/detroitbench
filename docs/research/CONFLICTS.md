@@ -1,6 +1,6 @@
 # DetroitBench · conflicts · what only the game can settle
 
-_Updated 2026-11-07, night. Story 1.9.5, 24 runs published._
+_Updated 2026-11-08. Story 1.9.6, 25 runs published. Nine conflicts settled from video frames (see docs/research/video-leads/readings-ch01-16.md and the frames in docs/research/video-evidence/)._
 
 Replaces the 1,595-line dump of the same date. Every line of that dump was sorted by a source check into four bins: settled from a cited source, a documented simplification, wording only, or a question only the operator can answer in game. Only the last bin is listed below. The per-item rationale, the merged duplicates and the citations are in `docs/research/triage/chNN.json` (one file per chapter) and the short summaries in `chNN.md`; the method is in `triage/BRIEF.md`.
 
@@ -11,7 +11,7 @@ Replaces the 1,595-line dump of the same date. Every line of that dump was sorte
 | Settled from a source | 427 | A flowchart image, the game's text or the wiki answers it; where the benchmark disagreed, a fix was recorded (see below) |
 | Documented simplification | 176 | A cut line, an idle comment, a collapsed free-roam order or similar; the sources do not contradict it |
 | Wording only | 82 | Cannot be settled by reading but changes no option, arrow, gate or ending |
-| Needs the game | 105 | Listed below, 99 after merging cross-chapter duplicates |
+| Needs the game | 105 | Listed below, 90 after merging cross-chapter duplicates |
 
 ## What the sources are worth
 
@@ -62,10 +62,19 @@ Not applied, each waiting on a question below: ch13 K09q5 after sitting at once,
 
 1. **Partners (chapter 6): done.** Two replays on 2026-11-07 settled the spill (−3), the drink (+2), the single reconstruction arrow, no arrow on finding the deviant, and that Amanda does not appear. Story 1.9.3 carries the result. Still open from this chapter: Run C in the task page (the slow evidence pass, a wrong answer on purpose, examining after 10/10).
 2. **The Interrogation and Waiting for Hank (chapters 9 and 12).** The stress meter is a visible percentage; read it after PROBE, each PRESSURE and GIVE UP (wiki −20 versus PowerPyx −5). Continue Hank from the Run B save: the arrow at which the header first reads WARM says whether Neutral is three wide or five. Amanda's first arrow in Waiting for Hank tests her scale.
-3. Then the chapters with the most open questions: Capitol Park (10), Freedom March (9), Zlatko (8), On the Run (7), Midnight Train (6), Last Chance, Connor (6).
+3. Then the chapters with the most open questions: Capitol Park (10), Freedom March (9), Zlatko (8), Midnight Train (6), Last Chance, Connor (6), Crossroads (6).
 
 ## Settled since the triage
 
+- **ch06-13**: No: a wrong report answer is removed when the question repeats (video, MiKeYROG gZQ693-umPU; frame in video-evidence/ch06). Benchmark fix pending
+- **ch07-21**: No REFUSE / ACCEPT prompt before the fight after FACE TODD (video, MiKeYROG k5aILBAEewM 1:15:25). Benchmark already right
+- **ch09-03**: The COMFORT round is picked once (video, MiKeYROG OqQHtFfZvgk 16:13). Benchmark already right
+- **ch09-04**: About −5: GIVE UP after PRESSURE took stress 73% → 68% and 21% → 16% (video, OqQHtFfZvgk 27:44 and 33:13). PowerPyx right, wiki −20 wrong. Benchmark fix pending
+- **ch10-07**: Two small Alice ups for sleeping beside her at the motel, the second showing TRUSTED (video, DanaDuchy D-nrWXiEsVo 20:39 and 20:53). Benchmark fix pending
+- **ch10-13**: Yes, one small Alice up when she is given the toy (video, DanaDuchy D-nrWXiEsVo 20:13). Benchmark fix pending
+- **ch13-09**: GO: instability down and Hank down; GIVE UP: instability up and Hank up, all small (video, MiKeYROG AH-zJSO_DNo 55:39). Benchmark already right
+- **ch13-13**: Yes, a small Hank down after the wait-in-the-car reply (video, ScorpionTank BBXCrNx-ocU). Benchmark already right
+- **ch16-05**: Yes, a small Jericho up when Markus proposes the raid to Simon, alongside North and Simon (video, ScorpionTank y50ZjZWX0gU 11:45). Benchmark fix pending
 - **ch04-01**: No key after the dishes alone; Alice stays Distant (operator, 2026-11-07). The key needs two points, as the benchmark has it
 - **ch04-08**: The window cannot be skipped; ventilating is part of tidying the room (operator, 2026-11-07). Fixed in story 1.9.5
 - **ch03-02**: INDIFFERENT in the Shades of Color header after saving the wounded cop (operator, 2026-11-07); H9 holds for the first step
@@ -86,29 +95,23 @@ Each question is one yes/no or one number. In brackets: what the answer changes.
 
 - [ ] **ch05-08** [which buttons the model is offered] At FIND SOMETHING TO DO, if you touch neither the chessboard, the books nor the piano and just wait, does Carl finish breakfast, give his 'One day, I won't be here…' speech and go to the studio (yes/no)? _(wiki transcript has a 'Don’t Find Something To Do' tab ('Carl finishes his breakfast.' then the same speech) and the wiki says 'Markus can just do nothing', but the flowchart (painter-3.jpg) draws no line from FIND SOMETHING TO DO to TAKE CARL TO THE STUDIO that bypasses the activity group. If yes: add a fourth M01f option (sets painterActivity 'none'); ch31 M26x already offers none of the three pastimes when it is absent)_
 
-### 06 · Partners · 3
+### 06 · Partners · 2
 
 - [ ] **ch06-02** [a number] On an unhurried first pass, how many of the ten REVIEW EVIDENCE pieces had you found when Hank first said 'All right… I'm outta here'? (a number, or 'never' if you finished first) _(PowerPyx 'approximately five minutes' and transcript 'After five minutes' are real time; the 13 + 5 action budget is an unsourced calibration)_
 - [ ] **ch06-03** [which ending] After REVIEW EVIDENCE 10/10, if you keep examining things instead of going to Hank, does Hank ever announce he is leaving (yes/no)? _(transcript splits into 'Know What Happened' and the five-minute tab but never says whether the timer keeps running; template TIME unlock is unconditioned)_
-- [ ] **ch06-13** [which buttons the model is offered] In the report to Hank, when a question repeats after a wrong answer, is the wrong button you just picked still on screen (yes/no)? _(PowerPyx says only 'you will answer until you pick the bat'; template and transcript are silent)_
 
-### 07 · Stormy Night · 2
+### 07 · Stormy Night · 1
 
 - [ ] **ch07-17** [which buttons the model is offered] After REASON WITH TODD downstairs (Todd knocks Kara down and goes up), could Kara still go into Todd's bedroom and take the gun before entering Alice's room (yes/no)? _(the blurry overview seems to draw TAKE GUN's inputs from GO UPSTAIRS, TODD SHOVES KARA UPSTAIRS and TODD TAKES ALICE TO HER ROOM only; PowerPyx lists Take Gun under the Reason-with-Todd branch; template silent. Benchmark offers it (K03 options 1-2 and K03r → K04). If no: route them to K04a)_
-- [ ] **ch07-21** [which buttons the model is offered] After choosing FACE TODD at the open window, does Todd order Kara to move with REFUSE / ACCEPT buttons before the fight (yes/no)? _(after the lamp, talking or doing nothing the prompt is supported (wiki Notes; its string key is X0201K.LOCKEDIN.TOUGHCHOICE) and the benchmark offers it; for FACE TODD the wiki says yes but the template sends FACE TODD straight to 'Kara and Todd fighting', which the benchmark follows. No-effect prompt)_
 
-### 09 · The Interrogation · 5
+### 09 · The Interrogation · 3
 
 - [ ] **ch09-01** [which buttons the model is offered] Under PRESSURE IT, did the android ever confess before you had pressed PRESSURE four times (yes/no)? _(Template prints PRESSURE IT as one speech with a nested GIVE UP and no press count; wiki only says what happens after 'all 4 times'; PowerPyx says he talks 'at the end of any approach' above 50%. No source says whether an earlier press can end the approach. The benchmark always offers all four prompts)_
-- [ ] **ch09-03** [which buttons the model is offered] In the COMFORT / REASSURE / THREATEN / BLAME round, did you pick once or twice before the SYMPATHIZE / THREATEN / PROBE MEMORY / TRUST round started? _(Wiki and PowerPyx say 'after two choices' for rounds 1 and 3 but are silent on round 2; the template prints each group once. The benchmark asks it once)_
-- [ ] **ch09-04** [a number] After PRESSURE IT, when you chose GIVE UP, by how many points did the stress percentage drop (about 20 or about 5)? _(Wiki 'Give up: Stress -20%' vs PowerPyx 'GIVE UP ... Stress -5%'; template has no numbers. The benchmark uses -20; it decides whether a following CONVINCE can land in 50 to 70%)_
 - [ ] **ch09-14** [which ending] After pressuring him without getting a confession, if you INTERVENE once and then GIVE UP, does the android shoot Connor (yes/no)? _(PowerPyx: 'Choosing GIVE UP at any time will cause ... it will shoot itself', but no source tests the shoot-Connor condition after an INTERVENE. en.json has a GIVE UP label only for the third prompt (INSISTCHOICE.CEDE); CHOICEGROUP01 and ANDROIDSTRUGGLE have only INTERVENE, so the first two may be single-button prompts)_
 - [ ] **ch09-16** [a stat arrow] After a successful memory probe where Connor survived (DO NOTHING at the self-destruct), did Amanda in the Zen Garden next chapter congratulate Connor (arrow up) or criticise him (arrow down)? _(Chapter 12 template splits 'Got a confession, without dying' (Amanda LargeUp) from 'found the deviant but didn't get a confession' (SmallDown); the probe's 'CONFESSION UNNECESSARY' fits neither label. Benchmark treats it as no confession (-1))_
 
-### 10 · Fugitives · 5
+### 10 · Fugitives · 3
 
-- [ ] **ch10-07** [a stat arrow] When Kara chose to sleep next to Alice in the motel or squat, how many Alice up-arrows appeared: none, one or two? _(Template has no arrow there; wiki 'Sleeping beside Alice either in the Squat or the Motel {{Icon|up}} x2'; Relationship_Stat lists one entry with no x2. Benchmark gives +1)_
-- [ ] **ch10-13** [a stat arrow] When Kara gave Alice the stolen toy, did an Alice up-arrow appear (yes/no)? _(Template has the toy lines with no arrow; the wiki chapter page and Relationship_Stat both list a small up; the chart has a GIVE TOY node. Benchmark gives no arrow)_
 - [ ] **ch10-18** [a stat arrow] In Zlatko, did the TV report on Kara robbing the store play when she had got the money only through Alice's can diversion, with no gun (yes/no)? _(Zlatko template: 'Kara robbed the supermarket ... in her android uniform' ARROW PublicOpinion SmallDown, without naming the method. Benchmark counts the diversion, the hold-up and a gun drawn when caught (even without the money), but not CONVINCE; CONVINCE and gun-without-money are secondary unknowns)_
 - [ ] **ch10-24** [what unlocks] Could Kara pick up the pliers on the parking-lot generator before she had looked at the squat's fence (yes/no)? _(PowerPyx and a commenter say only the store's wire cutters need the fence checked first; the chart draws CHECK SQUAT before the single TAKE WIRE CUTTERS node. Benchmark lets her take the pliers any time)_
 - [ ] **ch10-34** [which buttons the model is offered] Could Kara settle into a shelter (for example the abandoned car) without ever meeting the trash-collector android (yes/no)? _(PowerPyx says the scene is forced 'at some point' but not before shelters; On the Run's lines ('That android yesterday… he gave me an address') assume it always happened. Benchmark lets Kara commit to a shelter first)_
@@ -117,11 +120,9 @@ Each question is one yes/no or one number. In brackets: what the answer changes.
 
 - [ ] **ch11-05** [which buttons the model is offered] After Markus had already fitted both the new eye and the new audio processor, could the crawling android still grab him and beg to die (yes/no)? _(Wiki: must happen 'before replacing Markus' damaged parts'; PowerPyx's own route meets him after the eye; commenters disagree (audio first only; eye and audio both first; 'walked over him like 20 times'). Benchmark always plays him on the way to the middle, at any point)_
 
-### 13 · On the Run · 7
+### 13 · On the Run · 5
 
 - [ ] **ch13-01** [which buttons the model is offered] As Connor searching the squat (Ralph kept quiet), could you walk out on your own before Hank ordered you out, and did that unlock a LEAVE THE SQUAT node? (yes/no) _(chart crop inv-zoom.png shows only a red padlock and '[...]' to the right of the hub; en.json has MENU.FLOWCHART.04K.SQUAT.C.LEAVE = LEAVE THE SQUAT in the Connor squat group, but no source shows it is reachable; PowerPyx commenters (Jun–Jul 2018) never unlocked it and one says it was removed by a patch. Benchmark offers it as C09q option 6)_
-- [ ] **ch13-09** [a stat arrow] At the fence, did GO show Hank down and software instability down, and GIVE UP Hank up and instability up? (yes/no for each) _(template has GO/GIVE UP with no arrow (GIVE UP 'ø') although it records Hank/SI arrows in other chapters; wiki On_the_Run, Relationship_Stat lines 110/130 and Software_Instability lines 30/57 give them; a PowerPyx commenter (Skullfracturz, 2019-07-08) confirms GIVE UP raises both. Benchmark applies the wiki (C09 effects ±1))_
-- [ ] **ch13-13** [a stat arrow] At the motel, when Hank said 'You wait in the car' and Connor answered (RATIONAL / DIPLOMATIC / DIRECT), did a Hank-down arrow appear? (yes/no) _(template prompt has no arrow; wiki On_the_Run ('any of the three … (unavoidable)') and Relationship_Stat line 129 give Hank small down. Benchmark applies −1 on all three C09m1 options)_
 - [ ] **ch13-16** [which buttons the model is offered] When Kara agreed to sit at once (no refusal), did the WORRIED / EXPLAIN / AGREE prompt still appear, or did Ralph go straight to 'That's better…'? (shown / not shown) _(chart: AGREE TO SIT goes straight to SIT AT THE TABLE while REFUSE TO SIT passes RALPH THREATENS ALICE; the prompt's lines ('You're not gonna hurt her, are you?', 'Okay. We'll… eat together') answer a threat; the template lists the prompt unnested. Benchmark K09q5 always shows it)_
 - [ ] **ch13-18** [which buttons the model is offered] At Ralph's table, after choosing BLUFF ('We're going to stand up now…'), did the menu come back, or did Ralph apologise and let them go? (menu back / apologised) _(template: BLUFF gets 'No… you're not going to leave. Not until Ralph says so.' (no apology), FAMILY and INSIST end with 'Then let us go.'; PowerPyx: 'Try to Convince Ralph: Press BLUFF'. Labels and THREATEN's knife/gun variants are settled by the template; benchmark K09q7–K09q9 re-asks after BLUFF)_
 - [ ] **ch13-29** [which buttons the model is offered] In the motel, could Kara go to the TV without drawing the bath, so that she never cut her hair or removed her LED? (yes/no) _(the chart draws an edge from TALK TO ALICE straight to EXPLORE MOTEL ROOM (wiki list 'Go directly to Explore Motel Room'), but the wiki chapter text says the motel Kara 'still needs to cut her hair' (line 176) and the template plays 'You're pretty like that' before the TV; a PowerPyx commenter (2018-07-26) asked the same and got no answer. Benchmark K09m allows CHANGE CHANNEL without the bath)_
@@ -138,10 +139,9 @@ Each question is one yes/no or one number. In brackets: what the answer changes.
 - [ ] **ch15-14** [what unlocks] Could you look up from the chair and find Rupert after reconstructing only the bird cage, without having done the stool reconstruction or examined the LED in the sink? (yes/no) _(PowerPyx says the cage reconstruction shows 'the android has climbed up into the ceiling' but lists the stool and the LED as steps too; the chart only hangs INVESTIGATE STOOL off SEE RA9 REFERENCE; HUD objectives (CONFIRM SUSPECT IS DEVIANT, SUSPECT IS STILL HERE) do not say which are required. Benchmark needs only the cage reconstruction)_
 - [ ] **ch15-18** [which buttons the model is offered] If The Nest ended RUPERT NOT FOUND (Hank and Connor left the apartment), could Connor spot Rupert in Jericho in Crossroads? (yes/no) _(Crossroads: 'Spot Rupert (only available if he escaped in The Nest)'; for a Connor death the wiki Connor page says 'Rupert escapes', so that case is settled (benchmark sets nestRupert 'escaped'); for NOT FOUND no source says. Benchmark sets nestRupert 'not found', so ch30 does not offer the clue)_
 
-### 16 · Time to Decide · 2
+### 16 · Time to Decide · 1
 
 - [ ] **ch16-03** [a number] After talking to North and choosing YOU, did her gauge read below Neutral (for example Resentful) before you went to Simon? (below Neutral / Neutral) _(arrows agree (template and wiki: talk up, YOU down, Simon scene up), but Relationship_Stat line 306 says the Simon scene makes her rise 'to Neutral' if YOU was picked, which the benchmark's equal step sizes cannot produce (benchmark: +1 −1 = Neutral before Simon). The answer calibrates step size or band width, which decides the North label the model sees from chapter 19)_
-- [ ] **ch16-05** [a stat arrow] When Markus proposed the raid to Simon at the end of Time to Decide, did a Jericho arrow appear (besides North and Simon)? (yes/no) _(the template lists the scene's arrows as North SmallUp and Simon SmallUp only, although it uses the Jericho relation elsewhere; the wiki chapter page ('Jericho: Talking to Simon up') and Relationship_Stat line 251 both give Jericho small up. Benchmark follows the template (no Jericho change))_
 
 ### 17 · Zlatko · 8
 
