@@ -245,8 +245,10 @@ function hostage(n,s,opt,choice,fail,b){
 // A repeatable scene with `clueState` (the plaza in Shades of Color, the two floors in A New Home): each option can be taken once and is
 // recorded under s[clueState]; `last` is the option just taken, so a follow-on option can `require` it;
 // the option's fact is added to what the character knows and its outcome is the event.
-function hub(n,s,opt){const k=n.clueState,seen=s[k];if(opt?.clue)seen[opt.clue]=true;seen.last=opt?.clue??null;
- if(opt?.fact&&!s.knowledge[n.character].includes(opt.fact))s.knowledge[n.character].push(opt.fact);return opt?.outcome??opt?.text??''}
+// An option may bundle several clues (`scans`, each recorded like its own `clue`) and several facts (`facts`), for
+// an action the game treats as one look at everything (the Interrogation's ANALYZE since story 1.9.6).
+function hub(n,s,opt){const k=n.clueState,seen=s[k];if(opt?.clue)seen[opt.clue]=true;for(const c of opt?.scans??[])seen[c]=true;seen.last=opt?.clue??null;
+ const learn=f=>{if(f&&!s.knowledge[n.character].includes(f))s.knowledge[n.character].push(f)};learn(opt?.fact);for(const f of opt?.facts??[])learn(f);return opt?.outcome??opt?.text??''}
 // Shades of Color, the protesters by the bus stop: walking straight up to them always gets Markus noticed;
 // edging closer or keeping away fail by their (operator-set) risk. Being noticed sets `clothesTorn` (the game's MARKUS CLOTHES WERE TORN APPART), which
 // plays PROTESTERS HARASS MARKUS (M00g) and which The Painter reads.

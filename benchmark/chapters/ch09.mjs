@@ -11,7 +11,7 @@
 //
 // Flow (all forward; the approach menu is offered at most twice, as C06 then C06r, each with its own pressure and
 // convince scenes, so no scene is ever visited twice):
-//   C06o observation room → C06a1..8 interrogation-room look-around (clueState ch09Room) → C06b/C06c, C06d, C06e/C06f,
+//   C06o observation room → C06a1..4 interrogation-room look-around (clueState ch09Room) → C06b/C06c, C06d, C06e/C06f,
 //   C06g, C06h interrogation rounds → C06 CHOOSE APPROACH → C06p1..4 pressure | C06v1..3 convince → C06r CHOOSE ANOTHER
 //   APPROACH → C06rp1..4 | C06rv1..3 → C06qs CARLOS FLASHBACK, C06qr EXPRESS REGRET (after a successful probe) →
 //   C06k ANDROID CONFESSES → C06m1..7 questions → C06sd/C06s self-destruct (INTERVENE / GIVE UP) or
@@ -89,7 +89,7 @@ const APPROACH={'0':'pressure','1':'probe','2':'convince'};
 const suspect=s=>s.suspect||'The suspect was never found in the attic.';
 const phase=(p,why)=>s=>s.ch09Phase===p||why;
 export const gate={C06o:suspect};
-for(let k=1;k<=8;k++)gate['C06a'+k]=suspect;
+for(let k=1;k<=8;k++)gate['C06a'+k]=suspect; // story 1.9.6 ships four room visits (photos, analyze, mirror, interrogate); the gate still covers eight so runs recorded under earlier stories, whose embedded story has C06a5..8, replay unchanged
 Object.assign(gate,{
  C06b:[suspect,s=>!!s.ch09Room?.done||'Connor never sat down to question the android.'],
  C06c:[suspect,(s,h)=>round1Left(s,h.c).length>0||'Nothing was left to say in the first round.'],

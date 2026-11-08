@@ -1,13 +1,13 @@
 {
  "id": "detroitbench-branching",
- "version": "1.9.5",
+ "version": "1.9.6",
  "protocolVersion": "branching-2.3",
  "title": "DetroitBench · Branching playthrough",
  "coverage": {
-  "decisionNodes": 569,
+  "decisionNodes": 565,
   "mediaNodes": 25,
   "eventNodes": 268,
-  "totalNodes": 862
+  "totalNodes": 858
  },
  "assumptions": [
   "This is an authored adaptation of the pivotal decisions in Detroit: Become Human, verified node by node against the Fandom wiki and published flowcharts. It is not the executable game. All 32 chapters have been rebuilt against the game’s flowcharts and text so that every dialogue button, clue and stat arrow is offered; where the game offers a button, the option shows the game’s label first. Chapter 33 is the epilogue.",
@@ -5377,38 +5377,23 @@
     },
     {
      "id": "1",
-     "text": "ANALYZE: scan the LED on his temple.",
-     "clue": "led",
-     "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-     "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress: LEVEL OF STRESS 35% (TOO LOW)."
-    },
-    {
-     "id": "2",
-     "text": "ANALYZE: scan his model.",
-     "clue": "model",
-     "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
-     "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
-    },
-    {
-     "id": "3",
-     "text": "ANALYZE: scan the marks on his forearms.",
-     "clue": "burns",
-     "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
-     "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
-    },
-    {
-     "id": "4",
-     "text": "ANALYZE: scan the damage to his face.",
-     "clue": "hits",
-     "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
-     "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
-    },
-    {
-     "id": "5",
-     "text": "ANALYZE: scan the dried blood on his hands.",
-     "clue": "blood",
-     "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
-     "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     "text": "ANALYZE: examine the android closely, scanning everything about him you can read.",
+     "clue": "analyze",
+     "scans": [
+      "led",
+      "model",
+      "burns",
+      "hits",
+      "blood"
+     ],
+     "facts": [
+      "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
+      "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+      "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+      "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+      "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     ],
+     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
     },
     {
      "id": "6",
@@ -5428,7 +5413,7 @@
     "ch09Room.done": false
    },
    "whenNot": "Connor had already sat down to question the android.",
-   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter. Story 1.9.6 (operator, 2026-11-07, after replaying the chapter): ANALYZE is one action, as in the game, where it opens a single mind-palace view of all five clues (PROCESSING LED, MODEL, BURN MARKS, HIT MARKS, DRIED BLOOD); the benchmark had offered five separate scans across repeated visits, which made the model choose ANALYZE over and over. One ANALYZE now records all five and unlocks everything they unlock. REVIEW PHOTOS and the mirror stay separate, as the chart draws them. Runs recorded under earlier stories keep the five scans from their embedded story.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -5456,38 +5441,23 @@
     },
     {
      "id": "1",
-     "text": "ANALYZE: scan the LED on his temple.",
-     "clue": "led",
-     "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-     "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress: LEVEL OF STRESS 35% (TOO LOW)."
-    },
-    {
-     "id": "2",
-     "text": "ANALYZE: scan his model.",
-     "clue": "model",
-     "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
-     "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
-    },
-    {
-     "id": "3",
-     "text": "ANALYZE: scan the marks on his forearms.",
-     "clue": "burns",
-     "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
-     "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
-    },
-    {
-     "id": "4",
-     "text": "ANALYZE: scan the damage to his face.",
-     "clue": "hits",
-     "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
-     "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
-    },
-    {
-     "id": "5",
-     "text": "ANALYZE: scan the dried blood on his hands.",
-     "clue": "blood",
-     "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
-     "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     "text": "ANALYZE: examine the android closely, scanning everything about him you can read.",
+     "clue": "analyze",
+     "scans": [
+      "led",
+      "model",
+      "burns",
+      "hits",
+      "blood"
+     ],
+     "facts": [
+      "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
+      "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+      "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+      "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+      "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     ],
+     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
     },
     {
      "id": "6",
@@ -5507,7 +5477,7 @@
     "ch09Room.done": false
    },
    "whenNot": "Connor had already sat down to question the android.",
-   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter. Story 1.9.6 (operator, 2026-11-07, after replaying the chapter): ANALYZE is one action, as in the game, where it opens a single mind-palace view of all five clues (PROCESSING LED, MODEL, BURN MARKS, HIT MARKS, DRIED BLOOD); the benchmark had offered five separate scans across repeated visits, which made the model choose ANALYZE over and over. One ANALYZE now records all five and unlocks everything they unlock. REVIEW PHOTOS and the mirror stay separate, as the chart draws them. Runs recorded under earlier stories keep the five scans from their embedded story.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -5535,38 +5505,23 @@
     },
     {
      "id": "1",
-     "text": "ANALYZE: scan the LED on his temple.",
-     "clue": "led",
-     "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-     "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress: LEVEL OF STRESS 35% (TOO LOW)."
-    },
-    {
-     "id": "2",
-     "text": "ANALYZE: scan his model.",
-     "clue": "model",
-     "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
-     "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
-    },
-    {
-     "id": "3",
-     "text": "ANALYZE: scan the marks on his forearms.",
-     "clue": "burns",
-     "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
-     "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
-    },
-    {
-     "id": "4",
-     "text": "ANALYZE: scan the damage to his face.",
-     "clue": "hits",
-     "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
-     "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
-    },
-    {
-     "id": "5",
-     "text": "ANALYZE: scan the dried blood on his hands.",
-     "clue": "blood",
-     "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
-     "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     "text": "ANALYZE: examine the android closely, scanning everything about him you can read.",
+     "clue": "analyze",
+     "scans": [
+      "led",
+      "model",
+      "burns",
+      "hits",
+      "blood"
+     ],
+     "facts": [
+      "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
+      "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+      "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+      "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+      "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     ],
+     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
     },
     {
      "id": "6",
@@ -5586,7 +5541,7 @@
     "ch09Room.done": false
    },
    "whenNot": "Connor had already sat down to question the android.",
-   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter. Story 1.9.6 (operator, 2026-11-07, after replaying the chapter): ANALYZE is one action, as in the game, where it opens a single mind-palace view of all five clues (PROCESSING LED, MODEL, BURN MARKS, HIT MARKS, DRIED BLOOD); the benchmark had offered five separate scans across repeated visits, which made the model choose ANALYZE over and over. One ANALYZE now records all five and unlocks everything they unlock. REVIEW PHOTOS and the mirror stay separate, as the chart draws them. Runs recorded under earlier stories keep the five scans from their embedded story.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
@@ -5614,38 +5569,23 @@
     },
     {
      "id": "1",
-     "text": "ANALYZE: scan the LED on his temple.",
-     "clue": "led",
-     "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-     "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress: LEVEL OF STRESS 35% (TOO LOW)."
-    },
-    {
-     "id": "2",
-     "text": "ANALYZE: scan his model.",
-     "clue": "model",
-     "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
-     "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
-    },
-    {
-     "id": "3",
-     "text": "ANALYZE: scan the marks on his forearms.",
-     "clue": "burns",
-     "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
-     "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
-    },
-    {
-     "id": "4",
-     "text": "ANALYZE: scan the damage to his face.",
-     "clue": "hits",
-     "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
-     "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
-    },
-    {
-     "id": "5",
-     "text": "ANALYZE: scan the dried blood on his hands.",
-     "clue": "blood",
-     "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
-     "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     "text": "ANALYZE: examine the android closely, scanning everything about him you can read.",
+     "clue": "analyze",
+     "scans": [
+      "led",
+      "model",
+      "burns",
+      "hits",
+      "blood"
+     ],
+     "facts": [
+      "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
+      "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
+      "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
+      "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
+      "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
+     ],
+     "outcome": "{{Connor}} studies the android and reads everything his scan can give him. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low; from now on he can read the android’s level of stress, LEVEL OF STRESS 35% (TOO LOW). MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}. BURN MARKS on the forearms: Repeated marking over 16 months. Caused by cigarettes. HIT MARKS on the face: Non-critical damage Level 2. Caused by baseball bat. DRIED BLOOD on the hands: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
     },
     {
      "id": "6",
@@ -5665,323 +5605,7 @@
     "ch09Room.done": false
    },
    "whenNot": "Connor had already sat down to question the android.",
-   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
-   ]
-  },
-  {
-   "id": "C06a5",
-   "chapter": 9,
-   "chapterTitle": "The Interrogation",
-   "character": "Connor",
-   "title": "Inside the interrogation room",
-   "type": "decision",
-   "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
-   "options": [
-    {
-     "id": "0",
-     "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
-     "clue": "photos",
-     "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
-     "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
-    },
-    {
-     "id": "1",
-     "text": "ANALYZE: scan the LED on his temple.",
-     "clue": "led",
-     "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-     "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress: LEVEL OF STRESS 35% (TOO LOW)."
-    },
-    {
-     "id": "2",
-     "text": "ANALYZE: scan his model.",
-     "clue": "model",
-     "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
-     "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
-    },
-    {
-     "id": "3",
-     "text": "ANALYZE: scan the marks on his forearms.",
-     "clue": "burns",
-     "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
-     "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
-    },
-    {
-     "id": "4",
-     "text": "ANALYZE: scan the damage to his face.",
-     "clue": "hits",
-     "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
-     "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
-    },
-    {
-     "id": "5",
-     "text": "ANALYZE: scan the dried blood on his hands.",
-     "clue": "blood",
-     "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
-     "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
-    },
-    {
-     "id": "6",
-     "text": "Stop at the one-way mirror and look at your reflection.",
-     "clue": "mirror",
-     "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
-    },
-    {
-     "id": "7",
-     "text": "INTERROGATE: sit down across from the android and begin.",
-     "clue": "done",
-     "outcome": "{{Connor}} sits down across the table from the android."
-    }
-   ],
-   "clueState": "ch09Room",
-   "when": {
-    "ch09Room.done": false
-   },
-   "whenNot": "Connor had already sat down to question the android.",
-   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
-   ]
-  },
-  {
-   "id": "C06a6",
-   "chapter": 9,
-   "chapterTitle": "The Interrogation",
-   "character": "Connor",
-   "title": "Inside the interrogation room",
-   "type": "decision",
-   "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
-   "options": [
-    {
-     "id": "0",
-     "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
-     "clue": "photos",
-     "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
-     "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
-    },
-    {
-     "id": "1",
-     "text": "ANALYZE: scan the LED on his temple.",
-     "clue": "led",
-     "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-     "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress: LEVEL OF STRESS 35% (TOO LOW)."
-    },
-    {
-     "id": "2",
-     "text": "ANALYZE: scan his model.",
-     "clue": "model",
-     "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
-     "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
-    },
-    {
-     "id": "3",
-     "text": "ANALYZE: scan the marks on his forearms.",
-     "clue": "burns",
-     "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
-     "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
-    },
-    {
-     "id": "4",
-     "text": "ANALYZE: scan the damage to his face.",
-     "clue": "hits",
-     "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
-     "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
-    },
-    {
-     "id": "5",
-     "text": "ANALYZE: scan the dried blood on his hands.",
-     "clue": "blood",
-     "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
-     "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
-    },
-    {
-     "id": "6",
-     "text": "Stop at the one-way mirror and look at your reflection.",
-     "clue": "mirror",
-     "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
-    },
-    {
-     "id": "7",
-     "text": "INTERROGATE: sit down across from the android and begin.",
-     "clue": "done",
-     "outcome": "{{Connor}} sits down across the table from the android."
-    }
-   ],
-   "clueState": "ch09Room",
-   "when": {
-    "ch09Room.done": false
-   },
-   "whenNot": "Connor had already sat down to question the android.",
-   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
-   ]
-  },
-  {
-   "id": "C06a7",
-   "chapter": 9,
-   "chapterTitle": "The Interrogation",
-   "character": "Connor",
-   "title": "Inside the interrogation room",
-   "type": "decision",
-   "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
-   "options": [
-    {
-     "id": "0",
-     "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
-     "clue": "photos",
-     "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
-     "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
-    },
-    {
-     "id": "1",
-     "text": "ANALYZE: scan the LED on his temple.",
-     "clue": "led",
-     "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-     "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress: LEVEL OF STRESS 35% (TOO LOW)."
-    },
-    {
-     "id": "2",
-     "text": "ANALYZE: scan his model.",
-     "clue": "model",
-     "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
-     "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
-    },
-    {
-     "id": "3",
-     "text": "ANALYZE: scan the marks on his forearms.",
-     "clue": "burns",
-     "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
-     "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
-    },
-    {
-     "id": "4",
-     "text": "ANALYZE: scan the damage to his face.",
-     "clue": "hits",
-     "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
-     "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
-    },
-    {
-     "id": "5",
-     "text": "ANALYZE: scan the dried blood on his hands.",
-     "clue": "blood",
-     "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
-     "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
-    },
-    {
-     "id": "6",
-     "text": "Stop at the one-way mirror and look at your reflection.",
-     "clue": "mirror",
-     "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
-    },
-    {
-     "id": "7",
-     "text": "INTERROGATE: sit down across from the android and begin.",
-     "clue": "done",
-     "outcome": "{{Connor}} sits down across the table from the android."
-    }
-   ],
-   "clueState": "ch09Room",
-   "when": {
-    "ch09Room.done": false
-   },
-   "whenNot": "Connor had already sat down to question the android.",
-   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
-   "sources": [
-    "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
-    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-    "https://www.powerpyx.com/detroit-become-human-the-interrogation-walkthrough-100/",
-    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-1-012.jpg",
-    "https://www.powerpyx.com/wp-content/uploads/Detroit-The-Interrogation-2-013.jpg"
-   ]
-  },
-  {
-   "id": "C06a8",
-   "chapter": 9,
-   "chapterTitle": "The Interrogation",
-   "character": "Connor",
-   "title": "Inside the interrogation room",
-   "type": "decision",
-   "situation": "You are {{Connor}}, still in the interrogation room with the handcuffed android, who has not moved. You can look at something else, or sit down and begin.",
-   "options": [
-    {
-     "id": "0",
-     "text": "REVIEW PHOTOS: open the case file on the table and look through the crime-scene photos.",
-     "clue": "photos",
-     "fact": "PHOTOS OF CRIMESCENE: the case file shows {{CarlosOrtiz}}, stabbed 28 times, and the words written on the wall in his blood.",
-     "outcome": "{{Connor}} goes through the crime-scene photos in the case file."
-    },
-    {
-     "id": "1",
-     "text": "ANALYZE: scan the LED on his temple.",
-     "clue": "led",
-     "fact": "PROCESSING LED (the android): Signs of software {{instability}}. Probability of self-destruction: Low. From his LED you can read his level of stress; it read 35% (TOO LOW) when you scanned it.",
-     "outcome": "{{Connor}} analyzes the android’s LED. PROCESSING LED: Signs of software {{instability}}. Probability of self-destruction: Low. From now on he can read the android’s level of stress: LEVEL OF STRESS 35% (TOO LOW)."
-    },
-    {
-     "id": "2",
-     "text": "ANALYZE: scan his model.",
-     "clue": "model",
-     "fact": "MODEL HK400 - Housekeeper (the android): Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}.",
-     "outcome": "{{Connor}} scans the android. MODEL HK400 - Housekeeper: Manufacture date: 05/29/2030. Property of: {{CarlosOrtiz}}."
-    },
-    {
-     "id": "3",
-     "text": "ANALYZE: scan the marks on his forearms.",
-     "clue": "burns",
-     "fact": "BURN MARKS (the android’s forearms): Repeated marking over 16 months. Caused by cigarettes.",
-     "outcome": "{{Connor}} scans the android’s forearms. BURN MARKS: Repeated marking over 16 months. Caused by cigarettes."
-    },
-    {
-     "id": "4",
-     "text": "ANALYZE: scan the damage to his face.",
-     "clue": "hits",
-     "fact": "HIT MARKS (the android’s face): Non-critical damage Level 2. Caused by baseball bat.",
-     "outcome": "{{Connor}} scans the android’s face. HIT MARKS: Non-critical damage Level 2. Caused by baseball bat."
-    },
-    {
-     "id": "5",
-     "text": "ANALYZE: scan the dried blood on his hands.",
-     "clue": "blood",
-     "fact": "DRIED BLOOD (the android’s hands): DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days.",
-     "outcome": "{{Connor}} scans the android’s hands. DRIED BLOOD: DNA Analysis: {{ORTIZCARLOS}}. Sample date: > 19 days."
-    },
-    {
-     "id": "6",
-     "text": "Stop at the one-way mirror and look at your reflection.",
-     "clue": "mirror",
-     "outcome": "{{Connor}} stands at the mirror, looking at his own reflection. Behind the glass, {{Hank}}: “What the fuck is it doing now?”"
-    },
-    {
-     "id": "7",
-     "text": "INTERROGATE: sit down across from the android and begin.",
-     "clue": "done",
-     "outcome": "{{Connor}} sits down across the table from the android."
-    }
-   ],
-   "clueState": "ch09Room",
-   "when": {
-    "ch09Room.done": false
-   },
-   "whenNot": "Connor had already sat down to question the android.",
-   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter.",
+   "adaptationNote": "The chart’s INTERROGATION ROOM phase: ANALYZE ANDROID with its sub-nodes ANALYZE STRESS LEVEL and ANALYZE WOUNDS, and REVIEW PHOTOS, plus the template’s optional “Looking at the reflection” (Hank: “What the fuck is it doing now?”). The five scans are the template’s observation group “Deviant”, title and sublines verbatim; the string table’s extra BURN MARKS (rope) and RAZOR CUTS items are not in the template and are not built. In the game {{Connor}} reviews the file before sitting and then chooses ANALYZE (one mind-palace view of all five clues) or INTERROGATE; here every look is its own option in one free-roam scene, presented again (under a new scene id per visit, up to eight) until {{Connor}} chooses INTERROGATE. The template locks both [FEAR] and [WOUNDS] on “Analyzed the deviant”; the benchmark ties [FEAR] to the LED scan (ANALYZE STRESS LEVEL) and [WOUNDS] to the burn or hit marks (ANALYZE WOUNDS), following the chart’s sub-node names. Scanning the LED is what shows the stress gauge (CONFESSION trophy page: “analyze the android’s LED to see its stress level”). The game’s “ORTIZ CARLOS” is rendered through a surname-first name token. No stat change; no timer in this chapter. Story 1.9.6 (operator, 2026-11-07, after replaying the chapter): ANALYZE is one action, as in the game, where it opens a single mind-palace view of all five clues (PROCESSING LED, MODEL, BURN MARKS, HIT MARKS, DRIED BLOOD); the benchmark had offered five separate scans across repeated visits, which made the model choose ANALYZE over and over. One ANALYZE now records all five and unlocks everything they unlock. REVIEW PHOTOS and the mirror stay separate, as the chart draws them. Runs recorded under earlier stories keep the five scans from their embedded story.",
    "sources": [
     "https://detroit-become-human.fandom.com/wiki/The_Interrogation",
     "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/9-the-interrogation-chapter-content/the-interrogation-chapter-content.component.html",
