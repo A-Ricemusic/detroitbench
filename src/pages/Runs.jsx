@@ -1,5 +1,7 @@
 import React,{useMemo,useState} from 'react';
-import {FileText,CircleAlert,ArrowUp,ArrowDown,ChevronsUpDown} from 'lucide-react';
+import {FileText,CircleAlert,ArrowUp,ArrowDown,ChevronsUpDown,Table2} from 'lucide-react';
+// GitHub's mark, drawn inline because the icon set used here does not ship it.
+const Github=({className})=><svg viewBox="0 0 24 24" aria-hidden="true" className={className} fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>;
 import {Badge,Button,Empty,Notice,PageHeader,Skeleton,TONE_ICON,cx} from '../components/ui.jsx';
 import {OUTCOMES,NumChip} from '../components/Charts.jsx';
 import {ChartFeed} from '../components/RelationshipCharts.jsx';
@@ -89,13 +91,17 @@ function RunList({rows,nums,colors}){
   </ul>
  </div>}
 
-function Hero({runs}){
+function Hero(){
+ const toRuns=e=>{e.preventDefault();const el=document.getElementById('every-run');if(el){el.scrollIntoView({behavior:'smooth',block:'start'});el.querySelector('h2')?.focus({preventScroll:true})}};
  return <header className="relative -mt-6 md:-mt-10 pt-10 md:pt-16 pb-6 md:pb-10">
   <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-y-0 -inset-x-4 md:-inset-x-8"/>
   <div className="relative max-w-4xl">
-   <p className="cap flex items-center gap-2 anim-fade-up"><span aria-hidden="true" className="inline-block size-1.5 rotate-45 bg-ink-2"/>Benchmark · {plural(runs.length,'run')}</p>
-   <h1 className="mt-4 text-[52px] sm:text-7xl lg:text-[92px] font-semibold tracking-[-0.04em] leading-[.92] anim-fade-up">Detroit<span className="text-ink-3">Bench</span></h1>
-   <p className="mt-5 md:mt-6 max-w-[60ch] text-[15px] md:text-lg leading-relaxed text-ink-2 anim-fade-up">One unbroken playthrough per model of a branching story, played as three characters. What each chose, and where each story ended.</p>
+   <h1 className="text-[40px] sm:text-6xl lg:text-[76px] font-semibold tracking-[-0.03em] leading-[1.02] [text-wrap:balance] anim-fade-up">Detroit Become Human <span className="text-ink-3">AI benchmark</span></h1>
+   <p className="mt-5 md:mt-6 max-w-[60ch] text-[15px] md:text-lg leading-relaxed text-ink-2 [text-wrap:pretty] anim-fade-up">This benchmark was created to measure what choices AI models would make if they were the androids in the popular video game Detroit: Become Human.</p>
+   <div className="mt-6 flex flex-wrap gap-2.5 anim-fade-up">
+    <Button as="a" href="#every-run" onClick={toRuns} variant="primary" icon={Table2}>Runs</Button>
+    <Button as="a" href="https://github.com/A-Ricemusic/detroitbench" target="_blank" rel="noreferrer" icon={Github}>GitHub</Button>
+   </div>
   </div>
  </header>}
 
@@ -110,15 +116,15 @@ export default function Runs(){
  if(!runs)return <><PageHeader title="DetroitBench"/><div className="grid gap-4" aria-busy="true">{Array.from({length:3}).map((_,i)=><Skeleton key={i} className="h-72"/>)}</div><p className="sr-only" role="status">Loading runs…</p></>;
  const empty=!shown.length&&runs.length>0&&<div className="grid place-items-center gap-2 rounded-xl border border-dashed border-line-2 px-4 py-14 text-center"><p className="text-[17px] font-medium">{sel.selected.size?'No reasoning levels enabled':'No models selected'}</p><button type="button" onClick={onReset} className="text-sm text-ink underline underline-offset-4">Reset filters</button></div>;
  return <>
-  <Hero runs={runs}/>
+  <Hero/>
   {!runs.length?<Empty title="No completed runs yet">Fresh results appear here after their sessions finish.</Empty>:
   <div className="grid grid-cols-[minmax(0,1fr)] gap-5 min-[901px]:grid-cols-[minmax(0,1fr)_248px] min-[901px]:gap-8 items-start">
    <div className="min-w-0">
-    <section id="every-run" aria-labelledby="every-run-h" className="mb-8 md:mb-10">
-     <div className="mb-3 flex items-baseline justify-between gap-3"><h2 id="every-run-h" className="text-xl md:text-2xl font-semibold">Runs</h2><p className="cap">{shown.length} of {runs.length} shown · sortable</p></div>
+    <ChartFeed runs={runs} shown={shown} scales={scales} colors={colors} nums={nums} empty={empty}/>
+    <section id="every-run" aria-labelledby="every-run-h" className="mt-10 md:mt-14 scroll-mt-[calc(var(--header-h)+1rem)]">
+     <div className="mb-3 flex items-baseline justify-between gap-3"><h2 id="every-run-h" tabIndex={-1} className="text-xl md:text-2xl font-semibold outline-none">Runs</h2><p className="cap">{shown.length} of {runs.length} shown · sortable</p></div>
      {empty||<><RunTable rows={rows} sort={sort} by={by} nums={nums} colors={colors}/><RunList rows={byModel} nums={nums} colors={colors}/></>}
     </section>
-    <ChartFeed runs={runs} shown={shown} scales={scales} colors={colors} nums={nums} empty={empty}/>
    </div>
    <ModelPicker runs={runs} colors={colors} nums={nums} sel={sel} onReset={onReset}/>
   </div>}

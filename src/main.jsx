@@ -12,7 +12,7 @@ const Sources=lazy(()=>import('./pages/Sources.jsx'));
 const HowItWasMade=lazy(()=>import('./pages/HowItWasMade.jsx'));
 const Report=lazy(()=>import('./pages/Report.jsx'));
 
-const TITLES={runs:'Model playthroughs',research:'Question bank',sources:'Sources',how:'How it was made'};
+const TITLES={runs:'Detroit Become Human AI benchmark',research:'Question bank',sources:'Sources',how:'How it was made'};
 // Rendered after the page inside Suspense, so its effect runs once the page's DOM exists: focus moves to the new heading.
 function FocusHeading({skip}){useEffect(()=>{if(skip)return;const h=document.querySelector('main h1');if(h&&!document.querySelector('[role=dialog]')){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}},[]);return null}
 function Loading(){return <div className="grid gap-4" aria-busy="true"><Skeleton className="h-9 w-72"/><Skeleton className="h-5 w-full max-w-xl"/><Skeleton className="h-40"/><p className="sr-only" role="status">Loading…</p></div>}
