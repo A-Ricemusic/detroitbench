@@ -1,4 +1,5 @@
 import {useEffect} from 'react';
+import {Sun,Moon,Monitor} from 'lucide-react';
 import {setQuery,useQueryParam} from './urlState.js';
 // The theme lives in the URL only (`?theme=light|dark`); without it the page follows the system setting. An earlier
 // build kept it in localStorage; that key is dropped so the inline script in index.html stops forcing an old choice.
@@ -8,6 +9,8 @@ function apply(pref){const t=resolveTheme(pref);const el=document.documentElemen
 const fromUrl=v=>v==='light'||v==='dark'?v:'system';
 // Apply before the first render so a shared link opens in its theme without a flash of the other one.
 apply(fromUrl(new URLSearchParams((location.hash.split('?')[1])??'').get('theme')));
+// The appearance menu's choices: value, label, icon.
+export const THEMES=[['light','Light',Sun],['dark','Dark',Moon],['system','System',Monitor]];
 export function useTheme(){
  const pref=fromUrl(useQueryParam('theme'));
  useEffect(()=>{apply(pref);if(pref!=='system')return;const mq=matchMedia('(prefers-color-scheme: dark)');const f=()=>apply('system');mq.addEventListener('change',f);return()=>mq.removeEventListener('change',f)},[pref]);

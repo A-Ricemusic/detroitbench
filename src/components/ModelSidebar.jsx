@@ -1,7 +1,7 @@
 import React,{useEffect,useId,useMemo,useRef,useState} from 'react';
-import {Dialog} from 'radix-ui';
 import {RotateCcw,Search,SlidersHorizontal,X} from 'lucide-react';
 import {cx,useMediaQuery} from './ui.jsx';
+import {ModelsSheet} from './deferred.jsx';
 import {announce} from '../lib/announce.jsx';
 import {compareRuns,runLabel} from '../lib/data.js';
 import {EFFORTS} from '../lib/modelSelection.js';
@@ -40,14 +40,14 @@ function Panel({runs,colors,nums,sel,onReset,sheet=false,searchRef,onDone}){
   return <li key={r.id}><button type="button" aria-pressed={on} title={`${r.displayName} · ${r.modelInfo?.vendorName??r.vendor}`} onClick={()=>toggle(r)}
    onPointerEnter={e=>{if(e.pointerType==='mouse'&&on)setHover(r.id)}} onPointerLeave={e=>{if(e.pointerType==='mouse')setHover(null)}}
    onFocus={e=>{if(on&&e.currentTarget.matches(':focus-visible'))setHover(r.id)}} onBlur={()=>setHover(null)}
-   className={cx('group -mx-1.5 flex w-[calc(100%+12px)] items-center gap-[9px] rounded-[5px] px-1.5 text-left hover:bg-surface-2',rowH)}>
+   className={cx('group flex w-full min-w-0 items-center gap-[9px] rounded-[5px] px-1.5 text-left hover:bg-surface-2',rowH)}>
    <span aria-hidden="true" className={cx('w-4 shrink-0 text-right font-mono text-[10.5px] text-ink-3 tnum',on?'opacity-100':'opacity-40 group-hover:opacity-100')}>{nums[r.displayName]}</span>
    <span className={cx('min-w-0 grow truncate',on?'text-ink':'text-ink-3')}>{runLabel(r)}</span>
    <span aria-hidden="true" className={cx('size-[7px] shrink-0 rounded-full',!on&&'opacity-50')} style={{color,background:on?'currentColor':'transparent',boxShadow:'inset 0 0 0 1px currentColor'}}/>
   </button></li>};
  const group=(title,list,actions)=>list.length?<section aria-label={title}>
   <div className="mb-1 flex items-baseline gap-2.5"><h3 className="grow text-[12px] font-semibold tracking-normal text-ink">{title}</h3>{actions}</div>
-  <ul className="grid">{list.map(row)}</ul></section>:null;
+  <ul className="grid grid-cols-[minmax(0,1fr)] -mx-1.5">{list.map(row)}</ul></section>:null;
  const tbtn=(pressed,onClick,label,extra)=><button key={label} type="button" aria-pressed={pressed} onClick={onClick} className={cx('text-[11.5px] hover:text-ink',pressed?'text-ink font-medium underline decoration-ink-3 underline-offset-[3px]':'text-ink-3',extra)}>{label}</button>;
  return <div className={cx('flex flex-col',sheet?'gap-5':'gap-[18px]')}>
   {!sheet&&<div className="flex items-center justify-between gap-2">
@@ -93,15 +93,5 @@ export function ModelPicker({runs,colors,nums,sel,onReset,className}){
  const opener=()=>phone?document.getElementById(MODELS_TAB_ID):trigger.current;
  return <>
   {!phone&&<div className={cx('order-first',className)}><button ref={trigger} type="button" aria-haspopup="dialog" aria-expanded={open} onClick={()=>setOpen(true)} className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-line bg-surface px-3.5 text-sm font-medium text-ink shadow-sm hover:bg-surface-2"><SlidersHorizontal aria-hidden="true" className="size-4"/>Models<span className="font-mono text-xs font-normal text-ink-3 tnum">{sel.selected.size}</span></button></div>}
-  <Dialog.Root open={open} onOpenChange={setOpen}>
-   <Dialog.Portal>
-    <Dialog.Content aria-describedby={undefined} onOpenAutoFocus={e=>{if(document.activeElement&&document.activeElement===opener())return;e.preventDefault()}} onCloseAutoFocus={e=>{const el=opener();if(el){e.preventDefault();el.focus()}}} className="fixed inset-0 z-50 flex h-dvh flex-col overflow-y-auto overscroll-contain bg-bg text-ink anim-fade-in">
-     <div className="sticky top-0 z-10 flex h-14 shrink-0 items-center justify-between border-b border-line bg-bg px-4 pt-[env(safe-area-inset-top)]">
-      <Dialog.Title className="text-[17px] font-medium">Models<span className="ml-1.5 font-mono text-xs font-normal text-ink-3 tnum">{sel.selected.size}</span></Dialog.Title>
-      <Dialog.Close asChild><button type="button" className="min-h-11 px-2 text-[15px] font-semibold text-ink">Done</button></Dialog.Close>
-     </div>
-     <div className="px-4 pt-4 pb-[max(24px,env(safe-area-inset-bottom))]">{panel({sheet:true})}</div>
-    </Dialog.Content>
-   </Dialog.Portal>
-  </Dialog.Root>
+  <ModelsSheet open={open} onOpenChange={setOpen} opener={opener} count={sel.selected.size}>{panel({sheet:true})}</ModelsSheet>
  </>}

@@ -97,11 +97,11 @@ function Hero(){
   <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-y-0 -inset-x-4 md:-inset-x-8"/>
   <div className="relative max-w-4xl">
    <h1 className="hero-title text-[40px] sm:text-6xl lg:text-[76px] font-semibold tracking-[-0.03em] leading-[1.02] [text-wrap:balance]" aria-label="Detroit Become Human AI benchmark">
-    {['Detroit','Become','Human'].map((w,i)=><React.Fragment key={w}><span className="word" style={{'--i':i}} aria-hidden="true">{w}</span>{' '}</React.Fragment>)}
-    <span className="word accent" style={{'--i':3}} data-text="AI benchmark" aria-hidden="true">AI benchmark</span><span className="caret" aria-hidden="true"/>
+    {['Detroit','Become','Human'].map(w=><React.Fragment key={w}><span className="word" aria-hidden="true">{w}</span>{' '}</React.Fragment>)}
+    <span className="word accent" data-text="AI benchmark" aria-hidden="true">AI benchmark</span><span className="caret" aria-hidden="true"/>
    </h1>
-   <p className="mt-5 md:mt-6 max-w-[60ch] text-[15px] md:text-lg leading-relaxed text-ink-2 [text-wrap:pretty] anim-fade-up">This benchmark was created to measure what choices AI models would make if they were the androids in the popular video game Detroit: Become Human.</p>
-   <div className="mt-6 flex flex-wrap gap-2.5 anim-fade-up">
+   <p className="mt-5 md:mt-6 max-w-[60ch] text-[15px] md:text-lg leading-relaxed text-ink-2 [text-wrap:pretty]">This benchmark was created to measure what choices AI models would make if they were the androids in the popular video game Detroit: Become Human.</p>
+   <div className="mt-6 flex flex-wrap gap-2.5">
     <Button as="a" href="#every-run" onClick={toRuns} variant="primary" icon={Table2}>Runs</Button>
     <Button as="a" href="https://github.com/A-Ricemusic/detroitbench" target="_blank" rel="noreferrer" icon={Github}>GitHub</Button>
    </div>
@@ -109,7 +109,7 @@ function Hero(){
  </header>}
 
 export default function Runs(){
- const {runs,scales,error,retry}=useLibrary();
+ const {runs,scales,chapters,error,retry}=useLibrary();
  const sel=useModelSelection(runs),focus=useModelFocus();
  const colors=useMemo(()=>runs?modelColors(runs):{},[runs]),nums=useMemo(()=>runs?modelNumbers(runs):{},[runs]);
  const shown=sel.visible,onReset=()=>{setQuery({models:null,'hide-reasoning':null,chart:null});focus.clear()};
@@ -123,7 +123,7 @@ export default function Runs(){
   {!runs.length?<Empty title="No completed runs yet">Fresh results appear here after their sessions finish.</Empty>:
   <div className="grid grid-cols-[minmax(0,1fr)] gap-5 min-[901px]:grid-cols-[minmax(0,1fr)_248px] min-[901px]:gap-8 items-start">
    <div className="min-w-0">
-    <ChartFeed runs={runs} shown={shown} scales={scales} colors={colors} nums={nums} empty={empty}/>
+    <ChartFeed runs={runs} shown={shown} scales={scales} chapters={chapters} colors={colors} nums={nums} empty={empty}/>
     <section id="every-run" aria-labelledby="every-run-h" className="mt-10 md:mt-14 scroll-mt-[calc(var(--header-h)+1rem)]">
      <div className="mb-3 flex items-baseline justify-between gap-3"><h2 id="every-run-h" tabIndex={-1} className="text-xl md:text-2xl font-semibold outline-none">Runs</h2><p className="cap">{shown.length} of {runs.length} shown · sortable</p></div>
      {empty||<><RunTable rows={rows} sort={sort} by={by} nums={nums} colors={colors}/><RunList rows={byModel} nums={nums} colors={colors}/></>}

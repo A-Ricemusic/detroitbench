@@ -2,7 +2,8 @@ import React,{useEffect,useRef,useState} from 'react';
 import {Upload,Download,ExternalLink,ArrowLeft,ArrowRight,Check,FlaskConical,BookOpen,CornerDownRight} from 'lucide-react';
 import {StateChanges} from '../components/StateChanges.jsx';
 import {validateRun,summarize,compareRuns,isAsked,kindOf,letter} from '../../benchmark/core.mjs';
-import {Badge,Button,Card,Empty,Notice,PageHeader,Section,SearchField,Select,StatTile,Skeleton,cx,Combobox} from '../components/ui.jsx';
+import {Badge,Button,Card,Empty,Notice,PageHeader,Section,SearchField,StatTile,Skeleton,cx,Combobox} from '../components/ui.jsx';
+import {Select} from '../components/ui-radix.jsx';
 import {SubNav} from '../components/Shell.jsx';
 import {href} from '../lib/router.jsx';
 

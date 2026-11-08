@@ -52,3 +52,23 @@ export function explainUnmet(tracks){
   for(const t of tracks){const u=t[m.key].unmet;if(!u?.early)continue;
    u.reason=`${m.toward}’s story ended in chapter ${u.endChapter}${meet&&u.endChapter<meet.chapter?`, before ${meet.title}`:u.endTitle?`, ${u.endTitle}`:''}`}}
  return tracks}
+
+// The site loads tracks in two parts (scripts/prepare.mjs). The results page's library (public/data/experiences.json)
+// gets libraryTrack(): `chapters` (0 for the start, then each chapter the run played, in order) and per gauge `series`,
+// the value at the end of each of those chapters (what the trend chart draws; the last entry is the final value), plus
+// the end fields (endedAt, final, score, ended, endChapter, unmet) without the per-step `values`. The per-run detail file
+// (public/data/runs/<id>.json, fetched when a chart's details card first needs the deciding choice) gets trackDetail():
+// the steps without their chapter titles, which chapterTitles() collects once for the whole library, and every
+// gauge's per-step `values`.
+export const trackChapters=steps=>[0,...new Set(steps.map(s=>s.chapter))];
+// Value at the end of each chapter: the value after the last step whose chapter is at or before it, so runs of
+// different lengths line up (the site's chapterSeries() read it from the steps before the split).
+export function chapterValues(steps,values,chapters=trackChapters(steps)){
+ return chapters.map(c=>{let idx=0;for(let i=0;i<steps.length;i++)if(steps[i].chapter<=c)idx=i+1;return values[idx]??null})}
+export function libraryTrack(track){const chapters=trackChapters(track.steps),out={chapters};
+ for(const m of METRICS){const {values,...rest}=track[m.key];out[m.key]={series:chapterValues(track.steps,values,chapters),...rest}}
+ return out}
+export function trackDetail(track){
+ return {steps:track.steps.map(({chapterTitle,...s})=>s),values:Object.fromEntries(METRICS.map(m=>[m.key,track[m.key].values]))}}
+// Chapter number to title, the first title met across the tracks in order.
+export function chapterTitles(tracks){const t={};for(const tr of tracks)for(const s of tr.steps)if(s.chapterTitle!==undefined)t[s.chapter]??=s.chapterTitle;return t}

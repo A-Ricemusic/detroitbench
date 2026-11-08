@@ -66,9 +66,9 @@ export function FinalStrip({scale,runs,colors,nums={}}){
   </div>
  </div>}
 
-// Value at the end of each chapter, so runs of different lengths line up.
-export function chapterSeries(r,key){const st=r.track.steps,t=r.track[key],chs=[0,...new Set(st.map(s=>s.chapter))];
- return chs.map(c=>{let idx=0;for(let i=0;i<st.length;i++)if(st[i].chapter<=c)idx=i+1;return {c,v:t.values[idx]??null}})}
+// Value at the end of each chapter, so runs of different lengths line up (prepared by libraryTrack() in
+// scripts/relationship-track.mjs: `track.chapters` and each gauge's `series`).
+export function chapterSeries(r,key){const t=r.track[key];return r.track.chapters.map((c,i)=>({c,v:t.series[i]??null}))}
 export const BROKE=new Set(['amandaTrust']);
 
 

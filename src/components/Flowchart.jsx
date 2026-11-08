@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {MoveHorizontal,X} from 'lucide-react';
-import {IconButton,Notice,Segmented,Sheet,Skeleton,cx,useMediaQuery} from './ui.jsx';
+import {IconButton,Notice,Skeleton,cx,useMediaQuery} from './ui.jsx';
+import {Segmented,Sheet} from './ui-radix.jsx';
 import {chapterSVG,FLOW_CSS} from '../lib/flowchart.js';
 
 const cache=new Map;

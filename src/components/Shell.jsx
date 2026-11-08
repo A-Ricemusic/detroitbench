@@ -1,8 +1,8 @@
 import React from 'react';
-import {Sun,Moon,Monitor,Rows3,FlaskConical,BookOpen,Wrench,SlidersHorizontal} from 'lucide-react';
-import {cx,DropdownMenu,IconButton} from './ui.jsx';
+import {Rows3,FlaskConical,BookOpen,Wrench,SlidersHorizontal} from 'lucide-react';
+import {cx} from './ui.jsx';
+import {ThemeToggle} from './deferred.jsx';
 import {href} from '../lib/router.jsx';
-import {useTheme} from '../lib/theme.jsx';
 import {modelsPanel,useModelsPanel,MODELS_TAB_ID} from '../lib/modelsPanel.js';
 
 const NAV=[
@@ -11,22 +11,6 @@ const NAV=[
  {key:'sources',label:'Sources',short:'Sources',icon:BookOpen,path:'sources'},
  {key:'how',label:'How it was made',short:'How',icon:Wrench,path:'how'}
 ];
-const THEMES=[['light','Light',Sun],['dark','Dark',Moon],['system','System',Monitor]];
-
-export function ThemeToggle(){
- const [pref,setPref]=useTheme();
- const Icon=THEMES.find(t=>t[0]===pref)?.[2]??Monitor;
- return <DropdownMenu.Root>
-  <DropdownMenu.Trigger asChild><IconButton variant="secondary" label={`Appearance: ${THEMES.find(t=>t[0]===pref)?.[1]??'System'}`} icon={Icon} className="rounded-full"/></DropdownMenu.Trigger>
-  <DropdownMenu.Portal>
-   <DropdownMenu.Content align="end" sideOffset={6} className="z-50 min-w-44 rounded-xl border border-line bg-raised p-1.5 shadow-lg anim-fade-up">
-    <DropdownMenu.Label className="px-2.5 pt-1 pb-1.5 text-[11px] font-semibold uppercase tracking-wide text-ink-3">Appearance</DropdownMenu.Label>
-    <DropdownMenu.RadioGroup value={pref} onValueChange={setPref}>
-     {THEMES.map(([v,l,I])=><DropdownMenu.RadioItem key={v} value={v} className="flex items-center gap-2.5 rounded-md px-2.5 min-h-10 text-sm text-ink outline-none cursor-pointer data-[highlighted]:bg-accent-soft data-[highlighted]:ring-2 data-[highlighted]:ring-inset data-[highlighted]:ring-accent data-[state=checked]:text-accent"><I aria-hidden="true" className="size-4"/><span className="grow">{l}</span><DropdownMenu.ItemIndicator><span aria-hidden="true" className="inline-block size-2 rounded-full bg-accent"/></DropdownMenu.ItemIndicator></DropdownMenu.RadioItem>)}
-    </DropdownMenu.RadioGroup>
-   </DropdownMenu.Content>
-  </DropdownMenu.Portal>
- </DropdownMenu.Root>}
 
 export function Brand(){return <a href={href('runs')} className="inline-flex items-center text-ink hover:opacity-90" aria-label="DetroitBench home"><img src="/icon.svg" alt="" width="28" height="28" className="size-7 rounded-md"/></a>}
 

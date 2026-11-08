@@ -7,6 +7,12 @@
 <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)"/>
 <meta name="theme-color" content="#0b1017" media="(prefers-color-scheme: dark)"/>
 <meta name="description" content="How AI models choose in Detroit: Become Human. One continuous playthrough per model, every decision recorded, no single moral score."/>
+<!-- The results page's data starts downloading alongside the script; the fetches in src/lib/useLibrary.jsx reuse these.
+     The two latin fonts are not preloaded: on a throttled phone link (bun run check:perf with PERF_THROTTLE=mobile) a
+     font preload delayed first paint by about 0.2 s per font and the first run row by about 0.25 s, because it competes
+     with the script; with font-display: swap the text paints in the fallback font and swaps when the font arrives. -->
+<link rel="preload" as="fetch" href="/data/experiences.json" crossorigin/>
+<link rel="preload" as="fetch" href="/data/relationship-scales.json" crossorigin/>
 <link rel="icon" href="/icon.svg" type="image/svg+xml"/>
 <link rel="apple-touch-icon" href="/icon.svg"/>
 <title>DetroitBench · Detroit Become Human AI benchmark</title>

@@ -6,7 +6,7 @@ import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
 import {loadModelContext,modelInfo} from './model-registry.mjs';
 import {runFlows} from './flow-data.mjs';
-import {METRICS,relationshipTrack,explainUnmet} from './relationship-track.mjs';
+import {METRICS,relationshipTrack,explainUnmet,libraryTrack,trackDetail,chapterTitles} from './relationship-track.mjs';
 import {reportData} from './report-data.mjs';
 // First, assemble benchmark/story.json and docs/detroit-decisions.json from their per-chapter files (none of the
 // modules imported above reads either file at load), then the question bank, benchmark/dataset.json, from both.
@@ -56,7 +56,14 @@ explainUnmet(summaries.map(s=>s.track));
 // the site's model sidebar stays a pure view of prepared data. The display name already comes from loadReportNames.
 const modelCtx=await loadModelContext();
 for(const s of summaries){const info=modelInfo(s,modelCtx);if(!info.registered){info.vendor=s.vendor.toLowerCase();info.vendorName=s.vendor}s.modelInfo=info;s.reasoning=modelCtx.reasoning.get(s.id)??'none'}
-await writeFile(new URL('experiences.json',target),JSON.stringify(summaries));
+// The results page loads only what its first paint draws: public/data/experiences.json holds every run's summary with
+// the trend series reduced to one value per chapter (libraryTrack) and the chapter titles once for the library. Each
+// run's choices and per-step track (trackDetail) go to public/data/runs/<id>.json, which the relationship charts fetch
+// the first time a details card needs the choice that moved a gauge. `summaries` keeps the full tracks for the gauge
+// scales and the reports below.
+await mkdir(new URL('runs/',target),{recursive:true});
+for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c)}))}
+await writeFile(new URL('experiences.json',target),JSON.stringify({chapters:chapterTitles(summaries.map(s=>s.track)),runs:summaries.map(({choices,track,...s})=>({...s,track:libraryTrack(track)}))}));
 // Chapter flowcharts for the report page, one file per run, loaded only when the chart is opened.
 await mkdir(new URL('flows/',target),{recursive:true});
 for(const r of actual)await writeFile(new URL('flows/'+r.id+'.json',target),JSON.stringify({id:r.id,chapters:runFlows(r,{endings:endings(r)})}));

@@ -1,10 +1,12 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {X} from 'lucide-react';
-import {cx,Dot,Select,useMediaQuery} from './ui.jsx';
+import {cx,Dot,useMediaQuery} from './ui.jsx';
+import {Select} from './deferred.jsx';
 import {ABBR,BROKE,DIM,FinalStrip,chapterSeries,endNote,groupBy,levelOf,useWidth} from './Charts.jsx';
 import {EndingCard,CARDS} from './EndingCharts.jsx';
 import {CHAR_VAR,compareRuns,runLabel,tidy} from '../lib/data.js';
 import {useModelFocus} from '../lib/modelFocus.jsx';
+import {useRunDetail} from '../lib/runDetail.js';
 import {setQuery,useQueryParam} from '../lib/urlState.js';
 import {href} from '../lib/router.jsx';
 
@@ -19,10 +21,11 @@ const ORDER=['Connor','Kara','Markus'],FINAL='where-they-ended';
 const slug=s=>s.label.toLowerCase().replace(/[^a-z0-9]+/g,'-');
 const signed=v=>v>0?'+'+v:v<0?'−'+Math.abs(v):'0';
 
-// Where the value changed during a chapter, which scene moved it last, so the card can name the decision.
-function changeIn(r,key,c){const st=r.track.steps,vals=r.track[key].values,seen=new Map;let hit=null;
+// Where the value changed during a chapter, which scene moved it last, so the card can name the decision. `d` is the
+// run's detail file (src/lib/runDetail.js): its steps, per-step gauge values and choices.
+function changeIn(d,key,c){const st=d.steps,vals=d.values[key],seen=new Map;let hit=null;
  st.forEach((s,k)=>{const n=(seen.get(s.node)??0)+1;seen.set(s.node,n);if(s.chapter!==c)return;const a=vals[k],b=vals[k+1];if(a!==null&&b!==null&&a!==b)hit={s,n}});
- if(!hit)return null;const ch=r.choices.find(x=>x.node===hit.s.node+'-v'+hit.n)??r.choices.find(x=>x.node===hit.s.node);return ch?tidy(ch.choice):tidy(hit.s.title)}
+ if(!hit)return null;const ch=d.choices.find(x=>x.node===hit.s.node+'-v'+hit.n)??d.choices.find(x=>x.node===hit.s.node);return ch?tidy(ch.choice):tidy(hit.s.title)}
 
 function LevelChart({scale,runs,colors,nums,titles,compact}){
  const focus=useModelFocus(),[ref,W]=useWidth(),[hot,setHot]=useState(null),[pin,setPin]=useState(null),svg=useRef(null);
@@ -106,7 +109,9 @@ function Card({p,pinned,scale,colors,nums,name,titles,onClose,compact}){
  const ch=p=>p.c===0?'Start':`Chapter ${p.c} · ${titles[p.c]??''}`;
  const close=pinned&&<button type="button" aria-label="Close details" onClick={onClose} className="pointer-events-auto -mr-1.5 -mt-1 inline-flex size-7 shrink-0 items-center justify-center rounded text-ink-3 hover:text-ink"><X aria-hidden="true" className="size-4"/></button>;
  const box=cx('rounded-lg border border-line-2 bg-surface px-4 py-3.5 text-left shadow-lg',compact?'w-full':'w-[272px]');
- const t=p.s.r.track[scale.key],unmet=!!t.unmet,last=p.key===p.s.lastKey,note=(unmet||last&&t.ended)?endNote(scale,t):null,decision=unmet?null:changeIn(p.s.r,scale.key,p.c);
+ const t=p.s.r.track[scale.key],unmet=!!t.unmet,last=p.key===p.s.lastKey,note=(unmet||last&&t.ended)?endNote(scale,t):null,detail=useRunDetail(unmet?null:p.s.r.id);
+ // The deciding choice comes from the run's detail file, fetched on the first card for that run.
+ const decision=unmet||!detail?null:changeIn(detail,scale.key,p.c),loading=!unmet&&detail===undefined;
  return <div role="status" className={cx(box,pinned&&'pointer-events-auto')}>
   <div className="flex items-start justify-between gap-3">{head(p)}{close}</div>
   <p className="mt-0.5 text-[11.5px] text-ink-2">{ch(p)}{pinned?' · Pinned':''}</p>
@@ -115,18 +120,19 @@ function Card({p,pinned,scale,colors,nums,name,titles,onClose,compact}){
    {!unmet&&<><dt className="whitespace-nowrap text-ink-2">Points</dt><dd className="whitespace-nowrap text-right font-medium text-ink tnum">{p.v>0?'+':''}{p.v}</dd>
    <dt className="whitespace-nowrap text-ink-2">Change this chapter</dt><dd className="whitespace-nowrap text-right font-medium text-ink tnum">{p.d===null?'—':signed(p.d)}</dd></>}
    {note&&<dd className="col-span-2 mt-1 text-ink [text-wrap:pretty]">{unmet?[t.unmet.text,t.unmet.reason].filter(Boolean).join('. ')+'.':note+'.'}</dd>}
-   {decision&&<><dt className="col-span-2 mt-1 text-ink-2">Decision</dt><dd className="col-span-2 text-ink [text-wrap:pretty]">{decision}</dd></>}
+   {(decision||loading)&&<><dt className="col-span-2 mt-1 text-ink-2">Decision</dt><dd className={cx('col-span-2 [text-wrap:pretty]',loading?'text-ink-3':'text-ink')}>{loading?'Loading…':decision}</dd></>}
   </dl>
   {pinned?<a href={href('runs/'+p.s.r.id+'/report')} className="mt-2.5 inline-block text-[11.5px] text-ink underline underline-offset-2">Open report</a>:<p className="mt-2.5 text-[11.5px] text-ink-3">Click to open the full report</p>}
  </div>}
 
 // The chart feed on the results page: the three ending-row cards, then one section per relationship gauge, then
 // "Where they ended", each a section reached by the sticky tabs, with the section in view kept in `?chart=`.
-// `runs` is the whole library (colours and numbers), `shown` the runs the model sidebar leaves visible.
+// `runs` is the whole library (colours and numbers), `shown` the runs the model sidebar leaves visible, `chapters` the
+// library's chapter titles by number.
 const ENDINGS=[{id:'connor-ending',label:'Connor',card:0},{id:'kara-alice-ending',label:'Kara & Alice',card:1},{id:'markus-ending',label:'Markus',card:2}];
-export function ChartFeed({runs,shown,scales,colors,nums,empty}){
+export function ChartFeed({runs,shown,scales,chapters,colors,nums,empty}){
  const compact=useMediaQuery('(max-width: 900px)');
- const titles=useMemo(()=>{const t={0:'Start'};for(const r of runs)for(const s of r.track.steps)t[s.chapter]??=s.chapterTitle;return t},[runs]);
+ const titles=useMemo(()=>({0:'Start',...chapters}),[chapters]);
  const groups=useMemo(()=>{const g=groupBy(scales,s=>s.toward);return ORDER.filter(c=>g[c]).map(c=>({c,scales:g[c]}))},[scales]);
  const sections=useMemo(()=>[...ENDINGS,...groups.flatMap(g=>g.scales.map(s=>({id:slug(s),label:s.label}))),{id:FINAL,label:'Where they ended'}],[groups]);
  const chartParam=useQueryParam('chart'),[current,setCurrent]=useState(()=>sections.some(s=>s.id===chartParam)?chartParam:sections[0].id),lock=useRef(0),tabs=useRef(null);
