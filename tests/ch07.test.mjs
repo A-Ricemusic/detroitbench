@@ -17,7 +17,7 @@ function play(picks={},fails=[]){const s=startState(story),visited=[],events={},
   if(n.type!=='media')assert.ok(opts.some(o=>o.id===p),'unavailable pick '+n.id+' '+p);
   if(n.chapter===7&&!visited.length)Object.assign(entry,structuredClone(s));const r=apply(n,s,p,fails.includes(n.id)?0:0.999);if(n.chapter===7){visited.push(n.id);events[n.id]=r.event}cursor=nextCursor(story,cursor,n,s)}
  return {s,visited,events,entry}}
-const NO_GUN=['0','5','10'],GUN=['0','1','5','10'],WINDOW=['0','5','6','10'];
+const NO_GUN=['0','5','10'],GUN=['0','1','5','10'],WINDOW=['0','5','10']; // since story 1.9.5 tidying Alice's room opens the window
 const UP={K03:'0',K03u:'0'};                       // GO UPSTAIRS → GET TO ALICE BEFORE TODD
 const LOCKED={...UP,K03b:'1'};                     // LOCK ROOM
 const WIN={K01d:WINDOW,...LOCKED,K03e:'2'};        // OPEN WINDOW

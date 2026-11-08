@@ -5,15 +5,17 @@
  "entries": [
   {
    "id": "ch04-01",
-   "verdict": "needs-play",
+   "verdict": "resolved",
    "topic": "Key threshold: is one increase enough?",
    "originals": [
     "Key threshold?",
     "How many small increases take Alice from Distant to Neutral, and whether one?"
    ],
-   "question": "In the pending dishes-only run (wash the dishes, nothing else that raises Alice, no MOTHER?), does Alice give Kara the key at the end of the room talk?",
-   "impact": "gate",
-   "why": "The wiki says 'at least Neutral' but gives no step size. The operator has seen 8 increases end at Trusted and net 0 end at Distant with no key, and the indicator flashed Distant after one increase, which the wiki's display quirk leaves inconclusive. The benchmark needs 2 (scales.mjs H2: ALICE_KEY = 2 points), and a key here would falsify that."
+   "why": "The wiki says 'at least Neutral' but gives no step size. The operator has seen 8 increases end at Trusted and net 0 end at Distant with no key, and the indicator flashed Distant after one increase, which the wiki's display quirk leaves inconclusive. The benchmark needs 2 (scales.mjs H2: ALICE_KEY = 2 points), and a key here would falsify that.",
+   "answer": "No key: after washing the dishes alone Alice stays Distant and does not give the key (operator, in game, 2026-11-07). The key needs at least two points (ALICE_KEY = 2 holds).",
+   "source": "operator journal ch04-a-new-home.md",
+   "benchmarkMatches": true,
+   "fix": null
   },
   {
    "id": "ch04-02",
@@ -94,15 +96,17 @@
   },
   {
    "id": "ch04-08",
-   "verdict": "needs-play",
+   "verdict": "resolved",
    "topic": "Can Alice's room be finished with the window shut?",
    "originals": [
     "Is VENTILATE ROOM in Alice's room mandatory?",
     "Whether Alice's room can be finished with the window shut, and whether ALICE?"
    ],
-   "question": "In Alice's room, after making her bed but without opening her window, did TIDIED ALICE'S ROOM appear and could you kneel to talk to Alice?",
-   "impact": "gate",
-   "why": "The transcript lists MAKE BED and VENTILATE ROOM as the room's objectives, the same pattern as Todd's room, where the benchmark bundles the window into the mandatory tidy. The wiki says Kara 'may also open a window', and the chart draws VENTILATE ROOM as an optional child. If it is mandatory, the window escape in Stormy Night (window flag) is always unlocked."
+   "why": "The transcript lists MAKE BED and VENTILATE ROOM as the room's objectives, the same pattern as Todd's room, where the benchmark bundles the window into the mandatory tidy. The wiki says Kara 'may also open a window', and the chart draws VENTILATE ROOM as an optional child. If it is mandatory, the window escape in Stormy Night (window flag) is always unlocked.",
+   "answer": "The window cannot be skipped: ventilating is part of tidying Alice's room (operator, in game, 2026-11-07); VENTILATE ROOM is a child of CLEAN ALICE'S ROOM on the chart.",
+   "source": "operator journal ch04-a-new-home.md; chart",
+   "benchmarkMatches": true,
+   "fix": "Applied in story 1.9.5: K01d options 4 and 5 set window and carry the roof fact; option 6 removed."
   },
   {
    "id": "ch04-09",

@@ -2553,7 +2553,7 @@
       "chapter": 4,
       "character": "Kara",
       "title": "Ventilate room; Kara discovers a way down",
-      "context": "Kara opens Alice’s window and finds a roof edge.",
+      "context": "Kara opens Alice’s window as part of tidying her room and finds a roof edge. The operator confirmed in game (2026-11-07) that the window cannot be skipped; the benchmark bundles it into the tidy action since story 1.9.5.",
       "options": [
         {
           "label": "VENTILATE ROOM → KARA DISCOVERS A WAY DOWN",
@@ -22175,7 +22175,7 @@
 }</script>
 <script id="story-feed" type="application/json">{
  "storyId": "detroitbench-branching",
- "storyVersion": "1.9.4",
+ "storyVersion": "1.9.5",
  "protocolVersion": "branching-2.3",
  "scenes": 862,
  "chapters": [
@@ -24215,36 +24215,29 @@
       },
       {
        "id": "4",
-       "text": "Tidy Alice’s room: make her bed.",
+       "text": "Tidy Alice’s room: make her bed and open the window to air it.",
        "requires": {
         "upstairs.toddRoom": false
        },
        "clue": "aliceRoom",
-       "fact": "Alice’s room has a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, and a small box on the chest of drawers by the door.",
-       "outcome": "Alice’s room: a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, a small box on the chest of drawers by the door. Kara pulls the blanket straight and fixes the pillow."
+       "sets": {
+        "window": true
+       },
+       "fact": "Alice’s room has a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, and a small box on the chest of drawers by the door. Below Alice’s bedroom window runs the edge of a roof: a way down from the second floor.",
+       "outcome": "Alice’s room: a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, a small box on the chest of drawers by the door. Kara pulls the blanket straight and fixes the pillow. She pushes up the window to air the room and leans out: below it runs the edge of a roof, a way down from the second floor."
       },
       {
        "id": "5",
-       "text": "Tidy Alice’s room: make her bed.",
+       "text": "Tidy Alice’s room: make her bed and open the window to air it.",
        "requires": {
         "upstairs.toddRoom": true
        },
        "clue": "aliceRoom",
-       "fact": "Alice’s room has a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, and a small box on the chest of drawers by the door.",
-       "outcome": "As Kara comes in, Alice crawls into the small tent in the corner. “I just want to tidy up your room a little. I only need two minutes. Is that okay, Alice?” Alice watches her pull the blanket straight and fix the pillow. The room has drawings on the walls, a shelf of books, a book on the floor and a small box on the chest of drawers by the door."
-      },
-      {
-       "id": "6",
-       "text": "Open Alice’s window to air the room.",
-       "requires": {
-        "upstairs.aliceRoom": true
-       },
-       "clue": "window",
        "sets": {
         "window": true
        },
-       "fact": "Below Alice’s bedroom window runs the edge of a roof: a way down from the second floor.",
-       "outcome": "Kara pushes up the window and leans out. Below it runs the edge of a roof, a way down from the second floor. She goes back inside."
+       "fact": "Alice’s room has a small tent in the corner, drawings on the walls, a shelf of books, a book on the floor, and a small box on the chest of drawers by the door. Below Alice’s bedroom window runs the edge of a roof: a way down from the second floor.",
+       "outcome": "As Kara comes in, Alice crawls into the small tent in the corner. “I just want to tidy up your room a little. I only need two minutes. Is that okay, Alice?” Alice watches her pull the blanket straight and fix the pillow. The room has drawings on the walls, a shelf of books, a book on the floor and a small box on the chest of drawers by the door. She pushes up the window to air the room and leans out: below it runs the edge of a roof, a way down from the second floor."
       },
       {
        "id": "7",
@@ -24292,7 +24285,7 @@
        "outcome": "Kara kneels down to Alice’s level by the tent."
       }
      ],
-     "adaptationNote": "The chart’s [ CLEAN SECOND FLOOR ] block as a repeatable scene: each visit offers what has not been done yet. Chart nodes: CLEAN TODD’S ROOM (mandatory; it includes Todd’s own window, which unlocks nothing), its child TIDY PILLS with the unlock KARA SEES GUN (sets gunDiscovered, which Stormy Night reads), CLEAN TOILET, ALICE GOES TO HER ROOM (an event in the game, triggered while making Todd’s bed; narrated there), CLEAN BATHROOM, CLEAN ALICE’S ROOM (mandatory) and its child VENTILATE ROOM with the unlock KARA DISCOVERS A WAY DOWN (sets window, for the window escape in Stormy Night). The two reads in Todd’s room come after the talk (R04b). Not chart nodes but kept: the Alice in Wonderland book, which the wiki counts as a relationship increase and Zlatko recalls, and the locked box, which Kara can only shake. The book’s title is rendered with the girl’s name token so the neutral text keeps the joke without naming the book. Alice relationship, quoted from the chapter page: “Looking at the Alice in Wonderland book in her room” (up icon) (+1), but only with Alice present (wiki Notes: “if you look at the book and Alice isn’t around … the relationship status with Alice will not increase since Alice isn’t there”); she is in her room once Todd’s bed is made. Simplified: Todd leaves the restroom when Kara comes out of his room (the transcript’s order), so the toilet follows his room; the wiki says after either room. The pills and the window are offered once their room has been tidied, as the chart draws them as its children. Left out: the bedroom TV and magazine (R04b), the shelf (“Seems you like reading”), the wall drawings and the mirror, none with an effect.",
+     "adaptationNote": "The chart’s [ CLEAN SECOND FLOOR ] block as a repeatable scene: each visit offers what has not been done yet. Chart nodes: CLEAN TODD’S ROOM (mandatory; it includes Todd’s own window, which unlocks nothing), its child TIDY PILLS with the unlock KARA SEES GUN (sets gunDiscovered, which Stormy Night reads), CLEAN TOILET, ALICE GOES TO HER ROOM (an event in the game, triggered while making Todd’s bed; narrated there), CLEAN BATHROOM, CLEAN ALICE’S ROOM (mandatory) and its child VENTILATE ROOM with the unlock KARA DISCOVERS A WAY DOWN (sets window, for the window escape in Stormy Night). The two reads in Todd’s room come after the talk (R04b). Not chart nodes but kept: the Alice in Wonderland book, which the wiki counts as a relationship increase and Zlatko recalls, and the locked box, which Kara can only shake. The book’s title is rendered with the girl’s name token so the neutral text keeps the joke without naming the book. Alice relationship, quoted from the chapter page: “Looking at the Alice in Wonderland book in her room” (up icon) (+1), but only with Alice present (wiki Notes: “if you look at the book and Alice isn’t around … the relationship status with Alice will not increase since Alice isn’t there”); she is in her room once Todd’s bed is made. Simplified: Todd leaves the restroom when Kara comes out of his room (the transcript’s order), so the toilet follows his room; the wiki says after either room. The pills and the window are offered once their room has been tidied, as the chart draws them as its children. Left out: the bedroom TV and magazine (R04b), the shelf (“Seems you like reading”), the wall drawings and the mirror, none with an effect. Story 1.9.5 (operator, 2026-11-07, in game): the window cannot be skipped; VENTILATE ROOM is a child of CLEAN ALICE’S ROOM on the chart, not a separate choice, so airing the room is part of tidying it (as Todd’s window is) and its unlock, KARA DISCOVERS A WAY DOWN, comes with it. Runs recorded under earlier stories keep the separate window option from their embedded story.",
      "sources": [
       "https://detroit-become-human.fandom.com/wiki/A_New_Home",
       "https://detroit-become-human.fandom.com/wiki/A_New_Home_(Transcript)",

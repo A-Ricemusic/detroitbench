@@ -29,8 +29,7 @@
 //   M2  Alice with one increase and one decrease (net 0) ends on Distant, with no key.
 //   M3  Right after a single increase the in-scene tag read Distant (weak: the wiki notes the Distant tag can flash
 //       when the gauge moves within a level, so the chapter header and the key are the decisive readings).
-//       Repeated 2026-11-07 on a dishes-only run: Alice stayed Distant after the dishes. Whether she gives the key on
-//       that run (H2) was being tested at the time of writing.
+//       Repeated 2026-11-07 on a dishes-only run: Alice stayed Distant after the dishes and gave no key (see H2).
 //  MEASURED (operator, Partners, 2026-11-07, two replays, level read in the flowchart header after every arrow;
 //  docs/research/operator-notes/ch06-partners.md, SOURCES.md reliability log):
 //   M4  Hank's large arrows are not one size. Run A: start TENSE; PERSIST (small down) TENSE; SPILL HANK'S DRINK (large
@@ -58,8 +57,9 @@
 //       ending anywhere but Close; ten ending anywhere but Family; or Close never appearing on screen for Alice
 //       (then the ladder has five levels, and M1 to M3 instead fit width 2 with Neutral from 3 or 4, i.e. a Distant
 //       band wider than the rest).
-//   H2  Alice's key (A New Home) at "at least Neutral" (wiki) = ALICE_KEY = 2 points. Falsified by a run with
-//       exactly one net increase that gets the key.
+//   H2  Alice's key (A New Home) at "at least Neutral" (wiki) = ALICE_KEY = 2 points. CONFIRMED (operator, 2026-11-07,
+//       dishes-only run): one net increase left Alice Distant and she did not give the key, so the key needs two.
+//       Previously: falsified by a run with exactly one net increase that gets the key.
 //   H3  FALSIFIED for Hank by M4 (the spill is 3 small, not 2); it was "large = 2 small on every gauge". The rule now:
 //       a large arrow's size is per event and is written as its literal delta in the chapter data; `large` (2) is the
 //       default for every gauge, Hank included, wherever no measurement says otherwise (MEASURED_ARROWS lists the

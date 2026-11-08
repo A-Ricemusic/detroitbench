@@ -1,6 +1,6 @@
 # DetroitBench · conflicts · what only the game can settle
 
-_Updated 2026-11-07, evening. Story 1.9.4, 24 runs published._
+_Updated 2026-11-07, night. Story 1.9.5, 24 runs published._
 
 Replaces the 1,595-line dump of the same date. Every line of that dump was sorted by a source check into four bins: settled from a cited source, a documented simplification, wording only, or a question only the operator can answer in game. Only the last bin is listed below. The per-item rationale, the merged duplicates and the citations are in `docs/research/triage/chNN.json` (one file per chapter) and the short summaries in `chNN.md`; the method is in `triage/BRIEF.md`.
 
@@ -8,10 +8,10 @@ Replaces the 1,595-line dump of the same date. Every line of that dump was sorte
 
 | Bin | Items | What it means |
 |---|---|---|
-| Settled from a source | 425 | A flowchart image, the game's text or the wiki answers it; where the benchmark disagreed, a fix was recorded (see below) |
+| Settled from a source | 427 | A flowchart image, the game's text or the wiki answers it; where the benchmark disagreed, a fix was recorded (see below) |
 | Documented simplification | 176 | A cut line, an idle comment, a collapsed free-roam order or similar; the sources do not contradict it |
 | Wording only | 82 | Cannot be settled by reading but changes no option, arrow, gate or ending |
-| Needs the game | 107 | Listed below, 101 after merging cross-chapter duplicates |
+| Needs the game | 105 | Listed below, 99 after merging cross-chapter duplicates |
 
 ## What the sources are worth
 
@@ -66,6 +66,8 @@ Not applied, each waiting on a question below: ch13 K09q5 after sitting at once,
 
 ## Settled since the triage
 
+- **ch04-01**: No key after the dishes alone; Alice stays Distant (operator, 2026-11-07). The key needs two points, as the benchmark has it
+- **ch04-08**: The window cannot be skipped; ventilating is part of tidying the room (operator, 2026-11-07). Fixed in story 1.9.5
 - **ch03-02**: INDIFFERENT in the Shades of Color header after saving the wounded cop (operator, 2026-11-07); H9 holds for the first step
 - **ch06-21**: Tense (the spill is worth three points, Tense is three wide; operator, two replays 2026-11-07)
 - **ch06-09**: No arrow shown (operator, both replays); the wiki claim is kept as unobserved
@@ -76,10 +78,8 @@ Not applied, each waiting on a question below: ch13 K09q5 after sitting at once,
 Each question is one yes/no or one number. In brackets: what the answer changes. Where the benchmark has already picked an answer, the question says so, and a "no" means the benchmark must change.
 
 
-### 04 · A New Home · 3
+### 04 · A New Home · 1
 
-- [ ] **ch04-01** [what unlocks] In the pending dishes-only run (wash the dishes, nothing else that raises Alice, no MOTHER?), does Alice give Kara the key at the end of the room talk? _(The wiki says 'at least Neutral' but gives no step size. The operator has seen 8 increases end at Trusted and net 0 end at Distant with no key, and the indicator flashed Distant after one increase, which the wiki's display quirk leaves inconclusive. The benchmark needs 2 (scales.mjs H2: ALICE_KEY = 2 points), and a key here would falsify that)_
-- [ ] **ch04-08** [what unlocks] In Alice's room, after making her bed but without opening her window, did TIDIED ALICE'S ROOM appear and could you kneel to talk to Alice? _(The transcript lists MAKE BED and VENTILATE ROOM as the room's objectives, the same pattern as Todd's room, where the benchmark bundles the window into the mandatory tidy. The wiki says Kara 'may also open a window', and the chart draws VENTILATE ROOM as an optional child. If it is mandatory, the window escape in Stormy Night (window flag) is always unlocked)_
 - [ ] **ch04-10** [which buttons the model is offered] Could you kneel to talk to Alice with both bedrooms done but the bathroom not cleaned and without looking at the Alice in Wonderland book or her shelf? _(PowerPyx's walkthrough (above the wiki) requires the bathroom, the book and the shelf. The transcript requires only both bedrooms, and a PowerPyx reader's recipe skips the bathroom and the book. If the book is required, every run gets its +1, which moves the key threshold. This can be tested in the same replay as ch04-08)_
 
 ### 05 · The Painter · 1

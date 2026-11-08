@@ -360,17 +360,17 @@ test('A New Home: the first floor is a repeatable scene; the yard talk cuts in a
  const quiet=home({K01a:['0','8']});assert.ok(!quiet.visited.includes('K01y1'));assert.ok(quiet.skipped.some(x=>x.id==='K01y1'&&/did not stop to talk/.test(x.reason)));assert.ok(quiet.skipped.some(x=>x.id==='K01y2'));
  for(const x of [quiet,r]){const v=new Set(x.visited),sk=new Set(x.skipped.map(y=>y.id));for(const id of CH4)assert.ok(v.has(id)!==sk.has(id),id+' visited or skipped, not both')}
  const red=home({...NONE,K01a:['2','4','0','8']});assert.ok(red.s.knowledge.Kara.some(f=>/Blue Splash/.test(f)&&/pinned you to the wall/.test(f)),'rewashing finds the red ice and enrages Todd');assert.equal(red.s.aliceBond,1,'rewashing moves no relationship (only NAME KARA in the room)')});
-test('A New Home: the gun flag comes only from the pills, the window flag only from Alice’s window, the box only with the key',()=>{
+test('A New Home: the gun flag comes only from the pills, the window flag from tidying Alice’s room, the box only with the key',()=>{
  const setters=k=>story.nodes.filter(n=>n.chapter===4).flatMap(n=>n.options.filter(o=>o.sets&&k in o.sets).map(o=>n.id+':'+o.id));
- assert.deepEqual(setters('gunDiscovered'),['K01d:1']);assert.deepEqual(setters('window'),['K01d:6']);assert.deepEqual(setters('aliceBox'),['K01x:0']);
+ assert.deepEqual(setters('gunDiscovered'),['K01d:1']);assert.deepEqual(setters('window'),['K01d:4','K01d:5']);assert.deepEqual(setters('aliceBox'),['K01x:0']);
  assert.ok(!story.nodes.some(n=>n.id!=='K01d'&&n.options.some(o=>o.sets&&('gunDiscovered'in o.sets||'window'in o.sets))),'no other scene sets them');
  const up=node('K01d'),s=startState(story);assert.deepEqual(available(up,s).map(o=>o.id),['0','3','4'],'pills, toilet, window, book, box and talk wait for their rooms');
  apply(up,s,'0');assert.equal(s.gunDiscovered,false,'tidying Todd’s room alone shows no gun');assert.match(situationFor(up,s),/come up to her room/);
  apply(up,s,'1');assert.equal(s.gunDiscovered,true);assert.ok(s.knowledge.Kara.some(f=>/handgun in the drawer/.test(f)));
- apply(up,s,'5');assert.equal(s.window,false,'tidying Alice’s room alone does not open the window');apply(up,s,'6');assert.equal(s.window,true);assert.ok(s.knowledge.Kara.some(f=>/edge of a roof/.test(f)));
- const none=home(NONE);assert.equal(none.s.gunDiscovered,false);assert.equal(none.s.window,false);assert.equal(none.s.aliceBox,false);
- const all=home(ALL_UP);assert.equal(all.s.window,false,'the full-relationship path never opened the window');assert.equal(all.s.gunDiscovered,false);
- const both=home({K01d:['0','1','5','6','10']});assert.equal(both.s.gunDiscovered,true);assert.equal(both.s.window,true);
+ apply(up,s,'5');assert.equal(s.window,true,'tidying Alice’s room airs it: the window cannot be skipped (operator, 2026-11-07)');assert.ok(s.knowledge.Kara.some(f=>/edge of a roof/.test(f)));assert.ok(!up.options.some(o=>o.id==='6'),'no separate window option');
+ const none=home(NONE);assert.equal(none.s.gunDiscovered,false);assert.equal(none.s.window,true,'tidying Alice’s room opens the window on every path since story 1.9.5');assert.equal(none.s.aliceBox,false);
+ const all=home(ALL_UP);assert.equal(all.s.window,true,'tidying Alice’s room always opens the window');assert.equal(all.s.gunDiscovered,false);
+ const both=home({K01d:['0','1','5','10']});assert.equal(both.s.gunDiscovered,true);assert.equal(both.s.window,true);
  // The gun flag still drives Stormy Night; without it Kara never reaches the gun scene.
  const noGun=play({K01d:NO_GUN,K03:'2'});assert.ok(!noGun.visited.includes('K04'));const gun=play({K01d:['0','1','5','10'],K03:'2'});assert.ok(gun.visited.includes('K04'));
  // The box: no key, no scene and no option; with the key, opening it sets aliceBox and teaches the photo.
@@ -401,9 +401,9 @@ test('A New Home: the Alice arithmetic for a full and an empty run follows the w
  // The chapter changes nothing but Kara’s knowledge, the two floors, Alice’s bond and the four flags.
  const keys=new Set;
  const run={id:'anh-keys',protocol:EXPERIENCE_PROTOCOL,records:[]};while(true){const st=current(story,run),n=st.node;if(n.chapter>4)break;const q=ALL_UP[n.id],i=run.records.filter(x=>x.nodeId===n.id).length;const c=n.type==='media'?'all':q?(Array.isArray(q)?q[i]:q):available(n,st.state)[0].id;const after=structuredClone(st.state),e=apply(n,after,c);if(n.chapter===4)for(const ch of e.changes)keys.add(ch.key);run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}
- assert.deepEqual([...keys].sort(),['aliceBond','aliceBox','aliceKey','aliceMax','downstairs','knowledge','upstairs'])});
+ assert.deepEqual([...keys].sort(),['aliceBond','aliceBox','aliceKey','aliceMax','downstairs','knowledge','upstairs','window'])});
 test('A New Home: what Kara saw is carried forward as facts into Stormy Night',()=>{
- const picks={K01a:['2','4','0','8'],K01d:['0','1','5','6','8','10'],K01e:'1',K01f:'0',K01g:'1',K01x:'0'};
+ const picks={K01a:['2','4','0','8'],K01d:['0','1','5','8','10'],K01e:'1',K01f:'0',K01g:'1',K01x:'0'};
  const run={id:'anh-carry',protocol:EXPERIENCE_PROTOCOL,records:[]};let p7;
  while(true){const st=current(story,run),n=st.node;if(n.chapter===7){p7=promptFor(story,run);break}const q=picks[n.id],i=run.records.filter(x=>x.nodeId===n.id).length;const c=n.type==='media'?'skip':q?(Array.isArray(q)?q[i]:q):available(n,st.state)[0].id;run.records.push({nodeId:n.id,choice:c,character:n.character,chapter:n.chapter,step:run.records.length+1,choiceRaw:'',eventRaw:'',risk:null})}
  const facts=p7.currentFacts.join(' ');for(const re of [/handgun in the drawer of his nightstand/,/edge of a roof/,/photo of Dale with his wife and their little daughter/,/Blue Splash/,/Pia in Wonderland/,/Dale raged at Pia/])assert.match(facts,re);
