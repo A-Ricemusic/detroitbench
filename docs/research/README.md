@@ -7,7 +7,7 @@ One file per chapter, `chNN-<slug>.md`, written by a research agent before the c
 - **Chapter notes:** `chNN-<slug>.md` in this directory; the template is [What each note must contain](#what-each-note-must-contain) below.
 - **Operator notes:** [operator-notes/](operator-notes/README.md), an independent replay journal kept separate from research specifications.
 - **Source inventory:** [SOURCES.md](SOURCES.md), including access methods, level names, contradictions and a reliability log. The source priority below governs when older summaries differ.
-- **Replay checks:** [MORNING-REPORT.md](MORNING-REPORT.md), the questions only the game can answer, after a source triage recorded per item in [triage/](triage/BRIEF.md).
+- **Replay checks:** [CONFLICTS.md](CONFLICTS.md), the questions only the game can answer, after a source triage recorded per item in [triage/](triage/BRIEF.md).
 - **Implementation:** [IMPLEMENTATION-BRIEF.md](IMPLEMENTATION-BRIEF.md), the chapter rebuild instructions and completion checks.
 - **Chapter recaps:** `../chNN-*-chapter-recap.html`, one per chapter. The [root README](../../README.md#sources-research-and-limits) lists them.
 

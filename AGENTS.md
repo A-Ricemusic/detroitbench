@@ -27,7 +27,7 @@ Key files:
 | `docs/research/` | Chapter specifications and research-note template in `README.md`; rebuild workflow in `IMPLEMENTATION-BRIEF.md` |
 | `docs/research/SOURCES.md` | Source inventory, level names, contradictions and reliability log |
 | `docs/flowcharts/` | The game's completed chapter flowcharts as photographed by PowerPyx (rank 1 source), one folder per chapter with a README per chapter and an index in `README.md` |
-| `docs/research/MORNING-REPORT.md` | The operator's open-question list: only what the sources cannot settle, one question per line; rationale per item in `docs/research/triage/` |
+| `docs/research/CONFLICTS.md` | The operator's open-question list: only what the sources cannot settle, one question per line; rationale per item in `docs/research/triage/` |
 | `docs/research/operator-notes/` | Independent operator replay journal; format and rules in `README.md` |
 | `docs/chNN-*-chapter-recap.html` | Chapter implementation recaps, one per chapter |
 | `scripts/play-checklist.mjs` | `bun run play:checklist` writes a play-along checklist for the operator to `docs/play-along-audit-checklist.md` (generated on demand, not committed) |

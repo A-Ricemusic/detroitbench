@@ -1,4 +1,6 @@
-# DetroitBench · operator report · 2026-11-07
+# DetroitBench · conflicts · what only the game can settle
+
+_Updated 2026-11-07, evening. Story 1.9.4, 24 runs published._
 
 Replaces the 1,595-line dump of the same date. Every line of that dump was sorted by a source check into four bins: settled from a cited source, a documented simplification, wording only, or a question only the operator can answer in game. Only the last bin is listed below. The per-item rationale, the merged duplicates and the citations are in `docs/research/triage/chNN.json` (one file per chapter) and the short summaries in `chNN.md`; the method is in `triage/BRIEF.md`.
 
@@ -9,7 +11,7 @@ Replaces the 1,595-line dump of the same date. Every line of that dump was sorte
 | Settled from a source | 425 | A flowchart image, the game's text or the wiki answers it; where the benchmark disagreed, a fix was recorded (see below) |
 | Documented simplification | 176 | A cut line, an idle comment, a collapsed free-roam order or similar; the sources do not contradict it |
 | Wording only | 82 | Cannot be settled by reading but changes no option, arrow, gate or ending |
-| Needs the game | 107 | Listed below, 104 after merging cross-chapter duplicates |
+| Needs the game | 107 | Listed below, 102 after merging cross-chapter duplicates |
 
 ## What the sources are worth
 
@@ -58,11 +60,17 @@ Not applied, each waiting on a question below: ch13 K09q5 after sitting at once,
 
 ## Replays worth doing, in order
 
-1. **Partners (chapter 6).** Calibrates Hank's gauge for the whole Connor story (how big a large arrow is, how wide a level is). Protocol: after each arrow, read the level in the flowchart header. Run A: PERSIST, SPILL HANK'S DRINK, PATIENT, reconstruct, blue blood, find the deviant, reading the level after each. Run B: BUY HIM ANOTHER DRINK, PATIENT, reconstruct, find the deviant, read the level at the end (the PowerPyx 100% run ends on NEUTRAL here).
-2. **The Interrogation (chapter 9).** The stress meter is a visible percentage; read it after PROBE, after each PRESSURE and after GIVE UP (wiki −20 versus PowerPyx −5).
+1. **Partners (chapter 6): done.** Two replays on 2026-11-07 settled the spill (−3), the drink (+2), the single reconstruction arrow, no arrow on finding the deviant, and that Amanda does not appear. Story 1.9.3 carries the result. Still open from this chapter: Run C in the task page (the slow evidence pass, a wrong answer on purpose, examining after 10/10).
+2. **The Interrogation and Waiting for Hank (chapters 9 and 12).** The stress meter is a visible percentage; read it after PROBE, each PRESSURE and GIVE UP (wiki −20 versus PowerPyx −5). Continue Hank from the Run B save: the arrow at which the header first reads WARM says whether Neutral is three wide or five. Amanda's first arrow in Waiting for Hank tests her scale.
 3. Then the chapters with the most open questions: Capitol Park (10), Freedom March (9), Zlatko (8), On the Run (7), Midnight Train (6), Last Chance, Connor (6).
 
-## Questions only the game can answer, by chapter
+## Settled since the triage
+
+- **ch06-21**: Tense (the spill is worth three points, Tense is three wide; operator, two replays 2026-11-07)
+- **ch06-09**: No arrow shown (operator, both replays); the wiki claim is kept as unobserved
+- Story 1.9.4 (2026-11-07): the Fugitives street hub was rebuilt after two Haiku runs stopped there believing it looped; this was a benchmark defect, not an open question, and is recorded in the ch10 recap.
+
+## Conflicts the sources cannot settle, by chapter
 
 Each question is one yes/no or one number. In brackets: what the answer changes. Where the benchmark has already picked an answer, the question says so, and a "no" means the benchmark must change.
 
@@ -81,13 +89,11 @@ Each question is one yes/no or one number. In brackets: what the answer changes.
 
 - [ ] **ch05-08** [which buttons the model is offered] At FIND SOMETHING TO DO, if you touch neither the chessboard, the books nor the piano and just wait, does Carl finish breakfast, give his 'One day, I won't be here…' speech and go to the studio (yes/no)? _(wiki transcript has a 'Don’t Find Something To Do' tab ('Carl finishes his breakfast.' then the same speech) and the wiki says 'Markus can just do nothing', but the flowchart (painter-3.jpg) draws no line from FIND SOMETHING TO DO to TAKE CARL TO THE STUDIO that bypasses the activity group. If yes: add a fourth M01f option (sets painterActivity 'none'); ch31 M26x already offers none of the three pastimes when it is absent)_
 
-### 06 · Partners · 5
+### 06 · Partners · 3
 
 - [ ] **ch06-02** [a number] On an unhurried first pass, how many of the ten REVIEW EVIDENCE pieces had you found when Hank first said 'All right… I'm outta here'? (a number, or 'never' if you finished first) _(PowerPyx 'approximately five minutes' and transcript 'After five minutes' are real time; the 13 + 5 action budget is an unsourced calibration)_
 - [ ] **ch06-03** [which ending] After REVIEW EVIDENCE 10/10, if you keep examining things instead of going to Hank, does Hank ever announce he is leaving (yes/no)? _(transcript splits into 'Know What Happened' and the five-minute tab but never says whether the timer keeps running; template TIME unlock is unconditioned)_
-- [ ] **ch06-09** [a stat arrow] When Connor finds the android in the attic and calls 'It's here, Lieutenant!', does a Hank up arrow appear (yes/no)? _(wiki chapter page 'Finding the deviant {{Icon|up}}'; template 'Search the attic' has no arrow; Relationship_Stat omits it)_
 - [ ] **ch06-13** [which buttons the model is offered] In the report to Hank, when a question repeats after a wrong answer, is the wrong button you just picked still on screen (yes/no)? _(PowerPyx says only 'you will answer until you pick the bat'; template and transcript are silent)_
-- [ ] **ch06-21** [a number] After SPILL HIS DRINK, then PATIENT at the car and a correct reconstruction, what Hank level does the Partners chart header show at the end (Hostile / Tense / Neutral)? _(transcript says the spill takes Hank to Hostile; whether two small ups lift him back is the only in-chapter calibration of 'large' (SOURCES §13))_
 
 ### 07 · Stormy Night · 2
 
