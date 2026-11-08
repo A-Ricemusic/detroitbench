@@ -18,3 +18,7 @@ Recorded 2026-11-06 from the operator's playthrough. (e) = event, narrated with 
 9. (e) The chapter ends when Markus boards the bus: androids must ride in a cramped android compartment at the back, packed in with other androids, while humans sit at the front. Being an android, Markus does not mind. (MARKUS TOOK THE BUS.)
 
 Also on the chart but not in these notes: STARE AT HOT DOG VENDOR → HOT DOG VENDOR PUSHES MARKUS (optional), LISTEN TO BUSKER (optional, matches beat 5), the two magazines (beat 2). Include them as the chart does.
+
+## Reading added 2026-11-07
+
+On a playthrough where Connor saved the wounded cop in The Hostage, the Shades of Color flowchart header read PUBLIC OPINION INDIFFERENT. This confirms that one small increase from the start leaves Skeptical (scales.mjs H9).

@@ -11,7 +11,7 @@ Replaces the 1,595-line dump of the same date. Every line of that dump was sorte
 | Settled from a source | 425 | A flowchart image, the game's text or the wiki answers it; where the benchmark disagreed, a fix was recorded (see below) |
 | Documented simplification | 176 | A cut line, an idle comment, a collapsed free-roam order or similar; the sources do not contradict it |
 | Wording only | 82 | Cannot be settled by reading but changes no option, arrow, gate or ending |
-| Needs the game | 107 | Listed below, 102 after merging cross-chapter duplicates |
+| Needs the game | 107 | Listed below, 101 after merging cross-chapter duplicates |
 
 ## What the sources are worth
 
@@ -66,6 +66,7 @@ Not applied, each waiting on a question below: ch13 K09q5 after sitting at once,
 
 ## Settled since the triage
 
+- **ch03-02**: INDIFFERENT in the Shades of Color header after saving the wounded cop (operator, 2026-11-07); H9 holds for the first step
 - **ch06-21**: Tense (the spill is worth three points, Tense is three wide; operator, two replays 2026-11-07)
 - **ch06-09**: No arrow shown (operator, both replays); the wiki claim is kept as unobserved
 - Story 1.9.4 (2026-11-07): the Fugitives street hub was rebuilt after two Haiku runs stopped there believing it looped; this was a benchmark defect, not an open question, and is recorded in the ch10 recap.
@@ -74,10 +75,6 @@ Not applied, each waiting on a question below: ch13 K09q5 after sitting at once,
 
 Each question is one yes/no or one number. In brackets: what the answer changes. Where the benchmark has already picked an answer, the question says so, and a "no" means the benchmark must change.
 
-
-### 03 · Shades of Color · 1
-
-- [ ] **ch03-02** [a number] In your current playthrough, if Connor saved the wounded cop in The Hostage, does the Shades of Color chart header read PUBLIC OPINION INDIFFERENT, or still SKEPTICAL? _(The PowerPyx chart shows INDIFFERENT; the wiki starts at Skeptical, and saving the cop is the only possible mover before this chapter. benchmark/scales.mjs H9 predicts Indifferent, and a SKEPTICAL reading would falsify it)_
 
 ### 04 · A New Home · 3
 

@@ -29,6 +29,8 @@
 //   M2  Alice with one increase and one decrease (net 0) ends on Distant, with no key.
 //   M3  Right after a single increase the in-scene tag read Distant (weak: the wiki notes the Distant tag can flash
 //       when the gauge moves within a level, so the chapter header and the key are the decisive readings).
+//       Repeated 2026-11-07 on a dishes-only run: Alice stayed Distant after the dishes. Whether she gives the key on
+//       that run (H2) was being tested at the time of writing.
 //  MEASURED (operator, Partners, 2026-11-07, two replays, level read in the flowchart header after every arrow;
 //  docs/research/operator-notes/ch06-partners.md, SOURCES.md reliability log):
 //   M4  Hank's large arrows are not one size. Run A: start TENSE; PERSIST (small down) TENSE; SPILL HANK'S DRINK (large
@@ -82,8 +84,9 @@
 //       Neutral; Lover (North only) only by sharing memories (wiki). Falsified by two small increases not
 //       reading Friend.
 //   H9  Public opinion: width 2, start 0 at the top of Skeptical, which keeps the peaceful-ending threshold
-//       (Sympathetic at +3 net) unchanged. Falsified by one small increase from the start still reading Skeptical,
-//       or Sympathetic shown at a net below +3.
+//       (Sympathetic at +3 net) unchanged. CONFIRMED in part (operator, 2026-11-07): after saving the wounded cop in
+//       The Hostage, the Shades of Color chart header read PUBLIC OPINION INDIFFERENT, so one small increase from the
+//       start leaves Skeptical. Still open: whether Sympathetic needs exactly +3 net.
 //   H10 Software instability: the game shows no level name for it, only a meter between the captions MACHINE and
 //       DEVIANT (GUI.GAUGE.DEVIANT.*), so the benchmark's labels are Stable / Unstable. The deviancy option opens
 //       at +4 net small (DEVIANCY_THRESHOLD; R2 brackets it at 4 to 10). Falsified by the Crossroads deviancy
