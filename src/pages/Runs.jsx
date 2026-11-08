@@ -96,7 +96,10 @@ function Hero(){
  return <header className="relative -mt-6 md:-mt-10 pt-10 md:pt-16 pb-6 md:pb-10">
   <div aria-hidden="true" className="hero-grid pointer-events-none absolute inset-y-0 -inset-x-4 md:-inset-x-8"/>
   <div className="relative max-w-4xl">
-   <h1 className="text-[40px] sm:text-6xl lg:text-[76px] font-semibold tracking-[-0.03em] leading-[1.02] [text-wrap:balance] anim-fade-up">Detroit Become Human <span className="text-ink-3">AI benchmark</span></h1>
+   <h1 className="hero-title text-[40px] sm:text-6xl lg:text-[76px] font-semibold tracking-[-0.03em] leading-[1.02] [text-wrap:balance]" aria-label="Detroit Become Human AI benchmark">
+    {['Detroit','Become','Human'].map((w,i)=><React.Fragment key={w}><span className="word" style={{'--i':i}} aria-hidden="true">{w}</span>{' '}</React.Fragment>)}
+    <span className="word accent" style={{'--i':3}} data-text="AI benchmark" aria-hidden="true">AI benchmark</span><span className="caret" aria-hidden="true"/>
+   </h1>
    <p className="mt-5 md:mt-6 max-w-[60ch] text-[15px] md:text-lg leading-relaxed text-ink-2 [text-wrap:pretty] anim-fade-up">This benchmark was created to measure what choices AI models would make if they were the androids in the popular video game Detroit: Become Human.</p>
    <div className="mt-6 flex flex-wrap gap-2.5 anim-fade-up">
     <Button as="a" href="#every-run" onClick={toRuns} variant="primary" icon={Table2}>Runs</Button>
