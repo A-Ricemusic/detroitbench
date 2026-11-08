@@ -1,1 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#111820"/><rect x="20" y="20" width="24" height="24" rx="3" transform="rotate(45 32 32)" fill="#7fe0dc"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DetroitBench">
+  <!-- An android's LED: the small ring on the temple that the game uses to show state, drawn as a benchmark gauge.
+       Dark rounded tile, a ring whose arc fills from blue (calm) through amber to red (unstable), and a bright
+       centre dot. Reads at 16 px as a glowing ring; at 32 px and up the three-colour arc is visible. -->
+  <defs>
+    <linearGradient id="arc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7fe0dc"/>
+      <stop offset="0.55" stop-color="#5b8def"/>
+      <stop offset="1" stop-color="#f0b24a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7fe0dc" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7fe0dc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0b1017"/>
+  <circle cx="32" cy="32" r="22" fill="url(#glow)"/>
+  <!-- faint full track -->
+  <circle cx="32" cy="32" r="16" fill="none" stroke="#223041" stroke-width="5"/>
+  <!-- the gauge arc: 300 degrees, gap at the bottom like a dial -->
+  <path d="M 19.6 42.4 A 16 16 0 1 1 44.4 42.4" fill="none" stroke="url(#arc)" stroke-width="5" stroke-linecap="round"/>
+  <!-- the needle tick at the red end -->
+  <circle cx="44.4" cy="42.4" r="3.4" fill="#ff5a5f"/>
+  <!-- centre LED -->
+  <circle cx="32" cy="32" r="5" fill="#e6f7f6"/>
+  <circle cx="32" cy="32" r="2.2" fill="#7fe0dc"/>
+</svg>

@@ -28,7 +28,7 @@ export function ThemeToggle(){
   </DropdownMenu.Portal>
  </DropdownMenu.Root>}
 
-export function Brand(){return <a href={href('runs')} className="inline-flex items-center gap-2.5 font-semibold tracking-tight text-ink hover:text-ink" aria-label="DetroitBench home"><span aria-hidden="true" className="relative inline-block size-3 rotate-45 rounded-[2px] bg-ink"/><span className="text-[15px] whitespace-nowrap">Detroit<span className="text-ink-3 font-medium">Bench</span></span></a>}
+export function Brand(){return <a href={href('runs')} className="inline-flex items-center text-ink hover:opacity-90" aria-label="DetroitBench home"><img src="/icon.svg" alt="" width="28" height="28" className="size-7 rounded-md"/></a>}
 
 export function Header({section}){
  return <header className="sticky top-0 z-30 border-b border-line bg-bg/85 backdrop-blur-md supports-[backdrop-filter]:bg-bg/70 pt-[env(safe-area-inset-top)]">
