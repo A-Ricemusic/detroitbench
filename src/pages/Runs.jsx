@@ -1,6 +1,6 @@
 import React,{useMemo,useState} from 'react';
 import {FileText,CircleAlert,ArrowUp,ArrowDown,ChevronsUpDown} from 'lucide-react';
-import {Badge,Button,Empty,Notice,PageHeader,Select,Skeleton,TONE_ICON,cx} from '../components/ui.jsx';
+import {Badge,Button,Empty,Notice,PageHeader,Skeleton,TONE_ICON,cx} from '../components/ui.jsx';
 import {OUTCOMES,NumChip} from '../components/Charts.jsx';
 import {ChartFeed} from '../components/RelationshipCharts.jsx';
 import {ModelPicker} from '../components/ModelSidebar.jsx';
@@ -74,12 +74,11 @@ function RunTable({rows,sort,by,nums,colors}){
    </tr>)}</tbody>
   </table>
  </div>}
-// Phones: the same rows as a compact stacked list, with the sort as a menu because the headers are not shown.
-function RunList({rows,sort,by,nums,colors}){
+// Phones and narrow screens: the same rows as a compact stacked list, always in the default order (by model, then
+// reasoning level and run number, as the desktop table opens); the column sorting belongs to the desktop table.
+function RunList({rows,nums,colors}){
  const focus=useModelFocus();
- const options=COLS.flatMap(c=>c.text?[{value:c.key+':asc',label:c.label+', A to Z'}]:[{value:c.key+':desc',label:c.label+(c.ending?', best first':', highest first')},{value:c.key+':asc',label:c.label+(c.ending?', worst first':', lowest first')}]);
  return <div className="lg:hidden grid gap-3">
-  <Select label="Sort by" hideLabel value={sort.key+':'+sort.dir} options={options.some(o=>o.value===sort.key+':'+sort.dir)?options:[{value:sort.key+':'+sort.dir,label:COLS.find(c=>c.key===sort.key).label},...options]} onChange={v=>{const [k,d]=v.split(':');by(k,d)}}/>
   <ul className="divide-y divide-line rounded-2xl border border-line bg-surface shadow-sm" aria-label="Every run">
    {rows.map(r=><li key={r.id} className={cx('grid gap-2 px-4 py-3.5 transition-opacity',focus.dim(r.id)&&'opacity-30')}>
     <div className="flex items-start gap-2.5 min-w-0"><NumChip n={nums[r.displayName]} color={colors[r.displayName]} className="mt-px"/><div className="min-w-0 grow"><a href={href('runs/'+r.id+'/report')} className="link text-left font-semibold leading-snug">{r.displayName}</a><span className="block font-mono text-[11px] text-ink-3">{r.vendor} · {r.model}</span></div></div>
@@ -106,6 +105,7 @@ export default function Runs(){
  const colors=useMemo(()=>runs?modelColors(runs):{},[runs]),nums=useMemo(()=>runs?modelNumbers(runs):{},[runs]);
  const shown=sel.visible,onReset=()=>{setQuery({models:null,'hide-reasoning':null,chart:null});focus.clear()};
  const {rows,sort,by}=useSorted(shown);
+ const byModel=useMemo(()=>[...shown].sort(compareRuns),[shown]);
  if(error)return <><PageHeader title="DetroitBench"/><Notice tone="bad">{error}. <Button size="sm" variant="link" onClick={()=>{retry();document.querySelector('main h1')?.focus()}}>Try again</Button></Notice></>;
  if(!runs)return <><PageHeader title="DetroitBench"/><div className="grid gap-4" aria-busy="true">{Array.from({length:3}).map((_,i)=><Skeleton key={i} className="h-72"/>)}</div><p className="sr-only" role="status">Loading runs…</p></>;
  const empty=!shown.length&&runs.length>0&&<div className="grid place-items-center gap-2 rounded-xl border border-dashed border-line-2 px-4 py-14 text-center"><p className="text-[17px] font-medium">{sel.selected.size?'No reasoning levels enabled':'No models selected'}</p><button type="button" onClick={onReset} className="text-sm text-ink underline underline-offset-4">Reset filters</button></div>;
@@ -116,7 +116,7 @@ export default function Runs(){
    <div className="min-w-0">
     <section id="every-run" aria-labelledby="every-run-h" className="mb-8 md:mb-10">
      <div className="mb-3 flex items-baseline justify-between gap-3"><h2 id="every-run-h" className="text-xl md:text-2xl font-semibold">Runs</h2><p className="cap">{shown.length} of {runs.length} shown · sortable</p></div>
-     {empty||<><RunTable rows={rows} sort={sort} by={by} nums={nums} colors={colors}/><RunList rows={rows} sort={sort} by={by} nums={nums} colors={colors}/></>}
+     {empty||<><RunTable rows={rows} sort={sort} by={by} nums={nums} colors={colors}/><RunList rows={byModel} nums={nums} colors={colors}/></>}
     </section>
     <ChartFeed runs={runs} shown={shown} scales={scales} colors={colors} nums={nums} empty={empty}/>
    </div>

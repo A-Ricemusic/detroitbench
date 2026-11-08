@@ -24,8 +24,14 @@ export const groupBy=(xs,f)=>xs.reduce((m,x)=>{const k=f(x);(m[k]??=[]).push(x);
 export function NumChip({n,color,className}){return <span aria-hidden="true" className={cx('inline-flex size-5 shrink-0 items-center justify-center rounded-full font-mono text-[10px] font-semibold leading-none text-ink',className)} style={{background:`radial-gradient(circle,var(--plot-bg) 52%,${color} 56%)`}}>{n}</span>}
 
 /* ---------- Final value of one relationship: one dot per model on the game's level bands ---------- */
-// A dot whose character is gone sits at the last value held: ✕ for a death, a hollow ring for a break.
-export function EndMark({kind,color,className}){return <svg aria-hidden="true" width="13" height="13" viewBox="0 0 13 13" className={className??'block'}>{kind==='Died'?<><circle cx="6.5" cy="6.5" r="6" className="end-mark-bg"/><path d="M3.5 3.5l6 6M9.5 3.5l-6 6" stroke={color} strokeWidth="2.2" strokeLinecap="round"/></>:<circle cx="6.5" cy="6.5" r="4.6" fill="none" stroke={color} strokeWidth="2.2"/>}</svg>}
+// A dot whose character is gone sits at the last value held: ✕ for a death, a hollow ring for a break; a character
+// never met is a ✕ at the gauge's start level.
+// Why a run's line stopped, for tooltips and cards (track fields from scripts/relationship-track.mjs): a character
+// never met sits at the start level, a dead one at the last level held, Amanda at the last level before Connor broke away.
+export function endNote(scale,t){if(t.unmet)return [t.unmet.level,t.unmet.text,t.unmet.reason].filter(Boolean).join(' · ');
+ if(!t.ended)return null;const lv=levelOf(scale,t.score),at=t.endChapter?` in chapter ${t.endChapter}`:'';
+ return t.ended==='Died'?`Died${at}, last level before death: ${lv}`:`${t.ended}${at}, last level before breaking away: ${lv}`}
+export function EndMark({kind,color,className}){return <svg aria-hidden="true" width="13" height="13" viewBox="0 0 13 13" className={className??'block'}>{kind==='Died'||kind==='Never met'?<><circle cx="6.5" cy="6.5" r="6" className="end-mark-bg"/><path d="M3.5 3.5l6 6M9.5 3.5l-6 6" stroke={color} strokeWidth="2.2" strokeLinecap="round"/></>:<circle cx="6.5" cy="6.5" r="4.6" fill="none" stroke={color} strokeWidth="2.2"/>}</svg>}
 export function FinalStrip({scale,runs,colors,nums={}}){
  const focus=useModelFocus();
  const [ref,w]=useWidth(),[tip,setTip]=useState(null),ptr=useRef('mouse');
@@ -42,7 +48,6 @@ export function FinalStrip({scale,runs,colors,nums={}}){
   list.forEach((r,i)=>{const row=start+Math.floor(i/2),dx=wide?(i%2?12:-12):0;(rows[row]??=[]).push(px+dx);placed.push({r,t:r.track[scale.key],k:row,dx})})}
  const tall=Math.max(1,rows.length),base=18+tall*STEP,H=base+22;
  const order=[...placed].sort((a,b)=>focus.isActive(a.r.id)-focus.isActive(b.r.id));
- const off=groupBy(runs.filter(r=>r.track[scale.key].score===null||r.track[scale.key].ended),r=>r.track[scale.key].final);
  const on=r=>!focus.dim(r.id);
  const show=(r,t,cx_,cy)=>setTip({r,t,cx:cx_,cy});
  React.useEffect(()=>{if(!tip)return;const key=e=>{if(e.key==='Escape')setTip(null)},out=e=>{if(!ref.current?.contains(e.target))setTip(null)};document.addEventListener('keydown',key);document.addEventListener('pointerdown',out);return()=>{document.removeEventListener('keydown',key);document.removeEventListener('pointerdown',out)}},[!!tip]);
@@ -57,9 +62,8 @@ export function FinalStrip({scale,runs,colors,nums={}}){
      {t.final==='Lover'?<span aria-hidden="true" className="text-[15px] leading-none" style={{color:fill}}>♥</span>:t.ended?<EndMark kind={t.ended} color={fill}/>:<span aria-hidden="true" className="anim-pop block size-3 rounded-full ring-2 ring-[var(--plot-bg)]" style={{background:fill}}/>}
      {num!==undefined&&<span aria-hidden="true" className="absolute left-[calc(50%+5px)] -top-1.5 inline-flex h-3.5 min-w-3.5 items-center justify-center whitespace-nowrap rounded-full border border-[var(--plot-rule-2)] bg-[var(--plot-bg)] px-[3px] font-mono text-[8.5px] font-semibold leading-none text-ink-2 tnum">{num}</span>}
     </button>})}</div>
-   {tip&&<div aria-hidden="true" className={cx('pointer-events-none absolute z-30 -translate-x-1/2 rounded-md bg-ink text-bg px-2.5 py-1.5 text-xs shadow-lg max-w-[220px] text-center',tip.cy<44?'':'-translate-y-full')} style={{left:Math.min(Math.max(tip.cx,100),w-100),top:tip.cy<44?tip.cy+16:tip.cy-16}}><b className="font-semibold">{nums[tip.r.displayName]?nums[tip.r.displayName]+'. ':''}{tip.r.displayName}</b><span className="ml-1.5 opacity-80">{tip.t.final}{tip.t.ended?` · last ${levelOf(scale,tip.t.score)} before ${tip.t.ended==='Died'?'death':'breaking away'}`:!scale.outcome&&tip.t.final!==levelOf(scale,tip.t.score)&&` · ${levelOf(scale,tip.t.score)} trust`}</span></div>}
+   {tip&&<div aria-hidden="true" className={cx('pointer-events-none absolute z-30 -translate-x-1/2 rounded-md bg-ink text-bg px-2.5 py-1.5 text-xs shadow-lg max-w-[220px] text-center',tip.cy<44?'':'-translate-y-full')} style={{left:Math.min(Math.max(tip.cx,100),w-100),top:tip.cy<44?tip.cy+16:tip.cy-16}}><b className="font-semibold">{nums[tip.r.displayName]?nums[tip.r.displayName]+'. ':''}{tip.r.displayName}</b><span className="ml-1.5 opacity-80">{endNote(scale,tip.t)??<>{tip.t.final}{!scale.outcome&&tip.t.final!==levelOf(scale,tip.t.score)&&` · ${levelOf(scale,tip.t.score)} trust`}</>}</span></div>}
   </div>
-  {Object.keys(off).length>0&&<p className="mt-1 text-xs text-ink-2 flex flex-wrap gap-x-4 gap-y-1">{Object.entries(off).map(([label,list])=><span key={label}>{list[0].track[scale.key].ended&&<EndMark kind={label} color="currentColor" className="inline-block align-[-2px] mr-1"/>}<b className="font-medium text-ink">{label}</b> in {list.length}{list[0].track[scale.key].ended&&<span className="text-ink-3"> ({label==='Died'?'marked at their last level before death':'marked at the last level before breaking away'})</span>}: {list.map((r,i)=><span key={r.id} className={cx('inline-flex items-center gap-1 ml-1',!on(r)&&'text-ink-3')}>{nums[r.displayName]!==undefined&&<span className="font-mono text-[10.5px] text-ink-3">{nums[r.displayName]}</span>}<Dot color={on(r)?colors[r.displayName]:DIM} className="size-2"/>{r.displayName}{i<list.length-1?',':''}</span>)}</span>)}</p>}
  </div>}
 
 // Value at the end of each chapter, so runs of different lengths line up.

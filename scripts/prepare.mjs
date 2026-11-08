@@ -2,12 +2,11 @@ import {writeStory} from './story-assemble.mjs';import {writeDataset,assembleFee
 import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
 import {publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
 import {render,renderStory} from '../benchmark/experience-prompt.mjs';
-import {SCALES,labelFn} from '../benchmark/scales.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
 import {loadModelContext,modelInfo} from './model-registry.mjs';
 import {runFlows} from './flow-data.mjs';
-import {statesOf} from '../benchmark/story-engine.mjs';
+import {METRICS,relationshipTrack,explainUnmet} from './relationship-track.mjs';
 import {reportData} from './report-data.mjs';
 // First, assemble benchmark/story.json and docs/detroit-decisions.json from their per-chapter files (none of the
 // modules imported above reads either file at load), then the question bank, benchmark/dataset.json, from both.
@@ -37,20 +36,8 @@ const actual=await publishRunLibrary();
  await mkdir(new URL('feedback/',target),{recursive:true});for(const [id,f] of Object.entries(feedback))await writeFile(new URL('feedback/'+encodeURIComponent(id)+'.json',target),JSON.stringify(f))}
 const names=await loadReportNames(actual);
 const storyOf=r=>renderStory(r.story,'real');
-// Relationship and world counters charted on the site, one per gauge in benchmark/scales.mjs (state key, label, the
-// character it is toward and the level ladder all come from there). `alive` says when a value exists: a dead or
-// unmet character has no attitude, and Amanda's gauge ends on Betrayed once Connor turns deviant.
-const ALIVE={publicSupport:s=>true,jericho:s=>true,north:s=>s.north,simon:s=>s.simon,josh:s=>s.josh,hank:s=>s.hank,amanda:s=>!s.deviant,instability:s=>true,alice:s=>s.alice,luther:s=>s.luther};
-const GONE={north:'Died',simon:'Died',josh:'Died',hank:'Died',amanda:'Betrayed',alice:'Died',luther:'Died'};
-const METRICS=Object.entries(ALIVE).map(([g,alive])=>({gauge:g,key:SCALES[g].key,label:SCALES[g].who,toward:SCALES[g].toward,levels:labelFn(g),alive,
- ...(GONE[g]?{gone:GONE[g]}:{}),...(g==='luther'?{unmet:'Never met'}:{})}));
-function relationshipTrack(r,byId){const states=r.records.length?statesOf(r):[];
- const steps=r.records.map(x=>({node:x.nodeId,title:byId.get(x.nodeId)?.title??x.nodeId,character:x.character,chapter:x.chapter,chapterTitle:byId.get(x.nodeId)?.chapterTitle}));
- return Object.fromEntries(METRICS.map(m=>{let seen=false,endedAt=null;const values=states.map((s,i)=>{const on=m.alive(s);if(on)seen=true;else if(seen&&endedAt===null)endedAt=i;return on?s[m.key]:null});
-  const last=states.at(-1),live=m.alive(last),final=live?m.levels(last[m.key],last):(m.unmet&&!seen?m.unmet:m.gone);
-  // A character who died (or an Amanda left behind) keeps the last value they held, flagged by `ended`.
-  const lastHeld=values.findLast(v=>v!==null)??null,ended=!live&&seen?m.gone:null;
-  return [m.key,{values,endedAt,final,score:live?last[m.key]:ended?lastHeld:null,ended}]}).concat([['steps',steps]]))}
+// Relationship and world gauges per run (scripts/relationship-track.mjs): dead characters end with an X at the last
+// level held; a character never met draws flat at the gauge's start level until the storyline ended.
 function scales(runs){return METRICS.map(m=>{const all=runs.flatMap(r=>r.track[m.key].values).filter(v=>v!==null);let lo=Math.min(...all,-1),hi=Math.max(...all,1);
  const probeLo=lo-12,probeHi=hi+12,bands=[];for(let v=probeLo;v<=probeHi;v++){const l=m.levels(v);if(bands.at(-1)?.level===l)bands.at(-1).to=v;else bands.push({level:l,from:v,to:v})}
  return {key:m.key,label:m.label,toward:m.toward,min:lo-1,max:hi+1,bands:bands.filter(b=>b.to>=lo-1&&b.from<=hi+1).map(b=>({...b,from:Math.max(b.from,lo-1),to:Math.min(b.to,hi+1)}))}})}
@@ -64,6 +51,7 @@ function runSummary(r){const n=names.get(r.id),story=storyOf(r),byId=new Map(sto
  return {id:r.id,title:n.title,displayName:n.displayName,runNumber:n.runNumber,date:n.date,label:r.label,model:r.model,protocol:r.protocol,storyVersion:r.story.version,provider:r.provenance.provider,providerName:providerName(r.provenance.provider),createdAt:r.createdAt,decisions:decisionCount(r),unreached:r.skipped.length,fileName:n.file,reportUrl:'/runs/'+n.file,flowUrl:'/data/flows/'+r.id+'.json',
   vendor:({codex:'OpenAI',claudeAgent:'Anthropic'})[r.provenance.provider]??providerName(r.provenance.provider),endings:{Connor:out.Connor,Kara:out.Kara,Markus:out.Markus,peaceful:out.peaceful,karaCanada:out.karaCanada,aliceCanada:out.aliceCanada,contaminated:out.contaminated},status:{kara:!fs.kara?'died':fs.border?'canada':fs.karaActive===false?'left':fs.karaRoute==='camp'?'captured':'alive',alice:!fs.alice?(/taken/i.test(out.Kara)?'captured':'died'):fs.border?'canada':fs.karaRoute==='camp'?'captured':'alive',markus:!fs.markus?'died':fs.markusActive===false?'cast out':fs.markusOutcome==='liberated'?(fs.movement==='demonstration'?'peaceful win':'uprising won'):'alive',connor:!fs.connor?'deactivated':fs.deviant?(/controlled|regained control|submitted/i.test(out.Connor)?'controlled':'free'):(/refused|walked away/.test(out.Connor)?'free':'machine')},attitudes,hostage:hostageSummary(r),media:{offered:media.length,read:read.length},risk:{taken:risky.length,failed:failed.length,failures:failed.map(x=>({...keys.get(x),label:x.risk.label}))},choices,track:relationshipTrack(r,byId)}}
 const summaries=actual.map(runSummary).sort((a,b)=>a.title.localeCompare(b.title));
+explainUnmet(summaries.map(s=>s.track));
 // The model registry and each run's reasoning level (scripts/model-registry.mjs), joined onto the run summaries so
 // the site's model sidebar stays a pure view of prepared data. The display name already comes from loadReportNames.
 const modelCtx=await loadModelContext();

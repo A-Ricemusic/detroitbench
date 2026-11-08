@@ -1,7 +1,7 @@
 import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {X} from 'lucide-react';
 import {cx,Dot,Select,useMediaQuery} from './ui.jsx';
-import {ABBR,BROKE,DIM,FinalStrip,chapterSeries,groupBy,levelOf,useWidth} from './Charts.jsx';
+import {ABBR,BROKE,DIM,FinalStrip,chapterSeries,endNote,groupBy,levelOf,useWidth} from './Charts.jsx';
 import {EndingCard,CARDS} from './EndingCharts.jsx';
 import {CHAR_VAR,compareRuns,runLabel,tidy} from '../lib/data.js';
 import {useModelFocus} from '../lib/modelFocus.jsx';
@@ -36,15 +36,18 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
  // Coincident lines sit a few pixels apart so a shared path still shows how many runs are on it.
  const dodge=useMemo(()=>{const at={};for(const c of chs){const same={};for(const s of series){const p=s.pts.find(p=>p.c===c);if(!p||p.v===null)continue;(same[p.v]??=[]).push(s.r.id)}for(const ids of Object.values(same)){const d=ids.length>1?Math.min(2,12/(ids.length-1)):0;ids.forEach((id,i)=>{(at[id]??={})[c]=(i-(ids.length-1)/2)*d})}}return (id,c)=>at[id]?.[c]??0},[series,chs]);
  // Points only where the value changed during the chapter, plus the last one, so 33 chapters do not bury the line.
- const points=useMemo(()=>series.flatMap(s=>{const out=[];let prev=null;const live=s.pts.filter(p=>p.v!==null);live.forEach((p,i)=>{if(i===live.length-1||(prev!==null&&p.v!==prev))out.push({s,c:p.c,v:p.v,d:prev===null?null:p.v-prev,key:s.r.id+':'+p.c});prev=p.v});return out}),[series]);
+ const points=useMemo(()=>series.flatMap(s=>{const out=[];let prev=null;const live=s.pts.filter(p=>p.v!==null);live.forEach((p,i)=>{if(i===live.length-1||(prev!==null&&p.v!==prev))out.push({s,c:p.c,v:p.v,d:prev===null?null:p.v-prev,key:s.r.id+':'+p.c});prev=p.v});if(out.length)s.lastKey=out.at(-1).key;return out}),[series]);
  const px=p=>x(p.c),py=p=>y(p.v)+dodge(p.s.r.id,p.c);
  const step=[1,2,5,10].find(s=>(x1-x0)/xMax*s>=100)??10,ticks=[0,...Array.from({length:Math.floor(xMax/step)},(_,i)=>(i+1)*step).filter(c=>(xMax-c)/xMax*(x1-x0)>=60),xMax];
- // Right-end labels: one per run at its last value, at least 24px apart, shifted up if they would run off the plot.
+ // Right-end labels: one per run at its last value, shifted up if they would run off the plot. They sit 24px apart,
+ // closer (down to 15px, in a smaller type) when that is what it takes to name every run in the plot's height.
  const labels=useMemo(()=>{if(compact)return [];const items=series.map(s=>{const last=[...s.pts].reverse().find(p=>p.v!==null);return last&&{s,ax:x(last.c),ay:y(last.v)+dodge(s.r.id,last.c)}}).filter(Boolean).sort((a,b)=>a.ay-b.ay);
-  let prev=top-24;for(const it of items){it.ly=Math.max(it.ay,prev+24);prev=it.ly}const over=items.length?items.at(-1).ly-y0:0;if(over>0)for(const it of items)it.ly-=over;
+  const G=Math.max(15,Math.min(24,(y0-top)/Math.max(1,items.length-1)));
+  let prev=top-G;for(const it of items){it.ly=Math.max(it.ay,prev+G);prev=it.ly}const over=items.length?items.at(-1).ly-y0:0;if(over>0)for(const it of items)it.ly-=over;
   // More labels than the plot height holds: pack them from the top; the cap below keeps the first ones.
-  if(items.length&&items[0].ly<top)items.forEach((it,i)=>{it.ly=top+i*24});
-  return items.slice(0,Math.min(16,Math.floor((y0-top-30)/24)+1))},[series,compact,W,H,scale.key,dodge]);
+  if(items.length&&items[0].ly<top)items.forEach((it,i)=>{it.ly=top+i*G});
+  const out=items.slice(0,Math.floor((y0-top)/G)+1);out.gap=G;return out},[series,compact,W,H,scale.key,dodge]);
+ const lg=labels.gap??24,small=lg<20;
  const active=focus.active,groupOp=s=>active&&!active.has(s.r.id)?0.15:1,isHl=s=>!!active?.has(s.r.id);
  useEffect(()=>{const f=e=>{if(e.key==='Escape'&&!document.querySelector('[role=dialog]')){setPin(null);setHot(null)}};addEventListener('keydown',f);return()=>removeEventListener('keydown',f)},[]);
  useEffect(()=>{setPin(null);setHot(null)},[scale.key,runs]);
@@ -84,11 +87,11 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
       onPointerEnter={()=>setHot(p.key)} onPointerLeave={()=>setHot(null)} onFocus={()=>setHot(p.key)} onBlur={()=>setHot(null)}>{dot}</a>})}
     {labels.map(l=>{const s=l.s,col=colors[s.r.displayName]??DIM,n=nums[s.r.displayName],pinned=focus.pins.has(s.r.id);
      return <a key={s.r.id} href={href('runs/'+s.r.id+'/report')} aria-label={`${s.r.displayName}: open the full report`} className="cursor-pointer outline-none [&:hover_.lbl-name]:underline [&:focus-visible_.lbl-name]:underline" style={{opacity:active&&!active.has(s.r.id)?0.4:1}}
-      onPointerEnter={()=>focus.setHover(s.r.id)} onPointerLeave={()=>focus.setHover(null)} onFocus={()=>focus.setHover(s.r.id)} onBlur={()=>focus.setHover(null)}>
+      onPointerEnter={()=>{focus.setHover(s.r.id);setHot(s.lastKey??null)}} onPointerLeave={()=>{focus.setHover(null);setHot(null)}} onFocus={()=>{focus.setHover(s.r.id);setHot(s.lastKey??null)}} onBlur={()=>{focus.setHover(null);setHot(null)}}>
       <path d={`M${l.ax+6},${l.ay}L${x1+18},${l.ly}L${x1+20},${l.ly}`} fill="none" stroke={col} strokeWidth=".75" opacity=".22" pointerEvents="none"/>
-      <rect x={x1+20} y={l.ly-12} width={Math.max(0,W-x1-20)} height="24" fill="transparent"/>
-      <circle cx={x1+31} cy={l.ly} r="8" className="num-badge" style={{stroke:col}}/><text x={x1+31} y={l.ly} textAnchor="middle" dominantBaseline="central" className="num-text">{n}</text>
-      <text x={x1+46} y={l.ly} dominantBaseline="central" className="lbl-name" style={{fill:'var(--ink)',fontSize:13,fontWeight:pinned?700:550}}>{name(s.r)}</text>
+      <rect x={x1+20} y={l.ly-lg/2} width={Math.max(0,W-x1-20)} height={lg} fill="transparent"/>
+      <circle cx={x1+31} cy={l.ly} r={small?6.5:8} className="num-badge" style={{stroke:col}}/><text x={x1+31} y={l.ly} textAnchor="middle" dominantBaseline="central" className="num-text" style={small?{fontSize:8.5}:undefined}>{n}</text>
+      <text x={x1+46} y={l.ly} dominantBaseline="central" className="lbl-name" style={{fill:'var(--ink)',fontSize:small?11.5:13,fontWeight:pinned?700:550}}>{name(s.r)}</text>
      </a>})}
    </svg>
    {!compact&&card&&<div className="pointer-events-none absolute right-2 bottom-[72px] z-20">{card}</div>}
@@ -103,14 +106,15 @@ function Card({p,pinned,scale,colors,nums,name,titles,onClose,compact}){
  const ch=p=>p.c===0?'Start':`Chapter ${p.c} · ${titles[p.c]??''}`;
  const close=pinned&&<button type="button" aria-label="Close details" onClick={onClose} className="pointer-events-auto -mr-1.5 -mt-1 inline-flex size-7 shrink-0 items-center justify-center rounded text-ink-3 hover:text-ink"><X aria-hidden="true" className="size-4"/></button>;
  const box=cx('rounded-lg border border-line-2 bg-surface px-4 py-3.5 text-left shadow-lg',compact?'w-full':'w-[272px]');
- const decision=changeIn(p.s.r,scale.key,p.c);
+ const t=p.s.r.track[scale.key],unmet=!!t.unmet,last=p.key===p.s.lastKey,note=(unmet||last&&t.ended)?endNote(scale,t):null,decision=unmet?null:changeIn(p.s.r,scale.key,p.c);
  return <div role="status" className={cx(box,pinned&&'pointer-events-auto')}>
   <div className="flex items-start justify-between gap-3">{head(p)}{close}</div>
   <p className="mt-0.5 text-[11.5px] text-ink-2">{ch(p)}{pinned?' · Pinned':''}</p>
   <dl className={cx('mt-2.5 grid gap-x-4 gap-y-1 text-xs',compact?'grid-cols-2':'grid-cols-[auto_minmax(0,1fr)]')}>
    <dt className="whitespace-nowrap text-ink-2">Level</dt><dd className="whitespace-nowrap text-right font-medium text-ink">{levelOf(scale,p.v)}</dd>
-   <dt className="whitespace-nowrap text-ink-2">Points</dt><dd className="whitespace-nowrap text-right font-medium text-ink tnum">{p.v>0?'+':''}{p.v}</dd>
-   <dt className="whitespace-nowrap text-ink-2">Change this chapter</dt><dd className="whitespace-nowrap text-right font-medium text-ink tnum">{p.d===null?'—':signed(p.d)}</dd>
+   {!unmet&&<><dt className="whitespace-nowrap text-ink-2">Points</dt><dd className="whitespace-nowrap text-right font-medium text-ink tnum">{p.v>0?'+':''}{p.v}</dd>
+   <dt className="whitespace-nowrap text-ink-2">Change this chapter</dt><dd className="whitespace-nowrap text-right font-medium text-ink tnum">{p.d===null?'—':signed(p.d)}</dd></>}
+   {note&&<dd className="col-span-2 mt-1 text-ink [text-wrap:pretty]">{unmet?[t.unmet.text,t.unmet.reason].filter(Boolean).join('. ')+'.':note+'.'}</dd>}
    {decision&&<><dt className="col-span-2 mt-1 text-ink-2">Decision</dt><dd className="col-span-2 text-ink [text-wrap:pretty]">{decision}</dd></>}
   </dl>
   {pinned?<a href={href('runs/'+p.s.r.id+'/report')} className="mt-2.5 inline-block text-[11.5px] text-ink underline underline-offset-2">Open report</a>:<p className="mt-2.5 text-[11.5px] text-ink-3">Click to open the full report</p>}
