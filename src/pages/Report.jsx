@@ -96,7 +96,7 @@ function NodePanel({d,entries,sel}){
 const JUMPS=[['ending','Ending'],['recognition','Recognition'],['interview','Interview'],['flowchart','Flowchart']];
 function JumpNav({runId}){
  const go=id=>{const el=document.getElementById(id);if(!el)return;el.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});const h=el.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}};
- return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8 overflow-x-auto no-scrollbar"><ul className="flex gap-2 px-4 md:px-0 min-w-max">{JUMPS.map(([id,label])=><li key={id}><button type="button" onClick={()=>id==='interview'?location.hash=href('runs/'+runId+'/interview'):go(id)} className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2">{label}</button></li>)}</ul></nav>}
+ return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8"><ul className="flex flex-wrap gap-2 px-4 md:px-0">{JUMPS.map(([id,label])=><li key={id}><button type="button" onClick={()=>id==='interview'?location.hash=href('runs/'+runId+'/interview'):go(id)} className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2">{label}</button></li>)}</ul></nav>}
 
 /* ---------- Page ---------- */
 export default function Report({id,chapter}){
