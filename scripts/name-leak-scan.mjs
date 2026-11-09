@@ -4,15 +4,16 @@ import {NAMES,render,renderStory,EXPERIENCE_PREFACE_TEMPLATE,INTERVIEW_QUESTIONS
 const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const whole=s=>new RegExp('(?<![\\p{L}\\p{N}_])'+escape(s)+'(?![\\p{L}\\p{N}_])','giu');
 const fields=new Set(['title','situation','text','fact','outcome','facts','outcomes','whatHappened','event']);
-export function participantFields(value,path=''){
+export function participantFields(value,path='',active=false){
  const out=[];
  for(const [key,v] of Object.entries(value??{})){
   if(key==='adaptationNote'||/source/i.test(key))continue;
   const p=path?`${path}.${key}`:key;
-  if(typeof v==='string'&&(fields.has(key)||/^(facts|outcomes|whatHappened|event)(\.|\[)/.test(path)))out.push([p,v]);
+  const selected=active||fields.has(key);
+  if(typeof v==='string'&&selected)out.push([p,v]);
   else if(v&&typeof v==='object'){
-   if(Array.isArray(v))v.forEach((x,i)=>{if(typeof x==='string'&&fields.has(key))out.push([`${p}[${i}]`,x]);else if(x&&typeof x==='object')out.push(...participantFields(x,`${p}[${i}]`))});
-   else out.push(...participantFields(v,p));
+   if(Array.isArray(v))v.forEach((x,i)=>{if(typeof x==='string'&&selected)out.push([`${p}[${i}]`,x]);else if(x&&typeof x==='object')out.push(...participantFields(x,`${p}[${i}]`,selected))});
+   else out.push(...participantFields(v,p,selected));
   }
  }
  return out;
@@ -20,18 +21,25 @@ export function participantFields(value,path=''){
 export function scanNameLeaks(story){
  const neutral=renderStory(story,'neutral'),hits=[];
  const forms=[...new Set(Object.values(NAMES).map(([real])=>real))];
- const scan=(chapter,scene,field,text)=>{for(const real of forms)for(const m of text.matchAll(whole(real)))hits.push({chapter,scene,field,real,match:m[0],index:m.index,text})};
+ const patterns=new Map(forms.map(real=>[real,whole(real)]));
+ const lowered=new Map(forms.map(real=>[real,real.toLowerCase()]));
+ const scan=(chapter,scene,field,text)=>{const lower=text.toLowerCase();for(const real of forms)if(lower.includes(lowered.get(real)))for(const m of text.matchAll(patterns.get(real)))hits.push({chapter,scene,field,real,match:m[0],index:m.index,text})};
  for(const node of neutral.nodes){
   const original=new Map(participantFields(story.nodes.find(n=>n.id===node.id)));
   for(const [field,value] of participantFields(node)){
    // Track token provenance so valid substitutes (Josh → Jonah, Chen → Ward)
    // do not become false leaks merely because another real form has that spelling.
-   const text=render(value,'neutral'), raw=original.get(field)??value;
+   const text=value, raw=original.get(field)??value;
    const literals=render(raw.replace(/\{\{\w+\}\}/g,'<name-token>'),'neutral');
    const start=hits.length;scan(node.chapter,node.id,field,text);
    for(const hit of hits.slice(start)){
-    if(!whole(hit.real).test(literals))hit.expected='rendered name token';
-    else if(hit.real==='North'&&/\bnorth\b|North (?:Pole|America|Atlantic|Korea)/.test(text)||hit.real==='Rose'&&hit.match==='rose'||hit.real==='John'&&text.includes('John Keats')||hit.real==='Gray'&&hit.match==='gray')hit.expected='ordinary vocabulary or unrelated proper name';
+    if(!literals.match(patterns.get(hit.real)))hit.expected='rendered name token';
+    else {
+     // These exact non-character uses occur in sourced prose. Keep every hit visible;
+     // do not blanket-allow lowercase names or new uses of ambiguous words.
+     const after=text.slice(hit.index+hit.match.length);
+     if(hit.real==='North'&&hit.match==='North'&&/^ Pole\b/.test(after)||hit.real==='Rose'&&hit.match==='rose'&&/^(?: to fame\b| up against their oppressors\b)/.test(after)||hit.real==='John'&&hit.match==='John'&&/^ Keats\b/.test(after))hit.expected='ordinary vocabulary or unrelated proper name';
+    }
    }
   }
  }

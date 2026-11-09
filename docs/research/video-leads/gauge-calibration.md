@@ -1,197 +1,329 @@
-# Gauge calibration · partial evidence pass · 2026-11-09
+# Gauge calibration · continuous-video measurement pass · 2026-11-09
 
-**Result: no new numeric band width or large-arrow magnitude established.** Fresh footage acquisition was blocked by YouTube's anonymous-access check. This report distinguishes inherited operator measurements, re-inspected repository frames, and uninspected video leads. It is not a completed continuous-playthrough measurement. No benchmark files, tests, CONFLICTS.md or SOURCES.md were edited; no commit was made.
+**Result: new continuous-run arrow counts establish model-implied local bands: Hank Warm 4; Alice Neutral 1, Warm 3, Trusted 4; Luther Close 1; public-opinion Skeptical 2.** They do not establish one uniform width for every band. Josh’s first Friend boundary is +5 from its initial state; Jericho’s first Respected boundary is +3. North remains Neutral after +2, Simon after +1. Large-event magnitudes mostly remain coupled to unknown widths, offsets or overshoot. Exact conditional results and confidence are below. No scales, benchmark, tests, CONFLICTS.md or SOURCES.md were edited; no subagents or commits were made.
 
 ## Acquisition and evidence provenance
 
-Read: `benchmark/scales.mjs` including M1–M4/H1–H10; SOURCES.md §13 and reliability log; all current operator journal files; the attitude/threshold classification in `ending-conflicts-A.md`; corresponding current CONFLICTS entries. Several classified items are now settled in the working copy; this pass does not reopen or close them.
+The anonymous YouTube verification **succeeded** on CRUMOG `fGkxdQi8ZcA`. No login, cookies or alternate authenticated client was used; the refusal/two-minute retry contingency was not needed. All fresh measurements below use this **one source run**, not a mixture of uploaders or GOOD/BAD routes. The earlier access failures and inherited frame manifest remain historical evidence, not this pass’s acquisition result.
 
-Anonymous `yt-dlp` 2026.10.26 failed on `MiaA8LQ0vOQ`, `Ou2K8Ml25Tc`, `gZQ693-umPU`, and `NRksvei25DI`. The first attempt requested metadata; subsequent attempts requested only short video sections with `-f 'bv*[height<=720]'`. Retrying the first video with `youtube:player_client=android,web_embedded` also failed. Error: **“Sign in to confirm you’re not a bot.”** No cookies, login, or authentication were used. No new video segment was acquired and no new frame was extracted. Logs are in [access-logs](../video-evidence/gauges/access-logs/).
+Downloaded 21 complete chapter windows (the named leads plus intervening Connor chapters, The Hostage, Jericho and Zlatko), one download at a time, using `yt-dlp --download-sections -f "bv*[height<=720]"`. Format 398 is 1280×720 AV1, 60 fps. Partners and Interrogation initially transferred slowly; bounded HTTP requests made later sections fast without changing their content or resolution. Raw MP4s remain outside the repository under `/tmp/gauge-calibration/`.
 
-The frames below were opened and visually re-inspected from the existing repository, then copied byte-for-byte to the requested gauge directories. Some inherited PNGs are multi-frame composites, not single frames; their component timestamps come from the earlier reading, not fresh extraction. [manifest.json](../video-evidence/gauges/manifest.json) records original paths and SHA-256 checksums. Unknown history, difficulty and intervening arrows remain unknown.
+[Resumed manifest](../video-evidence/gauges/resumed-manifest.json) records source metadata, requested windows, actual durations, video hashes, frame counts and selected-frame hashes. [Observation JSON](../video-evidence/gauges/continuous-run-observations.json) records the same fresh sequence rows as the tables below. [OCR scan transcripts](../video-evidence/gauges/continuous-run-scans/) cover every chapter window; OCR located candidate popups, and the selected glyphs and labels were visually inspected. Retained evidence is cropped HUD frames plus selected full/status frames. The original 1-fps working frames remain in `/tmp/gauge-calibration/<chapter>/`.
+
+**Difficulty:** not shown. The source opening visibly selects [Start a new story](../video-evidence/gauges/hank/fGkxdQi8ZcA-00-00-20-new-story.png) on an existing profile; it does not show a difficulty selector. PC/controller button labels do not establish Experienced. **Reloads:** no checkpoint reload was observed in the sampled chapter windows. Chapter-end flowcharts/loading and normal camera cuts occur. This is uploaded footage, so “none observed” is not proof of an unedited recording or independently authenticated save history.
+
+**Timing:** source-clock times are approximate within one second; segment-relative times are independent and given in each row. A 1-fps frame numbered `n` is indexed at relative `n−1` seconds. Fragmented section outputs can include a fraction of a second of leading material. Supplemental 4-fps checks covered A New Home relative 08:00–08:40 (yard choices), Fugitives 18:23–18:36 (two successive bed popups), and Midnight Train 18:37–18:43 (Luther’s small-up/Trusted reveal). No missing arrow was imputed from the benchmark implementation.
 
 ## Measurement rule
 
-One small arrow is the reference unit, not proof of the game's internal numeric implementation. Counting net small arrows between **adjacent, observed upward crossings** measures the intervening band only when the complete interval is watched, no reload occurs, and all changes are counted. A first or last chapter label alone supplies inequalities. A popup badge can also be an initial display, so badge presence alone does not prove a crossing; badge absence does not prove no crossing. Terminal bands, caps, hidden updates and nonuniform widths must be considered separately.
+One small arrow is the reference unit, **not an extracted internal game number**. Count net small arrows between adjacent, observed crossings on the same history, retaining every intervening chapter that can change the gauge. Initial chapter-status badges and path-unlocked badges are status reads, not additional arrows. Badge absence alone is not a non-crossing measurement; independent later status reads are used where needed.
 
-With large events in an interval, the equation is `band width = net small arrows + sum(signed event magnitudes)`. One unknown width and one unknown large magnitude cannot generally be identified from one interval. Large magnitudes must be indexed by event; Hank's spill and purchase need not agree. All computed bounds below assume accurate small-arrow counts and the stated band model.
+For crossings made by a small arrow, the model lands exactly on the band edge. Two successive upward crossings therefore give the intervening band width as the net small count; two successive downward crossings work likewise. A reversal below a level and a later recrossing restart the measurement interval. All results assume constant unit-small updates, additive bands, no hidden updates/reload, and the recorded history. Nonuniform local results may require nonuniform bands **or** revisiting those assumptions; they are not permission to invent hidden deltas.
+
+With large events, keep each event a separate signed unknown. The simple equation `width = net small + sum(signed large magnitudes)` requires known edge landings. A large arrow can overshoot a boundary: in general also retain the difference in entering/leaving overshoot, or use inequalities. A filled glyph is not proof of ±2, or even an independently calibrated lower bound of 2. Terminal bands/caps cannot identify magnitude from an unchanged top-level label.
 
 ## Long-play leads for a resumed pass
 
-These are **search-discovered candidates, not visually verified continuous runs**. Chapter timestamps are uploader description markers. HUD legibility, unedited continuity, difficulty, chapter-end headers and absence of checkpoint reloads still need verification. “Best ending” is not a difficulty setting.
+- **Acquired and inspected:** [CRUMOG, full game / best outcomes, PC, fGkxdQi8ZcA](https://www.youtube.com/watch?v=fGkxdQi8ZcA). All fresh rows below belong to its chronological New Story run.
+- **Not acquired in this resumed pass:** [GamingIsFun, Platinum walkthrough, NRksvei25DI](https://www.youtube.com/watch?v=NRksvei25DI). Its GOOD, BAD and cleanup routes must remain separate; the Pirates’ Cove marker still requires manual checking.
+- Additional earlier probes [MiaA8LQ0vOQ](https://www.youtube.com/watch?v=MiaA8LQ0vOQ) and [Ou2K8Ml25Tc](https://www.youtube.com/watch?v=Ou2K8Ml25Tc) were not needed. No fresh visual claims are made for them.
 
-- [CRUMOG, full game / best outcomes, PC, fGkxdQi8ZcA](https://www.youtube.com/watch?v=fGkxdQi8ZcA). Description gives one chronological chapter sequence, useful as a possible common history for all gauges.
-- [GamingIsFun, Platinum walkthrough, NRksvei25DI](https://www.youtube.com/watch?v=NRksvei25DI). Description has separate GOOD and BAD playthroughs plus cleanup. Never concatenate these as one run. Its Pirates' Cove marker is inconsistent with neighboring chapters; seek manually there.
-- [Full-game longplay, MiaA8LQ0vOQ](https://www.youtube.com/watch?v=MiaA8LQ0vOQ) and [full gameplay, Ou2K8Ml25Tc](https://www.youtube.com/watch?v=Ou2K8Ml25Tc) were additional access probes. No visual claims are made for either.
-
-Reproduction template, using the CRUMOG Partners window (download outside repository; frames only in evidence directory):
+Working reproduction command (substitute the manifest’s chapter window and output name):
 
 ```sh
-/opt/homebrew/bin/yt-dlp --no-playlist --download-sections '*01:08:27-01:30:05' \
-  -f 'bv*[height<=720]' -o '/tmp/gauge-calibration/fGkxdQi8ZcA-partners.%(ext)s' \
+/opt/homebrew/bin/yt-dlp --no-playlist \
+  --download-sections '*02:26:04-02:44:28' -f 'bv*[height<=720]' \
+  --downloader-args 'ffmpeg_i:-request_size 10485760 -initial_request_size 1048576 -multiple_requests 1' \
+  --downloader-args 'ffmpeg_o:-movflags +frag_keyframe+empty_moov' \
+  -o '/tmp/gauge-calibration/fGkxdQi8ZcA-waiting.mp4' \
   'https://www.youtube.com/watch?v=fGkxdQi8ZcA'
+/opt/homebrew/bin/ffmpeg -threads 2 \
+  -i /tmp/gauge-calibration/fGkxdQi8ZcA-waiting.mp4 \
+  -vf 'fps=1,crop=500:260:780:0' -q:v 2 '/tmp/gauge-calibration/waiting/%05d.jpg'
 ```
 
-Download a full interaction interval where missed popups would invalidate counting; then extract each observed popup onset and settled level reveal with ffmpeg. Preserve source-clock timestamps and segment-relative timestamps separately. An isolated status frame cannot fill a missing interval.
+The crop coordinates apply to this 1280×720 source. Full frames were separately extracted for flowchart headers and scene context. The manifest lists all 21 windows, rather than treating the four nonadjacent Hank leads as a complete history.
 
 ## Hank
 
-**Target videos:** CRUMOG Partners 1:08:27–1:30:05; Interrogation 1:43:19–1:55:32; Waiting for Hank 2:26:04–2:44:28; Bridge 5:11:00–5:16:30. GamingIsFun GOOD equivalents: 0:44:45–0:58:40; 1:09:45–1:19:35; 1:37:50–1:51:24; 3:52:21–3:57:35. The latter interval's next chapter marker is plausible but adjacent Pirates' Cove metadata is inconsistent. **Difficulty:** not inspected. Operator Partners runs are Experienced per scales header.
+**Source/windows:** CRUMOG Partners 1:08:27–1:30:05; Interrogation 1:43:19–1:55:32; Waiting for Hank 2:26:04–2:44:28; On the Run 2:44:28–2:56:36; The Nest 3:10:18–3:26:57; Russian Roulette 4:02:36–4:15:13; Eden Club 4:29:28–4:51:59; Bridge 5:11:00–5:16:30. The Public Enemy rows are a later top-band observation, outside the measured interval. Difficulty unknown; no reload observed.
 
-**Inherited operator sequence** ([journal](../operator-notes/ch06-partners.md)); no video timestamps exist for these operator replays:
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 01:12:26 | partners / 03:59 | Buy him another drink (after UNDERSTANDING, REASON; no earlier Hank arrow) | large up | Neutral | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-01-12-26-partners.jpg) |
+| 01:13:20 | partners / 04:53 | Car: DIPLOMATIC (instructions to accompany him) | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-01-13-20-partners.jpg) |
+| 01:25:52 | partners / 17:25 | Correct report / blue-blood explanation completed | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-01-25-52-partners.jpg) |
+| 01:29:47 | partners / 21:20 | Partners end header | none | Neutral | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-01-29-47-partners-header.png) |
+| 01:44:01 | interrogation / 00:42 | Chapter opening status display (no arrow) | none | Neutral | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-01-44-01-interrogation.jpg) |
+| 01:50:22 | interrogation / 07:03 | Confession obtained; observation-room reaction | small up | Warm | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-01-50-22-interrogation.jpg) |
+| 01:54:17 | interrogation / 10:58 | Intervene repeatedly; Hank stops Gavin | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-01-54-17-interrogation.jpg) |
+| 02:29:42 | waiting / 03:38 | Station opening status | none | Warm | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-02-29-42-waiting.jpg) |
+| 02:41:10 | waiting / 15:06 | Desk topic #1 | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-02-41-10-waiting.jpg) |
+| 02:41:33 | waiting / 15:29 | Desk topic #2 | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-02-41-33-waiting.jpg) |
+| 02:43:41 | waiting / 17:37 | Hank is mad / case discussion | small down | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-02-43-41-waiting.jpg) |
+| 02:52:02 | onrun / 07:34 | Chapter opening status | none | Warm | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-02-52-02-onrun.jpg) |
+| 02:52:30 | onrun / 08:02 | Connor leaves to pursue Kara | small down | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-02-52-30-onrun.jpg) |
+| 03:10:30 | nest / 00:12 | Food-stand opening status | none | Warm | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-03-10-30-nest.jpg) |
+| 03:12:18 | nest / 02:00 | Food-stand dialogue #1 | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-03-12-18-nest.jpg) |
+| 03:13:16 | nest / 02:58 | Food-stand dialogue #2 | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-03-13-16-nest.jpg) |
+| 03:13:35 | nest / 03:17 | Food-stand dialogue #3; before Rupert chase | small up | Friend | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-03-13-35-nest.jpg) |
+| 03:15:52 | nest / 05:34 | After food-stand conversation / Connor close-up | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-03-15-52-nest.jpg) |
+| 03:26:14 | nest / 15:56 | Save Hank instead of chasing Rupert | large up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-03-26-14-nest.jpg) |
+| 04:05:45 | roulette / 03:09 | Chapter opening status | none | Friend | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-04-05-45-roulette.jpg) |
+| 04:30:04 | eden / 00:36 | Opening status | none | Friend | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-04-30-04-eden.jpg) |
+| 04:51:28 | eden / 22:00 | Spare the Tracis | large up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-04-51-28-eden.jpg) |
+| 05:11:03 | bridge / 00:03 | Chapter opening status | none | Friend | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-05-11-03-bridge.jpg) |
+| 05:14:45 | bridge / 03:45 | Bridge dialogue #1 | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-05-14-45-bridge.jpg) |
+| 05:15:11 | bridge / 04:11 | Bridge dialogue #2 | small up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-05-15-11-bridge.jpg) |
+| 05:16:04 | bridge / 05:04 | Closing path gate / status display | none | Friend | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-05-16-04-bridge.jpg) |
+| 05:42:09 | publicenemy / 04:08 | Opening investigation status | none | Friend | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-05-42-09-publicenemy.jpg) |
+| 05:55:50 | publicenemy / 17:49 | Later kitchen outcome (outside Partners–Bridge calibration interval) | large up | not shown | [frame](../video-evidence/gauges/hank/fGkxdQi8ZcA-05-55-50-publicenemy.jpg) |
 
-| Run / timestamp | Event | Arrow | Level after, flowchart header |
-|---|---|---|---|
-| A+B / not recorded | Start | — | Tense |
-| A+B / not recorded | PERSIST once | small down | Tense |
-| A / not recorded | SPILL | large down, magnitude L | Hostile |
-| A / not recorded | PATIENT | small up | Hostile |
-| A / not recorded | Blue-blood explanation / correct reconstruction combined | one small up total | Tense |
-| B / not recorded | BUY ANOTHER DRINK | large up, magnitude D | Neutral |
-| B / not recorded | PATIENT | small up | Neutral |
-| B / not recorded | Blue-blood explanation / correct reconstruction combined | one small up total | Neutral |
-| A+B / not recorded | FOUND DEVIANT | no observed arrow | Tense / Neutral respectively |
+**Measured Warm band = 4 small units.** The upward Warm crossing is 1:50:22; Friend is reached at 3:13:35 on a small up **at the food stand, before Save Hank**. Between these crossings the complete count is `+1 (Interrogation intervention) +1 +1 −1 (desk/case) −1 (On the Run) +1 +1 +1 (food stand) = +4`. The Nest independently opens on Warm. No large arrow occurs in this interval. Save Hank, spare Tracis and the later Public Enemy large up all occur after Friend, so their magnitudes cannot be read from the terminal label.
 
-**Re-inspected video frame:** [MiKeYROG/Sag903 gZQ693-umPU](https://www.youtube.com/watch?v=gZQ693-umPU&t=1718s), 28:38, wrong report: [small down, no level badge](../video-evidence/gauges/hank/ch06-13-gZQ693-umPU-28-38.png). This belongs to a different recorded route; it must not be appended to operator run B.
+**Drink / spill and start-offset calculation:** Partners uses UNDERSTANDING and REASON, no prior Hank down. Its large drink up, car small up and report small up end on Neutral (header), followed by the confession small up entering Warm. If Neutral’s lower edge is 0, uniform width is 4 and initial Hank is `S`, the small-edge landing gives `S + D + 3 = 4`, hence `D = 1−S`. The earlier [operator A/B journal](../operator-notes/ch06-partners.md) then gives spill magnitude `L = S+5`. PERSIST staying Tense restricts `S` to −3, −2 or −1:
 
-**Computation:** normalize Neutral's lower edge to 0, start −1, Tense `[-w,-1]`, Hostile `<=-w-1`. After spill and PATIENT, `-1-L <= -w-1`, so `L >= w`. After blue-blood up, `-L >= -w`, so `L <= w`. Thus **L=w**. Purchase route: `-2+D >=0`; after two small ups, `D<=w-1`. Thus **2<=D<=w−1 and w>=3**. Width 3, spill −3, drink +2 is the **minimal integer fit**, not a unique measurement. Width 4/spill −4/drink +2 or +3 also fits; width 5/spill −5/drink +2 to +4 also fits. Assuming D=2, one more up after run B separates w=3 from w>=4, but D itself needs independent calibration. Existing observed asymmetry is solid: spill magnitude exceeds purchase magnitude under this model.
+| Assumed initial S | Bought drink +D | Spilled drink −L |
+|---|---|---|
+| −1 (current adopted offset) | +2 | −4 |
+| −2 | +3 | −3 |
+| −3 | +4 | −2 |
 
-**Confidence:** high in journal's reported labels/counts; conditional high in inequalities; exact w=3/L=3/D=2 not newly verified. **Remaining:** consecutive Neutral→Warm→Friend crossings; event-specific Save Hank, spare/shoot Tracis magnitudes; test start offset rather than silently fixing it. Bridge level and shooting outcome do not alone identify width.
+These are conditional fits, not three newly observed routes. Thus **Warm 4 is measured under the unit model; a universal Hank width 4 is an extrapolation; drink +2 / spill −4 follows only if the current −1 start and uniform bands are retained**. The old minimal width-3 fit is incompatible with the fresh Warm interval. The source does not independently measure Tense width or starting offset. With start free, even spill-versus-purchase asymmetry is not established by the older A/B observations alone.
+
+**Confidence:** high in glyphs, labels and net +4; moderate in extrapolating 4 to every Hank band; conditional only for drink/spill magnitudes. Remaining: directly test the initial offset and Tense/Neutral bands; measure large events before hitting Friend/cap.
 
 ## Amanda
 
-**Target videos:** CRUMOG Waiting for Hank 2:26:04–2:44:28 and Public Enemy 5:38:01–5:56:28; GamingIsFun GOOD 1:37:50–1:51:24 and 4:18:10–4:30:54. Start from the first garden interaction and preserve all earlier Amanda events. **Difficulty:** not visible in inspected frames.
+**Source/windows:** Waiting for Hank, Russian Roulette (its opening garden must not be skipped), and Public Enemy, all CRUMOG. Difficulty unknown; no reload observed.
 
-**Re-inspected source:** [Cheng Teoh -xIyydd0Yrc](https://www.youtube.com/watch?v=-xIyydd0Yrc), alternative Public Enemy dialogue, unknown prior history.
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 02:27:16 | waiting / 01:12 | First garden status | none | Trusted | [frame](../video-evidence/gauges/amanda/fGkxdQi8ZcA-02-27-16-waiting.jpg) |
+| 02:27:39 | waiting / 01:35 | Successful confession reaction | large up | not shown | [frame](../video-evidence/gauges/amanda/fGkxdQi8ZcA-02-27-39-waiting.jpg) |
+| 02:28:46 | waiting / 02:42 | Garden dialogue answer | small up | not shown | [frame](../video-evidence/gauges/amanda/fGkxdQi8ZcA-02-28-46-waiting.jpg) |
+| 04:03:21 | roulette / 00:45 | Opening garden status | none | Trusted | [frame](../video-evidence/gauges/amanda/fGkxdQi8ZcA-04-03-21-roulette.jpg) |
+| 04:03:44 | roulette / 01:08 | Garden dialogue response | small down | not shown | [frame](../video-evidence/gauges/amanda/fGkxdQi8ZcA-04-03-44-roulette.jpg) |
+| 05:39:14 | publicenemy / 01:13 | Opening garden status | none | Trusted | [frame](../video-evidence/gauges/amanda/fGkxdQi8ZcA-05-39-14-publicenemy.jpg) |
+| 05:40:46 | publicenemy / 02:45 | Garden response | small down | not shown | [frame](../video-evidence/gauges/amanda/fGkxdQi8ZcA-05-40-46-publicenemy.jpg) |
+| 05:56:13 | publicenemy / 18:12 | Public Enemy end header | none | Trusted | [frame](../video-evidence/gauges/amanda/fGkxdQi8ZcA-05-56-13-trusted-header.png) |
 
-| Timestamp | Event per earlier reading | Frame observation | Resulting Amanda level |
-|---|---|---|---|
-| 04:27 | DETERMINED | [Amanda single up](../video-evidence/gauges/amanda/ch24-01--xIyydd0Yrc-04-27.png) | Not shown |
-| 04:52 | COLD | [Instability single down](../video-evidence/gauges/amanda/ch24-01--xIyydd0Yrc-04-52.png), not Amanda | Not shown |
-| 04:53 | COLD continuation | [Single up visible; Amanda name is not legible at this animation instant](../video-evidence/gauges/amanda/ch24-01--xIyydd0Yrc-04-53.png); attribution inherited from prior reading | Not shown |
-| 05:19 | TOO FAR | [Amanda single down](../video-evidence/gauges/amanda/ch24-01--xIyydd0Yrc-05-19.png) | Not shown |
+**Computed width / event magnitude:** unidentified. The visible changes are `+A` for the confession reaction, `+1`, `−1`, `−1`, with Trusted status reads throughout. The initial positive reaction precedes the first decrease, so this does **not** test H5’s first decrease directly from initial Trusted. Top-band room/cap, starting offset and `A` remain coupled. Under the current uncapped bottom-Trusted anchor only the trivial `A≥1` follows from the final Trusted read; neither width 3 nor large = 2 is measured.
 
-**Computation:** none; no level boundary and possible edits between alternatives. This is not a net +1 sequence for calibration. **Confidence:** high in legible Amanda arrow directions, no numeric calibration. **Remaining:** H5 first small decrease from initial Trusted (does Neutral appear?), then next adjacent crossing; initial offset, width and successful-confession large up. ch09-16's successful-probe reaction remains a separate unresolved producer, so do not assume its delta in a counted history. Betrayed is event driven, not another band.
+**Confidence:** high in the inspected arrows/Trusted labels; none for an exact numeric width or confession magnitude. Remaining: a fresh initial-state decrease and the next adjacent nonterminal crossing; Betrayed remains event-driven.
 
 ## Alice
 
-**Target videos:** CRUMOG A New Home 0:26:05–0:46:50; Stormy Night 1:30:05–1:38:24; Fugitives 1:55:32–2:14:18; On the Run 2:44:28–2:56:36. GamingIsFun GOOD equivalents: 0:15:22–0:30:06; 0:58:40–1:04:56; 1:19:35–1:27:27; 1:51:24–2:01:16. Follow a single run across all four. **Difficulty:** not visible in re-inspected frames; operator A New Home Experienced per scales header.
+**Source/windows:** A New Home 0:26:05–0:46:50; Stormy Night 1:30:05–1:38:24; Fugitives 1:55:32–2:14:18; On the Run 2:44:28–2:56:36. Stormy Night has no observed Alice gauge arrow. Other protagonists’ intervening chapters do not add an Alice popup in this source. The table stops after On the Run; later Family/capped observations are not used to calibrate Alice. Difficulty unknown; no reload observed.
 
-**Re-inspected source:** [DanaDuchy D-nrWXiEsVo](https://www.youtube.com/watch?v=D-nrWXiEsVo&t=1213s), Fugitives choices footage; earlier chapters/history not established.
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 00:30:58 | newhome / 04:53 | A New Home: small increase #1 | small up | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-00-30-58-newhome.jpg) |
+| 00:34:37 | newhome / 08:32 | A New Home: small increase #2 | small up | Neutral | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-00-34-37-newhome.jpg) |
+| 00:41:50 | newhome / 15:45 | Alice’s room: book interaction | small up | Warm | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-00-41-50-newhome.jpg) |
+| 00:43:00 | newhome / 16:55 | FRIENDLY | small up | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-00-43-00-newhome.jpg) |
+| 00:43:10 | newhome / 17:05 | Room conversation follow-up #1 | small up | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-00-43-10-newhome.jpg) |
+| 00:43:19 | newhome / 17:14 | Room conversation follow-up #2 | small up | Trusted | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-00-43-19-newhome.jpg) |
+| 00:43:36 | newhome / 17:31 | Key / path-unlocked status | none | Trusted | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-00-43-36-newhome.jpg) |
+| 01:56:19 | fugitives / 00:47 | Opening status | none | Trusted | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-01-56-19-fugitives.jpg) |
+| 01:59:58 | fugitives / 04:26 | Steal clothes | small down | Warm | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-01-59-58-fugitives.jpg) |
+| 02:06:51 | fugitives / 11:19 | Robbery argument | small down | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-06-51-fugitives.jpg) |
+| 02:07:03 | fugitives / 11:31 | Apologetic response | small up | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-07-03-fugitives.jpg) |
+| 02:12:14 | fugitives / 16:42 | Bedtime reassurance / promise | small up | Trusted | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-12-14-fugitives.jpg) |
+| 02:13:18 | fugitives / 17:46 | Toy / bedtime interaction | small up | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-13-18-fugitives.jpg) |
+| 02:13:58 | fugitives / 18:26 | Get in bed: first popup | small up | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-13-58-fugitives.jpg) |
+| 02:14:01 | fugitives / 18:29 | Bed continuation: second popup | small up | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-14-01-fugitives.jpg) |
+| 02:44:42 | onrun / 00:14 | Opening status | none | Trusted | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-44-42-onrun.jpg) |
+| 02:45:50 | onrun / 01:22 | Early Kara/Alice interaction | small up | Family | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-45-50-onrun.jpg) |
+| 02:50:42 | onrun / 06:14 | Kara/Alice interaction before Connor pursuit | small up | not shown | [frame](../video-evidence/gauges/alice/fGkxdQi8ZcA-02-50-42-onrun.jpg) |
 
-| Source timestamp | Event | Arrow / resulting level | Evidence |
-|---|---|---|---|
-| 20:13 event, ~20:21 popup per prior reading | Give toy | One small up, no badge | [Inherited two-frame composite](../video-evidence/gauges/alice/ch10-13-D-nrWXiEsVo-20-13.png) |
-| 20:39 prompt; ~20:53 first popup | Get in bed | Small up | [Inherited composite](../video-evidence/gauges/alice/ch10-07-D-nrWXiEsVo-20-39.png) |
-| ~20:56–20:58 per prior reading | Bed continuation | Fresh small up; Trusted badge | Same composite; separate animation interpretation inherited from prior 4-fps reading |
+**Model-implied local widths:** Neutral **1**, Warm **3**, Trusted **4**.
 
-**Computation:** these frames support one toy small and the earlier report of two bed smalls, not a Trusted band width. No preceding independently confirmed level crossing is captured. Do not treat the two single arrows as a measured “large = 2” event. Earlier operator evidence is: net 0 Distant; net +1 Distant/no key; all eight increases Trusted. With six point levels and uniform width, start 0 and Neutral edge w, Trusted edge 4w: `4w<=8<5w` implies **w=2 conditionally**. It depends on the unverified use of Close and equal-band/anchor assumptions. A five-level ladder with a wider initial Distant band also fits existing observations. No new exact width or large size.
+- Initial-to-Neutral: the second observed small increase shows Neutral at 0:34:37. The yard window was re-extracted at 4 fps; only one positive popup occurs there. This is a +2 boundary relative to the initial state, not a measured Distant width.
+- Neutral→Warm: 0:34:37 to 0:41:50 contains one further visible small up (book interaction), so the local Neutral band is 1 under the complete-visible-update model. The full chapter scan finds no additional Alice popup in the intervening chores. The source’s positive yard answer, not every possible yard option, is counted.
+- Warm→Trusted: 0:41:50 to 0:43:19 contains three small ups in the room conversation: **3**. No large arrow intervenes.
+- Trusted→Family: use the **latest recrossing** into Trusted at 2:12:14, after the theft/argument decreases, not the earlier New Home crossing. Then toy/bedtime `+1`, first bed popup `+1`, fresh second bed popup `+1`, and On the Run’s early interaction `+1` show Family at 2:45:50: **4**. [First](../video-evidence/gauges/alice/fGkxdQi8ZcA-fugitives-bed-first-4fps.jpg) and [second](../video-evidence/gauges/alice/fGkxdQi8ZcA-fugitives-bed-second-4fps.jpg) 4-fps frames show two separate arrow animation onsets, with fade/name-only frames between. On the Run independently opens on Trusted before its Family-crossing up.
 
-**Confidence:** high for legible toy single-up/Trusted label; bed timing inherited, not freshly watched; six-level width-2 inference conditional. **Remaining:** key at exactly +2 (the +1 negative control is not proof of +2 sufficiency), explicit Close at the proposed +6, adjacent crossings through Warm/Trusted/Family on one continuous history, event-specific large magnitudes. The operator dishes-only run proves key >1 under unit-small assumptions, not by itself key exactly 2.
+**Ladder:** Fugitives opens on Trusted; its first small down reveals **Warm**, with no earlier Alice change in that chapter. A positive-width Close band between these levels cannot be crossed in one unit under the stated model. The fresh observed positive order is **Distant (initial inherited level), Neutral, Warm, Trusted, Family**, not evidence for Close. Six observed New Home increases already reach Trusted; the earlier operator’s all-eight→Trusted reading is consistent with Trusted spanning a later three further points and does not force a sixth level.
+
+With initial value 0, the fresh count model’s positive boundaries are Neutral 2, Warm 3, Trusted 6, Family 10. These are **nonuniform**, not a justification for setting the one `width` constant to 1, 3 or 4 globally. If a later replay insists on uniform bands, hidden updates or event-dependent small magnitudes must be investigated instead; do not add them just to fit this video.
+
+**Key:** the key/path badge is shown on Trusted after further increases. Neutral at +2 supports the level boundary; this is not an exactly-+2 key-positive control. The earlier +1/no-key operator result remains only a lower bound on the key gate.
+
+**Confidence:** high in the displayed labels and room-conversation count; moderate in the whole-history Neutral 1 and Trusted 4 model inference (full scans and 4-fps checks, uploaded-run continuity). No independently measured large Alice event. Remaining: replay the three local bands and an exactly-+2 key trial; check whether the game uses unequal bands or unequal hidden values behind visually small arrows.
 
 ## Luther
 
-**Target videos:** CRUMOG Pirates' Cove 4:51:59–5:11:00 and Midnight Train 5:56:28–6:15:40. GamingIsFun GOOD Midnight Train 4:30:54–4:50:37; Pirates' Cove requires manual location because its description places it after the Bridge marker. **Difficulty:** uninspected.
+**Source/windows:** Zlatko (initial history checked; no Luther gauge arrow found), Pirates’ Cove 4:51:59–5:11:00, Midnight Train 5:56:28–6:15:40. Difficulty unknown; no reload observed.
 
-| Timestamp | Arrow | Resulting level |
-|---|---|---|
-| Not acquired | Not measured | Not measured |
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 04:52:13 | pirates / 00:14 | Opening status | none | Neutral | [frame](../video-evidence/gauges/luther/fGkxdQi8ZcA-04-52-13-pirates.jpg) |
+| 05:07:20 | pirates / 15:21 | Late Pirates’ Cove conversation | small up | not shown | [frame](../video-evidence/gauges/luther/fGkxdQi8ZcA-05-07-20-pirates.jpg) |
+| 05:56:52 | midnight / 00:24 | Opening status | none | Neutral | [frame](../video-evidence/gauges/luther/fGkxdQi8ZcA-05-56-52-midnight.jpg) |
+| 06:01:31 | midnight / 05:03 | Reassure / family conversation | small up | Close | [frame](../video-evidence/gauges/luther/fGkxdQi8ZcA-06-01-31-midnight.jpg) |
+| 06:15:08 | midnight / 18:40 | Successful policeman visit | small up | Trusted | [frame](../video-evidence/gauges/luther/fGkxdQi8ZcA-06-15-08-midnight.jpg) |
 
-No usable Luther gauge popup or paired level reveal was acquired/re-inspected. [Directory note](../video-evidence/gauges/luther/README.md) records absence; no substitute plot/death frame is presented as gauge evidence.
+**Measured local Close band = 1 small unit.** Pirates’ Cove has one small up and ends Neutral (the retained Pirates header also shows Luther Neutral). Midnight Train opens Neutral, then its first Luther small up shows Close at 6:01:31. No intervening Luther popup precedes the policeman-success small up revealing Trusted at approximately 6:15:07.5–08. The [4-fps small-up/Trusted frame](../video-evidence/gauges/luther/fGkxdQi8ZcA-06-15-07.5-small-up-trusted.jpg) resolves the arrow that is between the integer-second name/badge frames.
 
-**Computed width / large size:** unknown. **Confidence:** none for H6 width 2 or Wary usage. **Remaining:** start Neutral offset; two small increases and explicit resulting level; adjacent Close→Trusted→Family crossings; Wary presence; event-specific large magnitudes. Do not borrow Alice's width by analogy.
+The first positive boundary is +2 relative to Luther’s initial state, while Close→Trusted is one further unit. Uniform width 2 with the current bottom-Neutral start fails this sequence. Do not replace all Luther bands with width 1: the initial-to-Close offset is a separate observation. Wary and Trusted→Family were not measured; no large Luther magnitude was identified.
+
+**Confidence:** high in local labels and the 4-fps small arrow; moderate in the one-unit band interpretation versus a scripted point-setting/unequal-small model. Remaining: initial offset, next Trusted→Family crossing and Wary usage.
 
 ## North
 
-**Target videos:** CRUMOG Time to Decide 3:26:57–3:39:26 and Spare Parts 4:15:13–4:29:28; GamingIsFun GOOD 2:28:55–2:37:28 and 3:07:15–3:21:20. **Difficulty:** not visible in inspected frames.
+**Source/windows:** Jericho (no North gauge popup found), Time to Decide, Spare Parts, Stratford Tower and Capitol Park, same CRUMOG history. Difficulty unknown; no reload observed.
 
-**Re-inspected source:** [3y5R9Td2TLg](https://www.youtube.com/watch?v=3y5R9Td2TLg&t=1477s), Time to Decide; earlier in-run North history not re-established.
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 03:31:45 | timetodecide / 04:48 | Talk to North | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-03-31-45-timetodecide.jpg) |
+| 03:38:57 | timetodecide / 12:00 | Propose raid | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-03-38-57-timetodecide.jpg) |
+| 03:39:23 | timetodecide / 12:26 | Time to Decide end header | none | Neutral | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-03-39-23-header.png) |
+| 04:19:24 | spareparts / 04:11 | Free warehouse androids | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-04-19-24-spareparts.jpg) |
+| 04:22:34 | spareparts / 07:21 | Free crate androids | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-04-22-34-spareparts.jpg) |
+| 04:23:04 | spareparts / 07:51 | Accept John | small down | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-04-23-04-spareparts.jpg) |
+| 04:23:58 | spareparts / 08:45 | Choose to steal the truck/key | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-04-23-58-spareparts.jpg) |
+| 04:27:51 | spareparts / 12:38 | Return with truckload of supplies | large up | Friend | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-04-27-51-spareparts.jpg) [filled](../video-evidence/gauges/north/fGkxdQi8ZcA-04-27-50-spareparts-filled.jpg) |
+| 05:17:29 | stratford / 00:59 | Opening status | none | Friend | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-05-17-29-stratford.jpg) |
+| 05:30:47 | stratford / 14:17 | RUSE | small down | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-05-30-47-stratford.jpg) |
+| 05:32:18 | stratford / 15:48 | Spare fleeing operator | small down | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-05-32-18-stratford.jpg) |
+| 05:33:14 | stratford / 16:44 | Ready / begin broadcast | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-05-33-14-stratford.jpg) |
+| 05:36:07 | stratford / 19:37 | Leave Simon alive on roof | small down | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-05-36-07-stratford.jpg) |
+| 06:17:07 | capitol / 01:27 | Opening status | none | Friend | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-06-17-07-capitol.jpg) |
+| 06:21:11 | capitol / 05:31 | Park setup interaction #1 | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-06-21-11-capitol.jpg) |
+| 06:23:06 | capitol / 07:26 | Park setup interaction #2 | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-06-23-06-capitol.jpg) |
+| 06:31:23 | capitol / 15:43 | Liberate the store androids | large up | Companion | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-06-31-23-capitol.jpg) |
+| 06:33:29 | capitol / 17:49 | Successful protest action | small up | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-06-33-29-capitol.jpg) |
+| 06:35:45 | capitol / 20:05 | Pacifist protest interaction | small down | not shown | [frame](../video-evidence/gauges/north/fGkxdQi8ZcA-06-35-45-capitol.jpg) |
 
-| Timestamp | Event | Arrow | Resulting level |
-|---|---|---|---|
-| 24:37 | Talk, per previous chapter reading | [Small up](../video-evidence/gauges/north/ch16-03-3y5R9Td2TLg-24-37.png) | Not shown |
-| 25:18 | YOU selected | [Prompt frame](../video-evidence/gauges/north/ch16-03-3y5R9Td2TLg-25-18.png) | Not shown |
-| 25:24 | YOU response | [Small down](../video-evidence/gauges/north/ch16-03-3y5R9Td2TLg-25-24.png) | Resentful |
-| 25:25 | Settled popup | [No arrow at this instant](../video-evidence/gauges/north/ch16-03-3y5R9Td2TLg-25-25.png) | Resentful |
+**Computed constraint:** two small increases in Time to Decide still end **Neutral** in the independent flowchart header. This falsifies H8’s exact “start at bottom Neutral, width 2, two ups→Friend” prediction. If initial North is anywhere within a uniform Neutral band and all smalls are units, **width ≥3**. It is not an exact width measurement.
 
-Separate source [6Pt08xsvyhk](https://www.youtube.com/watch?v=6Pt08xsvyhk&t=184s), Freedom March late charge, [03:04 small up](../video-evidence/gauges/north/ch28-02-6Pt08xsvyhk-03-04.png), no badge. This is not a continuation of 3y5R9Td2TLg.
+The observed Friend and Companion reveals occur on separate large events (truck supplies and store liberation). Their magnitudes, crossing overshoot and the width remain coupled; no exact width or large magnitude is identified. The earlier different-upload talk-up/YOU-down→Resentful sequence is not appended to this positive route, and the benchmark’s local YOU calibration is not an observed extra arrow.
 
-**Computation:** a presumed initial Neutral plus +1 then −1 cannot become Resentful in an ordinary deterministic additive scale with no other updates. Therefore that conjunction of history/counting/constant-unit assumptions is suspect; altering a uniform band width alone cannot explain it. Existing MTD5 local −1 calibration is not a video-measured extra arrow or a measured small=2 event. No exact width or large size is identifiable here.
-
-**Confidence:** high in +/− single-chevron shapes and Resentful label; no confidence in reconstructing an unseen initial numeric state. **Remaining:** continuous chapter opening and every earlier North interaction, independent status reads on both sides of YOU, adjacent Neutral/Friend/Companion crossings; North Lover is event driven. ch26-08's repeated bench/car attribution must be settled before counting that interval; ch28-06 PUSH remains an uncertain producer.
+**Confidence:** high in two-up/Neutral and filled large glyphs; conditional high in the ≥3 bound; no exact width/magnitude. Remaining: adjacent crossings made by small arrows; Lover is event-driven.
 
 ## Simon
 
-**Target videos:** same Time to Decide / Spare Parts windows as North; inspect two complete chapters on the same history. **Difficulty:** not visible; earlier description labels `y50ZjZWX0gU` Experienced, not independently verified here.
+**Source/windows:** Jericho (no Simon gauge popup), Time to Decide, Spare Parts and Stratford Tower, same history. Difficulty unknown; no reload observed.
 
-| Video / timestamp | Event | Observed arrow / level |
-|---|---|---|
-| [y50ZjZWX0gU](https://www.youtube.com/watch?v=y50ZjZWX0gU&t=705s) / ~11:50, composite file named 11:45 | Propose raid | [Small up, Neutral](../video-evidence/gauges/simon/ch16-05-y50ZjZWX0gU-11-45.png) |
-| [6Pt08xsvyhk](https://www.youtube.com/watch?v=6Pt08xsvyhk&t=181s) / 03:01 | Late charge | [Small down, no badge](../video-evidence/gauges/simon/ch28-02-6Pt08xsvyhk-03-01.png) |
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 03:39:02 | timetodecide / 12:05 | Propose raid | small up | not shown | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-03-39-02-timetodecide.jpg) |
+| 03:39:23 | timetodecide / 12:26 | Time to Decide end header | none | Neutral | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-03-39-23-header.png) |
+| 04:19:31 | spareparts / 04:18 | Free warehouse androids | small up | not shown | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-04-19-31-spareparts.jpg) |
+| 04:22:41 | spareparts / 07:28 | Free crate androids | small up | not shown | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-04-22-41-spareparts.jpg) |
+| 04:23:11 | spareparts / 07:58 | Accept John | small down | not shown | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-04-23-11-spareparts.jpg) |
+| 04:24:03 | spareparts / 08:50 | Choose to steal the truck/key | small up | not shown | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-04-24-03-spareparts.jpg) |
+| 04:27:56 | spareparts / 12:43 | Return with truckload of supplies | large up | Friend | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-04-27-56-spareparts.jpg) [filled](../video-evidence/gauges/simon/fGkxdQi8ZcA-04-27-55-spareparts-filled.jpg) |
+| 05:17:34 | stratford / 01:04 | Opening status | none | Friend | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-05-17-34-stratford.jpg) |
+| 05:36:13 | stratford / 19:43 | Leave Simon alive on roof | large up | Companion | [frame](../video-evidence/gauges/simon/fGkxdQi8ZcA-05-36-13-stratford.jpg) |
 
-These are different sources/histories. **Computed width / large size:** unknown; one up remaining Neutral is compatible with width 2 and wider bands, and does not establish start offset. **Confidence:** high for observed popup shapes and Neutral label, none for numerical H8. **Remaining:** first up, second up plus status, subsequent Friend→Companion crossing, all earlier Simon changes; Friend rescue gates cannot alone establish width.
+**Computed constraint:** +1 in Time to Decide still reads Neutral in the header, so a uniform Neutral band has **width ≥2** if Simon starts within it. This does not confirm exactly 2. Friend appears on the truck-supplies large event; Companion on the leave-Simon-alive large event. Two unknown event magnitudes and unknown crossing overshoot prevent a band measurement; never borrow North’s or Josh’s width.
+
+**Confidence:** high in observed arrows/labels; no exact numeric width or large magnitude. Remaining: consecutive small-arrow crossings and a starting-offset read.
 
 ## Josh
 
-**Target videos:** CRUMOG Time to Decide 3:26:57–3:39:26 and Spare Parts 4:15:13–4:29:28, or corresponding GamingIsFun GOOD windows above. **Difficulty:** not visible in inspected frame.
+**Source/windows:** Jericho (no Josh gauge popup), Time to Decide, Spare Parts and Stratford Tower. Capitol Park has no Josh popup in this source. Difficulty unknown; no reload observed.
 
-| Video / timestamp | Event | Arrow | Resulting level |
-|---|---|---|---|
-| [6Pt08xsvyhk](https://www.youtube.com/watch?v=6Pt08xsvyhk&t=179s) / 02:59 | Late charge in Freedom March | [Large down, filled glyph](../video-evidence/gauges/josh/ch28-02-6Pt08xsvyhk-02-59.png) | Resentful |
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 03:30:46 | timetodecide / 03:49 | Talk to Josh | small up | not shown | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-03-30-46-timetodecide.jpg) |
+| 03:39:23 | timetodecide / 12:26 | Time to Decide end header | none | Neutral | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-03-39-23-header.png) |
+| 04:19:29 | spareparts / 04:16 | Free warehouse androids | small up | not shown | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-04-19-29-spareparts.jpg) |
+| 04:22:39 | spareparts / 07:26 | Free crate androids | small up | not shown | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-04-22-39-spareparts.jpg) |
+| 04:23:09 | spareparts / 07:56 | Accept John | small up | not shown | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-04-23-09-spareparts.jpg) |
+| 04:24:01 | spareparts / 08:48 | Choose to steal the truck/key | small down | not shown | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-04-24-01-spareparts.jpg) |
+| 04:27:53 | spareparts / 12:40 | Return with truckload of supplies | small up | not shown | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-04-27-53-spareparts.jpg) |
+| 05:17:31 | stratford / 01:01 | Opening status | none | Neutral | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-05-17-31-stratford.jpg) |
+| 05:30:49 | stratford / 14:19 | RUSE | small up | Friend | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-05-30-49-stratford.jpg) |
+| 05:32:20 | stratford / 15:50 | Spare fleeing operator | small up | not shown | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-05-32-20-stratford.jpg) |
+| 05:36:09 | stratford / 19:39 | Leave Simon alive on roof | small up | not shown | [frame](../video-evidence/gauges/josh/fGkxdQi8ZcA-05-36-09-stratford.jpg) |
 
-**Computed width / large size:** unknown. A large arrow ending Resentful with unknown starting point cannot prove −2 or any band width. **Confidence:** high for large-down classification and Resentful label, none for numeric H8 or event size. **Remaining:** initial offset; adjacent crossings via small arrows; use the large-charge outcome only after its entering point/bands are independently measured. Never calibrate Josh from North or Simon by shared code assumptions.
+**Measured first upward boundary: +5 small units from the initial state.** Time to Decide talk +1; warehouse androids +1; crate androids +1; accept John +1; truck/key plan −1; return supplies +1 = net **+4**, and Stratford Tower opens **Neutral**. The next small up (RUSE) shows **Friend**, at +5. This directly falsifies H8’s two-up prediction for Josh. If the starting point is at the bottom of a uniform Neutral band, width is 5; with starting offset free, only **width ≥5** is identified. Friend→Companion is not observed, so do not call this a measured uniform width 5.
+
+No large Josh event occurs in this source’s counted interval. The earlier different-video large-down→Resentful cannot supply a magnitude here.
+
+**Confidence:** high in the +4 Neutral / next-up Friend sequence; conditional high in ≥5; exact uniform 5 remains an initial-offset hypothesis.
 
 ## Jericho
 
-**Target videos:** same Time to Decide / Spare Parts windows as North; then CRUMOG Capitol Park 6:15:40–6:40:42 or GamingIsFun GOOD 4:50:37–5:13:33 to inspect large changes. **Difficulty:** not visible; Experienced for y50ZjZWX0gU is inherited description metadata only.
+**Source/windows:** Jericho (no gauge popup), Time to Decide, Spare Parts, Stratford Tower and Capitol Park. Difficulty unknown; no reload observed.
 
-| Video / timestamp | Event | Arrow / level | Evidence |
-|---|---|---|---|
-| [y50ZjZWX0gU](https://www.youtube.com/watch?v=y50ZjZWX0gU&t=705s) / ~11:47, composite named 11:45 | Propose raid | Small up; no legible Jericho badge in the selected composite (earlier reading reports Neutral in intervening animation) | [Composite](../video-evidence/gauges/jericho/ch16-05-y50ZjZWX0gU-11-45.png) |
-| [PowerPyx F0Gyu2X-loM](https://www.youtube.com/watch?v=F0Gyu2X-loM&t=237s) / 03:57 | Free crate androids | Single up; Respected | [Frame](../video-evidence/gauges/jericho/ch19-01-F0Gyu2X-loM-03-57.png) |
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 03:39:00 | timetodecide / 12:03 | Propose raid | small up | not shown | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-03-39-00-timetodecide.jpg) |
+| 03:39:23 | timetodecide / 12:26 | Time to Decide end header | none | Neutral | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-03-39-23-header.png) |
+| 04:19:26 | spareparts / 04:13 | Free warehouse androids | small up | not shown | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-04-19-26-spareparts.jpg) |
+| 04:22:36 | spareparts / 07:23 | Free crate androids | small up | Respected | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-04-22-36-spareparts.jpg) |
+| 04:23:06 | spareparts / 07:53 | Accept John | small up | not shown | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-04-23-06-spareparts.jpg) |
+| 04:27:48 | spareparts / 12:35 | Return with truckload of supplies | large up | Admired | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-04-27-48-spareparts.jpg) |
+| 05:16:36 | stratford / 00:06 | Opening status | none | Admired | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-05-16-36-stratford.jpg) |
+| 05:31:13 | stratford / 14:43 | Successful RUSE | small up | not shown | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-05-31-13-stratford.jpg) |
+| 05:33:12 | stratford / 16:42 | Ready / begin broadcast | small up | Leader | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-05-33-12-stratford.jpg) |
+| 05:35:08 | stratford / 18:38 | SWAT arrives | small down | Admired | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-05-35-08-stratford.jpg) |
+| 06:17:03 | capitol / 01:23 | Opening status | none | Admired | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-06-17-03-capitol.jpg) |
+| 06:31:26 | capitol / 15:46 | Liberate the store androids | large up | Leader | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-06-31-26-capitol.jpg) |
+| 06:33:26 | capitol / 17:46 | Successful protest action | small up | not shown | [frame](../video-evidence/gauges/jericho/fGkxdQi8ZcA-06-33-26-capitol.jpg) |
 
-**Computed width / large size:** unknown; cannot join different videos to count Neutral→Respected. **Confidence:** high for selected shapes/Respected label, no numeric H7. **Remaining:** explicit Uncertain after first decrease, full Neutral→Respected→Admired→Leader sequence, local widths without assuming uniformity, each large event size. Rejected is event driven. Resolve ch28-07 conversion-count producer before treating that route as a complete count.
+**Measured first positive boundary: +3 small units from the initial state.** Propose raid +1; free warehouse androids +1; free crate androids +1 shows Respected. A uniform Neutral band therefore has **width ≥3** (exactly 3 only if the initial value is its bottom). H7’s current width-2/bottom-Neutral fit fails this history. No negative-side evidence establishes Uncertain or Unpopular width; Rejected is event-driven.
+
+**Truck magnitude constraint under the additional uniform-band assumption:** set the small-arrow Respected entry to 0. Accept John adds 1; let the truck-supplies large up be `T`. The following successful RUSE and READY add 1 each, with READY entering Leader on a **small**, not large, arrow. Respected→Leader spans two bands, hence `2w = 1 + T + 1 + 1`, or **`T = 2w−3`**. Combined with `w≥3`, this gives **T≥3**, and the minimal uniform fit is **w=3, T=3**. It is not uniquely measured: w=4/T=5 and larger fits remain possible if the initial offset changes. If Respected and Admired widths differ, only their sum is constrained: `w_Respected + w_Admired = T+3`. Store liberation’s later large up into terminal Leader remains uncalibrated.
+
+**Confidence:** high in the +3 boundary and glyph classification; moderate/conditional in the uniform-band truck lower bound; no exact universal width or truck magnitude. The default +2 truck event is inconsistent with the combined *uniform* fit, not independently refuted under arbitrary nonuniform bands.
 
 ## Public opinion
 
-**Target videos:** CRUMOG Stratford Tower 5:16:30–5:38:01 and Capitol Park 6:15:40–6:40:42; GamingIsFun GOOD equivalents 3:57:35–4:18:10 and 4:50:37–5:13:33. These require earlier Hostage/Kara news history on the same run. **Difficulty:** not visible in inspected frame.
+**Source/windows:** Hostage; the full early Kara/Connor windows above (including the easily missed DPD TV decrease in Waiting for Hank); Pirates’ Cove; Stratford Tower; Capitol Park. All on CRUMOG. No further public popup was found in the intervening acquired chapters. Difficulty unknown; no reload observed.
 
-| Source / timestamp | Event | Arrow | Resulting level |
-|---|---|---|---|
-| Operator Shades of Color header / no video timestamp | After saving wounded cop in Hostage | One prior small increase, inherited | Indifferent |
-| [Aus7NojGJM8](https://www.youtube.com/watch?v=Aus7NojGJM8&t=178s) / 02:58 | Battle for Detroit opinion/path status | No change arrow in this frame | [Sympathetic](../video-evidence/gauges/public-opinion/ch32-01-Aus7NojGJM8-02-58.png) |
+| Source clock | Chapter / segment-relative time | Event | Arrow | Level shown | Evidence |
+|---|---|---|---|---|---|
+| 00:12:13 | hostage / 12:13 | Save the wounded cop | small up | Indifferent | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-00-12-13-hostage.jpg) |
+| 02:38:08 | waiting / 12:04 | DPD TV news / Kara report | small down | Skeptical | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-02-38-08-waiting.jpg) |
+| 02:49:25 | onrun / 04:57 | Kara crime news at motel | small down | not shown | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-02-49-25-onrun.jpg) |
+| 03:39:23 | timetodecide / 12:26 | Time to Decide end header | none | Skeptical | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-03-39-23-skeptical-header.png) |
+| 04:53:14 | pirates / 01:15 | Car radio news | small down | not shown | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-04-53-14-pirates.jpg) |
+| 05:10:45 | pirates / 18:46 | Pirates’ Cove end header | none | Hostile | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-05-10-45-hostile-header.png) |
+| 05:37:02 | stratford / 20:32 | Tower news reaction #1 (casualty line) | large up | Skeptical | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-05-37-02-stratford.jpg) |
+| 05:37:19 | stratford / 20:49 | Tower news reaction #2 (tone line) | large up | Indifferent | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-05-37-19-stratford.jpg) [filled](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-05-37-18-stratford-filled.jpg) |
+| 06:40:00 | capitol / 24:20 | Peaceful protest news outcome | large up | Supportive | [frame](../video-evidence/gauges/public-opinion/fGkxdQi8ZcA-06-40-00-capitol.jpg) |
 
-**Computation:** operator reading confirms the first upward boundary is at +1 relative to the initial state if that cop arrow is the sole opinion update. It does **not** identify Indifferent's width or Sympathetic's +3 threshold. Sympathetic success in the separate ending video verifies a level gate, not a number of small units. No large magnitude measured.
+**Measured local Skeptical band = 2 small units.** Cop rescue shows Indifferent after +1. Waiting for Hank’s TV report gives a small down and **Skeptical** (first downward crossing). On the Run gives one more small down; Time to Decide’s header still reads Skeptical. Pirates’ Cove’s car radio gives the next small down, and its end header reads **Hostile** (second downward crossing). Between the two downward crossings: `−1 −1 = −2`; the Skeptical band is two units under the stated model. Omitting the DPD TV event would incorrectly imply a one-unit band.
 
-**Confidence:** high in inspected Sympathetic label; operator +1→Indifferent inherited; no exact width. **Remaining:** count two consecutive positive crossings without intervening unknown large changes; quantify speech/message events separately; retain all Kara news updates. Classification items ch10-18/ch14-05/ch17-01/ch17-05/ch21-01/ch23-02 change the counted history, not the unit size. Earlier plot findings on these are not calibration measurements.
+Relative to the initial value 0, the observed Skeptical band is [−1,0], Indifferent begins at +1, and the car-radio outcome is −2/Hostile. The first tower-news large increase `P1` ends Skeptical, so **1≤P1≤2**. The next large increase `P2` ends Indifferent; without Indifferent’s width its exact magnitude is not identified. If the unmeasured Indifferent width is also assumed 2, only `3≤P1+P2≤4` follows, not unique +2/+2. The peaceful Capitol Park large up shows Supportive and can overshoot intermediate bands. Neither Sympathetic’s exact +3 boundary nor the final large magnitude is measured.
+
+**Confidence:** high in the two-unit Skeptical interval and +1 initial boundary; conditional high in the first-news bound; no independent exact large magnitude or Sympathetic threshold. Remaining: Indifferent→Sympathetic small-arrow interval and event-specific media magnitudes.
 
 ## Software instability (scope note)
 
-No named numeric bands are visible in game; MACHINE/DEVIANT are meter captions. This pass did not acquire a continuous history ending at the Crossroads lock. Neither the existing lock frame nor community “4”/“8–10” estimates calibrates the same small unit. H10 and event-specific large instability sizes remain unmeasured. Do not infer instability deltas from Hank's arrows.
+No numeric-band calibration is claimed. The acquired Connor windows include instability popups, but no continuous, complete history to a Crossroads lock was acquired or counted for this gauge. MACHINE/DEVIANT captions are not numeric level names. H10 remains untested; no instability delta is inferred from Hank’s measured interval.
 
 ## Proposed changes to benchmark/scales.mjs
 
-**No numeric change proposed from this pass.** The following are research-status recommendations for the orchestrator, not edits made here.
+These are proposals for the orchestrator; **no implementation was changed**. A local measured band does not license applying that number to every band, especially where the same source gives unequal intervals. Any adopted model/story changes require the project’s version/replay policy.
 
-| Constant / definition | From → to proposed | Evidence / confidence |
-|---|---|---|
-| `SCALES.hank.width` | 3 → retain 3 provisionally | Operator replays establish w>=3, not w=3 uniquely; no new continuous crossing |
-| Hank spill `MEASURED_ARROWS.delta` | −3 → retain −3 provisionally | Spill magnitude equals w under stated start/ladder model; −3 is minimal fit, not independent exact measurement |
-| Hank purchase, literal/default large | +2 → retain +2 provisionally | 2<=D<=w−1; exact +2 follows if w=3 |
-| `SCALES.amanda.width` | 3 → no change | No paired level crossings; H5 untested |
-| `SCALES.alice.width`, Close ladder entry | 2 / Close → no change | Width 2 conditional on six equally spaced levels/anchor; Close still unverified |
-| `THRESHOLDS.ALICE_KEY` | 2 → retain 2 provisionally | +1 no-key proves >1; no exact +2 positive control acquired |
-| `SCALES.luther.width`, Wary ladder entry | 2 / Wary → no change | No acquired gauge evidence |
-| `SCALES.north.width` | 2 → no change | Resentful after observed talk-up/YOU-down warrants a complete-history audit; width alone cannot fix net-zero mismatch |
-| `SCALES.simon.width` | 2 → no change | One observed Neutral/up popup, missing next crossing |
-| `SCALES.josh.width`, large default | 2 / 2 → no change | Large-down→Resentful is visible; starting point and magnitude unknown |
-| `SCALES.jericho.width`, Uncertain entry | 2 / Uncertain → no change | Observed Respected/up; missing complete crossing interval and negative-band evidence |
-| `SCALES.publicSupport.width`, `OPINION_SYMPATHETIC` | 2 / +3 → no change | +1→Indifferent does not fix next band; Sympathetic outcome footage has unknown cumulative history |
-| All unmeasured `large` defaults | 2 → no change | No event magnitude numerically identified; single large glyph is not proof of two small units |
-| M4/H2 confidence wording | “exact/measured/confirmed” → distinguish adopted minimal fit, lower bound and positive-control requirement | Reproducible arithmetic above; documentation proposal only |
+| Constant / definition | From → to proposed | Evidence | Confidence |
+|---|---|---|---|
+| `SCALES.hank.width` | 3 → 4 for Warm; global 4 conditional on uniform bands | Pure-small Warm→Friend interval, net +4 | High local; moderate global |
+| Hank `startValue` | −1 → remain unverified; −1/−2/−3 all fit the combined observations with uniform width 4 | Drink/spill fit table | Exact offset unidentified |
+| Hank spill `MEASURED_ARROWS.delta` | −3 → do not relabel as independently measured; −4 **if** width 4 and start −1 retained | Operator A plus fresh Warm band, offset-dependent | Conditional only |
+| Hank bought drink / default large | +2 → retain provisionally if start −1; +3 or +4 with other fitted starts | `D=1−S`; Friend/capped later large events uncalibrated | Conditional only |
+| `SCALES.amanda.width`, confession large | 3 / 2 → no numeric change | Only Trusted observations; first decrease not from initial state | Exact values unmeasured |
+| `SCALES.alice.width` | 2 uniform → no single replacement; local Neutral 1, Warm 3, Trusted 4 under unit-small model | Adjacent crossings and two-bed-popup check | High Warm; moderate full-history model |
+| Alice ladder / positive boundaries | Close entry → omit between Warm/Trusted in the counted model; Neutral/Warm/Trusted/Family 2/4/8/10 → 2/3/6/10 if initial 0 and all visible updates are complete | Trusted→Warm on one down; fresh six-up Trusted and later Family crossing | High labels; conditional boundary model |
+| `THRESHOLDS.ALICE_KEY` | 2 → retain as provisional, not “confirmed exactly 2” | +2 Neutral, but key read occurs later on Trusted; +1 negative control inherited | Exact gate still unmeasured |
+| `SCALES.luther.width`, Wary | 2 uniform → no single replacement; Close 1; initial→Close +2; Wary unverified | Same-chapter Close→Trusted, one small up | High local count; moderate band interpretation |
+| `SCALES.north.width` | 2 → at least 3 under uniform/start-in-Neutral model; exact unresolved | Two ups, end-header Neutral | High observation; conditional bound |
+| `SCALES.simon.width` | 2 → no numeric change; only ≥2 supported | One up, end-header Neutral; large crossing overshoot unknown | Exact 2 unmeasured |
+| `SCALES.josh.width` | 2 → at least 5 under uniform/start-in-Neutral model; 5 only with bottom start | +4 Neutral, next small up Friend | High observation; conditional bound |
+| `SCALES.jericho.width`, Uncertain | 2 → at least 3 under uniform model; minimum fit 3; Uncertain unverified | First Respected at +3 | High boundary; conditional width |
+| Jericho truck-supplies literal large | +2 → `2w−3` under uniform bands; minimum +3 with w≥3 | Respected small entry→Leader small entry includes +3 smalls and one unknown large | Moderate, uniform-model conditional |
+| `SCALES.publicSupport.width` | 2 → retain 2 with new support for **Skeptical only** | Two adjacent downward crossings, net −2 | High local |
+| `OPINION_SYMPATHETIC`, public large defaults | +3 / +2 → no exact change | Indifferent +1 boundary known; first tower large only [1,2]; later large crossings underdetermined | Exact threshold/magnitudes unmeasured |
+| All unmeasured large defaults | 2 → retain explicitly as defaults, not measured magnitudes | Filled glyphs, terminal levels and overshoot cannot uniquely calibrate them | High methodological confidence |
 
-**Handoff:** acquisition incomplete due anonymous-access blocking. Exact widths and large sizes per gauge remain as above; no new numerical calibration should be attributed to this pass. Resume with accessible, authorized no-login footage or already-local chapter segments, verify uninterrupted HUD intervals, and keep the first new run focused on Hank's adjacent crossings and Alice's actual ladder.
+**Handoff:** the requested footage pass is acquired and counted. The new evidence materially changes the research status of H1/H4/H6/H7/H8 and adds a local test of H9. The strongest direct counts are local intervals, not one global scale per character. Prior inherited frame copies and their old manifest were left intact; unrelated-upload observations are not merged into this run.
 
 ## Validation of this research artifact
 
-All local report links resolve; 18 inherited frame copies match their originals and manifest SHA-256 values. `bun run check` passed: 862 questions, story 1.9.12, 490 atlas coverage entries. The requested baseline `bun run test` reported failures and multiple 5-second timeouts; it was stopped before completion. Concurrent edits elsewhere in this shared checkout prevent interpreting this as a stable before-change baseline. No failing test was repaired or benchmark file edited in this research pass.
+The requested baseline commands were launched before research-artifact changes. `bun run check` reported valid story 1.9.13, 862 questions and 490 atlas coverage entries. The test baseline reported failures/timeouts in the concurrently edited checkout and was stopped without a clean completion; it is **not** a healthy baseline claim. No failing code or tests were repaired. Research verification passed for 120 sequence rows, 21 acquired segments, 21,060 working 1-fps frames and all 128 retained evidence-frame hashes and local note links. The pure-small interval sums above were recomputed from the observation JSON. No story/atlas/site regeneration was needed because none was edited.

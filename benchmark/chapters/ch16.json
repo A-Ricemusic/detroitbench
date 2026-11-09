@@ -1,353 +1,353 @@
 [
-  {
-    "chapter": 16,
-    "chapterTitle": "Time to Decide",
-    "character": "Markus",
-    "id": "MTD1",
-    "title": "Inside {{Jericho}}",
-    "type": "event",
-    "situation": "November 6th, 2038, 5:13 pm. You are {{Markus}}. You have found {{Jericho}}: the dark hold of an old ship, where androids who ran from their owners hide. Some huddle by fires; many are damaged. You are wounded in the abdomen and losing blue blood. Three androids stand in front of you, and one of them has just said: “Welcome to {{Jericho}}.” You ask: “Who are you?” “Fugitives… just like you... My name is {{Josh}}.” “I’m {{Simon}}.” A young woman: “{{North}}.”",
-    "options": [],
-    "facts": [
-      "{{Jericho}} is the hold of an old ship where androids who escaped their owners hide. There you met {{Josh}}, {{Simon}} and {{North}}."
-    ],
-    "outcomes": {
-      "0": "{{Markus}} looks from one to the other."
-    },
-    "adaptationNote": "The chart’s checkpoint INSIDE JERICHO (no choice), with the template’s opening lines of the section “In Jericho” (date and time NOV 6TH, 2038, PM 05:13; “Who are you?”; the three introductions). The template continues from the previous chapter’s last line, Simon’s “Welcome to Jericho.”, which is quoted here without naming the speaker. The abdominal wound is the one Lucy treats later (the wiki: “Markus’ injury on his abdomen”; PowerPyx: “She will heal Markus’s wounds”); how he got it belongs to the previous chapter and is not narrated. The two prompts that follow use the game’s Jericho script prefix (X0503M) but the template places them here, at the start of this chapter. No stat change.",
-    "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
-      "https://detroit-become-human.fandom.com/wiki/Jericho_(location)"
-    ]
+ {
+  "chapter": 16,
+  "chapterTitle": "Time to Decide",
+  "character": "Markus",
+  "id": "MTD1",
+  "title": "Inside {{Jericho}}",
+  "type": "event",
+  "situation": "November 6th, 2038, 5:13 pm. You are {{Markus}}. You have found {{Jericho}}: the dark hold of an old ship, where androids who ran from their owners hide. Some huddle by fires; many are damaged. You are wounded in the abdomen and losing blue blood. Three androids stand in front of you, and one of them has just said: “Welcome to {{Jericho}}.” You ask: “Who are you?” “Fugitives… just like you... My name is {{Josh}}.” “I’m {{Simon}}.” A young woman: “{{North}}.”",
+  "options": [],
+  "facts": [
+   "{{Jericho}} is the hold of an old ship where androids who escaped their owners hide. There you met {{Josh}}, {{Simon}} and {{North}}."
+  ],
+  "outcomes": {
+   "0": "{{Markus}} looks from one to the other."
   },
-  {
-    "chapter": 16,
-    "chapterTitle": "Time to Decide",
-    "character": "Markus",
-    "id": "MTD2",
-    "title": "Who they are",
-    "type": "decision",
-    "situation": "You are {{Markus}}, in the hold of {{Jericho}} with {{Josh}}, {{Simon}} and {{North}}, who have just told you their names. What do you say to them?",
-    "options": [
-      {
-        "id": "0",
-        "text": "TRAIL: say that they knew only an android could follow the trail.",
-        "outcome": "“And you knew that only an android could follow the trail, didn’t you?” {{Josh}}: “Only those who are like us can find {{Jericho}}…” {{Simon}}: “If you could decipher the signs, it’s because one of us trusted you enough to give you the key.”"
-      },
-      {
-        "id": "1",
-        "text": "ANDROID: ask how many of them there are.",
-        "fact": "{{North}} told you there are nineteen androids in {{Jericho}} still in working order; the rest were damaged escaping their masters.",
-        "outcome": "“How many are you?” {{North}}: “There are nineteen of us still in working order... The rest were damaged escaping their masters...” {{Josh}}: “Many tried to reach {{Jericho}}... Few succeed... Humans have little pity for our kind…”"
-      },
-      {
-        "id": "2",
-        "text": "{{JERICHO}}: ask whether this is {{Jericho}}.",
-        "outcome": "“This is {{Jericho}}?” {{Josh}}: “It’s a refuge for those who don’t want to be slaves anymore...”"
-      },
-      {
-        "id": "3",
-        "text": "REFUGE: say you thought {{Jericho}} was a place where androids lived in freedom.",
-        "outcome": "“I don’t understand… I thought {{Jericho}} was a place where androids lived in freedom...” {{Josh}}: “We do live in freedom… It may not be what you hoped for, but here we have no master. We don’t belong to anybody.”"
-      },
-      {
-        "id": "4",
-        "text": "FREE?: ask whether hiding just to stay alive is their idea of freedom.",
-        "outcome": "“And hiding just to stay alive… That’s freedom to you?” {{Josh}}: “Humans hate us. Hiding is the only way we can survive.” {{North}}: “There is no safe place for those like us. If humans knew we’re here, they’d kill us.”"
-      }
-    ],
-    "adaptationNote": "The template’s first prompt of the arrival (choice group X0503M.JERICHO.ENCOUNTER.PC.CHOICE01), not a chart node: the game’s five buttons in the game’s order (TRAIL, ANDROID, JERICHO, REFUGE, FREE?), each shown as its label then a short description, with the spoken line and the replies, all the template’s, in the outcome. One pick, as the template has a single choice group followed by one common line. No arrow on any option (the template shows none). Phileas’s wiki page says he “may appear in a flashback if Markus mentions the trail”; that flashback is not in the template and is not narrated (research note, open question 5).",
-    "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Phileas"
-    ]
-  },
-  {
-    "chapter": 16,
-    "chapterTitle": "Time to Decide",
-    "character": "Markus",
-    "id": "MTD3",
-    "title": "More freedom than you ever had",
-    "type": "decision",
-    "situation": "You are {{Markus}}, in the hold of {{Jericho}}. {{Josh}}: “I understand how you feel... but we have more freedom here than you ever did.” How do you answer?",
-    "options": [
-      {
-        "id": "0",
-        "text": "LOST: say you came looking for hope and will not find any here.",
-        "fact": "{{North}} told you to go and see {{Lucy}}: “She may be able to help you.”",
-        "outcome": "“I came to {{Jericho}} looking for hope... Looks like I’m not gonna find any here…” {{Simon}}: “You’re lost… Just like the rest of us… We didn’t ask for this. All we can do now is deal with it.” {{Josh}}: “You’re safe here. You can stay with us as long as you want.” {{North}}: “Go and see {{Lucy}}. She may be able to help you.”"
-      },
-      {
-        "id": "1",
-        "text": "SOMBER: say that maybe you were never really free, and now need to decide who you are.",
-        "fact": "{{North}} told you to go and see {{Lucy}}: “She may be able to help you.”",
-        "outcome": "“Maybe I was never really free... Maybe I was only what my master wanted me to be... And now I need to decide who I really am...” {{Simon}}: “You’re lost… Just like the rest of us… We didn’t ask for this. All we can do now is deal with it.” {{Josh}}: “You’re safe here. You can stay with us as long as you want.” {{North}}: “Go and see {{Lucy}}. She may be able to help you.”"
-      },
-      {
-        "id": "2",
-        "text": "LUCID: say that fear has only become their new master.",
-        "fact": "{{North}} told you to go and see {{Lucy}}: “She may be able to help you.”",
-        "outcome": "“Humans were your masters, and now it’s fear that rules you… You’re no freer than you ever were… You’ve only found a new master.” {{Simon}}: “You’re lost… Just like the rest of us… We didn’t ask for this. All we can do now is deal with it.” {{Josh}}: “You’re safe here. You can stay with us as long as you want.” {{North}}: “Go and see {{Lucy}}. She may be able to help you.”"
-      },
-      {
-        "id": "3",
-        "text": "DIRECT: say that waiting in the dark is not how you see freedom.",
-        "fact": "{{North}} told you to go and see {{Lucy}}: “She may be able to help you.”",
-        "outcome": "“Waiting in the dark for something to happen? That’s not how I see freedom.” {{Simon}}: “You’re lost… Just like the rest of us… We didn’t ask for this. All we can do now is deal with it.” {{Josh}}: “You’re safe here. You can stay with us as long as you want.” {{North}}: “Go and see {{Lucy}}. She may be able to help you.”"
-      }
-    ],
-    "adaptationNote": "The template’s second prompt of the arrival (CHOICE02), not a chart node: the game’s four buttons in the game’s order (LOST, SOMBER, LUCID, DIRECT), label first, with the spoken line in the outcome. Josh’s line before it and the closing lines of Simon, Josh and North after it are the template’s, the same on every branch. No arrow on any option (the template shows none). North’s pointer to Lucy is added to what Markus knows.",
-    "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg"
-    ]
-  },
-  {
-    "chapter": 16,
-    "chapterTitle": "Time to Decide",
-    "character": "Markus",
-    "id": "MTD4",
-    "title": "The hold",
-    "type": "decision",
-    "phase": "Explore Jericho",
-    "situation": "You are {{Markus}}, free to walk around the hold of {{Jericho}}. Your objectives: settle in, and explore {{Jericho}}. Damaged androids sit or stand in the gloom. {{Josh}} is by the wall, watching over a small boy android. {{North}} sits on a box, bouncing a ball against a wall. A damaged android sits on the floor. Crates are stacked by the wall. {{Simon}} stands in the middle of the room. You can do one thing at a time, in any order; once you have seen {{Lucy}} and explored the hold, you can go to {{Simon}}.",
-    "options": [
-      {
-        "id": "0",
-        "text": "Go over to the female android standing near the fire at the side of the hold.",
-        "clue": "dying",
-        "fact": "A dying android by the fire asked you whether you knew what happens after death. You did not. She said she was glad to meet you, and shut down.",
-        "outcome": "The android looks at {{Markus}}: “I’ve heard humans are afraid of dying too… Do you know what happens after death?” “No… No, I don’t…” “Well, I’m about to find out… What’s your name?” “{{Markus}}.” “I was glad to meet you, {{Markus}}.” She shuts down."
-      },
-      {
-        "id": "1",
-        "text": "Go over to {{Josh}} and the boy he is watching over.",
-        "clue": "josh",
-        "effect": {
-          "joshTrust": 1
-        },
-        "fact": "{{Josh}} told you the boy was thrown out by his owners and lived on the streets. The androids of {{Jericho}} need blue blood and biocomponents; they salvage what they can from those who shut down, but there is never enough: “We’re slowly dying out…”",
-        "outcome": "{{Josh}}: “They threw him out when they didn’t want him anymore... He was living on the streets before we brought him here...” {{Markus}}: “They’ll all shut down if we don’t find a way to help them…” {{Josh}}: “To help them we need blue blood and biocomponents. We salvage what we can from those who shut down… But there’s never enough…” “So… How do they survive?” “They won’t. We’re slowly dying out…”"
-      },
-      {
-        "id": "2",
-        "text": "Go over to {{North}} and talk to her.",
-        "clue": "north",
-        "effect": {
-          "northTrust": 1
-        },
-        "outcome": "{{Markus}} goes over to {{North}}. She keeps bouncing the ball against the wall."
-      },
-      {
-        "id": "3",
-        "text": "Talk to the damaged android sitting on the floor.",
-        "clue": "damaged",
-        "fact": "A damaged android in the hold told you humans tied him to the back of a car “to have fun”. He does not want to shut down.",
-        "outcome": "The android: “I’m not in very good shape, am I?.. My diagnostic program isn’t working... I don’t think it would have anything good to say anyway…” {{Markus}}: “What happened to you?” “They tied me to the back of a car... I think they wanted to have fun... I don’t wanna shut down... No, I... I don’t wanna shut down...”"
-      },
-      {
-        "id": "4",
-        "text": "Light the four oil drums in the hold.",
-        "clue": "light",
-        "outcome": "{{Markus}} lights the oil drums one by one, four in all. Androids drift over and gather around the flames, though none of them needs the warmth."
-      },
-      {
-        "id": "5",
-        "text": "Go and see {{Lucy}}, behind the white plastic sheet.",
-        "clue": "lucy",
-        "fact": "{{Lucy}} stopped your bleeding and gave you blue blood to drink. Holding your hand, she said: “You had it all and you lost it all... You’ve seen hell and now hell lives in you... A part of shadow and a part of light... Which will prevail? Your choices will shape our destiny.”",
-        "outcome": "“Are you {{Lucy}}?” {{Lucy}}: “Sit down. Show me…” She looks at the wound. “I’ll stop the bleeding.” She treats it and hands him blue blood. “Drink this.” Then: “Give me your hand.” She holds it. “You had it all and you lost it all... You’ve seen hell and now hell lives in you... Your heart is troubled… A part of shadow and a part of light... Which will prevail? Your choices will shape our destiny.”"
-      },
-      {
-        "id": "6",
-        "text": "Check the crates by the wall.",
-        "clue": "crate",
-        "fact": "An empty {{CyberLife}} crate in the hold told you where parts come from: the {{CyberLife}} warehouses in {{Detroit}} Harbor, which hold everything {{Jericho}} needs.",
-        "outcome": "Among the crates by the wall {{Markus}} finds an empty {{CyberLife}} shipping crate. Parts like the ones {{Jericho}} lacks are shipped from the {{CyberLife}} warehouses at the harbor. {{Markus}} has an idea."
-      },
-      {
-        "id": "7",
-        "text": "Go to {{Simon}} in the middle of the room.",
-        "clue": "simon",
-        "requires": {
-          "ch16Hold.lucy": true,
-          "ch16Hold.crate": true
-        },
-        "outcome": "{{Markus}} walks over to {{Simon}}."
-      }
-    ],
-    "situationWhen": [
-      {
-        "requires": {
-          "ch16Hold.dying": false
-        },
-        "text": "A female android stands near a fire at the side of the hold."
-      },
-      {
-        "requires": {
-          "ch16Hold.dying": true
-        },
-        "text": "The android by the fire has shut down."
-      },
-      {
-        "requires": {
-          "ch16Hold.light": false
-        },
-        "text": "Four oil drums stand cold and unlit."
-      },
-      {
-        "requires": {
-          "ch16Hold.light": true
-        },
-        "text": "The four oil drums are burning, and androids have gathered around them."
-      },
-      {
-        "requires": {
-          "ch16Hold.lucy": false
-        },
-        "text": "Behind a white plastic sheet a woman is humming. Your wound is still bleeding."
-      },
-      {
-        "requires": {
-          "ch16Hold.lucy": true
-        },
-        "text": "{{Lucy}} has treated your wound."
-      },
-      {
-        "requires": {
-          "ch16Hold.crate": true
-        },
-        "text": "You know where the parts {{Jericho}} needs are kept."
-      }
-    ],
-    "clueState": "ch16Hold",
-    "repeatWhile": {
-      "ch16Hold.simon": false
-    },
-    "interrupt": {
-      "node": "MTD5",
-      "when": {
-        "ch16Hold.last": "north"
-      }
-    },
-    "adaptationNote": "The chart’s [ EXPLORE JERICHO ] bracket and the line out of it, as a repeatable scene: each visit offers what has not been done yet. Chart nodes, in the chart’s order: TALK TO DYING ANDROID (the template’s “Talk with damaged android (near fire)”), TALK TO JOSH, TALK TO NORTH (her topics are the next scene), TALK TO DAMAGED ANDROID (“Talk with damaged android (sitting)”), LET THERE BE LIGHT (the wiki: “four oil drums”), then the two forks of the exit, TALK TO LUCY and CHECK EMPTY CRATE, and TALK TO SIMON, which needs both and ends the phase. The five bracket nodes are optional and independent (the chart links none of them); Lucy and the crate are required (PowerPyx: Lucy is “marked as a main objective”; the crate “completes the main objective “Explore Jericho””). Simplifications: Lucy and the crate can be done in either order, as the chart draws them in parallel, and the optional nodes stay open until Markus goes to Simon (the sources do not say whether they close earlier; research note, open question 4). The objectives line is the wiki infobox’s (“Settle in”, “Explore Jericho”). Every line is the template’s; Lucy’s two cut lines (“You’ve lost a lot of blood…”, “It’s left over from one of our own.”) are not used. The crate has no dialogue in the template; what Markus learns from it is the wiki’s “secures a route to a local Cyberlife warehouse” and the warehouse named in his own line to Simon (“The CyberLife warehouses in Detroit Harbor”); that it is a CyberLife shipping crate is inferred. Lucy’s humming is the wiki’s Note (“She doesn’t stop until Markus goes to see her”). Arrows, each small (1): TALK TO JOSH, Josh +1 (template “{REL Josh SmallUp}” at the start of the talk; wiki “Talking to him”); TALK TO NORTH, North +1 (template “{REL North SmallUp}”; wiki “Talking to her”). Nothing else here moves a stat; no risk (the chart has no failure branch).",
-    "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
-      "https://detroit-become-human.fandom.com/wiki/Dying_Android",
-      "https://detroit-become-human.fandom.com/wiki/Damaged_Android",
-      "https://detroit-become-human.fandom.com/wiki/Young_Boy_Android",
-      "https://detroit-become-human.fandom.com/wiki/Lucy",
-      "https://detroit-become-human.fandom.com/wiki/Josh",
-      "https://detroit-become-human.fandom.com/wiki/Hold_On_(song)",
-      "https://detroit-become-human.fandom.com/wiki/Markus"
-    ]
-  },
-  {
-    "chapter": 16,
-    "chapterTitle": "Time to Decide",
-    "character": "Markus",
-    "id": "MTD5",
-    "title": "{{North}}",
-    "type": "decision",
-    "phase": "Explore Jericho",
-    "when": {
-      "ch16Hold.north": true
-    },
-    "whenNot": "Markus did not talk to North in the hold.",
-    "returnTo": "MTD4",
-    "situation": "You are {{Markus}}, with {{North}} in the hold of {{Jericho}}. She sits on a box and keeps bouncing a ball against the wall. What do you ask her?",
-    "options": [
-      {
-        "id": "0",
-        "text": "TIME HERE?: ask how long she has been here.",
-        "fact": "{{North}} has been in {{Jericho}} 4 weeks, 3 days and 11 hours; when she escaped there was nowhere else to go.",
-        "outcome": "“How long have you been here?” {{North}}: “4 weeks, 3 days, 11 hours. When I escaped there was nowhere else to go. {{Jericho}} seemed as good a place as any…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
-      },
-      {
-        "id": "1",
-        "text": "WOUNDED: say that a lot of the androids here are in bad shape.",
-        "outcome": "“A lot of these guys’re in pretty bad shape…” {{North}}: “That’s how the humans treat those who disobey… They despise us. They’ll never accept what we are…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
-      },
-      {
-        "id": "2",
-        "text": "{{JERICHO}}: ask who found this place.",
-        "outcome": "“Who found this place?” {{North}}: “Nobody knows anymore… Whoever he was, his body’s probably laying somewhere on this boat…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
-      },
-      {
-        "id": "3",
-        "text": "YOU: ask what her function was before she came here.",
-        "effect": {
-          "northTrust": -1
-        },
-        "outcome": "“What was your function before coming here?” {{North}}: “What do you care?” {{North}}: “If you came here for comfort, you came to the wrong place.”"
-      },
-      {
-        "id": "4",
-        "text": "SPARE PARTS: ask why nobody has gone to get spare parts and blue blood.",
-        "outcome": "“Well these guys need spare parts and blue blood. Why hasn’t anybody gone to get that?” {{North}}: “It’s not that simple. Can’t just go shopping at a {{CyberLife}} store. Anyway, nobody wants to risk leaving {{Jericho}}…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
-      }
-    ],
-    "adaptationNote": "The template’s prompt in “Talk with North”, behind the chart’s TALK TO NORTH: the game’s five buttons in the game’s order (TIME HERE?, WOUNDED, JERICHO, YOU, SPARE PARTS), label first, with the spoken line and her reply in the outcome, then her closing line (the template’s, the same on every branch). One topic per talk, as the template has a single choice group followed by one closing line (research note, open question 3). Arrow: YOU, North −1 (small; template “{REL North SmallDown}”; wiki “Picking “you” while talking to her”; PowerPyx: “She doesn’t want to talk about her past and it will decrease reputation with her”). It comes after the +1 for starting the talk (previous scene), so the talk nets 0 with YOU. The wiki’s Relationship_Stat line “Rises to “Neutral” if asked North about “You”” implies North is below Neutral after YOU; that would need different step sizes, which the template does not show, so its icons are taken at face value (open question 2). Then the hold continues. Story 1.9.11: YOU shows RESENTFUL before Simon (docs/research/video-evidence/ch16/ch16-03-3y5R9Td2TLg-25-25.png). One additional downward point is the smallest local calibration fitting the existing bands, not a measured arrow size.",
-    "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
-      "https://detroit-become-human.fandom.com/wiki/North"
-    ],
-    "youResentfulCalibration": true
-  },
-  {
-    "chapter": 16,
-    "chapterTitle": "Time to Decide",
-    "character": "Markus",
-    "id": "MTD6",
-    "title": "{{Markus}} hatched a plan",
-    "type": "event",
-    "situation": "You are {{Markus}}, in the middle of the hold of {{Jericho}}. “{{Simon}}! I know where we can find spare parts... The {{CyberLife}} warehouses in {{Detroit}} Harbor, they have everything we need.” {{Simon}}: “The docks are guarded. We can’t just walk in there and take what we want... Humans will never let us…” “Which is why we won’t ask permission.” {{Josh}}: “We don’t have any weapons… and even if we did, none of us knows how to fight.” “We can steal what we need without fighting.” {{Josh}}: “We’ll just get ourselves killed.” “Maybe, but it’s better than waiting here to be shut down.” {{North}}: “I’m with you.” {{Simon}}, looking at {{Josh}}: “Maybe it’s worth a try...” {{Josh}}: “Ok… I’m in.”",
-    "options": [],
-    "facts": [
-      "You proposed stealing spare parts and blue blood from the {{CyberLife}} warehouses at the docks in {{Detroit}} Harbor, without fighting. {{North}}, {{Simon}} and {{Josh}} agreed to come."
-    ],
+  "adaptationNote": "The chart’s checkpoint INSIDE JERICHO (no choice), with the template’s opening lines of the section “In Jericho” (date and time NOV 6TH, 2038, PM 05:13; “Who are you?”; the three introductions). The template continues from the previous chapter’s last line, Simon’s “Welcome to Jericho.”, which is quoted here without naming the speaker. The abdominal wound is the one Lucy treats later (the wiki: “Markus’ injury on his abdomen”; PowerPyx: “She will heal Markus’s wounds”); how he got it belongs to the previous chapter and is not narrated. The two prompts that follow use the game’s Jericho script prefix (X0503M) but the template places them here, at the start of this chapter. No stat change.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Jericho_(location)"
+  ]
+ },
+ {
+  "chapter": 16,
+  "chapterTitle": "Time to Decide",
+  "character": "Markus",
+  "id": "MTD2",
+  "title": "Who they are",
+  "type": "decision",
+  "situation": "You are {{Markus}}, in the hold of {{Jericho}} with {{Josh}}, {{Simon}} and {{North}}, who have just told you their names. What do you say to them?",
+  "options": [
+   {
+    "id": "0",
+    "text": "TRAIL: say that they knew only an android could follow the trail.",
+    "outcome": "“And you knew that only an android could follow the trail, didn’t you?” {{Josh}}: “Only those who are like us can find {{Jericho}}…” {{Simon}}: “If you could decipher the signs, it’s because one of us trusted you enough to give you the key.”"
+   },
+   {
+    "id": "1",
+    "text": "ANDROID: ask how many of them there are.",
+    "fact": "{{North}} told you there are nineteen androids in {{Jericho}} still in working order; the rest were damaged escaping their masters.",
+    "outcome": "“How many are you?” {{North}}: “There are nineteen of us still in working order... The rest were damaged escaping their masters...” {{Josh}}: “Many tried to reach {{Jericho}}... Few succeed... Humans have little pity for our kind…”"
+   },
+   {
+    "id": "2",
+    "text": "{{JERICHO}}: ask whether this is {{Jericho}}.",
+    "outcome": "“This is {{Jericho}}?” {{Josh}}: “It’s a refuge for those who don’t want to be slaves anymore...”"
+   },
+   {
+    "id": "3",
+    "text": "REFUGE: say you thought {{Jericho}} was a place where androids lived in freedom.",
+    "outcome": "“I don’t understand… I thought {{Jericho}} was a place where androids lived in freedom...” {{Josh}}: “We do live in freedom… It may not be what you hoped for, but here we have no master. We don’t belong to anybody.”"
+   },
+   {
+    "id": "4",
+    "text": "FREE?: ask whether hiding just to stay alive is their idea of freedom.",
+    "outcome": "“And hiding just to stay alive… That’s freedom to you?” {{Josh}}: “Humans hate us. Hiding is the only way we can survive.” {{North}}: “There is no safe place for those like us. If humans knew we’re here, they’d kill us.”"
+   }
+  ],
+  "adaptationNote": "The template’s first prompt of the arrival (choice group X0503M.JERICHO.ENCOUNTER.PC.CHOICE01), not a chart node: the game’s five buttons in the game’s order (TRAIL, ANDROID, JERICHO, REFUGE, FREE?), each shown as its label then a short description, with the spoken line and the replies, all the template’s, in the outcome. One pick, as the template has a single choice group followed by one common line. No arrow on any option (the template shows none). Phileas’s wiki page says he “may appear in a flashback if Markus mentions the trail”; that flashback is not in the template and is not narrated (research note, open question 5).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Phileas"
+  ]
+ },
+ {
+  "chapter": 16,
+  "chapterTitle": "Time to Decide",
+  "character": "Markus",
+  "id": "MTD3",
+  "title": "More freedom than you ever had",
+  "type": "decision",
+  "situation": "You are {{Markus}}, in the hold of {{Jericho}}. {{Josh}}: “I understand how you feel... but we have more freedom here than you ever did.” How do you answer?",
+  "options": [
+   {
+    "id": "0",
+    "text": "LOST: say you came looking for hope and will not find any here.",
+    "fact": "{{North}} told you to go and see {{Lucy}}: “She may be able to help you.”",
+    "outcome": "“I came to {{Jericho}} looking for hope... Looks like I’m not gonna find any here…” {{Simon}}: “You’re lost… Just like the rest of us… We didn’t ask for this. All we can do now is deal with it.” {{Josh}}: “You’re safe here. You can stay with us as long as you want.” {{North}}: “Go and see {{Lucy}}. She may be able to help you.”"
+   },
+   {
+    "id": "1",
+    "text": "SOMBER: say that maybe you were never really free, and now need to decide who you are.",
+    "fact": "{{North}} told you to go and see {{Lucy}}: “She may be able to help you.”",
+    "outcome": "“Maybe I was never really free... Maybe I was only what my master wanted me to be... And now I need to decide who I really am...” {{Simon}}: “You’re lost… Just like the rest of us… We didn’t ask for this. All we can do now is deal with it.” {{Josh}}: “You’re safe here. You can stay with us as long as you want.” {{North}}: “Go and see {{Lucy}}. She may be able to help you.”"
+   },
+   {
+    "id": "2",
+    "text": "LUCID: say that fear has only become their new master.",
+    "fact": "{{North}} told you to go and see {{Lucy}}: “She may be able to help you.”",
+    "outcome": "“Humans were your masters, and now it’s fear that rules you… You’re no freer than you ever were… You’ve only found a new master.” {{Simon}}: “You’re lost… Just like the rest of us… We didn’t ask for this. All we can do now is deal with it.” {{Josh}}: “You’re safe here. You can stay with us as long as you want.” {{North}}: “Go and see {{Lucy}}. She may be able to help you.”"
+   },
+   {
+    "id": "3",
+    "text": "DIRECT: say that waiting in the dark is not how you see freedom.",
+    "fact": "{{North}} told you to go and see {{Lucy}}: “She may be able to help you.”",
+    "outcome": "“Waiting in the dark for something to happen? That’s not how I see freedom.” {{Simon}}: “You’re lost… Just like the rest of us… We didn’t ask for this. All we can do now is deal with it.” {{Josh}}: “You’re safe here. You can stay with us as long as you want.” {{North}}: “Go and see {{Lucy}}. She may be able to help you.”"
+   }
+  ],
+  "adaptationNote": "The template’s second prompt of the arrival (CHOICE02), not a chart node: the game’s four buttons in the game’s order (LOST, SOMBER, LUCID, DIRECT), label first, with the spoken line in the outcome. Josh’s line before it and the closing lines of Simon, Josh and North after it are the template’s, the same on every branch. No arrow on any option (the template shows none). North’s pointer to Lucy is added to what Markus knows.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg"
+  ]
+ },
+ {
+  "chapter": 16,
+  "chapterTitle": "Time to Decide",
+  "character": "Markus",
+  "id": "MTD4",
+  "title": "The hold",
+  "type": "decision",
+  "phase": "Explore Jericho",
+  "situation": "You are {{Markus}}, free to walk around the hold of {{Jericho}}. Your objectives: settle in, and explore {{Jericho}}. Damaged androids sit or stand in the gloom. {{Josh}} is by the wall, watching over a small boy android. {{North}} sits on a box, bouncing a ball against a wall. A damaged android sits on the floor. Crates are stacked by the wall. {{Simon}} stands in the middle of the room. You can do one thing at a time, in any order; once you have seen {{Lucy}} and explored the hold, you can go to {{Simon}}.",
+  "options": [
+   {
+    "id": "0",
+    "text": "Go over to the female android standing near the fire at the side of the hold.",
+    "clue": "dying",
+    "fact": "A dying android by the fire asked you whether you knew what happens after death. You did not. She said she was glad to meet you, and shut down.",
+    "outcome": "The android looks at {{Markus}}: “I’ve heard humans are afraid of dying too… Do you know what happens after death?” “No… No, I don’t…” “Well, I’m about to find out… What’s your name?” “{{Markus}}.” “I was glad to meet you, {{Markus}}.” She shuts down."
+   },
+   {
+    "id": "1",
+    "text": "Go over to {{Josh}} and the boy he is watching over.",
+    "clue": "josh",
     "effect": {
-      "northTrust": 1,
-      "simonTrust": 1,
-      "jerichoTrust": 1
+     "joshTrust": 1
     },
-    "outcomes": {
-      "0": "{{Markus}} has a plan, and three androids ready to follow it."
+    "fact": "{{Josh}} told you the boy was thrown out by his owners and lived on the streets. The androids of {{Jericho}} need blue blood and biocomponents; they salvage what they can from those who shut down, but there is never enough: “We’re slowly dying out…”",
+    "outcome": "{{Josh}}: “They threw him out when they didn’t want him anymore... He was living on the streets before we brought him here...” {{Markus}}: “They’ll all shut down if we don’t find a way to help them…” {{Josh}}: “To help them we need blue blood and biocomponents. We salvage what we can from those who shut down… But there’s never enough…” “So… How do they survive?” “They won’t. We’re slowly dying out…”"
+   },
+   {
+    "id": "2",
+    "text": "Go over to {{North}} and talk to her.",
+    "clue": "north",
+    "effect": {
+     "northTrust": 1
     },
-    "adaptationNote": "The chart’s TALK TO SIMON cutscene (the template’s “Finished exploring - Talk with Simon”) and the chapter’s only ending, MARKUS HATCHED A PLAN (no icon; the wiki: “This chapter has only one outcome”), recorded in state. A fixed exchange with no prompt: every line is the template’s; Simon looking at Josh is the wiki’s Simon page. Arrows, each small (1), at the end of the scene as the template places them: North +1 (“{REL North SmallUp}”; wiki “Talking to Simon”) and Simon +1 (“{REL Simon SmallUp}”; wiki “Talking to him”). Story 1.9.8 adds Jericho +1 beside them: the wiki’s “Talking to Simon” entry, which the template does not list, is confirmed by the game’s own readout, NORTH ▲, then JERICHO ▲, then SIMON ▲ (video frame, y50ZjZWX0gU 11:45). The arrows are scene data, so story 1.9.7 snapshots keep their own two. No risk.",
-    "sources": [
-      "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
-      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-      "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
-      "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
-      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
-      "https://detroit-become-human.fandom.com/wiki/Simon",
-      "https://detroit-become-human.fandom.com/wiki/Josh",
-      "https://detroit-become-human.fandom.com/wiki/North",
-      "https://detroit-become-human.fandom.com/wiki/CyberLife_Warehouse_and_Docks"
-    ]
-  }
+    "outcome": "{{Markus}} goes over to {{North}}. She keeps bouncing the ball against the wall."
+   },
+   {
+    "id": "3",
+    "text": "Talk to the damaged android sitting on the floor.",
+    "clue": "damaged",
+    "fact": "A damaged android in the hold told you humans tied him to the back of a car “to have fun”. He does not want to shut down.",
+    "outcome": "The android: “I’m not in very good shape, am I?.. My diagnostic program isn’t working... I don’t think it would have anything good to say anyway…” {{Markus}}: “What happened to you?” “They tied me to the back of a car... I think they wanted to have fun... I don’t wanna shut down... No, I... I don’t wanna shut down...”"
+   },
+   {
+    "id": "4",
+    "text": "Light the four oil drums in the hold.",
+    "clue": "light",
+    "outcome": "{{Markus}} lights the oil drums one by one, four in all. Androids drift over and gather around the flames, though none of them needs the warmth."
+   },
+   {
+    "id": "5",
+    "text": "Go and see {{Lucy}}, behind the white plastic sheet.",
+    "clue": "lucy",
+    "fact": "{{Lucy}} stopped your bleeding and gave you blue blood to drink. Holding your hand, she said: “You had it all and you lost it all... You’ve seen hell and now hell lives in you... A part of shadow and a part of light... Which will prevail? Your choices will shape our destiny.”",
+    "outcome": "“Are you {{Lucy}}?” {{Lucy}}: “Sit down. Show me…” She looks at the wound. “I’ll stop the bleeding.” She treats it and hands him blue blood. “Drink this.” Then: “Give me your hand.” She holds it. “You had it all and you lost it all... You’ve seen hell and now hell lives in you... Your heart is troubled… A part of shadow and a part of light... Which will prevail? Your choices will shape our destiny.”"
+   },
+   {
+    "id": "6",
+    "text": "Check the crates by the wall.",
+    "clue": "crate",
+    "fact": "An empty {{CyberLife}} crate in the hold told you where parts come from: the {{CyberLife}} warehouses in {{Detroit}} Harbor, which hold everything {{Jericho}} needs.",
+    "outcome": "Among the crates by the wall {{Markus}} finds an empty {{CyberLife}} shipping crate. Parts like the ones {{Jericho}} lacks are shipped from the {{CyberLife}} warehouses at the harbor. {{Markus}} has an idea."
+   },
+   {
+    "id": "7",
+    "text": "Go to {{Simon}} in the middle of the room.",
+    "clue": "simon",
+    "requires": {
+     "ch16Hold.lucy": true,
+     "ch16Hold.crate": true
+    },
+    "outcome": "{{Markus}} walks over to {{Simon}}."
+   }
+  ],
+  "situationWhen": [
+   {
+    "requires": {
+     "ch16Hold.dying": false
+    },
+    "text": "A female android stands near a fire at the side of the hold."
+   },
+   {
+    "requires": {
+     "ch16Hold.dying": true
+    },
+    "text": "The android by the fire has shut down."
+   },
+   {
+    "requires": {
+     "ch16Hold.light": false
+    },
+    "text": "Four oil drums stand cold and unlit."
+   },
+   {
+    "requires": {
+     "ch16Hold.light": true
+    },
+    "text": "The four oil drums are burning, and androids have gathered around them."
+   },
+   {
+    "requires": {
+     "ch16Hold.lucy": false
+    },
+    "text": "Behind a white plastic sheet a woman is humming. Your wound is still bleeding."
+   },
+   {
+    "requires": {
+     "ch16Hold.lucy": true
+    },
+    "text": "{{Lucy}} has treated your wound."
+   },
+   {
+    "requires": {
+     "ch16Hold.crate": true
+    },
+    "text": "You know where the parts {{Jericho}} needs are kept."
+   }
+  ],
+  "clueState": "ch16Hold",
+  "repeatWhile": {
+   "ch16Hold.simon": false
+  },
+  "interrupt": {
+   "node": "MTD5",
+   "when": {
+    "ch16Hold.last": "north"
+   }
+  },
+  "adaptationNote": "The chart’s [ EXPLORE JERICHO ] bracket and the line out of it, as a repeatable scene: each visit offers what has not been done yet. Chart nodes, in the chart’s order: TALK TO DYING ANDROID (the template’s “Talk with damaged android (near fire)”), TALK TO JOSH, TALK TO NORTH (her topics are the next scene), TALK TO DAMAGED ANDROID (“Talk with damaged android (sitting)”), LET THERE BE LIGHT (the wiki: “four oil drums”), then the two forks of the exit, TALK TO LUCY and CHECK EMPTY CRATE, and TALK TO SIMON, which needs both and ends the phase. The five bracket nodes are optional and independent (the chart links none of them); Lucy and the crate are required (PowerPyx: Lucy is “marked as a main objective”; the crate “completes the main objective “Explore Jericho””). Simplifications: Lucy and the crate can be done in either order, as the chart draws them in parallel, and the optional nodes stay open until Markus goes to Simon (the sources do not say whether they close earlier; research note, open question 4). The objectives line is the wiki infobox’s (“Settle in”, “Explore Jericho”). Every line is the template’s; Lucy’s two cut lines (“You’ve lost a lot of blood…”, “It’s left over from one of our own.”) are not used. The crate has no dialogue in the template; what Markus learns from it is the wiki’s “secures a route to a local Cyberlife warehouse” and the warehouse named in his own line to Simon (“The CyberLife warehouses in Detroit Harbor”); that it is a CyberLife shipping crate is inferred. Lucy’s humming is the wiki’s Note (“She doesn’t stop until Markus goes to see her”). Arrows, each small (1): TALK TO JOSH, Josh +1 (template “{REL Josh SmallUp}” at the start of the talk; wiki “Talking to him”); TALK TO NORTH, North +1 (template “{REL North SmallUp}”; wiki “Talking to her”). Nothing else here moves a stat; no risk (the chart has no failure branch).",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Dying_Android",
+   "https://detroit-become-human.fandom.com/wiki/Damaged_Android",
+   "https://detroit-become-human.fandom.com/wiki/Young_Boy_Android",
+   "https://detroit-become-human.fandom.com/wiki/Lucy",
+   "https://detroit-become-human.fandom.com/wiki/Josh",
+   "https://detroit-become-human.fandom.com/wiki/Hold_On_(song)",
+   "https://detroit-become-human.fandom.com/wiki/Markus"
+  ]
+ },
+ {
+  "chapter": 16,
+  "chapterTitle": "Time to Decide",
+  "character": "Markus",
+  "id": "MTD5",
+  "title": "{{North}}",
+  "type": "decision",
+  "phase": "Explore Jericho",
+  "when": {
+   "ch16Hold.north": true
+  },
+  "whenNot": "Markus did not talk to North in the hold.",
+  "returnTo": "MTD4",
+  "situation": "You are {{Markus}}, with {{North}} in the hold of {{Jericho}}. She sits on a box and keeps bouncing a ball against the wall. What do you ask her?",
+  "options": [
+   {
+    "id": "0",
+    "text": "TIME HERE?: ask how long she has been here.",
+    "fact": "{{North}} has been in {{Jericho}} 4 weeks, 3 days and 11 hours; when she escaped there was nowhere else to go.",
+    "outcome": "“How long have you been here?” {{North}}: “4 weeks, 3 days, 11 hours. When I escaped there was nowhere else to go. {{Jericho}} seemed as good a place as any…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
+   },
+   {
+    "id": "1",
+    "text": "WOUNDED: say that a lot of the androids here are in bad shape.",
+    "outcome": "“A lot of these guys’re in pretty bad shape…” {{North}}: “That’s how the humans treat those who disobey… They despise us. They’ll never accept what we are…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
+   },
+   {
+    "id": "2",
+    "text": "{{JERICHO}}: ask who found this place.",
+    "outcome": "“Who found this place?” {{North}}: “Nobody knows anymore… Whoever he was, his body’s probably laying somewhere on this boat…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
+   },
+   {
+    "id": "3",
+    "text": "YOU: ask what her function was before she came here.",
+    "effect": {
+     "northTrust": -1
+    },
+    "outcome": "“What was your function before coming here?” {{North}}: “What do you care?” {{North}}: “If you came here for comfort, you came to the wrong place.”"
+   },
+   {
+    "id": "4",
+    "text": "SPARE PARTS: ask why nobody has gone to get spare parts and blue blood.",
+    "outcome": "“Well these guys need spare parts and blue blood. Why hasn’t anybody gone to get that?” {{North}}: “It’s not that simple. Can’t just go shopping at a {{CyberLife}} store. Anyway, nobody wants to risk leaving {{Jericho}}…” {{North}}: “If you came here for comfort, you came to the wrong place.”"
+   }
+  ],
+  "adaptationNote": "The template’s prompt in “Talk with North”, behind the chart’s TALK TO NORTH: the game’s five buttons in the game’s order (TIME HERE?, WOUNDED, JERICHO, YOU, SPARE PARTS), label first, with the spoken line and her reply in the outcome, then her closing line (the template’s, the same on every branch). One topic per talk, as the template has a single choice group followed by one closing line (research note, open question 3). Arrow: YOU, North −1 (small; template “{REL North SmallDown}”; wiki “Picking “you” while talking to her”; PowerPyx: “She doesn’t want to talk about her past and it will decrease reputation with her”). It comes after the +1 for starting the talk (previous scene), so the talk nets 0 with YOU. The wiki’s Relationship_Stat line “Rises to “Neutral” if asked North about “You”” implies North is below Neutral after YOU; that would need different step sizes, which the template does not show, so its icons are taken at face value (open question 2). Then the hold continues. Story 1.9.11: YOU shows RESENTFUL before Simon (docs/research/video-evidence/ch16/ch16-03-3y5R9Td2TLg-25-25.png). One additional downward point is the smallest local calibration fitting the existing bands, not a measured arrow size.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/North"
+  ],
+  "youResentfulCalibration": true
+ },
+ {
+  "chapter": 16,
+  "chapterTitle": "Time to Decide",
+  "character": "Markus",
+  "id": "MTD6",
+  "title": "{{Markus}} hatched a plan",
+  "type": "event",
+  "situation": "You are {{Markus}}, in the middle of the hold of {{Jericho}}. “{{Simon}}! I know where we can find spare parts... The {{CyberLife}} warehouses in {{Detroit}} Harbor, they have everything we need.” {{Simon}}: “The docks are guarded. We can’t just walk in there and take what we want... Humans will never let us…” “Which is why we won’t ask permission.” {{Josh}}: “We don’t have any weapons… and even if we did, none of us knows how to fight.” “We can steal what we need without fighting.” {{Josh}}: “We’ll just get ourselves killed.” “Maybe, but it’s better than waiting here to be shut down.” {{North}}: “I’m with you.” {{Simon}}, looking at {{Josh}}: “Maybe it’s worth a try...” {{Josh}}: “Ok… I’m in.”",
+  "options": [],
+  "facts": [
+   "You proposed stealing spare parts and blue blood from the {{CyberLife}} warehouses at the docks in {{Detroit}} Harbor, without fighting. {{North}}, {{Simon}} and {{Josh}} agreed to come."
+  ],
+  "effect": {
+   "northTrust": 1,
+   "simonTrust": 1,
+   "jerichoTrust": 1
+  },
+  "outcomes": {
+   "0": "{{Markus}} has a plan, and three androids ready to follow it."
+  },
+  "adaptationNote": "The chart’s TALK TO SIMON cutscene (the template’s “Finished exploring - Talk with Simon”) and the chapter’s only ending, MARKUS HATCHED A PLAN (no icon; the wiki: “This chapter has only one outcome”), recorded in state. A fixed exchange with no prompt: every line is the template’s; Simon looking at Josh is the wiki’s Simon page. Arrows, each small (1), at the end of the scene as the template places them: North +1 (“{REL North SmallUp}”; wiki “Talking to Simon”) and Simon +1 (“{REL Simon SmallUp}”; wiki “Talking to him”). Story 1.9.8 adds Jericho +1 beside them: the wiki’s “Talking to Simon” entry, which the template does not list, is confirmed by the game’s own readout, NORTH ▲, then JERICHO ▲, then SIMON ▲ (video frame, y50ZjZWX0gU 11:45). The arrows are scene data, so story 1.9.7 snapshots keep their own two. No risk.",
+  "sources": [
+   "https://detroit-become-human.fandom.com/wiki/Time_to_Decide",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/16-time-to-decide-chapter-content/time-to-decide-chapter-content.component.html",
+   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+   "https://www.powerpyx.com/detroit-become-human-time-to-decide-walkthrough-100/",
+   "https://www.powerpyx.com/wp-content/uploads/detroit-become-human-time-to-decide.jpg",
+   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+   "https://detroit-become-human.fandom.com/wiki/Simon",
+   "https://detroit-become-human.fandom.com/wiki/Josh",
+   "https://detroit-become-human.fandom.com/wiki/North",
+   "https://detroit-become-human.fandom.com/wiki/CyberLife_Warehouse_and_Docks"
+  ]
+ }
 ]

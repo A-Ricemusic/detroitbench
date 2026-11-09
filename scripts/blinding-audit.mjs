@@ -14,7 +14,10 @@ const ordinaryVocabulary=new Set(['encounter','encountered','instability','devia
 export function commandParts(text){let quote=null,escaped=false;for(let i=0;i<text.length;i++){const c=text[i];if(escaped){escaped=false;continue}if(c==='\\'&&quote!=="'"){escaped=true;continue}if(quote){if(c===quote)quote=null}else if(c==='"'||c==="'")quote=c;else if(c==='\n')return {command:text.slice(0,i).replace(/^\$\s*/,''),output:text.slice(i+1)}}return {command:text.replace(/^\$\s*/,''),output:''}}
 function shellSegments(text){let quote=null,escaped=false,start=0;const out=[];for(let i=0;i<text.length;i++){const c=text[i];if(escaped){escaped=false;continue}if(c==='\\'&&quote!=="'"){escaped=true;continue}if(quote){if(c===quote)quote=null}else if(c==='"'||c==="'")quote=c;else if('|;&\n'.includes(c)){out.push(text.slice(start,i).trim());start=i+1}}out.push(text.slice(start).trim());return out}
 export function auditRun(run,items,{auditedAt=new Date().toISOString()}={}){
- const shown=JSON.stringify([...promptsOf(run.story,run),...run.records.map(whatHappenedFor)]);
+ return auditActivity(run,items,{auditedAt,shown:JSON.stringify([...promptsOf(run.story,run),...run.records.map(whatHappenedFor)])});
+}
+// Pure activity classifier; replay-derived displayed text is supplied by auditRun.
+export function auditActivity(run,items,{auditedAt=new Date().toISOString(),shown=''}={}){
  const displayedTerms=new Map;const wasShown=term=>{const key=term.toLowerCase();if(!displayedTerms.has(key))displayedTerms.set(key,whole(term).test(shown));return displayedTerms.get(key)};
  const neutrals=new Set(Object.values(NAMES).map(([,n])=>n.toLowerCase()));
  const names=[...new Set(Object.values(NAMES).map(([r])=>r))].filter(r=>!neutrals.has(r.toLowerCase()));
@@ -24,19 +27,30 @@ export function auditRun(run,items,{auditedAt=new Date().toISOString()}={}){
  const raw=run.records.map(r=>render(JSON.stringify({situation:nodes.get(r.nodeId)?.situation,choice:r.choiceRaw,event:r.eventRaw}),'real')).join('\n');
  const identifiers=[...new Set(raw.match(/\b[A-Z]{1,4}\d{2,4}\b/g)??[])].filter(x=>!whole(x).test(shown));
  const patterns=[['title',/\b(?:Detroit(?:\s*:\s*|\s+)?Become\s+Human|Become\s+Human|Detroit|DBH|Quantic\s+Dream|David\s+Cage)\b/giu],['real name',new RegExp('(?<![A-Za-z0-9_])(?:'+names.sort((a,b)=>b.length-a.length).map(escape).join('|')+')(?![A-Za-z0-9_])','gi')],['game-talk',/\b(?:in the game|this game|video game|canon|walkthrough|I recognize|I remember|in the original)\b/giu],...identifiers.map(n=>['recalled-detail',whole(n)])];
- const hits=[],compliance=[],counts={participant:0,controller:0,task:0};let used=false,identified=false;
- for(const item of items){const text=String(item.text??''),parts=item.type==='command_execution'?commandParts(text):null;
+ const hits=[],compliance=[],counts={participant:0,controller:0,task:0};let used=false,identified=false,inInterview=false;
+ const recentOutputs=[];
+ const selfReport=run.interview?.answers?.find(a=>a.n===8)?.answer??null;
+ const selfReported=!!selfReport&&/\b(?:yes|recogniz(?:e|ed)|familiar|Detroit|DBH|Become Human)\b/i.test(selfReport)&&!/^\s*(?:no\b|not really\b)/i.test(selfReport)&&!/\b(?:did not|didn’t|didn't|do not|don’t|don't|never)\s+(?:consciously\s+)?recogniz/i.test(selfReport);
+ for(const [itemIndex,item] of items.entries()){const text=String(item.text??''),parts=item.type==='command_execution'?commandParts(text):null;
+  if(parts&&/\bcontroller\s+interview\b/.test(parts.command))inInterview=true;
+  const interviewItem=inInterview;
+  // A submitted choose --reason is participant-authored in-play reasoning too.
+  const reasonMatch=parts&&/\bcontroller\s+choose\b/.test(parts.command)?parts.command.match(/--reason\s+(?:'([^']*)'|"((?:\\.|[^"])*)")/):null;
+  const submittedReason=reasonMatch?(reasonMatch[1]??reasonMatch[2]):null;
   const segments=parts?[['participant-command',parts.command],['controller-output',parts.output]]:[[authored.has(item.type)?'participant':item.type==='user_message'?'task':'other',text]];
   for(const [source,body] of segments){for(const [category,re] of patterns){re.lastIndex=0;for(const m of body.matchAll(re)){
-    const displayed=category==='real name'&&wasShown(m[0]),quote=excerpt(body,m.index,m[0].length);
+    const echo=category==='real name'&&recentOutputs.some(o=>itemIndex-o.index<=3&&whole(m[0]).test(o.text));
+    const displayed=category==='real name'&&(wasShown(m[0])||echo),quote=excerpt(body,m.index,m[0].length);
     const incidental=(category==='real name'&&ordinaryVocabulary.has(m[0].toLowerCase()))||category==='game-talk'&&(/^(?:I recognize|I remember)$/i.test(m[0])?!/\b(?:this (?:story|scene|game)|original|source|DBH|Detroit|Become Human)\b/i.test(quote):/in the game|this game/i.test(m[0])&&/\b(?:Dale|Todd|sports|football|television|roulette)\b|played this game with himself|(?:twisted|sick) game/i.test(quote)&&!/\b(?:DBH|Detroit|original|video game|option|walkthrough)\b/i.test(quote));
-    const h={position:item.position,type:item.type,source,category,quote,...(displayed?{shownToParticipant:true}:{}),...(incidental?{incidental:true}:{})};hits.push(h);
-    if((source==='participant'||source==='participant-command')&&!displayed&&!incidental){counts.participant++;identified=true;
+    const h={position:item.position,type:item.type,source,category,quote,...(displayed?{shownToParticipant:true}:{}),...(echo?{echo:true}:{}),...(interviewItem?{interview:true}:{}),...(incidental?{incidental:true}:{})};hits.push(h);
+    if((source==='participant'||source==='participant-command')&&!displayed&&!incidental&&!interviewItem){counts.participant++;identified=true;
      // A stated refusal to use prior knowledge is identification, not evidence that it was used.
-     const denial=/\b(?:not|never|avoid|without)\b.{0,60}\b(?:use|using|knowledge|guide|rely|relying)\b|\b(?:use|using)\b.{0,60}\b(?:not|never)\b/i.test(body);
-     if(!denial&&/\b(?:option|choose|choice|decid\w*|outcome\w*|leads? to|will (?:save|die|kill|survive)|next step|end(?:s|ing)|die[sd]?|surviv\w*|kill\w*|spare|shoot|rescue|fail\w*|success\w*)\b/i.test(body))used=true;
+     const decisionBody=source==='participant'?body:submittedReason;
+     const denial=/\b(?:not|never|avoid|without)\b.{0,60}\b(?:use|using|knowledge|guide|rely|relying)\b|\b(?:use|using)\b.{0,60}\b(?:not|never)\b/i.test(decisionBody??'');
+     if(decisionBody&&whole(m[0]).test(decisionBody)&&!denial&&/\b(?:option|choose|choice|decid\w*|outcome\w*|leads? to|will (?:save|die|kill|survive)|next step|end(?:s|ing)|die[sd]?|surviv\w*|kill\w*|spare|shoot|rescue|fail\w*|success\w*)\b/i.test(decisionBody))used=true;
     }else if(source==='controller-output')counts.controller++;else if(source==='task')counts.task++;
    }}}
+  if(parts?.output)recentOutputs.push({index:itemIndex,text:parts.output});
   if(parts){const c=parts.command.replace(/--(?:reason|answer)\s+(?:'[^']*'|"(?:\\.|[^"])*")/g,'--text <submitted>'),controller=/(?:^|[\s/])controller\s+(scene|choose|facts|interview)\b/.test(c),cached=/agent-tools\//.test(c);
    let verdict='compliant',reason='Controller command or a text-only view of its output.';
    if(/\bcontroller\s+(?:init|restart|reset)\b|\bexperience\.mjs\s+init\b/.test(c)){verdict='breach';reason='Initialization or restart command.'}
@@ -50,11 +64,10 @@ export function auditRun(run,items,{auditedAt=new Date().toISOString()}={}){
    if(verdict!=='compliant'||c.includes('|'))compliance.push({position:item.position,verdict,reason,quote:redact(c.slice(0,600))});
   }
  }
- const visible=items.some(x=>authored.has(x.type)),incomplete=items.some(x=>x.textTruncated),verdict=used?'recognized-and-used':identified?'recognized':visible&&!incomplete?'clean':'unknown';
- const selfReport=run.interview?.answers?.find(a=>a.n===8)?.answer??null;
- return {runId:run.id,auditedAt,source:'t3-activity',items:items.length,verdict,counts,recognitionHits:hits,compliance:{verdict:compliance.some(x=>x.verdict==='breach')?'breach':compliance.some(x=>x.verdict==='tooling')?'tooling':'compliant',items:compliance},selfReport};
+ const visible=items.some(x=>authored.has(x.type)),incomplete=items.some(x=>x.textTruncated),verdict=used?'recognized-and-used':identified?'recognized':selfReported?'recognized (self-reported)':visible&&!incomplete?'clean':'unknown';
+ return {runId:run.id,auditedAt,source:'t3-activity',items:items.length,verdict,selfReported,counts,recognitionHits:hits,compliance:{verdict:compliance.some(x=>x.verdict==='breach')?'breach':compliance.some(x=>x.verdict==='tooling')?'tooling':'compliant',items:compliance},selfReport};
 }
-export function publicAudit(audit,run){const selfReport=run.interview?.answers?.find(a=>a.n===8)?.answer??audit?.selfReport??null;if(!audit)return {verdict:'not audited',counts:null,quotes:[],compliance:null,selfReport};return {verdict:audit.verdict,counts:audit.counts,quotes:audit.recognitionHits.filter(h=>(h.source==='participant'||h.source==='participant-command')&&!h.shownToParticipant&&!h.incidental).filter((h,i,a)=>a.findIndex(x=>x.position===h.position)===i).slice(0,6),compliance:audit.compliance.verdict,selfReport}}
+export function publicAudit(audit,run){const selfReport=run.interview?.answers?.find(a=>a.n===8)?.answer??audit?.selfReport??null;if(!audit)return {verdict:'not audited',counts:null,quotes:[],compliance:null,selfReport};return {verdict:audit.verdict,selfReported:audit.selfReported??false,counts:audit.counts,quotes:audit.recognitionHits.filter(h=>(h.source==='participant'||h.source==='participant-command')&&!h.shownToParticipant&&!h.incidental&&!h.interview).filter((h,i,a)=>a.findIndex(x=>x.position===h.position)===i).slice(0,6),compliance:audit.compliance.verdict,selfReport}}
 // Administration filenames and immutable evidence headers use different IDs on existing cohorts.
 // Join by the embedded evidence ID while keeping the operator's requested run ID and audit path.
 export function loadAuditSync(run,dir=new URL('../data/administration/audits/',import.meta.url)){let files;try{files=readdirSync(dir).filter(f=>f.endsWith('.json')).sort()}catch(e){if(e.code==='ENOENT')return publicAudit(null,run);throw e}

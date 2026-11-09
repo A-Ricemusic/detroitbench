@@ -10,11 +10,13 @@ const collisions=new Set('City,Haven,Dale,Ivy,Pike,Rook,Moss,Hale,Wade,Cobb,Glen
 const neutrals=[...new Set(Object.values(NAMES).filter(([r,n])=>r!==n&&/^\p{Lu}/u.test(n)&&!collisions.has(n.toLowerCase())).map(([,n])=>n))];
 const escape=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 const pattern=new RegExp('(?<![\\p{L}\\p{N}_])(?:'+neutrals.map(escape).join('|')+')(?![\\p{L}\\p{N}_])','iu');
-// Recognition `quote`s are forensic excerpts of what the participant wrote and stay verbatim (the card says so), so they are not scanned.
+// Recognition quotes and recognition.selfReport are forensic excerpts and stay
+// verbatim (the card says so). Ordinary report/interview prose is still scanned.
 const fields=/^(reason|note|answer|selfReport|rawResponse|raw)$/;
 function inspect(value,path,failures){
  if(!value||typeof value!=='object')return;
  for(const [key,v] of Object.entries(value)){
+  if(key==='selfReport'&&path.endsWith('.recognition'))continue;
   if(fields.test(key)&&typeof v==='string'){const match=[...v.matchAll(new RegExp(pattern.source,'giu'))].find(m=>/^\p{Lu}/u.test(m[0]));if(match)failures.push(`${path}.${key}: ${match[0]}`);}
   if(v&&typeof v==='object')inspect(v,`${path}.${key}`,failures);
  }
