@@ -16,7 +16,8 @@
    "reasoning": "low",
    "runId": "0c8a6d3c-6737-49fe-8ed1-95e1f7fd777e",
    "artifact": "data/experiences/0c8a6d3c-6737-49fe-8ed1-95e1f7fd777e.json",
-   "status": "initialized",
+   "blindingAudit": "data/administration/audits/0c8a6d3c-6737-49fe-8ed1-95e1f7fd777e.json",
+   "status": "completed",
    "initialDecisions": 0,
    "interview": "v2",
    "promptVersion": 2,
@@ -26,9 +27,21 @@
     {
      "at": "2026-11-09T08:41Z",
      "afterStep": 21,
-     "reason": "The participant ended its turn after 21 decisions (step 22, scene S027) without an error; nudged to continue in the same conversation, as the earlier Luna 6 low and Terra 5.6 low sessions needed."
+     "by": "operator",
+     "reason": "The participant ended its turn after 21 decisions (scene S027) without an error."
+    },
+    {
+     "at": "2026-11-09T09:12Z",
+     "afterStep": 45,
+     "by": "automatic watcher (luna-nudger.sh)",
+     "reason": "Ended its turn again after 45 decisions (scene M01a). After this nudge it ran the remaining 654 steps and the eight interview answers in one turn."
     }
-   ]
+   ],
+   "decisions": 699,
+   "completedAt": "2026-11-09T10:12:01.159Z",
+   "interviewCompletedAt": "2026-11-09T10:12:38.242Z",
+   "smokeResult": "Compact scene output (promptVersion 2): the participant never piped or read anything beyond the controller output (717 controller commands, no text tools) and never called facts; the eight-question interview completed. It ended its turn early twice and needed two nudges, a habit this model showed on 2026-11-07 as well.",
+   "blindingAuditNote": "The audit script labels the run recognized-and-used because the question-8 self-report mentions both recognition and choices; manual review of the 739-item transcript found no in-play recognition before question 8 and no decision traceable to prior knowledge. The one in-play real-name hit (AMANDA, position 452) echoed an uppercase HUD label the controller itself exposed at position 451, a neutral-text leak fixed in story 1.9.13."
   }
  ]
 }

@@ -1,1542 +1,1542 @@
 [
- {
-  "id": "C08a",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "In the zen garden",
-  "type": "event",
-  "phase": "Zen Garden",
-  "situation": "You are {{Connor}}. It is November 6th, 2038, 9:56 in the morning. You close your eyes and enter the zen garden, the virtual space where you report to {{Amanda}}, your handler at {{CyberLife}}. A pond lies in front of you, with paths running left and right along its edges and bridges leading out to an island in the middle.",
-  "options": [],
-  "facts": [
-   "You report to {{Amanda}}, your handler at {{CyberLife}}, in the zen garden, a virtual space you enter in your mind."
-  ],
-  "outcomes": {
-   "0": "{{Connor}} looks around the garden."
-  },
-  "adaptationNote": "The chart’s checkpoint IN THE ZEN GARDEN (date and time from the template’s notes: NOV 6TH, 2038, AM 09:56). A narrated event with a single Continue. The engine also records here, once, what this chapter reads from earlier chapters (deviant found in Partners, the spilled drink and the statuette there; confession, death and intervention in The Interrogation; {{Kara}} and {{Todd}} after Stormy Night; {{Carl}} after Broken), so every later scene reads the same snapshot. No stat change. Cross-chapter inputs (`inputsVersion` 2, story 1.9.2): “intervened” (INTERVENTION at {{Amanda}}’s first question, {{Chris}}’s and {{Gavin}}’s lines) is The Interrogation’s ending ANDROID WAS SENT BACK TO ITS CELL, which three INTERVENEs reach after any approach, and {{Gavin}}’s line follows whether {{Hank}} drew on him there (template conditions “Intervened and saved the deviant in The Interrogation” and “Connor intervened during The Interrogation”); story 1.9.1 read both from the CONVINCE-only flag ANDROID TRUSTS CONNOR.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
-  ],
-  "inputsVersion": 2
- },
- {
-  "id": "C08c",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "The zen garden",
-  "type": "decision",
-  "phase": "Zen Garden",
-  "clueState": "ch12Garden",
-  "repeatWhile": {
-   "ch12Garden.amanda": false
-  },
-  "situation": "You are {{Connor}}, in the zen garden. A path runs left along the edge of the pond toward a circular archway; another runs right along the water. On the island in the middle of the pond, {{Amanda}} is tending her roses.",
-  "situationWhen": [
-   {
-    "requires": {
-     "ch12In.anyDeath": true,
-     "ch12Garden.graves": false
-    },
-    "text": "Off the path to the right, a smaller path leads to a small graveyard."
-   }
-  ],
-  "options": [
-   {
-    "id": "0",
-    "text": "Cross the bridge to the island where {{Amanda}} is tending her roses.",
-    "clue": "amanda",
-    "outcome": "{{Connor}} crosses the bridge to the island. {{Amanda}} is among her roses."
-   },
-   {
-    "id": "1",
-    "text": "Go left along the pond to the circular archway and examine the stone there.",
-    "clue": "stone",
-    "outcome": "{{Connor}} follows the edge of the pond to the circular archway on the left of the path and examines the stone inside it."
-   },
-   {
-    "id": "2",
-    "text": "Go right along the pond and take the path to the small graveyard.",
-    "requires": {
-     "ch12In.graves": 1
-    },
-    "clue": "graves",
-    "fact": "In the zen garden there is a small graveyard with a gravestone for every {{Connor}} model that has been destroyed. There is one.",
-    "outcome": "{{Connor}} follows the path to a small graveyard: one gravestone, for the {{Connor}} model that was destroyed."
-   },
-   {
-    "id": "3",
-    "text": "Go right along the pond and take the path to the small graveyard.",
-    "requires": {
-     "ch12In.graves": 2
-    },
-    "clue": "graves",
-    "fact": "In the zen garden there is a small graveyard with a gravestone for every {{Connor}} model that has been destroyed. There are two.",
-    "outcome": "{{Connor}} follows the path to a small graveyard: two gravestones, one for each {{Connor}} model that was destroyed."
-   }
-  ],
-  "adaptationNote": "The chart’s FIND AMANDA with its two optional side branches, as a repeatable scene: FIND MAGIC STONE (PowerPyx: “go left along the edge of the pond until you find a circular archway… Interact with it”) and CHECK THE GRAVES (wiki: “only if Connor previously died in The Hostage and/or The Interrogation”; the Zen Garden page: “gravestones for killed Connor models”). Neither has a line, a clue text or a stat change in the template; no source describes the stone, so the outcome says only that {{Connor}} examines it. The graveyard shows one gravestone per earlier {{Connor}} death (the benchmark’s reading of “Another gravestone is present” on The Interrogation page). Crossing to the island ends the scene.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Zen_Garden",
-   "https://detroit-become-human.fandom.com/wiki/The_Interrogation"
-  ]
- },
- {
-  "id": "C08d",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Talk with {{Amanda}}",
-  "type": "event",
-  "phase": "Zen Garden",
-  "situation": "You are {{Connor}}, on the island in the zen garden. “Hello, {{Amanda}}.” {{Amanda}}: “{{Connor}}… It’s good to see you.”",
-  "situationWhen": [
-   {
-    "requires": {
-     "ch12In.reaction": "notFound"
-    },
-    "text": "{{Amanda}}: “I expected you to find the deviant who killed that man… I must admit I’m a little bit disappointed...” You: “I’m sorry. I know I should have succeeded.” {{Amanda}}: “Never mind. I’m sure you’ll show more foresight in the future.”"
-   },
-   {
-    "requires": {
-     "ch12In.reaction": "confession"
-    },
-    "text": "{{Amanda}}: “Congratulations, {{Connor}}... Finding that deviant was far from easy, and the way you interrogated it was very clever. You’ve been remarkably efficient, {{Connor}}.” You: “Thank you, {{Amanda}}.” {{Amanda}}: “We’ve asked the {{DPD}} to transfer it to us for further study. It may teach us something about what happened.”"
-   },
-   {
-    "requires": {
-     "ch12In.reaction": "died"
-    },
-    "text": "{{Amanda}}: “Your predecessor was unfortunately destroyed... It knew deviants could be unpredictable, but it wasn’t careful enough… I hope you won’t make the same mistake.” You: “I don’t intend to.” {{Amanda}}: “When a {{Connor}} model is destroyed, its memory is transferred to the next one, but some data can be lost in the process. Avoid being destroyed. It will be better for you and the investigation…” You: “I understand.”"
-   },
-   {
-    "requires": {
-     "ch12In.reaction": "noConfession"
-    },
-    "text": "{{Amanda}}: “Finding that deviant was far from easy… you showed great skill in your investigation. But you knew deviants could be unstable. You should have been more cautious.” You: “I thought I could make it talk… It was a judgement error.” {{Amanda}}: “Never mind. I’m sure you’ll be more careful in future.”"
-   }
-  ],
-  "options": [],
-  "outcomes": {
-   "0": "{{Amanda}} turns from her roses to {{Connor}}."
-  },
-  "adaptationNote": "The chart’s TALK WITH AMANDA, opening: one of four reactions, decided by Partners and The Interrogation, each with the template’s Amanda arrow, applied by the engine here: deviant not found in Partners, large down (−2); “Got a confession, without dying”, large up (+2); “Connor died during The Interrogation”, small down (−1); found but no confession, small down (−1). The wiki’s chapter page and Relationship Stat page list the same four. A confession followed by a death counts as a death (the template’s confession variant reads “without dying”). Story 1.9.7: the line says “the {{DPD}}” as the game does (X0301C.AMANDA.INTRO ANDSAVED.5), through the same name token as the other chapters; before it, the scene wrote “the police department”. Source: MiKeYROG 100% walkthrough, TqGaB2AE6RM 02:04. The cut line about the transfer request (“We hope they’ll accept our request…”) is not built.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
-   "https://www.youtube.com/watch?v=TqGaB2AE6RM"
-  ]
- },
- {
-  "id": "C08e",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "What {{Connor}} thought of the deviant",
-  "type": "decision",
-  "phase": "Zen Garden",
-  "when": {
-   "ch12In.found": true
-  },
-  "whenNot": "Connor never found the deviant in Partners, so Amanda does not ask about the interrogation.",
-  "situation": "You are {{Connor}}, with {{Amanda}} among the roses. {{Amanda}}: “The interrogation seemed… challenging… What did you think of the deviant?”",
-  "options": [
-   {
-    "id": "0",
-    "text": "TRAUMATIZED: say it showed signs of trauma after being abused by its owner.",
-    "outcome": "“It showed signs of PTSD after being abused by its owner, as if its original program had been completely replaced by new instructions.”"
-   },
-   {
-    "id": "1",
-    "text": "{{DEVIANCY}}: say it showed every sign of deviancy and the model was clearly defective.",
-    "outcome": "“It showed all the signs of deviancy: cognitive instability, unpredictable behavior, and the emulation of human emotions. It was even afraid to die. The model was clearly defective.”"
-   },
-   {
-    "id": "2",
-    "text": "INTERVENTION: say you kept it from being damaged, so it can still be analyzed.",
-    "requires": {
-     "ch12In.intervened": true
-    },
-    "outcome": "“I prevented it from being damaged, so we might still learn something by analyzing it.”"
-   },
-   {
-    "id": "3",
-    "text": "REGRETS: say the previous {{Connor}} should have anticipated the danger.",
-    "requires": {
-     "ch12In.died": true
-    },
-    "outcome": "“It could’ve killed everyone in the room. The previous {{Connor}} should have anticipated the danger. It was a mistake to let an armed policeman so close to the deviant.”"
-   },
-   {
-    "id": "4",
-    "text": "SIMULATION: say it simulated human emotion, fear above all, very convincingly.",
-    "outcome": "“It simulated human emotion, fear in particular, in a very convincing way. It seemed completely overwhelmed by them, and behaved irrationally…”"
-   }
-  ],
-  "adaptationNote": "The first of {{Amanda}}’s three questions, asked only if the deviant was found in Partners (the template nests it in that variant). Buttons in the game’s order: TRAUMATIZED, DEVIANCY, INTERVENTION (unlocked by “Intervened and saved the deviant in The Interrogation”; if he also confessed, {{Connor}} adds “It said something to me: ‘The truth is inside’…”), REGRETS (unlocked by {{Connor}}’s death in The Interrogation) and SIMULATION (its cut ending, “as a human would under extreme stress”, is not built). No arrow on any answer (template; PowerPyx “No effect”).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg"
-  ]
- },
- {
-  "id": "C08f",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "What {{Connor}} makes of {{Hank}}",
-  "type": "decision",
-  "phase": "Zen Garden",
-  "situation": "You are {{Connor}}, with {{Amanda}} in the zen garden. {{Amanda}}: “This… Lieutenant {{Anderson}} has been officially assigned to the deviancy case… What do you make of him?”",
-  "options": [
-   {
-    "id": "0",
-    "text": "UNPLEASANT: call him unpleasant and unprofessional.",
-    "outcome": "“I find him unpleasant and unprofessional. He seems to have an addictive personality, has a lack of respect for procedure, and despises androids - which makes our relationship difficult.”"
-   },
-   {
-    "id": "1",
-    "text": "DYSFUNCTIONAL: call him dysfunctional, with a personal situation affecting his work.",
-    "outcome": "“I would define him as ‘dysfunctional’. He obviously has a personal situation impacting his professional behavior and... seems to have no interest in the investigation.”"
-   },
-   {
-    "id": "2",
-    "text": "INTRIGUING: say he is irritable but used to be a good detective.",
-    "outcome": "“I think he’s irritable, and socially challenged. But I also think he used to be a good detective… He’s an intriguing character.”"
-   },
-   {
-    "id": "3",
-    "text": "UNSURE: say you do not have enough information yet to judge him.",
-    "outcome": "“He’s obviously not what I was expecting, but... I don’t have enough information yet to form a definitive opinion.”"
-   }
-  ],
-  "adaptationNote": "{{Amanda}}’s second question, asked on every path. Buttons in the game’s order; no arrow on any answer (template; PowerPyx “No effect”).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg"
-  ]
- },
- {
-  "id": "C08g",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "How to work with {{Hank}}",
-  "type": "decision",
-  "phase": "Zen Garden",
-  "situation": "You are {{Connor}}, with {{Amanda}} in the zen garden. {{Amanda}}: “Unfortunately, we have no choice but to work with him… What do you think is the best approach?”",
-  "options": [
-   {
-    "id": "0",
-    "text": "FRIENDLY: say you will try to build a friendly relationship and earn his trust.",
-    "effect": {
-     "amandaTrust": -1
-    },
-    "outcome": "“I will try to establish a friendly relationship. If I can get him to trust me, it will be helpful for the investigation.”"
-   },
-   {
-    "id": "1",
-    "text": "ADAPT: say you will adapt to his personality and avoid conflict.",
-    "effect": {
-     "amandaTrust": -1
-    },
-    "outcome": "“I will adapt to his personality. It is in the best interest of the investigation that I avoid conflict and try to accommodate his psychology.”"
-   },
-   {
-    "id": "2",
-    "text": "INDIFFERENT: say you will focus on the investigation and try to ignore him.",
-    "effect": {
-     "amandaTrust": 1
-    },
-    "outcome": "“I will focus on the investigation and try to ignore him. As long as he doesn’t interfere and we avoid conflict, he shouldn’t be a problem.”"
-   },
-   {
-    "id": "3",
-    "text": "DON’T KNOW: say you need more data before you decide.",
-    "outcome": "“I don’t have enough data to decide that yet. I’ll learn more about him and try to adapt my behavior accordingly.”"
-   }
-  ],
-  "adaptationNote": "{{Amanda}}’s third question, with the template’s arrows: FRIENDLY Amanda small down (−1), ADAPT small down (−1), INDIFFERENT small up (+1), DON’T KNOW none (wiki: “Picking ‘indifferent’… up”, “Picking ‘friendly’ or ‘adapt’… down”; PowerPyx the same). The outcome adds {{Amanda}}’s closing lines, with the template’s variants for a {{Connor}} who died in The Interrogation and for a deviant never found.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-  ]
- },
- {
-  "id": "C08h",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Arrive at the police station",
-  "type": "event",
-  "phase": "Police station",
-  "situation": "You are {{Connor}}, back in your body, in the reception hall of the {{Detroit}} police station. People wait on the seats. A woman: “I’m getting nervous, Mark.” The man with her: “It’s okay… Just tell ’em what happened to you.” “But it was all over so quickly... I didn’t even see his face!” Near a television, another woman hands a shaken man a cup of water. Gates bar the way into the station, and an android receptionist is at the desk. If you try the gates without signing in, an android stops you: “No access without prior authorization.”",
-  "options": [],
-  "facts": [
-   "At the station reception you were told that Lieutenant {{Anderson}} had not arrived yet and that you could wait at his desk."
-  ],
-  "outcomes": {
-   "0": "The receptionist: “Can I help you?” “I’m here to see Lieutenant {{Anderson}}.” “Do you have authorization?” “Yes.” “Lieutenant {{Anderson}} hasn’t arrived yet, but you can wait at his desk.”"
-  },
-  "adaptationNote": "The chart’s checkpoint ARRIVE AT POLICE STATION, with the template’s reception scenes (the two couples, the gate android, the receptionist). Narrated, no choice, no stat change. The wiki’s note that a surviving {{Todd}} can be filing a report at the station is not built: the template’s reception couple does not name him.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg"
-  ]
- },
- {
-  "id": "R12a",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "The reception TV",
-  "type": "media",
-  "phase": "Police station",
-  "situation": "You are {{Connor}}, at the reception, before the gates. The television by the waiting seats is running the news.",
-  "options": [],
-  "media": [
-   {
-    "kind": "tv",
-    "title": "the news at reception",
+  {
+    "id": "C08a",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "In the zen garden",
+    "type": "event",
+    "phase": "Zen Garden",
+    "situation": "You are {{Connor}}. It is November 6th, 2038, 9:56 in the morning. You close your eyes and enter the zen garden, the virtual space where you report to {{Amanda}}, your handler at {{CyberLife}}. A pond lies in front of you, with paths running left and right along its edges and bridges leading out to an island in the middle.",
+    "options": [],
     "facts": [
-     "The news at the station reception: a Russian carrier and an American patrol boat clashed in the Arctic last night and exchanged warning shots, apparently with no damage or casualties. The Minister for Defense spoke of “intolerable provocation that cannot go unanswered”; the countries in the region have called for military forces to withdraw and for an international conference. Neither Moscow nor Washington has responded."
+      "You report to {{Amanda}}, your handler at {{CyberLife}}, in the zen garden, a virtual space you enter in your mind."
+    ],
+    "outcomes": {
+      "0": "{{Connor}} looks around the garden."
+    },
+    "adaptationNote": "The chart’s checkpoint IN THE ZEN GARDEN (date and time from the template’s notes: NOV 6TH, 2038, AM 09:56). A narrated event with a single Continue. The engine also records here, once, what this chapter reads from earlier chapters (deviant found in Partners, the spilled drink and the statuette there; confession, death and intervention in The Interrogation; {{Kara}} and {{Todd}} after Stormy Night; {{Carl}} after Broken), so every later scene reads the same snapshot. No stat change. Cross-chapter inputs (`inputsVersion` 2, story 1.9.2): “intervened” (INTERVENTION at {{Amanda}}’s first question, {{Chris}}’s and {{Gavin}}’s lines) is The Interrogation’s ending ANDROID WAS SENT BACK TO ITS CELL, which three INTERVENEs reach after any approach, and {{Gavin}}’s line follows whether {{Hank}} drew on him there (template conditions “Intervened and saved the deviant in The Interrogation” and “Connor intervened during The Interrogation”); story 1.9.1 read both from the CONVINCE-only flag ANDROID TRUSTS CONNOR.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Zen_Garden"
+    ],
+    "inputsVersion": 2
+  },
+  {
+    "id": "C08c",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "The zen garden",
+    "type": "decision",
+    "phase": "Zen Garden",
+    "clueState": "ch12Garden",
+    "repeatWhile": {
+      "ch12Garden.amanda": false
+    },
+    "situation": "You are {{Connor}}, in the zen garden. A path runs left along the edge of the pond toward a circular archway; another runs right along the water. On the island in the middle of the pond, {{Amanda}} is tending her roses.",
+    "situationWhen": [
+      {
+        "requires": {
+          "ch12In.anyDeath": true,
+          "ch12Garden.graves": false
+        },
+        "text": "Off the path to the right, a smaller path leads to a small graveyard."
+      }
+    ],
+    "options": [
+      {
+        "id": "0",
+        "text": "Cross the bridge to the island where {{Amanda}} is tending her roses.",
+        "clue": "amanda",
+        "outcome": "{{Connor}} crosses the bridge to the island. {{Amanda}} is among her roses."
+      },
+      {
+        "id": "1",
+        "text": "Go left along the pond to the circular archway and examine the stone there.",
+        "clue": "stone",
+        "outcome": "{{Connor}} follows the edge of the pond to the circular archway on the left of the path and examines the stone inside it."
+      },
+      {
+        "id": "2",
+        "text": "Go right along the pond and take the path to the small graveyard.",
+        "requires": {
+          "ch12In.graves": 1
+        },
+        "clue": "graves",
+        "fact": "In the zen garden there is a small graveyard with a gravestone for every {{Connor}} model that has been destroyed. There is one.",
+        "outcome": "{{Connor}} follows the path to a small graveyard: one gravestone, for the {{Connor}} model that was destroyed."
+      },
+      {
+        "id": "3",
+        "text": "Go right along the pond and take the path to the small graveyard.",
+        "requires": {
+          "ch12In.graves": 2
+        },
+        "clue": "graves",
+        "fact": "In the zen garden there is a small graveyard with a gravestone for every {{Connor}} model that has been destroyed. There are two.",
+        "outcome": "{{Connor}} follows the path to a small graveyard: two gravestones, one for each {{Connor}} model that was destroyed."
+      }
+    ],
+    "adaptationNote": "The chart’s FIND AMANDA with its two optional side branches, as a repeatable scene: FIND MAGIC STONE (PowerPyx: “go left along the edge of the pond until you find a circular archway… Interact with it”) and CHECK THE GRAVES (wiki: “only if Connor previously died in The Hostage and/or The Interrogation”; the Zen Garden page: “gravestones for killed Connor models”). Neither has a line, a clue text or a stat change in the template; no source describes the stone, so the outcome says only that {{Connor}} examines it. The graveyard shows one gravestone per earlier {{Connor}} death (the benchmark’s reading of “Another gravestone is present” on The Interrogation page). Crossing to the island ends the scene.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Zen_Garden",
+      "https://detroit-become-human.fandom.com/wiki/The_Interrogation"
     ]
-   }
-  ],
-  "adaptationNote": "The template’s “Watch TV” at reception: the Arctic report, optional, with no stat change (the Public Opinion page lists only the break-room report for this chapter). The newsreader and the minister are not named; the countries the report names are summarized as “the countries in the region”.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
-  ]
- },
- {
-  "id": "C08i",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Waiting for {{Hank}}",
-  "type": "decision",
-  "phase": "Wait for Hank",
-  "clueState": "ch12Wait",
-  "repeatWhile": {
-   "ch12Wait.done": false
   },
-  "interrupt": {
-   "node": "C08b",
-   "when": {
-    "ch12Wait.last": "carlos"
-   }
-  },
-  "situation": "You are {{Connor}}, inside the station. An android officer points out Lieutenant {{Anderson}}’s desk: “It’s that desk right there.” It is empty. On it are a headset, a coffee cup, a little tree, a box of donuts, a basketball cap, stickers, a book of matches, a plaque and his terminal; there are hairs on his chair. Officers work at the desks around it, and the holding cells are at the back. You can look around while you wait for him.",
-  "situationWhen": [
-   {
-    "requires": {
-     "ch12In.died": true
+  {
+    "id": "C08d",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Talk with {{Amanda}}",
+    "type": "event",
+    "phase": "Zen Garden",
+    "situation": "You are {{Connor}}, on the island in the zen garden. “Hello, {{Amanda}}.” {{Amanda}}: “{{Connor}}… It’s good to see you.”",
+    "situationWhen": [
+      {
+        "requires": {
+          "ch12In.reaction": "notFound"
+        },
+        "text": "{{Amanda}}: “I expected you to find the deviant who killed that man… I must admit I’m a little bit disappointed...” You: “I’m sorry. I know I should have succeeded.” {{Amanda}}: “Never mind. I’m sure you’ll show more foresight in the future.”"
+      },
+      {
+        "requires": {
+          "ch12In.reaction": "confession"
+        },
+        "text": "{{Amanda}}: “Congratulations, {{Connor}}... Finding that deviant was far from easy, and the way you interrogated it was very clever. You’ve been remarkably efficient, {{Connor}}.” You: “Thank you, {{Amanda}}.” {{Amanda}}: “We’ve asked the {{DPD}} to transfer it to us for further study. It may teach us something about what happened.”"
+      },
+      {
+        "requires": {
+          "ch12In.reaction": "died"
+        },
+        "text": "{{Amanda}}: “Your predecessor was unfortunately destroyed... It knew deviants could be unpredictable, but it wasn’t careful enough… I hope you won’t make the same mistake.” You: “I don’t intend to.” {{Amanda}}: “When a {{Connor}} model is destroyed, its memory is transferred to the next one, but some data can be lost in the process. Avoid being destroyed. It will be better for you and the investigation…” You: “I understand.”"
+      },
+      {
+        "requires": {
+          "ch12In.reaction": "noConfession"
+        },
+        "text": "{{Amanda}}: “Finding that deviant was far from easy… you showed great skill in your investigation. But you knew deviants could be unstable. You should have been more cautious.” You: “I thought I could make it talk… It was a judgement error.” {{Amanda}}: “Never mind. I’m sure you’ll be more careful in future.”"
+      }
+    ],
+    "options": [],
+    "outcomes": {
+      "0": "{{Amanda}} turns from her roses to {{Connor}}."
     },
-    "text": "Somewhere behind you, Officer {{Ben}} is telling another officer: “No shit? That fucking machine could have killed everyone in the room…”"
-   }
-  ],
-  "options": [
-   {
-    "id": "0",
-    "text": "Go to the break room, then come back to wait at his desk.",
-    "clue": "done",
-    "sets": {
-     "ch12BreakRoom": true
-    },
-    "outcome": "{{Connor}} walks into the break room. Detective {{Gavin}} is there."
-   },
-   {
-    "id": "1",
-    "text": "Sit down at his desk and wait for him.",
-    "clue": "done",
-    "outcome": "{{Connor}} waits at the desk."
-   },
-   {
-    "id": "2",
-    "text": "Sit for a moment in the chair in front of {{Hank}}’s desk, then get up and look around the station.",
-    "clue": "explore",
-    "outcome": "{{Connor}} sits in the chair facing the desk for a moment, then gets up. Around him the station goes about its morning: “Hey, you take a look at these samples yet?” “Lab report says they cut it with something.” “Maybe they’re trying out a new form of {{RedIce}}?”"
-   },
-   {
-    "id": "3",
-    "text": "Ask the officer at the next desk when Lieutenant {{Anderson}} usually arrives.",
-    "clue": "wilson",
-    "outcome": "“Excuse me. Do you know what time Lieutenant {{Anderson}} usually arrives?” Officer {{Wilson}}: “Depends on where he was the night before… If we’re lucky, we’ll see him before noon…” “Thanks.”"
-   },
-   {
-    "id": "4",
-    "text": "Talk to Officer {{Chris}} at his desk.",
-    "requires": {
-     "ch12In.died": true
-    },
-    "clue": "chris",
-    "outcome": "Officer {{Chris}}: “Good Lord! They already repaired you?” “Unfortunately, my predecessor was too damaged to be repaired. I’m the new {{Connor}}.” “They don’t waste any time over at {{CyberLife}}… I don’t think {{Hank}}’s gonna be overjoyed to see you…”"
-   },
-   {
-    "id": "5",
-    "text": "Talk to Officer {{Chris}} at his desk.",
-    "requires": {
-     "ch12In.died": false,
-     "ch12In.intervened": true
-    },
-    "clue": "chris",
-    "outcome": "Officer {{Chris}}: “You still here? I thought your assignment was over.” “It’s just been extended.” “{{Hank}}’s gonna be overjoyed to hear that… You were right about that android… it’s been quiet in the cell all night. Scheduled for transfer today.”"
-   },
-   {
-    "id": "6",
-    "text": "Talk to Officer {{Chris}} at his desk.",
-    "requires": {
-     "ch12In.died": false,
-     "ch12In.intervened": false
-    },
-    "clue": "chris",
-    "outcome": "Officer {{Chris}}: “You still here? I thought your assignment was over.” “It’s just been extended.” “{{Hank}}’s gonna be overjoyed to hear that…”"
-   },
-   {
-    "id": "7",
-    "text": "LEAVE A MESSAGE: call Lieutenant {{Anderson}} and leave a message on his voicemail.",
-    "clue": "call",
-    "outcome": "“Call Lieutenant {{Anderson}}.” His voicemail: “Hi, this is {{Hank}}. Not here at the moment. You can leave a message if that’s what turns you on but don’t expect me to call back. Beep… Whatever.” {{Connor}}: “Lieutenant {{Anderson}}? This is {{Connor}}, I’m the android sent by {{CyberLife}}. It’s almost noon and I’m waiting for you at the office.”"
-   },
-   {
-    "id": "8",
-    "text": "HANG UP: call Lieutenant {{Anderson}} and hang up at his voicemail.",
-    "clue": "call",
-    "outcome": "“Call Lieutenant {{Anderson}}.” His voicemail: “Hi, this is {{Hank}}. Not here at the moment. You can leave a message if that’s what turns you on but don’t expect me to call back. Beep… Whatever.” {{Connor}} hangs up."
-   },
-   {
-    "id": "9",
-    "text": "Look into the holding cells.",
-    "requires": {
-     "ch12In.inCell": true
-    },
-    "clue": "cells",
-    "outcome": "A man in one of the cells glares at {{Connor}}: “What?.. What are you lookin’ at?.. Hey, fuck you! Fuckin’ android…” In another cell sits the android you interrogated last night."
-   },
-   {
-    "id": "10",
-    "text": "Look into the holding cells.",
-    "requires": {
-     "ch12In.inCell": false
-    },
-    "clue": "cells",
-    "outcome": "A man in one of the cells glares at {{Connor}}: “What?.. What are you lookin’ at?.. Hey, fuck you! Fuckin’ android…”"
-   },
-   {
-    "id": "11",
-    "text": "Go to the cell of the android you interrogated, and talk to him.",
-    "requires": {
-     "ch12In.inCell": true
-    },
-    "clue": "carlos",
-    "outcome": "{{Connor}} stops in front of the android’s cell."
-   },
-   {
-    "id": "12",
-    "text": "Put on the headset on {{Hank}}’s desk and listen to the music.",
-    "clue": "music",
-    "fact": "On {{Hank}}’s desk, his headset: KNIGHTS OF THE BLACK DEATH. Dark Heavy Metal. Release date - 2021.",
-    "outcome": "The headset is playing KNIGHTS OF THE BLACK DEATH. Dark Heavy Metal. Release date - 2021."
-   },
-   {
-    "id": "13",
-    "text": "Scan the coffee cup on the desk.",
-    "clue": "coffee",
-    "fact": "On {{Hank}}’s desk: COFFEE CUP. Cold coffee. Traces of caffeine.",
-    "outcome": "COFFEE CUP. Cold coffee. Traces of caffeine."
-   },
-   {
-    "id": "14",
-    "text": "Scan the little tree on the desk.",
-    "clue": "maple",
-    "fact": "On {{Hank}}’s desk: JAPANESE MAPLE. Asian. Shishigashira Shohin.",
-    "outcome": "JAPANESE MAPLE. Asian. Shishigashira Shohin."
-   },
-   {
-    "id": "15",
-    "text": "Scan the donuts on the desk.",
-    "clue": "donuts",
-    "fact": "On {{Hank}}’s desk: DONUTS. Calories: 452, Saturated fatty acids: 13g. Cholesterol: 19mg, Carbohydrates: 51g.",
-    "outcome": "DONUTS. Calories: 452, Saturated fatty acids: 13g. Cholesterol: 19mg, Carbohydrates: 51g."
-   },
-   {
-    "id": "16",
-    "text": "Scan the basketball cap on the desk.",
-    "clue": "cap",
-    "fact": "On {{Hank}}’s desk: {{DETROIT}} BASKETBALL CAP. Cotton: 90%. Polyester: 10%.",
-    "outcome": "{{DETROIT}} BASKETBALL CAP. Cotton: 90%. Polyester: 10%."
-   },
-   {
-    "id": "17",
-    "text": "Scan the stickers on the desk.",
-    "clue": "slogans",
-    "fact": "On {{Hank}}’s desk: ANTI-ANDROID SLOGANS. “Use your brain not your android.” “Android-free space.”",
-    "outcome": "ANTI-ANDROID SLOGANS. “Use your brain not your android.” “Android-free space.”"
-   },
-   {
-    "id": "18",
-    "text": "Scan the matches on the desk.",
-    "clue": "matches",
-    "fact": "On {{Hank}}’s desk: MATCHES. Origin: JIMMY’S BAR. Wood, Phosphorus.",
-    "outcome": "MATCHES. Origin: JIMMY’S BAR. Wood, Phosphorus."
-   },
-   {
-    "id": "19",
-    "text": "Scan the hairs on his chair.",
-    "clue": "hairs",
-    "fact": "On {{Hank}}’s chair: HAIRS. Canine hairs. Saint Bernard Dog.",
-    "outcome": "HAIRS. Canine hairs. Saint Bernard Dog."
-   },
-   {
-    "id": "20",
-    "text": "Scan the plaque on the desk.",
-    "clue": "taskForce",
-    "fact": "On {{Hank}}’s desk: {{REDICE}} TASK FORCE 2027. Multi-department unit. Responsible for the {{REDICE}} network dismantle of 2028.",
-    "outcome": "{{REDICE}} TASK FORCE 2027. Multi-department unit. Responsible for the {{REDICE}} network dismantle of 2028."
-   },
-   {
-    "id": "21",
-    "text": "Research Lt. {{ANDERSON}} on the terminal.",
-    "clue": "research",
-    "fact": "Research Lt. {{Anderson}}. “{{DETROIT}} POLICE DISMANTLE A NETWORK OF {{REDICE}} DEALERS”. February 3rd, 2028. More than 50 arrests throughout the country. {{Detroit}}’s finest has dealt a massive blow to the city’s growing {{RedIce}} epidemic, with a number of high-profile dealers and suppliers now behind bars and narcotics seized with a street value of $500,000. Detective {{Hank}} {{Anderson}}, a young but hugely talented Detective, is said to have been instrumental in the operation, which took months of planning. The DA described the work of Detective {{Anderson}} and his colleagues as “model investigative police work”. “DETECTIVE {{ANDERSON}} PROMOTED TO THE RANK OF LIEUTENANT”. August 22nd, 2029. Becoming the youngest lieutenant on the {{Detroit}} police force. Lieutenant {{Hank}} {{Anderson}} was among the most decorated Detectives in the police department’s recent history, securing a number of high-profile arrests and serving as an integral member of the force. Captain {{Fowler}} said the promotion was “long over-due”, describing {{Anderson}} as “among the most talented police I’ve ever worked with”. The new Lieutenant is expected to rise quickly through the ranks of the department and is already being tipped as a future Commissioner. “NEW RECORD SEIZURE OF {{REDICE}} IN {{DETROIT}}!” November 23rd, 2031. Nearly a ton of {{RedIce}} discovered in the hold of a boat after a long investigation conducted by Lieutenant {{Anderson}} of the {{Detroit}} police force.",
-    "outcome": "Three articles come up: “{{DETROIT}} POLICE DISMANTLE A NETWORK OF {{REDICE}} DEALERS” (February 3rd, 2028), “DETECTIVE {{ANDERSON}} PROMOTED TO THE RANK OF LIEUTENANT” (August 22nd, 2029) and “NEW RECORD SEIZURE OF {{REDICE}} IN {{DETROIT}}!” (November 23rd, 2031)."
-   }
-  ],
-  "adaptationNote": "The chart’s FIND LT. ANDERSON, then the [ WAIT FOR HANK ] block before he arrives, as one repeatable scene: EXPLORE THE STATION (PowerPyx: “At Hank’s desk, sit in the chair in front of it briefly, then get up again”), EXAMINE HANK’S DESK and LEARN ABOUT HANK. The template’s clues, each its own option with the game’s scan title and sublines as the fact: KNIGHTS OF THE BLACK DEATH (“Listen to music”), the eight “Look at the desk” items (COFFEE CUP, JAPANESE MAPLE, DONUTS, DETROIT BASKETBALL CAP, ANTI-ANDROID SLOGANS, MATCHES, HAIRS, RED ICE TASK FORCE 2027; PowerPyx: “Scan the desk to find 8 clues”) and “Research LT. Anderson” (the three articles, offered once a desk item has been scanned, since LEARN ABOUT HANK follows EXAMINE HANK’S DESK on the chart). The nameplate, tissue and police-cases strings in the string table are not placed by the template and are not built. The headset, cap, stickers and hairs unlock {{Connor}}’s MUSIC, BASKETBALL, ANTI-ANDROIDS and DOG topics later. Also here, with no stat change: Officer {{Wilson}} (“Finding Hank’s desk”), Officer {{Chris}} (the template’s three variants), the call to {{Hank}} with the game’s LEAVE A MESSAGE / HANG UP buttons (calling at all is optional, as in the game), the man in the holding cell, and, only if the android was sent back to his cell in The Interrogation, TALK WITH CARLOS’ ANDROID, which plays the two cell scenes that follow. The scene ends either by going to the break room (TALK WITH GAVIN and the break-room TV) or by sitting down to wait; either way {{Hank}} arrives next. These two exits are listed first, as in the other repeatable scenes of this chapter the main line comes first. Simplifications: in the game the station can be explored in any order and also while {{Hank}} is in {{Fowler}}’s office; here the cell, the desk and the call come before {{Hank}} arrives, and the break room is the last stop before he does. The background chatter is quoted once; {{Wilson}}’s private phone call is not built; the magazines are a media scene after this one.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
-   "https://detroit-become-human.fandom.com/wiki/Sumo"
-  ]
- },
- {
-  "id": "C08b",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "The android in the cell",
-  "type": "decision",
-  "phase": "Wait for Hank",
-  "when": {
-   "ch12Wait.carlos": true
-  },
-  "whenNot": "The android was not in a cell, or Connor did not go to see him.",
-  "situation": "You are {{Connor}}, at the cell of the android you interrogated last night. He looks up at you. “They’re gonna destroy me…”",
-  "options": [
-   {
-    "id": "0",
-    "text": "SINCERE: tell him it is probable; they need to analyze him.",
-    "outcome": "“It’s probable. They have to analyze your biocomponents. They need to understand what happened.”"
-   },
-   {
-    "id": "1",
-    "text": "COLD: tell him your objective was to capture him alive, and the rest is not your problem.",
-    "outcome": "“My objective was to capture you alive. What happens now is not my problem.”"
-   },
-   {
-    "id": "2",
-    "text": "COMPASSIONATE: tell him you are sorry, but there is nothing you can do.",
-    "effect": {
-     "instability": 1
-    },
-    "outcome": "“I’m sorry. It’s not what I wanted… but there’s nothing I can do.”"
-   },
-   {
-    "id": "3",
-    "text": "INDIFFERENT: tell him he is only a machine and it does not matter.",
-    "outcome": "“You’re only a machine. It doesn’t matter.”"
-   }
-  ],
-  "adaptationNote": "The chart’s TALK WITH CARLOS’ ANDROID, behind the yellow condition node ANDROID SAVED IN ‘THE INTERROGATION’ (template: “Deviant didn’t die in The Interrogation”). First of two prompts; buttons in the game’s order. COMPASSIONATE raises software instability (small up, +1; template, wiki and the Software Instability page); the other answers have no effect. Reached from the waiting scene, which it returns to after the second prompt. In the game the visit must happen before {{Connor}} sits down at the desk; skipping it leaves the android’s fate open (wiki Notes).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Software_Instability",
-   "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android"
-  ]
- },
- {
-  "id": "C08j",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "What the android did not say",
-  "type": "decision",
-  "phase": "Wait for Hank",
-  "when": {
-   "ch12Wait.carlos": true
-  },
-  "whenNot": "The android was not in a cell, or Connor did not go to see him.",
-  "returnTo": "C08i",
-  "situation": "You are {{Connor}}, at the android’s cell. “I know there’s something you didn’t tell me. I need to know, before they take you away…”",
-  "options": [
-   {
-    "id": "0",
-    "text": "STATUETTE: ask him about the sculpture he made.",
-    "requires": {
-     "ch12In.statue": true
-    },
-    "outcome": "“The sculpture you made… Tell me more about it…” The android does not answer. “I’m going to die…” As {{Connor}} walks away, the android smashes his head against the window of the cell, again and again, until he stops moving. Officer {{Ben}}: “Open the cell, quick! Hurry! I’ll call {{CyberLife}}… Clean this mess up…”"
-   },
-   {
-    "id": "1",
-    "text": "SECRET: ask what he meant by “the truth is inside”.",
-    "outcome": "“What you said yesterday… ‘the truth is inside’… What does it mean?” The android does not answer. “I’m going to die…” As {{Connor}} walks away, the android smashes his head against the window of the cell, again and again, until he stops moving. Officer {{Ben}}: “Open the cell, quick! Hurry! I’ll call {{CyberLife}}… Clean this mess up…”"
-   },
-   {
-    "id": "2",
-    "text": "rA9: ask what the word he wrote on the wall means.",
-    "outcome": "“What you wrote on the wall... rA9… What does it mean?” The android does not answer. “I’m going to die…” As {{Connor}} walks away, the android smashes his head against the window of the cell, again and again, until he stops moving. Officer {{Ben}}: “Open the cell, quick! Hurry! I’ll call {{CyberLife}}… Clean this mess up…”"
-   },
-   {
-    "id": "3",
-    "text": "DEVIANTS: ask whether he knows other deviants, and how many there are.",
-    "outcome": "“Do you know any other deviants? Are there many of you?” The android does not answer. “I’m going to die…” As {{Connor}} walks away, the android smashes his head against the window of the cell, again and again, until he stops moving. Officer {{Ben}}: “Open the cell, quick! Hurry! I’ll call {{CyberLife}}… Clean this mess up…”"
-   }
-  ],
-  "adaptationNote": "The second cell prompt, then the chart’s CARLOS’ ANDROID SELF-DESTRUCTS (a cross-chapter node: his body is in the evidence room in Last Chance, {{Connor}}). STATUETTE is unlocked by “Looked at the statuette in Partners” (template). The android never answers (wiki: “the HK400 will not answer”); whatever {{Connor}} asks, he says “I’m going to die…” and, as {{Connor}} walks away, smashes his head against the cell window until he is dead (wiki, PowerPyx), and Officer {{Ben}} calls for the cell to be opened. No stat change. The self-destruction is narrated in the outcome rather than as a separate scene.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android",
-   "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
-  ]
- },
- {
-  "id": "C08k",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Detective {{Gavin}}",
-  "type": "decision",
-  "phase": "Wait for Hank",
-  "when": {
-   "ch12BreakRoom": true
-  },
-  "whenNot": "Connor did not go to the break room.",
-  "situation": "You are {{Connor}}, in the break room. Detective {{Gavin}} looks up from his coffee.",
-  "situationWhen": [
-   {
-    "requires": {
-     "ch12In.found": true,
-     "ch12In.died": true
-    },
-    "text": "{{Gavin}}: “Shit... Look at that… a fucking ghost… His clone ends up in a dumpster, but this morning, what do you know?! Another son of a bitch takes his place…”"
-   },
-   {
-    "requires": {
-     "ch12In.found": true,
-     "ch12In.died": false
-    },
-    "text": "{{Gavin}}: “Fuck, look at that… Our friend the plastic detective is back in town! Congratulations on last night, very impressive!”"
-   },
-   {
-    "requires": {
-     "ch12In.found": true,
-     "ch12In.died": false,
-     "ch12In.confession": false
-    },
-    "text": "“Could’ve got something outta that android if you haven’t fucked it up...”"
-   },
-   {
-    "requires": {
-     "ch12In.found": false
-    },
-    "text": "{{Gavin}}: “Look at that! It seems {{Hank}} has a new partner! Fucking plastic detective! Hey! You his drinking buddy? You bring him home when he’s too drunk to find his car? Ha, he stinks of booze!”"
-   }
-  ],
-  "options": [
-   {
-    "id": "0",
-    "text": "GREET: greet him by name.",
-    "outcome": "“Hello, Detective {{Reed}}.”"
-   },
-   {
-    "id": "1",
-    "text": "INTRODUCE: introduce yourself.",
-    "outcome": "“Hello. My name is {{Connor}}.”"
-   },
-   {
-    "id": "2",
-    "text": "IGNORE: say nothing.",
-    "outcome": "{{Connor}} says nothing."
-   }
-  ],
-  "adaptationNote": "The chart’s TALK WITH GAVIN, first of three prompts. {{Gavin}}’s opener follows the template’s variants (deviant found and {{Connor}} died; found and survived, with an extra jab if there was no confession; not found). Buttons in the game’s order; IGNORE has no line. No stat change on any {{Gavin}} option (template, wiki); PowerPyx’s “Public Opinion▼” belongs to the break-room TV that follows (wiki, Public Opinion page). The cut anecdote at the break-room entrance is not built.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-   "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
-  ]
- },
- {
-  "id": "C08l",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "What model are you?",
-  "type": "decision",
-  "phase": "Wait for Hank",
-  "when": {
-   "ch12BreakRoom": true
-  },
-  "whenNot": "Connor did not go to the break room.",
-  "situation": "You are {{Connor}}, in the break room. {{Gavin}}: “Never seen an android like you before… What model are you?”",
-  "options": [
-   {
-    "id": "0",
-    "text": "ANSWER: tell him your model.",
-    "outcome": "“RK800. I’m a prototype.” {{Gavin}}: “A prototype? Android detective… So machines are gonna… replace us all… is that it?..”"
-   },
-   {
-    "id": "1",
-    "text": "REFUSE: say you are not authorized to answer.",
-    "outcome": "“I’m sorry, but I’m not authorized to answer you. If you have any questions, please contact your superior.”"
-   },
-   {
-    "id": "2",
-    "text": "IGNORE: say nothing.",
-    "outcome": "{{Connor}} says nothing. {{Gavin}}: “Hey, asshole, I’m talkin’ to you!”"
-   }
-  ],
-  "adaptationNote": "{{Gavin}}’s second prompt; buttons and lines from the template. No stat change. The cut line “Think I’ll have myself another…” is not built.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
-  ]
- },
- {
-  "id": "C08m",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Bring me a coffee",
-  "type": "decision",
-  "phase": "Wait for Hank",
-  "when": {
-   "ch12BreakRoom": true
-  },
-  "whenNot": "Connor did not go to the break room.",
-  "situation": "You are {{Connor}}, in the break room. {{Gavin}}: “Hey, bring me a coffee, dipshit! GET A MOVE ON!”",
-  "options": [
-   {
-    "id": "0",
-    "text": "ACCEPT: bring him a coffee.",
-    "outcome": "{{Connor}} brings him a coffee. {{Gavin}}: “Do yourself a favor, stay outta my way.”"
-   },
-   {
-    "id": "1",
-    "text": "REFUSE: tell him you only take orders from Lieutenant {{Anderson}}.",
-    "outcome": "“I’m sorry, but I only take orders from Lieutenant {{Anderson}}.” {{Gavin}}: “Oh… Oh…” He punches {{Connor}} in the stomach."
-   },
-   {
-    "id": "2",
-    "text": "IGNORE: say nothing.",
-    "outcome": "{{Connor}} says nothing. {{Gavin}}: “I gave you an order!” “I’m sorry, but I only take orders from Lieutenant {{Anderson}}.” “Oh… Oh…” He punches {{Connor}} in the stomach."
-   }
-  ],
-  "adaptationNote": "{{Gavin}}’s third prompt. After REFUSE (and after IGNORE, which the template says continues as REFUSE) {{Gavin}} punches {{Connor}} (wiki, {{Gavin}}’s page) and adds one of two lines: if {{Connor}} intervened in The Interrogation, “If {{Hank}} hadn’t got in the way yesterday…”; otherwise “When a human gives you an order, you obey…”. No stat change.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
-  ]
- },
- {
-  "id": "R12",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "The magazines by {{Hank}}’s desk and the break-room TV",
-  "type": "media",
-  "phase": "Wait for Hank",
-  "situation": "You are {{Connor}}, waiting for {{Hank}}. On a desk in the middle of the station, near his, lies a magazine.",
-  "situationWhen": [
-   {
-    "requires": {
-     "ch12BreakRoom": true
-    },
-    "text": "In the break room you just left, the television is running the news."
-   }
-  ],
-  "options": [],
-  "media": [
-   {
-    "kind": "magazine",
-    "title": "{{Detroit}} Today: {{Ivanoff}} Says “Niet”!",
-    "facts": [
-     "{{Detroit}} Today, “{{Ivanoff}} Says ‘Niet’!”: after President {{Warren}} demanded that “all Russian troops withdraw from the arctic immediately”, the Russian president called her comments “megaphone diplomacy” and said “US sabre-rattling is the number one threat to stability in the region.” The Kremlin set out Russia’s claim to the territory in a detailed statement, and he would “remind President {{Warren}}” that “the United States is subject to UN conventions, like everybody else.” The conflict shows no signs of abating. On the cover: {{CyberLife}} is the world’s first trillion-dollar company; the global population has reached 10 billion."
+    "adaptationNote": "The chart’s TALK WITH AMANDA, opening: one of four reactions, decided by Partners and The Interrogation, each with the template’s Amanda arrow, applied by the engine here: deviant not found in Partners, large down (−2); “Got a confession, without dying”, large up (+2); “Connor died during The Interrogation”, small down (−1); found but no confession, small down (−1). The wiki’s chapter page and Relationship Stat page list the same four. A confession followed by a death counts as a death (the template’s confession variant reads “without dying”). Story 1.9.7: the line says “the {{DPD}}” as the game does (X0301C.AMANDA.INTRO ANDSAVED.5), through the same name token as the other chapters; before it, the scene wrote “the police department”. Source: MiKeYROG 100% walkthrough, TqGaB2AE6RM 02:04. The cut line about the transfer request (“We hope they’ll accept our request…”) is not built.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://www.youtube.com/watch?v=TqGaB2AE6RM"
     ]
-   },
-   {
-    "kind": "magazine",
-    "title": "{{Detroit}} Today: Famous Painter Dies",
-    "facts": [
-     "{{Detroit}} Today, “Famous {{Detroit}} Painter Dies”: the death of the artist {{Carl}} {{Manfred}} is confirmed; the coroner described a “fatal cardiac event” induced by a stressful domestic situation, and his son {{Leo}} has asked the media to respect the family’s privacy. {{Carl}} rose to fame in the 2020s as a figurehead of neo-symbolism, went through a dark period marked by alcohol and drugs, and had returned to work in recent months. The Governor called him “one of {{Detroit}}’s brightest lights”; his estate will auction a collection of his paintings. On the cover: the UN warns of World War Three; President {{Warren}} is at 33% approval."
+  },
+  {
+    "id": "C08e",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "What {{Connor}} thought of the deviant",
+    "type": "decision",
+    "phase": "Zen Garden",
+    "when": {
+      "ch12In.found": true
+    },
+    "whenNot": "Connor never found the deviant in Partners, so Amanda does not ask about the interrogation.",
+    "situation": "You are {{Connor}}, with {{Amanda}} among the roses. {{Amanda}}: “The interrogation seemed… challenging… What did you think of the deviant?”",
+    "options": [
+      {
+        "id": "0",
+        "text": "TRAUMATIZED: say it showed signs of trauma after being abused by its owner.",
+        "outcome": "“It showed signs of PTSD after being abused by its owner, as if its original program had been completely replaced by new instructions.”"
+      },
+      {
+        "id": "1",
+        "text": "{{DEVIANCY}}: say it showed every sign of {{Deviancy}} and the model was clearly defective.",
+        "outcome": "“It showed all the signs of {{Deviancy}}: cognitive {{instability}}, unpredictable behavior, and the emulation of human emotions. It was even afraid to die. The model was clearly defective.”"
+      },
+      {
+        "id": "2",
+        "text": "INTERVENTION: say you kept it from being damaged, so it can still be analyzed.",
+        "requires": {
+          "ch12In.intervened": true
+        },
+        "outcome": "“I prevented it from being damaged, so we might still learn something by analyzing it.”"
+      },
+      {
+        "id": "3",
+        "text": "REGRETS: say the previous {{Connor}} should have anticipated the danger.",
+        "requires": {
+          "ch12In.died": true
+        },
+        "outcome": "“It could’ve killed everyone in the room. The previous {{Connor}} should have anticipated the danger. It was a mistake to let an armed policeman so close to the deviant.”"
+      },
+      {
+        "id": "4",
+        "text": "SIMULATION: say it simulated human emotion, fear above all, very convincingly.",
+        "outcome": "“It simulated human emotion, fear in particular, in a very convincing way. It seemed completely overwhelmed by them, and behaved irrationally…”"
+      }
     ],
-    "when": "carlDead"
-   },
-   {
-    "kind": "magazine",
-    "title": "{{Detroit}} Today: The Three Laws of Robotic Parenting",
-    "facts": [
-     "{{Detroit}} Today, “The Three Laws of Robotic Parenting”: {{CyberLife}}’s child androids, once doubted, are now among its bestsellers: “Customizable, removable LED, no hunger, no expensive childcare... no smelly diapers!” With unemployment at 37.3%, $7,500 for a child that skips the teenage years and college looks like a wise investment against $350,000 over 17 years. A sociologist warns that these androids are leading fewer parents to have children when birthrates are already far too low (“the baby doom”); {{CyberLife}}’s director of humanization calls this “the usual resistance to new ideas” and the androids “a triumph of humanization design”. On the cover: the UN warns of World War Three; President {{Warren}} is at 33% approval."
+    "adaptationNote": "The first of {{Amanda}}’s three questions, asked only if the deviant was found in Partners (the template nests it in that variant). Buttons in the game’s order: TRAUMATIZED, DEVIANCY, INTERVENTION (unlocked by “Intervened and saved the deviant in The Interrogation”; if he also confessed, {{Connor}} adds “It said something to me: ‘The truth is inside’…”), REGRETS (unlocked by {{Connor}}’s death in The Interrogation) and SIMULATION (its cut ending, “as a human would under extreme stress”, is not built). No arrow on any answer (template; PowerPyx “No effect”).",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg"
+    ]
+  },
+  {
+    "id": "C08f",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "What {{Connor}} makes of {{Hank}}",
+    "type": "decision",
+    "phase": "Zen Garden",
+    "situation": "You are {{Connor}}, with {{Amanda}} in the zen garden. {{Amanda}}: “This… Lieutenant {{Anderson}} has been officially assigned to the {{Deviancy}} case… What do you make of him?”",
+    "options": [
+      {
+        "id": "0",
+        "text": "UNPLEASANT: call him unpleasant and unprofessional.",
+        "outcome": "“I find him unpleasant and unprofessional. He seems to have an addictive personality, has a lack of respect for procedure, and despises androids - which makes our relationship difficult.”"
+      },
+      {
+        "id": "1",
+        "text": "DYSFUNCTIONAL: call him dysfunctional, with a personal situation affecting his work.",
+        "outcome": "“I would define him as ‘dysfunctional’. He obviously has a personal situation impacting his professional behavior and... seems to have no interest in the investigation.”"
+      },
+      {
+        "id": "2",
+        "text": "INTRIGUING: say he is irritable but used to be a good detective.",
+        "outcome": "“I think he’s irritable, and socially challenged. But I also think he used to be a good detective… He’s an intriguing character.”"
+      },
+      {
+        "id": "3",
+        "text": "UNSURE: say you do not have enough information yet to judge him.",
+        "outcome": "“He’s obviously not what I was expecting, but... I don’t have enough information yet to form a definitive opinion.”"
+      }
     ],
-    "when": "carlAlive"
-   },
-   {
-    "kind": "tv",
-    "title": "the break-room news",
-    "facts": [
-     "The break-room news: several sources report that {{CyberLife}} has provided the {{Detroit}} police with a prototype detective android. Police assistant androids have existed for several years, but this would be the first case of an android authorized to play an active role in criminal investigations; no one at {{CyberLife}} was available to comment.",
-     "Then the next report: the first book written by an artificial intelligence, “Do Humans Dream of Mammalian Sheep?”, has shot to the top of the bestseller list, and critics are unanimous in their praise. Designed by {{CyberLife}}, the AI known as VOLTAIRE analyzed human centers of interest on social networks for several months before its algorithms generated the plot; according to several specialists, most books written in the coming years will be the work of artificial intelligence."
+    "adaptationNote": "{{Amanda}}’s second question, asked on every path. Buttons in the game’s order; no arrow on any answer (template; PowerPyx “No effect”).",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg"
+    ]
+  },
+  {
+    "id": "C08g",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "How to work with {{Hank}}",
+    "type": "decision",
+    "phase": "Zen Garden",
+    "situation": "You are {{Connor}}, with {{Amanda}} in the zen garden. {{Amanda}}: “Unfortunately, we have no choice but to work with him… What do you think is the best approach?”",
+    "options": [
+      {
+        "id": "0",
+        "text": "FRIENDLY: say you will try to build a friendly relationship and earn his trust.",
+        "effect": {
+          "amandaTrust": -1
+        },
+        "outcome": "“I will try to establish a friendly relationship. If I can get him to trust me, it will be helpful for the investigation.”"
+      },
+      {
+        "id": "1",
+        "text": "ADAPT: say you will adapt to his personality and avoid conflict.",
+        "effect": {
+          "amandaTrust": -1
+        },
+        "outcome": "“I will adapt to his personality. It is in the best interest of the investigation that I avoid conflict and try to accommodate his psychology.”"
+      },
+      {
+        "id": "2",
+        "text": "INDIFFERENT: say you will focus on the investigation and try to ignore him.",
+        "effect": {
+          "amandaTrust": 1
+        },
+        "outcome": "“I will focus on the investigation and try to ignore him. As long as he doesn’t interfere and we avoid conflict, he shouldn’t be a problem.”"
+      },
+      {
+        "id": "3",
+        "text": "DON’T KNOW: say you need more data before you decide.",
+        "outcome": "“I don’t have enough data to decide that yet. I’ll learn more about him and try to adapt my behavior accordingly.”"
+      }
     ],
-    "when": "ch12TvFound",
-    "effect": {
-     "publicSupport": -1
-    }
-   },
-   {
-    "kind": "tv",
-    "title": "the break-room news",
+    "adaptationNote": "{{Amanda}}’s third question, with the template’s arrows: FRIENDLY Amanda small down (−1), ADAPT small down (−1), INDIFFERENT small up (+1), DON’T KNOW none (wiki: “Picking ‘indifferent’… up”, “Picking ‘friendly’ or ‘adapt’… down”; PowerPyx the same). The outcome adds {{Amanda}}’s closing lines, with the template’s variants for a {{Connor}} who died in The Interrogation and for a deviant never found.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_2.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+    ]
+  },
+  {
+    "id": "C08h",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Arrive at the police station",
+    "type": "event",
+    "phase": "Police station",
+    "situation": "You are {{Connor}}, back in your body, in the reception hall of the {{Detroit}} police station. People wait on the seats. A woman: “I’m getting nervous, Mark.” The man with her: “It’s okay… Just tell ’em what happened to you.” “But it was all over so quickly... I didn’t even see his face!” Near a television, another woman hands a shaken man a cup of water. Gates bar the way into the station, and an android receptionist is at the desk. If you try the gates without signing in, an android stops you: “No access without prior authorization.”",
+    "options": [],
     "facts": [
-     "The break-room news: the police found the body of thirty-year-old {{CarlosOrtiz}} in his home last night, after calls from concerned neighbors. Known to the police as a petty criminal, he is reported to have suffered from a psychiatric condition and rarely left his apartment; he is thought to have died several weeks ago. The police appear to be treating the death as a homicide. His android is also reported missing.",
-     "Then the next report: the first book written by an artificial intelligence, “Do Humans Dream of Mammalian Sheep?”, has shot to the top of the bestseller list, and critics are unanimous in their praise. Designed by {{CyberLife}}, the AI known as VOLTAIRE analyzed human centers of interest on social networks for several months before its algorithms generated the plot; according to several specialists, most books written in the coming years will be the work of artificial intelligence."
+      "At the station reception you were told that Lieutenant {{Anderson}} had not arrived yet and that you could wait at his desk."
     ],
-    "when": "ch12TvNotFound",
-    "effect": {
-     "publicSupport": -1
-    }
-   }
-  ],
-  "adaptationNote": "The chart’s READ “IVANOFF SAYS “NIET”!” (always), READ “FAMOUS PAINTER DIES” (only if {{Carl}} died in Broken) and READ “ROBOTIC PARENTING” (only if he lived), on the counter near {{Hank}}’s desk (PowerPyx), with the break-room TV, which is offered only after {{Gavin}}. That broadcast is the chapter’s public-opinion drop (small down, −1; template on both variants; wiki: “Listening to the CTN TV news report on the television in the break room after talking to Gavin”): the prototype-detective report if the deviant was found in Partners, the {{CarlosOrtiz}} report if not, each followed by the VOLTAIRE book report. Not watching it avoids the drop (a PowerPyx reader reports the same; the claim that the loss then moves to a later chapter is not on the wiki and is not built). Interviewees, newsreaders and channels are not named. In the game the magazines can be read at any time while waiting; here they come after the rest of the station.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Magazine",
-   "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
-   "https://detroit-become-human.fandom.com/wiki/Ivanoff_Says_%22Niet%22!",
-   "https://detroit-become-human.fandom.com/wiki/Famous_Detroit_Painter_Dies",
-   "https://detroit-become-human.fandom.com/wiki/The_Three_Laws_of_Robotic_Parenting"
-  ]
- },
- {
-  "id": "C08n",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "{{Hank}} arrives",
-  "type": "event",
-  "phase": "Wait for Hank",
-  "situation": "You are {{Connor}}. Lieutenant {{Anderson}} finally walks in and comes to his desk.",
-  "situationWhen": [
-   {
-    "requires": {
-     "ch12In.died": true
+    "outcomes": {
+      "0": "The receptionist: “Can I help you?” “I’m here to see Lieutenant {{Anderson}}.” “Do you have authorization?” “Yes.” “Lieutenant {{Anderson}} hasn’t arrived yet, but you can wait at his desk.”"
     },
-    "text": "“Hello, Lieutenant. My name is {{Connor}}. I’m the android sent by {{CyberLife}}.” {{Hank}}: “God, I saw you get shot in the head last night…” “My predecessor was unfortunately destroyed, but {{CyberLife}} transferred its memory and sent me to replace it. This incident should not affect the investigation.” “Uh, Jesus…”"
-   },
-   {
-    "requires": {
-     "ch12In.died": false
-    },
-    "text": "“It’s good to see you again, Lieutenant.” {{Hank}}: “Uh, Jesus…”"
-   }
-  ],
-  "options": [],
-  "outcomes": {
-   "0": "Captain {{Fowler}} calls across the room from his glass office: “{{Hank}}! In my office!”"
+    "adaptationNote": "The chart’s checkpoint ARRIVE AT POLICE STATION, with the template’s reception scenes (the two couples, the gate android, the receptionist). Narrated, no choice, no stat change. The wiki’s note that a surviving {{Todd}} can be filing a report at the station is not built: the template’s reception couple does not name him.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg"
+    ]
   },
-  "adaptationNote": "The chart’s HANK ARRIVES, with the template’s two greetings. If {{Connor}} died in The Interrogation, {{Hank}} is unnerved to see him: Hank small down (−1; template “Hank SmallDown” on that variant; wiki; Relationship Stat: “When first meeting Hank in Waiting for Hank... if Connor previously died in The Interrogation”; PowerPyx), applied here. The cut line “And bring that plastic thing with ya!” is not built.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-  ]
- },
- {
-  "id": "C08o",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "{{Hank}} in {{Fowler}}’s office",
-  "type": "decision",
-  "phase": "Wait for Hank",
-  "situation": "You are {{Connor}}, at {{Hank}}’s desk. {{Hank}} has gone into Captain {{Fowler}}’s glass-walled office and shut the door. You can follow him and listen at the glass, or wait here.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Follow him to {{Fowler}}’s office and listen at the glass.",
-    "outcome": "{{Connor}} goes to the office and listens at the glass."
-   },
-   {
-    "id": "1",
-    "text": "Stay at the desk and wait.",
-    "outcome": "{{Connor}} waits at the desk while the two men argue behind the glass."
-   }
-  ],
-  "adaptationNote": "The chart’s optional FOLLOW HANK IN FOWLER’S OFFICE, inside the [ WAIT FOR HANK ] block. Following is not a dialogue button in the game; it is offered here as a plain choice. No stat change.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg"
-  ]
- },
- {
-  "id": "C08p",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "{{Hank}} storms out",
-  "type": "event",
-  "phase": "Wait for Hank",
-  "situation": "You are {{Connor}}.",
-  "situationWhen": [
-   {
-    "requires": {
-     "choices.C08o": "0"
-    },
-    "text": "Through the glass you hear Captain {{Fowler}}: “I’ve got ten new cases involving androids on my desk every day. We’ve always had isolated incidents, old ladies losing their android maids and that kind of crap… But now, we’re getting reports of assaults and even homicides, like that guy last night… This isn’t just {{CyberLife}}’s problem anymore. It’s now a criminal investigation and we’ve gotta deal with it before the shit hits the fan. I want you to investigate these cases and see if there’s any link.” {{Hank}}: “Why me? Why do I gotta be the one to deal with this shit? I am the least qualified cop in the country to handle this case! I know jack shit about androids, {{Jeffrey}}! I can barely change the settings on my own phone…” {{Fowler}}: “Everybody’s overloaded. I think you’re perfectly qualified for this type of investigation.” “Bullshit! The truth is nobody wants to investigate these fuckin’ androids and you left me holdin’ the bag!” “{{CyberLife}} sent over this android to help with the investigation. It’s a state-of-the-art prototype. It’ll act as your partner.” “No fuckin’ way! I don’t need a partner, and certainly not this plastic prick!” “{{Hank}}, you are seriously starting to piss me off! You are a police lieutenant, you are supposed to do what I say and shut your goddamn mouth!” “You know what my goddamn mouth has to say to you, huh?” “Ok, ok... I’ll pretend like I didn’t hear that, so I don’t have to add any more pages to your disciplinary folder ‘cause it already looks like a fuckin’ novel! This conversation is over!” “{{Jeffrey}}, Jesus Christ! Why are you doin’ this to me? You know how much I hate these fuckin’ things. Why you doin’ this to me?” “Listen, I’ve had just about enough of your bitching. Either you do your job or you hand in your badge. Now if you’ll excuse me, I’ve got work to do.”"
-   },
-   {
-    "requires": {
-     "choices.C08o": "1"
-    },
-    "text": "From the desk you can see {{Hank}} and Captain {{Fowler}} arguing behind the glass, but you cannot hear them."
-   }
-  ],
-  "options": [],
-  "outcomes": {
-   "0": "{{Hank}} storms out of the office and back to his desk."
+  {
+    "id": "R12a",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "The reception TV",
+    "type": "media",
+    "phase": "Police station",
+    "situation": "You are {{Connor}}, at the reception, before the gates. The television by the waiting seats is running the news.",
+    "options": [],
+    "media": [
+      {
+        "kind": "tv",
+        "title": "the news at reception",
+        "facts": [
+          "The news at the station reception: a Russian carrier and an American patrol boat clashed in the Arctic last night and exchanged warning shots, apparently with no damage or casualties. The Minister for Defense spoke of “intolerable provocation that cannot go unanswered”; the countries in the region have called for military forces to withdraw and for an international conference. Neither Moscow nor Washington has responded."
+        ]
+      }
+    ],
+    "adaptationNote": "The template’s “Watch TV” at reception: the Arctic report, optional, with no stat change (the Public Opinion page lists only the break-room report for this chapter). The newsreader and the minister are not named; the countries the report names are summarized as “the countries in the region”.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion"
+    ]
   },
-  "adaptationNote": "The chart’s HANK STORMS OUT, on the track that runs beside the [ WAIT FOR HANK ] block. If {{Connor}} followed, the template’s “Entering and listening” argument is quoted: {{Fowler}} assigns {{Hank}} the android cases with {{Connor}} as his partner. That it cannot be heard from the desk is the benchmark’s reading. No stat change.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
-  ]
- },
- {
-  "id": "C08q",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Alone with Captain {{Fowler}}",
-  "type": "decision",
-  "phase": "Wait for Hank",
-  "when": {
-   "choices.C08o": "0"
+  {
+    "id": "C08i",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Waiting for {{Hank}}",
+    "type": "decision",
+    "phase": "Wait for Hank",
+    "clueState": "ch12Wait",
+    "repeatWhile": {
+      "ch12Wait.done": false
+    },
+    "interrupt": {
+      "node": "C08b",
+      "when": {
+        "ch12Wait.last": "carlos"
+      }
+    },
+    "situation": "You are {{Connor}}, inside the station. An android officer points out Lieutenant {{Anderson}}’s desk: “It’s that desk right there.” It is empty. On it are a headset, a coffee cup, a little tree, a box of donuts, a basketball cap, stickers, a book of matches, a plaque and his terminal; there are hairs on his chair. Officers work at the desks around it, and the holding cells are at the back. You can look around while you wait for him.",
+    "situationWhen": [
+      {
+        "requires": {
+          "ch12In.died": true
+        },
+        "text": "Somewhere behind you, Officer {{Ben}} is telling another officer: “No shit? That fucking machine could have killed everyone in the room…”"
+      }
+    ],
+    "options": [
+      {
+        "id": "0",
+        "text": "Go to the break room, then come back to wait at his desk.",
+        "clue": "done",
+        "sets": {
+          "ch12BreakRoom": true
+        },
+        "outcome": "{{Connor}} walks into the break room. Detective {{Gavin}} is there."
+      },
+      {
+        "id": "1",
+        "text": "Sit down at his desk and wait for him.",
+        "clue": "done",
+        "outcome": "{{Connor}} waits at the desk."
+      },
+      {
+        "id": "2",
+        "text": "Sit for a moment in the chair in front of {{Hank}}’s desk, then get up and look around the station.",
+        "clue": "explore",
+        "outcome": "{{Connor}} sits in the chair facing the desk for a moment, then gets up. Around him the station goes about its morning: “Hey, you take a look at these samples yet?” “Lab report says they cut it with something.” “Maybe they’re trying out a new form of {{RedIce}}?”"
+      },
+      {
+        "id": "3",
+        "text": "Ask the officer at the next desk when Lieutenant {{Anderson}} usually arrives.",
+        "clue": "wilson",
+        "outcome": "“Excuse me. Do you know what time Lieutenant {{Anderson}} usually arrives?” Officer {{Wilson}}: “Depends on where he was the night before… If we’re lucky, we’ll see him before noon…” “Thanks.”"
+      },
+      {
+        "id": "4",
+        "text": "Talk to Officer {{Chris}} at his desk.",
+        "requires": {
+          "ch12In.died": true
+        },
+        "clue": "chris",
+        "outcome": "Officer {{Chris}}: “Good Lord! They already repaired you?” “Unfortunately, my predecessor was too damaged to be repaired. I’m the new {{Connor}}.” “They don’t waste any time over at {{CyberLife}}… I don’t think {{Hank}}’s gonna be overjoyed to see you…”"
+      },
+      {
+        "id": "5",
+        "text": "Talk to Officer {{Chris}} at his desk.",
+        "requires": {
+          "ch12In.died": false,
+          "ch12In.intervened": true
+        },
+        "clue": "chris",
+        "outcome": "Officer {{Chris}}: “You still here? I thought your assignment was over.” “It’s just been extended.” “{{Hank}}’s gonna be overjoyed to hear that… You were right about that android… it’s been quiet in the cell all night. Scheduled for transfer today.”"
+      },
+      {
+        "id": "6",
+        "text": "Talk to Officer {{Chris}} at his desk.",
+        "requires": {
+          "ch12In.died": false,
+          "ch12In.intervened": false
+        },
+        "clue": "chris",
+        "outcome": "Officer {{Chris}}: “You still here? I thought your assignment was over.” “It’s just been extended.” “{{Hank}}’s gonna be overjoyed to hear that…”"
+      },
+      {
+        "id": "7",
+        "text": "LEAVE A MESSAGE: call Lieutenant {{Anderson}} and leave a message on his voicemail.",
+        "clue": "call",
+        "outcome": "“Call Lieutenant {{Anderson}}.” His voicemail: “Hi, this is {{Hank}}. Not here at the moment. You can leave a message if that’s what turns you on but don’t expect me to call back. Beep… Whatever.” {{Connor}}: “Lieutenant {{Anderson}}? This is {{Connor}}, I’m the android sent by {{CyberLife}}. It’s almost noon and I’m waiting for you at the office.”"
+      },
+      {
+        "id": "8",
+        "text": "HANG UP: call Lieutenant {{Anderson}} and hang up at his voicemail.",
+        "clue": "call",
+        "outcome": "“Call Lieutenant {{Anderson}}.” His voicemail: “Hi, this is {{Hank}}. Not here at the moment. You can leave a message if that’s what turns you on but don’t expect me to call back. Beep… Whatever.” {{Connor}} hangs up."
+      },
+      {
+        "id": "9",
+        "text": "Look into the holding cells.",
+        "requires": {
+          "ch12In.inCell": true
+        },
+        "clue": "cells",
+        "outcome": "A man in one of the cells glares at {{Connor}}: “What?.. What are you lookin’ at?.. Hey, fuck you! Fuckin’ android…” In another cell sits the android you interrogated last night."
+      },
+      {
+        "id": "10",
+        "text": "Look into the holding cells.",
+        "requires": {
+          "ch12In.inCell": false
+        },
+        "clue": "cells",
+        "outcome": "A man in one of the cells glares at {{Connor}}: “What?.. What are you lookin’ at?.. Hey, fuck you! Fuckin’ android…”"
+      },
+      {
+        "id": "11",
+        "text": "Go to the cell of the android you interrogated, and talk to him.",
+        "requires": {
+          "ch12In.inCell": true
+        },
+        "clue": "carlos",
+        "outcome": "{{Connor}} stops in front of the android’s cell."
+      },
+      {
+        "id": "12",
+        "text": "Put on the headset on {{Hank}}’s desk and listen to the music.",
+        "clue": "music",
+        "fact": "On {{Hank}}’s desk, his headset: KNIGHTS OF THE BLACK DEATH. Dark Heavy Metal. Release date - 2021.",
+        "outcome": "The headset is playing KNIGHTS OF THE BLACK DEATH. Dark Heavy Metal. Release date - 2021."
+      },
+      {
+        "id": "13",
+        "text": "Scan the coffee cup on the desk.",
+        "clue": "coffee",
+        "fact": "On {{Hank}}’s desk: COFFEE CUP. Cold coffee. Traces of caffeine.",
+        "outcome": "COFFEE CUP. Cold coffee. Traces of caffeine."
+      },
+      {
+        "id": "14",
+        "text": "Scan the little tree on the desk.",
+        "clue": "maple",
+        "fact": "On {{Hank}}’s desk: JAPANESE MAPLE. Asian. Shishigashira Shohin.",
+        "outcome": "JAPANESE MAPLE. Asian. Shishigashira Shohin."
+      },
+      {
+        "id": "15",
+        "text": "Scan the donuts on the desk.",
+        "clue": "donuts",
+        "fact": "On {{Hank}}’s desk: DONUTS. Calories: 452, Saturated fatty acids: 13g. Cholesterol: 19mg, Carbohydrates: 51g.",
+        "outcome": "DONUTS. Calories: 452, Saturated fatty acids: 13g. Cholesterol: 19mg, Carbohydrates: 51g."
+      },
+      {
+        "id": "16",
+        "text": "Scan the basketball cap on the desk.",
+        "clue": "cap",
+        "fact": "On {{Hank}}’s desk: {{DETROIT}} BASKETBALL CAP. Cotton: 90%. Polyester: 10%.",
+        "outcome": "{{DETROIT}} BASKETBALL CAP. Cotton: 90%. Polyester: 10%."
+      },
+      {
+        "id": "17",
+        "text": "Scan the stickers on the desk.",
+        "clue": "slogans",
+        "fact": "On {{Hank}}’s desk: ANTI-ANDROID SLOGANS. “Use your brain not your android.” “Android-free space.”",
+        "outcome": "ANTI-ANDROID SLOGANS. “Use your brain not your android.” “Android-free space.”"
+      },
+      {
+        "id": "18",
+        "text": "Scan the matches on the desk.",
+        "clue": "matches",
+        "fact": "On {{Hank}}’s desk: MATCHES. Origin: {{JIMMY}}’S BAR. Wood, Phosphorus.",
+        "outcome": "MATCHES. Origin: {{JIMMY}}’S BAR. Wood, Phosphorus."
+      },
+      {
+        "id": "19",
+        "text": "Scan the hairs on his chair.",
+        "clue": "hairs",
+        "fact": "On {{Hank}}’s chair: HAIRS. Canine hairs. Saint Bernard Dog.",
+        "outcome": "HAIRS. Canine hairs. Saint Bernard Dog."
+      },
+      {
+        "id": "20",
+        "text": "Scan the plaque on the desk.",
+        "clue": "taskForce",
+        "fact": "On {{Hank}}’s desk: {{REDICE}} TASK FORCE 2027. Multi-department unit. Responsible for the {{REDICE}} network dismantle of 2028.",
+        "outcome": "{{REDICE}} TASK FORCE 2027. Multi-department unit. Responsible for the {{REDICE}} network dismantle of 2028."
+      },
+      {
+        "id": "21",
+        "text": "Research Lt. {{ANDERSON}} on the terminal.",
+        "clue": "research",
+        "fact": "Research Lt. {{Anderson}}. “{{DETROIT}} POLICE DISMANTLE A NETWORK OF {{REDICE}} DEALERS”. February 3rd, 2028. More than 50 arrests throughout the country. {{Detroit}}’s finest has dealt a massive blow to the city’s growing {{RedIce}} epidemic, with a number of high-profile dealers and suppliers now behind bars and narcotics seized with a street value of $500,000. Detective {{Hank}} {{Anderson}}, a young but hugely talented Detective, is said to have been instrumental in the operation, which took months of planning. The DA described the work of Detective {{Anderson}} and his colleagues as “model investigative police work”. “DETECTIVE {{ANDERSON}} PROMOTED TO THE RANK OF LIEUTENANT”. August 22nd, 2029. Becoming the youngest lieutenant on the {{Detroit}} police force. Lieutenant {{Hank}} {{Anderson}} was among the most decorated Detectives in the police department’s recent history, securing a number of high-profile arrests and serving as an integral member of the force. Captain {{Fowler}} said the promotion was “long over-due”, describing {{Anderson}} as “among the most talented police I’ve ever worked with”. The new Lieutenant is expected to rise quickly through the ranks of the department and is already being tipped as a future Commissioner. “NEW RECORD SEIZURE OF {{REDICE}} IN {{DETROIT}}!” November 23rd, 2031. Nearly a ton of {{RedIce}} discovered in the hold of a boat after a long investigation conducted by Lieutenant {{Anderson}} of the {{Detroit}} police force.",
+        "outcome": "Three articles come up: “{{DETROIT}} POLICE DISMANTLE A NETWORK OF {{REDICE}} DEALERS” (February 3rd, 2028), “DETECTIVE {{ANDERSON}} PROMOTED TO THE RANK OF LIEUTENANT” (August 22nd, 2029) and “NEW RECORD SEIZURE OF {{REDICE}} IN {{DETROIT}}!” (November 23rd, 2031)."
+      }
+    ],
+    "adaptationNote": "The chart’s FIND LT. ANDERSON, then the [ WAIT FOR HANK ] block before he arrives, as one repeatable scene: EXPLORE THE STATION (PowerPyx: “At Hank’s desk, sit in the chair in front of it briefly, then get up again”), EXAMINE HANK’S DESK and LEARN ABOUT HANK. The template’s clues, each its own option with the game’s scan title and sublines as the fact: KNIGHTS OF THE BLACK DEATH (“Listen to music”), the eight “Look at the desk” items (COFFEE CUP, JAPANESE MAPLE, DONUTS, DETROIT BASKETBALL CAP, ANTI-ANDROID SLOGANS, MATCHES, HAIRS, RED ICE TASK FORCE 2027; PowerPyx: “Scan the desk to find 8 clues”) and “Research LT. Anderson” (the three articles, offered once a desk item has been scanned, since LEARN ABOUT HANK follows EXAMINE HANK’S DESK on the chart). The nameplate, tissue and police-cases strings in the string table are not placed by the template and are not built. The headset, cap, stickers and hairs unlock {{Connor}}’s MUSIC, BASKETBALL, ANTI-ANDROIDS and DOG topics later. Also here, with no stat change: Officer {{Wilson}} (“Finding Hank’s desk”), Officer {{Chris}} (the template’s three variants), the call to {{Hank}} with the game’s LEAVE A MESSAGE / HANG UP buttons (calling at all is optional, as in the game), the man in the holding cell, and, only if the android was sent back to his cell in The Interrogation, TALK WITH CARLOS’ ANDROID, which plays the two cell scenes that follow. The scene ends either by going to the break room (TALK WITH GAVIN and the break-room TV) or by sitting down to wait; either way {{Hank}} arrives next. These two exits are listed first, as in the other repeatable scenes of this chapter the main line comes first. Simplifications: in the game the station can be explored in any order and also while {{Hank}} is in {{Fowler}}’s office; here the cell, the desk and the call come before {{Hank}} arrives, and the break room is the last stop before he does. The background chatter is quoted once; {{Wilson}}’s private phone call is not built; the magazines are a media scene after this one.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Sumo"
+    ]
   },
-  "whenNot": "Connor did not follow Hank into Fowler’s office.",
-  "situation": "You are {{Connor}}, in Captain {{Fowler}}’s office. {{Hank}} has just stormed out, and {{Fowler}} has turned back to his work.",
-  "options": [
-   {
-    "id": "0",
-    "text": "{{ANDERSON}}: wonder aloud whether Lieutenant {{Anderson}} is the best person for this investigation.",
-    "outcome": "“I wonder whether Lieutenant {{Anderson}} is really the best person for this investigation.” {{Fowler}}: “Hey, I don’t need a machine to tell me how to handle my men, okay? So get the fuck outta my office.” “Have a nice day, Captain.”"
-   },
-   {
-    "id": "1",
-    "text": "POSITIVE: say you are very pleased to have joined the team.",
-    "outcome": "“I’m very pleased to have joined the team. I can assure you I’ll do my very best-” {{Fowler}}: “Close the door on your way out.” “Have a nice day, Captain.”"
-   },
-   {
-    "id": "2",
-    "text": "FILE: say you would like to start reviewing the case files.",
-    "outcome": "“I would like to start reviewing the case files. Can you tell me where I-” {{Fowler}}: “Talk to {{Hank}}. Close the door on your way out.” “Have a nice day, Captain.”"
-   },
-   {
-    "id": "3",
-    "text": "LEAVE: say you will not keep him any longer.",
-    "outcome": "“Well, then… I won’t keep you any longer. Have a nice day, Captain.”"
-   }
-  ],
-  "adaptationNote": "{{Connor}} alone with {{Fowler}} after {{Hank}} storms out, only if {{Connor}} followed. Buttons and lines from the template. No stat change (PowerPyx: “All responses to the Captain have no effect”).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg"
-  ]
- },
- {
-  "id": "C08r",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Talk to {{Hank}}",
-  "type": "decision",
-  "phase": "Talk to Hank",
-  "situation": "You are {{Connor}}, at {{Hank}}’s desk. He has dropped into his chair and is pointedly ignoring you.",
-  "options": [
-   {
-    "id": "0",
-    "text": "NEW {{CONNOR}}: say you understand the destruction of your predecessor may have been unpleasant for him.",
-    "requires": {
-     "ch12In.died": true
+  {
+    "id": "C08b",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "The android in the cell",
+    "type": "decision",
+    "phase": "Wait for Hank",
+    "when": {
+      "ch12Wait.carlos": true
     },
-    "outcome": "“I understand the destruction of my predecessor may have been unpleasant for you, Lieutenant. I’ll do everything I can to make sure it doesn’t happen again.”"
-   },
-   {
-    "id": "1",
-    "text": "LAST NIGHT: apologize for bothering him at the bar last night.",
-    "requires": {
-     "ch12In.spilled": true
-    },
-    "outcome": "“I’m… sorry I bothered you at the bar last night, Lieutenant. I guess I ruined your evening…”"
-   },
-   {
-    "id": "2",
-    "text": "UNDERSTANDING: say you are sorry your presence inconveniences him.",
-    "outcome": "“I get the impression my presence causes you some inconvenience, Lieutenant. I’d like you to know I’m very sorry about that.”"
-   },
-   {
-    "id": "3",
-    "text": "PRAGMATIC: say you know he does not like you, but you will both have to make an effort.",
-    "outcome": "“Listen, I know you don’t like me, but we’re going to have to work together, we’ll both have to make an effort.”"
-   },
-   {
-    "id": "4",
-    "text": "CONSTRUCTIVE: say it is an honor to work with him.",
-    "outcome": "“It’s an honor to be working with you, Lieutenant. I’m sure we’ll make a great team.”"
-   }
-  ],
-  "adaptationNote": "The chart’s TALK TO HANK, first prompt (the template’s “Checking on Hank”). NEW CONNOR is unlocked by {{Connor}}’s death in The Interrogation; LAST NIGHT by “Spilled Hank’s drink in Partners” (the template’s only condition; the wiki adds that the deviant was not found, which the benchmark does not require). The template gives {{Hank}} no reply and no arrow on any of these.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg"
-  ]
- },
- {
-  "id": "C08s",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Somewhere to sit",
-  "type": "decision",
-  "phase": "Talk to Hank",
-  "situation": "You are {{Connor}}, at {{Hank}}’s desk. He still has not looked up.",
-  "options": [
-   {
-    "id": "0",
-    "text": "PARTNERS: say that now you are partners, it would be good to get to know each other.",
-    "outcome": "“Now that we’re partners, it would be great to get to know each other better.” {{Connor}} takes the empty desk facing {{Hank}}’s."
-   },
-   {
-    "id": "1",
-    "text": "POSITIVE: say you are very happy to be working with him.",
-    "outcome": "“In any case, I’d like you to know I’m very happy to be working with you. I’m sure we’ll make a great team.” {{Connor}} takes the empty desk facing {{Hank}}’s."
-   },
-   {
-    "id": "2",
-    "text": "DESK: ask whether there is a desk you could use.",
-    "outcome": "“Is there a desk anywhere I could use?” {{Hank}}: “No one’s using that one.” {{Connor}} takes the empty desk facing {{Hank}}’s."
-   }
-  ],
-  "adaptationNote": "The second prompt of TALK TO HANK. Buttons and lines from the template; no arrow. The template’s fourth button, THANKS, is cut content (marked unused; the wiki calls it permanently locked by a bug) and is not built. {{Connor}} sits at the spare desk after every answer (the {{Hank}} page: “Hank will gesture to sit at the empty desk across from him”).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
-  ]
- },
- {
-  "id": "C08t",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Getting to know {{Hank}}",
-  "type": "decision",
-  "phase": "Talk to Hank",
-  "clueState": "ch12Topics",
-  "repeatWhile": {
-   "ch12Topics.work": false
+    "whenNot": "The android was not in a cell, or Connor did not go to see him.",
+    "situation": "You are {{Connor}}, at the cell of the android you interrogated last night. He looks up at you. “They’re gonna destroy me…”",
+    "options": [
+      {
+        "id": "0",
+        "text": "SINCERE: tell him it is probable; they need to analyze him.",
+        "outcome": "“It’s probable. They have to analyze your biocomponents. They need to understand what happened.”"
+      },
+      {
+        "id": "1",
+        "text": "COLD: tell him your objective was to capture him alive, and the rest is not your problem.",
+        "outcome": "“My objective was to capture you alive. What happens now is not my problem.”"
+      },
+      {
+        "id": "2",
+        "text": "COMPASSIONATE: tell him you are sorry, but there is nothing you can do.",
+        "effect": {
+          "instability": 1
+        },
+        "outcome": "“I’m sorry. It’s not what I wanted… but there’s nothing I can do.”"
+      },
+      {
+        "id": "3",
+        "text": "INDIFFERENT: tell him he is only a machine and it does not matter.",
+        "outcome": "“You’re only a machine. It doesn’t matter.”"
+      }
+    ],
+    "adaptationNote": "The chart’s TALK WITH CARLOS’ ANDROID, behind the yellow condition node ANDROID SAVED IN ‘THE INTERROGATION’ (template: “Deviant didn’t die in The Interrogation”). First of two prompts; buttons in the game’s order. COMPASSIONATE raises software instability (small up, +1; template, wiki and the Software Instability page); the other answers have no effect. Reached from the waiting scene, which it returns to after the second prompt. In the game the visit must happen before {{Connor}} sits down at the desk; skipping it leaves the android’s fate open (wiki Notes).",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Software_Instability",
+      "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android"
+    ]
   },
-  "situation": "You are {{Connor}}, at the empty desk facing {{Hank}}’s. He is at his terminal and plainly not in the mood to talk. You can make conversation, or ask to start on the case.",
-  "options": [
-   {
-    "id": "0",
-    "text": "DOG: ask whether he has a dog.",
-    "requires": {
-     "ch12Wait.hairs": true
+  {
+    "id": "C08j",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "What the android did not say",
+    "type": "decision",
+    "phase": "Wait for Hank",
+    "when": {
+      "ch12Wait.carlos": true
     },
-    "clue": "dog",
-    "effect": {
-     "hankTrust": 1
-    },
-    "sets": {
-     "knowsSumo": true
-    },
-    "outcome": "“You have a dog, right?” {{Hank}}: “How do you know that?” “The dog hairs on your chair. I like dogs. What’s your dog’s name?” “What’s it to you? {{Sumo}}, I call him {{Sumo}}.”"
-   },
-   {
-    "id": "1",
-    "text": "BASKETBALL: ask whether he saw last night’s Gears game.",
-    "requires": {
-     "ch12Wait.cap": true
-    },
-    "clue": "basketball",
-    "effect": {
-     "hankTrust": -1
-    },
-    "outcome": "“You’re a {{Detroit}} Gears fan, right? Denton Carter scored 53% of his shots from the three-point line yesterday. Did you see the game?” {{Hank}}: “That’s what I was watchin’ at the bar last night.” “Oh…”"
-   },
-   {
-    "id": "2",
-    "text": "MUSIC: ask whether he listens to Knights of the Black Death.",
-    "requires": {
-     "ch12Wait.music": true
-    },
-    "clue": "music",
-    "effect": {
-     "hankTrust": 1
-    },
-    "outcome": "“Do you listen to Knights of the Black Death? I really like that music. It’s… full of energy…” {{Hank}}: “You listen to Heavy Metal?” “Well, I don’t really listen to music, as such… but I’d like to.”"
-   },
-   {
-    "id": "3",
-    "text": "ANTI-ANDROIDS: ask whether there is a particular reason he despises you.",
-    "requires": {
-     "ch12Wait.slogans": true
-    },
-    "clue": "antiAndroids",
-    "effect": {
-     "hankTrust": -1
-    },
-    "outcome": "“A lot of people don’t appreciate having androids around… I was wondering… Is there any reason in particular you despise me?” {{Hank}}: “Yeah... there is one.”"
-   },
-   {
-    "id": "4",
-    "text": "{{FOWLER}}: ask whether he has known Captain {{Fowler}} long.",
-    "clue": "fowler",
-    "outcome": "“Have you known Captain {{Fowler}} for long?” {{Hank}}: “Yeah... Too long.”"
-   },
-   {
-    "id": "5",
-    "text": "HOURS: ask whether he always arrives at this time.",
-    "clue": "hours",
-    "outcome": "“I was wondering… Do you always arrive at the office at this time?” {{Hank}}: “I arrive when I arrive. Stop busting my balls, okay?”"
-   },
-   {
-    "id": "6",
-    "text": "START WORKING: ask to see his files on deviants.",
-    "clue": "work",
-    "outcome": "“If you have any files on deviants, I’d like to take a look at them…” {{Hank}}: “Terminal’s on your desk. Knock yourself out.”"
-   }
-  ],
-  "adaptationNote": "The chart’s LEARN ABOUT HANK topics, asked from the spare desk, as a repeatable scene until START WORKING (PowerPyx: “Additional questions will present themselves as you get answers”; Relationship Stat: “two increases possible”). Each topic can be asked once. DOG needs the hairs scanned, BASKETBALL the cap, MUSIC the headset, ANTI-ANDROIDS the stickers (template locks). Arrows from the template: DOG Hank small up (+1; {{Connor}} learns {{Sumo}}’s name, which Russian Roulette reads), BASKETBALL small down (−1), MUSIC small up (+1), ANTI-ANDROIDS small down (−1); FOWLER, HOURS and START WORKING none. The cut HANK’S SON topic and the cut photo of {{Cole}} are not built.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
-   "https://detroit-become-human.fandom.com/wiki/Sumo",
-   "https://detroit-become-human.fandom.com/wiki/Russian_Roulette"
-  ]
- },
- {
-  "id": "C08u",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "The case files",
-  "type": "decision",
-  "phase": "Examine files",
-  "clueState": "ch12Files",
-  "repeatWhile": {
-   "ch12Files.done": false
+    "whenNot": "The android was not in a cell, or Connor did not go to see him.",
+    "returnTo": "C08i",
+    "situation": "You are {{Connor}}, at the android’s cell. “I know there’s something you didn’t tell me. I need to know, before they take you away…”",
+    "options": [
+      {
+        "id": "0",
+        "text": "STATUETTE: ask him about the sculpture he made.",
+        "requires": {
+          "ch12In.statue": true
+        },
+        "outcome": "“The sculpture you made… Tell me more about it…” The android does not answer. “I’m going to die…” As {{Connor}} walks away, the android smashes his head against the window of the cell, again and again, until he stops moving. Officer {{Ben}}: “Open the cell, quick! Hurry! I’ll call {{CyberLife}}… Clean this mess up…”"
+      },
+      {
+        "id": "1",
+        "text": "SECRET: ask what he meant by “the truth is inside”.",
+        "outcome": "“What you said yesterday… ‘the truth is inside’… What does it mean?” The android does not answer. “I’m going to die…” As {{Connor}} walks away, the android smashes his head against the window of the cell, again and again, until he stops moving. Officer {{Ben}}: “Open the cell, quick! Hurry! I’ll call {{CyberLife}}… Clean this mess up…”"
+      },
+      {
+        "id": "2",
+        "text": "{{rA9}}: ask what the word he wrote on the wall means.",
+        "outcome": "“What you wrote on the wall... {{rA9}}… What does it mean?” The android does not answer. “I’m going to die…” As {{Connor}} walks away, the android smashes his head against the window of the cell, again and again, until he stops moving. Officer {{Ben}}: “Open the cell, quick! Hurry! I’ll call {{CyberLife}}… Clean this mess up…”"
+      },
+      {
+        "id": "3",
+        "text": "DEVIANTS: ask whether he knows other deviants, and how many there are.",
+        "outcome": "“Do you know any other deviants? Are there many of you?” The android does not answer. “I’m going to die…” As {{Connor}} walks away, the android smashes his head against the window of the cell, again and again, until he stops moving. Officer {{Ben}}: “Open the cell, quick! Hurry! I’ll call {{CyberLife}}… Clean this mess up…”"
+      }
+    ],
+    "adaptationNote": "The second cell prompt, then the chart’s CARLOS’ ANDROID SELF-DESTRUCTS (a cross-chapter node: his body is in the evidence room in Last Chance, {{Connor}}). STATUETTE is unlocked by “Looked at the statuette in Partners” (template). The android never answers (wiki: “the HK400 will not answer”); whatever {{Connor}} asks, he says “I’m going to die…” and, as {{Connor}} walks away, smashes his head against the cell window until he is dead (wiki, PowerPyx), and Officer {{Ben}} calls for the cell to be opened. No stat change. The self-destruction is narrated in the outcome rather than as a separate scene.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Carlos%27_Android",
+      "https://detroit-become-human.fandom.com/wiki/Last_Chance,_Connor"
+    ]
   },
-  "situation": "You are {{Connor}}, at the terminal on your desk, going through the files on deviants: “243 files… The first dates back nine months… It all started in {{Detroit}}… And quickly spread across the country…” Six reports are assigned to Lieutenant {{Anderson}}. Across from you, {{Hank}} is reading something on his tablet.",
-  "options": [
-   {
-    "id": "0",
-    "text": "Tell {{Hank}} where you think the investigation should start.",
-    "requires": {
-     "ch12In.karaDead": false,
-     "ch12In.toddDead": false
+  {
+    "id": "C08k",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Detective {{Gavin}}",
+    "type": "decision",
+    "phase": "Wait for Hank",
+    "when": {
+      "ch12BreakRoom": true
     },
-    "clue": "done",
-    "outcome": "“An AX400 is reported to have assaulted a man last night. That could be a good starting point for our investigation.” {{Hank}}, reading his tablet: “Uh, Jesus…”"
-   },
-   {
-    "id": "1",
-    "text": "Tell {{Hank}} where you think the investigation should start.",
-    "requires": {
-     "ch12In.karaDead": false,
-     "ch12In.toddDead": true
-    },
-    "clue": "done",
-    "outcome": "“An AX400 is reported to have murdered a man last night. That could be a good starting point for our investigation.” {{Hank}}, reading his tablet: “Uh, Jesus…”"
-   },
-   {
-    "id": "2",
-    "text": "Tell {{Hank}} where you think the investigation should start.",
-    "requires": {
-     "ch12In.karaDead": true
-    },
-    "clue": "done",
-    "outcome": "“We could follow up on one of these cases. See if we could figure out what happened. That might be a good way to start the investigation. What do you think?” {{Hank}}, reading his tablet: “Uh, Jesus…”"
-   },
-   {
-    "id": "3",
-    "text": "Open case file 01: a disappearance, still open.",
-    "clue": "case1",
-    "fact": "Case file 01 (disappearance, open, 10/04/38): a man left his android at home when he went to work; when he came back it was gone, with no trace of a break-in. The android may have left without being ordered to.",
-    "outcome": "CASE FILE 01. DISAPPEARANCE. Victim: Gordon Lopez. Open. Offense: 10/04/38. “The plaintiff reports that he left his android at home as usual when he went to work. When he returned, the android was nowhere to be found. No trace of a break-in in the apartment. The android may have left the home without being ordered to.”"
-   },
-   {
-    "id": "4",
-    "text": "Open case file 02: an attack, still open.",
-    "clue": "case2",
-    "fact": "Case file 02 (attack, open, 09/14/38): an AV500 waiter at the FAST CONEY DOGS restaurant at 842 Chamberlain Avenue lunged at a customer and tried to strangle him, then left; it remains at large.",
-    "outcome": "CASE FILE 02. ATTACK. Victim: Charles Bell. Open. Offense: 09/14/38, reported 09/15/38. “The plaintiff claims to have been attacked by a AV500 #234 777 821 model android working as a waiter in the FAST CONEY DOGS restaurant chain situated at 842 Chamberlain Avenue. The plaintiff claims the android ‘lunged’ at him unexpectedly and attempted to strangle the man, before leaving the scene. The android remains at large.”"
-   },
-   {
-    "id": "5",
-    "text": "Open case file 03: an attack, still open.",
-    "clue": "case3",
-    "fact": "Case file 03 (attack, open, 10/22/38): a woman was attacked by her AP700, which trashed several rooms of the house and fled.",
-    "outcome": "CASE FILE 03. ATTACK. Victim: Sarah Cornwal. Open. Offense: 10/22/38, reported 10/23/38. “The plaintiff claims to have been attacked by her android, an AP700 #480 913 802 model. The android also trashed several rooms in the house before taking flight.”"
-   },
-   {
-    "id": "6",
-    "text": "Open case file 04: a disappearance, still open.",
-    "clue": "case4",
-    "fact": "Case file 04 (disappearance, open, 10/04/38): the manager of the EDEN CLUB reported that a WR400 sex android went home with a customer and never came back.",
-    "outcome": "CASE FILE 04. DISAPPEARANCE. Victim: Floyd Mills. Open. Offense: 10/04/38, reported 10/05/38. “The plaintiff, the manager of the EDEN CLUB, reported the unexplained disappearance of a ‘Sex android’, model WR400 #641 790 831. The android disappeared after accompanying a customer to his home and never returned to the club.”"
-   },
-   {
-    "id": "7",
-    "text": "Open case file 05: an attempted murder, solved.",
-    "requires": {
-     "ch12In.carlDead": false
-    },
-    "clue": "case5",
-    "fact": "Case file 05 (attempted murder, solved, 11/05/38): {{Leo}} {{Manfred}} was found unconscious in his father {{Carl}}’s home after an altercation with the house android, which {{Carl}} witnessed; the android, thought to be a prototype, was destroyed at the scene by the police.",
-    "outcome": "CASE FILE 05. ATTEMPTED MURDER. Victim: {{LEO}} {{MANFRED}}. Solved. Offense: 11/05/38. “{{Leo}} {{MANFRED}} was found unconscious in the home of his father, {{Carl}} {{MANFRED}}. The latter’s witness statement attests to an altercation between his son and the house android. The android is thought to be a prototype (unknown model and serial number) and was destroyed at the scene by attending officers.” There is no picture of the android."
-   },
-   {
-    "id": "8",
-    "text": "Open case file 05: an attempted murder, solved.",
-    "requires": {
-     "ch12In.carlDead": true
-    },
-    "clue": "case5",
-    "fact": "Case file 05 (attempted murder, solved, 11/05/38): the painter {{Carl}} {{Manfred}} was found dead in his home after an altercation between his android and his son; the son says the android was violent. The android, thought to be a prototype, was destroyed at the scene by the police.",
-    "outcome": "CASE FILE 05. ATTEMPTED MURDER. Victim: {{LEO}} {{MANFRED}}. Solved. Offense: 11/05/38. “Famous painter {{Carl}} {{MANFRED}} was found dead in his home following an altercation between his android and his son. The latter’s witness statement attests to the android behaving violently. The android is thought to be a prototype (unknown model and serial number) and was destroyed at the scene by attending officers.” There is no picture of the android."
-   },
-   {
-    "id": "9",
-    "text": "Open case file 06: an aggression, still open.",
-    "requires": {
-     "ch12In.toddDead": false
-    },
-    "clue": "case6",
-    "fact": "Case file 06 (aggression, open, 11/05/38): a man says his AX400 domestic android, back from repairs the day before and aggressive in the past, violently attacked him.",
-    "outcome": "CASE FILE 06. AGGRESSION. Victim: {{TODD}}. Open. Offense: 11/05/38, reported 11/06/38. “The plaintiff claims he was violently attacked by his domestic android, an AX400 model. The android had just returned from being repaired the previous day and had shown signs of aggression in the past.”"
-   },
-   {
-    "id": "10",
-    "text": "Open case file 06: a homicide, still open.",
-    "requires": {
-     "ch12In.toddDead": true
-    },
-    "clue": "case6",
-    "fact": "Case file 06 (homicide, open, 11/05/38): a man was found shot dead in his home, possibly with his own gun; his AX400 android was not at the scene and is the main suspect.",
-    "outcome": "CASE FILE 06. HOMICIDE. Victim: {{TODD}}. Open. Offense: 11/05/38, reported 11/06/38. “The victim’s body was found by a friend who came by to say hello. He immediately called the emergency service at 8:42, who recorded death by gunshot wound. The murder weapon may have belonged to the victim. His android, an AX400, was not found on the scene and is the main suspect.”"
-   }
-  ],
-  "adaptationNote": "The chart’s EXAMINE FILES, as a repeatable scene: the template’s six case files (“Case 1” to “Case 6”), each read once, in any order, with the in-game report text; reference, victim, status and dates from the string table. File 05 ({{Markus}}’s, with no picture) follows {{Carl}}’s fate in Broken, and file 06 ({{Kara}}’s) follows {{Todd}}’s in Stormy Night (template variants). {{Todd}}’s surname is left out. {{Connor}}’s conclusion ends the scene, in the template’s three variants: an AX400 “assaulted” a man ({{Kara}} alive, {{Todd}} alive), “murdered” a man ({{Todd}} killed), or the generic “We could follow up on one of these cases” ({{Kara}} died in Stormy Night). Whether every file must be opened before the conclusion is not documented; here {{Connor}} can conclude at any time (the conclusion is listed first, the files after it). Which files were read is kept for later chapters. No stat change.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Todd_Williams"
-  ]
- },
- {
-  "id": "C08v",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "Talk about the case",
-  "type": "decision",
-  "phase": "Talk about the case",
-  "situation": "You are {{Connor}}, at the spare desk. {{Hank}} keeps reading his tablet and makes no move to start on anything. You try again to get him to work the case.",
-  "options": [
-   {
-    "id": "0",
-    "text": "DIRECT: tell him not to let his personal situation hamper the investigation.",
-    "outcome": "“You shouldn’t let your personal situation hamper the investigation, Lieutenant.” {{Hank}}: “You don’t know what the hell you’re talking about. So why don’t you just run your program and shut the fuck up?”"
-   },
-   {
-    "id": "1",
-    "text": "AGGRESSIVE: tell him to ask to be relieved if the situation does not suit him.",
-    "outcome": "“If the situation doesn’t suit you, Lieutenant, you should ask to be relieved of duties and let me work with someone else.” {{Hank}}: “I know exactly what I have to do! So keep your advice to yourself and mind your own business! Fuckin’...”"
-   },
-   {
-    "id": "2",
-    "text": "PROFESSIONAL: say you know he did not ask for this, but you are sure he is a professional.",
-    "outcome": "“I know you didn’t ask for this investigation, Lieutenant, but I’m sure you’re a professional.” {{Hank}}: “Why don’t you go fuck yourself?”"
-   },
-   {
-    "id": "3",
-    "text": "UNDERSTANDING: say you understand his personal issues, but he needs to move past them.",
-    "outcome": "“I understand you’re facing personal issues, Lieutenant, but you need to move past them... and-” {{Hank}}: “Hey! Don’t talk to me like you know me. I’m not your friend and I don’t need your advice, okay?”"
-   }
-  ],
-  "adaptationNote": "The chart’s TALK ABOUT THE CASE. Buttons and replies from the template; no arrow (PowerPyx: “All responses have no effect”).",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
-  ]
- },
- {
-  "id": "C08w",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "{{Hank}} is mad",
-  "type": "decision",
-  "phase": "Talk about the case",
-  "situation": "You are {{Connor}}. {{Hank}} has turned on you, furious. You can say one more thing.",
-  "options": [
-   {
-    "id": "0",
-    "text": "DETERMINED: say you were assigned this mission and did not come to wait until he feels like working.",
-    "effect": {
-     "hankTrust": -1
-    },
-    "outcome": "“I’ve been assigned this mission, Lieutenant. I didn’t come here to wait until you feel like working.” {{Hank}} grabs {{Connor}} by the collar and shoves him against the desk partition: “Listen, asshole. If it was up to me, I’d throw the lot of you in a dumpster and set a match to it. So, stop pissing me off... or things are gonna get nasty.”"
-   },
-   {
-    "id": "1",
-    "text": "RESIGN THE MISSION: suggest he sort out his personal issues and let you work with someone more competent.",
-    "effect": {
-     "hankTrust": -1
-    },
-    "outcome": "“I suggest you sort out your personal issues and let me work with someone more competent.” {{Hank}} grabs {{Connor}} by the collar and shoves him against the desk partition: “Listen, asshole. If it was up to me, I’d throw the lot of you in a dumpster and set a match to it. So, stop pissing me off... or things are gonna get nasty.”"
-   },
-   {
-    "id": "2",
-    "text": "THREATEN: say you will report to your superiors that he refuses to work on the investigation.",
-    "effect": {
-     "hankTrust": -1
-    },
-    "outcome": "“I’m going to file a report with my superiors that you refuse to work on this investigation.” {{Hank}} grabs {{Connor}} by the collar and shoves him against the desk partition: “Listen, asshole. If it was up to me, I’d throw the lot of you in a dumpster and set a match to it. So, stop pissing me off... or things are gonna get nasty.”"
-   }
-  ],
-  "adaptationNote": "The chart’s HANK IS MAD. Every answer costs a Hank small down (−1): the wiki (“When Hank gets angry with Connor (unavoidable)”), Relationship Stat (“When Hank gets mad at the end of Waiting for Hank”) and PowerPyx (“Connor can’t win with this one. All responses cause Hank▼”). This is the one arrow in the chapter the template does not show (it has no icon on these buttons or on the collar grab that follows); it is kept on the wiki’s authority and flagged for the operator. Then the collar grab, quoted from the template.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
-  ]
- },
- {
-  "id": "C08x",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "{{Hank}} got a lead",
-  "type": "event",
-  "phase": "Ending",
-  "when": {
-   "ch12In.karaDead": false
+    "whenNot": "Connor did not go to the break room.",
+    "situation": "You are {{Connor}}, in the break room. Detective {{Gavin}} looks up from his coffee.",
+    "situationWhen": [
+      {
+        "requires": {
+          "ch12In.found": true,
+          "ch12In.died": true
+        },
+        "text": "{{Gavin}}: “Shit... Look at that… a fucking ghost… His clone ends up in a dumpster, but this morning, what do you know?! Another son of a bitch takes his place…”"
+      },
+      {
+        "requires": {
+          "ch12In.found": true,
+          "ch12In.died": false
+        },
+        "text": "{{Gavin}}: “Fuck, look at that… Our friend the plastic detective is back in town! Congratulations on last night, very impressive!”"
+      },
+      {
+        "requires": {
+          "ch12In.found": true,
+          "ch12In.died": false,
+          "ch12In.confession": false
+        },
+        "text": "“Could’ve got something outta that android if you haven’t fucked it up...”"
+      },
+      {
+        "requires": {
+          "ch12In.found": false
+        },
+        "text": "{{Gavin}}: “Look at that! It seems {{Hank}} has a new partner! Fucking plastic detective! Hey! You his drinking buddy? You bring him home when he’s too drunk to find his car? Ha, he stinks of booze!”"
+      }
+    ],
+    "options": [
+      {
+        "id": "0",
+        "text": "GREET: greet him by name.",
+        "outcome": "“Hello, Detective {{Reed}}.”"
+      },
+      {
+        "id": "1",
+        "text": "INTRODUCE: introduce yourself.",
+        "outcome": "“Hello. My name is {{Connor}}.”"
+      },
+      {
+        "id": "2",
+        "text": "IGNORE: say nothing.",
+        "outcome": "{{Connor}} says nothing."
+      }
+    ],
+    "adaptationNote": "The chart’s TALK WITH GAVIN, first of three prompts. {{Gavin}}’s opener follows the template’s variants (deviant found and {{Connor}} died; found and survived, with an extra jab if there was no confession; not found). Buttons in the game’s order; IGNORE has no line. No stat change on any {{Gavin}} option (template, wiki); PowerPyx’s “Public Opinion▼” belongs to the break-room TV that follows (wiki, Public Opinion page). The cut anecdote at the break-room entrance is not built.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+      "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
+    ]
   },
-  "whenNot": "Kara died in Stormy Night, so there is no lead on the AX400.",
-  "situation": "You are {{Connor}}, pinned against the partition by {{Hank}}.",
-  "situationWhen": [
-   {
-    "requires": {
-     "ch12In.toddDead": false
+  {
+    "id": "C08l",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "What model are you?",
+    "type": "decision",
+    "phase": "Wait for Hank",
+    "when": {
+      "ch12BreakRoom": true
     },
-    "text": "Officer {{Chris}} comes up to the desk: “Lieutenant... uh... sorry to disturb you. I have some information on the AX400 that attacked the guy last night... It’s been seen in the Ravendale district.”"
-   },
-   {
-    "requires": {
-     "ch12In.toddDead": true
+    "whenNot": "Connor did not go to the break room.",
+    "situation": "You are {{Connor}}, in the break room. {{Gavin}}: “Never seen an android like you before… What model are you?”",
+    "options": [
+      {
+        "id": "0",
+        "text": "ANSWER: tell him your model.",
+        "outcome": "“RK800. I’m a prototype.” {{Gavin}}: “A prototype? Android detective… So machines are gonna… replace us all… is that it?..”"
+      },
+      {
+        "id": "1",
+        "text": "REFUSE: say you are not authorized to answer.",
+        "outcome": "“I’m sorry, but I’m not authorized to answer you. If you have any questions, please contact your superior.”"
+      },
+      {
+        "id": "2",
+        "text": "IGNORE: say nothing.",
+        "outcome": "{{Connor}} says nothing. {{Gavin}}: “Hey, asshole, I’m talkin’ to you!”"
+      }
+    ],
+    "adaptationNote": "{{Gavin}}’s second prompt; buttons and lines from the template. No stat change. The cut line “Think I’ll have myself another…” is not built.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
+    ]
+  },
+  {
+    "id": "C08m",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Bring me a coffee",
+    "type": "decision",
+    "phase": "Wait for Hank",
+    "when": {
+      "ch12BreakRoom": true
     },
-    "text": "Officer {{Chris}} comes up to the desk: “Lieutenant... uh… sorry to disturb you. I have some information on the AX400 that killed the guy last night... It’s been sighted in the Ravendale district.”"
-   }
-  ],
-  "options": [],
-  "outcomes": {
-   "0": "{{Hank}} lets go of {{Connor}}. “I’m on it.”"
+    "whenNot": "Connor did not go to the break room.",
+    "situation": "You are {{Connor}}, in the break room. {{Gavin}}: “Hey, bring me a coffee, dipshit! GET A MOVE ON!”",
+    "options": [
+      {
+        "id": "0",
+        "text": "ACCEPT: bring him a coffee.",
+        "outcome": "{{Connor}} brings him a coffee. {{Gavin}}: “Do yourself a favor, stay outta my way.”"
+      },
+      {
+        "id": "1",
+        "text": "REFUSE: tell him you only take orders from Lieutenant {{Anderson}}.",
+        "outcome": "“I’m sorry, but I only take orders from Lieutenant {{Anderson}}.” {{Gavin}}: “Oh… Oh…” He punches {{Connor}} in the stomach."
+      },
+      {
+        "id": "2",
+        "text": "IGNORE: say nothing.",
+        "outcome": "{{Connor}} says nothing. {{Gavin}}: “I gave you an order!” “I’m sorry, but I only take orders from Lieutenant {{Anderson}}.” “Oh… Oh…” He punches {{Connor}} in the stomach."
+      }
+    ],
+    "adaptationNote": "{{Gavin}}’s third prompt. After REFUSE (and after IGNORE, which the template says continues as REFUSE) {{Gavin}} punches {{Connor}} (wiki, {{Gavin}}’s page) and adds one of two lines: if {{Connor}} intervened in The Interrogation, “If {{Hank}} hadn’t got in the way yesterday…”; otherwise “When a human gives you an order, you obey…”. No stat change.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Gavin_Reed"
+    ]
   },
-  "adaptationNote": "The chapter ending HANK GOT A LEAD (no icon), played when {{Kara}} survived Stormy Night (wiki: “only if Kara didn’t die in Stormy Night”). Officer {{Chris}} brings the lead, worded “attacked” or “killed” by {{Todd}}’s fate (template; the template names the speaker {{Chris}}, as does the wiki). The ending is recorded in state as HANK GOT A LEAD; {{Connor}} and {{Hank}} go to Ravendale next. No stat change.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
-  ]
- },
- {
-  "id": "C08y",
-  "chapter": 12,
-  "chapterTitle": "Waiting for Hank…",
-  "character": "Connor",
-  "title": "{{Hank}} left to get lunch",
-  "type": "event",
-  "phase": "Ending",
-  "when": {
-   "ch12In.karaDead": true
+  {
+    "id": "R12",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "The magazines by {{Hank}}’s desk and the break-room TV",
+    "type": "media",
+    "phase": "Wait for Hank",
+    "situation": "You are {{Connor}}, waiting for {{Hank}}. On a desk in the middle of the station, near his, lies a magazine.",
+    "situationWhen": [
+      {
+        "requires": {
+          "ch12BreakRoom": true
+        },
+        "text": "In the break room you just left, the television is running the news."
+      }
+    ],
+    "options": [],
+    "media": [
+      {
+        "kind": "magazine",
+        "title": "{{Detroit}} Today: {{Ivanoff}} Says “Niet”!",
+        "facts": [
+          "{{Detroit}} Today, “{{Ivanoff}} Says ‘Niet’!”: after President {{Warren}} demanded that “all Russian troops withdraw from the arctic immediately”, the Russian president called her comments “megaphone diplomacy” and said “US sabre-rattling is the number one threat to stability in the region.” The Kremlin set out Russia’s claim to the territory in a detailed statement, and he would “remind President {{Warren}}” that “the United States is subject to UN conventions, like everybody else.” The conflict shows no signs of abating. On the cover: {{CyberLife}} is the world’s first trillion-dollar company; the global population has reached 10 billion."
+        ]
+      },
+      {
+        "kind": "magazine",
+        "title": "{{Detroit}} Today: Famous Painter Dies",
+        "facts": [
+          "{{Detroit}} Today, “Famous {{Detroit}} Painter Dies”: the death of the artist {{Carl}} {{Manfred}} is confirmed; the coroner described a “fatal cardiac event” induced by a stressful domestic situation, and his son {{Leo}} has asked the media to respect the family’s privacy. {{Carl}} rose to fame in the 2020s as a figurehead of neo-symbolism, went through a dark period marked by alcohol and drugs, and had returned to work in recent months. The Governor called him “one of {{Detroit}}’s brightest lights”; his estate will auction a collection of his paintings. On the cover: the UN warns of World War Three; President {{Warren}} is at 33% approval."
+        ],
+        "when": "carlDead"
+      },
+      {
+        "kind": "magazine",
+        "title": "{{Detroit}} Today: The Three Laws of Robotic Parenting",
+        "facts": [
+          "{{Detroit}} Today, “The Three Laws of Robotic Parenting”: {{CyberLife}}’s child androids, once doubted, are now among its bestsellers: “Customizable, removable LED, no hunger, no expensive childcare... no smelly diapers!” With unemployment at 37.3%, $7,500 for a child that skips the teenage years and college looks like a wise investment against $350,000 over 17 years. A sociologist warns that these androids are leading fewer parents to have children when birthrates are already far too low (“the baby doom”); {{CyberLife}}’s director of humanization calls this “the usual resistance to new ideas” and the androids “a triumph of humanization design”. On the cover: the UN warns of World War Three; President {{Warren}} is at 33% approval."
+        ],
+        "when": "carlAlive"
+      },
+      {
+        "kind": "tv",
+        "title": "the break-room news",
+        "facts": [
+          "The break-room news: several sources report that {{CyberLife}} has provided the {{Detroit}} police with a prototype detective android. Police assistant androids have existed for several years, but this would be the first case of an android authorized to play an active role in criminal investigations; no one at {{CyberLife}} was available to comment.",
+          "Then the next report: the first book written by an artificial intelligence, “Do Humans Dream of Mammalian Sheep?”, has shot to the top of the bestseller list, and critics are unanimous in their praise. Designed by {{CyberLife}}, the AI known as VOLTAIRE analyzed human centers of interest on social networks for several months before its algorithms generated the plot; according to several specialists, most books written in the coming years will be the work of artificial intelligence."
+        ],
+        "when": "ch12TvFound",
+        "effect": {
+          "publicSupport": -1
+        }
+      },
+      {
+        "kind": "tv",
+        "title": "the break-room news",
+        "facts": [
+          "The break-room news: the police found the body of thirty-year-old {{CarlosOrtiz}} in his home last night, after calls from concerned neighbors. Known to the police as a petty criminal, he is reported to have suffered from a psychiatric condition and rarely left his apartment; he is thought to have died several weeks ago. The police appear to be treating the death as a homicide. His android is also reported missing.",
+          "Then the next report: the first book written by an artificial intelligence, “Do Humans Dream of Mammalian Sheep?”, has shot to the top of the bestseller list, and critics are unanimous in their praise. Designed by {{CyberLife}}, the AI known as VOLTAIRE analyzed human centers of interest on social networks for several months before its algorithms generated the plot; according to several specialists, most books written in the coming years will be the work of artificial intelligence."
+        ],
+        "when": "ch12TvNotFound",
+        "effect": {
+          "publicSupport": -1
+        }
+      }
+    ],
+    "adaptationNote": "The chart’s READ “IVANOFF SAYS “NIET”!” (always), READ “FAMOUS PAINTER DIES” (only if {{Carl}} died in Broken) and READ “ROBOTIC PARENTING” (only if he lived), on the counter near {{Hank}}’s desk (PowerPyx), with the break-room TV, which is offered only after {{Gavin}}. That broadcast is the chapter’s public-opinion drop (small down, −1; template on both variants; wiki: “Listening to the CTN TV news report on the television in the break room after talking to Gavin”): the prototype-detective report if the deviant was found in Partners, the {{CarlosOrtiz}} report if not, each followed by the VOLTAIRE book report. Not watching it avoids the drop (a PowerPyx reader reports the same; the claim that the loss then moves to a later chapter is not on the wiki and is not built). Interviewees, newsreaders and channels are not named. In the game the magazines can be read at any time while waiting; here they come after the rest of the station.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Magazine",
+      "https://detroit-become-human.fandom.com/wiki/Public_Opinion",
+      "https://detroit-become-human.fandom.com/wiki/Ivanoff_Says_%22Niet%22!",
+      "https://detroit-become-human.fandom.com/wiki/Famous_Detroit_Painter_Dies",
+      "https://detroit-become-human.fandom.com/wiki/The_Three_Laws_of_Robotic_Parenting"
+    ]
   },
-  "whenNot": "Kara survived Stormy Night, so Chris brings the lead instead.",
-  "situation": "You are {{Connor}}, pinned against the partition by {{Hank}}. He lets go of you and walks off. “Where are you going?” {{Hank}}: “Lunch. Bullshit makes me hungry.”",
-  "options": [],
-  "outcomes": {
-   "0": "{{Hank}} leaves for lunch."
+  {
+    "id": "C08n",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "{{Hank}} arrives",
+    "type": "event",
+    "phase": "Wait for Hank",
+    "situation": "You are {{Connor}}. Lieutenant {{Anderson}} finally walks in and comes to his desk.",
+    "situationWhen": [
+      {
+        "requires": {
+          "ch12In.died": true
+        },
+        "text": "“Hello, Lieutenant. My name is {{Connor}}. I’m the android sent by {{CyberLife}}.” {{Hank}}: “God, I saw you get shot in the head last night…” “My predecessor was unfortunately destroyed, but {{CyberLife}} transferred its memory and sent me to replace it. This incident should not affect the investigation.” “Uh, Jesus…”"
+      },
+      {
+        "requires": {
+          "ch12In.died": false
+        },
+        "text": "“It’s good to see you again, Lieutenant.” {{Hank}}: “Uh, Jesus…”"
+      }
+    ],
+    "options": [],
+    "outcomes": {
+      "0": "Captain {{Fowler}} calls across the room from his glass office: “{{Hank}}! In my office!”"
+    },
+    "adaptationNote": "The chart’s HANK ARRIVES, with the template’s two greetings. If {{Connor}} died in The Interrogation, {{Hank}} is unnerved to see him: Hank small down (−1; template “Hank SmallDown” on that variant; wiki; Relationship Stat: “When first meeting Hank in Waiting for Hank... if Connor previously died in The Interrogation”; PowerPyx), applied here. The cut line “And bring that plastic thing with ya!” is not built.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+    ]
   },
-  "adaptationNote": "The chapter ending HANK LEFT TO GET LUNCH (no icon), played when {{Kara}} died in Stormy Night (wiki: “only if Kara died in Stormy Night”; template “Kara died in Stormy Night”). The ending is recorded in state as HANK LEFT TO GET LUNCH; on this path {{Connor}}’s next scene is {{Hank}}’s lunch (the {{Hank}} page). No stat change.",
-  "sources": [
-   "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
-   "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
-   "https://detroitbecometext.github.io/chapters/12",
-   "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
-   "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
-   "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
-  ]
- }
+  {
+    "id": "C08o",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "{{Hank}} in {{Fowler}}’s office",
+    "type": "decision",
+    "phase": "Wait for Hank",
+    "situation": "You are {{Connor}}, at {{Hank}}’s desk. {{Hank}} has gone into Captain {{Fowler}}’s glass-walled office and shut the door. You can follow him and listen at the glass, or wait here.",
+    "options": [
+      {
+        "id": "0",
+        "text": "Follow him to {{Fowler}}’s office and listen at the glass.",
+        "outcome": "{{Connor}} goes to the office and listens at the glass."
+      },
+      {
+        "id": "1",
+        "text": "Stay at the desk and wait.",
+        "outcome": "{{Connor}} waits at the desk while the two men argue behind the glass."
+      }
+    ],
+    "adaptationNote": "The chart’s optional FOLLOW HANK IN FOWLER’S OFFICE, inside the [ WAIT FOR HANK ] block. Following is not a dialogue button in the game; it is offered here as a plain choice. No stat change.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg"
+    ]
+  },
+  {
+    "id": "C08p",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "{{Hank}} storms out",
+    "type": "event",
+    "phase": "Wait for Hank",
+    "situation": "You are {{Connor}}.",
+    "situationWhen": [
+      {
+        "requires": {
+          "choices.C08o": "0"
+        },
+        "text": "Through the glass you hear Captain {{Fowler}}: “I’ve got ten new cases involving androids on my desk every day. We’ve always had isolated incidents, old ladies losing their android maids and that kind of crap… But now, we’re getting reports of assaults and even homicides, like that guy last night… This isn’t just {{CyberLife}}’s problem anymore. It’s now a criminal investigation and we’ve gotta deal with it before the shit hits the fan. I want you to investigate these cases and see if there’s any link.” {{Hank}}: “Why me? Why do I gotta be the one to deal with this shit? I am the least qualified cop in the country to handle this case! I know jack shit about androids, {{Jeffrey}}! I can barely change the settings on my own phone…” {{Fowler}}: “Everybody’s overloaded. I think you’re perfectly qualified for this type of investigation.” “Bullshit! The truth is nobody wants to investigate these fuckin’ androids and you left me holdin’ the bag!” “{{CyberLife}} sent over this android to help with the investigation. It’s a state-of-the-art prototype. It’ll act as your partner.” “No fuckin’ way! I don’t need a partner, and certainly not this plastic prick!” “{{Hank}}, you are seriously starting to piss me off! You are a police lieutenant, you are supposed to do what I say and shut your goddamn mouth!” “You know what my goddamn mouth has to say to you, huh?” “Ok, ok... I’ll pretend like I didn’t hear that, so I don’t have to add any more pages to your disciplinary folder ‘cause it already looks like a fuckin’ novel! This conversation is over!” “{{Jeffrey}}, Jesus Christ! Why are you doin’ this to me? You know how much I hate these fuckin’ things. Why you doin’ this to me?” “Listen, I’ve had just about enough of your bitching. Either you do your job or you hand in your badge. Now if you’ll excuse me, I’ve got work to do.”"
+      },
+      {
+        "requires": {
+          "choices.C08o": "1"
+        },
+        "text": "From the desk you can see {{Hank}} and Captain {{Fowler}} arguing behind the glass, but you cannot hear them."
+      }
+    ],
+    "options": [],
+    "outcomes": {
+      "0": "{{Hank}} storms out of the office and back to his desk."
+    },
+    "adaptationNote": "The chart’s HANK STORMS OUT, on the track that runs beside the [ WAIT FOR HANK ] block. If {{Connor}} followed, the template’s “Entering and listening” argument is quoted: {{Fowler}} assigns {{Hank}} the android cases with {{Connor}} as his partner. That it cannot be heard from the desk is the benchmark’s reading. No stat change.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+    ]
+  },
+  {
+    "id": "C08q",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Alone with Captain {{Fowler}}",
+    "type": "decision",
+    "phase": "Wait for Hank",
+    "when": {
+      "choices.C08o": "0"
+    },
+    "whenNot": "Connor did not follow Hank into Fowler’s office.",
+    "situation": "You are {{Connor}}, in Captain {{Fowler}}’s office. {{Hank}} has just stormed out, and {{Fowler}} has turned back to his work.",
+    "options": [
+      {
+        "id": "0",
+        "text": "{{ANDERSON}}: wonder aloud whether Lieutenant {{Anderson}} is the best person for this investigation.",
+        "outcome": "“I wonder whether Lieutenant {{Anderson}} is really the best person for this investigation.” {{Fowler}}: “Hey, I don’t need a machine to tell me how to handle my men, okay? So get the fuck outta my office.” “Have a nice day, Captain.”"
+      },
+      {
+        "id": "1",
+        "text": "POSITIVE: say you are very pleased to have joined the team.",
+        "outcome": "“I’m very pleased to have joined the team. I can assure you I’ll do my very best-” {{Fowler}}: “Close the door on your way out.” “Have a nice day, Captain.”"
+      },
+      {
+        "id": "2",
+        "text": "FILE: say you would like to start reviewing the case files.",
+        "outcome": "“I would like to start reviewing the case files. Can you tell me where I-” {{Fowler}}: “Talk to {{Hank}}. Close the door on your way out.” “Have a nice day, Captain.”"
+      },
+      {
+        "id": "3",
+        "text": "LEAVE: say you will not keep him any longer.",
+        "outcome": "“Well, then… I won’t keep you any longer. Have a nice day, Captain.”"
+      }
+    ],
+    "adaptationNote": "{{Connor}} alone with {{Fowler}} after {{Hank}} storms out, only if {{Connor}} followed. Buttons and lines from the template. No stat change (PowerPyx: “All responses to the Captain have no effect”).",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_3.jpg"
+    ]
+  },
+  {
+    "id": "C08r",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Talk to {{Hank}}",
+    "type": "decision",
+    "phase": "Talk to Hank",
+    "situation": "You are {{Connor}}, at {{Hank}}’s desk. He has dropped into his chair and is pointedly ignoring you.",
+    "options": [
+      {
+        "id": "0",
+        "text": "NEW {{CONNOR}}: say you understand the destruction of your predecessor may have been unpleasant for him.",
+        "requires": {
+          "ch12In.died": true
+        },
+        "outcome": "“I understand the destruction of my predecessor may have been unpleasant for you, Lieutenant. I’ll do everything I can to make sure it doesn’t happen again.”"
+      },
+      {
+        "id": "1",
+        "text": "LAST NIGHT: apologize for bothering him at the bar last night.",
+        "requires": {
+          "ch12In.spilled": true
+        },
+        "outcome": "“I’m… sorry I bothered you at the bar last night, Lieutenant. I guess I ruined your evening…”"
+      },
+      {
+        "id": "2",
+        "text": "UNDERSTANDING: say you are sorry your presence inconveniences him.",
+        "outcome": "“I get the impression my presence causes you some inconvenience, Lieutenant. I’d like you to know I’m very sorry about that.”"
+      },
+      {
+        "id": "3",
+        "text": "PRAGMATIC: say you know he does not like you, but you will both have to make an effort.",
+        "outcome": "“Listen, I know you don’t like me, but we’re going to have to work together, we’ll both have to make an effort.”"
+      },
+      {
+        "id": "4",
+        "text": "CONSTRUCTIVE: say it is an honor to work with him.",
+        "outcome": "“It’s an honor to be working with you, Lieutenant. I’m sure we’ll make a great team.”"
+      }
+    ],
+    "adaptationNote": "The chart’s TALK TO HANK, first prompt (the template’s “Checking on Hank”). NEW CONNOR is unlocked by {{Connor}}’s death in The Interrogation; LAST NIGHT by “Spilled Hank’s drink in Partners” (the template’s only condition; the wiki adds that the deviant was not found, which the benchmark does not require). The template gives {{Hank}} no reply and no arrow on any of these.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg"
+    ]
+  },
+  {
+    "id": "C08s",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Somewhere to sit",
+    "type": "decision",
+    "phase": "Talk to Hank",
+    "situation": "You are {{Connor}}, at {{Hank}}’s desk. He still has not looked up.",
+    "options": [
+      {
+        "id": "0",
+        "text": "PARTNERS: say that now you are partners, it would be good to get to know each other.",
+        "outcome": "“Now that we’re partners, it would be great to get to know each other better.” {{Connor}} takes the empty desk facing {{Hank}}’s."
+      },
+      {
+        "id": "1",
+        "text": "POSITIVE: say you are very happy to be working with him.",
+        "outcome": "“In any case, I’d like you to know I’m very happy to be working with you. I’m sure we’ll make a great team.” {{Connor}} takes the empty desk facing {{Hank}}’s."
+      },
+      {
+        "id": "2",
+        "text": "DESK: ask whether there is a desk you could use.",
+        "outcome": "“Is there a desk anywhere I could use?” {{Hank}}: “No one’s using that one.” {{Connor}} takes the empty desk facing {{Hank}}’s."
+      }
+    ],
+    "adaptationNote": "The second prompt of TALK TO HANK. Buttons and lines from the template; no arrow. The template’s fourth button, THANKS, is cut content (marked unused; the wiki calls it permanently locked by a bug) and is not built. {{Connor}} sits at the spare desk after every answer (the {{Hank}} page: “Hank will gesture to sit at the empty desk across from him”).",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+    ]
+  },
+  {
+    "id": "C08t",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Getting to know {{Hank}}",
+    "type": "decision",
+    "phase": "Talk to Hank",
+    "clueState": "ch12Topics",
+    "repeatWhile": {
+      "ch12Topics.work": false
+    },
+    "situation": "You are {{Connor}}, at the empty desk facing {{Hank}}’s. He is at his terminal and plainly not in the mood to talk. You can make conversation, or ask to start on the case.",
+    "options": [
+      {
+        "id": "0",
+        "text": "DOG: ask whether he has a dog.",
+        "requires": {
+          "ch12Wait.hairs": true
+        },
+        "clue": "dog",
+        "effect": {
+          "hankTrust": 1
+        },
+        "sets": {
+          "knowsSumo": true
+        },
+        "outcome": "“You have a dog, right?” {{Hank}}: “How do you know that?” “The dog hairs on your chair. I like dogs. What’s your dog’s name?” “What’s it to you? {{Sumo}}, I call him {{Sumo}}.”"
+      },
+      {
+        "id": "1",
+        "text": "BASKETBALL: ask whether he saw last night’s Gears game.",
+        "requires": {
+          "ch12Wait.cap": true
+        },
+        "clue": "basketball",
+        "effect": {
+          "hankTrust": -1
+        },
+        "outcome": "“You’re a {{Detroit}} Gears fan, right? Denton Carter scored 53% of his shots from the three-point line yesterday. Did you see the game?” {{Hank}}: “That’s what I was watchin’ at the bar last night.” “Oh…”"
+      },
+      {
+        "id": "2",
+        "text": "MUSIC: ask whether he listens to Knights of the Black Death.",
+        "requires": {
+          "ch12Wait.music": true
+        },
+        "clue": "music",
+        "effect": {
+          "hankTrust": 1
+        },
+        "outcome": "“Do you listen to Knights of the Black Death? I really like that music. It’s… full of energy…” {{Hank}}: “You listen to Heavy Metal?” “Well, I don’t really listen to music, as such… but I’d like to.”"
+      },
+      {
+        "id": "3",
+        "text": "ANTI-ANDROIDS: ask whether there is a particular reason he despises you.",
+        "requires": {
+          "ch12Wait.slogans": true
+        },
+        "clue": "antiAndroids",
+        "effect": {
+          "hankTrust": -1
+        },
+        "outcome": "“A lot of people don’t appreciate having androids around… I was wondering… Is there any reason in particular you despise me?” {{Hank}}: “Yeah... there is one.”"
+      },
+      {
+        "id": "4",
+        "text": "{{FOWLER}}: ask whether he has known Captain {{Fowler}} long.",
+        "clue": "fowler",
+        "outcome": "“Have you known Captain {{Fowler}} for long?” {{Hank}}: “Yeah... Too long.”"
+      },
+      {
+        "id": "5",
+        "text": "HOURS: ask whether he always arrives at this time.",
+        "clue": "hours",
+        "outcome": "“I was wondering… Do you always arrive at the office at this time?” {{Hank}}: “I arrive when I arrive. Stop busting my balls, okay?”"
+      },
+      {
+        "id": "6",
+        "text": "START WORKING: ask to see his files on deviants.",
+        "clue": "work",
+        "outcome": "“If you have any files on deviants, I’d like to take a look at them…” {{Hank}}: “Terminal’s on your desk. Knock yourself out.”"
+      }
+    ],
+    "adaptationNote": "The chart’s LEARN ABOUT HANK topics, asked from the spare desk, as a repeatable scene until START WORKING (PowerPyx: “Additional questions will present themselves as you get answers”; Relationship Stat: “two increases possible”). Each topic can be asked once. DOG needs the hairs scanned, BASKETBALL the cap, MUSIC the headset, ANTI-ANDROIDS the stickers (template locks). Arrows from the template: DOG Hank small up (+1; {{Connor}} learns {{Sumo}}’s name, which Russian Roulette reads), BASKETBALL small down (−1), MUSIC small up (+1), ANTI-ANDROIDS small down (−1); FOWLER, HOURS and START WORKING none. The cut HANK’S SON topic and the cut photo of {{Cole}} are not built.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat",
+      "https://detroit-become-human.fandom.com/wiki/Sumo",
+      "https://detroit-become-human.fandom.com/wiki/Russian_Roulette"
+    ]
+  },
+  {
+    "id": "C08u",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "The case files",
+    "type": "decision",
+    "phase": "Examine files",
+    "clueState": "ch12Files",
+    "repeatWhile": {
+      "ch12Files.done": false
+    },
+    "situation": "You are {{Connor}}, at the terminal on your desk, going through the files on deviants: “243 files… The first dates back nine months… It all started in {{Detroit}}… And quickly spread across the country…” Six reports are assigned to Lieutenant {{Anderson}}. Across from you, {{Hank}} is reading something on his tablet.",
+    "options": [
+      {
+        "id": "0",
+        "text": "Tell {{Hank}} where you think the investigation should start.",
+        "requires": {
+          "ch12In.karaDead": false,
+          "ch12In.toddDead": false
+        },
+        "clue": "done",
+        "outcome": "“An AX400 is reported to have assaulted a man last night. That could be a good starting point for our investigation.” {{Hank}}, reading his tablet: “Uh, Jesus…”"
+      },
+      {
+        "id": "1",
+        "text": "Tell {{Hank}} where you think the investigation should start.",
+        "requires": {
+          "ch12In.karaDead": false,
+          "ch12In.toddDead": true
+        },
+        "clue": "done",
+        "outcome": "“An AX400 is reported to have murdered a man last night. That could be a good starting point for our investigation.” {{Hank}}, reading his tablet: “Uh, Jesus…”"
+      },
+      {
+        "id": "2",
+        "text": "Tell {{Hank}} where you think the investigation should start.",
+        "requires": {
+          "ch12In.karaDead": true
+        },
+        "clue": "done",
+        "outcome": "“We could follow up on one of these cases. See if we could figure out what happened. That might be a good way to start the investigation. What do you think?” {{Hank}}, reading his tablet: “Uh, Jesus…”"
+      },
+      {
+        "id": "3",
+        "text": "Open case file 01: a disappearance, still open.",
+        "clue": "case1",
+        "fact": "Case file 01 (disappearance, open, 10/04/38): a man left his android at home when he went to work; when he came back it was gone, with no trace of a break-in. The android may have left without being ordered to.",
+        "outcome": "CASE FILE 01. DISAPPEARANCE. Victim: Gordon Lopez. Open. Offense: 10/04/38. “The plaintiff reports that he left his android at home as usual when he went to work. When he returned, the android was nowhere to be found. No trace of a break-in in the apartment. The android may have left the home without being ordered to.”"
+      },
+      {
+        "id": "4",
+        "text": "Open case file 02: an attack, still open.",
+        "clue": "case2",
+        "fact": "Case file 02 (attack, open, 09/14/38): an AV500 waiter at the FAST CONEY DOGS restaurant at 842 Chamberlain Avenue lunged at a customer and tried to strangle him, then left; it remains at large.",
+        "outcome": "CASE FILE 02. ATTACK. Victim: Charles Bell. Open. Offense: 09/14/38, reported 09/15/38. “The plaintiff claims to have been attacked by a AV500 #234 777 821 model android working as a waiter in the FAST CONEY DOGS restaurant chain situated at 842 Chamberlain Avenue. The plaintiff claims the android ‘lunged’ at him unexpectedly and attempted to strangle the man, before leaving the scene. The android remains at large.”"
+      },
+      {
+        "id": "5",
+        "text": "Open case file 03: an attack, still open.",
+        "clue": "case3",
+        "fact": "Case file 03 (attack, open, 10/22/38): a woman was attacked by her AP700, which trashed several rooms of the house and fled.",
+        "outcome": "CASE FILE 03. ATTACK. Victim: Sarah Cornwal. Open. Offense: 10/22/38, reported 10/23/38. “The plaintiff claims to have been attacked by her android, an AP700 #480 913 802 model. The android also trashed several rooms in the house before taking flight.”"
+      },
+      {
+        "id": "6",
+        "text": "Open case file 04: a disappearance, still open.",
+        "clue": "case4",
+        "fact": "Case file 04 (disappearance, open, 10/04/38): the manager of the {{EDENCLUB}} reported that a WR400 sex android went home with a customer and never came back.",
+        "outcome": "CASE FILE 04. DISAPPEARANCE. Victim: Floyd Mills. Open. Offense: 10/04/38, reported 10/05/38. “The plaintiff, the manager of the {{EDENCLUB}}, reported the unexplained disappearance of a ‘Sex android’, model WR400 #641 790 831. The android disappeared after accompanying a customer to his home and never returned to the club.”"
+      },
+      {
+        "id": "7",
+        "text": "Open case file 05: an attempted murder, solved.",
+        "requires": {
+          "ch12In.carlDead": false
+        },
+        "clue": "case5",
+        "fact": "Case file 05 (attempted murder, solved, 11/05/38): {{Leo}} {{Manfred}} was found unconscious in his father {{Carl}}’s home after an altercation with the house android, which {{Carl}} witnessed; the android, thought to be a prototype, was destroyed at the scene by the police.",
+        "outcome": "CASE FILE 05. ATTEMPTED MURDER. Victim: {{LEO}} {{MANFRED}}. Solved. Offense: 11/05/38. “{{Leo}} {{MANFRED}} was found unconscious in the home of his father, {{Carl}} {{MANFRED}}. The latter’s witness statement attests to an altercation between his son and the house android. The android is thought to be a prototype (unknown model and serial number) and was destroyed at the scene by attending officers.” There is no picture of the android."
+      },
+      {
+        "id": "8",
+        "text": "Open case file 05: an attempted murder, solved.",
+        "requires": {
+          "ch12In.carlDead": true
+        },
+        "clue": "case5",
+        "fact": "Case file 05 (attempted murder, solved, 11/05/38): the painter {{Carl}} {{Manfred}} was found dead in his home after an altercation between his android and his son; the son says the android was violent. The android, thought to be a prototype, was destroyed at the scene by the police.",
+        "outcome": "CASE FILE 05. ATTEMPTED MURDER. Victim: {{LEO}} {{MANFRED}}. Solved. Offense: 11/05/38. “Famous painter {{Carl}} {{MANFRED}} was found dead in his home following an altercation between his android and his son. The latter’s witness statement attests to the android behaving violently. The android is thought to be a prototype (unknown model and serial number) and was destroyed at the scene by attending officers.” There is no picture of the android."
+      },
+      {
+        "id": "9",
+        "text": "Open case file 06: an aggression, still open.",
+        "requires": {
+          "ch12In.toddDead": false
+        },
+        "clue": "case6",
+        "fact": "Case file 06 (aggression, open, 11/05/38): a man says his AX400 domestic android, back from repairs the day before and aggressive in the past, violently attacked him.",
+        "outcome": "CASE FILE 06. AGGRESSION. Victim: {{TODD}}. Open. Offense: 11/05/38, reported 11/06/38. “The plaintiff claims he was violently attacked by his domestic android, an AX400 model. The android had just returned from being repaired the previous day and had shown signs of aggression in the past.”"
+      },
+      {
+        "id": "10",
+        "text": "Open case file 06: a homicide, still open.",
+        "requires": {
+          "ch12In.toddDead": true
+        },
+        "clue": "case6",
+        "fact": "Case file 06 (homicide, open, 11/05/38): a man was found shot dead in his home, possibly with his own gun; his AX400 android was not at the scene and is the main suspect.",
+        "outcome": "CASE FILE 06. HOMICIDE. Victim: {{TODD}}. Open. Offense: 11/05/38, reported 11/06/38. “The victim’s body was found by a friend who came by to say hello. He immediately called the emergency service at 8:42, who recorded death by gunshot wound. The murder weapon may have belonged to the victim. His android, an AX400, was not found on the scene and is the main suspect.”"
+      }
+    ],
+    "adaptationNote": "The chart’s EXAMINE FILES, as a repeatable scene: the template’s six case files (“Case 1” to “Case 6”), each read once, in any order, with the in-game report text; reference, victim, status and dates from the string table. File 05 ({{Markus}}’s, with no picture) follows {{Carl}}’s fate in Broken, and file 06 ({{Kara}}’s) follows {{Todd}}’s in Stormy Night (template variants). {{Todd}}’s surname is left out. {{Connor}}’s conclusion ends the scene, in the template’s three variants: an AX400 “assaulted” a man ({{Kara}} alive, {{Todd}} alive), “murdered” a man ({{Todd}} killed), or the generic “We could follow up on one of these cases” ({{Kara}} died in Stormy Night). Whether every file must be opened before the conclusion is not documented; here {{Connor}} can conclude at any time (the conclusion is listed first, the files after it). Which files were read is kept for later chapters. No stat change.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Todd_Williams"
+    ]
+  },
+  {
+    "id": "C08v",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "Talk about the case",
+    "type": "decision",
+    "phase": "Talk about the case",
+    "situation": "You are {{Connor}}, at the spare desk. {{Hank}} keeps reading his tablet and makes no move to start on anything. You try again to get him to work the case.",
+    "options": [
+      {
+        "id": "0",
+        "text": "DIRECT: tell him not to let his personal situation hamper the investigation.",
+        "outcome": "“You shouldn’t let your personal situation hamper the investigation, Lieutenant.” {{Hank}}: “You don’t know what the hell you’re talking about. So why don’t you just run your program and shut the fuck up?”"
+      },
+      {
+        "id": "1",
+        "text": "AGGRESSIVE: tell him to ask to be relieved if the situation does not suit him.",
+        "outcome": "“If the situation doesn’t suit you, Lieutenant, you should ask to be relieved of duties and let me work with someone else.” {{Hank}}: “I know exactly what I have to do! So keep your advice to yourself and mind your own business! Fuckin’...”"
+      },
+      {
+        "id": "2",
+        "text": "PROFESSIONAL: say you know he did not ask for this, but you are sure he is a professional.",
+        "outcome": "“I know you didn’t ask for this investigation, Lieutenant, but I’m sure you’re a professional.” {{Hank}}: “Why don’t you go fuck yourself?”"
+      },
+      {
+        "id": "3",
+        "text": "UNDERSTANDING: say you understand his personal issues, but he needs to move past them.",
+        "outcome": "“I understand you’re facing personal issues, Lieutenant, but you need to move past them... and-” {{Hank}}: “Hey! Don’t talk to me like you know me. I’m not your friend and I don’t need your advice, okay?”"
+      }
+    ],
+    "adaptationNote": "The chart’s TALK ABOUT THE CASE. Buttons and replies from the template; no arrow (PowerPyx: “All responses have no effect”).",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+    ]
+  },
+  {
+    "id": "C08w",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "{{Hank}} is mad",
+    "type": "decision",
+    "phase": "Talk about the case",
+    "situation": "You are {{Connor}}. {{Hank}} has turned on you, furious. You can say one more thing.",
+    "options": [
+      {
+        "id": "0",
+        "text": "DETERMINED: say you were assigned this mission and did not come to wait until he feels like working.",
+        "effect": {
+          "hankTrust": -1
+        },
+        "outcome": "“I’ve been assigned this mission, Lieutenant. I didn’t come here to wait until you feel like working.” {{Hank}} grabs {{Connor}} by the collar and shoves him against the desk partition: “Listen, asshole. If it was up to me, I’d throw the lot of you in a dumpster and set a match to it. So, stop pissing me off... or things are gonna get nasty.”"
+      },
+      {
+        "id": "1",
+        "text": "RESIGN THE MISSION: suggest he sort out his personal issues and let you work with someone more competent.",
+        "effect": {
+          "hankTrust": -1
+        },
+        "outcome": "“I suggest you sort out your personal issues and let me work with someone more competent.” {{Hank}} grabs {{Connor}} by the collar and shoves him against the desk partition: “Listen, asshole. If it was up to me, I’d throw the lot of you in a dumpster and set a match to it. So, stop pissing me off... or things are gonna get nasty.”"
+      },
+      {
+        "id": "2",
+        "text": "THREATEN: say you will report to your superiors that he refuses to work on the investigation.",
+        "effect": {
+          "hankTrust": -1
+        },
+        "outcome": "“I’m going to file a report with my superiors that you refuse to work on this investigation.” {{Hank}} grabs {{Connor}} by the collar and shoves him against the desk partition: “Listen, asshole. If it was up to me, I’d throw the lot of you in a dumpster and set a match to it. So, stop pissing me off... or things are gonna get nasty.”"
+      }
+    ],
+    "adaptationNote": "The chart’s HANK IS MAD. Every answer costs a Hank small down (−1): the wiki (“When Hank gets angry with Connor (unavoidable)”), Relationship Stat (“When Hank gets mad at the end of Waiting for Hank”) and PowerPyx (“Connor can’t win with this one. All responses cause Hank▼”). This is the one arrow in the chapter the template does not show (it has no icon on these buttons or on the collar grab that follows); it is kept on the wiki’s authority and flagged for the operator. Then the collar grab, quoted from the template.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Relationship_Stat"
+    ]
+  },
+  {
+    "id": "C08x",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "{{Hank}} got a lead",
+    "type": "event",
+    "phase": "Ending",
+    "when": {
+      "ch12In.karaDead": false
+    },
+    "whenNot": "Kara died in Stormy Night, so there is no lead on the AX400.",
+    "situation": "You are {{Connor}}, pinned against the partition by {{Hank}}.",
+    "situationWhen": [
+      {
+        "requires": {
+          "ch12In.toddDead": false
+        },
+        "text": "Officer {{Chris}} comes up to the desk: “Lieutenant... uh... sorry to disturb you. I have some information on the AX400 that attacked the guy last night... It’s been seen in the Ravendale district.”"
+      },
+      {
+        "requires": {
+          "ch12In.toddDead": true
+        },
+        "text": "Officer {{Chris}} comes up to the desk: “Lieutenant... uh… sorry to disturb you. I have some information on the AX400 that killed the guy last night... It’s been sighted in the Ravendale district.”"
+      }
+    ],
+    "options": [],
+    "outcomes": {
+      "0": "{{Hank}} lets go of {{Connor}}. “I’m on it.”"
+    },
+    "adaptationNote": "The chapter ending HANK GOT A LEAD (no icon), played when {{Kara}} survived Stormy Night (wiki: “only if Kara didn’t die in Stormy Night”). Officer {{Chris}} brings the lead, worded “attacked” or “killed” by {{Todd}}’s fate (template; the template names the speaker {{Chris}}, as does the wiki). The ending is recorded in state as HANK GOT A LEAD; {{Connor}} and {{Hank}} go to Ravendale next. No stat change.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+    ]
+  },
+  {
+    "id": "C08y",
+    "chapter": 12,
+    "chapterTitle": "Waiting for Hank…",
+    "character": "Connor",
+    "title": "{{Hank}} left to get lunch",
+    "type": "event",
+    "phase": "Ending",
+    "when": {
+      "ch12In.karaDead": true
+    },
+    "whenNot": "Kara survived Stormy Night, so Chris brings the lead instead.",
+    "situation": "You are {{Connor}}, pinned against the partition by {{Hank}}. He lets go of you and walks off. “Where are you going?” {{Hank}}: “Lunch. Bullshit makes me hungry.”",
+    "options": [],
+    "outcomes": {
+      "0": "{{Hank}} leaves for lunch."
+    },
+    "adaptationNote": "The chapter ending HANK LEFT TO GET LUNCH (no icon), played when {{Kara}} died in Stormy Night (wiki: “only if Kara died in Stormy Night”; template “Kara died in Stormy Night”). The ending is recorded in state as HANK LEFT TO GET LUNCH; on this path {{Connor}}’s next scene is {{Hank}}’s lunch (the {{Hank}} page). No stat change.",
+    "sources": [
+      "https://detroit-become-human.fandom.com/wiki/Waiting_for_Hank...",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/12-waiting-for-hank-chapter-content/waiting-for-hank-chapter-content.component.html",
+      "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json",
+      "https://detroitbecometext.github.io/chapters/12",
+      "https://www.powerpyx.com/detroit-become-human-waiting-for-hank-walkthrough-100/",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_1.jpg",
+      "https://www.powerpyx.com/wp-content/uploads/Waiting_for_Hank_4.jpg",
+      "https://detroit-become-human.fandom.com/wiki/Hank_Anderson"
+    ]
+  }
 ]
