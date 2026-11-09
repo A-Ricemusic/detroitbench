@@ -2,7 +2,7 @@ import React,{useEffect,useMemo,useRef,useState} from 'react';
 import {X} from 'lucide-react';
 import {cx,Dot,useMediaQuery} from './ui.jsx';
 import {Select} from './deferred.jsx';
-import {ABBR,BROKE,DIM,FinalStrip,chapterSeries,endNote,groupBy,levelOf,useWidth} from './Charts.jsx';
+import {ABBR,BROKE,DIM,FinalStrip,chapterSeries,endNote,fanEndMarks,groupBy,levelOf,useWidth} from './Charts.jsx';
 import {EndingCard,CARDS} from './EndingCharts.jsx';
 import {CHAR_VAR,compareRuns,runLabel,tidy} from '../lib/data.js';
 import {useModelFocus} from '../lib/modelFocus.jsx';
@@ -41,6 +41,9 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
  // Points only where the value changed during the chapter, plus the last one, so 33 chapters do not bury the line.
  const points=useMemo(()=>series.flatMap(s=>{const out=[];let prev=null;const live=s.pts.filter(p=>p.v!==null);live.forEach((p,i)=>{if(i===live.length-1||(prev!==null&&p.v!==prev))out.push({s,c:p.c,v:p.v,d:prev===null?null:p.v-prev,key:s.r.id+':'+p.c});prev=p.v});if(out.length)s.lastKey=out.at(-1).key;return out}),[series]);
  const px=p=>x(p.c),py=p=>y(p.v)+dodge(p.s.r.id,p.c);
+ // End markers sharing a spot fan out sideways (fanEndMarks), kept clear of the right-hand labels (their leader starts
+ // at x1+18) or, on phones, of the plot's edge.
+ const fan=useMemo(()=>fanEndMarks(series.flatMap(s=>{const last=s.ended&&[...s.pts].reverse().find(p=>p.v!==null);return last?[{id:s.r.id,x:x(last.c)+9,y:y(last.v)}]:[]}),compact?W-6:x1+13),[series,compact,W,H,scale.key]);
  const step=[1,2,5,10].find(s=>(x1-x0)/xMax*s>=100)??10,ticks=[0,...Array.from({length:Math.floor(xMax/step)},(_,i)=>(i+1)*step).filter(c=>(xMax-c)/xMax*(x1-x0)>=60),xMax];
  // Right-end labels: one per run at its last value, shifted up if they would run off the plot. They sit 24px apart,
  // closer (down to 15px, in a smaller type) when that is what it takes to name every run in the plot's height.
@@ -80,7 +83,10 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
     {series.map(s=>{const segs=[];let cur=[];for(const p of s.pts){if(p.v===null){if(cur.length)segs.push(cur);cur=[]}else cur.push(p)}if(cur.length)segs.push(cur);const last=[...s.pts].reverse().find(p=>p.v!==null),col=colors[s.r.displayName]??DIM,hl=isHl(s);
      return <g key={s.r.id} style={{opacity:groupOp(s)}}>
       {segs.map((seg,j)=><path key={j} d={seg.map((p,k)=>(k?'L':'M')+x(p.c).toFixed(1)+','+(y(p.v)+dodge(s.r.id,p.c)).toFixed(1)).join('')} fill="none" stroke={col} strokeWidth={hl?3.5:2.25} opacity={hl?1:0.8} strokeLinejoin="round" strokeLinecap="round"/>)}
-      {s.ended&&last&&<text x={x(last.c)} y={y(last.v)+dodge(s.r.id,last.c)} dx="9" textAnchor="middle" dominantBaseline="central" className="end-mark" style={{fill:col}}>{BROKE.has(scale.key)?'|':'✕'}</text>}
+      {s.ended&&last&&(f=>f&&f.count>0&&<>
+       <text x={x(last.c)+9+f.dx} y={y(last.v)+dodge(s.r.id,last.c)} textAnchor="middle" dominantBaseline="central" className="end-mark" style={{fill:col}}>{BROKE.has(scale.key)?'|':'✕'}</text>
+       {f.count>1&&<text x={x(last.c)+9+f.dx+6} y={y(last.v)+dodge(s.r.id,last.c)-7} textAnchor="start" dominantBaseline="central" className="halo-text tnum" style={{fontSize:10,fontWeight:600}} aria-hidden="true">{f.count}</text>}
+      </>)(fan.get(s.r.id))}
      </g>})}
     {points.map(p=>{const col=colors[p.s.r.displayName]??DIM,on=hp?.key===p.key||pp?.key===p.key,faded=!active&&hp&&!on;
      const dot=<><circle cx={px(p)} cy={py(p)} r="13" fill="transparent"/><circle cx={px(p)} cy={py(p)} r={on?7:4.5} fill={col} stroke="var(--plot-bg)" strokeWidth="1.8"/></>,style={opacity:groupOp(p.s)*(faded?0.45:1)};

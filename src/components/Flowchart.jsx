@@ -34,7 +34,8 @@ export function RunFlowchart({r,initialChapter,renderDetail}){
  const flow=useMemo(()=>flows?.find(f=>f.chapter===chapter)??flows?.find(f=>f.touched)??null,[flows,chapter]);
  // Close the details and return focus to the exact node that opened them (several nodes can share a record key).
  const close=()=>{const i=selected?.i;setSelected(null);if(i!==undefined&&i>=0)requestAnimationFrame(()=>box.current?.querySelectorAll('[data-node]')[i]?.focus({preventScroll:true}))};
- const svg=useMemo(()=>flow?chapterSVG(flow,{showUntaken:mode==='dim',idPrefix:'site'}):'',[flow,mode]);
+ // Phones get the touch layout: every node at least 40px tall, so each one is a full tap target.
+ const svg=useMemo(()=>flow?chapterSVG(flow,{showUntaken:mode==='dim',idPrefix:'site',touch:!wide}):'',[flow,mode,wide]);
  const index=useMemo(()=>flow?detailIndex(flow):new Map,[flow]);
  useEffect(()=>{setSelected(null);if(box.current)box.current.scrollLeft=0},[flow]);
  useEffect(()=>setSelected(null),[mode]);

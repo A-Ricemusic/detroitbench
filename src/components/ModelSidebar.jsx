@@ -87,8 +87,8 @@ export function ModelPicker({runs,colors,nums,sel,onReset,className}){
  // The tab bar shows the Models tab, with the selected count, while this page is mounted at phone width.
  useEffect(()=>{modelsPanel.set({available:narrow&&phone,count:sel.selected.size});if(!narrow)modelsPanel.set({open:false})},[narrow,phone,sel.selected.size]);
  useEffect(()=>()=>modelsPanel.set({available:false,open:false}),[]);
- // "/" opens the panel on phones and focuses the search, unless the visitor is already typing.
- useEffect(()=>{const f=e=>{if(e.key!=='/'||e.metaKey||e.ctrlKey||e.altKey)return;if(e.target?.closest?.('input,textarea,select,[contenteditable=true]'))return;e.preventDefault();if(narrow){setOpen(true);setTimeout(()=>search.current?.focus(),60)}else search.current?.focus()};addEventListener('keydown',f);return()=>removeEventListener('keydown',f)},[narrow]);
+ // "/" focuses the visible search, unless the visitor is already typing.
+ useEffect(()=>{const f=e=>{if(e.key!=='/'||e.metaKey||e.ctrlKey||e.altKey)return;if(e.target?.closest?.('input,textarea,select,[contenteditable=true]'))return;e.preventDefault();if(narrow&&!open){const runsSearch=document.getElementById('runs-search');if(runsSearch)runsSearch.focus();else{setOpen(true);setTimeout(()=>search.current?.focus(),60)}}else search.current?.focus()};addEventListener('keydown',f);return()=>removeEventListener('keydown',f)},[narrow,open]);
  const panel=p=><Panel runs={runs} colors={colors} nums={nums} sel={sel} onReset={onReset} searchRef={search} {...p}/>;
  if(!narrow)return <aside aria-label="Models" className={cx('sticky top-[calc(var(--header-h)+16px)] max-h-[calc(100dvh-var(--header-h)-32px)] overflow-y-auto [scrollbar-width:thin] rounded-2xl border border-line bg-surface px-[18px] py-4 shadow-sm',className)}>{panel({})}</aside>;
  const opener=()=>phone?document.getElementById(MODELS_TAB_ID):trigger.current;

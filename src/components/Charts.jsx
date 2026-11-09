@@ -73,3 +73,16 @@ export function chapterSeries(r,key){const t=r.track[key];return r.track.chapter
 export const BROKE=new Set(['amandaTrust']);
 
 
+
+// End markers that land on the same spot (rounded x, y) are fanned out sideways so the reader can count them: the first
+// keeps its place, the others step FAN px out on alternating sides (+1, −1, +2, …). A fan is shifted left as a whole when
+// it would pass `maxX` (the right-hand labels, or the plot's edge on phones). More than FAN_MAX markers draw as one
+// glyph with a count instead. `items` are {id, x, y}; the result maps id → {dx, count} (count only on the glyph that
+// stands for a whole group, 0 on the ones it hides).
+const FAN=7,FAN_MAX=5;
+export function fanEndMarks(items,maxX=Infinity){const out=new Map,groups=groupBy(items,it=>Math.round(it.x)+','+Math.round(it.y));
+ for(const list of Object.values(groups)){const n=list.length;
+  if(n>FAN_MAX){list.forEach((it,i)=>out.set(it.id,{dx:Math.min(0,maxX-12-it.x),count:i===0?n:0}));continue}
+  const off=list.map((_,i)=>i===0?0:(i%2?1:-1)*Math.ceil(i/2)*FAN),shift=Math.min(0,maxX-(list[0].x+Math.max(...off)));
+  list.forEach((it,i)=>out.set(it.id,{dx:off[i]+shift,count:1}))}
+ return out}

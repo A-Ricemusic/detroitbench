@@ -83,12 +83,15 @@ export const FLOW_CSS=`.fc{display:block;max-width:none;font-family:var(--fc-fon
 .fc .fc-stat-label{fill:var(--fc-ink-3);letter-spacing:.06em}.fc .fc-stat-value{fill:var(--fc-ink);font-weight:600;letter-spacing:.06em}`;
 
 // ---------- Measuring ----------
-const nodeH=lines=>lines.length>1?8+lines.length*LABEL_LINE:20;
+// `minH` is the smallest node height: 20 on the page, TOUCH_H on phones so every node is a full tap target (the label,
+// mark and badge stay centred in the taller box).
+const TOUCH_H=40;
+const nodeH=(lines,minH=20)=>Math.max(minH,lines.length>1?8+lines.length*LABEL_LINE:20);
 // Options as a grid: one column up to MAX_ROWS rows, then as many columns as needed, filled top to bottom.
-function grid(options,{badges=false}={}){
+function grid(options,{badges=false,minH=20}={}){
  const n=options.length,cols=Math.max(1,Math.ceil(n/MAX_ROWS)),rows=Math.max(1,Math.ceil(n/cols));
  const nodes=options.map(o=>{const badge=badges&&o.taken&&o.orders?.length>0,num=badge?o.orders.join(','):'',bw=badge?Math.max(14,textWidth(num,11)+6):0;
-  const lines=wrap(o.label.toUpperCase(),NODE_W-14-(bw?bw+4:0)-(o.taken?14:0),LABEL,3,LABEL_LS);return {o,lines,h:nodeH(lines),badge,num,bw}});
+  const lines=wrap(o.label.toUpperCase(),NODE_W-14-(bw?bw+4:0)-(o.taken?14:0),LABEL,3,LABEL_LS);const h=nodeH(lines,minH);return {o,lines,h,badge,num,bw,bh:minH>20?Math.min(h-6,Math.max(14,lines.length*LABEL_LINE+2)):h-6}});
  const rowsH=Array.from({length:rows},(_,i)=>Math.max(0,...nodes.filter((_,k)=>k%rows===i).map(x=>x.h)));
  let y=0;const rowY=rowsH.map(h=>{const v=y;y+=h+ROW_GAP;return v});const h=Math.max(20,y-ROW_GAP);
  nodes.forEach((x,k)=>{x.gx=Math.floor(k/rows)*(NODE_W+GRID_GAP);x.gy=rowY[k%rows]+(rowsH[k%rows]-x.h)/2;x.col=Math.floor(k/rows)});
@@ -96,28 +99,29 @@ function grid(options,{badges=false}={}){
 
 const visibleOptions=(c,all)=>all||!c.visited?c.options:c.options.filter(o=>o.taken);
 // One scene as a block centred on the spine: `up`/`down` are its extents above and below the spine.
-function measure(c,all,chain=[]){
- if(c.kind==='event'||!c.options.length){const label=(c.chartLabel??c.title).toUpperCase(),lines=wrap(label,EVENT_W-26,LABEL,3,LABEL_LS),h=nodeH(lines);
+function measure(c,all,chain=[],minH=20){
+ if(c.kind==='event'||!c.options.length){const label=(c.chartLabel??c.title).toUpperCase(),lines=wrap(label,EVENT_W-26,LABEL,3,LABEL_LS),h=nodeH(lines,minH);
   return {c,type:'event',w:EVENT_W,h,up:h/2,down:h/2,lines}}
- const g=grid(visibleOptions(c,all),{badges:c.kind==='hub'});
+ const g=grid(visibleOptions(c,all),{badges:c.kind==='hub',minH});
  const b={c,type:c.kind==='hub'?'hub':'stack',g,w:g.w,h:g.h,up:g.h/2,down:g.h/2,caption:true};
- if(b.type==='hub'&&chain.length){b.chain=chain.map(x=>measure(x,all));const cw=b.chain.reduce((s,x)=>s+x.w+2*BRK,0)+(b.chain.length-1)*CHAIN_GAP+40;
+ if(b.type==='hub'&&chain.length){b.chain=chain.map(x=>measure(x,all,[],minH));const cw=b.chain.reduce((s,x)=>s+x.w+2*BRK,0)+(b.chain.length-1)*CHAIN_GAP+40;
   b.chainUp=Math.max(...b.chain.map(x=>x.up+(x.type==='stack'?CAPTION:0)));b.chainDown=Math.max(...b.chain.map(x=>x.down));
   b.w=Math.max(b.w,cw);b.down=g.h/2+CUT_GAP+b.chainUp+b.chainDown}
  return b}
 
 const groupLabel=p=>String(p).replace(/[-_]+/g,' ').toUpperCase();
-export function layoutChapter(flow,{showUntaken=true}={}){
- const header=headerLayout(flow);let y=header.h;const lanes=[],multi=flow.lanes.length>1;
+// `touch` (phones) gives every node and ending a tap height of at least TOUCH_H; the page layout is unchanged without it.
+export function layoutChapter(flow,{showUntaken=true,touch=false}={}){
+ const minH=touch?TOUCH_H:20,header=headerLayout(flow);let y=header.h;const lanes=[],multi=flow.lanes.length>1;
  for(const lane of flow.lanes){
   const cols=lane.columns.filter(c=>showUntaken||c.visited);
   const chains=new Map;for(const c of cols)if(c.cutinOf){if(!chains.has(c.cutinOf))chains.set(c.cutinOf,[]);chains.get(c.cutinOf).push(c)}
-  const blocks=cols.filter(c=>!c.cutinOf||!cols.some(h=>h.id===c.cutinOf)).map(c=>measure(c,showUntaken,chains.get(c.id)??[]));
+  const blocks=cols.filter(c=>!c.cutinOf||!cols.some(h=>h.id===c.cutinOf)).map(c=>measure(c,showUntaken,chains.get(c.id)??[],minH));
   // Group runs: consecutive blocks sharing a phase; a hub outside any phase is a group of its own, named after it.
   const runs=[];for(const b of blocks){const key=b.c.phase?'phase:'+b.c.phase:b.type==='hub'?'hub:'+b.c.id:null,last=runs.at(-1);
    if(key&&last?.key===key)last.blocks.push(b);else runs.push({key,label:key?(b.c.phase?groupLabel(b.c.phase):b.c.title.toUpperCase()):null,blocks:[b]})}
   for(const r of runs)if(r.key){const hubOnly=r.blocks.length===1&&r.blocks[0].type==='hub'&&r.label===r.blocks[0].c.title.toUpperCase();if(hubOnly)r.blocks[0].caption=false}
-  const ends=lane.endings.filter(e=>showUntaken||e.taken).map(e=>{const lines=wrap(e.label.toUpperCase(),END_W-46,END_SIZE,3,.3);return {e,lines,h:Math.max(34,14+lines.length*END_LINE)}});
+  const ends=lane.endings.filter(e=>showUntaken||e.taken).map(e=>{const lines=wrap(e.label.toUpperCase(),END_W-46,END_SIZE,3,.3);return {e,lines,h:Math.max(touch?TOUCH_H:34,14+lines.length*END_LINE)}});
   const endH=ends.reduce((s,x)=>s+x.h,0)+Math.max(0,ends.length-1)*END_GAP;
   // Horizontal pass.
   let x=PAD+START_W+GAP;
@@ -143,7 +147,7 @@ export function layoutChapter(flow,{showUntaken=true}={}){
   lanes.push({lane,top:y,labelY:top-10,mid,start:{x:PAD,y:mid-11,w:START_W,h:22},blocks,runs,ends,width,bottom});
   y=bottom+LANE_GAP}
  const width=Math.max(header.w,...lanes.map(l=>l.width));
- return {flow,header,lanes,width:Math.ceil(width),height:Math.ceil((lanes.at(-1)?.bottom??header.h)+PAD),showUntaken}}
+ return {flow,header,lanes,width:Math.ceil(width),height:Math.ceil((lanes.at(-1)?.bottom??header.h)+PAD),showUntaken,touch}}
 
 // The boxes a laid-out chapter draws, for overlap checks (tests/flowchart.test.mjs): every scene block with its brackets
 // and caption, every cut-in block, the "CUT-IN" label, the endings, and each group frame with the blocks it holds.
@@ -236,7 +240,7 @@ function renderLane(l,{interactive,multi,width}){const out=[],wires=[],path=[],n
   if(gx>x)wires.push(`M${r1(x-BRK)} ${r1(rowMid)}H${r1(gx-BRK)}M${r1(gx+g.w+BRK)} ${r1(rowMid)}H${r1(x+b.w+BRK)}`);
   for(const n of g.nodes){const o=n.o,nx=gx+n.gx,ny=gy+n.gy,cls='fc-node'+(o.taken?' is-taken':'')+(!c.visited?' is-unreached':o.locked?' is-locked':'');
    const tx=nx+7+(n.badge?n.bw+4:0),mark=o.taken?(o.risk?.outcome==='failure'?cross(nx+NODE_W-14,ny+n.h/2):check(nx+NODE_W-15,ny+n.h/2)):'';
-   const badge=n.badge?`<rect class="fc-badge" x="${r1(nx+3)}" y="${r1(ny+3)}" width="${n.bw}" height="${n.h-6}"/><text class="fc-num" x="${r1(nx+3+n.bw/2)}" y="${r1(ny+n.h/2+3)}" font-size="11" text-anchor="middle">${esc(n.num)}</text>`:'';
+   const badge=n.badge?`<rect class="fc-badge" x="${r1(nx+3)}" y="${r1(ny+(n.h-n.bh)/2)}" width="${n.bw}" height="${n.bh}"/><text class="fc-num" x="${r1(nx+3+n.bw/2)}" y="${r1(ny+n.h/2+3)}" font-size="11" text-anchor="middle">${esc(n.num)}</text>`:'';
    nodes.push(`<g class="${cls}"${nodeAttrs(o.key??c.key,optionLabel(c,o),interactive)}><title>${esc(o.text)}</title><rect class="fc-box" x="${r1(nx)}" y="${r1(ny)}" width="${NODE_W}" height="${n.h}"/>${badge}${textLines(n.lines,tx,ny+(n.h-(n.lines.length-1)*LABEL_LINE)/2+3.4,LABEL,LABEL_LINE)}${mark}</g>`)}
   if(hub){
    // A hub: the path passes through its brackets; the taken options are numbered in visit order.

@@ -64,13 +64,13 @@ export function Combobox({label,hideLabel=false,value,options,onChange,className
  </div>}
 
 /* ---------- Search field ---------- */
-export const SearchField=forwardRef(function SearchField({label='Search',value,onChange,onClear,placeholder,className},ref){
- const id=useId(),inner=React.useRef(null);const setRef=el=>{inner.current=el;if(typeof ref==='function')ref(el);else if(ref)ref.current=el};
+export const SearchField=forwardRef(function SearchField({label='Search',value,onChange,onClear,placeholder,className,variant='default',id:providedId},ref){
+ const generatedId=useId(),id=providedId??generatedId,inner=React.useRef(null);const setRef=el=>{inner.current=el;if(typeof ref==='function')ref(el);else if(ref)ref.current=el};
  const clear=()=>{onClear?onClear():onChange('');inner.current?.focus()};
- return <div className={cx('relative flex items-center min-w-0',className)}>
+ return <div className={cx('relative flex items-center min-w-0',variant==='underline'&&'border-b border-line-2 focus-within:border-accent',className)}>
   <label htmlFor={id} className="sr-only">{label}</label>
-  <Search aria-hidden="true" className="absolute left-3 size-4 text-ink-3 pointer-events-none"/>
-  <input id={id} ref={setRef} type="search" value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder} className="w-full min-h-11 md:min-h-10 rounded-lg border border-line-2 bg-surface pl-9 pr-10 text-sm text-ink placeholder:text-ink-3 shadow-sm focus:border-accent [&::-webkit-search-cancel-button]:hidden"/>
+  <Search aria-hidden="true" className={cx("absolute left-3 size-4 text-ink-3 pointer-events-none",variant==='underline'&&'left-0 size-3.5')}/>
+  <input id={id} ref={setRef} type="search" value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder} autoComplete="off" spellCheck={false} onKeyDown={e=>{if(e.key==='Escape'&&value){e.preventDefault();e.stopPropagation();clear()}}} className={cx("w-full min-h-11 md:min-h-10 rounded-lg border border-line-2 bg-surface pl-9 pr-10 text-sm text-ink placeholder:text-ink-3 shadow-sm focus:border-accent [&::-webkit-search-cancel-button]:hidden",variant==='underline'&&'min-h-10 min-[901px]:min-h-8 rounded-none border-0 bg-transparent pl-6 text-base min-[901px]:text-[12.5px] shadow-none outline-none')}/>
   {value&&<button type="button" aria-label="Clear search" onClick={clear} className="absolute right-0.5 inline-flex size-10 md:size-9 items-center justify-center rounded-md text-ink-3 hover:text-ink hover:bg-surface-2"><X aria-hidden="true" className="size-4"/></button>}
  </div>});
 
