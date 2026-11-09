@@ -12,4 +12,4 @@ None.
 
 ## Notes
 
-- The research note `docs/research/ch02-opening.md` lists the three Hostage images (stored under `../ch01/`) and PowerPyx's header wallpaper; neither is a chart of this chapter, so nothing is stored here.
+- The research note `docs/research/chapters/ch02-opening.md` lists the three Hostage images (stored under `../ch01/`) and PowerPyx's header wallpaper; neither is a chart of this chapter, so nothing is stored here.

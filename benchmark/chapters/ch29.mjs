@@ -153,7 +153,7 @@ const talkedKamski=s=>s.ch29Route==='kamski'&&s.choices.C19k==='0';
 export const gate={
  C19c:s=>!inputs.chloeShot(s)&&!s.kamskiLocation||'Connor shot Chloe at Kamski’s house, so Amanda does not ask why he spared her.',
  C19e:s=>inputs.tracisShot(s)||inputs.chloeShot(s)||'Connor spared both the Tracis and Chloe, so Amanda does not ask about doubts.',
- C19g:s=>route('evidence')(s)&&hostile(s)||(s.ch29Route==='evidence'?'Hank is not Hostile, so he does not resign.':'Hank resigns only on the evidence route.'),
+ C19g:(s,h)=>(h.n.hostileAnyRoute?(s.ch29Route==='evidence'||s.ch29Route==='kamski')&&hostile(s):route('evidence')(s)&&hostile(s))||(s.ch29Route==='evidence'||(s.ch29Route==='kamski'&&h.n.hostileAnyRoute)?'Hank is not Hostile, so he does not resign.':h.n.hostileAnyRoute?'Hank resigns only on the evidence and Kamski routes.':'Hank resigns only on the evidence route.'),
  C19h:s=>route('insufficient')(s)||'The archive held enough evidence, or Connor already knew where Jericho is.',
  C19k:s=>route('kamski')(s)&&!hostile(s)||(s.ch29Route==='kamski'?'Hank is Hostile, so Connor does not talk to him.':'Connor did not get the key from Kamski.'),
  C19l:s=>talkedKamski(s)||'Connor did not talk to Hank before leaving for Jericho.',

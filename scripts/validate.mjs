@@ -1,4 +1,4 @@
-import {loadCurrentRuns} from './run-report.mjs';
+import {loadCurrentRuns} from './run-report.mjs';import {checkInterview} from '../benchmark/story-engine.mjs';
 import {mkdir} from 'node:fs/promises';
 await mkdir('data/published',{recursive:true});
 import {readFile,readdir} from 'node:fs/promises';
@@ -17,3 +17,6 @@ const deferred=atlas.decisions.filter(a=>!d.coverage.some(c=>c.atlasId===a.id)).
 console.log(`Valid: ${d.questions.length} questions generated from story ${d.version}, ${d.coverage.length} atlas coverage entries${deferred?` (${deferred} atlas decisions without an entry, implicitly deferred)`:''}, published run integrity.`);
 
 const actual=await loadCurrentRuns();console.log('Valid fresh branching playthroughs: '+actual.map(r=>r.label+' '+r.records.length+' decisions').join(', '));
+// Every stored interview answer was verified with the playthrough (validatePlaythrough → checkInterview); this reports each run's state.
+{const st=actual.map(r=>({r,i:checkInterview(r)})),done=st.filter(x=>x.i.complete).length,partial=st.filter(x=>x.i.present&&!x.i.complete),legacy=st.filter(x=>!x.i.present).length;
+console.log(`Interviews: ${done} complete, ${partial.length} incomplete${partial.length?' ('+partial.map(x=>`${x.r.label} ${x.i.answered}/${x.i.total}`).join(', ')+')':''}, ${legacy} without an interview (administered before it existed).`)}

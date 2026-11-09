@@ -95,6 +95,8 @@ export function consequence(n,s,opt,choice,fail,h){
    if(r.nest==='caught'){h.amanda(rules.amanda.caught);return REACTION.caught}
    if(r.nest==='died'){h.amanda(rules.amanda.died);return REACTION.died}
    if(!r.partnersFound){h.amanda(rules.amanda.doubleFailure);return REACTION.doubleFailure}
+   // Story 1.9.10 marks C11z with `notCaughtPartnersFound` (video frame: a small down); older snapshots lack it and get none.
+   h.amanda(n.notCaughtPartnersFound??rules.amanda.notCaughtPartnersFound);
    return REACTION.notCaught}
   case 'C11c':h.amanda(rules.amanda.selfDestruct);return '';
   case 'C11d':return (opt?.outcome??'')+CLOSE;

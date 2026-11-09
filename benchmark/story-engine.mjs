@@ -327,6 +327,22 @@ export const CHAIN_FIELDS=['step','nodeId','character','chapter','choice','choic
 export const chainSeed=run=>hashSync({id:run.id,protocol:run.protocol,kind:run.kind,model:run.model,storyHash:run.storyHash,createdAt:run.createdAt});
 export const chainHash=(prev,record)=>hashSync([prev,CHAIN_FIELDS.map(k=>record[k]??null)]);
 
+// The post-game interview (run.interview, absent on legacy runs). Each answer's hash covers the previous answer's hash (the
+// first covers the last record's chainHash), its question number, the question as stored and the answer, so the answers
+// chain onto the playthrough. Returns {present, complete, answered, total}; throws on any mismatch.
+export const interviewHash=(prev,n,question,answer)=>hashSync([prev,n,question,answer]);
+export const wordCount=t=>String(t).trim().split(/\s+/u).filter(Boolean).length;
+export function checkInterview(run){const iv=run.interview;if(!iv)return {present:false,complete:false,answered:0,total:0};
+ if(run.status!=='completed'||!run.records.length)throw Error('Interview on a run that is not completed');
+ if(!Number.isInteger(iv.version)||!Array.isArray(iv.questions)||!iv.questions.length||!Array.isArray(iv.answers))throw Error('Interview structure invalid');
+ iv.questions.forEach((q,i)=>{if(q.n!==i+1||typeof q.text!=='string'||!q.text)throw Error('Interview question list invalid at '+(i+1))});
+ if(iv.answers.length>iv.questions.length)throw Error('More interview answers than questions');
+ let prev=run.records.at(-1).chainHash;
+ iv.answers.forEach((a,i)=>{const q=iv.questions[i];if(a.n!==i+1||a.question!==q.text)throw Error('Interview answer out of order at question '+(i+1));
+  if(typeof a.answer!=='string'||!a.answer.trim()||wordCount(a.answer)>1200)throw Error('Interview answer invalid at question '+a.n);
+  if(a.hash!==interviewHash(prev,a.n,a.question,a.answer))throw Error('Interview hash mismatch at question '+a.n);prev=a.hash});
+ const complete=iv.answers.length===iv.questions.length;if(complete!==Boolean(iv.completedAt))throw Error('Interview completion marker does not match the answers');
+ return {present:true,complete,answered:iv.answers.length,total:iv.questions.length}}
 // One forward pass. Each record is checked against the running replay, which is exactly the state a replay from the start
 // would reach: its step and scene, the full prompt's hash and the stored scene part, the response, the option texts, the
 // risk roll, the chain, the state hash after the step, the changes and the event. `prompts:false` skips re-rendering the
@@ -346,7 +362,7 @@ export function checkPlaythrough(story,run,{prompts=true,keepPrompts=false}={}){
  // The pass is the same replay current() makes, so it becomes current()'s memo for this run (a later current() or
  // promptFor() replays only records appended after this check).
  REPLAYS.set(run,{story,seen:run.records.map(seenRecord),state:structuredClone(replay.state),cursor:replay.cursor,skipped:replay.skipped.map(x=>({...x}))});
- const end=replayEnd(story,replay);if(run.status==='completed'&&end.node)throw Error('Completed playthrough has pending decisions');return keepPrompts?{...end,prompts:kept}:end;
+ const end=replayEnd(story,replay);if(run.status==='completed'&&end.node)throw Error('Completed playthrough has pending decisions');checkInterview(run);return keepPrompts?{...end,prompts:kept}:end;
 }
 export async function validatePlaythrough(story,run,options){return checkPlaythrough(story,run,options)}
 // Checks every record's chainHash from chainSeed(run), without replaying; returns the chain head.

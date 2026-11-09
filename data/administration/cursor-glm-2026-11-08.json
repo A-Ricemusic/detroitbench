@@ -1,0 +1,62 @@
+{
+ "protocol": "branching-3.0",
+ "storyVersion": "1.9.10",
+ "freshStart": true,
+ "createdAt": "2026-11-08",
+ "implementationCommit": "8202bd4",
+ "reasonRule": "full-600",
+ "note": "GLM 5.3 Flash through the Cursor CLI at the operator's request on 2026-11-08, to see how it does ahead of a planned redo of every run. Reasoning set to low (the model offers low, high and max; the operator asked for medium, which does not exist, and chose low). Administered on the working tree at story 1.9.10 before that version was committed; the run embeds its story snapshot. Subject launched with t3_thread_launch scratch:true; wrapper paths are not recorded.",
+ "requests": [
+  {
+   "label": "GLM 5.3 Flash low",
+   "model": "glm-5p3-flash",
+   "provider": "cursor",
+   "reasoning": "low",
+   "runId": "4de4a584-db7b-4d59-8e66-36223d04ba33",
+   "artifact": "data/experiences/4de4a584-db7b-4d59-8e66-36223d04ba33.json",
+   "status": "abandoned",
+   "initialDecisions": 0,
+   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:f0c6ff4e-c61f-4d85-8bdd-e3065229e298",
+   "note": "The launch delivered a truncated task text (steps 4 and 5 missing); the session was stopped after one recorded step and the run abandoned. Evidence file kept, not published."
+  },
+  {
+   "label": "GLM 5.3 Flash low",
+   "model": "glm-5p3-flash",
+   "provider": "cursor",
+   "reasoning": "low",
+   "runId": "c16a658e-159b-4e5c-9276-9ca657005dd3",
+   "artifact": "data/experiences/c16a658e-159b-4e5c-9276-9ca657005dd3.json",
+   "status": "abandoned",
+   "initialDecisions": 0,
+   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:ce716bb1-d78c-4f2e-bf2f-d3ee25445c44",
+   "note": "The machine restarted twice during the session (180 decisions recorded); the operator asked for a fresh run. Evidence file kept, not published."
+  },
+  {
+   "label": "GLM 5.3 Flash low",
+   "model": "glm-5p3-flash",
+   "provider": "cursor",
+   "reasoning": "low",
+   "runId": "a5ece0bc-5887-4511-bcd3-560643f2a6f6",
+   "artifact": "data/experiences/a5ece0bc-5887-4511-bcd3-560643f2a6f6.json",
+   "status": "abandoned",
+   "initialDecisions": 0,
+   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:29d88317-6993-4f9a-9513-d8f21ac23735",
+   "note": "Launched as an idle scratch thread; the task text was sent as its first message with `t3 thread send - < file` (stdin), after two helper-agent launches delivered a text cut off after step 3 and were stopped unused. Stopped after 120 recorded steps when the operator changed the opening preface on 2026-11-09 and asked for a restart; evidence file kept, not published."
+  },
+  {
+   "label": "GLM 5.3 Flash high",
+   "model": "glm-5p3-flash",
+   "provider": "cursor",
+   "reasoning": "high",
+   "runId": "af71bb2c-b17e-4866-b74e-dbf2f67d0362",
+   "artifact": "data/experiences/af71bb2c-b17e-4866-b74e-dbf2f67d0362.json",
+   "status": "initialized",
+   "initialDecisions": 0,
+   "interview": "v1",
+   "prefaceModelName": "GLM 5.3 Flash",
+   "thread": "t3-thread://v2/513dad95-f5e7-49cf-ab8f-01476727f165/mcp:d67290ca-4e02-453d-a442-12eef686460b",
+   "note": "First run under the model-name preface and the post-game interview (2026-11-09), at high reasoning as the operator asked. Idle scratch thread; task text sent with `t3 thread send - < file`."
+  }
+ ],
+ "interview": "v1"
+}

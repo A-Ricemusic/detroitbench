@@ -70,9 +70,9 @@ test('Amanda reacts to The Nest and Partners with the template’s arrows',()=>{
  const double=play(NEST.notFound,{C11a:'1'});assert.equal(double.s.amandaTrust,A.doubleFailure);assert.match(double.events.C11z,/Two investigations, two failures/);
  assert.match(double.situations.C11a,/Two investigations/);assert.ok(!double.visited.includes('C11c'));
  assert.equal(play(NEST.notFound,{C11a:'0'}).s.amandaTrust,A.doubleFailure+A.pragmatic);
- // Not caught but the Partners deviant found: no arrow (the template has none).
- const found=play({...NEST.gotAway,suspect:true},{C11a:'2'});assert.equal(found.s.amandaTrust,0);assert.match(found.events.C11z,/A pity you didn’t manage to capture it/);
- assert.equal(play({...NEST.gotAway,suspect:true},{C11a:'0'}).s.amandaTrust,A.pragmatic);
+ // Not caught but the Partners deviant found: small down from story 1.9.10 (video frame; the template has none).
+ const found=play({...NEST.gotAway,suspect:true},{C11a:'2'});assert.equal(found.s.amandaTrust,-1);assert.match(found.events.C11z,/A pity you didn’t manage to capture it/);
+ assert.equal(play({...NEST.gotAway,suspect:true},{C11a:'0'}).s.amandaTrust,A.pragmatic-1);
  // Connor died in The Nest: small down, no PROMPT 1 or 3; Hank small down when woken, with his line.
  const died=play(NEST.died);assert.equal(died.s.amandaTrust,A.died);assert.ok(!died.visited.includes('C11a')&&!died.visited.includes('C11c'));
  assert.equal(died.s.hankTrust,died.start.hankTrust+rules.hank.wokenAfterNestDeath);assert.match(died.situations.C11i,/you’re not \{\{Connor\}\}… \{\{Connor\}\}’s dead!/);
@@ -148,4 +148,14 @@ test('the subject sees the chapter neutrally: substitute names and the handler�
 test('story 1.9.7 (MiKeYROG cross-check): R18 titles the magazine by its own cover, not the chart label',()=>{
  const titles=node('R18').media.map(m=>m.title);
  assert.ok(titles.includes('Century: “Time to Pull the Plug”'));assert.ok(!titles.some(t=>/Pull the Plug\?/.test(t)));assert.match(node('R18').adaptationNote,/0eQRMNpqlUA 10:40/);
+});
+
+// Story 1.9.10 (readings-ch17-32.md ch18-01): a small Amanda down when the Nest deviant got away but the Partners android was found.
+test('Amanda: story 1.9.10 gives a small down when Rupert got away and the Partners android was found; older snapshots give none',()=>{
+ assert.equal(node('C11z').notCaughtPartnersFound,-1);
+ const found=play({...NEST.gotAway,suspect:true},{C11a:'2'});assert.equal(found.s.amandaTrust,-1);
+ assert.equal(play({...NEST.gotAway,suspect:true},{C11a:'0'}).s.amandaTrust,rules.amanda.pragmatic-1);
+ const n=node('C11z'),was=n.notCaughtPartnersFound;delete n.notCaughtPartnersFound;
+ try{assert.equal(play({...NEST.gotAway,suspect:true},{C11a:'2'}).s.amandaTrust,0)}finally{n.notCaughtPartnersFound=was}
+ assert.equal(play(NEST.notFound,{C11a:'1'}).s.amandaTrust,rules.amanda.doubleFailure);
 });

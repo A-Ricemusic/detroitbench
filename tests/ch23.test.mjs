@@ -148,3 +148,12 @@ test('The Stratford Tower: every combination of door, guards and operator obeys 
   assert.equal(s.markus,true);assert.equal(s.north,true);assert.equal(s.josh,true);
  }
 });
+
+// Story 1.9.10 (readings-ch17-32.md ch23-09): no North arrow when Markus knocks the employee out himself.
+test('The Stratford Tower: North loses a point on ALIBI and GAIN TIME only from story 1.9.10; older snapshots also on DRAW GUN',()=>{
+ const run=(n,c)=>{const s=startState(story);const b=s.northTrust;apply(n,s,c,0.999);return s.northTrust-b};
+ assert.equal(node('M10e').drawGunNoNorthArrow,true);
+ assert.deepEqual(['0','1','2'].map(c=>run(node('M10e'),c)),[-1,-1,0]);
+ const old=structuredClone(node('M10e'));delete old.drawGunNoNorthArrow;
+ assert.deepEqual(['0','1','2'].map(c=>run(old,c)),[-1,-1,-1]);
+});

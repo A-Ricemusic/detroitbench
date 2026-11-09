@@ -5,8 +5,8 @@ Goal: cut `docs/research/CONFLICTS.md` (1,595 checklist items) down to the few q
 ## Inputs (read, never edit)
 
 - Your chapters' sections of `docs/research/CONFLICTS.md` ("Top three per chapter", and "Conflicts to resolve, by chapter" → `### NN · Title · N items`, grouped under `#### Numbers / Gates and unlocks / Structure / Arrows / Wording`). Links inside point at stale `.claude/worktrees/agent-*` paths; use the same file under the main checkout instead.
-- `docs/research/chNN-<slug>.md` (the research note; section 10 is the template cross-check), `docs/research/SOURCES.md` §13 and the Reliability log, `docs/research/operator-notes/` if your chapter has one.
-- `benchmark/chapters/chNN.json` and `.mjs` (what the benchmark actually does now), `docs/chNN-*-chapter-recap.html`.
+- `docs/research/chapters/chNN-<slug>.md` (the research note; section 10 is the template cross-check), `docs/research/SOURCES.md` §13 and the Reliability log, `docs/research/operator-notes/` if your chapter has one.
+- `benchmark/chapters/chNN.json` and `.mjs` (what the benchmark actually does now), `docs/chapters/chNN-*-chapter-recap.html`.
 - Cached primary sources: `/tmp/flowcharts/chNN/` (PowerPyx photos of the in-game chart plus wiki text), `/tmp/dbt/` (detroitbecometext templates and `en.json`, rendered outlines). If a cache is missing, fetch: templates raw from `https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/...`, wiki via `https://detroit-become-human.fandom.com/api.php?action=parse&page=<Title>&prop=wikitext&format=json`.
 
 Source authority (operator's rule): flowchart image > template + en.json > PowerPyx text, then wiki > other guides > operator journal. Reliability log so far: template arrows on death/failure outcomes were wrong twice (wiki right); template unlock conditions right where wiki prose was wrong.

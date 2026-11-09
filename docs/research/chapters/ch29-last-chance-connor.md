@@ -731,7 +731,7 @@ Effects the sources state that are absent:
 | https://docs.google.com/document/d/1Hx8DUcbb51ok1BquEMD8poiHOtPiCUj33xAL7GsKptM/export?format=txt (linked from the wiki Flowchart) | a full Tense-to-Neutral run to `HANK WON'T HELP`; Rupert needs #9164 from Daniel; three Amanda questions |
 | https://www.ign.com/wikis/detroit-become-human/Last_Chance,_Connor | "only a few minutes", answering Gavin wastes time (conflict check only) |
 | https://www.gamerguides.com/detroit-become-human/guide/walkthrough/chapter-29-last-chance-connor | blocked (2.7 KB stub); not used |
-| `docs/research/ch06-partners.md`, `ch09-the-interrogation.md`, `ch12-waiting-for-hank.md`, `ch15-the-nest.md`, `ch20-the-eden-club.md`, `ch24-public-enemy.md` | earlier-chapter node names for the prerequisites |
+| `docs/research/chapters/ch06-partners.md`, `ch09-the-interrogation.md`, `ch12-waiting-for-hank.md`, `ch15-the-nest.md`, `ch20-the-eden-club.md`, `ch24-public-enemy.md` | earlier-chapter node names for the prerequisites |
 
 ---
 

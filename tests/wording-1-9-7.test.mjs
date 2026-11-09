@@ -1,4 +1,4 @@
-// Story 1.9.7: wording fixes from the MiKeYROG 100% walkthrough cross-check (docs/research/video-crosscheck-mikeyrog.md),
+// Story 1.9.7: wording fixes from the MiKeYROG 100% walkthrough cross-check (docs/research/video-leads/video-crosscheck-mikeyrog.md),
 // each checked against the game's string table. Chapters 2, 4, 7, 8, 12, 15 and 19 (the chapters 1, 18, 30 and 32 fixes are
 // in their own test files).
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';

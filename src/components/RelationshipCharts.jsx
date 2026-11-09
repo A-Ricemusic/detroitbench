@@ -32,7 +32,7 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
  const H=compact?Math.max(360,Math.round(W*1.2)):Math.max(440,Math.min(680,(typeof innerHeight==='number'?innerHeight:900)-250));
  // Before the first measurement (and before the phone media query settles) the width can be too small for the desktop
  // margins; the plot never gets a negative width.
- const x0=compact?70:112,x1=Math.max(x0,compact?W-14:W-235),top=30,y0=compact?H-46:H-60;
+ const x0=compact?78:112,x1=Math.max(x0,compact?W-14:W-278),top=30,y0=compact?H-46:H-60;
  const series=useMemo(()=>[...runs].sort(compareRuns).map(r=>({r,pts:chapterSeries(r,scale.key),ended:r.track[scale.key].endedAt!==null})),[runs,scale.key]);
  const chs=useMemo(()=>[...new Set(series.flatMap(s=>s.pts.map(p=>p.c)))].sort((a,b)=>a-b),[series]),xMax=Math.max(1,...chs);
  const x=c=>x0+c/xMax*(x1-x0),span=scale.max-scale.min+1,y=v=>top+(scale.max+0.5-v)/span*(y0-top);
@@ -72,10 +72,10 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
     {scale.bands.map((b,i)=>{const ya=y(b.to+0.5),yb=y(b.from-0.5);return <g key={b.level}>{i%2===1&&<rect x={x0} y={ya} width={Math.max(0,x1-x0)} height={yb-ya} className="band-b"/>}
      <line x1={x0} x2={x1} y1={yb} y2={yb} className="dot-grid"/>{i===scale.bands.length-1&&<line x1={x0} x2={x1} y1={ya} y2={ya} className="dot-grid"/>}
      {yb-ya>=12&&<text x={x0-12} y={(ya+yb)/2} textAnchor="end" dominantBaseline="central" className="band-label">{compact?ABBR[b.level]??b.level:b.level}</text>}</g>})}
-    <text x={x0} y={18} className="axis-label" style={{fontSize:compact?10:11}}>{scale.label} toward {scale.toward}</text>
+    <text x={x0} y={18} className="axis-label" style={{fontSize:11}}>{scale.label} toward {scale.toward}</text>
     <line className="axis-line" x1={x0} x2={x1} y1={y0} y2={y0}/>
     {ticks.map(c=><g key={c}><line className="axis-line" x1={x(c)} x2={x(c)} y1={y0} y2={y0+5}/><text className="axis-label" x={x(c)} y={y0+22} textAnchor={c===0?'start':c===xMax?'end':'middle'}>{c===0?'Start':c===xMax?`${c} · end`:c}</text></g>)}
-    <text className="axis-label" x={(x0+x1)/2} y={y0+(compact?40:50)} textAnchor="middle" style={{fontSize:compact?11:12}}>Chapter</text>
+    <text className="axis-label" x={(x0+x1)/2} y={y0+(compact?40:50)} textAnchor="middle" style={{fontSize:12}}>Chapter</text>
     {pp&&guide(pp,true)}{hp&&hp!==pp&&guide(hp,false)}
     {series.map(s=>{const segs=[];let cur=[];for(const p of s.pts){if(p.v===null){if(cur.length)segs.push(cur);cur=[]}else cur.push(p)}if(cur.length)segs.push(cur);const last=[...s.pts].reverse().find(p=>p.v!==null),col=colors[s.r.displayName]??DIM,hl=isHl(s);
      return <g key={s.r.id} style={{opacity:groupOp(s)}}>
@@ -93,8 +93,8 @@ function LevelChart({scale,runs,colors,nums,titles,compact}){
       onPointerEnter={()=>{focus.setHover(s.r.id);setHot(s.lastKey??null)}} onPointerLeave={()=>{focus.setHover(null);setHot(null)}} onFocus={()=>{focus.setHover(s.r.id);setHot(s.lastKey??null)}} onBlur={()=>{focus.setHover(null);setHot(null)}}>
       <path d={`M${l.ax+6},${l.ay}L${x1+18},${l.ly}L${x1+20},${l.ly}`} fill="none" stroke={col} strokeWidth=".75" opacity=".22" pointerEvents="none"/>
       <rect x={x1+20} y={l.ly-lg/2} width={Math.max(0,W-x1-20)} height={lg} fill="transparent"/>
-      <circle cx={x1+31} cy={l.ly} r={small?6.5:8} className="num-badge" style={{stroke:col}}/><text x={x1+31} y={l.ly} textAnchor="middle" dominantBaseline="central" className="num-text" style={small?{fontSize:8.5}:undefined}>{n}</text>
-      <text x={x1+46} y={l.ly} dominantBaseline="central" className="lbl-name" style={{fill:'var(--ink)',fontSize:small?11.5:13,fontWeight:pinned?700:550}}>{name(s.r)}</text>
+      <circle cx={x1+31} cy={l.ly} r={small?7.5:9} className="num-badge" style={{stroke:col}}/><text x={x1+31} y={l.ly} textAnchor="middle" dominantBaseline="central" className="num-text">{n}</text>
+      <text x={x1+48} y={l.ly} dominantBaseline="central" className="lbl-name" style={{fill:'var(--ink)',fontSize:small?11.5:13,fontWeight:pinned?700:550}}><title>{name(s.r)}</title>{name(s.r)}</text>
      </a>})}
    </svg>
    {!compact&&card&&<div className="pointer-events-none absolute right-2 bottom-[72px] z-20">{card}</div>}
@@ -146,7 +146,7 @@ export function ChartFeed({runs,shown,scales,chapters,colors,nums,empty}){
   setCurrent(c=>{const next=id??sections[0].id;if(c!==next||id===null){const q=id&&id!==sections[0].id?id:null;if(new URLSearchParams(location.hash.split('?')[1]??'').get('chart')!==q)setQuery({chart:q})}return next})})};addEventListener('scroll',f,{passive:true});return()=>{removeEventListener('scroll',f);cancelAnimationFrame(raf)}},[sections]);
  useEffect(()=>{const t=tabs.current?.querySelector('[aria-current=true]'),nav=tabs.current?.querySelector('nav');if(t&&nav&&(t.offsetLeft<nav.scrollLeft||t.offsetLeft+t.offsetWidth>nav.scrollLeft+nav.clientWidth))nav.scrollLeft=t.offsetLeft-16},[current]);
  const tab=(id,label,extra)=>{const on=current===id;return <button key={id} type="button" aria-current={on?'true':undefined} onClick={()=>go(id)} className={cx('relative shrink-0 whitespace-nowrap py-3 text-[12.5px] transition-colors',on?'text-ink':'text-ink-2 hover:text-ink',extra)}>{label}{on&&<span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-0.5 rounded bg-ink"/>}</button>};
- const sep=k=><span key={k} aria-hidden="true" className="my-auto h-3.5 w-px shrink-0 bg-line-2"/>,cap=t=><span key={'c'+t} aria-hidden="true" className="my-auto shrink-0 font-mono text-[10px] uppercase tracking-[.08em] text-ink-3">{t}</span>;
+ const sep=k=><span key={k} aria-hidden="true" className="my-auto h-3.5 w-px shrink-0 bg-line-2"/>,cap=t=><span key={'c'+t} aria-hidden="true" className="my-auto shrink-0 font-mono text-[11px] uppercase tracking-[.08em] text-ink-3">{t}</span>;
  const head=(id,title,sub,note)=><div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"><h2 id={'chart-'+id+'-h'} className="flex items-center gap-2 text-lg font-semibold md:text-xl">{title}{sub&&<span className="text-sm font-normal text-ink-3">{sub}</span>}</h2>{note&&<p className="cap">{note}</p>}</div>;
  const sec='scroll-mt-[calc(var(--header-h)+64px)] md:scroll-mt-[calc(var(--header-h)+96px)] border-b border-line py-6 md:py-8';
  return <div className="min-w-0">

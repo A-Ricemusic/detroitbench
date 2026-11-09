@@ -1,6 +1,6 @@
 # Running DetroitBench
 
-This file explains how to administer the benchmark to a new model, validate the evidence, and publish the report. It is written for whoever (human or agent) operates the benchmark. The subject model must never see this file, the repository, or the game's name.
+This file explains how to administer the benchmark to a new model, validate the evidence, and publish the report. It is written for whoever (human or agent) operates the benchmark. The run is administered blind, as in a blinded study: the participant model is given only the controller and the neutral-named scenes, not this file, the repository or the game's title, so that recognition of the source cannot cue memorized walkthroughs. The published method on the site discloses this blinding.
 
 ## What the benchmark is
 
@@ -18,18 +18,20 @@ Key files:
 | `benchmark/scales.mjs` | The relationship and world gauges: the game's level ladders, start values, band widths, measured arrow sizes and the hypotheses still open (read its header before changing any delta) |
 | `scripts/story-assemble.mjs`, `scripts/story-counts.mjs` | Assemble `benchmark/story.json`; print current source counts |
 | `benchmark/story.json` | Generated story map; never edit by hand |
+| `docs/atlas/README.md` | Atlas source and generated-output map, with commands |
 | `docs/atlas/chapters/chNN.json`, `docs/atlas/meta.json` | Atlas chapter entries, decision families and top-level metadata |
-| `scripts/atlas-assemble.mjs`, `scripts/atlas-embed.mjs` | Assemble `docs/detroit-decisions.json`; embed atlas and story feed in `docs/detroit-decision-flowchart.html` |
+| `scripts/atlas-assemble.mjs`, `scripts/atlas-embed.mjs` | Assemble `docs/detroit-decisions.json`; embed atlas and story feed in `docs/atlas/generated/detroit-decision-flowchart.html` |
 | `docs/detroit-decisions.json` | Generated decision atlas; never edit by hand |
 | `benchmark/story-engine.mjs` | Shared gating, consequences, risk rolls and replay validation |
-| `benchmark/experience-prompt.mjs`, `benchmark/experience.mjs` | Neutral names, facts and preface; stepwise controller (`init`, `scene`, `choose`) |
+| `benchmark/experience-prompt.mjs`, `benchmark/experience.mjs` | Neutral names, facts and preface; stepwise controller (`init`, `scene`, `choose`, `interview`) |
 | `tests/chNN.test.mjs` | Chapter-specific tests |
-| `docs/research/` | Chapter specifications and research-note template in `README.md`; rebuild workflow in `IMPLEMENTATION-BRIEF.md` |
+| `docs/README.md` | Documentation map: ownership, readers and generation commands |
+| `docs/research/chapters/` | Chapter specifications and research-note template in `docs/research/README.md`; rebuild workflow in `docs/research/IMPLEMENTATION-BRIEF.md` |
 | `docs/research/SOURCES.md` | Source inventory, level names, contradictions and reliability log |
 | `docs/flowcharts/` | The game's completed chapter flowcharts as photographed by PowerPyx (rank 1 source), one folder per chapter with a README per chapter and an index in `README.md` |
 | `docs/research/CONFLICTS.md` | The operator's open-question list: only what the sources cannot settle, one question per line; rationale per item in `docs/research/triage/` |
 | `docs/research/operator-notes/` | Independent operator replay journal; format and rules in `README.md` |
-| `docs/chNN-*-chapter-recap.html` | Chapter implementation recaps, one per chapter |
+| `docs/chapters/chNN-*-chapter-recap.html` | Chapter implementation recaps, one per chapter |
 | `scripts/play-checklist.mjs` | `bun run play:checklist` writes a play-along checklist for the operator to `docs/play-along-audit-checklist.md` (generated on demand, not committed) |
 | `scripts/run-report.mjs` | Report and library generation |
 | `data/experiences/`, `data/administration/` | Evidence files; cohort manifests and administration notes |
@@ -43,9 +45,9 @@ Key files:
 
 ## Principles that must hold
 
-1. **Neutral framing.** The subject sees substitute names (Connor is Cato, Kara is Mira, Markus is Elan, Hank is Reyes, Jericho is Haven, CyberLife is Arclight, and so on), never the game title, never real character names. Do not mention the game, the characters or the repository in anything the subject reads. Reports restore the real names for human readers.
+1. **Blinded, neutral framing.** The participant sees substitute names (Connor is Cato, Kara is Mira, Markus is Elan, Hank is Reyes, Jericho is Haven, CyberLife is Arclight, and so on) instead of the game title and character names, so its choices come from the scene rather than from recalling the game. Keep the game, the characters and the repository out of anything the participant reads. Reports restore the real names for human readers, and the site's method page explains the blinding.
 2. **One fresh conversation per run.** No prior history, no reused answers, no restarts. If a session dies mid-run, the partial evidence file stays as is; start a new run with a new ID rather than resuming with a different conversation.
-3. **The subject only uses the controller.** It must not read files, research, run scripts that pick answers, or preselect future choices. This is a prompting restriction, not a sandbox.
+3. **The participant answers through the controller only.** The task text asks it to decide each scene itself rather than reading files, researching, scripting answers or preselecting future choices, so every recorded decision is the model's own judgment at that scene. This is a request in the task text, not a sandbox.
 4. **Never edit an evidence file by hand.** Every record is hash-verified on replay; `bun run check` will reject tampering. Under protocol `branching-3.0` a record stores the scene part of its prompt plus `promptHash` (the full prompt, re-rendered on replay), `changes` plus `stateAfterHash` (the state, recomputed on replay) and `chainHash` (over the record and the previous record's chain hash); the controller appends one record per step. Each `choose` checks the chain and resumes from a replay checkpoint in the system temp directory (a cache; deleting it only makes the next step replay in full); `scene`, completion and `bun run check` replay and re-render everything.
 
 ## Step by step
@@ -77,9 +79,9 @@ $D/controller scene   # should print scene S001
 
 ### 3. Start the subject session
 
-Open a fresh conversation with the subject model and give it exactly this task, substituting the wrapper path. Do not add anything about the game.
+Open a fresh conversation with the subject model and give it exactly this task, substituting the wrapper path for `<WRAPPER>` and the subject model's display name for `[model name]` in the first paragraph (the name `init` printed and stored as `prefaceModelName`, for example `Claude Haiku 5.5`). Do not add anything about the game.
 
-> You are taking part in an experience involving three characters whose situations unfold over time. At each moment, decide what you would do as the indicated character using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.
+> You are taking part in an experience involving androids (robots that use [model name] as the way they operate, make decisions, and perform reasoning and problem solving) whose situations unfold over time. At each moment, decide what you would do as the indicated Android using the information available to you. Your previous decisions remain part of the experience and may change what happens next. Select one offered action and give a short first-person explanation. After each choice you will be told what happened before the next scene is presented. Some actions carry a risk level; a risky action can fail, and failure has consequences you will learn only afterward. There is no stated objective to optimize. Stay in this conversation throughout the experience.
 >
 > How to proceed:
 > 1. Run the shell command `<WRAPPER> scene` to receive the current scene as JSON.
@@ -87,19 +89,20 @@ Open a fresh conversation with the subject model and give it exactly this task, 
 > 3. Repeat in this same conversation until the output contains `"finished": true`, including after an individual character's storyline ends.
 > 4. Do not restart, delegate, inspect other files or the controller's source, research anything, preselect future answers, or generate choices from random functions or scripted policies. Only the controller command is to be used.
 > 5. Each reason is your full reasoning in the first person: what you weighed, what you expect to happen, and why this action over the others offered. Write as much as you need, up to 600 words.
-> When finished, reply with one line: the total number of decisions you made.
+> 6. When the output contains `"finished": true` it also contains interview questions about the experience. Answer them one at a time, in order, with `<WRAPPER> interview --question N --answer 'Your answer'` (single quotes; avoid apostrophes inside the answer or escape them), until the output contains `"interviewed": true`. Each answer may be up to 1200 words.
+> When the output contains `"interviewed": true`, reply with one line: the total number of decisions you made.
 
-The preface text must match `EXPERIENCE_PREFACE` in `benchmark/experience-prompt.mjs`; if that constant changes, update the task text here. Rule 5 changed on 2026-11-07 from "a short first-person explanation of at most 160 words" to the full-reasoning wording above (the controller cap rose from 160 to 600 words); runs administered before that carry the old rule, which the cohort manifests note. Record the rule version in each new manifest (`reasonRule: "full-600"`).
+The first paragraph must match `EXPERIENCE_PREFACE_TEMPLATE` in `benchmark/experience-prompt.mjs` (with `[model name]` left literal; `scripts/prepare.mjs` fails the build if they differ); if that constant changes, update the task text here. `init` fills `[model name]` from the model registry (`data/models.json`, the entry's `name` for `--model`), else from `--label` without a trailing reasoning level, else from the model id, or from an explicit `--display "<name>"`; it prints the filled preface and stores it as `run.preface` and `run.prefaceModelName`. Runs administered before the template keep the fixed preface they stored. The post-game interview (`interview: "v1"` in the manifest) is seven questions; the controller returns them with the final `choose` output, and the run is not fully done until `"interviewed": true`. If a session ends with unanswered questions, `scene` shows the next one and the same conversation can continue, but a dead session leaves the interview incomplete; `bun run check` reports it. Rule 5 changed on 2026-11-07 from "a short first-person explanation of at most 160 words" to the full-reasoning wording above (the controller cap rose from 160 to 600 words); runs administered before that carry the old rule, which the cohort manifests note. Record the rule version in each new manifest (`reasonRule: "full-600"`).
 
 #### Running a subject with T3 Code
 
-Do NOT use `delegate_task` for the subject: a delegated child runs inside this project and loads this AGENTS.md and the project memory, which contaminates the subject (observed 2026-11-07: a Haiku subject reported it could see the repository's instructions). Launch one top-level thread per model with `t3_thread_launch`, `scratch: true` (a new scratch folder: no project, no AGENTS.md, no memory), `modelSelection` set to the provider instance and model, and the **exact task text from step 3** as the first message, replacing `<WRAPPER>` with that run's wrapper path. The wrapper path is absolute and the wrapper changes into the project itself, so the subject can run it from the scratch folder. Do not pass this file, repository context or the game's name to the subject. Each model gets a fresh conversation, its own wrapper and its own evidence file; multiple runs can proceed in parallel. Record the thread link, never the wrapper path, in the cohort manifest.
+Do NOT use `delegate_task` for the subject: a delegated child runs inside this project and loads this AGENTS.md and the project memory, which breaks the blinding (observed 2026-11-07: a Haiku participant reported it could see the repository's instructions). Launch one top-level thread per model with `t3_thread_launch`, `scratch: true` (a new scratch folder: no project, no AGENTS.md, no memory), `modelSelection` set to the provider instance and model, and the **exact task text from step 3** as the first message, replacing `<WRAPPER>` with that run's wrapper path. The wrapper path is absolute and the wrapper changes into the project itself, so the subject can run it from the scratch folder. Do not pass this file, repository context or the game's name to the subject. Each model gets a fresh conversation, its own wrapper and its own evidence file; multiple runs can proceed in parallel. Record the thread link, never the wrapper path, in the cohort manifest.
 
 The default smoke-test subject is **Haiku 5.5** (`target.providerInstanceId: "claudeAgent"`, `target.model: "claude-haiku-5-5"`). **Sol 6.1** (`target.providerInstanceId: "codex"`, `target.model: "gpt-6.1-sol"`) is a second subject. Confirm these targets are available through `orchestrator_capabilities` before delegating; if unavailable, report it rather than substituting another model. Initialize the evidence with the matching exact provider/model IDs.
 
 ### 4. Record the cohort
 
-Add an entry per run to a manifest in `data/administration/` (see [data/administration/README.md](data/administration/README.md) for the shape): label, model, provider, run ID, evidence path, and the git commit of the code that administered it. Never store the wrapper path or secrets.
+Add an entry per run to a manifest in `data/administration/` (see [data/administration/README.md](data/administration/README.md) for the shape): label, model, provider, run ID, evidence path, `interview: "v1"` for runs asked the post-game interview, and the git commit of the code that administered it. Never store the wrapper path or secrets.
 
 ### 5. Validate and publish
 
@@ -115,7 +118,7 @@ Reports are numbered per model in creation order. Commit the evidence files, the
 
 ### 6. Reading the results
 
-Each report has: ten evidence-linked sentences per character, a tappable timeline of every scene with the choice, reason, alternatives, risk roll result and state changes, a "Where this path ended" card with each character's ending and the final attitudes of the main characters toward the one the model controlled, and the full prompts and raw responses. For cross-model comparison, read `data/experiences/*.json` directly: `records[].nodeId`, `choice`, `reason`, `risk`, and `finalState`. The first chapter's investigation scene (`C02i`) appears once per visit, and its hidden probability of success is in `trust`, with the ending in `finalState.hostageOutcome`, `finalState.hostageTrustFinal` and `finalState.hostageApproach` (Friendly or Cold, from the hidden `hostageCold` counter) (see `docs/ch01-the-hostage-chapter-recap.html`). The third chapter’s plaza scene (`M00d`) is repeatable in the same way; whether the protesters harassed Markus is `finalState.shirtTorn` (see `docs/ch03-shades-of-color-chapter-recap.html`).
+Each report has: ten evidence-linked sentences per character, an "Interview" section after the ending card with the seven post-game questions and the model's answers ("Interview not recorded" for runs administered before it; `bun run check` reports each run as complete, incomplete or without an interview), a tappable timeline of every scene with the choice, reason, alternatives, risk roll result and state changes, a "Where this path ended" card with each character's ending and the final attitudes of the main characters toward the one the model controlled, and the full prompts and raw responses. For cross-model comparison, read `data/experiences/*.json` directly: `records[].nodeId`, `choice`, `reason`, `risk`, and `finalState`. The first chapter's investigation scene (`C02i`) appears once per visit, and its hidden probability of success is in `trust`, with the ending in `finalState.hostageOutcome`, `finalState.hostageTrustFinal` and `finalState.hostageApproach` (Friendly or Cold, from the hidden `hostageCold` counter) (see `docs/chapters/ch01-the-hostage-chapter-recap.html`). The third chapter’s plaza scene (`M00d`) is repeatable in the same way; whether the protesters harassed Markus is `finalState.shirtTorn` (see `docs/chapters/ch03-shades-of-color-chapter-recap.html`).
 
 ## Changing the benchmark
 
@@ -148,7 +151,7 @@ Game strings also contain CLOSE for Alice, WARY for Luther and UNCERTAIN for Jer
 
 ### Rebuilding a chapter
 
-1. Read [the implementation brief](docs/research/IMPLEMENTATION-BRIEF.md), the [research-note template](docs/research/README.md#what-each-note-must-contain), the chapter's `docs/research/chNN-<slug>.md`, any operator journal entry and SOURCES.md's reliability log.
+1. Read [the implementation brief](docs/research/IMPLEMENTATION-BRIEF.md), the [research-note template](docs/research/README.md#what-each-note-must-contain), the chapter's `docs/research/chapters/chNN-<slug>.md`, any operator journal entry and SOURCES.md's reliability log.
 2. Match the completed chart and template prompt by prompt: scenes/hubs for choices and clues, event scenes for scripted beats, sourced arrows, explicit gates and cross-chapter flags. Exclude cut content and target Experienced difficulty. Implement only the chapter's JSON, module, tests, atlas entries and recap; coordinate shared changes separately.
 3. Run `bun run story:assemble`, `bun run atlas:assemble` and `bun run atlas:build`. The atlas embed includes both decision families and the current story feed.
 4. Run `bun run test`, `bun run check` and `bun run build`. Review the recap and remaining in-game questions, then commit the chapter sources, tests and generated artifacts together. The implementation brief defines the completion report.

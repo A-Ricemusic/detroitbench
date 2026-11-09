@@ -161,8 +161,10 @@ test('Night of the Soul: with Markus gone North calls the survivors to arms, fro
 });
 
 test('Night of the Soul: Thin Ice briefs the replacement when Connor died in Crossroads',()=>{
- const machine=play({...kind,C22:'1'});assert.ok(machine.ids.includes('CN01'));assert.equal(machine.s.ch31ThinIce,true);assert.equal(machine.s.ch31ConnorEnding,ENDINGS.thinIce);
+ const machine=play({...kind,C22:'1'},{mutate:s=>{s.hankResigned=false}});assert.ok(machine.ids.includes('CN01'));assert.equal(machine.s.ch31ThinIce,true);assert.equal(machine.s.ch31ConnorEnding,ENDINGS.thinIce);
  assert.ok(machine.s.knowledge.Connor.some(f=>/destroy the leader/.test(f)));
+ // Story 1.9.10: the kind fixture leaves Hank Hostile, so he also resigns on the Kamski route; Thin Ice is isolated above by clearing the resignation. With both, Hank's House (later in the chapter) sets the Connor ending.
+ const both=play({...kind,C22:'1'});assert.ok(both.ids.includes('CN01')&&both.ids.includes('CN02'));assert.equal(both.s.ch31ThinIce,true);assert.equal(both.s.ch31ConnorEnding,ENDINGS.hank);assert.equal(both.s.ch31HankEnding,ENDINGS.hank);
  const deviant=play(deviantRaid);assert.ok(!deviant.ids.includes('CN01'));
  const flagged=play(deviantRaid,{mutate:s=>{s.ch30ConnorDied=true;s.deviant=false}});assert.ok(flagged.ids.includes('CN01'));
 });
@@ -180,7 +182,7 @@ test('Night of the Soul: Hank’s House plays on resignation alone and always en
  for(const id of ['CN03','CN04','CN07'])assert.deepEqual(never.events[id][0].changes.map(c=>c.key).filter(k=>k!=='ch31HankTalk'),[],id+' moves no stat');
  // Before Crossroads is rebuilt, its C22 already narrates the suicide; the house is then skipped, not replayed.
  const old=play({...kind,C22:'0'},{mutate:s=>{s.hankResigned=true;s.hank=false}});assert.match(old.skipped.find(x=>x.id==='CN02').reason,/pre-rebuild C22/);
- const none=play(deviantRaid);assert.match(none.skipped.find(x=>x.id==='CN02').reason,/did not quit/);
+ const none=play(deviantRaid,{mutate:s=>{s.hankResigned=false}});assert.match(none.skipped.find(x=>x.id==='CN02').reason,/did not quit/);
 });
 
 test('Night of the Soul: the module labels its outcome keys for run reports',()=>{

@@ -10,7 +10,7 @@ You are in an isolated git worktree on your own branch. Edit only:
 - `benchmark/chapters/chNN.mjs` (your chapter's engine module: state, gates, availability, consequences, death effects, labels, rules; see `benchmark/chapters/README.md` for the contract; never edit `benchmark/story-engine.mjs`)
 - `tests/chNN.test.mjs` (your chapter's tests; never edit `tests/story.test.mjs`)
 - `docs/atlas/chapters/chNN.json` (your chapter's atlas entries; run `bun run atlas:assemble`)
-- `docs/chNN-<slug>-chapter-recap.html` (new recap page; copy the style of `docs/ch01-the-hostage-chapter-recap.html`)
+- `docs/chapters/chNN-<slug>-chapter-recap.html` (new recap page; copy the style of `docs/chapters/ch01-the-hostage-chapter-recap.html`)
 - `benchmark/experience-prompt.mjs` only to add name tokens to `NAMES` (append at the end of the table; extend the leak regex in your own test file, not in `tests/story.test.mjs`)
 
 Do not edit `README.md`, `AGENTS.md`, `src/`, `scripts/`, `benchmark/dataset.json`, other chapters' files, or `docs/research/`. If you need an engine capability the module contract does not offer, write it down in your report instead of patching the engine.

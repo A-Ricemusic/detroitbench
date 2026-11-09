@@ -1,6 +1,6 @@
 # Operator notes · Chapter 3 · Shades of Color (Markus)
 
-Recorded 2026-11-06 from the operator's playthrough. (e) = event, narrated with "Continue." only; (c) = choice. Typos corrected; content as given. Where the research note (docs/research/ch03-shades-of-color.md) or the wiki disagrees, the wiki wins; the implementer must say in each scene's adaptationNote what was changed.
+Recorded 2026-11-06 from the operator's playthrough. (e) = event, narrated with "Continue." only; (c) = choice. Typos corrected; content as given. Where the research note (docs/research/chapters/ch03-shades-of-color.md) or the wiki disagrees, the wiki wins; the implementer must say in each scene's adaptationNote what was changed.
 
 1. (e) An old man sits on a park bench; an android helps him up and escorts him home.
 2. (c) Walking past the same bench, Markus sees a magazine. Read it or not. Reading gives information. (The chart has two magazines here; offer both as the media scene does.)

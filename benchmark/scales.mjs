@@ -24,7 +24,7 @@
 //
 // What is measured, what is a hypothesis, and what would falsify it (operator readings in game, Experienced):
 //
-//  MEASURED (operator, A New Home, 2026-11-06; docs/research/ch04-a-new-home.md, SOURCES.md reliability log):
+//  MEASURED (operator, A New Home, 2026-11-06; docs/research/chapters/ch04-a-new-home.md, SOURCES.md reliability log):
 //   M1  Alice from the start with all eight small increases ends the chapter on Trusted, not Family.
 //   M2  Alice with one increase and one decrease (net 0) ends on Distant, with no key.
 //   M3  Right after a single increase the in-scene tag read Distant (weak: the wiki notes the Distant tag can flash

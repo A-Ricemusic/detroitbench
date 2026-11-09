@@ -73,8 +73,8 @@ test('Public Enemy: every prompt carries the game’s buttons in the game’s or
 test('Public Enemy: stat arrows are the template’s and risk rolls sit only on the chart’s failure branches',()=>{
  const eff=id=>node(id).options.map(o=>o.effect??{});
  assert.deepEqual(eff('C14z1'),[{},{}],'EDEN CLUB is applied by the module from the Traci outcome');
- assert.deepEqual(eff('C14z2'),[{amandaTrust:-1},{},{instability:-1},{instability:1,amandaTrust:-1}],'no Amanda arrow on DETERMINED or COLD');
- assert.deepEqual(eff('C14z3'),[{},{},{amandaTrust:-2}],'no Amanda arrow on TOO FAR');
+ assert.deepEqual(eff('C14z2'),[{amandaTrust:-1},{amandaTrust:1},{instability:-1,amandaTrust:1},{instability:1,amandaTrust:-1}],'story 1.9.10: Amanda small up on DETERMINED and COLD (video frames)');
+ assert.deepEqual(eff('C14z3'),[{amandaTrust:-1},{},{amandaTrust:-2}],'story 1.9.10: Amanda small down on TOO FAR (video frame)');
  assert.deepEqual(eff('C14z4'),[{instability:1},{amandaTrust:1},{instability:-1,amandaTrust:2}]);
  assert.deepEqual(eff('C16'),[{publicSupport:-1,instability:2},{publicSupport:-1,hankTrust:2},{hankTrust:2}],'one PO arrow on ATTACK');
  const risky=ch24.flatMap(n=>n.options.filter(o=>typeof o.risk==='number').map(o=>n.id+':'+o.id));
@@ -87,15 +87,15 @@ test('Public Enemy: stat arrows are the template’s and risk rolls sit only on 
 test('Public Enemy: the Zen Garden follows the Traci outcome (EDEN CLUB arrow, SINCERE lock, the third round)',()=>{
  const spared=play({C12:'0',C14z1:'1',C14z2:'0'});
  assert.equal(spared.s.ch24In.tracis,'spared');assert.ok(spared.visited.includes('C14z3'));
- assert.equal(spared.afterZen.amandaTrust-spared.start.amandaTrust,-1-1-0+0,'EDEN CLUB −1, SINCERE −1, TOO FAR 0, CONFLICTED 0');
+ assert.equal(spared.afterZen.amandaTrust-spared.start.amandaTrust,-1-1-1+0,'EDEN CLUB −1, SINCERE −1, TOO FAR −1 (story 1.9.10), CONFLICTED 0');
  assert.match(render(spared.events.C14z1[0].event),/they managed to escape/);
  const died=play({C12:'1',C14z1:'1'});
  assert.equal(died.s.ch24In.tracis,'died');assert.ok(!died.visited.includes('C14z3'));assert.ok(died.skipped.some(x=>x.id==='C14z3'));
  assert.ok(!available(node('C14z2'),died.s).some(o=>o.id==='0'),'SINCERE needs the Tracis spared');
- assert.equal(died.afterZen.amandaTrust-died.start.amandaTrust,1,'EDEN CLUB +1 when they died; DETERMINED and CONFLICTED nothing');
+ assert.equal(died.afterZen.amandaTrust-died.start.amandaTrust,2,'EDEN CLUB +1 when they died, DETERMINED +1 (story 1.9.10); CONFLICTED nothing');
  const lost=play({C14z1:'1'},{pre:{ch20Tracis:'notFound'}});
  assert.equal(lost.s.ch24In.tracis,'notFound');assert.match(render(lost.events.C14z1[0].event),/didn’t learn anything new/);assert.ok(!lost.visited.includes('C14z3'));
- assert.equal(lost.afterZen.amandaTrust-lost.start.amandaTrust,-1);
+ assert.equal(lost.afterZen.amandaTrust-lost.start.amandaTrust,0,'EDEN CLUB -1, DETERMINED +1 (story 1.9.10)');
  // Every round's arrows, summed: TROUBLED, TRUTH, INDIFFERENT.
  const hard=play({C12:'0',C14z1:'0',C14z2:'3',C14z3:'2',C14z4:'2'});
  assert.equal(hard.afterZen.amandaTrust-hard.start.amandaTrust,-1-2+2);assert.equal(hard.afterZen.instability-hard.start.instability,1-1);
@@ -232,4 +232,15 @@ test('Public Enemy: rebuilt chapter inputs override legacy aliases, including fa
  assert.equal(readInputs({...legacy,stratfordKilled:'operator'}).employeeShot,true);
  assert.equal(readInputs({...legacy,stratfordAlarm:false}).swat,false);
  assert.equal(readInputs({...legacy,edenTracis:'unknown',edenOutcome:null}).tracis,'spared');
+});
+
+// Story 1.9.10 (readings-ch17-32.md ch24-01): Amanda arrows on DETERMINED, COLD and TOO FAR (video frames; the template has none).
+test('Public Enemy: DETERMINED and COLD give Amanda a small up and TOO FAR a small down from story 1.9.10',()=>{
+ const run=(n,c)=>{const s=startState(story);s.ch24In={tracis:'spared'};const b=[s.amandaTrust,s.instability];apply(n,s,c,0.999);return [s.amandaTrust-b[0],s.instability-b[1]]};
+ const z2=node('C14z2'),z3=node('C14z3');
+ assert.deepEqual(['0','1','2','3'].map(c=>run(z2,c)),[[-1,0],[1,0],[1,-1],[-1,1]]);
+ assert.deepEqual(['0','1','2'].map(c=>run(z3,c)),[[-1,0],[0,0],[-2,0]]);
+ // An older snapshot's nodes lack the new arrows.
+ const o2=structuredClone(z2),o3=structuredClone(z3);delete o2.options[1].effect;delete o2.options[2].effect.amandaTrust;delete o3.options[0].effect;
+ assert.deepEqual(['1','2'].map(c=>run(o2,c)),[[0,0],[0,-1]]);assert.deepEqual(run(o3,'0'),[0,0]);
 });

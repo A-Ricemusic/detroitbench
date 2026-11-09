@@ -1,6 +1,6 @@
 import {THRESHOLDS} from '../benchmark/scales.mjs';
 // Chapter 28, Freedom March: the scenes in benchmark/chapters/ch28.json and the logic in benchmark/chapters/ch28.mjs,
-// checked against the game's chart and template (docs/research/ch28-freedom-march.md §1, §2 and §10).
+// checked against the game's chart and template (docs/research/chapters/ch28-freedom-march.md §1, §2 and §10).
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,situationFor} from '../benchmark/story-engine.mjs';
 import {render} from '../benchmark/experience-prompt.mjs';

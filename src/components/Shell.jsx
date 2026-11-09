@@ -12,7 +12,7 @@ const NAV=[
  {key:'how',label:'How it was made',short:'How',icon:Wrench,path:'how'}
 ];
 
-export function Brand(){return <a href={href('runs')} className="inline-flex items-center text-ink hover:opacity-90" aria-label="DetroitBench home"><img src="/icon.svg" alt="" width="28" height="28" className="size-7 rounded-md"/></a>}
+export function Brand(){return <a href={href('runs')} className="-ml-2 inline-flex size-10 items-center justify-center text-ink hover:opacity-90" aria-label="DetroitBench home"><img src="/icon.svg" alt="" width="28" height="28" className="size-7 rounded-md"/></a>}
 
 export function Header({section}){
  return <header className="sticky top-0 z-30 border-b border-line bg-bg/85 backdrop-blur-md supports-[backdrop-filter]:bg-bg/70 pt-[env(safe-area-inset-top)]">
@@ -30,9 +30,9 @@ export function Header({section}){
 export function TabBar({section}){
  const models=useModelsPanel();
  return <nav aria-label="Main" className="md:hidden fixed inset-x-0 bottom-0 z-30 border-t border-line bg-bg/92 backdrop-blur-md pb-[env(safe-area-inset-bottom)]">
-  <ul className={cx('grid',models.available?'grid-cols-5':'grid-cols-4')}>{NAV.map(n=><li key={n.key}><a href={href(n.path)} aria-current={section===n.key?'page':undefined} className={cx('flex flex-col items-center justify-center gap-1 h-14 text-[10.5px] tracking-tight font-medium',section===n.key?'text-ink':'text-ink-3')}><n.icon aria-hidden="true" className="size-5"/>{n.short}</a></li>)}
-   {models.available&&<li><button id={MODELS_TAB_ID} type="button" aria-haspopup="dialog" aria-pressed={models.open} aria-label={`Models, ${models.count} selected`} onClick={()=>modelsPanel.set({open:!models.open})} className={cx('flex h-14 w-full flex-col items-center justify-center gap-1 text-[10.5px] font-medium tracking-tight',models.open?'text-ink':'text-ink-3')}>
-    <span className="relative"><SlidersHorizontal aria-hidden="true" className="size-5"/><span aria-hidden="true" className="absolute -right-3 -top-1.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-ink px-1 font-mono text-[9.5px] font-semibold leading-none text-bg tnum">{models.count}</span></span>Models</button></li>}
+  <ul className={cx('grid',models.available?'grid-cols-5':'grid-cols-4')}>{NAV.map(n=><li key={n.key}><a href={href(n.path)} aria-current={section===n.key?'page':undefined} className={cx('flex flex-col items-center justify-center gap-1 h-14 text-[11px] tracking-tight font-medium',section===n.key?'text-ink':'text-ink-3')}><n.icon aria-hidden="true" className="size-5"/>{n.short}</a></li>)}
+   {models.available&&<li><button id={MODELS_TAB_ID} type="button" aria-haspopup="dialog" aria-pressed={models.open} aria-label={`Models, ${models.count} selected`} onClick={()=>modelsPanel.set({open:!models.open})} className={cx('flex h-14 w-full flex-col items-center justify-center gap-1 text-[11px] font-medium tracking-tight',models.open?'text-ink':'text-ink-3')}>
+    <span className="relative"><SlidersHorizontal aria-hidden="true" className="size-5"/><span aria-hidden="true" className="absolute -right-3 -top-1.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-ink px-1 font-mono text-[11px] font-semibold leading-none text-bg tnum">{models.count}</span></span>Models</button></li>}
   </ul>
  </nav>}
 

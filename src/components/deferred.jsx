@@ -34,7 +34,7 @@ export function Select(props){
   {label&&<label id={id+'-label'} htmlFor={id} className={cx('text-xs font-medium text-ink-3 tracking-wide',hideLabel&&'sr-only')}>{label}</label>}
   <button type="button" id={id} role="combobox" aria-expanded="false" aria-autocomplete="none" data-state="closed" aria-labelledby={label?`${id}-label ${id}`:undefined} disabled={disabled||!options.length} {...handlers}
    className={cx('inline-flex items-center justify-between gap-2 min-h-11 md:min-h-10 w-full rounded-lg border border-line-2 bg-surface px-3 text-sm text-ink shadow-sm hover:bg-surface-2 data-[state=open]:border-accent transition-colors',triggerClassName)}>
-   <span className="inline-flex items-center gap-2 min-w-0 truncate">{hideLabel&&label&&<span aria-hidden="true" className="text-ink-3 shrink-0">{label}</span>}{current?.icon&&<Dot color={current.icon}/>}<span style={{pointerEvents:'none'}}>{current?<>{current.label}{current.hint&&<span className="sr-only">, {current.hint}</span>}</>:placeholder}</span></span>
+   <span className="flex items-center gap-2 min-w-0 flex-1 text-left">{hideLabel&&label&&<span aria-hidden="true" className="text-ink-3 shrink-0">{label}</span>}{current?.icon&&<Dot color={current.icon}/>}<span className="min-w-0 truncate" style={{pointerEvents:'none'}}>{current?<>{current.label}{current.hint&&<span className="sr-only">, {current.hint}</span>}</>:placeholder}</span></span>
    <span aria-hidden="true"><ChevronDown aria-hidden="true" className="size-4 text-ink-3"/></span>
   </button>
  </div>}

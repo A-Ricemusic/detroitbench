@@ -84,7 +84,8 @@ export function consequence(n,s,opt,choice,fail,h){
  switch(n.id){
   case 'M10d':Object.assign(s.stratfordClues,{watch:true,emily:true,elizabeth:true,parking:true,address:true});return;
   case 'M10s':s.stratfordDoorLocked=choice==='1';return '';
-  case 'M10e':h.north(-1);s.stratfordEmployee=v===2?'markus':'north';s.stratfordAlarm=true;return '';
+  case 'M10e':if(!(n.drawGunNoNorthArrow&&v===2))h.north(-1); // story 1.9.10: no North arrow when Markus stuns the employee himself
+   s.stratfordEmployee=v===2?'markus':'north';s.stratfordAlarm=true;return '';
   case 'M10':
    if(v===1){h.josh(-1);h.north(1);h.jer(1);return ''}
    h.north(-1);h.josh(1);

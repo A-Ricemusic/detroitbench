@@ -41,6 +41,21 @@ function Attitudes({d}){
   <ul className="grid gap-1.5">{d.attitudes[c].map(a=><li key={a.who} className="flex items-center justify-between gap-3 text-sm"><span className="min-w-0">{a.who}</span><Badge size="sm" tone={relTone(a.level)||'mid'}>{a.level}</Badge></li>)}</ul>
  </div>)}</div>}
 
+/* ---------- Interview ---------- */
+// The post-game questions and the model's answers, verbatim (substitute names, with a note of which ones the answer uses,
+// as for the reasons). Legacy runs predate the interview.
+function Interview({d}){
+ const iv=d.interview;
+ if(!iv)return <Notice>Interview not recorded. This run was administered before the post-game interview was added.</Notice>;
+ return <div className="grid gap-5 max-w-[72ch]">
+  {!iv.complete&&<Notice tone="warn">Incomplete: {iv.answered} of {iv.total} questions answered.</Notice>}
+  {iv.items.map(x=><section key={x.n} aria-labelledby={'iv-'+x.n}>
+   <h3 id={'iv-'+x.n} className="text-sm font-semibold text-ink mb-1.5">{x.n}. {x.question}</h3>
+   {x.answer===null?<p className="text-sm text-ink-3">Not answered.</p>:<div className="grid gap-2 border-l-[3px] border-accent bg-surface-2 rounded-r-lg px-3 py-2.5 text-[14.5px] text-ink [text-wrap:pretty]">{x.answer.split(/\n+/).filter(Boolean).map((p,i)=><p key={i}>{p}</p>)}</div>}
+   {x.namesSeen?.length>0&&<p className="mt-1 text-xs text-ink-3">The model used substitute names: {x.namesSeen.map(j=>d.names[j].neutral+' = '+d.names[j].real).join(', ')}.</p>}
+  </section>)}
+ </div>}
+
 /* ---------- Timeline ---------- */
 function PromptBlock({d,step}){
  const [state,set]=useState({p:null,error:''});
@@ -92,7 +107,7 @@ function NodePanel({d,entries,sel}){
  </div>}
 
 // Hash routing owns the URL fragment, so the jump links scroll with buttons rather than #anchors.
-const JUMPS=[['ending','Ending'],['flowchart','Flowchart']];
+const JUMPS=[['ending','Ending'],['interview','Interview'],['flowchart','Flowchart']];
 function JumpNav(){
  const go=id=>{const el=document.getElementById(id);if(!el)return;el.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});const h=el.querySelector('h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}};
  return <nav aria-label="On this page" className="-mx-4 md:mx-0 -mt-2 mb-8 overflow-x-auto no-scrollbar"><ul className="flex gap-2 px-4 md:px-0 min-w-max">{JUMPS.map(([id,label])=><li key={id}><button type="button" onClick={()=>go(id)} className="inline-flex items-center rounded-full border border-line bg-surface px-3.5 min-h-10 md:min-h-9 text-[13px] font-medium text-ink-2 hover:text-ink hover:bg-surface-2">{label}</button></li>)}</ul></nav>}
@@ -123,6 +138,7 @@ export default function Report({id,chapter}){
     {d.attitudes&&<div><h3 className="text-sm font-semibold">Where they stood at the end</h3><p className="text-xs text-ink-3 mb-2.5">How the main characters regarded the one the model controlled, on the game’s relationship scale.</p><Attitudes d={d}/></div>}
    </div>
   </Section>
+  <Section id="interview" title="Interview" lede="Asked after the last decision, in the same conversation." className="scroll-mt-20"><Interview d={d}/></Section>
   <Section id="flowchart" className="scroll-mt-20" title="Flowchart" lede={`Every chapter as the game draws it: the path this run took is highlighted, the branches it did not take are dimmed, and every possible ending sits on the right. Select any node, taken or not, for the situation, the options, the model’s exact reason, the risk roll and what changed.`}>
    <p className="mb-3 -mt-1 flex items-center gap-1.5 text-xs text-ink-3"><MousePointerClick aria-hidden="true" className="size-4 shrink-0"/><span className="md:hidden">Tap a node for its full record.</span><span className="hidden md:inline">Click a node, or focus the chart, Tab to a node and press Enter. Escape closes the details.</span></p>
    <RunFlowchart r={flowRun} initialChapter={opened} renderDetail={renderDetail}/>

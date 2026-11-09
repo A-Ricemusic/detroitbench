@@ -51,7 +51,7 @@ export function Combobox({label,hideLabel=false,value,options,onChange,className
    <input id={id} ref={input} role="combobox" aria-expanded={open} aria-controls={listId} aria-autocomplete="list" aria-activedescendant={open&&shown[active]?`${id}-opt-${active}`:undefined} autoComplete="off"
     value={open||query?query:(current?.label??'')} placeholder={current?.label??placeholder}
     onChange={e=>{setQuery(e.target.value);setOpen(true)}} onFocus={()=>setOpen(true)} onClick={()=>setOpen(true)} onKeyDown={onKey}
-    className={cx('w-full min-h-11 md:min-h-10 rounded-lg border border-line-2 bg-surface pr-9 text-sm text-ink placeholder:text-ink-2 shadow-sm hover:bg-surface-2 focus:border-accent outline-none transition-colors',current?.icon&&!open&&!query?'pl-8':'pl-3')}/>
+    className={cx('w-full min-h-11 md:min-h-10 rounded-lg border border-line-2 bg-surface pr-9 text-sm text-ink text-ellipsis placeholder:text-ink-2 shadow-sm hover:bg-surface-2 focus:border-accent outline-none transition-colors',current?.icon&&!open&&!query?'pl-8':'pl-3')}/>
    <ChevronDown aria-hidden="true" className="absolute right-3 top-1/2 -translate-y-1/2 size-4 text-ink-3 pointer-events-none"/>
   </div>
   {open&&<ul id={listId} role="listbox" aria-label={label} className="absolute left-0 right-0 top-full z-50 mt-1.5 max-h-72 overflow-auto rounded-xl border border-line bg-raised p-1.5 shadow-lg anim-fade-up">

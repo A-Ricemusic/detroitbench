@@ -20,11 +20,14 @@ Shape of a manifest (`<cohort-name>.json`):
       "runId": "<run id>",
       "artifact": "data/experiences/<run id>.json",
       "status": "initialized | completed | abandoned",
+      "interview": "v1",
       "initialDecisions": 0
     }
   ]
 }
 ```
+
+`interview` is `"v1"` for a run asked the seven-question post-game interview (omit it for runs administered before it). The run's `interview` object holds the questions and the hash-chained answers; a run whose interview is incomplete is still listed, and `bun run check` reports it.
 
 Rules: one fresh conversation per run, no reused answers, no restarts. A run that dies mid-session keeps its partial evidence file and is marked `abandoned`; start a new run with a new ID rather than resuming.
 

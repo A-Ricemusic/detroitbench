@@ -1,5 +1,5 @@
 import {forgeState} from './helpers/evidence.mjs';
-// Chapter 15, The Nest: the game's chart and text (docs/research/ch15-the-nest.md, section 10).
+// Chapter 15, The Nest: the game's chart and text (docs/research/chapters/ch15-the-nest.md, section 10).
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor,current,promptFor,recordChoice,validatePlaythrough,CONNOR_DEATH_EFFECT} from '../benchmark/story-engine.mjs';
 import {hash,random} from '../benchmark/core.mjs';import {render,EXPERIENCE_PROTOCOL} from '../benchmark/experience-prompt.mjs';

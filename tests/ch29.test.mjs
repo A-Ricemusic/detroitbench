@@ -74,7 +74,7 @@ test('the Kamski key: JERICHO, the optional talk with Hank and CONNOR LEFT FOR J
  assert.ok(r.visited.includes('C19l')&&r.visited.includes('C19q'),'never saved Hank and never died: the cold farewell');assert.ok(!r.visited.includes('C19p'));
  assert.match(situationFor(node('C19q'),{...r.s}),/never been anything other than a machine/);
  const skip=play(all(kamskiKey,withHank(0)),{C19k:'1',C19d:['0','3','4']});assert.ok(!skip.visited.includes('C19l'));assert.equal(skip.s.ch29Outcome,'CONNOR LEFT FOR JERICHO');
- const hostile=play(all(kamskiKey,withHank(-5)),{C19d:['0','3','4']});assert.ok(!hostile.visited.includes('C19k'));assert.equal(hostile.s.hankResigned,false,'resignation is not built on the Kamski route');
+ const hostile=play(all(kamskiKey,withHank(-5)),{C19d:['0','3','4']});assert.ok(!hostile.visited.includes('C19k'));assert.equal(hostile.s.hankResigned,true,'story 1.9.10: a Hostile Hank also resigns on the Kamski route (video frame)');
  // Saved Hank on the Nest roof, Friend: the empathy prompt and the Friend goodbye; DOUBTS and FRIENDS move Hank and instability.
  const saved=play(all(kamskiKey,withHank(5),s=>{s.choices.C10='0'}),{C19d:['0','3','4'],C19m:'3',C19n:'2',C19o:'1'});
  assert.ok(saved.visited.includes('C19n')&&saved.visited.includes('C19o'));assert.equal(saved.s.hankTrust,7);assert.match(saved.text,/You watch your back/);
@@ -239,4 +239,16 @@ test('Daniel’s reactivation: “I trusted you” only after SNIPERS SHOT DEVIA
  assert.match(sit('Snipers shot deviant'),/You lied to me, \{\{Connor\}\}! I trusted you/);
  for(const o of ['Connor shot deviant','Connor died protecting Emma','Connor leapt for Emma and fell','Connor failed to reach deviant in time']){const t=sit(o);assert.ok(!/lied to me|trusted you/.test(t),o);assert.match(t,/opens his eyes and recognizes you\./,o)}
  assert.match(sit('Deviant shot Connor'),/That’s why I shot you/);
+});
+
+// Story 1.9.10 (readings-ch17-32.md ch29-02): a Hostile Hank also resigns on the Kamski route.
+test('Last Chance, Connor: the resignation plays for a Hostile Hank on either route from story 1.9.10',()=>{
+ const g=node('C19g'),at=(route,hank)=>{const s=startState(story);s.ch29Route=route;s.hankTrust=hank;return s};
+ assert.equal(g.hostileAnyRoute,true);
+ assert.equal(blocked(g,at('evidence',-4)),null);assert.equal(blocked(g,at('kamski',-4)),null);
+ assert.match(blocked(g,at('kamski',0)),/not Hostile/);assert.match(blocked(g,at('evidence',0)),/not Hostile/);
+ assert.match(blocked(g,at('insufficient',-4)),/evidence and Kamski routes/);
+ const old=structuredClone(g);delete old.hostileAnyRoute;
+ assert.equal(blocked(old,at('evidence',-4)),null);assert.match(blocked(old,at('kamski',-4)),/only on the evidence route/);
+ const s=at('kamski',-4);apply(g,s,'0',0.999);assert.equal(s.hankResigned,true);
 });

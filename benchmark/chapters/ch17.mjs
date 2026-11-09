@@ -180,8 +180,9 @@ function spotted(n,s,opt,where){
  if(where==='storage'&&s.ch17Bear){s.ch17Route='stairs';return SPOTTED+'The polar bear android throws itself at {{Zlatko}}; he shoots it twice and it goes down. BEAR ATTACKS ZLATKO AND PROTECTS KARA. {{Kara}} and {{Alice}} run. KARA REACHES THE STAIRS.'}
  if(!lost){s.ch17Route='stairs';return SPOTTED+'{{Kara}} drags {{Alice}} clear of {{Zlatko}} and {{Luther}} and runs. KARA REACHES THE STAIRS.'}
  const room=where==='storage'?'STORAGE ROOM':'BATHROOM';s.ch17Phase='over';s.ch17Route=null;s.kara=false;s.alice=false;s.ch17Outcome='ZLATKO KILLED KARA IN THE '+room;
- s.karaOutcome='{{Zlatko}} caught {{Kara}} in the '+room.toLowerCase()+' and shot her; {{Alice}} was left in his hands.';
- return SPOTTED+'{{Zlatko}} corners {{Kara}} in the '+room.toLowerCase()+' and fires. ZLATKO KILLED KARA IN THE '+room+'.';
+ // Story 1.9.10 marks the scenes with `aliceWatching` (video frames: Alice is seen watching, then the exterior and the chart; her fate is not shown).
+ s.karaOutcome=n.aliceWatching?'{{Zlatko}} caught {{Kara}} in the '+room.toLowerCase()+' and shot her while {{Alice}} watched from the doorway; what became of {{Alice}} is not shown.':'{{Zlatko}} caught {{Kara}} in the '+room.toLowerCase()+' and shot her; {{Alice}} was left in his hands.';
+ return SPOTTED+'{{Zlatko}} corners {{Kara}} in the '+room.toLowerCase()+' and fires'+(n.aliceWatching?', with {{Alice}} watching from the doorway':'')+'. ZLATKO KILLED KARA IN THE '+room+'.';
 }
 const FIRE='{{Kara}} takes a burning ember from the fireplace. SET FIRE. {{Kara}}: “We need to hurry, they’ll be here soon...” The flames climb the curtains. {{Zlatko}}: “There’s smoke everywhere! {{Luther}}! There’s a fucking fire! {{Luther}}! That treacherous bitch…” BURNING DOWN THE HOUSE. In the smoke, {{Kara}} and {{Alice}} make for the stairs.';
 const afterBathroom=s=>s.ch17Bear?'closes':'storage';

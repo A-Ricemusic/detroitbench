@@ -1,6 +1,6 @@
 import {writeStory} from './story-assemble.mjs';import {writeDataset,assembleFeedback} from './dataset-assemble.mjs';import {writeAtlas,assembleAtlasObject} from './atlas-assemble.mjs';
 import {mkdir,readFile,readdir,writeFile,copyFile,rm} from 'node:fs/promises';
-import {publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
+import {interviewData,publishRunLibrary,loadReportNames,providerName,endings,decisionCount,hostageSummary} from './run-report.mjs';
 import {render,renderStory} from '../benchmark/experience-prompt.mjs';
 import {datasetSchema,validateRun,hash} from '../benchmark/core.mjs';
 import {embedAtlas} from './atlas-embed.mjs';
@@ -28,7 +28,7 @@ const uncovered=assembleAtlasObject().decisions.filter(a=>!dataset.coverage.some
  await writeFile(new URL('dataset.json',target),JSON.stringify({...published,sourceTable:table,questions:dataset.questions.map(q=>({...q,sources:q.sources.map(u=>at.get(u))}))}))}await writeFile(new URL('index.json',target),JSON.stringify({datasetHash:await hash(dataset),datasetUrl:'/data/dataset.json',runs}));
 // Re-embed the atlas data and the generated story feed so the page always matches story.json.
 await embedAtlas();
-await copyFile(new URL('../docs/detroit-decision-flowchart.html',import.meta.url),new URL('../public/atlas.html',import.meta.url));
+await copyFile(new URL('../docs/atlas/generated/detroit-decision-flowchart.html',import.meta.url),new URL('../public/atlas.html',import.meta.url));
 const actual=await publishRunLibrary();
 // The question bank's feedback panels: what the controller tells the model after each option, one file per scene,
 // played from the state a published run on the current story reached there (else the initial state).
@@ -64,7 +64,7 @@ for(const s of summaries){const info=modelInfo(s,modelCtx);if(!info.registered){
 // the first time a details card needs the choice that moved a gauge. `summaries` keeps the full tracks for the gauge
 // scales and the reports below.
 await mkdir(new URL('runs/',target),{recursive:true});
-for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c)}))}
+for(const s of summaries){const {choices,track}=s;await writeFile(new URL('runs/'+s.id+'.json',target),JSON.stringify({id:s.id,...trackDetail(track),choices:choices.map(({chapterTitle,...c})=>c),interview:interviewData(actual.find(r=>r.id===s.id))}))}
 await writeFile(new URL('experiences.json',target),JSON.stringify({chapters:chapterTitles(summaries.map(s=>s.track)),runs:summaries.map(({choices,track,...s})=>({...s,track:libraryTrack(track)}))}));
 // Chapter flowcharts for the report page, one file per run, loaded only when the chart is opened.
 await mkdir(new URL('flows/',target),{recursive:true});
@@ -130,7 +130,7 @@ async function buildSources(){
   if(!extra.has(u.host))extra.set(u.host,{id:u.host,rank:4,name:u.host,description:'Cited pages on this site.',access:'Web pages',root:'https://'+u.host+'/'});return extra.get(u.host)};
  const by=new Map;for(const p of pages.values()){const s=of(p.url);if(!by.has(s.id))by.set(s.id,{s,pages:[]});by.get(s.id).pages.push(p)}
  // Community posts and tie-break guides the research notes cite (docs/research), which no scene or atlas entry does.
- const notes=[];for(const dir of ['../docs/research/','../docs/research/triage/'])for(const f of (await readdir(new URL(dir,import.meta.url)).catch(()=>[])).filter(f=>f.endsWith('.md')))notes.push(await readFile(new URL(dir+f,import.meta.url),'utf8'));
+ const notes=[];for(const dir of ['../docs/research/','../docs/research/chapters/','../docs/research/triage/'])for(const f of (await readdir(new URL(dir,import.meta.url)).catch(()=>[])).filter(f=>f.endsWith('.md')))notes.push(await readFile(new URL(dir+f,import.meta.url),'utf8'));
  const noted=[...new Set(notes.join('\n').match(/https?:\/\/(www\.)?(reddit\.com|neoseeker\.com|shacknews\.com)[^\s)>"'|,;`]*/g)??[])].sort();
  for(const url of noted){const s=of(url);if(!(s.method??[]).some(m=>m.url===url))(s.method??=[]).push({url,title:/reddit\.com/.test(url)?'r/DetroitBecomeHuman post '+url.split('/comments/')[1]?.replace(/\/.*$/,''):/neoseeker\.com\/.*\/faqs\/(\d+)/.test(url)?'FAQ '+url.match(/faqs\/(\d+)/)[1]:undefined,note:'Cited in the research notes (docs/research).'})}
  for(const s of SOURCES)for(const m of s.method??[])if(!pages.has(m.url)){if(!by.has(s.id))by.set(s.id,{s,pages:[]});by.get(s.id).pages.push({url:m.url,title:m.title??sourceTitle(m.url),scenes:new Set,atlas:new Set,method:true,...(m.note?{note:m.note}:{})})}
@@ -150,7 +150,7 @@ console.log(`Prepared ${dataset.questions.length} question-bank entries with fee
 // array literal is read from the module's source; a test below checks the parsed list against neutralText().
 // protocol.json: the preface and what the page quotes from AGENTS.md (the subject's task message, the init command and
 // the wrapper script), so the page never bundles AGENTS.md itself.
-{const {NAMES,neutralText,EXPERIENCE_PREFACE}=await import('../benchmark/experience-prompt.mjs');
+{const {NAMES,neutralText,EXPERIENCE_PREFACE_TEMPLATE}=await import('../benchmark/experience-prompt.mjs');
  const src=await readFile(new URL('../benchmark/experience-prompt.mjs',import.meta.url),'utf8'),m=src.match(/const NEUTRAL_TERMS=(\[[\s\S]*?\]\]);/);
  if(!m)throw new Error('NEUTRAL_TERMS not found in benchmark/experience-prompt.mjs');
  const terms=new Function('return '+m[1])();
@@ -170,9 +170,9 @@ console.log(`Prepared ${dataset.questions.length} question-bank entries with fee
   for(const l of md.slice(i).split('\n').slice(1)){if(l.startsWith('>')){started=true;out.push(l.replace(/^> ?/,''))}else if(started||l.trim())break}
   return out.length?out.join('\n').trim():null};
  const codeUnder=(md,heading)=>{const i=md.indexOf(heading);if(i<0)return null;const c=md.slice(i).match(/```\w*\n([\s\S]*?)\n```/);return c?c[1]:null};
- const protocol={preface:EXPERIENCE_PREFACE,taskMessage:quoteAfter(agents,'give it exactly this task'),initCommand:codeUnder(agents,'### 1. Initialize a run'),wrapperScript:codeUnder(agents,'### 2. Create an opaque controller wrapper')};
+ const protocol={preface:EXPERIENCE_PREFACE_TEMPLATE,taskMessage:quoteAfter(agents,'give it exactly this task'),initCommand:codeUnder(agents,'### 1. Initialize a run'),wrapperScript:codeUnder(agents,'### 2. Create an opaque controller wrapper')};
  for(const [k,v] of Object.entries(protocol))if(!v)throw new Error(`AGENTS.md: could not extract ${k} for public/data/protocol.json`);
- // AGENTS.md requires its task text to open with EXPERIENCE_PREFACE.
- if(protocol.taskMessage.split(/\n\s*\n/)[0]!==EXPERIENCE_PREFACE)throw new Error('AGENTS.md: the subject task text no longer opens with EXPERIENCE_PREFACE (benchmark/experience-prompt.mjs); update AGENTS.md step 3');
+ // AGENTS.md requires its task text to open with the preface template (the operator fills in the model's name).
+ if(protocol.taskMessage.split(/\n\s*\n/)[0]!==EXPERIENCE_PREFACE_TEMPLATE)throw new Error('AGENTS.md: the subject task text no longer opens with EXPERIENCE_PREFACE_TEMPLATE (benchmark/experience-prompt.mjs); update AGENTS.md step 3');
  await writeFile(new URL('protocol.json',target),JSON.stringify(protocol));
  console.log(`Prepared ${names.length} substitute names and ${neutralTerms.length} neutral-mode terms, and the protocol text, for the How it was made page.`)}

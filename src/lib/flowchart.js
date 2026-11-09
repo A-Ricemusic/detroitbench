@@ -13,19 +13,25 @@
 // Grey wires run along the spine; the taken path is routed orthogonally through the gaps (and under any scene it
 // skipped). Colours come from --fc-* custom properties that each host maps onto its palette.
 
-const PAD=20,GAP=30,BRK=9,NODE_W=150,EVENT_W=132,START_W=104,END_W=236,ROW_GAP=3,GRID_GAP=10,GROUP_PAD=14,CAPTION=15,LANE_GAP=40,LANE_LABEL=28,MAX_ROWS=7,CUT_GAP=60,CUT_LABEL=31,CHAIN_GAP=NODE_W,END_GAP=12;
-const LABEL=9.5,LABEL_LINE=11.5,LABEL_LS=.45,END_SIZE=11.5,END_LINE=14,BIG=22,BIG_LINE=24,HEAD_TOP=110;
+const PAD=20,GAP=30,BRK=9,NODE_W=150,EVENT_W=132,START_W=120,END_W=236,ROW_GAP=3,GRID_GAP=10,GROUP_PAD=14,CAPTION=15,LANE_GAP=40,LANE_LABEL=28,MAX_ROWS=7,CUT_GAP=60,CUT_LABEL=31,CHAIN_GAP=NODE_W,END_GAP=12;
+const LABEL=11,LABEL_LINE=13,LABEL_LS=.3,END_SIZE=11.5,END_LINE=14,BIG=22,BIG_LINE=24,HEAD_TOP=110;
 
 export const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const r1=n=>Math.round(n*10)/10;
 
 // Rough advance widths (em) for the sans fonts both hosts use; good enough to wrap labels without a DOM.
 export function textWidth(s,size,ls=0){let w=0;for(const ch of String(s)){w+=/[iIl.,:;'’!|j]/.test(ch)?.28:/[ ]/.test(ch)?.28:/[MW@]/.test(ch)?.9:/[mw]/.test(ch)?.82:/[A-Z0-9&]/.test(ch)?.7:/[a-z]/.test(ch)?.55:.5;}return w*size+String(s).length*ls}
-export function wrap(s,maxW,size,maxLines,ls=0){const words=String(s).split(/\s+/).filter(Boolean),lines=[];let line='';
- for(const w of words){const next=line?line+' '+w:w;if(line&&textWidth(next,size,ls)>maxW){lines.push(line);line=w}else line=next}
+export function wrap(s,maxW,size,maxLines,ls=0){const W=t=>textWidth(t,size,ls),fit=t=>W(t)<=maxW;
+ // Tokens: words, split after hyphens; a piece still too wide for a line is cut into chunks that fit, so a long word
+ // continues on the next line instead of being clipped. `sp` marks a token that follows a space.
+ const toks=[];for(const w of String(s).split(/\s+/).filter(Boolean)){const parts=w.match(/[^-]+-*|-+/g)??[w];
+  parts.forEach((p,i)=>{let sp=i===0;while(p.length>1&&!fit(p)){let k=p.length-1;while(k>1&&!fit(p.slice(0,k)))k--;toks.push({t:p.slice(0,k),sp});sp=false;p=p.slice(k)}toks.push({t:p,sp})})}
+ const lines=[];let line='';for(const k of toks){const next=line?line+(k.sp?' ':'')+k.t:k.t;if(line&&!fit(next)){lines.push(line);line=k.t}else line=next}
  if(line)lines.push(line);
- if(lines.length>maxLines){lines.length=maxLines;let l=lines[maxLines-1];while(l.length>1&&textWidth(l+'…',size,ls)>maxW)l=l.slice(0,-1);lines[maxLines-1]=l.replace(/[\s,;:]+$/,'')+'…'}
- return lines.map(l=>{if(textWidth(l,size,ls)<=maxW)return l;let x=l;while(x.length>1&&textWidth(x+'…',size,ls)>maxW)x=x.slice(0,-1);return x+'…'})}
+ if(lines.length>maxLines){lines.length=maxLines;let l=lines[maxLines-1];
+  // Ellipsize after the last line, dropping whole words while the line has more than one.
+  while(!fit(l+'…')&&/\s/.test(l))l=l.replace(/\s+\S*$/,'');while(l.length>1&&!fit(l+'…'))l=l.slice(0,-1);lines[maxLines-1]=l.replace(/[\s,;:]+$/,'')+'…'}
+ return lines}
 
 // A short node label from an option sentence: the words before a colon ("Lie: tell him…" → "Lie"),
 // otherwise the first clause, trimmed of a trailing "and …" or prepositional phrase when it runs long.
@@ -81,7 +87,7 @@ const nodeH=lines=>lines.length>1?8+lines.length*LABEL_LINE:20;
 // Options as a grid: one column up to MAX_ROWS rows, then as many columns as needed, filled top to bottom.
 function grid(options,{badges=false}={}){
  const n=options.length,cols=Math.max(1,Math.ceil(n/MAX_ROWS)),rows=Math.max(1,Math.ceil(n/cols));
- const nodes=options.map(o=>{const badge=badges&&o.taken&&o.orders?.length>0,num=badge?o.orders.join(','):'',bw=badge?Math.max(14,textWidth(num,8.5)+6):0;
+ const nodes=options.map(o=>{const badge=badges&&o.taken&&o.orders?.length>0,num=badge?o.orders.join(','):'',bw=badge?Math.max(14,textWidth(num,11)+6):0;
   const lines=wrap(o.label.toUpperCase(),NODE_W-14-(bw?bw+4:0)-(o.taken?14:0),LABEL,3,LABEL_LS);return {o,lines,h:nodeH(lines),badge,num,bw}});
  const rowsH=Array.from({length:rows},(_,i)=>Math.max(0,...nodes.filter((_,k)=>k%rows===i).map(x=>x.h)));
  let y=0;const rowY=rowsH.map(h=>{const v=y;y+=h+ROW_GAP;return v});const h=Math.max(20,y-ROW_GAP);
@@ -146,7 +152,7 @@ export function layoutBoxes(L){const out=[];
   const box=(b,kind,extra={})=>{if(b.type==='event')return {kind,id:b.c.id,lane:li,x:b.x-BRK,y:b.y,w:b.w+2*BRK,h:b.h,...extra};
    const gx=b.x+(b.w-b.g.w)/2,capH=b.caption?CAPTION:0;return {kind,id:b.c.id,lane:li,x:gx-BRK,y:b.y-2-capH,w:b.g.w+2*BRK,h:b.g.h+4+capH,...extra}};
   for(const b of l.blocks){const hb=box(b,'block');out.push(hb);
-   if(b.chain){const gx=b.x+(b.w-b.g.w)/2;out.push({kind:'cutin-label',id:b.c.id,lane:li,x:gx-6+10,y:b.y+b.g.h+CUT_LABEL-8.5*.8,w:textWidth('CUT-IN · AFTER ACTION 10',8.5,.7),h:8.5});
+   if(b.chain){const gx=b.x+(b.w-b.g.w)/2;out.push({kind:'cutin-label',id:b.c.id,lane:li,x:gx-6+10,y:b.y+b.g.h+CUT_LABEL-11*.8,w:textWidth('CUT-IN · AFTER 10',11,.7),h:11});
     b.chain.forEach((k,i)=>out.push(box(k,'cutin',{hub:b.c.id,index:i,hubBottom:b.y+b.g.h})))}}
   for(const e of l.ends)out.push({kind:'end',id:e.e.label,lane:li,x:e.x-4,y:e.y-3,w:END_W+8,h:e.h+6});
   for(const r of l.runs)if(r.key)out.push({kind:'group',id:r.key,lane:li,x:r.x,y:r.y,w:r.w,h:r.h,members:r.blocks.flatMap(b=>[b.c.id,...(b.chain??[]).map(k=>k.c.id)])})}
@@ -154,7 +160,7 @@ export function layoutBoxes(L){const out=[];
 
 function headerLayout(flow){const w=Math.max(380,textWidth(flow.title.toUpperCase(),30,.6)+PAD*2+10);
  // Stat chips wrap onto extra rows only when they would run past a generous width.
- const chips=(flow.stats??[]).map(s=>({...s,w:textWidth(s.label.toUpperCase(),9.5,.6)+textWidth(s.value.toUpperCase(),9.5,.6)+26}));
+ const chips=(flow.stats??[]).map(s=>({...s,w:textWidth(s.label.toUpperCase(),11,.6)+textWidth(s.value.toUpperCase(),11,.6)+26}));
  let cx=PAD,row=0;const maxW=Math.max(w,960);for(const c of chips){if(cx>PAD&&cx+c.w>maxW){row++;cx=PAD}c.x=cx;c.row=row;cx+=c.w+10}
  return {w:Math.max(w,...chips.map(c=>c.x+c.w+PAD)),h:HEAD_TOP+(chips.length?row*22+18:0),chips}}
 
@@ -186,12 +192,12 @@ export function renderChapterSVG(L,{interactive=true,idPrefix='fc'}={}){
  out.push(`<svg xmlns="http://www.w3.org/2000/svg" class="fc" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="group" aria-labelledby="${titleId}">`);
  // Header block: coverage, rule, title, characters and the stat levels at chapter end.
  const pct=flow.total?Math.round(flow.visited/flow.total*100):0;
- out.push(`<text x="${PAD}" y="28" font-size="11.5" letter-spacing=".08em" aria-label="${pct}% completed: ${flow.visited} of ${flow.total} scenes visited"><tspan font-weight="700">${pct}%</tspan><tspan class="fc-muted"> COMPLETED</tspan><tspan class="fc-muted" font-size="9.5"> · ${flow.visited} OF ${flow.total} SCENES</tspan></text>`);
+ out.push(`<text x="${PAD}" y="28" font-size="11.5" letter-spacing=".08em" aria-label="${pct}% completed: ${flow.visited} of ${flow.total} scenes visited"><tspan font-weight="700">${pct}%</tspan><tspan class="fc-muted"> COMPLETED</tspan><tspan class="fc-muted" font-size="11"> · ${flow.visited} OF ${flow.total} SCENES</tspan></text>`);
  out.push(`<line class="fc-rule" x1="${PAD}" y1="37.5" x2="${Math.min(width-PAD,PAD+440)}" y2="37.5"/>`);
  out.push(`<text id="${titleId}" class="fc-title" x="${PAD-1}" y="72" font-size="30">${esc(flow.title.toUpperCase())}</text>`);
- out.push(`<text class="fc-muted" x="${PAD}" y="92" font-size="10" letter-spacing=".1em">CHAPTER ${String(flow.chapter).padStart(2,'0')} · ${esc(flow.lanes.map(l=>l.label.toUpperCase()).join(' · '))}</text>`);
- for(const c of header.chips){const cy=HEAD_TOP+4+c.row*22;const lw=textWidth(c.label.toUpperCase(),9.5,.6);
-  out.push(`<g role="img" aria-label="${esc(c.label+': '+c.value)}"><path class="fc-bracket" d="M${c.x+3} ${cy-8}h-3v14h3M${r1(c.x+c.w-3)} ${cy-8}h3v14h-3"/><text class="fc-stat-label" x="${c.x+8}" y="${cy+3}" font-size="9.5">${esc(c.label.toUpperCase())}</text><text class="fc-stat-value" x="${r1(c.x+16+lw)}" y="${cy+3}" font-size="9.5">${esc(c.value.toUpperCase())}</text></g>`)}
+ out.push(`<text class="fc-muted" x="${PAD}" y="92" font-size="11" letter-spacing=".1em">CHAPTER ${String(flow.chapter).padStart(2,'0')} · ${esc(flow.lanes.map(l=>l.label.toUpperCase()).join(' · '))}</text>`);
+ for(const c of header.chips){const cy=HEAD_TOP+4+c.row*22;const lw=textWidth(c.label.toUpperCase(),11,.6);
+  out.push(`<g role="img" aria-label="${esc(c.label+': '+c.value)}"><path class="fc-bracket" d="M${c.x+3} ${cy-8}h-3v14h3M${r1(c.x+c.w-3)} ${cy-8}h3v14h-3"/><text class="fc-stat-label" x="${c.x+8}" y="${cy+3.5}" font-size="11">${esc(c.label.toUpperCase())}</text><text class="fc-stat-value" x="${r1(c.x+16+lw)}" y="${cy+3.5}" font-size="11">${esc(c.value.toUpperCase())}</text></g>`)}
  for(const l of L.lanes)out.push(renderLane(l,{interactive,multi:flow.lanes.length>1,width}));
  out.push('</svg>');return out.join('')}
 
@@ -203,7 +209,7 @@ function route(a,b,below){let d=`M${r1(a.x)} ${r1(a.y)}`;
 
 function renderLane(l,{interactive,multi,width}){const out=[],wires=[],path=[],nodes=[],deco=[];const {mid,start,blocks,runs,ends,lane}=l;
  out.push(`<g class="fc-lane-g" role="group" aria-label="${esc(lane.label)}">`);
- if(multi){out.push(`<g class="fc-lane"><circle class="fc-lane-dot" cx="${PAD+4}" cy="${l.labelY-3.5}" r="4" style="fill:${lane.color??'var(--fc-ink-3)'}"/><text x="${PAD+14}" y="${l.labelY}" font-size="10.5">${esc(lane.label.toUpperCase())}${lane.played===false?'<tspan class="fc-muted" font-weight="400"> · NOT PLAYED IN THIS CHAPTER</tspan>':''}</text></g>`);
+ if(multi){out.push(`<g class="fc-lane"><circle class="fc-lane-dot" cx="${PAD+4}" cy="${l.labelY-3.5}" r="4" style="fill:${lane.color??'var(--fc-ink-3)'}"/><text x="${PAD+14}" y="${l.labelY}" font-size="11">${esc(lane.label.toUpperCase())}${lane.played===false?'<tspan class="fc-muted" font-weight="400"> · NOT PLAYED IN THIS CHAPTER</tspan>':''}</text></g>`);
   if(l.top>0)out.push(`<line class="fc-wire" x1="${PAD}" y1="${l.top-LANE_GAP/2}" x2="${width-PAD}" y2="${l.top-LANE_GAP/2}" stroke-dasharray="2 4"/>`)}
  for(const r of runs)if(r.key){const {x,y,w,h}=r;
   out.push(`<g aria-hidden="true"><rect class="fc-group" x="${r1(x)}" y="${r1(y)}" width="${r1(w)}" height="${r1(h)}"/><path class="fc-group-edge" d="M${r1(x)} ${r1(y+12)}v-12h12M${r1(x+w-12)} ${r1(y)}h12v12M${r1(x)} ${r1(y+h-12)}v12h12M${r1(x+w-12)} ${r1(y+h)}h12v-12"/>`);
@@ -222,7 +228,7 @@ function renderLane(l,{interactive,multi,width}){const out=[],wires=[],path=[],n
    return}
   const g=b.g,gy=b.type==='hub'?y:y,top=gy,bot=gy+g.h,hub=b.type==='hub';
   // Caption: the scene title above the stack.
-  if(b.caption){const cap=wrap(c.title,Math.max(g.w,EVENT_W)+10,9.5,1)[0];deco.push(`<text class="fc-cap${c.visited?' on':''}" x="${r1(x)}" y="${r1(top-5)}" font-size="9.5" aria-hidden="true">${esc(cap)}</text>`)}
+  if(b.caption){const cap=wrap(c.title,Math.max(g.w,EVENT_W)+10,11,1)[0];deco.push(`<text class="fc-cap${c.visited?' on':''}" x="${r1(x)}" y="${r1(top-5)}" font-size="11" aria-hidden="true">${esc(cap)}</text>`)}
   const t=g.nodes.filter(n=>n.o.taken).sort((a,b2)=>(a.o.order??0)-(b2.o.order??0)),on=c.visited&&t.length>0;
   // Brackets with their ports on the spine (a stack wider than its options, for a hub's branch, centres them).
   const gx=x+(b.w-g.w)/2;
@@ -230,15 +236,15 @@ function renderLane(l,{interactive,multi,width}){const out=[],wires=[],path=[],n
   if(gx>x)wires.push(`M${r1(x-BRK)} ${r1(rowMid)}H${r1(gx-BRK)}M${r1(gx+g.w+BRK)} ${r1(rowMid)}H${r1(x+b.w+BRK)}`);
   for(const n of g.nodes){const o=n.o,nx=gx+n.gx,ny=gy+n.gy,cls='fc-node'+(o.taken?' is-taken':'')+(!c.visited?' is-unreached':o.locked?' is-locked':'');
    const tx=nx+7+(n.badge?n.bw+4:0),mark=o.taken?(o.risk?.outcome==='failure'?cross(nx+NODE_W-14,ny+n.h/2):check(nx+NODE_W-15,ny+n.h/2)):'';
-   const badge=n.badge?`<rect class="fc-badge" x="${r1(nx+3)}" y="${r1(ny+3)}" width="${n.bw}" height="${n.h-6}"/><text class="fc-num" x="${r1(nx+3+n.bw/2)}" y="${r1(ny+n.h/2+3)}" font-size="8.5" text-anchor="middle">${esc(n.num)}</text>`:'';
+   const badge=n.badge?`<rect class="fc-badge" x="${r1(nx+3)}" y="${r1(ny+3)}" width="${n.bw}" height="${n.h-6}"/><text class="fc-num" x="${r1(nx+3+n.bw/2)}" y="${r1(ny+n.h/2+3)}" font-size="11" text-anchor="middle">${esc(n.num)}</text>`:'';
    nodes.push(`<g class="${cls}"${nodeAttrs(o.key??c.key,optionLabel(c,o),interactive)}><title>${esc(o.text)}</title><rect class="fc-box" x="${r1(nx)}" y="${r1(ny)}" width="${NODE_W}" height="${n.h}"/>${badge}${textLines(n.lines,tx,ny+(n.h-(n.lines.length-1)*LABEL_LINE)/2+3.4,LABEL,LABEL_LINE)}${mark}</g>`)}
   if(hub){
    // A hub: the path passes through its brackets; the taken options are numbered in visit order.
    if(on){goTo(gx-BRK,rowMid);taken={x:gx+g.w+BRK,y:rowMid}}else if(!c.visited)skipped.push(b);
    if(b.chain){// The cut-in branch: down from under the hub, through the scenes it cut in, and back up into the hub.
     const first=b.chain[0].c,chainOn=b.chain.some(k=>k.c.visited),lx=gx-6,rx=gx+g.w+6,ry=b.rowMid,bx=b.chain.at(-1).x+b.chain.at(-1).w+BRK;
-    const after=first.cutinAfter!=null&&first.visited?` · AFTER ACTION ${first.cutinAfter}`:'';
-    deco.push(`<text class="fc-cut" x="${r1(lx+10)}" y="${r1(bot+CUT_LABEL)}" font-size="8.5" aria-hidden="true">CUT-IN${esc(after)}</text>`);
+    const after=first.cutinAfter!=null&&first.visited?` · AFTER ${first.cutinAfter}`:'';
+    deco.push(`<text class="fc-cut" x="${r1(lx+10)}" y="${r1(bot+CUT_LABEL)}" font-size="11" aria-hidden="true">CUT-IN${esc(after)}</text>`);
     // In: down from under the hub's left bracket into the middle of the gap, across to the left of the first cut-in, and
     // down beside it, so the wire never crosses a box. Out: right past the last cut-in and the hub, then up into it.
     const ex=Math.min(lx,b.chain[0].x-BRK-10),gy2=bot+CUT_GAP/2,inRoute=`M${r1(lx)} ${r1(bot+2)}V${r1(gy2)}H${r1(ex)}V${r1(ry)}H${r1(b.chain[0].x-BRK)}`,RX=Math.max(rx,bx)+12;

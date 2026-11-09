@@ -1,5 +1,5 @@
 // Chapter 20, The Eden Club (Connor): benchmark/chapters/ch20.json and benchmark/chapters/ch20.mjs.
-// Specification: docs/research/ch20-the-eden-club.md, section 10 (the game's template, resolved against en.json).
+// Specification: docs/research/chapters/ch20-the-eden-club.md, section 10 (the game's template, resolved against en.json).
 import test from './helpers/test.mjs';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
 import {startState,blocked,available,apply,nextCursor} from '../benchmark/story-engine.mjs';
 import {render} from '../benchmark/experience-prompt.mjs';import {random} from '../benchmark/core.mjs';

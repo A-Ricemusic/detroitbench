@@ -31,7 +31,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <main>
 <p class="fine">DetroitBench · story 1.7.0 · chapter 29</p>
 <h1>Last Chance, Connor: how the chapter works</h1>
-<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx screenshots, 81 nodes, six ending cards); prompts, labels and stat arrows come from the detroitbecometext template (24 prompts, 47 arrows: Amanda 9, Hank 16, software instability 22, no public opinion); PowerPyx and the wiki fill in conditions and the upstairs timer. No source publishes a probability for this chapter, so the two rolls and the archive’s time budget are the benchmark’s own and are marked as unsourced. The research note is <code>docs/research/ch29-last-chance-connor.md</code>.</p>
+<p class="lede">A reference for replaying the chapter. Structure comes from the game’s flowchart (PowerPyx screenshots, 81 nodes, six ending cards); prompts, labels and stat arrows come from the detroitbecometext template (24 prompts, 47 arrows: Amanda 9, Hank 16, software instability 22, no public opinion); PowerPyx and the wiki fill in conditions and the upstairs timer. No source publishes a probability for this chapter, so the two rolls and the archive’s time budget are the benchmark’s own and are marked as unsourced. The research note is <code>docs/research/chapters/ch29-last-chance-connor.md</code>.</p>
 <nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#nodes">2 · Every node</a></li><li><a href="#arrows">3 · Arrows</a></li><li><a href="#room">4 · The archive</a></li><li><a href="#endings">5 · Endings and flags</a></li><li><a href="#differs">6 · Simplified</a></li><li><a href="#check">7 · Check in game</a></li></ol></nav>
 
 <h2 id="flow">1 · How the chapter flows</h2>
@@ -40,7 +40,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>START in the frozen Zen Garden; optional LOOK AT MAGIC STONE and VISIT GRAVES (only after a death); TALK TO AMANDA: up to four rounds.</li>
 <li>IN THE POLICE STATION: FOWLER AND HANK ARGUE. The state decides: KNOW JERICHO’S LOCATION (Kamski key) or JERICHO’S LOCATION UNKNOWN, then INSUFFICIENT EVIDENCE (decommissioned) or SUFFICIENT EVIDENCE.</li>
 <li>Kamski key: optional TALK TO HANK, then CONNOR LEFT FOR JERICHO.</li>
-<li>Evidence: a Hostile Hank resigns (HANK RESIGNS AND LEAVES), otherwise HANK GOES TO HIS DESK → TALK TO HANK. PERKINS ARRIVES; Hank’s level decides HANK WANTS TO HELP (punch), HANK WON’T HELP (leaves) or HANK IS GONE; FREE THE PRISONER; or OUT OF TIME.</li>
+<li>Evidence (and, from story 1.9.10, the Kamski route when Hank is Hostile): a Hostile Hank resigns (HANK RESIGNS AND LEAVES), otherwise HANK GOES TO HIS DESK → TALK TO HANK. PERKINS ARRIVES; Hank’s level decides HANK WANTS TO HELP (punch), HANK WON’T HELP (leaves) or HANK IS GONE; FREE THE PRISONER; or OUT OF TIME.</li>
 <li>CREATE A DIVERSION → TAKE KEY → RUSH TO BASEMENT → GAVIN YELLS: IGNORE / DISMISS (suspicious) or ANSWER CALMLY (convinced).</li>
 <li>IN THE EVIDENCE ROOM: password, then [ FIND JERICHO LOCATION ] against the clock.</li>
 <li>LOCATE JERICHO → LEAVE THE BASEMENT (convinced) or GAVIN RETURNS → FIGHT GAVIN (suspicious); or OUT OF TIME.</li>
@@ -61,7 +61,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td>START, LOOK AT MAGIC STONE, VISIT GRAVES, TALK TO AMANDA</td><td><code>C19a</code></td><td><span class="yes">Built.</span> Repeatable; graves need <code>connorDeaths</code> ≥ 1.</td></tr>
 <tr><td>(Amanda rounds 1–4, off-chart)</td><td><code>C19b</code>–<code>C19e</code></td><td><span class="yes">Built.</span> JERICHO swaps with KAMSKI; round 2 after sparing Chloe; round 4 after shooting the Tracis (either shooting ending, DEVIANTS DIED or CONNOR SHOT DEVIANTS; story 1.9.1 counted only the second) or Chloe.</td></tr>
 <tr><td>IN THE POLICE STATION, FOWLER AND HANK ARGUE, the evidence and location state choices</td><td><code>C19f</code></td><td><span class="yes">Built.</span> State split, no choice.</td></tr>
-<tr><td>HANK RESIGNS AND LEAVES</td><td><code>C19g</code></td><td><span class="yes">Built</span> after SUFFICIENT EVIDENCE only; sets <code>hankResigned</code>.</td></tr>
+<tr><td>HANK RESIGNS AND LEAVES</td><td><code>C19g</code></td><td><span class="yes">Built</span> for a Hostile Hank on the evidence route and, from story 1.9.10, the Kamski route (video frame); sets <code>hankResigned</code>.</td></tr>
 <tr><td>INSUFFICIENT EVIDENCE → CONNOR SERIES WAS DECOMMISSIONED (upper)</td><td><code>C19h</code></td><td><span class="yes">Built.</span> Death counted, no arrow.</td></tr>
 <tr><td>TALK TO HANK (Kamski route), CONNOR LEFT FOR JERICHO</td><td><code>C19k</code>–<code>C19r</code></td><td><span class="yes">Built.</span> Talk optional; seven template prompts in six scenes.</td></tr>
 <tr><td>HANK GOES TO HIS DESK, TALK TO HANK (evidence route)</td><td><code>C19t</code>–<code>C19w</code></td><td><span class="yes">Built.</span> Friend prompt read after the earlier answers.</td></tr>
@@ -129,7 +129,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <li>Rupert can take #9164 from Daniel or Carlos’ android; Daniel can still be reactivated after giving a part (not stated either way).</li>
 <li>THREATEN and REASON have no reply in the template; the android falls silent and can be asked again.</li>
 <li>The Amanda talk is always offered, as the chart draws it, although the wiki says it is skipped on insufficient evidence.</li>
-<li>A Hostile Hank resigns only on the evidence route (the chart); on the Kamski route he simply is not talked to. The template puts the resignation before the route split, implying both routes; the flowchart wins for structure and this conflict remains open.</li>
+<li>A Hostile Hank also resigns on the Kamski route: settled from video frames (VGS 9bngTUguKgY 3:59 to 4:03) and built from story 1.9.10; older snapshots build the resignation on the evidence route only.</li>
 <li>The template’s two identical REMORSE / DISTANT / COLD prompts share one scene.</li>
 </ul>
 

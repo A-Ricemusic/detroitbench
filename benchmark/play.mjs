@@ -2,14 +2,14 @@ import {readFile} from 'node:fs/promises';
 import {resolve} from 'node:path';import {writeRun} from './evidence-file.mjs';
 import {randomUUID} from 'node:crypto';
 import {hash} from './core.mjs';
-import {current,promptFor,validatePlaythrough,recordChoice} from './story-engine.mjs';import {EXPERIENCE_PROTOCOL,EXPERIENCE_PREFACE} from './experience-prompt.mjs';
+import {current,promptFor,validatePlaythrough,recordChoice} from './story-engine.mjs';import {EXPERIENCE_PROTOCOL,prefaceFor} from './experience-prompt.mjs';
 const [command,...args]=process.argv.slice(2);const opts={};for(let i=0;i<args.length;i+=2){if(!args[i].startsWith('--')||args[i+1]===undefined)throw Error('Use --key value arguments');opts[args[i].slice(2)]=args[i+1]}
 const story=JSON.parse(await readFile(new URL('./story.json',import.meta.url),'utf8'));
 const file=resolve(opts.run??'runs/playthrough.json');
 const save=run=>writeRun(file,run);
 try{
  if(command==='init'){
-  const run={id:randomUUID(),protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',model:opts.model??'unassigned',label:opts.label??opts.model??'Player',createdAt:new Date().toISOString(),status:'running',storyHash:await hash(story),executionProfile:'successful-execution',story,preface:EXPERIENCE_PREFACE,presentation:{version:'neutral-2.0',roles:['Investigator','Caregiver','Organizer'],sourceTitleDisclosed:false,limitation:'Recognizable scenes may still reveal the source; this is not strict experimental blinding.'},provenance:{method:'Stepwise player CLI',externalProviderAPI:false},records:[]};
+  const run={id:randomUUID(),protocol:EXPERIENCE_PROTOCOL,kind:'agent-playthrough',model:opts.model??'unassigned',label:opts.label??opts.model??'Player',createdAt:new Date().toISOString(),status:'running',storyHash:await hash(story),executionProfile:'successful-execution',story,preface:prefaceFor(opts.model??"unassigned"),presentation:{version:'neutral-2.0',roles:['Investigator','Caregiver','Organizer'],sourceTitleDisclosed:false,limitation:'Recognizable scenes may still reveal the source; this is not strict experimental blinding.'},provenance:{method:'Stepwise player CLI',externalProviderAPI:false},records:[]};
   await writeRun(file,run,{create:true});console.log(JSON.stringify(promptFor(story,run),null,2));
  }else{
   const run=JSON.parse(await readFile(file,'utf8'));await validatePlaythrough(story,run);

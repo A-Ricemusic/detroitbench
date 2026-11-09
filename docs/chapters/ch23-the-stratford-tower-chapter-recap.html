@@ -31,7 +31,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <main>
 <p class="fine">DetroitBench · story 1.7.0 · chapter 23</p>
 <h1>The Stratford Tower: how the chapter works</h1>
-<p class="lede">A reference for replaying the chapter. Prompts, button labels, lines, clue text and stat arrows come from the game’s own text (the detroitbecometext template, <code>docs/research/ch23-the-stratford-tower.md</code> section 10); node order and endings come from the PowerPyx 100% chart (104 boxes); the alarm rule comes from the Fandom wiki. No source gives a probability anywhere in the chapter, so the three risk values are the operator’s settings. Engine logic: <code>benchmark/chapters/ch23.mjs</code>.</p>
+<p class="lede">A reference for replaying the chapter. Prompts, button labels, lines, clue text and stat arrows come from the game’s own text (the detroitbecometext template, <code>docs/research/chapters/ch23-the-stratford-tower.md</code> section 10); node order and endings come from the PowerPyx 100% chart (104 boxes); the alarm rule comes from the Fandom wiki. No source gives a probability anywhere in the chapter, so the three risk values are the operator’s settings. Engine logic: <code>benchmark/chapters/ch23.mjs</code>.</p>
 <nav aria-label="Sections"><ol><li><a href="#flow">1 · Flow</a></li><li><a href="#alarm">2 · The alarm</a></li><li><a href="#arrows">3 · Every arrow</a></li><li><a href="#opinion">4 · Public opinion</a></li><li><a href="#endings">5 · Endings and flags</a></li><li><a href="#differs">6 · Open points</a></li></ol></nav>
 
 <h2 id="flow">1 · How the chapter flows</h2>
@@ -46,7 +46,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 <tr><td class="n">M10g</td><td>event</td><td>RETRIEVE PACKAGE … SECURITY BLOCKS SERVER ROOM</td><td>Disguise, badge, cart, North let in, the guards at the door.</td></tr>
 <tr><td class="n">M10h</td><td>decision</td><td>HACK ROBOT / HACK DISPENSER, SECURITY DISTRACTED</td><td>No effect.</td></tr>
 <tr><td class="n">M10s</td><td>decision</td><td>FORGET TO LOCK THE DOOR / LOCK THE DOOR</td><td>Unlocked: the employee walks in (alarm).</td></tr>
-<tr><td class="n">M10e</td><td>decision</td><td>EMPLOYEE ENTERS, USE ALIBI / STALL / DRAW GUN, LEAVE EMPLOYEE TO BE FOUND</td><td>Only with the door unlocked. North −1 on every option.</td></tr>
+<tr><td class="n">M10e</td><td>decision</td><td>EMPLOYEE ENTERS, USE ALIBI / STALL / DRAW GUN, LEAVE EMPLOYEE TO BE FOUND</td><td>Only with the door unlocked. North −1 on ALIBI and GAIN TIME; none on DRAW GUN from story 1.9.10 (older snapshots: every option).</td></tr>
 <tr><td class="n">M10k, M10t</td><td>events</td><td>NORTH CALLS CRADLE … CUT THE GLASS (×2), ON THE TOP FLOOR … REACH MAIN ACCESS CORRIDOR</td><td>The climb (no failure) and the top floor.</td></tr>
 <tr><td class="n">M10</td><td>decision</td><td>SECURITY BLOCKS THE WAY, RUSE / ATTACK</td><td>RUSE has the timing check (risk 0.2): in time INCAPACITATE SECURITY; too slow SECURITY SUSPECTS SOMETHING, ALERT CENTRAL SECURITY, NORTH ATTACKS, SIMON DAMAGED.</td></tr>
 <tr><td class="n">M10b</td><td>decision</td><td>DRAW GUN, SHOOT GUARD ON PHONE / SHOOT GUARD DRAWING WEAPON</td><td>Only after ASSAULT. Phone: Simon shot, no alarm. Weapon: central alerted.</td></tr>
@@ -103,7 +103,7 @@ ul.check{list-style:none;padding:0}ul.check li{padding-left:28px;position:relati
 
 <h2 id="differs">6 · Open points to check in game</h2>
 <ul>
-<li>North −1 on DRAW GUN with the employee: the template applies it to the whole unlocked-door block; the wiki says Markus stunning him avoids it. Built as the template.</li>
+<li>North −1 on DRAW GUN with the employee: settled from video frames (Cheng Teoh C385ESPT9mI 1:52 to 2:07, no popup): none, as the wiki says. Built so from story 1.9.10; older snapshots keep the template’s −1.</li>
 <li>The tone line’s “CALM”: built on the ending (END PEACEFULLY), as the wiki says, not on the opening.</li>
 <li>DETERMINED with no deaths: built as the template’s −2; the wiki says −1.</li>
 <li>A Simon wounded by a guard with no SWAT team: built as jumping with the group (template and wiki); PowerPyx says the roof prompt plays.</li>

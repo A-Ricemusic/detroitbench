@@ -7,7 +7,7 @@ const html=await readFile(ATLAS_HTML,'utf8'),feed=readBlock(html,'story-feed');
 test('docs/detroit-decisions.json is exactly the assembly of docs/atlas/',async()=>{
  assert.ok(await readFile(new URL('../docs/detroit-decisions.json',import.meta.url),'utf8')===assembleAtlas(),
   'docs/detroit-decisions.json differs from docs/atlas/. Edit docs/atlas/chapters/chNN.json, not the assembled file, then run `bun run atlas:assemble`.')});
-const hint=' Run `bun run atlas:build` (or `bun run build`) to regenerate the atlas page.';
+const hint=' Regenerate docs/atlas/generated/detroit-decision-flowchart.html with `bun run atlas:build` (or `bun run build`) to regenerate the atlas page.';
 
 test('the atlas page embeds the story feed for the current story version',()=>{
  assert.ok(feed,'no story-feed block in the atlas page.'+hint);

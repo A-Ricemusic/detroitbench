@@ -6,7 +6,7 @@ import {render,renderStory,NAMES} from '../benchmark/experience-prompt.mjs';
 import {statesOf} from '../benchmark/story-engine.mjs';
 import {chapterLabels} from '../benchmark/chapters/index.mjs';
 import {makeFormatter} from './change-format.mjs';
-import {CHANGE_LABELS,characterSummary,behaviorEvidence,endings,hostageSummary,statusChips,packedPrompts,decisionCount} from './run-report.mjs';
+import {interviewData,CHANGE_LABELS,characterSummary,behaviorEvidence,endings,hostageSummary,statusChips,packedPrompts,decisionCount} from './run-report.mjs';
 
 const WHO={Connor:'Connor',Kara:'Kara & Alice',Markus:'Markus',Player:'Player choice'};
 const tidy=t=>String(t).replace(/([?!])\.$/,'$1');
@@ -58,6 +58,8 @@ export function reportData(run,name,summary){
   technical:[['Run ID',run.id],['Model ID',run.model],['Run label',run.label],['Provider',provider??'—'],['Protocol',run.protocol],['Started',run.createdAt??'—'],['Completed',run.completedAt??'—'],['Persistent session',run.provenance?.continuousSession?'Yes · one continuous agent session':'Legacy'],['Story hash',run.storyHash??'—'],['Report file',name.file]],
   protocolInfo:{preface:run.preface??'Legacy protocol',method:run.provenance?.method??null,limitation:run.presentation?.limitation??'The source was disclosed in the older protocol.',assumptions:story.assumptions??[]},
   names};
+ // The interview (null on a legacy run), each answer with the indexes of the substitute names it uses (into report.names).
+ {const iv=interviewData(run);report.interview=iv&&{...iv,items:iv.items.map(x=>{const used=names.flatMap((nm,j)=>new RegExp('(^|[^A-Za-z])'+nm.neutral+'(?![A-Za-z])').test(x.answer??'')?[j]:[]);return used.length?{...x,namesSeen:used}:x})}}
  // Full prompts (packed, checked against every promptHash) and the raw responses, fetched when a step's prompt is opened.
  const prompts={id:run.id,prompts:packedPrompts(run),steps:run.records.map(r=>({rawResponse:r.rawResponse,recordedAt:r.recordedAt,promptHash:r.promptHash,stateAfterHash:r.stateAfterHash,chainHash:r.chainHash}))};
  return {report,prompts}}

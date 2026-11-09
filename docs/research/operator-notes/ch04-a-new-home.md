@@ -1,6 +1,6 @@
 # Operator notes · Chapter 4 · A New Home (Kara)
 
-Recorded 2026-11-07 from the operator's replays, dictated to the orchestrator. Earlier readings (M1 to M3 in benchmark/scales.mjs) came from the same operator on 2026-11-06 and are summarised in docs/research/ch04-a-new-home.md.
+Recorded 2026-11-07 from the operator's replays, dictated to the orchestrator. Earlier readings (M1 to M3 in benchmark/scales.mjs) came from the same operator on 2026-11-06 and are summarised in docs/research/chapters/ch04-a-new-home.md.
 
 ## Dishes-only run (in progress)
 

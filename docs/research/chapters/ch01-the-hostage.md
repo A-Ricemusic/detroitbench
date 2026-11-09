@@ -1,6 +1,6 @@
 # Chapter 1: The Hostage (Connor)
 
-Research note written 2026-11-06, after the chapter was rebuilt (story 1.6.0). The chapter's earlier specification is `docs/ch01-the-hostage-chapter-recap.html` and the wiki extract `/tmp/hostage-wiki-extract.txt`; this note restates it in the nine-section template and adds the template cross-check (section 10). Working files: `/tmp/flowcharts/ch01/` (PowerPyx page and three chart images, wiki pages as `w_*.txt`) and `/tmp/dbt/` (string table, rendered template).
+Research note written 2026-11-06, after the chapter was rebuilt (story 1.6.0). The chapter's earlier specification is `docs/chapters/ch01-the-hostage-chapter-recap.html` and the wiki extract `/tmp/hostage-wiki-extract.txt`; this note restates it in the nine-section template and adds the template cross-check (section 10). Working files: `/tmp/flowcharts/ch01/` (PowerPyx page and three chart images, wiki pages as `w_*.txt`) and `/tmp/dbt/` (string table, rendered template).
 
 Chapter facts (wiki infobox, `w_The_Hostage.txt`): date "August 15, 2038", time "08:29PM" (string table `GUI.MENU.DATE.01C` / `TIME.01C`: "AUG 15TH, 2038" / "PM 08:29"); player Connor; location the Phillips apartment; objectives "Find Captain Allen / Save hostage at all costs (Locate the hostage, Gain deviant's trust, Approach slowly) / Understand what happened (Search hostage's room, Examine the victims)"; `|endings=6`. Lead: "This chapter has six different outcomes."
 
@@ -192,7 +192,7 @@ Scenes in `benchmark/story.json` 1.6.0, engine `hostage()` in `benchmark/story-e
    - Operator observation 2026-11-06: CONVINCE (DEVIANT SHOT CONNOR) shows two red software-instability arrows DOWN, one for Connor's death and one for the failed mission. Resolved: −2 (wiki chapter page, Software_Instability page and wiki transcript were all correct, including the "x2"); the template's small UP on both CONVINCE and SACRIFICE SELF is wrong; PowerPyx gives no arrow. Logged in SOURCES.md, Reliability log.
 3. How many rounds the topic menu ("Speak with Daniel") offers before the helicopter. The transcript shows at least two ("Dialogue Options", "More Dialogue Options"); PowerPyx's fail sequence picks four topic lines (POSSIBLE CAUSE, REALISTIC, SYMPATHETIC, TALK TO HOSTAGE).
 4. Whether the Allen menu is asked twice always, or the second pick is optional.
-5. The items in section 6 of `docs/ch01-the-hostage-chapter-recap.html` that remain unchecked: father body and tablet as two steps, REASSURE at exactly 80%, the approach node after RELEASE HOSTAGE then SYMPATHETIC, where Daniel's first shot hits.
+5. The items in section 6 of `docs/chapters/ch01-the-hostage-chapter-recap.html` that remain unchecked: father body and tablet as two steps, REASSURE at exactly 80%, the approach node after RELEASE HOSTAGE then SYMPATHETIC, where Daniel's first shot hits.
 6. Whether the "slight drop" at the start of the negotiation has a fixed value.
 
 ## 9. Sources
@@ -210,7 +210,7 @@ Scenes in `benchmark/story.json` 1.6.0, engine `hostage()` in `benchmark/story-e
 - https://detroit-become-human.fandom.com/api.php?action=parse&page=Daniel&prop=wikitext&format=json and `...&page=Amanda...` : checked for cross-chapter lines.
 - https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/public/i18n/en.json : flowchart labels (`MENU.FLOWCHART.01C`), legend, HUD strings, all dialogue.
 - https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/1-the-hostage-chapter-content/the-hostage-chapter-content.component.html : chapter template (section 10).
-- `docs/ch01-the-hostage-chapter-recap.html` and `/tmp/hostage-wiki-extract.txt` : the chapter's previous specification.
+- `docs/chapters/ch01-the-hostage-chapter-recap.html` and `/tmp/hostage-wiki-extract.txt` : the chapter's previous specification.
 
 ## 10. Template cross-check
 

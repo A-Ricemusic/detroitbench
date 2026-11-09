@@ -61,7 +61,7 @@
 @layer base{
  html{background:var(--bg);color:var(--ink);-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px);scroll-padding-bottom:12px}
  @media (max-width:767px){html{scroll-padding-bottom:calc(3.5rem + env(safe-area-inset-bottom) + 12px)}}
- body{margin:0;min-height:100dvh;font-family:var(--font-sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-wrap:anywhere;font-feature-settings:'cv11','ss01'}
+ body{margin:0;min-height:100dvh;font-family:var(--font-sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-wrap:break-word;font-feature-settings:'cv11','ss01'}
  @media (min-width:768px){body{font-size:16px}}
  button,input,select,textarea{font:inherit;color:inherit}
  button{cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -89,17 +89,18 @@
  .fade-x{mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent)}
  /* Chart chrome */
  .end-mark-bg{fill:var(--plot-bg)}.band-a{fill:var(--chart-band-a)}.band-b{fill:var(--chart-band-b)}
- .band-label,.axis-label{fill:var(--ink-3);font-size:10px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.06em}
+ .band-label,.axis-label{fill:var(--ink-3);font-size:11px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.06em}
+ .band-label{letter-spacing:0}
  .axis-line{stroke:var(--plot-rule-2);stroke-width:1}
  .band-rule{stroke:var(--plot-rule);stroke-width:1}
  .crosshair{stroke:var(--ink-3);stroke-width:1;opacity:.7}
  .dot-grid{stroke:var(--plot-rule-2);stroke-width:1;stroke-dasharray:2 6}
  .halo-text{fill:var(--ink);font-family:var(--font-sans);paint-order:stroke;stroke:var(--plot-bg);stroke-width:3px;stroke-linejoin:round}
  .num-badge{fill:var(--plot-bg);stroke:var(--plot-rule-2);stroke-width:1}
- .num-text{fill:var(--ink-2);font-family:var(--font-mono);font-size:9px;font-weight:600}
+ .num-text{fill:var(--ink-2);font-family:var(--font-mono);font-size:11px;font-weight:600}
  /* SkateBench-style plot: a faintly gridded field one step darker than the card. */
  .plot-grid{background-color:var(--plot-bg);background-image:linear-gradient(var(--plot-grid) 1px,transparent 1px),linear-gradient(90deg,var(--plot-grid) 1px,transparent 1px);background-size:24px 24px;background-position:-1px -1px}
- .cap{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;font-size:10.5px;line-height:1.3;color:var(--ink-3)}
+ .cap{font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.08em;font-size:11px;line-height:1.3;color:var(--ink-3)}
  .hero-grid{background-image:linear-gradient(var(--plot-grid) 1px,transparent 1px),linear-gradient(90deg,var(--plot-grid) 1px,transparent 1px);background-size:40px 40px;background-position:center top;mask-image:radial-gradient(ellipse 70% 90% at 30% 0%,#000 30%,transparent 75%)}
  .ring{stroke:var(--surface);stroke-width:2}
  .end-mark{font-size:11px;font-weight:700}

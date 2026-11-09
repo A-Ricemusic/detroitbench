@@ -54,7 +54,7 @@ Reading the charts: a zoom that shows a percentage below 100% or a red padlock w
 ## Verifying a chapter against the benchmark
 
 1. Open `chNN/README.md` and the whole-chart image, then each zoom in order.
-2. Transcribe the chart's nodes in reading order: checkpoints, hubs and their entries, choice groups and their options, events, unlock tags and endings. `docs/research/chNN-<slug>.md` section 1 should already hold this transcription; check it against the images first.
+2. Transcribe the chart's nodes in reading order: checkpoints, hubs and their entries, choice groups and their options, events, unlock tags and endings. `docs/research/chapters/chNN-<slug>.md` section 1 should already hold this transcription; check it against the images first.
 3. Compare node for node with the chapter's atlas entries in `docs/atlas/chapters/chNN.json` (`decisions`) and with the scenes in `benchmark/chapters/chNN.json` (each scene's `title`, `options` and `outcomes`, and the `adaptationNote` that cites the chart). Every checkpoint, choice, clue and ending on the chart should appear, in the chart's order, with its gating (unlock tags become gates or cross-chapter flags in `benchmark/chapters/chNN.mjs`).
 4. Record any difference in the research note and fix it in the chapter sources, then regenerate the story and the atlas as AGENTS.md describes. Never edit `benchmark/story.json` or `docs/detroit-decisions.json` by hand.
 

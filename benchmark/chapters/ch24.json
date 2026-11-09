@@ -79,13 +79,17 @@
    {
     "id": "1",
     "text": "DETERMINED: say you are frustrated with your lack of progress, but determined to accomplish your mission.",
-    "outcome": "{{Connor}}: “I’m just frustrated with my lack of progress, but I’m determined to accomplish my mission.”"
+    "outcome": "{{Connor}}: “I’m just frustrated with my lack of progress, but I’m determined to accomplish my mission.”",
+    "effect": {
+     "amandaTrust": 1
+    }
    },
    {
     "id": "2",
     "text": "COLD: say the investigation is harder than you expected, but you have no doubt you will solve the case and stop the deviants.",
     "effect": {
-     "instability": -1
+     "instability": -1,
+     "amandaTrust": 1
     },
     "outcome": "{{Connor}}: “The investigation is more challenging than I anticipated, but I have no doubt that I will solve this case and stop the deviants.”"
    },
@@ -99,7 +103,7 @@
     "outcome": "{{Connor}}: “Perturbed? No… No, of course not. Why would I be perturbed?”"
    }
   ],
-  "adaptationNote": "The template’s PROMPT 2 in the game’s order. SINCERE is a locked option that needs “Spared the Tracis in The Eden Club” (template; PowerPyx says “friends with Hank”, and two PowerPyx readers at Friend did not get it, so the template’s primary condition is used). Arrows are the template’s: SINCERE {{Amanda}} small down; COLD instability small down; TROUBLED instability small up and {{Amanda}} small down; DETERMINED none. The wiki and PowerPyx also give DETERMINED and COLD an {{Amanda}} small up; the template has no {{Amanda}} arrow on either, and the template wins for dialogue arrows (research note §10.3 item 1).",
+  "adaptationNote": "The template’s PROMPT 2 in the game’s order. SINCERE is a locked option that needs “Spared the Tracis in The Eden Club” (template; PowerPyx says “friends with Hank”, and two PowerPyx readers at Friend did not get it, so the template’s primary condition is used). Arrows are the template’s: SINCERE {{Amanda}} small down; COLD instability small down; TROUBLED instability small up and {{Amanda}} small down; DETERMINED none. The wiki and PowerPyx also give DETERMINED and COLD an {{Amanda}} small up; the template has no {{Amanda}} arrow on either, and the template wins for dialogue arrows (research note §10.3 item 1). From story 1.9.10 DETERMINED gives Amanda +1, and COLD gives SI −1 together with Amanda +1, as the wiki and PowerPyx say and as the frames show: AMANDA small up at 4:27 on DETERMINED, SI down then AMANDA up at 4:52 to 4:53 on COLD (docs/research/video-leads/readings-ch17-32.md ch24-01; docs/research/video-evidence/ch24/ch24-01--xIyydd0Yrc-04-27.png, -04-53.png). The template, which has neither arrow, was wrong.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",
@@ -123,7 +127,10 @@
    {
     "id": "0",
     "text": "TOO FAR: say they were out of range; if you had had the opportunity to stop them, you would have.",
-    "outcome": "{{Connor}}: “They were out of range. If I had the opportunity to stop them, why wouldn’t I?” {{Amanda}}: “You tell me.”"
+    "outcome": "{{Connor}}: “They were out of range. If I had the opportunity to stop them, why wouldn’t I?” {{Amanda}}: “You tell me.”",
+    "effect": {
+     "amandaTrust": -1
+    }
    },
    {
     "id": "1",
@@ -139,7 +146,7 @@
     "outcome": "{{Connor}}: “I don’t know… I don’t know.”"
    }
   ],
-  "adaptationNote": "The template’s PROMPT 3, asked only if {{Connor}} spared the {{Tracis}} (the template’s condition; the module gates the scene on `ch24In.tracis`). TRUTH is {{Amanda}} large down (template, wiki, PowerPyx). TOO FAR has no arrow in the template; the wiki and PowerPyx give {{Amanda}} small down, but the template wins for dialogue arrows (research note §10.3 item 2). NO USE has none in any source.",
+  "adaptationNote": "The template’s PROMPT 3, asked only if {{Connor}} spared the {{Tracis}} (the template’s condition; the module gates the scene on `ch24In.tracis`). TRUTH is {{Amanda}} large down (template, wiki, PowerPyx). TOO FAR has no arrow in the template; the wiki and PowerPyx give {{Amanda}} small down, but the template wins for dialogue arrows (research note §10.3 item 2). NO USE has none in any source. From story 1.9.10 TOO FAR gives Amanda −1: AMANDA small down at 5:19 (docs/research/video-leads/readings-ch17-32.md ch24-01; docs/research/video-evidence/ch24/ch24-01--xIyydd0Yrc-05-19.png). The template, which has no arrow, was wrong.",
   "sources": [
    "https://detroit-become-human.fandom.com/wiki/Public_Enemy",
    "https://raw.githubusercontent.com/detroitbecometext/detroitbecometext.github.io/master/src/app/chapters/components/chapter-contents/24-public-enemy-chapter-content/public-enemy-chapter-content.component.html",

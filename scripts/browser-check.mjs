@@ -2,7 +2,8 @@
 // (`bun run preview`, or any server for dist/) and Google Chrome. Usage: bun scripts/browser-check.mjs [base-url]
 // Asserts, at each width, that the document does not scroll sideways (scrollWidth equals clientWidth) and that no
 // element inside <main> scrolls sideways or sticks out past main's right edge. Elements that deliberately cut text
-// short with an ellipsis are allowed to be narrower than their text, and screen-reader-only text is ignored.
+// short with an ellipsis are allowed to be narrower than their text, screen-reader-only text is ignored, and the contents of
+// the `.flowchart` scroller (the report's chart) may scroll and stick out sideways; the scroller itself must still fit.
 // Then, at phone width (375 px, emulated as a phone), it loads each page and fails on any console error, uncaught
 // exception or browser-logged error (an invalid SVG attribute, for example), and on a page wider than the phone.
 import {spawn} from 'node:child_process';
@@ -22,9 +23,10 @@ const probe=`(()=>{const d=document.documentElement,main=document.querySelector(
  for(const el of main.querySelectorAll('*')){const cs=getComputedStyle(el);if(cs.display==='none'||cs.visibility==='hidden')continue;
   const box=el.getBoundingClientRect();if(box.width<=1&&box.height<=1)continue; // screen-reader-only text
   const name=el.tagName.toLowerCase()+(el.id?'#'+el.id:'')+(typeof el.className==='string'&&el.className?'.'+el.className.trim().split(/\\s+/).slice(0,3).join('.'):'');
+  const fc=el.closest('.flowchart'); // the report's flowchart is a deliberate sideways scroller: it may scroll, and its content may stick out of it
   const ellipsis=cs.textOverflow==='ellipsis'&&(cs.overflowX==='hidden'||cs.overflowX==='clip');
-  if(el.scrollWidth>el.clientWidth+1&&!ellipsis&&!(el instanceof SVGElement)&&cs.overflowX!=='visible')bad.push(name+' scrolls sideways ('+el.scrollWidth+' > '+el.clientWidth+')');
-  const r=el.getBoundingClientRect();if(r.width&&r.right>R+1&&cs.position!=='fixed')bad.push(name+' sticks out past main by '+Math.round(r.right-R)+'px')}
+  if(el.scrollWidth>el.clientWidth+1&&!ellipsis&&!(el instanceof SVGElement)&&cs.overflowX!=='visible'&&!fc)bad.push(name+' scrolls sideways ('+el.scrollWidth+' > '+el.clientWidth+')');
+  const r=el.getBoundingClientRect();if(r.width&&r.right>R+1&&cs.position!=='fixed'&&(!fc||el===fc))bad.push(name+' sticks out past main by '+Math.round(r.right-R)+'px')}
  return bad.slice(0,20)})()`;
 await send('Page.enable');await send('Runtime.enable');await send('Log.enable');let failed=0;
 for(const path of paths)for(const w of widths){await send('Emulation.setDeviceMetricsOverride',{width:w,height:900,deviceScaleFactor:1,mobile:false});

@@ -52,9 +52,9 @@ function Marker({r,n,color,row,named,dim,onTip}){
   className={cx('group relative flex min-h-10 min-w-0 max-w-full shrink-0 items-center gap-2.5 rounded-full pl-1 pr-2 transition-opacity duration-200 focus-visible:outline-2 outline-accent',dim&&'opacity-15')}>
   <span className="relative flex size-8 shrink-0 items-center justify-center">
    <span aria-hidden="true" className="block size-[18px] rounded-full ring-2 ring-[var(--plot-bg)] transition-transform duration-200 group-hover:scale-125 group-focus-visible:scale-125" style={{background:color,boxShadow:`0 0 0 6px color-mix(in oklab, ${color} 18%, transparent)`}}/>
-   <span aria-hidden="true" className="absolute left-[calc(50%+6px)] -top-1 inline-flex h-4 min-w-4 items-center justify-center whitespace-nowrap rounded-full border border-[var(--plot-rule-2)] bg-[var(--plot-bg)] px-1 font-mono text-[9.5px] font-semibold leading-none text-ink-2 tnum">{n}</span>
+   <span aria-hidden="true" className="absolute left-[calc(50%+6px)] -top-1 inline-flex h-[18px] min-w-[18px] items-center justify-center whitespace-nowrap rounded-full border border-[var(--plot-rule-2)] bg-[var(--plot-bg)] px-1 font-mono text-[11px] font-semibold leading-none text-ink-2 tnum">{n}</span>
   </span>
-  {named&&<span aria-hidden="true" className="min-w-0 [overflow-wrap:break-word] font-mono leading-tight text-[12px] text-ink-2 group-hover:text-ink">{r.displayName}</span>}
+  {named&&<span aria-hidden="true" className="min-w-0 pl-2 [overflow-wrap:break-word] font-mono leading-tight text-[12px] text-ink-2 group-hover:text-ink">{r.displayName}</span>}
  </a>}
 
 // Endings as rows, best at the top and worst at the bottom; each row holds the models that reached that ending, side by
@@ -63,7 +63,7 @@ function EndingRows({name,runs,nums,colors,tall}){
  const focus=useModelFocus();
  const [ref,w]=useWidth(),rows=useMemo(()=>[...ladder(name,runs)].reverse(),[name,runs]),[tip,setTip]=useState(null),box=useRef(null);
  const dim=r=>focus.dim(r.id),byNum=list=>[...list].sort((a,b)=>(nums[a.displayName]??0)-(nums[b.displayName]??0));
- const who=name==='Alice'?'Alice':name,wide=w>=560,labelW=wide?208:124,laneW=Math.max(80,w-labelW-24);
+ const who=name==='Alice'?'Alice':name,wide=w>=560,labelW=wide?208:132,laneW=Math.max(80,w-labelW-24);
  // Names ride beside their markers while a row's items fit on two lines; beyond that the numbers and tooltip carry them.
  const named=row=>row.runs.reduce((s,r)=>s+52+r.displayName.length*7.2,0)<=laneW*2;
  const onTip=(r,row,el)=>{if(!r||!box.current){setTip(null);focus.setHover(null);return}focus.setHover(r.id);const b=box.current.getBoundingClientRect(),m=el.getBoundingClientRect();setTip({r,row,x:m.left-b.left+16,y:m.top-b.top,bw:b.width})};
@@ -72,7 +72,7 @@ function EndingRows({name,runs,nums,colors,tall}){
   <div ref={box} className="relative overflow-visible rounded-lg border border-[var(--plot-rule-2)]">
    {rows.map((row,i)=><div key={row.k} role="group" aria-label={`${row.full}: ${row.runs.length} of ${runs.length}`} className={cx('grid items-stretch',i&&'border-t border-[var(--plot-rule)]')} style={{gridTemplateColumns:`${labelW}px minmax(0,1fr)`}}>
     <div className="flex flex-col justify-center gap-1 border-r border-[var(--plot-rule)] px-3 py-2 md:px-4">
-     <span className="inline-flex items-center gap-1.5"><ToneIcon tone={row.tone}/><span className={cx('cap whitespace-nowrap text-ink',wide?'!text-[12px]':'!text-[10.5px] !tracking-[.05em]')}>{row.label}</span></span>
+     <span className="inline-flex items-center gap-1.5"><ToneIcon tone={row.tone}/><span className={cx('cap whitespace-nowrap text-ink',wide?'!text-[12px]':'!text-[11px] !tracking-[.04em]')}>{row.label}</span></span>
      <span className="font-mono text-[11px] text-ink-3 tnum">{row.runs.length} of {runs.length}</span>
     </div>
     <div className={cx('flex flex-wrap content-center items-center gap-x-3 gap-y-1 px-3 py-2',tall?'min-h-[88px] md:min-h-[104px]':'min-h-[64px] md:min-h-[84px]',i%2&&'bg-[var(--chart-band-b)]')}>

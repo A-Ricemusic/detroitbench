@@ -9,7 +9,7 @@ let cache,resolved=null;
 function loadSources(){cache??=fetch('/data/sources.json').then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.json()}).then(d=>resolved=d).catch(e=>{cache=undefined;throw e});return cache}
 
 function Link({url,children,className}){
- return <a className={'link inline-flex items-start gap-1.5 break-all '+(className??'')} href={url} target="_blank" rel="noreferrer"><span>{children??url}</span><ExternalLink aria-hidden="true" className="size-3.5 shrink-0 mt-[3px] text-ink-3"/><span className="sr-only">(opens in a new tab)</span></a>}
+ return <a className={'link inline-flex items-start gap-1.5 break-all max-sm:min-h-10 max-sm:items-center '+(className??'')} href={url} target="_blank" rel="noreferrer"><span>{children??url}</span><ExternalLink aria-hidden="true" className="size-3.5 shrink-0 mt-[3px] text-ink-3"/><span className="sr-only">(opens in a new tab)</span></a>}
 
 const citedBy=(scenes,atlas)=>[scenes&&plural(scenes,'scene'),atlas&&plural(atlas,'atlas entry','atlas entries')].filter(Boolean).join(' · ');
 
@@ -25,7 +25,7 @@ function SourceCard({s}){
    <dt className="text-ink-3">Root</dt><dd>{s.root?<Link url={s.root} className="text-ink-2"/>:<span className="text-ink-3">No public link</span>}</dd>
   </dl>
   {s.pages.length>0&&<details className="mt-2 group">
-   <summary className="inline-flex cursor-pointer items-center gap-2 min-h-9 text-sm font-medium text-ink-2 hover:text-ink [&::-webkit-details-marker]:hidden before:content-['▸'] before:text-ink-3 before:text-xs group-open:before:content-['▾']">Pages cited ({s.pages.length})</summary>
+   <summary className="inline-flex cursor-pointer items-center gap-2 min-h-10 md:min-h-9 text-sm font-medium text-ink-2 hover:text-ink [&::-webkit-details-marker]:hidden before:content-['▸'] before:text-ink-3 before:text-xs group-open:before:content-['▾']">Pages cited ({s.pages.length})</summary>
    <ol className="mt-1 border-t border-line text-sm">{s.pages.map(p=><li key={p.url} className="border-b border-line py-2 last:border-b-0">
     <p className="flex flex-wrap items-baseline gap-x-2"><span className="text-ink">{p.title}</span><span className="text-xs text-ink-3 tnum">{p.method?'method reference':citedBy(p.scenes,p.atlas)||'general reference'}</span></p>
     <Link url={p.url} className="text-[13px] text-ink-2"/>

@@ -1,5 +1,5 @@
 // Embeds the decision atlas and the generated "What the model is fed" layer into the standalone
-// atlas page (docs/detroit-decision-flowchart.html), so the page can never drift from its sources:
+// atlas page (docs/atlas/generated/detroit-decision-flowchart.html), so the page can never drift from its sources:
 // - <script id="atlas-data">: docs/detroit-decisions.json, the hand-researched decision families.
 // - <script id="story-feed">: every scene of benchmark/story.json in story order, with real names.
 // Run by scripts/prepare.mjs (so `bun run build` and `bun run share` refresh it) and by `bun run atlas:build`.
@@ -9,7 +9,7 @@ import {render,riskLabel,NAMES,nameKey} from '../benchmark/experience-prompt.mjs
 import {writeAtlas} from './atlas-assemble.mjs';
 
 const ROOT=new URL('../',import.meta.url);
-export const ATLAS_HTML=new URL('docs/detroit-decision-flowchart.html',ROOT);
+export const ATLAS_HTML=new URL('docs/atlas/generated/detroit-decision-flowchart.html',ROOT);
 const STORY=new URL('benchmark/story.json',ROOT),ATLAS=new URL('docs/detroit-decisions.json',ROOT);
 
 // Fields the feed handles explicitly; anything else on a scene is kept under `extra` so nothing is hidden.

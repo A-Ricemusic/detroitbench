@@ -14,7 +14,7 @@ export function Select({label,hideLabel=false,value,options,onChange,className,t
   {label&&<label id={id+'-label'} htmlFor={id} className={cx('text-xs font-medium text-ink-3 tracking-wide',hideLabel&&'sr-only')}>{label}</label>}
   <RSelect.Root value={value} onValueChange={onChange} disabled={disabled||!options.length} defaultOpen={defaultOpen}>
    <RSelect.Trigger id={id} aria-labelledby={label?`${id}-label ${id}`:undefined} className={cx('inline-flex items-center justify-between gap-2 min-h-11 md:min-h-10 w-full rounded-lg border border-line-2 bg-surface px-3 text-sm text-ink shadow-sm hover:bg-surface-2 data-[state=open]:border-accent transition-colors',triggerClassName)}>
-    <span className="inline-flex items-center gap-2 min-w-0 truncate">{hideLabel&&label&&<span aria-hidden="true" className="text-ink-3 shrink-0">{label}</span>}{current?.icon&&<Dot color={current.icon}/>}<RSelect.Value placeholder={placeholder}/></span>
+    <span className="flex items-center gap-2 min-w-0 flex-1 text-left">{hideLabel&&label&&<span aria-hidden="true" className="text-ink-3 shrink-0">{label}</span>}{current?.icon&&<Dot color={current.icon}/>}<RSelect.Value className="min-w-0 truncate" placeholder={placeholder}/></span>
     <RSelect.Icon><ChevronDown aria-hidden="true" className="size-4 text-ink-3"/></RSelect.Icon>
    </RSelect.Trigger>
    <RSelect.Portal>

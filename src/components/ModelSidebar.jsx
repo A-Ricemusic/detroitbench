@@ -41,13 +41,14 @@ function Panel({runs,colors,nums,sel,onReset,sheet=false,searchRef,onDone}){
    onPointerEnter={e=>{if(e.pointerType==='mouse'&&on)setHover(r.id)}} onPointerLeave={e=>{if(e.pointerType==='mouse')setHover(null)}}
    onFocus={e=>{if(on&&e.currentTarget.matches(':focus-visible'))setHover(r.id)}} onBlur={()=>setHover(null)}
    className={cx('group flex w-full min-w-0 items-center gap-[9px] rounded-[5px] px-1.5 text-left hover:bg-surface-2',rowH)}>
-   <span aria-hidden="true" className={cx('w-4 shrink-0 text-right font-mono text-[10.5px] text-ink-3 tnum',on?'opacity-100':'opacity-40 group-hover:opacity-100')}>{nums[r.displayName]}</span>
+   <span aria-hidden="true" className={cx('w-4 shrink-0 text-right font-mono text-[11px] text-ink-3 tnum',on?'opacity-100':'opacity-40 group-hover:opacity-100')}>{nums[r.displayName]}</span>
    <span className={cx('min-w-0 grow truncate',on?'text-ink':'text-ink-3')}>{runLabel(r)}</span>
    <span aria-hidden="true" className={cx('size-[7px] shrink-0 rounded-full',!on&&'opacity-50')} style={{color,background:on?'currentColor':'transparent',boxShadow:'inset 0 0 0 1px currentColor'}}/>
   </button></li>};
  const group=(title,list,actions)=>list.length?<section aria-label={title}>
   <div className="mb-1 flex items-baseline gap-2.5"><h3 className="grow text-[12px] font-semibold tracking-normal text-ink">{title}</h3>{actions}</div>
   <ul className="grid grid-cols-[minmax(0,1fr)] -mx-1.5">{list.map(row)}</ul></section>:null;
+ const SB='min-h-10 min-w-10 px-2.5 text-sm inline-flex items-center justify-center';
  const tbtn=(pressed,onClick,label,extra)=><button key={label} type="button" aria-pressed={pressed} onClick={onClick} className={cx('text-[11.5px] hover:text-ink',pressed?'text-ink font-medium underline decoration-ink-3 underline-offset-[3px]':'text-ink-3',extra)}>{label}</button>;
  return <div className={cx('flex flex-col',sheet?'gap-5':'gap-[18px]')}>
   {!sheet&&<div className="flex items-center justify-between gap-2">
@@ -57,23 +58,23 @@ function Panel({runs,colors,nums,sel,onReset,sheet=false,searchRef,onDone}){
   <div className={cx('flex items-center gap-2 border-b border-line-2 focus-within:border-accent',sheet?'h-[42px]':'h-8')}>
    <Search aria-hidden="true" className="size-3.5 shrink-0 text-ink-3"/>
    <input ref={searchRef} type="search" value={q} onChange={e=>setQ(e.target.value)} onKeyDown={e=>{if(e.key==='Escape'&&q){e.preventDefault();e.stopPropagation();setQ('')}}} placeholder="Find models" aria-label="Find a model" autoComplete="off" spellCheck={false}
-    className={cx('min-w-0 grow bg-transparent text-ink placeholder:text-ink-3 outline-none [&::-webkit-search-cancel-button]:hidden',sheet?'text-base':'text-[12.5px]')}/>
+    className={cx('h-full min-w-0 grow bg-transparent text-ink placeholder:text-ink-3 outline-none [&::-webkit-search-cancel-button]:hidden',sheet?'text-base':'text-[12.5px]')}/>
    {q?<button type="button" aria-label="Clear search" onClick={()=>{setQ('');searchRef?.current?.focus()}} className="inline-flex size-6 items-center justify-center text-ink-3 hover:text-ink"><X aria-hidden="true" className="size-3.5"/></button>
     :!sheet&&<kbd aria-hidden="true" className="font-mono text-[11px] text-ink-3">/</kbd>}
   </div>
   {results?(results.length?group('Results',results):<p role="status" className="text-[12.5px] text-ink-3">No models match “{q.trim()}”.</p>)
   :<>
    {levels.length>0&&<div role="group" aria-label="Reasoning"><h3 className="mb-1 text-[12px] font-semibold tracking-normal text-ink">Reasoning</h3>
-    <div className="flex flex-wrap gap-x-2 gap-y-1">{levels.map(e=><button key={e} type="button" aria-pressed={!excluded.has(e)} onClick={()=>toggleLevel(e)} className={cx('text-[11.5px] hover:text-ink',sheet&&'min-h-8 text-sm',excluded.has(e)?'text-ink-3 line-through':'text-ink')}>{e}</button>)}</div></div>}
-   {group('Frontier',frontier,<span className="flex gap-2.5">{SIZES.filter(([s])=>frontier.some(r=>r.modelInfo?.size===s)).map(([s,l])=>{const set=frontier.filter(r=>r.modelInfo?.size===s);return tbtn(all(set),()=>bulk(set,l),l,sheet&&'min-h-8 text-sm')})}</span>)}
-   {group('Notable',notable,tbtn(all(notable),()=>bulk(notable,'Notable'),'All',sheet&&'min-h-8 text-sm'))}
+    <div className={cx('flex flex-wrap',sheet?'gap-2':'gap-x-2 gap-y-1')}>{levels.map(e=><button key={e} type="button" aria-pressed={!excluded.has(e)} onClick={()=>toggleLevel(e)} className={cx('text-[11.5px] hover:text-ink',sheet&&SB,excluded.has(e)?'text-ink-3 line-through':'text-ink')}>{e}</button>)}</div></div>}
+   {group('Frontier',frontier,<span className={cx('flex flex-wrap',sheet?'gap-1.5':'gap-2.5')}>{SIZES.filter(([s])=>frontier.some(r=>r.modelInfo?.size===s)).map(([s,l])=>{const set=frontier.filter(r=>r.modelInfo?.size===s);return tbtn(all(set),()=>bulk(set,l),l,sheet&&SB)})}</span>)}
+   {group('Notable',notable,tbtn(all(notable),()=>bulk(notable,'Notable'),'All',sheet&&SB))}
    {group('Other',otherShown)}
    {others.length>0&&<div className="border-t border-line pt-3.5 grid gap-2">
-    <button type="button" aria-expanded={browse} onClick={()=>setBrowse(b=>!b)} className="text-left text-[12px] text-ink-2 hover:text-ink">{browse?'Hide other models':'Show all models'}</button>
-    {browse&&others.some(r=>r.modelInfo?.open)&&<div className="flex gap-3">{tbtn(openW,()=>setOpenW(o=>!o),'Open weights')}</div>}
+    <button type="button" aria-expanded={browse} onClick={()=>setBrowse(b=>!b)} className={cx('text-left text-[12px] text-ink-2 hover:text-ink',sheet&&'min-h-10 text-sm')}>{browse?'Hide other models':'Show all models'}</button>
+    {browse&&others.some(r=>r.modelInfo?.open)&&<div className="flex gap-3">{tbtn(openW,()=>setOpenW(o=>!o),'Open weights',sheet&&SB)}</div>}
    </div>}
   </>}
-  {sheet&&<div className="border-t border-line pt-4"><button type="button" onClick={reset} className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink"><RotateCcw aria-hidden="true" className="size-4"/>Reset selection</button></div>}
+  {sheet&&<div className="border-t border-line pt-4"><button type="button" onClick={reset} className="inline-flex min-h-10 items-center gap-2 text-sm text-ink-2 hover:text-ink"><RotateCcw aria-hidden="true" className="size-4"/>Reset selection</button></div>}
  </div>}
 
 // The sidebar for a page: a sticky aside on wide screens and a full-screen panel at 900 px or less. On phones (below

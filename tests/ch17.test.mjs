@@ -185,3 +185,13 @@ test('Zlatko: the chase report and the brain magazine follow the freeway endings
  const at=st=>available(k12,{...st,ch17Phase:'search',ch17Minutes:0}).some(o=>o.act==='brain');
  assert.equal(at({...startState(story),chase:true,ch13Ending:'Kara & Alice crossed the highway'}),true);assert.equal(at(vanished),false);
 });
+
+// Story 1.9.10 (readings-ch17-32.md ch17-08): the shotgun deaths leave Alice watching, her fate not shown. Older snapshots lack `aliceWatching`.
+test('Zlatko: a spotted death leaves Alice watching from story 1.9.10, and in her hands in older snapshots',()=>{
+ const spottedDeath=n=>{const s=startState(story);s.kara=true;s.karaActive=true;s.alice=true;s.ch17Phase='main';s.ch17Bear=false;apply(n,s,'0',0);return s};
+ for(const id of ['K13','K13b','K13c','K13d','K13e'])assert.equal(node(id).aliceWatching,true,id);
+ const now=spottedDeath(node('K13d'));
+ if(now.ch17Outcome){assert.match(render(now.karaOutcome,'real'),/Alice watched from the doorway; what became of Alice is not shown/);assert.equal(now.alice,false)}
+ const old=structuredClone(node('K13d'));delete old.aliceWatching;
+ const was=spottedDeath(old);if(was.ch17Outcome)assert.match(render(was.karaOutcome,'real'),/Alice was left in his hands/);
+});

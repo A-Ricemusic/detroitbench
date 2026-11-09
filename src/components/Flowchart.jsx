@@ -57,7 +57,6 @@ export function RunFlowchart({r,initialChapter,renderDetail}){
   </div>;
  const onKeyDown=e=>{if(e.key==='Enter'||e.key===' '){const n=e.target.closest?.('[data-node]');if(n){e.preventDefault();choose(n)}}else if(e.key==='Escape'&&selected){e.preventDefault();close()}};
  const info=selected?{key:selected.key,alt:selected.alt,info:index.get(selected.key),flow}:null;
- const legend=<p className="text-xs text-ink-3">Read left to right along the highlighted path. Filled nodes with a check mark are the choices made (a cross marks a risky action that failed); outlined nodes were offered but not chosen; dashed nodes were never reached; dotted ones were not available on this path. In a bracketed place explored in any order, numbers give the order of the actions, and a scene that cut in hangs below and rejoins it. Every ending the chapter can produce is listed on the right, the reached one filled.</p>;
  return <div className="grid grid-cols-[minmax(0,1fr)] gap-3">
   <style>{FLOW_CSS}</style>
   {chapterNav}
@@ -73,5 +72,4 @@ export function RunFlowchart({r,initialChapter,renderDetail}){
    </aside>}
   </div>
   {!wide&&<Sheet open={!!selected} onOpenChange={o=>{if(!o)close()}} title={info?.info?.col?.title??'Node'} description={flow?`Chapter ${flow.chapter} · ${flow.title}`:undefined}>{selected&&renderDetail({...info,inSheet:true})}</Sheet>}
-  {legend}
  </div>}

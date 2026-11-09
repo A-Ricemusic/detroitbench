@@ -47,8 +47,8 @@ export const ARROWS={
  killGuard:{joshTrust:-2},                                     // “Kill Guard”: Josh LargeDown
  runAway:{northTrust:-2,jerichoTrust:-1,joshTrust:-1,simonTrust:-1}, // “Run away”: North SmallDown ×2, Jericho, Josh, Simon SmallDown
  attack:{joshTrust:-2},                                        // PROMPT 2 “ATTACK”: Josh LargeDown
- freeThem:{northTrust:1,simonTrust:1,joshTrust:1},             // “FREE THEM”: North, Simon, Josh SmallUp
- accept:{northTrust:-1,simonTrust:-1,joshTrust:1},             // “ACCEPT”: North, Simon SmallDown, Josh SmallUp
+ freeThem:{northTrust:1,simonTrust:1,joshTrust:1,jerichoTrust:1}, // “FREE THEM”: North, Simon, Josh SmallUp; Jericho SmallUp from story 1.9.10 (video frame)
+ accept:{northTrust:-1,simonTrust:-1,joshTrust:1,jerichoTrust:1}, // “ACCEPT”: North, Simon SmallDown, Josh SmallUp; Jericho SmallUp from story 1.9.10 (video frame)
  getKey:{northTrust:1,simonTrust:1,joshTrust:-1},              // “GET THE KEY”: North, Simon SmallUp, Josh SmallDown
  leave:{northTrust:-1,joshTrust:1},                            // “LEAVE”: North SmallDown, Josh SmallUp
  seen:{northTrust:-2,jerichoTrust:-2,joshTrust:-1,simonTrust:-1}, // “Be seen by the guards”: North ×2, Jericho ×2, Josh, Simon SmallDown
